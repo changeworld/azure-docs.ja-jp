@@ -10,42 +10,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 94e5f5b29e93409df2373cf6c56e8185dc5373a2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: f6e604940c9e2e84f119fdd1859ad4b2cda23aef
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312976"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588705"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
-ラボの所有者は、ラボの仮想マシンが特定のリソース グループに作成されるように構成することができます。 この機能は、次のシナリオで役立ちます。 
+
+ラボの所有者は、ラボの仮想マシンが特定のリソース グループに作成されるように構成することができます。 この機能は、次のシナリオで役立ちます。
 
 - サブスクリプション内のリソース グループのうち、ラボによって作成されたものが少ない。
 - 自分で構成した一連の固定のリソース グループ内でラボを運用する。
 - Azure サブスクリプション内でリソース グループを作成するために必要な制限および承認を回避する。
-- ラボのすべてのリソースを単一のリソース グループ内に統合し、リソースの追跡および[ポリシー](../governance/policy/overview.md)の適用を簡単に行えるようにして、リソースをリソース グループ レベルで管理する。
+- ラボのすべてのリソースを単一のリソース グループ内に統合し、それらのリソースの追跡と[ポリシー](../governance/policy/overview.md)の適用を簡素化して、リソースをリソース グループ レベルで管理する。
 
-この機能では、スクリプトを使用して、ラボのすべての VM に対し、Azure サブスクリプション内の新規または既存のリソース グループを指定できます。 現時点では、この機能は API によってサポートされています。 
+この機能では、スクリプトを使用して、すべてのラボ VM に対して、Azure サブスクリプション内の新規または既存のリソース グループを指定できます。 現在、Azure DevTest Labs では、この機能は API を使用することによってサポートされています。
 
-## <a name="api-to-configure-a-resource-group-for-lab-virtual-machines"></a>ラボ仮想マシン用のリソース グループを構成するための API
-それでは、ラボ所有者がこの API を使用するときに指定できるオプションを見ていきましょう。 
+## <a name="use-azure-portal"></a>Azure Portal の使用
+次の手順に従って、ラボで作成されたすべての VM のリソース グループを指定します。 
 
-- すべての仮想マシンに対して、**ラボのリソース グループ**を選択することができます。
-- すべての仮想マシンに対して、ラボのリソース グループ以外の**既存のリソース グループ**を選択することができます。
-- すべての仮想マシンに対して、**新しいリソース グループ**の名前を入力することができます。
-- 引き続き既存の動作を使用する、つまりラボの VM ごとにリソース グループを作成することができます。
- 
-この設定は、ラボで作成される新しい仮想マシンに適用されます。 独自のリソース グループで作成されたラボの古い VM には影響しません。 ラボで作成された環境は、専用のリソース グループに引き続き残っています。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側のナビゲーション メニューで、**[すべてのサービス]** を選択します。 
+3. 一覧で **[DevTest Labs]** を選択します。
+4. ラボの一覧で、目的の**ラボ**を選択します。  
+5. 左側のメニューの **[設定]** セクションで、**[構成とポリシー]** を選択します。 
+6. 左側のメニューで **[ラボの設定]** を選択します。 
+7. **[1 つのリソース グループ内のすべての仮想マシン]** を選択します。 
+8. ドロップダウン リストで既存のリソース グループを選択するか、**[新規作成]** を選択し、リソース グループの**名前**を入力して、**[OK]** をクリックします。 
 
-### <a name="how-to-use-this-api"></a>この API の使用方法:
-- この API を使用するときは、API バージョン **2018_10_15_preview** を使用します。 
-- 新しいリソース グループを指定する場合は、サブスクリプション内の**リソース グループに対する書き込みアクセス許可**があることを確認してください。 書き込みアクセス許可がない場合、指定したリソース グループに新しい仮想マシンを作成するとエラーになります。 
-- API を使用するときは、**完全なリソース グループ ID** を渡します。 (例: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`)。 リソース グループがラボと同じサブスクリプション内にあることを確認します。 
+    ![すべてのラボ VM のリソース グループの選択](./media/resource-group-control/select-resource-group.png)
 
 ## <a name="use-powershell"></a>PowerShell の使用 
-次の例では、PowerShell スクリプトを使用して、すべてのラボ仮想マシンを新しいリソース グループに作成する方法を説明します。
+次の例は、PowerShell スクリプトを使用して、すべてのラボ仮想マシンを新しいリソース グループに作成する方法を示しています。
 
 ```PowerShell
 [CmdletBinding()]
@@ -69,14 +69,14 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 "Done. New virtual machines will now be created in the resource group '$vmRg'."
 ```
 
-次のコマンドを使用してスクリプトを呼び出します (ResourceGroup.ps1 は、上のスクリプトが含まれるファイルです)。 
+次のコマンドを使用してスクリプトを呼び出します。 ResourceGroup.ps1 は、上記のスクリプトが含まれているファイルです。
 
 ```PowerShell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 
-## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-Azure Resource Manager テンプレートを使用してラボを作成する場合は、次の例で示すように、Resource Manager テンプレートのラボ プロパティ セクションで **vmCreationResourceGroupId** プロパティを使用します。
+## <a name="use-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+Azure Resource Manager テンプレートを使用してラボを作成する場合は、次の例に示すように、テンプレートのラボ プロパティ セクションで **vmCreationResourceGroupId** プロパティを使用します。
 
 ```json
         {
@@ -96,6 +96,22 @@ Azure Resource Manager テンプレートを使用してラボを作成する場
             "dependsOn": []
         },
 ```
+
+
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>ラボ VM 用のリソース グループを構成するための API
+ラボ所有者がこの API を使用するときには、次のオプションがあります。
+
+- すべての仮想マシンに対して、**ラボのリソース グループ**を選択する。
+- すべての仮想マシンに対して、ラボのリソース グループ以外の**既存のリソース グループ**を選択する。
+- すべての仮想マシンの**新しいリソース グループ**の名前を入力する。
+- 引き続き既存の動作を使用する (ラボの VM ごとにリソース グループが作成されます)。
+ 
+この設定は、ラボで作成される新しい仮想マシンに適用されます。 独自のリソース グループに作成されたラボの古い VM には影響しません。 ラボで作成された環境は、独自のリソース グループに引き続き維持されます。
+
+この API の使用方法:
+- API バージョン **2018_10_15_preview** を使用します。
+- 新しいリソース グループを指定する場合は、サブスクリプション内の**リソース グループに対する書き込みアクセス許可**があることを確認します。 書き込みアクセス許可がない場合、指定したリソース グループでの新しい仮想マシンの作成は失敗します。
+- API を使用するときは、**完全なリソース グループ ID** を渡します。 (例: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`)。 リソース グループがラボと同じサブスクリプションに含まれていることを確認します。 
 
 
 ## <a name="next-steps"></a>次の手順

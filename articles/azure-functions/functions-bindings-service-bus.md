@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: cda183878467dbcd30f0e89d88da55c20b6b130f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 85fdd67cd676db2a7c54c10523787b0d395de5dc
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268636"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870790"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -48,8 +48,8 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 * [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -146,6 +146,39 @@ let Run(myQueueItem: string, log: ILogger) =
     log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
+### <a name="trigger---java-example"></a>トリガー - Java の例
+
+次の Java 関数は、[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)からの `@ServiceBusQueueTrigger` 注釈を使用して、Service Bus キュー トリガーの構成について記述します。 この関数は、キューにあるメッセージを取得し、ログに追加します。
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+Service Bus トピックにメッセージが追加されたときに、Java 関数もトリガーできます。 次の例では、トリガー構成を記述する `@ServiceBusTopicTrigger` 注釈を使用します。
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+ ```
+
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
 次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この機能は[メッセージ メタデータ](#trigger---message-metadata)を読み取り、Service Bus のキュー メッセージをログに記録します。 
@@ -178,41 +211,6 @@ module.exports = function(context, myQueueItem) {
     context.done();
 };
 ```
-
-### <a name="trigger---java-example"></a>トリガー - Java の例
-
-次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 この関数は、Service Bus キューに配置されたメッセージによってトリガーされ、キュー メッセージを記録します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "myqueuename",
-    "connection": "MyServiceBusConnection",
-    "name": "msg",
-    "type": "ServiceBusQueueTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-Java コードを次に示します。
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
 
@@ -285,7 +283,7 @@ Java コードを次に示します。
 |**queueName**|**QueueName**|監視するキューの名前。  トピックではなくキューを監視する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックを監視する場合にのみ設定します。|
-|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-management-credentials)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
+|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
 |**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -315,9 +313,9 @@ Functions ランタイムは、メッセージを [PeekLock モード](../servic
 
 ## <a name="trigger---message-metadata"></a>トリガー - メッセージのメタデータ
 
-Service Bus トリガーには、いくつかの[メタデータ プロパティ](functions-triggers-bindings.md#binding-expressions---trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのプロパティです。
+Service Bus トリガーには、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) クラスのプロパティです。
 
-|プロパティ|型|説明|
+|プロパティ|type|説明|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|配信回数。|
 |`DeadLetterSource`|`string`|配信不能のソース。|
@@ -354,8 +352,8 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 * [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
+* [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
-* Java
 
 ### <a name="output---c-example"></a>出力 - C# の例
 
@@ -459,6 +457,41 @@ let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
+### <a name="output---java-example"></a>出力 - Java の例
+
+次の例は、HTTP 要求によってトリガーされたときに Service Bus キュー `myqueue` にメッセージを送信する Java 関数を示しています。
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+ ```
+
+ [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Service Bus キューに書き込まれる関数のパラメーターに関する `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
+
+Java 関数は、Service Bus トピックにも書き込むことができます。 次の例では、出力バインディングの構成を記述する`@ServiceBusTopicOutput`注釈を使用します。 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 ### <a name="output---javascript-example"></a>出力 - JavaScript の例
 
 次の例は、*function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [JavaScript スクリプト関数](functions-reference-node.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
@@ -511,25 +544,6 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-
-### <a name="output---java-example"></a>出力 - Java の例
-
-次の例は、HTTP 要求によってトリガーされたときに Service Bus キュー `myqueue` にメッセージを送信する Java 関数を示しています。
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
- ```
-
- [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Service Bus キューに書き込まれる関数のパラメーターに関する `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
-
 ## <a name="output---attributes"></a>出力 - 属性
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs) 属性を使用します。
@@ -571,7 +585,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |**name** | 該当なし | 関数コード内のキューまたはトピックを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 | 
 |**queueName**|**QueueName**|キューの名前。  トピックではなくキューのメッセージを送信する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
-|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-management-credentials)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
+|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
 |**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

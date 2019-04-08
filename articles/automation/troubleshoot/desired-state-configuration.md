@@ -9,18 +9,38 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 997f332e14fd1accf32d8cc3f51557fe005acab5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a34dea7e1eb53531db55dc62df8fbad8541f7a35
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421647"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586802"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
 この記事では、Desired State Configuration (DSC) の問題のトラブルシューティングに関する情報を説明します。
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー
+
+### <a name="unsupported-characters"></a>シナリオ:特殊文字を含む構成を、ポータルから削除できません。
+
+#### <a name="issue"></a>問題
+
+ポータルから DSC 構成を削除しようとすると、次のエラーが表示されます。
+
+```
+An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
+```
+
+#### <a name="cause"></a>原因
+
+これは、一時的な問題であり、解決される予定です。
+
+#### <a name="resolution"></a>解決策
+
+* "Remove-AzAutomationDscConfiguration" Az コマンドレットを使用して、構成を削除します。
+* このコマンドレットのドキュメントは、まだ更新されていません。  それまでは、AzureRM モジュールのドキュメントを参照してください。
+  * [Remove-AzureRmAutomationDSCConfiguration](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration?view=azurermps-6.13.0)
 
 ### <a name="failed-not-found"></a>シナリオ:ノードが失敗状態になり、「見つかりません」というエラーが表示される
 

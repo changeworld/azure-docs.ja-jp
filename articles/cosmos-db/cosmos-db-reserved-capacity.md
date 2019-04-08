@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: bb2d57d3e119fd83d1a984fc31f29a5d93e957d1
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 80c35d8417fefa2873cbef9886f56ccfa3920624
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745947"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409467"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
@@ -55,7 +55,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
    |Name   |    予約の名前です。 このフィールドには、`CosmosDB_Reservation_<timeStamp>` が自動的に設定されます。 予約の作成中に別の名前を指定できます。 または、予約を作成した後に名前を変更することもできます。      |
    |サブスクリプション  |   Azure Cosmos DB の予約容量の支払いに使用するサブスクリプションです。 選択したサブスクリプションの支払方法が、初期コストの課金で使用されます。 サブスクリプションの種類は、次のいずれかである必要があります。 <br/><br/>  マイクロソフト エンタープライズ契約 (オファー番号:MS-AZR-0017P または MS-AZR-0148P):エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 <br/><br/> 従量課金制 (オファー番号:MS-AZR-0003P または MS-AZR-0023P):従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。    |
    |Scope (スコープ)   |   予約に関連づけられた課金の特典を使用できるサブスクリプションの数を制御するオプションです。 また、特定のサブスクリプションに予約を適用する方法も制御します。   <br/><br/>  **[単一サブスクリプション]** を選択すると、予約割引は選択したサブスクリプションの Azure Cosmos DB インスタンスに適用されます。 <br/><br/>  **[共有]** を選択すると、予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている Azure Cosmos DB インスタンスに適用されます。 課金のコンテキストは、Azure に対するサインアップ方法に基づきます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。  <br/><br/> 予約容量を購入した後で、予約のスコープを変更できます。  |
-   |予約容量の種類   |  要求ユニットとしてプロビジョニングされたスループットです。|
+   |予約容量の種類   |  要求ユニットとしてプロビジョニングされたスループットです。 両方の設定 (1 つのリージョンの書き込みと複数のリージョンの書き込み) のプロビジョニング済みスループットの予約を購入できます。|
    |予約容量ユニット  |      予約するスループットの量です。 リージョンごとのすべての Cosmos DB リソース (データベースやコンテナーなど) に必要なスループットを決定することで、この値を計算できます。 次に、Cosmos DB データベースに関連付けるリージョンの数を掛け合わせます。  <br/><br/> 例: 5 つのリージョンがあり、すべてのリージョンが 100万 RU/秒である場合は、予約容量の購入に 500万 RU/秒を選択します。    |
    |用語  |   1 年間または 3 年間。   |
 
@@ -68,6 +68,10 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 予約を購入すると、予約の条件に一致する既存の Azure Cosmos DB リソースにすぐに適用されます。 既存の Azure Cosmos DB リソースを持っていない場合は、予約の条件に一致する新しい Cosmos DB インスタンスをデプロイすると、予約が適用されます。 どちらの場合にも、予約の期間は正常な購入の直後に開始されます。 
 
 予約の期限が切れると、Azure Cosmos DB インスタンスは引き続き実行し、正規の従量課金制の料金で課金されます。
+
+## <a name="cancellation-and-exchanges"></a>キャンセルと交換
+
+適正な予約容量を識別するには、「[Azure Cosmos DB に予約割引が適用されるしくみについて](../billing/billing-understand-cosmosdb-reservation-charges.md)」を参照してください。 イベントで、Azure Cosmos DB の予約をキャンセルまたは交換する必要がある場合には、`AskCosmosDB@microsoft.com` で Azure Cosmos DB チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

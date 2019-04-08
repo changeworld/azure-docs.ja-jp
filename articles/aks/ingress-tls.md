@@ -1,18 +1,18 @@
 ---
 title: Azure Kubernetes Service (AKS) クラスターを使用した HTTPS イングレスの作成
-description: Azure Kubernetes Service (AKS) クラスターで、自動的に SSL 証明書を生成する Let's Encrypt を使用する NGINX イングレス コントローラーをインストールおよび構成する方法について説明します。
+description: Azure Kubernetes Service (AKS) クラスターで、自動的に TLS 証明書を生成する Let's Encrypt を使用する NGINX イングレス コントローラーをインストールおよび構成する方法について説明します。
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 03/06/2019
 ms.author: iainfou
-ms.openlocfilehash: cb441aeab8f6f2cfbaa099ee17a3af9e767fc218
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 879b3cabcab6f10d46904bd3a479568756d877b4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235701"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777806"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -30,9 +30,11 @@ ms.locfileid: "56235701"
 
 ## <a name="before-you-begin"></a>開始する前に
 
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+
 この記事では、Helm を使用し、NGINX イングレス コントローラー、cert-manager およびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 最新リリースの Helm を使用していることを確認します。 アップグレード手順については、「[Helm のインストール ドキュメント][helm-install]」を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
 
-この記事では、Azure CLI バージョン 2.0.41 以降も実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+この記事では、Azure CLI バージョン 2.0.59 以降も実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="create-an-ingress-controller"></a>イングレス コントローラーを作成する
 
@@ -52,9 +54,9 @@ helm install stable/nginx-ingress --namespace kube-system --set controller.repli
 ```
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
+NAME                                             TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+billowing-kitten-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+billowing-kitten-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 まだイングレス ルールは作成されていません。 パブリック IP アドレスを参照すると、NGINX イングレス コントローラーの既定の 404 ページが表示されます。
@@ -63,7 +65,7 @@ eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none> 
 
 HTTPS 証明書が正常に動作するには、イングレス コントローラーの IP アドレスに FQDN を構成します。 次のスクリプトを更新して、イングレス コントローラーの IP アドレスと、FQDN として使用する一意の名前に変更します。
 
-```console
+```azurecli-interactive
 #!/bin/bash
 
 # Public IP address of your ingress controller
@@ -100,8 +102,11 @@ helm install stable/cert-manager \
     --namespace kube-system \
     --set ingressShim.defaultIssuerName=letsencrypt-staging \
     --set ingressShim.defaultIssuerKind=ClusterIssuer \
-    --version v0.6.0
+    --version v0.6.6
 ```
+
+> [!TIP]
+> `Error: failed to download "stable/cert-manager"` などのエラーを受け取った場合、`helm repo update` が正常に実行されたことを確認し、最新の使用可能な Helm チャートの一覧を取得します。
 
 クラスターで RBAC が無効な場合、代わりに次のコマンドを使用します。
 
@@ -117,7 +122,7 @@ helm install stable/cert-manager \
     --set ingressShim.defaultIssuerKind=ClusterIssuer \
     --set rbac.create=false \
     --set serviceAccount.create=false \
-    --version v0.6.0
+    --version v0.6.6
 ```
 
 cert-manager の構成の詳細については、[cert-manager プロジェクト][cert-manager]についてのページを参照してください。
@@ -148,6 +153,54 @@ spec:
 $ kubectl apply -f cluster-issuer.yaml
 
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
+```
+
+## <a name="create-a-certificate-object"></a>証明書オブジェクトを作成する
+
+次に、証明書リソースを作成する必要があります。 証明書リソースでは、必要な X.509 証明書を定義します。 詳細については、[cert-manager の証明書][cert-manager-certificates]についてのページを参照してください。
+
+証明書マネージャーによって ingress-shim を使用して証明書オブジェクトが自動的に作成されている可能性があり、それは v0.2.2 以降の証明書マネージャーでデプロイされます。 詳しくは、[ingress-shim のドキュメント][ingress-shim]をご覧ください。
+
+証明書が正常に作成されたことを確認するには、`kubectl describe certificate tls-secret` コマンドを使用します。 証明書が発行されている場合、*イベント* 出力の出力は次の例に似ています。
+
+```
+Type    Reason          Age   From          Message
+----    ------          ----  ----          -------
+  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
+  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
+  Normal  IssueCert       10m   cert-manager  Issuing certificate...
+  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
+  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
+```
+
+証明書リソースを作成する必要がある場合は、次のマニフェストの例で行うことができます。 *dnsNames* と *domains* を前の手順で作成した DNS 名に更新します。 内部専用のイングレス コントローラーを使用する場合は、サービスに内部 DNS 名を指定します。
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-secret
+spec:
+  secretName: tls-secret
+  dnsNames:
+  - demo-aks-ingress.eastus.cloudapp.azure.com
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - demo-aks-ingress.eastus.cloudapp.azure.com
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+```
+
+証明書のリソースを作成するには、`kubectl apply -f certificates.yaml` コマンドを使用します。
+
+```
+$ kubectl apply -f certificates.yaml
+
+certificate.certmanager.k8s.io/tls-secret created
 ```
 
 ## <a name="run-demo-applications"></a>デモ アプリケーションを実行する
@@ -216,55 +269,6 @@ $ kubectl apply -f hello-world-ingress.yaml
 ingress.extensions/hello-world-ingress created
 ```
 
-## <a name="create-a-certificate-object"></a>証明書オブジェクトを作成する
-
-次に、証明書リソースを作成する必要があります。 証明書リソースでは、必要な X.509 証明書を定義します。 詳細については、[cert-manager の証明書][cert-manager-certificates]についてのページを参照してください。
-
-証明書マネージャーによって ingress-shim を使用して証明書オブジェクトが自動的に作成されている可能性があり、それは v0.2.2 以降の証明書マネージャーで自動的にデプロイされます。 詳しくは、[ingress-shim のドキュメント][ingress-shim]をご覧ください。
-
-証明書が正常に作成されたことを確認するには、`kubectl describe certificate tls-secret` コマンドを使用します。
-
-証明書が発行された場合、次のような出力が表示されます。
-```
-Type    Reason          Age   From          Message
-----    ------          ----  ----          -------
-  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
-  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
-  Normal  IssueCert       10m   cert-manager  Issuing certificate...
-  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
-  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
-```
-
-追加の証明書リソースを作成する必要がある場合は、次のマニフェストの例で行うことができます。 *dnsNames* と *domains* を前の手順で作成した DNS 名に更新します。 内部専用のイングレス コントローラーを使用する場合は、サービスに内部 DNS 名を指定します。
-
-```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
-kind: Certificate
-metadata:
-  name: tls-secret
-spec:
-  secretName: tls-secret
-  dnsNames:
-  - demo-aks-ingress.eastus.cloudapp.azure.com
-  acme:
-    config:
-    - http01:
-        ingressClass: nginx
-      domains:
-      - demo-aks-ingress.eastus.cloudapp.azure.com
-  issuerRef:
-    name: letsencrypt-staging
-    kind: ClusterIssuer
-```
-
-証明書のリソースを作成するには、`kubectl apply -f certificates.yaml` コマンドを使用します。
-
-```
-$ kubectl apply -f certificates.yaml
-
-certificate.certmanager.k8s.io/tls-secret created
-```
-
 ## <a name="test-the-ingress-configuration"></a>イングレスの構成をテストする
 
 Web ブラウザーで、*https://demo-aks-ingress.eastus.cloudapp.azure.com* などの Kubernetes イングレス コントローラーの FQDN コントローラーを開きます。
@@ -300,10 +304,10 @@ kubectl delete -f cluster-issuer.yaml
 $ helm list
 
 NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-billowing-kitten        1           Tue Oct 16 17:24:05 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
-loitering-waterbuffalo  1           Tue Oct 16 17:26:16 2018    DEPLOYED    cert-manager-v0.3.4     v0.3.2      kube-system
-flabby-deer             1           Tue Oct 16 17:27:06 2018    DEPLOYED    aks-helloworld-0.1.0                default
-linting-echidna         1           Tue Oct 16 17:27:02 2018    DEPLOYED    aks-helloworld-0.1.0                default
+billowing-kitten        1           Wed Mar  6 19:37:43 2019    DEPLOYED    nginx-ingress-1.3.1     0.22.0      kube-system
+loitering-waterbuffalo  1           Wed Mar  6 20:25:01 2019    DEPLOYED    cert-manager-v0.6.6     v0.6.2      kube-system
+flabby-deer             1           Wed Mar  6 20:27:54 2019    DEPLOYED    aks-helloworld-0.1.0                default
+linting-echidna         1           Wed Mar  6 20:27:59 2019    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
 `helm delete` コマンドでリリースを削除します。 次の例では、NGINX イングレス デプロイ、証明書マネージャー、および 2 つのサンプルの AKS hello world アプリを削除します。
@@ -349,7 +353,7 @@ kubectl delete -f hello-world-ingress.yaml
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
-[ingress-shim]: http://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html
+[ingress-shim]: https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html
 [cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
 [cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/
@@ -366,3 +370,6 @@ kubectl delete -f hello-world-ingress.yaml
 [aks-ingress-basic]: ingress-basic.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

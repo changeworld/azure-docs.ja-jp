@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 815be7400e0a0560ace7e07b317aeb25c2feacd5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267146"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450976"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure Machine Learning service の AKS および ACI デプロイのトラブルシューティング
 
@@ -43,7 +43,7 @@ Azure Machine Learning サービスでモデルをデプロイするとき、さ
 
 問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。 
 
-この作業は `Webservice.deploy` API または `Webservice.deploy_from_model` API を利用している場合に特に役立ちます。これらの関数では、前述の手順が 1 つのアクションにグループ化されるためです。 一般的にこれらの API は非常に便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
+この作業は `Webservice.deploy` API または `Webservice.deploy_from_model` API を利用している場合に役立ちます。これらの関数では、前述の手順が 1 つのアクションにグループ化されるためです。 一般的にこれらの API は便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
 
 1. モデルを登録します。 サンプル コードは次のようになります。
 
@@ -101,9 +101,54 @@ for name, img in ws.images.items():
 ```
 イメージ ログ URI は、Azure Blob Storage に保存されているログ ファイルを指す SAS URL です。 URI をコピーし、ブラウザー ウィンドウに貼り付けます。ログ ファイルはダウンロードして参照できます。
 
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault アクセス ポリシーと Azure Resource Manager テンプレート
+
+Azure Key Vault に対するアクセス ポリシーの問題が原因でイメージ ビルドも失敗する可能性があります。 これは、Azure Resource Manager テンプレートを使用してワークスペースおよび関連付けられたリソース (Azure Key Vault など) を複数回作成するときに、発生する可能性があります。 たとえば、継続的インテグレーションおよびデプロイ パイプラインの一部として同じパラメーターを指定して、テンプレートを複数回使用する場合が挙げられます。
+
+テンプレートによるリソース作成操作のほとんどはべき等操作ですが、テンプレートを使用するたびに Key Vault によってアクセス ポリシーはクリアされます。 これにより、それを使用している既存のワークスペース用の Key Vault へのアクセスは中断されます。 結果として、新しいイメージを作成しようとすると、エラーが発生します。 表示される可能性のあるエラーの例を次に示します。
+
+__ポータル__:
+```text
+Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
+```
+
+__SDK__: 
+```python
+image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
+Creating image
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
+    resp.raise_for_status()
+  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
+    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
+azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
+Response Code: 500
+Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
+Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
+```
+
+__CLI__:
+```text
+ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
+GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
+\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
+b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
+```
+
+この問題を回避するには、次のいずれかのアプローチをお勧めします。
+
+* パラメーターが同じである場合は、テンプレートを複数回デプロイしないでください。 または、テンプレートを使用してリソースを作成する前に、既存の同じものを削除してください。
+* Key Vault のアクセス ポリシーを調べ、この結果に基づいてテンプレートの `accessPolicies` プロパティを設定します。
+* Key Vault リソースが既に存在しているかどうかを確認します。 存在している場合は、テンプレートを使ってそれを再作成しないでください。 たとえば、既に存在する場合は、Key Vault リソースの作成を無効にするためのパラメーターを追加します。
 
 ## <a name="service-launch-fails"></a>サービスを起動できない
-イメージが正常にビルドされると、デプロイ構成に基づき、ACI または AKS でコンテナーの起動が試行されます。 一般的に、ACI デプロイを先に試すことをお勧めします。ACI の方がよりシンプルな単一コンテナーのデプロイであるためです。 この方法で AKS 固有の問題を除外できます。
+イメージが正常にビルドされると、デプロイ構成に基づき、ACI または AKS でコンテナーの起動が試行されます。 ACI デプロイを先に試すことをお勧めします。よりシンプルな単一コンテナー デプロイであることがその理由です。 この方法で AKS 固有の問題を除外できます。
 
 コンテナーの起動プロセスの一部として、スコアリング スクリプトの `init()` 関数が呼び出されます。 `init()` 関数でキャッチされない例外がある場合、エラー メッセージに **CrashLoopBackOff** エラーが表示されることがあります。 以下は問題解決に役立つヒントです。
 
@@ -222,6 +267,47 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 **メモ**:`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境でこれを行うことはお勧めできません。
+
+## <a name="http-status-code-503"></a>HTTP 状態コード 503
+
+Azure Kubernetes Service のデプロイでは、自動スケールがサポートされているため、レプリカを加えて、追加の負荷に対応することができます。 しかし、自動スケールは、**段階的な**負荷の変化に対処するように設計されています。 1 秒あたりに受信する要求の量が急増した場合、クライアントは HTTP 状態コード 503 を受信する可能性があります。
+
+状態コード 503 を防ぐには、次の 2 つのことが役立ちます。
+
+* 自動スケールによって新しいレプリカが作成される使用率レベルを変更します。
+    
+    既定では、自動スケールの目標使用率は 70% に設定されています。これは、1 秒あたりに受信する要求の量 (RPS) が最大 30% 増加した場合まで対処できることを意味します。 使用率の目標を調整するには、`autoscale_target_utilization` をより小さい値に設定します。
+
+    > [!IMPORTANT]
+    > この変更によって、レプリカの作成時間は*短縮*されません。 その代わり、より低い使用率しきい値で作成されます。 サービスの使用率が 70% になるまで待機するのでなく値を 30% に変更すると、使用率が 30% になった段階でレプリカが作成されます。
+    
+    現在の最大数のレプリカが Web サービスによって既に使用されていて、状態コード 503 が引き続き発生する場合は、`autoscale_max_replicas` の値を大きくして、レプリカの最大個数を増やします。
+
+* レプリカの最小個数を変更します。 レプリカの最小個数を増やすと、着信トラフィックの急増に対処するためのプールが大きくなります。
+
+    レプリカの最小個数を増やすには、`autoscale_min_replicas` をより大きな値に設定します。 必要なレプリカ個数は次のコードを使用して計算できるので、値をご利用のプロジェクトに固有の値に置換します。
+
+    ```python
+    from math import ceil
+    # target requests per second
+    targetRps = 20
+    # time to process the request (in seconds)
+    reqTime = 10
+    # Maximum requests per container
+    maxReqPerContainer = 1
+    # target_utilization. 70% in this example
+    targetUtilization = .7
+
+    concurrentRequests = targetRps * reqTime / targetUtilization
+
+    # Number of container replicas
+    replicas = ceil(concurrentRequests / maxReqPerContainer)
+    ```
+
+    > [!NOTE]
+    > 受信する要求の量が、新しい最小レプリカ数で対処できるレベルを超えて急増した場合、再び 503 が発生する可能性があります。 たとえば、ご利用のサービスへのトラフィックが増えた場合、レプリカの最小個数を増やすことが必要な場合があります。
+
+`autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) モジュール リファレンスを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順
