@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 7a01b4baa9dafba4f0193c7a73dc1ae44214f501
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: f27e7eba11dd98bc30f4f1b5d796488d3973f64a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311582"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405625"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 
@@ -98,10 +98,16 @@ Azure Data Lake Storage Gen2 コネクタは、次の認証の種類をサポー
     - アプリケーション キー
     - テナント ID
 
-2. Azure Storage でサービス プリンシパルに適切なアクセス許可を付与します。
+2. サービス プリンシパルに適切なアクセス許可を付与します。
 
-    - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
-    - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+    - **ソースとして**、Storage Explorer で、少なくとも**読み取り + 実行**アクセス許可を付与して、フォルダーおよびサブフォルダー内のファイルを一覧表示してコピーするか、**読み取り**アクセス許可を付与して単一のファイルをコピーします。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**、Storage Explorer で、少なくとも**書き込み + 実行**アクセス許可を付与して、フォルダー内に子項目を作成します。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+>[!NOTE]
+>ルートを起点としてフォルダーを一覧表示するには、サービス プリンシパルのアクセス許可を**ルート レベルで "実行" アクセス許可**または IAM 上でアクセス許可が付与されるように設定する必要があります。 これは、以下を使用する場合に該当します。
+>- **データ コピー ツール** (コピー パイプラインを作成する)。
+>- **Data Factory UI** (接続およびフォルダーのナビゲーションを作成中にテストする)。 
+>ルート レベルでのアクセス許可の付与に問題がある場合は、作成時にテスト接続と入力パスを手動で省略できます。 コピー アクティビティは、コピーされるファイルで、サービス プリンシパルに適切なアクセス許可が与えられている限り機能します。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -140,16 +146,22 @@ Azure Data Lake Storage Gen2 コネクタは、次の認証の種類をサポー
 
 ### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
-データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのマネージド ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
 
 Azure リソースのマネージド ID 認証を使用するには、次のようにします。
 
-1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
+1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
 
-2. Azure Storage でマネージド ID に適切なアクセス許可を付与します。 
+2. マネージド ID に適切なアクセス許可を付与します。 
 
-    - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
-    - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+    - **ソースとして**、Storage Explorer で、少なくとも**読み取り + 実行**アクセス許可を付与して、フォルダーおよびサブフォルダー内のファイルを一覧表示してコピーするか、**読み取り**アクセス許可を付与して単一のファイルをコピーします。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
+    - **シンクとして**、Storage Explorer で、少なくとも**書き込み + 実行**アクセス許可を付与して、フォルダー内に子項目を作成します。 または、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+>[!NOTE]
+>ルートを起点としてフォルダーを一覧表示するには、マネージド ID のアクセス許可を**ルート レベルで "実行" アクセス許可**または IAM 上でアクセス許可が付与されるように設定する必要があります。 これは、以下を使用する場合に該当します。
+>- **データ コピー ツール** (コピー パイプラインを作成する)。
+>- **Data Factory UI** (接続およびフォルダーのナビゲーションを作成中にテストする)。 
+>ルート レベルでのアクセス許可の付与に問題がある場合は、作成時にテスト接続と入力パスを手動で省略できます。 コピー アクティビティは、コピーされるファイルで、マネージド ID に適切なアクセス許可が与えられている限り機能します。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 
@@ -186,6 +198,8 @@ Azure リソースのマネージド ID 認証を使用するには、次のよ�
 | type | データセットの type プロパティは、**AzureBlobFSFile** に設定する必要があります。 |はい |
 | folderPath | Data Lake Storage Gen2 のフォルダーへのパス。 指定しないと、ルートが参照されます。 <br/><br/>ワイルドカード フィルターがサポートされています。使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br/><br/>例: ルートフォルダー/サブフォルダー。「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の例を参照してください。 |いいえ  |
 | fileName | 指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンでファイル名を自動的に生成します。たとえば、"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" です。クエリの代わりにテーブル名を使用して表形式のソースからコピーする場合は、名前のパターンは "*[table name].[format].[compression if configured]*" になります。たとえば、"MyTable.csv" です。 |いいえ  |
+| modifiedDatetimeStart | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
+| modifiedDatetimeEnd | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ  |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
@@ -205,7 +219,9 @@ Azure リソースのマネージド ID 認証を使用するには、次のよ�
         },
         "typeProperties": {
             "folderPath": "mycontainer/myfolder",
-            "fileName": "myfile.csv.gz",
+            "fileName": "*",
+            "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
+            "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
                 "type": "TextFormat",
                 "columnDelimiter": ",",

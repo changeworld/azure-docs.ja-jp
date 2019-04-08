@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 5902ba86b51ca1998364e393ac02bbb0d0a23a28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327563"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432636"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -65,8 +65,28 @@ Kubernetes ダッシュボードが表示されない場合は、`kube-proxy` �
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>kubectl logs を使用してログを取得できません。または、API サーバーに接続できません。 "Error from server: error dialing backend: dial tcp…" (サーバーからのエラー: バックエンドへのダイヤルでのエラー: tcp にダイヤル...) と表示されます。 どうすればよいですか。
 
-既定のネットワーク セキュリティ グループ (NSG) が変更されていないこと、および API サーバーへの接続用にポート 22 が開いていることを確認します。 `tunnelfront` ポッドが `kube-system` 名前空間で実行されているかどうか確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
+既定のネットワーク セキュリティ グループが変更されていないこと、および API サーバーへの接続用にポート 22 が開いていることを確認します。 `kubectl get pods --namespace kube-system` コマンドを使用して、`tunnelfront` ポッドが *kube-system* 名前空間で実行されているかどうかを確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、"メッセージ:プロパティ 'imageReference' は変更できませ" というエラーが発生します。  この問題を解決するにはどうすればよいですか。
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、"メッセージ:プロパティ 'imageReference' は変更できませ" というエラーが発生します。 この問題を解決するにはどうすればよいですか。
 
 AKS クラスター内のエージェント ノードのタグを変更したことが原因で、このエラーが発生している可能性があります。 MC_* リソース グループのリソースのタグやその他のプロパティを変更または削除すると、予期しない結果につながる可能性があります。 AKS クラスターの MC_* グループでリソースを変更すると、サービス レベル目標 (SLO) が中断されます。
+
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>クラスターがエラー状態であり、状態が修正されるまで、アップグレードもスケーリングも機能しないというエラーが表示されます。
+
+*このトラブルシューティングの支援は、 https://aka.ms/aks-cluster-failed に基づいています。*
+
+このエラーは、複数の理由でクラスターがエラー状態になったときに発生します。 以前に失敗した操作を再試行する前に、次の手順に従ってクラスターのエラー状態を解決してください。
+
+1. クラスターが `failed` 状態から回復するまで、`upgrade` 操作と `scale` 操作は成功しません。 一般的な根本問題と解決策は次のとおりです。
+    * **計算 (CRP) クォータが不足**している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-supportability/resource-manager-core-quotas-request.md)に従って計算クォータの引き上げを依頼します。
+    * 高度なネットワーク リソースと**不十分なサブネット (ネットワーク) リソース**を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/resource-manager-quota-errors.md#solution)に従ってリソース クォータの引き上げを依頼します。
+2. アップグレードの失敗の根本原因が解決されると、クラスターは成功状態になるはずです。 成功状態が確認されたら、元の操作を再試行します。
+
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>クラスターをアップグレードまたはスケーリングしようとしたときに、クラスターが現在アップグレード中であるか、アップグレードに失敗したというエラーが表示されます。
+
+*このトラブルシューティングの支援は、 https://aka.ms/aks-pending-upgrade に基づいています。*
+
+アクティブなアップグレード操作の実行中、またはアップグレードが試行されたが失敗した場合、クラスターの操作は制限されます。 問題を診断するには、`az aks show -g myResourceGroup -n myAKSCluster -o table` を実行してクラスターの詳細な状態を取得します。 結果に基づいて、次のことを行います。
+
+* クラスターのアップグレードを実行中の場合は、操作が終了するまで待ちます。 アップグレードに成功した場合は、以前に失敗した操作をもう一度試します。
+* クラスターのアップグレードに失敗した場合は、上記の手順に従います。

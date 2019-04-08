@@ -1,22 +1,21 @@
 ---
-title: Azure Dev Spaces と共に CI/CD を使用する | Microsoft Docs
+title: Azure Dev Spaces と共に CI/CD を使用する
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
-ms.topic: article
+ms.topic: conceptual
 manager: yuvalm
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 0abe2902248c8203046cfe891d136ca7d5d0a75b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665973"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768282"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -46,6 +45,17 @@ azds space select -n dev
 
 親 dev 空間を選択するように要求されたら、"_\<なし\>_" を選択します。
 
+自分の開発スペースが作成された後は、ホストのサフィックスを確認する必要があります。 Azure Dev Spaces イングレス コントローラーのホスト サフィックスを表示するには、`azds show-context` コマンドを使用します。
+
+```cmd
+$ azds show-context
+Name   ResourceGroup    DevSpace  HostSuffix
+-----  ---------------  --------  ----------------------
+MyAKS  MyResourceGroup  dev       fedcba098.eus.azds.io
+```
+
+上の例では、ホスト サフィックスは _fedcba098.eus.azds.io_ です。 この値は、後でリリース定義を作成するときに使用します。
+
 開発者が _dev_ から "_子空間_" を作成して大規模なアプリのコンテキスト内にある分離された変更をテストできるように、_dev_ 空間には常に最新状態のリポジトリが含まれます。 この概念については、Dev Spaces のチュートリアルで詳しく説明しています。
 
 ## <a name="creating-the-build-definition"></a>ビルド定義の作成
@@ -67,15 +77,15 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 このファイルからパイプラインを作成するには:
 1. DevOps プロジェクトのメイン ページ上で、[パイプライン] > [ビルド] の順に移動します。
 1. **新しい**ビルド パイプラインを作成するオプションを選択します。
-1. ソースとして **[GitHub]** を選択し、必要に応じてご自身の GitHub アカウントを使って承認して、dev 空間のサンプル アプリ リポジトリのフォーク済みバージョンから _azds_updates_ ブランチを選択します。
+1. ソースとして **[GitHub]** を選択し、必要に応じて自分の GitHub アカウントを使って承認して、dev 空間のサンプル アプリ リポジトリのフォーク済みバージョンから _azds_updates_ ブランチを選択します。
 1. テンプレートとして、**[コードとしての構成]** または **[YAML]** を選択します。
-1. この時点で、ビルド パイプラインの構成ページが表示されています。 前述したように、**[YAML ファイル パス]** に言語固有のパスを入力します。 たとえば、`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml` のように指定します。
-1. [変数] タブに移動します。
+1. この時点で、ビルド パイプラインの構成ページが表示されています。 前述したように、**[...]** ボタンを使用して **[YAML ファイル パス]** の言語固有パスに移動します。 たとえば、「 `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 」のように入力します。
+1. **[変数]** タブに移動します。
 1. _dockerId_ を変数として手動で追加します。[Azure Container Registry 管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)のユーザー名です  (記事の「前提条件」に記載されています)。
 1. _dockerPassword_ を変数として手動で追加します。[Azure Container Registry 管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)のパスワードです。 セキュリティのために、_dockerPassword_ は必ずシークレットとして指定 (鍵のアイコンを選択) します。
 1. **[保存してキューに登録]** を選択します。
 
-これで、GitHub フォークの _azds_updates_ ブランチにプッシュされた任意の更新プログラムに対して *mywebapi* および *webfrontend* を自動的にビルドする CI ソリューションが作成されました。 Azure portal に移動し、お使いの Azure コンテナー レジストリを選択し、"_[リポジトリ]_" タブを参照して、Docker イメージがプッシュされたことを確認できます。
+これで、GitHub フォークの _azds_updates_ ブランチにプッシュされた任意の更新プログラムに対して *mywebapi* および *webfrontend* を自動的にビルドする CI ソリューションが作成されました。 Azure portal に移動し、自分の Azure コンテナー レジストリを選択して、**[リポジトリ]** タブを参照することで、Docker イメージがプッシュされたことを確認できます。イメージがビルドされて、コンテナー レジストリに表示されるまで、数分かかる場合があります。
 
 ![Azure Container Registry リポジトリ](../media/common/ci-cd-images-verify.png)
 
@@ -84,30 +94,43 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 1. DevOps プロジェクトのメイン ページ上で、[パイプライン] > [リリース] の順に移動します。
 1. まだリリース定義を含まないまったく新しい DevOps プロジェクトに取り組んでいる場合は、先へ進む前に、まず空のリリース定義を作成する必要があります。 既存のリリース定義ができるまで、[インポート] オプションは UI に表示されません。
 1. 左側にある **[+ 新規]** ボタンをクリックして、**[パイプラインのインポート]** をクリックします。
-1. `samples/release.json` の .json ファイルを選択します。
-1. [OK] をクリックします。 [パイプライン] ウィンドウがリリース定義の編集ページと共に読み込まれたことが確認できます。 また、引き続き構成する必要があるクラスター固有の詳細を示した赤い警告アイコンがいくつかあることが確認できます。
+1. **[参照]** をクリックし、プロジェクトから `samples/release.json` を選択します。
+1. Click **OK**. [パイプライン] ウィンドウがリリース定義の編集ページと共に読み込まれたことが確認できます。 また、引き続き構成する必要があるクラスター固有の詳細を示した赤い警告アイコンがいくつかあることが確認できます。
 1. [パイプライン] ウィンドウの左側で、**[成果物の追加]** バブルをクリックします。
-1. **[ソース]** ドロップダウンで、このドキュメントで少し前に作成したビルド パイプラインを選択します。
-1. **[既定のバージョン]** には、**[Latest from the build pipeline default branch]\(ビルド パイプラインの既定のブランチからの最新版\)** を選択することをお勧めします。 タグを指定する必要はありません。
-1. **[ソース エイリアス]** を `drop` に設定します。 事前定義済みのリリース タスクでは **[ソース エイリアス]** を使用するため、必ず設定しておく必要があります。
+1. **[ソース]** ドロップダウンで、前に作成したビルド パイプラインを選択します。
+1. **[既定のバージョン]** では、**[ビルド パイプライン既定のブランチ (タグ付き) からの最新バージョン]** を選択します。
+1. **[タグ]** は空のままにします。
+1. **[ソース エイリアス]** を `drop` に設定します。 **[ソース エイリアス]** の値は事前定義済みのリリース タスクによって使用されるため、設定しておく必要があります。
 1. **[追加]** をクリックします。
 1. 次に、新しく作成された `drop` アーティファクト ソース上にある、以下に示すような稲妻アイコンをクリックします。
 
     ![リリース アーティファクトの継続的配置の設定](../media/common/release-artifact-cd-setup.png)
 1. **[継続的配置トリガー]** を有効にします。
-1. 次に、[タスク] ウィンドウに移動します。 _dev_ ステージが選択され、以下のような 3 つの赤いドロップダウン コントロールが表示されています。
-
-    ![リリース定義の設定](../media/common/release-setup-tasks.png)
-1. Azure Dev Spaces と共に使用している Azure サブスクリプション、リソース グループ、およびクラスターを指定します。
-1. この時点で、もう 1 つのセクションとして **[エージェント ジョブ]** セクションだけが、赤く示されています。 そこへ移動して、このステージのエージェント プールとして **[Hosted Ubuntu 1604]\(ホストされている Ubuntu 1604\)** を指定します。
-1. 最上部の [タスク] セレクターにマウスを合わせて、_[prod]_ を選択します。
-1. Azure Dev Spaces と共に使用している Azure サブスクリプション、リソース グループ、およびクラスターを指定します。
-1. **[エージェント ジョブ]** の下で、エージェント プールとして **[Hosted Ubuntu 1604]\(ホストされている Ubuntu 1604\)** を構成します。
+1. **[パイプライン]** の隣の **[タスク]** タブをポイントし、_dev_ をクリックして、_dev_ ステージ タスクを編集します。
+1. **[接続の種類]** で **[Azure Resource Manager]** が選択されていることを確認します。 3 つのドロップダウン コントロールが赤で強調表示されていることがわかります。![リリース定義の設定](../media/common/release-setup-tasks.png)
+1. Azure Dev Spaces で使用している Azure サブスクリプションを選択します。 **[承認]** をクリックすることが必要な場合もあります。
+1. Azure Dev Spaces で使用するリソース グループとクラスターを選択します。
+1. **[エージェント ジョブ]** をクリックします。
+1. **[エージェント プール]** で **[Hosted Ubuntu 1604]\(ホストされている Ubuntu 1604\)** を選択します。
+1. 上部にある **[タスク]** セレクターをポイントし、_prod_ をクリックして _prod_ ステージ タスクを編集します。
+1. **[接続の種類]** で **[Azure Resource Manager]** が選択されていることを確認します。 Azure Dev Spaces で使用している Azure サブスクリプション、リソース グループ、およびクラスターを選択します。
+1. **[エージェント ジョブ]** をクリックします。
+1. **[エージェント プール]** で **[Hosted Ubuntu 1604]\(ホストされている Ubuntu 1604\)** を選択します。
+1. **[変数]** タブをクリックして、リリースの変数を更新します。
+1. **DevSpacesHostSuffix** の値を、**UPDATE_ME** から自分のホスト サフィックスに更新します。 ホスト サフィックスは、前に `azds show-context` コマンドを実行したときに表示されたものです。
 1. 右上にある **[保存]** をクリックし、**[OK]** をクリックします。
 1. **[+ リリース]** ([保存] ボタンの横にある)、**[リリースの作成]** の順にクリックします。
-1. [アーティファクト] セクション内でビルド パイプラインからの最新のビルドが選択されていることを確認して、**[作成]** をクリックします。
+1. **[アーティファクト]** で、ビルド パイプラインから最新のビルドが選択されていることを確認します。
+1. **Create** をクリックしてください。
 
 これで、自動化されたリリース プロセスが開始され、_dev_ の最上レベルの空間にある Kubernetes クラスターに、*mywebapi* および *webfrontend* のチャートがデプロイされます。 Azure DevOps の Web ポータル上で、リリースの進行状況を監視できます。
+
+1. **[パイプライン]** の **[リリース]** セクションに移動します。
+1. サンプル アプリケーションのリリース パイプラインをクリックします。
+1. 最新のリリースの名前をクリックします。
+1. **[ステージ]** の **dev** ボックスをポイントし、**[ログ]** をクリックします。
+
+すべてのタスクが完了すると、リリースが行われます。
 
 > [!TIP]
 > "*UPGRADE FAILED: timed out waiting for the condition*" のようなエラー メッセージでリリースが失敗した場合、[Kubernetes ダッシュボードを使用して](../../aks/kubernetes-dashboard.md)、ご自身のクラスター内のポッドを調べてみてください。 ポットがエラーになっており、エラー メッセージが "*Failed to pull image "azdsexample.azurecr.io/mywebapi:122": rpc error: code = Unknown desc = Error response from daemon:Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: unauthorized: authentication required*" のように始まっている場合、クラスターがお使いの Azure コンテナー レジストリからプルするための承認を受けていないことが原因になっている可能性があります。 「[お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../container-registry/container-registry-auth-aks.md)」の前提条件を完了していることを確認してください。
@@ -115,31 +138,37 @@ _azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要
 これで、Dev Spaces サンプル アプリの GitHub フォークに対応する CI/CD パイプラインを完全に自動化できました。 コードをコミットしてプッシュするたびに、ビルド パイプラインでは *mywebapi* および *webfrontend* イメージをビルドして、お使いのカスタム ACR インスタンスにプッシュします。 その後、リリース パイプラインでは、アプリごとの Helm チャートを Dev Spaces が有効になっているクラスター上の _dev_ 空間にデプロイします。
 
 ## <a name="accessing-your-dev-services"></a>_dev_ サービスへのアクセス
-デプロイ後は、`http://dev.webfrontend.<hash>.<region>.aksapp.io` のようなパブリック URL を使って、*webfrontend* の _dev_ バージョンにアクセスできます。
+デプロイ後は、`http://dev.webfrontend.fedcba098.eus.azds.io` のようなパブリック URL を使って、*webfrontend* の _dev_ バージョンにアクセスできます。 `azds list-uri` コマンドを実行して、この URL を調べることができます。 
 
-*kubectl* CLI を使用して、この URL を見つけることができます。
 ```cmd
-kubectl get ingress -n dev webfrontend -o=jsonpath="{.spec.rules[0].host}"
+$ azds list-uris
+
+Uri                                           Status
+--------------------------------------------  ---------
+http://dev.webfrontend.fedcba098.eus.azds.io  Available
 ```
 
 ## <a name="deploying-to-production"></a>運用環境へのデプロイ
-リリース定義上で **[編集]** をクリックすると、_prod_ ステージが定義されていることが確認できます。
-
-![運用環境のステージ](../media/common/prod-env.png)
 
 このチュートリアルで作成した CI/CD システムを使用して、特定のリリースを _prod_ に手動で昇格するには:
-1. DevOps ポータル上で以前に成功したリリースを開きます。
-1. 'prod' ステージにマウスを合わせます。
-1. [デプロイ] を選択します。
+1. **[パイプライン]** の **[リリース]** セクションに移動します。
+1. サンプル アプリケーションのリリース パイプラインをクリックします。
+1. 最新のリリースの名前をクリックします。
+1. **[ステージ]** の **prod** ボックスをポイントし、**[デプロイ]** をクリックします。
+    ![運用環境への昇格](../media/common/prod-promote.png)
+1. **[ステージ]** の **prod** ボックスを再びポイントし、**[ログ]** をクリックします。
 
-![運用環境への昇格](../media/common/prod-promote.png)
+すべてのタスクが完了すると、リリースが行われます。
 
-CI/CD パイプラインのサンプルでは、デプロイされている環境に応じて *webfrontend* の DNS プレフィックスを変更するために、変数を利用しています。 そのため、'prod' のサービスにアクセスするには、`http://prod.webfrontend.<hash>.<region>.aksapp.io` のような URL を使用できます。
+CI/CD パイプラインの _Prod_ ステージでは、Dev Spaces イングレス コントローラーではなくロード バランサーを使用して、_prod_ サービスへのアクセスが提供されます。 _prod_ ステージにデプロイされるサービスには、DNS 名の代わりに IP アドレスでアクセスできます。 運用環境では、独自のイングレス コントローラーを作成し、独自の DNS 構成に基づいてサービスをホストすることができます。
 
-デプロイ後は、次の *kubectl* CLI を使用して、この URL を見つけられます。<!-- TODO update below to use list-uris when the product has been updated to list non-azds ingresses #769297 -->
+webfrontend サービスの IP アドレスを確認するには、**[Print webfrontend public IP]\(webfrontend のパブリック IP を印刷する\)** ステップをクリックして、ログ出力を展開します。 ログ出力に表示される IP アドレスを使用して、**webfrontend** アプリケーションにアクセスします。
 
 ```cmd
-kubectl get ingress -n prod webfrontend -o=jsonpath="{.spec.rules[0].host}"
+...
+2019-02-25T22:53:02.3237187Z webfrontend can be accessed at http://52.170.231.44
+2019-02-25T22:53:02.3320366Z ##[section]Finishing: Print webfrontend public IP
+...
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>運用環境における Dev Spaces のインストルメンテーション

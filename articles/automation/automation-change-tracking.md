@@ -6,22 +6,22 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429266"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443047"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
 この記事では、Change Tracking ソリューションを使用して、ユーザーの環境内の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows および Linux ファイル、Windows レジストリ キー、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
-監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
+監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Azure Monitor サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 
@@ -74,7 +74,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[変更の追跡]** ページで、**[Linux ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -97,7 +97,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -129,7 +129,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows レジストリ]** を選択し、**[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するレジストリ キーのフレンドリ名。        |
@@ -155,6 +155,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 現在、Change Tracking ソリューションでは、以下の問題が発生しています。
 
 * Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
+* Linux デーモンは、変更がなかった場合でも、変更された状態を表示する可能性があります。 これは、`SvcRunLevels` フィールドのキャプチャ方法が原因です。
 
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
 
@@ -261,13 +262,13 @@ Change Tracking には次のアドレスが明示的に必要です。 このア
 
 ## <a name="search-logs"></a>検索ログ
 
-ポータルで提供されている詳細のほか、ログに対して検索を実行できます。 **[Change Tracking]\(変更の追跡\)** ページを開いた状態で、**[Log Analytics]** をクリックします。これにより、**[ログ検索]** ページが開きます。
+ポータルで提供されている詳細のほか、ログに対して検索を実行できます。 **[Change Tracking]\(変更の追跡\)** ページを開いた状態で、**[Log Analytics]** をクリックします。これにより、**[ログ]** ページが開きます。
 
 ### <a name="sample-queries"></a>サンプル クエリ
 
 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
 
-|クエリ  |説明  |
+|クエリ  |[説明]  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|
@@ -314,5 +315,5 @@ Hosts ファイルへの変更に関するアラートは、Change Tracking や 
 > [!div class="nextstepaction"]
 > [環境の変更に関する問題を解決する](automation-tutorial-troubleshoot-changes.md)
 
-* [Log Analytics のログ検索機能](../log-analytics/log-analytics-log-searches.md) を使用して、詳細な変更追跡データを確認してください。
+* [Azure Monitor ログのログ検索機能](../log-analytics/log-analytics-log-searches.md)を使用して、詳細な変更追跡データを確認してください。
 

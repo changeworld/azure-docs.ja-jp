@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 6c23e29238d393dc8d27128cfd6d785c0ac9f4c3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2f46d1ddc8eeefd7d05c51c1d0640f69774746c4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964596"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554159"
 ---
 | リソース | ターゲット |
 |----------|---------------|

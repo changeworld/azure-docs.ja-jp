@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 99b981e6b5c9bc56c10b0491474c0c8773291b7e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cf3dc71e96dac96a6406c97a433398b31a370869
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309202"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571169"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>整合性、可用性、パフォーマンスのトレードオフ 
 
@@ -30,11 +30,11 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 
 ## <a name="consistency-levels-and-latency"></a>整合性レベルと待機時間
 
-- すべての整合性レベルの読み取り待機時間は 99 パーセンタイルで 10 ミリ秒未満となるように常に保証されています。 この読み取り待機時間は、SLA によってサポートされます。 平均読み取り待機時間は、(50 パーセンタイルで) 通常 2 ミリ秒以下です。 複数のリージョンにまたがり、厳密な整合性で構成されている Azure Cosmos アカウントは、この保証の例外です。
+すべての整合性レベルの読み取り待機時間は 99 パーセンタイルで 10 ミリ秒未満となるように常に保証されています。 この読み取り待機時間は、SLA によってサポートされます。 平均読み取り待機時間は、(50 パーセンタイルで) 通常 2 ミリ秒以下です。 複数のリージョンにまたがり、厳密な整合性で構成されている Azure Cosmos アカウントは、この保証の例外です。
 
-- その他の整合性レベルの書き込み待機時間は 99 パーセンタイルで 10 ミリ秒未満となるように常に保証されています。 この書き込み待機時間は、SLA によってサポートされます。 平均書き込み待機時間は、(50 パーセンタイルで) 通常 5 ミリ秒以下です。
+すべての整合性レベルの書き込み待機時間は 99 パーセンタイルで 10 ミリ秒未満となるように常に保証されています。 この書き込み待機時間は、SLA によってサポートされます。 平均書き込み待機時間は、(50 パーセンタイルで) 通常 5 ミリ秒以下です。
 
-Azure Cosmos アカウントによっては、複数のリージョンが厳密な整合性で構成されている可能性があります。 このような場合、書き込み待機時間は、99 パーセンタイルでラウンド トリップ時間 (RTT) の 2 倍 + 10 ミリ秒未満になるように保証されています。 最も遠く離れた任意の 2 つのリージョン間の RTT が Azure Cosmos アカウントに関連付けられます。 これは、Azure Cosmos アカウントに関連付けられている最も遠く離れた任意の 2 つのリージョン間の RTT と同じです。 このオプションは現在プレビューの段階です。
+複数のリージョンによる厳密整合性で構成された Azure Cosmos アカウントの場合、書き込み待機時間は、99 パーセンタイルで 2 つの最も遠いリージョンの間のラウンドトリップ時間 (RTT) の 2 倍 + 10 ミリ秒未満となるように保証されています。 このオプションは現在プレビューの段階です。
 
 正確な RTT 待機時間は、光の速さで通信する距離と Azure ネットワーク トポロジによって決まります。 Azure ネットワークでは、任意の 2 つの Azure リージョン間の RTT に対して待機時間の SLA は提供されません。 Azure Cosmos アカウントの場合、レプリケーションの待機時間は Azure portal に表示されます。 Azure portal を使用すると、自分のアカウントに関連付けられている多様なリージョン間のレプリケーションの待機時間を監視できます。
 
@@ -66,6 +66,6 @@ T = 最後の更新以降の時間 "T" 間隔。
 
 分散システムでのグローバル分散および一般的な整合性のトレードオフについて学習します。 次の記事を参照してください。
 
-- [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [高可用性](high-availability.md)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
