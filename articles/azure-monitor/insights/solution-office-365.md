@@ -579,7 +579,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | (Operation プロパティによって識別される) アクションの実行対象だったユーザー。 |
-| アクター | アクションを実行したユーザーまたはサービス プリンシパル。 |
+| Actor | アクションを実行したユーザーまたはサービス プリンシパル。 |
 | ActorContextId | アクターが所属する組織の GUID。 |
 | ActorIpAddress | アクターの IP アドレス。IPv4 または IPv6 アドレスの形式。 |
 | InterSystemsId | Office 365 サービス内のコンポーネント間でアクションを追跡する GUID。 |
@@ -672,8 +672,8 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | DestMailboxOwnerSid | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの SID を指定します。 |
 | DestMailboxOwnerUPN | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの所有者の UPN を指定します。 |
 | DestFolder | 移動などの操作の宛先フォルダー。 |
-| フォルダー | 項目のグループが位置しているフォルダー。 |
-| フォルダー |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
+| Folder | 項目のグループが位置しているフォルダー。 |
+| Folders |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
 
 
 ### <a name="sharepoint-base"></a>SharePoint ベース
