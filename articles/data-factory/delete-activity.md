@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 407bb2e39e92390576da9c23868f5af9c444bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/25/2019
+ms.openlocfilehash: 64829cad24d7f436b8539659dc1f0c6ef6ed4da4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341539"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404775"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -37,21 +37,20 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 
 -   同時に書き込まれているファイルを削除していないことを確認する。 
 
--   オンプレミス システムからファイルまたはフォルダーを削除する場合は、3.13 以上のバージョンでセルフホステッド統合ランタイムを使用していることを確認する。
+-   オンプレミス システムからファイルまたはフォルダーを削除する場合は、3.14 以上のバージョンでセルフホステッド統合ランタイムを使用していることを確認する。
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
-### <a name="azure-data-stores"></a>Azure のデータ ストア
-
 -   [Azure BLOB Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2 (プレビュー)](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>ファイル システムのデータ ストア
 
 -   [ファイル システム](connector-file-system.md)
 -   [FTP](connector-ftp.md)
--   [HDFS](connector-hdfs.md)
+-   [SFTP](connector-sftp.md)
+-   [Amazon S3](connector-amazon-simple-storage-service.md)
 
 ## <a name="syntax"></a>構文
 
@@ -61,7 +60,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
     "type": "Delete",
     "typeProperties": {
         "dataset": {
-            "referenceName": "<dataset name to be deleted>",
+            "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
         "recursive": true/false,
@@ -87,7 +86,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 | maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  いいえ。 既定では、 `1`です。 |
 | enablelogging | 削除されたフォルダーまたはファイルの名前を記録する必要があるかどうかを示します。 true の場合は、さらに、ログ ファイルを保存するストレージ アカウントを指定する必要があります。それにより、ログ ファイルを読み取って Delete アクティビティの動作を追跡することができます。 | いいえ  |
 | logStorageSettings | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルの保存場所を指定できるストレージ プロパティのグループ。 | いいえ  |
-| linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) のリンクされたサービス。 | いいえ  |
+| linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 | いいえ  |
 | path | enablelogging = true の場合にのみ適用されます。<br/><br/>ストレージ アカウント内のログ ファイルを保存するパス。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ  |
 
 ## <a name="monitoring"></a>監視
@@ -100,13 +99,15 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ```json
 { 
-  "isWildcardUsed": false, 
-  "wildcard": null,
-  "type": "AzureBlobStorage",
+  "datasetName": "AmazonS3",
+  "type": "AmazonS3Object",
+  "prefix": "test",
+  "bucketName": "adf",
   "recursive": true,
-  "maxConcurrentConnections": 10,
-  "filesDeleted": 1,
-  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07/5c698705-a6e2-40bf-911e-e0a927de3f07.json",
+  "isWildcardUsed": false,
+  "maxConcurrentConnections": 2,  
+  "filesDeleted": 4,
+  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07",
   "effectiveIntegrationRuntime": "MyAzureIR (West Central US)",
   "executionDuration": 650
 }
@@ -114,22 +115,12 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete アクティビティのログ ファイル例
 
-```json
-{
-  "customerInput": {
-    "type": "AzureBlob",
-    "fileName": "",
-    "folderPath": "folder/filename_to_be_deleted",
-    "recursive": false,
-    "enableFileFilter": false
-  },
-  "deletedFileList": [
-    "folder/filename_to_be_deleted"
-  ],
-  "deletedFolderList": null,
-  "error":"the reason why files are failed to be deleted"
-}
-```
+| Name | Category | Status | Error |
+|:--- |:--- |:--- |:--- |
+| test1/yyy.json | ファイル | Deleted |  |
+| test2/hello789.txt | ファイル | Deleted |  |
+| test2/test3/hello000.txt | ファイル | Deleted |  |
+| test2/test3/zzz.json | ファイル | Deleted |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Delete アクティビティの使用例
 
@@ -322,7 +313,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         },
         "type": "AzureBlob",
         "typeProperties": {
-            "fileName": "",
+            "fileName": "*",
             "folderPath": "mycontainer",
             "modifiedDatetimeEnd": "2018-01-01T00:00:00.000Z"
         }
@@ -332,7 +323,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Copy アクティビティと Delete アクティビティを連鎖させてファイルを移動する
 
-パイプラインで Copy アクティビティを使用してファイルをコピーし、次に Delete アクティビティを使用してファイルを削除することにより、ファイルを移動することができます。  複数のファイルを移動する場合は、次の例に示すように、GetMetadata アクティビティ、Filter アクティビティ、Foreach アクティビティ、Copy アクティビティ、および Delete アクティビティを使用できます。
+パイプラインでコピー アクティビティを使用してファイルをコピーし、次に削除アクティビティを使用してファイルを削除することにより、ファイルを移動することができます。  複数のファイルを移動する場合は、次の例に示すように、GetMetadata アクティビティ、Filter アクティビティ、Foreach アクティビティ、Copy アクティビティ、および Delete アクティビティを使用できます。
 
 > [!NOTE]
 > フォルダー パスのみを含むデータセットを定義し、次に Copy アクティビティと Delete アクティビティを使用して、フォルダーを表す同じデータセットを参照することによりフォルダー全体を移動する場合は、十分注意する必要があります。 その理由は、コピー操作と削除操作の間にそのフォルダーに新しいファイルが到着しないようにする必要があるからです。  Copy アクティビティがコピー ジョブを完了したが、Delete アクティビティがまだ開始されていないときにフォルダーに新しいファイルが到着すると、Delete アクティビティがフォルダー全体を削除することにより、まだ宛先にコピーされていない新しく到着したファイルを削除する可能性があります。 
@@ -572,12 +563,14 @@ Copy アクティビティによって使用されるデータ宛先のデータ
     }
 }
 ```
+## <a name="known-limitation"></a>既知の制限事項
+
+-   削除アクティビティでは、ワイルドカードで記述されるフォルダーの一覧は削除されません。
+
+-   ファイル属性のフィルターを使用する場合: modifiedDatetimeStart と modifiedDatetimeEnd により削除するファイルを選択します。データセットで必ず "fileName" に設定してください。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Data Factory でのファイルのコピー方法の詳細について説明します。
-
--   [Azure Data Factory の Copy アクティビティ](copy-activity-overview.md)
+Azure Data Factory でのファイルの移動方法の詳細について説明します。
 
 -   [Azure Data Factory のデータのコピー ツール](copy-data-tool.md)
-- 

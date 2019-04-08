@@ -1,6 +1,6 @@
 ---
 title: Azure Maps で Android マップ コントロールを使用する方法 | Microsoft Docs
-description: Azure Maps で Android マップ コントロールを使用します。
+description: Azure Maps の Android マップ コントロール。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
@@ -9,53 +9,53 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341081"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010669"
 ---
-# <a name="how-to-use-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用する方法
+# <a name="how-to-use-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用する方法
 
-Azure Maps Android SDK は、Android 用のベクター マップ ライブラリです。 この記事では、Azure Maps Android SDK のインストール、マップの読み込み、ピンの配置のプロセスについて説明します。
+Azure Maps Android SDK は、Android 用のベクター マップ ライブラリです。 この記事では、Azure Maps Android SDK のインストール、マップの読み込み、マップでのピンの配置のプロセスについて説明します。
 
-## <a name="prerequisites-to-get-started"></a>作業開始の前提条件
+## <a name="prerequisites"></a>前提条件
 
-### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
+### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する
 
-このガイドの手順を実行する前に、[アカウントとキーの管理](how-to-manage-account-keys.md)に関するページを参照して、S1 価格レベルのアカウント サブスクリプションを作成、管理する必要があります。
+この記事の手順を完了するには、まず、S1 価格レベルで [Azure Maps アカウントを作成する](how-to-manage-account-keys.md)必要があります。
 
 ### <a name="download-android-studio"></a>Android Studio をダウンロードする
 
-[Android Studio](https://developer.android.com/studio/) は、Google から無料でダウンロードできます。 Azure Maps Android SDK をインストールするには、まず Android Studio をダウンロードし、空のアクティビティを含むプロジェクトを作成する必要があります。
+Azure Maps Android SDK をインストールするには、Android Studio をダウンロードし、空のアクティビティを含むプロジェクトを作成する必要があります。 Google から無料で [Android Studio をダウンロードする](https://developer.android.com/studio/)ことができます。 
 
 ## <a name="create-a-project-in-android-studio"></a>Android Studio でプロジェクトを作成する
 
-空のアクティビティを含む新しいプロジェクトを作成する必要があります。 以下の手順に従って新しい Android Studio プロジェクトを作成してください。
+まず、空のアクティビティを含む新しいプロジェクトを作成する必要があります。 Android Studio プロジェクトを作成するには、次の手順を完了します。
 
-1. *[Choose your project]\(プロジェクトの選択\)* で、アプリケーションが実行されるフォーム ファクターとして [Phone and Tablet]\(電話とタブレット\) をオンにします。
-2. フォーム ファクターの *[Empty Activity]\(空のアクティビティ\)* をクリックし、**[Next]\(次へ\)** をクリックします。
-3. *[Configure your project]\(プロジェクトの構成\)* で、最小限の SDK として `API 21: Android 5.0.0 (Lollipop)` を選択します。 これは Azure Maps Android SDK でサポートされる最も低いバージョンです。
-4. 既定値の `Activity Name` と `Layout Name` のままにして、**[Finish]\(完了\)** をクリックします。
+1. **[Choose your project]\(プロジェクトの選択\)** で、**[Phone and Tablet]\(電話およびタブレット\)** を選択します。 このフォーム ファクターでアプリケーションが実行されます。
+2. **[Phone and Tablet]\(電話およびタブレット\)** タブで、**[Empty Activity]\(空のアクティビティ\)**、**[次へ]** の順に選択します。
+3. **[Configure your project]\(プロジェクトの構成\)** で、最小限の SDK として `API 21: Android 5.0.0 (Lollipop)` を選択します。 これは Azure Maps Android SDK でサポートされる最も古いバージョンです。
+4. 既定値の `Activity Name` と `Layout Name` を受け入れ、**[完了]** を選択します。
 
 Android Studio のインストールと新しいプロジェクトの作成の詳細については、[Android Studio のドキュメント](https://developer.android.com/studio/intro/)を参照してください。
 
-![新しいプロジェクトを作成する](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![プロジェクトの作成](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>仮想デバイスを設定する
 
-Android Studio を使用すると、コンピューター上で仮想 Android デバイスを設定できます。 これは開発中にアプリケーションをテストするために役立ちます。 仮想デバイスを設定するには、プロジェクト画面の右上にある Android Virtual Device (AVD) Manager アイコンをクリックします。 次に **[Create Virtual Device]\(仮想デバイスの作成\)** ボタンをクリックします。 また、ツールバーの **[Tools]\(ツール\) > [Android] > [AVD Manager]** からマネージャーにアクセスすることもできます。 **[Phones]\(電話\)** カテゴリから **[Nexus 5X]** を選択し、**[Next]\(次へ\)** をクリックします。
+Android Studio を使用すると、コンピューター上で仮想 Android デバイスを設定できます。 このようにすると、開発中のアプリケーションのテストに役立つ場合があります。 仮想デバイスを設定するには、プロジェクト画面の右上隅にある Android 仮想デバイス (AVD) アイコンを選び、**[仮想デバイスの作成]** を選択します。 ツールバーで **[ツール]** > **[Android]** > **[AVD マネージャー]** の順に選択して、AVD マネージャーに移動することもできます。 **[Phones]\(電話\)** カテゴリで **[Nexus 5X]**、**[次へ]** の順に選択します。
 
 AVD の設定の詳細については、[Android Studio のドキュメント](https://developer.android.com/studio/run/managing-avds)を参照してください。
 
 ![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
 
-## <a name="install-azure-maps-android-sdk"></a>Azure Maps Android SDK をインストールする
+## <a name="install-the-azure-maps-android-sdk"></a>Azure Maps Android SDK をインストールする
 
-アプリケーションのビルドに進む前に、次の手順に従って Azure Maps Android SDK をインストールします。 
+アプリケーションのビルドの次の手順は、Azure Maps Android SDK をインストールすることです。 SDK をインストールするには、以下の手順を完了します。
 
-1. **build.gradle** ファイルのリポジトリ ブロックである **all projects** に以下を追加します。
+1. **build.gradle** ファイルの**リポジトリ** ブロックである **all projects** に以下のコードを追加します。
 
     ```
     maven {
@@ -63,9 +63,9 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     }
     ```
 
-2. **app/build.gradle** を更新し、以下を追加します。
+2. **app/build.gradle** を更新し、以下のコードを追加します。
 
-    1. Android ブロックに以下を追加します。
+    1. Android ブロックに以下のコードを追加します。
 
         ```
         compileOptions {
@@ -73,13 +73,13 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. 依存関係ブロックを更新し、以下を追加します。
+    2. 依存関係ブロックを更新し、以下のコードを追加します。
 
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. **AndroidManifest.xml** に以下を追加してアクセス許可を設定します。
+3. **AndroidManifest.xml** ファイルに以下の XML を追加して、アクセス許可を設定します。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     </manifest>
     ```
 
-4. 次のような XML になるように **res > layout > activity_main.xml** を編集します。
+4. 次のような XML になるように、**res** > **layout** > **activity_main.xml** を編集します。
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -113,7 +113,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     </FrameLayout>
     ```
 
-5. **MainActivity.java** を編集して、マップ ビュー アクティビティ クラスを作成します。 編集後のクラスは次のようになります。
+5. **MainActivity.java** を編集して、マップ ビュー アクティビティ クラスを作成します。 編集後は、以下のクラスのようになります。
 
     ```java
     package com.example.myapplication;
@@ -187,21 +187,21 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
 ## <a name="import-classes"></a>クラスをインポートする
 
-前述の手順を完了すると、コード内の一部のテキストに対して Android Studio から警告を受け取る可能性が高くなります。 これらの警告を解決するには、`MainActivity.java` で参照されているクラスをインポートします。
+上記の手順を完了した後、一部のコードについて、Android Studio に警告が表示される場合があります。 これらの警告を解決するには、`MainActivity.java` で参照されているクラスをインポートします。
 
-`Alt`+`Enter` (Mac では `Option`+`Return`) を押すと、このようなクラスを自動的にインポートできます。 
+Alt + Enter (Mac の場合は Option + Return) を選択して、これらのクラスを自動的にインポートできます。
 
-**[Run 'App']\('アプリ' の実行\)** ボタン (Mac では `Control`+`R`) をクリックしてアプリケーションをビルドします。
+以下の図に示すように、実行ボタンを選択して (Mac の場合は Control + R キーを押す)、アプリケーションをビルドします。
 
 ![[実行] をクリックします。](./media/how-to-use-android-map-control-library/run-app.png)
 
-Android Studio でアプリケーションをビルドするには、数秒かかります。 ビルドが完了したら、エミュレートされた Android デバイスでアプリケーションをテストできます。 次のようなマップが表示されます。
+Android Studio でアプリケーションをビルドするには、数秒かかります。 ビルドが完了した後、エミュレートされた Android デバイスでアプリケーションをテストできます。 次のようなマップが表示されます。
 
 ![Android のマップ](./media/how-to-use-android-map-control-library/android-map.png)
 
 ## <a name="add-a-marker-to-the-map"></a>マップにマーカーを追加する
 
-マップにマーカーを追加するには、`MainActivity.java` に `mapView.getMapAsync()` 関数を追加します。 最終的な `MainActivity.java` は次のようになります。
+マップにマーカーを追加するには、`MainActivity.java` に `mapView.getMapAsync()` 関数を追加します。 最終的な `MainActivity.java` コードは、次のようになります。
 
 ```java
 package com.example.myapplication;
@@ -288,6 +288,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-アプリケーションを再実行すると、マップ上に次のようなマーカーが表示されます。
+アプリケーションをもう一度実行します。 次のように、マップにマーカーが表示されます。
 
 ![Android のマップ ピン](./media/how-to-use-android-map-control-library/android-map-pin.png)

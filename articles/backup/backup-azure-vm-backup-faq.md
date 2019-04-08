@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 10b49c5ebcd73010a52da1fada32ba55198b287a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310276"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961535"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>よく寄せられる質問 - Azure Backup
 
@@ -21,10 +21,8 @@ ms.locfileid: "56310276"
 
 ## <a name="general-questions"></a>一般的な質問
 
-
 ### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Azure Backup ではどのような Azure VM をバックアップできますか。
 サポートされているオペレーティング システムと制限を[ご確認ください](backup-azure-arm-vms-prepare.md#before-you-start)。
-
 
 
 ## <a name="backup"></a>バックアップ
@@ -41,17 +39,16 @@ Azure Backup に Key Vault へのアクセス許可を付与する必要があ�
 ### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>バックアップ構成ウィザードに VM が表示されていません。なぜでしょうか。
 ウィザードにはコンテナーと同じリージョンで、まだバックアップされていない VM のみが表示されます。
 
-
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>VM がシャットダウンされています。 オンデマンドまたはスケジュールされたバックアップは機能しますか。
 はい。 マシンがシャットダウンされていても、バックアップは動作します。 復旧ポイントはクラッシュ整合としてマークされます。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>進行中のバックアップ ジョブを取り消すことはできますか。
 はい。 **スナップショット作成**状態のバックアップ ジョブは取り消すことができます。 スナップショットからのデータ転送が進行中である場合は、ジョブを取り消せません。
 
-### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>バックアップされたマネージド ディスク VM でリソース グループのロックを有効にしました。 既存のバックアップは今後も正常に機能しますか。
-リソース グループをロックすると、Azure Backup サービスで古い復元ポイントを削除できなくなります。
-- 復元ポイントの上限は 18 個であるため、新しいバックアップは失敗し始めます。
-- ロック後に内部エラーでバックアップが失敗した場合は、[こちらの手順に従って](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)、復元ポイントのコレクションを削除します。
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>Azure Backup サービスによって作成されたリソース グループ ( ` AzureBackupRG_<geo>_<number>`) に対してロックを有効にしました。バックアップは引き続き動作しますか?
+Azure Backup サービスによって作成されたリソース グループをロックする場合は、復元ポイントの最大限度が 18 であるため、バックアップは失敗し始めます。
+
+将来のバックアップを成功させるために、ユーザーはロックを解除しリソース グループからの復元ポイント コレクションをクリアする必要があります。その場合は[次の手順に従って](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)復元ポイント コレクションを削除します。
 
 ### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>バックアップ ポリシーでは夏時間 (DST) が考慮されますか。
 いいえ。 ローカル コンピューターの日時は、現在の夏時間が適用されたローカル時刻です。 スケジュールされているバックアップの時間は、DST のためにローカル タイムと異なる場合があります。

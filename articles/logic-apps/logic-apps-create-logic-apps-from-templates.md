@@ -46,7 +46,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
    ![ロジック アプリの詳細を指定する](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **名前** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 

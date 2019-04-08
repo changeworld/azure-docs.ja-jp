@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467443"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762927"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
@@ -32,30 +32,57 @@ Azure Search では、サービスはサービスの有効期間で固定され�
 > 機能パリティの例外は[インデクサー](search-indexer-overview.md)で、これは S3HD では利用できません。
 >
 
-レベル内で、パフォーマンス チューニングのために[レプリカとパーティションのリソースを調整する](search-capacity-planning.md)ことができます。 それぞれ 2、3 個から始めて、大きなインデックス作成ワークロード用に一時的に計算能力を高めることができます。 レベル内でリソース レベルを調整する機能により、柔軟性が加わりますが、分析もやや複雑になります。 大きいリソースやレプリカで下位レベルの方が、小さいリソースで上位レベルよりも、優れた値とパフォーマンスが得られるかどうかを確認する実験が必要になる可能性があります。 容量を調整するタイミングと理由の詳細については、「[Azure Search のパフォーマンスと最適化に関する考慮事項](search-performance-optimization.md)」を参照してください。
+レベル内では、[レプリカとパーティションのリソースを調整する](search-capacity-planning.md)ことによって、スケールを大きくしたり小さくしたりできます。 それぞれ 1、2 個から始めて、大きなインデックス作成ワークロード用に一時的に計算能力を高めることができます。 レベル内でリソース レベルを調整する機能により、柔軟性が加わりますが、分析もやや複雑になります。 大きいリソースやレプリカで下位レベルの方が、小さいリソースで上位レベルよりも、優れた値とパフォーマンスが得られるかどうかを確認する実験が必要になる可能性があります。 容量を調整するタイミングと理由の詳細については、「[Azure Search のパフォーマンスと最適化に関する考慮事項](search-performance-optimization.md)」を参照してください。
 
-<!---
-The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
---->
+## <a name="tiers-for-azure-search"></a>Azure Search のレベル
+
+次の表は使用できるレベルの一覧です。 レベルに関する他の情報ソースとしては、[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)、[サービスとデータの制限](search-limits-quotas-capacity.md)、およびサービスをプロビジョニングするときのポータル ページがあります。
+
+|レベル | 容量 |
+|-----|-------------|
+|無料 | 他のサブスクライバーと共有されます。 スケーラブルではなく、3 個のインデックスと 50 MB のストレージに制限されます。 |
+|Basic | 小規模の運用ワークロードのための専用コンピューティング リソースです。 1 個の 2 GB パーティションと、最大 3 個のレプリカです。 |
+|Standard 1 (S1) | S1 以上は、すべてのレベルでさらに多くのストレージや処理能力を持つ専用マシンです。 S1 のパーティション サイズは 25 GB/パーティション (サービスあたり最大 300 GB のドキュメント) です。 |
+|Standard 2 (S2) | S1 に似ていますが、100 GB/パーティション (サービスあたり最大 1.2 TB のドキュメント) です。 |
+|Standard 3 (S3) | 200 GB/パーティション (サービスあたり最大 2.4 TB のドキュメント) です。 |
+|Standard 3 High-density (S3-HD) | 高密度は、S3 用の "*ホスティング モード*" です。 基になるハードウェアは多数の小さいインデックス用に最適化されており、マルチテナント シナリオ向けです。 S3-HD のユニットあたりの料金は S3 と同じですが、ハードウェアは数多くの小さいインデックスでの高速ファイル読み取り用に最適化されています。|
+
 
 ## <a name="how-billing-works"></a>請求体系について
 
-Azure Search には、ポータルで検索リソースを作成するときにコストが発生する可能性がある方法が 4 つあります。
+Azure Search には、3 種類の費用負担方法があり、固定要素と可変要素があります。 このセクションでは、各課金要素について説明します。
 
-* 通常のインデックス作成およびクエリ タスクに使用されるレプリカとパーティションの追加。 いずれかから始めて、一方または両方を増やして容量を追加し、追加レベルのリソースを選択してその料金を支払うことができます。 
-* インデックス作成時のデータ エグレス料金。 Azure SQL Database または Cosmos DB データ ソースからデータをプルすると、そのリソースに対する請求書にトランザクションの料金が表示されます。
-* [コグニティブ検索](cognitive-search-concept-intro.md)の場合にのみ、ドキュメントの解読時の画像抽出には、ドキュメントから抽出された画像数に基づいて課金されます。 現在、テキストの抽出は無料です。
-* [コグニティブ検索](cognitive-search-concept-intro.md)の場合のみ、[組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)に基づくエンリッチメントは、Cognitive Services リソースに対して課金されます。 エンリッチメントは、Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。
+### <a name="1-core-service-costs-fixed-and-variable"></a>1.コア サービスのコスト (固定および可変)
+
+サービス自体については、最低料金は最初の検索単位 (1 レプリカ x 1 パーティション) であり、これより小さい構成ではサービスは実行できないため、この金額はサービスの有効期間を通して一定です。 
+
+次のスクリーンショットは、Free、Basic、S1 のユニット単位価格を示したものです (S2 と S3 は示されていません)。 Basic サービスまたは Standard サービスを作成した場合、月間のコストは、それぞれ *price-1* および *price-2* に表示される値の平均になります。 連続する各レベルでコンピューティング能力とストレージ容量が大きくなるため、ユニット コストはレベルごとに上昇します。
+
+![ユニットあたりの料金](./media/search-sku-tier/per-unit-pricing.png "ユニットあたりの料金")
+
+追加のレプリカとパーティションは、初期料金に追加されます。 検索サービスでは 1 つのレプリカと 1 つのパーティションが必要なので、最小構成はそれぞれ 1 つです。 最小構成を超える場合は、レプリカとパーティションを個別に追加します。 たとえば、レプリカだけ、またはパーティションだけを追加できます。 
+
+追加のレプリカとパーティションは、[数式](#search-units)に基づいて課金されます。 コストは線形ではありません (容量を 2 倍にすると、コストは 2 倍以上になります)。 数式による計算の例については、「[レプリカとパーティションを割り当てる方法](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)」をご覧ください
+
+### <a name="2-data-egress-charges-during-indexing"></a>2.インデックス作成時のデータ エグレス料金
+
+Azure SQL Database または Cosmos DB データ ソースからデータをプルすると、そのリソースに対する請求書にトランザクションの料金が表示されます。 これらの料金は Azure Search では測定されませんが、インデクサーを使用して Azure SQL Database または Azure Cosmos DB からデータをプルする場合、その料金が請求書に示されるため、ここで説明してあります。
+
+### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>手順 3.Cognitive Services を使用する AI で強化されたインデックス作成
+
+[コグニティブ検索](cognitive-search-concept-intro.md)の場合にのみ、ドキュメントの解読時の画像抽出には、ドキュメントから抽出された画像数に基づいて課金されます。 現在、テキストの抽出は無料です。 [組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md)に基づく他のエンリッチメントは、Cognitive Services リソースに対して課金されます。 エンリッチメントは、Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。
 
 [コグニティブ検索](cognitive-search-concept-intro.md)または [Azure Search インデクサー](search-indexer-overview.md)を使用していない場合は、通常のインデックス作成およびクエリ ワークロードに対して、使用中のレプリカとパーティションに関連するコストのみがかかります。
 
-### <a name="billing-for-general-purpose-indexing-and-queries"></a>汎用のインデックス作成およびクエリに対する課金
+<a name="search-units"></a>
+
+### <a name="billing-based-on-search-units"></a>検索ユニット数に基づく課金
 
 Azure Search 操作について理解する必要がある最も重要な課金の概念は、*検索ユニット* (SU) です。 Azure Search は、インデックス作成とクエリについてレプリカとパーティションの両方に依存しているため、この片方のみを基準に課金しても意味がありません。 このため、この両方を合わせた単位に基づいて課金されます。 
 
 SU は、サービスによって使用される*レプリカ*と*パーティション*の積 **`(R X P = SU)`** です。
 
-すべてのサービスは、最小値として、1 SU (1 つのレプリカと 1 つのパーティションの積) から開始します。 すべてのサービスの最大値は 36 SU ですが、複数の方法で実現できます。たとえば、6 パーティション x 6 レプリカ、3 パーティション x 12 レプリカなどです。 合計容量まで使わないことが一般的です。 たとえば、3 レプリカ、3 パーティションのサービスは、9 SU として課金されます。 
+すべてのサービスは、最小値として、1 SU (1 つのレプリカと 1 つのパーティションの積) から開始します。 すべてのサービスの最大値は 36 SU ですが、複数の方法で実現できます。たとえば、6 パーティション x 6 レプリカ、3 パーティション x 12 レプリカなどです。 合計容量まで使わないことが一般的です。 たとえば、3 レプリカ、3 パーティションのサービスは、9 SU として課金されます。 有効な組み合わせの概要については、[こちらのグラフ](search-capacity-planning.md#chart)をご覧ください。
 
 課金は **SU ごとの時間単位**で、レベルごとに料金が高くなっていきます。 レベルが高いほど、パーティションは大きく高速になり、そのレベルの全体的な時間ごとの料金が高くなります。 各レベルの価格は、「 [Search の価格](https://azure.microsoft.com/pricing/details/search/)」を参照してください。 
 

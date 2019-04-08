@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5ac8e35614d6f0514f60932bc34aa8cab2c0ad11
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894158"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542150"
 ---
 # <a name="marketplace-faqs"></a>Marketplace に関する FAQ
 
@@ -66,10 +66,11 @@ Azure Marketplace を使用すると、お客様は Azure 向けに、または 
 
 Azure Marketplace のオファーは、次の場所から購入できます。
 
-* [Web ベースのネットショップ](https://azuremarketplace.microsoft.com/marketplace/apps)。
-* [Microsoft Azure の管理ポータル](https://portal.azure.com/)、または [Azure Marketplace のコマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 経由。
+* [Web ベースのネットショップ](https://azuremarketplace.microsoft.com/marketplace/apps)
+* [Microsoft Azure の管理ポータル](https://portal.azure.com/)、または [Azure Marketplace のコマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 経由
 
-注:プリペイド クレジットやその他の形式の年額コミットメントは、ソフトウェア ライセンス料の支払いには使用できませんが、関連する Azure 使用料金の支払いには使用できます。  例外は、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページに一覧表示されています。
+>[!Note]
+>プリペイド クレジットやその他の形式の年額コミットメントは、ソフトウェア ライセンス料の支払いには使用できませんが、関連する Azure 使用料金の支払いには使用できます。  例外は、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページに一覧表示されています。
 
 **Azure Marketplace での購入物を、どの Microsoft Azure リージョンにデプロイするかを選択できますか?**
 
@@ -93,9 +94,11 @@ Azure Marketplace のオファリングに対する依存関係は自動的に�
 
 **Azure Marketplace 経由で販売またはプロビジョニングされるアプリケーションやサービスを購入するために、どの国がサポートされていますか?**
 
-Azure Marketplace は、次の国の Microsoft Azure のお客様が利用できます。
+Azure Marketplace は、[参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)に一覧された国の Microsoft Azure のお客様が利用できます。
 
-アルジェリア、アルゼンチン、オーストラリア、オーストリア、バーレーン、ベラルーシ、ベルギー、ブラジル、ブルガリア、カナダ、チリ、コロンビア、コスタリカ、クロアチア、キプロス、チェコ共和国、デンマーク、ドミニカ共和国、エクアドル、エジプト、エルサルバドル、エストニア、フィンランド、フランス、ドイツ、ギリシャ、グアテマラ、香港特別行政区、ハンガリー、アイスランド、インド、インドネシア、アイルランド、イスラエル、イタリア、日本、ヨルダン、カザフスタン、ケニア、クウェート、ラトビア、リヒテンシュタイン、リトアニア、ルクセンブルク、マケドニア、マレーシア、マルタ、メキシコ、モンテネグロ、モロッコ、オランダ、ニュージーランド、ナイジェリア、ノルウェー、オマーン、パキスタン、パナマ、パラグアイ、ペルー、フィリピン、ポーランド、ポルトガル、プエルトリコ、カタール、ルーマニア、ロシア、サウジアラビア、セルビア、シンガポール、スロバキア、スロベニア、南アフリカ、韓国、スペイン、スリランカ、スウェーデン、スイス、台湾、タイ、トリニダード・トバゴ、チュニジア、トルコ、ウクライナ、アラブ首長国連邦、イギリス、米国、ウルグアイ、ベネズエラ。
+**Azure Marketplace ではどのような通貨がサポートされていますか?**
+
+次の 17 の通貨で取引を行うことができます: AUD、BRL、CAD、CHF、DKK、EUR、GBP、INR、JPY、KRW、NOK、NZD、RUB、SEK、TWD、USD、RMB。
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Azure Marketplace からのソリューションのデプロイ
 
@@ -180,17 +183,17 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **サブスクリプションに対する支払いはどのようにすればよいですか?Azure Marketplace での購入物は、Azure の請求書に記載されますか、それとも別の請求書となりますか?**
 
-Azure Marketplace での購入物は、Azure サブスクリプションと同じ支払い方法を継承します。  これらは、年額コミットメントの消費が有効になっていない限り、Azure 使用料金とは別に課金されます。
+MOSP - [マイクロソフト オンライン サブスクリプション プログラム](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web ダイレクト) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して請求されます。 ファイル上にクレジット カードがない場合は、Azure Marketplace から購入できません。 この場合は、代わりに Azure の料金が自分に請求されるようにする特別な免除を受けています。
 
-MOSP - マイクロソフト オンライン サブスクリプション プログラム (Web ダイレクト) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して請求されます。 お客様のファイル上にクレジット カードがない場合 (Azure の料金が請求されるようにする特別な免除)、そのお客様は Azure Marketplace から購入できません。
-
-Enterprise Agreement (EA) のお客様は、その EA に対して請求されます。 [Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページに一覧表示されている特定の Azure Marketplace のオファーは、まず使用可能なすべての年額コミットメントから差し引かれ、次に四半期ごとの 1 つの請求書で超過分として課金されます。 EA インダイレクト カスタマー、教育機関のお客様、および政府機関のお客様は、担当のライセンス ソリューション プロバイダー (LSP) によって課金されます。
+Enterprise Agreement (EA) のお客様は、その EA に対して請求されます。 ここに一覧表示されている特定の Azure Marketplace のオファーは、まず使用可能なすべての年額コミットメントから差し引かれ、次に四半期ごとの 1 つの請求書で超過分として課金されます。 EA インダイレクト カスタマー、教育機関のお客様、および政府機関のお客様は、担当のライセンス ソリューション プロバイダー (LSP) によって課金されます。
 
 **Azure Marketplace サブスクリプションの詳細や課金情報はどこで表示できますか?**
 
-MOSP - マイクロソフト オンライン サブスクリプション プログラム (Web ダイレクト) のお客様は、Marketplace サブスクリプションの詳細を Azure 課金ポータルの [Marketplace] メニューで表示できます。 Marketplace から Virtual Machines を購入したお客様は、概算の未払い料金を Microsoft Azure の管理ポータルで表示できます。
+MOSP - [マイクロソフト オンライン サブスクリプション プログラム ](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web ダイレクト) のお客様は、Azure 管理ポータルの [コストの管理と請求] セクションの [請求書] タブで Marketplace の購入の詳細を確認できます。
 
-Enterprise Agreement (EA) のお客様は、Marketplace サブスクリプションの詳細を Enterprise Portal の課金およびアカウント管理ビューにある [Azure Marketplace] タブで表示できます。 注:EA インダイレクト カスタマーは、オファーと使用状況情報のみを表示できます。 Enterprise Portal では価格の詳細を表示できません。
+マイクロソフト エンタープライズ契約 (EA) のお客様は、Azure 管理ポータルの [コストの管理と請求] セクションの [請求書] タブで Marketplace の購入の詳細を確認できます。
+
+クラウド ソリューション プロバイダー (CSP) パートナーは、[顧客] ビューで会社を選択した後、パートナー センター内の [注文履歴] タブで顧客ごとに Marketplace の購入の詳細を確認できます。
 
 **Azure VM への Azure Marketplace アドオンをキャンセルするにはどうすればよいですか?**
 
@@ -198,9 +201,9 @@ Enterprise Agreement (EA) のお客様は、Marketplace サブスクリプショ
 
 **Azure Marketplace での購入物に対してどれくらいの頻度で課金されますか?**
 
-Enterprise Agreement のお客様は、[概要が説明されている特定のサービス](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)について、まず使用可能な年額コミットメント資金からその月に消費したこれらのサービスの総コストが差し引かれます。 年額コミットメントから差し引かれないすべての Azure Marketplace のオファーは、後で月単位に課金されます。
+マイクロソフトエンタープライズ契約のお客様は、概要が説明されている特定のサービスについて、まず使用可能な年額コミットメント資金からその月に消費したこれらのサービスの総コストが差し引かれます。 年額コミットメントから差し引かれないすべての Azure Marketplace のオファーは、後で月単位に課金されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
 
-MOSP、つまり Web ダイレクトのお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して月単位に請求されます。
+MOSP - [マイクロソフト オンライン サブスクリプション プログラム](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web ダイレクト) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して月単位で請求されます。 SaaS の年間サブスクリプションは、1 年間のサービスに対して 1 回課金されます。
 
 **Azure Marketplace での購入物を MOSP サブスクリプションからダイレクト Enterprise Agreement (EA) サブスクリプションに移動するにはどうすればよいですか?**
 
@@ -246,7 +249,7 @@ Microsoft サポートの [Azure サポート](https://support.microsoft.com/get
 
 **購入物に満足していない場合は、返品できますか?**
 
-Azure Marketplace からの購入物を返品することはできませんが、キャンセルまたは削除は可能です。 サブスクリプションがキャンセルまたは削除されると、以降の数か月間は請求されません。
+[Azure Marketplace](https://azuremarketplace.microsoft.com/) からの購入物を返品することはできませんが、キャンセルまたは削除は可能です。 使用量ベースのプランは、使用量に応じて課金されるため、使用を停止すると課金も停止されます。 現行の請求期間を過ぎると、サブスクリプションは取り消され課金は行われません。 購入後間もなくしてサブスクリプションが取り消された場合 (月単位の場合は 24 時間、年単位の場合は 14 日間)、全額が返金されます。
 
 Marketplace サービスまたは購入に関する技術的な問題がある場合、お客様は発行元に直接問い合わせる必要があります。 発行元の連絡先情報やサポート Web サイトへのリンクは、Azure Marketplace のそれぞれのソリューションの詳細ページで確認できます。
 
@@ -335,6 +338,10 @@ Azure Marketplace 経由で一覧、試用版、または BYOL (ライセンス�
 **Azure Marketplace 経由の購入に取引手数料は発生しますか?**
 
 Azure Marketplace 経由でソリューションのライセンスが購入されると、ソフトウェア ライセンスの収益は発行元と Microsoft の間で分割されます。  これは、[Marketplace 発行者契約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)にある使用条件に従って実行されます。 さらに、BYOL (ライセンス持ち込み) 発行元のソリューションに取引手数料は発生しません。
+
+**標準的な契約とはどのようなものですか?**
+
+Microsoft が提示する標準的な契約条件を発行元は活用することができ、結果、顧客が行う調達プロセスおよび法的調査のプロセスは簡略化されます。
 
 **アプリケーションを Azure Active Directory (AAD) と統合するためのガイドラインはどこにありますか?**
 
@@ -490,6 +497,35 @@ Azure Marketplace のオファリングに対する依存関係は自動的に�
 Azure Marketplace は、次の国の Microsoft Azure のお客様が利用できます。
 
 アルジェリア、アルゼンチン、オーストラリア、オーストリア、バーレーン、ベラルーシ、ベルギー、ブラジル、ブルガリア、カナダ、チリ、コロンビア、コスタリカ、クロアチア、キプロス、チェコ共和国、デンマーク、ドミニカ共和国、エクアドル、エジプト、エルサルバドル、エストニア、フィンランド、フランス、ドイツ、ギリシャ、グアテマラ、香港特別行政区、ハンガリー、アイスランド、インド、インドネシア、アイルランド、イスラエル、イタリア、日本、ヨルダン、カザフスタン、ケニア、クウェート、ラトビア、リヒテンシュタイン、リトアニア、ルクセンブルク、マケドニア、マレーシア、マルタ、メキシコ、モンテネグロ、モロッコ、オランダ、ニュージーランド、ナイジェリア、ノルウェー、オマーン、パキスタン、パナマ、パラグアイ、ペルー、フィリピン、ポーランド、ポルトガル、プエルトリコ、カタール、ルーマニア、ロシア、サウジアラビア、セルビア、シンガポール、スロバキア、スロベニア、南アフリカ、韓国、スペイン、スリランカ、スウェーデン、スイス、台湾、タイ、トリニダード・トバゴ、チュニジア、トルコ、ウクライナ、アラブ首長国連邦、イギリス、米国、ウルグアイ、ベネズエラ。
+
+**さまざまな国での販売を可能にするには、利用可能な地域どのように定義すればよいですか?**
+
+1.  Cloud パートナー ポータルで、新しい国の追加先とする SKU に移動します。  [SKU Details]\(SKU の詳細\) 内で、[Country/Region availability]\(国/利用可能なリージョン\) に移動し、[Select regions]\(リージョンを選択\) をクリックします。
+
+    ![リージョンの選択](media/marketplace-publishers-guide/FAQ-choose-geo.png)
+
+1.  販売できるすべての国が掲載された一覧がポップアップ表示されます。  この SKU を使用できるようにしたい各国の横にあるチェック ボックスをクリックします。 [OK] をクリックします。
+
+    ![国の一覧を選択する](media/marketplace-publishers-guide/FAQ-select-countries.png)
+
+1.  最後に、ご利用のライブ プランに変更を適用する場合は、[発行] をクリックします。  
+
+>[!Note]
+>変更が有効になるまで、24 時間かかります。
+
+<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
+
+**パブリッシャーは既存のプランの利用可能な地域をどのように変更できますか?**
+
+パブリッシャーは、既存のプランを編集し、新規の国を選択し、スプレッドシートのダウンロード/アップロード関数を使用して価格を設定することができます。
+
+**顧客はどの国で Azure Marketplace オファリングを購入できますか?**
+
+Azure Marketplace でには、顧客の請求先住所で定義されている 141 の購入元地域がサポートしています。 国の一覧については、[参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)に関するページを参照してください。
+
+**Azure Marketplace ではどのような通貨がサポートされていますか?**
+
+次の 17 の通貨で取引を行うことができます: AUD、BRL、CAD、CHF、DKK、EUR、GBP、INR、JPY、KRW、NOK、NZD、RUB、SEK、TWD、USD。
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Azure Marketplace からのソリューションのデプロイ
 

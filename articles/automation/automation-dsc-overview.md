@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca7a1913e94242af46e777be308ef92fc5a5abb3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dd2ba0ec3427cd99da3321b50fb43f4c00f2d1a9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427068"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822823"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -37,13 +37,45 @@ Azure Portal から、または PowerShell から、すべての DSC 構成、�
 
 ![Azure Automation ページのスクリーンショット](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Log Analytics へのレポート データのインポート
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Azure Monitor ログへのレポート データのインポート
 
-Azure Automation State Configuration で管理されているノードは、組み込みのプル サーバーに詳細なレポート ステータス データを送信します。 Azure Automation State Configuration を構成して、このデータを Log Analytics ワークスペースに送信できます。 Log Analytics ワークスペースに State Configuration 状態データを送信する方法については、「[Log Analytics への Azure Automation State Configuration レポート データの転送](automation-dsc-diagnostics.md)」を参照してください。
+Azure Automation State Configuration で管理されているノードは、組み込みのプル サーバーに詳細なレポート ステータス データを送信します。 Azure Automation State Configuration を構成して、このデータを Log Analytics ワークスペースに送信できます。 Log Analytics ワークスペースに State Configuration 状態データを送信する方法については、「[Azure Monitor ログへの Azure Automation State Configuration レポート データの転送](automation-dsc-diagnostics.md)」を参照してください。
 
-## <a name="network-planning"></a>ネットワークを構成する
+## <a name="prerequisites"></a>前提条件
 
-State Configuration (DSC) が Automation と通信するには、次のポートと URL が必要です。
+Azure Automation State Configuration (DSC) を使用する場合は、次の要件を検討してください。
+
+### <a name="operating-system-requirements"></a>オペレーティング システムの要件
+
+Windows を実行しているノードの場合は、次のバージョンがサポートされます。
+
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012R2
+- Windows Server 2012
+- Windows Server 2008 R2 SP1
+- Windows 10
+- Windows 8.1
+- Windows 7
+
+Linux を実行しているノードの場合は、次のディストリビューション/バージョンがサポートされます。
+
+DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux ディストリビューションがすべてサポートされます。
+
+ディストリビューション | Version
+-|-
+Debian  | すべてのバージョン
+Ubuntu  | 18.04
+
+### <a name="dsc-requirements"></a>DSC 要件
+
+Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) がオンボード中にインストールされます。  Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+
+Azure で実行しているすべての Linux ノードで、オンボード中に [Linux 用の PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされます。
+
+### <a name="network-planning"></a>プライベート ネットワークを構成する
+
+ノードが非公開ネットワーク内にある場合、State Configuration (DSC) が Automation と通信するには、次のポートと URL が必要です。
 
 * ポート: 送信インターネット アクセスには TCP 443 のみが必要です。
 * グローバル URL: *.azure-automation.net
@@ -85,7 +117,7 @@ State Configuration (DSC) が Automation と通信するには、次のポート
 > [!NOTE]
 > このビデオで解説されている概念とライフ サイクルは正しいものですが、このビデオが作成されてから Azure Automation State Configuration はかなり進歩しています。 Azure Automation DSC は一般公開され、Azure ポータルでさまざまな UI を使用できるようになり、多数の機能がサポートされています。
 
-[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
+<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="next-steps"></a>次の手順
 

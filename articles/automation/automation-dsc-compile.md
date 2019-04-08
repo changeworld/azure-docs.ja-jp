@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423410"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594272"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -284,6 +284,14 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 > [!NOTE]
 > コンパイルが完了すると、次のようなエラーが表示される可能性があります。"**"Microsoft.PowerShell.Management" スナップインが既にインポートされているため、"Microsoft.PowerShell.Management" モジュールがインポートされませんでした。**" この警告は無視してかまいません。
+
+## <a name="partial-configuration"></a>部分構成
+
+Azure Automation State Configuration では [部分構成](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs) の使用をサポートします。
+このシナリオでは、DSC は独立して複数の構成を管理するように構成されており、各構成は Azure Automation から取得されます。
+ただし、ノードに割り当てることができる構成はAutomation アカウントあたり 1 つだけです。
+つまり、1 つのノードに 2 つの構成を使用している場合、2 つの Automation アカウントが必要になります。
+構成をコードとして使用し、チームが連携してサーバーを共同で管理する方法の詳細については、「[Understanding DSC's role in a CI/CD Pipeline (CI/CD パイプラインの DSC のロールを理解する)](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced)」を参照してください。
 
 ## <a name="importing-node-configurations"></a>ノード構成のインポート
 

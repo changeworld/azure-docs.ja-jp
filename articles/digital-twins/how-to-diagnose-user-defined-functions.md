@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119222"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961416"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
@@ -29,10 +29,10 @@ Azure Digital Twins 内で発生するあらゆる問題を診断する方法に
 
 ### <a name="enable-log-analytics-for-your-instance"></a>インスタンスのログ分析を有効にする
 
-Azure Digital Twins インスタンスのログとメトリックは Azure Monitor で表示されます。 このドキュメントでは、[Azure portal](../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、または [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) を通じて [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを作成していると仮定しています。
+Azure Digital Twins インスタンスのログとメトリックは Azure Monitor で表示されます。 このドキュメントでは、[Azure portal](../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、または [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) を通じて [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md) ワークスペースを作成していると仮定しています。
 
 > [!NOTE]
-> 初めて Azure Log Analytics にイベントを送信するときに 5 分の遅延が発生することがあります。
+> 初めて Azure Monitor ログにイベントを送信するときに 5 分の遅延が発生することがあります。
 
 Azure Digital Twins リソースの監視とログを構成する方法については、[こちら](./how-to-configure-monitoring.md)のページをご覧ください。
 
@@ -43,11 +43,11 @@ Azure Portal、Azure CLI、または PowerShell を使用して Azure Digital Tw
 
 ### <a name="trace-sensor-telemetry"></a>センサー テレメトリのトレース
 
-センサー テレメトリをトレースするには、自分の Azure Digital Twins インスタンスで診断設定が有効になっていることを確認します。 次に、必要なすべてのログ カテゴリが選択されていることを確認します。 最後に、必要なログが Azure Log Analytics に送信されていることを確認します。
+センサー テレメトリをトレースするには、自分の Azure Digital Twins インスタンスで診断設定が有効になっていることを確認します。 次に、必要なすべてのログ カテゴリが選択されていることを確認します。 最後に、必要なログが Azure Monitor ログに送信されていることを確認します。
 
 センサー テレメトリのメッセージが対応するログと一致するように、送信されるイベント データに相関 ID を指定できます。 これを行うには、`x-ms-client-request-id` プロパティを GUID に設定します。
 
-テレメトリを送信した後は、Azure Log Analytics を開き、設定された相関 ID を使用してログに対してクエリを実行します。
+テレメトリを送信した後は、Log Analytics を開き、設定された相関 ID を使用してログに対してクエリを実行します。
 
 ```Kusto
 AzureDiagnostics
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | イベント データで指定した相関 ID |
 
-ユーザー定義関数のログ記録を有効にした場合、それらのログがカテゴリ `UserDefinedFunction` で Azure Log Analytics インスタンスに表示されます。 それらを取得するには、Azure Log Analytics で、次のクエリ条件を入力します。
+ユーザー定義関数のログ記録を有効にした場合、それらのログがカテゴリ `UserDefinedFunction` で Log Analytics インスタンスに表示されます。 それらを取得するには、Log Analytics で、次のクエリ条件を入力します。
 
 ```Kusto
 AzureDiagnostics
