@@ -514,7 +514,7 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 | 列 | 説明 |
 |:--|:--|
-| [操作] | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
+| Operations | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
 | Exchange | Add-Mailbox Permission、または Set-Mailbox などの Exchange Server アクティビティの内訳を示します。 |
 | SharePoint | SharePoint ドキュメントに対してユーザーが実行する最上位のアクティビティを示します。 このタイルからドリル ダウンすると、ターゲット ドキュメントやこのアクティビティの場所など、これらのアクティビティの詳細が検索ページに表示されます。 たとえば、File Accessed イベントの場合、アクセスされているドキュメント、それと関連付けられたアカウント名、および IP アドレスを見ることができます。 |
 | Azure Active Directory | ユーザー パスワードのリセットやログイン試行など、最上位のユーザー アクティビティが含まれます。 ドリルダウンすると、結果の状態など、これらのアクティビティの詳細を見ることができます。 これは主に、Azure Active Directory 上の不審なアクティビティを監視する場合に便利です。 |
@@ -579,7 +579,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | (Operation プロパティによって識別される) アクションの実行対象だったユーザー。 |
-| アクター | アクションを実行したユーザーまたはサービス プリンシパル。 |
+| Actor | アクションを実行したユーザーまたはサービス プリンシパル。 |
 | ActorContextId | アクターが所属する組織の GUID。 |
 | ActorIpAddress | アクターの IP アドレス。IPv4 または IPv6 アドレスの形式。 |
 | InterSystemsId | Office 365 サービス内のコンポーネント間でアクションを追跡する GUID。 |
@@ -672,8 +672,8 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | DestMailboxOwnerSid | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの SID を指定します。 |
 | DestMailboxOwnerUPN | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの所有者の UPN を指定します。 |
 | DestFolder | 移動などの操作の宛先フォルダー。 |
-| フォルダー | 項目のグループが位置しているフォルダー。 |
-| フォルダー |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
+| Folder | 項目のグループが位置しているフォルダー。 |
+| Folders |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
 
 
 ### <a name="sharepoint-base"></a>SharePoint ベース
