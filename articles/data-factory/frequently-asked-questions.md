@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024095"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240798"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -174,6 +174,33 @@ Azure Data Factory の最新情報を入手するには、次のサイトを参�
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>アクティビティの出力で null 値を適切に処理するにはどうすればよいですか? 
 式で `@coalesce` コンストラクトを使用すると、null 値を適切に処理できます。 
+
+## <a name="mapping-data-flows"></a>データ フローのマッピング
+
+### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>どの ADF バージョンを使用してデータ フローを作成すればよいですか?
+ADF V2 バージョンを使用してデータ フローを作成してください。
+  
+### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>私は、以前はデータ フローを使用したプライベート プレビュー ユーザーで、ADF V2 と データ フローのプレビュー バージョンを使用していました。
+このバージョンは廃止されました。 データ フローには ADF V2 を使用してください。
+  
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>プライベート プレビューから Data Flow の限定パブリック プレビューへの変更内容は何ですか?
+ご自身の Databricks クラスターを持ち込む必要がなくなりました。 ADF でクラスターの作成と破棄を管理します。 BLOB データセットと ADLS データセットは、区切りテキストと Parquet データセットに分かれています。 ADLS と BLOB ストアを引き続き使用してこれらのファイルを格納できます。 このようなストレージ エンジンには、適切なリンクされたサービスを使用してください。
+
+### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>自分のプライベート プレビューのファクトリを ADF V2 に移行できますか?
+
+はい。[こちら](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)で説明されている手順に従ってください。
+
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>データ フロー ロジックのトラブルシューティングをサポートしてほしいのですが、何が必要ですか?
+
+Microsoft では、Data Flow を使用したサポートやトラブルシューティングを行っていますので、"DSL コード プラン" を指定してください。 そのためには、次の手順に従います。
+
+* Data Flow デザイナーで、右上隅にある [コード] をクリックします。 これにより、データ フローの編集可能な JSON コードが表示されます。
+* コード ビューで、右上隅にある [プラン] をクリックします。 プランのトグルが、JSON から、読み取り専用に書式設定された DSL スクリプト プランへと切り替わります。
+* このスクリプトをコピーして貼り付けるか、テキスト ファイルに保存します。
+
+### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>ADF で他の 80 のデータセット型を使用してデータにアクセスする方法はありますか?
+
+現在は、Data Flow を使用すると、Azure SQL DB、Azure SQL DW、BLOB または ADLS から取得した区切りテキストファイルと、BLOB または ADLS から取得した Parquet ファイルをネイティブでソースとシンクに利用できます。 コピー アクティビティを使用して、データを他の任意のコネクタから段階的に送り、Data Flow のアクティビティを実行してステージングの後にデータを変換します。 たとえば、まずパイプラインを BLOB にコピーし、次に Data Flow アクティビティでソースのデータセットを使用して、データを変換します。
 
 ## <a name="next-steps"></a>次の手順
 データ ファクトリを作成する手順については、次のチュートリアルをご覧ください。

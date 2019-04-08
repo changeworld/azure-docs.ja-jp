@@ -31,9 +31,9 @@ Application Insights をお使いのアプリの一つで構成済みの場合�
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Azure Monitor ログとの関係
-Application Insights Analytics は、Azure Monitor ログなどの [Azure Data Explorer](/azure/data-explorer) に基づいていて、[Kusto クエリ言語](/azure/kusto/query)も使用します。 Azure Monitor ログと同じ[Log Analytics ポータル](../log-query/get-started-portal.md)を使用しますが、そのデータは個別のパーティションに格納されます。
+Application Insights Analytics は、Azure Monitor ログなどの [Azure Data Explorer](/azure/data-explorer) に基づいていて、[Kusto クエリ言語](/azure/kusto/query)も使用します。 Azure Monitor ログと同じ[ログ分析ポータル](../log-query/get-started-portal.md)を使用しますが、そのデータは個別のパーティションに格納されます。
 
-Application Insights Analytics から Log Analytics ワークスペース内のデータに直接アクセスすることはできず、Log Analytics からアプリケーション データに直接アクセスすることもできません。 両方のデータ セットをまとめてクエリするには、[Log Analytics でクエリ](../log-query/log-query-overview.md)を作成し、[app() 式](../log-query/app-expression.md)を使用してアプリケーション データにアクセスします。
+Application Insights Analytics から Log Analytics ワークスペース内のデータに直接アクセスすることはできず、ログ分析からアプリケーション データに直接アクセスすることもできません。 両方のデータ セットをまとめてクエリするには、[ログ分析でクエリ](../log-query/log-query-overview.md)を作成し、[app() 式](../log-query/app-expression.md)を使用してアプリケーション データにアクセスします。
 
 
 ## <a name="query-data-in-analytics"></a>Analytics でのデータ クエリ

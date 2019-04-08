@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097811"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008907"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor の動的しきい値を使用したメトリック アラート (パブリック プレビュー)
 
@@ -79,7 +79,11 @@ ms.locfileid: "55097811"
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>しきい値のプレビューと計算に使用されるデータの量
 
-アラート ルールがメトリックに対して作成される前にグラフに表示されているしきい値は、過去 10 日間の履歴データを基に計算され、アラート ルールが作成されると、動的しきい値は、現在利用可能な履歴データを追加要求し、しきい値の精度を向上するために新しいデータを基に学習し続けます。
+メトリックのアラート ルールが作成される前に、チャートに表示されるしきい値は、時間単位または日単位の季節性パターン (10日間) を計算するのに十分な履歴データに基づき計算されます。 [Display weekly pattern (週単位のパターンを表示する)] を押すと、週単位の季節性パターン (28日間) を計算するのに十分な履歴データを取得します。 アラート ルールが作成されると、動的しきい値は、利用可能な履歴データをすべて使用し、しきい値の精度を向上するために新しいデータを基に学習し、熟練し続けます。
+
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>アラートをトリガーするためにどれくらいのデータが必要ですか。
+
+動的なしきい値では、アラートをトリガーする前に正確なしきい値を確保するために少なくとも 3 日分のデータが必要です。
 
 ## <a name="dynamic-thresholds-best-practices"></a>動的しきい値のベスト プラクティス
 
@@ -112,7 +116,7 @@ ms.locfileid: "55097811"
 
 8. メトリック グラフに、最新のデータに基づいて計算されたしきい値が表示されます。
 
-9. **[完了]** をクリックします。
+9. **[Done]** をクリックします。
 
 10. **[アラート ルール名]**、**[説明]**、**[重大度]** などの **[アラートの詳細]** を指定します。
 

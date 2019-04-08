@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: e3412e31ae976efc8164076b30ad61360a030db4
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511940"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339455"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
@@ -54,6 +54,10 @@ StorSimple 5000-7000 をご使用のお客様は、Azure でのデータを保�
 #### <a name="migrate-to-cohesity"></a>Cohesity に移行する
 
 Cohesity を使用すると、現在の StorSimple 5000–7000 から Azure の Cohesity Data Platform にデータを移行できます。 Cohesity Data Platform はソフトウェアによる Web スケール ソリューションであり、ファイル、バックアップ、オブジェクト、VM を 1 つのクラウドネイティブ ソリューションに統合します。 このデータ プラットフォームに移行後、1 か所からデータやアプリを管理し、保護し、クラウドからコアにプロビジョニングできます。 Cohesity は、3 つという少ない数のノードから始められます。 詳細については、[Cohesity DataPlatform への移行](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)に関するページを参照してください。
+
+#### <a name="migrate-to-nasuni"></a>Nasuni への移行
+
+Nasuni によって StorSimple 5000-7000 をご使用のお客様は、そのデータを Azure に簡単に移行して保持することができます。  Nasuni は最新の Azure ベースの NAS ストレージ ソリューションであり、クラウドの経済性とスケールにより、お客様にオンプレミス ソリューションに想定されるパフォーマンスとセキュリティを提供します。  ハイ パフォーマンスのファイル ストレージに加えて、Nasuni と Azure はバックアップと DR を処理する一方で、一元的なファイル ストレージ管理によって世界中でのデータの共有とコラボレーションを可能にします。 Nasuni では簡単に移行できます ‐ 今すぐ開始しましょう https://info.nasuni.com/nasuni-storsimple-migration
 
 ## <a name="migration---frequently-asked-questions"></a>移行 - よく寄せられる質問
 

@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458093"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769168"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -409,7 +409,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 |ストアド プロシージャ  |説明  |
 |---------|---------|
 |[sp_add_job](#spaddjob)     |     新しいジョブを追加します。    |
-|[sp_update_job ](#spupdatejob)    |      既存のジョブを更新します。   |
+|[sp_update_job](#spupdatejob)    |      既存のジョブを更新します。   |
 |[sp_delete_job](#spdeletejob)     |      既存のジョブを削除します。   |
 |[sp_add_jobstep](#spaddjobstep)    |    ジョブにステップを追加します。     |
 |[sp_update_jobstep](#spupdatejobstep)     |     ジョブのステップを更新します。    |
@@ -420,7 +420,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 |[sp_delete_target_group](#spdeletetargetgroup)     |    ターゲット グループを削除します。     |
 |[sp_add_target_group_member](#spaddtargetgroupmember)     |    データベースまたはデータベースのグループをターゲット グループに追加します。     |
 |[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     ターゲット グループかターゲット グループのメンバーを削除します。    |
-|[sp_purge_jobhistory ](#sppurgejobhistory)    |    ジョブの履歴レコードを削除します。     |
+|[sp_purge_jobhistory](#sppurgejobhistory)    |    ジョブの履歴レコードを削除します。     |
 
 
 
@@ -447,16 +447,16 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
   
 #### <a name="arguments"></a>引数  
 
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ジョブの名前。 名前は一意である必要があり、パーセント (%) 文字を含めることはできません。 job_name は nvarchar(128) であり、既定値はありません。
 
-[ **@description =** ] 'description'  
+[ **\@description =** ] 'description'  
 ジョブの説明。 description は nvarchar(512) であり、既定値は NULL です。 省略すると、空の文字列が使われます。
 
-[ **@enabled =** ] enabled  
+[ **\@enabled =** ] enabled  
 ジョブのスケジュールを有効にするかどうか。 Enabled は bit であり、既定値は 0 (無効) です。 0 の場合、ジョブは有効ではなく、そのスケジュールどおりには実行されません。ただし、手動で実行することはできます。 1 の場合、ジョブはそのスケジュールに従って実行され、手動で実行することもできます。
 
-[ **@schedule_interval_type =**] schedule_interval_type  
+[ **\@schedule_interval_type =**] schedule_interval_type  
 値はジョブが実行されるときを示します。 schedule_interval_type は nvarchar(50)、既定値は Once であり、次のいずれかの値を指定できます。
 - 'Once'
 - 'Minutes'
@@ -465,16 +465,16 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 - 'Weeks'
 - 'Months'
 
-[ **@schedule_interval_count =** ] schedule_interval_count  
+[ **\@schedule_interval_count =** ] schedule_interval_count  
 ジョブの各実行の間に発生する schedule_interval_count 期間の数。 schedule_interval_count は int であり、既定値は 1 です。 1 以上の値を指定する必要があります。
 
-[ **@schedule_start_time =** ] schedule_start_time  
+[ **\@schedule_start_time =** ] schedule_start_time  
 ジョブの実行を開始できる日付。 schedule_start_time は DATETIME2 であり、既定値は 0001-01-01 00:00:00.0000000 です。
 
-[ **@schedule_end_time =** ] schedule_end_time  
+[ **\@schedule_end_time =** ] schedule_end_time  
 ジョブの実行を停止できる日付。 schedule_end_time は DATETIME2 であり、既定値は 9999-12-31 11:59:59.0000000 です。 
 
-[ **@job_id =** ] job_id OUTPUT  
+[ **\@job_id =** ] job_id OUTPUT  
 正常に作成された場合にジョブに割り当てられるジョブ識別番号。 job_id は、uniqueidentifier 型の出力変数です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -510,19 +510,19 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 更新するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@new_name =** ] 'new_name'  
+[ **\@new_name =** ] 'new_name'  
 ジョブの新しい名前。 new_name は nvarchar(128) です。
 
-[ **@description =** ] 'description'  
+[ **\@description =** ] 'description'  
 ジョブの説明。 description は nvarchar(512) です。
 
-[ **@enabled =** ] enabled  
+[ **\@enabled =** ] enabled  
 ジョブのスケジュールが有効か (1) 無効か (0) を指定します。 enabled は bit です。
 
-[ **@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type=** ] schedule_interval_type  
 値はジョブが実行されるときを示します。 schedule_interval_type は nvarchar(50) であり、次のいずれかの値を指定できます。
 
 - 'Once'
@@ -532,13 +532,13 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 - 'Weeks'
 - 'Months'
 
-[ **@schedule_interval_count=** ] schedule_interval_count  
+[ **\@schedule_interval_count=** ] schedule_interval_count  
 ジョブの各実行の間に発生する schedule_interval_count 期間の数。 schedule_interval_count は int であり、既定値は 1 です。 1 以上の値を指定する必要があります。
 
-[ **@schedule_start_time=** ] schedule_start_time  
+[ **\@schedule_start_time=** ] schedule_start_time  
 ジョブの実行を開始できる日付。 schedule_start_time は DATETIME2 であり、既定値は 0001-01-01 00:00:00.0000000 です。
 
-[ **@schedule_end_time=** ] schedule_end_time  
+[ **\@schedule_end_time=** ] schedule_end_time  
 ジョブの実行を停止できる日付。 schedule_end_time は DATETIME2 であり、既定値は 9999-12-31 11:59:59.0000000 です。 
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -567,10 +567,10 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 削除するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@force =** ] force  
+[ **\@force =** ] force  
 ジョブに進行中の実行がある場合に削除するかどうかを指定します。進行中のすべての実行を取り消すか (1)、または進行中のジョブ実行がある場合は削除しません (0)。 force は bit です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -622,79 +622,79 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 
 #### <a name="arguments"></a>引数
 
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップを追加するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 ジョブ ステップのシーケンス ID 番号。 ステップ ID 番号は 1 から始まり、隙間なく増加します。 指定した ID を持つステップが既に存在する場合は、既存のステップとそれ以降のすべてのステップの ID が増分されて、新しいステップをシーケンスに挿入できるようになります。 step_id を指定しないと、ステップのシーケンスの最後に自動的に割り当てられます。 step_id は int です。
 
-[ **@step_name =** ] step_name  
+[ **\@step_name =** ] step_name  
 ステップの名前。 最初のステップを除き、必ず指定する必要があります。最初のステップは (利便性のため)、既定の名前 "JobStep" になります。 step_name は nvarchar(128) です。
 
-[ **@command_type =** ] 'command_type'  
+[ **\@command_type =** ] 'command_type'  
 このジョブ ステップで実行されるコマンドの種類。 command_type は nvarchar(50) です。既定値は TSql であり、@command_type パラメーターの値が T-SQL スクリプトであることを意味します。
 
 指定する場合、値は TSql である必要があります。
 
-[ **@command_source =** ] 'command_source'  
+[ **\@command_source =** ] 'command_source'  
 コマンドが格納される場所の種類。 command_source は nvarchar(50) です。既定値は Inline であり、@command_source パラメーターの値がコマンドのリテラル テキストであることを意味します。
 
 指定する場合、値は Inline である必要があります。
 
-[ **@command =** ] 'command'  
+[ **\@command =** ] 'command'  
 コマンドは、有効な T-SQL スクリプトでなければならず、このジョブ ステップによって実行されます。 command は nvarchar(max) であり、既定値は NULL です。
 
-[ **@credential_name =** ] 'credential_name'  
+[ **\@credential_name =** ] 'credential_name'  
 このジョブ管理データベースに格納される、データベース スコープの資格情報の名前。このステップの実行時に、ターゲット グループ内の各ターゲット データベースに接続するために使われます。 credential_name は nvarchar(128) です。
 
-[ **@target_group_name =** ] 'target-group_name'  
+[ **\@target_group_name =** ] 'target-group_name'  
 ジョブ ステップが実行されるターゲット データベースを含むターゲット グループの名前。 target_group_name は nvarchar(128) です。
 
-[ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 ジョブ ステップの最初の実行の試行が失敗した場合に、最初の再試行を試みるまでの遅延。 initial_retry_interval_seconds は int であり、既定値は 1 です。
 
-[ **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 再試行の間の最大遅延。 再試行の間の遅延がこの値より大きくなった場合は、この値に制限されます。 maximum_retry_interval_seconds は int であり、既定値は 120 です。
 
-[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 ジョブ ステップの実行が複数回にわたり失敗した場合に、再試行の遅延に適用する乗数。 たとえば、最初の再試行の遅延が 5 秒で、バックオフ乗数が 2.0 の場合、2 回目の再試行の遅延は 10 秒、3 回目の再試行の遅延は 20 秒になります。 retry_interval_backoff_multiplier は real では、既定値は 2.0 です。
 
-[ **@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 最初の試行が失敗した場合に、実行を再試行する回数。 たとえば、retry_attempts の値が 10 の場合、最初の試行 1 回と再試行 10 回で、実行は合計 11 回試行されます。 最後の再試行が失敗した場合、ジョブの実行は Failed のライフサイクルで終了します。 retry_attempts は int であり、既定値は 10 です。
 
-[ **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@step_timeout_seconds =** ] step_timeout_seconds  
 ステップの実行に許可されている最大時間。 この時間を超えた場合、ジョブの実行は TimedOut のライフサイクルで終了します。 step_timeout_seconds は int であり、既定値は 43,200 秒 (12 時間) です。
 
-[ **@output_type =** ] 'output_type'  
+[ **\@output_type =** ] 'output_type'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先の種類。 output_type は nvarchar(50) であり、既定値は NULL です。
 
 指定する場合、値は SqlDatabase である必要があります。
 
-[ **@output_credential_name =** ] 'output_credential_name'  
+[ **\@output_credential_name =** ] 'output_credential_name'  
 null ではない場合は、出力先データベースへの接続に使用するデータベース スコープの資格情報の名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_credential_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_subscription_id =** ] 'output_subscription_id'  
+[ **\@output_subscription_id =** ] 'output_subscription_id'  
 説明が必要です。
 
-[ **@output_resource_group_name =** ] 'output_resource_group_name'  
+[ **\@output_resource_group_name =** ] 'output_resource_group_name'  
 説明が必要です。
 
-[ **@output_server_name =** ] 'output_server_name'  
+[ **\@output_server_name =** ] 'output_server_name'  
 null ではない場合は、出力先データベースを含むサーバーの完全修飾 DNS 名。 output_type が SqlDatabase の場合は、指定する必要があります。 output_server_name は nvarchar(256) であり、既定値は NULL です。
 
-[ **@output_database_name =** ] 'output_database_name'  
+[ **\@output_database_name =** ] 'output_database_name'  
 null ではない場合は、出力先テーブルを含むデータベースの名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_database_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_schema_name =** ] 'output_schema_name'  
+[ **\@output_schema_name =** ] 'output_schema_name'  
 null ではない場合は、出力先テーブルを含む SQL スキーマの名前。 output_type が SqlDatabase の場合、既定値は dbo です。 output_schema_name は nvarchar (128) です。
 
-[ **@output_table_name =** ] 'output_table_name'  
+[ **\@output_table_name =** ] 'output_table_name'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先のテーブルの名前。 テーブルがまだ存在しない場合は、返される結果セットのスキーマに基づいて作成されます。 output_type が SqlDatabase の場合は、指定する必要があります。 output_table_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 新しいジョブのバージョン番号が割り当てられる出力パラメーター。 job_version は int です。
 
-[ **@max_parallelism =** ] max_parallelism OUTPUT  
+[ **\@max_parallelism =** ] max_parallelism OUTPUT  
 エラスティック プールあたりの並列処理の最大レベル。 設定した場合、ジョブ ステップはエラスティック プールあたり最大でもその指定数のデータベースでのみ実行するように制限されます。 この設定は、ターゲット グループに直接含まれる、またはターゲット グループに含まれるサーバー内に存在する、各エラスティック プールに適用されます。 max_parallelism は int です。
 
 
@@ -746,79 +746,79 @@ sp_add_jobstep が成功した場合、ジョブの現在のバージョン番�
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップが属するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 変更するジョブ ステップの ID 番号。 step_id または step_name のいずれかを指定する必要があります。 step_id は int です。
 
-[ **@step_name =** ] 'step_name'  
+[ **\@step_name =** ] 'step_name'  
 変更するステップの名前。 step_id または step_name のいずれかを指定する必要があります。 step_name は nvarchar(128) です。
 
-[ **@new_id =** ] new_id  
+[ **\@new_id =** ] new_id  
 ジョブ ステップの新しいシーケンス ID 番号。 ステップ ID 番号は 1 から始まり、隙間なく増加します。 ステップの順序を変更する場合、他のステップの番号は自動的に変更されます。
 
-[ **@new_name =** ] 'new_name'  
+[ **\@new_name =** ] 'new_name'  
 ステップの新しい名前。 new_name は nvarchar(128) です。
 
-[ **@command_type =** ] 'command_type'  
+[ **\@command_type =** ] 'command_type'  
 このジョブ ステップで実行されるコマンドの種類。 command_type は nvarchar(50) です。既定値は TSql であり、@command_type パラメーターの値が T-SQL スクリプトであることを意味します。
 
 指定する場合、値は TSql である必要があります。
 
-[ **@command_source =** ] 'command_source'  
+[ **\@command_source =** ] 'command_source'  
 コマンドが格納される場所の種類。 command_source は nvarchar(50) です。既定値は Inline であり、@command_source パラメーターの値がコマンドのリテラル テキストであることを意味します。
 
 指定する場合、値は Inline である必要があります。
 
-[ **@command =** ] 'command'  
+[ **\@command =** ] 'command'  
 コマンドは、有効な T-SQL スクリプトでなければならず、このジョブ ステップによって実行されます。 command は nvarchar(max) であり、既定値は NULL です。
 
-[ **@credential_name =** ] 'credential_name'  
+[ **\@credential_name =** ] 'credential_name'  
 このジョブ管理データベースに格納される、データベース スコープの資格情報の名前。このステップの実行時に、ターゲット グループ内の各ターゲット データベースに接続するために使われます。 credential_name は nvarchar(128) です。
 
-[ **@target_group_name =** ] 'target-group_name'  
+[ **\@target_group_name =** ] 'target-group_name'  
 ジョブ ステップが実行されるターゲット データベースを含むターゲット グループの名前。 target_group_name は nvarchar(128) です。
 
-[ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 ジョブ ステップの最初の実行の試行が失敗した場合に、最初の再試行を試みるまでの遅延。 initial_retry_interval_seconds は int であり、既定値は 1 です。
 
-[ **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 再試行の間の最大遅延。 再試行の間の遅延がこの値より大きくなった場合は、この値に制限されます。 maximum_retry_interval_seconds は int であり、既定値は 120 です。
 
-[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 ジョブ ステップの実行が複数回にわたり失敗した場合に、再試行の遅延に適用する乗数。 たとえば、最初の再試行の遅延が 5 秒で、バックオフ乗数が 2.0 の場合、2 回目の再試行の遅延は 10 秒、3 回目の再試行の遅延は 20 秒になります。 retry_interval_backoff_multiplier は real では、既定値は 2.0 です。
 
-[ **@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 最初の試行が失敗した場合に、実行を再試行する回数。 たとえば、retry_attempts の値が 10 の場合、最初の試行 1 回と再試行 10 回で、実行は合計 11 回試行されます。 最後の再試行が失敗した場合、ジョブの実行は Failed のライフサイクルで終了します。 retry_attempts は int であり、既定値は 10 です。
 
-[ **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@step_timeout_seconds =** ] step_timeout_seconds  
 ステップの実行に許可されている最大時間。 この時間を超えた場合、ジョブの実行は TimedOut のライフサイクルで終了します。 step_timeout_seconds は int であり、既定値は 43,200 秒 (12 時間) です。
 
-[ **@output_type =** ] 'output_type'  
+[ **\@output_type =** ] 'output_type'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先の種類。 output_type の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_type は nvarchar(50) であり、既定値は NULL です。
 
 指定する場合、値は SqlDatabase である必要があります。
 
-[ **@output_credential_name =** ] 'output_credential_name'  
+[ **\@output_credential_name =** ] 'output_credential_name'  
 null ではない場合は、出力先データベースへの接続に使用するデータベース スコープの資格情報の名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_credential_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_credential_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_server_name =** ] 'output_server_name'  
+[ **\@output_server_name =** ] 'output_server_name'  
 null ではない場合は、出力先データベースを含むサーバーの完全修飾 DNS 名。 output_type が SqlDatabase の場合は、指定する必要があります。 output_server_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_server_name は nvarchar(256) であり、既定値は NULL です。
 
-[ **@output_database_name =** ] 'output_database_name'  
+[ **\@output_database_name =** ] 'output_database_name'  
 null ではない場合は、出力先テーブルを含むデータベースの名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_database_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_database_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_schema_name =** ] 'output_schema_name'  
+[ **\@output_schema_name =** ] 'output_schema_name'  
 null ではない場合は、出力先テーブルを含む SQL スキーマの名前。 output_type が SqlDatabase の場合、既定値は dbo です。 output_schema_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_schema_name は nvarchar (128) です。
 
-[ **@output_table_name =** ] 'output_table_name'  
+[ **\@output_table_name =** ] 'output_table_name'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先のテーブルの名前。 テーブルがまだ存在しない場合は、返される結果セットのスキーマに基づいて作成されます。 output_type が SqlDatabase の場合は、指定する必要があります。 output_server_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_table_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 新しいジョブのバージョン番号が割り当てられる出力パラメーター。 job_version は int です。
 
-[ **@max_parallelism =** ] max_parallelism OUTPUT  
+[ **\@max_parallelism =** ] max_parallelism OUTPUT  
 エラスティック プールあたりの並列処理の最大レベル。 設定した場合、ジョブ ステップはエラスティック プールあたり最大でもその指定数のデータベースでのみ実行するように制限されます。 この設定は、ターゲット グループに直接含まれる、またはターゲット グループに含まれるサーバー内に存在する、各エラスティック プールに適用されます。 max_parallelism の値を null にリセットするには、このパラメーターの値を -1 に設定します。 max_parallelism は int です。
 
 
@@ -853,16 +853,16 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値はありません。
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 削除するジョブ ステップの ID 番号。 step_id または step_name のいずれかを指定する必要があります。 step_id は int です。
 
-[ **@step_name =** ] 'step_name'  
+[ **\@step_name =** ] 'step_name'  
 削除するステップの名前。 step_id または step_name のいずれかを指定する必要があります。 step_name は nvarchar(128) です。
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 新しいジョブのバージョン番号が割り当てられる出力パラメーター。 job_version は int です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -897,10 +897,10 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値はありません。
 
-[ **@job_execution_id =** ] job_execution_id OUTPUT  
+[ **\@job_execution_id =** ] job_execution_id OUTPUT  
 ジョブ実行の ID が割り当てられる出力パラメーター。job_version は uniqueidentifier です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -928,7 +928,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 #### <a name="arguments"></a>引数
-[ **@job_execution_id =** ] job_execution_id  
+[ **\@job_execution_id =** ] job_execution_id  
 停止するジョブ実行の ID 番号。 job_execution_id は uniqueidentifier であり、既定値は NULL です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -958,10 +958,10 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 #### <a name="arguments"></a>引数
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'target_group_name'  
 作成するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
-[ **@target_group_id =** ] target_group_id OUTPUT 正常に作成された場合にジョブに割り当てられるターゲット グループの ID 番号。 target_group_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
+[ **\@target_group_id =** ] target_group_id OUTPUT 正常に作成された場合にジョブに割り当てられるターゲット グループの ID 番号。 target_group_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
 
 #### <a name="return-code-values"></a>リターン コードの値
 0 (成功) または 1 (失敗)
@@ -988,7 +988,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 #### <a name="arguments"></a>引数
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'target_group_name'  
 削除するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -1022,31 +1022,31 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 ```
 
 #### <a name="arguments"></a>引数
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'target_group_name'  
 メンバーを追加するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
-[ **@membership_type =** ] 'membership_type'  
+[ **\@membership_type =** ] 'membership_type'  
 ターゲット グループのメンバーが含まれるか除外されるかを指定します。 target_group_name は nvarchar(128) であり、既定値は 'Include' です。 target_group_name の有効な値は、'Include' または 'Exclude' です。
 
-[ **@target_type =** ] 'target_type'  
+[ **\@target_type =** ] 'target_type'  
 ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、シャード マップ内のすべてのデータベース、または個々のデータベースです。 target_type は nvarchar(128) であり、既定値はありません。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、'SqlDatabase'、または 'SqlShardMap' です。 
 
-[ **@refresh_credential_name =** ] 'refresh_credential_name'  
+[ **\@refresh_credential_name =** ] 'refresh_credential_name'  
 SQL Database サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
 
-[ **@server_name =** ] 'server_name'  
+[ **\@server_name =** ] 'server_name'  
 指定したターゲット グループに追加する必要のある SQL Database サーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
 
-[ **@database_name =** ] 'database_name'  
+[ **\@database_name =** ] 'database_name'  
 指定したターゲット グループに追加する必要があるデータベースの名前。 target_type が 'SqlDatabase' の場合は、database_name を指定する必要があります。 database_name は nvarchar(128) であり、既定値はありません。
 
-[ **@elastic_pool_name =** ] 'elastic_pool_name'  
+[ **\@elastic_pool_name =** ] 'elastic_pool_name'  
 指定したターゲット グループに追加する必要のあるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合は、elastic_pool_name を指定する必要があります。 elastic_pool_name は nvarchar(128) であり、既定値はありません。
 
-[ **@shard_map_name =** ] 'shard_map_name'  
+[ **\@shard_map_name =** ] 'shard_map_name'  
 指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が 'SqlSqlShardMap' の場合は、shard_map_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
 
-[ **@target_id =** ] target_group_id OUTPUT  
+[ **\@target_id =** ] target_group_id OUTPUT  
 ターゲット グループに追加された場合にターゲット グループ メンバーに割り当てられるターゲット ID 番号。 target_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
 リターン コードの値 0 (成功) または 1 (失敗)
 
@@ -1157,13 +1157,13 @@ GO
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 履歴レコードを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値は NULL です。 job_id または job_name のいずれかを指定する必要がありますが、両方を指定することはできません。
 
-[ **@job_id =** ] job_id  
+[ **\@job_id =** ] job_id  
  レコードを削除するジョブのジョブ ID 番号。 job_id は uniqueidentifier であり、既定値は NULL です。 job_id または job_name のいずれかを指定する必要がありますが、両方を指定することはできません。
 
-[ **@oldest_date =** ] oldest_date  
+[ **\@oldest_date =** ] oldest_date  
  履歴に保持する最も古いレコード。 oldest_date は DATETIME2 であり、既定値は NULL です。 oldest_date を指定すると、sp_purge_jobhistory は指定した値より古いレコードのみを削除します。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -1218,7 +1218,7 @@ GO
 |**job_id** |uniqueidentifier|  ジョブの一意の ID。
 |**job_version**    |int    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。
 |**step_id**    |int|   ステップの (このジョブで) 一意の ID。 NULL は、これが親ジョブの実行であることを示します。
-|**is_active**| ビット |情報がアクティブか非アクティブかを示します。 1 はアクティブなジョブを示し、0 は非アクティブなジョブを示します。
+|**is_active**| bit |情報がアクティブか非アクティブかを示します。 1 はアクティブなジョブを示し、0 は非アクティブなジョブを示します。
 |**lifecycle**| nvarchar(50)|ジョブの状態を示す値: 'Created'、'In Progress'、'Failed'、'Succeeded'、'Skipped'、'SucceededWithSkipped'|
 |**create_time**|   datetime2(7)|   ジョブが作成された日付と時刻。
 |**start_time** |datetime2(7)|  ジョブが実行を開始した日付と時刻。 ジョブがまだ実行されていない場合は NULL です。

@@ -1,6 +1,6 @@
 ---
-title: アクセス権をレビューする | Microsoft Docs
-description: Azure Active Directory でアクセス権をレビューする
+title: Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする | Microsoft Docs
+description: グループまたはアプリケーションに対する自分のアクセスを Azure Active Directory アクセス レビューでレビューする方法を学習します。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,47 +11,74 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/16/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cc807a5693b363445f85d0b45a70681f58c5275
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76f90a5aa3f201fa5d1578ac63526be26377aedf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198630"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731210"
 ---
-# <a name="review-your-access"></a>アクセス権をレビューする
+# <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
-Azure Active Directory (Azure AD) には、Azure AD をはじめとする Microsoft Online Services 内のグループのメンバー管理やアプリケーションへのアクセス管理を省力化する "アクセス レビュー" という機能が備わっています。 皆さんには、アプリケーションへのアクセス権が付与されたユーザーまたはグループのメンバーに関して、そのアクセス権をレビューするよう求めるメールが Microsoft から送信される場合があります。 
+企業で Azure AD アクセス レビューという機能を使用して、Azure AD およびその他の Microsoft Online Services 内のグループまたはアプリケーションへのアクセスを管理する方法が、Azure Active Directory (Azure AD) により簡素化されます。
 
-## <a name="open-an-access-review"></a>アクセス レビューを開始する
+この記事では、グループまたはアプリケーションに対する自分のアクセスをレビューする方法を説明します。
 
-実行待ちのアクセス レビューを表示するには、メールに記載されているレビュー アクセス リンクをクリックします。 2018 年 8 月より、Azure AD ロール向けの電子メール通知のデザインが変わります。 ユーザーがレビューアーになるように招待されるときに送信される電子メールの例を次に示します。
+## <a name="open-the-access-review"></a>アクセス レビューを開く
 
-![アクセスのレビューの電子メール](./media/review-your-access/new-ar-email.png)
+アクセス レビューを実行する最初の手順は、アクセス レビューを見つけて開くことです。
 
-メールが届かない場合は、次の手順でアクセス レビューの場所を確認できます。
+1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対する自分のアクセスをレビューするように求めるメールの例を次に示します。
 
-1. [Azure AD アクセス パネル](https://myapps.microsoft.com)にサインインします。
+    ![アクセスのレビューの電子メール](./media/review-your-access/access-review-email.png)
 
-2. このページの右上隅にあるユーザー記号を選択すると、自分の名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
+1. **[アクセスのレビュー]** リンクをクリックして、アクセス レビューを開きます。
 
-3. ページの右側に**アクセス レビュー**という名称のタイルがある場合は、それを選択します。 このタイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
+メールが届いていない場合は、次の手順に従って、保留中のアクセス レビューを見つけることができます。
 
-## <a name="fill-out-an-access-review"></a>アクセス レビューに回答する
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) から、MyApps ポータルにサインインします。
 
-一覧からアクセス レビューを選択すると、自分のアクセス権が表示されます。 目的の行を選択して、アクセス権の継続を承認するか拒否するかを選んでください。
+    ![MyApps ポータル](./media/review-your-access/myapps-access-panel.png)
 
-アクセス権の継続を承認することについて、その正当性を説明するよう求められる場合もあります。
+1. ページの右上隅にあるユーザー記号をクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
+
+1. ページの右側にある **[アクセス レビュー]** タイルをクリックすると、保留中のアクセス レビューのリストが表示されます。
+
+    このタイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
+
+    ![アクセス レビューのリスト](./media/review-your-access/access-reviews-list.png)
+
+1. 実行するアクセス レビューの **[レビューの開始]** リンクをクリックします。
+
+## <a name="perform-the-access-review"></a>アクセス レビューを実行する
+
+アクセス レビューを開いたら、自分のアクセスを確認できます。
+
+1. 自分のアクセスをレビューし、アクセスが引き続き必要かどうかを判断します。
+
+    他のユーザーのアクセスをレビューするように要求した場合は、ページの外観が異なります。 詳細については、[グループまたはアプリケーションに対するアクセスのレビュー](perform-access-review.md)に関するページを参照してください。
+
+    ![アクセス レビューを実行する](./media/review-your-access/perform-access-review.png)
+
+1. **[はい]** をクリックしてアクセスを維持するか、**[いいえ]** をクリックしてアクセスを削除します。
+
+1. **[はい]** をクリックする場合は、**[理由]** ボックスに正当性を指定する必要がある場合があります。
+
+    ![アクセス レビューを実行する](./media/review-your-access/perform-access-review-submit.png)
+
+1. **[送信]** をクリックします。
+
+    選択内容が送信され、MyApps ポータルに戻ります。
+
+    応答内容を変更する場合は、アクセス レビュー ページをもう一度開き、応答内容を更新します。 応答内容は、アクセス レビューが終了するまでいつでも変更できます。
+
+    > [!NOTE]
+    > アクセスが不要になったことを指定した場合、すぐには削除されません。 レビューが終了されたか、管理者がレビューを停止したときに削除されます。
 
 ## <a name="next-steps"></a>次の手順
 
-拒否されたアクセス権はすぐには削除されません。 回答と承認の内容に変更がある場合は、回答をいったんリセットしてから改めて選択してください。 この手順は、アクセス レビューが完了するまで行うことができます。
-
-
-
-
-
-
+- [グループまたはアプリケーションに対するアクセス レビューを完了する](complete-access-review.md)

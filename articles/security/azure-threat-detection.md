@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 32e705c5c338d9bd7c16514b2dc2ab081a9caf6a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115557"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245256"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
-Azure では、Azure Active Directory (Azure AD)、Azure Log Analytics、Azure Security Center などのサービスを通じて、高度な脅威検出を行う組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
+Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Azure Security Center などのサービスを通じて、高度な脅威検出を行う組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
 
 Azure では、アプリのデプロイ要件を満たすセキュリティを構成およびカスタマイズするための幅広いオプションを提供します。 この記事では、これらの要件を満たす方法について説明します。
 
@@ -75,17 +75,17 @@ PIM は以下のことに役立ちます。
 
 -   特権ロールへのアクセスに関するアラートを受け取る。
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。 Log Analytics はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 新しいセキュリティ機能は自動的に配信されるため、継続的なメンテナンスやアップグレードのコストが節約されます。
+[Azure Monitor ログ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft クラウドベースの IT 管理ソリューションです。 Azure Monitor ログはクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 新しいセキュリティ機能は自動的に配信されるため、継続的なメンテナンスやアップグレードのコストが節約されます。
 
-Log Analytics は、価値のある独自のサービスに加え、[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) などの System Center のコンポーネントと連携して、セキュリティ管理のための既存の投資をクラウドに拡張できます。 System Center と Log Analytics を連携させることで、本格的なハイブリッド管理を実現できます。
+Azure Monitor ログは、価値のある独自のサービスに加え、[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) などの System Center のコンポーネントと連携して、セキュリティ管理のための既存の投資をクラウドに拡張できます。 System Center と Azure Monitor ログを連携させることで、本格的なハイブリッド管理を実現できます。
 
 ### <a name="holistic-security-and-compliance-posture"></a>包括的なセキュリティおよびコンプライアンスの体制
 
-[Log Analytics の [セキュリティおよび監査] ダッシュボード](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [セキュリティおよび監査] ダッシュボードは、Log Analytics におけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
+[Log Analytics の [セキュリティおよび監査] ダッシュボード](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [セキュリティおよび監査] ダッシュボードは、Azure Monitor ログにおけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
 
-Log Analytics のダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
+Azure Monitor ログのダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
 
 ![Log Analytics の [セキュリティおよび監査] ダッシュボード](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -102,25 +102,25 @@ Log Analytics の [セキュリティおよび監査] ダッシュボードは�
 -   **一般的なセキュリティ クエリ**: 環境を監視するために使用できる最も一般的なセキュリティ クエリが一覧表示されます。 任意のクエリを選択すると、[検索] ウィンドウが開き、そのクエリの結果が表示されます。
 
 ### <a name="insight-and-analytics"></a>分析情報と分析
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) の核となる機能は、Azure でホストされているリポジトリです。
+[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)の核となる機能は、Azure でホストされているリポジトリです。
 
 ![分析情報と分析の図](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 データ ソースを構成し、ソリューションをサブスクリプションに追加することによって、接続されているソースからリポジトリにデータを収集します。
 
-![Log Analytics のダッシュボード ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Azure Monitor ログ ダッシュ ボード](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 データ ソースとソリューションは、独自のプロパティのセットを持つレコードの種類をそれぞれ別々に作成しますが、リポジトリに対するクエリでまとめて分析することもできます。 同じツールとメソッドを使用することで、さまざまなソースによって収集された各種のデータを使用することができます。
 
 
-Log Analytics とのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
+Azure Monitor ログとのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
 * [ログ検索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)。収集されたデータを分析するためのクエリを構築します。
 * [ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)。最も重要な検索のグラフィカル表示でカスタマイズできます。
 * [ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)。追加の機能と分析ツールが提供されます。
 
 ![分析ツール](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-ソリューションにより、Log Analytics に機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。
+ソリューションにより、Azure Monitor ログに機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。
 
 [セキュリティおよび監査] ダッシュボードはこのような種類のソリューションの一例です。
 

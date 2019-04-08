@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 8f2a7a953ce2964645c281d9454a73b0cf1a8ff6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747190"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531642"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -29,7 +29,7 @@ ms.locfileid: "55747190"
 Azure Data Explorer には、サポートされているソース データ ストアからデータをコピーすることができます。 また、Azure Data Explorer のデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md)に関する記事の表をご覧ください。
 
 >[!NOTE]
->現時点では、セルフホステッド統合ランタイムを使用して、Azure Data Explorer とオンプレミス データ ストアの間で双方向にデータをコピーすることは、まだサポートされていません。
+>セルフホステッド統合ランタイムを使用して、Azure Data Explorer とオンプレミス データ ストアの間で双方向にデータをコピーすることは、バージョン 3.14 からサポートされています。
 
 Azure Data Explorer コネクタを使用すると、次のことができます。
 
@@ -45,6 +45,22 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
+Azure Data Explorer のコネクタでは、サービス プリンシパル認証を使用しています。 次の手順に従い、サービス プリンシパルを取得してアクセス許可を付与します。
+
+1. 「[アプリケーションを Azure AD テナントに登録する](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)」に従って、Azure Active Directory (Azure AD) にアプリケーション エンティティを登録します。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+
+    - アプリケーション ID
+    - アプリケーション キー
+    - テナント ID
+
+2. Azure Data Explorer でサービス プリンシパルに適切なアクセス許可を付与します。 「[Azure データ エクスプローラーのデータベース アクセス許可を管理する](../data-explorer/manage-database-permissions.md)」と、ロールおよびアクセス許可についての詳細情報やアクセス許可の管理方法についてのチュートリアルを参照してください。 一般的に、次の操作を実行する必要があります。
+
+    - **ソースとして**、少なくとも**データベース ビューアー** ロールをデータベースに付与します。
+    - **シンクとして**、少なくとも**データベースのデータ取り込み**ロールをデータベースに付与します。
+
+>[!NOTE]
+>作成のために ADF の UI を使用していると、リンクされたサービスのデータベースの一覧表示やデータセットのテーブルの一覧表示の操作で、サービス プリンシパルに付与される上位の特権のある権限が必要になることがあります。 または、データベース名とテーブル名を手動で入力することも選択できます。 コピー アクティビティの実行は、サービス プリンシパルが適切なデータの読み取り/書き込みアクセス許可を与えられている限り機能します。
+
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
@@ -52,9 +68,9 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります | はい |
 | endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net ` です。 | はい |
 | database | データベースの名前。 | はい |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、通常、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "**機関 ID**" として知られています。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、通常、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "**AAD アプリケーション クライアント ID**" として知られています。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 これは、通常、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "**AAD アプリケーション キー**" として知られています。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 
 **リンクされたサービスのプロパティの例:**
 
@@ -122,6 +138,9 @@ Azure Data Explorer からデータをコピーするには、コピー アク�
 | query | [KQL 形式](/azure/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。 | はい |
 | queryTimeout | クエリ要求がタイムアウトするまでの待機時間。既定値は 10 分 (00:10:00)、許容される最大値は 1 時間 (01:00:00) です。 | いいえ  |
 
+>[!NOTE]
+>既定で、Azure Data Explorer ソースでは、500,000 レコードまたは 64 MB のサイズ制限があります。 切り捨てることなくすべてのレコードを取得するには、クエリの先頭に `set notruncation;` を指定します。 詳細については、「[Query limits (クエリの制限)](https://docs.microsoft.com/azure/kusto/concepts/querylimits)」を参照してください。
+
 **例:**
 
 ```json
@@ -162,7 +181,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | はい |
-| ingestionMappingName | Kusto テーブルで事前作成済みの [csv マッピング](/azure/kusto/management/mappings#csv-mapping)の名前。 ソースから Azure Data Explore に列をマップするには、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md)も使用できます。 | いいえ  |
+| ingestionMappingName | Kusto テーブルで事前作成済みの**[マッピング](/azure/kusto/management/mappings#csv-mapping)** の名前。 ソースから Azure Data Explorer に列をマッピングするには (CSV/JSON/Avro 形式など、**[サポートされているすべてのソース ストアや形式](copy-activity-overview.md#supported-data-stores-and-formats)** に適用されます)、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md)(名前で暗黙的に、または構成で明示的に) や Azure Data Explorer のマッピングを使用できます。 | いいえ  |
 
 **例:**
 
@@ -177,7 +196,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional csv mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
             }
         },
         "inputs": [

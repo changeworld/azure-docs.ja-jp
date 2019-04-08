@@ -5,15 +5,15 @@ services: storage
 author: artemuwka
 ms.service: storage
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 111c24c1cd608542a5ef7da85f93ca22082af6d9
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244608"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726721"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>AzCopy v10 (プレビュー) を使用してデータを転送する
 
@@ -24,9 +24,9 @@ AzCopy v10 (プレビュー) は、Microsoft Azure BLOB および File Storage �
 - ファイル システムを Azure BLOB に、またはその逆に、同期します。 `azcopy sync <source> <destination>`を使用します。 増分コピーのシナリオに最適です。
 - Azure Data Lake Storage Gen2 API をサポートします。 ADLS Gen2 API を呼び出す URI としては `myaccount.dfs.core.windows.net` を使用します。
 - 別のアカウントへのアカウント全体のコピーをサポートします (Blob service のみ)。
-- アカウント間のコピーには、新しい [Put from URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API を使用します。 クライアントへのデータ転送は必要なく、転送が高速化されます。
+- アカウント間のコピーには、新しい [Put Block from URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API が使用されるようになりました。 クライアントへのデータ転送は必要なく、転送が高速化されます。
 - 特定のパスのファイルおよび BLOB を一覧表示/削除します。
-- パスのワイルドカード パターンおよび --include フラグと --exclude フラグをサポートします。
+- パスと --exclude フラグでワイルドカード パターンがサポートされています。
 - 回復性の向上: すべての AzCopy インスタンスでジョブの順序および関連するログ ファイルが作成されます。 以前のジョブを表示および再起動し、失敗したジョブを再開できます。 AzCopy は、障害後の転送の自動再試行も行います。
 - 全般的なパフォーマンスの向上。
 
@@ -35,9 +35,9 @@ AzCopy v10 (プレビュー) は、Microsoft Azure BLOB および File Storage �
 ### <a name="latest-preview-version-v10"></a>最新のプレビュー バージョン (v10)
 
 AzCopy の最新のプレビュー バージョンは以下からダウンロードできます。
-- [Windows](https://aka.ms/downloadazcopy-v10-windows)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac)
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 ### <a name="latest-production-version-v81"></a>最新の製品バージョン (v8.1)
 
@@ -49,18 +49,23 @@ AzCopy の最新のプレビュー バージョンは以下からダウンロー
 
 ## <a name="post-installation-steps"></a>インストール後の手順
 
-AzCopy v10 では、インストールは必要ありません。 任意のコマンド ライン アプリケーションを開き、`azcopy.exe` 実行可能ファイルが配置されているフォルダーに移動します。 必要に応じて、AzCopy のフォルダーの場所をシステム パスに追加できます。
+AzCopy v10 では、インストールは必要ありません。 任意のコマンド ライン アプリケーションを開き、`azcopy.exe` (Windows) または `azcopy` (Linux) 実行可能ファイルが配置されているフォルダーに移動します。 必要に応じて、AzCopy のフォルダーの場所をシステム パスに追加できます。
 
 ## <a name="authentication-options"></a>認証オプション
 
 AzCopy v10 では、Azure Storage での認証時に、次のオプションを使用することができます。
-- **Azure Active Directory [BLOB と ADLS Gen2 サービスでサポート]**。 Azure Active Directory を使用し、```.\azcopy login``` を使ってサインインします。  Azure Active Directory 認証を使用して Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。
+- **Azure Active Directory [BLOB と ADLS Gen2 サービスでサポート]**。 Azure Active Directory を使用し、```.\azcopy login``` を使ってサインインします。  Azure Active Directory 認証を使用して Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。 マネージド サービス ID (MSI) を使用して認証する場合は、Azure コンピューティング インスタンスにデータ共同作成者ロールを付与してから `azcopy login --identity` を使用します。
 - **SAS トークン [BLOB とファイル サービスでサポート]**。 SAS トークンをコマンド ラインで BLOB パスに追加して使用します。 Azure Portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
 
-> [!IMPORTANT]
-> Microsoft サポートにサポート要求を送信する (またはいずれかのサード パーティが関わる問題のトラブルシューティングを行う) ときには、SAS が誤って誰かと共有されないように、実行しようとしているコマンドの修正済みバージョンを共有してください。 修正済みバージョンは、ログ ファイルの先頭にあります。 詳細については、この記事の後半の「トラブルシューティング」セクションを参照してください。
-
 ## <a name="getting-started"></a>使用の開始
+
+> [!TIP]
+> **グラフィカル ユーザー インターフェイスを使用したい場合**
+>
+> [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) をお試しください。これは、Azure Storage データの管理を簡素化するデスクトップ クライアントです。Azure Storage との間でのデータ転送を高速化するために、**AzCopy を使用できるようになりました**。
+>
+> Storage Explorer の [プレビュー] メニューで AzCopy 機能を有効にするだけです。 有効にすると、パフォーマンスを向上させるために、Blob Storage にデータをアップロードおよびダウンロードするときに AzCopy が使用されるようになります。
+> ![Azure Storage Explorer で転送エンジンとして AzCopy を有効にする](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 
 AzCopy v10 は、単純な自己文書化された構文を備えています。 Azure Active Directory にログインした場合、一般的な構文は次のようになります。
 
@@ -80,7 +85,7 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 使用可能なコマンドの一覧を取得する方法を次に示します。
 
 ```azcopy
-.\azcopy -help
+.\azcopy --help
 # Using the alias instead
 .\azcopy -h
 ```
@@ -88,7 +93,7 @@ AzCopy v10 は、単純な自己文書化された構文を備えています。
 特定のコマンドのヘルプ ページと例を表示するには、次のコマンドを実行します。
 
 ```azcopy
-.\azcopy <cmd> -help
+.\azcopy <cmd> --help
 # Example:
 .\azcopy cp -h
 ```
@@ -153,7 +158,7 @@ BLOB ストレージ アカウントで階層型名前空間を有効にして�
 
 2 つのストレージ アカウント間でデータをコピーするには、次のコマンドを使用します。
 ```azcopy
-.\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
+.\azcopy cp "https://account.blob.core.windows.net/<sastoken>" "https://otheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
 > [!NOTE]
@@ -161,27 +166,35 @@ BLOB ストレージ アカウントで階層型名前空間を有効にして�
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>VHD イメージをストレージ アカウントにコピーする
 
-既定では、AzCopy v10 はデータをブロック BLOB にアップロードします。 ただし、コピー元ファイルの拡張子が vhd の場合は、AzCopy v10 は既定でページ BLOB にアップロードします。 現在、この動作は構成できません。
+`--blob-type=PageBlob` を使用して、ディスク イメージを ページ BLOB として Blob Storage にアップロードします。
 
-## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>同期: 増分コピーと削除 (Blob ストレージのみ)
+```azcopy
+.\azcopy cp "C:\myimages\diskimage.vhd" "https://account.blob.core.windows.net/mycontainer/diskimage.vhd<sastoken>" --blob-type=PageBlob
+```
+
+## <a name="sync-incremental-copy-and-optional-delete-blob-storage-only"></a>同期: 増分コピーと (必要に応じた) 削除 (Blob Storage のみ)
+
+sync コマンドでは、ファイル名および最終更新日時のタイムスタンプを比較して、同期元ディレクトリの内容を同期先のディレクトリに同期します。 `--delete-destination=prompt|true` フラグが指定されているときに、同期元に存在しないファイルが同期先にある場合、この操作では、必要に応じてそれらのファイルが削除されます。 既定では、削除動作は無効になっています。
 
 > [!NOTE]
-> sync コマンドでは同期元から同期先にコンテンツが同期され、これには同期元に存在しないファイルの同期先での削除が含まれます。 目的の同期先であることを確認してください。
+> `--delete-destination` フラグを使用するときには注意が必要です。 アカウント内での誤削除を防ぐために、同期で削除動作を有効にする前に、[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)機能を有効にします。
+>
+> `--delete-destination` が true に設定されている場合、AzCopy はユーザーにメッセージを表示せずに、同期元に存在しないファイルを同期先から削除します。 確認メッセージを表示する場合は、`--delete-destination=prompt` を使用してください。
 
 ストレージ アカウントにローカル ファイル システムを同期するには、次のコマンドを使用します。
 
 ```azcopy
-.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
+.\azcopy sync "C:\local\path" "https://account.blob.core.windows.net/mycontainer<sastoken>"
 ```
 
 同じ方法で、ローカル ファイル システムに BLOB コンテナーを同期できます。
 
 ```azcopy
 # If you're using Azure Active Directory authentication the sastoken is not required
-.\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
+.\azcopy sync "https://account.blob.core.windows.net/mycontainer" "C:\local\path"
 ```
 
-このコマンドでは、最終変更タイムスタンプに基づいて、同期元を同期先に増分的に同期できます。 同期元でファイルを追加または削除すると、AzCopy v10 は同期先で同じことを行います。 削除する前に、AzCopy でファイルの削除の確認が求められます。
+このコマンドでは、最終変更タイムスタンプに基づいて、同期元を同期先に増分的に同期できます。 同期元でファイルを追加または削除すると、AzCopy v10 は同期先で同じことを行います。 sync コマンドで削除動作が有効になっている場合、AzCopy は同期元に存在しなくなったファイルを同期先から削除します。
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
@@ -214,13 +227,6 @@ export AZCOPY_CONCURRENCY_VALUE=<value>
 # If the value is blank then the default value is currently in use
 ```
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-AzCopy v10 では、すべてのジョブに対してログ ファイルとプラン ファイルが作成されます。 ログを使用することで、潜在的な問題を調査してトラブルシューティングできます。 ログには、エラーの状態 (UPLOADFAILED、COPYFAILED、DOWNLOADFAILED)、完全なパス、エラーの理由が含まれます。 ジョブ ログとプラン ファイルは、Windows では %USERPROFILE\\.azcopy フォルダーに、Mac および Linux では $HOME\\.azcopy フォルダーにあります。
-
-> [!IMPORTANT]
-> Microsoft サポートにサポート要求を送信する (またはいずれかのサード パーティが関わる問題のトラブルシューティングを行う) ときには、SAS が誤って誰かと共有されないように、実行しようとしているコマンドの修正済みバージョンを共有してください。 修正済みバージョンは、ログ ファイルの先頭にあります。
-
 ### <a name="change-the-location-of-the-log-files"></a>ログ ファイルの場所を変更する
 
 必要な場合や、OS ディスクがいっぱいにならないように、ログ ファイルの場所を変更できます。
@@ -237,6 +243,17 @@ export AZCOPY_LOG_LOCATION=<value>
 # If the value is blank then the default value is currently in use
 ```
 
+### <a name="change-the-default-log-level"></a>既定のログ レベルを変更する
+
+既定では、AzCopy ログ レベルは INFO に設定されます。 ディスク領域を節約するためにログ詳細度を下げたい場合は、``--log-level`` オプションを使用して設定を上書きます。 使用可能なログ レベルは、DEBUG、INFO、WARNING、ERROR、PANIC、FATAL です
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+AzCopy v10 では、すべてのジョブに対してログ ファイルとプラン ファイルが作成されます。 ログを使用することで、潜在的な問題を調査してトラブルシューティングできます。 ログには、エラーの状態 (UPLOADFAILED、COPYFAILED、DOWNLOADFAILED)、完全なパス、エラーの理由が含まれます。 ジョブ ログとプラン ファイルは、Windows では %USERPROFILE%\\.azcopy フォルダーに、Mac および Linux では $HOME\\.azcopy フォルダーにあります。
+
+> [!IMPORTANT]
+> Microsoft サポートにサポート要求を送信する (またはいずれかのサード パーティが関わる問題のトラブルシューティングを行う) ときには、SAS が誤って誰かと共有されないように、実行しようとしているコマンドの修正済みバージョンを共有してください。 修正済みバージョンは、ログ ファイルの先頭にあります。
+
 ### <a name="review-the-logs-for-errors"></a>ログでエラーを確認する
 
 次のコマンドでは、04dc9ca9-158f-7945-5933-564021086c79 ログから状態が UPLOADFAILED であるすべてのエラーが取得されます。
@@ -244,6 +261,8 @@ export AZCOPY_LOG_LOCATION=<value>
 ```azcopy
 cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
+
+代わりに、`azcopy jobs show <jobid> --with-status=Failed` コマンドを使用して、転送に失敗したファイル名を表示することもできます。
 
 ### <a name="view-and-resume-jobs"></a>ジョブを表示および再開する
 
@@ -270,10 +289,6 @@ cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
 ```
-
-### <a name="change-the-default-log-level"></a>既定のログ レベルを変更する
-
-既定では、AzCopy ログ レベルは INFO に設定されます。 ディスク領域を節約するためにログ詳細度を下げたい場合は、``--log-level`` オプションを使用して設定を上書きます。 使用可能なログ レベルは、DEBUG、INFO、WARNING、ERROR、PANIC、FATAL です
 
 ## <a name="next-steps"></a>次の手順
 

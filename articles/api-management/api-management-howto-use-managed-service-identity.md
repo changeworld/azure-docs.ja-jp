@@ -1,6 +1,6 @@
 ---
-title: Azure API Management で Azure 管理対象サービス ID を使用する | Microsoft Docs
-description: API Management で Azure 管理対象サービス ID を使用する方法について説明します。
+title: Azure API Management でマネージド ID を使用する | Microsoft Docs
+description: API Management でマネージド ID を使用する方法
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -11,27 +11,27 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730749"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310558"
 ---
-# <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure API Management で Azure 管理対象サービス ID を使用する
+# <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
-この記事では、API Management サービス インスタンスの管理対象サービス ID を作成する方法と、その他のリソースにアクセスする方法について説明します。 Azure Active Directory (Azure AD) によって生成された管理対象サービス ID によって、API Management インスタンスは、Azure AD で保護された他のリソース (Azure Key Vault など) に簡単かつ安全にアクセスすることができます。 この管理対象サービス ID は Azure によって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。 Azure 管理対象サービス ID について詳しくは、[Azure リソースの管理対象サービス ID](../active-directory/msi-overview.md) に関するページをご覧ください。
+この記事では、API Management サービス インスタンスのマネージド ID を作成する方法と、その他のリソースにアクセスする方法について説明します。 Azure Active Directory (Azure AD) によって生成されたマネージド ID によって、API Management インスタンスは、Azure AD で保護された他のリソース (Azure Key Vault など) に簡単かつ安全にアクセスすることができます。 この ID は Azure によって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="create-a-managed-service-identity-for-an-api-management-instance"></a>API Management インスタンスの管理されたサービス ID を作成する
+## <a name="create-a-managed-identity-for-an-api-management-instance"></a>API Management インスタンスのマネージド ID を作成する
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-ポータルで管理対象サービス ID を設定するには、最初に通常の方法で API 管理インスタンスを作成した後、機能を有効にします。
+ポータルでマネージド ID を設定するには、最初に通常の方法で API Management インスタンスを作成した後、機能を有効にします。
 
 1. ポータルを使って通常の方法で API 管理インスタンスを作成します。 ポータルでアプリに移動します。
-2. **[Managed service identity]\(管理対象のサービス ID\)** を選びます。
+2. **[マネージド サービス ID]** を選びます。
 3. [Azure Active Directory に登録する] を [オン] に切り替えます。 [保存] をクリックします。
 
 ![MSI を有効化する](./media/api-management-msi/enable-msi.png)
@@ -80,7 +80,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>管理されたサービス ID を使用してその他のリソースにアクセスする
 
 > [!NOTE]
-> 現時点では、管理サービス ID を使用して、API Management のカスタム ドメイン名用に Azure Key Vault から証明書を取得できます。 より多くのシナリオがまもなくサポートされます。
+> 現時点では、マネージド ID を使用して、API Management のカスタム ドメイン名用に Azure Key Vault から証明書を取得できます。 より多くのシナリオがまもなくサポートされます。
 >
 >
 
@@ -110,7 +110,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 次の例では、次の手順を含む Azure Resource Manager テンプレートを示します。
 
-1. 管理されたサービス ID を使用して API Management インスタンスを作成します。
+1. マネージド ID を使用して API Management インスタンスを作成します。
 2. Azure Key Vault インスタンスのアクセス ポリシーを更新し、そこからシークレットを取得することを API Management インスタンスに許可します。
 3. Key Vault インスタンスからの証明書を使用してカスタム ドメイン名を設定して API Management インスタンスを更新します。
 
@@ -166,7 +166,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
         "keyVaultIdToCertificate": {
             "type": "string",
             "metadata": {
-                "description": "Reference to the KeyVault certificate."
+                "description": "Reference to the KeyVault certificate. https://contoso.vault.azure.net/secrets/contosogatewaycertificate."
             }
         }
     },
@@ -238,7 +238,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 ## <a name="next-steps"></a>次の手順
 
-Azure 管理対象サービス ID の詳細を確認します。
+詳細については、Azure リソースのマネージド ID について学びます。
 
-* [Azure リソースの管理対象サービス ID](../active-directory/msi-overview.md)
+* [Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure リソース マネージャーのテンプレート](https://github.com/Azure/azure-quickstart-templates)

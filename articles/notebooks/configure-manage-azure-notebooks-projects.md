@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904371"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774559"
 ---
 # <a name="manage-and-configure-projects"></a>プロジェクトの管理と構成
 
@@ -59,6 +59,17 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 新しい DSVM インスタンスを作成するには、[Ubuntu Data Science VM の作成](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に関するページの指示に従います。 Azure Notebooks 内のドロップダウン リストに DSVM が表示されるようにする場合は、**Data Science Virtual Machine for Linux (Ubuntu)** イメージを使用します。  その他の理由で Windows または CentOS イメージを使用する必要がある場合は、**[Direct Compute]\(直接コンピューティング\)** オプションを使用して手動で DSVM に接続できます。
 
+> [!IMPORTANT]
+> [Direct Compute]\(直接コンピューティング\) または Data Science Virtual Machine を使用する場合、それらを実行するノートブックは完全に自己完結型でなければなりません。 現時点では、Azure Notebooks は *.ipynb* ファイルのみを VM にコピーし、プロジェクト内の他のファイルはコピーしません。 その結果、他の VM で実行されているノートブックでは、他のプロジェクト ファイルを見つけることができません。
+>
+> この動作を回避するには、次の 2 つの方法があります。
+>
+> 1. プロジェクト ファイルを手動で VM にコピーします。
+>
+> 2. プライマリ ノートブックの前に最初に実行するセットアップ ノートブック内にそのファイルを埋め込みます。 セットアップ ノートブックで、セルにファイルの内容が含まれている各ファイルのコード セルを作成します。 次に、各セルの先頭にコマンド `%%writefile <filename>` を挿入します。ここで、`<filename>` は、内容を受け取るファイルの名前です。 ノートブックを実行すると、VM 上にそれらすべてのファイルが作成されます。 例については、[Microsoft Pet Detector デモの setup.ipynb ファイル](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub) をご覧ください。
+>
+>     ![コード セルの先頭で %%writefile コマンドを使用する](media/setup-notebook-writefile-command.png)
+
 ## <a name="edit-project-metadata"></a>プロジェクト メタデータを編集する
 
 プロジェクト ダッシュボードで、**[プロジェクト設定]**、**[情報]** タブの順に選択します。このタブには、次の表に示すプロジェクトのメタデータが格納されています。 プロジェクト メタデータは、いつでも変更できます。
@@ -66,7 +77,7 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 | Setting | 説明 |
 | --- | --- |
 | プロジェクト名 | Azure Notebooks が表示目的で使用する、ご自身のプロジェクトのフレンドリ名。 例: "Python の Hello World" |
-| プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます (形式: `https://notebooks.azure.com/<user_id>/projects/<project_id>`)。 この ID には文字、数字、およびハイフンのみを使用できます。また、30 文字に制限されています。 どのような ID を使用すればいいかよくわからない場合、一般的な規則としては、ご自身のプロジェクト名を小文字で表記し、スペース部分をハイフンで表したバージョンを使います。たとえば、プロジェクト名が "My Project Name" の場合、プロジェクト ID は "my-project-name" になります。 |
+| プロジェクト ID | プロジェクトの共有に使用するカスタム識別子。URL の一部として使用されます。 この ID には、文字、数字、およびハイフンのみを使用できます。長さは 30 文字に制限されています。また、この ID は[予約済みプロジェクト ID](create-clone-jupyter-notebooks.md#reserved-project-ids) にすることはできません。 何を使用すればよいかよくわからない場合は、"my-notebook-project" のように、プロジェクトを小文字にしてスペースをハイフンに変えたバージョンを使用するのが一般的な慣例です (長さの制限に合わせて必要に応じて短くします)。 |
 | パブリック プロジェクト | 設定すると、リンクを知っているすべてのユーザーがプロジェクトにアクセスできます。 プライベート プロジェクトを作成する場合、このオプションはオフにします。 |
 | 複製を非表示にする | 設定すると、他のユーザーが、このプロジェクトに対して作成された複製の一覧を表示できません。 複製を非表示にする機能は、講義にノートブックを使っている場合など、同じ組織に所属していない人が共有先として多数存在するプロジェクトに便利です。 |
 
@@ -99,7 +110,7 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 ![ファイルのコンテキスト メニューのコマンド](media/project-file-commands.png)
 
-| コマンド | キーボード ショートカット | Action |
+| command | キーボード ショートカット | Action |
 | --- | --- | --- |
 | ラン | r (またはクリック) | ノートブック ファイルを実行します。 他の種類のファイルは、閲覧のみの設定で表示されます。  |
 | リンクのコピー | y | ファイルへのリンクをクリップボードにコピーします。 |
@@ -117,7 +128,7 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 
 プレビュー ページでは、複数のツール バー コマンドとキーボード ショートカットを使用できます。
 
-| コマンド | キーボード ショートカット | Action |
+| command | キーボード ショートカット | Action |
 | --- | --- | --- |
 | 共有 | s | リンクの取得、ソーシャル メディアでの共有、埋め込み用 HTML の取得、電子メールの送信など、共有操作を行うためのポップアップを表示します。 |
 | 複製 | c  | ノートブックをご自身のアカウントに複製します。 |

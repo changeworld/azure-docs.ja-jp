@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: arvindh
+ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6984307dda58aeba840f2b6d08e84fb4f60cacc8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 84f1b7c9461d2eba5e13be8b15b2cbcc62715c23
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163072"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792040"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 シングル サインオン (SSO) によって、ユーザーが Azure Active Directory (Azure AD) 内のアプリケーションにサインオンするときのセキュリティと利便性が向上します。 この記事では、シングル サインオンの方法について説明します。アプリケーションを構成するときに最適な SSO 方法を選択するために役立ちます。
@@ -35,14 +35,14 @@ ms.locfileid: "56163072"
 
 このフローチャートは、実際の状況に最適なシングル サインオンの方法を判断するのに役立ちます。 
 
-![シングル サインオンの方法を選択する](./media/what-is-single-sign-on/choose-single-sign-on-method.png)
+![シングル サインオンの方法を選択する](./media/what-is-single-sign-on/choose-single-sign-on-method-updated.png)
 
 次の表は、シングル サインオンの方法と、詳細情報へのリンクをまとめたものです。 
 
 | シングル サインオンの方法 | アプリケーションの種類 | いつ使用するか |
 | :------ | :------- | :----- |
 | [OpenID Connect と OAuth](#openid-connect-and-oauth) | クラウドのみ | 新しいアプリケーションを開発するときは、OpenID Connect と OAuth を使用します。 このプロトコルによってアプリケーションの構成が簡略化されます。また、簡単に使用できる SDK が用意されており、お客様のアプリケーションで MS Graph を使用できるようになります。
-| [SAML](#saml-sso) | クラウドのみ | OpenID Connect または OAuth を使用しない既存のアプリケーションには、可能な限り SAML を選択してください。 SAML は、SAML プロトコルのいずれかを使用して認証するアプリケーションの場合に機能します。|
+| [SAML](#saml-sso) | クラウドとオンプレミス | OpenID Connect または OAuth を使用しない既存のアプリケーションには、可能な限り SAML を選択してください。 SAML は、SAML プロトコルのいずれかを使用して認証するアプリケーションの場合に機能します。|
 | [パスワード ベース](#password-based-sso) | クラウドとオンプレミス | アプリケーションがユーザー名とパスワードを使用して認証する場合にはパスワードベースを選択します。 パスワードベースのシングル サインオンでは、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生が可能になります。 この方法では、アプリケーションによって提供される既存のサインイン プロセスが使用されますが、管理者がパスワードを管理できるようになります。 |
 | [リンク](#linked-sso) | クラウドとオンプレミス | アプリケーションが別の ID プロバイダー サービスでのシングル サインオンの用に構成されている場合は、リンクされたシングル サインオンを選択します。 このオプションは、アプリケーションにシングル サインオンを追加するものではありません。 ただし、アプリケーションには、Active Directory フェデレーション サービス (AD FS) などの別のサービスを使って既にシングル サインオンが実装されている場合があります。|
 | [Disabled](#disabled-sso) | クラウドとオンプレミス | シングル サインオンのためにアプリを構成する準備ができていない場合は、無効化のシングル サインオンを選択します。 ユーザーは、そのアプリケーションを起動するたびにユーザー名とパスワードを入力する必要があります。|
@@ -69,7 +69,9 @@ SAML ベースのシングル サインオンは、以下のいずれかのプ�
 - SAML 2.0
 - WS-Federation
 
-SAML ベースのシングル サインオンのためにアプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-portal.md)ことに関するページを参照してください。 また、多くのサービスとしてのソフトウェア (SaaS) アプリケーションには[アプリケーション固有のチュートリアル](../saas-apps/tutorial-list.md)が用意されており、SAML ベースのシングル サインオンの構成が順を追って説明されています。 
+SAML ベースのシングル サインオンのためにアプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-portal.md)ことに関するページを参照してください。 また、多くのサービスとしてのソフトウェア (SaaS) アプリケーションには[アプリケーション固有のチュートリアル](../saas-apps/tutorial-list.md)が用意されており、SAML ベースのシングル サインオンの構成が順を追って説明されています。
+
+WS-Federation のためにアプリケーションを構成するには、SAML ベースのシングル サインオンのためにアプリケーションを構成する場合と同じガイダンスに従って、「[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-portal.md)」を参照してください。 Azure AD を使用するようにアプリケーションを構成する手順では、WS-Federation エンドポイントの Azure AD ログイン URL `https://login.microsoftonline.com/<tenant-ID>/wsfed` と置き換える必要があります。
 
 SAML プロトコルの詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)」を参照してください。
 
