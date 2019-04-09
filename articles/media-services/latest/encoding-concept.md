@@ -9,19 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/27/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 52e7fdf6de25300d4f78ee9822aca4ad83f646e9
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408427"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243621"
 ---
 # <a name="encoding-with-media-services"></a>Media Services でのエンコード
 
-Azure Media Services を使用すると、高品質なデジタル メディア ファイルをさまざまなブラウザーやデバイスで再生できる形式にエンコードできます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 このトピックでは、Media Services v3 でコンテンツをエンコードする方法について説明します。
+Azure Media Services を使用して、高品質なデジタル メディア ファイルをアダプティブ ビットレート MP4 ファイルにエンコードして、さまざまなブラウザーやデバイスで再生できるようにします。 Media Services のエンコード ジョブが成功すると、アダプティブ ビットレート MP4 とストリーミング構成ファイルのセットを含む出力アセットが作成されます。 構成ファイルには、.ism、.ismc、.mpi、および修正すべきではないその他のファイルが含まれます。 エンコード ジョブが終わったら、[ダイナミック パッケージ](dynamic-packaging-overview.md)を利用して、ストリーミングを開始できます。
+
+出力アセット内の動画をクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 次に、マニフェストに指定された形式に基づいて、クライアントによって選択されたプロトコルでストリームがクライアントに送信されます。
+
+次の図は、ダイナミック パッケージのワークフローを使用したオンデマンド ストリーミングを示しています。
+
+![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+
+このトピックでは、Media Services v3 でコンテンツをエンコードする方法について説明します。
+
+## <a name="transforms-and-jobs"></a>変換およびジョブ
 
 Media Services v3 でエンコードするには、[変換](https://docs.microsoft.com/rest/api/media/transforms)と[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を作成する必要があります。 変換では、エンコード設定と出力のレシピを定義します。ジョブはレシピのインスタンスです。 詳細については、「[Transform と Job](transforms-jobs-concept.md)」を参照してください。
 
@@ -58,11 +68,13 @@ Media Services でエンコードする場合、プリセットを使用して�
 
 Media Services では、特定のエンコーディング ニーズと要件を満たすようにプリセットのすべての値をカスタマイズできます。 変換プリセットをカスタマイズする場合は、**StandardEncoderPreset** プリセットを使用します。 詳細な説明と例については、[エンコーダー プリセットのカスタマイズ方法](customize-encoder-presets-how-to.md)に関するページを参照してください。
 
-## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
+## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケール
 
-現在は、Azure portal または Media Services v2 API を使用して RU を設定する必要があります ([メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページの説明に従います)。 
+メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Transform と Job](transforms-jobs-concept.md)
+* [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)
+* [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)
+* [ご自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)
 * [Media Services を使用してアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)

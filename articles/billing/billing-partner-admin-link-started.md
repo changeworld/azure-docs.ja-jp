@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c38b28a247feb94efd5f4b73e690d30aac9ed73a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900240"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008595"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -138,3 +138,25 @@ C:\ az managementpartner delete --partner-id 12345
 **他のパートナーまたは顧客がパートナー ID へのリンクを編集または削除できますか。**
 
 リンクはユーザー アカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。 
+
+
+**会社に複数の MPN ID がある場合は、どれを使用すべきですか。**
+
+仮想組織 (v-org) MPN ID 以外の任意の有効な MPN ID を使用できます。 ほとんどのパートナーは、顧客が拠点としている地域またはサービスが提供される地域の MPN ID を使用することを選択します。
+
+**リンク済みのパートナー ID の影響を受ける収益レポートはどこで確認できますか。**
+
+影響を受ける収益レポートは、[マイ分析情報ダッシュボード](https://partner.microsoft.com/membership/reports/myinsights)で見つかります。 パートナーの関連付けの種類として [Partner Admin Link]\(パートナー管理リンク\) を選択する必要があります。
+
+**レポートに顧客が表示されないのはなぜですか。**
+
+レポートに顧客が表示されないのは、次の理由によります。
+
+1. リンクされたユーザー アカウントに、顧客の Azure サブスクリプションまたはリソースに対する[ロールベースのアクセス](https://docs.microsoft.com/azure/role-based-access-control/overview)がありません。
+
+2. ユーザーの[ロールベースのアクセス](https://docs.microsoft.com/azure/role-based-access-control/overview)がある Azure サブスクリプションで使用量が発生していません。
+
+**パートナー ID のリンクは、Azure Stack で動作しますか。**
+
+はい、Azure Stack に対してパートナー ID をリンクできます。
+

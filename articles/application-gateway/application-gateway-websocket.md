@@ -1,25 +1,18 @@
 ---
 title: Azure Application Gateway による WebSocket のサポート | Microsoft Docs
 description: このページでは、Application Gateway による WebSocket のサポートの概要を示します。
-documentationcenter: na
-services: application-gateway
 author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: 8968dac1-e9bc-4fa1-8415-96decacab83f
-ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/08/2017
 ms.author: amsriva
-ms.openlocfilehash: cc6e2480ea117a288ae94c9cd66be6a354d8230f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.service: application-gateway
+ms.topic: conceptual
+ms.workload: infrastructure-services
+ms.date: 03/18/2019
+ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993337"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168121"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
 
@@ -29,7 +22,15 @@ Application Gateway では、あらゆる規模のゲートウェイで WebSocke
 
 これまでどおり標準の HTTP リスナーをポート 80 または 443 で使用して WebSocket トラフィックを受信することができます。 WebSocket トラフィックは、アプリケーション ゲートウェイの規則で指定されている適切なバックエンド プールを使用して、WebSocket が有効なバックエンド サーバーに送られます。 バックエンド サーバーは、アプリケーション ゲートウェイ プローブに応答する必要があります (アプリケーション ゲートウェイ プローブについては、[正常性プローブの概要](application-gateway-probe-overview.md)に関するセクションをご覧ください)。 アプリケーション ゲートウェイの正常性プローブは HTTP/HTTPS のみです。 アプリケーション ゲートウェイが WebSocket トラフィックをサーバーにルーティングするには、各バックエンド サーバーが HTTP プローブに応答する必要があります。
 
-## <a name="listener-configuration-element"></a>リスナーの構成要素
+これは、チャット、ダッシュボード、ゲーム アプリなど、高速でリアルタイムの通信を利用するアプリケーションで使用されます。
+
+## <a name="how-does-websocket-work"></a>WebSocket のしくみ
+
+WebSocket の接続を確立するために、特定の HTTP ベースのハンドシェイクがクライアントとサーバーの間で交換されます。 成功すると、アプリケーション レイヤー プロトコルは、以前に確立された TCP 接続を使用して、HTTP から WebSockets に "アップグレード" されます。 これが発生すると、HTTP は完全に無関係になります。WebSocket 接続が閉じられるまで、両方のエンドポイントによって WebSocket プロトコルを使用してデータが送受信されます。 
+
+![addcert](./media/application-gateway-websocket/websocket.png)
+
+### <a name="listener-configuration-element"></a>リスナーの構成要素
 
 既存の HTTP リスナーを使用して WebSocket トラフィックをサポートできます。 サンプル テンプレート ファイルの httpListeners 要素のスニペットを次に示します。 WebSocket トラフィックおよびセキュリティで保護された WebSocket トラフィックをサポートするには、HTTP リスナーと HTTPS リスナーの両方が必要です。 同様に、[ポータル](application-gateway-create-gateway-portal.md)または [PowerShell](application-gateway-create-gateway-arm.md) を使用して、ポート 80/443 にリスナーを設定したアプリケーション ゲートウェイを作成して WebSocket トラフィックをサポートできます。
 

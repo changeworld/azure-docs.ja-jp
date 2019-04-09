@@ -2,16 +2,16 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 02/04/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: db51ea71e48f01800a45059927331c189660cb8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118695"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58431436"
 ---
-デバイスに接続されるクライアントまたはホストでサポートされているオペレーティング システムの一覧を次に示します。
+デバイスに接続されるクライアントまたはホストでサポートされているオペレーティング システムの一覧を次に示します。 これらのオペレーティング システム バージョンは社内でテストされました。
 
 | **オペレーティング システム/プラットフォーム** | **バージョン** |
 | --- | --- |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d1c2a35a6ad246eea593990c485181aa776594
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175101"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214760"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -59,7 +59,7 @@ ms.locfileid: "56175101"
 
 ## <a name="authentication-methods"></a>認証方法
 
-SSPR が有効になっている場合は、認証方法として以下のオプションの少なくとも 1 つを選択する必要があります。 これらのオプションは、"ゲート" と呼ばれることもあります。 **2 つ以上の認証方法を選択**することを強くお勧めします。そうすれば、一方の認証方法を利用できない場合でも、必要があれば、ユーザーはもう一方の認証方法を利用できます。
+SSPR が有効になっている場合は、認証方法として以下のオプションの少なくとも 1 つを選択する必要があります。 これらのオプションは、"ゲート" と呼ばれることもあります。 **2 つ以上の認証方法を選択**することを強くお勧めします。そうすれば、一方の認証方法を利用できない場合でも、必要があれば、ユーザーはもう一方の認証方法を利用できます。 次に示されている方法の追加の詳細については、「[認証方法とは](concept-authentication-methods.md)」を参照してください。
 
 * モバイル アプリ通知 (プレビュー)
 * モバイル アプリ コード (プレビュー)
@@ -69,6 +69,9 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 * セキュリティの質問
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にした認証方法の中にユーザーのデータがある場合のみです。
+
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
 
 > [!WARNING]
 > Azure 管理者ロールが割り当てられたアカウントは、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。

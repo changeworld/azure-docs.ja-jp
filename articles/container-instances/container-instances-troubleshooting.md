@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c90041f54fc9b4b57885083ec94843b596f48b79
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123268"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371878"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -66,7 +66,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-helloworld\"",
+    "message": "pulling image \"mcr.microsoft.com/azuredocs/aci-hellowrld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-helloworld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"mcr.microsoft.com/azuredocs/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-helloworld\"",
+    "message": "Back-off pulling image \"mcr.microsoft.com/azuredocs/aci-hellowrld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -166,8 +166,8 @@ Windows イメージには、[追加の考慮事項](#cached-windows-images)が�
 
 ```console
 $ docker images
-REPOSITORY                  TAG       IMAGE ID        CREATED        SIZE
-microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
+REPOSITORY                                    TAG       IMAGE ID        CREATED          SIZE
+mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 months ago    67.6MB
 ```
 
 イメージのサイズを小さくしておくための鍵は、最終イメージに実行時に不要なものが含まれないようにすることです。 これを行う 1 つの方法は、[マルチステージ ビルド][docker-multi-stage-builds]を使用することです。 マルチステージ ビルドを使用すると、最終イメージにはアプリケーションに必要な成果物のみが含まれ、ビルド時に必要であった余分なコンテンツは含まれないようにすることを簡単に実行できます。
@@ -218,8 +218,8 @@ Azure Container Instances は、コンテナー グループをホストする�
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
-[docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
-[docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
+[docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
+[docker-hub-windows-nano]: https://hub.docker.com/_/microsoft-windows-nanoserver
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show

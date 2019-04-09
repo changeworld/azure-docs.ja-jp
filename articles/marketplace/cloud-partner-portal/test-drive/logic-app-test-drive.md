@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4fd946b53956509844ad0a9396575f1ee2450414
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457267"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338600"
 ---
 <a name="logic-app-test-drive"></a>ロジック アプリの体験版
 ====================
@@ -137,6 +137,10 @@ ms.locfileid: "57457267"
 **[Azure AD App Key]\(Azure AD アプリ キー\)** *[必須フィールド]* 最後のフィールドでは、認証キーを生成します。 キーの下で、キーの説明を追加し、期間を無期限に設定して、[保存] を選択します。 キーの有効期限が切れないようにすることが**重要**です。切れると、運用環境の体験版が中断されます。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
 
 ![Azure Active Directory のキー セクション](./media/azure-resource-manager-test-drive/subdetails8.png)
+
+> [!CAUTION]
+> 現在、Base64 でエンコードされたキーを生成しないため、Azure アプリケーション登録プレビューを使用することはできません。
+
 
 <a name="next-steps"></a>次の手順
 ----------

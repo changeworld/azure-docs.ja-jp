@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f6698eebf184d1df80920b7779512e2fda83a0c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012778"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369090"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -266,7 +266,7 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>Authorization ヘッダーの作成
 
 > [!TIP]
-> Azure Storage で、BLOB およびキュー サービス (プレビュー) のために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証 (プレビュー)) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー)) を参照してください。
+> Azure Storage で、BLOB およびキューのために Azure Active Directory (Azure AD) の統合がサポートされるようになりました。 Azure AD では、Azure Storage への要求を承認するためのよりシンプルなエクスペリエンスを提供します。 Azure AD を使用して REST 操作を承認する方法の詳細については、「[Authenticate with Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)」 (Azure Active Directory (AAD) での認証) を参照してください。 Azure Storage との Azure AD の統合の概要については、「[Authenticate access to Azure Storage using Azure Active Directory](storage-auth-aad.md)」 (Azure Active Directory を使用した Azure Storage へのアクセスの認証) を参照してください。
 
 [Azure ストレージ サービスの認証](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)を実行する方法を (コードではなく) 概念的に説明した記事があります。
 その記事から本当に必要な部分を取り出し、コードを示します。

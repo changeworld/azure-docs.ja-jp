@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 93935aa36c53e1d5de1bba215826d0754ee83b8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 946f815cecea4cc172fac35c0b260d795317e6e1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902843"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316220"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio Code
 
@@ -63,7 +63,7 @@ dotnet build -c Release
 
 1. Visual Studio Code を起動します。
 1. VS Code でローカル コピーから **azure-iot-pcs-remote-monitoring-dotnet** モジュールを開きます。
-1. scripts\local\launch\idesettings\vscode から **launch.json** ファイルと **tasks.json** ファイルをコピーします。 新しいフォルダー **azure-iot-pcs-remote-monitoring-dotnet\.vscode** を作成して、そこにファイルを貼り付けます。
+1. scripts\local\launch\idesettings\vscode から **launch.json** ファイルと **tasks.json** ファイルをコピーします。\. 新しいフォルダー **azure-iot-pcs-remote-monitoring-dotnet\.vscode** を作成して、そこにファイルを貼り付けます。
 1. VS Code で [デバッグ] パネルを開き、**[Run all microservices]\(すべてのマイクロサービスを実行\)** 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
 
 たとえば**デバッグ コンソール**では、**Auth** サービスの出力が次のように表示されます。
@@ -79,7 +79,7 @@ npm install
 npm start
 ```
 
-起動が完了すると、ブラウザーに **http://localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
+起動が完了すると、ブラウザーに **http:\//localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
 
 ### <a name="configure-and-run-nginx"></a>NGINX を構成および実行する
 
@@ -92,7 +92,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで [http://localhost:9000](http://localhost:9000) に移動します。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで http:\//localhost:9000 に移動します。
 
 ## <a name="clean-up"></a>クリーンアップ
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 647923ce87e66314d7a95beb88cc842230f28774
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077073"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311219"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(非推奨) Azure Container Service DC/OS クラスターで Vamp を使用してマイクロサービスをカナリア リリースする
 
@@ -44,7 +44,7 @@ ms.locfileid: "58077073"
 
 ## <a name="set-up-vamp"></a>Vamp の設定
 
-DC/OS クラスターが実行されたので、DC/OS UI (http://localhost:80)) から Vamp をインストールできます。 
+DC/OS クラスターが実行されたので、DC/OS UI (http:\//localhost:80) から Vamp をインストールできます。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 

@@ -34,9 +34,9 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Log Analytics でのデータの分析
+  - name: ログ分析でのデータの分析
     href: learn/tutorial-viewdata.md
-  - name: Log Analytics でのデータの視覚化
+  - name: ログ分析でのデータの視覚化
     href: learn/tutorial-logs-dashboards.md
   - name: プラットフォーム メトリックとログ データのアーカイブ
     href: learn/tutorial-archive-data.md

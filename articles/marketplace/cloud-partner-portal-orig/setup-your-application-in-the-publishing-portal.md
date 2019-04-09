@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847129"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310019"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -53,7 +53,7 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 これは、パブリッシャー プロファイル内で一意のプラン識別子です。 この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
 
-たとえば、**"contoso"** という発行元が **"sample-WebApp"** というオファー ID を使用してオファーを作成した場合、AppSource に "https://appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview" として表示されます。
+たとえば、パブリッシャー **"contoso"** がプラン ID **"sample-WebApp"** のプランを作成した場合、AppSource に "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview" と表示されます
 
 ### <a name="publisher-id"></a>パブリッシャー ID
 
@@ -150,15 +150,15 @@ AppSource により顧客はキーワードを基づいた検索を行うこと�
 
 ### <a name="offer-logo-png-format-48x48"></a>オファーのロゴ (png 形式、48 x 48)
 
-アプリの検索ページに表示されます。 **png 形式のみを使用できます。** 解像度 48 x 48 ピクセルの png イメージをアップロードします。
+アプリの検索ページに表示されます。 **png 形式のみを使用できます。** 解像度 48 x 48\* ピクセルの png イメージをアップロードします。
 
 ### <a name="offer-logo-png-format-216x216"></a>オファーのロゴ (png 形式、216 x 216)
 
-アプリの詳細ページに表示されます。 **png 形式のみを使用できます。** 解像度 216 x 216 ピクセルの png イメージをアップロードします。
+アプリの詳細ページに表示されます。 **png 形式のみを使用できます。** 解像度 216 x 216\* ピクセルの png イメージをアップロードします。
 
 ### <a name="videos"></a>ビデオ
 
-最大で 4 つのビデオをアップロードできます。 アップロードするビデオごとに、ビデオと関連付けるビデオ名、URL (YouTube または Vimeo のみ)、およびサムネイルを入力する必要があります。 サムネイルは png 形式で、1280 x 720 ピクセルである必要があります。 新しいビデオを追加するには、プラス記号をクリックします。 ビデオのサムネイルは、アプリの詳細ページに表示されます。
+最大で 4 つのビデオをアップロードできます。 アップロードするビデオごとに、ビデオと関連付けるビデオ名、URL (YouTube または Vimeo のみ)、およびサムネイルを入力する必要があります。 サムネイルは png 形式で、1280 x 720\* ピクセルである必要があります。 新しいビデオを追加するには、プラス記号をクリックします。 ビデオのサムネイルは、アプリの詳細ページに表示されます。
 
 ### <a name="documents"></a>Documents
 

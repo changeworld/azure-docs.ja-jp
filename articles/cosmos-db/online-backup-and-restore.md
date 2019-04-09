@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b5b56e39e1b9830d5b998ace2a384d6878cd510
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6ed968b1613a96a2f4ab449c7b52488e066a38ab
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041817"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991820"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 
@@ -20,11 +20,18 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 
 ## <a name="automatic-and-online-backups"></a>自動的なオンラインのバックアップ
 
-Azure Cosmos DB では、データだけでなく、データのバックアップについても、冗長性とリージョンの障害からの回復性が高められています。 この自動化されたバックアップは、現時点では 4 時間ごとに取得され、常時最新の 2 つのバックアップが保存されます。 誤ってデータを削除した場合またはデータが破損した場合は、Azure Cosmos DB チームがバックアップからのデータの復元をサポートできるように、8 時間以内に [Azure サポート](https://azure.microsoft.com/support/options/)に連絡してください。
+Azure Cosmos DB では、データだけでなく、データのバックアップについても、冗長性とリージョンの障害からの回復性が高められています。 以下の手順は、Azure Cosmos DB によるデータのバックアップ方法を示しています。
 
-バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
+* Azure Cosmos DB によって、データベースが 4 時間毎と任意の時点で自動的にバックアップされ、最新の 2 回分のバックアップのみが保存されます。す。 ただし、コンテナーまたはデータベースが削除された場合、Azure Cosmos DB には、ある特定のコンテナーまたはデータベースの既存のスナップショットが 30 日間保持されます。
 
-Azure Cosmos DB では、自動バックアップが Azure Blob Storage に保存される一方、実際のデータは Azure Cosmos DB 内にローカルに存在します。 短い待機時間を保証するために、バックアップのスナップショットは、Cosmos DB データベース アカウントの現在の書き込みリージョン (または、マルチマスター構成の場合は、複数の書き込みリージョンのうちの 1 つ) と同じリージョンの Azure BLOB ストレージに保存されます。 リージョンの障害に対する回復性を確保するために、Azure BLOB ストレージにあるバックアップ データの各スナップショットが、地理冗長ストレージ (GRS) 経由でもう一度レプリケートされます。 バックアップのレプリケート先のリージョンは、ソース リージョンと、ソース リージョンに関連付けられているリージョン ペアに基づいています。 詳細については、[Azure リージョンの geo 冗長ペアの一覧](../best-practices-availability-paired-regions.md)の記事を参照してください。 このバックアップに直接アクセスすることはできません。 Azure Cosmos DB でこのバックアップが使用されるのは、バックアップの復元が開始された場合のみです。
+* Azure Cosmos DB では、これらのバックアップが Azure Blob Storage に保存される一方、実際のデータは Azure Cosmos DB 内にローカルに存在します。
+
+*  短い待機時間を保証するために、バックアップのスナップショットは、お使いの Azure Cosmos データベース アカウントの現在の書き込みリージョン (マルチマスター構成の場合は、いずれかの書き込みリージョン) と同じリージョンの Azure BLOB ストレージに保存されます。 リージョンの障害に対する回復性を確保するために、Azure BLOB ストレージにあるバックアップ データの各スナップショットが、地理冗長ストレージ (GRS) 経由でもう一度レプリケートされます。 バックアップのレプリケート先のリージョンは、ソース リージョンと、ソース リージョンに関連付けられているリージョン ペアに基づいています。 詳細については、[Azure リージョンの geo 冗長ペアの一覧](../best-practices-availability-paired-regions.md)の記事を参照してください。 このバックアップに直接アクセスすることはできません。 Azure Cosmos DB でこのバックアップが使用されるのは、バックアップの復元が開始された場合のみです。
+
+* バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
+
+* 誤ってデータを削除した場合またはデータが破損した場合は、Azure Cosmos DB チームがバックアップからのデータの復元をサポートできるように、8 時間以内に [Azure サポート](https://azure.microsoft.com/support/options/)に連絡してください。
+
 次の図は、3 つのプライマリ物理パーティションがすべて米国西部にある Azure Cosmos コンテナーを、米国西部のリモートの Azure Blob Storage アカウントにバックアップした後、米国東部にレプリケートするようすを示しています。
 
 ![GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ](./media/online-backup-and-restore/automatic-backup.png)

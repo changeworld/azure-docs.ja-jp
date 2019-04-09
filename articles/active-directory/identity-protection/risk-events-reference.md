@@ -3,7 +3,7 @@ title: Azure Active Directory Identity Protection のリスク イベント リ�
 description: Azure Active Directory Identity Protection のリスク イベント リファレンス。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1509f40b88e3dc9c51bd00ed379c5b0130230a99
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178840"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516554"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection のリスク イベント リファレンス
 
@@ -83,6 +83,7 @@ ms.locfileid: "56178840"
 **検出の種類:** リアルタイム  
 **以前の名前:** 未知の場所からのサインイン
 
-この種類のリスク イベントでは、通常とは異なるプロパティを持つサインインを特定するため、過去のサインインのプロパティ (デバイス、場所、ネットワークなど) が注視されます。 システムは、ユーザーが以前使用した場所のプロパティを保存し、これらを "既知" であると見なします。 既知のプロパティの一覧にまだ含まれていないプロパティを持つサインインが発生すると、このリスク イベントがトリガーされます。 システムには 30 日間の初期学習期間があり、この間は、どの新しい検出にもフラグは設定されません。
+このリスク イベントの種類は、過去のサインイン履歴 (IP、緯度/経度、および ASN) を考慮して、異常なサインインを判別します。システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。 新しく作成されたユーザーは、しばらくの間 “学習モード” に置かれ、そのユーザーの行動がアルゴリズムによって学習されるまで、通常とは異なるサインイン プロパティ リスク イベントは停止されます。 学習モードの期間は動的であり、ユーザーのサインイン パターンに関する十分な情報をアルゴリズムが収集するためにかかる時間によって決まります。 最小期間は 5 日です。 無活動状態が長期間続いた場合、ユーザーは学習モードに戻る可能性があります。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 
+
 この検出は、基本認証 (または従来のプロトコル) に対しても実行されます。 これらのプロトコルには、クライアント ID などの最新のプロパティがないため、誤検知を減らすためのテレメトリが限られています。 お客様には、最新の認証に移行することをお勧めしています。
 

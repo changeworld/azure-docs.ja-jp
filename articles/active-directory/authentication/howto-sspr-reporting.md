@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f8411cf2aebf5ab3e25239d1cb1a9b81cfda4c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163899"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369532"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
 多くの組織は、デプロイ後に、セルフサービスによるパスワードのリセット (SSPR) が本当に使用されているかどうかや、どのように使用されているかを把握することを望んでいます。 Azure Active Directory (Azure AD) で提供されるレポート機能によって、お客様は質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。
 
-![レポート][Reporting]
+![Azure AD の監査ログを使用した SSPR のレポート][Reporting]
 
 次の質問に対する答えは、[Azure portal](https://portal.azure.com/) に用意されているレポートから得られます。
 
@@ -173,7 +173,6 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
      >[!NOTE]
      >失敗は、ユーザーが自分のパスワードをリセットできないことを意味するわけではありません。 登録プロセスを完了していないことを意味します。 ユーザーのアカウントに未確認の正しいデータ (未確認の電話番号など) がある場合、そのデータを確認していなくても、パスワードのリセットに使用できます。
-     >
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 01d84914682d40b97c3d480a753c8b966cf61acc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dccc967e7899d8cc9c4bde6829d6fc44f9cba4e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553967"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891008"
 ---
 次の表は、Azure Storage の既定の制限について説明しています。 *受信*制限は、ストレージ アカウントに送信される要求のすべてのデータを指します。 *送信*制限は、ストレージ アカウントから受信する応答のすべてのデータを指します。
 
-| リソース | 既定の制限 |
+| Resource | 既定の制限 |
 | --- | --- |
-| サブスクリプションあたりの各リージョンのストレージ アカウント数 (Standard アカウントと Premium アカウントを含む) | 250 |
+| サブスクリプションあたりの各リージョンのストレージ アカウント数 (Standard アカウントと Premium アカウント両方を含む) | 250 |
 | ストレージ アカウントの最大容量 | 米国とヨーロッパでは 2 PB、英国を含む他のすべてのリージョンでは 500 TB |
 | ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数 | 制限なし |
 | ストレージ アカウントあたりの最大要求レート<sup>1</sup> | 1 秒あたり 20,000 要求 |

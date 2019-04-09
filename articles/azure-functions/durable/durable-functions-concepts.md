@@ -1,6 +1,6 @@
 ---
-title: Durable Functions のパターンおよび技術的概念 - Azure
-description: クラウド内のステートフルなコード実行の利点を活用するために Azure 内で Durable Functions が動作するしくみに関する詳細を示します。
+title: Azure Functions の Durable Functions のパターンと技術概念
+description: Azure Functions の Durable Functions 拡張機能を使用したクラウドでのステートフル コードの実行によってメリットを得る方法について説明します。
 services: functions
 author: kashimiz
 manager: jeconnoc
@@ -10,35 +10,37 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6eb08af9cdd19bc83d44d29874f6ac58b41ed8c8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302042"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443421"
 ---
-# <a name="durable-functions-patterns-and-technical-concepts"></a>Durable Functions のパターンおよび技術的概念
+# <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions のパターンと技術概念 (Azure Functions)
 
-*Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](../functions-overview.md) と [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。 この記事では、Azure Functions 向けの Durable Functions 拡張機能の動作と一般的な実装パターンについて、より詳しい情報を提供します。
+Durable Functions は [Azure Functions](../functions-overview.md) と [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) の拡張機能です。 Durable Functions を使用して、サーバーレス環境でステートフル関数を記述できます。 この拡張機能は状態、チェックポイント、再起動を管理します。 
+
+この記事では、Azure Functions 用の Durable Functions 拡張機能の動作と一般的な実装パターンについての詳細な情報を示します。 この情報は、開発上の課題を解決するために Durable Functions を使用する方法を決定するのに役立ちます。
 
 > [!NOTE]
-> Durable Functions は Azure Functions の高度な拡張機能であり、すべてのアプリケーションに適しているわけではありません。 この記事は、開発者が [Azure Functions](../functions-overview.md) のコンセプトを十分に理解しており、サーバーレス アプリケーションの開発に取り組んでいることを前提としています。
+> Durable Functions は Azure Functions の高度な拡張機能であり、すべてのアプリケーションに適しているわけではありません。 この記事は、開発者が [Azure Functions](../functions-overview.md) のコンセプトを十分に理解しており、サーバーレス アプリケーションの開発に関わる課題があることを前提としています。
 
 ## <a name="patterns"></a>パターン
 
-このセクションでは、Durable Functions を使用することでメリットがある、いくつかの典型的なアプリケーションのパターンを示します。
+このセクションでは、Durable Functions が有用である、いくつかの典型的なアプリケーションのパターンについて説明します。
 
 ### <a name="chaining"></a>パターン #1: 関数チェーン
 
-*関数チェーン*は、特定の順序で関数のシーケンスを実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。
+関数チェーン パターンでは、一連の関数が特定の順序で実行されます。 このパターンでは、ある関数の出力が、別の関数の入力に適用されます。
 
-![関数チェーンの図](./media/durable-functions-concepts/function-chaining.png)
+![関数チェーン パターンの図](./media/durable-functions-concepts/function-chaining.png)
 
-Durable Functions を使用すれば、このパターンをコードで簡潔に実装できます。
+次の例に示すように、Durable Functions を使用して、関数チェーン パターンを簡潔に実装できます。
 
 #### <a name="c-script"></a>C# スクリプト
 
-```cs
+```csharp
 public static async Task<object> Run(DurableOrchestrationContext context)
 {
     try
@@ -50,17 +52,17 @@ public static async Task<object> Run(DurableOrchestrationContext context)
     }
     catch (Exception)
     {
-        // error handling/compensation goes here
+        // Error handling or compensation goes here.
     }
 }
 ```
 
 > [!NOTE]
-> C# で記述中のプリコンパイル済みの Durable Functions と、前述した C# サンプル スクリプトには、若干の違いがあります。 C# でプリコンパイル済みの関数には、それぞれの属性で修飾される durable パラメーターが必要になります。 例としては、`DurableOrchestrationContext` パラメーターの `[OrchestrationTrigger]` 属性があります。 パラメーターが正しく修飾されていない場合、ランタイムが変数を関数に挿入できなくなり、エラーが発生します。 その他の例については、[サンプル](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)をご覧ください。
+> C# でのプリコンパイル済みの永続関数の記述と C# スクリプトでのプリコンパイル済みの永続関数の記述との間には、この例には示されていないわずかな違いがあります。 C# のプリコンパイル済みの関数では、対応する属性で永続パラメーターを修飾する必要があります。 一例として、`DurableOrchestrationContext` パラメーターの `[OrchestrationTrigger]` 属性があります。 C# のプリコンパイル済みの関数では、パラメーターが適切に修飾されていない場合、実行時に関数に変数を挿入できないことでエラーが発生します。 例については、[GitHub の azure-functions-durable-extension のサンプル](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)を参照してください。
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
-```js
+```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
@@ -71,29 +73,31 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-"F1"、"F2"、"F3"、"F4" という値は、関数アプリ内の他の関数の名前です。 制御フローは、通常の命令型のコーディング構造で実装されます。 つまり、コードは上から下へ実行され、コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。  エラー処理ロジックを try ブロック、catch ブロック、finally ブロックに含めることもできます。
+この例では、`F1`、`F2`、`F3`、および `F4` という値が、関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
 
-`context` パラメーター ([DurableOrchestrationContext]) (\(.NET\)) と `context.df` オブジェクト (JavaScript) は名前によって他の関数を呼び出し、パラメーターを渡して、関数の出力を返すメソッドを提供します。 コードが `await` (C#) または `yield` (JavaScript) を呼び出すたびに Durable Functions フレームワークは、現在の関数インスタンスの進行状況に "*チェックポイントを設定*" します。 プロセスまたは VM が実行途中でリサイクルされる場合、その関数インスタンスは先の `await` または `yield` 呼び出しから再開されます。 この再起動動作については、後で詳しく説明します。
+`context` パラメーターの [DurableOrchestrationContext] (\(.NET\)) と `context.df` オブジェクト (JavaScript) を使用して、名前によって他の関数を呼び出し、パラメーターを渡し、関数の出力を返すことができます。 コードで `await` (C#) または `yield` (JavaScript) が呼び出されるたびに Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは VM が実行途中でリサイクルされる場合、関数インスタンスは直前の `await` または `yield` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
 
 > [!NOTE]
-> JavaScript の `context` オブジェクトは、[DurableOrchestrationContext] ではなく、[関数コンテキスト](../functions-reference-node.md#context-object)全体を表しています。
+> JavaScript の `context` オブジェクトは、[DurableOrchestrationContext] パラメーターだけではなく、[関数コンテキスト](../functions-reference-node.md#context-object)全体を表しています。
 
 ### <a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
 
-*ファンアウト/ファンイン*は、複数の関数を並列に実行してすべてが完了するまで待機するパターンです。  複数の関数から返された結果に基づいて集計作業が行われる場合があります。
+ファンアウト/ファンイン パターンでは、複数の関数を並列で実行し、すべての関数が完了するまで待機します。 複数の関数から返される結果に基づいて集計作業が行われることは、よくあることです。
 
-![ファンアウト/ファンインの図](./media/durable-functions-concepts/fan-out-fan-in.png)
+![ファンアウト/ファンイン パターンの図](./media/durable-functions-concepts/fan-out-fan-in.png)
 
-通常の関数では、関数が複数のメッセージを 1 つのキューに送信することでファンアウトが行われます。 しかし、ファンインして戻すことはこれよりずっと難しくなります。 キューによってトリガーされる関数が終了し、関数の出力が格納される時間を追跡するように、コードを記述する必要があります。 Durable Functions 拡張機能は、比較的単純なコードでこのパターンを処理します。
+通常の関数では、複数のメッセージを 1 つのキューに送信することでファンアウトできます。 ファンインして戻ることはずっと難しくなります。 通常の関数でファンインするには、キューによってトリガーされた関数の終了を追跡した後、関数の出力を格納するコードを記述する必要があります。 
+
+Durable Functions 拡張機能では、比較的単純なコードでこのパターンを処理します。
 
 #### <a name="c-script"></a>C# スクリプト
 
-```cs
+```csharp
 public static async Task Run(DurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
-    // get a list of N work items to process in parallel
+    // Get a list of N work items to process in parallel.
     object[] workBatch = await context.CallActivityAsync<object[]>("F1");
     for (int i = 0; i < workBatch.Length; i++)
     {
@@ -103,7 +107,7 @@ public static async Task Run(DurableOrchestrationContext context)
 
     await Task.WhenAll(parallelTasks);
 
-    // aggregate all N outputs and send result to F3
+    // Aggregate all N outputs and send the result to F3.
     int sum = parallelTasks.Sum(t => t.Result);
     await context.CallActivityAsync("F3", sum);
 }
@@ -111,13 +115,13 @@ public static async Task Run(DurableOrchestrationContext context)
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
-```js
+```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const parallelTasks = [];
 
-    // get a list of N work items to process in parallel
+    // Get a list of N work items to process in parallel.
     const workBatch = yield context.df.callActivity("F1");
     for (let i = 0; i < workBatch.length; i++) {
         parallelTasks.push(context.df.callActivity("F2", workBatch[i]));
@@ -125,23 +129,25 @@ module.exports = df.orchestrator(function*(context) {
 
     yield context.df.Task.all(parallelTasks);
 
-    // aggregate all N outputs and send result to F3
+    // Aggregate all N outputs and send the result to F3.
     const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
     yield context.df.callActivity("F3", sum);
 });
 ```
 
-ファンアウト作業が `F2` 関数の複数のインスタンスに配分され、タスクの動的リストを使用してこの作業が追跡されます。 .NET `Task.WhenAll` API または JavaScript `context.df.Task.all` API が呼び出され、すべての呼び出された関数が終了するまで待機します。 次に、`F2` 関数の出力が動的なタスク リストから集計されて、`F3` 関数に渡されます。
+ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 動的タスク リストを使用して、この作業が追跡されます。 .NET `Task.WhenAll` API または JavaScript `context.df.Task.all` API が呼び出され、呼び出された関数がすべて終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
 
-`Task.WhenAll` または `context.df.Task.all` の `await` 呼び出しまたは `yield` 呼び出しの際に自動でチェックポイントを設定することで、実行途中でクラッシュや再起動が生じても既に完了したすべてのタスクをやり直す必要がなくなります。
+`Task.WhenAll` または `context.df.Task.all` の `await` 呼び出しまたは `yield` 呼び出しの際に設定される自動チェックポイントによって、実行途中でクラッシュや再起動が発生した場合でも、既に完了したすべてのタスクをやり直す必要がなくなります。
 
 ### <a name="async-http"></a>パターン #3: 非同期 HTTP API
 
-3 番目のパターンでもっとも重要なのは、外部クライアントとの間で行われる実行時間の長い操作の状態を調整するという問題です。 このパターンを実装する一般的な方法は、HTTP 呼び出しにより実行時間の長い操作をトリガーし、その操作が完了する時間を照会できる状態エンドポイントにクライアントをリダイレクトするという方法です。
+非同期 HTTP API パターンでは、外部クライアントとの間の実行時間の長い操作の状態を調整するという問題に対処します。 このパターンを実装する一般的な方法は、HTTP 呼び出しによって実行時間の長いアクションをトリガーすることです。 その後、ポーリングによって操作が完了したことを認識できる状態エンドポイントにクライアントをリダイレクトします。
 
-![HTTP API の図](./media/durable-functions-concepts/async-http-api.png)
+![HTTP API パターンの図](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions は、実行時間の長い関数を操作するコードをシンプルにするビルトイン API を提供します。 クイック スタート サンプル ([C#](durable-functions-create-first-csharp.md)、[JavaScript](quickstart-js-vscode.md)) では、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドについて説明しています。 インスタンスが開始されると、この拡張機能はオーケストレーター関数の状態をクエリする Webhook HTTP API を公開します。 次の例では、オーケストレーターを開始してその状態をクエリする REST コマンドを示します。 わかりやすくするため、この例では細部をいくらか省略しています。
+Durable Functions には、実行時間の長い関数とやり取りするためのコードをシンプルにする組み込みの API が用意されています。 Durable Functions のクイック スタート サンプル ([C#](durable-functions-create-first-csharp.md) と [JavaScript](quickstart-js-vscode.md)) に、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドが示されています。 インスタンスが開始されると、この拡張機能によって、オーケストレーター関数の状態をクエリする Webhook HTTP API が公開されます。 
+
+次の例は、オーケストレーターを開始し、その状態をクエリする REST コマンドを示しています。 わかりやすくするため、この例では細部をいくらか省略しています。
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -166,22 +172,24 @@ Content-Type: application/json
 {"runtimeStatus":"Completed","lastUpdatedTime":"2017-03-16T21:20:57Z", ...}
 ```
 
-状態は Durable Functions ランタイムによって管理されるため、独自の状態追跡メカニズムを実装する必要はありません。
+状態は Durable Functions ランタイムによって管理されるため、自分で状態追跡メカニズムを実装する必要はありません。
 
-Durable Functions 拡張機能には実行時間の長いオーケストレーションを管理するためのビルトイン Webhook がありますが、独自の関数トリガー (HTTP、キュー、またはイベント ハブなど) と `orchestrationClient` バインドを使用してこのパターンを自分で実装できます。 たとえば、キュー メッセージを使用して終了をトリガーできます。  または、生成されたキーを認証で使用するビルトイン Webhook の代わりに、Azure Active Directory の認証ポリシーで保護された HTTP トリガーを使用できます。
+Durable Functions 拡張機能には、長時間実行されるオーケストレーションを管理する Webhook が組み込まれています。 独自の関数トリガー (HTTP、キュー、Azure Event Hubs など) と `orchestrationClient` バインドを使用して、このパターンを自分で実装できます。 たとえば、キュー メッセージを使用して終了をトリガーできます。 または、生成されたキーを認証で使用する組み込みの Webhook の代わりに、Azure Active Directory の認証ポリシーによって保護される HTTP トリガーを使用できます。
+
+HTTP API パターンを使用する方法の例をいくつか次に示します。
 
 #### <a name="c"></a>C#
 
-```cs
-// HTTP-triggered function to start a new orchestrator function instance.
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
 public static async Task<HttpResponseMessage> Run(
     HttpRequestMessage req,
     DurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
-    // Function name comes from the request URL.
-    // Function input comes from the request content.
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
 
@@ -194,14 +202,14 @@ public static async Task<HttpResponseMessage> Run(
 #### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 ```javascript
-// HTTP-triggered function to start a new orchestrator function instance.
+// An HTTP-triggered function starts a new orchestrator function instance.
 const df = require("durable-functions");
 
 module.exports = async function (context, req) {
     const client = df.getClient(context);
 
-    // Function name comes from the request URL.
-    // Function input comes from the request content.
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
     const eventData = req.body;
     const instanceId = await client.startNew(req.params.functionName, undefined, eventData);
 
@@ -212,25 +220,27 @@ module.exports = async function (context, req) {
 ```
 
 > [!WARNING]
-> JavaScript でローカルに開発する場合は、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` に設定する必要があります。たとえば、 `DurableOrchestrationClient` のメソッドを使用するには、`localhost:7071` に設定します。 この要件の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-js/issues/28)に関するページを参照してください。
+> JavaScript でローカルに開発する場合、`DurableOrchestrationClient` でメソッドを使用するには、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` (例: `localhost:7071`) に設定する必要があります。 この要件の詳細については、[GitHub の問題 28](https://github.com/Azure/azure-functions-durable-js/issues/28) に関するトピックをご覧ください。
 
-.NET における [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter`パラメーターは、Durable Functions 拡張機能の一部である `orchestrationClient` 出力バインドからの値です。 JavaScript では、`df.getClient(context)` を呼び出すことによって、このオブジェクトが返されます。 これらのオブジェクトは、新しいまたは既存のオーケストレーター関数インスタンスの開始や終了、インスタンスへのイベント送信やクエリ送信のためのメソッドを備えています。
+.NET における [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter`パラメーターは、Durable Functions 拡張機能の一部である `orchestrationClient` 出力バインドからの値です。 JavaScript では、`df.getClient(context)` を呼び出すことによって、このオブジェクトが返されます。 これらのオブジェクトには、新しいまたは既存のオーケストレーター関数インスタンスの開始、インスタンスへのイベントの送信、インスタンスの停止、およびインタンスに対するクエリの送信を行うためのメソッドがあります。
 
-上記の例では、HTTP によってトリガーされる関数は受信 URL から `functionName` 値を受け取り、その値を [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) に渡します。 次に [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) バインド API は、`Location` ヘッダーと共に、開始されたインスタンスの状態を後で調べるため、またはインスタンスを終了するために使用するインスタンスの追加情報を含めた応答を返します。
+上記の例では、HTTP によってトリガーされる関数が、受信 URL から `functionName` 値を受け取り、その値を [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) に渡します。 次に [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) バインド API が、`Location` ヘッダーとインスタンスの追加情報を含む応答を返します。 この情報を後で使用して、開始されたインスタンスの状態を調べたり、インスタンスを終了したりできます。
 
 ### <a name="monitoring"></a>パターン #4: 監視
 
-モニター パターンは、ワークフローの柔軟な "*繰り返し*" プロセスを参照します。たとえば、特定の条件が満たされるまでポーリングします。 通常の[タイマー トリガー](../functions-bindings-timer.md)は、定期的なクリーンアップ ジョブなどの単純なシナリオに対処できますが、その間隔は静的であり、インスタンスの有効期間の管理は複雑になります。 Durable Functions では、柔軟な繰り返し間隔とタスクの有効期間の管理を実行でき、1 つのオーケストレーションから複数のモニター プロセスを作成する機能も備えています。
+監視パターンは、ワークフロー内の柔軟な繰り返しプロセスを指します。 一例は、特定の条件が満たされるまでポーリングすることです。 通常の[タイマー トリガー](../functions-bindings-timer.md)を使用して、定期的なクリーンアップ ジョブなどの基本的なシナリオに対処できますが、その間隔は静的であり、インスタンスの有効期間の管理は複雑になります。 Durable Functions を使用して、柔軟な繰り返し間隔の作成、タスクの有効期間の管理、単一のオーケストレーションからの複数の監視プロセスの作成を実行できます。
 
-例として、前述の非同期 HTTP API のシナリオの逆があります。 外部クライアントのエンドポイントを公開して実行時間の長い操作を監視する代わりに、長時間実行されるモニターで、外部エンドポイントを使用して、何らかの状態変更が発生するまで待機します。
+監視パターンの一例は、前述の非同期 HTTP API シナリオを逆にすることです。 外部クライアント用のエンドポイントを公開して実行時間の長い操作を監視する代わりに、長時間実行される監視で外部エンドポイントを使用して、状態が変化するまで待機します。
 
-![モニター ダイアグラム](./media/durable-functions-concepts/monitor.png)
+![監視パターンの図](./media/durable-functions-concepts/monitor.png)
 
-Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターを実装します。
+数行のコードで、Durable Functions を使用して任意のエンドポイントを観察する複数のモニターを作成できます。 条件が満たされたときにこれらのモニターによって実行を終了するか、[DurableOrchestrationClient](durable-functions-instance-management.md) によってモニターを終了できます。 特定の条件に基づいてモニターの `wait` 間隔を変更できます (指数関数的バックオフなど)。 
+
+次のコードでは、基本的なモニターが実装されます。
 
 #### <a name="c-script"></a>C# スクリプト
 
-```cs
+```csharp
 public static async Task Run(DurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
@@ -242,23 +252,23 @@ public static async Task Run(DurableOrchestrationContext context)
         var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
         if (jobStatus == "Completed")
         {
-            // Perform action when condition met
+            // Perform an action when a condition is met.
             await context.CallActivityAsync("SendAlert", machineId);
             break;
         }
 
-        // Orchestration will sleep until this time
+        // Orchestration sleeps until this time.
         var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
         await context.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    // Perform further work here, or let the orchestration end
+    // Perform more work here, or let the orchestration end.
 }
 ```
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
-```js
+```javascript
 const df = require("durable-functions");
 const moment = require("moment");
 
@@ -270,35 +280,37 @@ module.exports = df.orchestrator(function*(context) {
     while (moment.utc(context.df.currentUtcDateTime).isBefore(expiryTime)) {
         const jobStatus = yield context.df.callActivity("GetJobStatus", jobId);
         if (jobStatus === "Completed") {
-            // Perform action when condition met
+            // Perform an action when a condition is met.
             yield context.df.callActivity("SendAlert", machineId);
             break;
         }
 
-        // Orchestration will sleep until this time
+        // Orchestration sleeps until this time.
         const nextCheck = moment.utc(context.df.currentUtcDateTime).add(pollingInterval, 's');
         yield context.df.createTimer(nextCheck.toDate());
     }
 
-    // Perform further work here, or let the orchestration end
+    // Perform more work here, or let the orchestration end.
 });
 ```
 
-要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔を制御するために永続的タイマーが使用されます。 さらに作業を実行するか、オーケストレーションを終了できます。 `context.CurrentUtcDateTime` (.NET) または `context.df.currentUtcDateTime` (JavaScript) が `expiryTime` を超えると、モニターが終了します。
+要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `context.CurrentUtcDateTime` (.NET) または `context.df.currentUtcDateTime` (JavaScript) が `expiryTime` を超えると、モニターは終了します。
 
 ### <a name="human"></a>パターン #5: 人による操作
 
-ほとんどのプロセスには、何らかの人による操作が含まれます。 自動化されたプロセスに人による操作が含まれる場合に問題になるのが、人は必ずしもクラウド サービスのように可用性と応答性が高くないということです。 自動化されたプロセスはこのことを許容する必要があり、通常タイムアウトや補正ロジックを使用してそれを行います。
+多くの自動化されたプロセスには、何らかの人による操作が含まれます。 自動化されたプロセスに人による操作が含まれる場合に問題になるのが、人は必ずしもクラウド サービスのように可用性と応答性が高くないということです。 自動化されたプロセスでは、タイムアウトと補正ロジックを使用して、これを許容する必要があります。
 
-人による操作を含むビジネス プロセスの一例として、承認プロセスがあります。 たとえば、特定の額を超えた経費報告書について上司から承認を得る必要があるなどの場合です。 72 時間以内に上司が承認しない (上司が休暇に入ったなどの) 場合に、他の誰か (おそらくは上司の上司) から承認を得るためにエスカレーション プロセスに入ります。
+承認プロセスは、人による操作を含むビジネス プロセスの一例です。 特定の金額を超えた経費報告書は、上司の承認が必要な場合があります。 上司が (休暇中などで) その経費報告書を 72 時間以内に承認しない場合は、他の誰か (おそらくは上司の上司) から承認を得るためにエスカレーション プロセスを開始します。
 
-![人による操作の図](./media/durable-functions-concepts/approval.png)
+![人による操作が含まれるパターンの図](./media/durable-functions-concepts/approval.png)
 
-このパターンは、オーケストレーター関数を使用して実装できます。 オーケストレーターは、[永続タイマー](durable-functions-timers.md)を使用して承認を要求し、タイムアウトした場合にエスカレーションします。 また、人による何らかの操作によって生成された通知である[外部イベント](durable-functions-external-events.md)を待機します。
+オーケストレーター関数を使用して、この例のパターンを実装できます。 オーケストレーターが[永続タイマー](durable-functions-timers.md)を使用して承認を要求します。 オーケストレーターは、タイムアウトが発生した場合はエスカレーションを行います。 オーケストレーターは、[外部イベント](durable-functions-external-events.md) (人による操作によって生成される通知など) が発生するまで待機します。
+
+次の例では、人による操作パターンを示すための承認プロセスを作成しています。
 
 #### <a name="c-script"></a>C# スクリプト
 
-```cs
+```csharp
 public static async Task Run(DurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval");
@@ -323,7 +335,7 @@ public static async Task Run(DurableOrchestrationContext context)
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
-```js
+```javascript
 const df = require("durable-functions");
 const moment = require('moment');
 
@@ -343,9 +355,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-永続タイマーは `context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) を呼び出すことで作成されます。 通知は `context.WaitForExternalEvent` (.NET) または `context.df.waitForExternalEvent` (JavaScript) が受け取ります。 そして、エスカレーションする (最初にタイムアウトが発生する) か、承認を処理する (タイムアウト前に承認を得る) かを決定するために `Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) が呼び出されます。
+永続タイマーを作成するために、`context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) が呼び出されます。 通知は `context.WaitForExternalEvent` (.NET) または `context.df.waitForExternalEvent` (JavaScript) が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) が呼び出されます。
 
-外部クライアントは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用するか、別の関数の [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API を使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
+外部クライアントは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用するか、別の関数からの [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API を使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
 
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
@@ -367,58 +379,64 @@ module.exports = async function (context) {
 
 ## <a name="the-technology"></a>テクノロジ
 
-背後では、永続的タスクのオーケストレーションを構築するための GitHub のオープン ソース ライブラリである [Durable Task Framework](https://github.com/Azure/durabletask) の上に、Durable Functions 拡張機能が構築されています。 Azure Functions が Azure WebJobs のサーバーレスな進化形であるのと同じように、Durable Functions は Durable Task Framework のサーバーレスな進化形です。 Durable Task Framework は、ミッション クリティカルなプロセスを自動化するために Microsoft 内外で頻繁に使用されています。 サーバーレスな Azure Functions 環境には自然に適合します。
+Durable Functions 拡張機能の背後には、永続的なタスクのオーケストレーションを構築するために使用される GitHub のオープン ソース ライブラリである [Durable Task Framework](https://github.com/Azure/durabletask) があり、この拡張機能はその上に構築されています。 Azure Functions が Azure WebJobs のサーバーレスな進化形であるのと同じように、Durable Functions は Durable Task Framework のサーバーレスな進化形です。 Microsoft や他の組織は、ミッション クリティカルなプロセスを自動化するために、Durable Task Framework を広範囲にわたって使用しています。 サーバーレスな Azure Functions 環境には自然に適合します。
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>イベント ソーシング、チェックポイント設定、リプレイ
 
-オーケストレーター関数は、[Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) として知られるデザイン パターンを使用して、この関数の実行状態を安定的に維持します。 オーケストレーションの *"現在の"* 状態を直接格納する代わりに、この永続的な拡張機能は追加専用のストアを使用して、関数オーケストレーションがとる *"アクションのすべて"* を記録します。 これには、ランタイムの完全な状態を "ダンプする" のと比べて、パフォーマンス、スケーラビリティ、応答時間の改善など多くのメリットがあります。 他にも、トランザクション データに最終的な一貫性を提供する、完全な監査証跡や監査履歴を維持するなどのメリットもあります。 監査証跡のみで、信頼性の高い補正アクションが可能です。
+オーケストレーター関数は、[イベント ソーシング](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)設計パターンを使用して、この関数の実行状態を確実に管理します。 Durable Functions 拡張機能では、オーケストレーションの現在の状態を直接格納する代わりに追加専用ストアを使用して、関数オーケストレーションが実行するすべてのアクションが記録されます。 追加専用ストアには、実行時のすべての状態の "ダンプ" に比べて、多くのメリットがあります。 メリットには、パフォーマンス、スケーラビリティ、および応答性の向上が含まれます。 トランザクション データの最終的な一貫性、完全な監査証跡、および監査履歴も取得できます。 監査証跡では、信頼性の高い補正アクションがサポートされます。
 
-この拡張機能による Event Sourcing の使用は透過的です。 背後では、オーケストレーター関数内の `await` (C#) または `yield` (JavaScript) 演算子が、Durable Task Framework のディスパッチャーにオーケストレーター スレッドのコントロールを引き渡します。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションは、オーケストレーション インスタンスの *"実行履歴"* に追加されます。 この履歴はストレージ テーブルに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。 それに対する課金は Azure Functions の従量課金プランを使用している場合は停止します。  処理すべき作業がさらにある場合は、関数は再起動され、関数の状態は再構築されます。
+Durable Functions では、イベント ソーシングが透過的に使用されます。 バックグラウンドで、オーケストレーター関数内の `await` (C#) または `yield` (JavaScript) 演算子によって、オーケストレーター スレッドのコントロールが Durable Task Framework ディスパッチャーに戻されます。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションが、オーケストレーション インスタンスの実行履歴に追加されます。 この履歴はストレージ テーブルに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。 
 
-オーケストレーション関数にさらに処理すべき作業が与えられる (たとえば、応答メッセージを受け取る、または永続タイマーが期限切れになる) と、ローカルの状態を再構築するためにオーケストレーターがもう一度起動して始めからその関数全体を再実行します。 このリプレイ中にコードが関数を呼び出そうとする (または他の非同期作業を行おうとする) と、Durable Task Framework は現在のオーケストレーションの*実行履歴*を照会します。 [アクティビティ関数](durable-functions-types-features-overview.md#activity-functions)が既に実行されいくつかの結果を生成していることが確認されると、その関数の結果をリプレイしてオーケストレーター コードが実行を継続します。 この動作は、関数コードが完了する、または新しい非同期作業をスケジュールする時点まで継続して行われます。
+オーケストレーター関数に対する課金は、Azure Functions の従量課金プランを使用している場合はここで停止します。 処理すべき作業がさらにある場合は、関数が再起動され、関数の状態が再構築されます。
+
+オーケストレーション関数にさらに処理すべき作業 (応答メッセージの受信や永続タイマーの終了など) が与えられると、オーケストレーターが起動し、関数全体が始めから再実行され、ローカルの状態が再構築されます。 
+
+このリプレイ中にコードが関数を呼び出そうとする (または他の非同期作業を行おうとする) と、Durable Task Framework によって現在のオーケストレーションの実行履歴が確認されます。 [アクティビティ関数](durable-functions-types-features-overview.md#activity-functions)が既に実行され、いくつかの結果が生成されていることがわかった場合は、関数の結果をリプレイし、オーケストレーター コードの実行を続行します。 リプレイは、関数コードが完了するまで、または新しい非同期作業がスケジュールされるまで続行されます。
 
 ### <a name="orchestrator-code-constraints"></a>オーケストレーター コードの制約
 
-このリプレイ動作は、オーケストレーター関数に記述できるコード タイプに関する制約を設けます。 たとえば、オーケストレーター コードは複数回リプレイされて毎回同じ結果を生成する必要があるため、確定的である必要があります。 制約に関する完全なリストについては、**チェックポイントの設定と再起動**に関する記事の「[Orchestrator code constraints (オーケストレーター コードの制約)](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)」セクションをご覧ください。
+オーケストレーター コードのリプレイ動作によって、オーケストレーター関数に記述できるコードの種類に制約が生まれます。 たとえば、オーケストレーター コードは複数回リプレイされるため、確定的である必要があり、毎回同じ結果を出す必要があります。 制約の完全な一覧については、[オーケストレーター コードの制約](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)に関する記事を参照してください。
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
-Durable Functions 拡張機能は、Application Insights インストルメンテーション キーで関数アプリが構成されるときに、構造化された追跡データを [Application Insights](../functions-monitoring.md) に自動で出力します。 この追跡データは、オーケストレーションの動作や進行状況を監視するために使用できます。
+Durable Functions 拡張機能では、関数アプリが Azure Application Insights インストルメンテーション キーを使用して設定される場合、構造化された追跡データを [Application Insights](../functions-monitoring.md) に自動的に出力します。 この追跡データを使用して、オーケストレーションのアクションと進行状況を監視できます。
 
-[Application Insights Analytics](../../application-insights/app-insights-analytics.md) を使用すると Application Insights ポータル内で Durable Functions の追跡イベントがどのように表示されるか、その例を次に示します。
+[Application Insights Analytics](../../application-insights/app-insights-analytics.md) を使用したときに、Application Insights ポータル内で Durable Functions の追跡イベントがどのように表示されるかの例を次に示します。
 
-![App Insights のクエリ結果](./media/durable-functions-concepts/app-insights-1.png)
+![Application Insights クエリ結果](./media/durable-functions-concepts/app-insights-1.png)
 
-各ログ エントリの `customDimensions` フィールドには、有用な構造化データが数多く格納されています。 完全に展開された、そのようなエントリの例を次に示します。
+各ログ エントリの `customDimensions` フィールドで、有用な構造化データを見つけることができます。 完全に展開されたエントリの例を次に示します。
 
-![App Insights クエリの customDimensions フィールド](./media/durable-functions-concepts/app-insights-2.png)
+![Application Insights クエリの customDimensions フィールド](./media/durable-functions-concepts/app-insights-2.png)
 
-Durable Task Framework ディスパッチャーのリプレイ動作のおかげで、リプレイされたアクションの豊富なログ エントリを確認できます。 これはコア エンジンのリプレイ動作を理解するのに役立ちます。 [診断](durable-functions-diagnostics.md)に関する記事では、リプレイ ログをフィルターで除外したサンプル クエリを示しているため、"リアルタイム" ログを確認できます。
+Durable Task Framework ディスパッチャーのリプレイ動作のおかげで、リプレイされたアクションの豊富なログ エントリを確認できます。 冗長なログ エントリは、コア エンジンのリプレイ動作を理解するのに役立ちます。 [診断](durable-functions-diagnostics.md)に関する記事に、リプレイ ログをフィルターで除外するサンプル クエリが示されています。それによって "リアルタイム" ログだけを確認できます。
 
 ## <a name="storage-and-scalability"></a>ストレージとスケーラビリティ
 
-Durable Functions 拡張機能は、Azure Storage の Queue、Table、BLOB を使用して実行履歴の状態を保持し、関数の実行をトリガーします。 関数アプリの既定のストレージ アカウントを使用、または別のストレージ アカウントを構成できます。 ストレージのスループット制限が原因で、別のアカウントを使用したいと思うこともあるでしょう。 記述するオーケストレーター コードは、これらのストレージ アカウント内のエンティティとやりとりをする必要はありません (というより、すべきではありません)。 エンティティは実装の詳細として、Durable Task Framework により直接管理されます。
+Durable Functions 拡張機能では、Azure Storage のキュー、テーブル、および BLOB を使用して実行履歴の状態を保持し、関数の実行をトリガーします。 関数アプリの既定のストレージ アカウントを使用するか、別のストレージ アカウントを構成できます。 ストレージのスループット制限に基づいて、別のアカウントを使用することもできます。 記述するオーケストレーター コードは、これらのストレージ アカウント内のエンティティとやりとりをすることはありません。 Durable Task Framework では、エンティティは実装の詳細として直接管理されます。
 
-オーケストレーター関数はアクティビティ関数をスケジュールし、内部キュー メッセージを介して応答を受け取ります。 Azure Functions の従量課金プランで関数アプリを実行するときは、これらのキューは [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-plan-works) により監視され、必要に応じてコンピューティング インスタンスが追加されます。 オーケストレーター関数は、複数の VM にスケールアウトされるときに、呼び出すアクティビティ関数を複数の異なる VM で実行しつつ、1 つの VM 上で実行される場合があります。 Durable Functions のスケール動作の詳細については、[パフォーマンスとスケール](durable-functions-perf-and-scale.md)に関する記事をご覧ください。
+オーケストレーター関数はアクティビティ関数をスケジュールし、内部キュー メッセージを介して応答を受け取ります。 関数アプリが Azure Functions の従量課金プランで実行されている場合、これらのキューは [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-plan-works) によって監視されます。 必要に応じて、新しいコンピューティング インスタンスが追加されます。 複数の VM にスケールアウトされた場合、オーケストレーター関数は 1 つの VM 上で実行され、オーケストレーター関数によって呼び出されるアクティビティ関数は別の VM で実行されることがあります。 Durable Functions のスケーリング動作の詳細については、[パフォーマンスとスケール](durable-functions-perf-and-scale.md)に関する記事をご覧ください。
 
-Table Storage は、オーケストレーター アカウントの実行履歴を格納するために使用されます。 特定の VM 上でインスタンスが復元される場合は常に、そのローカルの状態を再構築できるようにするために、テーブルから実行履歴がフェッチされます。 Table Storage 内で履歴を使用できるようにすることの便利な点の 1 つは、[Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールを使用してオーケストレーションの履歴を確認できることです。
+オーケストレーター アカウントの実行履歴は、テーブル ストレージに格納されます。 インスタンスが特定の VM 上に復元される場合、オーケストレーターは、テーブルから実行履歴をフェッチして、そのローカル状態を再構築できるようにします。 テーブル ストレージの履歴を使用できることの便利な面は、[Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールを使用してオーケストレーションの履歴を確認できることです。
 
-Storage BLOB は、複数の VM におけるオーケストレーション インスタンスのスケールアウトを調整するリース メカニズムとして主に使用されます。 これらは、テーブルまたはキューに直接保存することができない大きなメッセージのデータを保持するためにも使用されます。
+Storage BLOB は、主にオーケストレーション インスタンスの複数の VM 間のスケールアウトを調整するためのリース メカニズムとして使用されます。 Storage BLOB は、テーブルまたはキューに直接保存することができない大きなメッセージのデータを保持するために使用されます。
 
-![Azure Storage Explorer のスクリーン ショット](./media/durable-functions-concepts/storage-explorer.png)
+![Azure Storage Explorer のスクリーンショット](./media/durable-functions-concepts/storage-explorer.png)
 
 > [!WARNING]
-> Table Storage 内で実行履歴を確認できるのは簡単で便利ですが、このテーブルに依存関係を設定することは避けてください。 これについては、Durable Functions 拡張機能が今後改善されていくうちに変更される可能性があります。
+> テーブル ストレージで実行履歴を確認できるのは簡単で便利ですが、このテーブルには依存関係を作成しないでください。 このテーブルは、Durable Functions 拡張機能の発展に伴って変更される可能性があります。
 
-## <a name="known-issues-and-faq"></a>既知の問題とよくあるご質問
+## <a name="known-issues"></a>既知の問題
 
-すべての既知の問題は、[GitHub の Issue](https://github.com/Azure/azure-functions-durable-extension/issues) 一覧で追跡されています。 問題が発生してその問題が GitHub で見つからない場合は、新しい Issue を開き、その問題の詳細な説明を記載してお知らせください。
+すべての既知の問題は、[GitHub の Issue](https://github.com/Azure/azure-functions-durable-extension/issues) 一覧で追跡されています。 問題が発生したときに、その問題が GitHub で見つからない場合は、新しい Issue を開いてください。 問題の詳細な説明を含めてください。
 
 ## <a name="next-steps"></a>次の手順
 
-Durable Functions の詳細については、「[Overview of function types and features for Durable Functions (Azure Functions)](durable-functions-types-features-overview.md)」(Durable Functions の関数の種類と機能の概要 (Azure Functions)) を参照するか、または次のページを参照してください。
+Durable Functions の詳細については、[Durable Functions の関数の種類と機能](durable-functions-types-features-overview.md)に関する記事を参照してください。 
+
+作業を開始するには:
 
 > [!div class="nextstepaction"]
-> [最初の Durable Function を作成する](durable-functions-create-first-csharp.md)
+> [最初の永続関数を作成する](durable-functions-create-first-csharp.md)
 
 [DurableOrchestrationContext]: https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html

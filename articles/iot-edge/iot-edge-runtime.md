@@ -4,17 +4,17 @@ description: デバイス上のモジュール、セキュリティ、通信、�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2018
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a2412a286015cb403fe9a2af7754c7e5346fe98c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: bb2df9c32d5adc8160da82148e4a66a4ab68d182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230426"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311601"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -25,14 +25,14 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 * デバイスにワークロードをインストールし、更新する。
 * デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
 * [IoT Edge モジュール](iot-edge-modules.md)の実行状態を絶えず確保する。
-* モジュールの正常性をクラウドに報告してリモート監視を可能にする。
+* モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
 * ダウンストリームのリーフ デバイスと IoT Edge デバイス間の通信を円滑化する。
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
-* IoT Edge デバイスとクラウドとの間の通信を円滑化する。
+* IoT Edge デバイスとクラウド間の通信を円滑化する。
 
 ![ランタイムによる分析情報とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
 
-IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
+IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 *IoT Edge ハブ*は通信を担当し、*IoT Edge エージェント*は、モジュールを展開し、監視します。 
 
 IoT Edge ハブと IoT Edge エージェントはどちらも、IoT Edge デバイスで実行される他のモジュールと同様のモジュールです。 
 
@@ -52,11 +52,11 @@ IoT Edge ソリューションが使用する帯域幅を減らすために、Io
 
 ![IoT Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです](./media/iot-edge-runtime/Gateway.png)
 
- IoT Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、IoT Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、IoT Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
+IoT Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、IoT Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、IoT Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
 
 ### <a name="module-communication"></a>モジュール通信
 
- IoT Edge ハブを使用することで、モジュール間の通信が容易になっています。 メッセージ ブローカーとして IoT Edge ハブを使用することで、モジュールの相互独立性を維持できます。 モジュールは、メッセージを受信する入力と、メッセージを書き出す出力を指定するだけです。 ソリューション開発者は、そのソリューションに固有の順序でデータを処理できるよう、これらの入力と出力を統合します。 
+IoT Edge ハブを使用することで、モジュール間の通信が容易になっています。 メッセージ ブローカーとして IoT Edge ハブを使用することで、モジュールの相互独立性を維持できます。 モジュールは、メッセージを受信する入力と、メッセージを書き出す出力を指定するだけです。 ソリューション開発者は、そのソリューションに固有の順序でデータを処理できるよう、これらの入力と出力を統合します。 
 
 ![IoT Edge ハブを使用することで、モジュール間の通信が容易になっています](./media/iot-edge-runtime/module-endpoints.png)
 

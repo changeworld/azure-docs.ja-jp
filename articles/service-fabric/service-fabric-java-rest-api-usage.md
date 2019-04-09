@@ -4,7 +4,7 @@ description: Service Fabric クライアント REST API 仕様を使って、Ser
 services: service-fabric
 documentationcenter: java
 author: rapatchi
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 97bba87331965b0f7ce20ec2ee089e0e18f72457
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182032"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665102"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java クライアント API
 
@@ -126,11 +126,11 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
 すべての API に対し、実装の 4 つのオーバーロードがあります。 省略可能なパラメーターがある場合は、さらに、これらの省略可能なパラメーターを含む 4 つのバリエーションがあります。 たとえば、API ``removeReplica`` を例にすると次のようになります。
  1. **public void removeReplica(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout)**
     * これは、removeReplica API 呼び出しの同期バリエーションです
- 2. **public ServiceFuture<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, final ServiceCallback<Void> serviceCallback)**
+ 2. **public ServiceFuture\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, final ServiceCallback\<Void> serviceCallback)**
     * API 呼び出しのこのバリエーションは、将来ベースの非同期プログラミングとコールバックを使いたい場合に、使うことができます
- 3. **public Observable<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
+ 3. **public Observable\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
     * API 呼び出しのこのバリエーションは、リアクティブな非同期プログラミングを使いたい場合に、使うことができます
- 4. **public Observable<ServiceResponse<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
+ 4. **public Observable\<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
     * API 呼び出しのこのバリエーションは、リアクティブな非同期プログラミングを使い、未処理の REST 応答を扱いたい場合に、使うことができます
 
 ## <a name="next-steps"></a>次の手順

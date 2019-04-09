@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 11/07/2018
+ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: a8ead1fedc8c21152b1ef095dbaebe605776b6e3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243870"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213672"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Azure Machine Learning サービスを使用して機械学習パイプラインを構築する
 
@@ -34,17 +34,27 @@ ms.locfileid: "55243870"
 
 ![Azure Machine Learning サービスでの機械学習パイプライン](./media/concept-ml-pipelines/pipelines.png)
 
+### <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure パイプライン テクノロジを使用すべきか
+
+Azure クラウドでは、目的が異なるさまざまなパイプラインが提供されています。 次の表に、それらのさまざまなパイプラインとその用途を示します。
+
+| パイプライン | 実行内容 | Canonical パイプ |
+| ---- | ---- | ---- |
+| Azure Machine Learning パイプライン | 機械学習シナリオ用のテンプレートとして使用できる、再利用可能な機械学習ワークフローを定義します。 | データ -> モデル |
+| [Azure Data Factory のパイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 1 つのタスクを実行するために必要なデータ移動、変換、および制御アクティビティをグループ化します。  | データ -> データ |
+| [Azure パイプライン](https://azure.microsoft.com/services/devops/pipelines/) | 任意のプラットフォーム/任意のクラウドへの自分のアプリケーションの継続的インテグレーションとデリバリー  | コード -> アプリ/サービス |
+
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Azure Machine Learning を使用してパイプラインを構築する理由
 
 [Azure Machine Learning SDK for Python](#the-python-sdk-for-pipelines) を使用すると、ML パイプラインを作成したり、個々のパイプライン実行を送信して追跡したりできます。
 
 パイプラインを使用すると、シンプルさ、速度、移植性、再利用によってワークフローを最適化できます。 Azure Machine Learning を使用してパイプラインを構築する場合は、インフラストラクチャにではなく、専門知識である機械学習に焦点を絞ることができます。
 
-個別のステップを使用すると、ワークフローを調整してテストするときに、必要なステップのみを再実行することが可能になります。 ステップとは、パイプラインにおけるコンピューティング単位です。 前の図に示すように、データを準備するタスクには多数のステップが含まれる場合があります。 これには正規化、変換、検証、および特徴付けが含まれますが、それに限定されるわけではありません。 データ ソースと中間データはパイプライン全体で再利用され、コンピューティングの時間とリソースが節約されます。 
+個別のステップを使用すると、ワークフローを調整してテストするときに、必要なステップのみを再実行することが可能になります。 ステップとは、パイプラインにおけるコンピューティング単位です。 前の図に示すように、データを準備するタスクには多数のステップが含まれる場合があります。 これらのステップには正規化、変換、検証、および特徴付けが含まれますが、それだけに限定されるわけではありません。 データ ソースと中間データはパイプライン全体で再利用され、コンピューティングの時間とリソースが節約されます。 
 
 パイプラインが設計された後には、多くの場合、パイプラインのトレーニング ループを中心にさらに多くの微調整が行われます。 パイプラインを再実行すると、再実行する必要があるステップ (更新されたトレーニング スクリプトなど) にジャンプし、変更されていないものはスキップされます。 ステップの実行に使用される変更されていないスクリプトにも同じパラダイムが適用されます。 
 
-Azure Machine Learning では、パイプライン内のステップごとに、Microsoft Cognitive Toolkit や TensorFlow などの各種のツールキットやフレームワークを使用できます。 Azure では、使用するさまざまな[コンピューティング ターゲット](concept-azure-machine-learning-architecture.md)間の調整が行われるため、中間データをダウンストリームのコンピューティング ターゲットと容易に共有できます。 
+Azure Machine Learning では、パイプライン内の各ステップに対して、PyTorch や TensorFlow などの各種のツールキットとフレームワークを使用できます。 Azure では、使用するさまざまな[コンピューティング ターゲット](concept-azure-machine-learning-architecture.md)間の調整が行われるため、中間データをダウンストリームのコンピューティング ターゲットと容易に共有できます。 
 
 Azure portal で直接、[パイプライン実験のメトリックを追跡](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)できます。 
 
