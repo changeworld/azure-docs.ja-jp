@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: ef75ec40df50931f5a49c06184c61d2f78608dcf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014999"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540722"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -144,7 +144,7 @@ IP アドレスを使用して VM の送信接続を制御するには、次の�
 
 **ルール** |  **詳細** | **サービス タグ**
 --- | --- | --- 
-HTTPS の送信を許可する: ポート 443 | ソース リージョンのストレージ アカウントに対応する範囲を許可します | Storage.<リージョン名>.
+HTTPS の送信を許可する: ポート 443 | ソース リージョンのストレージ アカウントに対応する範囲を許可します | Storage.\<region-name>。
 HTTPS の送信を許可する: ポート 443 | Azure Active Directory (Azure AD) に対応する範囲を許可します。<br/><br/> Azure AD のアドレスが後で追加される場合は、新しいネットワーク セキュリティ グループ (NSG) ルールを作成する必要があります。  | AzureActiveDirectory
 HTTPS の送信を許可する: ポート 443 | ターゲットの場所に対応する [Site Recovery エンドポイント](https://aka.ms/site-recovery-public-ips)へのアクセスを許可します。 
 
@@ -152,7 +152,7 @@ HTTPS の送信を許可する: ポート 443 | ターゲットの場所に対�
 
 **ルール** |  **詳細** | **サービス タグ**
 --- | --- | --- 
-HTTPS の送信を許可する: ポート 443 | ターゲット リージョンのストレージ アカウントに対応する範囲を許可します。 | Storage.<リージョン名>.
+HTTPS の送信を許可する: ポート 443 | ターゲット リージョンのストレージ アカウントに対応する範囲を許可します。 | Storage.\<region-name>。
 HTTPS の送信を許可する: ポート 443 | Azure AD に対応する範囲を許可します。<br/><br/> Azure AD のアドレスが後で追加される場合は、新しい NSG ルールを作成する必要があります。  | AzureActiveDirectory
 HTTPS の送信を許可する: ポート 443 | ソースの場所に対応する [Site Recovery エンドポイント](https://aka.ms/site-recovery-public-ips)へのアクセスを許可します。 
 

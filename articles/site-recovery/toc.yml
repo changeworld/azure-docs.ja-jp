@@ -92,7 +92,7 @@ items:
       href: vmware-azure-about-disaster-recovery.md
     - name: 一般的な質問
       href: vmware-azure-common-questions.md
-    - name: サポート マトリックス
+    - name: VMware/物理から Azure へのサポート マトリックス
       href: vmware-physical-azure-support-matrix.md
     - name: 構成サーバーのデプロイのサポート要件
       href: vmware-azure-configuration-server-requirements.md
@@ -112,7 +112,7 @@ items:
       href: hyper-v-azure-architecture.md
   - name: Azure への物理サーバーのディザスター リカバリーについて
     items:
-    - name: サポート マトリックス
+    - name: VMware/物理から Azure へのサポート マトリックス
       href: vmware-physical-azure-support-matrix.md
     - name: 物理サーバーから Azure へのアーキテクチャ
       href: physical-azure-architecture.md
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: d41716875c4fa91a9cb044746fd6610ea87b560f
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: f9105e36a6e2cb1f803d65912f1d8e45cd731b20
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847703"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006840"

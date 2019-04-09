@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: afa927009e684fa7f8c6217c91dcb589b331b5f5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58163788"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>事前トレーニング済みエンティティを追加する方法
 このチュートリアルでは、Conversation Learner モデルに事前トレーニング済みエンティティを追加する方法を説明します。
@@ -25,7 +25,7 @@ ms.locfileid: "55224175"
 [![事前トレーニング済みエンティティのチュートリアルのプレビュー](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities_Preview)](https://aka.ms/cl_Tutorial_v3_PreTrainedEntities)
 
 ## <a name="requirements"></a>必要条件
-このチュートリアルでは、general tutorial ボットが実行されている必要があります。
+このチュートリアルでは、汎用チュートリアル ボットが実行されている必要があります。
 
     npm run tutorial-general
 
@@ -35,50 +35,49 @@ ms.locfileid: "55224175"
 
 ## <a name="steps"></a>手順
 
+Web UI のホーム ページから始めます。
+
 ### <a name="create-the-model"></a>モデルを作成する
 
-1. Web UI で、[New Model]\(新しいモデル\) をクリックします。
-2. [Name]\(名前\) フィールドに「PretrainedEntities」と入力して、Enter キーを押します。
-3. [Create]\(作成\) ボタンをクリックします。
+1. **[新しいモデル]** を選択します。
+2. **[名前]** に「**PretrainedEntities**」と入力します。
+3. **作成**を選択します。
 
 ### <a name="entity-creation"></a>エンティティの作成
 
-1. 左側のパネルで、[Entities]\(エンティティ\)、[New Entity]\(新しいエンティティ\) ボタンの順にクリックします。
-2. [Entity Type]\(エンティティの種類\) で [Pre-Trained/datetimeV2]\(事前トレーニング済み/datetimeV2\) を選択します。
-3. [Multi-valued]\(複数値\) チェック ボックスをオンにします。
-    - 複数値エンティティでは、1 つまたは複数の値がエンティティに累積されます。
-    - 事前トレーニング済みエンティティでは、否定可能プロパティは無効になっています。
-4. [Create]\(作成\) ボタンをクリックします。
+1. 左側のパネルで **[エンティティ]** を選択し、**[新しいエンティティ]** を選択します。
+2. **[エンティティ型]** で **[Pre-Trained/datetimeV2]\(事前トレーニング済み/datetimeV2\)** を選択します。
+3. エンティティの 1 つまたは複数の値の蓄積を有効にするには、**[複数値]** をオンにします。 [Pre-Trained Entities]\(事前トレーニング済みエンティティ\) を負の値にすることができない点に注意してください。
+4. **作成**を選択します。
 
-![](../media/tutorial7_entities_a.PNG)
+![](../media/T08_entity_create.png)
 
-### <a name="create-the-first-action"></a>1 つ目のアクションを作成する
+1. 左側のパネルで **[アクション]** を選択し、**[新しいアクション]** を選択します。
+2. **[Bot's response]\(ボットの応答\)** に「**The date is $builtin-datetimev2**」(日付は $builtin-datetimev2 です) と入力します
+3. **作成**を選択します。
 
-1. 左側のパネルで [Actions]\(アクション\) をクリックし、[New Action]\(新しいアクション\) ボタンをクリックします。
-2. [Bot's response...]\(ボットの応答...\) フィールドに、「The date is $builtin-datetimev2」(日付は $builtin-datetimev2 です) と入力します
-3. [Create]\(作成\) ボタンをクリックします。
-
-![](../media/tutorial7_actions_a.PNG)
+![](../media/T08_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>2 つ目のアクションを作成する
 
-1. 左側のパネルで [Actions]\(アクション\) をクリックし、[New Action]\(新しいアクション\) ボタンをクリックします。
-2. [Bot's response...]\(ボットの応答...\) フィールドに、「What's the date?」(何日ですか?) と入力します
-    - 事前トレーニング済みエンティティは、すべてのユーザー発話に対して既定で認識されるため、必須エンティティにすることはできません。
-3. [Disqualifying Entitles]\(不適格エンティティ\) フィールドに「builtin-datetimev2」と入力します。
-4. [Create]\(作成\) ボタンをクリックします。
+1. 左側のパネルで **[アクション]** を選択し、**[新しいアクション]** を選択します。
+2. **[Bot's response]\(ボットの応答\)** に「**What's the date?**」(日付を教えて) と入力します。事前トレーニング済みエンティティは、すべての発話に対して既定で認識されるため、**必須エンティティ**にすることはできません。
+3. **[Disqualifying Entities]\(不適格エンティティ\)** に「**$builtin-datetimev2**」と入力します。
+4. **作成**を選択します。
 
-![](../media/tutorial7_actions2_a.PNG)
+![](../media/T08_action_create_2.png)
 
 ### <a name="train-the-model"></a>モデルをトレーニングする
 
-1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、[New Train Dialog]\(新しいトレーニング会話\) ボタンをクリックします。
-2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「hello」(こんにちは) と入力します。
-3. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
-4. 応答 "What's the date?" (何日ですか?) を選択します
-5. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「today」(今日) と入力します
-    - 今日の発話が、LUIS の事前トレーニング済みモデルによって自動的に認識されます。
+1. 左側のパネルで、**[Train Dialogs]\(トレーニング会話\)** を選択し、**[New Train Dialog]\(新しいトレーニング会話\)** を選択します。
+2. 左側のチャット パネルでユーザーの発話に「**hello**」(こんにちは) と入力します。
+3. **[Score Action]\(アクションのスコア付け\)** を選択します。
+4. [アクション] リストから **[What's the date?]\(日付を教えて\)** を選択します。
+5. 左側のチャット パネルでユーザーの発話に「**today**」(今日) と入力します。
+    - **today (今日)** の発話が、LUIS の事前トレーニング済みモデルによって自動的に認識されます。
     - 事前トレーニング済みエンティティの値をマウスでポイントすると、LUIS によって提供される追加のデータが表示されます。
+
+![](../media/T08_training.png)
 
 ## <a name="next-steps"></a>次の手順
 

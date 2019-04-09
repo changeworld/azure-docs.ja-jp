@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 5642f3acd108d0d3f504fc132522936d1b5ab870
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082587"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417974"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT の作成を準備する
 
@@ -125,6 +125,7 @@ Azure クラスターの Avere vFXT を作成する前に、クラスター ノ�
           "Microsoft.Compute/virtualMachines/read",
           "Microsoft.Network/networkInterfaces/read",
           "Microsoft.Network/networkInterfaces/write",
+          "Microsoft.Network/virtualNetworks/read",
           "Microsoft.Network/virtualNetworks/subnets/read",
           "Microsoft.Network/virtualNetworks/subnets/join/action",
           "Microsoft.Network/networkSecurityGroups/join/action",

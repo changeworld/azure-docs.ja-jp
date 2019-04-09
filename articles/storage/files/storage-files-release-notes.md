@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 2/12/2019
+ms.date: 3/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2bbac21b9ac3e07cbb41ea8aa4cf93dcbd636d15
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118614"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,8 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| V5 リリース - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | サポートされています (推奨されるバージョン) |
+| 2019 年 3 月の更新プログラム ロールアップ - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7 日 | サポートされています (推奨されるバージョン) |
+| V5 リリース - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | サポートされています |
 | 2019 年 1 月の更新プログラム ロールアップ - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019 年 1 月 14 日 | サポートされています |
 | 2018 年 12 月の更新プログラム ロールアップ - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018 年 12 月 10 日 | サポートされています |
 | 2018 年 12 月の更新プログラム ロールアップ | 4.1.0.0 | 2018 年 12 月 4 日 | サポートされています |
@@ -38,13 +39,23 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-5100"></a>エージェント バージョン 5.1.0.0
+次のリリース ノートは、2019 年 3 月 7 日にリリースされた Azure File Sync エージェントのバージョン 5.1.0.0 を対象としています。 バージョン 5.0.2.0 に関して記載されているリリース ノートへの追記となります。
+
+このリリースで修正された問題は、以下のとおりです。  
+- サーバー上で変更の列挙が失敗した場合、エラー 0x80c8031d (ECS_E_CONCURRENCY_CHECK_FAILED) でファイルが同期できないことがあります
+- 同期セッションまたはファイルがエラー 0x80072f78 (WININET_E_INVALID_SERVER_RESPONSE) を受け取った場合、同期によって操作が再試行されるようになります
+- エラー 0x80c80203 (ECS_E_SYNC_INVALID_STAGED_FILE) でファイルが同期に失敗することがあります
+- ファイルの再呼び出し時にメモリ使用量が多くなることがあります
+- クラウドを使った階層化のテレメトリの改善 
+
 ## <a name="agent-version-5020"></a>エージェント バージョン 5.0.2.0
 次のリリース ノートは、2019 年 2 月 12 日にリリースされた Azure File Sync エージェントのバージョン 5.0.2.0 を対象としています。
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
 
 - Azure Government クラウドのサポート
-    - Azure Government クラウドのプレビュー サポートを追加しました。 これには、ホワイトリストに登録されたサブスクリプションと Microsoft からの特別なエージェントのダウンロードが必要です。 プレビューのご利用方法については、[AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com) までメールでお問い合わせください。
+  - Azure Government クラウドのプレビュー サポートを追加しました。 これには、ホワイトリストに登録されたサブスクリプションと Microsoft からの特別なエージェントのダウンロードが必要です。 プレビューのご利用方法については、[AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com) までメールでお問い合わせください。
 - データ重複除去のサポート
     - データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっている環境で完全にサポートされるようになりました。 クラウドを使った階層化が有効なボリュームで重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。
 - オフライン データ転送のサポート (Data Box など)

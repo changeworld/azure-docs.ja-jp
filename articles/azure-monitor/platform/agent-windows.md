@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d4204d4937b8eca2dcb3f656659f185f30c8bddf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d433a480165424e47d4d84e67e7fd02648ebe2d1
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755029"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223429"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -32,6 +32,10 @@ Log Analytics を使用して、ローカル データ センターやその他�
 * Azure Automation Desired State Configuration (DSC)。 Azure Automation 内の DSC と、環境内に既にデプロイされている Windows コンピューター用のスクリプトを使用します。  
 * PowerShell スクリプト。
 * Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレート。  
+
+>[!NOTE]
+>Azure Security Center (ASC) は、Microsoft Monitoring Agent (Log Analytics Windows エージェントとも呼ばれます) に依存しており、そのデプロイの一環で Log Analytics ワークスペースに報告するようにインストールおよび構成します。 ASC には自動プロビジョニング オプションがあります。このオプションを使用すると、サブスクリプション内のすべての VM に Log Analytics Windows エージェントを自動的にインストールし、特定のワークスペースに報告するように構成することができます。 このオプションの詳細については、[Log Analytics エージェントの自動プロビジョニングの有効化](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-)に関するページを参照してください。
+>
 
 サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
 
