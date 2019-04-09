@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: ea41f09269e3ad46db1f254965fd7d7df25232be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23654dd41714314ab5c9f217d4f805d7b9d62413
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095604"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472808"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -41,7 +41,7 @@ Webhook をサポートする他の多くのサービスと同様に、Event Gri
 
    2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが Event Grid によってサポートされるようになりました。 API バージョン 2018-05-01-preview 以降を使用する SDK またはツールでイベント サブスクリプションを作成すると、Event Grid によって、サブスクリプション検証イベントのデータ部分で `validationUrl` プロパティが送信されます。 ハンドシェイクを完了するには、イベント データ内でその URL を探し、そこへ GET 要求を手動で送信します。 REST クライアントと Web ブラウザーのどちらでも使用できます。
 
-   指定された URL は、10 分間有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証を始める前に、もう一度イベント サブスクリプションを作成する必要があります。
+   指定された URL は 5 分間有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証を始める前に、もう一度イベント サブスクリプションを作成する必要があります。
 
 ### <a name="validation-details"></a>検証の詳細
 
@@ -88,7 +88,7 @@ HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Acce
 
 ### <a name="checklist"></a>チェック リスト
 
-イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https://your-endpoint-here の検証の試行に失敗しました。 詳細については、 https://aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
+イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https:\//your-endpoint-here の検証の試行に失敗しました。 詳細については、https:\//aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
 
 * ターゲット エンドポイントでアプリケーション コードを制御しているか。 たとえば、HTTP トリガー ベースの Azure 関数を記述する場合は、その関数を変更するためにアプリケーション コードにアクセスできるかどうか。
 * アプリケーション コードにアクセスできる場合は、上記のサンプルに示すように ValidationCode ベースのハンドシェイクのメカニズムを実装します。

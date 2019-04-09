@@ -50,6 +50,8 @@ items:
     href: require-managed-devices.md
   - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
     href: untrusted-networks.md
+  - name: 利用規約を必須にする
+    href: terms-of-use.md
   expanded: true
 - name: リファレンス
   items:
@@ -69,9 +71,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: b665cf26d5f292f560ef8b169f970071c9021a7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b100d4b05e3131e4a891715b87c804d60d23f389
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006143"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047043"

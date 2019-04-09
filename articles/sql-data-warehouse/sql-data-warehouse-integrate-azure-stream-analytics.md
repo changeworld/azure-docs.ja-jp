@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
+ms.date: 03/22/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 605598d1470cbb535d626c15a5e8e4e08aa4d571
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883816"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403767"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Stream Analytics の使用
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、フル マネージドのサービスです。 基本事項については、「[Stream Analytics とは][Introduction to Azure Stream Analytics]」を参照してください。 その後で、「[Azure Stream Analytics の使用][Get started using Azure Stream Analytics]」チュートリアルに従って、Stream Analytics を使用してエンド ツー エンド ソリューションを作成する方法を知ることができます。
@@ -34,12 +34,10 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>ジョブの出力の指定:Azure SQL Data Warehouse データベース
 ### <a name="step-1"></a>手順 1
-Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[出力の追加]** をクリックします。
+Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[追加]** をクリックします。
 
 ### <a name="step-2"></a>手順 2.
-SQL Database を選択し、[次へ] をクリックします。
-
-![][add-output]
+SQL Database を選択します。
 
 ### <a name="step-3"></a>手順 3.
 次の値を次のページに入力します。
@@ -62,9 +60,7 @@ SQL Database を選択し、[次へ] をクリックします。
 ### <a name="step-4"></a>手順 4.
 チェック ボタンをクリックして、このジョブ出力を追加し、Stream Analytics がデータベースに適切に接続できることを確認します。
 
-![][test-connection]
-
-データベースへの接続が成功すると、ポータルの下部に通知が表示されます。 下部にある [接続のテスト] をクリックすると、データベースへの接続をテストできます。
+データベースへの接続が成功すると、ポータルに通知が表示されます。 [テスト] をクリックすると、データベースへの接続をテストできます。
 
 ## <a name="next-steps"></a>次の手順
 統合の概要については、「[SQL Data Warehouse の設計上の決定と コーディング技法][SQL Data Warehouse integration overview]」を参照してください。

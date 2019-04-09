@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 05028704c08ebd06f9b9e4e3f45c5137eb1e6b58
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1edc2587ef8680f60082bf6271b73d30184f331b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226914"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521246"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
-Azure Speech Services のテキスト読み上げは、REST ベースのサービスです。このサービスを使用すると、アプリケーション、ツール、デバイスは、テキストを人間のような自然な合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有の[カスタム音声](#custom-voice-fonts)を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
+Azure Speech Services のテキスト読み上げは、REST ベースのサービスです。このサービスを使用すると、アプリケーション、ツール、デバイスは、テキストを人間のような自然な合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
 
 テキスト読み上げテクノロジを使用すると、コンテンツ作成者は、ユーザーとさまざまな方法で対話できます。 テキスト読み上げでは、ユーザーが音声を使ってコンテンツと対話できるため、アクセシビリティが向上します。 視覚障害や学習障害をお持ちの方も、車の運転中にナビゲーション情報が必要な方も、テキスト読み上げを使用することにより、これまでのエクスペリエンスを向上させることができます。 テキスト読み上げは、音声ボットや仮想アシスタントにも役立つアドオンです。
 
@@ -56,9 +56,9 @@ Azure Speech Services のテキスト読み上げは、REST ベースのサー�
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](quickstart-dotnet-text-to-speech.md) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
-| [Python](quickstart-python-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api) |
+| [C#、.NET Core](quickstart-dotnet-text-to-speech.md) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>サンプル コード
 

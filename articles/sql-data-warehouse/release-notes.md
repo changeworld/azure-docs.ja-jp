@@ -9,12 +9,12 @@ ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 02/09/2019
-ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e77556ac0d6f64797906c0f3b4181f147b1668e2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244676"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448424"
 ---
 # <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Azure SQL Data Warehouse リリース ノートとドキュメントの更新
 
@@ -22,9 +22,10 @@ Azure SQL Data Warehouse (SQL DW) は、超並列処理 (MPP) を利用して、
 
 最新バージョンの Azure SQL Data Warehouse で利用できる新しい機能と機能強化について詳しくは、以下のリンクをクリックしてください。 示されているメンテナンス スケジュールの間に、これらのサービスの更新プログラムを受け取ることができます。
 
-- [SQL Data Warehouse バージョン 10.0.10106.0 (1 月)](./release-notes-10-0-10106-0.md)
-- [2018 年 12 月](./release-notes-december-2018.md)
-- [2018 年 10 月](./release-notes-october-2018.md)
+- [2019 年 3 月](./release-notes-10-0-10106-0.md#march-2019)
+- [2019 年 1 月](./release-notes-10-0-10106-0.md#january-2019)
+- [2018 年 12 月](./release-notes-10-0-10106-0.md#december-2018)
+- [2018 年 10 月](./release-notes-10-0-10106-0.md#october-2018)
 - [2018 年 9 月](./release-notes-september-2018.md)
 - [2018 年 8 月](./release-notes-august-2018.md)
 - [2018 年 7 月](./release-notes-july-2018.md)
@@ -39,9 +40,9 @@ Azure SQL Data Warehouse (SQL DW) は、超並列処理 (MPP) を利用して、
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-出力例:![SQL Data Warehouse のバージョン](./media/release-notes/dw-version.png)
+出力例:![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
 
-示されたバージョンを使用して、お使いの Azure SQL Data Warehouse に適用されているリリースを確認してください。 
+示された日付を使用して、お使いの Azure SQL Data Warehouse に適用されているリリースを確認してください。 
 
 
 ## <a name="next-steps"></a>次の手順

@@ -4,7 +4,7 @@ description: Microsoft Graph に対するクエリを通じて、Azure Active Di
 services: active-directory
 keywords: azure active directory identity protection, リスク イベント, 脆弱性, セキュリティ ポリシー, Microsoft Graph
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
-ms.author: markvi
-ms.reviewer: nigu
+ms.author: joflore
+ms.reviewer: sahandle
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9935b5605bc09f000a81e7616e807a0e194e12
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8f748e10ffa8b1c8a7f4ee3dc3d151f7413179ab
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295540"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517455"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
-Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 3 つあります。最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](../reports-monitoring/concept-risk-events.md)とその関連情報のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 この記事では、[Microsoft Graph への接続](#Connect-to-Microsoft-Graph)と[これらの API のクエリ](#Query-the-APIs)の概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
+Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 3 つあります。最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](../reports-monitoring/concept-risk-events.md)とその関連情報のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 この記事では、Microsoft Graph への接続とこれらの API のクエリの概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
 
 * [identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
 * [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)

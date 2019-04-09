@@ -4,7 +4,7 @@ description: Azure Active Directory の条件付きアクセスのアクセス�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
-ms.author: markvi
+ms.date: 03/23/2019
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d08046505f26e8b133b104e7984c8defe5163c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ceaf472f53c48b17701b14fdf4107045c2e43fdc
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163621"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521977"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 
@@ -116,6 +116,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
+- [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 

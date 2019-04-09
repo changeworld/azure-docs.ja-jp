@@ -2,27 +2,27 @@
 title: Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) | Microsoft Docs
 description: ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/26/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b66b6018ed5f6f427896db00b5348983b76a0e5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f791f460efec1b84533379e74add003619dbac6f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472152"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521569"
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) の使用
 ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントでコーディングする際のヒントです。
 
 ## <a name="what-is-create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS) とは
 
-[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) ステートメントは、利用可能な最重要 T-SQL 機能のうちの 1 つです。 これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成する並列操作です。 CTASD はテーブルのコピーを最も簡単かつすばやく作成する方法です。 
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) ステートメントは、利用可能な最重要 T-SQL 機能のうちの 1 つです。 これは、SELECT ステートメントの出力に基づいて新しいテーブルを作成する並列操作です。 CTAS は、単一のコマンドでデータを作成し、テーブルに挿入する最も簡単ですばやい方法です。 
 
 ## <a name="selectinto-vs-ctas"></a>SELECT..INTO とCTAS
 CTAS は、[SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql) ステートメントの強化されたバージョンと考えることができます。
@@ -35,11 +35,10 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-上記の例では、Azure SQL Data Warehouse にテーブルの規定値があるため、`[dbo].[FactInternetSales_new]` は CLUSTERED COLUMNSTORE INDEX を伴う ROUND_ROBIN 分散テーブルとして作成されます。
+しかし SELECT..INTO では、操作の一部として分散方法とインデックスの種類のいずれも変更することはできません。 既定の分散の種類を ROUND_ROBIN として、既定のテーブル構造を CLUSTERED COLUMNSTORE INDEX として使用して、`[dbo].[FactInternetSales_new]` が作成されます。
 
-しかし SELECT..INTO では、操作の一部として分散方法とインデックスの種類のいずれも変更することはできません。 ここで、CTAS の出番です。
-
-前の例を CTAS に変換するのは非常に簡単です。
+CTAS を使用すると、テーブル データの分散とテーブル構造の種類の両方を指定できます。
+前の例を CTAS に変換するには:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,7 +53,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-CTAS を使用することで、テーブル データの分散とテーブル タイプの両方を変更できます。 
+ 
 
 > [!NOTE]
 > `CTAS` 操作でインデックスを変更しようとしており、ソース テーブルがハッシュ分散されている場合、同じ分散列とデータ タイプを維持すると、`CTAS` 操作が最も適切に実行されます。 これにより、操作中に分散をまたがるデータ移動が回避されるため、効率が上がります。
@@ -125,13 +124,8 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-> [!NOTE]
-> Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。  クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。  統計の詳細については、開発トピック グループの[統計][Statistics]に関するトピックを参照してください。
-> 
-> 
-
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>CTAS を使用したサポートされていない機能の回避
-CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この機能は、ユーザーのコードに準拠するというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。 これは、完全に並列化された設計により可能になりました。 CTAS で対処できるシナリオは次のとおりです。
+CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この方法は多くの場合に、ユーザーのコードが準拠するというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果が見られる可能性があります。 このパフォーマンスは、完全並列化設計の結果となります。 CTAS で対処できるシナリオは次のとおりです。
 
 * ANSI JOINS を使用した UPDATE    
 * ANSI JOIN を使用した DELETE
@@ -222,7 +216,7 @@ DROP TABLE CTAS_acs
 ```
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>DELETE ステートメントの代わりに使用する ANSI JOIN 
-最善のデータ削除方法は `CTAS` を使用することである場合があります。 単にデータを削除するのではなく、保持したいデータを選択するということです。 これは ANSI JOIN 構文を使用する `DELETE` ステートメントの場合に特に当てはまります。SQL Data Warehouse では、`DELETE` ステートメントの `FROM` 句で ANSI JOIN がサポートされていないためです。
+最善のデータ削除方法は `CTAS` を使用することである場合があります。 データを削除するのではなく、保持したいデータを選択します。 これは ANSI join 構文を使用する `DELETE` ステートメントの場合に特に当てはまります。SQL Data Warehouse では、`DELETE` ステートメントの `FROM` 句で ANSI join がサポートされていないためです。
 
 変換された DELETE ステートメントの例を次に示します。
 
@@ -246,7 +240,7 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>MERGE ステートメントの代わりに使用
-少なくとも部分的に CTASを使用することにより、MERGE ステートメントを置き換えることができます。 INSERT および UPDATE を 1 つのステートメントに統合できます。 削除されたレコードはすべて、2 つ目のステートメントで閉じる必要があります。
+少なくとも部分的に CTASを使用することにより、MERGE ステートメントを置き換えることができます。 INSERT および UPDATE を 1 つのステートメントに統合できます。 削除されたレコードを `SELECT` ステートメントから、制限し、結果から除外する必要があります。
 
 UPSERT の例を次に示します。
 
@@ -386,7 +380,7 @@ WITH
 
 ただし、値フィールドは計算された式で、ソース データの一部ではありません。
 
-パーティション分割されたデータセットを作成するには、次を実行してください。
+パーティション分割されたデータセットを作成するために、次を実行する必要がある場合があります。
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -410,7 +404,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create')
 ;
 ```
 
-クエリは、問題なく実行されます。 問題が発生するのは、パーティションの切り替えを実行するときです。 テーブルの定義が一致しないためです。 テーブルの定義を一致させるには、CTAS を変更する必要があります。
+クエリは、問題なく実行されます。 問題が発生するのは、パーティションの切り替えを実行するときです。 テーブルの定義が一致しないためです。 テーブルの定義を一致させるには、CTAS を変更して、`ISNULL` 関数を追加し、列の NULL 値の許容属性を保持する必要があります。
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 11372894e1dbcac6a49205ff56d8b30ffb6ee976
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d3eb0fba2b7178b8b1702d4ca89ff85a441c20d6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261266"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541079"
 ---
-# <a name="create-custom-fields-in-log-analytics"></a>Log Analytics でカスタム フィールドを作成する
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースにカスタム フィールドを作成する
 
 > [!NOTE]
-> この記事では、Log Analytics でテキスト データの収集時に解析する方法について説明します。 「[Log Analytics でのテキスト データの解析](../log-query/parse-text.md)」で説明されているように、収集後にクエリ内のテキスト データを解析することには利点があります。
+> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 [Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページで説明されているように、収集後にクエリ内のテキスト データを解析することには利点があります。
 
-Log Analytics の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、Log Analytics の既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
+Azure Monitor の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、ご自身の Log Analytics ワークスペースの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 
 ![カスタム フィールドの概要](media/custom-fields/overview.png)
 
@@ -87,7 +87,7 @@ Azure Portal で Log Analytics ワークスペースの **[詳細設定]** メ�
 
 Service Control Manager からイベント ID が 7036 のすべてのイベント (サービスの開始または停止を示すイベント) を返すために、ここでは次のクエリを入力します。
 
-![クエリ](media/custom-fields/query.png)
+![Query](media/custom-fields/query.png)
 
 イベント ID が 7036 の任意のレコードを選択します。
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b9b39cfc6ac760c41b58c050cb1ebf39d3f93a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f008e981abb11a4927ec045c33342bbac9a05bd8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180931"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436803"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -33,11 +33,14 @@ ms.locfileid: "56180931"
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 *   Azure Active Directory テナント
-*   [Standard プラン](https://www.thousandeyes.com/pricing)以上が有効な ThousandEyes テナント 
-*   Admin アクセス許可がある ThousandEyes のユーザー アカウント 
+*   アクティブな [ThousandEyes アカウント](https://www.thousandeyes.com/pricing)
+*   次の 3 つのアクセス許可を含むロールが割り当てられている ThousandEyes ユーザー アカウント
+    * すべてのユーザーの表示
+    * ユーザーの編集
+    * API アクセス許可
 
 > [!NOTE]
-> Azure AD プロビジョニング統合では、Standard プラン以上の ThousandEyes チームで使用できる [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK) が必要です。
+> Azure AD プロビジョニング統合は、[ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK_ThousandEyes-support-for-SCIM) に依存します。 
 
 ## <a name="assigning-users-to-thousandeyes"></a>ThousandEyes へのユーザーの割り当て
 
@@ -53,13 +56,25 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 *   ThousandEyes にユーザーを割り当てるときは、**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
 
+## <a name="configure-auto-provisioned-user-roles-in-thousandeyes"></a>ThousandEyes で自動プロビジョニング ユーザー ロールを構成する
+
+その中のユーザーを自動プロビジョニングする各アカウント グループに対し、新しいユーザー アカウントの作成時に適用される一連のロールを構成できます。 既定で、他に構成されていない限り、すべてのアカウント グループの自動プロビジョニング ユーザーには_通常ユーザー_ ロールが割り当てられます。
+
+1. 自動プロビジョニングされたユーザーに対して新しい一連のロールを指定するには、ThousandEyes にログインし、[SCIM Settings]\(SCIM 設定\) セクション **> 右上隅のユーザー アイコン > [アカウント設定] > [組織] > [Security & Authentication]\(セキュリティと認証\) の順に移動します。** 
+
+   ![SCIM API 設定に移動する](https://monosnap.com/file/kqY8Il7eysGFAiCLCQWFizzM27PiBG)
+
+2. 各アカウント グループにエントリを追加し、一連のロールを割り当てて、変更を*保存*します。
+
+   ![SCIM API を使用して作成されたユーザーの既定のロールとアカウント グループを設定する](https://monosnap.com/file/16siam6U8xDQH1RTnaxnmIxvsZuNZG)
+
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>ThousandEyes へのユーザー プロビジョニングの構成 
 
 このセクションでは、Azure AD を ThousandEyes のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを ThousandEyes で作成、更新、無効化する手順を説明します。
 
 > [!TIP]
-> ThousandEyes では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> ThousandEyes では SAML ベースのシングル サインオン (SSO) を有効にすることもできます。[Azure サポート技術情報に記載されている手順](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-tutorial)に従って、SSO を実行します。 SSO は自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Azure AD で ThousandEyes への自動ユーザー アカウント プロビジョニングを構成する
@@ -75,7 +90,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. **[管理者資格情報]** セクションで、ThousandEyes のアカウントによって生成された **[OAuth ベアラー トークン]** を入力します (トークンは、ThousandEyes アカウントの **[プロファイル]** で確認できます)。
+5. **[管理者資格情報]** セクションで、ThousandEyes のアカウントによって生成された **OAuth ベアラー トークン**を入力します (トークンは、ThousandEyes アカウントの **[プロファイル]** で確認できます)。
 
     ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

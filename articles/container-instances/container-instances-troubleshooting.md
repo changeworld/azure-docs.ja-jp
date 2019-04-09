@@ -2,19 +2,19 @@
 title: Azure Container Instances のトラブルシューティング
 description: Azure Container Instances に関する問題のトラブルシューティングを行う方法について説明します
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/08/2019
-ms.author: seanmck
+ms.date: 02/15/2019
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c90041f54fc9b4b57885083ec94843b596f48b79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123268"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "54119052"
 コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則][azure-name-restrictions]を参照してください。
 
 | Scope (スコープ) | Length | 大文字小文字の区別 | 有効な文字 | 提案されるパターン | 例 |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | コンテナー グループ名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | コンテナー名 | 1 ～ 64 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とハイフン |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | コンテナーポート | 1 ～ 65535 の範囲 |整数 |1 ～ 65535 の整数 |`<port-number>` |`443` |
@@ -66,7 +66,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "message": "pulling image \"microsoft/aci-helloworld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"microsoft/aci-helloworld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "message": "Back-off pulling image \"microsoft/aci-helloworld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -93,7 +93,7 @@ Azure Container Instances は、最初にイメージをプルできなかった
 
 コンテナー グループは[再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
-Ubuntu や Alpine などのイメージを使用した場合、長時間実行されるプロセスのないコンテナー グループを実行していると、終了と再起動が繰り返されることがあります。 コンテナーを実行したままにするプロセスがないため、[EXEC](container-instances-exec.md) を使った接続は機能しません。 これを解決するには、コンテナー グループのデプロイに次のような起動コマンドを含め、コンテナーを実行したままにします。
+Ubuntu や Alpine などのイメージを使用した場合、長時間実行されるプロセスのないコンテナー グループを実行していると、終了と再起動が繰り返されることがあります。 コンテナーを実行したままにするプロセスがないため、[EXEC](container-instances-exec.md) を使った接続は機能しません。 この問題を解決するには、コンテナー グループのデプロイに次のような起動コマンドを含め、コンテナーを実行したままにします。
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -178,11 +178,11 @@ microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 
 ### <a name="cached-windows-images"></a>キャッシュされた Windows イメージ
 
-Azure Container Instances では、キャッシュ メカニズムを使用して、特定の Windows イメージに基づくイメージに対するコンテナーの起動時間を高速化します。
+Azure Container Instances では、キャッシュ メカニズムを使用して、一般的な Windows および Linux イメージに基づくイメージに対するコンテナーの起動時間を高速化します。 キャッシュされたイメージとタグの詳細な一覧については、[List Cached Images][list-cached-images] API を使用してください。
 
 Windows コンテナーの起動時間を最速にするには、次の **2 つのイメージ**の**最新の 3 つ**のバージョンのいずれかを、基本イメージとして使用します。
 
-* [Windows Server 2016][docker-hub-windows-core] (LTS のみ)
+* [Windows Server Core 2016][docker-hub-windows-core] (LTSC のみ)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
@@ -197,7 +197,7 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 
 このエラーは、デプロイを試行しているリージョンで高負荷になっているため、コンテナーに指定されたリソースが、その時点では割り当てできないことを示しています。 以下に示す 1 つ以上の軽減策の手順を使用して、問題を解決してください。
 
-* コンテナーのデプロイ設定が、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md#region-availability)」 (Azure Container Instances のクォータとリージョンの可用性) で定義されているパラメーター内に収まっていることを確認する
+* コンテナーのデプロイ設定が、[Azure Container Instances のリージョンでの利用可否](container-instances-region-availability.md)に関する記事で定義されているパラメーター内に収まっていることを確認する
 * コンテナーに低い CPU およびメモリ設定を指定する。
 * 別の Azure リージョンにデプロイする
 * 後でデプロイする
@@ -207,10 +207,12 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
 
 ## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないために IP にアクセスできない
+
 現在、Azure Container Instances は、通常の docker 構成のようなポート マッピングをサポートしていませんが、この修正はロードマップにあります。 IP にアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているものと同じポートをリッスンするようにコンテナー イメージを構成してください。
 
 ## <a name="next-steps"></a>次の手順
-コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学びました。
+
+コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学習します。
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
@@ -221,3 +223,4 @@ Azure Container Instances は、コンテナー グループをホストする�
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
+[list-cached-images]: /rest/api/container-instances/listcachedimages

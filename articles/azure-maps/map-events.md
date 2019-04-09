@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 16455719f05688793e2aee6f10fa00a707d553c0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4fce8eae25942d098bb3f3277938bfaa3dafa00b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469539"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499195"
 ---
 # <a name="interact-with-the-map---mouse-events"></a>マップの連動 – マウス イベント
 
@@ -51,7 +51,7 @@ ms.locfileid: "54469539"
 完全なコードの例については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [検索結果を表示する](./map-search-location.md)
+> [Azure Maps サービス モジュールの使用](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
 > [コード サンプル ページ](https://aka.ms/AzureMapsSamples)

@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fea950e2c13d9b5ce0c3619990961e611edd6626
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 78dc759632c4fc3116a59ea1e5bc0b93200bca45
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168189"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Conversation Learner モデルで否定可能エンティティを使用する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "55207379"
 [![否定可能エンティティのチュートリアルのプレビュー](https://aka.ms/cl_Tutorial_v3_NegatableEntities_Preview)](https://aka.ms/cl_Tutorial_v3_NegatableEntities)
 
 ## <a name="requirements"></a>必要条件
-このチュートリアルでは、general tutorial ボットが実行されている必要があります。
+このチュートリアルでは、汎用チュートリアル ボットが実行されている必要があります。
 
     npm run tutorial-general
 
@@ -35,65 +35,64 @@ ms.locfileid: "55207379"
 
 ## <a name="steps"></a>手順
 
+Web UI のホーム ページから始めます。
+
 ### <a name="create-the-model"></a>モデルを作成する
 
-1. Web UI で、[新しいモデル] をクリックします。
-2. [名前] フィールドに、"NegatableEntity" と入力し、Enter キーを押します。
-3. [作成] ボタンをクリックします。
+1. **[新しいモデル]** を選択します。
+2. **[名前]** に「**NegatableEntity**」と入力します。
+3. **作成**を選択します。
 
 ### <a name="entity-creation"></a>エンティティの作成
 
-1. 左側のパネルで、[エンティティ]、[新しいエンティティ] ボタンの順にクリックします。
-2. [エンティティ型] に対して "カスタム" を選択します。
-3. [エンティティ名] に「name」(名前) と入力します。
-4. [Negatable]\(否定可能\) チェック ボックスをオンにします。
-    - このプロパティをオンにすると、ユーザーはエンティティの値を指定したり、何かがエンティティ値で "*ない*" ことを指定したりできます。 後者の場合、結果として一致するエンティティ値が削除されます。
-5. [作成] ボタンをクリックします。
+1. 左側のパネルで **[エンティティ]** を選択し、**[新しいエンティティ]** を選択します。
+2. **[エンティティ型]** で **[Custom Trained]\(カスタム トレーニング済み\)** を選択します。
+3. **[エンティティ名]** に「**name**」と入力します。
+4. **[Negatable]\(負の値を許可する\)** をオンにすると、ユーザーはエンティティの値を指定することや、何かがエンティティ値 "*ではない*" と言うことができるようになり、一致するエンティティ値を削除できるようになります。
+5. **作成**を選択します。
 
-![](../media/tutorial5_entities.PNG)
+![](../media/T06_entity_create.png)
 
 ### <a name="create-the-first-action"></a>1 つ目のアクションを作成する
 
-1. 左側のパネルで [アクション] をクリックし、[新しいアクション] をクリックします。
-2. [Bot's response...]\(ボットの応答...\) フィールドに、「I don't know your name.」(あなたの名前がわかりません。) と入力します。
-3. [Disqualifying Entitles]\(不適格エンティティ\) フィールドに「name」(名前) と入力します。
-4. [作成] ボタンをクリックします。
+1. 左側のパネルで **[アクション]** を選択し、**[新しいアクション]** を選択します。
+2. 「**I don't know your name.**」(あなたの名前を知りません。) と **[Bot's Response]\(ボットの応答\)** に入力します。
+3. **[Disqualifying Entities]\(不適格エンティティ\)** に「**name**」(名前) と入力します。
+4. **作成**を選択します。
+
+![](../media/T06_action_create_1.png)
 
 ### <a name="create-the-second-action"></a>2 つ目のアクションを作成する
 
-1. 左側のパネルで [アクション] をクリックし、[新しいアクション] をクリックします。
-2. [Bot's response...]\(ボットの応答...\) フィールドに、「I know your name. It is $name」(あなたの名前は $name です) と入力します。
-3. [作成] ボタンをクリックします。
+1. 左側のパネルで **[アクション]** を選択し、**[新しいアクション]** を選択します。
+2. 「**I know your name.It is $name.**」(あなたの名前を知っています。$name です。) と **[Bot's Response]\(ボットの応答\)** に入力します。
+3. **作成**を選択します。
 
 > [!NOTE]
-> "name" エンティティは、応答内の参照によって "必須エンティティ" として自動的に追加されました。
+> **name** エンティティは、応答の発話内の参照によって**必須エンティティ**として自動的に追加されました。
 
 これでアクションが 2 つできました。
 
-![](../media/tutorial5_actions.PNG)
+![](../media/T06_action_create_2.png)
 
 ### <a name="train-the-model"></a>モデルをトレーニングする
 
-1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、[New Train Dialog]\(新しいトレーニング会話\) ボタンをクリックします。
-2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「hello」(こんにちは) と入力します。
-3. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
-4. 応答 "I don't know your name." (あなたの名前がわかりません。) を選択します。
-    - 制約に基づく唯一の有効なアクションであるため、パーセンタイルは 100% です。
-5. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「My name is Frank」(私の名前は Frank です) と入力します
-6. "Frank" を選択し、"+name" (+名前) ラベルを選択します
-    - "name" (名前) エンティティには "+name" (+名前) と "-name" (-名前) の 2 つのインスタンスがあります。  (+) プラスは、値を追加するか、または上書きします。 (-) マイナスは、値を削除します。
-7. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
-    - "name" (名前) エンティティはモデルのメモリ内で "Frank" として定義されているので、"I know your name. It is $name" (あなたの名前は $name です) アクションが使用可能になります。
-8. 応答 "I know your name. It is $name" (あなたの名前は $name です) を選択します。
-9. [Type your message...]\(メッセージを入力...\) と表示されているチャット ウィンドウで、「My name is not Frank」(私の名前は Frank ではありません) と入力します。
-10. "Frank" を選択し、"-name" (-名前) ラベルを選択します
-    - エンティティの現在の値をクリアするために "-name" (-名前) を選択しています。
-11. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
-12. 応答 "I don't know your name." (あなたの名前がわかりません。) を選択します。
-13. [Type your message...]\(メッセージを入力...\) と表示されているチャット ウィンドウで、「My name is Susan」(私の名前は Susan です) と入力します。
-14. "Susan" を選択し、"+name" (+名前) ラベルを選択します
+1. 左側のパネルで、**[Train Dialogs]\(トレーニング会話\)** を選択し、**[New Train Dialog]\(新しいトレーニング会話\)** を選択します。
+2. 左側のチャット パネルでユーザーの発話に「**hello**」(こんにちは) と入力します。
+3. **[Score Action]\(アクションのスコア付け\)** を選択します。
+4. **[I don't know your name.]\(あなたの名前を知りません。** \) を [アクション] リストから選択します。 制約に基づく唯一の有効なアクションであるため、パーセンタイルは 100% です。
+5. 左側のチャット パネルでユーザーの発話に「**My name is Frank**」(私の名前は Frank です) と入力します。
+6. **[Frank]**、**[+name]\(+ 名前\)** の順に選択します。 負の値にすることができるエンティティには 2 つのインスタンスがあります。(+) プラスは値を追加または上書きします。(-) マイナスは値を削除します。
+7. **[Score Action]\(アクションのスコア付け\)** を選択します。 **name** エンティティはモデルのメモリ内で **Frank** と定義されているので、"**I know your name.It is $name**" (あなたの名前を知っています。$name です) アクションが使用可能になります。
+8. **[I know your name.It is $name.]\(あなたの名前を知っています。$name です。\)** を [アクション] リストから選択します。
+9. 「**My name is not Frank.**」(私の名前は Frank ではありません。) と 左側のチャット パネルでユーザーの発話に入力します。
+10. **[Frank]**、**[-name]\(- 名前\)** の順に選択し、**name** エンティティから値を削除します。
+11. **[Score Action]\(アクションのスコア付け\)** を選択します。
+12. **[I don't know your name.]\(あなたの名前を知りません。** \) を [アクション] リストから選択します。
+13. 「**My name is Susan.**」(私の名前は Susan です。) と 左側のチャット パネルでユーザーの 3 つ目の発話に入力します。
+14. **[Susan]**、**[+name]\(+ 名前\)** の順に選択します 
 
-![](../media/tutorial5_dialogs.PNG)
+![](../media/T06_training.png)
 
 ## <a name="next-steps"></a>次の手順
 

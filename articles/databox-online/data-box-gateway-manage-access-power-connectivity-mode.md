@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 72d3455f37d0ccef0dd5b7d8882f70670de07572
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873021"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497322"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Azure Data Box Gateway (プレビュー) のアクセス、電源、接続モードを管理する
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Azure Data Box Gateway のアクセス、電源、接続モードを管理する
 
 この記事では、Azure Data Box Gateway のアクセス、電源、および接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
 
@@ -26,16 +26,13 @@ ms.locfileid: "55873021"
 > * 接続モードを管理する
 > * 電源を管理する
 
-> [!IMPORTANT]
-> Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
 ## <a name="manage-device-access"></a>デバイスのアクセスを管理する
 
-Data Box Gateway デバイスへのアクセスは、デバイス管理者のパスワードを使用して制御されます。 管理者のパスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイス管理者のパスワードをリセットすることもできます。
+Data Box Gateway デバイスへのアクセスは、デバイスのパスワードを使用して制御されます。 パスワードは、ローカル Web UI を使用して変更できます。 また、Azure portal ではデバイスのパスワードをリセットすることもできます。
 
-### <a name="change-device-administrator-password"></a>デバイス管理者のパスワードを変更する
+### <a name="change-device-password"></a>デバイスのパスワードを変更する
 
-デバイス管理者のパスワードを変更するには、ローカル UI で次の手順のようにします。
+デバイスのパスワードを変更するには、ローカル UI で次の手順のようにします。
 
 1. ローカル Web UI で、**[メンテナンス] > [Password change]\(パスワード変更\)** に移動します。
 2. 現在のパスワードを入力し、新しいパスワードを入力ます。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 新しいパスワードを確認入力します。
@@ -44,7 +41,7 @@ Data Box Gateway デバイスへのアクセスは、デバイス管理者のパ
 
 3. **[パスワードの変更]** をクリックします。
  
-### <a name="reset-device-administrator-password"></a>デバイス管理者のパスワードをリセットする
+### <a name="reset-device-password"></a>デバイスのパスワードをリセットする
 
 リセット ワークフローでは、ユーザーは古いパスワードを思い出す必要がなく、パスワードを忘れた場合に便利です。 このワークフローは、Azure portal で実行します。
 

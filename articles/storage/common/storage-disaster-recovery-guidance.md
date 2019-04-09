@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871538"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486060"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -121,14 +121,14 @@ GRS および RA-GRS アカウントの場合は、DNS エントリが更新さ�
 
 プレビューに登録するには、PowerShell から次のコマンドを実行します。 忘れずに、角かっこ内のプレースホルダーを自分のサブスクリプション ID に置き換えてください。
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount -SubscriptionId <subscription-id>
 Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 プレビューの承認を受け取るまで、1 ～ 2 日かかる場合があります。 登録が承認されたことを確認するには、次のコマンドを実行します。
 
-```PowerShell
+```powershell
 Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
@@ -164,6 +164,7 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 - Azure Data Lake Storage Gen2 階層型名前空間を使用しているストレージ アカウントは、フェールオーバーできません。
 - アーカイブ済みの BLOB 含むストレージ アカウントは、フェールオーバーできません。 アーカイブ済み BLOB は、フェールオーバーする計画がない別のストレージ アカウントで保持してください。
 - Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
+- フェールオーバーの完了後、フェールオーバー元で有効になっている場合は、[イベント サブスクリプション](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[ライフサイクル ポリシー](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)、[Storage Analytics Logging](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging) の動作が停止します。
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>フェールオーバーの代わりとしてのデータのコピー
 

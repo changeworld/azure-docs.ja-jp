@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111290"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121589"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -90,7 +90,7 @@ VNet を相互に接続できるため、一方の VNet に接続されている
 
 - **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングについて詳しくは、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」をご覧ください。
 
- ![ピアリング](media/azure-network-security/azure-network-security-fig-3.png)
+  ![ピアリング](media/azure-network-security/azure-network-security-fig-3.png)
 
 - **VNet 間接続:** 同じまたは異なる Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を有効にします。 ピアリングとは異なり、VNet 間での帯域幅は制限されます。これは、トラフィックが Azure VPN ゲートウェイを通過する必要があるためです。
 
@@ -318,19 +318,19 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
 
--   各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
+- 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
 
- -  **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ
+  -  **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ
 
- - **オンプレミス ルート:** Azure VPN ゲートウェイへ
+  - **オンプレミス ルート:** Azure VPN ゲートウェイへ
 
- -  **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
+  -  **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
 
--   ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
+- ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
 
--   仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
+- 仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
 
--   強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。
+- 強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。
 
 - ExpressRoute の強制トンネリングは、このメカニズムを使用して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定のルートを通知することで有効化されます。
 
@@ -393,7 +393,7 @@ Application Gateway の WAF は検出モードや保護モードで実行でき�
 
 JSON 形式のログはお客様のストレージ アカウントに直接入ります。 これらのログは完全に制御可能で、独自のアイテム保持ポリシーを適用できます。
 
-また、[Azure ログ統合](https://aka.ms/AzLog)を使用してそれらのログを独自の分析システムに取り込むこともできます。 WAF のログは [Log Analytics](../log-analytics/log-analytics-overview.md) にも統合されており、Log Analytics を使用して洗練されたきめ細かなクエリを実行できます。
+また、[Azure ログ統合](https://aka.ms/AzLog)を使用してそれらのログを独自の分析システムに取り込むこともできます。 WAF のログは [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)にも統合されており、Azure Monitor ログを使用して洗練されたきめ細かなクエリを実行できます。
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF)
 
@@ -507,7 +507,7 @@ Azure にはネットワーク セキュリティのイベントを監視、保�
 
 -   ネットワーク リソース レベルの監視
 
--   Log Analytics
+-   Azure Monitor ログ
 
 ### <a name="network-watcher"></a>Network Watcher
 
@@ -597,17 +597,17 @@ Network Watcher には[診断ログ](https://docs.microsoft.com/azure/network-wa
 
 #### <a name="diagnostic-logs"></a>診断ログ
 
-定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Log Analytics へ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI および Log Analytics などのツールで確認できます。 診断ログを確認する方法については、[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) に関するページを参照してください。
+定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Azure Monitor ログへ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI や Azure Monitor ログなどのツールで確認できます。 診断ログを確認する方法については、[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)に関するページを参照してください。
 
 診断ログは、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)、ルーティング、および [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) で利用できます。
 
 Network Watcher には診断ログ ビューが用意されています。 このビューには、診断ログをサポートするすべてのネットワーク リソースが表示されます。 このビューから、ネットワーク リソースの有効化および無効化を手軽に素早く行うことができます。
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) は Azure のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)は、可用性やパフォーマンスの維持を目的としてクラウド環境とオンプレミス環境を監視する Azure のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 
-Log Analytics には、ネットワークを監視することを目的とした次のソリューションが用意されています。
+Azure Monitor ログには、ネットワークを監視することを目的とした次のソリューションが用意されています。
 
 -   ネットワーク パフォーマンス モニター (NPM)
 
@@ -627,7 +627,7 @@ Log Analytics には、ネットワークを監視することを目的とした
 -   多層アプリケーションの各種階層をホストするサブネット間
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>Log Analytics の Azure Application Gateway 分析
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Azure Monitor ログの Azure Application Gateway 分析
 
 Application Gateway に関しては、次のログがサポートされます。
 
@@ -641,7 +641,7 @@ Application Gateway に関しては、次のメトリックがサポートされ
 
 -   5 分間のスループット
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Log Analytics の Azure ネットワーク セキュリティ グループ分析
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure Monitor ログの Azure ネットワーク セキュリティ グループ分析
 
 [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)に関しては、次のログがサポートされます。
 
@@ -652,7 +652,7 @@ Application Gateway に関しては、次のメトリックがサポートされ
 ## <a name="next-steps"></a>次の手順
 セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。
 
--   [ネットワーク セキュリティ グループ (NSG) のためのログ分析](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [ネットワーク セキュリティ グループ (NSG) の Azure Monitor ログ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [クラウドの分断を促進するネットワークの革新](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

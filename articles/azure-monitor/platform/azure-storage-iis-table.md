@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics での IIS 用 Blob Storage とイベント用 Table Storage の使用 | Microsoft Docs
-description: Log Analytics は、Table Storage に診断情報を出力する Azure サービスのログと Blob Storage に出力された IIS のログを読み取ることができます。
+title: Azure Monitor で IIS 用に Blob Storage を使用し、イベント用にテーブル ストレージを使用する | Microsoft Docs
+description: Azure Monitor は、テーブル ストレージに診断を書き込む Azure サービスのログ、または Blob Storage に書き込まれた IIS ログを読み取ることができます。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35befe7122f493998d0d91c2721e6013e057fed3
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306631"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540603"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Azure Monitor で IIS 用に Azure Blob Storage を使用し、イベント用に Azure テーブル ストレージを使用する
 
-Log Analytics は、Table Storage に診断情報を出力する以下のサービスのログと Blob Storage に出力された IIS のログを読み取ることができます。
+Azure Monitor は、テーブル ストレージに診断を書き込む次のサービスのログ、または Blob Storage に書き込まれた IIS ログを読み取ることができます。
 
 * Service Fabric クラスター (プレビュー)
 * Virtual Machines
 * Web/worker ロール
 
-Log Analytics でこれらのリソースのデータを収集する前に、Azure 診断を有効にする必要があります。
+Azure Monitor がこれらのリソースの Log Analytics ワークスペースにデータを収集するには、その前に Azure 診断を有効にする必要があります。
 
-診断が有効になったら、Azure Portal または PowerShell を使用して、Log Analytics でログを収集するための構成を行うことができます。
+診断が有効になったら、Azure Portal または PowerShell を使用して、ログを収集するようにワークスペースを構成できます。
 
-Azure 診断は、Azure で実行している worker ロール、Web ロール、または仮想マシンから診断データを収集できる Azure の拡張機能です。 そのデータは Azure Storage アカウントに保存され、Log Analytics から収集することができます。
+Azure 診断は、Azure で実行している worker ロール、Web ロール、または仮想マシンから診断データを収集できる Azure の拡張機能です。 データは Azure ストレージ アカウントに格納された後、Azure Monitor が収集できるようになります。
 
-Log Analytics でこれらの Azure 診断ログを収集するためには、ログが次の場所に存在している必要があります。
+Azure Monitor がこれらの Azure 診断ログを収集するには、ログが次の場所に存在する必要があります。
 
 | ログの種類 | リソースの種類 | Location |
 | --- | --- | --- |
@@ -116,10 +116,10 @@ Windows イベント ログを有効にするか、または scheduledTransferPe
 
 **AccountName** と **AccountKey** の値は、Azure Portal のストレージ アカウント ダッシュボードの [アクセス キーの管理] に表示されます。 接続文字列のプロトコルは **https**である必要があります。
 
-更新された診断の構成がクラウド サービスに適用され、Azure Storage に診断データが書き込まれていれば、Log Analytics を構成する準備が整っています。
+更新された診断構成がクラウド サービスに適用され、そのサービスが診断を Azure Storage に書き込むようになったら、Log Analytics ワークスペースを構成する準備ができました。
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Azure Portal を使用して Azure Storage からログを収集する
-以下の Azure サービスのログを Log Analytics で収集するための構成は Azure Portal で行うことができます。
+Azure Portal を使用すると、次の Azure サービスのログを収集するように Azure Monitor の Log Analytics ワークスペースを構成できます。
 
 * Service Fabric クラスター
 * Virtual Machines
@@ -136,9 +136,9 @@ Azure Portal で Log Analytics ワークスペースに移動し、次の作業�
 5. ソースの値はデータの種類に応じて自動的に設定され、変更することはできません。
 6. [OK] をクリックして構成を保存します。
 
-Log Analytics で収集する他のストレージ アカウントとデータの種類についても手順 2. ～ 6. を繰り返します。
+ワークスペースに収集するその他のストレージ アカウントとデータの種類について、手順 2. ～ 6. を繰り返します。
 
-約 30 分で、ストレージ アカウントのデータを Log Analytics で確認できるようになります。 表示されるのは、構成の適用後にストレージに書き込まれたデータだけです。 Log Analytics は、過去のデータをさかのぼってストレージ アカウントから読み取ることはしません。
+約 30 分で、ストレージ アカウントからのデータを Log Analytics ワークスペースで確認できるようになります。 表示されるのは、構成の適用後にストレージに書き込まれたデータだけです。 ワークスペースは、ストレージ アカウントから既存のデータを読み取りません。
 
 > [!NOTE]
 > ストレージ アカウントにソースが存在するかどうかや、新しいデータが書き込まれているかどうかの確認は、ポータルでは実行されません。
@@ -149,7 +149,7 @@ Log Analytics で収集する他のストレージ アカウントとデータ�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-「[Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage)」の手順に従い、PowerShell を使用してテーブル ストレージに書き込まれた Azure 診断データから読み取ります。
+PowerShell を使用して、テーブル ストレージに書き込まれた Azure 診断から読み取るには、[Azure 診断のインデックスを作成するための Azure Monitor の構成](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage)に関するページの手順を使用します。
 
 Azure PowerShell を使用すると、Azure Storage に書き込むイベントをより細かく指定できます。
 詳細については、「[Azure Virtual Machines での診断の有効化](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」をご覧ください。

@@ -8,15 +8,15 @@ ms.author: hshapiro
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a0d20d6cdb719f34a50052ff2eb693071c7ece96
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122371"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
 
@@ -25,9 +25,9 @@ Azure Machine Learning service では、さまざまなリソースまたは環�
 Azure Machine Learning SDK、Azure portal、または Azure CLI を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
  
 この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
-1. まだない場合は、コンピューティング先を __作成__ します。
-2. コンピューティング先をワークスペースに __アタッチ__ します。
-3. スクリプトに必要な Python 環境とパッケージ依存関係が含まれるように、コンピューティング先を __構成__ します。
+1. まだない場合は、コンピューティング先を__作成__します。
+2. コンピューティング先をワークスペースに__アタッチ__します。
+3. スクリプトに必要な Python 環境とパッケージ依存関係が含まれるように、コンピューティング先を__構成__します。
 
 
 >[!NOTE]
@@ -46,6 +46,7 @@ Azure Machine Learning service では、異なるコンピューティング先�
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **すべてのコンピューティング ターゲットは、複数のトレーニング ジョブで再利用できます**。 たとえば、リモート VM をワークスペースにアタッチした後、複数のジョブでそれを再利用できます。
 
@@ -138,16 +139,16 @@ Azure Machine Learning コンピューティング環境は、実行をスケジ
     * **vm_size**:Azure Machine Learning コンピューティングによって作成されるノードの VM ファミリ。
     * **max_nodes**:Azure Machine Learning コンピューティングでジョブを実行中に自動スケールアップする最大ノード数。
     
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-  Azure Machine Learning コンピューティングを作成するときに、いくつかの詳細プロパティも設定できます。 これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure 仮想ネットワーク内に作成できます。  詳しくは、「[AmlCompute クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+   Azure Machine Learning コンピューティングを作成するときに、いくつかの詳細プロパティも設定できます。 これらのプロパティを使用すると、永続的なクラスターを固定サイズで、またはサブスクリプションの既存の Azure 仮想ネットワーク内に作成できます。  詳しくは、「[AmlCompute クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )」をご覧ください。
     
- または、[Azure portal で](#portal-create)永続的な Azure Machine Learning コンピューティング リソースを作成してアタッチすることもできます。
+   または、[Azure portal で](#portal-create)永続的な Azure Machine Learning コンピューティング リソースを作成してアタッチすることもできます。
 
 1. **構成する**:永続的なコンピューティング先の実行構成を作成します。
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 コンピューティングをアタッチし、実行を構成したので、次のステップでは[トレーニング実行を送信](#submit)します。
 
@@ -167,34 +168,34 @@ Azure Machine Learning では、独自のコンピューティング リソー�
 
 1. **アタッチする**:コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンの完全修飾ドメイン名 (FQDN)、ユーザー名、およびパスワードを入力する必要があります。 例では、\<fqdn> を VM のパブリック FQDN、またはパブリック IP アドレスに置き換えます。 \<username> と \<password> を、VM の SSH ユーザー名とパスワードで置き換えます。
 
- ```python
- from azureml.core.compute import RemoteCompute, ComputeTarget
+   ```python
+   from azureml.core.compute import RemoteCompute, ComputeTarget
 
- # Create the compute config 
- compute_target_name = "attach-dsvm"
- attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   # Create the compute config 
+   compute_target_name = "attach-dsvm"
+   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
 
- # If you authenticate with SSH keys instead, use this code:
- #                                                  ssh_port=22,
- #                                                  username='<username>',
- #                                                  password=None,
- #                                                  private_key_file="<path-to-file>",
- #                                                  private_key_passphrase="<passphrase>")
+   # If you authenticate with SSH keys instead, use this code:
+   #                                                  ssh_port=22,
+   #                                                  username='<username>',
+   #                                                  password=None,
+   #                                                  private_key_file="<path-to-file>",
+   #                                                  private_key_passphrase="<passphrase>")
 
- # Attach the compute
- compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
+   # Attach the compute
+   compute = ComputeTarget.attach(ws, compute_target_name, attach_config)
 
- compute.wait_for_completion(show_output=True)
- ```
+   compute.wait_for_completion(show_output=True)
+   ```
 
- または、[Azure portal を使用して](#portal-reuse)ワークスペースに DSVM をアタッチすることもできます。
+   または、[Azure portal を使用して](#portal-reuse)ワークスペースに DSVM をアタッチすることもできます。
 
 1. **構成する**:DSVM コンピューティング先用の実行構成を作成します。 Docker と conda は、DSVM でトレーニング環境を作成および構成するために使用されます。
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
 コンピューティングをアタッチし、実行を構成したので、次のステップでは[トレーニング実行を送信](#submit)します。
@@ -211,11 +212,11 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
 
 1. **アタッチする**:コンピューティング先として HDInsight クラスターをアタッチするには、HDInsight クラスターのホスト名、ユーザー名、およびパスワードを指定する必要があります。 次の例では、SDK を使用してクラスターをワークスペースに接続します。 例の \<clustername> は、実際のクラスターの名前に置き換えます。 \<username> と \<password> を、クラスターの SSH ユーザー名とパスワードで置き換えます。
 
-  ```python
- from azureml.core.compute import ComputeTarget, HDInsightCompute
- from azureml.exceptions import ComputeTargetException
+   ```python
+   from azureml.core.compute import ComputeTarget, HDInsightCompute
+   from azureml.exceptions import ComputeTargetException
 
- try:
+   try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
     attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
                                                           ssh_port=22, 
@@ -225,21 +226,57 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
                                        name='myhdi', 
                                        attach_configuration=attach_config)
 
- except ComputeTargetException as e:
+   except ComputeTargetException as e:
     print("Caught = {}".format(e.message))
 
- hdi_compute.wait_for_completion(show_output=True)
-  ```
+   hdi_compute.wait_for_completion(show_output=True)
+   ```
 
-  または、[Azure portal を使用して](#portal-reuse)ワークスペースに HDInsight クラスターをアタッチすることもできます。
+   または、[Azure portal を使用して](#portal-reuse)ワークスペースに HDInsight クラスターをアタッチすることもできます。
 
 1. **構成する**:HDI コンピューティング先用の実行構成を作成します。 
 
- [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
 コンピューティングをアタッチし、実行を構成したので、次のステップでは[トレーニング実行を送信](#submit)します。
 
+
+### <a id="azbatch"></a>Azure Batch 
+
+Azure Batch は、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行するために使用されます。 AzureBatchStep を Azure Machine Learning Pipeline で使用して、マシンの Azure Batch プールにジョブを送信できます。
+
+コンピューティング ターゲットとして Azure Batch に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
+
+-   **Azure Batch のコンピューティング名**:ワークスペース内のコンピューティングに使用されるフレンドリ名
+-   **Azure Batch アカウント名**:Azure Batch アカウントの名前
+-   **リソース グループ**:Azure Batch アカウントを含むリソース グループ。
+
+次のコードは、コンピューティング ターゲットとして Azure Batch に接続する方法を示しています。
+
+```python
+from azureml.core.compute import ComputeTarget, BatchCompute
+from azureml.exceptions import ComputeTargetException
+
+batch_compute_name = 'mybatchcompute' # Name to associate with new compute in workspace
+
+# Batch account details needed to attach as compute to workspace
+batch_account_name = "<batch_account_name>" # Name of the Batch account
+batch_resource_group = "<batch_resource_group>" # Name of the resource group which contains this account
+
+try:
+    # check if the compute is already attached
+    batch_compute = BatchCompute(ws, batch_compute_name)
+except ComputeTargetException:
+    print('Attaching Batch compute...')
+    provisioning_config = BatchCompute.attach_configuration(resource_group=batch_resource_group, account_name=batch_account_name)
+    batch_compute = ComputeTarget.attach(ws, batch_compute_name, provisioning_config)
+    batch_compute.wait_for_completion()
+    print("Provisioning state:{}".format(batch_compute.provisioning_state))
+    print("Provisioning errors:{}".format(batch_compute.provisioning_errors))
+
+print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
+```
 
 ## <a name="set-up-compute-in-the-azure-portal"></a>Azure portal でコンピューティングを設定する
 
@@ -285,7 +322,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
     ![フォームに入力する](./media/how-to-set-up-training-targets/add-compute-form.png) 
 
-1. __作成__ を選択します。
+1. __作成__を選択します。
 
 
 1. 一覧からコンピューティング先を選択することによって、作成操作の状態を表示します。
@@ -306,7 +343,7 @@ Azure Machine Learning service ワークスペースの外部に作成された�
 
 1. プラス記号 (+) を選択して、コンピューティング先を追加します。 
 1. コンピューティング ターゲットの名前を入力します。 
-1. __トレーニング__ に接続するコンピューティングの種類を選択します。
+1. __トレーニング__に接続するコンピューティングの種類を選択します。
 
     > [!IMPORTANT]
     > Azure portal からすべてのコンピューティングの種類を接続できるわけではありません。 現在トレーニング用に接続できるコンピューティングの種類は次のとおりです。

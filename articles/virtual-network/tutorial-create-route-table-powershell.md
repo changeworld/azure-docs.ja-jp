@@ -17,14 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9b4dc2e48093398077071eb2423a80c86eb62c67
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ad09d41b004fe2b8a4090dce16a7a70f9c57b1f3
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894940"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651501"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 既定では、仮想ネットワーク内のすべてのサブネット間でトラフィックが自動的にルーティングされます。 Azure の既定のルーティングは、独自のルートを作成してオーバーライドすることができます。 カスタム ルートを作成する機能は、たとえば、サブネット間でネットワーク仮想アプライアンス (NVA) を越えてトラフィックをルーティングしたい場合に便利です。 この記事では、次のことについて説明します。
 
@@ -40,20 +42,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
+PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
-ルート テーブルを作成する前に、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成します。 次の例では、この記事で作成されるすべてのリソースに対して、*myResourceGroup* という名前のリソース グループを作成します。 
+ルート テーブルを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。 次の例では、この記事で作成されるすべてのリソースに対して、*myResourceGroup* という名前のリソース グループを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-[New-AzureRmRouteTable](/powershell/module/azurerm.network/new-azurermroutetable) を使用してルート テーブルを作成します。 次の例では、*myRouteTablePublic* という名前のルート テーブルを作成します。
+[New-AzRouteTable](/powershell/module/az.network/new-azroutetable) を使用してルート テーブルを作成します。 次の例では、*myRouteTablePublic* という名前のルート テーブルを作成します。
 
 ```azurepowershell-interactive
-$routeTablePublic = New-AzureRmRouteTable `
+$routeTablePublic = New-AzRouteTable `
   -Name 'myRouteTablePublic' `
   -ResourceGroupName myResourceGroup `
   -location EastUS
@@ -61,66 +63,66 @@ $routeTablePublic = New-AzureRmRouteTable `
 
 ## <a name="create-a-route"></a>ルートの作成
 
-[Get-AzureRmRouteTable](/powershell/module/azurerm.network/get-azurermroutetable) を使用してルート テーブル オブジェクトを取得してから、[Add-AzureRmRouteConfig](/powershell/module/azurerm.network/add-azurermrouteconfig) でルートを作成します。その後、[Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable) を使ってルート構成をルート テーブルに書き込みます。 
+[Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) を使用してルート テーブル オブジェクトを取得し、[Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) によってルートを作成します。その後、[Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) を使ってルート構成をルート テーブルに書き込みます。
 
 ```azurepowershell-interactive
-Get-AzureRmRouteTable `
+Get-AzRouteTable `
   -ResourceGroupName "myResourceGroup" `
   -Name "myRouteTablePublic" `
-  | Add-AzureRmRouteConfig `
+  | Add-AzRouteConfig `
   -Name "ToPrivateSubnet" `
   -AddressPrefix 10.0.1.0/24 `
   -NextHopType "VirtualAppliance" `
   -NextHopIpAddress 10.0.2.4 `
- | Set-AzureRmRouteTable
+ | Set-AzRouteTable
 ```
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>サブネットへのルート テーブルの関連付け
 
-ルート テーブルをサブネットに関連付けるには、仮想ネットワークとサブネットを作成しておく必要があります。 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
+ルート テーブルをサブネットに関連付けるには、仮想ネットワークとサブネットを作成しておく必要があります。 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用して 3 つのサブネット構成を作成することで、3 つのサブネットを作成します。 次の例では、"*パブリック*"、"*プライベート*"、および *DMZ* サブネット用の 3 つのサブネット構成を作成します。
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して 3 つのサブネット構成を作成することで、3 つのサブネットを作成します。 次の例では、"*パブリック*"、"*プライベート*"、および *DMZ* サブネット用の 3 つのサブネット構成を作成します。
 
 ```azurepowershell-interactive
-$subnetConfigPublic = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -Name Public `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork
 
-$subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
   -Name Private `
   -AddressPrefix 10.0.1.0/24 `
   -VirtualNetwork $virtualNetwork
 
-$subnetConfigDmz = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
   -Name DMZ `
   -AddressPrefix 10.0.2.0/24 `
   -VirtualNetwork $virtualNetwork
 ```
 
-[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) を使用して、仮想ネットワークにサブネット構成を書き込みます。これにより、仮想ネットワークにサブネットが作成されます。
+[Set-AzureRmVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) を使用して、仮想ネットワークにサブネット構成を書き込みます。これにより、仮想ネットワークにサブネットが作成されます。
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
-[Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) を使用して *myRouteTablePublic* ルート テーブルを "*パブリック*" サブネットに関連付け、[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) を使用してサブネット構成を仮想ネットワークに書き込みます。
+[Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) を使用して*myRouteTablePublic* ルート テーブルを "*パブリック*" サブネットに関連付け、[Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) を使用してサブネット構成を仮想ネットワークに書き込みます。
 
 ```azurepowershell-interactive
-Set-AzureRmVirtualNetworkSubnetConfig `
+Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
   -RouteTable $routeTablePublic | `
-Set-AzureRmVirtualNetwork
+Set-AzVirtualNetwork
 ```
 
 ## <a name="create-an-nva"></a>NVA を作成する
@@ -131,21 +133,21 @@ VM を作成する前に、ネットワーク インターフェイスを作成�
 
 ### <a name="create-a-network-interface"></a>ネットワーク インターフェイスの作成
 
-ネットワーク インターフェイスを作成する前に、[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork) を使用して仮想ネットワーク ID を取得し、次に [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig) を使用してサブネット ID を取得する必要があります。 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、IP 転送が有効な *DMZ* サブネットにネットワーク インターフェイスを作成します。
+ネットワーク インターフェイスを作成する前に、[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用して仮想ネットワーク ID を取得し、次に [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) を使用してサブネット ID を取得する必要があります。 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、IP 転送が有効な *DMZ* サブネットにネットワーク インターフェイスを作成します。
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
-$virtualNetwork=Get-AzureRmVirtualNetwork `
+$virtualNetwork=Get-AzVirtualNetwork `
   -Name myVirtualNetwork `
   -ResourceGroupName myResourceGroup
 
 # Retrieve the subnet configuration into a variable.
-$subnetConfigDmz = Get-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfigDmz = Get-AzVirtualNetworkSubnetConfig `
   -Name DMZ `
   -VirtualNetwork $virtualNetwork
 
 # Create the network interface.
-$nic = New-AzureRmNetworkInterface `
+$nic = New-AzNetworkInterface `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name 'myVmNva' `
@@ -155,31 +157,31 @@ $nic = New-AzureRmNetworkInterface `
 
 ### <a name="create-a-vm"></a>VM の作成
 
-VM を作成して、既存のネットワーク インターフェイスをその VM にアタッチするには、[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) を使用して、まず VM 構成を作成しておく必要があります。 構成には、前の手順で作成したネットワーク インターフェイスを含めます。 ユーザー名とパスワードの入力が求められたら、VM へのログインに使用するユーザー名とパスワードを選択します。 
+VM を作成して、既存のネットワーク インターフェイスをそこにアタッチするには、[New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) を使用して、まず VM 構成を作成しておく必要があります。 構成には、前の手順で作成したネットワーク インターフェイスを含めます。 ユーザー名とパスワードの入力が求められたら、VM へのログインに使用するユーザー名とパスワードを選択します。
 
 ```azurepowershell-interactive
 # Create a credential object.
 $cred = Get-Credential -Message "Enter a username and password for the VM."
 
 # Create a VM configuration.
-$vmConfig = New-AzureRmVMConfig `
+$vmConfig = New-AzVMConfig `
   -VMName 'myVmNva' `
   -VMSize Standard_DS2 | `
-  Set-AzureRmVMOperatingSystem -Windows `
+  Set-AzVMOperatingSystem -Windows `
     -ComputerName 'myVmNva' `
     -Credential $cred | `
-  Set-AzureRmVMSourceImage `
+  Set-AzVMSourceImage `
     -PublisherName MicrosoftWindowsServer `
     -Offer WindowsServer `
     -Skus 2016-Datacenter `
     -Version latest | `
-  Add-AzureRmVMNetworkInterface -Id $nic.Id
+  Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-VM 構成で [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 次の例では、*myVmNva* という名前の VM を作成します。 
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、VM 構成を利用した VM を作成します。 次の例では、*myVmNva* という名前の VM を作成します。
 
 ```azurepowershell-interactive
-$vmNva = New-AzureRmVM `
+$vmNva = New-AzVM `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -VM $vmConfig `
@@ -190,12 +192,12 @@ $vmNva = New-AzureRmVM `
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-後の手順で、*パブリック* サブネットからのトラフィックがネットワーク仮想アプライアンス経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。 
+後の手順で、*パブリック* サブネットからのトラフィックがネットワーク仮想アプライアンス経由で*プライベート* サブネットにルーティングされていることを検証できるように、仮想ネットワークに 2 つの VM を作成します。
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、*パブリック* サブネット内に VM を作成します。 次の例では、*myVirtualNetwork* 仮想ネットワークの*パブリック* サブネットに、*myVmPublic* という名前の VM を作成します。 
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、*パブリック* サブネット内に VM を作成します。 次の例では、*myVirtualNetwork* 仮想ネットワークの*パブリック* サブネットに、*myVmPublic* という名前の VM を作成します。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork" `
@@ -208,7 +210,7 @@ New-AzureRmVm `
 *プライベート* サブネット内に VM を作成します。
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork" `
@@ -221,10 +223,10 @@ VM の作成には数分かかります。 VM が作成され、PowerShell に�
 
 ## <a name="route-traffic-through-an-nva"></a>NVA を経由するトラフィックのルーティング
 
-[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、*myVmPrivate* VM のパブリック IP アドレスを返します。 次の例では、*myVmPrivate* VM のパブリック IP アドレスを返しています。
+[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、*myVmPrivate* VM のパブリック IP アドレスを返します。 次の例では、*myVmPrivate* VM のパブリック IP アドレスを返しています。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVmPrivate `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress
@@ -238,9 +240,9 @@ mstsc /v:<publicIpAddress>
 
 ダウンロードされた RDP ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。
 
-VM の作成時に指定したユーザー名とパスワードを入力し (VM の作成時に入力した資格情報を指定するために、**[その他]**、**[別のアカウントを使う]** の選択が必要になる場合があります)、**[OK]** を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** を選択して、接続処理を続行します。 
+VM の作成時に指定したユーザー名とパスワードを入力し (VM の作成時に入力した資格情報を指定するために、**[その他]**、**[別のアカウントを使う]** の選択が必要になる場合があります)、**[OK]** を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** を選択して、接続処理を続行します。
 
-後の手順では、ルーティングのテストに tracert.exe コマンドを使用します。 Tracert は Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由では拒否されます。 *myVmPrivate* VM 上の PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
+後の手順では、ルーティングのテストに `tracert.exe` コマンドを使用します。 Tracert は Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由では拒否されます。 *myVmPrivate* VM 上の PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
@@ -255,13 +257,13 @@ IP 転送の有効化に関するセクションで、VM のネットワーク �
 ``` 
 mstsc /v:myvmnva
 ```
-    
+
 オペレーティング システム内で IP 転送を有効にするには、*myVmNva* VM 上の PowerShell から次のコマンドを入力します。
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
 ```
-    
+
 *myVmNva* VM を再起動します。これにより、リモート デスクトップ セッションも切断されます。
 
 *myVmPrivate* VM に接続されている状態で、*myVmNva* VM の再起動後、*myVmPublic* VM へのリモート デスクトップ セッションを作成します。
@@ -269,7 +271,7 @@ Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters 
 ``` 
 mstsc /v:myVmPublic
 ```
-    
+
 *myVmPublic* VM 上の PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
 ```powershell
@@ -283,17 +285,17 @@ tracert myVmPrivate
 ```
 
 応答は次の例のようになります。
-    
+
 ```
 Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
 over a maximum of 30 hops:
-        
+
 1    <1 ms     *        1 ms  10.0.2.4
 2     1 ms     1 ms     1 ms  10.0.1.4
-        
+
 Trace complete.
 ```
-      
+
 最初のホップが 10.0.2.4 であることを確認できます。これは、NVA のプライベート IP アドレスです。 2 番目のホップは 10.0.1.4 です。これは、*myVmPrivate* VM のプライベート IP アドレスです。 *myRouteTablePublic* ルート テーブルに追加され、"*パブリック*" サブネットに関連付けられているルートにより、Azure はトラフィックを "*プライベート*" サブネットに直接ルーティングするのではなく、NVA 経由でルーティングするようになります。
 
 *myVmPublic* VM へのリモート デスクトップ セッションを閉じます。*myVmPrivate* VM にはまだ接続されたままです。
@@ -309,9 +311,9 @@ tracert myVmPublic
 ```
 Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
 over a maximum of 30 hops:
-    
+
 1     1 ms     1 ms     1 ms  10.0.0.4
-   
+
 Trace complete.
 ```
 
@@ -321,10 +323,10 @@ Trace complete.
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要なくなったら、[Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除します。
+必要なくなったら、[Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

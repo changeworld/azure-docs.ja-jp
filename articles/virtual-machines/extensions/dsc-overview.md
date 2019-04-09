@@ -16,20 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1448c72e87d51c0bb88c9ee521a7a3112060473b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980603"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483831"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
 Azure VM エージェントとそれに関連付けられた拡張機能は、Microsoft Azure インフラストラクチャ サービスの一部です。 VM 拡張機能は、VM の機能を拡張し、さまざまな VM の管理操作を簡略化するソフトウェア コンポーネントです。
 
-Azure Desired State Configuration (DSC) の拡張機能の主な用途は、 [Azure Automation DSC サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。 VM のブートストラップには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](/powershell/dsc/metaconfig#pull-service)があります。
+Azure Desired State Configuration (DSC) 拡張機能の主な用途は、[Azure Automation State Configuration (DSC) サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。
+このサービスには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](/powershell/dsc/metaconfig#pull-service)があります。
+この拡張機能を使用して VM をこのサービスに登録することで、複数の Azure のサブスクリプションで機能する柔軟なソリューションが提供されます。
 
-DSC 拡張機能を Automation DSC サービスから独立して使用することができます。 ただし、デプロイ中に単一の処理を行うことが必要になります。 VM 内でローカルに行う場合を除き、継続的なレポート管理や構成管理が利用できなくなります。
+DSC 拡張機能を Automation DSC サービスから独立して使用することができます。
+ただし、この場合、構成が VM にプッシュされるだけです。
+VM 内でローカルに使用する場合を除き、継続的なレポート管理は利用できません。
 
 この記事には、Automation のオンボード用の DSC 拡張機能を使用することと、Azure SDK を使用して VM に構成を割り当てるためのツールとして DSC 拡張機能を使用することの両方のシナリオに関する情報が含まれています。
 
@@ -61,6 +65,25 @@ WMF をインストールするには、再起動が必要です。 再起動後
 ### <a name="default-configuration-script"></a>既定の構成スクリプト
 
 Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](/powershell/dsc/metaconfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](dsc-template.md)に関するページの[既定の構成スクリプト](dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)に関するページを参照してください。
+
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Azure Automation State Configuration (DSC) サービスに登録するための情報
+
+DSC 拡張機能を使用してノードを State Configuration サービスに登録する場合、3 つの値を指定する必要があります。
+
+- RegistrationUrl - Azure Automation アカウントの https アドレス
+- RegistrationKey - ノードをサービスに登録するために使用される共有シークレット
+- NodeConfigurationName - サーバー ロールを構成するためにサービスからプルするノード構成 (MOF) の名前
+
+この情報は [Azure portal](../../automation/automation-dsc-onboarding.md#azure-portal) で表示できますが、PowerShell を使用することもできます。
+
+```powershell
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
+```
+
+ノード構成名については、構成ではなく、必ず*ノード構成*の名前を使用していることを確認してください。
+構成は、[ノード構成 (MOF ファイル) をコンパイルする](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile) ために使用されるスクリプトに定義されています。
+名前は常に、Configuration の後にピリオド `.` と `localhost` または特定のコンピューター名が続いたものになります。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager テンプレートの DSC 拡張機能
 
@@ -120,6 +143,34 @@ $storageName = 'demostorage'
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+```
+
+## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
+
+Azure CLI を使用して、DSC 拡張機能を既存の仮想マシンにデプロイすることができます。
+
+Windows を実行する仮想マシンの場合:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name Microsoft.Powershell.DSC \
+  --publisher Microsoft.Powershell \
+  --version 2.77 --protected-settings '{}' \
+  --settings '{}'
+```
+
+Linux を実行する仮想マシンの場合:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name DSCForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 2.7 --protected-settings '{}' \
+  --settings '{}'
 ```
 
 ## <a name="azure-portal-functionality"></a>Azure ポータルの機能
