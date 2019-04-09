@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd0612f865b82537e914ce6b6e062038a570c98
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449106"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578579"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -217,7 +217,7 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://storage.azure.com/` | プレビュー |
-| Azure Government |  | 利用不可 |
-| Azure Germany |   | 利用不可 |
-| Azure China 21Vianet |  | 利用不可 |
+| Azure Global | `https://storage.azure.com/` | 使用可能 |
+| Azure Government | `https://storage.azure.com/` | 使用可能 |
+| Azure Germany | `https://storage.azure.com/` | 使用可能 |
+| Azure China 21Vianet | `https://storage.azure.com/` | 使用可能 |

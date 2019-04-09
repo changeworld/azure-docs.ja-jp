@@ -66,8 +66,6 @@ items:
       href: domains-admin-takeover.md
     - name: Azure AD Connect
       href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: 会社のブランドの構成
-      href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
   - name: グループの管理
     items:
     - name: グループでのアクセスの管理
@@ -140,6 +138,12 @@ items:
         href: directory-emergency-access.md
     - name: 管理単位
       href: directory-administrative-units.md
+  - name: サインインの管理
+    items:
+    - name: 会社のブランドのカスタマイズ
+      href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: ホーム領域検出
+      href: signin-realm-discovery.md
   - name: サービスと Azure AD の統合
     items:
     - name: LinkedIn と Azure AD の統合
@@ -165,9 +169,9 @@ items:
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
   - name: Azure AD サービスの制約
     href: directory-service-limits-restrictions.md
-ms.openlocfilehash: 34c4dcef7b986fdec7a3d611c6f42917542b4271
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 7bf7fa66c5e12660bc0dd56d4b52a9ba7638826e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509254"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006963"
