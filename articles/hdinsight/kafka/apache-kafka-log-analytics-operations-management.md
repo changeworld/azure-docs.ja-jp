@@ -9,18 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 281b4b8d20957cbbbf0f4ff52166e8c3a78b3e7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5154058bb1562b670e24f8813e979588a536f086
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108139"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359859"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
 Azure Monitor ログを使用して、HDInsight 上の Apache Kafka によって生成されたログを分析します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Apache Kafka の Azure Monitor ログを有効にする
 
@@ -33,7 +35,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
 3. Azure Monitor ログを使用するように Kafka クラスターを構成します。 詳細については、[Azure Monitor ログを使用して HDInsight を監視する方法](../hdinsight-hadoop-oms-log-analytics-tutorial.md)のドキュメントを参照してください。
 
     > [!NOTE]  
-    > `Enable-AzureRmHDInsightOperationsManagementSuite` コマンドレットを使って、Azure Monitor ログを使用するようにクラスターを構成することもできます。 このコマンドレットを使用するには、次の情報が必要です。
+    > `Enable-AzHDInsightOperationsManagementSuite` コマンドレットを使って、Azure Monitor ログを使用するようにクラスターを構成することもできます。 このコマンドレットを使用するには、次の情報が必要です。
     >
     > * HDInsight クラスター名。
     > * Azure Monitor ログのワークスペース ID。 Log Analytics ワークスペースのワークスペース ID を検索することができます。

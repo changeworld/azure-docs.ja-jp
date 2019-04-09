@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309317"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351560"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Azure 診断ログの Log Analytics へのストリーミング
 
@@ -100,6 +100,39 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Log Analytics 内のデータを照会する方法
 
 ポータルの [ログ検索] ブレードまたは Log Analytics の機能である [高度な分析] から、Log Management ソリューションの範囲内の診断ログを AzureDiagnostics テーブルで照会することができます。 他にも、[Azure リソース向けのソリューションがいくつか](../../azure-monitor/insights/solutions.md)存在します。こうしたソリューションをインストールすることで、Log Analytics に送信中のログ データからすぐに洞察を得ることができます。
+
+### <a name="known-limitation-column-limit-in-azurediagnostics"></a>既知の制限事項: AzureDiagnostics の列の制限
+多くのリソースの送信するデータ型はすべて同じテーブル ("_AzureDiagnostics_") に送信されるため、収集されるさまざまなデータ型のスキーマのスーパーセットとなります。 たとえば、次のデータ型の収集に対して診断設定を作成した場合、すべて同じワークスペースに送信されます。
+- リソース 1 の監査ログ (スキーマは列 A、B、C から構成される)  
+- リソース 2 のエラー ログ (スキーマは列 D、E、F から構成される)  
+- リソース 3 のデータ フロー ログ (スキーマは列 G、H、I から構成される)  
+ 
+AzureDiagnostics テーブルは次のようになります。サンプル データが入力されています。  
+ 
+| ResourceProvider | Category | A | b | C | D | E | F | G | H | I |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+| ... |
+ 
+Azure Log のテーブルの列数は 500 を超えないという明示的な制限があります。 この上限に到達すると、最初の 500 列から外れるデータを含む行は、取り込み時に破棄されます。 AzureDiagnostics テーブルは特にこの制限の影響を受けやすくなっています。 これは一般的に、さまざまなデータ ソースが大量に同じワークスペースに送信されること、あるいは非常に冗長なデータ ソースが同じワークスペースに送信されることが理由です。 
+ 
+#### <a name="azure-data-factory"></a>Azure Data Factory  
+Azure Data Factory は非常に詳細なログ セットに起因し、この制限によって特に影響を受けることが判明しているリソースです。 具体的には以下のとおりです。  
+- *パイプラインのアクティビティに対して定義されているユーザー パラメーター*: アクティビティに対して、一意の名前が付けられたユーザー パラメーターごとに新しい列が作成されます。 
+- *アクティビティの入力と出力*: これはアクティビティによって異なり、冗長性に起因して大量の列を生成します。 
+ 
+以下に提案する大まかな対処方法と同様に、ADF ログをそれぞれのワークスペースに分離させ、ワークスペースで収集される他のログ タイプにこのログが影響を与える可能性を最小限に抑えることをお勧めします。 Azure Data Factory 用に選別されたログを 2019 年 4 月中旬までに利用できるようにする予定です。
+ 
+#### <a name="workarounds"></a>対処方法
+短期的対処。500 列の制限が再定義されるまで、冗長なデータ型を個々のワークスペースに分離し、上限に到達する可能性を減らすことをお勧めします。
+ 
+長期的対処。Azure Diagnostics は、まばらな統合スキーマからデータ型別のテーブルと動的な型の組み合わせに方針を移行しています。それにより、Azure Diagnostics メカニズム経由で Azure ログに入ってくるデータが大幅に使いやすくなります。 これは既に、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics) ログや [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor) ログなど、一部の Azure リソース タイプで確認することができます。 Azure でこれらの選別されたログがサポートされる新しいリソース タイプの最新情報は [Azure Updates](https://azure.microsoft.com/updates/) ブログでご覧ください。
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,19 +14,21 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 7b4ee33d3e231dc59ce1d7b4ae6337efb11e96bc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1d5d02d65dd3dcf5978639818fba4ebe36ffaaff
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355343"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540008"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketplace および AppSource のオファーまたは SKU を削除する
 
 さまざまな理由で、Microsoft Marketplace からオファーを取り下げることがあります。2 つの形式で行うことができます。
 
 - "*オファーの削除*" を行うと、新しい顧客はそのオファーを購入またはデプロイできなくなりますが、ライセンス契約と関連法規に従ってサポートする必要のある既存の顧客への影響はありません。 
-- "*オファーの終了*" とは、既存の顧客との間で、サービスやライセンス契約を終了するプロセスのことです。 オファーの削除と終了に関するガイダンスとポリシーは、[Microsoft Marketplace パブリッシャー契約](https://go.microsoft.com/fwlink/?LinkID=699560) (セクション 7) および[参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (セクション 6.2) によって管理されています。 
+- "*オファーの終了*" とは、既存の顧客との間で、サービスやライセンス契約を終了するプロセスのことです。 
+
+オファーの削除と終了に関するガイダンスとポリシーは、[Microsoft Marketplace パブリッシャー契約](https://go.microsoft.com/fwlink/?LinkID=699560)および[参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (「[Offering suspension and removal (オファリングの一時中断と削除)](https://docs.microsoft.com/en-us/legal/marketplace/participation-policy#offering-suspension-and-removal)」セクション) によって管理されています。 
 
 この記事では、サポートされている異なる削除シナリオと、それぞれを実行するために必要な手順について説明します。  
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a286b3578cc159b6771df3f91bcd3f2fd35a161
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0d4f9c69d6ddcbef96a88a0df10c3b0974cd5b74
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201680"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437086"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 
@@ -72,7 +72,7 @@ Azure AD は `LogoutRequest` 要素への応答で `LogoutResponse` を送信し
 Azure AD は、`LogoutResponse` 要素の `ID`、`Version`、`IssueInstant` の値を設定します。 また、`InResponseTo` 要素には、応答の原因になった `LogoutRequest` の `ID` 属性の値を設定します。
 
 ### <a name="issuer"></a>発行者
-Azure AD は、この値を `https://login.microsoftonline.com/<TenantIdGUID>/` に設定します。<TenantIdGUID> は、Azure AD テナントのテナント ID です。
+Azure AD は、この値を `https://login.microsoftonline.com/<TenantIdGUID>/` に設定します。\<TenantIdGUID> は、Azure AD テナントのテナント ID です。
 
 `Issuer` 要素の値を評価するには、アプリケーション登録時に指定された **App ID URI** の値を使用します。
 

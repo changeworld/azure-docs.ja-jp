@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca54ae11390b388c3158bd220ee5c7829172a5c3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855097"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620480"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 
@@ -175,7 +175,7 @@ REST API を使用して単一のデータベースまたはプールされた�
 ### <a name="azure-cli"></a>Azure CLI
 
 - Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
-- Azure CLI を使用してマネージド インスタンスを復元するには、「[az sql midb restore](/cli/azure/sql/db)」を参照してください。
+- Azure CLI を使用してマネージド インスタンスを復元するには、「[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 

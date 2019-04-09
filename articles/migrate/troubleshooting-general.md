@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119175"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -53,38 +53,36 @@ Azure Migrate プロジェクトを削除すると、移行プロジェクトと
 
 1. コンピューターに *armclient* をインストールします (まだインストールしていない場合)。
 
-  a. 管理者のコマンド プロンプト ウィンドウで、```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"``` のコマンドを実行します。
+   a. 管理者のコマンド プロンプト ウィンドウで、```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"``` のコマンドを実行します。
 
-  b. 管理者の Windows PowerShell ウィンドウで、```choco install armclient``` のコマンドを実行します。
+   b. 管理者の Windows PowerShell ウィンドウで、```choco install armclient``` のコマンドを実行します。
 
-2.  Azure Migrate REST API を使用して評価レポートのダウンロード URL を取得します。
+2. Azure Migrate REST API を使用して評価レポートのダウンロード URL を取得します。
 
-  a.    管理者の Windows PowerShell ウィンドウで、```armclient login``` のコマンドを実行します。
+   a.    管理者の Windows PowerShell ウィンドウで、```armclient login``` のコマンドを実行します。
 
-  これにより Azure ポップアップが表示されます。ここでは、Azure にログオンする必要があります。
+   これにより Azure ポップアップが表示されます。ここでは、Azure にログオンする必要があります。
 
-  b.    同じ PowerShell ウィンドウで、次のコマンドを実行して、評価レポートのダウンロード URL を取得します (下のサンプル API 要求で URI パラメーターを適切な値に置き換えます)。
+   b.    同じ PowerShell ウィンドウで、次のコマンドを実行して、評価レポートのダウンロード URL を取得します (下のサンプル API 要求で URI パラメーターを適切な値に置き換えます)。
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-       サンプルの要求と出力:
+      サンプルの要求と出力:
 
-       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-018_12_16_21/downloadUrl?api-version=2018-02-02
-{
-  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
+      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+   018_12_16_21/downloadUrl?api-version=2018-02-02
+   {
+   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. 応答から URL をコピーし、それをブラウザーで開いて評価レポートをダウンロードします。
 
 4. レポートをダウンロードしたら、Excel を使用して、ダウンロードしたフォルダーを参照し、Excel でファイルを開いて表示します。
 
-### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>ディスクとネットワーク アダプターのパフォーマンス データが 0 と表示されています
+### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>CPU、メモリ、ディスクのパフォーマンス データがゼロと表示される
 
-これは、vCenter サーバーの統計設定レベルを 3 よりも低いレベルに設定した場合に発生することがあります。 レベルが 3 以上の場合、vCenter はコンピューティング、ストレージ、ネットワークの VM パフォーマンス履歴を保存します。 レベルが 3 よりも小さい場合、vCenter はストレージとネットワーク データは保存せずに、CPU とメモリのデータのみを保存します。 このシナリオでは、Azure Migrate でパフォーマンス データが 0 と表示され、Azure Migrate はオンプレミスのマシンから収集したメタデータに基づいて、ディスクとネットワークの推奨サイズを提供します。
-
-ディスクおよびネットワーク パフォーマンス データの収集を有効にするには、統計レベルの設定を 3 に変更します。 その後、ご利用の環境が検出され評価されるまで、少なくとも 1 日待ちます。
+Azure Migrate はオンプレミス環境を継続的にプロファイルして、オンプレミス VM のパフォーマンス データを収集します。 環境の検出を始めたばかりの場合は、パフォーマンス データの収集が完了するまで少なくとも 1 日待つ必要があります。 1 日待たずに評価を作成した場合、パフォーマンス メトリックはゼロと表示されます。 1 日待ってから、新しい評価を作成するか、評価レポートの [再計算] オプションを使用して既存の評価を更新することができます。
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>移行プロジェクトの作成時に Azure の地理を指定しましたが、検出されたメタデータが格納される Azure リージョンをどうやって探せばいいでしょうか？
 
@@ -99,9 +97,9 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 1. ハッシュ値をチェックして、Azure Migrate Collector の OVA ファイルが正常にダウンロードされているかどうかを確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでも失敗する場合、および、OVF をデプロイするのに VMware vSphere クライアントを使用している場合は、vSphere Web クライアントでデプロイしてみてください。 それでも失敗する場合は、別の Web ブラウザーをお試しください。
 3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
-  - Web クライアント (https:// <*ホスト IP アドレス*>/ui) を使用して、(vCenter Server ではなく) ESXi ホストに直接接続する
-  - [ホーム] > [インベントリ] に移動する
-  - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
+   - Web クライアント (https:// <*ホスト IP アドレス*>/ui) を使用して、(vCenter Server ではなく) ESXi ホストに直接接続する
+   - [ホーム] > [インベントリ] に移動する
+   - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
 4. それでもデプロイが失敗する場合は、Azure Migrate のサポートにお問い合わせください。
 
 
@@ -162,11 +160,35 @@ VMware PowerCLI のインストールに関する問題が原因で発生する�
    c. 次の場所から 'VMware' で始まるすべてのフォルダーを削除します。C:\Program Files\WindowsPowerShell\Modules  
         C:\Program Files (x86)\WindowsPowerShell\Modules
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
-   
+   d. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
+
    e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
 
-3. 上の方法で問題が解決しない場合は、手動で [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) をインストールし、問題が解決されるかどうかを確認します。
+3. それでも問題が解決しない場合は、上記の手順 a から c を実行し、次の手順に従ってアプライアンスに手動で PowerCLI をインストールしてください。
+
+   a. 上記の手順 2 の手順 a から c を実行して、不完全な PowerCLI のインストール ファイルをすべてクリーンアップします。
+
+   b. 管理者モードで [スタート] > [ファイル名を指定して実行] の順に選択し、Windows PowerShell (x86) を開きます
+
+   c. 次のコマンドを実行します。Install-Module "VMWare.VimAutomation.Core" -RequiredVersion "6.5.2.6234650" (確認を求められたら「A」と入力します)
+
+   d. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
+
+   e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
+
+4. ファイアウォールの問題のためにアプライアンスにモジュールをダウンロードできない場合は、次の手順を実行してインターネットにアクセスできるマシンにモジュールをダウンロードしてインストールします。
+
+    a. 上記の手順 2 の手順 a から c を実行して、不完全な PowerCLI のインストール ファイルをすべてクリーンアップします。
+
+    b. 管理者モードで [スタート] > [ファイル名を指定して実行] の順に選択し、Windows PowerShell (x86) を開きます
+
+    c. 次のコマンドを実行します。Install-Module "VMWare.VimAutomation.Core" -RequiredVersion "6.5.2.6234650" (確認を求められたら「A」と入力します)
+
+    d. "C:\Program Files (x86)\WindowsPowerShell\Modules" 内の "VMware" から始まるすべてのモジュールをコレクター VM 上の同じ場所にコピーします。
+
+    e. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
+
+    f. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
 
 ### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
 
@@ -222,14 +244,14 @@ MMA でサポートされる Linux オペレーティング システムの一�
 依存関係エージェントでサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)にあります。
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>1 時間以上経っても、Azure Migrate で依存関係を視覚化することができません。
-Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Log Analytics を使用すると、長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)ことができます。
+Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Azure Monitor ログを使用すれば、長期間にわたって[依存関係データのクエリ](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)を実行できます。
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>10 個を超える VM を持つグループの依存関係の視覚化ができません。
 最大 10 個 の VM を含むグループについて[依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。
 
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>エージェントをインストールし、依存関係の視覚エフェクトを使用してグループを作成しました。 現在、フェールオーバー後にマシンで [依存関係の表示] ではなく [エージェントのインストール] アクションが表示されます
 * 計画的なフェールオーバー、または計画外のフェールオーバーの後、オンプレミスのマシンはオフになり、同等のマシンが Azure にスピン アップされます。 これらのマシンは、別々の MAC アドレスを取得します。 ユーザーがオンプレミスの IP アドレスを保持するか保持しないかによって、異なる IP アドレスを取得する場合があります。 MAC と IP アドレスの両方が異なる場合、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
-* テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Log Analytics トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
+* テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Azure Monitor ログ トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
 
 ## <a name="troubleshoot-azure-readiness-issues"></a>Azure の対応性に関する問題のトラブルシューティング
 
@@ -279,15 +301,15 @@ Windows イベント トレーシング を収集するには、次の操作を�
 1. ブラウザーを開き、[ポータル](https://portal.azure.com)に移動してログインします。
 2. F12 キーを押して開発者ツールを起動します。 必要な場合は、**[ナビゲーション時にエントリをクリア]** の設定をクリアします。
 3. **[ネットワーク]** タブをクリックし、ネットワーク トラフィックのキャプチャを開始します。
- - Chrome では、**[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 表示されない場合は、黒い円をクリックして開始します。
- - Microsoft Edge または IE では、自動で記録が開始されるはずです。 開始されない場合は、緑色の再生ボタンをクリックします。
+   - Chrome では、**[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 表示されない場合は、黒い円をクリックして開始します。
+   - Microsoft Edge または IE では、自動で記録が開始されるはずです。 開始されない場合は、緑色の再生ボタンをクリックします。
 4. エラーを再現してみます。
 5. 記録中にエラーが発生したら、記録を停止し、記録されたアクティビティのコピーを保存します。
- - Chrome では、右クリックして **[Save as HAR with content]\(内容を HAR ファイルに保存する\)** をクリックします。 これにより、ログが .har ファイルとして圧縮されエクスポートされます。
- - Microsoft Edge または IE では、**[キャプチャしたトラフィックのエクスポート]** アイコンをクリックします。 これにより、ログが圧縮されエクスポートされます。
+   - Chrome では、右クリックして **[Save as HAR with content]\(内容を HAR ファイルに保存する\)** をクリックします。 これにより、ログが .har ファイルとして圧縮されエクスポートされます。
+   - Microsoft Edge または IE では、**[キャプチャしたトラフィックのエクスポート]** アイコンをクリックします。 これにより、ログが圧縮されエクスポートされます。
 6. **[コンソール]** タブに移動して、いずれかの警告またはエラーを確認します。 コンソール ログを保存するには次の操作を行います。
- - Chrome では、コンソール ログのどこかを右クリックします。 **[Save as]\(名前を付けて保存\)** を選択して、ログをエクスポートおよび圧縮します。
- - Microsoft Edge または IE では、エラーを右クリックして **[すべてコピー]** を選択します。
+   - Chrome では、コンソール ログのどこかを右クリックします。 **[Save as]\(名前を付けて保存\)** を選択して、ログをエクスポートおよび圧縮します。
+   - Microsoft Edge または IE では、エラーを右クリックして **[すべてコピー]** を選択します。
 7. 開発者ツールを閉じます。
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>コレクターのエラー コードと推奨されるアクション

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.date: 03/12/2019
+ms.openlocfilehash: 7bfed1144ebfc69ed51b7bbc1adf78538ed28425
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301929"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861079"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -129,6 +129,18 @@ ms.locfileid: "56301929"
 
   > [!IMPORTANT]
   > マネージド インスタンスでは、複数のフェールオーバー グループはサポートされません。
+  
+## <a name="permissions"></a>アクセス許可
+フェールオーバー グループに対するアクセス許可は、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) によって管理されます。 [SQL Server 共同作成者](../role-based-access-control/built-in-roles.md#sql-server-contributor)ロールには、フェールオーバー グループを管理するために必要なすべてのアクセス許可があります。 
+
+### <a name="create-failover-group"></a>フェールオーバー グループの作成
+フェールオーバー グループを作成するには、プライマリ サーバーとセカンダリ サーバーの両方、およびフェールオーバー グループ内のすべてのデータベースへの RBAC 書き込みアクセス権が必要です。 マネージド インスタンスの場合、プライマリとセカンダリの両方のマネージド インスタンスへの RBAC 書き込みアクセス権が必要です。ただし、個々のマネージド インスタンス データベースをフェールオーバー グループに追加したり、フェールオーバー グループから削除したりすることはできないため、個々のデータベースに対するアクセス許可は関係しません。 
+
+### <a name="update-a-failover-group"></a>フェールオーバー グループの更新
+フェールオーバー グループを更新するには、そのフェールオーバー グループ、および現在のプライマ リ サーバーまたはマネージド インスタンス上のすべてのデータベースへの RBAC 書き込みアクセス権が必要です。  
+
+### <a name="failover-a-failover-group"></a>フェールオーバー グループのフェールオーバー
+フェールオーバー グループをフェールオーバーするには、新しいプライマリ サーバーまたはマネージド インスタンス上のフェールオーバー グループへの RBAC 書き込みアクセス権が必要です。 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールでフェールオーバー グループを使用する場合のベスト プラクティス
 
@@ -203,7 +215,7 @@ ms.locfileid: "56301929"
   > [!NOTE]
   > 特定のサービス レベルでは、Azure SQL Database で、1 つの読み取り専用レプリカの容量を使用し、また、接続文字列の `ApplicationIntent=ReadOnly` パラメーターを使用して、読み取り専用クエリ ワークロードの負荷を分散するための[読み取り専用レプリカ](sql-database-read-scale-out.md)の使用がサポートされます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
   > - プライマリ ロケーションの読み取り専用レプリカに接続するには、`failover-group-name.zone_id.database.windows.net` を使用します。
-  > - プライマリ ロケーションの読み取り専用レプリカに接続するには、`failover-group-name.secondary.zone_id.database.windows.net` を使用します。
+  > - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`failover-group-name.secondary.zone_id.database.windows.net` を使用します。
 
 - **パフォーマンスの低下に備える**
 
@@ -270,7 +282,9 @@ ms.locfileid: "56301929"
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
 
-セカンダリ データベースの接続を解除することなく、プライマリ データベースを (General Purpose と Business Critical 間ではなく、同じサービス レベル内の) 異なるコンピューティング サイズにアップグレードまたはダウングレードできます。 アップグレードの場合は、最初にセカンダリ データベースをアップグレードしてからプライマリをアップグレードすることをお勧めします。 ダウングレードは逆の順序で行います。つまり、最初にプライマリをダウングレードしてからセカンダリをダウングレードします。 データベースを異なるサービス レベルにアップグレードまたはダウングレードすると、この推奨事項が強制されます。
+セカンダリ データベースの接続を解除することなく、プライマリ データベースを (General Purpose と Business Critical 間ではなく、同じサービス レベル内の) 異なるコンピューティング サイズにアップグレードまたはダウングレードできます。 アップグレードの場合は、最初にすべてのセカンダリ データベースをアップグレードしてからプライマリ データベースをアップグレードすることをお勧めします。 ダウングレードは逆の順序で行います。つまり、最初にプライマリ データベースをダウングレードしてからすべてのセカンダリ データベースをダウングレードします。 データベースを異なるサービス レベルにアップグレードまたはダウングレードすると、この推奨事項が強制されます。
+
+より低い SKU のセカンダリが過負荷になり、アップグレードまたはダウングレー ドのプロセス中に再シードする必要があるという問題を回避するために、このシーケンスが特に推奨されます。 プライマリを読み取り専用にすることでこの問題を回避することもできます。その場合、プライマリへのすべての読み取り/書き込みワークロードに影響が出ることになります。 
 
 > [!NOTE]
 > セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
@@ -294,12 +308,12 @@ ms.locfileid: "56301929"
 
 | コマンドレット | 説明 |
 | --- | --- |
-| [New-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [Remove-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
-| [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | フェールオーバー グループ構成を取得します。 |
-| [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |フェールオーバー グループの構成を変更します。 |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。 |
-| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Azure SQL データベース フェールオーバー グループに 1 つまたは複数のデータベースを追加する|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | フェールオーバー グループ構成を取得します。 |
+| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |フェールオーバー グループの構成を変更します。 |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。 |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Azure SQL データベース フェールオーバー グループに 1 つまたは複数のデータベースを追加する|
 |  | |
 
 > [!IMPORTANT]
@@ -308,32 +322,32 @@ ms.locfileid: "56301929"
 
 ### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell:マネージド インスタンスでのフェールオーバー グループの管理 (プレビュー)
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>最新のプレリリース バージョンの Powershell をインストールする
+#### <a name="install-the-newest-pre-release-version-of-powershell"></a>最新のプレリリース バージョンの PowerShell をインストールする
 
 1. PowerShellGet モジュールを 1.6.5 (または最新のプレビュー バージョン) に更新します。 [PowerShell プレビューのサイト](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)を参照してください。
 
-   ```Powershell
+   ```PowerShell
       install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. 新しい PowerShell ウィンドウで、次のコマンドを実行します。
 
-   ```Powershell
+   ```PowerShell
       import-module PowerShellGet
       get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
       import-module azurerm.sql
    ```
 
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>インスタンスのフェールオーバー グループを作成する Powershell コマンドレット
+#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>インスタンスのフェールオーバー グループを作成する PowerShell コマンドレット
 
 | API | 説明 |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループの構成を変更します。|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループ構成を取得します。|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | フェールオーバー グループを削除します|
+| New-AzSqlDatabaseInstanceFailoverGroup |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| Set-AzSqlDatabaseInstanceFailoverGroup |フェールオーバー グループの構成を変更します。|
+| Get-AzSqlDatabaseInstanceFailoverGroup |フェールオーバー グループ構成を取得します。|
+| Switch-AzSqlDatabaseInstanceFailoverGroup |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
+| Remove-AzSqlDatabaseInstanceFailoverGroup | フェールオーバー グループを削除します|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 

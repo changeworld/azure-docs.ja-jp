@@ -2,39 +2,39 @@
 title: Azure IoT Hub の正常性の監視 | Microsoft Docs
 description: Azure Monitor と Azure Resource Health を使用して IoT Hub を監視し、問題を迅速に診断します
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 02/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0a230ff1c4d5c6bb36003f07cc1c411f7e2c3629
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446785"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241002"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
-Azure IoT Hub を実装する企業では、そのリソースに信頼性の高いパフォーマンスを期待します。 IoT Hub は、[Azure Monitor][lnk-AM] および [Azure Resource Health][lnk-ARH] と完全に統合され、操作を緊密に監視するのに役立ちます。 これらの 2 つのサービスは連携して、IoT ソリューションの実行を正常な状態に保つために必要なデータを提供します。 
+Azure IoT Hub を実装する企業では、そのリソースに信頼性の高いパフォーマンスを期待します。 操作の緊密な監視を維持できるように、IoT Hub は、[Azure Monitor](../azure-monitor/index.yml) と [Azure Resource Health](../service-health/resource-health-overview.md) と完全に統合されています。 これら 2 つのサービスが連携して、IoT ソリューションを常に正常な状態で稼働させるために必要なデータが提供されます。 
 
-Azure Monitor は、すべての Azure サービスの監視およびログの唯一のソースです。 Azure Monitor が生成する診断ログを Log Analytics、Event Hubs、または Azure Storage に送信して、カスタムの処理を実行できます。 Azure Monitor のメトリックと診断の設定により、リソースのパフォーマンスを把握できます。 この記事を読み進めると、IoT Hub で [Azure Monitor を使用する](#use-azure-monitor)方法を理解することができます。 
+Azure Monitor は、すべての Azure サービスの監視およびログの唯一のソースです。 Azure Monitor が生成する診断ログを Azure Monitor ログ、Event Hubs、または Azure Storage に送信して、カスタムの処理を実行できます。 Azure Monitor のメトリックと診断の設定により、リソースのパフォーマンスを把握できます。 この記事を読み進めると、IoT Hub で [Azure Monitor を使用する](#use-azure-monitor)方法を理解することができます。 
 
 > [!IMPORTANT]
 > Azure Monitor の診断ログを使用して IoT Hub サービスによって出力されるイベントは、信頼性も順序も保証されません。 一部のイベントが失われたり、順序どおりに配信されないことがあります。 さらに、診断ログはリアルタイムではなく、選択した出力先に記録されるまで数分かかる場合があります。
 
-Azure での問題がお客様のリソースに影響を及ぼす場合は、Azure Resource Health によって診断とサポートを受けられます。 パーソナライズされたダッシュボードには、IoT Hub の現在および過去の状態が表示されます。 この記事を読み進めると、IoT Hub で [Azure Resource Health を使用する](#use-azure-resource-health)方法を理解することができます。 
+Azure での問題がお客様のリソースに影響を及ぼす場合は、Azure Resource Health によって診断とサポートを受けられます。 ダッシュボードには、お使いの各 IoT ハブの現在と過去の正常性の状態が表示されます。 この記事の最後のセクションで、IoT ハブで [Azure Resource Health を使用する](#use-azure-resource-health)方法について説明します。 
 
-IoT Hub には、IoT リソースの状態を把握するために利用できる独自のメトリックも用意されています。 詳細については、「[IoT Hub メトリックの理解][lnk-metrics]」を参照してください。
+IoT Hub には、IoT リソースの状態を把握するために利用できる独自のメトリックも用意されています。 詳細については、「[IoT Hub メトリックの理解](iot-hub-metrics.md)」を参照してください。
 
 ## <a name="use-azure-monitor"></a>Azure Monitor の使用
 
 Azure Monitor は、Azure リソースの診断情報を提供します。これは、IoT Hub 内で実行される操作を監視できることを意味します。 
 
-Azure Monitor の診断設定は、IoT Hub の操作の監視機能を置き換えます。 現在、操作の監視機能を使用している場合は、ワークフローを移行する必要があります。 詳細については、[操作の監視から診断設定への移行][lnk-migrate]に関するページを参照してください。
+Azure Monitor の診断設定は、IoT Hub の操作の監視機能を置き換えます。 現在、操作の監視機能を使用している場合は、ワークフローを移行する必要があります。 詳細については、[操作の監視から診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)に関するページを参照してください。
 
-Azure Monitor が監視する特定のメトリックとイベントの詳細については、「[Azure Monitor のサポートされるメトリック][lnk-AM-metrics]」および「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ][lnk-AM-schemas]」を参照してください。
+Azure Monitor が監視する特定のメトリックとイベントの詳細については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」と「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../azure-monitor/platform/diagnostic-logs-schema.md)」を参照してください。
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -42,12 +42,12 @@ Azure Monitor が監視する特定のメトリックとイベントの詳細に
 
 Azure Monitor を使用すると、IoT Hub で発生するさまざまな操作を追跡できます。 各カテゴリには、そのカテゴリ内のイベントの報告方法を定義するスキーマがあります。 
 
-#### <a name="connections"></a>Connections
+#### <a name="connections"></a>接続
 
 接続カテゴリは、エラーだけでなく、IoT Hub に対するデバイスの接続と切断イベントも追跡します。 このカテゴリは、承認されていない接続の試行を識別したり、デバイスへの接続を失ったときに警告したりするのに役立ちます。
 
 > [!NOTE]
-> デバイスの信頼できる接続状態については、[デバイスのハートビート][lnk-devguide-heartbeat]しをチェックしてください。
+> デバイスの信頼できる接続状態については、「[デバイスのハートビート](iot-hub-devguide-identity-registry.md#device-heartbeat)」を参照してください。
 
 
 ```json
@@ -119,7 +119,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 }
 ```
 
-#### <a name="routes"></a>Routes
+#### <a name="routes"></a>ルート
 
 メッセージ ルーティング カテゴリは、メッセージ ルート評価および IoT Hub によって認識されるエンドポイント正常性において発生するエラーを追跡します。 このカテゴリには、以下のようなイベントが含まれます。
 
@@ -311,7 +311,7 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 
 #### <a name="distributed-tracing-preview"></a>分散トレース (プレビュー)
 
-分散トレース カテゴリでは、トレース コンテキスト ヘッダーが含まれれるメッセージの関連付け ID が追跡されます。 これらのログを完全に有効にするには、「[Analyze and diagnose IoT applications end-to-end with IoT Hub distributed tracing (preview) (IoT Hub 分散トレース (プレビュー) で IoT アプリケーションをエンド ツー エンドに分析および診断する)](iot-hub-distributed-tracing.md)」に従って、クライアント側のコードを更新する必要があります。
+分散トレース カテゴリでは、トレース コンテキスト ヘッダーが含まれれるメッセージの関連付け ID が追跡されます。 これらのログを完全に有効にするには、[IoT Hub 分散トレース (プレビュー) を使用した IoT アプリケーションの エンド ツー エンドの分析と診断](iot-hub-distributed-tracing.md)に関する記事に従って、クライアント側のコードを更新する必要があります。
 
 `correlationId` が [W3C トレース コンテキスト](https://github.com/w3c/trace-context)の提案に準拠していることに注意してください。これには、`trace-id` と `span-id` が含まれます。 
 
@@ -342,7 +342,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | 整数 | device-to-cloud メッセージのサイズ (バイト単位) |
 | **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
@@ -376,7 +376,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | String | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
 | **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
@@ -446,7 +446,7 @@ class Program 
     { 
         Console.WriteLine("Monitoring. Press Enter key to exit.\n"); 
         eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName); 
-        var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds; 
+        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds; 
         CancellationTokenSource cts = new CancellationTokenSource(); 
         var tasks = new List<Task>(); 
         foreach (string partition in d2cPartitions) 
@@ -487,28 +487,18 @@ class Program 
 
 Azure Resource Health を使用すると、IoT Hub が実行中かどうかを監視できます。 また、リージョンで発生した停電が IoT Hub の正常性に影響を与えているかどうかを知ることもできます。 Azure IoT Hub の正常性状態に関する詳細を理解するには、[Azure Monitor を使用する](#use-azure-monitor)ことをお勧めします。 
 
-Azure IoT Hub では、リージョン レベルでの正常性が示されます。 リージョンでの停電が IoT ハブに影響している場合、正常性状態は **[不明]** と表示されます。 詳細については、「[Azure Resource Health で利用できるリソースの種類と正常性チェック][lnk-ARH-checks]」を参照してください。
+Azure IoT Hub では、リージョン レベルでの正常性が示されます。 リージョンでの停電が IoT ハブに影響している場合、正常性状態は **[不明]** と表示されます。 詳細については、「[Azure Resource Health で利用できるリソースの種類と正常性チェック](../service-health/resource-health-checks-resource-types.md)」を参照してください。
 
 IoT Hub の正常性を確認するには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[Service Health]\(サービス正常性\)** > **[リソース正常性]** に移動します。
-1. ドロップダウン ボックスから、サブスクリプションと **IoT Hub** を選択します。
+1. ドロップダウン ボックスから、サブスクリプションを選択し、リソースの種類として **[IoT ハブ]** を選択します。
 
-正常性データを解釈する方法の詳細については、「[Azure Resource Health の概要][lnk-ARH]」を参照してください
+正常性データを解釈する方法の詳細については、「[Azure Resource Health の概要](../service-health/resource-health-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [IoT Hub メトリックの理解][lnk-metrics]
-- [Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知][lnk-monitoring-notifications]
+- [IoT Hub メトリックの理解](iot-hub-metrics.md)
+- [Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-
-[lnk-AM]: ../azure-monitor/index.yml
-[lnk-ARH]: ../service-health/resource-health-overview.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md
-[lnk-AM-metrics]: ../azure-monitor/platform/metrics-supported.md
-[lnk-AM-schemas]: ../azure-monitor/platform/diagnostic-logs-schema.md
-[lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
-[lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
-[lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat

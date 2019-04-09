@@ -19,10 +19,14 @@ items:
   items:
   - name: ハイコントラストの有効化またはテーマの変更
     href: azure-portal-change-theme-high-contrast.md
+  - name: お気に入りの追加、削除、並べ替え
+    href: azure-portal-add-remove-sort-favorites.md
   - name: カスタムのマークダウン タイルを使用する
     href: azure-portal-markdown-tile.md
   - name: ユーザー設定のエクスポートまたは削除
     href: azure-portal-export-delete-settings.md
+  - name: Azure portal の使い方に関するビデオ シリーズ
+    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
 - name: リファレンス
   items:
   - name: キーボード ショートカット
@@ -31,8 +35,6 @@ items:
     href: azure-portal-dashboards-structure.md
 - name: リソース
   items:
-  - name: Azure portal の使い方に関するビデオ シリーズ
-    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/updates/
   - name: Microsoft Learn でスキルを身に付ける
@@ -45,9 +47,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-management-portal
   - name: Azure のビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: aa50db89704ec020c0126f6703deb364a89daf6c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 3846b9198d79be1a9580919a97e568c6a2467b12
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620905"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047987"

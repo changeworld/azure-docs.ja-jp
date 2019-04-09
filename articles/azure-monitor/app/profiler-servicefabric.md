@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 73e453385a6916b6999691afbacd1f102ce7270d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865738"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401101"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>Application Insights を使用してライブ Azure Service Fabric アプリケーションをプロファイルする
 
@@ -55,11 +55,11 @@ Application Insights Profiler は、Azure 診断に付属しています。 Serv
   設定が正しい場合、Azure 診断拡張機能をインストールすると Application Insights Profiler がインストールされて有効になります。 
 
 1. Application Insights を Service Fabric アプリケーションに追加します。  
-  Profiler で要求のプロファイルを収集するには、アプリケーションで Application Insights に要求データを送信する必要があります。 詳細については、「[Application Insights SDK for Service Fabric projects](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)」(Service Fabric プロジェクト用の Application Insights SDK) のページをご覧ください。
+  Profiler で要求のプロファイルを収集するには、アプリケーションが Application Insights の操作を追跡している必要があります。 ステートレス API の場合は、[プロファイリングのための要求の追跡](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)の手順を参照できます。 他の種類のアプリでのカスタム操作の追跡の詳細については、「[Application Insights .NET SDK でカスタム操作を追跡する](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)」を参照してください
 
 1. アプリケーションを再デプロイします。
 
-> [ヒント] 仮想マシンで、JSON ベースの手順に先行する手順としては、Azure portal で **[Virtual Machines]** > **[診断設定]** > **[シンク]** に移動し、**Application Insights への診断データの送信を [有効] に設定**して、Application Insights アカウントまたは特定の ikey を選択します。
+> [ヒント] 仮想マシンで、JSON ベースの手順に先行する手順としては、Azure portal で **[Virtual Machines]** > **[診断設定]** > **[シンク]** > **に移動し、Application Insights への診断データの送信を [有効] に設定**して、Application Insights アカウントまたは特定の ikey を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

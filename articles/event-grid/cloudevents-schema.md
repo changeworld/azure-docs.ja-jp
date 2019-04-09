@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 1eab0be59de90ad68cbf9601b7e2200e640875f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58178069"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317495"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
@@ -62,7 +62,7 @@ CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を�
 
 CloudEvents v0.1 では、次のプロパティが使えます。
 
-| CloudEvents        | type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
+| CloudEvents        | Type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
@@ -70,7 +70,7 @@ CloudEvents v0.1 では、次のプロパティが使えます。
 | source             | URI      | "/mycontext"                     | イベント プロデューサーの説明                                       | topic#subject
 | eventID            | String   | "1234-1234-1234"                 | イベントの ID                                                    | id
 | eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | イベントが発生したときのタイムスタンプ (省略可能)                    | eventTime
-| schemaURL          | URI      | "https://myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
+| schemaURL          | URI      | "https:\//myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
 | contentType        | String   | "application/json"               | データ エンコード形式の説明 (省略可能)                       | *使用されません*
 | 拡張機能         | マップ      | { "extA": "vA", "extB", "vB" }  | 追加のメタデータ (省略可能)                                 | *使用されません*
 | data               | Object   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data

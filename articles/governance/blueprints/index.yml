@@ -4,7 +4,6 @@ title: Azure Blueprints サービスのドキュメント
 metadata:
   title: Azure Blueprints のドキュメント - チュートリアル、API リファレンス
   description: Azure Blueprint は、Azure 環境でアーティファクトを作成、定義、デプロイするために使用する Azure のサービスです。
-  services: blueprints
   author: DCtheGeek
   manager: carmonm
   ms.service: blueprints

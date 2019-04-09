@@ -120,7 +120,7 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
-2. https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
+2.  https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
    <!--
    ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
    -->

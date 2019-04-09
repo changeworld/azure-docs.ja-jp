@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: d2d248840f98b4fb6a155e098740869ecc035dc8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cface0b7848182db5d9aee282a2effb631c065bf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58408468"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648831"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure China 21Vianet の開発者ガイド
 Microsoft では、開発者によるクラウド アプリケーションの作成と、グローバルな Microsoft Azure サービス ("グローバル Azure") および 21Vianet (Azure China 21Vianet) が運営する Microsoft Azure へのデプロイを実行するのに役立つツールを提供しています。 [Azure ドキュメント センター](https://azure.microsoft.com/documentation/)など、現在利用可能な技術的コンテンツのほとんどは、アプリケーションがグローバル Azure 用に開発されることを前提としているため、どの[サービスおよび機能](https://www.azure.cn/home/features/products-by-region)が Microsoft Azure China 21Vianet で利用できるかを把握することが重要です。
 
-グローバル Azure サービスの一般利用可能なコンテンツを参照する場合は必ず、手順を適合させるか、グローバル Azure サービスの設定を指定するサンプル コードをカスタマイズしてください。 たとえば、 [Azure サービス エンドポイント](#Check-endpoints-in-Azure)をカスタマイズします。
+グローバル Azure サービスの一般利用可能なコンテンツを参照する場合は必ず、手順を適合させるか、グローバル Azure サービスの設定を指定するサンプル コードをカスタマイズしてください。 たとえば、 [Azure サービス エンドポイント](#check-endpoints-in-azure)をカスタマイズします。
 
 ## <a name="migrate-existing-applications-and-workloads"></a>既存のアプリケーションとワークロードを移行する
 他の場所でホストされているアプリケーションまたはワークロードの移行には、時間と計画が必要になります。 Microsoft Azure China 21Vianet に移行するには、次のようにします。

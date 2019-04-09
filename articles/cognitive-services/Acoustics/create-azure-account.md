@@ -1,24 +1,24 @@
 ---
-title: Project Acoustics の Azure アカウントを設定する
+title: Project Acoustics の Azure Batch アカウントの設定
 titlesuffix: Azure Cognitive Services
-description: 音響の操作に必要な Azure Batch および Storage アカウントを設定するには、このガイドに従ってください。
+description: このハウツー記事では、Project Acoustics Unity と Unreal エンジンの統合に使用する Azure Batch アカウントの設定について説明します。
 services: cognitive-services
 author: ashtat
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8735c0c5d05f2ee4bd17dc41fc90d1f5aa5128a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3b761630124ef7f72269fe0712bf22647968d59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137030"
 ---
-# <a name="create-an-azure-batch-account"></a>Azure Batch アカウントを作成する
-音響の操作に必要な Azure Batch および Storage アカウントを設定するには、このガイドに従ってください。 Project Acoustics の一部として開発された Unity プラグインについては、[音響の概要](what-is-acoustics.md)に関するページを参照してください。 Unity プロジェクトに音響を組み込む方法については、[使用の開始](getting-started.md)に関するページを参照してください。  
+# <a name="project-acoustics-azure-batch-account-setup"></a>Project Acoustics の Azure Batch アカウントの設定
+このハウツー記事では、Project Acoustics Unity と Unreal エンジンの統合に使用する Azure Batch アカウントの設定について説明します。
 
 ## <a name="get-an-azure-subscription"></a>Azure サブスクリプションを取得する
 Batch および Storage アカウントを設定する前に、[Azure サブスクリプション](https://azure.microsoft.com/free/)が必要です。 初めてサインアップする場合、Azure には、期間限定のいくつかの無料のリソースと 200 ドルのクレジットが用意されています。
@@ -28,40 +28,40 @@ Batch および Storage アカウントを設定する前に、[Azure サブス�
 
 Batch アカウントと Storage アカウントの両方について、既定のオプションを選択します。
   
-  ![新しい Batch アカウント](media/NewBatchAccountCreate.png)
+  ![新しい Batch アカウント](media/new-batch-account-create.png)
 
-  ![新しい Storage アカウント](media/BatchStorageAccountCreate.png)
+  ![新しい Storage アカウント](media/batch-storage-account-create.png)
 
 Azure がこれらのアカウントをデプロイするには数分かかります。 ポータルの右上隅にある完了通知を探してください。
   
-  ![デプロイされたアカウント](media/BatchAccountsDeployNotification.png)
+  ![デプロイされたアカウント](media/batch-accounts-deploy-notification.png)
 
 アカウントがダッシュボードに表示されるようになります。
   
-  ![ポータル ダッシュボード](media/AzurePortalDashboard.png)
+  ![ポータル ダッシュボード](media/azure-portal-dashboard.png)
 
 ## <a name="set-up-acoustics-bake-ui-with-azure-credentials"></a>Azure 資格情報を使用して音響ベイク UI を設定する
 ダッシュボードの [Batch アカウント] リンクをクリックしてから、[Batch アカウント] ページの **[キー]** リンクをクリックして資格情報にアクセスします。
   
-  ![Batch の [キー] リンク](media/BatchAccessKeys.png)
+  ![Batch の [キー] リンク](media/batch-access-keys.png)
 
-  ![Batch アカウントの資格情報](media/BatchKeysInfo.png)
+  ![Batch アカウントの資格情報](media/batch-keys-info.png)
 
 ページの **[ストレージ アカウント]** リンクをクリックして Azure Storage アカウントの資格情報にアクセスします。
   
-  ![ストレージ アカウントの資格情報](media/StorageKeysInfo.png)
+  ![ストレージ アカウントの資格情報](media/storage-keys-info.png)
 
-[ベイク UI のチュートリアル](bake-ui-walkthrough.md)の説明に従って、[Bake] (ベイク) タブでこれらの資格情報を入力します。
+これらの資格情報を [Unity ベイク プラグイン](unity-baking.md)または [Unreal ベイク プラグイン](unreal-baking.md)に入力します。
 
 ## <a name="node-types-and-region-support"></a>ノードの種類とリージョンのサポート
-Project Acoustics には、すべての Azure リージョンではサポートされない可能性のある、F および H シリーズ コンピューティング最適化 Azure VM ノードが必要です。 [この表](https://azure.microsoft.com/global-infrastructure/services)をチェックして、Batch アカウントの正しい場所を選択していることを確認してください。 現時点では、H シリーズ仮想マシンは米国東部、米国中北部、米国中南部、米国西部、米国西部 2、北ヨーロッパ、西ヨーロッパ、および西日本でサポートされています。
+Project Acoustics には、すべての Azure リージョンではサポートされない可能性のある、Fsv2 および H シリーズ コンピューティング最適化 Azure VM ノードが必要です。 [この表](https://azure.microsoft.com/global-infrastructure/services)をチェックして、Batch アカウントの正しい場所を選択していることを確認してください。
+![リージョン別の Azure Virtual Machines](media/azure-regions.png) 
 
 ## <a name="upgrading-your-quota"></a>クォータのアップグレード
 Azure Batch アカウントは、アカウント作成時に、20 コンピューティング コアの制限でプロビジョニングされます。 音響ワークロードは、シーン内のプローブ ポイントの数まで多数のノードにまたがって並列化できるため、この制限を増やしてベイク時間を速くすることもできます。 Azure Batch ポータル ページの **[クォータ]** リンクをクリックしてから、**[Request Quota Increase] (クォータの増加を要求する)** をクリックすることによって、クォータの増加を要求できます。
 
-![Azure クォータの増加](media/azurequotas.png)
+![Azure クォータの増加](media/azure-quotas.png)
 
 ## <a name="next-steps"></a>次の手順
-* [Unity プロジェクトへの音響の統合](getting-started.md)を開始する
-* [サンプル シーン](sample-walkthrough.md)を調査する
+* [Unity](unity-integration.md) または [Unreal](unreal-integration.md) プロジェクトに Project Acoustics プラグインを統合する
 

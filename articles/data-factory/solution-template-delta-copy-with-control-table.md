@@ -13,41 +13,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.openlocfilehash: 23e1255013cd5e52166fe0e59a8931dd9ecd81a0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966923"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771159"
 ---
-# <a name="delta-copy-from-database-with-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
+# <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
-データベース内のテーブルから Azure に対して、変更点 (新規行または更新行) のみを増分読み込みするときは、高基準値を格納する外部制御テーブルを使用します。  提示されるテンプレートは、そのようなケースに対応するように設計されています。 
+この記事では、高基準値を格納する外部制御テーブルを使用してデータベース テーブルから Azure に新規行や更新行を増分読み込みする際に使用できるテンプレートについて説明します。
 
-このテンプレートでは、新規行または更新行を識別するために、ソース データベースのスキーマにタイムスタンプ列または増分キーが含まれていることを要求します。
+このテンプレートでは、新規行や更新行を識別するため、ソース データベースのスキーマにタイムスタンプ列か増分キーが含まれている必要があります。
 
-新規行または更新行を識別するタイムスタンプ列はソース データベースに含まれているが、差分コピーを可能にするために外部制御テーブルを作成したくない場合は、データ コピー ツールを使用してパイプラインを取得し、トリガーによってスケジュールが設定される時間を変数として使用して、ソース データベースから新規行のみを読み取ることができます。
+>[!NOTE]
+> 新規行や更新行を識別するタイムスタンプ列がソース データベースに含まれているものの、差分コピーで使用する外部制御テーブルを作成したくない場合は、代わりに [Azure Data Factory データ コピー ツール](copy-data-tool.md)を使用してパイプラインを取得できます。 このツールは、トリガーでスケジュール設定される時間を変数として使用して、ソース データベースから新規行を読み取ります。
 
 ## <a name="about-this-solution-template"></a>このソリューション テンプレートについて
 
-このテンプレートでは、常に古い基準値が最初に取得され、その後で現在の基準値と比較されます。 その後、2 つの基準値の比較に基づいて、ソース データベースから変更箇所のみがコピーされます。  完了すると、次回の差分データの読み込み用の新しい高基準値が外部制御テーブルに格納されます。
+このテンプレートは、まず古い基準値を取得し、その値を現在の基準値と比較します。 その後、2 つの基準値の比較に基づいて、変更箇所のみをソース データベースからコピーします。 最後に、次に差分データを読み込むときのために、新しい高基準値を外部制御テーブルに格納します。
 
 このテンプレートには、4 つのアクティビティが含まれています。
--   外部制御テーブルに格納されている古い高基準値を取得する **Lookup** アクティビティ。
--   ソース データベースから現在の高基準値を取得する **Lookup** アクティビティ。
--   ソース データベースから宛先ストアに変更箇所のみをコピーする **Copy** アクティビティ。 Copy アクティビティの中でソース データベースの変更を識別するために使用されるクエリは、'SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > "last high-watermark" and TIMESTAMP_Column <= "current high-watermark"' のようになります。
--   次回の差分コピーのために現在の高基準値を外部制御テーブルに書き込む **SqlServerStoredProcedure** アクティビティ。
+- **Lookup** が、外部制御テーブルに格納されている古い高基準値を取得します。
+- 別の **Lookup** アクティビティが、ソース データベースから現在の高基準値を取得します。
+- **Copy** が、変更箇所のみをソース データベースからコピー先ストアにコピーします。 ソース データベースの変更箇所を識別するクエリは、SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > “last high-watermark” and TIMESTAMP_Column <= “current high-watermark” のようになります。
+- **SqlServerStoredProcedure** が、次回の差分コピーのために現在の高基準値を外部制御テーブルに書き込みます。
 
 このテンプレートには、5 つのパラメーターが定義されています。
--   *Data_Source_Table_Name* パラメーターは、データの読み込み元にするソース データベースのテーブル名です。
--   *Data_Source_WaterMarkColumn* パラメーターは、新規行または更新行を識別するために使用できるソース テーブル内の列の名前です。 通常、この列の型は datetimeや INT などが可能です。
--   *Data_Destination_Folder_Path* または *Data_Destination_Table_Name* パラメーターは、宛先ストア内のデータのコピー先です。
--   *Control_Table_Table_Name* パラメーターは、高基準値を格納する外部制御テーブルの名前です。
--   *Control_Table_Column_Name* パラメーターは、高基準値を格納する外部制御テーブルの列名です。
+- *Data_Source_Table_Name* は、データの読み込み元になるソース データベース内のテーブルです。
+- *Data_Source_WaterMarkColumn* は、新規行や更新行を識別するために使用されるソース テーブル内の列の名前です。 通常、この列の型は *datetime* や *INT* などです。
+- *Data_Destination_Folder_Path* や *Data_Destination_Table_Name* は、コピー先ストア内でコピーされるデータの場所です。
+- *Control_Table_Table_Name* は、高基準値を格納する外部制御テーブルです。
+- *Control_Table_Column_Name* は、高基準値を格納する外部制御テーブル内の列です。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
-1. 読み込み元のソース テーブルを調べて、新規行または更新行をスライスするために使用できる高基準値列を定義します。 通常は、型が datetime や INT などであり、新しい行が追加されるとデータが大きくなる列を使用できます。  次のサンプル ソース テーブル (テーブル名: data_source_table) では、高基準値列として *LastModifytime* 列を使用できます。
+1. 読み込むソース テーブルを調べて、新規行や更新行を識別するために使用できる高基準値列を定義します。 この列の型には *datetime* や *INT* などがあります。 この列の値は、新規行が追加されると増加します。 次のサンプル ソース テーブル (data_source_table) では、高基準値列として *LastModifytime* 列を使用できます。
 
     ```sql
             PersonID    Name    LastModifytime
@@ -62,7 +63,7 @@ ms.locfileid: "55966923"
             9   iiiiiiiii   2017-09-09 09:01:00.000
     ```
     
-2. SQL サーバーまたは SQL Azure 上に、差分データを読み込むための高基準値を格納する制御テーブルを作成します。 次の例から、制御テーブルの名前は *watermarktable* であることがわかります。 その中の高基準値を格納する列の名前は *WatermarkValue* であり、その型は *datetime* です。
+2. SQL Server か Azure SQL Database に、差分データの読み込みに使用される高基準値を格納する制御テーブルを作成します。 次の例では、制御テーブルの名前は *watermarktable* です。 このテーブルにある *WatermarkValue* が高基準値を格納する列で、その型は *datetime* です。
 
     ```sql
             create table watermarktable
@@ -73,7 +74,7 @@ ms.locfileid: "55966923"
             VALUES ('1/1/2010 12:00:00 AM')
     ```
     
-3. 同じ SQL サーバーまたは SQL Azure 上に、制御テーブルを作成するために使用されるストアド プロシージャを作成します。 このストアド プロシージャは、次回の差分データの読み込み用の新しい高基準値を外部制御テーブルに格納します。
+3. 制御テーブルを作成するために使用したのと同じ SQL Server か Azure SQL Database インスタンスに、ストアド プロシージャを作成します。 このストアド プロシージャは、次回差分データを読み込むのに必要な新しい高基準値を外部制御テーブルに書き込むために使用されます。
 
     ```sql
             CREATE PROCEDURE update_watermark @LastModifiedtime datetime
@@ -87,43 +88,43 @@ ms.locfileid: "55966923"
             END
     ```
     
-4. **[データベースの差分コピー]** テンプレートに移動し、データのコピー元となるソース データベースへの**新しい接続**を作成します。
+4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの**新しい**接続を作成します。
 
     ![ソース テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. データのコピー先となる宛先データ ストアへの**新しい接続**を作成します。
+5. データのコピー先となるコピー先データ ストアへの**新しい**接続を作成します。
 
     ![宛先テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. 外部制御テーブルとストアド プロシージャへの**新しい接続**を作成します。  手順 2 と 3 で制御テーブルとストアド プロシージャを作成したデータベースに接続します。
+6. 手順 2 と 3 で作成した外部制御テーブルとストアド プロシージャへの**新しい**接続を作成します。
 
     ![制御テーブル データ ストアへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. **[このテンプレートを使用]** をクリックします。
+7. **[このテンプレートを使用]** を選択します。
 
      ![このテンプレートを使用](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
-8. 次の例に示すように、使用可能なパイプラインがパネルに表示されます。
+8. 次の例に示すように、使用可能なパイプラインが表示されます。
 
      ![パイプラインのレビュー](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. ストアド プロシージャ アクティビティをクリックし、**[ストアド プロシージャ名]** を選択し、**[インポート パラメーター]** をクリックし、**[動的コンテンツの追加]** をクリックします。  
+9. **[ストアド プロシージャ]** を選択します。 **[ストアド プロシージャ名]** に **[update_watermark]** を選択します。 **[Import parameter (インポート パラメーター)]** を選択し、**[動的なコンテンツの追加]** を選択します。  
 
      ![ストアド プロシージャ アクティビティの設定](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. **@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** という内容を書き込んで **[完了]** をクリックします。  
+10. **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** という内容を書き込んで、**[完了]** を選択します。  
 
-     ![ストアド プロシージャのパラメーターの内容の記述](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
+     ![ストアド プロシージャのパラメーターの内容を書き込む](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      
-11. **[デバッグ]** をクリックし、パラメーターを入力し、**[完了]** をクリックします。
+11. **[デバッグ]** を選択し、**[パラメーター]** に入力して、**[完了]** を選択します。
 
-    ![[デバッグ] のクリック](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-12. 次の例に示すように、使用可能な結果がパネルに表示されます。
+12. 次の例に示すような結果が表示されます。
 
-    ![結果のレビュー](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
+    ![結果を確認する](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
 
-13. ソース テーブル内に新しい行を作成できます。  新しい行を作成するサンプル SQL は次のようになります。
+13. ソース テーブル内に新しい行を作成できます。 新規行を作成する SQL 言語の例を次に示します。
 
     ```sql
             INSERT INTO data_source_table
@@ -132,16 +133,17 @@ ms.locfileid: "55966923"
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-13. **[デバッグ]** をクリックしてパイプラインを再度実行し、パラメーターを入力し、**[完了]** をクリックします。
+14. パイプラインをもう一度実行するには、**[デバッグ]** を選択し、**[パラメーター]** に入力して、**[完了]** を選択します。
 
-    ![[デバッグ] のクリック](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
-14. 宛先に新しい行のみがコピーされたことがわかります。
+    宛先に新規行のみがコピーされたことがわかります。
 
-15. (省略可能) データの宛先として SQL Data Warehouse を選択する場合は、ステージングとして Azure BLOB ストレージの接続も入力する必要があります。これは SQL Data Warehouse の Polybase によって要求されています。  BLOB ストレージ内のコンテナーが既に作成されていることを確認してください。  
+15. (省略可能:)データの宛先として SQL Data Warehouse を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは SQL Data Warehouse の Polybase に必要です。 コンテナーが BLOB ストレージに既に作成されていることを確認してください。
     
     ![PolyBase の構成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Data Factory の概要](introduction.md)
+- [Azure Data Factory で制御テーブルを使用してデータベースから一括コピーを行う](solution-template-bulk-copy-with-control-table.md)
+- [Azure Data Factory を使用して複数のコンテナーからファイルをコピーする](solution-template-copy-files-multiple-containers.md)

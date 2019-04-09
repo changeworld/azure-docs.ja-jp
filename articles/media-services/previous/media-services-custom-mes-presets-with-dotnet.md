@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: c64a3455e1189b83558707a96dc80b88dc242b48
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181658"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516486"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ  
 
@@ -28,6 +28,9 @@ ms.locfileid: "58181658"
 この記事では、Media Encoder Standard (MES) をカスタム プリセットと共に使用して高度なエンコード タスクを実行する方法を紹介します。 また、.NET を使用して、エンコード タスクとそのタスクを実行するジョブを作成します。  
 
 この記事では、[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) プリセットを取得してレイヤーの数を減らすことによってプリセットをカスタマイズする方法を説明します。 [Media Encoder Standard のプリセットのカスタマイズ](media-services-advanced-encoding-with-mes.md)の記事では、高度なエンコード タスクを実行するために使用できるカスタム プリセットを示しています。
+
+> [!NOTE]
+> この記事で説明されているカスタム プリセットは、[Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) 変換または CLI コマンドでは使用できません。 詳細については、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
 
 ## <a id="customizing_presets"></a>MES プリセットのカスタマイズ
 
@@ -261,12 +264,13 @@ namespace CustomizeMESPresests
 }
 ```
 
+## <a name="see-also"></a>関連項目
+
+- [CLI を使用してカスタム変換でエンコードする方法](../latest/custom-preset-cli-howto.md)
+- [Media Services v3 でのエンコード](../latest/encoding-concept.md)
+
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>関連項目
-[Media Services Encoding の概要](media-services-encode-asset.md)
-

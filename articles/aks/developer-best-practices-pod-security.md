@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: c2c8522e796fa43f08bf8ad2d61e70a8205d77b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559078"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183528"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのポッドのセキュリティに関するベスト プラクティス
 
@@ -70,10 +70,12 @@ spec:
 
 アプリケーション コードで資格情報が公開されるリスクを制限するには、固定または共有の資格情報を使用しないようにします。 資格情報またはキーをコードに直接含めないでください。 これらの資格情報が公開されている場合は、アプリケーションを更新して再デプロイする必要があります。 より適切なアプローチとしては、ポッドに対して独自の ID と自己認証の方法を指定するか、またはデジタル資格情報コンテナーから資格情報を自動的に取得します。
 
-AKS には、ポッドを自動的に認証するか、デジタル資格情報コンテナーから資格情報とキーを要求するために、次の 2 つの方法が含まれます。
+次の[関連付けられた AKS オープン ソース プロジェクト][aks-associated-projects]を使用すると、ポッドを自動的に認証するか、デジタル資格情報コンテナーから資格情報とキーを要求することができます。
 
 * Azure リソースのマネージド ID
 * Azure Key Vault FlexVol ドライバー
+
+関連付けられた AKS オープン ソース プロジェクトは Azure テクニカル サポートではサポートされません。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらのプロジェクトを運用環境で使用することはお勧めできません。
 
 ### <a name="use-pod-managed-identities"></a>ポッドのマネージド ID を使用する
 
@@ -83,7 +85,7 @@ Azure リソースのマネージド ID を使用すると、ポッドは、Stor
 
 マネージド ID を使用すると、Azure Storage などのサービスにアクセスするためにアプリケーション コードに資格情報を含める必要はありません。 各ポッドが自己の ID で認証を行うので、アクセスを監査および確認できます。 アプリケーションが他の Azure サービスに接続する場合は、マネージド ID を使用して、資格情報の再利用と公開のリスクを制限します。
 
-ポッドの ID の詳細については、[ポッドのマネージド ID を使用するよう AKS クラスターを構成する方法][aad-pod-identity]および[コードでのポッドのマネージド ID の割り当てと使用][aad-pod-identity]に関する記事を参照してください。
+ポッドの ID の詳細については、[お使いのアプリケーションでポッドのマネージド ID を使用するよう AKS クラスターを構成する方法][aad-pod-identity]に関するページを参照してください
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>FlexVol と共に Azure Key Vault を使用する
 
@@ -107,6 +109,7 @@ Key Vault では、資格情報、ストレージ アカウント キー、証�
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310938"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337077"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
@@ -21,7 +21,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 ## <a name="metrics-in-azure"></a>Azure のメトリック
 
-[Azure Monitor におけるメトリック](data-collection.md#metrics)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 一方、カスタム メトリックは、アプリケーションが[カスタム イベント用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) を使用して、Azure に送信します。 カスタム メトリックは、他のアプリケーション固有のメトリックと共に Application Insights リソース内に格納されます。
+[Azure Monitor におけるメトリック](data-collection.md#metrics)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 カスタム メトリックは、[カスタム イベントとメトリック用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、[Windows Azure Diagnostics (WAD) 拡張機能](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)、または [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) を使用して、アプリケーションによって Azure に送信されます。
 
 ## <a name="create-a-new-chart"></a>新しいグラフを作成する
 
@@ -76,16 +76,16 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 5. 手順 1 ～ 4 を繰り返して、同じグラフに複数のフィルターを適用できます。
 
-## <a name="segment-a-chart"></a>グラフをセグメント化する
+## <a name="apply-splitting-to-a-chart"></a>グラフに分割を適用する
 
 メトリックをディメンションによって分割し、メトリックの異なるセグメントの比較を視覚化して、ディメンションの値が異常なセグメントを識別できます。 
 
-### <a name="to-segment-a-chart"></a>グラフをセグメント化するには
+### <a name="to-apply-splitting"></a>分割を適用するには
 
 1. グラフの上の **[Apply splitting]\(分割の適用\)** をクリックします。
  
    > [!NOTE]
-   > 複数のフィルターを設定できますが、1 つのグラフに設定できるのは 1 つの分割/セグメント化の値のみとなります。
+   > 分割は、複数のメトリックがあるグラフでは使用できません。 また、複数のフィルターを設定できますが、1 つのグラフに設定できるのは 1 つの分割セグメントのみとなります。
 
 2. グラフをセグメント化するディメンションを選択します。
 

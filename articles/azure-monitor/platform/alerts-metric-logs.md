@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor でのログのメトリック アラートの作成
-description: 一般的な Log Analytics データでほぼリアルタイムのメトリック アラートを作成する方法に関するチュートリアル。
+description: 一般的なログ分析データでほぼリアルタイムのメトリック アラートを作成する方法に関するチュートリアル。
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor

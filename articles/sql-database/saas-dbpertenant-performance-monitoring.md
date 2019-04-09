@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100430"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -28,7 +28,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリでは、会場 (テナント)
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * 指定されたロード ジェネレーターを実行して、テナント データベースの使用をシミュレートする
 > * テナント データベースによる負荷の増加への対応を監視する
 > * データベースの負荷の増加に応じてエラスティック プールをスケールアップする
@@ -57,7 +57,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリでは、会場 (テナント)
 
 [Azure Portal](https://portal.azure.com) には、ほとんどのリソースに監視とアラートが組み込まれています。 SQL Database については、データベースとプールで監視とアラートを利用できます。 この組み込みの監視とアラートはリソース固有であるため、リソースが少数の場合は便利ですが、リソースの数が多くなると、それほど便利とは言えません。
 
-多くのリソースを処理する大規模なシナリオの場合は、[Log Analytics](saas-dbpertenant-log-analytics.md) を使用できます。 これは、出力された診断ログと、ログ分析ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Log Analytics は、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
+多くのリソースを処理する大規模なシナリオの場合は、[Azure Monitor ログ](saas-dbpertenant-log-analytics.md)を使用できます。 これは、出力された診断ログと、Log Analytics ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Azure Monitor ログは、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
@@ -83,7 +83,7 @@ S3 データベースが 2 つだけでもプールはコスト効率よく動�
 
 | デモ | シナリオ |
 |:--|:--|
-| 2 | 標準強度の負荷 (約 40 DTU) を生成 |
+| 2 | 標準強度の負荷 (約 40 DTU) を生成する |
 | 3 | 各データベースにバーストが長く、かつ頻繁に発生する負荷を生成|
 | 4 | 各データベースに高 DTU バースト (約 80 DTU) の負荷を生成|
 | 5 | 通常の負荷のほか、シングル テナントに高負荷 (約 95 DTU) を生成|
@@ -171,17 +171,17 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 1. **[+ 新しいプール]** をクリックして、現在のサーバーにプールを作成します。
 1. **エラスティック プール** テンプレートで次の操作を行います。
 
-    1. **[名前]** を *Pool2* に設定します。
-    1. 価格レベルは **Standard プール**のままにします。
-    1. **[プールの構成]** をクリックします。
-    1. **プールの eDTU** を *50 eDTU* に設定します。
-    1. **[データベースの追加]** をクリックして、*Pool2* に追加できるサーバーのデータベースの一覧を表示します。
-    1. 10 個のデータベースを選択し、新しいプールに移動し、**[選択]** をクリックします。 ロード ジェネレーターを実行している場合、サービスは、パフォーマンス プロファイルが既定の 50 eDTU より大きいプールを必要としていることを既に認識していて、100 eDTU 設定で始めることを推奨します。
+   1. **[名前]** を *Pool2* に設定します。
+   1. 価格レベルは **Standard プール**のままにします。
+   1. **[プールの構成]** をクリックします。
+   1. **プールの eDTU** を *50 eDTU* に設定します。
+   1. **[データベースの追加]** をクリックして、*Pool2* に追加できるサーバーのデータベースの一覧を表示します。
+   1. 10 個のデータベースを選択し、新しいプールに移動し、**[選択]** をクリックします。 ロード ジェネレーターを実行している場合、サービスは、パフォーマンス プロファイルが既定の 50 eDTU より大きいプールを必要としていることを既に認識していて、100 eDTU 設定で始めることを推奨します。
 
-    ![推奨](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![推奨](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. このチュートリアルでは、既定値の 50 eDTU のままにし、もう一度 **[選択]** をクリックします。
-    1. **[OK]** を選択して新しいプールを作成し、選択したデータベースを移動します。
+   1. このチュートリアルでは、既定値の 50 eDTU のままにし、もう一度 **[選択]** をクリックします。
+   1. **[OK]** を選択して新しいプールを作成し、選択したデータベースを移動します。
 
 プールを作成して、データベースを移動するには数分かかります。 移動中のデータベースはそれぞれオンライン状態が維持され、オープンな接続すべてが閉じる最後の時点まで完全にアクセスできます。 いくつか再試行ロジックがある限り、クライアントは、新しいプール内のデータベースに接続します。
 
@@ -196,7 +196,7 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 ここでは、人気の高いコンサートのチケット発売時に高負荷が発生する Contoso コンサート ホールの状況をシミュレートします。
 
 1. **PowerShell ISE** で、…\\*Demo-PerformanceMonitoringAndManagement.ps1* スクリプトを開きます。
-1. **$DemoScenario = 5 (通常の負荷のほか、1 つのテナントに高負荷 (約 95 DTU) を生成)** を設定します。
+1. **$DemoScenario = 5 ("1 つのテナントに標準負荷に加えて高負荷 (約 95 DTU) を生成") を設定します。**
 1. **$SingleTenantDatabaseName = contosoconcerthall** を設定します
 1. **F5** を使用して、スクリプトを実行します。
 
@@ -247,4 +247,4 @@ contosoconcerthall データベースの高い負荷が落ち着いたら、コ�
 * [Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [SQL エラスティック プール](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
-* [Log Analytics](saas-dbpertenant-log-analytics.md) - Log Analytics の設定および使用チュートリアル
+* [Azure Monitor ログ](saas-dbpertenant-log-analytics.md) - Azure Monitor ログ チュートリアルの設定と使用

@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ad12ac45a90edc5b3d9be0dc78786ef01a0f04
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 352050f4bd53188a420f75607677d88ebc081505
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337835"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051037"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -156,12 +156,12 @@ ms.locfileid: "58337835"
                                                         <h3><a href="manage-apps/index.yml">アプリケーション管理</a></h3>
                                                         <p>
                                                             <a href="manage-apps/what-is-single-sign-on.md">シングル サインオン (SSO) とは</a><br>
-                                                            <a href="manage-apps/configure-single-sign-on-portal.md">シングル サインオンの構成</a><br>
+                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Configure single sign-on</a><br>
                                                             <a href="manage-apps/application-proxy.md">オンプレミス アプリ用のアプリケーション プロキシ</a><br>
                                                             <a href="manage-apps/index.yml"><i>さらに表示する &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">認証</a></h3>
+                                                        <h3><a href="authentication/index.yml">Authentication</a></h3>
                                                         <p>
                                                             <a href="authentication/concept-mfa-howitworks.md">動作のしくみ: Azure MFA</a><br>
                                                             <a href="authentication/concept-sspr-howitworks.md">Azure AD のセルフ サービスによるパスワードのリセット</a><br>
@@ -180,7 +180,7 @@ ms.locfileid: "58337835"
                                                         <h3><a href="/azure/active-directory-b2c/index">企業-消費者間 (B2C)</a></h3>
                                                         <p>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-overview">Azure AD B2C とは</a><br>
-                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C テナントの作成</a><br>
+                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C テナントを作成する</a><br>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-get-started-custom">Azure AD B2C のカスタム ポリシー</a><br>
                                                             <a href="/azure/active-directory-b2c/index"><i>さらに表示する &gt;</i></a>
                                                         </p>
@@ -221,7 +221,7 @@ ms.locfileid: "58337835"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">ドメイン サービス</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Azure AD Domain Services とは</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Azure AD ドメイン サービスとは</a><br>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Azure AD Domain Services を有効にする</a><br>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy">グループ ポリシーを管理する</a><br>
                                                             <a href="/azure/active-directory-domain-services/index"><i>さらに表示する &gt;</i></a>
@@ -257,11 +257,11 @@ ms.locfileid: "58337835"
                                                         <p>
                                                             <a href="governance/create-access-review.md">アクセス レビューの作成</a><br>
                                                             <a href="governance/perform-access-review.md">アクセス レビューを開始する</a><br>
-                                                            <a href="governance/active-directory-tou.md">利用規約の使用</a><br>
+                                                            <a href="conditional-access/terms-of-use.md">利用規約の使用</a><br>
                                                             <a href="governance/index.yml"><i>さらに表示する &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="identity-protection/index.yml">ID 保護</a></h3>
+                                                        <h3><a href="identity-protection/index.yml">Identity Protection</a></h3>
                                                         <p>
                                                             <a href="identity-protection/overview.md">ID 保護とは</a><br>
                                                             <a href="identity-protection/quickstart-sign-in-risk-policy.md">セッションのリスクが検出されたときにアクセスをブロックする</a><br>
@@ -280,7 +280,7 @@ ms.locfileid: "58337835"
                                                     <div class="cardText">
                                                         <h3><a href="managed-identities-azure-resources/index.yml">Azure リソースのマネージド ID</a></h3>
                                                         <p>
-                                                            <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Windows VM を使用して Azure SQL にアクセスする</a><br>
+                                                            <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Windows VM を使用した Azure SQL へのアクセス</a><br>
                                                             <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Azure VM を使用したトークンの取得</a><br>
                                                             <a href="managed-identities-azure-resources/services-support-managed-identities.md">マネージド ID をサポートするサービス</a><br>
                                                             <a href="managed-identities-azure-resources/index.yml"><i>さらに表示する &gt;</i></a>

@@ -27,8 +27,6 @@ items:
   items:
   - name: ロール定義について
     href: role-definitions.md
-  - name: 拒否割り当てについて
-    href: deny-assignments.md
   - name: Azure リソース向けの PIM
     href: pim-azure-resource.md
   - name: Azure 管理の条件付きアクセス
@@ -49,13 +47,16 @@ items:
       href: role-assignments-template.md
   - name: アクセス拒否
     items:
+    - name: 拒否割り当て
+      href: deny-assignments.md
     - name: ポータル
       href: deny-assignments-portal.md
     - name: REST API
       href: deny-assignments-rest.md
   - name: カスタム ロール
-    href: custom-roles.md
     items:
+    - name: 概要
+      href: custom-roles.md
     - name: PowerShell
       href: custom-roles-powershell.md
     - name: Azure CLI
@@ -96,9 +97,9 @@ items:
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 20500ad90e710b2c0e4359832a24a352c14ea0b2
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 30bd7deb2a0845288999a09912e48700d3182b9b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408767"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007019"

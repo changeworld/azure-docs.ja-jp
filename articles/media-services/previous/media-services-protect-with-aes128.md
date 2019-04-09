@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b8ae86a5c13573fbe80c8f06d5ce97c72d8e341
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 7ff2e89c116ee74665c0e3a74505476972af5d9c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257672"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317155"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 > [!div class="op_single_selector"]
@@ -164,7 +164,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 
 HLS の場合、ルート マニフェストはセグメント ファイルに分割されます。 
 
-たとえば、ルート マニフェストは http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) です。 これにはセグメント ファイル名の一覧が含まれています。
+たとえば、ルート マニフェストは http:\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) です。 これにはセグメント ファイル名の一覧が含まれています。
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -173,7 +173,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-セグメント ファイルのいずれかをテキスト エディターで開いた場合 (例: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)、ファイルが暗号化されていることを示す #EXT-X-KEY が含まれます。
+セグメント ファイルのいずれかをテキスト エディターで開くと (たとえば、http:\///test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)、それには #EXT-X-KEY キーが含まれ、ファイルが暗号化されていることを示します。
 
     #EXTM3U
     #EXT-X-VERSION:4

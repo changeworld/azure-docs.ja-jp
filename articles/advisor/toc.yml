@@ -19,6 +19,10 @@ items:
     href: advisor-performance-recommendations.md
   - name: サービス コストの削減
     href: advisor-cost-recommendations.md
+  - name: 推奨事項の表示
+    href: view-recommendations.md
+  - name: アクセス許可とブロックされるアクション
+    href: permissions.md
 - name: リファレンス
   items:
   - name: Security Center
@@ -51,9 +55,9 @@ items:
     href: https://stackoverflow.com/search?q=azure+advisor
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=advisor
-ms.openlocfilehash: 1f6f848d9e69d0e478c2027b4e3f09089b4714bb
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4ff0cd5a723c6678d1476203830420cb1c141a98
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509901"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047145"

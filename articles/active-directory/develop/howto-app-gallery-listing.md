@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 02/15/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855b9db645721c63abae34422ae6461cea3daab2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4cda09a6b407621e595b0cb8ed9103b1fbbd5cc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097959"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法:アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -47,6 +47,9 @@ ms.locfileid: "56189822"
 - パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションがフォーム認証をサポートしてパスワード保管を実行できることを確認してください。
 
 - 自動ユーザー プロビジョニング要求の場合、SAML 2.0/WS-Fed を使用して、シングル サインオン機能を有効にして、アプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
+
+>[!NOTE]
+>SCIM コネクタに関する多数の要求に取り組んでいるため、ポータルでの新しい要求の受け取りを停止しました。 今後、通知があるまでは要求を控えてください。 この遅延により、ご不便をおかけして申し訳ありません。
 
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 
@@ -80,12 +83,12 @@ Azure AD アプリケーション ギャラリーにアプリケーションを�
     * OpenID Connect を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[OpenID Connect & OAuth 2.0]** を選択します。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
 
-*   **SAML 2.0** または **WS-Fed**:アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
+- **SAML 2.0** または **WS-Fed**:アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
 
-    ![ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/saml.png)
+  ![ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/saml.png)
 
-    * **SAML 2.0** または **WS-Fed** を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[SAMl 2.0/WS-Fed]** を選択します。
-    * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+  * **SAML 2.0** または **WS-Fed** を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[SAMl 2.0/WS-Fed]** を選択します。
+  * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
 ## <a name="implementing-sso-using-password-sso"></a>パスワード SSO を使用した SSO の実装
 
@@ -108,6 +111,16 @@ Azure AD アプリ ギャラリーの既存のアプリケーションを更新�
     * Azure AD ギャラリーから既存のアプリケーションを削除する場合は、**[Remove existing application listing]** \(既存のアプリケーション公開を削除する\) を選びます。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
 
+## <a name="listing-requests-by-customers"></a>要求を顧客別に一覧表示する
+
+顧客は、**[App requests by Customers]\(顧客によるアプリ要求\)** -> **[Submit new request]\(新しい要求の送信\)** をクリックして、アプリケーションの一覧表示の要求を送信できます。
+
+![顧客が要求したアプリ タイル](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+以下は、顧客が要求したアプリケーションのフローです
+
+![顧客が要求したアプリ フロー](./media/howto-app-gallery-listing/customer-request.png)
+
 ## <a name="timelines"></a>タイムライン
 
 SAML 2.0 または WS-Fed アプリケーションをギャラリーに公開するプロセスのタイムラインは、7 ～ 10 営業日です。
@@ -117,10 +130,6 @@ SAML 2.0 または WS-Fed アプリケーションをギャラリーに公開す
 OpenID Connect アプリケーションをギャラリーに公開するプロセスのタイムラインは、2 ～ 5 営業日です。
 
    ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/timeline2.png)
-
-ユーザー プロビジョニング サポートを使用してアプリケーションをギャラリーに公開するプロセスのタイムラインは、40 ～ 45 営業日です。
-
-   ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>エスカレーション
 

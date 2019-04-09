@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ea0be84cc36ca6fa6547d01054599e37229d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162936"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499983"
 ---
 # <a name="application-types-for-v20"></a>v2.0 用のアプリケーションの種類
 
@@ -124,7 +124,7 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 
 長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳細については、「[Authenticating to Azure AD in daemon apps with certificates (証明書を使用したデーモン アプリでの Azure AD への認証)](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/)」を参照してください。
 
-このフローでは、アプリは `/token` エンドポイントと直接対話してトークンを取得します。
+このフローでは、アプリは `/token` エンドポイントと直接対話してアクセスを取得します。
 
 ![デーモン アプリの認証フロー](./media/v2-app-types/convergence_scenarios_daemon.png)
 

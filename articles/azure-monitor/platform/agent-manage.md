@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 7701ef463124fafd4c750fbb9f23aa03d6bc25ab
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262491"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481568"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
-Log Analytics 用の Windows または Linux エージェントを最初に配置した後、エージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Azure Monitor で Log Analytics Windows または Linux エージェントを最初にデプロイした後、エージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
 
 ## <a name="adding-or-removing-a-workspace"></a>ワークスペースの追加または削除
 
@@ -39,7 +39,7 @@ Log Analytics 用の Windows または Linux エージェントを最初に配�
 
 #### <a name="remove-a-workspace-using-powershell"></a>PowerShell を使用してワークスペースを削除する
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.RemoveCloudWorkspace($workspaceId)
@@ -48,7 +48,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>PowerShell を使用して Azure 商用クラウドにワークスペースを追加する
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -58,7 +58,7 @@ $mma.ReloadConfiguration()
 
 #### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>PowerShell を使用してAzure US Government クラウドにワークスペースを追加する
 
-```PowerShell
+```powershell
 $workspaceId = "<Your workspace Id>"
 $workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
@@ -115,9 +115,9 @@ $mma.ReloadConfiguration()
 
 #### <a name="update-settings-using-powershell"></a>PowerShell を使用して設定を更新する
 
-次の PowerShell コード例をコピーし、環境に固有の情報を使用して更新し、PS1 ファイル名拡張子を付けて保存します。 Log Analytics サービスに直接接続する各コンピューターでスクリプトを実行します。
+次の PowerShell コード例をコピーし、環境に固有の情報を使用して更新し、PS1 ファイル名拡張子を付けて保存します。 Azure Monitor で Log Analytics ワークスペースに直接接続する各コンピューターでスクリプトを実行します。
 
-```PowerShell
+```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
 
 # First we get the Health Service configuration object. We need to determine if we

@@ -1,7 +1,7 @@
 ---
 title: 複数エンティティの追加
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Language Understanding (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
+description: Language Understanding (LUIS) アプリでユーザーの発話から重要なデータを抽出するエンティティを作成します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859795"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106935"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
-エンティティは、抽出しようとしている発話内の単語またはフレーズを表します。 発話には、多数のエンティティを含めることも、まったく含めないこともできます。 エンティティは、類似したオブジェクトのコレクション (場所、もの、人、イベント、または概念) を含むクラスを表します。 エンティティは、意図に関連する情報を説明し、アプリがタスクを実行するうえで不可欠なこともあります。 
-
-エンティティは、意図を作成する前に作成することもできますし、意図の作成とは切り離して作成することができます。
+エンティティは、抽出しようとしている発話内の単語またはフレーズを表します。 エンティティは、類似したオブジェクトのコレクション (場所、もの、人、イベント、または概念) を含むクラスを表します。 エンティティは、意図に関連する情報を説明し、アプリがタスクを実行するうえで不可欠なこともあります。 意図に発話を追加するとき、または意図への発話の追加とは別に (前または後)、エンティティを作成できます。
 
 LUIS アプリ内のエンティティは、**[エンティティ]** ページの **[エンティティの一覧]** から追加、編集、削除できます。 LUIS で提供される主要なエンティティには、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)と、独自の[カスタム エンティティ](luis-concept-entity-types.md#types-of-entities)の 2 種類があります。
 
-作成されたエンティティは、**意図**の詳細ページから、意図のサンプル発話内にタグ付することができます。 
+機械学習済みエンティティが作成されたら、それが含まれているすべての意図のすべての発話例でそのエンティティをマークする必要があります。
 
-## <a name="add-prebuilt-entity"></a>事前構築済みのエンティティを追加する
+<a name="add-prebuilt-entity"></a>
+
+## <a name="add-a-prebuilt-entity-to-your-app"></a>事前構築済みエンティティをアプリに追加する
 
 アプリケーションに追加される事前構築済みのエンティティで一般的なのは、*number* と *datetimeV2* です。 
 
@@ -40,7 +40,9 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     ![事前構築済みエンティティの追加ダイアログ ボックスのスクリーンショット](./media/add-entities/list-of-prebuilt-entities.png)
 
-## <a name="add-simple-entities"></a>シンプル エンティティを追加する
+<a name="add-simple-entities"></a>
+
+## <a name="add-simple-entities-for-single-concepts"></a>1 つの概念用に単純なエンティティを追加する
 
 シンプル エンティティは 1 つの概念を示しています。 会社の部署名 (*人事*や*運営*など) を抽出するエンティティを作成するには、次の手順を使用します。   
 
@@ -52,7 +54,9 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     一般的には、シンプル エンティティのシグナルを強化するために[フレーズ リスト](luis-concept-feature.md)を使用します。
 
-## <a name="add-regular-expression-entities"></a>正規表現エンティティを追加する
+<a name="add-regular-expression-entities"></a>
+
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>高度に構造化された概念用に正規表現エンティティを追加する
 
 正規表現エンティティは、指定された正規表現に基づいて発話からデータを抽出するために使用されます。 
 
@@ -60,7 +64,7 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 1. ポップアップ ダイアログ ボックスで、**[Entity name]\(エンティティ名\)** ボックスに「`Human resources form name`」と入力し、**[エンティティの種類]** リストから **[正規表現]** を選択し、正規表現「`hrf-[0-9]{6}`」を入力し、**[完了]** を選択します。 
 
-    この正規表現のリテラル文字 `hrf-` と、それに続く 6 桁の数字は、人事フォームのフォーム番号を表します。
+    この正規表現は、リテラル文字 `hrf-` と一致します。それに続く 6 桁の数字は、人事フォームのフォーム番号を表します。
 
 ## <a name="add-hierarchical-entities"></a>階層構造エンティティを追加する
 
@@ -85,7 +89,9 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     このエンティティを作成したら、サンプル発話にそのエンティティが含まれている、すべての意図に移動します。 サンプル発話内のテキストを選択し、そのテキストをエンティティとしてマークします。 
 
-## <a name="add-composite-entities"></a>複合エンティティを追加する
+<a name="add-composite-entities"></a>
+
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>複合エンティティを追加して親子関係にグループ化する
 
 複合エンティティを作成することによって、異なる種類のエンティティ間の関係を定義することができます。 次の例では、エンティティに正規表現が含まれていて、名前の事前構築済みエンティティも含まれています。  
 
@@ -107,7 +113,9 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 1. **[完了]** を選択します。
 
-## <a name="add-patternany-entities"></a>Pattern.any エンティティを追加する
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>自由形式のエンティティをキャプチャする Pattern.any エンティティを追加する
 
 [Pattern.any](luis-concept-entity-types.md) エンティティは[パターン](luis-how-to-model-intent-pattern.md)でのみ有効です (意図では無効です)。 このエンティティ タイプは、可変長のエンティティの終わりや単語の選択を LUIS が見つけやすくします。 このエンティティがパターンで使用されることにより、発話テンプレート内でエンティティの終わりがどこにあるかを LUIS が認識します。
 
@@ -123,7 +131,9 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     Pattern.any が含まれているパターンでエンティティが正しく抽出されない場合は、[明示的なリスト](luis-concept-patterns.md#explicit-lists)を使用してこの問題を修正します。 
 
-## <a name="add-a-role-to-pattern-based-entity"></a>パターン ベースのエンティティにロールを追加する
+<a name="add-a-role-to-pattern-based-entity"></a>
+
+## <a name="add-a-role-to-distinguish-different-contexts"></a>異なるコンテキストを区別するためにロールを追加する
 
 ロールは、文脈に基づいたエンティティの名前付きサブタイプです。 [階層構造](#add-hierarchical-entities)エンティティと比較できますが、ロールは[パターン](luis-how-to-model-intent-pattern.md)内でのみ使用されます。 
 
@@ -141,7 +151,9 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     ![Location エンティティに Origin ロールを追加するスクリーンショット](./media/add-entities/roles-enter-role-name-text.png)
 
-## <a name="add-list-entities"></a>リスト エンティティを追加する
+<a name="add-list-entities"></a>
+
+## <a name="add-list-entities-for-exact-matches"></a>完全一致のリスト エンティティを追加する
 
 リスト エンティティとは、関連単語の集まりであり、固定かつ限定的です。 
 
@@ -184,12 +196,15 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
     ]  
     ```
 
+<a name="change-entity-type"></a>
 
-## <a name="change-entity-type"></a>エンティティの種類を変更する
+## <a name="do-not-change-entity-type"></a>エンティティの種類は変更しないでください
 
 エンティティを作成するために追加または削除するものを LUIS は認識していないため、LUIS ではエンティティの種類を変更することは認められていません。 種類を変更するには、正しい種類の新しいエンティティを少し違う名前で作成することをお勧めします。 エンティティが作成されたら、それぞれの発話内で、古いラベルのエンティティ名を削除して新しいエンティティ名を追加します。 すべての発話でラベルが書き換えられたら、古いエンティティを削除します。 
 
-## <a name="create-a-pattern-from-an-utterance"></a>発話からパターンを作成する
+<a name="create-a-pattern-from-an-utterance"></a>
+
+## <a name="create-a-pattern-from-an-example-utterance"></a>発話例からパターンを作成する
 
 [予測の正確さを向上するためにパターンを追加する方法](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)に関するページをご覧ください。
 

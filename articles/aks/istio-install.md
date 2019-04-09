@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: f34d8c547738921374eaf5edcfcec4911423d9dc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d85b830b63e2d52f3eeb5df8645edccfccf43c76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58138152"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -82,7 +82,7 @@ Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 `istioctl` クライアント バイナリはクライアント コンピューターで実行されます。このバイナリによって、Istio のルーティングの規則とポリシーを管理できます。 繰り返しになりますが、インストール手順はクライアント オペレーティング システムによって若干異なります。 ご利用の環境に適したインストール手順をお選びください。
 
 > [!IMPORTANT]
-> 残りの手順はすべて、前のセクションでダウンロードして解凍した Istio リリースの最上位フォルダーから実行します。
+> このセクションの手順は、必ずダウンロードして展開した Istio リリースの最上位フォルダーから実行してください。
 
 ### <a name="macos"></a>MacOS
 
@@ -145,6 +145,12 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
 ```
 
 ## <a name="install-the-istio-kubernetes-components"></a>Istio Kubernetes コンポーネントをインストールする
+
+> [!IMPORTANT]
+> このセクションの手順は、必ずダウンロードして展開した Istio リリースの最上位フォルダーから実行してください。
+
+> [!NOTE]
+> Istio Helm チャートのバージョン `1.0.6` 以降には破壊的変更があります。 このバージョンのインストールを選択する場合は、Kiali のシークレットを手動で作成する必要があります。 また、`grafana.security.enabled=true` を設定している場合は、手動で Grafana のシークレットも作成する必要があります。 このようなシークレットを作成する方法の詳細については、Istio Helm チャートの [README.md](https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio#installing-the-chart) を参照してください。
 
 AKS クラスターに Istio コンポーネントをインストールするには、Helm を使用します。 Istio リソースを `istio-system` 名前空間にインストールし、セキュリティや監視の追加オプションを次のように有効にします。
 

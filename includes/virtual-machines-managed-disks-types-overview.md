@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f36ce51a9f385933cbc21e27280828b0ff0e43e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016688"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395700"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -27,9 +27,9 @@ ms.locfileid: "58016688"
 |---------|---------|---------|---------|---------|
 |ディスクの種類   |SSD   |SSD   |SSD   |HDD   |
 |シナリオ   |SAP HANA やトップ レベルのデータベース (たとえば SQL や Oracle) などの I/O 集約型のワークロードと、その他のトランザクションが多いワークロード。   |運用環境のワークロードやパフォーマンスに影響されやすいワークロード   |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト   |バックアップ、重要ではない、不定期に起こるアクセス   |
-|ディスク サイズ   |65,536 ギビバイト (GiB) (プレビュー)   |4,095 GiB (GA)、32,767 GiB (プレビュー)    |4,095 GiB (GA)、32,767 GiB (プレビュー)   |4,095 GiB (GA)、32,767 GiB (プレビュー)   |
-|最大スループット   |2,000 MiB/秒 (プレビュー)   |250 MiB/秒 (GA)、750 MiB/秒 (プレビュー)   |60 MiB/秒 (GA)、500 MiB/秒 (プレビュー)   |60 MiB/秒 (GA)、500 MiB/秒 (プレビュー)   |
-|最大 IOPS   |160,000 (プレビュー)   |7500 (GA)、20,000 (プレビュー)   |500 (GA)、2,000 (プレビュー)   |500 (GA)、2,000 (プレビュー)   |
+|ディスク サイズ   |65,536 ギビバイト (GiB) (プレビュー)   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|最大スループット   |2,000 MiB/秒 (プレビュー)   |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
+|最大 IOPS   |160,000 (プレビュー)   |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-ssd-preview"></a>Ultra SSD (プレビュー)
 

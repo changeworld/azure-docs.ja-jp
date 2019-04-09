@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/7/2019
+ms.date: 03/14/2019
 ms.author: mayg
-ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1aaf13f01c7e7197001f3099fabd4b8be8545f0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094703"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -28,6 +28,8 @@ PS コンピューターで、次のサービスが実行されていること�
 
 **組み込みのプロセス サーバー**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * InMage PushInstall
 * ログ アップロード サービス (LogUpload)
@@ -41,6 +43,8 @@ PS コンピューターで、次のサービスが実行されていること�
 
 **スケールアウト プロセス サーバー**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * InMage PushInstall
 * ログ アップロード サービス (LogUpload)
@@ -51,19 +55,26 @@ PS コンピューターで、次のサービスが実行されていること�
 
 **フェールバック用の Azure 内プロセス サーバー**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * InMage PushInstall
 * ログ アップロード サービス (LogUpload)
 
 すべてのサービスの StartType が、**[自動] または [自動 (遅延開始)]** に設定されていることを確認します。 Microsoft Azure Recovery Services エージェント (obengine) サービスについては、StartType を上記の設定にする必要はありません。
 
-## <a name="initial-replication-issues"></a>初期レプリケーションの問題
+## <a name="replication-issues"></a>レプリケーションの問題
 
-初期レプリケーションのエラーの多くは、ソース サーバーとプロセス サーバー間、またはプロセス サーバーと Azure 間の接続の問題が原因で発生します。 ほとんどの場合、これらの問題は、次のセクションの手順を実行することにより、トラブルシューティングできます。
+初期や継続的に発生するレプリケーションの問題は、ソース サーバーとプロセス サーバーの間、またはプロセス サーバーと Azure の間の接続に関する問題が原因であることが少なくありません。 ほとんどの場合、これらの問題は、次のセクションの手順を実行することにより、トラブルシューティングできます。
 
-### <a name="check-the-source-machine"></a>ソース マシンの確認
+>[!Note]
+>次のことを確認します。
+>1. 保護されたアイテムのシステム日時が同期している。
+>2. ウイルス対策ソフトウェアが Azure Site Recovery をブロックしていない。 Azure Site Recovery で必要なフォルダーの除外について、[詳細](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)を参照してください。
 
-ソース マシンの確認方法を次に示します。
+### <a name="check-the-source-machine-for-connectivity-issues"></a>接続の問題に関してソース マシンを確認する
+
+次のリストに、ソース マシンの確認方法を示します。
 
 *  Telnet を使用して、HTTPS ポート経由でプロセス サーバーを ping します。これを行うには、ソース サーバー上のコマンド ラインで、以下のコマンドを実行します。 HTTPS ポート 9443 は、レプリケーション トラフィックを送受信するためにプロセス サーバーによって使用される既定のポートです。 このポートは、登録時に変更することもできます。 次のコマンドでは、ネットワーク接続の問題と、ファイアウォール ポートをブロックする問題がないかが確認されます。
 
@@ -88,7 +99,7 @@ PS コンピューターで、次のサービスが実行されていること�
 
        C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
-### <a name="check-the-process-server"></a>プロセス サーバーの確認
+### <a name="check-the-process-server-for-connectivity-issues"></a>接続の問題に関してプロセス サーバーを確認する
 
 プロセス サーバーの確認方法を次に示します。
 
@@ -96,66 +107,66 @@ PS コンピューターで、次のサービスが実行されていること�
 > プロセス サーバーには静的な IPv4 アドレスが必要です。NAT IP を構成しないようにしてください。
 
 * **ソース マシンとプロセス サーバーの間のネットワーク接続を確認する**
-1. ソース マシンからの Telnet 接続が可能であるにもかかわらず、ソースから PS にアクセスすることができない場合は、ソース VM で cxpsclient ツールを実行して、ソース VM から cxprocessserver へのエンド ツー エンド接続をチェックしてください。
+* ソース マシンからの Telnet 接続が可能であるにもかかわらず、ソースから PS にアクセスすることができない場合は、ソース VM で cxpsclient ツールを実行して、ソース VM から cxprocessserver へのエンド ツー エンド接続をチェックしてください。
 
-       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+      <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
 
-    PS で生成されたログを次のディレクトリから参照し、対応するエラーの詳細を確認してください。
+   PS で生成されたログを次のディレクトリから参照し、対応するエラーの詳細を確認してください。
 
-       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
-       and
-       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
-2. PS からのハートビートがない場合は、PS で次のログを確認してください。
+      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+      and
+      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+* PS からのハートビートがない場合は、PS で次のログを確認してください。 これは、ポータルの**エラー コード 806** で識別できます。
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+      C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+      and
+      C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
-*  **プロセス サーバーにより、データが Azure にアクティブにプッシュされているかどうかを確認します**。
+* **プロセス サーバーにより、データが Azure にアクティブにプッシュされているかどうかを確認します**。
 
-   1. プロセス サーバー上で、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。
-   2. **[パフォーマンス]** タブを選択し、**[リソース モニターを開く]** リンクを選択します。 
-   3. **[リソース モニター]** ページ上で **[ネットワーク]** タブを選択します。**[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\)** の下で、**cbengine.exe** により大量のデータがアクティブに送信されているかどうかを確認します。
+  1. プロセス サーバー上で、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。
+  2. **[パフォーマンス]** タブを選択し、**[リソース モニターを開く]** リンクを選択します。 
+  3. **[リソース モニター]** ページ上で **[ネットワーク]** タブを選択します。**[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\)** の下で、**cbengine.exe** により大量のデータがアクティブに送信されているかどうかを確認します。
 
-        ![[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\) の下にボリュームが示されているスクリーンショット ](./media/vmware-azure-troubleshoot-replication/cbengine.png)
+       ![[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\) の下にボリュームが示されているスクリーンショット ](./media/vmware-azure-troubleshoot-replication/cbengine.png)
 
-   Cbengine.exe により大量のデータが送信されていない場合は、次のセクションの手順を実行します。
+  Cbengine.exe により大量のデータが送信されていない場合は、次のセクションの手順を実行します。
 
-*  **プロセス サーバーを Azure Blob Storage に接続できるかどうか確認します**。
+* **プロセス サーバーを Azure Blob Storage に接続できるかどうか確認します**。
 
-   **[cbengine.exe]** を選択します。 **[TCP Connections]\(TCP 接続数\)** の下で、プロセス サーバーから Azure Blob Storage の URL への接続があるかどうかを確認します。
+  **[cbengine.exe]** を選択します。 **[TCP Connections]\(TCP 接続数\)** の下で、プロセス サーバーから Azure Blob Storage の URL への接続があるかどうかを確認します。
 
-   ![cbengine.exe と Azure Blob Storage の URL 間の接続が示されているスクリーン ショット](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
+  ![cbengine.exe と Azure Blob Storage の URL 間の接続が示されているスクリーン ショット](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
-   プロセス サーバーから Azure Blo Storage の URL への接続が存在しない場合は、コントロール パネルで **[サービス]** を選択します。 次のサービスが実行されているかどうかを確認します。
+  プロセス サーバーから Azure Blo Storage の URL への接続が存在しない場合は、コントロール パネルで **[サービス]** を選択します。 次のサービスが実行されているかどうかを確認します。
 
-   *  cxprocessserver
-   *  InMage Scout VX Agent – Sentinel/Outpost
-   *  Microsoft Azure Recovery Services エージェント
-   *  Microsoft Azure Site Recovery サービス
-   *  tmansvc
+  *  cxprocessserver
+  *  InMage Scout VX Agent – Sentinel/Outpost
+  *  Microsoft Azure Recovery Services エージェント
+  *  Microsoft Azure Site Recovery サービス
+  *  tmansvc
 
-   実行されていないサービスがあれば、そのサービスを起動または再起動します。 問題が引き続き発生するかどうかを確認します。
+  実行されていないサービスがあれば、そのサービスを起動または再起動します。 問題が引き続き発生するかどうかを確認します。
 
-*  **プロセス サーバーがポート 443 を使用して Azure のパブリック IP アドレスに接続できるかどうかを確認します**。
+* **プロセス サーバーがポート 443 を使用して Azure のパブリック IP アドレスに接続できるかどうかを確認します**。
 
-   %programfiles%\Microsoft Azure Recovery Services Agent\Temp 内で最新の CBEngineCurr.errlog ファイルを開きます。 このファイル内で、**443** または **connection attempt failed** という文字列を検索します。
+  %programfiles%\Microsoft Azure Recovery Services Agent\Temp 内で最新の CBEngineCurr.errlog ファイルを開きます。 このファイル内で、**443** または **connection attempt failed** という文字列を検索します。
 
-   ![Temp フォルダー内のエラー ログが示されているスクリーン ショット](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
+  ![Temp フォルダー内のエラー ログが示されているスクリーン ショット](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
 
-   問題が表示された場合は、プロセス サーバー内のコマンド ラインで、Telnet を使用して Azure のパブリック IP アドレスを ping します (上記の画像では、IP アドレスはマスクされています)。 Azure のパブリック IP アドレスは、ポート 443 を使用して CBEngineCurr.currLog ファイル内で見つけることができます。
+  問題が表示された場合は、プロセス サーバー内のコマンド ラインで、Telnet を使用して Azure のパブリック IP アドレスを ping します (上記の画像では、IP アドレスはマスクされています)。 Azure のパブリック IP アドレスは、ポート 443 を使用して CBEngineCurr.currLog ファイル内で見つけることができます。
 
-   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
+  `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
 
-   接続できない場合は、ファイアウォール設定とプロキシ設定のいずれが原因でアクセスの問題が発生しているかを次の手順の説明に従って確認します。
+  接続できない場合は、ファイアウォール設定とプロキシ設定のいずれが原因でアクセスの問題が発生しているかを次の手順の説明に従って確認します。
 
-*  **プロセス サーバー上の IP アドレス ベースのファイアウォールによってアクセスがブロックされているかどうかを確認します**。
+* **プロセス サーバー上の IP アドレス ベースのファイアウォールによってアクセスがブロックされているかどうかを確認します**。
 
-   サーバー上で IP アドレス ベースのファイアウォールのルールを使用している場合は、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)の詳細なリストをダウンロードします。 IP アドレス範囲をファイアウォール構成に追加し、Azure (および既定の HTTPS ポートである 443) への通信がファイアウォールで許可されるようにします。 サブスクリプションの Azure リージョンと米国西部の Azure リージョンの IP アドレス範囲を許可します (アクセス制御と ID 管理に使用されます)。
+  サーバー上で IP アドレス ベースのファイアウォールのルールを使用している場合は、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)の詳細なリストをダウンロードします。 IP アドレス範囲をファイアウォール構成に追加し、Azure (および既定の HTTPS ポートである 443) への通信がファイアウォールで許可されるようにします。 サブスクリプションの Azure リージョンと米国西部の Azure リージョンの IP アドレス範囲を許可します (アクセス制御と ID 管理に使用されます)。
 
-*  **プロセス サーバー上の URL ベースのファイアウォールによってアクセスがブロックされているかどうかを確認します**。
+* **プロセス サーバー上の URL ベースのファイアウォールによってアクセスがブロックされているかどうかを確認します**。
 
-   サーバー上で URL ベースのファイアウォールのルールを使用する場合は、次の表に示されている URL をファイアウォール構成に追加します。
+  サーバー上で URL ベースのファイアウォールのルールを使用する場合は、次の表に示されている URL をファイアウォール構成に追加します。
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -172,6 +183,7 @@ PS コンピューターで、次のサービスが実行されていること�
 *  **プロセス サーバー上でスロットルの帯域幅が制限されていないかどうかを確認します**。
 
    帯域幅を増やし、問題がまだ発生するかどうかを確認します。
+
 
 ## <a name="source-machine-isnt-listed-in-the-azure-portal"></a>ソース マシンが Azure portal 内に表示されない
 
@@ -190,6 +202,96 @@ Site Recovery を使用してレプリケーションを有効にするソース
 ## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>保護された仮想マシンがポータルで灰色表示される
 
 Site Recovery でレプリケートされる仮想マシンは、システム内に重複したエントリが存在する場合、Azure portal 内で使用できません。 古いエントリを削除してこの問題を解決する方法については、「[Azure Site Recovery VMware-to-Azure:How to clean up duplicate or stale entries (Azure Site Recovery (VMware から Azure へ): 重複エントリまたは古いエントリのクリーンアップ方法)](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)」を参照してください。
+
+## <a name="common-errors-and-recommended-steps-for-resolution"></a>一般的なエラーと推奨される解決手順
+
+### <a name="initial-replication-issues-error-78169"></a>初期レプリケーションの問題 (エラー 78169)
+
+接続、帯域幅、時間同期に関係する問題がないことを確認するのに加えて、次の点を確認します。
+
+- ウイルス対策ソフトウェアが Azure Site Recovery をブロックしていない。 Azure Site Recovery で必要なフォルダーの除外について、[詳細](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)を参照してください。
+
+### <a name="application-consistency-recovery-point-missing-error-78144"></a>アプリケーション整合性復旧ポイントが見つからない (エラー 78144)
+
+ これは、ボリューム シャドウ コピー サービス (VSS) に関連した問題が原因で発生します。 解決するには、以下を行います。 
+ 
+- インストールされている Azure Site Recovery エージェントのバージョンが、9.22.2 以上であることを確認します。 
+- VSS プロバイダーが Windows サービスのサービスとしてインストールされていることを確認します。また、コンポーネント サービス MMC を確認して、Azure Site Recovery VSS プロバイダーが一覧にあることを確認します。
+- VSS プロバイダーがインストールされていない場合は、[インストール エラーのトラブルシューティング記事](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)を参照してください。
+
+- VSS が無効になっている場合は、
+    - VSS プロバイダー サービスのスタートアップの種類が **[自動]** に設定されていることを確認します。
+    - 次のサービスを再起動します。
+        - VSS サービス
+        - Azure Site Recovery VSS プロバイダー
+        - VDS サービス
+
+### <a name="high-churn-on-source-machine-error-78188"></a>ソース マシンのチャーン レートが高い (エラー 78188)
+
+考えられる原因:
+- 仮想マシンの一覧上のディスクでのデータ変化率 (書き込みバイト/秒) が、レプリケーション ターゲットのストレージ アカウントの種類に対して [Azure Site Recovery がサポートしている上限](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits)を超えている。
+- チャーン レートが突然急増した結果、大量のデータのアップロードが保留になっている。
+
+この問題を解決するには:
+- ターゲットのストレージ アカウントの種類 (Standard または Premium) が、ソースのチャーン レート要件に従ってプロビジョニングされていることを確認します。
+- 観察されたチャーンが一時的なものである場合は、保留中のデータ アップロード処理が進行し復旧ポイントが作成されるまで、数時間待機します。
+- 問題が解決しない場合は、レプリケーションの計画に役立つ ASR [Deployment Planner](site-recovery-deployment-planner.md#overview) を使用します。
+
+### <a name="no-heartbeat-from-source-machine-error-78174"></a>ソース マシンからハートビートがない (エラー 78174)
+
+これは、ソース マシンの Azure Site Recovery モビリティ エージェントが構成サーバー (CS) と通信していない場合に発生します。
+
+この問題を解決するには、次の手順に従って、ソース VM から構成サーバーへのネットワーク接続を確認します。
+
+1. ソース マシンが動作していることを確認します。
+2. 管理者特権を持つアカウントを使用してソース マシンにサインインします。
+3. 次のサービスが実行中であることを確認します。実行されていない場合は、サービスを再起動します。
+   - Svagents (InMage Scout VX Agent)
+   - InMage Scout アプリケーション サービス
+4. ソース マシンで、エラーの詳細が保存されているログを確認します。
+
+       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    
+### <a name="no-heartbeat-from-process-server-error-806"></a>プロセス サーバーからハートビートがない (エラー 806)
+プロセス サーバー (PS) からハートビートがない場合は、次を確認します。
+1. PS VM が稼働している。
+2. エラーの詳細に関する PS の次のログを確認します。
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+
+### <a name="no-heartbeat-from-master-target-error-78022"></a>マスター ターゲットからハートビートがない (エラー 78022)
+
+これは、マスター ターゲットの Azure Site Recovery モビリティ エージェントが構成サーバーと通信していない場合に発生します。
+
+この問題を解決するには、次の手順に従ってサービスの状態を確認します。
+
+1. マスター ターゲット VM が動作していることを確認します。
+2. 管理者特権を持つアカウントを使用してマスター ターゲット VM にサインインします。
+    - svagents サービスが実行中であることを確認します。 実行中の場合は、サービスを再起動します。
+    - エラーの詳細が保存されているログを確認します。
+        
+          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+
+### <a name="process-server-is-not-reachable-from-the-source-machine-error-78186"></a>ソース マシンからプロセス サーバーに到達できない (エラー 78186)
+
+このエラーに対処しないと、アプリ整合性ポイントとクラッシュ整合性ポイントが生成されなくなります。 この問題を解決するには、次のトラブルシューティング リンクに従ってください。
+1. [PS サービスが実行中である](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)ことを確認します。
+2. [ソース マシンの接続の問題を確認](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)します。
+3. [プロセス サーバーの接続の問題を確認](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues)し、次に関するガイダンスに従います。
+    - ソースとの接続性の確認
+    - ファイアウォールとプロキシの問題
+
+### <a name="data-upload-blocked-from-source-machine-to-process-server-error-78028"></a>ソース マシンからプロセス サーバーへのデータ アップロードがブロックされる (エラー 78028)
+
+このエラーに対処しないと、アプリ整合性ポイントとクラッシュ整合性ポイントが生成されなくなります。 この問題を解決するには、次のトラブルシューティング リンクに従ってください。
+
+1. [PS サービスが実行中である](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)ことを確認します。
+2. [ソース マシンの接続の問題を確認](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)します。
+3. [プロセス サーバーの接続の問題を確認](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues)し、次に関するガイダンスに従います。
+    - ソースとの接続性の確認
+    - ファイアウォールとプロキシの問題
 
 ## <a name="next-steps"></a>次の手順
 

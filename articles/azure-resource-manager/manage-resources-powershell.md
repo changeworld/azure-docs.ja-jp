@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 241b820122fe1c82b9a68829db87635745c051d9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8e6c4047182901c5282f280f59fa95eca6571ecc
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824867"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417923"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure PowerShell を使用した Azure リソースの管理
 
@@ -25,7 +25,7 @@ ms.locfileid: "56824867"
 リソースの管理に関するその他の記事:
 
 - 「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](./manage-resources-portal.md)」
-- 「[Azure PowerShell を使用した Azure リソースの管理](./manage-resources-powershell.md)」
+- 「[Azure CLI を使用した Azure リソースの管理](./manage-resources-cli.md)」
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>リソースを既存のリソース グループにデプロイする
 
@@ -145,7 +145,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」をご覧ください。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」をご覧ください。
+- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」を参照してください。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」を参照してください。
 - テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
 - Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

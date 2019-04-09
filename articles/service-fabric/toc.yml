@@ -118,6 +118,16 @@ items:
     href: service-fabric-application-scenarios.md
   - name: アーキテクチャ
     href: service-fabric-architecture.md
+  - name: セキュリティ
+    items:
+    - name: Service Fabric のセキュリティ
+      href: service-fabric-best-practices-security.md
+    - name: Service Fabric アプリケーションのセキュリティ
+      href: service-fabric-application-and-service-security.md
+    - name: Service Fabric クラスターのセキュリティ
+      href: service-fabric-cluster-security.md
+    - name: Azure の一般的なセキュリティ属性
+      href: service-fabric-security-attributes.md
   - name: 用語集
     href: service-fabric-technical-overview.md
   - name: アプリケーションの構築
@@ -833,8 +843,6 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: トラブルシューティング ガイド
     href: https://github.com/Azure/Service-Fabric-Troubleshooting-Guides
-  - name: 一般的なセキュリティ属性
-    href: service-fabric-security-attributes.md
   - name: サンプル コード
     href: https://aka.ms/servicefabricsamples
   - name: サポート オプション
@@ -845,9 +853,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: de46010e1123b34c84731e97951bb67edc43f0b2
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 1e2e30552272dd49979c9e26c3737abeec6e8c6d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847551"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058834"

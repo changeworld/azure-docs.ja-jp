@@ -1,6 +1,6 @@
 ---
 title: Azure から Azure へのディザスター リカバリーのモビリティ サービスの自動更新 | Microsoft Docs
-description: Azure Site Recovery を使用した Azure VM のレプリケーションに使用されるモビリティ サービスの自動更新の概要を説明します。
+description: Azure Site Recovery を使用した Azure VM のレプリケーションに使用されるモビリティ サービスの自動更新の概要。
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,61 +8,61 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 3f0f28ca22321b537ab7e8911c5cbb513a1ade81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f2467314a4f131b88fc1baf2233ca8ce74d488cb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818925"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548951"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
-Azure Site Recovery は、月 1 回のリリース周期で、既存の機能の機能強化や新機能が追加され、既知の問題がある場合は修正されます。 そのため、サービスを最新の状態に維持するには、月 1 回の周期に合わせてこれらのパッチのデプロイを計画する必要があります。 アップグレードに伴うオーバーヘッドを回避するために、ユーザーは代わりに Site Recovery でコンポーネントの更新を管理することもできます。 Azure から Azure へのディザスター リカバリーのための[アーキテクチャー リファレンス](azure-to-azure-architecture.md)で詳しく説明されているように、モビリティ サービスはレプリケーションが有効なすべての Azure 仮想マシンにインストールされ、仮想マシンを別の Azure リージョンにレプリケートします。 自動更新を有効にすると、モビリティ サービスの拡張機能は、新しいリリースが発行されるたびに更新されます。 このドキュメントでは、次について詳しく説明します。
+Azure Site Recovery では、月 1 回のリリース周期で、問題修正、既存の機能の強化、新機能の追加がなされています。 サービスを最新の状態に維持するには、毎月パッチのデプロイを計画する必要があります。 毎回のアップグレードに伴うオーバーヘッドを回避するために、ユーザーは代わりに Site Recovery でコンポーネントの更新を管理することもできます。
 
-- 自動更新のしくみ
-- 自動更新を有効にする
-- 一般的な問題とトラブルシューティング
+「[Azure から Azure へのディザスター リカバリー アーキテクチャ](azure-to-azure-architecture.md)」で説明されているように、Azure 仮想マシン (VM) を別の Azure リージョンにレプリケートする際に、レプリケーションが有効なすべての VM にモビリティ サービスがインストールされます。 自動更新を使用すると、毎回の新しいリリースでモビリティ サービスの拡張機能が更新されます。
  
-## <a name="how-does-automatic-update-work"></a>自動更新のしくみ
+## <a name="how-automatic-updates-work"></a>自動更新の仕組み
 
-Site Recovery で更新を管理できるようにすると、コンテナーと同じサブスクリプションに作成された Automation アカウントを介してグローバル Runbook (Azure サービスによって使用されます) がデプロイされます。 特定のコンテナーに対して 1 つの Automation アカウントが使用されます。 この Runbook は、自動更新がオンになっているコンテナー内の各 VM をチェックし、新しいバージョンが利用可能であれば、モビリティ サービス拡張機能のアップグレードを開始します。 Runbook の既定のスケジュールでは、レプリケートされた仮想マシンの geo のタイム ゾーンに従って毎日午前 12 時に実行されます。 Runbook のスケジュールは、必要に応じて、ユーザーが Automation アカウントを介して変更することもできます。 
+Site Recovery を使用して更新を管理する場合、コンテナーと同じサブスクリプションに作成された Automation アカウントを介して、グローバル Runbook (Azure サービスによって使用されます) がデプロイされます。 各コンテナーが 1 つの Automation アカウントを使用します。 この Runbook は、アクティブな自動更新用のコンテナーに含まれる各 VM をチェックし、新しいバージョンが利用可能であれば、モビリティ サービス拡張機能をアップグレードします。
+
+Runbook の既定のスケジュールは、レプリケートされる VM の地域のタイム ゾーンで毎日午前 12 時に繰り返し実行されます。 Runbook のスケジュールは、Automation アカウントを介して変更することもできます。
 
 > [!NOTE]
-> 自動更新を有効しても、Azure VM を再起動する必要はないため、実行中のレプリケーションに影響しません。
+> 自動更新を有効にしても、Azure VM を再起動する必要はないため、実行中のレプリケーションに影響しません。
 
 > [!NOTE]
-> Automation アカウントによって使われるジョブの請求は、1 か月間に使われたジョブ実行時間の分数に基づき、既定では Automation アカウントの無料ユニットとして 500 分が含まれます。 1 日あたりのジョブの実行は、**数秒から 1 分程度**であり、**無料クレジットの範囲内**です。
+> Automation アカウントのジョブ料金は、1 か月のジョブ実行時間の分数に基づいて請求されます。 既定で、500 分が Automation アカウントの無料ユニットとして含まれています。 ジョブの実行に必要なのは毎日数秒から約 1 分ですので、無料ユニットでカバーできます。
 
-含まれている無料ユニット (1 か月あたり)**   価格ジョブ実行時間    500 分 ₹0.14/分
+| 含まれる無料ユニット (毎月) | 料金 |
+|---|---|
+| ジョブ実行時間 500 分 | ₹0.14/分
 
 ## <a name="enable-automatic-updates"></a>自動更新を有効にする
 
-Site Recovery による更新の管理は次の方法で選択できます。
+Site Recovery による更新の管理は、次の方法で行えます。
 
-- [レプリケーションを有効にする手順の一環として](#as-part-of-the-enable-replication-step)
-- [コンテナー内の拡張機能の更新設定の切り替え](#toggle-the-extension-update-settings-inside-the-vault)
+### <a name="manage-as-part-of-the-enable-replication-step"></a>レプリケーションを有効にする手順の一環として管理する
 
-### <a name="as-part-of-the-enable-replication-step"></a>レプリケーションを有効にする手順の一環として:
+[VM ビューから](azure-to-azure-quickstart.md)、または [Recovery Services コンテナーから ](azure-to-azure-how-to-enable-replication.md)VM のレプリケーションを有効にするときに、Site Recovery 拡張機能の更新を Site Recovery で管理するか、手動で管理するかを選択できます。
 
-[仮想マシン ビューから](azure-to-azure-quickstart.md)、または [Recovery Services コンテナーから](azure-to-azure-how-to-enable-replication.md)仮想マシンのレプリケーションを有効にするときに、Site Recovery 拡張機能の更新を Site Recovery で 管理するか、手動で管理するかを選択できます。
-
-![enable-replication-auto-update](./media/azure-to-azure-autoupdate/enable-rep.png)
+![拡張機能の設定](./media/azure-to-azure-autoupdate/enable-rep.png)
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>コンテナー内の拡張機能の更新設定の切り替え
 
-1. コンテナー内で、**[管理]** -> **[Site Recovery インフラストラクチャ]** の順に移動します。
-2. **[For Azure virtual Machines]\(Azure 仮想マシン\)** -> **[Extension Update Settings]\(拡張機能の更新設定\)** で、トグルをクリックして、"*更新を ASR で管理する*" か、"*手動で管理する*" かを選択します。 **[Save]** をクリックします。
+1. コンテナー内で、**[管理]**  > **[Site Recovery インフラストラクチャ]** の順に移動します。
+2. **[For Azure Virtual Machines (Azure 仮想マシン用)]** > **[拡張機能の更新の設定]** で、**[Site Recovery に管理を許可]** トグルをオンにします。 手動で管理する場合は、これをオフにします。 
+3. **[保存]** を選択します。
 
-![vault-toggle-auto-update](./media/azure-to-azure-autoupdate/vault-toggle.png)
+![拡張機能の更新の設定](./media/azure-to-azure-autoupdate/vault-toggle.png)
 
-> [!Important] 
-> "*ASR での管理*" を選択した場合は、対応するコンテナー内のすべての仮想マシンに設定が適用されます。
+> [!Important]
+> **[Site Recovery に管理を許可]** を選択した場合は、対応するコンテナー内のすべての VM に設定が適用されます。
 
 
-> [!Note] 
-> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて有効にする場合は、新しい Automation アカウントが作成されます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。
+> [!Note]
+> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、新しい Automation アカウントが作成されます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。
 
-**カスタムのオートメーション アカウントを使用する場合は、次のスクリプトを使用してください。**
+カスタムの Automation アカウントを使用する場合は、次のスクリプトを使用します。
 
 ```azurepowershell
 param(
@@ -452,7 +452,7 @@ try
                 $JobsInProgressListInternal += $JobAsyncUrl
             }
 
-            # Rate controlling the get calls to maximum 120 calls per minute.
+            # Rate controlling the get calls to maximum 120 calls each minute.
             # ASR throttling for get calls is 10000 in 60 minutes.
             Start-Sleep -Milliseconds 500
         }
@@ -499,38 +499,35 @@ elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
 Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -DisplayMessageToUser
 ```
 
-### <a name="manage-manually"></a>手動で管理する
+### <a name="manage-updates-manually"></a>更新を手動で管理する
 
-1. Azure VM にインストールされているモビリティ サービスに使用可能な新しい更新プログラムがある場合は、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
+1. VM にインストールされているモビリティ サービスに新しい更新プログラムがある場合、次の通知が表示されます。"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください"
 
      ![[レプリケートされたアイテム] ウィンドウ](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-3. この通知を選択して、仮想マシンの選択ページを開きます。
-4. モビリティ サービスをアップグレードする仮想マシンを選択し、**[OK]** を選択します。
+2. この通知を選択して、VM の選択ページを開きます。
+3. アップグレードする VM を選択してから、**[OK]** を選択します。 選択した VM ごとに、モビリティ サービスの更新が開始されます。
 
      ![[レプリケートされたアイテム] VM リスト](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-選択した各仮想マシンで、モビリティ サービスの更新ジョブが開始されます。
 
+## <a name="common-issues-and-troubleshooting"></a>一般的な問題とトラブルシューティング
 
-## <a name="common-issues--troubleshooting"></a>一般的な問題とトラブルシューティング
+自動更新で問題が発生した場合は、コンテナー ダッシュボードの **[構成の問題]** にエラー通知が表示されます。
 
-自動更新で問題が発生した場合は、コンテナー ダッシュボードの [構成の問題] でその問題が通知されます。 
+自動更新を有効にできない場合は、次の一般的なエラーと推奨される操作を参照してください。
 
-自動更新を有効にしようとして失敗した場合は、以下を参照してトラブルシューティングを行ってください。
+- **エラー**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。
 
-**エラー**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。 
-- 推奨される操作:ログインしているアカウントに "共同作成者" が割り当てられていることを確認してから、操作を再試行します。 適切なアクセス許可の割り当ての詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)のドキュメントをご覧ください。
+   **推奨される操作:** サインインしたアカウントが共同作成者に割り当てられていることを確認してから、再試行します。 アクセス許可の割り当ての詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)」の「必要なアクセス許可」セクションを参照してください。
  
-自動更新をオンにすると、Site Recovery サービスによってほとんどの問題を修正できます。それには、**[修復]** ボタンをクリックする必要があります。
+   自動更新を有効にした後に発生する問題の大半を修正するには、**[修復]** を選択します。 [修復] ボタンが使用できない場合は、拡張機能の更新設定ウィンドウに表示されているエラー メッセージを確認してください。
 
-![repair-button](./media/azure-to-azure-autoupdate/repair.png)
+   ![拡張機能の更新設定に表示される Site Recovery サービスの [修復] ボタン](./media/azure-to-azure-autoupdate/repair.png)
 
-[修復] ボタンが使用できない場合は、拡張機能の設定ウィンドウに表示されているエラー メッセージを参照してください。
+- **エラー**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
 
- - **エラー**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
-
-    **推奨される操作**: 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)するか、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
+    **推奨される操作:** 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
 
 - **エラー**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。 
 
-    **推奨される操作**: 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。
+    **推奨される操作:** 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。

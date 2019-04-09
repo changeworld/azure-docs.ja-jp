@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs でのイメージ ファクトリの作成 | Microsoft Docs
+title: Azure DevTest Labs でイメージ ファクトリを作成する | Microsoft Docs
 description: Azure DevTest Labs でカスタム イメージ ファクトリを作成する方法について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: c7923282396481dcfd6aa19b75d110fa03e50931
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439684"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879150"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
 この記事では、[Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory)にあるサンプル スクリプトを使用してカスタム イメージ ファクトリを設定する方法について説明します。
@@ -27,7 +27,7 @@ ms.locfileid: "58439684"
 
 カスタム イメージを使用すると、より迅速に開発者のデスクトップを DevTest Labs で準備完了状態にすることができます。 カスタム イメージの欠点は、ラボで管理するものが増えるということです。 たとえば、製品の評価版の有効期限切れ、新しくリリースされたセキュリティ更新プログラムの未適用などに備えて、カスタム イメージを定期的に更新する必要があります。 イメージ ファクトリを使用すると、イメージの定義をソース コード管理にチェックインし、自動化されたプロセスでカスタム イメージをその定義に基づいて生成することができます。
 
-このソリューションにより、カスタム イメージからの仮想マシンの迅速な作成が可能となり、同時に継続的なメンテナンス コストの追加発生を回避することができます。 このソリューションを使用すると、カスタム イメージの作成、他の DevTest Labs への配布、古いイメージの削除を自動的に行うことができます。 次のビデオでは、イメージ ファクトリについて説明し、また DevTest Labs を使用した実装方法についても説明します。  すべての Azure Powershell スクリプトは、[http://aka.ms/dtlimagefactory](http://aka.ms/dtlimagefactory)で無料で入手することができます。
+このソリューションにより、カスタム イメージからの仮想マシンの迅速な作成が可能となり、同時に継続的なメンテナンス コストの追加発生を回避することができます。 このソリューションを使用すると、カスタム イメージの作成、他の DevTest Labs への配布、古いイメージの削除を自動的に行うことができます。 次のビデオでは、イメージ ファクトリについて説明し、また DevTest Labs を使用した実装方法についても説明します。  すべての Azure Powershell スクリプトは、[https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory)で無料で入手することができます。
 
 <br/>
 

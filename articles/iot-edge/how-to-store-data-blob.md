@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881386"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499160"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
 
@@ -345,7 +345,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
     }
 
    ```
-  ## <a name="logs"></a>ログ
+## <a name="logs"></a>ログ
 
 [IoT Edge モジュールの Docker ログの構成](production-checklist.md#set-up-logs-and-diagnostics)に関するページの指示に従ってください
 
@@ -383,9 +383,10 @@ Azure Blob Storage ドキュメントには、複数の言語でサンプル コ
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
-[Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)でローカル ストレージ アカウントに接続してみることもできます。 [以前のバージョン 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) の Azure エクスプローラーで既に試しています。
+"Azure Storage Explorer" でローカル ストレージ アカウントに接続してみることもできます。 [Azure Storage Explorer バージョン 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) で動作します。
+
 > [!NOTE]
-> 以下の手順の実行中にエラーが発生する可能性がありますが、無視して更新してください。 
+> 次の手順 (ローカル ストレージ アカウントに接続を追加したり、ローカル ストレージ アカウントでコンテナーを作成するなど) を実行中にエラーが発生する場合があります。 無視して更新してください。 
 
 1. Azure ストレージ エクスプローラーをダウンロードしてインストールします
 2. 接続文字列を使用して Azure Storage に接続します

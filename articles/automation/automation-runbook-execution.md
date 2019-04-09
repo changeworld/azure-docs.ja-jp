@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/18/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2efc90e14180cd2b26223ef968a7f192b440ebd
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: dbb50ba703221c28576b4c3614c77bbac7eeabb9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287045"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519121"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -287,7 +287,6 @@ Runbook を開始したユーザーやアカウントなどの他の詳細情報
 $SubID = "00000000-0000-0000-0000-000000000000"
 $rg = "ResourceGroup01"
 $AutomationAccount = "MyAutomationAccount"
-$RunbookName = "Test-Runbook"
 $JobResourceID = "/subscriptions/$subid/resourcegroups/$rg/providers/Microsoft.Automation/automationAccounts/$AutomationAccount/jobs"
 
 Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller

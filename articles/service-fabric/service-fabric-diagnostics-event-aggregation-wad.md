@@ -4,7 +4,7 @@ description: Azure Service Fabric クラスターの監視と診断に WAD を�
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f886de9160b52b8a4e3ee8beaf2e22022a097666
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187438"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662790"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "55187438"
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログをアップロードして収集する 1 つの方法として、Windows Azure 診断 (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
+ログをアップロードして収集する 1 つの方法として、Windows Azure 診断 (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](../log-analytics/log-analytics-service-fabric.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、次のツールが使用されます。
@@ -57,10 +57,12 @@ Service Fabric には[すぐに使用できるログ チャネル](service-fabri
 
 ![クラスター テンプレート](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Azure Storage にイベントを集計するため、Log Analytics ポータルで、分析情報の取得とクエリを実行するように [Log Analytics を設定](service-fabric-diagnostics-oms-setup.md)します。
+Azure Storage にイベントを集計するため、Azure Monitor ログ ポータルで、分析情報の取得とクエリを実行するように [Azure Monitor ログを設定](service-fabric-diagnostics-oms-setup.md)します。
 
 >[!NOTE]
 >現在のところ、テーブルに送信されるイベントをフィルター処理したり調整したりする方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加し続けます (既定の上限は 50 GB です)。 これを変更する方法については、[この記事の中で後で説明します](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota)。 さらに、[ウォッチドッグ サンプル](https://github.com/Azure-Samples/service-fabric-watchdog-service)で実行されるデータ グルーミング サービスの例があります。30 日または 90 日の期間を超えてログを保存する正当な理由がない限り、データ グルーミング サービスを自分で作成することをお勧めします。
+
+
 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Azure Resource Manager を使用して診断拡張機能をデプロイする
 
@@ -292,15 +294,57 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
 
 ## <a name="send-logs-to-application-insights"></a>ログを Application Insights に送信する
 
-Application Insights (AI) への監視および診断データの送信は、WAD の構成の一部として実行できます。 イベントの分析と視覚化に AI を使用する場合は、"WadCfg" の一部として [AI シンクの設定方法](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)に関する説明を参照してください。
+### <a name="configuring-application-insights-with-wad"></a>WAD を使用した Application Insights の構成
+
+>[!NOTE]
+>これは現在、Windows クラスターにのみ当てはまります。
+
+WAD から Azure Application Insights にデータを送信するには Application Insights シンクを WAD 構成に追加しますが、これには主に Azure portal から行う方法と Azure Resource Manager テンプレートから行う方法があります。
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Azure portal でクラスターを作成するときに、Application Insights のインストルメンテーション キーを追加する
+
+![AIKey の追加](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+クラスターを作成するときに、診断が "オン" になっている場合、Application Insights のインストルメンテーション キーを入力するオプションのフィールドが表示されます。 ここに Application Insights のキーを貼り付けると、クラスターの展開に使用される Resource Manager テンプレートで、Application Insights シンクが自動的に構成されます。
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Resource Manager テンプレートに Application Insights シンクを追加する
+
+Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を含めることによって "シンク" を追加します。
+
+1. `DiagnosticMonitorConfiguration` の宣言の完了直後にシンク構成を追加します。
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. `DiagnosticMonitorConfiguration` にシンクを含めます。`WadCfg` の `DiagnosticMonitorConfiguration` に次の行を追加します (`EtwProviders` の宣言の直前に)。
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+上記の両方のコード スニペットには、シンクを記述するために "applicationInsights" という名前が使用されていました。 これは要件ではなく、シンクの名前が "sinks" に含まれている限り、任意の文字列で名前を設定できます。
+
+現時点では、クラスターのログは Application Insights のログ ビューアーに**トレース**として表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "警告" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
+
+>[!NOTE]
+>ポータルまたは Resource Manager テンプレートのいずれかで間違った Application Insights キーを使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure 診断を正しく構成すると、ETW ログと EventSource ログのデータがストレージ テーブルに表示されます。 Log Analytics、Kibana、または Resource Manager テンプレートで直接構成されていないその他のデータ分析および視覚化プラットフォームを使用する場合は、これらのストレージ テーブルからデータを読み取るように、選択したプラットフォームを設定する必要があります。 Log Analytics でこれを行うのは比較的簡単です。方法については、[イベントとログの分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照してください。 Application Insights は、診断拡張機能の構成の一部として構成できるので、少し特殊と言えます。AI を使用する場合は、[こちらの記事](service-fabric-diagnostics-event-analysis-appinsights.md)をご覧ください。
+Azure 診断を正しく構成すると、ETW ログと EventSource ログのデータがストレージ テーブルに表示されます。 Azure Monitor ログ、Kibana、または Resource Manager テンプレートで直接構成されていないその他のデータ分析および視覚化プラットフォームを使用する場合は、これらのストレージ テーブルからデータを読み取るように、選択したプラットフォームを設定する必要があります。 Azure Monitor ログでこれを行うのは比較的簡単です。方法については、[イベントとログの分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照してください。 Application Insights は、診断拡張機能の構成の一部として構成できるので、少し特殊と言えます。AI を使用する場合は、[こちらの記事](service-fabric-diagnostics-event-analysis-appinsights.md)をご覧ください。
 
 >[!NOTE]
 >現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加を続けます。 現在、[ウォッチドッグ サンプル](https://github.com/Azure-Samples/service-fabric-watchdog-service)で実行されるデータ グルーミング サービスの例があります。30 日または 90 日の期間を超えてログを保存する正当な理由がない限り、データ グルーミング サービスを自分で作成することをお勧めします。
 
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Log Analytics を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
+* [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
