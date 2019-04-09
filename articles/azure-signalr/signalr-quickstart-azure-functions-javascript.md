@@ -50,7 +50,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
     ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. コード エディターで、複製したリポジトリの *chat/src/javascript* フォルダーを開きます。
+1. コード エディターで、複製したリポジトリの *src/chat/javascript* フォルダーを開きます。
 
 1. *local.settings.sample.json* を *local.settings.json* に変更します。
 
@@ -61,7 +61,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     - **negotiate** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
     - **messages** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
 
-1. ターミナルで、*chat/src/javascript* フォルダーを開いていることを確認します。 Azure Functions Core Tools を使用して、アプリを実行するために必要な拡張機能をインストールします。
+1. ターミナルで、*src/chat/javascript* フォルダーを開いていることを確認します。 Azure Functions Core Tools を使用して、アプリを実行するために必要な拡張機能をインストールします。
 
     ```bash
     func extensions install
