@@ -4,7 +4,7 @@ description: Service Fabric に関する説明と、コンテナーを使用し�
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: aljo, msfussell
-ms.openlocfilehash: 5344f34e0e35d4d47b032b660726a4d70a4f1987
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.author: aljo
+ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807016"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662748"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 

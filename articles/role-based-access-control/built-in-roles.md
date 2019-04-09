@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/25/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ce9ef687643de7ec9b289f74feea613fb9a1db7a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340850"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960618"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -68,6 +68,7 @@ ms.locfileid: "56340850"
 | [従来のストレージ アカウント キー オペレーターのサービス ロール](#classic-storage-account-key-operator-service-role) | 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
 | [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 |
 | [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 |
+| [Cognitive Services データ閲覧者 (プレビュー)](#cognitive-services-data-reader-preview) | Cognitive Services データを読み取ります。 |
 | [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 |
 | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます |
@@ -81,8 +82,8 @@ ms.locfileid: "56340850"
 | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
 | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
-| [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 |
-| [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
+| [EventGrid EventSubscription 共同作成者 (プレビュー)](#eventgrid-eventsubscription-contributor-preview) | EventGrid のイベント サブスクリプション操作を管理できます。 |
+| [EventGrid EventSubscription 閲覧者 (プレビュー)](#eventgrid-eventsubscription-reader-preview) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
 | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 |
@@ -103,7 +104,7 @@ ms.locfileid: "56340850"
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
-| [Redis Cache Contributor](#redis-cache-contributor) | Azure Cache for Redis を管理できますが、アクセスすることはできません。 |
+| [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
 | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
@@ -113,6 +114,9 @@ ms.locfileid: "56340850"
 | [Site Recovery Contributor](#site-recovery-contributor) | 資格情報コンテナーの作成とロールの割り当てを除く、Site Recovery サービスを管理できます |
 | [Site Recovery Operator](#site-recovery-operator) | フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行しません |
 | [Site Recovery Reader](#site-recovery-reader) | Site Recovery の状態を表示できますが、その他の管理操作は実行できません |
+| [Spatial Anchors アカウント共同作成者](#spatial-anchors-account-contributor) | アカウントで Spatial Anchors を管理します (削除は含まない) |
+| [Spatial Anchors アカウント所有者](#spatial-anchors-account-owner) | アカウントで Spatial Anchors を管理します (削除も含む) |
+| [Spatial Anchors アカウント閲覧者](#spatial-anchors-account-reader) | アカウントで Spatial Anchors のプロパティを検索して読み取ります |
 | [SQL DB Contributor](#sql-db-contributor) | SQL データベースを管理できます。ただし、それらへのアクセスは含まれません。 また、セキュリティ関連のポリシーまたは親 SQL Server を管理することはできません。 |
 | [SQL Security Manager](#sql-security-manager) | SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 |
 | [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 |
@@ -122,6 +126,8 @@ ms.locfileid: "56340850"
 | [ストレージ BLOB データ所有者 (プレビュー)](#storage-blob-data-owner-preview) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を許可します。 |
 | [ストレージ BLOB データ閲覧者 (プレビュー)](#storage-blob-data-reader-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
 | [ストレージ キュー データ共同作成者 (プレビュー)](#storage-queue-data-contributor-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
+| [ストレージ キュー データのメッセージ プロセッサ (プレビュー)](#storage-queue-data-message-processor-preview) | Azure Storage キュー メッセージに対するピーク アクセス、受信アクセス、削除アクセスを許可します |
+| [ストレージ キュー データのメッセージ送信者 (プレビュー)](#storage-queue-data-message-sender-preview) | Azure Storage キュー メッセージの送信を許可します |
 | [ストレージ キュー データ閲覧者 (プレビュー)](#storage-queue-data-reader-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
 | [Support Request Contributor](#support-request-contributor) | Support request を作成して管理できます |
 | [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
@@ -934,6 +940,21 @@ ms.locfileid: "56340850"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="cognitive-services-data-reader-preview"></a>Cognitive Services データ閲覧者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Cognitive Services データを読み取ります。 |
+> | **Id** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="cognitive-services-user"></a>Cognitive Services ユーザー
 > [!div class="mx-tableFixed"]
 > | | |
@@ -943,11 +964,11 @@ ms.locfileid: "56340850"
 > | **アクション** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | キーを一覧表示します。 |
-> | Microsoft.Insights/metricdefinitions/read | メトリック定義を読み取ります。 |
-> | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
 > | Microsoft.Insights/alertRules/read | クラシック メトリック アラートを読み取ります |
 > | Microsoft.Insights/diagnosticSettings/read | リソースの診断設定を読み取ります |
 > | Microsoft.Insights/logDefinitions/read | ログ定義を読み取ります。 |
+> | Microsoft.Insights/metricdefinitions/read | メトリック定義を読み取ります。 |
+> | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
 > | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
@@ -957,7 +978,7 @@ ms.locfileid: "56340850"
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | "*なし*" |  |
+> | Microsoft.CognitiveServices/* |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -1177,16 +1198,17 @@ ms.locfileid: "56340850"
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | ラボ ポリシーを評価します。 |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | 既存の仮想マシンの所有権を取得します。 |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | 存在する場合は、該当する開始/停止のスケジュールを一覧表示します。 |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサーのバックエンド アドレス プールを接続します。 |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサーの受信 NAT 規則を接続します。 |
+> | Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action | 仮想マシンの RDP ファイルの内容を表す文字列を取得します。 |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサーのバックエンド アドレス プールを接続します。 警告不可能です。 |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサーのインバウンド NAT 規則を接続します。 警告不可能です。 |
 > | Microsoft.Network/networkInterfaces/*/read | ネットワーク インターフェイスのプロパティ (例: そのネットワーク インターフェイスが含まれているすべてのロード バランサー) の読み取り |
-> | Microsoft.Network/networkInterfaces/join/action | 仮想マシンをネットワーク インターフェイスに接続します。 |
+> | Microsoft.Network/networkInterfaces/join/action | 仮想マシンをネットワーク インターフェイスに接続します。 警告不可能です。 |
 > | Microsoft.Network/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | Microsoft.Network/networkInterfaces/write | ネットワーク インターフェイスを作成するか、既存のネットワーク インターフェイスを更新します。  |
 > | Microsoft.Network/publicIPAddresses/*/read | パブリック IP アドレスのプロパティの読み取り |
-> | Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続します。 |
+> | Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続します。 警告不可能です。 |
 > | Microsoft.Network/publicIPAddresses/read | パブリック IP アドレス定義を取得します。 |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 警告不可能です。 |
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/read | デプロイを取得または一覧表示します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -1240,7 +1262,7 @@ ms.locfileid: "56340850"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 共同作成者
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription 共同作成者 (プレビュー)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1263,7 +1285,7 @@ ms.locfileid: "56340850"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription 閲覧者
+## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription 閲覧者 (プレビュー)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1481,6 +1503,7 @@ ms.locfileid: "56340850"
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.Solutions/applications/read | アプリケーションの一覧を取得します。 |
+> | Microsoft.Solutions/*/action |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1716,11 +1739,11 @@ ms.locfileid: "56340850"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Cache for Redis を管理できますが、アクセスすることはできません。 |
+> | **説明** | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
 > | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Cache/redis/* | Azure Cache for Redis の作成と管理 |
+> | Microsoft.Cache/redis/* | Redis キャッシュの作成と管理 |
 > | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
@@ -2033,6 +2056,65 @@ ms.locfileid: "56340850"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="spatial-anchors-account-contributor"></a>Spatial Anchors アカウント共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | アカウントで Spatial Anchors を管理します (削除は含まない) |
+> | **Id** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | 空間アンカーを作成します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | 近くにある空間アンカーを検出します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | 空間アンカーのプロパティを取得します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | 空間アンカーを探します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | 空間アンカーのプロパティを更新します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="spatial-anchors-account-owner"></a>Spatial Anchors アカウント所有者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | アカウントで Spatial Anchors を管理します (削除も含む) |
+> | **Id** | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | 空間アンカーを作成します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | 空間アンカーを削除します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | 近くにある空間アンカーを検出します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | 空間アンカーのプロパティを取得します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | 空間アンカーを探します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | 空間アンカーのプロパティを更新します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="spatial-anchors-account-reader"></a>Spatial Anchors アカウント閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | アカウントで Spatial Anchors のプロパティを検索して読み取ります |
+> | **Id** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | 近くにある空間アンカーを検出します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | 空間アンカーのプロパティを取得します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | 空間アンカーを探します。 |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="sql-db-contributor"></a>SQL DB Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2082,7 +2164,7 @@ ms.locfileid: "56340850"
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | Microsoft 承認の読み取り |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -2173,7 +2255,7 @@ ms.locfileid: "56340850"
 > | Microsoft.Authorization/*/read | あらゆる承認の読み取り |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 > | Microsoft.Insights/diagnosticSettings/* | 診断設定の管理 |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -2267,6 +2349,37 @@ ms.locfileid: "56340850"
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | メッセージを削除した結果を返します |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | メッセージを返します |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | メッセージの書き込みの結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="storage-queue-data-message-processor-preview"></a>ストレージ キュー データのメッセージ プロセッサ (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage キュー メッセージに対するピーク アクセス、受信アクセス、削除アクセスを許可します |
+> | **Id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | メッセージを返します。 |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | メッセージを処理した結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="storage-queue-data-message-sender-preview"></a>ストレージ キュー データのメッセージ送信者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Storage キュー メッセージの送信を許可します |
+> | **Id** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | メッセージを追加した結果を返します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -2374,20 +2487,20 @@ ms.locfileid: "56340850"
 > | Microsoft.Compute/virtualMachineScaleSets/* | 仮想マシン スケールセットの作成と管理 |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | アプリケーション ゲートウェイのバックエンド アドレス プールを接続します。 |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサーのバックエンド アドレス プールを接続します。 |
-> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | ロード バランサーの受信 NAT プールを接続します。 |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサーの受信 NAT 規則を接続します。 |
-> | Microsoft.Network/loadBalancers/probes/join/action | ロード バランサーのプローブの使用を許可します。 たとえば、このアクセス許可では、VM スケール セットの healthProbe プロパティでプローブを参照できます。 |
+> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | アプリケーション ゲートウェイのバックエンド アドレス プールを接続します。 警告不可能です。 |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | ロード バランサーのバックエンド アドレス プールを接続します。 警告不可能です。 |
+> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | ロード バランサーの受信 NAT プールを接続します。 警告不可能です。 |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | ロード バランサーのインバウンド NAT 規則を接続します。 警告不可能です。 |
+> | Microsoft.Network/loadBalancers/probes/join/action | ロード バランサーのプローブの使用を許可します。 たとえば、このアクセス許可では、VM スケール セットの healthProbe プロパティでプローブを参照できます。 警告不可能です。 |
 > | Microsoft.Network/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | Microsoft.Network/locations/* | ネットワークの場所の作成と管理 |
 > | Microsoft.Network/networkInterfaces/* | ネットワーク インターフェイスの作成と管理 |
-> | Microsoft.Network/networkSecurityGroups/join/action | ネットワーク セキュリティ グループに参加します。 |
+> | Microsoft.Network/networkSecurityGroups/join/action | ネットワーク セキュリティ グループに参加します。 警告不可能です。 |
 > | Microsoft.Network/networkSecurityGroups/read | ネットワーク セキュリティ グループの定義を取得します。 |
-> | Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続します。 |
+> | Microsoft.Network/publicIPAddresses/join/action | パブリック IP アドレスに接続します。 警告不可能です。 |
 > | Microsoft.Network/publicIPAddresses/read | パブリック IP アドレス定義を取得します。 |
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 警告不可能です。 |
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |

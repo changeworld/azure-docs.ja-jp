@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/25/2019
+ms.date: 3/20/2019
 ms.author: monhaber
-ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa664952f3eb7d6f9e611fb87a9e484e97f388a2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106561"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403835"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
+Azure Security Center は、Azure リソース、Azure 以外のサーバー、および仮想マシンのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
 
 この記事では、マシンとアプリケーションに適用される推奨事項について説明します。
 
@@ -53,7 +53,7 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 各タブには複数のセクションを表示できます。各セクションでは、個別のオプションを選択して、特定の問題に対処するために推奨される手順の詳細を確認できます。
 
 ### 監視対象外の VM およびコンピューター<a name="unmonitored-vms-and-computers"></a>
-VM またはコンピューターは、マシンで Microsoft Monitoring Agent 拡張機能が実行されていない場合、Security Center によって監視されません。 マシンには、既にローカル エージェントがインストールされている場合があります (OMS ダイレクト エージェント、SCOM エージェントなど)。 これらのエージェントがインストールされているマシンは、監視対象外と見なされます。Security Center ではこれらのエージェントが完全にはサポートされないためです。 Security Center に備わっているあらゆる機能の利点を最大限に活かすためには、Microsoft Monitoring Agent 拡張機能が必要です。
+VM またはコンピューターは、マシンで Microsoft Monitoring Agent 拡張機能が実行されていない場合、Security Center によって監視されません。 マシンには、既にローカル エージェントがインストールされている場合があります (OMS ダイレクト エージェント、System Center Operations Manager エージェントなど)。 これらのエージェントがインストールされているマシンは、監視対象外と見なされます。Security Center ではこれらのエージェントが完全にはサポートされないためです。 Security Center に備わっているあらゆる機能の利点を最大限に活かすためには、Microsoft Monitoring Agent 拡張機能が必要です。
 
 監視対象外の VM またはコンピューターには、あらかじめインストールされているローカル エージェントに加えて、この拡張機能をインストールすることができます。 両方のエージェントを同じように構成し、同じワークスペースに接続してください。 そうすることで、Security Center が Microsoft Monitoring Agent 拡張機能と対話してデータを収集できる状態になります。 Microsoft Monitoring Agent 拡張機能をインストールする手順については、[VM 拡張機能の有効化](../azure-monitor/learn/quick-collect-azurevm.md)に関するページを参照してください。
 
@@ -103,7 +103,7 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 ![Azure クラシック VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Azure クラシック VM。
 
 
-![ワークスペースから確認できる VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 表示されているサブスクリプションに属しているワークスペースからのみ確認できる VM。 たとえば、このサブスクリプションのワークスペースの管理下にある他のサブスクリプションの VM や、SCOM ダイレクト エージェントがインストールされた VM のうちリソース ID のないものが該当します。
+![ワークスペースから確認できる VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 表示されているサブスクリプションに属しているワークスペースからのみ確認できる VM。 たとえば、このサブスクリプションのワークスペースの管理下にある他のサブスクリプションの VM や、Operations Manager ダイレクト エージェントがインストールされた VM のうちリソース ID のないものが該当します。
 
 各推奨事項の下に表示されるアイコンにより、注意が必要な VM とコンピューター、その推奨事項の種類をすばやく把握できます。 **リソースの種類**や**重大度**によって一覧を検索するフィルターを使用することもできます。
 
@@ -172,7 +172,7 @@ Microsoft Monitoring Agent をインストールするには
 
 新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには
 1. Azure Policy に移動して、**[定義]** をクリックします。
-2. **[Windows VM スケール セット用の Log Analytics エージェントのデプロイ]** ポリシーを検索してクリックします。
+2. **Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ** ポリシーを検索してクリックします。
 3. **[割り当て]** をクリックします。
 4. **[スコープ]** と **[Log Analytics ワークスペース]** を設定して **[割り当て]** をクリックします。
 

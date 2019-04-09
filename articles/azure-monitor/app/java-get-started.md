@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: ece8b4ac3946f543c13975e40b1025bb3cc222f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013263"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630757"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -162,8 +162,13 @@ Application Insights SDK は、次の順序でキーを探します。
 
 これは [コードで設定する](../../azure-monitor/app/api-custom-events-metrics.md#ikey)こともできます。
 
-```Java
-    TelemetryConfiguration.getActive().setInstrumentationKey(iKey);
+```java
+    String instrumentationKey = "00000000-0000-0000-0000-000000000000";
+
+    if (instrumentationKey != null)
+    {
+        TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
+    }
 ```
 
 ## <a name="4-add-an-http-filter"></a>4.HTTP フィルターを追加する

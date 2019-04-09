@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f6a9d688169f0f8fdd6f0be7b664dbe9ebd71941
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295234"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497994"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 
@@ -35,7 +35,7 @@ HDInsight には、Java で記述された Python 実装である Jython も付�
 * 省略可能。  PowerShell を使用する予定の場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)がインストールされている必要があります。
 
 > [!NOTE]  
-> この記事で使用されたストレージ アカウントは[安全な転送](/../storage/common/storage-require-secure-transfer.md)が有効になっている Azure Storage なので、`wasbs` がこの記事全体で使用されています。
+> この記事で使用されたストレージ アカウントは[安全な転送](../../storage/common/storage-require-secure-transfer.md)が有効になっている Azure Storage なので、`wasbs` がこの記事全体で使用されています。
 
 ## <a name="storage-configuration"></a>ストレージの構成
 使用しているストレージ アカウントの種類が `Storage (general purpose v1)` または `StorageV2 (general purpose v2)` の場合、アクションは必要ありません。  この記事のプロセスにより、少なくとも `/tezstaging` に対する出力が生成されます。  既定の Hadoop 構成では、サービス `HDFS` の `core-site.xml` 内の `fs.azure.page.blob.dir` 構成変数に `/tezstaging` が含まれます。  この構成により、ディレクトリに対する出力がページ BLOB となります。これは、ストレージ アカウントの種類 `BlobStorage` ではサポートされていません。  この記事で `BlobStorage` を使用するには、`/tezstaging` を `fs.azure.page.blob.dir` 構成変数から削除します。  構成は [Ambari UI](../hdinsight-hadoop-manage-ambari.md) からアクセスすることができます。  そうしないと、`Page blob is not supported for this account type.` というエラー メッセージが表示されます。

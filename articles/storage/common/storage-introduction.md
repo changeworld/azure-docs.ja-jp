@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012734"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446726"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -93,23 +93,15 @@ Azure Storage には、仮想マシンで使用されるマネージド ディ�
 
 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。 
 
-## <a name="accessing-your-blobs-files-and-queues"></a>BLOB、ファイル、キューへのアクセス
+## <a name="securing-access-to-storage-accounts"></a>ストレージ アカウントへのアクセスのセキュリティを確保する
 
-各ストレージ アカウントには認証キーが 2 つあり、どちらを使っても、すべての操作を実行することができます。 キーが 2 つあるため、キーを時折ロール オーバーしてセキュリティを強化することができます。 アカウント名と共にキーを手に入れると、ストレージ アカウントのあらゆるデータに無制限でアクセスできるため、キーを安全に保つことがきわめて重要となります。
+Azure Storage に対するすべての要求が承認される必要があります。 Azure Storage では、次の認証方法がサポートされています。
 
-このセクションでは、ストレージ アカウントとそのデータのセキュリティを確保する 2 つの方法について説明します。 ストレージ アカウントとデータのセキュリティについて詳しくは、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Azure AD を使ってストレージ アカウントへのアクセスのセキュリティを確保する
-
-ストレージ データへのアクセスのセキュリティを確保する方法の 1 つとして、ストレージ アカウント キーへのアクセスを制御する方法が考えられます。 Resource Manager のロールベースのアクセス制御 (RBAC) を使って、ユーザー、グループ、アプリケーションのいずれかにロールを割り当てることができます。 これらのロールは、ひとまとめにして許可または禁止される一連の操作に関連付けられます。 RBAC を使ってストレージ アカウントへのアクセスを許可する場合、対象となるのは、そのストレージ アカウントの管理操作だけです (アクセス レベルを変更するなど)。 RBAC を使って、データ オブジェクト (特定のコンテナー、特定のファイル共有など) へのアクセスを許可することはできません。 ただし RBAC を使ってストレージ アカウント キーへのアクセスを許可したうえで、そのキーをデータ オブジェクトの読み取りに使用することはできます。
-
-### <a name="securing-access-using-shared-access-signatures"></a>Shared Access Signature を使ってアクセスのセキュリティを確保する
-
-データ オブジェクトのセキュリティは、Shared Access Signature と保存されているアクセス ポリシーを使って確保できます。 Shared Access Signature (SAS) は、セキュリティ トークンを含む文字列です。資産の URI にセキュリティ トークンをアタッチすることで、特定のストレージ オブジェクトへのアクセスを委任し、アクセス許可やアクセスの日時の範囲などの制約を指定することができます。 この機能には、さまざまな可能性があります。 詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
-
-### <a name="public-access-to-blobs"></a>BLOB へのパブリック アクセス
-
-Blob service を通じて、コンテナーとその BLOB (または特定の BLOB) へのパブリック アクセスを提供することができます。 コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。 たとえば、Blob Storage に格納されている画像やビデオ、ドキュメントを使った Web サイトがある場合などにこの方法を利用できます。 詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
+- **BLOB とキュー データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage は、ロールベースのアクセス制御 (RBAC) を使用して、BLOB サービスと Queue サービスの Azure AD の資格情報による認証と承認をサポートします。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、[Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。
+- **SMB を使用した Azure Files の Azure Active Directory 認証 (プレビュー)。** Azure Files は、Azure Active Directory Domain Services を使用した、SMB (Server Message Block) 経由の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。 詳細については、「[SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
+- **共有キーによる承認。** Azure Storage Blob、Queue、および Table サービスと Azure Files では、共有キーによる承認がサポートされています。共有キー承認を使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求でヘッダーを渡します。 詳細については、[共有キーによる承認](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
+- **Shared Access Signature (SAS) を使用した承認。** Shared Access Signature (SAS) は、ストレージ リソースの URI に追加できるセキュリティ トークンを含む文字列です。 セキュリティ トークンには、アクセスの許可や間隔などの制約をカプセル化します。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+- **コンテナーおよび BLOB への匿名アクセス。** コンテナーとその BLOB は一般公開されることがあります。 コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。 詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
 
 ## <a name="encryption"></a>暗号化
 

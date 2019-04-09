@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: f0b2e1afdc42d8aaa0ab8d3af76f51fb6ded24e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857768"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650447"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
@@ -27,9 +27,15 @@ QnA Maker は、モデル変更、音声例、公開、エンドポイント ク
 QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコンテンツに基づいて、ユーザー クエリに対する最も一致する回答を提供します。 ナレッジ ベースの作成は、質問、回答、関連付けられているメタデータのコンテンツ リポジトリを設定する場合に行う 1 回限りの操作です。 ナレッジ ベースは、FAQ ページ、製品マニュアル、構造化された Q と A のペアなど、既存のコンテンツをクロールすることで作成できます。 [ナレッジ ベースの作成](../How-To/create-knowledge-base.md)方法を確認してください。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>ナレッジ ベースのテストと更新
-編集または自動抽出を行ってナレッジ ベースにコンテンツを取り込んだら、テストすることができます。 テストは **[テスト]** パネルから行うことができます。その場合、一般的なユーザー クエリを入力し、返された応答が予期したものであり、その信頼度スコアが十分であることを確認します。 低い信頼度スコアを修正するために代わりの質問を追加できます。 また、クエリで "KB に一致するものが見つかりません" という既定の応答が返された場合、新しい回答を追加することもできます。 結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
 
-大規模な KB の場合は、generateAnswer API を使用して、テストを自動化することができます。 
+編集または自動抽出を行ってナレッジ ベースにコンテンツを取り込んだら、テストすることができます。 対話型のテストは、QnA Maker ポータル内で **[テスト]** パネルから実行できます。その際、一般的なユーザー クエリを入力し、正し応答と十分な信頼度スコアによって応答が返されたことを確認します。 
+
+* **低い信頼度スコアを修正するには**: 別の質問を追加します。 
+* **クエリから誤って[既定の応答](confidence-score.md#change-default-answer)が返された場合**: 正しい質問に新しい回答を追加します。 
+
+結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
+
+大規模な KB には、[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) と、公開されているナレッジ ベースではなく `test` ナレッジ ベースを照会する `isTest=true` クエリ文字列パラメーターを利用して、自動化されたテストを使用します。 
 
 ## <a name="publish-the-knowledge-base"></a>ナレッジ ベースの公開
 ナレッジ ベースのテストが完了したら、それを公開することができます。 公開時に、テスト済みのナレッジ ベースの最新バージョンが、**公開済み**のナレッジ ベースを表す専用の Azure Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。

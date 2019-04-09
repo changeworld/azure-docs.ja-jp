@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4d1a9ae622de103b459d256cb48c5823f5866a3b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294078"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311324"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>動的暗号化によるコンテンツ保護
 
@@ -204,7 +204,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` エラーを取得した場合は、適切なストリーミング ポリシーを指定してください。
 
-`_NOT_SPECIFIED_IN_URL`で終わるエラーが発生した場合は、URL に暗号化形式を指定したことを確認してください。 たとえば、…/manifest (format=m3u8-cmaf,encryption=cbcs-aapl) です。 「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption types)」を参照してください。
+`_NOT_SPECIFIED_IN_URL`で終わるエラーが発生した場合は、URL に暗号化形式を指定したことを確認してください。 たとえば、「 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` 」のように入力します。 「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

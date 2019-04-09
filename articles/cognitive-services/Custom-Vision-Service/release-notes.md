@@ -7,16 +7,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ce48a240c67c6077027210ffb0ca85db93610782
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894413"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472958"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
+
+## <a name="march-26-2019"></a>2019 年 3 月 26 日
+- Custom Vision Service が Azure で一般提供されました。 
+- 特に高度な処理が必要になるデータセットや詳細に設定された分類でのパフォーマンスを高めるための新しい機械学習バックエンドを備えた、高度なトレーニング機能が追加されました。 高度なトレーニングにより、トレーニングのコンピューティング時間予算を指定でき、Custom Vision によって、経験に基づいて最適なトレーニングと拡張設定が特定されます。 クイック イテレーションについては、引き続き既存の高速トレーニングを使用することができます。 
+- 3.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 開始方法の例については、[.Net](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/csharp-tutorial)、[Python](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/python-tutorial)、[Node](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/node-tutorial)、[Java](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/java-tutorial)、または[Go](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/go-tutorial) のクイックスタート ドキュメントを参照してください。 
+- "既定のイテレーション" が 3.0 API の Publish/Unpublish で置き換えられました。 
+- 新しいモデルのエクスポート ターゲットが追加されました。 Raspberry Pi 3 の ARM をサポートするために、Dockerfile のエクスポートがアップグレードされました。 [Vision AI 開発キット](https://visionaidevkit.com/)にエクスポートのサポートが追加されました。 
+- S0 レベルのプロジェクトあたりのタグの制限を 500 に増やしました。 S0 レベルのプロジェクトあたりのイメージの制限を 100,000 に増やしました。
+- 成人ドメインが削除されました。 代わりに汎用ドメインが推奨されます。
+- 一般提供の[価格](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-vision-service/)を発表しました。  
+
+
+## <a name="february-25-2019"></a>2019 年 2 月 25 日
+- Custom Vision の Azure パブリック プレビューへの移行の完了が近いため、期間限定試用版プロジェクト (Azure リソースに関連付けられていないプロジェクト) の終了を発表しました。 2019 年 3 月 25 日 以降、CustomVision.ai サイトでは、無料の Custom Vision リソースなどの Azure リソースに関連付けられているプロジェクトの表示のみがサポートされます。 2019 年 10 月 1 日まで引き続き、Custom Vision API を使用して、既存の期間限定試用版プロジェクトにアクセスできます。 これにより、Custom Vision で記述したアプリの API キーを更新する時間が得られます。 2019 年 10 月 1日 以降、Azure に移動していない期間限定試用版プロジェクトは削除されます。
 
 ## <a name="january-22-2019"></a>2019 年 1 月 22 日
 - 新しい Azure リージョンのサポートが追加されました。米国西部 2、米国東部、米国東部 2、西ヨーロッパ、北ヨーロッパ、東南アジア、オーストラリア東部、インド中部、英国南部、東日本、および米国中北部です。 米国中南部のサポートは継続されます。 

@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 03/25/2019
 ms.author: magattus
-ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 954d19fb557540e4fdc6b17f313127e01eba97a7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870892"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435610"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>コンテンツ配信の種類に応じて Azure CDN を最適化する
 
@@ -38,6 +38,8 @@ ms.locfileid: "56870892"
 
 * [一般的な Web 配信](#general-web-delivery)。 この最適化は、メディア ストリーミングと大きなファイルのダウンロードにも使用できます。
 
+> [!NOTE]
+> Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) により提供されます。
 
 **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルでは、次の最適化がサポートされます。
 
@@ -120,6 +122,9 @@ CDN エンドポイントを作成するときに、エンドポイントが配�
 ### <a name="dynamic-site-acceleration"></a>動的サイト アクセラレーション
 
  動的サイト アクセラレーション (DSA) は、**Azure CDN Standard from Akamai** プロファイル、**Azure CDN Standard from Verizon** プロファイル、および **Azure CDN Premium from Verizon** プロファイルで使用できます。 この最適化を使用すると追加料金が発生します。詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」を参照してください。
+
+> [!NOTE]
+> Microsoft の動的サイト アクセラレーションは、Microsoft のプライベート グローバル ネットワークを利用してご自身のアプリのワークロードを提供するグローバル [エニー キャスト](https://en.wikipedia.org/wiki/Anycast) サービス、[Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) によって提供されます。
 
 DSA には、動的なコンテンツの遅延とパフォーマンスを改善するさまざまな技術が取り入れられています。 それらの技術には、ルートとネットワークの最適化、TCP の最適化などがあります。 
 

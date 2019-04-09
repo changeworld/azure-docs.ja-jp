@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d0c39462bc046b13a2756d37c089ba0e68c90452
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456641"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438226"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Azure Active Directory サインインを使用するように App Service アプリを構成する
+
+> [!NOTE]
+> 現時点では、Azure App Services および Azure Functions で AAD V2 (MSAL を含む) はサポートされていません。 更新プログラムがないかどうか確認してください。
+>
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
@@ -39,8 +43,6 @@ ms.locfileid: "56456641"
 5. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、**[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
 6. **[Save]** をクリックします。
 
-これで、App Service アプリで認証に Azure Active Directory を使用する準備ができました。
-
 ## <a name="advanced"> </a>詳細設定を構成する
 
 構成設定を手動で指定することもできます。 これは、使用する Azure Active Directory テナントが Azure へのサインインに使用するテナントと異なる場合に推奨されるソリューションです。 構成を完了するには、まず Azure Active Directory で登録を作成し、登録の一部の詳細を App Service に提供する必要があります。
@@ -53,8 +55,12 @@ ms.locfileid: "56456641"
 4. 数秒後に、作成した新しいアプリの登録が表示されます。
 5. アプリの登録が追加された後、アプリの登録名をクリックし、上部の **[設定]** をクリックして、**[プロパティ]** をクリックします。 
 6. **[アプリケーション ID/URI]** ボックスと **[ホーム ページ URL]** ボックスの両方に手順 1 のアプリケーション URL を貼り付け、**[保存]** をクリックします。
-7. **[応答 URL]** をクリックし、**[応答 URL]** を編集し、手順 1 のアプリケーション URL を貼り付け、URL の最後に */.auth/login/aad/callback* を追加します (例: `https://contoso.azurewebsites.net/.auth/login/aad/callback`)。 **[保存]** をクリックします。   
-8.  この時点で、アプリの**アプリケーション ID** をコピーします。 これは後で使うために保存しておきます。 App Service アプリの構成に必要になります。
+7. 次に、**[応答 URL]** をクリックし、**[応答 URL]** を編集し、(手順 1. の) アプリケーション URL を貼り付けてから、*/.auth/login/aad/callback* を URL の最後に追加します (たとえば、`https://contoso.azurewebsites.net/.auth/login/aad/callback`)。 **[Save]** をクリックします。
+
+   > [!NOTE]
+   > **[応答 URL]** を追加することによって、複数のドメインに同じアプリ登録を使用できます。 各 App Service インスタンスを独自の登録でモデル化して、独自のアクセス許可と同意が割り当てられるようにしてください。 また、個別のサイト スロットに別のアプリ登録を使用することも考慮してください。 これは、アクセス許可が環境間で共有されないようにすることにより、テストしている新しいコードのバグが運用環境に影響を与えないようにするためです。
+    
+8. この時点で、アプリの**アプリケーション ID** をコピーします。 これは後で使うために保存しておきます。 App Service アプリの構成に必要になります。
 9. **[登録済みのアプリ]** ページを閉じます。 **[アプリの登録]** ページで、上部にある **[エンドポイント]** ボタンをクリックし、**WS-FEDERATION SIGN-ON ENDPOINT** URL を、URL の末尾の `/wsfed` を除いてコピーします。 結果は `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000` のようになります。 ドメイン名は、ソブリン クラウドによって異なる可能性があります。 これは、後で発行者の URL として使用されます。
 
 ### <a name="secrets"> </a>Azure Active Directory の情報を App Service アプリに追加する

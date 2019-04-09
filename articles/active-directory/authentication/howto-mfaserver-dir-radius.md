@@ -1,5 +1,5 @@
 ---
-title: RADIUS 認証と Azure MFA Server | Microsoft Docs
+title: RADIUS 認証と Azure MFA Server - Azure Active Directory
 description: RADIUS 認証と Azure Multi-Factor Authentication Server のデプロイ。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c1a05cc25be7a5763a8891b92e870a92792191d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085781"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372184"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS 認証と Azure Multi-Factor Authentication Server の統合
 
@@ -27,7 +27,7 @@ RADIUS は、認証要求を承認してそれらの要求を処理する標準�
 >
 > この構成では、MFA Server は他のプロトコルを使用して正常な RADIUS チャレンジ応答を開始できないため、一方向の SMS および OATH トークンは機能しません。
 
-![RADIUS 認証](./media/howto-mfaserver-dir-radius/radius.png)
+![MFA Server での Radius 認証](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>RADIUS クライアントの追加
 
@@ -66,9 +66,10 @@ RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server �
 
 さらに別の RADIUS サーバーを追加するには、上記の手順を繰り返します。 **[上へ移動]** ボタンと **[下へ移動]** ボタンを使用して Azure MFA Server が呼び出すサーバーの順序を構成します。
 
-Azure Multi-Factor Authentication Server の構成は以上です。 Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。   
+Azure Multi-Factor Authentication Server の構成は以上です。 Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。
 
 ## <a name="radius-client-configuration"></a>RADIUS クライアントの構成
+
 RADIUS クライアントを構成するには、ガイドラインに従います。
 
 * RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。

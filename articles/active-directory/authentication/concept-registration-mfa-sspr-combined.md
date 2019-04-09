@@ -1,5 +1,5 @@
 ---
-title: Azure AD SSPR と MFA のための統合された登録 (プレビュー)
+title: Azure AD SSPR と MFA のための統合された登録 (プレビュー) - Azure Active Directory
 description: Azure AD Multi-Factor Authentication とセルフサービスのパスワード リセットの登録 (プレビュー)
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6399f5b208bc4d7182622f29bd522cfc9a088e9d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224551"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370161"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
 統合された登録の前、ユーザーは Azure Multi-Factor Authentication (MFA) とセルフサービスのパスワード リセット (SSPR) の認証方法を 2 つの異なるエクスペリエンスを通して登録しました。 ユーザーは Azure MFA と SSPR の両方に同様の方法が使用されることに困惑しましたが、各機能に個別に登録する必要がありました。 現在では、統合された登録を使用して、ユーザーは 1 回登録して Azure MFA と SSPR の両方の利点を得ることができます。
 
-![統合されたセキュリティ情報 - ユーザーの登録されたセキュリティ情報 (ディレクトリ内のサンプル ユーザーの Microsoft Authenticator と Phone を含む) を示す [My Profile] (マイ プロファイル)。](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 ユーザー ドキュメントに基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "58224551"
 
 [My Profile] (マイ プロファイル) ページは、そのページにアクセスしているコンピューター上の現在の言語設定に基づいてローカライズされます。 Microsoft は、以降のアクセスの試みが引き続き最後に使用された言語で描画されるように、利用された最新の言語をブラウザー キャッシュに格納します。 そのキャッシュをクリアすると、ページが再描画されます。 特定の言語を強制的に使用したい場合は、`de-DE` を対応する言語コードに設定して URL の最後に `?lng=de-DE` を追加すると、ページが強制的にその言語で描画されます。
 
-![セキュリティ情報と、ユーザーが SSPR またはその他の追加のセキュリティ確認方法を設定する機能を示す [My Profile] (マイ プロファイル) インターフェイス。](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![SSPR またはその他の追加のセキュリティ検証方法をセットアップする](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
 ## <a name="methods-available-in-converged-registration"></a>集中型登録で使用できる方法
 
@@ -99,7 +99,7 @@ ms.locfileid: "58224551"
 
 次のフローチャートは、サインイン中に登録を中断されたときにユーザーにどの方法が表示されるかを説明しています。
 
-![サインイン時に詳細情報が要求されるときに必要な方法の数を説明している、統合されたセキュリティ情報のフローチャート。 これは、MFA のみまたは SSPR のみが必要な場合に変更されることがあります。](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![結合されたセキュリティ情報のフロー チャート](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
 MFA と SSPR の両方が有効になっている場合は、MFA の登録を適用することをお勧めします。
 

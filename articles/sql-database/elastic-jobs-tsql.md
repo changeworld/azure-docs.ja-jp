@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769168"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621500"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -408,19 +408,19 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 |ストアド プロシージャ  |説明  |
 |---------|---------|
-|[sp_add_job](#spaddjob)     |     新しいジョブを追加します。    |
-|[sp_update_job](#spupdatejob)    |      既存のジョブを更新します。   |
-|[sp_delete_job](#spdeletejob)     |      既存のジョブを削除します。   |
-|[sp_add_jobstep](#spaddjobstep)    |    ジョブにステップを追加します。     |
-|[sp_update_jobstep](#spupdatejobstep)     |     ジョブのステップを更新します。    |
-|[sp_delete_jobstep](#spdeletejobstep)     |     ジョブのステップを削除します。    |
-|[sp_start_job](#spstartjob)    |  ジョブの実行を開始します。       |
-|[sp_stop_job](#spstopjob)     |     ジョブの実行を停止します。   |
-|[sp_add_target_group](#spaddtargetgroup)    |     ターゲット グループを追加します。    |
-|[sp_delete_target_group](#spdeletetargetgroup)     |    ターゲット グループを削除します。     |
-|[sp_add_target_group_member](#spaddtargetgroupmember)     |    データベースまたはデータベースのグループをターゲット グループに追加します。     |
-|[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     ターゲット グループかターゲット グループのメンバーを削除します。    |
-|[sp_purge_jobhistory](#sppurgejobhistory)    |    ジョブの履歴レコードを削除します。     |
+|[sp_add_job](#sp_add_job)     |     新しいジョブを追加します。    |
+|[sp_update_job](#sp_update_job)    |      既存のジョブを更新します。   |
+|[sp_delete_job](#sp_delete_job)     |      既存のジョブを削除します。   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    ジョブにステップを追加します。     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     ジョブのステップを更新します。    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     ジョブのステップを削除します。    |
+|[sp_start_job](#sp_start_job)    |  ジョブの実行を開始します。       |
+|[sp_stop_job](#sp_stop_job)     |     ジョブの実行を停止します。   |
+|[sp_add_target_group](#sp_add_target_group)    |     ターゲット グループを追加します。    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    ターゲット グループを削除します。     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    データベースまたはデータベースのグループをターゲット グループに追加します。     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     ターゲット グループかターゲット グループのメンバーを削除します。    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    ジョブの履歴レコードを削除します。     |
 
 
 
@@ -1195,13 +1195,13 @@ GO
 
 |表示  |説明  |
 |---------|---------|
-|[jobs_executions](#jobsexecutions-view)     |  ジョブの実行履歴を表示します。      |
+|[jobs_executions](#jobs_executions-view)     |  ジョブの実行履歴を表示します。      |
 |[jobs](#jobs-view)     |   すべてのジョブを表示します。      |
-|[job_versions](#jobversions-view)     |   すべてのジョブのバージョンを表示します。      |
+|[job_versions](#job_versions-view)     |   すべてのジョブのバージョンを表示します。      |
 |[jobsteps](#jobsteps-view)     |     各ジョブの現在のバージョンのすべてのステップを表示します。    |
-|[jobstep_versions](#jobstepversions-view)     |     各ジョブのすべてのバージョンのすべてのステップを表示します。    |
-|[target_groups](#targetgroups-view)     |      すべてのターゲット グループを表示します。   |
-|[target_group_members](#targetgroups-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
+|[jobstep_versions](#jobstep_versions-view)     |     各ジョブのすべてのバージョンのすべてのステップを表示します。    |
+|[target_groups](#target_groups-view)     |      すべてのターゲット グループを表示します。   |
+|[target_group_members](#target_groups_members-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
 
 
 ### <a name="jobsexecutions-view"></a>jobs_executions ビュー
@@ -1347,4 +1347,3 @@ GO
 
 - [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md)
 - [SQL Server の承認と権限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
-  

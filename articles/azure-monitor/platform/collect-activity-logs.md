@@ -1,5 +1,5 @@
 ---
-title: Log Analytics での Azure アクティビティ ログの収集と分析 | Microsoft Docs
+title: Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する | Microsoft Docs
 description: Azure アクティビティ ログ ソリューションを使用すると、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540257"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540433"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Log Analytics での Azure アクティビティ ログの収集と分析
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 
 ![Azure アクティビティ ログのシンボル](./media/collect-activity-logs/activity-log-analytics.png)
 
@@ -28,7 +28,7 @@ Activity Log Analytics ソリューションは、すべての Azure サブス�
 
 アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、*いつ*、*誰が*、*何を*行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック デプロイ モデルを使用するリソースに対する操作は含まれません。
 
-Azure アクティビティ ログを Log Analytics に接続すると、次のことができます。
+Azure アクティビティ ログを Log Analytics ワークスペースに接続すると、次のことができます。
 
 - 事前定義のビューを使用してアクティビティ ログを分析する
 - 複数の Azure サブスクリプションから得られるアクティビティ ログを分析したり検索したりする
@@ -40,15 +40,15 @@ Azure アクティビティ ログを Log Analytics に接続すると、次の�
 - リソースに影響する停止またはサービスの正常性の問題を特定する
 - ログ検索を使用して、ユーザー アクティビティ、自動スケール操作、承認の変更、サービスの正常性を、使用している環境から得られる他のログや指標と関連付ける
 
-<sup>1</sup>既定では、Log Analytics は、Free レベルの場合でも Azure アクティビティ ログを 90 日間保持します。 また、ワークスペース リテンション期間の設定が 90 日未満の場合もそうです。 ワークスペースのリテンション期間が 90 日より長い場合、アクティビティ ログはワークスペースのリテンション期間に基づいて保持されます。
+<sup>1</sup>Azure Monitor では、Free レベルの場合でも、ご自身の Azure アクティビティ ログが既定で 90 日間 Log Analytics ワークスペースに保持されます。 また、ワークスペース リテンション期間の設定が 90 日未満の場合もそうです。 ワークスペースのリテンション期間が 90 日より長い場合、アクティビティ ログはワークスペースのリテンション期間に基づいて保持されます。
 
-Log Analytics では、アクティビティ ログを無料で収集し、90 日間無料でログを保管します。 90 日より長くログを保管する場合は、90 日より長く保管されているデータについてデータ リテンション期間の料金が請求されます。
+Log Analytics ワークスペースでは、アクティビティ ログを無料で収集し、90 日間無料でログを保管します。 90 日より長くログを保管する場合は、90 日より長く保管されているデータについてデータ リテンション期間の料金が請求されます。
 
 Free 価格レベルの場合は、アクティビティ ログに毎日のデータ従量課金は適用されません。
 
 ## <a name="connected-sources"></a>接続先ソース
 
-他のほとんどのログ分析ソリューションとは異なり、アクティビティ ログのデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
+他のほとんどの Azure Monitor ソリューションとは異なり、アクティビティ ログのデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |

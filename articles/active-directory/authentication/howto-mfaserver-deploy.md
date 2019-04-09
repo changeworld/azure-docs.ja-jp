@@ -1,5 +1,5 @@
 ---
-title: Azure Multi-Factor Authentication Server の概要 | Microsoft Docs
+title: Azure Multi-Factor Authentication Server の概要 | Azure Active Directory
 description: オンプレミスで Azure MFA Server を使い始めるための詳細な手順
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cf1d5bb87eea8054d2797634756d1b6c38464d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075971"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370246"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
 <center>
 
-![オンプレミスでの MFA](./media/howto-mfaserver-deploy/server2.png)</center>
+![オンプレミスの MFA Server の概要](./media/howto-mfaserver-deploy/server2.png)</center>
 
 オンプレミスの Multi-Factor Authentication Server を使用することに決めました。次に進みましょう。 このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーのセットアップについて説明します。 MFA サーバーを既にインストールしており、アップグレードを検討している場合、「[Upgrade to the latest Azure Multi-Factor Authentication Server (最新の Azure Multi-factor Authentication Server へのアップグレード)](howto-mfaserver-deploy-upgrade.md)」を参照してください。 Web サービスをインストールする方法については、[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
 
@@ -97,11 +97,14 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 3. **[サーバーの設定]** を選択します。
 4. **[ダウンロード]** をクリックし、ダウンロード ページの手順に従ってインストーラーを保存します。 
 
-   ![MFA Server のダウンロード](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![Azure portal から MFA Server をダウンロードする](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. このページは、インストーラーの実行後に参照するので開いたままにしておいてください。
 
 ## <a name="install-and-configure-the-mfa-server"></a>MFA Server のインストールと構成
+
+> [!WARNING]
+> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
 
 サーバーをダウンロードできたので、インストールと構成を行うことができます。 インストール先のサーバーが、計画セクションに記載されている要件を満たすようにしてください。
 
@@ -110,7 +113,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 3. インストールが完了したら、**[Finish (終了)]** をクリックします。 構成ウィザードが起動します。
 4. 構成ウィザードの [ようこそ] 画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。 ウィザードを閉じると、サーバーが起動します。
 
-   ![クラウド](./media/howto-mfaserver-deploy/skip2.png)
+   ![認証構成ウィザードの使用をスキップする](./media/howto-mfaserver-deploy/skip2.png)
 
 5. サーバーをダウンロードしたページに戻り、**[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]** をクリックします。
 
@@ -130,7 +133,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 
 [電子メールの内容] タブで、選択可能な電子メール テンプレートを確認できます。 ユーザーの 2 段階認証の構成方法に応じて、最適なテンプレートを選択できます。
 
-![MFA Server の電子メール テンプレート](./media/howto-mfaserver-deploy/email2.png)
+![コンソールの MFA Server の電子メール テンプレート](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Active Directory からのユーザーのインポート
 
@@ -143,7 +146,7 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 3. 個々のユーザーを検索したり、AD ディレクトリでユーザーを含む OU を検索したりできるようになります。 ここではユーザー OU を指定します。
 4. 右側のすべてのユーザーを強調表示し、**[インポート]** をクリックします。 成功したことを通知するポップアップが表示されます。 インポート ウィンドウを閉じます。
 
-   ![MFA Server ユーザーのインポート](./media/howto-mfaserver-deploy/import2.png)
+   ![Active Directory からの MFA Server ユーザーのインポート](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>Active Directory との自動同期
 
@@ -169,6 +172,9 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 * クライアント IP - 使用可能な場合
 
 以上のフィールドに加え、認証結果 (成功/拒否) と拒否の理由も認証データと共に格納され、認証/使用状況レポートで使用できます。
+
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA Server ユーザーは、音声通話オプションを利用できません。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Azure MFA Server のバックアップと復元
 

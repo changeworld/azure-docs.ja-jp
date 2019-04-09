@@ -1,6 +1,6 @@
 ---
-title: PowerShell および REST API を使用してコードでインデックスを作成する - Azure Search
-description: HTTP 要求と Azure Search REST API を使用して、コードで全文検索可能なインデックスを作成します。
+title: PowerShell および REST API を使用してインデックスを作成、読み込み、クエリを実行する - Azure Search
+description: PowerShell、Invoke-RestMethod、および Azure Search REST API を使用してインデックスを作成、読み込み、クエリを実行します。
 ms.date: 03/15/2019
 author: heidisteen
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285132"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372116"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>クイック スタート:PowerShell および REST API を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "58285132"
 
 [PowerShell 5.1 以降](https://github.com/PowerShell/PowerShell) (シーケンシャルおよび対話型の手順で [Invoke-restmethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) を使用します)。
 
-検索サービスの URL エンドポイントと管理者 API キー。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+ご利用の検索サービスの URL エンドポイントと管理者 API キーを取得します。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
 1. Azure portal の検索サービスの **[概要]** ページで、URL を取得します。 たとえば、エンドポイントは https:\//my-service-name.search.windows.net のようになります。
 
@@ -371,11 +371,7 @@ Invoke-RestMethod -Uri $url -Headers $headers -Method Delete
         {
             "@search.action": "merge",
             "hotelId": "2",
-            "description_fr": "Hôtel le moins cher en ville",
-        },
-        {
-            "@search.action": "delete",
-            "hotelId": "6"
+            "description_fr": "Hôtel le moins cher en ville"
         }
     ]
 }

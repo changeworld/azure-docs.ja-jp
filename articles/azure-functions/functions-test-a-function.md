@@ -9,14 +9,14 @@ keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピ�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 030/25/2019
 ms.author: cshoe
-ms.openlocfilehash: d3da5cc9e0eff27fde6bcd503c033db12f49371e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767704"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439330"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -44,7 +44,7 @@ ms.locfileid: "57767704"
 2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して *HttpTrigger* という名前を付けます。
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して *TimerTrigger* という名前を付けます。
 4. Visual Studio で **[ファイル] > [新規作成] > [プロジェクト] > [Visual C#] > [.NET Core] > [xUnit テスト プロジェクト]** の順にクリックして [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)し、*Functions.Test* という名前を付けます。 
-5. Nuget を使用して、テスト アプリから [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) および [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します
+5. Nuget を使用して、テスト アプリ [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) からの参照を追加します
 6. [*Functions.Test* アプリから *Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
 
 ### <a name="create-test-classes"></a>テスト クラスの作成
@@ -55,11 +55,28 @@ ms.locfileid: "57767704"
 
 `ListLogger` クラスは、`ILogger` インターフェイスを実装するためのもので、テスト中に評価するメッセージの内部リストに保持されます。
 
-*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
+*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
+
+```csharp
+using System;
+
+namespace Functions.Tests
+{
+    public class NullScope : IDisposable
+    {
+        public static NullScope Instance { get; } = new NullScope();
+
+        private NullScope() { }
+
+        public void Dispose() { }
+    }
+}
+```
+
+次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -94,7 +111,7 @@ namespace Functions.Tests
 
 `ListLogger` クラスは、`ILogger` インターフェイスによって縮小される次のメンバーを実装します。
 
-- **BeginScope**:スコープがログにコンテキストを追加します。 この場合、テストで [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
+- **BeginScope**:スコープがログにコンテキストを追加します。 この場合、テストで `NullScope` クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
 
 - **IsEnabled**:既定の値 `false` が指定されます。
 

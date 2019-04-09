@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: a489d1a282c924ec1df658a0244745b225f7123e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bf010e33a5ef77fcfde2506bfef9760a09667a9d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251267"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867254"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -41,13 +41,13 @@ ms.locfileid: "55251267"
 
 1. モデルのトレーニングに使用する[コンピューティング ターゲット](how-to-set-up-training-targets.md)を構成します。
 
-1. 自動化された機械学習構成を行います。 これは、Azure Machine Learning が、最適モデルを決定する際に確認するさまざまなモデル、ハイパーパラメーター設定、およびメトリックに対して繰り返し使用するパラメーターを制御します 
+1. 自動化された機械学習構成を行います。 これは、Azure Machine Learning が、最適モデルを決定する際に確認するさまざまなモデル、ハイパーパラメーター設定、およびメトリックに対して繰り返し使用するパラメーターを制御します
 
 1. トレーニングの実行を送信します。
 
 トレーニング中、Azure Machine Learning サービスは、さまざまなアルゴリズムとパラメーターを試行する多数のパイプラインを作成します。 これは、指定した繰り返し回数制限に達した場合、または指定したメトリックの目標値に到達した場合に停止します。
 
-[ ![Automated Machine learning](./media/how-to-automated-ml/automated-machine-learning.png) ](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
+[![自動化された機械学習](./media/how-to-automated-ml/automated-machine-learning.png)](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
 
 ログされた実行情報を検査できます。これには、実行中に収集したメトリックが含まれています。 トレーニングを実行すると、モデルおよびデータ前処理を含む Python シリアル化オブジェクト (`.pkl` ファイル) も生成されます。
 
@@ -58,9 +58,13 @@ ms.locfileid: "55251267"
 1. データの前処理/特徴付けやハイパーパラメーターの値を含め、機械学習パイプラインと、関係があるすべてのステップの認識。
 1. 入力変数 ("特徴" とも呼ばれます) とモデル出力の間にある関係の理解。  予測された値に関する各特徴の大きさと方向の両方を把握することが、モデルより深く理解し、説明する助けとなります。 これは、特徴の重要性と呼ばれています。
 
-選択したパイプラインのグローバルな特徴の重要性を、トレーニング後にオンデマンドで有効にすることも、自動化された ML トレーニングの一部としてすべてのパイプラインに対して有効にすることもできます。  これはプレビュー機能であり、Microsoft は ML モデルをより深く理解する助けになる豊富な情報を提供することに、引き続き投資してゆきます。  
+グローバルな特徴の重要性を、選択したパイプラインに対してトレーニング後にオンデマンドで有効にすることも、自動化された機械学習トレーニングの一部としてすべてのパイプラインに対して有効にすることもできます。 医療機関や銀行などの規制の厳しい業界では、規則やベスト プラクティスに準拠するために、これが重要になります。  次に、いくつかの実際のシナリオを挙げて例示します。
 
-この[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb)に従って、Azure Machine Learning でのモデルの説明を使用して実験を行います。
+1. ある製造会社において、メンテナンス作業を積極的に実施できるように、機械学習を利用して今後の機器の故障を予測している。 機器に故障が発生しそうであることがわかったら、予防的なメンテナンスを迅速に実施できるように、最も可能性が高いと考えられる原因は何か。
+1. ある金融機関において、機械学習を利用してローンやクレジット カードの適用を処理している。 モデルで正しい処理が実行されているかをどうやって把握するか、また、適用が拒否された理由について顧客が詳細を尋ねた場合、どう回答するか。
+1. あるオンラインの小売店舗または独立系ソフトウェア プロバイダーにおいて、機械学習を利用して顧客離れを予測している。 顧客離れの主な要因は何か、また、どうしたら顧客離れを防げるか。
+
+これはプレビュー機能であり、提供する情報をより充実させて機械学習モデルをさらに深く理解していただけるように、今後も投資していきます。 この[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb)に従って、Azure Machine Learning でのモデルの説明を使用して実験を行います。
 
 ## <a name="next-steps"></a>次の手順
 
