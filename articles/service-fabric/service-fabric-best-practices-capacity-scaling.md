@@ -4,7 +4,7 @@ description: Service Fabric クラスターとアプリケーションの計画�
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
-manager: jeanpaul.connock
+manager: chackdan
 editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9de6cc224c82bb07fee4d62cd5de1d1964001bab
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 425154958e4c60902b56f320f714a011b9095830
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446819"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997352"
 ---
 # <a name="capacity-planning-and-scaling"></a>容量計画とスケーリング
 
@@ -40,7 +40,7 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 
 ## <a name="vertical-scaling-considerations"></a>垂直方向のスケーリングに関する考慮事項
 
-Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out#upgrade-the-size-and-operating-system-of-the-primary-node-type-vms)には、いくつかの手順が必要で、考慮すべきことがあります。 例: 
+Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)には、いくつかの手順が必要で、考慮すべきことがあります。 例: 
 * クラスターは、スケーリングの前に正常になっている必要があります。 そうでないと、さらにクラスターを不安定にするだけになります。
 * ステートフル サービスをホストするすべての Service Fabric クラスターの Nodetypes は、**持続性が Silver レベル以上**であることが必要です。
 
@@ -159,6 +159,13 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 
 scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
+
+> [!NOTE]
+> クラスターをスケール ダウンすると、削除されたノード/VM のインスタンスが Service Fabric Explorer に異常な状態で表示されます。 この動作の説明については、「[Service Fabric Explorer で確認できる動作](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)」をご覧ください。
+> 
+> 次のようにすることができます。
+> * 適切なノード名で [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) を呼び出します。
+> * クラスターに [service fabric autoscale helper application](https://github.com/Azure/service-fabric-autoscale-helper/) をデプロイします。これによってスケール ダウンされたノードが Service Fabric Explorer から確実にクリアされます。
 
 ## <a name="reliability-levels"></a>信頼性レベル
 

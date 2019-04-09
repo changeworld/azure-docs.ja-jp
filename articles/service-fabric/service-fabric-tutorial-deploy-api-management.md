@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4685c4213ad992e8d0fcffdf91a039cd04b426ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813a81e3812f9bb95ab11deec35adc6c05f1b58e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844209"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312225"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -142,7 +142,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 * **displayName** には、API の任意の名前を指定できます。 この記事では、「Service Fabric App」を使用します。
 * **name** は、"service-fabric-app" などの API に対する一意のわかりやすい名前です。 開発者ポータルとパブリッシャー ポータルには、この名前が表示されます。
-* **serviceUrl** は、API が実装されている HTTP サービスを参照します。 要求は、API Management によってこのアドレスに転送されます。 Service Fabric のバックエンドの場合、この URL の値は使用されません。 任意の値を入力できます。 この記事では、たとえば「<http://servicefabric>」です。
+* **serviceUrl** は、API が実装されている HTTP サービスを参照します。 要求は、API Management によってこのアドレスに転送されます。 Service Fabric のバックエンドの場合、この URL の値は使用されません。 任意の値を入力できます。 この記事では、たとえば "http:\//servicefabric" などです。
 * **path** が API Management サービスのベース URL に付加されます。 ベース URL は、API Management サービス インスタンスによってホストされるすべての API に共通です。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。
 * **protocols** により、API へのアクセスに使用できるプロトコルが決まります。 この記事では、**http** と **https** を指定します。
 * **path** は API のサフィックスです。 この記事では、「myapp」を使用します。

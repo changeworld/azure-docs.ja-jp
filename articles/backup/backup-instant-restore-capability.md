@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452816"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285549"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -25,9 +25,8 @@ ms.locfileid: "56452816"
 * コンテナーへのデータ転送の終了を待たずに、復旧に利用できるバックアップ ジョブの一環として取得されるスナップショットを使用できます。 これにより、復元をトリガーする前にスナップショットをコンテナーにコピーする待機時間が短縮されます。
 * スナップショットを既定で 2 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。 この既定値は、1 ～ 5 日の間の任意の値に構成できます。
 * 最大 4 TB のディスク サイズがサポートされます。
-* Standard SSD ディスクがサポートされます。
-*   復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります
-
+* Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
+*   復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
 
 
 ## <a name="whats-new-in-this-feature"></a>この機能の更新点
@@ -41,117 +40,41 @@ ms.locfileid: "56452816"
 
 ![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: ストレージとコンテナー](./media/backup-azure-vms/instant-rp-flow.png)
 
-スナップショットは 7 日間保持されます。 この機能では、復元時間を削減して、これらのスナップショットから復元操作を行うことができます。 アンマネージド ディスク シナリオでは、データを変換し、コンテナーからユーザーのストレージ アカウントにコピーして戻すのに要する時間が短縮されます。マネージド ディスク ユーザーの場合、バックアップ データからマネージド ディスクが作成されます。
+既定で、スナップショットは 2 日間保持されます。 この機能では、復元時間を削減して、これらのスナップショットから復元操作を行うことができます。 それにより、コンテナーからデータを変換して元の場所にコピーするために必要な時間が削減されます。
 
 ## <a name="feature-considerations"></a>機能に関する考慮事項
 
 * 復旧ポイントの作成を促進し、復元操作の速度を上げるため、スナップショットはディスクと共に格納されます。 結果として、ストレージのコストはこの期間に取得されたスナップショットに対応したものになります。
 * 増分スナップショットは、ページ BLOB として格納されます。 アンマネージド ディスクを使用しているすべてのユーザーは、自分のローカル ストレージ アカウントに格納されているスナップショットに対して課金されます。 マネージド VM バックアップで使用される復元ポイント コレクションでは、基になるストレージ レベルの BLOB スナップショットが使用されるため、マネージド ディスクの場合は、BLOB スナップショットの価格に対応するコストが表示され、これらは増分となります。
-* Premium Storage アカウントの場合、インスタント復旧ポイントのために作成されるスナップショットには上限として 10 TB の領域が割り当てられています。
+* Premium ストレージ アカウントの場合、インスタント復旧ポイント用に作成されるスナップショットは、割り振られているスペースの 10 TB の制限に加算されます。
 * 復元のニーズに基づいて、スナップショットの保持期間を構成できます。 以下で説明するように、要件に応じて、バックアップ ポリシー ブレードでスナップショットの保持期間を最短 1 日に設定できます。 頻繁に復元を実行しない場合は、これによりスナップショットの保持期間のコストを節約できます。
-
+* これは一方向のアップグレードであり、インスタント アップグレードにアップグレードされると、元に戻すことはできません。
 
 >[!NOTE]
 >このインスタント リストアのアップグレードにより、(**新規と既存両方の**) すべての顧客のスナップショット保持期間は、既定で 2 日に設定されるようになります。 ただし、必要に応じて、1 ～ 5 日の任意の値に期間を設定できます。
-
 
 ## <a name="cost-impact"></a>コストの影響
 
 増分スナップショットは VM のストレージ アカウントに格納され、インスタント復旧のために使用されます。 増分スナップショットは、スナップショットによって占有される領域が、スナップショットの作成後に記述されるページによって占有される領域と等しいことを意味します。 課金は、スナップショットによって占有される GB あたりの使用済み領域に対して引き続き行われ、GB あたりの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/managed-disks/)に示されているものと同じになります。
 
+>[!NOTE]
+> スナップショットのリテンション期間は、週間ポリシーでは 5 日間に固定されています。
 
-## <a name="upgrading-to-instant-restore"></a>インスタント リストアへのアップグレード
+## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Azure portal を使用してスナップショットのリテンション期間を構成する
 
-Azure portal を使用する場合は、コンテナーのダッシュボードに通知が表示されます。 この通知は、大容量ディスクのサポートと、バックアップおよび復元の速度向上に関連しています。
-インスタント リストアにアップグレードするための画面を開くには、バナーを選びます。
+**Azure のすべてのバックアップ ユーザーは、インスタント リストアにアップグレードされました**。
 
-![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: サポート通知](./media/backup-azure-vms/instant-rp-banner.png)
-
-次のスクリーンショットで示すように、**[アップグレード]** をクリックします。
-
-![VM バックアップ スタック Resource Manager デプロイメント モデルのバックアップ ジョブ: アップグレード](./media/backup-azure-vms/instant-rp.png)
-
-または、コンテナーの **[プロパティ]** ページに移動し、**[VM バックアップ スタック]** で **[アップグレード]** オプションを取得できます。
-
-![VM バックアップ スタックでのバックアップ ジョブ - [プロパティ] ページ](./media/backup-azure-vms/instant-restore-capability-properties.png)
-
-
-## <a name="configure-snapshot-retention-using-azure-portal"></a>Azure portal を使用してスナップショットの保持期間を構成する
-現在、このオプションは、米国中西部、インド南部、オーストラリア東部で利用できます。
-
-アップグレード済みのユーザーは、Azure portal の **[VM Backup Policy]\(VM バックアップ ポリシー\)** ブレードの **[Instant Restore]\(インスタント リストア\)** セクションで、フィールドが追加されていることを確認できます。 特定のバックアップ ポリシーに関連付けられているすべての VM の **[VM Backup Policy]\(VM バックアップ ポリシー\)** ブレードで、スナップショットの保持期間を変更することができます。
+Azure portal で、**VM バックアップ ポリシー** ブレード (**[インスタント リストア]** セクションの下) にフィールドが追加されているのを確認できます。 特定のバックアップ ポリシーに関連付けられているすべての VM の **[VM Backup Policy]\(VM バックアップ ポリシー\)** ブレードで、スナップショットの保持期間を変更することができます。
 
 ![インスタント リストア機能](./media/backup-azure-vms/instant-restore-capability.png)
-
-## <a name="upgrade-to-instant-restore-using-powershell"></a>PowerShell を使用してインスタント リストアにアップグレードする
-
-セルフサービスでインスタント リストアにアップグレードしたい場合は、管理者特権の PowerShell ターミナルから次のコマンドレットを実行します。
-
-1.  Azure アカウントにサインインします。
-
-    ```
-    PS C:> Connect-AzureRmAccount
-    ```
-
-2.  登録するサブスクリプションを選択します。
-
-    ```
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-
-3.  このサブスクリプションを登録します。
-
-    ```
-    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-## <a name="upgrade-to-instant-restore-using-cli"></a>CLI を使用してインスタント リストアにアップグレードする
-
-Shell から次のコマンドを実行します。
-
-1.  Azure アカウントにサインインします。
-
-    ```
-    az login
-    ```
-
-2.  登録するサブスクリプションを選択します。
-
-    ```
-    az account set --subscription "Subscription Name"
-    ```
-
-3.  このサブスクリプションを登録します。
-
-    ```
-    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
-    ```
-
-## <a name="verify-that-the-upgrade-is-successful"></a>アップグレードが成功したことを確認する
-
-### <a name="powershell"></a>PowerShell
-管理者特権の PowerShell ターミナルから、次のコマンドレットを実行します。
-
-```
-Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
-```
-
-### <a name="cli"></a>CLI
-シェルで、次のコマンドを実行します。
-
-```
-az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
-```
-
-"登録済み" と表示された場合、サブスクリプションはインスタント リストアにアップグレードされています。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="what-are-the-cost-implications-of-instant-restore"></a>インスタント リストアはコストにどのように影響しますか。
 復旧ポイントの作成と復元操作の速度を上げるため、スナップショットはディスクと共に格納されます。 その結果、VM バックアップ ポリシーの一部として選択されるスナップショットの保有期間に対応するストレージ コストが表示されます。
 
-### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium Storage アカウントでは、インスタント回復ポイントのために作成されたスナップショットで 10 TB のスナップショット上限が占められますか。
-はい。Premium Storage アカウントでは、インスタント回復ポイントのために取得されたスナップショットが、割り当てられたスナップショットの 10 TB の領域を占めます。
+### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>Premium ストレージ アカウントで、インスタント復旧ポイント用に作成されたスナップショットは 10 TB のスナップショット制限を占有しますか。
+はい。Premium ストレージ アカウントでは、インスタント復元ポイント用に作成されたスナップショットは、割り当てられた 10 TB のスナップショット スペースを占有します。
 
 ### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>5 日間の期間中、スナップショットの保有期間はどのようになりますか。
 毎日新しいスナップショットが取得されるため、個別の増分スナップショットが 5 個になります。 スナップショットのサイズはデータの変化によって異なります (ほとんどの場合、約 2% から 7%)。

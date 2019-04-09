@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ece8b4ac3946f543c13975e40b1025bb3cc222f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699324"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013263"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -33,18 +33,15 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 * JRE バージョン 1.7 または 1.8
 * [Microsoft Azure](https://azure.microsoft.com/) サブスクリプション。
 
-*既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](java-live.md)できます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
-
 Spring フレームワークの方がよければ、[Spring Boot 初期化子アプリを構成して Application Insights ガイドを使用](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)してみてください
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
 2. Application Insights リソースを作成します。 アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
-    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/java-get-started/02-create.png)
 3. 新しいリソースのインストルメンテーション キーを見つけます。 このキーは、後でコード プロジェクトに貼り付けます。
 
-    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/java-get-started/03-key.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/java-get-started/instrumentation-key-001.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.Application Insights SDK for Java をプロジェクトに追加する
 *プロジェクトに適した方法を選択してください。*
@@ -303,13 +300,13 @@ Application Insights パッケージを含めるように、*-servlet.xml で次
 
 HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
-![サンプル データ](./media/java-get-started/5-results.png)
+![概要サンプル データのスクリーンショット](./media/java-get-started/overview-graphs.png)
 
 [メトリックの詳細についてはこちらをご覧ください。][metrics]
 
 任意のグラフをクリックして、より詳細な集計メトリックを表示します。
 
-![](./media/java-get-started/6-barchart.png)
+![チャート付きの Application Insights の [失敗] ペイン](./media/java-get-started/006-barcharts.png)
 
 > Application Insights では、MVC アプリケーションの HTTP 要求の形式として、 `VERB controller/action`が想定されます。 たとえば、`GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5`、`GET Home/Product/sdf96vws` は、`GET Home/Product` にグループ化されます。 このグループ化により、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 >
@@ -318,16 +315,12 @@ HTTP 要求データが概要ブレードに表示されます  (表示されな
 ### <a name="instance-data"></a>インスタンス データ
 個々のインスタンスを表示するには、特定の要求の種類をクリックします。
 
-Application Insights には、2 種類のデータが表示されます。1 つは、格納され、平均、カウント、合計として表示される集計データです。もう 1 つは、HTTP 要求、例外、ページ ビュー、またはカスタム イベントの個々のレポートであるインスタンス データです。
-
-要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
-
-![](./media/java-get-started/7-instance.png)
+![特定のサンプル ビューをドリルダウンする](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics:強力なクエリ言語
 より多くのデータが蓄積されると、データを集計するためのクエリと、個々のインスタンスを検索するためのクエリの両方を実行できます。  [Analytics](../../azure-monitor/app/analytics.md) は、パフォーマンスと使用状況を把握したり、診断を行ったりするための強力なツールです。
 
-![Example of Analytics](./media/java-get-started/025.png)
+![Example of Analytics](./media/java-get-started/0025.png)
 
 ## <a name="7-install-your-app-on-the-server"></a>7.サーバーへのアプリのインストール
 次に、サーバーにアプリを発行してユーザーがアプリを使用できるようにし、ポータルに表示されるテレメトリを監視します。
@@ -345,11 +338,25 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service の構成 (Spring Boot)
+
+Windows で動作する Spring Boot アプリでは、 Azure App Services での追加構成の実行を必要とします。 **web.config** を変更して次を追加します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <handlers>
+            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
+        </handlers>
+        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
+        </httpPlatform>
+    </system.webServer>
+</configuration>
+```
 
 ## <a name="exceptions-and-request-failures"></a>例外と要求エラー
 未処理の例外は、自動的に収集されます。
-
-![Open Settings, Failures](./media/java-get-started/21-exceptions.png)
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
@@ -368,9 +375,9 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 送信 SDK の構成は、[AI-Agent.xml](java-agent.md) ファイル内で定義されます。
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
-**[設定]**、**[サーバー]** の順に開くと、一連のパフォーマンス カウンターが表示されます。
+**[調査]**、**[メトリック]** の順に開くと、一連のパフォーマンス カウンターが表示されます。
 
-![](./media/java-get-started/11-perf-counters.png)
+![プロセス プライベート バイトが選択されているメトリック ペインのスクリーンショット](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>パフォーマンス カウンター コレクションをカスタマイズする
 パフォーマンス カウンターの標準セットのコレクションを無効にするには、ApplicationInsights.xml ファイルのルート ノードの下に次のコードを追加します。
@@ -420,10 +427,6 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 * counterName - パフォーマンス カウンターの名前。
 * instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。 categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、 `"__SELF__"`を指定します。
 
-パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
-
-![](./media/java-get-started/12-custom-perfs.png)
-
 ### <a name="unix-performance-counters"></a>Unix パフォーマンス カウンター
 * [Application Insights プラグインを使用して collectd をインストール](java-collectd.md) し、さまざまな種類のシステムとネットワークに関するデータを取得します。
 
@@ -467,22 +470,12 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 * 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
 
 ## <a name="availability-web-tests"></a>可用性 Web テスト
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。 [設定するには][availability]、[Web テスト] をクリックします。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。
 
-![Click Web tests, then Add Web test](./media/java-get-started/31-config-web-test.png)
-
-応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
-
-![Web テストの例](./media/java-get-started/appinsights-10webtestresult.png)
-
-可用性 Web テストの詳細については、[こちら][availability]をご覧ください。
+可用性 Web テストのセットアップ方法の詳細については、[こちら][availability]をご覧ください。
 
 ## <a name="questions-problems"></a>疑問がある場合 問題が発生した場合
 [Java のトラブルシューティング](java-troubleshoot.md)
-
-## <a name="video"></a>ビデオ
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次の手順
 * [依存関係の呼び出しを監視する](java-agent.md)

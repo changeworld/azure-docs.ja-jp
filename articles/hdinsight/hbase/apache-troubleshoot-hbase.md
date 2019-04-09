@@ -344,7 +344,7 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
 
 ### <a name="issue"></a>問題
 
-リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase: テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/ https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)に関するページを参照してください。
+リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase:テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) に関するページを参照してください。
 
 Apache Ambari UI から HBase リージョン サーバー上での再起動操作を開始すると、リージョン サーバーが停止しても、すぐには再起動していないことがすぐにわかります。 
 

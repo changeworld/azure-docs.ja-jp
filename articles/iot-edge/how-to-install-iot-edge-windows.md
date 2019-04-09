@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 5f421c8949efae5a2488d5bf156a5d3571401bcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902807"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996430"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -25,8 +25,8 @@ IoT Edge ランタイムの動作については、「[Azure IoT Edge ランタ�
 
 この記事では、Windows x64 (AMD/Intel) システムに Azure IoT Edge ランタイムをインストールする手順を示します。 Windows のサポートは現在プレビューの段階です。
 
->[!NOTE]
-Windows システム上での Linux コンテナーの使用は、Azure IoT Edge に対して推奨またはサポートされている実稼働構成ではありません。 ただし、開発とテストの目的には使用できます。
+> [!NOTE]
+> Windows システム上での Linux コンテナーの使用は、Azure IoT Edge に対して推奨またはサポートされている実稼働構成ではありません。 ただし、開発とテストの目的には使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,6 +52,8 @@ IoT Edge の最新バージョンの内容の詳細については、 [Azure IoT
 
 Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー エンジンに依存します。 運用シナリオの場合は、インストール スクリプトに含める Moby エンジンを使用して、Windows デバイスで Windows コンテナーを実行します。 開発およびテストの場合、Windows デバイス上で Linux コンテナーを実行できますが、IoT Edge をインストールする前にコンテナー エンジンをインストールして構成する必要があります。 いずれのシナリオについても、デバイスを準備する前提条件として以下のセクションを参照してください。 
 
+IoT Edge を仮想マシンに インストールする場合は、入れ子になった仮想化を有効にし、2 GB 以上のメモリを割り当てます。 入れ子になった仮想化を有効にする方法は、使用しているハイパーバイザーによって異なります。 Hyper-V の場合、第 2 世代仮想マシンでは入れ子になった仮想化が既定で有効になっています。 VMWare の場合、仮想マシンでこの機能を有効に切り替えます。 
+
 #### <a name="moby-engine-for-windows-containers"></a>Windows コンテナー用の Moby エンジン
 
 運用環境シナリオで IoT Edge を実行する Windows デバイスの場合は、Moby のみが正式にサポートされているコンテナー エンジンです。 インストール スクリプトでは、IoT Edge をインストールする前に Moby エンジンがデバイスに自動的にインストールされます。 コンテナー機能を有効にして、デバイスを準備します。 
@@ -64,7 +66,7 @@ Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/
 
 Linux デバイス用のコンテナーを開発およびテストするために Windows を使用している場合、コンテナー エンジンとして [Docker for Windows](https://www.docker.com/docker-windows) を使用できます。 [Linux コンテナーを使用する](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)ように Docker を構成できます。 IoT Edge をインストールする前に、Docker をインストールして構成する必要があります。 Linux コンテナーは、運用環境の Windows デバイスではサポートされません。 
 
-使用する IoT Edge デバイスが Windows コンピューターの場合は、Hyper-V の[システム要件](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)を満たしていることを確認します。 仮想マシンの場合は、[入れ子になった仮想化](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)を有効にして、少なくとも 2 GB のメモリを割り当てます。
+使用する IoT Edge デバイスが Windows コンピューターの場合は、Hyper-V の[システム要件](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)を満たしていることを確認します。
 
 ## <a name="install-iot-edge-on-a-new-device"></a>新しいデバイスに IoT Edge をインストールする
 
@@ -171,7 +173,7 @@ Install-SecurityDaemon -Manual -DeviceConnectionString '<connection-string>' -Of
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
-| **Manual** | なし | **スイッチ パラメーター**。 すべてのインストールで、manual、DPS、または existingconfig を宣言する必要があります。<br><br>デバイスをプロビジョニングするためのデバイス接続文字列を手動で指定することを宣言します |
+| **手動** | なし | **スイッチ パラメーター**。 すべてのインストールで、manual、DPS、または existingconfig を宣言する必要があります。<br><br>デバイスをプロビジョニングするためのデバイス接続文字列を手動で指定することを宣言します |
 | **Dps** | なし | **スイッチ パラメーター**。 すべてのインストールで、manual、DPS、または existingconfig を宣言する必要があります。<br><br>Device Provisioning Service (DPS) 経由でプロビジョニングするために、DPS のスコープ ID とデバイスの登録 ID を指定することを宣言します。  |
 | **ExistingConfig** | なし | **スイッチ パラメーター**。 すべてのインストールで、manual、DPS、または existingconfig を宣言する必要があります。<br><br>プロビジョニング情報を持つ config.yaml ファイルがデバイスに既に存在することを宣言します。 |
 | **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 手動インストールで**必須**です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、インストール中にこれを指定するよう促されます。 |
@@ -182,8 +184,8 @@ Install-SecurityDaemon -Manual -DeviceConnectionString '<connection-string>' -Of
 | **InvokeWebRequestParameters** | パラメーターと値のハッシュ テーブル | インストール中には、いくつかの Web 要求が行われます。 それらの Web 要求のパラメーターを設定するにはこのフィールドを使用します。 このパラメーターは、プロキシ サーバーの資格情報を構成するために使用すると便利です。 詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。 |
 | **OfflineInstallationPath** | ディレクトリ パス | このパラメーターが含まれる場合、インストーラーはインストールに必要な iotedged の zip、Moby エンジンの zip、Moby CLI の zip、および VC ランタイム MSI ファイルのディレクトリをチェックします。 4 つすべてのファイルがディレクトリにある場合、IoT Edge をオフライン中にインストールすることができます。 特定のコンポーネントのオンライン バージョンをオーバーライドするために、このパラメーターを使用することもできます。 |
 | **AgentImage** | IoT Edge エージェント イメージの URI | 既定では、新しい IoT Edge のインストールでは、IoT Edge エージェント イメージの最新のローリング タグを使用します。 イメージ バージョンについて特定のタグを設定したり、独自のエージェント イメージを提供したりするには、このパラメーターを使用します。 詳細については、[IoT Edge タグ](how-to-update-iot-edge.md#understand-iot-edge-tags)に関する記事を参照してください。 |
-| **Username** | コンテナー レジストリのユーザー名 | プライベート レジストリ内のコンテナーに - AgentImage パラメーターを設定する場合にのみ、このパラメーターを使用します。 レジストリへのアクセス権を持つユーザー名を指定します。 |
-| **Password** | セキュリティで保護されたパスワード文字列 | プライベート レジストリ内のコンテナーに - AgentImage パラメーターを設定する場合にのみ、このパラメーターを使用します。 レジストリにアクセスするためのパスワードを指定します。 | 
+| **ユーザー名** | コンテナー レジストリのユーザー名 | プライベート レジストリ内のコンテナーに - AgentImage パラメーターを設定する場合にのみ、このパラメーターを使用します。 レジストリへのアクセス権を持つユーザー名を指定します。 |
+| **パスワード** | セキュリティで保護されたパスワード文字列 | プライベート レジストリ内のコンテナーに - AgentImage パラメーターを設定する場合にのみ、このパラメーターを使用します。 レジストリにアクセスするためのパスワードを指定します。 | 
 | **SkipMobyCli** | なし | -ContainerOS が Windows に設定された場合にのみ適用されます。 Moby CLI (docker.exe) を $MobyInstallDirectory にインストールしないでください。 |
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
@@ -213,6 +215,34 @@ Get-WinEvent -ea SilentlyContinue `
 ```powershell
 iotedge list
 ```
+
+新規インストール後、実行されているモジュールは **edgeAgent** だけです。 [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)したら、他のモジュールが表示されます。 
+
+## <a name="manage-module-containers"></a>モジュール コンテナーを管理する
+
+IoT Edge サービスでは、デバイス上でコンテナー エンジンが実行されている必要があります。 モジュールをデバイスにデプロイすると、IoT Edge ランタイムでは、コンテナー エンジンを使用してクラウドのレジストリからコンテナー イメージをプルします。 IoT Edge サービスを使用すると、モジュールを操作し、ログを取得できますが、コンテナー エンジンを使用してコンテナー自体を操作することが必要な場合もあります。 
+
+モジュールの概念の詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」をご覧ください。 
+
+Windows IoT Edge デバイス上で Windows コンテナーを実行している場合、IoT Edge のインストールに Moby コンテナー エンジンが含まれていました。 Windows 開発マシンで Linux コンテナーを開発して場合は、Docker Desktop を使用していると考えられます。 Moby エンジンは Docker と同じ標準に基づいており、Docker Desktop と同じマシン上で並列実行されるように設計されています。 そのため、Moby エンジンによって管理されているコンテナーをターゲットにする場合は、Docker ではなくそのエンジンを明確にターゲットにする必要があります。 
+
+たとえば、すべての Docker イメージを一覧表示するには、次のコマンドを使用します。
+
+```powershell
+docker images
+```
+
+すべての Moby イメージを一覧表示するには、Moby エンジンへのポインターを指定して同じコマンドを変更します。 
+
+```powershell
+docker -H npipe:////./pipe/iotedge_moby_engine images
+```
+
+エンジン URI は、インストール スクリプトの出力に示されてます。また、config.yaml ファイルのコンテナー ランタイム設定セクションでも確認できます。 
+
+![config.yaml の moby_runtime uri](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+
+デバイス上で実行されているコンテナーやイメージを操作するために使用できるコマンドの詳細については、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/docker/)を参照してください。
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
 

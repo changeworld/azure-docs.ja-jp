@@ -8,24 +8,53 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 91b6808e5f74d82a980dc633b2fa2bb0fe6752f1
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101484"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
-Microsoft Azure HDInsight ユーザーは、HDInsight クラスターの作成時に、次のいくつかの異なるストレージ オプションを選択できます。
+HDInsight クラスターを作成する際、次のいくつかの異なる Azure Storage サービスを選択できます。
 
-* Azure Data Lake Storage Gen2
 * Azure Storage
+* Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 
 この記事では、これらのストレージの種類とそれらの固有の機能の概要を提供します。
 
-## <a name="azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight での Azure Data Lake Storage Gen2 と Apache Hadoop
+次の表は、HDInsight のさまざまなバージョンでサポートされている Azure Storage サービスをまとめたものです。
+
+| ストレージ サービス | アカウントの種類 | 名前空間の種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 | HDInsight のバージョン | クラスターの種類 |
+|---|---|---|---|---|---|---|---|
+|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
+|Azure Storage| 汎用 v2 | Object | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
+|Azure Storage| 汎用 v1 | Object | BLOB | Standard | 該当なし | All | All |
+|Azure Storage| Blob Storage | Object | BLOB | Standard | ホット、クール、アーカイブ | All | All |
+|Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
+
+Azure Storage のアクセス層の詳細については、「[Azure Blob ストレージ:Premium (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
+
+プライマリ ストレージと省略可能なセカンダリ ストレージ用のさまざまなサービスの組み合わせを使用してクラスターを作成することができます。 次の表に、HDInsight で現在サポートされているクラスター ストレージの構成をまとめています。
+
+| HDInsight のバージョン | プライマリ ストレージ | セカンダリ ストレージ | サポートされています |
+|---|---|---|---|
+| 3.6 と 4.0 | Standard Blob | Standard Blob | はい |
+| 3.6 と 4.0 | Standard Blob | Data Lake Storage Gen2 | いいえ  |
+| 3.6 と 4.0 | Standard Blob | Data Lake Storage Gen1 | はい |
+| 3.6 と 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | はい |
+| 3.6 と 4.0 | Data Lake Storage Gen2* | Standard Blob | はい |
+| 3.6 と 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | いいえ  |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | はい |
+| 3.6 | Data Lake Storage Gen1 | Standard Blob | はい |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | いいえ  |
+| 4.0 | Data Lake Storage Gen1 | 任意 | いいえ  |
+
+*=すべてがクラスター アクセスに同じマネージド ID を使用するように構成されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
+
+## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight で Azure Data Lake Storage Gen2 と Apache Hadoop を使用する
 
 Azure Data Lake Storage Gen2 は、Azure Data Lake Storage Gen1 のコア機能を取得し、それらを Azure Blob Storage に統合します。 これらの機能には、Hadoop と互換性のあるファイル システム、Azure Active Directory (Azure AD)、および POSIX ベースのアクセス制御リスト (ACL) などがあります。 この組み合わせにより、Azure Data Lake Storage Gen1 のパフォーマンスを利用しつつ、Blob Storage の階層化とデータのライフ サイクル管理も使用することができます。
 
@@ -89,21 +118,10 @@ abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapredu
 
 Azure Storage は、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。 HDInsight は、クラスターの既定のファイル システムとして Azure Storage 内の BLOB コンテナーを使用できます。 HDInsight のすべてのコンポーネントは、BLOB として格納された構造化データまたは非構造化データを HDFS インターフェイスを介して直接操作できます。
 
-Azure Storage アカウントの作成時に、いくつかのストレージ アカウントの種類から選択できます。 以下の表は、HDInsight でサポートされている選択肢についての情報です。
-
-| **ストレージ アカウントの種類** | **サポートされているサービス** | **サポートされているパフォーマンス レベル** | **サポートされているアクセス層** |
-|----------------------|--------------------|-----------------------------|------------------------|
-| 汎用 v2   | BLOB               | Standard                    | ホット、クール、アーカイブ *    |
-| 汎用 v1   | BLOB               | Standard                    | 該当なし                    |
-| BLOB ストレージ         | BLOB               | Standard                    | ホット、クール、アーカイブ *    |
-
-* アーカイブ アクセス層はオフライン層であり、取得の際に数時間の待ち時間があります。 HDInsight では、この層を使用しないでください。 詳しくは、「[アーカイブ アクセス層](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)」をご覧ください。
-
-> [!WARNING]  
-> ビジネス データを格納するために既定の BLOB コンテナーを使用することはお勧めできません。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 既定の BLOB コンテナーを削除する前に、必ずログを取得してください。 ストレージ コストを削減するために、使用後に各 BLOB コンテナーを削除します。 また、1 つの BLOB コンテナーを複数のクラスターの既定のファイル システムとして使用できないことに注意してください。
-
+Microsoft では、既定のクラスター ストレージとビジネス データに別々のストレージ コンテナーを使用して、HDInsight のログと一時ファイルをご自身のビジネス データから切り離すことをお勧めしています。 また、アプリケーション ログとシステム ログが含まれている既定の BLOB コンテナーは、ストレージ コストを削減するために、それぞれのログを使用した後に削除することもお勧めしています。 コンテナーを削除する前に、ログを取り出してください。
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight のストレージ アーキテクチャ
+
 次の図は、Azure Storage のHDInsight アーキテクチャを示しています。
 
 ![Hadoop クラスターが HDFS API を使用して、BLOB ストレージの構造化データおよび非構造化データへのアクセスと保存を実行する方法を示す図](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight ストレージのアーキテクチャ")

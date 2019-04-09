@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781590"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338056"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>ドキュメントの形式と名前付け規則のガイダンス
 
@@ -31,7 +31,7 @@ ms.locfileid: "57781590"
 | Microsoft Word    | .DOCX        | Microsoft Word 文書                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat ポータブル ドキュメント                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML ドキュメント                                                                                                                                                                                                                                                                  |
-| テキスト ファイル         | .TXT         | UTF-16 または UTF-8 エンコード形式のテキスト ファイル。ファイル名には日本語の文字を含めない必要があります。                                                                                                                                                                                                                                             |
+| テキスト ファイル         | .TXT         | UTF-16 または UTF-8 でエンコードされたテキスト ファイル。 このファイル名に日本語文字を含めることはできません。                                                                                                                                                                                        |
 | アライン済みテキスト ファイル | .ALIGN       | 拡張子 `.ALIGN` は、ドキュメント ペア内の文が完全にアラインされていることがわかっている場合に使用できる特別な拡張子です。 `.ALIGN` ファイルを指定すると、Custom Translator では文が自動的にアラインされません。 |
 | Excel ファイル        | .XLSX        | Excel ファイル (2013 以降)。 スプレッドシートの最初の行には言語コードを指定する必要があります。                                                                                                                                                                                                                                                      |
 

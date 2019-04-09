@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: e1918d527afbe5aad647d84ab82889099f5f22b9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ccdb3e16ea60cf85ae28e533e3b2d9f473cc90c8
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105802"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316390"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
@@ -148,7 +148,7 @@ npm install
 npm start
 ```
 
-起動が完了すると、ブラウザーに **http://localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
+起動が完了すると、ブラウザーに **http:\//localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
 
 ### <a name="configure-and-run-nginx"></a>NGINX を構成および実行する
 
@@ -161,7 +161,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで [http://localhost:9000](http://localhost:9000) に移動します。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで http:\//localhost:9000 に移動します。
 
 ## <a name="clean-up"></a>クリーンアップ
 

@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/02/2019
+ms.date: 03/26/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202880"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445684"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -46,6 +46,8 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 ## <a name="how-it-works"></a>動作のしくみ
 
 Azure Blob Storage の不変ストレージでは、時間ベースのリテンションと訴訟ホールドの 2 種類の WORM (不変) ポリシーがサポートされています。 時間ベースのリテンション ポリシーまたは訴訟ホールドをコンテナーに適用すると、既存のすべての BLOB が 30 秒以内に不変 WORM 状態に移行します。 そのコンテナーにアップロードされるすべての新しい BLOB も不変状態に移行します。 すべての BLOB が不変ストレージに移行されると、不変ポリシーが承認され、不変コンテナー内の既存のオブジェクトと新しいオブジェクトのすべての上書きまたは削除操作は許可されなくなります。
+
+コンテナーとアカウントの削除は、不変ポリシーによって保護されている BLOB がある場合にも許可されません。 ロック済みの時間ベースのリテンション ポリシーまたは訴訟ホールドが適用された BLOB が 1 つ以上存在すると、Delete Container 操作は失敗します。 訴訟ホールドまたは保持間隔がアクティブな BLOB が格納された WORM コンテナーが 1 つ以上ある場合、ストレージ アカウントの削除は失敗します。 
 
 ### <a name="time-based-retention"></a>時間ベースのリテンション
 
@@ -85,12 +87,10 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 この機能の使用に対する追加料金はありません。 不変データは、通常の変更可能データと同様に価格が設定されます。 Azure Blob Storage の価格設定については、[Azure Storage の価格に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
+不変ストレージは、General Purpose v2 および Blob Storage アカウントでのみ使用できます。 これらのアカウントは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用して管理する必要があります。 既存の General Purpose v1 ストレージ アカウントのアップグレードについては、[ストレージ アカウントのアップグレード](../common/storage-account-upgrade.md)に関する記事を参照してください。
 
 [Azure portal](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、および [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新リリースでは、Azure Blob Storage の不変ストレージがサポートされます。 [クライアント ライブラリのサポート](#client-libraries)も提供されています。
 
-> [!NOTE]
->
-> 不変ストレージは、General Purpose v2 および Blob Storage アカウントでのみ使用できます。 これらのアカウントは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用して管理する必要があります。 既存の General Purpose v1 ストレージ アカウントのアップグレードについては、[ストレージ アカウントのアップグレード](../common/storage-account-upgrade.md)に関する記事を参照してください。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -114,17 +114,19 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
     ![メニュー上の [ポリシーのロック]](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    **[ポリシーのロック]** を選択します。 これでポリシーがロックされて削除できなくなり、保持間隔の延長だけが許可されるようになります。
+6. **[ポリシーのロック]** を選択し、ロックを確認します。 これでポリシーがロックされて削除できなくなり、保持間隔の延長だけが許可されるようになります。 BLOB の削除とオーバーライドは許可されていません。 
 
-6. 訴訟ホールドを有効にするには、**[+ Add Policy]\(+ ポリシーの追加\)** を選択します。 ドロップダウン メニューから **[訴訟ホールド]** を選択します。
+    ![メニューで [ポリシーのロック] を確認する](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
+
+7. 訴訟ホールドを有効にするには、**[+ Add Policy]\(+ ポリシーの追加\)** を選択します。 ドロップダウン メニューから **[訴訟ホールド]** を選択します。
 
     ![[ポリシーの種類] の下のメニューにある [訴訟ホールド]](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
-7. 1 つ以上のタグを持つ訴訟ホールドを作成します。
+8. 1 つ以上のタグを持つ訴訟ホールドを作成します。
 
     ![[ポリシーの種類] の下にある [タグ名] ボックス](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. 訴訟ホールドをクリアするには、適用された訴訟ホールド ID タグを削除するだけです。
+9. 訴訟ホールドをクリアするには、適用された訴訟ホールド ID タグを削除するだけです。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -170,9 +172,9 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 不変ストレージは任意の BLOB 型で使用できますが、主にブロック BLOB に使用することをお勧めします。 ブロック BLOB とは異なり、ページ BLOB と追加 BLOB は WORM コンテナーの外部で作成し、コンテナー内にコピーする必要があります。 これらの BLOB を WORM コンテナー内にコピーした後は、追加 BLOB への "*追加*" やページ BLOB の変更を行うことはできなくなります。
 
-**この機能を使用するために、常に新しいストレージ アカウントを作成する必要がありますか?**
+**この機能を使用するために、新しいストレージ アカウントを作成する必要がありますか?**
 
-既存または新しく作成した General Purpose v2 アカウントまたは Blob Storage アカウントで不変ストレージを使用できます。 この機能は GPv2 および BLOB ストレージ アカウント内のブロック BLOB で使用するためのものです。
+いいえ。既存または新しく作成した General Purpose v2 アカウントまたは BLOB ストレージ アカウントで不変ストレージを使用できます。 この機能は GPv2 および BLOB ストレージ アカウント内のブロック BLOB で使用するためのものです。 General Purpose v1 ストレージ アカウントはサポートされていませんが、General Purpose v2 に簡単にアップグレードできます。 既存の General Purpose v1 ストレージ アカウントのアップグレードについては、[ストレージ アカウントのアップグレード](../common/storage-account-upgrade.md)に関する記事を参照してください。
 
 **訴訟ホールドと時間ベースのリテンション ポリシーを両方とも適用することはできますか?**
 
@@ -188,7 +190,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **"*ロック済み*" の時間ベースのリテンション ポリシーまたは訴訟ホールドが適用された WORM コンテナーを含むストレージ アカウントを削除しようとするとどうなりますか?**
 
-訴訟ホールドまたは保持間隔がアクティブな BLOB が格納された WORM コンテナーが 1 つ以上ある場合、ストレージ アカウントの削除は失敗します。  ストレージ アカウントを削除するには、事前にすべての WORM コンテナーを削除しておく必要があります。 コンテナーの削除については、前の質問を参照してください。
+訴訟ホールドまたは保持間隔がアクティブな BLOB が格納された WORM コンテナーが 1 つ以上ある場合、ストレージ アカウントの削除は失敗します。 ストレージ アカウントを削除するには、事前にすべての WORM コンテナーを削除しておく必要があります。 コンテナーの削除については、前の質問を参照してください。
 
 **BLOB が不変状態のときに、異なる BLOB 層 (ホット、クール、コールド) の間でデータを移動できますか?**
 

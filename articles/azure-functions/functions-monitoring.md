@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 43ac3e3cfe57ac7d6b8c575611bc4dbae3102dc5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0224d9ba5a430635e4675c2fb2bf354e7c975f31
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439317"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518731"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -24,7 +24,7 @@ ms.locfileid: "57439317"
 
 ![Application Insights メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
-Azure Functions には、[Application Insights を使用しないビルトイン監視機能](#monitoring-without-application-insights)もあります。 Application Insights ではより多くのデータや優れたデータ分析方法が提供されるため、Application Insights の使用をお勧めします。
+Azure Functions には、Application Insights を使用しないビルトイン監視機能もあります。 Application Insights ではより多くのデータや優れたデータ分析方法が提供されるため、Application Insights の使用をお勧めします。
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
@@ -77,7 +77,7 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 ## <a name="disable-built-in-logging"></a>組み込みログを無効にする
 
-Application Insights を有効にする場合は、[Azure Storage を使用する組み込みログ](#logging-to-storage)を無効にします。 組み込みログは軽量のワークロードには便利ですが、高負荷の実稼働環境での使用には向きません。 実稼働環境の監視には、Application Insights をお勧めします。 組み込みログを実稼働環境で使用すると、Azure Storage での調整のためにログ レコードが不完全になる場合があります。
+Application Insights を有効にする場合は、Azure Storage を使用する組み込みログを無効にします。 組み込みログは軽量のワークロードには便利ですが、高負荷の実稼働環境での使用には向きません。 実稼働環境の監視には、Application Insights をお勧めします。 組み込みログを実稼働環境で使用すると、Azure Storage での調整のためにログ レコードが不完全になる場合があります。
 
 組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。 アプリ設定を削除する前に、同じ関数アプリの既存の関数によって、Azure Storage のトリガーまたはバインドにその設定が使用されていないことを確認してください。
 
@@ -125,7 +125,7 @@ Application Insights の使用方法については、「[Application Insights �
 
 ![メトリックス エクスプローラー](media/functions-monitoring/metrics-explorer.png)
 
-[[失敗]](../azure-monitor/app/asp-net-exceptions.md) タブでは、グラフを作成したり、関数の失敗やサーバーの例外に基づいて警告を表示したりできます。 **[操作名]** は関数名です。 依存関係に関する[カスタム テレメトリ](#custom-telemetry-in-c-functions)を実装している場合を除き、依存関係のエラーは表示されません。
+[[失敗]](../azure-monitor/app/asp-net-exceptions.md) タブでは、グラフを作成したり、関数の失敗やサーバーの例外に基づいて警告を表示したりできます。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。
 
 ![エラー](media/functions-monitoring/failures.png)
 
@@ -423,7 +423,7 @@ C# スクリプト関数では、`ILogger` 上の `LogMetric` 拡張メソッド
 logger.LogMetric("TestMetric", 1234);
 ```
 
-[.NET 用 Application Insights API ](#custom-telemetry-in-c-functions) を使用して `TrackMetric` を呼び出す代わりに、このコードを使用できます。
+.NET 用 Application Insights API を使用して `TrackMetric` を呼び出す代わりに、このコードを使用できます。
 
 ## <a name="write-logs-in-javascript-functions"></a>JavaScript 関数でログを書き込む
 
@@ -441,7 +441,7 @@ Functions Runtime の[バージョン 1.x](functions-versions.md#creating-1x-app
 context.log.metric("TestMetric", 1234);
 ```
 
-[Application Insights 用 Node.js SDK ](#custom-telemetry-in-javascript-functions) を使用して `trackMetric` を呼び出す代わりに、このコードを使用できます。
+Application Insights 用 Node.js SDK を使用して `trackMetric` を呼び出す代わりに、このコードを使用できます。
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>C# 関数でカスタム テレメトリをログに記録する
 
@@ -632,7 +632,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>依存関係
 
-他のサービスに対する関数の依存関係は自動的には表示されません。 依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
+他のサービスに対する関数の依存関係は自動的には表示されません。 依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#log-custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
 
 ![アプリケーション マップ](media/functions-monitoring/app-map.png)
 
@@ -679,10 +679,6 @@ Get-AzWebSiteLog -Name <function app name> -Tail
 ```
 
 詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)に関するページをご覧ください。
-
-### <a name="local-view-of-log-files"></a>ログ ファイルのローカル ビュー
-
-[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="next-steps"></a>次の手順
 

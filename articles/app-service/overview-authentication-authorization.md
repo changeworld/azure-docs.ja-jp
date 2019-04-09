@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297006"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402747"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
+
+> [!NOTE]
+> 現時点では、Azure App Service および Azure Functions で AAD V2 (MSAL を含む) はサポートされていません。 更新プログラムがないかどうか確認してください。
+>
 
 Azure App Service は組み込みの認証と認可のサポートを提供するので、Web アプリ、RESTful API、モバイル バックエンド、さらには [Azure Functions](../azure-functions/functions-overview.md) でも、最小限のコードを記述するだけで、またはまったく記述せずに、ユーザーのサインインとデータへのアクセスを可能にできます。 この記事では、App Service によりアプリの認証と認可を簡略化する方法について説明します。 
 

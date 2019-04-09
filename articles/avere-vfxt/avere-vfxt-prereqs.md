@@ -4,14 +4,14 @@ description: Avere vFXT for Azure の前提条件
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 5642f3acd108d0d3f504fc132522936d1b5ab870
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299208"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082587"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT の作成を準備する
 
@@ -57,7 +57,7 @@ vFXT を作成するユーザーに所有者アクセス権を付与したくな
 
 |Azure のコンポーネント|Quota|
 |----------|-----------|
-|仮想マシン|3 つ以上の D16s_v3 または E32s_v3|
+|仮想マシン|3 つ以上の E32s_v3|
 |Premium SSD ストレージ|200 GB の OS スペース、およびノードあたり 1 から 4 TB のキャッシュ |
 |ストレージ アカウント (オプション) |v2|
 |データ バックエンド ストレージ (オプション) |1 つの新しい LRS BLOB コンテナー |
@@ -151,6 +151,30 @@ Azure クラスターの Avere vFXT を作成する前に、クラスター ノ�
    ```
 
 ロール名は、クラスターの作成時に使用されます。 この例では、名前は ``avere-operator`` です。
+
+## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>仮想ネットワークにストレージ サービス エンドポイントを作成する (必要な場合)
+
+[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、仮想ネットワークの外部で Azure BLOB トラフィックをルーティングするのではなく、このトラフィックをローカルで保持します。 これは、バックエンドのデータ ストレージに Azure BLOB を使用する Avere vFXT for Azure クラスターに推奨されます。 
+
+クラスター作成の一環として、既存の VNet を指定し、バックエンド ストレージ用の新しい Azure BLOB コンテナーを作成する場合は、Microsoft ストレージ用の VNet にサービス エンドポイントが必要です。 このエンドポイントは、クラスターを作成する前に配置されている必要があります。配置されていない場合、クラスターの作成が失敗します。 
+
+後でストレージを追加する場合でも、Azure BLOB ストレージを使用する Avere vFXT for Azure クラスターにはストレージ サービス エンドポイントをお勧めします。 
+
+> [!TIP] 
+> * クラスター作成の一環として新しい仮想ネットワークを作成する場合は、この手順をスキップしてください。 
+> * クラスターの作成中に BLOB ストレージを作成しない場合、この手順は省略可能です。 その場合、Azure BLOB を使用する必要が生じても、後でサービス エンドポイントを作成できます。
+
+Azure portal からストレージ サービス エンドポイントを作成します。 
+
+1. ポータルで、左側にある **[仮想ネットワーク]** をクリックします。
+1. クラスターの VNet を選択します。 
+1. 左側にある **[サービス エンドポイント]** をクリックします。
+1. 上部にある **[追加]** をクリックします。
+1. サービスは ``Microsoft.Storage`` のままにして、クラスターのサブネットを選択します。
+1. 下部にある **[追加]** をクリックします。
+
+   ![サービス エンドポイントを作成する手順に関する注釈を示す Azure portal のスクリーンショット](media/avere-vfxt-service-endpoint.png)
+
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>次のステップ: vFXT クラスターを作成する
 

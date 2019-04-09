@@ -4,7 +4,7 @@ description: Azure サブスクリプションの使用状況と課金内容を�
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: alherz
+manager: jureid
 editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: fdf346348be11a9f592fa3eff40e2f56e94ba656
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9ba52951565c910138a5a49ecc97ad5748411e6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904320"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842313"
 ---
-# <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
+# <a name="understand-your-microsoft-azure-bill"></a>Microsoft Azure の課金内容を確認する
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
 
-この記事は、Enterprise Agreement (EA) をお持ちの Azure カスタマーには適用されません。 EA カスタマーの場合、「[Understand your bill for Azure customers with an Enterprise Agreement](billing-understand-your-bill-ea.md)」 (Enterprise Agreement をお持ちの Azure カスタマーに対する請求について) を参照してください。  
+この記事は、Enterprise Agreement (EA) をお持ちの Azure カスタマーには適用されません。 EA カスタマーの場合、「[Understand your bill for Azure customers with an Enterprise Agreement](billing-understand-your-bill-ea.md)」 (Enterprise Agreement をお持ちの Azure カスタマーに対する請求について) を参照してください。
+
+この記事は、この記事は、Microsoft 顧客契約をされている Azure カスタマーには適用されません。 Microsoft 顧客契約の課金アカウントをお持ちであれば、「[Understand the Azure charges on your Microsoft Customer Agreement invoice (Microsoft 顧客契約の請求書での Azure 料金を理解する)](billing-mca-understand-your-bill.md)」を参照してください。
 
 請求サイクル、価格、使用量など、Azure Cloud Solution Provider (Azure CSP) プログラムで請求がどのように行われるかの説明については、「[Azure CSP の請求の概要](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)」を参照してください。
 
@@ -60,7 +62,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 
 ![CSV の使用料金](./media/billing-understand-your-bill/2.png)
 
-この料金の日々の明細を確認するには、CSV の **[毎日の使用状況]** セクションに移動します。 *[測定カテゴリ]* の下でフィルターを適用し、"Scheduler" を探します。 メーターが使用された日数と消費量を確認できます。 "*[リソース]*" と "*[リソース グループ]*" の情報も、比較用に一覧表示されます。 "*[消費量]*" の合計値が請求書に表示される値になります。
+この料金の日々の明細を確認するには、CSV の **[毎日の使用状況]** セクションに移動します。 *[測定カテゴリ]* の下でフィルターを適用し、*Scheduler* を探します。 メーターが使用された日数と消費量を確認できます。 "*[リソース]*" と "*[リソース グループ]*" の情報も、比較用に一覧表示されます。 "*[消費量]*" の合計値が請求書に表示される値になります。
 
 ![CSV の [毎日の使用状況] セクション](./media/billing-understand-your-bill/3.png)
 
@@ -71,12 +73,12 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 - [Azure 請求書を理解する](billing-understand-your-invoice.md)
 - [Azure の詳細な使用状況を理解する](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>オプション 2:使用量と費用を Azure portal と比較する
+### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>オプション 2:使用量と費用を Azure portal で比較する
 
 Azure ポータルで料金を確認することもできます。 請求の使用状況と料金の概要を取得するには、コスト管理グラフを表示します。
 
 1. Azure portal で [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動します。
-1. 自分のサブスクリプションを選択し、**[コスト分析]** を選択します。 
+1. 自分のサブスクリプションを選択し、**[コスト分析]** を選択します。
 1. **[期間]** でフィルター処理します
 1. 引き続き先の例を見ると、Azure Scheduler サービスの使用に対する請求を確認できます。
 
@@ -96,9 +98,9 @@ Azure ポータルで料金を確認することもできます。 請求の使�
 
 ## <a name="resources-billed-by-usage-meters"></a>使用量メーターによって請求されるリソース
 
-Azure では、リソース コストに基づいて直接請求されることはありません。 リソースに対する料金は、1 つまたは複数のメーターを利用して計算されます。 そのようなメーターは、リソースの有効期間を通してその使用量を追跡する目的で使用されます。 これらの測定が課金の計算に使用されます。
+Azure では、リソース コストに基づいて直接請求されることはありません。 リソースに対する料金は、1 つまたは複数のメーターを利用して計算されます。 メーターは、リソースの有効期間を通してその使用量を追跡する目的で使用されます。 これらの測定が課金の計算に使用されます。
 
-たとえば、仮想マシンなど、Azure リソースを 1 つ作成すると、1 つまたは複数のメーター インスタンスが作成されます。 これらの測定は、時間経過に伴ってリソースの使用状況を追跡するために使用されます。 各メーターから送られる使用状況レコードが Azure で利用され、請求金額が計算されます。
+たとえば、仮想マシンなど、Azure リソースを 1 つ作成すると、1 つまたは複数のメーター インスタンスが作成されます。 メーターは、時間経過に伴ってリソースの使用状況を追跡するために使用されます。 各メーターから送られる使用状況レコードが Azure で利用され、請求金額が計算されます。
 
 たとえば、Azure に作成された 1 つの仮想マシン (VM) に対して、使用状況を追跡するために次の測定が作成される場合があります。
 
@@ -113,7 +115,7 @@ Azure では、リソース コストに基づいて直接請求されること�
 - Standard IO - ブロック BLOB (書き込み)
 - Standard IO - ブロック BLOB (削除)
 
-VM が作成されると、これらの各メーターそれぞれが使用状況レコードの出力を開始します。 この使用状況とメーター料金が Azure の測定システムで追跡されます。
+VM が作成されると、各メーターが使用状況レコードの出力を開始します。 この使用状況とメーター料金が Azure の測定システムで追跡されます。
 
 ## <a name="payment"></a>請求金額を支払う
 
@@ -123,7 +125,7 @@ VM が作成されると、これらの各メーターそれぞれが使用状�
 
 [請求書による支払い](billing-how-to-pay-by-invoice.md)を利用している場合は、請求書の下部に記載されている場所に送金します。
 
-支払い状況を確認するには、[サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)してください。
+支払い状況を確認するには、[サポート チケットを作成](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) してください。
 
 
 ## <a name="tips-for-cost-management"></a>コスト管理に関するヒント
@@ -134,6 +136,10 @@ VM が作成されると、これらの各メーターそれぞれが使用状�
   - [各サービスの詳細な価格情報](https://azure.microsoft.com/pricing/)
 - [Azure ポータルで使用状況とコストを定期的に確認します](billing-getting-started.md#costs)。
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458) してください。
+
 ## <a name="learn-more"></a>詳細情報
 
 - [Azure の請求書と毎日の使用状況データを取得する](billing-download-azure-invoice-daily-usage-date.md)
@@ -141,7 +147,3 @@ VM が作成されると、これらの各メーターそれぞれが使用状�
 - [Microsoft Azure の詳細な使用状況の用語を理解する](billing-understand-your-usage.md)
 - [Azure portal コスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)
 - [Azure の課金とコスト管理で予想外のコストを防ぐ](billing-getting-started.md#costs)
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
-
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

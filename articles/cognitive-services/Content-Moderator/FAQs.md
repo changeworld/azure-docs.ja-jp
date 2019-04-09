@@ -1,47 +1,56 @@
 ---
-title: Frequently Asked Questions - Content Moderator
+title: よく寄せられる質問 - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Get answers to frequently asked questions about Content Moderator.
+description: Content Moderator に関してよく寄せられる質問とその回答を紹介しています。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 11/21/2016
+ms.date: 03/21/2019
 ms.author: sajagtap
-ms.openlocfilehash: 99b95a26a91d14edbef264ac3b107f8462e0ef5e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: df8d957fc2de620d63567a9cc1b14b24b73052bb
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762179"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351135"
 ---
-# <a name="frequently-asked-questions-faq"></a>Frequently asked questions (FAQ)
+# <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
-#### <a name="what-does-my-content-moderator-subscription-include"></a>What does my Content Moderator subscription include?
-Your Content Moderator subscription includes access to the review tool and the APIs. You can decide whether you want to use one or the other, or both, depending on your business needs.
+### <a name="what-does-my-content-moderator-subscription-include"></a>Content Moderator のサブスクリプションには何が含まれていますか。
 
-#### <a name="what-are-the-limitsrestrictions-of-the-content-that-can-be-moderated-by-using-the-api"></a>What are the limits/restrictions of the content that can be moderated by using the API?
-When using the API, images need to have a minimum of 128 pixels and a maximum file size of 4 MB. Text can be at most 1024 characters long. There is no limit on the video duration.
+Content Moderator のサブスクリプションには、レビュー ツールと API へのアクセスが含まれています。 ビジネス ニーズに応じて、どちらを利用するか、両方を利用するかを決定できます。
 
-#### <a name="what-happens-if-the-content-passed-to-the-text-api-or-the-image-api-exceeds-the-size-limits"></a>What happens if the content passed to the text API or the image API exceeds the size limits?
-The text API returns an error code that informs that the text is longer than permitted. The image API also returns an error code that informs that the image does not meet the size requirements.
+### <a name="what-are-the-limitsrestrictions-of-the-content-that-can-be-moderated-by-using-the-api"></a>API を使用してモデレート可能なコンテンツに対する制限/制約はどのようなものですか。
 
-#### <a name="do-you-keep-the-images-text-or-videos-that-are-submitted-for-moderation"></a>Do you keep the images, text, or videos that are submitted for moderation?
-Your content is your own and may not be retained by Microsoft without your consent. Microsoft uses industry-leading security measures to help protect your content.
+API を使用する場合、画像のピクセル数は最大 128 ピクセル、ファイル サイズは 4 MB までにする必要があります。 テキストの長さは最大 1024 文字にできます 動画の長さに制限はありません。
 
-#### <a name="can-i-use-content-moderator-to-screen-for-illegal-child-exploitation-images"></a>Can I use Content Moderator to screen for illegal child exploitation images?
-No. However, qualified organizations can use the [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") to screen for this type of content.
+### <a name="what-happens-if-the-content-passed-to-the-text-api-or-the-image-api-exceeds-the-size-limits"></a>Text API または Image API に渡したコンテンツがサイズ制限を超えるとどうなりますか。
 
-#### <a name="up-to-how-many-review-teams-can-a-user-join-can-the-user-switch-between-teams"></a>Up to how many review teams can a user join? Can the user switch between teams?
-A user can join one team at a time.
+Text API から、テキストが上限を超過していることを示すエラー コードが返されます。 同様に、Image API からは、画像がサイズ要件を満たしていないことを示すエラー コードが返されます。
 
-#### <a name="what-kind-of-team-member-roles-are-supported-by-the-review-tool-how-are-they-different"></a>What kind of team member roles are supported by the review tool? How are they different?
-The Studio currently allows assigning Administrator and Reviewer roles. The Administrators can invite other users and have access to the configuration settings while reviewers can only review moderation results and tag or untag content.
+#### <a name="do-you-keep-the-images-text-or-videos-that-are-submitted-for-moderation"></a>モデレーションのために送信された画像、テキスト、動画は保存されますか。
 
-#### <a name="what-is-a-tag-does-the-review-tool-support-custom-tags"></a>What is a tag? Does the review tool support custom tags?
-A tag is a one or two-letter short code that denotes a moderation flag, such as 'a' for adult, 'r' for racy and so on. Administrators can define new tags for their business as needed.
+お客様のコンテンツはお客様自身のものであり、同意なくマイクロソフトが保持することはできません。 マイクロソフトでは、お客様のコンテンツを保護するために業界をリードするセキュリティ対策を使用しています。
 
-#### <a name="how-many-team-members-can-i-have-in-my-review-team"></a>How many team members can I have in my review team?
-You can have a maximum of five team members, including the administrator in a team.
+### <a name="can-i-use-content-moderator-to-screen-for-illegal-child-exploitation-images"></a>Content Moderator を使用し、子どもの性的搾取に該当する違法な画像を審査することはできますか。
+
+いいえ。 ただし、認められた機関は [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") を使用してこのようなコンテンツを審査できます。
+
+### <a name="how-many-review-teams-can-a-user-join-can-the-user-switch-between-teams"></a>いくつのレビュー チームがユーザー参加を利用できますか。 ユーザーはチームを切り替えることができますか。
+
+ユーザーは一度に 1 つのチームにのみ参加できます。
+
+### <a name="what-kind-of-team-member-roles-are-supported-by-the-review-tool-how-are-they-different"></a>レビュー ツールでサポートされるチーム メンバーの役割はどのような種類ですか。 これらはどのように違うのでしょうか。
+
+レビュー ツールでは、現在管理者とレビュー担当者の役割を割り当てることができます。 管理者は他のユーザーを招待して、構成設定にアクセスできます。レビュー担当者が行えるのは、モデレーション結果の確認と、コンテンツのタグ付けやタグ解除のみです。
+
+### <a name="what-is-a-tag-does-the-review-tool-support-custom-tags"></a>タグとは何ですか。 レビュー ツールではカスタム タグはサポートされますか。
+
+タグとは、成人向け画像が 'a'、きわどい画像が 'r' など、モデレーション フラグを示す 1 文字または 2 文字の短いコードです。 管理者は、必要に応じて業務のために新しいタグを定義できます。
+
+### <a name="how-many-team-members-can-i-have-in-my-review-team"></a>レビュー チームに設定できるチーム メンバーは何人ですか。
+
+チームには、管理者も含めて最大 5 人のチーム メンバーを入れることができます。

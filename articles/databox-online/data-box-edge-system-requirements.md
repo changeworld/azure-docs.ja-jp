@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113772"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401755"
 ---
-# <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge のシステム要件 (プレビュー)
+# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge のシステム要件
 
 この記事では、Microsoft Azure Data Box Edge ソリューション、および Azure Data Box Edge に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Data Box Edge を展開することをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
 
@@ -23,9 +23,6 @@ Data Box Edge のシステム要件は次のとおりです。
 
 - **ホストのソフトウェア要件** - サポートされているプラットフォーム、ローカル構成 UI 用のブラウザー、SMB クライアント、およびデバイスにアクセスするクライアントのその他の要件について説明します。
 - **デバイスのネットワーク要件** - 物理デバイスの操作のためのネットワーク要件について説明します。
-
-> [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションをデプロイする前に、「[プレビューの使用条件に関するページ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を確認してください。
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>デバイスに接続されるクライアントでサポートされている OS
 
@@ -63,10 +60,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | ポート番号 | インまたはアウト | ポート範囲 | 必須 | ガイダンス |
 |----------|-----------|------------|----------|----------|
-| TCP 5671 (AMQP)| アウト       | WAN        | はい      | IoT Edge の既定の通信プロトコル。 Azure IoT Edge が他のサポートされているプロトコル用に構成されていない場合、または AMQP が望ましい通信プロトコルである場合は、オープンにする必要があります。 <br>AMQP での 5672 は、IoT Edge ではサポートされていません。 <br>Azure IoT Edge が、IoT Hub でサポートされているのとは異なるプロトコルを使用する場合は、このポートをブロックします。 |
-| TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 メソッド要求を送信することがあるリーフ デバイスを備えた透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoT Hub に接続したり Azure IoT Edge を通じて IoT Hub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンなインバウンドだけに制限することができます。 |
-| TCP 5671 (AMQP) | イン        |            | いいえ        | インバウンド接続はブロックする必要があります。|
-| TCP 443 (HTTPS) | イン        |            | 場合によっては、コメントを参照してください | インバウンド接続が以下の特定のシナリオだけでオープンになるようにする必要があります。 AMQP、MQTT などの非 HTTP プロトコルを構成できない場合は、ポート 443 を使用してメッセージを WebSockets 経由で送信できます。 |
+| TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。|
 
 詳細は、[IoT Edge デプロイのファイアウォール規則とポート構成規則](https://docs.microsoft.com/azure/iot-edge/troubleshoot)を参照してください。
 

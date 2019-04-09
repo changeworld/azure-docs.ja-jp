@@ -1,5 +1,5 @@
 ---
-title: Log Analytics のワイヤ データ ソリューション | Microsoft Docs
+title: Azure Monitor の Wire Data ソリューション | Microsoft Docs
 description: ワイヤー データは、Log Analytics エージェントを使用してコンピューターのネットワークとパフォーマンスのデータを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
 services: log-analytics
 documentationcenter: ''
@@ -13,25 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 35568f6c281a2aaf058fe08b214657c7737c64fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842160"
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
-![ワイヤ データのシンボル](./media/wire-data/wire-data2-symbol.png)
+![ワイヤ データのシンボル](media/wire-data/wire-data2-symbol.png)
 
 ワイヤ データとは、Log Analytics エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
 
-Log Analytics エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Log Analytics に送信されます。  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Log Analytics エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Azure Monitor に送信されます。  
 
 >[!NOTE]
->Service Map を既にデプロイしているか、Service Map または [Azure Monitor for VM](../../azure-monitor/insights/vminsights-overview.md) を検討している場合は、それらが Log Analytics で収集して格納する、ワイヤ データにかなりの情報を提供する新しい接続メトリック データセットがあります。
+>Service Map を既にデプロイしているか、Service Map または [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) を検討している場合は、それらが Azure Monitor で収集して格納する、ワイヤ データにかなりの情報が提供する新しい接続メトリック データセットがあります。
 
-既定では、Log Analytics は、Windows および Linux に組み込まれているカウンターと、指定したその他のパフォーマンス カウンターからの CPU、メモリ、ディスク、ネットワーク パフォーマンスのデータをログに記録します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。  ワイヤ データは、TCP トランスポート層ではなく、アプリケーション レベルでネットワーク データを調べます。  このソリューションは個別の ACK および SYN を調べません。  ハンドシェイクが完了すると、ライブ接続と見なされ、接続済みとしてマークされます。 その接続は両側が合意している限りはライブ接続のままになり、ソケットが開いて、データを前後に渡すことができます。  いずれかの側が接続を閉じると、切断済みとしてマークされます。  したがって、正常に完了したパケットの帯域幅のみがカウントされ、再送信および失敗したパケットに関するレポートは行われません。
+既定では、Azure Monitor は、Windows および Linux に組み込まれているカウンターと、指定したその他のパフォーマンス カウンターからの CPU、メモリ、ディスク、ネットワーク パフォーマンスのデータをログに記録します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。  ワイヤ データは、TCP トランスポート層ではなく、アプリケーション レベルでネットワーク データを調べます。  このソリューションは個別の ACK および SYN を調べません。  ハンドシェイクが完了すると、ライブ接続と見なされ、接続済みとしてマークされます。 その接続は両側が合意している限りはライブ接続のままになり、ソケットが開いて、データを前後に渡すことができます。  いずれかの側が接続を閉じると、切断済みとしてマークされます。  したがって、正常に完了したパケットの帯域幅のみがカウントされ、再送信および失敗したパケットに関するレポートは行われません。
 
 [sFlow](http://www.sflow.org/) などのソフトウェアと [Cisco の NetFlow プロトコル](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)を使用したことがある場合は、ワイヤ データから表示される統計情報とデータについてよく知っているはずです。
 
@@ -50,33 +52,33 @@ Log Analytics エージェントに加えて、ワイヤ データ ソリュー�
 
 ワイヤ データを使って検索する場合は、データのフィルター処理とグループ化によって、上位のエージェントと上位のプロトコルに関する情報を表示できます。 また、特定のコンピューター (IP アドレスまたは MAC アドレス) が相互に通信した時点、通信の長さ、送信されたデータ量を確認することもできます。基本的には、ネットワーク トラフィックに関するメタデータが検索ベースで表示されます。
 
-ただし、表示されるのはメタデータであるため、必ずしも詳細なトラブルシューティングに役立つとは限りません。 Log Analytics のワイヤ データは、ネットワーク データを完全にキャプチャしたものではありません。  これはパケット レベルの詳細なトラブルシューティングを目的としたものではありません。 その他の収集方法と比較した場合、エージェントを使う利点は、アプライアンスのインストール、ネットワーク スイッチの再構成、複雑な構成作業の実行が必要ないことです。 ワイヤ データは単純にエージェント ベースであるため、コンピューターにエージェントをインストールすると、そのエージェント自体のネットワーク トラフィックが監視されます。 もう 1 つの利点は、クラウド プロバイダー、ホスティング サービス プロバイダー、Microsoft Azure など、ユーザーがファブリック レイヤーを所有しない場所で実行されるワークロードを監視できることです。
+ただし、表示されるのはメタデータであるため、必ずしも詳細なトラブルシューティングに役立つとは限りません。 Azure Monitor のワイヤ データは、ネットワーク データを完全にキャプチャしたものではありません。  これはパケット レベルの詳細なトラブルシューティングを目的としたものではありません。 その他の収集方法と比較した場合、エージェントを使う利点は、アプライアンスのインストール、ネットワーク スイッチの再構成、複雑な構成作業の実行が必要ないことです。 ワイヤ データは単純にエージェント ベースであるため、コンピューターにエージェントをインストールすると、そのエージェント自体のネットワーク トラフィックが監視されます。 もう 1 つの利点は、クラウド プロバイダー、ホスティング サービス プロバイダー、Microsoft Azure など、ユーザーがファブリック レイヤーを所有しない場所で実行されるワークロードを監視できることです。
 
 ## <a name="connected-sources"></a>接続先ソース
 
-ワイヤ データは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 つまり、サーバーには Log Analytics エージェントをインストールしておき、Dependency Agent を使用して構成する必要があります。 次の表では、ワイヤ データ ソリューションでサポートされている接続先ソースについて説明します。
+ワイヤ データは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Azure Monitor への接続に関して Log Analytics エージェントに依存しています。 つまり、サーバーには Log Analytics エージェントをインストールしておき、Dependency Agent を使用して構成する必要があります。 次の表では、ワイヤ データ ソリューションでサポートされている接続先ソースについて説明します。
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
 | Windows エージェント | はい | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)」を参照してください。 |
 | Linux エージェント | はい | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 |
+| System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Azure Monitor への直接接続が必要です。 |
 | Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
-Windows では、データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Log Analytics では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。
+Windows では、データの収集と送信のために System Center Operations Manager と Azure Monitor の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Azure Monitor では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Azure Monitor、またはその両方にレポートできます。
 
-Linux では、Linux の Log Analytics エージェントがデータを収集して Log Analytics に送信します。 ワイヤ データは、Log Analytics に直接接続されているエージェントを含むサーバーまたは System Center Operations Manager 管理グループ経由で Log Analytics に接続されているサーバーで使用できます。
+Linux では、Linux の Log Analytics エージェントがデータを収集して Azure Monitor に送信します。 ワイヤ データは、Azure Monitor に直接接続されているエージェントを含むサーバーまたは System Center Operations Manager 管理グループ経由で Azure Monitor に接続されているサーバーで使用できます。
 
-Dependency Agent がデータ自体を送信することはないため、ファイアウォールやポートを変更する必要はありません。 ワイヤ データ内のデータは、常に Log Analytics エージェントによって、直接または Log Analytics ゲートウェイを使用して Log Analytics に送信されます。
+Dependency Agent がデータ自体を送信することはないため、ファイアウォールやポートを変更する必要はありません。 ワイヤ データ内のデータは、常に Log Analytics エージェントによって、直接または Log Analytics ゲートウェイを使用して Azure Monitor に送信されます。
 
 ![エージェントの図](./media/wire-data/agents.png)
 
-Log Analytics に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
+Azure Monitor に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
 
-- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。
-- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために Log Analytics ゲートウェイを構成する必要があります。
+- System Center Operations Manager エージェントがインターネット経由で Azure Monitor にアクセスできる場合は、追加の構成は必要ありません。
+- System Center Operations Manager エージェントがインターネット経由で Azure Monitor にアクセスできない場合は、System Center Operations Manager を操作するために Log Analytics ゲートウェイを構成する必要があります。
 
-Windows または Linux コンピューターがサービスに直接接続できない場合は、Log Analytics ゲートウェイを使用して Log Analytics に接続するように Log Analytics エージェントを構成する必要があります。 Log Analytics ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
+Windows または Linux コンピューターがサービスに直接接続できない場合は、Log Analytics ゲートウェイを使用して Azure Monitor に接続するように Log Analytics エージェントを構成する必要があります。 Log Analytics ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -195,13 +197,13 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ワークスペースのワイヤ データ ソリューションを構成するには、次の手順を実行します。
 
-1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って有効にしてください。
+1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) から有効にするか、[Solutions Gallery からの監視ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って有効にしてください。
 2. データを取得する各コンピューターに Dependency Agent をインストールします。 Dependency Agent は近隣のコンピューターへの接続を監視することができるため、すべてのコンピューターにエージェントが必要とは限りません。
 
 > [!NOTE]
 > 以前のバージョンのワイヤ データ ソリューションは、新しいワークスペースに追加できません。 元のワイヤ データ ソリューションが有効になっている場合は、引き続き使用できます。 ただし、Wire Data 2.0 を使用するには、まず元のバージョンを削除する必要があります。
 > 
-### <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
+> ### <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
 
 エージェントをインストールまたはアンインストールするには、管理者特権が必要です。
 
@@ -269,7 +271,7 @@ Dependency Agent を同時に多数のサーバーに対して簡単にデプロ
 
 ```PowerShell
 
-Invoke-WebRequest &quot;https://aka.ms/dependencyagentwindows&quot; -OutFile InstallDependencyAgent-Windows.exe
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
 
 .\InstallDependencyAgent-Windows.exe /S
 
@@ -292,7 +294,7 @@ Desired State Configuration 経由で Dependency Agent をデプロイするに�
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
-$DAPackageLocalPath = &quot;C:\InstallDependencyAgent-Windows.exe&quot;
+$DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
 
 
 
@@ -306,11 +308,11 @@ Node $NodeName
 
     {
 
-        Uri = &quot;https://aka.ms/dependencyagentwindows&quot;
+        Uri = "https://aka.ms/dependencyagentwindows"
 
         DestinationPath = $DAPackageLocalPath
 
-        DependsOn = &quot;[Package]OI&quot;
+        DependsOn = "[Package]OI"
 
     }
 
@@ -318,21 +320,21 @@ Node $NodeName
 
     {
 
-        Ensure=&quot;Present&quot;
+        Ensure = "Present"
 
-        Name = &quot;Dependency Agent&quot;
+        Name = "Dependency Agent"
 
         Path = $DAPackageLocalPath
 
         Arguments = '/S'
 
-        ProductId = &quot;&quot;
+        ProductId = ""
 
-        InstalledCheckRegKey = &quot;HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent&quot;
+        InstalledCheckRegKey = "HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
 
-        InstalledCheckRegValueName = &quot;DisplayName&quot;
+        InstalledCheckRegValueName = "DisplayName"
 
-        InstalledCheckRegValueData = &quot;Dependency Agent&quot;
+        InstalledCheckRegValueData = "Dependency Agent"
 
     }
 
@@ -359,7 +361,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>管理パック
 
-ワイヤ データが Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに送信されます。 System Center Operations Manager エージェントを[接続された管理グループ](../../azure-monitor/platform/om-agents.md)で使用している場合は、Dependency Monitor 管理パックが System Center Operations Manager からデプロイされます。 エージェントが直接接続されている場合、管理パックは Log Analytics によって配布されます。
+ワイヤ データが Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに送信されます。 System Center Operations Manager エージェントを[接続された管理グループ](../platform/om-agents.md)で使用している場合は、Dependency Monitor 管理パックが System Center Operations Manager からデプロイされます。 エージェントが直接接続されている場合、管理パックは Azure Monitor によって配布されます。
 
 この管理パックは、Microsoft.IntelligencePacks.ApplicationDependencyMonitor という名前で、 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs に書き込まれます。 管理パックで使用されるデータ ソースは、%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll です。
 
@@ -371,7 +373,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 - ワイヤ データ ソリューションでは、Windows Server 2012 R2、Windows 8.1 以降のオペレーティング システムを実行しているコンピューターからデータを取得します。
 - ワイヤ データの取得元となるコンピューターには、Microsoft .NET Framework 4.0 以降が必要です。
-- 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)」で説明されている手順に従ってワイヤ データ ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
+- [Solutions Gallery からの監視ソリューションの追加](solutions.md)に関するページで説明されている手順に従ってワイヤ データ ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
 - 特定のソリューションのワイヤ データを表示する場合は、そのソリューションが既にワークスペースに追加されている必要があります。
 
 エージェントをインストールして、ソリューションをインストールすると、Wire Data 2.0 のタイルがワークスペースに表示されます。
@@ -384,9 +386,9 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 | **ブレード** | **説明** |
 | --- | --- |
-| ネットワーク トラフィックをキャプチャするエージェント | ネットワーク トラフィックをキャプチャしているエージェントの数を表示し、トラフィックをキャプチャしている上位 10 台のコンピューターを一覧表示します。 数値をクリックすると、ログ検索 (<code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>) が実行されます。 リスト内のコンピューターをクリックすると、ログ検索が実行され、キャプチャされた合計バイト数が返されます。 |
-| ローカル サブネット | エージェントが検出したローカル サブネットの数を表示します。  数値をクリックすると、ログ検索 (<code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>) が実行され、すべてのサブネットと共に、各サブネット上で送信されたバイト数が一覧表示されます。 リスト内のサブネットをクリックすると、ログ検索が実行され、サブネット上で送信された合計バイト数が返されます。 |
-| アプリケーション レベルのプロトコル | エージェントに検出された、使用中のアプリケーション レベルのプロトコルの数を示します。 数値をクリックすると、ログ検索 (<code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>) が実行されます。 プロトコルをクリックすると、ログ検索が実行され、そのプロトコルを使用して送信された合計バイト数が返されます。 |
+| ネットワーク トラフィックをキャプチャするエージェント | ネットワーク トラフィックをキャプチャしているエージェントの数を表示し、トラフィックをキャプチャしている上位 10 台のコンピューターを一覧表示します。 数値をクリックすると、ログ検索 (<code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code>) が実行されます。 リスト内のコンピューターをクリックすると、ログ検索が実行され、キャプチャされた合計バイト数が返されます。 |
+| ローカル サブネット | エージェントが検出したローカル サブネットの数を表示します。  数値をクリックすると、ログ検索 (<code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code>) が実行され、すべてのサブネットと共に、各サブネット上で送信されたバイト数が一覧表示されます。 リスト内のサブネットをクリックすると、ログ検索が実行され、サブネット上で送信された合計バイト数が返されます。 |
+| アプリケーション レベルのプロトコル | エージェントに検出された、使用中のアプリケーション レベルのプロトコルの数を示します。 数値をクリックすると、ログ検索 (<code>WireData \| summarize sum(TotalBytes) by ApplicationProtocol</code>) が実行されます。 プロトコルをクリックすると、ログ検索が実行され、そのプロトコルを使用して送信された合計バイト数が返されます。 |
 
 ![ワイヤ データ ダッシュボード](./media/wire-data/wire-data-dash.png)
 
@@ -401,10 +403,6 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 **[アプリケーション レベル プロトコル]** ブレードは、どのプロトコルが使用されているかを確認するのに役立ちます。 たとえば、ネットワーク環境で SSH が使用されていないと予想される場合があります。 このブレードで利用可能な情報を表示すると、すぐにこの予想の正誤を確認できます。
 
 ![ログ検索例](./media/wire-data/log-search-example03.png)
-
-この例では、SSH の詳細を掘り下げて、SSH を使用しているコンピュータや、その他の通信の詳細を確認できます。
-
-![sh 検索の結果](./media/wire-data/ssh-details.png)
 
 また、プロトコルのトラフィックが時間の経過とともに増加しているか減少しているかを知っておくと便利です。 たとえば、アプリケーションによって送信されているデータ量が増加している場合、注意すべきことや注目すべきことがある可能性があります。
 

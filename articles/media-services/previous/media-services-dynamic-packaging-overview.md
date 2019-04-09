@@ -11,20 +11,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 15599beb47b7f6e72b89e7776196de8e6b94844f
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e27b52c96f524f25aab18f45cf72c43884b7640d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189174"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350769"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Version 3](../latest/dynamic-packaging-overview.md)
+> * [Version 2](media-services-dynamic-packaging-overview.md)
+
 Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX、Silverlight、Windows 8 など) に配信できます。 これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming (HLS) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。 MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
 
-動的パッケージを使用すれば、一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルを含むアセットを作成するだけで済みます。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
+ダイナミック パッケージを使用すれば、一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルを含むアセットを作成するだけで済みます。 そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
 次の図は、従来のエンコードおよび静的パッケージングのワークフローを示しています。
 
@@ -35,12 +39,14 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 ![動的なエンコード](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 ## <a name="common-scenario"></a>一般的なシナリオ
+
 1. 入力ファイル (中間ファイル) をアセットにアップロードします。 たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「 [Media Encoder Standard の形式とコーデック](media-services-media-encoder-standard-formats.md)」を参照してください)。
 2. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。
 3. オンデマンド ロケーターを作成することによって、アダプティブ ビットレート MP4 セットを含むアセットを発行します。
 4. コンテンツにアクセスしてストリーミングするストリーミング URL を構築します。
 
 ## <a name="preparing-assets-for-dynamic-streaming"></a>動的ストリーミング用のアセットの準備
+
 動的ストリーミング用にアセットを準備するには、次のオプションがあります。
 
 - [マスター ファイルをアップロードします](media-services-dotnet-upload-files.md)。
@@ -49,14 +55,16 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>ダイナミック パッケージによってサポートされているオーディオ コーデック
 
-ダイナミック パッケージでは、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、HE-AAC v1、HE-AAC v2)、[Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3、E-AC3)、または [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS Express、DTS LBR、DTS HD、DTS HD Lossless) でエンコードされたオーディオを含む MP4 ファイル (または Smooth Streaming ファイル) がサポートされています。
+ダイナミック パッケージでは、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、HE-AAC v1、HE-AAC v2)、[Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3、E-AC3)、Dolby Atmos、または [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS Express、DTS LBR、DTS HD、DTS HD Lossless) でエンコードされたオーディオを含む MP4 ファイルがサポートされています。 Dolby Atmos コンテンツのストリーミングは、CSF (Common Streaming Format) または CMAF (Common Media Application Format) フラグメント化 MP4 による MPEG-DASH プロトコルなどの標準でサポートされ、CMAF による HLS (HTTP ライブ ストリーミング) 経由でサポートされています。
 
-> [!Note]
+> [!NOTE]
 > ダイナミック パッケージでは、[Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) オーディオ (古いコーデック) を含むファイルはサポートされていません。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

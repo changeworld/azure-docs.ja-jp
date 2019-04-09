@@ -1,32 +1,32 @@
 ---
-title: 検索ボックスへのオートコンプリートの追加に関するチュートリアル - Azure Search
+title: 検索ボックスへのオートコンプリートの追加の例 - Azure Search
 description: データ中心アプリケーションのエンド ユーザー エクスペリエンスを Azure Search のオートコンプリート API と検索候補 API を使用して向上させる方法の例。
 manager: pablocas
 author: mrcarter8
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b754f00e9bed34717734c4aec81e5489d2c12b63
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200278"
 ---
-# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>チュートリアル:Azure Search を使用して検索ボックスにオートコンプリートを追加する
+# <a name="example-add-autocomplete-to-your-search-box-using-azure-search"></a>例:Azure Search を使用して検索ボックスにオートコンプリートを追加する
 
-このチュートリアルでは、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) の[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、および[ファセット](search-faceted-navigation.md)を使用して、パワフルな検索ボックスを作成します。 
+この例では、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) の[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、および[ファセット](search-faceted-navigation.md)を使用して、パワフルな検索ボックスを作成する方法について学習します。 
 
 + "*検索候補*" は、その時点までにユーザーが入力した内容に基づく実際の検索結果を候補として提示します。 
 + Azure Search の[新しいプレビュー機能](search-api-preview.md)である "*オートコンプリート*" では、ユーザーが現在入力している内容を完成させるための用語がインデックスから提供されます。 
 
 ここでは、ユーザーの入力時に豊富な方法で検索できるようにすることで、ユーザーの生産性を向上させるための複数のテクニックを比較します。
 
-このチュートリアルでは、C# を使用して [Azure Search .NET クライアント ライブラリ](https://aka.ms/search-sdk) を呼び出し、JavaScript を使用して Azure Search REST API を直接呼び出す ASP.NET MVC ベースのアプリケーションについて説明します。 このチュートリアルのアプリケーションは、[NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル インデックスを対象にしています。 NYCJobs デモに既に構成されているインデックスを使用するか、NYCJobs サンプル ソリューションのデータ ローダーを使用して独自のインデックスにデータを入力できます。 このサンプルでは、JavaScript ライブラリの [jQuery UI](https://jqueryui.com/autocomplete/) と [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) を使用して、オートコンプリートをサポートする検索ボックスを作成します。 これらのコンポーネントを Azure Search と共に使用して、検索ボックスでの先行入力によるオートコンプリートをサポートする方法の複数の例を確認します。
+この例では、C# を使用して [Azure Search .NET クライアント ライブラリ](https://aka.ms/search-sdk)を呼び出し、JavaScript を使用して Azure Search REST API を直接呼び出す ASP.NET MVC ベースのアプリケーションについて説明します。 この例で使用されるアプリケーションでは、インデックが作成された [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル データが使用されます。 NYCJobs デモに既に構成されているインデックスを使用するか、NYCJobs サンプル ソリューションのデータ ローダーを使用して独自のインデックスにデータを入力できます。 このサンプルでは、JavaScript ライブラリの [jQuery UI](https://jqueryui.com/autocomplete/) と [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) を使用して、オートコンプリートをサポートする検索ボックスを作成します。 これらのコンポーネントを Azure Search と共に使用して、検索ボックスでの先行入力によるオートコンプリートをサポートする方法の複数の例を確認します。
 
 以下のタスクを実行します。
 
@@ -35,16 +35,16 @@ ms.locfileid: "55997166"
 > * Search サービスの情報をアプリケーション設定に追加する
 > * 検索入力ボックスを実装する
 > * リモート ソースから取得するオートコンプリートの一覧のサポートを追加する 
-> * .Net SDK と REST API を使用して検索候補とオートコンプリートを取得する
+> * .NET SDK と REST API を使用して検索候補とオートコンプリートを取得する
 > * パフォーマンス向上のためにクライアント側のキャッシュをサポートする 
 
 ## <a name="prerequisites"></a>前提条件
 
 * Visual Studio 2017。 無料の [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) を使用できます。 
 
-* このチュートリアル用のサンプル [ソース コード](https://github.com/azure-samples/search-dotnet-getting-started)をダウンロードします。
+* この例のサンプル [ソース コード](https://github.com/azure-samples/search-dotnet-getting-started)をダウンロードします。
 
-* (省略可能) アクティブな Azure アカウントと Azure Search サービス。 Azure アカウントを持っていない場合、[無料試用版](https://azure.microsoft.com/free/)でサインアップできます。 サービスのプロビジョニングについては、[Search サービスの作成](search-create-service-portal.md)に関する記事を参照してください。 このチュートリアルは、別のデモのために既に用意されている、ホストされている NYCJobs インデックスを使用して完了できるため、アカウントとサービスは必須ではありません。
+* (省略可能) アクティブな Azure アカウントと Azure Search サービス。 Azure アカウントを持っていない場合、[無料試用版](https://azure.microsoft.com/free/)でサインアップできます。 サービスのプロビジョニングについては、[Search サービスの作成](search-create-service-portal.md)に関する記事を参照してください。 この例は、別のデモのために既に用意されている、ホストされている NYCJobs インデックスを使用して完了できるため、アカウントとサービスは必須ではありません。
 
 * (省略可能) [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル コードをダウンロードして、NYCJobs データを Azure Search サービスのインデックスにインポートします。
 
@@ -61,11 +61,11 @@ NYCJobs サンプル アプリケーションのデータを独自のインデ�
 
 1. F5 キーを押してアプリケーションを起動します。  これにより、2 つのインデックスが作成され、NYCJob サンプル データがインポートされます。
 
-1. このチュートリアルのサンプル コードの AutocompleteTutorial.sln ソリューション ファイルを Visual Studio で開きます。  AutocompleteTutorial プロジェクト内の Web.config を開き、SearchServiceName と SearchServiceApiKey の値を上記と同じように変更します。
+1. この例のサンプル コードで、AutocompleteTutorial.sln ソリューション ファイルを Visual Studio で開きます。  AutocompleteTutorial プロジェクト内の Web.config を開き、SearchServiceName と SearchServiceApiKey の値を上記と同じように変更します。
 
 ### <a name="running-the-sample"></a>サンプルの実行
 
-これで、チュートリアルのサンプル アプリケーションを実行する準備が整いました。  チュートリアルを実行するには、AutocompleteTutorial.sln ソリューション ファイルを Visual Studio で開きます。  このソリューションには、ASP.NET MVC プロジェクトが含まれています。  F5 キーを押してプロジェクトを実行し、任意のブラウザーにページを読み込みます。  上部に、C# または JavaScript を選択するためのオプションが表示されます。  C# オプションは、ブラウザーから HomeController を呼び出し、Azure Search .Net SDK を使用して結果を取得します。  JavaScript オプションは、ブラウザーから直接 Azure Search REST API を呼び出します。  このオプションでは、コントローラーがフローから除外されるため、通常はパフォーマンスが大幅に向上します。  自分のニーズと言語設定に合ったオプションを選択できます。  オートコンプリートの例を示すさまざまなページがあり、それぞれにガイダンスが示されています。  それぞれの例に推奨するサンプル テキストがあり、そのテキストを使って試してみることができます。  検索ボックスに数文字を入力して、何が起こるかを観察してください。
+これで、例のサンプル アプリケーションを実行する準備が整いました。  例を実行するには、AutocompleteTutorial.sln ソリューション ファイルを Visual Studio で開きます。  このソリューションには、ASP.NET MVC プロジェクトが含まれています。  F5 キーを押してプロジェクトを実行し、任意のブラウザーにページを読み込みます。  上部に、C# または JavaScript を選択するためのオプションが表示されます。  C# オプションは、ブラウザーから HomeController を呼び出し、Azure Search .Net SDK を使用して結果を取得します。  JavaScript オプションは、ブラウザーから直接 Azure Search REST API を呼び出します。  このオプションでは、コントローラーがフローから除外されるため、通常はパフォーマンスが大幅に向上します。  自分のニーズと言語設定に合ったオプションを選択できます。  オートコンプリートの例を示すさまざまなページがあり、それぞれにガイダンスが示されています。  それぞれの例に推奨するサンプル テキストがあり、そのテキストを使って試してみることができます。  検索ボックスに数文字を入力して、何が起こるかを観察してください。
 
 ## <a name="how-this-works-in-code"></a>コードでの動作のしくみ
 
@@ -132,7 +132,7 @@ F5 キーを押してアプリケーションを起動します。
 
 1. Controllers ディレクトリ内の HomeController.cs ファイルを開きます。 
 
-1. 最初に気付くのは、クラスの上部にある InitSearch と呼ばれるメソッドです。  これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。  この動作の詳細については、次のチュートリアルを参照してください: [.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+1. 最初に気付くのは、クラスの上部にある InitSearch と呼ばれるメソッドです。  これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。  この動作の詳細については、次の例を参照してください。[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Suggest 関数に移動します。
 
@@ -209,15 +209,15 @@ $(function () {
 });
 ```
 
-これを上記の home コント ローラーを呼び出す例と比較した場合、いくつかの類似点に気付くでしょう。  `minLength` と `position` のオートコンプリート構成は、完全に同じです。  大きな違いは source にあります。  home コントローラー内の Suggest メソッドを呼び出す代わりに、REST 要求が JavaScript 関数内に作成され、ajax を使用して実行されます。  応答は "success" で処理され、source として使用します。
+これを上記の home コント ローラーを呼び出す例と比較した場合、いくつかの類似点に気付くでしょう。  `minLength` と `position` のオートコンプリート構成は、完全に同じです。  大きな違いは source にあります。  home コントローラー内の Suggest メソッドを呼び出す代わりに、REST 要求が JavaScript 関数内に作成され、Ajax を使用して実行されます。  応答は "success" で処理され、source として使用します。
 
 ## <a name="takeaways"></a>重要なポイント
 
-このチュートリアルでは、オートコンプリートと検索候補をサポートする検索ボックスを作成するための基本的な手順について説明しています。  ASP.NET MVC アプリケーションをビルドし、Azure Search .Net SDK または REST API を使用して検索候補を取得する方法を確認しました。
+この例では、オートコンプリートと検索候補をサポートする検索ボックスを作成するための基本的な手順について説明しています。  ASP.NET MVC アプリケーションをビルドし、Azure Search .NET SDK または REST API を使用して検索候補を取得する方法を確認しました。
 
 ## <a name="next-steps"></a>次の手順
 
-検索候補とオートコンプリートを検索エクスペリエンスに統合します。  ユーザーの入力時に Azure Search のパワーを利用できるようにすることでユーザーの生産性を向上させるために、.Net SDK または REST API の直接的な使用をどのように実行するかを考慮します。
+検索候補とオートコンプリートを検索エクスペリエンスに統合します。  .NET SDK または REST API を直接使用することで、どのようにユーザーが入力する際に Azure Search の力を活用して生産性を向上させることができるかを検討します。
 
 > [!div class="nextstepaction"]
 > [オートコンプリート REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)

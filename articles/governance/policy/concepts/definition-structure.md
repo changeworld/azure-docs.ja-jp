@@ -4,17 +4,17 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447788"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894429"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -80,7 +80,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
-タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。
+タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/tag-support.md)」を参照してください。
 
 ## <a name="parameters"></a>parameters
 
@@ -101,7 +101,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
   - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
 - `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。 割り当てられている既存のポリシー定義を更新するときは、必須です。
-- `allowedValues`:(省略可能) 割り当て中にパラメーターにおいて許可される値の一覧を提供します。
+- `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。
 
 たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
 
@@ -289,6 +289,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。
 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
 
+> [!WARNING]
+> _テンプレート関数_の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。
+
 #### <a name="value-examples"></a>値の例
 
 このポリシー規則の例では、**value** を使用して `resourceGroup()` 関数の結果と `*netrg` の **like** 条件に対して返された **name** プロパティを比較します。 規則では、名前が `*netrg` で終わる任意のリソース グループ内で `Microsoft.Network/*` の **type** ではないリソースをすべて拒否します。
@@ -328,6 +331,44 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
     }
 }
 ```
+
+#### <a name="avoiding-template-failures"></a>テンプレート エラーの回避
+
+**value** で_テンプレート関数_を使用することにより、入れ子になった多数の複雑な関数が可能になります。 _テンプレート関数_の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 特定のシナリオでエラーが発生する **value** の例は、以下のとおりです。
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+上述のポリシー規則の例では、[substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) を使用して **name** の最初の 3 文字を **abc** と比較しています。 **name** が 3 文字よりも短い場合、`substring()` 関数はエラーとなります。 このエラーにより、ポリシーは **deny** となります。
+
+3 文字よりも短い **name** をエラーにせず、**name** の最初の 3 文字が **abc** と等しいかどうかを確認するには、代わりに [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) 関数を使用します。
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[if(greaterOrEquals(length(field('name')), 3), substring(field('name'), 0, 3), 'not starting with abc')]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+変更したポリシー規則では、3 文字未満の値の `substring()` を取得する前に、`if()` によって **name** の長さが確認されます。 **name** が短すぎる場合、代わりに "not starting with abc"\(abc で開始されていません\) が返され、**abc** と比較されます。 **abc** で開始しない短い名前のリソースも、ポリシー規則でエラーとなりますが、評価時にはエラーが発生しなくなります。
 
 ### <a name="effect"></a>効果
 
@@ -443,70 +484,60 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-最初の例は配列全体を評価するために使用され、**[\*]** エイリアスでは配列の各要素が評価されます。
-
-例として、ポリシー規則を見てみましょう。 このポリシーは、ipRules が構成されているストレージ アカウントで、どの ipRules にも値 "127.0.0.1" が**含まれていない**アカウントを**拒否**します。
+"通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。 **ipRules** を使用した例では、規則の数と各規則の構成を含む規則の完全なセットが存在することが検証されます。 次の **ipRules** のサンプル例では、_action_ が **Allow** の **192.168.1.1** と **10.0.4.1** の両方が正確にチェックされ、**effectType** が適用されます。
 
 ```json
 "policyRule": {
     "if": {
-        "allOf": [{
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "Equals": [
+                    {
+                        "action": "Allow",
+                        "value": "192.168.1.1"
+                    },
+                    {
+                        "action": "Allow",
+                        "value": "10.0.4.1"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+配列内の各要素の値および各要素の特定のプロパティの比較は、**[\*]** エイリアスで可能です。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 例では、**ipRules[\*]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP _value_ は検証されません。 このサンプル規則では、**ipRules[\*].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
                 "exists": "true"
             },
             {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "127.0.0.1"
+                "notEquals": "10.0.4.1"
             }
         ]
     },
     "then": {
-        "effect": "deny",
+        "effect": "[parameters('effectType')]"
     }
 }
 ```
 
-**IpRules** 配列の例は次のとおりです。
-
-```json
-"ipRules": [{
-        "value": "127.0.0.1",
-        "action": "Allow"
-    },
-    {
-        "value": "192.168.1.1",
-        "action": "Allow"
-    }
-]
-```
-
-この例の処理方法を次に示します。
-
-- `networkAcls.ipRules` - 配列が null 値 でないことを確認します。 true に評価されるので、評価を続けます。
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-    "exists": "true"
-  }
-  ```
-
-- `networkAcls.ipRules[*].value` - **ipRules** 配列内の各 _value_ プロパティを確認します。
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-    "notEquals": "127.0.0.1"
-  }
-  ```
-
-  - 配列として、各要素が処理されます。
-
-    - "127.0.0.1" != "127.0.0.1" は false として評価されます。
-    - "127.0.0.1" != "192.168.1.1" true として評価されます。
-    - **ipRules** 配列内の少なくとも 1 つの _value_ プロパティが false と評価されるので、評価は停止します。
-
-条件が false と評価されたので、**Deny** 効果はトリガーされません。
+詳細については、[[\*] エイリアスの評価](../how-to/author-policies-for-arrays.md#evaluating-the--alias) に関する説明を参照してください。
 
 ## <a name="initiatives"></a>イニシアティブ
 

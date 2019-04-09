@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416192"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003723"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -21,7 +21,7 @@ ms.locfileid: "56416192"
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Azure Migrate がサポートするのは VMware ワークロードのアセスメントだけですか。
 
-はい、Azure Migrate は現在、VMware ワークロードのアセスメントのみをサポートしています。 将来的には、Hyper-V および物理サーバーのサポートが計画されています。
+はい、Azure Migrate は現在、VMware ワークロードのアセスメントのみをサポートしています。 プレビューでの Hyper-V のサポートについては、[ここ](https://aka.ms/migratefuture)でサインアップして、プレビューへのアクセスを取得してください。 将来的には、物理サーバーのサポートが計画されています。
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Azure Migrate が VMware 環境を検出するために vCenter Server は必要ですか。
 
@@ -42,7 +42,7 @@ Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Plann
 
 **VMware から Azure への移行**:オンプレミスのワークロードを Azure に移行する場合は、Azure Migrate を使用して移行を計画します。 Azure Migrate はオンプレミスのワークロードを評価し、ガイダンス、分析情報、メカニズムを提供して、Azure への移行を支援します。 移行計画の準備ができたら、Azure Site Recovery や Azure Database Migration Service などのサービスを使用して、Azure にマシンを移行できます。
 
-**Hyper-V から Azure への移行**:Azure Migrate は現在、Azure への移行のための VMware 仮想マシンのアセスメントのみをサポートしています。 Azure Migrate では現在、Hyper-V をサポートするよう進めております。 その間は Site Recovery Deployment Planner を利用できます。 Azure Migrate で Hyper-V のサポートが有効になったら、Azure Migrate を使用して Hyper-V のワークロードの移行を計画できます。
+**Hyper-V から Azure への移行**:Azure Migrate の一般公開バージョンは現在、Azure への移行のための VMware 仮想マシンのアセスメントをサポートしています。 Hyper-V のサポート (運用サポートを含む) は現在プレビュー段階にあります。 このプレビューをお試しになりたい場合は、[こちら](https://aka.ms/migratefuture) でサインアップしてください。
 
 **VMware/Hyper-V から Azure へのディザスター リカバリー**:Azure Site Recovery (Site Recovery) を使用して Azure のディザスター リカバリー (DR) を実行する場合は、Site Recovery Deployment Planner を使用して DR を計画します。 Site Recovery Deployment Planner はお使いのオンプレミス環境の ASR 固有の詳細なアセスメントを実行します。 仮想マシンのレプリケーション、フェールオーバーなど、DR 操作が適切に実行されるために Site Recovery によって要求されるレコメンデーションを提供します。  
 
@@ -120,7 +120,7 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 
 ### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>継続的プロファイリングの場合に Azure Migrate によってアップロードされるデータの量はどれくらいですか。
 
-Azure Migrate に送信されるデータの量は、複数のパラメーターによりさまざまです。 目安の値としては、マシンが 10 台のプロジェクトで (それぞれに 1 個のディスクと 1 個の NIC)、1 日あたり約 50 MB が送信されます。 これは概算値であり、NIC とディスクに対するデータ ポイントの数によって変わります (マシン、NIC、またはディスクの数が増える場合、送信されるデータ量の変化は非線形です)。 
+Azure Migrate に送信されるデータの量は、複数のパラメーターによりさまざまです。 目安の値としては、マシンが 10 台のプロジェクトで (それぞれに 1 個のディスクと 1 個の NIC)、1 日あたり約 50 MB が送信されます。 これは概算値であり、NIC とディスクに対するデータ ポイントの数によって変わります (マシン、NIC、またはディスクの数が増える場合、送信されるデータ量の変化は非線形です)。
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>保存データや転送中のデータは暗号化されますか。
 
@@ -176,7 +176,7 @@ Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microso
 
 ### <a name="what-is-dependency-visualization"></a>依存関係の視覚化とは何ですか。
 
-依存関係の視覚化により、アセスメントを実行する前にマシンの依存をクロスチェックすることで、移行対象の VM のグループの評価の信頼性を高めることができます。 依存関係の視覚化により、後に何も残さないようにし、Azure への移行時に予期しない障害を回避することに役立ちます。 Azure Migrate は、依存関係を視覚化できるように Log Analytics の Service Map ソリューションを活用します。
+依存関係の視覚化により、アセスメントを実行する前にマシンの依存をクロスチェックすることで、移行対象の VM のグループの評価の信頼性を高めることができます。 依存関係の視覚化により、後に何も残さないようにし、Azure への移行時に予期しない障害を回避することに役立ちます。 Azure Migrate は、依存関係を視覚化できるように Azure Monitor Logs で Service Map ソリューションを活用します。
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>依存関係の視覚化機能の利用には料金の支払いが発生しますか。
 
@@ -217,7 +217,7 @@ MMA でサポートされる Linux オペレーティング システムの一�
 依存関係エージェントでサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)にあります。
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Azure Migrate で 1 時間を超えて依存関係を視覚化することはできますか。
-いいえ。Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Log Analytics を使用すると、長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)ことができます。
+いいえ。Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Azure Monitor ログを使用すれば、長期間にわたって [依存関係データのクエリ](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) を実行できます。
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>依存関係の視覚化では、10 を超える VM を含むグループはサポートされていますか。
 最大 10 個の VM を含む[グループの依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。 グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。

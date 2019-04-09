@@ -2,25 +2,25 @@
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
 description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/05/2018
+ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004448"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。 この記事では、VMware VM を Azure にレプリケートするときの構成サーバーの展開に必要な手順について説明します。 物理サーバーのレプリケーション用に構成サーバーを設定する必要がある場合は、[こちらの記事に従ってください](physical-azure-set-up-source.md)。
 
->[!TIP]
-Azure Site Recovery アーキテクチャの一部としての構成サーバーの役割については、[こちら](vmware-azure-architecture.md)を参照してください。
+> [!TIP]
+> Azure Site Recovery アーキテクチャの一部としての構成サーバーの役割については、[こちら](vmware-azure-architecture.md)を参照してください。
 
 ## <a name="deployment-of-configuration-server-through-ova-template"></a>OVA テンプレートを使用する構成サーバーのデプロイ
 
@@ -31,6 +31,25 @@ Azure Site Recovery アーキテクチャの一部としての構成サーバー
 構成サーバーの最小限のハードウェア要件を次の表にまとめます。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
+
+## <a name="azure-active-directory-permission-requirements"></a>Azure Active Directory アクセス許可の要件
+
+Azure Site Recovery サービスに構成サーバーを登録するには、AAD (Azure Active Directory) で設定された**次のいずれか**のアクセス許可を持つユーザーが必要です。
+
+1. ユーザーは、アプリケーションを作成するために、"アプリケーション開発者" ロールを持つ必要があります。
+   1. 確認するには、Azure portal にサインインする</br>
+   1. [Azure Active Directory] > [ロールと管理者] の順に移動する</br>
+   1. "アプリケーション開発者" ロールがユーザーに割り当てられているかどうかを確認します。 割り当てられていない場合、このアクセス許可を持つユーザーを使用するか、[アクセス許可の有効化を管理者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)に要求します。
+    
+1. "アプリケーション開発者" ロールを割り当てることができない場合は、ID を作成するユーザーで、[ユーザーはアプリケーションを登録できる] が [はい] に設定されていることを確認します。 上記のアクセス許可を有効にするには、次の手順を実行します。
+   1. Azure Portal にサインインする
+   1. [Azure Active Directory]、[ユーザー設定] の順に移動する
+   1. [アプリの登録] で、[ユーザーはアプリケーションを登録できる] を [はい] に設定する必要があります。
+
+      ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+
+> [!NOTE]
+> Active Directory フェデレーション サービス (AD FS) は**サポート**されていません。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) で管理されているアカウントを使用してください。
 
 ## <a name="capacity-planning"></a>容量計画
 
@@ -51,11 +70,11 @@ Azure Site Recovery アーキテクチャの一部としての構成サーバー
 3. **[サーバーの追加]** で、**[サーバーの種類]** に **[VMware の構成サーバー]** が表示されていることを確認します。
 4. 構成サーバー用の Open Virtualization Application (OVA) テンプレートをダウンロードします。
 
-  > [!TIP]
->構成サーバー テンプレートの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
+   > [!TIP]
+   >構成サーバー テンプレートの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
 
->[!NOTE]
-OVA テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 この期間が経過した後は、入手済みのライセンスを使用して Windows のライセンス認証をユーザーが行う必要があります。
+> [!NOTE]
+> OVA テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 この期間が経過した後は、入手済みのライセンスを使用して Windows のライセンス認証をユーザーが行う必要があります。
 
 ## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
 
@@ -94,31 +113,36 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 3. インストールの完了後に、管理者として VM にサインインします。
 4. 初めてサインインすると、数秒後に Azure Site Recovery 構成ツールが起動します。
 5. 構成サーバーを Site Recovery に登録するために使う名前を入力します。 次に、**[次へ]** を選択します。
-6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** を選択して、自分の Azure サブスクリプションにサインインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。
+6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** を選択して、自分の Azure サブスクリプションにサインインします。</br>
+    a. この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。</br>
+    b. 選択したユーザー アカウントが Azure でアプリケーションを作成するアクセス許可を持っていることを確認します。 必要なアクセス許可を有効にするには、[ここ](#azure-active-directory-permission-requirements)に指定されているガイドラインに従ってください。
 7. ツールがいくつかの構成タスクを実行した後、再起動されます。
 8. 再度マシンにサインインします。 構成サーバーの管理ウィザードが数秒後に**自動的に**起動します。
 
 ### <a name="configure-settings"></a>設定を構成する
 
-1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、プロセス サーバーが VM からのレプリケーション トラフィックを受信するために使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。 構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられている IP は、DHCP IP ではなく確実に静的 IP にします。
-2. **[Recovery Services コンテナーを選択する]** で、Microsoft Azure にサインインし、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
+1. 構成サーバー管理ウィザードで、**[接続の設定]** を選びます。 ドロップダウンから、最初に、モビリティ サービスの検出とソース マシンへのプッシュ インストールのために組み込みプロセス サーバーが使用する NIC を選択し、次に、構成サーバーが Azure との接続に使用する NIC を選択します。 次に、**[保存]** を選択します。 構成後、この設定を変更することはできません。 構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられている IP は、DHCP IP ではなく確実に静的 IP にします。
+2. **[Recovery Services コンテナーを選択する]** で、**手順 6** の「[構成サーバーを Azure Site Recovery サービスに登録する](#register-the-configuration-server-with-azure-site-recovery-services)」で使用されている資格情報を使用して Microsoft Azure にサインインします。
+3. サインインした後、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
 
     > [!NOTE]
     > 登録後に Recovery Services コンテナーを変更する柔軟性はありません。
+    > Recovery Services コンテナーを変更するには、現在のコンテナーとの構成サーバーの関連付けの解除が必要になります。それにより構成サーバーの下で保護されているすべての仮想マシンのレプリケーションが停止されます。 [詳細情報](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)。
 
-3. **[サードパーティ製ソフトウェアのインストール]** で、
+4. **[サードパーティ製ソフトウェアのインストール]** で、
 
     |シナリオ   |実行する手順  |
     |---------|---------|
     |MySQL を手動でダウンロードしてインストールすることはできますか?     |  はい。 MySQL アプリケーションをダウンロードし、**C:\Temp\ASRSetup** フォルダーに配置してから手動でインストールします。 これで、使用条件に同意し、**[ダウンロードしてインストール]** をクリックすると、ポータルに *[インストール済み]* と示されます。 次の手順に進むことができます。       |
     |オンラインでの MySQL のダウンロードを回避することはできますか?     |   はい。 MySQL インストーラー アプリケーションを **C:\Temp\ASRSetup** フォルダーに配置します。 使用条件に同意し、**[ダウンロードしてインストール]** をクリックすると、ポータルでは追加されたインストーラーが使用され、アプリケーションがインストールされます。 インストール後に次の手順に進むことができます。    |
     |Azure Site Recovery を使用して、MySQL をダウンロードし、インストールしたい     |  ライセンス契約の内容に同意し、**[ダウンロードしてインストール]** をクリックします。 これで、インストール後に次の手順に進むことができます。       |
-4. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
-5. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを入力します。 サーバーがリッスンするポートを入力します。 コンテナーで VMware サーバーに使うフレンドリ名を入力します。
-6. VMware サーバーに接続するために構成サーバーによって使われる資格情報を入力します。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順に選択します。 ここに入力した資格情報はローカルに保存されます。
-7. **[仮想マシンの資格情報の構成]** で、レプリケーション時にモビリティ サービスを自動的にインストールするために、仮想マシンのユーザー名とパスワードを入力します。 **Windows** マシンの場合、アカウントには、レプリケートするマシンに対するローカル管理者特権が必要です。 **Linux** の場合は、ルート アカウントの詳細を指定します。
-8. **[構成の確定]** を選択して、登録を完了します。
-9. 登録が終了したら、Azure portal を開き、構成サーバーと VMware サーバーが、**[Recovery Services コンテナー]** > **[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** にリストされていることを確認します。
+
+5. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
+6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを入力します。 サーバーがリッスンするポートを入力します。 コンテナーで VMware サーバーに使うフレンドリ名を入力します。
+7. VMware サーバーに接続するために構成サーバーによって使われる資格情報を入力します。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順に選択します。 ここに入力した資格情報はローカルに保存されます。
+8. **[仮想マシンの資格情報の構成]** で、レプリケーション時にモビリティ サービスを自動的にインストールするために、仮想マシンのユーザー名とパスワードを入力します。 **Windows** マシンの場合、アカウントには、レプリケートするマシンに対するローカル管理者特権が必要です。 **Linux** の場合は、ルート アカウントの詳細を指定します。
+9. **[構成の確定]** を選択して、登録を完了します。
+10. 登録が終了したら、Azure portal を開き、構成サーバーと VMware サーバーが、**[Recovery Services コンテナー]** > **[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** にリストされていることを確認します。
 
 ## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
 

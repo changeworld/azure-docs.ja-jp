@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3f42ccb50496ed53ea9a68b60301f9feccccb16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 833c2e460ae306a7673e580aaa304be93c3cd044
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188496"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199734"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Azure Active Directory テナントの削除
 
@@ -40,46 +40,49 @@ ms.locfileid: "56188496"
 
 2. **[Azure Active Directory]** を選択します。
 
-3. 削除するテナントに切り替えます。
+3. 削除する組織に切り替えます。
   
-  ![[ディレクトリの削除] ボタン](./media/directory-delete-howto/delete-directory-command.png)
+   ![削除する前に組織を確認します](./media/directory-delete-howto/delete-directory-command.png)
 
 4. **[ディレクトリの削除]** を選択します。
   
-  ![[ディレクトリの削除] ボタン](./media/directory-delete-howto/delete-directory-list.png)
+   ![組織を削除するコマンドを選択します](./media/directory-delete-howto/delete-directory-list.png)
 
 5. テナントがチェックで 1 つ以上不合格になった場合、合格する方法に関する詳細情報へのリンクが提供されます。 すべてのチェックに合格したら、**[削除]** を選択してプロセスを完了します。
 
 ## <a name="i-have-an-expired-subscription-but-i-cant-delete-the-tenant"></a>サブスクリプションが期限切れになったが、テナントを削除できない
 
-Azure Active Directory テナントを構成したときに、Azure Active Directory Premium P2、Office 365 Business Premium、または Enterprise Mobility + Security E5 など、組織のライセンス ベースのサブスクリプションもアクティブ化している可能性があります。 偶発的なデータ損失を回避するため、これらのサブスクリプションを完全に削除するまで、ディレクトリの削除がブロックされます。 テナントを削除するには、サブスクリプションが**プロビジョニング解除済み**状態である必要があります。 **有効期限切れ**または**キャンセル済み**のサブスクリプションは、**無効**状態に移行します。最終段階が**プロビジョニング解除済み**状態です。 
+Azure AD テナントを構成したときに、Azure AD Premium P2、Office 365 Business Premium、または Enterprise Mobility + Security E5 など、組織のライセンス ベースのサブスクリプションもアクティブ化している可能性があります。 偶発的なデータ損失を回避するため、これらのサブスクリプションを完全に削除するまで、ディレクトリの削除がブロックされます。 テナントを削除するには、サブスクリプションが**プロビジョニング解除済み**状態である必要があります。 **有効期限切れ**または**キャンセル済み**のサブスクリプションは、**無効**状態に移行します。最終段階が**プロビジョニング解除済み**状態です。 
 
 試用版の Office 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Office 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Office 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3)」を参照してください。 
 
 サブスクリプションの状態 | データ | データへのアクセス
 ----- | ----- | -----
-アクティブ (試用版の 30 日間)  | 誰もがアクセスできるデータ    | <li>ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<li>管理者は Office 365 管理センターとリソースへの通常のアクセス権を持ちます 
-有効期限切れ (30 日間)   | 誰もがアクセスできるデータ    | <li>ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<li>管理者は Office 365 管理センターとリソースへの通常のアクセス権を持ちます
-無効 (30 日間) | 管理者だけがアクセスできるデータ  | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Office 365 管理センターにアクセスできますが、ライセンスを割り当てたり、ユーザーを更新したりすることはできません
-プロビジョニング解除 (無効後 30 日間) | 削除されたデータ (使用中の他のサービスがない場合は自動的に削除) | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Office 365 管理センターにアクセスして他のサブスクリプションの購入および管理ができます
+アクティブ (試用版の 30 日間)  | 誰もがアクセスできるデータ    | <li>ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<li>管理者は Microsoft 365 管理センターとリソースへの通常のアクセス権を持ちます 
+有効期限切れ (30 日間)   | 誰もがアクセスできるデータ    | <li>ユーザーは Office 365 のファイルやアプリへの通常のアクセス権を持ちます<li>管理者は Microsoft 365 管理センターとリソースへの通常のアクセス権を持ちます
+無効 (30 日間) | 管理者だけがアクセスできるデータ  | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Microsoft 365 管理センターにアクセスできますが、ライセンスを割り当てたり、ユーザーを更新したりすることはできません
+プロビジョニング解除 (無効後 30 日間) | 削除されたデータ (使用中の他のサービスがない場合は自動的に削除) | <li>ユーザーは Office 365 のファイルやアプリにアクセスできません<li>管理者は Microsoft 365 管理センターにアクセスして他のサブスクリプションの購入および管理ができます 
 
-ビジネス向け Microsoft Store の管理センターを使用して、サブスクリプションを**プロビジョニング解除**状態にして、3 日で削除されるようにすることができます。 この機能は、Office 365 管理センターでまもなく公開されます。
+## <a name="delete-a-subscription-in-the-microsoft-365-admin-center"></a>Microsoft 365 管理センターでサブスクリプションを削除する
 
-1. テナントのグローバル管理者のアカウントを使用して、[ビジネス向け Microsoft Store の管理センター](https://businessstore.microsoft.com/manage/)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" テナントを削除する場合は、admin@contoso.onmicrosoft.com などの UPN 使用してサインオンします。
+Microsoft 365 管理センターを使用して、サブスクリプションを**プロビジョニング解除**状態にして、3 日で削除されるようにすることができます。
 
-2. **[管理]** タブに移動して、**[製品およびサービス]** を選択し、キャンセルするサブスクリプションを選択して **[削除]** を選択します。
+1. テナントのグローバル管理者のアカウントを使用して、[Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" テナントを削除する場合は、admin@contoso.onmicrosoft.com などの UPN 使用してサインオンします。
+
+2. **[課金情報]** タブに移動して、**[製品およびサービス]** を選択し、キャンセルするサブスクリプションを選択します。 **[キャンセル]** クリックすると、ページが更新されます。
   
-  ![サブスクリプションを削除するための [削除] リンク](./media/directory-delete-howto/delete-command.png)
+   ![サブスクリプションを削除するための [削除] リンク](./media/directory-delete-howto/delete-command.png)
   
-3. **サブスクリプションの削除** を選択して条件に同意し、サブスクリプションを削除します。 すべてのデータは 3 日以内に完全に削除されます。 気が変わった場合は、次の 3 日の間にサブスクリプションを再アクティブ化することができます。
+3. **[削除]** を選択してサブスクリプションを削除し、使用条件に同意します。 すべてのデータは 3 日以内に完全に削除されます。 気が変わった場合は、3 日の間にサブスクリプションを再アクティブ化することができます。
   
-  ![使用条件](./media/directory-delete-howto/delete-terms.png)
+   ![使用条件を慎重に読みます](./media/directory-delete-howto/delete-terms.png)
 
 4. サブスクリプションの状態が変更され、サブスクリプションが削除対象としてマークされています。 このサブスクリプションは、72 時間後に**プロビジョニング解除済み**状態になります。
 
 5. テナントのサブスクリプションを削除して 72 時間が経過すると、Azure AD 管理センターに再度サインインすることができます。何もしなくても、テナントの削除をブロックしているサブスクリプションはなくなっているはずです。 Azure AD テナントを正常に削除できるはずです。
   
-  ![削除画面でサブスクリプションのチェックに合格](./media/directory-delete-howto/delete-checks-passed.png)
+   ![削除画面でサブスクリプションのチェックに合格](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)

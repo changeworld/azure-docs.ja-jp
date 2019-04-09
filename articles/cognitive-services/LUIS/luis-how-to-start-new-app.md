@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: f9cf5e723484196125548b9e6d3956e909e9c9b0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0acb844b8b10ff210985dfcd8c96f15da6669356
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874951"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337478"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
@@ -56,6 +56,16 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
     > [!NOTE]
     > カルチャは、アプリケーションを作成した後に変更できません。 
 
+## <a name="import-an-app-from-file"></a>ファイルからアプリをインポートする
+
+1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
+1. ポップアップ ダイアログで有効なアプリ JSON ファイルを選択し、**[完了]** を選択します。
+
+### <a name="import-errors"></a>インポート エラー
+
+次のエラーが発生する可能性があります。 
+
+* その名前のアプリは既に存在します。 アプリを再インポートし、**オプション名**を新しい名前に設定します。 
 
 ## <a name="next-steps"></a>次の手順
 

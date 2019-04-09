@@ -1,6 +1,6 @@
 ---
 title: 条件付きアクセス ポリシーから除外されているユーザーを管理するための Azure AD アクセス レビューの使用 | Microsoft Docs
-description: Azure Active Directory (Azure AD) アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
+description: Azure Active Directory (Azure AD) アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する方法を説明します
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82fdfe598e11415130950443fb0d3e27f5d9d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892722"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>条件付きアクセス ポリシーから除外されているユーザーを管理するための Azure AD アクセス レビューの使用
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>条件付きアクセス ポリシーから除外されているユーザーを管理するための Azure AD アクセス レビューの使用
 
 理想的な世界では、すべてのユーザーが、組織のリソースへのアクセスをセキュリティで保護するアクセス ポリシーに従っているでしょう。 ただし、ビジネス ケースには、例外を認める必要がある場合もあります。 この記事では、どのような状況で除外が必要となる可能性があるかと、IT 管理者が Active Directory (Azure AD) アクセス レビューを使用してどのようにこのタスクを管理し、ポリシーの例外の監視を回避し、これらの例外が定期的にレビューされることの証明を監査者に提供できるかを示す、いくつかの例について説明します。
 
@@ -102,7 +102,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 特定の国からのアクセスをブロックする条件付きアクセス ポリシーがあるとします。 これには、ポリシーから除外されているグループが含まれます。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
 > [!NOTE]
-> アクセス レビューを作成するには、グローバル管理者またはユーザー アカウント管理者のロールが必要です。
+> アクセス レビューを作成するには、グローバル管理者またはユーザー管理者のロールが必要です。
 
 1. このレビューは毎週繰り返し行われ、
 
@@ -158,5 +158,5 @@ IT 管理者は、ポリシーに照らした除外グループの管理が、�
 
 ## <a name="next-steps"></a>次の手順
 
-- [グループ メンバーまたはアプリケーション アクセスに対するアクセス レビューを Azure AD で作成する](create-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

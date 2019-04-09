@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b10e434aece0ac214a0fd397ea94cbeccca4e44a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5814e05aa65bf005a3156aa75e65747bbd46733c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171059"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
@@ -45,29 +45,60 @@ Web サービスのデプロイ時のイメージ ビルド エラー。 回避�
 `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>` を監視する場合、デプロイで使用されている VM の SKU を、メモリがより多い SKU に変更してください。
 
 ## <a name="fpgas"></a>FPGA
+
 FPGA クォータを要求して承認されるまでは、FPGA にモデルをデプロイできません。 アクセスを要求するには、クォータ要求フォーム https://aka.ms/aml-real-time-ai に入力します。
 
 ## <a name="databricks"></a>Databricks
 
 Databricks と Azure Machine Learning の問題。
 
-1. 追加のパッケージがインストールされている場合、Databricks での Azure Machine Learning SDK のインストールは失敗します。
+### <a name="failure-when-installing-packages"></a>パッケージをインストールする際の失敗
 
-   `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、lib バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連しており、Azure Machine Learning service SDK には関係ありません。他のライブラリでも発生する可能性があります。 例:
-   ```python
-   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning service SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:
+
+```python
+pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+```
+
+別の方法として、Python ライブラリでインストールの問題が発生し続けている場合は、初期化スクリプトを使用することができます。 この方法は、公式にはサポートされていません。 詳細については、「[Cluster-scoped init scripts](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)」を参照してください。
+
+### <a name="cancel-an-automated-machine-learning-run"></a>自動化された機械学習の実行をキャンセルする
+
+自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
+
+### <a name="10-iterations-for-automated-machine-learning"></a>自動化された機械学習での 10 回を超える繰り返し
+
+自動化された機械学習の設定で、繰り返し回数が 10 回を超えている場合は、実行を送信するときに `show_output` を `False` に設定します。
+
+### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure Machine Learning SDK/自動化された機械学習のウィジェット
+
+Azure Machine Learning SDK ウィジェットは、Databricks ノートブックではサポートされていません。この理由は、ノートブックが HTML ウィジェットを解析できないからです。 Azure Databricks のノートブック セルで次の Python コードを使用することにより、portal でウィジェットを表示することができます。
+
+```
+displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+```
+
+### <a name="import-error-no-module-named-pandascoreindexes"></a>インポート エラー:'pandas.core.indexes' という名前のモジュールはありません
+
+自動化された機械学習を使用しているときにこのエラーが表示される場合は、以下を実行します。
+
+1. 次のコマンドを実行して、Azure Databricks クラスターに 2 つのパッケージをインストールします。 
+
    ```
-   または、Python ライブラリでのインストールの問題が発生し続けている場合は、初期化スクリプトを使用できます。 このアプローチは、公式にサポートされているアプローチではありません。 [こちらのドキュメント](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)をご覧ください。
+   scikit-learn==0.19.1
+   pandas==0.22.0
+   ```
 
-2. Automated Machine Learning を Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始する場合は、Azure Databricks クラスターを再起動してください。
+1. クラスターをデタッチし、次にクラスターをノートブックに再アタッチします。 
 
-3. Automated ML 設定で、繰り返し回数が 10 を超える場合、実行を送信するときに `show_output` を `False` に設定します。
-
+これで問題が解決しない場合は、クラスターを再起動してみてください。
 
 ## <a name="azure-portal"></a>Azure ポータル
+
 SDK またはポータルで共有リンクからワークスペースを直接表示した場合、拡張機能のサブスクリプション情報を含む通常の概要ページを表示できません。 また、別のワークスペースに切り替えることもできません。 別のワークスペースを表示する必要がある場合の回避策としては、[Azure portal](https://portal.azure.com) に直接移動し、ワークスペース名を検索してください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
+
 サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。
 ここにログ ファイルが保存されます。
 

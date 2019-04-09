@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 924ed7c2a253ab74a4807559d190218d3125b92c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999567"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -234,7 +234,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 ```
 
 linuxConfiguration の要素名 | 必須 | type | 説明
---- | --- | --- | --- |  ---
+--- | --- | --- | --- 
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
 path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
 keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
@@ -309,7 +309,7 @@ Azure Key Vault のドキュメントに記載されているように、Get Sec
 
 方法 | URL
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 
 {*secret-name*} を取得するシークレットの名前に置き換え、{*secret-version*} をそのシークレットのバージョンに置き換えます。 シークレットのバージョンを除外しても間違いではありません。 その場合は、最新バージョンが取得されます。
 
@@ -374,9 +374,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 `$vmss` に extensionName の値が確認できます。
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Log Analytics と統合する仮想マシン スケール セット テンプレートの例はありますか。
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Azure Monitor ログと統合する仮想マシン スケール セット テンプレートの例はありますか。
 
-Log Analytics と統合する仮想マシン スケール セット テンプレートの例については、[Azure Service Fabric クラスターをデプロイし、Log Analytics を使って監視を有効にする方法](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)に関するページの 2 番目の例を参照してください。
+Azure Monitor ログと統合する仮想マシン スケール セット テンプレートの例については、[Azure Service Fabric クラスターをデプロイし、Azure Monitor ログを使って監視を有効にする方法](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)に関するページの 2 番目の例を参照してください。
 
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>拡張機能が仮想マシン スケール セットで並列実行されているようです。 それが原因で、カスタム スクリプト拡張機能が失敗します。 修正するにはどうすればよいですか。
 
@@ -535,7 +535,7 @@ IP アドレスは指定したサブネットから選択されます。
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加するにはどうすればよいですか。
 
-仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加する方法については、「[Azure Resource Manager:Get virtual machine scale sets private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)」(Azure Resource Manager: 仮想マシン スケール セットのプライベート IP を取得する) をご覧ください。
+仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加する方法については、「[Azure Resource Manager:Get virtual machine scale sets private IPs](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)」(Azure Resource Manager: 仮想マシン スケール セットのプライベート IP を取得する) をご覧ください。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>高速ネットワークでスケール セットを使用できますか?
 
@@ -658,15 +658,18 @@ Azure Portal で既存のリソース グループにスケール セットを�
 
 詳細については、[仮想マシン スケール セットのすべての VM の管理](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)に関するページを参照してください。
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>複数のスケール セットを Azure Log Analytics に統合することはできますか。
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>複数のスケール セットを Azure Monitor ログに統合することはできますか。
 
-はい、スケール セットの VM に Log Analytics 拡張機能をインストールすることで可能です。 Azure CLI の例を次に示します。
+はい、スケール セットの VM に Azure Monitor 拡張機能をインストールすることで可能です。 Azure CLI の例を次に示します。
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
 Azure portal の Log Analytics ワークスペースに、必要な workspaceId と workspaceKey が表示されます。 [概要] ページで、[設定] タイルをクリックします。 上部の [接続されたソース] タブをクリックします。
 
-注: スケール セット _upgradePolicy_ が手動に設定されている場合、セット内のすべての VM でアップグレードを呼び出して拡張機能を適用することが必要になります。 CLI ではこれは _az vmss update-instances_ になります。
+> [!NOTE]
+> スケール セット _upgradePolicy_ が手動に設定されている場合、セット内のすべての VM でアップグレードを呼び出して拡張機能を適用することが必要になります。 CLI ではこれは _az vmss update-instances_ になります。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -718,3 +721,26 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 - 仮想マシン スケール セットをスケールアウトするよりも迅速に一連の VM を立ち上げたい。
   - このシナリオに関連して、独自の自動スケール エンジンを作成しており、エンドツーエンドのスケーリングを高速化したい。
 - 仮想マシン スケール セットが障害ドメインまたは更新ドメインに対して均等に分散されていない。 その原因として、VM を選択的に削除したか、過剰プロビジョニング後に VM を削除したことが考えられます。 仮想マシン スケール セットに対して `stop deallocate` の後に `start` を実行すると、障害ドメインまたは更新ドメインに VM が均等に分散されます。
+
+### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>VMSS インスタンスのスナップショットはどのように取得しますか。
+VMSS のインスタンスからスナップショットを作成します。
+
+```azurepowershell-interactive
+$rgname = "myResourceGroup"
+$vmssname = "myVMScaleSet"
+$Id = 0
+$location = "East US"
+ 
+$vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
+$snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
+New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
+``` 
+ 
+スナップショットからマネージド ディスクを作成します。
+
+```azurepowershell-interactive
+$snapshotName = "myShapshot"
+$snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
+$diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+```

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013039"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -39,7 +39,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
  Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
 
-ユーザーおよびグループによる予算については、サブスクリプションに従い、次の Azure のアクセス許可がサポートされています。
+ユーザーおよびグループごとの予算については、サブスクリプションに従い、次の Azure アクセス許可 (スコープ) がサポートされています。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」をご覧ください。
 
 - 所有者 – サブスクリプションに対する予算を作成、変更、削除できます。
 - 共同作成者と Cost Management 共同作成者 - 自分の予算を作成、変更、削除できます。 他のユーザーによって作成された予算の予算金額を変更できます。
@@ -53,7 +53,9 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Azure portal で予算を作成する
 
-月、四半期、または年の期間の Azure サブスクリプション予算を作成できます。 Azure portal でのナビゲーション コンテンツにより、サブスクリプションまたはリソース グループどちらの予算を作成するかが決まります。 たとえば、Azure portal で **[サブスクリプション]** &gt; サブスクリプションを選択 &gt; **[予算]** の順に選択します。 この例では、作成する予算は選択したサブスクリプションに対するものです。 リソース グループに対する予算を作成する場合は、**[リソース グループ]** > リソース グループを選択 > **[予算]** の順に選択します。
+月、四半期、または年の期間の Azure サブスクリプション予算を作成できます。 Azure portal のナビゲーション コンテンツによって、サブスクリプションと管理グループのどちらの予算を作成するかが決まります。
+
+予算を作成または表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 たとえば、**[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューの **[予算]** を選択します。 [予算] で別のスコープ (管理グループなど) に切り替えるには、**[スコープ]** ピルを使用します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」をご覧ください。
 
 予算を作成すると、予算に対する現在の支出のシンプルなビューが表示されます。
 
@@ -85,6 +87,28 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![予算の編集によるさまざまなプロパティの変更の例](./media/tutorial-acm-create-budgets/edit-budget.png)
 
+## <a name="trigger-an-action-group"></a>アクション グループをトリガーする
+
+サブスクリプション スコープまたはリソース グループ スコープの予算を作成または編集するときに、アクション グループを呼び出すように予算を構成できます。 予算しきい値に達すると、アクション グループはさまざまなアクションを実行できます。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」をご覧ください。 アクション グループで予算ベースの自動化を使用する方法の詳細については、「[Azure Budgets でのコストの管理](../billing/billing-cost-management-budget-scenario.md)」をご覧ください。
+
+アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** をクリックします。
+
+![[アクション グループの管理] を示す予算作成の例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
+次に、**[アクション グループの追加]** をクリックし、アクション グループを作成します。
+
+
+![[アクション グループの追加] ボックスの画像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+
+アクション グループが作成されたら、ボックスを閉じて予算に戻ります。
+
+個々のしきい値に達したときにアクション グループを使用するように予算を構成します。 最大 5 つのしきい値がサポートされています。
+
+![アクション グループのアラートの条件の選択を示す例](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+
+次の例は、50%、75%、100% に設定された予算しきい値を示しています。 それぞれ、指定のアクション グループ内の指定されたアクションをトリガーするように構成されています。
+
+![さまざまなアクション グループとアクションの種類で構成されたアラートの条件を示す例](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 ## <a name="next-steps"></a>次の手順
 

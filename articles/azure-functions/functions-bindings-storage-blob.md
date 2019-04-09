@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 16899c833d996902cf7a0a3f7ab57479869fbdd9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e18a63892f000eff0f72656082d5e6e1f0ca159b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737792"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437477"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -282,7 +282,7 @@ public void run(
   {
       ....
   }
-  ```
+   ```
 
   完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
 
@@ -318,8 +318,8 @@ public void run(
 |---------|---------|----------------------|
 |**type** | 該当なし | `blobTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#trigger---usage)のセクションに記載しています。 |
-|**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 | 
-|**path** | **BlobPath** |監視する[コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  [BLOB 名パターン](#trigger---blob-name-patterns)の場合があります。 | 
+|**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 |
+|**path** | **BlobPath** |監視する[コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  [BLOB 名パターン](#trigger---blob-name-patterns)の場合があります。 |
 |**connection** | **Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -391,7 +391,7 @@ BLOB の名前が *{20140101}-soundfile.mp3* の場合、関数コード内の `
 
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
-|プロパティ  |type  |説明  |
+|プロパティ  |Type  |説明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
@@ -450,7 +450,9 @@ JavaScript 関数と Java 関数は BLOB 全体をメモリに読み込みます
 
 ## <a name="trigger---polling"></a>トリガー - ポーリング
 
-監視対象の BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新規または変更された BLOB が監視されます。 このプロセスによって遅延が発生することがあります。 関数は、BLOB が作成されてから数分以上経過しないとトリガーされない可能性があります。 また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。 より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
+監視対象の BLOB コンテナーに 10,000 を超える BLOB が含まれる (すべてのコンテナー全体で) 場合は、Functions ランタイムによりログ ファイルがスキャンされ、新規または変更された BLOB が監視されます。 このプロセスによって遅延が発生することがあります。 関数は、BLOB が作成されてから数分以上経過しないとトリガーされない可能性があります。 また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。
+
+より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
 
 ## <a name="input"></a>入力
 
@@ -479,7 +481,7 @@ public static void Run(
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
-```        
+```
 
 ### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
 
@@ -802,7 +804,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
     { ImageSize.Small,      (640, 400) },
     { ImageSize.Medium,     (800, 600) }
 };
-```        
+```
 
 ### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
 

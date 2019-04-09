@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1070cc97624b39ec929f5083f7073179fb1f068c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899147"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 
-Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook および DSC 構成では、認証に PSCredential オブジェクトを受け付けるコマンドレットを使用したり、PSCredential オブジェクトのユーザー名とパスワードを抽出して認証を必要とするアプリケーションやサービスに提供したりできます。 資格情報のプロパティは、Azure Automation に安全に格納されており、Runbook または DSC 構成で [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) アクティビティを使用してアクセスできます。
+Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook および DSC 構成では、認証に PSCredential オブジェクトを受け付けるコマンドレットを使用したり、PSCredential オブジェクトのユーザー名とパスワードを抽出して認証を必要とするアプリケーションやサービスに提供したりできます。 資格情報のプロパティは、Azure Automation に安全に格納されており、Runbook または DSC 構成で [Get-AutomationPSCredential](#activities) アクティビティを使用してアクセスできます。
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -27,14 +27,14 @@ Automation 資格情報資産は、ユーザー名とパスワードなどのセ
 
 ## <a name="azure-classic-powershell-cmdlets"></a>Azure クラシック PowerShell コマンドレット
 
-Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
+Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |資格情報資産に関する情報を取得します。 **Get-AutomationPSCredential** アクティビティから取得できるのは、資格情報自体のみです。 |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |新しい Automation 資格情報を作成します。 |
-| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Automation 資格情報を削除します。 |
-| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |既存の Automation 資格情報のプロパティを設定します。 |
+| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |資格情報資産に関する情報を取得します。 **Get-AutomationPSCredential** アクティビティから取得できるのは、資格情報自体のみです。 |
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |新しい Automation 資格情報を作成します。 |
+| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Automation 資格情報を削除します。 |
+| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |既存の Automation 資格情報のプロパティを設定します。 |
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
 
@@ -42,10 +42,10 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential?view=azurermps-4.4.0) |資格情報資産に関する情報を取得します。  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential?view=azurermps-4.4.0) |新しい Automation 資格情報を作成します。 |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential?view=azurermps-4.4.0) |Automation 資格情報を削除します。 |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential?view=azurermps-4.4.0) |既存の Automation 資格情報のプロパティを設定します。 |
+| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |資格情報資産に関する情報を取得します。  |
+| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |新しい Automation 資格情報を作成します。 |
+| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Automation 資格情報を削除します。 |
+| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |既存の Automation 資格情報のプロパティを設定します。 |
 
 ## <a name="activities"></a>Activities
 
@@ -53,7 +53,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 | Activities | 説明 |
 |:--- |:--- |
-| Get-AutomationPSCredential |Runbook または DSC 構成で使用する資格情報を取得します。 [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを返します。 |
+| Get-AutomationPSCredential |Runbook または DSC 構成で使用する資格情報を取得します。 [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクトを返します。 |
 
 > [!NOTE]
 > Get-AutomationPSCredential の –Name パラメーターを使用すると、設計時に Runbook または DSC 構成と資格情報資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
@@ -93,7 +93,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>PowerShell 資格情報の使用
 
-Runbook または DSC 構成で資格情報資産を取得するには、**Get-AutomationPSCredential** アクティビティを使用します。 このアクティビティが返す [PSCredential オブジェクト](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx)を、PSCredential パラメーターを必要とするアクティビティまたはコマンドレットで使用できます。 また、資格情報オブジェクトのプロパティを取得して個別に使用することもできます。 オブジェクトにはユーザー名と安全なパスワードのプロパティがあります。または、**GetNetworkCredential** メソッドを使用して、安全ではないバージョンのパスワードを提供する [NetworkCredential](https://msdn.microsoft.com/library/system.net.networkcredential.aspx) オブジェクトを取得することもできます。
+Runbook または DSC 構成で資格情報資産を取得するには、**Get-AutomationPSCredential** アクティビティを使用します。 このアクティビティが返す [PSCredential オブジェクト](/dotnet/api/system.management.automation.pscredential)を、PSCredential パラメーターを必要とするアクティビティまたはコマンドレットで使用できます。 また、資格情報オブジェクトのプロパティを取得して個別に使用することもできます。 オブジェクトにはユーザー名と安全なパスワードのプロパティがあります。または、**GetNetworkCredential** メソッドを使用して、安全ではないバージョンのパスワードを提供する [NetworkCredential](/dotnet/api/system.net.networkcredential) オブジェクトを取得することもできます。
 
 ### <a name="textual-runbook-sample"></a>テキストの Runbook のサンプル
 
@@ -104,6 +104,19 @@ $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
+```
+
+資格情報を使用して [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) で Azure を認証することもできます。 ほとんどの環境下で、[アカウントとして実行](manage-runas-account.md) を使用して、それを [Get-AutomationConnection](automation-connections.md) で取得する必要があります。
+
+```azurepowershell
+$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$userName = $myCred.UserName
+$securePassword = $myCred.Password
+$password = $myCred.GetNetworkCredential().Password
+
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+
+Connect-AzureRmAccount -Credential $myPsCred
 ```
 
 ### <a name="graphical-runbook-sample"></a>グラフィカルな Runbook のサンプル
@@ -118,7 +131,7 @@ $password = $myCredential.GetNetworkCredential().Password
 
 ## <a name="using-a-powershell-credential-in-dsc"></a>DSC での PowerShell 資格情報の使用
 
-Azure Automation の DSC 構成では **Get-AutomationPSCredential**を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。 詳細については、「 [Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md#credential-assets)」を参照してください。
+Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。 詳細については、「 [Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md#credential-assets)」を参照してください。
 
 ## <a name="using-credentials-in-python2"></a>Python2 の資格情報の使用
 
@@ -141,5 +154,3 @@ print cred["password"]
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。 
 * Python2 Runbook の使用を開始するには、[初めての Python2 Runbook](automation-first-runbook-textual-python2.md) に関するページをご覧ください 
-
-

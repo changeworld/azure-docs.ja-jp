@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory (プレビュー) の Log Analytics ビューをインストールして使用する方法 | Microsoft Docs
-description: Azure Active Directory (プレビュー) の Log Analytics ビューをインストールして使用する方法について説明します
+title: Azure Active Directory (プレビュー) のログ分析ビューをインストールして使用する方法 | Microsoft Docs
+description: Azure Active Directory (プレビュー) のログ分析ビューをインストールして使用する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -24,22 +24,22 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58437307"
 ---
-# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用の Log Analytics ビューのインストールと使用
+# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用のログ分析ビューのインストールと使用
 
-Azure Active Directory の Log Analytics ビューを使用して、お使いの Azure AD テナントで Azure AD アクティビティ ログを分析して検索できます。 Azure AD アクティビティ ログには、次のログが含まれます。
+Azure Active Directory のログ分析ビューを使用して、お使いの Azure AD テナントで Azure AD アクティビティ ログを分析して検索できます。 Azure AD アクティビティ ログには、次のログが含まれます。
 
 * 監査ログ:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * サインイン ログ:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-Log Analytics ビューを使用するには、次の準備が必要です。
+ログ分析ビューを使用するには、次の準備が必要です。
 
 * Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)を確認してください。
 * 最初に、[Azure AD アクティビティ ログを Log Analytics ワークスペースにルーティングする](howto-integrate-activity-logs-with-log-analytics.md)手順を完了する。
 * [GitHub リポジトリ](https://aka.ms/AADLogAnalyticsviews)からローカル コンピューターに、ビューをダウンロードする。
 
-## <a name="install-the-log-analytics-views"></a>Log Analytics ビューのインストール
+## <a name="install-the-log-analytics-views"></a>ログ分析ビューのインストール
 
 1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
 2. **[ビュー デザイナー]** を選択し、**[インポート]** してから、**[ファイルの選択]** を選択して、ローカル コンピューターからビューをインポートします。

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 83c286be6429376d4d0b4009b18c5f751a4b158f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cd0369f45529082ac929b1d87608204033cd78f6
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226693"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370518"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -517,7 +517,14 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 
 *常に確認したい頻度の低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 
-* (既定のアクティブ インスタンスではなく) 新しい TelemetryConfiguration で TelemetryClient の別のインスタンスを初期化します。 そのインスタンスを使用して、頻度の低いイベントを送信してください。
+* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering) を記述することです。 これにより、すべてのサンプリング手法で、任意のサンプリングに関する考慮事項からこの項目が無視されるようになります。
+
+```csharp
+    if(somecondition)
+    {
+        ((ISupportSampling)item).SamplingPercentage = 100;
+    }
+```
 
 ## <a name="next-steps"></a>次の手順
 

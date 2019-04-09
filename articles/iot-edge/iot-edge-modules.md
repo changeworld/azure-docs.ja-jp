@@ -4,21 +4,21 @@ description: Azure IoT Edge モジュールは、IoT Edge デバイス上でビ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 976b46a26d95b5e252b0df2383ea94b4dd280d24
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d1e2e35dafd90c16e9d0dbf38afb1e981653d1fe
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229627"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311103"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 
-Azure IoT Edge では、ビジネス ロジックを*モジュール*形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Azure サービスまたは独自ソリューション固有のコードを含めることができます。 モジュールを開発、展開、および管理する方法を理解するには、モジュールを構成する次の 4 つの概念を考えると理解が深まります。
+Azure IoT Edge では、ビジネス ロジックを*モジュール*形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Azure サービスまたは独自ソリューション固有のコードを含めることができます。 モジュールを開発、デプロイ、および管理する方法を理解するには、モジュールの 4 つの概念的要素を考えると理解が深まります。
 
 * **モジュール イメージ**。モジュールを定義するソフトウェアを含むパッケージです。
 * **モジュール インスタンス**。IoT Edge デバイスでモジュール イメージを実行している計算の特定の単位です。 モジュール インスタンスは、IoT Edge ランタイムによって開始されます。
@@ -43,6 +43,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 ## <a name="module-identities"></a>モジュール ID
 
 新しいモジュール インスタンスが IoT Edge ランタイムによって作成されると、作成されたインスタンスには対応するモジュール ID が関連付けられます。 モジュール ID は IoT Hub に格納され、その特定のモジュール インスタンスのすべてのローカルおよびクラウド通信のアドレス指定とセキュリティ スコープとして採用されます。
+
 モジュール インスタンスに関連付けられる ID は、インスタンスが実行されているデバイスの ID と、ソリューション内のモジュールに付けた名前によって決まります。 たとえば、Azure Stream Analytics を使用するモジュール `insight` を呼び出し、`Hannover01` というデバイスに展開した場合、IoT Edge ランタイムは `/devices/Hannover01/modules/insight` という対応するモジュール ID を作成します。
 
 明らかに、1 つのモジュール イメージを同じデバイスに複数回展開する必要があるシナリオで、同じイメージを異なる名前で複数回展開することができます。
@@ -68,7 +69,7 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>オフライン機能
 
-Azure IoT Edge は、IoT Edge デバイス上でのオフライン操作をサポートしています。 これらの機能は現在は制限されています。 
+Azure IoT Edge は、IoT Edge デバイス上でのオフライン操作をサポートしています。 これらの機能は現在は制限されています。 その他のオフライン機能はパブリック プレビューで利用できます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
 
 IoT Edge モジュールは、次の要件を満たしている場合、既定の時間よりも長くオフライン状態を継続できます。 
 
@@ -77,11 +78,8 @@ IoT Edge モジュールは、次の要件を満たしている場合、既定�
 * **オフライン時にメッセージを送信したモジュールが、接続の再開時にまだ機能している**。 IoT ハブに再接続する場合、IoT Edge ハブは、モジュール メッセージを転送する前に、新しいモジュール トークンを検証する必要があります (以前のトークンが期限切れの場合)。 モジュールが新しいトークンを提供できない場合、IoT Edge ハブは、モジュールの保存済みメッセージに対してアクションを実行できません。 
 * **IoT Edge ハブに、メッセージを保存できるだけのディスク領域がある**。 既定では、メッセージは IoT Edge ハブ コンテナーのファイルシステムに保存されます。 なお、メッセージを保存するためのマウント済みボリュームを指定する構成オプションもあります。 いずれの場合も、IoT ハブへの遅延配信を行うには、メッセージを保存できるだけの容量が必要になります。  
 
-その他のオフライン機能はパブリック プレビューで利用できます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
  - [IoT Edge モジュールを開発するための要件とツールについて理解する](module-development.md)
  - [Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)
 
-<!-- Images -->
-[2]: ./media/iot-edge-modules/identity.png

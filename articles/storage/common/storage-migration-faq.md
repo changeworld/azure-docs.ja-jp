@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110411"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310848"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -282,7 +282,7 @@ Azure CLI をご利用いただけます。
 
     - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"<https://mystorageaccountname.blob.core.windows.net/images/image.gif>" を "<https://www.contoso.com/images/image.gif>" として表示するにはどうすればよいですか?**
+**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" を "https:\//www.contoso.com/images/image.gif" と表示するにはどうすればよいですか?**
 
 カスタム ドメインを使用するストレージ アカウントでは、SSL は現在サポートされていません。
 ただし、HTTPS 以外のカスタム ドメインはご利用いただけます。 詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Video Indexer についてよく寄せられる質問 - Azure
 titlesuffix: Azure Media Services
 description: Video Indexer についてよく寄せられる質問とその回答を紹介します。
@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002359"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892661"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -98,9 +98,9 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 ビデオのプライバシー設定がパブリックになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツとその分析情報へのリンクを持つすべてのユーザーがアクセスできます。 ビデオのプライバシー設定がプライベートになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツのアカウントに招待されたユーザーのみがアクセスできます。 コンテンツのプライバシーの設定は、Video Indexer で抽出されるメタデータと分析情報にも適用されます。 プライバシーの設定は、ビデオ ファイルやオーディオ ファイルをアップロードするときに割り当てます。 また、インデックスの作成後にプライバシーの設定を変更することもできます。
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer で索引付けまたは保存されたビデオやオーディオ ファイル、および抽出されたメタデータと分析情報にアクセスできるのは誰ですか?
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer でインデックスを作成したり保存したりしたビデオ ファイルやオーディオ ファイルと、抽出されたメタデータと分析情報には、誰がアクセスできますか?
 
-[Azure オンライン サービス条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) に従い、お客様はご自分のコンテンツを完全に所有し、Microsoft は、お客様のコンテンツと、OST と Microsoft のプライバシーに関する声明に従って Video Indexer でお客様のコンテンツから抽出するメタデータと分析情報のみにアクセスします。
+[Azure オンライン サービス条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) に従い、お客様はご自分のコンテンツを完全に所有し、Microsoft は、お客様のコンテンツと、OST と Microsoft のプライバシーに関する声明に従って Video Indexer でお客様のコンテンツから抽出するメタデータと分析情報のみにアクセスします。
 
 ### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>自分の Video Indexer アカウントで作成したカスタム モデルを他のアカウントで使用できますか?
 
@@ -116,7 +116,7 @@ Video Indexer には [Microsoft のプライバシーに関する声明](https:/
 
 ### <a name="what-certifications-does-video-indexer-have"></a>Video Indexer には、どのような認証がありますか?
 
-Video Indexer は、現在のところ SOC 認証を取得しています。 Video Indexer の認証を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
+Video Indexer は、現在のところ SOC 認定資格を持っています。 Video Indexer の認定資格を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
 
 ## <a name="api-questions"></a>API に関する質問
 
@@ -158,6 +158,10 @@ Video Indexer API には Authorization API (承認 API) と Operations API (操�
 
 Video Indexer では、インデックスを作成するコンテンツの入力期間に基づいた、単純な従量課金制の価格モデルを使用しています。 エンコード、ストリーミング、ストレージ、ネットワークの使用状況、およびメディア占有ユニットについては追加料金が適用されることがあります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/)に関するページを参照してください。
 
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Video Indexer の使用料はいつ請求されますか。
+
+インデックス付きのためビデオを送信した場合、ユーザーはインデックスをビデオ分析、オーディオ分析、またはその両方として定義します。 これにより、課金される SKU が決まります。 処理中に重大レベルのエラーが発生した場合、エラー コードが応答として返されます。 こうした場合、課金は行われません。  重大なエラーは、コード内のバグか、サービスが持つ内部的異存の重大なエラーによって発生します。 間違った認識や分析情報の抽出などのエラーは重大と見なされず、応答が返されます。 有効な (エラーのないコード) 応答が返された場合はすべて、課金が行われます。
+ 
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Video Indexer では無料試用版が提供されていますか?
 
 はい、Video Indexer には、完全なサービスおよび API 機能を提供する無料試用版が用意されています。 Web ベースのインターフェイスのユーザーについてはビデオ 600 分、API ユーザーについては 2,400 分のクォータがあります。 

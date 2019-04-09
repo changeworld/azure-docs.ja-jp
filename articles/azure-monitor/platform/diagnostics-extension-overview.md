@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310459"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078541"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
 Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、Virtual Machines、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](../../azure-monitor/overview.md)」を参照してください。
@@ -50,6 +50,9 @@ Azure Monitor メトリック時系列データベースにデータを送信す
 * パフォーマンス カウンターでワイルドカード演算子をメトリックの "Instance" ディメンションとして扱います。  たとえば、"LogicalDisk(\*)/DiskWrites/sec" カウンターを収集した場合、"Instance" ディメンションでフィルターして分割し、VM 上の各論理ディスクのディスク書き込み回数/秒をプロットまたはアラートすることができます (C: など)。
 
 このシンクを構成する方法については、[Azure 診断スキーマのドキュメント](diagnostics-extension-schema-1dot3.md)を参照してください。
+
+## <a name="costs"></a>コスト
+上記のオプションのそれぞれでコストが発生する場合があります。 予期しない請求を回避するために、それらを必ず調べておいてください。  Application Insights、イベント ハブ、Azure Storage には、取り込みと格納の時刻に関連付けられている個別のコストがあります。 特に Azure Storage はデータを永久的に保持するので、コストを引き下げておくために古いデータは一定期間後に消去できます。    
 
 ## <a name="versioning-and-configuration-schema"></a>バージョン管理と構成スキーマ
 [Azure 診断のバージョン履歴とスキーマ](diagnostics-extension-schema.md)に関するページを参照してください。

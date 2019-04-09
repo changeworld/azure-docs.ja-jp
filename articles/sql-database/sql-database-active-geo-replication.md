@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995060"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295251"
 ---
-# <a name="create-readable-secondary-databases-using-active-geo-replication"></a>アクティブ geo レプリケーションを使用して、読み取り可能なセカンダリ データベースを作成します。
+# <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
 アクティブ geo レプリケーションは Azure SQL Database の機能です。これを使用すると、同じデータ センターまたは異なるデータ センター (リージョン) 内の SQL Database サーバー上に、個々のデータベースの読み取り可能なセカンダリ データベースを作成できます。
 
@@ -52,9 +52,6 @@ ms.locfileid: "55995060"
 > [!IMPORTANT]
 > プライマリ データベースでの重要な変更が、フェールオーバー前にセカンダリに確実にレプリケートされるようにするには、強制同期を実行して、重要な変更 (パスワードの更新など) のレプリケーションを確実に行わせることができます。 強制同期を実行すると、コミットされたトランザクションがすべてレプリケートされるまで呼び出しスレッドがブロックされるため、パフォーマンスに影響します。 詳細については、[sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) に関するページをご覧ください。 プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するには、「[sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)」を参照してください。
 
-
-
-
 次の図は、プライマリが米国中北部リージョン、セカンダリが米国中南部リージョンに構成されたアクティブ Geo レプリケーションの例を示しています。
 
 ![geo レプリケーションのリレーションシップ](./media/sql-database-active-geo-replication/geo-replication-relationship.png)
@@ -72,7 +69,7 @@ ms.locfileid: "55995060"
 
 - **自動非同期レプリケーション**
 
- セカンダリ データベースは、既存のデータベースに追加することによってのみ作成できます。 セカンダリは任意の Azure SQL Database サーバーに作成できます。 作成した後、プライマリ データベースからコピーしたデータをセカンダリ データベースに設定できます。 このプロセスはシード処理と呼ばれます。 オンライン セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新がセカンダリ データベースに非同期で自動的にレプリケートされます。 非同期レプリケーションでは、トランザクションはプライマリ データベースでコミットされた後に、セカンダリ データベースにレプリケートされます。
+  セカンダリ データベースは、既存のデータベースに追加することによってのみ作成できます。 セカンダリは任意の Azure SQL Database サーバーに作成できます。 作成した後、プライマリ データベースからコピーしたデータをセカンダリ データベースに設定できます。 このプロセスはシード処理と呼ばれます。 オンライン セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新がセカンダリ データベースに非同期で自動的にレプリケートされます。 非同期レプリケーションでは、トランザクションはプライマリ データベースでコミットされた後に、セカンダリ データベースにレプリケートされます。
 
 - **読み取り可能なセカンダリ データベース**
 
@@ -110,7 +107,7 @@ ms.locfileid: "55995060"
 
 - **資格情報とファイアウォール規則の同期を保つ**
 
-  geo レプリケートされたデータベースには、[データベースのファイアウォール規則](sql-database-firewall-configure.md)の使用をお勧めします。この規則は、データベースと共にレプリケートされ、すべてのセカンダリ データベースのファイアウォールの規則がプライマリと同じになります。 このアプローチにより、プライマリとセカンダリ データベースの両方をホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。 同様に、データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用することにより、プライマリとセカンダリの両方のデータベースが、確実かつ常に同じユーザー資格情報を持つようにして、フェールオーバー時に、ログインとパスワードの不一致による中断を防ぐことができます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) の顧客を追加すると、プライマリおよびセカンダリ データベースへのユーザー アクセスを管理でき、データベース内で資格情報を管理する必要が完全になくなります。
+geo レプリケートされたデータベースには、[データベース レベルのファイアウォール規則](sql-database-firewall-configure.md)の使用をお勧めします。この規則は、データベースと共にレプリケートされ、すべてのセカンダリ データベースの IP ファイアウォール規則がプライマリと同じになります。 このアプローチにより、プライマリとセカンダリ データベースの両方をホストするサーバー上で、顧客がファイアウォール規則を手動で構成、管理する必要性がなくなります。 同様に、データのアクセスに[包含データベース ユーザー](sql-database-manage-logins.md)を使用することにより、プライマリとセカンダリの両方のデータベースが、確実かつ常に同じユーザー資格情報を持つようにして、フェールオーバー時に、ログインとパスワードの不一致による中断を防ぐことができます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) の顧客を追加すると、プライマリおよびセカンダリ データベースへのユーザー アクセスを管理でき、データベース内で資格情報を管理する必要が完全になくなります。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
 
@@ -119,12 +116,28 @@ ms.locfileid: "55995060"
 > [!NOTE]
 > セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
 
+> [!IMPORTANT]
+> フェールオーバー グループのプライマリ データベースを上位のレベルにスケーリングするには、最初にセカンダリ データベースを上位のレベルにスケーリングする必要があります。 セカンダリ データベースがスケーリングされる前にプライマリ データベースをスケーリングしようとすると、次のエラーが表示される可能性があります。
+>
+> `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
+>
+
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
 
 ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ステム プロシージャを呼び出すことができます。 **sp_wait_for_database_copy_sync** を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 **sp_wait_for_database_copy_sync** の対象は、特定の連続コピー リンクです。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
 
 > [!NOTE]
 > **sp_wait_for_database_copy_sync** は、フェールオーバー後のデータの損失を防ぎますが、読み取りアクセスに対して完全な同期を保証することはありません。 **sp_wait_for_database_copy_sync** プロシージャ呼び出しによる遅延は、長くなる場合があり、呼び出し時のトランザクション ログのサイズによって異なります。
+
+## <a name="monitoring-geo-replication-lag"></a>geo レプリケーションの遅延の監視
+
+RPO に関する遅延を監視するには、プライマリ データベースの [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) の *replication_lag_sec* 列を使用します。 ここには、プライマリでコミットされたトランザクションと、セカンダリで保持されているトランザクションとの間の遅延が秒単位で表示されます。 例:  遅延の値が 1 秒というのは、今この瞬間にプライマリが停電の影響を受けてフェールオーバーが開始された場合、最新の 1 秒間のトランザクションが保持されないことを意味します。 
+
+セカンダリに適用済みの (つまり、セカンダリから読み取り可能な) プライマリ データベースに対する変更に関する遅延を測定するには、セカンダリ データベースの *last_commit* 時間を、プライマリ データベースの同じ値と比較します。
+
+> [!NOTE]
+> プライマリ データベースの *replication_lag_sec* の値が NULL になっていることがありますが、これは、現時点でプライマリとセカンダリとの間の遅延時間が不明であることを意味します。   これは、プロセスが再起動した後に発生する一時的な状態であることがほとんどです。 *replication_lag_sec* から長時間にわたって NULL が返される場合は、アプリケーションにアラートを送ることを検討してください。 永続的な接続エラーにより、セカンダリ データベースがプライマリと通信できないことを示していると考えられます。 セカンダリとプライマリ データベース間の *last_commit* 時間に大きな差が生じる可能性のある状況は他にもあります。 例:  長時間変更がなかったプライマリでコミットが行われた場合、差異は非常に大きくなりますが、すぐに 0 に戻ります。 これらの 2 つの値の差が大きい状況が長時間続く場合は、エラーの状態にあると考えられます。
+
 
 ## <a name="programmatically-managing-active-geo-replication"></a>アクティブ geo レプリケーションのプログラムでの管理
 
@@ -148,13 +161,17 @@ ms.locfileid: "55995060"
 
 ### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell:単一データベースおよびプールされたデータベースのフェールオーバーを管理します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 | コマンドレット | 説明 |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase) |1 つまたは複数のデータベースを取得します。 |
-| [New-AzureRmSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
-| [Set-AzureRmSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasesecondary) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
-| [Remove-AzureRmSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasesecondary) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
-| [Get-AzureRmSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasereplicationlink) |Azure SQL Database とリソース グループまたは SQL Server 間の geo レプリケーション リンクを取得します。 |
+| [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |1 つまたは複数のデータベースを取得します。 |
+| [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
+| [Set-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary) |セカンダリ データベースをプライマリに切り替えて、フェールオーバーを開始します。 |
+| [Remove-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesecondary) |SQL Database と指定されたセカンダリ データベース間でのデータ レプリケーションを終了します。 |
+| [Get-AzSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Azure SQL Database とリソース グループまたは SQL Server 間の geo レプリケーション リンクを取得します。 |
 |  | |
 
 > [!IMPORTANT]

@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c76c7bdb398184cc297831c9395063e7bf0f6bdc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 140c8b2ab9b7985652a6474a1a9373e0d453b9e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900728"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -21,7 +21,7 @@ Advisor は、アイドル状態にあるリソースや活用されていない
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する 
 
-特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor は、仮想マシンの使用状況を 14 日間にわたって監視して、使用率が低い仮想マシンを識別します。 CPU 使用率が 5% 以下で、ネットワークの使用率が 7 MB 以下である日が 4 日以上ある仮想マシンは、使用率が低い仮想マシンと見なされます。
+特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor は、仮想マシンの使用状況を 7 日間にわたって監視して、使用率が低い仮想マシンを識別します。 仮想マシンは、CPU 使用率が 5% 以下およびネットワーク使用率が 2% 以下の場合、または現在のワークロードがより小さい仮想マシン サイズで対応できる場合に、使用率が低いと見なされます。
 
 Advisor には、そのような仮想マシンの使用を継続した場合の推定コストが示され、シャット ダウンまたはサイズ変更を選択できます。
 
@@ -40,6 +40,10 @@ Advisor は、90 日以上アイドル状態にあった仮想ネットワーク
 Advisor は、過去 30 日間の仮想マシンの使用率を確認し、Azure Reservation を購入することでコストを節約できるかどうかを判断します。 Advisor は、最も節約できる可能性がある領域とサイズを示し、Reservation を購入することによって見込める節約を示します。 
 
 Azure Reservation では、お使いの仮想マシンの基本コストを事前購入できます。 割引は、Reservation と同じサイズと領域の新しいまたは既存の VM に自動適用されます。 [Azure Reserved VM Instances の詳細を参照してください。](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+
+## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>関連付けられていないパブリック IP アドレスのコスト節約のための削除
+
+Advisor は、ロード バランサーまたは仮想マシンなどの Azure リソースに現在関連付けられていないパブリック IP アドレスを識別します。 これらのパブリック IP アドレスには、わずかな料金がかかります。 それらを使用する予定がない場合は、削除するとコスト削減につながります。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 

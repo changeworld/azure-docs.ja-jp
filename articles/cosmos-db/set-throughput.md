@@ -4,14 +4,14 @@ description: Azure Cosmos のコンテナーとデータベースにプロビジ
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 03/19/2019
 ms.author: andrl
-ms.openlocfilehash: 439b48c271260e9744bb9c9ca0e2b21e61cf4687
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8335a235de708227136400f3af8fa7b4d0a52e29
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005065"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520906"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>コンテナーとデータベースのスループットのプロビジョニング
 
@@ -75,6 +75,20 @@ Azure Cosmos データベースにスループットを設定することで、�
 * コンテナー "B" に "P" RU のプロビジョニング済みスループットを明示的に構成できます。
 * "K" RU のスループットは、A、C、D、E の 4 つのコンテナーで共有されます。A、C、D、E に使用可能なスループットの正確な量はさまざまに異なります。 個々のコンテナーのスループットに対する SLA はありません。
 * コンテナー B は常に "P" RU のスループットを取得することが保証されます。 それは SLA によって裏付けられます。
+
+## <a name="update-throughput-on-a-database-or-a-container"></a>データベースまたはコンテナーのスループットを更新する
+
+Azure Cosmos コンテナーまたはデータベースを作成した後に、プロビジョニング済みのスループットを更新できます。 データベースまたはコンテナーで構成できる最大のプロビジョニング済みスループットに制限はありません。 最小のプロビジョニング済みスループットは、次の要因によって異なります。 
+
+* これまでコンテナーに格納された最大データ サイズ
+* これまでコンテナーにプロビジョニングした最大スループット
+* これまで共有スループットでデータベースに作成した Azure Cosmos コンテナーの最大数。 
+
+コンテナーまたはデータベースの最小スループットは、SDK を使用してプログラムで取得するか、Azure portal でその値を表示することができます。 .NET SDK を使用する場合、[DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) メソッドで、プロビジョニング済みスループット値をスケールできます。 Java SDK を使用する場合、[RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) メソッドを使用して、プロビジョニング済みスループット値をスケールできます。 
+
+.NET SDK を使用する場合、[DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) メソッドを使用して、コンテナーまたはデータベースの最小スループットを取得できます。 
+
+コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 スケール ダウン操作は、4 時間のアイドル期間後に実行できます。 アイドル期間は、コンテナーまたはデータベースに対する置換操作 (スケールアップとスケールダウンを含む) が行われなかった期間と定義されます。 
 
 ## <a name="comparison-of-models"></a>モデルの比較
 

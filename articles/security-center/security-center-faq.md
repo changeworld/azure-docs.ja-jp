@@ -3,7 +3,7 @@ title: Azure Security Center のよく寄せられる質問 (FAQ) | Microsoft Do
 description: この FAQ は、Azure セキュリティ センターについて寄せられる質問とその回答です。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2018
-ms.author: rkarlin
-ms.openlocfilehash: 61dac6bea6878630c05339778c717f7818c1c662
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 03/19/2019
+ms.author: monhaber
+ms.openlocfilehash: 7e4a4572a53338dc0c7b5d7d11dca7130c8979be
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106649"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226897"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -52,10 +52,10 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
 
 ## <a name="data-collection-agents-and-workspaces"></a>データの収集、エージェント、およびワークスペース
-Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM) と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
+Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット (VMSS)、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。
 
-### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Security Center で作成されたワークスペース上の Log Analytics には課金されますか?
-いいえ。 ノードごとの Log Analytics の課金が構成されている場合でも、Security Center で作成されるワークスペースに Log Analytics の料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
+### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Security Center で作成されたワークスペース上の Azure Monitor ログには課金されますか?
+いいえ。 ノードごとの Azure Monitor ログの課金が構成されている場合でも、Security Center で作成されるワークスペースに Azure Monitor ログの料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
 
 - **Free レベル** - Security Center によって既定のワークスペースに 'SecurityCenterFree' ソリューションが有効化されます。 Free レベルの料金はかかりません。
 - **Standard レベル** - Security Center によって既定のワークスペースに 'Security' ソリューションが有効化されます。
@@ -63,16 +63,18 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。 この価格ページでは、2017 年 6 月からのセキュリティ データ ストレージと日割り課金の変更が反映されています。
 
 > [!NOTE]
-> Security Center で作成されたワークスペースの Log Analytics 価格レベルは、Security Center の課金に影響しません。
+> Security Center で作成されたワークスペースのログ分析の価格レベルは、Security Center の課金には影響しません。
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ### <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>Microsoft Monitoring Agent インストールの自動プロビジョニングでは、何をもって VM を適格と見なしますか?
 Windows または Linux IaaS VM は、次の条件で適格とします。
 
 - Microsoft Monitoring Agent 拡張機能が現在、VM 上にインストールされていない。
 - VM が実行状態である。
-- Windows または Linux VM エージェントがインストールされている。
+- Windows または Linux [Azure 仮想マシン エージェント](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows)がインストールされている。
 - VM は、Web アプリケーション ファイアウォールや次世代ファイアウォールなどのアプライアンスとしては使用されません。
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Security Center で作成された既定のワークスペースは削除できますか?
@@ -113,21 +115,23 @@ Security Center によって収集されたデータを保存する既存の Log
 
    - 操作を取り消すには、**[キャンセル]** をクリックします。
 
-### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>VM の拡張機能として既に Microsoft Monitoring Agent がインストールされている場合はどうなりますか?
-Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center は、VM のセキュリティ データを既に接続されているワークスペースに保存します。 Security Center では、Security Center の使用をサポートするために、VM の Azure リソース ID を含むように拡張機能のバージョンを更新します。
+### Microsoft Monitoring Agent が拡張機能として VM に既にインストールされている場合はどうなりますか?<a name="mmaextensioninstalled"></a>
+Monitoring Agent が拡張機能としてインストールされている場合、拡張機能の構成では 1 つのワークスペースにのみレポートできます。 Security Center は、ユーザー ワークスペースへの既存の接続をオーバーライドしません。 Security Center では、"security" または "securityFree" ソリューションがインストールされているという条件で、既に接続されているワークスペース内の VM からのセキュリティ データを保存します。 Security Center では、このプロセスで拡張機能のバージョンを最新バージョンにアップグレードする可能性があります。
 
-### <a name="what-if-i-had-a-microsoft-monitoring-agent-installed-on-the-machine-but-not-as-an-extension"></a>コンピューターに Microsoft Monitoring Agent がインストールされていて、拡張機能としてインストールされていない場合はどうなりますか?
-Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center によって Microsoft Monitoring Agent がインストールされず、セキュリティの監視は制限されます。
+詳細については、「[既にインストールされているエージェントが存在する場合の自動プロビジョニング](security-center-enable-data-collection.md#preexisting)」をご覧ください。
 
-詳細については、次のセクションの「[SCOM または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?](#scomomsinstalled)」をご覧ください。
 
-### SCOM または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?<a name="scomomsinstalled"></a>
-Security Center は、エージェントがインストールされていることを事前に識別できません。  Security Center が Microsoft Monitoring Agent 拡張機能のインストールを試行すると、インストール済みの既存のエージェントが原因で失敗します。  この失敗によって、ワークスペースに対するエージェントの接続文字列の設定をオーバーライドせずに、マルチホームの作成を回避しています。
+### マシンに Microsoft Monitoring Agent が拡張機能 (直接エージェント) としてではなく、直接インストールされている場合はどうなりますか?<a name="directagentinstalled"></a>
+Microsoft Monitoring Agent が VM に (Azure 拡張機能としてではなく) 直接インストールされている場合、Security Center によって Microsoft Monitoring Agent 拡張機能がインストールされ、Microsoft Monitoring Agent が最新バージョンにアップグレードされる可能性があります。
+インストールされたエージェントは、既に構成されているワークスペースに引き続きレポートし、さらに Security Center で構成されたワークスペースにもレポートします (マルチ ホームがサポートされています)。
+構成済みのワークスペースが (Security Center の既定のワークスペースではなく) ユーザー ワークスペースの場合、Security Center でそのワークスペースにレポートする VM とコンピューターからイベントの処理を開始するために、"security/"securityFree" ソリューションをインストールする必要があります。
 
-> [!NOTE]
-> エージェントのバージョンは、最新の OMS エージェントのバージョンに更新されます。  これは、SCOM ユーザーにも当てはまります。
->
->
+2019 年 3 月 17 日より前に Security Center にオンボードされたサブスクリプションの既存のマシンでは、既存のエージェントが検出されると、Microsoft Monitoring Agent 拡張機能はインストールされず、マシンに影響はありません。 これらのマシンについては、マシンでのエージェントのインストールに関する問題を解決するために、"マシンの監視エージェント正常性の問題を解決する" の推奨事項を参照してください。
+
+ 詳細については、次のセクションの「[SCOM または OMS のダイレクト エージェントが既に VM にインストールされている場合、どうなりますか?](#scomomsinstalled)」をご覧ください。
+
+### VM に SCOM エージェントが既にインストールされている場合はどうなりますか?<a name="scomomsinstalled"></a>
+Security Center によって、Microsoft Monitoring Agent 拡張機能は、既存の SCOM と並べてインストールされます。 通常、既存の SCOM エージェントが引き続き SCOM サーバーにレポートします。 SCOM エージェントと Microsoft Monitoring Agent は、このプロセス中に最新バージョンに更新される、共通のランタイム ライブラリを共有することに注意してください。
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>これらの拡張機能を削除するとどのような影響がありますか?
 Microsoft Monitoring Extension を削除すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 Security Center は、VM に拡張機能が存在せず、拡張機能を再インストールすることが 24 時間以内に判断されます。
@@ -217,7 +221,7 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 ### <a name="where-is-my-data-stored"></a>データはどこに格納されますか。
 このエージェントから収集されたデータは、サブスクリプションに関連付けられている既存の Log Analytics ワークスペースまたは新規のワークスペースのいずれかに格納されます。 詳細については、[データ セキュリティ](security-center-data-security.md)に関するページを参照してください。
 
-## 既存の Log Analytics ユーザー<a name="existingloganalyticscust"></a>
+## 既存の Azure Monitor ログ ユーザー<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Security Center は VM とワークスペース間の既存の接続をオーバーライドしますか?
 VM に Azure 拡張機能としてインストールされている Microsoft Monitoring Agent が既にある場合、Security Center は既存のワークスペース接続をオーバーライドしません。 代わりに、Security Center は既存のワークスペースを使用します。
@@ -274,6 +278,9 @@ Azure Security Center は、Azure のリソース、ネットワーク、パー�
 * Windows エラー報告を使用して検出された高度なマルウェア
 * 仮想マシンに対するブルート フォース攻撃
 * マルウェア対策や Web アプリケーション ファイアウォールなどのセキュリティ ソリューションの統合パートナーからのセキュリティの警告
+
+### セキュリティ スコア値が変わったのはなぜですか? <a name="secure-score-faq"></a>
+2019 年 2 月の時点で、Security Center では、推奨事項の重大度に合わせて一部の推奨事項のスコアを調整しました。 この調整により、全体的なセキュリティ スコア値が変わる可能性があります。  セキュリティ スコアの詳細については、「[Secure score calculation (セキュリティ スコアの計算)](security-center-secure-score.md)」をご覧ください。
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft Security Response Center と Azure Security Center によって検出され、警告される脅威の違いは何ですか。
 Microsoft Security Response Center (MSRC) では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者から脅威インテリジェンスと不正使用の報告を受け取ります。 不正利用者や許可されていない利用者が顧客データにアクセスしたことや、顧客による Azure の利用方法が利用規約の条件に従っていないことを MSRC が検出すると、セキュリティ インシデント マネージャーが顧客に通知します。 通常、通知は、Azure Security Center で指定されたセキュリティ担当者または Azure サブスクリプション所有者 (セキュリティ担当者が指定されていない場合) に電子メールで送られます。

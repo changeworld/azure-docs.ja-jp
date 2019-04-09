@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: ad971ae3157dd17ecd4af662626c986584a27fe2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 63f301b4618df9764460d0a9a133834fb72e33bb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329168"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540586"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
 
@@ -103,7 +103,21 @@ Azure SQL Database で[アクティブ geo レプリケーション](sql-databas
 準備の手順が完了すると、ステージング環境をアップグレードできるようになります。 次の図は、これらのアップグレードの手順を示します。
 
 1. 運用環境のプライマリ データベースを読み取り専用モードに設定します (10)。 このモードでは、アップグレード中は運用データベース (V1) が変更されないことが保証されるため、V1 と V2 のデータベース インスタンスのデータの不整合を防ぎます。
-2. 計画された終了モードを使用して、同じリージョンのセカンダリ データベースを切断します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。
+
+```sql
+-- Set the production database to read-only mode
+ALTER DATABASE <Prod_DB>
+SET (ALLOW_CONNECTIONS = NO)
+```
+
+2. セカンダリを切断して geo レプリケーション を終了します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。 次の例では Transact-SQL を使用していますが、[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) も使用できます。 
+
+```sql
+-- Disconnect the secondary, terminating geo-replication
+ALTER DATABSE V1
+REMOVE SECONDARY ON SERVER <Partner-Server>
+```
+
 3. `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net`、およびステージングのプライマリ データベースに対してアップグレード スクリプトを実行します (12)。 データベースの変更は、ステージングのセカンダリに自動的にレプリケートされます。
 
 ![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](media/sql-database-manage-application-rolling-upgrade/option2-2.png)

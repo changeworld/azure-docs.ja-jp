@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb21ddc36141dfee1be6f0e42811e6ccbeb44143
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2750de16c71e7d678810316f281e28ca8c40553d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217498"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403155"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -77,6 +77,14 @@ Azure portal で、または Microsoft Graph を使用してプログラムで�
 | `signInUrl` | 文字列 | アプリのホーム ページへの URL を指定します。 | `https://MyRegisteredApp` |
 | `signInAudience` | 文字列 | 現在のアプリケーションでサポートされる Microsoft アカウントを指定します。 サポートされる値は次のとおりです。<ul><li>**AzureADMyOrg** - 自分の組織の Azure AD テナント (つまり、シングル テナント) における Microsoft の職場または学校アカウントを持つユーザー</li><li>**AzureADMultipleOrgs** - 任意の組織の Azure AD テナント (つまり、マルチテナント) での Microsoft の職場または学校アカウントを持つユーザー</li> <li>**AzureADandPersonalMicrosoftAccount** - 個人の Microsoft アカウント、または任意の組織の Azure AD テナントでの職場または学校アカウントを持つユーザー</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | 文字列配列 | アプリケーションの分類と特定に使用できるカスタム文字列。 | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
+
+
+## <a name="manifest-limits"></a>マニフェストの制限
+アプリケーション マニフェストには、approles、keycredentials、knownClientApplications、identifierUris、rediretUris、requiredResourceAccess、oauth2Permissions など複数の属性があり、、コレクションと呼ばれています。 任意のアプリケーションの完全なアプリケーション マニフェスト内では、すべてのコレクションを組み合わせたときのエントリの合計数は 1200 個に制限されています。 アプリケーション マニフェストで指定されたリダイレクト URI が既に 100 個ある場合、マニフェストを構成する他の組み合わされたコレクション全体で使用できるエントリ数は残りの 1100 個です。
+
+> [!NOTE]
+> アプリケーション マニフェストで 1200 個を超えてエントリを追加しようとすると、 "**アプリケーション xxxxxx を更新できませんでした。エラーの詳細:マニフェストのサイズ制限を超えました。値の数を減らしてから、要求を再試行してください**" というエラーが表示される場合があります。
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,16 +4,16 @@ description: Azure Automation 共有リソースのエラーをトラブルシ�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/3/2018
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 35e39a070a4c976655296d2ea141478d13e43bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902826"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>共有リソースのエラーをトラブルシューティングする
 
@@ -38,6 +38,24 @@ PowerShell モジュールのインポートは、複雑な複数手順のプロ
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+### <a name="update-azure-modules-importing"></a>シナリオ:AzureRM モジュールは、これらの更新の試行後にインポートするスタックです。
+
+#### <a name="issue"></a>問題
+
+AzureRM モジュールの更新を試行した後、アカウントに以下のメッセージのバナーが残ります。
+
+```
+Azure modules are being updated
+```
+
+#### <a name="cause"></a>原因
+
+0 から始まる数値名を持つリソース グループにある、Automation Account の AzureRM モジュールの更新については、既知の問題があります。
+
+#### <a name="resolution"></a>解決策
+
+Automation Account で Azure モジュールを更新するには、それが英数字名を持つリソース グループになければなりません。 0 から始まる数値名を持つリソース グループは、現時点で AzureRM モジュールを更新できません。
 
 ### <a name="module-fails-to-import"></a>シナリオ:モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 
@@ -119,6 +137,30 @@ You do not have permissions to create…
 実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切なアクセス許可が必要です。 実行アカウントの作成または更新に必要なアクセス許可については、[実行アカウントのアクセス許可](../manage-runas-account.md#permissions)に関する記事を参照してください。
 
 問題の原因がロックである場合、ロックを解除しても構わないか確認します。 次に、ロックされているリソースに移動し、ロックを右クリックして、**[削除]** を選択して、ロックを解除します。
+
+### <a name="iphelper"></a>シナリオ:Runbook の実行時に「DLL 'iplpapi.dll' の 'GetPerAdapterInfo' というエントリ ポイントが見つかりません」というエラーが表示されます。
+
+#### <a name="issue"></a>問題
+
+Runbook を実行すると、以下の例外を受け取ります。
+
+```error
+Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、正しく構成されていない [[アカウントとして実行]](../manage-runas-account.md) によって発生する可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+[[アカウントとして実行]](../manage-runas-account.md) が正しく構成されていることを確認します。 正しく構成されていれば、Runbook に Azure を認証するための適切なコードがあることを確認します。 次のサンプルは、[アカウントとして実行] を使用して Runbook で Azure を認証するコードのスニペットを示しています。
+
+```powershell
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzureRmAccount -ServicePrincipal -Tenant $connection.TenantID `
+-ApplicationID $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
+```
 
 ## <a name="next-steps"></a>次の手順
 

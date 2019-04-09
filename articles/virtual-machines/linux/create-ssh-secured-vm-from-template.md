@@ -13,65 +13,74 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 03/14/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62ef6cad2f1c8f8f871043a8d1f70cbd08ccd65f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 5ff8beb1995359bad93449744718091c338e4994
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729389"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226557"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法
-
-この記事では、Azure Resource Manager テンプレートと Azure CLI を使用してすばやく Linux 仮想マシン (VM) をデプロイする方法を説明します。 これらの手順は、[Azure クラシック CLI](create-ssh-secured-vm-from-template-nodejs.md) を使用して実行することもできます。
-
 
 この記事では、Azure Resource Manager テンプレートと Azure CLI を使用してすばやく Linux 仮想マシン (VM) をデプロイする方法を説明します。 
 
 ## <a name="templates-overview"></a>テンプレートの概要
-Azure Resource Manager テンプレートとは、Azure ソリューションのインフラストラクチャと構成を定義する JSON ファイルです。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 テンプレートの形式とその構築方法については、「[初めての Azure Resource Manager テンプレートを作成する](../../azure-resource-manager/resource-manager-create-first-template.md)」を参照してください。 リソースの種類に関して JSON 構文を確認するには、「[Define resources in Azure Resource Manager templates (Azure Resource Manager テンプレートのリソースの定義)](/azure/templates/)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 次の例では、*myResourceGroupVM* という名前のリソース グループを *eastus* リージョンに作成します。
-
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
+Azure Resource Manager テンプレートとは、Azure ソリューションのインフラストラクチャと構成を定義する JSON ファイルです。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 テンプレートの形式とその構築方法の詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。 リソースの種類に関して JSON 構文を確認するには、「[Define resources in Azure Resource Manager templates (Azure Resource Manager テンプレートのリソースの定義)](/azure/templates/microsoft.compute/allversions)」を参照してください。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-次の例では、[この Azure Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) から [az group deployment create](/cli/azure/group/deployment) を使用して VM を作成します。 SSH 認証のみが許可されています。 値を求められたら、自らの SSH 公開キーの値 (*~/.ssh/id_rsa.pub* の内容など) を指定します。 SSH キー ペアを短時間で作成する必要がある場合は、[Azure に Linux VM 用の SSH キー ペアを作成して使用する方法](mac-create-ssh-keys.md)に関する記事をご覧ください。
 
-```azurecli
-az group deployment create \
-    --resource-group myResourceGroup \
-    --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
+通常、Azure 仮想マシンの作成には、次の 2 つの手順が含まれます。
+
+1. リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。
+1. 仮想マシンを作成します。
+
+次の例では、[Azure クイック スタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json)から VM を作成します。 このデプロイでは、SSH 認証のみが許可されます。 値を求められたら、自らの SSH 公開キーの値 (*~/.ssh/id_rsa.pub* の内容など) を指定します。 SSH キー ペアを短時間で作成する必要がある場合は、[Azure に Linux VM 用の SSH キー ペアを作成して使用する方法](mac-create-ssh-keys.md)に関する記事をご覧ください。 テンプレートのコピーを次に示します。
+
+[!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
+
+CLI スクリプトを実行するには、**[使ってみる]** を選択して Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、**[貼り付け]** を選択します。
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the location (i.e. centralus):" &&
+read location &&
+echo "Enter the project name (used for generating resource names):" &&
+read projectName &&
+echo "Enter the administrator username:" &&
+read username &&
+echo "Enter the SSH public key:" &&
+read key &&
+az group create --name $resourceGroupName --location "$location" &&
+az group deployment create --resource-group $resourceGroupName --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json --parameters projectName=$projectName adminUsername=$username adminPublicKey='$key' &&
+az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-details --query publicIps --output tsv
 ```
+
+最後の Azure CLI コマンドは、新しく作成された VM のパブリック IP アドレスを示しています。 仮想マシンに接続するには、このパブリック IP アドレスが必要です。 この記事の次のセクションを参照してください。
 
 前の例では、GitHub に格納されているテンプレートが指定されています。 テンプレートをダウンロードまたは作成し、`--template-file` パラメーターを使用してローカル パスを指定することもできます。
 
+次にその他のリソースを示します。
+
+- Resource Manager テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)を参照してください。
+- Azure 仮想マシンのスキーマを表示するには、「[Azure テンプレート リファレンス](/azure/templates/microsoft.compute/allversions)」をご覧ください。
+- さらに仮想マシン テンプレートのサンプルを表示するには、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)」を参照してください。
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
-VM に SSH 接続するには、[az vm show](/cli/azure/vm#az-vm-show) でパブリック IP アドレスを取得します。
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
-    --name sshvm \
-    --show-details \
-    --query publicIps \
-    --output tsv
-```
 
 通常どおりに、ご使用の VM に SSH 接続できます。 上記のコマンドで取得した独自のパブリック IP アドレスを指定します。
 
 ```bash
-ssh azureuser@<ipAddress>
+ssh <adminUsername>@<ipAddress>
 ```
 
 ## <a name="next-steps"></a>次の手順
-この例では、基本的な Linux VM を作成しました。 アプリケーション フレームワークを含むその他の Resource Manager テンプレートについて、またはさらに複雑な環境の作成方法については、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)をご覧ください。
+
+この例では、基本的な Linux VM を作成しました。 アプリケーション フレームワークを含むその他の Resource Manager テンプレートについて、またはさらに複雑な環境の作成方法については、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)」をご覧ください。
 
 テンプレートの作成に関する詳細については、JSON 構文とデプロイしたリソースの種類のプロパティを参照してください。
 

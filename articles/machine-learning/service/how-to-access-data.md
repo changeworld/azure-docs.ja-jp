@@ -9,89 +9,122 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
+ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 759ae1c077a2c93ee4450843a796b84d95701a10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: e6e1b304b90b37c93bed22bcb720a646680ee083
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769897"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223616"
 ---
-# <a name="access-data-during-training-from-your-datastores"></a>トレーニング中にデータストアのデータにアクセスする
-Azure Machine Learning ワークフローでは、データストアにアクセスしてデータを操作します。
+# <a name="access-data-from-your-datastores"></a>データストアからデータにアクセスする
 
-Azure Machine Learning サービスでは、データストアは [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) に対する抽象化です。 データストアでは、基になるストレージとして [Azure BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) コンテナーまたは [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)を参照できます。 
+データストアでは、自分のコードをローカル (コンピューティング クラスター上) で実行していても、仮想マシン上で実行していても、自分のデータとやりとりしたり、データにアクセスしたりすることができます。 この記事では、自分のデータストアにアクセスすることができ、自分のコンピューティング コンテキストに利用できるようにする Azure Machine Learning ワークフローについて学習します。
 
-## <a name="create-a-datastore"></a>データストアを作成する
-データストアを使用するには、まず[ワークスペース](concept-azure-machine-learning-architecture.md#workspace)が必要です。 まず、[新しいワークスペースを作成する](quickstart-create-workspace-with-python.md)か、既存のワークスペースを取得します。
+この使い方では、次のタスクの例を示します。
+* [データストアの選択](#access)
+* [データの取得](#get)
+* [データのデータストアへのアップロードとダウンロード](#up-and-down)
+* [トレーニング中のデータストアへのアクセス](#train)
+
+## <a name="prerequisites"></a>前提条件
+
+データストアを使用するには、まず[ワークスペース](concept-azure-machine-learning-architecture.md#workspace)が必要です。 
+
+まず、[新しいワークスペースを作成する](quickstart-create-workspace-with-python.md)か、既存のワークスペースを取得します。
 
 ```Python
 import azureml.core
-from azureml.core import Workspace
+from azureml.core import Workspace, Datastore
 
 ws = Workspace.from_config()
 ```
 
-### <a name="use-the-default-datastore"></a>既定のデータストアを使用する
-ストレージ アカウントを作成または構成する必要はありません。  各ワークスペースには、すぐに使い始めることができる既定のデータストアがあります。
+または、[この Python クイック スタートに従って](quickstart-create-workspace-with-python.md) SDK を使用し、自分のワークスペースを作成して作業を開始します。
+
+<a name="access"></a>
+
+## <a name="choose-a-datastore"></a>データストアの選択
+
+既存のデータストアを使用するか、独自のデータストアを使用することができます。
+
+### <a name="use-the-default-datastore-in-your-workspace"></a>ワークスペースで既存のデータストアを使用する
+
+各ワークスペースに既存のデータストアがあるため、ストレージ アカウントを作成または構成する必要はありません。 既にワークスペースに登録されているデータストアをそのまますぐに使用できます。 
 
 ワークスペースの既定のデータストアを取得するには、次のコマンドを使用します。
 ```Python
 ds = ws.get_default_datastore()
 ```
 
-### <a name="register-a-datastore"></a>データストアを登録する
-既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。 Azure BLOB コンテナーまたは Azure ファイル共有をデータストアとして登録することができます。 すべての登録メソッドは `Datastore` クラス上にあり、`register_azure_*` という形式になります。
+### <a name="register-your-own-datastore-with-the-workspace"></a>ワークスペースで独自のデータストアを登録する
+既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。   すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。 
 
-#### <a name="azure-blob-container-datastore"></a>Azure BLOB コンテナー データストア
-Azure BLOB コンテナー データストアを登録するには、次のコマンドを使用します。
+次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
+
++ **Azure BLOB コンテナー データストア**の場合、[`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) を使用します。
+
+  ```Python
+  ds = Datastore.register_azure_blob_container(workspace=ws, 
+                                               datastore_name='your datastore name', 
+                                               container_name='your azure blob container name',
+                                               account_name='your storage account name', 
+                                               account_key='your storage account key',
+                                               create_if_not_exists=True)
+  ```
+
++ **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 例:  
+  ```Python
+  ds = Datastore.register_azure_file_share(workspace=ws, 
+                                           datastore_name='your datastore name', 
+                                           container_name='your file share name',
+                                           account_name='your storage account name', 
+                                           account_key='your storage account key',
+                                           create_if_not_exists=True)
+  ```
+
+<a name="get"></a>
+
+## <a name="find--define-datastores"></a>データストアの検索と定義
+
+現在のワークスペースに登録されている特定のデータストアを取得するには、[`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) を使用します。
 
 ```Python
-ds = Datastore.register_azure_blob_container(workspace=ws, 
-                                             datastore_name='your datastore name', 
-                                             container_name='your azure blob container name',
-                                             account_name='your storage account name', 
-                                             account_key='your storage account key',
-                                             create_if_not_exists=True)
-```
-
-#### <a name="azure-file-share-datastore"></a>Azure ファイル共有データストア
-Azure ファイル共有データストアを登録するには、次のコマンドを使用します。
-
-```Python
-ds = Datastore.register_azure_file_share(workspace=ws, 
-                                         datastore_name='your datastore name', 
-                                         container_name='your file share name',
-                                         account_name='your storage account name', 
-                                         account_key='your storage account key',
-                                         create_if_not_exists=True)
-```
-
-### <a name="get-an-existing-datastore"></a>既存のデータストアを取得する
-登録済みのデータストアを名前でクエリするには、次のコマンドを使用します。
-```Python
+#get named datastore from current workspace
 ds = Datastore.get(ws, datastore_name='your datastore name')
 ```
 
-ワークスペースのすべてのデータストアを取得することもできます。
+指定したワークスペースにあるすべてのデータストアの一覧を取得するには、次のコードを使用します。
+
 ```Python
+#list all datastores registered in current workspace
 datastores = ws.datastores
 for name, ds in datastores.items():
     print(name, ds.datastore_type)
 ```
 
-便宜的に、登録済みのデータストアの 1 つをワークスペースの既定のデータストアとして設定します。
+現在のワークスペースに異なる既定のデータストアを定義するには、[`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) を使用します。
+
 ```Python
+#define default datastore for current workspace
 ws.set_default_datastore('your datastore name')
 ```
 
-## <a name="upload-and-download-data"></a>データのアップロードとダウンロード
+<a name="up-and-down"></a>
+## <a name="upload--download-data"></a>データのアップロードとダウンロード
+次の例に示されている [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) と [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) メソッドは、[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) クラスと [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) クラスに固有のものであり、これらのクラスに対して同様に動作します。
+
 ### <a name="upload"></a>アップロード
-Python SDK を使用して、データストアにディレクトリまたは個々のファイルをアップロードします。
+
+ Python SDK を使用して、データストアにディレクトリまたは個々のファイルをアップロードします。
 
 データストア `ds` にディレクトリをアップロードするには、次のコマンドを使用します。
+
 ```Python
+import azureml.data
+from azureml.data import AzureFileDatastore, AzureBlobDatastore
+
 ds.upload(src_dir='your source directory',
           target_path='your target path',
           overwrite=True,
@@ -111,21 +144,46 @@ ds.download(target_path='your target path',
 ```
 `target_path` は、データのダウンロード先となるローカル ディレクトリの場所です。 ダウンロードするファイル共有 (または BLOB コンテナー) 内のフォルダーのパスを指定するには、`prefix` にそのパスを指定します。 `prefix` が `None` である場合は、ファイル共有 (または BLOB コンテナー) のすべてのコンテンツがダウンロードされます。
 
-## <a name="access-datastores-for-training"></a>トレーニングのためにデータストアにアクセスする
-Python SDK を使用してリモート コンピューティング ターゲットで、トレーニングの実行中に (トレーニング データや検証データなどのために) データストアにアクセスできます。 
+<a name="train"></a>
+## <a name="access-datastores-during-training"></a>トレーニング中のデータストアへのアクセス
 
-リモート コンピューティング上でデータストアを使用可能にするためにサポートされている方法は 2 つあります。
-* **マウント**  
-`ds.as_mount()`: このマウント モードを指定すると、リモート コンピューティング上にデータストアが自動的にマウントされます。 
-* **ダウンロード/アップロード**  
-    * `ds.as_download(path_on_compute='your path on compute')` では、データストアからリモート コンピューティングの `path_on_compute` で指定された場所にデータがダウンロードされます。
-    * `ds.as_upload(path_on_compute='yourfilename'` では、データがデータストアにアップロードされます。  トレーニング スクリプトで、リモート コンピューティング上の現在の作業ディレクトリに `foo.pkl` ファイルを作成したとします。 スクリプトによってこのファイルが作成された後、`ds.as_upload(path_on_compute='./foo.pkl')` を使用してファイルをデータストアにアップロードします。 ファイルはデータストアのルートにアップロードされます。
-    
-データストア内の特定のフォルダーまたはファイルを参照するには、データストアの **`path`** 関数を使用します。 たとえば、データストアの `./bar` ディレクトリの内容をコンピューティング ターゲットにダウンロードするには、`ds.path('./bar').as_download()` を使用します。
+自分のデータストアをリモート コンピューティングで使用できるようにすると、トレーニング スクリプト内のパラメーターとしてデータストアへのパスを渡すだけで、トレーニングの実行中にアクセスすることができます (トレーニングや検証データなど)。
 
-すべての `ds` または `ds.path` オブジェクトは、リモート コンピューティング上のマウント/ダウンロード パスを表す値を持つ、形式 `"$AZUREML_DATAREFERENCE_XXXX"` の環境変数名に解決されます。 リモート コンピューティング上のデータストア パスは、スクリプトの実行パスと同じであるとは限りません。
+次の表では、データストアをリモート コンピューティングで利用できるようにする、一般的な [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) メソッドを一覧しています。
 
-トレーニング中にデータストアにアクセスするには、`script_params` を使用して、データストアをコマンドライン引数としてトレーニング スクリプトに渡します。
+# #
+
+方法|方法|説明
+----|-----|--------
+マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| リモート コンピューティングにデータストアをマウントするために使用します。 データストアに対して既定のモードです。
+ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|ご利用のデータストア上の `path_on_compute` によって指定された場所からリモート コンピューティングにデータをダウンロードするために使用します。
+アップロード|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| `path_on_compute` によって指定された場所からご利用のデータストアのルートにデータをアップロードするために使用します。
+
+```Python
+import azureml.data
+from azureml.data import DataReference
+
+ds.as_mount()
+ds.as_download(path_on_compute='your path on compute')
+ds.as_upload(path_on_compute='yourfilename')
+```  
+
+データストア内の特定のフォルダーまたはファイルを参照するには、データストアの [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) 関数を使用します。
+
+```Python
+#download the contents of the `./bar` directory from the datastore to the remote compute
+ds.path('./bar').as_download()
+```
+
+
+
+> [!NOTE]
+> すべての `ds` または `ds.path` オブジェクトは、リモート コンピューティング上のマウント/ダウンロード パスを表す値を持つ、形式 `"$AZUREML_DATAREFERENCE_XXXX"` の環境変数名に解決されます。 リモート コンピューティング上のデータストア パスは、トレーニング スクリプトの実行パスと同じであるとは限りません。
+
+### <a name="examples"></a>例 
+
+トレーニング中に自分のデータストアにアクセスするための [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスに固有の例を以下に示します。
+
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -139,9 +197,13 @@ est = Estimator(source_directory='your code directory',
                 compute_target=compute_target,
                 entry_script='train.py')
 ```
-`as_mount()` はデータストアの既定のモードなので、`'--data_dir'` 引数に `ds` を直接渡すこともできます。
 
-または、推定機能コンストラクターの `inputs` パラメーターにデータストアの一覧を渡して、データストアとの間でマウントまたはコピーを行うことができます。
+`as_mount()` はデータストアの既定のモードであるため、`'--data_dir'` 引数に `ds` を直接渡すこともできます。
+
+または、推定機能コンストラクターの `inputs` パラメーターにデータストアの一覧を渡して、データストアとの間でマウントまたはコピーを行うことができます。 コード例は次のとおりです。
+* トレーニング スクリプト `train.py` が実行される前に、データストア `ds1` 内のコンテンツをすべて、リモート コンピューティングにダウンロードします
+* `train.py` が実行される前に、データストア `ds2` 内のフォルダー `'./foo'` をリモート コンピューティングにダウンロードします
+* スクリプトが実行された後に、リモート コンピューティングからデータストア `ds3` にファイル `'./bar.pkl'` をアップロードします
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -149,10 +211,10 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
-上記のコードによって次の処理が実行されます。
-* トレーニング スクリプト `train.py` が実行される前に、データストア `ds1` 内のすべてのコンテンツをリモート コンピューティングにダウンロードします
-* `train.py` が実行される前に、データストア `ds2` 内のフォルダー `'./foo'` をリモート コンピューティングにダウンロードします
-* スクリプトが実行された後に、リモート コンピューティングからデータストア `d3` にファイル `'./bar.pkl'` をアップロードします
+
 
 ## <a name="next-steps"></a>次の手順
+
 * [モデルをトレーニングする](how-to-train-ml-models.md)
+
+* [モデルのデプロイ](how-to-deploy-and-where.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ff14afc9e438c2b493219e9fa207b2e8793b3c87
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189208"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403076"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み  
 
@@ -55,7 +55,7 @@ Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH 
 ```
 
 ## <a name="adding-the-dashjs-player"></a>DASH.js プレーヤーの追加
-dash.js リファレンス実装をアプリケーションに追加するには、dash.js プロジェクトの 1.0 リリースから dash.all.js ファイルを入手する必要があります。 このファイルはアプリケーションの JavaScript フォルダーに保存します。 このファイルは、必要なすべての dash.js コードを 1 つのファイルにまとめることのできる便利なファイルです。 dash.js リポジトリを参照すると、個別のファイルやテスト コードなどさまざまな情報が見つかりますが、dash.js の使用のみが目的であれば、必要になるのは dash.all.js ファイルのみです。
+dash.js リファレンス実装をアプリケーションに追加するには、最新バージョンの dash.js プロジェクトから dash.all.js ファイルを入手する必要があります。 このファイルはアプリケーションの JavaScript フォルダーに保存します。 このファイルは、必要なすべての dash.js コードを 1 つのファイルにまとめることのできる便利なファイルです。 dash.js リポジトリを参照すると、個別のファイルやテスト コードなどさまざまな情報が見つかりますが、dash.js の使用のみが目的であれば、必要になるのは dash.all.js ファイルのみです。
 
 dash.js プレーヤーをアプリケーションを追加するには、basicPlayer.html のヘッド セクションにスクリプト タグを追加します。
 

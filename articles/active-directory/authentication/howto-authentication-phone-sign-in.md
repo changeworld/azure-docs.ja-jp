@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator アプリを使用したパスワードなしの Azure AD サインイン (プレビュー)
+title: Microsoft Authenticator アプリを使用したパスワードなしのサインイン (プレビュー) - Azure Active Directory
 description: パスワードを使用せずに、Microsoft Authenticator アプリを使用して Azure AD にサインインする (パブリック プレビュー)
 services: active-directory
 ms.service: active-directory
@@ -12,18 +12,18 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247e772873cf467b371b4aea45f8ceb43bce16e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180524"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370391"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
 Microsoft Authenticator アプリを使用すると、パスワードを使用せずに Azure AD アカウントにサインインできます。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のテクノロジと同様、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
 
-![Microsoft Authenticator アプリでのサインイン試行を承認するようユーザーに求めている、ブラウザーでのサインインの例](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
+![サインインを承認するようユーザーに求めている、ブラウザーでのサインインの例](./media/howto-authentication-phone-sign-in/phone-sign-in-microsoft-authenticator-app.png)
 
 ユーザー名の入力後にパスワードの入力を求めるプロンプトを表示するのではなく、Microsoft Authenticator アプリで電話によるサインインを有効にしているユーザーには、アプリで番号をタップするよう伝えるメッセージが表示されます。 このアプリでは、ユーザーは、番号を照合し、[Approve]\(承認) を選択してから、PIN を入力するか生体認証を行う必要があります。その後、認証が完了します。
 
@@ -40,17 +40,20 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 ### <a name="steps-to-enable"></a>有効にする手順
 
 1. Azure Active Directory V2 PowerShell モジュールのパブリック プレビューのリリースを確実に最新バージョンにします。 パブリック プレビューをアンインストールおよび再インストールして最新バージョンにするには、次のコマンドを実行します。
+
     ```powershell
     Uninstall-Module -Name AzureADPreview
     Install-Module -Name AzureADPreview
     ```
 
 2. Azure AD テナントで認証を受け、Azure AD V2 PowerShell モジュールを使用します。 使用されるアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
+
     ```powershell
     Connect-AzureAD
     ```
 
 3. Authenticator サインイン ポリシーの作成:
+
     ```powershell
     New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
     ```

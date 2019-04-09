@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417093"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081255"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -57,6 +57,7 @@ ms.locfileid: "56417093"
 * App Service 証明書 - 「[App Service 証明書の制限事項](#app-service-certificate-limitations)」
 * Automation - Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
 * Azure Active Directory B2C
+* Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Azure Cosmos DB
 * Azure データ エクスプローラー
 * Azure Database for MariaDB
@@ -64,6 +65,7 @@ ms.locfileid: "56417093"
 * Azure Database for PostgreSQL
 * Azure DevOps - Microsoft 以外の拡張機能を購入している Azure DevOps 組織は、[それらの購入をキャンセル](https://go.microsoft.com/fwlink/?linkid=871160)してからでなければ、アカウントを異なるサブスクリプションに移動できません。
 * Azure Maps
+* Azure Monitor ログ
 * Azure Relay
 * Azure Stack - 登録
 * Batch
@@ -89,10 +91,9 @@ ms.locfileid: "56417093"
 * IoT Hub
 * Key Vault - ディスクの暗号化に使用される Key Vault は、同じサブスクリプション内のリソース グループに移動したり、サブスクリプション間で移動したりすることはできません。
 * Load Balancer - Basic SKU の Load Balancer は移動できます。 Standard SKU の Load Balancer は移動できません。
-* Log Analytics
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
-* マネージド ディスク - 「[制約に関するVirtual Machines の制限事項](#virtual-machines-limitations)」を参照してください
+* マネージド ディスク - 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
 * マネージド ID - ユーザー割り当て
 * Media Services
 * 監視 - 新しいサブスクリプションへの移動が[サブスクリプション クォータ](../azure-subscription-service-limits.md#monitor-limits)を超えないようにします
@@ -103,7 +104,6 @@ ms.locfileid: "56417093"
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
 * Recovery Services コンテナー - [プレビュー](#recovery-services-limitations)に登録します。
-* Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
 * Service Bus
@@ -116,7 +116,7 @@ ms.locfileid: "56417093"
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines - マネージド ディスクを使用したVMに関しては、[Virtual Machines の制限事項](#virtual-machines-limitations)を参照してください
+* Virtual Machine - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Virtual Machine Scale Sets - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Networks - 「[Virtual Networks の制限事項](#virtual-networks-limitations)」を参照してください。
@@ -133,6 +133,7 @@ ms.locfileid: "56417093"
 * Azure Databricks
 * Azure Firewall
 * Azure Migrate
+* Azure NetApp Files
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
 * 従来のアプリケーション
 * Container Instances
@@ -145,7 +146,6 @@ ms.locfileid: "56417093"
 * Lab Services - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Managed Applications
 * Microsoft Genomics
-* NetApp
 * SAP HANA on Azure
 * セキュリティ
 * Site Recovery
@@ -166,13 +166,12 @@ ms.locfileid: "56417093"
 
 ### <a name="virtual-machines-limitations"></a>Virtual Machines の制限事項
 
-2018 年 9 月 24 日以降は、マネージド ディスクを移動することができます。 このサポートは、マネージド ディスク、マネージド イメージ、管理されたスナップショット、およびマネージド ディスクを使用する仮想マシンの可用性セットを、仮想マシンと一緒に移動できることを意味します。
+マネージド ディスク、マネージド イメージ、管理されたスナップショット、およびマネージド ディスクを使用する仮想マシンの可用性セットは、仮想マシンと一緒に移動できます。 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません。
 
 次のシナリオはまだサポートされていません。
 
 * 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
-* 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
-* Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません
+* Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
 Azure Backup で構成された仮想マシンを移動するには、次の対処法を使用します。
@@ -190,6 +189,8 @@ Azure Backup で構成された仮想マシンを移動するには、次の対�
 ### <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
 
 仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 VPN ゲートウェイでは、IP アドレス、仮想ネットワーク ゲートウェイ、および関連付けられているすべての接続リソースを移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
+
+ネットワーク インターフェイス カードで仮想マシンを移動するには、すべての依存リソースを移動する必要があります。 ネットワーク インターフェイス カードの仮想ネットワーク、仮想ネットワークの他のすべてのネットワーク インターフェイス カード、および VPN ゲートウェイを移動する必要があります。
 
 ピアリングされた仮想ネットワークを移動するには、最初に仮想ネットワークのピアリングを無効にする必要があります。 無効にすると、仮想ネットワークを移動できます。 移動後に、仮想ネットワークのピアリングを再度有効にします。
 
@@ -254,58 +255,58 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 1. 移動元のサブスクリプションがサブスクリプション間の移動に参加できることを確認します。 次の操作を行います。
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      要求本文は次のようになります。
 
-  ```json
-  {
+   ```json
+   {
     "role": "source"
-  }
-  ```
+   }
+   ```
 
      検証操作の応答は次のような形式になります。
 
-  ```json
-  {
+   ```json
+   {
     "status": "{status}",
     "reasons": [
       "reason1",
       "reason2"
     ]
-  }
-  ```
+   }
+   ```
 
 2. 移動先のサブスクリプションがサブスクリプション間の移動に参加できることを確認します。 次の操作を行います。
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
+   ```
 
      要求本文は次のようになります。
 
-  ```json
-  {
+   ```json
+   {
     "role": "target"
-  }
-  ```
+   }
+   ```
 
      応答は移動元のサブスクリプションの検証と同じ形式になります。
 3. 両方のサブスクリプションが検証に合格し、すべてのクラシック リソースをあるサブスクリプションから別のサブスクリプションに移動する場合は、次の操作を行います。
 
-  ```HTTP
-  POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
-  ```
+   ```HTTP
+   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
+   ```
 
     要求本文は次のようになります。
 
-  ```json
-  {
+   ```json
+   {
     "target": "/subscriptions/{target-subscription-id}"
-  }
-  ```
+   }
+   ```
 
 この操作には数分かかる場合があります。
 
@@ -344,52 +345,52 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 
 1. 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../active-directory/develop/quickstart-create-new-tenant.md)内に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
 
-  Azure PowerShell では、次を使用します。
+   Azure PowerShell では、次を使用します。
 
-  ```azurepowershell-interactive
-  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
-  ```
+   ```azurepowershell-interactive
+   (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+   (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
+   ```
 
-  Azure CLI では、次を使用します。
+   Azure CLI では、次を使用します。
 
-  ```azurecli-interactive
-  az account show --subscription <your-source-subscription> --query tenantId
-  az account show --subscription <your-destination-subscription> --query tenantId
-  ```
+   ```azurecli-interactive
+   az account show --subscription <your-source-subscription> --query tenantId
+   az account show --subscription <your-destination-subscription> --query tenantId
+   ```
 
-  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。
+   移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。
 
-  * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
-  * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
+   * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 このエラーは、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
 
-  PowerShell で登録状態を取得するには、次のコマンドを使用します。
+   PowerShell で登録状態を取得するには、次のコマンドを使用します。
 
-  ```azurepowershell-interactive
-  Set-AzContext -Subscription <destination-subscription-name-or-id>
-  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
-  ```
+   ```azurepowershell-interactive
+   Set-AzContext -Subscription <destination-subscription-name-or-id>
+   Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+   ```
 
-  リソース プロバイダーを登録するには、次のコマンドを使用します。
+   リソース プロバイダーを登録するには、次のコマンドを使用します。
 
-  ```azurepowershell-interactive
-  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
-  ```
+   ```azurepowershell-interactive
+   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+   ```
 
-  Azure CLI で登録状態を取得するには、次のコマンドを使用します。
+   Azure CLI で登録状態を取得するには、次のコマンドを使用します。
 
-  ```azurecli-interactive
-  az account set -s <destination-subscription-name-or-id>
-  az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
-  ```
+   ```azurecli-interactive
+   az account set -s <destination-subscription-name-or-id>
+   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+   ```
 
-  リソース プロバイダーを登録するには、次のコマンドを使用します。
+   リソース プロバイダーを登録するには、次のコマンドを使用します。
 
-  ```azurecli-interactive
-  az provider register --namespace Microsoft.Batch
-  ```
+   ```azurecli-interactive
+   az provider register --namespace Microsoft.Batch
+   ```
 
 1. リソースを動かすアカウントには少なくとも次のアクセス許可を与える必要があります。
 
@@ -513,7 +514,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 ## <a name="next-steps"></a>次の手順
 
-* サブスクリプションを管理するための PowerShell コマンドレットについては、「 [Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
-* サブスクリプションを管理するための Azure CLI コマンドについては、「 [リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
+* リソースを管理するための PowerShell コマンドレットについては、「 [Resource Manager での Azure PowerShell の使用](manage-resources-powershell.md)」を参照してください。
+* リソースを管理するための Azure CLI コマンドについては、「 [Resource Manager での Azure CLI の使用](manage-resources-cli.md)」を参照してください。
 * サブスクリプションを管理するためのポータル機能については、 [Azure Portal を使用したリソースの管理](resource-group-portal.md)に関するページをご覧ください。
 * リソースを論理的に整理する方法については、「 [タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。

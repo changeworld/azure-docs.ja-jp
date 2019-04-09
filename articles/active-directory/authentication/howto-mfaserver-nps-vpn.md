@@ -1,5 +1,5 @@
 ---
-title: Azure MFA とサード パーティ VPN の高度なシナリオ
+title: Azure MFA とサード パーティ VPN の高度なシナリオ - Azure Active Directory
 description: Azure MFA と Cisco、Citrix、および Juniper を統合するためのステップ バイ ステップの構成ガイドです。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1d1f0857ddf0b3f1a888e51418ffabe8cf61d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: acbf27ca6f5b58d5c3cebb28698304c130381a7a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174845"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314401"
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Azure Multi-Factor Authentication とサード パーティ VPN の高度なシナリオ ソリューション
 

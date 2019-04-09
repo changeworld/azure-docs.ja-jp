@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540570"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445443"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー
 
@@ -76,10 +76,10 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
 
-1. [アプリケーション登録ポータル](quickstart-v2-register-an-app.md)または新しい[アプリの登録 (プレビュー) エクスペリエンス](quickstart-register-app.md)を利用して、アプリを登録および作成します。
-1. アプリの登録または作成に使用したポータルで、お使いのアプリケーションに移動します。 アプリを作成するときに、少なくとも 1 つのアプリケーション シークレットを使用する必要があります。
-1. **[API のアクセス許可]** セクションを見つけて、アプリに必要な **[アプリケーションのアクセス許可]** を追加します。
-1. アプリの登録を**保存**します。
+1. 新しい[アプリの登録 (プレビュー) エクスペリエンス](quickstart-register-app.md)によって、アプリを登録し、作成します。
+2. アプリの登録 (プレビュー) エクスペリエンスで、アプリケーションに移動します。 トークンを要求するには少なくとも 1 つのクライアント シークレットを使用する必要があるため、**[証明書とシークレット]** セクションに移動し、**新しいクライアント シークレット**を追加します。
+3. **[API のアクセス許可]** セクションを見つけて、アプリに必要な **[アプリケーションのアクセス許可]** を追加します。
+4. アプリの登録を**保存**します。
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>推奨:アプリへのユーザーのサインイン
 
@@ -172,7 +172,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | 必須 | GUID またはドメイン名形式で示すディレクトリ テナント。これに対してアプリケーションが動作する予定です。 |
 | `client_id` | 必須 | お使いのアプリに割り当てられたアプリケーション ID。 アプリを登録したポータルで、この情報を確認できます。 |
 | `scope` | 必須 | この要求の `scope` パラメーターに渡される値は、`.default` サフィックスが付いた目的のリソースのリソース識別子 (アプリケーション ID URI) である必要があります。 Microsoft Graph の場合は、値は `https://graph.microsoft.com/.default` です。 </br>この値は、アプリ用に構成したすべての直接のアプリケーション アクセス許可のうち、v2.0 エンドポイントに目的のリソースに関連付けられたトークンを発行することを通知します。 `/.default` スコープの詳細については、[同意に関するドキュメント](v2-permissions-and-consent.md#the-default-scope)を参照してください。 |
-| `client_secret` | 必須 | アプリケーション登録ポータルでアプリ用に生成したアプリケーション シークレット。 クライアント シークレットは、送信前に URL エンコードされる必要があります。 |
+| `client_secret` | 必須 | アプリケーション登録ポータルでアプリ用に生成したクライアント シークレット。 クライアント シークレットは、送信前に URL エンコードされる必要があります。 |
 | `grant_type` | 必須 | `client_credentials` に設定する必要があります。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求

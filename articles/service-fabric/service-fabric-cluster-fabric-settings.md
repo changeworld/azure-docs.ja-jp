@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210388"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57836965"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -33,11 +33,12 @@ ms.locfileid: "55210388"
 次に、カスタマイズできる Fabric の設定の一覧をセクション別に整理して示します。
 
 ## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|string、既定値は "None"|静的| サーバー証明書の検証を行いません。要求に成功しました。 構成 ServiceCertificateThumbprints で、リバース プロキシが信頼できるリモート証明書の、サムプリントのコンマ区切りリストを参照してください。 構成 ServiceCommonNameAndIssuer で、リバース プロキシが信頼できるリモート証明書の、サブジェクト名と発行者サムプリントを参照してください。 詳細については、[リバース プロキシのセキュリティで保護された接続](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)に関する記事を参照してください。 |
 |BodyChunkSize |uint、既定値は 16384 |動的| 本文の読み取りに使用するチャンクのサイズをバイト単位で指定します。 |
-|CrlCheckingFlag|uint、既定値は 0x40000000 |動的| アプリケーション/サービス証明書チェーン検証のフラグ。例: CRL checking 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください  |
+|CrlCheckingFlag|uint、既定値は 0x40000000 |動的| アプリケーション/サービス証明書チェーン検証のフラグ。例: CRL checking 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください  |
 |DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 120 です |動的|timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
 |ForwardClientCertificate|ブール値、既定値は FALSE|動的|false に設定すると、リバース プロキシはクライアント証明書を要求しません。true に設定すると、リバース プロキシは SSL ハンドシェイク中にクライアント証明書を要求し、base64 でエンコードされた PEM 書式設定文字列を X-Client-Certificate というヘッダーのサービスに転送します。サービスは、証明書データを検査した後、適切な状態コードで要求に失敗する可能性があります。 この状況で、クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。 リバース プロキシは透明なレイヤーとして機能します。 詳細については、[クライアント証明書の認証の設定](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)に関する記事を参照してください。 |
 |GatewayAuthCredentialType |string、既定値は "None" |静的| HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は "None/X509 です。 |
@@ -55,11 +56,13 @@ ms.locfileid: "55210388"
 |ServiceCertificateThumbprints|string、既定値は ""|動的|リバース プロキシが信頼できるリモート証明書のサムプリントのコンマで区切られた一覧。 詳細については、[リバース プロキシのセキュリティで保護された接続](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)に関する記事を参照してください。 |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>ApplicationGateway/Http/ServiceCommonNameAndIssuer
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap、既定値は None|動的| リバース プロキシが信頼できるリモート証明書のサブジェクト名と発行者のサムプリント。 詳細については、[リバース プロキシのセキュリティで保護された接続](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)に関する記事を参照してください。 |
 
 ## <a name="backuprestoreservice"></a>BackupRestoreService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int、既定値は 0|静的|BackupRestoreService の MinReplicaSetSize |
@@ -69,6 +72,7 @@ ms.locfileid: "55210388"
 |TargetReplicaSetSize|int、既定値は 0|静的| BackupRestoreService の TargetReplicaSetSize |
 
 ## <a name="clustermanager"></a>ClusterManager
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |EnableDefaultServicesUpgrade | ブール値、既定値は false |動的|アプリケーションのアップグレード時に既定のサービスのアップグレードを有効にします。 アップグレード後、既定のサービスの記述が上書きされます。 |
@@ -97,6 +101,7 @@ ms.locfileid: "55210388"
 |UpgradeStatusPollInterval |秒単位。既定値は 60 |動的|アプリケーションのアップグレード状態をポーリングする頻度。 この値により、GetApplicationUpgradeProgress 呼び出しの更新レートが決まります |
 
 ## <a name="common"></a>一般
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PerfMonitorInterval |時間 (秒単位)、既定値は 1 |動的|timespan を秒単位で指定します。 パフォーマンスの監視間隔。 0 または負の値に設定すると、監視が無効になります。 |
@@ -117,6 +122,7 @@ ms.locfileid: "55210388"
 |PropertyGroup|KeyDoubleValueMap、既定値は None|動的|クラスターを最適化済みと見なすうえで必要な空きノード数を決定します。それには、空きノード数をパーセンテージの範囲 (0.0 ～ 1.0) または数値 (1.0 以上) として指定します |
 
 ## <a name="diagnostics"></a>診断
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AppDiagnosticStoreAccessRequiresImpersonation |ブール値、既定値は true | 動的 |アプリケーションの代わりに診断ストアにアクセスするときに偽装が必要かどうかを示します。 |
@@ -140,6 +146,7 @@ ms.locfileid: "55210388"
 |PartitionSuffix|string、既定値は ""|静的|パーティション分割されたサービスの DNS クエリのパーティション サフィックス文字列値を制御します。値には次の条件があります。 <ul><li>DNS クエリの一部なので、RFC に準拠している必要があります。</li><li>ドット '.' は DNS サフィックスの動作を妨げるため、使用しないでください。</li><li>長さの上限は 5 文字です。</li><li>PartitionPrefix 設定がオーバーライドされている場合は、PartitionSuffix もオーバーライドされる必要があります。その逆も同様です。</li></ul>詳細については、「[Azure Service Fabric の DNS サービス](service-fabric-dnsservice.md)」を参照してください。 |
 
 ## <a name="eventstore"></a>EventStore
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int、既定値は 0|静的|EventStore サービスの MinReplicaSetSize |
@@ -147,6 +154,7 @@ ms.locfileid: "55210388"
 |TargetReplicaSetSize|int、既定値は 0|静的| EventStore サービスの TargetReplicaSetSize |
 
 ## <a name="fabricclient"></a>FabricClient
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |時間 (秒単位)、既定値は 2 |動的|timespan を秒単位で指定します。 クライアントがゲートウェイへの接続を開こうとするときの接続タイムアウト間隔。|
@@ -161,6 +169,7 @@ ms.locfileid: "55210388"
 |ServiceChangePollInterval |時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 クライアントからゲートウェイに登録済みのサービス変更通知をコールバックするための、サービスの変更の連続するポーリングの間隔。 |
 
 ## <a name="fabrichost"></a>FabricHost
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |int、既定値は 10 |動的|システムが失敗したアクティブ化を再試行する最大回数。この回数に達すると、再試行が停止されます。 |
@@ -173,6 +182,7 @@ ms.locfileid: "55210388"
 |StopTimeout |秒単位。既定値は 300 |動的|timespan を秒単位で指定します。 ホストされるサービスのアクティブ化、非アクティブ化、アップグレードのタイムアウト。 |
 
 ## <a name="fabricnode"></a>FabricNode
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ClientAuthX509FindType |string、既定値は "FindByThumbprint" |動的|ClientAuthX509StoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値:FindByThumbprint、FindBySubjectName。 |
@@ -196,6 +206,7 @@ ms.locfileid: "55210388"
 |UserRoleClientX509StoreName |string、既定値は "My" |動的|既定のユーザー ロールの FabricClient の証明書を格納する X.509 証明書ストアの名前。 |
 
 ## <a name="failovermanager"></a>FailoverManager
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |BuildReplicaTimeLimit|TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600)|動的|timespan を秒単位で指定します。 ステートフル レプリカ作成の制限時間。この時間が経過した後、警告の正常性レポートが開始されます |
@@ -219,6 +230,7 @@ ms.locfileid: "55210388"
 |UserStandByReplicaKeepDuration |秒単位。既定値は 3600.0 * 24 * 7 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。 このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | int、既定値は 604800 |静的| 終了状態のアクションを保持するおおよその期間。 クリーンアップの処理は StoredActionCleanupIntervalInSeconds で指定された間隔でのみ実行されるため、このパラメーターは StoredActionCleanupIntervalInSeconds にも左右されます。 604800 は 7 日間です。 |
@@ -235,12 +247,14 @@ ms.locfileid: "55210388"
 |TargetReplicaSetSize |int、既定値は 0 |静的|NOT_PLATFORM_UNIX_START FaultAnalysisService の TargetReplicaSetSize。 |
 
 ## <a name="federation"></a>フェデレーション
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |LeaseDuration |秒単位。既定値は 30 |動的|ノードとその近隣ノードの間のリース期間。 |
 |LeaseDurationAcrossFaultDomain |秒単位。既定値は 30 |動的|障害ドメイン全体におけるノードとその近隣ノードの間のリース期間。 |
 
 ## <a name="filestoreservice"></a>FileStoreService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AcceptChunkUpload|ブール値、既定値は TRUE|動的|ファイル ストア サービスが、コピー アプリケーション パッケージ中に、チャンク ベースのファイル アップロードを受け入れるかどうかを決定する構成です。 |
@@ -278,11 +292,14 @@ ms.locfileid: "55210388"
 |UseChunkContentInTransportMessage|ブール値、既定値は TRUE|動的|v6.4 で導入されたアップロード プロトコルの新しいバージョンを使用するためのフラグ。 このプロトコル バージョンでは、ファイルをイメージ ストアにアップロードするために、Service Fabric トランスポートが使用されます。これは、以前のバージョンで使用されていた SMB プロトコルよりも高いパフォーマンスを提供します。 |
 
 ## <a name="healthmanager"></a>HealthManager
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |ブール値、既定値は false |静的|クラスターの正常性評価ポリシー: アプリケーションの種類ごとの正常性評価を有効にします。 |
+|EnableApplicationTypeHealthEvaluation |ブール値、既定値は false |静的|クラスターの正常性評価ポリシー: アプリケーションの種類ごとの正常性評価を有効にします。 |
+|MaxSuggestedNumberOfEntityHealthReports|int、既定値は 500 |動的|ウォッチドッグの正常性報告ロジックに関する問題を発生させる前にエンティティが持つことができる正常性レポートの最大数。 各正常性エンティティは、比較的少ない数の正常性レポートを持つと想定されます。 レポートの数がこの数を上回った場合、ウォッチドッグの実装に問題がある可能性があります。 レポートの数が多すぎるエンティティは、エンティティの評価時に警告正常性レポート全体でフラグが設定されます。 |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ConsiderWarningAsError |ブール値、既定値は false |静的|クラスターの正常性評価ポリシー: 警告をエラーとして処理します。 |
@@ -290,12 +307,14 @@ ms.locfileid: "55210388"
 |MaxPercentUnhealthyNodes | int、既定値は 0 |静的|クラスターの正常性評価ポリシー: 異常なノードの最大許容パーセンテージ。この値を超えると、クラスターは異常と見なされます。 |
 
 ## <a name="healthmanagerclusterupgradehealthpolicy"></a>HealthManager/ClusterUpgradeHealthPolicy
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |MaxPercentDeltaUnhealthyNodes|int、既定値は 10|静的|クラスターのアップグレードの正常性評価ポリシー: 異常な差分ノードの最大許容パーセンテージ。この値を超えると、クラスターは異常と見なされます |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int、既定値は 15|静的|クラスターのアップグレードの正常性評価ポリシー: アップグレード ドメインの異常な差分ノードの最大許容パーセンテージ。この値を超えると、クラスターは異常と見なされます |
 
-## <a name="hosting"></a>ホスティング
+## <a name="hosting"></a>Hosting
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ActivationMaxFailureCount |整数。既定値は 10 |動的|失敗したアクティブ化の再試行が行われる回数。再試行は、この回数だけ実行されてから停止します |
@@ -346,6 +365,7 @@ ms.locfileid: "55210388"
 |UseContainerServiceArguments|ブール値、既定値は TRUE|静的|この構成は、ホスティングに Docker デーモンに (構成 ContainerServiceArguments で指定された) 引数を渡すことをスキップするように指示します。|
 
 ## <a name="httpgateway"></a>HttpGateway
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ActiveListeners |uint、既定値は 50 |静的| HTTP サーバー キューに送信する読み取りの数。 HttpGateway が対応できる同時要求の数を制御します。 |
@@ -355,6 +375,7 @@ ms.locfileid: "55210388"
 |MaxEntityBodySize |uint、既定値は 4194304 |動的|HTTP 要求の予想される本文の最大サイズを指定します。 既定値は 4 MB です。 本文のサイズがこの値を超えている場合、HttpGateway は要求を失敗させます。 最小読み取りチャンク サイズは 4096 バイトです。 そのため、この値は 4096 以上にする必要があります。 |
 
 ## <a name="imagestoreservice"></a>ImageStoreService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |Enabled |ブール値、既定値は false |静的|ImageStoreService の Enabled フラグ。 既定値: false |
@@ -366,6 +387,7 @@ ms.locfileid: "55210388"
 |TargetReplicaSetSize | int、既定値は 7 |静的|ImageStoreService の TargetReplicaSetSize。 |
 
 ## <a name="ktllogger"></a>KtlLogger
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AutomaticMemoryConfiguration |int、既定値は 1 |動的|メモリ設定を自動的に構成するか、動的に構成するかを示すフラグ。 0 の場合は、メモリ構成設定が使用され、システムの状態に基づいて変更されることはありません。 1 の場合は、メモリ設定が自動的に構成され、システムの状態に基づいて変更される場合があります。 |
@@ -378,6 +400,7 @@ ms.locfileid: "55210388"
 |WriteBufferMemoryPoolMinimumInKB |int、既定値は 8388608 |動的|書き込みバッファー メモリ プールに最初に割り当てる KB 数。 無制限であることを示すには 0 を使用します。既定値は、後述の SharedLogSizeInMB と一致する必要があります。 |
 
 ## <a name="management"></a>管理
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
@@ -401,6 +424,7 @@ ms.locfileid: "55210388"
 |PropertyGroup|KeyDoubleValueMap、既定値は None|動的|クラスター内のメトリックの MetricBalancingThresholds セットを決定します。 maxNodeLoad/minNodeLoad が MetricBalancingThresholds より大きい場合、分散が機能します。 少なくとも 1 つの FD または UD の maxNodeLoad/minNodeLoad が MetricBalancingThresholds より小さい場合、最適化が機能します。 |
 
 ## <a name="namingservice"></a>NamingService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |GatewayServiceDescriptionCacheLimit |int、既定値は 0 |静的|Naming Gateway の LRU サービス記述キャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 |
@@ -428,27 +452,32 @@ ms.locfileid: "55210388"
 |PropertyGroup|KeyDoubleValueMap、既定値は None|動的|メトリック名ごとのノード容量のパーセンテージ。フェールオーバーの場合、ノード上に空き領域を確保するためのバッファーとして使用されます。 |
 
 ## <a name="nodecapacities"></a>NodeCapacities
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeCapacityCollectionMap |静的|さまざまなメトリックのノード容量のコレクション。 |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodeFaultDomainIdCollection |静的|ノードが属する障害ドメインを示します。 障害ドメインは、データセンター内のノードの場所を示す URI によって定義されます。  障害ドメインの URI は、fd:/fd/ の後に URI パス セグメントが続く形式になります。|
 |UpgradeDomainId |string、既定値は "" |静的|ノードが属するアップグレード ドメインを示します。 |
 
 ## <a name="nodeproperties"></a>NodeProperties
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup |NodePropertyCollectionMap |静的|ノードのプロパティの文字列キーと値のペアのコレクション。 |
 
 ## <a name="paas"></a>Paas
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ClusterId |string、既定値は "" |禁止|ファブリックで構成の保護に使用される X509 証明書ストア。 |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |Counters |String | 動的 |収集するパフォーマンス カウンターのコンマ区切りリスト。 |
@@ -458,6 +487,7 @@ ms.locfileid: "55210388"
 |SamplingIntervalInSeconds |int、既定値は 60 | 動的 |収集するパフォーマンス カウンターのサンプリング間隔。 |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AffinityConstraintPriority | int、既定値は 0 | 動的|アフィニティの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
@@ -514,6 +544,7 @@ ms.locfileid: "55210388"
 |VerboseHealthReportLimit | int、既定値は 20 | 動的|レプリカが未配置の状態になった回数がここで定義した回数に達すると、正常性の警告が報告されます (詳細な正常性レポートが有効になっている場合)。 |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ApplicationUpgradeMaxReplicaCloseDuration | 時間 (秒単位)、既定値は 900 |動的|timespan を秒単位で指定します。 アプリケーションのアップグレード中、レプリカが終了途中で停止しているサービス ホストを終了するまでのシステムの待機期間。|
@@ -549,6 +580,7 @@ ms.locfileid: "55210388"
 |IsEnabled|ブール値、既定値は FALSE |静的|クラスターでサービスを有効化するかどうかを制御します。 |
 
 ## <a name="runas"></a>RunAs
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string、既定値は "" |動的|RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
@@ -556,6 +588,7 @@ ms.locfileid: "55210388"
 |RunAsPassword|string、既定値は "" |動的|RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ## <a name="runasdca"></a>RunAs_DCA
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string、既定値は "" |動的|RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
@@ -563,6 +596,7 @@ ms.locfileid: "55210388"
 |RunAsPassword|string、既定値は "" |動的|RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ## <a name="runasfabric"></a>RunAs_Fabric
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string、既定値は "" |動的|RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
@@ -570,6 +604,7 @@ ms.locfileid: "55210388"
 |RunAsPassword|string、既定値は "" |動的|RunAs アカウントのパスワードを示します。 これはアカウントの種類が "DomainUser" の場合にのみ必要です。 |
 
 ## <a name="runashttpgateway"></a>RunAs_HttpGateway
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |RunAsAccountName |string、既定値は "" |動的|RunAs アカウントの名前を示します。 これはアカウントの種類が "DomainUser" または "ManagedServiceAccount" の場合にのみ必要です。 有効な値は、"domain\user" または "user@domain" です。 |
@@ -600,7 +635,7 @@ ms.locfileid: "55210388"
 |ClusterCredentialType|string、既定値は "None"|禁止|クラスターをセキュリティで保護するために使用する、セキュリティ資格情報の種類を示します。 有効な値は "None/X509/Windows" です |
 |ClusterIdentities|string、既定値は ""|動的|クラスターのノードの Windows ID。クラスター メンバーシップの承認に使用されます。 これはコンマ区切りリストで、各エントリがドメイン アカウント名またはグループ名です |
 |ClusterSpn|string、既定値は ""|禁止|ファブリックが 1 人のドメイン ユーザー (gMSA/ドメイン ユーザー アカウント) として実行されているときの、クラスターのサービス プリンシパル名。 fabric.exe のリース リスナーとリスナーの SPN です: フェデレーション リスナー、内部レプリケーション リスナー、ランタイム サービスのリスナー、および Naming Gateway リスナー。 ファブリックがマシン アカウントとして実行されている場合は、空のままにします。この場合は、接続側が、リスナー転送アドレスからリスナー SPN を計算します。 |
-|CrlCheckingFlag|uint、既定値は 0x40000000|動的|既定の証明書チェーン検証フラグ。コンポーネント固有のフラグにオーバーライドされる場合があります。例: Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (http://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください。 |
+|CrlCheckingFlag|uint、既定値は 0x40000000|動的|既定の証明書チェーン検証フラグ。コンポーネント固有のフラグにオーバーライドされる場合があります。例: Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください。 |
 |CrlDisablePeriod|TimeSpan、既定値は Common::TimeSpan::FromMinutes(15)|動的|timespan を秒単位で指定します。 CRL オフライン エラーを無視できる場合、オフライン エラーの発生後、指定されている証明書に対して CRL チェックが無効になっている時間。 |
 |CrlOfflineHealthReportTtl|TimeSpan、既定値は Common::TimeSpan::FromMinutes(1440)|動的|timespan を秒単位で指定します。 |
 |DisableFirewallRuleForDomainProfile| ブール値、既定値は TRUE |静的| ドメイン プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します |
@@ -616,11 +651,13 @@ ms.locfileid: "55210388"
 |X509Folder|string、既定値は /var/lib/waagent|静的|X509 証明書と秘密キーがあるフォルダー |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap、既定値は None|動的|これは "Name" と "Value" のペアの一覧です。 それぞれの "Name" は、サブジェクトの共通名または管理クライアント操作で承認された X509 証明書の DnsName です。 "Name" に対する "Value" は、発行者を固定する証明書のサムプリントのカンマで区切られた一覧であり、空でない場合は、管理クライアント証明書の直接的な発行者が一覧に含まれている必要があります。 |
 
 ## <a name="securityclientaccess"></a>Security/ClientAccess
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ActivateNode |string、既定値は "Admin" |動的| ノードをアクティブ化するためのセキュリティ構成。 |
@@ -722,36 +759,43 @@ ms.locfileid: "55210388"
 |アップロード |string、既定値は "Admin" | 動的|イメージ ストア クライアントのアップロード操作のセキュリティ構成。 |
 
 ## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap、既定値は None |動的|クライアント証明書の X509 発行者証明書ストア。名前 = clientIssuerCN、値 = ストアのコンマ区切りの一覧 |
 
 ## <a name="securityclientx509names"></a>Security/ClientX509Names
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap、既定値は None|動的|これは "Name" と "Value" のペアの一覧です。 それぞれの "Name" は、サブジェクトの共通名またはクライアント操作で承認された X509 証明書の DnsName です。 "Name" に対する "Value" は、発行者を固定する証明書のサムプリントのカンマで区切られた一覧であり、空でない場合は、クライアント証明書の直接的な発行者が一覧に含まれている必要があります。|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap、既定値は None |動的|クラスター証明書の X509 発行者証明書ストア。名前 = clusterIssuerCN、値 = ストアのコンマ区切りの一覧 |
 
 ## <a name="securityclusterx509names"></a>Security/ClusterX509Names
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap、既定値は None|動的|これは "Name" と "Value" のペアの一覧です。 それぞれの "Name" は、サブジェクトの共通名またはクラスター操作で承認された X509 証明書の DnsName です。 "Name" に対する "Value" は、発行者を固定する証明書のサムプリントのカンマで区切られた一覧であり、空でない場合は、クラスター証明書の直接的な発行者が一覧に含まれている必要があります。|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap、既定値は None |動的|サーバー証明書の X509 発行者証明書ストア。名前 = serverIssuerCN、値 = ストアのコンマ区切りの一覧 |
 
 ## <a name="securityserverx509names"></a>Security/ServerX509Names
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap、既定値は None|動的|これは "Name" と "Value" のペアの一覧です。 それぞれの "Name" は、サブジェクトの共通名またはサーバー操作で承認された X509 証明書の DnsName です。 "Name" に対する "Value" は、発行者を固定する証明書のサムプリントのカンマで区切られた一覧であり、空でない場合は、サーバー証明書の直接的な発行者が一覧に含まれている必要があります。|
 
 ## <a name="setup"></a>セットアップ
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|string、既定値は ""| 静的 |コンテナー ネットワークを設定するときに使用するネットワーク名。|
@@ -764,16 +808,19 @@ ms.locfileid: "55210388"
 |SkipFirewallConfiguration |ブール値、既定値は false | 禁止 |ファイアウォールの設定をシステムで設定する必要があるかどうかを指定します。 これは、Windows ファイアウォールを使用する場合のみ適用されます。 サード パーティ製のファイアウォールを使用する場合、システムとアプリケーション用のポートを開く必要があります。 |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |プロバイダー |string、既定値は "DSTS" |静的|有効にするトークン検証プロバイダーのコンマ区切りリスト (有効なプロバイダー:DSTS、AAD)。 現時点では、1 つのプロバイダーだけをいつでも有効にすることができます。 |
 
 ## <a name="traceetw"></a>Trace/Etw
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |Level |int、既定値は 4 | 動的 |Trace/Etw のレベルには、1、2、3、4 の値を指定できます。 サポート対象となるために、トレース レベルは 4 のままにする必要があります。 |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval | 時間 (秒単位)、既定値は 0.015 | 静的 | timespan を秒単位で指定します。 操作を受信してから受信確認を返すまで、レプリケーターが待機する時間を指定します。 この期間に受信した他の操作の受信確認は 1 つのメッセージで返されます。これにより、ネットワーク トラフィックは減少しますが、レプリケーターのスループットが低下する可能性があります。 |
@@ -795,6 +842,7 @@ ms.locfileid: "55210388"
 |SendTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(300)|動的|timespan を秒単位で指定します。 スタック接続を検出するためのタイムアウトを送信します。 TCP エラー レポートは、一部の環境では信頼できません。 使用可能なネットワーク帯域幅と送信データのサイズ (\*MaxMessageSize\/\*SendQueueSizeLimit) に従って調整する必要があります。 |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |AutoupgradeEnabled | ブール値、既定値は true |静的| 目標状態ファイルに基づく自動ポーリングとアップグレード アクション。 |
@@ -809,6 +857,7 @@ ms.locfileid: "55210388"
 |UpgradeApprovalRequired | ブール値、既定値は false | 静的|コードのアップグレードを続行する前に管理者の承認を必須にするための設定。 |
 
 ## <a name="upgradeservice"></a>UpgradeService
+
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |BaseUrl | string、既定値は "" |静的|UpgradeService の BaseUrl。 |

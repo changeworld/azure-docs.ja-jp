@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013079"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650123"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -22,7 +22,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 - Azure Storage に書き込まれるすべてのデータは、[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して自動的に暗号化されます。 詳しくは、「[Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage (Azure Blob、Files、Table、Queue Storage 用の既定の暗号化の発表)](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)」をご覧ください。
 - Azure Active Directory (Azure AD) とロールベースのアクセス制御 (RBAC) は、Azure Storage のリソース管理操作とデータ操作の両方でサポートされます。   
     - ストレージ アカウントを対象とする RBAC ロールをセキュリティ プリンシパルに割り当て、Azure AD を使用して、キー管理などのリソース管理操作を承認できます。
-    - Azure AD の統合は、Blob および Queue サービスでのデータ操作のサポートされます (プレビュー段階)。 サブスクリプション、リソース グループ、ストレージ アカウント、または個々のコンテナーやキューを対象とする RBAC ロールをセキュリティ プリンシパルまたは Azure リソースのマネージド ID に割り当てることができます。 詳細については、[Azure Active Directory を使用したAzure Storage へのアクセスの認証 (プレビュー)](storage-auth-aad.md) に関する記事を参照してください。   
+    - Azure AD の統合は、BLOB およびキュー データ操作でサポートされています。 サブスクリプション、リソース グループ、ストレージ アカウント、または個々のコンテナーやキューを対象とする RBAC ロールをセキュリティ プリンシパルまたは Azure リソースのマネージド ID に割り当てることができます。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。   
 - アプリケーションと Azure の間で送信されるデータを、 [クライアント側暗号化](../storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。  
 - Azure 仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../../security/azure-security-disk-encryption.md) を使用して暗号化できます。 
 - Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、 [Shared Access Signature](../storage-dotnet-shared-access-signature-part-1.md)を使用して付与できます。
@@ -46,7 +46,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 * [Storage Analytics](#storage-analytics) を使用して Azure Storage のアクセスを監査する
 
   ここでは、要求のストレージ分析ログから情報を検索する方法について説明します。 実際のストレージ分析ログ データを見て、要求の作成元がストレージ アカウント キー、Shared Access Signature、または匿名のいずれであるか、要求が成功したか失敗したかを特定する方法を確認します。
-* [CORS を使用してブラウザーベースのクライアントを有効にする](#Cross-Origin-Resource-Sharing-CORS)
+* [CORS を使用してブラウザーベースのクライアントを有効にする](#cross-origin-resource-sharing-cors)
 
   このセクションでは、クロス オリジン リソース共有 (CORS) を許可する方法について説明します。 また、クロスドメイン アクセスと、Azure Storage に組み込まれている CORS 機能を使用して処理する方法について話します。
 
@@ -155,8 +155,8 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
 
 Azure Storage 内のデータ オブジェクトへのアクセスを承認するための 3 つのオプションがあります。
 
-- Azure AD を使用してコンテナーとキューへのアクセスを承認する (プレビュー)。 他の承認方法と比較した Azure AD の利点には、コード内にシークレットを格納する必要がないことが含まれます。 詳細については、[Azure Active Directory を使用したAzure Storage へのアクセスの認証 (プレビュー)](storage-auth-aad.md) に関する記事を参照してください。 
-- ストレージ アカウント キーを使用して、共有キーを介したアクセスを承認する。 共有キーを介した承認では、ストレージ アカウント キーをアプリケーション内に格納する必要があるため、可能であれば、代わりに Azure AD を使用することをお勧めします。 実稼働アプリケーション、または Azure のテーブルとファイルへのアクセスの承認では、Azure AD の統合がプレビュー段階にある間は、引き続き共有キーを使用してください。
+- Azure AD を使用してコンテナーとキューへのアクセスを承認する。 他の承認方法と比較した Azure AD の利点には、コード内にシークレットを格納する必要がないことが含まれます。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。 
+- ストレージ アカウント キーを使用して、共有キーを介したアクセスを承認する。 共有キーを介した承認では、ストレージ アカウント キーをアプリケーション内に格納する必要があるため、可能であれば、代わりに Azure AD を使用することをお勧めします。
 - 共有アクセス署名を使用して、特定のデータ オブジェクトへの制御されたアクセス許可を特定の期間付与する。
 
 さらに、Blob Storage の場合、BLOB に対してパブリック アクセスを許可するには、その BLOB を保持するコンテナーのアクセス レベルを設定します。 コンテナーから BLOB またはコンテナーに対するアクセス権を設定すると、そのコンテナー内の BLOB に対してパブリック読み取りアクセスが許可されます。 つまり、誰でも、そのコンテナー内の BLOB を指す URL をブラウザーで開くことができます。Shared Access Signature を使用する必要や、ストレージ アカウント キーを持っている必要はありません。

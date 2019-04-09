@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314672"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437341"
 ---
-# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する
+# <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
 >[!NOTE]
 >Microsoft Operations Management Suite (OMS) から Microsoft Azure Monitor への移行に伴って用語が変更されます。 この記事では、OMS ゲートウェイは Azure Log Analytics ゲートウェイと呼ばれます。 
 >
 
-この記事では、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Log Analytics ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。 
+この記事では、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Azure Monitor ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。 
 
-Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシです。 このゲートウェイでは、インターネットに接続されていないコンピューターの代わりに、データを収集して、Azure Automation と Log Analytics に送信できます。  
+Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシです。 このゲートウェイでは、インターネットに接続されていないコンピューターの代わりに、データを収集して、それを Azure Automation と Azure Monitor 内の Log Analytics ワークスペースに送信できます。  
 
 Log Analytics ゲートウェイでは、以下をサポートしています。
 
 * Azure Automation Hybrid Runbook Worker を使用して構成されている、背後にある 4 つまでの同じ Log Analytics ワークスペースのエージェントのレポート。  
-* Microsoft Monitoring Agent が Log Analytics ワークスペースに直接接続されている Windows コンピューター。
-* Log Analytics エージェント for Linux が Log Analytics ワークスペースに直接接続されている Linux コンピューター。  
+* Microsoft Monitoring Agent が Azure Monitor 内の Log Analytics ワークスペースに直接接続されている Windows コンピューター。
+* Log Analytics エージェント for Linux が Azure Monitor 内の Log Analytics ワークスペースに直接接続されている Linux コンピューター。  
 * System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016 以降の管理グループは Log Analytics に統合されました。  
 
-一部の IT セキュリティ ポリシーでは、ネットワーク コンピューターのインターネット接続が許可されません。 このような未接続のコンピューターには、販売時点管理 (POS) デバイスや IT サービスをサポートするサーバーなどがあります。 これらのデバイスを Azure Automation または Log Analytics に接続して管理および監視できるようにするには、Log Analytics ゲートウェイと直接通信するようにデバイスを構成します。 Log Analytics ゲートウェイでは、それらの代わりに構成情報を受信してデータを転送できます。 これに対して、コンピューターに Log Analytics ワークスペースと直接接続している Log Analytics エージェントを構成した場合には、コンピューターが Log Analytics ゲートウェイと通信します。  
+一部の IT セキュリティ ポリシーでは、ネットワーク コンピューターのインターネット接続が許可されません。 このような未接続のコンピューターには、販売時点管理 (POS) デバイスや IT サービスをサポートするサーバーなどがあります。 これらのデバイスを Azure Automation または Log Analytics ワークスペースに接続して管理および監視できるようにするには、Log Analytics ゲートウェイと直接通信するようにデバイスを構成します。 Log Analytics ゲートウェイでは、それらの代わりに構成情報を受信してデータを転送できます。 これに対して、コンピューターに Log Analytics ワークスペースと直接接続している Log Analytics エージェントを構成した場合には、コンピューターが Log Analytics ゲートウェイと通信します。  
 
 Log Analytics ゲートウェイはエージェントからのデータをサービスに直接転送します。 転送されるデータを分析することはありません。
 
 Log Analytics と Operations Manager 管理グループが統合している場合には、管理サーバーが Log Analytics ゲートウェイに接続して構成情報を受信し、収集されたデータを有効にしているソリューションに応じて送信するという構成が可能です。  Operations Manager エージェントは、一部のデータを管理サーバーに送信します。 たとえば、Operations Manager アラート、構成評価データ、インスタンス スペース データ、および容量データをエージェントが送信できます。 その他の大容量データ (インターネット インフォメーション サービス (IIS) のログ、パフォーマンス データ、セキュリティ イベントなど) は Log Analytics ゲートウェイに直接送信されます。 
 
-境界ネットワークまたは分離されたネットワークで信頼されていないシステムを監視するために 1 つ以上の Operations Manager ゲートウェイ サーバーがデプロイされている場合、それらのサーバーが Log Analytics ゲートウェイと通信することはできません。  Operations Manager ゲートウェイ サーバーは、管理サーバーに対してのみレポートを送信できます。  Operations Manager 管理グループが Log Analytics ゲートウェイと通信する構成になっている場合には、エージェントが管理しており、かつ Log Analytics 用のデータを収集する構成になっているコンピューターそれぞれに対して、プロキシの構成情報が自動で配信されます (設定が空欄であっても同じです)。    
+境界ネットワークまたは分離されたネットワークで信頼されていないシステムを監視するために 1 つ以上の Operations Manager ゲートウェイ サーバーがデプロイされている場合、それらのサーバーが Log Analytics ゲートウェイと通信することはできません。  Operations Manager ゲートウェイ サーバーは、管理サーバーに対してのみレポートを送信できます。  Operations Manager 管理グループが Log Analytics ゲートウェイと通信するように構成されている場合は、Azure Monitor 用のログ データを収集するように構成されているエージェント型マネージド コンピューターそれぞれに対して、プロキシの構成情報が自動で配信されます (設定が空欄であっても同じです)。    
 
-ゲートウェイを経由して Log Analytics と通信する Operations Management グループまたは Log Analytics に直接接続しているグループに対して高可用性を実現するには、ネットワーク負荷分散 (NLB) を使って複数のゲートウェイ サーバーにトラフィックをリダイレクトし、トラフィックを分散させます。 これにより、ゲートウェイ サーバーが 1 台ダウンした場合には、トラフィックが別の利用可能なノードにリダイレクトされます。  
+ゲートウェイを経由して Log Analytics と通信する Operations Management グループまたは Log Analytics ワークスペースに直接接続しているグループに対して高可用性を実現するには、ネットワーク負荷分散 (NLB) を使って複数のゲートウェイ サーバーにトラフィックをリダイレクトし、トラフィックを分散させます。 これにより、ゲートウェイ サーバーが 1 台ダウンした場合には、トラフィックが別の利用可能なノードにリダイレクトされます。  
 
 ゲートウェイが通信する必要のあるサービス エンドポイントを特定するには、Log Analytics ゲートウェイを実行するコンピューターに Log Analytics Windows エージェントが必要です。 また、エージェントは、ゲートウェイの背後にあるエージェントや Operations Manager 管理グループが構成されている同じワークスペースにレポートを送信するようゲートウェイに指示する必要があります。 この構成では、ゲートウェイとエージェントが、それらに割り当てられているワークスペースと通信できます。
 

@@ -5,25 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2018
-ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 03/18/2019
+ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034966"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294509"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の整合性レベル
 
-分散型データベースでは高可用性もしくは待機時間の短縮、またはその両方がレプリケーションに依存するため、読み取りの整合性、可用性、待機時間、スループットとの間に基本的なトレードオフが生じます。 市販のほとんどの分散型データベースでは、開発者は 2 つの極端な整合性モデル (厳密な整合性と最終的な整合性) のどちらかを選ぶことを求められます。  [線形化可能性](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)つまり厳密な整合性モデルは、データ プログラミングの標準基準です。 しかし、(安定状態での) 待機時間が長く、(障害発生時の) 可用性が低いという代償があります。 その一方で、最終的な整合性は、可用性が高くパフォーマンスに優れていますが、アプリケーションのプログラミングが難しくなります。 
+分散型データベースでは高可用性もしくは待機時間の短縮、またはその両方がレプリケーションに依存するため、読み取りの整合性、可用性、待機時間、スループットとの間に基本的なトレードオフが生じます。 市販のほとんどの分散型データベースでは、開発者は 2 つの極端な整合性モデル (*厳密な*整合性と*最終的な*整合性) のどちらかを選ぶことを求められます。  [線形化可能性](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)、つまり厳密な整合性モデルは、データ プログラミングの標準基準です。 しかし、(安定状態での) 待機時間が長く、(障害発生時の) 可用性が低いという代償があります。 その一方で、最終的な整合性は、可用性が高くパフォーマンスに優れていますが、アプリケーションのプログラミングが難しくなります。 
 
-Azure Cosmos DB では、2 つの両極端ではなく、幅広い選択肢を利用できるデータ整合性に対応しています。 厳密な整合性と最終的な整合性が両端ですが、その間には多くの整合性の選択肢があります。 開発者は、これらの整合性オプションを使用して、最適な選択を行い、高可用性とパフォーマンスに関して詳細なトレードオフを決定できます。 
+Azure Cosmos DB では、2 つの両極端ではなく、幅広い選択肢を利用できるデータ整合性に対応しています。 厳密な整合性と最終的な整合性は、整合性の選択範囲の両端にありますが、その間には多くの整合性の選択肢があります。 開発者は、これらの整合性オプションを使用して、最適な選択を行い、高可用性とパフォーマンスに関して詳細なトレードオフを決定できます。 
 
-Azure Cosmos DB では、開発者は、整合性の程度に応じて明確に定義された 5 種類の整合性モデルから選択することができます。 強いものから弱いものの順に、厳密、有界整合性制約、セッション、一貫性のあるプレフィックス、結果的です。 モデルは、明確に定義されていて直感的です。 特定の現実のシナリオに対して使用できます。 いずれのモデルでも、[可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)が提供され、包括的な SLA によって裏付けられています。 次の図では、さまざまな一貫性レベルの範囲内での位置づけを示します。
+Azure Cosmos DB では、開発者は、整合性の程度に応じて明確に定義された 5 種類の整合性モデルから選択することができます。 最も厳密なものからより緩やかなものに向かって、*厳密*、*有界整合性制約*、*セッション*、*一貫性のあるプレフィックス*、*最終的*の各整合性モデルがあります。 これらのモデルは適切に定義されていて直感的であり、具体的な実際のシナリオに使用することができます。 どのモデルにも[可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)があり、それぞれ SLA によって支えられています。 次の図では、さまざまな整合性レベルの範囲内での位置づけを示します。
 
 ![範囲としての整合性](./media/consistency-levels/five-consistency-levels.png)
 
-整合性レベルはリージョンに依存しません。 読み取りと書き込みが行われるリージョン、Azure Cosmos アカウントに関連付けられているリージョン数、またはアカウントの構成に使用されている書き込みリージョンが 1 つか複数かには関係なく、Azure Cosmos アカウントの一貫性レベルはすべての読み取り操作で保証されています。
+読み取りと書き込みが行われるリージョン、Azure Cosmos アカウントに関連付けられているリージョン数、またはアカウントの構成に使用されている書き込みリージョンが 1 つか複数かには関係なく、Azure Cosmos アカウントの整合性レベルはリージョンに依存せず、すべての操作で保証されています。
 
 ## <a name="scope-of-the-read-consistency"></a>読み取り整合性のスコープ
 
@@ -81,7 +81,7 @@ Azure Cosmos DB コンテナーに、ビジター チームとホーム チー�
 - [レプリケート データの整合性を野球にたとえると (Doug Terry によるビデオ)](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [レプリケート データの整合性を野球にたとえると (Doug Terry によるホワイトペーパー)](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [弱一貫性レプリケート データのためのセッション保証](https://dl.acm.org/citation.cfm?id=383631)
-- [先進的な分散データベース システム設計における整合性のトレードオフ:CAP 以外の考慮事項について](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [先進的な分散データベース システム設計における整合性のトレードオフ:CAP 以外の考慮事項について](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - 「[Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums (現実的なパーシャル クォーラムのための Probabilistic Bounded Staleness (PBS))](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)」
 - 「[Eventually Consistent - Revisited (最終的な整合性 - 改訂版)](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)」
 

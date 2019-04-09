@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: e6185a7b62e3c599a7c3588824e3a9c4ac60cb53
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467630"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371471"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
-この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
+この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics ワークスペースへの送信を自動的に開始できます。
 
 > [!WARNING]
 > ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -40,7 +40,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## <a name="non-compute-resource-template"></a>非コンピューティング リソース テンプレート
 非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
 
-1. パラメーター BLOB に、ストレージ アカウント名、イベント ハブ承認規則 ID、Log Analytics ワークスペース ID のパラメーターを追加します (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするため)。
+1. パラメーター BLOB に、ストレージ アカウント名、イベント ハブ承認規則 ID、Log Analytics ワークスペース ID のパラメーターを追加します (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Azure Monitor へのログの送信を有効にするため)。
    
     ```json
     "settingName": {

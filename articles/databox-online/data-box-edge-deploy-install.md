@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/25/2019
 ms.locfileid: "58399996"
 ---
-# <a name="tutorial-install-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge をインストールする
+# <a name="tutorial-install-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を取り付ける
 
 このチュートリアルでは、Edge 物理デバイスをインストールする方法を説明します。 インストール手順には、デバイスの開梱、ラックへの取り付け、ケーブル接続が含まれます。 
 

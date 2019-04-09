@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 65e803ca373fb9853fc23d17f1a27ecadc6a209c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171300"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295217"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -48,15 +48,46 @@ ms.locfileid: "56171300"
 
 ### <a name="filtering-on-audit-logs"></a>監査ログのフィルター処理
 
-監査レポートで高度なフィルター処理を使用すると、**[アクティビティ カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、セルフサービスによるパスワードのリセットに関連するすべてのアクティビティを表示するには、**[Self-service password management]\(セルフ サービスによるパスワード管理\)** カテゴリを選択します。 
+監査レポートで高度なフィルター処理を使用すると、**[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、**UserManagement** カテゴリを選択します。 
 
-アクティビティのカテゴリには、以下が含まれます。
+次のようなカテゴリがあります。
 
+- All
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Authorization
+- Contact
+- Device
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- その他
+- ポリシー
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+**[サービス]** ドロップダウン フィルターを使用して、特定のサービスでフィルター処理することもできます。 たとえば、セルフサービスによるパスワード管理に関連するすべての監査イベントを取得するには、**[Self-service Password Management]\(セルフサービスによるパスワード管理\)** フィルターを選択します。
+
+次のようなサービスがあります。
+
+- All
+- アクセス レビュー
+- アカウント プロビジョニング 
+- アプリケーション SSO
+- 認証方法
+- B2C
+- 条件付きアクセス
 - Core Directory (コア ディレクトリ)
-- Self-service Password Management \(セルフサービスによるパスワード管理)
+- エンタイトルメント管理
+- Identity Protection
+- 招待されたユーザー
+- PIM
 - セルフサービスによるグループ管理
-- アカウント プロビジョニング
-
+- Self-service Password Management \(セルフサービスによるパスワード管理)
+- 使用条件
 
 ## <a name="sign-ins-report"></a>サインイン レポート 
 
@@ -122,11 +153,11 @@ ms.locfileid: "56171300"
  
 #### <a name="cause"></a>原因
 
-Azure Portal でアクティビティ ログをダウンロードする場合は、新しい順に並べ替えられた最新の 5000 件のレコードに制限されます。 
+Azure portal でアクティビティ ログをダウンロードする場合は、新しい順に並べ替えられた最新の 250000 件のレコードに制限されます。 
 
 #### <a name="resolution"></a>解決策
 
-[Azure AD Reporting API](concept-reporting-api.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。 Reporting API を呼び出して、増分方式で一定期間 (たとえば、毎日や毎週) のレコードを取得する[スクリプトを定期的に実行する](tutorial-signin-logs-download-script.md)ことをお勧めします。 
+[Azure AD Reporting API](concept-reporting-api.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。
 
 ### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure portal で最近の操作の監査データが見つからない
 

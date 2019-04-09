@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: be6b50b5cb4ea7d32f47d6eb0e19ba43a3217cb6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202692"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314996"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -95,7 +95,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     これは、Hue の Web サイトが配置されているプライマリ ヘッドノードのホスト名です。
-4. ブラウザーを使用して、Hue ポータル (http://HOSTNAME:8888) を開きます。 HOSTNAME は前の手順で取得した名前で置き換えてください。
+4. ブラウザーを使用して、Hue ポータル (http:\//HOSTNAME:8888) を開きます。 HOSTNAME は前の手順で取得した名前で置き換えてください。
 
    > [!NOTE]  
    > 初回ログイン時、Hue ポータルにログインするためのアカウントを作成するように促されます。 ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。

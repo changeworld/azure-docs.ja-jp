@@ -476,7 +476,7 @@ ForEach アクティビティで複数のアクティビティ (例: コピー �
 
 __foreach__ アクティビティの出力を集計するには、_Variables_ と _Append Variable_ アクティビティを使用してください。
 
-最初に、パイプライン内で `array` _変数_を宣言します。 次に、各 __foreach__ ループ内で _Append Variable_ アクティビティを呼び出します。 その後、配列から集計を取得できます。
+最初に、パイプライン内で `array` _変数_ を宣言します。 次に、各 __foreach__ ループ内で _Append Variable_ アクティビティを呼び出します。 その後、配列から集計を取得できます。
 
 ## <a name="limitations-and-workarounds"></a>制限事項と回避策
 

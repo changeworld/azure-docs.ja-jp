@@ -3,16 +3,15 @@ title: Azure Data Factory の Mapping Data Flow のシンク変換
 description: Azure Data Factory の Mapping Data Flow のシンク変換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 381dc2f9f6d3a074af00ba047472719c086f5811
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852442"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Mapping Data Flow のシンク変換
 
@@ -35,27 +34,17 @@ Azure Storage BLOB または Data Lake のシンクの種類の場合は、変�
 
 ![シンクのオプション](media/data-flow/opt001.png "シンクのオプション")
 
-### <a name="output-settings"></a>出力設定
-
-[上書き] では、既に存在する場合はテーブルが切り捨てられ、再作成されて、データが読み込まれます。 [追加] では、新しい行が挿入されます。 データセット テーブル名のテーブルがターゲット ADW にまったく存在しない場合、[データ フロー] ではテーブルが作成され、データが読み込まれます。
-
-[Auto Map] (自動マップ) の選択を解除すると、フィールドを宛先テーブルに手動でマップできます。
-
-![シンク ADW のオプション](media/data-flow/adw2.png "ADW シンク")
-
-#### <a name="field-mapping"></a>フィールドのマッピング
+## <a name="field-mapping"></a>フィールドのマッピング
 
 シンク変換の [マッピング] タブでは、受信 (左側) の列を宛先 (右側) にマップできます。 データ フローをファイルにシンクした場合、ADF は常に、新しいファイルをフォルダーに書き込みます。 データベース データセットにマップする場合は、このスキーマで新しいテーブルを生成する ([Save Policy] (ポリシーの保存) を [上書き] に設定する) か、または既存のテーブルに新しい行を挿入し、それらのフィールドを既存のスキーマにマップするかのいずれかを選択できます。
 
-マッピング テーブルで複数選択を使用すると、1 回のクリックで複数の列をリンクしたり、複数の列を定義したり、複数の行を同じ列名にマップしたりできます。
+マッピング テーブルで複数選択を使用すると、1 回のクリックで複数の列をリンクしたり、複数の列のリンクを削除したり、複数の行を同じ列名にマップしたりできます。
+
+常に受信フィールド セットを取得して、ターゲットにそのままマップする場合は、[Allow Schema Drift]\(スキーマの誤差を許可\) を設定します。
 
 ![フィールドのマッピング](media/data-flow/multi1.png "複数のオプション")
 
 列のマッピングをリセットする場合は、[Remap] (再マップ) ボタンを押してマッピングをリセットします。
-
-![接続](media/data-flow/maxcon.png "Connections")
-
-### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>ADF V2 GA バージョンでのシンク変換の更新
 
 ![シンクのオプション](media/data-flow/sink1.png "シンク 1")
 
@@ -65,7 +54,7 @@ Azure Storage BLOB または Data Lake のシンクの種類の場合は、変�
 
 * フォルダーをクリアします。 ADF は、宛先ファイルをターゲット フォルダーに書き込む前に、そのシンク フォルダーの内容を切り捨てます。
 
-* ファイル名のオプション
+## <a name="file-name-options"></a>ファイル名のオプション
 
    * 既定値はSpark は PART の既定値に基づいて、ファイルに名前を付けることができます。
    * パターン:出力ファイルの名前を入力します。
@@ -75,14 +64,19 @@ Azure Storage BLOB または Data Lake のシンクの種類の場合は、変�
 > [!NOTE]
 > ファイル操作は、データ フローの実行アクティビティを実行している場合にのみ実行され、データ フロー デバッグ モードにある間は実行されません。
 
-SQL のシンクの種類では、次を設定できます。
+## <a name="database-options"></a>データベース オプション
 
-* テーブルを切り捨てる
-* テーブルを再作成する (削除/作成を実行する)
-* 大量データ読み込みのバッチ サイズ。 書き込みをチャンクにまとめる数値を入力します。
+* 挿入、更新、削除、Upsert を許可します。 既定では、挿入を許可します。 行の更新、upsert、または挿入を行う場合は、最初に、それらの特定のアクションに対して行をタグ付けするための行の変更変換を追加する必要があります。
+* テーブルを切り捨てます (データ フローを完了する前に、対象のテーブルからすべての行を削除します)
+* テーブルを再作成します (データ フローを完了する前に、対象のテーブルの削除と作成を行います)
+* 大量データ読み込みのバッチ サイズ。 書き込みをチャンクにまとめる数値を入力します
+* ステージングの有効化:これは、シンク データセットとして Azure Data Warehouse を読み込むときに Polybase を使用するように ADF に指示します
 
-![フィールドのマッピング](media/data-flow/sql001.png "SQL のオプション")
+![SQL シンク オプション](media/data-flow/alter-row2.png "SQL オプション")
+
+> [!NOTE]
+> データベース シンク内の行を更新または削除するときに、キー列を設定する必要があります。 このようにして、行の変更で、DML 内の一意の行を特定できます。
 
 ## <a name="next-steps"></a>次の手順
 
-これでデータ フローが作成されたので、[データ フローの実行アクティビティをパイプラインに](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview)追加します。
+これでデータ フローが作成されたので、[データ フローの実行アクティビティをパイプラインに](concepts-data-flow-overview.md)追加します。

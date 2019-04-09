@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882381"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370059"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
 
@@ -24,7 +24,7 @@ ms.locfileid: "54882381"
 
 ## <a name="what-is-changing"></a>変更点
 
-Azure Monitor では、Azure ストレージ アカウント、Event Hubs 名前空間、または Log Analytics へのリソース診断データやアクティビティ ログ データの送信を可能にする機能が提供されます。 システム パフォーマンスの問題に対処するために、**2018 年 11 月 1 日の深夜 12 時 00 分 (UTC)** より、BLOB ストレージに送信されるログ データの形式が変更されます。 BLOB ストレージからデータを読み取っているツールがある場合は、新しいデータ形式を認識するようにツールを更新する必要があります。
+Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空間、または Azure Monitor の Log Analytics ワークスペースへのリソース診断データやアクティビティ ログ データの送信を可能にする機能が提供されます。 システム パフォーマンスの問題に対処するために、**2018 年 11 月 1 日の深夜 12 時 00 分 (UTC)** より、BLOB ストレージに送信されるログ データの形式が変更されます。 BLOB ストレージからデータを読み取っているツールがある場合は、新しいデータ形式を認識するようにツールを更新する必要があります。
 
 * 2018 年 11 月 1 日木曜日の深夜 12 時 00 分 (UTC) より、BLOB 形式は [JSON Lines](http://jsonlines.org/) に変更されます。 つまり、各レコードは改行で区切られるようになり、外部のレコード配列や JSON レコード間のコンマはなくなります。
 * すべてのサブスクリプションのすべての診断設定の BLOB 形式が一度に変更されます。 11 月 1 日に出力される最初の PT1H.json ファイルでは、この新しい形式が使用されます。 BLOB およびコンテナーの名前は変わりません。

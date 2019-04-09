@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122928"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438259"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -150,7 +150,7 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 
 カスタム ポリシーを直接編集することで、HTML5/CSS テンプレートへのリンクをユーザー体験に追加できます。
 
-ユーザー体験で使用するカスタム HTML5/CSS テンプレートは、そのユーザー体験内で使用できるコンテンツ定義の一覧で指定されている必要があります。 このため、カスタム ポリシー XML ファイルの *<BuildingBlocks>* セクションで、省略可能な *<ContentDefinitions>* XML 要素を宣言する必要があります。
+ユーザー体験で使用するカスタム HTML5/CSS テンプレートは、そのユーザー体験内で使用できるコンテンツ定義の一覧で指定されている必要があります。 このため、カスタム ポリシー XML ファイルの *\<BuildingBlocks>* セクションで、省略可能な *\<ContentDefinitions>* XML 要素を宣言する必要があります。
 
 次の表に、Azure AD B2C Identity Experience Engine で検出されたコンテンツ定義 ID のセットと、それに関連するページの種類を示します。
 

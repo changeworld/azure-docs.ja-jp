@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: d194a5929e648c09eb204860c528e48bc55259ee
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 32ad4434db8c2816fe7792b1b851e020021d543a
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635407"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447104"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理 
 
@@ -23,7 +23,6 @@ ms.locfileid: "53635407"
 > [!IMPORTANT]  
 > この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 
 >
-> Windows ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理](apache-storm-deploy-monitor-topology.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -215,13 +214,13 @@ Storm UI は、REST API を基に構築されているため、REST API を使�
 
 ### <a name="base-uri"></a>ベース URI
 
-Linux ベースの HDInsight クラスターの REST API のベース URI は、**https://HEADNODEFQDN:8744/api/v1/** にあるヘッド ノードで確認できます。 ヘッド ノードのドメイン名は、クラスターの作成時に生成され、静的ではありません。
+Linux ベースの HDInsight クラスターの REST API のベース URI は、**https:\//HEADNODEFQDN:8744/api/v1/** にあるヘッド ノードで確認できます。 ヘッド ノードのドメイン名は、クラスターの作成時に生成され、静的ではありません。
 
 クラスター ヘッド ノードの完全修飾ドメイン名 (FQDN) はいくつかの方法で確認できます。
 
 * **SSH セッションから**:SSH セッションからクラスターに `headnode -f` コマンドを使用します。
 * **Ambari Web から**:ページの一番上から **[サービス]** を選択し、**[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
-* **Ambari REST API から**:`curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **CLUSTERNAME** をクラスター名に置き換えます。 メッセージが表示されたら、ログイン (管理者) アカウントのパスワードを入力します。 応答の「host_name」エントリにノードの FQDN が含まれます。
+* **Ambari REST API から**:`curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **CLUSTERNAME** をクラスター名に置き換えます。 メッセージが表示されたら、ログイン (管理者) アカウントのパスワードを入力します。 応答の「host_name」エントリにノードの FQDN が含まれます。
 
 ### <a name="authentication"></a>Authentication
 

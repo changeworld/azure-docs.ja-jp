@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196027"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401307"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -42,6 +42,37 @@ ms.locfileid: "56196027"
 ## <a name="upcoming-changes"></a>今後の変更
 
 現時点ではスケジュールされていません。 
+
+## <a name="march-2019"></a>2019 年 3 月
+
+### <a name="looping-clients-will-be-interrupted"></a>クライアントのループ処理が中断されます
+
+**発効日**:2019 年 3 月 25 日
+
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
+
+**影響を受けるプロトコル**:すべてのフロー
+
+クライアント アプリケーションが誤動作し、短期間に数百の同じログイン要求を発行する場合があります。  これらの要求は成功する場合もしない場合もありますが、そのすべてがユーザー エクスペリエンスの低下や IDP のワークロードの増加につながるため、すべてのユーザーの待ち時間が長くなり、IDP の可用性が低下します。  これらのアプリケーションは通常の使用の範囲外で動作しており、正しく動作するように更新する必要があります。  
+
+重複した要求を複数回発行するクライアントには `invalid_grant` エラー: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request` が送信されます。 
+
+ほとんどのクライアントは、動作を変更してこのエラーを回避する必要はありません。  正しく構成されていない (トークンのキャッシュを使用していない、または既にプロンプト ループを示している) クライアントのみがこのエラーの影響を受けます。  クライアントは、次の要因に対して (Cookie 経由で) ローカルにインスタンスごとに追跡されます。
+
+* ユーザー ヒント (存在する場合)
+
+* 要求されているスコープまたはリソース
+
+* クライアント ID
+
+* リダイレクト URI
+
+* 応答の種類とモード
+
+短期間 (5 分) に複数の (15 を超える) 要求を発行しているアプリは、ループ処理していることを示す `invalid_grant` エラーを受信します。  要求されているトークンには十分に長い有効期間 (最小 10 分、既定では 60 分) があるため、この期間にわたって繰り返される要求は必要ありません。  
+
+すべてのアプリが、確認なしでトークンを要求するのではなく、対話型プロンプトを示すことによって `invalid_grant` を処理する必要があります。  このエラーを回避するために、クライアントは、受信したトークンを正しくキャッシュしていることを確認する必要があります。
+
 
 ## <a name="october-2018"></a>2018 年 10 月
 

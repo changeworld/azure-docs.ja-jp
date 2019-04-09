@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 2/4/2019
+ms.date: 3/26/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 8fd8cd93015fdb5cdcf657ecbcbb9a7cc870525a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: c632989ea85033c6cbdd4188351d34345e919c49
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747749"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500663"
 ---
 ### <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -33,7 +33,7 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure Firewall の一般的なデプロイ モデルを教えてください
 
-Azure Firewall は任意の仮想ネットワークにデプロイできますが、通常、お客様は中央の仮想ネットワークにデプロイし、ハブ アンド スポーク モデルでこれに他の仮想ネットワークをピアリングします。 こうすることで、この中央のファイアウォールの仮想ネットワークを指すように、ピアリングされた仮想ネットワークから既定のルートを設定できます。
+Azure Firewall は任意の仮想ネットワークにデプロイできますが、通常、お客様は中央の仮想ネットワークにデプロイし、ハブ アンド スポーク モデルでこれに他の仮想ネットワークをピアリングします。 こうすることで、この中央のファイアウォールの仮想ネットワークを指すように、ピアリングされた仮想ネットワークから既定のルートを設定できます。 グローバル VNet ピアリングはサポートされていますが、リージョン間の潜在的なパフォーマンスと待機時間の問題のため、推奨されません。 最適なパフォーマンスのため、リージョンごとに 1 つのファイアウォールをデプロイしてください。
 
 このモデルの利点は、異なるサブスクリプションの複数のスポーク VNET に対して制御を集中的に実行できる点です。 VNet ごとに個別にファイアウォールを設置する必要がないため、コストも削減できます。 コスト削減は、カスタマーのトラフィック パターンに基づいて関連するピアリング コストに対して計測する必要があります。
 
@@ -45,10 +45,11 @@ Azure portal、PowerShell、REST API、またはテンプレートを使用し�
 
 Azure Firewall は、ルールとルール コレクションをサポートしています。 ルール コレクションは、同じ順序と優先度を共有するルールのセットです。 ルール コレクションは、その優先度の順に実行されます。 ネットワーク ルール コレクションはアプリケーション ルール コレクションよりも優先されます。また、すべてのルールは終了されます。
 
-次の 2 つの種類のルール コレクションがあります。
+次の 3 つの種類のルール コレクションがあります。
 
-* "*アプリケーション ルール*": サブネットからアクセスできる完全修飾ドメイン名 (FQDN) を構成できます。
-* "*ネットワーク ルール*": 送信元アドレス、プロトコル、宛先ポート、および送信先アドレスを含むルールを構成できます。
+* "*アプリケーション ルール*": サブネットからアクセスできる完全修飾ドメイン名 (FQDN) を構成します。
+* "*ネットワーク ルール*": 送信元アドレス、プロトコル、宛先ポート、および送信先アドレスを含むルールを構成します。
+* *NAT ルール*:着信接続を許可する DNAT ルールを構成します。
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Firewall は受信トラフィック フィルター処理をサポートしていますか?
 
@@ -94,19 +95,19 @@ Azure PowerShell の *deallocate* メソッドと *allocate* メソッドを使�
 ```azurepowershell
 # Stop an exisitng firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 ```azurepowershell
 #Start a firewall
 
-$azfw = Get-AzureRmFirewall -Name "FW Name" -ResourceGroupName "RG Name"
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
+$azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
+$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
 $azfw.Allocate($vnet,$publicip)
-Set-AzureRmFirewall -AzureFirewall $azfw
+Set-AzFirewall -AzureFirewall $azfw
 ```
 
 > [!NOTE]
@@ -124,6 +125,14 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 はい。 ただし、同じ VNET 内のサブネット間でトラフィックをリダイレクトするよう UDR を構成する場合、さらに注意が必要です。 UDR のターゲット プレフィックスとして VNET アドレス範囲を使用する場合、これにより、Azure Firewall インスタンスを介して、同じサブネット内で一方のマシンから他方のマシンにすべてのトラフィックがルーティングされることになります。 これを回避するために、次ホップ タイプ **VNET** を使用して UDR にサブネットのルートを組み込みます。 これらのルートの管理は、手間がかかり、誤りが発生する可能性もあります。 内部ネットワークのセグメント化の推奨される方法は、UDR を必要としないネットワーク セキュリティ グループを使用する方法です。
 
+### <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>サポートされているネットワーク仮想アプライアンスに、トンネリング/チェーンが強制されますか。
+
+はい。
+
+Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet には既定で、NextHopType の値が **Internet** に設定された 0.0.0.0/0 ルートがあります。
+
+ExpressRoute または VPN Gateway 経由でのオンプレミスへの強制トンネリングを有効にしている場合は、NextHopType の値が Internet に設定された 0.0.0.0/0 ユーザー定義ルート (UDR) を明示的に構成し、それを AzureFirewallSubnet に関連付ける必要があります。 これにより、オンプレミス ネットワークに戻される可能性のある既定のゲートウェイ BGP アドバタイズがオーバーライドされます。 組織で、既定のゲートウェイ トラフィックをオンプレミス ネットワーク経由で戻すための Azure Firewall の強制トンネリングが必要である場合は、サポートにお問い合わせください。 Microsoft にて貴社のサブスクリプションをホワイトリストに登録し、必要なファイアウォールのインターネット接続を確保いたします。
+
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>ファイアウォール リソース グループの制限はありますか。
 
 はい。 ファイアウォール、サブネット、VNet、パブリック IP アドレスすべては同じリソース グループに属していなければなりません。
@@ -131,3 +140,7 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 ### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>インバウンド ネットワーク トラフィックの DNAT を構成する際、そのトラフィックを許可するための、対応するネットワーク ルールも構成しなければならないのでしょうか。
 
 いいえ。 NAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](../articles/firewall/rule-processing.md)」を参照してください。
+
+### <a name="how-to-wildcards-work-in-an-application-rule-target-fqdn"></a>アプリケーション ルールのターゲット FQDN でワイルドカードはどのように機能しますか。
+
+***.contoso.com** を構成した場合、これにより、*何らかの値*.contoso.com は許可されますが、contoso.com (ドメインの頂点) は許可されません。 ドメインの頂点を許可する場合は、それをターゲット FQDN として明示的に構成する必要があります。

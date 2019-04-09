@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 369f3ebca0ca2f5862d8300934dee57a73d8bada
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 938801148b175456553865b54d59271021811401
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903404"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372422"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 
@@ -73,156 +73,156 @@ ms.locfileid: "57903404"
 
     b. このアプリケーションは、LoB システムをシミュレートする単純な C# コンソール アプリであり、メッセージのモバイル アプリへの配信を開始します。
 
-        ```csharp
-        static void Main(string[] args)
-        {
-            string connectionString =
-                CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+    ```csharp
+    static void Main(string[] args)
+    {
+        string connectionString =
+            CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
-            // Create the topic
-            CreateTopic(connectionString);
+        // Create the topic
+        CreateTopic(connectionString);
 
-            // Send message
-            SendMessage(connectionString);
-        }
-        ```
+        // Send message
+        SendMessage(connectionString);
+    }
+    ```
 
     c. `CreateTopic` は、Service Bus トピックを作成するために使用されます。
 
-        ```csharp
-        public static void CreateTopic(string connectionString)
+    ```csharp
+    public static void CreateTopic(string connectionString)
+    {
+        // Create the topic if it does not exist already
+
+        var namespaceManager =
+            NamespaceManager.CreateFromConnectionString(connectionString);
+
+        if (!namespaceManager.TopicExists(sampleTopic))
         {
-            // Create the topic if it does not exist already
-
-            var namespaceManager =
-                NamespaceManager.CreateFromConnectionString(connectionString);
-
-            if (!namespaceManager.TopicExists(sampleTopic))
-            {
-                namespaceManager.CreateTopic(sampleTopic);
-            }
+            namespaceManager.CreateTopic(sampleTopic);
         }
-        ```
+    }
+    ```
 
     d. `SendMessage` は、この Service Bus のトピックにメッセージを送信するために使用します。 このコードは単純に、このサンプルの目的として、一連のランダムなメッセージを定期的にトピックに送信します。 通常は、イベントの発生時にメッセージを送信するバックエンド システムが存在します。
 
-        ```csharp
-        public static void SendMessage(string connectionString)
+    ```csharp
+    public static void SendMessage(string connectionString)
+    {
+        TopicClient client =
+            TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
+
+        // Sends random messages every 10 seconds to the topic
+        string[] messages =
         {
-            TopicClient client =
-                TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
+            "Employee Id '{0}' has joined.",
+            "Employee Id '{0}' has left.",
+            "Employee Id '{0}' has switched to a different team."
+        };
 
-            // Sends random messages every 10 seconds to the topic
-            string[] messages =
-            {
-                "Employee Id '{0}' has joined.",
-                "Employee Id '{0}' has left.",
-                "Employee Id '{0}' has switched to a different team."
-            };
+        while (true)
+        {
+            Random rnd = new Random();
+            string employeeId = rnd.Next(10000, 99999).ToString();
+            string notification = String.Format(messages[rnd.Next(0,messages.Length)], employeeId);
 
-            while (true)
-            {
-                Random rnd = new Random();
-                string employeeId = rnd.Next(10000, 99999).ToString();
-                string notification = String.Format(messages[rnd.Next(0,messages.Length)], employeeId);
+            // Send Notification
+            BrokeredMessage message = new BrokeredMessage(notification);
+            client.Send(message);
 
-                // Send Notification
-                BrokeredMessage message = new BrokeredMessage(notification);
-                client.Send(message);
+            Console.WriteLine("{0} Message sent - '{1}'", DateTime.Now, notification);
 
-                Console.WriteLine("{0} Message sent - '{1}'", DateTime.Now, notification);
-
-                System.Threading.Thread.Sleep(new TimeSpan(0, 0, 10));
-            }
+            System.Threading.Thread.Sleep(new TimeSpan(0, 0, 10));
         }
-        ```
+    }
+    ```
 2. **ReceiveAndSendNotification**
 
     a. このプロジェクトは *WindowsAzure.ServiceBus* および **Microsoft.Web.WebJobs.Publish** NuGet パッケージを使用し、「[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]」に基づいています。
 
     b. 次のコンソール アプリは、LoB/バックエンド システム メッセージをリッスンするために継続的に実行する必要があるため、[Azure WebJob] として実行されます。 このアプリケーションは、モバイル バックエンドの一部です。
 
-        ```csharp
-        static void Main(string[] args)
-        {
-            string connectionString =
-                     CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+    ```csharp
+    static void Main(string[] args)
+    {
+        string connectionString =
+                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
 
-            // Create the subscription that receives messages
-            CreateSubscription(connectionString);
+        // Create the subscription that receives messages
+        CreateSubscription(connectionString);
 
-            // Receive message
-            ReceiveMessageAndSendNotification(connectionString);
-        }
-        ```
+        // Receive message
+        ReceiveMessageAndSendNotification(connectionString);
+    }
+    ```
 
     c. `CreateSubscription` は、バックエンド システムがメッセージを送信するトピックの Service Bus サブスクリプションを作成するために使用されます。 ビジネス シナリオに応じて、このコンポーネントは対応するトピックへの 1 つ以上のサブスクリプションを作成します (たとえば、一部は人事システムから、また一部は財務システムからメッセージを受信するなど)。
 
-        ```csharp
-        static void CreateSubscription(string connectionString)
-        {
-            // Create the subscription if it does not exist already
-            var namespaceManager =
-                NamespaceManager.CreateFromConnectionString(connectionString);
+    ```csharp
+    static void CreateSubscription(string connectionString)
+    {
+        // Create the subscription if it does not exist already
+        var namespaceManager =
+            NamespaceManager.CreateFromConnectionString(connectionString);
 
-            if (!namespaceManager.SubscriptionExists(sampleTopic, sampleSubscription))
-            {
-                namespaceManager.CreateSubscription(sampleTopic, sampleSubscription);
-            }
+        if (!namespaceManager.SubscriptionExists(sampleTopic, sampleSubscription))
+        {
+            namespaceManager.CreateSubscription(sampleTopic, sampleSubscription);
         }
-        ```
+    }
+    ```
 
     d. `ReceiveMessageAndSendNotification` は、サブスクリプションを使用してトピックからメッセージを読み取り、読み取りが正常に実行された場合に、Azure Notification Hubs を使用してモバイル アプリケーションに送信する通知 (サンプル シナリオでは Windows ネイティブのトースト通知) を作成するために使用します。
 
-        ```csharp
-        static void ReceiveMessageAndSendNotification(string connectionString)
+    ```csharp
+    static void ReceiveMessageAndSendNotification(string connectionString)
+    {
+        // Initialize the Notification Hub
+        string hubConnectionString = CloudConfigurationManager.GetSetting
+                ("Microsoft.NotificationHub.ConnectionString");
+        hub = NotificationHubClient.CreateClientFromConnectionString
+                (hubConnectionString, "enterprisepushservicehub");
+
+        SubscriptionClient Client =
+            SubscriptionClient.CreateFromConnectionString
+                    (connectionString, sampleTopic, sampleSubscription);
+
+        Client.Receive();
+
+        // Continuously process messages received from the subscription
+        while (true)
         {
-            // Initialize the Notification Hub
-            string hubConnectionString = CloudConfigurationManager.GetSetting
-                    ("Microsoft.NotificationHub.ConnectionString");
-            hub = NotificationHubClient.CreateClientFromConnectionString
-                    (hubConnectionString, "enterprisepushservicehub");
+            BrokeredMessage message = Client.Receive();
+            var toastMessage = @"<toast><visual><binding template=""ToastText01""><text id=""1"">{messagepayload}</text></binding></visual></toast>";
 
-            SubscriptionClient Client =
-                SubscriptionClient.CreateFromConnectionString
-                        (connectionString, sampleTopic, sampleSubscription);
-
-            Client.Receive();
-
-            // Continuously process messages received from the subscription
-            while (true)
+            if (message != null)
             {
-                BrokeredMessage message = Client.Receive();
-                var toastMessage = @"<toast><visual><binding template=""ToastText01""><text id=""1"">{messagepayload}</text></binding></visual></toast>";
-
-                if (message != null)
+                try
                 {
-                    try
-                    {
-                        Console.WriteLine(message.MessageId);
-                        Console.WriteLine(message.SequenceNumber);
-                        string messageBody = message.GetBody<string>();
-                        Console.WriteLine("Body: " + messageBody + "\n");
+                    Console.WriteLine(message.MessageId);
+                    Console.WriteLine(message.SequenceNumber);
+                    string messageBody = message.GetBody<string>();
+                    Console.WriteLine("Body: " + messageBody + "\n");
 
-                        toastMessage = toastMessage.Replace("{messagepayload}", messageBody);
-                        SendNotificationAsync(toastMessage);
+                    toastMessage = toastMessage.Replace("{messagepayload}", messageBody);
+                    SendNotificationAsync(toastMessage);
 
-                        // Remove message from subscription
-                        message.Complete();
-                    }
-                    catch (Exception)
-                    {
-                        // Indicate a problem, unlock message in subscription
-                        message.Abandon();
-                    }
+                    // Remove message from subscription
+                    message.Complete();
+                }
+                catch (Exception)
+                {
+                    // Indicate a problem, unlock message in subscription
+                    message.Abandon();
                 }
             }
         }
-        static async void SendNotificationAsync(string message)
-        {
-            await hub.SendWindowsNativeNotificationAsync(message);
-        }
-        ```
+    }
+    static async void SendNotificationAsync(string message)
+    {
+        await hub.SendWindowsNativeNotificationAsync(message);
+    }
+    ```
 
     e. このアプリを **WebJob** として発行するには、Visual Studio でソリューションを右クリックし、**[WebJob として発行]** を選択します。
 
@@ -244,28 +244,28 @@ ms.locfileid: "57903404"
 
     c. (`HubName` および `DefaultListenSharedAccessSignature` の値を置換してから) アプリの起動時に、以下の Notification Hubs の登録コードが確実に呼び出されるようにします。
 
-        ```csharp
-        private async void InitNotificationsAsync()
+    ```csharp
+    private async void InitNotificationsAsync()
+    {
+        var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+        var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
+        var result = await hub.RegisterNativeAsync(channel.Uri);
+
+        // Displays the registration ID so you know it was successful
+        if (result.RegistrationId != null)
         {
-            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-
-            var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
-            var result = await hub.RegisterNativeAsync(channel.Uri);
-
-            // Displays the registration ID so you know it was successful
-            if (result.RegistrationId != null)
-            {
-                var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
+            var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
         }
-        ```
+    }
+    ```
 
 ### <a name="running-the-sample"></a>サンプルの実行
 
 1. WebJob が正常に実行され、継続的に実行するようにスケジュールされていることを確認します。
-2. Windows ストア アプリを起動する **EnterprisePushMobileApp を実行します。
+2. Windows ストア アプリを起動する **EnterprisePushMobileApp** を実行します。
 3. LoB バックエンドをシミュレートし、メッセージの送信を開始する **EnterprisePushBackendSystem** コンソール アプリケーションを実行すると、次の図のようなトースト通知が表示されます。
 
     ![][5]

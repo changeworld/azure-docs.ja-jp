@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ea76f28995dfa7f7dd5a6f280f8319f5b4ca26
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5c7744ba4ca37a2a496c75a50f274be9bf431cc5
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180763"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286586"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -37,7 +37,7 @@ ms.locfileid: "56180763"
 1. ユーザーは、オンプレミスのアプリケーションにアプリケーション プロキシをとおしてアクセスするための URL を入力します。
 2. この要求がアプリケーション プロキシによって Azure AD 認証サービスにリダイレクトされて、事前認証が行われます。 この時点で、Azure AD の認証および承認のポリシーのうち、該当するものが適用されます (たとえば多要素認証)。 ユーザーの正当性が確認された場合は、Azure AD によってトークンが作成されてユーザーに送信されます。
 3. ユーザーは、このトークンをアプリケーション プロキシに渡します。
-4. アプリケーション プロキシはこのトークンを検証し、ユーザー プリンシパル名 (UPN) をトークンから取り出してから、要求、UPN、およびサービス プリンシパル名 (SPN) をコネクタに送信します。この送信は、二重認証済みのセキュリティで保護されたチャネルをとおして行われます。
+4. アプリケーション プロキシがこのトークンを検証し、ユーザー プリンシパル名 (UPN) をトークンから取り出してから、コネクタが二重認証済みのセキュリティで保護されたチャネルを介して UPN とサービス プリンシパル名 (SPN) をプルします。
 5. コネクタは、オンプレミス AD との KCD (Kerberos の制約付き委任) ネゴシエーションを実行します。このときに、ユーザーの代理でアプリケーションに対する Kerberos トークンを取得します。
 6. Active Directory は、そのアプリケーション用の Kerberos トークンをコネクタに送信します。
 7. コネクタは、AD から受信した Kerberos トークンを使用して、元の要求をアプリケーション サーバーに送信します。

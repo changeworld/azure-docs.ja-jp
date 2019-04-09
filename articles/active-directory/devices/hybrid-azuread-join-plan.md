@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: de80825ccdd331f57dcd31d307196dc0b45b9cc9
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234104"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294588"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -41,6 +41,8 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 この記事では、[Azure Active Directory でのデバイス管理の概要](../device-management-introduction.md)を理解していることを前提とします
 
+>[!NOTE]
+>  Windows 10 のハイブリッド Azure AD 参加に必要なドメイン機能とフォレスト機能の最小レベルは Windows Server 2008 R2 です。 これ以前のバージョンでは、ユーザーが Windows にログオンするときに、LSA の問題によりプライマリ更新トークンを取得できない可能性があります。 
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
@@ -92,7 +94,7 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 複数の Azure AD テナントに ID データを同期させた単一フォレストで構成されている環境の場合、ハイブリッド Azure AD 参加を使用することはできません。
 
-システム準備ツール (Sysprep) を利用している場合は、必ずハイブリッド Azure AD 参加用に構成されていない Windows のインストールからイメージを作成してください。
+システム準備ツール (Sysprep) を利用している場合は、必ずハイブリッド Azure AD 参加用に構成されていない Windows 10 1803 以前のインストールからイメージを作成してください。
 
 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、必ずハイブリッド Azure AD 参加用に構成されていない VM スナップショットを使用してください。
 
@@ -114,8 +116,10 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。 
  - デバイスが Hybrid Azure AD 参加済みになった後、既存の Azure AD 登録済み状態は自動的に削除されます。 
- - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます
+ - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
+ - この変更は現在、KB4489894 が適用された Windows 10 1803 リリースでご利用いただけます。
 
+FIPS に準拠している TPM は、Hybrid Azure AD 参加ではサポートされていません。 FIPS に準拠している TPM がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する方法を確認する
 

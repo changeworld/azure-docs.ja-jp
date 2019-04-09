@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/06/2019
+ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888572"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード:データベース接続エラーとその他の問題
 
@@ -55,13 +55,13 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 | エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
-| 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 |
-| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 |
-| 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。<br/><br/>詳細については、次を参照してください。<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)」を参照してください。 |
-| 40613 |17 |サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。 後で接続を再試行してください。 問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。 |
-| 49918 |16 |要求を処理できません。 要求を処理するリソースが十分ではありません。<br/><br/>サービスは現在ビジー状態です。 後で要求を再試行してください。 |
-| 49919 |16 |要求を処理、作成、更新できません。 サブスクリプション "%ld" に対して進行中の作成または更新操作が多すぎます。<br/><br/>サービスが、サブスクリプションまたはサーバーに対する複数の作成または更新要求の処理でビジ―状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して保留中の操作を確認します。 保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
-| 49920 |16 |要求を処理できません。 サブスクリプション "%ld" に対して進行中の操作が多すぎます。<br/><br/>サービスが、このサブスクリプションに対する複数の要求の処理でビジー状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して操作の状態を確認します。 保留中の要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
+| 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
+| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
+| 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md)|
+| 40613 |17 |サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。 後で接続を再試行してください。 問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。<br/><br/> このエラーは、データベースに対して専用管理者接続 (DAC) が既に確立されている場合に発生する可能性があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
+| 49918 |16 |要求を処理できません。 要求を処理するリソースが十分ではありません。<br/><br/>サービスは現在ビジー状態です。 後で要求を再試行してください。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 49919 |16 |要求を処理、作成、更新できません。 サブスクリプション "%ld" に対して進行中の作成または更新操作が多すぎます。<br/><br/>サービスが、サブスクリプションまたはサーバーに対する複数の作成または更新要求の処理でビジ―状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して保留中の操作を確認します。 保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 49920 |16 |要求を処理できません。 サブスクリプション "%ld" に対して進行中の操作が多すぎます。<br/><br/>サービスが、このサブスクリプションに対する複数の要求の処理でビジー状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して操作の状態を確認します。 保留中の要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
 | 4221 |16 |'HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING' を長時間待機しているため、read-secondary へのログインに失敗しました。 レプリカのリサイクル時に実行中だったトランザクションに行のバージョンがないため、レプリカはログインに使用できません。 この問題を解決するには、プライマリ レプリカのアクティブ トランザクションをロール バックするか、コミットします。 この条件の発生を最小限に抑えるには、プライマリ上の長い書き込みトランザクションを回避します。 |
 
 ## <a name="database-copy-errors"></a>データベース コピー エラー
@@ -95,18 +95,24 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 関連トピック:
 
-* 詳細については、[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)に関するページを参照してください。
+* 詳細については、次を参照してください。
+  * [データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)
+  * [単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)
+  * [エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)
+  * [単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)
+  * [エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)
+  * [Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) 
 
 | エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
-| 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](sql-database-resource-limits-database-server.md)」を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)」を参照してください。 |
-| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](sql-database-resource-limits-database-server.md)」を参照してください。 それ以外の場合は、後でもう一度やり直してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers-dtu.md)」を参照してください。 |
-| 40544 |20 |データベースのサイズ クォータに達しました。 データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。 |
-| 40549 |16 |トランザクションが長時間実行されているため、セッションを終了しました。 トランザクションを短くしてください。 |
-| 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 |
-| 40551 |16 |`TEMPDB` の使用領域が多すぎるため、セッションを終了しました。 クエリを変更して一時テーブルの使用領域を減らしてください。<br/><br/>一時オブジェクトを使用している場合は、セッションで不要となった一時オブジェクトを削除して `TEMPDB` データベースの領域を節約してください。 |
-| 40552 |16 |トランザクション ログの使用領域が多すぎるため、セッションを終了しました。 1 回のトランザクションで変更する行を減らしてください。<br/><br/>`bcp.exe` ユーティリティまたは `System.Data.SqlClient.SqlBulkCopy` クラスを使用して一括挿入を実行する場合は、1 回のトランザクションでサーバーにコピーされる行数を `-b batchsize` オプションまたは `BatchSize` オプションで制限してください。 `ALTER INDEX` ステートメントでインデックスを再構築する場合は、`REBUILD WITH ONLINE = ON` オプションの使用を検討してください。 |
-| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 |
+| 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](sql-database-resource-limits-database-server.md)」を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) <br/>それ以外の場合は、後でもう一度やり直してください。 |
+| 40544 |20 |データベースのサイズ クォータに達しました。 データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](sql-database-single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
+| 40549 |16 |トランザクションが長時間実行されているため、セッションを終了しました。 トランザクションを短くしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](sql-database-use-batching-to-improve-performance.md)」を参照してください。|
+| 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](sql-database-use-batching-to-improve-performance.md)」を参照してください。|
+| 40551 |16 |`TEMPDB` の使用領域が多すぎるため、セッションを終了しました。 クエリを変更して一時テーブルの使用領域を減らしてください。<br/><br/>一時オブジェクトを使用している場合は、セッションで不要となった一時オブジェクトを削除して `TEMPDB` データベースの領域を節約してください。 SQL Database での tempdb の使用については、「[SQL Database の Tempdb データベース](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」を参照してください。|
+| 40552 |16 |トランザクション ログの使用領域が多すぎるため、セッションを終了しました。 1 回のトランザクションで変更する行を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](sql-database-use-batching-to-improve-performance.md)」を参照してください。<br/><br/>`bcp.exe` ユーティリティまたは `System.Data.SqlClient.SqlBulkCopy` クラスを使用して一括挿入を実行する場合は、1 回のトランザクションでサーバーにコピーされる行数を `-b batchsize` オプションまたは `BatchSize` オプションで制限してください。 `ALTER INDEX` ステートメントでインデックスを再構築する場合は、`REBUILD WITH ONLINE = ON` オプションの使用を検討してください。 仮想コア購入モデルでのトランザクション ログ サイズについては、次を参照してください。 <br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md)|
+| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](sql-database-single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
 
 ## <a name="elastic-pool-errors"></a>エラスティック プールのエラー
 
@@ -114,8 +120,8 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 | エラー コード | severity | 説明 | 是正措置 |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 エラスティック プールの記憶域が上限に達したときに、データベースにデータを記述しようとしています。 |可能であれば、エラスティック プールの DTU を増やすかストレージを追加して、その記憶域の上限を上げることを検討する、エラスティック プール内の個々のデータベースで使用される記憶域を減らす、エラスティック プールからデータベースを削除するのいずれかを行ってください。 |
-| 10929 | 16 |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](sql-database-resource-limits-database-server.md)」を参照してください。 それ以外の場合は、後でもう一度やり直してください。 データベースあたりの DTU/仮想コア最小値、データベースあたりの DTU/仮想コア最大値。 エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU または仮想コアを増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
+| 1132 | 17 |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 エラスティック プールの記憶域が上限に達したときに、データベースにデータを記述しようとしています。 リソース制限については以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md) <br/> |可能であれば、エラスティック プールの DTU を増やすかストレージを追加して、その記憶域の上限を上げることを検討する、エラスティック プール内の個々のデータベースで使用される記憶域を減らす、エラスティック プールからデータベースを削除するのいずれかを行ってください。 エラスティック プールのスケーリングについては、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
+| 10929 | 16 |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース制限については以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md) <br/> それ以外の場合は、後でもう一度やり直してください。 データベースあたりの DTU/仮想コア最小値、データベースあたりの DTU/仮想コア最大値。 エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU または仮想コアを増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
 | 40844 | 16 |サーバー '%ls' のデータベース '%ls' は、エラスティック プールの '%ls' エディションのデータベースであり、連続コピー リレーションシップを持つことはできません。  |該当なし |
 | 40857 | 16 |サーバー '%ls ' のエラスティック プールが見つかりませんでした。エラスティック プール名は ' %ls ' です。 指定されたエラスティック プールが、指定されたサーバー内にありません。 | 有効なエラスティック プール名を指定してください。 |
 | 40858 | 16 |エラスティック プール '%ls' は サーバー '%ls' に既に存在します。 指定されたエラスティック プールは、指定された SQL Database サーバー内に既に存在します。 | 新しいエラスティック プール名を指定してください。 |
@@ -148,10 +154,10 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 | エラー コード | severity | 説明 |
 | ---:| ---:|:--- |
-| 15006 |16 |(AdministratorLogin) は無効な文字を含んでいるため、有効な名前ではありません。 |
-| 18452 |14 |ログインできませんでした。 このログインは信頼されていないドメインからのログインなので、Windows 認証では使用できません。%.&#x2a;ls (Windows ログインは、このバージョンの SQL Server ではサポートされていません。) |
-| 18456 |14 |ユーザー '%.&#x2a;ls' はログインできませんでした。%.&#x2a;ls%.&#x2a;ls(ユーザー "%.&#x2a;ls" はログインできませんでした。) |
-| 18470 |14 |ユーザー '%.&#x2a;ls' はログインできませんでした。 理由:このアカウントは無効です。%.&#x2a;ls |
+| [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |(AdministratorLogin) は無効な文字を含んでいるため、有効な名前ではありません。|
+| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |ログインできませんでした。 このログインは信頼されていないドメインからのログインなので、Windows 認証では使用できません。%.&#x2a;ls (Windows ログインは、このバージョンの SQL Server ではサポートされていません。) |
+| [18456](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |ユーザー '%.&#x2a;ls' はログインできませんでした。%.&#x2a;ls%.&#x2a;ls(ユーザー "%.&#x2a;ls" はログインできませんでした。) |
+| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |ユーザー '%.&#x2a;ls' はログインできませんでした。 理由:このアカウントは無効です。%.&#x2a;ls |
 | 40014 |16 |同じトランザクションで複数のデータベースを使用することはできません。 |
 | 40054 |16 |クラスター化インデックスのないテーブルは、このバージョンの SQL Server ではサポートされていません。 クラスター化インデックスを作成してからやり直してください。 |
 | 40133 |15 |この操作は、このバージョンの SQL Server ではサポートされていません。 |

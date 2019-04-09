@@ -76,7 +76,7 @@ items:
       href: howto-integrate-activity-logs-with-log-analytics.md
     - name: Azure Monitor ログでのアクティビティ ログの分析
       href: howto-analyze-activity-logs-log-analytics.md
-    - name: Azure AD 用の Log Analytics ビューのインストールと使用
+    - name: Azure AD 用のログ分析ビューのインストールと使用
       href: howto-install-use-log-analytics-views.md
     - name: アクティビティ ログと SumoLogic の統合
       href: howto-integrate-activity-logs-with-sumologic.md

@@ -67,7 +67,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **Connection Name**   | ITSMC に接続する System Center Service Manager インスタンスの名前を入力します。  この名前は、インスタンスの作業項目を構成したり、詳細な Log Analytics を確認したりするときに使用します。 |
+| **Connection Name**   | ITSMC に接続する System Center Service Manager インスタンスの名前を入力します。  この名前は、インスタンスの作業項目を構成したり、詳細なログ分析を確認したりするときに使用します。 |
 | **パートナーの種類**   | **[System Center Service Manager]** を選択します。 |
 | **サーバー URL**   | Service Manager Web アプリの URL を入力します。 Service Manager Web アプリの詳細については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 | **クライアント ID**   | Web アプリを認証するために (自動スクリプトを使用して) 生成したクライアント ID を入力します。 自動スクリプトの詳細については、[こちら](../../azure-monitor/platform/itsmc-service-manager-script.md)をご覧ください。|
@@ -219,14 +219,14 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **Connection Name**   | ITSMC に接続する ServiceNow インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、後で Log Analytics 上で使用します。 |
+| **Connection Name**   | ITSMC に接続する ServiceNow インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細なログ分析を確認したりするときに、後で Log Analytics 上で使用します。 |
 | **パートナーの種類**   | **[ServiceNow]** を選択します。 |
 | **ユーザー名**   | ITSMC への接続をサポートするために ServiceNow アプリで作成した統合ユーザー名を入力します。 詳細情報: [ServiceNow アプリのユーザー ロールの作成](#create-integration-user-role-in-servicenow-app)に関するページ。|
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **メモ**:ユーザー名とパスワードは、認証トークンを生成するためにのみ使用され、ITSMC サービス内のどこにも格納されません。  |
 | **サーバー URL**   | ITSMC に接続する ServiceNow インスタンスの URL を入力します。 |
 | **クライアント ID**   | 先ほど生成した、OAuth2 認証に使用するクライアント ID を入力します。  クライアント ID とシークレットの生成の詳細については、 [OAuth のセットアップ](https://wiki.servicenow.com/index.php?title=OAuth_Setup)に関するページを参照してください。 |
 | **クライアント シークレット**   | この ID 用に生成したクライアント シークレットを入力します。   |
-| **データ同期スコープ**   | ITSMC 経由で Azure Log Analytics に同期する ServiceNow 作業項目を選択します。  選択した値は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。|
+| **データ同期スコープ**   | ITSMC 経由で Azure Log Analytics に同期する ServiceNow 作業項目を選択します。  選択した値は、ログ分析にインポートされます。   **オプション:** インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
@@ -314,13 +314,13 @@ Provance 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **Connection Name**   | ITSMC に接続する Provance インスタンスの名前を入力します。  この名前は、後で ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに使用します。 |
+| **Connection Name**   | ITSMC に接続する Provance インスタンスの名前を入力します。  この名前は、後で ITSM の作業項目を構成したり、詳細なログ分析を確認したりするときに使用します。 |
 | **パートナーの種類**   | **[Provance]** を選択します。 |
 | **ユーザー名**   | ITSMC に接続できるユーザー名を入力します。    |
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注:** ユーザー名とパスワードは、認証トークンを生成するためにのみ使用され、ITSMC サービス内のどこにも格納されません。|
 | **サーバー URL**   | ITSMC に接続する Provance インスタンスの URL を入力します。 |
 | **クライアント ID**   | Provance インスタンスで生成した、この接続を認証するためのクライアント ID を入力します。  クライアント ID の詳細については、[Active Directory 認証の構成方法](../../app-service/configure-authentication-provider-aad.md)に関する記事をご覧ください。 |
-| **データ同期スコープ**   | ITSMC 経由で Azure Log Analytics に同期する Provance 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:**  インシデント、変更要求。|
+| **データ同期スコープ**   | ITSMC 経由で Azure Log Analytics に同期する Provance 作業項目を選択します。  これらの作業項目は、ログ分析にインポートされます。   **オプション:**  インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。|
 
@@ -365,13 +365,13 @@ Provance 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **Connection Name**   | ITSMC に接続する Cherwell インスタンスの名前を入力します。  この名前は、後で ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに使用します。 |
+| **Connection Name**   | ITSMC に接続する Cherwell インスタンスの名前を入力します。  この名前は、後で ITSM の作業項目を構成したり、詳細なログ分析を確認したりするときに使用します。 |
 | **パートナーの種類**   | **[Cherwell]** を選択します。 |
 | **ユーザー名**   | ITSMC に接続できる Cherwell ユーザー名を入力します。 |
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注:** ユーザー名とパスワードは、認証トークンを生成するためにのみ使用され、ITSMC サービス内のどこにも格納されません。|
 | **サーバー URL**   | ITSMC に接続する Cherwell インスタンスの URL を入力します。 |
 | **クライアント ID**   | Cherwell インスタンスで生成した、この接続を認証するためのクライアント ID を入力します。   |
-| **データ同期スコープ**   | ITSMC 経由で同期する Cherwell 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。 |
+| **データ同期スコープ**   | ITSMC 経由で同期する Cherwell 作業項目を選択します。  これらの作業項目は、ログ分析にインポートされます。   **オプション:** インシデント、変更要求。 |
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 

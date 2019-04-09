@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed8159f38e2763cb897212ae4f51fecb7343a683
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854468"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315593"
 ---
 # <a name="deploy-multiple-guest-executables"></a>複数のゲスト実行可能ファイルのデプロイ
 この記事では、複数のゲスト実行可能ファイルをパッケージ化して Azure Service Fabric にデプロイする方法について説明します。 単一の Service Fabric のパッケージを作成しデプロイする方法については、「[Service Fabric へのゲスト実行可能ファイルのデプロイ](service-fabric-deploy-existing-app.md)」を参照してください。
@@ -204,7 +204,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-アプリケーションがローカル クラスターに正常に発行されると、Node.js アプリケーションのサービス マニフェストに入力したポート (たとえば http://localhost:3000) で Node.js アプリケーションにアクセスできます。
+アプリケーションがローカル クラスターに正常に発行されると、Node.js アプリケーションのサービス マニフェストに入力したポート (たとえば http:\//localhost:3000) で Node.js アプリケーションにアクセスできます。
 
 このチュートリアルでは、2 つの既存のアプリケーションを 1 つの Service Fabric アプリケーションとして簡単にパッケージ化する方法について説明しました。 また、高可用性やヘルス システムとの統合など、Service Fabric の機能の一部を活用できるように、Service Fabric にデプロイする方法についても説明しました。
 

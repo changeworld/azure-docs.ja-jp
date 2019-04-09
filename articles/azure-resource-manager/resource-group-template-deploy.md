@@ -10,38 +10,51 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: daeff897cf284df6e820afbcdd35ee54bf88db08
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3b9a35cb5a37aa17a2f7803f3e996d51bede81e0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405404"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518560"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
 Azure PowerShell と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくは、「[Azure Resource Manager の概要](resource-group-overview.md)」をご覧ください。
 
-テンプレートをデプロイするには、通常、次の 2 つの手順が必要になります。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. リソース グループを作成します。 リソース グループは、デプロイ済みのリソースのコンテナーとして機能します。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 末尾をピリオドにすることはできません。
-2. テンプレートをデプロイします。 テンプレートには、作成するリソースが定義されています。  デプロイによって、指定されたリソース グループにリソースが作成されます。
+## <a name="deployment-scope"></a>デプロイのスコープ
 
-この記事では、この 2 つの手順によるデプロイ方法が使用されます。  その他のオプションとしては、リソース グループとリソースを同時にデプロイします。  詳しくは、「[リソース グループを作成してリソースをデプロイする](./deploy-to-subscription.md#create-resource-group-and-deploy-resources)」をご覧ください。
+Azure サブスクリプション、またはサブスクリプション内のリソース グループのいずれかを、デプロイの対象として指定できます。 多くの場合、リソース グループをデプロイの対象にします。 サブスクリプション デプロイを使用するのは、サブスクリプション全体にポリシーとロールの割り当てを適用するときです。 また、リソース グループを作成し、それにリソースをデプロイする場合も、サブスクリプション デプロイを使用します。 使用するコマンドは、デプロイのスコープに応じて異なります。
+
+**リソース グループ**にデプロイするには、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+```
+
+**サブスクリプション**にデプロイするには、[New-AzDeployment](/powershell/module/az.resources/new-azdeployment) を使用します。
+
+```azurepowershell
+New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+この記事の例では、リソース グループ デプロイを使用します。 サブスクリプション デプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Cloud Shell](#deploy-templates-from-azure-cloud-shell) を使用してテンプレートをデプロイする場合以外は、Azure PowerShell をインストールして Azure に接続する必要があります。
+デプロイするテンプレートが必要です。 デプロイするテンプレートがない場合は、Azure クイック スタート テンプレート リポジトリから[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)を保存します。 この記事で使用されているローカル ファイル名は、**c:\MyTemplates\azuredeploy.json** です。
+
+Azure Cloud Shell を使用してテンプレートをデプロイする場合以外は、Azure PowerShell をインストールして Azure に接続する必要があります。
+
 - **ローカル コンピューターに Azure PowerShell コマンドレットをインストールします。** 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 - **[Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** を使用して、Azure に接続します。 Azure サブスクリプションが複数ある場合は、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を実行する必要が生じることもあります。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/powershell/azure/manage-subscriptions-azureps)」をご覧ください。
-- * "[クイック スタート テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)" をダウンロードして保存します。 この記事で使用されているローカル ファイル名は、**c:\MyTemplates\azuredeploy.json** です。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
 
-## <a name="deploy-templates-stored-locally"></a>ローカルに保存されたテンプレートをデプロイする
-
-次の例では、リソース グループを作成し、ローカル コンピューターからテンプレートをデプロイします。
+次の例では、リソース グループを作成し、ローカル コンピューターからテンプレートをデプロイします。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 末尾をピリオドにすることはできません。
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -52,11 +65,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
-*c:\MyTemplates\azuredeploy.json* はクイックスタート テンプレートであることに注意してください。  「[前提条件](#prerequisites)」を参照してください。
-
 デプロイが完了するまでに数分かかる場合があります。
 
-## <a name="deploy-templates-stored-externally"></a>外部に保存されたテンプレートをデプロイする
+## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
 
 Resource Manager テンプレートは、ローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
@@ -73,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 前の例では、テンプレートにはパブリックにアクセスできる URI が必要になります。テンプレートに機密データを含めてはいけないため、この方法は多くの場合に利用できます。 機密データ (管理者パスワードなど) を指定する必要がある場合は、セキュリティで保護されたパラメーターとしてその値を渡します。 ただし、テンプレートを一般からアクセス可能にしない場合は、プライベートなストレージ コンテナーに格納することで保護できます。 Shared Access Signature (SAS) トークンを必要とするテンプレートをデプロイする方法については、[SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-powershell-sas-token.md)に関するページをご覧ください。 チュートリアルについては、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。
 
-## <a name="deploy-templates-from-azure-cloud-shell"></a>Azure Cloud Shell からテンプレートをデプロイする
+## <a name="deploy-from-azure-cloud-shell"></a>Azure Cloud Shell からデプロイする
 
 [Azure Cloud Shell](https://shell.azure.com) を使用して、テンプレートをデプロイできます。 外部テンプレートをデプロイするには、テンプレートの URI を指定します。 ローカル テンプレートをデプロイするには、最初に Cloud Shell のストレージ アカウントにテンプレートを読み込む必要があります。 ファイルをシェルにアップロードするには、シェル ウィンドウから **[ファイルのアップロード/ダウンロード]** メニュー アイコンを選択します。
 
@@ -89,10 +100,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```
 
 シェルにコードを貼り付けて、シェル内を右クリックし、**[貼り付け]** を選択します。
-
-## <a name="deploy-to-multiple-resource-groups-or-subscriptions"></a>複数のリソース グループまたはサブスクリプションへのデプロイ
-
-テンプレートに含まれているリソースはすべて 1 つのリソース グループにデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 単一のデプロイにデプロイできるリソース グループは 5 つまでです。 詳しくは、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](resource-manager-cross-resource-group-deployment.md)」をご覧ください。
 
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 

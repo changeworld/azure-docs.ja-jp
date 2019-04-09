@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15707e9854e79b3aa05ff9024fc5b3c7a38fa8f2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106887"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402118"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 
@@ -112,7 +112,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 
     - 許可されているユーザー グループの一覧。たとえば、*Administrators*、*Backup Operators* です。
 
--   **state**: *Disabled* または *Enabled* オプションを含むことのできる文字列。 このプライベート プレビュー リリースでは、文字列の大文字と小文字が区別されます。
+-   **state**: *Disabled* または *Enabled* オプションを含むことのできる文字列。 このリリースでは、文字列の大文字と小文字が区別されます。
 
 これらのフィールドのみ構成できます。 ファイルの形式またはサイズに違反した場合は、変更を保存できません。 有効な JSON 構成ファイルをアップロードする必要があることを伝えるエラー メッセージが届きます。
 

@@ -8,22 +8,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 03/19/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2a948a75ce3f6c21d7e92e3e1ccb1ef98dbe2ea0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7287dc2fccf461cf23c45202336e3d92bc5a40aa
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114384"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259705"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを Azure Data Factory (ADF) パイプラインで実行する方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パッケージのデプロイに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従って作成します。
 
@@ -49,19 +51,19 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 
    ![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. SSIS パッケージの実行アクティビティの **[設定]** タブで、パッケージがデプロイされる SSISDB データベースに関連付けられている Azure-SSIS IR を選択します。 パッケージで 32 ビット ランタイムを実行する必要がある場合は、**[32-Bit runtime]\(32 ビット ランタイム\)** チェック ボックスをオンにします。 **[ログ レベル]** で、パッケージ実行用のログの定義済みのスコープを選択します。 カスタマイズしたログ名を代わりに入力する場合は、**[Customized]\(カスタマイズ\)** チェック ボックスをオンにします。 Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、既存のフォルダー/プロジェクト/パッケージ/環境を SSISDB から参照して選択できます。 **[更新]** ボタンをクリックして、SSISDB から新しく追加したフォルダー/プロジェクト/パッケージ/環境を取り込み、それらを参照して選択できるようにします。 
+4. SSIS パッケージの実行アクティビティの **[設定]** タブで、パッケージがデプロイされる SSISDB データベースに関連付けられている Azure-SSIS IR を選択します。 パッケージが Windows 認証を使用してデータ ストア (オンプレミスの SQL Server/ファイル共有、Azure Files など) にアクセスする場合は **[Windows 認証]** チェック ボックスをオンにし、パッケージ実行のドメイン/ユーザー名/パスワードを入力します。 パッケージで 32 ビット ランタイムを実行する必要がある場合は、**[32-Bit runtime]\(32 ビット ランタイム\)** チェック ボックスをオンにします。 **[ログ レベル]** で、パッケージ実行用のログの定義済みのスコープを選択します。 カスタマイズしたログ名を代わりに入力する場合は、**[Customized]\(カスタマイズ\)** チェック ボックスをオンにします。 Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、既存のフォルダー/プロジェクト/パッケージ/環境を SSISDB から参照して選択できます。 **[更新]** ボタンをクリックして、SSISDB から新しく追加したフォルダー/プロジェクト/パッケージ/環境を取り込み、それらを参照して選択できるようにします。 
 
    ![[設定] タブでプロパティを設定する - 自動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Azure-SSIS IR が実行されていない場合、または **[Manual entries]\(手動入力\)** チェック ボックスがオンになっている場合は、`<folder name>/<project name>/<package name>.dtsx` および `<folder name>/<environment name>` の形式で SSISDB からパッケージと環境のパスを入力できます。
+   Azure-SSIS IR が実行されていない場合、または **[Manual entries]\(手動入力\)** チェック ボックスがオンになっている場合は、`<folder name>/<project name>/<package name>.dtsx` および `<folder name>/<environment name>` の形式で SSISDB からパッケージと環境のパスを直接入力できます。
 
    ![[設定] タブでプロパティを設定する - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-5. SSIS パッケージの実行アクティビティの **[SSIS パラメーター]** タブで、Azure-SSIS IR の実行中に **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、値を割り当てるパラメーターとして、SSISDB から選択したプロジェクト/パッケージ内の既存の SSIS パラメーターが表示されます。 それ以外の場合は、値を割り当てる対象を 1 つずつ手動で入力できます。パッケージ実行を成功させるには、対象が存在し、正しく入力されていることを確認してください。 式、関数、ADF システム変数、および ADF パイプラインのパラメーター/変数を使用して、動的なコンテンツを値に追加することもできます。
+5. SSIS パッケージの実行アクティビティの **[SSIS パラメーター]** タブで、Azure-SSIS IR の実行中に **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、値を割り当てるパラメーターとして、SSISDB から選択したプロジェクト/パッケージ内の既存の SSIS パラメーターが表示されます。 それ以外の場合は、値を割り当てる対象を 1 つずつ手動で入力できます。パッケージ実行を成功させるには、対象が存在し、正しく入力されていることを確認してください。 式、関数、ADF システム変数、および ADF パイプラインのパラメーター/変数を使用して、動的なコンテンツを値に追加できます。 または、Azure Key Vault (AKV) に格納されているシークレットを値として使用できます。 このためには、関連するパラメーターの横にある **[Azure Key Vault]** チェック ボックスをクリックし、AKV にリンクしている既存のサービスを選択/編集するか、新しいサービスを作成してから、パラメーター値としてシークレット名/バージョンを選択します。  AKV にリンクしているサービスを作成/編集するときは、既存の AKV を選択/編集するか新しい AKV を作成できますが、AKV に ADF マネージド ID アクセスをまだ付与していない場合は付与してください。 `<AKV linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。
 
    ![[SSIS パラメーター] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-6. SSIS パッケージの実行アクティビティの **[接続マネージャー]** タブで、Azure-SSIS IR の実行中に **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、値を割り当てる接続マネージャーとして、SSISDB から選択したプロジェクト/パッケージ内の既存の接続マネージャーが表示されます。 それ以外の場合は、値を割り当てる対象を 1 つずつ手動で入力できます。パッケージ実行を成功させるには、対象が存在し、正しく入力されていることを確認してください。 式、関数、ADF システム変数、および ADF パイプラインのパラメーター/変数を使用して、動的なコンテンツを値に追加することもできます。
+6. SSIS パッケージの実行アクティビティの **[接続マネージャー]** タブで、Azure-SSIS IR の実行中に **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、プロパティに値を割り当てる接続マネージャーとして、SSISDB から選択したプロジェクト/パッケージ内の既存の接続マネージャーが表示されます。 それ以外の場合は、プロパティに値を割り当てる対象を 1 つずつ手動で入力できます。パッケージ実行を成功させるには、対象が存在し、正しく入力されていることを確認してください。 式、関数、ADF システム変数、および ADF パイプラインのパラメーター/変数を使用して、動的なコンテンツをプロパティ値に追加できます。 または、Azure Key Vault (AKV) に格納されているシークレットをプロパティ値として使用できます。 このためには、関連するプロパティの横にある **[Azure Key Vault]** チェック ボックスをクリックし、AKV にリンクしている既存のサービスを選択/編集するか、新しいサービスを作成してから、プロパティ値としてシークレット名/バージョンを選択します。  AKV にリンクしているサービスを作成/編集するときは、既存の AKV を選択/編集するか新しい AKV を作成できますが、AKV に ADF マネージド ID アクセスをまだ付与していない場合は付与してください。 `<AKV linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。
 
    ![[接続マネージャー] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
@@ -111,7 +113,7 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 ## <a name="run-a-package-with-powershell"></a>PowerShell を使用してパッケージを実行する
 このセクションでは、Azure PowerShell を使用して、SSIS パッケージを実行する SSIS パッケージの実行アクティビティを含む ADF パイプラインを作成します。 
 
-[Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ### <a name="create-an-adf-with-azure-ssis-ir"></a>Azure-SSIS IR を使用して ADF を作成する
 Azure-SSIS IR が既にプロビジョニングされている既存の ADF を使用するか、[PowerShell を使用した Azure への SSIS パッケージのデプロイに関するチュートリアル](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell)の手順に従って、Azure-SSIS IR を使用して新しい ADF を作成します。
@@ -137,6 +139,14 @@ Azure-SSIS IR が既にプロビジョニングされている既存の ADF を�
                        "referenceName": "myAzureSSISIR",
                        "type": "IntegrationRuntimeReference"
                    },
+                   "executionCredential": {
+                       "domain": "MyDomain",
+                       "userName": "MyUsername",
+                       "password": {
+                           "type": "SecureString",
+                           "value": "**********"
+                       }
+                   },
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
@@ -146,11 +156,27 @@ Azure-SSIS IR が既にプロビジョニングされている既存の ADF を�
                    "projectParameters": {
                        "project_param_1": {
                            "value": "123"
+                       },
+                       "project_param_2": {
+                           "value": {
+                               "value": "@pipeline().parameters.MyPipelineParameter",
+                               "type": "Expression"
+                           }
                        }
                    },
                    "packageParameters": {
                        "package_param_1": {
                            "value": "345"
+                       },
+                       "package_param_2": {
+                           "value": {
+                               "type": "AzureKeyVaultSecret",
+                               "store": {
+                                   "referenceName": "myAKV",
+                                   "type": "LinkedServiceReference"
+                               },
+                               "secretName": "MySecret"
+                           }
                        }
                    },
                    "projectConnectionManagers": {
@@ -169,12 +195,20 @@ Azure-SSIS IR が既にプロビジョニングされている既存の ADF を�
                    "packageConnectionManagers": {
                        "MyOledbCM": {
                            "userName": {
-                               "value": "sa"
+                               "value": {
+                                   "value": "@pipeline().parameters.MyUsername",
+                                   "type": "Expression"
+                               }
                            },
                            "passWord": {
                                "value": {
-                                   "type": "SecureString",
-                                   "value": "def"
+                                   "type": "AzureKeyVaultSecret",
+                                   "store": {
+                                       "referenceName": "myAKV",
+                                       "type": "LinkedServiceReference"
+                                   },
+                                   "secretName": "MyPassword",
+                                   "secretVersion": "3a1b74e361bf4ef4a00e47053b872149"
                                }
                            }
                        }
@@ -198,10 +232,10 @@ Azure-SSIS IR が既にプロビジョニングされている既存の ADF を�
 
 2. Azure PowerShell で `C:\ADF\RunSSISPackage` フォルダーに切り替えます。
 
-3. パイプライン **RunSSISPackagePipeline** を作成するには、**Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行します。
+3. パイプライン **RunSSISPackagePipeline** を作成するには、**Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
 
    ```powershell
-   $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+   $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
                                                   -ResourceGroupName $ResGrp.ResourceGroupName `
                                                   -Name "RunSSISPackagePipeline"
                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -218,10 +252,10 @@ Azure-SSIS IR が既にプロビジョニングされている既存の ADF を�
    ```
 
 ### <a name="run-the-pipeline"></a>パイプラインを実行する
-**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使ってパイプラインを実行します。 コマンドレットは、将来の監視のために、パイプラインの実行 ID を返します。
+**Invoke-AzDataFactoryV2Pipeline** コマンドレットを使ってパイプラインを実行します。 コマンドレットは、将来の監視のために、パイプラインの実行 ID を返します。
 
 ```powershell
-$RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+$RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
                                              -ResourceGroupName $ResGrp.ResourceGroupName `
                                              -PipelineName $DFPipeLine.Name
 ```
@@ -232,7 +266,7 @@ $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataF
 
 ```powershell
 while ($True) {
-    $Run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
+    $Run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
                                                -DataFactoryName $DataFactory.DataFactoryName `
                                                -PipelineRunId $RunId
 
@@ -280,31 +314,31 @@ Azure Portal を使用してパイプラインを監視することもできま�
    }    
    ```
 2. **Azure PowerShell** で **C:\ADF\RunSSISPackage** フォルダーに切り替えます。
-3. **Set-AzureRmDataFactoryV2Trigger** コマンドレットを実行してトリガーを作成します。 
+3. **Set-AzDataFactoryV2Trigger** コマンドレットを実行してトリガーを作成します。 
 
    ```powershell
-   Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+   Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-4. 既定ではトリガーは停止状態になっています。 **Start-AzureRmDataFactoryV2Trigger** コマンドレットを実行してトリガーを起動します。 
+4. 既定ではトリガーは停止状態になっています。 **Start-AzDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。 
 
    ```powershell
-   Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+   Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-5. **Get-AzureRmDataFactoryV2Trigger** コマンドレットを実行して、トリガーの状態が "Started" であることを確認します。 
+5. **Start-AzDataFactoryV2Trigger** コマンドレットを実行して、トリガーが起動されていることを確認します。 
 
    ```powershell
-   Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
+   Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
                                    -DataFactoryName $DataFactoryName `
                                    -Name "MyTrigger"     
    ```    
 6. 時刻の時間部分が次の時間になってから、次のコマンドを実行します。 たとえば、現在時刻が午後 3 時 25 分 (UTC) であれば、午後 4 時 (UTC) にコマンドを実行します。 
     
    ```powershell
-   Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
+   Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
                                       -DataFactoryName $DataFactoryName `
                                       -TriggerName "MyTrigger" `
                                       -TriggerRunStartedAfter "2017-12-06" `

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446096"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295642"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -58,7 +58,14 @@ DNS プロトコルでは、ゾーンの頂点での CNAME レコードの割り
 
 この問題は、エイリアス レコードを使用して解決できます。 CNAME レコードとは異なり、エイリアス レコードはゾーンの頂点で作成することができ、アプリケーションの所有者はそれを使用して、外部エンドポイントを含む Traffic Manager プロファイルを、ゾーンの頂点のレコードでポイントできます。 アプリケーションの所有者は、DNS ゾーン内の他のドメインで使用されているのと同じ Traffic Manager プロファイルをポイントできます。
 
-たとえば、contoso.com と www.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 Azure Traffic Manager プロファイルでのエイリアス レコードの使用に関する詳細については、次の手順のセクションを参照してください。
+たとえば、contoso.com と www\.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 Azure Traffic Manager プロファイルでのエイリアス レコードの使用に関する詳細については、次の手順のセクションを参照してください。
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>ゾーンの頂点から Azure CDN エンドポイントをポイントする
+Traffic Manager プロファイルの場合と同様に、エイリアス レコードを使用して DNS ゾーンの頂点から Azure CDN エンドポイントをポイントすることもできます。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。 DNS 名の前に "www" を付けなくても、Web サイトにアクセスできるようになります。
+
+たとえば、静的な Web サイトの名前が www.contoso.com の場合、DNS 名の前に www を付ける必要はなく、ユーザーは contoso.com を使ってサイトにアクセスできます。
+
+前述のように、CNAME レコードはゾーンの頂点ではサポートされていません。 そのため、CNAME レコードを使用して contoso.com から CDN エンドポイントをポイントすることはできません。 代わりに、エイリアス レコードを使用して、ゾーンの頂点から直接 CDN エンドポイントをポイントすることができます。
 
 ## <a name="next-steps"></a>次の手順
 

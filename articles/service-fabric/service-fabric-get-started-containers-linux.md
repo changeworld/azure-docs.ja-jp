@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 78bf30c01bc240d4fc7439ab14868bf7be90b17e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c27938ad28abc62f42024faae7931196704b9b1b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895829"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314571"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 *name* で、実行中のコンテナーに名前を付けます (コンテナー ID ではありません)。
 
-実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、" http://localhost:4000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば "http:\//localhost:4000")。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ![Hello World!][hello-world]
 
@@ -271,9 +271,9 @@ https://github.com/Azure-Samples/service-fabric-containers/ にあるテンプ�
 ./install.sh
 ```
 
-ブラウザーを開き、 http://localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。 Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
+ブラウザーを開き、http:\//localhost:19080/Explorer の Service Fabric Explorer に移動します (Mac OS X で Vagrant を使用している場合は、localhost を VM のプライベート IP に置き換えます)。 Applications ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認します。
 
-実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば、" http://localhost:4000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば "http:\//localhost:4000")。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ![Hello World!][hello-world]
 

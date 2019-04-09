@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova, jovanpop
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 9133f7f4dde080700b2b11a4c09df6d0610869f6
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 03/13/2019
+ms.openlocfilehash: 5830885a9502e716164f771771d88fb5d7e23047
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388036"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840411"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する
 
@@ -28,12 +28,13 @@ ms.locfileid: "54388036"
 このクイック スタート:
 
 - 「[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)」で作成したリソースを出発点として使用します。
-- オンプレミスのクライアント コンピューターには、PowerShell 5.1 と Azure PowerShell 5.4.2 以降をインストールしておく必要があります。 必要に応じて、[Azure PowerShell モジュールをインストールする](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-6.13.0#install-the-azure-powershell-module)手順を参照してください。
+- オンプレミスのクライアント コンピューターには、PowerShell 5.1 と AZ PowerShell 1.4.0 以降をインストールしておく必要があります。 必要に応じて、[Azure PowerShell モジュールをインストールする](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)手順を参照してください。
 - オンプレミスのクライアント コンピューターには、最新版の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしておく必要があります。
 
 ## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>マネージド インスタンス仮想ネットワークに VPN Gateway を接続する
 
 1. オンプレミスのクライアント コンピューターで PowerShell を開きます。
+
 2. この PowerShell スクリプトをコピーします。 このスクリプトにより、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)のクイック スタートで作成したマネージド インスタンス仮想ネットワークに VPN Gateway が接続されます。 このスクリプトでは、次の処理が実行されます。
 
    - 証明書が作成され、クライアント コンピューターにインストールされます
@@ -51,12 +52,18 @@ ms.locfileid: "54388036"
        certificateNamePrefix  = '<certificateNamePrefix>'
        }
 
-     Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
+     Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGatewayAz.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
+
+     > [!IMPORTANT]
+     > Az モジュール以外の Azure PowerShell Resource Manager モジュールを使用するには、`attachVPNGatewayAz.ps1` コマンドレットではなく `attachVPNGateway.ps1` コマンドレットを使用してください。
 
 3. このスクリプトを PowerShell ウィンドウに貼り付けて、必要なパラメーターを指定します。 `<subscriptionId>`、`<resourceGroup>`、`<virtualNetworkName>` の値は、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)のクイック スタートで使用されている値に一致する必要があります。 `<certificateNamePrefix>` の値は、自分で選択した文字列にすることができます。
 
 4. PowerShell スクリプトを実行します。
+
+> [!IMPORTANT]
+> PowerShell スクリプトが完了するまで、次の手順には進まないでください。
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>マネージド インスタンスへの VPN 接続を作成する
 
@@ -65,17 +72,17 @@ ms.locfileid: "54388036"
 3. **[ポイント対サイトの構成]** を選択し、**[VPN クライアントのダウンロード]** を選択します。
 
     ![VPN クライアントのダウンロード](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
-4. オンプレミスのクライアント コンピューターで、ZIP ファイルから必要なファイルを抽出し、抽出されたフォルダーを開きます。
-5. WindowsAmd64 フォルダーを開き、**VpnClientSetupAmd64.exe** ファイルを開きます。
-6. **[Windows によって PC が保護されました]** というメッセージが表示されたら、**[詳細]** を選択し、**[実行]** を選択します。
+4. オンプレミスのクライアント コンピューターで、ZIP ファイルから必要なファイルを抽出し、抽出されたファイルのあるフォルダーを開きます。
+5. **WindowsAmd64** フォルダーを開き、**VpnClientSetupAmd64.exe** ファイルを開きます。
+6. **[Windows によって PC が保護されました]** というメッセージが表示されたら、**[詳細]** をクリックし、**[実行]** をクリックします。
 
     ![VPN クライアントをインストールします](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
-7. [ユーザー アカウント制御] ダイアログ ボックスで **[はい]** を選択して続行します。
-8. 仮想ネットワークを参照するダイアログ ボックスで **[はい]** を選択して VPN クライアントをインストールします。
+7. [ユーザー アカウント制御] ダイアログ ボックスで **[はい]** をクリックして続行します。
+8. 仮想ネットワークを参照するダイアログ ボックスで **[はい]** を選択して仮想ネットワークの VPN クライアントをインストールします。
 
 ## <a name="connect-to-the-vpn-connection"></a>VPN で接続する
 
-1. オンプレミスのクライアント コンピューターで VPN 接続に移動し、お使いの Managed Instance 仮想ネットワークを選択して、その VNet との接続を確立します。 次の画像では、**MyNewVNet** という名前の VNet が該当します。
+1. オンプレミスのクライアント コンピューターで **[ネットワークとインターネット]** の **[VPN]** に移動し、お使いの Managed Instance 仮想ネットワークを選択して、その VNet との接続を確立します。 次の画像では、**MyNewVNet** という名前の VNet が該当します。
 
     ![VPN 接続](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
 2. **[接続]** を選択します。
@@ -89,12 +96,11 @@ ms.locfileid: "54388036"
 
     ![VPN 接続](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>SSMS を使用してマネージド インスタンスに接続する
 
 1. オンプレミスのクライアント コンピューターで、SQL Server Management Studio (SSMS) を開きます。
-2. **[サーバーに接続]** ダイアログ ボックスで、**[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。 
-1. **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、**[接続]** を選択します。
+2. **[サーバーに接続]** ダイアログ ボックスで、**[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。
+3. **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、**[接続]** を選択します。
 
     ![SSMS 接続](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

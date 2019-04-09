@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 03/12/2019
+ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894702"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875188"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と SQL Data Warehouse の IP ファイアウォール規則
 
@@ -82,7 +82,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 
 ## <a name="creating-and-managing-ip-firewall-rules"></a>IP ファイアウォール規則の作成と管理
 
-最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)、または [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) を使用して作成できます。 それ以降のサーバー レベルの IP ファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。
+最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)、または [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) を使用して作成できます。 それ以降のサーバー レベルの IP ファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。
 
 > [!IMPORTANT]
 > データベース レベルの IP ファイアウォール規則は、Transact-SQL でのみ作成と管理が可能です。
@@ -149,17 +149,21 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Azure PowerShell を使用してサーバー レベルの IP ファイアウォール規則を管理する
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 | コマンドレット | Level | 説明 |
 | --- | --- | --- |
-| [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |サーバー |現在のサーバー レベルの IP ファイアウォール規則を返す |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |サーバー |新しいサーバー レベルの IP ファイアウォール規則を作成する |
-| [Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule) |サーバー |既存のサーバー レベルの IP ファイアウォール規則のプロパティを更新する |
-| [Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule) |サーバー |サーバー レベルの IP ファイアウォール規則を削除する |
+| [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |サーバー |現在のサーバー レベルのファイアウォール規則を返す |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |サーバー |新しいサーバー レベルのファイアウォール規則を作成 |
+| [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |サーバー |既存のサーバー レベルのファイアウォール規則のプロパティを更新 |
+| [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |サーバー |サーバー レベルのファイアウォール規則を削除 |
 
 次の例では、PowerShell を使用してサーバー レベルの IP ファイアウォール規則を設定します。
 
 ```powershell
-New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
+New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
     -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
 ```

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07d9d6eaf0426512e93574d733e7daee1cab1ddb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183515"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002039"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールをアクティブにする
 
@@ -36,9 +36,13 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 1. **[Azure AD Privileged Identity Management]** を開きます。 ダッシュボードに PIM タイルを追加する方法については、「[PIM の使用を開始する](pim-getting-started.md)」をご覧ください。
 
-1. **[自分のロール]** をクリックして、適格な Azure AD ディレクトリ ロールおよび Azure リソース ロールの一覧を表示します。
+1. **[自分のロール]** をクリックします。
 
     ![Azure AD ディレクトリ ロールおよび Azure リソース ロール - [自分のロール]](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+
+1. **[Azure リソース ロール]** をクリックして、適格な Azure リソース ロールの一覧を表示します。
+
+   ![Azure リソース ロール](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
 1. **[Azure リソース ロール]** の一覧で、アクティブにするロールを見つけます。
 
@@ -68,7 +72,7 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 1. **[アクティブ化]** をクリックします。
 
-    承認が必要ないロールは、アクティブ化され、アクティブなロールの一覧に追加されます。 すぐにロールを使用する場合は、次のセクションの手順に従います。
+    承認が必要ないロールは、アクティブ化され、アクティブなロールの一覧に追加されます。 ロールを使用する場合は、次のセクションの手順に従います。
 
     アクティブ化に[承認が必要なロール](pim-resource-roles-approval-workflow.md)の場合は、ブラウザーの右上隅に通知が表示され、承認待ちになっていることが示されます。
 
@@ -76,17 +80,19 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 ## <a name="use-a-role-immediately-after-activation"></a>アクティブ化後すぐにロールを使用する
 
-PIM でロールをアクティブにすると、必要な管理ポータルにアクセスしたり、特定の管理ワークロード内で機能を実行したりできるようになるには、少なくとも 10 分かかります。 アクセス許可の更新を強制するには、次の手順で説明されている **[アプリケーションへのアクセス]** のページを使用します。
+アクティブ化の後の任意の遅延が発生した場合、Azure リソース ロールをすぐに使用するようにアクティブ化した後に、次の手順に従います。
 
 1. Azure AD Privileged Identity Management を開きます。
 
-1. **[アプリケーションへのアクセス]** ページをクリックします。
+1. **[自分のロール]** をクリックして、適格な Azure AD ディレクトリ ロールおよび Azure リソース ロールの一覧を表示します。
 
-    ![PIM のアプリケーションへのアクセス - スクリーンショット](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+1. **[Azure リソース ロール]** をクリックします。
 
-1. **[すべてのリソース]** ページでポータルを再度開くには、**[Azure リソース]** リンクをクリックします。
+1. **[アクティブなロール]** タブをクリックします。
 
-    このリンクをクリックすると、現在のトークンが無効になり、更新されたアクセス許可を含む新しいトークンが Azure portal によって強制的に取得されます。
+1. ロールがアクティブになった場合、ポータルからサインアウトしてもう一度サインインします。
+
+    これでロールは使用可能になります。
 
 ## <a name="view-the-status-of-your-requests"></a>要求の状態を表示する
 
@@ -118,7 +124,7 @@ PIM でロールをアクティブにすると、必要な管理ポータルに�
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 
-PIM でロールをアクティブにすると、必要な管理ポータルにアクセスしたり、特定の管理ワークロード内で機能を実行したりできるようになるには、少なくとも 10 分かかります。 アクセス許可の更新を強制するには、先の「[アクティブ化後すぐにロールを使用する](#use-a-role-immediately-after-activation)」で説明した **[アプリケーションへのアクセス]** のページを使用します。
+PIM でロールをアクティブにすると、必要な管理ポータルにアクセスしたり、特定の管理ワークロード内で機能を実行したりできるようになるには、少なくとも 10 分かかります。 アクティブ化が完了したら、Azure portal からサインアウトし、もう一度サインインして、新しくアクティブになったロールの使用を開始します。
 
 追加のトラブルシューティング手順については、[昇格されたアクセス許可のトラブルシューティング](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)に関するページを参照してください。
 

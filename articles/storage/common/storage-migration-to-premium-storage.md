@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5f2052576d0c6a1e663e3b84534fa0784a26e175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006511"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372320"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -69,12 +69,12 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--- |:--- |
 | ディスク容量:35 TB<br />スナップショット容量:10 TB |受信と送信を合わせて最大 50 GB/秒 |
 
-Premium Storage の仕様の詳細については、[Azure Storage のスケーラビリティとパフォーマンスのターゲット](storage-scalability-targets.md#premium-storage-account-scale-limits)に関するページを参照してください。
+Premium Storage の仕様の詳細については、[Azure Storage のスケーラビリティとパフォーマンスのターゲット](storage-scalability-targets.md#premium-performance-storage-account-scale-limits)に関するページを参照してください。
 
 #### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
-既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure Portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
+既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
 
-#### <a name="location"></a>場所
+#### <a name="location"></a>Location
 Azure Premium Storage を使用できる場所を選択します。 使用できる場所に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/#services)」をご覧ください。 VM のディスクを保存するストレージ アカウントと同じリージョンにある VM は、個々のリージョン内にある場合よりも優れたパフォーマンスを提供します。
 
 #### <a name="other-azure-vm-configuration-settings"></a>Azure VM のその他の構成設定
@@ -158,7 +158,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 データ ディスクの場合、一部のデータ ディスク (たとえば、負荷の軽いストレージのあるディスク) を Standard Storage アカウントで保持することもできますが、運用ワークロード用のすべてのデータを、Premium Storage を使うように移動することを強くお勧めします。
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
-これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナー URL は "https://myaccount.blob.core.windows.net/mycontainer/" のようになります。
+これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナーの URL は、"https:\//myaccount.blob.core.windows.net/mycontainer/" のようになります。
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1:AzCopy を使って VHD をコピーする (非同期コピー)
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。

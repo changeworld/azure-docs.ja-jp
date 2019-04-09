@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b653ee16864f5076cdad9d1dbc33e63b175ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167603"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852967"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -192,6 +192,9 @@ CheckForMS17-010
 **Q:ADFS 監査が生成されていないのはなぜですか。**
 
 <i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳しくは、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事をご覧ください。 高度な監査設定が ADFS サーバーにプッシュされた場合、auditpol.exe でのすべての変更が上書きされることに注意してくださいます ("生成されたアプリケーション" が構成されていない場合のイベント)。 その場合は、ローカル セキュリティ ポリシーを "生成されたアプリケーション" の失敗と成功を記録するように設定してください。
+
+**Q:エージェント認定資格証は有効期限が切れる前に自動更新されますか?**
+エージェント認定資格証は、有効期限日の **6 か月**前に自動更新されます。 更新されない場合は、エージェントのネットワーク接続が安定していることを確認してください。 エージェントのサービスを再起動する、または最新バージョンを更新してもこの問題を解決できる場合があります。
 
 
 ## <a name="related-links"></a>関連リンク

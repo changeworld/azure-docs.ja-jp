@@ -1,5 +1,5 @@
 ---
-title: Azure AD のセルフ サービスによるパスワードのリセット Windows 7 および 8.1
+title: Azure AD のセルフ サービスによるパスワードのリセット Windows 7 および 8.1 - Azure Active Directory
 description: Windows 7 または 8.1 のログオン画面で「パスワードを忘れた場合」を使用してセルフ サービスによるパスワードのリセットを有効にする方法
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 933ac9b8f7d381db0111ee50385f11e8a22d92f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217821"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370450"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>方法:Windows 7、8、8.1 からパスワードのリセットを有効にする
 
@@ -46,7 +46,7 @@ Windows 10 マシンとは異なり、Windows 7、8、および 8.1 マシンに
 1. 再起動後に、ログオン画面でユーザーを選択し、「パスワードを忘れた場合」をクリックして、 パスワード リセットのワークフローを開始します。
 1. 画面に表示される手順に従ってワークフローを完了すると、パスワードがリセットされます。
 
-![Windows 7 で「パスワードを忘れた場合」をクリックしたときの例 セルフサービスによるパスワード リセットのフロー](media/howto-sspr-windows-7-8/windows-7-sspr.png)
+![Windows 7 で「パスワードを忘れた場合」をクリックしたときの例 SSPR フロー](media/howto-sspr-windows-7-8/windows-7-sspr.png)
 
 ### <a name="silent-installation"></a>サイレント インストール
 
@@ -67,13 +67,11 @@ Microsoft Authenticator アプリを使用した通知とコードでのパス�
 
 Azure AD イベントには、パスワードのリセットが発生した IP アドレスと ClientType に関する情報が含められます。
 
-![Azure AD 監査ログにおける Windows 7 ログオン画面のパスワードのリセットの例](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
+![Azure AD 監査ログにおける Windows 7 のパスワードのリセットの例](media/howto-sspr-windows-7-8/windows-7-sspr-azure-ad-audit-log.png)
 
 追加のログ記録が必要な場合は、詳細ログ記録を有効にするようにマシンのレジストリ キーを変更できます。 詳細ログ記録は、トラブルシューティングの目的でのみ有効にしてください。
 
-```
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}
-```
+`HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
 * 詳細ログ記録を有効にするには、REG_DWORD:"EnableLogging" を作成して 1 に設定します。
 * 詳細ログ記録を無効にするには、REG_DWORD "EnableLogging" を 0 に変更します。
@@ -82,4 +80,4 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 ## <a name="next-steps"></a>次の手順
 
-[Windows 10 ユーザーがログオン画面でパスワードをリセットできるようにする](tutorial-sspr-windows.md)
+* [Windows 10 ユーザーがログオン画面でパスワードをリセットできるようにする](tutorial-sspr-windows.md)

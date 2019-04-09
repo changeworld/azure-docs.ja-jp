@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 63fd8f75cb22a4dec888b7765c7515bfb68a4a6a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999027"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312140"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,7 +70,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**Salesforce**。 |はい |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https:\//login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |

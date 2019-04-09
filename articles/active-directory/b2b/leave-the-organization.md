@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 03/13/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d8183f7fa55a410b44d33295ad24f0f07adb145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f75f91c037a2f05c999d388ce7bb16ad2d0c9cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185929"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005659"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
 
@@ -24,13 +24,17 @@ ms.locfileid: "56185929"
 
 ## <a name="leave-an-organization"></a>組織を脱退する
 
-組織を脱退するには、[アクセス パネル](https://myapps.microsoft.com)にサインインしている状態で、次の操作をします。
+組織を脱退するには、以下の手順を実行します。
 
-1. 脱退する組織にサインインしていない場合は、右上隅から自分の名前を選択し、脱退する組織をクリックします。
-2. 右上隅から自分の名前を選択します。
-3. **Organizations** の横の ［設定］ (歯車) アイコンを選択します。
+1. 次のいずれかを実行して、[Access Panel Profile]\(アクセス パネル プロファイル\) ページに移動します。
+   
+   - [Azure portal](https://portal.azure.com) で右上の自分の名前をクリックし、**[View account]\(アカウントの表示\)** を選択します。
+   - [アクセス パネル](https://myapps.microsoft.com)を開き、右上の自分の名前をクリックし、**[組織]** の横にある設定アイコン (歯車) を選択します。
  
    ![アクセス パネルのユーザー設定のスクリーンショット](media/leave-the-organization/UserSettings.png) 
+
+   > [!NOTE]
+   > 脱退する組織にまだサインインしていない場合、**[組織]** の下で、組織名の横にある **[サインインして組織から脱退する]** リンクをクリックします。 サインインしたら、右上の **[組織]** の横にある自分の名前をもう一度クリックし、設定アイコン (歯車) を選択します。
 
 3. **Organizations** のところで脱退する組織を確認し、**Leave organization** を選択します。
 

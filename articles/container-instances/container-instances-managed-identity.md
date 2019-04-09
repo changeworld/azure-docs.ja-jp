@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311565"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336526"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "56311565"
 
 ## <a name="why-use-a-managed-identity"></a>マネージド ID を使用する理由
 
-実行中のコンテナーでマネージド ID を使用すると、資格情報をコンテナー コード内で管理しなくても、[Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)に対して認証することができます。 AD 認証をサポートしないサービスについては、Azure Key Vault の中にシークレットを格納し、マネージド ID を使って Key Vault にアクセスして資格情報を取得できます。 マネージド ID の使用法の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+実行中のコンテナーでマネージド ID を使用すると、資格情報をコンテナー コード内で管理しなくても、[Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証することができます。 AD 認証をサポートしないサービスについては、Azure Key Vault の中にシークレットを格納し、マネージド ID を使って Key Vault にアクセスして資格情報を取得できます。 マネージド ID の使用法の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。 現在、マネージド ID は Linux コンテナー インスタンスでのみサポートされています。
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https://mykeyvault.vault.azure.net/...*):
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...*)。
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

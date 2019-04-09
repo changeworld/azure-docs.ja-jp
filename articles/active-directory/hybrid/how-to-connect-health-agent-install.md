@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a52b78b62395f571e448a73b8c34847ef16b2613
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 6d6e453819ad749972de89658fa695d803d8e222
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429538"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898824"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。 エージェントは [こちら](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
@@ -119,7 +119,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. **[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[ローカル セキュリティ ポリシー]** をクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS 2.0 サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
-4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable</code>
+4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[AD FS 2.0 管理]** をクリックします。
@@ -132,7 +132,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
-4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable```
+4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
@@ -144,7 +144,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、**[OK]** をクリックします。
-4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable.</code>
+4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable.</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
@@ -235,6 +235,28 @@ Azure AD Connect が正常にインストールされた後で、Azure AD Connec
 
 ![Verify Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
+### <a name="quick-agent-installation-in-multiple-servers"></a>複数のサーバーへの迅速なエージェント インストール
+1. パスワード付きのユーザー アカウントを Azure AD に作成する。
+2. Portal 経由で、このローカル AAD アカウントの **所有者** ロールを Azure AD Connect Health に割り当てます。 それには、[こちら](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) の手順に従います。 ロールをすべてのサービス インスタンスに割り当てます。 
+3. インストールのために、.exe MSI ファイルをローカル ドメイン コントローラーにダウンロードします。
+4. 次のスクリプトを実行して登録します。 パラメーターを、作成した新しいユーザー アカウントと、そのパスワードに置き換えます。 
+
+```
+AdHealthAddsAgentSetup.exe /quiet
+sleep 30
+$userName = "NEWUSER@DOMAIN"
+$secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
+import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
+ 
+Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
+
+```
+1. 置き換えると、次のうち 1 つ以上を行うことでローカル アカウントのアクセスを削除できます。 
+    * AAD Connect Health のローカル アカウントのロール割り当てを削除する
+    * ローカル アカウントのパスワードを回転します。 
+    * AAD ローカル アカウントを無効にする
+    * AAD ローカル アカウントを削除する  
 
 ## <a name="agent-registration-using-powershell"></a>PowerShell を使用したエージェントの登録
 適切なエージェントの setup.exe をインストールしたら、ロールに応じて以下の PowerShell コマンドを使用して、エージェントの登録手順を実行できます。 PowerShell ウィンドウを開き、適切なコマンドを実行します。

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Multi-Factor Authentication におけるユーザーの状態
+title: Azure Multi-Factor Authentication のユーザーの状態 - Azure Active Directory
 description: Azure Multi-Factor Authentication でユーザーの状態を確認してください。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39659df99951850ced07be14f81348ae9c1c1be5
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428604"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371751"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -66,10 +66,10 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 1. 前述の手順を使用して、Azure Multi-Factor Authentication の**ユーザー** ページを取得します。
 2. Azure MFA で有効にするユーザーを見つけます。 上部でビューを変更することが必要になる場合があります。
-   ![ユーザーを見つける - スクリーンショット](./media/howto-mfa-userstates/enable1.png)
+   ![ユーザー タブで状態を変更するユーザーを選択する](./media/howto-mfa-userstates/enable1.png)
 3. ユーザーの名前の横にあるチェック ボックスをオンにします。
 4. 右側にある **[クイック操作]** で **[有効にする]** または **[無効にする]** を選択します。
-   ![選択したユーザーを有効にする - スクリーンショット](./media/howto-mfa-userstates/user1.png)
+   ![[クイック操作] メニューの [有効にする] をクリックして、選択したユーザーを有効にする](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > "*有効*" なユーザーは、Azure MFA に登録すると自動的に "*適用*" に切り替えられます。 ユーザーの状態を手動で "*適用*" に変更してしないでください。
@@ -90,45 +90,52 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 以下を使用して、まず Module をインストールします。
 
-       Install-Module MSOnline
-       
+   ```PowerShell
+   Install-Module MSOnline
+   ```
+
 > [!TIP]
 > 必ず **Connect-MsolService** を使用して接続してください
 
+この PowerShell スクリプトの例では、個々のユーザーに対して MFA を有効にします。
 
- この PowerShell スクリプトの例では、個々のユーザーに対して MFA を有効にします。
-
-        Import-Module MSOnline
-        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "*"
-        $st.State = "Enabled"
-        $sta = @($st)
-        Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+   ```PowerShell
+   Import-Module MSOnline
+   $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+   $st.RelyingParty = "*"
+   $st.State = "Enabled"
+   $sta = @($st)
+   Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
+   ```
 
 一括でユーザーを有効にする必要がある場合は、PowerShell の使用をお勧めします。 例としては、次のスクリプトでは、ユーザーのリストをループ処理し、それらのアカウントで MFA を有効にします。
 
-    $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
-    foreach ($user in $users)
-    {
-        $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-        $st.RelyingParty = "*"
-        $st.State = "Enabled"
-        $sta = @($st)
-        Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
-    }
-    
+   ```PowerShell
+   $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
+   foreach ($user in $users)
+   {
+       $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+       $st.RelyingParty = "*"
+       $st.State = "Enabled"
+       $sta = @($st)
+       Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
+   }
+   ```
+
 MFA を無効にするには、次のスクリプトを使用します。
 
-    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
-    
+   ```PowerShell
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+   ```
+
 次のように短縮することもできます。
 
-    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
+   ```PowerShell
+   Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
+   ```
 
 ## <a name="next-steps"></a>次の手順
 
-MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。
-
-信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートに関する追加の設定を構成する方法については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
-
-Azure Multi-Factor Authentication のユーザー設定の管理について詳しくは、「[クラウドでの Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」を参照してください。
+* MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。
+* 信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートに関する追加の設定を構成する方法については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
+* Azure Multi-Factor Authentication のユーザー設定の管理について詳しくは、「[クラウドでの Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」を参照してください。

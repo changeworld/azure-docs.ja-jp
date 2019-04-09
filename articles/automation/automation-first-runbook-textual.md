@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 137518aadaf2f1cd38dd18184992c8723a7da5c0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c2bc4d4034d63ed190f6964caa2bccf1ad8590a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435229"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833817"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -41,7 +41,7 @@ ms.locfileid: "54435229"
 
 1. Azure ポータルで、Automation アカウントを開きます。
 
-   Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)で説明されている資格情報資産も必要です。
+   Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらの資産のほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)で説明されている資格情報資産も必要です。
 
 1. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
 1. **[+ Runbook の追加]** ボタンをクリックし、**[新しい Runbook の作成]** をクリックして新しい Runbook を作成します。
@@ -110,20 +110,20 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)  
 
 1. [出力] ウィンドウを閉じます。
-1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは "*Hello World*" だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。
+1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは "*Hello World*" だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、このビューではこれらの Runbook ジョブの他のストリームも表示できます。
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. ストリーム ウィンドウを閉じると、ジョブ ウィンドウは MyFirstRunbook ウィンドウに戻ります。
-1. **[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。 この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
+1. [ストリーム] ページと [ジョブ] ページを閉じて、MyFirstRunbook ページに戻ります。
+1. **[ジョブ]** をクリックして、この Runbook のジョブ ページを開きます。 このページには、この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
 
    ![[ジョブ]](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
-1. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ウィンドウが開きます。 これにより前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
+1. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ページが開きます。 このアクションにより、前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>手順 5 - Azure リソースを管理するための認証を追加する
 
-Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。 ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。 この操作は、**Connect-AzureRmAccount** コマンドレットを使用して行います。
+Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。 ただし、[前提条件](#prerequisites) で示されている資格情報を使用して認証を行っていないと、これを実現することはできません。 この操作は、**Connect-AzureRmAccount** コマンドレットを使用して行います。
 
 1. MyFirstRunbook-Workflow ウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。
 2. **Write-Output** の行は不要になったので削除します。
@@ -131,6 +131,9 @@ Runbook をテストして発行しましたが、これまでのところ役に
 4. Automation の実行アカウントを使用して認証を処理する次のコードを入力またはコピーして貼り付けます。
 
    ```powershell-interactive
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -145,7 +148,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 > Automation アカウントを作成したばかりのときでも、[モジュールを更新](automation-update-azure-modules.md)する必要がある場合があります。
 
 1. **テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
-1. **[開始]** をクリックしてテストを開始します。 テストが完了すると、次のような情報が出力され、アカウントの基本情報が表示されます。 これにより、資格情報が有効であることを確認できます。
+1. **[開始]** をクリックしてテストを開始します。 テストが完了すると、次のような情報が出力され、アカウントの基本情報が表示されます。 このアクションにより、資格情報が有効であることを確認できます。
 
    ![認証](media/automation-first-runbook-textual/runbook-auth-output.png)
 
@@ -158,6 +161,9 @@ Runbook をテストして発行しましたが、これまでのところ役に
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
    {
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
@@ -183,6 +189,9 @@ Runbook をテストして発行しましたが、これまでのところ役に
      [string]$VMName,
      [string]$ResourceGroupName
     )  
+   # Ensures you do not inherit an AzureRMContext in your runbook
+   Disable-AzureRmContextAutosave –Scope Process
+
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
@@ -205,4 +214,3 @@ Runbook をテストして発行しましたが、これまでのところ役に
 * PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md) を参照してください。
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * PowerShell スクリプトのサポート機能の詳細については、 [Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-

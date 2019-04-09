@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 906b1dde3d145268df4fb1ff5c243c7daa8396ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992440"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370110"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -279,7 +279,18 @@ ACL で割り当て済みのプリンシパルとして常に Azure AD セキュ
 
 ### <a name="why-do-i-sometimes-see-guids-in-acls"></a>ACL に GUID が表示されることがあるのはなぜですか
 
-エントリがユーザーを表し、そのユーザーがもう Azure AD に存在しなくなった場合に、GUID が表示されます。 通常、ユーザーが会社を辞めた場合や Azure AD でそのアカウントが削除された場合に、この現象が発生します。 さらに、サービス プリンシパルおよびセキュリティ グループには、それらを識別するためのユーザー プリンシパル名 (UPN) がないため、これらは自身の OID 属性 (guid) で表されます。 
+エントリがユーザーを表し、そのユーザーがもう Azure AD に存在しなくなった場合に、GUID が表示されます。 通常、ユーザーが会社を辞めた場合や Azure AD でそのアカウントが削除された場合に、この現象が発生します。 さらに、サービス プリンシパルおよびセキュリティ グループには、それらを識別するためのユーザー プリンシパル名 (UPN) がないため、これらは自身の OID 属性 (guid) で表されます。
+
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>サービス プリンシパル用 ACL を正しく設定するにはどうすればよいですか。
+
+サービス プリンシパル用 ACL を定義するときは、作成したアプリ登録に対応する "*サービス プリンシパル*" のオブジェクト ID (OID) を使用することが重要です。 登録済みアプリについては、特定の Azure AD テナントに個別のサービス プリンシパルがあることに注意してください。 登録済みアプリの OID は Azure portal に表示されていますが、その "*サービス プリンシパル*" には別の (異なる) OID があります。
+
+アプリ登録に対応するサービス プリンシパルの OID を取得するには、`az ad sp show` コマンドを使用し、 パラメーターとしてアプリケーション ID を指定します。 アプリ ID が 18218b12-1895-43e9-ad80-6e8fc1ea88ce のアプリ登録に対応するサービス プリンシパルの OID を取得する例を次に示します。 Azure CLI で、次のコマンドを実行します。
+
+`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>`
+
+サービス プリンシパルの正しい OID を取得したら、Storage Explorer で **[アクセスの管理]** ページに移動して OID を追加し、その OID に対する適切なアクセス許可を割り当てます。 その後、必ず **[保存]** を選択してください。
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 は ACL の継承をサポートしていますか。
 

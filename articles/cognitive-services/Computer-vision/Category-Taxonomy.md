@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: reference
-ms.date: 12/19/2016
+ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: efdcf68799dcd0d3fd83365c36ca00500c3fbbc6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb8c6814a959cb9e96a3c4565603d634c250b02a
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865194"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350982"
 ---
-# <a name="86-categories-taxonomy"></a>86 カテゴリの分類
+# <a name="86-category-taxonomy"></a>86 カテゴリの分類
 
 abstract_
 
@@ -191,5 +191,3 @@ trans_bus
 trans_car
 
 trans_trainstation
-
-

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d9f1b99407f5c94581a3108c785292e9928cbb4
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432326"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842503"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -61,7 +61,7 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
    * *WorkspaceName* (省略可能):Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
 
      > [!NOTE]
-     > 現在、Log Analytics との統合がサポートされている Automation リージョンは、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、および**西ヨーロッパ**だけです。 Automation アカウントがこれらのいずれかのリージョンに存在しない場合、スクリプトは Log Analytics ワークスペースを作成しますが、それらをリンクできないことをユーザーに警告します。
+     > 現在、Azure Monitor ログとの統合がサポートされている Automation リージョンは、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、および **西ヨーロッパ** だけです。 Automation アカウントがこれらのいずれかのリージョンに存在しない場合、スクリプトは Log Analytics ワークスペースを作成しますが、それらをリンクできないことをユーザーに警告します。
 
 2. コンピューターの**スタート**画面から、管理者モードで **Windows PowerShell** を開きます。
 3. PowerShell コマンドライン シェルから、ダウンロードしたスクリプトがあるフォルダーを参照します。 パラメーター *-AutomationAccountName*、*-AAResourceGroupName*、*-OMSResourceGroupName*、*-HybridGroupName*、*-SubscriptionId*、および *-WorkspaceName* の値を変更します。 その後、スクリプトを実行します。
@@ -83,33 +83,35 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
 
 最初の 2 つのステップは Automation 環境に対して 1 回だけ実行し、残りのステップは worker コンピューターごとに繰り返します。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 #### <a name="1-create-a-log-analytics-workspace"></a>1.Log Analytics ワークスペースの作成
 
 Log Analytics ワークスペースがまだない場合は、[ワークスペースの管理](../azure-monitor/platform/manage-access.md)に関するページの手順に従って作成します。 既存のワークスペースがある場合は、それを使用できます。
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2.Log Analytics ワークスペースに Automation ソリューションを追加する
 
-ソリューションにより、Log Analytics に機能が追加されます。 Automation ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。 ソリューションをワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュされます。
+ソリューションにより、Azure Monitor ログに機能が追加されます。 Automation ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。 ソリューションをワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュされます。
 
 Log Analytics ワークスペースに **Automation** ソリューションを追加するには、[ソリューション ギャラリーを使用したソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順に従います。
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>手順 3.Microsoft Monitoring Agent をインストールする
 
-Microsoft Monitoring Agent は Log Analytics にコンピューターを接続します。 エージェントをオンプレミスのコンピューターにインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
+Microsoft Monitoring Agent は Azure Monitor ログにコンピューターを接続します。 エージェントをオンプレミスのコンピューターにインストールし、ワークスペースに接続すると、Hybrid Runbook Worker に必要なコンポーネントが自動的にダウンロードされます。
 
-オンプレミスのコンピューターにエージェントをインストールするには、「[Windows コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-windows-agent.md)」の手順に従います。 コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。
+オンプレミスのコンピューターにエージェントをインストールするには、「[Windows コンピューターを Azure Monitor ログに接続する](../log-analytics/log-analytics-windows-agent.md)」の手順に従います。 コンピューターごとにこのプロセスを繰り返して、複数の worker を環境に追加できます。
 
-エージェントが Log Analytics に正常に接続すると、Log Analytics の **[設定]** ページの **[接続されているソース]** タブに表示されます。 C:\Program Files\Microsoft Monitoring Agent\Agent に **AzureAutomationFiles** という名前のフォルダーが作成されていることを調べて、エージェントが Automation ソリューションを正常にダウンロードしたことを確認できます。 Hybrid Runbook Worker のバージョンを確認するには、C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ を参照し、\\*version* サブフォルダーをメモします。
+エージェントが Azure Monitor ログに正常に接続すると、Log Analytics の **[設定]** ページの **[接続されているソース]** タブに表示されます。 C:\Program Files\Microsoft Monitoring Agent\Agent に **AzureAutomationFiles** という名前のフォルダーが作成されていることを調べて、エージェントが Automation ソリューションを正常にダウンロードしたことを確認できます。 Hybrid Runbook Worker のバージョンを確認するには、C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ を参照し、\\*version* サブフォルダーをメモします。
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4.Runbook 環境をインストールして、Azure Automation に接続する
 
-エージェントを Log Analytics に追加すると、Automation ソリューションは、**Add-HybridRunbookWorker** コマンドレットを含む **HybridRegistration** PowerShell モジュールをプッシュダウンします。 コンピューターに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
+エージェントを Azure Monitor ログに追加すると、Automation ソリューションは、**Add-HybridRunbookWorker** コマンドレットを含む **HybridRegistration** PowerShell モジュールをプッシュダウンします。 コンピューターに Runbook 環境をインストールして、Azure Automation に登録する場合は、このコマンドレットを使用します。
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行してモジュールをインポートします。
 
 ```powershell-interactive
 cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\HybridRegistration"
-Import-Module HybridRegistration.psd1
+Import-Module .\HybridRegistration.psd1
 ```
 
 次に、以下の構文を使用して、**Add-HybridRunbookWorker** コマンドレットを実行します。
@@ -136,14 +138,9 @@ Hybrid Runbook Worker 機能の主な目的はローカル リソースを管理
 
 インストールされるモジュールは **PSModulePath** 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[Modifying the PSModulePath Installation Path](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx)」(PSModulePath インストール パスの変更) を参照してください。
 
-## <a name="troubleshoot"></a>トラブルシューティング
-
-Hybrid Runbook Worker をトラブルシューティングする方法については、[Windows Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#windows)に関する記事を参照してください。
-
-Update Management の問題を解決する方法の追加手順については、[Update Management のトラブルシューティング](troubleshoot/update-management.md)に関するページをご覧ください。
-
 ## <a name="next-steps"></a>次の手順
 
 * オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
 * Hybrid Runbook Worker を削除する方法については、「[Hybrid Runbook Worker の削除](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)」をご覧ください。
-
+* Hybrid Runbook Worker をトラブルシューティングする方法については、[Windows Hybrid Runbook Worker のトラブルシューティング](troubleshoot/hybrid-runbook-worker.md#windows)に関する記事を参照してください。
+* Update Management の問題を解決する方法の追加手順については、[Update Management のトラブルシューティング](troubleshoot/update-management.md)に関するページをご覧ください。

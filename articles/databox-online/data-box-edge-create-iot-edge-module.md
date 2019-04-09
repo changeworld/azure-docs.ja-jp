@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094679"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401725"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>C# IoT Edge モジュールを開発してファイルを Data Box Edge (プレビュー) に移動する
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
 
 この記事では、IoT Edge モジュールを作成して Data Box Edge モジュールに展開する方法を説明します。 Azure Data Box Edge は、データを処理してネットワーク経由で Azure に送信できるストレージ ソリューションです。
 
@@ -27,19 +27,13 @@ Azure IoT Edge モジュールを Data Box Edge とともに使用して、デ�
 > * モジュールを格納して管理するコンテナー レジストリを作成する (Docker イメージ)。
 > * IoT Edge モジュールを作成して Data Box Edge デバイスに展開する。
 
-> [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
 
 ## <a name="about-the-iot-edge-module"></a>IoT Edge モジュールについて
 
 Data Box Edge デバイスでは、IoT Edge モジュールを展開して実行できます。 Edge モジュールは基本的には Docker コンテナーであり、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行できます。 この記事では、Data Box Edge デバイス上でファイルをローカル共有からクラウド共有にコピーするモジュールを作成します。
 
 1. ファイルは、Data Box Edge デバイス上のローカル共有に書き込まれます。
-2. ファイル イベント ジェネレーターは、ローカル共有に書き込まれる各ファイルに対して、ファイル イベントを作成します。 その後ファイル イベントは (IoT Edge ランタイムの) IoT Edge Hub に送信されます。
-
-   > [!IMPORTANT]
-   > ファイル イベントは、新しく作成されたファイルに対してのみ生成されます。 既存のファイルの変更では、ファイル イベントは生成されません。
-
+2. ファイル イベント ジェネレーターは、ローカル共有に書き込まれる各ファイルに対して、ファイル イベントを作成します。 ファイル イベントは、ファイルが変更されたときも生成されます。 その後ファイル イベントは (IoT Edge ランタイムの) IoT Edge Hub に送信されます。
 3. IoT Edge のカスタム モジュールは、ファイル イベントを処理して、ファイルへの相対パスも含むファイル イベント オブジェクトを作成します。 モジュールは、相対ファイル パスを使用して絶対パスを生成し、ファイルをローカル共有からクラウド共有にコピーします。 その後、モジュールはファイルをローカル共有から削除します。
 
 ![Data Box Edge での Azure IoT Edge モジュールの動作のしくみ](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
@@ -52,8 +46,9 @@ Data Box Edge デバイスでは、IoT Edge モジュールを展開して実行
 
 - 実行中の Data Box Edge デバイス。
 
-    - デバイスには、関連付けられた IoT Hub リソースもある。 Data Box Edge の詳細については、「[IoT Hub リソースを作成する](data-box-edge-deploy-configure-compute.md#create-an-iot-hub-resource)」を参照してください。
-    - デバイスで Edge コンピューティング ロールが構成されている。 Data Box Edge の詳細については、「[コンピューティング ロールを設定する](data-box-edge-deploy-configure-compute.md#set-up-compute-role)」を参照してください。
+    - デバイスには、関連付けられた IoT Hub リソースもある。
+    - デバイスで Edge コンピューティング ロールが構成されている。
+    詳細については、Data Box Edge での「[コンピューティングを構成する](data-box-edge-deploy-configure-compute.md#configure-compute)」を参照してください。
 
 - 次の開発リソース。
 
@@ -128,7 +123,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-1. VS Code エクスプローラーで、**[モジュール] > [CSharpModule] > [Program.cs]** の順に開きます。
+1. VS Code エクスプローラーで、**[モジュール] > [FileCopyModule] > [Program.cs]** の順に開きます。
 2. **[FileCopyModule]** 名前空間の上部で、後で使用する型として次の using ステートメントを追加します。 **Microsoft.Azure.Devices.Client.Transport.Mqtt** は、メッセージを IoT Edge Hub に送信するためのプロトコルです。
 
     ```
@@ -141,12 +136,9 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     class Program
         {
             static int counter;
-            private const string InputFolderPath = "/home/LocalShare";
-            private const string OutputFolderPath = "/home/CloudShare";
+            private const string InputFolderPath = "/home/input";
+            private const string OutputFolderPath = "/home/output";
     ```
-
-    > [!IMPORTANT]
-    > `InputFolderPath` と `OutputFolderPath` を書き留めておきます。 このモジュールをデプロイする際にこれらのパスを指定する必要があります。
 
 4. **MessageBody** クラスを Program クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
 
@@ -189,7 +181,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 6. **FileCopy** のコードを挿入します。
 
     ```
-            /// <summary>
+        /// <summary>
         /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
@@ -241,8 +233,6 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
             Console.WriteLine($"Processed event.");
             return MessageResponse.Completed;
         }
-
-    }
     ```
 
 7. このファイルを保存します。
@@ -251,7 +241,8 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 前のセクションで IoT Edge ソリューションを作成して、ファイルをローカル共有からクラウド共有にコピーするためにコードを FileCopyModule に追加しました。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
-1. Visual Studio Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。
+1. VSCode で、[Terminal] (ターミナル) > [New Terminal] (新しいターミナル) に移動して、新しい Visual Studio Code 統合ターミナルを開きます。
+2. 統合ターミナルで次のコマンドを入力して、Docker にサインインします。
 
     `docker login <ACR login server> -u <ACR username>`
 
@@ -282,4 +273,4 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ## <a name="next-steps"></a>次の手順
 
-このモジュールを Data Box Edge で展開して実行するには、「[カスタム モジュールを追加する](data-box-edge-deploy-configure-compute.md#add-a-custom-module)」のステップを参照してください。
+Data Box Edge でこのモジュールをデプロイして実行するには、「[モジュールを追加する](data-box-edge-deploy-configure-compute.md#add-a-module)」の手順を参照してください。

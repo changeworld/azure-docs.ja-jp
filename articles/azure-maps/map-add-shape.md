@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3023d5d4010108d46424bba284029b58f5fd279c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658744"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497246"
 ---
 # <a name="add-a-shape-to-a-map"></a>マップにシェイプを追加する
 
@@ -119,7 +119,7 @@ Shape クラスは [Geometry](https://docs.microsoft.com/javascript/api/azure-ma
 マップに追加するコード例の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [カスタム HTML を追加する](./map-add-custom-html.md)
+> [HTML マーカー](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [検索結果を表示する](./map-search-location.md)
+> [ヒート マップ レイヤーを追加する](./map-add-heat-map-layer.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113267"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -50,7 +50,7 @@ ms.locfileid: "56456658"
    はい。 Azure では、メジャー バージョンとエディションごとに 1 つのイメージのみを保持します。 たとえば、新しい SQL Server Service Pack がリリースされると、Azure はその Service Pack 用の新しいイメージをギャラリーに追加します。 前の Service Pack 用の SQL Server イメージは、Azure ポータルからただちに削除されます。 ただし、PowerShell からプロビジョニングする場合は、次の 3 か月間は引き続き使用できます。 3 か月が経過すると、前の Service Pack イメージは使用できなくします。 この削除ポリシーは、SQL Server のバージョンがそのライフサイクルの終わりに達した時点でサポートされなくなった場合にも適用されます。
 
 
-1. **Azure Portal に表示されない SQL Server の古いイメージをデプロイすることはできますか。**
+1. **Azure portal に表示されない SQL Server の古いイメージをデプロイすることはできますか?**
 
    はい、PowerShell を使用します。 PowerShell を使用して SQL Server VM をデプロイする方法の詳細については、「[Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法](virtual-machines-windows-ps-sql-create.md)」をご覧ください。
 
@@ -82,7 +82,7 @@ ms.locfileid: "56456658"
 
 1. **スタンバイ/フェールオーバーのみ使用するために作成した Azure VM 上の SQL Server のライセンスに料金を支払う必要がありますか。**
 
-   「Virtual Machines のライセンス FAQ」 (https://azure.microsoft.com/pricing/licensing-faq/)) に説明されているように、ソフトウェア アシュアランスのライセンス モビリティを使用している場合は、HA デプロイにパッシブなセカンダリ レプリカとして参加している SQL Server のライセンスに料金を支払う必要はありません。 それ以外の場合は、ライセンスの料金を支払う必要があります。
+   「[Virtual Machines のライセンス FAQ](https://azure.microsoft.com/pricing/licensing-faq/)」に説明されているように、ソフトウェア アシュアランスによるライセンス モビリティを使用している場合は、HA デプロイにパッシブなセカンダリ レプリカとして参加している SQL Server のライセンスに料金を支払う必要はありません。 それ以外の場合は、ライセンスの料金を支払う必要があります。
 
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
@@ -111,31 +111,40 @@ ms.locfileid: "56456658"
  
    はい。 すべてのお客様は、新しい SQL VM リソース プロバイダーに登録できます。 ただし、SQL Server VM で [Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (または BYOL) をアクティブ化できるのは、ソフトウェア アシュアランスの特典をお持ちのお客様だけです。 
 
-1. **VM リソースが移動または破棄されると、_* Microsoft.SqlVirtualMachine_* リソースはどうなりますか。** 
+1. **VM リソースが移動または破棄されると、_Microsoft.SqlVirtualMachine_ リソースはどうなりますか?** 
 
    Microsoft.Compute/VirtualMachine リソースが破棄または移動されると、関連付けられた Microsoft.SqlVirtualMachine リソースに、操作が非同期的にレプリケートされることが通知されます。
 
-1. **_* Microsoft.SqlVirtualMachine_* リソースが破棄されると、VM はどうなりますか。**
+1. **_Microsoft.SqlVirtualMachine_ リソースが破棄されると、VM はどうなりますか?**
 
-   Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。 
+    Microsoft.SqlVirtualMachine リソースが破棄されても、Microsoft.Compute/VirtualMachine リソースには影響しません。 ただし、ライセンスの変更により、元の既定のイメージ ソースに戻ります。 
 
 1. **SQL VM リソース プロバイダーに自己デプロイ済みの SQL Server VM を登録することはできますか。**
 
-   はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。 ただし、自己デプロイ済みの SQL VM を従量課金に変換することはできません。  
+    はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。 ただし、自己デプロイ済みの SQL VM を従量課金に変換することはできません。
 
 ## <a name="administration"></a>管理
 
 1. **同じ VM に SQL Server の 2 つ目のインスタンスをインストールできますか? 既定のインスタンスのインストール済みの機能を変更することはできますか?**
 
-   はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。 一部の機能 (自動バックアップ、自動修正、Azure Key Vault の統合など) は、既定のインスタンスでしか動作しないので注意が必要です。
+   はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。 一部の機能 (自動バックアップ、自動修正、Azure Key Vault の統合など) は、既定のインスタンスまたは正しく構成された名前付きインスタンス (質問 3 を参照) でしか動作しないので注意が必要です。 
 
 1. **SQL Server の既定のインスタンスをアンインストールできますか?**
 
-   はい。ただし、考慮事項がいくつかあります。 直前の回答で述べたように、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存する機能は既定のインスタンスでしか動作しません。 この拡張機能は、アンインストールされた既定のインスタンスを探し続けるため、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します:**Microsoft SQL Server Credential Management**、**Microsoft SQL Server IaaS Agent**。 エラーの例を次に示します。
+   はい。ただし、考慮事項がいくつかあります。 前出の回答で述べたように、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存する機能があります。  IaaS 拡張機能を削除せずに既定のインスタンスをアンインストールすると、拡張機能がそのインスタンスを探し続けるために、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します:**Microsoft SQL Server Credential Management**、**Microsoft SQL Server IaaS Agent**。 エラーの例を次に示します。
 
       SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。
 
    あえて既定のインスタンスをアンインストールする場合は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)もアンインストールしてください。
+
+1. **IaaS 拡張機能で SQL Server の名前付きインスタンスを使用できますか?**
+   
+   はい。ただし、その名前付きインスタンスが SQL Server の唯一のインスタンスであることと、元の既定のインスタンスが正しくアンインストールされていることが条件となります。 名前付きインスタンスを使用するには、次の手順を実行します。
+    1. マーケットプレースから SQL Server VM をデプロイします。 
+    1. IaaS 拡張機能をアンインストールします。
+    1. SQL Server を完全にアンインストールします。
+    1. SQL Server を名前付きインスタンスとともにインストールします。 
+    1. IaaS 拡張機能をインストールします。 
 
 1. **SQL VM から SQL Server を完全に削除できますか。**
 
@@ -143,9 +152,9 @@ ms.locfileid: "56456658"
    
 ## <a name="updating-and-patching"></a>更新プログラムと修正プログラムの適用
 
-1. **Azure VM で SQL Server の新しいバージョン/エディションにアップグレードするにはどうすればよいですか?**
+1. **Azure VM で SQL Server の新しいバージョン/エディションに変更するにはどうすればよいですか?**
 
-   現在、Azure VM で実行している SQL Server のインプレース アップグレードはありません。 目的の SQL Server バージョン/エディションで新しい Azure 仮想マシンを作成し、標準の[データ移行方法](virtual-machines-windows-migrate-sql.md)を使用して、データベースを新しいサーバーに移行します。
+   ソフトウェア アシュアランスをご契約いただいているお客様は、ボリューム ライセンス ポータルのインストール メディアを使用して、Azure VM で実行されている SQL Server のインプレース アップグレードを実行できます。 ただし、現時点では SQL Server インスタンスのエディションは変更できません。 目的の SQL Server エディションで新しい Azure 仮想マシンを作成し、標準の[データ移行方法](virtual-machines-windows-migrate-sql.md)を使用して、お使いのデータベースを新しいサーバーに移行します。
 
 1. **SQL Server VM に更新プログラムと Service Pack を適用するにはどうすればよいですか?**
 

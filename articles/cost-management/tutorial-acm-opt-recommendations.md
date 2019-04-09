@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2255f14d026d406dc41802c321d0a673ee2f2f23
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000927"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 
@@ -29,7 +29,7 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 > * アクションを検証して仮想マシンが確実にサイズ変更されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
-推奨事項は、各種の Azure アカウント ([Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様を含む) を対象に公開されています。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management データの理解](understand-cost-mgt-data.md)」をご覧ください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
+推奨事項は、各種のスコープと Azure アカウント ([Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様を含む) を対象に公開されています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 - サブスクリプション
 - リソース グループ
@@ -41,7 +41,9 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="view-cost-optimization-recommendations"></a>コストの最適化に関する推奨事項を表示する
 
-Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。 **[コスト管理]** の一覧で、**[Advisor の推奨事項]** を選択します。 Advisor のコストに関する推奨事項が表示されます。
+サブスクリプションのコスト最適化の推奨事項を表示するには、Azure portal で目的のスコープを開き、**[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。
+
+管理グループで推奨事項を確認するには、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 別のスコープ (管理グループなど) に切り替えるには、**[スコープ]** ピルを使用します。 **[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 ![Azure portal に表示される Cost Management の Advisor の推奨事項](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 

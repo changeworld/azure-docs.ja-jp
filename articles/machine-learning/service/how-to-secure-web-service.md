@@ -1,7 +1,7 @@
 ---
 title: SSL を使用して Web サービスをセキュリティで保護する
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning サービスでデプロイされた Web サービスをセキュリティで保護する方法について説明します。 Secure Sockets Layer (SSL) とキー ベースの認証を使用して、Web サービスへのアクセスを制限し、クライアントによって送信されたデータをセキュリティで保護することができます。
+description: HTTPS を有効にすることで、Azure Machine Learning service でデプロイされた Web サービスをセキュリティで保護する方法について説明します。 HTTPS は、セキュア ソケット レイヤー (SSL) の代わりに、トランスポート層セキュリティ (TLS) を使用してクライアントによって送信されたデータを保護します。 これは、Web サービスの ID を検証するためにクライアントでも使用されます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,27 +11,34 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 1a6aa75f3d25cd88cd1edb9b2cdcfabc3b4ec8f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098104"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103895"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL を使用して Azure Machine Learning service による Web サービスをセキュリティで保護する
 
-この記事では、Azure Machine Learning サービスでデプロイされた Web サービスをセキュリティで保護する方法について説明します。 Secure Sockets Layer (SSL) とキー ベースの認証を使用して、Web サービスへのアクセスを制限し、クライアントによって送信されたデータをセキュリティで保護することができます。
+この記事では、Azure Machine Learning サービスでデプロイされた Web サービスをセキュリティで保護する方法について説明します。 [ハイパーテキスト転送プロトコル セキュア (HTTPS)](https://en.wikipedia.org/wiki/HTTPS) を使用して、Web サービスへのアクセスを制限し、クライアントによって送信されたデータをセキュリティで保護することができます。
+
+HTTPS は、クライアントと Web サービスの間の通信を暗号化することで双方の間の通信をセキュリティで保護するために使用します。 暗号化は、[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) を使用して処理されます。 これは、現在も、TLS の前身である Secure Sockets Layer (SSL) と呼ばれるｌことがあります。
+
+> [!TIP]
+> Azure Machine Learning SDK では、セキュリティで保護された通信の有効化に関連するプロパティの用語である "SSL" が使用されます。 これは、TLS が Web サービスで使用されていないという意味ではなく、多くの読者にとって SSL という用語のほうがわかりやすいということです。
+
+TLS と SSL の両方とも、"__デジタル証明書__" に依存しています。デジタル証明書は、暗号化の実行と ID の検証に使用されます。 デジタル証明書のしくみの詳細については、ウィキペディアの「[public key infrastructure (PKI) (公開キー基盤 (PKI))](https://en.wikipedia.org/wiki/Public_key_infrastructure)」の項目を参照してください。
 
 > [!Warning]
-> SSL を有効にしない場合、インターネット上のすべてのユーザーが Web サービスへの呼び出しを実行できます。
+> Web サービスで HTTPS の有効化と使用を行わない場合は、そのサービスとの間で送受信されるデータがインターネット上の他のユーザーに表示される場合があります。
+>
+> HTTPS により、接続先のサーバーの信頼性をクライアントから確認することもできます。 その結果、[中間者攻撃](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)からクライアントを保護できます。
 
-SSL は、クライアントと Web サービス間で送信されるデータを暗号化します。 これは、クライアントがサーバーの ID を検証するためにも使用されます。 認証は、SSL 証明書とキーが提供されるサービスに対して有効にできます。  SSL を有効にすると、Web サービスにアクセスするときに認証キーが要求されます。
-
-SSL が有効な Web サービスをデプロイする場合も、デプロイ済みの既存の Web サービスに対して SSL を有効にする場合も、手順は同じです。
+新しい Web サービスまたは既存の Web サービスをセキュリティで保護するプロセスは次のとおりです。
 
 1. ドメイン名を取得します。
 
-2. SSL 証明書を取得します。
+2. デジタル証明書を取得します。
 
 3. SSL 設定を有効にして Web サービスをデプロイまたは更新します。
 
@@ -41,16 +48,16 @@ SSL が有効な Web サービスをデプロイする場合も、デプロイ�
 
 ## <a name="get-a-domain-name"></a>ドメイン名を取得する
 
-ドメイン名をまだ所有していない場合は、__ドメイン名レジストラー__ から購入できます。 プロセスと費用は、レジストラーによって異なります。 レジストラーも、ドメイン名を管理するためのツールを提供しています。 これらのツールを使用して、完全修飾ドメイン名 (www.contoso.com など) を、Web サービスをホストする IP アドレスにマップします。
+ドメイン名をまだ所有していない場合は、__ドメイン名レジストラー__ から購入できます。 プロセスと費用は、レジストラーによって異なります。 レジストラーも、ドメイン名を管理するためのツールを提供しています。 これらのツールを使用して、完全修飾ドメイン名 (www\.contoso.com など) を、Web サービスをホストする IP アドレスにマップします。
 
 ## <a name="get-an-ssl-certificate"></a>SSL 証明書を取得する
 
-SSL 証明書を取得する方法はたくさんあります。 最も一般的な方法は、__証明機関__(CA) から購入することです。 証明書の取得場所に関係なく、次のファイルが必要です。
+SSL 証明書 (デジタル証明書) を取得する方法はたくさんあります。 最も一般的な方法は、__証明機関__(CA) から購入することです。 証明書の取得場所に関係なく、次のファイルが必要です。
 
 * __証明書__。 証明書は、完全な証明書チェーンを含み、PEM でエンコードされている必要があります。
 * __キー__。 キーは、PEM でエンコードされている必要があります。
 
-証明書を要求するときは、Web サービスで使用する予定のアドレスの完全修飾ドメイン名 (FQDN) を指定する必要があります。 例: www.contoso.com。 Web サービスの ID を検証するときに、証明書に記載されているアドレスとクライアントによって使用されるアドレスが比較されます。 アドレスが一致しない場合、クライアントはエラーを受信します。
+証明書を要求するときは、Web サービスで使用する予定のアドレスの完全修飾ドメイン名 (FQDN) を指定する必要があります。 たとえば、www\.contoso.com などに設定されています。 Web サービスの ID を検証するときに、証明書に記載されているアドレスとクライアントによって使用されるアドレスが比較されます。 アドレスが一致しない場合、クライアントはエラーを受信します。
 
 > [!TIP]
 > 証明機関が、証明書とキーを PEM でエンコードされたファイルとして提供できない場合は、 [OpenSSL](https://www.openssl.org/) などのユーティリティを使用して、フォーマットを変更できます。

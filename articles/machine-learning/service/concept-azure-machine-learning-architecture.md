@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1640b1cdb9410f33f6556667f36aafcfe575a082
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080324"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361100"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
@@ -70,7 +70,7 @@ ms.locfileid: "58080324"
 
 実験は、指定されたスクリプトからの多くの実行のグループです。 実験は、常に 1 つのワークスペースに属します。 実行を送信するときは、実験名を指定します。 実行に関する情報は、その実験に格納されます。 実行を送信するときに、存在しない実験名を指定すると、新たに指定された名前を持つ新しい実験が自動的に作成されます。
 
-実験の使用例については、[クイック スタート:Azure Machine Learning service の利用の開始](quickstart-get-started.md)に関するページを参照してください。
+実験の使用例については、[クイック スタート:Azure Machine Learning service の利用の開始](quickstart-run-cloud-notebook.md)に関するページを参照してください。
 
 ## <a name="model"></a>モデル
 
@@ -80,7 +80,7 @@ ms.locfileid: "58080324"
 
 Azure Machine Learning service はフレームワークに依存しません。 モデルを作成するときに、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer、Microsoft Cognitive Toolkit (旧称: CNTK) などの人気のある機械学習フレームワークを使用できます。
 
-モデルのトレーニング例については、[クイック スタート:Machine Learning service ワークスペースの作成](quickstart-get-started.md)に関するページを参照してください。
+モデルのトレーニング例については、[チュートリアル: Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
 
 ### <a name="model-registry"></a>モデル レジストリ
 
@@ -143,7 +143,7 @@ Azure Machine Learning service はフレームワークに依存しません。 
 
 モデルをトレーニングするには、トレーニング スクリプトおよび関連ファイルが格納されているディレクトリを指定します。 実験名も指定します。これは、トレーニング中に収集される情報を格納するために使用されます。 トレーニング中に、ディレクトリ全体がトレーニング環境 (コンピューティング先) にコピーされて、実行構成で指定されるスクリプトが開始されます。 ディレクトリのスナップショットも、ワークスペース内の実験の下に格納されます。
 
-例については、[Python でのワークスペースの作成](quickstart-get-started.md)に関するページを参照してください。
+例については、「[チュートリアル:Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
 
 ## <a name="run"></a>ラン
 
@@ -156,7 +156,7 @@ Azure Machine Learning service はフレームワークに依存しません。 
 
 モデルをトレーニングするためにスクリプトを送信するときに実行を生成します。 実行は、0 個以上の子実行を持つことができます。 たとえば、最上位レベルの実行は 2 つの子実行を持つ可能性があり、それぞれが独自の子実行を持つ場合があります。
 
-モデルのトレーニングによって生成される実行を表示する例については、[クイック スタート: Azure Machine Learning service の利用の開始](quickstart-get-started.md)に関するページを参照してください。
+モデルのトレーニングによって生成される実行を表示する例については、[クイック スタート: Azure Machine Learning service の利用の開始](quickstart-run-cloud-notebook.md)に関するページを参照してください。
 
 ## <a name="snapshot"></a>スナップショット
 
@@ -206,7 +206,7 @@ Web サービスとしてのモデルのデプロイ例については、[Azure 
 
 ### <a name="iot-module"></a>IoT モジュール
 
-デプロイされる IoT モジュールは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 Edge デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
+デプロイされる IoT モジュールは Docker コンテナーであり、モデルとそれに関連付けられているスクリプトまたはアプリケーション、および追加の依存関係が含まれます。 エッジ デバイス上の Azure IoT Edge を使用して、これらのモジュールをデプロイします。
 
 監視を有効にしてある場合、Azure では Azure IoT Edge モジュール内のモデルから利用統計情報を収集します。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーのストレージ アカウント インスタンスに格納されます。
 
@@ -227,6 +227,6 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
 
 * [Azure Machine Learning service とは](overview-what-is-azure-ml.md)
-* [クイック スタート:Python でワークスペースを作成する](quickstart-get-started.md)
+* [Azure Machine Learning service のワークスペースを作成する](setup-create-workspace.md)
 * [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
-* [リソース マネージャー テンプレートでワークスペースを作成する](how-to-create-workspace-template.md)
+* [Resource Manager テンプレートでワークスペースを作成する](how-to-create-workspace-template.md)

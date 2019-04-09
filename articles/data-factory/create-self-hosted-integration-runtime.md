@@ -3,20 +3,20 @@ title: Azure Data Factory でセルフホステッド統合ランタイムを作
 description: Azure Data Factory でセルフホステッド統合ランタイムを作成する方法について説明します。これにより、データ ファクトリからプライベート ネットワーク内のデータ ストアにアクセスできるようになります。
 services: data-factory
 documentationcenter: ''
-author: nabhishek
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
+author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+manager: craigg
+ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838801"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -25,11 +25,13 @@ ms.locfileid: "55493594"
 
 このドキュメントでは、セルフホステッド IR を作成して構成する方法について説明します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>セルフホステッド IR をインストールする手順の概要
 1. セルフホステッド統合ランタイムを作成します。 このタスクでは、Azure Data Factory の UI を使用することができます。 PowerShell の例を次に示します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
   
 2. セルフホステッド統合ランタイムをローカル コンピューターに[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)してインストールします。
@@ -37,7 +39,7 @@ ms.locfileid: "55493594"
 3. 認証キーを取得し、そのキーを使用してセルフホステッド統合ランタイムを登録します。 PowerShell の例を次に示します。
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Azure Resource Manager テンプレートを使用する Azure VM でのセルフホステッド IR の設定 (オートメーション)
@@ -59,7 +61,7 @@ ms.locfileid: "55493594"
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>セルフホステッド IR の使用に関する注意点
 
 - 1 つの自己ホスト型統合ランタイムは、複数のオンプレミス データ ソースで使用できます。 単一のセルフホステッド統合ランタイムを、同じ Azure Active Directory テナント内の別のデータ ファクトリと共有することができます。 詳細については、[セルフホステッド統合ランタイムの共有](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)に関するセクションを参照してください。
-- 単一コンピューター上にインストールできるセルフホステッド統合ランタイムのインスタンスは 1 つのみとなります。 オンプレミス データ ソースにアクセスする必要があるデータ ファクトリが 2 つある場合、2 つのオンプレミス コンピューターにセルフホステッド統合ランタイムをインストールする必要があります。 つまり、セルフホステッド統合ランタイムは、特定のデータ ファクトリに関連付けられます。
+- 単一コンピューター上にインストールできるセルフホステッド統合ランタイムのインスタンスは 1 つのみとなります。 オンプレミス データ ソースにアクセスする必要があるデータ ファクトリが 2 つある場合、両方のデータ ファクトリから 2 つのオンプレミス コンピューターそれぞれにセルフホステッド統合ランタイムをインストールするか、[セルフホステッド統合ランタイム](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)を使用して別のデータ ファクトリと共有する必要があります。  
 - セルフホステッド統合ランタイムは、データ ソースと同じコンピューター上に存在する必要はありません。 しかし、セルフホステッド統合ランタイムをデータ ソースの近くに配置することにより、セルフホステッド統合ランタイムからデータ ソースへの接続時間が短縮されます。 自己ホスト型統合ランタイムは、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにインストールすることをお勧めします。 セルフホステッド統合ランタイムとデータ ソースが別のコンピューター上にある場合、セルフホステッド統合ランタイムではデータ ソースとリソースの競合は発生しません。
 - 同じオンプレミス データ ソースに接続する異なるコンピューター上で、複数のセルフホステッド統合ランタイムを使用することができます。 たとえば、2 つのデータ ファクトリを提供する 2 つのセルフホステッド統合ランタイムがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。
 - Power BI シナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、Azure Data Factory 用のセルフホステッド統合ランタイムを別のコンピューター上にインストールします。
@@ -96,7 +98,7 @@ ms.locfileid: "55493594"
 9. Azure PowerShell を使用して認証キーを取得します。 認証キーを取得するための PowerShell の例を以下に示します。
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. ご利用のコンピューターで実行している Microsoft Integration Runtime 構成マネージャーの **[統合ランタイム (セルフホスト) の登録]** ページで、次の手順を行います。
 
@@ -112,7 +114,7 @@ ms.locfileid: "55493594"
 * セルフホステッド統合ランタイムの可用性が向上したことによって、ビッグ データ ソリューションや Azure Data Factory を使用したクラウド データ統合において、単一障害点となることはなくなり、最大 4 つのノードによって継続性が確保されます。
 * オンプレミスとクラウド データ ストアとの間のデータ移動は、パフォーマンスとスループットが向上しました。 詳しくは[パフォーマンス比較](copy-activity-performance.md)を参照してください。
 
-セルフホステッド統合ランタイム ソフトウェアを[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からインストールして、複数のノードを関連付けることができます。 その後、[チュートリアル](tutorial-hybrid-copy-powershell.md)の説明に従って、**New-AzureRmDataFactoryV2IntegrationRuntimeKey** コマンドレットから取得した認証キーのいずれかを使用して、登録します。
+セルフホステッド統合ランタイム ソフトウェアを[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からインストールして、複数のノードを関連付けることができます。 その後、[チュートリアル](tutorial-hybrid-copy-powershell.md)の説明に従って、**New-AzDataFactoryV2IntegrationRuntimeKey** コマンドレットから取得した認証キーのいずれかを使用して、登録します。
 
 > [!NOTE]
 > 各ノードを関連付けるために新しいセルフホステッド統合ランタイムを作成する必要はありません。 セルフホステッド統合ランタイムを別のコンピューターにインストールし、同じ認証キーを使用してそれを登録できます。 
@@ -143,7 +145,7 @@ ms.locfileid: "55493594"
 - CNG キーを使用する証明書はサポートされません。  
 
 > [!NOTE]
-> この証明書は、セルフホステッド IR ノード上のポートの暗号化、 **ノード間通信** (状態の同期用)、およびローカル ネットワークからの**リンクされたサービス資格情報の設定に対する PowerShell コマンドレットの使用**の際に使用します。 プライベート ネットワーク環境が安全でない場合、またはプライベート ネットワーク内のノード間の通信をセキュリティで保護したい場合は、この証明書を使用することをお勧めします。 セルフホステッド IR から他のデータ ストアへの転送におけるデータ移動は、この証明書の設定に関係なく、常に暗号化チャネルを使用して行われます。 
+> この証明書は、セルフホステッド IR ノード上のポートの暗号化、 **ノード間通信** (ノード間でのリンクされたサービスの資格情報同期を含む、状態の同期用)、およびローカル ネットワークからの **リンクされたサービス資格情報の設定に対する PowerShell コマンドレットの使用** の際に使用します。 プライベート ネットワーク環境が安全でない場合、またはプライベート ネットワーク内のノード間の通信をセキュリティで保護したい場合は、この証明書を使用することをお勧めします。 セルフホステッド IR から他のデータ ストアへの転送におけるデータ移動は、この証明書の設定に関係なく、常に暗号化チャネルを使用して行われます。 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>複数のデータ ファクトリでセルフホステッド統合ランタイムを共有する
 
@@ -197,8 +199,6 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 * リンクされた IR が作成されるデータ ファクトリには、[MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的に MSI が作成されています。 しかし、データ ファクトリが Azure Resource Manager テンプレートまたは SDK を使用して作成されている場合、Azure Resource Manager で MSI を含むデータ ファクトリが確実に作成されるように、明示的に **Identity** プロパティを設定する必要があります。 
 
 * この機能をサポートする Azure Data Factory .NET SDK のバージョンは、1.1.0 以降です。
-
-* この機能をサポートする Azure PowerShell のバージョンは、6.6.0 以降 (AzureRM.DataFactoryV2、0.5.7 以降) です。
 
 * アクセス許可を付与するには、ユーザーには、共有 IR が存在するデータ ファクトリ内に所有者ロールまたは継承された所有者ロールが必要です。
 
@@ -343,7 +343,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > Azure Data Factory V2 での資格情報の暗号化では、資格情報マネージャー アプリケーションはまだ使用できません。  
 
-セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、**New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
+セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、**New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411256"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500051"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>マップにシンボル レイヤーを追加する
 
@@ -35,6 +35,9 @@ ms.locfileid: "54411256"
 3 番目のコード ブロックでは、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が作成され、マウス クリック時にシェイプ クラスの [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) メソッドを使用して、ポイントの座標が更新されます。
 
 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  データ ソース、クリック イベント リスナー、およびシンボル レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、ポイントが表示されます。
+
+> [!TIP]
+> 既定では、パフォーマンスのために、重複するシンボルがシンボル レイヤーによって非表示になり、シンボルのレンダリングが最適化されます。 非表示のシンボルを拡大すると、表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconOptions` オプションの `allowOverlap` プロパティを `true` に設定します。
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>シンボル レイヤーにカスタム アイコンを追加する
 

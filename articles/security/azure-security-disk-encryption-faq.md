@@ -1,19 +1,18 @@
 ---
 title: FAQ - IaaS VM のための Azure Disk Encryption | Microsoft Docs
 description: この記事では、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption についてよく寄せられる質問への回答を示します。
-author: mestew
+author: msmbaldwin
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.author: mstewart
-ms.date: 01/25/2019
+ms.author: mbaldwin
+ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b98b9653aee395ebdf797c50c313c322727480c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892763"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -44,12 +43,14 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | --- | --- |--- |
 | Ubuntu | 16.04| OS とデータ ディスク |
 | Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
+| RHEL | 7.6 | OS とデータ ディスク* |
 | RHEL | 7.5 | OS とデータ ディスク* |
 | RHEL | 7.4 | OS とデータ ディスク* |
 | RHEL | 7.3 | OS とデータ ディスク* |
 | RHEL | 7.2 | OS とデータ ディスク* |
 | RHEL | 6.8 | データ ディスク* |
 | RHEL | 6.7 | データ ディスク* |
+| CentOS | 7.5 | OS とデータ ディスク |
 | CentOS | 7.4 | OS とデータ ディスク |
 | CentOS | 7.3 | OS とデータ ディスク |
 | CentOS | 7.2n | OS とデータ ディスク |
@@ -72,6 +73,18 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 
 はい。Windows および Linux IaaS VM のブート ボリュームとデータ ボリュームを暗号化できます。 Windows VM の場合は、データを暗号化する前に、OS ボリュームを暗号化する必要があります。 Linux VM の場合は、先に OS ボリュームを暗号化しなくても、データを暗号化することができます。 Linux の OS ボリュームを暗号化した後で Linux IaaS VM の OS ボリュームの暗号化を無効にすることはできません。
+
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Azure Disk Encryption を使用して、マウント解除されたボリュームを暗号化することはできますか。
+
+いいえ、Azure Disk Encryption で暗号化されるのは、マウントされたボリュームのみになります。
+
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>シークレットまたは暗号化キーを切り替えるにはどうすればいいですか。
+
+シークレットを切り替えるには、別のキー コンテナーを指定して、最初に使用したのと同じコマンドを呼び出してディスクの暗号化を有効にするだけです。 キーの暗号化キーを切り替えるには、新しいキーの暗号化を指定して、最初に使用したのと同じコマンドを呼び出してディスク暗号化を有効にします。 
+
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>最初にキー暗号化キーを使用していなかった場合は、どのようにしてキー暗号化キーを追加または削除すればいいですか。
+
+キー暗号化キーを追加するには、キー暗号化キーのパラメーターを渡して、有効化コマンドをもう一度呼び出します。 キー暗号化キーを削除するには、キー暗号化キーのパラメーターを指定せずに、有効化コマンドをもう一度呼び出します。
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Azure Disk Encryption では、Bring Your Own Key (BYOK) を実施できますか。
 
@@ -133,10 +146,17 @@ Windows の "Bek ボリューム" または Linux の "/mnt/azure_bek_disk" は�
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure Disk Encryption はどのような暗号化方法を使用しますか。
 
-Windows では、ADE は BitLocker AES256 暗号化方法を使用します (Windows Server 2012 より前のバージョンでは AES256WithDiffuser)。 Linux では、ADE は dmcrypt の既定値である 256 ビット ボリューム マスター キーの aes-xts-plain64 を使用します。
+Windows では、ADE は BitLocker AES256 暗号化方法を使用します (Windows Server 2012 より前のバージョンでは AES256WithDiffuser)。 Linux では、ADE は暗号化解除の既定値である 256 ビット ボリューム マスター キーの aes-xts-plain64 を使用します。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>EncryptFormatAll を使用して、すべてのボリュームの種類を指定した場合、既に暗号化したデータ ドライブ上のデータは消去されますか。
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。        
+
+## <a name="is-xfs-filesystem-supported"></a>XFS ファイルシステムはサポートされていますか。
+XFS ボリュームは、データ ディスクの暗号化でサポートされています。 XFS を使用して現在フォーマットされているボリュームを暗号化するには、EncryptFormatAll オプションを指定します。 これにより、ボリュームが再フォーマットされます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
+
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
+
+Azure Backup には、同じサブスクリプションおよびリージョン内の暗号化された VM をバックアップおよび復元するメカニズムが用意されています。  手順については、「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)」をご覧ください。  暗号化された VM を別のリージョンに復元することは、現在サポートされていません。  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>質問したり、フィードバックを提供したりするにはどこに移動すればよいですか。
 

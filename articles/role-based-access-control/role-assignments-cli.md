@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8e75a6344e517fb0343343f557cb7211f49cfed8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838318"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する
 
@@ -89,9 +89,9 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role"></a>ロールのアクションの表示
+## <a name="list-a-role-definition"></a>ロール定義を一覧表示する
 
-ロール定義の動作を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
+ロール定義を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
 
 ```azurecli
 az role definition list --name <role_name>
@@ -104,6 +104,7 @@ az role definition list --name "Contributor"
 ```
 
 ```Output
+[
   {
     "additionalProperties": {},
     "assignableScopes": [
@@ -133,6 +134,8 @@ az role definition list --name "Contributor"
   }
 ]
 ```
+
+### <a name="list-actions-of-a-role"></a>ロールのアクションの表示
 
 次の例では、"*共同作成者*" ロールの *actions* および *notActions* を一覧表示します。
 
@@ -191,7 +194,7 @@ az role assignment list --assignee <assignee>
 
 既定では、サブスクリプションをスコープとする割り当てのみが表示されます。 リソースまたはグループでスコープとされている割り当てを表示するには、`--all` を使用します。
 
-次の例では、*patlong@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
+次の例では、*patlong\@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
 
 ```azurecli
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -249,7 +252,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
 ```
 
-次の例では、*pharma-sales-projectforecast* リソース グループのスコープで、*patlong@contoso.com* ユーザーに "*仮想マシンの共同作成者*" ロールを付与します。
+次の例では、*pharma-sales-projectforecast* リソース グループのスコープで、*patlong\@contoso.com* ユーザーに "*仮想マシンの共同作成者*" ロールを付与します。
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
@@ -297,7 +300,7 @@ RBAC でアクセス権を削除するには、[az role assignment delete](/cli/
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-次の例では、*pharma-sales-projectforecast* リソース グループの *patlong@contoso.com* ユーザーから、"*仮想マシンの共同作成者*" ロールの割り当てを削除します。
+次の例では、*pharma-sales-projectforecast* リソース グループの *patlong\@contoso.com* ユーザーから、"*仮想マシンの共同作成者*" ロールの割り当てを削除します。
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast

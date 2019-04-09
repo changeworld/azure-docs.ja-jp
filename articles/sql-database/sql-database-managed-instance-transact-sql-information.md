@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/13/2019
+ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903132"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -26,6 +26,7 @@ ms.locfileid: "56455129"
 ![移行](./media/sql-database-managed-instance/migration.png)
 
 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。 <a name="Differences"></a>
+
 - [Always On](#always-on-availability)と[バックアップ](#backup)の相違点を含む[可用性](#availability)、
 - [監査](#auditing)、[証明書](#certificates)、[資格情報](#credential)、[暗号化プロバイダー](#cryptographic-providers)、[ログイン/ユーザー](#logins--users)、[サービス キーとサービス マスター キー](#service-key-and-service-master-key)の相違点を含む[セキュリティ](#security)、
 - [バッファー プール拡張機能](#buffer-pool-extension)、[照合順序](#collation)、[互換性レベル](#compatibility-levels)、[データベース ミラーリング](#database-mirroring)、[データベース オプション](#database-options)、[SQL Server エージェント](#sql-server-agent)、[テーブル オプション](#tables)の相違点を含む[構成](#configuration)、
@@ -61,10 +62,16 @@ ms.locfileid: "56455129"
 制限事項:   
 
 - マネージド インスタンスでは、最大 32 個のストライプを使用するバックアップにインスタンス データベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
-- 最大バックアップ ストライプ サイズは 195 GB (最大 BLOB サイズ) です。 バックアップ コマンドのストライプ数を増やして、個々のストライプ サイズを小さくし、この制限を超えないようにします。
+- `BACKUP`コマンドを使用した場合の最大バックアップ ストライプ サイズは 195 GB (最大 BLOB サイズ) です。 バックアップ コマンドのストライプ数を増やして、個々のストライプ サイズを小さくし、この制限を超えないようにします。
 
-> [!TIP]
-> オンプレミスでこの制限を回避するには、`URL` ではなく `DISK` にバックアップし、バックアップ ファイルを BLOB にアップロードしてから復元します。 別の BLOB の種類が使用されるため、復元ではより大きなファイルがサポートされます。  
+    > [!TIP]
+    > 次の操作を実行すると、オンプレミス環境の SQL Server または仮想マシンからデータベースをバックアップするときに、この制限を回避できます。
+    >
+    > - `URL` にバックアップするのではなく、`DISK` にバックアップします
+    > - バックアップ ファイルを BLOB ストレージにアップロードします
+    > - マネージ インスタンスに復元します
+    >
+    > マネージド インスタンスで `Restore` コマンドを実行すると、アップロードされたバックアップ ファイルに対して異なる BLOB タイプが使用されるため、より大きな BLOB サイズがサポートされます。
 
 T-SQL を使用したバックアップについては、[BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) に関する記事をご覧ください。
 
@@ -125,44 +132,51 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
 - `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY`、`FROM SID` を使用して作成された SQL ログインはサポートされています。 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql) に関する記事をご覧ください。
 - [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文または [CREATE USER FROM Login [Azure AD Login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 構文を使用して作成された Azure Active Directory (Azure AD) サーバー プリンシパル (ログイン) がサポートされます (**パブリック プレビュー**)。 これらは、サーバー レベルで作成されるログインです。
-    - マネージド インスタンスは、`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 構文で Azure AD データベース プリンシパルをサポートします。 これは、Azure AD 包含データベース ユーザーとも呼ばれます。
+
+    マネージド インスタンスは、`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 構文で Azure AD データベース プリンシパルをサポートします。 これは、Azure AD 包含データベース ユーザーとも呼ばれます。
+
 - `CREATE LOGIN ... FROM WINDOWS` 構文を使用して作成された Windows ログインはサポートされていません。 Azure Active Directory のログインとユーザーを使用します。
 - インスタンスを作成した Azure AD ユーザーは、[無制限の管理特権](sql-database-manage-logins.md#unrestricted-administrative-accounts)を持ちます。
 - 管理者以外の、データベース レベルの Azure Active Directory (Azure AD) ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users) を参照してください。
 - Azure AD サーバー プリンシパル (ログイン) は、1 つの MI インスタンス内のみで SQL 機能をサポートします。 同じ Azure AD テナント内か、または異なるテナント内かに関係なく、AD ユーザーの場合、クロス インスタンス対話を必要とする機能はサポートされていません。 そのような機能の例として次のものがあります。
-    - SQL トランザクション レプリケーション
-    - リンク サーバー
+
+  - SQL トランザクション レプリケーション
+  - リンク サーバー
+
 - Azure AD グループにマップされている Azure AD ログインをデータベース所有者として設定することはサポートされていません。
 - [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) 句など、他の Azure AD プリンシパルを使用した Azure AD サーバー レベル プリンシパルの権限の借用はサポートされています。 EXECUTE AS の制限事項:
-    - 名前がログイン名と異なる場合、EXECUTE AS USER は Azure AD ユーザーに対してポートされません。 たとえば、CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 構文を使用してユーザーが作成されて、EXEC AS USER = _myAadUser_ を使用して権限借用が試行された場合などです。 AD サーバー プリンシパル (ログイン) から **USER** を作成するときは、 user_name を **LOGIN** からの同じ login_name として指定します。
-    - Azure AD プリンシパルを対象とした次の操作を実行できるのは、`sysadmin` ロールに属している SQL サーバーレベル プリンシパル (ログイン) のみです。 
-        - EXECUTE AS USER
-        - EXECUTE AS LOGIN
+
+  - 名前がログイン名と異なる場合、EXECUTE AS USER は Azure AD ユーザーに対してポートされません。 たとえば、CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 構文を使用してユーザーが作成されて、EXEC AS USER = _myAadUser_ を使用して権限借用が試行された場合などです。 AD サーバー プリンシパル (ログイン) から **USER** を作成するときは、 user_name を **LOGIN** からの同じ login_name として指定します。
+  - Azure AD プリンシパルを対象とした次の操作を実行できるのは、`sysadmin` ロールに属している SQL サーバーレベル プリンシパル (ログイン) のみです。
+
+    - EXECUTE AS USER
+    - EXECUTE AS LOGIN
+
 - **パブリック プレビュー** Azure AD サーバー プリンシパル (ログイン) の制限事項:
-    - マネージド インスタンスに対する Active Directory 管理者の制限事項:
-        - マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-        - 現時点では、マスター DB に作成される最初の Azure AD ログインは、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER を使用して標準の SQL Server アカウント (Azure AD ではない) `sysadmin` によって作成される必要があります。 一般提供の後、この制限は削除され、マネージド インスタンスの Active Directory 管理者によって初期 Azure AD ログインを作成できます。
+
+  - マネージド インスタンスに対する Active Directory 管理者の制限事項:
+
+    - マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - 現時点では、マスター DB に作成される最初の Azure AD ログインは、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER を使用して標準の SQL Server アカウント (Azure AD ではない) `sysadmin` によって作成される必要があります。 一般提供の後、この制限は削除され、マネージド インスタンスの Active Directory 管理者によって初期 Azure AD ログインを作成できます。
     - SQL Server Management Studio (SSMS) または SqlPackage で使用される DacFx (エクスポート/インポート) は、Azure AD ログインではサポートされていません。 この制限は、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。
     - SSMS での Azure AD サーバー プリンシパル (ログイン) の使用
-        - (任意の認証ログインを使用した) Azure AD ログインのスクリプトはサポートされていません。
-        - Intellisense は、**CREATE LOGIN FROM EXTERNAL PROVIDER** ステートメントを認識せず、赤の下線を表示します。
+
+      - (任意の認証ログインを使用した) Azure AD ログインのスクリプトはサポートされていません。
+      - Intellisense は、**CREATE LOGIN FROM EXTERNAL PROVIDER** ステートメントを認識せず、赤の下線を表示します。
+
 - サーバー レベル プリンシパル ログイン (マネージド インスタンスのプロビジョニング プロセスによって作成される)、サーバー ロールのメンバー (`securityadmin`または`sysadmin`)、あるいはサーバー レベルの ALTER ANY LOGIN アクセス許可を持つその他のログインのみが、マネージド インスタンスのマスター データベースに Azure AD サーバー プリンシパル (ログイン) を作成できます。
 - ログインが SQL プリンシパルの場合、作成コマンドを使用して Azure AD アカウントのログインを作成できるのは、`sysadmin` ロールに属しているログインのみです。
 - Azure AD ログインは、Azure SQL Managed Instance に使用されるのと同じディレクトリー内の Azure AD のメンバーでなければなりません。
 - Azure AD サーバー プリンシパル (ログイン) は、SSMS 18.0 プレビュー 5 から、オブジェクト エクスプ ローラーに表示されます。
 - Azure AD サーバー プリンシパル (ログイン) と Azure AD 管理者アカウントとの重複は許可されます。 プリンシパルを解決してアクセス許可をマネージ インスタンスに適用するとき、Azure AD の管理者よりも Azure AD サーバー プリンシパル (ログイン) が優先されます。
 - 認証時、認証するプリンシパルを解決するために次の順序が適用されます。
+
     1. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) に直接マップされているものとして存在する (sys.server_principals に type ‘E’ と指定されている) 場合、アクセスを許可し、Azure AD サーバー プリンシパル (ログイン) のアクセス権を適用する。
     2. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) にマップされている Azure AD グループのメンバーである (sys.server_principals に type ‘X’ と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス権を適用する。
     3. Azure AD アカウントがマネージド インスタンス用のポータル構成の特殊な Azure AD 管理者である (マネージド インスタンス システム ビューに存在しない) 場合は、マネージド インスタンスの Azure AD 管理者の特殊な固定アクセス許可を適用する (レガシー モード)。
     4. Azure AD アカウントが、データベース内の Azure AD ユーザーに直接マップされたものとして存在する (sys.database_principals に type ‘E’ と指定されている) 場合、アクセスを許可し、Azure AD データベース ユーザーのアクセス許可を適用する。
     5. Azure AD アカウントが、データベース内の Azure AD ユーザーにマップされた Azure AD グループのメンバーである (sys.database_principals に type ‘X’ と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス許可を適用する。
     6. Azure AD ユーザー アカウントまたは Azure AD グループ アカウントのいずれかにマップされている Azure AD ログインがある場合、ユーザー認証を解決すると、この Azure AD ログインのすべてのアクセス許可が適用される。
-
-
-
-
-
 
 ### <a name="service-key-and-service-master-key"></a>サービス キーとサービス マスター キー
 
@@ -257,8 +271,6 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 - `SINGLE_USER`
 - `WITNESS`
 
-名前の変更はサポートされていません。
-
 詳細については、[ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options) に関する記事をご覧ください。
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント
@@ -322,7 +334,6 @@ SQL Server エージェントについては、「[SQL Server エージェント
 - `CREATE ASSEMBLY FROM BINARY` だけがサポートされています。 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。  
 - `CREATE ASSEMBLY FROM FILE` はサポートされていません。 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql) に関する記事をご覧ください。
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
-
 
 ### <a name="dbcc"></a>DBCC
 
@@ -437,7 +448,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ### <a name="stored-procedures-functions-triggers"></a>ストアド プロシージャ、関数、トリガー
 
-- `NATIVE_COMPILATION` は現在サポートされていません。
+- `NATIVE_COMPILATION` は、General Purpose レベルではサポートされていません。
 - [sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) の次のオプションはサポートされていません。
   - `allow polybase export`
   - `allow updates`
@@ -448,7 +459,6 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
 - `sp_addextendedproc`  および `sp_dropextendedproc` などの `Extended stored procedures` はサポートされていません。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
-- `sp_renamedb` はサポートされていません。 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql) に関する記事をご覧ください。
 
 ## <a name="Changes"></a>動作の変更
 
@@ -467,7 +477,11 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ### <a name="tempdb-size"></a>TEMPDB のサイズ
 
-`tempdb` は、それぞれ最大サイズが 14 GB の 12 個のファイルに分割されます。 ファイルあたりのこの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 この制限は間もなく削除されます。 一部のクエリで `tempdb` のサイズが 168 GB を超える必要がある場合は、エラーが返されます。
+General Purpose レベルでは、`tempdb` の最大ファイル サイズは 24 GB/コア以下にする必要があります。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズで制限されます。 `tempdb` は常に 12 個のデータ ファイルに分割されます。 ファイルあたりのこの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 一部のクエリで `tempdb` のサイズが 24 GB/コアを超える必要がある場合は、エラーが返されます。
+
+### <a name="cannot-restore-contained-database"></a>包含データベースを復元できない
+
+マネージド インスタンスは[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)を復元できません。 既存のデータベースのポイントインタイム リストアは、マネージド インスタンスには機能しません。 この問題は間もなく解消される予定ですが、当面の間は、マネージド インスタンスに配置されているデータベースから包含オプションを削除し、運用データベースの包含オプションを使用しないようにすることをお勧めします。
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
 
@@ -500,7 +514,7 @@ SQL Server Management Studio (SSMS) と SQL Server Data Tools (SSDT) には、�
 
 ### <a name="database-mail-profile"></a>データベース メール プロファイル
 
-データベース メール プロファイルは 1 つしか存在できず、`AzureManagedInstance_dbmail_profile` という名前である必要があります。
+SQL エージェントによって使用されるデータベース メールプロファイルは、`AzureManagedInstance_dbmail_profile` という名前である必要があります。
 
 ### <a name="error-logs-are-not-persisted"></a>エラー ログが非永続的である
 
@@ -514,7 +528,7 @@ SQL Server Management Studio (SSMS) と SQL Server Data Tools (SSDT) には、�
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
 
-同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合、.Net の `TransactionScope` クラスが機能しません。
+同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合、.NET の `TransactionScope` クラスが機能しません。
 
 ```C#
 using (var scope = new TransactionScope())

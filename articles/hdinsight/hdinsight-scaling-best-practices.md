@@ -7,40 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/02/2018
+ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: 30f96c54dd916188296ca0245d4095a32ae0bbe4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108156"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
 HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 これにより、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。
 
-たとえば、1 日 1 回または月 1 回に発生するバッチ処理がある場合、そのスケジュールされたイベントの数分前に HDInsight クラスターをスケールアップして、十分な量のメモリと CPU のコンピューティング能力を確保できます。 スケーリングは PowerShell コマンドレットの [`Set–AzureRmHDInsightClusterSize`](hdinsight-administer-use-powershell.md#scale-clusters) で自動化できます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
+たとえば、1 日 1 回または月 1 回に発生するバッチ処理がある場合、そのスケジュールされたイベントの数分前に HDInsight クラスターをスケールアップして、十分な量のメモリと CPU のコンピューティング能力を確保できます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
 
-* [PowerShell](hdinsight-administer-use-powershell.md) でクラスターをスケーリングするには:
+## <a name="utilities-to-scale-clusters"></a>クラスターをスケーリングするユーティリティ
 
-    ```powershell
-    Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-    ```
-    
-* [Azure クラシック CLI](hdinsight-administer-use-command-line.md) でクラスターをスケーリングするには:
+Microsoft では、クラスターをスケーリングするための次のユーティリティを提供しています。
 
-    ```
-    azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-    ```
+|ユーティリティ | 説明|
+|---|---|
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/overview) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
+|[Azure クラシック CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count>|
+|[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-    
-* [Azure Portal](https://portal.azure.com) でクラスターをスケーリングするには、HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスターのスケール設定]** を選択し、[クラスターのスケール設定] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。
-
-    ![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
 これらの方法のいずれかを使用すると、HDInsight クラスターを数分以内にスケールアップまたはスケールダウンできます。
+
+> [!IMPORTANT]  
+> * Azure クラシック CLI は非推奨です。クラシック デプロイ モデルでのみ使用してください。 その他すべてのデプロイについては、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してください。  
+> * PowerShell AzureRM モジュールは非推奨です。  可能な限り、[Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)を使用してください。
 
 ## <a name="scaling-impacts-on-running-jobs"></a>実行中のジョブに対するスケーリングの影響
 
@@ -53,9 +53,10 @@ HDInsight では、クラスター内のワーカー ノードの数をスケー
 保留中または実行中のジョブの一覧を表示するには、次の手順に従って YARN ResourceManager UI を使用できます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 左側のメニューで **[参照]**、**[HDInsight クラスター]**、クラスターの順に選択します。
-3. [HDInsight クラスター] ウィンドウで、上部のメニューの **[ダッシュボード]** を選択し、Ambari UI を開きます。 クラスターのログイン資格情報を入力します。
-4. 左側のメニューにあるサービスの一覧で、**[YARN]** をクリックします。 [YARN] ページで **[Quick Links]\(クイック リンク\)** を選択し、アクティブなヘッド ノードにポインターを置き、**[ResourceManager UI]** をクリックします。
+2. 左側から、**[すべてのサービス]** > **[分析]** > **[HDInsight クラスター]** に移動し、クラスターを選択します。
+3. メイン ビューから、 **[クラスター ダッシュボード]** > **[Ambari ホーム]** に移動します。 クラスターのログイン資格情報を入力します。
+4. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
+5. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、**[ResourceManager UI]** を選択します。
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
@@ -97,9 +98,7 @@ yarn application -kill "application_1499348398273_0003"
 
 ## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>HDInsight の名前ノードはスケールダウン後もセーフ モードを維持する
 
-![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster.png)
-
-前の画像に示すように、ワーカー ノードが最低限の 1 つになるようにクラスターを縮小した場合、パッチの適用によってワーカー ノードが再起動されたときまたはスケーリング操作の直後に、Apache HDFS がセーフ モードのままになることがあります。
+ワーカー ノードが最低限の 1 つになるようにクラスターを縮小した場合、パッチの適用が原因でワーカー ノードが再起動されたときまたはスケーリング操作の直後に、Apache HDFS がセーフ モードのままになることがあります。
 
 この主な原因は、Hive がいくつかの `scratchdir` ファイルを使用していて、既定で各ブロックの 3 つのレプリカを必要としていることです。ただし、ワーカー ノードが最低限の 1 つになるようにスケールダウンした場合は、1 つのレプリカしか作成できません。 結果として、`scratchdir` 内のファイルは "*レプリケーション数が不足*" します。 これが原因で、スケール操作後にサービスが再起動したときに HDFS はセーフ モードのままになります。
 

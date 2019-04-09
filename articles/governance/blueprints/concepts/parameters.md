@@ -4,17 +4,17 @@ description: 静的パラメーターと動的パラメーターについて、�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838019"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 
@@ -41,8 +41,13 @@ Resource Manager テンプレート _アーティファクト_ は **secureStrin
 - Key Vault シークレット名
 - Key Vault シークレット バージョン
 
-参照される Key Vault は、Blueprint の割り当て先と同じサブスクリプションに存在している必要があります。
-また、Key Vault の**アクセス ポリシー** ページに構成されている**テンプレート デプロイの Azure Resource Manager にアクセスできる**必要があります。 この機能を有効にする方法については、Key Vault の「[テンプレートのデプロイを有効にする](../../../managed-applications/key-vault-access.md#enable-template-deployment)」を参照してください。 Azure Key Vault の詳細については、[Key Vault の概要](../../../key-vault/key-vault-overview.md)ページを参照してください。
+ブループリント割り当てにおいて**システム割り当てマネージド ID** が使用されている場合、参照された Key Vault はブループリント定義が割り当てられている同じサブスクリプションに存在する_必要があります_。
+
+ブループリント割り当てにおいて**ユーザー割り当てマネージド ID** が使用されている場合、参照された Key Vault は一元化されたサブスクリプションに存在する_可能性があります_。 ブループリント割り当て前に、マネージド ID には Key Vault に対する適切な権利が付与されている必要があります。
+
+いずれの場合も、Key Vault では**アクセス ポリシー** ページに構成されている**テンプレート デプロイの Azure Resource Manager にアクセスできる**必要があります。 この機能を有効にする方法については、Key Vault の「[テンプレートのデプロイを有効にする](../../../managed-applications/key-vault-access.md#enable-template-deployment)」を参照してください。
+
+Azure Key Vault の詳細については、[Key Vault の概要](../../../key-vault/key-vault-overview.md)ページを参照してください。
 
 ## <a name="parameter-types"></a>パラメーターの種類
 
@@ -52,13 +57,13 @@ Resource Manager テンプレート _アーティファクト_ は **secureStrin
 
 #### <a name="setting-static-parameters-in-the-portal"></a>ポータルで静的パラメーターを設定する
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 
 1. 既存のブループリントをクリックし、**[ブループリントを編集する]** をクリックするか、**[+ ブループリントを作成する]** をクリックして、**[基本]** タブに情報を入力します。
 
-1. **[次へ:アーティファクト]** をクリックするか、**[アーティファクト]** タブをクリックします。
+1. **[次へ: アーティファクト]** をクリックするか、**[アーティファクト]** タブをクリックします。
 
 1. パラメーター オプションを持つブループリントに追加されたアーティファクトの **[パラメーター]** 列に、**[X of Y parameters populated]\(X/Y のパラメーターが設定されました\)** が表示されます。 パラメーターを編集するには、そのアーティファクト行をクリックします。
 
@@ -169,7 +174,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>ポータルで動的パラメーターを設定する
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 
@@ -236,8 +241,8 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](lifecycle.md)を参照する
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](lifecycle.md)を参照する。
+- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

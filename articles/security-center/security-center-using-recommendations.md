@@ -3,7 +3,7 @@ title: Azure Security Center の推奨事項を使用してセキュリティを
 description: " セキュリティ ポリシーと Azure Security Center の推奨事項を使用して、セキュリティ攻撃を軽減する方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/2/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5ff59a9ed7dc44bb7a4176f7a174be1e7d0ec9b6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 3/26/2019
+ms.author: monhaber
+ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104908"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517693"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
-セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。
+セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
 
-セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要なセキュリティ管理を構成するプロセスを説明する推奨事項を作成します。
+Security Center は、継続的スキャンを自動的に実行し、Azure リソースのセキュリティの状態を分析します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要なセキュリティ管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は 24 時間以内に更新されます。ただし、次の場合を除きます。
+
+- オペレーティング システムのセキュリティ構成に関する推奨事項は 48 時間以内に更新されます
+- Endpoint Protection の問題に関する推奨事項は 8 時間以内に更新されます
 
 ## <a name="scenario"></a>シナリオ
 このシナリオでは、Security Center の推奨事項を監視し対処することで、セキュリティ インシデントの可能性を減らすために Security Center を使用する方法を示します。 シナリオでは、架空の会社 Contoso、および「Azure Security Center [計画および運用ガイド](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)」で説明されているロールを使用します。 このシナリオでは、次の人物の役割を中心に説明していきます。

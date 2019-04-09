@@ -3,20 +3,20 @@ title: Azure Data Factory パイプラインでカスタム アクティビテ�
 description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: douglasl
-ms.openlocfilehash: 0236d9118389b4f8fb79453b425c70f09e94bbb8
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213809"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855871"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,11 +30,13 @@ Azure Data Factory パイプラインでは、2 種類のアクティビティ�
 
 Data Factory でサポートされていないデータ ストアとの間でデータを移動する場合や、Data Factory でサポートされていない方法でデータを変換/処理する場合は、独自のデータ移動ロジックまたはデータ変換ロジックで**カスタム アクティビティ**を作成し、パイプラインでそのアクティビティを使用します。 カスタム アクティビティでは、仮想マシンの **Azure Batch** プールでカスタマイズされたコード ロジックを実行します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Azure Batch サービスを初めて利用する場合は、次の記事をご覧ください。
 
 * [Azure Batch の基本](../batch/batch-technical-overview.md) 」をご覧ください。
-* Azure Batch アカウントは、[New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) コマンドレットまたは [Azure Portal](../batch/batch-account-create-portal.md) を使用して作成します。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関する記事をご覧ください。
-* [New-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) コマンドレット。
+* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関する記事をご覧ください。
+* Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレットをご覧ください。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch のリンクされたサービス
 次の JSON では、サンプルの Azure Batch のリンクされたサービスを定義しています。 詳細については、「[Azure Data Factory でサポートされるコンピューティング環境](compute-linked-services.md)」をご覧ください。
@@ -102,13 +104,17 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | description           | アクティビティの動作を説明するテキスト。  | いいえ        |
 | type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | はい      |
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | はい      |
-| コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | はい      |
+| command               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | はい      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ &#42;       |
 | folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。<br/><br/>依存関係ファイルをサブフォルダーに置いている場合 (つまり、*folderPath* の下のフォルダー階層構造内に置いている場合)、現在の動作では、ファイルが Azure Batch にコピーされるときに、フォルダー構造がフラット化されます。 つまり、すべてのファイルは、サブフォルダーを使用せず、1 つのフォルダーにコピーされます。 この問題を回避するには、ファイルを圧縮し、圧縮されたファイルをコピーした後、目的の場所でカスタム コードと共に解凍することを検討してください。 | いいえ &#42;       |
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ        |
 | extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ        |
+| retentionTimeInDays | カスタム アクティビティ用に送信するファイルのリテンション期間。 既定値は 30 日です。 | いいえ  |
 
 &#42; `resourceLinkedService` プロパティと `folderPath` プロパティは、両方とも指定するか、両方とも省略する必要があります。
+
+> [!NOTE]
+> リンクされたサービスをカスタム アクティビティで ReferenceObjects として渡す場合は、セキュリティ上の観点から、Azure Key Vault 対応のリンクされたサービスを渡して (セキュリティで保護された文字列が含まれていないため)、シークレット名を使用して Key Vault のコードから直接資格情報を取り込むことをお勧めします。 Azure Key Vault 対応のリンクされたサービスを参照し、Key Vault から資格情報を取得して、コード内のストレージにアクセスする例が[ここに](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)記載されています。  
 
 ## <a name="custom-activity-permissions"></a>カスタム アクティビティのアクセス許可
 
@@ -227,13 +233,13 @@ namespace SampleApp
 次の PowerShell コマンドを使用して、パイプラインの実行を開始できます。
 
 ```.powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
 パイプラインが実行されているときは、次のコマンドを使用して実行出力を確認できます。
 
 ```.powershell
 while ($True) {
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
     if(!$result) {
         Write-Host "Waiting for pipeline to start..." -foregroundcolor "Yellow"
@@ -318,9 +324,9 @@ Activity Error section:
 
 ## <a name="compare-v2-v1"></a> v2 カスタム アクティビティとバージョン 1 (カスタム) DotNet アクティビティを比較する
 
-Azure Data Factory バージョン 1 では、`IDotNetActivity` インターフェイスの `Execute` メソッドを実装するクラスを含む .Net クラス ライブラリ プロジェクトを作成して (カスタム) DotNet アクティビティを実装します。 (カスタム) DotNet アクティビティの JSON ペイロードのリンクされたサービス、データセット、および拡張プロパティは、厳密に型指定されたオブジェクトとして Execution メソッドに渡されます。 バージョン 1 のビヘイビアーの詳細については、[バージョン 1 の (カスタム) DotNet](v1/data-factory-use-custom-activities.md) に関するページを参照してください。 この実装のため、バージョン 1 DotNet アクティビティ コードは、.Net Framework 4.5.2 をターゲットにする必要があります。 バージョン 1 の DotNet アクティビティは、Windows ベースの Azure Batch プールのノードで実行する必要があります。
+Azure Data Factory バージョン 1 では、`IDotNetActivity` インターフェイスの `Execute` メソッドを実装するクラスを含む .Net クラス ライブラリ プロジェクトを作成して (カスタム) DotNet アクティビティを実装します。 (カスタム) DotNet アクティビティの JSON ペイロードのリンクされたサービス、データセット、および拡張プロパティは、厳密に型指定されたオブジェクトとして Execution メソッドに渡されます。 バージョン 1 のビヘイビアーの詳細については、[バージョン 1 の (カスタム) DotNet](v1/data-factory-use-custom-activities.md) に関するページを参照してください。 この実装のため、バージョン 1 DotNet アクティビティ コードは、.NET Framework 4.5.2 をターゲットにする必要があります。 バージョン 1 の DotNet アクティビティは、Windows ベースの Azure Batch プールのノードで実行する必要があります。
 
-Azure Data Factory V2 のカスタム アクティビティでは、.Net インターフェイスを実装する必要はありません。 コマンドとスクリプトを直接実行できるようになり、実行可能ファイルとしてコンパイルされた独自のカスタム コードを実行できるようになりました。 この実装を構成するには、`Command` プロパティと `folderPath` プロパティを一緒に指定する必要があります。 カスタム アクティビティにより、実行可能ファイルとその依存関係が `folderpath` にアップロードされ、コマンドが実行されます。
+Azure Data Factory V2 のカスタム アクティビティでは、.NET インターフェイスを実装する必要はありません。 コマンドとスクリプトを直接実行できるようになり、実行可能ファイルとしてコンパイルされた独自のカスタム コードを実行できるようになりました。 この実装を構成するには、`Command` プロパティと `folderPath` プロパティを一緒に指定する必要があります。 カスタム アクティビティにより、実行可能ファイルとその依存関係が `folderpath` にアップロードされ、コマンドが実行されます。
 
 Data Factory v2 カスタム アクティビティの JSON ペイロードに定義されたリンクされたサービス、(referenceObjects に定義されている) データセット、および拡張プロパティには、実行可能ファイルから JSON ファイルとしてアクセスできます。 前述の SampleApp.exe コード サンプルに示すように、JSON シリアライザーを使用して、必要なプロパティにアクセスできます。
 
@@ -331,18 +337,18 @@ Data Factory V2 カスタム アクティビティに導入された変更によ
 
 |相違点      | カスタム アクティビティ      | バージョン 1 (カスタム) DotNet アクティビティ      |
 | ---- | ---- | ---- |
-|カスタム ロジックの定義方法      |実行可能ファイルを提供する      |.Net DLL を実装する      |
-|カスタム ロジックの実行環境      |Windows または Linux      |Windows (.Net Framework 4.5.2)      |
-|スクリプトの実行      |スクリプトの直接実行をサポート (例: Windows VM 上で "cmd /c echo hello world")      |.Net DLL に実装することが必要      |
+|カスタム ロジックの定義方法      |実行可能ファイルを提供する      |.NET DLL を実装する      |
+|カスタム ロジックの実行環境      |Windows または Linux      |Windows (.NET Framework 4.5.2)      |
+|スクリプトの実行      |スクリプトの直接実行をサポート (例: Windows VM 上で "cmd /c echo hello world")      |.NET DLL に実装することが必要      |
 |データセットは必要か      |省略可能      |アクティビティを連鎖して情報を渡すために必要      |
 |アクティビティからカスタム ロジックへの情報の受け渡し      |ReferenceObjects (LinkedServices と Datasets) および ExtendedProperties (カスタム プロパティ) を使用      |ExtendedProperties (カスタム プロパティ)、入力および出力データセットを使用      |
-|カスタム ロジックでの情報の取得      |実行可能ファイルと同じフォルダーに格納されている activity.json、linkedServices.json、および datasets.json を解析      |.Net SDK (.Net Frame 4.5.2) を使用      |
-|ログの記録      |STDOUT に直接書き込む      |.Net DLL でロガーを実装する      |
+|カスタム ロジックでの情報の取得      |実行可能ファイルと同じフォルダーに格納されている activity.json、linkedServices.json、および datasets.json を解析      |.NET SDK (.NET Frame 4.5.2) を使用      |
+|ログの記録      |STDOUT に直接書き込む      |.NET DLL でロガーを実装する      |
 
 
-バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .Net コードが既にあり、これをカスタム アクティビティの現在のバージョンで使用するには、コードを変更する必要があります。 以下のガイドラインの概要に従って、コードを更新します。
+バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .NET コードが既にあり、これをカスタム アクティビティの現在のバージョンで使用するには、コードを変更する必要があります。 以下のガイドラインの概要に従って、コードを更新します。
 
-  - プロジェクトを .Net クラス ライブラリからコンソール アプリに変更します。
+  - プロジェクトを .NET クラス ライブラリからコンソール アプリに変更します。
   - `Main` メソッドでアプリケーションを起動します。 `IDotNetActivity` インターフェイスの `Execute` メソッドは、必要なくなりました。
   - JSON シリアライザーを使用して、リンクされたサービス、データセット、およびアクティビティを、厳密に型指定されたオブジェクトとしてではなく読み取り、解析します。 必要なプロパティの値をメインのカスタム コード ロジックに渡します。 前述の SampleApp.exe コードをサンプルとして参照してください。
   - ロガー オブジェクトは、現在サポートされていません。 実行可能ファイルからの出力をコンソールに出力できます。この出力は、stdout.txt に保存されます。

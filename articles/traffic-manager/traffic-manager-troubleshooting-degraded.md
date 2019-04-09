@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: 2cb70c67bc4719eb43c4fcb70edf574c57362f26
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f539cb905c0ed401816c7f223918a1416f95d6c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013274"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312276"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 
@@ -47,7 +47,7 @@ Traffic Manager の正常性が **Inactive** 状態の場合は､両方のエ�
 
 また、Internet Explorer の F12 デバッグ ツールの [ネットワーク] タブを使用して、HTTP 応答を表示することもできます。
 
-この例では、弊社のプローブ URL (http://watestsdp2008r2.cloudapp.net:80/Probe) からの応答を表示します。 次の PowerShell の例で、問題を示します。
+この例では、弊社のプローブ URL (http:\//watestsdp2008r2.cloudapp.net:80/Probe) からの応答の表示を期待します。 次の PowerShell の例で、問題を示します。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

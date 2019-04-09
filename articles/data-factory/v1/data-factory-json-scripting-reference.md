@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f65b9904b15815c997c1608940109ad296ee6007
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891258"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -26,6 +26,8 @@ ms.locfileid: "55822869"
 
 
 この記事では、Azure Data Factory のエンティティ (パイプライン、アクティビティ、データセット、リンクされたサービス) を定義するための JSON スキーマと例を紹介します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="pipeline"></a>パイプライン
 パイプライン定義の大まかな構造を次に示します。
@@ -50,7 +52,7 @@ ms.locfileid: "55822869"
 | name | パイプラインの名前。 アクティビティまたはパイプラインで実行するように構成されているアクションを表す名前を指定します。<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |はい |
 | description |アクティビティまたはパイプラインの用途を説明するテキストです。 | いいえ  |
 | activities | 一連のアクティビティを含みます。 | はい |
-| start |パイプラインの開始日時。 [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)にする必要があります。 例: 2014-10-14T16:32:41。 <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00**-05:00` は、東部標準時で午前 6 時です。<br/><br/>start プロパティと end プロパティで、パイプラインの有効期間を指定します。 出力スライスは、この有効期間にのみ生成されます。 |いいえ <br/><br/>end プロパティの値を指定する場合は、start プロパティの値も指定する必要があります。<br/><br/>パイプラインを作成するには、開始時間と終了時間の両方が空でもかまいません。 パイプラインを実行できる有効期間を設定するには、両方の値を指定する必要があります。 パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzureRmDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。 |
+| start |パイプラインの開始日時。 [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)にする必要があります。 例: 2014-10-14T16:32:41。 <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00**-05:00` は、東部標準時で午前 6 時です。<br/><br/>start プロパティと end プロパティで、パイプラインの有効期間を指定します。 出力スライスは、この有効期間にのみ生成されます。 |いいえ <br/><br/>end プロパティの値を指定する場合は、start プロパティの値も指定する必要があります。<br/><br/>パイプラインを作成するには、開始時間と終了時間の両方が空でもかまいません。 パイプラインを実行できる有効期間を設定するには、両方の値を指定する必要があります。 パイプラインの作成時に開始時間と終了時間を指定しない場合、後で Set-AzDataFactoryPipelineActivePeriod コマンドレットを使用して設定できます。 |
 | end |パイプラインの終了日時。 ISO 形式で指定する必要があります。 例: 2014-10-14T17:32:41 <br/><br/>東部標準時などの現地時間を指定できます。 たとえば、`2016-02-27T06:00:00**-05:00` は、東部標準時で午前 6 時です。<br/><br/>無期限でパイプラインを実行するには、end プロパティの値として 9999-09-09 を指定します。 |いいえ  <br/><br/>start プロパティの値を指定する場合は、end プロパティの値も指定する必要があります。<br/><br/>**start** プロパティの注意事項を参照してください。 |
 | isPaused |true に設定すると、パイプラインは実行されません。 既定値 = false。 このプロパティを使用して有効または無効にすることができます。 |いいえ  |
 | pipelineMode |パイプラインの実行のスケジューリングを行うためのメソッドです。 使用可能な値: "Scheduled" (既定)、"Onetime"。<br/><br/>"Scheduled" は、パイプラインがアクティブな期間 (開始時刻と終了時刻) に応じて、指定された間隔で実行されることを意味します。 "Onetime" はパイプラインが 1回だけ実行されることを意味します。 現時点では、作成された Onetime パイプラインを変更または更新することはできません。 1 回限りの設定の詳細については、「[1 回限りのパイプライン](data-factory-create-pipelines.md#onetime-pipeline)」を参照してください。 |いいえ  |
@@ -2458,7 +2460,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 
-**New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
+**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 ```json
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -3319,10 +3321,11 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 | host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。 |はい |
 | userid |サーバーにアクセスするユーザーの ID を指定します。 |No (encryptedCredential を選択する場合) |
 | password |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
-| encryptedCredential |New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
+| encryptedCredential |New-AzDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
 | gatewayName |Data Factory が、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前を指定します。 |はい |
 
 #### <a name="sample-folder-path-definitions"></a>フォルダー パス定義の例
+
 | シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath  |
 | --- | --- | --- |
 | Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>次に例を示します。D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
@@ -3494,6 +3497,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | copyBehavior |ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 |**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。 つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><br/>**FlattenHierarchy:** ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルに作成されます。 ターゲット ファイルは、自動生成された名前で作成されます。<br/><br/>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名/BLOB 名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 |いいえ  |
+
 auto-
 
 #### <a name="example"></a>例
@@ -3732,7 +3736,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
-| encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) 出力。 |いいえ  |
+| encryptedCredential |アクセス資格情報の [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 出力。 |いいえ  |
 
 #### <a name="example-using-anonymous-authentication"></a>例:匿名認証を使用する
 
@@ -3861,7 +3865,7 @@ HDFS からデータをコピーする場合は、コピー アクティビテ�
 SFTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **Sftp** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ  |
 | authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |はい |
@@ -3875,7 +3879,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 基本認証を使用するには、`authenticationType` を `Basic` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
 | password | ユーザー (username) のパスワード。 | はい |
 
@@ -3924,7 +3928,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 基本認証を使用するには、`authenticationType` を `SshPublicKey` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username |SFTP サーバーにアクセスできるユーザー |はい |
 | privateKeyPath | ゲートウェイがアクセスできる秘密キー ファイルへの絶対パスを指定します。 | `privateKeyPath` または `privateKeyContent` を指定します。 <br><br> オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 | privateKeyContent | 秘密キーのコンテンツのシリアル化された文字列。 コピー ウィザードでは、秘密キー ファイルを読み取り、秘密キーのコンテンツを自動的に抽出できます。 その他のツール/SDK を使用している場合は、代わりに privateKeyPath プロパティを使用します。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
@@ -4281,7 +4285,7 @@ OData のリンクされたサービスを定義するには、リンクされ�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
             "username": "username",
             "password": "password"
@@ -4298,7 +4302,7 @@ OData のリンクされたサービスを定義するには、リンクされ�
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }
@@ -4462,7 +4466,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 }
 ```
 #### <a name="example---using-basic-authentication-with-encrypted-credentials"></a>例: 暗号化された資格情報で基本認証を使用する
-[New-AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) (Azure PowerShell のバージョン 1.0) コマンドレットまたは [New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (Azure PowerShell のバージョン 0.9 以前) を使用して資格情報を暗号化することができます。
+[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) コマンドレットを使用して資格情報を暗号化できます。
 
 ```json
 {
@@ -5062,7 +5066,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 
-**New-AzureRmDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
+**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

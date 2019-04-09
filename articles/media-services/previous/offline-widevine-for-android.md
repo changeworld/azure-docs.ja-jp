@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: bf2f2db57f33645389fd751c8c00f9f135416c50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9570982e18f2698400c2798dd3e29b0ca6160b8c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864135"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309744"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング  
 
@@ -153,7 +153,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 上記のオープンソース PWA アプリは、Node.js で作成されています。 独自のバージョンを Ubuntu サーバーでホストする場合は、再生を妨げる可能性のある、以下のよく発生する問題に留意してください。
 
-1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://13.85.80.81:8080' is therefore not allowed access. 非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。
+1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. 非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。
 2. 証明書の問題:Chrome v 58 以降では、Widevine 用の EME には HTTPS が必要です。 したがって、X509 証明書を使って HTTPS 経由でサンプル アプリをホストする必要があります。 通常のテスト証明書は次の要件のため機能しません。次の最小要件を満たす証明書を取得する必要があります。
     - Chrome および Firefox では、SAN-Subject Alternative Name の設定が証明書に存在する必要があります
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません

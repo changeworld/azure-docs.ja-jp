@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002956"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313653"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
 バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。 CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](https://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。 CORS について詳しくは、[CORS の仕様](https://www.w3.org/TR/cors/)をご覧ください。
@@ -67,7 +67,7 @@ CORS ルールは、サービス レベルで設定します。そのため、�
 
 CORS ルールに含まれている各要素は次のとおりです。
 
-* **AllowedOrigins**: CORS を使用したストレージ サービスに対する要求が許可される元のドメイン。 元のドメインとは、要求が発行されたドメインです。 元のドメインは、ユーザー エージェントがサービスに送信した元のドメインと、大文字と小文字の違いも含めて正確に一致する必要があります。 また、ワイルドカード文字 '*' を使用して、すべての元のドメインからの CORS を使用した要求を許可することもできます。 上記の例では、ドメイン[http://www.contoso.com](http://www.contoso.com) と [http://www.fabrikam.com](http://www.fabrikam.com) は、CORS を使用してサービスに対する要求を行うことができます。
+* **AllowedOrigins**: CORS を使用したストレージ サービスに対する要求が許可される元のドメイン。 元のドメインとは、要求が発行されたドメインです。 元のドメインは、ユーザー エージェントがサービスに送信した元のドメインと、大文字と小文字の違いも含めて正確に一致する必要があります。 また、ワイルドカード文字 '*' を使用して、すべての元のドメインからの CORS を使用した要求を許可することもできます。 上記の例では、ドメイン http:\//www.contoso.com と http:\//www.fabrikam.com は、CORS を使用してサービスに対する要求を行うことができます。
 * **AllowedMethods**: 元のドメインが CORS 要求で使用できるメソッド (HTTP 要求の動詞)。 上記の例では、PUT 要求と GET 要求のみが許可されます。
 * **AllowedHeaders**: 元のドメインが CORS 要求に指定できる要求ヘッダー。 上記の例では、x-ms-meta-data、x-ms-meta-target、x-ms-meta-abc で始まるすべてのメタデータ ヘッダーが許可されます。 ワイルドカード文字 '*' は、指定したプレフィックスで始まるすべてのヘッダーが許可されることを示しています。
 * **ExposedHeaders**: CORS 要求への応答で送信され、ブラウザーが要求の発行元に公開できる応答ヘッダー。 上記の例では、x-ms-meta で始まるすべてのヘッダーを公開するようブラウザーに指示しています。
@@ -130,9 +130,9 @@ CORS ルールは、次のように評価されます。
 | Request |  |  | Response |  |
 | --- | --- | --- | --- | --- |
 | **メソッド** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果** |
-| **PUT** |http://www.contoso.com |x-ms-blob-content-type |最初のルール |Success |
-| **GET** |http://www.contoso.com |x-ms-blob-content-type |2 番目のルール |Success |
-| **GET** |http://www.contoso.com |x-ms-client-request-id |2 番目のルール |失敗 |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |最初のルール |Success |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |2 番目のルール |Success |
+| **GET** |http:\//www.contoso.com |x-ms-client-request-id |2 番目のルール |失敗 |
 
 最初の要求は最初のルールと一致します (元のドメインが許可される元のドメインと一致し、メソッドが許可されるメソッドと一致し、ヘッダーが許可されるヘッダーと一致します)。そのため、成功します。
 

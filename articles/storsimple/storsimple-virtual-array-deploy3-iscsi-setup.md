@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812040"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317512"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
@@ -98,7 +98,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
     **[Web プロキシ設定]** ページで、以下のことを実行します。
    
-   1. *http://host-IPアドレス*または *FQDN:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
+   1. *http://\/host-IP アドレス*または *FQDN:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**[ユーザー名]** と **[パスワード]** も指定する必要があります。
    4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。

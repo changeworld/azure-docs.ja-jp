@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e7243c1f0c0bc26b2e77a060b5def6e204835235
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554238"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919279"
 ---
 >[!NOTE]
 >固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
 
-| リソース | 既定の制限 | 
+| Resource | 既定の制限 | 
 | --- | --- | 
 | 1 つのサブスクリプション内の Azure Media Services アカウント | 25 (固定) |
 | Media Services アカウントあたりのメディア占有ユニット数 |25 (S1)<br/>10 (S2、S3)<sup>1</sup> | 
@@ -39,7 +39,7 @@ ms.locfileid: "57554238"
 
 2017 年 4 月 1 日以降、アカウント内の 90 日前より古いジョブ レコードすべてが、関連付けられているタスク レコードと共に自動的に削除されます。 レコードの合計数が最大クォータより小さい場合でも、自動的な削除が行われます。 ジョブとタスクの情報をアーカイブするには、[Media Services .NET SDK でのアセットの管理](../articles/media-services/previous/media-services-dotnet-manage-entities.md)に関する記事で説明されているコードを使用します。
 
-<sup>3</sup> ジョブ エンティティの一覧を要求すると、要求ごとに最大 1,000 件のジョブが返されます。 送信したすべてのジョブを追跡するには、[OData システム クエリ オプション](https://msdn.microsoft.com/library/gg309461.aspx)に関する記事で説明されている top または skip クエリを使用します。
+<sup>3</sup> ジョブ エンティティの一覧を要求すると、要求ごとに最大 1,000 件のジョブが返されます。 送信したすべてのジョブを追跡するには、[OData システム クエリ オプション](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))に関する記事で説明されている top または skip クエリを使用します。
 
 <sup>4</sup> ロケーターはユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。 詳しくは、[Azure Media Services でのコンテンツの保護](../articles/media-services/previous/media-services-content-protection-overview.md)に関する記事をご覧ください。
 

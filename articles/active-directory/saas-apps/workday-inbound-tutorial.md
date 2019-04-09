@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897624"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -257,13 +257,13 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
     ![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity グループ")
 2. **[セキュリティ グループの作成]** タスクを完了します。 
 
-  * Workday のセキュリティ グループには次の 2 種類があります。
-    * **制約なし:** セキュリティ グループのすべてのメンバーは、セキュリティ グループによって保護されているすべてのデータ インスタンスにアクセスできます。
-    * **制約付き:** すべてのセキュリティ グループ メンバーは、セキュリティ グループがアクセスできるデータ インスタンス (行) のサブセットへのコンテキスト アクセス権を持っています。
-  * 統合に適したセキュリティ グループの種類を選択するには、Workday 統合パートナーに確認してください。
-  * グループの種類がわかったら、**[Type of Tenanted Security Group]\(テナント セキュリティ グループの種類\)** ドロップダウンから **[Integration System Security Group (Unconstrained)]\(統合システム セキュリティ グループ (制約なし)\)** または **[Integration System Security Group (Constrained)]\(統合システム セキュリティ グループ (制約あり)\)** を選択します。
+   * Workday のセキュリティ グループには次の 2 種類があります。
+     * **制約なし:** セキュリティ グループのすべてのメンバーは、セキュリティ グループによって保護されているすべてのデータ インスタンスにアクセスできます。
+     * **制約付き:** すべてのセキュリティ グループ メンバーは、セキュリティ グループがアクセスできるデータ インスタンス (行) のサブセットへのコンテキスト アクセス権を持っています。
+   * 統合に適したセキュリティ グループの種類を選択するには、Workday 統合パートナーに確認してください。
+   * グループの種類がわかったら、**[Type of Tenanted Security Group]\(テナント セキュリティ グループの種類\)** ドロップダウンから **[Integration System Security Group (Unconstrained)]\(統合システム セキュリティ グループ (制約なし)\)** または **[Integration System Security Group (Constrained)]\(統合システム セキュリティ グループ (制約あり)\)** を選択します。
 
-    ![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity グループ")
+     ![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity グループ")
 
 3. セキュリティ グループの作成が成功した後、セキュリティ グループにメンバーを割り当てることができるページが表示されます。 前の手順で作成した新しい統合システム ユーザーをこのセキュリティ グループに追加します。 "*制約付き*" セキュリティ グループを使用している場合は、適切な組織の範囲も選択する必要があります。
 
@@ -286,11 +286,11 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    * *Worker Data:Current Staffing Information*
    * *Worker Data:Business Title on Worker Profile*
 
-    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_07.png "ドメイン セキュリティ ポリシー")  
+     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_07.png "ドメイン セキュリティ ポリシー")  
 
-    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_08.png "ドメイン セキュリティ ポリシー") 
+     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_08.png "ドメイン セキュリティ ポリシー") 
 
-    Click **OK**.
+     Click **OK**.
 
 3. 表示されるレポートで、**[External Account Provisioning]** の横に表示される省略記号 (...) を選択し、メニュー オプション **[ドメイン] -> [セキュリティ ポリシー アクセス許可の編集]** をクリックします
 
@@ -428,7 +428,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理ユーザー名** - Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 これは **username@tenant_name** のようになります。
+   * **管理ユーザー名** - Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。**username\@tenant_name**
 
    * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
@@ -438,8 +438,8 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
    * **Active Directory コンテナー -** エージェントが既定でユーザー アカウントを作成する必要のあるコンテナー DN を入力します。
         例:*OU=Standard Users,OU=Users,DC=contoso,DC=test*
-> [!NOTE]
-> この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
+     > [!NOTE]
+     > この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
 
@@ -477,11 +477,11 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 > [!TIP]
 > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために **[ソース オブジェクト スコープ]** の下のスコープ フィルターを使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
-3. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成**と**更新**が最も一般的です。
+1. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成**と**更新**が最も一般的です。
 
-4. **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。
+1. **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。
 
-5. 既存の属性マッピングをクリックして更新するか、または画面の下部にある **[新しいマッピングの追加]** をクリックして、新しいマッピングを追加します。 個々の属性マッピングは、次のプロパティをサポートしています。
+1. 既存の属性マッピングをクリックして更新するか、または画面の下部にある **[新しいマッピングの追加]** をクリックして、新しいマッピングを追加します。 個々の属性マッピングは、次のプロパティをサポートしています。
 
       * **マッピングの種類**
 
@@ -508,7 +508,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
          * **作成中のみ** - このマッピングをユーザーの作成アクションのみに適用します
 
-6. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
+1. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
 
    ![Azure ポータル](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -524,8 +524,8 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **はい** | 作成時のみ書き込まれる |
 | **PreferredNameData**    |  cn    |   |   作成時のみ書き込まれる |
-| **SelectUniqueValue( Join("@", Join(".",  \[FirstName\], \[LastName\]), "contoso.com"), Join("@", Join(".",  Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("@", Join(".",  Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | 作成時のみ書き込まれる 
-| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         作成時のみ書き込まれる |
+| **SelectUniqueValue( Join("\@", Join(".",  \[FirstName\], \[LastName\]), "contoso.com"), Join("\@", Join(".",  Mid(\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), Join("\@", Join(".",  Mid(\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | 作成時のみ書き込まれる 
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         作成時のみ書き込まれる |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 作成時 + 更新時 |
 | **FirstName**   | givenName       |     |    作成時 + 更新時 |
 | **LastName**   |   sn   |     |  作成時 + 更新時 |
@@ -677,7 +677,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 次のように表示されます: *username@contoso4*
+   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。*username\@contoso4*
 
    * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
@@ -1064,7 +1064,7 @@ SelectUniqueValue(
 
 Workday の新規採用者 (たとえば、従業員 ID が *21023*) が検出されると、Azure AD プロビジョニング サービスではその従業員の新しい AD ユーザー アカウントの作成が試行され、そのプロセスで次のように 4 つの監査ログ レコードが作成されます。
 
-  [ ![監査ログ作成操作](media/workday-inbound-tutorial/wd_audit_logs_02.png) ](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![監査ログ作成操作](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 監査ログ レコードをクリックすると、**[アクティビティの詳細]** ページが開きます。 **[アクティビティの詳細]** ページにログ レコードの種類ごとに表示される内容は次のとおりです。
 
@@ -1132,7 +1132,7 @@ Workday の新規採用者 (たとえば、従業員 ID が *21023*) が検出�
 
 manager 属性は AD の参照属性です。 プロビジョニング サービスでは、ユーザー作成操作の一環として manager 属性は設定されません。 そうではなく、manager 属性は、ユーザーの AD アカウントが作成された後、"*更新*" 操作の一環として設定されます。 上の例を拡張して、従業員 ID "21451" の新規採用者が Workday でアクティブ化された、新規採用者のマネージャー (*21023*) が既に AD アカウントを持っているとします。 このシナリオでは、ユーザー 21451 の監査ログを検索すると、5 つのエントリが表示されます。
 
-  [ ![マネージャーの更新](media/workday-inbound-tutorial/wd_audit_logs_03.png) ](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![マネージャーの更新](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 最初の 4 つのレコードは、ユーザー作成操作の一部として調べたものと似ています。 5 つ目のレコードは、manager 属性の更新に関連付けられたエクスポートです。 ログ レコードには、AD アカウント マネージャーの更新操作の結果が表示されます。これは、マネージャーの *objectGuid* 属性を使用して実行されます。
 
@@ -1226,7 +1226,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 7. **[Operation]\(操作\)** を **[Get_Workers]** に設定します。
 
-8.  [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name@tenant の形式で指定し、**[WS-Security UsernameToken]** オプションはオンのままにしてください。
+8.  [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name\@tenant の形式で指定し、**[WS-Security UsernameToken]** オプションはオンのままにしてください。
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321035"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369972"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>完了まで実行の例
 
-再起動ポリシーが動作しているのを確認するには、[microsoft/aci-wordcount][aci-wordcount-image] イメージからコンテナー インスタンスを作成し、`OnFailure` 再起動ポリシーを指定します。 このコンテナー例では、既定でシェイクスピアの[ハムレット](http://shakespeare.mit.edu/hamlet/full.html)のテキストを解析し、最もよく使われる単語 10 個を STDOUT に書き込んで終了する Python スクリプトを実行します。
+再起動ポリシーが動作しているのを確認するには、Microsoft [aci-wordcount][aci-wordcount-image] イメージからコンテナー インスタンスを作成し、`OnFailure` 再起動ポリシーを指定します。 このコンテナー例では、既定でシェイクスピアの[ハムレット](http://shakespeare.mit.edu/hamlet/full.html)のテキストを解析し、最もよく使われる単語 10 個を STDOUT に書き込んで終了する Python スクリプトを実行します。
 
 このコンテナー例を次の [az container create][az-container-create] コマンドで実行します。
 
@@ -54,7 +54,7 @@ az container create \
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -129,7 +129,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=5 MinLength=8
 ```
@@ -164,7 +164,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer3 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=3 MinLength=5 \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
@@ -189,7 +189,7 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 完了まで実行するコンテナーの出力を保存する方法の詳細については、「[Azure Container Instances での Azure ファイル共有のマウント](container-instances-mounting-azure-files-volume.md)」をご覧ください。
 
 <!-- LINKS - External -->
-[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create

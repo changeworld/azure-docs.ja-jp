@@ -11,25 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 63bdbeb08872988fb043413f8233281d22423731
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455536"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284750"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>更新:オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
-
-|     |
-| --- |
-| Azure AD のパスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
 ## <a name="general-questions"></a>一般的な質問
-
-**Q:Azure AD パスワード保護はいつ一般提供 (GA) されますか?**
-
-GA は、Q1 CY2019 を予定しています (2019 年 3 月末より前)。 今までこの機能に関するフィードバックを提供してくださった皆さん、どうもありがとうございました。感謝しております。
 
 **Q:安全なパスワードを選択する方法に関して、ユーザーにどのようなガイダンスが与えられますか?**
 
@@ -44,6 +35,14 @@ GA は、Q1 CY2019 を予定しています (2019 年 3 月末より前)。 今�
 **Q:どのようにして Azure AD パスワード保護の利点を自分のオンプレミスのユーザーのサブセットに適用できますか?**
 
 サポートされていません。 デプロイして有効にされると、Azure AD パスワード保護では識別を行いません。すべてのユーザーがセキュリティの利点を等しく受け取ります。
+
+**Q:パスワードの変更とパスワードの設定 (またはリセット) の違いは何ですか?**
+
+パスワードの変更は、ユーザーが古いパスワードを知っていることを証明した後に新しいパスワードを選択する場合のアクションです。 これは、たとえば、ユーザーが Windows にログインした後に新しいパスワードを選択するように求められたときに発生します。
+
+パスワードの設定 (パスワードのリセットとも呼ばれます) は、たとえば Active Directory ユーザーとコンピューターの管理ツールを使用して、管理者がアカウントのパスワードを新しいパスワードに置き換える場合のアクションです。 この操作には高いレベルの特権 (通常はドメイン管理者) が必要であり、通常、操作を実行する担当者は古いパスワードを知りません。 ヘルプ デスクのシナリオでこのアクションがよく行われます。たとえば、パスワードを忘れたユーザーを支援する場合などです。 また、パスワードを指定して新しいユーザー アカウントを初めて作成するときにもパスワードの設定イベントが発生します。
+
+パスワード検証ポリシーは、実行されているのがパスワードの変更か設定かに関係なく同じように動作します。 Azure AD パスワード保護 DC エージェント サービスは、パスワードの変更または設定操作が行われたかどうかをユーザーに通知するために、さまざまなイベントをログに記録します。  「[Azure AD パスワード保護の監視とログ記録](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)」をご覧ください。
 
 **Q:その他のパスワード フィルター ベースの製品とサイド バイ サイドで Azure AD パスワード保護をインストールすることはサポートされていますか?**
 
@@ -82,6 +81,10 @@ FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題�
 **Q:Azure AD Connect などの他のサービスと並行して Azure AD パスワード保護プロキシ サービスをデプロイしても大丈夫ですか?**
 
 はい。 Azure AD パスワード保護プロキシ サービスと Azure AD Connect は、互いに直接競合することはありません。
+
+**Q:DC エージェントとプロキシはどのような順序でインストールして登録する必要がありますか?**
+
+プロキシ エージェントのインストール、DC エージェントのインストール、フォレストの登録、プロキシの登録は、任意の順序での実行がサポートされています。
 
 **Q:この機能のデプロイによって、ドメイン コントローラーに対するパフォーマンスの打撃を懸念する必要がありますか?**
 

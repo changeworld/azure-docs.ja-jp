@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 02/13/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901850"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -33,16 +33,13 @@ ms.locfileid: "56235226"
 
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Azure で必要なものは何ですか?
-Azure サブスクリプション、Recovery Services コンテナー、ストレージ アカウント、仮想ネットワークが必要です。 コンテナー、ストレージ アカウント、ネットワークは、同じリージョンに存在する必要があります。
-
-### <a name="what-azure-storage-account-do-i-need"></a>どの Azure ストレージ アカウントが必要ですか?
-LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 Premium Storage はサポートされています。
+Azure サブスクリプション、Recovery Services コンテナー、キャッシュ ストレージ アカウント、マネージド ディスクおよび仮想ネットワークが必要です。 コンテナー、キャッシュ ストレージ アカウント、マネージド ディスクおよびネットワークは、同じリージョンに存在する必要があります。
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Azure アカウントには VM を作成するアクセス許可が必要ですか?
-サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 サブスクリプション管理者ではない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、選んだストレージ アカウントに書き込むアクセス許可が必要です。 [詳細情報](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
+サブスクリプション管理者の場合は、必要なレプリケーション アクセス許可を持っています。 そうでない場合は、Site Recovery を構成するときに指定するリソース グループと仮想ネットワークに Azure VM を作成するアクセス許可と、構成に基づいて選んだストレージ アカウントまたはマネージド ディスクに書き込むアクセス許可が必要です。 [詳細情報](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Azure でゲスト OS のサーバー ライセンスを使用できますか?
-はい、マイクロソフト ソフトウェア アシュランスのお客様は、[Azure ハイブリッド特典](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/)を使用して、Azure に移行する **Windows Server マシン**のライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。
+はい、マイクロソフト ソフトウェア アシュランスのお客様は、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、Azure に移行する **Windows Server マシン**のライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。
 
 ## <a name="pricing"></a>価格
 
@@ -52,7 +49,28 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Site Recovery の使用中は、どのようにして概算料金を計算できますか?
 
-Azure Site Recovery を使用している間は、[料金計算ツール](https://aka.ms/asr_pricing_calculator)を利用してコストを見積もることが可能です。 コストの詳細な見積のためには、デプロイ プランナー ツールを実行して (https://aka.ms/siterecovery_deployment_planner))、[コスト見積レポート](https://aka.ms/asr_DP_costreport)を分析します。
+Azure Site Recovery を使用している間は、[料金計算ツール](https://aka.ms/asr_pricing_calculator)を利用してコストを見積もることが可能です。 コストを詳細に見積もるには、デプロイ プランナー ツールを実行して (https://aka.ms/siterecovery_deployment_planner)、[コスト見積レポート](https://aka.ms/asr_DP_costreport)を分析します。
+
+### <a name="is-there-any-difference-in-cost-when-i-replicate-directly-to-managed-disk"></a>マネージド ディスクに直接レプリケートする場合のコスト上の違いはありますか?
+
+マネージド ディスクに対する課金は、ストレージ アカウントに対するものとは若干異なります。 サイズが 100 GiB のソース ディスクの例を、以下で参照してください。 この例では、ストレージの差額コストを特に示しています。 このコストには、スナップショット、キャッシュ ストレージおよびトランザクションのコストは含みません。
+
+* Standard ストレージ アカウント対Standard HDD マネージド ディスク
+
+    - **ASR でプロビジョニングされたストレージ ディスク**: S10
+    - **課金が消費済みボリュームに対してである Standard ストレージ アカウント**: 1 か月当たり 5 ドル
+    - **課金がプロビジョニング済みボリュームに対してである Standard マネージド ディスク**: 1 か月当たり 5.89 ドル
+
+* Premium ストレージ アカウント対Premium SSD マネージド ディスク 
+    - **ASR でプロビジョニングされたストレージ ディスク**: P10
+    - **課金がプロビジョニング済みボリュームに対してである Premium ストレージ アカウント**: 1 か月当たり 17.92 ドル
+    - **課金がプロビジョニング済みボリュームに対してである Premium マネージド ディスク**: 1 か月当たり 17.92 ドル
+
+詳細については、[マネージド ディスクの価格の詳細](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページを参照してください。
+
+### <a name="do-i-incur-additional-charges-for-cache-storage-account-with-managed-disks"></a>マネージド ディスクには、キャッシュ ストレージ アカウントに対する追加料金はありますか?
+
+いいえ、キャッシュの追加料金はありません。 キャッシュは常に VMware から Azure へのアーキテクチャの一部です。 Standard ストレージ アカウントにレプリケートする場合、このキャッシュ ストレージは同じターゲット ストレージ アカウントの一部になります。
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Azure Site Recovery のユーザーになって 1 か月以上が経過しました。 保護されたインスタンスはすべて、引き続き最初の 31 日間無料の対象になりますか?
 
@@ -107,7 +125,7 @@ VMware から Azure へのアーキテクチャについて詳しくは、[こ�
 
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>オンプレミスの VM のレプリケート先はどこですか?
-Azure ストレージにデータがレプリケートされます。 フェールオーバーを実行すると、Site Recovery はストレージ アカウントから Azure VM を自動的に作成します。
+Azure ストレージにデータがレプリケートされます。 フェールオーバーを実行すると、Site Recovery はストレージ アカウントまたはマネージド ディスクから、構成に基づいて Azure VM を自動作成します。
 
 ## <a name="replication"></a>レプリケーション
 
@@ -122,15 +140,31 @@ Azure ストレージにデータがレプリケートされます。 フェー�
 Site Recovery は、パブリック エンドポイントまたは ExpressRoute のパブリック ピアリングを使って、オンプレミスから Azure ストレージにデータをレプリケートします。 サイト間 VPN ネットワーク経由のレプリケーションはサポートされていません。
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>ExpressRoute で Azure にレプリケートできますか?
-はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery は、パブリック エンドポイント経由で Azure Storage アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定する必要があります。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしていることを確認してください。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
+はい。ExpressRoute を使って Azure に VM をレプリケートできます。 Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定する必要があります。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしていることを確認してください。 VM が Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>コンピューターが保護された後は、どのようにストレージ アカウントを変更できますか?
 
-ストレージ アカウントは、Premiun にのみアップグレードできます。 別のストレージ アカウントを使用したい場合、ソース コンピューターのレプリケーションを無効にしてから、新しいストレージ アカウントを使用して保護を再度有効にする必要があります。 これ以外に、保護が有効になった後にストレージ アカウントを変更する方法はありません。
+ストレージ アカウントの種類をアップグレードまたはダウングレードするには、レプリケーションを有効および無効にする必要があります。
+
+### <a name="can-i-replicate-to-storage-accounts-for-new-machine"></a>ストレージ アカウントを新しいマシンにレプリケートできますか?
+
+いいえ、3 月 19 日以降は、Azure のマネージド ディスクをポータルからレプリケートできます。 新しいマシンのストレージ アカウントへのレプリケーションは、REST API および Powershell を使用した場合にのみ実行できます。 ストレージ アカウントにレプリケートする場合は、API バージョン 2016-08-10 または 2018-01-10 を使用します。
+
+### <a name="what-are-the-benefits-in-replicating-to-managed-disks"></a>マネージド ディスクのレプリケートにはどのようなメリットがありますか?
+
+[マネージド ディスクを使用して Azure Site Recovery でのディザスター リカバリーを簡単に行う](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/)方法に関する記事を参照してください。
+
+### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>コンピューターの保護後は、どのようにマネージド ディスクの種類を変更できますか?
+
+はい、マネージド ディスクの種類は簡単に変更できます。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)。 ただし、マネージド ディスクの種類を変更するアクティビティ後にテスト フェールオーバーまたはフェールオーバーを実行する必要がある場合、新しい回復ポイントが生成されるのを待つ必要があります。
+
+### <a name="can-i-switch-the-replication-from-managed-disks-to-unmanaged-disks"></a>マネージド ディスクからアンマネージド ディスクにレプリケーションを切り替えることはできますか?
+
+いいえ、マネージドからアンマネージドへの切り替えはサポートしていません。
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
 
-Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage アカウントのパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。
+Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage のパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>レプリケートされる VM にはどのような要件がありますか?
 
@@ -143,13 +177,16 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 はい、フェールオーバーの際に IP アドレスを保持することは可能です。 フェールオーバー前に [コンピューティングとネットワーク] ブレード上で対象となる IP アドレスを必ず指定してください。 また、フェールオーバー時には必ずコンピューターをシャットダウンして、フェールバック時の IP の競合を避けてください。
 
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
-これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
+これはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
 はい、レプリケーションからディスクを除外できます。
+
+### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>フェールオーバー前にターゲットの VM のサイズまたは VM の種類を変更できますか?
+はい、フェールオーバー前にポータルからレプリケート項目の [コンピューティングとネットワーク] の設定に移動して、いつでも VM の種類またはサイズを変更できます。
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>ダイナミック ディスクを含む VM をレプリケートできますか?
 ダイナミック ディスクをレプリケートすることができます。 オペレーティング システム ディスクはベーシック ディスクである必要があります。
@@ -161,7 +198,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 
 Azure への VMware のレプリケーションでは、ディスクのサイズを変更できます。 新しいディスクを追加する場合は、ディスクを追加し、VM の保護を再度有効にする必要があります。
 
-### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい Vcenter に移行することはできますか?
+### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい Vcenter に移行できますか?
 いいえ、Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい Vcenter を使用して ASR を設定し、マシンのレプリケーションを有効にする必要があります。
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>(Azure Storage ファイアウォールを使用して) Vnet が構成されているキャッシュ/ターゲット ストレージ アカウントにレプリケートすることはできますか?
@@ -200,9 +237,11 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 構成サーバーの定期的なスケジュールされたバックアップを実行することをお勧めします。 フェールバックが成功するには、フェールバックされる仮想マシンが構成サーバー データベース内に存在し、構成サーバーが実行中で接続状態である必要があります。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>構成サーバーを設定しているときに、MySQL を手動でダウンロードしてインストールできますか?
+
 はい。 MySQL をダウンロードし、**C:\Temp\ASRSetup** フォルダーに配置します。 その後、手動でインストールします。 構成サーバー VM を設定し、ご契約条件に同意すると、MySQL は **[Download and install]\(ダウンロードとインストール\)** に **"インストール済み"** と表示されます。
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>MySQL をダウンロードせず、Site Recovery によってインストールすることはできますか?
+
 はい。 MySQL インストーラーをダウンロードし、**C:\Temp\ASRSetup** フォルダーに配置します。  構成サーバーの VM を設定する際に、ご契約条件に同意し、**[Download and install]\(ダウンロードとインストール\)** をクリックすると、ポータルでは追加したインストーラーが MySQL のインストールに使用されます。
  
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>構成サーバー VM を他の目的で使用することはできますか?
@@ -267,6 +306,9 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 
 
 ## <a name="failover-and-failback"></a>フェールオーバーとフェールバック
+### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>オンプレミスのプロセス サーバーをフェールバックに使用できますか?
+データ転送の遅延を避けるために、Azure にフェールバック用のプロセス サーバーを作成することを強くお勧めします。 また、構成サーバーでソースの VM のネットワークと Azure が接続されたネットワークを分離している場合、Azure に作成したプロセス サーバーをフェールバックで必ず使用する必要があります。
+
 ### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
 VMware から Azure の場合、使うことができる最も古い復旧ポイントは 72 時間です。
 

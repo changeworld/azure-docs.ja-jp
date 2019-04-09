@@ -6,23 +6,78 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: hning86
-ms.author: haining
-ms.reviewer: j-martens
-ms.date: 12/20/2018
+ms.author: larryfr
+author: Blackmist
+ms.date: 03/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2a2817501628d55d7ccc84979700ea53e4114eed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860637"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
 この記事では、Azure Machine Learning service の各リリースについて説明します。  各 SDK の詳細については、以下に関するリファレンス ドキュメントを参照してください。
 + Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-03-11"></a>2019-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning SDK for Python v1.0.18
+
+ + **変更点**
+   + azureml-contrib-tensorboard が azureml-tensorboard パッケージに置き換えられました。
+   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すだけで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)をご覧ください。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure Machine Learning Data Prep SDK v1.0.17
+
++ **新機能**
+  + 式言語を使用して結果列を生成するために、2 つの数値列の追加がサポートされるようになりました。
+
++ **バグの修正と機能強化**
+  + random_split のドキュメントとパラメーター チェックが改善されました。
+  
+## <a name="2019-02-27"></a>2019-02-27
+
+### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Azure Machine Learning Data Prep SDK v1.0.16
+
++ **バグの修正**
+  + API の変更が原因で発生していたサービス プリンシパルの認証の問題を修正しました。
+
+## <a name="2019-02-25"></a>2019-02-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning SDK for Python v1.0.17
+
++ **新機能**
+
+  + Azure Machine Learning で、一般的な DNN フレームワーク Chainer のファースト クラスのサポートが提供されるようになりました。 [`Chainer`](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) クラスを使用すると、Chainer モデルを簡単にトレーニングしてデプロイできます。
+    + [ChainerMN を使用して分散トレーニングを実行する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)方法をご覧ください。
+    + [HyperDrive を使用して Chainer でハイパーパラメーター調整を実行する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)方法をご覧ください。
+  + Azure Machine Learning パイプラインに、データストアの変更に基づいてパイプライン実行をトリガーする機能が追加されました。 この機能を紹介するために、パイプラインの[スケジュール ノートブック](https://aka.ms/pl-schedule)が更新されました。
+
++ **バグの修正と機能強化**
+  + [PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) に提供される [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) で、source_directory_data_store プロパティを必要なデータストア (Blob Storage など) に設定するために、Azure Machine Learning パイプラインのサポートが追加されました。 既定では、各ステップでバッキング データストアとして Azure File ストアが使用されますが、多数のステップが同時に実行されると、調整の問題が発生する可能性があります。
+
+### <a name="azure-portal"></a>Azure ポータル
+
++ **新機能**
+  + テーブル エディターでレポートを作成する際の新しいドラッグ アンド ドロップ エクスペリエンス。 ユーザーは、ウェルから、テーブルのプレビューが表示されるテーブル領域に列をドラッグできます。 列を並べ替えることができます。
+  + 新しいログ ファイル ビューアー
+  + アクティビティ タブから実験の実行、計算、モデル、イメージ、デプロイへのリンク
+
+### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Azure Machine Learning Data Prep SDK v1.0.15
+
++ **新機能**
+  + Data Prep で、データフローからのファイル ストリームの書き込みがサポートされるようになりました。 また、ファイル ストリーム名を操作して新しいファイル名を作成する機能も用意されています。
+    + 攻略ガイド: [File Streams ノートブックの操作](https://aka.ms/aml-data-prep-file-stream-nb)
+
++ **バグの修正と機能強化**
+  + 大規模なデータセットでの T-Digest のパフォーマンスが向上しました。
+  + Data Prep で、DataPath からのデータの読み取りがサポートされるようになりました。
+  + ブール値列と数値列でワン ホット エンコードが機能するようになりました。
+  + その他の各種バグ修正。
 
 ## <a name="2019-02-11"></a>2019-02-11
 
@@ -85,7 +140,7 @@ ms.locfileid: "56446768"
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning Data Prep SDK v1.0.7
 
 + **新機能**
-  + データストアの機能強化 ([データストアのハウツーガイド](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb)参照)
+  + データストアの機能強化 ([データストアのハウツーガイド](https://aka.ms/aml-data-prep-datastore-nb)参照)
     + スケールアップ時に Azure ファイル共有と ADLS データストアに対する読み取りと書き込みを行う機能が追加されました。
     + データストアの使用時に、データの準備で対話型認証ではなくサービス プリンシパル認証の使用がサポートされるようになりました。
     + WASB URL と WASBS URL のサポートが追加されました。

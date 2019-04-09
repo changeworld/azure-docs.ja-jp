@@ -4,18 +4,16 @@ description: Beeline クライアントを使用して、HDInsight での Hadoop
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
-keywords: beeline hive,hive beeline
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: ba9746566f0f69ea2131b8f77a14939ea561638a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 392c34e1896106c39b31876308084ef4fd6a7e54
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200483"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449046"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
@@ -24,8 +22,11 @@ ms.locfileid: "58200483"
 Beeline は、HDInsight クラスターのヘッド ノードに含まれている Hive クライアントです。 Beeline は、JDBC を使用して、HDInsight クラスターでホストされる HiveServer2 サービスに接続します。 Beeline を使用して、インターネット経由でで、HDInsight での Hive にリモートでアクセスすることもできます。 次の例は、Beeline から HDInsight への接続に使用される最も一般的な接続文字列を示します。
 
 * __Beeline を使用したヘッドノードまたはエッジ ノードへの SSH 接続__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
+
 * __クライアントで Beeline を使用した、Azure 仮想ネットワーク経由での HDInsight への接続__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
-* __クライアントで Beeline を使用した、Azure 仮想ネットワーク経由での HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターへの接続__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
+
+* __クライアントで Beeline を使用した、Azure 仮想ネットワーク経由での HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターへの接続__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-DOMAIN>;auth-kerberos;transportMode=http' -n <username>` 
+
 * __クライアントで Beeline を使用した、パブリック インターネット経由での HDInsight への接続__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -37,7 +38,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 >
 > 仮想ネットワーク経由でクラスターに接続するときは、`<headnode-FQDN>` をクラスター ヘッドノードの完全修飾ドメイン名で置き換えます。
 >
-> Enterprise セキュリティ パッケージ (ESP) クラスターに接続するときは、`<AAD-Domain>` をクラスターが参加している Azure Active Directory (AAD) の名前で置き換えます。 `<username>` を、クラスターへのアクセス許可を付与されているドメイン上のアカウントの名前で置き換えます。
+> Enterprise セキュリティ パッケージ (ESP) クラスターに接続するときは、`<AAD-DOMAIN>` をクラスターが参加している Azure Active Directory (AAD) の名前で置き換えます。 `<AAD-DOMAIN>` 値には大文字の文字列を使用します。そうしないと、資格情報が見つかりません。 必要に応じて `/etc/krb5.conf` で領域名を確認します。 `<username>` を、クラスターへのアクセス許可を付与されているドメイン上のアカウントの名前で置き換えます。 
 
 ## <a id="prereq"></a>前提条件
 
@@ -280,8 +281,6 @@ HDInsight での Hadoop で実行できるその他の操作について詳し�
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
-Hive で Tez を使用する場合は、次のドキュメントを参照してください:[Linux ベースの HDInsight で Apache Ambari Tez ビューを使用する](../hdinsight-debug-ambari-tez-view.md)。
-
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -293,7 +292,7 @@ Hive で Tez を使用する場合は、次のドキュメントを参照して�
 [import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
+[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 

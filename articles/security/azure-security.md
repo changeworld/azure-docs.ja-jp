@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904254"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -59,7 +59,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 | [安全なプラットフォーム](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明性](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [セキュリティ開発サイクル](https://www.microsoft.com/en-us/sdl/)、内部監査 | [データの常時管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [トラスト センター](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](http://azuredatacentermap.azurewebsites.net/)|
+| [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)|
 | [侵入テスト](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)、[不正侵入検出、DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [最新のデータ センター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](https://docs.microsoft.com/azure/security/security-network-overview) | [法執行機関への対応](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [セキュリティ インシデント対応](https://aka.ms/SecurityResponsepaper)、[責任の分担](https://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
@@ -75,12 +75,12 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="security-and-audit-dashboard"></a>[セキュリティおよび監査] ダッシュボード
-[セキュリティおよび監査ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの[組み込みの検索クエリ](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)と共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [[セキュリティおよび監査]](https://technet.microsoft.com/library/mt484091.aspx) ダッシュボードは、Log Analytics におけるすべてのセキュリティ関連機能のホーム画面です。 コンピューターのセキュリティ状態に関する高度な洞察を提供します。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。
+[セキュリティおよび監査ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの[組み込みの検索クエリ](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)と共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [[セキュリティおよび監査]](https://technet.microsoft.com/library/mt484091.aspx) ダッシュボードは、Azure Monitor ログにおけるすべてのセキュリティ関連機能のホーム画面です。 コンピューターのセキュリティ状態に関する高度な洞察を提供します。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。
 
 さらに、セキュリティとコンプライアンスを構成して、特定のイベントが検出されたときに[特定のアクションを自動的に実行](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)します。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) を使用すると、ソリューション内の複数のリソースを 1 つのグループにまとめて作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 Azure Resource Manager のテンプレート ベースのデプロイにより、Azure にデプロイされたソリューションのセキュリティが向上します。これは、標準的なセキュリティ制御設定によるもので、標準化されたテンプレート ベースのデプロイに統合できます。 これにより、手動によるデプロイ時に発生する可能性のあるセキュリティ構成エラーのリスクが軽減されます。
 
@@ -94,10 +94,10 @@ Application Insights が作成するグラフや表を見ると、たとえば�
 ### <a name="azure-monitor"></a>Azure Monitor
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) と個々の Azure リソース ([診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
+[Azure Monitor ログ](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Azure Monitor ログには Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
 
-Log Analytics は、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Log Analytics を使用した分析に使用することができます。](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
+Azure Monitor ログは、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Azure Monitor ログを使用した分析に使用することができます。](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](https://docs.microsoft.com/azure/advisor/) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)機会を探すと同時に、[パフォーマンス](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)、[セキュリティ](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)、リソースの[高可用性](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で実施されるセキュリティ分析に基づいています。
@@ -116,7 +116,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
-[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://msdn.microsoft.com/library/)と特定された脅威からの保護が事前に構成されています。
+[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)と特定された脅威からの保護が事前に構成されています。
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
@@ -287,7 +287,7 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 ### <a name="azure-dns"></a>Azure DNS
 [ドメイン ネーム システム (DNS)](https://technet.microsoft.com/library/bb629410.aspx) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 DNS では、セキュリティの 3 つの柱、"CIA" (機密性、整合性、可用性) の中の可用性がサポートされています。
-### <a name="log-analytics-nsgs"></a>Log Analytics NSG
+### <a name="azure-monitor-logs-nsgs"></a>Azure Monitor ログ NSG
 NSG に対して、以下の診断ログ カテゴリを有効にできます。
 -   イベント:MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 

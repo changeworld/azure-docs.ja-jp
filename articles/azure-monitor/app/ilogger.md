@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: c456f8f7f08fdbd0020bfc49ceeec262fa0ac773
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14c9a453913a9a8080c840df3f23751487b86c34
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458179"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006158"
 ---
 # <a name="ilogger"></a>ILogger
 
@@ -219,6 +219,26 @@ services.AddApplicationInsightsTelemetry("ikeyhere");
 この例では、`ApplicationInsightsLoggerProvider` によって使用される構成は、通常のアプリケーションの監視で使用されるものと同じです。 そのため、`ILogger` のトレースと他のテレメトリ (要求や依存関係など) の両方で `TelemetryInitializers`、`TelemetryProcessors`、および `TelemetryChannel` の同じセットが実行されます。 これらは相互に関連付けられ、同じ方法でサンプリングされるか、またはサンプリングされません。
 
 ただし、この動作には例外があります。 `Program.cs` または `Startup.cs` 自体から何らかのログが記録される場合、既定の `TelemetryConfiguration` は完全に設定されないため、これらのログには既定の構成は設定されません。 ただし、それ以外のすべてのログ (たとえば、コントローラーやモデルからのログ) では、構成が共有されます。
+
+## <a name="control-logging-level"></a>ログ記録レベルの制御
+
+上記の例のようにコードでログをフィルター処理することとは別に、`appsettings.json` を変更することで Application Insights キャプチャのレベルを制御することもできます。 [ASP.NET ログの基礎のドキュメント](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering) はこれを実行する方法を示しています。 特に Application Insights の場合、プロバイダーの別名は `ApplicationInsights` です。これについてはすべてのカテゴリからの `Warning` 以上のログのみをキャプチャするように `ApplicationInsights` を構成する以下の例に示されているとおりです。
+
+```json
+{
+  "Logging": {
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

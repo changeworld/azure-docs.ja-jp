@@ -10,18 +10,27 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 60a76df6360ca66e8f55b03d5914283f669eb402
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a83661a63f784f62bf46ce75b8b4f47c57c87b19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118107"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840445"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Azure の仮想ネットワーク内での実験と推論の安全な実行
 
 この記事では、仮想ネットワーク内で実験と推論を実行する方法について説明します。 仮想ネットワークは、パブリック インターネットから Azure リソースを分離するセキュリティ境界として機能します。 また、Azure の仮想ネットワークをオンプレミス ネットワークに結合することもできます。 これにより、モデルのトレーニングと、推論用にデプロイしたモデルへのアクセスを、安全に行うことができます。
 
 Azure Machine Learning service は、コンピューティング リソースのために他の Azure サービスに依存します。 コンピューティング リソース (コンピューティング ターゲット) は、モデルのトレーニングとデプロイに使用されます。 これらのコンピューティング ターゲットは、仮想ネットワーク内に作成することができます。 たとえば、Microsoft Data Science Virtual Machine を使用して、モデルをトレーニングしてから、そのモデルを Azure Kubernetes Service (AKS) にデプロイすることができます。 仮想ネットワークの詳細については、[Azure Virtual Network の概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)に関するページをご覧ください。
+
+## <a name="prerequisites"></a>前提条件
+
+このドキュメントでは、一般に、読者が Azure Virtual Network と IP ネットワーキングに慣れていることを前提としています。 このドキュメントでは、コンピューティング リソースで使用する仮想ネットワークとサブネットを作成していることも想定しています。 Azure Virtual Network に慣れていない場合は、以下の記事をお読みになりサービスについて学習してください。
+
+* [IP アドレス指定](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
+* [セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [クイック スタート:仮想ネットワークを作成する](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [ネットワーク トラフィックをフィルター処理する](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 ## <a name="storage-account-for-your-workspace"></a>ワークスペースのストレージ アカウント
 
@@ -51,15 +60,17 @@ Azure Machine Learning service のワークスペースを作成する場合は�
 
     - 1 つのロード バランサー
 
-   これらのリソースは、サブスクリプションの[リソース クォータ](https://docs.microsoft.com/azure/azure-subscription-service-limits)によって制限されます。
+  これらのリソースは、サブスクリプションの[リソース クォータ](https://docs.microsoft.com/azure/azure-subscription-service-limits)によって制限されます。
 
 ### <a id="mlcports"></a>必須ポート
 
 Machine Learning コンピューティングは、現在、Azure Batch サービスを使用して、指定された仮想ネットワークに VM をプロビジョニングします。 サブネットは、Batch サービスからの受信方向の通信を許可する必要があります。 この通信を使用して、Machine Learning コンピューティング ノードでの実行スケジュールの設定と、Azure Storage とその他のリソースとの通信を行います。 VM にアタッチされたネットワーク インターフェイス (NIC) レベルで NSG が追加されます。 これらの NSG によって自動的に、次のトラフィックを許可するためのインバウンド規則とアウトバウンド規則が構成されます。
 
-- Batch サービス ロールの IP アドレスからポート 29876 と 29877 で受信するインバウンド TCP トラフィック。
+- __BatchNodeManagement__ の __サービス タグ__ からのポート 29876 と 29877 で受信するインバウンド TCP トラフィック。
+
+    ![BatchNodeManagement サービス タグを使用したインバウンド規則を示した Azure Portal のイメージ](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- リモート アクセスを許可するための、ポート 22のインバウンド TCP トラフィック。
+- (オプション) リモート アクセスを許可するための、ポート 22のインバウンド TCP トラフィック。 これはパブリック IP の SSH を使用して接続する場合にのみ必要です。
  
 - 仮想ネットワークに向かう全ポートのアウトバウンド トラフィック。
 

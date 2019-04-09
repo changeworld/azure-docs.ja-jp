@@ -5,23 +5,25 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 03/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672901"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311919"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
 
-IoT Edge サービスの新しいバージョンがリリースされたら、最新の機能とセキュリティ強化を使用するために、IoT Edge デバイスを更新する必要があります。 この記事では、新しいバージョンが使用可能になったときに、IoT Edge デバイスを更新する方法について説明します。 
+IoT Edge サービスの新しいバージョンがリリースされたら、最新の機能およびセキュリティの強化のために、IoT Edge デバイスを更新する必要があります。 この記事では、新しいバージョンが使用可能になったときに、IoT Edge デバイスを更新する方法について説明します。 
 
 新しいバージョンに移行する場合、IoT Edge デバイスの 2 つのコンポーネントを更新する必要があります。 1 つ目は、デバイスで実行され、デバイスの起動時にランタイム モジュールを起動するセキュリティ デーモンです。 現在、セキュリティ デーモンは、デバイス自体からのみ更新できます。 2 つ目のコンポーネントはランタイムで、IoT Edge ハブと IoT Edge エージェント モジュールから構成されます。 デプロイの構成方法に応じて、ランタイムはデバイスから、またはリモートで更新できます。 
+
+Azure IoT Edge の最新バージョンを見つけるには、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に関する記事を参照してください。
 
 >[!IMPORTANT]
 >Windows デバイスで Azure IoT Edge を実行していて、次のいずれかがご利用のデバイスに当てはまる場合は、バージョン 1.0.5 に更新しないでください。 
@@ -30,8 +32,6 @@ IoT Edge サービスの新しいバージョンがリリースされたら、�
 >
 >IoT Edge バージョン 1.0.5 の詳細については、[1.0.5 のリリース ノート](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)を参照してください。 開発ツールが最新バージョンに更新されないようにする方法の詳細については、[IoT 開発者ブログ](https://devblogs.microsoft.com/iotdev/)を参照してください。
 
-
-Azure IoT Edge の最新バージョンを見つけるには、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に関する記事を参照してください。
 
 ## <a name="update-the-security-daemon"></a>セキュリティ デーモンの更新
 
@@ -59,9 +59,9 @@ Windows デバイスでは、PowerShell スクリプトを使用して、セキ�
 Uninstall-SecurityDaemon
 ```
 
-パラメーターを指定せずに `Uninstall-SecurityDaemon` コマンドを実行すると、2 つのランタイム コンテナー イメージと共に、セキュリティ デーモンがデバイスから削除されます。 config.yaml ファイルは、Moby コンテナー エンジンのデータと同様に、デバイス上にも保存されています。 構成を保存すると、インストール プロセス中に接続文字列や Device Provisioning Service の情報をデバイスに改めて提供する必要がなくなります。 
+パラメーターなしで `Uninstall-SecurityDaemon` コマンドを実行すると、デバイスから 2 つのランタイム コンテナー イメージと共にセキュリティ デーモンが削除されるだけです。 config.yaml ファイルは、Moby コンテナー エンジンのデータと同様に、デバイス上にも保存されています。 構成情報を保存すると、インストール プロセス中に、接続文字列または Device Provisioning Service 情報をデバイスに再び提供する必要がなくなります。 
 
-IoT Edge デバイスで Windows コンテナーまたは Linux コンテナーのいずれを使用しているかに応じて、セキュリティ デーモンを再インストールします。 **\<Windows または Linux\>** の語句をいずれかのコンテナー オペレーティング システムで置換します。 デバイス上の既存の config.yaml ファイルをポイントするには、**-ExistingConfig** フラグを使用します。 
+IoT Edge デバイスで Windows コンテナーまたは Linux コンテナーのいずれを使用しているかに応じて、セキュリティ デーモンを再インストールします。 **\<Windows または Linux\>** のフレーズを適切なコンテナー オペレーティング システムに置き換えます。 デバイス上の既存の config.yaml ファイルをポイントするには、**-ExistingConfig** フラグを使用します。 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -91,7 +91,7 @@ IoT Edge エージェントおよび IoT Edge ハブ イメージには、関連
 
 IoT Edge デバイスからイメージのローカル バージョンを削除します。 Windows マシンでは、セキュリティ デーモンをアンインストールするとランタイム イメージも削除されるため、この手順をもう一度実行する必要はありません。 
 
-```cmd/sh
+```bash
 docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
@@ -106,7 +106,7 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 
 Azure portal で、ランタイム デプロイ イメージは、**[Edge ランタイムの詳細設定を構成する]** セクションで宣言されています。 
 
-[Edge ランタイムの詳細設定を構成する](./media/how-to-update-iot-edge/configure-runtime.png)
+![Edge ランタイムの詳細設定を構成する](./media/how-to-update-iot-edge/configure-runtime.png)
 
 JSON の配置マニフェストでは、**systemModules** セクションのモジュール イメージを更新します。 
 

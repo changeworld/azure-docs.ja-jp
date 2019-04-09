@@ -6,22 +6,22 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428621"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286014"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>SQL Server を Azure にバックアップする場合のトラブルシューティング
 
 この記事では、Azure で SQL Server VM を保護する (プレビュー) 場合のトラブルシューティング情報について説明します。
 
-## <a name="public-preview-limitations"></a>パブリック プレビューの制限事項
+## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
 
-パブリック プレビューの制限事項を確認するには、「[Azure での SQL Server データベースのバックアップ](backup-azure-sql-database.md#preview-limitations)」の記事を参照してください。
+機能の考慮事項を確認するには、記事「[Azure VM での SQL Server Backup について](backup-azure-sql-database.md#feature-consideration-and-limitations)」をご覧ください。
 
 ## <a name="sql-server-permissions"></a>SQL Server のアクセス許可
 
@@ -80,7 +80,7 @@ ms.locfileid: "56428621"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | データ ソースのトランザクション ログがいっぱいなので、バックアップを作成できません。 | データベースのトランザクション ログ領域がいっぱいです。 | この問題を解決するには、[SQL ドキュメント](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)を参照してください。 |
-| この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | Always On AG セカンダリ レプリカは、完全バックアップと差分バックアップをサポートしていません。 | <ul><li>アドホック バックアップをトリガーした場合、プライマリ ノードでバックアップをトリガーします。</li><li>ポリシーによってバックアップがスケジュールされている場合は、プライマリ ノードが登録されていることを確認します。 ノードを登録するには、[SQL Server データベースの検出手順に従ってください](backup-azure-sql-database.md#discover-sql-server-databases)。</li></ul> |
+| この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | Always On AG セカンダリ レプリカは、完全バックアップと差分バックアップをサポートしていません。 | <ul><li>アドホック バックアップをトリガーした場合、プライマリ ノードでバックアップをトリガーします。</li><li>ポリシーによってバックアップがスケジュールされている場合は、プライマリ ノードが登録されていることを確認します。 ノードを登録するには、[SQL Server データベースの検出手順に従ってください](backup-sql-server-database-azure-vms.md#discover-sql-server-databases)。</li></ul> |
 
 ## <a name="restore-failures"></a>復元エラー
 
@@ -136,6 +136,35 @@ ms.locfileid: "56428621"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | 自動保護の意図が削除されたか、有効でなくなりました。 | SQL インスタンスで自動保護を有効にすると、そのインスタンス内のすべてのデータベースに対して **[Configure Backup]\(バックアップの構成\)** ジョブが実行されます。 ジョブの実行中に自動保護を無効にした場合、**[In-Progress]\(進行中\)** のジョブはこのエラー コードでキャンセルされます。 | 残りすべてのデータベースを保護するには、自動保護をもう一度有効にします。 |
+
+## <a name="re-registration-failures"></a>再登録エラー
+
+再登録操作をトリガーする前に、[こちらの兆候](#symptoms)がないか確認してください。
+
+### <a name="symptoms"></a>現象
+
+* バックアップ、復元、バックアップの構成などすべての操作が失敗するとき、VM で次のいずれかのエラー コードが生成されます。**WorkloadExtensionNotReachable**、**UserErrorWorkloadExtensionNotInstalled**、**WorkloadExtensionNotPresent**、**WorkloadExtensionDidntDequeueMsg**
+* バックアップ項目の **[バックアップの状態]** に **[到達不能]** と表示されます。 ただし、同じ状態を引き起こす可能性がある他の理由は除外する必要があります。
+
+  * VM でバックアップ関連の操作を実行する権限がありません。  
+  * バックアップを実行できないため、VM がシャットダウンされています。
+  * ネットワークの問題  
+
+    ![VM の再登録](./media/backup-azure-sql-database/re-register-vm.png)
+
+* Always On 可用性グループの場合、バックアップ設定を変更した後、またはフェイルオーバーが発生したときに、バックアップが失敗するようになります。
+
+### <a name="causes"></a>原因
+これらの現象は、次の 1 つ以上の理由によって発生する可能性があります。
+
+  * 拡張機能がポータルから削除またはアンインストールされました。 
+  * VM の **[コントロール パネル]** の **[プログラムのアンインストールと変更]** UI で拡張機能が安易ストールされました。
+  * VM がインプレース ディスク復元を使用して時間内に復元されました。
+  * VM 上の拡張機能構成の期限が切れたため、VM が長期間にわたってシャットダウンされました。
+  * VM が削除され、削除された VM と同じ名前で同じリソース グループに別の VM が作成されました。
+  * AG ノードの 1 つが、完全なバックアップ構成を受け取りませんでした。これは可用性グループのコンテナーへの登録時、または新しいノードの追加時に発生する可能性があります。  <br>
+    上記のシナリオでは、VM での再登録操作をトリガーすることをお勧めします。 この方法は PowerShell のみで使用できますが、まもなく Azure portal でも使用できるようになります。
+
 
 ## <a name="next-steps"></a>次の手順
 

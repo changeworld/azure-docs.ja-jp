@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8f57310cf4dbc2a27761fc44cfde6c8fd2791a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 03174e6336589f8aa49a7fc7197da1301ff54400
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005541"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009781"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
@@ -41,7 +41,7 @@ Runbook やそれにより自動化されるプロセスに影響を与えない
 
 * 元の名前 `Update-AutomationAzureModulesForAccount` でこの Runbook をインポートした場合、この名前で内部にある Runbook が上書きされます。 その結果、インポートされた Runbook は、**[Azure モジュールの更新]** ボタンをクリックしたとき、または Azure Resource Manager API を使用してこの Automation アカウントに対してこの Runbook を直接呼び出したときに、実行されます。
 
-* 現在サポートされているのは、`Azure` および `AzureRM.*` モジュールだけです。 新しい [Azure PowerShell Az モジュール](/powershell/azure/new-azureps-module-az)は、まだサポートされていません。
+* この Runbook は現在、**Azure** と **AzureRm** モジュールの更新のみをサポートしています。 [Azure PowerShell Az モジュール](/powershell/azure/new-azureps-module-az)は Automation アカウントでサポートされますが、この Runbook では更新できません。
 
 * Az モジュールが含まれている Automation アカウントでは、この Runbook を開始しないでください。
 
@@ -58,32 +58,36 @@ Runbook やそれにより自動化されるプロセスに影響を与えない
 
 1. Automation アカウントの [モジュール] ページに、**Update Azure Modules (Azure モジュールの更新)** オプションが追加されました。 このオプションは常に有効です。<br><br> ![[モジュール] ページの [Update Azure Modules] (Azure モジュールの更新) オプション](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-  > [!NOTE]
-  > Azure モジュールを更新する前に、既存のスクリプトが予期したとおり確実に動作するように、テスト用の Automation アカウントでモジュールを更新することをお勧めします。
-  >
-  > **[Update Azure Modules] (Azure モジュールの更新)** ボタンは、パブリック クラウドでのみ使用できます。 [独立リージョン](https://azure.microsoft.com/global-infrastructure/)では使用できません。 Azure モジュールを更新するには、**Update-AutomationAzureModulesForAccount** Runbook を使用してください。 それは、[Update Azure modules runbook repository (Azure モジュールの更新 Runbook リポジトリ)](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) からダウンロードできます。 オープン ソースの Runbook の使用方法について詳しくは、「[オープン ソースの Runbook で Azure モジュールを更新する](#open-source)」をご覧ください。
+   > [!NOTE]
+   > Azure モジュールを更新する前に、既存のスクリプトが予期したとおり確実に動作するように、テスト用の Automation アカウントでモジュールを更新することをお勧めします。
+   >
+   > **[Update Azure Modules] (Azure モジュールの更新)** ボタンは、パブリック クラウドでのみ使用できます。 [独立リージョン](https://azure.microsoft.com/global-infrastructure/)では使用できません。 Azure モジュールを更新するには、**Update-AutomationAzureModulesForAccount** Runbook を使用してください。 それは、[Update Azure modules runbook repository (Azure モジュールの更新 Runbook リポジトリ)](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) からダウンロードできます。 オープン ソースの Runbook の使用方法について詳しくは、「[オープン ソースの Runbook で Azure モジュールを更新する](#open-source)」をご覧ください。
 
 2. **[Azure モジュールの更新]** をクリックすると、続行するかどうかを訪ねる確認通知が表示されます。<br><br> ![Azure モジュールの更新通知](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
 3. **[はい]** をクリックすると、モジュールの更新プロセスが開始されます。 更新プロセスの所要時間は約 15 分から 20 分であり、以下のモジュールが更新されます。
 
-  * Azure
-  * Azure.Storage
-  * AzureRm.Automation
-  * AzureRm.Compute
-  * AzureRm.Profile
-  * AzureRm.Resources
-  * AzureRm.Sql
-  * AzureRm.Storage
+   * Azure
+   * Azure.Storage
+   * AzureRm.Automation
+   * AzureRm.Compute
+   * AzureRm.Profile
+   * AzureRm.Resources
+   * AzureRm.Sql
+   * AzureRm.Storage
 
-    モジュールが既に最新の状態である場合、このプロセスは数秒で完了します。 更新プロセスが完了すると、通知が表示されます。<br><br> ![Azure モジュールの更新の更新状態](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+     モジュールが既に最新の状態である場合、このプロセスは数秒で完了します。 更新プロセスが完了すると、通知が表示されます。<br><br> ![Azure モジュールの更新の更新状態](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
-    .NET Core の AzureRm モジュール (AzureRm.*.Core) は、Azure Automation ではサポートされておらず、インポートすることはできません。
+     .NET Core の AzureRm モジュール (AzureRm.*.Core) は、Azure Automation ではサポートされておらず、インポートすることはできません。
 
 > [!NOTE]
 > Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。  
 
 Runbook でこれらの Azure PowerShell モジュールのコマンドレットを使用する場合は、最新のモジュールになっていることを確認するために、この更新プロセスを 1 か月に 1 回程度実行する必要があります。 Azure Automation では、モジュールの更新時に `AzureRunAsConnection` 接続を使用して認証が行われます。 サービス プリンシパルが有効期限切れになっている場合や、サブスクリプション レベルで存在しなくなっている場合、モジュールの更新は失敗します。
+
+## <a name="known-issues"></a>既知の問題
+
+0 から始まる数値名を持つリソース グループにある、Automation Account の AzureRM モジュールの更新については、既知の問題があります。 Automation Account で Azure モジュールを更新するには、それが英数字名を持つリソース グループになければなりません。 0 から始まる数値名を持つリソース グループは、現時点で AzureRM モジュールを更新できません。
 
 ## <a name="next-steps"></a>次の手順
 

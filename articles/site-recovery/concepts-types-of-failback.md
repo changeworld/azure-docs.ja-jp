@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 16233c9013e97a7db7ef799b79526abac4741612
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318442"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316271"
 ---
-# <a name="overview-of-failback"></a>フェールバックの概要
+# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>VMware VM のディザスター リカバリー後のフェールバック
 
 ディザスター リカバリー プロセスの一部として Azure にフェールオーバーした後、オンプレミス サイトにフェールバックすることができます。 Azure Site Recovery で可能なフェールバックには 2 種類あります。 
 

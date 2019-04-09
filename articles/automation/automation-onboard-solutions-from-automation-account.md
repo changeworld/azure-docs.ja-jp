@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0d67571024c9ace3618f7ae6172122ac48b57faa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843625"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -41,14 +41,19 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |西ヨーロッパ|西ヨーロッパ|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、正確なリージョン間のマッピングではありませんが、適切なマッピングです。
+
+> [!NOTE]
+> 需要に応じて、Automation アカウントまたは Log Analytics ワークスペースを作成するときにリージョンできない場合があります。  その場合は、前の表に記載されている、リソースを作成できるリージョンを使用していることを確認してください。
 
 Change Tracking と Inventory ソリューションには、仮想マシンで[変更を追跡](automation-vm-change-tracking.md)し、[インベントリを作成](automation-vm-inventory.md)する機能が用意されています。 この手順では、仮想マシンでソリューションを有効にします。
 
@@ -91,7 +96,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、**[更新の管理]** で **[更新プログラムの管理]** を選択します。
 
-**[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 **[Update Management の有効化]** ページで、**[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
+**[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 Azure VM は、Automation アカウントの場所に関係なく任意のリージョンに存在できます。 **[Update Management の有効化]** ページで、**[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
 
 ![Azure VM の有効化](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -129,7 +134,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 * [変更の追跡](automation-change-tracking.md)
 * [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 
-Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  続行する前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを進めることはできません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  続行する前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを進めることはできません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
 
 これらのソリューションを削除したら、以下の手順を完了して、Automation アカウントのリンクを解除できます。
 

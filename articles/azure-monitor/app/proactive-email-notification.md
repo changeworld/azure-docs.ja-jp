@@ -22,7 +22,7 @@ ms.locfileid: "57889286"
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
-現在、スマート検出の電子メール通知は、既定では_サブスクリプションの所有者_、_サブスクリプションの共同作成者_、および_サブスクリプションの閲覧者_の各ロールに送信されています。 これらのロールには、多くの場合、監視に積極的に関与していないユーザーが含まれているため、多数のユーザーが不必要に通知を受信する原因になっています。 このエクスペリエンスを改善するために、電子メール通知は既定では[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)ロールと[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ロールのみに送信されるようにするための変更が進行しています。
+現在、スマート検出の電子メール通知は、既定では _サブスクリプションの所有者_、_サブスクリプションの共同作成者_、および _サブスクリプションの閲覧者_ の各ロールに送信されています。 これらのロールには、多くの場合、監視に積極的に関与していないユーザーが含まれているため、多数のユーザーが不必要に通知を受信する原因になっています。 このエクスペリエンスを改善するために、電子メール通知は既定では[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)ロールと[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ロールのみに送信されるようにするための変更が進行しています。
 
 ## <a name="scope-of-this-change"></a>この変更の範囲
 

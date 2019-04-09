@@ -1,6 +1,6 @@
 ---
 title: Azure Alerts でのログ アラートのための webhook アクション | Microsoft Docs
-description: この記事では、Log Analytics または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
+description: この記事では、ログ分析または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -82,7 +82,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 以下のサンプルはどちらも、2 つの列と 2 つの行のみで構成されたダミー ペイロードを示しています。
 
 #### <a name="log-alert-for-azure-log-analytics"></a>Azure Log Analytics のログ アラート
-以下は、Log Analytics ベースのログ アラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook アクションのサンプル ペイロードです。
+以下は、ログ分析ベースのアラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook アクションのサンプル ペイロードです。
 
 ```json
 {
