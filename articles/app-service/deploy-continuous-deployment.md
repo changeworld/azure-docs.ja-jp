@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 1313616818686c7a03269fc1cc837958665732d8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725237"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337546"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 この記事では、[Azure App Service](overview.md) の継続的デプロイを構成する方法を示します。 App Service は、BitBucket、GitHub、および [Azure DevOps Services](https://www.visualstudio.com/team-services/) の既存のリポジトリから最新の更新プログラムをプルすることで、これらのサービスから継続的デプロイを実行できます。
@@ -28,7 +28,7 @@ Azure Portal に表示されないクラウド リポジトリ ([GitLab](https:/
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-準備したリポジトリをサポートされているサービスのいずれかに発行します。 これらのサービスにプロジェクトを発行する方法の詳細については、「[Create a repo (GitHub) (リポジトリの作成 (GitHub))]」、「[Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]」、「[Azure DevOps Services の概要]」を参照してください。
+準備したリポジトリをサポートされているサービスのいずれかに発行します。 これらのサービスにプロジェクトを発行する方法の詳細については、「[Create a repo (GitHub) (リポジトリの作成 (GitHub))]」、「[Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]」、「[Azure DevOps Services で作業を始める]」を参照してください。
 
 ## <a name="deploy-continuously-from-github"></a>GitHub からの継続的デプロイ
 
@@ -47,6 +47,16 @@ GitHub の承認は、1 回のみ実行する必要があります。 既に承�
 ### <a name="option-1-use-app-service-kudu-build-server"></a>オプション 1: App Service Kudu ビルド サーバーを使用する
 
 **[構成]** ページで、継続的デプロイのソースになる組織、リポジトリ、およびブランチを選択します。 完了したら、**[続行]** をクリックします。
+
+GitHub 組織でリポジトリからデプロイするには、GitHub を参照して、**[設定]** > **[アプリケーション]** > **[Authorized OAuth Apps]\(承認済み OAuth アプリ\)** に移動します。 次に、[Azure App Service] をクリックします。
+
+![[設定] > [アプリケーション] > [Authorized OAuth Apps]\(承認済み OAuth アプリ\) > [Azure App Service]](media/app-service-continuous-deployment/github-settings-navigation.png)
+
+次のページで、右側にある [許可] ボタンをクリックして、App Service がご自身の組織のリポジトリにアクセスできるようにします。
+
+![[許可] をクリックして組織のリポジトリに App Service がアクセスできるようにする](media/app-service-continuous-deployment/grant-access.png)
+
+これでご自身の組織が、デプロイ センターの **[構成]** ページにある [組織] の一覧に表示されるようになりました。
 
 ### <a name="option-2-use-azure-pipelines-preview"></a>オプション 2: Azure Pipelines (プレビュー) を使用する
 
@@ -154,4 +164,4 @@ App Service プランの[価格レベル](https://azure.microsoft.com/pricing/de
 
 [Create a repo (GitHub) (リポジトリの作成 (GitHub))]: https://help.github.com/articles/create-a-repo
 [Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Azure DevOps Services の概要]: https://docs.microsoft.com/azure/devops/user-guide/devops-alm-overview
+[Azure DevOps Services で作業を始める]: https://docs.microsoft.com/azure/devops/user-guide/devops-alm-overview

@@ -11,15 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 03/20/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 851098840356c7d391c2b10fae1c18884f5dab02
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236110"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295676"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Log Analytics の使用量とコストを管理する
 
@@ -112,13 +112,13 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 3. **[価格レベル]** で価格レベルを選択し、**[選択]** をクリックします。  
     ![選択された料金プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
+ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](usage-estimated-costs.md#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
 
 > [!NOTE]
 > ワークスペースが Automation アカウントにリンクされている場合は、"*スタンドアロン (GB 単位)*" 価格レベルを選択できるように、**Automation and Control** ソリューションをすべて削除し、Automation アカウントのリンクを解除しておく必要があります。 ワークスペース ブレードの **[全般]** で **[ソリューション]** をクリックし、ソリューションを表示して削除します。 Automation アカウントのリンクを解除するには、**[価格レベル]** ブレードで Automation アカウントの名前をクリックします。
 
 > [!NOTE]
-> 詳細 (ARM による価格レベルの設定)(https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace) およびサブスクリプションがレガシであるか、新しい価格モデルであるかに関係なく、ARM デプロイを成功させる方法を参照できます。 
+> [ARM による価格レベルの設定](template-workspace-configuration.md#create-a-log-analytics-workspace)と、サブスクリプションでレガシ価格モデルが使用されているか新しい価格モデルが使用されているかに関係なく ARM デプロイを確実に成功させる方法について詳しく知ることができます。 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics がデータを収集しなくなった場合のトラブルシューティング
@@ -138,24 +138,12 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>使用量が予想よりも多い理由のトラブルシューティング
 使用量が多くなる原因は、次のいずれかまたは両方です。
-- 予想よりも多くのデータが Log Analytics に送信されている
 - 予想よりも多くのノードが Log Analytics にデータを送信している
+- 予想よりも多くのデータが Log Analytics に送信されている
 
-### <a name="data-volume"></a>データ ボリューム 
-**[使用量と推定コスト]** ページの *[ソリューションごとのデータの取り込み]* グラフに、送信されたデータの総量と各ソリューションによって送信されている量が表示されます。 これにより、全体的なデータ使用量 (または、特定のソリューションによる使用量) が、増加しているか、一定しているか、減少しているかといった傾向を確認できます。 これを生成するために使用するクエリは、次のとおりです
+次の各セクションで詳しく説明します。
 
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-句 "where IsBillable = true" は、取り込み料金がかからない特定のソリューションからのデータ型を除外することに注意してください。 
-
-さらに詳しく調査して、IIS ログのためにデータを調査したい場合などに、特定のデータ型のデータの傾向を確認することができます。
-
-`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
-
-### <a name="nodes-sending-data"></a>データを送信するノード
+## <a name="understanding-nodes-sending-data"></a>データを送信するノードについて理解する
 
 過去 1 か月間のコンピューター (ノード) 数の毎日のレポート データを把握するには、次のように使用します
 
@@ -163,7 +151,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-**課金対象のデータ型** (一部のデータ型は無料です) を送信するコンピューターの一覧を取得するには、[_IsBillable](log-standard-properties.md#isbillable) プロパティを活用します。
+**課金対象のデータ型** (一部のデータ型は無料です) を送信するコンピューターの一覧を取得するには、[_IsBillable](log-standard-properties.md#_isbillable) プロパティを活用します。
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -171,9 +159,9 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。 
+複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。 このクエリは、Usage データ型でコンピューター情報ごとにクエリを実行する従来の方法に取って代わるものです。  
 
-これを拡張して、課金対象のデータ型を送信している 1 時間あたりのコンピューターの数を返すことができます。
+これは、1 時間あたりの、課金対象のデータ型を送信しているコンピューターの数を返すように拡張することができます (これにより、Log Analytics は、レガシのノードあたりの価格レベルに対して、課金可能なノードを計算します):
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -181,13 +169,30 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 | where computerName != ""
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
-コンピューターごとに、取り込まれた課金可能イベントの**サイズ**を表示するには `_BilledSize` プロパティを使用します。サイズはバイト単位で示されます。
+## <a name="understanding-ingested-data-volume"></a>取り込まれたデータ ボリュームについて理解する 
+
+**[使用量と推定コスト]** ページの *[ソリューションごとのデータの取り込み]* グラフに、送信されたデータの総量と各ソリューションによって送信されている量が表示されます。 これにより、全体的なデータ使用量 (または、特定のソリューションによる使用量) が、増加しているか、一定しているか、減少しているかといった傾向を確認できます。 これを生成するために使用するクエリは、次のとおりです
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+句 "where IsBillable = true" は、取り込み料金がかからない特定のソリューションからのデータ型を除外することに注意してください。 
+
+さらに詳しく調査して、IIS ログのためにデータを調査したい場合などに、特定のデータ型のデータの傾向を確認することができます。
+
+`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="data-volume-by-computer"></a>コンピューターごとのデータ ボリューム
+
+コンピューターごとに取り込まれた課金可能イベントの**サイズ**を知るには、次のように `_BilledSize` プロパティ ([log-standard-properties#_billedsize.md](learn more)) を使用します。このプロパティでは、サイズはバイト単位で指定します。
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
 
-このクエリは、Usage データ型でこれをクエリする従来の方法を置き換えるものです。 
+`_IsBillable` プロパティは、取り込まれたデータで課金が発生するかどうかを指定します ([log-standard-properties.md#_isbillable](Learn more))。
 
 コンピューターごとに、取り込まれたイベントの**数**を表示するには、次のように使用します
 
@@ -207,8 +212,29 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last `
 
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure リソース、リソース グループ、またはサブスクリプションごとのデータ ボリューム
+
+__コンピューターごとに__取り込まれた課金可能イベントの**サイズ**を取得できる Azure でホストされているノードからのデータについては、次のようにリソースへの完全パスを提供する `_ResourceId` プロパティを使用します ([log-standard-properties.md#_resourceid](learn more))。
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+
+__Azure サブスクリプションごとに__取り込まれた課金可能イベントの**サイズ**を取得できる Azure でホストされているノードからのデータについては、`_ResourceId` プロパティを次のように解析します。
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+
+`subscriptionId` を `resourceGroup` に変更すると、Azure リソース グループごとの課金可能な取り込まれたデータ ボリュームが表示されます。 
+
+
 > [!NOTE]
 > 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
+
+### <a name="querying-for-common-data-types"></a>一般的なデータ型のクエリを実行する
 
 特定のデータ型のデータのソースについてさらに詳しく調べるための、いくつかの便利なクエリの例を次に示します。
 
@@ -241,7 +267,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 | AzureDiagnostics           | リソース ログの収集を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 
-### <a name="getting-node-counts"></a>ノード数の取得 
+### <a name="getting-security-and-automation-node-counts"></a>セキュリティ ノード数と Automation ノード数を取得する 
 
 「ノードごと (OMS)」価格レベルを使用している場合は、使用しているノードとソリューションの数と、**[使用量と推定コスト]** ページの表に表示される課金対象の Insights ノードと Analytics ノードの数に基づいて課金されます。  
 
@@ -282,6 +308,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>収集したデータの量が予測よりも多い場合のアラートを作成する
+
 このセクションでは、次の場合のアラートを作成する方法について説明します。
 - データ量が指定された量を超えた。
 - データ量が指定された量を超えると予測された。

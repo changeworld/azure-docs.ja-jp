@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842502"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -183,8 +183,28 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
 
 ご自身がアカウント管理者でない場合は、[Azure Active Directory のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md) (RBAC) によって、部分的なアクセス権が与えられていると考えられます。 サブスクリプションを管理して課金情報を変更するには、[アカウント管理者を探します](billing-subscription-transfer.md#whoisaa)。アカウント管理者にタスクを実行してもらうか、[サブスクリプションを譲渡](billing-subscription-transfer.md)してもらうように依頼します。
 
-組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[お問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+組織にアカウント管理者が存在せず、課金を管理する必要がある場合は、[お問い合わせください](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>サービス インシデントに対するサービス レベル アグリーメントの控除を要求する方法
+
+サービス レベル アグリーメント (SLA) では、稼働時間と接続に関するマイクロソフトの確約内容について説明しています。 Azure サービスで稼働時間や接続に影響を与える問題 (しばしば “停止” と呼ばれる) が発生すると、サービス インシデントが報告されます。 SLA に記載されている各サービスのサービス レベルが達成および維持されていない場合は、月額サービス料金の一部が控除対象になる場合があります。
+
+控除を要求するには、次の手順を実行します。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。 これにより、サポート担当者は必要な背景情報を自動的に収集して、お客様のケースをより迅速に解決することができます。
+2. 新しいサポート リクエストを作成します。
+3. **[問題の種類]** で **[課金]** を選択します。
+4. **[問題の種類]** で **[払戻要求]** を選択します。
+5. SLA の控除を求めていることを指定する詳細を追加し、日付/時刻/タイムゾーン、および影響を受けたサービス (VM、Web サイトなど) を記載します。
+6. 連絡先情報の詳細を確認し、**[作成]** ボタンを選択して要求を送信します。
+
+SLA のしきい値は、サービスによって異なります。 たとえば、SQL Web サービス レベルの SLA は 99.9%、VM の SLA は 99.95%、SQL Standard サービス レベルの SLA は 99.99% です。
+
+一部のサービスには、SLA を適用するための前提条件があります。 たとえば、仮想マシンでは、2 つ以上のインスタンスが同じ可用性セットにデプロイされている必要があります。
+
+詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/en-us/support/legal/sla/)」ドキュメントと「[Azure サービスの SLA 概要](https://azure.microsoft.com/en-us/support/legal/sla/summary/)」ドキュメントを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 194f422c1567103e41f3b39f8510931b1f4762b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105184"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435599"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect:LocalDB の 10 GB 制限からの回復方法
 Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 SQL Server Express には、10 GB のサイズ制限があります。 LocalDB を使用していて、この上限に達すると、Azure AD Connect Synchronization Service は正常に開始または同期できなくなります。 この記事では、回復の手順を説明します。
@@ -87,7 +87,7 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 
 3. **[アクション]** で **[Clear Runs (実行のクリア)]** コマンドを選択します。
 
-4. **[Clear all runs (すべての実行をクリア)]** または **[Clear runs before… (以下より前の実行をクリア)]<date>** オプションを選択できます。 まずは 2 日を経過した実行履歴データをクリアすることをお勧めします。 DB サイズの問題が引き続き発生する場合は、**[Clear all runs (すべての実行をクリア)]** オプションを選択してください。
+4. **[Clear all runs]\(すべての実行をクリア\)** または **[Clear runs before… \<date>]\(date> より前の実行をクリア\)** のいずれかのオプションを選択できます。 まずは 2 日を経過した実行履歴データをクリアすることをお勧めします。 DB サイズの問題が引き続き発生する場合は、**[Clear all runs (すべての実行をクリア)]** オプションを選択してください。
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>実行履歴データの保有期間を短縮する
 この手順は、複数の同期サイクル後に 10 GB 制限の問題が発生する可能性を低減するためのものです。

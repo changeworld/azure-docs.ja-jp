@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b1eb6e1458fab6de3472d68352ba7764b71007c8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292583"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317648"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST での Azure Media Services テレメトリの構成
 
@@ -34,7 +34,7 @@ ms.locfileid: "58292583"
 - 通知エンドポイントを取得する
 - 監視するための通知エンドポイントを作成する 
 
-    通知エンドポイントを作成するには、EndPointType を AzureTable (2) に設定し、endPontAddress をストレージ テーブル (例: https://telemetryvalidationstore.table.core.windows.net/)) に設定します。
+    通知エンドポイントを作成するには、EndPointType を AzureTable (2) に設定し、endPontAddress をストレージ テーブル (例: https:\//telemetryvalidationstore.table.core.windows.net/) に設定します。
   
 - 監視構成を取得する
 
@@ -121,12 +121,12 @@ ms.locfileid: "58292583"
     
     {  
         "Name":"monitoring",
-        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointAddress":"https:\//telemetryvalidationstore.table.core.windows.net/",
         "EndPointType":2
     }
 
 > [!NOTE]
-> 必ず、"https://telemetryvalidationstore.table.core.windows.net" の値をご利用のストレージ アカウントに変更してください。
+> "https:\//telemetryvalidationstore.table.core.windows.net" 値は、必ず実際に使用するストレージ アカウントに変更してください。
 
 ### <a name="response"></a>Response
 

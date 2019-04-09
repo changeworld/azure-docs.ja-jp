@@ -11,12 +11,12 @@ ms.date: 10/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52f8b70a4b098cc7266042499300235588e5303f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5b2471b28132b26c41844b620f6dcf49e3802a6e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164313"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436712"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>ADConnectivityTool PowerShell モジュールとは
 
@@ -47,7 +47,7 @@ Azure AD Connect ウィザードの **[ディレクトリの接続]** ページ�
 
 背後で実際に起きていることは、Azure AD Connect による `Start-NetworkConnectivityDiagnosisTools` 関数の呼び出しです。  この関数は、ネットワーク接続の問題が原因で資格情報の検証が失敗したときに呼び出されます。
 
-最後に、ウィザードからツールが呼び出されるたびに詳細なログ ファイルが生成されます。 そのログの場所は **C:\ProgramData\AADConnect\ADConnectivityTool-<date>-<time>.log** です。
+最後に、ウィザードからツールが呼び出されるたびに詳細なログ ファイルが生成されます。 そのログの場所は **C:\ProgramData\AADConnect\ADConnectivityTool-\<date>-\<time>.log** です
 
 ## <a name="adconnectivitytools-post-installation"></a>インストール後の ADConnectivityTools
 Azure AD Connect がインストールされた後、ADConnectivityTools PowerShell モジュールのどの関数でも使用できます。  

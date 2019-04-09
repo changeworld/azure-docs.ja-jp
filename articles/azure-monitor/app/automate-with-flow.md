@@ -9,18 +9,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2017
+ms.date: 03/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: 685ce54f75b20879230163f216246746b4a36922
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: cbb9cceef68febec0af991c3d8d5df3e3404f1c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756196"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834052"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使って Azure Application Insights のプロセスを自動化する
 
-お使いのサービスが正常に機能しているかを確認するために、利用統計情報に対して同じクエリを繰り返し実行していませんか。 これらのクエリを自動化して傾向や異常を検出し、関連する独自のワークフローを構築する方法を確認しましょう。 これには、Microsoft Flow 対応の Azure Application Insights コネクタ (プレビュー) が最適です。
+お使いのサービスが正常に機能しているかを確認するために、利用統計情報に対して同じクエリを繰り返し実行していませんか。 これらのクエリを自動化して傾向や異常を検出し、関連する独自のワークフローを構築する方法を確認しましょう。 これには、Microsoft Flow 対応の Azure Application Insights コネクタが最適です。
 
 この統合によって、一行のコードも記述せずに、膨大な数のプロセスを自動化できるようになりました。 Application Insights のアクションを使ってフローを作成すると、このフローが Application Insights Analytics クエリを自動的に実行します。 
 
@@ -32,40 +32,47 @@ ms.locfileid: "53756196"
 
 このチュートリアルでは、Analytics 自動クラスター アルゴリズムを使うフローを作成して、Web アプリケーションのデータの属性をグループ化する方法を説明します。 このフローは結果を自動的にメールで送信しますが、これは、Microsoft Flow と Application Insights Analytics を共に利用する方法の一例にすぎません。 
 
-### <a name="step-1-create-a-flow"></a>ステップ 1:フローを作成する
+### <a name="step-1-create-a-flow"></a>手順 1: フローを作成する
 1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、**[マイ フロー]** を選択します。
-2. **[フローを一から作成する]** をクリックします。
+2. **[新規]** をクリックして、次に **[一から作成する]** をクリックします。
+
+    ![新しいフローを一から作成する](./media/automate-with-flow/1createflow.png)
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>手順 2:フローのトリガーを作成する
-1. **[スケジュール]** を選択し、**[スケジュール - 繰り返し]** を選択します。
-1. **[頻度]** ボックスで **[日]** を選択し、**[間隔]** ボックスに「**1**」と入力します。
+1. [ビルドイン] タブで、**[スケジュール]** を選択し、**[スケジュール - 繰り返し]** を選択します。
 
-    ![Microsoft Flow のトリガー ダイアログ ボックス](./media/automate-with-flow/flow1.png)
+    ![[ビルドイン] でスケジュールを選択](./media/automate-with-flow/2schedule.png)
+
+1. **[間隔]** ボックスで「**1**」を入力し、**[頻度]** ボックスで **[日]** を選択します。
+2. **[新しいステップ]** をクリックします。
+
+    ![頻度と間隔を入力して、スケジュールの繰り返しを設定します。](./media/automate-with-flow/3schedulerecurrence.png)
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>手順 3:Application Insights のアクションを追加する
-1. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
 1. **Azure Application Insights** を検索します。
-1. **[Azure Application Insights - Visualize Analytics クエリのプレビュー]** をクリックします。
-
-    ![Analytics クエリの実行ウィンドウ](./media/automate-with-flow/flow2.png)
+2. **[Azure Application Insights - Visualize Analytics query]\(Azure Application Insights - Visualize Analytics クエリ\)** をクリックします。
+ 
+    ![アクションを選択します。Azure Application Insights Visualize Analytics クエリ](./media/automate-with-flow/4visualize.png)
 
 ### <a name="step-4-connect-to-an-application-insights-resource"></a>手順 4:Application Insights リソースに接続する
 
 この手順を完了するには、お使いのリソースのアプリケーション ID と API キーが必要です。 以下の図に示すように、Azure ポータルから ID と キーを取得できます。
 
-![Azure ポータルのアプリケーション ID](./media/automate-with-flow/appid.png) 
+![Azure ポータルのアプリケーション ID](./media/automate-with-flow/5apiaccess.png)
+
+![Azure portal の API キー](./media/automate-with-flow/6apikey.png)
 
 - 接続名、アプリケーション ID、API キーを指定します。
 
-    ![Microsoft Flow の接続ウィンドウ](./media/automate-with-flow/flow3.png)
+    ![Microsoft Flow の接続ウィンドウ](./media/automate-with-flow/7connection.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>手順 5:Analytics クエリとグラフの種類を指定する
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>手順 5: Analytics クエリとグラフの種類を指定する
 この例のクエリでは、前日に失敗したリクエストを選択して、処理の一環として発生した例外と関連付けています。 operation_Id 識別子に基づいて、Analytics によって関連付けられます。 その後、自動クラスター アルゴリズムを使って、クエリによる結果のセグメント化が行われます。 
 
 独自のクエリを作成するときは、クエリをフローに追加する前に、必ず Analytics で正常に動作していることを確認してください。
 
-- 次の Analytics クエリを追加して、グラフの種類として [HTML の表] を選択します。 
+- 次の Analytics クエリを追加して、グラフの種類として [HTML の表] を選択します。 **[新しいステップ]** を選択します。
 
     ```
     requests
@@ -78,15 +85,14 @@ ms.locfileid: "53756196"
     | evaluate autocluster()
     ```
     
-    ![Analytics クエリの設定ウィンドウ](./media/automate-with-flow/flow4.png)
+    ![Analytics クエリの設定ウィンドウ](./media/automate-with-flow/8query.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>手順 6:電子メールを送信するフローを設定する
+### <a name="step-6-configure-the-flow-to-send-email"></a>手順 6: 電子メールを送信するフローを設定する
 
-1. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
 1. **Office 365 Outlook** を検索します。
-1. **[Office 365 Outlook - 電子メールの送信]** をクリックします。
+2. **[Office 365 Outlook - 電子メールの送信]** をクリックします。
 
-    ![Office 365 Outlook の選択ウィンドウ](./media/automate-with-flow/flow2b.png)
+    ![Office 365 Outlook の選択ウィンドウ](./media/automate-with-flow/9outlookaction.png)
 
 1. **[電子メールの送信]** ウィンドウで、次の操作を行います。
 
@@ -98,7 +104,7 @@ ms.locfileid: "53756196"
 
    d. **[詳細オプションを表示する]** をクリックします。
 
-    ![Office 365 Outlook の設定](./media/automate-with-flow/flow5.png)
+    ![Office 365 Outlook の設定](./media/automate-with-flow/10sendemailbody.png)
 
 1. 動的なコンテンツのメニューで、以下を実行します。
 
@@ -108,12 +114,12 @@ ms.locfileid: "53756196"
     
     c. **[Is HTML]\(HTML にする\)** ボックスで、**[はい]** を選択します。
 
-    ![Office 365 の電子メール設定ウィンドウ](./media/automate-with-flow/flow7.png)
+    ![Office 365 の電子メール設定ウィンドウ](./media/automate-with-flow/11emailattachment.png)
 
-### <a name="step-7-save-and-test-your-flow"></a>手順 7:フローを保存してテストする
-- **[フロー名]** ボックスにフローの名前を追加し、**[フローの作成]** をクリックします。
+### <a name="step-7-save-and-test-your-flow"></a>手順 7: フローを保存してテストする
+- **[フロー名]** ボックスにフローの名前を追加し、**[保存]** をクリックします。
 
-    ![フローの作成ウィンドウ](./media/automate-with-flow/flow8.png)
+    ![フローに名前を付けて保存](./media/automate-with-flow/12nameflow.png)
 
 トリガーがこのアクションを実行するまで待機するか、または、[必要に応じてトリガーを実行する](https://flow.microsoft.com/blog/run-now-and-six-more-services/)ことで、すぐにフローを実行できます。
 

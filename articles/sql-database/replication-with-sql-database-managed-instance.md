@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 164448f2e96b796d21419e90a3965390f22d7d38
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b20a119a69ac796bc9ea85083d335f0a7d2fdf2d
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762978"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417957"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 
@@ -45,13 +45,13 @@ ms.locfileid: "57762978"
 サポート:
 
 - Azure SQL Database 内にある SQL Server のオンプレミスおよびマネージド インスタンスの、トランザクション レプリケーションとスナップショット レプリケーションの組み合わせ。
-- サブスクライバーには、オンプレミス SQL Server データベース、Azure SQL Database 内の単一データベース、または Azure SQL Database エラスティック プール内のプールされたデータベースを使用できます。
+- サブスクライバーには、オンプレミス SQL Server データベース、Azure SQL Database 内の単一データベース/マネージド インスタンス、または Azure SQL Database エラスティック プール内のプールされたデータベースを使用できます。
 - 一方向または双方向のレプリケーション。
 
 次の機能は、Azure SQL Database 内のマネージド インスタンスではサポートされません。
 
 - 更新可能なサブスクリプション。
-- アクティブ geo レプリケーション。
+- トランザクション レプリケーションが構成されている場合、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)と[自動フェールオーバー グループ](sql-database-auto-failover-group.md)は使用しないでください。
 
 ## <a name="configure-publishing-and-distribution-example"></a>パブリッシングとディストリビューションの構成例
 

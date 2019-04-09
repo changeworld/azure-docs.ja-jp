@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: e1a928711a596c159ac920f11c123b73b72d3aa2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875129"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -524,7 +524,7 @@ Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュ�
 
 以下の点に注意してください。
 
-* [複合データ型](http://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
+* [複合データ型](https://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
 
 ## <a name="compression-support"></a>圧縮のサポート
 
@@ -573,6 +573,14 @@ Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポ
 
 > [!NOTE]
 > **AvroFormat**、**OrcFormat**、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、Data Factory は、メタデータ内の圧縮コーデックを検出して使用します。 ファイルに書き込むときは、その形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。
+
+## <a name="unsupported-file-types-and-compression-formats"></a>サポートされていないファイル形式と圧縮形式
+
+Azure Data Factory の拡張機能を使用して、サポートされていないファイルに変換することができます。 Azure Function、および Azure Batch を使用することによるカスタム タスクという 2つのオプションがあります。
+
+Azure Function を使用して [tar ファイルの内容を抽出する](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)サンプルをご覧いただけます。 詳細については、「[Azure Functions アクティビティ](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)」をご覧ください。
+
+また、カスタム dotnet アクティビティを使用してこの機能性を構築することもできます。 詳細については、[ここ](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

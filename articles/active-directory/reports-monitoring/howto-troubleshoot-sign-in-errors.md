@@ -3,7 +3,7 @@ title: Azure Active Directory レポートを使用してサインイン エラ�
 description: Azure Portal で Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22126114f2d4fcb865485d9cebc69f0e35f70201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26a3594b00f19c2790e9dfd5f09fbdc7d73d478f
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198475"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434893"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法:Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 必要なもの:
 
 * Premium (P1/P2) ライセンスがある Azure AD テナント。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
-* テナントの**グローバル管理者**、**セキュリティ管理者** **セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
+* テナントの**グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または**レポート閲覧者**のロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>サインイン レポートを使用したサインイン エラーのトラブルシューティング
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
     ![結果のフィルター処理](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
-4. 調査する必要がある失敗したサインインを特定して選択します。 これにより、失敗したサインインに関する詳細情報を含む、追加の詳細ウィンドウが表示されます。 **[サインインのエラー コード]** と **[エラーの理由]** をメモします。 
+4. 調査する必要がある失敗したサインインを特定します。 そのサインインを選択し、追加の詳細ウィンドウを開いて、失敗したサインインに関する詳細情報を確認します。 **[サインインのエラー コード]** と **[エラーの理由]** をメモします。 
 
     ![レコードの選択](./media/howto-troubleshoot-sign-in-errors/sign-in-failures.png)
         
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
     ![トラブルシューティングとサポート](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. 失敗の理由ではエラーについて説明します。 たとえば、上記のシナリオでの失敗の理由は、**ユーザー名またはパスワードが無効、またはオンプレミスのユーザー名またはパスワードが無効**です。 これはユーザーが Azure Portal へのサインインに、誤ったユーザー名またはパスワードを入力したということです。 この修正プログラムは、単に適切なユーザー名とパスワードでもう一度サインインするためのものです。
+6. 失敗の理由ではエラーについて説明します。 たとえば、上記のシナリオでの失敗の理由は、**ユーザー名またはパスワードが無効、またはオンプレミスのユーザー名またはパスワードが無効**です。 この修正プログラムは、単に適切なユーザー名とパスワードでもう一度サインインするためのものです。
 
 7. [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
 

@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.topic: article
 ms.author: jowargo
 ms.date: 02/14/2019
-ms.openlocfilehash: 4d3ee3a318385e96b70a38556835f6427b407a59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9ed69ac3526098cd5426c966952de97c948322b5
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848713"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402390"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs の SDK
 
-Microsoft とサードパーティは、Azure Notification Hubs 用の SDK を公開しています。
+Microsoft とサードパーティは、Azure Notification Hubs 用の SDK を公開しています。 Android、iOS、および .NET 向け Microsoft リポジトリには、各ターゲット プラットフォーム用のサンプル アプリも含まれています。
 
 | SDK            | Publisher      |
 | -------------- | -------------- |

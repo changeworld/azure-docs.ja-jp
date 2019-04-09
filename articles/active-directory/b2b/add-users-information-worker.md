@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16caf8b6fd48b5dca676b1c8ee046ad01264ca03
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211429"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294513"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 
@@ -36,15 +37,15 @@ ms.locfileid: "56211429"
 1. `https://myapps.microsoft.com` に移動して、アクセス パネルを開きます。
 2. アプリをポイントし、省略記号 (**...**) を選択してし、**[アプリの管理]** を選択します。
  
-   ![アクセス パネルでアプリを管理する](media/add-users-iw/access-panel-manage-app.png)
+   ![Salesforce アプリの [アプリの管理] サブメニューを示すスクリーンショット](media/add-users-iw/access-panel-manage-app.png)
  
 3. ユーザー一覧の最上部で、**+** を選択します。
    
-   ![アクセス パネルでユーザーを追加する](media/add-users-iw/access-panel-manage-app-add-user.png)
+   ![アプリにメンバーを追加するためのプラス記号を示すスクリーンショット](media/add-users-iw/access-panel-manage-app-add-user.png)
    
 4. **[メンバーの追加]** 検索ボックスに、ゲスト ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。
    
-   ![アクセス パネルの招待](media/add-users-iw/access-panel-invitation.png)
+   ![ゲストを追加するための [メンバーの追加] ウィンドウを示すスクリーンショット](media/add-users-iw/access-panel-invitation.png)
    
 5. **[追加]** を選択して、ゲスト ユーザーに招待を送信します。 招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 
@@ -55,19 +56,19 @@ ms.locfileid: "56211429"
 2. `https://myapps.microsoft.com` に移動して、アクセス パネルを開きます。
 3. **[グループ]** アプリを選択します。
    
-   ![アクセス パネルの [グループ] アプリ](media/add-users-iw/access-panel-groups.png)
+   ![アクセス パネルの [グループ] アプリを示すスクリーンショット](media/add-users-iw/access-panel-groups.png)
    
 4. **[Groups I own]\(所有するグループ\)** で、共有したいアプリにアクセスできるグループを選択します。
    
-   ![アクセス パネルの [Groups I own]\(所有するグループ\)](media/add-users-iw/access-panel-groups-i-own.png)
+   ![[所有しているグループ] でグループを選択する場所を示すスクリーンショット](media/add-users-iw/access-panel-groups-i-own.png)
    
 5. グループ メンバー一覧の最上部で、**+** を選択します。
    
-   ![アクセス パネルのメンバーを追加するグループ](media/add-users-iw/access-panel-groups-add-member.png)
+   ![グループにメンバーを追加するためのプラス記号を示すスクリーンショット](media/add-users-iw/access-panel-groups-add-member.png)
    
 6. **[メンバーの追加]** 検索ボックスに、ゲスト ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。
    
-   ![アクセス パネルのグループの招待](media/add-users-iw/access-panel-invitation.png)
+   ![ゲストを追加するための [メンバーの追加] ウィンドウを示すスクリーンショット](media/add-users-iw/access-panel-invitation.png)
    
 7. **[追加]** を選択して、招待をゲスト ユーザーに自動的に送信します。 招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 

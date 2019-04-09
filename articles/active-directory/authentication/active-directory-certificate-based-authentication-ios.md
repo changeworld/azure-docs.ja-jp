@@ -1,5 +1,5 @@
 ---
-title: iOS での Azure Active Directory の証明書ベースの認証
+title: iOS での証明書ベースの認証 - Azure Active Directory
 description: iOS デバイスでソリューションに証明書ベースの認証を構成するための対応シナリオや要件について説明する
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717eef0857d6db53462ef1b5eb4786962550d44b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188071"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369430"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
 
@@ -35,16 +35,16 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 
 | アプリケーション | サポート |
 | --- | --- |
-| Azure Information Protection アプリ |![○][1] |
-| Intune ポータル サイト |![○][1] |
-| Microsoft Teams |![○][1] |
-| OneNote |![○][1] |
-| OneDrive |![○][1] |
-| Outlook |![○][1] |
-| Power BI |![○][1] |
-| Skype for Business |![○][1] |
-| Word/Excel/PowerPoint |![○][1] |
-| Yammer |![○][1] |
+| Azure Information Protection アプリ |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Intune ポータル サイト |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Microsoft Teams |![このアプリケーションのサポートを示すチェック マーク][1] |
+| OneNote |![このアプリケーションのサポートを示すチェック マーク][1] |
+| OneDrive |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Outlook |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Power BI |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Skype for Business |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Word/Excel/PowerPoint |![このアプリケーションのサポートを示すチェック マーク][1] |
+| Yammer |![このアプリケーションのサポートを示すチェック マーク][1] |
 
 ## <a name="requirements"></a>必要条件
 

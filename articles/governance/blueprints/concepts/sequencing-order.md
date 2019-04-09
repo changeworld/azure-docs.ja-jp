@@ -1,24 +1,24 @@
 ---
 title: デプロイ シーケンス順序について
-description: ブループリントが経過するライフサイクルと各ステージの詳細について説明します。
+description: ブループリント定義が経過するライフサイクルと各ステージの詳細について説明します。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/12/2018
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990565"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434808"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
-Azure ブループリントでは、ブループリントの割り当てを処理するときに、**シーケンス順序**を使用してリソースの作成順序を決定します。 この記事では、次の概念について説明します。
+Azure Blueprints では、ブループリント定義の割り当てを処理するときに、**シーケンス順序**を使用してリソースの作成順序を決定します。 この記事では、次の概念について説明します。
 
 - 使用される既定のシーケンス順序
 - 順序をカスタマイズする方法
@@ -30,7 +30,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="default-sequencing-order"></a>既定のシーケンス順序
 
-ブループリントに成果物をデプロイする順序を指定するディレクティブが含まれていない場合、またはそのディレクティブが null の場合は、次の順序が使用されます。
+ブループリント定義に成果物をデプロイする順序を指定するディレクティブが含まれていない場合、またはそのディレクティブが null の場合は、次の順序が使用されます。
 
 - サブスクリプション レベルの**ロールの割り当て**成果物が、成果物の名前で並べ替えられます
 - サブスクリプション レベルの**ポリシーの割り当て**成果物が、成果物の名前で並べ替えられます
@@ -45,16 +45,14 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="customizing-the-sequencing-order"></a>シーケンス順序のカスタマイズ
 
-大規模なブループリントを作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリントにいくつかの Azure Resource Manager テンプレートが含まれている場合です。 ブループリントでは、シーケンス順序を定義することで、このパターンを処理します。
+大規模なブループリント定義を作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリント定義にいくつかの Azure Resource Manager テンプレートが含まれている場合です。 ブループリントでは、シーケンス順序を定義することで、このパターンを処理します。
 
-この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 (リソース グループの) ブループリントと成果物オブジェクトでのみ、このプロパティがサポートされます。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
+この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 このプロパティは、リソース グループ用のブループリント定義、および成果物オブジェクトによってサポートされています。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
 
-> [!NOTE]
-> **リソース グループ**成果物は `dependsOn` プロパティをサポートしますが、任意の成果物の種類によって `dependsOn` のターゲットにすることはできません。
+### <a name="example---ordered-resource-group"></a>例 - 順序指定されたリソース グループ
 
-### <a name="example---blueprint-with-ordered-resource-group"></a>例 - リソース グループの順序で並べたブループリント
-
-このブループリントの例には、`dependsOn` の値を宣言することでカスタムのシーケンス順序を定義されたリソース グループと、標準のリソース グループの両方が含まれています。 この場合、**assignPolicyTags** という名前の成果物が、**ordered-rg** リソース グループの前に処理されます。 **standard-rg** は、既定のシーケンス順序ごとに処理されます。
+このブループリント定義の例には、`dependsOn` の値を宣言することでカスタムのシーケンス順序を定義されたリソース グループと、標準のリソース グループの両方が含まれています。 この場合、**assignPolicyTags** という名前の成果物が、**ordered-rg** リソース グループの前に処理されます。
+**standard-rg** は、既定のシーケンス順序ごとに処理されます。
 
 ```json
 {
@@ -101,6 +99,42 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
     "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
     "type": "Microsoft.Blueprint/artifacts",
     "name": "assignPolicyTags"
+}
+```
+
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>例 - リソース グループに依存するサブスクリプション レベルのテンプレート成果物
+
+この例は、サブスクリプション レベルでデプロイされた Resource Manager テンプレートを対象とし、リソース グループに依存します。 既定の順序付けでは、サブスクリプション レベルの成果物は、任意のリソース グループとそのリソース グループの子成果物の前に作成されます。 リソース グループは、次のようにブループリント定義で定義されます。
+
+```json
+"resourceGroups": {
+    "wait-for-me": {
+        "metadata": {
+            "description": "Resource Group that is deployed prior to the subscription level template artifact"
+        }
+    }
+}
+```
+
+**wait-for-me** リソース グループに依存するサブスクリプション レベルのテンプレート成果物は、次のように定義されます。
+
+```json
+{
+    "properties": {
+        "template": {
+            ...
+        },
+        "parameters": {
+            ...
+        },
+        "dependsOn": ["wait-for-me"],
+        "displayName": "SubLevelTemplate",
+        "description": ""
+    },
+    "kind": "template",
+    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "subtemplateWaitForRG"
 }
 ```
 

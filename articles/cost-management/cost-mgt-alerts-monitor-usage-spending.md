@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: 813ec8f74371b6ae76ac306aea2c462f0beea1fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773090"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991924"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する
 
@@ -23,7 +23,7 @@ ms.locfileid: "55773090"
 
 ## <a name="budget-alerts"></a>予算アラート
 
-予算アラートでは、使用量とコストに基づいて、[予算のアラート条件](tutorial-acm-create-budgets.md)で定義されている額に支出が達するか、それを超えると、通知されます。 Cost Management の予算は、Azure portal または [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API を使用して作成します。 
+予算アラートでは、使用量とコストに基づいて、[予算のアラート条件](tutorial-acm-create-budgets.md)で定義されている額に支出が達するか、それを超えると、通知されます。 Cost Management の予算は、Azure portal または [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API を使用して作成します。
 
 Azure portal では、予算はコストによって定義されます。 Azure Consumption API を使用する場合は、コストまたは消費量を使用して予算を定義します。 予算アラートでは、コスト ベースと使用量ベースの両方の予算がサポートされています。 予算アラートは、予算アラート条件が満たされると常に自動的に生成されます。 Azure portal では、すべてのコストのアラートを表示できます。 アラートが生成されるたびに、コストのアラートに表示されます。 予算のアラート受信者一覧のユーザーに、アラート メールも送信されます。
 
@@ -35,9 +35,21 @@ Azure portal では、予算はコストによって定義されます。 Azure 
 
 部署課金クォータ アラートでは、部署の支出がクォータの固定しきい値に達すると、通知されます。 課金クォータは、EA ポータルで構成します。 しきい値に達するたびに、部署の所有者へのメールが生成され、コストのアラートに表示されます。 たとえば、クォータの 50% や 75% などです。
 
+## <a name="supported-alert-features-by-offer-categories"></a>オファー カテゴリ別にサポートされているアラート機能
+
+アラート タイプのサポートは、所有している Azure アカウント (Microsoft がオファーする) の種類によって異なります。 次の表は、Microsoft の各種オファーでサポートされているアラート機能を示します。 Microsoft オファーの詳細な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」で確認できます。
+
+| アラートの種類 | Enterprise Agreement | Microsoft 顧客契約 | Web ダイレクト/従量課金制 |
+|---|---|---|---|
+| 予算 | ✔ | ✔ | ✔ |
+| クレジット | ✔ |✘ | ✘ |
+| 部署課金クォータ | ✔ | ✘ | ✘ |
+
+
+
 ## <a name="view-cost-alerts"></a>コストのアラートを表示する
 
-Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。 次に、**Cost Management** の下にある一覧で、**[コストのアラート]** を選択します。
+コストのアラートを表示表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 別のスコープに切り替えるには、**[スコープ]** ピルを使用します。 メニューの **[コストのアラート]** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 ![Cost Management に表示されるアラートの例の画像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

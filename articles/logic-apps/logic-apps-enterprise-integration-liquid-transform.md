@@ -5,23 +5,22 @@ services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
 ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854379"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292888"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
 
-ロジック アプリ内で **Compose** や **Parse JSON** などのネイティブなデータ操作アクションを使用して、基本的な JSON 変換を実行できます。 高度な JSON 変換を実行するために、柔軟な Web アプリ向けのオープン ソースのテンプレート言語である [Liquid](https://shopify.github.io/liquid/) を使用して、テンプレートまたはマップを作成できます。 Liquid テンプレートを使用して、JSON 出力の変換方法を定義できます。反復処理、制御フロー、変数などのより複雑な JSON の変換もサポートできます。 
+ロジック アプリ内で **Compose** や **Parse JSON** などのネイティブなデータ操作アクションを使用して、基本的な JSON 変換を実行できます。 高度な JSON 変換を実行するために、柔軟な Web アプリ向けのオープン ソースのテンプレート言語である [Liquid](https://shopify.github.io/liquid/) を使用して、テンプレートまたはマップを作成できます。 Liquid テンプレートでは、JSON 出力の変換方法が定義されます。反復処理、制御フロー、変数などのより複雑な JSON の変換もサポートされます。 
 
-このため、ロジック アプリで Liquid 変換を実行する前に、Liquid テンプレートを使用して JSON から JSON へのマッピングを定義し、そのマップを統合アカウントに格納しておきます。 この記事では、この Liquid テンプレートまたはマップを作成して使用する方法を示します。 
+ロジック アプリで Liquid 変換を実行する前に、Liquid テンプレートを使用して JSON から JSON へのマッピングを定義し、そのマップを統合アカウントに格納する必要があります。 この記事では、この Liquid テンプレートまたはマップを作成して使用する方法を示します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,8 +34,10 @@ ms.locfileid: "54854379"
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>統合アカウント用の Liquid テンプレートまたはマップを作成する
 
-1. この例では、この手順で説明するサンプル Liquid テンプレートを作成します。
-Liquid テンプレート内で何らかのフィルターを使用する場合は、それらのフィルターが大文字で始まることを確認してください。 詳しくは、[Liquid のフィルター](https://shopify.github.io/liquid/basics/introduction/#filters)をご覧ください。これらのフィルターでは、[DotLiquid](https://dotliquidmarkup.org/) と C# 名前付け規則が使用されます。
+1. この例では、この手順で説明するサンプル Liquid テンプレートを作成します。 Liquid テンプレートでは、[Liquid のフィルター](https://shopify.github.io/liquid/basics/introduction/#filters)を使用できます。これらのフィルターでは、[DotLiquid](https://dotliquidmarkup.org/) と C# 名前付け規則が使用されます。 
+
+   > [!NOTE]
+   > テンプレートのフィルター名では "*センテンスの大文字小文字を区別*" してください。 そうしないと、フィルターが機能しません。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -67,7 +68,7 @@ Liquid テンプレート内で何らかのフィルターを使用する場合�
 
 4. **[追加]** を選択し、マップの詳細を入力します。
 
-   | プロパティ | 値 | 説明 | 
+   | プロパティ | 値 | [説明] | 
    |----------|-------|-------------|
    | **Name** | JsonToJsonTemplate | マップの名前 (この例では "JsonToJsonTemplate")。 | 
    | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、**[liquid]** を選択する必要があります。 | 
@@ -82,7 +83,8 @@ Liquid テンプレート内で何らかのフィルターを使用する場合�
 
 2. ロジック アプリ デザイナーで、ロジック アプリに[要求トリガー](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)を追加します。
 
-3. トリガーで、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「liquid」と入力し、アクションとして **[Transform JSON to JSON - Liquid]\(JSON から JSON への変換- Liquid\)** を選択します。
+3. トリガーで、**[新しいステップ]** を選択します。 
+   検索ボックスに、フィルターとして「liquid」と入力し、アクションとして **[Transform JSON to JSON - Liquid]\(JSON から JSON への変換- Liquid\)** を選択します。
 
    ![Liquid アクションを見つけて選択する](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -101,7 +103,7 @@ Liquid テンプレート内で何らかのフィルターを使用する場合�
 
    2. **[統合アカウントを選択してください]** の一覧から統合アカウントを選択し、**[保存]** をクリックします。
 
-     ![ロジック アプリを統合アカウントにリンクする](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![ロジック アプリを統合アカウントにリンクする](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 

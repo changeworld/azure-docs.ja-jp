@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100362"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439298"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -170,9 +170,16 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="using-third-party-clients"></a>サード パーティ製クライアントの使用
+### <a name="workaround-for-third-party-clients"></a>サード パーティ製クライアントの回避策
 
-C SDK を使用していないが IoT Hub の分散トレースをプレビューしたい場合は、UNIX タイムスタンプ形式のメッセージ作成時刻を持つ `tracestate` アプリケーション プロパティが含まれるようにメッセージを構築します。 たとえば、「 `tracestate=timestamp=1539243209` 」のように入力します。 このプロパティを含むメッセージの割合を制御するには、ツインの更新など、クラウドによって開始されたイベントをリッスンするロジックを実装します。
+C SDK を使用せずに分散トレース機能をプレビューするのは**簡単ではありません**。 したがって、このアプローチはお勧めできません。
+
+最初に、開発ガイド「[IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)」に従って、すべての IoT Hub プロトコル プリミティブをご自身のメッセージで実装する必要があります。 次に、MQTT/AMQP メッセージのプロトコル プロパティを編集して、`tracestate` を**システム プロパティ**として追加します。 具体的には次のとおりです。
+
+* MQTT の場合は、`%24.tracestate=timestamp%3d1539243209` をメッセージ トピックに追加します。`1539243209` は、Unix タイムスタンプ形式のメッセージの作成時に置き換える必要があります。 例としては、[C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) の実装を参照してください
+* AMQP の場合は、`key("tracestate")` と `value("timestamp=1539243209")` をメッセージの注釈として追加します。 リファレンス実装については、[こちら](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)を参照してください。
+
+このプロパティを含むメッセージの割合を制御するには、ツインの更新など、クラウドによって開始されたイベントをリッスンするロジックを実装します。
 
 ## <a name="update-sampling-options"></a>サンプリング オプションを更新する 
 
@@ -233,7 +240,7 @@ C SDK を使用していないが IoT Hub の分散トレースをプレビュ�
 }
 ```
 
-| 要素名 | 必須 | type | 説明 |
+| 要素名 | 必須 | Type | 説明 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | はい | 整数 | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
 | `sampling_rate` | はい | 整数 | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |

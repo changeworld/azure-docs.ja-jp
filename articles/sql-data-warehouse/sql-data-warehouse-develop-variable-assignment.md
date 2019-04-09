@@ -10,17 +10,19 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 29b86d430fb5d65e7f089c616651da5f488b675c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee97f7e5cda8b954fb697f73746e416d88d38c2d
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455985"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401692"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での変数の代入
+
 ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
 
 ## <a name="setting-variables-with-declare"></a>DECLARE を使用した変数の設定
+
 SQL Data Warehouse の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。 DECLARE を使用した変数の初期化は、SQL Data Warehouse で変数値を設定する最も柔軟性の高い方法の 1 つです。
 
 ```sql
@@ -45,6 +47,7 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>SET を使用した値の設定
+
 SET は、1 つの変数を設定する際によく使用されるメソッドです。
 
 次のステートメントはすべて、SET を使用して変数を設定する有効な方法です。
@@ -59,8 +62,9 @@ SET     @v +=1;
 SET を使用して設定できる変数は、一度に 1 つに限られます。 ただし、複合演算子は許容されます。
 
 ## <a name="limitations"></a>制限事項
-SELECT および UPDATE は変数代入には使用できません。
+
+UPDATE は変数代入には使用できません。
 
 ## <a name="next-steps"></a>次の手順
-開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338032b19d22432c34891de68c6a5ba71de60555
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170688"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370687"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 * **SSPR テーブル テント**: ユーザーによる登録の完了を促すためにランチ ルーム、会議室、またはデスクに配置できるテーブル カードです。
 * **SSPR ステッカー**: カスタマイズして印刷できるステッカーのテンプレートです。SSPR にアクセスする方法を忘れないよう、ノート PC、モニター、キーボード、または携帯電話に貼ることができます。
 
-![SSPR メール サンプル][Email]
+![ユーザーへのロールアウト用 SSPR 電子メールのサンプル][Email]
 
 ## <a name="create-your-own-password-portal"></a>独自のパスワードのポータルを作成する
 

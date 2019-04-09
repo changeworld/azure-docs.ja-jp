@@ -4,22 +4,20 @@ description: リソース マネージャーをサポートするリソース �
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: aa61b88bb0a944a048bc4b2db9c542efe3e30ddf
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564121"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445456"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -34,7 +32,7 @@ ms.locfileid: "55564121"
 
 これらの手順は、Azure Portal、Azure PowerShell、または Azure CLI を介して実行できます。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure ポータル
 
 すべてのリソース プロバイダー、およびサブスクリプションの登録状態を表示するには、以下を実行します。
 

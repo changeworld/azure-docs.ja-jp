@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/4/2019
-ms.author: rkarlin
-ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 3/14/2019
+ms.author: monhaber
+ms.openlocfilehash: d99ef6026f3605f4081393811d840ba3fe2892ba
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343512"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226115"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -36,7 +36,7 @@ PowerShell を使用してポリシーを設定する手順については、「
 
 Azure Security Center から取得するセキュリティに関する推奨事項は、ご使用のセキュリティ ポリシーによって駆動されます。 ユーザーは、それへの準拠を監視して、潜在的な脆弱性を特定し、脅威を軽減することができます。 自分に合った選択肢を判断する方法の詳細については、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照してください。
 
-Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーは、Azure Policy で、Security Center カテゴリの組み込みイニシアティブとして反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。 
+Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーは、Azure Policy で、Security Center カテゴリの組み込みイニシアティブとして反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。
 
 
 ### <a name="management-groups"></a>管理グループ
@@ -68,25 +68,25 @@ Security Center でセキュリティ ポリシーを表示するには:
 
     ![[ポリシー管理] ウィンドウ](./media/security-center-policies/security-center-policy-mgt.png)
 
-  **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
+   **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
 
-  > [!NOTE]
-  > - Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、**[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、**[ポリシー管理]** に表示されません。
-  >
+   > [!NOTE]
+   > - Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、**[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、**[ポリシー管理]** に表示されません。
+   >
 
-  表には次の列が表示されます。
+   表には次の列が表示されます。
 
- - **[ポリシー イニシアティブ割り当て]** - サブスクリプションまたは管理グループに割り当てられている Security Center の[組み込みポリシー](security-center-policy-definitions.md)およびイニシアティブ。
- - **[カバレッジ]** - 管理グループ、サブスクリプション、またはワークスペースが実行されている価格レベル (Free または Standard) を識別します。  Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
- - **[設定]** - サブスクリプションに **[設定の編集]** リンクがあります。 **[設定の編集]** を選択すると、それぞれのサブスクリプションまたは管理グループの [Security Center の設定](security-center-policies-overview.md)を更新できます。
- - **セキュリティ スコア** - [セキュリティ スコア](security-center-secure-score.md)は、お客様のワークロードのセキュリティ体制がどれだけ安全であるかの測定値を提供するもので、改善のための推奨事項を優先度付けする助けになります。
+   - **[ポリシー イニシアティブ割り当て]** - サブスクリプションまたは管理グループに割り当てられている Security Center の[組み込みポリシー](security-center-policy-definitions.md)およびイニシアティブ。
+   - **[カバレッジ]** - 管理グループ、サブスクリプション、またはワークスペースが実行されている価格レベル (Free または Standard) を識別します。  Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+   - **[設定]** - サブスクリプションに **[設定の編集]** リンクがあります。 **[設定の編集]** を選択すると、それぞれのサブスクリプションまたは管理グループの [Security Center の設定](security-center-policies-overview.md)を更新できます。
+   - **セキュリティ スコア** - [セキュリティ スコア](security-center-secure-score.md)は、お客様のワークロードのセキュリティ体制がどれだけ安全であるかの測定値を提供するもので、改善のための推奨事項を優先度付けする助けになります。
 
 2. ポリシーを参照するサブスクリプションまたは管理グループを選択します。
 
-  - **[セキュリティ ポリシー]** 画面には、選択したサブスクリプションまたは管理グループに割り当てられているポリシーによって実行される動作が表示されます。
-  - 上部のリンクを使用すると、サブスクリプションまたは管理グループに**割り当て**られているそれぞれのポリシーを開くことができます。 このリンクを使用すると、割り当てにアクセスしたり、ポリシーを編集または無効にしたりすることができます。 たとえば、割り当てられている特定のポリシーによってエンドポイントが実質的に保護されないようになっている場合、そのリンクを使用してポリシーにアクセスし、それを編集または無効にできます。
-  - ポリシーの一覧では、サブスクリプションまたは管理グループに対して実際に適用されているポリシーを確認できます。 つまり、スコープに適用されている各ポリシーの設定が考慮され、ユーザーにはポリシーで実行されたアクションの累積的な結果が提供されます。 たとえば、1 つの割り当てでポリシーは無効になっているが、別では AuditIfNotExist に設定されている場合、累積的な効果により AuditIfNotExist が適用されます。 よりアクティブな効果が常に優先されます。
-  - 設定できるポリシーの効果は、Append、Audit、AuditIfNotExists、Deny、DeployIfNotExists、Disabled です。 効果が適用されるしくみの詳細については、[Policy の効果](../governance/policy/concepts/effects.md)に関するページを参照してください。
+   - **[セキュリティ ポリシー]** 画面には、選択したサブスクリプションまたは管理グループに割り当てられているポリシーによって実行される動作が表示されます。
+   - 上部のリンクを使用すると、サブスクリプションまたは管理グループに**割り当て**られているそれぞれのポリシーを開くことができます。 このリンクを使用すると、割り当てにアクセスしたり、ポリシーを編集または無効にしたりすることができます。 たとえば、割り当てられている特定のポリシーによってエンドポイントが実質的に保護されないようになっている場合、そのリンクを使用してポリシーにアクセスし、それを編集または無効にできます。
+   - ポリシーの一覧では、サブスクリプションまたは管理グループに対して実際に適用されているポリシーを確認できます。 つまり、スコープに適用されている各ポリシーの設定が考慮され、ユーザーにはポリシーで実行されたアクションの累積的な結果が提供されます。 たとえば、1 つの割り当てでポリシーは無効になっているが、別では AuditIfNotExist に設定されている場合、累積的な効果により AuditIfNotExist が適用されます。 よりアクティブな効果が常に優先されます。
+   - 設定できるポリシーの効果は、Append、Audit、AuditIfNotExists、Deny、DeployIfNotExists、Disabled です。 効果が適用されるしくみの詳細については、[Policy の効果](../governance/policy/concepts/effects.md)に関するページを参照してください。
 
    ![ポリシー画面](./media/security-center-policies/policy-screen.png)
 
@@ -99,6 +99,29 @@ Security Center でセキュリティ ポリシーを表示するには:
 Azure Policy でセキュリティ ポリシーを編集する方法の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)」を参照してください。
 
 REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。 次の例では、REST API を使用して編集する手順を示します。
+
+
+## <a name="disable-security-policies"></a>セキュリティ ポリシーの無効化
+既定のセキュリティ ポリシーによって、お使いの環境に関係のない推奨事項が生成される場合は、推奨事項を送信するポリシー定義を無効にして、推奨事項の生成を停止できます。
+推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
+
+1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** をクリックします。
+
+   ![ポリシー管理](./media/tutorial-security-policy/policy-management.png)
+
+2. 推奨設定を無効にするサブスクリプションをクリックします。
+
+1. 割り当てられたポリシーをクリックします。
+
+   ![ポリシーの無効化](./media/tutorial-security-policy/security-policy.png)
+
+1. **[パラメーター]** セクションで、推奨事項を呼び出すポリシーのうち、無効にするものを検索します。次に、ドロップダウン リストから **[無効]** を選択します。
+
+   ![ポリシーの無効化](./media/tutorial-security-policy/disable-policy.png)
+1. **[Save]** をクリックします。
+   > [!Note]
+   > ポリシー無効化の変更が有効になるまでに、最大 12 時間かかる場合があります。
+
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>REST API を使用してセキュリティ ポリシーを構成する
 
@@ -159,38 +182,38 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 
 - エンドポイント保護 ("endpointProtectionMonitoringEffect") 
 
- 
-      PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
-      Request Body (JSON) 
-
-      { 
-
-        "properties":{ 
-
-      "displayName":"Enable Monitoring in Azure Security Center", 
-
-      "metadata":{ 
-
-      "assignedBy":"{Name}" 
-
-      }, 
-
-      "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
-
-      "parameters":{ 
-
-      "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
-
-      "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
-
-      "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
-
-      }, 
-
-       } 
-
-      } 
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
 
 この例では、割り当てを削除する方法を示します。
 

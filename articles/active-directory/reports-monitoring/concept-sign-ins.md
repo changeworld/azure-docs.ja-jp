@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 32720669ae9d8941abce4429471c13608a18cbc5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190366"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294894"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -149,23 +149,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
-Azure portal の外部で操作する場合は、[サインイン データをダウンロード](quickstart-download-sign-in-report.md)できます。 **[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。  Azure portal では、ダウンロード ボタンの他に、[データをダウンロードするためのスクリプトを生成する](tutorial-signin-logs-download-script.md)オプションも提供されています。  
+Azure portal の外部で操作する場合は、[サインイン データをダウンロード](quickstart-download-sign-in-report.md)できます。 **[ダウンロード]** をクリックすると、最新の 250,000 件のレコードを含む CSV または JSON ファイルを作成することができます。  
 
 ![ダウンロード](./media/concept-sign-ins/71.png "ダウンロード")
-
-さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含む PowerShell が作成されます。 **管理者モード**でこのスクリプトをダウンロードして実行し、CSV ファイルを生成します。 
 
 > [!IMPORTANT]
 > ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>Windows 10 マシン上でスクリプトを実行する
-
-**Windows 10** マシン上でスクリプトを実行する場合は、最初にいくつかの手順を追加で実行する必要があります。 
-
-1. [Az モジュール](/powershell/azure/install-az-ps)をインストールします。
-2. PowerShell プロンプトを開き、コマンド **Import-Module Az** を実行して、モジュールをインポートします。
-3. **Set-ExecutionPolicy unrestricted** を実行し、**[Yes to All]\(すべてはい\)** を選択します。 
-4. 以上で、ダウンロードした PowerShell スクリプトを管理者モードで実行して、CSV ファイルを生成できます。
 
 ## <a name="sign-ins-data-shortcuts"></a>サインイン データのショートカット
 
@@ -178,7 +168,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>ID セキュリティ保護のユーザーのサインイン データ
 
-**ID セキュリティ保護**のユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
+**[ID のセキュリティ保護]** の概要ページのユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/06.png "サインイン アクティビティ")
 
@@ -240,7 +230,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 
 ## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
 
-Office 365 のアクティビティ ログは、[Office 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Office 365 管理センターのみです。 
+Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
 
 [Office 365 Management API シリーズ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 

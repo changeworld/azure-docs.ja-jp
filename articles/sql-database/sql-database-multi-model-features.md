@@ -12,18 +12,29 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884525"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
 
 マルチモデル データベースを使用すると、リレーショナル データ、グラフ、JSON/XML ドキュメント、キー/値ペアなどの複数のデータ形式で表されたデータを格納したり、処理したりすることができます。
 
-Azure SQL Database は、さまざまな汎用アプリケーションに対してほとんどの場合に最適なパフォーマンスを提供するリレーショナル モデルで動作するように設計されています。 しかし、Azure SQL Database はリレーショナル データのみに限定されません。 Azure SQL Database では、リレーショナル モデルに緊密に統合されているさまざまな非リレーショナル形式を使用できます。 Azure SQL では、次のマルチモデル機能が提供されています。
+## <a name="when-to-use-multi-model-capabilities"></a>どのようなケースでマルチモデル機能を使用するか
+
+Azure SQL Database は、さまざまな汎用アプリケーションに対してほとんどの場合に最適なパフォーマンスを提供するリレーショナル モデルで動作するように設計されています。 しかし、Azure SQL Database はリレーショナル データのみに限定されません。 Azure SQL Database では、リレーショナル モデルに緊密に統合されているさまざまな非リレーショナル形式を使用できます。
+次のようなケースで Azure SQL Database のマルチモデル機能の使用を検討します。
+- NoSQL モデルに適した情報または構造があるが、別個の NoSQL データベースを使用したくない。
+- データの多くがリレーショナル モデルに適しており、データの一部を NoSQL スタイルでモデル化する必要がある。
+- 豊かな Transact-SQL 言語を活用してリレーショナル データと NoSQL データの両方でクエリと分析を実行し、SQL 言語を使用できるさまざまなツールやアプリケーションに Transact-SQL 言語を統合したい。
+- [インメモリ テクノロジー](sql-database-in-memory.md)などのデータベース機能を適用して NoSQL データ構造の分析や処理のパフォーマンスを改善し、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)や[読み取り可能レプリカ](sql-database-read-scale-out.md)を使用して、データのコピーを別の場所に作成し、プライマリ データベースから一部の分析ワークロードをオフロードしたい。
+
+## <a name="overview"></a>概要
+
+Azure SQL では、次のマルチモデル機能が提供されています。
 - [グラフ機能](#graph-features)では、データをノードとエッジのセットとして表現し、グラフ `MATCH` 演算子で強化された標準の Transact-SQL クエリを使用して、グラフ データをクエリすることができます。
 - [JSON 機能](#json-features)では、テーブルに JSON ドキュメントを配置し、リレーショナル データから JSON ドキュメントへ、またはその逆方向の変換を行うことができます。 ドキュメントを解析するために JSON 関数で強化された標準の Transact-SQL 言語を使用し、非クラスター化インデックス、列ストア インデックス、または、メモリ最適化テーブルを使用して、クエリを最適化できます。
 - [空間機能](#spatial-features)では、地理的および幾何学的データを格納し、空間インデックスを使用してインデックスを作成し、空間クエリを使用してデータを取得することができます。
@@ -56,7 +67,7 @@ Azure SQL Database では、データベース内の多対多リレーション�
 
 ## <a name="json-features"></a>JSON 機能
 
-Azure SQL Database では、JavaScript Object Notation [(JSON)](http://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
+Azure SQL Database では、JavaScript Object Notation [(JSON)](https://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
 
 JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。 また、JSON は、ログ ファイルや [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。 多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。 [Azure Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
 
@@ -124,7 +135,7 @@ CREATE TABLE Collection (
 
 このキー/値の構造体は、何の制約も受けることなく、ニーズに合わせてカスタマイズできます。 たとえば、値に `nvarchar(max)` 型ではなく XML ドキュメントを指定できます。値が JSON ドキュメントである場合、JSON コンテンツの有効性を検証する `CHECK` 制約を指定できます。 たとえば、追加の列内に、1 つのキーに関連する任意の数の値を指定したり、計算列とインデックスを追加してデータ アクセスを簡略化および最適化したり、パフォーマンスを向上させるためにテーブルをメモリ/最適化スキーマ専用テーブルとして定義したりすることができます。
 
-リレーショナル モデルを実際にキー/値ペア ソリューションとして効果的に使用する方法の例としては、[BWin でインメモリ OLTP を使用して前例のないパフォーマンスとスケールを実現する方法](https://blogs.msdn.microsoft.com/sqlcat/2016/10/26/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)に関する記事に書かれている、1 秒あたり 1.200.000 のバッチを実現した ASP.NET キャッシュ ソリューションの説明を参照してください。
+リレーショナル モデルを実際にキー/値ペア ソリューションとして効果的に使用する方法の例としては、[BWin でインメモリ OLTP を使用して前例のないパフォーマンスとスケールを実現する方法](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)に関する記事に書かれている、1 秒あたり 1.200.000 のバッチを実現した ASP.NET キャッシュ ソリューションの説明を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure SQL Database のマルチモデル機能は、Azure SQL Database と SQL Server の間で共有される、SQL Server データベース エンジンのコア機能でもあります。 これらの機能の詳細については、次の SQL リレーショナル データベース ドキュメントのページを参照してください。

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167072"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487823"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -104,10 +104,10 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 **マスク** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | Description |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Type | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
-| Regex  | いいえ  | **Type**が`Regex`に設定されている場合、使用される正規表現を指定します。
+| `Type` | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
+| `Regex` | いいえ  | **`Type`** が `Regex` に設定されている場合、使用される正規表現を指定します。
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
 

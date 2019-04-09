@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b6a7fe2c12b2f1f5bcc0ba8cccd1a51ee39c4a6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855675"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -36,11 +36,11 @@ Profiler では、トレース メッセージとカスタム イベントが Ap
     ```
     次の図には、2 つの AI リソースからの検索の例が 2 つ示されています。 
     
-    * 左側の場合、Profiler は実行されていますが、アプリケーションでは要求が受信されていません。 アクティビティがないためにアップロードが取り消されたことが、メッセージで示されています。 
+   * 左側の場合、Profiler は実行されていますが、アプリケーションでは要求が受信されていません。 アクティビティがないためにアップロードが取り消されたことが、メッセージで示されています。 
 
-    * 右側の場合は、Profiler は開始され、その実行中に発生した要求を検出して、カスタム イベントを送信しています。 ServiceProfilerSample カスタム イベントが表示される場合は、Profiler によってトレースが要求に添付されており、**Application Insights の [パフォーマンス]** ウィンドウでトレースを表示できることを意味します。
+   * 右側の場合は、Profiler は開始され、その実行中に発生した要求を検出して、カスタム イベントを送信しています。 ServiceProfilerSample カスタム イベントが表示される場合は、Profiler によってトレースが要求に添付されており、**Application Insights の [パフォーマンス]** ウィンドウでトレースを表示できることを意味します。
 
-    テレメトリが表示されない場合、Profiler は実行されていません。 トラブルシューティングについては、この記事の後半にある、特定のアプリの種類ごとのトラブルシューティング セクションをご覧ください。  
+     テレメトリが表示されない場合、Profiler は実行されていません。 トラブルシューティングについては、この記事の後半にある、特定のアプリの種類ごとのトラブルシューティング セクションをご覧ください。  
 
      ![Profiler のテレメトリを検索する][profiler-search-telemetry]
 
@@ -90,7 +90,7 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 
 1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、**[設定]** を開きます。
 
-1. **.Net Framework バージョン**を **v4.6** に設定します。
+1. **.NET Framework バージョン**を **v4.6** に設定します。
 
 1. **[Always On]** を**オン**に設定します。
 
@@ -124,6 +124,8 @@ Profiler は、Web アプリ内の継続的な WebJob として実行されま�
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure 診断に関する問題のトラブルシューティング
 
+  >**Cloud Services 向けの WAD の最新バージョンに付属しているプロファイラーにはバグがあります。** クラウド サービスでプロファイラーを使用するために、サポートされる AI SDK はバージョン 2.7.2 までのみです。 AI SDK の新しいバージョンを使用している場合は、プロファイラーを使用するために、2.7.2 に戻す必要があります。 Visual Studio を使用して、App Insights SDK のバージョンをダウン グレードすると、実行時にバインディング リダイレクト エラーが発生する可能性があります。 これは、AI SDK のダウン グレード後に Microsoft.ApplicationInsights の web.config ファイル内の "newVersion" を "2.7.2.0" に設定する必要がありますが、自動的に更新されないからです。
+
 Azure 診断によって Profiler が正しく構成されているかどうかを確認するには、次の 3 つのことを行います。 
 1. 1 つ目として、デプロイされている Azure 診断の構成の内容が意図したとおりであることを確認します。 
 
@@ -133,15 +135,19 @@ Azure 診断によって Profiler が正しく構成されているかどうか�
 
 Azure 診断の構成に使用された設定を確認するには:
 
-1. 仮想マシン (VM) にサインインした後、次の場所にあるログ ファイルを開きます。 
+1. 仮想マシン (VM) にサインインした後、次の場所にあるログ ファイルを開きます。 (ドライブは c: または d: の場合があり、プラグインのバージョンは異なる可能性があります)。
 
     ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
+    ```
+    or
+    ```
+    c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
 1. そのファイルでは、**WadCfg** という文字列を検索して、Azure 診断を構成するために VM に渡された設定を確認できます。 Profiler シンクによって使用された iKey が正しいかどうかを確認できます。
 
-1. Profiler の起動に使用されたコマンド ラインを確認します。 Profiler の起動に使用された引数は、次のファイルにあります。
+1. Profiler の起動に使用されたコマンド ラインを確認します。 Profiler の起動に使用される引数は、次のファイルにあります。 (ドライブは c: または d:)
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json

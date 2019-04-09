@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 61c4212233dd7ed9c34de779176c3402890e673f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160906"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486849"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -25,6 +25,13 @@ b2clogin.com を使用すると、次のような利点が加わります。
 
 - Microsoft サービスによって Cookie ヘッダーで使用される領域が減ります。
 - お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp` 」のように入力します。
+
+>[!NOTE]
+> 次のように、テナント名とテナントの GUID の両方を使用できます。
+> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (引き続き `onmicrosoft.com` を参照します)
+> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (この場合、Microsoft への参照は存在しません)
+>
+> ただし、ご自身の Azure Active Directory B2C テナントに対して_カスタム ドメイン_を使用することはできません。たとえば、`https://your-tenant-name.b2clogin.com/your-custom-domain-name` は動作 "_しません_"。
 
 b2clogin.com を使用する際は、変更が必要になる可能性があるこれらの設定に配慮してください。
 

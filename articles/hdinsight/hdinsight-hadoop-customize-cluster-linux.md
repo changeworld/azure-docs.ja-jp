@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200686"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361695"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
@@ -26,6 +26,8 @@ Azure HDInsight には、クラスターをカスタマイズするためにカ�
 > Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳しくは、「[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)」をご覧ください。
 
 スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。 HDInsight のアプリケーションについて詳しくは、「[Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」をご覧ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -131,7 +133,7 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 >
 > スクリプト アクションは、ルート権限で実行されます。 スクリプトをクラスターに適用する前に、そのスクリプトによる処理を必ず理解しておく必要があります。
 
-クラスターにスクリプトを適用すると、クラスターの状態は**実行中**から**承認済み**に変わります。 その後、**HDInsight 構成**に変化し、最後に、正常なスクリプトは**実行中**に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。 この情報は、スクリプトが成功したか失敗したかを示します。 たとえば、`Get-AzureRmHDInsightScriptActionHistory` PowerShell コマンドレットでは、スクリプトの状態が示されます。 次のテキストのような情報が返されます。
+クラスターにスクリプトを適用すると、クラスターの状態は**実行中**から**承認済み**に変わります。 その後、**HDInsight 構成**に変化し、最後に、正常なスクリプトは**実行中**に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。 この情報は、スクリプトが成功したか失敗したかを示します。 たとえば、`Get-AzHDInsightScriptActionHistory` PowerShell コマンドレットでは、スクリプトの状態が示されます。 次のテキストのような情報が返されます。
 
     ScriptExecutionId : 635918532516474303
     StartTime         : 8/14/2017 7:40:55 PM
@@ -223,7 +225,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
-このセクションでは、[Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 始める前に、Azure PowerShell をインストールして構成します。 コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install)」をご覧ください。
+このセクションでは、[Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 始める前に、Azure PowerShell をインストールして構成します。 コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install)」をご覧ください。
 
 次のスクリプトでは、PowerShell を使用してクラスターを作成するときに、スクリプト アクションを適用する方法を示します。
 
@@ -368,13 +370,13 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 | コマンドレット | 関数 |
 | --- | --- |
-| `Get-AzureRmHDInsightPersistedScriptAction` |保存済みスクリプト アクションの情報を取得します。 |
-| `Get-AzureRmHDInsightScriptActionHistory` |クラスターに適用されたスクリプト アクションの履歴、または特定のスクリプトの詳細を取得します。 |
-| `Set-AzureRmHDInsightPersistedScriptAction` |アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します。 |
-| `Remove-AzureRmHDInsightPersistedScriptAction` |保存済みスクリプト アクションをアドホック アクションに降格します。 |
+| `Get-AzHDInsightPersistedScriptAction` |保存済みスクリプト アクションの情報を取得します。 |
+| `Get-AzHDInsightScriptActionHistory` |クラスターに適用されたスクリプト アクションの履歴、または特定のスクリプトの詳細を取得します。 |
+| `Set-AzHDInsightPersistedScriptAction` |アドホック スクリプト アクションを保存済みスクリプト アクションに昇格します。 |
+| `Remove-AzHDInsightPersistedScriptAction` |保存済みスクリプト アクションをアドホック アクションに降格します。 |
 
 > [!IMPORTANT]  
-> `Remove-AzureRmHDInsightPersistedScriptAction` では、スクリプトによって実行されたアクションは元に戻りません。 このコマンドレットは、保存済みフラグが削除されるだけです。
+> `Remove-AzHDInsightPersistedScriptAction` では、スクリプトによって実行されたアクションは元に戻りません。 このコマンドレットは、保存済みフラグが削除されるだけです。
 
 次のスクリプトの例では、昇格のコマンドレットを使用してから、スクリプトを降格しています。
 

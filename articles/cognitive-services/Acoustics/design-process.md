@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136158"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316070"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Project Acoustics の設計概念
 
@@ -29,7 +29,7 @@ ms.locfileid: "58136158"
 
 3D タイトルでは、照明および運動物理学的システムを使用しています。これらのシステムは物理学によって動機付けられていますが、臨場感とゲームプレイの目標の組み合わせを実現するために、デザイナーによって調整されます。 ビジュアル デザイナーは、個々のピクセル値を設定するのではなく、すべてが物理学に基づいた 3D モデル、マテリアル、および光伝達システムを調整して、視覚的な美的感覚と CPU コストのバランスを取ります。 オーディオで同等の処理とは何でしょうか? Project Acoustics はこの問題を探究するための第一歩です。 最初に、スペース全体に音響エネルギーを伝達することが意味するものについて説明します。
 
-![リバーブ ゾーン](media/reverb-zones-altspace.png)
+![リバーブ ゾーンがオーバーレイされた AltSpace シーンのスクリーンショット](media/reverb-zones-altspace.png)
 
 ## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>インパルス応答:スペース内の 2 つの点を音響的につなぐ
 
@@ -45,7 +45,7 @@ ms.locfileid: "58136158"
 
 しかし、シミュレーションがオーディオ DSP パラメーターに直接結び付けられている場合、デザイナーによる調整はどこにあるのでしょう? 何が得られたのでしょう? そこで、インパルス応答を捨てて、いくつかの DSP パラメーターを保持することによって、かなりの量のメモリを取り戻します。 そして、最終結果に対してデザイナーにある程度の力を与えるためには、シミュレーションとオーディオ DSP の間にデザイナーを加える方法を見つけるだけで済みます。
 
-![インパルス応答のパラメーター](media/acoustic-parameters.png)
+![スタイル化されたインパルス応答とパラメーターがオーバーレイされたグラフ](media/acoustic-parameters.png)
 
 ## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>シミュレーションからオーディオ DSP パラメーターを変換することによるサウンド設計
 

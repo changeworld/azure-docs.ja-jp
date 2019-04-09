@@ -11,19 +11,32 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8897651c963b0036bc2ac3d8cdb06a52d6f52ba1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188037"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284801"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>更新:Azure AD パスワード保護エージェントのバージョン履歴
+# <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD パスワード保護エージェントのバージョン履歴
 
-|     |
-| --- |
-| Azure AD のパスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+## <a name="121160"></a>1.2.116.0
+
+リリース日: 3/13/2019
+
+* Get-AzureADPasswordProtectionProxy コマンドレットと Get-AzureADPasswordProtectionDCAgent コマンドレットはソフトウェアのバージョンと現在の Azure テナントを報告するようになりました。ただし、次のような制限があります。
+  * ソフトウェアのバージョンおよび Azure テナントのデータは、バージョン 1.2.116.0 を実行している DC エージェントとプロキシでのみ使用可能です。
+  * プロキシまたはフォレストの再登録 (または更新) が行われるまでは、Azure テナントのデータは報告されない可能性があります。
+* プロキシ サービスには、.NET 4.7 がインストールされていることが必要になりました。
+  * .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合は、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+  * Server Core システムでは、.NET 4.7 インストーラーが正常に実行するために、/q フラグを渡す必要がある場合があります。
+* プロキシ サービスでは、自動アップグレードがサポートされるようになりました。 自動アップグレードでは、プロキシ サービスと並んでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定で有効になります。
+* 自動アップグレードは、Set-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して有効または無効にすることができます。 現在の設定のクエリは、Get-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して実行できます。
+* DC エージェント サービスのサービス バイナリは、AzureADPasswordProtectionDCAgent.exe に名前変更されました。
+* プロキシ サービスのサービス バイナリは、AzureADPasswordProtectionProxy.exe に名前変更されました。 サードパーティのファイアウォールが使用されている場合は、それに応じてファイアウォール規則を変更する必要がある場合があります。
+  * 注: http プロキシ構成ファイルが以前のプロキシ インストールで使用されていた場合は、このアップグレードの後に (*proxyservice.exe.config* から *AzureADPasswordProtectionProxy.exe.config* に) 名前変更する必要があります。
+* すべての期間限定の機能のチェックは、DC エージェントから削除されました。
+* 軽微なバグの修正とログの機能強化。
 
 ## <a name="12650"></a>1.2.65.0
 

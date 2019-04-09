@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551825"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337699"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -27,6 +27,25 @@ Azure DevTest Labs について特に多く寄せられる質問にお答えし�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **全般**
+
+## <a name="blog-post"></a>ブログ記事
+DevTest Labs チームのブログは 2019 年 3 月 20 日時点で廃止されました。 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>今後の機能更新はどこで追跡できるのでしょうか。
+今後、Azure ブログと Azure の更新情報で、機能更新や情報ブログ記事を投稿していきます。 これらのブログ記事は、必要に応じて、Microsoft のドキュメントにもリンクされます。
+
+[DevTest Labs Azure ブログ](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)と [DevTest Labs Azure の更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)をご覧になり、DevTest Labs の新機能に関する情報を入手するようにしてください。
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>既存のブログ記事はどうなりますか。
+現在、既存のブログ記事 (障害更新情報を除く) の [DevTest Labs ドキュメント](devtest-lab-overview.md)への移行を進めています。 MSDN ブログが非推奨になると、DevTest Labs のドキュメントの概要にリダイレクトされます。 リダイレクトされたら、タイトルの 'フィルター条件' で探している記事を検索できます。 まだすべての記事を移行していませんが、今月末までに完了するはずです。 
+
+
+### <a name="where-do-i-see-outage-updates"></a>障害更新情報はどこで確認できますか。
+今後、Twitter ハンドルを使用して、障害更新情報を投稿する予定です。 Twitter でフォローして、障害と既知のバグに関する最新の更新情報を取得してください。
+
+### <a name="twitter"></a>Twitter 
+Twitter ハンドル: azlabservices
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 質問がここに記載されていない場合はご連絡ください。答えを見つけるお手伝いをいたします。
 
@@ -106,8 +125,8 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 
 
 **仮想マシン**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>DevTest Labs で表示されている VM が [仮想マシン] ブレードに表示されないのはなぜですか。
-DevTest Labs で VM を作成すると、その VM にアクセスするためのアクセス許可が付与されます。 この VM は、Labs のブレードと **[仮想マシン]** ブレードの両方に表示されます。 DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーは、ラボの **[All Virtual Machines]\(すべての仮想マシン\)** ブレードで、ラボで作成されたすべての VM を確認できます。 ただし、DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーには、他のユーザーが作成した VM リソースへの読み取りアクセス権が自動的に付与されるわけではありません。 そのため、これらの VM は **[仮想マシン]** ブレードには表示されません。
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>DevTest Labs で表示されている VM が [仮想マシン] ページに表示されないのはなぜですか。
+DevTest Labs で VM を作成すると、その VM にアクセスするためのアクセス許可が付与されます。 この VM は、Labs ページと **[仮想マシン]** ページの両方に表示されます。 DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーは、ラボの **[すべての仮想マシン]** ページで、ラボで作成されたすべての VM を確認できます。 ただし、DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーには、他のユーザーが作成した VM リソースへの読み取りアクセス権が自動的に付与されるわけではありません。 そのため、これらの VM は **[仮想マシン]** ページには表示されません。
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>カスタム イメージと数式の違いは何ですか。
 カスタム イメージは仮想ハード ディスク (VHD) です。 数式は、追加設定で構成し、保存して再現できるイメージです。 同じ基本的な不変イメージを使用して複数の環境をすばやく作成する場合は、カスタム イメージをお勧めします。 数式は、最新のビットで、仮想ネットワークまたはサブネットの一部として、または特定のサイズの VM として、VM の構成を再現する場合に適しています。 詳細については、「[DevTest ラボのカスタム イメージと数式の比較](devtest-lab-comparing-vm-base-image-types.md)」をご覧ください。
@@ -232,7 +251,7 @@ Microsoft アカウントは、Microsoft のデバイスとサービスで実行
 VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)に関する記事をご覧ください。
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
-VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics]\(仮想マシン診断\)** で確認できます (VM ブレードは、**[My virtual machines]\(マイ仮想マシン\)** の一覧から VM を選択すると表示されます)。
+VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ページにあるリソース メニューの **[監査ログ]** または **[仮想マシンの診断]** で確認できます (VM ページは、**[自分の仮想マシン]** の一覧から VM を選択すると表示されます)。
 
 VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、**[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を参照してください。
 

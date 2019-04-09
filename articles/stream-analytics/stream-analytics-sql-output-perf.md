@@ -2,19 +2,19 @@
 title: Azure SQL Database への Azure Stream Analytics の出力
 description: Azure Stream Analytics から Azure SQL Database にデータを出力し、より高い書き込みスループット レートを実現する方法について説明します。
 services: stream-analytics
-author: chetang
-ms.author: chetang
-manager: katicad
+author: chetanmsft
+ms.author: chetanmsft
+manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 3/18/2019
+ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303277"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338430"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL Database への Azure Stream Analytics の出力
 
@@ -33,7 +33,7 @@ Azure Stream Analytics の SQL 出力では、オプションとして並列書�
 
 - **バッチ サイズ** - SQL の出力構成では、書き込み先テーブル/ワークロードの特性に基づいて、Azure Stream Analytics SQL 出力の最大バッチ サイズを指定することができます。 バッチ サイズは、すべての一括挿入トランザクションで送信されるレコードの最大数です。 クラスター化された列ストア インデックスでは、バッチ サイズを約 [100 K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) にすると、並列化を高くし、ログ記録を最小にし、ロックを最適にできます。 ディスク ベースのテーブルでは、10 K (既定値) 以下にするとソリューションに最適な場合があります。バッチ サイズを大きくすると、一括挿入中にロックのエスカレーションがトリガーされる可能性があります。
 
-- **入力メッセージのチューニング** – パーティション分割の継承とバッチ サイズの使用を最適化している場合、1 つのパーティションのメッセージあたりの入力イベントの数を増やすと、書き込みスループットをさらに上げるのに役立ちます。 入力メッセージのチューニングにより、Azure Stream Analytics 内のバッチ サイズを指定したバッチ サイズまで上げることができ、それによってスループットが向上します。 これは、[圧縮](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs)を使用して、または Premium EventHub SKU で利用可能な大きいメッセージ サイズを使用して、実現できます。
+- **入力メッセージのチューニング** – パーティション分割の継承とバッチ サイズの使用を最適化している場合、1 つのパーティションのメッセージあたりの入力イベントの数を増やすと、書き込みスループットをさらに上げるのに役立ちます。 入力メッセージのチューニングにより、Azure Stream Analytics 内のバッチ サイズを指定したバッチ サイズまで上げることができ、それによってスループットが向上します。 これは、[圧縮](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs)を使用するか、または EventHub または BLOB での入力メッセージ サイズを増やすことによって実現できます。
 
 ## <a name="sql-azure"></a>SQL Azure
 
@@ -43,7 +43,16 @@ Azure Stream Analytics の SQL 出力では、オプションとして並列書�
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory とインメモリ テーブル
 
-- **一時テーブルとしてのインメモリ テーブル** – [インメモリ テーブル](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)を使用すると、非常に高速のデータ読み込みが可能ですが、データがメモリに収まる必要があります。 ベンチマークでは、インメモリ テーブルからディスク ベースのテーブルへの一括読み込みの方が、ID 列とクラスター化インデックスのあるディスク ベースのテーブルへの単一ライターを使用した一括挿入より、約 10 倍速いことが示されています。 この一括挿入のパフォーマンスを利用するには、インメモリ テーブルからディスク ベースのテーブルにデータをコピーする、[Azure Data Factory を使用するコピー ジョブ](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database)を設定します。
+- **一時テーブルとしてのインメモリ テーブル** – [インメモリ テーブル](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)を使用すると、非常に高速のデータ読み込みが可能になりますが、データをメモリ内に収める必要があります。 ベンチマークでは、インメモリ テーブルからディスク ベースのテーブルへの一括読み込みの方が、ID 列とクラスター化インデックスのあるディスク ベースのテーブルへの単一ライターを使用した一括挿入より、約 10 倍速いことが示されています。 この一括挿入のパフォーマンスを利用するには、インメモリ テーブルからディスク ベースのテーブルにデータをコピーする、[Azure Data Factory を使用するコピー ジョブ](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database)を設定します。
+
+## <a name="avoiding-performance-pitfalls"></a>パフォーマンスの落とし穴の回避
+データの一括挿入は、データの転送、挿入ステートメントの解析、ステートメントの実行、トランザクション レコードの発行などの繰り返しのオーバーヘッドが回避されるため、単一の挿入でのデータの読み込みよりはるかに高速です。 代わりに、データをストリーミングするために、ストレージ エンジンへのより効率的なパスが使用されます。 ただし、このパスの設定コストは、ディスク ベースのテーブル内の 1 つの挿入ステートメントよりはるかに高くなります。 この損益分岐点は一般に約 100 行であり、それを超えると、一括読み込みの方がほぼ常に効率的です。 
+
+受信イベントのレートが低いと、100 行より小さいバッチ サイズが容易に作成される可能性があり、それによって一括挿入が非効率的になり、大量のディスク領域が使用されます。 この制限を回避するには、次のいずれかのアクションを実行できます。
+* すべての行に単純な挿入を使用するために INSTEAD OF [トリガー](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql)を作成します。
+* 前のセクションで説明されているインメモリ一時テーブルを使用します。
+
+このような別のシナリオは、非クラスター化列ストア インデックス (NCCI) に書き込む場合に発生します。ここでは、小さい一括挿入で作成されるセグメントが多くなりすぎて、インデックスがクラッシュする可能性があります。 この場合は、代わりにクラスター化列ストア インデックスを使用することをお勧めします。
 
 ## <a name="summary"></a>まとめ
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412405"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004050"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、およびメソッド実行時間の監視
 
@@ -73,7 +73,6 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
                reportCaughtExceptions="true"
                reportExecutionTime="true"
                />
-
            <!-- Report on the particular signature
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
@@ -90,12 +89,26 @@ xml ファイルの内容を設定します。 次の例を編集して、必要
 
 既定では、`reportExecutionTime` は true、`reportCaughtExceptions` は false です。
 
-### <a name="spring-boot-agent-additional-config"></a>Spring Boot エージェントの追加構成
+## <a name="additional-config-spring-boot"></a>追加構成 (Spring Boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
+Azure App Services については、次のようにします。
+
+* [設定]、[アプリケーションの設定] の順に選択します
+* [アプリ設定] で、新しいキー値ペアを追加します。
+
+キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+
+Java の最新バージョンについては、[ここ](https://github.com/Microsoft/ApplicationInsights-Java/releases
+) でリリースを確認してください。 
+
+エージェントは、D:/home/site/wwwroot/ directory で終わるようにプロジェクト内でリソースとしてパッケージ化する必要があります。 **[開発ツール]** > **[高度なツール]** > **[デバッグ コンソール]** に進み、サイト ディレクトリの内容を調べることで、エージェントが正しい App Service ディレクトリにあることを確認できます。    
+
+* 設定を [保存] し、アプリを [再起動] します。 (これらの手順は、Windows で実行している App Services にのみ適用されます)
+
 > [!NOTE]
-> AI-Agent.xml とエージェントの jar ファイルは同じフォルダーに含まれている必要があります。 多くの場合、これらはプロジェクトの `/resources` フォルダーに一緒に配置されます。 
+> AI-Agent.xml とエージェントの jar ファイルは同じフォルダーに含まれている必要があります。 多くの場合、これらはプロジェクトの `/resources` フォルダーに一緒に配置されます。  
 
 ### <a name="spring-rest-template"></a>Spring Rest テンプレート
 

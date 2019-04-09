@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2a2c2667ae3180fd4f7b114ce6cef05ac7a1080c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850277"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
 ## <a name="enable-application-insights-profiler-for-your-application"></a>アプリケーションに対して Application Insights Profiler を有効にする
@@ -30,6 +30,7 @@ Profiler は、以下の Azure サービスにデプロイされた .NET アプ�
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines と仮想マシン スケール セット](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を[**プレビュー**する 
 
 Profiler を有効にして、トレースが表示されない場合は、[トラブルシューティング ガイド](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)を参照してください。
 
@@ -93,6 +94,10 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 ### <a id="block"></a>ブロック時間
 
 **BLOCKED_TIME** は、別のリソースが使用可能になるのをコードが待機していることを示します。 たとえば、同期オブジェクトやスレッドが使用可能になるのを待っているか、要求が終了するのを待機している可能性があります。
+
+### <a name="unmanaged-async"></a>アンマネージド非同期
+
+.NET フレームワークでは、ETW イベントを出力し、スレッド間で非同期呼び出しを追跡できるように、スレッド間でアクティビティ ID を渡します。 アンマネージド コード (ネイティブ コード) と非同期コードの一部の古いスタイルがこれらのイベントとアクティビティの ID にはないので、プロファイラーは、どのスレッドと、どの関数がそのスレッドで実行しているかを判別できません。 これは、コール スタックで「Unmanaged Async」とラベルが付けられます。 ETW ファイルをダウンロードする場合は、[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) を使用して、何が起きているかさらに洞察を得ることができます。
 
 ### <a id="cpu"></a>CPU 時間
 

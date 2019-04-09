@@ -41,11 +41,11 @@ ms.locfileid: "57452693"
 
 | フィールド | Description | 必須 |
 |-------|-------------|:--------:|
-| ApplicationName | 一意のアプリケーション名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **ApplicationName** を使用する必要があります。  | はい |
-| DisplayName | アプリケーションのわかりやすい表示名。 | はい |
+| ApplicationName | 一意のアプリケーション名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **ApplicationName** を使用する必要があります。  | [はい] |
+| DisplayName | アプリケーションのわかりやすい表示名。 | [はい] |
 | Description | アプリケーションの説明。 | いいえ  |
-| ApplicationRoles | [ApplicationRoles](#application-roles) のコレクション。 アプリケーション内で操作または参加できるユーザー ロール。  | はい |
-| Workflows | [Workflows](#workflows) のコレクション。 各ワークフローは、ビジネス ロジックのフローを制御する状態マシンとして機能します。 | はい |
+| ApplicationRoles | [ApplicationRoles](#application-roles) のコレクション。 アプリケーション内で操作または参加できるユーザー ロール。  | [はい] |
+| Workflows | [Workflows](#workflows) のコレクション。 各ワークフローは、ビジネス ロジックのフローを制御する状態マシンとして機能します。 | [はい] |
 
 例については、「[構成ファイルの例](#configuration-file-example)」を参照してください。
 
@@ -55,15 +55,15 @@ ms.locfileid: "57452693"
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい | 50 |
-| DisplayName | ワークフローのわかりやすい表示名。 | はい | 255 |
+| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
+| DisplayName | ワークフローのわかりやすい表示名。 | [はい] | 255 |
 | Description | ワークフローの説明。 | いいえ  | 255 |
-| Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
-| StartState | ワークフローの初期状態の名前。 | はい | |
-| Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい | |
-| Constructorー | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい | |
-| Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | はい | |
-| States | ワークフローの[状態](#states)のコレクション。 | はい | |
+| Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | [はい] | |
+| StartState | ワークフローの初期状態の名前。 | [はい] | |
+| Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | [はい] | |
+| Constructorー | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | [はい] | |
+| Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | [はい] | |
+| States | ワークフローの[状態](#states)のコレクション。 | [はい] | |
 
 例については、「[構成ファイルの例](#configuration-file-example)」を参照してください。
 
@@ -81,7 +81,7 @@ ms.locfileid: "57452693"
 | int      | 整数データ型。 |
 | money    | 通貨データ型。 |
 | state    | ワークフローの状態。 |
-| 文字列  | 文字列データ型。 最大 4,000 文字。 [構成例](#example-configuration-of-type-string)をご覧ください。 |
+| string  | 文字列データ型。 最大 4,000 文字。 [構成例](#example-configuration-of-type-string)をご覧ください。 |
 | user     | 型ユーザーのアドレス。 |
 | time     | 時間データ型。 |
 |`[ Application Role Name ]`| アプリケーション ロールに指定する任意の名前。 ユーザーをそのロールの種類に制限します。 |
@@ -176,7 +176,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 |
 |-------|-------------|:--------:|
-| parameters | スマート コントラクトを開始するために必要な[識別子](#identifiers)のコレクション。 | はい |
+| parameters | スマート コントラクトを開始するために必要な[識別子](#identifiers)のコレクション。 | [はい] |
 
 ### <a name="constructor-example"></a>コンストラクターの例
 
@@ -209,10 +209,10 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい | 50 |
-| DisplayName | 関数のわかりやすい表示名。 | はい | 255 |
+| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
+| DisplayName | 関数のわかりやすい表示名。 | [はい] | 255 |
 | Description | 関数の説明。 | いいえ  | 255 |
-| parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい | |
+| parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | [はい] | |
 
 ### <a name="functions-example"></a>関数の例
 
@@ -257,11 +257,11 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | はい | 50 |
-| DisplayName | 状態のわかりやすい表示名。 | はい | 255 |
+| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
+| DisplayName | 状態のわかりやすい表示名。 | [はい] | 255 |
 | Description | 状態の説明。 | いいえ  | 255 |
-| PercentComplete | Blockchain Workbench のユーザー インターフェイスに表示される整数値。ビジネス ロジックの制御フロー内の進行状況を示します。 | はい | |
-| Style | 状態が成功か失敗かを表すビジュアル ヒント。 有効な値は `Success` または `Failure` です。 | はい | |
+| PercentComplete | Blockchain Workbench のユーザー インターフェイスに表示される整数値。ビジネス ロジックの制御フロー内の進行状況を示します。 | [はい] | |
+| Style | 状態が成功か失敗かを表すビジュアル ヒント。 有効な値は `Success` または `Failure` です。 | [はい] | |
 | Transitions | 現在の状態から次の一連の状態への使用できる[遷移](#transitions)のコレクション。 | いいえ  | |
 
 ### <a name="states-example"></a>状態の例
@@ -328,10 +328,10 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 |-------|-------------|:--------:|
 | AllowedRoles | 移行を開始できるアプリケーション ロールの一覧。 指定されたロールのすべてのユーザーがアクションを実行できる可能性があります。 | いいえ  |
 | AllowedInstanceRoles | 遷移の開始が許可されているスマート コントラクトに参加している、または指定されているユーザー ロールのリスト。 インスタンス ロールは、ワークフロー内の **Properties** に定義されています。 AllowedInstanceRoles は、スマート コントラクトのインスタンスに参加しているユーザーを表します。 AllowedInstanceRoles を使用すると、コントラクト インスタンス内のユーザー ロールに対するアクションの実行を制限できます。  たとえば、AllowedRoles でロールを指定した場合、ロールの種類 (所有者) のすべてのユーザーでなく、コントラクトを作成したユーザー (InstanceOwner) のみに終了の実行を許可することができます。 | いいえ  |
-| DisplayName | 遷移のわかりやすい表示名。 | はい |
+| DisplayName | 遷移のわかりやすい表示名。 | [はい] |
 | Description | 遷移の説明。 | いいえ  |
-| 関数 | 遷移を開始する関数の名前。 | はい |
-| NextStates | 遷移が成功した後の次の状態候補のコレクション。 | はい |
+| Function | 遷移を開始する関数の名前。 | [はい] |
+| NextStates | 遷移が成功した後の次の状態候補のコレクション。 | [はい] |
 
 ### <a name="transitions-example"></a>遷移の例
 
@@ -371,7 +371,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| はい | 50 |
+| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| [はい] | 50 |
 | Description | アプリケーション ロールの説明。 | いいえ  | 255 |
 
 ### <a name="application-roles-example"></a>アプリケーション ロールの例
@@ -394,8 +394,8 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
-| DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい | 255 |
+| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
+| DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | [はい] | 255 |
 | Description | プロパティまたはパラメーターの説明。 | いいえ  | 255 |
 
 ### <a name="identifiers-example"></a>識別子の例

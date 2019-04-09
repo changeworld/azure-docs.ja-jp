@@ -6,71 +6,54 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 68eb3f3e5c568bb518251aca2a4e76932ce2eee5
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 20aafc117ad8b6bd625894180fdfe79bd86192bd
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416209"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519002"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているシナリオにアクセスできます。
 
-Runbook は [Runbook](#runbooks-in-runbook-gallery) ギャラリーから、モジュールは [PowerShell ギャラリー](#modules-in-powerShell-gallery)から入手できます。  開発したシナリオを共有することにより、コミュニティに貢献することもできます。「[Runbook ギャラリーへの Runbook の追加](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)」を参照してください。
+PowerShell Runbook と[モジュール](#modules-in-powershell-gallery) は PowerShell ギャラリーから、[Python Runbook](#python-runbooks) はスクリプト センター ギャラリーから取得できます。 開発したシナリオを共有することにより、コミュニティに貢献することもできます。ギャラリーへの Runbook の追加を参照してください
 
-## <a name="runbooks-in-runbook-gallery"></a>Runbook ギャラリーでの Runbook
+## <a name="runbooks-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook
 
-[Runbook ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。 使用するには、[TechNet スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/site/upload)でホストされているギャラリーから Runbook をダウンロードするか、Azure portal でギャラリーから Runbook を直接インポートします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。 使用するには、ギャラリーから Runbook をダウンロードするか、Azure portal でギャラリーから、または Automation アカウントから、Runbook を直接インポートできます。
 
-Runbook ギャラリーから直接インポートできるのは、Azure ポータルを使用した場合のみです。 Windows PowerShell を使用してこの機能を実行することはできません。
+PowerShell ギャラリーから直接インポートできるのは、Azure portal を使用した場合のみです。 PowerShell を使用してこの機能を実行することはできません。
 
 > [!NOTE]
-> Runbook ギャラリーから取得した Runbook は、内容を検証し、運用環境でインストールおよび実行するときは細心の注意を払う必要があります。
+> PowerShell ギャラリーから取得した Runbook は、内容を検証し、運用環境でインストールおよび実行するときは細心の注意を払う必要があります。
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure ポータルで Runbook ギャラリーから Runbook をインポートするには
+### <a name="to-import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure portal で Runbook ギャラリーから PowerShell Runbook をインポートするには
 
 1. Azure ポータルで、Automation アカウントを開きます。
 2. **[プロセス オートメーション]** の **[Runbook ギャラリー]** をクリックします。
-3. 必要なギャラリー アイテムを探し、選択して詳細を表示します。 左側に、発行元と種類に関する検索パラメーターを追加で入力できます。
+3. **[Source:PowerShell Gallery]** \(ソース: PowerShell ギャラリー\)を選択します。
+4. 必要なギャラリー アイテムを探し、選択して詳細を表示します。 左側に、発行元と種類に関する検索パラメーターを追加で入力できます。
 
    ![[ギャラリーの参照]](media/automation-runbook-gallery/browse-gallery.png)
 
-4. **[ソース プロジェクトの表示]** をクリックして、 [TechNet スクリプト センター](https://gallery.technet.microsoft.com/)の項目を表示します。
-5. 項目をインポートするには、項目クリックして詳細を表示し、 **[インポート]** ボタンをクリックします。
+5. **[ソース プロジェクトの表示]** をクリックして、 [TechNet スクリプト センター](https://gallery.technet.microsoft.com/)の項目を表示します。
+6. 項目をインポートするには、項目クリックして詳細を表示し、 **[インポート]** ボタンをクリックします。
 
    ![[インポート] ボタン](media/automation-runbook-gallery/gallery-item-detail.png)
 
-6. 必要に応じて Runbook の名前を変更し、 **[OK]** をクリックして Runbook をインポートします。
-7. Runbook が、Automation アカウントの **[Runbook]** タブに表示されます。
+7. 必要に応じて Runbook の名前を変更し、 **[OK]** をクリックして Runbook をインポートします。
+8. Runbook が、Automation アカウントの **[Runbook]** タブに表示されます。
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Runbook ギャラリーへの Runbook の追加
+### <a name="adding-a-powershell-runbook-to-the-gallery"></a>ギャラリーへの PowerShell Runbook の追加
 
-他のユーザーにも役に立つと思われる Runbook を Runbook ギャラリーに追加してください。  [Runbook をスクリプト センターにアップロード](https://gallery.technet.microsoft.com/site/upload) して追加するときは、次の詳細を考慮してください。
+他のユーザーにも役に立つと思われる Runbook を PowerShell ギャラリーに追加してください。 PowerShell ギャラリーでは、PowerShell モジュールと PowerShell スクリプトを受け付けています。 Runbook を追加するには、[PowerShell ギャラリーにアップロード](/powershell/gallery/how-to/publishing-packages/publishing-a-package)します。
 
-* Runbook をウィザードに表示するには、**カテゴリ**として *Windows Azure* を指定し、**サブカテゴリ**として *Automation* を指定する必要があります。  
-* アップロードは、単一の `.ps1` ファイルまたは `.graphrunbook` ファイルである必要があります。  Runbook でモジュール、子 Runbook、または資産が必要な場合は、送信の説明および Runbook のコメント セクションでそれらのアイテムを列記する必要があります。  複数の Runbook を必要とするシナリオがある場合は、各 Runbook を個別にアップロードし、それぞれの説明に関連する Runbook の名前を列記します。 同じカテゴリに表示されるように同じタグを使用していることを確認します。 シナリオが動作するためには他の Runbook が必要であることをユーザーが知るには、説明を読む必要があります。
-* (グラフィカル ワークフローではなく) **グラフィカルな Runbook** を発行する場合は、"GraphicalPS" タグを追加します。
-* **[コード セクションの挿入]** アイコンを使用して、PowerShell または PowerShell ワークフローのコード スニペットを説明に挿入します。
-* アップロードの概要が Runbook ギャラリーの結果に表示されるので、ユーザーが Runbook の機能を特定するのに役立つ詳細な情報を提供する必要があります。
-* 次のタグから 1 ～ 3 個をアップロードに割り当てる必要があります。  ウィザードでは、Runbook はそのタグに一致するカテゴリの下に表示されます。  この一覧にないタグは、ウィザードによって無視されます。 一致するタグを指定しないと、Runbook はその他のカテゴリに表示されます。
-  
-  * バックアップ
-  * 容量管理
-  * Change Control
-  * コンプライアンス
-  * Dev / Test Environments
-  * ディザスター リカバリー
-  * 監視
-  * Patching
-  * プロビジョニング
-  * Remediation
-  * VM Lifecycle Management
-
-* Automation はギャラリーを 1 時間に 1 回更新するので、投稿物がすぐに表示されないことがあります。
+> [!NOTE]
+> PowerShell ギャラリーではグラフィカル Runbook はサポートされていません。
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell ギャラリーのモジュール
 
@@ -100,7 +83,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 6. モジュールを Azure Automation に直接インストールするには、 **[インポート]** ボタンをクリックします。
 7. [インポート] ボタンをクリックすると、**[インポート]** ウィンドウに、インポートしようとしているモジュール名が表示されます。 すべての依存関係がインストールされている場合は、**[OK]** ボタンがアクティブになります。 依存関係が存在しない場合は、このモジュールをインポートする前に、その依存関係をインポートする必要があります。
 8. **[インポート]** ページで **[OK]** をクリックしてモジュールをインポートします。 Azure Automation がモジュールをアカウントにインポートしている間に、モジュールとコマンドレットについてのメタデータが抽出されます。 各アクティビティを抽出する必要があるため、このアクションには数分かかる場合があります。
-9.  モジュールをデプロイ中であることが最初に通知され、プロセスが完了すると完了通知が表示されます。
+9. モジュールをデプロイ中であることが最初に通知され、プロセスが完了すると完了通知が表示されます。
 10. モジュールがインポートされた後は、使用可能なアクティビティを確認できます。 そのリソースを、Runbook と Desired State Configuration で使用することができます。
 
 > [!NOTE]
@@ -108,7 +91,10 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 
 ## <a name="python-runbooks"></a>Python Runbook
 
-Python Runbook は、[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)にあります。 Python Runbook をスクリプト センター ギャラリーに投稿できます。 投稿をアップロードするときに、タグ **Python** を確実に追加してください。
+Python Runbook は、[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)にあります。 Python Runbook をスクリプト センター ギャラリーに投稿するには、**[Upload a contribution]** \(投稿のアップロード\) をクリックします。 投稿をアップロードするときに、タグ **Python** を確実に追加してください。
+
+> [!NOTE]
+> [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter)にコンテンツをアップロードするには、最低 100 ポイントが必要です。 
 
 ## <a name="requesting-a-runbook-or-module"></a>Runbook またはモジュールの要求
 

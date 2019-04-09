@@ -10,26 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103912"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-## <a name="sap-bw-open-hub-integration"></a>SAP BW オープン ハブの統合 
-
-[SAP BW オープン ハブ サービス](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service)は、SAP BW からデータを抽出する効率的な方法です。 次の図は、お客様が利用する SAP システム内の典型的なフローの 1 つを示しています。この場合、データは SAP ECC、PSA、DSO、キューブと流れています。
-
-SAP BW オープン ハブ宛先 (OHD) は、SAP データの中継先のターゲットを定義します。 SAP データ転送プロセス (DTP) によってサポートされているすべてのオブジェクトは、たとえば DSO、InfoCube、MultiProvider、DataSource などのオープン ハブ データ ソースとして使用できます。中継されたデータが保存されるオープン ハブ宛先の種類は、データベース テーブル (ローカルまたはリモート) またはフラット ファイルである場合があります。 この SAP BW オープン ハブ コネクタは、BW の OHD ローカル テーブルからのデータ コピーをサポートしています。 その他の種類を使用している場合は、その他のコネクタを使用してデータベースまたはファイル システムに直接接続できます。
-
-![SAP BW オープン ハブ](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -37,10 +29,41 @@ SAP Business Warehouse のデータは、オープン ハブを介して、サ�
 
 具体的には、この SAP Business Warehouse オープン ハブ コネクタは以下をサポートします。
 
-- SAP Business Warehouse **バージョン 7.30 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)**。
+- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)**。
 - オープン ハブ宛先の、DSO、InfoCube、MultiProvider、DataSource などがその下にある可能性があるローカル テーブルを介したデータのコピー。
 - 基本認証を使用したデータのコピー。
 - アプリケーション サーバーへの接続。
+
+## <a name="sap-bw-open-hub-integration"></a>SAP BW オープン ハブの統合 
+
+[SAP BW オープン ハブ サービス](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service)は、SAP BW からデータを抽出する効率的な方法です。 次の図は、お客様が利用する SAP システム内の典型的なフローの 1 つを示しています。この場合、データは SAP ECC、PSA、DSO、キューブと流れています。
+
+SAP BW オープン ハブ宛先 (OHD) は、SAP データの中継先のターゲットを定義します。 SAP データ転送プロセス (DTP) によってサポートされているすべてのオブジェクトは、たとえば DSO、InfoCube、DataSource などのオープン ハブ データ ソースとして使用できます。中継されたデータが保存されるオープン ハブ宛先の種類は、データベース テーブル (ローカルまたはリモート) またはフラット ファイルである場合があります。 この SAP BW オープン ハブ コネクタは、BW の OHD ローカル テーブルからのデータ コピーをサポートしています。 その他の種類を使用している場合は、その他のコネクタを使用してデータベースまたはファイル システムに直接接続できます。
+
+![SAP BW オープン ハブ](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+
+## <a name="delta-extraction-flow"></a>差分抽出フロー
+
+ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能なプロパティが提供されます。オープン ハブからの差分読み込みを処理するために使用できる `excludeLastRequest` と `baseRequestId` です。 
+
+- **excludeLastRequestId**: 最後の要求のレコードを除外するかどうか。 既定値は true です。 
+- **baseRequestId**: 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値より大きいデータのみが取得されます。 
+
+全体として、SAP InfoProviders から Azure Data Factory (ADF) への実行は、次の 2 つの手順で構成されます。 
+
+1. **SAP BW データ転送プロセス (DTP)** この手順では、SAP BW InfoProvider から SAP BW オープン ハブ テーブルにデータがコピーされます 
+
+1. **ADF データのコピー** この手順では、オープン ハブ テーブルが ADF コネクタによって読み取られます 
+
+![差分抽出フロー](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
+
+最初の手順では、DTP が実行されます。 実行ごとに新しい SAP 要求 ID が作成されます。 要求 ID はオープン ハブ テーブルに保存され、差分を識別するために ADF コネクタによって使用されます。 2 つ目の手順は非同期で実行されます。DTP は SAP によってトリガーされ、ADF データのコピーは ADF を介してトリガーされます。 
+
+既定では、ADF でオープン ハブ テーブルから最後の差分を読み取ることはありません ("最後の要求を除外する" オプションは true です)。 これによって、ADF のデータはオープン ハブ テーブルのデータに関して 100% 最新ではありません (最後の差分はありません)。 代わりに、このプロシージャによって、非同期の抽出で行を失わないようにすることができます。 ADF でオープン ハブ テーブルを読み取るときでも問題なく動作し、DTP は引き続き同じテーブルに書き込まれます。 
+
+通常、ADF によって最後の実行のコピーされた最大の要求 ID をステージング データ ストア (上述のダイアグラムの Azure BLOB など) に保存します。 そのため、後続の実行で ADF による 2 回目の同じ要求が読み取られることはありません。 その間、データはオープン ハブ テーブルから自動的に削除されないことに注意してください。
+
+適切は差分処理では、同じオープン ハブ テーブルの異なる DTP からの要求 ID を持つことは許可されません。 そのため、オープン ハブ宛先 (OHD) ごとに複数の DTP を作成する必要はありません。 同じ InfoProvider から完全抽出と差分抽出が必要な場合、同じ InfoProvider に OHD を 2 つ作成する必要があります。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,6 +83,10 @@ SAP Business Warehouse のデータは、オープン ハブを介して、サ�
 - SAP オープン ハブ宛先の種類は、[Technical Key] (テクニカル キー) オプションをオンにして、**データベース テーブル**として作成します。  また、必須ではありませんが、[Deleting Data from Table] (テーブルからデータを削除する) はオンにしないままにすることをお勧めします。 DTP を利用して (直接実行するか、既存のプロセス チェーンに統合する)、選択したソース オブジェクト (キューブなど) のデータをオープン ハブ宛先テーブルに取り込みます。
 
 ## <a name="getting-started"></a>使用の開始
+
+> [!TIP]
+>
+> SAP BW オープン ハブ コネクタの使用に関するチュートリアルについては、「[Load data from SAP Business Warehouse (BW) by using Azure Data Factory](load-sap-bw-data.md)」 (Azure Data Factory を使用して SAP Business Warehouse (BW) からデータを読み込む) を参照してください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

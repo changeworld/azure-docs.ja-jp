@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125057"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -74,8 +74,8 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
-今後のリリースでは、**-Publisher**、**-Offer**、**-Sku** の各値を使用してイメージ定義を検索、指定し、一致するイメージ定義から最新のイメージ バージョンを使用して VM を作成できるようになります。 たとえば、以下に示したのは 3 つのイメージ定義とその値です。
+### <a name="using-publisher-offer-and-sku"></a>パブリッシャー、オファー、SKU の使用 
+共有イメージの実装を計画しているお客様の場合、**今後のリリースでは**、**-Publisher**、**-Offer**、**-Sku** の各値を使用してイメージ定義を検索、指定し、一致するイメージ定義から最新のイメージ バージョンを使用して VM を作成できるようになります。 たとえば、以下に示したのは 3 つのイメージ定義とその値です。
 
 |イメージの定義|Publisher|プラン|Sku|
 |---|---|---|---|
@@ -83,10 +83,9 @@ $galleryImage = New-AzGalleryImageDefinition `
 |myImage2|myPublisher|standardOffer|mySku|
 |myImage3|テスト|standardOffer|testSku|
 
-この 3 つは、それぞれ固有の値を有しています。 今後のリリースでは、特定のイメージの最新バージョンを要求する目的で、これらの値を組み合わせることが可能となります。 
+この 3 つは、それぞれ固有の値を有しています。 3 つの値のうち 1 つまたは 2 つを共有するイメージ バージョンを保有することはできますが、3 つ全部を共有するイメージ バージョンを保有することはできません。 **今後のリリースでは**、特定のイメージの最新バージョンを要求する目的で、これらの値を組み合わせることが可能となります。 **これは現在のリリースで動作しませんが**、将来的には提供される予定です。 リリースされた場合、上記の表から *myImage1* としてソース イメージを設定するために、次の構文を使用する必要があります。
 
 ```powershell
-# The following should set the source image as myImage1 from the table above
 $vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
@@ -94,9 +93,9 @@ $vmConfig = Set-AzVMSourceImage `
    -Skus mySku 
 ```
 
-現在、[Azure Marketplace イメージ](../articles/virtual-machines/windows/cli-ps-findimage.md)では、それらを指定して VM を作成できますが、それと似ています。 このことを踏まえて、イメージ定義ごとに、これらの値の組み合わせが一意となるようにしてください。 3 つの値のうち 1 つまたは 2 つを共有するイメージ バージョンを保有することはできますが、3 つ全部を共有するイメージ バージョンを保有することはできません。 
+これは、パブリッシャー、オファー、SKU を [Azure Marketplace イメージ](../articles/virtual-machines/windows/cli-ps-findimage.md)に使用して最新バージョンの Marketplace イメージを取得するために現在指定できる方法に似ています。 このことを踏まえて、イメージ定義ごとに、これらの値の組み合わせが一意となるようにしてください。  
 
-##<a name="create-an-image-version"></a>イメージ バージョンを作成する
+## <a name="create-an-image-version"></a>イメージ バージョンを作成する
 
 イメージ バージョンは、[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用してマネージド イメージから作成します。 この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。
 

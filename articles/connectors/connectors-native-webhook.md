@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: 7b1886321ca4afd4b4710bd9fddf16d2d5eb224b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182117"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Webhook と Azure Logic Apps を使ってイベント ベースのワークフローまたはアクションを作成する
 
@@ -29,9 +29,9 @@ webhook アクションおよびトリガーを使用すると、フローを開
 
 ## <a name="use-the-webhook-trigger"></a>Webhook トリガーの使用
 
-[*トリガー*](connectors-overview.md)は、ロジック アプリ ワークフローを開始するイベントです。 Webhook トリガーは、イベントに基づいており、新しい項目のポーリングに依存しません。 [要求トリガー](connectors-native-reqres.md)と同様に、ロジック アプリは、イベントが発生するとすぐに起動します。 webhook トリガーは、*コールバック URL* をサービスに登録し、必要に応じて、その URL を使用してロジック アプリを起動します。
+[*トリガー*](connectors-overview.md)は、ロジック アプリ ワークフローを開始するイベントです。 Webhook トリガーはイベントに基づいており、新しい項目のポーリングに依存しません。 Webhook トリガーを使用してロジック アプリを保存したり、ロジック アプリを無効から有効に変更したりすると、Webhook トリガーは、指定されたサービスまたはエンドポイントに*コールバック URL* を登録して、そのサービスまたはエンドポイントを*サブスクライブ*します。 次に、トリガーは必要に応じてその URL を使用してロジック アプリを実行します。 [要求トリガー](connectors-native-reqres.md)と同様に、ロジック アプリは、予期されたイベントが発生するとすぐに起動します。 トリガーを削除してロジック アプリを保存した場合や、ロジック アプリを有効から無効に変更すると、トリガーは*サブスクライブを解除*します。
 
-ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。 これらの手順では、[ロジック アプリでの webhook のサブスクライブおよびサブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。 サブスクライブ呼び出しは、ロジック アプリが新しい Webhook と共に保存されるか、無効から有効に切り替えられるたびに実行されます。 サブスクライブ解除呼び出しは、ロジック アプリの webhook トリガーが削除されて保存されるか、有効から無効に切り替えられたときに実行されます。
+ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。 これらの手順では、[ロジック アプリでの webhook のサブスクライブおよびサブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。 
 
 **webhook トリガーを追加するには、次の手順に従います。**
 
@@ -48,9 +48,15 @@ webhook アクションおよびトリガーを使用すると、フローを開
 
 ## <a name="use-the-webhook-action"></a>Webhook アクションの使用
 
-[*アクション*](connectors-overview.md)とは、ロジック アプリで定義されたワークフローによって実行される操作です。 webhook アクションは、*コールバック URL* をサービスに登録して、その URL が呼び出されるまで待機してから再開します。 ["承認電子メールの送信"](connectors-create-api-office365-outlook.md) は、このパターンに従うコネクタの一例です。 Webhook アクションを使用することで、このパターンをどのサービスにも適用できます。 
+[*アクション*](connectors-overview.md)とは、ロジック アプリのワークフローによって定義されて実行される操作です。 ロジック アプリが Webhook アクションを実行すると、そのアクションは、指定されたサービスまたはエンドポイントに*コールバック URL* を登録することにより、そのサービスまたはエンドポイントを*サブスクライブ*します。 Webhook アクションは、ロジック アプリが実行を再開する前に、そのサービスが URL を呼び出すまで待機します。 次のような場合、ロジック アプリはサービスまたはエンドポイントのサブスクライブを解除します。 
 
-ロジック アプリ デザイナーで webhook アクションをセットアップする方法の例を次に示します。 これらの手順では、[ロジック アプリでの webhook のサブスクライブおよびサブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-actions)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。 サブスクライブ呼び出しは、ロジック アプリが Webhook アクションを実行すると実行されます。 サブスクライブ解除呼び出しは、応答を待っている間に、またはロジック アプリがタイムアウトになる前に実行がキャンセルされると実行されます。
+* Webhook アクションが正常に終了したとき
+* 応答を待機しているときにロジック アプリの実行がキャンセルされた場合
+* ロジック アプリがタイムアウトになる前
+
+たとえば、[**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの例です。 Webhook アクションを使用することで、このパターンをどのサービスにも適用できます。 
+
+ロジック アプリ デザイナーで webhook アクションをセットアップする方法の例を次に示します。 これらの手順では、[ロジック アプリでの webhook のサブスクライブおよびサブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-actions)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。 
 
 **webhook アクションを追加するには、次の手順に従います。**
 
@@ -76,7 +82,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 
 ## <a name="webhook-triggers"></a>Webhook トリガー
 
-| アクションを表示します。 | 説明 |
+| Action | 説明 |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。 |
 
@@ -112,7 +118,7 @@ Webhook 要求
 
 ## <a name="webhook-actions"></a>Webhook アクション
 
-| アクションを表示します。 | 説明 |
+| Action | 説明 |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。 |
 
