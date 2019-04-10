@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e709aa25a8fa0a8ff6c94bf2e813151e5ecbae65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006244"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876819"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 
@@ -39,7 +39,7 @@ ms.locfileid: "58006244"
 テーブル データの移行を実行するには、次のタスクを実行します。
 
 1. 移行ツールを [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) からダウンロードします。
-2. 実際のシナリオに合ったコマンド ライン引数を使用して `dt.exe` を実行します。 `dt.exe` は次の形式のコマンドを受け取ります。
+2. 実際のシナリオに合ったコマンド ライン引数を使用して `dt.exe` を実行します。 `dt.exe` 次の形式のコマンドを受け取ります。
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
@@ -147,4 +147,4 @@ Table API (プレビュー) から一般公開の Table API に移行するに�
 次のチュートリアルに進み、Azure Cosmos DB Table API を使用してデータにクエリを実行する方法を学ぶことができます。 
 
 > [!div class="nextstepaction"]
->[データにクエリを実行する方法](../cosmos-db/tutorial-query-table.md)
+>[データを照会する方法](../cosmos-db/tutorial-query-table.md)

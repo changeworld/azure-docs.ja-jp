@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 21a10bcedc25ddce63ba468e400dcea1f77148a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5647aa20f444d5efd36f03d813ee87ef199cc41
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863119"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621874"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android Unity アプリを作成する
 
@@ -37,8 +37,9 @@ ms.locfileid: "57863119"
 
 - <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 以降</a>および <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 以降</a>がインストールされている Windows または macOS コンピューター。
   - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> も必要になります。
-  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 次のコマンドをターミナルに 1 行で入力します: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 次に、`brew install git` を実行します。
+  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 次に、`brew install git` を実行します。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
+- アプリでは Unity 用 ARCore SDK のバージョン **1.5** を使用する必要があります (ARCore 1.6 以降のサポートは後日提供される予定です)。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Blueprint の概要
-description: Azure Blueprint は、Azure 環境でアーティファクトを作成、定義、デプロイするために使用する Azure のサービスです。
+description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf3801381359bb973d126e2ee946cdb51e5aecb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 29c58abb3a69da0886d512767cbc301621943f07
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823095"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802577"
 ---
-# <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
+# <a name="overview-of-the-azure-blueprints-service"></a>Azure Blueprints サービスの概要
 
 設計図によってエンジニアやアーキテクトがプロジェクト設計パラメーターの概略を示すのと同じように、Azure Blueprint によってクラウド アーキテクトや中央の情報技術部門は、組織の標準、パターン、要件を実装および順守した反復可能な一連の Azure リソースを定義できます。 Azure Blueprint を使用すると、開発チームは新しい環境を迅速に構築して立ち上げることができます。新しい環境は組織のコンプライアンスに従って構築され、ネットワークなどの一連の組み込みコンポーネントを含んでいるという確信が得られるため、開発とデリバリーにかかる時間を短縮できます。
 
@@ -54,7 +54,7 @@ Resource Manager テンプレートとブループリントのどちらかを選
 
 ブループリントは _アーティファクト_ から成ります。 ブループリントでは現在のところ以下のリソースがアーティファクトとしてサポートされています。
 
-|リソース  | 階層のオプション| 説明  |
+|Resource  | 階層のオプション| 説明  |
 |---------|---------|---------|
 |リソース グループ | サブスクリプション | ブループリント内の他のアーティファクトで使用する新しいリソース グループを作成します。  プレースホルダーであるこれらのリソース グループを使用すると、リソースの構造を正確に希望したとおりに編成し、Azure Resource Manager テンプレートだけでなく、含めたポリシー割り当てとロールの割り当てのアーティファクトについて、スコープを制限する指定ができます。 |
 |Azure Resource Manager テンプレート | サブスクリプション、リソース グループ | テンプレートは、複雑な環境を作成する目的で使用されます。 たとえば、SharePoint ファーム、Azure Automation State Configuration、Log Analytics ワークスペースの環境が該当します。 |

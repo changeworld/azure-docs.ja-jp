@@ -10,16 +10,14 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aa637571ca11ea294b1f95df49855d7ee81b3001
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258872"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906074"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) モジュールは、コマンド ラインやスクリプトから Azure リソースを作成および管理するために使用します。 
 
@@ -27,8 +25,9 @@ ms.locfileid: "58258872"
 
 このクイック スタートでは、既存の Azure VM のバックアップを実行できます。 VM を作成する必要がある場合は、[Azure PowerShell を使用して VM を作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)できます。
 
-このクイック スタートには、Azure PowerShell AZ モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+このクイック スタートには、Azure PowerShell AZ モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-and-register"></a>ログインして登録する
 
@@ -73,6 +72,14 @@ ms.locfileid: "58258872"
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
+3. [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0) を使用して、コンテナーの記憶域冗長構成 (LRS/GRS) を次のように変更します。
+    
+    ```powershell
+    Get-AzRecoveryServicesVault `
+        -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant/GeoRedundant
+    ```
+    > [!NOTE]
+    > 記憶域冗長は、コンテナーに保護されているバックアップ項目がない場合にのみ変更できます。
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Azure VM のバックアップを有効にする
 

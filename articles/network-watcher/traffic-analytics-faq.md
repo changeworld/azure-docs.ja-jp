@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382998"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835318"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -83,6 +83,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 - インド中部
 - インド南部
 - 東日本
+- 米国政府バージニア州
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 - カナダ中部
@@ -94,6 +95,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 - 東南アジア 
 - インド中部
 - 東日本
+- 米国政府バージニア州
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>フロー ログを有効化する NSG は、自分のワークスペースとは別のリージョンに存在できますか?
 
@@ -105,7 +107,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-use-an-existing-workspace"></a>既存のワークスペースを使用できますか?
 
-はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」をご覧ください。
+はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)に関するページをご覧ください。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
 
@@ -118,6 +120,12 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>"見つかりません" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?
 
 サポートされているリージョンを選択します。 サポートされていないリージョンを選択すると、[見つかりません] エラーが表示されます。 サポートされているリージョンについては、この記事で前述しています。
+
+## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>米国政府バージニア州の NSG を有効化しようとする際に、"...InternalServerError... のフローのログ設定を更新できませんでした" というエラーが返されるのはなぜですか?
+
+これは、"Microsoft.Network" リソース プロバイダーが米国政府バージニア州のサブスクリプション用に再登録されていないバグによるものです。 現在、担当チームがこの問題の修正に取り組んでいます。 この問題を回避するには、["Microsoft.Network" RP を手動で再登録する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors)必要があります。 
+
+問題が解決しない場合は、サポートにお問い合わせください。 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>NSG フロー ログ ページの下に "読み込みに失敗しました" という状態が表示される場合はどうすればよいですか?
 
@@ -132,7 +140,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ダッシュボードを最初に表示する際は最大で 30 分かかることがあります。 ソリューションで意味がある分析情報が導出されるには、まず十分なデータを集計する必要があります。 その後にレポートが生成されます。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval. Try changing the time interval or select a different workspace. (選択した時間内のデータがこのワークスペースで見つかりませんでした。時間間隔を変更してみるか、別のワークスペースを選択してください。)"
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval.  時間間隔を変更してみるか、別のワークスペースを選択してください"。
 
 次の方法を試してください。
 - 上部のバーで期間を変更します。
@@ -149,7 +157,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Looks like we have resources data (Topology) and no flows information. Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Looks like we have resources data (Topology) and no flows information.  Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
 
 ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 問題が解決せず、リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 

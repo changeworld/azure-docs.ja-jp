@@ -4,7 +4,7 @@ description: Service Fabric 内でメトリックを構成および使用して�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 642f479aba62e5cc9dde63aed7c30de39b513a5e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093351"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661702"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Service Fabric のリソース使用量と負荷をメトリックで管理する
 "*メトリック*" は、サービスが関心を持っているリソースであり、クラスター内のノードによって提供されます。 メトリックは、サービスのパフォーマンスを向上させたり監視したりするために管理する必要があるすべての要素を指します。 たとえば、メモリの消費量を監視して、サービスが過負荷になっているかどうかを知ることができます。 パフォーマンスを向上させるためにメモリ制約が少ないところにサービスを移動できるかどうかを確認するために使用することもできます。

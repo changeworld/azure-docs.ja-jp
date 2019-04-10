@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791b224f141dc0baa5babc401c35d6860a213df5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a2472e78a9da223b0c651551d7cc8e05ab6eea9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875036"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>チュートリアル:Azure Active Directory と Slack の統合
 
@@ -53,7 +53,7 @@ Slack と Azure AD の統合を構成するには、次のものが必要です�
 
 Azure AD への Slack の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Slack を追加する必要があります。
 
-**ギャラリーから Slack を追加するには、次の手順に従います。**
+**ギャラリーから Slack を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,9 +107,9 @@ Slack で Azure AD シングル サインオンを構成するには、次の手
 
     ![[Slack のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.slack.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<companyname>.slack.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://slack.com` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `https://slack.com`
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Slack クライアント サポート チーム](https://slack.com/help/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -206,7 +206,7 @@ Slack で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -247,7 +247,7 @@ Slack で Azure AD シングル サインオンを構成するには、次の手
 > ユーザーを手動で作成する必要がある場合は、[Slack のサポート チーム](https://slack.com/help/contact)にお問い合わせください。
 
 > [!NOTE]
-> Azure AD Connect はオンプレミスの Active Directory の ID を Azure AD と同期できる同期ツールで、これらの同期済みユーザーはアプリケーションを他のクラウド ユーザーと同じように使用することもできます。
+> Azure AD Connect はオンプレミスの Active Directory の ID を Azure AD と同期できる同期ツールであり、これらの同期済みユーザーもアプリケーションを他のクラウド ユーザーと同じように使用できます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

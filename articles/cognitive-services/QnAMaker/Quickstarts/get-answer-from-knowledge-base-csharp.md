@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 2d011dffa4db68a0cdf6ac3415ff1316906a4e87
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8ded7a86c1b4fb53ca81fc4e7b0c0d794c515ddf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884003"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886346"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>C# を使用してナレッジ ベースから質問の回答を取得する
 
@@ -57,7 +57,7 @@ Program.cs ファイルの先頭にある 1 つの using ステートメント�
 
 [!code-csharp[Add a POST request to send question to knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=32-57 "Add a POST request to send question to knowledge base")]
 
-`Authorization` ヘッダーの値には、文字列 `EndpointKey ` が含まれています。 
+`Authorization` ヘッダーの値には、文字列 `EndpointKey` が含まれています。 
 
 [要求](../how-to/metadata-generateanswer-usage.md#generateanswer-request)と[応答](../how-to/metadata-generateanswer-usage.md#generateanswer-response)の詳細を確認してください。 
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 1/4/2019
+ms.date: 03/28/2019
 ms.author: jowargo
-ms.openlocfilehash: f7088179f43c69fb9f72eacd6ff3703a926cabe2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878776"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 
@@ -28,7 +28,7 @@ ms.locfileid: "57886560"
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。 Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリを作成します。 通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストします。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。 Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリを作成します。 通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストします。 完成したコードは、[NotificationHubs アプリ](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid) サンプルで参照できます。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -112,8 +112,15 @@ ms.locfileid: "57886560"
         </intent-filter>
     </receiver>
     ```
+2. **application 要素の前**に、以下のステートメントを追加します。 
 
-2. Android アプリケーションと通知ハブについて次の情報を収集します。
+    ```xml
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    ```
+1. Android アプリケーションと通知ハブについて次の情報を収集します。
 
    * **接続文字列のリッスン**: [Azure portal] のダッシュボードで **[接続文字列の表示]** を選択します。 この値に使用するための `DefaultListenSharedAccessSignature` 接続文字列をコピーします。
    * **ハブ名**: [Azure portal] からのハブの名前。 たとえば、 *mynotificationhub2*です。
@@ -131,13 +138,61 @@ ms.locfileid: "57886560"
 
     ```csharp
     using Android.Util;
+    using Android.Gms.Common;
     ```
-6. アプリを実行しているときにアラート ダイアログを表示するために使用する `MainActivity.cs*` にインスタンス変数を追加します。
+6. MainActivity クラスに以下のプロパティを追加します。 アプリを実行しているときにアラート ダイアログを表示するために、TAG 変数が使用されます。
 
     ```csharp
     public const string TAG = "MainActivity";
+    internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
-7. `MainActivity.cs` で、次のコードを `OnCreate` (`base.OnCreate(savedInstanceState)` の後) に追加します。
+7. MainActivity クラスに次のメソッドを追加します。 デバイスで **Google Play 開発者サービス**が使用できるかどうかを確認します。 
+
+    ```csharp
+    public bool IsPlayServicesAvailable()
+    {
+        int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.Success)
+        {
+            if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                Log.Debug(TAG, GoogleApiAvailability.Instance.GetErrorString(resultCode));
+            else
+            {
+                Log.Debug(TAG, "This device is not supported");
+                Finish();
+            }
+            return false;
+        }
+     
+        Log.Debug(TAG, "Google Play Services is available.");
+        return true;
+    }
+    ```
+1. MainActivity クラスに、通知チャネルを作成する次のメソッドを追加します。
+
+    ```csharp
+    private void CreateNotificationChannel()
+    {
+        if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+        {
+            // Notification channels are new in API 26 (and not a part of the
+            // support library). There is no need to create a notification
+            // channel on older versions of Android.
+            return;
+        }
+     
+        var channelName = CHANNEL_ID;
+        var channelDescription = string.Empty;
+        var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+        {
+            Description = channelDescription
+        };
+     
+        var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+        notificationManager.CreateNotificationChannel(channel);
+    }
+    ```
+1. `MainActivity.cs` で、次のコードを `OnCreate` (`base.OnCreate(savedInstanceState)` の後) に追加します。
 
     ```csharp
     if (Intent.Extras != null)
@@ -151,6 +206,9 @@ ms.locfileid: "57886560"
             }
         }
     }
+    
+    IsPlayServicesAvailable();
+    CreateNotificationChannel();
     ```
 8. `Constants` クラスを作成した場合と同様に、新しいクラス `MyFirebaseIIDService` を作成します。
 9. 次の using ステートメントを `MyFirebaseIIDService.cs` に追加します。
@@ -201,6 +259,9 @@ ms.locfileid: "57886560"
     using Android.App;
     using Android.Util;
     using Firebase.Messaging;
+    using Android.OS;
+    using Android.Support.V4.App;
+    using Build = Android.OS.Build;
     ```
 14. クラスの宣言の上に次のコードを追加し、クラスが `FirebaseMessagingService` から継承するようにします。
 
@@ -236,12 +297,18 @@ ms.locfileid: "57886560"
         intent.AddFlags(ActivityFlags.ClearTop);
         var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-        var notificationBuilder = new Notification.Builder(this)
+        var notificationBuilder = new NotificationCompat.Builder(this)
                     .SetContentTitle("FCM Message")
                     .SetSmallIcon(Resource.Drawable.ic_launcher)
                     .SetContentText(messageBody)
                     .SetAutoCancel(true)
+                    .SetShowWhen(false)
                     .SetContentIntent(pendingIntent);
+
+        if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+        {
+            notificationBuilder.SetChannelId(MainActivity.CHANNEL_ID);
+        }
 
         var notificationManager = NotificationManager.FromContext(this);
 
@@ -296,10 +363,10 @@ ms.locfileid: "57886560"
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio と Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid
+[GitHub]: https://github.com/Azure/azure-notificationhubs-android

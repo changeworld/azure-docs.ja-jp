@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 7da861b240d0502d62c1344b1927c3c05a9086ac
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f74d43d90a288a145887878305a95e1052ab8c05
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313890"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880017"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Python を使用してナレッジ ベースから質問の回答を取得する
 
@@ -23,7 +23,7 @@ ms.locfileid: "57313890"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python 3.6 以上](https://www.python.org/downloads/)
+* [Python 3.6 以降](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、**[リソース管理]** の **[キー]** を選択します。 
 * **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、**[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
@@ -58,7 +58,7 @@ QnA Maker にアクセスするために必要な定数を追加します。 こ
 
 [!code-python[Add a POST request to send question to knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=27-48 "Add a POST request to send question to knowledge base")]
 
-`Authorization` ヘッダーの値には、文字列 `EndpointKey ` が含まれています。 
+`Authorization` ヘッダーの値には、文字列 `EndpointKey` が含まれています。 
 
 ## <a name="run-the-program"></a>プログラムの実行
 

@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f90e4281be27f4f30f4fdf0e3eb2932fa4e743ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840819"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666794"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -129,7 +129,7 @@ $Db2
 
 ## <a name="enable-the-elastic-jobs-preview-for-your-subscription"></a>サブスクリプションのエラスティック ジョブ プレビューを有効にする
 
-エラスティック ジョブを使用するには、次のコマンドを実行して Azure サブスクリプションに機能を登録します (これは、エラスティック ジョブを使用するサブスクリプションごとに 1 回だけ実行する必要があります)。
+エラスティック ジョブを使用するには、お使いの Azure サブスクリプションで次のコマンドを実行して、その機能を登録する必要があります。 エラスティック ジョブ エージェントのプロビジョニング先となるサブスクリプションごとに 1 回このコマンドを実行してください。 ジョブのターゲットとなるデータベースしか存在しないサブスクリプションは登録の必要はありません。
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql

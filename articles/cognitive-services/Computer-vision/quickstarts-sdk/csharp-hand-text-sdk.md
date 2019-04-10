@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d71a566d5c6dc5505b4bd939e294f8428e9a5b93
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 2ae5cd0fd177f64bed5ed0705207c6a3e81a1b24
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312909"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878198"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# によるテキストの抽出
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>クイック スタート:Computer Vision C# SDK を使用して手書きテキストを抽出する
 
 このクイック スタートでは、C# 用の Computer Vision SDK を使って、画像から手書きテキストまたは印字されたテキストを抽出します。 このガイド内のコードは、必要に応じて、GitHub の [Cognitive Services Csharp Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) リポジトリからサンプル アプリ一式としてダウンロードすることができます。
 
@@ -37,7 +37,7 @@ ms.locfileid: "56312909"
     1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
     1. **[参照]** タブをクリックし、**[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
     1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
-1. `Program.cs` を以下のコードに置き換えます。 `RecognizeTextAsync` メソッドと `RecognizeTextInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[テキスト認識 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) をラップします。 `GetTextOperationResultAsync` メソッドは、[テキスト認識操作の結果を取得する API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) をラップします。
+1. `Program.cs` を以下のコードに置き換えます。 `BatchReadFileAsync` メソッドと `BatchReadFileInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[バッチ読み取り API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) をラップします。 `GetReadOperationResultAsync` メソッドは、[取得、読み取り操作結果 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) をラップします。
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -52,7 +52,7 @@ ms.locfileid: "56312909"
         class Program
         {
             // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-            private const string subscriptionKey = "<SubscriptionKey>";
+            private const string subscriptionKey = "<Subscription key>";
 
             // For printed text, change to TextRecognitionMode.Printed
             private const TextRecognitionMode textRecognitionMode =
@@ -62,9 +62,7 @@ ms.locfileid: "56312909"
             private const string localImagePath = @"<LocalImage>";
 
             private const string remoteImageUrl =
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
-                "Cursive_Writing_on_Notebook_paper.jpg/" +
-                "800px-Cursive_Writing_on_Notebook_paper.jpg";
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cursive_Writing_on_Notebook_paper.jpg/800px-Cursive_Writing_on_Notebook_paper.jpg";
 
             private const int numberOfCharsInOperationId = 36;
 
@@ -78,12 +76,12 @@ ms.locfileid: "56312909"
                 // keys. For example, if you got your subscription keys from westus,
                 // replace "westcentralus" with "westus".
                 //
-                // Free trial subscription keys are generated in the "westus"
+                // Free trial subscription keys are generated in the westcentralus
                 // region. If you use a free trial subscription key, you shouldn't
                 // need to change the region.
 
                 // Specify the Azure region
-                computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
+                computerVision.Endpoint = "https://westus.api.cognitive.microsoft.com";
 
                 Console.WriteLine("Images being analyzed ...");
                 var t1 = ExtractRemoteTextAsync(computerVision, remoteImageUrl);
@@ -94,7 +92,7 @@ ms.locfileid: "56312909"
                 Console.ReadLine();
             }
 
-            // Recognize text from a remote image
+            // Read text from a remote image
             private static async Task ExtractRemoteTextAsync(
                 ComputerVisionClient computerVision, string imageUrl)
             {
@@ -105,9 +103,9 @@ ms.locfileid: "56312909"
                     return;
                 }
 
-                // Start the async process to recognize the text
-                RecognizeTextHeaders textHeaders =
-                    await computerVision.RecognizeTextAsync(
+                // Start the async process to read the text
+                BatchReadFileHeaders textHeaders =
+                    await computerVision.BatchReadFileAsync(
                         imageUrl, textRecognitionMode);
 
                 await GetTextAsync(computerVision, textHeaders.OperationLocation);
@@ -127,8 +125,8 @@ ms.locfileid: "56312909"
                 using (Stream imageStream = File.OpenRead(imagePath))
                 {
                     // Start the async process to recognize the text
-                    RecognizeTextInStreamHeaders textHeaders =
-                        await computerVision.RecognizeTextInStreamAsync(
+                    BatchReadFileInStreamHeaders textHeaders =
+                        await computerVision.BatchReadFileInStreamAsync(
                             imageStream, textRecognitionMode);
 
                     await GetTextAsync(computerVision, textHeaders.OperationLocation);
@@ -145,8 +143,8 @@ ms.locfileid: "56312909"
                     operationLocation.Length - numberOfCharsInOperationId);
 
                 Console.WriteLine("\nCalling GetHandwritingRecognitionOperationResultAsync()");
-                TextOperationResult result =
-                    await computerVision.GetTextOperationResultAsync(operationId);
+                ReadOperationResult result =
+                    await computerVision.GetReadOperationResultAsync(operationId);
 
                 // Wait for the operation to complete
                 int i = 0;
@@ -158,15 +156,18 @@ ms.locfileid: "56312909"
                         "Server status: {0}, waiting {1} seconds...", result.Status, i);
                     await Task.Delay(1000);
 
-                    result = await computerVision.GetTextOperationResultAsync(operationId);
+                    result = await computerVision.GetReadOperationResultAsync(operationId);
                 }
 
                 // Display the results
                 Console.WriteLine();
-                var lines = result.RecognitionResult.Lines;
-                foreach (Line line in lines)
+                var recResults = result.RecognitionResults;
+                foreach (TextRecognitionResult recResult in recResults)
                 {
-                    Console.WriteLine(line.Text);
+                    foreach (Line line in recResult.Lines)
+                    {
+                        Console.WriteLine(line.Text);
+                    }
                 }
                 Console.WriteLine();
             }
@@ -180,7 +181,6 @@ ms.locfileid: "56312909"
 1. `<LocalImage>` を、ローカル画像のパスとファイル名に置き換えます。
 1. 必要に応じて、`remoteImageUrl` を別の画像に設定します。
 1. プログラムを実行します。
-
 
 ## <a name="examine-the-response"></a>結果の確認
 
@@ -198,7 +198,7 @@ The quick brown fox jumps over the lazy
 Pack my box with five dozen liquor jugs
 ```
 
-[REST と C# を使用して手書きテキストを抽出するクイック スタート](../QuickStarts/CSharp-hand-text.md#examine-the-response)で、API 呼び出しから返される生の JSON の出力例を参照してください。
+「[クイック スタート:REST と C# を使用して手書きテキストを抽出するクイック スタート](../QuickStarts/CSharp-hand-text.md#examine-the-response)で、API 呼び出しから返される生の JSON の出力例を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

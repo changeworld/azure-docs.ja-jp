@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b536c55b0f7c29bc463781d9fda0348ef994c5ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519631"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662226"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
@@ -39,7 +39,7 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 
 Azure Speech Services の新機能について説明します。
 
-* 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げの新しいエンドポイントが利用可能になりました。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
+* 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げ (TTS) の新しいエンドポイントが利用可能になりました。 加えて、TTS で新しいリージョンがサポートされます。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
 * 2019年 2 月 - [Unity (ベータ)](quickstart-csharp-unity.md) をサポートする Speech SDK 1.3.0 がリリースされました。 `AudioInput` クラスのサポートが追加されました。このクラスでは、オーディオのストリーミング ソースを選択できます。 拡張機能と既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」をご覧ください。
 * 2018年 12 月 - [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md)、および Ubuntu 18.04 LTS をサポートする Speech SDK 1.2.0 がリリースされました。 詳しくは、「[リリース ノート](releasenotes.md)」をご覧ください。
 

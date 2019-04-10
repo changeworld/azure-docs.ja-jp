@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102164"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877280"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
@@ -33,10 +33,10 @@ ms.locfileid: "58102164"
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
 
 * [ナレッジ ベース (KB) を作成する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [取得操作の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [操作の詳細の取得](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 * [ナレッジ ベースの詳細を取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
 * [ナレッジ ベースのエンドポイントを取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
-* [[発行]](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
+* [発行](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -158,7 +158,7 @@ KB にアクセスして質問を送信し、最適な回答を受け取るた�
 
 |ヘッダー名|ヘッダー値|
 |--|--|
-|Authorization|`Endpoint ` + **プライマリ エンドポイント**<br>例: `Endpoint xxxxxxx`<br>`Endpoint` というテキストとプライマリ エンドポイントの値の間のスペースに注意してください。 
+|Authorization|`Endpoint` + **プライマリ エンドポイント**<br>例: `Endpoint xxxxxxx`<br>`Endpoint` というテキストとプライマリ エンドポイントの値の間のスペースに注意してください。 
 
 要求の本文では、適切な JSON を渡す必要があります。
 

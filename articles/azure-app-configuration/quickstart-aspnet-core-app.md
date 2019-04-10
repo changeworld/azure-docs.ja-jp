@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a721cc2252619923496ee5a3a8ae590a5cda3b04
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487551"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578120"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -93,13 +93,15 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
     このシークレットには、構成 API を使用してアクセスします。 サポートされているすべてのプラットフォームで、構成 API を使用する際の構成名にコロン (:) を使用できます。 [環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)に関するページを参照してください。
 
-4. Program.cs を開き、`config.AddAzureAppConfiguration()` メソッドを呼び出すことで App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
+4. *Program.cs* を開き、App Configuration .NET Core 構成プロバイダーへの参照を追加します。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+5. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
 
+    ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
@@ -113,7 +115,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
             .UseStartup<Startup>();
     ```
 
-5. Views の Home ディレクトリにある Index.cshtml を開いて、内容を次のコードに置き換えます。
+6. Views の Home ディレクトリにある Index.cshtml を開いて、内容を次のコードに置き換えます。
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -139,7 +141,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
     </html>
     ```
 
-6. Views の Shared ディレクトリにある _Layout.cshtml を開いて、内容を次のコードに置き換えます。
+7. Views の Shared ディレクトリにある _Layout.cshtml を開いて、内容を次のコードに置き換えます。
 
     ```html
     <!DOCTYPE html>

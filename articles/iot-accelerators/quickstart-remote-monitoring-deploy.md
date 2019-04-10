@@ -7,20 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: befef76e19640683ba3219374702a049bdecb43b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58184174"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792503"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>クイック スタート:クラウドベースのリモート監視ソリューションを試す
 
 このクイック スタートでは、Azure IoT リモート監視ソリューション アクセラレータをデプロイする方法を紹介しています。 クラウドベースのこのソリューションでは、**[ダッシュボード]** ページを使用して、シミュレートされたデバイスをマップ上に視覚化します。また、**[メンテナンス]** ページを使用して、シミュレートされた冷却装置デバイスからの圧力アラートに応答します。 このソリューション アクセラレータは、独自に実装を行う際の出発点として、または学習用ツールとしてご利用ください。
 
 初期デプロイでは、Contoso という名前の会社のソリューション アクセラレータが構成されます。 Contoso では、異なる物理環境にデプロイされた冷却装置など、さまざまな種類のデバイスをオペレーターが管理しています。 冷却装置デバイスは、温度、湿度、および圧力テレメトリをリモート監視ソリューション アクセラレータに送信します。
+
+このクイック スタートでは、テストとデモンストレーションの目的で、コストを最小限に抑えることができるソリューション アクセラレータの **Basic** バージョンをデプロイします。 デプロイできる異なるバージョンの詳細については、「[Basic デプロイと Standard デプロイ](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments)」を参照してください。
 
 このクイック スタートを完了するには、アクティブな Azure サブスクリプションが必要です。
 
@@ -36,9 +38,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 ![リモート監視の選択](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-**[Create Remote Monitoring solution]\(リモート監視ソリューションの作成\)** ページで、**[Basic]** デプロイを選択します。 しくみについて学ぶ、またはデモを実行するためにソリューション アクセラレータをデプロイする場合、**[Basic]** を選択すると費用を最小限に抑えられます。
-
-言語として **[.NET]** を選択します。 Java と .NET の実装は、同じ機能を備えています。
+**[デプロイ オプション]** として **[C# Microservices]\(C# マイクロサービス\)** を選択します。 Java と C# の実装は、同じ機能を備えています。
 
 リモート監視ソリューション アクセラレータの一意の**ソリューション名**を入力します。 このクイック スタートでは、**contoso-rm** という名前を使用します。
 
@@ -111,7 +111,7 @@ Contoso のオペレーターは、ソリューション ダッシュボード�
 
 **[ジョブ]** パネルで、**[Run method]\(実行メソッド\)**、**[EmergencyValveRelease]** メソッドの順に選択します。 ジョブ名 **ChillerPressureRelease** を追加し、**[適用]** をクリックします。 これらの設定により、すぐに実行されるジョブが作成されます。
 
-ジョブの状態を確認するには、**[メンテナンス]** ページに戻り、**ジョブ** ビューでジョブの一覧を確認します。 場合によっては、冷却装置で弁の圧力を解放するジョブが実行されたことを確認できるまでに数秒待つ必要があります。
+ジョブの状態を確認するには、**[メンテナンス]** ページに戻り、**ジョブ** ビューでジョブの一覧を確認します。 場合によっては、ジョブが実行されたことを確認できるまでに数秒待つ必要があります。
 
 [![ジョブ ビューに表示されたジョブの状態](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 

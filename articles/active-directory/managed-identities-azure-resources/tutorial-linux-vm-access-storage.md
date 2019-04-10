@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7772797aa6c20c8f583608bac8fc002a92796a11
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444039"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801863"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 
@@ -84,7 +84,7 @@ VM のマネージド ID を使用して、Azure Storage Blob のデータを取
 1. 新たに作成したストレージ アカウントに戻ります。  
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
-4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者 (プレビュー)]** を選択します。 
+4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者]** を選択します。 
 5. 次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** を選択します。  
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を **[すべてのリソース グループ]** に設定します。  
 7. **[選択]** で、VM を選択し、**[保存]** をクリックします。

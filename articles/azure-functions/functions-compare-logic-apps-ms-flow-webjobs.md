@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: de83cc80d64fb1862f1fdec32b704d0948ef9fc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ea99c7fe9bc7fd8d6e4e26baa0afe45505949098
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820520"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895649"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
 
@@ -84,7 +84,7 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 
 |  | Functions | WebJobs と WebJobs SDK |
 | --- | --- | --- |
-|[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケール](functions-scale.md#how-the-consumption-plan-works)|✔||
+|[サーバーレスのアプリ モデル](https://azure.microsoft.com/solutions/serverless/)と[自動スケール](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[ブラウザーでの開発とテスト](functions-create-first-azure-function.md) |✔||
 |[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps との統合](functions-twitter-email.md)|✔||
@@ -128,6 +128,6 @@ Microsoft Flow、Logic Apps、および Functions の統合は、今後ますま
 
 初めてのフロー、ロジック アプリ、関数アプリを実際に作ってみましょう。 以下のいずれかのリンクを選択してください。
 
-* [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)
-* [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* [Microsoft Flow を使ってみる](https://flow.microsoft.com/en-us/documentation/getting-started/)
+* [ロジック アプリを作成します](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [初めての Azure 関数を作成する](functions-create-first-azure-function.md)

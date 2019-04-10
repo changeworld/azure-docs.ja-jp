@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158110"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903648"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Azure portal を使用して Data Box Disk を管理する
 
@@ -55,7 +55,7 @@ Data Box Disk の管理は、Azure portal から行うことができます。 �
 
 複製は数分で作成され、ポータルに新しい注文が反映されます。
 
-[![注文の複製 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![C注文の複製 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>注文の削除
 

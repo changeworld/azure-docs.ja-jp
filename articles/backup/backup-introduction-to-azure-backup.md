@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994427"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621653"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -37,7 +37,11 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 **無制限のデータ転送** - 転送する受信データまたは送信データ量に制限がありません。 転送データに対して料金は発生しません。 ただし、Azure Import/Export サービスを使用して大量のデータをインポートする場合は、受信データに対してコストがかかります。 このコストの詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。 送信データとは、復元操作中に Recovery Services コンテナーから転送されるデータを指します。
 
-**データの暗号化** - データの暗号化によって、パブリック クラウドでデータを安全に送信および保存できます。 暗号化パスフレーズはローカルに保存されます。転送されたり Azure に保存されたりすることはありません。 データを復元する必要がある場合、暗号化パスフレーズ (キー) を持っているのはご本人のみです。
+**データ暗号化**:
+- オンプレミスでは、転送中のデータは、オンプレミスのマシン上で AES256 を使用して暗号化されます。 送信されるデータは、ストレージとバックアップの間で HTTPS によって保護されます。 バックアップとユーザー マシンの間で送信されるデータは、iSCSI プロトコルによってセキュリティで保護されます。 iSCSI チャネルの保護には、セキュリティで保護されたトンネリングが使用されます。
+- オンプレミスから Azure へのバックアップでは、Azure 上のデータは、ユーザーがバックアップを設定するときに指定したパスフレーズを使用して暗号化されて保存されます。 この暗号化パスフレーズまたはキーは、転送されたり Azure に保存されたりすることはありません。 データを復元する必要がある場合、暗号化パスフレーズ (キー) を持っているのはご本人のみです。
+- Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化されて保存されます。 Backup では、データを保存する前に自動的に暗号化します。 Azure Storage では、取得前にデータを暗号化解除します。
+- Backup では、Azure Disk Encryption (ADE) を使用して暗号化された Azure VM もサポートされます。 [詳細情報](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)。
 
 **アプリケーション整合性バックアップ** - アプリケーション整合性バックアップは、復旧ポイントがバックアップ コピーを復元するために必要なすべてのデータを持っていることを意味します。 Azure Backup は、アプリケーション整合性バックアップを提供することで、追加の修正なしでデータを復元できるようにします。 アプリケーション整合性データの復元により復元時間が短縮され、迅速に実行状態に戻ることができます。
 
@@ -84,9 +88,9 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 **コンポーネント** | **Linux (Azure での動作保証済み)**
 --- | ---
 Azure Backup (MARS) エージェント | なし (Windows ベースのエージェントのみ)
-System Center DPM | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMWare Linux Guest VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません
+System Center DPM | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMware Linux ゲスト VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません
 Azure Backup Server | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません
-Azure IaaS VM のバックアップ | [事前スクリプトおよび事後スクリプト フレームワーク](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ<br/><br/> [ファイルレベルの回復](backup-azure-restore-files-from-vm.md)<br/><br/> [復元されたディスクからの VM の作成](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [復旧ポイントからの VM の作成](backup-azure-arm-restore-vms.md#create-new-create-a-vm)。
+Azure IaaS VM のバックアップ | [事前スクリプトおよび事後スクリプト フレームワーク](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ<br/><br/> [ファイルレベルの回復](backup-azure-restore-files-from-vm.md)<br/><br/> [復元されたディスクからの VM の作成](backup-azure-arm-restore-vms.md#restore-disks)<br/><br/> [復旧ポイントからの VM の作成](backup-azure-arm-restore-vms.md#create-a-vm)。
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッドステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage と他のディスクの種類について詳しくは、[ディスクの種類の選択](../virtual-machines/windows/disks-types.md)に関する記事をご覧ください。

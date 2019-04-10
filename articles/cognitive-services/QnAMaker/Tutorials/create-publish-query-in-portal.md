@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121419"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884127"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>チュートリアル: QnA Maker ポータルでナレッジ ベースを作成して質問に回答する
 
@@ -66,7 +66,7 @@ ms.locfileid: "58121419"
     |設定名|設定値|目的|
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |その URL にある FAQ のコンテンツは、質問の後に回答が続く形式になっています。 QnA Maker は、この形式を解釈して、質問とそれに関連付けられた回答を抽出することができます。|
-    |ファイル |"_このチュートリアルでは使用しません_"|これにより、質問と回答に関するファイルがアップロードされます。 |
+    |ファイル |_このチュートリアルでは使用しません_|これにより、質問と回答に関するファイルがアップロードされます。 |
     |[Chit-chat]\(おしゃべり\) の性格|The friend (フレンド)|これにより、一般的な質問と回答には親しみやすくカジュアルな性格が指定されます。 これらの質問と回答は後で編集することができます。 |
 
     ![ナレッジ ベースの作成プロセスの手順 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -105,7 +105,7 @@ KB が発行されると、エンドポイントが表示されます。
 
     ![Curl コマンド](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. **[Curl]** タブのテキストをコピーし、Curl 対応のターミナルまたはコマンド ラインで実行します。 Authorization ヘッダーの値には、末尾にスペースが追加されたテキスト「`Endpoint `」の後にキーが含まれています。
+1. **[Curl]** タブのテキストをコピーし、Curl 対応のターミナルまたはコマンド ラインで実行します。 Authorization ヘッダーの値には、末尾にスペースが追加されたテキスト「`Endpoint`」の後にキーが含まれています。
 
 1. `<Your question>` を `How large can my KB be?` で置き換え これは、`How large a knowledge base can I create?` という質問に近いですが、まったく同じではありません。 QnA Maker によって自然言語処理が適用され、2 つの質問は同じであると判断されます。     
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: eff79b31e926d382d98416b585ca2af54b3e87d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a7713576565ca2632d7d91857040ece4d02c411b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872644"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520838"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>クイック スタート:Node.js を使用してテキストを音声に変換する
 
@@ -82,7 +82,7 @@ function getAccessToken(subscriptionKey) {
 
 ここでは、Text to Speech API への要求を作成し、音声応答を保存します。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `uri` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
 
-次に、要求に必要なヘッダーを追加する必要があります。 必ず `User-Agent` を (Azure portal にある) ご使用のリソースの名前に更新し、`X-Microsoft-OutputFormat` を、優先するオーディオ出力に設定してください。 出力形式の全一覧については、[オーディオ出力](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs)に関するセクションを参照してください。
+次に、要求に必要なヘッダーを追加する必要があります。 必ず `User-Agent` を (Azure portal にある) ご使用のリソースの名前に更新し、`X-Microsoft-OutputFormat` を、優先するオーディオ出力に設定してください。 出力形式の全一覧については、[オーディオ出力](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)に関するセクションを参照してください。
 
 次に、音声合成マークアップ言語 (SSML) を使用して要求本文を構成します。 このサンプルでは、その構造を定義し、先ほど作成した `text` 入力を使用しています。
 
@@ -187,6 +187,6 @@ node tts.js
 
 ## <a name="see-also"></a>関連項目
 
-* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)
 * [カスタム音声を作成するための音声サンプルを録音する](record-custom-voice-samples.md)

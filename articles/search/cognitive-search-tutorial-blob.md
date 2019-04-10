@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f60b9002f939cbf4c3a0ecfb78b358598713ea1c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259620"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881632"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services APIs を呼び出す (プレビュー)
 
@@ -129,9 +129,6 @@ api-key: [admin key]
   ![Portal の [データ ソース] タイル](./media/cognitive-search-tutorial-blob/data-source-tile.png "Portal の [データ ソース] タイル")
 
 403 または 404 エラーが発生した場合は、要求の構造を確認してください。`api-version=2017-11-11-Preview` はエンドポイント上にある必要があり、`api-key` は `Content-Type` の後のヘッダーにある必要があり、その値は Search サービスに対して有効である必要があります。 このチュートリアルでは、残りの手順でこのヘッダーを再利用できます。
-
-> [!TIP]
-> 多くの作業を実行する前に、ここで、プレビュー機能を提供するサポートされている場所 (米国中南部または西ヨーロッパ) のいずれかで検索サービスが実行されていることを確認することをお勧めします。
 
 ## <a name="create-a-skillset"></a>スキルセットを作成する
 

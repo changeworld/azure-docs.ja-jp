@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b9f153aa2da32fac2bf2e64f9fc4cd469acb0b89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007501"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892179"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
@@ -45,9 +45,9 @@ ACR Tasks では、いずれかの基本イメージ内で OS またはアプリ
 
 まだ完了していない場合は、続行する前に最初の 2 つのチュートリアルを完了してください。
 
-[Azure Container Registry Tasks を使用してクラウド内のコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)
+[Azure Container Registry タスクを使用してクラウド内のコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)
 
-[Azure Container Registry Tasks を使用してコンテナー イメージ ビルドを自動化する](container-registry-tutorial-build-task.md)
+[Azure Container Registry タスクを使用してコンテナー イメージ ビルドを自動化する](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>環境の構成
 
@@ -79,7 +79,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 以降のセクションでは、タスクを作成し、基本イメージ Docker ファイルで値 `NODE_VERSION` を更新してから、ACR Tasks を使用して基本イメージをビルドします。 ACR タスクによって新しい基本イメージがレジストリにプッシュされると、アプリケーション イメージのビルドが自動的にトリガーされます。 必要に応じて、アプリケーション コンテナー イメージをローカルで実行して、ビルドされたイメージの別のバージョンの文字列を表示します。
 
-このチュートリアルでは、ACR タスクによって、Dockerfile で指定された単一のコンテナー イメージが作成されプッシュされます。 ACR タスクは、[複数ステップ タスク](container-registry-tasks-multi-step.md) (現在プレビュー中) を実行することもできます。その場合は、YAML ファイルを使用して、複数のコンテナーを構築、プッシュ、およびテスト (オプション) するステップを定義します。
+このチュートリアルの ACR タスクでは、Dockerfile で指定されている単一のコンテナー イメージをビルドしてプッシュします。 ACR タスクでは、[複数ステップ タスク](container-registry-tasks-multi-step.md)を実行することもできます。その場合、YAML ファイルを使用して、複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義します。
 
 ## <a name="build-the-base-image"></a>基本イメージをビルドする
 
@@ -244,7 +244,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 このチュートリアルでは、イメージの基本イメージが更新されたときにコンテナー イメージ ビルドを自動的にトリガーするタスクを使用する方法を説明しました。 次に、コンテナー レジストリの認証について説明します。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry の 認証](container-registry-authentication.md)
+> [Azure Container Registry での認証](container-registry-authentication.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

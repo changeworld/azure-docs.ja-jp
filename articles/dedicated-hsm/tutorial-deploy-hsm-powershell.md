@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 6470a358fd3127c93e2e2248b42f79690f4e8b55
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449351"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904850"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -34,6 +34,9 @@ Azure Dedicated HSM サービスでは、完全な管理制御と完全な管理
 ![複数リージョン デプロイ](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
 このチュートリアルでは、既存の仮想ネットワーク (上の VNET 1 を参照) に対する、HSM のペアと必須の ExpressRoute ゲートウェイ (上の Subnet 1 を参照) の統合を中心に説明しています。  他のすべてのリソースは、標準の Azure リソースです。 同じ統合プロセスを、上の VNET 3 における Subnet 4 の HSM に使用できます。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,13 +59,13 @@ HSM のプロビジョニングと、ExpressRoute ゲートウェイを介した
 前述のように、プロビジョニング アクティビティでは、Dedicated HSM サービスがお客様のサブスクリプションに登録されている必要があります。 それを検証するには、Azure portal の Cloud Shell で次の PowerShell コマンドを実行します。 
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
+Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
 次のコマンドでは、Dedicated HSM サービスに必須のネットワーク機能を確認します。
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
 ```
 
 先に進む前に、両方のコマンドで "Registered" の状態が返される必要があります (以下を参照)。  このサービスへの登録が必要な場合は、お客様の Microsoft アカウント担当者にお問い合わせください。
@@ -130,20 +133,20 @@ HSM デバイスは、お客様の仮想ネットワークにプロビジョニ�
 新しい HSM リソースを作成する前に、前提条件となるいくつかのリソースが揃っていることを確認する必要があります。 コンピューティング、HSM、およびゲートウェイのためのサブネット範囲が含まれた仮想ネットワークが必要です。 以下のコマンドは、このような仮想ネットワークを作成するコマンドの例です。
 
 ```powershell
-$compute = New-AzureRmVirtualNetworkSubnetConfig `
+$compute = New-AzVirtualNetworkSubnetConfig `
   -Name compute `
   -AddressPrefix 10.2.0.0/24
 ```
 
 ```powershell
-$delegation = New-AzureRmDelegation `
+$delegation = New-AzDelegation `
   -Name "myDelegation" `
   -ServiceName "Microsoft.HardwareSecurityModules/dedicatedHSMs"
 
 ```
 
 ```powershell
-$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+$hsmsubnet = New-AzVirtualNetworkSubnetConfig ` 
   -Name hsmsubnet ` 
   -AddressPrefix 10.2.1.0/24 ` 
   -Delegation $delegation 
@@ -152,7 +155,7 @@ $hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-$gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
+$gwsubnet= New-AzVirtualNetworkSubnetConfig `
   -Name GatewaySubnet `
   -AddressPrefix 10.2.255.0/26
 
@@ -160,7 +163,7 @@ $gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-New-AzureRmVirtualNetwork `
+New-AzVirtualNetwork `
   -Name myHSM-vnet `
   -ResourceGroupName myRG `
   -Location westus `
@@ -176,7 +179,7 @@ New-AzureRmVirtualNetwork `
 
 ```powershell
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName myRG `
+New-AzResourceGroupDeployment -ResourceGroupName myRG `
      -TemplateFile .\Deploy-2HSM-toVNET-Template.json `
      -TemplateParameterFile .\Deploy-2HSM-toVNET-Params.json `
      -Name HSMdeploy -Verbose
@@ -195,10 +198,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName myRG `
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG"
 $resourceName = "HSM1"  
-Get-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
 
 ```
 
@@ -218,7 +221,7 @@ Linux VM へのログオン後、ポータルでリソース <prefix>hsm_vnic �
 
 ```powershell
 
-(Get-AzureRmResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
+(Get-AzResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
 
 ```
 IP アドレスを取得したら、次のコマンドを実行します。
@@ -262,10 +265,10 @@ HSM デバイスだけでの作業を完了したら、それをリソースと�
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG" 
 $resourceName = "HSMdeploy"  
-Remove-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
+Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
 
 ```
 
@@ -277,4 +280,4 @@ Remove-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourc
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [監視](monitoring.md)
-* [サポート可能性](supportability.md)
+* [サポート](supportability.md)

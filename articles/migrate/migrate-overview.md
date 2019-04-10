@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 04/03/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999973"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894971"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -37,7 +37,7 @@ Azure Migrate によって次のことが可能になります。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
 -  Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、他の Azure のターゲット場所について評価を作成できないという訳ではありません。
 
-    **地理的な場所** | **保存場所**
+    **[地理的な場所]** | **保存先**
     --- | ---
     Azure Government | 米国政府バージニア州
     アジア | 東南アジアまたは東アジア
@@ -67,9 +67,9 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 **快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 既定の快適性設定は 1.3x です。
 **VM シリーズ** | サイズ見積もりに使用する VM シリーズ。 たとえば、Azure で A シリーズ VM に移行する予定がない運用環境がある場合は、リストまたはシリーズから A シリーズを除外することができます。 サイズ変更は、選択したシリーズに基づいてのみ実行されます。   
 **通貨** | 請求通貨です。 既定値は、米ドルです。
-**割引率 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引です。 既定の設定は 0% です。
+**割引 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引です。 既定の設定は 0% です。
 **VM のアップタイム** | VM が Azure 上で 24 時間 365 日稼働するわけではない場合は、Azure 上で稼働する期間 (1 か月あたりの日数と １ 日あたりの時間数) を指定できます。それに応じてコストの見積もりが行われます。 既定値は、1 か月あたり 31 日、1 日あたり 24 時間です。
-**Azure オファー** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate はそれに応じてコストを見積もります。
+**Azure プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate はそれに応じてコストを見積もります。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用してコストの割引を受ける資格があるかどうか。
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate のしくみ
@@ -103,6 +103,12 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 
 - **Azure Site Recovery**:Azure Site Recovery を使用して Azure に移行することができます。 そのためには、ストレージ アカウントや仮想ネットワークなど、必要な [Azure コンポーネントを準備](../site-recovery/tutorial-prepare-azure.md)します。 オンプレミスで、[VMware 環境を準備](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md)します。 すべての準備が整ったら、Azure へのレプリケーションを設定して有効にし、VM を移行します。 [詳細情報](../site-recovery/vmware-azure-tutorial.md)。
 - **Azure Database Migration**:オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、[Azure Database Migration Service](../dms/dms-overview.md) を使用して Azure に移行することができます。
+
+## <a name="want-to-learn-more-from-community-experts"></a>コミュニティのエキスパートからの詳細情報
+[Azure Migrate MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureMigrate&filter=alltypes&sort=lastpostdesc)または [Stack Overflow](https://stackoverflow.com/search?q=azure+migrate) にアクセスしてください
+
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。  
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成してください。 サポート リクエストに高度な技術的ガイダンスが必要な場合は、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)を参照してください     
 
 
 ## <a name="next-steps"></a>次の手順

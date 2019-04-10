@@ -1,6 +1,6 @@
 ---
 title: PowerShell サンプル - 復元 - バックアップ - Azure SQL データベース | Microsoft Docs
-description: geo 冗長バックアップから単一の Azure SQL データベースを復元する Azure PowerShell サンプル スクリプト
+description: 単一の Azure SQL データベースを自動バックアップから以前の時点に復元する Azure PowerShell サンプル スクリプト
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 3bfefa704fdd819b3841dcc58866c310353bfdc3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/27/2019
+ms.openlocfilehash: f58cc930ace2dc1fc65aa0494fd6c1510ee5ff29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883612"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621347"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-single-database-from-backups"></a>PowerShell を使用してバックアップから単一の Azure SQL データベースを復元する
+# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>PowerShell を使用して単一の Azure SQL データベースを以前の時点に復元します
 
-この PowerShell サンプル スクリプトは、geo 冗長バックアップから Azure SQL Database を復元し、削除された Azure SQL Database を最新のバックアップに復元し、Azure SQL データベースを特定の時点に復元します。  
+この PowerShell スクリプトの例では、Azure SQL データベースを特定の時点に復元します。  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

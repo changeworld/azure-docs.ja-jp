@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 879636b9db2d7c2c48c7a4a194b43985785d2623
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780288"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878264"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -34,15 +34,15 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-   ![ポリシーを検索する](../media/create-and-manage/search-policy.png)
+   ![[すべてのサービス] で [ポリシー] を検索する](../media/create-and-manage/search-policy.png)
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
 
-   ![割り当ての選択](../media/create-and-manage/select-assignments.png)
+   ![ポリシーの概要ページで [割り当て] を選択する](../media/create-and-manage/select-assignments.png)
 
 1. **[ポリシー - 割り当て]** ページの上部で **[ポリシーの割り当て]** を選択します。
 
-   ![ポリシー定義を割り当てる](../media/create-and-manage/select-assign-policy.png)
+   ![[割り当て] ページでポリシー定義を割り当てる](../media/create-and-manage/select-assign-policy.png)
 
 1. **[ポリシーの割り当て]** ページで、**[スコープ]** を選択します。その際、省略記号をクリックし、管理グループまたはサブスクリプションを選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。  次に、**[スコープ]** ページの下部にある **[選択]** をクリックします。
 
@@ -54,7 +54,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 1. **[SQL Server バージョン 12.0 を必須とする]** を選択します。 すぐに見つからない場合は、検索ボックスに「**SQL Server を必須とする**」と入力し、Enter キーを押すか、検索ボックスの外側をクリックします。 ポリシー定義を見つけて選択したら、**[使用可能な定義]** ページの下部にある **[選択]** をクリックします。
 
-   ![ポリシーを選択する](../media/create-and-manage/select-available-definition.png)
+   ![検索フィルターを使用してポリシーを見つける](../media/create-and-manage/select-available-definition.png)
 
 1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、"*SQL Server バージョン 12.0 を必須とする*" のままにしておきます。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。  **[割り当て担当者]** は、ログイン ユーザーに基づいて自動的に入力されます。 このフィールドは任意です。カスタム値を入力できます。
 
@@ -68,7 +68,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** を選択します。
 
-   ![[Authoring]\(作成\) の [Definition]\(定義\)](../media/create-and-manage/definition-under-authoring.png)
+   ![[作成] グループの [定義] ページ](../media/create-and-manage/definition-under-authoring.png)
 
 1. ページの上部にある **[+ ポリシー定義]** を選択します。 このボタンをクリックすると **[ポリシー定義]** ページが開きます。
 
@@ -120,7 +120,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 ポリシー定義用の REST API を使用して、ポリシーを作成できます。 REST API を使用すると、ポリシー定義の作成と削除、既存の定義に関する情報の取得を実行できます。 ポリシー定義を作成するには、次の例を使用します。
 
-```http-interactive
+```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 ```
 
@@ -158,7 +158,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 ## <a name="create-a-policy-definition-with-powershell"></a>PowerShell を使用したポリシー定義の作成
 
-PowerShell の例に進む前に、Azure PowerShell の最新バージョンがインストール済みであることを確認してください。 ポリシーのパラメーターは、バージョン 3.6.0 で追加されました。 以前のバージョンがインストールされていると、パラメーターが見つからないことを示すエラーが返されます。
+PowerShell の例に進む前に、Azure PowerShell Az モジュールの最新バージョンがインストール済みであることを確認してください。 
 
 `New-AzPolicyDefinition` コマンドレットを使用してポリシー定義を作成することができます。
 
@@ -328,11 +328,11 @@ az policy definition list
 
 1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** を選択します。
 
-   ![定義を選択する](../media/create-and-manage/definition-under-authoring.png)
+   ![[定義] ページで定義を選択する](../media/create-and-manage/definition-under-authoring.png)
 
 1. ページの上部にある **[+ イニシアティブ定義]** を選択して **[イニシアティブ定義]** ページを開きます。
 
-   ![イニシアチブ定義](../media/create-and-manage/initiative-definition.png)
+   ![イニシアティブ定義のページを確認する](../media/create-and-manage/initiative-definition.png)
 
 1. **[定義の場所]** の省略記号を使用して、管理グループと、定義を格納するサブスクリプションを選択します。 前のページのスコープが 1 つの管理グループまたはサブスクリプションであった場合、**[定義の場所]** は自動的に設定されます。
 
@@ -352,11 +352,11 @@ az policy definition list
 
    一覧からポリシー定義を選択すると、そのポリシー定義が **[ポリシーとパラメーター]** に追加されます。
 
-   ![イニシアチブ定義](../media/create-and-manage/initiative-definition-2.png)
+   ![イニシアティブ定義のパラメーターを確認する](../media/create-and-manage/initiative-definition-2.png)
 
-1. イニシアチブに追加されているポリシー定義にパラメーターがある場合、ポリシー名の **[ポリシーとパラメーター]** 領域に表示されます。 _値_ は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、_[値]_ の右に表示されるドロップダウンで値を入力するか選択することができます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
+1. イニシアチブに追加されているポリシー定義にパラメーターがある場合、ポリシー名の **[ポリシーとパラメーター]** 領域に表示されます。 _値_は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、_[値]_ の右に表示されるドロップダウンで値を入力するか選択することができます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
 
-   ![イニシアチブの定義パラメーター](../media/create-and-manage/initiative-definition-3.png)
+   ![イニシアティブ定義のパラメーターを、許可されている値から変更する](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
    > 一部の `strongType` パラメーターでは、値の一覧を自動的に決定することができません。 このような場合、パラメーター行の右側に省略記号が表示されます。 それをクリックすると、[パラメーターのスコープ (&lt;パラメーター名&gt;)] ページが開きます。 このページで、値のオプションの指定に使用するサブスクリプションを選択します。 このパラメーターの範囲は、イニシアチブ定義の作成時にのみ使用され、ポリシーの評価またはイニシアチブ (割り当てられる場合) の範囲には影響しません。
@@ -369,11 +369,11 @@ az policy definition list
 
 1. 前に作成した**セキュリティ保護**イニシアティブ定義を見つけてクリックします。 ページの上部にある **[割り当て]** を選択して **[セキュリティ保護: イニシアティブの割り当て]** ページを開きます。
 
-   ![定義を割り当てる](../media/create-and-manage/assign-definition.png)
+   ![イニシアティブ定義のページで定義を割り当てる](../media/create-and-manage/assign-definition.png)
 
    また、選択した行を右クリックするか、行の末尾にある省略記号を左クリックして、コンテキスト メニューを表示することもできます。  次に、**[割り当て]** を選択します。
 
-   ![行を右クリックする](../media/create-and-manage/select-right-click.png)
+   ![イニシアティブの別のオプション](../media/create-and-manage/select-right-click.png)
 
 1. **[セキュリティ保護: イニシアティブの割り当て]** ページに、次のサンプル情報を入力します。 独自の情報を使用することもできます。
 
@@ -393,11 +393,11 @@ az policy definition list
 
 1. **セキュリティ保護**イニシアティブを探します。 おそらくまだ _[コンプライアンスの状態]_ は **[未開始]** です。 割り当ての進行状況の詳細情報を取得するには、イニシアティブをクリックします。
 
-   ![コンプライアンス - 未開始](../media/create-and-manage/compliance-status-not-started.png)
+   ![イニシアティブのコンプライアンスのページ - 評価は未開始](../media/create-and-manage/compliance-status-not-started.png)
 
 1. イニシアティブの割り当てが完了すると、コンプライアンス ページが更新されて、_[コンプライアンスの状態]_ は **[準拠している]** になります。
 
-   ![コンプライアンス - 準拠している](../media/create-and-manage/compliance-status-compliant.png)
+   ![イニシアティブのコンプライアンスのページ - リソースは準拠している](../media/create-and-manage/compliance-status-compliant.png)
 
 1. イニシアティブ コンプライアンス ページの任意のポリシーをクリックすると、ポリシーのコンプライアンス詳細ページが開きます。 このページでは、コンプライアンスのリソース レベルの詳細が提供されます。
 
@@ -426,7 +426,7 @@ az policy definition list
 
 1. **[除外]** の省略記号をクリックし、除外するリソース グループ (この例では、*SQLServers_Excluded*) を選択して除外を設定します。
 
-   ![除外を要求する](../media/create-and-manage/request-exclusion.png)
+   ![ポリシー割り当てに除外するリソース グループを追加する](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > ポリシーとその効果に応じて、割り当てのスコープ内のリソース グループ内の特定のリソースを除外することもできます。 このチュートリアルでは **[拒否]** 効果が使用されていたため、既に存在する特定のリソースに除外を設定するのは意味がありません。

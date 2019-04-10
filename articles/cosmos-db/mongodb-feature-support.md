@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 795002d450505b9103f1815a8b03c8d546bddde8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 168b5cdf4f65992bad886352921e9aaff6d5b09c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119464"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885789"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB 用 API: サポートされる機能と構文
 
@@ -214,22 +214,22 @@ Cosmos DB では、パブリック プレビューで集計パイプラインが
 
 operator | 例 |
 --- | --- |
-$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |
-$gt | ``` { "Elevation": { $gt: 4000 } } ``` |
-$gte | ``` { "Elevation": { $gte: 4392 } } ``` |
-$lt | ``` { "Elevation": { $lt: 5000 } } ``` |
-$lte | ``` { "Elevation": { $lte: 5000 } } ``` |
-$ne | ``` { "Elevation": { $ne: 1 } } ``` |
-$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |
-$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` |
-$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
-$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
-$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|
-$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |
-$exists | ``` { "Status": { $exists: true } } ```|
-$type | ``` { "Status": { $type: "string" } } ```|
-$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |
-$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|
+$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
+$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
+$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
+$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
+$lte | `{ "Elevation": { $lte: 5000 } }` | | -
+$ne | `{ "Elevation": { $ne: 1 } }` |  | -
+$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
+$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
+$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
+$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
+$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
+$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
+$exists | `{ "Status": { $exists: true } }`|  | -
+$type | `{ "Status": { $type: "string" } }`|  | -
+$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
+$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 
 ### <a name="notes"></a>メモ
 
@@ -338,6 +338,6 @@ Cosmos DB では、自動のサーバー側シャーディングがサポート�
 
 - Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
 - Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](mongodb-robomongo.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API が使用されている MongoDB の[サンプル](mongodb-samples.md)を調べます。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。
 
-<sup>注:この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。Azure Cosmos DB は MongoDB, Inc. には所属していません。</sup>
+<sup>注:この記事では、MongoDB データベースとのワイヤ プロトコルの互換性を提供する Azure Cosmos DB の機能について説明します。 Microsoft は、このサービスを提供するための MongoDB データベースの運営は行いません。 Azure Cosmos DB は MongoDB, Inc. とは提携していません。</sup>

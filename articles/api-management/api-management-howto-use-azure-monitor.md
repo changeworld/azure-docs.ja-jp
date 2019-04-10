@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517948"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622197"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -77,21 +77,28 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
 アラートを構成するには、以下の手順に従います。
 
-1. ページの下部にあるメニュー バーの **[アラート (クラシック)]** を選択します。
+1. ページの下部にあるメニュー バーの **[アラート]** を選択します。
 
-    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. **[メトリック アラートの追加]** を選択します。
-3. このアラートの**名前**を入力します。
-4. 監視するメトリックとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
-5. **[所有者、共同作成者、閲覧者に電子メールを送信]** を選択します。
-6. **[OK]** をクリックします。
-7. API キーなしで、Conference API を呼び出してみます。 この API Management サービスの所有者として、電子メール アラートを受信します。 
+2. このアラートに対して **[新しいアラート ルール]** をクリックします。
+3. **[条件の追加]** をクリックします。
+4. [シグナルの種類] ドロップダウンの **[メトリック]** を選択します。
+5. 監視するシグナルとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
 
-    > [!TIP]
-    > アラート ルールは、トリガーされたときに webhook または Azure Logic App を呼び出すこともできます。
+    ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-    ![アラートのセットアップ](./media/api-management-azure-monitor/set-up-alert.png)
+6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、**[完了]** をクリックします。
+
+    ![alerts](./media/api-management-azure-monitor/threshold.png)
+
+7. 既存のアクション グループを選択するか、新しいアクション グループを作成します。 次の例では、メールが管理者に送信されます。 
+
+    ![alerts](./media/api-management-azure-monitor/action-details.png)
+
+8. 名前、アラート ルールの説明を入力し、重大度を選択します。 
+9. **[アラート ルールの作成]** を押します。
+10. ここで、API キーなしで、Conference API を呼び出してみます。 アラートがトリガーされ、メールが管理者に送信されます。 
 
 ## <a name="activity-logs"></a>アクティビティ ログ
 
@@ -184,7 +191,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | correlationId | 文字列 | API Management によって割り当てられる一意の http 要求識別子 |
 | location | 文字列 | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
 | httpStatusCodeCategory | 文字列 | HTTP 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
-| resourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> の ID |
+| resourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/\<サブスクリプション>/RESOURCEGROUPS/\<リソース グループ>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<名前> の ID |
 | properties | オブジェクト | 現在の要求のプロパティ |
 | method | 文字列 | 受信要求の HTTP メソッド |
 | url | 文字列 | 受信要求の URL |

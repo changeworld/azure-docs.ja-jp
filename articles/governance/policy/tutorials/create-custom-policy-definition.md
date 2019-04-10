@@ -8,12 +8,12 @@ ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112089"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802272"
 ---
 # <a name="create-a-custom-policy-definition"></a>カスタム ポリシー定義の作成
 
@@ -72,7 +72,7 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 プロパティを見つける最も簡単な方法は、同じ種類の既存リソースを確認することです。 適用する設定を使用して既に構成されているリソースには、比較対象の値もあります。
 その特定のリソースについて、Azure portal の (**[設定]** にある) **[Automation スクリプト]** ページを確認します。
 
-![[Automation スクリプト] ページ](../media/create-custom-policy-definition/automation-script.png)
+![既存のリソースのテンプレート ページをエクスポートする](../media/create-custom-policy-definition/automation-script.png)
 
 これにより、ストレージ アカウントの場合、次の例のようなテンプレートが表示されます。
 

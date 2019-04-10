@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312244"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756528"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、テキスト コンテンツの用語ベースのフィルター処理と分類を実行する方法を学習します。
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 次のコードを **Main** メソッドに追加します。 **ScreenText** メソッドは必須の操作です。 そのパラメーターには、実行するコンテンツ モデレーション操作を指定します。 この例では、次の操作を実行するようにメソッドを構成しています。
 - テキスト内の潜在的な冒涜的表現を検出する。
 - テキストを正規化し、入力ミスを自動修正する。
-- 米国および英国の電話番号、電子メール アドレス、米国の住所など、個人を特定できる情報 (PII) を検出します。
+- 米国および英国の電話番号、メール アドレス、米国の住所など、個人データを検出します。
 - 機械学習ベースのモデルを使用して、3 つのカテゴリにテキストを分類する。
 
 これらの操作の詳細については、「[次の手順](#next-steps)」セクションのリンク先を参照してください。

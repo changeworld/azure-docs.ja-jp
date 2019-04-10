@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4eaaff859811e4d97cbd4f73231d702285792064
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d99a3d23959cfdd9bd068fbde3a882eb1bc9b4ae
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285447"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847301"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -55,7 +55,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 - SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
 - SQL Server を稼働している VM では、Azure パブリック IP アドレスにアクセスするためにインターネット接続を必要とします。
-- SQL Server Always On **フェールオーバー クラスター インスタンス (FCI)** はサポートされていません。
+- SQL Server **フェールオーバー クラスター インスタンス (FCI)** と SQL Server Always on フェールオーバー クラスター インスタンスはサポートされません。
 - ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。
 - スタンドアロンの SQL Server インスタンスまたは SQL Always On 可用性グループをバックアップするために複数のバックアップ ソリューションを使用すると、バックアップに失敗する可能性があるため、そうしないようにしてください。
 - また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。 Azure Backup では、コンテナーと同じリージョン内にあるすべてのノードを検出および保護できます。 お使いの SQL Server Always On 可用性グループが複数の Azure リージョンにまたがっている場合は、プライマリ ノードのあるリージョンからのバックアップを設定します。 Azure Backup では、バックアップ設定に従って、可用性グループ内のすべてのデータベースを検出および保護できます。  

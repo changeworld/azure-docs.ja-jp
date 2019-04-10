@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53efe44f17f174073ea5ed39f94c9dc8078a9779
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206771"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879966"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>クイック スタート:iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -112,13 +112,13 @@ iOS のリダイレクト URI の形式は次のとおりです。
 
 1. QuickStart プロジェクトで、.plist ファイル `settings.plist`を開きます。
 1. Azure portal で入力した値が使用されるように、セクションの要素の値を置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
-    * `tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
-    * `clientId` は、ポータルからコピーしたアプリケーションのクライアント ID です。
-    * `redirectUri` は、ポータルに登録したリダイレクト URL です。
+    * `tenant` : Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
+    * `clientId` : ポータルからコピーしたアプリケーションのクライアント ID です。
+    * `redirectUri` : ポータルに登録したリダイレクト URL です。
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>手順 4:ADAL を使用して、Azure AD からトークンを取得する
 
-ADAL の背後にある基本的な原理として、アプリはアクセス トークンが必要になるたびに、completionBlock `+(void) getToken : ` を呼び出すだけで、残りの処理は ADAL で実行されます。
+ADAL の背後にある基本的な原理として、アプリはアクセス トークンが必要になるたびに、completionBlock `+(void) getToken :` を呼び出すだけで、残りの処理は ADAL で実行されます。
 
 1. `QuickStart` プロジェクトで、`GraphAPICaller.m` を開き、上部の近くにある `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` コメントを探します。
 

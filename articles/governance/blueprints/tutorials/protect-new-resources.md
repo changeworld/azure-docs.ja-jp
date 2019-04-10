@@ -4,16 +4,16 @@ description: Azure Blueprints のリソース ロックの読み取り専用と�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2018
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: e3a05329ea247dbf5baa23ae9b3d32f909c0d1bb
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57855765"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629230"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
 
@@ -81,7 +81,7 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "location": "[resourceGroups('RGtoLock').location]",
+           "location": "[resourceGroup().location]",
            "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
@@ -152,7 +152,7 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
      |成果物名|成果物の種類|パラメーター名|値|説明|
      |-|-|-|-|-|
-     |RGtoLock リソース グループ|リソース グループ|Name|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
+     |RGtoLock リソース グループ|リソース グループ|名前|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
      |RGtoLock リソース グループ|リソース グループ|Location|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
      |StorageAccount|Resource Manager テンプレート|storageAccountType (StorageAccount)|Standard_GRS|ストレージの SKU を選択します。 既定値は _Standard_LRS_ です。|
 
@@ -182,13 +182,15 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
    ブループリントの割り当てでは、デプロイされたリソース グループに対して[拒否割り当て](../../../role-based-access-control/deny-assignments.md)が作成され、_[読み取り専用]_ のブループリントのロック モードが適用されました。 拒否割り当てにより、_[ロール割り当て]_ タブに表示されている適切な権限を持つユーザーが特定のアクションを実行できなくなります。 拒否割り当ては "_すべてのプリンシパル_" に適用されます。
 
+   プリンシパルを拒否割り当てから除外する方法については、[ブループリント リソースのロック](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment)に関するページを参照してください。
+
 1. 拒否割り当てを選択し、左側の **[拒否されたアクセス許可]** ページを選択します。
 
    拒否割り当てでは、**\*** と **Action** 構成を使用してすべての操作を禁止しますが、**NotActions** を使用して **\*/read** を除外することで読み取りアクセスを許可します。
 
 1. Azure portal の階層リンクで、**[TestingBPLocks - アクセス制御 (IAM)]** を選択します。 次に、左側の **[概要]** ページを選択し、**[リソース グループの削除]** ボタンをクリックします。 「_TestingBPLocks_」という名前を入力して削除を確定し、ウィンドウの下部にある **[削除]** を選択します。
 
-   "**リソース グループ TestingBPLocks の削除に失敗しました**" というポータルの通知が表示されます。 このエラーは、アカウントにリソース グループを削除するアクセス許可はあるが、ブループリントの割り当てによってアクセスが拒否されたことを示しています。 ブループリントの割り当て時にブループリントのロック モードとして _[読み取り専用]_ を選択したことを思い出してください。 ブループリントのロックにより、アクセス許可を持つアカウントは (_所有者_ であっても) リソースを削除できなくなります。 詳細については、[ブループリント リソースのロック](../concepts/resource-locking.md)に関するページを参照してください。
+   "**リソース グループ TestingBPLocks の削除に失敗しました**" というポータルの通知が表示されます。 このエラーは、アカウントにリソース グループを削除するアクセス許可はあるが、ブループリントの割り当てによってアクセスが拒否されたことを示しています。 ブループリントの割り当て時にブループリントのロック モードとして _[読み取り専用]_ を選択したことを思い出してください。 ブループリントのロックにより、アクセス許可を持つアカウントは (_所有者_であっても) リソースを削除できなくなります。 詳細については、[ブループリント リソースのロック](../concepts/resource-locking.md)に関するページを参照してください。
 
 以上の手順により、デプロイされたリソースは、不必要な削除 (アクセス許可を持つアカウントが行った操作であっても) を禁止するブループリントのロックで保護されるようになりました。
 
@@ -221,9 +223,9 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する
-- [静的および動的パラメーター](../concepts/parameters.md)の使い方
-- [ブループリントのリソース ロック](../concepts/resource-locking.md)の使用方法を調べる
-- [ブループリントの優先順位](../concepts/sequencing-order.md)のカスタマイズを参照する
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
+- [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。
+- [ブループリントのリソース ロック](../concepts/resource-locking.md)の使用方法を調べる。
+- [ブループリントの優先順位](../concepts/sequencing-order.md)のカスタマイズを参照する。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

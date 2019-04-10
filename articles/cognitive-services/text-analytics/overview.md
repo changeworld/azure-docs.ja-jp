@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1e6aea792666447141e504f45a3ff55cb70f6261
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 59763b1146986b9920b87152101fd1dcdb00fece
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533240"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904765"
 ---
 # <a name="what-is-text-analytics-api"></a>Text Analytics API とは
 
@@ -77,7 +77,7 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 | 要求全体の最大サイズ | 1 MB |
 | 1 件の要求での最大ドキュメント数 | 1,000 ドキュメント |
 
-1 分あたりの呼び出し回数上限は 100 回です。 1 回の呼び出しで大量のドキュメントを送信できることにご注目ください (最大 1,000 ドキュメント)。
+レート制限は、毎秒 100 件/毎分 1,000 件です。 1 回の呼び出しで大量のドキュメントを送信できます (最大 1,000 ドキュメント)。
 
 ## <a name="unicode-encoding"></a>Unicode エンコーディング
 

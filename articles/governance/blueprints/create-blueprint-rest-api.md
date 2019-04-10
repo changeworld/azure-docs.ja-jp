@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06ee97cff08804093d3ee77ee11eca1b4e84bb0f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994862"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885963"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>REST API で Azure Blueprint を定義して割り当てる
 
@@ -40,10 +40,10 @@ Blueprints の仕様については、[Azure Blueprints REST API](/rest/api/blue
 
 REST API の呼び出しを行うためのツールがまだない場合は、PowerShell を使うことを検討してください。 Azure で認証を行うためのヘッダーのサンプルを次に示します。 認証ヘッダー (**ベアラー トークン**と呼ばれることもあります) を生成し、パラメーターまたは**要求本文**で接続する REST API の URI を提供します。
 
-```powershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -69,7 +69,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
-- `{subscriptionId}` - サブスクリプション ID で置き換えます
+- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
 
 > [!NOTE]
 > ブループリントはサブスクリプション レベルで作成することもできます。 例については、[サブスクリプションでのブループリントの作成例](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)を参照してください。
@@ -336,7 +336,7 @@ REST API を使用してブループリントを発行した後は、それを�
 
 - `{tenantId}` - 実際のテナント ID に置き換えます
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
-- `{subscriptionId}` - サブスクリプション ID で置き換えます
+- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
 
 1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの**所有者**ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 認可が異なる [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用しています。
 

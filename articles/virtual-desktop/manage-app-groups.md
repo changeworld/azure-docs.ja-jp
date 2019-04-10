@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401864"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578751"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューのアプリ グループを管理する
 
@@ -28,13 +28,13 @@ Windows Virtual Desktop プレビューの新しいホスト プール向けに�
 
 ## <a name="create-a-remoteapp-group"></a>RemoteApp グループを作成する
 
-1. 次の PowerShell コマンドレットを実行して、新しい空の RemoteApp グループを作成します。
+1. 次の PowerShell コマンドレットを実行して、新しい空の RemoteApp アプリ グループを作成します。
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. (省略可) アプリケーション グループが作成されたことを確認したければ、次のコマンドレットを実行すると、ホスト プールのすべてのアプリケーション グループが一覧表示されます。
+2. (省略可) アプリ グループが作成されたことを確認したければ、次のコマンドレットを実行すると、ホスト プールのすべてのアプリ グループが一覧表示されます。
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
@@ -45,17 +45,17 @@ Windows Virtual Desktop プレビューの新しいホスト プール向けに�
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-
-4. 次のコマンドレットを実行して、手順 1. で作成したアプリケーション グループに新しい RemoteApp を公開します。
+   
+4. 次のコマンドレットを実行して、appalias に基づくアプリケーションをインストールします。 appalias は、手順 3. の出力を実行すると利用できるようになります。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (省略可) 次のコマンドレットを実行して、appalias に基づくアプリケーションをインストールします。 appalias は、手順 3. の出力を実行すると利用できるようになります。
+5. (省略可) 次のコマンドレットを実行して、手順 1. で作成したアプリケーション グループに新しい RemoteApp を公開します。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -AppAlias <appalias>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
 6. アプリが公開されたことを確認するために、次のコマンドレットを実行します。

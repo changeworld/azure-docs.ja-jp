@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114112"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535214"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -28,7 +28,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 コンプライアンスの報告方法を説明する前に、コンプライアンス情報がいつ更新されるかと、評価サイクルをトリガーする頻度とイベントについて説明します。
 
 > [!WARNING]
-> コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳細については[こちら](../overview.md#rbac-permissions-in-azure-policy)をご覧ください)。
+> コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」をご覧ください)。
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -142,25 +142,11 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 
 ![ポリシー コンプライアンスのアクティビティ ログ](../media/getting-compliance-data/compliance-activitylog.png)
 
-### <a name="change-history-preview"></a>変更履歴 (プレビュー)
+### <a name="understand-non-compliance"></a>コンプライアンス違反の把握
 
-新しい**パブリック プレビュー**の一部として、過去 14 日間の変更履歴を非準拠リソースに対して利用できます。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、非準拠リソースの Resource Manager のプロパティが追加、削除、または変更されるとトリガーされます。
+<a name="change-history-preview"></a>
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
-
-1. **[概要]** ページまたは **[コンプライアンス]** ページで、"_準拠していない_" ポリシーを選択します。
-
-1. **[ポリシーへの準拠]** ページの **[リソース コンプライアンス]** タブで、"_準拠していない_" リソースを選択します。
-
-1. **[リソース コンプライアンス]** ページで **[Change History (preview)]\(変更履歴 (プレビュー)\)** タブを選択します。 検出された変更がある場合は、その一覧が表示されます。
-
-   ![ポリシー変更履歴 - タブ](../media/getting-compliance-data/change-history-tab.png)
-
-1. 検出された変更のいずれかを選択します。 準拠していないリソースの "_差分表示_" が、**[変更履歴]** ページに表示されます。
-
-   ![ポリシー変更履歴 - 差分表示](../media/getting-compliance-data/change-history-visual-diff.png)
-
-"_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更は、選択したポリシーに対してリソースが準拠しなくなった原因とは無関係である可能性があります。
+リソースが**コンプライアンスに違反している**と判断される場合、多くの理由が考えられます。 リソースの**コンプライアンス違反**の理由や、原因となった変更を特定する方法については、「[コンプライアンス違反の原因の特定](./determine-non-compliance.md)」をご覧ください。
 
 ## <a name="command-line"></a>コマンド ライン
 
@@ -430,7 +416,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた `AzureActivity` ソリューションを持つ [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Azure Data Explorer クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/collect-activity-logs.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
 ![Azure Monitor ログを使用したポリシーのコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
 

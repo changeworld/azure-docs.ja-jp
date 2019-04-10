@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 138bc0350e4eecac4639125dc3ae508ddbbd7d72
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234868"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893743"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
 
@@ -79,7 +79,7 @@ ms.locfileid: "56234868"
     using System.Data.Entity.SqlServer;
     ```
 
-1. `Team` クラスの定義を次のコード スニペットに置き換えます。このコード スニペットでは、更新された `Team` クラスの定義に加え、その他の Entity Framework の一部のヘルパー クラスの定義が含まれています。 このチュートリアルでは、Entity Framework によるコード ファースト アプローチを使用しています。 このアプローチにより、Entity Framework は、コードからデータベースを作成できます。 このチュートリアルで使用されている Entity Framework の Code First 手法の詳細については、「[新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542)」を参照してください。
+1. `Team` クラスの定義を次のコード スニペットに置き換えます。このコード スニペットでは、更新された `Team` クラスの定義に加え、その他の Entity Framework の一部のヘルパー クラスの定義が含まれています。 このチュートリアルでは、Entity Framework によるコード ファースト アプローチを使用しています。 このアプローチにより、Entity Framework は、コードからデータベースを作成できます。 このチュートリアルで使用されている Entity Framework の Code First 手法の詳細については、「[新しいデータベースの Code First](/ef/ef6/modeling/code-first/workflows/new-database)」を参照してください。
 
     ```csharp
     public class Team
@@ -672,9 +672,9 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
-   | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
+   | **サーバー管理者のログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
-   | **場所** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |
+   | **Location** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |
 
 1. **[ダッシュボードにピン留めする]** をクリックした後、**[作成]** をクリックして、新しいデータベースとサーバーを作成します。
 

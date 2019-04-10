@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065190"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884238"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "54065190"
 
 また、Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
 
 Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
@@ -46,8 +46,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    |----------|-------|-------------| 
    | **名前** | MyFirstLogicApp | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン | 
+   | **リソース グループ** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **Location** | 米国西部 | ロジック アプリの情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
@@ -72,8 +72,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------| 
    | **RSS フィードの URL** | ```http://feeds.reuters.com/reuters/topNews``` | 監視する RSS フィードのリンク | 
-   | **間隔** | 1 | チェックの間隔 (単位数) | 
-   | **頻度** | [分] | チェックの間隔に使う時間の単位  | 
+   | **interval** | 1 | チェックの間隔 (単位数) | 
+   | **頻度** | 分 | チェックの間隔に使う時間の単位  | 
    |||| 
 
    ロジック アプリのトリガーには、間隔と頻度の組み合わせでそのスケジュールを定義します。 
@@ -114,7 +114,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       **[動的なコンテンツの追加]** リストが表示されますが、ここでは無視してください。 
       いくつかの編集ボックスは、その内部をクリックすると、このリストが表示され、先行するステップから、ワークフローへの入力として追加できるパラメーターがすべて表示されます。 
 
-   2. **[件名]** ボックスに「```New RSS item: ```」と入力し、その後ろに空白スペースを追加します。
+   2. **[件名]** ボックスに「```New RSS item:```」と入力し、その後ろに空白スペースを追加します。
 
       ![電子メールの件名を入力する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  

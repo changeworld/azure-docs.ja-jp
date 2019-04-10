@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/29/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351458"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755903"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -44,38 +44,41 @@ Media Services を使うと、クラウドでさまざまなメディア ワー�
 * Azure Media Services を [Azure Cognitive Services APIs](https://docs.microsoft.com/azure/#pivot=products&panel=ai) と共に使用して、より広範な視聴者 (たとえば、聴覚障碍を持つ人や、別の言語で読みたい人など) に対応できるよう、ビデオに字幕とキャプションを追加します。
 * 瞬間的高負荷 (製品発表イベントの開始時など) を処理しやすくする大規模なスケーリングを Azure CDN が実現できるようにします。 
 
-## <a name="v3-capabilities"></a>v3 の機能
+## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法 
 
-v3 は、Azure Resource Manager 上に構築された管理と操作の両方の機能を公開する統一された API サーフェスに基づいています。 
+Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 
-このバージョンでは次の機能が提供されます。  
+開発を始める前に、[基本的な概念](concepts-overview.md)を確認してください。<br/>
 
-* メディア処理タスクまたは分析タスクの簡単なワークフローを定義するのに役立つ**変換**。 変換は、ビデオ ファイルとオーディオ ファイルを処理するためのレシピです。 変換にジョブを送信することで、変換を繰り返し適用して、コンテンツ ライブラリ内のすべてのファイルを処理できます。
-* ビデオを処理 (エンコードまたは分析) するための**ジョブ**。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って、ジョブで入力コンテンツを指定できます。 現時点では、AMS v3 には、HTTPS URL 経由でチャンク転送エンコード処理がサポートされていません。
-* ジョブの進行状況や状態、またはライブ イベントの開始/停止とエラー イベントを監視する**通知**。 通知は、Azure Event Grid の通知システムに統合されています。 Azure Media Services の複数のリソースでのイベントを簡単にサブスクライブすることができます。 
-* **Azure Resource Management** テンプレートを使って、変換、ストリーミング エンドポイント、ライブ イベントなどを作成して展開できます。
-* **ロールベースのアクセス制御**をリソース レベルで設定でき、変換やライブ イベントなどの特定のリソースへのアクセスをロックダウンできます。
-* 複数の言語 (.NET、.NET Core、Python、Go、Java、Node.js) での**クライアント SDK**。
+### <a name="quickstarts"></a>クイック スタート  
 
-## <a name="naming-conventions"></a>名前付け規則
+このクイック スタートでは、新しいお客様が Media Services を簡単に試すことができるよう、基礎について 1 日で説明します。
 
-Azure Media Services v3 のリソース名 (アセット、ジョブ、変換など) には、Azure Resource Manager の名前付け規則が適用されます。 Azure Resource Manager に従って、リソース名は常に一意となります。 そのため、リソース名には一意識別子の文字列 (GUID など) を使用できます。 
+* [動画ファイルのストリーム配信 - .NET](stream-files-dotnet-quickstart.md)
+* [動画ファイルのストリーム配信 - CLI](stream-files-cli-quickstart.md)
+* [動画ファイルのストリーム配信 - Node.js](stream-files-nodejs-quickstart.md)
+    
+### <a name="tutorials"></a>チュートリアル 
 
-Media Services リソース名には、"<",">"、"%"、"&"、":"、"&#92;"、"?"、"/"、"*"、"+"、"."、一重引用符などの制御文字を使用することができません。 それ以外の文字は使用できます。 リソース名の最大文字数は 260 文字です。 
+このチュートリアルでは、Media Services でよく行われるタスクについて、シナリオベースで手順を示します。
 
-Azure Resource Manager の名前付けの詳細については、[名前付けの要件](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)と[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。
+* [リモート ファイルのエンコードとビデオのストリーム配信 - REST](stream-files-tutorial-with-rest.md)
+* [アップロードされたファイルのエンコードとビデオのストリーム配信 - .NET](stream-files-tutorial-with-api.md)
+* [ライブ ストリーム配信 - .NET](stream-live-tutorial-with-api.md)
+* [ビデオの分析 - .NET](analyze-videos-tutorial-with-api.md)
+* [AES-128 動的暗号化 - .NET](protect-with-aes128.md)
+    
+### <a name="how-to-guides"></a>ハウツー ガイド
 
-## <a name="v3-api-design-principles"></a>v3 API の設計原則
+記事には、タスクの実行方法を紹介したコード サンプルが記載されています。 このセクションでは、多くの例を紹介しています。以下に挙げたのは、その一例です。
 
-v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API は、**Get** または **List** 操作でシークレットまたは資格情報を返しません。 キーは常に、null または空であるか、応答から削除されます。 シークレットまたは資格情報を取得するには、別のアクション メソッドを呼び出す必要があります。 別のアクションを使用すれば、シークレットが取得/表示される API もあればそうでない API もある場合に、異なる RBAC セキュリティ アクセス許可を設定できます。 RBAC を使用してアクセスを管理する方法の詳細については、[RBAC を使用したアクセスの管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)に関するページを参照してください。
-
-この例には以下のようなものがあります 
-
-* StreamingLocator の Get で ContentKey の値が返されない。 
-* ContentKeyPolicy の Get で制限キーが返されない。 
-* ジョブの HTTP 入力 URL の (署名を削除する) URL に含まれているクエリ文字列部分が返されない。
-
-[.NET を使用してコンテンツ キー ポリシーを取得する方法](get-content-key-policy-dotnet-howto.md)の例を参照してください。
+* [アカウントの作成 - CLI](create-account-cli-how-to.md)
+* [API へのアクセス - CLI](access-api-cli-how-to.md)
+* [SDK を使用した開発を始める](developers-guide.md)
+* [HTTPS をジョブの入力とするエンコード - .NET](job-input-from-http-how-to.md)  
+* [イベントの監視 - ポータル](monitor-events-portal-how-to.md)
+* [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 
+* [カスタム変換を使用してエンコードする方法 - CLI](custom-preset-cli-howto.md)
 
 ## <a name="next-steps"></a>次の手順
 

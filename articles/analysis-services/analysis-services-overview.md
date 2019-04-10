@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a908b00022351b9a91f9381229c773d063390744
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444159"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893131"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -144,6 +144,11 @@ DirectQuery モード* では、ストレージとクエリの実行でバック
 
 Azure Analysis Services の表形式モデルは、単純なテキスト ファイルから Azure Data Lake Store 内のビッグ データに至るまでの多種多様なデータ ソースをサポートします。 詳細については、「[Azure Analysis Services でサポートされるデータ ソース](analysis-services-datasource.md)」を参照してください。
 
+## <a name="compatibility-level"></a>互換性レベル
+
+互換性レベルとは、Analysis Services エンジンにおけるリリースに固有の動作を指します。 Azure Analysis Services は、互換性レベル 1200 以上の表形式モデルをサポートします。 詳細については、「[Analysis Services 表形式モデルの互換性レベル](analysis-services-compat-level.md)」を参照してください。
+
+
 ## <a name="your-data-is-secure"></a>データのセキュリティを確保
 
 Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 Azure サービスとして、Analysis Services は **Basic** レベルの分散型サービス拒否 (DDoS) 攻撃からの保護を提供します。これは、Azure プラットフォームの一部として自動的に有効にされます。 詳細については、「[Azure DDoS Protection Standard の概要](../virtual-network/ddos-protection-overview.md)」を参照してください。 
@@ -193,7 +198,7 @@ Azure のセキュリティについて詳しくは、[Microsoft セキュリテ
 
 ### <a name="visual-studio"></a>Visual Studio
 
-無料の [SQL Server Data Tools (SSDT) for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) を使用して、モデルを開発してデプロイします。 SSDT には、スピーディに開発を行うための Analysis Services プロジェクト テンプレートが用意されています。 現在、SSDT には、互換性レベル 1400 の表形式モデルに対応した最新の Get Data のデータ ソース クエリとマッシュアップ機能が含まれています。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 
+無料の [SQL Server Data Tools (SSDT) for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して、モデルを開発してデプロイします。 SSDT には、スピーディに開発を行うための Analysis Services プロジェクト テンプレートが用意されています。 現在、SSDT には、互換性レベル 1400 の表形式モデルに対応した最新の Get Data のデータ ソース クエリとマッシュアップ機能が含まれています。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 
 
 Visual Studio 2017 を使用している場合、インストール可能な無料の VSIX パッケージとして Microsoft Analysis Services プロジェクトが提供されます。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。
 
@@ -207,7 +212,7 @@ Visual Studio 2017 を使用している場合、インストール可能な無�
 
 ### <a name="object-model-and-scripting"></a>オブジェクト モデルとスクリプト
 
-表形式モデルは開発に要する時間が短く、高度なカスタマイズも可能です。 表形式モデルには、モデル オブジェクトを記述するための[表形式オブジェクト モデル](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) が含まれます。 TOM は、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) を通じて JSON 形式で公開され、[Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) 名前空間を通じて AMO データ定義言語で公開されています。 
+表形式モデルは開発に要する時間が短く、高度なカスタマイズも可能です。 表形式モデルには、モデル オブジェクトを記述するための[表形式オブジェクト モデル](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) が含まれます。 TOM は、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) を通じて JSON 形式で公開され、[Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) 名前空間を通じて AMO データ定義言語で公開されています。 
 
 ## <a name="supports-the-latest-client-tools"></a>最新のクライアント ツールをサポート
 
@@ -225,7 +230,7 @@ Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microso
 
 ここには、Azure Analysis Services 固有のドキュメントが含まれています。 記事を検索するには、ブラウザー画面の左側にある目次を使用します。 
 
-Azure Analysis Services の表形式モデルは、SQL Server Analysis Services の表形式モデルとほぼ同じなので、[SQL Server Analysis Services のドキュメント](https://docs.microsoft.com/sql/analysis-services/analysis-services)の概念、手順、開発、および参照に関する豊富な記事のライブラリを共有できます。 SQL Server Analysis Services ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。
+Azure Analysis Services の表形式モデルは、SQL Server Analysis Services の表形式モデルとほぼ同じなので、[SQL Server Analysis Services のドキュメント](https://docs.microsoft.com/sql/analysis-services/analysis-services)の概念、手順、開発、およびリファレンスに関する豊富な記事のライブラリを共有できます。 SQL Server Analysis Services ドキュメントの記事が Azure Analysis Services にも適用される場合は、記事のタイトルの下の [適用対象] バナーにその旨が表示されます。
 
 ![共有ドキュメント](./media/analysis-services-overview/aas-overview-applies-to.png)
 
@@ -250,10 +255,10 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure 無料アカウントにサインアップする](https://azure.microsoft.com/offers/ms-azr-0044p/)   
+> [無料の Azure 試用版にサインアップする](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート: サーバーの作成 - ポータル](analysis-services-create-server.md)   
+> [クイック スタート:サーバーの作成 - ポータル](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  
+> [クイック スタート:サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  

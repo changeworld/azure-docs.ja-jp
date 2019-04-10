@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: bd235193c5eee5587cfff6dac84c3378ecb44ce1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a5b6c22b3917784b20ad11bddf200d1546c48597
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246553"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882871"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール Az バージョン 0.7 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール Az バージョン 0.7 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -136,4 +136,4 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 シリーズの第 2 部では、指数による再試行と並行処理を使用して大量データをストレージ アカウントにアップロードします。
 
 > [!div class="nextstepaction"]
-> [ストレージ アカウントに大量のランダム ファイルを並行でアップロードする](storage-blob-scalable-app-upload-files.md)
+> [ストレージ アカウントに大量の大きなファイルを並列でアップロードする](storage-blob-scalable-app-upload-files.md)

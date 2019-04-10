@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226217"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882057"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
@@ -50,8 +50,8 @@ ms.locfileid: "58226217"
 - Azure SQL Database マネージド インスタンス
   - 次の記事に従います。[クイック スタート:Azure SQL Database マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)
 - マネージド インスタンスにアクセスでき、[マネージド インスタンスの Azure AD 管理者をプロビジョニング済み](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)であること。 詳細については、次を参照してください。
-    - [マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関するページ 
-    - [マネージド インスタンスの接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページ
+    - [マネージド インスタンスへのアプリケーションの接続に関するページ](sql-database-managed-instance-connect-app.md) 
+    - [マネージド インスタンスの接続アーキテクチャに関するページ](sql-database-managed-instance-connectivity-architecture.md)
     - [SQL による Azure Active Directory 認証の構成と管理](sql-database-aad-authentication-configure.md)
 
 ## <a name="limiting-access-to-your-managed-instance"></a>マネージド インスタンスへのアクセスの制限
@@ -69,7 +69,7 @@ ms.locfileid: "58226217"
 - [クイック スタート:オンプレミスからマネージド インスタンスへのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+> マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。 `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
 
 1. [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) を使用して、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` を使ってマネージド インスタンスにログインします。
 
@@ -446,7 +446,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 - [脅威の検出](sql-database-managed-instance-threat-detection.md) 
 - [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security) 
-- [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="managed-instance-capabilities"></a>マネージド インスタンスの機能
 

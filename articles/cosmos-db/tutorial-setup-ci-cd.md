@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: c8f7e3cd6a2b4b6105547d7a4429803a00f6999f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d6250b778cdaec47ccbe2f45d35adea0b676a20a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285515"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882013"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -130,7 +130,7 @@ namespace todo.Tests
 }
 ```
 
-Visual Studio Test タスクの [実行オプション] に移動します。 **[設定ファイル]** オプションで、**.runsettings** ファイルを使用して構成されたテストを指定します。 **[テスト実行パラメーターのオーバーライド]** オプションで、「` -endpoint $(CosmosDbEmulator.Endpoint)`」と入力します。 これを行うことで、**.runsettings** ファイルで定義されたエンドポイントではなく、エミュレーター ビルド タスクのエンドポイントを参照するよう、Test タスクが構成されます。  
+Visual Studio Test タスクの [実行オプション] に移動します。 **[設定ファイル]** オプションで、**.runsettings** ファイルを使用して構成されたテストを指定します。 **[テスト実行パラメーターのオーバーライド]** オプションで、「`-endpoint $(CosmosDbEmulator.Endpoint)`」と入力します。 これを行うことで、**.runsettings** ファイルで定義されたエンドポイントではなく、エミュレーター ビルド タスクのエンドポイントを参照するよう、Test タスクが構成されます。  
 
 ![エミュレーター ビルド タスクのエンドポイントを使ってエンドポイント変数をオーバーライドする](./media/tutorial-setup-ci-cd/addExtension_5.png)
 

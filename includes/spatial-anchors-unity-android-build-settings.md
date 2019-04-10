@@ -4,15 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 53f480b8858e2bbe7d4699d8637ecaa5ab0c08a3
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 33c932c36cd6de730d3768d596a214c442d74ae1
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305104"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632897"
 ---
-Unity で、`Unity` フォルダー内のプロジェクトを開きます。
-
 **[ファイル]** > **[ビルド設定]** を選択して、**[ビルド設定]** を開きます。
 
 **[プラットフォーム]** セクションで、**[Android]** を選択します。 **[ビルド システム]** を **[Gradle]** に変更し、**[プロジェクトのエクスポート]** を選択します。
@@ -25,4 +23,4 @@ Unity で、`Unity` フォルダー内のプロジェクトを開きます。
 
 ### <a name="download-and-import-the-arcore-sdk-for-unity"></a>Unity 用 ARCore SDK をダウンロードしてインポートする
 
-[Unity 用 ARCore SDK のリリース](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0)から `unitypackage` ファイルをダウンロードします。 Unity プロジェクトに戻り、**[資産]** > **[パッケージのインポート]** > **[カスタム パッケージ]** を選択した後、先ほどダウンロードした `unitypackage` ファイルを選択します。 **[Unity パッケージのインポート]** ダイアログ ボックスで、すべてのファイルが選択されていることを確認し、**[インポート]** を選択します。
+[Unity 用 ARCore SDK 1.5 リリース](https://github.com/google-ar/arcore-unity-sdk/releases/tag/v1.5.0)から `unitypackage` ファイルをダウンロードします。 Unity プロジェクトに戻り、**[資産]** > **[パッケージのインポート]** > **[カスタム パッケージ]** を選択した後、先ほどダウンロードした `unitypackage` ファイルを選択します。 **[Unity パッケージのインポート]** ダイアログ ボックスで、すべてのファイルが選択されていることを確認し、**[インポート]** を選択します。

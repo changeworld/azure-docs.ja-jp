@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: c29647e4ee312302b66535ba834edabb42e4cff7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0c48b85e48153eb70400fc6da4822271f49b7fbe
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550603"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630175"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>クイック スタート:REST API と PHP を使用して画像内の顔を検出する
 
@@ -24,7 +24,8 @@ ms.locfileid: "57550603"
 ## <a name="prerequisites"></a>前提条件
 
 - Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
-- コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
+- コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)。
+- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) パッケージ。
 
 ## <a name="initialize-the-html-file"></a>HTML ファイルを初期化する
 

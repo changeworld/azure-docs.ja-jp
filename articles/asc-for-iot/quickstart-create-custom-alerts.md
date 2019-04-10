@@ -1,30 +1,30 @@
 ---
-title: ASC for IoT プレビューのカスタム アラートの作成 | Microsoft Docs
-description: ASC for IoT のカスタム デバイス アラートを作成して割り当てます。
-services: ascforiot
+title: Azure Security Center for IoT プレビューのカスタム アラートの作成 | Microsoft Docs
+description: Azure Security Center for IoT のカスタム デバイス アラートを作成して割り当てます。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: d1757868-da3d-4453-803a-7e3a309c8ce8
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 591000f251d384b961569f9d7ca09ae93edea617
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d793b105e6d73c98739cd05d6e19a218413d7813
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541773"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861997"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 カスタムのセキュリティ グループおよびアラートを使用することで、エンドツーエンドのセキュリティ情報とカテゴリ別のデバイス知識を最大限に活用し、IoT ソリューション全体のセキュリティを確実に向上させます。 
@@ -33,7 +33,7 @@ ms.locfileid: "58541773"
 
 お客様の IoT デバイスについて最もよく知っているのはお客様自身です。
 
-予想されるデバイスの動作を完全に理解しているお客様のために、ASC for IoT には、その理解をデバイスの動作ポリシーに変換し、予想される通常の動作からの逸脱に基づいてアラートする機能があります。
+予想されるデバイスの動作を完全に理解しているお客様のために、Azure Security Center (ASC) for IoT には、その理解をデバイスの動作ポリシーに変換し、予想される通常の動作からの逸脱に基づいてアラートする機能があります。
 
 ## <a name="security-groups"></a>セキュリティ グループ
 
@@ -63,7 +63,7 @@ ms.locfileid: "58541773"
 
 次の表は、カスタマイズに使用できるアラートの概要を示します。
 
-| severity | Name                                                                                                    | [データ ソース] | 説明                                                                                                                                     |
+| severity | 名前                                                                                                    | [データ ソース] | 説明                                                                                                                                     |
 |----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 低      | カスタム アラート - AMQP プロトコルによるクラウドからデバイスへのメッセージの数が、許容範囲内にない          | IoT Hub     | ある時間枠内におけるクラウドからデバイスへのメッセージ (AMQP プロトコル) の量が、構成された許容範囲内にありません                                  |
 | 低      | カスタム アラート - AMQP プロトコルによる、拒否されたクラウドからデバイスへのメッセージの数が、許容範囲内にない | IoT Hub     | ある時間枠内においてデバイスによって拒否された、クラウドからデバイスへのメッセージ (AMQP プロトコル) の量が、構成された許容範囲内にありません |
@@ -90,4 +90,4 @@ ms.locfileid: "58541773"
 次の記事に進んで、セキュリティ エージェントのデプロイ方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [セキュリティ エージェントのデプロイ](select-deploy-agent.md)
+> [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)

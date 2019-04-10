@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203632"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919275"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -27,7 +27,7 @@ Visual Studio でお使いのアプリケーションをテストするには、
 
 テストを実行する準備が整ったら、Microsoft Azure Active Directory (Azure AD) アカウント (職場または学校のアカウント) または個人用の Microsoft アカウント (<span>live.</span>com または <span>outlook.</span>com) を使用してサインインします。
 
-![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Microsoft アカウントでサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -43,11 +43,11 @@ Visual Studio でお使いのアプリケーションをテストするには、
 
 コントローラー ビューを参照した後は、ユーザーの基本プロパティを示す次の表を確認する必要があります。
 
-|プロパティ |値 |[説明] |
+|プロパティ |値 |説明 |
 |---|---|---|
-|**Name** |ユーザーのフルネーム | ユーザーの姓と名。
+|**名前** |ユーザーのフルネーム | ユーザーの姓と名。
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されているユーザー名。
-|**[件名]** |Subject |Web でユーザーを一意に特定する文字列。|
+|**サブジェクト** |サブジェクト |Web でユーザーを一意に特定する文字列。|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**。|
 
 さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[Azure AD ID トークンにある要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)をご覧ください。
@@ -95,6 +95,6 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3: カスタム メソッドを使用して発行者を検証する
 
-**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、MSDN の [TokenValidationParameters クラス](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx)に関するページをご覧ください。
+**IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters クラス](/previous-versions/visualstudio/dn464192(v=vs.114))に関するページをご覧ください。
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Spatial Anchors を使用したセッションやデバイス間での共有 | Microsoft Docs
+title: チュートリアル - セッションやデバイス間での Azure Spatial Anchors の共有 | Microsoft Docs
 description: このチュートリアルでは、バックエンド サービスを使用して、Unity で Azure Spatial Anchors 識別子を Android/iOS デバイス間で共有する方法について説明します。
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff9868dd7347812eb6ef566288ec364bc89b6955
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901306"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629303"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用したセッションやデバイス間での共有
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間での Azure Spatial Anchors の共有
 
-このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用して次のことを行う方法を説明します。
-
-1. あるセッションでアンカーを作成した後、同じデバイスまたは異なるデバイス上で別のセッションにそれらを配置する。 たとえば、別の日に対して行う。
-2. 複数のデバイスが同時に同じ場所に配置できるアンカーを作成する。
+このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用してあるセッション中にアンカーを作成した後、同じデバイスまたは異なるデバイス上でそれらを探知する方法について学習します。 これらの同じアンカーは、同じ場所にある複数のデバイスが同時に探知することもできます。
 
 ![永続化](./media/persistence.gif)
 
@@ -51,10 +48,6 @@ Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプ�
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Unity でサンプル プロジェクトを開く
-
-[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
-
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
@@ -63,7 +56,7 @@ Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプ�
 
 このチュートリアルでは、ASP.NET Core Web アプリを Azure にデプロイした後、Unity アプリを構成してデプロイしました。 そのアプリで空間アンカーを作成し、ASP.NET Core Web アプリを使用して他のデバイスと共有しました。
 
-共有された空間アンカーを Azure Cosmos DB を使用して格納するように ASP.NET Core Web アプリを改良する方法の詳細を確認するには、次のチュートリアルに進んでください。
+共有された空間アンカー識別子を Azure Cosmos DB を使用して格納するように ASP.NET Core Web アプリを改良する方法の詳細を確認するには、次のチュートリアルに進んでください。 Azure Cosmos DB を使用すると、ASP.NET Core Web アプリを永続化できます。 これにより、アプリは、今日作成したアンカーを、Web アプリに保存されているアンカー識別子を使用して数日後に再度探知できるようになります。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Cosmos DB を使用したアンカーの格納](./tutorial-use-cosmos-db-to-store-anchors.md)

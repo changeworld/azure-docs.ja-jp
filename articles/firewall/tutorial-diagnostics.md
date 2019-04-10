@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958985"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877263"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル:Azure Firewall のログとメトリックを監視する
 
@@ -41,7 +41,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 この手順を完了して診断ログを有効にしてからデータがログに記録されるまでに数分かかることがあります。 最初に何も表示されない場合は、数分後にもう一度確認してください。
 
 1. Azure portal で、ファイアウォール リソース グループを開き、ファイアウォールをクリックします。
-2. **[監視]** の **[診断ログ]** をクリックします。
+2. **[監視]** の **[診断設定]** をクリックします。
 
    Azure Firewall の場合、サービスに固有の 2 種類のログを使用できます。
 

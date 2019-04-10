@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770903"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793483"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
 
@@ -50,13 +50,13 @@ ms.locfileid: "57770903"
 
    ![Connected Air Conditioner が表示されている Device Explorer のページ](media/tutorial-add-device/explorer.png)
 
-   **Device Explorer** には、**Connected Air Conditioner** デバイス テンプレートと、作成者がデバイス テンプレートを作成したときに自動的に作成されたシミュレートされたデバイスが表示されます。
+   **デバイス エクスプローラー**に、**Connected Air Conditioner** デバイス テンプレートとシミュレートされたデバイスが表示されます。 デバイス テンプレートを作成すると、IoT Central によってシミュレートされたデバイスが自動的に作成されます。
 
 2. コネクテッド空調機の実デバイスの接続を開始するには、**+** を選択してから **[Real]\(実デバイス\)** を選択します。
 
    ![コネクテッド空調機の新しい実デバイスの追加の開始](media/tutorial-add-device/newreal.png)
 
-3. デバイス ID (小文字のみ) を入力するか、推奨デバイス ID を使います。新しいデバイスの名前を入力して、**[作成]** を選択することもできます。
+3. デバイス ID (小文字のみ) を入力するか、推奨デバイス ID を使います。 新しいデバイスの名前を入力して、**[作成]** を選択することもできます。
 
    ![デバイス名の変更](media/tutorial-add-device/rename.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "57770903"
 
     ![同期状態が表示されている [設定]](media/tutorial-add-device/settingssyncing.png)
 
-2. 新しい実デバイス (コネクテッド空調機) の **[プロパティ]** ページには、そのデバイスの点検の場所と前回の点検日のプロパティがあります。どちらのプロパティも編集することができます。 シリアル番号フィールドとファームウェア バージョン フィールドは、デバイスがアプリケーションに接続されるまで空になります。 これらの値は読み取り専用です。デバイスから送信されるものであり、編集することはできません。
+2. 新しい実デバイスの **[プロパティ]** ページには、点検の場所と前回の点検日のプロパティがあります。どちらのプロパティも編集することができます。 シリアル番号フィールドとファームウェア バージョン フィールドは、デバイスがアプリケーションに接続されるまで空になります。 これらの読み取り専用の値はデバイスから送信されるものであり、編集することはできません。
 
     ![実デバイスのプロパティ](media/tutorial-add-device/setproperties1.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "57770903"
 
 ## <a name="generate-connection-string"></a>接続文字列の生成
 
-デバイス開発者は、実デバイスの "*接続文字列*" をデバイス上で実行されるコードに埋め込む必要があります。 接続文字列により、デバイスが Azure IoT Central アプリケーションに安全に接続できます。 接続文字列は、Node.js で記述されたクライアント コードを次の手順で準備する際に生成します。 Node.js アプリケーションは、コネクテッド空調機の実デバイスを表します。 
+デバイス開発者は、実デバイスの "*接続文字列*" をデバイス上で実行されるコードに埋め込む必要があります。 接続文字列により、デバイスがお使いのアプリケーションに安全に接続できます。 次の手順は、接続文字列を生成し、クライアントの Node.js コードを準備する方法を示しています。
 
 ## <a name="prepare-the-client-code"></a>クライアント コードの準備
 
@@ -88,7 +88,7 @@ ms.locfileid: "57770903"
 * **Set Temperature** 設定を使用するオペレーターに応答する。
 * Azure IoT Central アプリケーションからの Echo コマンドを処理する。
 
-「[次の手順](#next-steps)」セクションに示されている "ハウツー" 記事では、より完全なサンプルを提供し、他のプログラミング言語の使用方法を説明しています。 Azure IoT Central へのデバイスの接続方法の詳細については、[デバイス接続](concepts-connectivity.md)に関する記事を参照してください。
+「[次の手順](#next-steps)」セクションに示されている記事には、より完全なサンプルが含まれ、他のプログラミング言語が紹介されています。 Azure IoT Central へのデバイスの接続方法の詳細については、[デバイス接続](concepts-connectivity.md)に関する記事を参照してください。
 
 以下の手順は、[Node.js](https://nodejs.org/) サンプルを準備する方法を示しています。
 
@@ -116,7 +116,7 @@ ms.locfileid: "57770903"
 
    ![接続の詳細](media/tutorial-add-device/device-connect.png)
 
-1. コマンド ライン環境に戻り、次のコマンドを実行して接続文字列を生成します。
+1. コマンドライン環境に戻り、次のコマンドを実行して接続文字列を生成します。
 
     ```cmd/sh
     dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
@@ -163,7 +163,7 @@ ms.locfileid: "57770903"
 
 ## <a name="review-client-code"></a>クライアント コードのレビュー
 
-前のセクションでは、Azure IoT Central アプリケーションに接続するアプリケーションのスケルトン Node.js プロジェクトを作成しました。 このセクションでは、次の処理を行うコードを追加します。
+前のセクションでは、Azure IoT Central アプリケーションに接続するアプリケーションのスケルトン Node.js プロジェクトを作成しました。 次の手順では、次の処理を行うためのコードを追加します。
 
 * Azure IoT Central アプリケーションに接続する。
 * Azure IoT Central アプリケーションにテレメトリを送信する。
@@ -300,7 +300,8 @@ ms.locfileid: "57770903"
 
 ## <a name="configure-client-code"></a>クライアント コードの構成
 
-<!-- Add the connection string to the sample code, build, and run --> Azure IoT Central アプリケーションに接続するようにクライアント コードを構成するには、このチュートリアルの前の方でメモした実デバイスの接続文字列を追加する必要があります。
+<!-- Add the connection string to the sample code, build, and run -->
+Azure IoT Central アプリケーションに接続するようにクライアント コードを構成するには、このチュートリアルの前の方でメモした実デバイスの接続文字列を追加する必要があります。
 
 1. **ConnectedAirConditioner.js** ファイルで、次のコード行を見つけます。
 
@@ -365,10 +366,8 @@ ms.locfileid: "57770903"
 
 デバイス開発者は、以下の方法を学ぶことができます。
 
-* [DevKit を準備して接続する](howto-connect-devkit.md)
-* [Raspberry Pi を準備して接続する](howto-connect-raspberry-pi-python.md)
+* [DevKit デバイスを準備して接続する (C)](howto-connect-devkit.md)
+* [Raspberry Pi を準備して接続する (Python)](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi を準備して接続する (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Windows 10 IoT Core デバイスを準備して接続する (C#)](howto-connect-windowsiotcore.md)
 * [汎用の Node.js クライアント を Azure IoT Central アプリケーションに接続する](howto-connect-nodejs.md)
-* [コードをカスタマイズする][lnk-nodejs-device-ref]
-
-
-[lnk-nodejs-device-ref]: /javascript/api/azure-iot-device/?view=azure-iot-typescript-latest

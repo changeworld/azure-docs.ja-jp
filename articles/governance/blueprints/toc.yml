@@ -79,6 +79,8 @@ items:
   - name: ポータルからの既存の割り当ての更新
     displayName: lock, errors
     href: ./how-to/update-existing-assignments.md
+  - name: ブループリントをコードとして管理する (コミュニティ)
+    href: https://github.com/Azure/azure-blueprints/blob/master/README.md
   expanded: true
 - name: トラブルシューティング
   displayName: errors, violation
@@ -98,6 +100,8 @@ items:
   expanded: true
 - name: リソース
   items:
+  - name: GitHub - Azure Blueprints サンプル
+    href: https://github.com/Azure/azure-blueprints
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: 料金計算ツール
@@ -108,9 +112,9 @@ items:
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
   - name: Azure Friday - Azure Blueprints の概要
     href: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
-ms.openlocfilehash: 2055a6cf630d8894deb04b730a65f2e143d686a8
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: f55ec759cac8ace468bc4216a30aef765f9d213a
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498773"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358572"

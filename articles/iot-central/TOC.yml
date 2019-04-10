@@ -36,6 +36,8 @@ items:
   items:
   - name: デバイスの接続
     items:
+    - name: デバイス接続文字列の生成
+      href: howto-generate-connection-string.md
     - name: Node.js (汎用) アプリケーションを準備して接続する
       href: howto-connect-nodejs.md
     - name: MXChip IoT DevKit を準備して接続する
@@ -144,9 +146,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: サポートされているブラウザー
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 09145448edd42e03b77abde46a120ade1631d6bf
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 277b1ca0a239bddc02ca32d93ca1ffebbf542240
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520736"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425901"

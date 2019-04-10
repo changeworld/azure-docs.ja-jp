@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/18/2019
+ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 31bf2de7417a1be6139de3ec9dcc8d531df586d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090323"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649724"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -48,8 +48,8 @@ ms.locfileid: "58090323"
 
         ![クラスルーム ラボを作成する](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. **[Select virtual machine specifications]** \(仮想マシンの仕様の選択\) ページで、次の手順を実行します。
-    1. ラボで作成する仮想マシン (VM) の **[サイズ]** を選択します。 
-    3. ラボで VM の作成に使用する **VM イメージ**を選択します。 
+    1. ラボで作成する仮想マシン (VM) の **[サイズ]** を選択します。 現時点では、**[小]**、**[中]**、**[大]**、および **[GPU]** のサイズが許可されます。
+    3. ラボで VM の作成に使用する **VM イメージ**を選択します。 Linux イメージを選択した場合は、リモート デスクトップ接続を有効にするためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
     4. **[次へ]** を選択します。
 
         ![VM 仕様の指定](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -69,7 +69,7 @@ ms.locfileid: "58090323"
 
     ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. **[Configure template]\(テンプレートの構成\)** ページで、次の手順のようにします。これらの手順は、チュートリアルでは**省略可能**です。
-    1. **[接続]** を選択してテンプレート VM に接続します。 
+    1. **[接続]** を選択してテンプレート VM に接続します。 Linux のテンプレート VM の場合は、SSH と RDP のどちらを使用して接続するかを選択します (RDP が有効な場合)。
     2. テンプレート VM にソフトウェアをインストールして構成します。     
     3. テンプレートの**説明**を入力します。
 9. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
@@ -78,7 +78,7 @@ ms.locfileid: "58090323"
 
         > [!WARNING]
         > 一度発行すると、再発行することはできません。 
-    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](how-to-create-manage-template.md#publish-the-template-vm)」セクションを参照してください。
+    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが終了した後に、テンプレート VM を発行することができます。 ウィザード終了後の構成および発行方法の詳細については、[クラスルーム ラボの管理方法](how-to-manage-classroom-labs.md)に関する記事の[テンプレートの発行](how-to-create-manage-template.md#publish-the-template-vm)に関するセクションを参照してください。
 
         ![テンプレートを発行する](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. テンプレートの**発行に関する進行状況**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
@@ -109,14 +109,19 @@ ms.locfileid: "58090323"
 
 
 ## <a name="send-an-email-with-the-registration-link"></a>登録リンクが記載された電子メールを送信する
+
 1. このページ上で、まだ **[ユーザー]** ビューが表示されていない場合は、[ユーザー] ビューに切り替えます。 
-2. 一覧で特定のユーザーまたはすべてのユーザーを選択します。 特定のユーザーを選択するには、一覧の最初の列のチェック ボックスを選択します。 すべてのユーザーを選択するには、最初の列のタイトル (**[名前]**) の前にあるチェック ボックスを選択するか、一覧ですべてのユーザーのすべてのチェック ボックスを選択します。
-3. ツールバーで **[招待状の送信]** を選択します。 一覧で、学生の名前の上にマウス ポインターを置き、電子メール送信アイコンを選択することもできます。 
+2. 一覧で特定のユーザーまたはすべてのユーザーを選択します。 特定のユーザーを選択するには、一覧の最初の列のチェック ボックスを選択します。 すべてのユーザーを選択するには、最初の列のタイトル (**[名前]**) の前にあるチェック ボックスを選択するか、一覧ですべてのユーザーのすべてのチェック ボックスを選択します。 この一覧で、**招待状態**の状態を確認できます。  次の図では、すべての学生の招待状態が **[Invitation not sent]\(招待未送信\)** に設定されています。 
+
+    ![学生の選択](../media/tutorial-setup-classroom-lab/select-students.png)
+1. いずれかの行の**メール アイコン (封筒)** を選択するか、ツール バーの **[招待状の送信]** を選択します。 メール アイコンは、一覧内の学生の名前の上にマウス ポインターを置いたときにも表示されます。 
 
     ![登録リンクを電子メールで送信する](../media/tutorial-setup-classroom-lab/send-email.png)
 4. **[登録リンクを電子メールで送信する]** ページで、次の手順に従います。 
     1. 学生に送信する**オプション メッセージ**を入力します。 電子メールには、登録リンクが自動的に含まれます。 
-    2. **[登録リンクを電子メールで送信する]** ページで、 **[送信]** を選択します。 
+    2. **[登録リンクを電子メールで送信する]** ページで、 **[送信]** を選択します。 招待の状態が **[招待状を送信しています]** に変わり、次に **[招待を送信しました]** に変わります。 
+        
+        ![招待が送信された状態](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラスルーム ラボを作成し、ラボを構成しました。 学生が登録リンクを使ってラボの VM にアクセスする方法を学習するには、次のチュートリアルに進んでください。

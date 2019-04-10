@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8453c93b4e48a076d8efbe1d438d15d8131fc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864407"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>チュートリアル:Azure Active Directory と GoodPractice Toolkit の統合
 
@@ -105,7 +105,7 @@ GoodPractice Toolkit で Azure AD シングル サインオンを構成するに
 
     ![[GoodPractice Toolkit のドメインと URL] のシングル サインオン情報](common/sp-intiated.png)
 
-    **[サインオン URL]** ボックスに、`https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId> ` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、`https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>` のパターンを使用して URL を入力します。
 
     > [!Note]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[GoodPractice Toolkit クライアント サポート チーム](mailto:support@goodpractice.com)に問い合わせてください。
@@ -146,7 +146,7 @@ GoodPractice Toolkit で Azure AD シングル サインオンを構成するに
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

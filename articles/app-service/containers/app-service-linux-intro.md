@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 161b2054d690a2e609085852aa7caf2f02366f69
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215661"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793443"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -73,7 +73,7 @@ Azure Portal では、Web App for Containers で現在使用できる機能の�
 
 App Service on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。  
 
-また、現在の制限に基づき、Windows アプリと Linux アプリを同じリソース グループに混在させないでください。
+現在の制限に基づき、Windows アプリと Linux アプリを同じリソース グループに混在させることはできません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: b8b5c2cef1db5018ce0d61e1950f49a3bd215ac2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402900"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801681"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューでテナントを作成する
 
@@ -30,6 +30,8 @@ Windows Virtual Desktop プレビューでのテナントの作成は、デス�
 * Windows Virtual Desktop ユーザー用の [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) テナント ID。
 * Azure Active Directory テナント内のグローバル管理者アカウント。
    * これは、クラウド ソリューション プロバイダー (CSP) 組織がその顧客に Windows Virtual Desktop テナントを作成する場合にも当てはまります。 CSP 組織の場合は、顧客の Azure Active Directory のグローバル管理者としてサインインできる必要があります。
+   * 管理者アカウントは、Windows Virtual Desktop テナントを作成する Azure Active Directory テナントから提供する必要があります。 このプロセスは、Azure Active Directory B2B (ゲスト) アカウントをサポートしません。
+   * 管理者アカウントは、職場または学校アカウントである必要があります。
 * Azure サブスクリプション ID
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Azure Active Directory のアクセス許可を Windows Virtual Desktop プレビュー サービスに付与する
@@ -75,7 +77,7 @@ Azure Active Directory に対してクエリを実行するアクセス許可を
 次のコマンドレットと共に TenantCreator ユーザー アカウントを使用して、Windows Virtual Desktop にサインインします。
 
 ```powershell
-Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 その後、Azure Active Directory テナントに関連付けられた新しい Windows Virtual Desktop テナントを作成します。

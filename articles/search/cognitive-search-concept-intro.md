@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58133061"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882500"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 
@@ -38,7 +38,7 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 
 ## <a name="components-of-cognitive-search"></a>コグニティブ検索のコンポーネント
 
-コグニティブ検索は、[こちらのリージョン](#where-do-i-start)でサポートされている [Azure Search](search-what-is-azure-search.md) のプレビュー機能です。 
+コグニティブ検索は、[Azure Search](search-what-is-azure-search.md) のプレビュー機能です。
 
 コグニティブ検索パイプラインは、データ ソースをクロールし、エンドツーエンドのインデックス処理を提供する、[Azure Search *インデクサー*](search-indexer-overview.md)を使用します。 インデクサーに接続されたスキルは、ユーザーが定義したスキルセットに従ってドキュメントをインターセプトし、エンリッチメントします。 インデックスが作成されると、[Azure Search でサポートされているすべての種類のクエリ](search-query-overview.md)から検索を要求してコンテンツにアクセスできます。  インデクサーを使い慣れていない場合は、このセクションで手順を示します。
 
@@ -92,7 +92,7 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 
 ## <a name="where-do-i-start"></a>どこから始めるか
 
-**手順 1:[Azure Search リソースの作成](search-create-service-portal.md)** 
+**手順 1:[Azure Search リソースを作成する](search-create-service-portal.md)** 
 
 **手順 2:クイック スタートや例を試して実際に体験する**
 
@@ -100,18 +100,18 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 + [チュートリアル (HTTP 要求)](cognitive-search-tutorial-blob.md)
 + [カスタム スキルの例 (C#)](cognitive-search-create-custom-skill-example.md)
 
-**手順 3:API の確認 (REST のみ)**
+**手順 3:API を確認する (REST のみ)**
 
 現時点では、REST API のみが提供されています。 すべての要求で `api-version=2017-11-11-Preview` を使用します。 次の API を使用して、コグニティブ検索ソリューションを構築します。 コグニティブ検索用に追加または拡張された API は 2 つのみです。 その他の API では、一般的に使用可能なバージョンと同じ構文です。
 
 | REST API | 説明 |
 |-----|-------------|
 | [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | エンリッチメントされたドキュメントを作成するために使用されるソース データを提供する外部データ ソースを識別するリソースです。  |
-| [スキルセットの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | エンリッチメント パイプラインでインデックス作成時に使用される[定義済みのスキル](cognitive-search-predefined-skills.md)と[カスタム認知スキル](cognitive-search-custom-skill-interface.md)の使用を調整するリソース。 |
+| [スキルセットを作成する (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | エンリッチメント パイプラインでインデックス作成時に使用される[定義済みのスキル](cognitive-search-predefined-skills.md)と[カスタム認知スキル](cognitive-search-custom-skill-interface.md)の使用を調整するリソース。 |
 | [インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Azure Search インデックスを表すスキーマです。 ソース データ内のフィールドやエンリッチメント フェーズで作成されたフィールドにマッピングされるインデックス内のフィールド (たとえば、エンティティ認識によって作成された組織名のためのフィールド)。 |
 | [インデクサーの作成 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | データ ソース、スキルセット、ソースからのフィールドの関連付け、ターゲット インデックスまでの中間データ構造、およびインデックス自体などの、インデックス作成時に使用されるコンポーネントを定義するリソースです。 インデクサーを実行すると、データの取り込みやエンリッチメントがトリガーされます。 出力は、インデックス スキーマを基に作成され、ソース データが入力され、スキルセットでエンリッチメントされた検索コーパスです。  |
 
-**チェックリスト:一般的なワークフロー**
+**チェック リスト: 一般的なワークフロー**
 
 1. 代表的なサンプルに Azure ソース データをサブセット化します。 インデックスの作成には時間がかかるため、代表的な少量のデータ セットから始め、ソリューションの成熟度に応じて段階的に構築します。
 

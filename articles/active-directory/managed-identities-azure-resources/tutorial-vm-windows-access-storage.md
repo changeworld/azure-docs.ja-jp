@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dacf58760d353eea3c552a9113589259148f3558
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1bb1370b2d828aaddae61c32a663bd032b18e7b1
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447906"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801895"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
 
@@ -76,7 +76,7 @@ VM のシステム割り当てマネージド ID を使用して、Azure Storage
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します。
-4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者 (プレビュー)]** を選択します。
+4. **[ロール]** で、ドロップダウンから **[ストレージ BLOB データ閲覧者]** を選択します。
 5. 次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** を選択します。
 6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を **[すべてのリソース グループ]** に設定します。
 7. **[選択]** で、VM を選択し、**[保存]** をクリックします。

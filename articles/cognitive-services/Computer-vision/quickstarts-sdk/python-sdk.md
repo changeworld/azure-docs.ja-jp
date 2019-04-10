@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: pafarley
-ms.openlocfilehash: 23db6f889e2ca4266b7e3566c18cf9a85d4062a8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 16844f60f03e2bf488450797f43915462df08064
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517557"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904918"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Python 用の Azure Cognitive Services Computer Vision SDK
 
-Computer Vision サービスを使用すると、開発者は、イメージを処理して情報を返すための高度なアルゴリズムにアクセスできます。 Computer Vision のアルゴリズムでは、ユーザーが関心を寄せた視覚的特徴に応じて、さまざまな方法で画像のコンテンツを分析します。 
+Computer Vision サービスを使用すると、開発者は、イメージを処理して情報を返すための高度なアルゴリズムにアクセスできます。 Computer Vision のアルゴリズムでは、ユーザーが関心を寄せた視覚的特徴に応じて、さまざまな方法で画像のコンテンツを分析します。
 
 * [イメージを分析する](#analyze-an-image)
 * [主題の領域の一覧を取得する](#get-subject-domain-list)
@@ -38,23 +38,23 @@ Computer Vision サービスを使用すると、開発者は、イメージを�
 ## <a name="prerequisites"></a>前提条件
 
 * [Python 3.6 以降][python]
-* 無料の [Computer Vision キー][computervision_resource]とそれに関連付けられたリージョン。 [ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトのインスタンスを作成するときに、これらの値が必要となります。 次のいずれかの方法を使用してこれらの値を取得してください。 
+* 無料の [Computer Vision キー][computervision_resource]とそれに関連付けられたエンドポイント。 [ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトのインスタンスを作成するときに、これらの値が必要となります。 次のいずれかの方法を使用してこれらの値を取得してください。
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Azure のサブスクリプションをお持ちでない場合
 
-Computer Vision サービスの**[試用][computervision_resource]** エクスペリエンスで 7 日間有効な無料のキーを作成してください。 キーが作成されたら、キーとリージョン名をコピーします。 この情報は、[クライアントを作成](#create-client)する際に必要となります。
+Computer Vision サービスの**[試用][computervision_resource]** エクスペリエンスで 7 日間有効な無料のキーを作成してください。 キーが作成されたら、キーとエンドポイント名をコピーします。 この情報は、[クライアントを作成](#create-client)する際に必要となります。
 
 キーの作成後は、次の情報を記録しておいてください。
 
-* キー値: 32 文字の文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 形式) 
-* キーのリージョン: エンドポイントの URLのサブドメイン (https://**westcentralus**.api.cognitive.microsoft.com)
+* キー値: 次の形式の 32 文字の文字列:  `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+* キーのエンドポイント: ベース エンドポイント URL: https://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Azure サブスクリプションをお持ちの場合
 
-以下の [Azure CLI][azure_cli] コマンドを使用して、ご利用のサブスクリプションにリソースを作成するのが最も簡単です。 これで、多くのコグニティブ サービスで使用できる Cognitive Service キーが作成されます。 "_既存_" のリソース グループ名 ("my-cogserv-group" など) と新しい Computer Vision リソース名 ("my-computer-vision-resource" など) を選択する必要があります。 
+以下の [Azure CLI][azure_cli] コマンドを使用して、ご利用のサブスクリプションにリソースを作成するのが最も簡単です。 これで、多くのコグニティブ サービスで使用できる Cognitive Service キーが作成されます。 "_既存_" のリソース グループ名 ("my-cogserv-group" など) と新しい Computer Vision リソース名 ("my-computer-vision-resource" など) を選択する必要があります。
 
 ```Bash
-RES_REGION=westeurope 
+RES_REGION=westeurope
 RES_GROUP=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 
@@ -92,31 +92,31 @@ pip install azure-cognitiveservices-vision-computervision
 
 ## <a name="authentication"></a>Authentication
 
-Computer Vision リソースを作成した後は、クライアント オブジェクトをインスタンス化するために、その**リージョン**とその**アカウント キー**の 1 つが必要になります。
+Computer Vision リソースを作成した後は、クライアント オブジェクトをインスタンス化するために、その**エンドポイント**とその**アカウント キー**の 1 つが必要になります。
 
-[ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトのインスタンスを作成するときに、これらの値を使用します。 
+[ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトのインスタンスを作成するときに、これらの値を使用します。
 
 たとえば、Bash ターミナルを使用して環境変数を設定します。
 
 ```Bash
-ACCOUNT_REGION=<resourcegroup-name>
+ACCOUNT_ENDPOINT=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 ```
 
-### <a name="for-azure-subscription-users-get-credentials-for-key-and-region"></a>Azure サブスクリプション ユーザーの場合は、キーとリージョンの資格情報を取得します。
+### <a name="for-azure-subscription-users-get-credentials-for-key-and-endpoint"></a>Azure サブスクリプション ユーザーのために、キーとエンドポイントの資格情報を取得する
 
-リージョンとキーを覚えていない場合は、次のメソッドで見つけることができます。 キーとリージョンを作成する必要がある場合、[Azure サブスクリプション所有者](#if-you-have-an-azure-subscription)または [Azure サブスクリプションのないユーザー](#if-you-dont-have-an-azure-subscription)にこのメソッドを使用できます。
+エンドポイントとキーを覚えていない場合は、次のメソッドで見つけることができます。 キーとエンドポイントを作成する必要がある場合、[Azure サブスクリプション所有者](#if-you-have-an-azure-subscription)または [Azure サブスクリプションのないユーザー](#if-you-dont-have-an-azure-subscription)にこのメソッドを使用できます。
 
-次の [Azure CLI][cloud_shell] スニペットを使用して、2 つの環境変数に Computer Vision アカウントの**リージョン**とその**アカウント キー**の 1 つを設定します (これらの値は、[Azure portal][azure_portal] 内で見つけることもできます)。 このスニペットは Bash シェル用にフォーマットされています。
+次の [Azure CLI][cloud_shell] スニペットを使用して、2 つの環境変数に Computer Vision アカウントの**エンドポイント**とその**アカウント キー**の 1 つを設定します (これらの値は、[Azure portal][azure_portal] 内で見つけることもできます)。 このスニペットは Bash シェル用にフォーマットされています。
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 
-export ACCOUNT_REGION=$(az cognitiveservices account show \
+export ACCOUNT_ENDPOINT=$(az cognitiveservices account show \
     --resource-group $RES_GROUP \
     --name $ACCT_NAME \
-    --query location \
+    --query endpoint \
     --output tsv)
 
 export ACCOUNT_KEY=$(az cognitiveservices account keys list \
@@ -129,28 +129,28 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
 
 ### <a name="create-client"></a>クライアントの作成
 
-環境変数からリージョンとキーを取得してから、[ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトを作成します。  
+環境変数からエンドポイントとキーを取得してから、[ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトを作成します。
 
 ```Python
-from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-# Get region and key from environment variables
+# Get endpoint and key from environment variables
 import os
-region = os.environ['ACCOUNT_REGION']
+endpoint = os.environ['ACCOUNT_ENDPOINT']
 key = os.environ['ACCOUNT_KEY']
 
 # Set credentials
 credentials = CognitiveServicesCredentials(key)
 
 # Create client
-client = ComputerVisionAPI(region, credentials)
+client = ComputerVisionClient(endpoint, credentials)
 ```
 
 ## <a name="examples"></a>例
 
-以降のタスクはいずれも、事前に [ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトが必要となります。
+以降のタスクはいずれも、使用するには [ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトが必要となります。
 
 ### <a name="analyze-an-image"></a>イメージを分析する
 
@@ -178,7 +178,7 @@ for x in models.models_property:
 
 ### <a name="analyze-an-image-by-domain"></a>領域別に画像を分析する
 
-[`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain] を使用して、主題の領域別に画像を分析できます。 正しい領域名を使用するために、[サポートされている主題の領域の一覧](#get-subject-domain-list)を取得します。  
+[`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain] を使用して、主題の領域別に画像を分析できます。 正しい領域名を使用するために、[サポートされている主題の領域の一覧](#get-subject-domain-list)を取得します。
 
 ```Python
 # type of prediction
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>画像からテキストを取得する
 
-画像から手書きのテキストや印刷されたテキストを取得できます。 これには、SDK に対する 2 つの呼び出し ([`recognize_text`][ref_computervisionclient_recognize_text] と [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]) が必要です。 recognize_text の呼び出しは非同期です。 get_text_operation_result 呼び出しの結果では、テキスト データを抽出する前に、[`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] を使用して、最初の呼び出しが完了しているかどうかを確認する必要があります。 結果には、テキストと、テキストの境界ボックスの座標が含まれます。 
+画像から手書きのテキストや印刷されたテキストを取得できます。 これには、SDK に対する 2 つの呼び出し ([`recognize_text`][ref_computervisionclient_recognize_text] と [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]) が必要です。 recognize_text の呼び出しは非同期です。 get_text_operation_result 呼び出しの結果では、テキスト データを抽出する前に、[`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] を使用して、最初の呼び出しが完了しているかどうかを確認する必要があります。 結果には、テキストと、テキストの境界ボックスの座標が含まれます。
 
 ```Python
 # import models
@@ -238,13 +238,14 @@ idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
 # SDK call
-while result.status in ['NotStarted', 'Running']:
-    time.sleep(1)
+while True:
     result = client.get_text_operation_result(operationId)
+    if result.status not in ['NotStarted', 'Running']:
+        break
+    time.sleep(1)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
-
     for line in result.recognition_result.lines:
         print(line.text)
         print(line.bounding_box)
@@ -252,13 +253,13 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 ### <a name="generate-thumbnail"></a>サムネイルを生成する
 
-[`generate_thumbnail`][ref_computervisionclient_generate_thumbnail] を使用して、画像のサムネイル (JPG) を生成できます。 サムネイルは、縦横比が元の画像と同じである必要はありません。 
+[`generate_thumbnail`][ref_computervisionclient_generate_thumbnail] を使用して、画像のサムネイル (JPG) を生成できます。 サムネイルは、縦横比が元の画像と同じである必要はありません。
 
 この例を使用するには、**Pillow** をインストールします。
 
 ```bash
 pip install Pillow
-``` 
+```
 
 Pillow のインストール後、次のコード例のパッケージを使用して、サムネイル画像を生成します。
 
@@ -285,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>全般
 
-Python SDK を使用して [ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトを操作する場合、[`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] クラスを使用してエラーを返します。 このサービスによって返されるエラーは、REST API 要求に対して返される同じ HTTP 状態コードに対応しています。
+Python SDK を使用して [ComputerVisionClient][ref_computervisionclient] クライアント オブジェクトを操作する場合、[`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] クラスを使用してエラーを返します。 このサービスによって返されるエラーは、REST API 要求に対して返される同じ HTTP 状態コードに対応しています。
 
 たとえば、無効なキーを使用して画像を分析しようとすると、`401` エラーが返されます。 次のスニペットでは、例外をキャッチし、エラーに関する追加情報を表示することで、[エラー][ref_httpfailure]が適切に処理されます。
 
@@ -304,14 +305,14 @@ try:
         print(caption.confidence)
 except HTTPFailure as e:
     if e.status_code == 401:
-        print("Error unauthorized. Make sure your key and region are correct.")
+        print("Error unauthorized. Make sure your key and endpoint are correct.")
     else:
         raise
 ```
 
 ### <a name="handle-transient-errors-with-retries"></a>再試行による一時的なエラーを処理する
 
-[ComputerVisionAPI][ref_computervisionclient] クライアントの操作中に、このサービスによって適用された[レート制限][computervision_request_units]によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン][azure_pattern_retry]」および「[サーキット ブレーカー パターン][azure_pattern_circuit_breaker]」を参照してください。
+[ComputerVisionClient][ref_computervisionclient] クライアントの操作中に、このサービスによって適用された[レート制限][computervision_request_units]によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン][azure_pattern_retry]」および「[サーキット ブレーカー パターン][azure_pattern_circuit_breaker]」を参照してください。
 
 ### <a name="more-sample-code"></a>その他のサンプル コード
 

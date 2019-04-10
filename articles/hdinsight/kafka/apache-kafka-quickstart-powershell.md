@@ -1,20 +1,19 @@
 ---
-title: Apache Kafka の開始 - Azure HDInsight クイック スタート
+title: Azure PowerShell を使用して HDInsight に Apache Kafka を設定する - クイック スタート
 description: このクイックスタートでは、Azure PowerShell を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: mvc,hdinsightactive
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 42384d3ef025640e302ef8173a25965580784319
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361202"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850329"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスター上に Apache Kafka を作成する
 
@@ -83,7 +82,7 @@ New-AzStorageAccount `
         -Location $location
 ```
 
-HDInsight は、BLOB コンテナーにストレージ アカウント内のデータを格納します。 新しいコンテナーを作成するには、[New-AzStorageContainer](/powershell/module/Azure.Storage/New-AzStorageContainer) を使います。
+HDInsight は、BLOB コンテナーにストレージ アカウント内のデータを格納します。 新しいコンテナーを作成するには、[New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) を使います。
 
 ```powershell
 $containerName = Read-Host -Prompt "Enter the container name"

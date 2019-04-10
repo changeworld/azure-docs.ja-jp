@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877855"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892332"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -42,7 +42,7 @@ Microsoft BitLocker ドライブ暗号化によってディスクが暗号化さ
 A. Azure に転送したいデータが 40 TB (またはそれより少なくても) あれば、Data Box Disk を有効活用できると考えられます。
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>Q. Data Box Disk の価格を教えてください。
-A. Data Box Disk の価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/storage/databox/disk/)を参照してください。
+A. Data Box Disk の価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/databox/disk/)を参照してください。
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>Q. Data Box Disk の入手方法は? 
 A.  Data Box Disk を入手するには、Azure portal にログインし、Data Box ディスクの注文を作成します。 連絡先情報と通知の詳細を指定してください。 発注後、利用の可否に応じて、10 日以内にディスクが発送されます。
@@ -170,6 +170,6 @@ A. はい。 データは Azure にアップロードされましたが、指定
 
 ## <a name="next-steps"></a>次の手順
 
-- [Data Box のシステム要件](data-box-disk-system-requirements.md)を確認する。
-- [Data Box の制限事項](data-box-disk-limits.md)を理解する。
-- Azure portal で [Azure Data Box Disk](data-box-disk-quickstart-portal.md) を迅速に展開する。
+- [Data Box Disk のシステム要件](data-box-disk-system-requirements.md)を確認する。
+- [Data Box Disk の制限事項](data-box-disk-limits.md)を理解する。
+- Azure portal で [Azure Data Box Disk](data-box-disk-quickstart-portal.md) をすばやく展開する。

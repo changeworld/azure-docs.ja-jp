@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 3ec3abffc7962051f4cfc02d5369581ca193d70e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5482ea720ea8d21230587dd9216bd006bf4e5a6e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775579"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650650"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル:Azure Lab Services でクラスルーム ラボにアクセスする
 このチュートリアルでは、学生がクラスルーム ラボ内の仮想マシン (VM) にアクセスします。 
@@ -45,8 +45,8 @@ ms.locfileid: "57775579"
 
     ![VM への接続](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. 次のいずれかの手順を実行します。 
-    1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
-    3. **Linux** 仮想マシンの場合は、**[仮想マシンに接続する]** ダイアログ ボックス上で SSH 接続文字列をコピーして保存します。 仮想マシンに接続するには、SSH ターミナル([Putty](https://www.putty.org/) など) からこの接続文字列を使用します。 
+    1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 教師から提供された**ユーザー名**と**パスワード**を使用してマシンにサインインします。 
+    3. **Linux** 仮想マシンの場合は、**SSH** または **RDP** を使用して接続できます (有効な場合)。 詳細については、[Linux マシンのリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、教師から入手した登録リンクを使って、クラスルーム ラボにアクセスしました。

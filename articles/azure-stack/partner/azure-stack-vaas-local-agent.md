@@ -10,36 +10,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 23bbcbf6947100db26f31562c44f8073e16e986f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cfea454b20b010148eba063ec724e55134944ac3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239343"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482931"
 ---
 # <a name="deploy-the-local-agent"></a>ローカル エージェントをデプロイする
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-サービスとしての検証 (VaaS) のローカル エージェントを使ってハードウェアをチェックする方法について説明します。 検証テストを実行する前に、その対象となる Azure Stack ソリューションにローカル エージェントをデプロイしておく必要があります。
+サービスとしての検証 (VaaS) のローカル エージェントを使って検証テストを実行する方法について説明します。 検証テストを実行する前にローカル エージェントをデプロイする必要があります。
 
 > [!Note]  
 > ローカル エージェントを実行するマシンのインターネットへの送信アクセスが失われていないことを確認してください。 テナントに代わって VaaS を使用する権限が付与されたユーザーのみがこのマシンにアクセスできるようにする必要があります。
 
 ローカル エージェントをデプロイするには:
 
-1. ローカル エージェントをインストールする
-2. サニティ チェックを実行する
-3. ローカル エージェントを実行する
+1. ローカル エージェントをインストールします。
+2. サニティ チェックを実行します。
+3. ローカル エージェントを実行します。
 
 ## <a name="download-and-start-the-local-agent"></a>ローカル エージェントのダウンロードと起動
 
-データセンター内の前提条件を満たしたマシンのうち、Azure Stack システムに属してはいないものの、Azure Stack のすべてのエンドポイントにアクセスできるマシンにエージェントをダウンロードします。
+データセンター内の前提条件を満たしたマシンのうち、Azure Stack のすべてのエンドポイントにアクセスできるマシンにエージェントをダウンロードします。 対象のマシンは、Azure Stack システムに属していないこと、また Azure Stack クラウドでホストされていないことが必要です。
 
 ### <a name="machine-prerequisites"></a>マシンの前提条件
 
@@ -52,14 +52,12 @@ ms.locfileid: "55239343"
 - 200 GB 以上のディスク領域
 - インターネットへの安定したネットワーク接続
 
-Azure Stack がテスト対象のシステムです。 対象のマシンは、Azure Stack に属していないこと、また Azure Stack クラウドでホストされていないことが必要です。
-
 ### <a name="download-and-install-the-agent"></a>エージェントのダウンロードとインストール
 
 1. テストの実行に使用するマシンから、管理者特権でのコマンド プロンプトで Windows PowerShell を開きます。
 2. 次のコマンドを実行してローカル エージェントをダウンロードします。
 
-    ```PowerShell
+    ```powershell
     Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
     Expand-Archive -Path ".\OnPremAgent.zip" -DestinationPath VaaSOnPremAgent -Force
     Set-Location VaaSOnPremAgent\lib\net46
@@ -67,7 +65,7 @@ Azure Stack がテスト対象のシステムです。 対象のマシンは、A
 
 3. 次のコマンドを実行して、ローカル エージェントの依存関係をインストールします。
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -95,7 +93,7 @@ Azure Stack がテスト対象のシステムです。 対象のマシンは、A
 
 ## <a name="checks-before-starting-the-tests"></a>テスト開始前のチェック
 
-テストでは、リモート アクションを実行します。 テストを実行するマシンは、Azure Stack エンドポイントにアクセスできる必要があります。そうでないと、テストは機能しません。 VaaS のローカル エージェントを使用する場合は、エージェントを実行するマシンを使用します。 次のチェックを実行すると、マシンが Azure Stack エンドポイントにアクセスできることを確認できます。
+テストではリモート操作が実行されます。 テストを実行するマシンは、Azure Stack エンドポイントにアクセスできる必要があります。そうでないと、テストは機能しません。 VaaS のローカル エージェントを使用する場合は、エージェントを実行するマシンを使用します。 次のチェックを実行すると、マシンが Azure Stack エンドポイントにアクセスできることを確認できます。
 
 1. ベース URI に到達できることを確認します。 CMD プロンプトまたは bash シェルを開きます。`<EXTERNALFQDN>` をお使いの環境の外部 FQDN に置き換えて、次のコマンドを実行します。
 
@@ -115,14 +113,15 @@ Azure Stack がテスト対象のシステムです。 対象のマシンは、A
 
 2. 次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
     ```
 
       **パラメーター**  
+
     | パラメーター | 説明 |
     | --- | --- |
-    | VaaSUserId | VaaS ポータルにサインインするためのユーザー ID (例: UserName@Contoso.com) |
+    | VaaSUserId | VaaS ポータルにサインインするためのユーザー ID (例: UserName\@Contoso.com) |
     | VaaSTenantId | サービスとしての検証に登録された Azure アカウントの Azure AD テナント ID。 |
 
     > [!Note]  

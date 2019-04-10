@@ -1,37 +1,37 @@
 ---
-title: IoT Hub で ASC for IoT サービスのプレビューを有効にする | Microsoft Docs
-description: IoT Hub で ASC for IoT サービスを有効にする方法について説明します。
-services: ascforiot
+title: IoT Hub で Azure Security Center for IoT サービスのプレビューを有効にする | Microsoft Docs
+description: IoT Hub で Azure Security Center for IoT サービスを有効にする方法について説明します。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 4fd7fb68fd2eb8be0c1c109d76cff341faba9391
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541765"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862388"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>クイック スタート:IoT Hub でサービスを有効にする
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-この記事では、IoT Hub で ASC for IoT プレビュー サービスを有効にする方法について説明します。  
+この記事では、IoT Hub で Azure Security Center (ASC) for IoT プレビュー サービスを有効にする方法について説明します。  
 
 > [!NOTE]
-> ASC for IoT では、現在、Standard レベル以上の IoT Hub だけがサポートされています。
->ASC for IoT は、単一ハブのソリューションです。 複数のハブが必要な場合は、複数のソリューションが必要になります。 
+> Azure Security Center for IoT では、現在、Standard レベル以上の IoT Hub だけがサポートされています。
+> Azure Security Center for IoT は、単一ハブのソリューションです。 複数のハブが必要な場合は、複数のソリューションが必要になります。 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>サービスを有効にするための前提条件
 

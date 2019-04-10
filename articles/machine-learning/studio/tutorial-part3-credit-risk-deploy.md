@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839019"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620516"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio
 
@@ -172,7 +172,7 @@ Web サービスがアクセスされると、ユーザーのデータは **Web 
 結果は、Web サービスから **Web サービスの出力**モジュール経由でユーザーに返されます。
 
 > [!TIP]
-> 構成した予測実験の方法では、[モデルのスコア付け][score-model]モジュールから結果全体が返されます。 これには、すべての入力データに加え、信用リスク値とスコア付け確率が含まれます。 ただし、必要に応じて、これとは異なる結果、たとえば信用リスク値のみを返すことができます。 それには、[列の投影][project-columns]モジュールを、[モデルのスコア付け][score-model]と **Web サービスの出力**の間に挿入して、Web サービスから返さない列を排除します。 
+> 構成した予測実験の方法では、[モデルのスコア付け][score-model]モジュールから結果全体が返されます。 これには、すべての入力データに加え、信用リスク値とスコア付け確率が含まれます。 ただし、必要に応じて、これとは異なる結果、たとえば信用リスク値のみを返すことができます。 それには、[列の選択][select-columns]モジュールを、[モデルのスコア付け][score-model]と **Web サービスの出力**の間に挿入して、Web サービスから返さない列を排除します。 
 > 
 > 
 
@@ -267,4 +267,4 @@ R、C#、Python プログラミング言語で提供されるスターター コ
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/

@@ -24,6 +24,14 @@ sections:
               src: media/index/data-catalog.svg
             text: Azure ポータル
             href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Data Catalog で資産を登録、検索、注釈付け、管理、および削除する方法を説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">Azure Data Catalog でのデータ資産の登録</a>
   - title: リファレンス
     items:
       - type: list

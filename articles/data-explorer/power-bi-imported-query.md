@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: Power BI にインポートされたクエリを使用してデータを視覚化する'
+title: クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する
 description: Power BI のデータは 3 とおりの方法を使用して視覚化できます。このクイック スタートでは、そのうちの 1 つである Azure Data Explorer からクエリをインポートすることによる方法を説明します。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 139b20a2390c7301bd83113c3e98be40846fab22
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51858152"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756105"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>クイック スタート: Power BI にインポートされたクエリを使用してデータを視覚化する
+# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。
 
@@ -84,4 +84,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-sql-query.md)
+> [クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-sql-query.md)

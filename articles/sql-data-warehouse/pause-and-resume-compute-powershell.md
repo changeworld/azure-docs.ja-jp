@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ce1fd1af404f5fc44bc202be08cd2c2f1b4ef909
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: fe9cd6c951f9eba73cee1bea66df88f3143859b9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443843"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846841"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>クイック スタート:PowerShell による Azure SQL Data Warehouse でのコンピューティングの一時停止と再開
 
@@ -106,10 +106,10 @@ $resultDatabase
 
 ## <a name="check-status-of-your-data-warehouse-operation"></a>データ ウェアハウスの操作の状態の確認
 
-データ ウェアハウスの状態を確認するには、[Get-AzureRmSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/Get-AzureRmSqlDatabaseActivity#description) コマンドレットを使用します。
+データ ウェアハウスの状態を確認するには、[Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) コマンドレットを使用します。
 
 ```
-Get-AzureRmSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
+Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

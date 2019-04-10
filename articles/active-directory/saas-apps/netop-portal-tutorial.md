@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c5e568bbdbdd9aa07db0ee10438cb7d05bd56c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891020"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>チュートリアル:Azure Active Directory と Netop Portal の統合
 
@@ -110,7 +110,7 @@ Netop Portal で Azure AD シングル サインオンを構成するには、�
 
 6. その他に、Netop Portal アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name |  ソース属性|
+    | 名前 |  ソース属性|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | "adfs-demo" |
     | NRC-EMAIL | user.userprincipalname |
@@ -128,7 +128,7 @@ Netop Portal で Azure AD シングル サインオンを構成するには、�
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[名前空間]** は空白のままにします。
+    c. **[Namespace]\(名前空間\)** ボックスに、「https:\//secure.netop.com」と入力します。
 
     d. [ソース] として **[属性]** を選択します。
 
@@ -154,7 +154,7 @@ Netop Portal で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Netop Portal のシングル サインオンの構成
 
-**Netop Portal** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Netop Portal サポート チーム](mailto:casemanager@netop.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Netop Portal** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal で取得したログイン URL が必要です。 [こちらの](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf)ドキュメントの手順 3 の指示に従って、Azure AD 認証用に NetOp Portal を構成します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
