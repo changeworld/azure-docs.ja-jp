@@ -7,20 +7,24 @@ items:
     href: about-azure-maps.md
 - name: クイック スタート
   items:
-  - name: マップのアプリを作成する
+  - name: Web アプリを作成する
     href: quick-demo-map-app.md
 - name: チュートリアル
   items:
-  - name: 1 - 観光名所の検索
-    href: tutorial-search-location.md
-  - name: 2 - 行き先へのルートの決定
-    href: tutorial-route-location.md
-  - name: 3 - 移動モード別の複数のルート
-    href: tutorial-prioritized-routes.md
-  - name: 4 - ストア ロケーターの作成
-    href: tutorial-create-store-locator.md
-  - name: 5 - ジオフェンスの設定
-    href: tutorial-geofence.md
+  - name: Web SDK のチュートリアル
+    items:
+    - name: 目的地を検索する
+      href: tutorial-search-location.md
+    - name: 行き先へのルートを検索する
+      href: tutorial-route-location.md
+    - name: 移動モード別の複数のルート
+      href: tutorial-prioritized-routes.md
+    - name: ストア ロケーターを作成する
+      href: tutorial-create-store-locator.md
+  - name: REST API のチュートリアル
+    items:
+    - name: ジオフェンスを設定する
+      href: tutorial-geofence.md
 - name: 概念
   items:
   - name: Azure Maps による認証
@@ -63,6 +67,8 @@ items:
     items:
     - name: 住所を検索する
       href: how-to-search-for-address.md
+    - name: 検索のベスト プラクティス
+      href: how-to-use-best-practices-for-search.md
     - name: 静的マップ上にカスタム データをレンダリングする
       href: how-to-render-custom-data.md
   - name: Web SDK を使った開発
@@ -89,6 +95,8 @@ items:
         href: map-add-heat-map-layer.md
       - name: ポイント データのクラスタリング
         href: clustering-point-data-web-sdk.md
+      - name: データドリブンのスタイルの式を使用する
+        href: data-driven-style-expressions-web-sdk.md
       - name: イメージをオーバーレイする
         href: map-add-image-layer.md
       - name: タイル レイヤーを追加する
@@ -207,9 +215,9 @@ items:
       href: /azure/iot-edge
     - name: IoT デバイス SDK
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: fa4c3a4f8158123e6773640c1612daa0c7390424
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.openlocfilehash: 94e02b599bffd24e9c9aa65560e4a74bd05ecea6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058936"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263597"

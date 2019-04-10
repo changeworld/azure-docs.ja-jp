@@ -86,12 +86,6 @@ items:
       href: platform/data-ingestion-time.md
     - name: メトリック ストアへのカスタム メトリックの送信
       href: platform/metrics-custom-overview.md
-  - name: ログ データの分析
-    items:
-    - name: ログ クエリ
-      href: log-query/log-query-overview.md
-    - name: ログ クエリ ポータル
-      href: log-query/portals.md
   - name: データのセキュリティ
     items:
     - name: ログ データ
@@ -327,6 +321,8 @@ items:
           items:
           - name: Linux App Services 用の Profiler (プレビュー)
             href: app/profiler-aspnetcore-linux.md
+        - name: Visual Studio を使用しない ASP.NET Core
+          href: app/asp-net-core-no-visualstudio.md
         - name: コンソール
           href: app/console.md
         - name: アプリケーション ダッシュボード
@@ -611,6 +607,8 @@ items:
           href: insights/vminsights-maps.md
         - name: パフォーマンスの監視
           href: insights/vminsights-performance.md
+        - name: ブックの使用
+          href: insights/vminsights-workbooks.md
         - name: Log Analytics によるデータのクエリ
           href: insights/vminsights-log-search.md
         - name: 監視を無効にする
@@ -680,18 +678,20 @@ items:
       href: platform/grafana-plugin.md
   - name: データを分析する
     items:
-    - name: メトリックス エクスプローラーの概要
-      href: platform/metrics-getting-started.md
-    - name: メトリックス エクスプローラーの高度な機能
-      href: platform/metrics-charts.md
-    - name: メトリック グラフの例
-      href: platform/metric-chart-samples.md
-    - name: アクティビティ ログでのイベントの表示
-      href: ../azure-resource-manager/resource-group-audit.md
-    - name: サービスの通知を表示する
-      href: platform/service-notifications.md
-    - name: ログ データのクエリ
+    - name: メトリック
       items:
+      - name: メトリックス エクスプローラーの概要
+        href: platform/metrics-getting-started.md
+      - name: メトリックス エクスプローラーの高度な機能
+        href: platform/metrics-charts.md
+      - name: メトリック グラフの例
+        href: platform/metric-chart-samples.md
+    - name: ログ
+      items:
+      - name: ログ クエリ
+        href: log-query/log-query-overview.md
+      - name: ログ クエリ ポータル
+        href: log-query/portals.md
       - name: クエリ言語のドキュメント
         href: log-query/query-language.md
       - name: 言語の相違点
@@ -766,6 +766,10 @@ items:
         href: platform/flow-tutorial.md
       - name: Log Search API
         href: https://dev.loganalytics.io/
+    - name: アクティビティ ログでのイベントの表示
+      href: ../azure-resource-manager/resource-group-audit.md
+    - name: サービスの通知を表示する
+      href: platform/service-notifications.md
   - name: インシデントへの対応
     items:
     - name: アラート
@@ -1067,9 +1071,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9c0f17f113b7940f83e3d3b5b2161fe9f88c01ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: b2021ca33265e06f882f04f726a889ddae0fd91f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886643"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261158"

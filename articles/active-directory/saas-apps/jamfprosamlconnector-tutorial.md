@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50349d008e3c2a7a8a09fd3e2d9e96097acc0c9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 18b575b74c80499f2ddd6648bf051b5245077d2f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855820"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>チュートリアル:Azure Active Directory と Jamf Pro の統合
 
@@ -105,9 +105,9 @@ Jamf Pro で Azure AD シングル サインオンを構成するには、次の
 
     ![Jamf Pro のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.jamfcloud.com/saml/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.jamfcloud.com/saml/SSO` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.jamfcloud.com/saml/SSO`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -160,11 +160,11 @@ Jamf Pro で Azure AD シングル サインオンを構成するには、次の
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. **[IDENTITY PROVIDER]\(ID プロバイダー\)** ドロップダウン メニューから **[Other]\(その他\)** を選択します。
+    a. **[IDENTITY PROVIDER]\(ID プロバイダー\)** ドロップダウンから **[Other]\(その他\)** を選択します。
 
     b. **[OTHER PROVIDER]\(その他のプロバイダー\)** ボックスに、**[Azure AD]** を入力します。
 
-    c. **[メタデータ URL]** を **[IDENTITY PROVIDER METADATA SOURCE]\(ID プロバイダーのメタデータ ソース\)** ドロップダウンからオプションとして選択し、次のテキストボックスに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
+    c. **[IDENTITY PROVIDER METADATA SOURCE]\(ID プロバイダーのメタデータ ソース\)** ドロップダウンのオプションとして **[Metadata URL]\(メタデータ URL\)** を選択し、次のテキストボックスに、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** の値を貼り付けます。
 
     d. **エンティティ ID** の値をコピーし、Azure portal の **[Jamf Pro Domain and URLs]\(Jamf Pro のドメインと URL\)** セクションの **[識別子 (エンティティ ID)]** テキストボックスに貼り付けます。
 
@@ -191,7 +191,7 @@ Jamf Pro で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -228,7 +228,7 @@ Jamf Pro で Azure AD シングル サインオンを構成するには、次の
 
 Azure AD ユーザーが Jamf Pro にログインできるようにするには、ユーザーを Jamf Pro にプロビジョニングする必要があります。 Jamf Pro の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. Jamf Pro の企業サイトに管理者としてログインします。
 

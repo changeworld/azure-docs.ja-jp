@@ -142,6 +142,8 @@ items:
     items:
     - name: 会社のブランドのカスタマイズ
       href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: サインイン オプション
+      href: signin-account-support.md
     - name: ホーム領域検出
       href: signin-realm-discovery.md
   - name: サービスと Azure AD の統合
@@ -169,9 +171,9 @@ items:
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
   - name: Azure AD サービスの制約
     href: directory-service-limits-restrictions.md
-ms.openlocfilehash: 7bf7fa66c5e12660bc0dd56d4b52a9ba7638826e
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: dc0d3340fd855bfd3cddf5eed0f4011e48071e41
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006963"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256024"

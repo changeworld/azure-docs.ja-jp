@@ -46,6 +46,8 @@ items:
     href: policy-migration.md
   - name: 承認済みクライアント アプリを必須にする
     href: app-based-conditional-access.md
+  - name: アプリの保護ポリシーを必須にする
+    href: app-protection-based-conditional-access.md
   - name: マネージド デバイスを必須にする
     href: require-managed-devices.md
   - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
@@ -71,9 +73,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: b100d4b05e3131e4a891715b87c804d60d23f389
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 1db270043ea996b72f47ee00dbd07f1bd33a1e48
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047043"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260104"

@@ -1,9 +1,8 @@
 ---
-title: Azure SQL Database (プレビュー) での Machine Learning Services と R に関する主な違いの概要
+title: Azure SQL Database Machine Learning Services (プレビュー) の主な違い
 description: このトピックでは、Azure SQL Database Machine Learning Services と R および SQL Server Machine Learning Services の主な違いについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: machine-learning-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +10,22 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237486"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771852"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Azure SQL Database と SQL Server の Machine Learning Services の主な違い
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>SQL Server の Machine Learning Services と Azure SQL Database の Machine Learning Services (プレビュー) の主な違い
 
-Azure SQL Database における Machine Learning Services と R の機能は、[SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) と似ています。 これらの主な違いをいくつか以下に示します。
+Azure SQL Database Machine Learning Services と R の機能 (プレビュー) は、[SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) と似ています。 主な違いをいくつか以下に示します。
+
+> [!IMPORTANT]
+> Azure SQL Database の Machine Learning Services は、現在パブリック プレビュー期間です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -41,11 +45,19 @@ R パッケージの管理とインストールの動作は、SQL Database と S
 
 ## <a name="resource-governance"></a>リソース ガバナンス
 
-[Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) と外部リソース プールを使用して、R リソースを制限することはできません。 R リソースは SQL Database リソースの割合であり、選択するサービス レベルによって異なります。 詳細については、「[Azure SQL Database purchasing models](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)」 (Azure SQL Database の購入モデル) を参照してください。
+[Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) と外部リソース プールを使用して、R リソースを制限することはできません。
 
-## <a name="security-isolation"></a>セキュリティ分離
+パブリック プレビューの期間中は、R リソースは最大で SQL Database リソースの 20% に設定され、選択するサービス レベルによって異なります。 詳細については、「[Azure SQL Database purchasing models](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)」 (Azure SQL Database の購入モデル) を参照してください。
 
-Azure SQL Database では、SQLPAL (SQL Platform Abstraction Layer) によって外部プロセスの分離が提供されます。 この分離では、R スクリプトを実行するためのセキュリティの追加レイヤーが提供されます。
+### <a name="insufficient-memory-error"></a>メモリ不足エラー
+
+R に使用できるメモリが不足している場合は、エラー メッセージが表示されます。 一般的なエラー メッセージは次のとおりです。
+
+- 'R' スクリプトのランタイムと通信できませんでした。要求 ID: *******。 'R' ランタイムの要件を確認してください
+- 'sp_execute_external_script' に HRESULT 0x80004004 を指定して実行中に、'R' スクリプト エラーが発生しました。 ...外部スクリプト エラーが発生しました: "..could not allocate memory (0 Mb) in C function 'R_AllocStringBuffer'"
+- 外部スクリプト エラーが発生しました:Error: cannot allocate vector of size.
+
+メモリ使用量は、R スクリプトでの使用量と、実行されている並列クエリの数によって決まります。 上記のエラーが発生した場合は、問題を解決するために、データベースを上位のサービス レベルにスケーリングすることができます。
 
 ## <a name="next-steps"></a>次の手順
 

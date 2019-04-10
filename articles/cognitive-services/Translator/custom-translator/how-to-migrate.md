@@ -5,16 +5,16 @@ description: Microsoft Translator Hub ワークスペースとプロジェクト
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: b8347a8c34cf5a0585e9bb6c247102207a70015a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901527"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -26,12 +26,8 @@ ms.locfileid: "55225620"
 * 移行されたトレーニングのうち、デプロイ済み状態でなかったものはすべて、移行済みドラフト状態になります。 この状態では、移行済みの定義を使用してモデルをトレーニングするかどうかを選択できますが、通常のトレーニング料金が適用されます。
 * Hub トレーニングから移行された BLEU スコアは、モデルの TrainingDetails ページ ([Bleu score in MT Hub]\(MT Hub におけるBLEU スコア\) という見出し) でいつでも確認できます。
 
->[!Note]
->トレーニングが成功するには、Custom Translator に最低 10,000 個の抽出された文が必要です。 抽出された文が[推奨最小数](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences)よりも少ない場合、Custom Translator でトレーニングを実行することはできません。
-
-## <a name="enable-account-migration"></a>アカウントの移行を有効にする
-
-移行ツールを使用するためには、お客様の Hub アカウントの移行を有効にしておく必要があります。 これを実行するには、有効にしたい LiveID アカウントの一覧が含まれたメールを [custommt@microsoft.com](mailto:custommt@microsoft.com) に送信してください。 これらのアカウントは、お客様がログインに使用するメール アドレスであることが必要です。
+> [!Note]
+> Custom Translator でトレーニングを正常に実行するには、一意の文が最低 10,000 個抽出されている必要があります。 [推奨される最小要件](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences)に満たない場合、Custom Translator ではトレーニングを実行できません。
 
 ## <a name="find-custom-translator-workspace-id"></a>カスタム トランスレーターのワークスペース ID を見つける
 
@@ -125,7 +121,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 ## <a name="implementation-notes"></a>実装に関するメモ
 * Hub からカスタム トランスレーターにプロジェクトを移行しても、お客様の Hub のトレーニングまたはプロジェクトには一切影響がありません。 移行中、プロジェクトまたはドキュメントが Hub から削除されたり、モデルのデプロイが解除されたりすることはありません。
 * 移行は、プロジェクトごとに 1 回だけ許可されます。 プロジェクトに対して移行を繰り返す必要がある場合は、Microsoft にお問い合わせください。
-* 現在カスタム トランスレーターでは、英語との間で 36 の言語を双方向に翻訳することができます。また、Microsoft は対応言語をさらに増やすために全力で取り組んでいます。 Hub にはベースライン モデルが不要であるため、数千の言語がサポートされます。 サポートされていない言語ペアを移行できますが、Microsoft が実施するのはドキュメントとプロジェクトの定義の移行のみです。 Microsoft で新しいモデルをトレーニングすることはできなくなります。 さらに、それらのドキュメントとプロジェクトは、現時点では使用できないことを示すために、非アクティブとして表示されます。 それらのプロジェクトまたはドキュメントは、今後サポートが追加されるとアクティブになってトレーニングできる状態になります。
+* Custom Translator では、英語との組み合わせに対応した複数の NMT 言語ペアがサポートされています。 [サポートされている言語の完全な一覧は、こちらで確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub にはベースライン モデルが不要であるため、数千の言語がサポートされます。 サポートされていない言語ペアを移行できますが、Microsoft が実施するのはドキュメントとプロジェクトの定義の移行のみです。 Microsoft で新しいモデルをトレーニングすることはできなくなります。 さらに、それらのドキュメントとプロジェクトは、現時点では使用できないことを示すために、非アクティブとして表示されます。 それらのプロジェクトまたはドキュメントは、今後サポートが追加されるとアクティブになってトレーニングできる状態になります。
 * カスタム トランスレーターでは現在、モノリンガルのトレーニング データはサポートされていません。 サポートされていない言語ペアと同様、モノリンガルのドキュメントを移行することはできますが、サポートされるようになるまで、それらは非アクティブとして表示されます。
 * カスタム トランスレーターでは、トレーニングに 10,000 個の並列文が必要です。 Microsoft Hub では、それよりも少ないデータでのトレーニングが可能です。 この要件を満たさないトレーニングを移行した場合、トレーニングされません。
 
@@ -141,6 +137,10 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 | NMT のカスタマイズ | いいえ     | はい |
 | 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
 | トレースなし | はい | はい |
+
+## <a name="new-languages"></a>新しい言語
+
+Microsoft Translator 用の新しい言語システムの作成に取り組んでいるコミュニティや組織のお客様は、[custommt@microsoft.com](mailto:custommt@microsoft.com) までご連絡いただき、詳細についてお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

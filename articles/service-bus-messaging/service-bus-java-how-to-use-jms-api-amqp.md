@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312891"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453407"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
@@ -341,6 +341,16 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS トピックとService Bus トピック
+Java Message Service (JMS) API を通じて Azure Service Bus のトピックとサブスクリプションを使用すると、基本的な送受信機能が提供されます。 これは、JMS 準拠の API を使用して他のメッセージ ブローカーからアプリケーションを移植する場合に便利な選択肢となります。ただし、Service Bus トピックは JMS トピックとは異なるため、多少の調整が必要となります。 
+
+Azure Service Bus トピックは、Azure Resource Management インターフェイス、Azure コマンド ライン ツール、または Azure portal を通じて管理される、名前の付いた、共有の、永続的サブスクリプションにメッセージをルーティングします。 各サブスクリプションでは、最大 2000 の選択ルールを使用できます。各ルールではフィルター条件を使用できるほか、SQL フィルターについては、メタデータ変換アクションも使用できます。 フィルター条件が一致するごとに、サブスクリプション内にコピーされる入力メッセージが選択されます。  
+
+サブスクリプションからのメッセージ受信は、キューからのメッセージ受信と同じです。 各サブスクリプションには配信不能キューが関連付けられ、別のキューやトピックにメッセージを自動的に転送することもできます。 
+
+JMS トピックでは、非永続的および永続的サブスクライバーをクライアントが動的に作成できます。これらのサブスクライバーでは、メッセージ セレクターを使用してメッセージをフィルター処理することもできます。 これらの非共有エンティティは、Service Bus ではサポートされていません。 ただし、Service Bus の SQL フィルター ルール構文は、JMS でサポートされているメッセージ セレクター構文とよく似ています。 
+
+JMS トピックのパブリッシャー側は (この例で示すように) Service Bus と互換性がありますが、動的サブスクライバーについては互換性がありません。 次のトポロジ関連 JMS API は、Service Bus ではサポートされていません。 
 
 ## <a name="unsupported-features-and-restrictions"></a>サポートされていない機能および制限
 JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があります。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2f47a145f00748a3366ea5bd1aa961f4b556a08f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474668"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835241"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス:エンド ツー エンド チュートリアル
 このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。 また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)のエンド ツー エンドの手順について説明します。
@@ -72,17 +72,17 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 ### <a name="create-an-azure-data-lake-store"></a>Azure Data Lake Store を作成する
 
 
-[Azure Portal](http://portal.azure.com) から ADLS を作成します。 詳しくは、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。 そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。
+[Azure Portal](https://portal.azure.com) から ADLS を作成します。 詳しくは、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。 そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>Azure Data Lake Analytics アカウントを作成する
-[Azure Portal](http://portal.azure.com) で ADLA アカウントを作成します。 詳しくは、「[チュートリアル: Azure Portal で Azure Data Lake Analytics の使用を開始する](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)」をご覧ください。
+[Azure Portal](https://portal.azure.com) で ADLA アカウントを作成します。 詳しくは、「[チュートリアル: Azure Portal で Azure Data Lake Analytics の使用を開始する](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)」をご覧ください。
 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
-[Azure Portal](http://portal.azure.com) で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
+[Azure Portal](https://portal.azure.com) で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -99,7 +99,7 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
  ![7](./media/data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 ## <a name="the-nyc-taxi-trips-dataset"></a>NYC タクシー乗車データセット
-ここで使ったデータセットは、[NYC タクシー乗車データセット](http://www.andresmh.com/nyctaxitrips/)という一般公開されているデータセットです。 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、メダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
+ここで使ったデータセットは、[NYC タクシー乗車データセット](https://www.andresmh.com/nyctaxitrips/)という一般公開されているデータセットです。 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、メダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 「trip_data」の CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
 
@@ -147,7 +147,8 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>データ インジェスト:パブリック BLOB からデータを読み込む
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** と指定して参照します **Extractors.Csv()** を使用して展開することができます。 次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data_{\*\}.csv** を使って、12 個の乗車ファイルすべてを読み込むことができます。
+
+Azure BLOB のデータの場所は、**wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開できます。 次のスクリプトで wasb アドレスの container\_name\@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。 ファイル名は同じ形式なので、**trip\_data\_\{\*\}.csv** を使って、12 個の乗車ファイルすべてを読み込むことができます。
 
     ///Read in Trip data
     @trip0 =
@@ -170,7 +171,7 @@ Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_accou
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。 処理したデータは、**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name** を使って Azure Data Lake ストレージに保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使って Azure BLOB ストレージ アカウントに保存することができます。
+1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。 処理されたデータは、**swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name** を使用して Azure Data Lake Storage に保存するか、**wasb://container_name\@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存できます。
 
     // change data types
     @trip =
@@ -596,7 +597,7 @@ Python を使用して機械学習モデルを構築およびデプロイする�
 Azure Machine Learning Studio では、Azure Data Lake Store から直接データを読み取り、モデルを作成してデプロイできます。 このアプローチでは、Azure Data Lake ストアを指す Hive テーブルを使用します。 そのためには、別の Azure HDInsight クラスターをプロビジョニングする必要があります。そこに Hive テーブルが作成されます。 以降のセクションでは、その方法について説明します。
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターを作成する
-[Azure Portal](http://portal.azure.com) で HDInsight クラスター (Linux) を作成します。 詳しくは、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」の「**Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する**」セクションをご覧ください。
+[Azure Portal](https://portal.azure.com) で HDInsight クラスター (Linux) を作成します。 詳しくは、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」の「**Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する**」セクションをご覧ください。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

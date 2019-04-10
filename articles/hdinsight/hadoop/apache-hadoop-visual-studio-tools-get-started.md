@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: bb7c46548726b00c68c8e952a8e2956ad0511763
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: cf392bb254e38b2e07a92e87927b12e144b26f16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201774"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447473"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -239,7 +239,7 @@ Tez アプリケーションが起動されていない場合は、実行エン�
 ### <a name="view-hive-jobs"></a>Hive ジョブの表示
 Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Yarn ログを表示できます。
 
-最新版のツールでは、Yarn ログを収集して表示することで、Hive ジョブの内容を確認できます。 Yarn ログは、パフォーマンス問題の検証に役立ちます。 HDInsight での Yarn ログの収集に関する詳細については、[プログラムによる HDInsight アプリケーション ログへのアクセス](../hdinsight-hadoop-access-yarn-app-logs.md)に関するページを参照してください。
+最新版のツールでは、Yarn ログを収集して表示することで、Hive ジョブの内容を確認できます。 Yarn ログは、パフォーマンス問題の検証に役立ちます。 HDInsight での Yarn ログの収集に関する詳細については、[プログラムによる HDInsight アプリケーション ログへのアクセス](../hdinsight-hadoop-access-yarn-app-logs-linux.md)に関するページを参照してください。
 
 Hive ジョブを表示するには:
 

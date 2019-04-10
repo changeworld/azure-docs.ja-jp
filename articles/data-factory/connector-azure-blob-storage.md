@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: bc7fdbe964269521a049fba8fcb8c37194d60f7c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 115a02c7f8abee18c226c127fb84b4bb34250cd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664201"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456314"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -24,6 +24,8 @@ ms.locfileid: "55664201"
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Blob Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -130,15 +132,15 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 > [!TIP]
 > ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
-> `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Shared Access Signature 認証の使用には、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (後の注を参照) に設定する必要があります。 |はい |
-| sasUri | BLOB、コンテナーなどの Storage リソースへの Shared Access Signature URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションをレベレイトし、トークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
+| sasUri | BLOB、コンテナーなどの Storage リソースへの Shared Access Signature URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 >[!NOTE]
@@ -257,13 +259,11 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 ### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
-データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのマネージド ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
 
-一般的な Azure Storage MSI 認証については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](../storage/common/storage-auth-aad.md)」をご覧ください。
+一般的な Azure Storage 認証については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](../storage/common/storage-auth-aad.md)」をご覧ください。 Azure リソースのマネージド ID 認証を使用するには、次のようにします。
 
-Azure リソースのマネージド ID 認証を使用するには、次のようにします。
-
-1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
+1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのマネージド ID 情報を取得](data-factory-service-identity.md#retrieve-managed-identity)します。
 
 2. Azure BLOB ストレージでマネージド ID に適切なアクセス許可を付与します。 ロールについて詳しくは、「[RBAC を使用して Azure Storage データへのアクセス権を管理する](../storage/common/storage-auth-aad-rbac.md)」をご覧ください。
 
@@ -331,6 +331,7 @@ Blob Storage をコピー先またはコピー元としてデータをコピー�
         },
         "typeProperties": {
             "folderPath": "mycontainer/myfolder",
+            "fileName": "*",
             "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
             "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {

@@ -11,21 +11,31 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856092"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1:2019 年 2 月更新
+
+これはバグ修正リリースで、ネイティブ/マネージド SDK にのみ影響します。 JavaScript バージョンの SDK には影響しません。
+
+**バグ修正**
+
+* マイク入力を使用する際のメモリ リークを修正しました。 ストリーム ベースの入力やファイル入力には影響しません。
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: 2019-February リリース
 
 **新機能**
 
-* Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Service にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 これは、JavaScript からはまだ使用できません。
+* Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Services にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 これは、JavaScript からはまだ使用できません。
 * Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](quickstart-csharp-unity.md)に関する記事をご覧ください。
+* (以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
+
 
 **サンプル**
 
@@ -54,6 +64,7 @@ ms.locfileid: "56446836"
   * 語句ヒントの最初のサポートと実装。
   * 認識に対するサービス JSON でプロパティのコレクションが返されます
 * Windows の DLL に、バージョン リソースが含まれるようになりました。
+* 認識エンジン `FromEndpoint` を作成した場合は、エンドポイント URL に直接パラメーターを追加できます。 `FromEndpoint` を使用した場合、標準の構成プロパティを通じて認識エンジンを構成することはできません。
 
 **バグの修正**
 
@@ -78,7 +89,7 @@ ms.locfileid: "56446836"
 **新機能**
 
 * Python
-  * このリリースで、Python サポート (3.5 以降) のベータ版を使用できるようになりました。 詳細については、[こちらを参照](quickstart-python.md)してください。
+  * このリリースで、Python サポート (3.5 以降) のベータ版を使用できるようになりました。 詳しくは、こちら (quickstart-python.md) をご覧ください。
 * JavaScript
   * Speech SDK for JavaScript はオープンソースで提供されています。 ソース コードは [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)から入手できます。
   * Node.js のサポートを開始しました。詳細については、[こちら](quickstart-js-node.md)を参照してください。

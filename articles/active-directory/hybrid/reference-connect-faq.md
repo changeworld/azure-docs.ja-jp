@@ -15,16 +15,33 @@ ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840904"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
 ## <a name="general-installation"></a>一般的なインストール
+
+**Q:セキュリティ攻撃の対象領域を小さくするために Azure AD Connect サーバーを強化するにはどうすればよいですか?**
+
+Microsoft では、Azure AD Connect サーバーを強化して、お客様の IT 環境に含まれるこの重要なコンポーネントに対する、セキュリティ攻撃の対象領域を縮小することをお勧めしています。  以下の推奨事項に従うと、お客様の組織に対するセキュリティ リスクが低下します。
+
+* ドメイン参加しているサーバー上に Azure AD Connect をデプロイし、管理アクセス権を、ドメイン管理者やその他の厳格に管理されたセキュリティ グループに制限する
+
+詳細については、次を参照してください。 
+
+* [管理者グループのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [ビルトイン Administrator アカウントのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [攻撃対象領域の縮小によるセキュリティの向上と維持](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Active Directory の攻撃対象領域の縮小](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+
 **Q:Azure Active Directory (Azure AD) 全体管理者が 2 要素認証 (2FA) を有効にしている場合、インストールは機能しますか。**  
 2016 年 2 月のビルド時点で、このシナリオがサポートされています。
 

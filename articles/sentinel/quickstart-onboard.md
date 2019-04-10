@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 30f6d08594bdf2e5d78bc8c7881a135d6e57f397
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852212"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58399692"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel プレビューをオンボードする
 
@@ -75,7 +75,6 @@ Azure Sentinel でサービスとアプリへの接続を確立するには、�
 Azure Sentinel の下部には、各コネクタにインストールする必要のあるダッシュボードに関する推奨事項が示されているため、データ全体の興味深い分析をすぐに得ることができます。 <br> インストール手順を実行するか、[関連する接続のガイドを参照](connect-data-sources.md)して詳細をご確認ください。 データ コネクタについては、「[Microsoft サービスの接続](connect-data-sources.md)」をご覧ください。
 
 データ ソースが接続されると、データは Azure Sentinel にストリーミングされ、操作を開始できます。 [組み込みのダッシュボード](quickstart-get-visibility.md)でログを表示し、Log Analytics でクエリをビルドして[データを調査](tutorial-investigate-cases.md)できます。
-
 
 
 

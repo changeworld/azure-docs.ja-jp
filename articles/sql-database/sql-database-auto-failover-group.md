@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 7bfed1144ebfc69ed51b7bbc1adf78538ed28425
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861079"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848381"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -326,13 +326,13 @@ ms.locfileid: "57861079"
 
 1. PowerShellGet モジュールを 1.6.5 (または最新のプレビュー バージョン) に更新します。 [PowerShell プレビューのサイト](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)を参照してください。
 
-   ```PowerShell
+   ```powershell
       install-module PowerShellGet -MinimumVersion 1.6.5 -force
    ```
 
 2. 新しい PowerShell ウィンドウで、次のコマンドを実行します。
 
-   ```PowerShell
+   ```powershell
       import-module PowerShellGet
       get-module PowerShellGet #verify version is 1.6.5 (or newer)
       install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
@@ -343,11 +343,11 @@ ms.locfileid: "57861079"
 
 | API | 説明 |
 | --- | --- |
-| New-AzSqlDatabaseInstanceFailoverGroup |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| Set-AzSqlDatabaseInstanceFailoverGroup |フェールオーバー グループの構成を変更します。|
-| Get-AzSqlDatabaseInstanceFailoverGroup |フェールオーバー グループ構成を取得します。|
-| Switch-AzSqlDatabaseInstanceFailoverGroup |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
-| Remove-AzSqlDatabaseInstanceFailoverGroup | フェールオーバー グループを削除します|
+| New-AzureRmSqlDatabaseInstanceFailoverGroup |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| Set-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループの構成を変更します。|
+| Get-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループ構成を取得します。|
+| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |フェールオーバー グループのセカンダリ サーバーに対するフェールオーバーをトリガーします。|
+| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | フェールオーバー グループを削除します|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 

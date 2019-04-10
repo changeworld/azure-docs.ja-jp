@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490381"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440474"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -26,10 +26,28 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 すべての Azure クラウド環境で動作するテンプレートを作成する方法に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」を参照してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="template-limits"></a>テンプレートの制限
+
+テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
+
+また、以下のように制限されます。
+
+* パラメーター 256 個
+* 変数 256 個
+* リソース (コピー数を含む) 800 個
+* 出力値 64 個
+* テンプレート式内で 24,576 文字
+
+入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](resource-manager-objects-as-parameters.md)に関する記事をご覧ください。
+
+## <a name="resource-group"></a>リソース グループ
+
+リソース グループにリソースをデプロイすると、リソースに関するメタデータがリソース グループに格納されます。 メタデータは、リソース グループの場所に格納されます。
+
+リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 リスクを最小限に抑えるため、リソース グループとリソースは同じリージョンに配置するようにしてください。
 
 ## <a name="parameters"></a>parameters
-このセクションの情報は、[パラメーター](resource-manager-templates-parameters.md)を使用するときに役に立ちます。
+このセクションの情報は、[パラメーター](resource-group-authoring-templates.md#parameters)を使用するときに役に立ちます。
 
 ### <a name="general-recommendations-for-parameters"></a>パラメーターに関する一般的な推奨事項
 
@@ -131,7 +149,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="variables"></a>variables
 
-[変数](resource-manager-templates-variables.md)を使用する場合は、次の情報を活用してください。
+[変数](resource-group-authoring-templates.md#variables)を使用する場合は、次の情報を活用してください。
 
 * テンプレート内で複数回使用する必要のある値には、変数を使用してください。 1 回しか使用しない値は、ハードコーディングすることでテンプレートが読みやすくなります。
 
@@ -155,7 +173,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * 子リソースは、その親リソースに依存するように設定します。
 
-* [condition 要素](resource-manager-templates-resources.md#condition)が false に設定されているリソースは、依存関係の順序から自動的に削除されます。 依存関係は、リソースが常にデプロイされているかのように設定してください。
+* [condition 要素](resource-group-authoring-templates.md#condition)が false に設定されているリソースは、依存関係の順序から自動的に削除されます。 依存関係は、リソースが常にデプロイされているかのように設定してください。
 
 * 明示的に設定しなくても連鎖的な依存関係になるようにします。 たとえば、仮想マシンが仮想ネットワーク インターフェイスに依存し、その仮想ネットワーク インターフェイスは仮想ネットワークとパブリック IP アドレスに依存しているとします。 この場合、仮想マシンは、この 3 つのリソースすべての後にデプロイされますが、この仮想マシンを 3 つのリソースすべてに依存するものとして明示的に設定しないでください。 これにより依存関係の順序が明確になり、後でテンプレートを変更するのも簡単になります。
 
@@ -163,7 +181,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="resources"></a>リソース
 
-[リソース](resource-manager-templates-resources.md)を使用する場合は、次の情報を活用してください。
+[リソース](resource-group-authoring-templates.md#resources)を使用する場合は、次の情報を活用してください。
 
 * 他の共同作業者にリソースの用途がわかるように、テンプレート内の各リソースに **comments** を指定してください。
    
@@ -277,7 +295,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="outputs"></a>出力
 
-テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す [outputs セクション](resource-manager-templates-outputs.md)を組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
+テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す [outputs セクション](resource-group-authoring-templates.md#outputs)を組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
 
 ```json
 "outputs": {

@@ -4,7 +4,6 @@ title: Azure Policy サービスのドキュメント
 metadata:
   title: Azure Policy のドキュメント - チュートリアル、API リファレンス
   description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
-  services: azure-policy
   author: DCtheGeek
   manager: carmonm
   ms.service: azure-policy
@@ -48,7 +47,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure ポリシーの作成と管理</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure Policy の作成と管理</a>
           - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">カスタム ポリシー定義の作成</a>
   - title: サンプル
     items:
@@ -70,4 +69,4 @@ sections:
           - title: Resource Manager テンプレート
             html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">割り当て</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">ポリシーの定義</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">イニシアティブの定義</a></p>
           - title: REST
-            html: <p><a href="/rest/api/policy-insights/policyevents">イベント</a></p><p><a href="/rest/api/policy-insights/policystates">状態</a></p><p><a href="/rest/api/resources/policyassignments">割り当て</a></p><p><a href="/rest/api/resources/policydefinitions">ポリシーの定義</a></p><p><a href="/rest/api/resources/policysetdefinitions">イニシアティブの定義</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">ポリシー追跡対象リソース</a></p><p><a href="/rest/api/policy-insights/remediations">修復</a></p><p><a href="/rest/api/guestconfiguration/">ゲスト構成</a></p>
+            html: <p><a href="/rest/api/policy-insights/policyevents">events</a></p><p><a href="/rest/api/policy-insights/policystates">States</a></p><p><a href="/rest/api/resources/policyassignments">割り当て</a></p><p><a href="/rest/api/resources/policydefinitions">ポリシーの定義</a></p><p><a href="/rest/api/resources/policysetdefinitions">イニシアティブの定義</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">ポリシー追跡対象リソース</a></p><p><a href="/rest/api/policy-insights/remediations">修復</a></p><p><a href="/rest/api/guestconfiguration/">ゲスト構成</a></p>

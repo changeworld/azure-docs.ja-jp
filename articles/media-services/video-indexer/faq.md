@@ -116,7 +116,7 @@ Video Indexer には [Microsoft のプライバシーに関する声明](https:/
 
 ### <a name="what-certifications-does-video-indexer-have"></a>Video Indexer には、どのような認証がありますか?
 
-Video Indexer は、現在のところ SOC 認定資格を持っています。 Video Indexer の認定資格を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
+Video Indexer は、現在のところ SOC 認証を取得しています。 Video Indexer の認証を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
 
 ## <a name="api-questions"></a>API に関する質問
 

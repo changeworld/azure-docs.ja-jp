@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b8a7cd69c7b8d8f44d059fd15718e3493875e20
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fffaa266a29a500f27759adb7526d1aa6d61ccd0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894446"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>チュートリアル:Azure Active Directory と Cherwell の統合
 
@@ -108,7 +108,7 @@ Cherwell で Azure AD のシングル サインオンを構成するには、次
     **[サインオン URL]** ボックスに、`https://<companyname>.cherwellondemand.com/cherwellclient` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Cherwell クライアント サポート チーム](https://csm.cherwell.com/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Cherwell クライアント サポート チーム](https://cherwellsupport.com/CherwellPortal)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -149,7 +149,7 @@ Cherwell で Azure AD のシングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5233f9421b02be9b34bb481252f749e153942573
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 5de6ba8ab64797da24039718ca7f2c0b88d1d33d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312021"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881343"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "58312021"
 ## <a name="supported-operating-systems-and-environments"></a>サポートされているオペレーティング システムと環境
 
 
-|オペレーティング システム  | オンプレミス環境  |
+|オペレーティング システム  | オンプレミスの環境  |
 |---------|---------|
 |Windows Server 2008 SP2 - 32 ビットおよび 64 ビット(IA-32 および x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     VMware VM、Hyper-V VM、および物理サーバー    |
 |Windows Server 2008 R2 SP1 - 64 bit</br>- Standard</br>- Enterprise</br>- Datacenter     |     VMware VM、Hyper-V VM、および物理サーバー|
@@ -52,7 +52,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
 このチュートリアルの手順以外の部分では、オンプレミス VMware 仮想マシンと Windows Server 2008 または 2008 R2 を実行している物理サーバーを移行する方法を説明しています。
 > [!TIP]
-> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください。
+> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリックしてください](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題

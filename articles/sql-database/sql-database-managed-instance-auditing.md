@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086056"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database マネージド インスタンスの監査の概要
 
@@ -50,7 +50,7 @@ ms.locfileid: "55894396"
 
    1. コンテナーの **[名前]** を指定し、パブリック アクセス レベルを **[プライベート]** に設定して、**[OK]** をクリックします。
 
-     ![BLOB コンテナー構成の作成アイコン](./media/sql-managed-instance-auditing/3_create_container_config.png)
+      ![BLOB コンテナー構成の作成アイコン](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
 1. 監査ログ用のコンテナーを作成した後、それを監査ログ用のターゲットとして構成するには、[T-SQL を使用する](#blobtsql)方法と [SQL Server Management Studio (SSMS) UI を使用する](#blobssms)方法の 2 つがあります。
 
@@ -113,7 +113,7 @@ ms.locfileid: "55894396"
         GO
         ```
 
-      1. [サーバー監査仕様またはデータベース監査仕様を作成](#createspec)して続行します
+        1. [サーバー監査仕様またはデータベース監査仕様を作成](#createspec)して続行します
 
    - <a id="blobssms"></a>SQL Server Management Studio (SSMS) 18 (プレビュー) を使って監査ログの BLOB ストレージを構成します。
 
@@ -158,9 +158,9 @@ ms.locfileid: "55894396"
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Event Hubs または Log Analytics に対するサーバー監査の設定
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>Event Hubs または Azure Monitor ログに対するサーバー監査の設定
 
-マネージド インスタンスからの監査ログは、Azure Monitor を使用して Event Hubs または Log Analytics に送信できます。 このセクションでは、この動作の構成方法について説明します。
+マネージド インスタンスからの監査ログは、Event Hubs または Azure Monitor ログに送信できます。 このセクションでは、この動作の構成方法について説明します。
 
 1. [Azure portal](https://portal.azure.com/) 内でマネージド インスタンスに移動します。
 
@@ -170,7 +170,7 @@ ms.locfileid: "55894396"
 
 4. ログのリストで **[SQLSecurityAuditEvents]** を選択します。
 
-5. 監査イベント宛先として、[イベント ハブ]、[Log Analytics]、またはその両方を選択します。 必要なパラメーター (Log Analytics ワークスペースなど) をターゲットごとに構成します。
+5. 監査イベントの宛先を選択します (イベント ハブ、Azure Monitor ログ、またはその両方)。 必要なパラメーター (Log Analytics ワークスペースなど) をターゲットごとに構成します。
 
 6. **[Save]** をクリックします。
 
@@ -190,7 +190,7 @@ ms.locfileid: "55894396"
    - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. 手順 7 で作成したサーバー監査を有効にします。
+10. 手順 8 で作成したサーバー監査を有効にします。
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
@@ -213,11 +213,13 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 イベント ハブの監査ログ データを使用するには、イベントを処理し、そのイベントをターゲットに書き込むようにストリームを設定する必要があります。 詳細については、Azure Event Hubs のドキュメントを参照してください。
 
-### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Log Analytics に格納されているログの使用および分析
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Azure Monitor ログに格納されているログの使用および分析
 
-監査ログが Log Analytics に書き込まれると、それらの監査ログが Log Analytics ワークスペースで使用可能になります。Log Analytics ワークスペースでは、監査データに対して高度な検索を実行できます。 その出発点として、Log Analytics に移動し、*[全般]* セクションの下で *[ログ]* をクリックし、単純なクエリ (例: `search "SQLSecurityAuditEvents"`) を入力して、監査ログを表示してみましょう。  
+監査ログが Azure Monitor ログに書き込まれると、それらの監査ログが Log Analytics ワークスペースで使用可能になります。Log Analytics ワークスペースでは、監査データに対して高度な検索を実行できます。 その出発点として、Log Analytics ワークスペースに移動し、*[全般]* セクションの下で *[ログ]* をクリックし、単純なクエリ (例: `search "SQLSecurityAuditEvents"`) を入力して、監査ログを表示してみましょう。  
 
-Log Analytics により、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関するページをご覧ください。
+Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関するページをご覧ください。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Azure SQL Database のデータベースと SQL Server のデータベースでの監査の相違点
 
@@ -232,7 +234,7 @@ Azure SQL Database のデータベースと SQL Server のデータベースに�
 Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 
 - 新しい `TO URL` 構文が用意されています。この構文を使って、`.xel` ファイルを配置する Azure Blob Storage コンテナーの URL を指定できます。
-- イベント ハブおよび Log Analytics ターゲットを有効にするための新しい構文 `TO EXTERNAL MONITOR` が用意されています。
+- イベント ハブおよび Azure Monitor ログ ターゲットを有効にするための新しい構文 `TO EXTERNAL MONITOR` が用意されています。
 - SQL Database は Windows ファイル共有にアクセスできないため、`TO FILE` 構文は**サポートされていません**。
 - Shutdown オプションは**サポートされていません**。
 - `queue_delay` の値として 0 は**サポートされていません**。

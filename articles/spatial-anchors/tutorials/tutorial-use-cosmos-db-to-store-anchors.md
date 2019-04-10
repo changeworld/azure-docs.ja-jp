@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Spatial Anchors と Azure Cosmos DB のバックエンドを使用したセッションやデバイス間での共有 | Microsoft Docs
+title: チュートリアル - Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する | Microsoft Docs
 description: このチュートリアルでは、バックエンド サービスと Azure Cosmos DB を使用して、Unity で Azure Spatial Anchors 識別子を Android/iOS デバイス間で共有する方法について説明します。
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286399"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915256"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Spatial Anchors と Azure Cosmos DB のバックエンドを使用したセッションやデバイス間での共有
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する
 
-このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用して次の操作を行う方法について学習します。
-
-- あるセッション中にアンカーを作成した後、同じデバイスまたは異なるデバイス上の別のセッション中にそれらを探知する。 たとえば、2 番目のセッションは、別の日であってもかまいません。
-- 複数のデバイスが同時に同じ場所に探知できるアンカーを作成する。
+このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用してあるセッション中にアンカーを作成した後、同じデバイスまたは異なるデバイス上で別のセッションの間にそれらを探す方法について学習します。 たとえば、2 番目のセッションは、別の日であってもかまいません。 これらの同じアンカーは、同じ場所にある複数のデバイスが同時に探知することもできます。
 
 ![オブジェクトの永続性を示す GIF](./media/persistence.gif)
 
@@ -73,7 +70,7 @@ Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Cosmos DB を使用して、デバイス間でアンカーの識別子を共有しました。 Azure Spatial Anchors ライブラリの詳細については、アンカーの作成と配置方法に関するガイドを引き続き参照してください。
+このチュートリアルでは、Azure Cosmos DB を使用して、デバイス間でアンカーの識別子を共有しました。 新しい Android アプリで Azure Spatial Anchors を使用する方法について詳しくは、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure Spatial Anchors を使用したアンカーの作成と配置](../create-locate-anchors-overview.md)
+> [新しい Android アプリの開始](./tutorial-new-android-app.md)

@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/04/2019
-ms.openlocfilehash: 12b0690c7653b03c8099253bee509a79a2ae2600
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/22/2019
+ms.openlocfilehash: 05440698d40a2175fd47384fa2db94ad80d79aa4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561860"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773598"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance に使用する VNet のサブネット サイズを決める
 
@@ -27,7 +27,7 @@ VNet のサブネットにデプロイできる Managed Instance の数は、そ
 
 マネージド インスタンスを作成する場合、Azure では、プロビジョニング中に選択された階層に応じて、仮想マシンの数を割り当てます。 これらの仮想マシンはお使いのサブネットに関連付けられているため、IP アドレスが必要です。 通常の操作とサービス メンテナンス時の高可用性を確保するために、Azure は追加の仮想マシンを割り当てることがあります。 その結果、サブネット内の必要な IP アドレスの数が、そのサブネット内のマネージド インスタンスの数より大きくなります。
 
-仕様上、マネージド インスタンスにはサブネット内で 16 個以上の IP アドレスが必要であり、最大 256 個の IP アドレスを使用する場合があります。 その結果、サブネットの IP 範囲を定義するときに、/28 から /24 のサブネット マスクを使用することができます。
+仕様上、マネージド インスタンスにはサブネット内で 16 個以上の IP アドレスが必要であり、最大 256 個の IP アドレスを使用する場合があります。 その結果、サブネットの IP 範囲を定義するときに、/28 から /24 までの間のサブネット マスクを使用することができます。 ネットワーク マスク ビット /28 (ネットワークあたり 14 ホスト) は、単一の汎用デプロイおよびビジネスクリティカル デプロイに適したサイズです。 マスク ビット /27 (ネットワークあたり 30 ホスト) は、同じ VNet 内での複数のマネージ インスタンス デプロイに最適です。 /26 (62 ホスト) および /24 (254 ホスト) のマスク ビット設定を使用すれば、VNet をさらに拡張して、追加のマネージ インスタンスをサポートすることができます。
 
 > [!IMPORTANT]
 > 16 個の IP アドレスから成るサブネット サイズは、マネージド インスタンスをさらにスケールアウトするために必要な最小限の潜在能力です。プレフィックス /27 以下のサブネットを選択することを強くお勧めします。

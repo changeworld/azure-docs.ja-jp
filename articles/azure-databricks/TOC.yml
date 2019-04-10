@@ -11,9 +11,13 @@ items:
     href: quickstart-create-databricks-workspace-portal.md
   - name: Databricks ワークスペースの作成 - Resource Manager テンプレート
     href: quickstart-create-databricks-workspace-resource-manager-template.md
+  - name: Databricks ワークスペースの作成 - 仮想ネットワーク
+    href: quickstart-create-databricks-workspace-vnet-injection.md
   expanded: true
 - name: チュートリアル
   items:
+  - name: Docker コンテナーで稼働している SQL Server に対するクエリ
+    href: vnet-injection-sql-server.md
   - name: ETL 操作の実行
     href: databricks-extract-load-sql-data-warehouse.md
   - name: Event Hubs を使用したデータのストリーミング
@@ -73,9 +77,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 58c18654cd981f8ec9cb6edfdd0024f2fef32268
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1f0b7bcc369a3f857fe974f8b8ec68b801516589
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223344"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256398"

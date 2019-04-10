@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327852"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544241"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -38,7 +38,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 > [!NOTE]
 > Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。そのとき、ダウンタイムは発生せず、データをコピーする必要はありません。
 >
-> 汎用 v2 アカウントへのアップグレードの詳細については、[汎用 v2 ストレージ アカウントへのアップグレード](storage-account-upgrade.md)に関する記事を参照してください。 
+> 汎用 v2 アカウントへのアップグレードの詳細については、[汎用 v2 ストレージ アカウントへのアップグレード](storage-account-upgrade.md)に関する記事を参照してください。
 
 汎用 v2 ストレージ アカウントには、使用パターンに基づいてデータを格納するための複数のアクセス層があります。 詳細については、「[ブロック BLOB データ用のアクセス層](#access-tiers-for-block-blob-data)」を参照してください。
 
@@ -60,11 +60,9 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 * [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。
 
-### <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
+### <a name="block-blob-storage-accounts"></a>ブロック BLOB ストレージ アカウント
 
-BLOB ストレージ アカウントとは、非構造化オブジェクト データをブロック BLOB として格納するための特化されたストレージ アカウントです。 BLOB ストレージ アカウントは、汎用 v2 ストレージ アカウントで利用できる持続性、可用性、スケーラビリティ、およびパフォーマンス機能と同じものを提供します。 BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納をサポートします。ページ BLOB はサポートしません。
-
-BLOB ストレージ アカウントには、使用パターンに基づいてデータを格納するための複数のアクセス層があります。 詳細については、「[ブロック BLOB データ用のアクセス層](#access-tiers-for-block-blob-data)」を参照してください。
+ブロック BLOB ストレージ アカウントとは、非構造化オブジェクト データをブロック BLOB または追加 BLOB として格納するための特化されたストレージ アカウントです。 ブロック BLOB ストレージ アカウントには、使用パターンに基づいてデータを格納するための複数のアクセス層があります。 詳細については、「[ブロック BLOB データ用のアクセス層](#access-tiers-for-block-blob-data)」を参照してください。
 
 ## <a name="naming-storage-accounts"></a>ストレージ アカウントの名前付け
 
@@ -87,7 +85,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 使用可能なアクセス層は次のとおりです。
 
 > [!NOTE]
-> [Premium アクセス層](../blobs/storage-blob-storage-tiers.md#premium-access-tier)は、北ヨーロッパ、米国東部 2、米国中部、および米国西部の各リージョンで、ローカル冗長ストレージ (LRS) アカウントとして、限定プレビューで利用できます。 プレビューに登録する方法については、「[Azure Premium Blob Storage の概要](https://aka.ms/premiumblob)」を参照してください。
+> [Premium アクセス層 (プレビュー)](../blobs/storage-blob-storage-tiers.md#premium-access-tier) は、パフォーマンス要件の高いアプリケーション向けに最適化されています。このアクセス層では、優れたスループットとトランザクション速度によって、一貫した低待機時間が提供されます。 Premium アクセス層は、ブロック BLOB ストレージ アカウント (プレビュー) でのみ使用できます。 詳しくは、「[Azure Premium Blob Storage public preview (Azure Premium Blob Storage のパブリック プレビュー)](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/)」をご覧ください。
 
 * **ホット** アクセス層は、ストレージ アカウント内のオブジェクトへの頻繁なアクセスに対応するように最適化されています。 ホット層でのデータのアクセスは、費用対効果は最も高くなりますが、ストレージ コストは若干高くなります。 新しいストレージ アカウントは、既定ではホット層に作成されます。
 * **クール**  ストレージ層は、アクセスされる頻度が低いデータで、少なくとも 30 日以上保管される大量のデータの格納に適しています。 クール層でのデータの格納は、費用対効果が高くなりますが、データへのアクセスがホット層でのデータへのアクセスよりも若干高くなる場合があります。

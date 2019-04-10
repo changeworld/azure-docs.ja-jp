@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 09/24/2018
+ms.date: 02/28/2019
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2be77cdc4a5ad38a7d8c125fd95256e77cd92019
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202946"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543188"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -44,7 +44,6 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能は、アプ�
 
 具体的には、次のシナリオでは、条件付きアクセス "問題" に対応するためコードが必要になります。
 
-* Microsoft Graph にアクセスするアプリ
 * On-Behalf-Of フローを実行するアプリ
 * 複数のサービスとリソースにアクセスするアプリ
 * ADAL.js を使用するシングル ページ アプリ
@@ -58,15 +57,28 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能は、アプ�
 
 シナリオによっては、条件付きアクセスを処理するためにコードの変更が必要なものと、不要なものがあります。 これは、それぞれの違いをわかりやすく説明する、条件付きアクセスを使用した多要素認証のシナリオです。
 
-* シングル テナントの iOS アプリを構築して、条件付きアクセス ポリシーを適用するとします。 アプリがユーザーのサインインを処理し、API へのアクセスは要求されません。 ユーザーがサインインすると、ポリシーが自動的に呼び出され、ユーザーは、多要素認証 (MFA) を実行する必要があります。
-* Microsoft Graph を使用して Exchange などのサービスにアクセスするマルチテナント Web アプリを作成するとします。 このアプリを採用する企業のお客様は、Exchange のポリシーを設定します。 Web アプリが MS Graph のトークンを要求するとき、そのアプリはポリシーへの準拠が求められません。 エンドユーザーは有効なトークンでサインインされます。 アプリが Microsoft Graph に対してこのトークンを使用して、Exchange データにアクセスしようとすると、```WWW-Authenticate``` ヘッダーで Web アプリに要求 "チャレンジ" が返されます。 アプリは新しい要求で ```claims``` を使用でき、エンドユーザーは条件に準拠するよう求められます。
+* シングル テナントの iOS アプリを構築して、条件付きアクセス ポリシーを適用するとします。 アプリがユーザーのサインインを処理し、API へのアクセスは要求されません。 ユーザーがサインインすると、ポリシーが自動的に呼び出され、ユーザーは、多要素認証 (MFA) を実行する必要があります。 
 * 中間層サービスを使用して、ダウンストリーム API にアクセスするネイティブ アプリを作成するとします。 このアプリを使用する会社のお客様は、ダウンストリーム API にポリシーを適用します。 エンドユーザーがサインインすると、ネイティブ アプリケーションは中間層へのアクセスを要求し、トークンを送信します。 中間層では On-Behalf-Of フローが実行され、ダウンストリーム API へのアクセスが要求されます。 この時点では、"チャレンジ" 要求は、中間層に提示されます。 中間層では、条件付きアクセス ポリシーに準拠する必要があるネイティブのアプリケーションにチャレンジを送信します。
+
+#### <a name="microsoft-graph"></a>Microsoft Graph
+
+Microsoft Graph では、条件付きアクセスの環境でアプリを構築する場合に、特別な考慮事項があります。 通常、条件付きアクセスのメカニズムは同様に動作しますが、ユーザーに表示されるポリシーは、アプリがグラフから要求している基本データに基づくものとなります。 
+
+具体的に言うと、Microsoft Graph のスコープはすべて、ポリシーを個別に適用できる、いくつかのデータセットを表します。 条件付きアクセスのポリシーには特定のデータセットが割り当てられるため、Azure AD では、Graph 自体ではなく、Graph の背後にあるデータに基づいた条件付きアクセス ポリシーが適用されます。
+
+たとえば、アプリが次の Microsoft Graph スコープを要求したとします。
+
+```
+scopes="Bookings.Read.All Mail.Read"
+```
+
+この場合アプリでは、ユーザーが Bookings と Exchange で設定されたすべてのポリシーを満たすことを想定できます。 一部のスコープは、複数のデータセットにマップされる場合があります (アクセスを許可する場合)。 
 
 ### <a name="complying-with-a-conditional-access-policy"></a>条件付きアクセス ポリシーへの準拠
 
 その他のアプリケーション トポロジでは、セッションが確立されたときに条件付きアクセス ポリシーが評価されます。 条件付きアクセス ポリシーは、アプリやサービスの粒度に従って動作するため、実行しようとしているシナリオによって呼び出される点が大きく異なります。
 
-アプリが条件付きアクセス ポリシーを使用してサービスにアクセスしようとすると、条件付きアクセスのチャレンジが発生する可能性があります。 このチャレンジは、Azure AD または Microsoft Graph からの応答に含まれる `claims` パラメーターにエンコードされています。 このチャレンジ パラメーターの例を次に示します。
+アプリが条件付きアクセス ポリシーを使用してサービスにアクセスしようとすると、条件付きアクセスのチャレンジが発生する可能性があります。 このチャレンジは、Azure AD からの応答に含まれる `claims` パラメーターにエンコードされています。 このチャレンジ パラメーターの例を次に示します。 
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -84,70 +96,15 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.micros
 
 次の情報は、これらの条件付きアクセス シナリオでのみ適用されます。
 
-* Microsoft Graph にアクセスするアプリ
 * On-Behalf-Of フローを実行するアプリ
 * 複数のサービスとリソースにアクセスするアプリ
 * ADAL.js を使用するシングル ページ アプリ
 
-以下のセクションでは、より複雑な一般的なシナリオについて説明します。 基本的な運用原則では、条件付きアクセス ポリシーは、Microsoft Graph を通してアクセスされた場合を除いて、条件付きアクセス ポリシーが適用されるサービスのトークンが要求されたときに評価されます。
+以下のセクションでは、より複雑な一般的なシナリオについて説明します。 基本的な運用原則では、条件付きアクセス ポリシーは、条件付きアクセス ポリシーが適用されるサービスのトークンが要求されたときに評価されます。
 
-## <a name="scenario-app-accessing-microsoft-graph"></a>シナリオ:Microsoft Graph にアクセスするアプリ
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ: On-Behalf-Of フローを実行するアプリ
 
-このシナリオでは、Web アプリが Microsoft Graph へのアクセスを要求する方法について説明します。 この場合、条件付きアクセス ポリシーは、SharePoint、Exchange、または Microsoft Graph を通じてワークロードとしてアクセスされるその他のサービスに割り当てられます。 この例では、SharePoint Online に条件付きアクセス ポリシーがあると仮定します。
-
-![Microsoft Graph にアクセスするアプリのフロー ダイアグラム](./media/conditional-access-dev-guide/app-accessing-microsoft-graph-scenario.png)
-
-アプリは、まず条件付きアクセスを使用せず、ダウンストリーム ワークロードにアクセスする必要がある Microsoft Graph に承認を要求します。 ポリシーが呼び出されることなく要求は成功し、アプリは Microsoft Graph のトークンを受信します。 この時点では、アプリは、要求されたエンドポイントに対して、ベアラー要求でアクセス トークンを使用できます。 ここで、アプリは、たとえば Microsoft Graph の SharePoint Online のエンドポイントにアクセスする必要があります。`https://graph.microsoft.com/v1.0/me/mySite`
-
-アプリは Microsoft Graph に有効なトークンを既に取得しているため、新しいトークンが発行されなくても新しい要求を実行できます。 この要求は失敗し、```WWW-Authenticate``` チャレンジ HTTP 403 アクセス禁止の形式で 要求チャレンジが Microsoft Graph から発行されます。
-
-応答の例を次に示します。
-
-```
-HTTP 403; Forbidden
-error=insufficient_claims
-www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/common/oauth2/authorize", client_id="<GUID>", error=insufficient_claims, claims={"access_token":{"polids":{"essential":true,"values":["<GUID>"]}}}"
-```
-
-要求チャレンジは ```WWW-Authenticate``` ヘッダーに含まれ、次の要求の要求パラメーターを抽出するために解析できます。 要求チャレンジを新しい要求に追加すると、Azure AD でユーザーがサインインしたときに条件付きアクセス ポリシーが評価され、アプリは条件付きアクセス ポリシーに準拠します。 SharePoint Online のエンドポイントに同じ要求を繰り返しても成功します。
-
-```WWW-Authenticate``` ヘッダーは一意の構造体を持つため、解析して、値を抽出するのは簡単ではありません。 次の方法は簡単で役に立ちます。
-
-```csharp
-        /// <summary>
-        /// This method extracts the claims value from the 403 error response from MS Graph.
-        /// </summary>
-        /// <param name="wwwAuthHeader"></param>
-        /// <returns>Value of the claims entry. This should be considered an opaque string.
-        /// Returns null if the wwwAuthheader does not contain the claims value. </returns>
-        private String extractClaims(String wwwAuthHeader)
-        {
-            String ClaimsKey = "claims=";
-            String ClaimsSubstring = "";
-            if (wwwAuthHeader.Contains(ClaimsKey))
-            {
-                int Index = wwwAuthHeader.IndexOf(ClaimsKey);
-                ClaimsSubstring = wwwAuthHeader.Substring(Index, wwwAuthHeader.Length - Index);
-                string ClaimsChallenge;
-                if (Regex.Match(ClaimsSubstring, @"}$").Success)
-                {
-                    ClaimsChallenge = ClaimsSubstring.Split('=')[1];
-                }
-                else
-                {
-                    ClaimsChallenge = ClaimsSubstring.Substring(0, ClaimsSubstring.IndexOf("},") + 1);
-                }
-                return ClaimsChallenge;
-            }
-            return null;
-        }
-```
-
-要求チャレンジを処理するコード サンプルについては、ADAL .NET 用 [On-Behalf-Of コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)を参照してください。
-
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ:On-Behalf-Of フローを実行するアプリ
-
-このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 さらに、そのサービスによって、"On-Behalf-Of" フローでダウンストリーム サービスが呼び出されます。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。
+このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 さらに、そのサービスによって、"On-Behalf-Of" フローでダウンストリーム サービスが呼び出されます。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。 
 
 ![On-Behalf-Of フローを実行するアプリのフロー ダイアグラム](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -217,7 +174,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 アプリは `error=interaction_required` をキャッチする必要があります。 アプリは、同じソースの `acquireTokenPopup()` または `acquireTokenRedirect()` を使用できます。 ユーザーは多要素認証の実行を求められます。 ユーザーが多要素認証を完了すると、アプリに、要求されたリソースの新しいアクセス トークンが発行されます。
 
 このシナリオを試すには、[JS SPA On-Behalf- コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)を参照してください。 このコード サンプルでは、条件付きアクセス ポリシーと、このシナリオを説明するために、上記で JS SPA に登録された Web API が使用されます。 クレーム チャレンジを正しく処理し、Web API で使用できるアクセス トークンを取得する方法を示します。 または、Angular SPA については、一般的な [Angular.js コード サンプル](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)を参照してください。
-
 
 ## <a name="see-also"></a>関連項目
 

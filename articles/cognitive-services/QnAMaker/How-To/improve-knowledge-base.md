@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
 manager: nitinme
-displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: 6feb521aa47ca813b3067451c8c77111deb60e73
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874007"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537900"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -32,13 +32,15 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
 どちらの方法でも、クラスター化されている類似のクエリがランカーに提供されます。
 
-類似のクエリがクラスター化されると、QnA Maker はナレッジ ベース デザイナーに、承認または却下するユーザー ベースの質問を提案します。
-
 ## <a name="how-active-learning-works"></a>アクティブ ラーニングの動作方法
 
-アクティブ ラーニングは、特定のクエリに対して QnA Maker によって返される、上位いくつかの回答のスコアに基づいてトリガーされます。 スコアの違いが狭い範囲内にある場合、そのクエリは、回答の各候補についてあり得る _提案_ であると見なされます。 
+アクティブ ラーニングは、特定のクエリに対して QnA Maker によって返される、上位いくつかの回答のスコアに基づいてトリガーされます。 スコアの違いが狭い範囲内にある場合、そのクエリは、回答の各候補についてあり得る_提案_であると見なされます。 
 
 すべての提案は類似度によって一緒にクラスター化され、エンドユーザーによる特定のクエリの頻度に基づいて、代わりの質問に対する上位の提案が表示されます。 アクティブ ラーニングでは、エンドポイントが、妥当な量で多様性のある使用状況クエリを受け取っている場合、可能な限り最適な提案が示されます。
+
+類似のクエリが 5 つ以上クラスター化された場合、QnA Maker は 30 分おきに、ユーザー ベースの質問をナレッジ ベース デザイナーに提案し、承認または却下を求めます。
+
+QnA Maker ポータルで質問が提案されたら、それらの提案をレビューして、承認または拒否する必要があります。 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>アクティブ ラーニングを使用するバージョンへのアップグレード
 
@@ -58,6 +60,8 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
 アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示します。 
 
+1. **[発行]** を選択してナレッジ ベースを発行します。 アクティブ ラーニング クエリは、GenerateAnswer API 予測エンドポイントからのみ収集されます。 Qna Maker ポータルの [テスト] ウィンドウへのクエリは、アクティブ ラーニングには影響しません。
+
 1. アクティブ ラーニングを有効にするには、自分の**名前**をクリックし、QnA Maker ポータルの右上隅にある [**[Service Settings]\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。  
 
     ![サービスの設定ページでアクティブ ラーニングを切り替える](../media/improve-knowledge-base/Endpoint-Keys.png)
@@ -75,7 +79,7 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
     [![サービスの設定ページで [Show Suggestions] (提案の表示) ボタンを切り替える](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. **[Filter by Suggestions] (提案別にフィルターを適用)** を選択し、質問と回答のペアでナレッジ ベースをフィルター処理すると、提案だけが表示されます。
+1. **[Filter by Suggestions]\(提案別にフィルターを適用\)** を選択し、質問と回答のペアでナレッジ ベースをフィルター処理すると、提案だけが表示されます。
 
     [![サービスの設定ページで提案によってフィルター処理し、質問/回答のペアだけを表示する](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -83,10 +87,13 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
     [![サービスの設定ページで [Active Learning] (アクティブ ラーニング) を切り替える](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    **[Add all] (すべて追加)** または **[Reject all] (すべて却下)** を選択し、_すべての提案_ を追加または削除できます。
+    **[Add all] (すべて追加)** または **[Reject all] (すべて却下)** を選択し、_すべての提案_を追加または削除できます。
 
 1. **[Save and train] (保存してトレーニング)** を選択し、ナレッジ ベースに変更を保存します。
 
+1. **[発行]** を選択して、変更を GenerateAnswer API から使用できるようにします。
+
+    類似のクエリが 5 つ以上クラスター化された場合、QnA Maker は 30 分おきに、ユーザー ベースの質問をナレッジ ベース デザイナーに提案し、承認または却下を求めます。
 
 ## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>似たスコアを持つ質問が複数ある場合に最適な選択肢を特定する
 
@@ -147,7 +154,7 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
 クライアント アプリケーションは、ユーザーが自分の意図を最も適切に表している質問を選択するためのオプションを示して、すべての質問を表示します。 
 
-ユーザーが既存の質問の 1 つを選択すると、 ユーザーのフィードバックが QnA Maker の [Train](http://www.aka.ms/activelearningsamplebot) API に送信され、アクティブ ラーニングのフィードバック ループが続行されます。 
+ユーザーが既存の質問の 1 つを選択すると、 ユーザーのフィードバックが QnA Maker の [Train](https://www.aka.ms/activelearningsamplebot) API に送信され、アクティブ ラーニングのフィードバック ループが続行されます。 
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -157,6 +164,31 @@ Content-Type: application/json
 ```
 
 アクティブ ラーニングを使用する方法については、[Azure Bot C# の例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)で詳細を説明しています
+
+## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>アクティブ ラーニングはエクスポートされたアプリの tsv ファイルに保存されます
+
+アプリでアクティブ ラーニングが有効になっている場合、アプリをエクスポートすると、tsv ファイル内の `SuggestedQuestions` 列にアクティブ ラーニング データが保持されます。 
+
+`SuggestedQuestions` 列は、暗黙的 (`autosuggested`) および明示的 (`usersuggested`) な[フィードバック](#active-learning)情報の JSON オブジェクトです。 次に示すのは、ユーザーが送信した 1 つの `help` の質問に対応する、この JSON オブジェクトの例です。
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+このアプリを再インポートすると、アクティブ ラーニングは引き続き情報を収集し、ナレッジ ベースに対する提案を提示します。 
 
 ## <a name="next-steps"></a>次の手順
  

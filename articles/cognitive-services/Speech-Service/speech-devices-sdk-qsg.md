@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 4c01cf93fe3bb66f9bce73acb3c2f100764d1f46
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 114e0b951b2bfe83e8b989646bd07a5fd75b3ee6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872545"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894412"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Speech Devices SDK を使ってみる
 
@@ -37,20 +37,20 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
 
 * [Speech Devices SDK のダウンロード サイト](https://shares.datatransfer.microsoft.com/)から、Android サンプル アプリを含む最新バージョンの Speech Devices SDK を取得します。 .zip ファイルをローカル フォルダーに抽出します (C:\SDSDK など)。
 
-* [Android Studio](https://developer.android.com/studio/) と [Vysor](http://vysor.io/download/) を PC にインストールします。
+* [Android Studio](https://developer.android.com/studio/) と [Vysor](https://vysor.io/download/) を PC にインストールします。
 
-* [音声サービスのサブスクリプション キー](get-started.md)を取得します。 30 日間の無料試用版を入手するか、Azure ダッシュボードからキーを取得できます。
+* [Speech Services のサブスクリプション キー](get-started.md)を取得します。 30 日間の無料試用版を入手するか、Azure ダッシュボードからキーを取得できます。
 
-* Speech Service の意図認識を使用する場合は、[Language Understanding Intelligent Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)(LUIS) をサブスクライブし、[サブスクリプション キーを取得](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)します。
+* Speech Services の意図認識を使用する場合は、[Language Understanding Intelligent Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)(LUIS) をサブスクライブし、[サブスクリプション キーを取得](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription)します。
 
     [LUIS の単純なモデルを作成](https://docs.microsoft.com/azure/cognitive-services/luis/)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://shares.datatransfer.microsoft.com/)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、**[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
 
 ## <a name="set-up-the-development-kit"></a>開発キットをセットアップする
-    
+
 1. 開発キットには、2 つのマイクロ USB コネクタがあります。 左側のコネクタは開発キットに電源を供給するためのものです。下の画像では Power と強調表示されています。 右側のコネクタは開発キットを制御するためのものです。画像では Debug とマークされています。
 
     ![開発キットの接続](media/speech-devices-sdk/qsg-1.png)
-       
+
 1. マイクロ USB ケーブルを使用して電源ポートを PC または電源アダプターに接続して、開発キットに電源を供給します。 トップ ボードの下で緑色の電源インジケーターが点灯します。
 
 1. 開発キットを制御するために、2 本目のマイクロ USB ケーブルを使用してデバッグ ポートをコンピューターに接続します。 信頼性の高い通信を確保するためには、高品質のケーブルを使用することが不可欠になります。
@@ -114,92 +114,68 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
 
 ROOBO テストを実行して開発キットのセットアップを検証するには、サンプル アプリケーションをビルドしてインストールします。
 
-1.  Android Studio を起動します。
+1. Android Studio を起動します。
 
-1.  **[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)** を選択します。
+1. **[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)** を選択します。
 
-    ![Android Studio - 既存のプロジェクトを開く](media/speech-devices-sdk/qsg-5.png)
+   ![Android Studio - 既存のプロジェクトを開く](media/speech-devices-sdk/qsg-5.png)
 
-1.  C:\SDSDK\Android-Sample-Release\example に移動します。 **[OK]** を選択してサンプル プロジェクトを開きます。
+1. C:\SDSDK\Android-Sample-Release\example に移動します。 **[OK]** を選択してサンプル プロジェクトを開きます。
 
-1.  ソース コードに Speech サブスクリプション キーを追加します。 意図認識を試す場合は、[Language Understanding Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) のサブスクリプション キーとアプリケーション ID も追加します。
+1. ソース コードに Speech サブスクリプション キーを追加します。 意図認識を試す場合は、[Language Understanding Service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) のサブスクリプション キーとアプリケーション ID も追加します。
 
-    キーとアプリケーションの情報は、ソース ファイル MainActivity.java の次の行に配置されます。
+   キーとアプリケーションの情報は、ソース ファイル MainActivity.java の次の行に配置されます。
 
-    ```java
-    // Subscription
-    private static final String SpeechSubscriptionKey = "[your speech key]";
-    private static final String SpeechRegion = "westus";
-    private static final String LuisSubscriptionKey = "[your LUIS key]";
-    private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
-    private static final String LuisAppId = "[your LUIS app ID]"
-    ```
+   ```java
+   // Subscription
+   private static final String SpeechSubscriptionKey = "[your speech key]";
+   private static final String SpeechRegion = "westus";
+   private static final String LuisSubscriptionKey = "[your LUIS key]";
+   private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
+   private static final String LuisAppId = "[your LUIS app ID]"
+   ```
 
 1. 既定のウェイク ワード (キーワード) は "Computer" です。 用意されている別のウェイク ワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替ウェイク ワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、C:\SDSDK\Android-Sample-Release\keyword\Computer には、ウェイク ワード "Computer" に使用されるファイルが含まれています。
 
     [カスタム ウェイク ワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
 
-    使用するウェイク ワードをインストールする方法
+    新しいウェイク ワードを使用するには、MainActivity.java で下記の 2 行を更新し、ウェイク ワード パッケージをアプリにコピーします。 たとえば、ウェイク ワード パッケージ kws-machine.zip からウェイク ワード "Machine" を使用するには、次の操作を行います。
 
-    * コマンド プロンプト ウィンドウで次のコマンドを実行して、デバイスの data フォルダー内に keyword フォルダーを作成します。
+   * ウェイク ワード パッケージを、"C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" フォルダーにコピーします。
+   * 次に示すように、MainActivity.java でキーワードとパッケージ名を更新します。 
+    
+     ```java
+     private static final String Keyword = "Machine";
+     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
+     ```
 
-        ```
-        adb shell
-        cd /data
-        mkdir keyword
-        exit
-        ```
+1. マイク配列ジオメトリ設定が含まれる次の行を更新します。
 
-    * ファイル kws.table, kws_k.fst と words_kw.txt をデバイスの \data\keyword フォルダーにコピーします。 コマンド プロンプト ウィンドウで次のコマンドを実行します。 [カスタム ウェイク ワード](speech-devices-sdk-create-kws.md)を作成した場合、Web から生成された kws.table ファイルは、kws.table、kws_k.fst、および words_kw.txt の各ファイルと同じディレクトリに格納されます。 カスタム ウェイク ワードでは、`adb push C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table /data/keyword` コマンドを使用して kws.table ファイルを開発キットにプッシュします。
+   ```java
+   private static final String DeviceGeometry = "Circular6+1";
+   private static final String SelectedGeometry = "Circular6+1";
+   ```
+   次の表に、使用可能な値を示します。
 
-        ```
-        adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
-        adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\kws_k.fst /data/keyword
-        adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
-        ```
-
-    * サンプル アプリケーションでこれらのファイルを参照します。 MainActivity.java で、次の行を見つけます。 使用するキーワードが指定されていること、パスがデバイスにプッシュした `kws.table` ファイルを指していることを確認します。
-
-        ```java
-        private static final String Keyword = "Computer";
-        private static final String KeywordModel = "/data/keyword/kws.table";
-        ```
-
-        > [!NOTE]
-        > 独自のコード内で、次のように kws.table ファイルを使用して、キーワード モデル インスタンスを作成して認識を開始できます、
-        >
-        > ```java
-        > KeywordRecognitionModel km = KeywordRecognitionModel.fromFile(KeywordModel);
-        > final Task<?> task = reco.startKeywordRecognitionAsync(km);
-        > ```
-
-1.  マイク配列ジオメトリ設定が含まれる次の行を更新します。
-
-    ```java
-    private static final String DeviceGeometry = "Circular6+1";
-    private static final String SelectedGeometry = "Circular6+1";
-    ```
-    次の表に、使用可能な値を示します。
-
-    |可変|意味|使用できる値|
-    |--------|-------|----------------|
-    |`DeviceGeometry`|物理的なマイクの構成|円形開発キットでは `Circular6+1` |
-    |||直線開発キットでは `Linear4`|
-    |`SelectedGeometry`|ソフトウェアのマイクの構成|すべてのマイクを使用する円形開発キットでは `Circular6+1`|
-    |||4 つのマイクを使用する円形開発キットでは `Circular3+1`|
-    |||すべてのマイクを使用する線形開発キットでは `Linear4`|
-    |||2 つのマイクを使用する線形開発キットでは `Linear2`|
+   |可変|意味|使用できる値|
+   |--------|-------|----------------|
+   |`DeviceGeometry`|物理的なマイクの構成|円形開発キットでは `Circular6+1` |
+   |||直線開発キットでは `Linear4`|
+   |`SelectedGeometry`|ソフトウェアのマイクの構成|すべてのマイクを使用する円形開発キットでは `Circular6+1`|
+   |||4 つのマイクを使用する円形開発キットでは `Circular3+1`|
+   |||すべてのマイクを使用する線形開発キットでは `Linear4`|
+   |||2 つのマイクを使用する線形開発キットでは `Linear2`|
 
 
-1.  アプリケーションをビルドするには、**[実行]** メニューで **[アプリの実行]** を選択します。 **[Select Deployment Target]** \(配置ターゲットの選択\) ダイアログ ボックスが表示されます。
+1. アプリケーションをビルドするには、**[実行]** メニューで **[アプリの実行]** を選択します。 **[Select Deployment Target]** \(配置ターゲットの選択\) ダイアログ ボックスが表示されます。
 
 1. デバイスを選択し、**[OK]** を選択してアプリケーションをデバイスに配置します。
 
     ![[Select Deployment Target]\(配置ターゲットの選択\) ダイアログ ボックス](media/speech-devices-sdk/qsg-7.png)
 
-1.  Speech Devices SDK のサンプル アプリケーションが起動し、次のオプションが表示されます。
+1. Speech Devices SDK のサンプル アプリケーションが起動し、次のオプションが表示されます。
 
-    ![Speech Devices SDK のサンプル アプリケーションとオプション](media/speech-devices-sdk/qsg-8.png)
+   ![Speech Devices SDK のサンプル アプリケーションとオプション](media/speech-devices-sdk/qsg-8.png)
 
 1. 実験
 
@@ -207,7 +183,7 @@ ROOBO テストを実行して開発キットのセットアップを検証す�
 
 ### <a name="certificate-failures"></a>証明書エラー
 
-Speech Service を使用する際に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。
+Speech Services を使用している場合に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。
 
 1. **[設定]** に移動します。 **[システム]** で、**[日付と時刻]** を選択します。
 

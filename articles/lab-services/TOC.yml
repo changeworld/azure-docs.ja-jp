@@ -53,6 +53,8 @@ items:
       href: devtest-lab-concepts.md
     - name: シナリオ
       items:
+      - name: DevTest Labs を使用する一般的なシナリオ
+        href: devtest-lab-guidance-get-started.md
       - name: 開発者向けのラボの使用
         href: devtest-lab-developer-lab.md
       - name: テスト環境でのラボの使用
@@ -109,8 +111,6 @@ items:
     - name: エンタープライズで DevTest Labs インフラストラクチャを設定する
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
-      - name: DevTest Labs を使って作業を開始する
-        href: devtest-lab-guidance-get-started.md
       - name: DevTest Labs デプロイのスケールアップ
         href: devtest-lab-guidance-scale.md
       - name: DevTest Labs の実装を調整する
@@ -279,9 +279,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: よく寄せられる質問
       href: devtest-lab-faq.md
-ms.openlocfilehash: 0b8c70629d17ed93b67a746fadfe66944d9489c9
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a5312fc1c99072c10337bd00569a608825df3bc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894442"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262875"

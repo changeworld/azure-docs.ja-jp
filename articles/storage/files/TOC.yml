@@ -82,8 +82,10 @@ items:
   items:
   - name: Create
     items:
-    - name: ファイル共有を作成する
+    - name: 標準ファイル共有を作成する
       href: storage-how-to-create-file-share.md
+    - name: Premium ファイル共有を作成する
+      href: storage-how-to-create-premium-fileshare.md
   - name: デプロイ
     items:
     - name: Azure Files のデプロイ
@@ -251,9 +253,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: 2de395b56b2edcbf108797b7a52d3676f8a79d65
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 3ee36940f08fee35eaafc1dda3ca21bad00828b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500459"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281592"

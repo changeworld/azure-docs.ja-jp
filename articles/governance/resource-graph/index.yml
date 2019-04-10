@@ -4,7 +4,6 @@ title: Azure Resource Graph サービスのドキュメント
 metadata:
   title: Azure Resource Graph のドキュメント - チュートリアル、API リファレンス
   description: Azure Resource Graph は、リソースの複雑なクエリを大規模に実行するための Azure サービスです。
-  services: resource-graph
   author: DCtheGeek
   manager: carmonm
   ms.service: resource-graph

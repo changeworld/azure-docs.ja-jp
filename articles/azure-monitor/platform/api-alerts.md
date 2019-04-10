@@ -94,7 +94,7 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
+| Type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
 | Name |アラートの表示名。 |
 | Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
@@ -136,7 +136,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 | セクション | 説明 | 使用法 |
 |:--- |:--- |:--- |
 | Threshold |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
-| severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| Severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
 | Suppress |アラートからの通知を停止するオプション。 | Azure に拡張される前と後の両方の、すべてのアラートで省略可能です。 |
 | Action Groups |Azure ActionGroup の ID。電子メール、SMS、音声通話、Webhook、Automation Runbook、ITSM Connector など、必要なアクションが指定されています。| アラートが Azure に拡張されると必要|
 | Customize Actions|ActionGroup の選択したアクションの標準出力を変更します| すべてのアラートで省略可能で、アラートが Azure に拡張された後に使用できます。 |
@@ -182,7 +182,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>severity
+#### <a name="severity"></a>Severity
 Log Analytics を使用するとアラートをカテゴリに分類し、簡単に管理およびトリアージできます。 定義されているアラートの重大度は、情報、警告、重大です。 これらは次のように Azure Alerts の正規化された重大度スケールにマッピングされています。
 
 |Log Analytics の重大度レベル  |Azure Alerts の重大度レベル  |

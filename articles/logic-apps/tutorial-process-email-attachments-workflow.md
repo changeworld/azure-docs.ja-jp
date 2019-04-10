@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: aa534ca4fb29237de6377c7225a11f4758f39c55
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 57d7fecfa9bf2b27a54387072b080ed95f4e87e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588383"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881224"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
@@ -60,16 +60,16 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 | 
    |---------|-------|-------------| 
-   | **Name** | attachmentstorageacct | ストレージ アカウントの名前 | 
-   | **デプロイ モデル** | Resource Manager | リソースのデプロイを管理するための[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md) | 
+   | **名前** | attachmentstorageacct | ストレージ アカウントの名前 | 
+   | **デプロイメント モデル** | Resource Manager | リソースのデプロイを管理するための[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md) | 
    | **アカウントの種類** | 汎用 | [ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
-   | **場所** | 米国西部 | ストレージ アカウントに関する情報の保存先となるリージョン | 
+   | **Location** | 米国西部 | ストレージ アカウントに関する情報の保存先となるリージョン | 
    | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](../storage/common/storage-redundancy-lrs.md)」を参照してください。 | 
    | **パフォーマンス** | Standard | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 | 
    | **安全な転送が必須** | Disabled | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
    | **リソース グループ** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
-   | **仮想ネットワークの構成** | Disabled | このチュートリアルでは **[無効]** のままにしてください。 | 
+   | **仮想ネットワークを構成する** | Disabled | このチュートリアルでは **[無効]** のままにしてください。 | 
    |||| 
 
    ストレージ アカウントは、[Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) または [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) を使用して作成することもできます。
@@ -139,11 +139,12 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **アプリ名** | CleanTextFunctionApp | 関数アプリの名前。グローバルに一意で、かつわかりやすい名前を付けます。 | 
+   | **アプリの名前** | CleanTextFunctionApp | 関数アプリの名前。グローバルに一意で、かつわかりやすい名前を付けます。 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ | 
    | **ホスティング プラン** | 従量課金プラン | 関数アプリを実行するためのリソース (計算処理能力など) の割り当てとスケールの方法は、この設定によって決まります。 [ホスティング プランの比較](../azure-functions/functions-scale.md)に関するページを参照してください。 | 
-   | **場所** | 米国西部 | 先ほど使用したものと同じリージョン | 
+   | **Location** | 米国西部 | 先ほど使用したものと同じリージョン | 
+   | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数の場合は [.NET] を選択します。 |
    | **Storage** | cleantextfunctionstorageacct | 関数アプリに使うストレージ アカウントを作成します。 使用できるのは小文字と数字だけです。 <p>**注:** このストレージ アカウントは関数アプリを格納するものであり、先ほどメールの添付ファイルを保存する目的で作成したストレージ アカウントとは異なります。 | 
    | **Application Insights** | オフ | [Application Insights](../azure-monitor/app/app-insights-overview.md) を使ったアプリケーションの監視を有効にします。ただし、このチュートリアルでは **[オフ]** を選択します。 | 
    |||| 
@@ -236,10 +237,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **Name** | LA-ProcessAttachment | ロジック アプリの名前 | 
+   | **名前** | LA-ProcessAttachment | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
-   | **場所** | 米国西部 | 先ほど使用したものと同じリージョン | 
+   | **Location** | 米国西部 | 先ほど使用したものと同じリージョン | 
    | **Log Analytics** | オフ | このチュートリアルでは、**[オフ]** を選択します。 | 
    |||| 
 
@@ -271,7 +272,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | チェックするメール フォルダー | 
-      | **間隔** | 1 | チェックの間隔 (単位数) | 
+      | **interval** | 1 | チェックの間隔 (単位数) | 
       | **頻度** | 分 | チェックの間隔に使う時間の単位 | 
       |  |  |  | 
   
@@ -279,9 +280,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
-      | **添付ファイルあり** | はい | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 | 
-      | **添付ファイルを含める** | はい | 添付ファイルの有無をチェックするだけでなく、ワークフローの入力として添付ファイルを取得します。 | 
-      | **件名フィルター** | ```Business Analyst 2 #423501``` | メールの件名から探すテキスト | 
+      | **添付ファイルを含む** | はい | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 | 
+      | **Include Attachments (添付ファイルを含める)** | はい | 添付ファイルの有無をチェックするだけでなく、ワークフローの入力として添付ファイルを取得します。 | 
+      | **Subject Filter (件名フィルター)** | ```Business Analyst 2 #423501``` | メールの件名から探すテキスト | 
       |  |  |  | 
 
 4. ここではトリガーの詳細を非表示にするために、トリガーのタイトル バー内をクリックします。
@@ -394,13 +395,14 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![Azure 関数を選択](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
-5. 関数シェイプの名前を「```Call RemoveHTMLFunction to clean email body```」のように変更します。
+5. 関数シェイプの名前を次のように変更します: 
+```Call RemoveHTMLFunction to clean email body```
 
 6. 関数で処理する入力を指定します。 
 
    1. **[要求本文]** に次のテキストを入力し、末尾にスペースを追加します。 
    
-      ```{ "emailBody": ``` 
+      ```{ "emailBody":``` 
 
       以降の手順でこの入力を操作しますが、入力が JSON 形式で正しく設定されるまで、無効な JSON に関するエラーが表示されます。
       最初にこの関数をテストしたとき、関数に渡す入力として JavaScript Object Notation (JSON) 形式を用いました。 
@@ -408,7 +410,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       また、カーソルが **[要求本文]** ボックス内にあるときには、動的コンテンツ リストが表示されるので、以前のアクションから使用可能なプロパティ値を選択できます。 
       
-   2. 動的コンテンツ リストで、**[新しい電子メールが届いたとき]** の **[Body]** プロパティを選択します。 このプロパティの後に、閉じ中かっこ (```}```) を必ず追加してください。
+   2. 動的コンテンツ リストで、**[新しい電子メールが届いたとき]** の **[Body]** プロパティを選択します。 このプロパティの後に、右中かっこを必ず追加してください:  ```}```
 
       ![関数に渡す要求本文を指定](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
 
@@ -434,11 +436,12 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **Connection Name** | AttachmentStorageConnection | 接続の名前。わかりやすい名前を付けます。 | 
+   | **接続名** | AttachmentStorageConnection | 接続の名前。わかりやすい名前を付けます。 | 
    | **ストレージ アカウント** | attachmentstorageacct | 添付ファイルの保存用に作成しておいたストレージ アカウントの名前 | 
    |||| 
 
-4. **[BLOB の作成]** アクションの名前をわかりやすく「```Create blob for email body```」に変更します。
+4. **[BLOB の作成]** アクションの名前を、次のようにわかりやすく変更します: 
+```Create blob for email body```
 
 5. **[BLOB の作成]** アクションに次の情報を入力し、次の例に従って、BLOB を作成するために必要な各フィールドを選択します。
 
@@ -504,7 +507,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    !["for each" ループを追加](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-2. ループの名前をわかりやすく「```For each email attachment```」に変更します。
+2. ループの名前を次のようにわかりやすく変更します: 
+```For each email attachment```
 
 3. ループで処理するデータを指定します。 **[以前の手順から出力を選択]** ボックス内をクリックして動的コンテンツ リストを表示し、**[添付ファイル]** を選択します。 
 
@@ -527,7 +531,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![BLOB の作成アクションを追加](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
-3. **[Create blob 2]\(BLOB の作成 2\)** アクションの名前をわかりやすく「```Create blob for each email attachment```」に変更します。
+3. **[Create blob 2]\(BLOB の作成 2\)** アクションの名前を、次のようにわかりやすく変更します: 
+```Create blob for each email attachment```
 
 4. **[Create blob for each email attachment]** アクションに次の情報を入力し、次の例に従って、作成する各 BLOB のプロパティを選択します。
 
@@ -592,7 +597,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 3. 資格情報を求められた場合は、お使いのメール アカウントへの接続が Logic Apps によって作成されるように、そのメール アカウントにサインインします。
 
-4. **[電子メールの送信]** アクションの名前をわかりやすく「```Send email for review```」に変更します。
+4. **[電子メールの送信]** アクションの名前を、次のようにわかりやすく変更します: 
+```Send email for review```
 
 5. 次の例に従って、このアクションの情報を入力し、メールに含めるフィールドを選択します。 編集ボックスで空白行を追加するには、Shift + Enter キーを押します。  
 
@@ -602,9 +608,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | メモ | 
    | ------- | ----- | ----- | 
-   | **本文** | ```Please review new applicant:``` <p>```Applicant name: ``` **差出人** <p>```Application file location: ``` **パス** <p>```Application email content: ``` **本文** | メールの本文の内容。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから次のフィールドを選択します。 <p>- **[新しい電子メールが届いたとき]** の **[差出人]** フィールド </br>- **[Create blob for email body]** の **[パス]** フィールド </br>- **[Call RemoveHTMLFunction to clean email body]** の **[Body]\(本文\)** フィールド | 
-   | **[件名]**  | ```ASAP - Review applicant for position: ``` **件名** | メールに付ける件名。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから **[新しい電子メールが届いたとき]** の **[Subject]** フィールドを選択します。 | 
-   | **To** | <*recipient-email-address*> | テスト目的で自分の電子メール アドレスを使用できます。 | 
+   | **本文** | ```Please review new applicant:``` <p>```Applicant name:``` **ソース** <p>```Application file location:``` **Path** <p>```Application email content:``` **本文** | メールの本文の内容。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから次のフィールドを選択します。 <p>- **[新しい電子メールが届いたとき]** の **[差出人]** フィールド </br>- **[Create blob for email body]** の **[パス]** フィールド </br>- **[Call RemoveHTMLFunction to clean email body]** の **[Body]\(本文\)** フィールド | 
+   | **サブジェクト**  | ```ASAP - Review applicant for position:``` **サブジェクト** | メールに付ける件名。 このボックス内をクリックし、サンプル テキストを入力して、動的コンテンツ リストから **[新しい電子メールが届いたとき]** の **[Subject]** フィールドを選択します。 | 
+   | **ターゲット** | <*recipient-email-address*> | テスト目的で自分の電子メール アドレスを使用できます。 | 
    |||| 
 
    > [!NOTE] 

@@ -404,10 +404,10 @@ items:
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
-    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: a0c5682428d740bd109411333f13849c0e74d88e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+    href: azure-stack-train-and-cert.md
+ms.openlocfilehash: 9fa015618a4097debe344e7f7a3e9d217e897eb4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906312"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279756"

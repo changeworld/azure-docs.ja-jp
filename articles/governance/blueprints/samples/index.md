@@ -1,19 +1,18 @@
 ---
 title: ブループリント サンプルのインデックス
 description: Azure Blueprints を使用してデプロイするためのコンプライアンスおよび標準環境のインデックス。
-services: blueprints
 author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 03/14/2019
 ms.author: dacoulte
-ms.openlocfilehash: da38f4ef25a9e832b858027d3c6ad150d9eafd2a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ed7afa695ab13540f5f571d94b23133133ffe59f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803818"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255956"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 

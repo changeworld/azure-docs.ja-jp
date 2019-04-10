@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699144"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443472"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -129,7 +129,7 @@ Storage
 
 ### <a name="deployment-architecture"></a>デプロイ アーキテクチャ:
 
-**オンプレミスのネットワーク**: 組織に実装されているプライベートなローカル エリア ネットワーク。
+**オンプレミスのネットワーク**: 組織内に実装されているプライベートなローカル エリア ネットワーク。
 
 **運用 VNet**: 運用 [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (仮想ネットワーク) は、Azure で実行されているアプリケーションとその他の運用リソースをホストします。 各 VNet には、ネットワーク トラフィックの分離と管理に使用される複数のサブネットが含まれることがあります。
 
@@ -176,7 +176,7 @@ Storage
 
 **ファイアウォール ログ**: Application Gateway は、完全な診断ログとアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。
 
-**ログ アーカイブ**: ログ データ ストレージは、アーカイブのために定義済みのリテンション期間にわたって、一元管理された Azure ストレージ アカウントに書き込むように構成できます。 Azure Log Analytics を使用するかサード パーティ製 SIEM システムを使用してログを処理することができます。
+**ログ アーカイブ**: ログ データ ストレージは、アーカイブのために定義済みのリテンション期間にわたって、一元管理された Azure ストレージ アカウントに書き込むように構成できます。 Azure Monitor のログを使用するかサード パーティ製 SIEM システムを使用してログを処理することができます。
 
 ### <a name="identity"></a>ID
 

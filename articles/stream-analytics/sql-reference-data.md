@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084312"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する (プレビュー)
 
@@ -134,21 +134,46 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 デルタ クエリを使用するときは、[Azure SQL Database のテンポラル テーブル](../sql-database/sql-database-temporal-tables.md)をお勧めします。
 
-1. スナップショット クエリを作成します。 
+1. Azure SQL Database にテンポラル テーブルを作成します。
+   
+   ```SQL 
+      CREATE TABLE DeviceTemporal 
+      (  
+         [DeviceId] int NOT NULL PRIMARY KEY CLUSTERED 
+         , [GroupDeviceId] nvarchar(100) NOT NULL
+         , [Description] nvarchar(100) NOT NULL 
+         , [ValidFrom] datetime2 (0) GENERATED ALWAYS AS ROW START
+         , [ValidTo] datetime2 (0) GENERATED ALWAYS AS ROW END
+         , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+      )  
+      WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
+   ```
+2. スナップショット クエリを作成します。 
 
-   **@snapshotTime** パラメーターを使用して、システム時刻で有効な SQL Database のテンポラル テーブルから参照データ セットを取得するよう Stream Analytics ランタイムに指示します。 このパラメーターを指定しないと、クロックのずれが原因で不正確な基本参照データ セットを取得する可能性があります。 完全なスナップショット クエリの例を以下に示します。
-
-   ![Stream Analytics のスナップショット クエリ](./media/sql-reference-data/snapshot-query.png)
+   **\@snapshotTime** パラメーターを使用して、システム時刻で有効な SQL Database のテンポラル テーブルから参照データ セットを取得するよう Stream Analytics ランタイムに指示します。 このパラメーターを指定しないと、クロックのずれが原因で不正確な基本参照データ セットを取得する可能性があります。 完全なスナップショット クエリの例を以下に示します。
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, [Description]
+      FROM dbo.DeviceTemporal
+      FOR SYSTEM_TIME AS OF @snapshotTime
+   ```
  
 2. デルタ クエリを作成します。 
    
-   このクエリでは、開始時刻 **@deltaStartTime** と終了時刻 **@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の**_操作_** を返す必要があります。 この列では、**@deltaStartTime** と **@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 
+   このクエリでは、開始時刻 **\@deltaStartTime** と終了時刻 **\@deltaEndTime** の間に挿入または削除された SQL Database のすべての行が取得されます。 デルタ クエリでは、スナップショット クエリと同じ列および列の**_操作_** を返す必要があります。 この列では、**\@deltaStartTime** と **\@deltaEndTime** の間に行が挿入または削除されたかどうかが定義されています。 結果の行には、レコードが挿入された場合は **1**、削除された場合は **2** のフラグが設定されます。 
 
    更新されたレコードの場合、テンポラル テーブルでは挿入と削除の操作をキャプチャすることによってブックキーピングが行われます。 その場合、Stream Analytics ランタイムでは、前のスナップショットにデルタ クエリの結果を適用することによって、参照データが最新の状態に維持されます。 デルタ クエリの例を次に示します。
 
-   ![Stream Analytics のデルタ クエリ](./media/sql-reference-data/delta-query.png)
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      FROM dbo.DeviceTemporal
+      WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
+      UNION
+      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      FROM dbo.DeviceHistory   -- table we created in step 1
+      WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
+   ```
  
-  Stream Analytics ランタイムでは、デルタ クエリに加えてスナップショット クエリが定期的に実行されてチェックポイントが保存される場合があることに注意してください。
+   Stream Analytics ランタイムでは、デルタ クエリに加えてスナップショット クエリが定期的に実行されてチェックポイントが保存される場合があることに注意してください。
 
 ## <a name="faqs"></a>FAQ
 
