@@ -69,7 +69,7 @@ ms.locfileid: "58438820"
 | レポート                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
 | 監査ログ        | 7 日        |  7 日        | 30 日             | 30 日             |
-| サインイン       | 該当なし           |  該当なし           | 30 日             | 30 日             |
+| サインイン  | 該当なし           |  該当なし           | 30 日             | 30 日             |
 | Azure MFA の使用状況        | 30 日       |  30 日       | 30 日             | 30 日             |
 
 監査およびサインイン アクティビティ データは、Azure Monitor を使用して Azure ストレージ アカウントにルーティングすることで、上記で説明した既定の保有期間よりも長く保持することができます。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。
