@@ -564,8 +564,8 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
-| アプリケーション | アカウント ログイン イベントをトリガーするアプリケーション (Office 15 など)。 |
-| クライアント | アカウント ログイン イベントで使用されたクライアント デバイス、デバイス OS、およびデバイス ブラウザーの詳細。 |
+| Application | アカウント ログイン イベントをトリガーするアプリケーション (Office 15 など)。 |
+| Client | アカウント ログイン イベントで使用されたクライアント デバイス、デバイス OS、およびデバイス ブラウザーの詳細。 |
 | LoginStatus | このプロパティは OrgIdLogon.LoginStatus に直接由来します。 アルゴリズムを変えることにより、さまざまな興味深いログオン失敗のマッピングを実行できます。 |
 | UserDomain | テナント ID 情報 (TII)。 | 
 
