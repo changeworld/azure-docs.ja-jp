@@ -79,12 +79,12 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 ### <a name="configurable-token-lifetime-properties"></a>構成可能なトークンの有効期間のプロパティ
 | プロパティ | ポリシーのプロパティ文字列 | 影響 | 既定値 | 最小値 | 最大値 |
 | --- | --- | --- | --- | --- | --- |
-| Access Token Lifetime |AccessTokenLifetime |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
-| Refresh Token Max Inactive Time |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
-| Single-Factor Refresh Token Max Age |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| Multi-Factor Refresh Token Max Age |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| Single-Factor Session Token Max Age |MaxAgeSessionSingleFactor<sup>2</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| Multi-Factor Session Token Max Age |MaxAgeSessionMultiFactor<sup>3</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| アクセス トークンの有効期間 |AccessTokenLifetime |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
+| 更新トークンの最大非アクティブ時間 |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
+| 単一要素更新トークンの最長有効期間 |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor<sup>2</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
+| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor<sup>3</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
 
@@ -133,14 +133,14 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 >
 
 ## <a name="configurable-policy-property-details"></a>構成可能なポリシーのプロパティの詳細
-### <a name="access-token-lifetime"></a>Access Token Lifetime
+### <a name="access-token-lifetime"></a>アクセス トークンの有効期間
 **文字列:** AccessTokenLifetime
 
 **影響:** アクセス トークン、ID トークン
 
 **概要:** このポリシーは、このリソースのアクセス トークンと ID トークンが有効とみなされる期間を制御します。 Access Token Lifetime プロパティを減らすと、悪意のあるアクターによって、長時間にわたってアクセス トークンや ID トークンが使用されるリスクが軽減します (これらのトークンは取り消しできません)。このトレードオフは、トークンを頻繁に交換する必要があるため、パフォーマンスが影響を受けることです。
 
-### <a name="refresh-token-max-inactive-time"></a>Refresh Token Max Inactive Time
+### <a name="refresh-token-max-inactive-time"></a>更新トークンの最大非アクティブ時間
 **文字列:** MaxInactiveTime
 
 **影響:** 更新トークン
@@ -151,7 +151,7 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 
 Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age および Multi-Factor Refresh Token Max Age プロパティよりも小さな値に設定する必要があります。
 
-### <a name="single-factor-refresh-token-max-age"></a>Single-Factor Refresh Token Max Age
+### <a name="single-factor-refresh-token-max-age"></a>単一要素更新トークンの最長有効期間
 **文字列:** MaxAgeSingleFactor
 
 **影響:** 更新トークン
@@ -160,7 +160,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Multi-Factor Refresh Token Max Age プロパティ以下の値に設定することをお勧めします。
 
-### <a name="multi-factor-refresh-token-max-age"></a>Multi-Factor Refresh Token Max Age
+### <a name="multi-factor-refresh-token-max-age"></a>多要素更新トークンの最長有効期間
 **文字列:** MaxAgeMultiFactor
 
 **影響:** 更新トークン
@@ -169,7 +169,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Single-Factor Refresh Token Max Age プロパティ以上の値に設定することをお勧めします。
 
-### <a name="single-factor-session-token-max-age"></a>Single-Factor Session Token Max Age
+### <a name="single-factor-session-token-max-age"></a>単一要素セッション トークンの最長有効期間
 **文字列:** MaxAgeSessionSingleFactor
 
 **影響:** セッション トークン (永続的および非永続的)
@@ -178,7 +178,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Multi-Factor Session Token Max Age プロパティ以下の値に設定することをお勧めします。
 
-### <a name="multi-factor-session-token-max-age"></a>Multi-Factor Session Token Max Age
+### <a name="multi-factor-session-token-max-age"></a>多要素セッション トークンの最長有効期間
 **文字列:** MaxAgeSessionMultiFactor
 
 **影響:** セッション トークン (永続的および非永続的)
