@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894151"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047326"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイ プロジェクトを使用した Azure DevOps Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Azure DevOps Services にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
@@ -28,6 +28,8 @@ Azure テンプレートをデプロイするには、さまざまな段階 (ビ
 2. それぞれが単一のタスクを実行する、複数の Azure DevOps Services のビルド ステップを追加します。
 
 この記事では、両方のオプションについて説明します。 最初のオプションには、Visual Studio で開発者が同じスクリプトを使用でき、ライフサイクル全体で一貫性が確保されるという利点があります。 2 番目のオプションでは、組み込みのスクリプトに代わる便利な方法が提供されます。 両方の手順では、Visual Studio デプロイ プロジェクトが Azure DevOps Services にチェックインしていることを前提としています。
+
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
 ## <a name="copy-artifacts-to-azure"></a>Azure へのアーティファクトのコピー
 シナリオに関係なく、テンプレートのデプロイメントに必要なアーティファクトがある場合、このアーティファクトに Azure Resource Manager のアクセス権を付与する必要があります。 これらのアーティファクトには、次のファイルを含めることができます。
@@ -53,7 +55,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
 1. Azure DevOps Services のビルド パイプラインを編集し、Azure PowerShell のビルド ステップを追加します。 **[ビルド パイプライン]** カテゴリでビルド パイプラインを選択し、**[編集]** リンクを選択します。
    
    ![ビルド パイプラインの編集][0]
-2. 新しい **Azure PowerShell** のビルド ステップをビルド パイプラインに追加して、**[ビルド ステップの追加...]**  ボタンを選択します。
+2. 新しい **Azure PowerShell** のビルド ステップをビルド パイプラインに追加して、**[ビルド ステップの追加...]** ボタンを選択します。
    
    ![ビルド ステップの追加][1]
 3. **[タスクのデプロイ]** カテゴリを選択し、**Azure PowerShell** タスクを選択して、**[追加]** ボタンをクリックします。
@@ -87,7 +89,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
       
       PowerShell スクリプトでは、次を使用します。
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       Azure CLI では、次を使用します。
       
@@ -137,7 +139,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
 1. Azure DevOps Services のビルド パイプラインを編集し、2 つの新しいビルド ステップを追加します。 **[ビルド定義]** カテゴリでビルド パイプラインを選択し、**[編集]** リンクを選択します。
    
    ![ビルド定義の編集][12]
-2. **[ビルド ステップの追加...]** ボタンを使用して、ビルド パイプラインに新しいビルド ステップを追加します。  ボタンを選択します。
+2. **[ビルド ステップの追加...]** ボタンを使用して、ビルド パイプラインに新しいビルド ステップを追加します。 ボタンを選択します。
    
    ![ビルド ステップの追加][13]
 3. **[タスクのデプロイ]** カテゴリを選択し、**[Azure ファイル コピー]** タスクを選択して、**[追加]** ボタンをクリックします。
