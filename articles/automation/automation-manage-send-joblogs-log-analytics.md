@@ -97,9 +97,9 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
 | ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- 新規<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 完了 |
-| カテゴリ | データの種類の分類。 Automation の場合、値は JobLogs です。 |
+| Category | データの種類の分類。 Automation の場合、値は JobLogs です。 |
 | OperationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。 |
-| リソース | Automation アカウントの名前です。 |
+| Resource | Automation アカウントの名前です。 |
 | SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure 診断の場合、常に *Azure* です。 |
 | ResultDescription |Runbook ジョブの結果の状態について説明します。 次のいずれかの値になります。<br>- ジョブが開始されました<br>- ジョブが失敗しました<br>- ジョブが完了しました |
 | CorrelationId |GUID。Runbook ジョブの関連付け ID です。 |
@@ -120,9 +120,9 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
 | ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- In Progress |
-| カテゴリ | データの種類の分類。 Automation の場合、値は JobStreams です。 |
+| Category | データの種類の分類。 Automation の場合、値は JobStreams です。 |
 | OperationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。 |
-| リソース | Automation アカウントの名前です。 |
+| Resource | Automation アカウントの名前です。 |
 | SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure 診断の場合、常に *Azure* です。 |
 | ResultDescription |Runbook からの出力ストリームが含まれます。 |
 | CorrelationId |GUID。Runbook ジョブの関連付け ID です。 |
