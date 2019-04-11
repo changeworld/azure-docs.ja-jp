@@ -171,7 +171,7 @@ Tags  | object | tags 配列の最上位オブジェクト
 tags[].Name | string    | タグ分類子からのキーワード
 tags[].Score    | number    | 信頼度スコア (0 と 1 の間)。
 description  | object   | description の最上位オブジェクト。
-description.tags[] |    objectstring  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
+description.tags[] |    string  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
 description.captions[].text | string    | 画像を説明する語句。
 description.captions[].confidence   | number    | 語句の信頼度。
 
