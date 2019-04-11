@@ -56,7 +56,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 |:--- |:--- |:--- |
 | [Windows エージェント](agent-windows.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
 | [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
-| [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md) |[はい] |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
+| [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md) |はい |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 
 
 ### <a name="collection-frequency"></a>収集の頻度
