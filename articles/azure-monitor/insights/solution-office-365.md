@@ -673,7 +673,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | DestMailboxOwnerUPN | CrossMailboxOperations パラメーターが True の場合にのみ設定します。 ターゲット メールボックスの所有者の UPN を指定します。 |
 | DestFolder | 移動などの操作の宛先フォルダー。 |
 | Folder | 項目のグループが位置しているフォルダー。 |
-| Folder |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
+| Folders |     操作に関係したソース フォルダーに関する情報。たとえば、フォルダーが選択後に削除されるかどうか。 |
 
 
 ### <a name="sharepoint-base"></a>SharePoint ベース
