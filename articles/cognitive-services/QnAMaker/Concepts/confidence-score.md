@@ -1,6 +1,6 @@
 ---
-title: 信頼度スコア - Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
+title: 信頼度スコア - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 信頼度スコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
 services: cognitive-services
 author: tulasim88
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: bf254d661f7819114d34631359aaecb97e9d0e0d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 97c44c9285ec7a29827361111599db37bc6a86f3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403738"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282578"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -66,7 +66,7 @@ ms.locfileid: "57403738"
 
 
 ## <a name="confidence-score-differences"></a>信頼度スコアの違い
-コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、ナレッジ ベースのテスト バージョンと公開バージョンのコンテンツが、異なる Azure Search インデックスに配置されるためです。 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../How-To/publish-knowledge-base.md)のしくみを確認してください。
+コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、ナレッジ ベースのテスト バージョンと公開バージョンのコンテンツが、異なる Azure Search インデックスに配置されるためです。 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
 
 異なるリージョンにナレッジ ベースがある場合は、各リージョンが独自の Azure Search インデックスを使用しています。 異なるインデックスが使用されるため、スコアはまったく同じにはなりません。 
 

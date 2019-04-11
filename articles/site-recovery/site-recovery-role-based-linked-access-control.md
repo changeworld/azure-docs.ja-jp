@@ -2,16 +2,16 @@
 title: ロールベースのアクセス制御 (RBAC) を使用した Azure Site Recovery のアクセス管理 | Microsoft Docs
 description: この記事では、ロールベースのアクセス制御 (RBAC) を適用して、Azure Site Recovery のアクセスを管理する方法について説明します。
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218072"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281711"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用して Site Recovery のアクセスを管理する
 

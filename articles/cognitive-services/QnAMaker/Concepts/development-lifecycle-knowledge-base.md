@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4acecb9d15f820ba092f36d8fa3ea204658d2dba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650447"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276781"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
@@ -44,7 +44,7 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 
 これらのナレッジ ベースをそれぞれ別個にテスト対象とすることができます。 API を使用して、generateAnswer 呼び出しで `isTest=true` フラグを指定し、ナレッジ ベースのテスト バージョンを対象とすることができます。
 
-[ナレッジ ベースの公開](../How-To/publish-knowledge-base.md)方法を確認してください。
+[ナレッジ ベースの公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)方法を確認してください。
 
 ## <a name="monitor-usage"></a>使用状況の監視
 サービスのチャット ログを記録できるようにするには、[QnA Maker サービスを作成する](../How-To/set-up-qnamaker-service-azure.md)際に Application Insights を有効にする必要があります。

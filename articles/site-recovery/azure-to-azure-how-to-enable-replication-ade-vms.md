@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b3e997a37bb5d030d559b6771b2c0e2f74cc62ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117457"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277693"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption (ADE) が有効な仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -148,7 +148,7 @@ Site Recovery によって使用される既定のターゲット設定を変更
 Azure Site Recovery で作成するのではなく、ターゲット リージョンに既に作成されているキー コンテナーを選択する場合は、 キー コンテナーに前述の必要なアクセス許可があることを確認します。</br>
 *例*: ユーザーがレプリケートしようとしている VM には、ソース リージョン上に "ContososourceKeyvault" というキー コンテナーがあります。
 ユーザーは、ソース リージョンのキー コンテナーに対するすべてのアクセス許可を持っていますが、保護の間に選択した作成済みのキー コンテナー "ContosotargetKeyvault" に対してはアクセス許可がないため、保護でエラーがスローされます。</br>
-**修正方法:** [ホーム] > [キー コンテナー] > ContososourceKeyvault > [アクセス ポリシー] に移動し、上記のようにアクセス許可を追加します。 
+**修正方法:** [ホーム] > [キー コンテナー] > ContososourceKeyvault > [アクセス ポリシー] に移動し、上記のようにアクセス許可を追加します。
 
 **原因 2:** ターゲット リージョンから選択した作成済みのキー コンテナーに、解読 - 暗号化アクセス許可がない可能性があります。
 Azure Site Recovery で作成するのではなく、ターゲット リージョンに既に作成されているキー コンテナーを選択する場合は、 ソース リージョンでもキーを暗号化している場合は、ユーザーに解読 - 暗号化アクセス許可があることを確認します。</br>

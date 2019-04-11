@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540047"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426191"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントから Azure Monitor 内に Nagios と Zabbix からのアラートを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -92,15 +92,15 @@ Nagios によって収集されたアラート レコードには、**アラー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Type |*アラート:* |
-| SourceSystem |*Nagios* |
-| AlertName |アラートの名前。 |
-| AlertDescription | アラートの説明。 |
-| AlertState | サービスまたはホストの状態。<br><br>OK<br>WARNING<br>UP<br>DOWN |
-| HostName | アラートを作成したホストの名前。 |
-| PriorityNumber | アラートの優先度。 |
-| StateType | アラートの状態の種類。<br><br>SOFT - 再確認されていない問題。<br>HARD - 指定された回数だけ再確認された問題。  |
-| TimeGenerated |アラートが作成された日付と時刻。 |
+| `Type` |*アラート:* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |アラートの名前。 |
+| `AlertDescription` | アラートの説明。 |
+| `AlertState` | サービスまたはホストの状態。<br><br>OK<br>WARNING<br>UP<br>DOWN |
+| `HostName` | アラートを作成したホストの名前。 |
+| `PriorityNumber` | アラートの優先度。 |
+| `StateType` | アラートの状態の種類。<br><br>SOFT - 再確認されていない問題。<br>HARD - 指定された回数だけ再確認された問題。  |
+| `TimeGenerated` |アラートが作成された日付と時刻。 |
 
 
 ### <a name="zabbix-alert-records"></a>Zabbix のアラート レコード
@@ -108,17 +108,17 @@ Zabbix によって収集されたアラート レコードには、**アラー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Type |*アラート:* |
-| SourceSystem |*Zabbix* |
-| AlertName | アラートの名前。 |
-| AlertPriority | アラートの重大度。<br><br>未分類<br>情報<br>警告<br>average<br>高<br>障害  |
-| AlertState | アラートの状態。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。  |
-| AlertTypeNumber | アラートによって複数の問題イベントが生成される場合があるかどうかを指定します。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。    |
-| 説明 | アラートのその他のコメント。 |
-| HostName | アラートを作成したホストの名前。 |
-| PriorityNumber | アラートの重大度を示す値。<br><br>0 - 未分類<br>1 - 情報<br>2 - 警告<br>3 - 平均<br>4 - 高<br>5 - 障害 |
-| TimeGenerated |アラートが作成された日付と時刻。 |
-| TimeLastModified |アラートの状態が最後に変更された日付と時刻。 |
+| `Type` |*アラート:* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | アラートの名前。 |
+| `AlertPriority` | アラートの重大度。<br><br>未分類<br>情報<br>warning<br>average<br>高<br>障害  |
+| `AlertState` | アラートの状態。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。  |
+| `AlertTypeNumber` | アラートによって複数の問題イベントが生成される場合があるかどうかを指定します。<br><br>0 - 状態は最新です。<br>1 - 状態は不明です。    |
+| `Comments` | アラートのその他のコメント。 |
+| `HostName` | アラートを作成したホストの名前。 |
+| `PriorityNumber` | アラートの重大度を示す値。<br><br>0 - 未分類<br>1 - 情報<br>2 - 警告<br>3 - 平均<br>4 - 高<br>5 - 障害 |
+| `TimeGenerated` |アラートが作成された日付と時刻。 |
+| `TimeLastModified` |アラートの状態が最後に変更された日付と時刻。 |
 
 
 ## <a name="next-steps"></a>次の手順

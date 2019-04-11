@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 716f48a5db437ef1dc865aca66fbac1c1d51aec3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: df9073bbf9789875c373bb7093ab1878a20c399f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207434"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274189"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory v2.0 と OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -51,7 +51,6 @@ POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token?
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=user.read%20openid%20profile%20offline_access
-&client_secret=wkubdywbc2894u
 &username=MyUsername@myTenant.com
 &password=SuperS3cret
 &grant_type=password

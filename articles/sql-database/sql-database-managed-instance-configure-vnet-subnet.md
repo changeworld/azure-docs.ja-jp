@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 13038bb7159556b36e82b598732d1f2d497bf314
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762774"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358851"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する
 
@@ -25,10 +25,9 @@ Azure SQL Database Managed Instance は、Azure [仮想ネットワーク](../vi
 
 次のいずれかのケースに該当する場合は、この記事で説明されているスクリプトを使用してネットワークを検証および変更できます。
 
-* まだ構成されていない新しいサブネットがある。
-* サブネットが[要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠しているかどうかがわからない。
-* 変更を加えた後も、サブネットが[ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠していることを確認したい。
-
+- まだ構成されていない新しいサブネットがある。
+- サブネットが[要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠しているかどうかがわからない。
+- 変更を加えた後も、サブネットが[ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)に準拠していることを確認したい。
 
 > [!Note]
 > Azure Resource Manager デプロイ モデルを使用して作成された仮想ネットワーク内にのみマネージド インスタンスを作成できます。 クラシック デプロイ モデルを使用して作成された Azure 仮想ネットワークはサポートされていません。 [マネージド インスタンスのサブネットのサイズの決定](sql-database-managed-instance-determine-size-vnet-subnet.md)に関する記事のガイドラインに従って、サブネットのサイズを計算します。 サブネットは、いったんリソースを配置するとサイズを変更できなくなります。

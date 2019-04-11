@@ -1,19 +1,18 @@
 ---
 title: ブループリント リソース ロックを使用した新しいリソースの保護
 description: Azure Blueprints のリソース ロックの読み取り専用と削除禁止を使用して、新しくデプロイされるリソースを保護する方法を学習します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629230"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272276"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
 
@@ -42,7 +41,7 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
 1. ページの上部にある **[空白のブループリント]** ブループリント サンプルを探し、**[空白のブループリントで始める]** を選択します。
 
-1. ブループリント サンプルの _[基本]_ が表示されます。
+1. ブループリント サンプルの _[基本]_ を入力します。
 
    - **[ブループリントの名前]**: ブループリント サンプルのコピーの名前を指定します。 このチュートリアルでは、_locked-storageaccount_ という名前を使用します。
    - **[ブループリントの説明]**: ブループリント定義について説明します。 「デプロイされたリソースでのブループリント リソース ロックのテスト用」を使用します。
@@ -148,11 +147,11 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
    - アーティファクトのパラメーター
 
-     このセクションで定義するパラメーターは、定義対象の成果物に適用されます。 これらのパラメーターはブループリントの割り当て時に定義されるので、[動的パラメーター](../concepts/parameters.md#dynamic-parameters)です。 各成果物に対して、パラメーター値を **[値]** 列に定義されている内容に設定してください。
+     このセクションで定義するパラメーターは、定義対象のアーティファクトに適用されます。 これらのパラメーターはブループリントの割り当て時に定義されるので、[動的パラメーター](../concepts/parameters.md#dynamic-parameters)です。 各成果物に対して、パラメーター値を **[値]** 列に定義されている内容に設定してください。
 
-     |成果物名|成果物の種類|パラメーター名|値|説明|
+     |成果物名|アーティファクトの種類|パラメーター名|値|説明|
      |-|-|-|-|-|
-     |RGtoLock リソース グループ|リソース グループ|名前|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
+     |RGtoLock リソース グループ|リソース グループ|Name|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
      |RGtoLock リソース グループ|リソース グループ|Location|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
      |StorageAccount|Resource Manager テンプレート|storageAccountType (StorageAccount)|Standard_GRS|ストレージの SKU を選択します。 既定値は _Standard_LRS_ です。|
 

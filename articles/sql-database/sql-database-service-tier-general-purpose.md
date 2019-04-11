@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop-msft
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997364"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357928"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>General Purpose サービス レベル - Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "55997364"
 
 Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するためにクラウド環境に適合された、SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database では 3 つのサービス レベルが使用されており、それぞれアーキテクチャ モデルが異なります。 これらのサービス レベルは次のとおりです。
 
-- 汎用 
+- 汎用
 - Business Critical
 - ハイパースケール
 

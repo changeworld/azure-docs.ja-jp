@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087875"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272769"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -104,7 +104,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 
 #### <a name="spoke-to-hub"></a>スポークからハブへ
 
-**方向** | **設定** | **State**
+**方向** | **Setting** | **状態**
 --- | --- | ---
 スポークからハブへ | 仮想ネットワーク アドレスを許可する | Enabled
 スポークからハブへ | 転送されたトラフィックを許可する | Enabled
@@ -115,7 +115,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 
 #### <a name="hub-to-spoke"></a>ハブからスポークへ
 
-**方向** | **設定** | **State**
+**方向** | **Setting** | **状態**
 --- | --- | ---
 ハブからスポークへ | 仮想ネットワーク アドレスを許可する | Enabled
 ハブからスポークへ | 転送されたトラフィックを許可する | Enabled

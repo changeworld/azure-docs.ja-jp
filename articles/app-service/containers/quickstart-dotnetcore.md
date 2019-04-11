@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 43016b3c31a0371f953f758bc7afb53bd1508495
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889717"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278515"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>App Service on Linux で ASP.NET Core アプリを作成する
 
@@ -41,15 +41,15 @@ ms.locfileid: "56889717"
 
 このクイック スタートを完了するには、以下が必要です。
 
-* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core をインストールする</a>
+* <a href="https://git-scm.com/" target="_blank">Git のインストール</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core のインストール</a>
 
 ## <a name="create-the-app-locally"></a>アプリをローカルで作成する
 
 コンピューターのターミナル ウィンドウで、`hellodotnetcore` という名前のディレクトリを作成し、現在のディレクトリをそのディレクトリに変更します。
 
 ```bash
-md hellodotnetcore
+mkdir hellodotnetcore
 cd hellodotnetcore
 ```
 
