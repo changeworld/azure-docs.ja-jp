@@ -41,29 +41,29 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 
 ## <a name="supported-types-for-named-entity-recognition"></a>名前付きエンティティ認識でサポートされている型
 
-| type  | SubType | 例 |
+| Type  | SubType | 例 |
 |:-----------   |:------------- |:---------|
-| Person        | 該当なし\*         | "Jeff"、"Bill Gates"     |
-| Location      | 該当なし\*         | "Redmond, Washington"､"Paris"  |
+| Person        | 該当なし\*         | "Jeff", "Bill Gates"     |
+| Location      | 該当なし\*         | "Redmond, Washington", "Paris"  |
 | Organization  | 該当なし\*         | "Microsoft"   |
-| 数量      | Number        | "6"､"six"     | 
-| 数量      | 割合    | "50%"､"fifty percent"| 
-| 数量      | Ordinal       | "2nd"､"second"     | 
-| 数量      | NumberRange   | "4 to 8"     | 
-| 数量      | Age           | "90 day old"､"30 years old"    | 
-| 数量      | 通貨      | "$10.99"     | 
-| 数量      | Dimension     | "10 miles"､"40 cm"     | 
-| 数量      | 気温   | "32 degrees"    |
+| Quantity      | Number        | "6", "six"     | 
+| Quantity      | Percentage    | "50%", "fifty percent"| 
+| Quantity      | Ordinal       | "2nd", "second"     | 
+| Quantity      | NumberRange   | "4 to 8"     | 
+| Quantity      | Age           | "90 day old", "30 years old"    | 
+| Quantity      | Currency      | "$10.99"     | 
+| Quantity      | Dimension     | "10 miles", "40 cm"     | 
+| Quantity      | Temperature   | "32 degrees"    |
 | DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
 | DateTime      | Date          | "May 2nd, 2017", "05/02/2017"   | 
-| 日時     | Time          | "8am"､"8:00"  | 
-| DateTime      | Daterange     | "May 2nd to May 5th"    | 
+| Date Time     | Time          | "8am", "8:00"  | 
+| DateTime      | DateRange     | "May 2nd to May 5th"    | 
 | DateTime      | TimeRange     | "6pm to 7pm"     | 
-| DateTime      | duration      | "1 minute and 45 seconds"   | 
+| DateTime      | Duration      | "1 minute and 45 seconds"   | 
 | DateTime      | Set           | "every Tuesday"     | 
 | DateTime      | TimeZone      |    | 
 | URL           | 該当なし\*         | "https:\//www.bing.com"    |
-| 電子メール         | 該当なし\*         | "support@contoso.com" |
+| Email         | 該当なし\*         | "support@contoso.com" |
 
 \* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。
 
