@@ -3,20 +3,20 @@ title: Azure のデータのコピー ツールを使用してデータをコピ
 description: Azure データ ファクトリを作成し、データのコピー ツールを使用して Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 6ff264c079ef5ee18258c3cd136cf441dc33e299
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.author: yexu
+ms.openlocfilehash: a77041b063f043c065df9a2955e9d07b5692f592
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992757"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256262"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>クイック スタート:データのコピー ツールを使用してデータをコピーする
 
@@ -55,7 +55,7 @@ ms.locfileid: "55992757"
 
    この一覧に表示されるのは、Data Factory でサポートされ、かつ Azure Data Factory のメタ データが格納される場所のみです。 Data Factory で使用する関連データ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンで実行できることに注意してください。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 1. 作成が完了すると、**[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
    ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
@@ -83,7 +83,7 @@ ms.locfileid: "55992757"
 
    ![Azure BLOB ストレージ アカウントの構成](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しく作成したリンクされたサービスをソースとして選択し、**[次へ]** をクリックします。
+   d. 新しく作成したリンクされたサービスをソースとして選択し、**[次へ]** をクリックします。
 
    ![ソースのリンクされたサービスの選択](./media/quickstart-create-data-factory-copy-data-tool/select-source-linked-service.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "55992757"
 
    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/configure-source-path.png)
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ファイルをそのままコピーするため、**[Binary copy]\(バイナリ コピー\)** チェック ボックスをオンにし、**[次へ]** を選択します。 
+   d. ファイルをそのままコピーするため、**[Binary copy]\(バイナリ コピー\)** チェック ボックスをオンにし、**[次へ]** を選択します。 
 
    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\) ページ](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 

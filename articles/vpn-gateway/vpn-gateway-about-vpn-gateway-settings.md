@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 76323ab00a3562cae10520b18008d030e40043fc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4030c196d6a4de721b640f5da0b692f4d8157d12
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864677"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049865"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -167,9 +167,9 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 VPN Gateway 構成に対して REST API、PowerShell コマンドレット、または Azure CLI を使用する場合のテクニカル リソースおよび具体的な構文の要件については、次のページを参照してください。
 
-| **クラシック** | **Resource Manager** |
+| **クラシック** | **リソース マネージャー** |
 | --- | --- |
-| [PowerShell](/powershell/module/azurerm.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
+| [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | サポートされていません | [Azure CLI](/cli/azure/network/vnet-gateway)|
 

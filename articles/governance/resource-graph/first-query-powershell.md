@@ -1,7 +1,6 @@
 ---
 title: Azure PowerShell を使用して最初のクエリを実行する
 description: この記事では、Azure PowerShell の Resource Graph モジュールを有効にして、最初のクエリを実行する手順について説明します。
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a23bbf224b0a8803a24d5d2e775a5efcc7e7d2da
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a94fe86cd9c2a6e775be1ec4b3d14798e4cac693
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877144"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258319"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 

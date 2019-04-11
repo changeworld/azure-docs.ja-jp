@@ -1,53 +1,53 @@
 ---
-title: Customer data request features
-description: Summary of customer data request features
+title: 顧客データ要求機能
+description: 顧客データ要求機能の概要
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: e9cc16d659e220dbe72cc2b2e22f71a817b36de2
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011315"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048370"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Summary of customer data request features
+# <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
-The Azure IoT Hub is a REST API-based cloud service targeted at enterprise customers that enables secure, bi-directional communication between millions of devices and a partitioned Azure service.
+Azure IoT Hub は、企業のお客様を対象とする REST API ベースのクラウド サービスであり、百万単位のデバイスとパーティション分割された Azure サービスの間で、セキュリティで保護された双方向の通信を有効にします。
 
 [!INCLUDE [gdpr-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Individual devices are assigned a device identifier (device ID) by a tenant administrator. Device data is based on the assigned device ID. Microsoft maintains no information and has no access to data that would allow device ID to user correlation.
+個々のデバイスには、テナント管理者によってデバイス識別子 (デバイス ID) が割り当てられます。 デバイスのデータは、割り当てられているデバイス ID に基づきます。 Microsoft は、デバイス ID とユーザーを関連付けることができる情報を保持せず、そのようなデータにアクセスすることもできません。
 
-Many of the devices managed in Azure IoT Hub are not personal devices, for example an office thermostat or factory robot. Customers may, however, consider some devices to be personally identifiable and at their discretion may maintain their own asset or inventory tracking methods that tie devices to individuals. Azure IoT Hub manages and stores all data associated with devices as if it were personal data.
+Azure IoT Hub で管理されているデバイスの多くは、オフィスの温度自動調節器や工場のロボットなどのように、個人用デバイスではありません。 しかし、お客様が一部のデバイスで個人を特定できるようにすることを検討し、自己判断で、自身の資産やデバイスと個人を結び付けるインベントリ追跡方法を維持する場合があります。 Azure IoT Hub はデバイスに関連付けられたすべてのデータを個人データであるかのように管理し、格納します。
 
-Tenant administrators can use either the Azure portal or the service's REST APIs to fulfill information requests by exporting or deleting data associated with a device ID.
+テナント管理者は、Azure portal またはサービスの REST API を使って、デバイス ID に関連付けられているデータをエクスポートまたは削除することにより、情報の要求を満たすことができます。
 
-If you use the routing feature of the Azure IoT Hub service to forward device messages to other services, then data requests must be performed by the tenant admin for each routing endpoint in order to complete a full request for a given device. For more details, see the reference documentation for each endpoint. For more information about supported endpoints, see [Reference - IoT Hub endpoints](iot-hub-devguide-endpoints.md).
+Azure IoT Hub サービスのルーティング機能を使ってデバイスのメッセージを他のサービスに転送する場合、特定のデバイスに対する完全な要求を完了するためには、テナント管理者が各ルーティング エンドポイントに対してデータ要求を実行する必要があります。 詳しくは、各エンドポイントのリファレンス ドキュメントをご覧ください。 サポートされるエンドポイントについて詳しくは、「[リファレンス - IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)」をご覧ください。
 
-If you use the Azure Event Grid integration feature of the Azure IoT Hub service, then data requests must be performed by the tenant admin for each subscriber of these events. For more information, see [React to IoT Hub events by using Event Grid](iot-hub-event-grid.md).
+Azure IoT Hub サービスの Azure Event Grid 統合機能を使う場合は、テナント管理者がそれらのイベントの各サブスクライバーに対してデータ要求を実行する必要があります。 詳しくは、「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](iot-hub-event-grid.md)」をご覧ください。
 
-If you use the Azure Monitor integration feature of the Azure IoT Hub service to create diagnostic logs, then data requests must be performed by the tenant admin against the stored logs. For more information, see [Monitor the health of Azure IoT Hub](iot-hub-monitor-resource-health.md).
+Azure IoT Hub サービスの Azure Monitor 統合機能を使って診断ログを作成する場合は、テナント管理者が格納されているログに対してデータ要求を実行する必要があります。 詳しくは、「[Azure IoT Hub の正常性の監視](iot-hub-monitor-resource-health.md)」をご覧ください。
 
-## <a name="deleting-customer-data"></a>Deleting customer data
+## <a name="deleting-customer-data"></a>顧客データの削除
 
-Tenant administrators can use the IoT devices blade of the Azure IoT Hub extension in the Azure portal to delete a device, which deletes the data associated with that device.
+テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレードを使って、デバイスを削除することができます。それにより、そのデバイスに関連付けられているデータが削除されます。
 
-It is also possible to perform delete operations for devices using REST APIs. For more information, see [Service - Delete Device](/rest/api/iothub/service/deletedevice).
+REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、[サービス - デバイスの削除](/rest/api/iothub/service/deletedevice)に関する記事をご覧ください。
 
-## <a name="exporting-customer-data"></a>Exporting customer data
+## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
-Tenant administrators can utilize copy and paste within the IoT devices blade of the Azure IoT Hub extension in the Azure portal to export data associated with a device.
+テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレード内でコピーと貼り付けを利用して、デバイスに関連付けられているデータをエクスポートできます。
 
-It is also possible to perform export operations for devices using REST APIs. For more information, see [Service - Get Device](/rest/api/iothub/service/getdevice).
+REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](/rest/api/iothub/service/getdevice)に関する記事をご覧ください。
 
 > [!NOTE]
-> When you use Microsoft's enterprise services, Microsoft generates some information, known as system-generated logs. Some Azure IoT Hub system-generated logs are not accessible or exportable by tenant administrators. These logs constitute factual actions conducted within the service and diagnostic data related to individual devices.
+> Microsoft のエンタープライズ サービスを使うと、システム生成ログと呼ばれる情報がいくつか生成されます。 Azure IoT Hub システムによって生成されたログの一部は、テナント管理者がアクセスしたりエクスポートしたりすることはできません。 これらのログは、個々のデバイスに関連するサービスと診断データ内で実行された実際のアクションで構成されています。
 
-## <a name="links-to-additional-documentation"></a>Links to additional documentation
+## <a name="links-to-additional-documentation"></a>その他のドキュメントへのリンク
 
-Full documentation for Azure IoT Hub Service APIs is located at [IoT Hub Service APIs](https://docs.microsoft.com/rest/api/iothub/service).
+Azure IoT Hub Service API の完全なドキュメントは、[IoT Hub Service API](https://docs.microsoft.com/rest/api/iothub/service) にあります。

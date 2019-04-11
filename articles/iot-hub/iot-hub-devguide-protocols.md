@@ -3,17 +3,17 @@ title: Azure IoT Hub の通信プロトコルとポート | Microsoft Docs
 description: 開発者ガイド - サポートされている device-to-cloud と cloud-to-device 通信の通信プロトコルと、開く必要があるポート番号について説明します。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: f6c39765c9133c9bf295d4225c332fda1140a13b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532691"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051057"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 

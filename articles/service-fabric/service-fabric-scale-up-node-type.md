@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
 ms.author: aljo
-ms.openlocfilehash: fcf10152be645eb92596894a3e89258908d747c4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e6b429189491af71f6215f1c7660be5965741bf7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668366"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044828"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 この記事では、仮想マシンのリソースを増やして、Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -29,6 +29,9 @@ ms.locfileid: "58668366"
 >
 > [Silver 以上の耐久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)で実行されている場合を除き、スケール セット/特定の種類のノードの VM SKU は変更しないことをお勧めします。 VM SKU サイズの変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートレス サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。 つまり、ステートフルなサービス ファブリック システム サービスを実行しているプライマリ ノード タイプまたはステートフルなアプリケーション ワークロードを実行している任意のノード タイプです。
 >
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>プライマリ ノード タイプの VM のサイズとオペレーティング システムをアップグレードする
 ここでは、プライマリ ノード タイプの VM の VM サイズとオペレーティング システムを更新するプロセスについて説明します。  アップグレード後、プライマリ ノード タイプの VM は、サイズが Standard D4_V2 で、コンテナー搭載 Windows Server 2016 Datacenter を実行します。
@@ -56,13 +59,13 @@ $clusterloc="southcentralus"
 $subscriptionID="<your subscription ID>"
 
 # sign in to your Azure account and select your subscription
-Login-AzureRmAccount -SubscriptionId $subscriptionID 
+Login-AzAccount -SubscriptionId $subscriptionID 
 
 # Create a new resource group for your deployment and give it a name and a location.
-New-AzureRmResourceGroup -Name $groupname -Location $clusterloc
+New-AzResourceGroup -Name $groupname -Location $clusterloc
 
 # Deploy the two node type cluster.
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.parameters.json" `
+New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.parameters.json" `
     -TemplateFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.json" -Verbose
 
 # Connect to the cluster and check the cluster health.
@@ -80,7 +83,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
 Get-ServiceFabricClusterHealth
 
 # Deploy a new scale set into the primary node type.  Create a new load balancer and public IP address for the new scale set.
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.parameters.json" `
+New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.parameters.json" `
     -TemplateFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.json" -Verbose
 
 # Check the cluster health again. All 15 nodes should be healthy.
@@ -120,7 +123,7 @@ foreach($name in $nodeNames){
 
 # Remove the scale set
 $scaleSetName="NTvm1"
-Remove-AzureRmVmss -ResourceGroupName $groupname -VMScaleSetName $scaleSetName -Force
+Remove-AzVmss -ResourceGroupName $groupname -VMScaleSetName $scaleSetName -Force
 Write-Host "Removed scale set $scaleSetName"
 
 $lbname="LB-sfupgradetest-NTvm1"
@@ -128,23 +131,23 @@ $oldPublicIpName="PublicIP-LB-FE-0"
 $newPublicIpName="PublicIP-LB-FE-2"
 
 # Store DNS settings of public IP address related to old Primary NodeType into variable 
-$oldprimaryPublicIP = Get-AzureRmPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname
+$oldprimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $groupname
 
 $primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
 
 $primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
 
 # Remove Load Balancer related to old Primary NodeType. This will cause a brief period of downtime for the cluster
-Remove-AzureRmLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
+Remove-AzLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 
 # Remove the old public IP
-Remove-AzureRmPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+Remove-AzPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
 
 # Replace DNS settings of Public IP address related to new Primary Node Type with DNS settings of Public IP address related to old Primary Node Type
-$PublicIP = Get-AzureRmPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
+$PublicIP = Get-AzPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
-Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
+Set-AzPublicIpAddress -PublicIpAddress $PublicIP
 
 # Check the cluster health
 Get-ServiceFabricClusterHealth

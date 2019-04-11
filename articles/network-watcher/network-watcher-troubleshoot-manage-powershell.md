@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 51fb834c0c6a3602ed0edfee6256183eefb2026b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b25ebeadff46ea04c2adf5add6aeb86b751681ad
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889490"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047213"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Azure Network Watcher PowerShell を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 
@@ -30,6 +30,9 @@ ms.locfileid: "57889490"
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
 Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。 リソースのトラブルシューティングは、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -43,11 +46,11 @@ Network Watcher は、Azure 内のネットワーク リソースの把握に関
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher の取得
 
-最初の手順では、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、手順 4 で `Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットに渡されます。
+最初の手順では、Network Watcher インスタンスを取得します。 `$networkWatcher` 変数は、手順 4 で `Start-AzNetworkWatcherResourceTroubleshooting` コマンドレットに渡されます。
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>仮想ネットワーク ゲートウェイ接続の取得
@@ -55,7 +58,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 この例では、リソースのトラブルシューティングは接続上で実行されています。 仮想ネットワーク ゲートウェイを渡すこともできます。
 
 ```powershell
-$connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
@@ -63,20 +66,20 @@ $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "2to3" -ResourceG
 リソースのトラブルシューティングではリソースの正常性に関するデータを返すとともに、レビュー用にストレージ アカウントにログを保存します。 この手順では、ストレージ アカウントを作成します。既存のストレージ アカウントが存在する場合は、それを使用できます。
 
 ```powershell
-$sa = New-AzureRmStorageAccount -Name "contosoexamplesa" -SKU "Standard_LRS" -ResourceGroupName "testrg" -Location "WestCentralUS"
-Set-AzureRmCurrentStorageAccount -ResourceGroupName $sa.ResourceGroupName -Name $sa.StorageAccountName
-$sc = New-AzureStorageContainer -Name logs
+$sa = New-AzStorageAccount -Name "contosoexamplesa" -SKU "Standard_LRS" -ResourceGroupName "testrg" -Location "WestCentralUS"
+Set-AzCurrentStorageAccount -ResourceGroupName $sa.ResourceGroupName -Name $sa.StorageAccountName
+$sc = New-AzStorageContainer -Name logs
 ```
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher のリソースのトラブルシューティングの実行
 
-リソースのトラブルシューティングは、`Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットを使用して行います。 Network Watcher オブジェクト、接続または仮想ネットワーク ゲートウェイの ID、ストレージ アカウント ID、結果の保存先のパスをこのコマンドレットに渡します。
+リソースのトラブルシューティングは、`Start-AzNetworkWatcherResourceTroubleshooting` コマンドレットを使用して行います。 Network Watcher オブジェクト、接続または仮想ネットワーク ゲートウェイの ID、ストレージ アカウント ID、結果の保存先のパスをこのコマンドレットに渡します。
 
 > [!NOTE]
-> `Start-AzureRmNetworkWatcherResourceTroubleshooting` コマンドレットは長時間実行され、完了するまでに数分かかることがあります。
+> `Start-AzNetworkWatcherResourceTroubleshooting` コマンドレットは長時間実行され、完了するまでに数分かかることがあります。
 
 ```powershell
-Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
+Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
 ```
 
 コマンドレットを実行すると、Network Watcher によってリソースがレビューされて正常性が検証されます。 結果はシェルに戻され、指定したストレージ アカウントに結果のログが保存されます。

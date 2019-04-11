@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: c8796c300b5163f23ad1156650f6e74b61ccdfa6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: c4e81d9be09855cde986bfd21f8f688fa7d1341e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486667"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793718"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -49,14 +49,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [Python](https://www.python.org/downloads/) のインストール
 * [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) をダウンロードしてインストールします。
 
-# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
 
 * [Maven](https://maven.apache.org/download.cgi) をインストールして、コマンド ラインから使用するように構成します
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) をインストールして構成します
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-* [Node.js](https://nodejs.org) をインストールします。
+* [Maven](http://maven.apache.org/download.cgi) をインストールして、コマンド ラインから使用するように構成します
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) をインストールして構成します
 
 ---
 
@@ -75,16 +76,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[おすすめ]** の下にある **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
 4. 下図のように、ストレージ アカウント フォームに次の情報を入力し、**[作成]** を選択します。
 
-   | Setting       | 推奨値 | 説明 |
+   | Setting       | 推奨値 | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
-   | **Storage account name \(ストレージ アカウント名\)** | mystorageaccount | ストレージ アカウント用の一意の値 |
-   | **場所** | 米国東部 | 場所を選択します。 |
-   | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
+   | **Name** | mystorageaccount | ストレージ アカウント用の一意の値 |
+   | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
    | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
+   | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
-   | **アクセス層** | ホット | このサンプル シナリオでは、ホットで十分です。 |
+   |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
+   |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
+   |**場所** | 米国東部 | 場所を選択します。 |
 
 ![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -95,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)し、storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip ファイルを抽出 (解凍) します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトにはコンソール アプリケーションが含まれています。
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git 
+git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
@@ -106,6 +107,14 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+[サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-java-ha-ra-grs)し、storage-java-ragrs.zip ファイルを抽出します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Java アプリケーションが含まれています。
+
+```bash
+git clone https://github.com/Azure-Samples/storage-java-ha-ra-grs.git
+```
+
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs)し、storage-java-ragrs.zip ファイルを抽出します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Java アプリケーションが含まれています。
@@ -114,57 +123,65 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-[サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)して、ファイルを解凍します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Node.js アプリケーションが含まれています。
-
-```bash
-git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
-```
-
 ---
-
-## <a name="configure-the-sample"></a>サンプルの構成
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションが実行されているローカル コンピューターの環境変数内に、この接続文字列を格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
+アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションを実行しているローカル コンピューター上の環境変数内にこの接続文字列を格納することをお勧めします。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
 
-Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに基づいて次のコマンドのいずれかを実行します。\<yourconnectionstring\> は実際の接続文字列に置き換えてください。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに基づいて次のコマンドのいずれかを実行して、\<yourconnectionstring\> を実際の接続文字列に置き換えます。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。 次のサンプルの **\<storageConnectionString\>** を置き換えます。
 
 ### <a name="linux"></a>Linux
 
 ```
-export storageconnectionstring=<yourconnectionstring>
+export storageconnectionstring=\<yourconnectionstring\>
 ```
+
 ### <a name="windows"></a>Windows
 
-```powershell
-setx storageconnectionstring "<yourconnectionstring>"
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-アプリケーションには、実際のストレージ アカウントの資格情報を指定する必要があります。 この情報は、アプリケーションが実行されているローカル コンピューターの環境変数に格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下のいずれかの例に従います。
+アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションを実行しているローカル コンピューター上の環境変数内にこの接続文字列を格納することをお勧めします。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
 
-Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 **[ストレージ アカウント名]** と **[キー]** の値を以下のコマンドに貼り付けて、プレースホルダー \<youraccountname\> と \<youraccountkey\> を置き換えてください。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに基づいて次のコマンドのいずれかを実行して、\<yourconnectionstring\> を実際の接続文字列に置き換えます。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。 次のサンプルの **\<storageConnectionString\>** を置き換えます。
 
 ### <a name="linux"></a>Linux
 
 ```
-export accountname=<youraccountname>
-export accountkey=<youraccountkey>
+export storageconnectionstring=\<yourconnectionstring\>
 ```
+
+### <a name="windows"></a> Windows
+
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
+```
+
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションを実行しているローカル コンピューター上の環境変数内にこの接続文字列を格納することをお勧めします。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
+
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに基づいて次のコマンドのいずれかを実行して、\<yourconnectionstring\> を実際の接続文字列に置き換えます。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。 次のサンプルの **\<storageConnectionString\>** を置き換えます。
+
+### <a name="linux"></a>Linux
+
+```
+export storageconnectionstring=\<yourconnectionstring\>
+```
+
 ### <a name="windows"></a>Windows
 
-```powershell
-setx accountname "<youraccountname>"
-setx accountkey "<youraccountkey>"
+```PowerShell
+setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-このサンプルでは、ストレージ アカウントの名前とキーを安全に保存する必要があります。 サンプルを実行するマシンにローカルの環境変数に保存します。 ご使用のオペレーティング システムに応じて、Linux または Windows の例に従い、環境変数を作成します。 
+このサンプルでは、ストレージ アカウントの名前とキーを安全に保存する必要があります。 サンプルを実行するマシンにローカルの環境変数に保存します。 ご使用のオペレーティング システムに応じて、Linux または Windows の例に従い、環境変数を作成します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。
 
 ### <a name="linux-example"></a>Linux の場合の例
 
@@ -179,21 +196,6 @@ export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
 setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
 ```
-
-この情報は、Azure portal で目的のストレージ アカウントに移動し、**[設定]** セクションの **[アクセス キー]** を選択すると確認できます。 
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-このサンプルを実行するには、実際のストレージ アカウントの資格情報を `.env.example` ファイルに追加し、その名前を `.env` に変更する必要があります。
-
-```
-AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
-AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
-```
-
-この情報は、Azure portal で目的のストレージ アカウントに移動し、**[設定]** セクションの **[アクセス キー]** を選択すると確認できます。 
-
-また、必要な依存関係をインストールする必要があります。 そのためには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`npm install`」と入力します。
 
 ---
 
@@ -215,17 +217,23 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 ![コンソール アプリの実行](media/storage-create-geo-redundant-storage/figure3.png)
 
-このサンプル コードで、`circuitbreaker.py` ファイルの `run_circuit_breaker` メソッドは、[get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 
+このサンプル コードで、`circuitbreaker.py` ファイルの `run_circuit_breaker` メソッドは、[get_blob_to_path](https://azure.github.io/azure-storage-python/ref/azure.storage.blob.baseblobservice.html) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。
 
 ストレージ オブジェクトの再試行関数は、線形的な再試行ポリシーに設定されています。 この再試行関数によって、要求を再試行するかどうかが判断され、要求が再試行されるまでの秒数が指定されます。 プライマリへの初回要求が失敗したときにセカンダリに対して要求を再試行する場合は、**retry\_to\_secondary** の値を true に設定してください。 サンプル アプリケーションのカスタム再試行ポリシーは、ストレージ オブジェクトの `retry_callback` 関数で定義されます。
 
-ダウンロードの前に、サービス オブジェクトの [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) と [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 関数が定義されています。 これらの関数に定義されているイベント ハンドラーが、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。  
+ダウンロードの前に、サービス オブジェクトの [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) と [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 関数が定義されています。 これらの関数に定義されているイベント ハンドラーが、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
+
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+アプリケーションは、ダウンロード済みアプリケーション フォルダーをスコープとするターミナルまたはコマンド プロンプトを開くことによって実行できます。 そこで、「`mvn compile exec:java`」と入力してアプリケーションを実行します。 すると、アプリケーションは、**HelloWorld.png** 画像をディレクトリからストレージ アカウントにアップロードした後、画像がセカンダリ RA-GRS エンドポイントにレプリケートされたかどうかを確認します。 チェックが完了すると、アプリケーションは、ダウンロード元のエンドポイントを報告しながら、画像のダウンロードを繰り返し開始します。
+
+ストレージ オブジェクトの再試行関数は、線形的な再試行ポリシーを使用するように設定されます。 この再試行関数によって、要求を再試行するかどうかが判断され、各再試行の間に待機する秒数が指定されます。 **BlobRequestOptions** の **LocationMode** プロパティは、**PRIMARY\_THEN\_SECONDARY** に設定されます。 これにより、アプリケーションは、**HelloWorld.png** をダウンロードするときにプライマリ ロケーションに到達できない場合に自動的にセカンダリ ロケーションに切り替えることができます。
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 サンプルを実行するには、コマンド ラインで Maven を使用します。
 
-1. シェルを開き、複製したディレクトリ内の **storage-blobs-java-v10-tutorial-master** を参照します。
+1. シェルを開き、複製したディレクトリ内の **storage-blobs-java-v10-quickstart** を参照します。
 2. 「 `mvn compile exec:java` 」を入力します。
 
 このサンプルでは、既定のディレクトリにテスト ファイルが作成されます。Windows ユーザーの場合、このディレクトリは **AppData\Local\Temp** です。このサンプルでは、次に、ユーザーが入力できる次のコマンド オプションが表示されます。
@@ -265,33 +273,6 @@ Cleaning up the sample and exiting!
 
 サンプルを制御するため、そのコードを実行するコマンドを入力します。 入力では大文字と小文字が区別されます。
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-サンプルを実行するには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`node index.js`」と入力します。
-
-BLOB ストレージ アカウントにコンテナーが作成されて、そこに **HelloWorld.png** がアップロードされ、コンテナーとイメージがセカンダリ リージョンにレプリケートされたかどうかが繰り返しチェックされます。 レプリケーション後、「**D**」(ダウンロードする場合) または「**Q**」(終了する場合) と入力して Enter キーを押すように求められます。 出力は次の例のようになります。
-
-```
-Created container successfully: newcontainer1550799840726
-Uploaded blob: HelloWorld.png
-Checking to see if container and blob have replicated to secondary region.
-[0] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-[1] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-...
-[31] Container has not replicated to secondary region yet: newcontainer1550799840726 : ContainerNotFound
-[32] Container found, but blob has not replicated to secondary region yet.
-...
-[67] Container found, but blob has not replicated to secondary region yet.
-[68] Blob has replicated to secondary region.
-Ready for blob download. Enter (D) to download or (Q) to quit, followed by ENTER.
-> D
-Attempting to download blob...
-Blob downloaded from primary endpoint.
-> Q
-Exiting...
-Deleted container newcontainer1550799840726
-```
-
 ---
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
@@ -301,7 +282,7 @@ Deleted container newcontainer1550799840726
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
 `OperationContextRetrying` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) は `SecondaryOnly` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージをダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。
- 
+
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
 {
@@ -335,7 +316,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 {
     if (blobClient.DefaultRequestOptions.LocationMode == LocationMode.SecondaryOnly)
     {
-        // You're reading the secondary. Let it read the secondary [secondaryThreshold] times, 
+        // You're reading the secondary. Let it read the secondary [secondaryThreshold] times,
         //    then switch back to the primary and see if it's available now.
         secondaryReadCount++;
         if (secondaryReadCount >= secondaryThreshold)
@@ -347,11 +328,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python) 
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
-`retry_callback` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python) は `SECONDARY` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージをダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。  
+`retry_callback` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](https://docs.microsoft.com/python/api/azure.storage.common.models.locationmode?view=azure-python) は `SECONDARY` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージをダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。
 
 ```python
 def retry_callback(retry_context):
@@ -389,9 +370,22 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
+
+Java では、**BlobRequestOptions** の **LocationMode** プロパティが **PRIMARY\_THEN\_SECONDARY** に設定されている場合にコールバック ハンドラーを定義する必要はありません。 これにより、アプリケーションは、**HelloWorld.png** をダウンロードするときにプライマリ ロケーションに到達できない場合に自動的にセカンダリ ロケーションに切り替えることができます。
+
+```java
+    BlobRequestOptions myReqOptions = new BlobRequestOptions();
+    myReqOptions.setRetryPolicyFactory(new RetryLinearRetry(deltaBackOff, maxAttempts));
+    myReqOptions.setLocationMode(LocationMode.PRIMARY_THEN_SECONDARY);
+    blobClient.setDefaultRequestOptions(myReqOptions);
+
+    blob.downloadToFile(downloadedFile.getAbsolutePath(),null,blobClient.getDefaultRequestOptions(),opContext);
+```
+
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Java V10 SDK ではコールバック ハンドラーの定義は不要ですが、この SDK には V7 SDK との基本的な違いがいくつかあります。 LocationMode の代わりに、セカンダリ **パイプライン**があります。 セカンダリ パイプラインは **RequestRetryOptions** を使用して定義することができます。セカンダリ パイプラインを定義した場合、アプリケーションは、プライマリ パイプライン経由でデータに到達できない場合に自動的にセカンダリ パイプラインに切り替えることができます。
+Java V10 SDK ではコールバック ハンドラーの定義は依然として不要ですが、この SDK には V7 SDK との基本的な違いがいくつかあります。 LocationMode の代わりに、セカンダリ **パイプライン**があります。 セカンダリ パイプラインは **RequestRetryOptions** を使用して定義することができます。セカンダリ パイプラインを定義した場合、アプリケーションは、プライマリ パイプライン経由でデータに到達できない場合に自動的にセカンダリ パイプラインに切り替えることができます。
 
 ```java
 // We create pipeline options here so that they can be easily used between different pipelines
@@ -399,29 +393,6 @@ PipelineOptions myOptions = new PipelineOptions();
 myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
 // We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
 final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
-```
-
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-
-Node.js V10 SDK では、コールバック ハンドラーは不要です。 代わりにこのサンプルでは、再試行オプションとセカンダリ エンドポイントを含むパイプラインを作成しています。 これによりアプリケーションは、プライマリ パイプラインで必要なデータに到達できなかった場合でも、自動的にセカンダリ パイプラインに切り替えることができます。 
-
-```javascript
-const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-const storageAccessKey = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
-const sharedKeyCredential = new SharedKeyCredential(accountName, storageAccessKey);
-
-const primaryAccountURL = `https://${accountName}.blob.core.windows.net`;
-const secondaryAccountURL = `https://${accountName}-secondary.blob.core.windows.net`;
-
-const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
-  retryOptions: {
-    maxTries: 3, 
-    tryTimeoutInMs: 10000,
-    retryDelayInMs: 500, 
-    maxRetryDelayInMs: 1000,
-    secondaryHost: secondaryAccountURL
-  }
-});
 ```
 
 ---

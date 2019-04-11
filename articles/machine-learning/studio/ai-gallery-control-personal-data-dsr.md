@@ -36,7 +36,7 @@ Azure AI Gallery の Web サイト UI を使用して公開した項目を表示
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>AI Gallery Catalog API を使用してデータを表示する
 
-https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
+ https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
 
 Catalog の応答は JSON 形式で返されます。
 

@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/22/2018
+ms.date: 04/05/2019
 ms.author: bwren
-ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110764"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259033"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Azure Monitor におけるログ データの表示と分析
 Log Analytics は、Azure Monitor におけるログ データ操作とクエリ作成の主要なエクスペリエンスです。 **[Azure Monitor]** メニューの **[ログ]** から Log Analytics を開きます。 「[Azure portal で Log Analytics の使用を開始する](get-started-portal.md)」で、このポータルの概要を参照して、その機能を確認できます。
@@ -39,7 +39,7 @@ Log Analytics には、ログ クエリを操作するための次の機能が�
 
 ![Log Analytics](media/portals/log-analytics.png)
 
-### <a name="resource-logs"></a>リソース ログ
+## <a name="resource-logs"></a>リソース ログ
 Log Analytics は Virtual Machines などのさまざまな Azure リソースと統合されます。 つまり、Azure Monitor に切り替えることなく、また、リソース コンテキストを失うことなく、リソースの監視メニューから直接 Log Analytics を開くことができます。 **[ログ]** は一部の Azure リソースではまだ有効になっていませんが、さまざまな種類のリソース用のポータル メニューに表示されるようになります。
 
 特定のリソースから Log Analytics を開くと、自動的にそのリソースのログ レコードのみにスコープが指定されます。   その他のレコードを含むクエリを記述する場合は、Azure Monitor メニューから開く必要があります。
@@ -52,7 +52,7 @@ Log Analytics は Virtual Machines などのさまざまな Azure リソース�
 - 別のワークスペース/リソースへの切り替え (現時点では未計画)
 
 
-### <a name="firewall-requirements"></a>ファイアウォールの要件
+## <a name="firewall-requirements"></a>ファイアウォールの要件
 Log Analytics にアクセスするには、ブラウザーが次のアドレスにアクセスできる必要があります。  ブラウザーがファイアウォールを介して Azure Portal にアクセスしている場合は、これらのアドレスへのアクセスを有効にする必要があります。
 
 | Uri | IP | ポート |
@@ -60,14 +60,6 @@ Log Analytics にアクセスするには、ブラウザーが次のアドレス
 | portal.loganalytics.io | 動的 | 80,443 |
 | api.loganalytics.io    | 動的 | 80,443 |
 | docs.loganalytics.io   | 動的 | 80,443 |
-
-
-## <a name="log-search-classic"></a>ログ検索 (クラシック)
-ログ検索は、Azure Monitor でクエリの実行とログ データの分析を行うための、Azure portal における従来のエクスペリエンスです。 これは間もなく廃止される予定ですが、現在はまだ使用可能です。 [Log Analytics] メニューの **[ログ (クラシック)**] からログ検索を開きます。
-
-
-
-![ログ検索](media/portals/log-search-portal.png)
 
 
 ## <a name="next-steps"></a>次の手順

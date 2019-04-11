@@ -36,7 +36,7 @@ ms.locfileid: "58663194"
 
 1. お使いのクラスターに Azure Monitor ログと Log Analytics エージェントを設定した後、コンテナーをデプロイします。 コンテナーが展開されるのを待ってから次の手順に進みます。
 
-2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理 カテゴリの下に表示される **コンテナー監視ソリューション** リソースをクリックします。
+2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理] カテゴリの下に表示される **[コンテナー監視ソリューション]** リソースをクリックします。
 
     ![コンテナー ソリューションの追加](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 

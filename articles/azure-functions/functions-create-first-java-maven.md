@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 96ac8522f94a3555fe63575baca8bbfbabc272d9
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d25fbfc058337c7a96414cf41f321e039ebc2258
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570455"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801846"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 
@@ -49,7 +49,10 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-### <a name="windows"></a>Windows
+> [!NOTE]
+> コマンドの実行で問題が発生した場合は、使用されている `maven-archetype-plugin` のバージョンを確認します。 `.pom` ファイルがない空のディレクトリでコマンドを実行しているため、Maven を古いバージョンからアップグレードした場合は、`~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` から古いバージョンのプラグインを使用しようとしている可能性があります。 その場合は、`maven-archetype-plugin` ディレクトリを削除した後、コマンドを再実行します。
+
+### <a name="windows"></a> Windows
 
 ```powershell
 mvn archetype:generate `
@@ -150,6 +153,9 @@ az login
 ```
 
 `azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。
+
+> [!NOTE]
+> Visual Studio Code を使用して関数アプリをデプロイするときは、無料サブスクリプション以外のサブスクリプションを選択してください。そうでないと、エラーが発生します。 IDE の左側で自分のサブスクリプションを確認することができます。
 
 ```
 mvn azure-functions:deploy

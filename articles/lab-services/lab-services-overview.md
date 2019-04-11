@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 5c53c64c337cb2992b002ee02ceb9aab36e16de4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: a4ca5cba924a3269f279469f26e68acdb0ad0659
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958747"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257622"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services の概要
 Azure Lab Services では、チーム用の環境 (例: 開発環境、テスト環境、教室ラボ環境) をクラウドに短時間で設定することができます。 ラボの所有者は、ラボを作成し、Windows または Linux の仮想マシンをプロビジョニングし、必要なソフトウェアとツールをインストールして、ラボのユーザーがそれらを利用できるようにします。 ラボのユーザーは、ラボ内の仮想マシン (VM) に接続して、日常の作業、短期的なプロジェクト、教室での演習などに利用します。 ユーザーがラボ内のリソースの利用を始めたら、ラボの管理者は、複数のラボについてコストと使用状況を分析し、全体的なポリシーを設定して、組織やチームのコストを最適化できます。

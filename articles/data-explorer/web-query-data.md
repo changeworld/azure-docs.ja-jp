@@ -1,19 +1,18 @@
 ---
 title: 'クイック スタート: Azure Data Explorer でデータのクエリを実行する'
 description: このクイック スタートでは、Azure Data Explorer でデータのクエリと共有を行う方法について説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 1774ae943dc96e07837a3cd155b5980ff732ceb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756150"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050562"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>クイック スタート: Azure Data Explorer でデータのクエリを実行する
 
@@ -193,4 +192,4 @@ Data Explorer は現在プレビュー段階であり、ユーザーの経験に
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Data Explorer のクエリを記述する](write-queries.md)
+> [Azure データ エクスプローラーのクエリを記述する](write-queries.md)

@@ -1,19 +1,18 @@
 ---
 title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 47026975a5142760f90a1a5712b532519f969fd7
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57997628"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256874"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 

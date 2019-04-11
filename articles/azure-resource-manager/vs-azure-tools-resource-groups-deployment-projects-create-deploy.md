@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097459"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905853"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
 Visual Studio では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、アプリ用に Web ホスト、Web サイト、およびデータベースを定義し、そのインフラストラクチャをコードと共にデプロイできます。 Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。 この記事では、Web アプリと SQL Database をデプロイします。  
 
 この記事では、[Azure の開発ワークロードと ASP.NET ワークロードがインストールされている Visual Studio 2017](/dotnet/azure/dotnet-tools) を使用する方法を説明します。 Visual Studio 2015 Update 2 と Microsoft Azure SDK for .NET 2.9、または Visual Studio 2013 と Azure SDK 2.9 をご使用の場合、ここに記載した操作とほぼ同じです。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>Azure リソース グループ プロジェクトを作成する
 
@@ -143,12 +145,12 @@ Visual Studio では、テンプレートの編集時に使用できるプロパ
     **databaseName** には、作成するデータベースの名前を指定します。 
    
     ![[パラメーターの編集] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
-5. **[デプロイ]** をクリックして、プロジェクトを Azure にデプロイします。 PowerShell コンソールが、Visual Studio インスタンスの外部で開きます。 PowerShell コンソールで SQL Server 管理者のパスワードの入力を求められた場合は、入力します。 **PowerShell コンソールが、他のアイテムの後ろに隠れていたり、タスクバーに最小化されたりしていることがあります。**  その場合は、コンソールを見つけて選択し、パスワードを入力してください。
+5. **[デプロイ]** をクリックして、プロジェクトを Azure にデプロイします。 PowerShell コンソールが、Visual Studio インスタンスの外部で開きます。 PowerShell コンソールで SQL Server 管理者のパスワードの入力を求められた場合は、入力します。 **PowerShell コンソールが、他のアイテムの後ろに隠れていたり、タスク バーに最小化されたりしていることがあります。**  その場合は、コンソールを見つけて選択し、パスワードを入力してください。
    
    > [!NOTE]
    > Azure PowerShell コマンドレットのインストールを求められる場合があります。 メッセージが表示されたら、それらをインストールしてください。 リソース グループを正しくデプロイするには、Azure PowerShell のモジュールが必要です。 プロジェクトの PowerShell スクリプトは、新しい [Azure PowerShell Az モジュール](/powershell/azure/new-azureps-module-az) では機能しません。 
    >
-   > 詳細については、[Azure PowerShell モジュールのインストールおよび構成](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+   > 詳細については、[Azure PowerShell モジュールのインストールおよび構成](/powershell/azure/install-Az-ps)に関するページを参照してください。
    > 
    > 
 6. デプロイには数分かかる場合があります。 **出力** ウィンドウに、デプロイの進行状況が表示されます。 デプロイが完了すると、最後に、デプロイが成功したことを示す次のようなメッセージが表示されます。
@@ -313,4 +315,4 @@ RBAC グループを使用して、ダッシュボードへのアクセスを管
 このクイック スタートでは、Visual Studio を使用してテンプレートを作成およびデプロイする方法について説明しました。 次のチュートリアルでは、テンプレート リファレンスから情報を検索して、暗号化された Azure Storage アカウントを作成できるようにする方法を示します。
 
 > [!div class="nextstepaction"]
-> [暗号化されたストレージ アカウントを作成する](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [暗号化されたストレージ アカウントの作成](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

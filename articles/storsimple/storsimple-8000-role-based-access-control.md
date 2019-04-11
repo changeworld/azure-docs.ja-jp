@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: be0c1611856a1fa68d20696c32b5fadcd8572004
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793613"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049474"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
 
 この記事では、StorSimple デバイスで Azure ロールベースのアクセス制御 (RBAC) を使用する方法について、簡単に説明します。 RBAC は、Azure の粒度の細かいアクセス管理を提供します。 RBAC を使用して、StorSimple のすべてのユーザーに無制限のアクセス権を与える代わりに、仕事を行うために必要な適切なアクセス権をユーザーに付与します。 Azure でのアクセス管理の基本については、「[Azure ポータルでのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 
 この記事は、Azure ポータルで Update 3.0 以降を実行している StorSimple 8000 シリーズのデバイスに適用されます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rbac-roles-for-storsimple"></a>StorSimple の RBAC ロール
 
@@ -46,14 +48,14 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 2. Azure にログインします。
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 
 3. 閲覧者ロールを JSON テンプレートとしてコンピューターにエクスポートします。
 
     ```powershell
-    Get-AzureRMRoleDefinition -Name "Reader"
+    Get-AzRoleDefinition -Name "Reader"
 
-    Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
 4. Visual Studio で JSON ファイルを開きます。 標準的な RBAC ロールは、**Actions**、**NotActions**、**AssignableScopes** という 3 つのメイン セクションで構成されていることがわかります。
@@ -62,7 +64,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
     PowerShell を使用して、利用可能かつサブスクリプションに登録されているすべてのリソース プロバイダーを表示します。
 
-    `Get-AzureRMResourceProvider`
+    `Get-AzResourceProvider`
 
     リソース プロバイダーの管理に利用できるすべての PowerShell コマンドレットを確認することもできます。
 
@@ -102,7 +104,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 6. カスタム RBAC ロールを環境にインポートします。
 
-    `New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"`
+    `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
 これで、このロールが **[アクセス制御]** ブレードのロールの一覧に表示されます。
@@ -114,7 +116,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Powershell によるカスタム ロールの作成のサンプル出力
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ```Output
@@ -127,7 +129,7 @@ CurrentStorageAccount :
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader"
+Get-AzRoleDefinition -Name "Reader"
 ```
 
 ```Output
@@ -141,8 +143,8 @@ AssignableScopes : {/}
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
-New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
+Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"
 ```
 
 ```Output

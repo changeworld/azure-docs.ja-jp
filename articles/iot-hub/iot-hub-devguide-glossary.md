@@ -3,17 +3,17 @@ title: Azure IoT Hub 用語集 | Microsoft Docs
 description: 開発者ガイド - Azure IoT Hub に関連する一般用語の用語集。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: ac7043d2967fcf3f083c09622c39f4649f04f6e7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551672"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045970"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835318"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803219"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -72,6 +72,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 - 米国中央部
 - 米国西部
 - 米国西部 2
+- フランス中部
 - 西ヨーロッパ
 - 北ヨーロッパ
 - ブラジル南部
@@ -79,20 +80,26 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 - 英国南部
 - オーストラリア東部
 - オーストラリア南東部 
+- 東アジア
 - 東南アジア
+- 韓国中部
 - インド中部
 - インド南部
 - 東日本
+- 西日本
 - 米国政府バージニア州
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 - カナダ中部
 - 米国中西部
+- 米国西部 2
 - 米国東部
+- フランス中部
 - 西ヨーロッパ
 - 英国南部
 - オーストラリア南東部
 - 東南アジア 
+- 韓国中部
 - インド中部
 - 東日本
 - 米国政府バージニア州
@@ -163,7 +170,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>PowerShell または Azure Resource Manager テンプレートまたはクライアントを使用してトラフィック分析を構成できますか?
 
-バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.3.0) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus?view=azurermps-6.3.0) を参照してください。
+バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus) を参照してください。
 
 現在、Azure Resource Manager テンプレートを使用してトラフィック分析を構成することはできません。
 

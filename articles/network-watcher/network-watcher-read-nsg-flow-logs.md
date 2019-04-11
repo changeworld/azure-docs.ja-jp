@@ -13,18 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: dd4622e0359476f47a0ac939d59a2571e34a0a46
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cddf6526a798195e3e3091af766fee28791ac522
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112701"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050593"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
 PowerShell で NSG フロー ログのエントリを読み取る方法を説明します。
 
 NSG フロー ログは[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) のストレージ アカウントに保存されます。 ブロック BLOB は小規模なブロックで構成されます。 各ログは、1 時間ごとに生成される個別のブロック BLOB です。 新しいログが 1 時間ごとに生成され、ログは最新データを保持した新しいエントリで数分ごとに更新されます。 この記事では、フロー ログの一部を読み取る方法を説明します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>シナリオ
 
@@ -53,10 +56,10 @@ function Get-NSGFlowLogCloudBlockBlob {
 
     process {
         # Retrieve the primary storage account key to access the NSG logs
-        $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
+        $StorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
 
         # Setup a new storage context to be used to query the logs
-        $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+        $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
         # Container name used by NSG flow logs
         $ContainerName = "insights-logs-networksecuritygroupflowevent"
@@ -65,7 +68,7 @@ function Get-NSGFlowLogCloudBlockBlob {
         $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${NSGResourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${NSGName}/y=$($logTime.Year)/m=$(($logTime).ToString("MM"))/d=$(($logTime).ToString("dd"))/h=$(($logTime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
         # Gets the storage blog
-        $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
+        $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
         # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
         $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob

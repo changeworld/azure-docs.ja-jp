@@ -1,19 +1,19 @@
 ---
 author: robinsh
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 20553db8c79c960aabda5aba708d315517462126
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57805177"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59055671"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
-| リソース | S1 Standard | S2 Standard | S3 Standard | F1 Free |
+| Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
 | メッセージ/日 |400,000 |6,000,000 |300,000,000 |8,000 |
 | 最大ユニット数 |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ ms.locfileid: "57805177"
 
 次の表には、IoT Hub のリソースに適用される制限がリストされています。
 
-| リソース | 制限 |
+| Resource | 制限 |
 | --- | --- |
 | Azure サブスクリプションごとの最大有料 IoT Hub |50 |
 | Azure サブスクリプションごとの最大無料 IoT Hub |1 |

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 4db013b51657bb327c36d616a3743c46731cd19a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/04/2019
+ms.openlocfilehash: 5e323b28913e0ba259654d39f97e0436e6bff2db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903795"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010483"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>最大 100 TB のハイパースケール サービス レベル (プレビュー)
 
@@ -33,8 +33,6 @@ Azure SQL Database の Hyperscale サービス レベルは、仮想コアベー
 > ハイパースケール サービス レベルは現在パブリック プレビュー段階であり、一部の Azure リージョンのみで使用できます。 完全なリージョンの一覧については、[ハイパースケール サービス レベル対応リージョン](#available-regions)をご覧ください。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 > [!NOTE]
 > 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルの詳細については、[General Purpose](sql-database-service-tier-general-purpose.md) サービス レベルと [Business Critical](sql-database-service-tier-business-critical.md) サービス レベルの記事を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-purchase-models.md)に関する記事をご覧ください。
-> [!IMPORTANT]
-> ハイパースケール サービス レベルは現在パブリック プレビュー段階です。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>ハイパースケールの機能とは
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 0f4f890afd8c698bec8dbd76e8bb8dca710f4d6c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203343"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891001"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
@@ -140,8 +140,8 @@ if (!isIE) {
 
 #### <a name="getting-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-` acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 初めて `loginPopup` (または `loginRedirect`) が実行された後、その後の呼び出しでは、保護されたリソースにアクセスするトークンを取得するために `acquireTokenSilent` メソッドが通常使用されます。トークンの要求や更新のための呼び出しは自動で行われるためです。
-`acquireTokenSilent` は、ユーザーのパスワードの期限が切れている場合などに失敗することがあります。 アプリケーションでは、この例外を 2 つの方法で処理できます。
+`acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 初めて `loginPopup` (または `loginRedirect`) が実行された後、その後の呼び出しでは、保護されたリソースにアクセスするトークンを取得するために `acquireTokenSilent` メソッドが通常使用されます。トークンの要求や更新のための呼び出しは自動で行われるためです。
+`acquireTokenSilent`  は、ユーザーのパスワードの期限が切れている場合などに失敗することがあります。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
 1. すぐに `acquireTokenPopup` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できる非認証コンテンツが含まれていないアプリケーション) の場合は、一般に、この方法で処理します。 このガイドの設定で生成したサンプルでは、このパターンを使用しています。
 

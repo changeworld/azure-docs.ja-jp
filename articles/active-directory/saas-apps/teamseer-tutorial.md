@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d3f95001ff26fe21c29baf0c8721be914e8fdf73
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: ef11011ec37f72003dd6c238ce748d417bfcd505
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905139"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>チュートリアル:Azure Active Directory と TeamSeer の統合
 
@@ -242,8 +242,8 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [ SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

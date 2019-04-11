@@ -3,17 +3,17 @@ title: テンプレートを使用した Azure IoT Hub の作成 (PowerShell) | 
 description: Azure Resource Manager テンプレートを使用して PowerShell から IoT ハブを作成する方法。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: c9a72bc435517241cf705660a669e9fb57ae2a1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fcc9af9e614b0a1b7977ba18f3147fddab8b7b7d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103113"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045056"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 

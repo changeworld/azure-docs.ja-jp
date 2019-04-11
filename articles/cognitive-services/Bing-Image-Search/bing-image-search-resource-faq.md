@@ -1,7 +1,7 @@
 ---
-title: Frequently asked questions (FAQ) - Bing Image Search API
+title: よく寄せられる質問 (FAQ) - Bing Image Search API
 titleSuffix: Azure Cognitive Services
-description: Find answers to commonly asked questions about concepts, code, and scenarios related to the Bing Image Search API.
+description: Bing Image Search API に関連する概念、コード、シナリオについてよく寄せられる質問の回答を見つけることができます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,59 +10,59 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539022"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049427"
 ---
-# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Frequently asked questions (FAQ) about the Bing Image Search API
+# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
 
-Find answers to commonly asked questions about concepts, code, and scenarios related to the Bing Image Search API for Microsoft Cognitive Services on Azure.
+Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連する概念、コード、シナリオについてよく寄せられる質問に対する回答を示します。
 
-## <a name="response-headers-in-javascript"></a>Response headers in JavaScript
+## <a name="response-headers-in-javascript"></a>JavaScript 内の応答ヘッダー
 
-The following headers may occur in responses from the Bing Image Search API.
+次のヘッダーは、Bing Image Search API からの応答に含まれる可能性があります。
 
-|||
-|-|-|
-|`X-MSEdge-ClientID`|The unique ID that Bing has assigned to the user|
-|`BingAPIs-Market`|The market that was used to fulfill the request|
-|`BingAPIs-TraceId`|The log entry on the Bing API server for this request (for support)|
+| `Attribute`         | `Description` |
+| ------------------- | ------------- |
+| `X-MSEdge-ClientID` |Bing がユーザーに割り当てた一意の ID |
+| `BingAPIs-Market`   |要求を満たすために使用された市場 |
+| `BingAPIs-TraceId`  |この要求に対する Bing API サーバー上のログ エントリ (サポート用) |
 
-It is particularly important to persist the client ID and return it with subsequent requests. When you do this, the search will use past context in ranking search results and also provide a consistent user experience.
+クライアント ID を保持し、後続の要求で返すことが特に重要です。 これを行うときに、検索は検索結果の順位付けに過去のコンテキストを使用し、一貫性のあるユーザー エクスペリエンスも提供します。
 
-However, when you call the Bing Image Search API from JavaScript, your browser's built-in security features (CORS) might prevent you from accessing the values of these headers.
+ただし、JavaScript から Bing Image Search API を呼び出すときに、ブラウザーの組み込みのセキュリティ機能 (CORS) によっては、これらのヘッダーの値にアクセスできないことがあります。
 
-To gain access to the headers, you can make the Bing Image Search API request through a CORS proxy. The response from such a proxy has an `Access-Control-Expose-Headers` header that whitelists response headers and makes them available to JavaScript.
+ヘッダーにアクセスするために、CORS プロキシを介して Bing Image Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録し、JavaScript で使用可能にする `Access-Control-Expose-Headers` ヘッダーがあります。
 
-It's easy to install a CORS proxy to allow our [tutorial app](tutorial-bing-image-search-single-page-app.md) to access the optional client headers. First, if you don't already have it, [install Node.js](https://nodejs.org/en/download/). Then enter the following command at a command prompt.
+CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-image-search-single-page-app.md)がオプションのクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
     npm install -g cors-proxy-server
 
-Next, change the Bing Image Search API endpoint in the HTML file to:
+次に、HTML ファイル内の Bing Image Search API エンドポイントを次のように変更します。
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Finally, start the CORS proxy with the following command:
+最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
     cors-proxy-server
 
-Leave the command window open while you use the tutorial app; closing the window stops the proxy. In the expandable HTTP Headers section below the search results, you can now see the `X-MSEdge-ClientID` header (among others) and verify that it is the same for each request.
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
 
-## <a name="response-headers-in-production"></a>Response headers in production
+## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
 
-The CORS proxy approach described in the previous answer is appropriate for development, testing, and learning.
+前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。
 
-In a production environment, however, you should host a server-side script on the same domain as the Web page that uses the Bing Web Search API. This script should actually do the API calls upon request from the Web page JavaScript and pass all results, including headers, back to the client. Since the two resources (page and script) share an origin, CORS does not come into play and the special headers are accessible to the JavaScript on the Web page.
+一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーに Web ページ上の JavaScript からアクセスできます。
 
-This approach also protects your API key from exposure to the public, since only the server-side script needs it. The script can use another method (such as the HTTP referrer) to make sure the request is authorized.
+API キーはサーバー側スクリプトでのみ必要なので、このアプローチでは API キーもパブリックへの露出から保護されます。 スクリプトでは、別の方法 (HTTP 参照元など) を使用して、要求が承認されているかどうかを確認できます。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
-Is your question about a missing feature or functionality? Consider requesting or voting for it on our [User Voice web site](https://cognitive.uservoice.com/forums/555907-bing-search).
+不足している機能について質問がある場合は、 [ユーザーの声 Web サイト](https://cognitive.uservoice.com/forums/555907-bing-search)で、要求またはそれに対する投票をご検討ください。
 
 ## <a name="see-also"></a>関連項目
 
- [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow:Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6e1a9b2fd34d915716225c6a1bda6e0371a510a9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438837"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049236"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -21,6 +21,9 @@ Azure Site Recovery では、月 1 回のリリース周期で、問題修正、
 
 「[Azure から Azure へのディザスター リカバリー アーキテクチャ](azure-to-azure-architecture.md)」で説明されているように、Azure 仮想マシン (VM) を別の Azure リージョンにレプリケートする際に、レプリケーションが有効なすべての VM にモビリティ サービスがインストールされます。 自動更新を使用すると、毎回の新しいリリースでモビリティ サービスの拡張機能が更新されます。
  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="how-automatic-updates-work"></a>自動更新の仕組み
 
 Site Recovery を使用して更新を管理する場合、コンテナーと同じサブスクリプションに作成された Automation アカウントを介して、グローバル Runbook (Azure サービスによって使用されます) がデプロイされます。 各コンテナーが 1 つの Automation アカウントを使用します。 この Runbook は、アクティブな自動更新用のコンテナーに含まれる各 VM をチェックし、新しいバージョンが利用可能であれば、モビリティ サービス拡張機能をアップグレードします。
@@ -342,7 +345,7 @@ $JobsFailedToStart = 0
 $JobsTimedOut = 0
 $Header = @{}
 
-$AzureRMProfile = Get-Module -ListAvailable -Name AzureRM.Profile | Select Name, Version, Path
+$AzureRMProfile = Get-Module -ListAvailable -Name Az.Accounts | Select Name, Version, Path
 $AzureRmProfileModulePath = Split-Path -Parent $AzureRMProfile.Path
 Add-Type -Path (Join-Path $AzureRmProfileModulePath "Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
 

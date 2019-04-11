@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 03/29/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: befac6f1429d5099f68f0c2ba0a90bb1217f8b6f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530264"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894015"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -42,9 +42,9 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 
 * **リポジトリ** - レジストリには、1 つ以上のリポジトリが含まれていて、それらはコンテナー イメージのグループを格納しています。 Azure Container Registry では、複数レベルのリポジトリ名前空間をサポートしています。 複数レベルの名前空間により、特定のアプリまたはアプリのコレクションに関連するイメージのコレクションを特定の開発チームや運用チーム別にグループ化できます。 例: 
 
-  * `myregistry.azurecr.io/aspnetcore:1.0.1` は、会社全体のイメージを表します
-  * `myregistry.azurecr.io/warrantydept/dotnet-build` は、保証部門全体で共有される、.NET アプリを構築するために使用するイメージを表します
-  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` は、保証部門が所有する、customer submissions アプリでグループ化された Web イメージを表します
+  * `myregistry.azurecr.io/aspnetcore:1.0.1`  は、会社全体のイメージを表します
+  * `myregistry.azurecr.io/warrantydept/dotnet-build`  は、保証部門全体で共有される、.NET アプリを構築するために使用するイメージを表します
+  * `myregistry.azurecr.io/warrantydept/customersubmissions/web`  は、保証部門が所有する、customer submissions アプリでグループ化された Web イメージを表します
 
 * **イメージ** - リポジトリに格納されます。各イメージは、Docker 互換コンテナーの読み取り専用のスナップショットです。 Azure コンテナー レジストリには、Windows と Linux の両方のイメージを含めることができます。 すべてのコンテナーのデプロイのイメージ名を制御できます。 イメージをリポジトリにプッシュしたり、イメージをリポジトリからプルしたりするには、標準の [Docker コマンド](https://docs.docker.com/engine/reference/commandline/)を使用します。 コンテナー イメージの他に、Azure Container Registry は、Kubernetes にアプリケーションをデプロイするために使用される [Helm チャート](container-registry-helm-repos.md)などの[関連コンテンツの形式](container-registry-image-formats.md)を格納します。
 
@@ -54,7 +54,7 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 
 [Azure Container Registry タスク](container-registry-tasks-overview.md) (ACR タスク) は､Azure における Docker コンテナーのイメージ ビルドを簡素化し、効率的に行えるようにする、Azure Container Registry 内の一連の機能です。 ACR タスクを利用して､`docker build` オペレーションを Azure にオフロードすることで、開発の社内ループをクラウドへと拡張します。 ビルド タスクの設定では､コンテナーの OS およびフレームワーク パッチ適用 パイプラインを自動化し､ソース コントロールにコードがコミットされたときに自動的にイメージがビルドされるよう指定できます｡
 
-ACR タスクのプレビュー機能である[マルチステップ タスク](container-registry-tasks-overview.md#multi-step-tasks-preview)では、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップ ベースでタスクの定義と実行を行えます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
+[マルチステップ タスク](container-registry-tasks-overview.md#multi-step-tasks)では、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップベースでタスクの定義と実行を行うことができます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877263"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044863"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル:Azure Firewall のログとメトリックを監視する
 
@@ -30,6 +30,9 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 > * アクティビティ ログの表示と分析
 > * ネットワークおよびアプリケーション ルール ログの表示と分析
 > * メトリックを表示する
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,7 +82,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 3. 次の PowerShell コマンドレットを使用して、診断ログを有効にします。
 
     ```powershell
-    Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
+    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
    -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> `
    -Enabled $true     
     ```

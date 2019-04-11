@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/05/2019
+ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c9cdac53e43d57feb0d2dc5a8a7153dc05be8a7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170634"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880051"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
 
@@ -45,6 +45,8 @@ Azure Deployment Manager REST API のリファレンスについては、[こち
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
@@ -55,13 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 管理者特権の PowerShell ウィンドウを新たに開き、次のコマンドを使用します。
 
     ```powershell
-    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
-    ```
-
-    既に Azure PowerShell Az モジュールがインストールされている場合は、さらに 2 つのスイッチが必要となります。
-
-    ```powershell
-    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease -AllowClobber -Force
+    Install-Module -Name Az.DeploymentManager
     ```
 
 * [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)。 Azure Storage Explorer は必須ではありませんが、作業しやすくなります。
@@ -71,8 +67,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 サービス トポロジ テンプレートでは、アプリケーションを構成する Azure リソースとその配備先を記述します。 サービス トポロジの定義には次の階層があります。
 
 * サービス トポロジ
-    * サービス
-        * サービス ユニット
+  * サービス
+    * サービス ユニット
 
 次の図は、このチュートリアルで使用されるサービス トポロジを示したものです。
 
@@ -87,12 +83,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ルート フォルダーには次の 2 つのフォルダーがあります。
 
-- **ADMTemplates**: 次を含む Deployment Manager テンプレートが収納されます。
-    - CreateADMServiceTopology.json
-    - CreateADMServiceTopology.Parameters.json
-    - CreateADMRollout.json
-    - CreateADMRollout.Parameters.json
-- **ArtifactStore**: テンプレート成果物とバイナリ成果物の両方が収納されます。 「[成果物の準備](#prepare-the-artifacts)」を参照してください。
+* **ADMTemplates**: 次を含む Deployment Manager テンプレートが収納されます。
+  * CreateADMServiceTopology.json
+  * CreateADMServiceTopology.Parameters.json
+  * CreateADMRollout.json
+  * CreateADMRollout.Parameters.json
+* **ArtifactStore**: テンプレート成果物とバイナリ成果物の両方が収納されます。 「[成果物の準備](#prepare-the-artifacts)」を参照してください。
 
 2 種類のテンプレートがあることに注意してください。  1 つは、サービス トポロジとロールアウトを配備するために使用される Deployment Manager テンプレートです。もう 1 つは、Web サービスとストレージ アカウントを作成するために、サービス ユニットから呼び出されます。
 
@@ -102,8 +98,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Deployment Manager チュートリアルの成果物ソース図](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-artifact-source-diagram.png)
 
-- **テンプレート** フォルダー: テンプレート成果物が収納されます。 **1.0.0.0** と **1.0.0.1** は、バイナリ成果物の 2 つのバージョンを表します。 各バージョン内には、各サービス (サービス米国東部とサービス米国西部) 用のフォルダーがあります。 各サービスには、ストレージ アカウントを作成するためのテンプレート ファイルとパラメータ ファイルのペアと、Web アプリケーションを作成するための別のペアがあります。 Web アプリケーション テンプレートは、Web アプリケーション ファイルを収納する圧縮パッケージを呼び出します。 圧縮ファイルは、バイナリ フォルダーに格納されるバイナリ成果物です。
-- **バイナリ** フォルダー: バイナリ成果物が収納されます。 **1.0.0.0** と **1.0.0.1** は、バイナリ成果物の 2 つのバージョンを表します。 各バージョン内には、米国西部の場所で Web アプリケーションを作成するための 1 つの zip ファイルと、米国東部の場所で Web アプリケーションを作成するための別の zip ファイルがあります。
+* **テンプレート** フォルダー: テンプレート成果物が収納されます。 **1.0.0.0** と **1.0.0.1** は、バイナリ成果物の 2 つのバージョンを表します。 各バージョン内には、各サービス (サービス米国東部とサービス米国西部) 用のフォルダーがあります。 各サービスには、ストレージ アカウントを作成するためのテンプレート ファイルとパラメータ ファイルのペアと、Web アプリケーションを作成するための別のペアがあります。 Web アプリケーション テンプレートは、Web アプリケーション ファイルを収納する圧縮パッケージを呼び出します。 圧縮ファイルは、バイナリ フォルダーに格納されるバイナリ成果物です。
+* **バイナリ** フォルダー: バイナリ成果物が収納されます。 **1.0.0.0** と **1.0.0.1** は、バイナリ成果物の 2 つのバージョンを表します。 各バージョン内には、米国西部の場所で Web アプリケーションを作成するための 1 つの zip ファイルと、米国東部の場所で Web アプリケーションを作成するための別の zip ファイルがあります。
 
 2 つのバージョン (1.0.0.0 と 1.0.0.1) は、[リビジョン配備](#deploy-the-revision)用です。 テンプレート成果物とバイナリ成果物の両方に 2 つのバージョンがある場合でも、2 つのバージョン間で違いがあるのはバイナリ成果物のみです。 実際に、バイナリ成果物はテンプレート成果物よりも頻繁に更新されます。
 
@@ -131,6 +127,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       </body>
     </html>
     ```
+
     html では場所とバージョン情報が示されます。 1.0.0.1 フォルダー内のバイナリ ファイルは、"Version 1.0.0.1" であることを示します。 サービスを配備し終えたら、これらのページを参照できます。
 5. その他の成果物ファイルをチェックアウトします。 これは、シナリオをさらに良く理解するのに役立ちます。
 
@@ -164,9 +161,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure Deployment Manager チュートリアルでのユーザー割り当てマネージド ID のアクセス制御](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)
 
-    - **ロール**: 成果物の配備 (Web アプリケーションとストレージ アカウント) を完結するための十分な権限を与えます。 このチュートリアルでは、**[共同作成者]** を選択します。 実際には、アクセス許可を最小限に抑えます。
-    - **割り当て済みのアクセス先**: **[ユーザー割り当てマネージド ID]** を選択します。
-    - チュートリアルの前半で作成したユーザー割り当てマネージド ID を選択します。
+    * **ロール**: 成果物の配備 (Web アプリケーションとストレージ アカウント) を完結するための十分な権限を与えます。 このチュートリアルでは、**[共同作成者]** を選択します。 実際には、アクセス許可を最小限に抑えます。
+    * **割り当て済みのアクセス先**: **[ユーザー割り当てマネージド ID]** を選択します。
+    * チュートリアルの前半で作成したユーザー割り当てマネージド ID を選択します。
 6. **[保存]** を選択します。
 
 ## <a name="create-the-service-topology-template"></a>サービス トポロジ テンプレートの作成
@@ -179,11 +176,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Deployment Manager チュートリアルのトポロジ テンプレート パラメーター](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
 
-- **namePrefix**:このプレフィックスは、Deployment Manager リソース用の名前を作成するために使用されます。 たとえば、サービス トポロジの名前は、"jdoe" プレフィックスを使用して、**jdoe**ServiceTopology とします。  リソース名は、このテンプレートの変数セクションで定義されます。
-- **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべてのリソースはこの場所を共有します。 現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
-- **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されている BLOB コンテナーへのSAS URI です。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
-- **templateArtifactRoot**:テンプレートとパラメーターが格納されている BLOB コンテナーからのオフセット パスです。 既定値は **templates/1.0.0.0** です。 「[成果物の準備](#prepare-the-artifacts)」で説明されているフォルダー構造を変更しない限り、この値を変更しないでください。 このチュートリアルでは、相対パスを使用します。  フルパスは、**artifactSourceSASLocation**、**templateArtifactRoot**、**templateArtifactSourceRelativePath** (または **parametersArtifactSourceRelativePath**) を連結することで構成されます。
-- **targetSubscriptionID**:Deployment Manager のリソースが配備され、請求される予定のサブスクリプションID です。 このチュートリアルでは、サブスクリプション ID を使用します。
+* **namePrefix**:このプレフィックスは、Deployment Manager リソース用の名前を作成するために使用されます。 たとえば、サービス トポロジの名前は、"jdoe" プレフィックスを使用して、**jdoe**ServiceTopology とします。  リソース名は、このテンプレートの変数セクションで定義されます。
+* **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべてのリソースはこの場所を共有します。 現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
+* **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されている BLOB コンテナーへのSAS URI です。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
+* **templateArtifactRoot**:テンプレートとパラメーターが格納されている BLOB コンテナーからのオフセット パスです。 既定値は **templates/1.0.0.0** です。 「[成果物の準備](#prepare-the-artifacts)」で説明されているフォルダー構造を変更しない限り、この値を変更しないでください。 このチュートリアルでは、相対パスを使用します。  フルパスは、**artifactSourceSASLocation**、**templateArtifactRoot**、**templateArtifactSourceRelativePath** (または **parametersArtifactSourceRelativePath**) を連結することで構成されます。
+* **targetSubscriptionID**:Deployment Manager のリソースが配備され、請求される予定のサブスクリプションID です。 このチュートリアルでは、サブスクリプション ID を使用します。
 
 ### <a name="the-variables"></a>変数
 
@@ -205,9 +202,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Deployment Manager チュートリアルのトポロジ テンプレート リソース サービス トポロジ](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-resources-service-topology.png)
 
-- **artifactSourceId** は、成果物ソース リソースをサービス トポロジ リソースに関連付けるために使用されます。
-- **dependsOn**:すべてのサービス トポロジ リソースは、成果物ソース リソースに依存します。
-- **artifacts** は、テンプレート成果物をポイントします。  ここでは相対パスが使用されます。 フルパスは、artifactSourceSASLocation (成果物ソースで定義される)、artifactRoot (成果物ソースで定義される)、templateArtifactSourceRelativePath (または parametersArtifactSourceRelativePath) を連結することで構成されます。
+* **artifactSourceId** は、成果物ソース リソースをサービス トポロジ リソースに関連付けるために使用されます。
+* **dependsOn**:すべてのサービス トポロジ リソースは、成果物ソース リソースに依存します。
+* **artifacts** は、テンプレート成果物をポイントします。  ここでは相対パスが使用されます。 フルパスは、artifactSourceSASLocation (成果物ソースで定義される)、artifactRoot (成果物ソースで定義される)、templateArtifactSourceRelativePath (または parametersArtifactSourceRelativePath) を連結することで構成されます。
 
 ### <a name="topology-parameters-file"></a>トポロジ パラメーター ファイル
 
@@ -216,11 +213,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Visual Studio Code またはいずれかのテキスト エディターで、**\ADMTemplates\CreateADMServiceTopology.Parameters** を開きます。
 2. 次のパラメーター値を記入します。
 
-    - **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
-    - **azureResourceLocation**:Azure の場所が不明な場合、このチュートリアルでは **centralus** を使用してください。
-    - **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
-    - **templateArtifactRoot**:成果物のフォルダー構造を変更しない限り、このチュートリアルでは **templates/1.0.0.0** を使用してください。
-    - **targetScriptionID**:Azure サブスクリプション ID を入力します。
+    * **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
+    * **azureResourceLocation**:Azure の場所が不明な場合、このチュートリアルでは **centralus** を使用してください。
+    * **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
+    * **templateArtifactRoot**:成果物のフォルダー構造を変更しない限り、このチュートリアルでは **templates/1.0.0.0** を使用してください。
+    * **targetScriptionID**:Azure サブスクリプション ID を入力します。
 
 > [!IMPORTANT]
 > トポロジ テンプレートとロールアウト テンプレートでは、いくつかの共通パラメーターを共有します。 これらのパラメーターは、同じ値でなければなりません。 これらのパラメーターとは、**namePrefix**、**azureResourceLocation**、**artifactSourceSASLocation** のことです (このチュートリアルでは、どちらの成果物ソースも同じストレージ アカウントを共有します)。
@@ -235,11 +232,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Deployment Manager チュートリアルのロールアウト テンプレート パラメーター](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-- **namePrefix**:このプレフィックスは、Deployment Manager リソース用の名前を作成するために使用されます。 たとえば、ロールアウト名は、"jdoe" プレフィックスを使用して、**jdoe**Rollout とします。  その名前は、テンプレートの変数セクションで定義されます。
-- **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべての Deployment Manager リソースはこの場所を共有します。 現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
-- **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI です。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
-- **binaryArtifactRoot**:既定値は **binaries/1.0.0.0** です。 「[成果物の準備](#prepare-the-artifacts)」で説明されているフォルダー構造を変更しない限り、この値を変更しないでください。 このチュートリアルでは、相対パスを使用します。  フルパスは、CreateWebApplicationParameters.json で指定されている **artifactSourceSASLocation**、**binaryArtifactRoot**、**deployPackageUri** を連結することで構成されます。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
-- **managedIdentityID**:配備操作を実行するユーザー割り当てマネージド ID です。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。
+* **namePrefix**:このプレフィックスは、Deployment Manager リソース用の名前を作成するために使用されます。 たとえば、ロールアウト名は、"jdoe" プレフィックスを使用して、**jdoe**Rollout とします。  その名前は、テンプレートの変数セクションで定義されます。
+* **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべての Deployment Manager リソースはこの場所を共有します。 現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
+* **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI です。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
+* **binaryArtifactRoot**:既定値は **binaries/1.0.0.0** です。 「[成果物の準備](#prepare-the-artifacts)」で説明されているフォルダー構造を変更しない限り、この値を変更しないでください。 このチュートリアルでは、相対パスを使用します。  フルパスは、CreateWebApplicationParameters.json で指定されている **artifactSourceSASLocation**、**binaryArtifactRoot**、**deployPackageUri** を連結することで構成されます。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
+* **managedIdentityID**:配備操作を実行するユーザー割り当てマネージド ID です。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。
 
 ### <a name="the-variables"></a>変数
 
@@ -263,12 +260,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Deployment Manager チュートリアルのロールアウト テンプレート リソース ロールアウト](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-rollout.png)
 
-- **dependsOn**:ロールアウト リソースは、成果物ソース リソースに、そして定義されているいずれかの手順に依存します。
-- **artifactSourceId**: 成果物ソース リソースをロールアウト リソースに関連付けるために使用されます。
-- **targetServiceTopologyId**: サービス トポロジ リソースをロールアウト リソースに関連付けるために使用されます。
-- **deploymentTargetId**:サービス トポロジ リソースのサービス ユニット リソース ID です。
-- **preDeploymentSteps** と **postDeploymentSteps**: ロールアウト手順が記載されます。 テンプレートでは、待機手順が呼び出されます。
-- **dependsOnStepGroups**: 手順グループ間での依存関係を構成します。
+* **dependsOn**:ロールアウト リソースは、成果物ソース リソースに、そして定義されているいずれかの手順に依存します。
+* **artifactSourceId**: 成果物ソース リソースをロールアウト リソースに関連付けるために使用されます。
+* **targetServiceTopologyId**: サービス トポロジ リソースをロールアウト リソースに関連付けるために使用されます。
+* **deploymentTargetId**:サービス トポロジ リソースのサービス ユニット リソース ID です。
+* **preDeploymentSteps** と **postDeploymentSteps**: ロールアウト手順が記載されます。 テンプレートでは、待機手順が呼び出されます。
+* **dependsOnStepGroups**: 手順グループ間での依存関係を構成します。
 
 ### <a name="rollout-parameters-file"></a>ロールアウト パラメーター ファイル
 
@@ -277,11 +274,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Visual Studio Code またはいずれかのテキスト エディターで、**\ADMTemplates\CreateADMRollout.Parameters** を開きます。
 2. 次のパラメーター値を記入します。
 
-    - **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
-    - **azureResourceLocation**:現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
-    - **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
-    - **binaryArtifactRoot**:成果物のフォルダー構造を変更しない限り、このチュートリアルでは **binaries/1.0.0.0** を使用してください。
-    - **managedIdentityID**:ユーザー割り当てマネージド ID を入力します。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。 の構文は次のとおりです。
+    * **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
+    * **azureResourceLocation**:現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
+    * **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
+    * **binaryArtifactRoot**:成果物のフォルダー構造を変更しない限り、このチュートリアルでは **binaries/1.0.0.0** を使用してください。
+    * **managedIdentityID**:ユーザー割り当てマネージド ID を入力します。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。 の構文は次のとおりです。
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -300,16 +297,19 @@ Azure PowerShell を使用すればテンプレートを配備できます。
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
-    
+
     # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
-    
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
     # Create the service topology
-    New-AzureRmResourceGroupDeployment `
+    New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
+
+    > [!NOTE]
+    > `New-AzResourceGroupDeployment`  は非同期呼び出しです。 成功メッセージは、デプロイが正常に開始されたことだけを意味します。 デプロイを確認するには、この手順の手順 2. と手順 4. を参照してください。
 
 2. サービス トポロジと下線付きのリソースが、Azure portal を使用することで正常に作成されていることを確認します。
 
@@ -321,7 +321,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
     ```azurepowershell
     # Create the rollout
-    New-AzureRmResourceGroupDeployment `
+    New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMRollout.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMRollout.Parameters.json"
@@ -332,7 +332,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
     ```azurepowershell
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
-    Get-AzureRmDeploymentManagerRollout `
+    Get-AzDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName `
         -Verbose
@@ -341,28 +341,28 @@ Azure PowerShell を使用すればテンプレートを配備できます。
     このコマンドレットを実行する前に、Deployment Manager PowerShell コマンドレットをインストールする必要があります。 「前提条件」を参照してください。 -Verbose スイッチを使用すると、出力全体を表示することができます。
 
     次のサンプルでは、実行状況を示しています。
-    
+
     ```
-    VERBOSE: 
-    
+    VERBOSE:
+
     Status: Succeeded
     ArtifactSourceId: /subscriptions/<AzureSubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout
     BuildVersion: 1.0.0.0
-    
+
     Operation Info:
         Retry Attempt: 0
         Skip Succeeded: False
         Start Time: 03/05/2019 15:26:13
         End Time: 03/05/2019 15:31:26
         Total Duration: 00:05:12
-    
+
     Service: adm0925ServiceEUS
         TargetLocation: EastUS
         TargetSubscriptionId: <AzureSubscriptionID>
-    
+
         ServiceUnit: adm0925ServiceEUSStorage
             TargetResourceGroup: adm0925ServiceEUSrg
-    
+
             Step: Deploy
                 Status: Succeeded
                 StepGroup: stepGroup3
@@ -373,7 +373,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
                     End Time: 03/05/2019 15:27:41
                     Total Duration: 00:01:08
                 Resource Operations:
-    
+
                     Resource Operation 1:
                     Name: txq6iwnyq5xle
                     Type: Microsoft.Storage/storageAccounts
@@ -422,10 +422,10 @@ Azure リソースが不要になったら、リソース グループを削除�
 1. Azure portal で、左側のメニューから **[リソース グループ]** を選択します。
 2. **[名前でフィルタリング]** フィールドを使用して、このチュートリアルで作成したリソース グループを絞り込みます。 次の 3-4 になります。
 
-    - **&lt;namePrefix>rg**: Deployment Manager リソースが収納されます。
-    - **&lt;namePrefix>ServiceWUSrg**: ServiceWUS によって定義されたリソースが収納されます。
-    - **&lt;namePrefix>ServiceEUSrg**: ServiceEUS によって定義されたリソースが収納されます。
-    - ユーザー定義マネージド ID 用のリソース グループです。
+    * **&lt;namePrefix>rg**: Deployment Manager リソースが収納されます。
+    * **&lt;namePrefix>ServiceWUSrg**: ServiceWUS によって定義されたリソースが収納されます。
+    * **&lt;namePrefix>ServiceEUSrg**: ServiceEUS によって定義されたリソースが収納されます。
+    * ユーザー定義マネージド ID 用のリソース グループです。
 3. リソース グループ名を選択します。  
 4. トップ メニューから **[リソース グループの削除]** を選択します。
 5. このチュートリアルで作成した他のリソース グループを削除するには、最後の 2 つの手順を繰り返します。

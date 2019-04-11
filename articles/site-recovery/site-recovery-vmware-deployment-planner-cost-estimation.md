@@ -5,18 +5,26 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/14/2019
 ms.author: mayg
-ms.openlocfilehash: d1e406567b5f56f6ad08e4d276202ebf43d92534
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093839"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する
 
 Deployment Planner のレポートでは、コスト見積もりの概要が [[Recommendations]\(推奨事項\)](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) シートに、詳しいコスト分析が [Cost Estimation]\(コスト見積もり\) シートに表示されます。 コスト分析は、VM ごとに詳しく表示されます。 
+
+>[!Note]
+>現在のバージョンの Deployment Planner ツールでは、マネージド ディスクにレプリケートする VM 用のコスト見積もりは提供されません。
+>* DR ドリルのコスト見積もりは、ストレージ アカウントとマネージド ディスクで同じです ([コンピューティングとネットワーク] ブレードで [Managed Disks を使用] パラメーターが [はい] に設定されている場合)。
+>* レプリケーション用におおよその年間コスト見積もりを取得するには、**[コスト見積もり]** シートで次の一時設定を行います。
+>    * **[設定]** テーブルの [Cost duration]\(コスト期間\) パラメーターを [年] に設定します
+>    * **[Detailed cost analysis]\(詳細コスト分析\)** テーブルで、[Number of DR-Drills in a year]\(年間 DR ドリル数\) 列を 12 に設定し、[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\) を 30 に設定します 
+>    * レプリケーション コストは、列 "R" に入力されたコスト (つまり、**[DR-Drill cost per year]\(年間の DR ドリル コスト\)** サブセクションの年間 DR ドリル ストレージ コスト) と類似したものになります。
 
 ### <a name="cost-estimation-summary"></a>コスト見積もりの概要 
 このグラフは、選択したターゲット リージョンの Azure に対するディザスター リカバリー (DR) の総コスト見積もりの概要と、レポート生成に関して指定された通貨を示しています。
@@ -106,9 +114,9 @@ VM を手動で追加するには、次の手順に従います。
 * データの冗長性 
 * Azure ハイブリッド特典
 
-3.  [Number of DR-Drills in a year]\(年間 DR ドリル数\)、[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)、[Data redundancy]\(データの冗長性\)、[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\) に関しては、[Apply to all]\(すべてに適用\) ボタンをクリックすると、テーブル内のすべての VM に同じ値を適用することができます。
+1. [Number of DR-Drills in a year]\(年間 DR ドリル数\)、[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)、[Data redundancy]\(データの冗長性\)、[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\) に関しては、[Apply to all]\(すべてに適用\) ボタンをクリックすると、テーブル内のすべての VM に同じ値を適用することができます。
 
-4.  [Re-calculate cost]\(コストを再計算\) をクリックしてコストを更新します。
+1. [Re-calculate cost]\(コストを再計算\) をクリックしてコストを更新します。
 
 **[VM 名]**: VM の名前。
 
@@ -153,7 +161,7 @@ Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコ�
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン  (chf)||DKK|デンマーク クローネ (kr)|
 |EUR|ユーロ (€)||GBP|イギリス ポンド (£)||HKD|香港ドル (HK$)|
-|IDR|インドネシア ルピア (Rp)||INR|インド ルピー (₹)||JPY|日本円 (¥)|
+|IDR|インドネシア ルピア (Rp)||INR|インド ルピー ()||JPY|日本円 (¥)|
 |KRW|韓国ウォン (₩)||MXN|メキシコ ペソ (MX$)||MYR|マレーシア リンギ (RM$)|
 |NOK|ノルウェー クローネ (kr)||NZD|ニュージーランド ドル ($)||RUB|ロシア ルーブル (руб)|
 |SAR|サウジ リアル (SR)||SEK|スウェーデン クローナ (kr)||TWD|台湾ドル (NT$)|
