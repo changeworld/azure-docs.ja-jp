@@ -1,7 +1,6 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ブループリントの作成、割り当て、および削除で発生する問題を解決する方法について説明します
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
@@ -9,12 +8,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3621ca198ec2bac24791a2515ade51b990194bf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003853"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267193"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 

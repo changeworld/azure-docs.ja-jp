@@ -1,22 +1,22 @@
 ---
 title: ナレッジ ベースの移行 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker で作成したナレッジ ベースを新しいナレッジ ベースに移動します。
+description: ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245917"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264320"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
@@ -39,7 +39,7 @@ ms.locfileid: "56245917"
 
     - サービスに**名前**を付けます。 名前は重複しても構いません。特殊文字も使用できます。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
     ![KB の作成](../media/qnamaker-how-to-create-kb/create-kb.png)
 
@@ -48,10 +48,10 @@ ms.locfileid: "56245917"
    ![ナレッジ ベースのインポート](../media/qnamaker-how-to-migrate-kb/Import.png)
 
 1. テスト パネルを使用して、新しいナレッジ ベースを**テスト**します。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
-1. ナレッジ ベースを**公開**します。 [ナレッジ ベースの公開](../How-To/publish-knowledge-base.md)方法を確認してください。
+1. ナレッジ ベースを**公開**します。 [ナレッジ ベースの公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)方法を確認してください。
 1. お使いのアプリケーションまたはボット コードで、エンドポイントを使用します。 ここで、[QnA ボットの作成](../Tutorials/create-qna-bot.md)方法を参照してください。
 
-    ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+    ![QnA Maker の値](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
 
     この時点で、ナレッジ ベースのすべてのコンテンツ、つまり、質問、回答、メタデータと、ソース ファイルの名前、URL が新しいナレッジ ベースにインポートされています。 
 
@@ -63,4 +63,4 @@ ms.locfileid: "56245917"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースを編集する](../How-To/edit-knowledge-base.md)
+> [ナレッジ ベースの編集](../How-To/edit-knowledge-base.md)

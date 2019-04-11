@@ -3,20 +3,20 @@ title: Azure のデータのコピー ツールを使用してオンプレミス
 description: Azure データ ファクトリを作成し、データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーします。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/04/2018
-ms.author: jingwang
-ms.openlocfilehash: 3569d39b8e4668894e44507dfdd0e20297028290
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 04/09/2018
+ms.author: abnarain
+ms.openlocfilehash: 26bc6861602cae349c8ebaafefe070c119a93e87
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226506"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261527"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -138,7 +138,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. **[バージョン]** で、**[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 1. **[ダッシュボードにピン留めする]** をオンにします。 
-1. **作成**を選択します。
+1. **作成** を選択します。
 1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-hybrid-copy-data-tool/deploying-data-factory.png)
@@ -205,21 +205,19 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[次へ]** を選択します。
 
-       ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
+   ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
 
 1. **[Select tables from which to copy the data or use a custom query]\(データのコピー元またはカスタム クエリの使用元となるテーブルの選択\)** ページで、一覧の **[dbo].[emp]** テーブルを選択し、**[次へ]** を選択します。 データベースに基づいて、その他のテーブルを選択できます。
 
-       ![The Product table selection](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
+   ![Product テーブルの選択](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
 
 1. **[ターゲット データ ストア]** ページで **[新しい接続の作成]** を選択します
 
-       //image create-new-sink-connection.png
-
-       ![Create Destination linked service](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
+   ![配布先のリンクされたサービスの作成](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** で、**[Azure BLOB]**、**[続行]** の順に選択します。 
 
-       ![Blob storage selection](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
+   ![Blob Storage の選択](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
 1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログで、次の手順を実行します。 
 
@@ -231,47 +229,47 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
        d. Select **Next**.
 
-       ![Specify the storage account](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
+   ![ストレージ アカウントを指定する](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
 
 1. **[ターゲット データ ストア]** ダイアログで、**[次へ]** を選択します。 **[接続のプロパティ]** で、**[Azure storage service]\(Azure ストレージ サービス\)** として **[Azure Blob Storage]** を選択します。 **[次へ]** を選択します。 
 
-       ![connection properties](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
+   ![接続のプロパティ](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
 
 1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ダイアログで、**[フォルダーのパス]** に「**adftutorial/fromonprem**」と入力します。 前提条件の 1 つとして **adftutorial** コンテナーを作成しました。 output フォルダーが存在しない場合は (この場合は **fromonprem**)、Data Factory によって自動的に作成されます。 また、**[参照]** ボタンを使用して、Blob Storage とそのコンテナー/フォルダーに移動することもできます。 **[ファイル名]** で値を指定しない場合は、既定でソースの名前 (この場合は **dbo.emp**) が使用されます。
            
-       ![Choose the output file or folder](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
+   ![出力ファイルまたはフォルダーの選択](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 
 1. **[File format settings]\(ファイル形式設定\)** ダイアログで **[次へ]** を選択します。 
 
-       ![File format settings page](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
+   ![[File format settings]\(ファイル形式設定\) ページ](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
 
 1. **[設定]** ダイアログで **[次へ]** を選択します。 
 
-       ![Settings page](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
+   ![[設定] ページ](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
 
 1. **[概要]** ダイアログですべての設定の値を確認し、**[次へ]** を選択します。 
 
-       ![Summary page](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
+   ![概要ページ](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
 
 1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択して、作成されたパイプラインまたはタスクを監視します。
 
-       ![Deployment page](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+   ![[Deployment]\(デプロイ\) ページ](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
 
 1. **[監視]** タブでは、作成したパイプラインの状態を表示できます。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
 
-       ![Monitor pipeline runs](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
+   ![パイプラインの実行を監視する](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
 
 1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択して、パイプラインの実行に関連付けられているアクティビティの実行を表示します。 コピー操作の詳細を確認するために、**[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 再度**パイプラインの実行**ビューに切り替えるには、一番上にある **[パイプライン]** を選択します。
 
-       ![Monitor activity runs](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
+   ![アクティビティの実行を監視する](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
 
 1. **adftutorial** コンテナーの **fromonprem** フォルダーに出力ファイルがあることを確認します。 
 
-       ![Output blob](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
+   ![出力 BLOB](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
 
 1. 左側の **[編集]** タブを選択して、編集モードに切り替えます。 ツールによって作成されたリンクされたサービス、データセット、パイプラインをエディターを使用して更新できます。 **[コード]** を選択すると、エディターで開かれているエンティティに関する JSON コードが表示されます。 これらのエンティティを Data Factory の UI で編集する方法について詳しくは、[このチュートリアルの Azure Portal バージョン](tutorial-copy-data-portal.md)を参照してください。
 
-       ![Edit tab](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
+   ![[編集] タブ](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>次の手順
