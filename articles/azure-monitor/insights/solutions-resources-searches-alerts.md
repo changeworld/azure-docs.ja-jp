@@ -183,10 +183,10 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| Type | [はい] | アクションの種類。  これは、アラート アクションの**アラート**です。 |
-| Name | [はい] | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
+| Type | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
+| Name | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
 | Description | いいえ  | アラートに関する省略可能な説明です。 |
-| Severity | [はい] | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
+| Severity | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
 
 
 #### <a name="threshold"></a>Threshold
@@ -194,8 +194,8 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| Operator | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | [はい] | 結果を比較する値です。 |
+| Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| Value | はい | 結果を比較する値です。 |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 このセクションは省略可能です。 メトリック測定アラートの場合に指定します。
@@ -205,9 +205,9 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| TriggerCondition | [はい] | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
-| Operator | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | [はい] | アラートをトリガーするために必要な、条件が満たされた回数です。 |
+| TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
+| Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| Value | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
 
 
 #### <a name="throttling"></a>Throttling
