@@ -175,7 +175,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | Double | Y |
 | Boolean | Y |
 | DataTimeOffset | Y |
-| 文字列配列 | N |
+| String Array | N |
 | GeographyPoint | N |
 
 ## <a name="next-steps"></a>次の手順
