@@ -349,7 +349,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化 </a>
                 </ul>
             </li>
             <li>
-                <a href="#products">成果物</a>
+                <a href="#products">製品</a>
                 <ul id="products">
                     <li>
                         <a href="#all">All</a>
