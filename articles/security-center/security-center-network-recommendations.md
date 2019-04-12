@@ -3,7 +3,7 @@ title: Azure Security Center 上のネットワーク リソースの保護 | Mi
 description: このドキュメントでは、Azure Security Center 上の推奨事項に従ってご使用の Azure ネットワーク リソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118005"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863153"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -30,10 +30,9 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 > **[ネットワーク]** ページでは、ネットワークの観点から、Azure リソースの正常性を詳しく確認できます。 ネットワーク マップとアダプティブ ネットワーク コントロールは、Azure Security Center Standard レベルでのみ使用できます。 [Free レベルを使用する場合は、ボタンをクリックして**レガシ ネットワークを表示**し、ネットワーク リソースの推奨事項を受信できます](#legacy-networking)。
 >
 
-**[ネットワーク]** ページにはセクションの概要が表示され、そこから詳細を表示できるので、ネットワーク リソースの正常性に関する詳細を取得できます。
+**[ネットワーク]** ブレードにはセクションの概要が表示され、そこから詳細を表示できるので、ネットワーク リソースの正常性に関する詳細を取得できます。
 
 - ネットワーク マップ (Azure Security Center Standard レベルのみ)
-- NSG の強化 (近日対応予定。 プレビューの利用登録)
 - ネットワーク セキュリティに関する推奨事項。
 - レガシ **[ネットワーク]** ブレード (以前のネットワーク ブレード) 
  
@@ -49,7 +48,8 @@ Azure Security Center では、ネットワーク セキュリティのベスト
  
 トポロジ マップの既定のビューが表示されます。
 - Azure 内で選択したサブスクリプション。 マップでは、複数のサブスクリプションがサポートされます。
-- Resource Manager リソースの種類の VM、サブネット、Vnet (クラシック Azure リソースはサポートされていません)
+- Resource Manager リソースの種類の VM、サブネット、VNet (クラシック Azure リソースはサポートされていません)
+- ピアリング VNet
 - 重大度が高または中の[ネットワークに関する推奨事項](security-center-recommendations.md)を持つリソースのみ  
 - インターネットに接続するリソース
 - マップは、Azure 内で選択したサブスクリプションに対して最適化されます。 選択内容を変更した場合、マップが再計算され、新しい設定に基づいてもう一度最適化されます。  
@@ -98,7 +98,7 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 
 リソースにドリル ダウンするには:
 1. マップ上の特定のリソースを選択すると、右側のウィンドウが開き、リソースに関する全般情報、接続されたセキュリティ ソリューション (ある場合)、およびリソースに関する推奨事項が表示されます。 この動作の種類は選択したリソースの種類ごとに同じです。 
-2. **[トラフィック]** をクリックして、リソースに対して可能な送信および受信トラフィックの一覧を表示します。これは、リソースと通信できるユーザーやリソースが通信できるユーザー、経由するプロトコルとポートの包括的な一覧です。
+2. **[トラフィック]** をクリックして、リソースに対して可能な送信および受信トラフィックの一覧を表示します。これは、リソースと通信できるユーザーやリソースが通信できるユーザー、経由するプロトコルとポートの包括的な一覧です。 たとえば、VM を選択すると、その VM と通信できるすべての VM が表示され、サブネットを選択すると、そのサブネットと通信できるすべてのサブネットが表示されます。
 
 **このデータは、ネットワーク セキュリティ グループの分析と、交差と相互作用を把握するために複数のルールを分析する高度な機械学習アルゴリズムに基づいています。** 
 

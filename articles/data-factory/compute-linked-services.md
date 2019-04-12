@@ -347,7 +347,7 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | type プロパティは **AzureBatch**に設定されます。 | [はい]      |
-| .<リージョン名       | Azure Batch アカウントの名前です。         | [はい]      |
+| accountName       | Azure Batch アカウントの名前です。         | [はい]      |
 | accessKey         | Azure Batch アカウントのアクセス キーです。  | [はい]      |
 | batchUri          | https://*batchaccountname.region*.batch.azure.com の形式の Azure Batch アカウントへの URL です。 | [はい]      |
 | poolName          | 仮想マシンのプールの名前です。    | [はい]      |
