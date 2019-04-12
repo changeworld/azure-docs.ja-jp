@@ -52,8 +52,8 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 | プロパティ | 説明 |
 |:--|:--|
-|方向 |接続の方向であり、値は*受信*または*送信*です |
-|マシン |コンピューターの FQDN |
+|Direction |接続の方向であり、値は*受信*または*送信*です |
+|Machine |コンピューターの FQDN |
 |Process |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
 |SourceIp |送信元の IP アドレス |
 |DestinationIp |送信先の IP アドレス |
@@ -77,7 +77,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 |:--|:--|
 |BytesSent |報告時間枠の間に送信された合計バイト数 |
 |BytesReceived |報告時間枠の間に受信された合計バイト数 |
-|応答 |報告時間枠の間に観測された応答の数。 
+|Responses |報告時間枠の間に観測された応答の数。 
 |ResponseTimeMax |報告時間枠の間に観測された最長応答時間 (ミリ秒)。 値がない場合、プロパティは空欄です。|
 |ResponseTimeMin |報告時間枠の間に観測された最短応答時間 (ミリ秒)。 値がない場合、プロパティは空欄です。|
 |ResponseTimeSum |報告時間枠の間に観測された全応答時間の合計 (ミリ秒)。 値がない場合、プロパティは空欄です。|
@@ -112,10 +112,10 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 |:--|:--|
 |MaliciousIp |RemoteIp アドレス |
 |IndicatorThreadType |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
-|説明 |観察対象の脅威の説明。 |
+|Description |観察対象の脅威の説明。 |
 |TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
-|信頼度 |値は "*0 から 100*" です。 |
-|severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+|Confidence |値は "*0 から 100*" です。 |
+|Severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
 |FirstReportedDateTime |プロバイダーが初めてインジケーターをレポートした時間。 |
 |LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
 |IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
@@ -133,7 +133,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 |:--|:--|
 |Process | ポートが関連付けられているプロセス (または複数プロセスのグループ) の ID。|
 |Ip | ポートの IP アドレス (IP はワイルドカード *0.0.0.0* で指定できます) |
-|ポート |ポート番号 |
+|Port |ポート番号 |
 |Protocol | プロトコル。  たとえば、*tcp* または *udp* です (現在サポートされているのは *tcp* のみです)。|
  
 ポートの ID は上記の 5 つのフィールドから派生し、PortId プロパティに格納されます。 このプロパティを使用すると、時間の経過と共に特定のポートのレコードをすばやく見つけることができます。 
@@ -157,9 +157,9 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 
 | プロパティ | 説明 |
 |:--|:--|
-| type | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| resourceId | ワークスペース内のマシンに対する一意識別子 |
+| ResourceId | ワークスペース内のマシンに対する一意識別子 |
 | ResourceName_s | ワークスペース内のマシンに対する一意識別子 |
 | ComputerName_s | コンピューターの FQDN |
 | Ipv4Addresses_s | サーバーの IPv4 アドレスの一覧 |
@@ -182,7 +182,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 
 | プロパティ | 説明 |
 |:--|:--|
-| type | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | resourceId | ワークスペース内のプロセスに対する一意識別子 |
 | ResourceName_s | 実行中のマシン内のプロセスに対する一意識別子|
