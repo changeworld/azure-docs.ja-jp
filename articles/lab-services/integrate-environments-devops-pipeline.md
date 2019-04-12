@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 24391e9e8541f12c434ade837b8f4944711ae375
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887125"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357391"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>環境を Azure DevOps CI/CD パイプラインに統合する
 Azure DevOps Services (旧称 Visual Studio Team Services) にインストールされている Azure DevTest Labs タスク拡張機能を使用して、継続的インテグレーション (CI)/継続的デリバリー (CD) のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 これらの拡張機能により、特定のテスト タスク用に[環境](devtest-lab-test-env.md)をすばやく展開し、テストの終了時に削除するのがより簡単になります。 
@@ -56,7 +56,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
 
 1. リリース定義で、**[タスクの追加]** を選択します。
 2. **[タスク]** タブで、[Azure DevTest Labs Create Environment]\(Azure DevTest Labs: 環境の作成\) タスクを追加します。 次に示すようにタスクを構成します。
-    1. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](/devops/pipelines/library/service-endpoints)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
+    1. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](/azure/devops/pipelines/library/service-endpoints)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
 2. **[ラボ名]** で、先ほど作成したインスタンスの名前を選択します*。
 3. **[リポジトリ名]** で、Resource Manager テンプレート (201) がプッシュされたリポジトリを選択します*。
 4. **[テンプレート名]** で、ソース コード リポジトリに保存した環境の名前を選択します*。 
@@ -71,7 +71,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
 リリース定義で、**[タスクの追加]** を選択し、**[展開]** タブで、**[Azure DevTest Labs Delete Environment]\(Azure DevTest Labs: 環境の削除\)** タスクを追加します。 SAP コネクタを次のように構成します。
 
 1. VM を削除するには、「[Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)」を参照してください。
-    1. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](/devops/pipelines/library/service-endpoints)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
+    1. **[Azure RM サブスクリプション]** で、**[利用可能な Azure サービス接続]** の一覧から接続を選択するか、さらに制限されたアクセス許可を持つ Azure サブスクリプションへの接続を作成します。 詳しくは、「[Azure Resource Manager service endpoint](/azure/devops/pipelines/library/service-endpoints)」(Azure Resource Manager のサービス エンドポイント) をご覧ください。
     2. **[ラボ名]** で、環境が存在するラボを選択します。
     3. **[環境名]** で、削除する環境の名前を入力します。
 2. リリース定義の名前を入力し、それを保存します。
@@ -80,5 +80,5 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
 次の記事を参照してください。 
 - [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)。
 - [DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にある、DevTest Labs 自動化のためのクイック スタート Resource Manager テンプレート。
-- [VSTS のトラブルシューティングのページ](/devops/pipelines/troubleshooting)
+- [VSTS のトラブルシューティングのページ](/azure/devops/pipelines/troubleshooting)
 
