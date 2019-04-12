@@ -299,7 +299,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 | プロパティ | Description |
 |:--|:--|
-|方向 |接続の方向であり、値は*受信*または*送信*です |
+|Direction |接続の方向であり、値は*受信*または*送信*です |
 |Machine |コンピューターの FQDN |
 |Process |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
 |SourceIp |送信元の IP アドレス |
@@ -362,7 +362,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 |Description |観察対象の脅威の説明。 |
 |TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
 |Confidence |値は "*0 から 100*" です。 |
-|severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+|Severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
 |FirstReportedDateTime |プロバイダーが初めてインジケーターをレポートした時間。 |
 |LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
 |IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
