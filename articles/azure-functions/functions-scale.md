@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893590"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266935"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
 Azure Functions は、2 つの異なるプランで実行できます。従量課金プランと Premium プラン (パブリック プレビュー) です。 従量課金プランでは、コードの実行時にコンピューティング能力が自動的に追加されます。 アプリは、負荷を処理する必要があるときはスケールアウトされ、コードの実行が停止するとスケールダウンされます。 アイドル状態の VM に対して課金されることはなく、事前に容量を予約する必要もありません。  Premium プランも自動的にスケーリングされ、コードの実行中はコンピューティング能力が追加されます。  Premium プランには、Premium コンピューティング インスタンス、無期限にインスタンスをウォーム状態に保つ機能、VNet 接続などの追加機能が付属しています。  既存の App Service プランをお持ちの場合は、そのプランで関数アプリを実行することもできます。
 
 > [!NOTE]  
-> [Premium プラン](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/)と [Linux 向けの従量課金プラン](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)はどちらも、現在プレビュー段階です。
+> [Premium プラン](https://aka.ms/functions-premiumplan)と [Linux 向けの従量課金プラン](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)はどちらも、現在プレビュー段階です。
 
 Azure Functions に慣れていない場合は、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 

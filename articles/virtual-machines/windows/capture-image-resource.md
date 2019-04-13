@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 4e79e0a7d05ef70ae9f7ab2cbb2238c42b2a654b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: aa1858a27d4df413deb562391251a523c28673ad
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847566"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359168"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -88,7 +88,7 @@ Windows VM を一般化するには、次の手順に従います。
 
 VM からイメージを直接作成すると、OS ディスクやすべてのデータ ディスクなど、VM に関連付けられているすべてのディスクが、イメージに確実に含まれます。 この例では、マネージド ディスクを使用する VM から管理対象イメージを作成する方法を示します。
 
-始める前に、Azure PowerShell モジュールの最新バージョンがあることを確認してください。 バージョンを確認するには、PowerShell で `Get-Module -ListAvailable Az` を実行してください。 アップグレードが必要な場合は、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/azurerm/install-az-ps)」を参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成します。
+始める前に、Azure PowerShell モジュールの最新バージョンがあることを確認してください。 バージョンを確認するには、PowerShell で `Get-Module -ListAvailable Az` を実行してください。 アップグレードが必要な場合は、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成します。
 
 
 > [!NOTE]

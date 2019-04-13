@@ -12,12 +12,12 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877365"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260393"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -60,7 +60,7 @@ B2B コラボレーション ユーザーは、制限付き管理者または全
 はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
 ゲスト ユーザーの [Azure ポータル](https://portal.azure.com)へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
 1. **すべてのユーザー** グループをメンバーだけが含まれるように変更します。
-   ![UserType が [ゲスト] と等しくない [すべてのユーザー] グループを示すスクリーンショット ](media/faq/modify-all-users-group.png)
+   ![UserType が [ゲスト] と等しくない [すべてのユーザー] グループを示すスクリーンショット](media/faq/modify-all-users-group.png)
 2. ゲスト ユーザーを含む動的グループを作成します。
    ![新しい [すべてのゲスト ユーザー] グループを示すスクリーンショット](media/faq/group-with-guest-users.png)
 3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーをセットアップします。

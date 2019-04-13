@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918265"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358257"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services のサイズ
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
@@ -205,7 +205,7 @@ Web ロール インスタンスのロール サイズを Standard_D2 に設定�
 
 ## <a name="changing-the-size-of-an-existing-role"></a>既存のロールのサイズを変更します
 
-ワークロードの性質が変化したり、新しい VM のサイズが使用可能になったりすると、ロールのサイズを変更する場合があります。 これを行うには、(上記のように) サービス定義ファイルで VM のサイズを変更し、Cloud Service を再パッケージ化してデプロイする必要があります。 ポータルまたは PowerShell から直接 VM のサイズを変更することはできません。
+ワークロードの性質が変化したり、新しい VM のサイズが使用可能になったりすると、ロールのサイズを変更する場合があります。 これを行うには、(上記のように) サービス定義ファイルで VM のサイズを変更し、Cloud Service を再パッケージ化してデプロイする必要があります。
 
 >[!TIP]
 > さまざまな環境でのロールに対して異なる VM サイズを使用することがあります (例:  テスト対運用)。 これを行う 1 つの方法は、プロジェクトで複数のサービス定義 (.csdef) ファイルを作成し、自動化されたビルドの最中に CSPack ツールを使用して、環境ごとに異なるクラウド サービス パッケージを作成します。 クラウド サービス パッケージとその作成方法の詳しい要素については、「[クラウド サービス モデルおよびパッケージ方法について](cloud-services-model-and-package.md)」を参照してください。

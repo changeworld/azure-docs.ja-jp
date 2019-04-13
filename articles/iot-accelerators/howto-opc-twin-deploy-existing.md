@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: da11d4977cc998c9fccb3628a44e45db95c7d977
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759232"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255888"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
 
@@ -30,10 +30,7 @@ OPC UA Device Registry マイクロサービスは、登録済みの OPC UA ア�
 
 ## <a name="prerequisites"></a>前提条件
 
-> [!NOTE]
-> 注:AzureRM モジュールへの依存関係のため、デプロイは現在、Windows でのみサポートされています。
-
-PowerShell および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0) 拡張機能がインストールされていることを確認します。   まだの場合は、この GitHub リポジトリを複製します。  コマンド プロンプトまたはターミナルを開き、次を実行します。
+PowerShell および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 拡張機能がインストールされていることを確認します。   まだの場合は、この GitHub リポジトリを複製します。  コマンド プロンプトまたはターミナルを開き、次を実行します。
 
 ```bash
 git clone --recursive https://github.com/Azure/azure-iiot-components 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 9d45f3a7d20545ac7b66d27505078f21f06adddc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: efce606f9c48668f569b0fb4fc45745adc6652c4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881853"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262144"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -62,8 +62,8 @@ ms.locfileid: "58881853"
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**):このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
 * **AzureCloud** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして *AzureCloud.EastUS* と指定できます。 
 * **AzureTrafficManager** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 
-* **Storage** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 このタグで表されるすべてのアドレス プレフィックスは、**Internet** タグでも表されます。 
-* **Sql** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグで表されるすべてのアドレス プレフィックスは、**Internet** タグでも表されます。 
+* **Storage** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 
+* **Sql** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 
 * **AzureCosmosDB** (Resource Manager のみ):このタグは、Azure Cosmos Database サービスのアドレス プレフィックスを表します。 値として *AzureCosmosDB* を指定した場合、AzureCosmosDB へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCosmosDB へのアクセスのみを許可する場合は、AzureCosmosDB.[リージョン名] の形式でリージョンを指定できます。 
 * **AzureKeyVault** (Resource Manager のみ):このタグは、Azure KeyVault サービスのアドレス プレフィックスを表します。 値として *AzureKeyVault* を指定した場合、AzureKeyVault へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureKeyVault へのアクセスのみを許可する場合は、AzureKeyVault.[リージョン名] の形式でリージョンを指定できます。 
 * **EventHub** (Resource Manager のみ):このタグは、Azure EventHub サービスのアドレス プレフィックスを表します。 値として *EventHub* を指定した場合、EventHub へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の EventHub へのアクセスのみを許可する場合は、EventHub.[リージョン名] の形式でリージョンを指定できます。 

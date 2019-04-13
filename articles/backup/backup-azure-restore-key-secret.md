@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
-ms.openlocfilehash: d85f8f1ca4617a1bedb783b5f13e5b28c433403d
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 13eb800cd64e0de736b1fdea308a03d8a8d0f046
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904544"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358197"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
 
@@ -132,7 +132,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 > [!NOTE]
 > * $rp1.KeyAndSecretDetails.SecretUrl の出力を参照し、secrets/ の後に続くテキスト (output secret URL is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 and secret name is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA など) を使って、$secretname の値を取得できます。
 > * タグ DiskEncryptionKeyFileName の名前は、シークレットの名前と同じです。
-> * DiskEncryptionKeyEncryptionKeyURL の名前は、キーを復元した後で、[Get-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/get-azurekeyvaultkey) コマンドレットを使用して、Key Vault から取得できます。
+> * DiskEncryptionKeyEncryptionKeyURL の名前は、キーを復元した後で、[Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) コマンドレットを使用して、Key Vault から取得できます。
 >
 >
 

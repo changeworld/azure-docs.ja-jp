@@ -1,7 +1,6 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するロック オプションについて説明します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762431"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275931"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -27,7 +26,7 @@ ms.locfileid: "58762431"
 
 ブループリント割り当て内のアーティファクトによって作成されたリソースは、次の 4 つのいずれかの状態になります。**ロックなし**、**読み取り専用**、**編集/削除できません**、または**削除不可**。 各種のアーティファクトは、**ロックなし**の状態にすることができます。 次の表を使用することで、リソースの状態を特定することができます。
 
-|モード|アーティファクトのリソースの種類|状態|説明|
+|Mode|アーティファクトのリソースの種類|状態|説明|
 |-|-|-|-|
 |ロックしない|*|ロックなし|リソースはブループリントによって保護されません。 この状態は、ブループリント割り当ての外部から**読み取り専用**または**削除しない**のリソース グループ アーティファクトに追加されるリソースに対しても使用されます。|
 |読み取り専用|リソース グループ|編集/削除できません|リソース グループは読み取り専用であり、リソース グループ上のタグを変更することはできません。 このリソース グループに対しては、**ロックなし**リソースの追加、移動、変更、削除を行うことができます。|
