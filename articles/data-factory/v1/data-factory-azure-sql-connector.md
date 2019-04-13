@@ -65,8 +65,8 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**AzureSqlDatabase** |はい |
-| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureSqlDatabase** |[はい] |
+| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |[はい] |
 
 > [!IMPORTANT]
 > [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) データベース サーバーを構成します。 また、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Database にデータをコピーする場合、Azure SQL Database にデータを送信するマシンに適切な IP アドレス範囲を設定します。
@@ -80,7 +80,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL データベース インスタンスのテーブルまたはビューの名前です。 |はい |
+| tableName |リンクされたサービスが参照する Azure SQL データベース インスタンスのテーブルまたはビューの名前です。 |[はい] |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。

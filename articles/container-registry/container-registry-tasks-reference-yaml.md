@@ -81,9 +81,9 @@ az configure --defaults acr=myregistry
 
 | プロパティ | Type | 省略可能 | 説明 | オーバーライドのサポート | Default value |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | 文字列 | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ  | なし |
+| `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ  | なし |
 | `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | 600 (10 分) |
-| `workingDirectory` | 文字列 | はい | 実行時のコンテナーの作業ディレクトリ。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `workingDirectory` プロパティが設定されます。 ステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | `$HOME` |
+| `workingDirectory` | string | はい | 実行時のコンテナーの作業ディレクトリ。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `workingDirectory` プロパティが設定されます。 ステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | `$HOME` |
 | `env` | [string, string, ...] | はい |  タスクの環境変数を定義する `key=value` 形式での文字列の配列。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `env` プロパティが設定されます。 ステップに指定した場合は、タスクから継承されたすべての環境変数がオーバーライドされます。 | なし |
 | `secrets` | [secret, secret, ...] | はい | [secret](#secret) オブジェクトの配列。 | なし |
 | `networks` | [network, network, ...] | はい | [network](#network) オブジェクトの配列。 | なし |
@@ -94,9 +94,9 @@ az configure --defaults acr=myregistry
 
 | プロパティ | Type | 省略可能 | 説明 | Default value |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | 文字列 | いいえ  | シークレットの識別子。 | なし |
-| `akv` | 文字列 | はい | Azure Key Vault (AKV) のシークレット URL。 | なし |
-| `clientID` | 文字列 | はい | Azure リソース用のユーザー割り当てのマネージド ID のクライアント ID。 | なし |
+| `id` | string | いいえ  | シークレットの識別子。 | なし |
+| `akv` | string | はい | Azure Key Vault (AKV) のシークレット URL。 | なし |
+| `clientID` | string | はい | Azure リソース用のユーザー割り当てのマネージド ID のクライアント ID。 | なし |
 
 ### <a name="network"></a>ネットワーク
 
@@ -104,8 +104,8 @@ az configure --defaults acr=myregistry
 
 | プロパティ | Type | 省略可能 | 説明 | Default value |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | 文字列 | いいえ  | ネットワークの名前。 | なし |
-| `driver` | 文字列 | はい | ネットワークを管理するドライバー。 | なし |
+| `name` | string | いいえ  | ネットワークの名前。 | なし |
+| `driver` | string | はい | ネットワークを管理するドライバー。 | なし |
 | `ipv6` | bool | はい | IPv6 ネットワークが有効になっているかどうか。 | `false` |
 | `skipCreation` | bool | はい | ネットワークの作成をスキップするかどうか。 | `false` |
 | `isDefault` | bool | はい | ネットワークが Azure Container Registry で提供されている既定のネットワークかどうか | `false` |
@@ -149,12 +149,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 省略可能 |
 | `disableWorkingDirectoryOverride` | bool | 省略可能 |
-| `entryPoint` | 文字列 | 省略可能 |
+| `entryPoint` | string | 省略可能 |
 | `env` | [string, string, ...] | 省略可能 |
 | `expose` | [string, string, ...] | 省略可能 |
-| `id` | 文字列 | 省略可能 |
+| `id` | string | 省略可能 |
 | `ignoreErrors` | bool | 省略可能 |
-| `isolation` | 文字列 | 省略可能 |
+| `isolation` | string | 省略可能 |
 | `keep` | bool | 省略可能 |
 | `network` | オブジェクト | 省略可能 |
 | `ports` | [string, string, ...] | 省略可能 |
@@ -166,7 +166,7 @@ steps:
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
-| `workingDirectory` | 文字列 | 省略可能 |
+| `workingDirectory` | string | 省略可能 |
 
 ### <a name="examples-build"></a>例: build
 
@@ -220,7 +220,7 @@ steps:
 | | | |
 | -------- | ---- | -------- |
 | `env` | [string, string, ...] | 省略可能 |
-| `id` | 文字列 | 省略可能 |
+| `id` | string | 省略可能 |
 | `ignoreErrors` | bool | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
@@ -266,12 +266,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 省略可能 |
 | `disableWorkingDirectoryOverride` | bool | 省略可能 |
-| `entryPoint` | 文字列 | 省略可能 |
+| `entryPoint` | string | 省略可能 |
 | `env` | [string, string, ...] | 省略可能 |
 | `expose` | [string, string, ...] | 省略可能 |
-| `id` | 文字列 | 省略可能 |
+| `id` | string | 省略可能 |
 | `ignoreErrors` | bool | 省略可能 |
-| `isolation` | 文字列 | 省略可能 |
+| `isolation` | string | 省略可能 |
 | `keep` | bool | 省略可能 |
 | `network` | オブジェクト | 省略可能 |
 | `ports` | [string, string, ...] | 省略可能 |
@@ -283,7 +283,7 @@ steps:
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
-| `workingDirectory` | 文字列 | 省略可能 |
+| `workingDirectory` | string | 省略可能 |
 
 これらプロパティの詳細については、この記事の「[タスク ステップ プロパティ](#task-step-properties)」を参照してください。
 
@@ -366,12 +366,12 @@ steps:
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | はい | 実行時にコンテナーをデタッチする必要があるかどうか。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | はい | `workingDirectory` オーバーライド機能を無効にするかどうか。 これを `workingDirectory` と組み合わせて使用して、コンテナーの作業ディレクトリを完全に制御します。 | `false` |
-| `entryPoint` | 文字列 | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 | なし |
+| `entryPoint` | string | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 | なし |
 | `env` | [string, string, ...] | はい | ステップの環境変数を定義する `key=value` 形式での文字列の配列。 | なし |
 | `expose` | [string, string, ...] | はい | コンテナーから公開されているポートの配列。 |  なし |
-| [`id`](#example-id) | 文字列 | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
+| [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
 | `ignoreErrors` | bool | はい | コンテナーの実行中にエラーが発生したかどうかに関係なく、ステップを成功としてマークするかどうか。 | `false` |
-| `isolation` | 文字列 | はい | コンテナーの分離レベル。 | `default` |
+| `isolation` | string | はい | コンテナーの分離レベル。 | `default` |
 | `keep` | bool | はい | 実行後にステップのコンテナーを保持する必要があるかどうか。 | `false` |
 | `network` | オブジェクト | はい | コンテナーが実行されるネットワークを識別します。 | なし |
 | `ports` | [string, string, ...] | はい | コンテナーからホストに公開されているポートの配列。 |  なし |
@@ -384,8 +384,8 @@ steps:
 | `startDelay` | int (秒) | はい | コンテナーの実行を遅らせる秒数。 | 0 |
 | `timeout` | int (秒) | はい | ステップが終了されるまでに実行できる最大秒数。 | 600 |
 | [`when`](#example-when) | [string, string, ...] | はい | タスク内で 1 つ以上のその他のステップに対するステップの依存関係を構成します。 | なし |
-| `user` | 文字列 | はい | ユーザー名またはコンテナーの UID | なし |
-| `workingDirectory` | 文字列 | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 | `$HOME` |
+| `user` | string | はい | ユーザー名またはコンテナーの UID | なし |
+| `workingDirectory` | string | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 | `$HOME` |
 
 ### <a name="examples-task-step-properties"></a>次に例を示します。タスク ステップ プロパティ
 
