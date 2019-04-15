@@ -76,7 +76,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| resourceId |はい |診断設定の対象となるリソースの ID。 |
+| ResourceId |はい |診断設定の対象となるリソースの ID。 |
 | StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
 | Categories |いいえ  |有効にするログ カテゴリのコンマ区切りのリスト。 |
 | Enabled |はい |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
