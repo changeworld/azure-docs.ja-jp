@@ -42,7 +42,7 @@ ms.locfileid: "59472295"
    
    * **{Display name}:** **MySampleApp** など、アプリケーションの表示名。
    * **{Home page URL}:** **http:\//mysampleapp/home** など、お使いのアプリのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
-   * **{Application identifier}:****http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Application identifier}:**  **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
    * **{Password}:** 自分のアプリで認証に使用するパスワード。
      
      ```powershell

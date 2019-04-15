@@ -311,7 +311,7 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
    * Select additional components for installation (追加でインストールするコンポーネントの選択):**1** を入力します。
    * Enter Installation Path (インストール パスの入力) [/hana/shared]:Enter キーを押します。
    * Enter Local Host Name (ローカル ホスト名の入力) [..]:Enter キーを押します。
-   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]:Enter キーを押します。
+   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) \[n]:Enter キーを押します。
    * Enter SAP HANA System ID (SAP HANA のシステム ID を入力):HANA の SID を入力します。例:**HN1**。
    * Enter Instance Number [00] \(インスタンス番号 (00) の入力):HANA のインスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「**03**」を入力します。
    * Select Database Mode / Enter Index (データベース モードの選択/インデックスの入力) [1]:Enter キーを押します。
