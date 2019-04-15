@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB は:Python と SQL API によるアプリの構築
+title: Azure Cosmos DB:Python と SQL API によるアプリの構築
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2019
 ms.locfileid: "56586326"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB は:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
+# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
