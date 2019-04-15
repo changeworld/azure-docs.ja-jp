@@ -87,7 +87,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
 ```
 
-## <a name="see-the-application-logs"></a>アプリケーション ログの確認
+## <a name="see-the-application-logs"></a>アプリケーション ログを表示する
 
 `az mesh code-package-log get` コマンドを使用して、デプロイ済みのアプリケーションのログを確認します。
 

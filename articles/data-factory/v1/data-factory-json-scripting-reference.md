@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7a3819eedc57e1e349814c9105a0880bf3d4d9ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3fcc2e31431f0deb15332aec7636e2bfefeffe9b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891258"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317546"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -100,7 +100,7 @@ ms.locfileid: "57891258"
 ### <a name="policies"></a>ポリシー
 ポリシーはアクティビティの実行時の動作に影響します。具体的には、テーブルのスライスがいつ処理されるかです。 次の表で詳細に説明します。
 
-| プロパティ | 使用できる値 | 既定値 | 説明 |
+| プロパティ | 使用できる値 | Default value | 説明 |
 | --- | --- | --- | --- |
 | コンカレンシー |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
@@ -300,8 +300,8 @@ Azure Data Factory のデータセットは次のように定義されます。
 | --- | --- | --- |
 | name |列の名前です。 |はい |
 | type |列のデータ型です。  |いいえ  |
-| culture |型を指定するときに使用される .NET ベースのカルチャ。.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
-| format |型を指定するときに使用される書式指定文字列。.NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
+| culture |型を指定するときに使用される .NET ベースのカルチャ。 .NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
+| format |型を指定するときに使用される書式指定文字列。 .NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
 
 次の例では、データセットに `slicetimestamp`、`projectname`、および `pageviews` の 3 つの列があり、それらの型はそれぞれ String、String、および Decimal です。
 
@@ -356,7 +356,7 @@ structure:
 
 データセットは Azure Data Factory で作成されている場合を除き、 **external**とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
 
-| name | 説明 | 必須 | 既定値 |
+| name | 説明 | 必須 | Default value |
 | --- | --- | --- | --- |
 | dataDelay |特定のスライスの外部データの可用性チェックを遅らせる時間。 データが 1 時間ごとに使用できる場合、外部データが利用可能であるかどうかと、対応するスライスが準備完了であるかどうかのチェックは、dataDelay を使用して延期できます。<br/><br/>これは、現在の時刻にのみ適用されます。  たとえば、現在時刻が午後 1 時 00 分で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>この設定は、過去のスライス ([スライス終了時間] + dataDelay < 現在時刻) には影響しません。過去のスライスは遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、`day.hours:minutes:seconds` 形式で指定する必要があります。 たとえば、24 時間を指定するには、24:00:00 ではなく、1.00:00:00 を使用します。 24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。 1 日と 4 時間の場合は 1:04:00:00 と指定します。 |いいえ  |0 |
 | retryInterval |エラーと次の再試行の間の待機時間です。 再試行に失敗した場合、次に試行されるのは retryInterval 後になります。 <br/><br/>現在時刻が午後 1 時 00 分の場合に最初の試行を開始したとします。 最初の検証チェックを完了するための時間が 1 分のとき、操作に失敗した場合、次の再試行は "1:00 + 1 分 (チェック時間) + 1 分 (再試行間隔) = 1:02 PM" になります。 <br/><br/>過去のスライスの場合、遅延はありません。 再試行は直ちに行われます。 |いいえ  |00:01:00 (1 分) |
@@ -4595,7 +4595,7 @@ Salesforce のリンクされたサービスを定義するには、リンクさ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https:\//login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |
@@ -4941,7 +4941,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
+| Type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
 | mlEndpoint |バッチ スコアリング URL です。 |はい |
 | apiKey |公開されたワークスペース モデルの API です。 |はい |
 
@@ -4969,7 +4969,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
+| Type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | accountName |Azure Data Lake Analytics アカウント名。 |はい |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ  |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |

@@ -142,7 +142,7 @@ Azure portal で Azure Monitor からの AKS クラスターの監視を有効�
     ![AKS コンテナーの分析情報の監視を有効にする](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関する記事の手順に従います。 必ず、AKS コンテナーがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。 
+    >クラスターからの監視データを格納するための新しい Log Analytics ワークスペースを作成する場合は、「[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)」の手順に従います。 必ず、AKS コンテナーがデプロイされるのと同じサブスクリプションでワークスペースを作成してください。 
  
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
 

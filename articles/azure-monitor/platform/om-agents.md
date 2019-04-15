@@ -115,7 +115,7 @@ Operations Manager 管理グループが  Log Analytics ワークスペースの
    >[!NOTE]
    >Operations Management Suite 名は廃止されました。 
    
-1. 認証に成功すると、**[Operations Management Suite オンボード ウィザード:ワークスペースの選択]** ページで、Azure テナント、サブスクリプション、および Log Analytics ワークスペースを選択するように求められます。 複数のワークスペースがある場合は、ドロップダウン リストから Operations Manager 管理グループに登録するワークスペースを選択し、 **[次へ]** をクリックします。
+1. 認証に成功すると、**Operations Management Suite オンボード ウィザード:ワークスペースの選択** ページで、Azure テナント、サブスクリプション、および Log Analytics ワークスペースを選択するように求められます。 複数のワークスペースがある場合は、ドロップダウン リストから Operations Manager 管理グループに登録するワークスペースを選択し、 **[次へ]** をクリックします。
    
    > [!NOTE]
    > Operations Manager では､1 度に 1 つの Log Analytics ワークスペースをサポートしています｡ 前回のワークスペースで Azure Monitor に登録されている接続とコンピューターは、Azure Monitor から削除されます。

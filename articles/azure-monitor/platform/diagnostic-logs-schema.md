@@ -92,7 +92,7 @@ ms.locfileid: "57436503"
 |Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
 |Microsoft.ClassicNetwork/networksecuritygroups|ネットワーク セキュリティ グループの規則フロー イベント|ネットワーク セキュリティ グループの規則フロー イベント|
-|Microsoft.CognitiveServices/accounts|Audit|Audit Logs|
+|Microsoft.CognitiveServices/accounts|Audit|[監査ログ]|
 |Microsoft.CognitiveServices/accounts|RequestResponse|要求と応答のログ|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API サーバー|
 |Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes コントローラー マネージャー|
@@ -103,9 +103,9 @@ ms.locfileid: "57436503"
 |Microsoft.DataFactory/factories|ActivityRuns|パイプライン アクティビティ実行ログ|
 |Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|
 |Microsoft.DataFactory/factories|TriggerRuns|トリガー実行ログ|
-|Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
+|Microsoft.DataLakeAnalytics/accounts|Audit|[監査ログ]|
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
-|Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
+|Microsoft.DataLakeStore/accounts|Audit|[監査ログ]|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
 |Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL サーバーのログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
@@ -138,7 +138,7 @@ ms.locfileid: "57436503"
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft.IoTSpaces/Graph|イングレス|イングレス|
 |Microsoft.IoTSpaces/Graph|エグレス|エグレス|
-|Microsoft.KeyVault/vaults|AuditEvent|Audit Logs|
+|Microsoft.KeyVault/vaults|AuditEvent|[監査ログ]|
 |Microsoft.Logic/workflows|WorkflowRuntime|ワークフロー ランタイムの診断イベント|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
@@ -174,7 +174,7 @@ ms.locfileid: "57436503"
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery 回復ポイント|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery のレプリケーション データ アップロード速度|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery で保護されたディスクのデータ変更頻度|
-|Microsoft.Search/searchServices|OperationLogs|操作ログ|
+|Microsoft.Search/searchServices|OperationLogs|[操作ログ]|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|AutomaticTuning|自動チューニング|
@@ -185,7 +185,7 @@ ms.locfileid: "57436503"
 |Microsoft.Sql/servers/databases|Timeouts|Timeouts|
 |Microsoft.Sql/servers/databases|Blocks|Blocks|
 |Microsoft.Sql/servers/databases|デッドロック|デッドロック|
-|Microsoft.Sql/servers/databases|Audit|Audit Logs|
+|Microsoft.Sql/servers/databases|Audit|[監査ログ]|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
 |Microsoft.Sql/servers/databases|DmsWorkers|DMS worker|
 |Microsoft.Sql/servers/databases|ExecRequests|実行要求|

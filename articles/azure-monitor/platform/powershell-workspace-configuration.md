@@ -42,7 +42,7 @@ Azure Monitor の Log Analytics ワークスペースでは、コマンド ラ�
 これらの例は、Az.OperationalInsights モジュールのバージョン 1.0.0 以降で動作します。
 
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成と構成
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースを作成して構成する
 以下のサンプル スクリプトは、次の作業の方法を紹介したものです。
 
 1. ワークスペースの作成
