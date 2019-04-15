@@ -6,62 +6,53 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: e83698af6bb1caab1568375b726753d34a8c8467
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861351"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652223"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 
 この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーを削除する方法について説明します。 依存関係を削除してから、コンテナーの削除および強制的なコンテナーの削除を行うための手順が含まれています。
 
 
-
-
 ## <a name="before-you-start"></a>開始する前に
 
 開始する前に、中にサーバーが登録されている Recovery Services コンテナー、またはバックアップ データを保持している Recovery Services コンテナーは削除できないことを理解することが重要です。
 
-
-- コンテナーを正しく削除するには、コンテナー内のサーバーの登録を解除してから、コンテナー データを削除します。
+- コンテナーを正しく削除するには、コンテナー内のサーバーの登録を解除してから、コンテナー データを削除し、コンテナーを削除します。
+- まだ依存関係があるコンテナーを削除しようとすると、エラー メッセージが発行されます。 次のようなコンテナーの依存関係は、手動で削除する必要があります。
+    - バックアップされたアイテム
+    - 保護されたサーバー
+    - バックアップ管理サーバー (Azure Backup Server、DPM) ![自分のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png)
 - Recovery Services のコンテナーにデータを保持したくないときにコンテナーを削除する場合は、コンテナーを強制的に削除することができます。
 - コンテナーを削除しようとしても削除できない場合、コンテナーがバックアップ データを受信するように構成されたままになっています。
 
-コンテナーを削除する方法については、「[Azure portal からコンテナーを削除する](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal)」を参照してください。 [コンテナーの強制的な削除](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force)に関するセクション。 コンテナーの内容が不明なときにコンテナーを削除できることを確認する必要がある場合は、「[コンテナーの依存関係を削除し、コンテナーを削除する](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault)」を参照してください。
 
 ## <a name="delete-a-vault-from-the-azure-portal"></a>Azure portal からコンテナーを削除する
 
-1. ポータル内で Recovery Services コンテナーの一覧を開きます。
-2. 一覧で、削除するコンテナーを選択します。 コンテナー ダッシュボードが開かれます。
+1. コンテナー ダッシュボードを開きます。  
+2. ダッシュボードで **[削除]** をクリックします。 削除するかどうかを確認します。
 
     ![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
 
-1. コンテナー ダッシュボードで **[削除]** をクリックします。 削除するかどうかを確認します。
+エラーが発生した場合は、[バックアップ アイテム](#remove-backup-items)、[インフラストラクチャ サーバー](#remove-backup-infrastructure-servers)、[復旧ポイント](#remove-azure-backup-agent-recovery-points)を削除してから、コンテナーを削除します。
 
-    ![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/click-delete-button-to-delete-vault.png)
+![コンテナーのエラーを削除する](./media/backup-azure-delete-vault/error.png)
 
-2. コンテナーの依存関係が存在する場合は、**コンテナーの削除エラー**が表示されます。 
-
-    ![Vault deletion error](./media/backup-azure-delete-vault/vault-delete-error.png)
-
-    - コンテナーを削除する前に、以下の手順に従って依存関係を削除し、確認します。
-    - PowerShell を使用してコンテナーを強制的に削除するには、[次の手順に従います](#delete-the-recovery-services-vault-by-force)。 
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Recovery Services コンテナーを強制的に削除する
 
+PowerShell を使ってコンテナーを強制的に削除できます。 強制削除は、コンテナーと、関連付けられたすべてのバックアップ データとが完全に削除されることを意味します。
+
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell を使用すると、Recovery Services コンテナーを強制的に削除できます。 これはコンテナーと、関連付けられたすべてのバックアップ データとが完全に削除されることを意味します。 
 
-> [!Warning]
-> PowerShell を使用して Recovery Services コンテナーを削除する場合は、コンテナー内のすべてのバックアップ データを完全に削除したいのかを確認してください。
->
-
-Recovery Services コンテナーを削除するには:
+コンテナーを強制的に削除するには
 
 1. `Connect-AzAccount` コマンドを使用してご利用の Azure サブスクリプションにサインインし、画面上の指示に従います。
 
@@ -96,22 +87,12 @@ Recovery Services コンテナーを削除するには:
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-10. Azure portal でご自分のサブスクリプションにサインインし、コンテナーが削除されていることを確認します。
+10. Azure portal で、値が削除されていることを確認します。
 
 
-## <a name="remove-vault-dependencies-and-delete-vault"></a>コンテナーの依存関係を削除し、コンテナーを削除する
+## <a name="remove-vault-items-and-delete-the-vault"></a>コンテナー アイテムを削除してコンテナーを削除する
 
-コンテナーの依存関係は次のように手動で削除できます。
-
-- **[バックアップ アイテム]** メニューで、依存関係を削除します。
-    - Azure Storage (Azure Files) のバックアップ
-    - Azure VM の SQL Server のバックアップ
-    - Azure 仮想マシンのバックアップ
-- **[バックアップ インフラストラクチャ]** メニューで、依存関係を削除します。
-    - Microsoft Azure Backup Server (MABS) のバックアップ
-    - System Center DPM のバックアップ
-
-![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png)
+これらの手順では、バックアップ データとインフラストラクチャ サーバーを削除する例をいくつか示します。 コンテナーからすべてを削除した後、コンテナーを削除することができます。
 
 ### <a name="remove-backup-items"></a>バックアップ アイテムの削除
 
@@ -127,7 +108,7 @@ Recovery Services コンテナーを削除するには:
 
 
 3. **[バックアップの停止]** > **[オプションの選択]** の順に進み、**[バックアップ データの削除]** を選択します。
-4. アイテムの名前を入力し、**[バックアップの停止]** をクリックします。 
+4. アイテムの名前を入力し、**[バックアップの停止]** をクリックします。
    - これで、コンテナーの削除を希望していることが確認されます。
    - 確認後、**[バックアップの停止]** ボタンがアクティブになります。
    - データを保持し、データを削除しない場合、コンテナーを削除することはできません。
@@ -145,7 +126,7 @@ Recovery Services コンテナーを削除するには:
 ### <a name="remove-backup-infrastructure-servers"></a>バックアップ インフラストラクチャ サーバーを削除する
 
 1. コンテナーのダッシュボード メニューの **[インフラストラクチャのバックアップ]** をクリックします。
-2. **[バックアップ管理サーバー]** をクリックしてサーバーを確認します。 
+2. **[バックアップ管理サーバー]** をクリックしてサーバーを確認します。
 
     ![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -154,7 +135,7 @@ Recovery Services コンテナーを削除するには:
     ![バックアップの種類を選択する](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
 3. 。 **[バックアップの停止]** > **[オプションの選択]** の順に進み、**[バックアップ データの削除]** を選択します。
-4. アイテムの名前を入力し、**[バックアップの停止]** をクリックします。 
+4. アイテムの名前を入力し、**[バックアップの停止]** をクリックします。
    - これで、コンテナーの削除を希望していることが確認されます。
    - 確認後、**[バックアップの停止]** ボタンがアクティブになります。
    - データを保持し、データを削除しない場合、コンテナーを削除することはできません。
@@ -200,12 +181,13 @@ Recovery Services コンテナーを削除するには:
 
 
 
+
+
+
 ### <a name="delete-the-vault-after-removing-dependencies"></a>依存関係を削除してからコンテナーを削除する
 
 1. すべての依存関係が削除されたら、コンテナー メニュー内の **[Essentials]** ウィンドウにスクロールします。
-
-    - 一覧には、**[バックアップ アイテム]**、**[バックアップ管理サーバー]**、**[レプリケートされたアイテム]** のどれも表示されないはずです。
-    - コンテナー内にまだアイテムが表示されている場合は、それを削除します。
+2. 一覧に **[バックアップ アイテム]**、**[バックアップ管理サーバー]**、**[レプリケートされたアイテム]** のどれも表示されないことを確認します。 コンテナー内にまだアイテムが表示されている場合は、それを削除します。
 
 2. コンテナーにアイテムがなくなったら、コンテナー ダッシュボードで **[削除]** をクリックします。
 

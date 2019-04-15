@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 52f1316b8167d2e1c3e37dbbfc0059b68e832172
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538563"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579412"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -24,7 +24,7 @@ ms.locfileid: "57538563"
 | **パーティション数** | このプロパティは作成時に設定し、device-to-cloud イベントを取り込む場合の[パーティション](../event-hubs/event-hubs-features.md#partitions)数を定義します。 |
 | **リテンション期間**  | このプロパティは、IoT Hub によってメッセージが保持される期間を日数で指定します。 既定は 1 日ですが、7 日間に増やすことができます。 |
 
-IoT Hub では、組み込みの Event Hubs に最大 7 日間データを保持できます。 保持期間は IoT Hub の作成時に設定できます。 IoT Hub に保持されるデータのサイズは、お使いの IoT Hub のレベルとユニットの種類によって異なります。 サイズに関しては、組み込みの Event Hubs では、最大メッセージ サイズのメッセージを少なくとも 24 時間のクォータまで保持できます。 たとえば、1 つの S1 ユニットの IoT Hub では、それぞれ 4K サイズのメッセージを少なくとも 400,000 件保持できるだけのストレージが提供されます。 デバイスが送信するメッセージのサイズが小さい場合、使用されているストレージ容量に応じて、メッセージが保持される期間が長くなる (最大 7 日間) 可能性があります。 少なくとも指定された保持期間はデータが保持されることが保証されています。
+IoT Hub では、組み込みの Event Hubs に最大 7 日間データを保持できます。 保持期間は IoT Hub の作成時に設定できます。 IoT Hub でのデータ保持期間は、お使いの IoT Hub のレベルとユニットの種類によって異なります。 サイズに関しては、組み込みの Event Hubs では、最大メッセージ サイズのメッセージを少なくとも 24 時間のクォータまで保持できます。 たとえば、1 つの S1 ユニットの IoT Hub では、それぞれ 4K サイズのメッセージを少なくとも 400,000 件保持できるだけのストレージが提供されます。 デバイスが送信するメッセージのサイズが小さい場合、使用されているストレージ容量に応じて、メッセージが保持される期間が長くなる (最大 7 日間) 可能性があります。 少なくとも指定された保持期間はデータが保持されることが保証されています。
 
 IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。
 
@@ -50,7 +50,7 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 
 ポータルの [イベント ハブ互換エンドポイント] フィールドには、Event Hubs の完全な接続文字列 (例: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**) が含まれています。 使用している SDK で他の値が必要な場合、値は次のようになります。
 
-| Name | 値 |
+| 名前 | 値 |
 | ---- | ----- |
 | エンドポイント | sb://abcd1234namespace.servicebus.windows.net/ |
 | ホスト名 | abcd1234namespace.servicebus.windows.net |

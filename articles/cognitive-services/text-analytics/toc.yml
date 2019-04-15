@@ -5,6 +5,8 @@ items:
   items:
   - name: Text Analytics API とは
     href: overview.md
+  - name: ユーザー シナリオの例
+    href: text-analytics-user-scenarios.md
   expanded: true
 - name: クイック スタート
   items:
@@ -24,13 +26,16 @@ items:
     href: quickstarts/ruby.md
 - name: チュートリアル
   items:
-  - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
-    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-    maintainContext: true
-  - name: Text Analytics と Power BI
+  - name: Power BI を統合して顧客からのフィードバックを分析する
     href: Tutorials/tutorial-power-bi-key-phrases.md
   - name: Text Analytics と Power Apps
     href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
+  - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
+    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    maintainContext: true
+  - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
+    href: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
+    maintainContext: true
 - name: ハウツー ガイド
   items:
   - name: サインアップ
@@ -79,6 +84,8 @@ items:
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
 - name: リソース
   items:
+  - name: MS Flow を使って Yammer グループ内のコメントのセンチメントを特定する
+    href: https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure
   - name: 外部とコミュニティのコンテンツ
     href: text-analytics-resource-external-community.md
   - name: FAQ
@@ -97,9 +104,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 1759bee73caeb18ac96a228bb3a81e697aa62089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c25fe6b6fa10c592cb9462e9fb712575f61bdd1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475630"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500823"

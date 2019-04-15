@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113267"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762686"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -139,12 +139,7 @@ ms.locfileid: "58113267"
 
 1. **IaaS 拡張機能で SQL Server の名前付きインスタンスを使用できますか?**
    
-   はい。ただし、その名前付きインスタンスが SQL Server の唯一のインスタンスであることと、元の既定のインスタンスが正しくアンインストールされていることが条件となります。 名前付きインスタンスを使用するには、次の手順を実行します。
-    1. マーケットプレースから SQL Server VM をデプロイします。 
-    1. IaaS 拡張機能をアンインストールします。
-    1. SQL Server を完全にアンインストールします。
-    1. SQL Server を名前付きインスタンスとともにインストールします。 
-    1. IaaS 拡張機能をインストールします。 
+   はい。ただし、その名前付きインスタンスが SQL Server の唯一のインスタンスであることと、元の既定のインスタンスが[正しくアンインストールされている](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation)ことが条件となります。 既定のインスタンスがなく、1 つの SQL Server VM 上に複数の名前付きインスタンスがある場合は、IaaS 拡張機能はインストールに失敗します。 
 
 1. **SQL VM から SQL Server を完全に削除できますか。**
 
@@ -176,6 +171,10 @@ ms.locfileid: "58113267"
 1. **Azure VM に SQL データ ツールをインストールするにはどうすればよいですか?**
 
     「[Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313)」から、SQL データ ツールをダウンロードしてインストールします。
+
+1. **SQL Server VM では MSDTC を使用した分散トランザクションはサポートされていますか?**
+   
+    はい。 ローカルの DTC は、SQL Server 2016 SP2 以降でサポートされています。 ただし、Always On 可用性グループを利用する場合は、フェールオーバー時に実行中のトランザクションが失敗し、再試行する必要があるため、アプリケーションをテストする必要があります。 クラスター化された DTC は、Windows Server 2019 以降で使用できます。 
 
 ## <a name="resources"></a>リソース
 

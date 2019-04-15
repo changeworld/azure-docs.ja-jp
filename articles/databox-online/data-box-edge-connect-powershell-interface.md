@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: b3effdbace2be582bfe85d0402088f8aa0d96fe7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556454"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791577"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell-preview"></a>Azure Data Box Edge デバイスを Windows PowerShell 経由で管理する (プレビュー)
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Azure Data Box Edge デバイスを Windows PowerShell 経由で管理する
 
 Azure Data Box Edge ソリューションにより、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Data Box Edge デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
@@ -32,18 +32,9 @@ Azure Data Box Edge ソリューションにより、データを処理してネ
 - コンピューティング ログを取得する
 - コンピューティング モジュールの監視とトラブルシューティングを行う
 
-> [!IMPORTANT]
-> 現在、Azure Data Box Edge はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 ## <a name="connect-to-the-powershell-interface"></a>PowerShell インターフェイスに接続する
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
-
-## <a name="start-a-support-session"></a>サポート セッションを開始する
-
-[!INCLUDE [Connect to support runspace](../../includes/data-box-edge-gateway-connect-support.md)]
 
 ## <a name="create-a-support-package"></a>サポート パッケージを作成する
 
@@ -53,7 +44,22 @@ Azure Data Box Edge ソリューションにより、データを処理してネ
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
+ご使用の IoT Edge デバイスと、そのデバイスに接続できるダウンストリーム デバイスとの間にセキュリティで保護された接続を確立するために、IoT Edge 証明書をアップロードすることもできます。 インストールする必要がある IoT Edge 証明書は 3 つあります (*.pem* 形式)。
+
+- ルート CA 証明書または所有者 CA
+- デバイス CA 証明書
+- デバイス キー証明書
+
+このコマンドレットを使用して、IoT Edge 証明書をインストールする例を次に示します。
+
+```
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+```
+
+証明書の詳細については、[Azure IoT Edge 証明書](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs)に関するページまたは「[ゲートウェイに証明書をインストール](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway)」に移動してください。
+
 ## <a name="view-device-information"></a>デバイス情報を表示する
+
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -70,14 +76,19 @@ Azure Data Box Edge ソリューションにより、データを処理してネ
 
     このコマンドレットの使用例を次に示します。
 
-    ```
+    ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
-    このコマンドレットで使用されるパラメーターの説明を次に示します。 
+
+    このコマンドレットで使用されるパラメーターの説明を次に示します。
     - `Path`:コンピューティング ログ パッケージを作成する共有へのネットワーク パスを指定します。
     - `Credential`:ネットワーク共有のユーザー名とパスワードを指定します。
     - `RoleInstanceName`:このパラメーターには文字列 `IotRole` を指定します。
     - `FullLogCollection`:このパラメーターにより、ログ パッケージにすべてのコンピューティング ログが確実に含まれます。 既定では、ログ パッケージに含まれるものは、ログのサブセットのみです。
+
+## <a name="monitor-and-troubleshoot-compute-modules"></a>コンピューティング モジュールの監視とトラブルシューティングを行う
+
+[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>次の手順

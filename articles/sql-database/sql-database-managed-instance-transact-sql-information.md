@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b633c6a8ccbf9f29b93314bb9391215031d523eb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903132"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893063"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -40,7 +40,7 @@ ms.locfileid: "57903132"
 
 [高可用性](sql-database-high-availability.md)はマネージド インスタンスに組み込まれており、ユーザーが制御することはできません。 次のステートメントはサポートされていません。
 
-- [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
+- [CREATE ENDPOINT …  FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
 - [ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
 - [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
@@ -54,8 +54,8 @@ ms.locfileid: "57903132"
   - `BACKUP TO URL` だけがサポートされています。
   - `FILE`、`TAPE`、バックアップ デバイスはサポートされていません。  
 - ほとんどの一般的な `WITH` オプションがサポートされています。
-  - `COPY_ONLY` は必須です。
-  - `FILE_SNAPSHOT` はサポートされていません。
+  - `COPY_ONLY` は必須です
+  - `FILE_SNAPSHOT` サポート対象外
   - テープ オプション: `REWIND`、`NOREWIND`、`UNLOAD`、`NOUNLOAD` はサポートされていません。
   - ログ固有のオプション: `NORECOVERY`、`STANDBY`、`NO_TRUNCATE` はサポートされていません。
 
@@ -67,7 +67,7 @@ ms.locfileid: "57903132"
     > [!TIP]
     > 次の操作を実行すると、オンプレミス環境の SQL Server または仮想マシンからデータベースをバックアップするときに、この制限を回避できます。
     >
-    > - `URL` にバックアップするのではなく、`DISK` にバックアップします
+    > - `DISK` にバックアップします。次のものにはバックアップしません:  `URL`
     > - バックアップ ファイルを BLOB ストレージにアップロードします
     > - マネージ インスタンスに復元します
     >
@@ -102,8 +102,8 @@ Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違
 
 マネージド インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。
 
-- ファイルからの作成/ファイルへのバックアップ (`CREATE FROM`/`BACKUP TO`) は、証明書ではサポートされていません。
-- `FILE`/`ASSEMBLY` からの証明書の作成/バックアップ (`CREATE`/`BACKUP`) はサポートされていません。 秘密キー ファイルは使用できません。  
+- `CREATE FROM`/`BACKUP TO` (ファイルからの作成またはファイルへのバックアップ) は、証明書ではサポートされていません
+- `CREATE`/`BACKUP` (`FILE`/`ASSEMBLY` からの証明書の作成またはバックアップ) は、サポートされていません。 秘密キー ファイルは使用できません。  
 
 [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) に関する記事、および [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql) に関する記事をご覧ください。  
   
@@ -156,7 +156,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
   - マネージド インスタンスに対する Active Directory 管理者の制限事項:
 
-    - マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+    - マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。 `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
       - 現時点では、マスター DB に作成される最初の Azure AD ログインは、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER を使用して標準の SQL Server アカウント (Azure AD ではない) `sysadmin` によって作成される必要があります。 一般提供の後、この制限は削除され、マネージド インスタンスの Active Directory 管理者によって初期 Azure AD ログインを作成できます。
     - SQL Server Management Studio (SSMS) または SqlPackage で使用される DacFx (エクスポート/インポート) は、Azure AD ログインではサポートされていません。 この制限は、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。
     - SSMS での Azure AD サーバー プリンシパル (ログイン) の使用
@@ -217,7 +217,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
 - 複数のログ ファイルはサポートされていません。
 - インメモリ オブジェクトは、General Purpose サービス レベルではサポートされていません。  
-- インスタンスあたり 280 ファイル (データベースあたり最大 280 ファイル) の制限があります。 データ ファイルとログ ファイルの両方がこの制限にカウントされます。  
+- General Purpose インスタンスあたり 280 ファイル (データベースあたり最大 280 ファイル) の制限があります。 General Purpose レベルのデータ ファイルとログ ファイルの両方がこの制限にカウントされます。 [Business Critical レベルでは、データベースあたり 32,767 ファイルがサポートされます](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 - filestream データを含むファイル グループをデータベースに含めることはできません。  .bak に `FILESTREAM` データが含まれていると、復元は失敗します。  
 - すべてのファイルが Azure Blob Storage に配置されます。 ファイルあたりの IO およびスループットは、個々のファイルのサイズによって異なります。  
 
@@ -227,12 +227,12 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
 - ファイルおよびファイル グループは定義できません。  
 - `CONTAINMENT` オプションはサポートされていません。  
-- `WITH` オプションはサポートされていません。  
+- `WITH`オプションはサポートされていません。  
    > [!TIP]
    > 対処法として、`CREATE DATABASE` の後に `ALTER DATABASE` を使用して、ファイルの追加またはコンテインメントの設定を行うデータベース オプションを設定します。  
 
-- `FOR ATTACH` オプションはサポートされていません。
-- `AS SNAPSHOT OF` オプションはサポートされていません。
+- `FOR ATTACH` オプションはサポートされていません
+- `AS SNAPSHOT OF` オプションはサポートされていません
 
 詳細については、[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-sql-server-transact-sql) に関する記事をご覧ください。
 
@@ -324,8 +324,8 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 マネージド インスタンスはファイル共有や Windows フォルダーにアクセスできないため、ファイルは Azure Blob Storage からインポートする必要があります。
 
-- Azure Blob Storage からのファイルのインポート中、`BULK INSERT` コマンドには `DATASOURCE` が必要です。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
-- Azure Blob Storage からのファイルの内容を読み取る場合、`OPENROWSET` 関数には `DATASOURCE` が必要です。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
+- `DATASOURCE` が、Azure Blob Storage からファイルをインポートしている間の `BULK INSERT` コマンドには必要です。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
+- `DATASOURCE` が、Azure Blob Storage からのファイルの内容を読み取る場合の `OPENROWSET` 関数には必要です。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 
 ### <a name="clr"></a>CLR
 
@@ -387,9 +387,9 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 操作
 
 - クロス インスタンス書き込みトランザクションはサポートされていません。
-- リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
-- SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
-- SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 (例: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`)。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
+- `sp_dropserver` が、リンク サーバーの削除でサポートされています。 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
+- `OPENROWSET` 関数は、SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、クエリを実行するために使用できます。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
+- `OPENDATASOURCE` 関数は、SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、クエリを実行するために使用できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 (例: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`)。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
 
 ### <a name="polybase"></a>PolyBase
 
@@ -411,7 +411,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - ソース  
-  - サポートされているオプションは `FROM URL` (Azure Blob Storage) だけです。
+  - `FROM URL` (Azure Blob Storage) が、サポートされている唯一のオプションです。
   - `FROM DISK`/`TAPE`/バックアップ デバイスはサポートされていません。
   - バックアップ セットはサポートされていません。
 - `WITH` オプションはサポートされていません (`DIFFERENTIAL`、`STATS` などは使用不可)。
@@ -425,12 +425,12 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
 - `RECOVERY FULL` (.bak ファイル内のデータベースが `SIMPLE` または `BULK_LOGGED` 回復モードの場合)
 - メモリ最適化ファイル グループが追加され、(ソースの .bak ファイルに含まれていなかった場合) XTP という名前が付けられます。  
 - 既存のメモリ最適化ファイル グループの名前が XTP に変更されます。  
-- `SINGLE_USER` および `RESTRICTED_USER` オプションは、`MULTI_USER` に変換されます。
+- `SINGLE_USER` および `RESTRICTED_USER` のオプションは、次のものに変換されます: `MULTI_USER`
 
 制限事項:   
 
-- 複数のバックアップ セットを含む `.BAK` ファイルは復元できません。
-- 複数のログ ファイルを含む `.BAK` ファイルは復元できません。
+- `.BAK` ファイルに複数のバックアップ セットが含まれている場合、復元できません。
+- `.BAK` ファイルに複数のログ ファイルが含まれている場合、復元できません。
 - .bak に `FILESTREAM` データが含まれていると、復元は失敗します。
 - 現時点では、アクティブなインメモリ オブジェクトが存在するデータベースが含まれたバックアップは復元できません。  
 - 現時点では、ある時点でインメモリ オブジェクトが存在していたデータベースが含まれたバックアップは復元できません。
@@ -457,21 +457,21 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
   - `remote proc trans`
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
-- `sp_addextendedproc`  および `sp_dropextendedproc` などの `Extended stored procedures` はサポートされていません。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
+- `Extended stored procedures` はサポートされていません (`sp_addextendedproc`  や `sp_dropextendedproc` など)。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 
 ## <a name="Changes"></a>動作の変更
 
 次の変数、関数、ビューは異なる結果を返します。
 
-- `SERVERPROPERTY('EngineEdition')` は 8 を返します。 このプロパティは、マネージド インスタンスを一意に識別します。 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する記事をご覧ください。
+- `SERVERPROPERTY('EngineEdition')` は値 8 を返します。 このプロパティは、マネージド インスタンスを一意に識別します。 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する記事をご覧ください。
 - `SERVERPROPERTY('InstanceName')` は NULL を返します。これは SQL Server に関して存在するインスタンスの概念が、マネージド インスタンスには該当しないためです。 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する説明をご覧ください。
 - `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: my-managed-instance.wcus17662feb9ce98.database.windows.net)。 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。  
 - `SYS.SERVERS` - "name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。
 - `@@SERVICENAME` は NULL を返します。これは SQL Server に関して存在するサービスの概念が、マネージド インスタンスには該当しないためです。 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。
 - `SUSER_ID` がサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。  
 - `SUSER_SID` はサポートされていません。 間違ったデータを返します (一時的な既知の問題)。 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。
-- `GETDATE()` と他の組み込みの日付/時刻関数は、常に UTC タイム ゾーンの時刻を返します。 [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) に関する記事をご覧ください。
+- `GETDATE()` と他の組み込みの日付関数または時刻関数は、常に UTC タイム ゾーンの時刻を返します。 [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) に関する記事をご覧ください。
 
 ## <a name="Issues"></a>既知の問題と制限事項
 
@@ -485,9 +485,9 @@ General Purpose レベルでは、`tempdb` の最大ファイル サイズは 24
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
 
-それぞれのマネージド インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージド インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。
+それぞれの General Purpose マネージド インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB のストレージを備え、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージド インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。
 
-たとえば、マネージド インスタンスは 4 TB のディスクに配置されている 1.2 TB のサイズのファイルを 1 つと、個別の 128 GB のディスクに配置されている 248 個のファイル (各 1 GB のサイズ) を保持できます。 次の点に注意してください。
+たとえば、General Purpose マネージド インスタンスでは、4 TB のディスクに配置されている 1.2 TB のサイズのファイルを 1 つと、個別の 128 GB のディスクに配置されている 248 個のファイル (各 1 GB のサイズ) を保持できます。 次の点に注意してください。
 
 - 割り当てられるディスク ストレージの合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。
 - インスタンス上のデータベースの予約済み領域の合計は、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。
@@ -496,9 +496,11 @@ General Purpose レベルでは、`tempdb` の最大ファイル サイズは 24
 
 この例では既存のデータベースは引き続き機能し、新しいファイルを追加しない限りは問題なく拡張できます。 ただし、すべてのデータベースの合計サイズがインスタンス サイズの上限に到達しない場合でも、新しいディスク ドライブ用の十分な領域がないため、新しいデータベースの作成や復元はできませんでした。 その場合に返されるエラーは明確ではありません。
 
+システム ビューを使用して、[残りのファイルの数を特定](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)できます。 この制限に達しそうになっている場合、[DBCC SHRINKFILE ステートメントを使用して小さなファイルをいくつか空にして削除](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)してみるか、[この制限のない Business Critical レベル](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)に切り替えてください。
+
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>データベースの復元時の SAS キーの構成が正しくない
 
-`CREDENTIAL` の Shared Access Signature が正しくない場合、.bak ファイルを読み取る `RESTORE DATABASE` が、.bak ファイルの読み取りの再試行を繰り返し、長時間経過した後にエラーを返すことがあります。 データベースを復元する前に RESTORE HEADERONLY を実行して、SAS キーが正しいことを確認します。
+`RESTORE DATABASE` (.bak ファイルを読み取る) は、`CREDENTIAL` の Shared Access Signature が正しくない場合、.bak ファイルの読み取りの再試行を繰り返し、長時間経過した後にエラーを返すことがあります。 データベースを復元する前に RESTORE HEADERONLY を実行して、SAS キーが正しいことを確認します。
 Azure portal を使用して生成された SAS キーから、先頭の `?` を必ず削除してください。
 
 ### <a name="tooling"></a>ツール
@@ -528,7 +530,7 @@ SQL エージェントによって使用されるデータベース メールプ
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
 
-同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合、.NET の `TransactionScope` クラスが機能しません。
+`TransactionScope` クラス (.NET) は、同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合に機能しません。
 
 ```C#
 using (var scope = new TransactionScope())

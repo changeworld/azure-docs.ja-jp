@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 6ff7b018cea8bedd93d3c9aef3b3250ecf5251b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123727"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918894"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 
@@ -33,7 +33,7 @@ ms.locfileid: "58123727"
 
 トークン認証では、要求元に関するエンコードされた情報を含むトークン値を要求に求めることで、その要求が、信頼済みサイトによって生成されていることを確認します。 コンテンツが要求元に提供されるのは、そのエンコードされた情報が要件を満たす場合だけです。それ以外の場合、要求は拒否されます。 要件を設定するには、以下のパラメーターを 1 つ以上使用します。
 
-- 国: [国番号](https://msdn.microsoft.com/library/mt761717.aspx)で指定した国からの要求を許可または拒否します。
+- 国: [国番号](/previous-versions/azure/mt761717(v=azure.100))で指定した国からの要求を許可または拒否します。
 - URL:指定した資産またはパスと一致する要求のみを許可します。
 - [Host]\(ホスト\):要求ヘッダーで、指定したホストを使用する要求を許可または拒否します。
 - 参照元: 指定した参照元からの要求を許可または拒否します。
@@ -120,7 +120,7 @@ ms.locfileid: "58123727"
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>指定した 1 つ以上の国からの要求のみを許可します。 それ以外の国からの要求はすべて拒否されます。 各国の 2 文字の [ISO 3166 国コード](https://msdn.microsoft.com/library/mt761717.aspx)を使用し、それぞれをコンマで区切ります。スペースを追加しないでください。 たとえば、米国とフランスからのアクセスのみを許可する場合は、「`US,FR`」と入力します。</td>
+      >    <td>指定した 1 つ以上の国からの要求のみを許可します。 それ以外の国からの要求はすべて拒否されます。 各国の 2 文字の [ISO 3166 国コード](/previous-versions/azure/mt761717(v=azure.100))を使用し、それぞれをコンマで区切ります。スペースを追加しないでください。 たとえば、米国とフランスからのアクセスのみを許可する場合は、「`US,FR`」と入力します。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

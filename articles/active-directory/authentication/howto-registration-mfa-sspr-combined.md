@@ -1,5 +1,5 @@
 ---
-title: Azure AD SSPR と MFA のための統合された登録の使用を開始する (プレビュー)
+title: Azure AD SSPR と MFA のための統合された登録の概要 (プレビュー) - Azure Active Directory
 description: Azure AD Multi-Factor Authentication とセルフサービスのパスワード リセットの統合された登録の有効化 (プレビュー)
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6896e2b9633b8de679e8d14a7957dc0e3229e7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: c5d7f9623a7594aaa79c4cff187486360b1befc8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226727"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369022"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録の有効化 (プレビュー)
 
 この新しいエクスペリエンスを有効にする前に、記事「[統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md)」を参照し、機能性とこの機能の影響を必ず理解してください。
 
-![結合されたセキュリティ情報の登録は、サインインでより詳細な情報を要求するように、エクスペリエンスが強化されました。 例では、最も重要な方法として Microsoft Authenticator アプリの登録を示しています。](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
+![統合されたセキュリティ情報登録の強化エクスペリエンス](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "58226727"
 2. **Azure Active Directory** > **[ユーザー設定]** > **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
 3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます – 更新]** で、**[選択済み]** のユーザーのグループまたは **[すべて]** のユーザーのうちのどちらを有効にするかを選択します。
 
-![Azure AD ポータルですべてのユーザーに対して統合されたセキュリティ情報のプレビュー エクスペリエンスを有効にする](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+![すべてのユーザーに対して統合されたセキュリティ情報のプレビュー エクスペリエンスを有効にする](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
 > 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。

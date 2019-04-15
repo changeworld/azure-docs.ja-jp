@@ -224,7 +224,7 @@ items:
           href: platform/diagnostic-logs-append-blobs.md
         - name: VM のゲストのメトリックをメトリック ストアに送信する
           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-        - name: VM スケール セットのゲストのメトリックをメトリック ストアに送信する
+        - name: 仮想マシン スケール セットのゲストのメトリックをメトリック ストアに送信する
           href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
         - name: VM クラシックのゲストのメトリックをメトリック ストアに送信する
           href: platform/collect-custom-metrics-guestos-vm-classic.md
@@ -581,8 +581,8 @@ items:
           href: insights/network-performance-monitor.md
         - name: パフォーマンスの監視
           href: insights/network-performance-monitor-performance-monitor.md
-        - name: サービス エンドポイント
-          href: insights/network-performance-monitor-service-endpoint.md
+        - name: サービス接続モニター
+          href: insights/network-performance-monitor-service-connectivity.md
         - name: ExpressRoute
           href: insights/network-performance-monitor-expressroute.md
         - name: 価格
@@ -658,8 +658,9 @@ items:
   - name: データの視覚化
     items:
     - name: ビュー
-      href: platform/view-designer.md
       items:
+      - name: ビュー デザイナー
+        href: platform/view-designer.md
       - name: タイルのリファレンス
         href: platform/view-designer-tiles.md
       - name: 視覚化パーツのリファレンス
@@ -864,9 +865,9 @@ items:
         href: platform/autoscale-common-scale-patterns.md
       - name: カスタム メトリックを使用した自動スケール
         href: platform/autoscale-custom-metric.md
-      - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
+      - name: Resource Manager テンプレートを使用した仮想マシン スケール セットの自動スケーリング
         href: platform/autoscale-virtual-machine-scale-sets.md
-      - name: VM スケール セットでのマシンの自動スケール
+      - name: 仮想マシン スケール セットでのマシンの自動スケール
         href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
       - name: 自動スケールで webhook と電子メール通知を構成する
         href: platform/autoscale-webhook-email.md
@@ -1071,9 +1072,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: b2021ca33265e06f882f04f726a889ddae0fd91f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7605179d1d1129587114f1462639ad06dde6fcef
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261158"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491102"

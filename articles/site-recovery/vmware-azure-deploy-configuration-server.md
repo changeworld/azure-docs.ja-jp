@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb558644f29cd7b84156f976f525a88080f101dc
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004448"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449210"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -184,7 +184,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、AAD
     **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
 10. 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
 
-    **いいえ**。複製された Configuration Server コンポーネントは使用できません。
+    **いいえ**。複製された Configuration Server コンポーネントは使用できません。 スケール アウト プロセス サーバーの複製のシナリオもサポートされていません。 Site Recovery コンポーネントを複製すると、進行中のレプリケーションに影響します。
 
 11. 構成サーバーの IP を変更することはできますか?
 

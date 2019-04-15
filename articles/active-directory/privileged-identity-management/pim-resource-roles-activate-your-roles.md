@@ -1,5 +1,5 @@
 ---
-title: PIM で自分の Azure リソース ロールをアクティブにする | Microsoft Docs
+title: PIM で Azure リソース ロールをアクティブ化する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールをアクティブにする方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23fcba94a8f29d0f1bc458dd4779e5a2f0c06f38
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002039"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575808"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールをアクティブにする
 
-Azure リソースの適格なロール メンバーは、Azure AD Privileged Identity Management (PIM) を使用して、将来の日時のアクティブ化をスケジュールできます。 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡
+Azure リソースの適格なロール メンバーは、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、将来の日時のアクティブ化をスケジュールできます。 最大範囲 (管理者が設定) 内で特定のアクティブ化期間を選択することもできます｡
 
 この記事は、PIM で Azure リソース ロールをアクティブにする必要があるメンバー向けです。
 
@@ -38,7 +38,7 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 1. **[自分のロール]** をクリックします。
 
-    ![Azure AD ディレクトリ ロールおよび Azure リソース ロール - [自分のロール]](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Azure AD ロールおよび Azure リソース ロール - [自分のロール]](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. **[Azure リソース ロール]** をクリックして、適格な Azure リソース ロールの一覧を表示します。
 
@@ -84,7 +84,7 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 1. Azure AD Privileged Identity Management を開きます。
 
-1. **[自分のロール]** をクリックして、適格な Azure AD ディレクトリ ロールおよび Azure リソース ロールの一覧を表示します。
+1. **[自分のロール]** をクリックして、適格な Azure AD ロールおよび Azure リソース ロールの一覧を表示します。
 
 1. **[Azure リソース ロール]** をクリックします。
 
@@ -100,9 +100,9 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 1. Azure AD Privileged Identity Management を開きます。
 
-1. **[個人の要求]** をクリックして、Azure AD ディレクトリ ロールおよび Azure リソース ロール要求の一覧を表示します。
+1. **[個人の要求]** をクリックして、Azure AD ロールおよび Azure リソース ロール要求の一覧を表示します。
 
-    ![Azure AD ディレクトリ ロールおよび Azure リソース ロール - [個人の要求]](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Azure AD ロールおよび Azure リソース ロール - [個人の要求]](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. 右へスクロールして **[Request Status]\(要求の状態\)** 列を表示します。
 
@@ -138,4 +138,4 @@ PIM でロールをアクティブにすると、必要な管理ポータルに�
 ## <a name="next-steps"></a>次の手順
 
 - [PIM で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
-- [PIM で自分の Azure AD ディレクトリ ロールをアクティブにする](pim-how-to-activate-role.md)
+- [PIM で Azure AD ロールをアクティブ化する](pim-how-to-activate-role.md)

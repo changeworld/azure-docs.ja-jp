@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: efbcc0143570b3d379cf392c170f599fcc0176d4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855131"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518084"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter サーバーを管理する
 
@@ -108,7 +108,7 @@ IP アドレスが更新されるとすぐに、Site Recovery コンポーネン
 4. 次に、[保護を有効にする際に新しい vCenter を選択](vmware-azure-tutorial.md#enable-replication)して、移行された仮想マシンを保護します。
 
 > [!TIP]
-> 移行される仮想マシンの数が古い vCenter に保持されている仮想マシンの数**より多い**場合は、[こちら](#modify-vcenter-ip-address-port)に記載された手順を使用して新しい vCenter の IP アドレスを更新します。 古い vCenter 上に保持されているいくつかの仮想マシンについては、[レプリケーションを無効](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)にし、[新しい vCenter の詳細を構成サーバーに追加](#add-vmware-server-to-the-vault)し、**[保護の有効化](vmware-azure-tutorial.md#enable-replication)** を開始します。
+> 移行される仮想マシンの数が古い vCenter に保持されている仮想マシンの数**より多い**場合は、ここに記載された手順を使用して新しい vCenter の IP アドレスを更新します。 古い vCenter 上に保持されているいくつかの仮想マシンについては、[レプリケーションを無効](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)にし、[新しい vCenter の詳細を構成サーバーに追加](#add-vmware-server-to-the-vault)し、**[保護の有効化](vmware-azure-tutorial.md#enable-replication)** を開始します。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5814e05aa65bf005a3156aa75e65747bbd46733c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58171059"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892740"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
@@ -24,7 +24,7 @@ ms.locfileid: "58171059"
 
 ## <a name="sdk-installation-issues"></a>SDK のインストールに関する問題
 
-**エラー メッセージ:"Cannot uninstall 'PyYAML'" ('PyYAML' をアンインストールできません)**
+**エラー メッセージ:Cannot uninstall 'PyYAML' ('PyYAML' をアンインストールできません)**
 
 Azure Machine Learning SDK for Python:PyYAML は distutils によってインストールされるプロジェクトです。 したがって、部分的なアンインストールが行われた場合、それに属しているファイルを正確に判別できません。 このエラーを無視して SDK のインストールを続行するには、次を使用します。
 
@@ -48,6 +48,11 @@ Web サービスのデプロイ時のイメージ ビルド エラー。 回避�
 
 FPGA クォータを要求して承認されるまでは、FPGA にモデルをデプロイできません。 アクセスを要求するには、クォータ要求フォーム https://aka.ms/aml-real-time-ai に入力します。
 
+## <a name="automated-machine-learning"></a>自動化された機械学習
+
+Tensor Flow の自動化された機械学習は現在、Tensor Flow バージョン 1.13 でサポートされていません。 このバージョンをインストールすると、パッケージの依存関係が動作を停止することになります。 Microsoft は、将来のリリースでこの問題を解決するよう取り組んでいます。 
+
+
 ## <a name="databricks"></a>Databricks
 
 Databricks と Azure Machine Learning の問題。
@@ -57,7 +62,7 @@ Databricks と Azure Machine Learning の問題。
 追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning service SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:
 
 ```python
-pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
 別の方法として、Python ライブラリでインストールの問題が発生し続けている場合は、初期化スクリプトを使用することができます。 この方法は、公式にはサポートされていません。 詳細については、「[Cluster-scoped init scripts](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)」を参照してください。
@@ -91,7 +96,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 1. クラスターをデタッチし、次にクラスターをノートブックに再アタッチします。 
 
-これで問題が解決しない場合は、クラスターを再起動してみてください。
+これらの手順で問題が解決しない場合は、クラスターを再起動してみてください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
@@ -99,8 +104,7 @@ SDK またはポータルで共有リンクからワークスペースを直接�
 
 ## <a name="diagnostic-logs"></a>診断ログ
 
-サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。
-ここにログ ファイルが保存されます。
+サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを確認するには、[Azure portal](https://portal.azure.com) にアクセスし、自分のワークスペースに移動して、**[ワークスペース]、[実験]、[実行]、[ログ]** の順に選択します。
 
 ## <a name="resource-quotas"></a>リソース クォータ
 
@@ -119,7 +123,3 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 ```
 
 たとえば、リモート実行のために送信される ML パイプラインからコンピューティング ターゲットを作成またはアタッチしようとすると、エラーが発生します。
-
-## <a name="get-more-support"></a>さらにサポートが必要な場合
-
-サポート要求を送信し、テクニカル サポートやフォーラムなどからサポートを得ることができます。 [詳細情報](support-for-aml-services.md)

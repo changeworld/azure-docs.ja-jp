@@ -1,6 +1,6 @@
 ---
-title: 外部のゲストを招待して Azure AD の管理者ロールを割り当てる - Privileged Identity Management | Microsoft Docs
-description: Azure AD Privileged Identity Management で、ゲスト ユーザーを招待して Azure Active Directory 管理者ロールを割り当てる方法を説明します。
+title: PIM でゲストを招待して Azure リソース ロールを割り当てる - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で外部ゲスト ユーザーを招待して Azure リソース ロールを割り当てる方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68c5e5e2ed0d3ec767a239439476a98bac73bcb4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853258"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576881"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>PIM で、ゲスト ユーザーを招待して Azure リソース アクセスを割り当てる
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>PIM でゲスト ユーザーを招待して Azure リソース ロールを割り当てる
 
 Azure Active Directory (Azure AD) 企業間 (B2B) は、組織が任意のアカウントを使用して外部ゲスト ユーザー (ゲスト) や仕入先と共同作業できるようにする、Azure AD 内の一連の機能です。 B2B と Azure AD Privileged Identity Management (PIM) を組み合わせると、コンプライアンスとガバナンス要件をゲストに継続的に適用できます。 たとえば、Azure ID タスク用の次の PIM 機能をゲストとともに使用できます。
 

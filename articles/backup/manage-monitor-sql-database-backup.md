@@ -8,15 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: 500986478e554a3a114d11ee4b25ea40b5decd97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004135"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849600"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
-
 
 この記事では、[Azure Backup](backup-overview.md) サービスによって Azure Backup Recovery Services コンテナーにバックアップされる Azure 仮想マシン (VM) 上で実行されている SQL Server データベースを管理し、監視するための一般的なタスクについて説明します。 ジョブとアラートを監視し、データベース保護を停止し、再開し、バックアップ ジョブを実行し、バックアップから VM の登録を解除する方法を学習します。
 
@@ -113,6 +112,7 @@ SQL Database の保護を再開するには:
 * 差分バックアップ
 * ログ バックアップ
 
+コピーのみの完全バックアップにはリテンション期間を指定する必要がありますが、その他のバックアップの種類のリテンション範囲は、自動的に現在の時刻から 30 日間に設定されます。 <br/>
 詳細については、[SQL Server バックアップの種類](backup-architecture.md#sql-server-backup-types)に関するページをご覧ください。
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server インスタンスを登録解除する

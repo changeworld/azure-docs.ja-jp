@@ -9,19 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d3cea9f3bc5645aeaefc5bb376557d365681df56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994106"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630548"
 ---
 # <a name="media-services-concepts"></a>Media Services の概念
 
 このトピックでは、Azure Media Services の概念を簡単に説明し、Media Services v3 の概念と機能について詳しく説明しているページのリンクを提供します。 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。
+
+> [!NOTE]
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](developers-guide.md) のいずれかを使用します。
 
 ## <a name="cloud-upload-and-storage"></a>クラウドのアップロードとストレージ
 
@@ -100,6 +103,13 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 - [Event Grid イベントの処理](reacting-to-media-services-events.md)
 - [スキーマ](media-services-event-schemas.md)
 
+### <a name="azure-monitor"></a>Azure Monitor
+
+Azure Monitor を使用して、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視します。
+
+- [メトリックと診断ログ](media-services-metrics-diagnostic-logs.md)
+- [診断ログのスキーマ](media-services-diagnostic-logs-schema.md)
+
 ## <a name="player-clients"></a>Player クライアント
 
 Azure Media Player を使用すると、Media Services によってストリーミングされたメディア コンテンツをさまざまなブラウザーやデバイス上で再生できます。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 
@@ -108,4 +118,9 @@ Azure Media Player を使用すると、Media Services によってストリー�
 
 ## <a name="next-steps"></a>次の手順
 
-[Media Services を使用してアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
+* [リモート ファイルのエンコードとビデオのストリーミング – REST](stream-files-tutorial-with-rest.md)
+* [アップロードされたファイルのエンコードとビデオのストリーム配信 - .NET](stream-files-tutorial-with-api.md)
+* [ライブ ストリーム配信 - .NET](stream-live-tutorial-with-api.md)
+* [ビデオの分析 - .NET](analyze-videos-tutorial-with-api.md)
+* [AES-128 動的暗号化 - .NET](protect-with-aes128.md)
+* [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 

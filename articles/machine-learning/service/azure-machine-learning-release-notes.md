@@ -8,20 +8,44 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a2817501628d55d7ccc84979700ea53e4114eed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860637"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444651"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
 この記事では、Azure Machine Learning service の各リリースについて説明します。  各 SDK の詳細については、以下に関するリファレンス ドキュメントを参照してください。
 + Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-03-25"></a>2019-03-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK for Python v1.0.21
+
++ **新機能**
+  + *azureml.core.Run.create_children* メソッドにより、1 回の呼び出しで複数の子の実行を少ない待機時間で作成することができます。
+
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning Data Prep SDK v1.1.0
+
++ **重大な変更**
+  + Data Prep パッケージの概念は非推奨になり、サポートされなくなりました。 1 つのパッケージで複数のデータフローを保持する代わりに、データフローを個別に保持することができます。
+    + 攻略ガイド: [データフローのノートブックの開始と保存](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+
++ **新機能**
+  + Data Prep で特定のセマンティックの種類と一致する列を認識して、適切に分割できるようになりました。 現在サポートされているセマンティックの種類には、メール アドレス、地理的座標 (緯度と経度)、IPv4 と IPv6 のアドレス、米国の電話番号、米国の郵便番号などがあります。
+    + 攻略ガイド: [セマンティックの種類のノートブック](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + Data Prep で、2 つの数値列から結果列を生成する減算、乗算、除算、剰余の操作をサポートするようになりました。
+  + データフローで `verify_has_data()` を呼び出し、データフローが実行された場合にレコードが生成されるかどうかをチェックすることができます。
+
++ **バグの修正と機能強化**
+  + 数値列のプロファイルで、ヒストグラムに使用するビンの数を指定できるようになりました。
+  + `read_pandas_dataframe` 変換で、データフレームに文字列型またはバイト型の列名が求められるようになりました。
+  + `fill_nulls` 変換の列が入力されていない場合に値が正しく入力されないバグを修正しました。
 
 ## <a name="2019-03-11"></a>2019-03-11
 

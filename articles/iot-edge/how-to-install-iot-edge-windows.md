@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 5f421c8949efae5a2488d5bf156a5d3571401bcc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95e984f6f08af01a2ffd7b9b4e0ec598d73f4d05
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996430"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621075"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -26,7 +26,16 @@ IoT Edge ランタイムの動作については、「[Azure IoT Edge ランタ�
 この記事では、Windows x64 (AMD/Intel) システムに Azure IoT Edge ランタイムをインストールする手順を示します。 Windows のサポートは現在プレビューの段階です。
 
 > [!NOTE]
-> Windows システム上での Linux コンテナーの使用は、Azure IoT Edge に対して推奨またはサポートされている実稼働構成ではありません。 ただし、開発とテストの目的には使用できます。
+> Windows オペレーティング システムの既知の問題では、IoT Edge モジュール (プロセスから分離された Windows Nano Server コンテナー) の実行時に、電源状態がスリープおよび休止状態に移行できなくなります。 この問題は、デバイスのバッテリ寿命に影響を与えます。
+>
+> この問題を回避するには、これらの電源状態を使用する前に、コマンド `Stop-Service iotedge` を使用して実行中のすべての IoT Edge モジュールを停止します。 
+
+<!--
+> [!NOTE]
+> Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
+-->
+
+Windows システム上での Linux コンテナーの使用は、Azure IoT Edge に対して推奨またはサポートされている実稼働構成ではありません。 ただし、開発とテストの目的には使用できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -248,7 +257,7 @@ docker -H npipe:////./pipe/iotedge_moby_engine images
 
 IoT Edge のインストールを Windows デバイスから削除する場合は、管理用 PowerShell ウィンドウから次のコマンドを使用します。 このコマンドは、IoT Edge ランタイムを既存の構成と Moby エンジン データと一緒に削除します。 
 
-```PowerShell
+```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
 ```

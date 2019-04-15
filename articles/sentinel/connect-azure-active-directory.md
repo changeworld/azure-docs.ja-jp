@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: 315b18feb74862bbeca6ff8265ee003fbad48595
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242315"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575132"
 ---
 # <a name="collect-data-from-azure-active-directory"></a>Azure Active Directory からのデータの収集
 
@@ -42,12 +42,12 @@ Azure Sentinel では、[Azure Active Directory](../active-directory/fundamental
 
 2. Azure Sentinel にストリーミングするログの隣の **[接続する]** をクリックします。
 
-
+6. Azure AD アラートで Log Analytics 内の関連スキーマを使用するには、**SigninLogs** と **AuditLogs** を検索します。
 
 
 
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure AD を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化する](quickstart-get-visibility.md)方法を確認する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md) を開始する。

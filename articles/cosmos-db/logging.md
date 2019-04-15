@@ -7,18 +7,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259773"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904867"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
 1 つまたは複数の Azure Cosmos DB データベースを使い始めた後、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 この記事では、Azure プラットフォームで利用できるログの概要を示します。 [Azure Storage](https://azure.microsoft.com/services/storage/) にログを送信するための監視を目的として診断ログを有効にする方法、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にログをストリーミングする方法、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)にログをエクスポートする方法を説明します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="logs-available-in-azure"></a>Azure で利用可能なログ
 
@@ -132,7 +135,7 @@ Azure PowerShell をインストール済みで、バージョンがわからな
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使います。
@@ -140,13 +143,13 @@ Connect-AzureRmAccount
 複数のサブスクリプションがある場合は、Azure Key Vault を作成するときに使って特定のサブスクリプションを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次のコマンドを入力します。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 ログを記録する Azure Cosmos DB アカウントに関連付けられているサブスクリプションを指定するには、次のコマンドを入力します。
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -162,7 +165,7 @@ Azure PowerShell の構成方法について詳しくは、「[Azure PowerShell 
 さらに管理を簡単にするために、このチュートリアルでは、Azure Cosmos DB データベースと同じリソース グループを使います。 **ContosoResourceGroup**、**contosocosmosdblogs**、**North Central US** の各パラメーターは、適宜、実際の値に置き換えてください。
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
+$sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
 -Name contosocosmosdblogs -Type Standard_LRS -Location 'North Central US'
 ```
 
@@ -175,15 +178,15 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 Azure Cosmos DB アカウント名を **account** という変数に設定します。この **ResourceName** は、Azure Cosmos DB アカウントの名前です。
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName ContosoResourceGroup `
+$account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 -ResourceName contosocosmosdb -ResourceType "Microsoft.DocumentDb/databaseAccounts"
 ```
 
 ### <a id="enable"></a>ログの有効化
-Azure Cosmos DB のログ記録を有効にするには、新しいストレージ アカウント、Azure Cosmos DB アカウント、およびログ用に有効にするカテゴリの変数を指定して、`Set-AzureRmDiagnosticSetting` コマンドレットを使います。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
+Azure Cosmos DB のログ記録を有効にするには、新しいストレージ アカウント、Azure Cosmos DB アカウント、およびログ用に有効にするカテゴリの変数を指定して、`Set-AzDiagnosticSetting` コマンドレットを使います。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
 ```
 
 コマンドの出力は次のサンプルのようになります。
@@ -221,7 +224,7 @@ Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId 
 必要に応じて、ログのアイテム保持ポリシーを使って、古いログが自動的に削除されるように設定することもできます。 たとえば、アイテム保持ポリシーを設定するには、**-RetentionEnabled** フラグを **$true** に設定します。 90 日より古いログを自動的に削除するには、**-RetentionInDays** パラメーターを **90** に設定します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -238,7 +241,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 このコンテナー内のすべての BLOB を一覧表示するには、次のように入力します。
 
 ```powershell
-Get-AzureStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 コマンドの出力は次のサンプルのようになります。
@@ -257,7 +260,7 @@ Name              : resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/C
 /MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/CONTOSOCOSMOSDB/y=2017/m=09/d=28/h=19/m=00/PT1H.json
 ```
 
-この出力からわかるように、BLOB は次の命名規則に従います。`resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+この出力からわかるように、BLOB は次の命名規則に従います。 `resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 日付と時刻の値には UTC が使用されます。
 
@@ -273,13 +276,13 @@ New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
 次に、すべての BLOB の一覧を取得します。  
 
 ```powershell
-$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-この一覧を `Get-AzureStorageBlobContent` コマンドにパイプして、BLOB を保存先のフォルダーにダウンロードします。
+この一覧を `Get-AzStorageBlobContent` コマンドにパイプして、BLOB を保存先のフォルダーにダウンロードします。
 
 ```powershell
-$blobs | Get-AzureStorageBlobContent `
+$blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
@@ -290,27 +293,27 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 * 複数のデータベースを持っている場合に、**CONTOSOCOSMOSDB3** という名前のデータベースのみについてログをダウンロードするには、次のコマンドを使います。
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/DATABASEACCOUNTS/CONTOSOCOSMOSDB3
     ```
 
 * 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、`-Blob '*/RESOURCEGROUPS/<resource group name>/*'` コマンドを使います。
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
     -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
     ```
 * 2017 年 7 月のすべてのログをダウンロードする場合は、`-Blob '*/year=2017/m=07/*'` コマンドを使います。
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/year=2017/m=07/*'
     ```
 
 次のコマンドを実行することもできます。
 
-* データベース リソースの診断設定の状態のクエリを実行するには、`Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId` コマンドを使います。
-* データベース アカウント リソースの **DataPlaneRequests** カテゴリのログ記録を無効にするには、`Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests` コマンドを使います。
+* データベース リソースの診断設定の状態のクエリを実行するには、`Get-AzDiagnosticSetting -ResourceId $account.ResourceId` コマンドを使います。
+* データベース アカウント リソースの **DataPlaneRequests** カテゴリのログ記録を無効にするには、`Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests` コマンドを使います。
 
 
 これらの各クエリで返される BLOB は、次のコードのように、JSON BLOB 形式のテキストに格納されます。
@@ -438,14 +441,14 @@ Azure Storage と Azure Monitor ログに格納されている診断データは
 | Azure Storage のフィールドまたはプロパティ | Azure Monitor ログのプロパティ | 説明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作が発生した日時 (UTC)。 |
-| **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
-| **category** | **カテゴリ** | Azure Cosmos DB ログの場合、使用できる値は **DataPlaneRequests** のみです。 |
+| **resourceId** | **Resource** | ログが有効になっている Azure Cosmos DB アカウント。|
+| **category** | **Category** | Azure Cosmos DB ログの場合、使用できる値は **DataPlaneRequests** のみです。 |
 | **operationName** | **OperationName** | 操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
 | **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |
 | **userAgent** | **userAgent_s** | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
 | **requestResourceType** | **requestResourceType_s** | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Container、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
-| **statusCode** | **statusCode_s** | 操作の応答状態。 |
+| **StatusCode** | **statusCode_s** | 操作の応答状態。 |
 | **requestResourceId** | **ResourceId** | 要求に関連するリソース ID。 値は、実行された操作によって databaseRid、collectionRid、または documentRid を示す可能性があります。|
 | **clientIpAddress** | **clientIpAddress_s** | クライアントの IP アドレス。 |
 | **requestCharge** | **requestCharge_s** | 操作に使用された RU 数 |

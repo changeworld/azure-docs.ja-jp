@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: danlep
-ms.openlocfilehash: cdf457eefc88edcc22f1fbaab4859fbcf3b69bca
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56654645"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361287"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
@@ -35,6 +35,24 @@ Azure コンテナー レジストリでは、イメージ バージョンまた
 例については、次のセクションを参照してください。
 
 ## <a name="lock-an-image-or-repository"></a>イメージまたはリポジトリをロックする 
+
+### <a name="show-the-current-repository-attributes"></a>リポジトリの現在の属性を表示する
+リポジトリの現在の属性を表示するには、次の [az acr repository show][az-acr-repository-show] コマンドを実行します。
+
+```azurecli
+az acr repository show \
+    --name myregistry --repository myrepo
+    --output jsonc
+```
+
+### <a name="show-the-current-image-attributes"></a>現在のイメージの属性を表示する
+タグの現在の属性を表示するには、次の [az acr repository show][az-acr-repository-show] コマンドを実行します。
+
+```azurecli
+az acr repository show \
+    --name myregistry --image image:tag \
+    --output jsonc
+```
 
 ### <a name="lock-an-image-by-tag"></a>タグでイメージをロックする
 

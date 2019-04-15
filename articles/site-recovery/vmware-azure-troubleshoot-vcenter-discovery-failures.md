@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
-ms.openlocfilehash: a0707ad356e51a9e4d4f73c54085fe9736bb0752
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884470"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540807"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>vCenter の検出エラーのトラブルシューティング
 
@@ -46,8 +46,8 @@ vCenter の検出では、システム ユーザーによって構成された�
 
 この問題が発生すると、次のような状況になります。
 
-- 次のエラーのため vCenter サーバー <vCenter> に到達できません。リモート サーバーからエラーが返される:(503) Server Unavailable
-- 次のエラーのため vCenter サーバー <vCenter> に到達できません。リモート サーバーからエラーが返される:リモート サーバーに接続できません。
+- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーからエラーが返される:(503) Server Unavailable
+- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーからエラーが返される:リモート サーバーに接続できません。
 - vCenter/ESXi サーバーに接続できない。
 
 この問題を解決するには:

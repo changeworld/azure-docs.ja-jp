@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531642"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880034"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -66,7 +66,7 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります | はい |
-| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net ` です。 | はい |
+| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
 | database | データベースの名前。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、通常、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "**機関 ID**" として知られています。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、通常、[Kusto 接続文字列](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "**AAD アプリケーション クライアント ID**" として知られています。 | はい |

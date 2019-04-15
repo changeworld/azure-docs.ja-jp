@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c79747bf33e1769af5f8d3589904ba15105f216
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90bff4cd98046a42fa31d98ff00e76d7fc9ac307
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087603"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576090"
 ---
 # <a name="connect-windows-security-events"></a>Windows セキュリティ イベントの接続 
 
@@ -45,7 +45,7 @@ Windows セキュリティと Azure Sentinel を完全に統合するには、�
 1. Azure Sentinel ポータルで、**データ コレクション**を選択し、次に **[Windows セキュリティ イベント]** タイルをクリックします。 
 1. ストリーミングするデータの種類を選択します。
 1. **[Update]** をクリックします。
-
+6. Log Analytics で Windows セキュリティ イベントに関連するスキーマを使用するために、**SecurityEvent** を検索します。
 
 ## <a name="validate-connectivity"></a>接続の検証
 
@@ -55,6 +55,6 @@ Windows セキュリティと Azure Sentinel を完全に統合するには、�
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Windows セキュリティ イベントを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法に関する説明。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d62bf6c8aaf38de27594db0b51731a883a84fbe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f5ceab083077231fd856bb0f267717afdb9556d3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013504"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667057"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -52,6 +52,9 @@ ms.locfileid: "58013504"
 [sap-suse-ascs-ha-setting-ha-anf]:high-availability-guide-suse-netapp-files.md#setting-up-the-azure-netapp-files-infrastructure
 [sap-suse-ascs-ha-sap-installation]:high-availability-guide-suse.md#prepare-for-sap-netweaver-installation
 [sap-suse-ascs-ha-sap-installation-anf]:high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation
+[sap-rhel-ascs-ha]:high-availability-guide-rhel.md
+[high-availability-guide-rhel-glusterfs]:high-availability-guide-rhel-glusterfs.md
+[high-availability-guide-rhel-pacemaker]:high-availability-guide-rhel-pacemaker.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -223,6 +226,10 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 
 * ![Linux][Logo_Linux] [Azure NetApp ファイルがある SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-suse-ascs-ha-setting-ha-anf]
 
+* ![RHEL][Logo_Linux] [SAP ASCS/SCS の高可用性のための Azure インフラストラクチャの準備 - RHEL で GlusterFS を設定する][high-availability-guide-rhel-glusterfs]
+
+* ![RHEL][Logo_Linux] [SAP ASCS/SCS の高可用性のための Azure インフラストラクチャの準備 - RHEL で Pacemaker を設定する][high-availability-guide-rhel-pacemaker]
+
 ## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Azure への SAP NetWeaver 高可用性システムのインストール
 
 **概要:** ここに挙げる記事では、Azure の Windows Server フェールオーバー クラスタリング クラスターと Linux Cluster Framework における高可用性 SAP システムのインストールと構成の手順例について説明します。
@@ -236,3 +243,5 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 * ![Linux][Logo_Linux] [SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation]
 
 * ![Linux][Logo_Linux] [Azure NetApp Files がある SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation-anf]
+
+* ![RHEL][Logo_Linux] [RHEL の高可用性の構成での SAP NetWeaver ASCS/SCS のインストール][sap-rhel-ascs-ha]

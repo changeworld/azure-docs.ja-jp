@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295676"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878147"
 ---
-# <a name="manage-usage-and-costs-for-log-analytics"></a>Log Analytics の使用量とコストを管理する
+# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用状況とコストを管理する
 
 > [!NOTE]
 > この記事では、データ保有期間を設定して Log Analytics でコストを管理する方法を説明します。  関連する情報については、次の記事を参照してください。
 > - 「[Log Analytics でのデータ使用状況の分析](manage-cost-storage.md)」では、データ使用状況を分析し、アラートを作成する方法について説明します。
 > - 「[使用量と推定コストの監視](usage-estimated-costs.md)」では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。 価格モデルを変更する方法についても説明します。
 
-Log Analytics は、企業内のソースまたは Azure に展開されたソースから毎日大量のデータを収集し、インデックスを付けて、保存する処理をスケーリングおよびサポートするように設計されています。  これは組織の主要な原動力になる場合がありますが、最終的に基になる原動力はコスト効率です。 そのためには、Log Analytics ワークスペースのコストは、収集されるデータのボリュームだけでなく、選択されているプラン、および接続されたソースから生成されたデータの保持期間にも依存することを、理解しておくことが重要です。  
+Azure Monitor の Log Analytics は、企業内のソースまたは Azure にデプロイされたソースから毎日大量のデータを収集し、インデックスを付けて、保存する処理をスケーリングおよびサポートするように設計されています。  これは組織の主要な原動力になる場合がありますが、最終的に基になる原動力はコスト効率です。 そのためには、Log Analytics ワークスペースのコストは、収集されるデータのボリュームだけでなく、選択されているプラン、および接続されたソースから生成されたデータの保持期間にも依存することを、理解しておくことが重要です。  
 
 この記事では、データ ボリュームとストレージの拡大を事前に監視し、制限を定義して関連コストを制御する方法を説明します。 
 
@@ -92,7 +92,7 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
  
 1. ワークスペースの左ウィンドウから **[使用量と推定コスト]** を選びます。
 2. **[使用量と推定コスト]** ページの上部にある **[データ ボリュームの管理]** をクリックします。
-5. ウィンドウで、スライダーを移動して日数を増減し、**[OK]** をクリックします。  *無料*プランをご利用の場合は、データ保持期間を変更できません。この設定を制御するには、有料プランにアップグレードする必要があります。<br><br> ![ワークスペースのデータ保持の設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
+5. ウィンドウで、スライダーを移動して日数を増減し、**[OK]** をクリックします。  *無料*プランをご利用の場合は、データ保持期間を変更できません。この設定を制御するには、有料プランにアップグレードする必要があります。<br><br> ![ワークスペースのデータ保持設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
@@ -110,12 +110,10 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 2. ワークスペース ウィンドウで、**[全般]** の **[価格レベル]** を選択します。  
 
 3. **[価格レベル]** で価格レベルを選択し、**[選択]** をクリックします。  
-    ![選択された料金プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
+    ![選択された価格プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](usage-estimated-costs.md#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
 
-> [!NOTE]
-> ワークスペースが Automation アカウントにリンクされている場合は、"*スタンドアロン (GB 単位)*" 価格レベルを選択できるように、**Automation and Control** ソリューションをすべて削除し、Automation アカウントのリンクを解除しておく必要があります。 ワークスペース ブレードの **[全般]** で **[ソリューション]** をクリックし、ソリューションを表示して削除します。 Automation アカウントのリンクを解除するには、**[価格レベル]** ブレードで Automation アカウントの名前をクリックします。
 
 > [!NOTE]
 > [ARM による価格レベルの設定](template-workspace-configuration.md#create-a-log-analytics-workspace)と、サブスクリプションでレガシ価格モデルが使用されているか新しい価格モデルが使用されているかに関係なく ARM デプロイを確実に成功させる方法について詳しく知ることができます。 
@@ -124,7 +122,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics がデータを収集しなくなった場合のトラブルシューティング
 レガシの無料の価格レベルを使用しており、1 日に 500 MB を超えるデータを送信した場合、その日の残りはデータ収集が停止します。 1 日の制限に達したことが、Log Analytics がデータの収集を停止したり、データがないように見えたりする一般的な原因です。  データ収集が開始および停止すると、Log Analytics は Operation 型のイベントを作成します。 1 日の制限に達し、データがなくなっているかどうかを確認するには、検索で次のクエリを実行します。 
 
-`Operation | where OperationCategory == 'Data Collection Status' `
+`Operation | where OperationCategory == 'Data Collection Status'`
 
 データ収集が停止するとき、OperationStatus は [警告] です。 データ収集が開始するとき、OperationStatus は [成功] です。 次の表は、データ収集が停止する原因と、データ収集を再開するための推奨されるアクションを示しています。  
 
@@ -188,9 +186,11 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 
 コンピューターごとに取り込まれた課金可能イベントの**サイズ**を知るには、次のように `_BilledSize` プロパティ ([log-standard-properties#_billedsize.md](learn more)) を使用します。このプロパティでは、サイズはバイト単位で指定します。
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+```
 
 `_IsBillable` プロパティは、取り込まれたデータで課金が発生するかどうかを指定します ([log-standard-properties.md#_isbillable](Learn more))。
 
@@ -207,26 +207,32 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 
 特定のコンピューターにデータを送信する、課金対象のデータ型のデータ数を表示する場合は、次のコマンドを使用します。
 
-`union withsource = tt *
+```
+union withsource = tt *
 | where Computer == "computer name"
 | where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last `
+| summarize count() by tt | sort by count_ nulls last
+```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure リソース、リソース グループ、またはサブスクリプションごとのデータ ボリューム
 
 __コンピューターごとに__取り込まれた課金可能イベントの**サイズ**を取得できる Azure でホストされているノードからのデータについては、次のようにリソースへの完全パスを提供する `_ResourceId` プロパティを使用します ([log-standard-properties.md#_resourceid](learn more))。
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+```
 
 __Azure サブスクリプションごとに__取り込まれた課金可能イベントの**サイズ**を取得できる Azure でホストされているノードからのデータについては、`_ResourceId` プロパティを次のように解析します。
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+```
 
 `subscriptionId` を `resourceGroup` に変更すると、Azure リソース グループごとの課金可能な取り込まれたデータ ボリュームが表示されます。 
 
@@ -297,7 +303,8 @@ __Azure サブスクリプションごとに__取り込まれた課金可能イ�
 
 個別の Automation ノードの数を表示するには、次のクエリを使用します。
 
-` ConfigurationData 
+```
+ ConfigurationData 
  | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
  | extend lowComputer = tolower(Computer) | summarize by lowComputer 
  | join (
@@ -305,7 +312,8 @@ __Azure サブスクリプションごとに__取り込まれた課金可能イ�
        | where SCAgentChannel == "Direct"
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
- | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>収集したデータの量が予測よりも多い場合のアラートを作成する
 

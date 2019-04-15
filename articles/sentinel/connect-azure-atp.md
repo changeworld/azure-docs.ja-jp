@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 3/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 154af3988084792331db082b99cae0ae06126f1b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242175"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574945"
 ---
 # <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを収集する
 
@@ -46,9 +46,10 @@ Azure ATP がデプロイされていて、データを取り込んでいる場�
 
 2. **[接続]** をクリックします。
 
+6. Azure ATP アラートで Log Analytics 内の関連スキーマを使用するには、**SecurityAlert** を検索します。
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Advanced Threat Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化する](quickstart-get-visibility.md)方法を確認する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md) を開始する。
 

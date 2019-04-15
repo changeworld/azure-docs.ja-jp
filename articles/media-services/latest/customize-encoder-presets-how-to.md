@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: 848da2996b71b137c6112225c9bef7e93b457c7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837237"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754554"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-net"></a>.NET を使用してカスタム変換をエンコードする方法
+# <a name="how-to-encode-with-a-custom-transform---net"></a>カスタム変換を使用してエンコードする方法 - .NET
 
 Azure Media Services を使用してエンコードする場合、[ファイルのストリーム配信](stream-files-tutorial-with-api.md)に関するチュートリアルで示されている業界のベスト プラクティスに基づき、推奨される組み込みプリセットのいずれかを使用して速やかに作業を開始できます。 また、特定のシナリオやデバイス要件をターゲットとするカスタム プリセットを作成することもできます。
 

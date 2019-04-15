@@ -151,7 +151,7 @@ items:
       href: azure-ddos-best-practices.md
     - name: 境界のセキュリティ
       href: ../best-practices-network-security.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
-- name: アプリケーション
+- name: Application
   items:
   - name: PaaS
     href: security-paas-deployments.md
@@ -334,6 +334,8 @@ items:
         href: azure-security-threat-modeling-tool-releases-71510231.md
       - name: Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
         href: azure-security-threat-modeling-tool-releases-71601261.md
+      - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 4/09/2019
+        href: azure-security-threat-modeling-tool-releases-71604081.md
     - name: 軽減策
       href: azure-security-threat-modeling-tool-mitigations.md
       items:
@@ -357,9 +359,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 1fc42022f84c8aba5f6b28f1f05045080b0c3f6d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 3802b1dd5aa9293f7c32f1aabbd2cd0d100829bd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005778"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490501"

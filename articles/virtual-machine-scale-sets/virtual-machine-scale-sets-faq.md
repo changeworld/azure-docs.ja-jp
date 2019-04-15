@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999567"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541037"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -233,7 +233,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 }
 ```
 
-linuxConfiguration の要素名 | 必須 | type | 説明
+linuxConfiguration の要素名 | 必須 | Type | 説明
 --- | --- | --- | --- 
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
 path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
@@ -243,7 +243,7 @@ keyData | はい | String | Base64 でエンコードされた SSH 公開キー�
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>同じキー コンテナーから複数の証明書を追加した後に `Update-AzVmss` を実行すると、次のメッセージが表示されます。
 
->Update-AzVmss:リスト secret の中でインスタンス /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev が繰り返されていますが、これは許可されていません。"
+>Update-AzVmss:リスト secret の中でインスタンス /subscriptions/\<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev が繰り返されていますが、これは許可されていません。
 
 既存のソース コンテナーの新しいコンテナー証明書ではなく、同じコンテナーを再度追加しようとすると、このメッセージが表示されることがあります。 シークレットを二重に追加しようとすると、`Add-AzVmssSecret` コマンドが正しく動作しません。
 
@@ -303,7 +303,7 @@ CRP コンポーネントは、ユーザーのシークレットを保持しま�
 
 スケールアウト時には、この問題が発生することはありません。(単一ファブリック テナント モデルでは) Azure Service Fabric にシークレットのコピーがキャッシュされているためです。
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」によれば、証明書 URL (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>) には場所を厳密に指定する必要がありますが、それはなぜですか。
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」によれば、証明書 URL (\/\/\<コンテナーの名前>.vault.azure.net:443/secrets/\<正確な場所>) には場所を厳密に指定する必要がありますが、それはなぜですか。
 
 Azure Key Vault のドキュメントに記載されているように、Get Secret REST API は、バージョンが指定されていない場合にシークレットの最新バージョンを返します。
 

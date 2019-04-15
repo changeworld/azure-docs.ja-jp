@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4128ad53f30e74fb72f6256b78587cc222f4c282
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838716"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314452"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Device Manager サービスを使用して StorSimple アラートを表示および管理する
 
@@ -202,7 +202,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 | StorSimple サービスを開始できませんでした。 |データパス エラー |問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
 | 'Data0' で、重複する IP アドレスが検出されました。 | |システムによって、IP アドレス '10.0.0.1' の競合が検出されました。 デバイス *<device1>* のネットワーク リソース 'Data0' がオフラインになっています。 この IP アドレスが、このネットワーク内の他のエンティティによって使用されていないことを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 この問題を解決する方法については、ネットワーク管理者にお問い合わせください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
 | 'Data0' の IPv4 (または IPv6) アドレスがオフラインです。 | |IP アドレス '10.0.0.1' を使用するネットワーク リソース 'Data0'  (デバイス *<device1>* でプレフィックス長 '22') がオフラインになっています。 このインターフェイスが接続されているスイッチ ポートが動作可能であることを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 |
-| 認証サービスに接続できませんでした。 |データパス エラー |認証に使用されている URL はアクセスできません。 StorSimple デバイスに指定された URL パターンがファイアウォール規則に含まれていることを確認してください。 Azure Portal の URL パターンの詳細については、 https://aka.ms/ss-8000-network-reqs をご覧ください。 Azure Government Cloud を使用している場合は、 https://aka.ms/ss8000-gov-network-reqs の URL パターンをご覧ください。|
+| 認証サービスに接続できませんでした。 |データパス エラー |認証に使用されている URL はアクセスできません。 StorSimple デバイスに指定された URL パターンがファイアウォール規則に含まれていることを確認してください。 Azure portal の URL パターンの詳細については、https:\//aka.ms/ss-8000-network-reqs をご覧ください。 Azure Government Cloud を使用している場合は、https:\//aka.ms/ss8000-gov-network-reqs の URL パターンをご覧ください。|
 
 ### <a name="performance-alerts"></a>パフォーマンスのアラート
 

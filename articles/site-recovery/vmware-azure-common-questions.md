@@ -1,19 +1,19 @@
 ---
 title: よくある質問 - Azure Site Recovery を使用した VMware から Azure へのディザスター リカバリー | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用してオンプレミスの VMware VM の Azure へのディザスター リカバリーを設定する場合のよくある質問をまとめています
-author: mayurigupta13
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/14/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: raynew
+ms.openlocfilehash: cdb8fe5deb71c014f7e0af01d070e5004d8c9994
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901850"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418793"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -57,12 +57,12 @@ Azure Site Recovery を使用している間は、[料金計算ツール](https:
 
 * Standard ストレージ アカウント対Standard HDD マネージド ディスク
 
-    - **ASR でプロビジョニングされたストレージ ディスク**: S10
+    - **Azure Site Recovery でプロビジョニングされたストレージ ディスク**: S10
     - **課金が消費済みボリュームに対してである Standard ストレージ アカウント**: 1 か月当たり 5 ドル
     - **課金がプロビジョニング済みボリュームに対してである Standard マネージド ディスク**: 1 か月当たり 5.89 ドル
 
 * Premium ストレージ アカウント対Premium SSD マネージド ディスク 
-    - **ASR でプロビジョニングされたストレージ ディスク**: P10
+    - **Azure Site Recovery でプロビジョニングされたストレージ ディスク**: P10
     - **課金がプロビジョニング済みボリュームに対してである Premium ストレージ アカウント**: 1 か月当たり 17.92 ドル
     - **課金がプロビジョニング済みボリュームに対してである Premium マネージド ディスク**: 1 か月当たり 17.92 ドル
 
@@ -166,6 +166,10 @@ Site Recovery は、パブリック エンドポイントまたは ExpressRoute 
 
 Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage のパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。
 
+### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Riverbed SteelHeads をレプリケーションに使用できますか?
+
+Microsoft のパートナーである Riverbed は、Azure Site Recovery の使用に関する詳細なガイダンスを提供しています。 Riverbed の[ソリューション ガイド](https://community.riverbed.com/s/article/DOC-4627)を参照してください。
+
 ### <a name="what-are-the-replicated-vm-requirements"></a>レプリケートされる VM にはどのような要件がありますか?
 
 レプリケーションの場合、VMware VM はサポートされているオペレーティング システムを実行している必要があります。 さらに、VM は Azure VM に対する要件を満たす必要があります。 サポート マトリックスについて詳しくは、[こちら](vmware-physical-azure-support-matrix.md##replicated-machines)をご覧ください。
@@ -199,7 +203,7 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 Azure への VMware のレプリケーションでは、ディスクのサイズを変更できます。 新しいディスクを追加する場合は、ディスクを追加し、VM の保護を再度有効にする必要があります。
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい Vcenter に移行できますか?
-いいえ、Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい Vcenter を使用して ASR を設定し、マシンのレプリケーションを有効にする必要があります。
+いいえ、Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい Vcenter を使用して Azure Site Recovery を設定し、マシンのレプリケーションを有効にする必要があります。
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>(Azure Storage ファイアウォールを使用して) Vnet が構成されているキャッシュ/ターゲット ストレージ アカウントにレプリケートすることはできますか?
 いいえ、Azure Site Recovery では、Vnet 上のストレージへのレプリケーションはサポートされていません。
@@ -271,7 +275,7 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 インストーラーは、構成サーバーの **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** フォルダーにあります。
 
 ## <a name="how-do-i-install-the-mobility-service"></a>モビリティ サービスはどのようにしてインストールしますか?
-[プッシュ インストール](vmware-azure-install-mobility-service.md)を使うか、UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-install-manual.md)を使って、レプリケートする各 VM にインストールします。 または、[System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使って、デプロイすることもできます。
+[プッシュ インストール](vmware-physical-mobility-service-overview.md#push-installation)を使うか、UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)を使って、レプリケートする各 VM にインストールします。 または、[System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使って、デプロイすることもできます。
 
 
 

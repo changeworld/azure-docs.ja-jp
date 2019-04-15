@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008907"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339008"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor の動的しきい値を使用したメトリック アラート (パブリック プレビュー)
 
@@ -83,7 +83,7 @@ ms.locfileid: "57008907"
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>アラートをトリガーするためにどれくらいのデータが必要ですか。
 
-動的なしきい値では、アラートをトリガーする前に正確なしきい値を確保するために少なくとも 3 日分のデータが必要です。
+新しいリソースがある、またはメトリック データが不足している場合、しきい値の精度を保つため、データが利用可能になる 3 日前まで動的しきい値ではアラートがトリガーされません。
 
 ## <a name="dynamic-thresholds-best-practices"></a>動的しきい値のベスト プラクティス
 

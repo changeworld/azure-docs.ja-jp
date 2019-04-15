@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f3bb6fa93a96adcd2c1995b6874aa0b36b2ce320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884525"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892468"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
 
@@ -29,7 +29,7 @@ Azure SQL Database は、さまざまな汎用アプリケーションに対し�
 次のようなケースで Azure SQL Database のマルチモデル機能の使用を検討します。
 - NoSQL モデルに適した情報または構造があるが、別個の NoSQL データベースを使用したくない。
 - データの多くがリレーショナル モデルに適しており、データの一部を NoSQL スタイルでモデル化する必要がある。
-- 豊かな Transact-SQL 言語を活用してリレーショナル データと NoSQL データの両方でクエリと分析を実行し、SQL 言語を使用できるさまざまなツールやアプリケーションに Transact-SQL 言語を統合したい。
+- 優れた Transact-SQL 言語を活用してリレーショナル データと NoSQL データの両方に対してクエリと分析を実行し、SQL 言語を使用できるさまざまなツールやアプリケーションに Transact-SQL 言語を統合したい。
 - [インメモリ テクノロジー](sql-database-in-memory.md)などのデータベース機能を適用して NoSQL データ構造の分析や処理のパフォーマンスを改善し、[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)や[読み取り可能レプリカ](sql-database-read-scale-out.md)を使用して、データのコピーを別の場所に作成し、プライマリ データベースから一部の分析ワークロードをオフロードしたい。
 
 ## <a name="overview"></a>概要
@@ -140,7 +140,7 @@ CREATE TABLE Collection (
 ## <a name="next-steps"></a>次の手順
 Azure SQL Database のマルチモデル機能は、Azure SQL Database と SQL Server の間で共有される、SQL Server データベース エンジンのコア機能でもあります。 これらの機能の詳細については、次の SQL リレーショナル データベース ドキュメントのページを参照してください。
 
-* [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
+* [グラフ処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
 * [JSON データ](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
 * [空間サポート](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
 * [XML データ](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server)

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 03/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 80577b4585a6c9e4ec83a8f21b358b7609d85268
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081255"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521094"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -49,7 +49,7 @@ ms.locfileid: "58081255"
 
 ## <a name="services-that-can-be-moved"></a>移動可能なサービス
 
-次のリストは、新しいリソース グループとサブスクリプションに移動させることのできる Azure サービスの概要を示しています。 詳しくは、[リソースの操作のサポート移動](move-support-resources.md)を参照してください。
+次のリストは、新しいリソース グループとサブスクリプションに移動させることのできる Azure サービスの概要を示しています。 移動をサポートしているリソース タイプのリストは、「[リソースの操作のサポートの移動](move-support-resources.md)」を参照してください。
 
 * Analysis Services
 * API Management
@@ -104,6 +104,7 @@ ms.locfileid: "58081255"
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
 * Recovery Services コンテナー - [プレビュー](#recovery-services-limitations)に登録します。
+* SAP HANA on Azure
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
 * Service Bus
@@ -143,10 +144,9 @@ ms.locfileid: "58081255"
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
-* Lab Services - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
+* Lab Services のクラスルーム ラボを、新しいリソース グループまたはサブスクリプションに移動することはできません。 DevTest Labs は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Managed Applications
 * Microsoft Genomics
-* SAP HANA on Azure
 * セキュリティ
 * Site Recovery
 * StorSimple デバイス マネージャー

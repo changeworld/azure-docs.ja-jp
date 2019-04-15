@@ -1,5 +1,5 @@
 ---
-title: Azure AD SSPR と MFA のための結合された登録のトラブルシューティングを行う (プレビュー)
+title: Azure AD SSPR と MFA のための統合された登録のトラブルシューティング (プレビュー) - Azure Active Directory
 description: Azure AD Multi-Factor Authentication とパスワード リセットのセルフサービスの結合された登録のトラブルシューティングを行う (プレビュー)
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b247a733c6874b023d3dc8114b0538e422baccfd
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: d926f7312b62e788289939dfd81c236a33503b43
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589372"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370467"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>結合されたセキュリティ情報の登録のトラブルシューティング (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "56589372"
 
 結合された登録について記録されたイベントは、Azure AD 監査ログの "認証方法" カテゴリに分類されます。
 
-![ディレクトリ内の新しいユーザーに関するいくかのセキュリティ情報の登録イベントを示す、Azure AD 監査ログ インターフェイス](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![登録イベントを示している Azure AD の監査ログインターフェイス](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 結合された登録で生成されるすべての監査イベントを以下にリストします。
 
@@ -162,4 +162,4 @@ PowerShell ウィンドウで、強調表示されている場所を更新して
 
 ## <a name="next-steps"></a>次の手順
 
-[パスワード リセットのセルフサービスと Azure Multi-Factor Authentication の結合された登録のパブリック プレビューについてさらに学習する](concept-registration-mfa-sspr-combined.md)
+* [パスワード リセットのセルフサービスと Azure Multi-Factor Authentication の結合された登録のパブリック プレビューについてさらに学習する](concept-registration-mfa-sspr-combined.md)

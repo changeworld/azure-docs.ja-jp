@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c9e6cc68cbd629642849d323d4271722f3232aa3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9245d4c01816d26e262b1c8bd35015e2a6a9558c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824937"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650744"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI を使用した Azure Resource Manager リソース グループの管理
 
@@ -82,6 +82,10 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 ## <a name="deploy-a-resource-group-and-resources"></a>リソース グループとリソースをデプロイする
 
 Resource Manager テンプレートを使用して、リソース グループを作成し、そのグループにリソースをデプロイできます。 詳しくは、「[リソース グループを作成してリソースをデプロイする](./deploy-to-subscription.md#create-resource-group-and-deploy-resources)」をご覧ください。
+
+## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
+
+この機能は、"*エラー時のロールバック*" とも呼ばれます。 詳細については、「[デプロイに失敗したときに再デプロイする](./resource-group-template-deploy-cli.md#redeploy-when-deployment-fails)」を参照してください。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>別のリソース グループまたはサブスクリプションに移動する
 

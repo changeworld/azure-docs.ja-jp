@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013097"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312701"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー アプリケーションへのサインインに関する問題
 
@@ -33,7 +33,7 @@ ms.locfileid: "58013097"
 
 ## <a name="application-not-found-in-directory"></a>アプリケーションがディレクトリ内に見つからない
 
-*エラー AADSTS70001:識別子 'https://contoso.com' を持つアプリケーションがディレクトリに見つかりませんでした*。
+*エラー AADSTS70001: 識別子 'https:\//contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
 
 **考えられる原因**
 
@@ -63,7 +63,7 @@ SAML 要求内の `Issuer` 属性が Azure AD で構成された識別子の値�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない。
 
-*エラー AADSTS50011:応答アドレス 'https://contoso.com' が、アプリケーション用に構成された応答アドレスと一致しません*
+*エラー AADSTS50011: 応答アドレス 'https:\//contoso.com' は、アプリケーションに対して構成された応答アドレスと一致しません*。
 
 **考えられる原因**
 

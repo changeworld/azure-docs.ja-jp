@@ -6,19 +6,22 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/26/2019
+ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902248"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762941"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
 Start/Stop VMs during off-hours ソリューションでは、ユーザー定義のスケジュールで Azure Virtual Machines を起動および停止し、Azure Monitor ログによって分析情報を提供して、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用することで必要に応じて電子メールを送信します。 ほとんどのシナリオで Azure Resource Manager とクラシック VM の両方がサポートされます。
+
+> [!NOTE]
+> Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 これは、Start/Stop VMs during off-hours ソリューションの実行に使用する Automation アカウントのみに影響します。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」で説明しているように、ご使用の他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
 このソリューションは、VM のコストを最適化する必要があるユーザー向けに、分散型の低コストなオートメーション オプションを提供します。 このソリューションでは次のことが可能です。
 
@@ -378,4 +381,4 @@ Azure Automation アカウント コンポーネントを保持しない場合�
 
 - 各種検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
 - Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
-- Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページをご覧ください。
+- Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページを参照してください。

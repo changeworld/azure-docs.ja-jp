@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e43f7e53242c0e9dbdc3390a3b1ff94050a34dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000273"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311018"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの読み込みと読み取り
 
@@ -225,7 +225,7 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-| |ProductID|Name|ProductNumber|色|StandardCost|ListPrice|Size|Weight|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
+| |ProductID|名前|ProductNumber|色|StandardCost|ListPrice|Size|Weight|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
 |-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
 |0|680|HL Road Frame - Black, 58|FR-R92B-58|黒|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|なし|なし|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000+00:00|
 |1|706|HL Road Frame - Red, 58|FR-R92R-58|赤|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|なし|なし|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000+00:00|
@@ -291,7 +291,7 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 
 ### <a name="acquire-an-oauth-access-token"></a>OAuth アクセス トークンを取得する
 
-MSFT テナント上で認証コンテキストを作成し、OAuth アクセス トークンを取得するには、`adal` パッケージ (`pip install adal`) を使用します。 ADLS の場合、トークン要求のリソースは、他の多くの Azure リソースとは異なり、'https://datalake.azure.net' 用でなければなりません。
+MSFT テナント上で認証コンテキストを作成し、OAuth アクセス トークンを取得するには、`adal` パッケージ (`pip install adal`) を使用します。 ADLS の場合、トークン要求のリソースは、他の多くの Azure リソースとは異なり、'https:\//datalake.azure.net' 用でなければなりません。
 
 ```python
 import adal

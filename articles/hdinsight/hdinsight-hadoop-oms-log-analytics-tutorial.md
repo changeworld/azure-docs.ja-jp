@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: b7e0dba70d7f3a201c5f3491f0bc906977fbf229
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 399a6bcb6e0bfd0edaddca471ba2c8e0802d3394
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886453"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904782"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
-Azure Monitor ログを有効にして HDInsight で Hadoop クラスターの操作を監視する方法と、HDInisght 監視ソリューション追加する方法を説明します。
+Azure Monitor ログを有効にして HDInsight で Hadoop クラスターの操作を監視する方法と、HDInsight 監視ソリューションを追加する方法を説明します。
 
 [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、可用性やパフォーマンスの維持を目的としてクラウド環境とオンプレミス環境を監視する Azure Monitor のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 

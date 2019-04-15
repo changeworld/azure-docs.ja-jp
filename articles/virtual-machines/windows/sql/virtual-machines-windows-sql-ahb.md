@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 66e94ed4f68ed43891ad3e81bd66cdc57799d204
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc3e2955049188b0794367d5391762f5eb50b1c0
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117899"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850194"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法
 このアーティクルでは、新しい SQL VM リソース プロバイダーである、**Microsoft.SqlVirtualMachine** を使用して Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法を説明します。 SQL Server をホストする仮想マシン (VM) には、従量課金制とライセンス持ち込み (BYOL) の 2 種類のライセンス モデルがあります。 現在では、PowerShell または Azure CLI を使用して、SQL Server VM でどちらのライセンス モデルを使用するかを変更できます。 
@@ -31,11 +31,14 @@ ms.locfileid: "58117899"
 
 2 種類のライセンスモデル間の切り替えによる**ダウンタイム**および VM の再起動は、**追加コスト**は発生せず (実際には、AHB の有効化によるコスト*削減*)、**ただちに有効となります**。 
 
-  >[!NOTE]
-  > - 現在、ライセンス モデルの変換は、従量課金制の SQL Server VM イメージで始めた場合にのみ可能です。 ポータルからライセンス持ち込みイメージで始めた場合は、そのイメージを従量課金制に変換することはできません。
-  > - CSP のお客様は、最初に従量課金制の VM をデプロイした後、それをライセンス持ち込みに変換することによって、Azure ハイブリッド特典を利用できます。 
-  > - 現在、この機能はパブリック クラウド インストールでのみ有効です。
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
+## <a name="remarks"></a>解説
+
+ - 現在、ライセンス モデルの変換は、従量課金制の SQL Server VM イメージで始めた場合にのみ可能です。 ポータルからライセンス持ち込みイメージで始めた場合は、そのイメージを従量課金制に変換することはできません。
+ - CSP のお客様は、最初に従量課金制の VM をデプロイした後、それをライセンス持ち込みに変換することによって、Azure ハイブリッド特典を利用できます。 
+ - 現在、この機能はパブリック クラウド インストールでのみ有効です。
+ - カスタム SQL Server VM イメージをリソース プロバイダーに登録するとき、ライセンスの種類を 'AHUB' として指定します。 ライセンスの種類を空白のままにするか、'PAYG' を指定すると、登録は失敗します。 
 
 ## <a name="prerequisites"></a>前提条件
 SQL VM リソース プロバイダーを利用するには、SQL IaaS 拡張機能が必要です。 そのため、SQL VM リソース プロバイダーの利用を続けるには、以下が必要です。
@@ -44,14 +47,14 @@ SQL VM リソース プロバイダーを利用するには、SQL IaaS 拡張機
 - [SQL IaaS 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)がインストールされている*従量課金制*の [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 
 
 
-## <a name="register-sql-resource-provider-with-your-subscription"></a>SQL リソース プロバイダーを自分のサブスクリプションに登録する 
+## <a name="register-sql-resource-provider-to-your-subscription"></a>SQL リソース プロバイダーをサブスクリプションに登録する 
 
 ライセンス モデル間の切り替えを可能とする能力は、新しい SQL VM リソース プロバイダー (Microsoft.SqlVirtualMachine) によって提供される機能です。 2018 年 12 月以降にデプロイされた SQL Server VM は、自動的に新しいリソース プロバイダーに登録します。 ただし、この日付より前にデプロイされた既存の VM は、リソース プロバイダーに手動で登録しないと、ライセンス モデルの切り替えが可能になりません。 
 
   > [!NOTE] 
   > SQL Server VM リソースを削除する場合は、イメージのハード コーディングされたライセンス設定に戻ります。 
 
-自分の SQL Server VM を SQL リソース プロバイダーに登録するには、リソース プロバイダーを自分のサブスクリプションに登録する必要があります。 これは、Azure CLI、PowerShell、または Azure portal を使用して行うことができます。 
+自分の SQL Server VM を SQL リソース プロバイダーに登録するには、リソース プロバイダーを自分のサブスクリプションに登録する必要があります。 これは Azure portal、Azure CLI、または PowerShell を使用して行うことができます。 
 
 ### <a name="with-the-azure-portal"></a>Azure Portal の場合
 以下の手順では、Azure portal を使用して SQL リソース プロバイダーを Azure サブスクリプションに登録します。 
@@ -67,8 +70,8 @@ SQL VM リソース プロバイダーを利用するには、SQL IaaS 拡張機
 ### <a name="with-azure-cli"></a>Azure CLI の場合
 次のコード スニペットでは、SQL リソース プロバイダーが自分の Azure サブスクリプションに登録されます。 
 
-```cli
-# Register the new SQL resource provider for your subscription 
+```azurecli
+# Register the new SQL resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
@@ -76,7 +79,7 @@ az provider register --namespace Microsoft.SqlVirtualMachine
 次のコード スニペットでは、SQL リソース プロバイダーが自分の Azure サブスクリプションに登録されます。 
 
 ```powershell
-# Register the new SQL resource provider for your subscription
+# Register the new SQL resource provider to your subscription
 Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 
@@ -88,7 +91,7 @@ SQL リソース プロバイダーをサブスクリプションに登録した
 
 Azure CLI で次のコード スニペットを使用して、SQL Server VM を登録します。 
 
-```cli
+```azurecli
 # Register your existing SQL Server VM with the new resource provider
 az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
 ```
@@ -96,22 +99,20 @@ az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
 ### <a name="with-powershell"></a>PowerShell の場合
 
 PowerShell で次のコード スニペットを使用して、SQL Server VM を登録します。 
+
 ```powershell
 # Register your existing SQL Server VM with the new resource provider
-# example: $vm=Get-AzureRmVm -ResourceGroupName AHBTest -Name AHBTest
-$vm=Get-AzureRmVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
-New-AzureRmResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
+# example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
+$vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
 ```
 
-
 ## <a name="change-licensing-model"></a>ライセンス モデルを変更する
+
 SQL Server VM をリソース プロバイダーに登録したら、Azure portal、Azure CLI、または PowerShell を使用してライセンス モデルを変更できます。 
 
-
-  >[!NOTE]
-  >  現在、ライセンス モデルの変換は、従量課金制の SQL Server VM イメージで始めた場合にのみ可能です。 ポータルからライセンス持ち込みイメージで始めた場合は、そのイメージを従量課金制に変換することはできません。 
-
 ### <a name="with-the-azure-portal"></a>Azure Portal の場合
+
 ライセンス モデルをポータルから直接変更できます。 
 
 1. [Azure portal](https://portal.azure.com) 内で SQL Server VM に移動します。 
@@ -124,30 +125,35 @@ SQL Server VM をリソース プロバイダーに登録したら、Azure porta
   > このオプションは、ライセンス持ち込みイメージには使用できません。 
 
 ### <a name="with-azure-cli"></a>Azure CLI の場合
+
 Azure CLI を使用して、ライセンス モデルを変更することができます。  
 
 次のコード スニペットでは、従量課金制ライセンス モデルを BYOL (Azure ハイブリッド特典の使用) に切り替えます。
+
 ```azurecli
-# Switch  your SQL Server VM license from pay-as-you-go to bring-your-own
+# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 # example: az sql vm update -n AHBTest -g AHBTest --license-type AHUB
 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
 次のコード スニペットでは、BYOL モデルを従量課金制に切り替えます。 
+
 ```azurecli
-# Switch  your SQL Server VM license from bring-your-own to pay-as-you-go
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 # example: az sql vm update -n AHBTest -g AHBTest --license-type PAYG
 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
 ### <a name="with-powershell"></a>PowerShell の場合 
+
 PowerShell を使用してライセンス モデルを変更できます。 
 
 次のコード スニペットでは、従量課金制ライセンス モデルを BYOL (Azure ハイブリッド特典の使用) に切り替えます。 
+
 ```PowerShell
-# Switch  your SQL Server VM license from pay-as-you-go to bring-your-own
+# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
@@ -160,8 +166,9 @@ $SqlVm | Set-AzResource -Force
 ```
 
 次のコード スニペットでは、BYOL モデルを従量課金制に切り替えます。
+
 ```PowerShell
-# Switch  your SQL Server VM license from bring-your-own to pay-as-you-go
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
@@ -178,7 +185,7 @@ $SqlVm | Set-AzResource -Force
 
 次のコード スニペットを使用すると、SQL Server VM の現在のライセンス モデルを表示できます。 
 
-```PowerShell
+```powershell
 # View current licensing model for your SQL Server VM
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 
@@ -204,7 +211,7 @@ SQL IaaS 拡張機能は、SQL Server VM を SQL VM リソース プロバイダ
 `Set-AzResource : Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
 
 このエラーを解決するには、ライセンス モデルを切り替えるときに、前に説明した PowerShell コード スニペットの以下の行のコメントを解除します。 
-```PowerShell
+```powershell
 # the following code snippet is necessary if using Azure Powershell version > 4
 $SqlVm.Kind= "LicenseChange"
 $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
@@ -213,12 +220,12 @@ $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
 
 Azure PowerShell のバージョンを確認するには、次のコードを使用します。
 
-```PowerShell
+```powershell
 Get-Module -ListAvailable -Name Azure -Refresh
 ```
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>リソース グループ '<resource-group>' にリソース 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/<resource-group>' が見つかりませんでした。 このオブジェクトにプロパティ 'sqlServerLicenseType' が見つかりません。 プロパティが存在し、設定可能であることを確認してください。
-このエラーは、SQL Server VM が SQL リソース プロバイダーに登録されていない場合に発生します。 リソース プロバイダーを[サブスクリプション](#register-sql-resource-provider-with-your-subscription)に登録した後、SQL Server VM を SQL [リソース プロバイダー](#register-sql-server-vm-with-sql-resource-provider)に登録する必要があります。 
+このエラーは、SQL Server VM で SQL リソース プロバイダーに登録されていないライセンス モデルを変更しようとしたときに発生します。 リソース プロバイダーを[サブスクリプション](#register-sql-resource-provider-to-your-subscription)に登録した後、SQL Server VM を SQL [リソース プロバイダー](#register-sql-server-vm-with-sql-resource-provider)に登録する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 

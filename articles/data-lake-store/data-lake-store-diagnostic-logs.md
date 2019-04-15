@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 の診断ログの表示 | Microsoft Docs
 description: 'Azure Data Lake Storage Gen1 の診断ログを設定し、それにアクセスする方法について説明します。 '
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: a0bb320abb31b38461102e0e9a062ea0c2af51fb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.author: twooley
+ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959580"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877960"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -81,9 +81,9 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
    
     ![診断ログの表示](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "診断ログの表示")
    
-    たとえば、監査ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    たとえば、監査ログへの完全パスは以下のようになります。 `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    同様に、要求ログへの完全パスは `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json` のようになります。
+    同様に、要求ログへの完全パスは以下のようになります。 `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>ログ データの構造について
 監査ログと要求ログは JSON 形式で作成されます。 このセクションでは、要求ログと監査ログの JSON 構造を確認します。
@@ -113,7 +113,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -126,7 +126,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
 | Path |String |操作が実行されたパス |
@@ -160,7 +160,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
@@ -173,7 +173,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | StreamName |String |操作が実行されたパス |
 

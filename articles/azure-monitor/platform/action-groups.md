@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/29/2019
+ms.date: 3/26/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 29db8c8b51082016d413c66c6abfdb1c518c9329
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 695a2ff827fc5514c3a32364026bc9d47c8a2121
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117967"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500315"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -101,6 +101,8 @@ Azure Resource Manager テンプレートを使用したアクション グル�
  - 13.106.38.148
  - 13.106.57.196
  - 52.244.68.117
+ - 51.4.138.199
+ - 51.5.148.86
 
 これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視するサービス正常性アラートを構成することをお勧めします。
 

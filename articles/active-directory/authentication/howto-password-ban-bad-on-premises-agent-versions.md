@@ -1,5 +1,5 @@
 ---
-title: オンプレミスの Azure AD パスワード保護エージェントのバージョンのリリース履歴
+title: オンプレミスの Azure AD パスワード保護エージェントのバージョンのリリース履歴 - Azure Active Directory
 description: バージョンのリリースと動作の変更履歴に関するドキュメント
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284801"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861864"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD パスワード保護エージェントのバージョン履歴
+
+## <a name="121250"></a>1.2.125.0
+
+リリース日: 2019 年 3 月 22 日
+
+* イベント ログ メッセージ内の軽度な誤りが修正されます
+* EULA の契約が最終的な一般提供バージョンに更新されます
+
+> [!NOTE]
+> ビルド 1.2.125.0 は一般提供用のビルドです。 この製品に関するフィードバックをお寄せくださったすべての方に重ねて感謝申し上げます。
 
 ## <a name="121160"></a>1.2.116.0
 

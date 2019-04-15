@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092550"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905755"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -124,11 +124,11 @@ Windows を実行しているコンピューターに Docker エンジンをイ�
 
 Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]** > **[コンピューター]** をクリックして、**ワークスペース ID** と**主キー**を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
 
-**CoreOS を除くすべての Linux コンテナー ホスト**
+**CoreOS を除くすべての Linux コンテナー ホストの場合:**
 
 - Log Analytics エージェント for Linux のインストール方法に関する詳細と手順は、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関する記事をご覧ください。
 
-**CoreOS を含むすべての Linux コンテナー ホスト**
+**CoreOS を含むすべての Linux コンテナー ホストの場合:**
 
 監視するコンテナーを起動します。 次の例に変更を加えて使用してください。
 
@@ -136,7 +136,7 @@ Docker をインストールした後で、コンテナー ホストの次の設
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
-**CoreOS を含むすべての Azure Government Linux コンテナー ホスト**
+**CoreOS を含むすべての Azure Government Linux コンテナー ホストの場合:**
 
 監視するコンテナーを起動します。 次の例に変更を加えて使用してください。
 
@@ -365,7 +365,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
         KEY:    88 bytes
         ```
 
-    5. ``` sudo kubectl create -f omsagent-ds-secrets.yaml ``` を実行して、omsagent daemon-set を作成します。
+    5. 次を実行して、omsagent daemon-set を作成します。 ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. 次のように、Log Analytics エージェントの DaemonSet がすでに起動していることを確認します。
 
@@ -409,7 +409,7 @@ Windows Kubernetes の場合は､スクリプトを使用して、ワークス�
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. ``` kubectl create -f omsagentsecret.yaml ``` を実行して、omsagent daemon-set を作成します。
+    3. 次を実行して、omsagent daemon-set を作成します。 ```kubectl create -f omsagentsecret.yaml```
     4. 確認するには、次のコマンドを実行します。
 
         ```
@@ -436,7 +436,7 @@ Windows Kubernetes の場合は､スクリプトを使用して、ワークス�
         KEY:    88 bytes
         ```
 
-    5. ```kubectl create -f ws-omsagent-de-secrets.yaml``` を実行して、omsagent daemon-set を作成します。
+    5. 次を実行して、omsagent daemon-set を作成します。 ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. 次のように、Log Analytics エージェントの DaemonSet がすでに起動していることを確認します。
 
@@ -451,7 +451,7 @@ Windows Kubernetes の場合は､スクリプトを使用して、ワークス�
 #### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする
 Helm を使用して Linux Kubernetes 環境内に Log Analytics エージェントをデプロイするには、次の手順を実行します。
 
-1. ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms``` を実行して、omsagent daemon-set を作成します。
+1. 次を実行して、omsagent daemon-set を作成します。 ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. 結果は次のようになります。
 
     ```
@@ -530,7 +530,7 @@ Azure ポータルから *[ソリューション ギャラリー]* に移動し�
 
 データは、次のエージェントの種類によって 3 分ごとに収集されます。
 
-- [Log Analytics エージェント for Linux](../../azure-monitor/learn/quick-collect-linux-computer.md)
+- [Linux 用 Log Analytics エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md)
 - [Windows エージェント](../../azure-monitor/platform/agent-windows.md)
 - [Log Analytics VM 拡張機能](../../azure-monitor/learn/quick-collect-azurevm.md)
 
@@ -625,7 +625,7 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 
 
 ### <a name="to-query-logs-for-container-data"></a>コンテナー データのログをクエリするには
-* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
+* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、次を検索します。 `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Ubuntu コンテナーの検索](./media/containers/search-ubuntu.png)
 
   結果内の任意の行を展開すると、そのコンテナーの詳細が表示されます。

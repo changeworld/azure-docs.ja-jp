@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096777"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517268"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに関連付けられているコストを追跡する
 この記事では、ラボのコストを追跡する方法について説明します。 ラボの現在のカレンダー月の推定コスト傾向を表示する方法を紹介します。 また、ラボのリソースごとの過去 1 か月間のコストを表示する方法も紹介します。
@@ -71,7 +71,7 @@ DevTest Labs を使用して支出目標を設定することで、コストの�
    - **目標コスト**を指定します。 たとえば、定義した期間にこのラボで支出が予定されている金額を指定します。
    - レポートされるしきい値を有効にするか無効にするかを選択します。指定した**目標コスト**の最大 125% まで、25% 刻みで増やして設定できます。
       - **通知**: しきい値に達すると、指定した webhook URL により通知されます。
-      - **グラフ上のプロット**: しきい値に達すると、「[月間推定コスト傾向グラフを表示する](#viewing-the-monthly-estimated-cost-trend-chart)」での説明のとおり、結果がコスト傾向グラフ上にプロットされ、確認できるようになります。
+      - **グラフ上のプロット**: しきい値に達すると、「月間推定コスト傾向グラフを表示する」での説明のとおり、結果がコスト傾向グラフ上にプロットされ、確認できるようになります。
    - しきい値に達したときに**通知**されるように選択した場合、webhook の URL を指定する必要があります。 [コストの統合] 領域で、**[ここをクリックして統合を追加します]** をクリックします。 [通知の構成] ウィンドウで **webhook の URL** を入力し、**[OK]** を選択します。
 
        ![[通知の構成] ウィンドウ](./media/devtest-lab-configure-cost-management/configure-notification.png)

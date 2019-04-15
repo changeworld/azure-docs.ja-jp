@@ -286,11 +286,11 @@ items:
         href: quickstart-v2-uwp.md
       - name: Windows デスクトップ .NET
         href: quickstart-v2-windows-desktop.md
+    - name: デーモン アプリ
+      items:
       - name: .NET Core コンソール (デーモン)
         href: quickstart-v2-netcore-daemon.md
-    - name: サービス間
-      items:
-      - name: ASP .NET
+      - name: ASP.NET デーモン Web アプリ
         href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
   - name: チュートリアル
     items:
@@ -326,19 +326,20 @@ items:
         href: authentication-scenarios.md
       - name: OAuth 2.0 と OpenID Connect プロトコル
         href: active-directory-v2-protocols.md
-        items:
-        - name: OpenID Connect
-          href: v2-protocols-oidc.md
-        - name: OAuth 2.0 の暗黙的な許可のフロー
-          href: v2-oauth2-implicit-grant-flow.md
-        - name: OAuth 2.0 認証コード付与
-          href: v2-oauth2-auth-code-flow.md
-        - name: OAuth 2.0 の On-Behalf-Of フロー
-          href: v2-oauth2-on-behalf-of-flow.md
-        - name: OAuth 2.0 クライアント資格情報の付与
-          href: v2-oauth2-client-creds-grant-flow.md
-        - name: OAuth 2.0 リソース所有者パスワード資格情報の付与
-          href: v2-oauth-ropc.md
+      - name: OpenID Connect
+        href: v2-protocols-oidc.md
+      - name: OAuth 2.0 の暗黙的な許可のフロー
+        href: v2-oauth2-implicit-grant-flow.md
+      - name: OAuth 2.0 認証コード付与
+        href: v2-oauth2-auth-code-flow.md
+      - name: OAuth 2.0 の On-Behalf-Of フロー
+        href: v2-oauth2-on-behalf-of-flow.md
+      - name: OAuth 2.0 クライアント資格情報の付与
+        href: v2-oauth2-client-creds-grant-flow.md
+      - name: OAuth 2.0 デバイス コード フロー
+        href: v2-oauth2-device-code.md
+      - name: OAuth 2.0 リソース所有者パスワード資格情報の付与
+        href: v2-oauth-ropc.md
       - name: 署名キーのロールオーバー
         href: active-directory-signing-key-rollover.md
       - name: ID トークン
@@ -394,12 +395,10 @@ items:
         href: howto-add-app-roles-in-azure-ad-apps.md
       - name: ブランド化ガイドライン
         href: howto-add-branding-in-azure-ad-apps.md
+      - name: 発行元ドメイン
+        href: howto-configure-publisher-domain.md
       - name: サービス利用規約とプライバシーに関する声明
         href: howto-add-terms-of-service-privacy-statement.md
-      - name: Java
-        items:
-        - name: Java Web アプリをセキュリティで保護する
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?toc=/java/azure/toc.json&bc=/java/azure/breadcrumb/toc.json
     - name: Visual Studio を使用する
       items:
       - name: Active Directory 接続済みサービスの使用
@@ -419,8 +418,8 @@ items:
     - name: 認証ライブラリ
       displayName: MSAL
       href: reference-v2-libraries.md
-    - name: Microsoft Graph 内の Azure AD API
-      href: https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview
+    - name: Microsoft Graph の ID およびアクセスに関する API
+      href: https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta
     - name: アプリケーション マニフェスト
       href: reference-app-manifest.md
     - name: 認証と承認エラー コード
@@ -436,6 +435,8 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=security-identity
   - name: Azure AD BLOG
     href: https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory
+  - name: Microsoft の ID プラットフォーム開発者ブログ
+    href: https://developer.microsoft.com/en-us/identity/blogs/
   - name: "\"Microsoft アカウントでのサインイン\" を試してみる"
     href: https://azure.microsoft.com/develop/identity/signin/
   - name: ヘルプの表示
@@ -443,9 +444,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure リソースのマネージド ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 974758ddcaa4d855b395e982b6bc9a3b0b72e130
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9283d643717d4c516fb615a9ff5ec132a11e754c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886609"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500432"

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - メトリックとログ | Microsoft Docs
-description: この記事では、Azure Front Door Service がサポートするさまざまなメトリックとアクセス ログについて説明します
+title: Azure Front Door Service でのメトリックとログの監視 | Microsoft Docs
+description: この記事では、Azure Front Door Service でサポートされるさまざまなメトリックとアクセス ログについて説明します
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112111"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862116"
 ---
-# <a name="monitoring-metrics-for-front-door"></a>Front Door のメトリックの監視
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure Front Door Service でのメトリックとログの監視
 
 Azure Front Door Service を使用すると、次の方法でリソースを監視できます。
-* [ログ](#diagnostic-logging):リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
 
-* [メトリック](#metrics):現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
+- **メトリック**。 現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
+- **ログ**。 アクティビティ ログや診断ログでは、リソースのパフォーマンス、アクセス、その他のデータを監視目的で保存または使用することができます。
 
-## <a name="metrics"></a>メトリック
+### <a name="metrics"></a>メトリック
 
-メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 Front Door について、次のメトリックを使用できます。
+メトリックとは、ポータルでパフォーマンス カウンターを表示できるようにする特定の Azure リソース用の機能です。 利用可能な Front Door メトリックは次のとおりです。
 
 | メトリック | メトリックの表示名 | 単位 | Dimensions | 説明 |
 | --- | --- | --- | --- | --- |
@@ -42,35 +42,36 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 
 ## <a name="activity-log"></a>アクティビティ ログ
 
-アクティビティ ログは、Front Door で実行された操作に関する情報を提供します。 アクティビティ ログを使用すると、Front Door で行われた書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。
+アクティビティ ログは、Front Door Service に対して行われた操作に関する情報を提供します。 また、これらは、Front Door Service で行われた書き込み操作 (PUT、POST、DELETE) について、いつだれが何を行ったのかを特定します。
 
-> [!NOTE]
-> アクティビティ ログには、読み取り (GET) 操作、Azure Portal で実行された操作、または元の管理 API の使用に関する情報は含まれません。
+>[!NOTE]
+>アクティビティ ログには、読み取り (GET) 操作は含まれません。 また、Azure portal または元の Management API を使用して実行する操作も含まれません。
 
-アクティビティ ログには Front Door でアクセスできます。または、Azure Monitor ですべての Azure リソースのログにアクセスすることもできます。 
-
-アクティビティ ログを表示するには、次の手順に従います。
+アクティビティ ログに Front Door Service でアクセスするか、Azure リソースのすべてのログに Azure Monitor でアクセスします。 アクティビティ ログを表示するには、次の手順に従います。
 
 1. Front Door インスタンスを選択します。
-2. **[アクティビティ ログ]** をクリックします。
+2. **[アクティビティ ログ]** を選択します。
 
     ![アクティビティ ログ](./media/front-door-diagnostics/activity-log.png)
 
-3. 目的のフィルター処理の範囲を選択し、**[適用]** をクリックします。
+3. フィルター処理のスコープを選択し、**[適用]** を選択します。
 
 ## <a name="diagnostic-logging"></a>診断ログ
-診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソースが実行した操作を調査できます。 [Azure Monitor の診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)の詳細情報を確認します。 
+診断ログは、監査やトラブルシューティングにとって重要な操作とエラーに関する豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。
 
-Front Door の診断ログを構成するには、以下の手順を実行します。
+アクティビティ ログは、Azure リソースに対して行われた操作に関する分析情報を提供します。 診断ログは、自分のリソースが実行した操作に関する分析情報を提供します。 詳細については、[Azure Monitor の診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)に関するドキュメントを参照してください。
 
-1. APIM サービス インスタンスを選びます。
-2. **[診断設定]** をクリックします。
+![診断ログ](./media/front-door-diagnostics/diagnostic-log.png)
 
-    ![診断ログ](./media/front-door-diagnostics/diagnostic-log.png)
+Front Door Service の診断ログを構成するには:
 
-3. **[診断を有効にする]** をクリックします。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりすることができます。 
+1. Azure API Management サービスを選択します。
 
-現在、Azure Front Door Service は、各エントリが次のスキーマを持つ個々の API 要求に関する診断ログ (1 時間ごとにバッチ処理) を提供します。
+2. **[診断設定]** を選択します。
+
+3. **[診断を有効にする]** を選択します。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりします。
+
+現在、Front Door Service は診断ログ (1 時間ごとにバッチ処理) を提供しています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
 
 | プロパティ  | 説明 |
 | ------------- | ------------- |
@@ -91,5 +92,5 @@ Front Door の診断ログを構成するには、以下の手順を実行しま
 
 ## <a name="next-steps"></a>次の手順
 
-- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
-- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
+- [Front Door プロファイルを作成する](quickstart-create-front-door.md)
+- [Front Door のしくみ](front-door-routing-architecture.md)

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1f9c30f1c914f6c8d42967e014d967ba0d5b85cc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010686"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893845"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>PowerShell で Azure Analysis Services を管理する
 
@@ -80,5 +80,5 @@ SqlServer モジュールには、タスク固有のデータベース管理コ�
 
 * [SQL Server PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SQL Server Management Studio (SSMS) のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-* [PowerShell ギャラリーの Sql Server モジュール](https://www.powershellgallery.com/packages/SqlServer)    
-* [互換性レベル 1200 以上の表形式モデル プログラミング](https://msdn.microsoft.com/library/mt712541.aspx)
+* [PowerShell ギャラリーの SqlServer モジュール](https://www.powershellgallery.com/packages/SqlServer)    
+* [互換性レベル 1200 以上の表形式モデル プログラミング](/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

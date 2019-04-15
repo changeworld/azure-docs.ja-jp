@@ -123,8 +123,10 @@ items:
       href: dbms_guide_sqlserver.md
     - name: SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ
       href: dbms_guide_oracle.md
-    - name: SAP ワークロードのための IBM DB2 Azure Virtual Machines DBMS のデプロイ
+    - name: SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
       href: dbms_guide_ibm.md
+    - name: SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
+      href: dbms-guide-ha-ibm.md
     - name: SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
       href: dbms_guide_sapase.md
     - name: Azure 上の SAP MaxDB、liveCache、コンテンツ サーバーのデプロイ
@@ -229,9 +231,9 @@ items:
   items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: e366d205b3d903ad79b26798a82ee05752ac5622
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: b91931661ad91f813ca84e0c9b7bef4b22e2e975
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762958"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489038"

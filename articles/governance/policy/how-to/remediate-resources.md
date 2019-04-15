@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816569"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802560"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -139,11 +139,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-   ![ポリシーを検索する](../media/remediate-resources/search-policy.png)
+   ![[すべてのサービス] で [ポリシー] を検索する](../media/remediate-resources/search-policy.png)
 
 1. Azure Policy ページの左側にある **[修復]** を選択します。
 
-   ![修復の選択](../media/remediate-resources/select-remediation.png)
+   ![[ポリシー] ページで [修復] を選択する](../media/remediate-resources/select-remediation.png)
 
 1. 準拠していないリソースがある **deployIfNotExists** ポリシー割り当てはすべて､**Policies to remediate**タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーをクリックします。 **新しい修復タスク**ページが開きます。
 
@@ -152,11 +152,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、**[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
-   ![修復 - リソースの選択](../media/remediate-resources/select-resources.png)
+   ![修復 - 修復するリソースを選択する](../media/remediate-resources/select-resources.png)
 
 1. リソースのフィルター処理を終えたら、**[修復]** をクリックして、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます｡
 
-   ![修復 - タスクの進行状況](../media/remediate-resources/task-progress.png)
+   ![修復 - 修復タスクの進行状況](../media/remediate-resources/task-progress.png)
 
 1. ポリシー コンプライアンス ページの **[修復タスク]** をクリックすると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
 

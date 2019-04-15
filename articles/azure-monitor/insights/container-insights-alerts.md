@@ -11,26 +11,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886777"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804826"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
 コンテナーに対する Azure Monitor は、Azure Kubernetes Service (AKS) でホストされた Azure Container Instances またはマネージド Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視します。 
 
 この記事では、次の状況のアラートを有効にする方法について説明します。
 
-* クラスターのノードで CPU およびメモリの使用率が定義済みのしきい値を超えたとき。
+* クラスターのノードで CPU またはメモリの使用率が定義済みのしきい値を超えたとき。
 * 対応するリソースに設定されている上限と比較して、コントローラー内のいずれかのコンテナーで CPU またはメモリの使用率が定義済みのしきい値を超えたとき。
+* **NotReady** 状態のノード数
+* **Failed**、**Pending**、**Unknown**、**Running**、**Succeeded** の各ポッド フェーズ数
 
-クラスターまたはコントローラーの CPU またはメモリの使用率が高いときにアラートを生成するには、提供されたログ クエリに基づくメトリック測定アラート ルールを作成します。 クエリでは、now 演算子を使用して日時を現在と比較し、1 時間戻ります。 コンテナーに対する Azure Monitor によって格納される日付はすべて UTC 形式です。
+クラスターのノードで CPU またはメモリの使用率が高いときにアラートを生成するには、提供されたログ クエリを使用してメトリック アラートまたはメトリック測定アラート ルールを作成することができます。 メトリック アラートはログ アラートよりも待ち時間が少ない一方、ログ アラートはメトリック アラートよりも詳細なクエリと高度化に対応しています。 ログ アラートの場合、クエリでは、now 演算子を使用して日時を現在と比較し、1 時間戻ります。 コンテナーに対する Azure Monitor によって格納される日付はすべて UTC 形式です。
 
-始める前に、Azure Monitor のアラートに慣れていない場合は、「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」をご覧ください。 ログ クエリを使ったアラートの詳細については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」をご覧ください。
+始める前に、Azure Monitor のアラートに慣れていない場合は、「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」をご覧ください。 ログ クエリを使ったアラートの詳細については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」をご覧ください。 メトリック アラートの詳細については、「[Azure Monitor でのメトリック アラートの機能](../platform/alerts-metric-overview.md)」をご覧ください。
 
 ## <a name="resource-utilization-log-search-queries"></a>リソース使用率のログ検索クエリ
 このセクションのクエリは、各アラート シナリオをサポートするために提供されています。 これらのクエリは、後述の[アラートの作成](#create-alert-rule)に関するセクションの手順 7. で必要になります。  
@@ -187,6 +189,72 @@ KubePodInventory
 | project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
+
+次のクエリでは、**Ready** および **NotReady** 状態のすべてのノードと数を返します。
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| distinct ClusterName, Computer, TimeGenerated
+| summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName, Computer
+| join hint.strategy=broadcast kind=inner (
+    KubeNodeInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready'))
+                by ClusterName, Computer,  bin(TimeGenerated, trendBinSize)
+    | extend NotReadyCount = TotalCount - ReadyCount
+) on ClusterName, Computer, TimeGenerated
+| project   TimeGenerated,
+            ClusterName,
+            Computer,
+            ReadyCount = todouble(ReadyCount) / ClusterSnapshotCount,
+            NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
+| order by ClusterName asc, Computer asc, TimeGenerated desc
+```
+次のクエリでは、すべてのフェーズ (**Failded**、**Pending**、**Unknown**、**Running**、**Succeeded**) に基づくポッド フェーズ数を返します。  
+
+```kusto
+let endDateTime = now();
+    let startDateTime = ago(1h);
+    let trendBinSize = 1m;
+    let clusterName = '<your-cluster-name>';
+    KubePodInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ClusterName == clusterName
+    | distinct ClusterName, TimeGenerated
+    | summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName
+    | join hint.strategy=broadcast (
+        KubePodInventory
+        | where TimeGenerated < endDateTime
+        | where TimeGenerated >= startDateTime
+        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize TotalCount = count(),
+                    PendingCount = sumif(1, PodStatus =~ 'Pending'),
+                    RunningCount = sumif(1, PodStatus =~ 'Running'),
+                    SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
+                    FailedCount = sumif(1, PodStatus =~ 'Failed')
+                 by ClusterName, bin(TimeGenerated, trendBinSize)
+    ) on ClusterName, TimeGenerated
+    | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
+    | project TimeGenerated,
+              TotalCount = todouble(TotalCount) / ClusterSnapshotCount,
+              PendingCount = todouble(PendingCount) / ClusterSnapshotCount,
+              RunningCount = todouble(RunningCount) / ClusterSnapshotCount,
+              SucceededCount = todouble(SucceededCount) / ClusterSnapshotCount,
+              FailedCount = todouble(FailedCount) / ClusterSnapshotCount,
+              UnknownCount = todouble(UnknownCount) / ClusterSnapshotCount
+| summarize AggregatedValue = avg(PendingCount) by bin(TimeGenerated, trendBinSize)
+```
+
+>[!NOTE]
+>**Pending**、**Failed**、**Unknown** などの特定のポッド フェーズに対してアラートを生成するには、クエリの最後の行を変更する必要があります。 たとえば、*FailedCount* についてアラートを生成するには、`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)` とします。  
 
 ## <a name="create-alert-rule"></a>アラート ルールの作成
 前述のログ検索ルールのいずれかを使用して、Azure Monitor でログ アラートを作成するには、次の手順を実行します。  

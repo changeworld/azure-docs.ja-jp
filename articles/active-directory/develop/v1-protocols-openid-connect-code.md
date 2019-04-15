@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 281e1109964ac64853b8b82525579b7ff4de0d2f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406407"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851192"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` や `token` などの他の response_types が含まれていてもかまいません。 |
 | scope | 推奨 | OpenID Connect の仕様では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 これとその他の OIDC スコープは v1.0 エンドポイントでは無視されますが、標準に準拠したクライアントにとっては依然としてベスト プラクティスです。 |
 | nonce |必須 |アプリによって生成された、要求に含まれる値。この値が、最終的な `id_token` に要求として含まれます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常、この値はランダム化された一意の文字列または GUID になっており、要求の送信元を特定する際に使用できます。 |
-| redirect_uri | 推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ない場合は、ユーザー エージェントが、アプリ用に登録されたリダイレクト URI のいずれかにランダムに送り返されます。 |
+| redirect_uri | 推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ない場合は、ユーザー エージェントが、アプリ用に登録されたリダイレクト URI のいずれかにランダムに送り返されます。 最大長は 255 バイトです。 |
 | response_mode |省略可能 |結果として得られた authorization_code をアプリに返す際に使用するメソッドを指定します。 サポートされる値は、`form_post` (*HTTP フォーム ポスト* の場合) および `fragment` (*URL フラグメント* の場合) です。 Web アプリケーションでは、トークンをアプリケーションに最も安全に転送できるように、`response_mode=form_post` を使用することをお勧めします。 id_token を含むすべてのフローの既定値は `fragment` です。|
 | state |推奨 |要求に含まれ、トークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は 'login'、'none'、'consent' だけです。 `prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` は反対に、ユーザーに対して対話形式のプロンプトを表示しません。 シングル サインオンによって自動的に要求を完了できない場合、エンドポイントはエラーを返します。 `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |

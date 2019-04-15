@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 366240c273feed559edb6e569640020046cc9471
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003723"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578647"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -108,9 +108,7 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>分析対象となる ESXi ホスト環境へのパフォーマンスへの影響はありますか?
 
-[1 回限りの検出によるアプローチ](https://docs.microsoft.com/azure/migrate/concepts-collector)の場合、パフォーマンス データを収集するためには、vCenter Server の統計情報レベルが 3 に設定されている必要があると考えられます。 このレベルに設定した場合、大量のトラブルシューティング データが収集されますが、それらのデータは vCenter Server データベースに格納されます。 それが引き金となって、vCenter Server にパフォーマンスの問題が生じる可能性はあります。 ESXi ホストへの影響はごくわずかだと思われます。
-
-現在はプレビュー段階ですが、パフォーマンス データの継続的プロファイリングを導入しました。 継続的プロファイリングでは、パフォーマンス ベースの評価を実行するために、vCenter Server の統計情報レベルを変更する必要はありません。 コレクター アプライアンスがオンプレミス マシンをプロファイリングして、仮想マシンのパフォーマンス データを測定することになります。 これにより、ESXi ホストだけでなく、vCenter Server についても、パフォーマンスへの影響がほぼゼロになると考えられます。
+パフォーマンス データの継続的プロファイリングでは、パフォーマンス ベースの評価を実行するために、vCenter Server の統計情報レベルを変更する必要はありません。 コレクター アプライアンスがオンプレミス マシンをプロファイリングして、仮想マシンのパフォーマンス データを測定します。 これにより、ESXi ホストだけでなく、vCenter Server についても、パフォーマンスへの影響がほぼゼロになると考えられます。
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>収集されたデータはどこに、どれくらいの期間保存されますか。
 

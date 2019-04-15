@@ -1,6 +1,6 @@
 ---
-title: Azure AD 管理者ロールを割り当てる - Privileged Identity Management | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure Active Directory 管理者ロールを割り当てる方法を説明します。
+title: PIM で Azure AD ロールを割り当てる - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールを割り当てる方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3c8a7fb7a94dbca7b0e63ddaf756a536fbd0600
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dfce4c918bbc7f7e30b5cb6372d4370e305ba63e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000634"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578256"
 ---
-# <a name="assign-azure-ad-administrator-roles-in-pim"></a>PIM で Azure AD 管理者ロールを割り当てる
+# <a name="assign-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールを割り当てる
 
 全体管理者は、Azure Active Directory (Azure AD) を使用して、**永続的**な Azure AD 管理者ロールの割り当てを行うことができます。 こうしたロールの割り当ては、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md) または [PowerShell のコマンド](/powershell/module/azuread#directory_roles) を使用して作成できます。
 
@@ -38,11 +38,11 @@ ms.locfileid: "58000634"
 
     Azure portal で PIM をまだ開始していない場合は、「[PIM の使用を開始する](pim-getting-started.md)」をご覧ください。
 
-1. **[Azure AD ディレクトリ ロール]** をクリックします。
+1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
 1. **[ロール]** または **[メンバー]** をクリックします。
 
-    ![Azure AD ディレクトリ ロール](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Azure AD ロール](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
 1. **[メンバーの追加]** をクリックして [管理されるメンバーの追加] を開きます。
 
@@ -62,7 +62,7 @@ ms.locfileid: "58000634"
 
     ![ロールの候補となるユーザー](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
-1. これで、ユーザーがロールの候補者になりました。「[PIM で自分の Azure AD ディレクトリ ロールをアクティブにする](pim-how-to-activate-role.md)」の指示に従って、ロールをアクティブ化できることをユーザーに通知します。
+1. これで、ユーザーがロールの候補者になりました。「[PIM で自分の Azure AD ロールをアクティブにする](pim-how-to-activate-role.md)」の指示に従って、ロールをアクティブ化できることをユーザーに通知します。
 
     管理者候補は、アクティブ化時に Azure Multi-Factor Authentication (MFA) への登録が求められます。 ユーザーが MFA に登録できない場合、または Microsoft アカウント (通常は @outlook.com) を使用している場合は、すべてのロールでこのユーザーを永続化する必要があります。
 
@@ -72,7 +72,7 @@ ms.locfileid: "58000634"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ディレクトリ ロール]** をクリックします。
+1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
 1. **[メンバー]** をクリックします。
 
@@ -96,7 +96,7 @@ ms.locfileid: "58000634"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ディレクトリ ロール]** をクリックします。
+1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
 1. **[メンバー]** をクリックします。
 

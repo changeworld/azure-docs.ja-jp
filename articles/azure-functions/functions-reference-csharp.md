@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: eda6f7b8ec61f2c3472b00c76467c1379bc2ff1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 232a235cdbf9dc3934bdac14f9612d6865718823
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082111"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892417"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -218,7 +218,7 @@ public class Order
 
 * `#load "mylogger.csx"` によって、関数フォルダーにあるファイルが読み込まれます。
 * `#load "loadedfiles\mylogger.csx"` によって、関数フォルダー内のフォルダーにあるファイルが読み込まれます。
-* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル ( *wwwroot*の直下) にあるフォルダーのファイルが読み込まれます。
+* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル (*wwwroot* の直下) にあるフォルダー内のファイルが読み込まれます。
 
 `#load` ディレクティブは、*.csx* ファイルでのみ機能し、*.cs* ファイルでは機能しません。
 
@@ -274,7 +274,7 @@ public async static Task ProcessQueueMessageAsync(
 
 ## <a name="cancellation-tokens"></a>キャンセル トークン
 
-関数は [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) パラメーターを受け付けることができます。これにより、オペレーティング システムは、その関数をいつ終了しようとしているかをコードに通知できます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+関数は [CancellationToken](/dotnet/api/system.threading.cancellationtoken) パラメーターを受け付けることができます。これにより、オペレーティング システムは、その関数をいつ終了しようとしているかをコードに通知できます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
 
 次の例は、関数の終了が迫っているかどうかを確認する方法を示しています。
 
@@ -484,7 +484,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](/dotnet/api/system.io.textwriter) はサポートされている出力バインドの種類です。
 
 ### <a name="multiple-attribute-example"></a>複数属性の例
 

@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775324"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620643"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてパーティションとレプリカをスケーリングする
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。
 
-[Basic レベル](https://aka.ms/azuresearchbasic)または [Standard レベル](search-limits-quotas-capacity.md)のいずれかでサービスを設定すると、リソース構成を使用できます。 このレベルのサービスでは、容量は "*検索単位*" (SU) ごとに購入します。各パーティションとレプリカは 1 SU としてカウントします。 
+[Basic レベル](https://aka.ms/azuresearchbasic)、または [Standard レベルと Storage Optimized レベル](search-limits-quotas-capacity.md)の 1 つでサービスを設定すると、リソース構成を使用できます。 このレベルのサービスでは、容量は "*検索単位*" (SU) ごとに購入します。各パーティションとレプリカは 1 SU としてカウントします。 
 
 使用する SU が少なければ、課金される金額もそれに応じて少なくなります。 課金は、サービスが設定されている間、有効になっています。 サービスを一時的に使用しない場合、課金を回避する唯一の方法は、サービスを削除し、必要なときに再作成することです。
 
@@ -29,7 +29,7 @@ ms.locfileid: "57775324"
 ## <a name="terminology-replicas-and-partitions"></a>用語: レプリカとパーティション
 レプリカとパーティションは、検索サービスを支える主要なリソースです。
 
-| リソース | 定義 |
+| Resource | 定義 |
 |----------|------------|
 |*パーティション* | 読み取り/書き込み操作 (たとえば、インデックスを再構築または更新する場合など) のためにインデックスのストレージと I/O を提供します。|
 |"*レプリカ*" | 主にクエリ操作の負荷分散に使用される Search サービスのインスタンスです。 各レプリカが常にインデックスの 1 つのコピーをホストします。 12 個のレプリカがある場合は、サービスに各インデックスのコピーが 12 個ずつ読み込まれます。|
@@ -81,7 +81,7 @@ Azure Search では最初に、1 つのパーティションと 1 つのレプ�
 
 Basic サービスは、3 SU の上限に対して厳密に 1 個のパーティションと最大 3 個のレプリカを持つことができます。 調整可能なリソースはレプリカだけです。 クエリの高可用性のためには、少なくとも 2 個のレプリカが必要です。
 
-すべての Standard サービスでは、36 SU の制限のもとで、レプリカとパーティションの次の組み合わせを想定できます。 
+すべての Standard および Storage Optimized 検索サービスでは、36 SU の制限のもとで、レプリカとパーティションの次の組み合わせを想定できます。 
 
 |   | **1 個のパーティション** | **2 個のパーティション** | **3 個のパーティション** | **4 個のパーティション** | **6 個のパーティション** | **12 個のパーティション** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ SU、価格、および容量の詳細については、Azure Web サイトを�
 
 Azure Search のサービス レベル アグリーメント (SLA) は、クエリ操作と、ドキュメントの追加、更新、削除から成るインデックスの更新とを対象としています。
 
-Basic レベルでは、1 つのパーティションと 3 つのレプリカが上限です。 インデックス作成とクエリのスループットに対する需要の変動にすばやく反応する柔軟性が必要な場合は、Standard レベルのいずれかを検討してください。
+Basic レベルでは、1 つのパーティションと 3 つのレプリカが上限です。 インデックス作成とクエリのスループットに対する需要の変動にすばやく反応する柔軟性が必要な場合は、Standard レベルのいずれかを検討してください。  ストレージ要件がクエリ スループットよりもはるかに速く増大している場合は、Storage Optimized レベルの 1 つを検討します。
 
 ### <a name="index-availability-during-a-rebuild"></a>再構築中のインデックスの可用性
 

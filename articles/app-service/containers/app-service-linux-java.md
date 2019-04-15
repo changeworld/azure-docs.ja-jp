@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: d944a51f7e0ee24d5a3768ba28d7a8294c30b99b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118767"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803527"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -155,6 +155,14 @@ Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](
 
 [既存のカスタム SSL 証明書のバインド](/azure/app-service/app-service-web-tutorial-custom-ssl)に関する記事の手順に従って、既存の SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
 
+### <a name="use-keyvault-references"></a>KeyVault 参照を使用する
+
+[Azure Key Vault](../../key-vault/key-vault-overview.md) では、アクセス ポリシーと監査履歴を使用した一元的なシークレット管理を提供しています。 シークレット (パスワードや接続文字列など) を KeyVault に格納し、環境変数を使用してアプリケーション内でこれらのシークレットにアクセスすることができます。
+
+最初に、[Key Vault へのアクセス権をアプリに付与](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)したり、[アプリケーション設定で自分のシークレットに対する KeyVault 参照を設定](../app-service-key-vault-references.md#reference-syntax)したりするための手順に従います。 App Service のターミナルにリモートでアクセスしている間に環境変数を出力することで、シークレットへの参照が解決されることを確認できます。
+
+Spring または Tomcat 構成ファイルにこれらのシークレットを挿入するには、環境変数の挿入構文 (`${MY_ENV_VAR}`) を使用します。 Spring の構成ファイルについては、[外部化された構成](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)に関するこちらのドキュメントを参照してください。
+
 ## <a name="data-sources"></a>データ ソース
 
 ### <a name="tomcat"></a>Tomcat
@@ -163,7 +171,7 @@ Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](
 
 | Database   | ドライバーのクラス名                             | JDBC ドライバー                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
-| PostgreSQL | `org.postgresql.Drvier`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
+| PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
 | SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
 

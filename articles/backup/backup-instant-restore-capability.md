@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285549"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905972"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
 > [!NOTE]
-> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を**VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
+> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を**VM バックアップ スタック V2** から**インスタント リストア**に変更しています。<br/><br/> Azure のすべてのバックアップ ユーザーは、**インスタント リストア**にアップグレードされました。
 
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
 
@@ -28,6 +28,7 @@ ms.locfileid: "58285549"
 * Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
 *   復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>この機能の更新点
 
@@ -60,13 +61,25 @@ ms.locfileid: "58285549"
 >[!NOTE]
 > スナップショットのリテンション期間は、週間ポリシーでは 5 日間に固定されています。
 
-## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Azure portal を使用してスナップショットのリテンション期間を構成する
+## <a name="configure-snapshot-retention"></a>スナップショットのリテンション期間の構成
 
-**Azure のすべてのバックアップ ユーザーは、インスタント リストアにアップグレードされました**。
+### <a name="using-azure-portal"></a>Azure Portal の使用
 
 Azure portal で、**VM バックアップ ポリシー** ブレード (**[インスタント リストア]** セクションの下) にフィールドが追加されているのを確認できます。 特定のバックアップ ポリシーに関連付けられているすべての VM の **[VM Backup Policy]\(VM バックアップ ポリシー\)** ブレードで、スナップショットの保持期間を変更することができます。
 
 ![インスタント リストア機能](./media/backup-azure-vms/instant-restore-capability.png)
+
+### <a name="using-powershell"></a>PowerShell の使用
+
+>[!NOTE]
+> Az PowerShell バージョン 1.6.0 以降では、PowerShell を使用して、ポリシーのインスタント リストアのスナップショット保持期間を更新できます
+
+```powershell
+PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=5
+PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
+各ポリシーの既定のスナップショット リテンション期間は、2 日に設定されます。 ユーザーは、最小で 1 日、最大で 5 日に値を変更できます。 スナップショット リテンション期間は、週間ポリシーでは 5 日に固定されています。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

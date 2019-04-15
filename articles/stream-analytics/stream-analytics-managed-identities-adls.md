@@ -8,18 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 994ccf292a4215624d4222fe13ca9ac25c863368
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570115"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895868"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
 
 Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力でのマネージド ID 認証をサポートします。 ID は、特定の Stream Analytics ジョブを表す Azure Active Directory に登録済みのマネージド アプリケーションであり、対象のリソースを認証するために使用できます。 マネージド ID は、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性などのユーザー ベースの認証方法の制限を排除します。 さらに、マネージド ID は、Azure Data Lake Storage Gen1 に出力する Stream Analytics ジョブのデプロイの自動化で役に立ちます。
-
-ブログ記事「[Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)」(Azure Stream Analytics の 8 つの新機能) で、このプレビューにサインアップする方法と新機能の詳細を参照してください。
 
 この記事では、Azure Data Lake Storage Gen1 に出力する Azure Stream Analytics ジョブのマネージド ID を有効にする 3 つの方法を示します。Azure portal による方法、Azure Resource Manager テンプレートのデプロイによる方法、そして Visual Studio 用の Azure Stream Analytics ツールによる方法があります。
 
@@ -27,11 +25,11 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-1. Azure portal で、新しい Stream Analytics ジョブを作成するか既存のジョブを開くことから始めます。 画面の左側にあるメニュー バーで、**[構成]** の下にある **[マネージド ID (プレビュー)]** を選択します。
+1. Azure portal で、新しい Stream Analytics ジョブを作成するか既存のジョブを開くことから始めます。 画面の左側にあるメニュー バーで、**[構成]** の下にある **[マネージド ID]** を選択します。
 
-   ![Stream Analytics のマネージド ID (プレビュー) の構成](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Stream Analytics のマネージド ID の構成](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 右側に表示されるウィンドウで **[Use System-assigned Managed Identity (preview)]\(システムによって割り当てられたマネージド ID を使用する (プレビュー)\)** を選択します。 **[保存]** をクリックして、Azure Active Directory 内に Stream Analytics ジョブの ID 用のサービス プリンシパルを保存します。 新しく作成された ID のライフ サイクルは、Azure によって管理されます。 Stream Analytics ジョブが削除されると、関連付けられた ID (つまりサービス プリンシパル) も Azure によって自動的に削除されます。
+2. 右側に表示されるウィンドウで **[システム割り当てマネージド ID を使用]** を選択します。 **[保存]** をクリックして、Azure Active Directory 内に Stream Analytics ジョブの ID 用のサービス プリンシパルを保存します。 新しく作成された ID のライフ サイクルは、Azure によって管理されます。 Stream Analytics ジョブが削除されると、関連付けられた ID (つまりサービス プリンシパル) も Azure によって自動的に削除されます。
 
    構成が保存されると、サービス プリンシパルのオブジェクト ID (OID) が、次に示すようにプリンシパル ID として表示されます。
 
@@ -39,7 +37,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
  
    サービス プリンシパルは、Stream Analytics ジョブと同じ名前を持ちます。 たとえば、ジョブの名前が **MyASAJob** であれば、作成されるサービス プリンシパルの名前も **MyASAJob** になります。
 
-3. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、**[マネージド ID (プレビュー)]** を選択します。
+3. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、**[マネージド ID]** を選択します。
 
 4. 残りのプロパティを入力します。 ADLS 出力の作成の詳細については、[Stream Analytics を使用した Data Lake Store 出力の作成](../data-lake-store/data-lake-store-stream-analytics.md)に関する記事を参照してください。 操作が終了したら、**[OK]** をクリックします。
 

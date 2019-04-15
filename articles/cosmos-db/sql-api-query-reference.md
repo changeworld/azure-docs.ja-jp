@@ -5,24 +5,24 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: e49b521f625dee8c48c448065096ed027cf6c9b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9625cb75bcae60f7f6eb2bae61e73066520037fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090034"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878273"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
 
-Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL クエリ言語の構文のドキュメントを提供します。これは、SQL API アカウントと互換性があります。 SQL クエリの例のチュートリアルについては、[Cosmos DB の SQL クエリ](how-to-sql-query.md)に関するページを参照してください。  
+Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL API アカウントで使用される SQL クエリ言語の構文に関するドキュメントを提供します。 SQL クエリの例のチュートリアルについては、[Cosmos DB の SQL クエリの例](how-to-sql-query.md)に関するページを参照してください。  
   
-[Query Playground](https://www.documentdb.com/sql/demo) にアクセスして、Cosmos DB を試したり、データセットに対して SQL クエリを実行したりできます。  
+[Query Playground](https://www.documentdb.com/sql/demo) にアクセスすると、Cosmos DB を試したり、サンプル データセットに対して SQL クエリを実行したりできます。  
   
 ## <a name="select-query"></a>SELECT クエリ  
-すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常は、各クエリで FROM 句のソースが列挙されます。 次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 SELECT ステートメントを記述するために使用される規則については、「構文表記規則」セクションの表を参照してください。 例については、[SELECT クエリの例](how-to-sql-query.md#SelectClause)を参照してください。
+すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常、各クエリでは、FROM 句のソースが列挙された後、JSON ドキュメントのサブセットを取得するためにそのソースに WHERE 句のフィルターが適用されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 例については、[SELECT クエリの例](how-to-sql-query.md#SelectClause)を参照してください。
   
 **構文**  
   
@@ -62,7 +62,7 @@ SELECT ステートメント内の句は、上の順序で並べられている�
 
 クエリ言語は、T-SQL スタイルのコメントをサポートしています  
 
--   SQL ステートメント`-- comment text [newline]`  
+-   SQL ステートメント `-- comment text [newline]`  
 
 空白文字とコメントは文法内では何も意味がありませんが、トークンを区切る場合に使用する必要があります。 例: `-1e5` は、1 つの数値のトークンですが、`: – 1 e5` は負のトークンであり、その後に数字 1 と識別子 e5 が続いています。  
 
@@ -226,7 +226,7 @@ FROM <from_specification>
   
 ### <a name="examples-of-joins"></a>結合の例  
   
-それでは、以下の FROM 句を見てみましょう。`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+次の FROM 句を見てみましょう:  `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  各ソースで `input_alias1, input_alias2, …, input_aliasN` を定義します。 この FROM 句は、N-タプル (N 個の値を持つタプル) のセットを返します。 それぞれのタプルは、対応するセットに対する、すべてのコンテナーのエイリアスの反復によって生成された値を持ちます。  
   
@@ -236,11 +236,11 @@ FROM <from_specification>
   
 - `<from_source2>` を input_alias1 を参照するドキュメント スコープにし、次のセットを表します。  
   
-    `input_alias1 = A,` の {1, 2}  
+    次の場合は {1, 2}:  `input_alias1 = A,`  
   
-    `input_alias1 = B,` の {3}  
+    次の場合は {3}:  `input_alias1 = B,`  
   
-    `input_alias1 = C,` の {4, 5}  
+    次の場合は {4, 5}:  `input_alias1 = C,`  
   
 - FROM 句 `<from_source1> JOIN <from_source2>` の結果は次のタプルになります。  
   
@@ -254,17 +254,17 @@ FROM <from_specification>
   
 - `<from_source2>` を `input_alias1` を参照するドキュメント スコープにし、次のセットを表します。  
   
-    `input_alias1 = A,` の {1, 2}  
+    次の場合は {1, 2}:  `input_alias1 = A,`  
   
-    `input_alias1 = B,` の {3}  
+    次の場合は {3}:  `input_alias1 = B,`  
   
-    `input_alias1 = C,` の {4, 5}  
+    次の場合は {4, 5}:  `input_alias1 = C,`  
   
 - `<from_source3>` を `input_alias2` を参照するドキュメント スコープにし、次のセットを表します。  
   
-    `input_alias2 = 1,` の {100, 200}  
+    次の場合は {100, 200}:  `input_alias2 = 1,`  
   
-    `input_alias2 = 3,` の {300}  
+    次の場合は {300}:  `input_alias2 = 3,`  
   
 - FROM 句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` の結果は次のタプルになります。  
   
@@ -283,17 +283,17 @@ FROM <from_specification>
   
 - <from_source2> を input_alias1 を参照するドキュメント スコープにし、次のセットを表します。  
   
-    `input_alias1 = A,` の {1, 2}  
+    次の場合は {1, 2}:  `input_alias1 = A,`  
   
-    `input_alias1 = B,` の {3}  
+    次の場合は {3}:  `input_alias1 = B,`  
   
-    `input_alias1 = C,` の {4, 5}  
+    次の場合は {4, 5}:  `input_alias1 = C,`  
   
 - `<from_source3>` のスコープを `input_alias1` にし、次のセットを表します。  
   
-    `input_alias2 = A,` の {100, 200}  
+    次の場合は {100, 200}:  `input_alias2 = A,`  
   
-    `input_alias2 = C,` の {300}  
+    次の場合は {300}:  `input_alias2 = C,`  
   
 - FROM 句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` の結果は次のタプルになります。  
   
@@ -471,35 +471,35 @@ ORDER BY <sort_specification>
   
  **演算子のカテゴリ:**  
   
-|**カテゴリ**|**詳細**|  
+|**Category**|**詳細**|  
 |-|-|  
 |**算術**|演算子には、数値の入力が必要です。 出力も数値です。 入力のいずれかが **undefined** か数値以外の型である場合、結果は **undefined** です。|  
 |**ビット演算子**|演算子には、32 ビット符号付き整数の入力が必要です。 出力も、32 ビット符号付き整数です。<br /><br /> 任意の整数以外の値は丸められます。 正の値は切り捨てられます、負の値は切り上げられます。<br /><br /> 32 ビット整数範囲の外部にある値は、その 2 の補数表記の最後の 32 ビットを取ることによって変換されます。<br /><br /> 入力のいずれかが **undefined** か数値以外の型である場合、結果は **undefined** です。<br /><br /> **注:** 上記の動作は JavaScript のビットごとの演算子の動作と互換性があります。|  
 |**論理**|演算子には、ブール値の入力が必要です。 出力もブール値です。<br />入力のいずれかが **undefined** かブール値以外の型である場合、結果は **undefined** です。|  
 |**比較**|演算子には、同じ型の undefined ではない入力が必要です。 出力はブール値です。<br /><br /> 入力のいずれかが **undefined** か異なる型である場合、結果は **undefined** です。<br /><br /> 値の順序付けの詳細については、**比較の値の順序付けの表**を参照してください。|  
-|**string**|演算子には、文字列の入力が必要です。 出力も文字列です。<br />入力のいずれかが **undefined** か文字列以外の型である場合、結果は **undefined** です。|  
+|**文字列**|演算子には、文字列の入力が必要です。 出力も文字列です。<br />入力のいずれかが **undefined** か文字列以外の型である場合、結果は **undefined** です。|  
   
- **単項演算子**  
+ **単項演算子:**  
   
-|**Name**|**演算子**|**詳細**|  
+|**名前**|**operator**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -|数値を返します。<br /><br /> ビットごとの否定。 否定された数値を返します。|  
 |**ビット演算子**|~|1 の補数。 数値の補数を返します。|  
 |**論理**|**NOT**|否定します。 否定されたブール値を返します。|  
   
- **二項演算子:**  
+ **2 項演算子:**  
   
-|**Name**|**演算子**|**詳細**|  
+|**名前**|**operator**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加算。<br /><br /> 減算。<br /><br /> 乗算。<br /><br /> 除算。<br /><br /> 比率。|  
 |**ビット演算子**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|ビット演算子 OR。<br /><br /> ビット演算子 AND。<br /><br /> ビット演算子 XOR。<br /><br /> 左シフト。<br /><br /> 右シフト。<br /><br /> 0 埋め右シフト。|  
-|**論理**|**AND**<br /><br /> **OR**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理和。 いずれかの引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
-|**比較**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|等しい。 両方の引数が等しい場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 等しくない。 両方の引数が等しくない場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> より大きい。 1 番目の引数が 2 番目の引数より大きい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以上。 1 番目の引数が 2 番目の引数以上の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> より小さい。 1 番目の引数が 2 番目の引数より小さい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以下。 1 番目の引数が 2 番目の引数以下の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 結合。 最初の引数が **undefined** 値である場合、2 番目の引数を返します。|  
-|**文字列**|**&#124;&#124;**|連結。 両方の引数の連結を返します。|  
+|**論理**|**AND**<br /><br /> **または**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理和。 いずれかの引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
+|**比較**|**=**<br /><br /> **!=、<>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|等しい。 両方の引数が等しい場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 等しくない。 両方の引数が等しくない場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> より大きい。 1 番目の引数が 2 番目の引数より大きい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以上。 1 番目の引数が 2 番目の引数以上の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> より小さい。 1 番目の引数が 2 番目の引数より小さい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以下。 1 番目の引数が 2 番目の引数以下の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 結合。 最初の引数が **undefined** 値である場合、2 番目の引数を返します。|  
+|**String**|**&#124;&#124;**|連結。 両方の引数の連結を返します。|  
   
- **三項演算子:**  
+ **3 項演算子:**  
 
-|**Name**|**演算子**|**詳細**| 
+|**名前**|**operator**|**詳細**| 
 |-|-|-|  
 |三項演算子|?|最初の引数が **true** に評価された場合、2 番目の引数を返します。それ以外の場合、3 番目の引数を返します。|  
 
@@ -511,7 +511,7 @@ ORDER BY <sort_specification>
 |**Undefined**|比較できません。|  
 |**Null**|単一の値: **Null**|  
 |**Number**|実数。<br /><br /> 負の無限大の値は、他のどの数値よりも小さくなります。<br /><br /> 正の無限大の値は、他のどの数値よりも大きくなります。**NaN** 値は比較できません。 **NaN** と比較すると、結果は **undefined** 値になります。|  
-|**文字列**|辞書の順序。|  
+|**String**|辞書の順序。|  
 |**Array**|順序付けがなく平等に扱われます。|  
 |**Object**|順序付けがなく平等に扱われます。|  
   
@@ -658,7 +658,7 @@ ORDER BY <sort_specification>
   
      次の表では、後の SQL リファレンスで構文の説明に使われる規則について説明します。  
   
-    |**規則**|**用途**|  
+    |**規則**|**使用対象**|  
     |-|-|    
     |UPPERCASE|大文字と小文字が区別されないキーワード。|  
     |lowercase|大文字と小文字が区別されるキーワード。|  
@@ -692,7 +692,7 @@ ORDER BY <sort_specification>
 |[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
 |[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[ログ](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
 |[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
@@ -1561,7 +1561,7 @@ SELECT
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: false, $5: false, $6: true}]  
+[{"$1":false,"$2":false,"$3":false,"$4":false,"$5":false,"$6":true,"$7":false}]
 ```  
   
 ####  <a name="bk_is_bool"></a> IS_BOOL  
@@ -1601,7 +1601,7 @@ SELECT
  結果セットは次のようになります。  
   
 ```  
-[{$1: true, $2: false, $3: false, $4: false, $5: false, $6: false}]  
+[{"$1":true,"$2":false,"$3":false,"$4":false,"$5":false,"$6":false,"$7":false}]
 ```  
   
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
@@ -1634,10 +1634,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
  結果セットは次のようになります。  
   
 ```  
-[{  
-       "$1": true,    
-       "$2": false   
-   }]  
+[{"$1":true,"$2":false}]  
 ```  
   
 ####  <a name="bk_is_null"></a> IS_NULL  
@@ -1677,7 +1674,7 @@ SELECT
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: true, $5: false, $6: false}]  
+[{"$1":false,"$2":false,"$3":false,"$4":true,"$5":false,"$6":false,"$7":false}]
 ```  
   
 ####  <a name="bk_is_number"></a> IS_NUMBER  
@@ -1717,7 +1714,7 @@ SELECT
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: true, $3: false, $4: false, $5: false, $6: false}]  
+[{"$1":false,"$2":true,"$3":false,"$4":false,"$5":false,"$6":false,"$7":false}]  
 ```  
   
 ####  <a name="bk_is_object"></a> IS_OBJECT  
@@ -1757,7 +1754,7 @@ SELECT
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: false, $5: true, $6: false}]  
+[{"$1":false,"$2":false,"$3":false,"$4":false,"$5":true,"$6":false,"$7":false}]
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
@@ -1837,7 +1834,7 @@ SELECT
  結果セットは次のようになります。  
   
 ```  
-[{$1: false, $2: false, $3: true, $4: false, $5: false, $6: false}]  
+[{"$1":false,"$2":false,"$3":true,"$4":false,"$5":false,"$6":false,"$7":false}] 
 ```  
   
 ###  <a name="bk_string_functions"></a>文字列関数  
@@ -2345,7 +2342,7 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   任意の有効な JSON 配列式です。 有効にするには、文字列値を二重引用符で囲む必要があります。ご注意ください。 JSON 形式の詳細については、[json.org](https://json.org/) をご覧ください。
+   これは、JSON 配列式として評価される有効なスカラー式です。 入れ子になった文字列値を有効にするには二重引用符で囲む必要があることにご注意ください。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。
   
   **戻り値の型**  
   
@@ -2355,26 +2352,57 @@ StringToArray(<expr>)
   
   次の例では、異なる型間で StringToArray がどのように動作するかを示します。 
   
-```  
+ 有効な入力を使用した例を次に示します。
+
+```
 SELECT 
-StringToArray('[]'), 
-StringToArray("[1,2,3]"),
-StringToArray("[\"str\",2,3]"),
-IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
-IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
-StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
-StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
-StringToArray(false), 
-StringToArray(undefined),
-StringToArray(NaN), 
-StringToArray("[")
-```  
-  
- 結果セットは次のようになります。  
-  
-```  
-[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
-```  
+    StringToArray('[]') AS a1, 
+    StringToArray("[1,2,3]") AS a2,
+    StringToArray("[\"str\",2,3]") AS a3,
+    StringToArray('[["5","6","7"],["8"],["9"]]') AS a4,
+    StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
+```
+
+ 結果セットは次のようになります。
+
+```
+[{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
+```
+
+ 無効な入力を使用した例を次に示します。 
+   
+ 配列内に一重引用符を使用した場合は、有効な JSON ではありません。
+クエリ内で有効であっても、有効な配列として解析されません。 配列文字列内の文字列は、"[\\"\\"]" のようにエスケープするか、'[""]' のように一重引用符で囲む必要があります。
+
+```
+SELECT
+    StringToArray("['5','6','7']")
+```
+
+ 結果セットは次のようになります。
+
+```
+[{}]
+```
+
+ 無効な入力の例を次に示します。
+   
+ 渡された式は JSON 配列として解析されます。次の場合は、配列型として評価されないため、undefined が返されます。
+   
+```
+SELECT
+    StringToArray("["),
+    StringToArray("1"),
+    StringToArray(NaN),
+    StringToArray(false),
+    StringToArray(undefined)
+```
+
+ 結果セットは次のようになります。
+
+```
+[{}]
+```
 
 ####  <a name="bk_stringtoboolean"></a> StringToBoolean  
  ブール値に変換された式を返します。 式を変換できない場合は、undefined を返します。  
@@ -2389,7 +2417,7 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   任意の有効な式です。  
+   ブール式として評価される有効なスカラー式です。  
   
   **戻り値の型**  
   
@@ -2398,25 +2426,55 @@ StringToBoolean(<expr>)
   **例**  
   
   次の例では、異なる型間で StringToBoolean がどのように動作するかを示します。 
-  
+ 
+ 有効な入力を使用した例を次に示します。
+
+ 空白は "true" または "false" の前後のみで使用できます。
+
 ```  
 SELECT 
-StringToBoolean("true"), 
-StringToBoolean("    false"),
-IS_BOOL(StringToBoolean("false")), 
-StringToBoolean("null"),
-StringToBoolean(undefined),
-StringToBoolean(NaN), 
-StringToBoolean(false), 
-StringToBoolean(true), 
-StringToBoolean("TRUE"),
-StringToBoolean("False")
+    StringToBoolean("true") AS b1, 
+    StringToBoolean("    false") AS b2,
+    StringToBoolean("false    ") AS b3
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": true, "$2": false, "$3": true}]
+[{"b1": true, "b2": false, "b3": false}]
+```  
+
+ 無効な入力を使用した例を次に示します。
+ 
+ ブール値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"true" と "false")。
+
+```  
+SELECT 
+    StringToBoolean("TRUE"),
+    StringToBoolean("False")
+```  
+
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
+``` 
+
+ 渡された式はブール式として解析されます。これらの入力はブール型として評価されないため、undefined が返されます。
+
+ ```  
+SELECT 
+    StringToBoolean("null"),
+    StringToBoolean(undefined),
+    StringToBoolean(NaN), 
+    StringToBoolean(false), 
+    StringToBoolean(true)
+```  
+
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonull"></a> StringToNull  
@@ -2432,7 +2490,7 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   任意の有効な式です。  
+   null 式として評価される有効なスカラー式です。
   
   **戻り値の型**  
   
@@ -2441,24 +2499,54 @@ StringToNull(<expr>)
   **例**  
   
   次の例では、異なる型間で StringToNull がどのように動作するかを示します。 
-  
+
+ 有効な入力を使用した例を次に示します。
+ 
+ 空白は "null" の前後のみで使用できます。
+
 ```  
 SELECT 
-StringToNull("null"), 
-StringToNull("  null "),
-IS_NULL(StringToNull("null")), 
-StringToNull("true"), 
-StringToNull(false), 
-StringToNull(undefined),
-StringToNull(NaN), 
-StringToNull("NULL"),
-StringToNull("Null")
+    StringToNull("null") AS n1, 
+    StringToNull("  null ") AS n2,
+    IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-[{"$1": null, "$2": null, "$3": true}]
+[{"n1": null, "n2": null, "n3": true}]
+```  
+
+ 無効な入力を使用した例を次に示します。
+
+ null 値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"null")。
+
+```  
+SELECT    
+    StringToNull("NULL"),
+    StringToNull("Null")
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
+```  
+
+ 渡された式は null 式として解析されます。これらの入力は null 型として評価されないため、undefined が返されます。
+
+```  
+SELECT    
+    StringToNull("true"), 
+    StringToNull(false), 
+    StringToNull(undefined),
+    StringToNull(NaN) 
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonumber"></a> StringToNumber  
@@ -2474,7 +2562,7 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   任意の有効な JSON 数値式です。 JSON の数値は整数または浮動小数点にする必要があります。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。  
+   JSON 数値式として評価される有効なスカラー式です。 JSON の数値は整数または浮動小数点にする必要があります。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。  
   
   **戻り値の型**  
   
@@ -2483,27 +2571,52 @@ StringToNumber(<expr>)
   **例**  
   
   次の例では、異なる型間で StringToNumber がどのように動作するかを示します。 
-  
+
+ 空白は数値の前後のみで使用できます。
+ 
 ```  
 SELECT 
-StringToNumber("1.000000"), 
-StringToNumber("3.14"),
-IS_NUMBER(StringToNumber("   60   ")), 
-StringToNumber("0xF"),
-StringToNumber("-1.79769e+308"),
-IS_STRING(StringToNumber("2")),
-StringToNumber(undefined),
-StringToNumber("99     54"), 
-StringToNumber("false"), 
-StringToNumber(false),
-StringToNumber(" "),
-StringToNumber(NaN)
+    StringToNumber("1.000000") AS num1, 
+    StringToNumber("3.14") AS num2,
+    StringToNumber("   60   ") AS num3, 
+    StringToNumber("-1.79769e+308") AS num4
 ```  
   
  結果セットは次のようになります。  
   
 ```  
-{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+{{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
+```  
+
+ JSON で有効な数値は、整数または浮動小数点数である必要があります。
+ 
+```  
+SELECT   
+    StringToNumber("0xF")
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+{{}}
+```  
+
+ 渡された式は数値式として解析されます。これらの入力は数値型として評価されないため、undefined が返されます。 
+
+```  
+SELECT 
+    StringToNumber("99     54"),   
+    StringToNumber(undefined),
+    StringToNumber("false"),
+    StringToNumber(false),
+    StringToNumber(" "),
+    StringToNumber(NaN)
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+{{}}
 ```  
 
 ####  <a name="bk_stringtoobject"></a> StringToObject  
@@ -2519,7 +2632,7 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   任意の有効な JSON オブジェクト式です。 有効にするには、文字列値を二重引用符で囲む必要があります。ご注意ください。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。  
+   JSON オブジェクト式として評価される有効なスカラー式です。 入れ子になった文字列値を有効にするには二重引用符で囲む必要があることにご注意ください。 JSON 形式の詳細については、「[json.org](https://json.org/)」をご覧ください。  
   
   **戻り値の型**  
   
@@ -2529,26 +2642,73 @@ StringToObject(<expr>)
   
   次の例では、異なる型間で StringToObject がどのように動作するかを示します。 
   
-```  
+ 有効な入力を使用した例を次に示します。
+ 
+``` 
 SELECT 
-StringToObject("{}"), 
-StringToObject('{"a":[1,2,3]}'),
-StringToObject("{'a':[1,2,3]}"),
-StringToObject("{a:[1,2,3]}"),
-IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
-IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
-IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
-StringToObject(false), 
-StringToObject(undefined),
-StringToObject(NaN), 
-StringToObject("{")
+    StringToObject("{}") AS obj1, 
+    StringToObject('{"A":[1,2,3]}') AS obj2,
+    StringToObject('{"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]}') AS obj3, 
+    StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
+``` 
+
+ 結果セットは次のようになります。
+
+```
+[{"obj1": {}, 
+  "obj2": {"A": [1,2,3]}, 
+  "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
+  "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
+```
+ 
+ 無効な入力を使用した例を次に示します。
+クエリ内では有効であっても、有効なオブジェクトとして解析されません。 オブジェクト文字列内の文字列は、"{\\"a\\":\\"str\\"}" のようにエスケープするか、'{"a": "str"}' のように一重引用符で囲む必要があります。
+
+ 一重引用符で囲んだプロパティ名は有効な JSON ではありません。
+
+``` 
+SELECT 
+    StringToObject("{'a':[1,2,3]}")
+```
+
+ 結果セットは次のようになります。
+
 ```  
-  
- 結果セットは次のようになります。  
-  
+[{}]
 ```  
-[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+
+ 引用符で囲まれていないプロパティ名は有効な JSON ではありません。
+
+``` 
+SELECT 
+    StringToObject("{a:[1,2,3]}")
+```
+
+ 結果セットは次のようになります。
+
 ```  
+[{}]
+``` 
+
+ 無効な入力を使用した例を次に示します。
+ 
+ 渡された式は JSON オブジェクトとして解析されます。これらの入力はオブジェクト型として評価されないため、undefined が返されます。
+ 
+``` 
+SELECT 
+    StringToObject("}"),
+    StringToObject("{"),
+    StringToObject("1"),
+    StringToObject(NaN), 
+    StringToObject(false), 
+    StringToObject(undefined)
+``` 
+ 
+ 結果セットは次のようになります。
+
+```
+[{}]
+```
 
 ####  <a name="bk_substring"></a> SUBSTRING  
  指定された文字のゼロベースの位置で始まる文字列式の一部を返し、指定された長さまたは文字列の末尾まで続きます。  

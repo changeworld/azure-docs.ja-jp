@@ -4,7 +4,7 @@ description: イベントを視覚化および分析するように Azure Monito
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 33984b084023a3a2c31b6f6a0a7fc8a95c2d7689
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3523a2df413740f644151c548e403c39c9be1f03
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242855"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670508"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>クラスターに Azure Monitor ログを設定する
 
 クラスター レベルのイベントを監視する手段として、Microsoft は Azure Monitor ログを推奨しています。 Log Analytics ワークスペースは、Azure Resource Manager、PowerShell、Azure Marketplace のいずれかを使用して設定できます。 将来のために、デプロイの更新された Resource Manager テンプレートを保持している場合は、同じテンプレートを使って Azure Monitor ログ環境を設定します。 診断が有効な状態でデプロイされているクラスターが既にある場合は、Marketplace を使用したほうが簡単にデプロイを行えます。 デプロイ先のアカウントにサブスクリプション レベルのアクセス許可がない場合は、PowerShell または Resource Manager テンプレートを使ってデプロイします。
 
 > [!NOTE]
-> クラスターを監視するように Azure Monitor ログを設定するには、クラスターレベルまたはプラットフォーム レベルのイベントを表示するために診断を有効にする必要があります。 詳細については、[Windows クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-wad.md)に関するページおよび [Linux クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-lad.md)に関するページを参照してください。
+> クラスターを監視するように Azure Monitor ログを設定するには、クラスターレベルまたはプラットフォーム レベルのイベントを表示するために診断を有効にする必要があります。 詳細については、[Windows クラスターで診断を設定する方法](service-fabric-diagnostics-event-aggregation-wad.md)に関するページおよび [Linux クラスターで診断を設定する方法](service-fabric-diagnostics-oms-syslog.md)に関するページを参照してください。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "57242855"
 Windows を使っている場合は、次の手順に進み、クラスター イベントが格納されているストレージ アカウントに Azure Monitor ログを接続します。 
 
 >[!NOTE]
->Linux クラスターではこのエクスペリエンスを有効にすることはまだできません。 
+>Service Fabric Analytics ソリューションは、Windows クラスターでのみサポートされます。 Linux クラスターの場合は、[Linux クラスターに Azure Monitor ログを設定する方法](service-fabric-diagnostics-oms-syslog.md)に関する記事を参照してください。  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Log Analytics ワークスペースをクラスターに接続する 
 
@@ -97,9 +97,9 @@ Azure Resource Manager は、このコマンドが既存のリソースに対す
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Azure PowerShell を使用して Azure Monitor ログをテプロイする
 
-`New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell から Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
+`New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell から Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
 
-```PowerShell
+```powershell
 
 $SubID = "<subscription ID>"
 $ResourceGroup = "<Resource group name>"

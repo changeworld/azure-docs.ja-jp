@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b98b9653aee395ebdf797c50c313c322727480c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14e9bd7b87f2941fcc075a6265f2e6c96fe646ea
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892763"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649916"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -39,7 +39,7 @@ Azure Disk Encryption は、[A、D、DS、G、GS、および F](https://azure.mi
 
 Azure Disk Encryption は、以下の Linux サーバーのディストリビューションおよびバージョンでサポートされます。
 
-| Linux ディストリビューション | Version | 暗号化がサポートされているボリュームの種類|
+| Linux ディストリビューション | バージョン | 暗号化がサポートされているボリュームの種類|
 | --- | --- |--- |
 | Ubuntu | 16.04| OS とデータ ディスク |
 | Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
@@ -125,7 +125,7 @@ Azure Disk Encryption を構成するには、最新バージョンの Azure Pow
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>yum update を使用する Linux Red Hat VM に更新プログラムを適用できますか。
 
-はい。Red Hat Linux VM に対して更新プログラムまたは修正プログラムを実行できます。 詳細については、「[Applying updates to a encrypted Azure IaaS Red Hat VM using Yum Update](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/13/applying-updates-to-a-encrypted-azure-iaas-red-hat-vm-using-yum-update/)」(yum update を使用して暗号化された Azure IaaS Red Hat VM に更新プログラムを適用する) を参照してください。
+はい。Red Hat Linux VM に対して yum update を実行できます。  詳細については、「[ファイアウォール内の Linux パッケージの管理](azure-security-disk-encryption-tsg.md#linux-package-management-behind-a-firewall)」を参照してください。
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Linux で推奨される Azure Disk Encryption ワークフローは何ですか。
 
@@ -152,7 +152,7 @@ Windows では、ADE は BitLocker AES256 暗号化方法を使用します (Win
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS ファイルシステムはサポートされていますか。
-XFS ボリュームは、データ ディスクの暗号化でサポートされています。 XFS を使用して現在フォーマットされているボリュームを暗号化するには、EncryptFormatAll オプションを指定します。 これにより、ボリュームが再フォーマットされます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
+XFS ボリュームは、EncryptFormalAll を使用したデータ ディスクの暗号化でのみサポートされています。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
 

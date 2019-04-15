@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 3/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7cd90b987550dc60b30d3aa0cd1016b681eec85f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547031"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574860"
 ---
 # <a name="collect-data-from-office-365-logs"></a>Office 365 のログからデータを収集する
 
@@ -33,7 +33,7 @@ ms.locfileid: "57547031"
 ## <a name="prerequisites"></a>前提条件
 
 - テナントのグローバル管理者またはセキュリティ管理者である
-- テナントを追加するには、接続を実行するコンピューター上でポート 4433 を Web トラフィックに対して開きます。
+- 接続を作成するために Azure Sentinel にログインしているコンピューターで、Web トラフィックに対してポート 4433 が開かれていることを確認します。
 
 ## <a name="connect-to-office-365"></a>Office 365 への接続
 
@@ -51,6 +51,6 @@ ms.locfileid: "57547031"
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Office 365 を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化する](quickstart-get-visibility.md)方法を確認する。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)を開始する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

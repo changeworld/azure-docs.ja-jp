@@ -1,5 +1,5 @@
 ---
-title: Azure AD アクセス レビューを使用したゲスト アクセスの管理 | Microsoft Docs
+title: アクセス レビューを使用したゲスト アクセスの管理 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory アクセス レビューを使用し、ゲスト ユーザーをグループのメンバーとして、またはアプリケーションに割り当てられたユーザーとして管理します。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bed8a5d20b50fd90922730c958cb1a36933776f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881046"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576498"
 ---
-# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD アクセス レビューを使用したゲスト アクセスの管理
+# <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
 
 Azure Active Directory (Azure AD) では、組織の境界を越えたコラボレーションを [Azure AD B2B 機能](../b2b/what-is-b2b.md)で簡単に実現できます。 [管理者](../b2b/add-users-administrator.md)または[それ以外のユーザー](../b2b/what-is-b2b.md)が他のテナントからゲスト ユーザーを招待できます。 Microsoft アカウントなどのソーシャル ID も、この機能の対象となります。

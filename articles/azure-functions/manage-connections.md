@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 30d578f130985548c431dea8b68ee291325b5c99
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450738"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893222"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -23,7 +23,7 @@ ms.locfileid: "57450738"
 
 使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つは、インスタンスあたりの[接続数の上限 (現在、アクティブな接続数は 600、合計接続数は 1,200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) です。 この制限に達すると、関数ランタイムは `Host thresholds exceeded: Connections` というメッセージでログを作成します。
 
-この制限はインスタンスごとに適用されます。  より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-plan-works)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
+この制限はインスタンスごとに適用されます。  より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
 
 ## <a name="static-clients"></a>静的クライアント
 
@@ -57,7 +57,7 @@ public static async Task Run(string input)
 
 .NET の [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) について、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
 
-### <a name="http-agent-examples-nodejs"></a>HTTP エージェントの例 (Node.js)
+### <a name="http-agent-examples-javascript"></a>HTTP エージェントの例 (JavaScript)
 
 優れた接続管理オプションが提供されることから、`node-fetch` モジュールなどの非ネイティブ メソッドではなくネイティブの [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) クラスを使用する必要があります。 接続パラメーターは、`http.agent` クラスのオプションを使用して構成されます。 HTTP エージェントで利用できるオプションの詳細については、[new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) を参照してください。
 
@@ -105,6 +105,25 @@ public static async Task Run(string input)
     await documentClient.UpsertDocumentAsync(collectionUri, document);
     
     // Rest of function
+}
+```
+
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient のコード例 (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) は、Azure Cosmos DB のインスタンスに接続します。 Azure Cosmos DB のドキュメントでは、[アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する](../cosmos-db/performance-tips.md#sdk-usage)ことが推奨されています。 次の例では、関数内でそれを行うパターンの 1 つを示します。
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
 }
 ```
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 4041bee71a41cee06243d53de128bcceecda5618
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58001831"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877740"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Service Fabric、クラウド サービス、および Virtual Machines で .NET アプリのスナップショット デバッガーを有効にする
 
@@ -77,7 +77,7 @@ ASP.NET または ASP.NET Core のアプリケーションを Azure App Service 
 
 3. アプリケーションの `Startup` クラスを変更し、スナップショット コレクターのテレメトリ プロセッサを追加および構成します。
 
-    次の using ステートメントを `Startup.cs` に追加します。
+    次の using ステートメントを次に追加します:  `Startup.cs`
 
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;

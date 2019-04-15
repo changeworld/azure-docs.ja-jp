@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 35568f6c281a2aaf058fe08b214657c7737c64fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842160"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882074"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -93,6 +93,8 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 #### <a name="windows-server"></a>Windows Server
 
+- Windows Server 2019
+- Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
 - Windows Server 2012
@@ -100,96 +102,68 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 #### <a name="windows-desktop"></a>Windows デスクトップ
 
+- Windows 10 1803
 - Windows 10
 - Windows 8.1
 - Windows 8
 - Windows 7
 
-#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux、CentOS Linux 、および Oracle Linux (RHEL カーネル搭載)
+#### <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
+次のセクションでは、Linux の Dependency Agent でサポートされているオペレーティング システムを示します。  
 
 - 既定と SMP Linux のカーネル リリースのみがサポートされています。
-- PAE、Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が _2.6.16.21-0.8-xen_ であるシステムはサポートされていません。
+- PAE、Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が「2.6.16.21-0.8-xen」であるシステムはサポートされていません。
 - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
-- CentOS Plus カーネルはサポートされていません。
-- Oracle Unbreakable Enterprise Kernel (UEK) については、この記事の後のセクションで説明します。
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
+##### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 7.4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
 
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
+##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4. | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
-#### <a name="red-hat-linux-5"></a>Red Hat Linux 5
+##### <a name="centosplus"></a>CentOSPlus
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 5.8 | 2.6.18-308 |
-| 5.9 | 2.6.18-348 |
-| 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398 <br> 2.6.18-400 <br>2.6.18-402 <br>2.6.18-404 <br>2.6.18-406 <br> 2.6.18-407 <br> 2.6.18-408 <br> 2.6.18-409 <br> 2.6.18-410 <br> 2.6.18-411 <br> 2.6.18-412 <br> 2.6.18-416 <br> 2.6.18-417 <br> 2.6.18-419 |
+##### <a name="ubuntu-server"></a>Ubuntu Server
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| Ubuntu 18.04 | カーネル 4.15.\*<br>4.18* |
+| Ubuntu 16.04.3 | カーネル 4.15.* |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
 
-#### <a name="oracle-linux-6"></a>Oracle Linux 6
+##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4. | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
+| OS バージョン | カーネル バージョン
+|:--|:--|
+| 11 SP4 | 3.0.* |
 
-#### <a name="oracle-linux-5"></a>Oracle Linux 5
+##### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+| OS バージョン | カーネル バージョン
+|:--|:--|
+| 12 SP2 | 4.4.* |
+| 12 SP3 | 4.4.* |
 
-#### <a name="suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server
+### <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 
-#### <a name="suse-linux-11"></a>SUSE Linux 11
-
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
-
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-
-| **OS バージョン** | **カーネル バージョン** |
-| --- | --- |
-| 10 SP4 | 2.6.16.60 |
-
-#### <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
-
-| **ファイル** | **OS** | **バージョン** | **SHA-256** |
-| --- | --- | --- | --- |
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
+| ファイル | OS | バージョン | SHA-256 |
+|:--|:--|:--|:--|
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) |  Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 
 
@@ -203,7 +177,8 @@ Windows または Linux コンピューターがサービスに直接接続で�
 > [!NOTE]
 > 以前のバージョンのワイヤ データ ソリューションは、新しいワークスペースに追加できません。 元のワイヤ データ ソリューションが有効になっている場合は、引き続き使用できます。 ただし、Wire Data 2.0 を使用するには、まず元のバージョンを削除する必要があります。
 > 
-> ### <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
+ 
+### <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
 
 エージェントをインストールまたはアンインストールするには、管理者特権が必要です。
 
@@ -212,7 +187,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
 1. [環境でホストされている Windows コンピューターからのデータの収集](../../azure-monitor/platform/agent-windows.md)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
-2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
+2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。 `InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
 4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。
 
@@ -255,7 +230,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| **ファイル** | **場所** |
+| **ファイル** | **Location** |
 | --- | --- |
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |
@@ -269,7 +244,7 @@ Dependency Agent を同時に多数のサーバーに対して簡単にデプロ
 
 #### <a name="powershell-script-for-windows"></a>Windows 用 PowerShell スクリプト
 
-```PowerShell
+```powershell
 
 Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
 
@@ -291,7 +266,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 Desired State Configuration 経由で Dependency Agent をデプロイするには、次のように xPSDesiredStateConfiguration モジュールと簡単なコードを使用できます。
 
-```
+```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
 $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
@@ -341,6 +316,7 @@ Node $NodeName
 }
 
 ```
+
 ### <a name="uninstall-the-dependency-agent"></a>Dependency Agent のアンインストール
 
 Dependency Agent を削除するには、次のセクションを使用します。
@@ -366,8 +342,6 @@ rpm -e dependency-agent dependency-agent-connector
 この管理パックは、Microsoft.IntelligencePacks.ApplicationDependencyMonitor という名前で、 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs に書き込まれます。 管理パックで使用されるデータ ソースは、%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll です。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
-
-**ソリューションのインストールと構成**
 
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
@@ -423,9 +397,9 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | ReceivedBytes | 受信したバイト数 |
 | ProtocolName | 使用されるネットワーク プロトコルの名前 |
 | IPVersion | IP バージョン |
-| Direction | 受信または送信 |
+| 方向 | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
-| Severity | 疑いのあるマルウェアの重大度 |
+| severity | 疑いのあるマルウェアの重大度 |
 | RemoteIPCountry | リモート IP アドレスの国 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100174"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905540"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>内部ロード バランサー (ILB) エンドポイントでアプリケーション ゲートウェイを構成する
 
@@ -25,9 +25,12 @@ Azure Application Gateway は、インターネットに接続する VIP のほ�
 - Application Gateway にプライベート フロントエンド IP 構成を作成する
 - プライベート フロントエンド IP 構成でアプリケーション ゲートウェイを作成する
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (<https://portal.azure.com>) にログインします
+次の Azure portal にログインする:  <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -67,7 +70,7 @@ Azure Portal (<https://portal.azure.com>) にログインします
 3. 次の仮想マシンの値を入力します。
    - *myVM* - 仮想マシンの名前です。
    - *azureuser* - 管理者のユーザー名です。
-   - *Azure123456!* パスワードです。
+   - *Azure123456!* 入力します。
    - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
 4. Click **OK**.
 5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
@@ -82,7 +85,7 @@ Azure Portal (<https://portal.azure.com>) にログインします
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。
 
    ```azurepowershell
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
    
      -ResourceGroupName myResourceGroupAG `
    
@@ -100,7 +103,7 @@ Azure Portal (<https://portal.azure.com>) にログインします
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzureRmVMExtension.
+3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
 
 ### Add backend servers to backend pool
 

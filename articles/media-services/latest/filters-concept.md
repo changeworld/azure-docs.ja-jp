@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 61b877c322fcd58472990c328beea2e309502bce
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889360"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652350"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>アカウント フィルターとアセット フィルターの定義  
 
@@ -55,17 +55,17 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 フィルターは、次のプロパティを使用して記述します。 
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |firstQuality|フィルターの最高品質ビットレートです。|
-|presentationTimeRange|プレゼンテーション時間の範囲です。 このプロパティは、マニフェストの開始/終了ポイント、プレゼンテーション ウィンドウの長さ、ライブ開始位置をフィルタリングする目的で使用します。 <br/>詳細については、「[PresentationTimeRange](#PresentationTimeRange)」を参照してください。|
+|presentationTimeRange|プレゼンテーション時間の範囲です。 このプロパティは、マニフェストの開始/終了ポイント、プレゼンテーション ウィンドウの長さ、ライブ開始位置をフィルタリングする目的で使用します。 <br/>詳細については、「[PresentationTimeRange](#presentationtimerange)」を参照してください。|
 |tracks|トラックの選択条件です。 詳細については、「[tracks](#tracks)」を参照してください。|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 
 このプロパティは、**アセット フィルター**で使用します。 このプロパティを**アカウント フィルター**で設定することはお勧めできません。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |**endTimestamp**|ビデオ オン デマンド (VOD) が対象となります。<br/>ライブ ストリーミング プレゼンテーションでは、ダイアログを表示せずに無視され、プレゼンテーションが終了してストリームが VoD になったときに適用されます。<br/>これは long 値であり、プレゼンテーションの絶対的な終了点を表します。最も近い次の GOP 開始に丸められます。 単位はタイムスケールであるため、3 分の場合、endTimestamp は 1800000000 となります。<br/>プレイリスト (マニフェスト) に含まれるフラグメントをトリミングするには、startTimestamp と endTimestamp を使用します。<br/>たとえば、既定のタイムスケールを使用する startTimestamp=40000000 と endTimestamp=100000000 では、VoD プレゼンテーションの 4 秒から 10 秒までのフラグメントを含むプレイリストが生成されます。 その境界をフラグメントがまたいだ場合、フラグメント全体がマニフェストに含められます。|
 |**forceEndTimestamp**|ライブ ストリーミングのみに適用されます。<br/>endTimestamp プロパティが存在する必要があるかどうかを示します。 true の場合、endTimestamp を指定する必要があります。そうしないと、不適切な要求コードが返されます。<br/>使用できる値: false、true。|
@@ -80,7 +80,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 フィルター トラック プロパティ条件は、トラックの種類、値 (以下の表で説明します)、演算 (Equal、NotEqual) を記述したものです。 
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |**Bitrate**|フィルタリングにトラックのビットレートを使用します。<br/><br/>推奨される値は、bps (1 秒あたりのビット数) で表したビットレートの範囲です。 たとえば、「0-2427000」と指定します。<br/><br/>注: 特定のビットレート値、たとえば 250000 (bps) を使用することもできますが、厳密なビットレートはアセットごとに変動するので、この方法はお勧めしません。|
 |**FourCC**|フィルタリングにトラックの FourCC 値を使用します。<br/><br/>この値は、[RFC 6381](https://tools.ietf.org/html/rfc6381) で規定されたコーデック形式の最初の要素です。 現在は、次のコーデックがサポートされています。 <br/>ビデオ: "avc1"、"hev1"、"hvc1"<br/>オーディオ: "mp4a"、"ec-3"<br/><br/>アセットのトラックの FourCC 値を調べるには、マニフェスト ファイルを取得して調査します。|
@@ -88,7 +88,11 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 |**Name**|フィルタリングにトラックの名前を使用します。|
 |**Type**|フィルタリングにトラックの種類を使用します。<br/><br/>"video"、"audio"、"text" のいずれかの値を指定できます。|
 
-## <a name="example"></a>例
+## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+
+資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせは[動的マニフェスト](filters-dynamic-manifest-overview.md)を生成します。これは、URL のフィルター + ストリーミング ロケーターに指定するフィルターに基づいています。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+
+## <a name="definition-example"></a>定義の例
 
 ```json
 {

@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80cff113264868517f5348cfbbd7eaad7fbc751
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838393"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438303"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -40,7 +40,7 @@ ms.locfileid: "57838393"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重複属性の回復性による動作
 属性が重複するオブジェクトのプロビジョニングまたは更新を完全に失敗させる代わりに、Azure Active Directory は一意性の制約に違反する重複属性を "検疫" します。 この属性が、UserPrincipalName のように、プロビジョニングに必要な場合、サービスはプレースホルダー値を割り当てます。 これらの一時的な値の形式は、  
-“***<OriginalPrefix>+<4DigitNumber>\@<InitialTenantDomain>.onmicrosoft.com***” です。  
+“***\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com***” です。  
 **ProxyAddress** のように、この属性が必須でない場合、Azure Active Directory は競合属性を検疫し、オブジェクトの作成または更新を続行します。
 
 属性の検疫時に、競合に関する情報は、従来の動作で使用されるのと同じエラー レポート電子メールで送信されます。 ただし、この情報は、検疫が発生した際にエラー レポートに 1 回表示されるだけで、その後の電子メールではログに記録されません。 また、このオブジェクトのエクスポートは成功しているため、同期クライアントはエラーをログに記録せず、後続の同期サイクルで作成/更新操作を再試行しません。
@@ -113,7 +113,7 @@ ms.locfileid: "57838393"
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>制限した数、またはすべて
-1. **MaxResults <Int>** を使用して、クエリの値を特定の数までに制限できます。
+1. **MaxResults \<Int>** を使用して、クエリの値を特定の数までに制限できます。
 2. **All** は、多数のエラーが存在する場合に使用すると、すべての結果を確実に取得できます。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`

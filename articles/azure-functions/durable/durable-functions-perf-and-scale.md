@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286382"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895751"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -56,7 +56,7 @@ Durable Task 拡張機能は、アイドル状態のキューのポーリング�
 最大ポーリング遅延は、[host.json ファイル](../functions-host-json.md#durabletask)内の `maxQueuePollingInterval` プロパティを使用して構成できます。 この値を高く設定するほど、メッセージ処理の待機時間が長くなる可能性があります。 長い処理時間が予期されるのは、非アクティブ期間の後のみになります。 低い値に設定すると、ストレージ トランザクションの増加により、ストレージ コストが上昇する可能性があります。
 
 > [!NOTE]
-> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-plan-works) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
+> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
 
 ## <a name="storage-account-selection"></a>ストレージ アカウントの選択
 
@@ -244,4 +244,4 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [C# で最初の永続関数を作成する](durable-functions-create-first-csharp.md)
+> [C# で最初の持続的関数を作成する](durable-functions-create-first-csharp.md)

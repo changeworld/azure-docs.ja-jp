@@ -4,7 +4,7 @@ description: この記事では、カスタマイズ可能な Fabric の設定�
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 379477cd063192fc8c23c73b4a8814ad13507043
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836965"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667534"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -614,13 +614,13 @@ ms.locfileid: "57836965"
 ## <a name="security"></a>セキュリティ
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" のような既定以外の環境用に指定される AAD 証明書エンドポイント形式。既定値は Azure Commercial。 |
+|AADCertEndpointFormat|string、既定値は ""|静的|Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" のような既定以外の環境用に指定される AAD 証明書エンドポイントの形式。既定値は Azure Commercial。 |
 |AADClientApplication|string、既定値は ""|静的|Fabric クライアントを表すネイティブ クライアント アプリケーションの名前または ID |
 |AADClusterApplication|string、既定値は ""|静的|クラスターを表す Web API アプリケーションの名前または ID |
-|AADLoginEndpoint|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us" のような既定以外の環境用に指定される AAD ログイン エンドポイント。既定値は Azure Commercial。 |
+|AADLoginEndpoint|string、既定値は ""|静的|Azure Government "https:\//login.microsoftonline.us" のような既定以外の環境用に指定される AAD ログイン エンドポイント。既定値は Azure Commercial。 |
 |AADTenantId|string、既定値は ""|静的|テナント ID (GUID) |
 |AdminClientCertThumbprints|string、既定値は ""|動的|管理者ロールでクライアントによって使用される証明書のサムプリント。 コンマ区切りの名前リストです。 |
-|AADTokenEndpointFormat|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us/{0}" のような既定以外の環境用に指定される AAD トークン エンドポイント。既定値は Azure Commercial。 |
+|AADTokenEndpointFormat|string、既定値は ""|静的|Azure Government "https:\//login.microsoftonline.us/{0}" のような既定以外の環境用に指定される AAD トークン エンドポイント。既定値は Azure Commercial。 |
 |AdminClientClaims|string、既定値は ""|動的|管理クライアントから期待される、考えられるすべての要求。ClientClaims と同じ形式です。この一覧は ClientClaims に内部的に追加されるため、同じエントリを ClientClaims に追加する必要はありません。 |
 |AdminClientIdentities|string、既定値は ""|動的|管理者ロールのファブリック クライアントの Windows ID。特権ファブリック操作の承認に使用されます。 これはコンマ区切りリストで、各エントリがドメイン アカウント名またはグループ名です。 便宜上、fabric.exe を実行するアカウントは自動的に管理者ロールを割り当てられます。グループ ServiceFabricAdministrators も同様です。 |
 |AppRunAsAccountGroupX509Folder|string、既定値は /home/sfuser/sfusercerts |静的|AppRunAsAccountGroup X509 証明書と秘密キーがあるフォルダー |

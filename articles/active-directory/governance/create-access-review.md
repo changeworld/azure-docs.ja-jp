@@ -1,6 +1,6 @@
 ---
-title: グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する | Microsoft Docs
-description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure AD アクセス レビューで作成する方法について説明します。
+title: グループまたはアプリケーションのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
+description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューで作成する方法について説明します。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,12 +15,12 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17078ea14a254f64a41751f2efffc16e2a1e821
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847384"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576202"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -130,7 +130,7 @@ ms.locfileid: "57847384"
 
 ## <a name="create-reviews-via-apis"></a>API を使用してレビューを作成する
 
-API を使ってアクセス レビューを作ることもできます。 グループおよびアプリケーション ユーザーのアクセス レビューを管理するために Azure portal で行うことは、Microsoft Graph API を使って行うこともできます。 詳しくは、[Azure AD アクセス レビュー API リファレンス](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)のページをご覧ください。 コードのサンプルについては、「[Example of retrieving Azure AD Access Reviews via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)」(Microsoft Graph を使用して Azure AD アクセス レビューを取得する例) をご覧ください。
+API を使ってアクセス レビューを作ることもできます。 グループおよびアプリケーション ユーザーのアクセス レビューを管理するために Azure portal で行うことは、Microsoft Graph API を使って行うこともできます。 詳しくは、[Azure AD アクセス レビュー API リファレンス](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)のページをご覧ください。 コード サンプルについては、「[Example of retrieving Azure AD Access Reviews via Microsoft Graph (Microsoft Graph を使用して Azure AD アクセス レビューを取得する例)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078076"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660512"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Azure NetApp Files の設定とボリュームの作成 
 
@@ -105,9 +105,9 @@ ms.locfileid: "58078076"
    4. クォータの既定値を使用します。 
    5. 仮想ネットワークで **[新規作成]** をクリックし、新しい Azure 仮想ネットワーク (Vnet) を作成します。  次の情報を入力します。
        * Vnet 名として「**myvnet1**」と入力します。
-       * 10.7.0.0/16 など、アドレス空間を指定します。
+       * 10.7.0.0/16 など、自分の設定用のアドレス空間を指定します。
        * サブネット名として「**myANFsubnet**」と入力します。
-       * 10.7.0.0/24 など、サブネット アドレス範囲を指定します。
+       * 10.7.0.0/24 など、サブネット アドレス範囲を指定します。 専用サブネットは、他のリソースと共有できないことに注意してください。
        * サブネットの委任に **[Microsoft.NetApp/volumes]** を選択します。
        * **[OK]** をクリックして Vnet を作成します。
    6. サブネットで、新しく作成した Vnet (**myvnet1**) を委任サブネットとして選択します。

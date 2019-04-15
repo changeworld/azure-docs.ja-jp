@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: ac47ad10f394eaf31a9f7c12d7a2a03ea23283f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092652"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879694"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 

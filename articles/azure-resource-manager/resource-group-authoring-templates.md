@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f79518b26752d581d6360a3b770e8a5cba293fd7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781903"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904935"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
 この記事は、Resource Manager テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造と構文に関する詳細情報を提供します。 テンプレートの作成の概要を知りたい場合は、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」をご覧ください。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="template-format"></a>テンプレートの形式
 
@@ -44,7 +47,7 @@ ms.locfileid: "57781903"
 
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。<br><br> リソース グループ デプロイの場合、次を使用します。`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。<br><br> リソース グループ デプロイの場合、次を使用します。 `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。 `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |はい |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
 | apiProfile |いいえ  | リソースの種類に対する API のバージョンのコレクションとして機能する API バージョン。 この値を使用すると、テンプレートのリソースごとに API バージョンを指定しなくて済みます。 API プロファイルのバージョンを指定し、リソースの種類の API バージョンを指定しないと、Resource Manager では、プロファイルでそのリソースの種類に対して定義されている API バージョンが使用されます。<br><br>API プロファイル プロパティは、Azure Stack やグローバルな Azure など、さまざまな環境にテンプレートをデプロイする場合に特に便利です。 API プロファイルのバージョンを使用し、両方の環境でサポートされているバージョンがテンプレートで自動的に使用されるようにします。 現在の API プロファイルのバージョンおよびリソース プロファイルで定義されている API バージョンの一覧については、「[API Profile (API プロファイル)](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)」をご覧ください。<br><br>詳しくは、「[API プロファイルを使用してバージョンを追跡する](templates-cloud-consistency.md#track-versions-using-api-profiles)」をご覧ください。 |
 | [parameters](#parameters) |いいえ  |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
@@ -667,9 +670,9 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 
 入れ子にした場合、種類は `databases` に設定されますが、全体的なリソースの種類は `Microsoft.Sql/servers/databases` です。 親リソースの種類から想定されるため、`Microsoft.Sql/servers/` は不要です。 子リソースの名前は `exampledatabase` が設定されていますが、完全な名前には親の名前が含まれています。 親リソースから想定されるため、`exampleserver` は不要です。
 
-子リソースの種類の形式は次の通りです。`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+子リソースの種類の形式は次のとおりです。 `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-子リソースの名前の形式は次の通りです。`{parent-resource-name}/{child-resource-name}`
+子リソースの名前の形式は次のとおりです。 `{parent-resource-name}/{child-resource-name}`
 
 ただし、データベースをサーバー内で定義する必要はありません。 最上位レベルで子リソースを定義できます。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために `copy` を使う場合は、このアプローチを使用することがあります。 このアプローチの場合、完全なリソースの種類を指定する必要があり、子リソースの名前に親のリソースの名前を含める必要があります。
 
@@ -698,7 +701,7 @@ Resource Manager では、一般に、次の 3 種類のリソース名を使用
 
 例: 
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`は正しい`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`は正しくない
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` は正しい `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` は正しくない
 
 ## <a name="outputs"></a>出力
 
