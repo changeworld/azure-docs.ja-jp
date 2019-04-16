@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure でコンテナー、マイクロサービス、Java を使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 26f82427ff06608de39381b4ecc45d318212a8a0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c1c039ba8696baff11abed3930998983647f4356
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419015"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425748"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で Java の開発を行う
 
@@ -31,7 +31,7 @@ ms.locfileid: "58419015"
 
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
 - [Visual Studio Code がインストールされていること](https://code.visualstudio.com/download)。
--  Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能と [Java Debugger for Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) 拡張機能がインストールされていること。
+- Visual Studio Code 用の [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 拡張機能と [Java Debugger for Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) 拡張機能がインストールされていること。
 - [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 - [Maven がインストールされ構成されていること](https://maven.apache.org)。
 

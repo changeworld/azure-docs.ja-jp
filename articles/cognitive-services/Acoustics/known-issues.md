@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kylestorck
-ms.openlocfilehash: 4cbede768409596365bea0cdbbb451cc5195ac4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136261"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309947"
 ---
 # <a name="project-acoustics-known-issues"></a>Project Acoustics の既知の問題
 Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
@@ -28,8 +28,9 @@ Project Acoustics の Designer Preview の使用時に、以下で説明する�
 
 Unity の最新バージョン (2018.2 以降) には、プロジェクトを閉じると Unity がクラッシュするという既知のバグがあります。 この件は [Unity の問題](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)として調査中です。
 
-## <a name="trouble-deploying-to-android"></a>Android へのデプロイの問題
-Android で Project Acoustics を使用するには、ビルド ターゲットを Android に変更します。 Unity の一部のバージョンには、オーディオ プラグインのデプロイに関するバグがあります。 [こちらのバグ](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)の影響を受けるバージョンを使用していないことを確認してください。
+## <a name="deploying-to-android-from-some-unity-versions"></a>Unity の一部のバージョンから Android へのデプロイ
+
+Unity の一部のバージョンには、Android へのオーディオ プラグインのデプロイに関するバグがあります。 [こちらのバグ](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)の影響を受けるバージョンを使用していないことを確認してください。
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>"could not find metadata file System.Security.dll"(メタデータ ファイル System.Security.dll が見つかりませんでした) というエラーが表示される
 

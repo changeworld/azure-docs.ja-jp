@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0adb24458f718511c7134fc3bf36dd0b03173e30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011512"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470918"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
-[Azure Cosmos DB for MongoDB](mongodb-introduction.md) を使用している場合は、次の接続文字列を使用します。
+[Azure Cosmos DB for MongoDB の API](mongodb-introduction.md) を使用している場合は、次の接続文字列を使用します。
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -179,7 +179,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="gremlin-api"></a>Gremlin API
 
-管理者のコマンド プロンプトからエミュレーターを起動します。その際、一緒に "/EnableGremlinEndpoint" を指定します。 代わりに、環境変数 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` を設定することもできます
+管理者のコマンド プロンプトからエミュレーターを起動します。その際、一緒に "/EnableGremlinEndpoint" を指定します。 代わりに、次の環境変数を設定することもできます。 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
 * [apache-tinkerpop-gremlin-console-3.3.4 をインストールします](http://tinkerpop.apache.org/downloads.html)
 
@@ -236,7 +236,7 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `CosmosDB.Emulator.exe /?` 」と入力します。
 
-|**オプション** | **説明** | **コマンド**| **引数**|
+|**オプション** | **説明** | **command**| **引数**|
 |---|---|---|---|
 |[引数なし] | 既定の設定で Azure Cosmos Emulator を起動します。 |CosmosDB.Emulator.exe| |
 |[Help] |サポートされるコマンド ライン引数の一覧を表示します。|CosmosDB.Emulator.exe /? | |
@@ -439,7 +439,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown` プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
+2. `CosmosDB.Emulator.exe /shutdown`。 プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。

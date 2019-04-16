@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 192ac256f013498e57ecf7939d29796af073b948
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500204"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260563"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service on Azure Stack update 5 のリリース ノート
 
@@ -72,12 +72,12 @@ Azure App Service on Azure Stack Update 5 には、次の機能強化と修正�
   - Kudu を 79.20129.3767 に更新
   
 - **すべてのロールの基になっているオペレーティング システムの更新プログラム**:
-  - [x64 ベース システム用 Windows Server 2016 に対する 2019-02 累積的更新プログラム (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
+  - [x64 ベース システム用 Windows Server 2016 に対する 2019-02 累積的な更新プログラム (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
 ### <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]  
-> SQL Always On インスタンスを使用して App Service RP を提供している場合は、データベースのフェールオーバー時にサービスの停止を防ぐために、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
+> SQL Always On インスタンスを使用して App Service リソース プロバイダーを提供している場合は、データベースのフェールオーバーが発生したときにサービスが失われないように、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
 
 ### <a name="post-update-steps"></a>更新後の手順
 

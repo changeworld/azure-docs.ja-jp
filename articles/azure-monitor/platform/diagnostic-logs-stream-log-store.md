@@ -1,6 +1,6 @@
 ---
-title: Azure 診断ログの Log Analytics へのストリーミング
-description: Azure 診断ログを Log Analytics ワークスペースにストリーミングする方法について説明します。
+title: Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする
+description: Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする方法を説明します。
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351560"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630785"
 ---
-# <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Azure 診断ログの Log Analytics へのストリーミング
+# <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする
 
-Azure Log Analytics には、ポータル、PowerShell コマンドレット、Azure CLI のいずれかの方法を使い、**[Azure 診断ログ](diagnostic-logs-overview.md)** をほぼリアルタイムでストリーミングすることができます。
+ポータル、PowerShell コマンドレット、または Azure CLI を使用して、Azure Monitor の Log Analytics ワークスペースに、**[Azure 診断ログ](diagnostic-logs-overview.md)** をほぼリアルタイムでストリーミングすることができます。
 
-## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Log Analytics から診断ログを使ってできること
+## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>Log Analytics ワークスペースの診断ログを使用してできること
 
-Azure Log Analytics は、ログの検索と分析に対応したフレキシブルなツールです。Azure リソースから生成された生のログ データから洞察を得ることができます。 いくつかの機能の例を次に示します。
+Azure Monitor では、柔軟なログ クエリと分析のツールが提供されており、Azure リソースから生成された生のログ データから分析情報を得ることができます。 いくつかの機能の例を次に示します。
 
-* **ログ検索** - ログ データに対する高度なクエリを記述して、各種ソースからのログを相互に関連付けます。また、Azure ダッシュボードにピン留め可能なグラフを生成することもできます。
-* **アラート** - 特定のクエリにイベントが一致したことを検出し、メールまたは webhook 呼び出しで通知します。
-* **ソリューション** - 既製のビューとダッシュボードを使用して、すぐにログ データから洞察を得ることができます。
+* **ログ クエリ** - ログ データに対する高度なクエリを記述して、各種ソースからのログを相互に関連付けます。また、Azure ダッシュボードにピン留め可能なグラフを生成することもできます。
+* **アラート** - 特定のクエリにイベントが一致したことを検出し、Azure Monitor アラートを使用してメールまたは Webhook 呼び出しで通知します。
 * **高度な分析** - 機械学習とパターン マッチング アルゴリズムを適用して、ログから潜在的な問題を特定します。
 
-## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Log Analytics への診断ログのストリーミングを有効にする
+## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>Log Analytics ワークスペースへの診断ログのストリーミングを有効にする
 
 診断ログのストリーミングは、プログラム、ポータル、または [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) を使用して有効にすることができます。 どの方法でも、Log Analytics ワークスペースと、そこに送信するログのカテゴリおよびメトリックを指定する診断設定を作成します。 診断**ログ カテゴリ**とは、リソースから得られるログの種類です。
 
@@ -42,9 +41,8 @@ Azure Log Analytics は、ログの検索と分析に対応したフレキシブ
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>ポータルを使用して診断ログをストリーミングする
-1. ポータルで、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. ポータルで、Azure Monitor に移動し、**[設定]** メニューの **[診断設定]** をクリックします。
 
-    ![Azure Monitor の [監視] セクション](media/diagnostic-logs-stream-log-store/diagnostic-settings-blade.png)
 
 2. 必要に応じて、リソース グループまたはリソースの種類で一覧をフィルタリングして、診断設定を行うリソースをクリックします。
 
@@ -97,9 +95,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 `--resource-group` 引数は、`--workspace` がオブジェクト ID でない場合にのみ必要です。
 
-## <a name="how-do-i-query-the-data-in-log-analytics"></a>Log Analytics 内のデータを照会する方法
+## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータのクエリを実行する方法
 
-ポータルの [ログ検索] ブレードまたは Log Analytics の機能である [高度な分析] から、Log Management ソリューションの範囲内の診断ログを AzureDiagnostics テーブルで照会することができます。 他にも、[Azure リソース向けのソリューションがいくつか](../../azure-monitor/insights/solutions.md)存在します。こうしたソリューションをインストールすることで、Log Analytics に送信中のログ データからすぐに洞察を得ることができます。
+Azure Monitor ポータルの [ログ] ブレードでは、AzureDiagnostics テーブルでの Log Management ソリューションの一部として診断ログのクエリを実行することができます。 他にも、[Azure リソース向けの監視ソリューションがいくつか](../../azure-monitor/insights/solutions.md)存在します。それをインストールすることで、Azure Monitor に送信されているログ データからすぐに分析情報を得ることができます。
 
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>既知の制限事項: AzureDiagnostics の列の制限
 多くのリソースの送信するデータ型はすべて同じテーブル ("_AzureDiagnostics_") に送信されるため、収集されるさまざまなデータ型のスキーマのスーパーセットとなります。 たとえば、次のデータ型の収集に対して診断設定を作成した場合、すべて同じワークスペースに送信されます。

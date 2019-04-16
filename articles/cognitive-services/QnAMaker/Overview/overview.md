@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: 1fa15c4420cb1e42fcaa34c56a1b0aef9c4102b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872460"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257231"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 
@@ -66,10 +66,9 @@ QnA Maker のアーキテクチャは、次の 2 つのコンポーネントで�
 
 ## <a name="service-highlights"></a>サービスの概要
 
-- [FAQ ボットを作成する](https://aka.ms/qnamaker-docs-create-faqbot)ための完全な**非コード** エクスペリエンスです。
+- ナレッジ ベースから[ボットを作成する](../Quickstarts/create-publish-knowledge-base.md#create-a-bot)ための完全な**非コード** エクスペリエンスです。
 - **予測のための帯域幅調整はありません**。 トランザクションの数ではなく、サービスのホストに対して課金されます。 詳しくは、[料金に関するページ](https://aka.ms/qnamaker-docs-pricing)をご覧ください。
 - **必要に応じてスケーリング**できます。 実際のシナリオに適した個々のコンポーネントの適切な SKU を選択できます。 QnA Maker サービスの[容量の選択](https://aka.ms/qnamaker-docs-capacity)方法をご覧ください。
-- **完全なデータ コンプライアンス**です。 予測サービス コンポーネントは、Azure サブスクリプションとそのコンプライアンス境界内にデプロイされます。
 
 
 ## <a name="next-steps"></a>次の手順

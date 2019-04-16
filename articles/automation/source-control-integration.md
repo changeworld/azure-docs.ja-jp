@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b8ec726c81dfab710d30c37d6fb1aac97c12265
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3b2df5b24a12f3d2ea5d8a03721c08f8d2a742ad
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293977"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539992"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -30,6 +30,7 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 
 * ソース管理リポジトリ (GitHub または Azure Repos)
 * [実行アカウント](manage-runas-account.md)
+* Automation アカウントに[最新の Azure モジュール](automation-update-azure-modules.md)があることを確認してください
 
 > [!NOTE]
 > ソース管理の同期ジョブは、ユーザーの Automation アカウントの下で実行され、その他の Automation ジョブと同じレートで課金されます。
@@ -62,24 +63,24 @@ Automation アカウント内で、**[ソース管理]** を選択し、**[+ 追
 
 ## <a name="configure-source-control---powershell"></a>ソース管理を構成する - PowerShell
 
-PowerShell を使用して Azure Automation のソース管理を構成することもできます。 PowerShell コマンドレットを使用してソース管理を構成するには、[個人用アクセス トークン (PAT)](#personal-access-token) が必要です。 [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) を使用してソース管理の接続を作成します。 このコマンドレットでは、個人用アクセス トークンのセキュアな文字列が必要です。セキュアな文字列を作成する方法については、[ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6) に関するページをご覧ください。
+PowerShell を使用して Azure Automation のソース管理を構成することもできます。 PowerShell コマンドレットを使用してソース管理を構成するには、個人用アクセス トークン (PAT) が必要です。 [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) を使用してソース管理の接続を作成します。 このコマンドレットでは、個人用アクセス トークンのセキュアな文字列が必要です。セキュアな文字列を作成する方法については、[ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6) に関するページをご覧ください。
 
 ### <a name="azure-repos-git"></a>Azure Repos (Git)
 
 ```powershell-interactive
-New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<account>.visualstudio.com/DefaultCollection/<project>/_git/<repository> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
 ### <a name="azure-repos-tfvc"></a>Azure Repos (TFVC)
 
 ```powershell-interactive
-New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<account>.visualstudio.com/<projectName>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
 ### <a name="github"></a>GitHub
 
 ```powershell-interactive
-New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<account>/<repoName>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
+New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
 ### <a name="personal-access-token-permissions"></a>個人用アクセス トークンのアクセス許可
@@ -168,7 +169,7 @@ Source Control Sync Summary:
 
 ## <a name="encoding"></a>エンコード
 
-ソース管理リポジトリで複数のユーザーがさまざまなエディターを使用して Runbook を編集しているとき、エンコードの問題が発生する可能性があります。 この場合、正しくない文字が Runbook に挿入されることがあります。 詳しくは、「[エンコード問題の一般的な原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)」をご覧ください。
+ソース管理リポジトリで複数のユーザーがさまざまなエディターを使用して Runbook を編集しているとき、エンコードの問題が発生する可能性があります。 このような状況では、正しくない文字が Runbook に含まれることがあります。 詳しくは、「[エンコード問題の一般的な原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

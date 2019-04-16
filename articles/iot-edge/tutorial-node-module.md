@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 10026f0a9ff702ee45926ca097e9123ea3db06d5
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3b79c75b9846a4f8966a113c6e06fabc25bcf011
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225928"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470952"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Node.js IoT Edge モジュールを開発して、シミュレートされたデバイスにデプロイする
 
@@ -35,8 +35,8 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
-* IoT Edge を Windows で実行している場合、IoT Edge バージョン 1.0.5 では Node.js モジュールがサポートされません。 詳細については、[1.0.5 のリリース ノート](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)を参照してください。 特定のバージョンをインストールする手順については、「[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)」を参照してください。
+* [Linux](quickstart-linux.md) のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* IoT Edge 用 Node.js モジュールは、Windows コンテナーをサポートしていません。 
 
 クラウド リソース:
 
@@ -47,6 +47,7 @@ Azure IoT Edge デバイス:
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * Visual Studio Code 用 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [Docker CE](https://docs.docker.com/engine/installation/)。 
+   * Windows デバイス上で開発している場合は、Docker が [Linux コンテナーを使用するように構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)されていることを確認してください。 
 * [Node.js および npm](https://nodejs.org)。 この npm パッケージは、Node.js を使用して配布されます。つまり、Node.js をダウンロードすると、お使いのコンピューターに npm が自動的にインストールされます。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
@@ -184,7 +185,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 10. VS Code のエクスプローラーで、ご自身の IoT Edge ソリューション ワークスペースの **deployment.template.json** ファイルを開きます。 このファイルは、IoT Edge エージェントにどのモジュール (この場合は **tempSensor** および **NodeModule**) をデプロイするかを指示し、IoT Edge ハブにそれらの間でメッセージをルーティングする方法を指示します。 デプロイ テンプレートで必要なほとんどの情報は Visual Studio Code 拡張機能によって自動的に入力されますが、ソリューションに関してすべての情報が正確であることを確認します。 
 
-   1. IoT Edge の既定のプラットフォームは、VS Code のステータス バーで **amd64** に設定されています。つまり、**NodeModule** は Linux amd64 バージョンのイメージに設定されています。 IoT Edge デバイスのアーキテクチャに応じて、ステータス バーで既定のプラットフォームを **amd64** から **arm32v7** または **windows-amd64** に変更します。 
+   1. IoT Edge の既定のプラットフォームは、VS Code のステータス バーで **amd64** に設定されています。つまり、**NodeModule** は Linux amd64 バージョンのイメージに設定されています。 IoT Edge デバイスのアーキテクチャに応じて、ステータス バーで既定のプラットフォームを **amd64** から **arm32v7** に変更します。 
 
       ![モジュール イメージ プラットフォームを更新する](./media/tutorial-node-module/image-platform.png)
 
@@ -229,8 +230,9 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 >[!TIP]
 >モジュールをビルドしてプッシュしようとするときにエラーが発生した場合は、次の点を確認してください。
 >* Visual Studio Code からお使いのコンテナー レジストリの資格情報を使用して Docker にサインインしているか。 これらの資格情報は、Azure portal にサインインする際に使用する情報とは異なります。
->* コンテナー リポジトリは正しいか。 **[modules]** > **[cmodule]** > **[module.json]** の順に開いて、**[repository]** フィールドを見つけます。 イメージ リポジトリは、**\<registryname\>.azurecr.io/nodemodule** のようになっている必要があります。 
->* 開発マシンで実行されているものと同じタイプのコンテナーをビルドしているか。 Visual Studio Code の既定のコンテナーは Linux amd64 です。 お使いの開発マシンで Windows コンテナーまたは Linux arm32v7 コンテナーが実行されている場合は、実際のコンテナーのプラットフォームに合わせて、VS Code ウィンドウ下部の青色のステータス バーでプラットフォームを更新してください。
+>* コンテナー リポジトリは正しいか。 **[modules]** > **[nodemodule]** > **[module.json]** の順に開いて、**[repository]** フィールドを見つけます。 イメージ リポジトリは、**\<registryname\>.azurecr.io/nodemodule** のようになっている必要があります。 
+>* 開発マシンで実行されているものと同じタイプのコンテナーをビルドしているか。 Visual Studio Code の既定のコンテナーは Linux amd64 です。 お使いの開発マシンで Linux arm32v7 コンテナーが実行されている場合は、実際のコンテナーのプラットフォームに合わせて、VS Code ウィンドウ下部の青色のステータス バーでプラットフォームを更新してください。
+>* IoT Edge 用 Node.js モジュールは、Windows コンテナーをサポートしていません。
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 

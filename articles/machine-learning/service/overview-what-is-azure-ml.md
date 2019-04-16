@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 26248616c6b490de00028d8ecc8a0e225da0c0a6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361899"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257112"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -32,7 +32,7 @@ Azure Machine Learning service とは、機械学習モデルのトレーニン�
 
 Azure Machine Learning service には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。
 
-[![Azure Machine Learning service ワークフロー](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![AAzure Machine Learning service ワークフロー](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Azure Machine Learning service では、オープン ソース テクノロジが完全にサポートされます。 そのため、数万のオープン ソース Python パッケージを機械学習コンポーネントと組み合わせて使用することができます。 たとえば、PyTorch、TensorFlow、scikit-learn などです。
 豊富なツールのサポートにより、簡単に対話形式でデータを探して変換した後、モデルを開発してテストすることができます。 その例としては、[Jupyter Notebook](https://jupyter.org) や [Azure Machine Learning for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 拡張機能があります。
@@ -55,7 +55,6 @@ Azure Machine Learning 用の<a href="https://aka.ms/aml-sdk" target="_blank">�
 - <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
-- <a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank">CNTK</a>
 - <a href="https://mxnet.io" target="_blank">MXNet</a>
 
 Azure Machine Learning service では、モデルの自動トレーニングと自動調整を行うこともできます。

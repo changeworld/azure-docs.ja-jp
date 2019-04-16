@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: Carlrab
+ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/13/2019
-ms.openlocfilehash: 6aa8f362f067a4e3e391f435ee849f96abdf752f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: a6abaf9b444ca9b3f14093dde1239d9158dfd3ff
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997501"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469643"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database マネージド インスタンスの作成
 
@@ -26,7 +26,7 @@ ms.locfileid: "57997501"
 > [!IMPORTANT]
 > 制限については、[サポートされているリージョン](sql-database-managed-instance-resource-limits.md#supported-regions)と[サポートされているサブスクリプションの種類](sql-database-managed-instance-resource-limits.md#supported-subscription-types)に関するセクションを参照してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -36,7 +36,7 @@ ms.locfileid: "57997501"
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 2. **[マネージド インスタンス]** を探し、**[Azure SQL Managed Instance]** を選択します。
-3. **作成**を選択します。
+3. **作成** を選択します。
 
    ![マネージド インスタンスの作成](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
@@ -48,9 +48,10 @@ ms.locfileid: "57997501"
    |**マネージド インスタンス名**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**マネージド インスタンス管理者ログイン**|任意の有効なユーザー名|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。|
    |**パスワード**|有効なパスワード|パスワードは 16 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-   |**照合順序**|マネージド インスタンスに対して使用する照合順序|SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。 照合順序の詳細については、[サーバーレベルの照合順序](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)に関するページを参照してください。|
-   |**場所**|マネージド インスタンスの作成先となる場所|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
-   |**Virtual Network**|**[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワーク/サブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](sql-database-managed-instance-configure-vnet-subnet.md)必要があります。 マネージド インスタンスのネットワーク環境を構成するための要件については、[マネージド インスタンスの VNet の構成](sql-database-managed-instance-connectivity-architecture.md)に関する記事を参照してください。 |
+   |**タイム ゾーン**|マネージド インスタンスで監視するタイム ゾーン|詳細については、[タイム ゾーン](sql-database-managed-instance-timezone.md)に関するページを参照してください。|
+   |**Collation**|マネージド インスタンスに対して使用する照合順序|SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。 照合順序の詳細については、[サーバーレベルの照合順序](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)に関するページを参照してください。|
+   |**Location**|マネージド インスタンスの作成先となる場所|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
+   |**仮想ネットワーク**|**[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワーク/サブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](sql-database-managed-instance-configure-vnet-subnet.md)必要があります。 マネージド インスタンスのネットワーク環境を構成するための要件については、[マネージド インスタンスの VNet の構成](sql-database-managed-instance-connectivity-architecture.md)に関する記事を参照してください。 |
    |**リソース グループ**|新規または既存のリソース グループ|有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
 
    ![マネージド インスタンス フォーム](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)

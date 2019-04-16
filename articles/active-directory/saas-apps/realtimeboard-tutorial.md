@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2cbef7616a913230a4dd6c440192ac692357044d
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: fb7302497d4331a9e39c8a3c50393646b663f7d8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850600"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル:Azure Active Directory と RealtimeBoard の統合
 
@@ -53,7 +53,7 @@ RealtimeBoard と Azure AD の統合を構成するには、次のものが必�
 
 Azure AD への RealtimeBoard の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に RealtimeBoard を追加する必要があります。
 
-**ギャラリーから RealtimeBoard を追加するには、次の手順に従います。**
+**ギャラリーから RealtimeBoard を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -197,7 +197,7 @@ RealtimeBoard で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

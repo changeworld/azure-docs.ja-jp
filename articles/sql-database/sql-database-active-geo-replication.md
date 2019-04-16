@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 03/26/2019
+ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295251"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498487"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
@@ -75,8 +75,11 @@ ms.locfileid: "58295251"
 
   アプリケーションは、プライマリ データベースへのアクセスに使用されているのと同じ、または異なるセキュリティ プリンシパルを使用して、セカンダリ データベースにアクセスして読み取り専用操作を実行できます。 セカンダリ データベースは、セカンダリ上で実行されるクエリによってプライマリ (ログの再生) の更新プログラムのレプリケーションが遅延しないように、スナップショット分離モードで動作します。
 
-  > [!NOTE]
-  > プライマリ データベースでスキーマの更新がある場合、セカンダリ データベースのログ再生は遅延します。 後者の場合は、セカンダリ データベースでスキーマ ロックが必要です。
+> [!NOTE]
+> プライマリ データベースでスキーマの更新がある場合、セカンダリ データベースのログ再生は遅延します。 後者の場合は、セカンダリ データベースでスキーマ ロックが必要です。
+> [!IMPORTANT]
+> geo レプリケーションを使用して、同じリージョンにプライマリとしてセカンダリ データベースを作成できます。 このセカンダリを使用して、同じリージョン内の読み取り専用ワークロードの負荷分散を行います。 ただし、同じリージョン内のセカンダリ データベースは、障害からの回復性を提供しないため、ディザスター リカバリーの適切なフェールオーバー ターゲットではありません。 また、可用性ゾーンの分離も保証されません。 [ゾーン冗長の構成](sql-database-high-availability.md#zone-redundant-configuration)を持つ Business Critical レベルまたは Premium サービス レベルを使用して、可用性ゾーンの分離を行ってください。   
+>
 
 - **計画されたフェールオーバー**
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c8a4a6b8ccccafd496d2a621c41421dbf100727a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 445e24732edc1bc7e4d1cfe3ff49a54115c7ea3a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671589"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>チュートリアル:Azure Active Directory と Shibumi の統合
 
@@ -53,7 +53,7 @@ Shibumi と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Shibumi の統合を構成するには、マネージド SaaS アプリの一覧にギャラリーから Shibumi を追加する必要があります。
 
-**ギャラリーから Shibumi を追加するには、次の手順に従います。**
+**ギャラリーから Shibumi を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,9 +107,9 @@ Shibumi で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Shibumi のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.shibumi.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.shibumi.com`
 
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.shibumi.com/saml/SSO` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.shibumi.com/saml/SSO`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -202,7 +202,7 @@ Shibumi で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

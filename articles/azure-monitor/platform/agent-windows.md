@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d433a480165424e47d4d84e67e7fd02648ebe2d1
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223429"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480058"
 ---
-# <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
+# <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
-Log Analytics を使用して、ローカル データ センターやその他のクラウド環境内にある仮想マシンや物理コンピューターを監視、および管理するには、Log Analytics エージェント (別名 Microsoft Monitoring Agent (MMA)) をデプロイし、1 つ以上の Log Analytics ワークスペースにレポートを送信するように構成する必要があります。 エージェントでは、Azure Automation 用の Hybrid Runbook Worker ロールもサポートされます。  
+Azure Monitor を使用して、ローカル データ センターやその他のクラウド環境内にある仮想マシンや物理コンピューターを監視、および管理するには、Log Analytics エージェント (別名 Microsoft Monitoring Agent (MMA)) をデプロイし、1 つ以上の Log Analytics ワークスペースにレポートを送信するように構成する必要があります。 エージェントでは、Azure Automation 用の Hybrid Runbook Worker ロールもサポートされます。  
 
-監視対象の Windows コンピューターでは、エージェントは Microsoft Monitoring Agent サービスとしてリストされます。 Microsoft Monitoring Agent サービスは、ログ ファイル、Windows イベント ログ、パフォーマンス データ、およびその他のテレメトリからイベントを収集します。 エージェントは、レポート送信先の Log Analytics サービスと通信できないときにも常時実行され、収集したデータを監視対象コンピューターのディスク キューに配置します。 接続が復元されると、Microsoft Monitoring Agent サービスは収集したデータをサービスに送信します。
+監視対象の Windows コンピューターでは、エージェントは Microsoft Monitoring Agent サービスとしてリストされます。 Microsoft Monitoring Agent サービスは、ログ ファイル、Windows イベント ログ、パフォーマンス データ、およびその他のテレメトリからイベントを収集します。 エージェントは、レポート送信先の Azure Monitor と通信できないときにも常時実行され、収集したデータを監視対象コンピューターのディスク キューに配置します。 接続が復元されると、Microsoft Monitoring Agent サービスは収集したデータをサービスに送信します。
 
 エージェントは、次のいずれかの方法を使用してインストールされます。 多くの場合は、これらのメソッドを必要に応じて組み合わせて使用し、さまざまなコンピューターをインストールします。  各メソッドの使い方の詳細については、記事の後半で説明します。
 
@@ -40,7 +40,7 @@ Log Analytics を使用して、ローカル データ センターやその他�
 サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Log Analytics と正常に通信できるようにするために必要です。  
+Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Azure Monitor と正常に通信できるようにするために必要です。  
 
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
@@ -68,7 +68,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 5. 設定を有効にするためにシステムを再起動します。 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>セットアップ ウィザードを使用してエージェントをインストールする
-次の手順では、コンピューター上のエージェント用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics 用のエージェントをインストールし、構成します。 System Center Operations Manager 管理グループにも報告をするようエージェントを構成する方法を知るには、「[エージェント セットアップ ウィザードを使用して Operations Manager エージェントを展開するには](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)」を参照してください。
+次の手順では、コンピューター上のエージェント用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics エージェントをインストールし、構成します。 System Center Operations Manager 管理グループにも報告をするようエージェントを構成する方法を知るには、「[エージェント セットアップ ウィザードを使用して Operations Manager エージェントを展開するには](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)」を参照してください。
 
 1. ご使用の Log Analytics ワークスペースで、先の手順で移動した **[Windows サーバー]** ページの **[Windows エージェントのダウンロード]** から、Windows オペレーティング システムのプロセッサ アーキテクチャに応じた適切なバージョンを選択します。   
 2. セットアップを実行して、コンピューターにエージェントをインストールします。
@@ -138,7 +138,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 2.  *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
 3.  スクリプトをコピーし、MMAgent.ps1 として保存します。
 
-    ```PowerShell
+    ```powershell
     Configuration MMAgent
     {
         $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
@@ -184,15 +184,14 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 **[コントロール パネル]** 内のコンピューターから、**[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、**[Azure Log Analytics]** タブに、次のことを示すメッセージがエージェントによって表示されます。"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました。**"<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
-また、Azure ポータルで簡単なログ検索を行うこともできます。  
+また、Azure portal で簡単なログ クエリを実行することもできます。  
 
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
-2. Log Analytics ワークスペース ページで、ターゲット ワークスペースを選択して **[ログ検索]** タイルを選択します。 
-2. [ログ検索] ウィンドウのクエリ フィールドで、次のように入力します。  
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で「**Azure Monitor**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Monitor]** を選択します。  
+2. メニューの **[ログ]** を選択します。 
+2. [ログ] ペインのクエリ フィールドに次のように入力します。  
 
     ```
-    search * 
-    | where Type == "Heartbeat" 
+    Heartbeat 
     | where Category == "Direct Agent" 
     | where TimeGenerated > ago(30m)  
     ```

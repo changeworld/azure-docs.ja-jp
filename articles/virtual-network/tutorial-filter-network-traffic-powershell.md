@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 023662f0293debb1b40fc8ea10bb725eab7be4d8
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649936"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317725"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>ネットワーク セキュリティ グループと PowerShell を使用してネットワーク トラフィックをフィルター処理する
 
@@ -277,7 +277,7 @@ PowerShell から次のコマンドを使用して、Microsoft IIS を *myVmWeb*
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-IIS のインストールが完了したら、*myVmWeb* VM から切断します。*myVmMgmt* VM のリモート デスクトップ接続は保持されます。 IIS のようこそ画面を表示するには、インターネット ブラウザーを開き、 http://myVmWeb にアクセスします。
+IIS のインストールが完了したら、*myVmWeb* VM から切断します。*myVmMgmt* VM のリモート デスクトップ接続は保持されます。 IIS のようこそ画面を表示するには、インターネット ブラウザーを開き、http:\//myVmWeb にアクセスします。
 
 *myVmMgmt* VM から切断します。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 114e0b951b2bfe83e8b989646bd07a5fd75b3ee6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894412"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352070"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Speech Devices SDK を使ってみる
 
@@ -64,7 +64,7 @@ Speech Devices SDK を使用した開発を開始する前に、必要な情報�
 
     ![直線開発キットの向き](media/speech-devices-sdk/qsg-2.png)
 
-1. 証明書とウェイク ワード (キーワード) テーブル ファイルをインストールし、サウンド デバイスのアクセス許可を設定します。 コマンド プロンプト ウィンドウで次のコマンドを入力します。
+1. 証明書をインストールし、サウンド デバイスのアクセス許可を設定します。 コマンド プロンプト ウィンドウで次のコマンドを入力します。
 
    ```
    adb push C:\SDSDK\Android-Sample-Release\scripts\roobo_setup.sh /data/

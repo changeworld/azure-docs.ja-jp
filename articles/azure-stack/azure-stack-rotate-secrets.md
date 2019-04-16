@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 22656c66bf5caa275a32ddcaae323fc0ab2b1600
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917562"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271732"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -63,13 +63,13 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 
 |インストール済みの証明書 CA|ローテーション先の CA|サポートされています|サポートされる Azure Stack のバージョン|
 |-----|-----|-----|-----|
-|自己署名済みから|Enterprise へ|サポートされていません||
+|自己署名済みから|Enterprise へ|サポートされています|1903 以降|
 |自己署名済みから|自己署名済みへ|サポートされていません||
 |自己署名済みから|公開へ<sup>*</sup>|サポートされています|1803 以降|
-|Enterprise から|Enterprise へ|顧客がデプロイ時に使用したのと同じエンタープライズ CA を使用している限りサポートされる|1803 以降|
+|Enterprise から|Enterprise へ|サポートされています。 1803 から 1903: 顧客がデプロイ時に使用したのと同じエンタープライズ CA を使用している限りサポートされます|1803 以降|
 |Enterprise から|自己署名済みへ|サポートされていません||
 |Enterprise から|公開へ<sup>*</sup>|サポートされています|1803 以降|
-|公開から<sup>*</sup>|Enterprise へ|サポートされていません|1803 以降|
+|公開から<sup>*</sup>|Enterprise へ|サポートされています|1903 以降|
 |公開から<sup>*</sup>|自己署名済みへ|サポートされていません||
 |公開から<sup>*</sup>|公開へ<sup>*</sup>|サポートされています|1803 以降|
 
@@ -300,11 +300,11 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 | パラメーター | Type | 必須 | 位置 | 既定値 | 説明 |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 外部シークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
-| CertificatePassword | SecureString | False  | named  | なし  | -PfXFilesPath で提供されているすべての証明書のパスワード。 外部のシークレットのローテーションを行うときに PfxFilesPath を指定する場合は、必須の値です。 |
-| 内部 | String | False | named | なし | Azure Stack オペレーターが内部インフラストラクチャ シークレットのローテーションを行うときは、常に Internal フラグを使用する必要があります。 |
-| PathAccessCredential | PSCredential | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有の PowerShell 資格情報。 外部シークレットのローテーションを行う場合にのみ必要です。  |
-| ReRun | SwitchParameter | False  | named  | なし  | ReRun は、試行が失敗した後でシークレット ローテーションが再試行されるとき、常に使用する必要があります。 |
+| `PfxFilesPath` | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 外部シークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
+| `CertificatePassword` | SecureString | False  | named  | なし  | -PfXFilesPath で提供されているすべての証明書のパスワード。 外部のシークレットのローテーションを行うときに PfxFilesPath を指定する場合は、必須の値です。 |
+| `Internal` | String | False | named | なし | Azure Stack オペレーターが内部インフラストラクチャ シークレットのローテーションを行うときは、常に Internal フラグを使用する必要があります。 |
+| `PathAccessCredential` | PSCredential | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有の PowerShell 資格情報。 外部シークレットのローテーションを行う場合にのみ必要です。  |
+| `ReRun` | SwitchParameter | False  | named  | なし  | ReRun は、試行が失敗した後でシークレット ローテーションが再試行されるとき、常に使用する必要があります。 |
 
 ### <a name="examples"></a>例
 

@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: a3fd89ee67b495d3ca1173faa9381ceba117ef63
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259314"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629592"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
-この記事では、PowerShell コマンドレットを使用して [Azure Backup](backup-overview.md) Recovery Services コンテナーの Azure VM をバックアップおよび復元する方法を説明します。 
+この記事では、PowerShell コマンドレットを使用して [Azure Backup](backup-overview.md) Recovery Services コンテナーの Azure VM をバックアップおよび復元する方法を説明します。
 
 この記事では、次の方法について説明します。
 
@@ -24,10 +24,7 @@ ms.locfileid: "58259314"
 > * Recovery Services のコンテナーを作成し、コンテナーのコンテキストを設定する。
 > * バックアップ ポリシーを定義する
 > * 複数の仮想マシンを保護するバックアップ ポリシーを適用する
-> * 保護された仮想マシン用のオンデマンドのバックアップ ジョブをトリガーする 仮想マシンをバックアップ (または保護) する前に、[前提条件](backup-azure-arm-vms-prepare.md)をすべて満たして、VM を保護するための環境を準備する必要があります。 
-
-
-
+> * 保護された仮想マシン用のオンデマンドのバックアップ ジョブをトリガーする 仮想マシンをバックアップ (または保護) する前に、[前提条件](backup-azure-arm-vms-prepare.md)をすべて満たして、VM を保護するための環境を準備する必要があります。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -44,8 +41,6 @@ ms.locfileid: "58259314"
 
 Azure ライブラリに含まれる **Az.RecoveryServices** [コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0)のリファレンスを確認します。
 
-
-
 ## <a name="set-up-and-register"></a>設定して登録する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -58,7 +53,7 @@ Azure ライブラリに含まれる **Az.RecoveryServices** [コマンドレッ
 
     ```powershell
     Get-Command *azrecoveryservices*
-    ```   
+    ```
  
     Azure Backup、Azure Site Recovery、Recovery Services コンテナーのエイリアスとコマンドレットが表示されます。 次の画像は表示例です。 コマンドレットの完全な一覧ではありません。
 
@@ -147,6 +142,18 @@ VM 上の保護を有効にする前に、[Set-AzRecoveryServicesVaultContext](h
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
+### <a name="modifying-storage-replication-settings"></a>ストレージ レプリケーションの設定を変更する
+
+LRS/GRS に対するコンテナーのストレージ レプリケーションの構成を設定するには、[Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0) コマンドを使用します
+
+```powershell
+$vault= Get-AzRecoveryServicesVault -name "testvault"
+Set-AzRecoveryServicesBackupProperties -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+```
+
+> [!NOTE]
+> 記憶域冗長は、コンテナーに保護されているバックアップ項目がない場合にのみ変更できます。
+
 ### <a name="create-a-protection-policy"></a>保護ポリシーの作成
 
 Recovery Services コンテナーの作成時に、既定の保護およびアイテム保持ポリシーも付属しています。 既定の保護ポリシーは、毎日指定した時刻にバックアップ ジョブをトリガーします。 既定のアイテム保持ポリシーは、毎日の復旧ポイントを 30 日間保持します。 既定のポリシーを使用すると、VM を迅速に保護することができ、後で異なる詳細な内容にポリシーを編集することもできます。
@@ -177,10 +184,18 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 - [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。
 - スケジュール ポリシーとアイテム保持ポリシー オブジェクトは、New-AzRecoveryServicesBackupProtectionPolicy コマンドレットへの入力として使用されます。
 
-次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 次の例では、これらの変数を使用して、保護ポリシー *NewPolicy* の作成時にパラメーターを定義します。
+既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望の開始時刻も、UTC で指定する必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 次の例では、これらの変数を使用して、保護ポリシー *NewPolicy* の作成時にパラメーターを定義します。
+
+```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
@@ -226,7 +241,6 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Azure Government クラウドを使用している場合は、[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットの -ServicePrincipalName パラメーターで、値 ff281ffe-705c-4f53-9f37-a40e6f2c68f3 を使用します。
 >
 
-
 ### <a name="modify-a-protection-policy"></a>保護ポリシーの変更
 
 保護ポリシーを変更するには、[Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) を使用して SchedulePolicy または RetentionPolicy オブジェクトを変更します。
@@ -239,6 +253,19 @@ $retPol.DailySchedule.DurationCountInDays = 365
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $RetPol
 ```
+
+#### <a name="configuring-instant-restore-snapshot-retention"></a>インスタント リストア スナップショットの保持期間を構成する
+
+> [!NOTE]
+> Az PS バージョン 1.6.0 以降では、PowerShell を使用して、ポリシーのインスタント リストアのスナップショット保持期間を更新できます
+
+````powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=7
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+````
+
+既定値は 2 で、ユーザーが最小 1 から最大 5 の範囲で設定できます。 毎週のバックアップ ポリシーの場合は、期間は 5 に設定されていて、変更することはできません。
 
 ## <a name="trigger-a-backup"></a>バックアップをトリガーする
 
@@ -420,7 +447,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-[ここ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source)で説明しているように、テンプレートをデプロイするだけで新しい VM が作成されます。
+[ここ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)で説明しているように、テンプレートをデプロイするだけで新しい VM が作成されます。
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
@@ -672,7 +699,7 @@ $rp[0]
 
 出力は次の例のようになります。
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -719,4 +746,4 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>次の手順
 
-PowerShell を使用して Azure リソースを操作する場合は、[Windows Server のバックアップのデプロイと管理](backup-client-automation.md)に関する PowerShell の記事をご覧ください。 DPM バックアップを管理する場合は、記事「[DPM 用の Backup のデプロイと管理](backup-dpm-automation.md)」を参照してください。 
+PowerShell を使用して Azure リソースを操作する場合は、[Windows Server のバックアップのデプロイと管理](backup-client-automation.md)に関する PowerShell の記事をご覧ください。 DPM バックアップを管理する場合は、記事「[DPM 用の Backup のデプロイと管理](backup-dpm-automation.md)」を参照してください。

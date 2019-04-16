@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9008c98a086ed2d45b7339fa3f76b33240789db8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102453"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487789"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -283,12 +283,12 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
 4. オンに戻すには、次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
    [高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
@@ -297,12 +297,12 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
     高可用性機能を備えたゲートウェイについては、別途 AuthKey パラメーターが必要となります。
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
 4. オンに戻すには、次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
@@ -365,9 +365,9 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 
 監視のプロパティ | 説明
 :------------------ | :----------
-Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。
+名前 | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。
 [Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  例:オンライン、オフライン、制限あり、など。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。
-Version | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。
+バージョン | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。
 CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、ほぼリアルタイムのスナップショットです。
 ネットワーク (入力/出力) | ゲートウェイ ノードのネットワーク使用率。 この値は、ほぼリアルタイムのスナップショットです。
@@ -485,12 +485,12 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 1. 管理者モードで **Azure PowerShell** を起動します。
 2. 次のコマンドを実行して Azure 資格情報を入力することにより、Azure アカウントにログインします。
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. **New-AzDataFactoryGateway** コマンドレットを使用して、次のように論理ゲートウェイを作成します。
 
-    ```PowerShell
+    ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **コマンドと出力の例**:
@@ -511,9 +511,9 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\** フォルダーに切り替えます。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+1. Azure PowerShell で、**C:\\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**フォルダーに切り替えます。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
-    ```PowerShell
+    ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
     ```
     ```
@@ -521,25 +521,25 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     ```
     IsRegisterOnRemoteMachine パラメーターを使用することで、リモート マシンにゲートウェイを登録できます。 例:
 
-    ```PowerShell
+    ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
 2. **Get-AzDataFactoryGateway** コマンドレットを使用して、データ ファクトリ内のゲートウェイの一覧を取得できます。 **[状態]** に **[オンライン]** と表示されている場合、ゲートウェイをいつでも使用できることを意味します。
 
-    ```PowerShell        
+    ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
    **Remove-AzDataFactoryGateway** コマンドレットを使用して、ゲートウェイを削除できます。また、**Set-AzDataFactoryGateway** コマンドレットを使用して、ゲートウェイの記述を更新できます。 これらのコマンドレットの文法やその他の詳細については「Data Factory Cmdlet Reference (Data Factory コマンドレット リファレンス)」を参照してください。  
 
 ### <a name="list-gateways-using-powershell"></a>PowerShell を使用したゲートウェイの一覧表示
 
-```PowerShell
+```powershell
 Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -ResourceGroupName ADF_ResourceGroup
 ```
 
 ### <a name="remove-gateway-using-powershell"></a>PowerShell を使用したゲートウェイの削除
 
-```PowerShell
+```powershell
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 

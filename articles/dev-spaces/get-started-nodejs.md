@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 063ea2392dcaa705436bfbd7ba5d429bb096651e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dc84844738e501a30f73104a76ff80bf00adff24
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891037"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425823"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Azure Dev Spaces での Node.js の使用
 
@@ -25,17 +25,10 @@ ms.locfileid: "57891037"
 - チーム環境でコードを生産的に開発してテストする。
 
 > [!Note]
-> **問題が発生した場合は**いつでも、「[トラブルシューティング](troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。
-
-これで、Azure に Kubernetes ベースの開発環境を作成する準備ができました。
+> いつでも**問題が発生した場合**は「[トラブルシューティング](troubleshooting.md)」セクションを参照してください。
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
-Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 ローカル コンピューターで実行されているオペレーティング システムは、Windows、Mac、Linux のいずれでもかまいません。 Linux では、次のディストリビューションがサポートされています。Ubuntu (18.04、16.04、14.04)、Debian 8 および 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2、および SLES 12。
-
-まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。 
-
-> [!IMPORTANT]
-> Azure CLI が既にインストールされている場合は、バージョン 2.0.43 以降を使用していることを確認してください。
+Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。
 
 ### <a name="sign-in-to-azure-cli"></a>Azure CLI へのサインイン
 Azure にサインインします。 ターミナル ウィンドウで次のコマンドを入力します。
@@ -167,7 +160,7 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 webfrontend の公開 URL を使用して、モバイル デバイスで Web アプリを開きます。 長いアドレスを入力しなくて済むように、デスクトップからデバイスに URL をコピーして送信することができます。 モバイル デバイスで Web アプリが読み込まれると、小さなデバイスでは UI が正しく表示されないことがわかります。
 
 この問題を修正するには、`viewport` メタ タグを追加します。
-1. `./public/index.html` ファイルを開きます。
+1. 次のファイルを開きます。 `./public/index.html`
 1. 既存の `head` 要素に `viewport` メタ タグを追加します。
 
     ```html

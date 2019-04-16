@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 92811110ef44676de487bca1ad2022cb63315c75
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418059"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470068"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -255,6 +255,16 @@ AzureWebJobsStorage=$storageConnectionString
 これで、Linux 上で実行される関数を Azure でテストできます。
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-application-insights"></a>Application Insights を有効にする
+
+関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+
+関数アプリ用に Application Insights を有効にするには:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ## <a name="enable-continuous-deployment"></a>継続的配置を有効にする
 

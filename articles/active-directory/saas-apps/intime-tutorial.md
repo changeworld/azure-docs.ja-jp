@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e50a4f10b7706e474941842b14e1f45364d13a7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: bd1ed30d56e8d23057e560b1180c35e0a29542b6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226489"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>チュートリアル:Azure Active Directory と InTime の統合
 
@@ -51,7 +51,7 @@ InTime と Azure AD の統合を構成するには、次のものが必要です
 
 Azure AD への InTime の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に InTime を追加する必要があります。
 
-**ギャラリーから InTime を追加するには、次の手順に従います。**
+**ギャラリーから InTime を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ InTime で Azure AD シングル サインオンを構成するには、次の�
 
     ![[InTime のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに URL として「`https://intime6.intimesoft.com/mytime/login/login.xhtml`」と入力します。
+    a. **[サインオン URL]** ボックスに、次の URL を入力します。 `https://intime6.intimesoft.com/mytime/login/login.xhtml`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://auth.intimesoft.com/auth/realms/master` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `https://auth.intimesoft.com/auth/realms/master`
 
 5. InTime アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 InTime アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
@@ -196,6 +196,6 @@ InTime で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

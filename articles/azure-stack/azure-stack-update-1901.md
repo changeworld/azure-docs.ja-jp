@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: cd07ff5beddf65c9788c9ba94802ba2d37172923
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649409"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360691"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新プログラム
 
@@ -223,7 +223,7 @@ VM のスケールの上限に達すると、次のエラー コードが返さ�
 
 ## <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
-- [Test-AzureStack](azure-stack-diagnostic-test.md) を実行しているときに、**AzsInfraRoleSummary** または **AzsPortalApiSummary** テストに失敗すると、**Test-AzureStack** を `-Repair` フラグで実行するように求められます。  このコマンドを実行すると、次のエラー メッセージが表示されて失敗します: `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
+- [Test-AzureStack](azure-stack-diagnostic-test.md) を実行しているときに、**AzsInfraRoleSummary** または **AzsPortalApiSummary** テストに失敗すると、**Test-AzureStack** を `-Repair` フラグで実行するように求められます。  このコマンドを実行すると、次のエラー メッセージが表示されて失敗します。  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
 
 - [Test-AzureStack](azure-stack-diagnostic-test.md) を実行すると、ベースボード管理コントローラー (BMC) からの警告メッセージが表示されます。 この警告は無視してかまいません。
 
@@ -284,14 +284,14 @@ VM のスケールの上限に達すると、次のエラー コードが返さ�
 <!-- 3239127 - IS, ASDK -->
 - Azure Stack ポータルで、VM インスタンスにアタッチされたネットワーク アダプターにバインドされている IP 構成の静的 IP アドレスを変更すると、次の内容の警告メッセージが表示されます。 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。
 
     このメッセージは無視してかまいません。たとえ VM インスタンスが再起動しなくても IP アドレスは変更されます。
 
 <!-- 3632798 - IS, ASDK -->
 - ポータルで受信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** をソースとして選択すると、Azure Stack では利用できないオプションがいくつか **[Source Tag]\(ソース タグ\)** リストに表示されます。 Azure Stack で有効なのは次のオプションだけです。
 
-  - **Internet**
+  - **インターネット**
   - **VirtualNetwork**
   - **AzureLoadBalancer**
   
@@ -315,6 +315,10 @@ VM のスケールの上限に達すると、次のエラー コードが返さ�
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>syslog
+
+- syslog 構成が更新サイクル全体で維持されず、その結果、syslog クライアントがその構成を失い、syslog メッセージは転送されなくなります。 この問題は、syslog クライアント (1809) の一般提供以降、Azure Stack のすべてのバージョンに当てはまります。 この問題を回避するには、Azure Stack の更新プログラムを適用した後に syslog クライアントを再構成してください。
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
 
