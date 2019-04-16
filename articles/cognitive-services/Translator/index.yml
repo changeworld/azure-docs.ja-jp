@@ -93,7 +93,7 @@ sections:
       - type: paragraph
         text: Translator Text API を使用してアプリケーションを開発する方法について説明します。
       - type: paragraph
-        text: '<a href="tutorial-wpf-translation-csharp.md">C# を使用して Translator Text の WPF アプリケーションを作成する</a>'
+        text: '<li><a href="tutorial-wpf-translation-csharp.md">Translator Text の WPF アプリの作成 (C#)</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Flask 翻訳アプリの作成 (Python)</a></li>'
   - title: リファレンス
     items:
       - type: paragraph

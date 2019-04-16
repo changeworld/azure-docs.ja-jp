@@ -1,21 +1,18 @@
 ---
-title: Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する | Microsoft Docs
-description: Micro Focus BankDemo アプリケーションを Azure 上で実行し、Micro Focus Enterprise Server と Enterprise Developer の使用方法について学習します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+title: Azure Virtual Machines で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
+description: Micro Focus Enterprise Server と Enterprise Developer の使用方法を学習するために、Azure Virtual Machines (VM) で Micro Focus BankDemo アプリケーションを実行します。
+author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099469"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892485"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
 Micro Focus Enterprise Server 4.0 と Enterprise Developer 4.0 を Azure 上で設定する際には、IBM z/OS ワークロードのデプロイをテストできます。 この記事では、CICS BankDemo (Enterprise Developer に付属しているサンプル アプリケーション) の設定方法について説明します。
 
@@ -23,7 +20,7 @@ CICS とは、Customer Information Control System (顧客情報管理システ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Enterprise Developer](set-up-micro-focus-on-azure.md) がインストールされたVM。 Enterprise Developer には、開発やテスト目的に使用できる、Enterprise Server の完全なインスタンスが含まれています。 このデモでは、この Enterprise Server インスタンスを使用します。
+- [Enterprise Developer](set-up-micro-focus-azure.md) がインストールされたVM。 Enterprise Developer には、開発やテスト目的に使用できる、Enterprise Server の完全なインスタンスが含まれています。 このデモでは、この Enterprise Server インスタンスを使用します。
 
 - [SQL Server 2017 Express エディション](https://www.microsoft.com/sql-server/sql-server-editions-express)。 ダウンロードして、Enterprise Developer VM にインストールします。 Enterprise Server では、CICS リージョンの管理用データベースが必要になります。また BankDemo アプリケーションでも、BANKDEMO という SQL Server データベースが使用されます。 このデモでは、両方のデータベースに SQL Server Express を使用していることを前提とします。 インストールの際には、基本インストールを選択してください。
 
@@ -269,9 +266,10 @@ BankDemo アプリケーションにアクセスする TN3270 セッション用
 
 お疲れさまでした。 これで、Micro Focus Enterprise Server を使用して CICS アプリケーションを Azure で実行できました。
 
-## <a name="learn-more"></a>詳細情報
+## <a name="next-steps"></a>次の手順
 
-- [メインフレーム移行 - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
+- [Azure の Docker コンテナーで Enterprise Server を実行する](run-enterprise-server-container.md)
+- [メインフレーム移行 - ポータル](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [トラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

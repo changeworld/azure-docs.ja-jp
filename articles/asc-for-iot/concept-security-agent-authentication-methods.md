@@ -1,35 +1,35 @@
 ---
-title: ASC for IoT プレビューの認証方法 | Microsoft Docs
-description: ASC for IoT サービスを使用する際に使用可能なさまざまな認証方法について説明します。
-services: ascforiot
+title: Azure Security Center for IoT の認証方法 (プレビュー) | Microsoft Docs
+description: Azure Security Center for IoT サービスの使用時に使用できるさまざまな認証方法について説明します。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 23bc4d0df1c8124ec225ac31239c7acb3f1ab546
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541523"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862915"
 ---
 # <a name="security-agent-authentication-methods"></a>セキュリティ エージェントの認証方法 
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、IoT Hub で認証するために AzureIoTSecurity エージェントで使用できるさまざまな認証方法について説明します。
 
-IoT Hub で ASC for IoT にオンボードされたデバイスごとに、セキュリティ モジュールが必要です。 デバイスを認証するために、ASC for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。 
+IoT Hub で Azure Security Center (ASC) for IoT にオンボードされているデバイスごとにセキュリティ モジュールが必要です。 デバイスを認証するために、ASC for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。 
 
 > [!div class="checklist"]
 > * セキュリティ モジュール オプション
@@ -41,10 +41,12 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
 
  - **モジュール**認証モード<br>
    モジュールは、デバイス ツインとは別に認証されます。
-   この種類の認証に必要な情報は、C# の Authentication.config ファイルと C の LocalConfiguration.json ファイルで定義されています。
+   この認証の種類は、セキュリティ エージェントでセキュリティ モジュールを通して専用の認証方法 (対称キーのみ) を使用する場合に使用します。
         
  - **デバイス**認証モード<br>
-    この方法では、セキュリティ エージェントによって最初にデバイスに対して認証が行われます。 初期認証後、ASC for IoT エージェントでは、デバイスの認証データと共に Rest API を使用して、IoT Hub への **Rest** 呼び出しが実行されます。 その後、ASC for IoT エージェントによって IoT Hub からセキュリティ モジュールの認証方法とデータが要求されます。 最後の手順では、ASC for IoT エージェントにより、ASC for IoT モジュールに対して認証が実行されます。    
+    この方法では、セキュリティ エージェントは最初にデバイス ID に対して認証します。 初期の認証の後、ASC for IoT エージェントは、REST API をデバイスの認証データと共に使用して IoT Hub への **REST** 呼び出しを実行します。 その後、ASC for IoT エージェントによって IoT Hub からセキュリティ モジュールの認証方法とデータが要求されます。 最後の手順では、ASC for IoT エージェントにより、ASC for IoT モジュールに対して認証が実行されます。
+    
+    この認証の種類は、セキュリティ エージェントで既存のデバイス認証方法 (自己署名証明書または対称キー) を再利用する場合に使用します。 
 
 構成方法については、[セキュリティ エージェントのインストール パラメーター](#security-agent-installation-parameters)に関するセクションを参照してください。
                                 
@@ -55,7 +57,7 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
 
 ## <a name="security-agent-installation-parameters"></a>セキュリティ エージェントのインストール パラメーター
 
-[セキュリティ エージェントをデプロイする](select-deploy-agent.md)際には、認証の詳細を引数として指定する必要があります。
+[セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)際には、認証の詳細を引数として指定する必要があります。
 これらの引数を次の表に示します。
 
 
@@ -111,5 +113,5 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
 
 ## <a name="see-also"></a>関連項目
 - [セキュリティ エージェントの概要](security-agent-architecture.md)
-- [セキュリティ エージェントをデプロイする](select-deploy-agent.md)
+- [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)
 - [未加工のセキュリティ データにアクセスする](how-to-security-data-access.md)

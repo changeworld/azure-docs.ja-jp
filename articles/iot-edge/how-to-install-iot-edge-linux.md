@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 398b984f4d97005fdc4d749f3fe072423cc5bbd7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5829606f3ad226507c49f18dcc8ac4831d573b17
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309300"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578834"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Linux に Azure IoT Edge ランタイムをインストールする (x64)
 
@@ -23,7 +23,7 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 
 詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
-この記事では、Linux x64 (Intel/AMD) IoT Edge デバイスに Azure IoT Edge ランタイムをインストールする手順を示します。 サポートされている AMD64 オペレーティング システムの一覧については、[Azure IoT Edge のサポート](support.md#operating-systems)に関する記事を参照してください。
+この記事では、Ubuntu Linux x64 (Intel/AMD) IoT Edge デバイスに Azure IoT Edge ランタイムをインストールする手順を示します。 サポートされている AMD64 オペレーティング システムの一覧については、[Azure IoT Edge のサポート](support.md#operating-systems)に関する記事を参照してください。
 
 > [!NOTE]
 > Linux ソフトウェア リポジトリ内のパッケージは、各パッケージ (/usr/share/doc/*パッケージ名*) 内にあるライセンス条項の対象となります。 パッケージを使用する前に、ライセンス条項をお読みください。 インストールし、パッケージを使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、パッケージを使用しないでください。
@@ -33,12 +33,21 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 IoT Edge ランタイムをインストールできるようにデバイスを準備します。
 
 
-リポジトリ構成をインストールします。 お使いの Ubuntu のリリースに合わせて、**\<release\>** を **16.04** または **18.04** に置き換えてください。
+リポジトリ構成をインストールします。 Ubuntu のリリースに適した **16.04** または **18.04** コード スニペットのどちらかを選択します。
 
+> [!NOTE]
+> 使用しているバージョンの Ubuntu の正しいコード ボックスからコード スニペットを選択するようにしてください。
+
+* **Ubuntu 16.04** の場合:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/<release>/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
    ```
 
+* **Ubuntu 18.04** の場合:
+   ```bash
+   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   ```
+   
 生成された一覧をコピーします。
 
    ```bash

@@ -132,13 +132,14 @@ items:
   - name: 機械学習の自動化
     displayName: automl, auto ml
     items:
-    - name: Python によるトレーニングの自動化
+    - name: 自動化された ML を使用する (Python)
       displayName: SDK automl
       href: how-to-configure-auto-train.md
     - name: リモート コンピューティング ターゲットを使用する
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
     - name: 予測モデルを自動トレーニングする
+      displayName: time series
       href: how-to-auto-train-forecast.md
   - name: ONNX モデル
     href: how-to-build-deploy-onnx.md
@@ -212,9 +213,9 @@ items:
   - name: Microsoft の ML 製品の比較
     href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
     maintainContext: true
-ms.openlocfilehash: 6106a8ea03253b0787bb740295f839301543f9c6
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 647c949a8f999a34963ddfa49f1df8a1606a1295
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495449"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521769"

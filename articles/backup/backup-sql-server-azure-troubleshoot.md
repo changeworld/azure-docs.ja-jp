@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286014"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916687"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>SQL Server を Azure にバックアップする場合のトラブルシューティング
 
@@ -67,7 +67,7 @@ ms.locfileid: "58286014"
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-| Azure Backup は SQL インスタンスに接続できません。 | Azure Backup は SQL インスタンスに接続できません。 | Azure portal のエラー メニューで詳細を追加して、根本原因を絞り込みます。 エラーの修正については、[SQL バックアップのトラブルシューティング](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)に関するページを参照してください。<br/><ul><li>既定の SQL 設定でリモート接続が許可されていない場合は、設定を変更します。 設定を変更するには、以下のリンクを参照してください。<ul><li>[https://msdn.microsoft.com/library/bb326495.aspx](https://msdn.microsoft.com/library/bb326495.aspx)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>ログインに関する問題がある場合は、以下のリンクを参照して修正してください。<ul><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup は SQL インスタンスに接続できません。 | Azure Backup は SQL インスタンスに接続できません。 | Azure portal のエラー メニューで詳細を追加して、根本原因を絞り込みます。 エラーの修正については、[SQL バックアップのトラブルシューティング](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)に関するページを参照してください。<br/><ul><li>既定の SQL 設定でリモート接続が許可されていない場合は、設定を変更します。 設定の変更については、次の記事を参照してください。<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>ログインに関する問題がある場合は、以下のリンクを参照して修正してください。<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -98,12 +98,18 @@ ms.locfileid: "58286014"
 |---|---|---|
 | データベースをオフラインにできないため、復元に失敗しました。 | 復元の実行時は、ターゲット データベースをオフラインにする必要があります。 Azure Backup は、このデータをオフラインにすることができません。 | Azure portal のエラー メニューで詳細を追加して、根本原因を絞り込みます。 詳細については [SQL のドキュメント](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)を参照してください。 |
 
-
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | ターゲット上に拇印のあるサーバー証明書が見つかりません。 | 対象のインスタンス上のマスター データベースに有効な暗号化サムプリントがありません。 | ソース インスタンスで使用されている有効な証明書の拇印をターゲット インスタンスにインポートします。 |
+
+### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+| 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードにある場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 復旧のための別の時点を選択してください。 [詳細情報](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+
 
 ## <a name="registration-failures"></a>登録エラー
 
@@ -163,7 +169,8 @@ ms.locfileid: "58286014"
   * VM 上の拡張機能構成の期限が切れたため、VM が長期間にわたってシャットダウンされました。
   * VM が削除され、削除された VM と同じ名前で同じリソース グループに別の VM が作成されました。
   * AG ノードの 1 つが、完全なバックアップ構成を受け取りませんでした。これは可用性グループのコンテナーへの登録時、または新しいノードの追加時に発生する可能性があります。  <br>
-    上記のシナリオでは、VM での再登録操作をトリガーすることをお勧めします。 この方法は PowerShell のみで使用できますが、まもなく Azure portal でも使用できるようになります。
+   
+上のシナリオでは、VM での再登録操作をトリガーすることをお勧めします。 この方法は PowerShell のみで使用できますが、まもなく Azure portal でも使用できるようになります。
 
 
 ## <a name="next-steps"></a>次の手順

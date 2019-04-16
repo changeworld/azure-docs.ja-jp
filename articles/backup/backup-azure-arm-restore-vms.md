@@ -7,23 +7,20 @@ manager: vijayts
 keywords: バックアップの復元, 復元する方法, 回復ポイント
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/28/2019
 ms.author: geg
-ms.openlocfilehash: 44b8d57af83f53c73868a84104da7a7f72cb1e81
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b0408aa296dcbff0c73f2c192e24c290d51fec5f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202590"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650718"
 ---
 # <a name="restore-azure-vms"></a>Azure VM の復元
 
 この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーに格納されている復旧ポイントから Azure VM データを復元する方法について説明します。
 
-VM を復元するには、必要な [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) アクセス許可を持っていることを確認します。
 
-> [!NOTE]
-> [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) アクセス許可を持っていない場合は、[ディスクの復元](backup-azure-arm-restore-vms.md#create-new-restore-disks)を実行し、[デプロイ テンプレート](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)機能を使用して VM を作成することができます。
 
 ### <a name="restore-options"></a>復元オプション
 
@@ -32,13 +29,20 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 **復元オプション** | **詳細**
 --- | ---
 **新しい VM を作成する** | 基本的な VM を復元ポイントからすばやく作成し、起動して実行します。<br/><br/> VM の名前を指定し、配置先のリソース グループと仮想ネットワーク (VNet) を選択し、ストレージの種類を指定することができます。
-**ディスクを復元する** | 後で新しい VM を作成するために使用できる VM ディスクを復元します。<br/><br/> Azure Backup は、VM のカスタマイズと作成に役立つテンプレートを提供します。 <br/><br/> このオプションでは、指定したストレージ アカウントに VHD がコピーされます。 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定したり、VM を作成したりできます。<br/><br/> - ストレージ アカウントは、コンテナーと同じ場所にある必要があります。 ストレージ アカウントがない場合、作成します。<br/><br/> ストレージ アカウントのレプリケーションの種類が表示されます。 ゾーン冗長ストレージ (ZRS) はサポートされていません。<br/><br/> ディスクを既存の VM に接続するか、または PowerShell を使用して新しい VM を作成することもできます。<br/><br/> このオプションは、VM をカスタマイズする場合、バックアップの時点では存在していなかった構成設定を追加する場合、テンプレートまたは PowerShell を使用して構成する必要がある設定を追加する場合などに役立ちます。
-**既存の以下のものを置き換えます** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> Azure Backup は、ディスクを置き換える前に既存の VM のスナップショットを取得します。 スナップショットは指定したステージング場所に格納されます。 VM に接続されている既存のディスクはその後、選択した復元ポイントを使用して置き換えられます。 取得されたスナップショットはコンテナーにコピーされ、指定された保持ポリシーに従って保持されます。<br/><br/> 既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM では、サポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。
+**ディスクを復元する** | 後で新しい VM を作成するために使用できる VM ディスクを復元します。<br/><br/> Azure Backup は、VM のカスタマイズと作成に役立つテンプレートを提供します。 <br/><br/> このオプションでは、指定したストレージ アカウントに VHD がコピーされます。 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定したり、VM を作成したりできます。<br/><br/> ストレージ アカウントは、コンテナーと同じ場所にある必要があります。 ストレージ アカウントがない場合、作成します。<br/><br/> ストレージ アカウントのレプリケーションの種類が表示されます。 ゾーン冗長ストレージ (ZRS) はサポートされていません。<br/><br/> ディスクを既存の VM に接続するか、または PowerShell を使用して新しい VM を作成することもできます。<br/><br/> このオプションは、VM をカスタマイズする場合、バックアップの時点では存在していなかった構成設定を追加する場合、テンプレートまたは PowerShell を使用して構成する必要がある設定を追加する場合などに役立ちます。
+**既存の以下のものを置き換えます** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> Azure Backup は、ディスクを置き換える前に既存の VM のスナップショットを取得します。 スナップショットは指定したステージング場所に格納されます。 VM に接続されている既存のディスクはその後、選択した復元ポイントを使用して置き換えられます。<br/><br/> 取得されたスナップショットはコンテナーにコピーされ、指定された保持ポリシーに従って保持されます。 <br/><br/> 既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM では、サポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br/><br/>
 
 > [!NOTE]
 > Azure VM 上の特定のファイルとフォルダーを復旧することもできます。 [詳細情報](backup-azure-restore-files-from-vm.md)。
 >
 > Azure VM 用の Azure Backup の (インスタント リストアと呼ばれる) [最新バージョン](backup-instant-restore-capability.md)を実行している場合、スナップショットは最大 7 日間保持され、バックアップ データがコンテナーに送信される前にスナップショットから VM を復元できます。 過去 7 日間のバックアップから VM を復元する場合、コンテナーからではなくスナップショットから復元する方が高速です。
+
+## <a name="before-you-start"></a>開始する前に
+
+VM を復元する (新しい VM を作成する) には、VM の復元操作のための正しい RBAC (ロールベースのアクセス制御) [アクセス許可](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)があることを確認してください。
+
+アクセス許可がない場合は、[ディスクを復元し](#restore-disks)、ディスクが復元された後、復元操作の一部として生成された[テンプレートを使用して](#use-templates-to-customize-a-restored-vm)新しい VM を作成できます。
+
 
 
 ## <a name="select-a-restore-point"></a>復元ポイントを選択
@@ -54,14 +58,14 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 ## <a name="choose-a-vm-restore-configuration"></a>VM の復元の構成を選択する
 
 1. **[復元の構成]** で、復元オプションを選択します:
-    - **新規作成**。 新しい VM を作成する場合、このオプションを使用します。 単純な設定で VM を作成することも、ディスクを復元して、カスタマイズされた VM を作成することもできます。
+    - **新規作成**: 新しい VM を作成する場合、このオプションを使用します。 単純な設定で VM を作成することも、ディスクを復元して、カスタマイズされた VM を作成することもできます。
     - **既存の以下のものを置き換えます**:既存の VM 上のディスクを置き換える場合、このオプションを使用します。
 
         ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 2. 選択した復元オプションの設定を指定します。
 
-## <a name="create-new-create-a-vm"></a>新規作成 - VM の作成
+## <a name="create-a-vm"></a>VM の作成
 
 [復元オプション](#restore-options)の 1 つであり、基本的な設定を使用して復元ポイントから VM をすばやく作成できます。
 
@@ -76,7 +80,7 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 6. **[復元の構成]** で、**[OK]** をクリックします。 **[復元]** で **[復元]** をクリックして、復元操作を開始します。
 
 
-## <a name="create-new-restore-disks"></a>新規作成 - ディスクの復元
+## <a name="restore-disks"></a>ディスクを復元する
 
 [復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかを実行できます:
 
@@ -91,6 +95,8 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
     ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 4. **[復元の構成]** で、**[OK]** をクリックします。 **[復元]** で **[復元]** をクリックして、復元操作を開始します。
+
+VM の復元中、Azure Backup はストレージ アカウントを使用しません。 ただし、**ディスクの復元**や**インスタント リストア**の場合は、テンプレートを格納するためにストレージ アカウントが使用されます。
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>テンプレートを使用して復元 VM をカスタマイズする
 
@@ -132,12 +138,13 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 --- | ---
 **Hybrid Use Benefit を使用して VM を復元する** | Windows VM が [Hybrid Use Benefit (HUB) ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合、ディスクを復元し、提供されているテンプレート (**[ライセンスの種類]** を **Windows_Server** に設定)、または PowerShell を使用して新しい VM を作成します。  この設定は、VM の設定後にも適用できます。
 **Azure データ センターでの障害発生時に VM を復元する** | コンテナーで GRS を使用しており、VM のプライマリ データセンターがダウンした場合、Azure Backup では、バックアップされた VM を、ペアのデータセンターに復元することができます。 ペアのデータセンターでストレージ アカウントを選択し、通常どおりに復元します。 Azure Backup は、ペアの場所のコンピューティング サービスを使用して、復元された VM を作成します。 データセンターの回復性に関する[詳細情報](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)。
-**単一ドメイン内の単一ドメイン コントローラー VM を復元する** | 他の VM と同様に VM を復元します。 以下の点に注意してください。<br/><br/> Active Directory の観点からは、Azure VM は他の VM と変わりません。<br/><br/> ディレクトリ サービス復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 仮想化ドメイン コントローラーのバックアップと復元の考慮事項に関する[詳細情報](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v)。
-**単一ドメイン内の複数のドメイン コントローラー VM を復元する** | 同じドメイン内の他のドメイン コントローラーにネットワーク経由で到達できる場合、VM と同様にドメイン コントローラーを復元できます。 これがドメイン内の最後のドメイン コントローラーである場合や、分離されたネットワークでの復旧を実行している場合は、[フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)を使用します。
+**単一ドメイン内の単一ドメイン コントローラー VM を復元する** | 他の VM と同様に VM を復元します。 以下の点に注意してください。<br/><br/> Active Directory の観点からは、Azure VM は他の VM と同様です。<br/><br/> ディレクトリ サービス復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 仮想化ドメイン コントローラーのバックアップと復元の考慮事項に関する[詳細情報](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v)。
+**単一ドメイン内の複数のドメイン コントローラー VM を復元する** | 同じドメイン内の他のドメイン コントローラーにネットワーク経由で到達できる場合は、VM と同様にそのドメイン コントローラーを復元できます。 これがドメイン内の最後のドメイン コントローラーである場合や、分離されたネットワークでの復旧を実行している場合は、[フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)を使用します。
 **1 つのフォレスト内の複数のドメインを復元する** | [フォレストの復旧](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)をお勧めします。
 **ベア メタル回復** | Azure VM とオンプレミスのハイパーバイザーの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、コンテナーからの VM の復元が、BMR の代わりとなります。
-**特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#create-new-restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)または[外部](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
+**特別なネットワーク構成を持つ VM を復元する** | 特別なネットワーク構成に含まれるものとしては、内部または外部の負荷分散を使用する VM、複数の NIC の使用、または複数の予約済み IP アドレスがあります。 これらの VM は、[ディスクの復元オプション](#restore-disks)を使用して復元します。 このオプションでは、指定されたストレージ アカウントに VHD のコピーを作成した後、構成に応じて、[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)または[外部](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)のロード バランサー、[複数の NIC](../virtual-machines/windows/multiple-nics.md)、または[複数の予約済み IP アドレス](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)を使用して VM を作成できます。
 **NIC/サブネットでのネットワーク セキュリティ グループ (NSG)** | Azure VM バックアップは、vnet、サブネット、および NIC レベルでの NSG 情報のバックアップと復元をサポートします。
+**ゾーンにピン留めされた VM** | Azure Backup は、ゾーンにピン留めされた VM のバックアップと復元をサポートしています。 [詳細情報](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>復元操作を追跡する
 復元操作をトリガーすると、追跡用のジョブがバックアップ サービスによって作成されます。 Azure Backup は、ジョブに関する通知をポータルに表示します。 表示されていない場合、**通知**シンボルをクリックして表示します。
@@ -170,7 +177,6 @@ VM を復元した後の注意点がいくつかあります:
 
 - 最初にバックアップされた VM と同じ名前で同じリソース グループに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。
 - 別のリソース グループに VM を復元した場合、または復元された VM に別の名前を指定した場合、復元された VM のバックアップをセットアップする必要があります。
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/08/2019
+ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0aaee4b0582f8acb9302c75463c0bc52698acaeb
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403478"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629135"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を接続、設定、およびアクティブ化する 
 
@@ -119,7 +119,14 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
 
         ![ローカル Web UI の [時刻の設定] ページ](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. 左側のウィンドウで **[クラウド設定]** を選択し、Azure Portal の Data Box Edge サービスでデバイスをアクティブ化します。
+5. (省略可能) 左側のウィンドウで、**[ストレージの設定]** を選択して、デバイス上のストレージ回復性を構成します。 現在、この機能はプレビュー段階にあります。 既定では、デバイス上のストレージは回復性が高くないため、デバイスでデータ ディスクに障害が発生するとデータ損失が発生します。 [回復性がある] オプションを有効にすると、デバイス上のストレージは再構成され、デバイスは 1 台のデータ ディスクの障害にデータ損失を発生させずに耐えることができます。 ストレージを回復性があるとして構成すると、使用可能なデバイス容量が削減されます。
+
+    > [!IMPORTANT] 
+    > 回復性は、デバイスをアクティブ化する前にのみ構成できます。 
+
+    ![ローカル Web UI の [ストレージの設定] ページ](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+
+6. 左側のウィンドウで **[クラウド設定]** を選択し、Azure Portal の Data Box Edge サービスでデバイスをアクティブ化します。
     
     1. **[Activation key] (アクティブ化キー)** ボックスに、Data Box Edge の [[アクティブ化キーの取得]](data-box-edge-deploy-prep.md#get-the-activation-key) で取得したアクティブ化キーを入力します。
     2. **[適用]** を選択します。
@@ -132,7 +139,7 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
 
         ![更新されたローカル Web UI の [クラウド設定] ページ](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. 更新プログラムが正常に完了した後、数分待つ必要があります。 ページが更新され、デバイスが正常にアクティブ化されたことが示されます。
+    4. 更新が正常に完了した後、数分待つ必要がある場合があります。 ページが更新され、デバイスが正常にアクティブ化されたことが示されます。
 
         ![更新されたローカル Web UI の [クラウド設定] ページ](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 

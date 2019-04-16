@@ -1,33 +1,33 @@
 ---
-title: ASC for IoT の前提条件 (プレビュー) | Microsoft Docs
-description: ASC for IoT サービスの利用を始めるために必要なすべての前提条件の詳細です。
-services: ascforiot
+title: Azure Security Center for IoT の前提条件 (プレビュー) | Microsoft Docs
+description: Azure Security Center for IoT サービスの使用を開始するために必要なすべてのことに関する前提条件の詳細。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 790cbcb7-1340-4cc1-9509-7b262e7c3181
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 213e6a95484b5f6953f8423474953125f8739015
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541524"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861691"
 ---
-# <a name="asc-for-iot-prerequisites"></a>ASC for IoT の前提条件
+# <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center for IoT の前提条件
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-この記事では、ASC for IoT サービスのさまざまな構成要素、利用を始めるために必要なもの、およびサービスの理解に役立つ基本的な概念について説明します。 
+この記事では、Azure Security Center (ASC) for IoT サービスのさまざまな構成要素、このサービスを開始するために必要なこと、およびこのサービスの理解に役立つ基本的な概念について説明します。 
 
 ## <a name="minimum-requirements"></a>最小要件
 
@@ -59,7 +59,7 @@ ASC for IoT は、現在のところ次の Azure リージョン内の IoT Hub �
 
 ## <a name="supported-platforms-for-agents"></a>エージェントでサポートされているプラットフォーム 
 
-ASC for IoT エージェントは、増え続けているデバイスとプラットフォームをサポートしています。 [サポートされているプラットフォームの一覧](select-deploy-agent.md)を参照して、既存または予定しているデバイス ライブラリを確認してください。  
+ASC for IoT エージェントは、増え続けているデバイスとプラットフォームをサポートしています。 [サポートされているプラットフォームの一覧](how-to-deploy-agent.md)を参照して、既存または予定しているデバイス ライブラリを確認してください。  
 
 ## <a name="next-steps"></a>次の手順
 - [概要](overview.md)

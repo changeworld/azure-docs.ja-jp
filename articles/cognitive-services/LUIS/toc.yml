@@ -62,11 +62,14 @@ items:
       href: luis-quickstart-intents-regex-entity.md
     - name: 一覧を使用して完全なテキスト一致を取得する
       href: luis-quickstart-intent-and-list-entity.md
-    - name: 階層エンティティを使用してコンテキスト関連データを取得する
-      href: luis-quickstart-intent-and-hier-entity.md
+    - name: エンティティ ロールを使用して関連データを取得する
+      displayName: roles, geographyV2, context
+      href: tutorial-entity-roles.md
     - name: 複合エンティティを使用して関連データをグループ化して抽出する
+      displayName: roles
       href: luis-tutorial-composite-entity.md
     - name: シンプル エンティティを使用して名前を取得する
+      displayName: roles
       href: luis-quickstart-primary-and-secondary-data.md
   - name: アプリの改善
     items:
@@ -77,6 +80,7 @@ items:
     - name: 一般的な発話の形式を追加する
       href: luis-tutorial-pattern.md
     - name: 文脈的に関連するパターンを抽出する
+      displayName: roles
       href: luis-tutorial-pattern-roles.md
     - name: 自由形式のデータを抽出する
       href: luis-tutorial-pattern-any.md
@@ -113,7 +117,7 @@ items:
     - name: 意図
       href: luis-concept-intent.md
     - name: エンティティ
-      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed
+      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed, roles
       href: luis-concept-entity-types.md
     - name: 発話
       href: luis-concept-utterance.md
@@ -130,6 +134,7 @@ items:
     - name: フレーズ リスト
       href: luis-concept-feature.md
     - name: パターン
+      displayName: roles
       href: luis-concept-patterns.md
   - name: データ管理
     items:
@@ -138,6 +143,7 @@ items:
     - name: データの変換
       href: luis-concept-data-conversion.md
     - name: データの抽出
+      displayName: roles
       href: luis-concept-data-extraction.md
     - name: データ ストレージ
       href: luis-concept-data-storage.md
@@ -171,7 +177,7 @@ items:
     - name: 発話に対するエンティティの追加
       href: luis-how-to-add-example-utterances.md
     - name: 発話のないエンティティの追加
-      displayName: import
+      displayName: roles, import
       href: luis-how-to-add-entities.md
     - name: 事前構築済みのモデルの使用
       items:
@@ -220,7 +226,7 @@ items:
       displayName: synonym, interchange
       href: luis-how-to-add-features.md
     - name: パターンの追加
-      displayName: syntax, template
+      displayName: syntax, template, roles
       href: luis-how-to-model-intent-pattern.md
   - name: トレーニング
     href: luis-how-to-train.md
@@ -410,9 +416,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: db4e3cf9cad70556b057645dec52c9705fb29079
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1a35c8befbffae02a169e87390677c547aec833c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896110"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523686"

@@ -9,18 +9,20 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c0cf0a31aac4a4b647cd766c93e3ebbde1fb72e7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 386f5af2ef186dcde2971601b44eb9cbd53883dd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "58408460"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895998"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Azure Germany の移行ガイダンスの概要
 
 このセクションの記事は、ワークロードを Azure Germany からグローバル Azure に移行する場合に役立つように作成されました。 [Azure Migration Center](https://azure.microsoft.com/migration/) は、リソースの移行に役立つツールを提供していますが、Azure Migration Center の一部のツールは、同じテナントまたは同じリージョン内で発生する移行にのみ役立ちます。
 
 Germany の 2 つのリージョンは、グローバル Azure から完全に分離されています。 グローバル Azure のクラウドと Germany のクラウドには、独自で個別の Azure Active Directory (Azure AD) インスタンスがあります。 このため、Azure Germany のテナントはグローバル Azure テナントから分離されています。 この記事では、*異なる*テナント間で移行するときに使用できる移行ツールについて説明します。
+
+ID/テナントに関するガイダンスは、Azure のみの顧客を対象にしています。 Azure と O365 (またはその他の Microsoft 製品) のために一般的な Azure Active Directory (Azure AD) テナントを使用する場合は、ID の移行に複雑さが発生するため、この移行ガイダンスを使用する前に、まずアカウント マネージャーに連絡する必要があります。
 
 ## <a name="migration-process"></a>移行プロセス
 
@@ -100,7 +102,7 @@ Azure Germany の移行に関する記事では、以下の用語が使用され
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

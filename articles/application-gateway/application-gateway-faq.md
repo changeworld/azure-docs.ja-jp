@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: c40f372d3574f940e475a6626f998adae37a6d61
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286195"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851158"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -59,7 +59,7 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 ### <a name="in-what-order-are-listeners-processed"></a>リスナーはどのような順序で処理されますか?
 
-リスナーは、表示される順序で処理されます。 そのため、基本リスナーが着信要求と一致する場合は、基本リスナーが要求を最初に処理します。  トラフィックが正しいバックエンドにルーティングされるようにするには、基本リスナーの前にマルチサイト リスナーを構成する必要があります。
+「[リスナーを処理する順序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners)」を参照してください。
 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Application Gateway の IP と DNS はどこで確認できますか?
 
@@ -83,16 +83,13 @@ v1 SKU 上のキープアライブ タイムアウトは 120 秒です。v2 SKU 
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Application Gateway のサブネットはどのくらい大きくする必要がありますか?
 
-Application Gateway は、インスタンスごとに 1 つのプライベート IP アドレスを使用します。さらに、プライベート フロントエンド IP 構成を使用している場合は、もう 1 つのプライベート IP アドレスを使用します。 また、Azure は、内部使用のために、各サブネットの最初の 4 個の IP アドレスと最後の IP アドレスを予約しています。
-たとえば、アプリケーション ゲートウェイが 3 つのインスタンスに設定され、プライベート フロントエンド IP が設定されていない場合は、/29 サブネット サイズ以上が必要です。 この場合、アプリケーション ゲートウェイは 3 つの IP アドレスを使用します。 プライベート フロントエンド IP 構成用に 3 つのインスタンスと 1 つの IP アドレスがある場合は、4 つの IP アドレスが必要なため、/28 サブネット以上のサイズが必要です。
-
-ベスト プラクティスとして、サブネット サイズは /28 以上を使用してください。 こうすると 11 個の使用可能なアドレスが得られます。 アプリケーションの負荷によって 10 個を超えるインスタンスが必要な場合には、サブネット サイズ /27 または /26 を検討する必要があります。
+デプロイに必要なサブネットのサイズを理解するには、[Application Gateway のサブネットのサイズについての考慮事項](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet)に関するページを参照してください。
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Q. 1 つのサブネットに複数の Application Gateway リソースをデプロイできますか?
 
 はい、特定の Application Gateway の複数のインスタンスのデプロイに加え、別の Application Gateway リソースを含む既存のサブネットに別の一意の Application Gateway リソースをプロビジョニングできます。
 
-同じサブネット上の Standard_v2 と Standard Application Gateway の混在はサポートされていません。 さらに、自動スケールを有効にすると、1 つのサブネットには 1 つのアプリケーション ゲートウェイだけが存在できます。
+同じサブネット上の Standard_v2 と Standard Application Gateway の混在はサポートされていません。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
@@ -152,13 +149,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>ネットワーク セキュリティ グループはアプリケーション ゲートウェイ サブネットでサポートされますか?
 
-ネットワーク セキュリティ グループ (NSG) はアプリケーション ゲートウェイ サブネットでサポートされますが、次の制約があります。
-
-* Application Gateway v1 SKU ではポート 65503 から 65534 の、v2 SKU ではポート 65200 から 65535 の受信トラフィックを例外にする必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始できません。
-
-* 送信インターネット接続はブロックできません。 NSG の既定のアウトバウンド規則ではインターネット接続が既に許可されています。 既定のアウトバウンド規則は削除しないこと、および送信インターネット接続を拒否する他のアウトバウンド規則を作成しないことをお勧めします。
-
-* AzureLoadBalancer タグからのトラフィックを許可する必要があります。
+Application Gateway サブネットでサポートされるネットワーク セキュリティ グループについて学習するには、[Application Gateway のサブネットに関するネットワーク セキュリティ グループの制限](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet)に関するページを参照してください。
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>ユーザー定義ルートは Application Gateway サブネットでサポートされますか?
 
@@ -190,7 +181,7 @@ Application Gateway サブネットでサポートされるユーザー定義ル
 
 ### <a name="how-are-rules-processed"></a>ルールはどのように処理されますか?
 
-ルールは、構成されている順序で処理されます。 マルチサイト ルールが評価される前に基本ルールがポートに基づくトラフィックと一致したときにトラフィックが不適切なバックエンドにルーティングされる可能性を低くするため、基本ルールの前にマルチサイト ルールを構成することをお勧めします。
+Application Gateway でルーティング規則が処理される方法を理解するには、「[規則を処理する順序](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules)」を参照してください。
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>カスタム プローブの [ホスト] フィールドは何を表しますか?
 
@@ -356,7 +347,7 @@ Microsoft は、一般的な [GoAccess](https://goaccess.io/) ログ アナラ�
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>バックエンドの正常性から不明な状態が返されるのですが、この状態はどのような原因が考えられますか?
 
-最も一般的な理由は、バックエンドへのアクセスが NSG またはカスタム DNS によってブロックされていることです。 詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
+最も一般的な原因は、バックエンドへのアクセスが NSG、カスタム DNS によってブロックされるか、または Application Gateway サブネット上に UDR が存在することです。 詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

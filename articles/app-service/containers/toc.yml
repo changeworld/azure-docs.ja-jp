@@ -23,7 +23,7 @@ items:
     href: quickstart-python.md
   - name: Ruby アプリの作成
     href: quickstart-ruby.md
-  - name: Docker/Go アプリの作成
+  - name: カスタム コンテナーの実行
     href: quickstart-docker-go.md
   - name: 複数コンテナー アプリの作成
     href: quickstart-multi-container.md
@@ -48,7 +48,7 @@ items:
       href: tutorial-java-enterprise-postgresql-app.md
   - name: 複数コンテナー アプリ
     href: tutorial-multi-container-app.md
-  - name: カスタム Docker イメージ
+  - name: ACR からのコンテナーの実行
     href: tutorial-custom-docker-image.md
   - name: カスタム ドメインのマップ
     href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -72,10 +72,6 @@ items:
     href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service 環境
     href: ../environment/intro.md
-  - name: Java 開発者ガイド
-    href: app-service-linux-java.md
-  - name: Java エンタープライズ ガイド
-    href: app-service-java-enterprise.md
   - name: 受信 IP と送信 IP
     href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: 認証と権限承認
@@ -88,10 +84,22 @@ items:
   items:
   - name: アプリの構成
     items:
-    - name: Python イメージ
-      href: how-to-configure-python.md
     - name: アプリ設定の使用
       href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: ASP.NET Core の構成
+      href: configure-language-dotnetcore.md
+    - name: Node.js の構成
+      href: configure-language-nodejs.md
+    - name: PHP の構成
+      href: configure-language-php.md
+    - name: Java を構成する
+      href: configure-language-java.md
+    - name: Python の構成
+      href: how-to-configure-python.md
+    - name: Ruby の構成
+      href: configure-language-ruby.md
+    - name: カスタム コンテナーの構成
+      href: configure-custom-container.md
     - name: Storage によるコンテンツの配信
       href: how-to-serve-content-from-azure-storage.md
   - name: Deploy to Azure (Azure へのデプロイ)
@@ -158,8 +166,6 @@ items:
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: ログの有効化
       href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Java APM の統合
-      href: how-to-java-apm-monitoring.md
   - name: アプリの管理
     items:
     - name: アプリのバックアップ
@@ -222,9 +228,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: 構成と管理に関する FAQ
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 250501832c3daaeee9935c2796e6da9df3483e35
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719525"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544874"
