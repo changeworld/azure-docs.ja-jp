@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory セルフ サービス パスワードの詳細情報
+title: セルフサービスによるパスワード リセットの詳細 - Azure Active Directory
 description: セルフサービスによるパスワードのリセットの動作
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214760"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370008"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -76,7 +76,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 > [!WARNING]
 > Azure 管理者ロールが割り当てられたアカウントは、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」で定義されている方法を使用する必要があります。
 
-![認証][Authentication]
+![Azure portal の [認証方法] セクション][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>必要な認証方法の数
 
@@ -160,7 +160,7 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 
 Azure AD Connect のインストール、構成、有効化を行う場合、オンプレミス統合に関する次の追加オプションが表示されます。 これらのオプションがグレー表示になっている場合、ライトバックが適切に構成されていません。 詳しくは、「[パスワード ライトバックの構成](howto-sspr-writeback.md)」をご覧ください。
 
-![ライトバック][Writeback]
+![パスワード ライトバックの検証が有効かつ動作中][Writeback]
 
 このページには、オンプレミスのライトバック クライアントの簡単な状態が表示されます。現在の構成に基づいて、次のメッセージのいずれかが表示されます。
 
@@ -180,7 +180,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>パスワードをリセットせずにアカウントのロックを解除することをユーザーに許可する
 
-このコントロールは、パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、Azure AD はパスワード リセットを実行するときにアカウントをロック解除します。 これら 2 つの操作を分離するには、この設定を使います。 
+このコントロールは、パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、Azure AD はパスワード リセットを実行するときにアカウントをロック解除します。 これら 2 つの操作を分離するには、この設定を使います。
 
 * **[はい]** に設定すると、ユーザーは、パスワードをリセットしてアカウントのロックを解除するか、パスワードをリセットせずにアカウントのロックを解除するかを選択できます。
 * **[いいえ]** に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できません。
@@ -193,9 +193,9 @@ Azure AD のセルフサービス パスワード リセットでは、Active Di
 
 パスワードのリセットと変更は、すべての企業間 (B2B) 構成で完全にサポートされています。 B2B ユーザーのパスワード リセットは、次の 3 つの場合にサポートされます。
 
-   * **既存の Azure AD テナントがあるパートナー組織のユーザー**:パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、"*そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます*"。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Office 365 の顧客に対する追加料金はなく、[パスワード管理の開始](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)に関するガイドの手順に従って有効にできます。
-   * **セルフ サービス サインアップを使ってサインアップしたユーザー**:パートナーを組んでいる組織が[セルフ サービス サインアップ](../users-groups-roles/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録されたメールを使ってパスワードをリセットできます。
-   * **B2B ユーザー**:新しい [Azure AD B2B 機能](../active-directory-b2b-what-is-azure-ad-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
+* **既存の Azure AD テナントがあるパートナー組織のユーザー**:パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、"*そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます*"。 パスワード リセットが機能するためにパートナー組織で必要なのは、Azure AD SSPR を有効にすることだけです。 Office 365 の顧客に対する追加料金はなく、[パスワード管理の開始](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)に関するガイドの手順に従って有効にできます。
+* **セルフ サービス サインアップを使ってサインアップしたユーザー**:パートナーを組んでいる組織が[セルフ サービス サインアップ](../users-groups-roles/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録されたメールを使ってパスワードをリセットできます。
+* **B2B ユーザー**:新しい [Azure AD B2B 機能](../active-directory-b2b-what-is-azure-ad-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
 
 このシナリオをテストするには、これらのパートナー ユーザーのいずれかで https://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。
 

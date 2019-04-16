@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c98136e2f45965834fa1c538a5929eee14b24466
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081442"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521586"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでイベント ルールを作成して通知を設定する
 
@@ -113,4 +113,5 @@ Microsoft Flow や Webhook などの他のアクションをルールに追加�
 
 - [ルールに Microsoft Flow のアクションを追加する](howto-add-microsoft-flow.md)
 - [ルールに Webhook アクションを追加する](howto-create-webhooks.md)
+- [1 つまたは複数のルールから実行する複数のアクションをグループ化する](howto-use-action-groups.md)
 - [デバイスの管理方法](howto-manage-devices.md)

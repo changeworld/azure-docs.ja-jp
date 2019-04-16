@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 2/20/2019
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 1f6d6b2ae5fd3a0c08d37b93c73656ac6bb71d67
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295642"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337648"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -20,9 +20,9 @@ Azure DNS エイリアス レコードは、DNS レコード セットを修飾�
 
 Azure DNS ゾーンでは、エイリアス レコード セットとして、次の種類のレコードがサポートされます。 
 
-- A 
-- AAAA 
-- CNAME 
+- A
+- AAAA
+- CNAME
 
 > [!NOTE]
 > A または AAAA レコードの種類に対してエイリアス レコードを使用して [Azure Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)をポイントする場合は、Traffic Manager プロファイルにあるのが[外部エンドポイント](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)だけであることを確認する必要があります。 Traffic Manager の外部エンドポイントには、IPv4 または IPv6 アドレスを指定する必要があります。 できる限り、静的 IP アドレスを使用します。
@@ -32,7 +32,7 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 - **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。 パブリック IP アドレスが変化するか削除される場合は、DNS レコード セットが自動的です。 正しくない IP アドレスをポイントする未解決の DNS レコードは回避されます。
 
 - **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 A/AAAA または CNAME レコード セットを作成し、エイリアス レコードを使用して Traffic Manager プロファイルをポイントすることができます。 従来の CNAME レコードはゾーンの頂点に対してサポートされていないため、ゾーンの頂点でトラフィックをルーティングする必要がある場合に特に便利です。 たとえば、Traffic Manager プロファイルが myprofile.trafficmanager.net で、ビジネスの DNS ゾーンが contoso.com であるものとします。 contoso.com (ゾーンの頂点) に対して A/AAAA の種類のエイリアス レコード セットを作成し、それで myprofile.trafficmanager.net をポイントすることができます。
-
+- **Azure Content Delivery Network (CDN) エンドポイントをポイントする**。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。
 - **同じゾーン内の別の DNS レコード セットをポイントする**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照できます。 たとえば、DNS の CNAME レコード セットは、別の CNAME レコード セットのエイリアスになることができます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
 
 ## <a name="scenarios"></a>シナリオ
@@ -61,6 +61,7 @@ DNS プロトコルでは、ゾーンの頂点での CNAME レコードの割り
 たとえば、contoso.com と www\.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 Azure Traffic Manager プロファイルでのエイリアス レコードの使用に関する詳細については、次の手順のセクションを参照してください。
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>ゾーンの頂点から Azure CDN エンドポイントをポイントする
+
 Traffic Manager プロファイルの場合と同様に、エイリアス レコードを使用して DNS ゾーンの頂点から Azure CDN エンドポイントをポイントすることもできます。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。 DNS 名の前に "www" を付けなくても、Web サイトにアクセスできるようになります。
 
 たとえば、静的な Web サイトの名前が www.contoso.com の場合、DNS 名の前に www を付ける必要はなく、ユーザーは contoso.com を使ってサイトにアクセスできます。

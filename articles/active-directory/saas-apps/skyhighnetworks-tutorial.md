@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 30733a971c758fc62adf56132c88914b60c98ae5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4836cdec546b7da7351d18d5217e4f87d749aa79
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168172"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>チュートリアル:Azure Active Directory と Skyhigh Networks の統合
 
@@ -51,7 +51,7 @@ Azure AD と Skyhigh Networks の統合を構成するには、次のものが�
 
 Azure AD への Skyhigh Networks の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Skyhigh Networks を追加する必要があります。
 
-**ギャラリーから Skyhigh Networks を追加するには、次の手順に従います。**
+**ギャラリーから Skyhigh Networks を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Skyhigh Networks で Azure AD シングル サインオンを構成するには�
 
     ![[Skyhigh Networks のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<ENV>.myshn.net/shndash/saml/Azure_SSO` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
-    b. **[応答 URL]** ボックスに、`https://<ENV>.myshn.net/shndash/response/saml-postlogin` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<ENV>.myshn.net/shndash/response/saml-postlogin`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -201,6 +201,6 @@ Skyhigh Networks で Azure AD シングル サインオンを構成するには�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

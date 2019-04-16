@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 2a2e289423eda53d610b2346193f6ee8a30b9c48
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: f07f81562c604913e633a8d93fa9c7db28a7bf55
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917687"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471479"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 更新プログラム
 
@@ -64,6 +64,12 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - ディスクの空き領域が少ない状態での検出と修復の機能が強化されました。
 
+### <a name="secret-management"></a>シークレットの管理
+
+- Azure Stack では、外部シークレットのローテーション用の証明書によって使用される、ルート証明書のローテーションがサポートされるようになりました。 詳細については、[こちらの記事](azure-stack-rotate-secrets.md)を参照してください。
+
+- 1903 には、内部シークレットのローテーションを実行するために必要な時間を短縮する、シークレットのローテーション向けのパフォーマンスの改善が含まれています。
+
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
@@ -91,7 +97,8 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - [Test-AzureStack](azure-stack-diagnostic-test.md) を実行すると、ベースボード管理コントローラー (BMC) からの警告メッセージが表示されます。 この警告は無視してかまいません。
 
-- <!-- 2468613 - IS --> この更新プログラムのインストール中に、`Error – Template for FaultType UserAccounts.New is missing.` というタイトルのアラートが表示されることがありますが、これらのアラートは無視してかまいません。 この更新プログラムのインストールが完了した後、これらのアラートは自動的に閉じられます。
+<!-- 2468613 - IS -->
+- この更新プログラムのインストール中に、"**エラー – FaultType UserAccounts.New のテンプレートが見つかりません**" というタイトルのアラートが表示される場合があります。 これらのアラートは無視してかまいません。 この更新プログラムのインストールが完了した後、これらのアラートは自動的に閉じられます。
 
 ## <a name="post-update-steps"></a>更新後の手順
 
@@ -118,10 +125,15 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 - ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
 
 <!-- 1663805 - IS ASDK --> 
-- Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、[PowerShell を使用してアクセス許可を確認](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan)します。
+- Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、[PowerShell を使用してアクセス許可を確認](/powershell/module/azurerm.resources/get-azurermroleassignment)します。
 
 <!-- Daniel 3/28 -->
-- ユーザー ポータルでストレージ アカウント内の BLOB に移動し、ナビゲーション ツリーから**アクセス ポリシー**を開こうとすると、後続のウィンドウの読み込みに失敗します。
+- ユーザー ポータルでストレージ アカウント内の BLOB に移動し、ナビゲーション ツリーから**アクセス ポリシー**を開こうとすると、後続のウィンドウの読み込みに失敗します。 この問題を回避するには、次の PowerShell コマンドレットによって、それぞれアクセス ポリシーの作成、取得、設定、削除を有効にできます。
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- Daniel 3/28 -->
 - ユーザー ポータルで **[OAuth(preview)]\(OAuth (プレビュー)\)** オプションを使用して BLOB をアップロードしようとすると、タスクがエラー メッセージにより失敗します。 この問題を回避するには、**[SAS]** オプションを使用して BLOB をアップロードします。
@@ -151,14 +163,16 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してサインインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワードベースの認証を使用してください。
 
-- ハードウェア ライフサイクル ホスト (HLH) をお持ちでない場合:ビルド 1902 以前は、グループ ポリシー *Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options* を **[LM と NTLM を送信する - ネゴシエーションの場合、NTLMv2 セッション セキュリティを使う]** に設定する必要がありました。 ビルド 1902 からは、**[定義されていません]** のままにするか、**[NTLMv2 応答のみ送信する]** (既定値) に設定する必要があります。 そうしないと、PowerShell リモート セッションを確立できず、"*アクセスが拒否されました*" というエラーが表示されます。
+- Azure Stack では、バージョン 2.2.20 以上の Windows Azure Linux エージェントがサポートされるようになりました。 このサポートは 1901 と 1902 修正プログラムの一部であり、顧客が Azure と Azure Stack との間で一貫性のある Linux イメージを保持できるようになります。
 
-   ```PowerShell
+- ハードウェア ライフサイクル ホスト (HLH) がない場合: ビルド 1902 以前は、グループ ポリシー **Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options** を **[LM と NTLM を送信する (ネゴシエートした場合 NTLMv2 セッション セキュリティを使う)]** に設定する必要がありました。 ビルド 1902 からは、**[定義されていません]** のままにするか、**[NTLMv2 応答のみ送信する]** (既定値) に設定する必要があります。 そうしないと、PowerShell リモート セッションを確立できず、"**アクセスが拒否されました**" というエラーが表示されます。
+
+   ```powershell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
    At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   + $Session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
    +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
@@ -169,7 +183,7 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 <!-- 3239127 - IS, ASDK -->
 - Azure Stack ポータルで、VM インスタンスにアタッチされたネットワーク アダプターにバインドされている IP 構成の静的 IP アドレスを変更すると、次の内容の警告メッセージが表示されます。 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
 
     このメッセージは無視してかまいません。たとえ VM インスタンスが再起動しなくても IP アドレスは変更されます。
 
@@ -194,12 +208,15 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 <!-- 2352906 - IS ASDK --> 
 - お客様の最初の Azure 関数をサブスクリプションに作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
 
-
 <!-- ### Usage -->
 
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>syslog
+
+- syslog 構成が更新サイクル全体で維持されず、その結果、syslog クライアントがその構成を失い、処理が停止されることが syslog によって通知されます。 この問題は、syslog クライアントの一般提供以降、Azure Stack のすべてのバージョンに適用されます (1809)。 この問題を回避するには、Azure Stack の更新プログラムを適用した後で、syslog クライアントを再構成します。
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
 

@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 77dda80e538c8b742a96e7b7f81abe8650ee6b5d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904000"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257299"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Azure Stack と外部の監視ソリューションとの統合
 
@@ -30,7 +30,7 @@ Azure Stack インフラストラクチャの外部の監視のためには、Az
 - 物理コンピューターでは、ベースボード管理コントローラー (BMC) を通して、正常性とアラートの情報を取得できます。
 - 物理ネットワーク デバイスでは、SNMP プロトコルを通して、正常性とアラートの情報を取得できます。
 
-各 Azure Stack ソリューションは、ハードウェア ライフサイクル ホストに含まれています。 このホストは、物理サーバーとネットワーク デバイス用に OEM (Original Equipment Manufacturer) ハードウェア ベンダーの監視ソフトウェアを実行します。 必要に応じて、これらの監視ソリューションを使用せずに、データセンター内の既存の監視ソリューションと直接統合することもできます。
+各 Azure Stack ソリューションは、ハードウェア ライフサイクル ホストに含まれています。 このホストは、物理サーバーとネットワーク デバイス用に OEM (Original Equipment Manufacturer) ハードウェア ベンダーの監視ソフトウェアを実行します。 OEM プロバイダーに、そのプロバイダーの監視ソリューションをデータセンター内の既存の監視ソリューションと統合できるかどうかを確認してください。
 
 > [!IMPORTANT]
 > 使用する外部の監視ソリューションは、エージェントレスである必要があります。 Azure Stack コンポーネント内にサード パーティ製エージェントをインストールすることはできません。
@@ -40,7 +40,7 @@ Azure Stack インフラストラクチャの外部の監視のためには、Az
 ![Azure Stack 監視とチケット発行ソリューションとの間のトラフィックを示す図。](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> 物理サーバーやネットワーク デバイスとの直接の外部監視統合は許可されておらず、アクセス制御リスト (ACL) によって積極的にブロックされています。 
+> 物理サーバーとの直接の外部監視統合は許可されておらず、アクセス制御リスト (ACL) によって積極的にブロックされています。  物理ネットワーク デバイスとの直接の外部監視統合はサポートされているので、この機能を有効にする方法については OEM プロバイダーに確認してください。
 
 この記事では、Azure Stack を System Center Operations Manager や Nagios などの外部の監視ソリューションと統合する方法を説明します。 PowerShell を使用して、または REST API 呼び出しを介して、アラートをプログラムで操作する方法も説明します。
 
@@ -86,7 +86,7 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 | *Tenant_id* | 管理者のサブスクリプション ID | 管理者ポータルまたは PowerShell で取得します |
 | *User_name* | オペレーターのサブスクリプション ユーザー名 | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | オペレーターのサブスクリプション パスワード | mypassword |
-| *Client_id* | クライアント | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
+| *Client_id* | Client | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
 | *region* |  Azure Stack のリージョン名 | local |
 |  |  |
 

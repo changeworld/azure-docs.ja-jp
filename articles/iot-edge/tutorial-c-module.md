@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98406df3746bb0ca2fc658697ee25b1f11b54c0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eeaff4769dba5b6e6951665d09cd12d13f22af07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084591"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273715"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル:C IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
@@ -36,8 +36,10 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。 
-* Azure IoT Edge 用 C モジュールは、Windows コンテナーに対応していません。 IoT Edge デバイスが Windows マシンの場合は、Linux コンテナーを使用するように構成してください。 Windows コンテナーと Linux コンテナーのインストールの違いについては、[Windows への IoT Edge ランタイムのインストール](how-to-install-iot-edge-windows.md)に関するページを参照してください。
+* [Linux](quickstart-linux.md) または [Windows デバイス](quickstart.md)用のクイック スタートに記載された手順に従うことで、Azure 仮想マシンを IoT Edge デバイスとして使用できます。 
+
+   >[!TIP]
+   >このチュートリアルでは、Visual Studio Code で、Linux コンテナーを使用する C モジュールを開発します。 C for Windows コンテナーで開発する場合は、Visual Studio 2017 を使用する必要があります。 詳細については、「[Visual Studio 2017 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする](how-to-visual-studio-develop-module.md)」を参照してください。
 
 クラウド リソース:
 
@@ -100,7 +102,7 @@ Azure IoT Edge デバイス:
  
    ![Docker イメージ リポジトリを指定する](./media/tutorial-c-module/repository.png)
 
-VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 ソリューション ワークスペースには、最上位の 5 つのコンポーネントが含まれています。 **modules** フォルダーには、モジュール用の C コードと、モジュールをコンテナー イメージとして構築するための Dockerfiles が含まれています。 **\.env** ファイルには、コンテナー レジストリの資格情報が格納されています。 **deployment.template.json** ファイルには、デバイスにモジュールをデプロイするために IoT Edge ランタイムが使用する情報が含まれています。 また、**deployment.debug.template.json** ファイルには、モジュールのデバッグ バージョンが含まれています。 このチュートリアルでは、**\.vscode** フォルダーまたは **\.gitignore** ファイルは編集しません。
+VS Code ウィンドウに、IoT Edge ソリューション ワークスペースと 5 つの上位レベル コンポーネントが表示されます。 **modules** フォルダーには、モジュール用の C コードと、モジュールをコンテナー イメージとして構築するための Dockerfiles が含まれています。 **\.env** ファイルには、コンテナー レジストリの資格情報が格納されています。 **deployment.template.json** ファイルには、デバイスにモジュールをデプロイするために IoT Edge ランタイムが使用する情報が含まれています。 また、**deployment.debug.template.json** ファイルには、モジュールのデバッグ バージョンが含まれています。 このチュートリアルでは、**\.vscode** フォルダーまたは **\.gitignore** ファイルは編集しません。
 
 ソリューションの作成時にコンテナー レジストリを指定せず、既定値の localhost:5000 のままにすると、\.env ファイルは作成されません。
 
@@ -118,7 +120,7 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-C モジュールにコードを追加して、センサーからデータを読み込み、報告されたマシンの温度が安全なしきい値を超えているかどうかをチェックし、その情報を IoT Hub に渡すことができるようにします。
+C モジュールにコードを追加して、報告されたマシンの温度が安全なしきい値を超えているかどうかをチェックできるようにします。 温度が高すぎる場合、モジュールでは、データが IoT Hub に送信される前にメッセージにアラート パラメーターが追加されます。 
 
 1. このシナリオでは、センサーからのデータは JSON 形式で提供されます。 JSON 形式のメッセージをフィルター処理するには、C 用の JSON ライブラリをインポートします。このチュートリアルでは、Parson を使用します。
 
@@ -321,7 +323,7 @@ C モジュールにコードを追加して、センサーからデータを読
 
 前のセクションでは、IoT Edge ソリューションを作成し、許容される限度内のマシン温度を報告するメッセージを除外するコードを CModule に追加しました。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
-1. **[表示]** > **[統合ターミナル]** の順に選択して、VS Code 統合ターミナルを開きます。
+1. **[表示]** > **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。
 
 1. Visual Studio Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。 モジュール イメージをレジストリにプッシュできるように、Azure Container Registry の資格情報でサインインする必要があります。
      
@@ -368,7 +370,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 IoT Edge デバイスのステータスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを使用して確認できます。 デバイスの詳細を展開すると、デプロイされて実行中のモジュールが一覧表示されます。
 
-デプロイ モジュールのステータスは、IoT Edge デバイス自体で `iotedge list` コマンドを使用すると確認できます。 2 つの IoT Edge ランタイム モジュールと tempSensor、さらに、このチュートリアルで作成したカスタム モジュールの 4 つのモジュールが表示されると思います。 すべてのモジュールが開始されるまでには数分かかると考えられます。最初に表示されないモジュールがある場合は、コマンドを再実行してください。
+IoT Edge デバイス自体では、`iotedge list` コマンドを使用してデプロイ モジュールのステータスを確認できます。 2 つの IoT Edge ランタイム モジュールと tempSensor、さらに、このチュートリアルで作成したカスタム モジュールの 4 つのモジュールが表示されると思います。 すべてのモジュールが開始されるまでには数分かかると考えられます。最初に表示されないモジュールがある場合は、コマンドを再実行してください。
 
 モジュールによって生成されているメッセージを確認するには、`iotedge logs <module name>` コマンドを使用します。
 
@@ -396,5 +398,5 @@ IoT ハブに到着したメッセージは、Visual Studio Code を使用して
 このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code 用の Azure IoT Edge で C モジュールを開発する](how-to-develop-c-module.md)方法の詳細をご覧ください。 引き続き次のチュートリアルを実行し、Azure IoT Edge が、エッジでデータをビジネス上の分析情報に変えるうえで、どのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
-> [SQL Server データベースを使用してエッジでデータを格納する](tutorial-store-data-sql-server.md)
+> [SQL Server データベースを使用したエッジでのデータの格納](tutorial-store-data-sql-server.md)
 

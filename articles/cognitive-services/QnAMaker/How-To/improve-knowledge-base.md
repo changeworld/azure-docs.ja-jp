@@ -1,29 +1,29 @@
 ---
 title: ナレッジ ベースを改善する - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: ''
+description: アクティブ ラーニングを使用すると、質問と回答のペアに対して、ユーザーの送信内容に基づく代わりの質問を提案することで、ナレッジ ベースの品質を改善できます。 それらの提案を検討し、既存の質問に追加するか却下します。 ナレッジ ベースが自動的に変更されることはありません。 変更を有効にするためには、提案を受け入れる必要があります。 これらの提案によって質問が追加されますが、既存の質問の変更や削除は行われません。
 author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537900"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522198"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
+# <a name="use-active-learning-to-improve-your-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
 アクティブ ラーニングを使用すると、質問と回答のペアに対して、ユーザーの送信内容に基づく代わりの質問を提案することで、ナレッジ ベースの品質を改善できます。 それらの提案を検討し、既存の質問に追加するか却下します。 
 
 ナレッジ ベースが自動的に変更されることはありません。 変更を有効にするためには、提案を受け入れる必要があります。 これらの提案によって質問が追加されますが、既存の質問の変更や削除は行われません。
 
-## <a name="active-learning"></a>アクティブ ラーニング
+## <a name="what-is-active-learning"></a>アクティブ ラーニングとは
 
 QnA Maker は、暗黙的および明示的フィードバックによって、新しい質問のバリエーションを学習します。
  
@@ -42,7 +42,7 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 
 QnA Maker ポータルで質問が提案されたら、それらの提案をレビューして、承認または拒否する必要があります。 
 
-## <a name="upgrade-version-to-use-active-learning"></a>アクティブ ラーニングを使用するバージョンへのアップグレード
+## <a name="upgrade-your-version-to-use-active-learning"></a>アクティブ ラーニングを使用するバージョンへのアップグレード
 
 アクティブ ラーニングは、ランタイム バージョン 4.4.0 以上でサポートされています。 ナレッジ ベースが以前のバージョンで作成された場合は、この機能を使用するために[ランタイムをアップグレード](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates)します。 
 
@@ -64,12 +64,12 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
 1. アクティブ ラーニングを有効にするには、自分の**名前**をクリックし、QnA Maker ポータルの右上隅にある [**[Service Settings]\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。  
 
-    ![サービスの設定ページでアクティブ ラーニングを切り替える](../media/improve-knowledge-base/Endpoint-Keys.png)
+    ![[Service settings]\(サービス設定\) ページで、アクティブ ラーニングの提案された代わりの質問を有効にします。 右上のメニューで自分のユーザー名を選択し、[Service Settings]\(サービス設定\) を選択します。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
 1. QnA Maker サービスを見つけて **[Active Learning] (アクティブ ラーニング)** を切り替えます。 
 
-    [![サービスの設定ページで [Active Learning] (アクティブ ラーニング) を切り替える](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![[Service settings]\(サービス設定\) ページで、アクティブ ラーニング機能をオンに切り替えます。機能を切り替えられないときは、サービスをアップグレードしなければならない場合があります。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     **[Active Learning] (アクティブ ラーニング)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジから定期的に新しい質問が提案されます。 設定を再度切り替えると、**[Active Learning] (アクティブ ラーニング)** を無効にできます。
 
@@ -77,15 +77,15 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
 1. 提案された質問を表示するには、ナレッジ ベースの **[Edit] (編集)** ページで **[Show Suggestions] (提案の表示)** を選択します。 
 
-    [![サービスの設定ページで [Show Suggestions] (提案の表示) ボタンを切り替える](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![アクティブ ラーニングの新しい代わりの質問を表示するためには、ポータルの[Edit]\(編集\) セクションで [Show Suggestions]\(提案の表示\) を選択します。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. **[Filter by Suggestions]\(提案別にフィルターを適用\)** を選択し、質問と回答のペアでナレッジ ベースをフィルター処理すると、提案だけが表示されます。
 
-    [![サービスの設定ページで提案によってフィルター処理し、質問/回答のペアだけを表示する](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![アクティブ ラーニングの代わりの質問のみを表示する場合は、[Filter by Suggestions]\(提案別にフィルターを適用\) トグルを使用します。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
 1.  提案を含む各質問のセクションには、質問を受け入れる `✔` チェックマークまたは却下する `x` チェック マークが付いた新しい質問が表示されます。 質問を追加するにはチェック マークを選択します。 
 
-    [![サービスの設定ページで [Active Learning] (アクティブ ラーニング) を切り替える](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![緑色のチェック マークまたは赤色の削除マークを選択して、アクティブ ラーニングの提案された代わりの質問を選択または拒否します。](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     **[Add all] (すべて追加)** または **[Reject all] (すべて却下)** を選択し、_すべての提案_を追加または削除できます。
 
@@ -154,7 +154,13 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
 クライアント アプリケーションは、ユーザーが自分の意図を最も適切に表している質問を選択するためのオプションを示して、すべての質問を表示します。 
 
-ユーザーが既存の質問の 1 つを選択すると、 ユーザーのフィードバックが QnA Maker の [Train](https://www.aka.ms/activelearningsamplebot) API に送信され、アクティブ ラーニングのフィードバック ループが続行されます。 
+ユーザーが既存の質問の 1 つを選択すると、QnA Maker の Train API を使用して、ユーザーの選択がフィードバックとしてクライアント アプリケーションから送信されます。 このフィードバックにより、アクティブ ラーニングのフィードバック ループが完了します。 
+
+エンド ツー エンドのシナリオでのアクティブ ラーニングについて確認するには、[Azure Bot C# の例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot) を使用してください。
+
+## <a name="train-api"></a>Train API
+
+アクティブ ラーニングのフィードバックは、Train API POST 要求を使用して QnA Maker に送信されます。 API シグネチャは次のとおりです。
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -163,13 +169,46 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-アクティブ ラーニングを使用する方法については、[Azure Bot C# の例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)で詳細を説明しています
+|HTTP 要求プロパティ|名前|Type|目的|
+|--|--|--|--|
+|URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
+|ホストのサブドメイン|QnAMaker リソース名|string|Azure サブスクリプション内の QnA Maker のホスト名。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 |
+|ヘッダー|Content-Type|string|API に送信される本文のメディアの種類。 既定値は `application/json` です。|
+|ヘッダー|Authorization|string|エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|Post 本文|JSON オブジェクト|JSON|トレーニングのフィードバック|
 
-## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>アクティブ ラーニングはエクスポートされたアプリの tsv ファイルに保存されます
+JSON の本文には、次のようないくつかの設定があります。
+
+|JSON 本文のプロパティ|Type|目的|
+|--|--|--|--|
+|`feedbackRecords`|array|フィードバックの一覧。|
+|`userId`|string|提案された質問を受け入れるユーザーのユーザー ID。 ユーザー ID の形式は、ユーザーが決定します。 たとえば、電子メール アドレスをアーキテクチャ内の有効なユーザー ID とすることができます。 省略可能。|
+|`userQuestion`|string|質問の正確なテキスト。 必須。|
+|`qnaID`|number|質問の ID。[GenerateAnswer 応答](metadata-generateanswer-usage.md#generateanswer-response-properties)内にあります。 |
+
+JSON 本文の例は、次のようになります。
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "<question-text>",
+            "qnaId": 1
+        }
+    ]
+}
+```
+
+成功した応答は、ステータス 204 を返し、JSON 応答の本文は返しません。 
+
+<a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
+
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>アクティブ ラーニングはエクスポートされたナレッジ ベースに保存されます
 
 アプリでアクティブ ラーニングが有効になっている場合、アプリをエクスポートすると、tsv ファイル内の `SuggestedQuestions` 列にアクティブ ラーニング データが保持されます。 
 
-`SuggestedQuestions` 列は、暗黙的 (`autosuggested`) および明示的 (`usersuggested`) な[フィードバック](#active-learning)情報の JSON オブジェクトです。 次に示すのは、ユーザーが送信した 1 つの `help` の質問に対応する、この JSON オブジェクトの例です。
+`SuggestedQuestions` 列は、暗黙的 (`autosuggested`) および明示的 (`usersuggested`) なフィードバック情報の JSON オブジェクトです。 次に示すのは、ユーザーが送信した 1 つの `help` の質問に対応する、この JSON オブジェクトの例です。
 
 ```JSON
 [
@@ -193,4 +232,4 @@ Content-Type: application/json
 ## <a name="next-steps"></a>次の手順
  
 > [!div class="nextstepaction"]
-> [QnA Maker API の使用](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [メタデータと GenerateAnswer API の使用](metadata-generateanswer-usage.md)

@@ -11,18 +11,18 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6e1b304b90b37c93bed22bcb720a646680ee083
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 85910e2f422ea45b2468f20b4ff9425f64ca3cbe
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223616"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793415"
 ---
 # <a name="access-data-from-your-datastores"></a>データストアからデータにアクセスする
 
-データストアでは、自分のコードをローカル (コンピューティング クラスター上) で実行していても、仮想マシン上で実行していても、自分のデータとやりとりしたり、データにアクセスしたりすることができます。 この記事では、自分のデータストアにアクセスすることができ、自分のコンピューティング コンテキストに利用できるようにする Azure Machine Learning ワークフローについて学習します。
+ Azure Machine Learning service では、ソース コードを変更する必要なくストレージにアクセスできるよう、データストアはコンピューティングの場所に依存しないメカニズムになっています。 パラメーターとしてパスを受け取るようにトレーニング コードを記述するか、またはエスティメーターに直接データストアを提供するかに関係なく、Azure Machine Learning のワークフローでは、コンピューティング コンテキストからデータストアの場所にアクセスして使用できることが保証されます。
 
-この使い方では、次のタスクの例を示します。
+ここでは、次のタスクの例を示します。
 * [データストアの選択](#access)
 * [データの取得](#get)
 * [データのデータストアへのアップロードとダウンロード](#up-and-down)
@@ -30,9 +30,9 @@ ms.locfileid: "58223616"
 
 ## <a name="prerequisites"></a>前提条件
 
-データストアを使用するには、まず[ワークスペース](concept-azure-machine-learning-architecture.md#workspace)が必要です。 
+データストアを使用するには、まず[ワークスペース](concept-azure-machine-learning-architecture.md#workspace)が必要です。
 
-まず、[新しいワークスペースを作成する](quickstart-create-workspace-with-python.md)か、既存のワークスペースを取得します。
+まず、[新しいワークスペースを作成する](setup-create-workspace.md#sdk)か、既存のワークスペースを取得します。
 
 ```Python
 import azureml.core
@@ -40,8 +40,6 @@ from azureml.core import Workspace, Datastore
 
 ws = Workspace.from_config()
 ```
-
-または、[この Python クイック スタートに従って](quickstart-create-workspace-with-python.md) SDK を使用し、自分のワークスペースを作成して作業を開始します。
 
 <a name="access"></a>
 
@@ -51,14 +49,16 @@ ws = Workspace.from_config()
 
 ### <a name="use-the-default-datastore-in-your-workspace"></a>ワークスペースで既存のデータストアを使用する
 
-各ワークスペースに既存のデータストアがあるため、ストレージ アカウントを作成または構成する必要はありません。 既にワークスペースに登録されているデータストアをそのまますぐに使用できます。 
+ 各ワークスペースには、すぐに使用できる登録済みの既定のデータストアがあります。
 
 ワークスペースの既定のデータストアを取得するには、次のコマンドを使用します。
+
 ```Python
 ds = ws.get_default_datastore()
 ```
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>ワークスペースで独自のデータストアを登録する
+
 既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。   すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。 
 
 次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
@@ -123,13 +123,14 @@ ws.set_default_datastore('your datastore name')
 
 ```Python
 import azureml.data
-from azureml.data import AzureFileDatastore, AzureBlobDatastore
+from azureml.data.azure_storage_datastore import AzureFileDatastore, AzureBlobDatastore
 
 ds.upload(src_dir='your source directory',
           target_path='your target path',
           overwrite=True,
           show_progress=True)
 ```
+
 `target_path` では、アップロードするファイル共有 (または BLOB コンテナー) 内の場所が指定されます。 既定値は `None` で、その場合はデータがルートにアップロードされます。 `overwrite=True` では、`target_path` のすべての既存のデータが上書きされます。
 
 または、データストアの `upload_files()` メソッドを使用して、データストアに個々のファイルの一覧をアップロードします。
@@ -142,48 +143,63 @@ ds.download(target_path='your target path',
             prefix='your prefix',
             show_progress=True)
 ```
+
 `target_path` は、データのダウンロード先となるローカル ディレクトリの場所です。 ダウンロードするファイル共有 (または BLOB コンテナー) 内のフォルダーのパスを指定するには、`prefix` にそのパスを指定します。 `prefix` が `None` である場合は、ファイル共有 (または BLOB コンテナー) のすべてのコンテンツがダウンロードされます。
 
 <a name="train"></a>
 ## <a name="access-datastores-during-training"></a>トレーニング中のデータストアへのアクセス
 
-自分のデータストアをリモート コンピューティングで使用できるようにすると、トレーニング スクリプト内のパラメーターとしてデータストアへのパスを渡すだけで、トレーニングの実行中にアクセスすることができます (トレーニングや検証データなど)。
+自分のデータストアをコンピューティング先で使用できるようにすると、トレーニング スクリプト内のパラメーターとしてデータストアへのパスを渡すだけで、トレーニングの実行中にアクセスすることができます (トレーニングや検証データなど)。
 
-次の表では、データストアをリモート コンピューティングで利用できるようにする、一般的な [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) メソッドを一覧しています。
+次の表では、実行中にデータストアの使用方法をコンピューティング先に指示する [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) メソッドの一覧を示します。
 
-# #
-
-方法|方法|説明
+方法|方法|説明|
 ----|-----|--------
-マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| リモート コンピューティングにデータストアをマウントするために使用します。 データストアに対して既定のモードです。
-ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|ご利用のデータストア上の `path_on_compute` によって指定された場所からリモート コンピューティングにデータをダウンロードするために使用します。
-アップロード|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| `path_on_compute` によって指定された場所からご利用のデータストアのルートにデータをアップロードするために使用します。
+マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| コンピューティング先にデータストアをマウントするために使用します。
+ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|データストアの内容を `path_on_compute` によって指定された場所にダウンロードするために使用します。 <br> トレーニング実行のコンテキストでは、このダウンロードは実行の前に行われます。
+アップロード|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| `path_on_compute` によって指定された場所からデータストアにファイルをアップロードするために使用します。 <br> トレーニング実行のコンテキストでは、このアップロードは実行の後で行われます。
 
-```Python
+ ```Python
 import azureml.data
-from azureml.data import DataReference
+from azureml.data.data_reference import DataReference
 
 ds.as_mount()
 ds.as_download(path_on_compute='your path on compute')
 ds.as_upload(path_on_compute='yourfilename')
 ```  
 
-データストア内の特定のフォルダーまたはファイルを参照するには、データストアの [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) 関数を使用します。
+データストア内の特定のフォルダーまたはファイルを参照し、コンピューティング先で使用できるようにするには、データストアの [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#path-path-none--data-reference-name-none-) 関数を使用します。
 
 ```Python
-#download the contents of the `./bar` directory from the datastore to the remote compute
+#download the contents of the `./bar` directory in ds to the compute target
 ds.path('./bar').as_download()
 ```
 
+> [!NOTE]
+> すべての `ds` または `ds.path` オブジェクトは、コンピューティング先でのマウント/ダウンロード パスを表す値を持つ、`"$AZUREML_DATAREFERENCE_XXXX"` という形式の環境変数名に解決されます。 コンピューティング先でのデータストア パスは、トレーニング スクリプトの実行パスと同じであるとは限りません。
+
+### <a name="compute-context-and-datastore-type-matrix"></a>コンピューティング コンテキストとデータストアの型の関係
+
+次の表では、コンピューティング コンテキストとデータストアの異なる組み合わせのシナリオで使用可能なデータ アクセス関数を示します。 この表の "パイプライン" という用語は、[Azure Machine Learning パイプライン](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)の入力または出力としてデータストアを使用する機能を示します。
+
+||ローカル コンピューティング|Azure Machine Learning コンピューティング|データ転送|Databricks|HDInsight|Azure Batch|Azure Data Lake Analytics|Virtual Machines|
+-|--|-----------|----------|---------|-----|--------------|---------|---------|
+|AzureBlobDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] <br> パイプライン|パイプライン|パイプライン|[`as_download()`] <br> [`as_upload()`]|パイプライン||[`as_download()`] <br> [`as_upload()`]|
+|AzureFileDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] パイプライン |||[`as_download()`] [`as_upload()`]|||[`as_download()`] [`as_upload()`]|
+|AzureDataLakeDatastore|||パイプライン|パイプライン|||パイプライン||
+|AzureDataLakeGen2Datastore|||パイプライン||||||
+|AzureDataPostgresSqlDatastore|||パイプライン||||||
+|AzureSqlDatabaseDataDatastore|||パイプライン||||||
 
 
 > [!NOTE]
-> すべての `ds` または `ds.path` オブジェクトは、リモート コンピューティング上のマウント/ダウンロード パスを表す値を持つ、形式 `"$AZUREML_DATAREFERENCE_XXXX"` の環境変数名に解決されます。 リモート コンピューティング上のデータストア パスは、トレーニング スクリプトの実行パスと同じであるとは限りません。
+> [`as_mount()`] ではなく [`as_download()`] を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
 
 ### <a name="examples"></a>例 
 
-トレーニング中に自分のデータストアにアクセスするための [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスに固有の例を以下に示します。
+次のコード例は、トレーニング中に自分のデータストアにアクセスするための [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスに固有のものです。
 
+このコードでは、`script_params` で定義したパラメーターを使用し、指定したソース ディレクトリのトレーニング スクリプト `train.py` を使用して、エスティメーターが作成されます。すべては、指定したコンピューティング先で行われます。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -193,17 +209,16 @@ script_params = {
 }
 
 est = Estimator(source_directory='your code directory',
+                entry_script='train.py',
                 script_params=script_params,
-                compute_target=compute_target,
-                entry_script='train.py')
+                compute_target=compute_target
+                )
 ```
 
-`as_mount()` はデータストアの既定のモードであるため、`'--data_dir'` 引数に `ds` を直接渡すこともできます。
-
-または、推定機能コンストラクターの `inputs` パラメーターにデータストアの一覧を渡して、データストアとの間でマウントまたはコピーを行うことができます。 コード例は次のとおりです。
-* トレーニング スクリプト `train.py` が実行される前に、データストア `ds1` 内のコンテンツをすべて、リモート コンピューティングにダウンロードします
-* `train.py` が実行される前に、データストア `ds2` 内のフォルダー `'./foo'` をリモート コンピューティングにダウンロードします
-* スクリプトが実行された後に、リモート コンピューティングからデータストア `ds3` にファイル `'./bar.pkl'` をアップロードします
+また、Estimator コンストラクターの `inputs` パラメーターにデータストアのリストを渡して、データストアとの間でマウントまたはコピーを行うこともできます。 コード例は次のとおりです。
+* トレーニング スクリプト `train.py` が実行される前に、データストア `ds1` 内のコンテンツをすべて、コンピューティング先にダウンロードします
+* `train.py` が実行される前に、データストア `ds2` 内のフォルダー `'./foo'` をコンピューティング先にダウンロードします
+* スクリプトが実行された後、コンピューティング先からデータストア `ds3` にファイル `'./bar.pkl'` をアップロードします
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -211,7 +226,6 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
-
 
 ## <a name="next-steps"></a>次の手順
 

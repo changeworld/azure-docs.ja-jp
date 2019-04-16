@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 49f3f50cd33d2b3fea1e784fcfc70044c568ba31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842415"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426309"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure Dev Spaces での Java の使用
 
@@ -26,15 +26,10 @@ ms.locfileid: "57842415"
 - チーム環境でコードを生産的に開発してテストする。
 
 > [!Note]
-> **問題が発生した場合は**いつでも、「[トラブルシューティング](troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。
-
-これで、Azure に Kubernetes ベースの開発空間を作成する準備ができます。
+> いつでも**問題が発生した場合**は「[トラブルシューティング](troubleshooting.md)」セクションを参照してください。
 
 ## <a name="install-the-azure-cli"></a>Azure CLI のインストール
 Azure Dev Spaces には、ローカル マシンの最小限のセットアップが必要です。 開発空間の構成の大半はクラウドに保存され、他のユーザーと共有できます。 まず、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をダウンロードして実行します。
-
-> [!IMPORTANT]
-> Azure CLI が既にインストールされている場合は、バージョン 2.0.43 以降を使用していることを確認してください。
 
 ### <a name="sign-in-to-azure-cli"></a>Azure CLI へのサインイン
 Azure にサインインします。 ターミナル ウィンドウで次のコマンドを入力します。
@@ -153,7 +148,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 > Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
 1. ターミナル ウィンドウで、`Ctrl+C` キーを押して `azds up` を停止します。
-1. `src/main/java/com/ms/sample/webfrontend/Application.java` という名前のコード ファイルを開き、あいさつメッセージ (`return "Hello from webfrontend in Azure!";`) を編集します。
+1. `src/main/java/com/ms/sample/webfrontend/Application.java` という名前のコード ファイルを開き、次のようにあいさつメッセージを編集します。 `return "Hello from webfrontend in Azure!";`
 1. ファイルを保存します。
 1. ターミナル ウィンドウで `azds up` を実行します。
 

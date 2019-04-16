@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: bcc09095955a28bde3ed999f23180e08485543fc
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994002"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520142"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>SQL Data Warehouse のワークロード分類 (プレビュー)
 
@@ -33,6 +33,8 @@ ms.locfileid: "57994002"
 データ ウェアハウスのワークロードを分類するにはさまざまな方法がありますが、最も簡単で一般的な分類は読み込みとクエリです。 データを読み込むには、INSERT、UPDATE、DELETE ステートメントを使用します。  データをクエリするには、SELECT を使用します。 データ ウェアハウス ソリューションには、多くの場合、より高いリソース クラスにはより多くのリソースを割り当てるなど、読み込みアクティビティに関するワークロード ポリシーがあります。 クエリには、読み込みアクティビティに比べて重要度を低くするなど、異なるワークロード ポリシーを適用できます。
 
 読み込みとクエリのワークロードを下位分類することもできます。 下位分類を使用すると、ワークロードをより細かく制御できます。 たとえば、クエリ ワークロードがキューブの更新、ダッシュボードのクエリ、アドホック クエリで構成されているとします。 これらのクエリ ワークロードをそれぞれ異なるリソース クラスや重要度の設定で分類できます。 読み込みも、下位分類の利点を受けることができます。 大規模な変換を大規模なリソース クラスに割り当てることができます。 より高い重要度を使用して、気象データやソーシャル データのフィードよりも先に主要な販売データを読み込むことができます。
+
+リソースを必要としないか、実行に影響を及ぼす重要度を必要としない一部のステートメントは分類されません。  DBCC コマンド、BEGIN、COMMIT、および ROLLBACK TRANSACTION ステートメントは分類されません。
 
 ## <a name="classification-process"></a>分類プロセス
 

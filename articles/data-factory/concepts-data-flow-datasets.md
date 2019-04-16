@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ad6cfdad519ab3901c58979970ea07439b3106e9
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: efb82c57a5620ef3eace8b39f6f27f2286202f84
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726925"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521841"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapping Data Flow のデータセット
 
@@ -43,9 +43,33 @@ Data Flow データセットでは、*ソースの種類*と、*リンクされ�
 
 Data Flow データセットのスキーマをインポートすると、[Import Schema]\(スキーマのインポート\) ボタンが表示されます。 このボタンをクリックすると、2 つのオプションが表示されます。ソースからのインポートか、ローカル ファイルからのインポートです。 ほとんどの場合、ソースからスキーマを直接インポートします。 ただし、既存のスキーマ ファイル (Parquet ファイルまたはヘッダー付きの CSV) がある場合は、そのローカル ファイルを指定すると、Data Factory でそのスキーマ ファイルに基づいてスキーマが定義されます。
 
-## <a name="delimited-text-dataset"></a>区切りテキスト データセット
+## <a name="create-new-table"></a>新しいテーブルの作成
 
-区切りテキスト データセットでは、区切り記号の設定によって、1 つの区切り記号 (TSV の "\t"、CSV の ","、'|' など) を処理するか、複数の文字を区切り記号に使用します。 ヘッダー行の切り替えを設定した後、ソース変換に移動してデータ型を自動検出します。
+データ フローで、新しいテーブル名を持つデータセットをシンク変換に設定することで、ターゲット データベースに新しいテーブル定義を作成するように ADF に指示します。 SQL データセットで、テーブル名の下の [編集] をクリックして新しいテーブル名を入力します。 次に、シンク変換で、[Allow Schema Drift]\(スキーマの誤差を許可\) をオンにします。 [スキーマのインポート] 設定を [なし] に設定します。
+
+![ソース変換スキーマ](media/data-flow/dataset2.png "SQL スキーマ")
+
+## <a name="choose-your-type-of-data-first"></a>最初にデータの型を選択する
+
+### <a name="delimited-text"></a>区切りテキスト
+
+区切りテキスト データセットでは、区切り記号の設定によって、1 つの区切り記号 (TSV の "\t"、CSV の ","、'|' など) を処理するか、複数の文字を区切り記号に使用します。 ヘッダー行の切り替えを設定した後、ソース変換に移動してデータ型を自動検出します。 区切りテキスト データセットを使用してシンクにデータを配置している場合は、ターゲット フォルダーのみを選択します。 シンクの設定で、出力ファイルの名前を定義できます。
+
+### <a name="parquet"></a>Parquet
+
+ADF データ フローで優先されるステージング データセットの型として、Parquet を使用します。 Parquet はデータと一緒に豊富なメタデータ スキーマを保存します。
+
+### <a name="database-types"></a>データベースの型
+
+Azure SQL DB または Azure SQL DW を選択できます。
+
+他のデータセット型の場合は、コピー アクティビティを使用してデータをステージングします。 テンプレート ギャラリーに、このパターンの作成に役立つ ADF テンプレートがあります。
+
+![ステージングのコピー](media/data-flow/templatedf.png "ステージングのコピー")
+
+## <a name="choose-your-connection-type"></a>接続の種類を選ぶ
+
+Parquet データセットまたは区切りテキスト データセットを使用している場合は、データの場所として ADLS または Blob を選択できます。
 
 ## <a name="next-steps"></a>次の手順
 

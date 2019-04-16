@@ -1,19 +1,18 @@
 ---
 title: サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
 description: このサンプル ポリシー定義は、承認された SKU の使用をストレージ アカウントと仮想マシンに要求します。
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7488231363b0cbf96e25da28751065012754212e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803784"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274571"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
 
@@ -29,7 +28,7 @@ ms.locfileid: "58803784"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Dポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 

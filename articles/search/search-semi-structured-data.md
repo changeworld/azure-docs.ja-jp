@@ -1,22 +1,22 @@
 ---
-title: Azure Blob Storage での JSON の検索に関するチュートリアル - Azure Search
-description: このチュートリアルでは、半構造化された Azure BLOB データを Azure Search を使用して検索する方法について説明します。
+title: チュートリアル:JSON BLOB で半構造化されたデータのインデックスを作成する - Azure Search
+description: Azure Search と Postman を使用して、半構造化された Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1c8ce14dd3961eff33a54a14c2bd0b27650d8a50
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201349"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471462"
 ---
-# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>チュートリアル:Azure クラウド ストレージで半構造化データを検索する
+# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>チュートリアル:Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 
 Azure Search は、半構造化データの読み取り方法を解している[インデクサー](search-indexer-overview.md)を使用して、Azure Blob Storage に格納されている JSON のドキュメントや配列のインデックスを作成することができます。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータは、非構造化データ (全体にインデックスを付ける必要がある) と正式に構造化されたデータ (フィールドごとにインデックス付け可能な、リレーショナル データベース スキーマなどのデータ モデルに準拠) を折衷するものです。
 
@@ -33,37 +33,53 @@ Azure Search は、半構造化データの読み取り方法を解している[
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
+このクイック スタートでは、次のサービス、ツール、およびデータを使用します。 
 
-サンプル データを格納する [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
+[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。 
 
-[Postman を使用](https://www.getpostman.com/)するか、または別の REST クライアントを使用して要求を送信します。 Postman で HTTP 要求を設定する手順は、次のセクションで取り上げます。
+サンプル データの格納に使用される [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
+
+[Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search に要求を送信するために使用されます。
+
+[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) には、このチュートリアルで使用されるデータが含まれています。 このファイルをローカルのフォルダーにダウンロードし、展開します。 データの出典は [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) で、このチュートリアルで使用するために JSON に変換しています。
+
+## <a name="get-a-key-and-url"></a>キーと URL を入手する
+
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+
+1. [Azure portal にサインインし](https://portal.azure.com/)、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+
+1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+
+![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+
+すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
+
+## <a name="prepare-sample-data"></a>サンプル データの準備
+
+1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、**[+ コンテナー]** をクリックします。
+
+1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 接続にキーとストレージ アカウント名を使用するため、コンテナーの [パブリック アクセス レベル] が [コンテナー (コンテナーの匿名読み取りアクセス)] に設定されていることを確認します。
+
+   ![パブリック アクセス レベルの設定](media/search-semi-structured-data/container-public-access-level.png "パブリック アクセス レベルの設定")
+
+1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。
+
+   ![コマンド バーの [アップロード]](media/search-semi-structured-data/upload-command-bar.png "コマンド バーの [アップロード]")
+
+1. サンプル ファイルを含むフォルダーに移動します。 すべてを選択し、**[アップロード]** をクリックします。
+
+   ![ファイルをアップロードする](media/search-semi-structured-data/clinicalupload.png "ファイルをアップロードする")
+
+アップロードが完了したら、データ コンテナー内の独自のサブフォルダーにファイルが表示されます。
 
 ## <a name="set-up-postman"></a>Postman の設定
 
 Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-fiddler.md)に関するページを参照してください。
 
-このチュートリアルでの各呼び出しの要求メソッドは "POST" です。 ヘッダー キーは "Content-type" と "api-key" です。 ヘッダー キーの値は、それぞれ "application/json" と "管理者キー" (管理者キーは、検索の主キーを表すプレースホルダー) です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 使用するクライアントによっては、クエリの作成方法にいくつかのバリエーションがありますが、それらは基本的な機能です。
+このチュートリアルでの各呼び出しの要求メソッドは **POST** です。 ヘッダー キーは "Content-type" と "api-key" です。 ヘッダー キーの値は、それぞれ "application/json" と "管理者キー" (管理者キーは、検索の主キーを表すプレースホルダー) です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 使用するクライアントによっては、クエリの作成方法にいくつかのバリエーションがありますが、それらは基本的な機能です。
 
   ![半構造化検索](media/search-semi-structured-data/postmanoverview.png)
-
-このチュートリアルで説明する REST 呼び出しには検索の api-key が必要です。 api-key は検索サービスの **[キー]** にあります。 この api-key は、このチュートリアルで行う各 API 呼び出しのヘッダーに配置する必要があります (前のスクリーンショットの "管理者キー" をこのキーに置き換えます)。 各呼び出しで必要になるため、このキーを保持しておいてください。
-
-  ![半構造化検索](media/search-semi-structured-data/keys.png)
-
-## <a name="prepare-sample-data"></a>サンプル データの準備
-
-1. **[clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) をダウンロード**し、独自のフォルダーに解凍します。 データの出典は [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) で、このチュートリアルで使用するために JSON に変換しています。
-
-2. [Azure portal](https://portal.azure.com) にサインインし、Azure ストレージ アカウントに移動して **data** コンテナーを開き、**[アップロード]** をクリックします。
-
-3. **[詳細]** をクリックして、「clinical-trials-json」と入力し、ダウンロードしたすべての JSON ファイルをアップロードします。
-
-  ![半構造化検索](media/search-semi-structured-data/clinicalupload.png)
-
-アップロードが完了したら、データ コンテナー内の独自のサブフォルダーにファイルが表示されます。
-
-## <a name="connect-your-search-service-to-your-container"></a>コンテナーへの検索サービスの接続
 
 Postman を使用して、検索サービスに対して 3 つの API 呼び出しを行い、データ ソース、インデックス、およびインデクサーを作成します。 データ ソースには、ストレージ アカウントと JSON データへのポインターが含まれています。 データを読み込むときに、検索サービスは接続を行います。
 
@@ -73,20 +89,22 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-a-data-source"></a>データ ソースを作成する
 
-データ ソースは、インデックスの対象データを指定する Azure Search オブジェクトです。
+[データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) で、インデックス作成の対象データを指定する Azure Search オブジェクトが作成されます。
 
-この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。 この呼び出しでは、ストレージ アカウントの名前とストレージ アカウント キーが必要です。 ストレージ アカウント キーは、Azure Portal のストレージ アカウントの **[アクセス キー]** にあります。 その場所を次の図に示します。
+この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。 
+
+この呼び出しでは、要求の本文にストレージ アカウントの名前、ストレージ アカウント キー、および BLOB コンテナー名を含める必要があります。 ストレージ アカウント キーは、Azure Portal のストレージ アカウントの **[アクセス キー]** にあります。 その場所を次の図に示します。
 
   ![半構造化検索](media/search-semi-structured-data/storagekeys.png)
 
-呼び出しの本文の `[storage account name]` と `[storage account key]` を置き換えてから、呼び出しを実行してください。
+呼び出しの本文の `[storage account name]`、`[storage account key]`、および `[blob container name]` を置き換えてから、呼び出しを実行してください。
 
 ```json
 {
     "name" : "clinical-trials-json",
     "type" : "azureblob",
     "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
-    "container" : { "name" : "data", "query" : "clinical-trials-json" }
+    "container" : { "name" : "[blob container name]"}
 }
 ```
 
@@ -104,8 +122,8 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
         "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
     },
     "container": {
-        "name": "data",
-        "query": "clinical-trials-json"
+        "name": "[mycontainernamehere]",
+        "query": null
     },
     "dataChangeDetectionPolicy": null,
     "dataDeletionDetectionPolicy": null
@@ -114,7 +132,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-an-index"></a>インデックスを作成する
     
-2 番目の API 呼び出しでは、Azure Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
+2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) であり、検索可能なすべてのデータを格納する Azure Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
 
 この呼び出しの URL は `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。
 
@@ -204,7 +222,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="create-and-run-an-indexer"></a>インデクサーの作成と実行
 
-インデクサーはデータ ソースに接続してターゲットの検索インデックスにデータをインポートし、データ更新を自動化するスケジュールを必要に応じて提供します。
+インデクサーはデータ ソースに接続してターゲットの検索インデックスにデータをインポートし、データ更新を自動化するスケジュールを必要に応じて提供します。 REST API は[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)です。
 
 この呼び出しの URL は `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。
 
@@ -247,7 +265,11 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="search-your-json-files"></a>JSON ファイルの検索
 
-これでインデックスに対してクエリを発行することができます。 この作業には、ポータルの[**検索エクスプローラー**](search-explorer.md)を使用します。
+最初のドキュメントが読み込まれたらすぐに、検索を始めることができます。 この作業には、ポータルの[**検索エクスプローラー**](search-explorer.md)を使用します。
+
+Azure portal で、検索サービスの **[概要]** ページを開き、**[インデックス]** 一覧で作成したインデックスを見つけます。
+
+作成したインデックスを必ず選択してください。 API のバージョンは、プレビュー バージョンまたは一般提供バージョンの場合があります。 JSON 配列のインデックス作成についてのみ、プレビューの要件がありました。
 
   ![非構造化検索](media/search-semi-structured-data/indexespane.png)
 
@@ -273,7 +295,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 ## <a name="next-steps"></a>次の手順
 
-インデクサー パイプラインには、AI を活用したアルゴリズムをアタッチすることができます。 引き続き次のチュートリアルに進んでください。
+AI を活用した Cognitive Services アルゴリズムをインデクサー パイプラインにアタッチすることができます。 引き続き次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する](search-howto-indexing-azure-blob-storage.md)
+> [AI によるインデックス作成](cognitive-search-tutorial-blob.md)

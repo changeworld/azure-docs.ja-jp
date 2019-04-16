@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876366"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847540"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -338,6 +338,58 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 |AMQP|5671|ブロック (既定値)|オープン (既定値)|<ul> <li>IoT Edge の既定の通信プロトコル。 <li> Azure IoT Edge が他のサポートされているプロトコル用に構成されていない場合、または AMQP が望ましい通信プロトコルである場合は、オープンになるように構成する必要があります。<li>AMQP での 5672 は、IoT Edge ではサポートされていません。<li>Azure IoT Edge が、IoT Hub でサポートされているのとは異なるプロトコルを使用する場合は、このポートをブロックします。<li>受信 (インバウンド) 接続はブロックする必要があります。</ul></ul>|
 |HTTPS|443|ブロック (既定値)|オープン (既定値)|<ul> <li>IoT Edge のプロビジョニングのために、送信 (アウトバウンド) を 443 でオープンにするように構成します。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。 <li>受信 (インバウンド) 接続が以下の特定のシナリオだけでオープンになるようにする必要があります。 <ul> <li>  メソッド要求を送信することがあるリーフ デバイスを備えた透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoT Hub に接続したり Azure IoT Edge を通じて IoT Hub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンな受信 (インバウンド) だけに制限することができます。 <li> Client to Device (C2D) シナリオの場合。</ul><li>HTTP での 80 は、IoT Edge ではサポートされていません。<li>企業内で非 HTTP プロトコル (AMQP や MQTT など) を構成できない場合は、メッセージを WebSockets 経由で送信できます。 その場合、ポート 443 は WebSocket 通信のために使用されます。</ul>|
 
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge エージェント モジュールで継続的に "空の構成ファイル" が報告され、デバイスでモジュールが開始しない
+
+デバイスで、デプロイにおいて定義されているモジュールの開始に問題があります。 edgeAgent のみが実行されますが、継続的に "空の構成ファイル..." が報告されます。
+
+### <a name="potential-root-cause"></a>可能性のある根本原因
+既定では、IoT Edge は独自の分離されたコンテナー ネットワークでモジュールを開始します。 デバイスに、このプライベート ネットワーク内での DNS 名の解決に関する問題がある可能性があります。
+
+### <a name="resolution"></a>解決策
+
+**オプション 1:コンテナー エンジンの設定で DNS サーバーを設定します**
+
+コンテナー エンジンの設定で環境に対して DNS サーバーを指定すると、そのエンジンによって開始されるすべてのコンテナー モジュールに適用されます。 `daemon.json` という名前のファイルを作成し、使用する DNS サーバーを指定します。 例: 
+
+```
+{
+    "dns": ["1.1.1.1"]
+}
+```
+
+上の例では、パブリックにアクセスできる DNS サービスに DNS サーバーが設定されます。 Edge デバイスがその環境からこの IP アドレスにアクセスできない場合は、アクセス可能な DNS サーバーのアドレスに置き換えます。
+
+プラットフォームの適切な場所に `daemon.json` を置きます。 
+
+| プラットフォーム | Location |
+| --------- | -------- |
+| Linux | `/etc/docker` |
+| Windows コンテナーを使用した Windows ホスト | `C:\ProgramData\iotedge-moby-data\config` |
+
+その場所に `daemon.json` ファイルが既にある場合は、それに対する **dns** キーを追加してファイルを保存します。
+
+*コンテナー エンジンを再起動して更新を有効にします*
+
+| プラットフォーム | command |
+| --------- | -------- |
+| Linux | `sudo systemctl restart docker` |
+| Windows (管理者用 Powershell) | `Restart-Service iotedge-moby -Force` |
+
+**オプション 2:モジュールごとに IoT Edge のデプロイで DNS サーバーを設定します**
+
+IoT Edge のデプロイで各モジュールの *createOptions* に DNS サーバーを設定できます。 例: 
+
+```
+"createOptions": {
+  "HostConfig": {
+    "Dns": [
+      "x.x.x.x"
+    ]
+  }
+}
+```
+
+これを *edgeAgent* および *edgeHub* モジュールにも設定してください。 
 
 ## <a name="next-steps"></a>次の手順
 IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。 

@@ -1,5 +1,5 @@
 ---
-title: Azure Blob インデクサーからフルテキスト検索用の JSON BLOB のインデックスを作成する - Azure Search
+title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する - Azure Search
 description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
 ms.date: 02/28/2019
 author: HeidiSteen
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405115"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518747"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Search インデックスを作成し、JSON BLOB から抽出された既存のテキストとともに読み込みます。 
@@ -211,7 +211,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 スケジュールとパラメーターは省略可能です。 これらを省略した場合、インデクサーは、解析モードとして `json` を使用してすぐに実行されます。
 
-この特定のインデクサーには、[フィールド マッピング](#field-mappings)は含まれていません。 インデクサーの定義では、ソース JSON ドキュメントのプロパティとターゲット検索インデックスのフィールドが一致する場合は、**フィールド マッピング**を省略できます。 
+この特定のインデクサーには、フィールド マッピングは含まれていません。 インデクサーの定義では、ソース JSON ドキュメントのプロパティとターゲット検索インデックスのフィールドが一致する場合は、**フィールド マッピング**を省略できます。 
 
 
 ### <a name="rest-example"></a>REST の例
@@ -253,7 +253,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 ### <a name="indexer-request"></a>インデクサー要求
 
-次の要求は、完全に指定されたインデクサーを示しています。 これには、前の例では省略されていた[フィールド マッピング](#field-mappings)が含まれています。 使用可能な既定値がある限り、"schedule"、"parameters"、および "fieldMappings" は省略できます。 "schedule" を省略すると、インデクサーはすぐに実行されます。 "parsingMode" を省略すると、インデックスでは 既定の "json" が使用されます。
+次の要求は、完全に指定されたインデクサーを示しています。 これには、前の例では省略されていたフィールド マッピングが含まれています。 使用可能な既定値がある限り、"schedule"、"parameters"、および "fieldMappings" は省略できます。 "schedule" を省略すると、インデクサーはすぐに実行されます。 "parsingMode" を省略すると、インデックスでは 既定の "json" が使用されます。
 
 Azure Search 上にインデクサーを作成すると、データのインポートがトリガーされます。 それはすぐに実行されます。スケジュールが指定されている場合は、スケジュールに従って実行されます。
 
@@ -294,7 +294,7 @@ JSON BLOB では、複数の形式を想定できます。 JSON インデクサ�
 
 | parsingMode | 説明 |
 |-------------|-------------|
-| `json`  | 各 BLOB を単一のドキュメントとしてインデックス化します。 これが既定値です。 |
+| `json`  | 各 BLOB を単一のドキュメントとしてインデックス化します。 既定のプランです。 |
 | `jsonArray` | BLOB が JSON 配列で構成され、配列の各要素を Azure Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
 |`jsonLines` | BLOB が、改行で分離されている複数の JSON エンティティで構成され、各エンティティを Azure Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
 

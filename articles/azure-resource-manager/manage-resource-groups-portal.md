@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090935"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484697"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal を使用して Azure Resource Manager リソース グループを管理する
 
@@ -104,7 +104,7 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ## <a name="tag-resource-groups"></a>リソース グループにタグを適用する
 
-リソース グループやリソースにタグを適用して、アセットを論理的に整理できます。 詳細については、「[タグを使用した Azure リソースの整理](./resource-group-using-tags.md#portal)」を参照してください。
+リソース グループやリソースにタグを適用して、アセットを論理的に整理できます。 詳細については、[タグを使用した Azure リソースの整理](./resource-group-using-tags.md#portal) に関する記事をご覧ください。
 
 ## <a name="export-resource-groups-to-templates"></a>リソース グループをテンプレートにエクスポートする
 
@@ -122,7 +122,7 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 この方法により、特定のデプロイ用のテンプレートがエクスポートされます。 ポータルを変更したり、複数のデプロイでリソースを追加または削除したりした場合は、「[リソース グループからテンプレートをエクスポートする](#export-templates-from-resource-groups)」を参照してください。
 
-1. 削除するリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
+1. エクスポートするリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
 2. 左側のウィンドウで、**[デプロイ]** を選択するか、**[デプロイ]** の下にあるリンクを選択します。  次のスクリーンショットでは、4 つの異なるデプロイ名の 4 つの別個のデプロイがあるため、**[4 Succeeded]** (4 成功しました) が示されています。 **[1 Succeeded]** (1 成功しました) が表示される場合があります。
 
     ![Azure のリソース グループのエクスポート テンプレート](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
@@ -148,8 +148,8 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 ポータルからリソースを変更したり、複数のデプロイでリソースを追加または削除したりした場合、デプロイ履歴からテンプレートを取得しても、リソース グループの現在の状態が反映されていません。 このセクションでは、リソース グループの現在の状態を反映したテンプレートをエクスポートする方法について説明します。 リソース グループのスナップショットとして意図されており、同じリソース グループへの再デプロイに使うことができます。 エクスポートされたテンプレートを他のソリューションに使うには、大幅な変更を行う必要があります。
 
-1. 削除するリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
-2. 左側のウィンドウで、**[Automation スクリプト]** を選択します。 Resource Manager によって、次の 6 つのファイルが取得されます。
+1. エクスポートするリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
+2. 左側のウィンドウで、**[テンプレートのエクスポート]** を選択します。 Resource Manager によって、次の 6 つのファイルが取得されます。
 
    - **Template** - ソリューションのインフラストラクチャを定義するテンプレート。 ポータルでストレージ アカウントを作成したときに、Resource Manager はテンプレートを使用してそれをデプロイし、今後参照できるようにテンプレートを保存しました。
    - **Parameters** - デプロイ中に値を渡すために使用できるパラメーター ファイル。 初回デプロイ時に指定した値が含まれています。 これらの値はどれも、テンプレートを再デプロイするときに変更できます。
@@ -183,5 +183,5 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 
 - Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」を参照してください。
 - Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」を参照してください。
-- テンプレートを開発する方法については、「[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)」を参照してください。
-- Azure Resource Manager のテンプレートのスキーマを表示するには、[テンプレートのリファレンス](/azure/templates/)を参照してください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

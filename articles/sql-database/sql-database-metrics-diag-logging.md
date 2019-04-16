@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c7519a166bfbfe5d2a7695a077b809aa971489
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904033"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905205"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -32,7 +32,7 @@ ms.locfileid: "57904033"
 各種の Azure サービスでサポートされているメトリックとログ カテゴリの詳細については、次の資料を参照してください。
 
 - [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Azure 診断の概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 この記事では、Azure SQL データベース、エラスティック プール、およびマネージド インスタンスの診断テレメトリを有効にするためのガイダンスを提供します。 また、データベース診断テレメトリを表示するための監視ツールとして Azure SQL Analytics を構成する方法の理解にも役立ちます。
 
@@ -69,10 +69,15 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | はい | いいえ  |
 | [Timeouts](#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | はい | いいえ  |
 | [Blocks](#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | はい | いいえ  |
-| [SQLInsights](#intelligent-insights-dataset):パフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | はい | はい |
+| [Deadlocks](#deadlocks-dataset): データベースにはデッドロック イベントに関する情報が含まれます。 | はい | いいえ  |
+| [AutomaticTuning](#automatic-tuning-dataset): データベースの自動チューニングの推奨事項に関する情報が含まれます。 | はい | いいえ  |
+| [SQLInsights](#intelligent-insights-dataset):データベースのパフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | はい | はい |
 
 > [!IMPORTANT]
 > エラスティック プールとマネージド インスタンスには、それらに含まれるデータベースとは別の、独自の診断テレメトリがあります。 つまり、以下に示すように、診断テレメトリはそのリソースごとに個別に構成されているということに注意する必要があります。
+
+> [!NOTE]
+> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
@@ -84,13 +89,20 @@ Azure portal で単一データベース、プールされたデータベース�
 
 次の診断テレメトリを収集するように、エラスティック プール リソースを設定できます。
 
-| リソース | 監視テレメトリ |
+| Resource | 監視テレメトリ |
 | :------------------- | ------------------- |
 | **エラスティック プール** | [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics)には、eDTU/CPU の割合、eDTU/CPU の制限、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの制限、および XTP ストレージの割合が含まれています。 |
 
+エラスティック プールおよびエラスティック プール内のデータベースに対する診断テレメトリのストリーミングを構成するには、以下の**両方**を個別に構成する必要があります。
+
+- エラスティック プールの診断テレメトリのストリーミングを有効にし、**かつ**
+- エラスティック プール内の各データベースの診断テレメトリのストリーミングを有効にします
+
+これは、エラスティック プールはデータベース コンテナーであり、個々のデータベースのテレメトリとは別に独自のテレメトリを持っているためです。
+
 エラスティック プール リソースの診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 
-1. Microsoft Azure portal でエラスティック プール リソースに移動します。
+1. Azure portal で**エラスティック プール** リソースに移動します。
 1. **[診断設定]** を選択します。
 1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
 
@@ -100,20 +112,20 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、**[構成]** を選択し、**[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
 1. エラスティック プールの診断テレメトリ **[AllMetrics]** のチェックボックスをオンにします。
-1. **[保存]** を選択します。
-
    ![エラスティック プールに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+1. **[保存]** を選択します。
+1. さらに、次のセクションで説明されている手順に従って、監視対象のエラスティック プール内の各データベースに対して診断テレメトリのストリーミングを構成します。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 以下に示すように、エラスティック プールの診断テレメトリの構成に加えて、エラスティック プール内の各データベースの診断テレメトリも構成する必要があります。 
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-single-datatbase-or-database-in-elastic-pool"></a>単一データベース、またはエラスティック プール内のデータベースの診断テレメトリのストリーミングを構成する
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>単一データベース、またはエラスティック プール内のデータベースの診断テレメトリのストリーミングを構成する
 
    ![SQL Database アイコン](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-単一データベース、プールされたデータベースまたはインスタンス データベースに対して診断テレメトリのストリーミングを有効にするには、次の手順に従います。
+単一データベースまたはプールされたデータベースに対して診断テレメトリのストリーミングを有効にするには、次の手順のようにします。
 
-1. Azure SQL データベース リソースに移動します。
+1. Azure **SQL データベース** リソースに移動します。
 1. **[診断設定]** を選択します。
 1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
    - 診断テレメトリをストリーミングするため並列接続を最大 3 つ作成できます。
@@ -124,12 +136,12 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]**、**[AutomaticTuning]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、**[Errors]**、**[DatabaseWaitStatistics]**、**[Timeouts]**、**[Blocks]**、および **[Deadlocks]** のチェックボックスをオンにします。
 1. 1 分ベースの高度な監視エクスペリエンスを得るには、**[AllMetrics]** のチェックボックスをオンにします。
-1. **[保存]** を選択します。
-
    ![単一データベース、プールされたデータベースまたはインスタンス データベースに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+1. **[保存]** を選択します。
+1. 監視するデータベースごとにこれらの手順を繰り返します。
 
 > [!NOTE]
-> セキュリティ監査ログは、データベースの診断設定から有効にすることはできません。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)に関するページを参照してください。
+> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)に関するページを参照してください。
 > [!TIP]
 > 監視する Azure SQL Database ごとにこれらの手順を繰り返します。
 
@@ -139,13 +151,20 @@ Azure portal で単一データベース、プールされたデータベース�
 
 次の診断テレメトリを収集するように、マネージド インスタンス リソースを設定できます。
 
-| リソース | 監視テレメトリ |
+| Resource | 監視テレメトリ |
 | :------------------- | ------------------- |
-| **マネージド インスタンス** | ResourceUsageStats には、仮想コアの個数、平均の CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、および使用済みストレージ領域が含まれています。 |
+| **マネージド インスタンス** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) には、仮想コアの個数、平均の CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、および使用済みストレージ領域が含まれています。 |
+
+マネージド インスタンスとインスタンス データベースに対する診断テレメトリのストリーミングを構成するには、以下の**両方**を個別に構成する必要があります。
+
+- マネージド インスタンスの診断テレメトリのストリーミングを有効にし、**かつ**
+- 各インスタンス データベースの診断テレメトリのストリーミングを有効にします
+
+これは、マネージド インスタンスはデータベース コンテナーであり、個々のインスタンス データベースのテレメトリとは別に独自のテレメトリを持っているためです。
 
 マネージド インスタンス リソースに対して診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 
-1. Azure portal でマネージド インスタンス リソースに移動します。
+1. Azure portal で**マネージド インスタンス** リソースに移動します。
 1. **[診断設定]** を選択します。
 1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
 
@@ -155,11 +174,11 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、**[構成]** を選択し、**[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを使用します。
 1. インスタンスの診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
-1. **[保存]** を選択します。
-
    ![マネージド インスタンスに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+1. **[保存]** を選択します。
+1. さらに、次のセクションで説明されている手順に従って、監視対象のマネージド インスタンス内の各インスタンス データベースに対して診断テレメトリのストリーミングを構成します。
 
-> [!NOTE]
+> [!IMPORTANT]
 > 以下に示すように、マネージド インスタンスの診断テレメトリの構成に加えて、各マネージド インスタンスの診断テレメトリも構成する必要があります。 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>インスタンス データベースの診断テレメトリのストリーミングを構成する
@@ -168,20 +187,20 @@ Azure portal で単一データベース、プールされたデータベース�
 
 インスタンス データベースに対して診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 
-1. マネージド インスタンス内のインスタンス データベースに移動します。
-2. **[診断設定]** を選択します。
-3. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
+1. マネージド インスタンス内の**インスタンス データベース** リソースに移動します。
+1. **[診断設定]** を選択します。
+1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
    - 診断テレメトリをストリーミングするため並列接続を最大 3 つ作成できます。
    - 複数のリソースへの診断データの並列ストリーミングを構成するには、**[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 
    ![インスタンス データベースに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-4. 独自の参照の設定名を入力します。
-5. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
-6. データベース診断テレメトリ **[SQLInsights]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、および **[Errors]** のチェックボックスをオンにします。
-7. **[保存]** を選択します。
-
+1. 独自の参照の設定名を入力します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
+1. データベース診断テレメトリ **[SQLInsights]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、および **[Errors]** のチェックボックスをオンにします。
    ![インスタンス データベースに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+1. **[保存]** を選択します。
+1. 監視するインスタンス データベースごとにこれらの手順を繰り返します。
 
 > [!TIP]
 > 監視するインスタンス データベースごとにこれらの手順を繰り返します。
@@ -335,7 +354,7 @@ Azure SQL Database のメトリックと診断ログは、Microsoft Azure portal
 
 選択したデータが Event Hubs にストリーミングされると、高度な監視シナリオを有効にできます。 Event Hubs は、イベント パイプラインの玄関口として機能します。 イベント ハブに収集されたデータは、リアルタイム分析プロバイダーやストレージ アダプターを使用して、変換および保存できます。 Event Hubs は、イベントのストリームの運用と、イベントの消費を分離します。 これにより、イベントのコンシューマーは独自のスケジュールでイベントにアクセスできます。 Event Hubs の詳細については、以下を参照してください。
 
-- [Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Azure Event Hubs でストリーミングされたメトリックは、次の目的に使用できます。
@@ -388,7 +407,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-収集された監視テレメトリは、[SQL Analytics 言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)による独自の_カスタム分析_と_アプリケーション開発_に利用できます。
+以下では、Azure SQL Database、エラスティック プール、マネージド インスタンスで使用可能な監視テレメトリについて説明します。 SQL Analytics 内の収集された監視テレメトリは、[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)言語を使用した独自のカスタム分析とアプリケーション開発に利用できます。
 
 ## <a name="all-metrics"></a>すべてのメトリック
 
@@ -396,13 +415,13 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="all-metrics-for-elastic-pools"></a>エラスティック プールのすべてのメトリック
 
-|**リソース**|**メトリック**|
+|**Resource**|**メトリック**|
 |---|---|
 |エラスティック プール|eDTU の割合、使用中の eDTU、eDTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、XTP ストレージの割合 |
 
 ### <a name="all-metrics-for-azure-sql-databases"></a>Azure SQL Database のすべてのメトリック
 
-|**リソース**|**メトリック**|
+|**Resource**|**メトリック**|
 |---|---|
 |Azure SQL データベース|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
 
@@ -417,15 +436,15 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にResourceUsageStats |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にMANAGEDINSTANCES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|マネージド インスタンスの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |SKU_s|マネージド インスタンスの製品 SKU |
 |virtual_core_count_s|使用可能な仮想コアの数 |
 |avg_cpu_percent_s|平均 CPU の割合 |
@@ -442,18 +461,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にQueryStoreRuntimeStatistics |
 |OperationName|操作の名前。 常にQueryStoreRuntimeStatisticsEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |query_hash_s|クエリ ハッシュ |
 |query_plan_hash_s|クエリ プラン ハッシュ |
 |statement_sql_handle_s|ステートメント sql ハンドル |
@@ -493,18 +512,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にQueryStoreWaitStatistics |
 |OperationName|操作の名前。 常にQueryStoreWaitStatisticsEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |wait_category_s|待機のカテゴリ |
 |is_parameterizable_s|クエリがパラメーター化可能かどうか |
 |statement_type_s|ステートメントの種類 |
@@ -531,18 +550,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQ |
 |Category|カテゴリの名前。 常にErrors |
 |OperationName|操作の名前。 常にErrorEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |Message|プレーンテキストでのエラー メッセージ |
 |user_defined_b|エラーがユーザー定義ビットかどうか |
 |error_number_d|エラー コード |
@@ -560,18 +579,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にDatabaseWaitStatistics |
 |OperationName|操作の名前。 常にDatabaseWaitStatisticsEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |wait_type_s|待機の種類の名前 |
 |start_utc_date_t [UTC]|測定期間の開始時刻 |
 |end_utc_date_t [UTC]|測定期間の終了時刻 |
@@ -589,18 +608,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にTimeouts |
 |OperationName|操作の名前。 常にTimeoutEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |error_state_d|エラー状態コード |
 |query_hash_s|クエリ ハッシュ (使用可能な場合) |
 |query_plan_hash_s|クエリ プラン ハッシュ (使用可能な場合) |
@@ -612,18 +631,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にBlocks |
 |OperationName|操作の名前。 常にBlockEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |lock_mode_s|クエリで使用されるロック モード |
 |resource_owner_type_s|ロックの所有者 |
 |blocked_process_filtered_s|ブロックされているプロセスのレポート XML |
@@ -636,18 +655,18 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC] |ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にデッドロック |
 |OperationName|操作の名前。 常にDeadlockEvent |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
 |LogicalServerName_s|データベースのサーバーの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |deadlock_xml_s|デッドロック レポート XML |
 
 ### <a name="automatic-tuning-dataset"></a>自動チューニング データセット
@@ -657,10 +676,10 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |TenantId|テナント ID |
 |SourceSystem|常にAzure |
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ |
-|type|常にAzureDiagnostics |
+|Type|常にAzureDiagnostics |
 |ResourceProvider|リソース プロバイダーの名前。 常にMICROSOFT.SQL |
 |Category|カテゴリの名前。 常にAutomaticTuning |
-|リソース|リソースの名前 |
+|Resource|リソースの名前 |
 |ResourceType|リソースの種類の名前。 常にSERVERS/DATABASES |
 |SubscriptionId|データベースのサブスクリプション GUID |
 |ResourceGroup|データベースのリソース グループの名前 |
@@ -668,7 +687,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |LogicalDatabaseName_s|データベースの名前 |
 |ElasticPoolName_s|データベースのエラスティック プールの名前 (存在する場合) |
 |DatabaseName_s|データベースの名前 |
-|resourceId|リソース URI |
+|ResourceId|リソース URI |
 |RecommendationHash_s|自動チューニング推奨設定の一意のハッシュ |
 |OptionName_s|自動チューニング オプション |
 |Schema_s|データベース スキーマ |
@@ -689,7 +708,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
 - [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Azure 診断の概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Event Hubs の詳細については、次の資料を参照してください。
 

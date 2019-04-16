@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104507"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336077"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -29,7 +29,7 @@ ms.locfileid: "58104507"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension)をインストールすることをお勧めします。 このブラウザー拡張機能により、シングル サインオンに関する問題の解決に必要な SAML 要求および SAML 応答の情報を収集しやすくなります。 拡張機能をインストールできない場合でも、この記事では、拡張機能がインストールされている場合とされていない場合の両方について、問題を解決する方法が示されています。
+[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)をインストールすることをお勧めします。 このブラウザー拡張機能により、シングル サインオンに関する問題の解決に必要な SAML 要求および SAML 応答の情報を収集しやすくなります。 拡張機能をインストールできない場合でも、この記事では、拡張機能がインストールされている場合とされていない場合の両方について、問題を解決する方法が示されています。
 
 マイ アプリによるセキュリティで保護されたサインイン拡張機能ををダウンロードしてインストールするには、次のいずれかのリンクを使用します。
 
@@ -64,7 +64,7 @@ Azure AD と対象アプリケーションの間の、SAML に基づいたシン
 
 このエラーをデバッグするには、エラー メッセージと SAML 要求が必要です。 マイ アプリによるセキュリティで保護されたサインイン拡張機能は、この情報を自動的に収集し、Azure AD に解決ガイダンスを表示します。 
 
-### <a name="to-resolve-the-sign-in-error-with-the-myapps-secure-sign-in-extension-installed"></a>インストールしたマイ アプリによるセキュリティで保護されたサインイン拡張機能を使用してサインインのエラーを解決するには
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>インストールしたマイ アプリによるセキュリティで保護されたサインイン拡張機能を使用してサインインのエラーを解決するには
 
 1. エラーが発生すると、拡張機能によって、ユーザーには Azure AD の **[シングル サインオンのテスト]** ブレードが表示されます。 
 1. **[シングル サインオンのテスト]** ブレードで、**[SAML 要求をダウンロードします]** を選択します。 
@@ -73,14 +73,14 @@ Azure AD と対象アプリケーションの間の、SAML に基づいたシン
 
 サインイン エラーの解決策が表示されない場合は、フィードバック ボックスを使用して Microsoft に問い合わせることをお勧めします。
 
-### <a name="to-resolve-the-error-without-installing-the-myapps-secure-sign-in-extension"></a>MyApps Secure Sign-in 拡張機能をインストールせずにエラーを解決するには
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>MyApps Secure Sign-in 拡張機能をインストールせずにエラーを解決するには
 
 1. ページの右下隅のエラー メッセージをコピーします。 エラー メッセージには以下が含まれています。
     - CorrelationID とタイムスタンプ。 これらの値は、Microsoft のエンジニアが問題を識別して、実際の問題に対する正確な解決策を提供する助けとなるため、Microsoft とのサポート ケースを作成するときに重要です。
     - 問題の根本原因を明らかにしている文章。
 1. Azure AD に戻り、**[シングル サインオンのテスト]** ブレードを見つけます。
 1. **[Get resolution guidance]**(解決ガイダンスの取得) の上にあるテキスト ボックスに、エラー メッセージを貼り付けます。
-1. **[Get resolution guidance]**(解決ガイダンスの取得) をクリックし、問題を解決するための手順を表示します。 ガイダンスには、SAML 要求または SAML 応答からの情報が必要な場合があります。 マイ アプリによるセキュリティで保護されたサインイン拡張機能をを使用していない場合は、SAML の要求や応答を取得するために [Fiddler](https://www.telerik.com/fiddler) などのツールが必要なことがあります。
+1. **[Get resolution guidance]**(解決ガイダンスの取得) をクリックし、問題を解決するための手順を表示します。 ガイダンスには、SAML 要求または SAML 応答からの情報が必要な場合があります。 マイ アプリによるセキュリティで保護されたサインイン拡張機能を使用していない場合は、SAML の要求や応答を取得するために [Fiddler](https://www.telerik.com/fiddler) などのツールが必要なことがあります。
 1. SAML 要求に含まれる送信先が、Azure AD から取得した SAML シングル サインオン サービス URL に対応していることを確認します。
 1. SAML 要求に含まれる発行者は、Azure AD のアプリケーションのために構成した識別子と同じです。 Azure AD は、発行者を使用してディレクトリ内のアプリケーションを検索します。
 1. AssertionConsumerServiceURL は、アプリケーションが Azure AD から SAML トークンを受け取ることになっている場所であることを確認します。 この値は Azure AD 内で構成できますが、SAML 要求の一部としては必須の値ではありません。

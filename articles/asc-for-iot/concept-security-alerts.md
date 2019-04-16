@@ -1,36 +1,43 @@
 ---
-title: ASC for IoT のセキュリティ アラート ガイドのプレビュー| Microsoft Docs
-description: ASC for IoT とサービスを使用したセキュリティ アラートと推奨される修復方法について説明します。
-services: ascforiot
+title: Azure Security Center for IoT (プレビュー) のセキュリティ アラート ガイド | Microsoft Docs
+description: Azure Security Center for IoT とサービスを使用したセキュリティ アラートと推奨される修復方法について説明します。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: f39fee9b59dfec643a640a4e17460ed9199c858f
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: f3ae69cb6c8e2a60488b4f1ff3df1bb8ab0c04ea
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541540"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861980"
 ---
-# <a name="asc-for-iot-security-alerts"></a>ASC for IoT のセキュリティ アラート
+# <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT のセキュリティ アラート
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
+Azure Security Center (ASC) for IoT では、高度な分析および脅威インテリジェンスを使用して IoT ソリューションを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。
+さらに、期待されるデバイスの動作の知識に基づいて、カスタム アラートを作成できます。
+アラートは侵害のインジケーターとして機能し、調査して修復する必要があります。
 
-## <a name="device-alerts"></a>デバイスのアラート
+この記事では、IoT Hub や IoT デバイスでトリガーできる組み込みアラートの一覧を示します。
+組み込みアラートの他に、ASC for IoT では、予想されるハブやデバイスの動作に基づいてカスタム アラートを定義することもできます。
+詳しくは、「[カスタム アラートの作成](quickstart-create-custom-alerts.md)」をご覧ください。
 
-| severity | Name                                                   | [データ ソース] | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+## <a name="built-in-alerts-for-iot-devices"></a>IoT デバイス用の組み込みアラート
+
+| severity | 名前                                                   | データ ソース | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 高     | ローカル ログインの成功                                 | エージェント       | ローカル デバイスのサインインの成功が検出されました                                                                                                                                                                                                                                                                                                                                                                                         |
 | 高     | ブルート フォースの成功                                  | エージェント       | 複数の失敗したログイン試行と、その後にログインの成功が検出されました。 デバイスでブルート フォース攻撃の成功がありました。                                                                                                                                                                                                                                                                                                              |
@@ -72,9 +79,9 @@ ms.locfileid: "58541540"
 | 低      | Bash 履歴がクリアされました                                   | エージェント       | Bash 履歴ログがクリアされました。 敵対者が、独自のコマンドがログに表示されないように隠す可能性があります。                                                                                                                                                                                                                                                                                                                                                   |
 | 低      | ブルート フォースが失敗しました                                      | エージェント       | 複数の失敗したログイン試行が識別されました。 デバイス上でブルート フォース攻撃が試行され、失敗しました。                                                                                                                                                                                                                                                                                                                                                  |
 
-## <a name="iot-hub-alerts"></a>IoT Hub のアラート
+## <a name="built-in-alerts-for-iot-hub"></a>IoT Hub 用の組み込みアラート
 
-| severity | Name                                                                         | 説明                                                                                                                                                                                                                                                                                                                            |
+| severity | 名前                                                                         | 説明                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Medium   | 新しい証明書が IoT Hub に追加されました                                    |新しい証明書が IoT Hub に追加されました。 この追加が承認されたパーティーによって行われたのでない場合、悪意のあるアクティビティであることを示している可能性があります。                                                                                                                                                                                                    |
 | Medium   | 証明書が IoT Hub から削除されました                                    | 証明書が IoT Hub から削除されました。 このアクションが承認されたパーティーによって行われたのでない場合、悪意のあるアクティビティであることを示している可能性があります。                                                                                                                                                                                                |
@@ -88,4 +95,4 @@ ms.locfileid: "58541540"
 
 - [概要](overview.md)
 - [セキュリティ データにアクセスする](how-to-security-data-access.md)
-- [デバイスを調査する](tutorial-investigate-device.md)
+- [デバイスを調査する](how-to-investigate-device.md)

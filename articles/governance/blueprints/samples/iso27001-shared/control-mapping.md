@@ -1,21 +1,20 @@
 ---
-title: サンプル - ISO 27001 ブループリント - コントロール マッピング
-description: ISO 27001 ブループリント サンプルのコントロール マッピングです。
-services: blueprints
+title: サンプル - ISO 27001 共有サービスのブループリント - コントロール マッピング
+description: ISO 27001 共有サービスのブルー プリント サンプルから Azure Policy と RBAC へのコントロール マッピング。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f655db8643a16e6818f5becf25c8761fb4c9093b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 93a26311216ca5682c02a319f989b3d342a33ce1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008041"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256483"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Azure Blueprints ISO 27001 ブループリント サンプルのコントロール マッピング
+# <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints ISO 27001 共有サービスのブループリント サンプルが ISO 27001 コントロールにどのようにマップされているかを説明したものです。 コントロールについて詳しくは、[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) をご覧ください。
 

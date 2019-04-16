@@ -2,7 +2,7 @@
 title: よく寄せられる質問 - Azure 専用 HSM | Microsoft Docs
 description: Azure 専用 HSM に関するさまざまなトピックに対応したよく寄せられる質問
 services: dedicated-hsm
-author: johndaw
+author: johncdawson
 manager: barbkess
 tags: azure-resource-manager
 ms.custom: mvc
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/19/2019
+ms.date: 3/27/2019
 ms.author: barclayn
-ms.openlocfilehash: b28d9607bf35d37e252d7d0bc59d1ce808e38665
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259994"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540824"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -58,9 +58,28 @@ Microsoft によってプロビジョニングされると、Gemalto から HSM 
 
 Microsoft は、専用 HSM サービス経由で Gemalto SafeNet Luna Network HSM のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
 
-### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>Q:Azure 専用 HSM は PIN/ETF 機能をサポートするか、あるいは PCI HSM v1 または v2 認定の要件を満たしていますか。
+### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>Q:Azure Dedicated HSM は、支払い (PIN/ETF) 機能をサポートしますか。
 
-Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や ETF など) または認定をサポートしていません。 Azure 専用 HSM サービスでの支払い HSM の将来のサポートを希望する場合は、下のフィードバックを提供してください。
+Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や ETF など) または認定をサポートしていません。 Azure Dedicated HSM サービスでの支払い HSM の将来のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
+
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Q:どの Azure リージョンで Dedicated HSM を使用できますか。
+
+2019 年 3 月下旬の時点では、Dedicated HSM は次に示す 14 のリージョンで使用できます。 追加のリージョンについては計画中であり、お客様の Microsoft アカウント担当者を介して検討することができます。
+
+* 米国東部
+* 米国東部 2
+* 米国西部
+* 米国中南部
+* 東南アジア
+* 東アジア
+* 北ヨーロッパ
+* 西ヨーロッパ
+* 英国南部
+* 英国西部
+* カナダ中部
+* カナダ東部
+* オーストラリア東部
+* オーストラリア南東部
 
 ## <a name="interoperability"></a>相互運用性
 
