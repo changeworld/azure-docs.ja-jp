@@ -118,12 +118,12 @@ Media Services には、Widevine ライセンスを構成するためのクラ�
 
 この方法は、エラーが発生しやすい可能性があります。 「[定義が必要なクラスと JSON へのシリアル化](#classes)」で説明されているその他の方法を使用することをお勧めします。
 
-    ```csharp
+```csharp
     ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
     {
         WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
     };
-    ```
+```
 
 ### <a id="classes"></a>定義が必要なクラスと JSON へのシリアル化
 
@@ -131,7 +131,7 @@ Media Services には、Widevine ライセンスを構成するためのクラ�
 
 次の例では、Widevine JSON スキーマにマップするクラスの定義の例を示します。 それらのクラスを JSON 文字列にシリアル化する前に、クラスをインスタンス化できます。  
 
-    ```csharp
+```csharp
     public class PolicyOverrides
     {
         public bool CanPlay { get; set; }
@@ -160,7 +160,7 @@ Media Services には、Widevine ライセンスを構成するためのクラ�
         public ContentKeySpec[] ContentKeySpecs { get; set; }
         public PolicyOverrides PolicyOverrides { get; set; }
     }
-    ```
+```
 
 #### <a name="configure-the-license"></a>ライセンスの構成
 
