@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d41ec0bc959eb264564d49ae6ac31aa30b3be98a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492761"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757128"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -40,7 +40,10 @@ Azure IoT Edge を使用して透過的ゲートウェイのシナリオを実�
 2. IoT Hub 上のデバイス ID を持つダウンストリーム デバイス。 
     IoT Edge デバイスをダウンストリーム デバイスとして使用することはできません。 代わりに、IoT Hub に通常の IoT デバイスとして登録したデバイスを使用します。 ポータルの **[IoT デバイス]** セクションで新しいデバイスを登録できます。 または、Azure CLI を使用して[デバイスを登録](../iot-hub/quickstart-send-telemetry-c.md#register-a-device)することもできます。 接続文字列をコピーし、後続のセクションで使用できるようにしておきます。 
 
-    現在のところ、対称キー認証が適用されるダウンストリーム デバイスのみを、IoT Edge ゲートウェイ経由で接続できます。 X.509 の証明機関と X.509 自己署名証明書は、現在サポートされていません。 
+    現在のところ、対称キー認証が適用されるダウンストリーム デバイスのみを、IoT Edge ゲートウェイ経由で接続できます。 X.509 の証明機関と X.509 自己署名証明書は、現在サポートされていません。
+    
+> [!NOTE]
+> この記事で使用される "ゲートウェイ名" は、IoT Edge config.yaml ファイルでホスト名として使用されているものと同じ名前である必要があります。 ゲートウェイ名は、DNS または host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。 使用されるプロトコル (MQTTS:8883/AMQPS:5671/HTTPS:433) に基づく通信は、ダウンストリーム デバイスと透過的な IoT Edge の間で可能にする必要があります。 ファイアウォールが間にある場合は、それぞれのポートを開く必要があります。
 
 ## <a name="prepare-a-downstream-device"></a>ダウンストリーム デバイスを準備する
 
@@ -194,6 +197,14 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+## <a name="troubleshoot-the-gateway-connection"></a>ゲートウェイ接続をトラブルシューティングする
+
+リーフ デバイスにゲートウェイ デバイスへの断続的な接続がある場合は、解決のために次の手順を試してください。 
+
+1. 接続文字列に追加されたゲートウェイ名は、ゲートウェイ デバイスの IoT Edge config.yaml ファイル内のホスト名と同じですか?
+2. そのゲートウェイ名は IP アドレスに解決できますか? DNS を使用するか、またはリーフ デバイスの host ファイル エントリを追加することによって、断続的な接続を解決できます。
+3. ファイアウォールの通信ポートは開いていますか? 使用されるプロトコル (MQTTS:8883/AMQPS:5671/HTTPS:433) に基づく通信は、ダウンストリーム デバイスと透過的な IoT Edge の間で可能にする必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

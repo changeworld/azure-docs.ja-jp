@@ -3,7 +3,7 @@ title: Azure Stack で使用するための Red Hat Enterprise Linux VHD の作�
 description: Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: JeffGoldner
+author: mattbriggs
 manager: BradleyB
 editor: ''
 tags: ''
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
-ms.author: jeffgo
+ms.date: 04/03/2019
+ms.author: mabrigg
+ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 728839accbce80ece6795e098d5d2855320fab06
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242231"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006668"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Azure Stack 用の Red Hat ベースの仮想マシンの準備
 
@@ -100,6 +101,13 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+
+1. cloud-init を停止してアンインストールします。
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
@@ -246,9 +254,10 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     dracut -f -v
     ```
 
-1. cloud-init をアンインストールします。
+1. cloud-init を停止してアンインストールします。
 
     ```bash
+    systemctl stop cloud-init
     yum remove cloud-init
     ```
 
@@ -265,22 +274,55 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     ClientAliveInterval 180
     ```
 
-1. WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
+1. Azure Stack 用のカスタム vhd を作成する際は、1903 未満のビルドが実行されている Azure Stack 環境では、バージョン 2.2.20 から 2.2.35.1 の WALinuxAgent (両バージョンを含む) が機能しないことに留意してください。 これを解決するには、1901 または 1902 の修正プログラムを適用するか、この手順の後半部分に従ってください。 
+
+    Azure Stack ビルド 1903 (以上) を実行している場合または 1901 または 1902 の修正プログラムを適用済みである場合は、Red Hat の extras リポジトリから WALinuxAgent パッケージをダウンロードしてください。
+    
+   WALinuxAgent パッケージ `WALinuxAgent-<version>` が Red Hat extras リポジトリにプッシュされました。 次のコマンドを実行して extras リポジトリを有効にします。
 
     ```bash
     subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+   次のコマンドを実行して Azure Linux エージェントをインストールします。
 
     ```bash
     yum install WALinuxAgent
     ```
 
-    waagent サービスを有効にします。
+   waagent サービスを有効にします。
 
     ```bash
     systemctl enable waagent.service
+    ```
+    
+    
+    実行している Azure Stack ビルドが 1903 未満で、1901 または 1902 の修正プログラムも適用していない場合は、次の手順に従って WALinuxAgent をダウンロードしてください。
+    
+   a.   setuptools をダウンロードします。
+    ```bash
+    wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
+    tar xzf setuptools-7.0.tar.gz
+    cd setuptools-7.0
+    ```
+   b. 最新バージョンのエージェントを GitHub からダウンロードして解凍します。 次の例では、GitHub リポジトリから "2.2.36" バージョンをダウンロードしました。
+    ```bash
+    wget https://github.com/Azure/WALinuxAgent/archive/v2.2.36.zip
+    unzip v2.2.36.zip
+    cd WALinuxAgent-2.2.36
+    ```
+    c. setup.py をインストールします
+    ```bash
+    sudo python setup.py install
+    ```
+    d. waagent を再起動します
+    ```bash
+    sudo systemctl restart waagent
+    ```
+    e. エージェントのバージョンがダウンロードしたものと一致するかどうかをテストします。 この例では、2.2.36 となります。
+    
+    ```bash
+    waagent -version
     ```
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
@@ -316,7 +358,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 1. qcow2 イメージを VHD 形式に変換します。
 
     > [!NOTE]
-    > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+    > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
 
     まず、イメージを未加工の形式に変換します。
 
@@ -422,6 +464,13 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     dracut -f -v
     ```
 
+1. cloud-init を停止してアンインストールします。
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
+    ```
+
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。 通常これが既定の設定です。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
     ```sh
@@ -472,7 +521,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
     > [!NOTE]
-    > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 <https://bugs.launchpad.net/qemu/+bug/1490611> を参照してください。
+    > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  <https://bugs.launchpad.net/qemu/+bug/1490611> を参照してください。
 
     まず、イメージを未加工の形式に変換します。
 
@@ -581,6 +630,10 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
     Install latest repo update
     yum update -y
 
+    Stop and Uninstall cloud-init
+    systemctl stop cloud-init
+    yum remove cloud-init
+    
     Enable extras repo
     subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -657,15 +710,15 @@ Hyper-V 環境で実行されていることを Linux が検出しなかった�
 
 `/etc/dracut.conf` を編集し、次の内容を追加します。
 
-    ```sh
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
-    ```
+```sh
+add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+```
 
 initramfs を再構築します。
 
-    ```bash
-    dracut -f -v
-    ```
+```bash
+dracut -f -v
+```
 
 詳細については、[initramfs の再構築](https://access.redhat.com/solutions/1958)に関するページを参照してください。
 
