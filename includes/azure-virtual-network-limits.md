@@ -2,22 +2,22 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: networking
-author: jimdial
+author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 02/07/2019
-ms.author: jdial
+ms.date: 04/10/2019
+ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: c6c57390e0a2fba0c79d3198df0f5577eb813f88
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553950"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503244"
 ---
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | 仮想ネットワーク |50 |100 |
 | ローカル ネットワーク サイト |20 |サポートにお問い合せください。 |
@@ -40,11 +40,11 @@ ms.locfileid: "57553950"
 > [!NOTE]
 > 最近、すべての既定の制限がそれぞれの上限まで引き上げられました。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 過去にこれらの制限をサポートにより引き上げていて、次の表のように更新された制限が表示されない場合は、[オンライン カスタマー サポートに申請 (無料)](../articles/azure-resource-manager/resource-manager-quota-errors.md) できます
 
-| リソース | 既定の制限 | 
+| Resource | 既定の制限 | 
 | --- | --- |
 | 仮想ネットワーク |1,000 |
 | 仮想ネットワークあたりのサブネット数 |3,000 |
-| 仮想ネットワークあたりの VNet ピアリング |100 |
+| 仮想ネットワークあたりの VNet ピアリング |500 |
 | 仮想ネットワークあたりの DNS サーバー数 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |65,536 |
 | ネットワーク インターフェイスごとのプライベート IP アドレス |256 |
@@ -65,17 +65,17 @@ ms.locfileid: "57553950"
 | 仮想ネットワーク TAP ごとのネットワーク インターフェイス TAP 構成数 |100 |
 
 #### <a name="publicip-address"></a>パブリック IP アドレスの制限
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | パブリック IP アドレス - 動的 | Basic で 1,000。 |サポートにお問い合せください。 |
-| パブリック IP アドレス - 静的 | Basic で 200。 |サポートにお問い合せください。 |
+| パブリック IP アドレス - 静的 | Basic で 1,000。 |サポートにお問い合せください。 |
 | パブリック IP アドレス - 静的 | Standard で 200。|サポートにお問い合せください。 |
 | パブリック IP プレフィックスのサイズ (プレビュー) | /28 | /28 |
 
 #### <a name="load-balancer"></a>Load Balancer の制限
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
-| リソース | 既定の制限 |
+| Resource | 既定の制限 |
 | --- | --- |
 | ロード バランサー | 1,000 | 
 | リソースあたりのルール数、Basic | 250 |
