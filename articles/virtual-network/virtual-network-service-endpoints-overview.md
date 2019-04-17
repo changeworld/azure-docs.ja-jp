@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669335"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618160"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -33,6 +33,7 @@ ms.locfileid: "58669335"
 - **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
 - **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
 - **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: 一般公開 (データベース サービスを利用できる Azure リージョン)。
 - **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
 - **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**:一般公開 (全 Azure リージョン)。
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
@@ -41,7 +42,6 @@ ms.locfileid: "58669335"
 
 **パブリック プレビュー**
 
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: プレビュー公開 (Azure Database for MariaDB を利用できる全 Azure リージョン)。
 - **[Azure Container Registry](../container-registry/container-registry-vnet.md)**:プレビュー公開 (Azure Container Registry を利用できる全 Azure リージョン)。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 04/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 21ee4f8b0fe20588646287945ba35efa5bc55606
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 636072b011c258e8e5ecb05b761bfab8d67e439a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542983"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609389"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# による画像の分析
 
@@ -37,7 +37,7 @@ ms.locfileid: "57542983"
     1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
     1. **[参照]** タブをクリックし、**[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
     1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
-1. *Program.cs* の内容を次のコードに置き換えます。 `AnalyzeImageAsync` メソッドと `AnalyzeImageInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[画像分析 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) をラップします。 
+1. *Program.cs* の内容を次のコードに置き換えます。 `AnalyzeImageAsync` メソッドと `AnalyzeImageInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[画像分析 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) をラップします。
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -135,7 +135,14 @@ ms.locfileid: "57542983"
             private static void DisplayResults(ImageAnalysis analysis, string imageUri)
             {
                 Console.WriteLine(imageUri);
-                Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
+                if (analysis.Description.Captions.Count != 0)
+                {
+                    Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
+                }
+                else
+                {
+                    Console.WriteLine("No description generated.");
+                }
             }
         }
     }
@@ -153,7 +160,7 @@ ms.locfileid: "57542983"
 
 [API のクイック スタートの C# を使ったローカル画像の分析](../QuickStarts/CSharp-analyze.md#examine-the-response)で生の JSON 出力の例を参照してください。
 
-```
+```console
 https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
 a large waterfall over a rocky cliff
 ```
