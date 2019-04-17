@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 31528c30ac8b795a661539349c2bee31edb6973c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 4b7a9409052d8255bbad00b38217bcff030e8620
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850993"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -51,7 +51,7 @@ Perception United States (非 UltiPro) と Azure AD の統合を構成するに�
 
 Azure AD への Perception United States (非 UltiPro) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Perception United States (非 UltiPro) を追加する必要があります。
 
-**ギャラリーから Perception United States (非 UltiPro) を追加するには、次の手順に従います。**
+**ギャラリーから Perception United States (非 UltiPro) を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Perception United States (非 UltiPro) で Azure AD シングル サインオン
 
     ![[Perception United States (非 UltiPro) のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに、`https://perception.kanjoya.com/sp` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `https://perception.kanjoya.com/sp`
 
-    b. **[応答 URL]** ボックスに、`https://perception.kanjoya.com/sso?idp=<entity_id>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     c. **Perception United States (非 UltiPro)** アプリケーションでは、**[Perception United States (非 UltiPro) のセットアップ]** セクションから取得する **Azure AD ID** の値 <entity_id> を URI でエンコードする必要があります。 URI でエンコードされた値を取得するには、**http://www.url-encode-decode.com/** リンクを使用してください。
 
@@ -231,7 +231,7 @@ Perception United States (非 UltiPro) で Azure AD シングル サインオン
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

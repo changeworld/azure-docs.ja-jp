@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991803"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268383"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT for Azure - デプロイの概要
 
@@ -32,14 +32,6 @@ vFXT クラスターを起動して実行したら、クライアントを vFXT 
 1. 構成の前提条件 
 
    VM を作成する前に、Avere vFXT プロジェクトに対して新しいサブスクリプションを作成し、サブスクリプションの所有権を構成し、クォータを確認して必要に応じて増やすように要求し、Avere vFXT ソフトウェアの使用に対する使用条件に同意する必要があります。 詳細な手順については、「[Avere vFXT の作成準備](avere-vfxt-prereqs.md)」を参照してください。
-
-1. クラスター ノードのアクセス ロールを作成する
-
-   Azure では、[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用し、クラスター ノード VM を承認して特定のタスクを実行します。 たとえば、クラスター ノードは、IP アドレスをその他のクラスター ノードに割り当てまたは再割り当てすることができる必要があります。 クラスターを作成する前に、適切なアクセス権限を与えるロールを定義する必要があります。
-
-   手順については、「[クラスター ノードのアクセス ロールを作成する](avere-vfxt-prereqs.md#create-the-cluster-node-access-role)」を参照してください。
-
-   クラスター コントローラーもアクセス ロールを使用しますが、独自のロールを作成する代わりに、既定のロールである所有者をそのまま使用できます。 クラスター コントローラー用にカスタム ロールを作成する場合は、「[コントローラーのアクセス ロールのカスタマイズ](avere-vfxt-controller-role.md)」を参照してください。 
 
 1. Avere vFXT クラスターを作成する 
 

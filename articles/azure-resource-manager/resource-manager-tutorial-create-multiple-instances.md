@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fc6acb211e30af460106acd1c19b61db52f09269
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ce882ecee25f9570082a978b72a76ca903bfc12f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311884"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279383"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
 
@@ -126,14 +126,14 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
 3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -155,7 +155,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。 次のチュートリアルでは、あるリソース グループから別のリソース グループにリソースを移行する方法について説明します。
+このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。  次のチュートリアルでは、複数のリソースと複数のリソース タイプを含むテンプレートを作成します。 一部のリソースには依存リソースがあります。
 
 > [!div class="nextstepaction"]
-> [リソースの移動](./resource-manager-tutorial-move-resources.md)
+> [依存リソースの作成](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

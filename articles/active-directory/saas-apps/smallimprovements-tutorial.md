@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1b59d1c030df95a650124f9e9ea34e06db7d08af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19d9624c5bb60f47ef4bfa1b0629327780c2a9c7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180859"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル:Azure Active Directory と Small Improvements の統合
 
@@ -105,9 +105,9 @@ Small Improvements で Azure AD シングル サインオンを構成するに�
 
     ![[Small Improvements のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.small-improvements.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.small-improvements.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.small-improvements.com`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<subdomain>.small-improvements.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Small Improvements クライアント サポート チーム](mailto:support@small-improvements.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -207,7 +207,7 @@ Small Improvements で Azure AD シングル サインオンを構成するに�
 
 Azure AD ユーザーが Small Improvements にログインできるようにするには、そのユーザーを Small Improvements にプロビジョニングする必要があります。 Small Improvements の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. 管理者として Small Improvements 企業サイトにサインオンします。
 
@@ -245,6 +245,6 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -15,18 +15,21 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a206b6027054522a2bbbe1cc847adf9bb7f765e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 06fa483a34efa3a9486e04d894a3139d17b157b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447653"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273959"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当てマネージド ID を使用して、ストレージの Shared Access Signature (SAS) 資格情報を取得する方法について説明します。 具体的には [Service SAS 資格情報](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures)です。 
+
+> [!NOTE]
+> このチュートリアルで生成された SAS キーは、この VM に制限またはバインドされません。  
 
 Service SAS は、アカウント アクセス キーを公開することなく、ストレージ アカウント内のオブジェクトへの限られたアクセス許可を限られた時間にわたって特定のサービス (ここでは BLOB サービス) に対してのみ提供できます。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、SAS 資格情報を通常どおりに使用できます。 このチュートリアルでは、Azure Storage CLI を使用して BLOB のアップロードとダウンロードを行う手順を示します。 学習内容:
 

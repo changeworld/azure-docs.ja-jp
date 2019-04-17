@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dec8a3f87200c6eaed1d9d2bcc4a5ed5fa14957
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4e5858fe392629d61b3f0b8833db3af959a16a8b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446846"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525186"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -111,7 +111,7 @@ Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",
 "secondaryReadonlyMasterKey":"38v5ns...7bA=="}
 ```
-これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの **[概要]** タブから <COSMOS DB CONNECTION URL> を取得できます。  <ACCESS KEY> を前述の手順で取得した値に置き換えます。
+これで Cosmos DB アカウントのアクセス キーが取得できました。これを Cosmos DB SDK に渡して、アカウントにアクセスするための呼び出しを行うことができます。  簡単な例として、アクセス キーを Azure CLI に渡す場合があります。  Azure Portal の Cosmos DB アカウント ブレードの **[概要]** タブから `<COSMOS DB CONNECTION URL>` を取得できます。  `<ACCESS KEY>` を前述の手順で取得した値に置き換えます。
 
 ```bash
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>

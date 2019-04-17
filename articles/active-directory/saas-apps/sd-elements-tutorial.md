@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 42fc2fb7d68465b55d16aad882dd8557fe13ee62
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188307"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>チュートリアル:Azure Active Directory と SD Elements の統合
 
@@ -105,9 +105,9 @@ SD Elements で Azure AD シングル サインオンを構成するには、次
 
     ![[SD Elements のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<tenantname>.sdelements.com/sso/saml2/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
-    b. **[応答 URL]** ボックスに、`https://<tenantname>.sdelements.com/sso/saml2/acs/` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[SD Elements クライアント サポート チーム](mailto:support@sdelements.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -269,6 +269,6 @@ SD Elements で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

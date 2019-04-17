@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3a67bb2b258d5376c997d4858bea4d094e850127
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 570f789d0f399c5ffa7535101136ab65ba58ccd5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997138"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>チュートリアル:Azure Active Directory と ScreenSteps の統合
 
@@ -51,7 +51,7 @@ ScreenSteps と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への ScreenSteps の統合を構成するには、管理対象の SaaS アプリの一覧にギャラリーから ScreenSteps を追加する必要があります。
 
-**ギャラリーから ScreenSteps を追加するには、次の手順に従います。**
+**ギャラリーから ScreenSteps を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -239,6 +239,6 @@ ScreenSteps で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

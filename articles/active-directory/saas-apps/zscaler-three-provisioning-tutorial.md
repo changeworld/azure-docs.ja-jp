@@ -6,20 +6,21 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 385a1153-0f47-4e41-8f44-da1b49d7629e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: afb80f54c2354f65054d8d53b93add6ed5ffa63e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed158ae825ec8aac24a57eb0f5a986b2124b66fb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099952"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273687"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Three を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -27,46 +28,41 @@ ms.locfileid: "58099952"
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
-> 
+>
 > 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure AD テナント
-*   Zscaler Three テナント
-*   管理者アクセス許可がある Zscaler Three のユーザー アカウント
+* Azure AD テナント
+* Zscaler Three テナント
+* 管理者アクセス許可がある Zscaler Three のユーザー アカウント
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Enterprise パッケージを含むアカウントについて Zscaler Three 開発者が使用できる Zscaler Three SCIM API が必要です。
 
 ## <a name="adding-zscaler-three-from-the-gallery"></a>ギャラリーからの Zscaler Three の追加
+
 Azure AD で自動ユーザー プロビジョニング用に Zscaler Three を構成する前に、Zscaler Three を Azure AD アプリケーション ギャラリーから管理対象の SaaS アプリケーションの一覧に追加する必要があります。
 
 **Azure AD アプリケーション ギャラリーから Zscaler Three を追加するには、次の手順を行います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] セクション][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. Zscaler Three を追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに、「**Zscaler Three**」と入力します。
+4. 検索ボックスに「**Zscaler Three**」と入力し、結果ウィンドウで **[Zscaler Three]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/app-search.png)
-
-5. 結果パネルで **[Zscaler Three]** を選択し、**[追加]** ボタンをクリックして Zscaler Three を SaaS アプリケーションの一覧に追加します。
-
-    ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/app-search-results.png)
-
-    ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/app-creation.png)
+    ![結果リストの Zscaler Three](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zscaler-three"></a>Zscaler Three にユーザーを割り当てる
 
@@ -74,13 +70,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Zscaler Three へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Zscaler Three に割り当てることができます。
 
-*   [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-three"></a>ユーザーを Zscaler Three に割り当てるときの重要なヒント
 
-*   単一の Azure AD ユーザーを Zscaler Three に割り当て、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Zscaler Three に割り当て、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*   Zscaler Three にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* Zscaler Three にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler-three"></a>Zscaler Three への自動ユーザー プロビジョニングの構成
 
@@ -91,11 +87,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-three-in-azure-ad"></a>Azure AD で Zscaler Three の自動ユーザー プロビジョニングを構成するには
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** に移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Zscaler Three]** の順に選択します。
 
-2. SaaS アプリケーションの一覧から Zscaler Three を選択します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/app-instance-search.png)
+2. アプリケーションの一覧で、**[Zscaler Three]** を選択します。
+
+    ![アプリケーションの一覧の Zscaler Three のリンク](common/all-applications.png)
 
 3. **[プロビジョニング]** タブを選択します。
 
@@ -111,16 +109,16 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
-    **[Configure SAML]\(SAML の構成\)** をクリックし、**[Configuration SAML]\(構成 SAML\)** オプションを開きます。 
+    **[Configure SAML]\(SAML の構成\)** をクリックし、**[Configuration SAML]\(構成 SAML\)** オプションを開きます。
 
     ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/secret-token-2.png)
-    
+
     **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と**ベアラー トークン**を取得し、設定を保存します。 Azure portal で**ベース URL**を**テナント URL** にコピーし、**ベアラー トークン**を**シークレット トークン**にコピーします。
 
 7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Zscaler Three に接続できることを確認します。 接続できない場合は、使用中の Zscaler Three アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/test-connection.png)
-    
+
 8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Zscaler Three のプロビジョニング](./media/zscaler-three-provisioning-tutorial/notification.png)

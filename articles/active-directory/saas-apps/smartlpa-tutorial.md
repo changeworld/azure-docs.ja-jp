@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 61973706eb073f31ad6269ff8c17cf49ba8d2c6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2b3101e747ef70a669ca7f81128cb701aa6d9720
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58172786"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartlpa"></a>チュートリアル:Azure Active Directory と SmartLPA の統合
 
@@ -105,9 +105,9 @@ SmartLPA で Azure AD シングル サインオンを構成するには、次の
 
     ![[SmartLPA のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<TENANTNAME>.smartlpa.com/`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<TENANTNAME>.smartlpa.com/`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<TENANTNAME>.smartlpa.com/<UNIQUE ID>`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<TENANTNAME>.smartlpa.com/<UNIQUE ID>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[SmartLPA クライアント サポート チーム](mailto:support@smartlpa.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -195,6 +195,6 @@ SmartLPA で Azure AD シングル サインオンを構成するには、次の
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

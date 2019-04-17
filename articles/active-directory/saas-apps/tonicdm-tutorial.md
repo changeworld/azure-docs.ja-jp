@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 104acda9521ff52af809fc79b1dfd12e4769e87b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: b648c51b1b169c02f149493c53b6ef738b736e61
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848801"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>チュートリアル:Azure Active Directory と TonicDM の統合
 
@@ -107,9 +107,9 @@ TonicDM で Azure AD シングル サインオンを構成するには、次の�
 
     ![[TonicDM のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに URL として「`https://tonicdm.com/`」と入力します。
+    a. **[サインオン URL]** ボックスに、次の URL を入力します:  `https://tonicdm.com/`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://tonicdm.com/saml/metadata` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `https://tonicdm.com/saml/metadata`
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -193,7 +193,7 @@ TonicDM で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

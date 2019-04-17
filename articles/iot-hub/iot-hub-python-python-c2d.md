@@ -9,58 +9,63 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 0feff40aff4db65104cb2531881119086dc813a7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7ac668bdbc3698be3ed2aa50a428cef84e68369a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541912"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272872"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Python)
+
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-
 ## <a name="introduction"></a>はじめに
-Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 [IoT Hub の概要]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
+Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、フル マネージドのサービスです。 クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」には、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
+このチュートリアルは、[IoT Hub の概要](quickstart-send-telemetry-python.md)に関するページのチュートリアルに基づいて作成されており、 次の方法について説明します。
 
 * ソリューション バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
+
 * クラウドからデバイスへのメッセージをデバイスで受信する。
+
 * IoT Hub からデバイスに送信されたメッセージの配信確認 ("*フィードバック*") を、ソリューション バックエンドから要求する。
 
 cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide-messaging.md)を参照してください。
 
 このチュートリアルの最後に、次の 2 つの Python コンソール アプリを実行します。
 
-* **SimulatedDevice.py**。「[IoT Hub の概要]」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
+* **SimulatedDevice.py**。「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
+
 * **SendCloudToDeviceMessage.py**。クラウドからデバイスへのメッセージを IoT Hub を介してシミュレートされたデバイス アプリに送信し、その配信確認を受け取ります。
 
 > [!NOTE]
 > IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。 このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、 [Azure IoT デベロッパー センター](https://www.azure.com/develop/iot)のページを参照してください。
-> 
+>
 
 このチュートリアルを完了するには、以下が必要です。
 
 * [Python 2.x または 3.x](https://www.python.org/downloads/)。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用している場合は、[*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)が必要な場合があります。
+
 * Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/confirmation.aspx?id=48145)によって、Python からネイティブ DLL を使用できます。
+
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
 > [!NOTE]
 > `azure-iothub-service-client` と `azure-iothub-device-client` の *pip* パッケージは現在、Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
-> 
-
+>
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する
+
 このセクションでは、デバイスをシミュレートして、クラウドからデバイスへのメッセージを IoT Hub から受信する、Python コンソール アプリを作成します。
 
 1. テキスト エディターを使って、**SimulatedDevice.py** ファイルを作成します。
 
-1. **SimulatedDevice.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
-   
-    ```python
+2. **SimulatedDevice.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
+
+   ```python
     import time
     import sys
     import iothub_client
@@ -73,16 +78,16 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     RECEIVE_CALLBACKS = 0
     ```
 
-1. 次のコードを **SimulatedDevice.py** ファイルに追加します。 "{deviceConnectionString}" プレースホルダーの値を、「[IoT Hub の概要]」チュートリアルで作成したデバイスのデバイス接続文字列に置き換えます。
-   
+3. 次のコードを **SimulatedDevice.py** ファイルに追加します。 "{deviceConnectionString}" プレースホルダーの値を、クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で作成したデバイスのデバイス接続文字列に置き換えます。
+
     ```python
     # choose AMQP or AMQP_WS as transport protocol
     PROTOCOL = IoTHubTransportProvider.AMQP
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-1. 受信したメッセージをコンソールに出力するための次の関数を追加します。
-   
+4. 受信したメッセージをコンソールに出力するための次の関数を追加します。
+
     ```python
     def receive_message_callback(message, counter):
         global RECEIVE_CALLBACKS
@@ -117,8 +122,8 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
                 print ( iothub_client_error )
     ```
 
-1. クライアントを初期化してクラウドからデバイスへのメッセージの受信を待機する次のコードを追加します。
-   
+5. クライアントを初期化してクラウドからデバイスへのメッセージの受信を待機する次のコードを追加します。
+
     ```python
     def iothub_client_init():
         client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
@@ -150,8 +155,8 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
         print_last_message_time(client)
     ```
 
-1. 次の main 関数を追加します。
-   
+6. 次の main 関数を追加します。
+
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python sample..." )
@@ -161,16 +166,16 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
         iothub_client_sample_run()
     ```
 
-1. **SimulatedDevice.py** ファイルを保存して閉じます。
-
+7. **SimulatedDevice.py** ファイルを保存して閉じます。
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
-このセクションでは、クラウドからデバイスへのメッセージをシミュレートされたデバイスのアプリに送信する Python コンソール アプリを作成します。 [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal](https://portal.azure.com) で確認できます)。
+
+このセクションでは、クラウドからデバイスへのメッセージをシミュレートされたデバイスのアプリに送信する Python コンソール アプリを作成します。 クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal](https://portal.azure.com) で確認できます)。
 
 1. テキスト エディターを使って、**SendCloudToDeviceMessage.py** ファイルを作成します。
 
-1. **SendCloudToDeviceMessage.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
-   
+2. **SendCloudToDeviceMessage.py** ファイルの先頭に、次の `import` ステートメントと変数を追加します。
+
     ```python
     import random
     import sys
@@ -184,15 +189,15 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. 次のコードを **SendCloudToDeviceMessage.py** ファイルに追加します。 "{IoTHubConnectionString}" プレースホルダーの値を、「[IoT Hub の概要]」チュートリアルで作成したハブの IoT Hub 接続文字列に置き換えます。 "{deviceId}" プレースホルダーを、「[IoT Hub の概要]」チュートリアルで追加したデバイスのデバイス ID に置き換えます。
-   
+3. 次のコードを **SendCloudToDeviceMessage.py** ファイルに追加します。 "{IoTHubConnectionString}" プレースホルダーの値を、クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で作成したハブの IoT Hub 接続文字列に置き換えます。 "{deviceId}" プレースホルダーを、クイック スタート「[IoT Hub の概要](quickstart-send-telemetry-python.md)」で追加したデバイスのデバイス ID に置き換えます。
+
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-1. フィードバック メッセージをコンソールに出力するための次の関数を追加します。
-   
+4. フィードバック メッセージをコンソールに出力するための次の関数を追加します。
+
     ```python
     def open_complete_callback(context):
         print ( 'open_complete_callback called with context: {0}'.format(context) )
@@ -203,8 +208,8 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
         print ( 'messagingResult : {0}'.format(messaging_result) )
     ```
 
-1. デバイスにメッセージを送信し、クラウドからデバイスへのメッセージが配信されたことの確認応答がデバイスからあったときにフィードバック メッセージを処理するための次のコードを追加します。
-   
+5. デバイスにメッセージを送信し、クラウドからデバイスへのメッセージが配信されたことの確認応答がデバイスからあったときにフィードバック メッセージを処理するための次のコードを追加します。
+
     ```python
     def iothub_messaging_sample_run():
         try:
@@ -244,8 +249,8 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
             print ( "IoTHubMessaging sample stopped" )
     ```
 
-1. 次の main 関数を追加します。
-   
+6. 次の main 関数を追加します。
+
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Service Client Messaging Python sample..." )
@@ -255,10 +260,10 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
         iothub_messaging_sample_run()
     ```
 
-1. **SendCloudToDeviceMessage.py** ファイルを保存して閉じます。
-
+7. **SendCloudToDeviceMessage.py** ファイルを保存して閉じます。
 
 ## <a name="run-the-applications"></a>アプリケーションの実行
+
 これで、アプリケーションを実行する準備が整いました。
 
 1. コマンド プロンプトを開き、**Azure IoT Hub Device SDK for Python** をインストールします。
@@ -267,44 +272,36 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
     pip install azure-iothub-device-client
     ```
 
-1. コマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを待機します。
-   
-    ```shell
-    python SimulatedDevice.py 
-    ```
-   
-    ![シミュレーション済みデバイス アプリを実行する][img-simulated-device]
+2. コマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを待機します。
 
-1. 新しいコマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。
+    ```shell
+    python SimulatedDevice.py
+    ```
+
+    ![シミュレーション済みデバイス アプリを実行する](./media/iot-hub-python-python-c2d/simulated-device.png)
+
+3. 新しいコマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。
 
     ```
     pip install azure-iothub-service-client
     ```
 
-1. コマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを送信して、メッセージのフィードバックを待機します。
-   
+4. コマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを送信して、メッセージのフィードバックを待機します。
+
     ```shell
-    python SendCloudToDeviceMessage.py 
+    python SendCloudToDeviceMessage.py
     ```
-   
-    ![クラウドからデバイスへのコマンドを送信するアプリを実行する][img-send-command]
-   
-1. デバイスで受信したメッセージを確認します。
 
-    ![受信したメッセージ][img-message-received]
+    ![クラウドからデバイスへのコマンドを送信するアプリを実行する](./media/iot-hub-python-python-c2d/send-command.png)
 
+5. デバイスで受信したメッセージを確認します。
+
+    ![受信したメッセージ](./media/iot-hub-python-python-c2d/message-received.png)
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
+
+このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
 
 IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。
-
-<!-- Images -->
-[img-simulated-device]: media/iot-hub-python-python-c2d/simulated-device.png
-[img-send-command]:  media/iot-hub-python-python-c2d/send-command.png
-[img-message-received]: media/iot-hub-python-python-c2d/message-received.png
-
-<!-- Links -->
-[IoT Hub の概要]: quickstart-send-telemetry-python.md

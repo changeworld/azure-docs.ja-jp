@@ -1,26 +1,26 @@
 ---
-title: Azure portal 上で AI によるインデックス作成用のコグニティブ検索パイプラインを作成する - Azure Search
-description: サンプル データを使用した Azure Portal でのデータの抽出、自然言語、および画像処理のスキルの例。
+title: クイック スタート:Azure portal で AI を活用したインデックスを構築する - Azure Search
+description: Azure portal とサンプル データを使用した、Azure Search インデックス作成ポータルでのデータ抽出、自然言語および画像の処理スキル。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 03/17/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200627"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265017"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート:スキルとサンプル データを使用してコグニティブ検索パイプラインを作成する
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>クイック スタート:コグニティブ スキルとサンプル データを使用して AI インデックス作成パイプラインを作成する
 
-コグニティブ検索 (プレビュー) は、データの抽出、自然言語処理 (NLP)、画像処理のスキルを Azure Search インデックス作成パイプラインに追加して、検索できないコンテンツや非構造化コンテンツを検索可能にします。 
+Azure Search は [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) と統合され、コンテンツの抽出、自然言語処理 (NLP)、および画像処理のスキルを Azure Search インデックス作成パイプラインに追加して、検索できないコンテンツや非構造化コンテンツを検索可能にします。 
 
-コグニティブ検索パイプラインは、[OCR](cognitive-search-skill-ocr.md)、[言語検出](cognitive-search-skill-language-detection.md)、[エンティティ認識](cognitive-search-skill-entity-recognition.md)などの [Cognitive Services リソース](https://azure.microsoft.com/services/cognitive-services/)をインデックス作成プロセスに統合します。 Cognitive Services の AI アルゴリズムは、ソース データ内のパターン、機能、特性の検索に使用され、Azure Search に基づくフルテキスト検索ソリューション内で使用できる構造とテキスト コンテンツを返します。
+[OCR](cognitive-search-skill-ocr.md)、[言語検出](cognitive-search-skill-language-detection.md)、[エンティティ認識](cognitive-search-skill-entity-recognition.md)など、多くの Cognitive Services リソースをインデックス作成プロセスにアタッチすることができます。 Cognitive Services の AI アルゴリズムは、ソース データ内のパターン、機能、特性の検索に使用され、Azure Search に基づくフルテキスト検索ソリューション内で使用できる構造とテキスト コンテンツを返します。
 
 このクイック スタートでは、1 行のコードを記述する前に、[Azure portal](https://portal.azure.com) 上で最初のエンリッチメント パイプラインを作成します。
 
@@ -30,63 +30,28 @@ ms.locfileid: "58200627"
 > * ウィザードを実行する (エンティティ スキルで人、場所、および組織を検出する)
 > * [**検索エクスプローラー**](search-explorer.md)を使って、エンリッチされたデータのクエリを実行する
 
-## <a name="supported-regions"></a> サポートされているリージョン
+このクイック スタートは無料のサービスで実行されますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されます。 このクイック スタートを同じ日に複数回実行する場合は、より小さなファイル セットを使用して、より多くの実行が制限内に収まるようにします。
 
-Cognitive Services の AI によって強化されたインデックス作成は、すべての Azure Search リージョンで利用できます。
+> [!NOTE]
+> 処理の頻度を増やしたり、ドキュメントを追加したり、AI アルゴリズムを追加したりすることによってスコープを拡大する場合は、請求対象の Cognitive Services リソースをアタッチする必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+>
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されているように、プレビュー価格で課金されます。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-> [!NOTE]
-> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
->
-> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金されますが、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
-
 ## <a name="prerequisites"></a>前提条件
 
-[「コグニティブ検索とは」](cognitive-search-concept-intro.md) では、エンリッチメントのアーキテクチャとコンポーネントについて説明しています。 
+[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
-Azure サービスはこのシナリオでのみ使用されます。 必要なサービスの作成は、準備の一環です。
+[Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) では、AI が提供されます。 このクイック スタートには、パイプラインを指定するときにこれらのリソースをインラインで追加するための手順が含まれています。 アカウントを事前に設定する必要はありません。
 
-+ [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) ではソース データが提供されます
-+ [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) では AI が提供されます (これらのリソースはパイプラインを指定する際にインラインで作成できます)
-+ [Azure Search](https://azure.microsoft.com/services/search/) では、カスタム アプリ内で使用するためのエンリッチされたインデックス作成パイプラインと充実した自由形式のテキスト検索エクスペリエンスが提供されます
-
-### <a name="set-up-azure-search"></a>Azure Search を設定する
-
-最初に、Azure Search サービスにサインアップします。 
-
-1. Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインします。
-
-1. **[リソースの作成]** をクリックし、Azure Search を検索して、**[作成]** をクリックします。 Search サービスを設定するのが初めてのために、さらにサポートが必要な場合は、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」をご覧ください。
-
-   ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Portal での Azure Search サービスの作成")
-
-1. [リソース グループ] では、このクイック スタートで作成するすべてのリソースを含める新しいリソース グループを作成します。 これにより、クイックスタートが完了した後で、リソースをクリーンアップしやすくなります。
-
-1. [場所] には、コグニティブ検索が[サポートされているリージョン](#supported-regions)を 1 つ選択します。
-
-1. [価格レベル] では、チュートリアルとクイックスタートを完了するために、**Free** のサービスを作成することができます。 独自のデータを使用して詳しく調査する場合は、**Basic** や **Standard** などの[有料のサービス](https://azure.microsoft.com/pricing/details/search/)を作成します。 
-
-   Free サービスは、3 つのインデックス、16 MB の最大 BLOB サイズ、および 2 分のインデックス作成に制限されていて、コグニティブ検索の全機能をテストするには不十分です。 さまざまなレベルの制限を確認するには、「[サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
-
-   ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service2.png "Portal のサービス定義のページ")
-
-   > [!NOTE]
-   > コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行は、現時点では無料を含むすべてのレベルで使用可能です。 有料の Cognitive Services リソースを関連付けることなく、限られた数のエンリッチメントを実行することができます。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
-
-1. サービス情報にすばやくアクセスするために、サービスをダッシュボードにピン留めします。
-
-   ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service3.png "Portal のサービス定義のページ")
+インデックス作成パイプラインへの入力を提供するために、Azure サービスが必要です。 AI インデックス作成でサポートされていない Azure Table Storage を除き、[Azure Search インデクサー](search-indexer-overview.md)でサポートされている任意のデータ ソースを使用できます。 このクイック スタートでは、ソース データ ファイルのコンテナーとして、[Azure BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)を使用します。 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure BLOB サービスを設定し、サンプル データを読み込む
 
-エンリッチメント パイプラインは、[Azure Search インデクサー](search-indexer-overview.md)でサポートされる Azure データ ソースから取得されます。 コグニティブ検索では Azure Table Storage はサポートされていないことに注意してください。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
-
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 
 
-1. Azure Blob Storage にサインアップしてストレージ アカウントを作成します。BLOB サービス ページを開き、コンテナーを作成します。 
-
-1. コンテナーのパブリック アクセス レベルを **[コンテナー (コンテナーと BLOB の匿名読み取りアクセス)]** に設定します。 詳しくは、"*非構造化データの検索*" のチュートリアルの「[コンテナーを作成する](../storage/blobs/storage-unstructured-search.md#create-a-container)」セクションをご覧ください。
+1. [Azure Blob Storage にサインアップ](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)してストレージ アカウントを作成します。BLOB サービス ページを開き、コンテナーを作成します。  ストレージ アカウントは、Azure Search と同じリージョンに作成します。
 
 1. 作成したコンテナーで、**[アップロード]** をクリックし、前の手順でダウンロードしたサンプル ファイルをアップロードします。
 

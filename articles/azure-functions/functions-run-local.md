@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 6c38591aa283491369562db8ea840ef7e5b17e6d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402628"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470842"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -188,7 +188,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 | **`Host`** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
 | **`LocalHttpPort`** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
 | **`CORS`** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
-| **`ConnectionStrings`** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの `ConnectionStrings` セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 ご自分の関数アプリの設定の `Connection strings` コレクションに、これらの値を明示的に追加する必要があります。 ご自分の関数のコードで [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、ポータル内で接続文字列の値を他の接続と共に**アプリケーションの設定**に格納する必要があります。 |
+| **`ConnectionStrings`** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの `ConnectionStrings` セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 ご自分の関数アプリの設定の `Connection strings` コレクションに、これらの値を明示的に追加する必要があります。 関数のコードで [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、他の接続と共に、接続文字列の値をポータル内の**アプリケーションの設定**に格納する必要があります。 |
 
 関数アプリの設定値は、コードの中で環境変数として読み込むこともできます。 詳細については、以下の言語固有のリファレンス トピックの「環境変数」のセクションを参照してください。
 
@@ -461,11 +461,21 @@ func deploy
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 現在のユーザーがサインインしている Docker レジストリの名前。 |
-| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは `kubernetes` です。 |
+| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは次のとおりです。 `kubernetes` |
 | **`--name`** | 関数アプリの名前。 |
 | **`--max`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最大数を設定します。 |
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
+
+## <a name="monitoring-functions"></a>関数の監視
+
+関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+
+関数アプリ用に Application Insights を有効にするには:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

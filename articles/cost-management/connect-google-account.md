@@ -5,24 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: d8bdf2a422516038f8f5e1216ce27489387d7926
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f63293900e116fd3175b0ea6d704993a2dcf591
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002607"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051395"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform アカウントの接続
 
 Cloudyn には既存の Google Cloud Platform アカウントを接続できます。 お客様のアカウントを Cloudyn に接続すると、Cloudyn レポートにコストや使用状況のデータを表示できるようになります。 この記事は、Google アカウントを構成して Cloudyn に接続する際に役立ちます。
 
-> [!NOTE]
-> Google ではそのアカウントのセキュリティを変更しています。これにより、Cloudyn と Google 間で新しい接続を確立することができなくなっています。 Cloudyn は、既に Cloudyn が Google に接続されているユーザーの Google データを収集し続けます。 ただし、現時点では Cloudyn に新しい Google アカウントを追加することはできません。 Cloudyn チームでは、Cloudyn に新しい Google アカウントを追加するためのサポートが再開される時期を把握していません。 サポートが再開されたら、このメモは削除します。
 
 ## <a name="collect-project-information"></a>プロジェクト情報を収集する
 

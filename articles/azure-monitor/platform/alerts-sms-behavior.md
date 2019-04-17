@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 225c86ee1a7f764f60b2da0b8e3be02aa5dd22e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123302"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523615"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 ## <a name="overview"></a>概要 ##
@@ -32,8 +32,8 @@ ms.locfileid: "58123302"
 
 | 応答 | 説明 |
 | ----- | ----------- |
-| DISABLE <Action Group Short name> | そのアクション グループからのそれ以上の SMS を無効にします |
-| ENABLE <Action Group Short name> | そのアクション グループからの SMS を再度有効にします |
+| DISABLE `<Action Group Short name>` | そのアクション グループからのそれ以上の SMS を無効にします |
+| ENABLE `<Action Group Short name>` | そのアクション グループからの SMS を再度有効にします |
 | STOP | すべてのアクション グループからのそれ以上の SMS を無効にします |
 | START | すべてのアクション グループからの SMS を再度有効にします |
 | HELP | この記事へのリンクが記載された応答がユーザーに送信されます。 |

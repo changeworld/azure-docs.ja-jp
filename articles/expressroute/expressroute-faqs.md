@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e078f838620f633743b27d26ba1218e753ff690e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259824"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282867"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -144,7 +144,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>同じ都市圏に複数の ExpressRoute 回線を配置することはできますか。 同じ仮想ネットワークにリンクすることはできますか。
 
-はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回線が同じピアリング場所で作成されている場合は、同じ仮想ネットワークにそれらをリンクすることはできません。 Azure portal または PowerShell/CLI API における各場所の名前は、1 つのピアリング場所を表します。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
+はい。 複数の ExpressRoute 回線を配置できます。サービス プロバイダーは同じでも違っていてもかまいません。 都市圏に複数の ExpressRoute ピアリング場所があり、異なる場所で回線が作成されている場合は、同じ仮想ネットワークにそれらをリンクすることができます。 回路が同じピアリング場所に作成されている場合でも、それらを同じ仮想ネットワークにリンクすることができます。ただし各ピアリング場所で最大 4 つの ExpressRoute 回線までです。 たとえば、ピアリング場所として "Singapore" と "Singapore2" を選び、それぞれの場所から同じ仮想ネットワークに回線を接続できます。 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>ExpressRoute 回線に仮想ネットワークを接続するにはどうすればいいですか。
 
@@ -244,7 +244,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
 * ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
 * Office 365 や Dynamics 365 への接続。
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
-    **例:**
+    **次に例を示します。**
 
     *  西ヨーロッパで作成された VNET をシリコン バレーで作成された ExpressRoute 回線に接続できます。 
     *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。

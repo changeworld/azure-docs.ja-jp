@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee64909c7f3b295691ef1cb1840424aa7e3fe49
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895891"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549714"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -36,7 +36,7 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 |:--- |:--- |
 | Interval |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
-| Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
+| バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって true に評価されるとアラートがトリガーされます。
 
@@ -94,9 +94,9 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
-| Name |アラートの表示名。 |
-| Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
+| `Type` |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
+| `Name` |アラートの表示名。 |
+| `Version` |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
 ### <a name="retrieving-actions"></a>アクションの取得
 
@@ -154,8 +154,8 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Operator |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
-| Value |しきい値の値。 |
+| `Operator` |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
+| `Value` |しきい値の値。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定し、しきい値を 10 より大きく設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、30 分間にわたって作成された 10 個のイベントが返されたときに、アラートがトリガーされます。
 
@@ -187,9 +187,9 @@ Log Analytics を使用するとアラートをカテゴリに分類し、簡単
 
 |Log Analytics の重大度レベル  |Azure Alerts の重大度レベル  |
 |---------|---------|
-|critical |重大度 0|
-|warning |重大度 1|
-|informational | 重大度 2|
+|`critical` |重大度 0|
+|`warning` |重大度 1|
+|`informational` | 重大度 2|
 
 しきい値と重大度のみを含むアクションに対する応答の例を次に示します。 
 
@@ -284,7 +284,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 既定のアクションで、通知の標準のテンプレートとフォーマットに従います。 ただし、アクション グループによって制御されている場合でも、ユーザーは一部のアクションをカスタマイズできます。 現時点では、電子メールの件名と Webhook のペイロードをカスタマイズできます。
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>アクション グループの電子メールの件名をカスタマイズする
-既定では、アラートの電子メールの件名は、<WorkspaceName> に関するアラートの通知 <AlertName> です。 ただしこれはカスタマイズできるため、言葉やタグを指定できます。これにより、受信トレイにフィルター規則を簡単に適用できます。 電子メールの件名の詳細のカスタマイズは、以下のサンプルに示すように、ActionGroup の詳細とともに送信する必要があります。
+既定では、アラートの電子メールの件名は、`<WorkspaceName>` に関するアラートの通知 `<AlertName>` です。 ただしこれはカスタマイズできるため、言葉やタグを指定できます。これにより、受信トレイにフィルター規則を簡単に適用できます。 電子メールの件名の詳細のカスタマイズは、以下のサンプルに示すように、ActionGroup の詳細とともに送信する必要があります。
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -360,7 +360,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 | プロパティ | 説明 |
 |:--- |:--- |
 | Recipients |メール アドレスの一覧。 |
-| Subject |メールの件名。 |
+| サブジェクト |メールの件名。 |
 | Attachment |添付ファイルは現在サポートされていないため、値は常に "None" になります。 |
 
 しきい値を含む電子メール通知に対する応答の例を次に示します。  

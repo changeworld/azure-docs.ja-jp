@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: yluiu
-ms.openlocfilehash: 02e4e73bbbc7f843a3483bab4791484b89f97dd7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862031"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544552"
 ---
 # <a name="face-api-release-notes"></a>Face API リリース ノート
 
@@ -27,7 +27,7 @@ ms.locfileid: "58862031"
 
 ### <a name="release-changes-in-january-2019"></a>2019 年 1 月のリリースでの変更
 
-* サブスクリプション間のデータ移行をサポートするためのスナップショット機能が追加されました。[スナップショット](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot)。 詳細については、[顔データを別の Face サブスクリプションに移行する方法](Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
+* サブスクリプション間のデータ移行をサポートするためのスナップショット機能が追加されました。[スナップショット](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 詳細については、[顔データを別の Face サブスクリプションに移行する方法](Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
 
 ### <a name="release-changes-in-october-2018"></a>2018 年 10 月のリリースでの変更
 

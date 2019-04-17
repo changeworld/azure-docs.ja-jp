@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 59dc9f82251e7a406e6fe1339fdb55b4880cd74d
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 34fe5d85829d909989513214406ba96ea5be0aa8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649188"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271103"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル:Azure Active Directory と Pega Systems の統合
 
@@ -105,9 +105,9 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     ![[Pega Systems のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
 
-    b. **[応答 URL]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -115,7 +115,7 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     a. **[サインオン URL]** ボックスに、サインオン URL の値を入力します。
 
-    b. **[リレー状態]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io/prweb/sso` のパターンで URL を入力します。
+    b. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態 URL でこれらの値を更新します。 このチュートリアルの後半で説明する Pega アプリケーションで、識別子と応答 URL の値を見つけることができます。 リレー状態については、[Pega Systems のクライアント サポート チーム](https://www.pega.com/contact-us)に連絡して値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -126,7 +126,7 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
 7. その他に、Pega Systems アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     | ------------------- | -------------------- |
     | uid | *********** |
     | cn  | *********** |
@@ -277,6 +277,6 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

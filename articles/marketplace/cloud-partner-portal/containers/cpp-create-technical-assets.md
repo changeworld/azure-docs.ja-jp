@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 56de300a95d750957494865f9871127b2a9c8283
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 5a7531be73a872d9c088a0bf02a8686f947c220a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980261"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047366"
 ---
 # <a name="prepare-your-container-technical-assets"></a>コンテナーの技術資産を準備する
 
@@ -50,9 +50,9 @@ ms.locfileid: "50980261"
 
 また､開発環境には次にツールを加えることを推奨します｡
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   拡張機能: [Azure リソース マネージャー ツール[
     *   拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     *   拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 

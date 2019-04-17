@@ -1,6 +1,6 @@
 ---
-title: Get started with Azure IoT Hub device management (Node) | Microsoft Docs
-description: How to use IoT Hub device management to initiate a remote device reboot. You use the Azure IoT SDK for Node.js to implement a simulated device app that includes a direct method and a service app that invokes the direct method.
+title: Azure IoT Hub デバイス管理の開始 (Node) | Microsoft Docs
+description: IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Node.js を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,63 +8,72 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.openlocfilehash: b1a224c4170349f0797d2d57acbf45e8b7649bd8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 15166d3943bc72a2eeff3580cefdd264ecaba61d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531574"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258087"
 ---
-# <a name="get-started-with-device-management-node"></a>Get started with device management (Node)
+# <a name="get-started-with-device-management-node"></a>デバイス管理の開始 (Node)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-This tutorial shows you how to:
+このチュートリアルでは、次の操作方法について説明します。
 
-* Use the Azure portal to create an IoT Hub and create a device identity in your IoT hub.
-* Create a simulated device app that contains a direct method that reboots that device. Direct methods are invoked from the cloud.
-* Create a Node.js console app that calls the reboot direct method in the simulated device app through your IoT hub.
+* [Azure portal](https://portal.azure.com) を使用して IoT Hub を作成し、IoT Hub 内にデバイス ID を作成します。
 
-At the end of this tutorial, you have two Node.js console apps:
+* デバイスを再起動するダイレクト メソッドを含む、シミュレション済みデバイス アプリを作成します。 ダイレクト メソッドは、クラウドから呼び出されます。
 
-**dmpatterns_getstarted_device.js**, which connects to your IoT hub with the device identity created earlier, receives a reboot direct method, simulates a physical reboot, and reports the time for the last reboot.
+* シミュレートされたデバイス アプリで再起動ダイレクト メソッドを IoT ハブ経由で呼び出す Node.js コンソール アプリを作成します。
 
-**dmpatterns_getstarted_service.js**, which calls a direct method in the simulated device app, displays the response, and displays the updated reported properties.
+このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
-To complete this tutorial, you need the following:
+* **dmpatterns_getstarted_device.js**: IoT Hub を、作成済みのデバイス ID に接続し、再起動ダイレクト メソッドを受信し、物理的な再起動をシミュレートし、最後の再起動時間を報告します。
 
-* Node.js version 4.0.x or later, <br/>  [Prepare your development environment][lnk-dev-setup] describes how to install Node.js for this tutorial on either Windows or Linux.
-* An active Azure account. (If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.)
+* **dmpatterns_getstarted_service.js**: シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、応答を表示し、更新された報告されるプロパティを表示します。
 
-## <a name="create-an-iot-hub"></a>Create an IoT hub
+このチュートリアルを完了するには、以下が必要です。
+
+* Node.js バージョン 4.0.x 以降。 「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
+
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+
+## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Retrieve connection string for IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT ハブに対する接続文字列を取得する
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-a-simulated-device-app"></a>Create a simulated device app
-In this section, you will
+## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
 
-* Create a Node.js console app that responds to a direct method called by the cloud
-* Trigger a simulated device reboot
-* Use the reported properties to enable device twin queries to identify devices and when they last rebooted
+このセクションでは、次の手順を実行します。
 
-1. Create an empty folder called **manageddevice**.  In the **manageddevice** folder, create a package.json file using the following command at your command prompt.  Accept all the defaults:
-   
+* クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。
+
+* シミュレート対象デバイスの再起動をトリガーします。
+
+* 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスとデバイスの最後の再起動時間を識別できるようにします。
+
+1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
+      
     ```
     npm init
     ```
-2. At your command prompt in the **manageddevice** folder, run the following command to install the **azure-iot-device** Device SDK package and **azure-iot-device-mqtt** package:
+
+2. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Using a text editor, create a **dmpatterns_getstarted_device.js** file in the **manageddevice** folder.
-4. Add the following 'require' statements at the start of the **dmpatterns_getstarted_device.js** file:
+
+3. テキスト エディターを使用して、**manageddevice** フォルダーに **dmpatterns_getstarted_device.js** ファイルを作成します。
+
+4. **dmpatterns_getstarted_device.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
    
     ```
     'use strict';
@@ -72,13 +81,15 @@ In this section, you will
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Add a **connectionString** variable and use it to create a **Client** instance.  Replace the connection string with your device connection string.  
+
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  接続文字列を、デバイスの接続文字列に置き換えます。  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. Add the following function to implement the direct method on the device
+
+6. デバイスにダイレクト メソッドを実装する次の関数を追加します。
    
     ```
     var onReboot = function(request, response) {
@@ -119,7 +130,9 @@ In this section, you will
         console.log('Rebooting!');
     };
     ```
-7. Open the connection to your IoT hub and start the direct method listener:
+
+7. IoT Hub への接続を開き、ダイレクト メソッド リスナーを開始します。
+
    
     ```
     client.open(function(err) {
@@ -131,34 +144,42 @@ In this section, you will
         }
     });
     ```
-8. Save and close the **dmpatterns_getstarted_device.js** file.
+
+8. **dmpatterns_getstarted_device.js** ファイルを保存して閉じます。
 
 > [!NOTE]
-> To keep things simple, this tutorial does not implement any retry policy. In production code, you should implement retry policies (such as an exponential backoff), as suggested in the article, [Transient Fault Handling](/azure/architecture/best-practices/transient-faults).
+> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Trigger a remote reboot on the device using a direct method
-In this section, you create a Node.js console app that initiates a remote reboot on a device using a direct method. The app uses device twin queries to discover the last reboot time for that device.
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>ダイレクト メソッドを使用してデバイスのリモート再起動をトリガーする
 
-1. Create an empty folder called **triggerrebootondevice**.  In the **triggerrebootondevice** folder, create a package.json file using the following command at your command prompt.  Accept all the defaults:
+このセクションでは、ダイレクト メソッドを使用してデバイスでのリモート再起動を開始する Node.js コンソール アプリケーションを作成します。 このアプリは、デバイス ツイン クエリを使用して、そのデバイスの前回の再起動時刻を検出します。
+
+1. **triggerrebootondevice** という名前の空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを使用して、**triggerrebootondevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
    
     ```
     npm init
     ```
-2. At your command prompt in the **triggerrebootondevice** folder, run the following command to install the **azure-iothub** Device SDK package and **azure-iot-device-mqtt** package:
+
+2. コマンド プロンプトで、**triggerrebootondevice** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
    
     ```
     npm install azure-iothub --save
     ```
-3. Using a text editor, create a **dmpatterns_getstarted_service.js** file in the **triggerrebootondevice** folder.
-4. Add the following 'require' statements at the start of the **dmpatterns_getstarted_service.js** file:
-   
+
+3. テキスト エディターを使用して、**triggerrebootondevice** フォルダー内に **dmpatterns_getstarted_service.js** ファイルを作成します。
+
+4. **dmpatterns_getstarted_service.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
+
+  
     ```
     'use strict';
    
     var Registry = require('azure-iothub').Registry;
     var Client = require('azure-iothub').Client;
     ```
-5. Add the following variable declarations and replace the placeholder values:
+
+5. 次の変数宣言を追加して、プレース ホルダーの値を置き換えます。
+
    
     ```
     var connectionString = '{iothubconnectionstring}';
@@ -166,7 +187,8 @@ In this section, you create a Node.js console app that initiates a remote reboot
     var client = Client.fromConnectionString(connectionString);
     var deviceToReboot = 'myDeviceId';
     ```
-6. Add the following function to invoke the device method to reboot the target device:
+
+6. ターゲット デバイスを再起動するダイレクトメソッドを呼び出す次の関数を追加します。
    
     ```
     var startRebootDevice = function(twin) {
@@ -180,7 +202,7 @@ In this section, you create a Node.js console app that initiates a remote reboot
         };
    
         client.invokeDeviceMethod(deviceToReboot, methodParams, function(err, result) {
-            if (err) { 
+            if (err) {
                 console.error("Direct method error: "+err.message);
             } else {
                 console.log("Successfully invoked the device to reboot.");  
@@ -188,7 +210,8 @@ In this section, you create a Node.js console app that initiates a remote reboot
         });
     };
     ```
-7. Add the following function to query for the device and get the last reboot time:
+
+7. デバイスを照会して最後の再起動時間を取得する次の関数を追加します。
    
     ```
     var queryTwinLastReboot = function() {
@@ -208,41 +231,35 @@ In this section, you create a Node.js console app that initiates a remote reboot
         });
     };
     ```
-8. Add the following code to call the functions that trigger the reboot direct method and query for the last reboot time:
+
+8. 再起動ダイレクト メソッドをトリガーする関数と最後の再起動時間のクエリを実行する関数を呼び出す次のコードを追加します。
+
    
     ```
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
-9. Save and close the **dmpatterns_getstarted_service.js** file.
 
-## <a name="run-the-apps"></a>Run the apps
-You are now ready to run the apps.
+9. **dmpatterns_getstarted_service.js** ファイルを保存して閉じます。
 
-1. At the command prompt in the **manageddevice** folder, run the following command to begin listening for the reboot direct method.
+## <a name="run-the-apps"></a>アプリの実行
+
+これで、アプリを実行する準備が整いました。
+
+1. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して再起動のダイレクト メソッドのリッスンを開始します。
+
    
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. At the command prompt in the **triggerrebootondevice** folder, run the following command to trigger the remote reboot and query for the device twin to find the last reboot time.
+
+2. コマンド プロンプトで、**triggerrebootondevice** フォルダーに移動し、次のコマンドを実行してデバイス ツインのリモート再起動とクエリをトリガーして最後の再起動時刻を検索します。
+
    
     ```
     node dmpatterns_getstarted_service.js
     ```
-3. You see the device response to the direct method in the console.
+
+3. ダイレクト メソッドに対するデバイスの応答がコンソールに表示されます。
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[img-output]: media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

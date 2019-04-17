@@ -1,19 +1,18 @@
 ---
 title: チュートリアル:コードを 1 行も書かずに Azure Data Explorer で診断とアクティビティのログ データを取り込む
 description: このチュートリアルでは、コードを 1 行も書かずに Azure Data Explorer にデータを取り込み、そのデータのクエリを実行する方法について説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 3/14/2019
-ms.openlocfilehash: 5d6b595b442b645f57454e317e6535645f643598
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 04/07/2019
+ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756835"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262909"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>チュートリアル:コードを 1 行も書かずに Azure Data Explorer にデータを取り込む
 
@@ -210,12 +209,12 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
 #### <a name="activity-log-data-update-policy"></a>アクティビティ ログ データによるポリシーの更新
 
-1. コレクション内の各値が個別の行を受け取るようにアクティビティ ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
+1. コレクション内の各値が個別の行を受け取るようにアクティビティ ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
         ActivityLogsRawRecords
-        | mvexpand events = Records
+        | mv-expand events = Records
         | project
             Timestamp = todatetime(events["time"]),
             ResourceId = tostring(events["resourceId"]),
@@ -239,11 +238,11 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
 #### <a name="diagnostic-log-data-update-policy"></a>診断ログ データによるポリシーの更新
 
-1. コレクション内の各値が個別の行を受け取るように診断ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
+1. コレクション内の各値が個別の行を受け取るように診断ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mv-expand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
      ```kusto
     .create function DiagnosticLogRecordsExpand() {
         DiagnosticLogsRawRecords
-        | mvexpand events = Records
+        | mv-expand events = Records
         | project
             Timestamp = todatetime(events["time"]),
             ResourceId = tostring(events["resourceId"]),
@@ -269,7 +268,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
 1. Azure portal で Azure Resource Manager テンプレートを使用して、イベント ハブを作成します。 この記事の残りの手順を実行するには、**[Azure へのデプロイ]** ボタンを右クリックして、**[新しいウィンドウで開く]** を選択します。 **[Azure へのデプロイ]** ボタンをクリックすると、Azure portal に移動します。
 
-    [![[Azure へのデプロイ] ボタン](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![D[Azure へのデプロイ] ボタン](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Event Hubs 名前空間と、診断ログ用のイベント ハブを作成します。
 
@@ -277,11 +276,11 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
 1. フォームに次の情報を入力します。 次の表に記載されていない設定については、既定値を使用してください。
 
-    **設定** | **推奨値** | **説明**
+    **Setting** | **推奨値** | **説明**
     |---|---|---|
     | **サブスクリプション** | *該当するサブスクリプション* | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | **リソース グループ** | *test-resource-group* | 新しいリソース グループを作成します。 |
-    | **場所** | ニーズに最も適したリージョンを選択します。 | 他のリソースと同じ場所に、Event Hubs 名前空間を作成します。
+    | **Location** | ニーズに最も適したリージョンを選択します。 | 他のリソースと同じ場所に、Event Hubs 名前空間を作成します。
     | **名前空間名** | *AzureMonitoringData* | 名前空間を識別する一意の名前を選択します。
     | **イベント ハブ名** | *DiagnosticLogsData* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 |
     | **コンシューマー グループ名** | *adxpipeline* | コンシューマー グループ名を作成します。 コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |
@@ -365,7 +364,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
     データ ソース:
 
-    **設定** | **推奨値** | **フィールドの説明**
+    **Setting** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | **データ接続名** | *DiagnosticsLogsConnection* | Azure データ エクスプローラーで作成する接続の名前。|
     | **イベント ハブの名前空間** | *AzureMonitoringData* | 以前に選択した、名前空間を識別する名前。 |
@@ -377,14 +376,14 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
     ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このチュートリアルでは、静的ルーティング (既定) を使用し、テーブル名、データ形式、およびマッピングを指定します。 **[My data includes routing info]\(データにルーティング情報が含まれている\)** をオフのままにしておきます。
 
-     **設定** | **推奨値** | **フィールドの説明**
+     **Setting** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | **テーブル** | *DiagnosticLogsRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
     | **データ形式** | *JSON* | テーブルで使用される形式。 |
     | **列マッピング** | *DiagnosticLogsRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *DiagnosticLogsRecords* の列名とデータ型にマッピングされます。|
     | | |
 
-1. **作成**を選択します。  
+1. **作成** を選択します。  
 
 ### <a name="create-the-data-connection-for-activity-logs"></a>アクティビティ ログのデータ接続を作成する
 
@@ -394,26 +393,26 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
     データ ソース:
 
-    **設定** | **推奨値** | **フィールドの説明**
+    **Setting** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | **データ接続名** | *ActivityLogsConnection* | Azure データ エクスプローラーで作成する接続の名前。|
     | **イベント ハブの名前空間** | *AzureMonitoringData* | 以前に選択した、名前空間を識別する名前。 |
     | **イベント ハブ** | *insights-operational-logs* | 作成したイベント ハブ。 |
-    | **コンシューマー グループ** | *$Default* | 既定のコンシューマー グループ。 必要な場合は、異なるコンシューマー グループを作成できます。 |
+    | **コンシューマー グループ** | *$既定* | 既定のコンシューマー グループ。 必要な場合は、異なるコンシューマー グループを作成できます。 |
     | | |
 
     ターゲット テーブル: 
 
     ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このチュートリアルでは、静的ルーティング (既定) を使用し、テーブル名、データ形式、およびマッピングを指定します。 **[My data includes routing info]\(データにルーティング情報が含まれている\)** をオフのままにしておきます。
 
-     **設定** | **推奨値** | **フィールドの説明**
+     **Setting** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | **テーブル** | *ActivityLogsRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
     | **データ形式** | *JSON* | テーブルで使用される形式。 |
     | **列マッピング** | *ActivityLogsRawRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *ActivityLogsRawRecords* の列名とデータ型にマッピングされます。|
     | | |
 
-1. **作成**を選択します。  
+1. **作成** を選択します。  
 
 ## <a name="query-the-new-tables"></a>新しいテーブルのクエリを実行する
 
@@ -461,4 +460,4 @@ ActivityLogsRecords
 次の記事を使用して、Azure Data Explorer から抽出したデータに対するさらに多くのクエリを記述する方法を学習します。
 
 > [!div class="nextstepaction"]
-> [Azure Data Explorer のクエリを記述する](write-queries.md)
+> [Azure データ エクスプローラーのクエリを記述する](write-queries.md)

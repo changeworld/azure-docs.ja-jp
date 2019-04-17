@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7d1e3511bf74650ddc9dca1cf77c2b7c297c96
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861504"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>チュートリアル:Azure Active Directory と Appraisd の統合
 
@@ -107,9 +107,9 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
     a. **[追加の URL を設定します]** をクリックします。
 
-    b. **[リレー状態]** テキスト ボックスに、URL `<TENANTCODE>` を入力します
+    b. **[リレー状態]** ボックスに、次の URL を入力します:  `<TENANTCODE>`
 
-    c. **[SP]** 開始モードでアプリケーションを構成する場合は、**[サインオン URL]** テキストボックスに `https://app.appraisd.com/saml/<TENANTCODE>` のパターンで URL を入力します。
+    c. **[SP]** 開始モードでアプリケーションを構成する場合は、**[サインオン URL]** ボックスに次のパターンで URL を入力します:  `https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
     > このチュートリアルで後述する Appraisd SSO の [Configuration]\(構成\) ページで、実際の [Sign-on URL]\(サインオン URL\) と [Relay State]\(リレー状態\) の値を取得します。
@@ -161,7 +161,7 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
 1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Appraisd にサインインします。
 
-2. ページの右上にある **[Settings]\(設定\)** アイコンをクリックし、 **[Configuration]\(構成\)** に移動します。
+2. ページの右上にある **[Settings]\(設定\)** アイコンをクリックし、**[Configuration]\(構成\)** に移動します。
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
@@ -173,9 +173,9 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. **[Default Relay State]\(既定のリレー状態\)** 値をコピーし、Azure portal の  **[基本的な SAML 構成]** の  **[リレー状態]** ボックスに貼り付けます。
+    a. **[Default Relay State]\(既定のリレー状態\)** 値をコピーし、Azure portal の **[基本的な SAML 構成]** の **[リレー状態]** ボックスに貼り付けます。
 
-    b. **[Service-initiated login URL]\(サービス開始ログイン URL\)** の値をコピーし、Azure portal の  **[基本的な SAML 構成]** の  **[サインオン URL]** ボックスに貼り付けます。
+    b. **[Service-initiated login URL]\(サービス開始ログイン URL\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** の **[サインオン URL]** ボックスに貼り付けます。
 
 5. 同じページの **[Identifying users]\(ユーザーの識別\)** まで下にスクロールし、次の手順を実行します。
 
@@ -185,7 +185,7 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
     b. **[Identity Provider Issuer URL]\(ID プロバイダーの発行者 URL\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付け、**[Save]\(保存\)** をクリックします。
 
-    c. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして  **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付け、**[Save]\(保存\)** をクリックします。
+    c. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付け、**[Save]\(保存\)** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -205,7 +205,7 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -242,15 +242,15 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
 Azure AD ユーザーが Appraisd にサインインできるようにするには、ユーザーを Appraisd にプロビジョニングする必要があります。 Appraisd では、プロビジョニングは手動のタスクです。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. セキュリティ管理者として Appraisd にサインインします。
 
-2. ページの右上にある **[Settings]\(設定\)** アイコンをクリックし、 **[Administration centre]\(管理センター\)** に移動します。
+2. ページの右上にある **[Settings]\(設定\)** アイコンをクリックし、**[Administration centre]\(管理センター\)** に移動します。
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
-3. ページの上部にあるツール バーで、 **[People]\(人\)** をクリックし、 **[Add a new user]\(新しいユーザーの追加\)** に移動します。
+3. ページの上部にあるツール バーで、**[People]\(人\)** をクリックし、**[Add a new user]\(新しいユーザーの追加\)** に移動します。
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
@@ -262,7 +262,7 @@ Azure AD ユーザーが Appraisd にサインインできるようにするに�
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
 
-    c. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
+    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
 
     d. **[ユーザーの追加]** をクリックします。
 

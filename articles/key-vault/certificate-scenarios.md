@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075631"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275897"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -101,6 +101,17 @@ ms.locfileid: "58075631"
 -   それ以降の操作がない場合、Key Vault はまず有効期限通知を送信します。 
 
 -   また、ユーザーはポリシーを編集できます。これはインポート時に機能しますが、インポート時に情報が指定されなかった場合は既定値が含まれています。 例: 発行者情報なし  
+
+### <a name="formats-of-import-we-support"></a>サポート対象のインポートの形式
+PEM ファイル形式の次の種類のインポートがサポートされています。 PEM でエンコードされた単一の証明書と、PKCS #8 でエンコードされた、以下を含む暗号化されていないキー
+
+-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+
+-----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
+
+証明書のマージでは、PEM ベースの 2 つの形式がサポートされています。 PKCS #8 でエンコードされた単一の証明書、または base64 でエンコードされた P7B ファイルのいずれかをマージすることができます。 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+
+PEM 形式の EC キーは現在サポートされていません。
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Key Vault と提携していない CA での証明書の作成  
  この方法では、Key Vault の提携プロバイダー以外の CA を使用できます。つまり、組織は任意の CA を使用できます。  

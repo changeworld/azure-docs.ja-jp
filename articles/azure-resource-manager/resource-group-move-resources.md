@@ -10,18 +10,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f5ff43102c42823891f2035c3f577e7def87fcb7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521094"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528239"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
-この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。 チュートリアルについては、「[チュートリアル:Azure リソースを別のリソース グループやサブスクリプションに移動する](./resource-manager-tutorial-move-resources.md)」を参照してください。
+この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。
 
 移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味しますが、リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。
 
@@ -133,6 +133,7 @@ ms.locfileid: "58521094"
 * Azure Database Migration
 * Azure Databricks
 * Azure Firewall
+* Azure Kubernetes Service (AKS)
 * Azure Migrate
 * Azure NetApp Files
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
@@ -143,7 +144,6 @@ ms.locfileid: "58521094"
 * Dev Spaces
 * Dynamics LCS
 * ExpressRoute
-* Kubernetes Service
 * Lab Services のクラスルーム ラボを、新しいリソース グループまたはサブスクリプションに移動することはできません。 DevTest Labs は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Managed Applications
 * Microsoft Genomics

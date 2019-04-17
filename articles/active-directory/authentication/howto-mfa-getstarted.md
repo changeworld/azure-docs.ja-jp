@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892213"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358111"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication を計画する
 
@@ -60,8 +60,14 @@ Azure Multi-factor Authentication は、条件付きアクセスでポリシー�
 * 準拠デバイス
 * ハイブリッド Azure AD 参加済みデバイス
 * 承認されたクライアント アプリケーション
+ 
+
+[多要素認証のロールアウト教材] にあるカスタマイズ可能なポスターと電子メール テンプレートを使用して、多要素認証を組織にデプロイします。 (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>条件付きアクセスを使用して Multi-Factor Authentication を有効にする
 
 条件付きアクセス ポリシーでは登録が強制され、未登録ユーザーには最初のサインイン時に登録を完了することが要求されます。これは、セキュリティ上の重要な考慮事項です。
+
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) は、Azure Multi-factor Authentication の状況に対し、登録ポリシーと、自動化されたリスクの検出と修復のポリシーの両方の点で寄与します。 ID 侵害の脅威があるときにパスワードの変更を強制するポリシー、または次の[イベント](../reports-monitoring/concept-risk-events.md)によってサインインにリスクがあると認められるときに MFA を要求するポリシーを作成できます。
 
@@ -101,6 +107,9 @@ Azure Active Directory Identity Protection によって検出されるリスク 
 ### <a name="notification-through-mobile-app"></a>モバイル アプリでの通知
 
 モバイル デバイスの Microsoft Authenticator アプリに、プッシュ通知が送信されます。 ユーザーは通知を表示し、**[承認]** を選択して認証を完了します。 モバイル アプリによるプッシュ通知では、ユーザーへの影響が最も少ないオプションが提供されます。 テレフォニーではなくデータ接続を使用するため、最も信頼性が高くて安全なオプションでもあります。
+
+> [!NOTE]
+> 組織に中国勤務のスタッフや中国に出張中のスタッフがいる場合、**Android デバイス**での**モバイル アプリによる通知**メソッドはその国では機能しません。 それらのユーザーには別の方法を使用できるようにする必要があります。
 
 ### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
 
