@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a9b435f3267baadc5b3720acf7d91c62dfd5542
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5fe23b74531a5769ac62544a5a54f5919ca9e79e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578936"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>チュートリアル:Azure Active Directory と Projectplace の統合
 
@@ -51,7 +51,7 @@ Azure AD と Projectplace の統合を構成するには、次のものが必要
 
 Azure AD への Projectplace の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Projectplace を追加する必要があります。
 
-**ギャラリーから Projectplace を追加するには、次の手順を実行します。**
+**ギャラリーから Projectplace を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -185,7 +185,7 @@ Projectplace で Azure AD シングル サインオンを構成するには、�
 
 Azure AD ユーザーが Projectplace にログインできるようにするには、ユーザーを Projectplace にプロビジョニングする必要があります。 Projectplace の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. **Projectplace** 企業サイトに管理者としてログインします。
 
@@ -220,7 +220,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

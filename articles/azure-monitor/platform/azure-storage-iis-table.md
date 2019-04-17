@@ -32,7 +32,7 @@ Azure Monitor がこれらのリソースの Log Analytics ワークスペース
 
 診断が有効になったら、Azure Portal または PowerShell を使用して、ログを収集するようにワークスペースを構成できます。
 
-Azure 診断は、Azure で実行している worker ロール、Web ロール、または仮想マシンから診断データを収集できる Azure の拡張機能です。 データは Azure ストレージ アカウントに格納された後、Azure Monitor が収集できるようになります。
+Azure Diagnostics は、Azure で実行している worker ロール、Web ロール、または仮想マシンから診断データを収集できる Azure の拡張機能です。 データは Azure ストレージ アカウントに格納された後、Azure Monitor が収集できるようになります。
 
 Azure Monitor がこれらの Azure 診断ログを収集するには、ログが次の場所に存在する必要があります。
 
@@ -53,17 +53,17 @@ Azure Monitor がこれらの Azure 診断ログを収集するには、ログ�
 
 仮想マシンの場合、[Log Analytics エージェント](../../azure-monitor/learn/quick-collect-azurevm.md)を仮想マシンにインストールして、追加のインサイトを有効にすることもできます。 IIS ログとイベント ログを分析できるだけでなく、構成の変更の追跡、SQL の評価、更新の評価などの追加の分析を実行することもできます。
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>イベント ログと IIS ログの収集のために仮想マシンで Azure 診断を有効にする
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>イベント ログと IIS ログの収集のために仮想マシンで Azure Diagnostics を有効にする
 
-イベント ログと IIS ログを収集するために、Microsoft Azure Portal を使用して、仮想マシンで Azure 診断を有効にするには、次の手順に従います。
+イベント ログと IIS ログを収集するために、Microsoft Azure Portal を使用して、仮想マシンで Azure Diagnostics を有効にするには、次の手順に従います。
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンで Azure 診断を有効にするには
+### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンで Azure Diagnostics を有効にするには
 
 1. 仮想マシンを作成する際に、VM エージェントをインストールします。 仮想マシンが既に存在する場合は、VM エージェントが既にインストールされていることを確認します。
 
    * Azure Portal で仮想マシンに移動し、**[オプションの構成]**、**[診断]** の順に選択して、**[状態]** を **[オン]** に設定します。
 
-     操作が完了すると、VM に Azure 診断の拡張機能がインストールされ、実行されます。 この拡張機能により、診断データが収集されます。
+     操作が完了すると、VM に Azure Diagnostics の拡張機能がインストールされ、実行されます。 この拡張機能により、診断データが収集されます。
 2. 既存の VM で監視を有効にし、イベント ログを構成します。 診断は VM レベルで有効にすることができます。 診断を有効にして、イベント ログを構成するには、次の手順を実行します。
 
    1. VM を選択します。
@@ -73,18 +73,18 @@ Azure Monitor がこれらの Azure 診断ログを収集するには、ログ�
    5. 収集する各診断ログを選択します。
    6. Click **OK**.
 
-## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>IIS ログとイベントの収集のために Web ロールで Azure 診断を有効にする
+## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>IIS ログとイベントの収集のために Web ロールで Azure Diagnostics を有効にする
 
-Azure 診断を有効にする一般的な手順については、[クラウド サービスで診断を有効にする方法](../../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事をご覧ください。 以下の手順ではこの情報を使用し、Log Analytics で使用するためにカスタマイズします。
+Azure Diagnostics を有効にする一般的な手順については、[クラウド サービスで診断を有効にする方法](../../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事をご覧ください。 以下の手順ではこの情報を使用し、Log Analytics で使用するためにカスタマイズします。
 
-診断を有効にした場合
+Azure Diagnostics を有効にした場合
 
 * 既定では、IIS ログは scheduledTransferPeriod の転送間隔で転送されたログ データと共に格納されます。
 * 既定では、Windows イベント ログは転送されません。
 
 ### <a name="to-enable-diagnostics"></a>診断を有効にするには
 
-Windows イベント ログを有効にするか、または scheduledTransferPeriod を変更するには、XML 構成ファイル (diagnostics.wadcfg) を使用して Microsoft Azure 診断を構成します。手順については、「[手順 4.診断構成ファイルを作成して拡張機能をインストールする](../../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください
+Windows イベント ログを有効にするか、または scheduledTransferPeriod を変更するには、XML 構成ファイル (diagnostics.wadcfg) を使用して Microsoft Azure Diagnostics を構成します。手順については、「[手順 4.診断構成ファイルを作成して拡張機能をインストールする](../../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください
 
 次の構成ファイルの例では、IIS ログと、アプリケーション ログとシステム ログからすべてのイベントを収集します。
 
@@ -150,7 +150,7 @@ Azure Portal で Log Analytics ワークスペースに移動し、次の作業�
 >
 >
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>イベント ログと IIS ログの収集のために PowerShell を使用して仮想マシンで Azure 診断を有効にする
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>イベント ログと IIS ログの収集のために PowerShell を使用して仮想マシンで Azure Diagnostics を有効にする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -159,7 +159,7 @@ PowerShell を使用して、テーブル ストレージに書き込まれた A
 Azure PowerShell を使用すると、Azure Storage に書き込むイベントをより細かく指定できます。
 詳細については、「[Azure Virtual Machines での診断の有効化](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」をご覧ください。
 
-次の PowerShell スクリプトを使用して、Azure 診断を有効にし、更新できます。
+次の PowerShell スクリプトを使用して、Azure Diagnostics を有効にし、更新できます。
 このスクリプトでカスタム ログ構成を使用することもできます。
 その場合、スクリプトを変更して、ストレージ アカウント、サービス名、仮想マシン名を設定します。
 このスクリプトでは、従来の仮想マシン用のコマンドレットを使用します。

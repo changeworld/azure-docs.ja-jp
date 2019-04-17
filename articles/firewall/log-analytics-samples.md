@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534005"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051820"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ログ分析のサンプル
 
@@ -40,7 +40,7 @@ Azure Monitor ログの視覚化の例を構成する方法を次に示します
 
 ![ネットワーク ルールのログ データ]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure Firewall は、カテゴリが **AzureFirewallApplicationRule** または **AzureFirewallApplicationRule** のいずれかの AzureDiagnostics の下のデータを記録します。 詳細情報が含まれているデータは、msg_s フィールドに格納されます。 [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator) 演算子を使用すると、msg_s フィールドからさまざまな重要なプロパティを抽出できます。 次のクエリでは、両方のカテゴリの情報を抽出します。
+Azure Firewall は、カテゴリが **AzureFirewallApplicationRule** または **AzureFirewallNetworkRule** のいずれかの AzureDiagnostics の下のデータを記録します。 詳細情報が含まれているデータは、msg_s フィールドに格納されます。 [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator) 演算子を使用すると、msg_s フィールドからさまざまな重要なプロパティを抽出できます。 次のクエリでは、両方のカテゴリの情報を抽出します。
 
 ## <a name="application-rules-log-data-query"></a>アプリケーション ルールのログ データのクエリ
 

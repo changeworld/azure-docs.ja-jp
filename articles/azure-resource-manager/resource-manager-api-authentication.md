@@ -4,22 +4,20 @@ description: アプリケーションを他の Azure サブスクリプション
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
-manager: timlt
-editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/22/2019
+ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: 7e6ce8c4e5e6ff79a8e77708bd76cef6c24cadd3
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805518"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264337"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 
@@ -31,8 +29,6 @@ ms.locfileid: "58805518"
 2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間のヘッドレス (無人) アクセスを必要とするアプリケーションに適しています。
 
 この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、[https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) で入手できます。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-the-web-app-does"></a>Web アプリケーションで実行する内容
 
@@ -72,27 +68,9 @@ Web アプリケーションのフローを次に示します。
 ## <a name="register-application"></a>アプリケーションを登録する
 コーディングを開始する前に、Web アプリケーションを Azure Active Directory (AD) に登録します。 アプリケーションの登録により、Azure AD にアプリケーションの主要 ID が作成されます。 この ID には、OAuth クライアント ID、応答 URL、アプリケーションが Azure Resource Manager API に対する認証とアクセスに使用する資格情報など、アプリケーションに関する基本情報が保持されます。 また、アプリケーションの登録により、アプリケーションがユーザーの Microsoft API にアクセスするときに必要となる委任された各種アクセス許可が記録されます。
 
-アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、ポータルにサインインします。
+アプリを登録する場合は、「[クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。 アプリに名前を付けて、サポートされているアカウントの種類で **[任意の組織のディレクトリ内のアカウント]** を選択します。 リダイレクト URL で、Azure Active Directory に関連付けられているドメインを指定します。
 
-次の例は、Azure PowerShell を使用してアプリケーションを登録する方法を示しています。 このコマンドを機能させるには、Azure PowerShell の最新バージョン (2016 年 8 月) が必要です。
-
-```azurepowershell-interactive
-$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
-```
-
-AD アプリケーションとしてサインインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。
-
-```azurepowershell-interactive
-$app.ApplicationId
-```
-
-次の例は、Azure CLI を使用してアプリケーションを登録する方法を示しています。
-
-```azurecli-interactive
-az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
-```
-
-結果には、アプリケーションとして認証するときに必要な AppId が含まれています。
+AD アプリケーションとしてサインインするには、アプリケーション ID とシークレットが必要です。 アプリケーション ID はアプリケーションの概要に表示されます。 シークレットを作成し、API のアクセス許可を要求する場合は、「[クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 新しいクライアント シークレットを指定します。 API のアクセス許可で、**[Azure Service Management]** を選択します。 **[委任されたアクセス許可]** と **[user_impersonation]** を選択します。
 
 ### <a name="optional-configuration---certificate-credential"></a>オプションの構成 - 証明書資格情報
 Azure AD では、アプリケーションの証明書資格情報もサポートしています。自己署名証明書を作成し、秘密キーを保持して、Azure AD アプリケーションの登録に公開キーを追加します。 認証では、アプリケーションが秘密キーを使用して署名された小さなペイロードを Azure AD に送信すると、Azure AD は登録済みの公開キーを使用して署名を検証します。

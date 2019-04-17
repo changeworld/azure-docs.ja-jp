@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f5c42b73b0452392cdd2a06619722b3f7de2cc27
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417484"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006338"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の Virtual Network のサービス エンドポイントとルールを使用する
 
@@ -106,6 +106,8 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 ## <a name="limitations"></a>制限事項
 
 Azure Database for PostgreSQL の場合、仮想ネットワーク ルール機能には以下のような制限事項があります。
+
+- Web アプリは、VNet/サブネット内のプライベート IP にマップできます。 サービス エンドポイントが特定の VNet/サブネットから有効化されている場合でも、Web アプリからサーバーへの接続には、VNet/サブネットのソースではなく、Azure のパブリック IP ソースが使用されます。 サーバーに VNet ファイアウォール規則がある場合、Web アプリからそのサーバーへの接続を有効にするには、サーバーで Azure サービスにサーバーへのアクセスを許可する必要があります。
 
 - Azure Database for PostgreSQL のファイアウォールでは、各仮想ネットワーク ルールはサブネットを参照します。 これらの参照されるサブネットはすべて、Azure Database for PostgreSQL がホストされているのと同じ地理的リージョンでホストされている必要があります。
 

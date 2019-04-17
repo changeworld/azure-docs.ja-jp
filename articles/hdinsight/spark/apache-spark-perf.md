@@ -3,18 +3,18 @@ title: パフォーマンスのための Spark ジョブの最適化 - Azure HDI
 description: Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
 services: hdinsight
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.date: 04/03/2019
+ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117862"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283071"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
 
@@ -60,8 +60,9 @@ Spark では、csv、json、xml、parquet、orc、avro など、多くの形式�
 
 | ストアの種類 | ファイル システム | 速度 | 一時的 | ユース ケース |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standard** | はい | 一時的なクラスター |
-| Azure Data Lake Storage | **adl:**//url/ | **より高速** | はい | 一時的なクラスター |
+| Azure Blob Storage | **wasb[s]:**//url/ | **Standard** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **より高速** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 1| **adl:**//url/ | **より高速** | はい | 一時的なクラスター |
 | ローカルの HDFS | **hdfs:**//url/ | **最も高速** | いいえ  | 24 時間 365 日の対話型クラスター |
 
 ## <a name="use-the-cache"></a>キャッシュの使用
@@ -159,9 +160,9 @@ Spark クラスターのワークロードによっては、既定以外の Spar
 
 調整可能ないくつかの一般的なパラメーターを、次に示します。
 
-* `--num-executors` は、適切な数の実行プログラムを設定します。
-* `--executor-cores` は、各実行プログラムのコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、通常は中規模な実行プログラムにしてください。
-* `--executor-memory` は、YARN のヒープ サイズを制御する、各実行プログラムのメモリ サイズを設定します。 実行のオーバーヘッド用のメモリを残しておいてください。
+* `--num-executors` これは、適切な数の実行プログラムを設定します。
+* `--executor-cores` これは、各実行プログラムのコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、通常は中規模な実行プログラムにしてください。
+* `--executor-memory` これは、YARN のヒープ サイズを制御する、各実行プログラムのメモリ サイズを設定します。 実行のオーバーヘッド用のメモリを残しておいてください。
 
 ### <a name="select-the-correct-executor-size"></a>実行プログラムの適切なサイズの選択
 
@@ -213,7 +214,7 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ## <a name="next-steps"></a>次の手順
 
 * [Azure HDInsight で実行される Apache Spark ジョブのデバッグ](apache-spark-job-debugging.md)
-* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
+* [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)
 * [Apache Spark REST API を使用してリモート ジョブを Apache Spark クラスターに送信する](apache-spark-livy-rest-interface.md)
 * [Apache Spark のチューニング](https://spark.apache.org/docs/latest/tuning.html)
 * [Apache Spark を適切に機能させるための実際のチューニング方法](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)

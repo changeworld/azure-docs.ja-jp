@@ -45,7 +45,7 @@ Application Insights での新しい監視とアラートの統合には、以�
 Azure リソースの新しいメトリックは、以下のように使用できます。
 
 - **Azure Monitor の標準プラットフォーム メトリック** – さまざまな Azure サービスと製品から一般的な設定済みのメトリックを提供します。 詳細については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)と[Azure Monitor でのメトリック アラートのサポート](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts)に関する記事を参照してください。
-- **Azure Monitor のカスタム メトリック**– Azure 診断エージェントを含む、ユーザーが操作するソースからメトリックを提供します。 詳細については、記事「[Azure Monitor のカスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)」を参照してください。 カスタム メトリックを使用して、[Windows Azure 診断エージェント](../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md)と [InfluxData Telegraf エージェント](../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md)によって収集されたメトリックを公開することもできます。
+- **Azure Monitor のカスタム メトリック**– Azure 診断エージェントを含む、ユーザーが操作するソースからメトリックを提供します。 詳細については、記事「[Azure Monitor のカスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)」を参照してください。 カスタム メトリックを使用して、[Windows Azure Diagnostics エージェント](../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md)と [InfluxData Telegraf エージェント](../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md)によって収集されたメトリックを公開することもできます。
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>クラシック監視およびアラート プラットフォームの提供終了
 

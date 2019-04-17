@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5e6a7cbc070d81de33fac07a89dabf2b469bd355
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449853"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047026"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>成果物を VM に追加する
 VM を作成するとき、既存の成果物をその VM に追加できます。 これらの成果物は、[パブリックの DevTest Labs の Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または独自の Git リポジトリにあります。 この記事では、Azure portal および Azure PowerShell を使用して成果物を追加する方法について説明します。 
@@ -27,6 +27,8 @@ VM を作成するとき、既存の成果物をその VM に追加できます�
 Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプロビジョニング時に実行される "*アクション*" (Windows PowerShell スクリプトの実行、Bash コマンドの実行、ソフトウェアのインストールなど) を指定できます。 アーティファクト *パラメーター* を使用すると、特定のシナリオのアーティファクトをカスタマイズできます。
 
 カスタム成果物を作成する方法については、[カスタム成果物の作成](devtest-lab-artifact-author.md)に関するページをご覧ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用 
 1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
@@ -63,11 +65,10 @@ Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプ�
 1. **[OK]** を選択して、**[選択されたアーティファクト]** ウィドウを閉じます。
 
 ## <a name="use-powershell"></a>PowerShell の使用
-次のスクリプトでは、指定された成果物を指定された VM に適用します。 [Invoke-AzureRmResourceAction](/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-6.13.0) コマンドは、この操作を実行するコマンドです。  
+次のスクリプトでは、指定された成果物を指定された VM に適用します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) コマンドは、この操作を実行するコマンドです。  
 
 ```powershell
-#Requires -Version 3.0
-#Requires -Module AzureRM.Resources
+#Requires -Module Az.Resources
 
 param
 (
@@ -86,14 +87,14 @@ param
 )
 
 # Set the appropriate subscription
-Set-AzureRmContext -SubscriptionId $SubscriptionId | Out-Null
+Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
  
 # Get the lab resource group name
-$resourceGroupName = (Find-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
+$resourceGroupName = (Find-AzResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $DevTestLabName}).ResourceGroupName
 if ($resourceGroupName -eq $null) { throw "Unable to find lab $DevTestLabName in subscription $SubscriptionId." }
 
 # Get the internal repo name
-$repository = Get-AzureRmResource -ResourceGroupName $resourceGroupName `
+$repository = Get-AzResource -ResourceGroupName $resourceGroupName `
                     -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
                     -ResourceName $DevTestLabName `
                     -ApiVersion 2016-05-15 `
@@ -103,7 +104,7 @@ $repository = Get-AzureRmResource -ResourceGroupName $resourceGroupName `
 if ($repository -eq $null) { "Unable to find repository $RepositoryName in lab $DevTestLabName." }
 
 # Get the internal artifact name
-$template = Get-AzureRmResource -ResourceGroupName $resourceGroupName `
+$template = Get-AzResource -ResourceGroupName $resourceGroupName `
                 -ResourceType "Microsoft.DevTestLab/labs/artifactSources/artifacts" `
                 -ResourceName "$DevTestLabName/$($repository.Name)" `
                 -ApiVersion 2016-05-15 `
@@ -116,7 +117,7 @@ if ($template -eq $null) { throw "Unable to find template $ArtifactName in lab $
 $FullVMId = "/subscriptions/$SubscriptionId/resourceGroups/$resourceGroupName`
                 /providers/Microsoft.DevTestLab/labs/$DevTestLabName/virtualmachines/$virtualMachineName"
 
-$virtualMachine = Get-AzureRmResource -ResourceId $FullVMId
+$virtualMachine = Get-AzResource -ResourceId $FullVMId
 
 # Generate the artifact id
 $FullArtifactId = "/subscriptions/$SubscriptionId/resourceGroups/$resourceGroupName`
@@ -150,7 +151,7 @@ artifacts = @(
 # Check the VM
 if ($virtualMachine -ne $null) {
    # Apply the artifact by name to the virtual machine
-   $status = Invoke-AzureRmResourceAction -Parameters $prop -ResourceId $virtualMachine.ResourceId -Action "applyArtifacts" -ApiVersion 2016-05-15 -Force
+   $status = Invoke-AzResourceAction -Parameters $prop -ResourceId $virtualMachine.ResourceId -Action "applyArtifacts" -ApiVersion 2016-05-15 -Force
    if ($status.Status -eq 'Succeeded') {
       Write-Output "##[section] Successfully applied artifact: $ArtifactName to $VirtualMachineName"
    } else {
@@ -166,6 +167,6 @@ if ($virtualMachine -ne $null) {
 成果物に関する次の記事をご覧ください。
 
 - [ラボに必須の成果物の指定](devtest-lab-mandatory-artifacts.md)
-- [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
-- [ラボへの成果物リポジトリの追加](devtest-lab-artifact-author.md)
+- [カスタム アーティファクトを作成する](devtest-lab-artifact-author.md)
+- [アーティファクト リポジトリをラボに追加する](devtest-lab-artifact-author.md)
 - [アーティファクトの失敗の診断](devtest-lab-troubleshoot-artifact-failure.md)

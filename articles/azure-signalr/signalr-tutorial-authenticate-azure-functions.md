@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012566"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278838"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 
@@ -348,7 +348,7 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 メッセージを送信すると、アプリは接続されているすべてのクライアントに送信するか、特定のユーザーに認証されているクライアントにのみ送信するかをアプリが決定できます。
 
-1. VS Code で **SignalRInfo/function.json** を開きます。
+1. VS Code で **negotiate/function.json** を開きます。
 
 1. `{headers.x-ms-client-principal-name}` のように、[バインド式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)を *SignalRConnectionInfo* バインドの *userId* プロパティに挿入します。 これで、認証済みユーザーのユーザー名に値が設定されます。 属性は次のようになります。
 

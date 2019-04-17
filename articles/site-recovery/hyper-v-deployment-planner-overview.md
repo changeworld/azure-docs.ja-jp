@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery Deployment Planner による Hyper-V VM から Azure へのディザスター リカバリーについて | Microsoft Docs
 description: Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリーについて説明します。
-author: nsoneji
+author: mayurigupta13
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 06e3139ffa958637721aae7e912b34070d307757
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 4/9/2019
+ms.author: mayg
+ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207396"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360277"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリー
 
@@ -30,7 +30,7 @@ Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディ�
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価。
 
-**ネットワーク帯域幅ニーズと RPO の評価**
+**ネットワーク帯域幅ニーズ対 RPO の評価**
 
 * 差分レプリケーションに必要な推定ネットワーク帯域幅
 * オンプレミスから Azure への間で Azure Site Recovery が得られるスループット
@@ -51,7 +51,7 @@ Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディ�
 * VM レプリケーションによって望ましくないダウンタイムが運用アプリケーションに発生することがないよう、初期レプリケーションと差分レプリケーションを成功させるために必要な、Hyper-V ストレージの各ボリューム上の空き記憶域
 * Hyper-V レプリケーションに関して設定される最大コピー頻度
 
-**初期レプリケーションのバッチに関するガイダンス** 
+**初期レプリケーションのバッチ処理に関するガイダンス** 
 * 保護に使用する VM バッチの数
 * 各バッチの VM の一覧
 * 各バッチが保護される順序
@@ -132,8 +132,8 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
   >Deployment Planner の更新に使われる .zip ファイルには、その都度、累積的な更新が格納されています。 以前のフォルダーに最新のファイルをコピーする必要はありません。 新しいフォルダーを作成して使用できます。
 
 ## <a name="version-history"></a>バージョン履歴
-ASR Deployment Planner ツールの最新バージョンは 2.3 です。
-各更新で追加された修正については、「[ASR Deployment Planner Version History (ASR Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
+Azure Site Recovery Deployment Planner ツールの最新バージョンは 2.3 です。
+各更新で追加された修正については、「[Azure Site Recovery Deployment Planner Version History (Azure Site Recovery Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

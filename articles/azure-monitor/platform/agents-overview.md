@@ -23,14 +23,14 @@ ms.locfileid: "58371929"
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 監視エージェントの概要 
 Microsoft Azure では、Azure、データセンター、または他のクラウド プロバイダーにホストされている、Microsoft Windows や Linux を実行する仮想マシンからの各種のデータをさまざまな方法で収集できます。 VM の監視に使用可能な 3 種類のエージェントがあります。
 
-* Azure 診断の拡張機能
+* Azure Diagnostics の拡張機能
 * Linux および Windows 用 Log Analytics エージェント
 * 依存関係エージェント
 
 この記事では、それぞれの違いや機能について説明し、自分の IT サービス マネジメントや一般的な監視の要件をサポートするのはどれであるかを判断できるようにします。  
 
 ## <a name="azure-diagnostic-extension"></a>Azure 診断の拡張機能
-2010 年に一般公開されて以降、Azure Cloud Services 用に提供されている [Azure 診断拡張機能](../../azure-monitor/platform/diagnostics-extension-overview.md) (一般に、Windows Azure Diagnostic (WAD) または Linux Azure Diagnostic (LAD) 拡張機能と呼ばれる) は、VM などの Azure コンピューティング リソースから診断データを収集して、Azure ストレージに保持するエージェントです。 データがストレージに保持されたら、[Visual Studio のサーバー エクスプローラー](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)や [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などの提供されているツールの 1 つで表示することができます。
+2010 年に一般公開されて以降、Azure Cloud Services 用に提供されている [Azure Diagnostics 拡張機能](../../azure-monitor/platform/diagnostics-extension-overview.md) (一般に、Windows Azure Diagnostic (WAD) または Linux Azure Diagnostic (LAD) 拡張機能と呼ばれる) は、VM などの Azure コンピューティング リソースから診断データを収集して、Azure ストレージに保持するエージェントです。 データがストレージに保持されたら、[Visual Studio のサーバー エクスプローラー](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)や [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などの提供されているツールの 1 つで表示することができます。
 
 次のものを収集することを選択できます。
 
@@ -41,7 +41,7 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 * Syslog からのログ イベント  
 * クラッシュ ダンプ 
 
-次の場合に Azure 診断エージェントを使用する必要があります。
+次の場合に Azure Diagnostics エージェントを使用する必要があります。
 
 * ログとメトリックを Azure ストレージにアーカイブする
 * 監視データをサード パーティ製のツールと統合する。 これらのツールでは、ストレージ アカウントへのクエリ、[Event Hubs](../../event-hubs/event-hubs-about.md) への転送、[Azure 監視 REST API](../../azure-monitor/platform/rest-api-walkthrough.md) を使用したクエリなど、さまざまな方法が使用されます

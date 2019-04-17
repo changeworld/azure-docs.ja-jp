@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 3a34af77a2806ceb56e939e2b153f2e68bba61cd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352104"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048938"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Custom Vision Service の用語集
 
@@ -32,7 +32,6 @@ Custom Vision Service でよく使用される用語をいくつか次に示し�
 - **食料ドメイン。** レストランのメニューに表示される品目に最適化されています。 個々のフルーツや野菜の認識には最適化されていません。 個々のフルーツや野菜の写真を分類する場合は、目的に応じた汎用ドメインを使用します。
 - **ランドマーク ドメイン。** 自然物と人工物の両方の認識可能なランドマークに最適化されています。 このドメインは、写真の中でランドマークがはっきりと見える場合、そのランドマークの前でポーズを取る人物の集団にやや遮られていたとしても、最適に機能します。
 - **小売ドメイン。** ショッピング カタログやショッピング Web サイトでの画像の分類に最適化されています。 ドレス、ズボン、シャツなどを分類するときに高い精度が必要になる場合は、小売ドメインを使用します。
-- **成人ドメイン。** 成人向けコンテンツと非成人向けコンテンツをより正確に定義するように最適化されます。 たとえば、水着を着た人々の画像をブロックする場合、このドメインは、ブロックするカスタム分類子をビルドできます。
 - **汎用ドメイン。** さまざまな画像の分類タスクに非常に適しています。
 
 **コンパクト ドメイン**で生成されたモデルは、反復エクスポート機能を使ってエクスポートできます。 モバイル デバイス上でのリアルタイムの分類の制約に合わせて、最適化されています。 コンパクト ドメインでビルドされた分類子は、トレーニング データの量が同じ標準ドメインより、わずかに正確性に欠けることがあります。 その代わり、小規模なため、ほぼリアルタイムでローカルに実行できます。 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858145"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008840"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Azure での Geo 人工知能仮想マシンのプロビジョニング 
 
@@ -49,7 +49,7 @@ Geo-DSVM には、AI 用のツールが複数含まれています。これに�
 
    - **基本**
 
-      1. **名前**: 作成するデータ サイエンス サーバーの名前です。
+      1. **[名前]**:作成するデータ サイエンス サーバーの名前です。
 
       2. **ユーザー名**: 管理者アカウントのログイン ID です。
 
@@ -87,7 +87,7 @@ Geo-DSVM には ArcGIS Pro デスクトップがプレインストールされ�
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-有料または無料試用版の ArcGIS アカウントを取得したら、[ArcGIS Pro のスタードガイド ドキュメント](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)に記載されている手順に従って、ArcGIS Pro を自分のアカウント用に承認できます。 
+有料または無料試用版の ArcGIS アカウントにサインアップしたら、[ArcGIS Pro のスタードガイド](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)に記載されている手順に従って、ArcGIS Pro を自分のアカウント用に承認できます。 
 
 ArcGIS アカウントを使用して ArcGIS Pro デスクトップにサインインしたら、VM にインストールされた構成済みのデータ サイエンス ツールを、地理空間分析や機械学習のプロジェクトに使用できます。
 

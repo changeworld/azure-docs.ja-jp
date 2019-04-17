@@ -10,12 +10,12 @@ ms.reviewer: plarsen, LADocs
 ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: c46fd1791751ebf912670875f9c8e18e8b0c5c40
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311307"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878402"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Azure Logic Apps を使用して IBM DB2 リソースを管理する
 
@@ -29,7 +29,7 @@ DB2 コネクタには、TCP/IP ネットワーク経由でリモート DB2 サ�
 
 IBM DB2 コネクタでは、次の IBM DB2 のプラットフォームとバージョンに加え、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 10 および 11 に対応している IBM DB2 互換製品 (IBM Bluemix dashDB など) をサポートしています。
 
-| プラットフォーム | Version | 
+| プラットフォーム | バージョン | 
 |----------|---------|
 | IBM DB2 for z/OS | 11.1、10.1 |
 | IBM DB2 for i | 7.3、7.2、7.1 |
@@ -86,9 +86,9 @@ IBM DB2 コネクタでサポートされる次のデータベース操作は、
 | プロパティ | 必須 | 説明 |
 |----------|----------|-------------|
 | **オンプレミスのゲートウェイ経由で接続** | いいえ  | オンプレミス接続にのみ適用されます。 |
-| **Connection Name** | はい | 「MyLogicApp-DB2-connection」など、接続の名前 |
+| **接続名** | はい | 「MyLogicApp-DB2-connection」など、接続の名前 |
 | **サーバー** | はい | 「myDB2server.cloudapp.net:50000」など、DB2 サーバーのアドレスまたはエイリアスとコロンとポート番号 <p><p>**メモ**:この値は、IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスを表す文字列の後に、コロンと TCP/IP ポート番号が続きます。 |
-| **データベース** | はい | データベースの名前 <p><p>**メモ**:この値は、DRDA リレーショナル データベース名 (RDBNAM) を表す文字列です。 <p>- DB2 for z/OS は、16 バイトの文字列を受け入れます (database は "IBM DB2 for z/OS" の場所です)。 <br>- DB2 for i は、18 バイトの文字列を受け入れます (database は "IBM DB2 for i" リレーショナル データベースです)。 <br>- DB2 for LUW は、8 バイトの文字列を受け入れます。 |
+| **Database** | はい | データベースの名前 <p><p>**メモ**:この値は、DRDA リレーショナル データベース名 (RDBNAM) を表す文字列です。 <p>- DB2 for z/OS は、16 バイトの文字列を受け入れます (database は "IBM DB2 for z/OS" の場所です)。 <br>- DB2 for i は、18 バイトの文字列を受け入れます (database は "IBM DB2 for i" リレーショナル データベースです)。 <br>- DB2 for LUW は、8 バイトの文字列を受け入れます。 |
 | **ユーザー名** | はい | データベースのユーザー名 <p><p>**メモ**:この値の文字列は次のようにデータベースごとに長さが異なります。 <p><p>- DB2 for z/OS は、8 バイトの文字列を受け入れます。 <br>- DB2 for i は、10 バイトの文字列を受け入れます。 <br>- DB2 for Linux または DB2 for UNIX は、8 バイトの文字列を受け入れます。 <br>- DB2 for Windows は、30 バイトの文字列を受け入れます。 |
 | **パスワード** | はい | データベースのパスワード |
 ||||
@@ -106,13 +106,13 @@ IBM DB2 コネクタでサポートされる次のデータベース操作は、
 | プロパティ | 必須 | 説明 |
 |----------|----------|-------------|
 | **オンプレミスのゲートウェイ経由で接続** | はい | オンプレミス接続を行う場合に適用され、オンプレミス接続のプロパティを表示します。 |
-| **Connection Name** | はい | 「MyLogicApp-DB2-connection」など、接続の名前 | 
+| **接続名** | はい | 「MyLogicApp-DB2-connection」など、接続の名前 | 
 | **サーバー** | はい | 「myDB2server:50000」など、DB2 サーバーのアドレスまたはエイリアスとコロンとポート番号 <p><p>**メモ**:この値は、IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスを表す文字列の後に、コロンと TCP/IP ポート番号が続きます。 |
-| **データベース** | はい | データベースの名前 <p><p>**メモ**:この値は、DRDA リレーショナル データベース名 (RDBNAM) を表す文字列です。 <p>- DB2 for z/OS は、16 バイトの文字列を受け入れます (database は "IBM DB2 for z/OS" の場所です)。 <br>- DB2 for i は、18 バイトの文字列を受け入れます (database は "IBM DB2 for i" リレーショナル データベースです)。 <br>- DB2 for LUW は、8 バイトの文字列を受け入れます。 |
-| **認証** | はい | [基本] など、接続の認証の種類 <p><p>**メモ**:基本、または Windows (Kerberos) を含む一覧からこの値を選択します。 |
+| **Database** | はい | データベースの名前 <p><p>**メモ**:この値は、DRDA リレーショナル データベース名 (RDBNAM) を表す文字列です。 <p>- DB2 for z/OS は、16 バイトの文字列を受け入れます (database は "IBM DB2 for z/OS" の場所です)。 <br>- DB2 for i は、18 バイトの文字列を受け入れます (database は "IBM DB2 for i" リレーショナル データベースです)。 <br>- DB2 for LUW は、8 バイトの文字列を受け入れます。 |
+| **Authentication** | はい | [基本] など、接続の認証の種類 <p><p>**メモ**:基本、または Windows (Kerberos) を含む一覧からこの値を選択します。 |
 | **ユーザー名** | はい | データベースのユーザー名 <p><p>**メモ**:この値の文字列は次のようにデータベースごとに長さが異なります。 <p><p>- DB2 for z/OS は、8 バイトの文字列を受け入れます。 <br>- DB2 for i は、10 バイトの文字列を受け入れます。 <br>- DB2 for Linux または DB2 for UNIX は、8 バイトの文字列を受け入れます。 <br>- DB2 for Windows は、30 バイトの文字列を受け入れます。 |
 | **パスワード** | はい | データベースのパスワード |
-| **ゲートウェイ** | はい | インストールされているオンプレミス データ ゲートウェイの名前 <p><p>**メモ**:この値を一覧から選択します。一覧には Azure サブスクリプションおよびリソース グループにインストールされているすべてのデータ ゲートウェイが含まれています。 |
+| **Gateway** | はい | インストールされているオンプレミス データ ゲートウェイの名前 <p><p>**メモ**:この値を一覧から選択します。一覧には Azure サブスクリプションおよびリソース グループにインストールされているすべてのデータ ゲートウェイが含まれています。 |
 ||||
 
 例: 
@@ -193,7 +193,7 @@ DB2 データベース テーブルのすべてのレコードをフェッチす
 
    ![[複数行を取得] アクション](./media/connectors-create-api-db2/db2-get-rows-action.png)
 
-1. **[テーブル名]** 一覧を開き、必要なテーブル (この例では "AREA") を選択します。
+1. **テーブル名** 一覧を開き、必要なテーブル (この例では "AREA") を選択します。
 
    ![テーブルの選択](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
@@ -362,7 +362,7 @@ DB2 データベース テーブルから 1 レコードを削除するには、
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/db2/)を参照してください。
+コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/db2/)を参照してください。
 
 ## <a name="get-support"></a>サポートを受ける
 

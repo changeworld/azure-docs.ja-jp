@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745556"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282202"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
@@ -98,7 +98,7 @@ vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster
 * クラスターのリソース グループ名、およびネットワークとストレージ リソースのリソース グループ名 (これらがクラスターと同じでない場合)
 * クラスターの位置
 * クラスター ネットワークとサブネット 
-* クラスター ノードのアクセス ロール 
+* クラスター ノード アクセス ロール (組み込みロール [Avere 演算子](../role-based-access-control/built-in-roles.md#avere-operator)を使用)
 * クラスターの管理 IP アドレスと管理パスワード 
 * 追加するノードの数 (1、2、または 3)
 * ノード インスタンスの種類とキャッシュ サイズの値 
@@ -113,7 +113,7 @@ vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 

@@ -60,7 +60,7 @@ Azure Stack 上の **Microsoft.Compute** リソース プロバイダーには�
 
 ### <a name="application---diagnostics-logs-application-logs-and-metrics"></a>アプリケーション - 診断ログ、アプリケーション ログ、およびメトリック
 
-アプリケーションは、**Microsoft.Compute** リソース プロバイダーで実行されている VM の OS で実行できます。 これらのアプリケーションと VM からは、それぞれに固有のログとメトリックのセットが出力されます。 Azure Monitor は、Azure 診断拡張機能 (Windows または Linux) を利用して、アプリケーション レベルのメトリックとログの大半を収集します。 
+アプリケーションは、**Microsoft.Compute** リソース プロバイダーで実行されている VM の OS で実行できます。 これらのアプリケーションと VM からは、それぞれに固有のログとメトリックのセットが出力されます。 Azure Monitor は、Azure Diagnostics 拡張機能 (Windows または Linux) を利用して、アプリケーション レベルのメトリックとログの大半を収集します。 
 
 メジャーの種類は次のとおりです。
  - パフォーマンス カウンター

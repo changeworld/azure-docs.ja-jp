@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 5e879395e034813f954d1046e4a69e21534f3968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077158"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051172"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -57,7 +57,7 @@ Azure リージョンに関する詳細については、「[Azure リージョ�
 Azure では、顧客に提供されるサービスのカテゴリに基づいたクラウド コンピューティング モデルを使用します。 サービス の 3 つのカテゴリとして、サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのプラットフォーム (PaaS)、およびサービスとしてのソフトウェア (SaaS) があります。 ベンダーは、これらの各カテゴリのコンピューティング スタック内にあるコンポーネントに対して、一部またはすべての責任を共有します。 クラウド コンピューティングの各カテゴリを確認しましょう。
 ![クラウド コンピューティング スタックの比較](./media/cloud-computing-comparison.png)
 
-#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: サービスとしてのインフラストラクチャ
+#### <a name="iaas-infrastructure-as-a-service"></a>IaaS:サービスとしてのインフラストラクチャ
 
 IaaS クラウド ベンダーがあらゆる物理的コンピューティング リソースとコンピューターの仮想化に必要なソフトウェアを実行し、管理します。 このサービスの利用者は、ホステッド データセンターに仮想マシンをデプロイします。 仮想マシンは離れた場所のデータセンターに置かれますが、IaaS コンシューマーは、基になるインフラストラクチャをクラウド ベンダーに配置したままのオペレーティング システムを自由に構成し、管理できます。
 
@@ -169,7 +169,7 @@ Azure Portal を利用したリソースの作成、管理、削除に加え、P
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell は、Azure を管理するためのコマンドレットを提供するモジュール セットです。 コマンドレットを使用し、Azure サービスを作成、管理、削除できます。 コマンドレットを利用すれば、自動的かつ一貫性のある方法で繰り返しデプロイできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/install-azurerm-ps)」を参照してください。
+Azure PowerShell は、Azure を管理するためのコマンドレットを提供するモジュール セットです。 コマンドレットを使用し、Azure サービスを作成、管理、削除できます。 コマンドレットを利用すれば、自動的かつ一貫性のある方法で繰り返しデプロイできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)」を参照してください。
 
 #### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
 

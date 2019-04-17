@@ -319,7 +319,7 @@ ms.locfileid: "57779149"
 
 この記事の前出の式を使用することで、さまざまな例外処理パターンを実行できます。 フィルターで抽出したエラーの配列全体を、スコープ外の単一の例外処理アクションに渡して実行してもかまいません。その場合、**For each** アクションは不要です。 前述した **\@result()** の応答には、他にも便利なプロパティがあるので、それらを含めることもできます。
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure 診断とメトリック
+## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics とメトリック
 
 ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 
 [Azure 診断](../logic-apps/logic-apps-monitor-your-logic-apps.md)を使用すると、ワークフローで発生したあらゆるイベントを、実行とアクションのすべての状態を含めて、簡単に Azure Storage アカウントや Azure Event Hubs で作成されたイベント ハブに送信できます。 

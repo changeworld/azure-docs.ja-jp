@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b06bc6b41081f05a7067f82f46affc37d21f50b1
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213298"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805365"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -42,13 +42,16 @@ ms.locfileid: "57213298"
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。 
-* **Ubuntu 16.04+** 
-* **SLES 12 SP3** 
-* **RHEL 7.4**
-* **CentOS 7.4**
+* **Ubuntu 14.04 (linux-azure カーネルを含む)**
+* **Ubuntu 16.04 以降** 
+* **SLES12 SP3 以降** 
+* **RHEL 7.4 以降**
+* **CentOS 7.4 以降**
 * **CoreOS Linux**
 * **Debian "Stretch" (バックポート カーネルを含む)**
-* **Oracle Linux 7.4**
+* **Oracle Linux 7.4 以降 (Red Hat Compatible Kernel (RHCK) を含む)**
+* **Oracle Linux 7.5 以降 (UEK バージョン 5 を含む)**
+* **FreeBSD 10.4、11.1、および 12.0**
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
@@ -184,7 +187,7 @@ VM が作成されると、次のサンプル出力のような出力が返さ�
 }
 ```
 
-### <a name="confirm-that-accelerated-networking-is-enabled"></a>高速ネットワークが有効になっていることを確認する
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>高速ネットワークが有効になっていることを確認します。
 
 次のコマンドを使用して、VM との SSH セッションを作成します。 作成した仮想マシンに割り当てたパブリック IP アドレスに `<your-public-ip-address>` を置き換え、VM の作成時に `--admin-username` に異なる値を使用していた場合は、*azureuser* を置き換えます。
 

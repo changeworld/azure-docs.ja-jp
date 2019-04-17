@@ -45,7 +45,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure テンプレート](tutorial-autoscale-template.md)
 
-より詳細なパフォーマンス メトリックを使用する自動スケール ルールを作成するには、VM インスタンスで [Azure 診断拡張機能をインストールして構成する](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)か、[App Insights を使用してアプリケーションを構成](#application-level-metrics-with-app-insights)します。
+より詳細なパフォーマンス メトリックを使用する自動スケール ルールを作成するには、VM インスタンスで [Azure Diagnostics 拡張機能をインストールして構成する](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)か、[App Insights を使用してアプリケーションを構成](#application-level-metrics-with-app-insights)します。
 
 ホストベースのメトリック、Azure 診断拡張機能におけるゲスト内 VM メトリック、および App Insights を使用する自動スケール ルールは、次の構成設定を使用できます。
 
@@ -111,12 +111,12 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 | 減らした後のカウント値   | 目的の最小量に達するために必要な数だけ VM インスタンスを削除します。                                                            |
 
 
-## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Azure 診断拡張機能におけるゲスト内 VM メトリック
-Azure 診断拡張機能は、VM インスタンス内部で実行されるエージェントです。 エージェントはパフォーマンス メトリックを監視して Azure ストレージに保存します。 これらのパフォーマンス メトリックには、ディスクの *AverageReadTime* や CPU の *PercentIdleTime* など、VM のステータスに関するより詳細な情報が含まれます。 CPU の使用状況やメモリ使用量の割合だけでなく、より詳細な VM パフォーマンスの認識に基づいて自動スケール ルールを作成できます。
+## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能におけるゲスト内 VM メトリック
+Azure Diagnostics 拡張機能は、VM インスタンス内部で実行されるエージェントです。 エージェントはパフォーマンス メトリックを監視して Azure ストレージに保存します。 これらのパフォーマンス メトリックには、ディスクの *AverageReadTime* や CPU の *PercentIdleTime* など、VM のステータスに関するより詳細な情報が含まれます。 CPU の使用状況やメモリ使用量の割合だけでなく、より詳細な VM パフォーマンスの認識に基づいて自動スケール ルールを作成できます。
 
-Azure 診断拡張機能を使用するには、VM インスタンスで使用する Azure のストレージ アカウントを作成し、Azure 診断エージェントをインストールしてから、特定のパフォーマンス カウンターをそのストレージ アカウントにストリームするように VM を構成します。
+Azure Diagnostics 拡張機能を使用するには、VM インスタンスで使用する Azure のストレージ アカウントを作成し、Azure Diagnostics エージェントをインストールしてから、特定のパフォーマンス カウンターをそのストレージ アカウントにストリームするように VM を構成します。
 
-詳しくは、[Linux VM](../virtual-machines/extensions/diagnostics-linux.md) または [Windows VM](../virtual-machines/extensions/diagnostics-windows.md) で Azure 診断拡張機能を有効にする方法に関する記事をご覧ください。
+詳しくは、[Linux VM](../virtual-machines/extensions/diagnostics-linux.md) または [Windows VM](../virtual-machines/extensions/diagnostics-windows.md) で Azure Diagnostics 拡張機能を有効にする方法に関する記事をご覧ください。
 
 
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights におけるアプリケーションレベルのメトリック

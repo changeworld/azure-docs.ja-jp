@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452132"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006753"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -59,7 +59,7 @@ ExpressRoute モニターのサポート対象リージョンの一覧は、[こ
 
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
-「[Windows コンピューターを Azure Log Analytics に接続する](../../azure-monitor/platform/agent-windows.md)」と「[Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
+「[Windows コンピューターを Azure Monitor に接続する](../platform/agent-windows.md)」と「[Operations Manager を Azure Monitor に接続する](../platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
 
 ### <a name="where-to-install-the-agents"></a>エージェントをインストールする場所 
 
@@ -101,7 +101,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)」で説明されている手順も使用できます。 
+1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順も使用できます。 
 2. Log Analytics ワークスペースを開いて、**[概要]** タイルを選びます。 
 3. " *このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[ネットワーク パフォーマンス モニター]** タイルを選びます。
 
@@ -151,7 +151,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 目的の機能を構成します。
 
-- [パフォーマンス モニター](network-performance-monitor-performance-monitor.md#configuration)
+- [パフォーマンスの監視](network-performance-monitor-performance-monitor.md#configuration)
 - [サービス エンドポイント モニター](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute モニター](network-performance-monitor-expressroute.md#configuration)
 
@@ -168,7 +168,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
  
 
  
-このソリューションは、代理トランザクションを使用してネットワークの正常性を評価します。 ネットワーク上のいたるところにインストールされた Log Analytics エージェントどうしが、TCP パケットまたは ICMP エコーを交換します。 エージェントが TCP パケットまたは ICMP エコーのどちらを使うかは、監視用に選ばれているプロトコルによって決まります。 エージェントは、このプロセスを通じて、ラウンドトリップ時間とパケット損失 (発生した場合) を把握します。 各エージェントはさらに、他のエージェントに対して traceroute を定期的に実行し、テストが必要なネットワークのさまざまなルートをすべて検出します。 このデータを使用することで、エージェントはネットワーク待機時間とパケット損失の数値を推定できます。 テストは 5 秒ごとに繰り返されます。 データは、エージェントによって約 3 分間集計されてから、Log Analytics サービスにアップロードされます。
+このソリューションは、代理トランザクションを使用してネットワークの正常性を評価します。 ネットワーク上のいたるところにインストールされた Log Analytics エージェントどうしが、TCP パケットまたは ICMP エコーを交換します。 エージェントが TCP パケットまたは ICMP エコーのどちらを使うかは、監視用に選ばれているプロトコルによって決まります。 エージェントは、このプロセスを通じて、ラウンドトリップ時間とパケット損失 (発生した場合) を把握します。 各エージェントはさらに、他のエージェントに対して traceroute を定期的に実行し、テストが必要なネットワークのさまざまなルートをすべて検出します。 このデータを使用することで、エージェントはネットワーク待機時間とパケット損失の数値を推定できます。 テストは 5 秒ごとに繰り返されます。 データは、エージェントによって約 3 分間集計されてから、Azure Monitor の Log Analytics ワークスペースにアップロードされます。
 
 
 
@@ -241,9 +241,9 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 ![トポロジ マップ](media/network-performance-monitor/topology-map.png)
  
 
-## <a name="log-analytics-search"></a>Log Analytics 検索 
+## <a name="log-queries-in-azure-monitor"></a>Azure Monitor でのログ クエリ
 
-すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[Log Analytics 検索](../../azure-monitor/log-query/log-query-overview.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの  **[共通クエリ]** 領域には、便利なクエリがいくつかあります。これらのクエリは、独自のクエリとレポートを作成するための出発点として利用できます。 
+すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[ログ クエリ](../log-query/log-query-overview.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの  **[共通クエリ]** 領域には、便利なクエリがいくつかあります。これらのクエリは、独自のクエリとレポートを作成するための出発点として利用できます。 
 
 ## <a name="alerts"></a>アラート
 
@@ -251,7 +251,7 @@ Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azu
 
 これは、すべての通知が[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)を使用して管理されることを意味します。  
 
-Log Analytics を介してアラートを作成する NPM ユーザーの場合: 
+Azure Monitor を介してアラートを作成する NPM ユーザーの場合: 
 1. Azure Portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。
 2. Network Performance Monitor ソリューションのタイルをクリックします。 
 3. [構成] に移動します。  

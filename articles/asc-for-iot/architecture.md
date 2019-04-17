@@ -1,32 +1,32 @@
 ---
-title: ASC for IoT ソリューションのアーキテクチャについて (プレビュー) | Microsoft Docs
-description: ASC for IoT サービスの情報フローについて説明します。
-services: ascforiot
+title: Azure Security Center for IoT ソリューションのアーキテクチャについて (プレビュー) | Microsoft Docs
+description: Azure Security Center for IoT サービスの情報フローについて説明します。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: ee81d9543525ba1187fc6c078391559929b9bf96
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: a0eb459391da65f8d0e2ae251809805924d07ad1
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541529"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862367"
 ---
-# <a name="asc-for-iot-architecture"></a>ASC for IoT のアーキテクチャ
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center for IoT のアーキテクチャ
 
-この記事では、IoT ソリューションの Azure Security Center の機能的なシステム アーキテクチャについて説明します。 
+Azure Security Center (ASC) for IoT ソリューションの機能的なシステム アーキテクチャについて説明します。 
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="asc-for-iot-components"></a>ASC for IoT のコンポーネント
@@ -59,6 +59,6 @@ ASC for IoT の推奨事項とアラート (分析パイプライン出力) は�
 - [使用の開始](getting-started.md)
 - [ソリューションを構成する](quickstart-configure-your-solution.md)
 - [IoT Hub でセキュリティを有効化する](quickstart-onboard-iot-hub.md)
-- [ASC for IoT についてのよく寄せられる質問](resources-frequently-asked-questions.md)
+- [ASC for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)
 - [ASC for IoT のセキュリティ アラート](concept-security-alerts.md)
 

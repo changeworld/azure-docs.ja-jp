@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 18d8a0e231e8b4dbe33911dd6267966674366904
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734491"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006146"
 ---
 # <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Azure Data Factory Mapping Data Flow の存在変換
 
@@ -25,3 +25,10 @@ ms.locfileid: "56734491"
 Data Flow がストリーム 1 の値をストリーム 2 と比較できるように、存在の 2 番目のソースを選択します。
 
 ソース 1 とソース 2 から、存在の有無を調べる値を持つ列を選択します。
+
+## <a name="multiple-exists-conditions"></a>複数存在条件
+
+存在の列条件の各行の横に、各行の上にカーソルと置くと + 記号が表示されます。 これによって、存在条件に対して複数の行を追加できます。
+
+## <a name="next-steps"></a>次の手順
+

@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 description: このクイック スタートでは、Azure Data Explorer クラスターとデータベースを作成し、データを取り込む (読み込む) 方法について説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 3/25/2019
-ms.openlocfilehash: aa98fb8f9569282e9636d5cb593523b9642395e1
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 03/25/2019
+ms.openlocfilehash: 41a15a29798953cb32029b7c4d1167020074e49f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758626"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046038"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 
@@ -30,7 +29,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -50,12 +49,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![クラスター作成フォーム](media/create-cluster-database-portal/create-cluster-form.png)
 
-    **設定** | **推奨値** | **フィールドの説明**
+    **Setting** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | サブスクリプション | 該当するサブスクリプション | クラスターに使用する Azure サブスクリプションを選択します。|
     | リソース グループ | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | クラスター名 | 一意のクラスター名 | クラスターを識別する一意の名前を選択します。 例: *mydataexplorercluster*。 指定したクラスター名に、ドメイン名 *[region].kusto.windows.net* が付加されます。 名前に使用できるのは、小文字と数字だけです。 3 文字以上 22 文字以内にする必要があります。
-    | Location | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。
+    | Location | *米国西部* | このクイック スタートでは *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。
     | Compute specification (コンピューティングの仕様) | *D13_v2* | このクイック スタートでは最低価格の仕様を選択します。 実稼働環境システムでは、ニーズに最も適した仕様を選択します。
     | | |
 
@@ -77,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![データベース作成フォーム](media/create-cluster-database-portal/create-database.png)
 
-    **設定** | **推奨値** | **フィールドの説明**
+    **Setting** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | データベース名 | *TestDatabase* | データベース名はクラスター内で一意である必要があります。
     | 保持期間 | *3650* | クエリにデータを使用できることが保証される期間 (日数) です。 期間は、データが取り込まれた時点から測定されます。

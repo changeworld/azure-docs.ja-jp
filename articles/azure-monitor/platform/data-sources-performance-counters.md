@@ -195,7 +195,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
-| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
 | TimeGenerated |データがサンプリングされた日付と時刻。 |
 
 ## <a name="sizing-estimates"></a>サイズ見積もり

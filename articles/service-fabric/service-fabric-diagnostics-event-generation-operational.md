@@ -251,5 +251,5 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 * [Service Fabric での診断](service-fabric-diagnostics-overview.md)の概要を把握する
 * [Service Fabric Eventstore の概要](service-fabric-diagnostics-eventstore.md)に関する記事で EventStore についてさらに学習する
-* より多くのログを収集するための [Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)の構成の変更
+* より多くのログを収集するための [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) の構成の変更
 * 稼動チャネルのログを参照するための [Application Insights の設定](service-fabric-diagnostics-event-analysis-appinsights.md)

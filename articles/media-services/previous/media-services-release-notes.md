@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e602cc28026b4b6660c90eaeb529e549dbba5f5
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295431"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621432"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください
 
 お客様に影響する問題の修正に尽力できるように、製品に関するご意見、ご要望をお寄せください。 問題の報告または質問を行うには、[Azure Media Services MSDN フォーラム]に投稿してください。 
 
@@ -42,13 +42,12 @@ ms.locfileid: "58295431"
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、[こちらのセクション](media-services-deliver-content-overview.md#known-issues)をご覧ください。 |
 | Media Services .NET SDK オブジェクトをシリアル化できないため、Azure Cache for Redis と連携しない。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache for Redis に追加しようとすると、例外がスローされます。 |
 
-
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
-Azure Media Services の [Media Hyperlapse プレビュー](media-services-hyperlapse-content.md)機能は間もなく廃止されます。 2018 年 12 月 19 日以降、Media Services では、Media Hyperlapse に対する変更や機能強化は行われません。 2019 年 3 月 29 日には廃止され、使用できなくなります。
+Azure Media Services の Media Hyperlapse プレビュー機能は間もなく廃止されます。 2018 年 12 月 19 日以降、Media Services では、Media Hyperlapse に対する変更や機能強化は行われません。 2019 年 3 月 29 日には廃止され、使用できなくなります。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -260,7 +259,6 @@ Media Services .NET SDK が 3.3.0.0 にバージョン アップしました。 
 
 * [Media Services によるライブ エンコードのプレビュー](media-services-manage-live-encoder-enabled-channels.md)
 * [動的マニフェスト](media-services-dynamic-manifest-overview.md)
-* [Azure Media Hyperlapse メディア プロセッサのプレビュー](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ## <a id="april_changes_15"></a>2015 年 4 月のリリース
 ### <a name="general-media-services-updates"></a>Media Services の全般的な更新

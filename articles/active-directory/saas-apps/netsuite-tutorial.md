@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73bb37607af681fcd505706ae99b308024be2c2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab329574ef425e8133ac746c185050efcc8bc15a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887427"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル:Azure Active Directory と NetSuite の統合
 
@@ -173,19 +173,19 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 1. ブラウザーで新しいタブを開き、NetSuite の会社のサイトに管理者としてサインインします。
 
-2. ページの上部にあるツール バーで、 **[セットアップ]** をクリックして、 **[会社]** に移動し、 **[機能の有効化]** をクリックします。
+2. ページの上部にあるツール バーで、**[セットアップ]** をクリックして、**[会社]** に移動し、**[機能の有効化]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. ページの中央にあるツール バーで、 **[SuiteCloud]** をクリックします。
+3. ページの中央にあるツール バーで、**[SuiteCloud]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4.  **[Manage Authentication]\(認証の管理\)** セクションで、 **[SAML シングル サインオン]** を選択して、NetSuite での SAML シングル サインオン オプションを有効にします。
+4. **[Manage Authentication]\(認証の管理)** セクションで、**[SAML シングル サインオン]** を選択して、NetSuite での SAML シングル サインオン オプションを有効にします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. ページの上部にあるツール バーで、 **[セットアップ]** をクリックします。
+5. ページの上部にあるツール バーで、**[セットアップ]** をクリックします。
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-setup.png)
 
@@ -279,7 +279,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

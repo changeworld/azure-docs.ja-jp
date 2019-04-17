@@ -44,7 +44,7 @@ worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azur
 > 
 
 ## <a name="onstart-method"></a>OnStart メソッド
-**OnStart** メソッドは、ロール インスタンスが Azure によってオンラインに切り替えられたときに呼び出されます。 OnStart コードの実行中、ロール インスタンスは " **ビジー** " とマークされ、外部トラフィックはロード バランサーからこのロールに送信されません。 このメソッドをオーバーライドして、イベント ハンドラーの実装や [Azure 診断](cloud-services-how-to-monitor.md)の開始などの初期化作業を実行できます。
+**OnStart** メソッドは、ロール インスタンスが Azure によってオンラインに切り替えられたときに呼び出されます。 OnStart コードの実行中、ロール インスタンスは " **ビジー** " とマークされ、外部トラフィックはロード バランサーからこのロールに送信されません。 このメソッドをオーバーライドして、イベント ハンドラーの実装や [Azure Diagnostics](cloud-services-how-to-monitor.md) の開始などの初期化作業を実行できます。
 
 **OnStart** が **true** を返す場合、インスタンスは正常に初期化されており、Azure は **RoleEntryPoint.Run** メソッドを呼び出します。 **OnStart** が **false** を返す場合、ロールは予定されたシャットダウン シーケンスを実行せず、すぐに終了します。
 

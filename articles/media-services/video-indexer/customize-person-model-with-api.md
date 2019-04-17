@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 6fe4f391b5337929efc3f6190a925fd1e967cf1c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999353"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360507"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Indexer API を使用して人物モデルをカスタマイズする
 
@@ -50,16 +50,16 @@ Curl の要求を以下に示します。
 curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
 ```
 
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-PersonModel?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)。
 
 ### <a name="request-parameters"></a>要求パラメーター 
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|文字列|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|文字列|はい|アカウントのグローバル一意識別子|
-|name|文字列|はい|人物モデルの名前|
-|accessToken|文字列|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|string|はい|アカウントのグローバル一意識別子|
+|name|string|はい|人物モデルの名前|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -95,16 +95,16 @@ Curl の要求を以下に示します。
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
 ```
 
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-PersonModel?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|文字列|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|文字列|はい|アカウントのグローバル一意識別子|
-|id|文字列|はい|人物モデルの ID (人物モデルの作成時に生成されます)|
-|accessToken|文字列|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|string|はい|アカウントのグローバル一意識別子|
+|id|string|はい|人物モデルの ID (人物モデルの作成時に生成されます)|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -132,15 +132,15 @@ Curl の要求を以下に示します。
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
 ```
 
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-PersonModels?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|文字列|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|文字列|はい|アカウントのグローバル一意識別子|
-|accessToken|文字列|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|string|はい|アカウントのグローバル一意識別子|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
 
 ### <a name="request-body"></a>要求本文
 
@@ -187,18 +187,18 @@ Curl の要求を以下に示します。
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
 ```
 
-[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-face?)。
+[必須のパラメーターを確認し、Video Indexer 開発者ポータルを使用してテストします](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?)。
 
 ### <a name="request-parameters"></a>要求パラメーター
 
 |**Name**|**Type**|**必須**|**説明**|
 |---|---|---|---|
-|location|文字列|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
-|accountId|文字列|はい|アカウントのグローバル一意識別子|
-|videoId|文字列|はい|更新する顔が表示されるビデオの ID。 これは、ビデオがアップロードされ、インデックスが付けられるときに作成されます。|
+|location|string|はい|呼び出しをルーティングする必要がある Azure リージョン。 詳細については、[Azure リージョンと Video Indexer](regions.md) に関するページを参照してください。|
+|accountId|string|はい|アカウントのグローバル一意識別子|
+|videoId|string|はい|更新する顔が表示されるビデオの ID。 これは、ビデオがアップロードされ、インデックスが付けられるときに作成されます。|
 |faceId|integer|はい|更新される顔の ID。 faceId はビデオ インデックスから取得できます|
-|accessToken|文字列|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
-|name|文字列|はい|顔を更新するときに使用する新しい名前。|
+|accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間以内に切れます。|
+|name|string|はい|顔を更新するときに使用する新しい名前。|
 
 名前は人物モデルに対して一意であるため、同じ人物モデルの 2 つの異なる顔に、同じ **name** パラメーター値を指定した場合、Video Indexer ではこれらの顔は同じ人物であると見なされ、ビデオのインデックスを再作成したときに集約されます。 
 

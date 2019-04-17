@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486060"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051191"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -22,6 +22,9 @@ Microsoft は、Azure サービスを常に使用できるようにする作業�
 Azure Storage では、geo 冗長ストレージ アカウントのアカウント フェールオーバー (プレビュー) がサポートされています。 アカウントのフェールオーバーでは、プライマリ エンドポイントが使用できなくなった場合に、ストレージ アカウントのフェールオーバー プロセスを開始できます。 フェールオーバーでは、セカンダリ エンドポイントが更新されて、ストレージ アカウントのプライマリ エンドポイントになります。 フェールオーバーが完了すると、クライアントは新しいプライマリ エンドポイントへの書き込みを開始できます。
 
 この記事では、アカウントのフェールオーバーに関する概念とプロセスについて、および顧客への影響が最小限になるようにストレージ アカウントの復旧を準備する方法について説明します。 Azure portal または PowerShell でアカウントのフェールオーバーを開始する方法については、「[Initiate an account failover (preview) (アカウントのフェールオーバー (プレビュー) を開始する)](storage-initiate-account-failover.md)」をご覧ください。
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>適切な冗長性オプションを選択する
 
@@ -122,14 +125,14 @@ GRS および RA-GRS アカウントの場合は、DNS エントリが更新さ�
 プレビューに登録するには、PowerShell から次のコマンドを実行します。 忘れずに、角かっこ内のプレースホルダーを自分のサブスクリプション ID に置き換えてください。
 
 ```powershell
-Connect-AzureRmAccount -SubscriptionId <subscription-id>
-Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Connect-AzAccount -SubscriptionId <subscription-id>
+Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 プレビューの承認を受け取るまで、1 ～ 2 日かかる場合があります。 登録が承認されたことを確認するには、次のコマンドを実行します。
 
 ```powershell
-Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 ### <a name="additional-considerations"></a>追加の考慮事項 

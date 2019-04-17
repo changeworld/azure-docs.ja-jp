@@ -254,7 +254,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## <a name="compute-resource-template"></a>コンピューティング リソース テンプレート
 コンピューティング リソース (Virtual Machine や Service Fabric など) で診断を有効にするには、次の手順を実行する必要があります。
 
-1. VM のリソース定義に Azure 診断の拡張機能を追加します。
+1. VM のリソース定義に Azure Diagnostics の拡張機能を追加します。
 2. パラメーターとしてストレージ アカウントおよびイベント ハブを指定します。
 3. すべての XML 文字を正しくエスケープして、WADCfg XML ファイルの内容を XMLCfg プロパティに追加します。
 

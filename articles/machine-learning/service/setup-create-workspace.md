@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521008"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879286"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースを作成する
 
@@ -37,11 +37,11 @@ Azure Machine Learning service を使用するには、[**Azure Machine Learning
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->他の Azure サービスと同様に、特定の制限とクォータが Machine Learning に関連付けられています。 クォータの説明と、クォータの引き上げを要求する方法については、[こちら](how-to-manage-quotas.md)を参照してください。
+>他の Azure サービスと同様に、特定の制限とクォータが Machine Learning に関連付けられています。 [クォータの説明と、クォータの引き上げを要求する方法については、こちらを参照してください。](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>前提条件
-ワークスペースを作成するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+ワークスペースを作成するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 ## <a name="portal"></a> Azure portal
 
@@ -139,7 +139,7 @@ Python SDK を使用して Jupyter Notebook にワークスペースを作成し
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-1. [Azure portal のサブスクリプションの一覧](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、`<azure-subscription-id>` パラメーターの値を見つけます。 自分のロールが所有者または共同作成者になっている任意のサブスクリプションを使用します。
+1. [Azure portal のサブスクリプションの一覧](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、`<azure-subscription-id>` パラメーターの値を見つけます。 自分のロールが所有者または共同作成者になっている任意のサブスクリプションを使用します。 ロールの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」の記事をご覧ください。
 
    ```python
    from azureml.core import Workspace

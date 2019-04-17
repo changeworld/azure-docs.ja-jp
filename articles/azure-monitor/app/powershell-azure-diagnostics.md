@@ -1,6 +1,6 @@
 ---
 title: Azure での PowerShell を使用した Application Insights の設定 | Microsoft Docs
-description: Application Insights にパイプするための Azure 診断の構成を自動化します。
+description: Application Insights にパイプするための Azure Diagnostics の構成を自動化します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle

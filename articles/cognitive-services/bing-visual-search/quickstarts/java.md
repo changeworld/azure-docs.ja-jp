@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 79b118c0a4fd28eacf24dc63f04f36314807b41a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2fe4e9dad0b198fe54e06ce07100d231f1f7d157
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531098"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046446"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>クイック スタート:Bing Visual Search REST API と Java を使用して画像に関する分析情報を取得する
 
-このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、検索結果を表示することができます。 このシンプルな C# アプリケーションは、API に画像をアップロードし、それについて返された情報を表示するというものです。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、結果を表示することができます。 この Java アプリケーションは、API に画像をアップロードし、返された情報を表示するものです。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-ローカルの画像をアップロードする際には、フォーム データに Content-Disposition ヘッダーが含まれている必要があります。 その `name` パラメーターには "image" を設定する必要があり、`filename` パラメーターには任意の文字列を設定できます。 フォームの内容は、イメージのバイナリです。 アップロードできるイメージの最大サイズは、1 MB です。
+ローカルの画像をアップロードする際には、フォーム データに `Content-Disposition` ヘッダーが含まれている必要があります。 その `name` パラメーターは "image" に設定する必要があります。`filename` パラメーターは任意の文字列に設定できます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
 
 ```
 --boundary_1234-abcd
@@ -35,9 +35,8 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="prerequisites"></a>前提条件
 
 * [Java Development Kit(JDK) 7 または 8](https://aka.ms/azure-jdks)
-* [Gson ライブラリ](https://github.com/google/gson)
+* [Gson Java ライブラリ](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
-
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -64,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. API エンドポイント、サブスクリプション キー、および画像へのパスを格納する変数を作成します。 
+2. API エンドポイント、サブスクリプション キー、および画像へのパスを格納する変数を作成します。
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -87,13 +86,13 @@ API からの JSON 応答を `JsonParser` を使って読みやすくするた�
 
 ## <a name="construct-the-search-request-and-query"></a>検索要求とクエリを構築する
 
-1. アプリケーションのメイン メソッドでは、`HttpClientBuilder.create().build();` を使用して Http クライアントを作成します。
+1. アプリケーションのメイン メソッドでは、`HttpClientBuilder.create().build();` を使用して HTTP クライアントを作成します。
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. 画像を API にアップロードするための `HttpEntity` を作成します。
+2. 画像を API にアップロードするための `HttpEntity` オブジェクトを作成します。
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -112,7 +111,7 @@ API からの JSON 応答を `JsonParser` を使って読みやすくするた�
 
 ## <a name="receive-and-process-the-json-response"></a>JSON 応答の受信と処理
 
-1. `HttpClient.execute()` を使用して API に要求を送信し、応答を `InputStream` オブジェクトに格納します。
+1. `HttpClient.execute()` メソッドを使用して API に要求を送信し、応答を `InputStream` オブジェクトに格納します。
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
@@ -130,4 +129,4 @@ System.out.println(prettify(json));
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Custom Search Web アプリの作成](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

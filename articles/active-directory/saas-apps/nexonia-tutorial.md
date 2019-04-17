@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 9040c5028b3046ed60f9e30de76a9b13d2b5425b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5f2f31f87bc3732b7b3a5593217ebde4ee213c9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837157"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>チュートリアル:Azure Active Directory と Nexonia の統合
 
@@ -50,7 +50,7 @@ Azure AD と Nexonia の統合を構成するには、次のものが必要で�
 
 Azure AD への Nexonia の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Nexonia を追加する必要があります。
 
-**ギャラリーから Nexonia を追加するには、次の手順を実行します。**
+**ギャラリーから Nexonia を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -104,9 +104,9 @@ Nexonia で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Nexonia のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに、`Nexonia` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `Nexonia`
 
-    b. **[応答 URL]** ボックスに、`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Nexonia クライアント サポート チーム](https://nexonia.zendesk.com/hc/requests/new)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -147,7 +147,7 @@ Nexonia で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -194,7 +194,7 @@ Nexonia で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

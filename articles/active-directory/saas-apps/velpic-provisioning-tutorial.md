@@ -13,20 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 059ce3a23a9bdacfb978ccad775c7da853772e3f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344420"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270915"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのための Velpic の構成
 
-
-このチュートリアルでは、Azure AD から Velpic にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するために Velpic と Azure AD で実行する必要がある手順について説明します。 
+このチュートリアルでは、Azure AD から Velpic にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するために Velpic と Azure AD で実行する必要がある手順について説明します。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
@@ -35,9 +34,9 @@ ms.locfileid: "57344420"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure Active Directory テナント
-*   [Enterprise プラン](https://www.velpic.com/pricing.html)以上の有効な Velpic テナント 
-*   管理者アクセス許可がある Velpic のユーザー アカウント 
+* Azure Active Directory テナント
+* [Enterprise プラン](https://www.velpic.com/pricing.html)以上の有効な Velpic テナント
+* 管理者アクセス許可がある Velpic のユーザー アカウント
 
 ## <a name="assigning-users-to-velpic"></a>Velpic へのユーザーの割り当て
 
@@ -49,32 +48,30 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-velpic"></a>ユーザーを Velpic に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを Velpic に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Velpic に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*   Velpic にユーザーを割り当てるときは、割り当てダイアログで**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **[既定のアクセス]** ロールはプロビジョニングに使用できないので、このロールのユーザーはスキップされます。
+* Velpic にユーザーを割り当てるときは、割り当てダイアログで**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 **[既定のアクセス]** ロールはプロビジョニングに使用できないので、このロールのユーザーはスキップされます。
 
-
-## <a name="configuring-user-provisioning-to-velpic"></a>Velpic へのユーザー プロビジョニングの構成 
+## <a name="configuring-user-provisioning-to-velpic"></a>Velpic へのユーザー プロビジョニングの構成
 
 このセクションでは、Azure AD を Velpic のユーザー アカウント プロビジョニング API に接続する手順と、Azure AD のユーザーとグループの割り当てに基づいて、割り当て済みのユーザー アカウントを Velpic で作成、更新、無効化するようにプロビジョニング サービスを構成する手順を説明します。
 
->[!TIP]
->[Azure portal](https://portal.azure.com) で提供される手順に従って、Velpic で SAML ベースのシングル サインオンを有効にすることもできます。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
-
+> [!TIP]
+> [Azure portal](https://portal.azure.com) で提供される手順に従って、Velpic で SAML ベースのシングル サインオンを有効にすることもできます。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Azure AD で Velpic への自動ユーザー アカウント プロビジョニングを構成するには
 
-1.  [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
 2. シングル サインオンのために Velpic を既に構成している場合は、検索フィールドで Velpic のインスタンスを検索します。 構成していない場合は、**[追加]** を選択し、アプリケーション ギャラリーで **Velpic** を検索します。 検索結果から Velpic を選択し、アプリケーションの一覧に追加します。
 
-3.  Velpic のインスタンスを選択し、**[プロビジョニング]** タブを選択します。
+3. Velpic のインスタンスを選択し、**[プロビジョニング]** タブを選択します。
 
-4.  **[プロビジョニング モード]** を **[自動]** に設定します。
+4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![Velpic のプロビジョニング](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5.  **[管理者資格情報]** セクションで、Velpic の**テナントの URL とシークレット トークン**を入力します (これらの値は Velpic アカウントで確認できます **([Manage]\(管理\)** > **[Integration]\(統合\)** > **[Plugin]\(プラグイン\)** > **[SCIM]**))。
+5. **[管理者資格情報]** セクションで、Velpic の**テナントの URL とシークレット トークン**を入力します (これらの値は Velpic アカウントで確認できます **([Manage]\(管理\)** > **[Integration]\(統合\)** > **[Plugin]\(プラグイン\)** > **[SCIM]**))。
 
     ![承認の値](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -82,7 +79,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-8. **[Save]** をクリックします。 
+8. **[Save]** をクリックします。
 
 9. [マッピング] セクションの **[Synchronize Azure Active Directory Users to Asana]\(Azure Active Directory ユーザーを Velpic に同期する\)** を選択します。
 
@@ -90,12 +87,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. Velpic に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-12. **[Save]** をクリックします。 
+12. **[Save]** をクリックします。
 
 これで、[ユーザーとグループ] セクションで Velpic に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
-
 
 ## <a name="additional-resources"></a>その他のリソース
 

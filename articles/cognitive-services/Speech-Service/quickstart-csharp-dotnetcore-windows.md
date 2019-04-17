@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:音声を認識する (C# (.NET Core Windows)) - Speech Services
+title: クイック スタート:音声を認識する (C# (.NET Core)) - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Windows の .NET Core で C# と Speech SDK を使用して音声を認識する方法について説明します
+description: Windows または macOS の .NET Core で C# と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 13d5d5b57c4c52b213f3c369244348b00a49332b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895615"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009429"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:.NET Core 用 Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、Cognitive Services [Speech SDK](speech-sdk.md) を使用してWindows の .NET Core 用の C# コンソール アプリケーションを作成します。 PC のマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
+この記事では、Cognitive Services [Speech SDK](speech-sdk.md) を使用して Windows または macOS の .NET Core 用の C# コンソール アプリケーションを作成します。 PC のマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
 
 > [!NOTE]
 > .NET Core は、[.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 仕様を実装した、オープン ソース、クロスプラットフォームの .NET プラットフォームです。
@@ -32,9 +32,9 @@ ms.locfileid: "57895615"
 
 このクイック スタートでは以下が必要です。
 
-* [.NET コア SDK](https://dotnet.microsoft.com/download)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -71,7 +71,7 @@ ms.locfileid: "57895615"
 オーディオ ファイルから音声を読み取る方法など、追加のサンプルは GitHub で入手できます。
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のサンプル コードを詳しく見てみる](https://aka.ms/csspeech/samples)
+> [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 

@@ -1,21 +1,20 @@
 ---
-title: Azure データ エクスプローラーでクラスターを作成できない
+title: Azure Data Explorer クラスター作成失敗のトラブルシューティング
 description: この記事では、Azure データ エクスプローラーでクラスターを作成できない問題を解消する手順について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b95dabbdecd98902da3bf8217a14f41019c31e82
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9e6b3f53f07ac86d6b648a8562be4ef45879c37e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757691"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044116"
 ---
-# <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>トラブルシューティング:Azure データ エクスプローラーでクラスターを作成できない
+# <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>トラブルシューティング:Azure Data Explorer のクラスターの作成が失敗した
 
 めったにないことですが、もし Azure データ エクスプローラーのクラスターを作成できない場合、次の手順に従ってください。
 

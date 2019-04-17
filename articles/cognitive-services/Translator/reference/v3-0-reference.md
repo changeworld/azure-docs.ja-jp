@@ -3,19 +3,19 @@ title: Translator Text API V3.0 リファレンス
 titlesuffix: Azure Cognitive Services
 description: Translator Text API V3.0 のリファレンス ドキュメント。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194964"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918809"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -55,11 +55,11 @@ Microsoft Cognitive Services の Translator Text API または [Cognitive Servic
 
 お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表で、それぞれの使用方法を説明します。
 
-|ヘッダー|説明|
+|headers|説明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
-|Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
-|Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービス サブスクリプションで、マルチサービスの秘密鍵を渡す場合に使用します*"。<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
+|Authorization|*認証トークンを渡す場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
+|Ocp-Apim-Subscription-Region|*マルチサービスの秘密鍵を渡す場合は、Cognitive Services マルチサービス サブスクリプションで使用します。*<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
 
 ###  <a name="secret-key"></a>秘密鍵
 1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 単に、`Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。

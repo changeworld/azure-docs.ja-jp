@@ -1,5 +1,5 @@
 ---
-title: Java Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Docs
+title: Java JMS Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Docs
 description: Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法。
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453407"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885555"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
@@ -382,8 +382,8 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
-* [Service Bus .NET API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
-* [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)
+* [.NET サービス バス API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)
+* [Service Bus AMQP 1.0 開発者ガイド](service-bus-amqp-dotnet.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)
 

@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: ae9f2cbdd659b7eaf3558717be19f324e803d906
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f852fe67443193ad19cb9bd57e0fd2294f3c817
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522334"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266037"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -25,9 +25,9 @@ ms.locfileid: "58522334"
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-|**ワークロード重要度をプレビューとして利用できるようになりました**|ワークロード重要度を利用すれば、データ エンジニアは重要度で要求を分類できます。 重要度の高い要求にはリソースへの迅速なアクセスが与えられ、SLA に順守します。  ワークロード重要度を利用することで、リソースの比較的少ない共有環境で、ビジネス的な価値の高い仕事が SLA を順守できます。<br/><br/>ワークロード重要度の詳細については、ドキュメントの[分類](sql-data-warehouse-workload-classification.md)と[重要度](sql-data-warehouse-workload-importance.md)に関する概要記事を参照してください。 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) のドキュメントも参照してください。<br/><br/>下の動画でワークロード重要度が実際に使われている様子をご覧ください。<br/>[Workload Management concepts](  https://www.youtube.com/embed/QcCRBAhoXpM) (ワークロード管理の概念)<br/>[Workload Management scenarios](https://www.youtube.com/embed/_2rLMljOjw8) (ワークロード管理のシナリオ)|
+|**ワークロード重要度をプレビューとして利用できるようになりました**|ワークロード重要度を利用すれば、データ エンジニアは重要度で要求を分類できます。 重要度の高い要求にはリソースへの迅速なアクセスが与えられ、SLA に順守します。  ワークロード重要度を利用することで、リソースの比較的少ない共有環境で、ビジネス的な価値の高い仕事が SLA を順守できます。<br/><br/>ワークロード重要度の詳細については、ドキュメントの[分類](sql-data-warehouse-workload-classification.md)と[重要度](sql-data-warehouse-workload-importance.md)に関する概要記事を参照してください。 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) のドキュメントも参照してください。<br/><br/>下の動画でワークロード重要度が実際に使われている様子をご覧ください。<br/>[ワークロード管理の概念](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[ワークロード管理のシナリオ](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**GROUP BY ROLLUP**|ROLLUP が Azure データ ウェアハウスの GROUP BY オプションでサポートされるようになりました。   GROUP BY ROLLUP によって列式の組み合わせごとにグループが作成されます。 GROUP BY ではまた、結果が小計と総計に "ロール アップ" されます。 それを行うには、右から左へ移動し、グループと集計が作成される列式の数を減らします。  列の順序は ROLLUP 出力に影響を与えます。結果セット内の行数に影響を与えることもあります。<br/><br/>GROUP BY ROLLUP の詳細については、「[GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)」という記事をご覧ください。
-|**DWU の使用量と CPU ポータルのメトリックの精度向上**|SQL Data Warehouse によって、Azure portal のメトリックの精度が大幅に改善されます。  このリリースでは、CPU と DWU の使用量のメトリックの定義が修正され、コンピューティング ノード全体でワークロードが正しく反映されます。|
+|**DWU の使用量と CPU ポータルのメトリックの精度向上**|SQL Data Warehouse によって、Azure portal のメトリックの精度が大幅に改善されます。  このリリースでは、CPU と DWU の使用量のメトリックの定義が修正され、コンピューティング ノード全体でワークロードが正しく反映されます。 この修正の前は、メトリック値は実際より少なく報告されていました。 Azure portal では、使用された DWU と CPU メトリックに増加が予想されます。 |
 |**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp; [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
 | | |
 
@@ -93,7 +93,7 @@ ms.locfileid: "58522334"
 
 - [ブログ - Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Customer Advisory Team のブログ](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
-- [顧客の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [お客様の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)

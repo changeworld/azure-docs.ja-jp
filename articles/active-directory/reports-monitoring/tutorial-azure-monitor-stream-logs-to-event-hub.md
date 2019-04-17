@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Azure Active Directory ログを Azure イベント ハブにストリームする (プレビュー) | Microsoft Docs
-description: Azure Active Directory のログをイベント ハブにプッシュするよう Azure 診断を設定する方法について説明します (プレビュー)
+description: Azure Active Directory のログをイベント ハブにプッシュするよう Azure Diagnostics を設定する方法について説明します (プレビュー)
 services: active-directory
 documentationcenter: ''
 author: MarkusVi

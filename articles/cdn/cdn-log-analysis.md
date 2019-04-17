@@ -27,7 +27,7 @@ ms.locfileid: "56650548"
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Azure 診断ログによるコア分析
 
-コア分析は、、すべての価格レベルの CDN エンドポイントで使用できます。 Azure 診断ログを使用すると、コア分析を、Azure Storage、イベント ハブ、または Azure Monitor ログにエクスポートできます。 Azure Monitor ログには、ユーザーによる構成とカスタマイズに対応したグラフを含むソリューションが用意されています。 Azure 診断ログの詳細については、「[Azure 診断ログ](cdn-azure-diagnostic-logs.md)」を参照してください。
+コア分析は、、すべての価格レベルの CDN エンドポイントで使用できます。 Azure Diagnostics ログを使用すると、コア分析を、Azure Storage、イベント ハブ、または Azure Monitor ログにエクスポートできます。 Azure Monitor ログには、ユーザーによる構成とカスタマイズに対応したグラフを含むソリューションが用意されています。 Azure 診断ログの詳細については、「[Azure 診断ログ](cdn-azure-diagnostic-logs.md)」を参照してください。
 
 ## <a name="verizon-core-reports"></a>Verizon コア レポート
 

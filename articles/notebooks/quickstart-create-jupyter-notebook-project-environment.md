@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 35b5f1e29ae125dcac79c278578e900a73ffc7be
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 368bc0402e56479ad8696ca9ed0702f246a670bd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771390"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262008"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>クイック スタート:カスタム環境でのプロジェクトの作成
 
@@ -61,7 +61,7 @@ Azure Notebooks のプロジェクトは、ノートブック、データ ファ
 
     | Operation | 説明 |
     | --- | --- |
-    | requirements.txt | Python プロジェクトでは、requirements.txt ファイルで依存関係が定義されています。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択し、表示される追加のドロップダウンで Python のバージョンも選択します。 必要な場合は、**[キャンセル]** を選択してプロジェクトに戻り、ファイルをアップロードまたは作成してから、**[Project Settings]\(プロジェクトの設定\)** > **[Environment]\(環境\)** タブに戻って、新しいステップを作成します。 このステップを配置した場合、プロジェクトでノートブックを実行すると、`pip install -r <file>` が自動的に実行されます |
+    | requirements.txt | Python プロジェクトでは、requirements.txt ファイルで依存関係が定義されています。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択し、表示される追加のドロップダウンで Python のバージョンも選択します。 必要な場合は、**[キャンセル]** を選択してプロジェクトに戻り、ファイルをアップロードまたは作成してから、**[Project Settings]\(プロジェクトの設定\)** > **[Environment]\(環境\)** タブに戻って、新しいステップを作成します。 このステップを配置した場合、プロジェクトでノートブックを実行すると、次のものが自動的に実行されます `pip install -r <file>` |
     | シェル スクリプト | 環境を初期化するために実行するコマンドが含まれる bash シェル スクリプト (通常は、拡張子が *.sh* のファイル) を指定するために使用します。 |
     | Environment.yml | 環境を管理するために Conda を使用する Python プロジェクトでは、*environments.yml* ファイルを使用して依存関係を記述します。 このオプションでは、プロジェクトのファイル一覧から適切なファイルを選択します。 |
 

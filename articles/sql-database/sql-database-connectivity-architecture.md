@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database と SQL Data Warehouse への Azure トラフィックの転送 | Microsoft Docs
-description: この文書では、Azure 内外からの Azure SQL Database と SQL Data Warehouse の接続アーキテクチャについて説明します。
+description: このドキュメントでは、Azure 内外からのデータベース接続のための Azure SQL の接続アーキテクチャを説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,34 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918605"
+ms.locfileid: "59006778"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
 この記事では Azure SQL Database および SQL Data Warehouse の接続アーキテクチャのほか、さまざまなコンポーネントがどのように機能し、トラフィックが Azure SQL インスタンスに送信されるか説明します。 これらの接続コンポーネントが機能し、Azure 内外からクライアントが接続する Azure SQL Database または SQL Data Warehouse にネットワーク トラフィックが送信されます。 この記事では、接続方法を変更するためのスクリプト サンプルと、既定の接続設定の変更に関連する考慮事項も提供します。
-
-> [!IMPORTANT]
-> **[今後の変更] Azure SQL サーバーへのサービス エンドポイントの接続の場合、`Default` の接続動作が `Redirect` に変わります。**
-> 接続のアーキテクチャに応じて、新しいサーバーを作成し、既存のサーバーの接続の種類を明示的に [リダイレクト] (推奨) または [プロキシ] に設定することをお勧めします。
->
-> サービス エンドポイントを通じた接続が、この変更の結果として既存の環境で切断しないようにするために、以下の操作にテレメトリを使用します。
->
-> - 変更前にサービス エンドポイントからアクセスされたサーバーを検出した場合、接続タイプを `Proxy` に切り替えます。
-> - 他のすべてのサーバーについては、接続タイプを `Redirect` に切り替えます。
->
-> サービス エンドポイントのユーザーは、次のシナリオでも影響を受ける可能性があります。
->
-> - アプリケーションがめったに既存のサーバーに接続しないため、テレメトリがこれらのアプリケーションに関する情報を取得しなかった場合
-> - サービス エンドポイント接続の既定の動作が次であるとしたときに、自動デプロイ ロジックが SQL データベース サーバーを作成する場合 `Proxy`
->
-> Azure SQL server へのサービス エンドポイント接続を確立できず、この変更による影響を受けていると思われる場合は、接続の種類が明示的に `Redirect` に設定されていることを確認します。 この場合は、ポート 11000 から 11999 の SQL [サービス タグ](../virtual-network/security-overview.md#service-tags)に所属する、リージョン内のすべての Azure IP アドレスに対して VM ファイアウォール ルールおよびネットワーク セキュリティ グループ (NSG) を開く必要があります。 これがオプションでない場合、明示的にサーバーを `Proxy` に切り替えます。
-> [!NOTE]
-> このトピックは、単一データベースとエラスティック プールをホストする Azure SQL Database サーバー、SQL Data Warehouse データベース、Azure Database for MySQL、Azure Database for MariaDB、および Azure Database for PostgreSQL に適用されます。 簡単にするため、SQL Database、SQL Data Warehouse、Azure Database for MySQL、Azure Database for MariaDB、Azure Database for PostgreSQL を参照する場合に、SQL Database を使用します。
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 

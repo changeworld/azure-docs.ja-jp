@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 16c8444bdf91caf9da6f9625485090d09058ba52
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 66bda68b1313a7c172e273671bc3a03503d08e0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522812"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876582"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>クイック スタート:Python を使用してテキスト読み上げ音声の一覧を取得する
 
@@ -82,7 +82,7 @@ def get_token(self):
 
 ここでは要求を構築して、返された音声の一覧を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
 
-次に、要求に必要なヘッダーを追加します。 最後に、サービスに対して要求を実行します。 要求が成功して状態コード 200 が返された場合、タイムスタンプの付いたファイルに音声応答が書き込まれます。
+次に、要求に必要なヘッダーを追加します。 最後に、サービスに対して要求を実行します。 要求が成功し、状態コード 200 が返された場合、応答がファイルに書き込まれます。
 
 このコードを `GetVoices` クラスにコピーします。
 
@@ -135,6 +135,6 @@ python get-voices.py
 
 ## <a name="see-also"></a>関連項目
 
-* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
+* [Text to Speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)
 * [カスタム音声を作成するための音声サンプルを録音する](record-custom-voice-samples.md)

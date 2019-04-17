@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: e9bfb835a1dea240573c21ccbbe13088561851ab
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661413"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259135"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 監視パートナー
 
@@ -45,6 +45,9 @@ Service Fabric アプリケーションとの統合の点で親和性の高い A
 
 ELK スタックは、各オープンソース テクノロジ (Elasticsearch、Logstash、Kibana) を組み合わせたものです。 これらを組み合わせて使用することで、Service Fabric の監視データと診断データを収集、格納、分析することができます。 これを Service Fabric のネイティブ Java アプリケーションで行うチュートリアルについては、[こちら](service-fabric-tutorial-java-elk.md)を参照してください。 
 
+## <a name="humio"></a>Humio
+
+Humio は、ご利用のアプリケーションからのログや、クラウドまたはオンプレミスの Service Fabric からのイベントを、リアルタイムで収集できるログ コレクション サービスです。 ライブの可観測性に加えて、Humio は、ご利用の診断からの分析情報を表示したり収集したりするための最先端の分析機能と視覚化機能を備えています。 Humio にはコスト効率に優れた価格プランが用意されており、超高速を維持しながらスケーリングできるように組み込まれます。 これは、Service Fabric プラットフォームのイベントおよびアプリケーションのテレメトリと直接統合されます。 Humio と Service Fabric の統合については、[こちら](https://github.com/humio/service-fabric-humio)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

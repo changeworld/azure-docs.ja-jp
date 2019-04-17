@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d263e3bc342277ac7709f736bacdaa95d1c2865e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccb837001a4ef69ac6145e2f93bb9eb4766120f0
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58408466"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492133"
 ---
 # <a name="migrate-iot-resources-to-global-azure"></a>IoT リソースをグローバル Azure に移行する
 
@@ -64,9 +64,9 @@ Azure Cosmos DB リソースを移行するには、次の手順を完了する�
 
 Azure Notification Hubs の 1 つのインスタンスから別のインスタンスに設定を移行するには、次のように、エクスポートしてからすべての登録トークンおよびタグをインポートします。
 
-1. [既存の通知ハブ登録のエクスポート](https://msdn.microsoft.com/library/azure/dn790624.aspx)を Azure BLOB ストレージ コンテナーに対して行います。
-1. ターゲット環境内に新しい通知ハブを作成します。
-1. BLOB ストレージから新しい通知ハブに[ご利用の登録トークンをインポート](https://msdn.microsoft.com/library/azure/dn790624.aspx)します。
+1. [既存の通知ハブ登録のエクスポート](/previous-versions/azure/azure-services/dn790624(v=azure.100))を Azure BLOB ストレージ コンテナーに対して行います。
+1. ターゲット環境に新しい通知ハブを作成します。
+1. BLOB ストレージから新しい通知ハブに、[登録トークンをインポート](/previous-versions/azure/azure-services/dn790624(v=azure.100))します。
 
 詳細:
 
@@ -103,7 +103,7 @@ IoT Hub では、ネイティブで複製はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリ内のリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

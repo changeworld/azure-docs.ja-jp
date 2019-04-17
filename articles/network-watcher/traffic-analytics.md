@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805059"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051888"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -28,6 +28,9 @@ Traffic Analytics は、クラウド ネットワークでのユーザーとア�
 - 開いているポート、インターネット にアクセスしようとしているアプリケーション、承認されていないネットワークに接続している仮想マシン (VM) などの情報を使用して、ネットワークに対するセキュリティの脅威を特定し、ネットワークをセキュリティで保護する。
 - Azure リージョン間やインターネット上でのトラフィック フロー パターンを把握して、ネットワークのデプロイをパフォーマンスと容量に最適化する。
 - ネットワークでの接続の失敗の原因となるネットワークの構成の誤りを特定する。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="why-traffic-analytics"></a>トラフィック分析が必要な理由
 
@@ -133,7 +136,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 トラフィック分析を使用するには、事前にネットワーク リソース プロバイダーを再登録しておく必要があります。 次のコード ボックスの **[Try It]** をクリックして、Azure Cloud Shell を開きます。 Cloud Shell により、Azure サブスクリプションに自動的にログインします。 Cloud Shell が開いたら、次のコマンドを入力して、ネットワーク リソース プロバイダーを再登録します。
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
 ```
 
 ### <a name="select-a-network-security-group"></a>ネットワーク セキュリティ グループを選択する
@@ -153,13 +156,13 @@ Azure Portal の左側にある **[監視]** を選択し、**[Network Watcher]*
 Azure Insights プロバイダーをサブスクリプションに登録します (まだ登録されていない場合)。
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Insights
+Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
 NSG フロー ログの保存先となる Azure ストレージ アカウントがまだない場合は、ストレージ アカウントを作成する必要があります。 次のコマンドを使用して、ストレージ アカウントを作成できます。 コマンドを実行する前に、`<replace-with-your-unique-storage-account-name>` を Azure 全体で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) に置き換えます。 必要に応じて、リソース グループ名を変更することもできます。
 
 ```azurepowershell-interactive
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
   -Location westcentralus `
   -Name <replace-with-your-unique-storage-account-name> `
   -ResourceGroupName myResourceGroup `
@@ -182,7 +185,7 @@ New-AzureRmStorageAccount `
 
 トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。
 
-また、AzureRm PowerShell モジュール バージョン 6.2.1 以降で [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+また、Azure PowerShell で [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
 ## <a name="view-traffic-analytics"></a>トラフィック分析の表示
 

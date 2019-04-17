@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550681"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010381"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Speech SDK を使用してオーディオ入力デバイスを選択する
 
-Speech SDK のバージョン 1.3.0 では、オーディオ入力を選択するための API が導入されています。この記事では、システムに接続されているオーディオ デバイスの ID を取得する方法について説明します。
+Speech SDK のバージョン 1.3.0 では、オーディオ入力を選択するための API が導入されています。
+この記事では、システムに接続されているオーディオ デバイスの ID を取得する方法について説明します。
 それらは、`AudioConfig` オブジェクトを使用してオーディオ デバイスを構成することで、Speech SDK で使用できるようになります。
 
 ```C++
@@ -42,8 +43,11 @@ audioConfig = AudioConfiguration.FromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
-> [!NOTE]
-> JavaScript では、まだこの機能を使用できません。
+```JavaScript
+audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
+```
+>[!Note]
+> Node.js で実行される JavaScript ではマイクは使用できません。
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>デスクトップ アプリケーション向けの Windows でのオーディオ デバイス ID
 
@@ -367,6 +371,10 @@ iOS では、Speech SDK を使用したオーディオ デバイスの選択は�
 ```
 
 音声対応アプリでの Bluetooth ヘッドセットの使用を有効にします。
+
+## <a name="audio-device-ids-in-javascript"></a>JavaScript でのオーディオ デバイス ID
+
+JavaScript では、[MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) メソッドを使用してメディア デバイスを列挙することにより、`fromMicrophone(...)` に渡すデバイス ID を検索できます。
 
 ## <a name="next-steps"></a>次の手順
 

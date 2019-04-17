@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b99b7b03898ad72b4d9c7cc2ba9154855475ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49234472481e30cf74efa3e72ac0e4f31466fada
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488107"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884892"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Azure AD Connect 管理エージェントとは 
 Azure AD Connect 管理エージェントは Azure Active Directory Connect の新しいコンポーネントであり、Azure Active Directory Connect サーバーにインストールされます。 サポート ケースを開いたとき、Microsoft のサポート エンジニアの問題解決に役立つ特定のデータを Active Directory 環境から収集するために使用されます。
@@ -39,7 +39,7 @@ Microsoft サポート エンジニアはシステム内のいかなるデータ
 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Microsoft サポート エンジニアには自分のデータにアクセスして欲しくない場合、どうすればよいですか。 
  
-サポート時、Microsoft サービス エンジニアには自分のデータにアクセスして欲しくない場合、ポータルでサポートを依頼するときにその旨を伝えることができます。 
+サポート時、Microsoft サービス エンジニアには自分のデータにアクセスして欲しくない場合、次の説明に従ってサービス構成ファイルを変更することで、これを無効にできます。 
 
   1.    **C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** をメモ帳で開きます。
   2.    **UserDataEnabled** 設定を下の画像のように無効にします。 **UserDataEnabled** 設定があり、true に設定されている場合、それを false に設定します。 この設定がない場合、次のように設定を追加します。    

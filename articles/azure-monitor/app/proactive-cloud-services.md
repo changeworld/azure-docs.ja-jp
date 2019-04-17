@@ -1,5 +1,5 @@
 ---
-title: Azure 診断と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する | Microsoft Docs
+title: Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する | Microsoft Docs
 description: Azure Application Insights を使用して Azure Cloud Services での起動エラー、クラッシュ、ロールのリサイクル ループなどの問題を監視します
 services: application-insights
 documentationcenter: ''
@@ -20,7 +20,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/04/2019
 ms.locfileid: "54019476"
 ---
-# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure 診断と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
+# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
 
 この記事では、Azure Cloud Services (Web ロールとワーカー ロール) での起動エラー、クラッシュ、ロールのリサイクル ループなどの問題を監視するアラート ルールを設定する方法について説明します。
 

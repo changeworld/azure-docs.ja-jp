@@ -46,7 +46,7 @@ Azure のログは、次の種類に分類されます。
 |[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager リソースのコントロールプレーン イベント|   サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。|    Rest API、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|サブスクリプションの Azure Resource Manager リソースの操作に関してよく使用されるデータ|    リソース自体が実行した操作に関する分析情報を提供します。| Azure Monitor、[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Azure AD レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|ログとレポート | ユーザーのサインイン アクティビティと、ユーザーおよびグループの管理に関するシステム アクティビティの情報を報告します。|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[仮想マシンとクラウド サービス](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows イベント ログ サービスと Linux Syslog|  仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   Azure Monitor の Windows (Microsoft Azure 診断 ([WAD](https://docs.microsoft.com/azure/azure-diagnostics)) ストレージを使用) と Linux|
+|[仮想マシンとクラウド サービス](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows イベント ログ サービスと Linux Syslog|  仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   Azure Monitor の Windows (Microsoft Azure Diagnostics ([WAD](https://docs.microsoft.com/azure/azure-diagnostics)) ストレージを使用) と Linux|
 |[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログ (ストレージ アカウントのメトリック データの提供)|トレース要求に関する分析情報を提供し、使用傾向を分析して、ストレージ アカウントの問題を診断します。|   REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[ネットワーク セキュリティ グループ (NSG) のフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式 (送信および受信のフローをルールごとに表示)|ネットワーク セキュリティ グループを介したイングレスおよびエグレス IP トラフィックに関する情報を表示します。|[Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|   複数のプラットフォームの Web 開発者向けにアプリケーション パフォーマンス管理 (APM) サービスを提供します。| REST API、[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
@@ -82,13 +82,13 @@ Azure portal、[Azure CLI](https://docs.microsoft.com/azure/storage/storage-azur
 
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは[イベント ハブ 名前空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) アクセス権限を持っている必要があります。
 
-### <a name="azure-diagnostics-logs"></a>Azure 診断ログ
+### <a name="azure-diagnostics-logs"></a>Azure Diagnostics ログ
 
-Azure 診断ログはリソースによって出力され、そのリソースの操作に関してよく使用される豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 たとえば、[Windows イベント システム ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)は VM の診断ログのカテゴリであり、[BLOB、テーブル、キューのログ](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)はストレージ アカウントの診断ログのカテゴリです。 診断ログは、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供するアクティビティ ログとは異なります。
+Azure Diagnostics ログはリソースによって出力され、そのリソースの操作に関してよく使用される豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 たとえば、[Windows イベント システム ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)は VM の診断ログのカテゴリであり、[BLOB、テーブル、キューのログ](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)はストレージ アカウントの診断ログのカテゴリです。 診断ログは、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供するアクティビティ ログとは異なります。
 
-![Azure 診断ログの図](./media/azure-log-audit/azure-log-audit-fig2.png)
+![Azure Diagnostics ログの図](./media/azure-log-audit/azure-log-audit-fig2.png)
 
-Azure 診断ログには、Azure portal、PowerShell、Azure CLI、REST API など、複数の構成オプションがあります。
+Azure Diagnostics ログには、Azure portal、PowerShell、Azure CLI、REST API など、複数の構成オプションがあります。
 
 **統合シナリオ**
 
@@ -146,15 +146,15 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 監査イベントの保持期間を長くしたい場合は、Reporting API を使用して、定期的に[監査イベント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)を別のデータ ストアにプルしてください。
 
-### <a name="virtual-machine-logs-that-use-azure-diagnostics"></a>Azure 診断を使用する仮想マシン ログ
+### <a name="virtual-machine-logs-that-use-azure-diagnostics"></a>Azure Diagnostics を使用する仮想マシン ログ
 
 [Azure 診断](https://docs.microsoft.com/azure/azure-diagnostics)は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 いくつかのソースのいずれかで診断拡張機能を使用することができます。 現在サポートされているのは、[Azure Cloud Service の Web ロールと worker ロール](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me)です。
 
-![Azure 診断を使用する仮想マシン ログ](./media/azure-log-audit/azure-log-audit-fig3.png)
+![Azure Diagnostics を使用する仮想マシン ログ](./media/azure-log-audit/azure-log-audit-fig3.png)
 
 ### <a name="azure-virtual-machineslearnpathsdeploy-a-website-with-azure-virtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>Microsoft Windows および [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) が稼動している [Azure 仮想マシン](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
 
-仮想マシンで Azure 診断を有効にするには、次のいずれかを実行します。
+仮想マシンで Azure Diagnostics を有効にするには、次のいずれかを実行します。
 
 * [Visual Studio を使用して Azure 仮想マシンをトレースする](https://docs.microsoft.com/azure/vs-azure-tools-debug-cloud-services-virtual-machines)
 
@@ -302,7 +302,7 @@ Security Center には、シグネチャ ベースの手法とは比較になら
 
 * **異常検出**:統計プロファイルを使用して、過去のベースラインを構築します。 確立された基準からの逸脱に、攻撃ベクトルとの一致が疑われる場合、警告が生成されます。
 
-セキュリティ操作およびインシデント対応チームの多くが、SIEM ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure Log Integration を使用すると、Security Center のアラートや、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントを Log Analytics または SIEM ソリューションとほぼリアルタイムで同期させることができます。
+セキュリティ操作およびインシデント対応チームの多くが、SIEM ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure Log Integration を使用すると、Security Center のアラートや、Azure Diagnostics および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントを Log Analytics または SIEM ソリューションとほぼリアルタイムで同期させることができます。
 
 ## <a name="log-analytics"></a>Log Analytics
 
@@ -318,9 +318,9 @@ Log Analytics の核となる機能は、Azure でホストされている Log A
 
 [Azure サービスのログとメトリックを収集する](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)方法は 4 つあります。
 
-* Azure 診断から Log Analytics に直接 (次の表では "**診断**")
+* Azure Diagnostics から Log Analytics に直接 (次の表では "**診断**")
 
-* Azure 診断から Azure Storage 経由で Log Analytics に (次の表では "**Storage**")
+* Azure Diagnostics から Azure Storage 経由で Log Analytics に (次の表では "**Storage**")
 
 * Azure サービスのコネクタ (次の表では "**コネクタ**")
 
@@ -365,16 +365,16 @@ Azure Log Integration を使用して、Azure リソースからの未加工の�
 
 ![Log Integration の図](./media/azure-log-audit/azure-log-audit-fig9.png)
 
-Log Integration では、Windows 仮想マシン、Azure アクティビティ ログ、Azure Security Center アラート、Azure リソース プロバイダー ログから Azure 診断を収集します。 この統合により、オンプレミスかクラウド内化に関係なく、すべての資産に対して統合されたダッシュボードが提供されます。これにより、セキュリティ イベントの集計、関連付け、分析を実行し、アラートを生成できます。
+Log Integration では、Windows 仮想マシン、Azure アクティビティ ログ、Azure Security Center アラート、Azure リソース プロバイダー ログから Azure Diagnostics を収集します。 この統合により、オンプレミスかクラウド内化に関係なく、すべての資産に対して統合されたダッシュボードが提供されます。これにより、セキュリティ イベントの集計、関連付け、分析を実行し、アラートを生成できます。
 
-Log Integration では現在、Azure アクティビティ ログ、Windows 仮想マシンからの Windows イベント ログと Azure サブスクリプション、Azure Security Center アラート、Azure 診断ログ、Azure AD 監査ログの統合をサポートしています。
+Log Integration では現在、Azure アクティビティ ログ、Windows 仮想マシンからの Windows イベント ログと Azure サブスクリプション、Azure Security Center アラート、Azure Diagnostics ログ、Azure AD 監査ログの統合をサポートしています。
 
 | ログのタイプ | Log Analytics による JSON (Splunk、ArcSight、 IBM QRadar) のサポート |
 | :------- | :-------------------------------------------------------- |
-|Azure AD 監査ログ|   はい|
-|アクティビティ ログ| はい|
-|Security Center のアラート |はい|
-|診断ログ (リソース ログ)|  はい|
+|Azure AD 監査ログ|   [はい]|
+|アクティビティ ログ| [はい]|
+|Security Center のアラート |[はい]|
+|診断ログ (リソース ログ)|  [はい]|
 |VM ログ|   はい (JSON 経由ではなく転送されたイベントの場合)|
 
 [Azure Log Integration の使用](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started):このチュートリアルでは、Azure Log Integration のインストールに加え、Azure Storage のログ、Azure アクティビティ ログ、Azure Security Center アラート、Azure AD 監査ログの統合について説明します。
@@ -385,7 +385,7 @@ SIEM の統合シナリオ:
 
 * [Azure Log Integration の FAQ](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq):この記事は、Azure ログ統合について寄せられる質問とその回答です。
 
-* [Security Center アラートと Azure Log Integration の統合](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration):この記事では、Security Center アラート、Azure 診断ログで収集された仮想マシンのセキュリティ イベント、Azure 監査ログを Log Analytics または SIEM ソリューションと同期させる方法について説明します。
+* [Security Center アラートと Azure Log Integration の統合](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration):この記事では、Security Center アラート、Azure Diagnostics ログで収集された仮想マシンのセキュリティ イベント、Azure 監査ログを Log Analytics または SIEM ソリューションと同期させる方法について説明します。
 
 ## <a name="next-steps"></a>次の手順
 

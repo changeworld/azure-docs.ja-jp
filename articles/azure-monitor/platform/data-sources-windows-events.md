@@ -57,7 +57,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は AOI-<workspace ID> です。 |
 | RenderedDescription |イベントの説明とパラメーターの値 |
 | Source |イベントのソース。 |
-| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
 | TimeGenerated |イベントが Windows で作成された日付と時刻。 |
 | UserName |イベントのログを記録したアカウントのユーザー名。 |
 

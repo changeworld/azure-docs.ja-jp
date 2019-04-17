@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58889806"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489556"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -80,7 +80,7 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 * **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な変数のアプリ設定を指定します。  プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、関数で必要な環境変数のアプリ設定を指定します。 プロジェクト内の関数のバインドで必要な各接続の **Values** 配列に新しい項目を追加します。 詳細については、Azure Functions Core Tools の記事の[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記事を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定は、常に **[新しい場合はコピーする]** にする必要があります。 
@@ -207,15 +207,11 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 
 ## <a name="monitoring-functions"></a>関数の監視
 
-Azure で関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。 代わりに、組み込みログが取得されますが、これは推奨されません。
+関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
 
-Azure で関数アプリ用に Application Insights を有効にするには:
+関数アプリ用に Application Insights を有効にするには:
 
-1. [Azure Portal](https://portal.azure.com) で Application Insights インスタンスを作成し、そのインストルメンテーション キーをコピーします。 その方法については、「[App Insights リソースを手動で接続する](functions-monitoring.md#manually-connect-an-app-insights-resource)」を参照してください。  
-
-1. [関数アプリの設定](#function-app-settings)に関するページの説明に従って、Azure の関数アプリの設定に `APPINSIGHTS_INSTRUMENTATIONKEY` という名前のアプリ設定を追加します。 このアプリ設定には、前の手順で作成したインストルメンテーション キーが含まれています。
-
-1. Azure の関数アプリから `AzureWebJobsDashboard` のアプリ設定を削除します。これにより、組み込みログが無効になります。  
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 

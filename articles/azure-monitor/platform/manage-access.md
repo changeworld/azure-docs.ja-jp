@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577248"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276413"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
 Azure Monitor のログ データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
@@ -35,7 +35,7 @@ Log Analytics ワークスペースを作成するには、以下を行う必要
 
 ワークスペースの作成について詳しくは以下の記事を参照してください。
 
-- [Azure portal で Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)
+- [Azure ポータルで Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)
 - [Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する](../learn/quick-create-workspace-cli.md)
 - [Azure PowerShell を使用して Log Analytics ワークスペースを作成する](../learn/quick-create-workspace-posh.md)
 
@@ -102,7 +102,6 @@ _アクセス モード_は、ユーザーが Log Analytics ワークスペー�
 > - Service Fabric
 > - Application Insights
 > - Containers
-> - HTTP Data Collector API によって作成されたカスタム ログ
 >
 > ログがリソースに適切に関連付けられているかをテストするために、クエリを実行して、関心があるレコードを調べることができます。 正しいリソース ID が [_ResourceId](log-standard-properties.md#_resourceid) プロパティにあれば、リソース中心クエリでデータを使用できます。
 

@@ -1,6 +1,6 @@
 ---
-title: Application Insights にデータを送信するための Azure 診断の構成
-description: Application Insights にデータを送信するように Azure 診断のパブリック構成を更新します。
+title: Application Insights にデータを送信するための Azure Diagnostics の構成
+description: Application Insights にデータを送信するように Azure Diagnostics のパブリック構成を更新します。
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -16,12 +16,12 @@ ms.lasthandoff: 02/08/2019
 ms.locfileid: "55892856"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
-Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure 診断拡張機能を使用してデータを収集します。  Azure 診断のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure 診断拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
+Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure Diagnostics 拡張機能を使用してデータを収集します。  Azure Diagnostics のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure Diagnostics 拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
 
-この記事では、Azure 診断拡張機能から Application Insights にデータを送信する方法について説明します。
+この記事では、Azure Diagnostics 拡張機能から Application Insights にデータを送信する方法について説明します。
 
 ## <a name="diagnostics-configuration-explained"></a>診断構成の説明
-Azure 診断拡張機能 1.5 では、シンクが導入されました。シンクとは、診断データを送信できるその他の場所のことです。
+Azure Diagnostics 拡張機能 1.5 では、シンクが導入されました。シンクとは、診断データを送信できるその他の場所のことです。
 
 Application Insights のシンクの構成の例を以下に示します。
 
@@ -172,7 +172,7 @@ Application Insights のシンクの構成の例を以下に示します。
 ```
 前の構成の以下の行には、次の意味があります。
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Azure 診断によって収集されているすべてのデータを送信する
+### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Azure Diagnostics によって収集されているすべてのデータを送信する
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -215,7 +215,7 @@ Application Insights のシンクの構成の例を以下に示します。
 - **Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
 ## <a name="next-steps"></a>次の手順
-* Application Insights で [Azure 診断情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)方法について説明します。
+* Application Insights で [Azure Diagnostics 情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)方法について説明します。
 * [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 * [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 

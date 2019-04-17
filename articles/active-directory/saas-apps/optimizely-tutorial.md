@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6029e24f0a08efeeae0ae7644305e07669b6f8b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 066847ff8428a5080e655712c1a6bbe504c5cdbc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176419"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>チュートリアル:Azure Active Directory と Optimizely の統合
 
@@ -105,9 +105,9 @@ Optimizely で Azure AD シングル サインオンを構成するには、次�
 
     ![[Optimizely のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://app.optimizely.net/<instance name>`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://app.optimizely.net/<instance name>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`urn:auth0:optimizely:contoso` という形式で URL を入力します。
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `urn:auth0:optimizely:contoso`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子に値を置き換えます。実際の値については後で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -253,7 +253,7 @@ Optimizely で Azure AD シングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

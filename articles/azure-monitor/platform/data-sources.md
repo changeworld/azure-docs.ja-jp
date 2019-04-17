@@ -77,7 +77,7 @@ Azure、他のクラウド、オンプレミスのコンピューティング �
 ![Azure コンピューティング リソースの収集](media/data-sources/compute-resource-collection.png)
 
 ### <a name="azure-diagnostic-extension"></a>Azure 診断の拡張機能
-Azure 診断の拡張機能では、Azure コンピューティング リソースのクライアント オペレーティング システムからログとパフォーマンス データを収集することで、基本的なレベルの監視を実現できます。   
+Azure Diagnostics の拡張機能では、Azure コンピューティング リソースのクライアント オペレーティング システムからログとパフォーマンス データを収集することで、基本的なレベルの監視を実現できます。   
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 Windows または Linux の仮想マシンまたは物理コンピューターを包括的に監視および管理するには、Log Analytics エージェントを使用します。 仮想マシンは、Azure、別のクラウド、またはオンプレミスで実行できます。エージェントは、直接または System Center Operations Manager 経由で Azure Monitor に接続し、ユーザーが構成済みの[データ ソース](agent-data-sources.md)や、仮想マシン上で実行されているアプリケーションに追加の分析情報を提供する[監視ソリューション](../../azure-monitor/insights/solutions.md)からデータを収集できるようにします。

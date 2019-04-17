@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a9141c0840ff5d962adceb0d0481102cff868d4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d50c4366128edb5b4bc76408eb1085817af1ce3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897352"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル:Azure Active Directory と New Relic の統合
 
@@ -50,7 +50,7 @@ New Relic と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への New Relic の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に New Relic を追加する必要があります。
 
-**ギャラリーから New Relic を追加するには、次の手順を実行します。**
+**ギャラリーから New Relic を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,7 +106,7 @@ New Relic で Azure AD シングル サインオンを構成するには、次�
 
     a. **[サインオン URL]** テキスト ボックスに、`https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` のパターンを使用して URL を入力します。必ずご自身の New Relic アカウント ID に置き換えてください。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`rpm.newrelic.com` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `rpm.newrelic.com`
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -164,7 +164,7 @@ New Relic で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -237,7 +237,7 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

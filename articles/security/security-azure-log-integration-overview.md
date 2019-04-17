@@ -38,7 +38,7 @@ Azure Log Integration 機能に関するドキュメントは、機能が非推�
 
 Azure Log Integration 機能を詳しく理解するには、以降の記述をお読みください。
 
-Azure Log Integration は、Windows イベント ビューアー ログの Windows イベントと、Azure リソースの [Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)、[Azure Security Center のアラート](../security-center/security-center-intro.md)、および [Azure 診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 Integration によって、オンプレミスとクラウドのすべての資産に対する一元化されたダッシュボードを SIEM ソリューションに用意できます。 ダッシュボードを使用して、セキュリティ イベントに対するアラートの受信、集計、関連付け、および分析を実行できます。
+Azure Log Integration は、Windows イベント ビューアー ログの Windows イベントと、Azure リソースの [Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)、[Azure Security Center のアラート](../security-center/security-center-intro.md)、および [Azure Diagnostics ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 Integration によって、オンプレミスとクラウドのすべての資産に対する一元化されたダッシュボードを SIEM ソリューションに用意できます。 ダッシュボードを使用して、セキュリティ イベントに対するアラートの受信、集計、関連付け、および分析を実行できます。
 
 > [!NOTE]
 > 現時点では、Azure Log Integration は、Azure 商用クラウドと Azure Government クラウドのみをサポートしています。 その他のクラウドはサポートされていません。
@@ -50,7 +50,7 @@ Azure Log Integration は、Windows イベント ビューアー ログの Windo
 Azure では、各 Azure サービスの広範なログ記録が作成されます。 ログには、次の 3 つのログの種類があります。
 
 * **コントロール/管理ログ**:[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の CREATE、UPDATE、および DELETE 操作を可視化します。 Azure アクティビティ ログは、この種類のログの例です。
-* **データ関連のログ**:Azure リソースの使用時に発生するイベントを可視化します。 このタイプのログの例は、Windows 仮想マシンにおける Windows イベント ビューアーの**システム**、**セキュリティ**、および**アプリケーション**の各チャンネルです。 別の例は、Azure Monitor を使用して構成する Azure 診断のログです。
+* **データ関連のログ**:Azure リソースの使用時に発生するイベントを可視化します。 このタイプのログの例は、Windows 仮想マシンにおける Windows イベント ビューアーの**システム**、**セキュリティ**、および**アプリケーション**の各チャンネルです。 別の例は、Azure Monitor を使用して構成する Azure Diagnostics のログです。
 * **処理済みイベント**:ユーザーに代わって処理された分析済みのイベントとアラートを示します。 この種類のイベントの例は、Azure Security Center のアラートです。 Azure Security Center は、サブスクリプションを処理して分析し、現在のセキュリティの状態に関連するアラートを生成します。
 
 Azure ログ統合は、ArcSight、QRadar、および Splunk をサポートしています。 ご利用の SIEM ベンダーに問い合わせて、ベンダーにネイティブ コネクタがあるかどうかを確認してください。 ネイティブ コネクタを利用できる場合は、Azure Log Integration を使用しないでください。
@@ -72,7 +72,7 @@ Azure ログ統合は、ArcSight、QRadar、および Splunk をサポートし�
 
 この記事では、Azure Log Integration の概要を説明しました。 Azure Log Integration の詳細と、サポートされているログの種類については、次の記事をご覧ください。
 
-* [Azure Log Integration の使用を開始する](security-azure-log-integration-get-started.md)。 このチュートリアルでは、Azure Log Integration のインストールについて説明します。 Windows Azure 診断 (WAD) ストレージ のログ、Azure アクティビティ ログ、Azure Security Center のアラート、および Azure Active Directory の監査ログを統合する方法についても説明します。
+* [Azure Log Integration の使用を開始する](security-azure-log-integration-get-started.md)。 このチュートリアルでは、Azure Log Integration のインストールについて説明します。 Windows Azure Diagnostics (WAD) ストレージ のログ、Azure アクティビティ ログ、Azure Security Center のアラート、および Azure Active Directory の監査ログを統合する方法についても説明します。
 * [Azure Log Integration のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md)。 この FAQ は、Azure Log Integration について寄せられる質問とその回答です。
 * [外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)方法を確認します。
 

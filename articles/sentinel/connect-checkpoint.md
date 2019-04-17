@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: d6048ee90eb6e39e70550aa52a96b4466faa3efa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fb4f9165be03a7fc3cd055ef616dcfadb58ac9d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119889"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876498"
 ---
 # <a name="connect-your-check-point-appliance"></a>Check Point アプライアンスを接続する
 
@@ -45,7 +45,7 @@ Check Point アプライアンスを Azure Sentinel に接続するには、エ�
 1. Azure Sentinel ポータルで、**[データ収集]** をクリックして、アプライアンスの種類を選択します。 
 
 1. **[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で:
-   - 前述のように、Azure Sentinel エージェントで事前インストールされ、すべての必要な構成を含んだ新しいマシンを作成する場合、**[自動デプロイ]** を選択します。 **[自動デプロイ]** を選択して、**[Automatic agent deployment]** (エージェントの自動デプロイ) をクリックします。 これにより、ワークスペースに自動的に接続する専用 VM の購入ページが表示されます。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
+   - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[自動デプロイ]** を選択して、**[Automatic agent deployment]** (エージェントの自動デプロイ) をクリックします。 これにより、ワークスペースに自動的に接続する専用 VM の購入ページが表示されます。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
      1. **[カスタム デプロイ]** ページで詳細を入力し、ユーザー名とパスワードを選択し、使用条件に同意する場合は、VM を購入します。
       
         1. Syslog エージェント マシンでこれらのコマンドを実行し、Check Point のすべてのログが Azure Sentinel エージェントにマップされるようにします。
@@ -53,16 +53,16 @@ Check Point アプライアンスを Azure Sentinel に接続するには、エ�
             
                 sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Check Point\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"
 
-             次のようにして Syslog デーモンを再起動します: `sudo service syslog-ng restart`
+             次の Syslog デーモンを再起動します。 `sudo service syslog-ng restart`
            - rsyslog を使用する場合は、これらのコマンドを実行します (これにより Syslog エージェントが再起動されることに注意してください)。
                     
                  sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Check Point\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"
-             次のようにして Syslog デーモンを再起動します: `sudo service rsyslog restart`
+             次の Syslog デーモンを再起動します。 `sudo service rsyslog restart`
 
-   - Azure Sentinel エージェントのインストール先となる専用の Linux マシンとして既存の VM を使用する場合、**[Manual deployment]** (手動デプロイ) を選択します。 
-      1. **[Download and install the Syslog agent]** (Syslog エージェントのダウンロードとインストール) の下で、**[Azure Linux virtual machine]** (Azure Linux 仮想マシン) を選択します。 
+   - 既存の VM を Azure Sentinel エージェントをインストールする専用の Linux マシンとして使用する場合、**[Manual deployment]\(手動配置\)** を選択します。 
+      1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、**[Azure Linux virtual machine]\(Azure Linux 仮想マシン\)** を選択します。 
       1. 開いた **[仮想マシン]** 画面で、使用するマシンを選択し、**[接続]** をクリックします。
-      1. コネクタ画面で、**[Configure and forward Syslog]** (Syslog の構成と転送) の下で、Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
       1. これらのコマンドをコピーし、アプライアンス上で実行します。
           - rsyslog.d を選択した場合:
               
@@ -70,37 +70,37 @@ Check Point アプライアンスを Azure Sentinel に接続するには、エ�
             
             2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
            
-            1. 次のようにして Syslog デーモンを再起動します: `sudo service rsyslog restart`
+            1. 次の syslog デーモンを再起動します。 `sudo service rsyslog restart`
              
           - syslog-ng を選択した場合:
 
               1. ファシリティ local_4 および "Check Point" をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Check Point\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
               2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
 
-              3. 次のようにして Syslog デーモンを再起動します: `sudo service syslog-ng restart`
-      2. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェントにエラーがないことを確認します: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+              3. 次の syslog デーモンを再起動します。 `sudo service syslog-ng restart`
+      2. 次のコマンドを使用して、Syslog エージェントを再起動します。 `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。 `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
 ### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>オンプレミス Linux サーバーにエージェントをデプロイする
 
 Azure を使用していない場合は、専用の Linux サーバーで実行するように Azure Sentinel エージェントを手動でデプロイします。
 
 1. 専用の Linux VM を作成するには、**[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で **[Manual deployment]** (手動デプロイ) を選択します。
-   1. **[Download and install the Syslog agent]** (Syslog エージェントのダウンロードとインストール) の下で、**[Non-Azure Linux machine]** (Azure 以外の Linux マシン) を選択します。 
-   1. 開かれた **[ダイレクト エージェント]** 画面で、**[Linux 用エージェント]** を選択して、エージェントをダウンロードするか、次のコマンドを実行して Linux マシンにダウンロードします: `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-      1. コネクタ画面で、**[Configure and forward Syslog]** (Syslog の構成と転送) の下で、Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+   1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、**[Non-Azure Linux machine]\(Azure ではない Linux マシン\)** を選択します。 
+   1. 開いた **[ダイレクト エージェント]** 画面で、**[Linux 用エージェント]** を選択して、エージェントをダウンロードするか、次のコマンドを実行してお使いの Linux マシンにダウンロードします。`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
+      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
       1. これらのコマンドをコピーし、アプライアンス上で実行します。
          - **rsyslog** を選択した場合:
            1. ファシリティ local_4 および "Check Point" をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Check Point\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
             
            2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-           3. 次のようにして Syslog デーモンを再起動します: `sudo service rsyslog restart`
+           3. 次の syslog デーモンを再起動します。 `sudo service rsyslog restart`
          - **syslog-ng** を選択した場合:
             1. ファシリティ local_4 および "Check Point" をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Check Point\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
             2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-            3. 次のようにして Syslog デーモンを再起動します: `sudo service syslog-ng restart`
-      1. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェントにエラーがないことを確認します: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+            3. 次の syslog デーモンを再起動します。 `sudo service syslog-ng restart`
+      1. 次のコマンドを使用して、Syslog エージェントを再起動します。 `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。 `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
 ## <a name="step-2-forward-check-point-logs-to-the-syslog-agent"></a>手順 2:Syslog エージェントへの Check Point ログの転送
 
@@ -117,24 +117,24 @@ Syslog エージェントを介して Azure ワークスペースに CEF 形式�
 
 ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
 
-1. Syslog エージェントで、ログが適切なポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 514 -vv`。このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。ログが、適切なポートおよびファシリティで、ソース アプライアンスから受信されていることを確認します。
-2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv`。このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。ログがエージェント上でも受信されていることを確認します。
-3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べてログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog ` タイプの下に未加工の形式で表示されます。
+1. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 514 -vv` このコマンドでは、デバイスから Syslog マシンにストリーミングされるログを表示します。ログが、正しいポートとファシリティでソース アプライアンスから受信されていることを確認します。
+2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv` このコマンドによって、デバイスから Syslog コンピューターにストリーミングされるログが表示されます。ログがエージェント上でも受信されていることを確認します。
+3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べて自分のログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog` タイプの下に未加工の形式で表示されます。
 
 4. 必ず次のコマンドを実行してください。
   
    - Syslog-ng を使用する場合は、これらのコマンドを実行します (これにより Syslog エージェントが再起動されることに注意してください)。
 
          sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Check Point\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"
-        次のようにして Syslog デーモンを再起動します: `sudo service syslog-ng restart`
+        次の Syslog デーモンを再起動します。 `sudo service syslog-ng restart`
 
    - rsyslog を使用する場合は、これらのコマンドを実行します (これにより Syslog エージェントが再起動されることに注意してください)。 
 
          sudo bash -c "printf 'local4.debug @127.0.0.1:25226\n\n:msg, contains, "Check Point" @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"
-     次のようにして Syslog デーモンを再起動します: `sudo service rsyslog restart`
+     次の Syslog デーモンを再起動します。 `sudo service rsyslog restart`
 
-1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log` を調べます
-4. Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します: `message_length_limit 4096`
+1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、次のファイルを調べます。 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
+4. 自分の Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します。 `message_length_limit 4096`
 
 
 

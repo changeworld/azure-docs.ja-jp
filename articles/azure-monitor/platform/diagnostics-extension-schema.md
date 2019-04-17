@@ -1,5 +1,5 @@
 ---
-title: Azure 診断拡張機能の構成スキーマのバージョン履歴
+title: Azure Diagnostics 拡張機能の構成スキーマのバージョン履歴
 description: Azure Virtual Machines、VM Scale Sets、Service Fabric、および Cloud Services のパフォーマンス カウンターの収集に関連しています。
 services: azure-monitor
 author: rboucher
@@ -16,11 +16,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/23/2019
 ms.locfileid: "54471652"
 ---
-# <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 診断拡張機能の構成スキーマのバージョンと履歴
-このページでは、Microsoft Azure SDK に付属する Azure 診断拡張機能のスキーマのバージョン一覧を示します。  
+# <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics 拡張機能の構成スキーマのバージョンと履歴
+このページでは、Microsoft Azure SDK に付属する Azure Diagnostics 拡張機能のスキーマのバージョン一覧を示します。  
 
 > [!NOTE]
-> Azure 診断拡張機能は、パフォーマンス カウンターとその他の統計を収集するために使用されるコンポーネントです。
+> Azure Diagnostics 拡張機能は、パフォーマンス カウンターとその他の統計を収集するために使用されるコンポーネントです。
 > - Azure Virtual Machines
 > - Virtual Machine Scale Sets
 > - Service Fabric
@@ -29,7 +29,7 @@ ms.locfileid: "54471652"
 >
 > このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 
-Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](../../azure-monitor/overview.md)を参照してください。
+Azure Diagnostics 拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](../../azure-monitor/overview.md)を参照してください。
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK のバージョンと診断のバージョンの一覧  
 
@@ -49,12 +49,12 @@ Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analyti
 |2.96              |1.11                           |"|
 
 
- Azure 診断バージョン 1.0 は最初はプラグイン モデルとして付属しており、Azure SDK をインストールすると、その SDK に付属する Azure 診断バージョンを入手できました。  
+ Azure Diagnostics バージョン 1.0 は最初はプラグイン モデルとして付属しており、Azure SDK をインストールすると、その SDK に付属する Azure Diagnostics バージョンを入手できました。  
 
- SDK 2.5 (診断バージョン 1.2) 以降、Azure 診断は拡張機能モデルに移行しています。 新しい機能を利用するツールは新しい Azure SDK でのみ使用できましたが、Azure 診断を使用するサービスは、Azure から最新バージョンを直接選択できます。 たとえば、まだ SDK 2.5 を使用しているユーザーは、新しい機能を使用しているかどうかに関係なく、前の表に示されている最新バージョンが読み込むことができます。  
+ SDK 2.5 (診断バージョン 1.2) 以降、Azure Diagnostics は拡張機能モデルに移行しています。 新しい機能を利用するツールは新しい Azure SDK でのみ使用できましたが、Azure Diagnostics を使用するサービスは、Azure から最新バージョンを直接選択できます。 たとえば、まだ SDK 2.5 を使用しているユーザーは、新しい機能を使用しているかどうかに関係なく、前の表に示されている最新バージョンが読み込むことができます。  
 
 ## <a name="schemas-index"></a>スキーマのインデックス  
-異なるバージョンの Azure 診断は、異なる構成スキーマを使用します。
+異なるバージョンの Azure Diagnostics は、異なる構成スキーマを使用します。
 
 [診断 1.0 構成スキーマ](diagnostics-extension-schema-1dot0.md)  
 

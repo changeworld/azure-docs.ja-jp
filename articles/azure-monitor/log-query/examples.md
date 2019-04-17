@@ -131,8 +131,8 @@ search *
 
 ## <a name="azurediagnostics"></a>AzureDiagnostics
 
-### <a name="count-azure-diagnostics-records-per-category"></a>カテゴリごとの Azure 診断レコードのカウント
-次の例は、一意のカテゴリごとの Azure 診断レコードをカウントします。
+### <a name="count-azure-diagnostics-records-per-category"></a>カテゴリごとの Azure Diagnostics レコードのカウント
+次の例は、一意のカテゴリごとの Azure Diagnostics レコードをカウントします。
 
 ```Kusto
 AzureDiagnostics 
@@ -141,7 +141,7 @@ AzureDiagnostics
 ```
 
 ### <a name="get-a-random-record-for-each-unique-category"></a>一意の各カテゴリのランダム レコードの取得
-次の例は、一意の各カテゴリの Azure 診断レコードをランダムに 1 つ取得します。
+次の例は、一意の各カテゴリの Azure Diagnostics レコードをランダムに 1 つ取得します。
 
 ```Kusto
 AzureDiagnostics
@@ -150,7 +150,7 @@ AzureDiagnostics
 ```
 
 ### <a name="get-the-latest-record-per-category"></a>カテゴリごとの直近のレコードの取得
-次の例は、一意の各カテゴリの直近の Azure 診断レコードを取得します。
+次の例は、一意の各カテゴリの直近の Azure Diagnostics レコードを取得します。
 
 ```Kusto
 AzureDiagnostics

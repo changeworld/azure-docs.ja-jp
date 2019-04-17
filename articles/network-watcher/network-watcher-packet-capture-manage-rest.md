@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480704"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049798"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -35,10 +35,13 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 - [**パケット キャプチャを取得する**](#get-a-packet-capture)
 - [**すべてのパケット キャプチャを一覧表示する**](#list-all-packet-captures)
-- [**パケット キャプチャの状態をクエリする**](#query-packet-capture-status)
+- [**パケット キャプチャの状態のクエリを実行する**](#query-packet-capture-status)
 - [**パケット キャプチャを開始する**](#start-packet-capture)
 - [**パケット キャプチャを停止する**](#stop-packet-capture)
 - [**パケット キャプチャを削除する**](#delete-packet-capture)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -60,7 +63,7 @@ armclient login
 
 次のコードには変数が必要です。
 
-- **subscriptionId** - サブスクリプション ID は **Get-AzureRMSubscription** コマンドレットで取得することもできます。
+- **subscriptionId** - サブスクリプション ID は **Get-AzSubscription** コマンドレットで取得することもできます。
 - **resourceGroupName** - 仮想マシンを含むリソース グループの名前。
 
 ```powershell

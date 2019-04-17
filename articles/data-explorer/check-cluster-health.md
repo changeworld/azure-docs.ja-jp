@@ -1,19 +1,18 @@
 ---
 title: Azure のデータ エクスプ ローラー クラスターの正常性を確認する
-description: この記事では、Azure のデータ エクスプ ローラー クラスターが正常であるかを判断する手順について説明します。
+description: この記事では、Azure のデータ エクスプローラー クラスターの正常性を監視する手順について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8930c2a7538ca33622de68c9a888349b3301cd98
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a280d8869a3790444a97c38f792a3d9eeb6bde1d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755852"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046548"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Azure のデータ エクスプ ローラー クラスターの正常性を確認する
 

@@ -55,7 +55,7 @@ Windows では、Service Fabric イベントは、稼働およびデータのチ
 
 これらの各種チャネルは、推奨されるプラットフォーム レベルのほとんどのログに対応します。 プラットフォーム レベルのログを向上させるには、正常性モデルをよく理解することに努め、カスタム正常性レポートを追加し、カスタム **パフォーマンス カウンター**を追加することを検討し、サービスやアプリケーションがクラスターに及ぼす影響をリアルタイムで把握できるようにします。
 
-これらのログを利用するために、Azure portal でクラスターの作成中に [診断] を有効にしておくことを強くお勧めします。 診断をオンにすることで、クラスターをデプロイしたときに、Microsoft Azure 診断が、稼働、Reliable Services、Reliable Actors の各チャネルを認識し、データを保存できるようになります。詳細については、「[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)」を参照してください。
+これらのログを利用するために、Azure portal でクラスターの作成中に [診断] を有効にしておくことを強くお勧めします。 診断をオンにすることで、クラスターをデプロイしたときに、Microsoft Azure Diagnostics が、稼働、Reliable Services、Reliable Actors の各チャネルを認識し、データを保存できるようになります。詳細については、「[Windows Azure Diagnostics を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)」を参照してください。
 
 ## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric の正常性と負荷のレポート
 
@@ -93,7 +93,7 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Azure Monitor ログを提供している Azure Monitor の詳細については、Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事と [Log Analytics エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事を参照してください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
 
 * **Azure Table Storage に対するパフォーマンス カウンター**  
-パフォーマンス メトリックは、イベントと同じテーブル ストレージに送信することもできます。 この場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure 診断の構成を変更し、コンテナーをデプロイする場合は Azure 診断が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。
+パフォーマンス メトリックは、イベントと同じテーブル ストレージに送信することもできます。 この場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure Diagnostics の構成を変更し、コンテナーをデプロイする場合は Azure Diagnostics が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

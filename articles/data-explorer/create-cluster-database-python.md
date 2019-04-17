@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:Python を使用して Azure Data Explorer クラスターとデータベースを作成する
-description: Python を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
-services: data-explorer
+description: Python を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します。
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 24e482d223fec2c1f95d7cc964f62eac81c5de05
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 408b34db16f0d6d22340f0483b90ce5d72ffa613
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472584"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045203"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -64,7 +63,7 @@ pip install azure-mgmt-kusto
     cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | cluster_name | *mykustocluster* | クラスターの任意の名前。|
    | sku | *D13_v2* | クラスターに使用される SKU。 |
@@ -102,13 +101,13 @@ pip install azure-mgmt-kusto
     database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | cluster_name | *mykustocluster* | データベースの作成先となるクラスターの名前。|
    | database_name | *mykustodatabase* | データベースの名前。|
    | resource_group_name | *testrg* | クラスターが作成されるリソース グループの名前。 |
-   | soft_delete_period | *3650 days, 0:00:00* | データをクエリに使用できるようにしておく時間。 |
-   | hot_cache_period | *3650 days, 0:00:00* | データをキャッシュに保持する時間。 |
+   | soft_delete_period | *3650 日、0:00:00* | データをクエリに使用できるようにしておく時間。 |
+   | hot_cache_period | *3650 日、0:00:00* | データをキャッシュに保持する時間。 |
 
 1. 次のコマンドを実行して、作成したデータベースを確認します。
 

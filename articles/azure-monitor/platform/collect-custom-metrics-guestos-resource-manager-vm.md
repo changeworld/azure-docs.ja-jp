@@ -35,7 +35,7 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する
-Azure 診断拡張機能では、"データ シンク" と呼ばれる機能を使って、メトリックとログがさまざまな場所にルーティングされます。 次の手順では、Resource Manager テンプレートと PowerShell を使用して、新しい "Azure Monitor" データ シンクを使って VM をデプロイする方法を説明します。
+Azure Diagnostics 拡張機能では、"データ シンク" と呼ばれる機能を使って、メトリックとログがさまざまな場所にルーティングされます。 次の手順では、Resource Manager テンプレートと PowerShell を使用して、新しい "Azure Monitor" データ シンクを使って VM をデプロイする方法を説明します。
 
 ## <a name="author-resource-manager-template"></a>Resource Manager テンプレートを作成する
 この例では、公開されているサンプル テンプレートを使用できます。 開始用テンプレートは https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows にあります。
@@ -233,7 +233,7 @@ Azure 診断拡張機能では、"データ シンク" と呼ばれる機能を�
 ## <a name="deploy-the-resource-manager-template"></a>Resource Manager テンプレートをデプロイする
 
 > [!NOTE]
-> Azure 診断拡張機能バージョン 1.5 以上を実行する必要があります。また、Resource Manager テンプレートで **autoUpgradeMinorVersion**: プロパティが "true" に設定されていなければなりません。 その後、Azure によって VM の開始時に適切な拡張機能が読み込まれます。 ご自身のテンプレートにこれらの設定がない場合は、テンプレートを変更して再デプロイします。
+> Azure Diagnostics 拡張機能バージョン 1.5 以上を実行する必要があります。また、Resource Manager テンプレートで **autoUpgradeMinorVersion**: プロパティが "true" に設定されていなければなりません。 その後、Azure によって VM の開始時に適切な拡張機能が読み込まれます。 ご自身のテンプレートにこれらの設定がない場合は、テンプレートを変更して再デプロイします。
 
 
 Resource Manager テンプレートをデプロイするために、Azure PowerShell を利用します。

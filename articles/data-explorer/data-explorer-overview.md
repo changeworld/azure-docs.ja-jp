@@ -1,19 +1,18 @@
 ---
 title: Azure データ エクスプローラーとは
 description: Azure データ エクスプローラーは、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3a669c547b33e5f13da43bc3ce851a2f24783f5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755998"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044176"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure データ エクスプローラーとは
 
@@ -64,7 +63,7 @@ Azure Data Explorer の機能は、[Azure Monitor ログ](/azure/log-analytics/)
 Azure データ エクスプローラーとそのクエリ言語に関するフィードバックをお待ちしております。次の方法をご利用ください。
 
 - 質問する
-  - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
+  - [スタック オーバーフロー](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [ユーザーの声で製品について提案する](https://aka.ms/AzureDataExplorer.UserVoice)

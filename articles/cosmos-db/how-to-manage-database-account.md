@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB でデータベース アカウントを管理する方法について
 description: Azure Cosmos DB でデータベース アカウントを管理する方法について
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 6efa0bab6327022bfe4a1f6d94a6a135cd1f91f3
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849073"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283003"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
-この記事では、Azure Cosmos DB アカウントを管理する方法について説明します。 具体的には、マルチホームの設定、リージョンの追加/削除、複数の書き込みリージョンの構成、およびフェールオーバーの優先度の設定を行います。 
+この記事では、お使いの Azure Cosmos アカウントを管理する方法について説明します。 具体的には、マルチホームの設定、リージョンの追加/削除、複数の書き込みリージョンの構成、およびフェールオーバーの優先度の設定を行います。 
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -99,9 +99,9 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ### <a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. Azure Cosmos DB アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
 
-2. リージョンを追加するには、目的のリージョンに対応する六角形 (**+** ラベルが付いたもの) をマップ上で選択します。 リージョンを追加するには、**+ [リージョンの追加]** オプションを選択し、ドロップダウン メニューからリージョンを選択します。
+2. リージョンを追加するには、目的のリージョンに対応する六角形 (**+** ラベルが付いたもの) をマップ上で選択します。 別の方法でリージョンを追加するには、**[+ リージョンの追加]** オプションを選択し、ドロップダウン メニューからリージョンを選択します。
 
 3. リージョンを削除するには、チェック マークの付いた青い六角形をマップ上で選択して、1 つ以上のリージョンを消去します。 または、右側で、リージョンの横にある "ごみ箱" (🗑) アイコンを選択します。
 
@@ -116,13 +116,13 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
 ```bash
-# Given an account created with 1 region like so
+# Create an account with 1 region
 az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0
 
-# Add a new region by adding another region to the list
+# Add a region
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0 westus=1
 
-# Remove a region by removing a region from the list
+# Remove a region
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0
 ```
 
@@ -142,7 +142,7 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager テンプレート
 
-次の JSON コードは、Azure Resource Manager テンプレートの例です。 これを使用すると、有界整合性制約の一貫性ポリシーを使用して Azure Cosmos DB アカウントをデプロイすることができます。 最大整合性制約間隔は 5 秒に設定されます。 許容される古い要求の最大数は 100 に設定されます。 Resource Manager テンプレートの形式と構文について学習するには、[Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) に関する記事を参照してください。
+次の JSON コードは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートの例です。 これを使用すると、[有界整合性制約一貫性レベル](consistency-levels.md)で Azure Cosmos アカウントをデプロイすることができます。 最大整合性制約間隔は 5 秒に設定されます。 許容される古い要求の最大数は 100 に設定されます。 Resource Manager テンプレートの形式と構文について学習するには、[Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) に関する記事を参照してください。
 
 ```json
 {
@@ -197,11 +197,11 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 ```
 
 
-## <a id="manual-failover"></a>Azure Cosmos DB アカウントでの手動フェールオーバーの有効化
+## <a id="manual-failover"></a>Azure Cosmos アカウントでの手動フェールオーバーの有効化
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 
-1. Azure Cosmos DB アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
 
 2. メニューの上部で、**[手動フェールオーバー]** を選択します。
 
@@ -216,7 +216,7 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 ### <a id="enable-manual-failover-via-cli"></a>Azure CLI
 
 ```bash
-# Given your account currently has regions with priority like so: eastus=0 westus=1
+# Given your account currently has regions with priority: eastus=0 westus=1
 # Change the priority order to trigger a failover of the write region
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0 eastus=1
 ```
@@ -252,11 +252,11 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover false
 ```
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントでのフェールオーバーの優先度の設定
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Azure Cosmos アカウントでのフェールオーバーの優先度の設定
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure Portal
 
-1. Azure Cosmos DB アカウントで、**[データをグローバルにレプリケートする]** メニューを開きます。 
+1. お使いの Azure Cosmos アカウントで、**[データをグローバルにレプリケートする]** ウィンドウを開きます。 
 
 2. ウィンドウの上部で、**[自動フェールオーバー]** を選択します。
 
@@ -281,8 +281,13 @@ az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resour
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Cosmos DB の一貫性レベルとデータ競合を管理する方法について学習しましょう。 次の記事を参照してください。
+次の記事を参照してください。
 
 * [一貫性の管理](how-to-manage-consistency.md)
 * [リージョン間の競合の管理](how-to-manage-conflicts.md)
+* [グローバル配信 - 内部のしくみ](global-dist-under-the-hood.md)
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [カスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 

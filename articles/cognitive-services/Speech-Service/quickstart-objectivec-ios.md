@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094924"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009273"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、音声が録音された音声ファイルをテキストに変換するために、Cognitive Services Speech SDK を使用して Objective-C で iOS アプリを作成する方法について説明します。
+この記事では、音声を録音したファイルやマイクからの音声をテキストに文字起こしする iOS アプリを、Objective-C と Cognitive Services Speech SDK を使用して作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,16 +29,16 @@ ms.locfileid: "58094924"
 
 * 音声サービス用の[サブスクリプション キー](get-started.md)
 * macOS コンピューターと [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降
-* iOS バージョン 11.4 以降に設定されたターゲット
+* iOS バージョン 9.3 以降に設定されたターゲット
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.3.1` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.4.0` です。
 
-Mac および iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
-これは https://aka.ms/csspeech/iosbinary からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
+iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
+[こちら](https://aka.ms/csspeech/iosbinary)からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトの作成
 
@@ -52,7 +52,7 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
     1. 既に Apple Developer アカウントをお持ちの場合は、適切な組織名と組織 ID を入力します。 テスト目的の場合は、単に `testorg` のような名前を選択できます。 アプリに署名するためには、適切なプロビジョニング プロファイルが必要です。 詳細については、[Apple の開発者向けサイト](https://developer.apple.com/)を参照してください。
     1. プロジェクトの言語として Objective-C が選択されていることを確認します。
     1. テストとコア データに関するすべてのチェック ボックスを無効にします。
-    ![プロジェクトの設定](media/sdk/qs-objectivec-project-settings.png)
+    ![プロジェクト設定](media/sdk/qs-objectivec-project-settings.png)
 1. プロジェクト ディレクトリの選択
     1. ホーム ディレクトリを選択して、プロジェクトを配置します。 これにより、ホーム ディレクトリ内に `helloworld` ディレクトリが作成され、Xcode プロジェクトのすべてのファイルが入れられます。
     1. このサンプル プロジェクトの Git リポジトリの作成を無効にします。
@@ -103,3 +103,4 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 
 > [!div class="nextstepaction"]
 > [GitHub で Objective-C のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
+

@@ -1,23 +1,29 @@
 ---
-title: Azure portal を使用したインデックス作成とクエリのクイック スタート チュートリアル - Azure Search
-description: Azure portal のデータ インポート ウィザードと組み込みのサンプル データを使用して、初めてのインデックスを Azure Search に作成し、照会する方法について説明します。
+title: クイック スタート:Azure portal でのインデックスの作成、読み込み、およびクエリの実行 - Azure Search
+description: Azure portal のデータ インポート ウィザードと組み込みのサンプル データを使用して、初めてのインデックスを Azure Search に作成し、クエリを実行します。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137829"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282663"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
+> [!div class="op_single_selector"]
+> * [ポータル](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 Azure Search の概念をすばやく把握するために、Azure portal のビルトイン ツールをお試しください。 ウィザードとエディターは .NET および REST API と完全には対応していませんが、コーディングなしの導入ですぐに開始でき、サンプル データに対する興味深いクエリを数分以内に記述できます。
 
@@ -222,7 +228,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 ### <a name="fuzzy-search"></a> あいまい検索を試す
 
-既定では、シアトル地域の "Samammish" 高原を検索しようとして「*samamish*」と入力するなど、検索語のスペルを間違うと、通常の検索では一致しません。 次の例では、検索結果が 1 件も返されません。
+既定では、シアトル地域の "Sammamish" 高原を検索しようとして「*samamish*」と入力するなど、検索語のスペルを間違うと、通常の検索では一致しません。 次の例では、検索結果が 1 件も返されません。
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>例 (検索語のスペルミス非対応): `search=samamish`
 
@@ -268,4 +274,4 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 * [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [REST API を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Postman または Fiddler と Azure Search REST API を使用してインデックスを作成する](search-fiddler.md)
+* [Postman または Fiddler と Azure Search REST API シリーズを使用してインデックスを作成する](search-fiddler.md)

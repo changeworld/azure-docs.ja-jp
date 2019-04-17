@@ -21,7 +21,7 @@ ms.locfileid: "58112315"
 
 [ロジック アプリを作成して実行する](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、その実行の履歴、トリガーの履歴、状態、パフォーマンスを確認できます。 リアルタイムでのイベントの監視と高度なデバッグについては、ご利用のロジック アプリの[診断ログ](#azure-diagnostics)を設定します。 このようにして、トリガー イベント、実行イベント、アクション イベントなど、[イベントを検索して表示する](#find-events)ことができます。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこの診断データ](#extend-diagnostic-data)を使用することもできます。 
 
-エラーやその他考えられる問題に関する通知を受け取るには、[アラート](#add-azure-alerts)を設定します。 たとえば、"1 時間に 5 件を超える実行が失敗したとき" を検出するアラートを作成できます。 また、[Azure 診断イベントの設定とプロパティ](#diagnostic-event-properties)を使用すると、監視、追跡、ログ記録をプログラムで設定することもできます。
+エラーやその他考えられる問題に関する通知を受け取るには、[アラート](#add-azure-alerts)を設定します。 たとえば、"1 時間に 5 件を超える実行が失敗したとき" を検出するアラートを作成できます。 また、[Azure Diagnostics イベントの設定とプロパティ](#diagnostic-event-properties)を使用すると、監視、追跡、ログ記録をプログラムで設定することもできます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -207,9 +207,9 @@ Azure Monitor ログと併せて、ロジック アプリの診断データを�
 
 <a name="diagnostic-event-properties"></a>
 
-## <a name="azure-diagnostics-event-settings-and-details"></a>Azure 診断イベントの設定と詳細
+## <a name="azure-diagnostics-event-settings-and-details"></a>Azure Diagnostics イベントの設定と詳細
 
-各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、これらの詳細を [Azure Logic Apps 用 REST API](https://docs.microsoft.com/rest/api/logic) と [Azure 診断用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。
+各診断イベントには、ご利用のロジック アプリとそのイベントに関する詳細 (状態、開始時刻、終了時刻など) が含まれています。 監視、追跡、ログをプログラムで設定する際に、これらの詳細を [Azure Logic Apps 用 REST API](https://docs.microsoft.com/rest/api/logic) と [Azure Diagnostics 用 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) で使用できます。
 
 たとえば、`ActionCompleted` イベントには、追跡と監視に使用できる `clientTrackingId` プロパティと `trackedProperties` プロパティがあります。
 

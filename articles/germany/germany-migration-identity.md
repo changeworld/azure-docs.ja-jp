@@ -9,20 +9,22 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 35923f5b62e50f9978bf36d3d29fefc2dcdc587d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c67b3abd03be42e1b596885a53c3e6cdcc7106b6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58408462"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894723"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>ID リソースをグローバル Azure に移行する
 
 この記事には、Azure ID リソースを Azure Germany からグローバル Azure に移行するために役立つ可能性がある情報があります。
 
+ID/テナントに関するガイダンスは、Azure のみの顧客を対象にしています。 Azure と O365 (またはその他の Microsoft 製品) のために一般的な Azure Active Directory (Azure AD) テナントを使用する場合は、ID の移行に複雑さが発生するため、この移行ガイダンスを使用する前に、まずアカウント マネージャーに連絡する必要があります。
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Germany の Azure Active Directory (Azure AD) は、グローバル Azure の Azure AD から分離しています。 現在、Azure Germany からグローバル Azure に Azure AD ユーザーを移動することはできません。
+Azure Germany の Azure AD は、グローバル Azure の Azure AD から分離しています。 現在、Azure Germany からグローバル Azure に Azure AD ユーザーを移動することはできません。
 
 Azure Germany とグローバル Azure の既定のテナント名は、Azure が環境に基づいて自動的にサフィックスを追加するため、常に異なります。 たとえば、グローバル Azure の **contoso** テナントのメンバーのユーザー名が **user1\@contoso.microsoftazure.com** であるとします。 Azure Germany で、それは **user1\@contoso.microsoftazure.de** です。
 
@@ -163,7 +165,7 @@ Get-AzureADUser -All $true |Where-Object {$_.DirSyncEnabled -ne "True"}
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

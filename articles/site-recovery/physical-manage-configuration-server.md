@@ -7,16 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 325cd0d2f52405ae1cbf463f6335c8738317ea1f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878708"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050137"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
 Azure への物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) サービスを使うときは、オンプレミスの構成サーバーを設定します。 構成サーバーは、オンプレミスのマシンと Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事は、展開後に構成サーバーを管理するための一般的なタスクをまとめたものです。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -265,28 +267,28 @@ ProxyPassword="Password"
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>構成サーバーの削除または登録解除 (PowerShell)
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)します。
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
     
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 3. コンテナーが存在するサブスクリプションを選択します。
 
-     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+     `Get-AzSubscription –SubscriptionName <your subscription name> | Select-AzSubscription`
 3.  コンテナーのコンテキストを設定します。
     
     ```powershell
-    $Vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $Vault
+    $Vault = Get-AzRecoveryServicesVault -Name <name of your vault>
+    Set-AzSiteRecoveryVaultSettings -ARSVault $Vault
     ```
 4. 構成サーバーを取得して選択します。
 
-    `$Fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$Fabric = Get-AzSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 構成サーバーを削除します。
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force]`
+    `Remove-AzSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
-> Remove-AzureRmSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。
+> Remove-AzSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。
 
 ## <a name="renew-ssl-certificates"></a>SSL 証明書を更新する
 構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 Web サーバーは、SSL 証明書を使ってクライアントを認証します。 証明書は 3 年で有効期限が切れ、いつでも更新できます。

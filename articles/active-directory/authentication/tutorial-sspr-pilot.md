@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215593"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362128"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>チュートリアル:Azure AD のセルフ サービスによるパスワードのリセットのパイロット展開を完了する
 
@@ -43,7 +43,7 @@ ms.locfileid: "57215593"
    * **[保存]**
 1. **[認証方法]** ページで、次の操作を行います。
    * **[リセットのために必要な方法の数]** を **1** に設定します。
-   * 組織が**ユーザーに許可する方法**を選択します。 このチュートリアルでは、**[メール]** と **[モバイル アプリ コード (プレビュー)]** を有効にするチェックボックスをオンにします。
+   * 組織が**ユーザーに許可する方法**を選択します。 このチュートリアルでは、**[メール]**、**[携帯電話]**、**[会社電話]**、**[モバイル アプリ通知 (プレビュー)]**、および **[モバイル アプリ コード (プレビュー)]** の各チェック ボックスをオンにします。
    * **[保存]**
 1. **[登録]** ページで、次の操作を行います。
    * **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** に対して **[はい]** を選択します。
@@ -60,7 +60,7 @@ ms.locfileid: "57215593"
 
 ## <a name="test-sspr-as-a-user"></a>SSPR をユーザーとしてテストする
 
-パイロット グループのメンバーである管理者以外のテスト ユーザーを使用して、セルフサービスによるパスワードのリセットをテストします。 **管理者ロールが割り当てられているアカウントを使用する場合、認証の方法と数は、選択した内容と異なる場合があります。これは、Microsoft が管理者ポリシーを管理しているためです。**
+パイロット グループのメンバーである管理者以外のテスト ユーザーを使用して、セルフサービスによるパスワードのリセットをテストします。 **管理者の役割が割り当てられているアカウントを使用する場合、認証の方法と数は、選択した内容と異なる場合があります。これは、Microsoft が管理者ポリシーを管理しているためです。**
 
 1. 新しい InPrivate または incognito モードのブラウザー ウィンドウを開きます。
 1. テスト ユーザーを使用して、セルフサービスによるパスワードのリセットを登録ポータル ([https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)) で登録します。

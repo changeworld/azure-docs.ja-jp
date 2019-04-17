@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084880"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051939"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="overview"></a>概要
 Microsoft Azure StorSimple は、ファイル共有でよく使用される複雑な非構造データに対応できるハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。 ローカル スナップショットおよびクラウド スナップショットを使用した統合型データ保護により、ストレージ インフラストラクチャを拡大する必要がなくなります。
 
@@ -167,7 +170,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    
 1. オートメーション アカウントで、**[変数]** &gt; **[変数の追加]** とクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 次の手順で作成する復旧計画の名前が TestPlan の場合、変数は TestPlan-StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
-   - **BaseUrl**: Azure Cloud の Resource Manager URL。 **Get-AzureRmEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
+   - **BaseUrl**: Azure Cloud の Resource Manager URL。 **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
    - *RecoveryPlanName***-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
    - *RecoveryPlanName***-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
    - *RecoveryPlanName***-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。

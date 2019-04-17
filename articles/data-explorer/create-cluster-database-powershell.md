@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
-services: data-explorer
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 84b0cbfd7e8ec6709b79328220aac7c9ae904bdb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472482"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047162"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -66,9 +65,9 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
      New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location 'Central US' -Sku D13_v2 -Capacity 10
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
-   | 名前 | *mykustocluster* | クラスターの任意の名前。|
+   | Name | *mykustocluster* | クラスターの任意の名前。|
    | Sku | *D13_v2* | クラスターに使用される SKU。 |
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
@@ -90,10 +89,10 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     New-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluster -Name mykustodatabase -SoftDeletePeriod 3650:00:00:00 -HotCachePeriod 3650:00:00:00
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | ClusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
-   | 名前 | *mykustodatabase* | データベースの名前。|
+   | Name | *mykustodatabase* | データベースの名前。|
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
    | SoftDeletePeriod | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
    | HotCachePeriod | *3650:00:00:00* | データをキャッシュに保持する時間。 |

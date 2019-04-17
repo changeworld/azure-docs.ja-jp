@@ -210,7 +210,7 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 -   **アーカイブする**: コンプライアンスまたは監査の目的で、リソースのパフォーマンスや正常性の履歴をアーカイブします。
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
 デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスの Web ロールおよび Worker ロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/overview)、および [Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。 その他の Azure サービスには、独自の独立した診断があります。
 

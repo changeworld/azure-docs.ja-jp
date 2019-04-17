@@ -102,4 +102,4 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 * 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように Log Analytics エージェントを構成する場合は、「[データ ソースの構成](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)」を確認してください。
 * Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する
-* 代わりに、パフォーマンス カウンターの収集は、[Microsoft Azure 診断の拡張機能で行い、Application Insights に送信](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)することができる。
+* 代わりに、パフォーマンス カウンターの収集は、[Microsoft Azure Diagnostics の拡張機能で行い、Application Insights に送信](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)することができる。

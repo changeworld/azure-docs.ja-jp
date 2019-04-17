@@ -1,21 +1,21 @@
 ---
 title: Azure Machine Learning で IoT Hub からのデータを使用して天気予報を行う | Microsoft Docs
 description: Azure Machine Learning を使用して、IoT Hub がセンサーから収集した気温と湿度のデータに基づき、降水確率を予測します。
-author: rangv
-manager: ''
+author: robinsh
+manager: philmea
 keywords: 機械学習を使用した天気予報
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: robinsh
+ms.openlocfilehash: a203018cb1a27c17b9c7162b50a380f9edae2e60
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534261"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273194"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 

@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 9458f052258993ee598ddfbca262faf8f6cb4ab9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 690656449fdb86c200a8978f0e17db562e4abbca
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258549"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009180"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Android で Speech SDK を使用して Java で音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する Android 向け Java アプリケーションを開発する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.3.1) と Android Studio 3.1 が基になっています。
+このアプリケーションは、Speech SDK Maven パッケージ (バージョン 1.4.0) と Android Studio 3.3 が基になっています。
 現在 Speech SDK は、32/64 ビットの ARM プロセッサを搭載した Android デバイスおよび Intel x86/x64 互換のプロセッサを搭載した Android デバイスと互換性があります。
 
 > [!NOTE]
@@ -38,27 +38,19 @@ ms.locfileid: "58258549"
 
     ![Android Studio のウェルカム ウィンドウのスクリーンショット](media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. **[新しいプロジェクトの作成]** ウィザードが表示されます。 **[Create Android Project]\(Android プロジェクトの作成\)** 画面で、**アプリケーション名**として「**Quickstart**」、**会社のドメイン**として「**samples.speech.cognitiveservices.microsoft.com**」と入力し、プロジェクトのディレクトリを選択します。 C++ および Kotlin のチェック ボックスをオフのままにし、**[次へ]** を選択します。
+1. **[Choose your project]\(プロジェクトの選択\)** ウィザードが表示されたら、アクティビティの選択ボックスで **[Phone and Tablet]\(電話およびタブレット\)** と **[Empty Activity]\(空のアクティビティ\)** を選択します。 **[次へ]** を選択します。
 
-   ![[新しいプロジェクトの作成] ウィザードのスクリーンショット](media/sdk/qs-java-android-02-create-android-project.png)
+   ![[Choose your project]\(プロジェクトの選択\) ウィザードのスクリーンショット](media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. **[ターゲットの Android デバイス]** 画面で、**[Phone and Tablet]\(電話およびタブレット\)** のみ選択します。 その下のドロップダウン リストから **[API 23: Android 6.0 (Marshmallow)]** を選択し、**[次へ]** を選択します。
+1. **[Configure your project]\(プロジェクトの構成\)** 画面で、**[Name]\(名前\)** として「**Quickstart**」を、**[Package name]\(パッケージ名\)** として「**samples.speech.cognitiveservices.microsoft.com**」を入力して、プロジェクト ディレクトリを選択します。 **[Minimum API level]\(最小 API レベル\)** で **[API 23: Android 6.0 (Marshmallow)]** を選択し、他のすべてのチェック ボックスはオフのまま、**[Finish]\(完了\)** を選択します。
 
-   ![[新しいプロジェクトの作成] ウィザードのスクリーンショット](media/sdk/qs-java-android-03-target-android-devices.png)
-
-1. **[Add an Activity to Mobile]\(モバイルにアクティビティを追加\)** 画面で、**[Empty Activity]\(空のアクティビティ\)** を選択して **[次へ]** をクリックします。
-
-   ![[新しいプロジェクトの作成] ウィザードのスクリーンショット](media/sdk/qs-java-android-04-add-an-activity-to-mobile.png)
-
-1. **[Configure Activity]\(アクティビティの構成\)** 画面で、アクティビティ名として **MainActivity** を、レイアウト名として **activity\_main** を使用します。 両方のチェック ボックスを選択し、**[完了]** を選択します。
-
-   ![[新しいプロジェクトの作成] ウィザードのスクリーンショット](media/sdk/qs-java-android-05-configure-activity.png)
+   ![[Configure your project]\(プロジェクトの構成\) ウィザードのスクリーンショット](media/sdk/qs-java-android-03-create-android-project.png)
 
 Android Studio が新しい Android プロジェクトを準備するまでしばらく時間がかかります。 次に、Speech SDK への理解を深め、Java 8 を使用するためのプロジェクトを構成します。
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.3.1` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.4.0` です。
 
 Android 用 Speech SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 Maven リポジトリ (https:\//csspeechstorage.blob.core.windows.net/maven/) でホストされています。
@@ -73,7 +65,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.3.1`) を入力します。 **[OK]** をクリックします。
+1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.4.0`) を入力します。 **[OK]** をクリックします。
    次に示すように、依存関係のリストに Speech SDK が追加されます。
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -100,16 +92,9 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
 この時点で、UI のテキストおよびグラフィカル表現は次のようになります。
 
-<table>
-<tr>
-<td valign="top">
 ![](media/sdk/qs-java-android-11-gui.png)
-</td>
-<td valign="top">
+
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
-</td>
-</tr>
-</table>
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/18/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199836"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758298"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -162,9 +162,13 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
   ![JIT プロンプト](./media/security-center-just-in-time/jit-prompt.png)
 
-- VM 上で JIT を構成している場合、**[アクセスの要求]** をクリックして、その VM 用に設定された JIT ポリシーに従ってアクセス可能にすることができます。
+- VM 上で JIT を構成している場合、**[アクセスの要求]** をクリックして、その VM 用に設定された JIT ポリシーに従ってアクセス可能にすることができます。 アクセスは、次の規定のパラメーターを使用して要求します。
+    - **接続元 IP アドレス**:"任意" (*) (変更できません)
+    - **時間範囲**:3 時間 (変更できません)
+    - **ポート番号**: Windows の場合は RDP ポート 3389/Linux の場合はポート 22 (ポート番号は、**[仮想マシンに接続する]** ダイアログ ボックスで変更できます。)
 
-  ![JIT のアクセスの要求](./media/security-center-just-in-time/jit-request-access.png)
+
+  >![JIT のアクセスの要求](./media/security-center-just-in-time/jit-request-access.png)
 
 ## <a name="auditing-jit-access-activity"></a>JIT アクセス アクティビティの監査
 

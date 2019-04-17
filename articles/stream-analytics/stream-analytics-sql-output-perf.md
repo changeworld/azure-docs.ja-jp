@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d685b06b95af42f07449cc84e70220dd1a4afa9f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338430"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051786"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL Database への Azure Stream Analytics の出力
 
@@ -29,7 +29,7 @@ Azure Stream Analytics の SQL 出力では、オプションとして並列書�
 - **パーティション分割の継承** – この SQL 出力構成オプションを使用すると、前のクエリ ステップや入力のパーティション構成を継承できます。 これを有効にして、ディスク ベースのテーブルに書き込み、ジョブを[完全並列](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)トポロジにすると、スループットの向上を期待できます。 他の多くの[出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks)に対しては、このパーティション分割は既に自動的に行われています。 このオプションで行われる一括挿入に対しては、テーブル ロック (TABLOCK) も無効になります。
 
 > [!NOTE] 
-> 入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 この上限は、ID 列とクラスター化インデックスが 1 つだけのテーブルにおいて観察されたものです。 スキーマとインデックスの選択によっては、結果が異なる場合があります。
+> 入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 この上限は、ID 列とクラスター化インデックスが 1 つだけのテーブルにおいて観察されたものです。 この場合、出力ライターの数を明示的に指定するために、クエリで [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 を使用することを検討してください。 スキーマとインデックスの選択によっては、結果が異なる場合があります。
 
 - **バッチ サイズ** - SQL の出力構成では、書き込み先テーブル/ワークロードの特性に基づいて、Azure Stream Analytics SQL 出力の最大バッチ サイズを指定することができます。 バッチ サイズは、すべての一括挿入トランザクションで送信されるレコードの最大数です。 クラスター化された列ストア インデックスでは、バッチ サイズを約 [100 K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) にすると、並列化を高くし、ログ記録を最小にし、ロックを最適にできます。 ディスク ベースのテーブルでは、10 K (既定値) 以下にするとソリューションに最適な場合があります。バッチ サイズを大きくすると、一括挿入中にロックのエスカレーションがトリガーされる可能性があります。
 

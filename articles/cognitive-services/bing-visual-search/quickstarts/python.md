@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 873da64592c2c2e925d8731d4b1154db95bed31d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7ec37b4c3bdeb924b3e35dbcb5d07a478611f631
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863229"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047128"
 ---
-# <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>クイック スタート:Python での最初の Bing Visual Search クエリ
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>クイック スタート:Bing Visual Search REST API と Python を使用して画像に関する分析情報を取得する
 
-このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、検索結果を表示することができます。 このシンプルな JavaScript アプリケーションは、API に画像をアップロードし、それについて返された情報を表示するというものです。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、結果を表示することができます。 この Python アプリケーションは、API に画像をアップロードし、返された情報を表示するものです。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-ローカルの画像をアップロードする際には、POST フォーム データに Content-Disposition ヘッダーが含まれている必要があります。 その `name` パラメーターには "image" を設定する必要があり、`filename` パラメーターには任意の文字列を設定できます。 フォームの内容は、イメージのバイナリです。 アップロードできるイメージの最大サイズは、1 MB です。
+ローカルの画像をアップロードする際には、フォーム データに `Content-Disposition` ヘッダーが含まれている必要があります。 その `name` パラメーターは "image" に設定する必要があります。`filename` パラメーターは任意の文字列に設定できます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
 
 ```
 --boundary_1234-abcd
@@ -36,12 +36,11 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 * [Python 3.x](https://www.python.org/)
 
-
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="initialize-the-application"></a>アプリケーションを初期化する
 
-1. お気に入りの IDE またはエディターで新しい Python ファイルを作成し、次の import ステートメントを追加します。
+1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次の `import` ステートメントを追加します。
 
     ```python
     import requests, json
@@ -62,7 +61,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. 画像を格納するための別のディクショナリを作成します。この画像は、要求を送信するときに開かれてアップロードされます。 
+4. 画像を格納するための別のディクショナリを作成します。この画像は、要求を送信するときに開かれてアップロードされます。
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -95,4 +94,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Custom Search Web アプリの作成](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

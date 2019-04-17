@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f886de9160b52b8a4e3ee8beaf2e22022a097666
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662790"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046295"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+> * [ Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
@@ -31,6 +31,9 @@ ms.locfileid: "58662790"
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
 ログをアップロードして収集する 1 つの方法として、Windows Azure 診断 (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](../log-analytics/log-analytics-service-fabric.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、次のツールが使用されます。
@@ -71,7 +74,7 @@ Resource Manager を使用してクラスターを作成するには、診断構
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
-または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzureRmResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事を参照してください。
+または、Resource Manager サンプルをダウンロードし、変更を加え、Azure PowerShell ウィンドウで `New-AzResourceGroupDeployment` コマンドを使用して、変更したテンプレートでクラスターを作成する方法もあります。 コマンドに渡すパラメーターについては、次のコードを参照してください。 PowerShell を利用してリソース グループをデプロイする方法については、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事を参照してください。
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>既存のクラスターに診断拡張機能を追加する
 まだ診断がデプロイされていない既存のクラスターがある場合は、クラスター テンプレートを使用して追加または更新を実行できます。 既存クラスターの作成に使用された Resource Manager テンプレートを変更するか、前の説明に基づき、ポータルからテンプレートをダウンロードします。 次のタスクを実行して、template.json ファイルを変更します。
@@ -189,7 +192,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 ### <a name="update-storage-quota"></a>ストレージ クォータを更新する
 
-拡張機能によってデータが入力されるテーブルは、クォータに達するまで大きくなり続けるため、クォータ サイズの縮小を検討できます。 既定値は 50 GB です。この値は、テンプレートの `DiagnosticMonitorConfiguration` の下の `overallQuotaInMB` フィールドで構成可能です。
+拡張機能によってデータが入力されるテーブルは、クォータに達するまで大きくなり続けるため、クォータ サイズの縮小を検討できます。 既定値は 50 GB です。この値は、テンプレートの次のものの下の `overallQuotaInMB` フィールドで構成可能です。 `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -269,7 +272,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 デプロイしようとしている新しいアプリケーションを表す新しい EventSource チャネルからログを収集するように診断を更新するには、前述の既存のクラスターの診断を設定する場合と同じ手順を実行します。
 
-template.json ファイル内の `EtwEventSourceProviderConfiguration` セクションを更新して、新しい EventSource チャネル用のエントリを追加してから、`New-AzureRmResourceGroupDeployment` PowerShell コマンドを使用して構成の更新を適用します。 イベント ソースの名前は、Visual Studio で生成された ServiceEventSource.cs ファイル内でコードの一部として定義されます。
+template.json ファイル内の `EtwEventSourceProviderConfiguration` セクションを更新して、新しい EventSource チャネル用のエントリを追加してから、`New-AzResourceGroupDeployment` PowerShell コマンドを使用して構成の更新を適用します。 イベント ソースの名前は、Visual Studio で生成された ServiceEventSource.cs ファイル内でコードの一部として定義されます。
 
 たとえば、イベント ソースの名前が My-Eventsource である場合、My-Eventsource からのイベントを MyDestinationTableName という名前のテーブルに配置するには次のコードを追加します。
 
@@ -346,5 +349,7 @@ Azure 診断を正しく構成すると、ETW ログと EventSource ログのデ
 >現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加を続けます。 現在、[ウォッチドッグ サンプル](https://github.com/Azure-Samples/service-fabric-watchdog-service)で実行されるデータ グルーミング サービスの例があります。30 日または 90 日の期間を超えてログを保存する正当な理由がない限り、データ グルーミング サービスを自分で作成することをお勧めします。
 
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)

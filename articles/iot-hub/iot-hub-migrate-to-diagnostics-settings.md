@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub を診断設定に移行する | Microsoft Docs
-description: IoT ハブに対する操作の状態をリアルタイムで監視するために、操作の監視の代わりに Azure 診断の設定を使用するように Azure IoT Hub を更新する方法。
+description: IoT ハブに対する操作の状態をリアルタイムで監視するために、操作の監視の代わりに Azure Diagnostics の設定を使用するように Azure IoT Hub を更新する方法。
 author: kgremban
 manager: philmea
 ms.service: iot-hub

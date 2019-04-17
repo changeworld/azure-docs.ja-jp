@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c19d41cee55a309b5345af4f811c60b82a613
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178976"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046497"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) B2B コラボレーションを介してパー
 
 ## <a name="terms-of-use"></a>使用条件
 
-ゲスト ユーザーには、初回利用プロセス中、Azure AD Terms of Use 機能を使用して利用規約を提示することができます。 この機能には、Azure Active Directory の **[管理]** > **[組織の関係]** > **[利用規約]** または **[セキュリティ]** > **[条件付きアクセス]** > **[利用規約]** からアクセスできます。 詳細については、[Azure AD Terms of Use 機能](../governance/active-directory-tou.md)に関するページを参照してください。
+ゲスト ユーザーには、初回利用プロセス中、Azure AD Terms of Use 機能を使用して利用規約を提示することができます。 この機能には、Azure Active Directory の **[管理]** > **[組織の関係]** > **[利用規約]** または **[セキュリティ]** > **[条件付きアクセス]** > **[利用規約]** からアクセスできます。 詳細については、[Azure AD Terms of Use 機能](../conditional-access/terms-of-use.md)に関するページを参照してください。
 
 ![新しい利用規約を示すスクリーンショット](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 

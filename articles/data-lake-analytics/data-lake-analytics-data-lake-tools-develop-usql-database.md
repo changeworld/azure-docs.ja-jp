@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898800"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490395"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL データベース プロジェクトを使った Azure Data Lake 用 U-SQL データベースの開発
 
 U-SQL データベースは、非構造化データに対する構造化ビューと、テーブル内で管理された構造化データに対する構造化ビューを提供します。 また、構造化データとカスタム コードを整理するための一般的なメタデータ カタログ システムを提供します。 データベースは、これらの関連オブジェクトをグループ化する概念です。
 
-詳細については、[U-SQL データベースおよびデータ定義言語 (DDL)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql) を参照してください。 
+詳細については、[U-SQL データベースおよびデータ定義言語 (DDL)](/u-sql/data-definition-language-ddl-statements) を参照してください。 
 
 U-SQL データベース プロジェクトは、開発者が高速かつ簡単に U-SQL データベースの開発、管理、および配置を行えるようにする Visual Studio のプロジェクトの一種です。
 

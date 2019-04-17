@@ -4,11 +4,11 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/01/2019
-ms.openlocfilehash: d62eabc0c61bfeaf9761e51d7fb07436d861d5dc
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6d17cce487e2f0cdda71ca8473bcca5a1e5edec8
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473100"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919276"
 ---
-Anomaly Detector API にアクセスできる [Cognitive Services API アカウント](../articles/cognitive-services/cognitive-services-apis-create-account.md)を所有している必要があります。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/)できます。 アカウントを作成した後に [Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#access-your-resource) から、または無料試用版を有効にした後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis)からサブスクリプション キーを取得できます。
+Anomaly Detector API にアクセスできる [Cognitive Services API アカウント](../articles/cognitive-services/cognitive-services-apis-create-account.md)を所有している必要があります。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/)できます。 アカウントの作成後に、[Azure portal](../articles/cognitive-services/cognitive-services-apis-create-account.md#access-your-resource) からサブスクリプション キーを取得できます。

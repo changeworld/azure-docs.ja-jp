@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 814ae0e79ac24d5b645c4bf107287ab1b8326ff4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121623"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267147"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://contoso.cloudapp.net のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
@@ -64,11 +64,11 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
 1. これらの手段のいずれかを使用して、クラウド サービスに割り当てられた **.cloudapp.net** ドメイン名を見つけます。
 
-   * [Azure Portal] にログインし、クラウド サービスを選択して、**[要点]** セクションを確認して **[サイトの URL]** エントリを見つけます。
+   * [Azure Portal] にログインし、クラウド サービスを選択して、**[概要]** セクションを確認して **[サイトの URL]** エントリを見つけます。
 
        ![サイトの URL を表示する [概要] セクション][csurl]
 
-       **OR**
+       **または**
    * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
 
        ```powershell
@@ -97,11 +97,11 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 1. 次の手段のいずれかを使用して、クラウド サービスの IP アドレスを取得します。
 
-   * [Azure Portal] にログインし、クラウド サービスを選択して、**[要点]** セクションを確認して **[パブリック IP アドレス]** エントリを見つけます。
+   * [Azure Portal] にログインし、クラウド サービスを選択して、**[概要]** セクションを確認して **[パブリック IP アドレス]** エントリを見つけます。
 
        ![VIP を表示する [概要] セクション][vip]
 
-       **OR**
+       **または**
    * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
 
        ```powershell
@@ -141,6 +141,6 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure Portal]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png

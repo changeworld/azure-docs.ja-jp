@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804855"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009786"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -88,7 +88,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 * VM の起動/停止ソリューションのスケジュールが適切に構成されていることを確認します。 スケジュールを構成する方法については、[スケジュール](../automation-schedules.md)に関する記事を参照してください。
 
-* Runbook のジョブ ストリームを確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、次に示すいずれかの Runbook からジョブを探します。
+* [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、次に示すいずれかの Runbook からジョブを探します。
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -143,6 +143,8 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 * 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体の問題が原因でこの動作が引き起こされる可能性があります。 一部の例または潜在的な問題としては、シャットダウン試行時の更新の適用、サービスのハングなどがあります。 VM リソースに移動して、**アクティビティ ログ**にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](../../virtual-machines/troubleshooting/index.md)」を参照してください。
 
+* [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
+
 ## <a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない
 
 ### <a name="issue"></a>問題
@@ -155,7 +157,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 ### <a name="resolution"></a>解決策
 
-[Start/Stop VMs during off-hours ソリューション](../automation-solution-vm-management.md)を使用して Azure Automation で VM を起動および停止することをお勧めします。 このソリューションは Microsoft が作成したものです。 カスタム Runbook は Microsoft ではサポートされていません。 [Runbook のトラブルシューティング](runbooks.md)の記事を参照すると、カスタム Runbook に関する解決策が見つかる場合があります。 この記事では、すべての種類の Runbook に関する一般的なガイダンスとトラブルシューティングを示します。
+[Start/Stop VMs during off-hours ソリューション](../automation-solution-vm-management.md)を使用して Azure Automation で VM を起動および停止することをお勧めします。 このソリューションは Microsoft が作成したものです。 カスタム Runbook は Microsoft ではサポートされていません。 [Runbook のトラブルシューティング](runbooks.md)の記事を参照すると、カスタム Runbook に関する解決策が見つかる場合があります。 この記事では、すべての種類の Runbook に関する一般的なガイダンスとトラブルシューティングを示します。 [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="dont-start-stop-in-sequence"></a>シナリオ:VM が正しい順序で起動または停止しない
 
@@ -209,7 +211,7 @@ Start/Stop VMs during off-hours ソリューションの使用時に、このペ
 
 ### <a name="resolution"></a>解決策
 
-何度も発生するエラーを解決するには、ソリューションを削除および更新することをお勧めします。 ソリューションを更新する方法については、[Start/Stop VMs during off-hours ソリューションの更新](../automation-solution-vm-management.md#update-the-solution)に関するページを参照してください。
+何度も発生するエラーを解決するには、ソリューションを削除および更新することをお勧めします。 ソリューションを更新する方法については、[Start/Stop VMs during off-hours ソリューションの更新](../automation-solution-vm-management.md#update-the-solution)に関するページを参照してください。 さらに、[ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探すことができます。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

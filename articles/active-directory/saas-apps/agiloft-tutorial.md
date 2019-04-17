@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97419dac33688d24159b35f00f1e9bffbd587497
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aed12b085557eda4210be9c067f5cdad4cd2d1b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886390"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261770"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル:Azure Active Directory と Agiloft の統合
 
@@ -167,13 +167,13 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
     ![Agiloft の構成](./media/agiloft-tutorial/setup4.png)
 
-    a.  **[IdP Entity Id / Issuer]\(IdP エンティティ ID/発行者\)**  ボックスに、Azure portal からコピーした  **Azure AD ID** の値を貼り付けます。
+    a. **[IdP Entity Id / Issuer]\(IdP エンティティ ID/発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
 
-    b.  **[IdP Login URL]\(IdP ログイン URL\)**  ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
+    b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    c.  **[IdP Logout URL]\(IdP ログアウト URL\)**  ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
+    c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを  **[IdP によって提供される X.509 証明書の内容]**  ボックスに貼り付けます。
+    d. Azure ポータルからダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IdP Provided X.509 certificate contents]\(IdP によって提供される X.509 証明書の内容\)** ボックスに貼り付けます。
 
     e. **[完了]** をクリックします。
 
@@ -195,7 +195,7 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

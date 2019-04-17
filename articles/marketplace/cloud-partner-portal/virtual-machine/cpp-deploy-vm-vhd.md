@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106051"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046684"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
@@ -32,13 +32,14 @@ VM イメージの詳細については、次のブログを参照してくだ�
 - [VM イメージ](https://azure.microsoft.com/blog/vm-image-blog-post/)
 - [VM Image PowerShell 'How To' (VM イメージ PowerShell ハウツー)](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisite-install-the-necessary-tools"></a>前提条件: 必要なツールのインストール
 
 Azure PowerShell と Azure CLI をまだインストールしていない場合は、次の指示に従ってインストールします。
 
-- [PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Azure PowerShell をインストールする](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
@@ -71,7 +72,7 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
    | [OS Type]\(OS の種類\)                     | VM オペレーティング システム: `Windows` \| `Linux`                                    |
    | サブスクリプション ID             | 選択したサブスクリプションの識別子                                      |
    | Location                    | デプロイの地理的な場所                                        |
-   | VM サイズ                     | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)、例`Standard_A2` |
+   | VM サイズ                     | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)、例 `Standard_A2` |
    | パブリック IP アドレス名      | パブリック IP アドレスの名前                                               |
    | VM 名                     | 新しい VM の名前                                                           |
    | 仮想ネットワーク名        | VM で使用する仮想ネットワークの名前                                   |

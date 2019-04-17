@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774559"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268009"
 ---
 # <a name="manage-and-configure-projects"></a>プロジェクトの管理と構成
 
@@ -96,11 +96,11 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 | 項目の種類 | 説明 | コマンドの動作 |
 | --- | --- | --- |
 | **ノートブック** | Jupyter Notebook | ノートブックのファイル名と言語を指定するためのポップアップを表示します。 |
-| **フォルダー** | サブフォルダー | プロジェクトのファイル リストで、フォルダー名を入力する編集フィールドを作成します。 |
+| **Folder** | サブフォルダー | プロジェクトのファイル リストで、フォルダー名を入力する編集フィールドを作成します。 |
 | **空のファイル** | テキスト、データなど、任意のコンテンツを格納できるファイル。 | プロジェクトのファイル リストで、ファイル名を入力する編集フィールドを作成します。 |
-| **マークダウン** | マークダウン ファイル。 | プロジェクトのファイル リストで、ファイル名を入力する編集フィールドを作成します。 |
+| **Markdown** | マークダウン ファイル。 | プロジェクトのファイル リストで、ファイル名を入力する編集フィールドを作成します。 |
 
-### <a name="upload-files"></a>ファイルのアップロード
+### <a name="upload-files"></a>ファイルをアップロードする
 
 **[アップロード]** コマンドにはデータをインポートするオプションが 2 つあり、インポート元として**URL** または**コンピューター**のいずれかを選択できます。 詳細については、「[Work with data files in Azure Notebook projects (Azure Notebook プロジェクトでデータ ファイルを操作する)](work-with-project-data-files.md)」を参照してください。
 

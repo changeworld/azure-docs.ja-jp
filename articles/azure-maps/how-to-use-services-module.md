@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 335e114fc6a4afa83a6b82509148cf258a9e8347
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500919"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278600"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Azure Maps サービス モジュールを使用する
 
@@ -27,7 +27,7 @@ Azure Maps Web SDK は、Web または Node.js アプリケーションから Ja
     a. ファイルの <head> 要素にスクリプト参照を追加することにより、グローバルにホストされている CDN 版の Azure Maps サービス モジュールを使用します。
     
     ```html
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
     
     b. または、[azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest) NPM パッケージを使用して、Azure Maps Web SDK のソース コードをローカルに読み込み、アプリを使用してホストします。 このパッケージには TypeScript 定義も含まれています。
@@ -138,12 +138,12 @@ Azure Maps Web SDK は、Web または Node.js アプリケーションから Ja
       
       for(var i=0;i<response.results.length;i++){
         html.push('<tr><td>', (i+1), '.</td><td>', 
-                  response.results[i].address.freeformAddress, 
-                  '</td><td>', 
-                  response.results[i].position.lat,
-                  '</td><td>', 
-                  response.results[i].position.lon,
-                  '</td></tr>');
+                    response.results[i].address.freeformAddress, 
+                    '</td><td>', 
+                    response.results[i].position.lat,
+                    '</td><td>', 
+                    response.results[i].position.lon,
+                    '</td></tr>');
       }
       
       html.push('</table>');
@@ -154,6 +154,8 @@ Azure Maps Web SDK は、Web または Node.js アプリケーションから Ja
     ```
 
     完全に動作するコード サンプルを次に示します。
+
+<br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="サービス モジュールを使用する" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>サービス モジュールを使用する</a>ペンを表示します。
@@ -187,4 +189,4 @@ Azure Maps Web SDK は、Web または Node.js アプリケーションから Ja
 > [座標から情報を取得する](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [A から B までのルートを表示する ](./map-route.md)
+> [A から B までのルートを表示する](./map-route.md)

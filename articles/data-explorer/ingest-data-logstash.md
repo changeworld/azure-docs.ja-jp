@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:Logstash から Azure Data Explorer にデータを取り込む
 description: このクイック スタートでは、Logstash から Azure Data Explorer にデータを取り込む (読み込む) 方法について学習します
-services: data-explorer
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 1/14/2019
-ms.openlocfilehash: a5b4917e0d73378b908739a8fc8c0744c70dd1e9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 01/14/2019
+ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754657"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046412"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>クイック スタート:Logstash から Azure Data Explorer にデータを取り込む
 

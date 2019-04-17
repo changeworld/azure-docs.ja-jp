@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 3/17/2019
 ms.author: b-juche
-ms.openlocfilehash: b45879adca58f60e5c16829a7fd2fffab33eee46
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c2dd8b636223e0484e36eed9fcc616dc6f19cf3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400865"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877977"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Azure NetApp Files のボリュームを作成する
 
@@ -49,17 +49,17 @@ ms.locfileid: "58400865"
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
 
-    * **[クォータ]**  
+    * **Quota**  
         ボリュームに割り当てられる論理ストレージの量を指定します。  
 
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
 
-    * **Virtual Network**  
+    * **仮想ネットワーク**  
         ボリュームへのアクセス元となる Azure Virtual Network (Vnet) を指定します。  
 
         指定する Vnet には、Azure NetApp Files に委任されているサブネットがある必要があります。 Azure NetApp Files サービスにアクセスできるのは、同じ Vnet から、またはボリュームと同じリージョンにある Vnet から Vnet ピアリングを経由する場合のみです。 ボリュームには、オンプレミス ネットワークから Express Route 経由でアクセスすることもできます。   
 
-    * **サブネット**  
+    * **Subnet**  
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files に委任されている必要があります。 
         
@@ -100,7 +100,7 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
         これは、Azure NetApp Files と共に使用する優先 Active Directory Domain Services のドメイン コントローラーの IP アドレスです。 
     * **セカンダリ DNS**  
         これは、Azure NetApp Files と共に使用するセカンダリ Active Directory Domain Services のドメイン コントローラーの IP アドレスです。 
-    * **ドメイン**  
+    * **Domain**  
         これは、参加させる Active Directory Domain Services のドメイン名です。
     * **SMB サーバー (コンピューター アカウント) プレフィックス**  
         これは、Azure NetApp Files で新しいアカウントの作成に使用される Active Directory のコンピューター アカウントの命名規則プレフィックスです。
@@ -109,7 +109,7 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
 
         サービスによって、必要に応じて、Active Directory で追加のコンピューター アカウントが作成されます。
 
-    * **組織単位名**  
+    * **組織単位パス**  
         これは、SMB サーバー コンピューター アカウントが作成される組織単位 (OU) の LDAP パスです。 つまり、OU=second level, OU=first level です。 
     * **ユーザー名**や**パスワード**などの資格情報
 
@@ -136,7 +136,7 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
 
         名前はリソース グループ内で一意である必要があります。 3 文字以上になるようにしてください。  任意の英数字を使用できます。
 
-    * **[ファイル パス]**  
+    * **ファイル パス**  
         新しいボリュームのエクスポート パスを作成する際に使用するファイル パスを指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。   
      
         ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。  
@@ -144,17 +144,17 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
 
-    * **[クォータ]**  
+    * **Quota**  
         ボリュームに割り当てられる論理ストレージの量を指定します。  
 
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
 
-    * **Virtual Network**  
+    * **仮想ネットワーク**  
         ボリュームへのアクセス元となる Azure Virtual Network (Vnet) を指定します。  
 
         指定する Vnet には、Azure NetApp Files に委任されているサブネットがある必要があります。 Azure NetApp Files サービスにアクセスできるのは、同じ Vnet から、またはボリュームと同じリージョンにある Vnet から Vnet ピアリングを経由する場合のみです。 ボリュームには、オンプレミス ネットワークから Express Route 経由でアクセスすることもできます。   
 
-    * **サブネット**  
+    * **Subnet**  
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files に委任されている必要があります。 
         

@@ -148,7 +148,7 @@ items:
     href: event-hubs-service-endpoints.md
   - name: スループット単位の自動スケール
     href: event-hubs-auto-inflate.md
-  - name: Event Hubs を使用して Azure 診断データをストリーミングする
+  - name: Event Hubs を使用して Azure Diagnostics データをストリーミングする
     href: event-hubs-streaming-azure-diags-data.md
   - name: さまざまなプロトコルを使用してアプリケーション間でイベントを交換する
     href: event-hubs-exchange-events-different-protocols.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2acdb960df2ebd265d078f37840f7a4c37015044
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00154ac3c94a1f43872aff3be29ddd108a4173f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001238"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル:Azure Active Directory と Springer Link の統合
 
@@ -105,13 +105,13 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
     ![[Springer Link のドメインと URL] のシングル サインオン情報](common/idp-relay.png)
 
-    a. **[識別子]** テキスト ボックスに、`https://fsso.springer.com` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `https://fsso.springer.com`
 
-    b. **[応答 URL]** ボックスに、`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider` という URL を入力します。
+    b. **[応答 URL]** テキスト ボックスに、次の URL を入力します。 `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** テキスト ボックスに、URL `https://link.springer.com` を入力します
+    d. **[リレー状態]** ボックスに、次の URL を入力します:  `https://link.springer.com`
 
 5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
@@ -120,7 +120,7 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
     **[サインオン URL]** ボックスに、`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 `<entityID>` は、**[Springer Link のセットアップ]** セクションでコピーする Azure AD の ID です (このチュートリアルで後ほど説明します)。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 `<entityID>`  は、**[Springer Link のセットアップ]** セクションでコピーする Azure AD の識別子です (このチュートリアルで後ほど説明します)。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー アイコンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。
 
@@ -205,7 +205,7 @@ Springer Link で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

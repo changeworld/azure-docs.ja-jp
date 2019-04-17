@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa663cce10a39ef60a0efa5838b81b257fd02b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482591"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255939"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Azure Stack で Kubernetes ダッシュボードにアクセスする 
 
@@ -70,7 +70,7 @@ Kubernetes には、基本的な管理操作に使用できる Web ダッシュ�
     ```Bash   
     kubectl cluster-info 
     ``` 
-    ダッシュボードの URL を確認します。 次に例を示します。`https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+    ダッシュボードの URL を確認します。 例:   `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
 6.  自己署名証明書を抽出し、PFX 形式に変換します。 次のコマンドを実行します。
 
@@ -137,4 +137,4 @@ Kubernetes には、基本的な管理操作に使用できる Web ダッシュ�
 
 [Kubernetes クラスターを Marketplace に追加する (Azure Stack のオペレーター)](../azure-stack-solution-template-kubernetes-cluster-add.md)  
 
-[Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  
+[Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

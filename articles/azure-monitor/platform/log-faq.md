@@ -153,7 +153,7 @@ A:データ収集が停止したときに通知を受けるには、[新しい�
 既存の[アクション グループ](../../azure-monitor/platform/action-groups.md)を指定するか、アクション グループを新たに作成して、ログ アラートが条件に一致する場合に、ハートビートが 15 分以上なければ通知が送られるようにします。
 
 ## <a name="configuration"></a>構成
-### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Azure 診断 (WAD) からの読み取りに使用されるテーブル/BLOB コンテナーの名前は変更できますか?
+### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Azure Diagnostics (WAD) からの読み取りに使用されるテーブル/BLOB コンテナーの名前は変更できますか?
 
 A. いいえ。Azure ストレージ内の任意のテーブルまたはコンテナーから読み取ることは現在不可能です。
 

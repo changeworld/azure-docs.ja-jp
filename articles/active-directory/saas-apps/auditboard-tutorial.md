@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce100c4e8aa33a9180f5657756b11d6c6e34920
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838869"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>チュートリアル:Azure Active Directory と AuditBoard の統合
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 AuditBoard と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 * AuditBoard でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -67,7 +67,7 @@ Azure AD への AuditBoard の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**AuditBoard**」と入力し、結果ウィンドウで **AuditBoard** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の AuditBoard](common/search-new-app.png)
+    ![結果一覧の AuditBoard](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -79,8 +79,8 @@ AuditBoard で Azure AD のシングル サインオンを構成してテスト�
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[AuditBoard シングル サインオンの構成](#configure-auditboard-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[AuditBoard のテスト ユーザーの作成](#create-auditboard-test-user)** - AuditBoard で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[AuditBoard のテスト ユーザーの作成](#create-auditboard-test-user)** - AuditBoard で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -105,20 +105,20 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
     ![[AuditBoard のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
     c. アプリケーションを **SP 開始**モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    d. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/` という形式で URL を入力します。
+    d. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.auditboardapp.com/`
 
     ![[AuditBoard のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[AuditBoard クライアント サポート チーム](mailto:support@auditboard.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
+5. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
@@ -126,7 +126,7 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
 **AuditBoard** 側にシングル サインオンを構成するには、**[アプリのフェデレーション メタデータ URL]** を [AuditBoard サポート チーム](mailto:support@auditboard.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -144,8 +144,7 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -181,7 +180,7 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、AuditBoard で Britta Simon というユーザーを作成します。 [AuditBoard サポート チーム](mailto:support@auditboard.com)と連携し、AuditBoard プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -194,4 +193,3 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399996"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278481"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を取り付ける
 
@@ -90,7 +90,9 @@ ms.locfileid: "58399996"
 
 - 作業を始める前に、安全、環境、規制に関する情報を記載した小冊子の中の安全のための指示を一読してください。 この小冊子は、デバイスと同梱されています。
 - レールの取り付けを始めるときは、ラックの最下部に一番近い場所を使用します。
-- ツールが必要なタイプのレールを取り付ける構成では、ねじ (#10-32、#12-24、#M5、または #M6) が 8 本必要です。 ねじ頭部の直径が 10 mm (0.4 インチ) 以上のものは利用できません。
+- ツールが必要なタイプのレールを取り付ける構成では、
+    -  ねじ (#10-32、#12-24、#M5、または #M6) が 8 本必要です。 ねじ頭部の直径が 10 mm (0.4 インチ) 以上のものは利用できません。
+    -  マイナス ドライバーが必要となります。
 
 ### <a name="identify-the-rail-kit-contents"></a>レール キットの中身の確認
 
@@ -102,6 +104,9 @@ ms.locfileid: "58399996"
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>ツールレス タイプのレールの付け外し (四角穴タイプまたは丸穴タイプのラックの場合)
 
+> [!TIP]
+> このオプションにツールは必要ありません。レールを付け外しするラックの四角穴または丸穴にはねじの溝がなく、ツールは不要です。
+
 1. 左右それぞれのレールの末端部パーツのうち、**FRONT** の文字が書かれたラベルが貼ってある方の位置を決めます。このとき、ラベルのある面が内側を向くようにすると共に、末端部パーツがそれぞれ、ラックの垂直フランジの前面から穴に収まるようにします。
 2. それぞれの末端部パーツの位置を、希望する U スペースに対応する上下の穴の位置に合わせます。
 3. 後方のレール末端部をラックに取り付けます。末端部がラックの垂直フランジに完全に収まり、カチッという音を立ててラッチが掛かったら成功です。 前面の末端部パーツについても、ここまでの手順を繰り返し、ラックの垂直フランジに取り付けます。
@@ -110,6 +115,9 @@ ms.locfileid: "58399996"
 ![ツールレス タイプのレールの付け外し](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>ツールが必要なタイプのレールの付け外し (スレッド ホール タイプのラックの場合)
+
+> [!TIP]
+> このオプションにはツールが必要です。レールを付け外しするラックの丸穴にはねじの溝があるので、ツール ("_マイナス ドライバー_") が必要となります。
 
 1. マイナス ドライバーを使って、前後のマウンティング ブラケットからピンを取り外します。
 2. レール ラッチ サブアセンブリを回しながら引き、マウンティング ブラケットから取り外します。

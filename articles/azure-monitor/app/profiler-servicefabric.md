@@ -28,13 +28,13 @@ Application Insights Profiler を次のサービスにデプロイすること�
 
 ## <a name="set-up-the-environment-deployment-definition"></a>環境デプロイ定義を設定する
 
-Application Insights Profiler は、Azure 診断に付属しています。 Service Fabric クラスター用の Azure Resource Manager テンプレートを使用して、Azure 診断拡張機能をインストールできます。 [Service Fabric クラスターに Azure 診断をインストールするテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)を入手します。
+Application Insights Profiler は、Azure Diagnostics に付属しています。 Service Fabric クラスター用の Azure Resource Manager テンプレートを使用して、Azure Diagnostics 拡張機能をインストールできます。 [Service Fabric クラスターに Azure 診断をインストールするテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)を入手します。
 
 環境を設定するには、次の操作を実行します。
 
 1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するために、デプロイされている OS が `Windows Server 2012 R2` 以降であることを確認します。
 
-1. デプロイ テンプレート ファイルで、[Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)の拡張機能を探します。
+1. デプロイ テンプレート ファイルで、[Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) の拡張機能を探します。
 
 1. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
 
@@ -52,7 +52,7 @@ Application Insights Profiler は、Azure 診断に付属しています。 Serv
       デプロイ テンプレートへの診断拡張機能の追加の詳細については、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 1. Azure Resource Manager テンプレートを使用して、Service Fabric クラスターをデプロイします。  
-  設定が正しい場合、Azure 診断拡張機能をインストールすると Application Insights Profiler がインストールされて有効になります。 
+  設定が正しい場合、Azure Diagnostics 拡張機能をインストールすると Application Insights Profiler がインストールされて有効になります。 
 
 1. Application Insights を Service Fabric アプリケーションに追加します。  
   Profiler で要求のプロファイルを収集するには、アプリケーションが Application Insights の操作を追跡している必要があります。 ステートレス API の場合は、[プロファイリングのための要求の追跡](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)の手順を参照できます。 他の種類のアプリでのカスタム操作の追跡の詳細については、「[Application Insights .NET SDK でカスタム操作を追跡する](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)」を参照してください

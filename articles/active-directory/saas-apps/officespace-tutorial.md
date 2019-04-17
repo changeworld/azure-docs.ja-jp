@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 42ef2d9bbdf825eb0a872e9fe6fa66b34faa2cad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6547a640f6e56865d44b6848cf37078161faa538
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180570"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261542"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>チュートリアル:Azure Active Directory と OfficeSpace Software の統合
 
@@ -107,9 +107,9 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成する
 
     ![[OfficeSpace Software のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<company name>.officespacesoftware.com/users/sign_in/saml`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<company name>.officespacesoftware.com`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `<company name>.officespacesoftware.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これの値の取得については、[OfficeSpace Software クライアント サポート チーム](mailto:support@officespacesoftware.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -255,7 +255,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成する
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -218,7 +218,7 @@ ms.locfileid: "58663164"
 
 ## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>パフォーマンス カウンターを選択するように Log Analytics エージェントを構成する
 
-Log Analytics エージェントを使用するもう 1 つの利点として、Azure 診断エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、ログ分析の UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 これを行うには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ワークスペース]** をクリックします。
+Log Analytics エージェントを使用するもう 1 つの利点として、Azure Diagnostics エージェントを構成し、毎回 Resource Manager テンプレート ベースのアップグレードを実行するのではなく、ログ分析の UI 操作で選択可能なパフォーマンス カウンターを変更できる点があります。 これを行うには、コンテナー監視 (または Service Fabric) ソリューションのランディング ページで **[OMS ワークスペース]** をクリックします。
 
 Log Analytics ワークスペースに移動します。ここでは、ソリューションの確認、カスタム ダッシュボードの作成、Log Analytics エージェントの構成を行うことができます。 
 * [詳細設定] メニューを開くには、**[詳細設定]** をクリックします。

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835454"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489658"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -85,7 +85,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>C# の式を使って今日の日付を取得する
 
-今日の日付を取得するには、C# の式 `DateTime.Now.ToString("M/d/yyyy")` を使用します。
+今日の日付を取得するには、次の C# の式を使用します。 `DateTime.Now.ToString("M/d/yyyy")`
 
 この式をスクリプトで使う方法の例を以下に示します。
 
@@ -533,9 +533,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **シリアル化**: 指定されたルートのオブジェクトまたはオブジェクトのグラフをシリアル化し、指定されたストリームに送ります。
 
-`MyType` instance: 型のインスタンスです。  
-`IColumnWriter` writer / `IColumnReader` reader: 基になる列ストリームです。  
-`ISerializationContext` context: シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
+`MyType` instance:型のインスタンスです。  
+`IColumnWriter` writer / `IColumnReader` reader:基になる列ストリームです。  
+`ISerializationContext` context:シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
 
 * **中間**: ソースまたは宛先に関するコンテキストが永続的なストアでないことを指定します。
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-SELECT 式でのアプライヤーの使用について詳しくは、「[U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY (U-SQL SELECT における CROSS APPLY と OUTER APPLY を使った選択)](https://msdn.microsoft.com/library/azure/mt621307.aspx)」をご覧ください。
+SELECT 式でのアプライヤーの使用について詳しくは、「[U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY (U-SQL SELECT における CROSS APPLY と OUTER APPLY を使った選択)](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply)」をご覧ください。
 
 ユーザー定義アプライヤーの基底クラスの定義は、以下のとおりです。
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-さらに詳しい情報については、「[COMBINE Expression (U-SQL) (COMBINE 式 (U-SQL))](https://msdn.microsoft.com/library/azure/mt621339.aspx)」を参照してください。
+さらに詳しい情報については、「[COMBINE Expression (U-SQL) (COMBINE 式 (U-SQL))](/u-sql/statements-and-expressions/combine-expression)」を参照してください。
 
 ユーザー定義コンバイナーを定義するには、`ICombiner` インターフェイスを作成する必要があります。ユーザー定義コンバイナーの定義では、[`SqlUserDefinedCombiner`] 属性は省略可能です。
 
@@ -1877,7 +1877,7 @@ CombinerMode 列挙型は、以下の値を取ることができます。
 
 キャッシュのために、LINQ クエリの実行の結果として List\<T\> 型のメモリ構造体を作成できます。具体的には List<`IRow`> です。 列挙では、匿名データ型も使用できます。
 
-LINQ クエリについて詳しくは「[LINQ クエリの概要 (C#)](https://msdn.microsoft.com/library/bb397906.aspx)」を、IEnumerable\<T\> インターフェイスについて詳しくは「[IEnumerable\<T\> インターフェイス](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx)」を、それぞれご覧ください。
+LINQ クエリについて詳しくは「[LINQ クエリの概要 (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)」を、IEnumerable\<T\> インターフェイスについて詳しくは「[IEnumerable\<T\> インターフェイス](/dotnet/api/system.collections.generic.ienumerable-1)」を、それぞれご覧ください。
 
 `IRowset` から実際のデータ値を取得するには、`IRow` インターフェイスの Get() メソッドを使います。
 

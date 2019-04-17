@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b56aeb4fb0c902d3c824c58d2ac589c5f1fb01b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894767"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256891"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -93,7 +93,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 ![Azure portal:[Azure AD Connect] ウィンドウ](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> シームレス SSO は、各 Active Directory (AD) フォレスト内のオンプレミスの AD に `AZUREADSSOACC` という名前のコンピューター アカウントを作成します。 `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 このコンピューター アカウントを管理できるユーザーはドメイン管理者に限定してください。 このコンピューター アカウントの Kerberos 委任は必ず無効にします。 このコンピューター アカウントは、不注意で削除されるおそれがない組織単位 (OU) に格納してください。
+> シームレス SSO は、各 Active Directory (AD) フォレスト内のオンプレミスの AD に `AZUREADSSOACC` という名前のコンピューター アカウントを作成します。 `AZUREADSSOACC` コンピューター アカウントは、セキュリティ上の理由から強固に保護する必要があります。 このコンピューター アカウントを管理できるユーザーはドメイン管理者に限定してください。 このコンピューター アカウントの Kerberos 委任は必ず無効にします。 このコンピューター アカウントは、不注意で削除されるおそれがなく、ドメイン管理者のみがアクセスできる組織単位 (OU) に格納してください。
 
 >[!NOTE]
 > オンプレミス環境内で Pass-the-Hash および Credential Theft Mitigation アーキテクチャを使用している場合は、適切な変更を行って `AZUREADSSOACC` コンピューター アカウントが最終的に検疫コンテナー内にないことを確認します。 

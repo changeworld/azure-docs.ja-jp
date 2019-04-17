@@ -3,17 +3,17 @@ title: Azure IoT Hub ファイルのアップロードについて | Microsoft D
 description: 開発者ガイド - IoT Hub のファイルのアップロード機能を使用して、デバイスから Azure Storage Blob コンテナーへのファイルのアップロードを管理します。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 7678c50cbda0ea112c737e8230586081efe61081
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008561"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050732"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -154,7 +154,7 @@ IoT Hub を使用してデバイスからファイルをアップロードする
 
 * [デバイス ツインを使って状態と構成を同期する](iot-hub-devguide-device-twins.md)
 
-* [デバイスでダイレクト メソッドを呼び出す](iot-hub-devguide-direct-methods.md)
+* [デバイス上のダイレクト メソッドを呼び出す](iot-hub-devguide-direct-methods.md)
 
 * [複数デバイスでのジョブをスケジュール設定する](iot-hub-devguide-jobs.md)
 

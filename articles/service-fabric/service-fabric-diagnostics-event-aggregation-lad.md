@@ -1,5 +1,5 @@
 ---
-title: Linux Azure 診断を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
+title: Linux Azure Diagnostics を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
 description: Azure Service Fabric クラスターの監視と診断に LAD を使用したイベントの集計と収集について説明します。
 services: service-fabric
 documentationcenter: .net
@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2019
 ms.locfileid: "58669420"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure 診断を使用したイベントの集計と収集
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
@@ -30,7 +30,7 @@ ms.locfileid: "58669420"
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログをアップロードして収集する方法として、Linux Azure 診断 (LAD) 拡張機能を使用できます。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](../log-analytics/log-analytics-service-fabric.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
+ログをアップロードして収集する方法として、Linux Azure Diagnostics (LAD) 拡張機能を使用できます。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](../log-analytics/log-analytics-service-fabric.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 ## <a name="log-and-event-sources"></a>ログとイベントのソース
 

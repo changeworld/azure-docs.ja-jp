@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Docs
-description: Azure Monitor の Log Analytics ワークスペースは、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを格納します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
+description: Azure Monitor の Log Analytics ワークスペースは、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを格納します。 Azure Diagnostics によって生成された場合は、Azure Storage からマシンのデータを収集できます。
 services: log-analytics
 author: richrundmsft
 ms.service: log-analytics
@@ -194,8 +194,8 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> この + は + または - です <br> zzz は時刻のオフセットです | `(([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4})` | | |
 | `yyyy-MM-ddTHH:mm:ss` <br> T はリテラル文字の T です | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
-## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Azure 診断を送信するための Log Analytics の構成
-エージェントを介さずに Azure リソースを監視するには、リソースで Azure 診断を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データがワークスペースに直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。
+## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Azure Diagnostics を送信するための Log Analytics の構成
+エージェントを介さずに Azure リソースを監視するには、リソースで Azure Diagnostics を有効にし、Log Analytics ワークスペースへの書き込みを構成する必要があります。 この方法では、データがワークスペースに直接送信され、ストレージ アカウントにデータを書き込む必要がありません。 サポートされているリソースは次のとおりです。
 
 | リソースの種類 | ログ | メトリック |
 | --- | --- | --- |

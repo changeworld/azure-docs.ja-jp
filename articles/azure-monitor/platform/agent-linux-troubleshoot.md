@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c9d5b214d0c79f84372ba679db1cbd4a7ad9858
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372592"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884178"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -36,7 +36,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
  ファイル | Path
  ---- | -----
- Linux 用 Log Analytics エージェントのログ ファイル | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log `
+ Linux 用 Log Analytics エージェントのログ ファイル | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics エージェントの構成のログ ファイル | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
  トラブルシューティングでは、または GitHub の問題を送信する前に、ログ コレクター ツールを使用して重要なログを取得することをお勧めします。 ツールの詳細と実行方法については、[こちら](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)をご覧ください。
@@ -45,7 +45,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
  Category | ファイルの場所
  ----- | -----
- syslog | `/etc/syslog-ng/syslog-ng.conf` または `/etc/rsyslog.conf` または `/etc/rsyslog.d/95-omsagent.conf`
+ syslog | `/etc/syslog-ng/syslog-ng.conf` 、`/etc/rsyslog.conf`、または `/etc/rsyslog.d/95-omsagent.conf`
  パフォーマンス、Nagios、Zabbix、Log Analytics の出力および汎用エージェント | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  追加の構成 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
@@ -117,7 +117,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
 デバッグ ログを使用すると、バッチ処理された Azure Monitor へのアップロードを、種類、データ項目の数、および送信にかかった時間で区切って表示できます。
 
-*"デバッグを有効にしたログの例"*:
+*デバッグを有効にしたログの例:*
 
 ```
 Success sending oms.nagios x 1 in 0.14s
@@ -197,7 +197,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 - Linux 用 Log Analytics エージェントのデータがバックアップされています
 
 ### <a name="resolution"></a>解決策
-1. ファイル `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在するかどうかをチェックして、Azure Monitor のオンボードに成功したかどうかを確認します。
+1. 次のファイルが存在するかどうかをチェックして、Azure Monitor のオンボードに成功したかどうかを確認します。 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. `omsadmin.sh` コマンドライン命令を使用して再オンボードします。
 3. プロキシを使用する場合は、上記のプロキシの解決手順を参照してください。
 4. 場合によっては、Linux 用 Log Analytics エージェントがサービスと通信できないときに、エージェントのデータが最大バッファー サイズ (50 MB) までキューイングされます。 `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` コマンドを実行して、エージェントを再起動する必要があります。 
@@ -380,13 +380,13 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 
 **背景:** 特権ユーザー `root` として実行される Linux 用 Log Analytics エージェントの代わりに、エージェントは `omsagent` ユーザーとして実行されます。 ほとんどの場合、特定のファイルを読み取るためには、明示的なアクセス許可をユーザーに付与する必要があります。 `omsagent` ユーザーにアクセス許可を付与するには、次のコマンドを実行します。
 
-1. `sudo usermod -a -G <GROUPNAME> <USERNAME>` で、`omsagent` ユーザーを特定のグループに追加します
-2. `sudo chmod -R ugo+rx <FILE DIRECTORY>` で、必要なファイルへの汎用の読み取りアクセス許可を付与します
+1. 次を使用して、`omsagent` ユーザーを特定のグループに追加します。 `sudo usermod -a -G <GROUPNAME> <USERNAME>`
+2. 次のように、必要なファイルへの汎用の読み取りアクセス許可を付与します。 `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 1.1.0-217 より前のバージョンの Linux 用 Log Analytics エージェントには、競合状態に関する既知の問題があります。 最新のエージェントに更新した後、次のコマンドを実行して、出力プラグインの最新バージョンを取得します。`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>問題: 新しいワークスペースに再オンボードしようとしている
-エージェントを新しいワークスペースに再オンボードするときは、再オンボードの前に、Log Analytics エージェントの構成をクリーンアップする必要があります。 エージェントから古い構成をクリーンアップするには、`--purge` でシェル バンドルを実行します
+エージェントを新しいワークスペースに再オンボードするときは、再オンボードの前に、Log Analytics エージェントの構成をクリーンアップする必要があります。 エージェントから古い構成をクリーンアップするには、次のように、シェル バンドルを実行します。 `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge

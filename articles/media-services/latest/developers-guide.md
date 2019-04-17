@@ -16,18 +16,21 @@ ms.workload: media
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 774ddfa435cb23a8bf5d179fb0f7a0baf9dfca75
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4f9911259cc4da02429971ef6bddfa62080a9fe6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755896"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044408"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>SDK/ツールを使用して Media Services v3 API での開発を始める
 
 開発者は、Media Services の [REST API](https://aka.ms/ams-v3-rest-ref) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
 このトピックでは、SDK、ツール、ドキュメントへのリンクを提供します。 また、さまざまな開発環境に役立つ情報も提供します。
+
+> [!NOTE]
+> Azure Media Services v3 SDK は、スレッドセーフである保証はありません。 マルチスレッドのアプリケーションを開発するときは、独自のスレッド同期ロジックを追加してクライアントを保護するか、スレッドごとに新しい AzureMediaServicesClient オブジェクトを使用する必要があります。 .NET の HttpClient インスタンスなど、コード内の任意のオブジェクトによってクライアントにもたらされるマルチスレッドの問題にも注意を払う必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +40,7 @@ Media Services に対する開発を始めるには、次のものが必要で�
 - [基本的な概念を理解する](concepts-overview.md)
 - [Media Services アカウントを作成する - CLI](create-account-cli-how-to.md)
 
-## <a name="start-developing-with-sdks"></a>SDK を使用した開発を始める
+## <a name="start-developing-with-sdks"></a>SDK を使用した開発の開始
 
 ### <a name="net"></a>.NET
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor を使用してログ アラートを作成、表示、管理する
+title: Azure Monitor を使用してログ アラートを作成、表示、管理する | Microsoft Docs
 description: Azure Monitor を使用して、Azure で、ログ アラート ルールを作成、表示、管理します。
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873793"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006955"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -23,10 +23,10 @@ ms.locfileid: "57873793"
 - 条件:Signal で確認された場合にアクションをトリガーする特定の条件またはロジック
 - アクション:電子メール、SMS、Webhook などの通知の受信者に送信される特定の呼び出し。
 
-アラートを説明する**ログ アラート**という用語。このアラートでは、[Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) または [Application Insights](../../azure-monitor/app/analytics.md) に基づいて、シグナルがカスタム クエリとなります。 「[ログ アラート - 概要](../../azure-monitor/platform/alerts-unified-log.md)」からの機能、用語、および型について説明します。
+アラートを説明する**ログ アラート**という用語。このアラートでは、[Log Analytics ワークスペース](../learn/tutorial-viewdata.md)または [Application Insights](../app/analytics.md) でのシグナルがログ クエリとなります。 「[ログ アラート - 概要](alerts-unified-log.md)」からの機能、用語、および型について説明します。
 
 > [!NOTE]
-> Azure Monitor のメトリック プラットフォームでは、[Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) の一般的なログ データも利用できます。 詳細ビューについては、[ログのメトリック アラート](../../azure-monitor/platform/alerts-metric-logs.md)に関するページをご覧ください
+> Azure Monitor のメトリック プラットフォームでは、[Log Analytics ワークスペース](../../azure-monitor/learn/tutorial-viewdata.md) の一般的なログ データも利用できるようになっています。 詳細ビューについては、[ログのメトリック アラート](alerts-metric-logs.md)に関するページをご覧ください
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Microsoft Azure portal からのログ アラートの管理
 
@@ -58,7 +58,7 @@ ms.locfileid: "57873793"
 
    > [!NOTE]
    > 
-   > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[ログ分析でのログ検索の使用](../../azure-monitor/log-query/log-query-overview.md)または [Application Insights 分析 での共有クエリ](../../azure-monitor/log-query/log-query-overview.md)に関する記事を参照してください。
+   > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[Azure Monitor でのログ クエリの使用](../log-query/log-query-overview.md)または [Application Insights 分析 での共有クエリ](../log-query/log-query-overview.md)に関する記事を参照してください。
 
 1. *ログ アラート*: 選択すると、アラート設定のクエリを **[検索クエリ]** フィールドで指定できます。クエリ構文が正しくない場合は、フィールドに赤い文字でエラーが表示されます。 クエリ構文が正しい場合は、直近の 6 時間から最後の週までさまざまな時間枠を微調整するオプションとともに、宣言されたクエリの履歴データが参考としてグラフで表示されます。
 
@@ -119,19 +119,19 @@ ms.locfileid: "57873793"
     > ログ アラート ルールは、ユーザーが提供するクエリベースのカスタム ロジックから構成され、したがって解決済みの状態は使用しません。 このため、ログ アラート ルールで指定された条件に適合するごとに発動されます。
 
 1. 上部のバーにある **[ルールの管理]** を選択して、ルールを管理するセクションに移動します。ここでは、作成されたすべてのアラート ルール (無効にされたアラートも含む) が一覧表示されます。
-    ![アラート ルールの管理](media/alerts-log/manage-alert-rules.png)
+    ![ manage alert rules](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Azure リソース テンプレートを使用したログ アラートの管理
 
 Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights/scheduledQueryRules/` に関連付けられています。 このリソースの種類の詳細については、[Azure Monitor - Scheduled Query Rules API の API リファレンス](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)を参照してください。 Application Insights または Log Analytics のログ アラートは、[Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) を使用して作成できます。
 
 > [!NOTE]
-> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) や [Log Analytics の保存された検索とアラート](../../azure-monitor/insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
+> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](api-alerts.md) や [Log Analytics の保存された検索とアラート](../insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Azure リソース テンプレートを使用したログ アラートの作成例
 
-以下に、[スケジュール済みクエリ ルールの作成](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)のための構造体に基づくリソース テンプレートを示します。標準ログ検索クエリである[結果タイプの数によるログ アラート](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)を使用しています。変数として、サンプル データ セットを指定しています。
+以下に、[スケジュール済みクエリ ルールの作成](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)のための構造体に基づくリソース テンプレートを示します。標準ログ検索クエリである[結果タイプの数によるログ アラート](alerts-unified-log.md#number-of-results-alert-rules)を使用しています。変数として、サンプル データ セットを指定しています。
 
 ```json
 {
@@ -316,7 +316,7 @@ Azure Monitor - Scheduled Query Rules API](https://docs.microsoft.com/rest/api/m
 
 
 > [!NOTE]
-> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) や [Log Analytics の保存された検索とアラート](../../azure-monitor/insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
+> Log Analytics のログ アラートは、従来の [Log Analytics Alert API](api-alerts.md) や [Log Analytics の保存された検索とアラート](../insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
 
 現在、ログ アラートには専用の PowerShell コマンドや CLI コマンドはありません。ただし、リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対し、Azure Resource Manager PowerShell コマンドレットを介して以下のように使用できます。
 
@@ -335,4 +335,4 @@ On successful operation, 201 will be returned to state new alert rule creation o
 * Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
 * Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
 * Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn more about [log queries](../log-query/log-query-overview.md).

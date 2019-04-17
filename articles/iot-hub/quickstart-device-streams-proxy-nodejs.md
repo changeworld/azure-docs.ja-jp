@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: a737413f6692b4ee811d0590351a385552cc9a8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a459473e04f9cbf3b11b75f3b9dbea2732455084
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085577"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005437"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
@@ -27,17 +27,15 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 
 まず、SSH (ポート 22 を使用) の設定について説明します。 その後、RDP (ポート 3389 を使用) の設定を変更する方法を説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、(通常は通信ポートを変更することによって) 同じサンプルを他の種類のクライアント/サーバー アプリケーション トラフィックに対応するように変更できます。
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
 
 ## <a name="prerequisites"></a>前提条件
 
 デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
 
-  - **米国中部**
+  - **米国中央部**
   - **米国中部 EUAP**
 
 このクイック スタートのサービスローカルのアプリケーションを実行するには、開発用マシンに Node.js v4.x.x 以降が必要です。
@@ -50,8 +48,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
+まだ行っていない場合は、 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -59,21 +62,19 @@ node --version
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
-
 ## <a name="register-a-device"></a>デバイスの登録
 
 前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
    **MyDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
@@ -89,13 +90,11 @@ node --version
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-
 ## <a name="ssh-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
 
 ### <a name="run-the-device-local-proxy"></a>デバイスローカルのプロキシの実行
 
 前述のように、IoT Hub Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 デバイスローカルのアプリケーションについては、[C クイック スタート](./quickstart-device-streams-proxy-c.md)または [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)のガイドに記載されている対応するデバイス プロキシ プログラムを使用してください。 次の手順に進む前に、デバイスローカルのプロキシが実行されていることを確認します。
-
 
 ### <a name="run-the-service-local-proxy"></a>サービスローカルのプロキシの実行
 
@@ -128,13 +127,12 @@ node --version
   ```
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
+
 Linux では、ターミナルで `ssh $USER@localhost -p 2222` を使用して SSH を実行します。 Windows では、任意の SSH クライアント (PuTTY など) を使用します。
 
 SSH セッションが確立された後のサービスローカルのコンソール出力 (サービスローカルのプロキシはポート 2222 をリッスンします):![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "SSH ターミナルの出力")
 
-
 SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "SSH クライアントの出力")
-
 
 ### <a name="rdp-to-your-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの RDP 接続
 
@@ -144,7 +142,6 @@ SSH クライアント プログラムのコンソール出力 (SSH クライア
 > デバイス プロキシが RDP 用に正しく構成され、RDP ポートが 3389 で構成されていることを確認してください。
 
 ![代替テキスト](./media/quickstart-device-streams-proxy-nodejs/rdp-screen-capture.PNG "RDP クライアントがサービスローカルのプロキシに接続します。")
-
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

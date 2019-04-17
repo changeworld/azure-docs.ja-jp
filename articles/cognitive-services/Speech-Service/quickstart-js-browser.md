@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841176"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008988"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>クイック スタート:ブラウザーで JavaScript と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、音声をテキストに文字起こしする Web サイトを、Cognitive Services Speech SDK の JavaScript バインドを使用して作成する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK ([ダウンロード バージョン 1.3.0](https://aka.ms/csspeech/jsbrowserpackage)) が基になっています。
+このアプリケーションは、JavaScript 用 Speech SDK が基になっています ([バージョン 1.4.0 のダウンロード](https://aka.ms/csspeech/jsbrowserpackage))。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Speech サービスのサブスクリプション キー。 「[Speech Service を無料で試す](get-started.md)」を参照してください。
 * 機能するマイクを備えた PC または Mac。
 * テキスト エディター。
-* 現在のバージョンの Chrome または Microsoft Edge。
+* 最新バージョンの Chrome、Microsoft Edge、Safari。
 * 必要に応じて、PHP スクリプトのホストをサポートしている Web サーバー。
 
 ## <a name="create-a-new-website-folder"></a>新しい Web サイト フォルダーを作成する
@@ -52,7 +52,7 @@ Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)�
    ```html
    <html>
    <head>
-      <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
+      <title>Speech SDK JavaScript Quickstart</title>
    </head>
    <body>
     <!-- UI code goes here -->
@@ -98,6 +98,10 @@ Web サーバーで Web ページをホストする場合は、デモ アプリ�
 ## <a name="build-and-run-the-sample-locally"></a>サンプルをビルドしてローカルに実行する
 
 アプリを起動するには、index.html ファイルをダブルクリックするか、または好みの Web ブラウザーで index.html を開きます。 簡単な GUI が表示されるので、サブスクリプション キーと[リージョン](regions.md)を入力し、マイクを使用して認識を開始することができます。
+
+> [!NOTE]
+> Safari ブラウザーでは、この方法が使用できません。
+> Safari では、サンプル Web ページを Web サーバーでホストする必要があります。Safari では、ローカル ファイルから読み込まれた Web サイトにはマイクの使用が許可されません。
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Web サーバーからサンプルをビルドして実行する
 

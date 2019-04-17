@@ -145,7 +145,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | ReportStartTime_t |レポートが最後に開始された日時。 |
 | ReportEndTime_t |レポートが完了した日時。 |
 | NumberOfResources_d |ノードに適用された構成で呼び出された DSC ソース。 |
-| SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure 診断の場合、常に *Azure* です。 |
+| SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure Diagnostics の場合、常に *Azure* です。 |
 | ResourceId |Azure Automation アカウントを指定します。 |
 | ResultDescription | この操作の説明。 |
 | SubscriptionId | Automation アカウントの Azure サブスクリプション ID (GUID) です。 |
@@ -176,7 +176,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | ErrorCode_s | リソースが失敗した場合のエラー コード。 |
 | ErrorMessage_s |リソースが失敗した場合のエラー メッセージ。 |
 | DscResourceDuration_d |DSC リソースの実行時間 (秒)。 |
-| SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure 診断の場合、常に *Azure* です。 |
+| SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure Diagnostics の場合、常に *Azure* です。 |
 | ResourceId |Azure Automation アカウントを指定します。 |
 | ResultDescription | この操作の説明。 |
 | SubscriptionId | Automation アカウントの Azure サブスクリプション ID (GUID) です。 |

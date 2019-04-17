@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: C# を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
-services: data-explorer
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: c2a11422398b3cdb99c9f71accddfcd78237c64c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 1489048619fa8d650b30659a00ae7679c8d5109d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417906"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050698"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -64,7 +63,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
     KustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | clusterName | *mykustocluster* | クラスターの任意の名前。|
    | sku | *D13_v2* | クラスターに使用される SKU。 |
@@ -95,7 +94,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
     KustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | clusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
    | databaseName | *mykustodatabase* | データベースの名前。|

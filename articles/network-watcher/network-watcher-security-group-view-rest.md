@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a2f55a65d88b499384fc961c3d6a479bac804ba8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485401"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051531"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>REST API を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
@@ -29,6 +29,9 @@ ms.locfileid: "58485401"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループおよび VM に構成されている規則を監査および診断して、トラフィックが正常に許可または拒否されていることを確認する際に役立ちます。 この記事では、REST API を使用して、仮想マシンに適用される効果的なセキュリティ規則を取得する方法を説明します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -50,7 +53,7 @@ armclient login
 
 次のスクリプトを実行して、仮想マシンを取得します。次のコードに必要な変数は次のとおりです。
 
-- **subscriptionId** - サブスクリプション ID は **Get-AzureRMSubscription** コマンドレットで取得することもできます。
+- **subscriptionId** - サブスクリプション ID は **Get-AzSubscription** コマンドレットで取得することもできます。
 - **resourceGroupName** - 仮想マシンを含むリソース グループの名前。
 
 ```powershell

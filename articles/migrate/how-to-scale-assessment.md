@@ -4,18 +4,21 @@ description: Azure Migrate サービスを使用して、多数のオンプレ�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116675"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265251"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
-Azure Migrate は 1 プロジェクトあたりのマシン数は 1,500 台に制限されていますが、この記事では、[Azure Migrate](migrate-overview.md) を使用して、多数のオンプレミスの仮想マシン (VM) を評価する方法について説明します。   
+Azure Migrate は 1 プロジェクトあたりのマシン数は 1,500 台に制限されていますが、この記事では、[Azure Migrate](migrate-overview.md) を使用して、多数のオンプレミスの仮想マシン (VM) を評価する方法について説明します。
+
+> [!NOTE]
+> 単一のアプライアンスを使用して単一のプロジェクト内で最大 10,000 個の VMware VM を検出できるプレビュー リリースを使用できます。試してみたい場合は、[こちら](https://aka.ms/migratefuture)からサインアップしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -155,7 +158,7 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-   使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   使用例:  ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
 3. 生成されたハッシュが次の設定と一致することを確認します。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: f65bb7506b112828a49f9410f4790932f0abbfbc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 490ef95e061da4a008bf50ef664aaa379d5b3062
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177536"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル:Azure Active Directory と OneTrust Privacy Management Software の統合
 
@@ -107,9 +107,9 @@ OneTrust Privacy Management Software で Azure AD シングル サインオン�
 
     ![[OneTrust Privacy Management Software のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに、`https://www.onetrust.com/saml2` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `https://www.onetrust.com/saml2`
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.onetrust.com/auth/consumerservice` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.onetrust.com/auth/consumerservice`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -206,7 +206,7 @@ OneTrust Privacy Management Software で Azure AD シングル サインオン�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

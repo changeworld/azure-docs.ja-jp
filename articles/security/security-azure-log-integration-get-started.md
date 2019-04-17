@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57894378"
 ---
-# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure 診断ログおよび Windows イベント転送
+# <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure Diagnostics ログおよび Windows イベント転送
 
 
 >[!IMPORTANT]
@@ -36,7 +36,7 @@ Azure Monitor コネクタの状態に関する情報については、SIEM の�
 > [!IMPORTANT]
 > 主な関心が仮想マシン ログの収集である場合、ほとんどの SIEM ベンダーのソリューションにこのオプションが含まれています。 代替として SIEM ベンダーのコネクタを使用することは常に推奨されます。
 
-この記事は、Azure Log Integration の使用を開始するうえで役立ちます。 この記事は、Azure Log Integration サービスのインストールと、Azure 診断へのサービスの統合にフォーカスしています。 Azure Log Integration サービスにより、Azure IaaS (サービスとしてのインフラストラクチャ) に展開された仮想マシンの Windows セキュリティ イベント チャネルから、Windows イベント ログ情報を収集することができます。 これは、ユーザーがオンプレミス システムで使用する可能性のある "*イベント転送*" と同様です。
+この記事は、Azure Log Integration の使用を開始するうえで役立ちます。 この記事は、Azure Log Integration サービスのインストールと、Azure Diagnostics へのサービスの統合にフォーカスしています。 Azure Log Integration サービスにより、Azure IaaS (サービスとしてのインフラストラクチャ) に展開された仮想マシンの Windows セキュリティ イベント チャネルから、Windows イベント ログ情報を収集することができます。 これは、ユーザーがオンプレミス システムで使用する可能性のある "*イベント転送*" と同様です。
 
 > [!NOTE]
 > Azure Log Integration の出力と SIEM との統合は、SIEM で行われます。 詳細については、[AAzure Log Integration とオンプレミスの SIEM の統合](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)に関するページを参照してください。
@@ -52,16 +52,16 @@ Azure Log Integration サービスは、Windows Server 2008 R2 以降 (Windows S
 Azure Log Integration のインストールには、次の項目が最小限必要です。
 
 * **Azure サブスクリプション**。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
-* Microsoft Azure 診断ログに使用できる**ストレージ アカウント**。 事前に構成されたストレージ アカウントを使用するか、または新しいストレージ アカウントを作成できます。 ストレージ アカウントの構成方法については、この記事の後の方で説明します。
+* Microsoft Azure Diagnostics ログに使用できる**ストレージ アカウント**。 事前に構成されたストレージ アカウントを使用するか、または新しいストレージ アカウントを作成できます。 ストレージ アカウントの構成方法については、この記事の後の方で説明します。
 
   > [!NOTE]
-  > シナリオによっては、ストレージ アカウントが不要な場合があります。 この記事で説明する Azure 診断シナリオの場合は、ストレージ アカウントが必要です。
+  > シナリオによっては、ストレージ アカウントが不要な場合があります。 この記事で説明する Azure Diagnostics シナリオの場合は、ストレージ アカウントが必要です。
 
 * **2 つのシステム**: 
   * Azure Log Integration サービスを実行するマシン。 このマシンは、後に SIEM にインポートされるすべてのログ情報を収集します。 次のようなシステムです。
     * オンプレミスまたは Microsoft Azure にホストできるシステムのいずれか。  
     * Windows server 2008 R2 SP1 の x64 バージョンまたはそれ以上を実行し、Microsoft .NET 4.5.1 がインストールされている必要がある。 インストールされている .NET のバージョンを確認するには、[インストールされている .NET Framework バージョンを確認する方法](https://msdn.microsoft.com/library/hh925568)に関するページを参照してください。  
-    * Azure 診断ログに使用する Azure Storage アカウントに接続されている必要がある。 接続の確認方法については、この記事の後の方で説明します。
+    * Azure Diagnostics ログに使用する Azure Storage アカウントに接続されている必要がある。 接続の確認方法については、この記事の後の方で説明します。
   * 監視対象のマシン。 これは、[Azure 仮想マシン](../virtual-machines/virtual-machines-windows-overview.md)として実行されている仮想マシンです。 このマシンからのログ情報が Azure Log Integration サービスのマシンに送信されます。
 
 Azure Portal を使用して仮想マシンを作成する方法の簡単なデモについては、次のビデオをご覧ください。<br /><br />
@@ -73,7 +73,7 @@ Azure Portal を使用して仮想マシンを作成する方法の簡単なデ�
 
 テスト中、オペレーティング システムの最小要件を満たす任意のシステムを使用できます。 運用環境の場合は、負荷のスケールアップまたはスケールアウトの計画が必要になることがあります。
 
-Azure ログ統合サービスの複数のインスタンスを実行できます。 ただし、物理マシンまたは仮想マシンごとにサービスの 1 つのインスタンスのみを実行できます。 さらに、Microsoft Azure 診断の Azure 診断ストレージ アカウントを負荷分散できます。 インスタンスに提供するサブスクリプションの数は、容量に基づきます。
+Azure ログ統合サービスの複数のインスタンスを実行できます。 ただし、物理マシンまたは仮想マシンごとにサービスの 1 つのインスタンスのみを実行できます。 さらに、Microsoft Azure Diagnostics の Azure Diagnostics ストレージ アカウントを負荷分散できます。 インスタンスに提供するサブスクリプションの数は、容量に基づきます。
 
 > [!NOTE]
 > 現時点では、Azure Log Integration (つまり、Azure Log Integration サービスを実行しているマシン) のインスタンスをいつスケールアウトするかや、ストレージ アカウントまたはサブスクリプションに関する具体的な推奨事項はありません。 拡大/縮小は、これらの各領域におけるパフォーマンスの観測値に基づいて判断します。
@@ -123,7 +123,7 @@ Azure Log Integration サービスは、インストール先のマシンから�
    > [!NOTE]
    > コマンドが成功するとフィードバックを受信しません。 
 
-4. システムを監視するには、Azure 診断に使用されているストレージ アカウントの名前が必要です。 Azure Portal で **[仮想マシン]** に移動します。 監視する Windows 仮想マシンを検索します。 **[プロパティ]** セクションで、**[診断設定]** を選択します。  次に、**[エージェント]** を選択します。 指定されたストレージ アカウント名をメモします。 このアカウント名は、後の手順で必要になります。
+4. システムを監視するには、Azure Diagnostics に使用されているストレージ アカウントの名前が必要です。 Azure Portal で **[仮想マシン]** に移動します。 監視する Windows 仮想マシンを検索します。 **[プロパティ]** セクションで、**[診断設定]** を選択します。  次に、**[エージェント]** を選択します。 指定されたストレージ アカウント名をメモします。 このアカウント名は、後の手順で必要になります。
 
    ![Azure の [診断設定] ウィンドウのスクリーンショット](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
@@ -132,12 +132,12 @@ Azure Log Integration サービスは、インストール先のマシンから�
    > [!NOTE]
    > 仮想マシンが作成されたときに監視が有効になっていなかった場合、前の図に示すように有効にできます。
 
-5. ここで、Azure Log Integration マシンに戻ります。 Azure Log Integration をインストールしたシステムと、ストレージ アカウント間の接続を確認します。 Azure Log Integration サービスを実行しているコンピューターは、監視対象の各システム上で構成されている Azure 診断によって記録された情報を取得するために、ストレージ アカウントへのアクセスが必要です。 接続は、次のように確認します。 
+5. ここで、Azure Log Integration マシンに戻ります。 Azure Log Integration をインストールしたシステムと、ストレージ アカウント間の接続を確認します。 Azure Log Integration サービスを実行しているコンピューターは、監視対象の各システム上で構成されている Azure Diagnostics によって記録された情報を取得するために、ストレージ アカウントへのアクセスが必要です。 接続は、次のように確認します。 
    1. [Azure Storage Explorer をダウンロード](https://storageexplorer.com/)します。
    2. セットアップを完了します。
    3. インストールが完了したら、**[次へ]** を選択します。 **[Launch Microsoft Azure Storage Explorer]\(Microsoft Azure Storage Explorer を起動する\)** チェック ボックスはオンのままにします。  
    4. Azure にサインインします。
-   5. Azure 診断用に構成したストレージ アカウントが表示されることを確認します。 
+   5. Azure Diagnostics 用に構成したストレージ アカウントが表示されることを確認します。 
 
    ![Storage Explorer のストレージ アカウントのスクリーンショット](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
@@ -151,9 +151,9 @@ Azure Log Integration サービスは、インストール先のマシンから�
 この手順では、Azure Log Integration サービスを実行しているコンピューターを構成し、ログ ファイルを含むストレージ アカウントに接続します。
 
 この手順を完了するには、次の設定が必要です。  
-* **FriendlyNameForSource**:Azure 診断から情報を格納するために仮想マシンを構成した、ストレージ アカウントに適用可能な表示名。
-* **StorageAccountName**:Azure 診断を構成するときに指定したストレージ アカウントの名前。  
-* **StorageKey**:この仮想マシン用に Azure 診断情報が格納されるストレージ アカウントに対するストレージ キー。  
+* **FriendlyNameForSource**:Azure Diagnostics から情報を格納するために仮想マシンを構成した、ストレージ アカウントに適用可能な表示名。
+* **StorageAccountName**:Azure Diagnostics を構成するときに指定したストレージ アカウントの名前。  
+* **StorageKey**:この仮想マシン用に Azure Diagnostics 情報が格納されるストレージ アカウントに対するストレージ キー。  
 
 ストレージ キーを取得するには、次の手順を実行します。
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
@@ -248,5 +248,5 @@ Azure Log Integration の詳細については、次の記事を参照してく�
 * [Azure Log Integration の概要](security-azure-log-integration-overview.md)。 この記事では、Azure Log Integration と、その主な機能およびしくみについて紹介します。
 * [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)。 このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure Log Integration を構成する方法について説明します。 ここには SIEM コンポーネントを構成する方法に関する現時点でのガイダンスが記載されています。 追加の詳細については、SIEM ベンダーに確認してください。
 * [Azure Log Integration のよくあるご質問 (FAQ)](security-azure-log-integration-faq.md)。 この FAQ は、Azure Log Integration について寄せられる質問とその回答です。
-* [Azure Security Center のアラートと Azure Log Integration の統合](../security-center/security-center-integrating-alerts-with-log-integration.md)。 この記事では、Azure 診断と Azure のアクティビティ ログによって収集される、Security Center のアラートと仮想マシンのセキュリティ イベントを同期する方法について説明します。 ログを同期するには、Azure Monitor ログまたは SIEM ソリューションを使用します。
+* [Azure Security Center のアラートと Azure Log Integration の統合](../security-center/security-center-integrating-alerts-with-log-integration.md)。 この記事では、Azure Diagnostics と Azure のアクティビティ ログによって収集される、Security Center のアラートと仮想マシンのセキュリティ イベントを同期する方法について説明します。 ログを同期するには、Azure Monitor ログまたは SIEM ソリューションを使用します。
 * [Azure 診断と Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/)。 このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るのに役立つその他の機能を紹介します。

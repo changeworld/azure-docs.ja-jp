@@ -1,19 +1,18 @@
 ---
 title: Azure のデータ エクスプローラーにサンプル データを取り込む
 description: Azure のデータ エクスプローラーに気象関連のサンプル データ (負荷) を取り込む方法を説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ebbe3434f032b38c33ec7b82e445532836f78c9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758472"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050630"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Azure のデータ エクスプローラーにサンプル データを取り込む
 
@@ -64,4 +63,4 @@ ms.locfileid: "58758472"
 > [クエリを作成する](write-queries.md)
 
 > [!div class="nextstepaction"]
-> [Azure のデータ エクスプローラーへのデータの取り込み](ingest-data-overview.md)
+> [Azure データ エクスプローラーでのデータ インジェスト](ingest-data-overview.md)

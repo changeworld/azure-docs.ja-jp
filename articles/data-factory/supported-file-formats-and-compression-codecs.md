@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e21223bf3c50a98e039d0f19c51116c4a3cfbcc0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875129"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257911"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
-*この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
+*この記事は、次のコネクタに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
 
 ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 **特定の形式でファイルを解析または生成する**場合、Azure Data Factory では次の種類のファイル形式がサポートされています。
 
@@ -95,6 +95,9 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 | jsonPathDefinition | カスタマイズされた列名 (先頭が小文字) での列マッピングごとに JSON のパス式を指定します。 このプロパティは JSON ファイル**から**データをコピーするときにのみサポートされ、オブジェクトまたは配列からデータを抽出することができます。 <br/><br/> ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`jsonNodeReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。 | いいえ  |
 | encodingName |エンコード名の指定。 有効なエンコード名の一覧については、[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ  |
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ  |
+
+>[!NOTE]
+>配列内のデータを複数の行にクロス適用する場合 (ケース 1 -> 「[JsonFormat の例](#jsonformat-example)」のサンプル 2)、選択できるのは `jsonNodeReference` プロパティを使用した 1 つの配列の展開のみです。 
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
 
@@ -227,8 +230,8 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、[変換先のデータセット列へのソース データセット列のマップ](copy-activity-schema-and-type-mapping.md)に関するページをご覧ください。
-- `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 配列からデータをコピーするには、`array[x].property` を使用して `xth` 番目のオブジェクトから特定のプロパティの値を抽出するか、`array[*].property` を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
+- `structure`  セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、[変換先のデータセット列へのソース データセット列のマップ](copy-activity-schema-and-type-mapping.md)に関するページをご覧ください。
+- `jsonPathDefinition`  は、データの抽出元を示す、各列の JSON のパスを指定します。 配列からデータをコピーするには、`array[x].property` を使用して `xth` 番目のオブジェクトから特定のプロパティの値を抽出するか、`array[*].property` を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
 
 ```json
 "properties": {
@@ -265,7 +268,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 }
 ```
 
-**サンプル 2: 同じパターンの複数のオブジェクトを配列からクロス適用する**
+**サンプル 2: 配列から同じパターンの複数のオブジェクトをクロス適用する**
 
 このサンプルでは、表形式の結果において 1 つのルート JSON オブジェクトを複数のレコードに変換することを想定しています。 次の内容が含まれる JSON ファイルをお持ちで、
 
@@ -302,9 +305,9 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、[変換先のデータセット列へのソース データセット列のマップ](copy-activity-schema-and-type-mapping.md)に関するページをご覧ください。
-- `jsonNodeReference` は、`orderlines` という**配列**の直下にある同じパターンのオブジェクトからのデータの反復処理と抽出を行うことを示します。
-- `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 この例での `ordernumber`、`orderdate`、`city` は、`$.` から始まる JSON のパスが含まれるルート オブジェクトの直下にあります。`order_pd` と `order_price` は、`$.` のない配列要素から派生したパスで定義されています。
+- `structure`  セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、[変換先のデータセット列へのソース データセット列のマップ](copy-activity-schema-and-type-mapping.md)に関するページをご覧ください。
+- `jsonNodeReference`  は、`orderlines` という**配列**の直下にある同じパターンのオブジェクトからのデータの反復処理と抽出を行うことを示します。
+- `jsonPathDefinition`  は、データの抽出元を示す、各列の JSON のパスを指定します。 この例での `ordernumber`、`orderdate`、`city` は、`$.` から始まる JSON のパスが含まれるルート オブジェクトの直下にあります。`order_pd` と `order_price` は、`$.` のない配列要素から派生したパスで定義されています。
 
 ```json
 "properties": {

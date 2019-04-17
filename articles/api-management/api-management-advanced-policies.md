@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d3bc50e1578704de029d53c0b1eaa21e74182cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401921"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756619"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -253,7 +253,7 @@ ms.locfileid: "58401921"
 
 | Attribute                               | 説明                                                                                                      | 必須 | 既定値     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout="整数"                       | バックエンド サービスの呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。 最小値は 0 秒です。 最大値は 240 秒です。| いいえ        | 240 秒 |
+| timeout="整数"                       | バックエンド サービスによって返される HTTP 応答ヘッダーを待機する秒単位の時間。この時間を過ぎると、タイムアウト エラーが発生します。 最小値は 0 秒です。 この時間を過ぎると基盤となるネットワーク インフラストラクチャによってアイドル接続がドロップされる可能性があるため、240 秒より大きい値は受け入れられません。 | いいえ        | なし |
 | follow-redirects="true &#124; false"    | バックエンド サービスからのリダイレクトについて、その後にゲートウェイが続くか、それとも呼び出し元に返されるかを指定します。      | いいえ        | false       |
 | buffer-request-body="true &#124; false" | "true" に設定した場合、要求がバッファーされ、[再試行](api-management-advanced-policies.md#Retry)で再利用されます。 | いいえ        | false       |
 

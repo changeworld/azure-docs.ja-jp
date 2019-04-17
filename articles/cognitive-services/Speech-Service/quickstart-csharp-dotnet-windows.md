@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838614"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008749"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>クイック スタート:.NET Framework (Windows) 用 Speech SDK を使用して音声を認識する
 
@@ -25,7 +25,7 @@ ms.locfileid: "57838614"
 
 簡単なデモ (以下に示されているように Visual Studio プロジェクトを自身で構築しない):
 
-最新の [Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) を GitHub から取得します。
+最新の [Cognitive Services Speech SDK サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk)を GitHub から取得します。
 
 ## <a name="prerequisites"></a>前提条件
 

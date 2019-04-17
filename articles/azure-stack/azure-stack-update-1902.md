@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/03/2019
-ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: 93221b8cd30993c4bdfdc84b5d14ac432fa661d3
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862082"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471291"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新プログラム
 
@@ -65,6 +65,8 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
     Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
+  **Test-AzureStack** が実行されるときに `AzsControlPlane` パラメーターが含まれていると、**Test-AzureStack** の出力に次のエラーが表示されます。**Azure Stack のコントロール プレーンの概要の失敗** この特定のエラーは無視してかまいません。
+
 - Azure Stack を System Center Operations Manager (SCOM) で管理している場合は、1902 を適用する前に、[Microsoft Azure Stack 用の管理パック](https://www.microsoft.com/download/details.aspx?id=55184)をバージョン 1.0.3.11 に更新してください。
 
 - Azure Stack の更新プログラム パッケージの形式は、1902 リリースより **.bin/.exe/.xml** から **.zip/.xml** に変更になりました。 インターネットに接続されている Azure Stack スケール ユニットをお持ちのお客様の場合には、ポータルに "**利用可能な更新プログラムがあります**" というメッセージが表示されます。 インターネット接続のないお客様の場合には、.zip と対応する .xml ファイルをダウンロードしてインポートできます。
@@ -78,7 +80,7 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 - 1902 ビルドでは、Azure Stack の管理者ポータル上にプラン、オファー、クォータ、アドオン プランの作成のための新しいユーザー インターフェイスを導入しています。 スクリーンショットを含めた詳細については、[プラン、オファー、クォータの作成](azure-stack-create-plan.md)に関するページを参照してください。
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- ノード追加による容量拡張にあたりスケール ユニットの状態を [Expanding storage]\(ストレージの拡張中\) から [実行中] に切り替える際の信頼性を向上させました。
+- ノード追加操作による容量拡張にあたりスケール ユニットの状態を [Expanding storage]\(ストレージの拡張中\) から [実行中] に切り替える際の信頼性を向上させました。
 
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
@@ -95,16 +97,14 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
   ```  
   
 - コアとなるインフラストラクチャ サービスの更新プロセスにおける全般的な信頼性と可用性を向上させるために、更新アクション プランの一部としてのネイティブ更新リソースプロバイダーにより、必要に応じてグローバル修復が自動で検出および呼び出されるようになりました。 グローバル修復の "修復" ワークフローに含まれる項目は次のとおりです。
-    - 最適な状態にないインフラストラクチャ仮想マシンがあるかどうかを確認し、必要に応じて修復を試みる 
-    - コントロール プランの一部としての SQL サービスに問題が発生していないかどうかを確認し、必要に応じて修復を試みる
-    - ネットワーク コントローラー (NC) の一部を構成するソフトウェア ロード バランサー (SLB) サービスの状態を確認し、必要に応じて修復を試みる
-    - ネットワーク コントローラー (NC) サービスの状態を確認し、必要に応じて修復を試みる
-    - 緊急回復コンソール サービス (ERCS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する
-    - XRP サービス ファブリック ノードの状態を確認し、必要に応じて修復する
-    - Azure Consistent Storage (ACS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する
 
-<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- ノード追加による容量拡張にあたりスケール ユニットの状態を [Expanding storage]\(ストレージの拡張中\) から [実行中] に切り替える際の信頼性を向上させました。    
+  - 最適な状態にないインフラストラクチャ仮想マシンがあるかどうかを確認し、必要に応じて修復を試みる。
+  - コントロール プランの一部としての SQL サービスに問題が発生していないかどうかを確認し、必要に応じて修復を試みる。
+  - ネットワーク コントローラー (NC) の一部を構成するソフトウェア ロード バランサー (SLB) サービスの状態を確認し、必要に応じて修復を試みる。
+  - ネットワーク コントローラー (NC) サービスの状態を確認し、必要に応じて修復を試みる
+  - 緊急回復コンソール サービス (ERCS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する。
+  - インフラストラクチャ ロールの状態を確認し、必要に応じて修復する。
+  - Azure Consistent Storage (ACS) のサービス ファブリック ノードの状態を確認し、必要に応じて修復する。
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -198,6 +198,14 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 <!-- 1663805 - IS ASDK --> 
 - Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 この問題を回避するには、[PowerShell を使用してアクセス許可を確認](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan)します。
 
+<!-- Daniel 3/28 -->
+- ユーザー ポータルでストレージ アカウント内の BLOB に移動し、ナビゲーション ツリーから**アクセス ポリシー**を開こうとすると、後続のウィンドウの読み込みに失敗します。 この問題を回避するには、次の PowerShell コマンドレットによって、それぞれアクセス ポリシーの作成、取得、設定、削除を有効にできます。
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
+
 <!-- ### Health and monitoring -->
 
 ### <a name="compute"></a>Compute
@@ -257,6 +265,10 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>syslog 
+
+- syslog 構成は更新サイクル全体で維持されず、その結果、syslog クライアントはその構成を失い、処理が停止されることが syslog によって通知されます。 この問題は、syslog クライアントの一般提供以降、Azure Stack のすべてのバージョンに適用されます (1809)。 この問題を回避するには、Azure Stack の更新プログラムを適用した後、syslog クライアントを再構成します。
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
 

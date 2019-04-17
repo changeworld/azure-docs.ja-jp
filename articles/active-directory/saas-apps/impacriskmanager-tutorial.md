@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: c84241abc69b5bd070d893ba57fb60b90d4d6d28
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 73a19fa97a898e2c51912a18f46751e855ee0303
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295591"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>チュートリアル:Azure Active Directory と IMPAC Risk Manager の統合
 
@@ -51,7 +51,7 @@ IMPAC Risk Manager と Azure AD の統合を構成するには、次のものが
 
 Azure AD への IMPAC Risk Manager の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に IMPAC Risk Manager を追加する必要があります。
 
-**ギャラリーから IMPAC Risk Manager を追加するには、次の手順を実行します。**
+**ギャラリーから IMPAC Risk Manager を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -219,6 +219,6 @@ IMPAC Risk Manager で Azure AD シングル サインオンを構成するに�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

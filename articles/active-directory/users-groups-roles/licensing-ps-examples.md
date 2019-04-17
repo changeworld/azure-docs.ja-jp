@@ -14,12 +14,12 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da6f85f194d9aebab22584f8cba8b227ed38a72
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 70e4e56742f45e0f6bfd80455e4d7545523a478b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223310"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265782"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD のグループベースのライセンスの PowerShell の例
 
@@ -115,7 +115,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $licenseAssignedCount = 0;
     $licenseErrorCount = 0;
 
-    Get-MsolGroupMember -All -GroupObjectId $groupId
+    Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full info about each user in the group
     Get-MsolUser -ObjectId {$_.ObjectId} |     Foreach {
         $user = $_;
@@ -623,10 +623,10 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 
 グループを使用したライセンス管理の機能セットについては、以下の記事をご覧ください。
 
-* [What is group-based licensing in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
-* [Assigning licenses to a group in Azure Active Directory](licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
+* [Azure Active Directory のグループベースのライセンスとは](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Azure Active Directory でのグループへのライセンス割り当て](licensing-groups-assign.md)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](licensing-groups-resolve-problems.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](licensing-groups-migrate-users.md)
 * [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory グループベース ライセンスのその他のシナリオ](licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ](licensing-group-advanced.md)
 * [Azure Active Directory のグループベースのライセンスの PowerShell の例](../users-groups-roles/licensing-ps-examples.md)

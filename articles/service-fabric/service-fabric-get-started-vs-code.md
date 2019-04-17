@@ -3,8 +3,8 @@ title: Azure Service Fabric と VS Code の概要 | Microsoft Docs
 description: この記事では、Visual Studio Code を使用して Service Fabric アプリケーションを作成する方法の概要について説明します。
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS2
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pepogors
+ms.openlocfilehash: a0405e6c699192839f72b290d0466ab5062ac584
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121028"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670134"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -107,7 +107,7 @@ VS Code の Service Fabric Reliable Services 拡張機能には、開発者が S
 **[Service Fabric:Deploy Application]\(Service Fabric: アプリケーションのデプロイ\)** コマンドで、リローカル クラスター上に Service Fabric アプリケーションをデプロイします。 コマンドを使用する前に、ローカル クラスターが実行されていることを確認します。 
 
 1. **[Service Fabric:Deploy Application]\(Service Fabric: アプリケーションのデプロイ\)** コマンドを選択します
-2. Service Fabric Explorer でローカル クラスターを表示し (http://localhost:19080/Explorer)、アプリケーションがインストールされていることを確認します。 この処理には時間がかかる場合があります。
+2. Service Fabric Explorer でローカル クラスターを表示し (http:\//localhost:19080/Explorer)、アプリケーションがインストールされていることを確認します。 この処理には時間がかかる場合があります。
 3. Cloud.json ファイルでパラメーターを指定せずに **[Service Fabric:Publish Application]\(Service Fabric: アプリケーションの発行\)** コマンドを使用して、ローカル クラスターにデプロイすることもできます。
 
 > [!NOTE]

@@ -8,18 +8,18 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/27/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 6b7685f837cabf7ec659311c54f8c168981e4777
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8c350b5c2d945ed48566f549ab85844fc14625dc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544718"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049288"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
 
-このクイック スタートでは、Ruby プログラミング言語を使用して Bing Visual Search を呼び出し、結果を表示します。 Post 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
+このクイック スタートでは、Ruby プログラミング言語を使用して Bing Visual Search を呼び出し、結果を表示します。 POST 要求で画像を API エンドポイントにアップロードします。 結果には、アップロードされた画像に類似した画像に関する URL と説明情報が含まれます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>変数の定義
 
-次のコードは必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`accessKey` の値を Azure アカウントのサブスクリプション キーに置き換えます。  `batchNumber` は Post データの前後の境界に必要な GUID です。  `fileName` 変数は、Post の画像ファイルを識別します。  `if` ブロックは、有効なサブスクリプション キーをテストします。
+次のコードは必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`accessKey` の値を Azure アカウントのサブスクリプション キーに置き換えます。  `batchNumber` は Post データの前後の境界に必要な GUID です。  `fileName` 変数は、POST の画像ファイルを識別します。  `if` ブロックは、有効なサブスクリプション キーをテストします。
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Post 要求のフォーム データ
+## <a name="form-data-for-post-request"></a>POST 要求のフォーム データ
 
-Post への画像データは前後の境界で囲まれています。  次の関数で境界を設定します。
+POST への画像データは前後の境界で囲まれています。 次の関数で境界を設定します。
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -74,10 +74,9 @@ end
 def BuildFormDataEnd(batNum)
     return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
 end
-
 ```
 
-次に、エンドポイント URI と、Post 本文を含む配列を構築します。  前の関数を使用して、先頭の境界を配列に読み込みます。 画像ファイルを配列に読み込みます。 次に、末尾の境界を配列に読み込みます。 
+次に、エンドポイント URI と、POST 本文を含む配列を構築します。  前の関数を使用して、先頭の境界を配列に読み込みます。 画像ファイルを配列に読み込みます。 次に、末尾の境界を配列に読み込みます。
 
 ```
 uri = URI(uri + path)
@@ -91,12 +90,11 @@ post_body << BuildFormDataStart(batchNumber, fileName)
 post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
 post_body << BuildFormDataEnd(batchNumber)
-
 ```
 
 ## <a name="create-the-http-request"></a>HTTP 要求を作成する
 
-`Ocp-Apim-Subscription-Key` ヘッダーを設定します。  要求を作成します。  次に、ヘッダーとコンテンツの種類を割り当てます。  以前に作成した Post 本文を要求に追加します。
+`Ocp-Apim-Subscription-Key` ヘッダーを設定します。  要求を作成します。 次に、ヘッダーとコンテンツの種類を割り当てます。 以前に作成した POST 本文を要求に追加します。
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -121,7 +119,7 @@ end
 
 ## <a name="print-the-results"></a>結果を出力する
 
-応答のヘッダーを出力します。 次に、JSON ライブラリを使用して出力の書式を設定します。
+応答のヘッダーを出力し、JSON ライブラリを使用して出力の書式を設定します。
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -287,4 +285,4 @@ JSON Response:
 
 > [!div class="nextstepaction"]
 > [Bing Visual Search の概要](../overview.md)
-> [Custom Search Web アプリの作成](../tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

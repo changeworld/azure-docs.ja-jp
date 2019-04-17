@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5c5465562c1af3dbd3fcaff2031149e510a43cfd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8ceb9aefb1e68ceb6030f078aba8b0717cdf9e7c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540739"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260886"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Azure Maps を使って目的地へのルートを検索する
 
@@ -47,11 +47,11 @@ ms.locfileid: "58540739"
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -83,7 +83,7 @@ ms.locfileid: "58540739"
 
     HTML ヘッダーに、Azure マップ コントロール ライブラリによってホストされる CSS および JavaScript のリソース ファイルが含まれることに注意してください。 ページ本体の `onload` イベントに注目してください。ページの本体が読み込まれると、このイベントによって `GetMap` 関数が呼び出されます。 この関数には、Azure Maps API にアクセスするためのインライン JavaScript コードが含まれます。 
 
-3. `GetMap` 関数に、次の JavaScript コードを追加します。 **\<Your Azure Maps Key\>** という文字列を、Maps アカウントからコピーした主キーに置き換えてください。
+3. `GetMap` 関数に、次の JavaScript コードを追加します。 `<Your Azure Maps Key>` という文字列は、Maps アカウントからコピーした主キーに置き換えてください。
 
     ```JavaScript
    //Instantiate a map object
@@ -96,11 +96,11 @@ ms.locfileid: "58540739"
    });
    ```
 
-    **atlas.Map** は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
+    `atlas.Map` は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
 
 4. ファイルを保存し、ブラウザーで開きます。 この時点でのマップは基本的なものです。ここからさらに開発を加えることができます。
 
-   ![基本的なマップの表示](./media/tutorial-route-location/basic-map.png)
+   ![基本的なマップの表示](media/tutorial-route-location/basic-map.png)
 
 ## <a name="define-how-the-route-will-be-rendered"></a>ルートのレンダリング方法を定義する
 
@@ -109,8 +109,8 @@ ms.locfileid: "58540739"
 1. マップを初期化した後、次の JavaScript コードを追加します。
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -121,8 +121,7 @@ ms.locfileid: "58540739"
             strokeColor: '#2272B9',
             strokeWidth: 5,
             lineJoin: 'round',
-            lineCap: 'round',
-            filter: ['==', '$type', 'LineString']
+            lineCap: 'round'
         }), 'labels');
 
         //Add a layer for rendering point data.
@@ -135,14 +134,14 @@ ms.locfileid: "58540739"
                 textField: ['get', 'title'],
                 offset: [0, 1.2]
             },
-            filter: ['==', '$type', 'Point']
+            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
         }));
     });
     ```
-
-    読み込みイベントがマップに追加されます。これは、マップ リソースが完全に読み込まれたときに発生します。 マップの読み込みイベントのハンドラーで、ルートの線および起点と終点を格納するためのデータ ソースを作成します。 ルートの線のレンダリング方法を定義するために、線レイヤーが作成され、データ ソースにアタッチされます。 ルートの線は、青色でレンダリングされます。線幅は 5 ピクセルで、線の接合箇所と線端には丸みを与えています。 このレイヤーで GeoJSON LineString データだけがレンダリングされるように、フィルターを追加しています。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが覆い隠されないようになります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。
-
-2. このチュートリアルでは、Microsoft 構内を起点として設定し、シアトルにあるガソリン スタンドを終点として設定します。 マップの読み込みイベントのハンドラーに、次のコードを追加します。
+    
+    マップの `ready` イベントのハンドラーで、ルートの線および起点と終点を格納するためのデータ ソースが作成されます。 線レイヤーを作成してデータ ソースにアタッチすることで、ルートの線のレンダリング方法を定義します。 ルートの線は、青色でレンダリングされます。線幅は 5 ピクセルで、線の接合箇所と線端には丸みを与えています。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが覆い隠されないようになります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。 
+    
+2. このチュートリアルでは、Microsoft を起点として設定し、シアトルにあるガソリン スタンドを終点として設定します。 マップの `ready` イベントのハンドラーに、次のコードを追加します。
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -169,13 +168,13 @@ ms.locfileid: "58540739"
 
 3. **MapRoute.html** ファイルを保存し、ブラウザーを更新します。 マップの中心がシアトルに設定され、起点を示す青色のピンと、終点を示す丸い青色のピンが表示されます。
 
-   ![起点と終点が表示されたマップ](./media/tutorial-route-location/map-pins.png)
+   ![起点と終点が表示されたマップ](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 
 ## <a name="get-directions"></a>道順の取得
 
-ここでは、Azure Maps のルート サービス API を使って、指定した起点から終点までのルートを検索する方法について説明します。 ルート サービスの API では、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。 **マップを読み込む eventListener 内に**以下の機能をすべて追加し、マップが完全に読み込まれた後に、それらが読み込まれるようにする必要があります。
+ここでは、Azure Maps のルート サービス API を使って、指定した起点から終点までのルートを検索する方法について説明します。 ルート サービスの API では、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。 **map ready eventListener 内に**以下の機能をすべて追加し、マップ リソースへのアクセスの準備ができた後で、機能が読み込まれるようにする必要があります。
 
 1. GetMap 関数内に、次の JavaScript コードを追加します。
 
@@ -190,9 +189,9 @@ ms.locfileid: "58540739"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   **SubscriptionKeyCredential** は、Azure Maps に対してサブスクリプション キーで HTTP 要求を認証する **SubscriptionKeyCredentialPolicy** を作成します。 **atlas.service.MapsURL.newPipeline()** は、**SubscriptionKeyCredential** ポリシーを受け取って、[Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) のインスタンスを作成します。 **routeURL** は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
 
-2. 資格情報と URL を設定した後、基点から終点までのルートを構築するための次の JavaScript コードを追加します。 **routeURL** は、Azure Maps のルート サービスに対して、道順を計算するように要求します。 **geojson.getFeatures()** メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。
+2. 資格情報と URL を設定した後、基点から終点までのルートを構築するための次の JavaScript コードを追加します。 `routeURL` は、Azure Maps のルート サービスに対して、道順を計算するように要求します。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -221,7 +220,7 @@ ms.locfileid: "58540739"
 
 以下から、このチュートリアルのコード サンプルにアクセスできます。
 
-> [Azure Maps を使ってルートを検索する](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
+> [Azure Maps を使用してルートを検索する](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
 
 [こちらでライブ サンプルをご覧いただけます](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Cloud Services でパフォーマンス カウンターを収集する | Microsoft Docs
-description: Azure 診断および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
+description: Azure Diagnostics および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
 services: cloud-services
 documentationcenter: .net
 author: jpconnock
@@ -80,7 +80,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 ## <a name="collect-a-performance-counter"></a>パフォーマンス カウンターの収集
 
-パフォーマンス カウンターは、Azure 診断または Application Insights のクラウド サービスに追加できます。
+パフォーマンス カウンターは、Azure Diagnostics または Application Insights のクラウド サービスに追加できます。
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -105,7 +105,7 @@ Cloud Services 用の Azure Application Insights では、収集するパフォ�
 <!-- ... cut to save space ... -->
 ```
 
-各パフォーマンス カウンターは、`<Counters>` の下にある `<Add>` 要素として表されます。 `PerformanceCounter` 属性では、収集するパフォーマンス カウンターを定義します。 `ReportAs` 属性は、Azure Portal に表示されるパフォーマンス カウンターのタイトルです。 収集したパフォーマンス カウンターは、ポータルの **[カスタム]** というカテゴリに分類されます。 Azure 診断とは異なり、これらのパフォーマンス カウンターを収集して Azure に送信する間隔を設定することはできません。 Application Insights では、1 分ごとにパフォーマンス カウンターが収集され、送信されます。 
+各パフォーマンス カウンターは、`<Counters>` の下にある `<Add>` 要素として表されます。 `PerformanceCounter` 属性では、収集するパフォーマンス カウンターを定義します。 `ReportAs` 属性は、Azure Portal に表示されるパフォーマンス カウンターのタイトルです。 収集したパフォーマンス カウンターは、ポータルの **[カスタム]** というカテゴリに分類されます。 Azure Diagnostics とは異なり、これらのパフォーマンス カウンターを収集して Azure に送信する間隔を設定することはできません。 Application Insights では、1 分ごとにパフォーマンス カウンターが収集され、送信されます。 
 
 Application Insights は自動的に次のパフォーマンス カウンターを収集します。
 
@@ -118,12 +118,12 @@ Application Insights は自動的に次のパフォーマンス カウンター�
 
 詳細については、「[Application Insights のシステム パフォーマンス カウンター](../azure-monitor/app/performance-counters.md)」および「[Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)」を参照してください。
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
 > [!IMPORTANT]
 > これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されて**いません**。 Application Insights などの他の診断サービスをアプリケーションに統合することを強くお勧めします。
 
-Cloud Services 用の Azure 診断拡張機能では、収集するパフォーマンス カウンターを指定できます。 Azure 診断を設定するには、[クラウド サービスの監視の概要](cloud-services-how-to-monitor.md#setup-diagnostics-extension)に関するページを参照してください。
+Cloud Services 用の Azure Diagnostics 拡張機能では、収集するパフォーマンス カウンターを指定できます。 Azure Diagnostics を設定するには、[クラウド サービスの監視の概要](cloud-services-how-to-monitor.md#setup-diagnostics-extension)に関するページを参照してください。
 
 収集するパフォーマンス カウンターは、**diagnostics.wadcfgx** ファイルで定義されています。 このファイル (ロールごとに定義されています) を Visual Studio で開き、**DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 要素を探します。 新しい **PerformanceCounterConfiguration** 要素を子として追加します。 この要素には、`counterSpecifier` と `sampleRate` の 2 つの属性があります。 `counterSpecifier` 属性では、収集するシステム パフォーマンス カウンター セット (前のセクションで説明) を定義します。 `sampleRate` 値は、その値がポーリングされる頻度を示します。 全体として、すべてのパフォーマンス カウンターは、親 `PerformanceCounters` 要素の `scheduledTransferPeriod` 属性値に従って Azure に転送されます。
 
@@ -237,7 +237,7 @@ namespace WorkerRoleWithSBQueue1
 counterServiceUsed.Increment();
 ```
 
-アプリケーションでカスタム カウンターが使用されているため、カウンターを追跡するように Azure 診断または Application Insights を構成する必要があります。
+アプリケーションでカスタム カウンターが使用されているため、カウンターを追跡するように Azure Diagnostics または Application Insights を構成する必要があります。
 
 
 ### <a name="application-insights"></a>Application Insights
@@ -263,7 +263,7 @@ counterServiceUsed.Increment();
 <!-- ... cut to save space ... -->
 ```
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
 既に説明したとおり、収集するパフォーマンス カウンターは、**diagnostics.wadcfgx** ファイルで定義されています。 このファイル (ロールごとに定義されています) を Visual Studio で開き、**DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 要素を探します。 新しい **PerformanceCounterConfiguration** 要素を子として追加します。 `counterSpecifier` 属性を、コードで作成したパフォーマンス カウンターのカテゴリと名前に設定します。 
 

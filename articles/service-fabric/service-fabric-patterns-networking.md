@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: feea57122d805ae065278458f90afbc960221a9d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670253"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049899"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
 
 - [既存の仮想ネットワークまたはサブネット](#existingvnet)
 - [静的パブリック IP アドレス](#staticpublicip)
-- [内部専用ロード バランサー](#internallb)
+- [内部ロード バランサー](#internallb)
 - [内部ロード バランサーと外部ロード バランサー](#internalexternallb)
 
 Service Fabric は標準の仮想マシン スケール セットで実行されます。 仮想マシン スケール セットで使用できる機能は、Service Fabric クラスターでも使用できます。 仮想マシン スケール セットと Service Fabric のAzure Resource Manager テンプレートのネットワーク セクションは同じです。 既存の仮想ネットワークにデプロイしたら、Azure ExpressRoute、Azure VPN Gateway、ネットワーク セキュリティ グループ、仮想ネットワーク ピアリングなどの他のネットワーク機能を簡単に組み込むことができます。
@@ -34,6 +34,9 @@ Service Fabric は標準の仮想マシン スケール セットで実行され
 Service Fabric には、他のネットワーク機能とは異なる点が 1 つあります。 [Azure Portal](https://portal.azure.com) がService Fabric リソース プロバイダーを内部で使用してクラスターを呼び出し、ノードとアプリケーションに関する情報を取得します。 Service Fabric リソース プロバイダーは、管理エンドポイントの受信 HTTP ゲートウェイ ポート (既定では 19080) にパブリックにアクセスできる必要があります。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) では、管理エンドポイントを使用してクラスターを管理します。 また、Service Fabric リソース プロバイダーは、このポートを使用してクラスターに関する情報を照会し、Azure Portal に表示します。 
 
 Service Fabric リソース プロバイダーからポート 19080 にアクセスできない場合、ポータルに "*ノードが見つかりません*" などのメッセージが表示され、ノードとアプリケーションの一覧が空になります。 Azure Portal でクラスターを確認する場合は、ロード バランサーでパブリック IP アドレスを公開し、ネットワーク セキュリティ グループでポート 19080 の受信トラフィックを許可する必要があります。 セットアップがこれらの要件を満たしていない場合、Azure Portal にクラスターの状態は表示されません。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>テンプレート
 
@@ -51,7 +54,7 @@ Service Fabric リソース プロバイダーからポート 19080 にアクセ
 一般に、静的パブリック IP アドレスは、割り当て先の VM とは別に管理されている専用のリソースです。 静的パブリック IP アドレスは (Service Fabric クラスター リソース グループ内ではなく) 専用のネットワーク リソース グループにプロビジョニングされます。 Azure Portal または PowerShell を使用して、同じExistingRG リソース グループに "staticIP1" という名前の静的パブリック IP アドレスを作成します。
 
 ```powershell
-PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
+PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
 
 Name                     : staticIP1
 ResourceGroupName        : ExistingRG
@@ -166,8 +169,8 @@ DnsSettings              : {
 6. テンプレートをデプロイします。
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
+    New-AzResourceGroup -Name sfnetworkingexistingvnet -Location westus
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
     デプロイが完了すると、仮想ネットワークに新しいスケール セット VM が追加されます。 仮想マシン スケール セットのノード タイプに、既存の仮想ネットワークとサブネットが示されます。 また、リモート デスクトップ プロトコル (RDP) を使用して、仮想ネットワークに既に存在する VM にアクセスしたり、新しいスケール セット VM への ping を実行したりできます。
@@ -276,13 +279,13 @@ DnsSettings              : {
 8. テンプレートをデプロイします。
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingstaticip -Location westus
+    New-AzResourceGroup -Name sfnetworkingstaticip -Location westus
 
-    $staticip = Get-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
+    $staticip = Get-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
 
     $staticip
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
 デプロイが完了すると、ロード バランサーが他のリソース グループからパブリック静的 IP アドレスにバインドされていることを確認できます。 Service Fabric クライアント接続エンドポイントと [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) エンドポイントは、静的 IP アドレスの DNS FQDN を参照します。
@@ -378,9 +381,9 @@ DnsSettings              : {
 7. テンプレートをデプロイします。
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
 デプロイが完了すると、ロード バランサーでプライベート静的 IP アドレス (10.0.0.250) が使用されます。 同じ仮想ネットワーク内に別のマシンがある場合は、内部の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) エンドポイントに移動できます。 このエンドポイントは、ロード バランサーの背後にあるノードの 1 つに接続しています。
@@ -595,9 +598,15 @@ DnsSettings              : {
 7. テンプレートをデプロイします。
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternalexternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternalexternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    ```
+
+デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
+
+## <a name="next-steps"></a>次の手順
+[クラスター](service-fabric-cluster-creation-via-arm.md) ternalLB.json の作成
     ```
 
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。

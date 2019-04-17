@@ -1,108 +1,108 @@
 ---
-title: Present a Jupyter notebook as a slideshow on Azure
-description: How to configure cells for slideshow mode in a Jupyter notebook and then present the slideshow using the RISE extension.
+title: Azure 上で Jupyter Notebook をスライドショーとして表示する
+description: Jupyter ノートブックのスライドショー モードにセルを構成してから、RISE 拡張機能を使ってスライドショーを表示する方法。
 services: app-service
 documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d36cbe50ab040549353efd19dd794ec7fab51b7b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774406"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280470"
 ---
-# <a name="run-a-notebook-slideshow"></a>Run a notebook slideshow
+# <a name="run-a-notebook-slideshow"></a>ノートブックのスライドショーを実行する
 
-Azure Notebooks is pre-configured with the Jupyter/IPython Slideshow Extension (RISE) that lets you present a notebook directly as a slideshow. In a slideshow, cells are typically displayed one at a time using a font size that's appropriate for presenting on large screens, and you can still run the code rather than switching to a separate demo computer.
+Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事前に構成されており、ノートブックをスライドショーとして直接表示できます。 スライドショーでは、セルは通常、大きな画面での表示に適したフォント サイズを使って一度に 1 つずつ表示され、別個のデモ コンピューターに切り替えるのではなく、引き続きコードを実行することが可能です。
 
-The following image shows the standard notebook view, in which you can see Markdown and code cells all together:
+次の画像は、Markdown とコード セルをまとめて確認できる標準的なノートブック ビューを示しています。
 
-![A notebook in standard view](media/slideshow/slideshow-notebook-view.png)
+![標準ビューのノートブック](media/slideshow/slideshow-notebook-view.png)
 
-When you start a slideshow, the first cell is enlarged to fill the browser, where the **X** in the upper left exits the slideshow, **?** in the lower left displays keyboard shortcuts, and the arrows on the lower right navigate between slides:
+スライドショーを開始すると、最初のセルが拡大されてブラウザーに全画面表示されます。左上の **X** でスライドショーを終了し、左下の **?** で キーボードのショートカットを表示します。また、右下の矢印でスライド間を移動します。
 
-![A notebook in slideshow mode](media/slideshow/slideshow-slide-view.png)
+![スライドショー モードのノートブック](media/slideshow/slideshow-slide-view.png)
 
-Preparing a notebook for a slideshow involves two primary activities:
+スライドショー用にノートブックを準備するにあたって、次に示す 2 つの主なアクティビティが必要になります。
 
-1. Because Markdown cells are rendered with large fonts, some content may not be visible in the slideshow. You thus typically limit the amount of text in any given cell; a header with four to six lines usually works best. If you have more text, split that information into multiple cells.
+1. Markdown セルが大きなフォントでレンダリングされるため、スライドショーでは一部のコンテンツが表示されない場合があります。 そのため、通常は指定したセル内のテキストの量を制限します。一般的には、ヘッダーを 4 - 6 行にすると最適です。 テキスト量がそれ以上ある場合は、情報を複数のセルに分割します。
 
-2. Configure the behavior of each cell in the slideshow by using the slideshow cell toolbar. Cell types determine the behavior of the navigation buttons.
+2. スライドショー セルのツールバーを使用して、スライドショー内の各セルの動作を構成します。 セルの種類によって、ナビゲーション ボタンの動作が決定されます。
 
-## <a name="the-anatomy-of-a-slideshow"></a>The anatomy of a slideshow
+## <a name="the-anatomy-of-a-slideshow"></a>スライドショーの構造
 
-If you take a random notebook and use it for a slideshow, you typically find that all the cells are jumbled together, and much of the content is hidden off the bottom of the browser window. To make an effective presentation, then, you need to assign a slideshow type to each cell using the Slideshow cell toolbar:
+ランダム ノートブックを利用しており、これをスライドショーに使う場合、通常は、すべてのセルが未整理の状態で、コンテンツのほとんどがブラウザー ウィンドウの下端で表示が切れてしまいます。 効果的なプレゼンテーションを行うには、[スライドショー] セルのツールバーを使用して、各セルにスライドショーの種類を割り当てる必要があります。
 
-1. On the **View** menu, select **Cell Toolbar** > **Slideshow**:
+1. **[表示]** メニューで、**[Cell Toolbar]\(セルのツールバー\)** > **[スライドショー]** の順に選択します。
 
-    ![Turning on the cell slideshow toolbar](media/slideshow/slideshow-view-cell-toolbar.png)
+    ![セルのスライドショーツールバーが有効になっている](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. A **Slide Type** drop-down appears on the upper right of each cell in the Notebook:
+1. **[Slide Type]\(スライドの種類\)** ドロップダウンが、ノートブックの各セルの右上に表示されます。
 
-    ![Cell slideshow toolbar](media/slideshow/slideshow-cell-toolbar.png)
+    ![セルのスライドショーのツールバー](media/slideshow/slideshow-cell-toolbar.png)
 
-1. For each cell, select one of five types:
+1. 各セルに対して、次の 5 種類のいずれかを選択します。
 
-    ![Cell slideshow types](media/slideshow/slideshow-cell-slide-types.png)
+    ![セルのスライドショーの種類](media/slideshow/slideshow-cell-slide-types.png)
 
-    | Slide type | Behavior |
+    | スライドの種類 | 動作 |
     | --- | --- |
-    | - (not set) | Cell is displayed with the previous cell, which is often not a desired effect in a slideshow. |
-    | Slide | Cell is a primary slide, navigated using the left and right arrows of the navigation control. |
-    | Sub-slide | Cell is "below" a primary slide, navigated to using the down arrow of the navigation control. The up arrow returns to the primary slide. Sub-slides are used for secondary material that you could skip in the main path of a presentation, but is readily available if needed. |
-    | Fragment | Cell content appears in the context of the previous slide or sub-slide when using the down navigation arrow (a fragment is removed when using the up arrow). You can use a fragment with a code cell to make that code appear within a slide, or you can use multiple fragments to make text bullets appear one by one (see example in the next section). Because fragments build on the current slide, excess fragments won't be visible off the bottom of the browser window. |
-    | Skip | Cell is not shown in the slideshow. |
-    | Notes | Cell contains as speaker notes, which aren't shown in the slideshow. |
+    | - (設定なし) | セルは前のセルと一緒に表示され、スライドショーで目的の効果が得られないことがよくあります。 |
+    | スライド | セルは、主要なスライドになります。ナビゲーション コントロールの左向きまたは右向き矢印を使用して移動できます。 |
+    | サブスライド | セルは、主要なスライドの "下位" になります。ナビゲーション コントロールの下向き矢印を使用して移動できます。 上向き矢印を使用すると、主要なスライドに戻ります。 サブスライドは、二次的な資料に使用されます。プレゼンテーションのメイン パスでは省略でき、必要に応じて、いつでも利用可能です。 |
+    | フラグメント | 下向きのナビゲーション矢印を使用すると、セルのコンテンツが、前のスライドまたはサブスライドのコンテキストに表示されます (上向き矢印を使用すると、フラグメントは削除されます)。 コード セルにフラグメントを使用して、コードがスライド内に表示されるようにしたり、複数のフラグメントを使用して箇条書きを 1 つずつ表示したりできます (次のセクションの例を参照してください)。 フラグメントは現在のスライド上に作成されるので、余分なフラグメントはブラウザー ウィンドウの下端から表示が切れてしまいます。 |
+    | Skip | セルは、スライドショーには表示されません。 |
+    | メモ | セルには、発話者のメモが含まれます。スライドショーには表示されません。 |
 
-1. Initially, it's helpful to choose **Slide** for every cell. You can then run the slideshow and make appropriate adjustments.
+1. 最初に、どのセルに対しても **[スライド]** を選択しておくと便利です。 その後、スライドショーを実行して、適切な調整を行います。
 
-### <a name="example-fragment-cells-for-bullet-items"></a>Example: fragment cells for bullet items
+### <a name="example-fragment-cells-for-bullet-items"></a>例: 箇条書き項目のフラグメント セル
 
-To make bullets on a slide appear one by one, place the slide header in a Markdown cell with the **Slide** type, then place each bullet in a separate Markdown cell with the **Fragment** type:
+スライド上に箇条書きを 1 つずつ表示するには、**[スライド]** 種類の Markdown セルにスライドのヘッダーを配置して、**[フラグメント]** 種類の別個の Markdown セルに各箇条書きを配置します。
 
-![Example of creating multiple Markdown cells for bullet items](media/slideshow/slideshow-fragments.png)
+![箇条書き項目のために複数の Markdown セルを作成している例](media/slideshow/slideshow-fragments.png)
 
-Because the slideshow renders fragments with more vertical spacing than when all the bullets are in the same cell, you may not be able to use as many bullet items.
+スライドショーでは、すべての箇条書きが同じセル内にある場合よりも縦方向の空間が広いフラグメントがレンダリングされるため、多数の箇条書き項目には使用できません。
 
-## <a name="run-the-slideshow"></a>Run the slideshow
+## <a name="run-the-slideshow"></a>スライドショーを実行する
 
-1. If you've edited any Markdown cells, make sure to run them to render their HTML, otherwise they appear *as* Markdown in the slideshow.
+1. Markdown セルを編集した場合は、必ずそれらのセルを実行して HTML をレンダリングします。これを行わないと、スライド ショーに Markdown "*のまま*" 表示されます。
 
-1. Once you've configured the **Slide Type** for each cell, select the cell with which to start the slideshow, then select the **Enter/Exit RISE Slideshow** button on the main toolbar:
+1. 各セルの **[Slide Type]\(スライドの種類\)** を構成し終えたら、スライドショーを開始するセルを選択して、メイン ツールバーにある **[Enter/Exit RISE Slideshow]\(RISE スライドショーの開始/終了\)** ボタンを選択します。
 
-    ![Enter/Exit RISE Slideshow button on the main toolbar](media/slideshow/slideshow-start.png)
+    ![メイン ツールバーにある [Enter/Exit RISE Slideshow]\(RISE スライドショーの開始/終了\) ボタン](media/slideshow/slideshow-start.png)
 
-1. To navigate between slides as well as fragments, use the left and right arrows in the navigation control. The text in the control shows a number representing *slide.sub-slide*.
+1. スライド間およびフラグメント間を移動するには、ナビゲーション コントロールにある左向きまたは右向き矢印を使用します。 コントロール内のテキストに、*slide.sub-slide* と示した数字が表示されます。
 
-    ![Slideshow navigation control](media/slideshow/slideshow-navigation-control.png)
+    ![スライドショーのナビゲーション コントロール](media/slideshow/slideshow-navigation-control.png)
 
-1. To navigate between slides and sub-slides, as well as fragments, use the up and down arrows, if enabled:
+1. フラグメントに加えて、スライドとサブスライド間を移動するには、上向きおよび下向き矢印を使用します (有効になっている場合)。
 
-    ![Slideshow navigation controls for sub-slides](media/slideshow/slideshow-navigation-control-subslide.png)
+    ![サブスライドのためのスライドショーのナビゲーション コントロール](media/slideshow/slideshow-navigation-control-subslide.png)
 
-1. On a code cell, use the play button to run the code; output appears on the slide:
+1. コード セル上で、再生ボタンを使用してコードを実行します。次のように、スライドに出力が表示されます。
 
-    ![Play button to run a code cell](media/slideshow/slideshow-run-code-cell.png)
+    ![コード セルを実行するための再生ボタン](media/slideshow/slideshow-run-code-cell.png)
 
-    ![Code cell output appears in the slide show](media/slideshow/slideshow-run-code-cell-output.png)
+    ![コード セルの出力がスライド ショーに表示される](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Cell output is considered part of the cell in a slideshow. If you run a cell in either notebook or slide show view, the output appears in the other view as well. To clear the output, use the **Cell** > **Current Outputs** > **Clear** command (for the current cell) or **Cell** > **All Outputs** > **Clear** (for all cells).
+    > セルの出力は、スライドショー内でセルの一部と見なされます。 Notebook またはスライドショー ビューのいずれかでセルを実行すると、出力はもう一方のビューにも表示されます。 出力をクリアするには、**[セル]** > **[Current Outputs]\(現在の出力\)** > **[クリア]** コマンド (現在のセルに対して) または **[セル]** > **[All Outputs]\(すべての出力\)** > **[クリア]** (すべてのセルに対して) を使用します。
 
-1. When you're done with the slideshow, use the **X** to return to notebook view.
+1. スライドショーを終了する場合は、**[X]** を使用してノートブックのビューに戻ります。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
-- [How to: Configure and manage projects](configure-manage-azure-notebooks-projects.md)
-- [How to: Install packages from within a notebook](install-packages-jupyter-notebook.md)
-- [How to: Work with data files](work-with-project-data-files.md)
-- [How to: Access data resources](access-data-resources-jupyter-notebooks.md)
+- [方法:プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
+- [方法:ノートブック内からパッケージをインストールする](install-packages-jupyter-notebook.md)
+- [方法:データ ファイルの操作](work-with-project-data-files.md)
+- [方法:データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)

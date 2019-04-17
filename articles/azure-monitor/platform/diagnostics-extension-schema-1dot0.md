@@ -1,5 +1,5 @@
 ---
-title: Azure 診断 1.0 構成スキーマ
+title: Azure Diagnostics 1.0 構成スキーマ
 description: この記事は、Azure SDK 2.4 以前を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。
 services: azure-monitor
 author: rboucher
@@ -16,19 +16,19 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
 ms.locfileid: "55811530"
 ---
-# <a name="azure-diagnostics-10-configuration-schema"></a>Azure 診断 1.0 構成スキーマ
+# <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0 構成スキーマ
 > [!NOTE]
-> Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
+> Azure Diagnostics は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
+Azure Diagnostics は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
-Azure 診断構成ファイルは、診断モニターを初期化するときに使用される値を定義します。 このファイルは、診断モニターの開始時に、診断構成設定を初期化するときに使用されます。  
+Azure Diagnostics 構成ファイルは、診断モニターを初期化するときに使用される値を定義します。 このファイルは、診断モニターの開始時に、診断構成設定を初期化するときに使用されます。  
 
- 既定では、Azure 診断構成スキーマ ファイルは `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` ディレクトリにインストールされます。 `<version>` は、インストールされている [Azure SDK](https://www.windowsazure.com/develop/downloads/) バージョンで置き換えてください。  
+ 既定では、Azure Diagnostics 構成スキーマ ファイルは `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` ディレクトリにインストールされます。 `<version>` は、インストールされている [Azure SDK](https://www.windowsazure.com/develop/downloads/) バージョンで置き換えてください。  
 
 > [!NOTE]
->  診断構成ファイルは、通常、スタートアップ プロセスの初期段階で診断データ収集が必要なスタートアップ タスクで使用されます。 Azure 診断の詳細については、「[Azure 診断を使用したログ データの収集](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7)」を参照してください。  
+>  診断構成ファイルは、通常、スタートアップ プロセスの初期段階で診断データ収集が必要なスタートアップ タスクで使用されます。 Azure Diagnostics の詳細については、「[Azure Diagnostics を使用したログ データの収集](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7)」を参照してください。  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>診断構成ファイルの例  
  一般的な診断構成ファイルの例を次に示します。  

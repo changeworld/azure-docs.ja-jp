@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 1a596462eb42231a356ddc4fa67b6468b63cd97c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285073"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849311"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -69,6 +69,7 @@ SQL Server VM を Azure Marketplace から作成しなかった場合、エラ�
   * 末尾/先頭のスペース
   * 末尾の "!"
   * 右大かっこ "]"
+  * "F:\" で始まるデータベース名
 
 Azure テーブルでサポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 [詳細情報](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)。
 
@@ -145,7 +146,7 @@ VM 上で稼働しているデータベースを検出します。
 
    - 既定のポリシーを選択します: HourlyLogBackup
    - SQL 用に以前に作成された既存のバックアップ ポリシーを選択する。
-   - RPO とリテンション期間の範囲に基づいて[新しいポリシーを定義する](#configure-a-backup-policy)。
+   - RPO とリテンション期間の範囲に基づいて新しいポリシーを定義する。
 
      ![[バックアップ ポリシー] を選択する](./media/backup-azure-sql-database/select-backup-policy.png)
 

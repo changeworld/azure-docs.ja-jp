@@ -7,6 +7,7 @@ metadata:
   meta.description: Learn how to use a managed instance in Azure SQL Database.
   services: sql-database
   author: jovanpop-msft
+  ms.reviewer: carlrab
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
@@ -154,6 +155,6 @@ sections:
           - title: ブログ
             html: '<p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Medium</a></p>'
           - title: よく寄せられる質問
-            html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
+            html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">スタック オーバーフロー</a></p>'
           - title: トレーニング資料
             html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">ハンズオン ラボ</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">手順主体のラボ</a></p>'

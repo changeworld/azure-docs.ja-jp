@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a782831f0f017423faef7610f984b2ea87e445
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6faf023d36ea40e3694161ee0cfc8aac7c5652fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898467"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル:Azure Active Directory と HackerOne の統合
 
@@ -52,7 +52,7 @@ Azure AD と HackerOne の統合を構成するには、次のものが必要で
 
 Azure AD への HackerOne の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に HackerOne を追加する必要があります。
 
-**ギャラリーから HackerOne を追加するには、次の手順に従います。**
+**ギャラリーから HackerOne を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,9 +106,9 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     ![HackerOne のドメインと URL のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://hackerone.com/<company name>/authentication`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://hackerone.com/<company name>/authentication`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://hackerone.com/users/saml/metadata` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `https://hackerone.com/users/saml/metadata`
 
     > [!NOTE]
     > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[HackerOne クライアント サポート チーム](mailto:support@hackerone.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -145,9 +145,9 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     a. 登録されているドメインを **[電子メール ドメイン]** ボックスに入力します。
 
-    b.   **[Single Sign On URL]\(シングル サインオン URL\)** ボックスに、Azure portal からコピーした  **[ログイン URL]** の値を貼り付けます。
+    b. **[Single Sign-On URL]\(シングル サインオン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    c. Azure portal からダウンロードした**証明書ファイル**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 Certificate]\(X509 証明書\)** ボックスに貼り付けます。
+    c. Azure portal からダウンロードした**証明書ファイル**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 Certificate]\(X509 証明書\)** ボックスに貼り付けます。
 
     d. **[Save]** をクリックします。
 

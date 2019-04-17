@@ -2,19 +2,19 @@
 title: Python を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
 description: Azure IoT device SDK for Python を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 0fe2b33bc5f9a0b599934c4cabb065d4c97ea61b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6195c37780acaf8c8f432fa09c5ac01a75363c04
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549886"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265528"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -22,8 +22,9 @@ ms.locfileid: "57549886"
 
 この記事では、[IoT Hub のファイル アップロード機能](iot-hub-devguide-file-upload.md)を使用してファイルを [Azure Blob Storage](../storage/index.yml) にアップロードする方法を説明します。 このチュートリアルでは、次の操作方法について説明します。
 
-- ファイルをアップロードするためのストレージ コンテナーを安全に提供します。
-- Python クライアントを使用して、IoT ハブ経由でファイルをアップロードします。
+* ファイルをアップロードするためのストレージ コンテナーを安全に提供します。
+
+* Python クライアントを使用して、IoT ハブ経由でファイルをアップロードします。
 
 「[IoT Hub への利用統計情報の送信](quickstart-send-telemetry-python.md)」クイック　スタートでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が示されます。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 デバイスからファイルをアップロードする必要がある場合も、IoT Hub のセキュリティを信頼性を使用できます。
 
@@ -35,17 +36,19 @@ ms.locfileid: "57549886"
 * **FileUpload.py** は、Python デバイス SDK を使用してファイルをストレージにアップロードします。
 
 > [!NOTE]
-> IoT Hub は、Azure IoT Device SDK を介して多数のデバイス プラットフォームと言語 (C、.NET、Javascript、Python、および Java) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]を参照してください。
+> IoT Hub は、Azure IoT Device SDK を介して多数のデバイス プラットフォームと言語 (C、.NET、Javascript、Python、および Java) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot)を参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Python 2.x または 3.x][lnk-python-download]。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用する場合は、[*pip* (Python パッケージ管理システム) をインストールまたはアップグレード][lnk-install-pip]することが必要な場合があります。
-* Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ][lnk-visual-c-redist]。これは、Python からネイティブ DLL を使用できるようにするためです。
+* [Python 2.x または 3.x](https://www.python.org/downloads/)。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用している場合は、[*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)が必要な場合があります。
+
+* Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/confirmation.aspx?id=48145)によって、Python からネイティブ DLL を使用できます。
+
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
+
 * ファイル アップロード機能をテストするためのデバイス ID を含む、Azure アカウント内の IoT Hub。 
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
-
 
 ## <a name="upload-a-file-from-a-device-app"></a>デバイス アプリからのファイルのアップロード
 
@@ -57,14 +60,14 @@ ms.locfileid: "57549886"
     pip install azure-iothub-device-client
     ```
 
-1. テキスト エディターを使用して、BLOB ストレージにアップロードするテスト ファイルを作成します。 
+2. テキスト エディターを使用して、BLOB ストレージにアップロードするテスト ファイルを作成します。
 
     > [!NOTE]
     > IoT Hub Python SDK は現在、**.txt** ファイルなどの文字ベースのファイルのアップロードのみをサポートしています。
 
-1. テキスト エディターを使用して、作業フォルダーに **FileUpload.py** ファイルを作成します。
+3. テキスト エディターを使用して、作業フォルダーに **FileUpload.py** ファイルを作成します。
 
-1. **FileUpload.py** ファイルの先頭に次の `import` ステートメントと変数を追加します。 
+4. **FileUpload.py** ファイルの先頭に次の `import` ステートメントと変数を追加します。 
 
     ```python
     import time
@@ -80,9 +83,9 @@ ms.locfileid: "57549886"
     FILENAME = "[File name for storage]"
     ```
 
-1. ファイル内で、`[Device Connection String]` を IoT Hub デバイスの接続文字列に置き換えます。 `[Full path to file]` を、作成したテスト ファイル、またはアップロードするデバイス上の任意のファイルのパスに置き換えます。 `[File name for storage]` を、BLOB ストレージにアップロードした後のファイルに指定する名前に置き換えます。 
+5. ファイル内で、`[Device Connection String]` を IoT Hub デバイスの接続文字列に置き換えます。 `[Full path to file]` を、作成したテスト ファイル、またはアップロードするデバイス上の任意のファイルのパスに置き換えます。 `[File name for storage]` を、BLOB ストレージにアップロードした後のファイルに指定する名前に置き換えます。 
 
-1. **upload_blob** 関数のコールバックを作成します。
+6. **upload_blob** 関数のコールバックを作成します。
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -92,7 +95,7 @@ ms.locfileid: "57549886"
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-1. 次のコードを追加して、クライアントに接続し、ファイルをアップロードします。 `main` ルーチンも含めます。
+7. 次のコードを追加して、クライアントに接続し、ファイルをアップロードします。 `main` ルーチンも含めます。
 
     ```python
     def iothub_file_upload_sample_run():
@@ -128,8 +131,7 @@ ms.locfileid: "57549886"
         iothub_file_upload_sample_run()
     ```
 
-1. **UploadFile.py** ファイルを保存して閉じます。
-
+8. **UploadFile.py** ファイルを保存して閉じます。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -141,29 +143,20 @@ ms.locfileid: "57549886"
     python FileUpload.py
     ```
 
-1. 次のスクリーン ショットは、**FileUpload** アプリからの出力を示しています。
+2. 次のスクリーン ショットは、**FileUpload** アプリからの出力を示しています。
 
     ![simulated-device アプリからの出力](./media/iot-hub-python-python-file-upload/1.png)
 
-1. ポータルを使用して、構成したストレージ コンテナーにアップロードされたファイルを表示できます。
+3. ポータルを使用して、構成したストレージ コンテナーにアップロードされたファイルを表示できます。
 
     ![アップロードされたファイル](./media/iot-hub-python-python-file-upload/2.png)
-
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-* [プログラムによる IoT Hub の作成][lnk-create-hub]
-* [C SDK の概要][lnk-c-sdk]
-* [Azure IoT SDK][lnk-sdks]
+* [プログラムによる IoT Hub の作成](iot-hub-rm-template-powershell.md)
 
-<!-- Links -->
-[Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot
+* [C SDK の概要](iot-hub-device-sdk-c-intro.md)
 
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-python-download]: https://www.python.org/downloads/
-[lnk-visual-c-redist]: https://www.microsoft.com/download/confirmation.aspx?id=48145
-[lnk-install-pip]: https://pip.pypa.io/en/stable/installing/
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)

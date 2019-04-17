@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403691"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275444"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
@@ -33,7 +33,7 @@ ms.locfileid: "57403691"
 
 各手順を個別に、または 1 つのデプロイ コマンドの一部として実行できます。 さらに、次の図に示すように、デプロイを **CI/CD ワークフロー**に統合することもできます。
 
-[!["Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル"](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!['Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル(media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>手順 1:モデルの登録
 
@@ -63,7 +63,9 @@ ONNX モデルの使用については、[ONNX と Azure Machine Learning](how-t
 Azure Machine Learning では、最もよく使用されているフレームワークがサポートされていますが、一般的には、pip でインストールできる任意のフレームワークが動作します。
 
 ワークスペースの作成時に、そのワークスペースで使用される他の Azure リソースもいくつか作成されています。
-イメージの作成に使用されるオブジェクトはすべて、お使いのワークスペースの Azure ストレージ アカウントに格納されています。 イメージを作成するときに、追加のメタデータ タグを指定できます。 さらにメタデータ タグは、イメージ レジストリによって格納され、イメージを検索するときにクエリできます。
+既定のイメージの作成に使用されるオブジェクトはすべて、お使いのワークスペースの Azure ストレージ アカウントに格納されています。 イメージを作成するときに、追加のメタデータ タグを指定できます。 さらにメタデータ タグは、イメージ レジストリによって格納され、イメージを検索するときにクエリできます。
+
+Azure Container Registry にアップロードして、Azure Machine Learning サービスにより使用できる、カスタム イメージを使用することもできます。
 
 詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#configureimage)に関するページの、イメージの構成と登録のセクションを参照してください。
 
@@ -73,7 +75,7 @@ Azure Machine Learning では、最もよく使用されているフレームワ
 
 Web サービスのデプロイも検索可能です。 たとえば、特定のモデルまたはイメージのすべてのデプロイを検索できます。
 
-[![ターゲットの推論](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![Iターゲットの推論(media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 ご自身のイメージを、クラウド内の次のデプロイ ターゲットにデプロイできます。
 

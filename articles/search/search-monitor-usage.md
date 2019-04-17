@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652299"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010415"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -62,7 +62,7 @@ Azure Search では管理対象のオブジェクトの外部にデータは格�
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | アプリのユーザー イベントと関連付けられた、後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 これは、アプリケーション コードによって送信されたフィルター要求ではなく、ユーザーが開始した検索からのイベントをマッピングする、ユーザーのアクションまたはシグナルが考慮された唯一のソリューションです。 この方法を使用するには、インストルメンテーション コードをコピーしてソース ファイルに貼り付け、要求の情報を Application Insights にルーティングします。 詳しくは、「[検索トラフィックの分析](search-traffic-analytics.md)」をご覧ください。 |
 | [Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントは Log Analytics ワークスペースに記録されます。 ワークスペースに対してクエリを実行し、ログから詳細な情報を取得することができます。 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントのログは BLOB コンテナーに記録されて、JSON ファイルに格納されます。 ファイルの内容を表示するには JSON エディターを使用します。|
+| [BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントのログは BLOB コンテナーに記録されて、JSON ファイルに格納されます。 ファイルの内容を表示するには JSON エディターを使用します。|
 | [イベント ハブ](https://docs.microsoft.com/azure/event-hubs/) | この記事に記載されているスキーマに基づいてログに記録されるイベントとクエリ メトリック。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
 
 Azure Monitor ログと Blob Storage は、どちらも無料の共有サービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
@@ -96,7 +96,7 @@ Azure Monitor ログと Blob Storage は、どちらも無料の共有サービ�
 * insights-logs-operationlogs: 検索トラフィックのログ用
 * insights-metrics-pt1m: メトリック用
 
-Blob Storage にコンテナーが表示されるまで 1 時間かかります。 1 時間ごと、コンテナーごとに、1 つの BLOB があります。 
+**Blob Storage にコンテナーが表示されるまで 1 時間かかります。 1 時間ごと、コンテナーごとに、1 つの BLOB があります。**
 
 [Visual Studio Code](#download-and-open-in-visual-studio-code) または別の JSON エディターを使用して、ファイルを表示できます。 
 
@@ -109,42 +109,42 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>ログのスキーマ
 検索サービスのトラフィック ログが格納される BLOB は、このセクションで説明するような構成になっています。 各 BLOB には、ログ オブジェクトの配列を含む、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-| 名前 | Type | 例 | メモ |
+| Name | Type | 例 | メモ |
 | --- | --- | --- | --- |
 | time |Datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
-| resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
-| operationName |文字列 |"Query.Search" |操作の名前 |
-| operationVersion |文字列 |"2017-11-11" |使用されている API バージョン |
-| category |文字列 |"OperationLogs" |定数 |
-| resultType |文字列 |"Success" |指定できる値成功または失敗 |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
+| operationName |string |"Query.Search" |操作の名前 |
+| operationVersion |string |"2017-11-11" |使用されている API バージョン |
+| category |string |"OperationLogs" |定数 |
+| resultType |string |"Success" |指定できる値成功または失敗 |
 | resultSignature |int |200 |HTTP の結果コード |
 | durationMS |int |50 |操作時間 (ミリ秒) |
-| properties |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト |
+| properties |object |次の表を参照 |操作固有データを含むオブジェクト |
 
 **プロパティのスキーマ**
 
-| 名前 | Type | 例 | メモ |
+| Name | Type | 例 | メモ |
 | --- | --- | --- | --- |
-| 説明 |文字列 |"GET /indexes('content')/docs" |操作のエンドポイント |
-| クエリ |文字列 |"?search=AzureSearch&$count=true&api-version=2017-11-11" |クエリ パラメーター |
+| 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
+| クエリ |string |"?search=AzureSearch&$count=true&api-version=2017-11-11" |クエリ パラメーター |
 | Documents |int |42 |処理されたドキュメント数 |
-| IndexName |文字列 |"testindex" |操作に関連付けられているインデックスの名前 |
+| IndexName |string |"testindex" |操作に関連付けられているインデックスの名前 |
 
 ## <a name="metrics-schema"></a>メトリックのスキーマ
 
 メトリックはクエリ要求に対してキャプチャされます。
 
-| 名前 | Type | 例 | メモ |
+| Name | Type | 例 | メモ |
 | --- | --- | --- | --- |
-| resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
-| metricName |文字列 |"Latency" |メトリックの名前 |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
+| metricName |string |"Latency" |メトリックの名前 |
 | time |Datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |
 | minimum |int |37 |メトリックの時間間隔内の生のサンプルの最小値 |
 | maximum |int |78 |メトリックの時間間隔内の生のサンプルの最大値 |
 | total |int |258 |メトリックの時間間隔内の生のサンプルの合計値 |
 | count |int |4 |メトリックの生成に使用される生のサンプル数 |
-| timegrain |文字列 |"PT1M" |ISO 8601 でのメトリックの時間グレイン |
+| timegrain |string |"PT1M" |ISO 8601 でのメトリックの時間グレイン |
 
 すべてのメトリックは、1 分間隔で報告されます。 各メトリックは、1 分あたりの最小値、最大値、および平均値を公開します。
 
@@ -170,8 +170,8 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
 * [サービスの統計情報の取得](/rest/api/searchservice/get-service-statistics)
 * [インデックス統計の取得](/rest/api/searchservice/get-index-statistics)
-* [ドキュメントの数](/rest/api/searchservice/count-documents)
-* [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
+* [ドキュメントのカウント](/rest/api/searchservice/count-documents)
+* [インデクサー状態の取得](/rest/api/searchservice/get-indexer-status)
 
 PowerShell または Azure CLI の使用を有効にする方法については、[こちら](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs)のマニュアルをご覧ください。
 

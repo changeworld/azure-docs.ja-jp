@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088929"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360145"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -101,7 +101,7 @@ RDM | はい
 
 ## <a name="vaults"></a>資格情報コンテナー
 
-**アクション** | **サポートされています** 
+**Action** | **サポートされています** 
 --- | --- 
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ  
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ  
@@ -110,7 +110,7 @@ RDM | はい
 
 モビリティ サービスは、オンプレミスの VMware サーバー/物理サーバーとセカンダリ サイトの間のレプリケーションを調整します。 レプリケーションを設定するときは、モビリティ サービスとその他のコンポーネントが最新バージョンになっていることを確認する必要があります。
 
-| **Update** | **詳細** |
+| **アップデート** | **詳細** |
 | --- | --- |
 |Scout 更新プログラム | Scout 更新プログラムは累積的です。 <br/><br/> 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) |
 |コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|

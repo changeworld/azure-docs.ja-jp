@@ -14,28 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
-ms.openlocfilehash: 2bde95b744ac136e8ba5c0517e0f749a6dce8a1e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 193a24aebff8f7de60752e53bbc1b18dd5c54f33
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805275"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051769"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Service Fabric ノード タイプを削除する
 この記事では、クラスターから既存のノード タイプを削除することで、Azure Service Fabric クラスターをスケーリングする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、ノード タイプ (仮想マシン スケール セット) とそのノードすべてを削除することで、クラスターを水平方向にスケーリングできます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
 
-[Remove-AzureRmServiceFabricNodeType](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) を使用して Service Fabric ノード タイプを削除します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Remove-AzureRmServiceFabricNodeType が呼び出されると、次の 3 つの操作が行われます。
+[Remove-AzServiceFabricNodeType](https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnodetype) を使用して Service Fabric ノード タイプを削除します。
+
+Remove-AzServiceFabricNodeType が呼び出されると、次の 3 つの操作が行われます。
 1.  ノード タイプの背後にある仮想マシン スケール セットが削除されます。
 2.  ノード タイプがクラスターから削除されます。
 3.  そのノード タイプに含まれる各ノードについて、そのノード全体の状態がシステムから削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別ノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
 
 > [!WARNING]
-> 運用環境のクラスターからノード タイプを削除するために Remove-AzureRmServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
+> 運用環境のクラスターからノード タイプを削除するために Remove-AzServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
 
 ## <a name="durability-characteristics"></a>耐久性の特性
-Remove-AzureRmServiceFabricNodeType の使用時には、速度よりも安全性が優先されます。 次に示す理由から、ノード タイプはシルバーまたはゴールドの[耐久性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)にする必要があります。
+Remove-AzServiceFabricNodeType の使用時には、速度よりも安全性が優先されます。 次に示す理由から、ノード タイプはシルバーまたはゴールドの[耐久性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)にする必要があります。
 - ブロンズでは、状態情報の保存に関する保証が一切提供されしません。
 - シルバーとゴールドの耐久性では、スケール セットに対するすべての変更がトラップされます。
 - ゴールドでは、スケール セットの下にある Azure の更新に対する制御も与えられます。
@@ -48,14 +50,14 @@ Service Fabric では、データが失われないように、基になって�
 
 ## <a name="recommended-node-type-removal-process"></a>推奨されるノード タイプの削除プロセス
 
-ノード タイプを削除するには、[Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) コマンドレットを実行します。  コマンドレットが完了するまでに、一定の時間がかかります。  その後、削除する各ノード上で [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) を実行します。
+ノード タイプを削除するには、[Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) コマンドレットを実行します。  コマンドレットが完了するまでに、一定の時間がかかります。  その後、削除する各ノード上で [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) を実行します。
 
 ```powershell
 $groupname = "mynodetype"
 $nodetype = "nt2vm"
 $clustername = "mytestcluster"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `

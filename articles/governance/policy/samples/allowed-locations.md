@@ -1,19 +1,18 @@
 ---
 title: サンプル - 許可される場所
 description: このサンプル ポリシー定義は、すべてのリソースを承認済みの場所にデプロイすることを要求します。
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 0dc93b171fb610d901d2f13f3521b87aa91b1fd6
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 2823cee863941926fffe332295328d6ecfb54001
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804719"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264728"
 ---
 # <a name="sample---allowed-region-locations"></a>サンプル - 許可されるリージョンの場所
 
@@ -53,7 +52,7 @@ ms.locfileid: "58804719"
 
 ## <a name="parameters"></a>parameters
 
-|名前 |Type |フィールド |説明 |
+|Name |Type |フィールド |説明 |
 |---|---|---|---|
 |listOfAllowedLocations |Array |locations |許可される場所の一覧|
 
@@ -219,8 +218,8 @@ Resource Manager REST API の対話操作には、[ARMClient](https://github.com
 
 | Service | グループ | Operation | メモ |
 |---|---|---|---|
-| リソース管理 | ポリシーの定義 | [作成](/rest/api/resources/policydefinitions/createorupdate) | 新しい Azure Policy 定義をサブスクリプションで作成します。 代替手段:[管理グループで作成する](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| リソース管理 | ポリシーの割り当て | [作成](/rest/api/resources/policyassignments/create) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |
+| リソース管理 | ポリシーの定義 | [Create](/rest/api/resources/policydefinitions/createorupdate) | 新しい Azure Policy 定義をサブスクリプションで作成します。 代替手段:[管理グループで作成する](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| リソース管理 | ポリシーの割り当て | [Create](/rest/api/resources/policyassignments/create) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |
 | リソース管理 | ポリシーの割り当て | [削除](/rest/api/resources/policyassignments/delete) | 既存の Azure Policy の割り当てを削除します。 |
 | リソース管理 | ポリシーの定義 | [削除](/rest/api/resources/policydefinitions/delete) | 既存の Azure Policy の定義を削除します。 代替手段:[管理グループで削除する](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 

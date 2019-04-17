@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517931"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268423"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
 
@@ -29,6 +29,8 @@ ms.locfileid: "58517931"
 * ネットワーク アクセス規則で構成できるのは **Premium** コンテナー レジストリだけです。 レジストリ サービス レベルについては、[「Azure Container Registry SKU」](container-registry-skus.md)をご覧ください。 
 
 * 仮想ネットワーク内のコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 *Azure Container Instances を含むその他の Azure サービスは現在サポートされていません。*
+
+* [ACR タスク](container-registry-tasks-overview.md)操作は、仮想ネットワークにデプロイされたコンテナー レジストリでは現在サポートされていません。
 
 * 各レジストリでは、最大 100 個の仮想ネットワーク規則がサポートされます。
 
@@ -371,8 +373,8 @@ az group delete --name myResourceGroup
 
 この記事では、仮想ネットワークのいくつかのリソースと機能について簡潔に説明しました。 これらのトピックについては、Azure Virtual Network のドキュメントで詳しく説明しています。
 
-* [Virtual Network](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network)
-* [サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)
+* [仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network)
+* [Subnet](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)
 * [サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 
 <!-- IMAGES -->

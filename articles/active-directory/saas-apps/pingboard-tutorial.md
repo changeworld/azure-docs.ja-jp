@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 45b542cb644666a6bf1df3dc76cbf54693330810
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d69271f65c326237a380624d994d8f5339537114
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438905"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル:Azure Active Directory と PingBoard の統合
 
@@ -53,7 +53,7 @@ PingBoard と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への PingBoard の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PingBoard を追加する必要があります。
 
-**ギャラリーから PingBoard を追加するには、次の手順を実行します。**
+**ギャラリーから Pingboard を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,9 +107,9 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
     ![[Pingboard のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに、`http://app.pingboard.com/sp` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `http://app.pingboard.com/sp`
 
-    b. **[応答 URL]** ボックスに、`https://<entity-id>.pingboard.com/auth/saml/consume` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<entity-id>.pingboard.com/auth/saml/consume`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -210,7 +210,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Pingboard に Bitta Simon というユーザーを作成することです。 Pingboard では、　自動ユーザー プロビジョニングがサポートされています。この設定は、規定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](pingboard-provisioning-tutorial.md)をご覧ください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します。**
 
 1. Pingboard 企業サイトに管理者としてサインインします。
 
@@ -249,7 +249,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

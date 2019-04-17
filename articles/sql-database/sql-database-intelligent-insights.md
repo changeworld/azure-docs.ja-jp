@@ -97,7 +97,7 @@ Azure SQL Analytics で表示された Intelligent Insights の例を以下に�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs で使用するように設定する
 
-Event Hubs と共に Intelligent Insights を使用するには、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure 診断ログを Event Hubs 名前空間にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)」をご覧ください。
+Event Hubs と共に Intelligent Insights を使用するには、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure Diagnostics ログを Event Hubs 名前空間にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)」をご覧ください。
 
 Event Hubs をカスタムの監視とアラートの設定に使用するには、「[Event Hubs におけるメトリックと診断ログの活用方法](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)」をご覧ください。
 

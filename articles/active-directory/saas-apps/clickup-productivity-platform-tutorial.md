@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: eababa0d83e1db4934fc8b2315e20407ccc77f27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892950"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282646"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
 
@@ -50,7 +50,7 @@ ClickUp Productivity Platform と Azure AD の統合を構成するには、次�
 
 Azure AD への ClickUp Productivity Platform の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に ClickUp Productivity Platform を追加する必要があります。
 
-**ギャラリーから ClickUp Productivity Platform を追加するには、次の手順に従います。**
+**ギャラリーから ClickUp Productivity Platform を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -104,9 +104,9 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
     ![[ClickUp Productivity Platform ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに URL として「`https://app.clickup.com/login/sso`」と入力します。
+    a. **[サインオン URL]** ボックスに、次の URL を入力します:  `https://app.clickup.com/login/sso`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://api.clickup.com/v1/team/<team_id>/microsoft`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
     > この識別子の値は実際のものではありません。 この値は、実際の識別子に置き換えてください。これについては後で説明します。
@@ -157,7 +157,7 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -215,7 +215,7 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

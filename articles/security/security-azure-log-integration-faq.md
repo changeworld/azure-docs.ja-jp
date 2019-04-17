@@ -116,9 +116,9 @@ Azure Active Directory 監査ログには、名前の一部として、テナン
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>VM 診断で収集した情報を変更するには、どうすればよいですか。
 
-Azure 診断の構成を取得、変更および設定する方法の詳細については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
+Azure Diagnostics の構成を取得、変更および設定する方法の詳細については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 
 
-Azure 診断の構成を取得する例を次に示します。
+Azure Diagnostics の構成を取得する例を次に示します。
 
     Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
     $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
@@ -128,14 +128,14 @@ Azure 診断の構成を取得する例を次に示します。
 
     $xmlconfig | Out-File -Encoding utf8 -FilePath "d:\WADConfig.xml"
 
-Azure 診断の構成を変更する例を次に示します。 この構成では、イベント ID 4624 と イベント ID 4625のみがセキュリティ イベント ログから収集されます。 Azure 向け Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。 XPath 式の使用に関する詳細については、「[Consuming Events (イベントの利用)](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85))」をご覧ください。
+Azure Diagnostics の構成を変更する例を次に示します。 この構成では、イベント ID 4624 と イベント ID 4625のみがセキュリティ イベント ログから収集されます。 Azure 向け Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。 XPath 式の使用に関する詳細については、「[Consuming Events (イベントの利用)](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85))」をご覧ください。
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
         <DataSource name="System!*[System[Provider[@Name='Microsoft Antimalware']]]"/>
     </WindowsEventLog>
 
-Azure 診断の構成を設定する例を次に示します。
+Azure Diagnostics の構成を設定する例を次に示します。
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
     Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>

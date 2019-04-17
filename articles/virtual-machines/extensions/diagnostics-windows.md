@@ -2,7 +2,7 @@
 title: Azure PowerShell を使用して Windows VM で診断を有効にする | Microsoft Docs
 services: virtual-machines-windows
 documentationcenter: ''
-description: PowerShell を使用して、Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します
+description: PowerShell を使用して、Windows を実行している仮想マシンで Azure Diagnostics を有効にする方法について説明します
 author: sbtron
 manager: jeconnoc
 editor: ''
@@ -21,9 +21,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/09/2019
 ms.locfileid: "55980756"
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする
+# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
 
-Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 
+Azure Diagnostics は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 診断拡張機能を使用して、Windows を実行している Azure 仮想マシン (VM) から、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -89,7 +89,7 @@ VM で診断拡張機能が有効になったら、[Get-AzVmDiagnosticsExtension
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
-  * パフォーマンス カウンターとメトリックの構成に基づいてメトリックが生成されるしくみの詳細については、 [ストレージの Azure 診断メトリック テーブル](diagnostics-template.md#wadmetrics-tables-in-storage)に関する記事を参照してください。
+  * パフォーマンス カウンターとメトリックの構成に基づいてメトリックが生成されるしくみの詳細については、「 [ストレージの Azure Diagnostics メトリック テーブル](diagnostics-template.md#wadmetrics-tables-in-storage)」をご覧ください。
 * 診断ストレージ アカウントの名前を使用して、 **StorageAccount** 要素を更新する必要があります。
   
     ```xml
@@ -197,6 +197,6 @@ VM で診断拡張機能が有効になったら、[Get-AzVmDiagnosticsExtension
     ```
 
 ## <a name="next-steps"></a>次の手順
-* Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事を参照してください。
+* Azure Diagnostics 機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。
 * [Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
 

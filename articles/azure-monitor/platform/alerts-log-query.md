@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447216"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006105"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor でのログ アラートのクエリ
 [Azure Monitor ログに基づくアラート ルール](alerts-unified-log.md)は一定間隔で実行されるため、必ずオーバーヘッドと待機時間を最小限に抑えるように記述する必要があります。 この記事では、ログ アラートの効率的なクエリの記述と、既存のクエリを変換するためのプロセスに関する推奨事項を示します。 
 
 ## <a name="types-of-log-queries"></a>ログ クエリの種類
-[Log Analytics のクエリ](../log-query/log-query-overview.md)は、テーブルか、[search](/azure/kusto/query/searchoperator) または [union](/azure/kusto/query/unionoperator) 演算子のいずれかで始まります。
+[Azure Monitor のログ クエリ](../log-query/log-query-overview.md)は、テーブルか、[search](/azure/kusto/query/searchoperator) または [union](/azure/kusto/query/unionoperator) 演算子のいずれかで始まります。
 
 たとえば、次のクエリは _SecurityEvent_ テーブルが対象であり、特定のイベント ID を検索します。 これは、このクエリが処理する必要のある唯一のテーブルです。
 

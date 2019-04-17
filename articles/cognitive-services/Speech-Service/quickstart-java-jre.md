@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:音声を認識する、Java (Windows、Linux) - Speech Services
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに書き起こす単純な Java アプリケーションの作成について説明します。
+description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに文字起こしする単純な Java アプリケーションの作成について説明します。
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 83d6c430d0973d4b45fcfc40bbb93ae283d1133d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447584"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009401"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows または 64 ビット Ubuntu Linux 16.04/18.04 上の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows、64 ビット Ubuntu Linux 16.04/18.04、または macOS 10.13 以降の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。
@@ -30,7 +30,7 @@ ms.locfileid: "56447584"
 
 このクイック スタートでは以下が必要です。
 
-* オペレーティング システム:Windows (64 ビット) または Ubuntu Linux 16.04/18.04 (64 ビット)
+* オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04/18.04 (64 ビット)、または macOS 10.13 以降
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。

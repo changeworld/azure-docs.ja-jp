@@ -5,17 +5,17 @@ keywords: powershell dsc, Desired State Configuration, powershell dsc azure, 複
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b82457d8a7ce70ecfde32ba625ef610a3772213c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 64588829cec964e52dcb44465869e0090f36f9f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432193"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278624"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Azure Automation State Configuration (DSC) で複合リソースを使用して DSC 構成を作成する
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 862e99b1ab44c097429dcf015b6f8c8ae023e6bc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225503"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662372"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -58,7 +58,7 @@ ms.locfileid: "58225503"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-この記事では、[Azure NetApp Files](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、および高可用性 SAP NetWeaver 7.50 システムのインストールを行う方法について説明します。
+この記事では、[Azure NetApp Files (パブリック プレビュー段階)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、および高可用性 SAP NetWeaver 7.50 システムのインストールを行う方法について説明します。
 サンプルの構成やインストール コマンドなどの場合、ASCS インスタンスの番号は 00、ERS インスタンスの番号は 01、プライマリ アプリケーション インスタンス (PAS) の番号は 02、アプリケーション インスタンス (AAS) の番号は 03 です。 SAP システム ID QAS が使用されます。 
 
 この記事では、Azure NetApp Files を使用して、SAP NetWeaver アプリケーションの高可用性を実現する方法について説明します。 データベース レイヤーについては、詳しくは説明していません。
@@ -246,7 +246,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
          * ASCS ERS のポート 33**01**、5**01**13、5**01**14、5**01**16 と TCP に対して上記の "d" 以下の手順を繰り返します
 
 > [!IMPORTANT]
-> Azure Load Balancer の背後に配置された Azure VM 上では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると、正常性プローブが失敗します。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+> Azure Load Balancer の背後に配置された Azure VM 上では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
@@ -274,7 +274,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    Name           : sap-suse-cluster-connector
    Version        : 3.1.0-8.1
    Arch           : noarch
-   Vendor         : SUSE LLC <https://www.suse.com/>
+   Vendor         : SUSE LLC &lt;https://www.suse.com/&gt;
    Support Level  : Level 3
    Installed Size : 45.6 KiB
    Installed      : Yes
@@ -926,7 +926,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   次のコマンドを <sapsid>adm として実行して、ASCS インスタンスを移行します。
+   次のコマンドを \<sapsid>adm として実行して、ASCS インスタンスを移行します。
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""

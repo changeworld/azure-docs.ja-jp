@@ -1,19 +1,18 @@
 ---
-title: クイック スタート:Power BI で SQL クエリを使用してデータを視覚化する
+title: クイック スタート:Power BI で SQL クエリを使用して Azure Data Explorer のデータを視覚化する
 description: Power BI のデータは 3 とおりの方法を使用して視覚化できます。このクイック スタートでは、そのうちの 1 つである Azure Data Explorer クラスターに対して SQL クエリを使用する方法を説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4a3a688adaae8fe66c336617cdd0a4807f16ec68
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756356"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045509"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート:Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 
@@ -49,11 +48,11 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 
     ![データベース、テーブル、クエリ オプション](media/power-bi-sql-query/database-table-query.png)
 
-    **設定** | **値** | **フィールドの説明**
+    **Setting** | **値** | **フィールドの説明**
     |---|---|---|
     | サーバー | *help.kusto.windows.net* | ヘルプ クラスターのURL (*https://* なし)。 その他のクラスターでは、URL が *\<クラスター名\>.\<リージョン\>.kusto.windows.net* 形式になります。 |
     | Database | *サンプル* | 接続先のクラスターでホストされるサンプル データベース。 |
-    | データ接続モード | *インポート* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
+    | データ接続モード | *[インポート]* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
     | コマンド タイムアウト | 空白 | タイムアウト エラーがスローされるまでのクエリの実行時間。 |
     | SQL ステートメント | この表の下に記載されているクエリをコピー | Azure Data Explorer によってネイティブ クエリに変換される SQL ステートメント。 |
     | その他のオプション | 既定値のまま | Azure Data Explorer クラスターには該当しないオプション。 |

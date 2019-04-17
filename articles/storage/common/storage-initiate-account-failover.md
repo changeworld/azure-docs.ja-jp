@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f582ef8cca3c36bad40f14026aea1ad422b6106f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668566"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044965"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -23,6 +23,8 @@ ms.locfileid: "56668566"
 
 > [!WARNING]
 > 通常、アカウントのフェールオーバーでは若干のデータ損失が発生します。 アカウントのフェールオーバーの影響を理解し、データの損失に準備するには、「[アカウントのフェールオーバー プロセスを理解する](storage-disaster-recovery-guidance.md#understand-the-account-failover-process)」をご覧ください。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +37,7 @@ ms.locfileid: "56668566"
 
 ストレージ アカウントのアカウントのフェールオーバーを開始すると、セカンダリ エンドポイントがプライマリ エンドポイントになるように、セカンダリ エンドポイントの DNS レコードが更新されます。 フェールオーバーを開始する前に、ストレージ アカウントに対して可能性のある影響について理解しておいてください。
 
-フェールオーバーを始める前に、可能性のあるデータ損失の範囲を見積もるには、`-IncludeGeoReplicationStats` パラメーターを指定して `Get-AzureRmStorageAccount` PowerShell コマンドレットを使用することで、**最終同期時刻** プロパティを確認します。 その後、アカウントの `GeoReplicationStats` プロパティを確認します。 
+フェールオーバーを始める前に、可能性のあるデータ損失の範囲を見積もるには、`-IncludeGeoReplicationStats` パラメーターを指定して `Get-AzStorageAccount` PowerShell コマンドレットを使用することで、**最終同期時刻** プロパティを確認します。 その後、アカウントの `GeoReplicationStats` プロパティを確認します。 
 
 フェールオーバーの後、新しいプライマリ リージョンでのストレージ アカウントの種類は、ローカル冗長ストレージ (LRS) に自動的に変換されます。 アカウントに対して geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) を再び有効にすることができます。 LRS から GRS または RA-GRS に変換すると、追加コストが発生することに注意してください。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。 
 

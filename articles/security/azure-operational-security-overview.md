@@ -121,9 +121,9 @@ Windows イベント システム ログは、VM 用診断ログの 1 カテゴ�
 
 Azure Monitor では、テレメトリを使用して、Azure 上のワークロードのパフォーマンスと正常性を可視化できます。 Azure テレメトリ データの種類の中でも最も重要なのが、[メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です (パフォーマンス カウンターとも呼ばれます)。これはほとんどの Azure リソースから出力されます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Azure 診断を使用すると、デプロイされたアプリケーションで診断データを収集できます。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスのロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure 仮想マシン](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、および [Azure Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。
+Azure Diagnostics を使用すると、デプロイされたアプリケーションで診断データを収集できます。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスのロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure 仮想マシン](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、および [Azure Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549148"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260750"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -46,7 +46,7 @@ Data Factory のマネージド ID は、次のように生成されます。
 
 - [PowerShell を使用したマネージド ID の生成](#generate-managed-identity-using-powershell)
 - [REST API を使用したマネージド ID の生成](#generate-managed-identity-using-rest-api)
-- Azure Resource Manager テンプレートを使用したマネージド ID の生成
+- [Azure Resource Manager テンプレートを使用したマネージド ID の生成](#generate-managed-identity-using-an-azure-resource-manager-template)
 - [SDK を使用したマネージド ID の生成](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
@@ -156,11 +156,11 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Azure portal を使用したマネージド ID の取得
 
-[Azure portal] -> 目的のデータ ファクトリ -> [設定] -> [プロパティ] で、マネージド ID 情報を検索できます。
+[Azure Portal] -> 自分のデータ ファクトリ -> [プロパティ] でマネージド ID 情報を検索できます。
 
-- サービス ID
-- サービス ID のテナント
-- **サービス ID アプリケーション ID** > この値をコピーします
+- マネージド ID オブジェクト ID
+- マネージド ID のテナント
+- **マネージド ID アプリケーション ID** > この値をコピーします
 
 ![マネージド ID の取得](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878419"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259866"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory アクセス トークン
 
@@ -173,14 +173,14 @@ Azure AD によって発行されるトークンは、RSA 256 などの業界標
 
 いつでも、Azure AD は公開/秘密キー ペアの特定セットのいずれかを使用して、id_token に署名できます。 Azure AD は定期的に使用可能なキー セットをローテーションするので、このキー変更を自動的に処理するようにアプリを作成する必要があります。 Azure AD によって使用される公開キーの更新を確認する適切な頻度は、24 時間間隔です。
 
-署名の検証に必要な署名キー データは、次の場所にある OpenID Connect メタデータのドキュメントを使用して入手できます。
+署名の検証に必要な署名キー データは、次の場所にある [OpenID Connect メタデータのドキュメント](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)を使用して入手できます。
 
 ```
-https://login.microsoftonline.com/common/.well-known/openid-configuration
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> ブラウザーでこの [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) を試してみてください!
+> ブラウザーでこの [URL](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) を試してみてください!
 
 このメタデータ ドキュメントの詳細は次のとおりです。
 
@@ -190,7 +190,9 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 > [!NOTE]
 > V1.0 エンドポイントは `x5t` および `kid` の両方の要求を返すのに対して、v2.0 エンドポイントは `kid` 要求のみで応答します。 いずれは、`kid` 要求を利用してトークンを検証することをお勧めします。
 
-署名の検証の実行は、このドキュメントの対象範囲外です。必要な場合は、役に立つオープン ソース ライブラリが数多く提供されています。
+署名の検証の実行は、このドキュメントの対象範囲外です。必要な場合は、役に立つオープン ソース ライブラリが数多く提供されています。  ただし、Microsoft Identity プラットフォームには、標準に対する 1 つのトークン署名拡張であるカスタム署名トークンがあります。  
+
+アプリに [claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、カスタム署名キーがある場合、検証に使用する必要がある、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
 
 ### <a name="claims-based-authorization"></a>クレーム ベースの承認
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311134"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267159"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -54,14 +54,15 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 コピー アクティビティを使用すると、ファイル ベースの 2 つのデータ ストア間で**ファイルをそのままコピー**できます。その場合、データはシリアル化/逆シリアル化なしで効率的にコピーされます。
 
-また、コピー アクティビティでは、指定された形式(**テキスト、JSON、Avro、ORC、Parquet**) でのファイルの読み取りと書き込み、および圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](supported-file-formats-and-compression-codecs.md)」を参照してください。
+また、コピー アクティビティでは、指定された形式**Text、JSON、Avro、ORC、Parquet**、およびコーデック **GZip、Deflate、BZip2、ZipDeflate** によるファイルの圧縮と解凍。 詳細については、「[サポートされているファイル形式と圧縮形式](supported-file-formats-and-compression-codecs.md)」を参照してください。
 
 たとえば、次のようなコピー アクティビティを実行できます。
 
-* オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Store に ORC 形式で書き込む。
+* オンプレミスの SQL Server のデータをコピーし、Azure Data Lake Storage Gen2 に Parquet 形式で書き込む。
 * オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
-* オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
+* オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Storage Gen2 に書き込む。
 * Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
+* そのほか、シリアル化/逆シリアル化または圧縮/解凍が必要となるさまざまなケース。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
@@ -253,6 +254,6 @@ Azure Data Factory のバージョン 1 では、パーティション分割さ�
 ## <a name="next-steps"></a>次の手順
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。
 
-- [Copy data from one location to another location in the same Azure Blob Storage (同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする)](quickstart-create-data-factory-dot-net.md)
-- [Copy data from Azure Blob Storage to Azure SQL Database (Azure Blob Storage から Azure SQL Database にデータをコピーする)](tutorial-copy-data-dot-net.md)
-- [Copy data from on-premises SQL Server to Azure (オンプレミスの SQL Server から Azure にデータをコピーする)](tutorial-hybrid-copy-powershell.md)
+- [同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする](quickstart-create-data-factory-dot-net.md)
+- [Azure Blob Storage から Azure SQL Database にコピーする](tutorial-copy-data-dot-net.md)
+- [オンプレミスの SQL Server から Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)

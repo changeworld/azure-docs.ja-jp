@@ -1,6 +1,6 @@
 ---
-title: Azure 診断拡張機能のトラブルシューティング
-description: Azure Virtual Machines、Service Fabric、または Cloud Services で Azure 診断を使うときの問題をトラブルシューティングします。
+title: Azure Diagnostics 拡張機能のトラブルシューティング
+description: Azure Virtual Machines、Service Fabric、または Cloud Services で Azure Diagnostics を使うときの問題をトラブルシューティングします。
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -16,11 +16,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/07/2019
 ms.locfileid: "55822138"
 ---
-# <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
-この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](diagnostics-extension-overview.md)に関するページを参照してください。
+# <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
+この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
 
 ## <a name="logical-components"></a>論理コンポーネント
-**診断プラグイン ランチャー (DiagnosticsPluginLauncher.exe)**:Azure 診断拡張機能を起動します。 エントリ ポイント プロセスとして機能します。
+**診断プラグイン ランチャー (DiagnosticsPluginLauncher.exe)**:Azure Diagnostics 拡張機能を起動します。 エントリ ポイント プロセスとして機能します。
 
 **診断プラグイン (DiagnosticsPlugin.exe)**:監視エージェントの有効期間を構成、起動、管理します。 ランチャーによって起動されるメイン プロセスです。
 
@@ -53,13 +53,13 @@ ms.locfileid: "55822138"
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>メトリック データが Azure ポータルに表示されない
-Azure 診断には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでこのデータが表示できない場合、Azure 診断ストレージ アカウントの WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認してください。
+Azure Diagnostics には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでこのデータが表示できない場合、Azure Diagnostics ストレージ アカウントの WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認してください。
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
 リソース ID が間違っている場合は、**診断構成****、** > **メトリック** > **ResourceId** で、リソース ID が正しく設定されているかどうかを確認します。
 
-特定のメトリックのデータがない場合は、**[診断構成]**、**[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+特定のメトリックのデータがない場合は、**[診断構成]** > 、**[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -82,8 +82,8 @@ Azure 診断には、Azure ポータルに表示できるメトリック デー�
 構成は正しく設定されているがそれでもメトリック データが表示されない場合、次の方針に沿って問題解決をお試しください。
 
 
-## <a name="azure-diagnostics-isnt-starting"></a>Azure 診断が起動しない
-Azure 診断が起動しない理由については、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。
+## <a name="azure-diagnostics-isnt-starting"></a>Azure Diagnostics が起動しない
+Azure Diagnostics が起動しない理由については、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。
 
 これらのログで "`Monitoring Agent not reporting success after launch`" が示されている場合、MonAgentHost.exe の起動でエラーが発生したことを意味します。 前のセクションで `MonAgentHost log file` に対して指定されている場所でそのログを調べます。
 
@@ -105,7 +105,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 
 解決方法:診断構成を修正し、診断を再インストールします。
 
-ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「Azure 診断が起動しない」の手順に従ってください。
+ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「Azure Diagnostics が起動しない」の手順に従ってください。
 
 プロセスが実行されている場合、「[データがローカルでキャプチャされているか](#is-data-getting-captured-locally)」に進み、そこの手順に従ってください。
 
@@ -211,9 +211,9 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ## <a name="references"></a>参照
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>診断拡張機能の構成を確認する方法
-拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](http://resources.azure.com) に移動し、Azure 診断拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
+拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](http://resources.azure.com) に移動し、Azure Diagnostics 拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
 
-または、マシンにリモート デスクトップ接続し、Azure 診断構成ファイルを確認します。詳細は、ログ アーティファクト パス セクションにあります。
+または、マシンにリモート デスクトップ接続し、Azure Diagnostics 構成ファイルを確認します。詳細は、ログ アーティファクト パス セクションにあります。
 
 どちらの場合でも、**Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** または **WadCfg** フィールドを見つけます。
 
@@ -221,7 +221,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 クラウド サービス ロールでは、ディスクから構成を選択する場合、データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを[デコードする](https://www.bing.com/search?q=base64+decoder)必要があります。
 
-### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 診断プラグインの終了コード
+### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Diagnostics プラグインの終了コード
 プラグインにより、次の終了コードが返されます。
 
 | 終了コード | 説明 |
@@ -275,9 +275,9 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 **1. .NET 4.5 の依存関係**
 
-Windows Azure 診断拡張機能は .NET 4.5 framework 以降にランタイムが依存します。 このドキュメントの作成時点では、Azure クラウド サービス用にプロビジョニングされたすべてのマシンと Azure 仮想マシンに基づくすべての公式イメージに .NET 4.5 以降がインストールされています。
+Windows Azure Diagnostics 拡張機能は .NET 4.5 framework 以降にランタイムが依存します。 このドキュメントの作成時点では、Azure クラウド サービス用にプロビジョニングされたすべてのマシンと Azure 仮想マシンに基づくすべての公式イメージに .NET 4.5 以降がインストールされています。
 
-.NET 4.5 以降がインストールされていない Windows Azure 診断拡張機能を実行する状況も考えられます。 古いイメージやスナップショットからマシンを作成するときや、カスタム ディスクを利用するときです。
+.NET 4.5 以降がインストールされていない Windows Azure Diagnostics 拡張機能を実行する状況も考えられます。 古いイメージやスナップショットからマシンを作成するときや、カスタム ディスクを利用するときです。
 
 通常、**DiagnosticsPluginLauncher.exe** の実行時には、終了コード **255** が表示されます。 次のように、例外が処理されないことが原因でエラーが発生します。
 ```

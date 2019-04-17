@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 2b542cc8202b75c0007686e3f0e0d9fbd1ac28c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119175"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652639"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -61,11 +61,11 @@ Azure Migrate プロジェクトを削除すると、移行プロジェクトと
 
    a.    管理者の Windows PowerShell ウィンドウで、```armclient login``` のコマンドを実行します。
 
-   これにより Azure ポップアップが表示されます。ここでは、Azure にログオンする必要があります。
+        This opens the Azure login pop-up where you need to sign in to Azure.
 
    b.    同じ PowerShell ウィンドウで、次のコマンドを実行して、評価レポートのダウンロード URL を取得します (下のサンプル API 要求で URI パラメーターを適切な値に置き換えます)。
 
-      ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
       サンプルの要求と出力:
 
@@ -102,6 +102,9 @@ Azure Migrate はオンプレミス環境を継続的にプロファイルして
    - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
 4. それでもデプロイが失敗する場合は、Azure Migrate のサポートにお問い合わせください。
 
+### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>アプライアンスで Azure クラウドを選択できず、"Azure Cloud の選択に失敗しました" というエラーで失敗する
+
+これは既知の問題であり、この問題の修正プログラムが利用可能です。 アプライアンスの[最新の更新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions)をダウンロードし、アプライアンスを更新して更新プログラムを適用してください。
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>コレクターがインターネットに接続できない
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cd10adbc509812a360ae59fdac3f16bd2af0324c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 31bc5622c6c6c3dd00bc59b5d8f3aa349055d125
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188154"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intacct"></a>チュートリアル:Azure Active Directory と Intacct の統合
 
@@ -51,7 +51,7 @@ Intacct と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Intacct の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Intacct を追加する必要があります。
 
-**ギャラリーから Intacct を追加するには、次の手順に従います。**
+**ギャラリーから Intacct を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -246,7 +246,7 @@ Azure AD ユーザーが Intacct にサインインできるように設定す�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

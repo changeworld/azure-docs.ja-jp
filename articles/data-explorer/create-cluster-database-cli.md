@@ -1,19 +1,18 @@
 ---
 title: クイック スタート:Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
-services: data-explorer
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 3/25/2019
-ms.openlocfilehash: 852eb32611f526c6fae4898d2bc85cac0859498f
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 03/25/2019
+ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758421"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59043974"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -59,7 +58,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | name | *azureclitest* | クラスターの任意の名前。|
    | sku | *D13_v2* | クラスターに使用される SKU。 |
@@ -83,7 +82,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
     ```
 
-   |**設定** | **推奨値** | **フィールドの説明**|
+   |**Setting** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | cluster-name | *azureclitest* | データベースの作成先となるクラスターの名前。|
    | name | *clidatabase* | データベースの名前。|

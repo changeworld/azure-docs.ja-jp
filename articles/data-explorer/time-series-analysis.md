@@ -1,19 +1,18 @@
 ---
-title: Azure データ エクスプローラーの時系列分析
-description: 'Azure データ エクスプローラーの時系列分析について説明します '
-services: data-explorer
+title: Azure Data Explorer を使用して時系列データを分析する
+description: Azure Data Explorer を使用してクラウドで時系列データを分析する方法について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: 6a77e399e4de6ec41e74d1e5b9f9f518126958c2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 04/07/2019
+ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756781"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273075"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure データ エクスプローラーの時系列分析
 
@@ -79,7 +78,7 @@ demo_make_series1
 - 次の 2 つの一般的なフィルター処理関数があります。
     - [`series_fir()`](/azure/kusto/query/series-firfunction):FIR フィルターを適用します。 変化検出のための時系列の移動平均と微分の単純な計算に使用します。
     - [`series_iir()`](/azure/kusto/query/series-iirfunction):IIR フィルターを適用します。 指数平滑法と累積合計に使用します。
-- サイズ 5 のビンの新しい移動平均系列 (名前は *ma_num*) をクエリに追加することで、時系列セットに `Extend` を実行します。
+- `Extend` サイズ 5 のビンの新しい移動平均系列 (名前は *ma_num*) をクエリに追加することで、時系列を設定します。
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -137,7 +136,7 @@ demo_series3
 ```kusto
 demo_series3
 | project (periods, scores) = series_periods_detect(num, 0., 14d/2h, 2) //to detect the periods in the time series
-| mvexpand periods, scores
+| mv-expand periods, scores
 | extend days=2h*todouble(periods)/1d
 ```
 

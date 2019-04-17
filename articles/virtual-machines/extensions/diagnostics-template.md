@@ -1,6 +1,6 @@
 ---
 title: Azure 仮想マシンに監視と診断を追加する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して、Azure 診断の拡張機能を備えた新しい Windows 仮想マシンを作成します。
+description: Azure Resource Manager テンプレートを使用して、Azure Diagnostics の拡張機能を備えた新しい Windows 仮想マシンを作成します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
@@ -24,9 +24,9 @@ ms.lasthandoff: 03/19/2019
 ms.locfileid: "57893545"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
-Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
+Azure Diagnostics の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure Diagnostics の拡張機能を追加する方法について説明します。  
 
-## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure 診断の拡張機能を追加する
+## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure Diagnostics の拡張機能を追加する
 Windows 仮想マシンで診断の拡張機能を有効にするには、Resource Manager テンプレートで拡張機能を VM リソースとして追加する必要があります。
 
 単純なリソース マネージャー ベースの仮想マシンでは、次のように拡張機能の構成を仮想マシンの *resources* の配列に追加します。 

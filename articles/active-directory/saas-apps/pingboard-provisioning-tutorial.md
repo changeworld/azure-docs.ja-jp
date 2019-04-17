@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36d0985aee53f2a7f701f9bf7887ae26a426b68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203745"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280334"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル:Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,11 +32,11 @@ ms.locfileid: "56203745"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure AD テナント
-*   Pingboard テナント ([Pro アカウント](https://pingboard.com/pricing)) 
-*   管理者アクセス許可がある Pingboard のユーザー アカウント 
+* Azure AD テナント
+* Pingboard テナント ([Pro アカウント](https://pingboard.com/pricing))
+* 管理者アクセス許可がある Pingboard のユーザー アカウント
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD プロビジョニング統合では、ご利用のアカウントから使用できる [Pingboard API](https://pingboard.docs.apiary.io/#) が必要です。
 
 ## <a name="assign-users-to-pingboard"></a>Pingboard へのユーザーの割り当て
@@ -69,7 +69,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![Pingboard のプロビジョニング](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
-    
+
 1. **[管理者資格情報]** セクションで、次の手順を使用します。
 
     a. **[テナントの URL]** に「`https://your_domain.pingboard.com/scim/v2`」と入力します。"your_domain" は、実際のドメインに置き換えてください。
@@ -78,7 +78,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
     c. **[アドオン]** > **[統合]** > **[Azure Active Directory]** の順に選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[構成]** タブをクリックし、**[Enable user provisioning from Azure]\(Azure からのユーザー プロビジョニングを有効にする\)** に移動します。
+    d. **[構成]** タブをクリックし、**[Enable user provisioning from Azure]\(Azure からのユーザー プロビジョニングを有効にする\)** に移動します。
 
     e. **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** からトークンをコピーして、**[シークレット トークン]** に入力します。
 
@@ -86,7 +86,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループのメール アドレスを **[通知用メール]** に入力し、 その下のチェック ボックスをオンにします。
 
-1. **[保存]** を選択します。 
+1. **[保存]** を選択します。
 
 1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Pingboard]\(Azure Active Directory ユーザーを Pingboard に同期する\)** を選びます。
 
@@ -104,4 +104,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](pingboard-tutorial.md)
+* [Configure single sign-on](pingboard-tutorial.md)

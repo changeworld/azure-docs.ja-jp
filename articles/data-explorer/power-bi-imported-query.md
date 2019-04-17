@@ -1,19 +1,18 @@
 ---
-title: クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する
+title: 'クイック スタート:Power BI にインポートされたクエリを使用して Azure Data Explorer のデータを視覚化する '
 description: Power BI のデータは 3 とおりの方法を使用して視覚化できます。このクイック スタートでは、そのうちの 1 つである Azure Data Explorer からクエリをインポートすることによる方法を説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756105"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050589"
 ---
 # <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する
 

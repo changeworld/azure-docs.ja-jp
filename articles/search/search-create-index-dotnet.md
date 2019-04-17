@@ -1,5 +1,5 @@
 ---
-title: C# でインデックスを作成する - Azure Search
+title: クイック スタート:C# コンソール アプリケーション内でインデックスを作成する - Azure Search
 description: Azure Search .NET SDK を使用して C# で全文検索可能なインデックスを作成する方法について説明します。
 author: heidisteen
 manager: cgronlun
@@ -9,15 +9,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/22/2019
-ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.date: 04/08/2019
+ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370586"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269046"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>クイック スタート:1 - C# で Azure Search インデックスを作成する
+> [!div class="op_single_selector"]
+> * [C#](search-create-index-dotnet.md)
+> * [ポータル](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [postman](search-fiddler.md)
+>*
 
 この記事では、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して [Azure Search のインデックス](search-what-is-an-index.md)を作成するプロセスについて説明します。 これは、インデックスの作成、読み込み、照会に関する 3 部構成の演習の最初のレッスンです。 インデックスの作成は、次のタスクを実行することによって実現されます。
 
@@ -28,35 +34,43 @@ ms.locfileid: "58370586"
 
 ## <a name="prerequisites"></a>前提条件
 
+このクイック スタートでは、次のサービス、ツール、およびデータを使用します。 
+
 [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
-ご利用の検索サービスの URL エンドポイントと管理者 API キーを取得します。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+Azure サンプル GitHub リポジトリにある [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) には、サンプル ソリューション (C# で記述された .NET Core コンソール アプリケーション) が置かれています。 そのソリューションをダウンロードして展開します。 既定では、ソリューションは読み取り専用です。 ソリューションを右クリックし、読み取り専用属性をオフにして、ファイルを変更できるようにします。 このソリューションにはデータが含まれています。
 
-  1. Azure portal の検索サービスの **[概要]** ページで、URL を取得します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-  2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理者キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理者キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーとセカンダリ キーのどちらでも使用できます。
+サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-  ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+1. [Azure portal にサインインし](https://portal.azure.com/)、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-サービスに送信されるすべての要求で、API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
+2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-## <a name="1---open-the-project"></a>1 - プロジェクトを開く
+![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
-GitHub からサンプル コード [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) をダウンロードします。 
+すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-appsettings.json 内で、既定のコンテンツを次の例に置き換えた後、サービスのサービス名と管理者 API キーを指定します。 サービス名には名前だけが必要です。 たとえば、URL が https://mydemo.search.windows.net の場合は、JSON ファイルに `mydemo` を追加します。
+## <a name="1---configure-and-build"></a>1 - 構成とビルド
+
+1. Visual Studio で **DotNetHowTo.sln** ファイルを開きます。
+
+1. appsettings.json 内で、既定のコンテンツを次の例に置き換えた後、サービスのサービス名と管理者 API キーを指定します。 
 
 
-```json
-{
-    "SearchServiceName": "Put your search service name here",
-    "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-}
-```
+   ```json
+   {
+       "SearchServiceName": "Put your search service name here (not the full URL)",
+       "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+    }
+   ```
 
-これらの値が設定されたら、F5 キーを押してソリューションをビルドし、コンソール アプリを実行することができます。 この演習の残りの手順とそれに続く手順では、このコードがどのように動作するかを説明します。 
+  サービス名には名前だけが必要です。 たとえば、URL が https://mydemo.search.windows.net の場合は、JSON ファイルに `mydemo` を追加します。
+
+1. F5 キーを押して、ソリューションをビルドし、コンソール アプリを実行します。 この演習の残りの手順とそれに続く手順では、このコードがどのように動作するかを説明します。 
 
 代わりに、SDK の動作の詳細については、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。 
 

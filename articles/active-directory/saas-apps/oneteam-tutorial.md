@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: e2b2a7ce4e057b97ef8c714c7af25b173e881706
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f12a4973f2c3427d9d44de625f9e987e836d4b7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183579"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>チュートリアル:Azure Active Directory と Oneteam の統合
 
@@ -107,9 +107,9 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Oneteam のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://api.one-team.io/teams/<team name>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://api.one-team.io/teams/<team name>`
 
-    b. **[応答 URL]** ボックスに、`https://api.one-team.io/teams/<team name>/auth/saml/callback` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://api.one-team.io/teams/<team name>/auth/saml/callback`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -206,7 +206,7 @@ Oneteam で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

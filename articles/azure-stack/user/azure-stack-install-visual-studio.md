@@ -12,16 +12,16 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 274240aab54f27f36734516026e9feebf64ae4b5
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da17d114c1ffb920fbaae85a6cdcbc35a66631a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248114"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257996"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 
@@ -39,9 +39,9 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
 4. Azure SDK の一部としてインストールされている **Microsoft Azure PowerShell** をアンインストールします。
 
-    ![WebPI のインストール手順を示すスクリーンショット](./media/azure-stack-install-visual-studio/image1.png) 
+    ![WebPI のインストール手順を示すスクリーンショット](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)
+5. [PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)
 
 6. インストールが完了したら、オペレーティング システムを再起動します。
 
@@ -65,9 +65,7 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
 3. **ナビゲーション ウィンドウ**の **[環境]** を展開し、**[アカウント]** を選択します。
 
-4. **[追加]** を選択し、User Azure Resource Manger エンドポイントを入力します。  
-  Azure Stack Development Kit の URL は `https://management.local.azurestack/external` です。  
-  Azure Stack 統合システムの URL は `https://management.[Region}.[External FQDN]` です。
+4. **[追加]** を選択し、User Azure Resource Manger エンドポイントを入力します。 Azure Stack Development Kit の URL は `https://management.local.azurestack/external` です。  Azure Stack 統合システムの URL は `https://management.[Region}.[External FQDN]` です。
 
     ![X](./media/azure-stack-install-visual-studio/image5.png)
 
@@ -79,11 +77,11 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
 6. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 
-1. **[アカウントの追加]** を選択し、AD FS の資格情報でサインインします。  
+7. **[アカウントの追加]** を選択し、AD FS の資格情報でサインインします。  
 
     ![Cloud Explorer](./media/azure-stack-install-visual-studio/image7.png)
 
-    Cloud Explorer は使用できるサブスクリプションのクエリを実行します。 使用できるサブスクリプションを 1 つ選択して管理できます。
+    Cloud Explorer は使用できるサブスクリプションのクエリを実行します。 使用できるサブスクリプションを選択して管理できます。
 
     ![Cloud Explorer](./media/azure-stack-install-visual-studio/image8.png)
 
@@ -91,5 +89,5 @@ Visual Studio を使用して Azure Resource Manager [テンプレート](azure-
 
 ## <a name="next-steps"></a>次の手順
 
- - 他の Visual Studio バージョンとの[サイド バイ サイド構成](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事を参照してください。
- - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)。
+- 他の Visual Studio バージョンとの[サイド バイ サイド構成](/visualstudio/install/install-visual-studio-versions-side-by-side)に関する記事を参照してください。
+- [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)。

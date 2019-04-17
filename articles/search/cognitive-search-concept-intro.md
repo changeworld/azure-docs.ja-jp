@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 03/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882500"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265970"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 
@@ -85,7 +85,7 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 | シェーパー | テキスト フラグメントをより大きな構造に統合したり、逆に大きなテキスト フラグメントを下流プロセスで処理できるよう管理可能なサイズに分割します。 | [シェーパー スキル](cognitive-search-skill-shaper.md)、[テキスト マージャー スキル](cognitive-search-skill-textmerger.md)、[テキスト 分割スキル](cognitive-search-skill-textsplit.md) |
 | エンリッチメントされたドキュメント | コード内からは直接アクセスできない、一時的な内部構造です。 処理中にエンリッチメントされたドキュメントが生成されますが、検索インデックスに保存されるのは最終出力のみです。 フィールド マッピングにより、どのデータ要素をインデックスに追加するかが決定されます。 | [エンリッチメントされたドキュメントへのアクセス](cognitive-search-tutorial-blob.md#access-enriched-document)に関する記事を参照してください。 |
 | Indexer |  検索可能なデータとメタデータを外部データ ソースから抽出し、ドキュメント解読のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを作成するクローラーです。 コグニティブ検索エンリッチメントのために、インデクサーはスキルセットを呼び出し、インデックス内のターゲット フィールドとエンリッチメント出力を関連付けるフィールド マッピングを含みます。 インデクサーの定義には、パイプライン操作のためのすべての指示と参照が含まれ、ユーザーがインデクサーを実行すると、パイプラインが呼び出されます。 | [インデクサー](search-indexer-overview.md) |
-| [データ ソース]  | Azure でサポートされる型の外部データ ソースに接続するために、インデクサーによって使用されるオブジェクト。 | [インデクサー](search-indexer-overview.md)を参照してください。 |
+| データ ソース  | Azure でサポートされる型の外部データ ソースに接続するために、インデクサーによって使用されるオブジェクト。 | [インデクサー](search-indexer-overview.md)を参照してください。 |
 | Index | フィールド構造と使用状況を定義するインデックス スキーマから構築された Azure Search で永続化された検索コーパスです。 | [Azure Search のインデックス](search-what-is-an-index.md) | 
 
 <a name="where-do-i-start"></a>
@@ -99,6 +99,8 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 + [クイック スタート (ポータル)](cognitive-search-quickstart-blob.md)
 + [チュートリアル (HTTP 要求)](cognitive-search-tutorial-blob.md)
 + [カスタム スキルの例 (C#)](cognitive-search-create-custom-skill-example.md)
+
+学習目的には無料のサービスをお勧めしますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されることに注意してください。 1 日でクイック スタートとチュートリアルの両方を実行するには、両方の演習が制限内に収まるように、より小さなファイル セット (10 ドキュメント) を使用してください。
 
 **手順 3:API を確認する (REST のみ)**
 

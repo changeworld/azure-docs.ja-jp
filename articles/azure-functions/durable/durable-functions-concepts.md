@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443421"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892757"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions のパターンと技術概念 (Azure Functions)
 
@@ -415,7 +415,7 @@ Durable Task Framework ディスパッチャーのリプレイ動作のおかげ
 
 Durable Functions 拡張機能では、Azure Storage のキュー、テーブル、および BLOB を使用して実行履歴の状態を保持し、関数の実行をトリガーします。 関数アプリの既定のストレージ アカウントを使用するか、別のストレージ アカウントを構成できます。 ストレージのスループット制限に基づいて、別のアカウントを使用することもできます。 記述するオーケストレーター コードは、これらのストレージ アカウント内のエンティティとやりとりをすることはありません。 Durable Task Framework では、エンティティは実装の詳細として直接管理されます。
 
-オーケストレーター関数はアクティビティ関数をスケジュールし、内部キュー メッセージを介して応答を受け取ります。 関数アプリが Azure Functions の従量課金プランで実行されている場合、これらのキューは [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-plan-works) によって監視されます。 必要に応じて、新しいコンピューティング インスタンスが追加されます。 複数の VM にスケールアウトされた場合、オーケストレーター関数は 1 つの VM 上で実行され、オーケストレーター関数によって呼び出されるアクティビティ関数は別の VM で実行されることがあります。 Durable Functions のスケーリング動作の詳細については、[パフォーマンスとスケール](durable-functions-perf-and-scale.md)に関する記事をご覧ください。
+オーケストレーター関数はアクティビティ関数をスケジュールし、内部キュー メッセージを介して応答を受け取ります。 関数アプリが Azure Functions の従量課金プランで実行されている場合、これらのキューは [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) によって監視されます。 必要に応じて、新しいコンピューティング インスタンスが追加されます。 複数の VM にスケールアウトされた場合、オーケストレーター関数は 1 つの VM 上で実行され、オーケストレーター関数によって呼び出されるアクティビティ関数は別の VM で実行されることがあります。 Durable Functions のスケーリング動作の詳細については、[パフォーマンスとスケール](durable-functions-perf-and-scale.md)に関する記事をご覧ください。
 
 オーケストレーター アカウントの実行履歴は、テーブル ストレージに格納されます。 インスタンスが特定の VM 上に復元される場合、オーケストレーターは、テーブルから実行履歴をフェッチして、そのローカル状態を再構築できるようにします。 テーブル ストレージの履歴を使用できることの便利な面は、[Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールを使用してオーケストレーションの履歴を確認できることです。
 

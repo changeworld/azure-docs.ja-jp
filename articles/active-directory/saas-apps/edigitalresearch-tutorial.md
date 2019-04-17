@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4bebbda528f7ed6d7bee6ce77c744c6349d0bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78b21e686d6ee6109ccf142dc4ca9956dc4d36ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190893"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278719"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>チュートリアル:Azure Active Directory と eDigitalResearch の統合
 
@@ -89,7 +89,7 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[eDigitalResearch のテスト ユーザーの作成](#create-a-edigitalresearch-test-user)** - eDigitalResearch で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[eDigitalResearch のテスト ユーザーの作成](#create-an-edigitalresearch-test-user)** - eDigitalResearch で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -111,9 +111,9 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
     ![[eDigitalResearch のドメインと URL] のシングル サインオン情報](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_url.png)
 
-    a. **[識別子]** ボックスに、`https://<company-name>.edigitalresearch.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。 `https://<company-name>.edigitalresearch.com`
 
-    b. **[応答 URL]** ボックスに、`https://<company-name>.edigitalresearch.com/login/consume` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[eDigitalResearch サポート チーム](https://www.maruedr.com/contact)に連絡してください。
@@ -167,9 +167,9 @@ eDigitalResearch で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
   
-### <a name="create-a-edigitalresearch-test-user"></a>eDigitalResearch テスト ユーザーの作成
+### <a name="create-an-edigitalresearch-test-user"></a>eDigitalResearch テスト ユーザーの作成
 
 このセクションの目的は、eDigitalResearch で Britta Simon というユーザーを作成することです。 
 

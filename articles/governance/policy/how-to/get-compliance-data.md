@@ -1,7 +1,6 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 コンプライアンスの詳細を取得する方法を説明します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/01/2019
@@ -9,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535214"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263782"
 ---
-# <a name="getting-compliance-data"></a>コンプライアンス データの取得
+# <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
 Azure Policy の最大の利点の 1 つは、サブスクリプション内のリソースまたはサブスクリプションの[管理グループ](../../management-groups/overview.md)を介して提供される分析情報と制御です。 この制御は、さまざまな方法で実行できます。たとえば、リソースが誤った場所に作成されるのを防いだり、一般的で一貫性のあるタグの使用を強制したり、既存のリソースの適切な構成と設定を監査したりすることができます。 どの場合でも Policy によってデータが生成され、環境のコンプライアンス状態の理解に役立てることができます。
 
@@ -30,7 +29,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 > [!WARNING]
 > コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳しくは「[Azure Policy における RBAC アクセス許可](../overview.md#rbac-permissions-in-azure-policy)」をご覧ください)。
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>評価のトリガー
 
@@ -57,7 +56,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
 - `{YourRG}` - リソース グループの名前に置き換えます
-- `{subscriptionId}` - サブスクリプション ID で置き換えます
+- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
 
 スキャンは、サブスクリプションまたはリソース グループ内のリソースの評価をサポートしています。 次の URI の構造を使用して、REST API の **POST** コマンドでスコープによるスキャンを開始します。
 
@@ -120,27 +119,27 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 コンプライアンス対応率は、**準拠している**リソースを _リソース合計_ で割って算出されます。
 _リソース合計_ は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
-![シンプルなコンプライアンスの例](../media/getting-compliance-data/simple-compliance.png)
+![[コンプライアンス] ページからのポリシー コンプライアンスの例](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>ポータル
 
 Azure portal には、環境のコンプライアンス状態を視覚化して理解するためのグラフィカルなエクスペリエンスが表示されます。 **[ポリシー]** ページの **[概要]** オプションでは、ポリシーとイニシアティブの両方のコンプライアンスに関して、利用可能なスコープの詳細が表示されます。 コンプライアンス状態および割り当てごとの数と共に、過去 7 日間のコンプライアンスを示すグラフが含まれます。
 **[コンプライアンス]** ページには、この同じ情報の大部分 (グラフを除く) が含まれていますが、フィルター処理と並べ替えのオプションが追加されています。
 
-![ポリシーのコンプライアンスのページ](../media/getting-compliance-data/compliance-page.png)
+![[Policy Compliance]\(ポリシー コンプライアンス\) ページの例](../media/getting-compliance-data/compliance-page.png)
 
 ポリシーまたはイニシアティブは異なるスコープに割り当てることができるため、表には、各割り当てのスコープと割り当てられた定義の種類が含まれます。 各割り当ての準拠していないリソースおよび準拠していないポリシーの数も提供されます。 表のポリシーまたはイニシアティブをクリックすると、その特定の割り当てのコンプライアンスに関する詳しい情報が表示されます。
 
-![ポリシーのコンプライアンスの詳細](../media/getting-compliance-data/compliance-details.png)
+![[ポリシー準拠状況の詳細] ページの例](../media/getting-compliance-data/compliance-details.png)
 
 **[リソース コンプライアンス]** タブのリソース リストには、現在の割り当てに対する既存のリソースの評価状態が表示されます。 タブでは既定で **[非対応]** に設定されますが、これをフィルター処理することができます。
 リソースの作成要求によってトリガーされるイベント (追加、監査、拒否、デプロイ) は、**[イベント]** タブに表示されます。
 
-![ポリシーのコンプライアンスのイベント](../media/getting-compliance-data/compliance-events.png)
+![ポリシーのコンプライアンスのイベントの例](../media/getting-compliance-data/compliance-events.png)
 
 詳細情報を収集するイベントの行を右クリックし、**[アクティビティ ログの表示]** を選択します。 アクティビティ ログ ページが開き、事前にフィルター処理されて、割り当ておよびイベントの詳細が検索して表示されます。 アクティビティ ログは、これらのイベントに関する追加のコンテキストと情報を提供します。
 
-![ポリシー コンプライアンスのアクティビティ ログ](../media/getting-compliance-data/compliance-activitylog.png)
+![ポリシー コンプライアンスのアクティビティ ログの例](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>コンプライアンス違反の把握
 

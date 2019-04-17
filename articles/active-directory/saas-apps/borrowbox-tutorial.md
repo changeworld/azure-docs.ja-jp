@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e97b4dbadd34f57b1108621bbfdd922b323eeae0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d11c6472265d7efca98a7e822ca8b8945a13c2ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890460"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル:Azure Active Directory と BorrowBox の統合
 
@@ -52,7 +52,7 @@ BorrowBox と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への BorrowBox の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に BorrowBox を追加する必要があります。
 
-**ギャラリーから BorrowBox を追加するには、次の手順を実行します。**
+**ギャラリーから BorrowBox を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -205,6 +205,6 @@ BorrowBox を利用して Azure AD シングル サインオンを構成する�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

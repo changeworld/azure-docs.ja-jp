@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a701e71b164a13f8c7136d88b83dddf626b1913
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7252fcd0ce3e12c411729002e9594d1a75a49885
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359565"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258529"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>チュートリアル:Azure Active Directory と Tango Analytics の統合
 
@@ -105,9 +105,9 @@ Tango Analytics で Azure AD シングル サインオンを構成するには�
 
     ![[Tango Analytics のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、値として「`TACORE_SSO`」を入力します。
+    a. **[識別子]** ボックスに、次の値を入力します:  `TACORE_SSO`
 
-    b. **[応答 URL]** ボックスに、`https://mts.tangoanalytics.com/saml2/sp/acs/post` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://mts.tangoanalytics.com/saml2/sp/acs/post`
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Tango Analytics クライアント サポート チーム](mailto:support@tangoanalytics.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -195,6 +195,6 @@ Tango Analytics で Azure AD シングル サインオンを構成するには�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

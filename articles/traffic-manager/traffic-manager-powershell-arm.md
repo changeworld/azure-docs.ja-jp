@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442105"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045749"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
 Azure Resource Manager は、Azure のサービスの優先管理インターフェイスです。 Azure Traffic Manager ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>リソース モデル
 
@@ -253,10 +255,10 @@ Traffic Manager を使用すると、プロファイル全体だけでなく、�
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>例 1:Traffic Manager プロファイルを有効または無効にする
 
-Traffic Manager プロファイルを有効にするには、`Enable-AzureRmTrafficManagerProfile` を使用します。 プロファイルは、プロファイル オブジェクトを使用して指定できます。 プロファイル オブジェクトは、パイプライン経由、または '-TrafficManagerProfile' パラメーターを使用して渡すことができます。 この例では、プロファイル名とリソース グループ名でプロファイルを指定します。
+Traffic Manager プロファイルを有効にするには、`Enable-AzTrafficManagerProfile` を使用します。 プロファイルは、プロファイル オブジェクトを使用して指定できます。 プロファイル オブジェクトは、パイプライン経由、または '-TrafficManagerProfile' パラメーターを使用して渡すことができます。 この例では、プロファイル名とリソース グループ名でプロファイルを指定します。
 
 ```powershell
-Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
+Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
 Traffic Manager プロファイルを無効にするには:
@@ -269,13 +271,13 @@ Disable-AzTrafficManagerProfile コマンドレットでは、確認を求める
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>例 2:Traffic Manager エンドポイントを有効または無効にする
 
-Traffic Manager エンドポイントを無効にするには、`Enable-AzureRmTrafficManagerEndpoint` を使用します。 エンドポイントの指定には次の 2 つの方法があります。
+Traffic Manager エンドポイントを無効にするには、`Enable-AzTrafficManagerEndpoint` を使用します。 エンドポイントの指定には次の 2 つの方法があります。
 
 1. パイプライン経由、または '-TrafficManagerEndpoint' パラメーターを使用して渡された TrafficManagerEndpoint オブジェクトを使用する
 2. エンドポイント名、エンドポイントの種類、プロファイル名、リソース グループ名を使用する
 
 ```powershell
-Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
+Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
 同様に、Traffic Manager エンドポイントを無効にするには、次のように入力します。

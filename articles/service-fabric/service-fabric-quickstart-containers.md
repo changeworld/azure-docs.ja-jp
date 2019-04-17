@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 34a967640ec039727e8947e865eeff1f5fef4649
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758596"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051548"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
 
@@ -36,6 +36,9 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 * 通信を構成する
 * Service Fabric アプリケーションのビルドとパッケージ化
 * コンテナー アプリケーションを Azure にデプロイする
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -95,7 +98,7 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールします。
 
-次のスクリプトを実行する前に、PowerShell で `Connect-AzureRmAccount` を実行して Azure との接続を作成します。
+次のスクリプトを実行する前に、PowerShell で `Connect-AzAccount` を実行して Azure との接続を作成します。
 
 次のスクリプトをクリップボードにコピーして、**Windows PowerShell ISE** を開きます。  内容を空の Untitled1.ps1 ウィンドウに貼り付けます。 次に、スクリプト内の変数 (`subscriptionId`、`certpwd`、`certfolder`、`adminuser`、`adminpwd` など) に値を指定します。スクリプトを実行する前に、`certfolder` に指定したディレクトリが存在している必要があります。
 

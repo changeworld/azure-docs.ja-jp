@@ -85,7 +85,7 @@ Windows Server 2012 R2 と Active Directory を使用しているスタンドア
 
 1.  **イベントの生成**: インフラストラクチャ (クラスター) レベルとアプリケーション/サービス レベルの両方でのイベント (ログ、トレース、カスタム イベント) が含まれます。 提供される内容とインストルメンテーションの追加方法については、[インフラストラクチャ レベルのイベント](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra)と[アプリケーション レベルのイベント](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app)に関する記事を参照してください。
 
-2.  **イベントの集計**: 生成されたイベントを表示するには、生成されたイベントを収集して集計する必要があります。 一般的に、[Azure 診断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (エージェント ベースのログ収集に類似) または [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (インプロセスのログ収集) を使用することをお勧めします。
+2.  **イベントの集計**: 生成されたイベントを表示するには、生成されたイベントを収集して集計する必要があります。 一般的に、[Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (エージェント ベースのログ収集に類似) または [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (インプロセスのログ収集) を使用することをお勧めします。
 
 3.  **分析**: イベントは、分析して表示できるように、視覚化して、特定の形式でアクセスできるようにする必要があります。 データの監視と診断を分析し、視覚化するプラットフォームはいくつかあります。 Service Fabric と緊密に統合できるため、[Azure Monitor ログ](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms)と [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) の 2 つを推奨します。
 

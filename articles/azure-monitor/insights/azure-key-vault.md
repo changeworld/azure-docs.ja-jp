@@ -101,7 +101,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
     どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
-Azure Key Vault ソリューションによって分析されるのは、Azure 診断の [AuditEvent ログ](../../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
+Azure Key Vault ソリューションによって分析されるのは、Azure Diagnostics の [AuditEvent ログ](../../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
 | プロパティ | Description |
 |:--- |:--- |
@@ -131,7 +131,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 + ストレージ アカウントを使用する必要がなく、ログは Log Analytics ワークスペースに直接書き込まれます。
 + ログが生成されてから Log Analytics で使用できるまでの待機時間が短縮されます。
 + 構成手順が簡素化されます。
-+ すべての種類の Azure 診断の共通形式です。
++ すべての種類の Azure Diagnostics の共通形式です。
 
 最新のソリューションを使用するには、次の操作を行います。
 

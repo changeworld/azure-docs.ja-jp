@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 58c16b8a102ea27499fc464c209d4ca1c0d4db33
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767211"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264711"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Azure Stack のロールベースのアクセス制御でリソースへのアクセスを管理する
 
@@ -40,28 +40,6 @@ Azure Stack には、すべてのリソースの種類に適用できる 3 つ�
 * **所有者**は、リソースへのアクセスを含め、すべてを管理できます。
 * **共同作業者**は、リソースへのアクセス以外のすべてを管理できます。
 * **閲覧者**は、すべてを閲覧できますが、変更を加えることはできません。
-
-### <a name="resource-hierarchy-and-inheritance"></a>リソース階層と継承
-
-Azure Stack には、次のリソース階層があります:
-
-* 各サブスクリプションは、1 つのディレクトリに属しています。
-* 各リソース グループは、1 つのサブスクリプションに属しています。
-* 各リソースは、1 つのリソース グループに属しています。
-
-親スコープで付与されたアクセス権は、子スコープに継承されます。 例: 
-
-* 閲覧者ロールをサブスクリプション スコープで Azure AD グループに割り当てると、 そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとすべてのリソースを表示できるようになります。
-* 共同作成者ロールをリソース グループ スコープでアプリケーションに割り当てると、 アプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
-
-### <a name="assigning-roles"></a>ロールの割り当て
-
-ユーザーに複数のロールを割り当てることができ、各ロールを異なるスコープに関連付けることができます。 例: 
-
-* Subscription-1 の閲覧者ロールを TestUser-A に割り当てます。
-* TestVM-1 の所有者ロールを TestUser-A に割り当てます。
-
-Azure の[ロールの割り当て](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)の記事では、ロールの表示、割り当て、および削除について詳細が説明されています。
 
 ### <a name="resource-hierarchy-and-inheritance"></a>リソース階層と継承
 

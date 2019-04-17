@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 04/03/2019
 ms.author: erhopf
-ms.openlocfilehash: b536c55b0f7c29bc463781d9fda0348ef994c5ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662226"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010194"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
@@ -31,7 +31,7 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 | [音声テキスト変換](speech-to-text.md) | 音声テキスト変換 | 音声テキスト変換では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われます。結果のテキストを、アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [バッチ文字起こし](batch-transcription.md) | バッチ文字起こしでは、大量のデータの音声からテキストへの文字起こしを、非同期で行うことができます。 これは REST ベースのサービスであり、カスタマイズとモデルの管理と同じエンドポイントを使用します。 | いいえ  | [はい](https://westus.cris.ai/swagger/ui/index) |
 | | [カスタマイズ](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ  | [はい](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | いいえ  | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [テキスト読み上げ](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [カスタマイズ](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ  | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [音声翻訳](speech-translation.md) | 音声翻訳 | 音声翻訳を使用すると、音声のリアルタイムの多言語翻訳がアプリケーション、ツール、デバイスで可能になります。 音声間翻訳や音声テキスト翻訳にはこのサービスを使用します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | いいえ  |
 
@@ -39,6 +39,7 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 
 Azure Speech Services の新機能について説明します。
 
+* 2019 年 4 月 - Windows および Linux における C++、C#、Java 向けにテキスト読み上げ (Beta) をサポートする Speech SDK 1.4.0 をリリースしました。 また、この SDK では、Linux における C++ および C# 向けとして、新たに MP3 および Opus/Ogg のオーディオ形式がサポートされます。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。 
 * 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げ (TTS) の新しいエンドポイントが利用可能になりました。 加えて、TTS で新しいリージョンがサポートされます。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
 * 2019年 2 月 - [Unity (ベータ)](quickstart-csharp-unity.md) をサポートする Speech SDK 1.3.0 がリリースされました。 `AudioInput` クラスのサポートが追加されました。このクラスでは、オーディオのストリーミング ソースを選択できます。 拡張機能と既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」をご覧ください。
 * 2018年 12 月 - [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md)、および Ubuntu 18.04 LTS をサポートする Speech SDK 1.2.0 がリリースされました。 詳しくは、「[リリース ノート](releasenotes.md)」をご覧ください。
@@ -47,12 +48,12 @@ Azure Speech Services の新機能について説明します。
 
 ほとんどの一般的なプログラミング言語向けのクイック スタートが提供されており、いずれも 10 分かからずにコードを実行できるように作られています。 各機能の最も人気のあるクイック スタートを次の表に示します。 その他の言語やプラットフォームを調べるには、左側のナビゲーションを使用してください。
 
-| 音声テキスト変換 (SDK) | 翻訳 (SDK) | テキスト読み上げ (REST) |
-|-------------------|-------------------|-----------------------|
-| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java (Windows、Linux)](quickstart-translate-speech-java-jre.md) | [Python (Windows、Linux、macOS)](quickstart-python-text-to-speech.md) |
-| [Javascript (ブラウザー)](quickstart-js-browser.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#、.NET Core (Windows、Linux、macOS)](quickstart-dotnet-text-to-speech.md) |
-| [Python (Windows、Linux、macOS)](quickstart-python.md) | [C#、.NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) | [Node.js (Windows、Linux、macOS)](quickstart-nodejs-text-to-speech.md) |
-| [Java (Windows、Linux)](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
+| 音声テキスト変換 (SDK) | 翻訳 (SDK) | テキスト読み上げ (REST) | テキスト読み上げ (SDK) |
+|-------------------|-------------------|-----------------------|-----------------------|
+| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java (Windows または Linux)](quickstart-translate-speech-java-jre.md) | [Python (Windows、Linux、macOS)](quickstart-python-text-to-speech.md) | [C#、.NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) |
+| [JavaScript (ブラウザー)](quickstart-js-browser.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#、.NET Core (Windows、Linux、macOS)](quickstart-dotnet-text-to-speech.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) |
+| [Python (Windows、Linux、macOS)](quickstart-python.md) | [C#、.NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) | [Node.js (Windows、Linux、macOS)](quickstart-nodejs-text-to-speech.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) |
+| [Java (Windows または Linux)](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
 
 Speech Services を使ってみた後、Speech SDK と LUIS を使用して音声から意図を認識する方法がわかるチュートリアルを試してください。
 
@@ -62,7 +63,7 @@ Speech Services を使ってみた後、Speech SDK と LUIS を使用して音�
 
 各 Azure Speech Services のサンプル コードを、GitHub で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的な認識と単発の認識、カスタム モデルの使用など、一般的なシナリオについて説明されています。 SDK と REST のサンプルを見るには、次のリンクを使用してください。
 
-* [音声テキスト変換と音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [音声変換、テキスト読み上げ、音声翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [バッチ文字起こしのサンプル (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
@@ -81,11 +82,11 @@ Azure Speech Services は組み込みのモデルで問題なく動作します�
 
 * [Speech SDK](speech-sdk-reference.md)
 * [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: 音声テキスト変換](rest-speech-to-text.md)
-* [REST API: テキスト読み上げ](rest-text-to-speech.md)
-* [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
+* [REST API:音声テキスト変換](rest-speech-to-text.md)
+* [REST API:テキスト読み上げ](rest-text-to-speech.md)
+* [REST API:バッチ文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Speech Service のサブスクリプション キーを無料で取得する](get-started.md)
+> [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2613adf4db69d9ab2ad7862fe9e5504921a1a5d8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9b3725f217ef261df7bc8d9821edf972bfe58806
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671597"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benchling"></a>チュートリアル:Azure Active Directory と Benchling の統合
 
@@ -107,9 +107,9 @@ Benchling で Azure AD シングル サインオンを構成するには、次�
 
     ![[Benchling のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.benchling.com/ext/saml/metadata.xml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.benchling.com/ext/saml/metadata.xml`
 
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.benchling.com/ext/saml/signin:finish` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.benchling.com/ext/saml/signin:finish`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -126,7 +126,7 @@ Benchling で Azure AD シングル サインオンを構成するには、次�
 
 7. その他に、Benchling アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     | ---------------| --------------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
@@ -222,7 +222,7 @@ Benchling で Azure AD シングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

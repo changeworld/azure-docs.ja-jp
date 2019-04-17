@@ -148,7 +148,7 @@ ms.locfileid: "58540773"
 6. Linux コンピューターからの syslog イベントの収集
 7. Windows コンピューターのアプリケーション イベント ログからのエラーおよび警告のイベントの収集
 8. Windows コンピューターからの Memory Available Mbytes パフォーマンス カウンターの収集
-9. Azure 診断によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
+9. Azure Diagnostics によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
 
 ```json
 {
