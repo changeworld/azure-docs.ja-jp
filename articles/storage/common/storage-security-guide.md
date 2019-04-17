@@ -304,7 +304,7 @@ SSE は、すべてのパフォーマンス レベル (Standard および Premiu
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Azure Disk Encryption を使用して仮想マシンに使用されるディスクを暗号化する
 Azure Disk Encryption は、新しい機能です。 この機能を使用すると、IaaS Virtual Machine に使用される OS ディスクとデータ ディスクを暗号化できます。 Windows の場合、ドライブの暗号化には、業界標準の BitLocker 暗号化テクノロジが使用されます。 Linux の場合、ディスクの暗号化には DM-Crypt テクノロジが使用されます。 DM-Crypt は Azure Key Vault と統合されているので、ディスクの暗号化キーを制御および管理できます。
 
-このソリューションでは、Microsoft Azure で有効になっている場合、IaaS VM の以下のシナリオがサポートされます。
+このソリューションでは、Microsoft Azure で有効にした場合、IaaS VM の以下のシナリオがサポートされます。
 
 * Azure Key Vault との統合
 * Standard レベルの VM: [A、D、DS、G、GS などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)
