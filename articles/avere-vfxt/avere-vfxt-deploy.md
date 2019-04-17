@@ -4,14 +4,14 @@ description: Azure で Avere vFXT クラスターをデプロイする手順
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/05/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409688"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257316"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -29,20 +29,19 @@ ms.locfileid: "57409688"
 作成テンプレートを使用する前に、以下の前提条件への対応が済んでいることを確認します。  
 
 1. [新しいサブスクリプション](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [サブスクリプション所有者のアクセス許可](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+1. [サブスクリプション所有者アクセス許可](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [カスタム アクセス ロール](avere-vfxt-prereqs.md#create-access-roles) - クラスター ノードに割り当てるロールベースのアクセス制御ロールを作成する必要があります。 クラスター コントローラー用のカスタム アクセス ロールを作成することもできますが、ほとんどのユーザーは既定の所有者ロールを得ることになります。これにより、コントローラーには、リソース グループの所有者に対応する特権が与えられます。 詳細については、「[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md#owner)」を参照してください。
 1. [ストレージ サービス エンドポイント (必要な場合)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) - 既存の仮想ネットワークを使用し、Blob Storage を作成するデプロイで必要
 
 クラスターのデプロイ手順と計画の詳細については、「[Avere vFXT システムの計画](avere-vfxt-deploy-plan.md)」と、[デプロイの概要](avere-vfxt-deploy-overview.md)に関するページを参照してください。
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Avere vFXT for Azure の作成
 
-Azure Portal にある作成テンプレートにアクセスします。「Avere」を検索し、"Avere vFXT ARM Deployment" を選択してください。 
+Azure portal にある作成テンプレートにアクセスします。「Avere」を検索し、"Avere vFXT for Azure ARM Template" を選択してください。 
 
-![階層リンク [新規] > [Marketplace] > [すべて] がある Azure Portal を表示するブラウザー ウィンドウ。 [すべて] ページでは、検索フィールドに "avere"という語があり、2 番目の結果である "Avere vFXT ARM Deployment" は赤枠で囲まれて強調表示されます。](media/avere-vfxt-template-choose.png)
+![階層リンク [新規] > [Marketplace] > [すべて] がある Azure Portal を表示するブラウザー ウィンドウ。 [すべて] ページでは、検索フィールドに "avere"という語があり、2 番目の結果である "Avere vFXT for Azure ARM Template" は赤枠で囲まれて強調表示されます。](media/avere-vfxt-template-choose.png)
 
-Avere vFXT ARM Deployment ページで詳細を確認した後、**[作成]** をクリックして開始します。 
+Avere vFXT for Azure ARM Template ページで詳細を確認した後、**[作成]** をクリックして開始します。 
 
 ![Azure Marketplace (デプロイ テンプレートの先頭ページを表示したところ)](media/avere-vfxt-deploy-first.png)
 
@@ -69,14 +68,6 @@ Avere vFXT ARM Deployment ページで詳細を確認した後、**[作成]** �
 
 * **[パスワード]** または **[SSH 公開キー]** - お客様が選択した認証の種類に応じて、後続のフィールドで RSA 公開キーまたはパスワードを指定する必要があります。 この資格情報は、先ほど指定したユーザー名と組み合わせて使用されます。
 
-* **[Avere cluster create role ID]\(Avere クラスター作成ロール ID\)** - このフィールドを使用して、クラスター コントローラーのアクセス制御ロールを指定します。 既定値は、組み込みロールである [[所有者]](../role-based-access-control/built-in-roles.md#owner) です。 クラスター コントローラーの所有者の特権は、クラスターのリソース グループに限定されます。 
-
-  ロールに対応するグローバル一意識別子を使用する必要があります。 既定値 (所有者) の場合、GUID は 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 です。 カスタム ロールの GUID を見つけるには、次のコマンドを使用します。 
-
-  ```azurecli
-  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
-  ```
-
 * **[サブスクリプション]** - Avere vFXT のサブスクリプションを選択します。 
 
 * **[リソース グループ]** - Avere vFXT クラスターの既存の空のリソース グループを選択するか、[新規作成] をクリックして新しいリソース グループ名を入力します。 
@@ -97,10 +88,6 @@ Avere vFXT ARM Deployment ページで詳細を確認した後、**[作成]** �
 * **[Avere vFXT cluster node count]\(Avere vFXT クラスターのノード数\)** - クラスターで使用するノードの数を選択します。 最小で 3 ノード、最大で 12 ノードです。 
 
 * **[Cluster administration password]\(クラスター管理パスワード\)** - クラスターを管理するためのパスワードを作成します。 このパスワードは、クラスターを監視したり設定を構成したりするためにクラスターのコントロール パネルにサインインする際に、ユーザー名 ```admin``` と共に使用されます。
-
-* **[Avere cluster operations role]\(Avere クラスター操作ロール\)** - クラスター ノードのアクセス制御ロールの名前を指定します。 これは、前提条件の手順で作成されたカスタム ロールです。 
-
-  「[クラスター ノードのアクセス ロールを作成する](avere-vfxt-prereqs.md#create-the-cluster-node-access-role)」で説明されている例では、ファイルに ```avere-operator.json``` という名前を付けて保存しています。対応するロール名は ```avere-operator``` です。
 
 * **[Avere vFXT cluster name]\(Avere vFXT クラスターの名前\)** - クラスターに一意の名前を付けます。 
 
@@ -138,7 +125,7 @@ Avere vFXT ARM Deployment ページで詳細を確認した後、**[作成]** �
 
 ![デプロイ テンプレートの 3 ページ目 - 確認](media/avere-vfxt-deploy-3.png)
 
-4 ページ目で **[作成]** ボタンをクリックし、利用規約に同意して Avere vFXT for Azure クラスターを作成します。 
+4 ページ目で、必要な連絡先情報を入力し、**[作成]** ボタンをクリックして、利用規約に同意して Avere vFXT for Azure クラスターを作成します。 
 
 ![デプロイ テンプレートの 4 ページ目 - 利用規約、[作成] ボタン](media/avere-vfxt-deploy-4.png)
 

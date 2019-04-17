@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: ca0d77ba2d1968d49e8ac556d42137cdc4c81e53
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 1fc04ee953ea53f96adfd1e85c9a616c62268ade
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879439"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282986"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -31,6 +31,8 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
 | **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P |
 | **Enterprise Agreement (EA)** | [Microsoft Azure エンタープライズ](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
+| **Microsoft 顧客契約** | [Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | 該当なし |
+| **Microsoft 顧客契約** | [Dev/Test 用の Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | 該当なし |
 | **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
 | **従量課金制** | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
 | **従量課金制** | [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
@@ -78,20 +80,21 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 | **あり** | **なし** |
 | --- | --- |
 | Azure サービスの使用状況<sup>1</sup> | 予約の購入 – 詳細については、「[Azure の予約の自動化に関する API](../billing/billing-reservation-apis.md)」を参照してください。 |
-| Marketplace サービスの使用状況 | Marketplace での購入 – 詳細については、[サードパーティのサービス料金](../billing/billing-understand-your-azure-marketplace-charges.md)に関する記事を参照してください。 |
+| Marketplace サービスの使用状況<sup>2</sup> | Marketplace での購入 – 詳細については、[サードパーティのサービス料金](../billing/billing-understand-your-azure-marketplace-charges.md)に関する記事を参照してください。 |
 |   | サポート料金 - 詳細については、[請求書の用語の説明](../billing/billing-understand-your-invoice.md)に関する記事を参照してください。 |
 |   | 税金 - 詳細については、[請求書の用語の説明](../billing/billing-understand-your-invoice.md)に関する記事を参照してください。 |
 |   | クレジット - 詳細については、[請求書の用語の説明](../billing/billing-understand-your-invoice.md)に関する記事を参照してください。 |
 
 <sup>1</sup> Azure サービスの使用状況は、予約および交渉済みの価格に基づきます。
+<sup>2</sup> Marketplace サービスの使用状況は、現時点では従量課金制、MSDN、Visual Studio オファーではご利用いただけません。
 
 **Metadata**
 
 | **あり** | **なし** |
 | --- | --- |
-| リソース タグ<sup>2</sup> | リソース グループのタグ |
+| リソース タグ<sup>3</sup> | リソース グループのタグ |
 
-<sup>2</sup> リソース タグは、各サービスから使用状況が送信される際に適用されます。過去の使用状況に対してさかのぼって適用することはできません。
+<sup>3</sup> リソース タグは、各サービスから使用状況が送信される際に適用されます。過去の使用状況に対してさかのぼって適用することはできません。
 
 ## <a name="rated-usage-data-refresh-schedule"></a>評価済み使用状況データの更新スケジュール
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 11ac9d859ec76c782f762dfc6f424d70ea487665
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 041f1e9706c7d815dad1a33104e7dd15b2cc3893
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360230"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>チュートリアル:Azure Active Directory と Syncplicity の統合
 
@@ -51,7 +51,7 @@ Azure AD と Syncplicity の統合を構成するには、次のものが必要�
 
 Azure AD への Syncplicity の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Syncplicity を追加する必要があります。
 
-**ギャラリーから Syncplicity を追加するには、次の手順を実行します。**
+**ギャラリーから Syncplicity を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Syncplicity で Azure AD シングル サインオンを構成するには、次
 
     ![[Syncplicity のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.syncplicity.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<companyname>.syncplicity.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.syncplicity.com/sp`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Syncplicity クライアント サポート チーム](https://www.syncplicity.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -136,7 +136,7 @@ Syncplicity で Azure AD シングル サインオンを構成するには、次
 
 1. **[Single Sign-On (SSO)]** ダイアログ ページで、次の手順に従います。
 
-    ![Single Sign-On \(SSO\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![[Single Sign-On \(SSO\)]](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
     a. **[Custom Domain]** テキスト ボックスに、ドメインの名前を入力します。
   
@@ -245,6 +245,6 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

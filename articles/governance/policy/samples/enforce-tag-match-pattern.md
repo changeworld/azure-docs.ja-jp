@@ -1,19 +1,18 @@
 ---
 title: サンプル - タグ一致パターンを強制する
 description: このサンプル ポリシー定義は、タグ値に対する一致パターンを満たしていることをリソースに要求します。
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: bcf9b8302c15ba990bc91bd48aa479f4bf211a85
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 7c758cf2dd7ae6a1fcc59502fe671b5fb7067e5c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804889"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278889"
 ---
 # <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>サンプル - タグ値のタグ一致パターンを強制する
 
@@ -29,7 +28,7 @@ ms.locfileid: "58804889"
 
 ## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
 
-[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
+[![Dポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 

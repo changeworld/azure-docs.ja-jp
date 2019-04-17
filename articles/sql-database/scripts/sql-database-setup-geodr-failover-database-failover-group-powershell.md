@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 991df9f57149f51271cfecb4557e2f307103ac47
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 421972303ae6d63adf8f4a26af626a13e20a411d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880842"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359116"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database の単一データベース用のアクティブ geo レプリケーション フェールオーバー グループを構成する
 
@@ -35,7 +35,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $primaryresourcegroupname

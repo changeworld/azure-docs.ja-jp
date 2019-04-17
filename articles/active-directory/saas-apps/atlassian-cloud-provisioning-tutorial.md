@@ -13,75 +13,70 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant
-ms.openlocfilehash: ff6a111663df5d7e7f4f517446084ef75b009e59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f4e76121f7815702270d6601413ff7a4c2c25839
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092703"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270304"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>チュートリアル:Atlassian Cloud を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure Active Directory (Azure AD) が自動的にユーザーまたはグループを Atlassian Cloud にプロビジョニングまたは Atlassian Cloud からプロビジョニング解除するように構成するために、Atlassian Cloud と Azure AD で実行される手順を示すことです。 
+このチュートリアルの目的は、Azure Active Directory (Azure AD) が自動的にユーザーまたはグループを Atlassian Cloud にプロビジョニングまたは Atlassian Cloud からプロビジョニング解除するように構成するために、Atlassian Cloud と Azure AD で実行される手順を示すことです。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
-> 
-> 現在、このコネクタはパブリック プレビューの段階です。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
+> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-*   Azure AD テナント
-*   [Atlassian Cloud テナント](https://www.atlassian.com/licensing/cloud)
-*   Admin アクセス許可がある Atlassian Cloud のユーザー アカウント。
+* Azure AD テナント
+* [Atlassian Cloud テナント](https://www.atlassian.com/licensing/cloud)
+* Admin アクセス許可がある Atlassian Cloud のユーザー アカウント。
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Atlassian Cloud のチームで使用できる **Atlassian Cloud SCIM API** が必要です。
 
-## <a name="adding-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
+## <a name="add-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
+
 Azure AD で自動ユーザー プロビジョニング用に Atlassian Cloud を構成する前に、Azure AD アプリケーション ギャラリーから Atlassian Cloud を管理対象の SaaS アプリケーションの一覧に追加する必要があります。
 
 **Azure AD アプリケーション ギャラリーから Atlassian Cloud を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** を選択します。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
 
-    ![[エンタープライズ アプリケーション] セクション][2]
-    
-3. Atlassian Cloud を追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
-4. 検索ボックスに、「**Atlassian Cloud**」と入力します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/app-search.png)
+4. 検索ボックスに「**Atlassian Cloud**」と入力し、結果ウィンドウで **[Atlassian Cloud]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-5. 結果パネルで **[Atlassian Cloud]** を選択し、**[追加]** をクリックして Atlassian Cloud を SaaS アプリケーションの一覧に追加します。
-
-    ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/app-create.png)
-
-    ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/app-instance.png)
+    ![結果リスト内の Atlassian Cloud](common/search-new-app.png)
 
 ## <a name="assigning-users-to-atlassian-cloud"></a>Atlassian Cloud へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。 
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Atlassian Cloud へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Atlassian Cloud に割り当てることができます。
 
-*   [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-atlassian-cloud"></a>ユーザーを Atlassian Cloud に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを Atlassian Cloud に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Atlassian Cloud に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*   Atlassian Cloud にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* Atlassian Cloud にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="configuring-automatic-user-provisioning-to-atlassian-cloud"></a>Atlassian Cloud への自動ユーザー プロビジョニングの構成 
 
@@ -92,14 +87,16 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-atlassian-cloud-in-azure-ad"></a>Azure AD で Atlassian Cloud の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** に移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Atlassian Cloud]** の順に選択します。
 
-2. SaaS アプリケーションの一覧から Atlassian Cloud を選択します。
- 
-    ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/application-instance-search.png)
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
+2. アプリケーションの一覧で **[Atlassian Cloud]** を選択します。
+
+    ![[アプリケーション] リストの [Atlassian Cloud] リンク](common/all-applications.png)
 
 3. **[プロビジョニング]** タブを選択します。
-    
+
     ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/provisioning-tab.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
@@ -108,20 +105,20 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、Atlassian Cloud のアカウントの **[テナントの URL]** と **[シークレット トークン]** を入力します。 これらの値の例を次に示します。
 
-   * **[テナント URL]** フィールドに、手順 6. の説明に従って Atlassian から受信した特定のテナント エンドポイントを入力します。 例: **https://api.atlassian.com/scim/directory/{directoryId}**
+   * **[テナント URL]** フィールドに、手順 6. の説明に従って Atlassian から受信した特定のテナント エンドポイントを入力します。 たとえば、「`https://api.atlassian.com/scim/directory/{directoryId}`」のように入力します。
 
    * **[シークレット トークン]** フィールドに、手順 6 で説明されているシークレット トークンを設定します。
 
 6. [Atlassian 組織マネージャー](https://admin.atlassian.com)の **[User Provisioning]** に移動し、**[Create a Token]** をクリックします。 **[Directory base URL]** と **[Bearer Token]** を **[Tenant URL]** フィールドと **[Secret Token]** フィールドにそれぞれコピーします。
 
     ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
-    
+
     ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
 7. 手順 5 に示されたフィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Atlassian Cloud に接続できることを確認します。 接続できない場合は、使用中の Atlassian Cloud アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 
     ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/test-connection.png)
-    
+
 8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/notification.png)
@@ -157,7 +154,6 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 17. プロビジョニングの準備ができたら、**[保存]** をクリックします。
 
     ![Atlassian Cloud のプロビジョニング](./media/atlassian-cloud-provisioning-tutorial/save.png)
-
 
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Atlassian Cloud に対して実行されたすべてのアクションが記載されています。
 

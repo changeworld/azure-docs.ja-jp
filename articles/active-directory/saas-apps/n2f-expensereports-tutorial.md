@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2851383ed992b314af541b24e7753b1e6b12b28d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7380cf6727817d99edbedf5552c8bea42f177074
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898671"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル:Azure Active Directory と N2F - Expense reports の統合
 
@@ -209,7 +209,7 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 Azure AD ユーザーが N2F - Expense reports にログインできるようにするには、そのユーザーを N2F - Expense reports にプロビジョニングする必要があります。 N2F - Expense reports の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. N2F - Expense reports 企業サイトに管理者としてログインします。
 
@@ -252,7 +252,7 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

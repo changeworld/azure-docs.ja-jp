@@ -1,19 +1,18 @@
 ---
 title: 'サンプル: リソース グループへのタグと値の強制'
 description: このサンプル ポリシー定義は、1 つのリソース グループに 1 つのタグと値を使用することを要求します。
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 792a5b0caa35cc69774dbfe9f3d33d532853e31f
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a7a76fbde74ab80f8aa0f5e67e6445504c3aafa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805164"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276662"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>サンプル: リソース グループへのタグと値の強制
 
@@ -51,7 +50,7 @@ ms.locfileid: "58805164"
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|名前 |Type |フィールド |説明 |
+|Name |Type |フィールド |説明 |
 |---|---|---|---|
 |tagName |String |tags |タグの名前 (例: costCenter)|
 |tagValue |String |tags |タグの値 (例: headquarter)|
@@ -219,8 +218,8 @@ Resource Manager REST API の対話操作には、[ARMClient](https://github.com
 
 | Service | グループ | Operation | メモ |
 |---|---|---|---|
-| リソース管理 | ポリシーの定義 | [作成](/rest/api/resources/policydefinitions/createorupdate) | 新しい Azure Policy 定義をサブスクリプションで作成します。 代替手段:[管理グループで作成する](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| リソース管理 | ポリシーの割り当て | [作成](/rest/api/resources/policyassignments/create) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |
+| リソース管理 | ポリシーの定義 | [Create](/rest/api/resources/policydefinitions/createorupdate) | 新しい Azure Policy 定義をサブスクリプションで作成します。 代替手段:[管理グループで作成する](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| リソース管理 | ポリシーの割り当て | [Create](/rest/api/resources/policyassignments/create) | 新しい Azure Policy の割り当てを作成します。 この例では定義を渡していますが、イニシアチブを渡すこともできます。 |
 | リソース管理 | ポリシーの割り当て | [削除](/rest/api/resources/policyassignments/delete) | 既存の Azure Policy の割り当てを削除します。 |
 | リソース管理 | ポリシーの定義 | [削除](/rest/api/resources/policydefinitions/delete) | 既存の Azure Policy の定義を削除します。 代替手段:[管理グループで削除する](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 

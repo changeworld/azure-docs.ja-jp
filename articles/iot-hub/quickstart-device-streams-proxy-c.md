@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 539357c9dcfaaffa551b4be08427a51d9e92475f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 78aa8653385a126cf40e851332d50eac4c293390
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484771"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005988"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
@@ -28,6 +28,7 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 このドキュメントでは、デバイス ストリームを通じて SSH トラフィック (ポート 22 を使用) をトンネリングするための設定について説明します。 RDP トラフィック用の設定も同様ですが、簡単な構成変更が必要です。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、このクイック スタートは、(通信ポートを変更することによって) 他の種類のアプリケーション トラフィックに対応するように変更できます。
 
 ## <a name="how-it-works"></a>動作のしくみ
+
 次の図は、デバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする設定を示しています。 パブリック プレビュー中、C SDK ではデバイス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、デバイスローカルのプロキシ アプリケーションを実行する手順についてのみ説明しています。 対応するサービスローカルのプロキシ アプリケーションも実行する必要があり、それについては [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)または [Node.js クイック スタート](./quickstart-device-streams-proxy-nodejs.md)のガイドに記載されています。
 
 ![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "ローカル プロキシの設定")
@@ -51,11 +52,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
 
-  * **米国中部**
+  * **米国中央部**
   * **米国中部 EUAP**
 
 * ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした [Visual Studio 2017](https://www.visualstudio.com/vs/) をインストールします。
 * 最新バージョンの [Git](https://git-scm.com/download/) をインストールします。
+* 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+   ```azurecli-interactive
+   az extension add --name azure-cli-iot-ext
+   ```
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
@@ -126,14 +132,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
    **MyDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 

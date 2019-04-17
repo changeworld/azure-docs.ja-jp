@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 143c36df623085eb4f07363d9c9ebd64d4f5a144
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef510ca88f1b305125c7840932641c8a2359d8c9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104762"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045243"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>クイック スタート:Azure PowerShell を使用して Service Bus キューを作成する
 Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと絶対的な信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、2 つ以上のアプリケーション、サービスまたはプロセスを相互に分離し、状態またはデータの変更を転送する処理が含まれます。 このようなシナリオでは、別のアプリケーションまたはサービスで複数のバッチ ジョブをスケジュールする処理や、注文の実行をトリガーする処理が含まれる場合があります。 たとえば、小売企業では、補充および在庫の更新のためにバック オフィスまたは地域の流通センターに POS データを送信することがあります。 このシナリオでは、クライアント アプリは Service Bus キューとの間でメッセージを送受信します。
@@ -25,6 +25,8 @@ Microsoft Azure Service Bus は、セキュリティで保護されたメッセ�
 このクイック スタートでは、Service Bus キューとの間でメッセージを送受信し、PowerShell を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,20 +42,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Service Bus PowerShell モジュールをまだインストールしていない場合は、まずインストールします。
 
    ```azurepowershell-interactive
-   Install-Module AzureRM.ServiceBus
+   Install-Module Az.ServiceBus
    ```
 
 2. 次のコマンドを実行して Azure にログインします。
 
    ```azurepowershell-interactive
-   Login-AzureRmAccount
+   Login-AzAccount
    ```
 
 3. 次のコマンドを発行して、現在のサブスクリプション コンテキストを設定するか、現在アクティブなサブスクリプションを表示します。
 
    ```azurepowershell-interactive
-   Select-AzureRmSubscription -SubscriptionName "MyAzureSubName" 
-   Get-AzureRmContext
+   Select-AzSubscription -SubscriptionName "MyAzureSubName" 
+   Get-AzContext
    ```
 
 ## <a name="provision-resources"></a>リソースをプロビジョニングする
@@ -62,19 +64,19 @@ PowerShell プロンプトから次のコマンドを発行して、Service Bus 
 
 ```azurepowershell-interactive
 # Create a resource group 
-New-AzureRmResourceGroup –Name my-resourcegroup –Location eastus
+New-AzResourceGroup –Name my-resourcegroup –Location eastus
 
 # Create a Messaging namespace
-New-AzureRmServiceBusNamespace -ResourceGroupName my-resourcegroup -NamespaceName namespace-name -Location eastus
+New-AzServiceBusNamespace -ResourceGroupName my-resourcegroup -NamespaceName namespace-name -Location eastus
 
 # Create a queue 
-New-AzureRmServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName namespace-name -Name queue-name -EnablePartitioning $False
+New-AzServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName namespace-name -Name queue-name -EnablePartitioning $False
 
 # Get primary connection string (required in next step)
-Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
+Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
 ```
 
-`Get-AzureRmServiceBusKey` コマンドレットを実行した後、接続文字列および選択したキュー名をコピーし、メモ帳などの一時的な場所に貼り付けます。 これは、次のステップで必要になります。
+`Get-AzServiceBusKey` コマンドレットを実行した後、接続文字列および選択したキュー名をコピーし、メモ帳などの一時的な場所に貼り付けます。 これは、次のステップで必要になります。
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
@@ -93,7 +95,7 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
 4. まだ接続文字列を取得していない場合は、次の PowerShell コマンドレットを使用して取得します。 `my-resourcegroup`  と  `namespace-name` を実際の値に置き換えます。 
 
    ```azurepowershell-interactive
-   Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
+   Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
    ```
 
 5. PowerShell プロンプトで、次のコマンドを入力します。
@@ -119,7 +121,7 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
 次のコマンドを実行して、リソース グループ、名前空間、およびすべての関連リソースを削除します。
 
 ```powershell-interactive
-Remove-AzureRmResourceGroup -Name my-resourcegroup
+Remove-AzResourceGroup -Name my-resourcegroup
 ```
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
@@ -263,4 +265,4 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [Azure PowerShell を使用して在庫を更新する](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Azure PowerShell モジュールのインストールと構成]: /powershell/azure/azurerm/install-azurerm-ps
+[Azure PowerShell のインストールと構成]: /powershell/azure/install-Az-ps

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049760"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526590"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 
@@ -50,9 +50,6 @@ API にアクセスするためのサブスクリプション キーを取得す
 > シナリオによっては、API の公開元は、サブスクリプションを必要としない API 製品を公開することがあります。 Azure portal の製品の **[設定]** ページで **[サブスクリプションを要求する]** オプションをオフにすることができます。 その結果、API キーを使用せずに製品のすべての API にアクセスできるようになります。
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>すべての API または個々の API のサブスクリプション
-
-> [!NOTE]
-> 現在、この機能は API Management の従量課金レベルでのみ使用できます。
 
 API Management の[従量課金](https://aka.ms/apimconsumptionblog)レベルの導入時に、キー管理を合理化するためにいくつかの変更が行われました。
 - まず、すべての API と単一の API という 2 つのサブスクリプション範囲が追加されました。 サブスクリプションの範囲は、API 製品に限定されなくなりました。 1 つの API (または API Management インスタンス内のすべての API) へのアクセスを許可するキーを作成できるようになりました。先に製品を作成して API を追加しておく必要はありません。 さらに、各 API Management インスタンスには、不変の全 API サブスクリプションが付属するようになりました。 このサブスクリプションにより、テスト コンソール内での API のテストとデバッグがより簡単に、わかりやすくなりました。

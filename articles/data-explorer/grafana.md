@@ -1,19 +1,18 @@
 ---
-title: Grafana で Azure Data Explorer のデータを視覚化する
+title: Grafana を使用して Azure Data Explorer のデータを視覚化する
 description: この記事では、Azure Data Explorer を Grafana のデータ ソースとして設定し、サンプル クラスターのデータを視覚化する方法について説明します。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: c77475c052ab3ce74563aba6e4c75a50c7e41bcc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758276"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048318"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana で Azure Data Explorer のデータを視覚化する
 
@@ -209,6 +208,6 @@ Azure Data Explorer を Grafana のデータ ソースとして構成したら�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Data Explorer のクエリを記述する](write-queries.md)
+[Azure データ エクスプローラーのクエリを記述する](write-queries.md)
 
-[チュートリアル: Power BI で Azure Data Explorer のデータを視覚化する](visualize-power-bi.md)
+[チュートリアル:Power BI で Azure Data Explorer のデータを視覚化する](visualize-power-bi.md)

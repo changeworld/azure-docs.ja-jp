@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: f615a07352faccc8096752e5ba60360144834907
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dfe23baa67c87b04a65630611ef71758beda268d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338243"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754905"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
@@ -59,7 +59,7 @@ ms.locfileid: "58338243"
 
 ### <a name="import-errors"></a>インポート エラー
 
-* トークナイザー エラー:インポート中に**トークナイザー エラー**が発生した場合、アプリで現在使用しているものと異なる[トークナイザー](luis-language-support.md#custom-tokenizer-versions)を使用しているバージョンをインポートしようとしています。 これを修正するには、2 つの選択肢があります。 詳細については、[トークナイザー バージョン間の移行](luis-language-support.md#migrating-between-tokenizer-versions)に関するページを参照してください。
+* トークナイザー エラー:インポート中に**トークナイザー エラー**が発生した場合、アプリで現在使用しているものと異なる[トークナイザー](luis-language-support.md#custom-tokenizer-versions)を使用しているバージョンをインポートしようとしています。 これを修正するには、「[トークナイザーのバージョン間の移行](luis-language-support.md#migrating-between-tokenizer-versions)」を参照してください。
 
 <a name = "export-version"></a>
 

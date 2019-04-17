@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 76e19a5d83b1e59aedc0e6e4d6a1f03ae10039a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0c2dc6c370e697f896e24e7d56c6eb8900601a9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166999"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>チュートリアル:Azure Active Directory と SkyDesk Email の統合
 
@@ -241,7 +241,7 @@ SkyDesk Email 内の左側のパネルで **[User Access (ユーザー アクセ
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

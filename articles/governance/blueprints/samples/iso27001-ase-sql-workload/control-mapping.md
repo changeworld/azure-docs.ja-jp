@@ -1,25 +1,24 @@
 ---
-title: サンプル - ISO 27001 ブループリント - コントロール マッピング
-description: ISO 27001 ブループリント サンプルのコントロール マッピングです。
-services: blueprints
+title: サンプル - ISO 27001 ASE/SQL ワークロード ブループリント - コントロール マッピング
+description: Azure Policy と RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d487ce81babc2d1d6a35e3bdb1c13e1a24f8d1ca
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 7a760bfe70fa2a83c43a0b41b77ba9bf45e809ca
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58014207"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258609"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Azure Blueprints ISO 27001 ブループリント サンプルのコントロール マッピング
+# <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints ISO 27001 ASE/SQL Workload ブループリント サンプルが ISO 27001 コントロールにどのようにマップされているかを説明したものです。 コントロールについて詳しくは、[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) をご覧ください。
 
-以下のマッピングは、 **ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、**[定義]** ページを選択します。 その後、**[プレビュー] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ**します。
+以下のマッピングは、**ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、**[定義]** ページを選択します。 その後、**[プレビュー] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ**します。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 職務の分離
 
@@ -40,7 +39,7 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 - [プレビュー]: Audit Linux VM allowing remote connections from accounts with no passwords
 - 従来のストレージ アカウントの使用に関する監査
 - 従来の仮想マシンの使用の監査
-- Managed Disks を使用していない VM の監査
+- マネージド ディスクを使用していない VM の監査
 
 ## <a name="a922-user-access-provisioning"></a>A.9.2.2 ユーザー アクセスのプロビジョニング
 

@@ -49,7 +49,7 @@ Azure SQL Analytics は、Azure SQL データベース (単一、プール、お
 
 ワークスペースに Azure SQL Analytics ソリューションを作成した後は、その診断テレメトリをソリューションにストリーム配信するように、監視するリソースの**それぞれを構成**する必要があります。 次のページの詳細手順に従ってください。
 
-- Azure SQL データベースの Azure 診断を有効にして、[診断テレメトリを Azure SQL Analytics にストリーム配信](../../sql-database/sql-database-metrics-diag-logging.md)します。
+- Azure SQL データベースの Azure Diagnostics を有効にして、[診断テレメトリを Azure SQL Analytics にストリーム配信](../../sql-database/sql-database-metrics-diag-logging.md)します。
 
 上記手順ではまた､1 つの Azure SQL Analytics ワークスペースから複数の Azure サブスクリプションを 1 つの窓で監視するためのサポート機能を有効にする手順も説明しています｡ 
 

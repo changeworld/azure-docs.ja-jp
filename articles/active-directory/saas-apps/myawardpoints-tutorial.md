@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a828f7c53345292e986e8eba5027ada5629e1185
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bfb858930bef87239021d049b59c282197bb49ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855051"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合
 
@@ -148,7 +148,7 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -195,6 +195,6 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

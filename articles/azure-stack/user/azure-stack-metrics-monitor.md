@@ -32,10 +32,10 @@ ms.locfileid: "57773048"
 | データ型 | Category | サポートされているサービス | アクセスの方法 |
 |-------------------------------------------------------------|----------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | Azure Monitor プラットフォーム レベルのメトリック | メトリック | [Azure Stack 上の Azure Monitor でサポートされるメトリック](azure-stack-metrics-supported.md) | REST API |
-| ゲスト OS メトリック (Perf カウントなど) の計算 | メトリック | Windows および Linux Virtual Machines | ストレージ テーブルまたは BLOB:<br>Windows または Linux の Azure 診断 <br>イベント ハブ:<br>Windows の Azure 診断 |
+| ゲスト OS メトリック (Perf カウントなど) の計算 | メトリック | Windows および Linux Virtual Machines | ストレージ テーブルまたは BLOB:<br>Windows または Linux の Azure Diagnostics <br>イベント ハブ:<br>Windows の Azure Diagnostics |
 | Storage のメトリック | メトリック | Azure Storage | ストレージ テーブル:<br>Storage Analytics |
 | アクティビティ ログ | events | すべての Azure サービス | REST API:<br>Azure Monitor イベント API |
-| ゲスト OS ログ (IIS、ETW、syslog など) の計算 | events | Windows および Linux Virtual Machines | ストレージ テーブルまたは BLOB:<br>Windows または Linux の Azure 診断 <br>イベント ハブ:<br>Windows の Azure 診断 |
+| ゲスト OS ログ (IIS、ETW、syslog など) の計算 | events | Windows および Linux Virtual Machines | ストレージ テーブルまたは BLOB:<br>Windows または Linux の Azure Diagnostics <br>イベント ハブ:<br>Windows の Azure Diagnostics |
 | ストレージ ログ | events | Azure Storage | ストレージ テーブル:<br>Storage Analytics |
 
 ## <a name="next-steps"></a>次の手順

@@ -1,33 +1,33 @@
 ---
-title: ASC for IoT についてよく寄せられる質問のプレビュー | Microsoft Docs
-description: ASC for IoT の機能とサービスについてよく寄せられる質問の回答を見つけます。
-services: ASCforiot
+title: Azure Security Center for IoT プレビューに関してよく寄せられる質問| Microsoft Docs
+description: Azure Security Center for IoT の機能とサービスに関してよく寄せられる質問に対する回答を確認します。
+services: asc-for-iot
+ms.service: ASCforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 97fda6c2-1ecb-491f-b48d-41788bd7e0d3
-ms.service: ASCforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1eba32683883e60ae48f4d6fec9c434c27ce55da
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: cd9e77e09e2a2fd5fe1108e98da028d26fc623c7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541531"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863051"
 ---
-# <a name="asc-for-iot-frequently-asked-questions"></a>ASC for IoT についてよく寄せられる質問  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center for IoT に関してよく寄せられる質問  
 
 > [!IMPORTANT]
-> ASC for IoT は現在、パブリック プレビュー段階です。
+> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-この記事では、ASC for IoT についてのよく寄せられる質問 (FAQ) の一覧を示します。 
+この記事では、Azure Security Center (ASC) for IoT に関してよく寄せられる質問の一覧を提供します。 
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Azure は IoT セキュリティのサポートを提供しますか。
 
@@ -77,7 +77,7 @@ GitHub (https://github.com/Azure/Azure-Security-IoT-Preview) には、詳細な�
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>エージェントの依存関係と前提条件は何ですか?
 
-ASC for IoT は、さまざまなプラットフォームをサポートします。 特定のデバイスのサポートを確認するには、「[Supported Device platforms](select-deploy-agent.md)」(サポートされているデバイス プラットフォーム) を参照してください。 
+ASC for IoT は、さまざまなプラットフォームをサポートします。 特定のデバイスのサポートを確認するには、「[Supported Device platforms](how-to-deploy-agent.md)」(サポートされているデバイス プラットフォーム) を参照してください。 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>どのデータがエージェントによって収集されますか?
 
@@ -97,9 +97,9 @@ ASC for IoT は、エージェントによって生成されるデータの量�
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>次のステップ エージェントをインストールしましたが、アクティビティまたはログが表示されません。
 
-1. [エージェントのタイプがデバイスの指定された OS プラットフォームに適合する](select-deploy-agent.md)ことを確認します。
+1. [エージェントのタイプがデバイスの指定された OS プラットフォームに適合する](how-to-deploy-agent.md)ことを確認します。
 
-1. [エージェントがデバイス上で実行している](concept-agent-configuration.md)ことを確認します。
+1. [エージェントがデバイス上で実行している](how-to-agent-configuration.md)ことを確認します。
 
 2. IoT Hub で**セキュリティ**に対して[サービスが正常に有効になっている](quickstart-onboard-iot-hub.md)ことを確認します。 
 

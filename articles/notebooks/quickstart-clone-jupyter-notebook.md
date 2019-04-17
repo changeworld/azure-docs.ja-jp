@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: cfce5765cda1e3a1dfb7eb073719191b13b0696e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 30625423553b71e848d27d047d4b7bc3add6eaff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089201"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265153"
 ---
 # <a name="quickstart-clone-a-notebook"></a>クイック スタート:ノートブックの複製
 

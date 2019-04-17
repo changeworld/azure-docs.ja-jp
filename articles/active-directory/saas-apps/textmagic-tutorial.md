@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f65ad80425f12304624f242871a605d4417ca533
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 66d0d791e4f32fc0828d400db7b59d836d221aee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361831"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>チュートリアル:Azure Active Directory と TextMagic の統合
 
@@ -114,7 +114,7 @@ TextMagic で Azure AD シングル サインオンを構成するには、次�
 
 6. その他に、TextMagic アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前 |   ソース属性| 名前空間  |
+    | Name |   ソース属性| 名前空間  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | User.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -241,6 +241,6 @@ TextMagic で Azure AD シングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

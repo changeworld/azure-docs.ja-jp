@@ -1,24 +1,22 @@
 ---
 title: HDFS と互換性のある Azure Storage のデータのクエリ - Azure HDInsight
 description: Azure Storage と Azure Data Lake Storage からのデータに対してクエリを実行し、分析結果を格納する方法について説明します。
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 01/28/2019
-ms.openlocfilehash: d88a05b03813eb0ec94a84f60bffb903e1344987
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/08/2019
+ms.openlocfilehash: 3356d3eee00a640efe10e2d9f3aa4fa7be775995
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361916"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360786"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
-HDInsight クラスターでデータを分析するために、[Azure Storage](../storage/common/storage-introduction.md) と [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) のいずれか、または両方にデータを格納できます。 両方のストレージ オプションにより、計算で使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
+HDInsight クラスターでデータを分析するには、そのデータを [Azure Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) のいずれか、またはその組み合わせに格納できます。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
 Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス中に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。または、HDInsight 3.6 では、Azure Storage または Azure Data Lake Storage Gen 1/Azure Data Lake Store Gen 2 のどちらかを既定のファイル システムとして選択できます (いくつかの例外があります)。 Data Lake Storage Gen 1 を既定のストレージとリンクされたストレージの両方として使用することのサポート可能性については、「[ HDInsight クラスターの利用可能性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)」を参照してください。
 
@@ -31,9 +29,9 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 | ストレージ アカウントの種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 |
 |----------------------|--------------------|-----------------------------|------------------------|
-| 汎用 v2   | BLOB               | Standard                    | ホット、クール、アーカイブ\*    |
-| 汎用 v1   | BLOB               | Standard                    | 該当なし                    |
-| BLOB ストレージ         | BLOB               | Standard                    | ホット、クール、アーカイブ\*    |
+| 汎用 v2   | Blob               | Standard                    | ホット、クール、アーカイブ\*    |
+| 汎用 v1   | Blob               | Standard                    | 該当なし                    |
+| BLOB ストレージ         | Blob               | Standard                    | ホット、クール、アーカイブ\*    |
 
 ビジネス データの格納には、既定の BLOB コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 
@@ -41,6 +39,8 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
  
  > [!NOTE]  
  > アーカイブ アクセス層はオフライン層であり、取得の際に数時間の待ち時間があるので、HDInsight での使用は推奨されません。 詳しくは、「<a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier">アーカイブ アクセス層</a>」をご覧ください。
+
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、**[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight のストレージ アーキテクチャ
 次の図は、Azure Storage を使う HDInsight のストレージ アーキテクチャを示しています。
@@ -211,7 +211,7 @@ Get-Command *blob*
 
 ![BLOB 関連の PowerShell コマンドレットの一覧。][img-hdi-powershell-blobcommands]
 
-#### <a name="upload-files"></a>ファイルのアップロード
+#### <a name="upload-files"></a>ファイルをアップロードする
 
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
 

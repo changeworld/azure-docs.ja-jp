@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5e7994ba5fcd3efa061f56d7ee77f796bab16708
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449334"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268672"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "58449334"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存します。 それをテキスト エディターで開きます。
-3. `<insert-key>` という文字列を検索します。 これを前のセクションで取得した**主キー**の値に置き換えます。
+3. `<Your Azure Maps Key>` という文字列を検索します。 これを前のセクションで取得した**主キー**の値に置き換えます。
 
 ## <a name="open-the-application"></a>アプリケーションを開く
 
@@ -70,15 +70,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure Maps アカウントを作成し、デモ アプリを作成しました。 Azure Maps API シリーズを使用して独自のアプリケーションを作成する方法を学習するには、次のチュートリアルにお進みください。
+このクイック スタートでは、Azure Maps アカウントを作成し、デモ アプリを作成しました。 Azure Maps の詳細については、以下のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Maps を使用して近くの目的地を検索する](./tutorial-search-location.md)
+> [Azure Maps を使用して近くの目的地を検索する](tutorial-search-location.md)
 
 他のコード例や対話型のコーディング エクスペリエンスについては、以下のガイドを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Maps Search サービスを使用して住所を検索する](./how-to-search-for-address.md)
+> [Azure Maps Search サービスを使用して住所を検索する](how-to-search-for-address.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps のマップ コントロールを使用する](./how-to-use-map-control.md)
+> [Azure Maps のマップ コントロールを使用する](how-to-use-map-control.md)

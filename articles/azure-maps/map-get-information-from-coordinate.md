@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9ab6d9708843cda492795b92b6fb5f58bd7a9154
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571424"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256058"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -29,11 +29,11 @@ ms.locfileid: "57571424"
 
 上記のコードでは、最初のコード ブロックでマップ オブジェクトが構築されて、サブスクリプション キーを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-2 番目のコード ブロックでは、サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するための **SubscriptionKeyCredentialPolicy** が作成されます。 次に、**atlas.service.MapsURL.newPipeline()** が **SubscriptionKeyCredential** ポリシーを取り込んで、[Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 **searchURL** は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
+サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、2 ブロック目のコードで `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
 
 3 番目のコード ブロックでは、マウス カーソルのスタイルがポインターに更新されて、[popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) オブジェクトが作成されます。 手順については、[マップへのポップアップの追加](./map-add-popup.md)に関する記事を参照してください。
 
-4 番目のコード ブロックでは、マウス クリックの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が追加されます。 トリガーされると、クリックされたポイントの座標を使用して検索クエリが作成されます。 次に、サービスのモジュールの [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) メソッドを使用して、座標のアドレスについて [Get Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対するクエリが実行されます。 次に、**geojson.getFeatures()** メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出されます。
+4 番目のコード ブロックでは、マウス クリックの[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が追加されます。 トリガーされると、クリックされたポイントの座標を使用して検索クエリが作成されます。 次に、サービスのモジュールの [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) メソッドを使用して、座標のアドレスについて [Get Search Address Reverse API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) に対するクエリが実行されます。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出されます。
 
 5 番目のコード ブロックでは、クリックされた座標位置の応答アドレスを表示する HTML ポップアップ コンテンツが設定されます。
 
@@ -59,7 +59,7 @@ ms.locfileid: "57571424"
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [マップ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
@@ -67,7 +67,7 @@ ms.locfileid: "57571424"
 完全なコードの例については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [A から B までのルートを表示する ](./map-route.md)
+> [A から B までのルートを表示する](./map-route.md)
 
 > [!div class="nextstepaction"]
-> [トラフィックを表示する](./map-show-traffic.md)
+> [交通情報を表示する](./map-show-traffic.md)

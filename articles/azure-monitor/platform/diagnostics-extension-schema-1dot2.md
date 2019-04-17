@@ -1,5 +1,5 @@
 ---
-title: Azure 診断拡張機能 1.2 の構成スキーマ
+title: Azure Diagnostics 拡張機能 1.2 の構成スキーマ
 description: この記事は、Azure SDK 2.5 を Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、または Cloud Services と共に使用している場合にのみ該当します。
 services: azure-monitor
 author: rboucher
@@ -16,12 +16,12 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58486157"
 ---
-# <a name="azure-diagnostics-12-configuration-schema"></a>Azure 診断 1.2 構成スキーマ
+# <a name="azure-diagnostics-12-configuration-schema"></a>Azure Diagnostics 1.2 構成スキーマ
 > [!NOTE]
-> Azure 診断は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
+> Azure Diagnostics は、Azure Virtual Machines、Virtual Machine Scale Sets、Service Fabric、および Cloud Services からパフォーマンス カウンターやその他の統計情報を収集するために使用するコンポーネントです。  このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 >
 
-Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
+Azure Diagnostics は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。
 
 このスキーマは、診断モニターの開始時に、診断構成設定を初期化するために使用できる値を定義します。  
 
@@ -32,7 +32,7 @@ Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
- Azure の診断の詳細については、[Azure Cloud Services での診断の有効化](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/)に関するページをご覧ください。  
+ Azure Diagnostics の詳細については、[Azure Cloud Services での診断の有効化](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/)に関するページをご覧ください。  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>診断構成ファイルの例  
  一般的な診断構成ファイルの例を次に示します。  
@@ -109,7 +109,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|必須。 オプションの属性は次のとおりです。<br /><br /> -                     **overallQuotaInMB** - Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br /><br /> -                     **useProxyServer** - IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|  
 |**CrashDumps**|クラッシュ ダンプの収集を有効にします。 オプションの属性は次のとおりです。<br /><br /> -                     **containerName** - クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。<br /><br /> -                     **crashDumpType** - 小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように Azure 診断を構成します。<br /><br /> -                     **directoryQuotaPercentage** - VM でクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
-|**DiagnosticInfrastructureLogs**|Azure 診断によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**Directories**|ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**EtwProviders**|EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。|  
 |**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性: <br /><br /> **resourceId** - これは、Azure 診断のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。|  
@@ -122,7 +122,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |要素名|説明|  
 |------------------|-----------------|  
 |**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
-|**crashDumpType**|Azure 診断を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
+|**crashDumpType**|Azure Diagnostics を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
 |**directoryQuotaPercentage**|VM でのクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 
 ## <a name="directories-element"></a>Directories 要素  

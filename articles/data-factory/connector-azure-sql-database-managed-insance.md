@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 782027f19d4e82f26fc1265f25b86223386d7182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903387"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272208"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
 
@@ -112,7 +112,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 }
 ```
 
-**例 3: Windows 認証を使用する**
+**例 3:Windows 認証を使用する**
 
 ```json
 {
@@ -179,7 +179,7 @@ Azure SQL Database Managed Instance からデータをコピーする場合は�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | はい。 |
-| sqlReaderQuery |このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`。 |いいえ。 |
+| SqlReaderQuery |このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`。 |いいえ。 |
 | sqlReaderStoredProcedureName |このプロパティは、ソース テーブルからデータを読み取るストアド プロシージャの名前です。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ。 |
 | storedProcedureParameters |これらのパラメーターは、ストアド プロシージャ用です。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ。 |
 
@@ -282,7 +282,7 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは、**SqlSink** に設定する必要があります。 | はい。 |
-| writeBatchSize |このプロパティは、バッファー サイズが writeBatchSize に達したら、SQL テーブルにデータを挿入します。<br/>使用可能な値は、行数の場合整数です。 |いいえ (既定値: 10,000)。 |
+| writeBatchSize |SQL テーブルに挿入する**バッチあたりの**行数。<br/>使用可能な値は、行数の場合整数です。 |いいえ (既定値: 10,000)。 |
 | writeBatchTimeout |このプロパティは、タイムアウトする前に一括挿入操作の完了を待つ時間を指定します。<br/>使用可能な値は、期間です。 たとえば "00:30:00" (30 分) を指定できます。 |いいえ。 |
 | preCopyScript |このプロパティは、コピー アクティビティでデータをマネージド インスタンスに書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ。 |
 | sqlWriterStoredProcedureName |この名前は、ターゲット テーブルにソース データを適用する方法を定義しているストアド プロシージャの名前です。 プロシージャの例は、独自のビジネス ロジックを使用してアップサートまたは変換することです。 <br/><br/>このストアド プロシージャは*バッチごとに呼び出されます*。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行するには、`preCopyScript` プロパティを使用します。 |いいえ。 |
@@ -408,7 +408,7 @@ create table dbo.TargetTbl
 }
 ```
 
-**対象データセット JSON の定義**
+**ターゲット データセット JSON の定義**
 
 ```json
 {
@@ -438,9 +438,9 @@ create table dbo.TargetTbl
 
 組み込みのコピー メカニズムでは目的を達成できない場合は、ストアド プロシージャを使用できます。 通常、ストアド プロシージャは、アップサート (更新 + 挿入) またはターゲット テーブルへのソース データの最終挿入の前に追加処理を行う必要があるときに、使用されます。 追加の処理には、列の結合、追加の値の検索、複数のテーブルへの挿入などのタスクを含めることができます。
 
-次の例では、マネージド インスタンス内のテーブルにアップサートを行うためにストアド プロシージャを使用する方法を示します。 例では、入力データと、シンクの "Marketing" テーブルのそれぞれに 3 つの列(ProfileID、State、Category) があると仮定します。 ProfileID 列に基づいてアップサートを実行し、特定のカテゴリに対してのみ適用します。
+次の例では、SQL Server データベース内のテーブルに upsert を行うストアド プロシージャを使用する方法を示します。 入力データと、シンクの **Marketing** テーブルのそれぞれに 3 つの列 (**ProfileID**、**State**、**Category**) があるものとします。 **ProfileID** 列に基づいてアップサートを行い、特定のカテゴリに対してのみ適用します。
 
-**出力データセット**
+**出力データセット:** "tableName" は、ストアド プロシージャ内の同じテーブル型のパラメーター名である必要があります (次のストアド プロシージャ スクリプトを参照)。
 
 ```json
 {
@@ -459,7 +459,7 @@ create table dbo.TargetTbl
 }
 ```
 
-次のように、コピー アクティビティの SqlSink セクションを定義します。
+次のように、コピー アクティビティの **SQL シンク** セクションを定義します。
 
 ```json
 "sink": {
@@ -474,7 +474,7 @@ create table dbo.TargetTbl
 }
 ```
 
-データベース内で、SqlWriterStoredProcedureName と同じ名前のストアド プロシージャを定義します。 これによって指定したソースの入力データが処理され、出力テーブルにマージされます。 ストアド プロシージャ内のテーブル型のパラメーター名は、データセットで定義された "tableName" と同じにする必要があります。
+データベース内で、**SqlWriterStoredProcedureName** と同じ名前のストアド プロシージャを定義します。 これによって指定したソースの入力データが処理され、出力テーブルにマージされます。 ストアド プロシージャ内のテーブル型のパラメーター名は、データセットで定義された **tableName** と同じにする必要があります。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

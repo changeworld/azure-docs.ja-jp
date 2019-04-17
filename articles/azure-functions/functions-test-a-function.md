@@ -9,14 +9,14 @@ keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピ�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 030/25/2019
+ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439330"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357644"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -252,6 +252,8 @@ namespace Functions.Tests
 - **Http_trigger_should_return_string_from_member_data**:このテストは、xUnit 属性を使用して、HTTP 関数にサンプル データを提供します。
 
 - **Timer_should_log_message**:このテストは、`ListLogger` のインスタンスを作成してタイマー関数に渡します。 関数が実行されると、予期されたメッセージが存在することを確認するためにログがチェックされます。
+
+テストでアプリケーション設定にアクセスする場合は、[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables) を使用できます。
 
 ### <a name="run-tests"></a>テストの実行
 

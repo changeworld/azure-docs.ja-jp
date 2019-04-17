@@ -1,6 +1,6 @@
 ---
-title: Azure AD アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする | Microsoft Docs
-description: グループ メンバーまたはアプリケーション アクセスのアクセスを Azure Active Directory アクセス レビューでレビューする方法について説明します。
+title: アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory アクセス レビューで、グループ メンバーのアクセスまたはアプリケーション アクセスをレビューする方法について説明します。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,26 +11,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 097d230e919e6d4b56e6c677364610bda6630f75
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728388"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470612"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対するアクセスをレビューする
 
-Azure Active Directory (Azure AD) には、Azure AD をはじめとする Microsoft オンライン サービス内のグループやアプリケーションへのアクセス管理を省力化する "Azure AD アクセス レビュー" という機能が備わっています。
+Azure Active Directory (Azure AD) には、Azure AD をはじめとする Microsoft オンライン サービス内のグループやアプリケーションへのアクセス管理を省力化する Azure AD アクセス レビューという機能が備わっています。
 
 この記事では、アプリケーションにアクセスするグループのメンバーやユーザーに対するアクセス レビューを専用のレビュアーで実行する方法について説明します。
 
 ## <a name="open-the-access-review"></a>アクセス レビューを開く
 
-アクセス レビューを実行する最初の手順として、アクセス レビューを見つけて開きます。
+アクセス レビューを実行する最初の手順は、アクセス レビューを見つけて開くことです。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対するアクセスをレビューするように求めるメールの例を次に示します。
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. ページの右上隅にあるユーザー アイコンをクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
 
-1. ページの右側にある **[アクセス レビュー]** タイルをクリックすると、保留中のアクセス レビューのリストが表示されます。
+1. **[アクセス レビュー]** タイルをクリックすると、保留中のアクセス レビューの一覧が表示されます。
 
     このタイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
@@ -77,6 +77,8 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
     ![アクセス レビューを実行する](./media/perform-access-review/approve-deny.png)
 
+1. 必要に応じて、**[理由]** ボックスに理由を入力します。
+
     アクセスやグループ メンバーシップの継続を承認する理由を説明するように、アクセス レビューの管理者から要求される場合があります。
 
 1. 実行するアクションを指定し終えたら、**[保存]** をクリックします。
@@ -104,4 +106,4 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 ## <a name="next-steps"></a>次の手順
 
-- [グループまたはアプリケーションに対するアクセス レビューを完了する](complete-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを完了する](complete-access-review.md)

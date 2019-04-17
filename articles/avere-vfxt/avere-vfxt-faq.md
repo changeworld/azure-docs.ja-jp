@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404639"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264456"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -200,7 +200,15 @@ Avere vFXT 環境は、ネットワーク ゲートウェイまたは VPN 経由
 
 いいえ、Avere vFXT はベスト プラクティスを通じてセキュリティ保護されたネットワーク環境内で動作することが意図されています。  
 
-## <a name="technical-back-end-storage-core-filers"></a>技術的:バックエンド ストレージ (コア ファイラー)
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>クラスターの仮想ネットワークからのインターネット アクセスを制限できますか? 
+
+一般的に、必要に応じて自分の仮想ネットワークで追加のセキュリティを構成できます。ただし、一部の制限がクラスターの操作に干渉することがあります。
+
+たとえば、仮想ネットワークからのアウトバウンドのインターネット アクセスを制限すると、AzureConnectors と AzureCloud へのアクセスを明示的に許可するルールも追加しない限り、クラスターに問題が発生します。 この状況に関する説明は [GitHub の補足ドキュメント](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)にあります。
+
+セキュリティのカスタマイズでヘルプが必要な場合、「[お使いのシステムでサポートを受ける](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)」に記載されているサポートにお問い合わせください。
+
+## <a name="technical-back-end-storage-core-filers"></a>技術: バックエンド ストレージ (コア ファイラー)
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>1 つの Avere vFXT 環境でいくつのコア ファイラーをサポートできますか?
 

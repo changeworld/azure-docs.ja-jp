@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: b93d3d272d570ccffb5ce06d7ed4527c20500698
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 570200a3befbe6205025a2410c4083d38dd11eb9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181267"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>チュートリアル:Azure Active Directory と OnTrack の統合
 
@@ -107,15 +107,15 @@ OnTrack で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[識別子]** テキスト ボックスに次のように入力します。
 
-    テスト環境の場合は、次の URL を入力します。`https://staging.insigniagroup.com/sso`
+    テスト環境の場合は、次の URL を入力します:  `https://staging.insigniagroup.com/sso`
 
-    運用環境の場合は、次の URL を入力します。`https://oeaccessories.com/sso`
+    運用環境の場合は、次の URL を入力します:  `https://oeaccessories.com/sso`
 
     b. **[応答 URL]** ボックスに次のように入力します。
 
-    テスト環境の場合は、次の URL を入力します。`https://indie.staging.insigniagroup.com/sso/autonation.aspx`
+    テスト環境の場合は、次の URL を入力します:  `https://indie.staging.insigniagroup.com/sso/autonation.aspx`
 
-    運用環境の場合は、次の URL を入力します。`https://igaccessories.com/sso/autonation.aspx`
+    運用環境の場合は、次の URL を入力します:  `https://igaccessories.com/sso/autonation.aspx`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[OnTrack クライアント サポート チーム](mailto:CustomerService@insigniagroup.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -235,7 +235,7 @@ OnTrack で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

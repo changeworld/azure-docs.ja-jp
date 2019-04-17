@@ -17,12 +17,12 @@ ms.date: 04/01/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6de55cb9f1f89c9c3cd809294890f63134a26d8
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 3cf4ec48942cbe345b12d2a358afc3dadbe63a96
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793171"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360120"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -88,9 +88,9 @@ ms.locfileid: "58793171"
 > 各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 > - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
->   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を **[テナント ID]** または **[テナント名]** (例: contoso.microsoft.com) に置き換えます。
->   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
->   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
+>   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を**テナント ID** または**テナント名** (例: contoso.onmicrosoft.com) に置き換えます
+>   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を次の値に置き換えます:  `organizations`
+>   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を次の値に置き換えます:  `common`
 >
 > > [!TIP]
 > > *[アプリケーション ID]*、*[ディレクトリ (テナント) ID]*、*[サポートされているアカウントの種類]* の値を見つけるには、**[概要]** ページに移動します。
@@ -167,4 +167,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.
 アプリケーションや新機能の構築についての完全なステップ バイ ステップ ガイドは、Windows デスクトップ チュートリアルをお試しください。このクイック スタートの完全な説明も含まれています。
 
 > [!div class="nextstepaction"]
-> [UWP -Graph API 呼び出しチュートリアル](tutorial-v2-windows-uwp.md)
+> [UWP - Graph API 呼び出しチュートリアル](tutorial-v2-windows-uwp.md)

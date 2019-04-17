@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: a86c3bd85f9d611787a41754f49ee2475ba33a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175598"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469133"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs の登録情報を一括でエクスポートおよびインポートする
 シナリオによっては、通知ハブで多数の登録情報を作成または変更する必要があります。 このようなシナリオとして、バッチ計算の後でタグを更新する場合や、Notification Hubs を使用できるように既存のプッシュ実装を移行する場合などがあります。
@@ -34,7 +34,7 @@ ms.locfileid: "58175598"
 
 - プロビジョニングされた通知ハブ。
 - Azure Storage BLOB コンテナー。
-- Azure Storage および Azure Service Bus NuGet パッケージへの参照。
+- [Azure Storage NuGet パッケージ](https://www.nuget.org/packages/windowsazure.storage/)および[Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9)への参照。
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>入力ファイルを作成して BLOB に格納する
 入力ファイルには、XML 形式でシリアル化された登録情報のリストが 1 行につき 1 件ずつ含まれています。 次のコード例は、Azure SDK を使用して登録情報をシリアル化し、BLOB コンテナーにアップロードする方法を示しています。
@@ -132,7 +132,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 次のサンプル コードでは、登録情報を通知ハブにインポートします。
 
 ```csharp
-using Microsoft.ServiceBus.Notifications;
+using Microsoft.Azure.NotificationHubs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;

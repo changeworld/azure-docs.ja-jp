@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014119"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050979"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -40,6 +40,9 @@ Azure Front Door Service では、既定で、Front Door の既定のホスト�
 > - 独自の証明書 (つまり、カスタム SSL 証明書) を使用する
 > - ドメインを検証する
 > - カスタム ドメインで HTTPS プロトコルを無効にする
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,11 +89,11 @@ Azure Front Door Service で管理された証明書を使用する場合、HTTP
 
 PowerShell を使用して、Azure Active Directory にアプリとして Azure Front Door Service 用のサービス プリンシパルを登録します。
 
-1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) をインストールします。
+1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします。
 
 2. PowerShell で次のコマンドを実行します。
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>キー コンテナーへの Azure Front Door Service のアクセス権を付与する
  
@@ -139,7 +142,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| Name            | type  | 値                 |
+| Name            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 

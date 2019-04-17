@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 41337859feeff9cf9de507629eea4bc27b302a40
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 93fd14d1148ce29731087cba5cd20f5ff1bcd4a2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449806"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>チュートリアル:Azure Active Directory と Iris Intranet の統合
 
@@ -107,9 +107,9 @@ Iris Intranet で Azure AD シングル サインオンを構成するには、�
 
     ![[Iris Intranet のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.irisintranet.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.irisintranet.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.irisintranet.com`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<SUBDOMAIN>.irisintranet.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Iris Intranet クライアント サポート チーム](mailto:support@triptic.nl)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -186,7 +186,7 @@ Iris Intranet で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

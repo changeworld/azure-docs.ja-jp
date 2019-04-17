@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855726"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280538"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
 
@@ -131,19 +131,21 @@ static async Task RecognizeIntentAsync()
 
 ここで、`LanguageUnderstandingModel.FromAppId()` を使用して LUIS アプリからモデルをインポートし、認識エンジンの `AddIntent()` メソッドを経由して認識する LUIS の意図を追加します。 これら 2 つの手順により、ユーザーが自身の要求で使用すると思われる単語を示すことで音声認識の精度が向上します。 アプリのすべての意図をアプリケーション内で認識されるようにする必要がない場合、アプリのすべての意図を追加する必要はありません。
 
-意図を追加するには、LUIS モデル (先ほど作成されたばかりの `model` という名前を付けたもの)、意図名、および意図 ID の 3 つの引数が必要です。 ID と名前の違いは次のとおりです。
+意図を追加するには、LUIS モデル (先ほど作成して `model` という名前を付けたもの)、意図名、および意図 ID の 3 つの引数が必要です。 ID と名前の違いは次のとおりです。
 
 |`AddIntent()` 引数|目的|
 |--------|-------|
 |intentName |LUIS アプリ内で定義される意図の名前。 LUIS の意図名と正確に一致する必要があります。|
 |intentID    |Speech SDK によって認識された意図に割り当てられた ID。 好みのものを使用でき、LUIS アプリで定義されている意図名に対応させる必要はありません。 同じコードによって複数の意図が処理される場合、それらに対して同じ ID を使用できます。|
 
-ホーム オートメーション LUIS アプリには、デバイスをオンするためのものと、デバイスをオフにするための 2 つの意図があります。 以下の行はこれらの意図を認識エンジンに追加します。 `RecognizeIntentAsync()` メソッド内の 3 つの `AddIntent` 行をこのコードで置換します。
+ホーム オートメーション LUIS アプリには、2 つの意図があります。1 つはデバイスをオンにするための意図、もう 1 つはデバイスをオフにするための意図です。 以下の行はこれらの意図を認識エンジンに追加します。 `RecognizeIntentAsync()` メソッド内の 3 つの `AddIntent` 行をこのコードで置換します。
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
+
+個々の意図を追加する代わりに、`AddAllIntents` メソッドを使用して、モデル内のすべての意図を認識エンジンに追加することもできます。
 
 ## <a name="start-recognition"></a>認識を開始する
 

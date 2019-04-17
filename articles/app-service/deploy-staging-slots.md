@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 4b5b7cf3a00e21b9904f72a98d5f24264bb0ecbc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484289"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266207"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -84,7 +84,12 @@ ms.locfileid: "58484289"
 * 監視と診断の設定
 * パブリック証明書
 * Web ジョブ コンテンツ
-* Hybrid Connections (ハイブリッド接続)
+* ハイブリッド接続 *
+* VNet 統合 *
+* サービス エンドポイント *
+* Azure CDN *
+
+* でマークされた機能は、スロットに固定される予定です。 
 
 **スワップされない設定**:
 
@@ -93,10 +98,15 @@ ms.locfileid: "58484289"
 * プライベート証明書と SSL のバインド
 * スケールの設定
 * Web ジョブ スケジューラ
+* IP 制限
+* 常時接続
+* プロトコル設定 (HTTP**S**、TLS バージョン、クライアント証明書)
+* 診断ログの設定
+* CORS
 
-<!-- VNET, IP restrictions, CORS, hybrid connections? -->
+<!-- VNET and hybrid connections not yet sticky to slot -->
 
-アプリ設定または接続文字列を特定のスロット固有として (スワップされないように) 構成するには、そのスロットの **[アプリケーションの設定]** ページに移動し、スロット固有にする構成要素の **[スロット設定]** ボックスをオンにします。 構成要素をスロット固有としてマークすると、スワップできないことが App Service に通知されます。
+アプリ設定または接続文字列を特定のスロット固有として (スワップされないように) 構成するには、そのスロットの **[アプリケーションの設定]** ページに移動し、スロット固有にする構成要素の **[スロット設定]** ボックスをオンにします。 構成要素をスロット固有としてマークすると、スワップできないことが App Service に通知されます。 
 
 ![スロットの設定](./media/web-sites-staged-publishing/SlotSetting.png)
 

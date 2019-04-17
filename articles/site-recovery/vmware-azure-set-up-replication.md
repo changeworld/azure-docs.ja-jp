@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4f558d8d1e5e4e743e6d44cca1a804b3e5898b30
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443431"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278226"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのレプリケーション ポリシーの構成と管理
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM を Azure に レプリケートする場合の、レプリケーション ポリシーの構成方法について説明します。
@@ -20,7 +20,7 @@ ms.locfileid: "58443431"
 ## <a name="create-a-policy"></a>ポリシーの作成
 
 1. **[管理]** > **[Site Recovery インフラストラクチャ]** を選択します。
-2. **[For VMware and Physical machines (VMware と物理マシン用)]** で、**[レプリケーション ポリシー]** を選択します。 
+2. **[For VMware and Physical machines (VMware と物理マシン用)]** で、**[レプリケーション ポリシー]** を選択します。
 3. **[+ レプリケーション ポリシー]** をクリックし、ポリシー名を指定します。
 4. **[RPO しきい値]** で、RPO の制限を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
 5. **[復旧ポイントのリテンション期間]** で、各復旧ポイントのリテンション期間の長さ (時間単位) を指定します。 保護されたマシンは、このリテンション期間内のどのポイントにでも復旧できます。 Premium Storage にレプリケートされたマシンでは、最大 24 時間のリテンション期間がサポートされます。 Standard Storage については、最大 72 時間がサポートされます。
@@ -29,7 +29,7 @@ ms.locfileid: "58443431"
 
 レプリケーション ポリシーを作成すると、対応するフェールバック ポリシーが自動的に作成され、サフィックス "failback" が付けられます。 ポリシーを作成した後は、そのポリシーを選択し、**[設定の編集]** を選択することで、ポリシーを編集できます。
 
-## <a name="associate-a-configuration-server"></a>構成サーバーを関連付ける 
+## <a name="associate-a-configuration-server"></a>構成サーバーを関連付ける
 
 レプリケーション ポリシーをオンプレミスの構成サーバーに関連付けます。
 

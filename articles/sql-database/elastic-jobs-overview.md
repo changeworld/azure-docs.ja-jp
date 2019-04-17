@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: aa4fff24620ffd74393d549f1888bdf0e1cb0224
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773581"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264422"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 
@@ -75,6 +75,8 @@ ms.locfileid: "57773581"
 ### <a name="prevent-jobs-from-reducing-target-database-performance"></a>ジョブを原因とするターゲット データベースのパフォーマンス低下を防ぐ
 
 SQL エラスティック プール内のデータベースにジョブを実行しているときにリソースに対する負荷が大きくなりすぎないようにするために、ジョブを構成して同時にジョブの実行対象とするデータベースの数に制限を設けることができます。
+
+`sp_add_jobstep`ストアド プロシージャの`@max_parallelism`パラメーターを T-SQL または `Add-AzSqlElasticJobStep -MaxParallelism`PowerShell で設定することで、ジョブが実行する同時実行データベースの数を設定します。
 
 ## <a name="best-practices-for-creating-jobs"></a>ジョブ作成のベスト プラクティス
 

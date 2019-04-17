@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315276"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050239"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -33,6 +33,9 @@ Service Fabric では、クラスターの作成中に証明書セキュリテ�
 > 
 > 
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>ポータルを使用してセカンダリのクラスター証明書を追加する
 Azure Portal では、セカンダリのクラスター証明書を追加できません。Azure PowerShell を使用してください。 このプロセスはこのドキュメントの後半で説明されています。
 
@@ -45,7 +48,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager PowerShell を使用してセカンダリ証明書を追加する
 > [!TIP]
-> セカンダリ証明書を追加するには、[Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) コマンドレットを使用する方がより優れた簡単な方法です。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
+> セカンダリ証明書を追加するには、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用する方がより優れた簡単な方法です。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
 
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
@@ -195,19 +198,19 @@ Resource Manager テンプレートのパラメーター ファイルを編集�
 - Azure アカウントにログインし、特定の Azure サブスクリプションを選択します。 1 つ以上の Azure サブスクリプションにアクセスできるユーザーにとって、これは重要な手順です。
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId <Subscription ID> 
 
 ```
 
 テンプレートをデプロイする前にテストを実行します。 クラスターの現在のデプロイ先であるリソース グループを使用します。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-そのリソース グループに、テンプレートをデプロイします。 クラスターの現在のデプロイ先であるリソース グループを使用します。 New-AzureRmResourceGroupDeployment コマンドを実行します。 既定値の **incremental**を使用するため、モードを指定する必要はありません。
+そのリソース グループに、テンプレートをデプロイします。 クラスターの現在のデプロイ先であるリソース グループを使用します。 New-AzResourceGroupDeployment コマンドを実行します。 既定値の **incremental**を使用するため、モードを指定する必要はありません。
 
 > [!NOTE]
 > モードを [Complete (完了)] に設定すると、テンプレートにないリソースが誤って削除される可能性があります。 このため、このシナリオでは使用しないでください。
@@ -215,7 +218,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your
 > 
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
 同じ PowerShell コマンドの入力例は次のとおりです。
@@ -225,7 +228,7 @@ $ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory の条件付きアクセス設定に関するリファレンス | Microsoft Docs
 description: Azure Active Directory の条件付きアクセス ポリシーでサポートされる設定の概要を説明します。
-services: active-directory.
+services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2334497c6329ee335c529e1490a2f966f51dff
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891720"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359004"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -120,8 +120,8 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 | Windows 10             | Internet Explorer、Microsoft Edge、Chrome     |
 | Windows 8 / 8.1        | Internet Explorer、Chrome                     |
 | Windows 7              | Internet Explorer、Chrome                     |
-| iOS                    | Safari、Intune Managed Browser                |
-| Android                | Chrome、Intune Managed Browser                |
+| iOS                    | Safari、Microsoft Edge、Intune Managed Browser |
+| Android                | Chrome、Microsoft Edge、Intune Managed Browser |
 | Windows Phone          | Internet Explorer、Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer、Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
@@ -142,7 +142,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名前 | 1 |
+| Name | 1 |
 | Type | REG_SZ (文字列) |
 | データ | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -151,7 +151,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名前 | 1 |
+| Name | 1 |
 | Type | REG_SZ (文字列) |
 | データ | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
@@ -232,6 +232,23 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 - 承認されたクライアント アプリは、Intune モバイル アプリケーション管理機能をサポートしています。
 - **[承認されたクライアント アプリが必要です]** 要件:
    - [デバイス プラットフォームの条件](#device-platform-condition)については iOS と Android のみをサポートしています。
+
+## <a name="app-protection-policy-requirement"></a>アプリ保護ポリシーの要件 
+
+条件付きアクセス ポリシー内で、選択したクラウド アプリがアクセスできるようにする前に、クライアント アプリにアプリの保護ポリシーが存在することを要求できます。 
+
+![アプリの保護ポリシーによるアクセスの制御](./media/technical-reference/22.png)
+
+この設定は、以下のクライアント アプリに適用されます。
+
+- Microsoft OneDrive
+- Microsoft Outlook
+
+**解説**
+
+- アプリ保護ポリシーのアプリは、ポリシー保護を含む Intune モバイル アプリケーション管理機能をサポートしています。
+- **アプリの保護ポリシーが必要**の要件:
+    - [デバイス プラットフォームの条件](#device-platform-condition)については iOS と Android のみをサポートしています。
 
 ## <a name="next-steps"></a>次の手順
 

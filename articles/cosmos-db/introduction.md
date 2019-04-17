@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の概要
 description: Azure Cosmos DB について説明します。 このグローバルに分散されたマルチモデル データベースは、少ない待ち時間、柔軟なスケーラビリティ、高可用性を実現し、NoSQL データのネイティブ サポートを提供することを目指して構築されています。
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 03/18/2019
-ms.author: sngun
-ms.openlocfilehash: eec94217cc62f74a5075412aafcf85bf67346bf4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294367"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280946"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -98,7 +98,7 @@ Cosmos DB のコア概念である[ターンキー グローバル分散](distri
 以下のクイック スタートのいずれかに従って、実際に Azure Cosmos DB を使ってみましょう。
 
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-* [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
+* [Azure Cosmos DB の MongoDB 用 API を使ってみる](create-mongodb-nodejs.md)
 * [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)

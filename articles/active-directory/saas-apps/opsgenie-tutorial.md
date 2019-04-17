@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 48922e0165aa8f5f418c222aab29ff8c100f2745
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f395ae51d51e56668482ad6c8d446bdd31050fea
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076430"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル:Azure Active Directory と OpsGenie の統合
 
@@ -51,7 +51,7 @@ Azure AD と OpsGenie の統合を構成するには、次のものが必要で�
 
 Azure AD への OpsGenie の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に OpsGenie を追加する必要があります。
 
-**ギャラリーから OpsGenie を追加するには、次の手順に従います。**
+**ギャラリーから OpsGenie を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -233,7 +233,7 @@ OpsGenie で Azure AD シングル サインオンを構成するには、次の
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

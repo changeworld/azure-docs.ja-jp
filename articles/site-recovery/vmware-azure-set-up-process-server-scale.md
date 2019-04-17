@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 4/9/2019
+ms.author: ramamill
+ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106544"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362159"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>追加のプロセス サーバーによるフェールバックのスケール
 
@@ -31,7 +31,7 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 
 表にまとめられているサイズ変更の要件を確認します。 一般に、ソース マシンが 200 台を超えるまでデプロイメントをスケールする必要がある場合や、合計日次変更率が 2 TB を超える場合は、トラフィック ボリュームの処理のために追加のプロセス サーバーが必要です。
 
-| **追加のプロセス サーバー** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン** |
+| **追加のプロセス サーバー** | **キャッシュ ディスク サイズ** | **データ変化率** | **保護対象のマシン** |
 | --- | --- | --- | --- |
 |4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ |300 GB |250 GB 以下 |85 台以下のマシンをレプリケートします。 |
 |8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ |600 GB |250 GB ～ 1 TB |85 ～ 150 台のマシンをレプリケートします。 |
@@ -51,7 +51,7 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 
 次のように、プロセス サーバーのインストール ファイルをダウンロードします。
 
-1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
+1. Azure Portal にさサインインし、Recovery Services コンテナーを参照します。
 2. **[Site Recovery インフラストラクチャ]** > **[VMware and Physical Machines] (VMware と物理マシン)** > **[構成サーバー]** ([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
 3. 構成サーバーを選択して、サーバーの詳細に移動します。 次に、**[+ プロセス サーバー]** をクリックします。
 4. **[プロセス サーバーの追加]** >  **[プロセス サーバーのデプロイ先を選択してください]** で、**[スケールアウト プロセス サーバーをオンプレミスにデプロイします]** を選択します。

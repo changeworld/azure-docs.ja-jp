@@ -113,7 +113,7 @@ Premium Storage に対応した VM では、次に示すいくつかの機能が
 
 * **Analytics**
 
-    Premium Storage のディスクを使用して VM のパフォーマンスを分析するには、[Azure Portal](https://portal.azure.com) で VM の診断を有効にします。 詳細については、[Azure 診断の拡張機能を使用した Azure VM の監視](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)に関する記事を参照してください。 
+    Premium Storage のディスクを使用して VM のパフォーマンスを分析するには、[Azure Portal](https://portal.azure.com) で VM の診断を有効にします。 詳細については、[Azure Diagnostics の拡張機能を使用した Azure VM の監視](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)に関する記事を参照してください。 
 
     ディスクのパフォーマンスを確認するには、[Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) (Windows VM の場合) や [iostat](http://linux.die.net/man/1/iostat) コマンド (Linux VM の場合) などのオペレーティング システム ベースのツールを使用します。
 

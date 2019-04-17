@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9cddf3f8091115f7cd39999e8c52d87ead4af07
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112740"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044330"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
 この記事では、Microsoft Azure 仮想ネットワーク内のリソースと、リソース間のリレーションシップを表示する方法について説明します。 たとえば、仮想ネットワークにはサブネットが含まれています。 サブネットには、Azure Virtual Machines (VM) などのリソースが含まれています。 VM には、1 つまたは複数のネットワーク インターフェイスがあります。 各サブネットは、ネットワーク セキュリティ グループとそれに関連付けられたルート テーブルを持つことができます。 Azure Network Watcher のトポロジ機能を使用すると、仮想ネットワーク内のすべてのリソース、仮想ネットワーク内のリソースに関連するリソース、およびリソース間のリレーションシップを表示できます。
 
 トポロジを表示するには、[Azure Portal](#azure-portal)、[Azure CLI](#azure-cli)、または [PowerShell](#powershell) を使用できます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name = "azure-portal"></a>トポロジを表示する - Azure Portal
 
@@ -85,38 +87,38 @@ ms.locfileid: "58112740"
 
 次の手順でコマンドを実行できます。
 - Azure Cloud Shell では、コマンドの右上にある **[テスト]** を選択します。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールがプリインストールされ、お客様のアカウントで使用するよう構成されています。
-- コンピューターから PowerShell を実行します。 コンピューターから PowerShell を実行する場合、この記事の手順では、バージョン 5.7.0 以降の AzureRm モジュールが必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- コンピューターから PowerShell を実行します。 お使いのコンピューターから PowerShell を実行する場合、この記事では Azure PowerShell `Az` モジュールが必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 使用するアカウントは、必要な[アクセス許可](required-rbac-permissions.md)を持っている必要があります。
 
-1. トポロジを作成する仮想ネットワークと同じリージョンに既にネットワーク ウォッチャーがある場合は、手順 3 に進みます。 [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) を使用して、ネットワーク ウォッチャーを含むリソース グループを作成します。 次の例では、*米国東部*リージョンにリソース グループを作成します。
+1. トポロジを作成する仮想ネットワークと同じリージョンに既にネットワーク ウォッチャーがある場合は、手順 3 に進みます。 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) を使用して、ネットワーク ウォッチャーを含むリソース グループを作成します。 次の例では、*米国東部*リージョンにリソース グループを作成します。
 
     ```azurepowershell-interactive
-    New-AzureRmResourceGroup -Name NetworkWatcherRG -Location EastUS
+    New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher) を使用して、ネットワーク ウォッチャーを作成します。 次の例では、米国東部リージョンにネットワーク ウォッチャーを作成します。
+2. [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) を使用して、ネットワーク ウォッチャーを作成します。 次の例では、米国東部リージョンにネットワーク ウォッチャーを作成します。
 
     ```azurepowershell-interactive
-    New-AzureRmNetworkWatcher `
+    New-AzNetworkWatcher `
       -Name NetworkWatcher_eastus `
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher) を使用して、Network Watcher インスタンスを取得します。 次の例では、米国東部リージョンのネットワーク ウォッチャーを取得します。
+3. [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) を使用して、Network Watcher インスタンスを取得します。 次の例では、米国東部リージョンのネットワーク ウォッチャーを取得します。
 
     ```azurepowershell-interactive
-    $nw = Get-AzurermResource `
+    $nw = Get-AzResource `
       | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "EastUS" }
-    $networkWatcher = Get-AzureRmNetworkWatcher `
+    $networkWatcher = Get-AzNetworkWatcher `
       -Name $nw.Name `
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. [Get-AzureRmNetworkWatcherTopology](/powershell/module/azurerm.network/get-azurermnetworkwatchertopology) を使用してトポロジを取得します。 次の例では、*MyResourceGroup* という名前のリソース グループ内の仮想ネットワークについて、トポロジを取得します。
+4. [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology) を使用してトポロジを取得します。 次の例では、*MyResourceGroup* という名前のリソース グループ内の仮想ネットワークについて、トポロジを取得します。
 
     ```azurepowershell-interactive
-    Get-AzureRmNetworkWatcherTopology `
+    Get-AzNetworkWatcherTopology `
       -NetworkWatcher $networkWatcher `
       -TargetResourceGroupName MyResourceGroup
     ```

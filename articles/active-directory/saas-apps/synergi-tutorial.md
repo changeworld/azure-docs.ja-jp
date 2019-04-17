@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c416254acf63dc479326cf00e3113c1425c4008
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2e6916cc96f9d9778cc829e39f82ef7204e137bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360794"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>チュートリアル:Azure Active Directory と Synergi の統合
 
@@ -105,9 +105,9 @@ Synergi で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Synergi のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<company name>.irmsecurity.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<company name>.irmsecurity.com`
 
-    b. **[応答 URL]** ボックスに、`https://<company name>.irmsecurity.com/sso/<organization id>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<company name>.irmsecurity.com/sso/<organization id>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Synergi クライアント サポート チーム](https://www.irmsecurity.com/contact/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -195,7 +195,7 @@ Synergi で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

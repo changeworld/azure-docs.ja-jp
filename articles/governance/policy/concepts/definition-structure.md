@@ -1,7 +1,6 @@
 ---
 title: ポリシー定義の構造の詳細
 description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングとその効果を示すことで、組織でのリソースの規則を確立する方法について説明します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/13/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894429"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549356"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -141,12 +140,16 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 `metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 現時点で **strongType** で使用できる値には、以下が含まれます。
 
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+- `location`
+- `resourceTypes`
+- `storageSkus`
+- `vmSKUs`
+- `existingResourceGroups`
+- `omsWorkspace`
+- `Microsoft.EventHub/Namespaces/EventHubs`
+- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.RecoveryServices/vaults`
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>定義の場所
 
@@ -484,36 +487,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-"通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。 **ipRules** を使用した例では、規則の数と各規則の構成を含む規則の完全なセットが存在することが検証されます。 次の **ipRules** のサンプル例では、_action_ が **Allow** の **192.168.1.1** と **10.0.4.1** の両方が正確にチェックされ、**effectType** が適用されます。
-
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "Equals": [
-                    {
-                        "action": "Allow",
-                        "value": "192.168.1.1"
-                    },
-                    {
-                        "action": "Allow",
-                        "value": "10.0.4.1"
-                    }
-                ]
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+"通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。
 
 配列内の各要素の値および各要素の特定のプロパティの比較は、**[\*]** エイリアスで可能です。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 例では、**ipRules[\*]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP _value_ は検証されません。 このサンプル規則では、**ipRules[\*].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
 

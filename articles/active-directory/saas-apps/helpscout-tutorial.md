@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3253c26f99c470a256b937844138d8875219cbd1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878042"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273381"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル:Azure Active Directory と Help Scout の統合
 
@@ -106,9 +106,9 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![[Help Scout のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **識別子**は、Help Scout の**対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭は `urn:` です
+    a. **識別子**は、Help Scout の**対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭には次が使用されます:  `urn:`
 
-    b. **応答 URL** は、Help Scout の**ポスト バック URL (Assertion Consumer Service URL)** で、先頭は `https://` です 
+    b. **応答 URL** は、Help Scout の**ポスト バック URL (Assertion Consumer Service URL)** で、先頭には次が使用されます:  `https://` 
 
     > [!NOTE]
     > これらの URL の値は、単なる例です。 これらの値は、実際の応答 URL と識別子で更新する必要があります。 この値は、[認証] セクションの **[シングル サインオン]** タブから取得します。これについては後で説明します。
@@ -117,7 +117,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![[Help Scout のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、「`https://secure.helpscout.net/members/login/`」と入力します。
+    **[サインオン URL]** ボックスに、次のような URL を入力します。 `https://secure.helpscout.net/members/login/`
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -157,7 +157,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![Configure single sign-on](./media/helpscout-tutorial/settings4.png)
 
-    a.  **[シングル サインオン URL]**  ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
+    a. **[Single Sign-On URL]\(シングル サインオン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
     b. **[証明書のアップロード]** をクリックして、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
 

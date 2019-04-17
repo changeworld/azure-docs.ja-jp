@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871064"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045766"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>管理グループ
 Azure の管理グループを使用すると、一連のサブスクリプションに対するアクセス、ポリシー、およびレポートを効率的に管理できると共に、ルート管理グループに対してアクションを実行することで、Azure 資産全体を効果的に管理することができます。 各 Azure AD テナントには、ルート管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 このグループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 
@@ -188,7 +191,7 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 この記事では、Azure Security Center に対するテナント全体の可視性を確保する方法について学習しました。 Security Center の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)
+> [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)

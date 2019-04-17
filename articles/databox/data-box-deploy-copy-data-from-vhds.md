@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 1358751c71dfba39574807c9b232957227980f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887512"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282561"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -46,7 +46,7 @@ Data Box は、指定されたリソース グループに基づいて、関連�
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-各共有内に、ストレージ アカウントのコンテナーに対応する次の 4 つのフォルダーが作成されます。
+各共有内に、ストレージ アカウントのコンテナーに対応する次の 3 つのフォルダーが作成されます。
 
 - Premium SSD
 - Standard HDD
@@ -142,8 +142,8 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
 SMB と NFS のどちらを経由して接続するかに応じて、次の方法を使用できます。
 
-- [SMB 経由でのデータ コピー](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [NFS 経由でのデータ コピー](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [SMB 経由でデータをコピーする](data-box-deploy-copy-data.md#copy-data-to-data-box)
+- [NFS 経由でデータをコピーする](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
 コピー ジョブが完了するのを待ちます。 次の手順に進む前に、コピー ジョブがエラーなしで完了したことを確認してください。
 

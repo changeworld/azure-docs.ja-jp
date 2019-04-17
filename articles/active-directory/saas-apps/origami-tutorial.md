@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a3e01b7275b7d8329a9fc3bfc90e20398fdf38b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d5c697f8c6c2365539ce5147ad5bafff1e6c396
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845098"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル:Azure Active Directory と Origami の統合
 
@@ -51,7 +51,7 @@ Azure AD と Origami の統合を構成するには、次のものが必要で�
 
 Azure AD への Origami の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Origami を追加する必要があります。
 
-**ギャラリーから Origami を追加するには、次の手順に従います。**
+**ギャラリーから Origami を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -247,7 +247,7 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

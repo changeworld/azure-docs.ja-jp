@@ -6,26 +6,26 @@ documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 9df4c7c5-9a58-478e-93b7-2f77aae12807
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe36969661ae1b729601681c02f79e777b2f8cab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344577"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263600"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>チュートリアル:MerchLogix を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、MerchLogix に対するユーザーまたはグループのプロビジョニングまたはプロビジョニング解除を自動的に実行するように Azure Active Directory (Azure AD) を構成するために、MerchLogix と Azure AD で実行される手順を示すことです。 
+このチュートリアルの目的は、MerchLogix に対するユーザーまたはグループのプロビジョニングまたはプロビジョニング解除を自動的に実行するように Azure Active Directory (Azure AD) を構成するために、MerchLogix と Azure AD で実行される手順を示すことです。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
@@ -34,11 +34,12 @@ ms.locfileid: "57344577"
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-*   Azure AD テナント
-*   MerchLogix テナント
-*   ユーザー プロビジョニングに必要な SCIM エンドポイント URL とシークレット トークンを提供できる MerchLogix の技術担当者
+* Azure AD テナント
+* MerchLogix テナント
+* ユーザー プロビジョニングに必要な SCIM エンドポイント URL とシークレット トークンを提供できる MerchLogix の技術担当者
 
 ## <a name="adding-merchlogix-from-the-gallery"></a>ギャラリーからの Merchlogix の追加
+
 Azure AD を使用して自動的にユーザー プロビジョニングを行うように MerchLogix を構成する前に、Azure AD アプリケーション ギャラリーからご利用のマネージド SaaS アプリケーションの一覧に MerchLogix を追加する必要があります。
 
 **Azure AD アプリケーション ギャラリーから MerchLogix を追加するには、以下の手順を行います。**
@@ -50,7 +51,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] セクション][2]
-    
+
 3. MerchLogix を追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -67,13 +68,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 自動ユーザー プロビジョニングを構成して有効にする前に、MerchLogix へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを MerchLogix に割り当てることができます。
 
-*   [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-merchlogix"></a>ユーザーを MerchLogix に割り当てる際の重要なヒント
 
-*    単一の Azure AD ユーザーを MerchLogix に割り当てて、ご自分の初期の自動ユーザー プロビジョニング構成をテストすることをお勧めします。 テストが成功すれば、後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを MerchLogix に割り当てて、ご自分の初期の自動ユーザー プロビジョニング構成をテストすることをお勧めします。 テストが成功すれば、後でユーザーやグループを追加で割り当てられます。
 
-*   MerchLogix にユーザーを割り当てるときは、アプリケーション固有の有効なロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* MerchLogix にユーザーを割り当てるときは、アプリケーション固有の有効なロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>MerchLogix への自動ユーザー プロビジョニングの構成 
 
@@ -96,13 +97,12 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、次の操作を行います。
 
-    *   **[テナント URL]** フィールドに、MerchLogix の技術担当者から提供された SCIM エンドポイント URL を入力します。
+    * **[テナント URL]** フィールドに、MerchLogix の技術担当者から提供された SCIM エンドポイント URL を入力します。
 
-    *   **[シークレット トークン]** フィールドに、MerchLogix の技術担当者から提供されたシークレット トークンを入力します。
+    * **[シークレット トークン]** フィールドに、MerchLogix の技術担当者から提供されたシークレット トークンを入力します。
 
 6. 手順 5 に示されたフィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が MerchLogix に確実に接続されるようにします。 接続できない場合は、使用中の MerchLogix アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    
 7. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
 8. **[Save]** をクリックします。
@@ -118,7 +118,6 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 13. MerchLogix に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 14. プロビジョニングの準備ができたら、**[保存]** をクリックします。
-
 
 これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって MerchLogix に対して実行されたすべてのアクションが記載されています。
 

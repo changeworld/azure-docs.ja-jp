@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbcab0d287f344d308e3ed51ae47087afae7f9e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449266"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261464"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -50,11 +50,20 @@ Azure リソースのマネージド ID のドキュメント セット全体で
 - **システム割り当てマネージド ID** は、Azure サービス インスタンス上で直接有効にされます。 この ID を有効にすると、そのインスタンスのサブスクリプションによって信頼されている Azure AD テナントに対し、対応するインスタンスの ID が Azure によって作成されます。 ID が作成されると、その資格情報がインスタンスにプロビジョニングされます。 システム割り当て ID のライフサイクルは、その ID が有効にされた Azure サービス インスタンスに直接関連付けられます。 インスタンスが削除された場合、Azure は Azure AD の資格情報および ID を自動的にクリーンアップします。
 - **ユーザー割り当てマネージド ID** は、スタンドアロン Azure リソースとして作成されます。 作成プロセスで、使用されているサブスクリプションによって信頼されている Azure AD テナントに、Azure が ID を作成します。 作成された ID は、1 つまたは複数の Azure サービス インスタンスに割り当てることができます。 ユーザー割り当て ID のライフサイクルは、その ID が割り当てられている Azure サービス インスタンスのライフサイクルとは個別に管理されます。
 
-Azure AD Authentication をサポートするサービスのアクセス トークンは、コードからマネージド ID を使用して要求できます。 Azure は、サービス インスタンスによって使用される資格情報のローリングを実行します。
+内部的には、マネージド ID は特別な種類のサービス プリンシパルであり、Azure リソースとだけ使用されるようにロックされています。 マネージド ID が削除されると、対応するサービス プリンシパルが自動的に削除されます。 
+
+Azure AD Authentication をサポートするサービスのアクセス トークンは、コードからマネージド ID を使用して要求できます。 Azure は、サービス インスタンスによって使用される資格情報のローリングを実行します。 
 
 次の図は、マネージド サービス ID と Azure 仮想マシン (VM) が連携するようすを示したものです。
 
 ![マネージド サービス ID と Azure VM](media/overview/msi-vm-vmextension-imds-example.png)
+
+|  プロパティ    | システム割り当てマネージド ID | ユーザー割り当てマネージド ID |
+|------|----------------------------------|--------------------------------|
+| 作成 |  Azure リソース (たとえば、Azure 仮想マシンまたは Azure App Service) の一部として作成されます | スタンドアロンの Azure リソースとして作成されます |
+| ライフサイクル | マネージド ID の作成に使用された Azure リソースとの共有ライフサイクル。 <br/> 親リソースが削除されると、マネージド ID も削除されます。 | 独立したライフサイクルです。 <br/> 明示的に削除する必要があります。 |
+| Azure リソース間で共有されます | 共有できません。 <br/> 1 つの Azure リソースにのみ関連付けることができます。 | 共有できます <br/> 同じユーザー割り当てマネージド ID を、複数の Azure リソースに関連付けることができます。 |
+| 一般的なユース ケース | 1 つの Azure リソース内に含まれるワークロード <br/> 独立した ID が必要なワークロード。 <br/> たとえば、1 つの仮想マシンで実行されるアプリケーション | 複数のリソースで実行され、1 つの ID を共有できるワークロード。 <br/> プロビジョニング フローの一部として、セキュリティで保護されたリソースへの事前承認が必要なワークロード。 <br/> リソースが頻繁にリサイクルされるものの、アクセス許可は一貫性を保つ必要があるワークロード。 <br/> たとえば、複数の仮想マシンが同じリソースにアクセスする必要があるワークロード | 
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>システム割り当てマネージド ID と Azure VM の連携
 
@@ -64,7 +73,7 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
     1. Azure Instance Metadata Service の ID エンドポイントを、サービス プリンシパルのクライアント ID と証明書で更新します。
     1. VM 拡張機能 (2019 年 1 月に非推奨となる予定) をプロビジョニングし、サービス プリンシパルのクライアント ID と証明書を追加します。 (この手順は非推奨となる予定です。)
 4. VM に ID が設定された後、Azure リソースにアクセスする権利を VM に与えるには、そのサービス プリンシパル情報を使用します。 Azure Resource Manager を呼び出すには、Azure AD のロールベースのアクセス制御 (RBAC) を使用して、VM のサービス プリンシパルに適切なロールを割り当てます。 Key Vault を呼び出すには、Key Vault 内の特定のシークレットまたは特定のキーにアクセスする権利をコードに与えます。
-5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata サービス エンドポイントにトークン (`http://169.254.169.254/metadata/identity/oauth2/token`) を要求できます。
+5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata サービス エンドポイントにトークンを要求できます。 `http://169.254.169.254/metadata/identity/oauth2/token`
     - リソース パラメーターは、トークンの送信先のサービスを指定します。 Azure Resource Manager に対して認証を行うには、`resource=https://management.azure.com/` を使用します。
     - API バージョン パラメーターは、IMDS バージョンを指定します。api-version=2018-02-01 以降を使用してください。
 
@@ -86,7 +95,7 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
    > [!Note]
    > この手順は、手順 3. の前に行ってもかまいません。
 
-5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata Service ID エンドポイントにトークン (`http://169.254.169.254/metadata/identity/oauth2/token`) を要求できます。
+5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata Service ID エンドポイントにトークンを要求できます。 `http://169.254.169.254/metadata/identity/oauth2/token`
     - リソース パラメーターは、トークンの送信先のサービスを指定します。 Azure Resource Manager に対して認証を行うには、`resource=https://management.azure.com/` を使用します。
     - クライアント ID パラメーターは、トークンの要求先の ID を指定します。 この値は、1 つの VM 上に複数のユーザー割り当て ID がある場合に、あいまいさを解消するために必要です。
     - Azure Instance Metadata Service のバージョンは、API バージョン パラメーターで指定します。 `api-version=2018-02-01` 以降を使用してください。
@@ -106,17 +115,17 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
 
 Windows VM でマネージド ID を使用する方法については、以下のページをご覧ください。
 
-* [Azure Data Lake Store にアクセスする](tutorial-windows-vm-access-datalake.md)
-* [Azure Resource Manager にアクセスする](tutorial-windows-vm-access-arm.md)
-* [Azure SQL にアクセスする](tutorial-windows-vm-access-sql.md)
+* [Azure Data Lake Store へのアクセス](tutorial-windows-vm-access-datalake.md)
+* [Azure Resource Manager へのアクセス](tutorial-windows-vm-access-arm.md)
+* [Azure SQL へのアクセス](tutorial-windows-vm-access-sql.md)
 * [アクセス キーを使用して Azure Storage にアクセスする](tutorial-windows-vm-access-storage.md)
 * [Shared Access Signature を使用して Azure Storage にアクセスする](tutorial-windows-vm-access-storage-sas.md)
 * [Azure Key Vault で Azure AD 以外のリソースにアクセスする](tutorial-windows-vm-access-nonaad.md)
 
 Linux VM でマネージド ID を使用する方法については、以下のページをご覧ください。
 
-* [Azure Data Lake Store にアクセスする](tutorial-linux-vm-access-datalake.md)
-* [Azure Resource Manager にアクセスする](tutorial-linux-vm-access-arm.md)
+* [Azure Data Lake Store へのアクセス](tutorial-linux-vm-access-datalake.md)
+* [Azure Resource Manager へのアクセス](tutorial-linux-vm-access-arm.md)
 * [アクセス キーを使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage.md)
 * [Shared Access Signature を使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md)
 * [Azure Key Vault で Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 71b7cfb92b4caded75e0723564a09fae9f10858c
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 851b28d10bdf0b2df67e1c0782a683e790b711bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359775"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>チュートリアル:Azure Active Directory と Jitbit Helpdesk の統合
 
@@ -115,7 +115,7 @@ Jitbit Helpdesk で Azure AD シングル サインオンを構成するには�
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Jitbit Helpdesk クライアント サポート チーム](https://www.jitbit.com/support/)にお問い合わせください。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://www.jitbit.com/web-helpdesk/` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のような URL を入力します:  `https://www.jitbit.com/web-helpdesk/`
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -210,7 +210,7 @@ Jitbit Helpdesk で Azure AD シングル サインオンを構成するには�
 
 Azure AD ユーザーが Jitbit Helpdesk にサインインできるようにするには、そのユーザーを Jitbit Helpdesk にプロビジョニングする必要があります。 Jitbit Helpdesk の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
 
 1. **Jitbit Helpdesk** テナントにサインインします。
 
@@ -253,6 +253,6 @@ Azure AD ユーザーが Jitbit Helpdesk にサインインできるようにす
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

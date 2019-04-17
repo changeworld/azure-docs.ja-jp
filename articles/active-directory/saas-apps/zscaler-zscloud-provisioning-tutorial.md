@@ -6,20 +6,21 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: a752be80-d3ef-45d1-ac8f-4fb814c07b07
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: 3f7fcd59bafe5619a1ef411bf81a6b8c3431f22c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8962f0cf79a8e4874018021b1f9009cf3dad844e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087416"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260410"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>チュートリアル:Zscaler ZSCloud を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -34,39 +35,34 @@ ms.locfileid: "58087416"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure AD テナント
-*   Zscaler ZSCloud テナント
-*   Admin アクセス許可がある Zscaler ZSCloud のユーザー アカウント
+* Azure AD テナント
+* Zscaler ZSCloud テナント
+* Admin アクセス許可がある Zscaler ZSCloud のユーザー アカウント
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Enterprise パッケージを含むアカウントについて Zscaler ZSCloud 開発者が使用できる Zscaler ZSCloud SCIM API が必要です。
 
 ## <a name="adding-zscaler-zscloud-from-the-gallery"></a>ギャラリーからの Zscaler ZSCloud の追加
+
 Azure AD で自動ユーザー プロビジョニング用に Zscaler ZSCloud を構成する前に、Azure AD アプリケーション ギャラリーから Zscaler ZSCloud を管理対象の SaaS アプリケーションの一覧に追加する必要があります。
 
 **Azure AD アプリケーション ギャラリーから Zscaler ZSCloud を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] セクション][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. Zscaler ZSCloud を追加するには、ダイアログの上部にある **[新しいアプリケーション]** を選択します。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに、「**Zscaler ZSCloud**」と入力します。
+4. 検索ボックスに「**Zscaler ZSCloud**」と入力し、結果ウィンドウで **[Zscaler ZSCloud]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/appsearch.png)
-
-5. 結果パネルで **[Zscaler ZSCloud]** を選択し、**[追加]** をクリックして Zscaler ZSCloud を SaaS アプリケーションの一覧に追加します。
-
-    ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/appsearchresults.png)
-
-    ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/appcreation.png)
+    ![結果リストの Zscaler ZSCloud](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zscaler-zscloud"></a>Zscaler ZSCloud にユーザーを割り当てる
 
@@ -74,13 +70,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Zscaler ZSCloud へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Zscaler ZSCloud に割り当てることができます。
 
-*   [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-zscloud"></a>ユーザーを Zscaler ZSCloud に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを Zscaler ZSCloud に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを Zscaler ZSCloud に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*   Zscaler ZSCloud にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* Zscaler ZSCloud にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler-zscloud"></a>Zscaler ZSCloud への自動ユーザー プロビジョニングの構成
 
@@ -91,11 +87,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-zscloud-in-azure-ad"></a>Azure AD で Zscaler ZSCloud の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** に移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Zscaler ZSCloud]** の順に選択します。
 
-2. SaaS アプリケーションの一覧から Zscaler ZSCloud を選択します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/appinstancesearch.png)
+2. アプリケーションの一覧で、**[Zscaler ZSCloud]** を選択します。
+
+    ![アプリケーションの一覧の Zscaler ZSCloud のリンク](common/all-applications.png)
 
 3. **[プロビジョニング]** タブを選択します。
 
@@ -107,20 +105,20 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明する Zscaler ZSCloud アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler ZSCloud ポータル ユーザー インターフェイスで **[管理]、[認証の設定]** の順に移動し、**[認証の種類]** で **[SAML]** をクリックします。 
+6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler ZSCloud ポータル ユーザー インターフェイスで **[管理]、[認証の設定]** の順に移動し、**[認証の種類]** で **[SAML]** をクリックします。
 
     ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
-    **[Configure SAML]\(SAML の構成\)** をクリックし、**[Configuration SAML]\(構成 SAML\)** オプションを開きます。 
+    **[Configure SAML]\(SAML の構成\)** をクリックし、**[Configuration SAML]\(構成 SAML\)** オプションを開きます。
 
     ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
-    
+
     **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と**ベアラー トークン**を取得し、設定を保存します。 Azure portal で**ベース URL**を**テナント URL** にコピーし、**ベアラー トークン**を**シークレット トークン**にコピーします。
 
 7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Zscaler ZSCloud に接続できることを確認します。 接続できない場合は、使用中の Zscaler ZSCloud アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
-    
+
 8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Zscaler ZSCloud プロビジョニング](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)

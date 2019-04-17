@@ -9,15 +9,15 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop-msft
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 9d157d3f4dbc7a88a356cdd754326cbff1080ac1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: dfd81735b7dfd95a38caf3934fe9057adbcde5a7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846464"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357052"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する
 
@@ -43,7 +43,7 @@ Azure PowerShell コマンドで、定義済みの Azure Resource Manager テン
 
 このサンプルでは、お使いのマネージド インスタンスに対する[有効なネットワーク環境の作成](../sql-database-managed-instance-create-vnet-subnet.md)または[既存の VNet の変更](../sql-database-managed-instance-configure-vnet-subnet.md)が済んでいるものとします。 サンプルではコマンドレット [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) と [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) を使用するので、次の PowerShell モジュールをインストールしてあることを確認してください。
 
-```
+```powershell
 Install-Module Az.Network
 Install-Module Az.Resources
 ```
@@ -52,7 +52,7 @@ Install-Module Az.Resources
 
 インスタンスを作成するために使用されるテンプレートを表すファイル内に、次の内容を格納する必要があります。
 
-```
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.1",

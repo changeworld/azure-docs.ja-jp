@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/13/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 62ab98d2279380df33657967c55bf7fb4d36da43
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9838c6e31e3bb7031d98e615fd96049f22dd8d30
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662450"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045647"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure 内で Service Fabric クラスターを監視する
 
@@ -42,12 +42,15 @@ ms.locfileid: "58662450"
 > * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 > * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成する 
 * クラスターに対して[診断の収集](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)を構成する
 * クラスター内で [EventStore サービス](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor)を有効にする
@@ -491,7 +494,7 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 
 次に、以下のチュートリアルに進んで、クラスターをスケーリングする方法について学習します。
 > [!div class="nextstepaction"]
-> [クラスターを拡張する](service-fabric-tutorial-scale-cluster.md)
+> [クラスターのスケーリング](service-fabric-tutorial-scale-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

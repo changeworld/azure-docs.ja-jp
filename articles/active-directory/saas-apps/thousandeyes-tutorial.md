@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 605ab73a11874c85f20728f5524eb770a7a1b259
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 587d6f8ecdc447672c14ce400ebc64609e4d472d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848021"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル:Azure Active Directory と ThousandEyes の統合
 
@@ -53,7 +53,7 @@ ThousandEyes と Azure AD の統合を構成するには、次のものが必要
 
 Azure AD への ThousandEyes の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ThousandEyes を追加する必要があります。
 
-**ギャラリーから ThousandEyes を追加するには、次の手順に従います。**
+**ギャラリーから ThousandEyes を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -207,9 +207,9 @@ ThousandEyes で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="create-thousandeyes-test-user"></a>ThousandEyes テスト ユーザーの作成
 
-このセクションの目的は、ThousandEyesで Britta Simon というユーザーを作成することです。 ThousandEyes では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](thousandeyes-provisioning-tutorial.md)を参照してください。
+このセクションの目的は、ThousandEyesで Britta Simon というユーザーを作成することです。 ThousandEyes では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](thousandeyes-provisioning-tutorial.md)をご覧ください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します。**
 
 1. ThousandEyes 企業サイトに管理者としてサインインします。
 
@@ -251,7 +251,7 @@ ThousandEyes で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -7,21 +7,21 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 955f13376ac899f66b0ec4e1ed99166164508fbe
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c85b967615e866635cb4dd93be5ddeb78a8c7129
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449803"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357015"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>PowerShell を使用して Azure SQL Database マネージド インスタンスを作成する
 
-この PowerShell スクリプトの例では、新しい仮想ネットワーク内の専用サブネットに Azure SQL Database マネージド インスタンスを作成します。 また、仮想ネットワークのルート テーブルとネットワーク セキュリティ グループも構成します。 スクリプトが正常に実行されると、マネージド インスタンスに仮想ネットワーク内またはオンプレミス環境からアクセスできます。 そうするための方法を示すクイック スタートについては、「[Azure SQL Database Managed Instance に接続するように Azure VM を構成する](../sql-database-managed-instance-configure-vm.md)」と「[オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](../sql-database-managed-instance-configure-p2s.md)」を参照してください。
+この PowerShell スクリプトの例では、新しい仮想ネットワーク内の専用サブネットに Azure SQL Database マネージド インスタンスを作成します。 また、仮想ネットワークのルート テーブルとネットワーク セキュリティ グループも構成します。 スクリプトが正常に実行されると、マネージド インスタンスに仮想ネットワーク内またはオンプレミス環境からアクセスできます。 「[Azure SQL Database Managed Instance に接続するように Azure VM を構成する](../sql-database-managed-instance-configure-vm.md)」と「[オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](../sql-database-managed-instance-configure-p2s.md)」を参照してください。
 
 > [!IMPORTANT]
 > 制限については、[サポートされているリージョン](../sql-database-managed-instance-resource-limits.md#supported-regions)と[サポートされているサブスクリプションの種類](../sql-database-managed-instance-resource-limits.md#supported-subscription-types)に関するセクションを参照してください。
@@ -36,7 +36,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 | command | メモ |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | 仮想ネットワークにサブネット構成を追加します |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | リソース グループ内の仮想ネットワークを取得します |

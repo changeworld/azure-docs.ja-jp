@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894595"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360638"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -141,6 +141,9 @@ Microsoft Authenticator アプリは、スマートフォンまたはタブレ�
 
 モバイル アプリからの通知とモバイル アプリからの確認コードの両方の使用を有効にした場合、通知を使用して Microsoft Authenticator アプリを登録するユーザーは、通知とコードの両方を使用してその身元を証明できます。
 
+> [!NOTE]
+> 組織に中国勤務のスタッフや中国に出張中のスタッフがいる場合、**Android デバイス**での**モバイル アプリによる通知**メソッドはその国では機能しません。 それらのユーザーには別の方法を使用できるようにする必要があります。
+
 ### <a name="verification-code-from-mobile-app"></a>モバイル アプリからの確認コード
 
 Microsoft Authenticator アプリまたは他のサードパーティ アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。 ユーザー名とパスワードを入力したら、アプリから提供されたコードをサインイン画面に入力します。 検証コードにより、2 番目の形式の認証が行われます。
@@ -153,7 +156,7 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH ハードウェア トークン (パブリック プレビュー)
 
-OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていることに注意してください。すべてのトークンと互換性があるとは限りません。
+OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。
 
 ![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 

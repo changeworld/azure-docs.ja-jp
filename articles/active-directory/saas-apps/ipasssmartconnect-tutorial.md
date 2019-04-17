@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b5b39a436ae356cf2543f03db3d6a84d1daa936a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: bf8c7e76aa6dd69cc505be237e47d8e10e7e8db5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189497"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>チュートリアル:Azure Active Directory と iPass SmartConnect の統合
 
@@ -221,7 +221,7 @@ iPass SmartConnect で Azure AD シングル サインオンを構成するに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-**SP によって開始されたフローでアプリケーションをテストするには、次の手順を実行します。**
+**SP によって開始されたフローでアプリケーションをテストするには、次の手順に従います。**
 
 a. Windows の iPass SmartConnect クライアントを[こちら](https://om-activation.ipass.com/ClientActivation/ssolanding.go)からダウンロードします。
 
@@ -239,7 +239,7 @@ d. Azure ユーザー名とドメインを入力します。 **[続行]** をク
 
 e. 認証に成功すると、クライアントのアクティブ化が開始されます。 クライアントがアクティブになります。
 
-**IdP によって開始されたフローでアプリケーションをテストするには、次の手順を実行します。**
+**IdP によって開始されたフローでアプリケーションをテストするには、次の手順に従います。**
 
 a. [https://myapps.microsoft.com](https://myapps.microsoft.com) にログインします。
 
@@ -259,6 +259,6 @@ f. クライアントがアクティブになります。
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

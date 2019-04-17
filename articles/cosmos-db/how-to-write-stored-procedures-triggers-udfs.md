@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339314"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268416"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -279,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-ここで重要なのは、Azure Cosmos DB でのトリガーのトランザクション実行です。 このポストトリガーは、Azure Cosmos DB 項目の作成で使用される同じトランザクションの一部として実行されます。 したがって、(たとえば、メタデータ 項目を更新できないという理由で) ポストトリガーの実行中に例外を受け取る場合、トランザクション全体が失敗してロールバックされます。 したがって、Azure Cosmos DB 項目が作成され、例外が返されます。
+ここで重要なのは、Azure Cosmos DB でのトリガーのトランザクション実行です。 ポストトリガーは、基になる項目自体と同じトランザクションの一部として実行されます。 ポストトリガーの実行中に例外が発生すると、トランザクション全体が失敗します。 コミットされたものすべてがロールバックされ、例外が返されます。
 
 プリトリガーを登録して呼び出す方法の例については、[プリトリガー](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)と[ポストトリガー](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)に関する記事を参照してください。 
 
@@ -324,4 +324,4 @@ Azure Cosmos DB でストアド プロシージャ、トリガー、およびユ
 
 * [Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する](stored-procedures-triggers-udfs.md)
 
-* [Azure Cosmos DB のJavaScript 言語統合クエリ API の操作](javascript-query-api.md)
+* [Azure Cosmos DB で JavaScript 言語統合クエリ API を操作する](javascript-query-api.md)

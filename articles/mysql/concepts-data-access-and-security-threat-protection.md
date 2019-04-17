@@ -5,26 +5,26 @@ author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 7911f652341c4448a6fa5fbe88f5838389c228b2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.date: 04/05/2019
+ms.openlocfilehash: 10fa2a409437c8cc48bcd1a674cc3832f086dcf2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912437"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277580"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL 用の Advanced Threat Protection
 
 Azure Database for MySQL 用の Advanced Threat Protection では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。
 
-Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) を使ってアクセスおよび管理でき、現在はプレビュー状態です。
+> [!NOTE]
+> Advanced Threat Protection は、パブリック プレビュー段階です。
+
+Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) または [REST API](/rest/api/mysql/serversecurityalertpolicies) を使ってアクセスおよび管理できます。 この機能は、General Purpose サーバーとメモリ最適化サーバーでご利用いただけます。
 
 > [!NOTE]
 > Advanced Threat Protection 機能は、次の Azure 政府およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
-> 
 
-> [!NOTE]
-> この機能は、Azure Database for MySQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
 ## <a name="what-is-advanced-threat-protection"></a>Advanced Threat Protection とは
 

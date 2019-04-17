@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407538"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265391"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -33,6 +33,8 @@ ms.locfileid: "57407538"
 たとえば、リソース グループに DNS ゾーン (リソースの種類は Microsoft.Network/dnsZones) と CNAME レコード (リソースの種類は Microsoft.Network/dnsZones/CNAME) が含まれるとします。DNS ゾーンは CNAME レコードの親リソースです。 テンプレートを完全モードでデプロイし、そこに DNS ゾーンを含めていない場合、DNS ゾーンと CNAME レコードの両方が削除されます。 テンプレートに DNS ゾーンだけを含め、CNAME レコードは含めていない場合、CNAME は削除されません。 
 
 リソースの種類別に削除の動作を説明した一覧については、「[Deletion of Azure resources for complete mode deployments (完全モードのデプロイでの Azure リソースの削除)](complete-mode-deletion.md)」をご覧ください。
+
+リソース グループが[ロックされている場合](resource-group-lock-resources.md)、完全モードはリソースを削除しません。
 
 > [!NOTE]
 > 完全デプロイ モードがサポートされるのはルートレベルのテンプレートのみです。 [リンクされたテンプレートまたは入れ子になったテンプレート](resource-group-linked-templates.md)には、増分モードを使用する必要があります。 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: e4fcc261a2952224870d5f1a0db4b9ddb666034e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d3c2c646cc713b4590a85def9813ca102198229
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850345"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277138"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>チュートリアル:Azure Active Directory と Shuccho Navi の統合
 
@@ -51,7 +51,7 @@ Azure AD と Shuccho Navi の統合を構成するには、次のものが必要
 
 Azure AD への Shuccho Navi の統合を構成するには、管理対象の SaaS アプリの一覧にギャラリーから Shuccho Navi を追加する必要があります。
 
-**ギャラリーから Shuccho Navi を追加するには、次の手順に従います。**
+**ギャラリーから Shuccho Navi を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -193,6 +193,6 @@ Shuccho Navi で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 7c4b2888075ab3df277d66383003ff8f6c1fef27
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 45e058d887ae79164196ab310f93270accbfb389
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "58408436"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494740"
 ---
 # <a name="azure-germany-database-services"></a>Azure Germany データベース サービス
 ## <a name="sql-database"></a>SQL Database
-Azure SQL Database V12 は、Azure Germany で一般提供されています。 メタデータの可視性構成と保護のベスト プラクティスのガイダンスについては、[SQL Server データベース エンジンの Microsoft セキュリティ センター](https://msdn.microsoft.com/library/bb510589.aspx)に関するページと [SQL Database グローバル ドキュメント](../sql-database/index.yml)に関するページを参照してください。
+Azure SQL Database V12 は、Azure Germany で一般提供されています。 メタデータの可視性構成と保護のベスト プラクティスのガイダンスについては、[SQL Server データベース エンジンの Microsoft セキュリティ センター](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)に関するページと [SQL Database グローバル ドキュメント](../sql-database/index.yml)に関するページを参照してください。
 
 ### <a name="variations"></a>バリエーション
 Azure Germany での SQL Database のアドレスは、グローバル Azure でのアドレスと異なります。
@@ -51,4 +51,4 @@ Azure Germany での Azure Cache for Redis のアクセスと管理を行うた�
 
 
 ## <a name="next-steps"></a>次の手順
-補足情報と最新情報については、[Azure Germany ブログ](https://blogs.msdn.microsoft.com/azuregermany/)をご覧ください。
+補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。

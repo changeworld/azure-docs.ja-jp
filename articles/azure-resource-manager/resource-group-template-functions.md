@@ -4,22 +4,20 @@ description: 値の取得、文字列の処理、デプロイ情報の取得の�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b5a1f12a877008a3ce2ff7bd9635b9ed47b379f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766752"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280317"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
 この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](resource-group-authoring-templates.md#syntax)に関するセクションを参照してください。
@@ -87,7 +85,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 ## <a name="deployment-value-functions"></a>デプロイの値関数
 リソース マネージャーには、テンプレートのセクションから値を取得し、デプロイに関連する値を取得する次の関数が用意されています。
 
-* [デプロイ](resource-group-template-functions-deployment.md#deployment)
+* [deployment](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 
@@ -196,6 +194,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [empty](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
 * [first](resource-group-template-functions-string.md#first)
+* [format](resource-group-template-functions-string.md#format)
 * [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [last](resource-group-template-functions-string.md#last)

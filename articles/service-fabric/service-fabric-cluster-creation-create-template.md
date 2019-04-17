@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ddfd8ce14ca20c7094fa927aeafc36ae53271499
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665510"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046186"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
 
@@ -28,6 +28,9 @@ ms.locfileid: "58665510"
 クラスター セキュリティはクラスターの初回セットアップ時に構成され、後からの変更はできません。 クラスターをセットアップする前に、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をお読みください。 Azure の Service Fabric では、x509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護し、クライアントを認証し、データを暗号化します。 管理エンドポイントへのアクセスをセキュリティで保護するために、Azure Active Directory も推奨されます。 Azure AD テナントとユーザーは、クラスターを作成する前に作成する必要があります。  詳細については、「[Set up Azure AD to authenticate clients](service-fabric-cluster-creation-setup-aad.md)」\(クライアントを認証するための Azure AD のセットアップ\)をお読みください。
 
 運用環境のワークロードを実行するための運用環境クラスターをデプロイする前に、必ず「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」を最初にお読みください。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
 サンプルの Resource Manager テンプレートは、[GitHub の Azure サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates)で入手できます。 これらのテンプレートは、クラスター テンプレートの作成を始める際に使用できます。
@@ -242,13 +245,13 @@ RM モジュールには、Azure AD 構成を生成する機能がありませ�
 次の PowerShell コマンドを使用して、パラメーター ファイルで Resource Manager テンプレートをテストします。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 問題が発生し、不明なメッセージを受け取った場合は、オプションに "-Debug" を使用します。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
 次の図は、Key Vault と Azure AD の構成を Resource Manager テンプレートに適合させる場所を示しています。

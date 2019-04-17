@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.openlocfilehash: f5ec6a16de46a7902f7ab739922dc756c96702e0
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 12574dd6600004175ab85eead0f837544c6e5ebf
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010975"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59004801"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Java)
 
@@ -49,6 +49,12 @@ java -version
 mvn --version
 ```
 
+次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
 https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip からサンプル Java プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
@@ -59,14 +65,13 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。
+1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
    **MyJavaDevice**: 登録するデバイスの名前。 示されているように、**MyJavaDevice** を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新する必要があります。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
@@ -164,4 +169,4 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-java.md)
+> [クイック スタート:IoT ハブに接続されたデバイスを制御する](quickstart-control-device-java.md)

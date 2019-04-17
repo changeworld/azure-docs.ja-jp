@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e43c607c2dc67054bde7689d50e495a59e6b659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540858"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270805"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
 
@@ -132,14 +132,14 @@ ms.locfileid: "58540858"
 1. Azure Maps Web コントロールの JavaScript ファイルと CSS ファイルへの参照を追加します。
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
 1. Azure Maps Services モジュールへの参照を追加します。 このモジュールは、Azure Maps の REST サービスをラップして JavaScript で使いやすいようにしている JavaScript ライブラリです。 検索機能を強化するうえで、このモジュールは役立ちます。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
 
 1. *index.js* と *index.css* への参照を追加します。
@@ -454,7 +454,7 @@ ms.locfileid: "58540858"
         //Wait until the map resources are ready.
         map.events.add('ready', function() {
 
-        //Add your post-map load functionality.
+            //Add your post-map load functionality.
 
         });
     }
@@ -516,7 +516,7 @@ ms.locfileid: "58540858"
     window.onload = initialize;
     ```
 
-1. 地図の `load` イベント リスナーに、検索エリアの中心を表示する HTML マーカーとズーム コントロールを追加します。
+1. 地図の `ready` イベント リスナーに、検索エリアの中心を表示する HTML マーカーとズーム コントロールを追加します。
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ ms.locfileid: "58540858"
     map.markers.add(centerMarker);
     ```
 
-1. 地図の `load` イベント リスナーで、データ ソースを追加します。 そのうえで、データセットの読み込みと解析のための呼び出しを行います。 データ ソースでは、クラスタリングを有効にしてください。 データ ソースでのクラスタリングにより、重なり合うポイントがまとめて 1 つのクラスターにグループ化されます。 ユーザーが拡大操作を実行すると、クラスターは個々のポイントに分かれます。 これによって、より流動的なユーザー エクスペリエンスとなり、パフォーマンスも向上します。
+1. 地図の `ready` イベント リスナーで、データ ソースを追加します。 そのうえで、データセットの読み込みと解析のための呼び出しを行います。 データ ソースでは、クラスタリングを有効にしてください。 データ ソースでのクラスタリングにより、重なり合うポイントがまとめて 1 つのクラスターにグループ化されます。 ユーザーが拡大操作を実行すると、クラスターは個々のポイントに分かれます。 これによって、より流動的なユーザー エクスペリエンスとなり、パフォーマンスも向上します。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,7 +548,7 @@ ms.locfileid: "58540858"
     loadStoreData();
     ```
 
-1. 地図の `load` イベント リスナーでデータセットを読み込んだ後、データをレンダリングするための一連のレイヤーを定義します。 クラスター化されたデータ ポイントのレンダリングには、バブル レイヤーが使用されます。 シンボル レイヤーは、バブル レイヤー上の各クラスターに含まれるポイントの数をレンダリングする目的で使用されます。 2 つ目のシンボル レイヤーでは、地図上の個々の場所のカスタム アイコンをレンダリングします。
+1. 地図の `ready` イベント リスナーでデータセットを読み込んだ後、データをレンダリングするための一連のレイヤーを定義します。 クラスター化されたデータ ポイントのレンダリングには、バブル レイヤーが使用されます。 シンボル レイヤーは、バブル レイヤー上の各クラスターに含まれるポイントの数をレンダリングする目的で使用されます。 2 つ目のシンボル レイヤーでは、地図上の個々の場所のカスタム アイコンをレンダリングします。
 
    ユーザーが地図上のクラスターまたはアイコンにマウス ポインターを重ねたときにマウス カーソルを変化させるために、バブル レイヤーとアイコン レイヤーに `mouseover` イベントと `mouseout` イベントを追加します。 クラスターのバブル レイヤーには、`click` イベントを追加します。 いずれかのクラスターをユーザーが選択すると、この `click` イベントによって地図が 2 レベル拡大され、クラスターが中心に来るように地図が配置されます。 アイコン レイヤーには `click` イベントを追加します。 ユーザーが個々の所在地アイコンを選択すると、コーヒー ショップの詳細を表示するポップアップ ウィンドウがこの `click` イベントによって表示されます。 地図には、その移動が完了するタイミングを監視するためのイベントを追加します。 このイベントが発生したら、リスト パネル内の項目を更新します。  
 
@@ -970,3 +970,6 @@ Azure Maps の対象範囲と機能について詳しくは、以下を参照し
 
 > [!div class="nextstepaction"]
 > [マップ コントロールの使用方法](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)

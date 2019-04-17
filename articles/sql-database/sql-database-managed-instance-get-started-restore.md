@@ -9,25 +9,25 @@ ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: carlrab, bonova
+ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: e2aa9edcd53aa3881b07e31fcf2312d5173a3a6e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5cf9046a26edae3e6076ee1effe32930f15f4569
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903507"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59356846"
 ---
-# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>クイック スタート:データベースをマネージド インスタンスに復元する 
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>クイック スタート:データベースをマネージド インスタンスに復元する
 
-このクイック スタートでは、SQL Server Management Studio (SSMS) を使用して、Azure Blob Storage から Azure SQL Database [マネージド インスタンス](sql-database-managed-instance.md)にデータベース (Wide World Importers - 標準のバックアップ ファイル) を復元します。 
+このクイック スタートでは、SQL Server Management Studio (SSMS) を使用して、Azure Blob Storage から Azure SQL Database [マネージド インスタンス](sql-database-managed-instance.md)にデータベース (Wide World Importers - 標準のバックアップ ファイル) を復元します。
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> - Azure Database Migration Service (DMS) を使用した移行の詳細については、[DMS を使用した Managed Instance への移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。 
-> - 各種の移行方法の詳細については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
+> Azure Database Migration Service (DMS) を使用した移行の詳細については、[DMS を使用した Managed Instance への移行](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
+> 各種の移行方法の詳細については、「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "57903507"
 - [マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するクイック スタートのリソースを使用します。
 - コンピューターに最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) がインストールされている必要があります。
 - SSMS を使用してマネージド インスタンスに接続する必要があります。 接続方法については、次のクイック スタートを参照してください。
-  - [Connect to an Azure SQL Database Managed Instance from an Azure VM (Azure VM から Azure SQL Database Managed Instance に接続する)](sql-database-managed-instance-configure-vm.md)
+  - [Azure VM から Azure SQL Database Managed Instance に接続する](sql-database-managed-instance-configure-vm.md)
   - [オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
 
 > [!NOTE]
@@ -51,9 +51,9 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
 3. 次の SQL スクリプトを実行します。このスクリプトでは、事前構成済みのストレージ アカウントと SAS キーを使用して、マネージド インスタンスに[資格情報を作成](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)します。
 
    ```sql
-   CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases] 
+   CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
-   , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D' 
+   , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
 
     ![資格情報を作成する](./media/sql-database-managed-instance-get-started-restore/credential.png)
@@ -61,7 +61,7 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
 4. 認証情報を確認するために、次のスクリプトを実行します。このスクリプトでは、[コンテナー](https://azure.microsoft.com/services/container-instances/)の URL を使用してバックアップ ファイルの一覧を取得します。
 
    ```sql
-   RESTORE FILELISTONLY FROM URL = 
+   RESTORE FILELISTONLY FROM URL =
       'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
@@ -80,13 +80,13 @@ SSMS で、次の手順に従って、Wide World Importers データベースを
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
-      , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time 
-   FROM sys.dm_exec_requests r 
-   CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a 
+      , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time
+   FROM sys.dm_exec_requests r
+   CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. 復元が完了したら、オブジェクト エクスプローラーで確認します。 
+7. 復元が完了したら、オブジェクト エクスプローラーで確認します。
 
 ## <a name="next-steps"></a>次の手順
 

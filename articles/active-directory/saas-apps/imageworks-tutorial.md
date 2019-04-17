@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aaa93c03236f1a3bd87d8fdd5e1be0930ee1381
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cde9d4efd3d6eb5bc987a4bf7eb423447ceddc2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887308"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>チュートリアル:Azure Active Directory と IMAGE WORKS の統合
 
@@ -51,7 +51,7 @@ Azure AD と IMAGE WORKS の統合を構成するには、次のものが必要�
 
 Azure AD への IMAGE WORKS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に IMAGE WORKS を追加する必要があります。
 
-**ギャラリーから IMAGE WORKS を追加するには、次の手順に従います。**
+**ギャラリーから IMAGE WORKS を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ IMAGE WORKS で Azure AD シングル サインオンを構成するには、次
 
     ![[IMAGE WORKS のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[IMAGE WORKS クライアント サポート チーム](mailto:iw-sd-support@fujifilm.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -148,7 +148,7 @@ IMAGE WORKS で Azure AD シングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -195,6 +195,6 @@ IMAGE WORKS で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

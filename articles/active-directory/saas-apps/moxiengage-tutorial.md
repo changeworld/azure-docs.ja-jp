@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fa2796ccaccd6d840ed0ca814d124e433b26049
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 655f8555f9e7fb04d69f35048b7fdec0fb1cebce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857795"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>チュートリアル:Azure Active Directory と Moxi Engage の統合
 
@@ -50,7 +50,7 @@ Azure AD と Moxi Engage の統合を構成するには、次のものが必要�
 
 Azure AD への Moxi Engage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Moxi Engage を追加する必要があります。
 
-**ギャラリーから Moxi Engage を追加するには、次の手順に従います。**
+**ギャラリーから Moxi Engage を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -192,7 +192,7 @@ Moxi Engage で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

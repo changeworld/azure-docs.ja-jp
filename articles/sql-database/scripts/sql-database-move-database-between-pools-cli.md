@@ -12,22 +12,22 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2c01c2f588ae0f26dc1cb2430ddadac30351b3d7
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 6fa21c0fea2eeacd17cfe9f0d7ba58d55ed60af1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097987"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357592"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>CLI を使用し、SQL エラスティック プールの Azure SQL データベースを移動する
 
-この Azure CLI のサンプル スクリプトは、2 つのエラスティック プールを作成し、一方の SQL エラスティック プールからもう一方の SQL エラスティック プールに Azure SQL データベースを移動し、その後、データベースをエラスティック プールから単一のデータベース コンピューティング サイズに移動します。 
+この Azure CLI のサンプル スクリプトは、2 つのエラスティック プールを作成し、一方の SQL エラスティック プールからもう一方の SQL エラスティック プールに Azure SQL データベースを移動し、その後、データベースをエラスティック プールから単一のデータベース コンピューティング サイズに移動します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -35,7 +35,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -48,7 +48,7 @@ az group delete --name myResourceGroup
 | command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | 単一のデータベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
 | [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | エラスティック プールを作成します。 |
 | [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | 単一のデータベースまたはエラスティック プール内のデータベースを作成します。 |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | データベースのプロパティを更新するか、エラスティック プールに対して、エラスティック プールから、またはエラスティック プール間でデータベースを移動します。 |
@@ -59,5 +59,3 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の SQL Database 用の CLI サンプル スクリプトは、[Azure SQL Database のドキュメント](../sql-database-cli-samples.md)のページにあります。
-
-

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 3/7/2019
+ms.date: 4/4/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e709ccee9dfcc6b6931df86b5dd38c7255baefdb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118614"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260767"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,7 +25,8 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| 2019 年 3 月の更新プログラム ロールアップ - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7 日 | サポートされています (推奨されるバージョン) |
+| 2019 年 4 月の更新プログラム ロールアップ - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019 年 4 月 4 日 | サポートされています (推奨されるバージョン) |
+| 2019 年 3 月の更新プログラム ロールアップ - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019 年 3 月 7 日 | サポートされています |
 | V5 リリース - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | サポートされています |
 | 2019 年 1 月の更新プログラム ロールアップ - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019 年 1 月 14 日 | サポートされています |
 | 2018 年 12 月の更新プログラム ロールアップ - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018 年 12 月 10 日 | サポートされています |
@@ -38,6 +39,13 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-5200"></a>エージェント バージョン 5.2.0.0
+次のリリース ノートは、2019 年 4 月 4 日にリリースされた Azure File Sync エージェントのバージョン 5.2.0.0 を対象としています。 バージョン 5.0.2.0 に関して記載されているリリース ノートへの追記となります。
+
+このリリースで修正された問題は、以下のとおりです。  
+- オフライン データ転送とデータ転送再開機能の信頼性の向上
+- 同期テレメトリの向上
 
 ## <a name="agent-version-5100"></a>エージェント バージョン 5.1.0.0
 次のリリース ノートは、2019 年 3 月 7 日にリリースされた Azure File Sync エージェントのバージョン 5.1.0.0 を対象としています。 バージョン 5.0.2.0 に関して記載されているリリース ノートへの追記となります。

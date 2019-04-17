@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: b120ad6c116b5722e5d2a982e93960232b0baf94
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 94f8d4ea98f42ad919597ef53dc63281825f0e6b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869349"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470136"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Bing 分析情報の使用例
 
@@ -27,13 +27,11 @@ ms.locfileid: "55869349"
 
 ![画像を含むページの展開表示](./media/pages-including.PNG)
 
-
 ## <a name="shoppingsources-insight-example"></a>ShoppingSources 分析情報の例
 
 画像に表示されている製品のショッピング ソースが Bing でどのように表示されるかを次に示します。
 
 ![ショッピング ソース](./media/shopping-sources.PNG)
-
 
 ## <a name="visualsearch-insight-example"></a>VisualSearch 分析情報の例
 
@@ -51,13 +49,11 @@ ms.locfileid: "55869349"
 
 ![画像を含むレシピ ページの展開表示](./media/expanded-recipes-pages-including.PNG)
 
-
 ## <a name="relatedsearches-insight-example"></a>RelatedSearches 分析情報の例
 
 他のユーザーによる画像の関連検索が Bing でどのように表示されるかを次に示します。 ユーザーが画像をクリックすると、関連するクエリの Bing.com/images の検索結果ページに移動します。
 
 ![画像の関連検索](./media/bordered-related-searches.PNG)
-
 
 ## <a name="entity-insight-example"></a>Entity 分析情報の例
 
@@ -65,25 +61,21 @@ ms.locfileid: "55869349"
 
 ![画像に表示されるエンティティ](./media/entity.PNG)
 
-
 ## <a name="displaying-other-insights-that-the-user-might-explore"></a>ユーザーが検索する可能性がある他の分析情報の表示
 
 画像に関してユーザーが検索する可能性がある他の情報が Bing でどのように表示されるかを次に示します。
 
 ![画像に関する他の分析情報の検索](./media/apple-pie-more-tags.PNG)
 
-
 ## <a name="bounding-boxes-and-hot-spots"></a>境界ボックスとホット スポット
 
-既定以外のタグには、画像内でタグが適用される対象領域を特定する境界ボックスが含まれています。 境界ボックスによって画像全体が特定される場合以外は、境界ボックスを使用して画像のホット スポットを作成します。 ユーザーがホット スポットをクリックすると、ホット スポット (四角形) に含まれるコンテンツに関連する情報を取得できます。 たとえば、画像が最新ファッションに関するものである場合、結果にはその画像に表示されているアクセサリ (バッグ、ジュエリー、スカーフなど) のタグ (および境界ボックス) が含まれる可能性があります。次の例は、画像に表示されているサングラスを特定するホット スポットの四角形です。
+既定以外のタグには、画像内でタグが適用される対象領域を特定する境界ボックスが含まれています。 境界ボックスによって画像全体が特定される場合以外は、境界ボックスを使用して画像のホット スポットを作成します。 ユーザーがホット スポットをクリックすると、ホット スポット (四角形) に含まれるコンテンツに関連する情報を取得できます。 たとえば、画像が最新ファッションに関するものである場合、結果にはその画像に表示されているアクセサリ (バッグ、ジュエリー、スカーフなど) のタグ (および境界ボックス) が含まれる可能性があります。 次の例は、画像に表示されているサングラスを特定するホット スポットの四角形です。
 
 ![境界ボックスとホット スポット](./media/click-to-search.PNG)
 
-
-
 ## <a name="next-steps"></a>次の手順
 
-実際に要求を送信してみるには、クイック スタートを参照してください:[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+最初の要求を送信してみるには、クイック スタートを参照してください。[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444635"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010143"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -31,7 +31,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
+* [Azure ストレージ アカウント](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -711,4 +711,4 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
-  * [Azure キュー ストレージと Visual Studio 接続済みサービスの概要](../storage/vs-storage-aspnet-getting-started-queues.md)
+  * [Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)

@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7f6baec8fee2b046949e2d88b5fff7bb5db9b40b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662416"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045835"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>チュートリアル:パート 2 - ルーティングされたメッセージを表示する
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rules-for-routing-the-messages"></a>メッセージ ルーティングの規則
 
@@ -50,7 +52,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    ![[ロジック アプリの作成] 画面](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
-   **作成**を選択します。
+   **作成** を選択します。
 
 2. ロジック アプリに移動します。 ロジック アプリに最も簡単に移動するには、**[リソース グループ]** を選択し、お使いのリソース グループ (このチュートリアルでは **ContosoResources** を使っています) を選び、リソースの一覧からロジック アプリを選びます。 [Logic Apps デザイナー] ページが表示されます (ページ全体を見るには右にスクロールする必要がある場合があります)。 [Logic Apps デザイナー] ページで、下にスクロールして **[空のロジック アプリ +]** タイルを選択します。 既定のタブは [おすすめ] です。 このウィンドウに何も表示されない場合は、**[すべて]** を選択すると、利用できるすべてのコネクタとトリガーが表示されます。
 
@@ -272,7 +274,7 @@ Power BI ウィンドウの上部にある [最新の情報に更新] ボタン�
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
+リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup`  は、このチュートリアルの開始時に **ContosoResources** に設定されました。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -280,10 +282,10 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>PowerShell を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、 [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
+リソース グループを削除するには、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) コマンドを使います。 `$resourceGroup`  は、このチュートリアルの開始時に **ContosoResources** に設定されました。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順

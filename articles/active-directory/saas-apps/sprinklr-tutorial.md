@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: bf87764367580a2842fd856856bd517482a19ff2
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 1c3b95686b8c91552615a9014102fd6a14f8c385
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361406"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル:Azure Active Directory と Sprinklr の統合
 
@@ -105,9 +105,9 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
     ![[Sprinklr のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sprinklr.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.sprinklr.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sprinklr.com`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<subdomain>.sprinklr.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Sprinklr クライアント サポート チーム](https://www.sprinklr.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -273,6 +273,6 @@ Sprinklr で Azure AD シングル サインオンを構成するには、次の
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

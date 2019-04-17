@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16cf541dca003446e7b49033018d5b9950bfc54f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889575"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル:Azure Active Directory と Learningpool Act の統合
 
@@ -105,7 +105,7 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
     ![[Learningpool Act のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`」と入力します。
+    a. **[サインオン URL]** ボックスに、URL として次のように入力します:  `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
@@ -239,7 +239,7 @@ Learningpool Act へのユーザー プロビジョニングの構成にあた�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

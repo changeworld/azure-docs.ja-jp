@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fa8f52cc106fdf9c104717d19792770677d10949
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 5e7c1ce6ab217149acd3aed9e5268b70fbd664df
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622146"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル:Azure Active Directory と Qualtrics の統合
 
@@ -53,7 +53,7 @@ Qualtrics と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への Qualtrics の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Qualtrics を追加する必要があります。
 
-**ギャラリーから Qualtrics を追加するには、次の手順に従います。**
+**ギャラリーから Qualtrics を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,7 +107,7 @@ Qualtrics で Azure AD シングル サインオンを構成するには、次�
 
     ![[Qualtrics のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.qualtrics.com`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<companyname>.qualtrics.com`
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
@@ -202,7 +202,7 @@ Qualtrics で Azure AD シングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

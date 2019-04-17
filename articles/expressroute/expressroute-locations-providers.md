@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 04/03/2019
 ms.author: pareshmu
-ms.openlocfilehash: e4ddd4bb435b472e6837862e49856c7b98011467
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 01e48a7f78be16d51878b5458174a35253841539
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878530"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006515"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -50,6 +50,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **インド** | 2 |インド西部、インド中部、インド南部 |チェンナイ、チェンナイ 2、ムンバイ、ムンバイ 2 |
 | **日本** | 2 |西日本、東日本 |大阪、東京 |
 | **韓国** | 2 |韓国中部、韓国南部 |釜山、ソウル|
+| **アラブ首長国連邦** | 2 | アラブ首長国連邦中部、アラブ首長国連邦北部 | ドバイ |
 | **南アフリカ** | 3 |南アフリカ西部、南アフリカ北部 |ケープタウン、ヨハネスブルグ |
 | **南アメリカ** | 3 |ブラジル南部 |サンパウロ |
 
@@ -85,6 +86,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シカゴ** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Comcast、Coresite、Equinix、InterCloud、Internet2、Level 3 Communications、Megaport、PacketFabric、PCCW Global Limited、Sprint、Telia Carrier、Verizon、Zayo |
 | **ダラス** | Equinix | Aryaka Networks、AT&T NetBond、Cologix、Equinix、Internet2、Level 3 Communications、Megaport、Neutrona Networks、Telmex Uninet、Telia Carrier、Verizon、Zayo|
 | **デンバー** | CoreSite | CoreSite、Megaport、Zayo |
+| **ドバイ** | Etisalat UAE | Etisalat UAE |
 | **ダブリン** | Equinix | Colt、eir、Equinix、Interxion、Megaport |
 | **香港特別行政区** | Equinix | Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ヨハネスブルグ** | Teraco | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
@@ -112,7 +114,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シリコン バレー** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、InterCloud、IX Reach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo |
 | **シンガポール** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
 | **シンガポール 2** | Global Switch | Colt、Epsilon Global Communications、Megaport、SingTel |
-| **シドニー** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
+| **シドニー** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Kordia、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
 | **台北** | Chief Telecom | Chief Telecom |
 | **東京** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
 | **トロント** | Cologix | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、Megaport、Telus、Zayo |

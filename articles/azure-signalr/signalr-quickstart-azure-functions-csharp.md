@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: e3a437d44c557d2ec53182d4f6178cbea3e54eba
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: df1b2cdd265b9cf48801174d1f0cd9936eae5f8b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544982"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264997"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>クイック スタート:C\# を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -36,7 +36,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
-1. Visual Studio (または他のコード エディター) を起動し、複製したリポジトリの *chat\src\csharp* フォルダーにあるソリューションを開きます。
+1. Visual Studio (または他のコード エディター) を起動し、複製したリポジトリの *src/chat/csharp* フォルダーにあるソリューションを開きます。
 
 1. Azure portal を開いているブラウザーのポータルの上部にある検索ボックスから、以前にデプロイした SignalR Service インスタンスの名前で検索し、インスタンスが正常に作成されたことを確認します。 インスタンスを選択して開きます。
 

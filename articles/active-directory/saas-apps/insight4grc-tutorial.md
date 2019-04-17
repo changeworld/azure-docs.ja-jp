@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 360dbd6605953f77a2874b2daf8db2d4e93307c1
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1ad101d209415acdceb0091dba5fbedeb8b0aa4b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189616"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>チュートリアル:Azure Active Directory と Insight4GRC の統合
 
@@ -52,7 +52,7 @@ Insight4GRC と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への Insight4GRC の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Insight4GRC を追加する必要があります。
 
-**ギャラリーから Insight4GRC を追加するには、次の手順に従います。**
+**ギャラリーから Insight4GRC を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,9 +106,9 @@ Insight4GRC で Azure AD シングル サインオンを構成するには、次
 
     ![[Insight4GRC Domain and URLs]\(Insight4GRC のドメインと URL) のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.Insight4GRC.com/SAML` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.Insight4GRC.com/SAML`
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -195,7 +195,7 @@ Insight4GRC で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -2,19 +2,20 @@
 title: チュートリアル:Bing Visual Search SDK で画像をトリミングする
 description: Bing Visual Search SDK を使用して、画像の特定の範囲から分析情報を取得します。
 services: cognitive-services
+titleSuffix: Azure Cognitive Services
 author: mikedodaro
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 04/03/2019
 ms.author: rosh
-ms.openlocfilehash: 46bd170966d391f49d3c816c15e4bdf2e7449c90
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6a98d9ddf76e86feb35c6d3d71f7777b0edd51d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102485"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491136"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする
 
@@ -34,8 +35,8 @@ Bing Visual Search SDK を使用すると、類似したオンライン画像を
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
-* [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) パッケージがインストール済みであること。 
-    - Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。 NuGet Custom Search パッケージをインストールすると、次のアセンブリもインストールされます。
+* [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) パッケージがインストール済みであること。
+    - Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、メニューから **[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。 NuGet Custom Search パッケージをインストールすると、次のアセンブリもインストールされます。
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -52,7 +53,7 @@ Bing Visual Search SDK を使用すると、類似したオンライン画像を
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
-string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
+string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -64,13 +65,13 @@ VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: ima
 
 ```csharp
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
-var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest: visualSearchRequest).Result; 
+var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest: visualSearchRequest).Result;
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>ImageModuleAction から URL データを取得する
+## <a name="get-the-url-data-from-imagemoduleaction"></a>URL データを `ImageModuleAction` から取得します。
 
-Bing Visual Search の結果は `ImageTag` オブジェクトです。  各タグには、`ImageAction` オブジェクトのリストが含まれます。  各 `ImageAction` には、アクションのタイプに依存する値のリストである `Data` フィールドが含まれます。
+Bing Visual Search の結果は `ImageTag` オブジェクトです。 各タグには、`ImageAction` オブジェクトのリストが含まれます。 各 `ImageAction` には、アクションのタイプに依存する値のリストである `Data` フィールドが含まれます。
 
 次のコードを使用すると、さまざまなタイプを表示できます。
 
@@ -80,24 +81,22 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 完全なアプリケーションでは、次の項目が返されます。
 
-
 |ActionType  |URL  | |
 |---------|---------|---------|
-|PagesIncluding WebSearchURL     |         |         
-|MoreSizes WebSearchURL     |         |         
-|VisualSearch WebSearchURL    |         |         
-|ImageById WebSearchURL     |         |         
-|RelatedSearches WebSearchURL     |         |         
-|Entity -> WebSearchUrl     | https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |         
-|TopicResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |         
-|ImageResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |         
+|PagesIncluding WebSearchURL     |         |
+|MoreSizes WebSearchURL     |         |  
+|VisualSearch WebSearchURL    |         |
+|ImageById WebSearchURL     |         |  
+|RelatedSearches WebSearchURL     |         |
+|Entity -> WebSearchUrl     | https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
+|TopicResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
+|ImageResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
 
-上で示されているように、`Entity` ActionType には、認識可能な人物、場所、または物に関する情報を返す Bing 検索クエリが含まれています。  `TopicResults` タイプと `ImageResults` タイプには、関連する画像のクエリが含まれています。 リスト内の URL は、Bing Search の結果にリンクしています。
+上で示されているように、`Entity` ActionType には、認識可能な人物、場所、または物に関する情報を返す Bing 検索クエリが含まれています。 `TopicResults` タイプと `ImageResults` タイプには、関連する画像のクエリが含まれています。 リスト内の URL は、Bing Search の結果にリンクしています。
 
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>`PagesIncluding``ActionType` イメージの URL の取得
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>PagesIncluding ActionType の画像の URL を取得する
-
-実際の画像 URL を取得するには、キャストにより、`ActionType` を、値のリストを持つ `Data` 要素が含まれる `ImageModuleAction` として読み取る必要があります。  各値は、画像の URL です。  次のコードでは、`PagesIncluding` アクション タイプを `ImageModuleAction` にキャストして、値を読み取ります。
+実際の画像 URL を取得するには、キャストにより、`ActionType` を、値のリストを持つ `Data` 要素が含まれる `ImageModuleAction` として読み取る必要があります。 各値は、画像の URL です。 次のコードでは、`PagesIncluding` アクション タイプを `ImageModuleAction` にキャストして、値を読み取ります。
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -111,6 +110,7 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [シングルページ Web アプリの作成](tutorial-bing-visual-search-single-page-app.md)
+> [Visual Search のシングルページ Web アプリを作成する](tutorial-bing-visual-search-single-page-app.md)
 
-[Visual Search 応答](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+## <a name="see-also"></a>関連項目
+> [Bing Visual Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

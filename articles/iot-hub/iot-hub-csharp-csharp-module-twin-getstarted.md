@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 7a6362ea33a27b27798f1304e779099fca60cdd5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3b10ae0998acbb010e61ebb41c602c7d42bc14fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446563"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263164"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>.NET バックエンドおよび .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -54,15 +54,15 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 1. **Visual Studio プロジェクトを作成する:** Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを既存のソリューションに追加します。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。 プロジェクトの名前を **UpdateModuleTwinReportedProperties** に設定します。
 
-    ![Visual Studio プロジェクトを作成する](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG)
+    ![Visual Studio プロジェクトを作成する](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
 2. **最新の Azure IoT Hub .NET デバイス SDK をインストールする:** モジュール ID とモジュール ツインはパブリック プレビュー中です。 これらは、IoT Hub プレリリース デバイス版の SDK でのみ使えます。 Visual Studio で、[ツール] > [Nuget パッケージ マネージャー] > [ソリューションの Nuget パッケージの管理] の順に選択します。 Microsoft.Azure.Devices.Client を検索します。 [プレリリースを含める] チェック ボックスをオンにしてください。 最新のバージョンを選択し、インストールします。 これで、モジュールのすべての機能を使用できるようになりました。 
 
     ![Azure IoT Hub .NET service SDK V1.16.0-preview-005 をインストールする](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
-3. **モジュールの接続文字列を取得する** -- [Azure Portal](https://portal.azure.com/) にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
+3. **モジュールの接続文字列を取得する** -- [Azure Portal](https://portal.azure.com/) にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が正常に作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
 
-    ![Azure Portal モジュールの詳細](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
+    ![Azure Portal モジュールの詳細](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
 
 4. **UpdateModuleTwinReportedProperties コンソール アプリを作成する**
 
@@ -160,7 +160,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 ## <a name="run-the-apps"></a>アプリの実行
 
-これで、アプリを実行する準備が整いました。 Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 コンソール アプリの動作として、**[マルチ スタートアップ プロジェクト]** を選択し、**[起動する]** を選択します。 F5 キーを押してアプリを起動します。 
+これで、アプリを実行する準備が整いました。 Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 コンソール アプリの動作として、**[マルチ スタートアップ プロジェクト]** を選択し、**[起動する]** を選択します。 F5 キーを押してアプリを起動します。
 
 ## <a name="next-steps"></a>次の手順
 

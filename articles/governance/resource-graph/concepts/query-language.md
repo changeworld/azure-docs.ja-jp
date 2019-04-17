@@ -1,7 +1,6 @@
 ---
 title: クエリ言語を理解する
 description: Azure Resource Graph で使用可能な Kusto の演算子と関数について説明します。
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 618445c5b792317d4de4b668e7ea1a186707007c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317919"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276679"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -33,7 +32,7 @@ Resource Graph でサポートされているテーブル演算子の一覧を�
 - [order by](/azure/kusto/query/orderoperator)
 - [project](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
-- [sample](/azure/kusto/query/sampleoperator)
+- [サンプル](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
 - [sort by](/azure/kusto/query/sortoperator)
 - [summarize](/azure/kusto/query/summarizeoperator)
@@ -41,7 +40,7 @@ Resource Graph でサポートされているテーブル演算子の一覧を�
 - [top](/azure/kusto/query/topoperator)
 - [top-nested](/azure/kusto/query/topnestedoperator)
 - [top-hitters](/azure/kusto/query/tophittersoperator)
-- [where](/azure/kusto/query/whereoperator)
+- [各値の説明:](/azure/kusto/query/whereoperator)
 
 ## <a name="supported-functions"></a>サポートされている関数
 

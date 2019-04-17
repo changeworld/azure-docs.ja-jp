@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: f95420397a502af8e939c8a53fe5635b82dc0f39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0b5dd169d29dc392274ab5589931f37beb04e9b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893647"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>チュートリアル:Azure Active Directory と ON24 Virtual Environment SAML Connection の統合
 
@@ -147,7 +147,7 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
     c. **[追加の URL を設定します]** をクリックします。 
 
-    d. **[リレー状態]** テキスト ボックスに、URL `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>` を入力します
+    d. **[リレー状態]** ボックスに、次の URL を入力します:  `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
 5.  **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
@@ -241,7 +241,7 @@ ON24 Virtual Environment SAML Connection との Azure AD シングル サイン�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

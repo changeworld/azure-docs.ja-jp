@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ba98328002cafbcede855b1187881d39f1de8fc5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401417"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279229"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してホスト プールを作成する
 
@@ -74,4 +74,7 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 
 ユーザーの UPN は、Azure Active Directory 内のユーザーの ID (たとえば、user1@contoso.com など) と一致する必要があります。 複数のユーザーを追加する場合は、ユーザーごとにこのコマンドレットを実行する必要があります。
 
-これらの手順を完了した後、デスクトップ アプリケーション グループに追加されたユーザーは、サポートされているリモート デスクトップ クライアントを使用して Windows Virtual Desktop にサインインして、セッション デスクトップ用のリソースを参照できます。
+ここまでの手順を完了すると、デスクトップ アプリケーション グループに追加されたユーザーが、サポートされているリモート デスクトップ クライアントを使用して Windows Virtual Desktop にサインインし、セッション デスクトップ用のリソースを参照できるようになります。
+
+>[!IMPORTANT]
+>Azure で Windows Virtual Desktop 環境のセキュリティを保護できるようにするには、ご利用の VM 上の受信ポート 3389 を開かないことをお勧めします。 Windows Virtual Desktop では、ユーザーがホスト プールの VM にアクセスするために、受信ポート 3389 を開く必要はありません。 トラブルシューティングの目的でポート 3389 を開く必要がある場合、[Just-In-Time VM アクセス](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)を使用することをお勧めします。

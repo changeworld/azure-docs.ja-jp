@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a22de254a2a0ddde3f6fe53a9adaed246e1754a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 14313567df69b26b000f9bddd98e009aeed2dcd7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407659"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>チュートリアル:Azure Active Directory と People の統合
 
@@ -105,11 +105,11 @@ People で Azure AD シングル サインオンを構成するには、次の�
 
     ![[People のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<company name>.peoplehr.net` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<company name>.peoplehr.net`
 
-    b. **[識別子]** ボックスに、URL `https://www.peoplehr.com` を入力します。
+    b. **[識別子]** ボックスに、URL を入力します。 `https://www.peoplehr.com`
 
-    c. **[応答 URL]** ボックスに、`https://<company name>.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx` のパターンを使用して URL を入力します
+    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<company name>.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[People クライアント サポート チーム](mailto:customerservices@peoplehr.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -209,7 +209,7 @@ People で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

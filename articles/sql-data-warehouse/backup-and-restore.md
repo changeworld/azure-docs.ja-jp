@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 14e7d8cfdaa9ac59a5a43881283fac6e2c9ee08f
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846989"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359013"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
 
@@ -25,7 +25,7 @@ Azure SQL Data Warehouse でのバックアップと復元の使用方法につ�
 
 "*データ ウェアハウスのスナップショット*" では、データ ウェアハウスの以前の状態を復旧またはコピーするために利用できる復元ポイントが作成されます。  SQL Data Warehouse は分散システムなので、データ ウェアハウスのスナップショットは Azure Storage に配置されている多くのファイルで構成されます。 スナップショットでは、データ ウェアハウスに格納されたデータの増分の変更がキャプチャされます。
 
-"*データ ウェアハウスの復元*" とは、既存または削除済みのデータ ウェアハウスの復元ポイントから作成された新しいデータ ウェアハウスのことです。 偶発的な破損や削除が起きた後にデータを再作成するデータウェアハウスの復元は、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 データ ウェアハウスは、テストまたは開発用にデータ ウェアハウスのコピーを作成する強力なメカニズムでもあります。  SQL Data Warehouse では高速復元メカニズムが使用されており、どのようなデータ サイズでも、同じリージョン内であれば 20 分未満で復元できます。
+"*データ ウェアハウスの復元*" とは、既存または削除済みのデータ ウェアハウスの復元ポイントから作成された新しいデータ ウェアハウスのことです。 偶発的な破損や削除が起きた後にデータを再作成するデータウェアハウスの復元は、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 データ ウェアハウスは、テストまたは開発用にデータ ウェアハウスのコピーを作成する強力なメカニズムでもあります。  SQL Data Warehouse の復元速度は、データベースのサイズと、ソースとターゲットのデータ ウェアハウスの場所によって異なる場合があります。 同じリージョン内の平均では、復元速度は通常約 20 分かかります。 
 
 ## <a name="automatic-restore-points"></a>自動復元ポイント
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471013"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281269"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -44,7 +44,7 @@ Microsoft が Windows と Linux の両方で提供するデータ サイエン�
 - Windows 用 Power BI Desktop
 - SQL Server 2016 Developer Edition (Windows )/Postgres (Linux)
 
-また、CNTK (Microsoft のオープン ソース ディープ ラーニング ツールキット)、xgboost、mxnet、Vowpal Wabbit などの **ML および AI ツール**も含まれています。
+これにはさらに、xgboost、mxnet、Vowpal Wabbit などの **ML や AI ツール**が含まれています。
 
 現在、DSVM は、**Windows** オペレーティング システムと **Linux CentOS** オペレーティング システムでご利用いただけます。 実行を計画しているデータ サイエンス プロジェクトのニーズに基づいて、DSVM のサイズ (CPU コアの数とメモリ容量) を選択します。 
 

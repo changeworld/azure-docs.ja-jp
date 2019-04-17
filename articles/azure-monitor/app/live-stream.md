@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814947"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009967"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -34,9 +34,9 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 * すべての Windows パフォーマンス カウンターをライブで監視します。
 * 問題が発生しているサーバーを簡単に特定し、すべての KPI/ライブ フィードをフィルター処理してそのサーバーだけに絞り込むことができます。
 
-[![Live Metrics Stream 動画](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![LLive Metrics Stream 動画(./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-現在、Live Metrics は ASP.NET、ASP.NET Core、Azure Functions、および Java アプリでサポートされています。
+現在、Live Metrics は ASP.NET、ASP.NET Core、Azure Functions、Java、および Node.js アプリでサポートされています。
 
 ## <a name="get-started"></a>作業開始
 

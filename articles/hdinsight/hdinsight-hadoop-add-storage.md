@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 373851c406d95a2e458c017cb311bd5cc4e5b30f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 54d7a0bf0474db4a9f9d74a1f694f10ef1be91cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664292"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357759"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -106,6 +106,10 @@ az hdinsight script-action execute ^
 「[実行中のクラスターにスクリプト アクションを適用する](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
 
 ## <a name="known-issues"></a>既知の問題
+
+### <a name="storage-firewall"></a>ストレージ ファイアウォール
+
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、**[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
 

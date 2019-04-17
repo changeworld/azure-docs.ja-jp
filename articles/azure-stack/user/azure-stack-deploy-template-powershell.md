@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d71df99096e58b3ac7adc920b91891b9a50cd6f7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9c1df99557293030dc0b1c0693b0bbc517a3f0ff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262297"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>PowerShell を使用して Azure Stack にテンプレートをデプロイする
 
@@ -34,9 +34,9 @@ PowerShell を使用して、Azure Resource Manager テンプレートを Azure 
 この例では、**AzureRM** PowerShell コマンドレットと GitHub に格納されているテンプレートを使用します。 テンプレートにより、Windows Server 2012 R2 Datacenter の仮想マシンが作成されます。
 
 >[!NOTE]
->この例を試す前に、Azure Stack ユーザーに [PowerShell が構成されている](azure-stack-powershell-configure-user.md)ことを確認します。
+> この例を試す前に、Azure Stack ユーザーに [PowerShell が構成されている](azure-stack-powershell-configure-user.md)ことを確認します。
 
-1. [https://aka.ms/AzureStackGitHub](https://aka.ms/AzureStackGitHub) に移動し、**101-simple-windows-vm** テンプレートを見つけます。 テンプレートを `C:\templates\azuredeploy-101-simple-windows-vm.json` に保存します。
+1. [AzureStackGitHub repo](https://aka.ms/AzureStackGitHub) を参照して、**101-simple-windows-vm** テンプレートを見つけます。 テンプレートを `C:\templates\azuredeploy-101-simple-windows-vm.json` に保存します。
 2. 管理者特権の PowerShell コマンド プロンプトを開きます。
 3. 次のスクリプト内の `username` と `password` を自分のユーザー名とパスワードに置き換えてから、スクリプトを実行します。
 
@@ -45,10 +45,10 @@ PowerShell を使用して、Azure Resource Manager テンプレートを Azure 
     $myNum = "001" # Modify this per deployment
     $RGName = "myRG$myNum"
     $myLocation = "local"
-   
+
     # Create resource group for template deployment
     New-AzureRmResourceGroup -Name $RGName -Location $myLocation
-   
+
     # Deploy simple IaaS template
     New-AzureRmResourceGroupDeployment `
         -Name myDeployment$myNum `
@@ -63,7 +63,7 @@ PowerShell を使用して、Azure Resource Manager テンプレートを Azure 
     ```
 
     >[!IMPORTANT]
-    >このスクリプトを実行するたびに、`$myNum` パラメーターの値をインクリメントし、デプロイの上書きを防ぎます。
+    > このスクリプトを実行するたびに、`$myNum` パラメーターの値をインクリメントし、デプロイの上書きを防ぎます。
 
 4. Azure Stack ポータルを開き、**[参照]**、**[仮想マシン]** の順に選択して、新しい仮想マシン (**myDeployment001**) を探します。
 

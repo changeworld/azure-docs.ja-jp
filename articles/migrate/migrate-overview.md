@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894971"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275455"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -32,7 +32,7 @@ Azure Migrate によって次のことが可能になります。
 - Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、6.5、6.7 のいずれか) で管理する必要があります。
 - Hyper-V のサポート (運用サポートを含む) は現在プレビュー段階にあります。この機能をお試しになりたい場合は、[こちら](https://aka.ms/migratefuture)でサインアップしてください。
 - 物理サーバーの評価には、Microsoft の[パートナー ツール](https://azure.microsoft.com/migration/partners/)をご利用いただけます。
-- 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。
+- 1 回の検出で、1 つのプロジェクトにおいて最大 1,500 個の VM を検出できます。 単一のアプライアンスを使用して単一のプロジェクト内で最大 10,000 個の VMware VM を検出できるプレビュー リリースを使用できます。試してみたい場合は、[こちら](https://aka.ms/migratefuture)からサインアップしてください。
 - より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md)。 Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
 -  Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、他の Azure のターゲット場所について評価を作成できないという訳ではありません。

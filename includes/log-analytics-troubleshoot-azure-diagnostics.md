@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2019
 ms.locfileid: "58505864"
 ---
-### <a name="troubleshoot-azure-diagnostics"></a>Azure 診断のトラブルシューティング
+### <a name="troubleshoot-azure-diagnostics"></a>Azure Diagnostics のトラブルシューティング
 
 次のエラー メッセージが表示される場合は、Microsoft.insights リソース プロバイダーが登録されていません。
 

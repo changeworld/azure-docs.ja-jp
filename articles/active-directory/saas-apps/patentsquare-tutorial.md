@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b97bc7deb706d8ff4844a7a7a7534cc7270adbae
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 61be963f4edc2dc50f176087f2c817c5f485588b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407676"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>チュートリアル:Azure Active Directory と PatentSQUAR の統合
 
@@ -51,7 +51,7 @@ PatentSQUAR と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への PatentSQUAR の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PatentSQUAR を追加する必要があります。
 
-**ギャラリーから PatentSQUAR を追加するには、次の手順に従います。**
+**ギャラリーから PatentSQUARE を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ PatentSQUARE で Azure AD シングル サインオンを構成するには、�
 
     ![[PatentSQUAR のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companysubdomain>.pat-dss.com:443/patlics/secure/aad`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<companysubdomain>.pat-dss.com:443/patlics/secure/aad`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companysubdomain>.pat-dss.com:443/patlics`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<companysubdomain>.pat-dss.com:443/patlics`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PatentSQUARE クライアント サポート チーム](https://www.panasonic.com/jp/business/its/patentsquare.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -195,7 +195,7 @@ PatentSQUARE で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

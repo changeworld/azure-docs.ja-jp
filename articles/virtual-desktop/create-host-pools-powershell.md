@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439075"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258472"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>PowerShell を使用してホスト プールを作成する
 
@@ -112,9 +112,12 @@ Windows Virtual Desktop エージェントを登録するには、各仮想マ�
      - **[ファイル]**、**[開く]** を選択し、ダウンロードしたファイルから PowerShell スクリプトを検索して開きます。
      - 緑色の再生ボタンを選択してスクリプトを実行します。
 
+>[!IMPORTANT]
+>Azure で Windows Virtual Desktop 環境のセキュリティを保護できるようにするには、ご利用の VM 上の受信ポート 3389 を開かないことをお勧めします。 Windows Virtual Desktop では、ユーザーがホスト プールの VM にアクセスするために、受信ポート 3389 を開く必要はありません。 トラブルシューティングの目的でポート 3389 を開く必要がある場合、[Just-In-Time VM アクセス](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)を使用することをお勧めします。
+
 ## <a name="next-steps"></a>次の手順
 
-これでホスト プールが作成されたので、RemoteApp を設定できます。 Windows Virtual Desktop 内でアプリを管理する方法について詳しくは、アプリ グループの管理のチュートリアルをご覧ください。
+これでホスト プールが作成されたので、RemoteApp を設定できます。 Windows Virtual Desktop 内でアプリを管理する方法に関する詳細については、アプリ グループの管理に関するチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [アプリ グループの管理のチュートリアル](./manage-app-groups.md)
+> [アプリ グループの管理に関するチュートリアル](./manage-app-groups.md)

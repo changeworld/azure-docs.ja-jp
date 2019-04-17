@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 7ca51b176c17f33b4779a0129c5dc57b220c0097
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877634"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544196"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする 
 
@@ -65,9 +65,6 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
-   > [!NOTE]
-   > このドキュメントで説明する .NET 標準サンプルは、Azure Cosmos DB Table API と Azure Table Storage の両方で動作します。 .NET Framework 4.5 で動作するサンプルの実行に関心をお持ちの場合は、[storage-table-dotnet-getting-started](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) サンプルをご覧ください。 
-
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Visual Studio でサンプル アプリケーションを開く
 
@@ -94,7 +91,6 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
       "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
-   [.NET Framework](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) サンプルを使用する場合、**App.config** ファイルに置かれている接続文字列を更新してください。
 
 4. CTRL キーを押しながら S キーを押して **Settings.json** ファイルを保存します。
 
@@ -107,9 +103,6 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
    ![NuGet パッケージの管理](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
 2. NuGet の **[参照]** ボックスに「Microsoft.Azure.Cosmos.Table」と入力します。 これで、Cosmos DB テーブル API のクライアント ライブラリが見つかります。 このライブラリは、現在 .NET Framework と .NET Standard で使用できることにご留意ください。 
-
-   > [!NOTE]
-   > .NET Framework を使用するサンプルを使用している場合、*Microsoft.Azure.CosmosDB.Table* NuGet パッケージをインストールしてください。 .NET Framework サンプルを Azure Table Storage と使用している場合、Cosmos DB 固有の NuGet パッケージのほかに *Microsoft.Azure.Storage.Common* NuGet パッケージも必要になります。 
    
    ![NuGet の [参照] タブ](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

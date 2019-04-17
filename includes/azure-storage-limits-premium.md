@@ -8,16 +8,29 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e3d2466f05028a963256dbcc052c46650857836d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372715"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59287104"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Premium パフォーマンス ブロック BLOB ストレージ
 
-Premium パフォーマンス ブロック BLOB ストレージ アカウントは、キロバイト単位の小さなオブジェクトを使用するアプリケーションのために最適化されています。 非常に高いトランザクション率、または、一貫して待ち時間の短いストレージが必要とされるアプリケーションに最適です。 Premium パフォーマンス ブロック BLOB ストレージは、アプリケーションに合わせて規模を変えられるように設計されています。 秒単位で非常に大量の要求が必要とされる、あるいはペタバイト単位のストレージ容量が必要とされるアプリケーションをデプロイする場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) でサポート リクエストを送信し、Microsoft にお問い合わせください。
+Premium パフォーマンス ブロック BLOB ストレージ アカウントは、キロバイト単位の小さなオブジェクトを使用するアプリケーションのために最適化されています。 高いトランザクション率、または、一貫して待ち時間の短いストレージが必要とされるアプリケーションに最適です。 Premium パフォーマンス ブロック BLOB ストレージは、アプリケーションに合わせて規模を変えられるように設計されています。 秒単位で非常に大量の要求が必要とされる、あるいはペタバイト単位のストレージ容量が必要とされるアプリケーションをデプロイする場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) でサポート リクエストを送信し、Microsoft にお問い合わせください。
+
+### <a name="premium-performance-filestorage-preview"></a>Premium パフォーマンス FileStorage (プレビュー)
+
+Premium ファイルは、**FileStorage (プレビュー)** と呼ばれる一意のストレージ アカウントを使用します。 このアカウントの種類は、高 IOPS、高スループットで、一貫して待機時間の短い のワークロード向けに設計されています。 Premium ファイル ストレージは、プロビジョニングされた共有サイズに合わせて拡大縮小されます。
+
+|領域  |ターゲット  |
+|---------|---------|
+|最大サイズ     |5 TiB (パブリック プレビュー)、100 TiB (限定パブリック プレビュー)     |
+|共有   |無制限  |
+|IOPS     |100,000 (限定パブリック プレビュー)    |
+|帯域幅|5 GB/秒     |
+
+ Premium ファイル共有のスケール ターゲットについては、[Premium ファイルのスケール ターゲット](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets)に関するセクションを参照してください。
 
 ### <a name="premium-performance-page-blob-storage"></a>Premium パフォーマンス ページ BLOB ストレージ
 

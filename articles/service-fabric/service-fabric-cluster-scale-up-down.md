@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
-ms.openlocfilehash: f201ac1f0ea5a4bc07e8c052e7653194140e8759
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669369"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049183"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
@@ -27,6 +27,9 @@ ms.locfileid: "58669369"
 > スケーリングを行う前にこのセクションをお読みください
 
 アプリケーションのワークロードのソースとなるコンピューティング リソースのスケーリングには、意図的な計画が必要になります。スケーリングには、運用環境においてほとんどの場合 1 時間以上の時間がかかり、ワークロードやビジネス コンテキストを理解する必要があります。実際、このアクティビティを実行した経験がない場合は、このドキュメントの残りの部分に進む前に、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を読んで理解することをお勧めします。 これは、意図しない LiveSite の問題を回避するための推奨事項です。また、実行することを決定した操作を非運用環境に対して適切にテストすることもお勧めします。 いつでも、[運用上の問題を報告したり、Azure の有料サポートを要求したりする](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure)ことができます。 この記事は、コンテキストが該当するこれらの操作の実行を担当するエンジニア向けに、スケーリング操作を説明します。ただし、どのリソース (CPU、ストレージ、メモリ) をスケーリングするか、どの方向にスケーリングするか (垂直、水平)、どの方法で操作するか (リソース テンプレート デプロイ、ポータル、PowerShell/CLI) など、どのような操作が実際のユース ケースに適しているかを自分で判断して理解する必要があります。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>自動スケール ルールを使用した、または手動による Service Fabric クラスターのスケールインとスケールアウト
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。 各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 詳細については、[Service Fabric のノードの種類](service-fabric-cluster-nodetypes.md)に関するドキュメントを参照してください。 クラスター内の Service Fabric のノードの種類はバックエンドの仮想マシン スケール セットで構成されるため、ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定する必要があります。
@@ -42,9 +45,9 @@ ms.locfileid: "58669369"
 クラスターを構成する仮想マシン スケール セットの一覧を取得するには、次のコマンドレットを実行します。
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
+Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
 
-Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
+Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>ノードの種類/仮想マシン スケール セットの自動スケール ルールの設定
@@ -79,10 +82,10 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine sca
 次のコードでは、スケール セットを名前で取得し、スケール セットの**容量**を 1 ずつ増やします。
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
+$scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
+Update-AzVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
 このコードでは容量を 6 に設定します。
@@ -192,7 +195,7 @@ else
 }
 ```
 
-以下の **sfctl** コードでは、コマンド `sfctl node list --query "sort_by(items[*], &name)[-1].name"` を使用して、最後に作成されたノードの **node-name** 値を取得します。
+以下の **sfctl** コードでは、以下のコマンドを使用して、最後に作成されたノードの **node-name** 値を取得します。 `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -220,10 +223,10 @@ sfctl node remove-state --node-name _nt1vm_5
 これで Service Fabric ノードがクラスターから削除されたので、仮想マシン スケール セットをスケールインできます。 次の例では、スケール セットの容量が 1 ずつ減少します。
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
+$scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity -= 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
 ```
 
 このコードでは容量を 5 に設定します。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/12/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399692"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276645"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel プレビューをオンボードする
 
@@ -29,28 +29,27 @@ ms.locfileid: "58399692"
 
 このクイック スタートでは、Azure Sentinel をオンボードする方法を説明します。 
 
-Azure Sentinel をオンボードするには、まずデータ ソースに接続する必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365、Azure AD、Azure ATP、Microsoft Cloud App Security) など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。  
+Azure Sentinel をオンボードするには、まず Azure Sentinel を有効にしてから、データ ソースを接続する必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365、Azure AD、Azure ATP、Microsoft Cloud App Security) など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。  
 
 データ ソースを接続した後、優れた設計のダッシュボードのギャラリーから選択し、データに基づいて分析情報を表示することができます。 これらのダッシュボードは、お客様のニーズに合わせて簡単にカスタマイズすることができます。
 
 
 ## <a name="global-prerequisites"></a>グローバルな前提条件
 
-- Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+- アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 - Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md)方法をご確認ください
 
-- Azure Sentinel を有効にするためのテナントに対する共同作成者のアクセス許可
-
-- テナントのグローバル管理者またはセキュリティ管理者のアクセス許可
+-  Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 
+- Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
+- 特定のデータ ソースに接続するには、追加のアクセス許可が必要になる可能性があります
  
-
 ## Azure Sentinel を有効にする <a name="enable"></a>
 
 1. Azure portal にアクセスします。
 2. Azure Sentinel が作成されたときのサブスクリプションが選択されていることをご確認ください。 
 3. Azure Sentinel を検索します。 
-   ![search](./media/quickstart-onboard/search-product.png)
+   ![検索](./media/quickstart-onboard/search-product.png)
 
 1. **[+ 追加]** をクリックします。
 1. 使用するワークスペースを選択するか、新しいワークスペースを作成します。 複数のワークスペースで Azure Sentinel を実行できますが、データは 1 つのワークスペースに分離されます。

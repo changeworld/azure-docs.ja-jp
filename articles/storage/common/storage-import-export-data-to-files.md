@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088657"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265638"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -30,7 +30,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。 
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。
 - Windows システムで [WAImportExport バージョン 2 をダウンロード](https://aka.ms/waiev2)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「 `C:\WaImportExport` 」のように入力します。
-- FedEx または DHL のアカウントを用意します。 
+- FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` に Azure Data Box Operations チームまでお問い合わせください。  
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
     - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
@@ -145,7 +145,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
 4. **[差出人住所の詳細]** で次の操作を実行します。
 
-    - ドロップダウン リストから運送業者を選択します。
+    - ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
     - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 
     - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
 

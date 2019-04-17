@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010511"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360181"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database の購入モデル
 
@@ -50,11 +50,11 @@ Azure SQL Database のデプロイ モデルでは、次のようなさまざま
 
 ## <a name="storage-costs"></a>ストレージ コスト
 
-ストレージの種類によって課金の方法は異なります。 データ ストレージの場合、選択したデータベースまたはプールの最大サイズに基づいて、プロビジョニングされたストレージに対して課金されます。 最大値を増減しない限り、コストは変わりません。 バックアップ ストレージは、インスタンスの自動バックアップに関連付けられ、動的に割り当てられます。 バックアップのリテンション期間を長くすると、ご自分のインスタンスで使用されるバックアップ ストレージが増えます。 
+ストレージの種類によって課金の方法は異なります。 データ ストレージの場合、選択したデータベースまたはプールの最大サイズに基づいて、プロビジョニングされたストレージに対して課金されます。 最大値を増減しない限り、コストは変わりません。 バックアップ ストレージは、インスタンスの自動バックアップに関連付けられ、動的に割り当てられます。 バックアップのリテンション期間を長くすると、ご自分のインスタンスで使用されるバックアップ ストレージが増えます。
 
 既定ではデータベースの 7 日分の自動バックアップが、RA-GRS Standard BLOB ストレージにコピーされます。 このストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 トランザクション ログのサイズは、データベースの変化率によって異なります。 データベース サイズの 100% に等しい最小ストレージ量は、追加料金なしで提供されます。 100% を超えるバックアップ ストレージの使用については、月あたりの GB 数で請求されます。
 
-ストレージの価格について詳しくは、[価格](https://azure.microsoft.com/pricing/details/sql-database/single/)のページをご覧ください。 
+ストレージの価格について詳しくは、[価格](https://azure.microsoft.com/pricing/details/sql-database/single/)のページをご覧ください。
 
 ## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
@@ -71,7 +71,7 @@ Azure SQL Database のデプロイ モデルでは、次のようなさまざま
 > **リージョンの制限:** サポートされているリージョンの現在の一覧については、[リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンで Managed Instance を作成したい場合は、[Azure portal 経由でサポート要求を送信](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)できます。
 。
 
-単一データベースまたはエラスティック プールで消費量が 300 DTU を超える場合は、仮想コアベースの購入モデルに変換すると、コストが減る可能性があります。 変換する場合は、任意の API または Azure portal を使用して、ダウンタイムなしで変換できます。 ただし、変換は必須ではなく、自動的には行われません。 DTU ベースの購入モデルが自分のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。 DTU ベースの購入モデルから仮想コアベースの購入モデルに変換する場合は、次の原則を使用してコンピューティング サイズを選択します。 
+単一データベースまたはエラスティック プールで消費量が 300 DTU を超える場合は、仮想コアベースの購入モデルに変換すると、コストが減る可能性があります。 変換する場合は、任意の API または Azure portal を使用して、ダウンタイムなしで変換できます。 ただし、変換は必須ではなく、自動的には行われません。 DTU ベースの購入モデルが自分のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。 DTU ベースの購入モデルから仮想コアベースの購入モデルに変換する場合は、次の原則を使用してコンピューティング サイズを選択します。
 
 - Standard レベルの 100 DTU ごとに、General Purpose レベルでは少なくとも 1 つの仮想コアが必要になります
 - Premium レベルの 125 DTU ごとには、Business Critical レベルでは少なくとも 1 つの仮想コアが必要になります

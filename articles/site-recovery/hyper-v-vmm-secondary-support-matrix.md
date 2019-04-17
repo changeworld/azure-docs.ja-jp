@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 419974138d6f556a2f774e8c1a355729c824fddc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310610"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360798"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -99,7 +99,7 @@ RDM | 該当なし
 
 ## <a name="vaults"></a>資格情報コンテナー
 
-**アクション** | **サポートされています**
+**Action** | **サポートされています**
 --- | --- 
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 |  いいえ 
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ 

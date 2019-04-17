@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: f776bdba88902c0b4eaa9f27ef8ed3a4700765cc
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: de31ceea4faeecabd54c0d23e9263cbb4090925d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620821"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491340"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  
@@ -40,7 +40,6 @@ Marketplace のサポート オプションの一覧です。
 
 | サポート窓口 | 説明 |  
 |:--- |:--- |  
-| Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | 技術的な問題に関してパートナーをサポートするために Slack 環境。 現在、この環境では約 350 以上のパートナーが活動しています。 |  
 | MSDN フォーラム:[social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) にある Marketplace | Microsoft Developer Network のフォーラム。 |  
 | Stack Overflow:[stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) にある Azure | ソリューションを取得し、Azure Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境。<ul> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) にある Azure Marketplace</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) にある Azure Resource Manager</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) にある Virtual Machines on Azure</li> <li>Stack Overflow:[stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) にある Containers on Azure</li> </ul> |
 | サポート (AppSource): [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Dynamics アプリの発行のサポート |

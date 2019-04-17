@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500561"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470901"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -82,7 +82,7 @@ Azure Dev Spaces の設定と使用の基本的なフローは次のとおりで
 AKS クラスターの準備には以下が含まれます。
 * AKS クラスターが [Azure Dev Spaces でサポートされている](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)リージョン内にあることを確認する。
 * Kubernetes 1.10.3 以降が実行されていることを確認する。
-* `az aks use-dev-spaces` を使用して Azure Dev Spaces をクラスターで有効にする。
+* を使用して Azure Dev Spaces をクラスターで有効にする `az aks use-dev-spaces`
 
 Azure Dev Spaces 用の AKS クラスターを作成して構成する方法の詳細については、次に示すいずれかのファースト ステップ ガイドを参照してください。
 * [Azure Dev Spaces での Java の使用](get-started-java.md)
@@ -96,13 +96,15 @@ AKS クラスターで Azure Dev Spaces を有効にすると、クラスター�
 * *azds* という名前の Kubernetes 名前空間が存在する場合は、それを削除し、新しい名前空間を作成する。
 * Kubernetes 初期化子オブジェクトをデプロイする。
 
+また、AKS クラスターが他の Azure Dev Spaces コンポーネントにサービスの呼び出しを行うために使用するものと同じサービス プリンシパルも使用します。
+
 ![Azure Dev Spaces がクラスターを準備する](media/how-dev-spaces-works/prepare-cluster.svg)
 
 Azure Dev Spaces を使用するには、開発スペースが少なくとも 1 つ必要です。 Azure Dev Spaces では、AKS クラスター内の Kubernetes 名前空間を開発スペースとして使用します。 コントローラーのインストール時には、最初の開発スペースとして使用する新しい Kubernetes 名前空間の作成または既存の名前空間の選択を求められます。 名前空間が開発スペースとして指定されると、コントローラーでは *azds.io/space=true* ラベルをその名前空間に追加し、開発スペースとして認定します。 作成または指定する最初の開発スペースは、クラスターの準備が完了した後に既定で選択されます。 選択されたスペースは、Azure Dev Spaces で新しいワークロードを作成するために使用されます。
 
 既定では、コントローラーが既存の *default* Kubernetes 名前空間をアップグレードして、*default* という名前の開発スペースを作成します。 クライアント側ツールを使用すると、新しい開発スペースを作成して既存の開発スペースを削除できます。 Kubernetes における制限があるため、*default* 開発スペースを削除することはできません。 また、コントローラーでは、*azds* という名前の既存の Kubernetes 名前空間を削除して、クライアント側ツールで使用される `azds` コマンドとの競合を回避します。
 
-Kubernetes 初期化子オブジェクトは、インストルメンテーション用のデプロイ時に 3 つのコンテナー (devspaces-proxy コンテナー、devspaces-proxy-init コンテナー、devspaces-build コンテナー) をポッドに挿入するために使用します。 **これらの 3 つのコンテナーはすべて、AKS クラスターでルート アクセスを使用して実行されます。**
+Kubernetes 初期化子オブジェクトは、インストルメンテーション用のデプロイ時に 3 つのコンテナー (devspaces-proxy コンテナー、devspaces-proxy-init コンテナー、devspaces-build コンテナー) をポッドに挿入するために使用します。 **これらの 3 つのコンテナーはすべて、AKS クラスターでルート アクセスを使用して実行されます。** また、AKS クラスターが他の Azure Dev Spaces コンポーネントにサービスの呼び出しを行うために使用するものと同じサービス プリンシパルも使用します。
 
 ![Azure Dev Spaces の Kubernetes 初期化子](media/how-dev-spaces-works/kubernetes-initializer.svg)
 

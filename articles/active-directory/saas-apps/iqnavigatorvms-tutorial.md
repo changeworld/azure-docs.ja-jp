@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f93bea79354dda68c4307ab45c6d1bbfd410ea1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: ad6bf2576d7f033f8ae029338dc94635dbba0fe7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370603"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory と IQNavigator VMS の統合
 
@@ -105,13 +105,13 @@ IQNavigator VMS で Azure AD シングル サインオンを構成するには�
 
     ![[IQNavigator VMS のドメインと URL] のシングル サインオン情報](common/idp-relay.png)
 
-    a. **[識別子]** テキスト ボックスに、`iqn.com` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `iqn.com`
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、`https://<subdomain>.iqnavigator.com` のパターンで URL を入力します。
+    d. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://<subdomain>.iqnavigator.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際の応答 URL とリレー状態で更新してください。 これらの値を取得するには、[IQNavigator VMS クライアント サポート チーム](https://www.beeline.com/iqn-product-support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -193,6 +193,6 @@ IQNavigator VMS で Azure AD シングル サインオンを構成するには�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

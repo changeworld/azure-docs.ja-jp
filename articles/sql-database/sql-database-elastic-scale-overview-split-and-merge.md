@@ -210,9 +210,9 @@ Split-Merge サービスでは、完了した要求と実行中の要求を監�
 
   詳細な進捗状況レポートを提供する XML 値。 行のセットがソースからターゲットにコピーされるときに、進捗状況レポートが定期的に更新されます。 エラーまたは例外が発生した場合、この列にはエラーに関するより詳細な情報も含まれます。
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。 診断構成を制御する方法については、次の記事で説明されています。[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md) ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure Diagnostics を使用します。 診断構成を制御する方法については、次の記事で説明されています。[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md) ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
 

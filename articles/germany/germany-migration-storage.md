@@ -9,16 +9,18 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 3e516eff2ff3262064fa32a8fe31e1f27cd8d4b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58408464"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491058"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>ストレージ リソースをグローバル Azure に移行する
 
 この記事には、Azure ストレージ リソースの Azure Germany からグローバル Azure への移行に役立つ可能性のある情報が含まれています。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="blobs"></a>BLOB
 
@@ -45,7 +47,7 @@ URI の 3 つの部分 (*storageaccountname*、*containername*、*blobname*) は
 また、Azure Storage アカウントにアクセスするためのストレージ アカウント キーも必要です。 これらは、PowerShell または CLI を使用してポータルから取得します。 例: 
 
 ```powershell
-Get-AzureRmStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
+Get-AzStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
 ```
 
 いつものように、各ストレージ アカウントの 2 つのキーのうちの 1 つだけが必要です。

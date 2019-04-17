@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 78ec32dcbfc5a1a3b6d480a361f1568fa5427699
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 4e607d821d0a587b25c6cb6929ac6765d500b6fb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "58408446"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490630"
 ---
 # <a name="migrate-web-resources-to-global-azure"></a>Web リソースをグローバル Azure に移行する
 
@@ -40,18 +40,18 @@ ms.locfileid: "58408446"
 
 ある Azure Notification Hubs インスタンスから別のインスタンスに設定を移行するには、すべての登録トークンをそれらのタグと共に、エクスポートしてインポートします。
 
-1. Azure Blob ストレージ コンテナーに[既存の通知ハブの登録をエクスポート](https://msdn.microsoft.com/library/azure/dn790624.aspx)します。
+1. Azure Blob ストレージ コンテナーに[既存の通知ハブの登録をエクスポート](/previous-versions/azure/azure-services/dn790624(v=azure.100))します。
 1. ターゲット環境に新しい通知ハブを作成します。
-1. BLOB ストレージから新しい通知ハブに、[登録トークンをインポート](https://msdn.microsoft.com/library/azure/dn790624.aspx)します。
+1. BLOB ストレージから新しい通知ハブに、[登録トークンをインポート](/previous-versions/azure/azure-services/dn790624(v=azure.100))します。
 
 詳細:
 
-- [Notification Hubs のチュートリアル](https://docs.microsoft.com/azure/notification-hubs/#step-by-step-tutorials)を完了することによって知識を更新します。
+- [Notification Hubs のチュートリアル](https://docs.microsoft.com/azure/notification-hubs/#step-by-step-tutorials)を完了して、新しい知識を得ましょう。
 - [Notification Hubs の概要](../notification-hubs/notification-hubs-push-notification-overview.md)を確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 55d6f1393f4f180776557ea9a2651064d61c3e06
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301511"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361995"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| (省略可) vCenter に接続するためのプロトコル ("http" または "https") を指定します。 既定のプロトコルは https です。|
 | -StorageAccountName | (省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。 |
 | -StorageAccountKey | (省略可) ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] の順に移動します。 |
-| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
+| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China 21Vianet であるときに使用します。 |
 
 
 VM のプロファイリング期間は 7 日間より長くすることをお勧めします。 変更頻度のパターンが 1 か月間で変動する場合は、変更頻度が最大となる週をプロファイル期間とすることをお勧めします。 理想的なプロファイル期間は 31 日で、そうすれば、よりよいアドバイスが得られます。 プロファイリング期間中は ASRDeploymentPlanner.exe が実行状態となります。 ツールには、プロファイリングの時間を日数で入力します。 ツールの簡単なテストや概念実証が目的であれば、プロファイル期間は数時間や数分でもかまいません。 プロファイリング期間として許容される最短時間は 30 分です。
@@ -95,7 +95,7 @@ VM のプロファイリング期間は 7 日間より長くすることをお�
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-既定の設定では、たとえば 1,500 台の VM をプロファイリングする場合に 2 つの VMList.txt ファイルを作成します。 1 つのリストには 1,000 台の VM が含まれており、もう 1 つのリストには 500 台の VM が含まれています。 一方に VMList1.txt を使用し、もう一方に VMList2.txt を使用して、ASR Deployment Planner で 2 つのインスタンスを実行します。 両方の VMList VM のプロファイリング データを格納するために、同じディレクトリ パスを使用できます。
+既定の設定では、たとえば 1,500 台の VM をプロファイリングする場合に 2 つの VMList.txt ファイルを作成します。 1 つのリストには 1,000 台の VM が含まれており、もう 1 つのリストには 500 台の VM が含まれています。 Azure Site Recovery Deployment Planner の 2 つのインスタンスを実行して、一方に VMList1.txt を使用し、もう一方に VMList2.txt を使用します。 両方の VMList VM のプロファイリング データを格納するために、同じディレクトリ パスを使用できます。
 
 ハードウェア構成 (特にレポートを生成するためにツールが実行されるサーバーの RAM サイズ) によっては、メモリ不足で操作が失敗する可能性があることが確認されています。 優れたハードウェアを使用している場合、MaxVMsSupported をより高い値に変更できます。  
 
@@ -240,12 +240,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 生成された Microsoft Excel レポートには、次の情報が含まれています。
 
-* [On-Premises Summary (オンプレミス サマリー)](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
-* [Recommendations (推奨事項)](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->Storage Placement (VM<->ストレージの配置)](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [On-premises summary (オンプレミス サマリー)](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
+* [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
+* [VM<->storage placement (VM-ストレージの配置)](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [Compatible VMs (適合 VM)](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [Incompatible VMs (不適合 VM)](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [Cost Estimation (コスト見積もり)](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [Cost estimation (コスト見積もり)](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
@@ -265,7 +265,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 | -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 (GPv1) 型にする必要があります。|
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] \(クラシック ストレージ アカウントの場合は [プライマリ アクセス キー]) の順に移動します。 |
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 このファイルには、1 行につき 1 つの VM 名または IP アドレスが記述されている必要があります。 このファイルに指定する VM 名は、vCenter サーバー/vSphere ESXi ホスト上の VM 名と一致させる必要があります。<br>たとえば VMList.txt ファイルに、次のように VM を記述することができます。<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。 |
+| -Environment | (省略可) レプリケーション先となる Azure ストレージ アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China 21Vianet であるときに使用します。 |
 
 Deployment Planner ツールは、指定されたディレクトリに 64 MB の asrvhdfile<#>.vhd ファイル ("#" はファイルの番号) をいくつか作成します。 これらのファイルをストレージ アカウントにアップロードすることによってスループットが調査されます。 これらのファイルはすべて、スループットの測定後にストレージ アカウントとローカル サーバーから削除されます。 スループットの計算中に何らかの理由でツールが終了した場合、ストレージとローカル サーバーからファイルが削除されません。 この場合は、ファイルを手動で削除する必要があります。
 

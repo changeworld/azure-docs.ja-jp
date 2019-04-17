@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ec66a4fdffcff2d2ff7c11c969900c8b12dda755
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669697"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049457"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure 診断拡張機能を使用したパフォーマンスの監視
 
@@ -27,6 +27,9 @@ ms.locfileid: "58669697"
 
  > [!NOTE]
 > これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)をご覧ください。  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>WadCfg を介してパフォーマンス カウンターを収集する
 
@@ -192,10 +195,10 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
  >[!NOTE]
  >`*` を使用して、名前が類似したパフォーマンス カウンターのグループを指定することができますが、シンクを経由して (Application Insights に) カウンターを送信する際は、それぞれが個別に宣言されている必要があります。 
 
-1. 収集が必要なパフォーマンス カウンターを適切に追加したら、クラスター リソースをアップグレードして、これらの変更を実行中のクラスターに反映させる必要があります。 変更した `template.json` を保存して、PowerShell を開きます。 `New-AzureRmResourceGroupDeployment` を使用すると、クラスターをアップグレードできます。 呼び出しは、リソース グループ、更新したテンプレート ファイル、パラメーター ファイルの名前を必要とし、更新したリソースに適切な変更を加えるよう求めます。 自分のアカウントでサインインし、適切なサブスクリプションがあれば、次のコマンドを使用してアップグレードを実行します。
+1. 収集が必要なパフォーマンス カウンターを適切に追加したら、クラスター リソースをアップグレードして、これらの変更を実行中のクラスターに反映させる必要があります。 変更した `template.json` を保存して、PowerShell を開きます。 `New-AzResourceGroupDeployment` を使用すると、クラスターをアップグレードできます。 呼び出しは、リソース グループ、更新したテンプレート ファイル、パラメーター ファイルの名前を必要とし、更新したリソースに適切な変更を加えるよう求めます。 自分のアカウントでサインインし、適切なサブスクリプションがあれば、次のコマンドを使用してアップグレードを実行します。
 
     ```sh
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
+    New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
 1. アップグレードのロールアウトが完了したら (初めてのデプロイかどうか、およびリソース グループのサイズに応じて、15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。 [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します。
@@ -203,4 +206,4 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
 ## <a name="next-steps"></a>次の手順
 * クラスターのその他のパフォーマンス カウンターを収集します。 収集が必要なカウンターの一覧については、「[パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)」を参照してください。
 * [Windows VM と Azure Resource Manager テンプレートで監視と診断を利用](../virtual-machines/windows/extensions-diagnostics-template.md)して、`WadCfg` にさらに変更を加えます (診断データを送信する追加のストレージ アカウントの構成など)。
-* [WadCfg ビルダー](https://azure.github.io/azure-diagnostics-tools/config-builder/)を使用して最初からテンプレートを構築し、構文が正しいことを確認します。
+* [WadCfg ビルダー](https://azure.github.io/azure-diagnostics-tools/config-builder/)にアクセスして最初からテンプレートを構築し、構文が正しいことを確認します (https://azure.github.io/azure-diagnostics-tools/config-builder/) で最初からテンプレートを構築し、構文が正しいことを確認します)。

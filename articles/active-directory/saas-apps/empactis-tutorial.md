@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: ed0b5c990bd12e23fefcc433a656a71207b08683
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: d4d9e988f54abc52eedf0dfc26c78a2d16f72032
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58003746"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empactis"></a>チュートリアル:Azure Active Directory と Empactis の統合
 
@@ -51,7 +51,7 @@ Empactis と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Empactis の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Empactis を追加する必要があります。
 
-**ギャラリーから Empactis を追加するには、次の手順に従います。**
+**ギャラリーから Empactis を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -188,7 +188,7 @@ Empactis で Azure AD シングル サインオンを構成するには、次の
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

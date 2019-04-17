@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285008"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264898"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -30,6 +30,8 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 > [!Important]
 > サブスクリプションを別のディレクトリに関連付けると、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 従来のサブスクリプション管理者 (サービス管理者と共同管理者) もアクセスできなくなります。
+> 
+> また、Azure Kubernetes Service (AKS) クラスターを別のサブスクリプションに移したり、クラスターを所有するサブスクリプションを新しいテナントに移したりすると、ロールの割り当てやサービス プリンシパルの権限が失われるため、クラスターの機能が失われることになります。 AKS の詳細については、「[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -67,15 +69,16 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
     ![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-サブスクリプションのディレクトリの変更はサービス レベルの操作であるため、サブスクリプションの課金所有権には影響しません。 アカウント管理者は、引き続き[アカウント センター](https://account.azure.com/subscriptions)からサービス管理者を変更することができます。 元のディレクトリを削除するには、新しいアカウント管理者にサブスクリプションの課金所有権を譲渡する必要があります。課金所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)」を参照してください。 
+サブスクリプションのディレクトリの変更はサービス レベルの操作であるため、サブスクリプションの課金所有権には影響しません。 アカウント管理者は、引き続き[アカウント センター](https://account.azure.com/subscriptions)からサービス管理者を変更することができます。 元のディレクトリを削除するには、新しいアカウント管理者にサブスクリプションの課金所有権を譲渡する必要があります。課金所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)」を参照してください。
 
 ## <a name="post-association-steps"></a>関連付けの後の手順
-
 サブスクリプションを別のディレクトリに関連付けた後、操作を再開するために実行しなければならない追加手順がある場合があります。
 
 1. キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/key-vault-subscription-move-fix.md)」を参照してください。
 
-1. このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](../../azure-stack/azure-stack-registration.md)」を参照してください。
+2. このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](../../azure-stack/azure-stack-registration.md)」を参照してください。
+
+
 
 ## <a name="next-steps"></a>次の手順
 

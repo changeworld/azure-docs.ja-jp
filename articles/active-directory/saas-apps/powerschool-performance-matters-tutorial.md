@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 7286f507c8374c56ecedf84c3775be57f8aa4872
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: b62ac8229d121738c23a4520bc1c1952603e2a12
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58074762"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>チュートリアル:Azure Active Directory と Powerschool Performance Matters の統合
 
@@ -199,6 +199,6 @@ Powerschool Performance Matters で Azure AD シングル サインオンを構�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

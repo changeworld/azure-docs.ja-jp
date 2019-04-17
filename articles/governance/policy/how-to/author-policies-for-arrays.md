@@ -1,19 +1,18 @@
 ---
 title: Azure リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターを作成し、配列の言語式のルールを作成し、[*] エイリアスを評価し、既存の配列に要素を付加する方法について説明します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 62267a4549355212a18654ff9781b2164ba19fa9
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57860268"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274725"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -78,7 +77,7 @@ ms.locfileid: "57860268"
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>割り当て中にパラメーター配列に値を渡す
 
-Azure portal からポリシーを割り当てるときに、**type** _array_ のパラメーターは単一のテキストボックスとして表示されます。 ヒントには「値を区切るには ; を使用してください (例: London;New York)」と示されます。 (e.g. London;New York)". _eastus2_、_eastus_、および _westus2_ の許可されている場所の値をパラメーターに渡すには、次の文字列を使用します。
+Azure portal からポリシーを割り当てるときに、**type** _array_ のパラメーターは単一のテキストボックスとして表示されます。 ヒントには「値を区切るには ; を使用してください  (例: ロンドン;New York)」と示されます。 _eastus2_、_eastus_、および _westus2_ の許可されている場所の値をパラメーターに渡すには、次の文字列を使用します。
 
 `eastus2;eastus;westus2`
 
@@ -143,7 +142,7 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 
 ### <a name="evaluating-the--alias"></a>[*] エイリアスの評価
 
-名前に **[\*]** が付けられたエイリアスは、**type** が _array_ であることを示します。 配列全体の値を評価する代わりに、**[\*]** は配列の各要素を評価できるようにします。 この項目ごとの評価が役立つシナリオは、なし、任意、すべての 3 つあります。
+名前に **[\*]** が付けられたエイリアスは、**type** が _array_ であることを示します。 配列全体の値を評価する代わりに、**[\*]** は配列の各要素を評価できるようにします。 この項目ごとの評価が役立つシナリオは次の 3 つあります。なし、任意、すべて。
 
 **if** ルールが true として評価された場合にのみ、ポリシー エンジンは **then** 内の **effect** をトリガーします。
 このファクトは、**[\*]** が配列の各個々の要素を評価する方法というテキストで理解するために重要になります。

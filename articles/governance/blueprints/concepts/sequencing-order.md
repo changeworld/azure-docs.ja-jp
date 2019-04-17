@@ -1,7 +1,6 @@
 ---
 title: デプロイ シーケンス順序について
 description: ブループリント定義が経過するライフサイクルと各ステージの詳細について説明します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/25/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434808"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266190"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 

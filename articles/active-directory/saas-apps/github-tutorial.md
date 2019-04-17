@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65badda86fa29dc68f2eef1e9c0883dc8b40107a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852894"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>チュートリアル:Azure Active Directory と GitHub の統合
 
@@ -53,7 +53,7 @@ GitHub と Azure AD の統合を構成するには、次のものが必要です
 
 Azure AD への GitHub の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に GitHub を追加する必要があります。
 
-**ギャラリーから GitHub を追加するには、次の手順に従います。**
+**ギャラリーから GitHub を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -67,7 +67,7 @@ Azure AD への GitHub の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**GitHub**」と入力し、結果パネルで **[GitHub]** を選択します。次に **[追加]** ボタン をクリックして、アプリケーションを追加します。
+4. 結果ボックスに「**GitHub**」と入力し、結果パネルで **[GitHub]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の GitHub](common/search-new-app.png)
 
@@ -107,9 +107,9 @@ GitHub で Azure AD シングル サインオンを構成するには、次の�
 
     ![GitHubドメインと URL シングル サインオンの情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<entity-id>/sso`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://github.com/orgs/<entity-id>/sso`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://github.com/orgs/<entity-id>`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://github.com/orgs/<entity-id>`
 
     > [!NOTE]
     > これは実際の値ではないので注意してください。 実際のサインオン URL と識別子で、これらの値を更新する必要があります。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、GitHub 管理者セクションに移動します。
@@ -185,7 +185,7 @@ GitHub で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -222,7 +222,7 @@ GitHub で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションの目的は、GitHub で Britta Simon というユーザーを作成することです。 GitHub では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](github-provisioning-tutorial.md)をご覧ください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します。**
 
 1. GitHub 企業サイトに管理者としてログインします。
 

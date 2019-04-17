@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578120"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051441"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -87,7 +87,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
-        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>"
+        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
     シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 アプリをデプロイするときは (たとえば、[Azure App Service](https://azure.microsoft.com/services/app-service/web) に)、アプリケーションの設定 (たとえば、App Service での**接続文字列**) を使用します。 シークレット マネージャーで接続文字列を保存するのではなく、この設定を使用します。
 

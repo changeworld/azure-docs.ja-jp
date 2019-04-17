@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 1/29/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 29c2e53c4fb496e0f12e04f08b0add4273db25a7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790160"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277420"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォール要求サイズ制限と除外リスト
 
@@ -54,6 +54,7 @@ WAF の除外リストを使用すると、WAF の評価から特定の要求属
 - **Starts with**:この演算子は指定したセレクター値で始まるすべてのフィールドと一致します。
 - **Ends with**:この演算子は指定したセレクター値で終わるすべての要求フィールドと一致します。
 - **Contains**:この演算子は指定したセレクター値を含むすべての要求フィールドと一致します。
+- **Equals any**:この演算子は、すべての要求フィールドと一致します。 * はセレクター値になります。
 
 すべての場合に、照合で大文字と小文字は区別されず、正規表現はセレクターとして使用できません。
 

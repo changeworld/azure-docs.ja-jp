@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 51f4801c00d23aa820949faa58f7cd64ee3597ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2fce8b628798ef38889f64d9409bf586a85463b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842398"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>チュートリアル:Azure Active Directory と mindWireless の統合
 
@@ -104,9 +104,9 @@ mindWireless で Azure AD シングル サインオンを構成するには、�
 
     ![[mindWireless のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.mwsmart.com/` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.mwsmart.com/`
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[mindWireless クライアント サポート チーム](mailto:sdulloor@mindwireless.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -175,7 +175,7 @@ mindWireless で Azure AD シングル サインオンを構成するには、�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -222,7 +222,7 @@ mindWireless で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

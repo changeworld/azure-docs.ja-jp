@@ -65,7 +65,7 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
 
 * 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
 
-   Azure ログ統合とインストール方法について詳しくは、「[Azure 診断ログおよび Windows イベント転送による Azure ログ統合](security-azure-log-integration-get-started.md)」をご覧ください。
+   Azure ログ統合とインストール方法について詳しくは、「[Azure Diagnostics ログおよび Windows イベント転送による Azure ログ統合](security-azure-log-integration-get-started.md)」をご覧ください。
 
 * 最新の PowerShell バージョン。
 

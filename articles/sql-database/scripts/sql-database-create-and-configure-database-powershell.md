@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a326462a6735b5a91d1ef03de41bb4705fe452a4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8e1ce1ad692f544d668ae557c85e504ffcb9d0dd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854213"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59356667"
 ---
 # <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>PowerShell を使用して単一の Azure SQL データベースを作成し、SQL Database サーバーのファイアウォール規則を構成する
 
@@ -35,7 +35,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname

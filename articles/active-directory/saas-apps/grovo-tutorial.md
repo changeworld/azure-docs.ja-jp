@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 37ba3b8082591f5eab97a7544a13c3279160a0ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc0ef38193bbd6e5044764a26a5793a4d115348d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861963"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>チュートリアル:Azure Active Directory と Grovo の統合
 
@@ -106,13 +106,13 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](common/idp-relay.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.grovo.com/sso/saml2/metadata`
 
-    b. **[応答 URL]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/saml-assertion` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、`https://<subdomain>.grovo.com` のパターンで URL を入力します。
+    d. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://<subdomain>.grovo.com`
 
 5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
@@ -212,7 +212,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -262,7 +262,7 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

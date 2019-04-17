@@ -3,7 +3,7 @@ title: Azure クラウド サービス向けの Application Insights | Microsoft
 description: Application Insights で Web と worker ロールを効果的に監視する
 services: application-insights
 documentationcenter: ''
-keywords: WAD2AI, Azure 診断
+keywords: WAD2AI, Azure Diagnostics
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
@@ -89,7 +89,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Set up Azure Diagnostics for each role (各ロール用の Azure 診断を設定する)
-このオプションは、Application Insights でアプリを監視する場合に設定します。 Web ロールの場合は、このオプションによってパフォーマンスの監視、アラート、診断、使用状況の分析が提供されます。 その他のロールの場合は、再起動、パフォーマンス カウンター、System.Diagnostics.Trace への呼び出しなど、Azure 診断を検索して監視できます。 
+このオプションは、Application Insights でアプリを監視する場合に設定します。 Web ロールの場合は、このオプションによってパフォーマンスの監視、アラート、診断、使用状況の分析が提供されます。 その他のロールの場合は、再起動、パフォーマンス カウンター、System.Diagnostics.Trace への呼び出しなど、Azure Diagnostics を検索して監視できます。 
 
 1. Visual Studio ソリューション エクスプローラーの **[\<YourCloudService>]** > **[ロール]** で、各ロールのプロパティを開きます。
 
@@ -151,8 +151,8 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 1. 数秒待ってから **[最新の情報に更新]** をクリックします。  
     詳細については、[トラブルシューティング][qna]に関するページを参照してください。
 
-## <a name="view-azure-diagnostics-events"></a>Azure 診断イベントを表示する
-Application Insights の [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)情報は、以下の場所にあります。
+## <a name="view-azure-diagnostics-events"></a>Azure Diagnostics イベントを表示する
+Application Insights の [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) 情報は、以下の場所にあります。
 
 * パフォーマンス カウンターは、カスタム メトリックとして表示されます。 
 * Windows イベント ログは、トレースとカスタム イベントとして表示されます。
@@ -160,11 +160,11 @@ Application Insights の [Azure 診断](https://docs.microsoft.com/azure/monitor
 
 パフォーマンス カウンターおよびイベント数を表示するには、[[メトリックス エクスプローラー]](../../azure-monitor/app/metrics-explorer.md) を開き、次のグラフを追加します。
 
-![Azure 診断データ](./media/cloudservices/23-wad.png)
+![Azure Diagnostics データ](./media/cloudservices/23-wad.png)
 
-Azure 診断によって送信されるさまざまなトレース ログ全体を検索するには、[[検索]](../../azure-monitor/app/diagnostic-search.md) または [Analytics クエリ](../../azure-monitor/log-query/get-started-portal.md)を使用します。 たとえば、ハンドルされない例外が発生し、それによってロールがクラッシュしてリサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 [検索] を使用して Windows イベント ログのエラーを表示し、例外の完全なスタック トレースを取得できます。 これは、問題の根本原因の発見に役立ちます。
+Azure Diagnostics によって送信されるさまざまなトレース ログ全体を検索するには、[[検索]](../../azure-monitor/app/diagnostic-search.md) または [Analytics クエリ](../../azure-monitor/log-query/get-started-portal.md)を使用します。 たとえば、ハンドルされない例外が発生し、それによってロールがクラッシュしてリサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 [検索] を使用して Windows イベント ログのエラーを表示し、例外の完全なスタック トレースを取得できます。 これは、問題の根本原因の発見に役立ちます。
 
-![Azure 診断の検索](./media/cloudservices/25-wad.png)
+![Azure Diagnostics の検索](./media/cloudservices/25-wad.png)
 
 ## <a name="more-telemetry"></a>テレメトリの追加
 以下のセクションでは、お客様のアプリのさまざまな側面に関して追加のテレメトリを取得する方法を説明します。

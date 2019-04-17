@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320283"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359038"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -56,7 +56,7 @@ Azure のコンピューティング、ストレージ、ネットワークの�
 
 **[Network]\(ネットワーク\)**:必要な DR に関する ExpressRoute とサイト間 VPN のコスト。 
 
-**[ASR license]\(ASR ライセンス\)**:すべての適合 VM に関する Site Recovery のライセンス コスト。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Site Recovery のライセンス コストも対象となります。
+**Azure Site Recovery ライセンス**:すべての適合 VM に関する Site Recovery のライセンス コスト。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Site Recovery のライセンス コストも対象となります。
 
 ### <a name="overall-dr-costs-by-states"></a>Overall DR costs by states (状態ごとの総 DR コスト)
 DR コストの合計は、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。
@@ -111,19 +111,19 @@ VM を手動で追加するには、次の手順に従います。
 
     b. **[IaaS size (Your selection)]\(IaaS サイズ (ユーザーが選択)\)**
 
-    c. **[Storage type (Standard/Premium)]\(ストレージの種類 (Standard/Premium)\)**
+    c. **[Storage type Standard/Premium]\(ストレージの種類 (Standard/Premium)\)**
 
     d. **[VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)**
 
-    e. **[Number of DR Drills in a year]\(年間 DR ドリル数\)**
+    e. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**
 
-    f. **[Each DR drill duration (Days)]\(各 DR ドリル期間 (日数)\)**
+    f. **[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**
 
     g. **[OS Type]\(OS の種類\)**
 
-    h. **[Data redundancy]\(データの冗長性\)**
+    h. **データの冗長性**
 
-    i. **Azure Hybrid 利用特典**
+    i. **Azure Hybrid Use Benefit**
 
 1. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**、**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**、**[Data redundancy]\(データの冗長性\)**、**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)** に関しては、**[Apply to all]\(すべてに適用\)** を選択すると、テーブル内のすべての VM に同じ値を適用することができます。
 
@@ -157,7 +157,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Total DR-Drill cost (average)]\(合計 DR ドリル コスト (平均)\)**:DR ドリルのコンピューティング コストとストレージ コスト。
 
-**[ASR license cost]\(ASR ライセンス コスト\)**:Site Recovery のライセンス コスト。
+**Azure Site Recovery のライセンス コスト**:Site Recovery のライセンス コスト。
 
 ## <a name="supported-target-regions"></a>サポートされるターゲット リージョン
 Site Recovery Deployment Planner では、以下の Azure リージョンに関してコスト見積もりを実行できます。 該当するリージョンがここに記載されていない場合は、料金が最も近いリージョンをどれか選んで使用してください。

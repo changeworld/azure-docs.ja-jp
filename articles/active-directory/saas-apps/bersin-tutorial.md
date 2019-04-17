@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4771c49502b07e371cd227f757445d5ebac9163
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855386"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル:Azure Active Directory と Bersin の統合
 
@@ -104,11 +104,11 @@ Bersin で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Bersin のドメインと URL] のシングル サインオン情報](common/idp-identifier-relay.png)
 
-    a. **[識別子]** ボックスに、`https://www.bersin.com/shibboleth` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://www.bersin.com/shibboleth`
 
     b. **[追加の URL を設定します]** をクリックします。
 
-    c. **[リレー状態]** ボックスに、`https://www.bersin.com/secure/` のパターンで URL を入力します。
+    c. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://www.bersin.com/secure/`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -152,7 +152,7 @@ Bersin で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -199,6 +199,6 @@ Bersin で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

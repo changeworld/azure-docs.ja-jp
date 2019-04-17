@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892332"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258778"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -54,7 +54,7 @@ A. 1 台につき 8 TB (使用可能な容量は 7 TB) のディスクが 5 台�
 A.  Data Box Disk が現在使用できる場所については、「[利用可能なリージョン](data-box-disk-overview.md#region-availability)」を参照してください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
-A. Data Box Disk は、米国、カナダ、オーストラリア、西ヨーロッパ、および北ヨーロッパ内のすべてのリージョンでサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
+A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)てください。
@@ -132,8 +132,8 @@ A. Data Box Disk で使用できるツールセットには、次の 3 つのツ
 - [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin) 
 - [Linux 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolslinux)
  
-  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. Data Box Disk を使用して Azure Files にデータを転送した後、そのデータを Azure File Sync で使用することはできますか? 
-  A. Azure Files は Data Box Disk でサポートされていますが、Azure File Sync では適切に機能しません。そのファイルのデータを Azure File Sync で使用する場合、メタデータは維持されません。
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. Data Box Disk を使用して Azure Files にデータを転送した後、そのデータを Azure File Sync で使用することはできますか? 
+A. Azure Files は Data Box Disk でサポートされていますが、Azure File Sync では適切に機能しません。そのファイルのデータを Azure File Sync で使用する場合、メタデータは維持されません。
 
 
 ## <a name="verify-and-upload"></a>確認とアップロード
@@ -166,7 +166,7 @@ A. 前回の注文を複製することができます。 複製することで�
 A. はい。 データは Azure にアップロードされましたが、指定されたリソース グループを持つマネージド ディスクが表示されない場合は、データが無効だった可能性があります。 ページ BLOB、ブロック BLOB、Azure Files、およびマネージド ディスクが無効だった場合は、次のフォルダーに移動されます。
  - ページ BLOB は *databoxdisk-invalid-pb-* で始まるブロック BLOB コンテナーに移動されます。
  - Azure Files は *databoxdisk-invalid-af-* で始まるブロック BLOB コンテナーに移動されます。
- - マネージド ディスクは *databoxdisk-invliad-md-* で始まるブロック BLOB コンテナーに移動されます。
+ - マネージド ディスクは *databoxdisk-invalid-md-* で始まるブロック BLOB コンテナーに移動されます。
 
 ## <a name="next-steps"></a>次の手順
 

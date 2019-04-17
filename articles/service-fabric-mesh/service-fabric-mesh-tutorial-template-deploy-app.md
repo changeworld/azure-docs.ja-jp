@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8a910f35bf25f889150ea3e89f4fa653f3a9ac14
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336322"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527338"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル:テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -351,8 +351,8 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 |registryPassword|前の「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したパスワード。 テンプレートのこのパラメーターはセキュリティで保護された文字列であり、デプロイの状態または `az mesh service show` コマンドでは表示されません。|
 |registryUserName|「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したユーザー名。|
 |registryServer|「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したレジストリ サーバー名。|
-|frontEndImage|フロントエンド サービスのコンテナー イメージ。  たとえば、"<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709"。|
-|serviceImage|バックエンド サービスのコンテナー イメージ。  たとえば、"<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709"。|
+|frontEndImage|フロントエンド サービスのコンテナー イメージ。  たとえば、「 `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709` 」のように入力します。|
+|serviceImage|バックエンド サービスのコンテナー イメージ。  たとえば、「 `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709` 」のように入力します。|
 
 アプリケーションをデプロイするには、次のコマンドを実行します。
 

@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: 4a8287d7ca4da380ad7c2b1e039ab3058ca07a96
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 416d75b254d0fbe14a0b39e5ae77d09a48e548f6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760275"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271290"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Azure Stack 用のストレージ インフラストラクチャを管理する
 
@@ -32,7 +32,7 @@ ms.locfileid: "57760275"
 
 ### <a name="drives"></a>ドライブ
 
-Azure Stack では、Windows Server のソフトウェアによるストレージ機能を採用しているほか、記憶域スペース ダイレクト (S2D) と Windows Server フェールオーバー クラスタリングを組み合わせて、パフォーマンス、スケーラビリティ、回復性のいずれにも優れたストレージ サービスを実現しています。
+Windows Server のソフトウェアによるストレージ機能を採用している Azure Stack では、記憶域スペース ダイレクト (S2D) と Windows Server フェールオーバー クラスタリングを組み合わせて、パフォーマンス、スケーラビリティ、回復性のいずれにも優れたストレージ サービスを実現しています。
 
 Azure Stack の統合システム パートナーからは、ストレージの幅広い選択肢を含め、バリエーション豊かなソリューションが多数提供されています。 ドライブは現在、次の 3 種類を選んで組み合わせることができます:NVMe (Non-Volatile Memory Express)、SATA/SAS SSD (ソリッドステート ドライブ)、HDD (ハード ディスク ドライブ)。
 

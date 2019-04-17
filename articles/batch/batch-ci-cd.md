@@ -5,13 +5,14 @@ author: christianreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
+ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: 1e3b2d42ae390b9eb755e568b82fc1a90e0eae6a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807345"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471326"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -441,7 +442,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
     * **[リソース グループ]**: $(resourceGroupName)
     * **[場所]**: $(location)
     * **[テンプレート]**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.json
-    * **[テンプレート パラメーターのオーバーライド]**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **[テンプレート パラメーターのオーバーライド]**:  ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 一般的には、Azure Key Vault タスクを使用します。 サービス プリンシパル (Azure サブスクリプションへの接続) に適切なアクセス ポリシーが設定されている場合は、サービス プリンシパルが Azure Key Vault からシークレットをダウンロードでき、パイプラインで変数として使用できます。 シークレットの名前として関連する値が設定されます。 たとえば、リリース定義で sshPassword のシークレットを $(sshPassword) と呼ぶことができます。
 
@@ -451,7 +452,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
     * **[表示名]:** Azure Batch アカウントでのアプリケーションの作成
     * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
     * **[スクリプトの場所]**:インライン スクリプト
-    * **[インライン スクリプト]**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **[インライン スクリプト]**:  ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. 2 つ目の手順は、関連付けられたパッケージをアプリケーションにアップロードするために使用されます。 この例では、ffmpeg ファイルです。
 
@@ -459,7 +460,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
     * **[表示名]:** パッケージの Azure Batch アカウントへのアップロード
     * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
     * **[スクリプトの場所]**:インライン スクリプト
-    * **[インライン スクリプト]**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **[インライン スクリプト]**:  ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > アプリケーション パッケージのバージョン番号は変数に設定されます。 これが便利なのは、パッケージの以前のバージョンを上書きすると役立つ場合や、Azure Batch にプッシュするパッケージのバージョン番号を手動で管理したい場合です。
@@ -477,7 +478,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 PowerShell コマンド プロンプトから Azure CLI を使用して新しい Azure Batch アカウントに接続します。
 
 * Azure アカウントに `az login` でサインインし、指示に従って認証します。
-* ここで、`az batch account login -g <resourceGroup> -n <batchAccount>` のように Batch アカウントを認証します。
+* ここで、次のように Batch アカウントを認証します。 `az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>使用可能なアプリケーションを一覧表示する
 

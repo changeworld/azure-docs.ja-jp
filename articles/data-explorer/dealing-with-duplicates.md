@@ -1,21 +1,20 @@
 ---
-title: 重複したデータを処理する
-description: このトピックでは、データの重複に対するさまざまな対処方法を紹介します。
-services: data-explorer
+title: Azure Data Explorer で重複データを処理する
+description: このトピックでは、Azure Data Explorer を使用するときに重複データを処理するさまざまな方法を説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756372"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045783"
 ---
-# <a name="deal-with-duplicate-data"></a>重複したデータを処理する
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Azure Data Explorer で重複データを処理する
 
 クラウドにデータを送信するデバイスでは、データのキャッシュがローカルに保持されます。 データのサイズにもよりますが、ローカルのキャッシュにデータが保存される期間は数日、ときには数か月にも及びます。 不具合が発生したデバイスがキャッシュに保存されたデータを再送信し、分析用データベースにデータの重複が発生した場合でも、分析用データベースに問題が起こらないようにする必要があります。 このトピックでは、そのようなシナリオでデータの重複に対応するためのベスト プラクティスの概要を紹介します。
 
@@ -123,4 +122,4 @@ DeviceEventsAll
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Data Explorer のクエリを記述する](write-queries.md)
+> [Azure データ エクスプローラーのクエリを記述する](write-queries.md)

@@ -12,22 +12,22 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d492259a114d6574c4a81d1f9b97a0dcfcd8c5d3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd219e9aaf684600f76ed81eb45ed9a5bf78f62c
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004045"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360005"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>CLI を使用して Azure SQL Database のエラスティック プールをスケーリングします
 
-この Azure CLI サンプル スクリプトでは、エラスティック プールが作成され、プールされたデータベースが移動され、エラスティック プールのコンピューティング サイズが変更されます。 
+この Azure CLI サンプル スクリプトでは、エラスティック プールが作成され、プールされたデータベースが移動され、エラスティック プールのコンピューティング サイズが変更されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -35,7 +35,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -48,7 +48,7 @@ az group delete --name myResourceGroup
 | command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | 単一のデータベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
 | [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | エラスティック プールを作成します。 |
 | [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | 単一データベースまたはプールされたデータベースを作成します。 |
 | [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | エラスティック プールを更新します。このサンプルでは、割り当て済みの eDTU を変更します。 |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f825cf8f381a7a2974b150a74a091412b24b09bc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339399"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005165"
 ---
 # <a name="enable-custom-pronunciation"></a>カスタムの発音を有効にする
 
@@ -63,7 +63,7 @@ Display form <Tab> Spoken form <Newline>
 表示フォームにすることができるのは、既存の単語を組み合わせたカスタムの単語、頭字語、または複合語のみです。
 
 >[!NOTE]
->この機能を使用して一般的な単語を編成し直したり、音声フォームを変更したりすることはお勧めしません。 一部の通常ではない単語 (略語、専門用語、外来語など) が正しくデコードされていないかどうかを確認するには、デコーダーを実行することをお勧めします。 正しくデコードされている場合は、カスタムの発音ファイルに追加します。 言語モデルでは、常に単語の表示フォームのみを使用する必要があります。
+>この機能を使用して一般的な単語を編成し直したり、音声フォームを変更したりすることはお勧めしません。 この機能を使用する前に、一部の独特な単語 (略語、専門用語、外来語など) が正しく転記されているかどうかを確認することをお勧めします。 正しくデコードされている場合は、カスタムの発音ファイルに追加します。 言語モデルでは、常に単語の表示フォームのみを使用する必要があります。
 
 ## <a name="requirements-for-the-file-size"></a>ファイル サイズの要件
 発音エントリを含む .txt ファイルのサイズは 1 メガバイト (Free レベルのキーでは 1 KB) に制限されています。 通常、このファイルを介して大量のデータをアップロードする必要はありません。 ほとんどの場合、カスタムの発音ファイルは、数キロバイト (KB) のサイズです。 すべてのロケールの .txt ファイルは、UTF-8 BOM 形式でエンコードされている必要があります。 英語のロケールでは、ANSI も使用できます。

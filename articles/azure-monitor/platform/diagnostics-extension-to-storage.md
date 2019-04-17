@@ -1,6 +1,6 @@
 ---
 title: Azure Storage への診断データを保存および表示する
-description: Azure Storage に Azure 診断データを保存し、それを表示する
+description: Azure Storage に Azure Diagnostics データを保存し、それを表示する
 services: azure-monitor
 author: jpconnock
 ms.service: azure-monitor
@@ -29,13 +29,13 @@ ServiceConfiguration.cscfg ファイル内で使用するストレージ アカ�
 
 この接続文字列を変更することで、Azure ストレージ アカウントのアカウント情報を指定できます。
 
-収集される診断データの種類に応じて、Azure 診断では Blob service または Table service のいずれかを使用します。 次の表では、保持されるデータ ソースとその形式を示します。
+収集される診断データの種類に応じて、Azure Diagnostics では Blob service または Table service のいずれかを使用します。 次の表では、保持されるデータ ソースとその形式を示します。
 
 | データ ソース | ストレージ形式 |
 | --- | --- |
 | Azure ログ |テーブル |
 | IIS 7.0 ログ |BLOB |
-| Azure 診断インフラストラクチャ ログ |テーブル |
+| Azure Diagnostics インフラストラクチャ ログ |テーブル |
 | 失敗した要求トレース ログ |BLOB |
 | Windows イベント ログ |テーブル |
 | パフォーマンス カウンター |テーブル |

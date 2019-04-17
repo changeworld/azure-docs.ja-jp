@@ -12,12 +12,12 @@ ms.reviewer: ''
 ms.author: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 9b179bb7021e77acd99b529d6ab3b0d638858dbd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 27a2eb025db014a1c71152a13339bc46510eae77
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894242"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357806"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>PowerShell を使用してエラスティック プールを作成し、エラスティック プール間でデータベースを移動する
 
@@ -35,7 +35,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname

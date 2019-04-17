@@ -1,6 +1,6 @@
 ---
 title: Azure Alerts でのログ アラートのための webhook アクション | Microsoft Docs
-description: この記事では、ログ分析または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
+description: この記事では、ログ分析ワークスペースまたは Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a592dc150d535df775a62c157f76f327b54240fd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496090"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006619"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -39,7 +39,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | パラメーター | 可変 | 説明 |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |アラート ルールの名前。 |
-| severity |#severity |起動されたログ アラートに設定されている重大度。 |
+| Severity |#severity |起動されたログ アラートに設定されている重大度。 |
 | AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
 | AlertThresholdValue |#thresholdvalue |アラート ルールのしきい値。 |
 | LinkToSearchResults |#linktosearchresults |アラートを作成したクエリからのレコードを返す Analytics ポータルへのリンク。 |
@@ -202,5 +202,5 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 - [Azure のログ アラートの管理](alerts-log.md)について理解します
 - [Azure でのアクション グループ](action-groups.md)の作成および管理
 - [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
-- [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。 
+- [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します 
 

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878433"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046184"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -50,6 +50,9 @@ Windows データ サイエンス仮想マシン (DSVM) は、データの探索
 
 * Azure サブスクリプションが必要です。 [こちら](https://azure.microsoft.com/free/)で無料試用版にサインアップできます。
 * Azure ポータルでデータ サイエンス仮想マシンをプロビジョニングする手順については、 [仮想マシンの作成](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)に関するページをご覧ください。
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1.Microsoft ML Server または Python を使用してデータを探索し、モデルを開発する
 R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
@@ -223,22 +226,22 @@ Azure File Service の共有場所は、Azure PowerShell を使用して作成�
 
 ```powershell
 # Authenticate to Azure.
-Connect-AzureRmAccount
+Connect-AzAccount
 # Select your subscription
-Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription –SubscriptionName "<your subscription name>" | Select-AzSubscription
 # Create a new resource group.
-New-AzureRmResourceGroup -Name <dsvmdatarg>
+New-AzResourceGroup -Name <dsvmdatarg>
 # Create a new storage account. You can reuse existing storage account if you wish.
-New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
+New-AzStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
 # Set your current working storage account
-Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
+Set-AzCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
 # Create an Azure File Service Share
-$s = New-AzureStorageShare <<teamsharename>>
+$s = New-AzStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
-New-AzureStorageDirectory -Share $s -Path <directory name>
+New-AzStorageDirectory -Share $s -Path <directory name>
 # List the share to confirm that everything worked
-Get-AzureStorageFile -Share $s
+Get-AzStorageFile -Share $s
 ```
 
 作成した Azure ファイル共有は、Azure 内の任意の仮想マシンにマウントすることができます。 待機時間を短くし、データ転送にかかる料金を低く抑えるために、VM は、ストレージ アカウントと同じ Azure データ センターに置くことを強くお勧めします。 DSVM にドライブをマウントするコマンドは以下のとおりです。Azure PowerShell で実行してください。
@@ -308,20 +311,20 @@ AzCopy コマンドを実行して Azure BLOB にコピーするとすぐに、�
 
 ![アップロードされた CSV ファイルを表示する、ストレージ アカウントのスクリーン ショット](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**VM から Azure BLOB にデータを移動する: Azure Storage Explorer**
+**VM から Azure BLOB にデータを移動する: Azure ストレージ エクスプローラー**
 
 Azure ストレージ エクスプローラーを使用して、VM 内のローカル ファイルからデータをアップロードすることもできます。
 
-* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
+* コンテナーにデータをアップロードするには、ターゲット コンテナーを選択し、**[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
 * **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード ダイアログのスクリーンショット](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Azure Blob からデータの読み取り: Machine Learning リーダー モジュール**
+**Azure BLOB からデータの読み取り: Machine Learning リーダー モジュール**
 
 Azure Machine Learning Studio では、 **データのインポート モジュール** を使用して BLOB からデータを読み取ることができます。
 
 ![Machine Learning Studio でのデータのインポート モジュールのスクリーンショット](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Azure Blob からデータの読み取り: Python ODBC**
+**Azure BLOB からデータの読み取り: Python ODBC**
 
 **BlobService** ライブラリを使用すると、Jupyter Notebook または Python プログラムで BLOB から直接データを読み取ることができます。
 
@@ -589,7 +592,7 @@ for i in range(1,13):
 
 HDI クラスターにデータを読み込んだら、Azure Storage エクスプローラーでデータを確認することができます。 加えて、HDI クラスターには、nyctaxidb というデータベースが作成されます。
 
-**データデータ探索: Python での Hive クエリ**
+**データの探索: Python での Hive クエリ**
 
 Hadoop クラスターにデータが存在するため、pyodbc パッケージを使用して Hadoop クラスターに接続し、Hive を使ってデータベースを照会することによって探索や特徴エンジニアリングを実行できます。 前提条件の手順で作成した既存のテーブルを表示できます。
 
@@ -814,7 +817,7 @@ pd.read_sql(queryString,connection)
 
 ![テーブルのデータの上位の行](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-**Machine Learning のリーダー モジュール を使用して HDI からのデータを読み取る**
+**Machine Learning のリーダー モジュールを使用して HDI からのデータを読み取る**
 
 Machine Learning Studio で **リーダー** モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
 

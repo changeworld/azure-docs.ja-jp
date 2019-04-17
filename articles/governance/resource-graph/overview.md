@@ -1,19 +1,18 @@
 ---
 title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/06/2019
+ms.date: 03/29/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802324"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269290"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
@@ -32,7 +31,7 @@ Azure Resource Graph とは Azure 内のサービスで、環境を効果的に�
 
 Azure Resource Manager は、現在、複数のリソース フィールド (具体的にはリソース名、ID、種類、リソース グループ、サブスクリプション、場所) を公開する制限付きリソース キャッシュにデータを送信します。 以前は、各種のリソース プロパティを操作する場合、個々のリソース プロバイダーを呼び出し、リソースごとにプロパティの詳細を要求する必要がありました。
 
-Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。
+Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/complete-mode-deletion.md)に関する表で "**はい**" を探してください。
 
 ## <a name="the-query-language"></a>クエリ言語
 
@@ -45,6 +44,9 @@ Azure Resource Graph のクエリ言語が Azure Data Explorer で使用され�
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph でのアクセス許可
 
 Resource Graph を使用するためには、最低限、照会したいリソースに読み取りアクセスできる適切な権限が、[ロール ベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を通じて付与される必要があります。 Azure のオブジェクトまたはオブジェクト グループに対する `read` 以上のアクセス許可がないと、結果は返されません。
+
+> [!NOTE]
+> Resource Graph では、プリンシパルがログイン中に利用できるサブスクリプションが使用されます。 アクティブなセッション中に追加された新しいサブスクリプションのリソースを表示するには、プリンシパルがコンテキストを更新する必要があります。 ログアウトしてから再度ログインすると、このアクションが自動的に実行されます。
 
 ## <a name="throttling"></a>Throttling
 

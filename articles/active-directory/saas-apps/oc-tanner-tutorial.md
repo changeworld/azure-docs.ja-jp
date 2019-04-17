@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: debda9784470f6d32894a7f9ddf55fc848ff6d10
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 21cbef1532928d51ba0c9f11e80304933df505b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850922"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>チュートリアル:Azure Active Directory と O.C. の統合 Azure AD で制御できます。
 
@@ -51,7 +51,7 @@ Azure AD と O.C.  Tanner - AppreciateHub の統合を構成するには、次�
 
 Azure AD への O.C.  Tanner - AppreciateHub の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に O.C.  Tanner - AppreciateHub を追加する必要があります。
 
-**ギャラリーから O.C. Tanner - AppreciateHub を追加するには、次の手順に従います。**
+**ギャラリーから O.C.  Tanner - AppreciateHub を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -71,7 +71,7 @@ Azure AD への O.C.  Tanner - AppreciateHub の統合を構成するには、�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、O.C. を使用してAzure AD のシングル サインオンを構成し、テストします。 **Britta Simon** というテスト ユーザーに基づいて、O.C. Tanner - AppreciateHub で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと O.C.  Tanner - AppreciateHub の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 O.C.  Tanner - AppreciateHub で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -119,7 +119,7 @@ Azure AD シングル サインオンを O.C.  Tanner - AppreciateHub で構成�
      ![O.C.  Tanner - AppreciateHub のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
 
     > [!Note]
-    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 これらの値を取得するには、[O.C. Tanner - AppreciateHub クライアント サポート チーム](mailto:sso@octanner.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。 [O.C.Tanner - AppreciateHub クライアント サポート チーム](mailto:sso@octanner.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -193,7 +193,7 @@ Azure AD シングル サインオンを O.C.  Tanner - AppreciateHub で構成�
 
 このセクションの目的は、O.C.  Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
 
-**O.C. Tanner - AppreciateHub で Britta Simon というユーザーを作成するには、次の手順に従います。**
+**Britta Simon というユーザーを O.C.  Tanner - AppreciateHub で作成するには、次の手順に従います。**
 
 [O.C.Tanner - AppreciateHub サポート チーム](mailto:sso@octanner.com)に、Azure AD 内のユーザー名 Britta Simon と同じ値の nameID 属性を持つユーザーを作成することを依頼します。
 
@@ -207,6 +207,6 @@ Azure AD シングル サインオンを O.C.  Tanner - AppreciateHub で構成�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

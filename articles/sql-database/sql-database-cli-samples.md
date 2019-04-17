@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: e3a75acb6d591a9fdf1e632369cc2e9ae6b6099d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447833"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359435"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure CLI サンプル
 
@@ -35,12 +35,12 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 | |  |
 |---|---|
-|**単一のデータベースとエラスティック プールを作成する**||
-| [単一のデータベースを作成し、ファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、1 つの Azure SQL データベースが作成され、サーバーレベルのファイアウォール規則が構成されます。 |
+|**単一データベースとエラスティック プールを作成する**||
+| [単一データベースを作成し、ファイアウォール規則を構成する](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、1 つの Azure SQL データベースが作成され、サーバーレベルのファイアウォール規則が構成されます。 |
 | [エラスティック プールを作成し、プールされているデータベースを移動する](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、SQL エラスティック プールが作成され、プールされた Azure SQL データベースが移動され、コンピューティング サイズが変更されます。|
-|**単一のデータベースとエラスティック プールをスケーリングする**||
-| [単一のデータベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、データベースのサイズ情報の問い合わせ後、1 つの Azure SQL データベースが別のコンピューティング サイズにスケーリングします。 |
-| [エラスティック プールをスケーリングする](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、SQL エラスティック プールが別のコンピューティング サイズにスケーリングします。  |
+|**単一データベースとエラスティック プールをスケーリングする**||
+| [単一データベースをスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、データベースのサイズ情報の問い合わせ後、1 つの Azure SQL データベースが別のコンピューティング サイズにスケーリングします。 |
+| [エラスティック プールのスケール設定](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | この CLI サンプル スクリプトでは、SQL エラスティック プールが別のコンピューティング サイズにスケーリングします。  |
 |||
 
 [単一データベースの Azure CLI API](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) に関するセクションを参照してください。

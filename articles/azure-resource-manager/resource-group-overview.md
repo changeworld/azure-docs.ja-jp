@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409852"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269300"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 
@@ -53,7 +53,7 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 
 ## <a name="understand-management-scope"></a>管理スコープの概要
 
-Azure には、管理グループ、サブスクリプション、リソース グループ、およびリソースという 4 つのレベルの管理スコープが用意されています。 現在、[管理グループ](../governance/management-groups/index.md)はプレビュー リリースです。 次の図に、これらのレイヤーの例を示します。
+Azure には、[管理グループ](../governance/management-groups/index.md)、サブスクリプション、[リソース グループ](#resource-groups)、およびリソースという 4 つのレベルの管理スコープが用意されています。 次の図に、これらのレイヤーの例を示します。
 
 ![Scope (スコープ)](./media/resource-group-overview/scope-levels.png)
 
@@ -84,6 +84,8 @@ Resource Manager テンプレートの作成に関する推奨事項について
 * リソースは、他のリソース グループ内のリソースとやり取りできる。 このやり取りは、2 つの関連するリソースで同じライフサイクルが共有されていない場合によく見られます (データベースに接続する Web アプリなど)。
 
 リソース グループを作成するとき、そのリソース グループの場所を指定する必要があります。 "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
+
+リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 リスクを最小限に抑えるため、リソース グループとリソースは同じリージョンに配置するようにしてください。
 
 ## <a name="resource-providers"></a>リソース プロバイダー
 
@@ -165,7 +167,7 @@ Resource Manager では、セットアップ時に含まれていなかった特
 
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy.md)
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)
-* [Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](resource-group-template-deploy-portal.md)
+* [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)
 * [Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](resource-group-template-deploy-rest.md)
 
 ## <a name="safe-deployment-practices"></a>安全なデプロイ プラクティス

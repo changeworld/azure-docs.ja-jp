@@ -12,18 +12,18 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 04/02/2019
 ms.author: aljo
-ms.openlocfilehash: ccb5f690b7947192af401233aa03e799e5c5be0b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668723"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275498"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-get-started.md) 
+> * [ Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
@@ -69,8 +69,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK および Tools 3.3.644
-* Service Fabric ランタイム 6.4.644
+* Service Fabric SDK および Tools 3.3.654
+* Service Fabric ランタイム 6.4.654
 * Service Fabric Tools for Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 には、Service Fabric Tools for Visual Studio 2.4.11024.1 が含まれています 
 
@@ -92,7 +92,7 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
 * [アプリケーションを作成、デプロイ、および管理する方法](service-fabric-tutorial-create-dotnet-app.md)
-* [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
+* [プログラミング モデルReliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

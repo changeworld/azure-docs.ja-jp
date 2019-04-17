@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 03/01/2019
-ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/04/2019
+ms.openlocfilehash: f5d43794ba80e4791c8bf24ad404069a8329518e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864951"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051225"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>クイック スタート:Azure SQL Database で Machine Learning Services と R を使用する (プレビュー)
 
@@ -98,7 +98,8 @@ SQL Database では、次の 2 とおりの方法で R コードを実行でき�
     b <- 2
     c <- a/b
     d <- a*b
-    print(c, d)'
+    print(c(c, d))
+    '
     ```
 
 2. すべて正しく設定されていれば、適切な結果が計算され、R の `print` 関数から **[メッセージ]** ウィンドウに結果が返されます。
@@ -519,7 +520,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
 
 Machine Learning Services について詳しくは、以下の記事をご覧ください。 これらの記事の一部は SQL Server 向けですが、大半の情報は、Azure SQL Database における Machine Learning Services と R にも当てはまります。
 
-- [Azure SQL Database の Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)
+- [Azure SQL Database の Machine Learning Services と R](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning サービス](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
 - [チュートリアル:SQL Server における R を使用したデータベース内分析について学習する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [R と SQL Server に関するエンド ツー エンドのデータ サイエンス チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)

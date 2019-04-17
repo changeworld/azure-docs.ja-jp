@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482608"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527168"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Azure Cache for Redis のトラブルシューティング方法
 
@@ -250,6 +250,7 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 1. タイムアウトになったキャッシュへの数個の小さい要求の前に大きい要求がありましたか? エラー メッセージ内のパラメーター `qs` は、クライアントからサーバーに送信されたが、まだ応答を処理していない要求の数を示します。 StackExchange.Redis は単一の TCP 接続を使用し、一度に読み取ることができる応答は 1 つのみであるため、この値が増え続ける可能性があります。 最初の操作がタイムアウトになっても、サーバーとの間のそれ以降のデータの送信は停止されません。 他の要求は、大きい要求が完了するまでブロックされるため、タイムアウトになることがあります。 1 つの解決策は、キャッシュがワークロードに対して十分な大きさであることを確認し、大きい値をより小さいチャンクに分割して、タイムアウトの可能性を最小限に抑えることです。 この他に考えられる解決策は、クライアントで `ConnectionMultiplexer` オブジェクトのプールを使用し、新しい要求の送信時に負荷が最も少ない `ConnectionMultiplexer` を選択することです。 複数の接続オブジェクトにわたって読み込むと、1 つのタイムアウトのために他の要求もタイムアウトになることは防止されます。
 1. `RedisSessionStateProvider` を使用している場合は、再試行タイムアウトを正しく設定していることを確認してください。 `retryTimeoutInMilliseconds` は `operationTimeoutInMilliseconds` よりも高くする必要があります。そうしないと、再試行が発生しません。 次の例では、`retryTimeoutInMilliseconds` は 3000 に設定されています。 詳細については、「[ASP.NET Session State Provider for Azure Cache for Redis ](cache-aspnet-session-state-provider.md)」(Azure Cache for Redis の ASP.NET セッション状態プロバイダー) と「[How to use the configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)」(セッション状態プロバイダーと出力キャッシュ プロバイダーの構成パラメーターの使用方法) を参照してください。
 
+    ```xml
     <add
       name="AFRedisCacheSessionStateProvider"
       type="Microsoft.Web.Redis.RedisSessionStateProvider"
@@ -262,6 +263,7 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
       connectionTimeoutInMilliseconds = "5000"
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
+    ```
 
 1. `Used Memory RSS` と `Used Memory` を[監視](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)して、Azure Cache for Redis サーバーのメモリ使用量を確認します。 削除ポリシーが適用されている場合、Redis は、 `Used_Memory` がキャッシュ サイズに達したときにキーの削除を開始します。 `Used Memory RSS` が `Used memory` よりわずかに上回っているのが理想的です。 この差が大きい場合は、メモリの断片化 (内部または外部) が発生していることを示します。 `Used Memory RSS` が `Used Memory` より小さい場合、キャッシュ メモリの一部がオペレーティング システムにスワップされていることを意味します。 このスワップが発生した場合、大幅に遅延することがあります。 Redis は割り当てがメモリ ページにマップされる方法を制御できないため、`Used Memory RSS` が高いと、多くの場合、メモリ使用量のスパイクが発生します。 Redis サーバーがメモリを解放すると、アロケーターはそのメモリを取得しますが、それをシステムに戻す場合も戻さない場合もあります。 `Used Memory` 値と、オペレーティング システムによってレポートされるメモリの消費量は異なる場合があります。 メモリは Redis によって使用された後、解放された可能性がありますが、システムには戻されていません。 メモリの問題を軽減するために、次の手順を実行できます。
 

@@ -8,17 +8,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2348b4293b8726c406b1f06b2f88c37dfb00e80c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447747"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359985"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する
 
@@ -44,7 +44,7 @@ ms.locfileid: "58447747"
 
 ## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
 
-開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。 
+開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
@@ -58,7 +58,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
-SMSS で、Azure SQL Database サーバーに接続します。 
+SMSS で、Azure SQL Database サーバーに接続します。
 
 > [!IMPORTANT]
 > Azure SQL Database サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの外側から SQL Database サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
@@ -68,11 +68,11 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 2. 次の情報を入力します。
 
-   | Setting      | 推奨値    | 説明 | 
-   | ------------ | ------------------ | ----------- | 
+   | Setting      | 推奨値    | 説明 |
+   | ------------ | ------------------ | ----------- |
    | **サーバーの種類** | データベース エンジン | 必須値。 |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
-   | **認証** | パブリック | このチュートリアルでは、SQL 認証を使用します。 |
+   | **Authentication** | パブリック | このチュートリアルでは、SQL 認証を使用します。 |
    | **ログイン** | サーバー管理者アカウントのユーザー ID | サーバーを作成するために使用するサーバー管理者アカウントのユーザー ID。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    ||||
@@ -83,7 +83,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
    ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. **[接続]** を選択します。 オブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** を選択します。 オブジェクト エクスプローラー ウィンドウが開きます。
 
 5. データベースのオブジェクトを表示するには、**[データベース]** を展開して、**mySampleDatabase** を展開します。
 
@@ -140,15 +140,14 @@ SMSS で、Azure SQL Database サーバーに接続します。
 1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
-   SELECT * FROM [SalesLT].[Product] 
-   WHERE Name='myNewProduct' 
+   SELECT * FROM [SalesLT].[Product]
+   WHERE Name='myNewProduct'
    ```
-   
-2. **[Execute (実行)]** を選択します。 次の結果が表示されます。 
+
+2. **[Execute (実行)]** を選択します。 次の結果が表示されます。
 
    ![result](./media/sql-database-connect-query-ssms/result.png)
 
- 
 ## <a name="update-data"></a>データの更新
 
 次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL コードを実行して、新しい製品を変更します。
@@ -188,8 +187,6 @@ SMSS で、Azure SQL Database サーバーに接続します。
 - Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
 - Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
 
-
 <!-- Article link references. -->
 
 [ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms
-

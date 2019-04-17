@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7354ed8362412c40d52a3895a9b4118eb7c1544
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449392"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258914"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -79,10 +79,11 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。 |
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
+| `mi_res_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の mi_res_id (Azure リソース ID) を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。 |
 
 Azure リソース VM 拡張機能エンドポイントにマネージド ID を使用するサンプル要求 *(2019 年 1 月に非推奨となる予定)*:
 
-```
+```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
@@ -96,10 +97,9 @@ Metadata: true
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 
-
 応答のサンプル:
 
-```
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -365,7 +365,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 | 要素 | 説明 |
 | ------- | ----------- |
 | error   | エラー識別子。 |
-| error_description | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。エラーの説明に含まれる値に基づいて分岐するコードを作成しないでください。**|
+| error_description | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。 エラーの説明に含まれる値に基づいて分岐するコードを作成しないでください。**|
 
 ### <a name="http-response-reference"></a>HTTP 応答リファレンス
 

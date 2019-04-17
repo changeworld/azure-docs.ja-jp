@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 91cd8ab0565279f88a0949f873d6e44d564427af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314877"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280215"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>v2 API によって生成される Video Indexer の出力を調べる
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
 
-> [!Note]
-> Video Indexer V1 API は 2018 年 8 月 1 日に非推奨になりました。 今後は Video Indexer v2 API を使用してください。 <br/>Video Indexer v2 API を使用して開発する場合は、[こちら](https://api-portal.videoindexer.ai/)の手順を参照してください。 
-
-**Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、ocr、顔、トピック、ブロックなどのディメンションが含まれます。ディメンションには、各ディメンションがいつビデオに表示されたかを示す時間の範囲のインスタンスが含まれます。  
+**Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどのディメンションが含まれます。ディメンションには、各ディメンションがいつビデオに表示されたかを示す時間の範囲のインスタンスが含まれます。  
 
 [Video Indexer](https://www.videoindexer.ai/) Web サイトのビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認することもできます。 詳しくは、「[View and edit video insights](video-indexer-view-edit.md)」(ビデオの分析情報の表示と編集) をご覧ください。
 
@@ -82,11 +79,11 @@ ms.locfileid: "58314877"
 |privacyMode|内訳に含めることができるモードは、**秘密**、**公開**のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
 |thumbnailVideoId|サムネイルの取得元のビデオの ID。
-|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、Get-Thumbnail を呼び出し (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)、thumbnailVideoId と thumbnailId に渡します。|
+|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、thumbnailVideoId と thumbnailId に渡します。|
 |faces|0 以上の顔を含めることができます。 詳しくは、「[顔](#faces)」をご覧ください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
-|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects)」をご覧ください。|
+|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioEffects)」をご覧ください。|
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
 |statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
@@ -109,7 +106,7 @@ ms.locfileid: "58314877"
 |metadata|ビデオの外部メタデータ (ユーザーが指定した場合)|
 |isAdult|ビデオが手動でレビューされ、成人向けビデオとして識別されたかどうかを示します。|
 |insights|分析情報オブジェクト 詳細については、「[分析情報](#insights)」を参照してください。|
-|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、Get-Thumbnail を呼び出し (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)、ビデオ ID と thumbnailId を渡します。|
+|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、ビデオ ID と thumbnailId に渡します。|
 |publishedUrl|ビデオをストリーミングする URL|
 |publishedUrlProxy|ビデオのストリーミング元の URL (Apple デバイス向け)|
 |viewToken|ビデオ ストリーミング用の短命表示トークン|
@@ -151,12 +148,12 @@ ms.locfileid: "58314877"
 
 顔は ID、名前、サムネイル、その他のメタデータ、およびそのテンポラル インスタンスの一覧を持ちます (例:00:00:05 - 00:00:10、00:01:00 - 00:02:30、00:41:21 - 00:41:49)。各テンポラル インスタンスは、追加のメタデータを持つことができます。 顔の四角形の座標などです (20,230,60,60)。
 
-|Version|コードのバージョン|
+|バージョン|コードのバージョン|
 |---|---|
 |sourceLanguage|ビデオのソース言語 (マスター言語は 1 つと仮定)。 [BCP 47](https://tools.ietf.org/html/bcp47) 文字列の形式です。|
 |language|(ソース言語から翻訳された) 分析情報言語です。 [BCP 47](https://tools.ietf.org/html/bcp47) 文字列の形式です。|
 |transcript|[トランスクリプト](#transcript) ディメンション|
-|ocr|[ocr](#ocr) ディメンション|
+|ocr|[OCR](#ocr) ディメンション。|
 |keywords|[キーワード](#keywords) ディメンション|
 |blocks|1 つ以上の[ブロック](#blocks)を含めることができます。|
 |faces|[顔](#faces)ディメンション|
@@ -422,61 +419,85 @@ instances|このブロックの時間範囲の一覧|
   ] 
 ```
 
+#### <a name="scenes"></a>scenes
+
+|Name|説明|
+|---|---|
+|id|シーン ID。|
+|instances|このシーンの時間範囲の一覧 (1 つのシーンに 1 つだけのインスタンスがあります)。|
+
+```json
+"scenes":[  
+    {  
+      "id":0,
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+    {  
+      "id":1,
+      "instances":[  
+          {  
+            "start":"0:00:06.34",
+            "end":"0:00:47.047",
+            "duration":"0:00:40.707"
+          }
+      ]
+    },
+
+]
+```
+
 #### <a name="shots"></a>shots
 
 |Name|説明|
 |---|---|
 |id|スナップショット ID。|
-|keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。 キー フレームのインスタンスには、keyFrame のサムネイル ID 付きサムネイル フィードがあります。|
-|instances|このショットの時間範囲の一覧 (ショットのインスタンスは 1 つだけあります)。|
+|keyFrames|ショット内の keyFrame の一覧 (それぞれに ID とインスタンスの時間範囲の一覧があります)。 各 keyFrame インスタンスには、keyFrame のサムネイル ID を保持する thumbnailId フィールドがあります。|
+|instances|このショットの時間範囲の一覧 (1 つのショットに 1 つだけのインスタンスがあります)。|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
       ],
-      "instances": [
-        {
-            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
       ]
     },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
+
+]
 ```
 
 #### <a name="brands"></a>brands
@@ -550,7 +571,7 @@ instances|このブロックの時間範囲の一覧|
 |SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
 |SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |Name|説明|
 |---|---|

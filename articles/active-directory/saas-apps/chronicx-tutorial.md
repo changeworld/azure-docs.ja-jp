@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689a8d289c6dfa58e70db63373178dec4e109c72
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 499cbcada19728a0d0eba1831460ea38245b7f5c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>チュートリアル:Azure Active Directory と ChronicX® の統合
 
@@ -106,9 +106,9 @@ ChronicX® を利用して Azure AD シングル サインオンを構成する�
 
     ![[ChronicX® のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`ups.chronicx.com` という URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `ups.chronicx.com`
 
     > [!NOTE]
     >サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[ChronicX® クライアント サポート チーム](https://www.casebank.com/contact-us/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -199,6 +199,6 @@ ChronicX® を利用して Azure AD シングル サインオンを構成する�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

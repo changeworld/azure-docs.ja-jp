@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 9955068fbc0d6493add83c6c92390413b3975106
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1f4bf24ef5f96fea7602b38d857f12d950fb0b24
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437173"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275635"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -75,8 +75,8 @@ public static void Run(
 この例は、Azure Functions バージョン 1.x 用です。 このコードを 2.x で機能させるには、次のようにします。
 
 - [アクセス権パラメーターを省略する](#trigger---configuration)
-- ログ パラメーターの型を `TraceWriter` から `ILogger` に変更する
-- `log.Info` を `log.LogInformation` に変更する
+- ログ パラメーターの型を `TraceWriter` から次のものに変更する `ILogger`
+- `log.Info` を次のものに変更します `log.LogInformation`
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
@@ -283,8 +283,8 @@ module.exports = function(context, myQueueItem) {
 |**queueName**|**QueueName**|監視するキューの名前。  トピックではなくキューを監視する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックを監視する場合にのみ設定します。|
-|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
-|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
+|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
+|**accessRights**|**Access**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -328,7 +328,6 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 |`To`|`string`|送信先アドレス。|
 |`Label`|`string`|アプリケーション固有のラベル。|
 |`CorrelationId`|`string`|関連付け ID。|
-|`UserProperties`|`IDictionary<String,Object>`|アプリケーション固有のメッセージ プロパティ。|
 
 > [!NOTE]
 > 現時点では、トリガーは、セッションを使用していないキューおよびサブスクリプションでのみ機能します。 この機能に関連する今後の更新については、[この機能の項目](https://github.com/Azure/azure-functions-host/issues/563)を追跡してください。 
@@ -599,8 +598,8 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |**name** | 該当なし | 関数コード内のキューまたはトピックを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 |
 |**queueName**|**QueueName**|キューの名前。  トピックではなくキューのメッセージを送信する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
-|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
-|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
+|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
+|**accessRights**|**Access**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -614,7 +613,7 @@ C# とC# スクリプトでは、出力バインドに次のパラメーター�
 * `out string` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
 * `out byte[]` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
 * `out BrokeredMessage` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
-* `ICollector<T>` または `IAsyncCollector<T>`- 複数のメッセージを作成する場合。 `Add` メソッドを呼び出すときに、メッセージが作成されます。
+* `ICollector<T>` または `IAsyncCollector<T>` - 複数のメッセージを作成する場合。 `Add` メソッドを呼び出すときに、メッセージが作成されます。
 
 非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 

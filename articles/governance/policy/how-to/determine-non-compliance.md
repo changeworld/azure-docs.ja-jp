@@ -1,19 +1,18 @@
 ---
 title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314128"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276101"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -46,7 +45,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 1. **[ポリシー準拠状況の詳細]** ウィンドウに、現在のポリシー割り当てに対するリソースの最新の評価からの情報が表示されます。 この例では、フィールド **Microsoft.Sql/servers/version** が _12.0_ であることが検出されていますが、ポリシー定義では _14.0_ を必要としています。 リソースのコンプライアンス違反の理由が複数ある場合は、このウィンドウにそれぞれの理由が表示されます。
 
-   ![[ポリシー準拠状況の詳細] ウィンドウ](../media/determine-non-compliance/compliance-details-pane.png)
+   ![[ポリシー準拠状況の詳細] ウィンドウおよびコンプライアンス違反の理由](../media/determine-non-compliance/compliance-details-pane.png)
 
    **AuditIfNotExists** または **deployIfNotExists** ポリシー定義について、詳細に **details.type** プロパティと省略可能なプロパティが含まれます。 一覧については、「[auditIfNotExists プロパティ](../concepts/effects.md#auditifnotexists-properties)」と「[deployIfNotExists プロパティ](../concepts/effects.md#deployifnotexists-properties)」を参照してください。 **最後に評価されたリソース**は、定義の **details** セクションからの関連リソースです。
 
@@ -118,11 +117,11 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 1. **[リソース コンプライアンス]** ページで **[Change History (preview)]\(変更履歴 (プレビュー)\)** タブを選択します。 検出された変更がある場合は、その一覧が表示されます。
 
-   ![ポリシー変更履歴 - タブ](../media/determine-non-compliance/change-history-tab.png)
+   ![[リソース コンプライアンス] ページの [Policy Change History]\(ポリシーの変更履歴\) タブ](../media/determine-non-compliance/change-history-tab.png)
 
 1. 検出された変更のいずれかを選択します。 **[変更履歴]** ページに、リソースの_差分表示_が示されます。
 
-   ![ポリシー変更履歴 - 差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![[変更履歴] ページでのポリシーの変更履歴の差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
 
 "_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更が、リソースの現在のコンプライアンス対応状態に関連していない場合があります。
 

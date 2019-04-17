@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d97bc36deaf3fac8fee27c678f37a69d1240f9c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb186b457b6813774698a52f34fbe2866700dbcd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992110"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>チュートリアル:Azure Active Directory と Sciforma の統合
 
@@ -106,9 +106,9 @@ Sciforma で Azure AD シングル サインオンを構成するには、次の
 
     ![[Sciforma のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sciforma.net/sciforma/main.html`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.sciforma.net/sciforma/main.html`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sciforma.net/sciforma/saml`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<subdomain>.sciforma.net/sciforma/saml`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Sciforma クライアント サポート チーム](https://www.sciforma.com/about/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -196,7 +196,7 @@ Sciforma で Azure AD シングル サインオンを構成するには、次の
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

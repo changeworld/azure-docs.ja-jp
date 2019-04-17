@@ -1,19 +1,18 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の使用時に大きなデータ セットを取得して制御する方法について説明します。
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889037"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262467"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -63,7 +62,7 @@ Search-AzGraph -Query "project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>ページングの結果
 
-処理のために、または結果セットが返されるレコード数の最大許容値 _5000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resources/resources) の **QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。
+処理のために、または結果セットが返されるレコード数の最大許容値 _1000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resources/resources) の **QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。
 **resultTruncated** はブール値で、応答で返されていない追加のレコードがあるかどうかをコンシューマーに通知します。 この状態は、**count** プロパティが **totalRecords** プロパティより小さい場合も示されます。 **totalRecords** では、クエリに一致したレコード数が定義されています。
 
 **resultTruncated** が **true** のときは、応答で **$skipToken** プロパティが設定されます。 この値は、クエリに一致した次のレコード セットを取得するために、同じクエリ値とサブスクリプション値で使用されます。

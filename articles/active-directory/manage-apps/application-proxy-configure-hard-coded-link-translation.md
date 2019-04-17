@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118597"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262552"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -81,6 +81,31 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 - `/claims/claims.html` のようなローカル ファイル構造の共有リソースをポイントする**相対内部リンク**。 これらのリンクは、アプリケーション プロキシ経由で公開されるアプリで自動的に動作し、リンク変換の有無にかかわらず機能し続けます。 
 - `http://expenses` のような他のオンプレミスのアプリまたは `http://expenses/logo.jpg` のような公開されたファイルへの**ハードコードされた内部リンク**。 リンク変換機能は、ハードコードされた内部リンクで機能し、リモート ユーザーが経由する必要がある外部 URL をポイントするように変更します。
+
+アプリケーション プロキシがリンク変換をサポートする HTML コード タグの完全な一覧には、以下のものが含まれます。
+* a
+* audio
+* base
+* ボタン
+* div
+* embed
+* form
+* frame
+* head
+* html
+* iframe
+* 画像
+* input
+* link
+* menuitem
+* meta
+* object
+* script
+* source
+* track
+* video
+
+さらに、CSS 内では URL 属性も変換されます。
 
 ### <a name="how-do-apps-link-to-each-other"></a>アプリが相互にリンクする方法
 

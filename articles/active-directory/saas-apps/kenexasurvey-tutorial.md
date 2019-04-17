@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: ed34267aa1f18b4c66fe841164e6a2cde4e27d47
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 385092cb9c760e6f9fa848449bd61663541573b9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361049"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル:Azure Active Directory と IBM Kenexa Survey Enterprise の統合
 
@@ -105,9 +105,9 @@ IBM Kenexa Survey Enterprise で Azure AD シングル サインオンを構成�
 
     ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://surveys.kenexa.com/<companycode>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://surveys.kenexa.com/<companycode>`
 
-    b. **[応答 URL]** ボックスに、`https://surveys.kenexa.com/<companycode>/tools/sso.asp` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を入手するには、[IBM Kenexa Survey Enterprise クライアント サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -203,7 +203,7 @@ IBM Kenexa Survey Enterprise システムでユーザーを作成し、それに
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 505bb292a6b8a81f5fa11a03bc150a7f43129956
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28d52a6eb5018aac8ebeb48b0a2a60a1dd9e1a43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852800"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>チュートリアル:Azure Active Directory と Montage Online の統合
 
@@ -106,15 +106,15 @@ Montage Online で Azure AD シングル サインオンを構成するには、
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-    運用環境: `https://<subdomain>.montageonline.co.nz/`
+    運用環境の場合:  `https://<subdomain>.montageonline.co.nz/`
 
-    テスト環境の場合: `https://build-<subdomain>.montageonline.co.nz/`
+    テスト環境の場合:  `https://build-<subdomain>.montageonline.co.nz/`
 
     b. **[識別子]** ボックスに次の URL を入力します。
 
-    運用環境: `MOL_Azure`
+    運用環境の場合:  `MOL_Azure`
 
-    テスト環境の場合: `MOL_Azure_Build`
+    テスト環境の場合:  `MOL_Azure_Build`
 
     > [!NOTE] 
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Montage Online クライアント サポート チーム](https://www.montage.co.nz/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -155,7 +155,7 @@ Montage Online で Azure AD シングル サインオンを構成するには、
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -202,7 +202,7 @@ Montage Online で Azure AD シングル サインオンを構成するには、
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c5375bc88281eb31637f42b1f13b59cb11a8ade8
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: cd38da7cb640e53c90a209850bcd8386c75a8aa9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848593"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271506"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>チュートリアル:Azure Active Directory と TimeLive の統合
 
@@ -107,9 +107,9 @@ TimeLive で Azure AD シングル サインオンを構成するには、次の
 
     ![[TimeLive のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<domainname>.livetecs.com/`
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<domainname>.livetecs.com/`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<domainname>.livetecs.com/`
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<domainname>.livetecs.com/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[TimeLive クライアント サポート チーム](mailto:support@livetecs.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -218,7 +218,7 @@ TimeLive で Azure AD シングル サインオンを構成するには、次の
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,7 +1,7 @@
 ---
-title: PowerShell および REST API を使用してインデックスを作成、読み込み、クエリを実行する - Azure Search
-description: PowerShell、Invoke-RestMethod、および Azure Search REST API を使用してインデックスを作成、読み込み、クエリを実行します。
-ms.date: 03/15/2019
+title: クイック スタート:PowerShell および REST API を使用してインデックスを作成、読み込み、クエリを実行する - Azure Search
+description: PowerShell の Invoke-RestMethod、および Azure Search REST API を使用してインデックスを作成、読み込み、クエリを実行します。
+ms.date: 04/08/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372116"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268026"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>クイック スタート:PowerShell および REST API を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -29,19 +29,23 @@ ms.locfileid: "58372116"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 その他の前提条件には次の項目があります。
+このクイック スタートでは、次のサービスとツールを使用します。 
+
+[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 [PowerShell 5.1 以降](https://github.com/PowerShell/PowerShell) (シーケンシャルおよび対話型の手順で [Invoke-restmethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) を使用します)。
 
-ご利用の検索サービスの URL エンドポイントと管理者 API キーを取得します。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
-1. Azure portal の検索サービスの **[概要]** ページで、URL を取得します。 たとえば、エンドポイントは https:\//my-service-name.search.windows.net のようになります。
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. [Azure portal にサインインし](https://portal.azure.com/)、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-   ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-   すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
+![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+
+すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
 ## <a name="connect-to-azure-search"></a>Azure Search への接続
 

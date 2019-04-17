@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839731"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883011"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語を理解する
 
@@ -49,7 +49,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 | 発注 number |追跡のために割り当てられる、省略可能な発注書番号 |
 | 請求書番号 |追跡のために使用される、Microsoft で生成した一意の請求書番号 |
 | 請求日 |請求書が生成された日付。通常は、請求期間が終了してから 5 から 12 日後。 請求書の日付は、課金プロファイルのプロパティで確認できます。|
-| 支払い条件 |Microsoft の請求に対する支払い方法。 *30 日払い*とは、請求書の日付から 30 日以内に小切手または電信送金で支払うことを意味します。 |
+| 支払い条件 |Microsoft の請求に対する支払い方法。 *30 日払い*とは、請求書の日付から 30 日以内に支払うことを意味します。 |
 
 ### <a name="billing-summary"></a>課金の要約
 
@@ -105,7 +105,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次の手順
 
