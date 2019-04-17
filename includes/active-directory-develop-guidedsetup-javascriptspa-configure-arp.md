@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: f9993058f93cf94ee468a92ac7cbb2d6881e61be
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 7a6fa45d0f4ea09fbc84d3185aa0e58db165ac19
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214301"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502955"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
@@ -35,7 +35,7 @@ ms.locfileid: "58214301"
 > 2. **URL** からクリップボードに値をコピーします。<br/> ![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
 > 3. このページの上部にある **[リダイレクト URL]** に値を貼り付けて、**[更新]** を選択します。
 
-<p/>
+<p>
 
 > #### <a name="setting-redirect-url-for-node"></a>Node のリダイレクト URL の設定
 > Node.js の場合は、Web サーバーのポートを *server.js* ファイルで設定できます。 このチュートリアルでは、参照用にポート 30662 を使用しますが、その他に使用可能なポートも使用できます。 下記の手順に従って、アプリケーションの登録情報内にリダイレクト URL を設定します。<br/>

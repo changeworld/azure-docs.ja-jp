@@ -3,17 +3,17 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835834"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425969"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -30,33 +30,16 @@ DPS を使用すると、次のことが可能になります。
 - 独自のデバイス ID を使用して、IoT Central にデバイスを登録できます。 独自のデバイス ID を使用して、既存のバックオフィス システムとの統合を簡略化できます。
 - 1 つの一貫した方法で IoT Central にデバイスを接続できます。
 
-このハウツー記事では、次の 4 つのユース ケースについて説明します。
+この記事では、次の 4 つのユース ケースについて説明します。
 
 1. [SAS を使用して 1 台のデバイスをすばやく接続する](#connect-a-single-device)
-1. SAS を使用して大量のデバイスを接続する
+1. [SAS を使用して大量のデバイスを接続する](#connect-devices-at-scale-using-sas)
 1. [X.509 証明書を使用して大量のデバイスを接続する](#connect-devices-using-x509-certificates)。これは運用環境に対して推奨されるアプローチです。
-1. 最初にデバイスを登録しないで接続する 
+1. [最初にデバイスを登録しないで接続する](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>1 つのデバイスを接続する
 
-このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。
-
-SAS を使用して IoT Central に単一のデバイスを接続するには、次の手順に従います。
-
-1. 実際のデバイスを追加するには、**[デバイス エクスプローラー]** に移動してデバイス テンプレートを選択し、**[新規] > [実際]** を選択します。
-    - 独自の (小文字の) **[デバイス ID]** を入力するか、推奨される ID を使用します。
-    - **[デバイス名]** を入力するか、推奨名を使います。
-
-      ![デバイスの追加](media/concepts-connectivity/add-device.png)
-
-1. デバイス接続情報を取得するには、デバイス ページで **[接続]** を選択します。 **[スコープ ID]**、**[デバイス ID]**、**[主キー]** の値が必要です。
-    - 各 IoT Central アプリケーションに、DPS によって生成された一意の [[スコープ ID]](../iot-dps/concepts-device.md#id-scope) があります。
-    - [[デバイス ID]](../iot-dps/concepts-device.md#device-id) は一意のデバイス ID です。 デバイス ID は [ID レジストリ](../iot-hub/iot-hub-devguide-identity-registry.md)に保存されます。
-    - **[主キー]** は、デバイスに対して IoT Central によって生成された SAS トークンです。
-
-      ![接続の詳細](media/concepts-connectivity/device-connect.png)
-
-デバイス コード内の接続情報を使用して、デバイスが IoT 経由で IoT Central アプリケーションに接続してデータを送信できるようにします。 デバイスの接続について詳しくは、「[次の手順](#next-steps)」をご覧ください。
+このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。 IoT Central アプリケーションからのデバイス接続情報を使用して、デバイスの接続文字列を生成できます。 詳細については、[Azure IoT Central アプリケーションに接続するためにデバイス接続文字列を生成する方法](howto-generate-connection-string.md)に関するページを参照してください。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS を使用して大量のデバイスを接続する
 
@@ -69,7 +52,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 インポートしたデバイスの接続情報を取得するには、[IoT Central アプリケーションから CSV ファイルをエクスポート](howto-manage-devices.md#export-devices)します。
 
 > [!NOTE]
-> 最初に IoT Central に登録しないでデバイスを接続する方法については、「デバイスを登録しないで接続する」をご覧ください。
+> 最初に IoT Central に登録しないでデバイスを接続する方法については、「[デバイスを登録しないで接続する](#connect-without-registering-devices)」をご覧ください。
 
 ### <a name="set-up-your-devices"></a>デバイスの設定
 
@@ -98,13 +81,13 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 1. IoT Central アプリケーション内で、CSV ファイルを使用して "_デバイスをインポートおよび登録_" します。
 
-1. "_デバイスを設定します。_" アップロードしたルート証明書を使用してリーフ証明書を生成します。 **デバイス ID** をリーフ証明書の CNAME 値として使用します。 デバイス ID はすべて小文字である必要があります。 次に、プロビジョニング サービスの情報を使用してデバイスをプログラムします。 初めてデバイスの電源を入れたときに、デバイスは IoT Central アプリケーションに関する接続情報を DPS から取得します。
+1. _デバイスを設定します。_ アップロードしたルート証明書を使用してリーフ証明書を生成します。 **デバイス ID** をリーフ証明書の CNAME 値として使用します。 デバイス ID はすべて小文字である必要があります。 次に、プロビジョニング サービスの情報を使用してデバイスをプログラムします。 初めてデバイスの電源を入れたときに、デバイスは IoT Central アプリケーションに関する接続情報を DPS から取得します。
 
 ### <a name="further-reference"></a>他の参考資料
 
 - [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。
 
-- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)。
+- [C のサンプル デバイス クライアント。](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 
 ### <a name="for-testing-purposes-only"></a>テスト目的のみ
 
@@ -169,26 +152,6 @@ IoT Central によって有効になる主要なシナリオは、最初に登�
 
 1. オペレーターはデバイスをブロックできます。 デバイスがブロックされると、そのデバイスは IoT Central アプリケーションにデータを送信できません。 ブロックされたデバイスのプロビジョニング状態は **[ブロック]** です。 オペレーターは、データの送信を再開する前にデバイスをリセットする必要があります。 オペレーターがデバイスのブロックを解除すると、プロビジョニング状態は前の値 (**[登録済み]** または **[プロビジョニング済み]**) に戻ります。
 
-## <a name="get-a-connection-string"></a>接続文字列を取得する
-
-次の手順では、デバイスの接続文字列を取得する方法について説明します。
-
-1. **[デバイス エクスプローラー]** ページで **[接続]** を選択して、接続の詳細を取得します:**スコープ ID**、**デバイス ID**、**デバイスの主キー**。
-
-    ![接続の詳細](media/concepts-connectivity/device-connect.png)
-
-1. `dps-keygen` コマンドライン ユーティリティを使用して接続文字列を生成します。[キー ジェネレーター ユーティリティ](https://github.com/Azure/dps-keygen)をインストールするには、次のコマンドを実行します。
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-    接続文字列を生成するには、次のコマンドを実行します。
-
-    ```cmd/sh
-    dps-keygen -di:<device_id> -dk:<device_key> -si:<scope_id>
-    ```
-
 ## <a name="sdk-support"></a>SDK のサポート
 
 Azure Device SDK では、デバイス コードを最も簡単に実装する方法が提供されます。 次のデバイス SDK が使用できます。
@@ -219,7 +182,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 デバイス SDK の使用の詳細については、次に関連する記事のコード例を参照してください。
 
 - [汎用の Node.js クライアント を Azure IoT Central アプリケーションに接続する](howto-connect-nodejs.md)
-- [Raspberry Pi デバイスを Azure IoT Central アプリケーションに接続する ](howto-connect-raspberry-pi-python.md)
+- [Raspberry Pi デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-raspberry-pi-python.md)
 - [DevDiv キット デバイスを Azure IoT Central アプリケーションに接続する ](howto-connect-devkit.md)
 
 ### <a name="protocols"></a>プロトコル

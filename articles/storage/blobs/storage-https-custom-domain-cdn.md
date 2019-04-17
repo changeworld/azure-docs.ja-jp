@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: 1166f98dcd39362ef5e28be12ff9e2f561ab5b1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238223"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579014"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする
 
@@ -67,4 +67,4 @@ Azure CDN から BLOB にアクセスする場合､各エッジ ノードと配
 ## <a name="next-steps"></a>次の手順
 
 * [BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)
-* [Azure Storage での静的 Web サイトのホスティング (プレビュー)](storage-blob-static-website.md)
+* [Azure Storage での静的な Web サイトのホスティング](storage-blob-static-website.md)

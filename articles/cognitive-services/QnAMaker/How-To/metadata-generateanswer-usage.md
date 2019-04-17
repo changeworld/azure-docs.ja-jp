@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: tulasim
-ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958050"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579412"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使ってナレッジの回答を取得する
 
@@ -67,23 +67,24 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
 ```
 
-|HTTP 要求プロパティ|Name|type|目的|
+|HTTP 要求プロパティ|Name|Type|目的|
 |--|--|--|--|
-|URL ルート パラメーター|ナレッジ ベース ID|文字列|ナレッジ ベースの GUID。|
-|URL ルート パラメーター|QnAMaker エンドポイントのホスト|文字列|Azure サブスクリプションにデプロイされているエンドポイントのホスト名。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 |
-|ヘッダー|Content-Type|文字列|API に送信される本文のメディアの種類。 既定値: `` |
-|ヘッダー|Authorization|文字列|エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
+|URL ルート パラメーター|QnAMaker エンドポイントのホスト|string|Azure サブスクリプションにデプロイされているエンドポイントのホスト名。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 |
+|ヘッダー|Content-Type|string|API に送信される本文のメディアの種類。 既定値: `` |
+|ヘッダー|Authorization|string|エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |Post 本文|JSON オブジェクト|JSON|設定が付与されている質問|
-|クエリ文字列パラメーター (オプション)|`isTest`|ブール値|true に設定した場合、公開されたインデックスではなく、`testkb` 検索インデックスから結果が返されます。|
+
 
 JSON の本文には、次のようないくつかの設定があります。
 
-|JSON 本文のプロパティ|必須|type|目的|
+|JSON 本文のプロパティ|必須|Type|目的|
 |--|--|--|--|
-|`question`|必須|文字列|ナレッジ ベースに送信されるユーザーの質問。|
+|`question`|必須|string|ナレッジ ベースに送信されるユーザーの質問。|
 |`top`|省略可能|integer|出力を含めるランク付けされた結果の数。 既定値は 1 です。|
-|`userId`|省略可能|文字列|ユーザーを識別する一意の ID。 この ID はチャット ログに記録されます。|
-|`strictFilters`|省略可能|文字列|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。|
+|`userId`|省略可能|string|ユーザーを識別する一意の ID。 この ID はチャット ログに記録されます。|
+|`isTest`|省略可能|ブール値|true に設定した場合、公開されたインデックスではなく、`testkb` 検索インデックスから結果が返されます。|
+|`strictFilters`|省略可能|string|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。|
 
 JSON 本文の例は、次のようになります。
 
@@ -91,6 +92,7 @@ JSON 本文の例は、次のようになります。
 {
     "question": "qna maker and luis",
     "top": 6,
+    "isTest": true,
     "strictFilters": [
     {
         "name": "category",

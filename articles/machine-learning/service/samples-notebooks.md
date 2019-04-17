@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 961983aad0775f9b9d728269e8a57137ff508f02
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b597d6efa87aa2811ce42f3315698acfa17426b2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451792"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548590"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Jupyter Notebook を使用して Azure Machine Learning service を探索する
 
@@ -50,50 +50,6 @@ DSVM には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) と�
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
 このクイック スタートの各手順では、クイック スタートとチュートリアルのノートブックを実行するために必要なパッケージをインストールします。  他のサンプル ノートブックでは、さらに別のコンポーネントのインストールが必要になることがあります。  これらのコンポーネントの詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](https://docs.microsoft.com/python/api/overview/azure/ml/install)」を参照してください。
-
-<a name="automated-ml-setup"></a>
-
-## <a name="automated-machine-learning-setup"></a>自動化された機械学習の設定 
-
-"_以下の手順は、**how-to-use-azureml/automated-machine-learning** フォルダーにあるノートブックにのみ適用されます。_"
-
-上記のオプションのどれでも使用できますが、次の手順に従って、環境のインストールとワークスペースの作成を同時に行うこともできます。 
-
-1. [Mini-conda](https://conda.io/miniconda.html) をインストールします。 3.7 またはそれ以降を選択します。 プロンプトに従ってインストールします。 
-   >[!NOTE]
-   >4.4.10 以降のバージョンであれば、既存の conda を使用できます。 `conda -V` を使用してバージョンを表示します。 `conda update conda` コマンドを使用して conda バージョンを更新することができます。 mini-conda を明示的にインストールする必要はありません。
-
-1. [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
-) からサンプルのノートブックを zip ファイルとしてダウンロードし、内容をローカル ディレクトリに抽出します。 自動化された機械学習のノートブックは、`how-to-use-azureml/automated-machine-learning` フォルダーにあります。
-
-1. 新しい Conda 環境を設定します。 
-   1. ローカル コンピューターに Conda プロンプトを開きます。
-   
-   1. ローカル コンピューターに抽出したファイルに移動します。
-   
-   1. **automated-machine-learning** フォルダーを開きます。
-   
-   1. Windows の conda プロンプトまたはオペレーティング システムの `.sh` ファイル内で `automl_setup.cmd` を実行します。 実行には約 10 分かかることがあります。
-
-      セットアップ スクリプトでは以下の操作を行います:
-      + 新しい conda 環境を作成する
-      + 必要なパッケージをインストールする
-      + ウィジェットを構成する
-      + Jupyter Notebook を開始する
-      
-   >[!NOTE]
-   > スクリプトでは、conda 環境名をオプションのパラメーターとして受け取ります。 既定の conda 環境名は `azure_automl` です。 正確なコマンドは、オペレーティング システムによって異なります。 これは、新しい環境を作成したり新しいバージョンにアップグレードしたりする場合に便利です。 たとえば、"automl_setup.cmd azure_automl_sandbox" を使用して、環境名 azure_automl_sandbox を作成することができます。 
-      
-1. スクリプトが完了すると、ブラウザーに Jupyter Notebook のホーム ページが表示されます。
-
-1. ノートブックを保存したパスに移動します。 
-
-1. 自動化された機械学習のフォルダーを開き、**configuration.ipynb** ノートブックを開きます。 
-
-1. ノートブック内のセルを実行して、Machine Learning Services リソース プロバイダーを登録し、ワークスペースを作成します。
-
-これで、ローカル コンピューターに保存されたノートブックを開いて実行する準備が整いました。
-
 
 ## <a name="next-steps"></a>次の手順
 

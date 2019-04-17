@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: 28bed5503c5c798f244a4ba3a070894aa4538b00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873028"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359135"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 
-Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Service Bus Resource Manager の PowerShell モジュール](/powershell/module/azurerm.servicebus) を使用して、Service Bus エンティティ (名前空間、キュー、トピック、およびサブスクリプション) を、ローカルの Azure PowerShell コンソールまたはスクリプトでプロビジョニングおよび管理する方法について説明します。
+Microsoft Azure PowerShell は、Azure サービスのデプロイメントと管理を制御し自動化するために使用できるスクリプティング環境です。 この記事では、[Service Bus Resource Manager の PowerShell モジュール](/powershell/module/az.servicebus) を使用して、Service Bus エンティティ (名前空間、キュー、トピック、およびサブスクリプション) を、ローカルの Azure PowerShell コンソールまたはスクリプトでプロビジョニングおよび管理する方法について説明します。
 
 Azure Resource Manager テンプレートでも Service Bus エンティティを管理できます。 詳細については、[「Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する」](service-bus-resource-manager-overview.md)の記事を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,13 +43,13 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 ## <a name="provision-a-service-bus-namespace"></a>Service Bus 名前空間のプロビジョニング
 
-Service Bus 名前空間を使用する場合は、次のコマンドレットを使用できます。[Get AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/get-azurermservicebusnamespace)、[New-AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/new-azurermservicebusnamespace)、[Remove-AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/remove-azurermservicebusnamespace)、および[Set-AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/set-azurermservicebusnamespace)
+Service Bus 名前空間を操作する場合は、[Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace)、[New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace)、[Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)、および [Set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) コマンドレットを使用できます。
 
 この例では、スクリプトでローカル変数 `$Namespace` と `$Location` を作成します。
 
-* `$Namespace` は操作する Service Bus 名前空間の名前です。
-* `$Location` は名前空間をプロビジョニングするデータ センターを識別します。
-* `$CurrentNamespace` では取得 (または作成) する参照名前空間を保存します。
+* `$Namespace` は、操作する Service Bus 名前空間の名前です。
+* `$Location` は、名前空間をプロビジョニングするデータ センターを識別します。
+* `$CurrentNamespace` は、取得 (または作成する) 参照名前空間を格納します。
 
 実際のスクリプトでは `$Namespace` と `$Location` はパラメーターとして渡すことができます。
 
@@ -59,21 +61,21 @@ Service Bus 名前空間を使用する場合は、次のコマンドレット�
    
     ``` powershell
     # Query to see if the namespace currently exists
-    $CurrentNamespace = Get-AzureRMServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
+    $CurrentNamespace = Get-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
    
     # Check if the namespace already exists or needs to be created
     if ($CurrentNamespace)
     {
         Write-Host "The namespace $Namespace already exists in the $Location region:"
         # Report what was found
-        Get-AzureRMServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
+        Get-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
     }
     else
     {
         Write-Host "The $Namespace namespace does not exist."
         Write-Host "Creating the $Namespace namespace in the $Location region..."
-        New-AzureRmServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace -Location $Location
-        $CurrentNamespace = Get-AzureRMServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
+        New-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace -Location $Location
+        $CurrentNamespace = Get-AzServiceBusNamespace -ResourceGroup $ResGrpName -NamespaceName $Namespace
         Write-Host "The $Namespace namespace in Resource Group $ResGrpName in the $Location region has been successfully created."
                 
     }
@@ -81,11 +83,11 @@ Service Bus 名前空間を使用する場合は、次のコマンドレット�
 
 ### <a name="create-a-namespace-authorization-rule"></a>名前空間の承認規則の作成
 
-次の例では、コマンドレットの [New-AzureRmServiceBusNamespaceAuthorizationRule](/powershell/module/azurerm.servicebus/new-azurermservicebusnamespaceauthorizationrule)、[Get AzureRmServiceBusNamespaceAuthorizationRule](/powershell/module/azurerm.servicebus/get-azurermservicebusnamespaceauthorizationrule)、[Set-AzureRmServiceBusNamespaceAuthorizationRule](/powershell/module/azurerm.servicebus/set-azurermservicebusnamespaceauthorizationrule)、および [Remove-AzureRmServiceBusNamespaceAuthorizationRule ](/powershell/module/azurerm.servicebus/remove-azurermservicebusnamespaceauthorizationrule) を使用して承認規則の名前空間を管理する方法を示しています。
+次の例は、[New-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule)、[Get-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule)、[Set-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)、および [Remove-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) コマンドレットを使用して名前空間の承認規則を管理する方法を示しています。
 
 ```powershell
 # Query to see if rule exists
-$CurrentRule = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
+$CurrentRule = Get-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
 
 # Check if the rule already exists or needs to be created
 if ($CurrentRule)
@@ -96,28 +98,28 @@ else
 {
     Write-Host "The $AuthRule rule does not exist."
     Write-Host "Creating the $AuthRule rule for the $Namespace namespace..."
-    New-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule -Rights @("Listen","Send")
-    $CurrentRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
+    New-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule -Rights @("Listen","Send")
+    $CurrentRule = Get-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
     Write-Host "The $AuthRule rule for the $Namespace namespace has been successfully created."
 
     Write-Host "Setting rights on the namespace"
-    $authRuleObj = Get-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
+    $authRuleObj = Get-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
 
     Write-Host "Remove Send rights"
     $authRuleObj.Rights.Remove("Send")
-    Set-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthRuleObj $authRuleObj
+    Set-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthRuleObj $authRuleObj
 
     Write-Host "Add Send and Manage rights to the namespace"
     $authRuleObj.Rights.Add("Send")
-    Set-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthRuleObj $authRuleObj
+    Set-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthRuleObj $authRuleObj
     $authRuleObj.Rights.Add("Manage")
-    Set-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthRuleObj $authRuleObj
+    Set-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthRuleObj $authRuleObj
 
     Write-Host "Show value of primary key"
-    $CurrentKey = Get-AzureRmServiceBusKey -ResourceGroup $ResGrpName -NamespaceName $Namespace -Name $AuthRule
+    $CurrentKey = Get-AzServiceBusKey -ResourceGroup $ResGrpName -NamespaceName $Namespace -Name $AuthRule
         
     Write-Host "Remove this authorization rule"
-    Remove-AzureRmServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -Name $AuthRule
+    Remove-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -Name $AuthRule
 }
 ```
 
@@ -127,7 +129,7 @@ else
 
 ```powershell
 # Check if queue already exists
-$CurrentQ = Get-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName
+$CurrentQ = Get-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName
 
 if($CurrentQ)
 {
@@ -137,15 +139,15 @@ else
 {
     Write-Host "The $QueueName queue does not exist."
     Write-Host "Creating the $QueueName queue in the $Location region..."
-    New-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName -EnablePartitioning $True
-    $CurrentQ = Get-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName
+    New-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName -EnablePartitioning $True
+    $CurrentQ = Get-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName
     Write-Host "The $QueueName queue in Resource Group $ResGrpName in the $Location region has been successfully created."
 }
 ```
 
 ### <a name="modify-queue-properties"></a>キューのプロパティを変更する
 
-前セクションのスクリプト実行後、[Set-AzureRmServiceBusQueue](/powershell/module/azurerm.servicebus/set-azurermservicebusqueue) コマンドレットを次の例のように使用して、キューのプロパティを更新します。
+前のセクションでスクリプトを実行したら、次の例のように、[Set-AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) コマンドレットを使用してキューのプロパティを更新できます。
 
 ```powershell
 $CurrentQ.DeadLetteringOnMessageExpiration = $True
@@ -153,24 +155,24 @@ $CurrentQ.MaxDeliveryCount = 7
 $CurrentQ.MaxSizeInMegabytes = 2048
 $CurrentQ.EnableExpress = $True
 
-Set-AzureRmServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName -QueueObj $CurrentQ
+Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName -QueueObj $CurrentQ
 ```
 
 ## <a name="provisioning-other-service-bus-entities"></a>その他の Service Bus エンティティのプロビジョニング
 
-[Service Bus PowerShell モジュール](/powershell/module/azurerm.servicebus) を使用してトピックやサブスクリプションなどの他のエンティティをプロビジョニングできます。 これらのコマンドレットは、前のセクションで説明したキュー作成コマンドレットに構文的に似ています。
+[Service Bus PowerShell モジュール](/powershell/module/az.servicebus) を使用してトピックやサブスクリプションなどの他のエンティティをプロビジョニングできます。 これらのコマンドレットは、前のセクションで説明したキュー作成コマンドレットに構文的に似ています。
 
 ## <a name="next-steps"></a>次の手順
 
-- Service Bus Manager PowerShell モジュールの全ドキュメントを[ここ](/powershell/module/azurerm.servicebus)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
+- Service Bus Manager PowerShell モジュールの全ドキュメントを[ここ](/powershell/module/az.servicebus)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
 - Azure Resource Manager テンプレートの使用の詳細については、「[Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する](service-bus-resource-manager-overview.md)」の記事を参照してください。
 - [Service Bus .NET 管理ライブラリ](service-bus-management-libraries.md)に関する情報。
 
 これ以外の Service Bus エンティティを管理する方法については、次のブログ投稿で説明されています。
 
-* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
-* [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+* [PowerShell スクリプトを使用して Service Bus キュー、トピック、およびサブスクリプションを作成する方法](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用して Service Bus 名前空間とイベント ハブを作成する方法](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Service Bus PowerShell スクリプト](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 

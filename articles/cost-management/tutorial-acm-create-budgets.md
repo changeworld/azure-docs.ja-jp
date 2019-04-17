@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 704aefd68f35ca20f72a2a0c46bf11912c139e65
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013039"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469490"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -64,6 +64,8 @@ Cost Management データに対するアクセス許可の割り当てについ�
 ![Azure portal に表示される Cost Management 予算](./media/tutorial-acm-create-budgets/budgets01.png)
 
 **[予算を作成する]** ウィンドウで、予算の名前と金額を入力します。 次に、期間を月、四半期、年から選択します。 次に、終了日を選択します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、8 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
+
+従量課金制、MSDN、または Visual Studio サブスクリプションがある場合、請求書の請求期間がカレンダー月と合わない場合があります。 それらのサブスクリプションとリソース グループの種類の場合、請求期間またはカレンダー月に合わせた予算を作成できます。 請求期間に合わせた予算を作成するには、請求月、請求四半期、または請求年のリセット期間を選択します。 カレンダー月に合わせた予算を作成するには、月、四半期、または年のリセット期間を選択します。
 
 この例では、毎月の予算を 4,500 ドルで作成します。 予算の 90% に達すると、メール アラートが生成されます。
 

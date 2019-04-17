@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 46b1da1f117c7ea416b2b818518f678b1a483c75
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9c24bd45e7a44b1ccbf651cda0e36c87a5d8f90c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58408472"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489168"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>計算リソースをグローバル Azure に移行する
 
@@ -124,7 +124,7 @@ REST API を使用してクラウド サービスを再デプロイするには�
     https://management.core.windows.net/<subscription-id>/services/hostedservices
     ```
 
-1. [[Create Deployment API]\(デプロイ API の作成\)](https://msdn.microsoft.com/library/azure/ee460813.aspx) を使用して、新しいデプロイを作成します。 `.cspkg` と `.cscfg` の定義を検索するには、[パッケージの取得 API](https://msdn.microsoft.com/library/azure/jj154121.aspx) を呼び出すことができます。
+1. [[Create Deployment API]\(デプロイ API の作成\)](/previous-versions/azure/reference/ee460813(v=azure.100)) を使用して、新しいデプロイを作成します。 `.cspkg` と `.cscfg` の定義を検索するには、[パッケージの取得 API](/previous-versions/azure/reference/jj154121(v=azure.100)) を呼び出すことができます。
 
     ```http
     https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deploymentslots/production
@@ -217,7 +217,7 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、手法、および推奨事項について説明します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [ネットワーク](./germany-migration-networking.md)
 - [Storage](./germany-migration-storage.md)

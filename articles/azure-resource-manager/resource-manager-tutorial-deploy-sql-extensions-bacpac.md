@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 04/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 40c7e00ad5271457904fc3273fdb633b0c7a8016
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7339c975bf979907bd1f9bbb46546b58ef7ae6e5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085067"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282357"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
 
@@ -53,21 +53,21 @@ BACPAC ファイルは、[パブリック アクセスが有効な Azure スト�
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用されるテンプレートは、[脅威の検出を備えた Azure SQL サーバーのデプロイ](https://azure.microsoft.com/resources/templates/201-sql-threat-detection-server-policy-optional-db/)と呼ばれます。
+このチュートリアルで使用されているテンプレートは、[Azure Storage アカウント](https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json)に保存されています。 
 
 1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-sql-threat-detection-server-policy-optional-db/azuredeploy.json
+    https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
 
     テンプレートで定義されている 3 つのリソースがあります。
 
-   * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
-   * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)をご覧ください。
-   * `Microsoft.SQL.servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.Sql/servers`。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
+   * `Microsoft.SQL/servers/securityAlertPolicies`。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)をご覧ください。
+   * `Microsoft.SQL.servers/databases`。  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
 
      カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。

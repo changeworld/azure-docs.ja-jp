@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/21/2019
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: eb4b87a008b9e43de7e7a5f7895449303f1e44a6
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7fa72ad62d7d11c795422a203d13a4dd45484c19
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593983"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578936"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Azure Blockchain Workbench REST API を使用する
 

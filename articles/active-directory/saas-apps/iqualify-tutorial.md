@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a0d2ab4a28465e733a1441df1daec8a3f2936e79
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 95c24f74e9af4443db994a6655a82108de18efdd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188130"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280147"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル:Azure Active Directory と iQualify LMS の統合
 
@@ -52,7 +52,7 @@ iQualify LMS と Azure AD の統合を構成するには、次のものが必要
 
 Azure AD への iQualify LMS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に iQualify LMS を追加する必要があります。
 
-**ギャラリーから iQualify LMS を追加するには、次の手順に従います。**
+**ギャラリーから iQualify LMS を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -109,14 +109,14 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
     |--|--|
-    | 運用環境: `https://<yourorg>.iqualify.com/`|
-    | テスト環境: `https://<yourorg>.iqualify.io`|
+    | 運用環境:  `https://<yourorg>.iqualify.com/`|
+    | テスト環境:  `https://<yourorg>.iqualify.io`|
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     | |
     |--|--|
-    | 運用環境: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | テスト環境: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | 運用環境:  `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | テスト環境:  `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -125,8 +125,8 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     | |
     |--|--|
-    | 運用環境: `https://<yourorg>.iqualify.com/login` |
-    | テスト環境: `https://<yourorg>.iqualify.io/login` |
+    | 運用環境:  `https://<yourorg>.iqualify.com/login` |
+    | テスト環境:  `https://<yourorg>.iqualify.io/login` |
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[iQualify LMS クライアント サポート チーム](https://www.iqualify.com/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -282,6 +282,6 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

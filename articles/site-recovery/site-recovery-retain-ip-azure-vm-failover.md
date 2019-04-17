@@ -2,16 +2,16 @@
 title: Azure Site Recovery を使用した Azure VM フェールオーバー時に IP アドレスを保持する | Microsoft Docs
 description: ディザスター リカバリーのために、Azure Site Recovery を使用して Azure VM をセカンダリ リージョンへフェールオーバーする際に、IP アドレスを保持する方法について説明します
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090748"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357891"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
