@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: e0a0bd0e630281d2218c74050e810fe73361c6be
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578545"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565905"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -26,7 +26,7 @@ ms.locfileid: "58578545"
 
 1 つのロジック アプリ定義の制限を次に示します。
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
@@ -48,7 +48,7 @@ ms.locfileid: "58578545"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 |------|-------|-------|
 | 実行継続時間 | 90 日間 | この制限を変更するには、「[実行継続時間を変更する](#change-duration)」をご覧ください。 |
 | 最小の繰り返し間隔 | 1 秒 | |
@@ -75,7 +75,7 @@ ms.locfileid: "58578545"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | トリガーのコンカレンシー | * コンカレンシー制御がオフの場合は無制限 <p><p>* コンカレンシー制御がオンの場合、25 が既定値の制限となります。制御をオンにした後、元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
 | 待機中の実行の最大数 | コンカレンシー制御がオンの場合、待機中の実行の最大数は 10 にコンカレンシー (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
@@ -93,7 +93,7 @@ ms.locfileid: "58578545"
 
 ### <a name="global-logic-apps-service"></a>グローバル Logic Apps サービス
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | アクション:5 分あたりの実行数 | 既定の制限は 100,000、上限は 300,000 です。 | 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 |
 | アクション:同時発信呼び出し数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
@@ -105,7 +105,7 @@ ms.locfileid: "58578545"
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 |------|-------|-------|
 | 基本単位の実行制限 | 5 分あたり 10,000 回のアクション実行。 <br>これは、1 か月あたり約 8,000 万回のアクション実行回数に相当します | |
 | スケール ユニットの実行制限 | 5 分あたり 5,000 回のアクション実行。 <br>これは、1 か月あたり約 4,000 万回のアクション実行回数に相当します | |
@@ -124,7 +124,7 @@ ms.locfileid: "58578545"
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | 送信要求 | 120 秒 | これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
 | 同期応答 | 120 秒 | 元の要求で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
@@ -132,7 +132,7 @@ ms.locfileid: "58578545"
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | メッセージ サイズ | 100 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
 | チャンクがある場合のメッセージ サイズ | 1 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 詳細については、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 |
@@ -141,7 +141,7 @@ ms.locfileid: "58578545"
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
 | 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
@@ -154,7 +154,7 @@ ms.locfileid: "58578545"
 
 次に示すのは、Web API から作成できるカスタム コネクタの制限です。
 
-| 名前 | 制限 |
+| Name | 制限 |
 | ---- | ----- |
 | カスタム コネクタの数 | Azure サブスクリプションあたり 1,000 |
 | カスタム コネクタによって作成された接続ごとの毎分の要求数 | 接続ごとに 500 の要求 |
@@ -164,7 +164,7 @@ ms.locfileid: "58578545"
 
 ## <a name="managed-identities"></a>マネージド ID
 
-| 名前 | 制限 |
+| Name | 制限 |
 | ---- | ----- |
 | マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 10 |
 |||
@@ -212,12 +212,12 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 | アーティファクト | 制限 | メモ |
 |----------|-------|-------|
 | アセンブリ | 50 | |
-| バッチの構成 | 5 |
-| 証明書 | 50 | |
+| バッチの構成 | 50 |
+| 証明書 | 500 | |
 | EDI 取引契約 | 500 | |
 | EDI 取引先 | 500 | |
-| マップ | 500 | |
-| スキーマ | 500 |
+| マップ | 1,000 | |
+| スキーマ | 1,000 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -245,7 +245,7 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 
 B2B プロトコルに適用される制限を次に示します。
 
-| 名前 | 制限 | メモ |
+| Name | 制限 | メモ |
 | ---- | ----- | ----- |
 | AS2 | 50 MB | デコードおよびエンコードに適用 |
 | X12 | 50 MB | デコードおよびエンコードに適用 |

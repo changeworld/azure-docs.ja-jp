@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2412bd5b4b4f05cdeb1638aa3d9ef1676e7b8315
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8db9e60e9ce99eaf2621821825620966b8b8b4ae
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293075"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521630"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
@@ -94,14 +94,14 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 
 ## <a name="considerations"></a>考慮事項
 * TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。 タスクの記事には、XML のための XML スキーマ定義が含まれます。
-* TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
+* TaskBody の定義には各 `<inputAsset>` の内部値と `<outputAsset>` を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
 * タスクは、複数の出力資産を持つことができます。 1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
 * タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 * タスクは、サイクルを形成することはできません。
 * JobInputAsset または JobOutputAsset に渡す値パラメーターは、資産のインデックス値を表します。 実際の資産は、ジョブ エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。
 * Media Services は OData v3 上に構築されるため、InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"__metadata: uri" の名前と値のペアによって参照されます。
 * InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。 OutputMediaAssets はシステムによって作成されます。 既存の資産は参照しません。
-* OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。 この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。 たとえば、"Sample" に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。 ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)_NewJob" になります。
+* OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。 この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ `<outputAsset>` 要素の内部テキストの値になります。 たとえば、"Sample" に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。 ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)_NewJob" になります。
 
 ## <a name="create-a-job-with-chained-tasks"></a>チェーン タスクによるジョブの作成
 アプリケーション シナリオの多くで、一連のタスク処理が開発者によって作成されます。 Media Services では、一連のチェーン タスクを作成できます。 各タスクはそれぞれ異なる処理手順を実行し、異なるメディア プロセッサを使うことができます。 チェーン タスクでは、あるタスクから別のタスクに資産を渡しながら一連のタスクを順番に実行できます。 ただし、ジョブで実行されるタスクが必ず順番に実行されなければならないということではありません。 チェーン タスクを作成するときは、一連の **ITask** オブジェクトは 1 つの **IJob** オブジェクト内で作成されます。

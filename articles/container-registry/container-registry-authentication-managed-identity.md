@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338464"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526624"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
@@ -164,7 +164,7 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 ID で構成されている Docker 仮想マシンに SSH で接続します。 VM にインストールされている Azure CLI を使用して、次の Azure CLI コマンドを実行します。
 
-まず、VM 上に構成した ID を使用して、[az login][az-login] で Azure CLI に対して認証します。 <userID> については、前の手順で取得した ID のユーザー ID に置き換えます。 
+まず、VM 上に構成した ID を使用して、[az login][az-login] で Azure CLI に対して認証します。 `<userID>` については、前の手順で取得した ID のユーザー ID に置き換えます。 
 
 ```azurecli
 az login --identity --username <userID>

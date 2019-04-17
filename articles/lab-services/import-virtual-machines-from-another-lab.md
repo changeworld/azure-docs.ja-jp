@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b2eee0bfd32b58cd751f8bf70aff1d4f460a353
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339907"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546593"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で別のラボから仮想マシンをインポートする
 この記事では、別のラボから自分のラボに仮想マシンをインポートする方法について説明します。 
@@ -47,7 +47,7 @@ VM をラボ間でインポートする際に注意する 2 つの重要な制�
 - 現在のところ、この機能がサポートされているのは、PowerShell と REST API を介してのみ。
 
 ## <a name="use-powershell"></a>PowerShell の使用
-[GitHub](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/ImportVirtualMachines/ImportVirtualMachines.ps1) から ImportVirtualMachines.ps1 ファイルをダウンロードします。 スクリプトを使用し、インポート元のラボの 1 つまたは全部の VM をインポート先のラボにインポートできます。 
+[GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) から ImportVirtualMachines.ps1 ファイルをダウンロードします。 スクリプトを使用し、インポート元のラボの 1 つまたは全部の VM をインポート先のラボにインポートできます。 
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>PowerShell を使用し、1 つの VM をインポートする
 この PowerShell スクリプトを実行するには、インポート元の VM とインポート先のラボを特定し、必要であれば、インポート先のコンピューターで新しい名前を付ける必要があります。

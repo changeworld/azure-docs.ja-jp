@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097942"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523547"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
@@ -96,7 +96,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 1. [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) ファイルの内容を抽出します。
 2. 任意のテキスト エディターで `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` ファイルを開きます (複数の .config ファイルがあるので、正しいファイルを開くように注意してください)。
 
-3. 構成ファイル内の <appSettings> 要素を次の詳細で更新します。
+3. 構成ファイル内の `<appSettings>` 要素を次の詳細で更新します。
 
    * *EventHubName* キーの値を、接続文字列の EntityPath の値に設定します。
    * *Microsoft.ServiceBus.ConnectionString* キーの値を、EntityPath の値を除いた接続文字列に設定します。

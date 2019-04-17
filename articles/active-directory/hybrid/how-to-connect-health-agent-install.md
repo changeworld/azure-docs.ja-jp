@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95fc65dd849c564ac88993161ffa4b27017488b4
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: a2be8455a3fb0a60cea056e9bda1f41b076dfec9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793596"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545037"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -141,7 +141,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
-4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
+4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
@@ -154,7 +154,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、**[OK]** をクリックします。
-4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable.</code>
+4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
@@ -264,7 +264,7 @@ $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
 import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
  
-Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
+Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $myCreds
 
 ```
 

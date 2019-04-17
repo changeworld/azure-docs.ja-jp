@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 84b0cbfd7e8ec6709b79328220aac7c9ae904bdb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047162"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526522"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "59047162"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、PowerShell を使用して、クラスターとデータベースを 1 つずつ作成します。 [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) を使って Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行し、Azure Data Explorer のクラスターとデータベースを作成および構成できます。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、PowerShell を使用して、クラスターとデータベースを 1 つずつ作成します。 [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) を使って Windows、Linux、または [Azure Cloud Shell](../cloud-shell/overview.md) で PowerShell コマンドレットとスクリプトを実行し、Azure Data Explorer のクラスターとデータベースを作成および構成できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="configure-parameters"></a>パラメーターを構成する
 
@@ -65,7 +65,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
      New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location 'Central US' -Sku D13_v2 -Capacity 10
     ```
 
-   |**Setting** | **推奨値** | **フィールドの説明**|
+   |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | Name | *mykustocluster* | クラスターの任意の名前。|
    | Sku | *D13_v2* | クラスターに使用される SKU。 |
@@ -89,7 +89,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     New-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluster -Name mykustodatabase -SoftDeletePeriod 3650:00:00:00 -HotCachePeriod 3650:00:00:00
     ```
 
-   |**Setting** | **推奨値** | **フィールドの説明**|
+   |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | ClusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
    | Name | *mykustodatabase* | データベースの名前。|
@@ -116,5 +116,5 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
 ## <a name="next-steps"></a>次の手順
 
-* [その他の Az.Kusto コマンド](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
+* [その他の Az.Kusto コマンド](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
 * [クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)

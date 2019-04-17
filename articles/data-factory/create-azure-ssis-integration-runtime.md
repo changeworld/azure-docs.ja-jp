@@ -12,14 +12,15 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e0f45de51c191f532340179f2477844dfe0b491d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535232"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361473"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
+
 この記事では、Azure Data Factory (ADF) で Azure-SSIS 統合ランタイム (IR) をプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこの統合ランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイして実行できます。
 
 「[チュートリアル:SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」は、Azure SQL Database サーバーを使用して SSIS カタログ データベース (SSISDB) をホストすることで Azure-SSIS IR を作成する方法を示しています。 この記事では、チュートリアルをさらに掘り下げ、次の操作を行う方法を示します。
@@ -29,9 +30,10 @@ ms.locfileid: "57535232"
 - 必要に応じて、Azure Active Directory (AAD) 認証と ADF のマネージド ID を使用して、データベース サーバーに接続します。 前提条件として、Azure SQL Database サーバー/Managed Instance で SSISDB を作成できる包含データベース ユーザーとして、ADF のマネージド ID を追加する必要があります。「[Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)」をご覧ください。
 
 ## <a name="overview"></a>概要
+
 この記事では、Azure SSIS IR のさまざまなプロビジョニング方法を示します。
 
-- [Azure Portal](#azure-portal)
+- [Azure ポータル](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Azure Resource Manager テンプレート](#azure-resource-manager-template)
 
@@ -50,12 +52,14 @@ Azure-SSIS IR をプロビジョニングすると、Azure Feature Pack for SSIS
     Azure SQL Database サーバー/Managed Instance に SSISDB がまだ存在していないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSISDB の使用がサポートされていません。
 
 - **Azure Resource Manager 仮想ネットワーク (オプション)**。 次の条件に 1 つでも当てはまる場合は、Azure Resource Manager 仮想ネットワークが必要です。
-    - 仮想ネットワーク サービス エンドポイントがあるか､または仮想ネットワーク内にマネージ インスタンスがある Azure SQL Database サーバーで SSISDB をホストしている｡
-    - Azure-SSIS IR 上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。
+
+  - 仮想ネットワーク サービス エンドポイントがあるか､または仮想ネットワーク内にマネージ インスタンスがある Azure SQL Database サーバーで SSISDB をホストしている｡
+  - Azure-SSIS IR 上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。
 
 - **Azure PowerShell**。 PowerShell スクリプトを実行して Azure-SSIS IR をプロビジョニングする場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-az-ps)」の指示に従ってください。
 
 ### <a name="region-support"></a>リージョンのサポート
+
 ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧については、[リージョン別の ADF + SSIS IR の利用可能性](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)に関するページを参照してください。
 
 ### <a name="compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance"></a>SQL Database の単一データベース/エラスティック プールと SQL Database Managed Instance の比較
@@ -65,9 +69,9 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 | 機能 | 単一データベース/エラスティック プール| マネージド インスタンス |
 |---------|--------------|------------------|
 | **スケジュール設定** | SQL Server エージェントは使用できません。<br/><br/>[ADF パイプラインでのパッケージの実行のスケジュール](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)に関するページを参照してください。| マネージド インスタンス エージェントを使用できます。 |
-| **認証** | **db_owner** ロールのメンバーとして ADF のマネージド ID を持つ AAD グループを表す包含データベース ユーザーを使用して、SSISDB を作成できます。<br/><br/>[Azure SQL Database サーバーで SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)に関するページを参照してください。 | ADF のマネージド ID を表す包含データベース ユーザーを使用して、SSISDB を作成できます。 <br/><br/>[Azure SQL Database Managed Instance で SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)に関するページを参照してください。 |
-| **サービス レベル** | Azure SQL Database サーバーで Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択できます。 複数のサービス レベルがあります。 | Managed Instance で Azure-SSIS IR を作成するときは、SSISDB のサービス レベルを選択することはできません。 Managed Instance 上のすべてのデータベースは、そのインスタンスに割り当てられた同じリソースを共有します。 |
-| **Virtual Network** | Azure SQL Database サーバーと仮想ネットワーク サービス エンドポイントを使用する場合、またはオンプレミスのデータ ストアにアクセスする必要がある場合は、Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 | Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 仮想ネットワークは常に必須です。<br/><br/>Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ず Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリングまたは仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。 |
+| **Authentication** | **db_owner** ロールのメンバーとして ADF のマネージド ID を持つ AAD グループを表す包含データベース ユーザーを使用して、SSISDB を作成できます。<br/><br/>[Azure SQL Database サーバーで SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)に関するページを参照してください。 | ADF のマネージド ID を表す包含データベース ユーザーを使用して、SSISDB を作成できます。 <br/><br/>[Azure SQL Database Managed Instance で SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)に関するページを参照してください。 |
+| **サービス階層** | Azure SQL Database サーバーで Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択できます。 複数のサービス レベルがあります。 | Managed Instance で Azure-SSIS IR を作成するときは、SSISDB のサービス レベルを選択することはできません。 Managed Instance 上のすべてのデータベースは、そのインスタンスに割り当てられた同じリソースを共有します。 |
+| **仮想ネットワーク** | Azure SQL Database サーバーと仮想ネットワーク サービス エンドポイントを使用する場合、またはオンプレミスのデータ ストアにアクセスする必要がある場合は、Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 | Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 仮想ネットワークは常に必須です。<br/><br/>Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ず Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリングまたは仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。 |
 | **分散トランザクション** | エラスティック トランザクションを介してサポートされます。 Microsoft 分散トランザクション コーディネーター (MSDTC) トランザクションはサポートされていません。 SSIS パッケージが MSDTC を使用して分散トランザクションを調整している場合は、Azure SQL Database 用のエラスティック トランザクションに移行することを検討してください。 詳細については、「[クラウド データベースにまたがる分散トランザクション](../sql-database/sql-database-elastic-transactions-overview.md)」を参照してください。 | サポートされていません。 |
 | | | |
 
@@ -78,7 +82,7 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。
 
    ![New->DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
@@ -114,11 +118,12 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 1. **[Author & Monitor]\(作成と監視\)** をクリックして、別のタブで Data Factory ユーザー インターフェイス (UI) を起動します。
 
 ### <a name="provision-an-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムをプロビジョニングする
+
 1. 開始ページで、**[Configure SSIS Integration Runtime]\(SSIS 統合ランタイムの構成\)** タイルをクリックします。
 
    ![[Configure SSIS Integration Runtime]\(SSIS 統合ランタイムの構成\) タイル](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
-1. **[Integration Runtime Setup]\(統合ランタイムの設定\)** の **[全般設定]** ページで、次の手順を実行します。
+2. **[Integration Runtime Setup]\(統合ランタイムの設定\)** の **[全般設定]** ページで、次の手順を実行します。
 
    ![全般設定](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
 
@@ -138,7 +143,7 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 
     h. **[次へ]** をクリックします。
 
-1. **[SQL の設定]** ページで、次の手順を完了します。
+3. **[SQL の設定]** ページで、次の手順を完了します。
 
    ![SQL の設定](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
@@ -158,7 +163,7 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 
     h. **[接続テスト]** をクリックし、成功した場合は **[次へ]** をクリックします。
 
-1.  **[詳細設定]** ページで、次の手順を実行します。
+4. **[詳細設定]** ページで、次の手順を実行します。
 
     ![詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -166,7 +171,7 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 
     b. **[Custom Setup Container SAS URI]\(カスタム セットアップ コンテナー SAS URI\)** に、必要に応じて、セットアップ スクリプトとその関連ファイルが格納されている Azure Storage Blob コンテナーの Shared Access Signature (SAS) Uniform Resource Identifier (URI) を入力します。「[Azure SSIS 統合ランタイムのカスタム セットアップ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)」をご覧ください。
 
-1. **[Select a virtual network...]\(参加させる...\)** チェック ボックスで、統合ランタイムを仮想ネットワークに参加させるかどうかを選択します。 仮想ネットワーク サービス エンドポイントまたはマネージ インスタンスがある Azure SQL Database を使用して SSISDB をホストする場合、またはオンプレミスのデータにアクセスする必要がある、すなわち､SSIS パッケージにオンプレミスのデータ ソース/ターゲットがある場合は、「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください｡ オンにした場合は、次の手順のようにします。
+5. **[Select a virtual network...]\(参加させる...\)** チェック ボックスで、統合ランタイムを仮想ネットワークに参加させるかどうかを選択します。 仮想ネットワーク サービス エンドポイントまたはマネージ インスタンスがある Azure SQL Database を使用して SSISDB をホストする場合、またはオンプレミスのデータにアクセスする必要がある、すなわち､SSIS パッケージにオンプレミスのデータ ソース/ターゲットがある場合は、「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください｡ オンにした場合は、次の手順のようにします。
 
    ![仮想ネットワークの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
@@ -180,40 +185,43 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 
     e. **[サブネット名]** で、お使いの仮想ネットワークのサブネットの名前を選択します。 これは、SSISDB をホストするためにマネージ インスタンスに使われているものと異なるサブネットである必要があります。
 
-1. **[VNet Validation]\(VNet の検証\)** をクリックし、成功した場合は、**[完了]** をクリックして Azure-SSIS 統合ランタイムの作成を始めます。
+6. **[VNet Validation]\(VNet の検証\)** をクリックし、成功した場合は、**[完了]** をクリックして Azure-SSIS 統合ランタイムの作成を始めます。
 
     > [!IMPORTANT]
     > - このプロセスは、完了するまで約 20 から 30 分かかります
     > - Data Factory サービスは、Azure SQL Database に接続して SSIS カタログ データベース (SSISDB) を準備します。 また、仮想ネットワーク (指定されている場合) に必要なアクセス許可と設定を構成し、Azure-SSIS 統合ランタイムの新しいインスタンスを仮想ネットワークに参加させます。
 
-1. **[接続]** ウィンドウで、必要に応じて **[Integration Runtimes]\(統合ランタイム\)** に切り替えます。 **[最新の情報に更新]** をクリックして、状態を更新します。
+7. **[接続]** ウィンドウで、必要に応じて **[Integration Runtimes]\(統合ランタイム\)** に切り替えます。 **[最新の情報に更新]** をクリックして、状態を更新します。
 
    ![作成の状態](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
 
-1. **[アクション]** 列のリンクを使用して、統合ランタイムを停止/起動、編集、または削除します。 最後のリンクを使用すると、統合ランタイムの JSON コードを表示できます。 編集ボタンと削除ボタンは、IR が停止している場合にのみ有効になります。
+8. **[アクション]** 列のリンクを使用して、統合ランタイムを停止/起動、編集、または削除します。 最後のリンクを使用すると、統合ランタイムの JSON コードを表示できます。 編集ボタンと削除ボタンは、IR が停止している場合にのみ有効になります。
 
    ![Azure SSIS IR - アクション](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png)
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>ポータルでの Azure SSIS 統合ランタイム
+
 1. Azure Data Factory UI で、**[編集]** タブに切り替えます。**[接続]** をクリックし、**[Integration Runtimes]\(統合ランタイム\)** タブに切り替えて、データ ファクトリ内の既存の統合ランタイムを表示します。
 
    ![既存の IR を表示する](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
-1. **[新規]** をクリックして新しい Azure-SSIS IR を作成します。
+2. **[新規]** をクリックして新しい Azure-SSIS IR を作成します。
 
    ![メニューによる統合ランタイム](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. Azure-SSIS 統合ランタイムを作成するには、図に示すように **[新規]** をクリックします。
-1. [Integration Runtime Setup]\(統合ランタイムの設定\) ウィンドウで、**[Lift-and-shift existing SSIS packages to execute in Azure]\(Azure で実行する既存の SSIS パッケージをリフトアンドシフトする\)** を選択し、**[次へ]** をクリックします。
+3. Azure-SSIS 統合ランタイムを作成するには、図に示すように **[新規]** をクリックします。
+4. [Integration Runtime Setup]\(統合ランタイムの設定\) ウィンドウで、**[Lift-and-shift existing SSIS packages to execute in Azure]\(Azure で実行する既存の SSIS パッケージをリフトアンドシフトする\)** を選択し、**[次へ]** をクリックします。
 
    ![統合ランタイムの種類を指定する](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
-1. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。
+5. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
 このセクションでは、Azure PowerShell を使用して、Azure-SSIS IR を作成します。
 
 ### <a name="create-variables"></a>変数の作成
+
 このチュートリアルのスクリプトで使用する変数を定義します。
 
 ```powershell
@@ -254,8 +262,9 @@ $SSISDBServerAdminPassword = "[your server admin password for SQL authentication
 $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
 ```
 
-### <a name="log-in-and-select-subscription"></a>ログインとサブスクリプションの選択
-ログインして Azure サブスクリプションを選択するには、スクリプトに次のコードを追加します。
+### <a name="sign-in-and-select-subscription"></a>サインインしてサブスクリプションを選択します。
+
+サインインして Azure サブスクリプションを選択するには、スクリプトに次のコードを追加します。
 
 ```powershell
 Connect-AzAccount
@@ -263,6 +272,7 @@ Select-AzSubscription -SubscriptionName $SubscriptionName
 ```
 
 ### <a name="validate-the-connection-to-database"></a>データベースへの接続の検証
+
 Azure SQL Database サーバー エンドポイントを検証するには、次のスクリプトを追加します。
 
 ```powershell
@@ -292,6 +302,7 @@ if([string]::IsNullOrEmpty($VnetId) -and [string]::IsNullOrEmpty($SubnetName))
 ```
 
 ### <a name="configure-virtual-network"></a>仮想ネットワークを構成する
+
 Azure-SSIS 統合ランタイムが参加するための仮想ネットワークのアクセス許可/設定を自動的に構成するには、次のスクリプトを追加します。
 
 ```powershell
@@ -315,6 +326,7 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 ```
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
+
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドで [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 ```powershell
@@ -322,6 +334,7 @@ New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
 ```
 
 ### <a name="create-a-data-factory"></a>Data Factory を作成する。
+
 次のコマンドを実行して、データ ファクトリを作成します。
 
 ```powershell
@@ -331,6 +344,7 @@ Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 
 ### <a name="create-an-integration-runtime"></a>統合ランタイムの作成
+
 Azure 内で SSIS パッケージを実行する Azure-SSIS 統合ランタイムを作成するには、次のコマンドを実行します。
 
 SSISDB をホストするために 仮想ネットワーク サービス エンドポイントまたはマネージ インスタンスがあるAzure SQL Database を利用しないか、またはオンプレミスのデータにアクセスする必要がない場合は、VNetId パラメーターと Subnet パラメーターを省略するか、それらのパラメーター値として空の値を渡することができます｡ そうではない場合は、これらのパラメーターを省略することはできず、お使いの仮想ネットワーク構成の有効な値を渡す必要があります。「[仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」をご覧ください。
@@ -379,6 +393,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerAdminUserName) –and ![string]::IsNull
 ```
 
 ### <a name="start-integration-runtime"></a>統合ランタイムの起動
+
 Azure-SSIS 統合ランタイムを起動するには、次のコマンドを実行します。
 
 ```powershell
@@ -395,6 +410,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 このコマンドは、完了までに **20 ～ 30 分**かかります。
 
 ### <a name="full-script"></a>完全なスクリプト
+
 Azure-SSIS 統合ランタイムを作成する完全なスクリプトを次に示します。
 
 ```powershell
@@ -537,13 +553,14 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+
 このセクションでは、Azure Resource Manager テンプレートを使用して、Azure-SSIS 統合ランタイムを作成します。 サンプル チュートリアルを次に示します。
 
 1. 次の Azure Resource Manager テンプレートを使用して、JSON ファイルを作成します。 山かっこ内の値 (プレース ホルダー) を独自の値に置き換えます。
 
     ```json
     {
-        "contentVersion": "1.0.0.0",
+      "contentVersion": "1.0.0.0",
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "parameters": {},
         "variables": {},
@@ -584,8 +601,8 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
         }]
     }
     ```
-    
-1. Azure Resource Manager テンプレートをデプロイするには、次の例で示すように New-AzResourceGroupDeployment コマンドを実行します。ADFTutorialResourceGroup はリソース グループの名前、ADFTutorialARM.json はデータ ファクトリと Azure-SSIS IR の JSON 定義を含むファイルです。
+
+2. Azure Resource Manager テンプレートをデプロイするには、次の例で示すように New-AzResourceGroupDeployment コマンドを実行します。ADFTutorialResourceGroup はリソース グループの名前、ADFTutorialARM.json はデータ ファクトリと Azure-SSIS IR の JSON 定義を含むファイルです。
 
     ```powershell
     New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json
@@ -593,7 +610,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
     このコマンドは、データ ファクトリを作成し、その中に Azure-SSIS IR を作成しますが、IR の起動は行いません。
 
-1. Azure-SSIS IR を起動するには、Start-AzDataFactoryV2IntegrationRuntime コマンドを実行します。
+3. Azure-SSIS IR を起動するには、Start-AzDataFactoryV2IntegrationRuntime コマンドを実行します。
 
     ```powershell
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "<Resource Group Name>" `
@@ -603,9 +620,11 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
     ```
 
 ## <a name="deploy-ssis-packages"></a>SSIS パッケージのデプロイ
+
 次に、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使って SSIS パッケージを Azure にデプロイします。 SSIS カタログ (SSISDB) をホストするデータベース サーバーに接続します。 データベース サーバーの名前の形式は、&lt;Azure SQL Database サーバー名&gt;.database.windows.net または &lt;マネージ インスタンス名.DNS プレフィックス&gt;.database.windows.net です。 手順については、[パッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 このドキュメントでは、Azure SSIS IR に関する、次のような他のトピックも参照してください。
 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。

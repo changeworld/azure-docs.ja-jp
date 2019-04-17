@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 40e372b779d06656b111ad3d7de435b99c401dc3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669505"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278702"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -41,12 +41,15 @@ ms.locfileid: "58669505"
 > * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 > * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
 ## <a name="important-considerations-and-guidelines"></a>重要な考慮事項とガイドライン
@@ -98,7 +101,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 *template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 または、次の Azure CLI コマンドを使用します。
 ```azure-cli
@@ -804,7 +807,7 @@ Azure 内で実行されている Service Fabric クラスターで定義され�
 *template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 または、次の Azure CLI コマンドを使用します。
 ```azure-cli
@@ -815,16 +818,16 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 Service Fabric クラスターを作成した後は、ノード タイプ (仮想マシン スケール セット) とそのノードすべてを削除することで、クラスターを水平方向にスケーリングできます。 クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。 クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
 
 > [!WARNING]
-> 運用環境のクラスターからノード タイプを削除するために Remove-AzureRmServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
+> 運用環境のクラスターからノード タイプを削除するために Remove-AzServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
 
-ノード タイプを削除するには、[Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) コマンドレットを実行します。  ノード タイプの[持続性レベル][durability]は Silver または Gold でなければなりません。このコマンドレットは、ノード タイプに関連付けられているスケール セットを削除します。完了するまでに時間がかかります。  その後、削除する各ノードに対して [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) コマンドレットを実行します。これにより、ノードの状態が削除され、クラスターからノードが削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別のノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
+ノード タイプを削除するには、[Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) コマンドレットを実行します。  ノード タイプの[持続性レベル][durability]は Silver または Gold でなければなりません。このコマンドレットは、ノード タイプに関連付けられているスケール セットを削除します。完了するまでに時間がかかります。  その後、削除する各ノードに対して [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) コマンドレットを実行します。これにより、ノードの状態が削除され、クラスターからノードが削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別のノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
 $nodetype = "nt4vm"
 $clustername = "mysfcluster123"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -861,7 +864,7 @@ Service Fabric クラスターを作成した後は、クラスターのノー�
 *template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 または、次の Azure CLI コマンドを使用します。
 ```azure-cli
@@ -874,6 +877,18 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 
 > [!div class="checklist"]
 > * ノードを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード リソースを増加する (スケールアップ)
+
+次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
+> [!div class="nextstepaction"]
+> [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
+
+[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+およびスケールイン))
 > * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
 > * ノード リソースを増加する (スケールアップ)
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0200aa917894f4b7f1a45a9d3bd15b128aaf27a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f01555933ca8b3d0c48a956d3deb4b3356b4e1a2
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124186"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564960"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意フレームワーク
 
@@ -46,7 +46,7 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
 
 1. ユーザーの認証がまだであれば、Azure AD の `/authorize` エンドポイントによりユーザーのサインイン画面が表示されます。
 
-    [ユーザーまたは管理者による Azure AD へのサインイン](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![ユーザーまたは管理者による Azure AD へのサインイン](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
 1. ユーザーのサインインが終わると、そのユーザーに対して同意ページを表示する必要があるかどうかが Azure AD により判定されます。 表示の要否の判定基準は、ユーザー (またはそのユーザーが所属する組織の管理者) がアプリケーションに既に同意を与えているかどうかです。 同意がまだであれば、Azure AD からユーザーに対して同意を求めるメッセージと、アプリケーションが機能するうえで必要なアクセス許可が表示されます。 同意ダイアログに表示されるアクセス許可は、Azure portal の **[委任されたアクセス許可]** で選択したものと同じになります。
 

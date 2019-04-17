@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 592bf638cf0be26182dfdb28ac5a0c8345a7a250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116709"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359666"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web サービス:デプロイと使用
 
@@ -36,7 +36,7 @@ Studio ポータルと Microsoft Azure Machine Learning Web サービス ポー�
 * Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 * Web サービス デプロイの具体的な例については、次をご覧ください。
 
-  * [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
+  * [チュートリアル 3:信用リスク モデルをデプロイする](tutorial-part3-credit-risk-deploy.md)
   * [複数のリージョンに Web サービスをデプロイする方法](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Web サービス リソースプロバイダー API を使う (Azure Resource Manager API)
@@ -49,7 +49,7 @@ Web サービス用の Azure Machine Learning Studio リソースプロバイダ
 
 Web サービス用の Azure Machine Learning Studio リソースプロバイダーでは、PowerShell コマンドレットを使用して Web サービスをデプロイし、管理することができます。
 
-コマンドレットを使用するには、最初に [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../../azure-resource-manager/manage-resources-powershell.md)」をご覧ください。
+コマンドレットを使用するには、最初に [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して、PowerShell 環境から Azure アカウントにサインインする必要があります。 Resource Manager に基づいた PowerShell コマンドの呼び出しについて詳しくない場合は、「 [Azure Resource Manager での Azure PowerShell の使用](../../azure-resource-manager/manage-resources-powershell.md)」をご覧ください。
 
 予測実験をエクスポートするには、こちらの [サンプル コード](https://github.com/ritwik20/AzureML-WebServices)を使用します。 コードから実行可能ファイルを作成したら、次のように入力します。
 
@@ -78,7 +78,7 @@ Web サービス用の Azure Machine Learning Studio リソースプロバイダ
 
 詳細については、次の記事とサンプル コードをご覧ください:
 
-* [Azure Machine Learning Studio コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) リファレンス
+* [Azure Machine Learning Studio コマンドレット](https://docs.microsoft.com/powershell/module/az.machinelearning) リファレンス
 * GitHub のサンプルの [チュートリアル](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>Web サービスを使用する
@@ -89,7 +89,7 @@ Azure Machine Learning Web サービス ポータルから Web サービスを�
 
 * [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)
 * [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
-* [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
+* [チュートリアル 3:信用リスク モデルをデプロイする](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Excel から
 

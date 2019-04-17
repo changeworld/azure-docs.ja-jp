@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 6cf24dd5bd43670efbc41b89ca62ec061dc0dbc3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79223a7f5c1f16eaf09de8efd05e0ec096ac73ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177604"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル:Azure Active Directory と SmartRecruiters の統合
 
@@ -51,7 +51,7 @@ SmartRecruiters と Azure AD の統合を構成するには、次のものが必
 
 Azure AD への SmartRecruiters の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SmartRecruiters を追加する必要があります。
 
-**ギャラリーから SmartRecruiters を追加するには、次の手順に従います。**
+**ギャラリーから SmartRecruiters を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
     ![[SmartRecruiters のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
-    b. **[応答 URL]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -223,7 +223,7 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

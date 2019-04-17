@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d66b23878176b0b508d3fa0c4973d36b5731de82
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 88cee825f132054eb1228e8930f82199c7f1812f
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269845"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-useall"></a>チュートリアル:Azure Active Directory と Useall の統合
 
@@ -52,7 +52,7 @@ Useall と Azure AD の統合を構成するには、次のものが必要です
 
 Azure AD への Useall の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Useall を追加する必要があります。
 
-**ギャラリーから Useall を追加するには、次の手順を実行します。**
+**ギャラリーから Useall を追加するには、次の手順を行います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,9 +106,9 @@ Useall で Azure AD シングル サインオンを構成するには、次の�
 
     ![Useall のドメインと URL のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.useall.com.br/tenant/useall`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.useall.com.br/tenant/useall`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Useall クライアント サポート チーム](mailto:luizotavio@useall.com.br)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -183,9 +183,9 @@ Useall で Azure AD シングル サインオンを構成するには、次の�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [ SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

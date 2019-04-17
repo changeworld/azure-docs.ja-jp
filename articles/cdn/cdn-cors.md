@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917772"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547597"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -32,7 +32,7 @@ CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類が�
 
 1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https://www.contoso.com のページが fabrikam.com オリジン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. サーバーからは次のいずれかの応答が返される場合があります。
 

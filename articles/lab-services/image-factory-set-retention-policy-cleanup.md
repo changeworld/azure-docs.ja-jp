@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c1465f31c8b5eb15b6fe63ed61a946e3b32d550
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439696"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469372"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
 この記事では、保持ポリシーの設定、ファクトリのクリーンアップ、および組織内の他のすべての DevTest Labs からの古いイメージの回収を取り上げます。 
@@ -56,7 +56,7 @@ ms.locfileid: "58439696"
 
 ![古いイメージの回収 PowerShell タスク](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-スクリプト パラメーターは `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)` です。
+スクリプト パラメーターは、次のものです。 `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
 ## <a name="queue-the-build"></a>ビルドをキューに配置する
 ビルド定義を完了したので、新しいビルドをキューに格納して、すべてが機能していることを確認します。 ビルドが、配布先のラボに表示された新しいカスタム イメージを正常に完了した後、イメージ ファクトリ ラボを調べた場合、プロビジョニングした VM は表示されていません。 さらに、続けてビルドをキューに格納した場合、ビルド変数で設定されたリテンション期間の値に従って、DevTest Labs から古いカスタム イメージを回収するクリーンアップ タスクが表示されます。
@@ -73,7 +73,7 @@ ms.locfileid: "58439696"
 
 
 ## <a name="next-steps"></a>次の手順
-1. イメージ ファクトリを定期的に実行するように[ビルド/リリースのスケジュール](/devops/pipelines/build/triggers?view=azure-devops&tabs=designer)を設定します。 ファクトリによって生成されたイメージを定期的に更新します。
+1. イメージ ファクトリを定期的に実行するように[ビルド/リリースのスケジュール](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer)を設定します。 ファクトリによって生成されたイメージを定期的に更新します。
 2. ファクトリのより多くのゴールデン イメージを作成します。 追加の VM 設定タスクのスクリプトを作成し、ファクトリ イメージにアーティファクトを含めるように、[アーティファクトを作成](devtest-lab-artifact-author.md)することも検討できます。
-4. [別々のビルド/リリース](/devops/pipelines/overview.md?view=azure-devops-2019)を作成して、**DistributeImages** スクリプトを別々に実行します。 Labs.json に変更を加え、ターゲット ラボにイメージをコピーするときに、このスクリプトを実行でき、すべてのイメージを再作成する必要はありません。
+4. [別々のビルド/リリース](/azure/devops/pipelines/overview?view=azure-devops-2019)を作成して、**DistributeImages** スクリプトを別々に実行します。 Labs.json に変更を加え、ターゲット ラボにイメージをコピーするときに、このスクリプトを実行でき、すべてのイメージを再作成する必要はありません。
 

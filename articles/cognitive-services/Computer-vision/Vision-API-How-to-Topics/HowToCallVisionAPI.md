@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4d9ec05b2495ec54657405c00e7dd42ee10911b1
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350914"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563372"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>例:Computer Vision API を呼び出す方法
 
@@ -167,13 +167,13 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 フィールド | Type | コンテンツ
 ------|------|------|
-Tags  | object | tags 配列の最上位オブジェクト
-tags[].Name | string    | タグ分類子からのキーワード
-tags[].Score    | number    | 信頼度スコア (0 と 1 の間)。
-description  | object   | description の最上位オブジェクト。
-description.tags[] |    string  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
-description.captions[].text | string    | 画像を説明する語句。
-description.captions[].confidence   | number    | 語句の信頼度。
+Tags  | `object` | tags 配列の最上位オブジェクト
+tags[].Name | `string`  | タグ分類子からのキーワード
+tags[].Score    | `number`  | 信頼度スコア (0 と 1 の間)。
+description  | `object` | description の最上位オブジェクト。
+description.tags[] |    `string`    | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
+description.captions[].text | `string`  | 画像を説明する語句。
+description.captions[].confidence   | `number`  | 語句の信頼度。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>ドメイン固有モデルの JSON 出力を取得して解釈する
 
@@ -229,10 +229,10 @@ categories フィールドは、元の分類内の[86 カテゴリ](../Category-
 
 フィールド   | Type  | コンテンツ
 ------|------|------|
-categories | object | 最上位レベルのオブジェクト
-categories[].name    | string   | 86カテゴリ分類の名前
-categories[].score  | number    | 信頼度スコア (0 と 1 の間)。
-categories[].detail  | object?      | 省略可能な詳細オブジェクト
+categories | `object`   | 最上位レベルのオブジェクト
+categories[].name    | `string` | 86カテゴリ分類の名前
+categories[].score  | `number`  | 信頼度スコア (0 と 1 の間)。
+categories[].detail  | `object?`      | 省略可能な詳細オブジェクト
 
 複数のカテゴリと一致する場合 (たとえば、model=celebrities のときに 86 カテゴリ分類子がpeople_ と people_young を返す場合)、詳細は、最も汎用性が高いレベルの一致 (この例では people_) に添付されます。
 

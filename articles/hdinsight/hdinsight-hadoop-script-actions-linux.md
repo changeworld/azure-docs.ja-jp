@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4bef785a08d7482468630bc690d6c19b05bdf770
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202964"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544587"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -333,7 +333,6 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
-* [HDInsight クラスターでの Mono のインストールまたはアップグレード](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

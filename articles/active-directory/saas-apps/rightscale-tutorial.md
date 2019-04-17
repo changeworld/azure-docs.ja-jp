@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99bc4ef23ee2d8f4478bbaab591e7b36c7ea75
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 416a98c5f9c5a2ec813206ea9ea7f311b23e86cb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109833"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>チュートリアル:Azure Active Directory と Rightscale の統合
 
@@ -131,8 +131,8 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
 
 1. **[Rightscale 構成]** セクションで、**[Rightscale の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![シングル サインオンを構成する](./media/rightscale-tutorial/tutorial_rightscale_configure.png) 
-   <CS>
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_configure.png) 
+
 1. アプリケーションに合わせて SSO を構成するには、管理者として RightScale テナントにサインオンする必要があります。
 
     a. 上部にあるメニューの **[Settings]** タブをクリックし、**[Single Sign-On]** を選択します。
@@ -164,7 +164,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
     ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
     h. **[Save]** をクリックします。
-   <CE>
+
    > [!TIP]
    > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
    > 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 04/15/2019
+ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895790"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616273"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。
@@ -28,10 +28,12 @@ ms.locfileid: "55895790"
 |汎用| 8| 1250|
 |汎用| 16| 2500|
 |汎用| 32| 5000|
+|汎用| 64| 10000|
 |メモリ最適化| 2| 600|
 |メモリ最適化| 4| 1250|
 |メモリ最適化| 8| 2500|
 |メモリ最適化| 16| 5000|
+|メモリ最適化| 32| 10000|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > ERROR 1040 (08004):Too many connections (接続が多すぎます)

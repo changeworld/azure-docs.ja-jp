@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e89a4675f867e53c499bb82b239ddb9bec1aed6f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278600"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521203"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Azure Maps サービス モジュールを使用する
 
@@ -24,7 +24,7 @@ Azure Maps Web SDK は、Web または Node.js アプリケーションから Ja
 1. 新しい HTML ファイルを作成します。
 2. Azure Maps サービス モジュールを読み込みます。 これは、次に示す 2 つのオプションのどちらかを使用して行うことができます。
 
-    a. ファイルの <head> 要素にスクリプト参照を追加することにより、グローバルにホストされている CDN 版の Azure Maps サービス モジュールを使用します。
+    a. ファイルの `<head>` 要素にスクリプト参照を追加することにより、グローバルにホストされている CDN 版の Azure Maps サービス モジュールを使用します。
     
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
@@ -189,4 +189,4 @@ Azure Maps Web SDK は、Web または Node.js アプリケーションから Ja
 > [座標から情報を取得する](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [A から B までのルートを表示する](./map-route.md)
+> [A から B までのルートを表示する ](./map-route.md)

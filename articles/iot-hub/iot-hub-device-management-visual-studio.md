@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: xshi
-ms.openlocfilehash: f0cb740f04970aeed4342511a046862f05aaa736
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109227"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269573"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理に Cloud Explorer for Visual Studio を使用する
 
-![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
+![エンド ツー エンド ダイアグラム](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) は、Azure リソースを表示し、そのプロパティを調べ、Visual Studio 内から開発者が重要な操作を実行できる、Visual Studio の便利な拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
 
@@ -35,7 +35,7 @@ ms.locfileid: "54109227"
 
 ## <a name="what-you-learn"></a>学習内容
 
-開発マシン上で Cloud Explorer for Visual Studio をさまざまな管理オプションで使用します。
+開発マシン上で Cloud Explorer for Visual Studio をさまざまな管理オプションで使用する方法を説明します。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -54,20 +54,20 @@ Visual Studio インストーラーの Cloud Explorer コンポーネントは�
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT Hub にアクセスする
 
-1. Visual Studio の **Cloud Explorer** ウィンドウで、アカウント管理アイコンをクリックします。 Cloud Explorer ウィンドウは、**[View](ビュー)** > **[Cloud Explorer]** メニューから開くことができます。
+1. Visual Studio の **Cloud Explorer** ウィンドウで、アカウント管理アイコンをクリックします。 Cloud Explorer ウィンドウは、**ビュー** > **[Cloud Explorer]** メニューから開くことができます。
 
     ![アカウント管理をクリックする](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
 
-1. Cloud Explorer の **[Manage Accounts](アカウントの管理)** をクリックします。
-1. 新しいウィンドウで **[Add an account...](アカウントの追加...)** をクリックして Azure に初めてサインインします。
-1. サインインした後、Azure サブスクリプションの一覧が表示されます。 表示する Azure サブスクリプションを選択し、**[Apply](適用)** をクリックします。
+1. Cloud Explorer の **アカウントの管理** をクリックします。
+1. 新しいウィンドウで **アカウントの追加...** をクリックして Azure に初めてサインインします。
+1. サインインした後、Azure サブスクリプションの一覧が表示されます。 表示する Azure サブスクリプションを選択し、**適用** をクリックします。
 1. **自分のサブスクリプション** > **[IoT Hubs]** > **自分の IoT Hub** の順に展開すると、IoT Hub ノードの下にデバイスの一覧が表示されます。 管理オプションにアクセスする 1 つのデバイスを右クリックします。
 
     ![管理オプション](media/iot-hub-device-management-visual-studio/management-options.png)
 
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
-1. デバイスを右クリックし、**[Invoke Device Direct Method](デバイス ダイレクト メソッドの呼び出し)** を選択します。
+1. デバイスを右クリックし、**[Invoke Device Direct Method]\(デバイス ダイレクト メソッドの呼び出し)** を選択します。
 1. 入力ボックスにメソッド名とペイロードを入力します。
 1. 結果が **[IoT Hub]** 出力ペインに表示されます。
 

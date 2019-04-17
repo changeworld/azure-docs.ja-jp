@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: adb7329249570750002f04fb72465698f869afdc
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58792486"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505653"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
@@ -201,7 +201,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 </send-request>
 
 <send-request mode="new" response-variable-name="accidentdata" timeout="20" ignore-error="true">
-<set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+<set-url>@($"https://production.acme.com/accidentdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
   <set-method>GET</set-method>
 </send-request>
 ```
@@ -252,7 +252,7 @@ API Management の主な機能には、バックエンド リソースの保護�
     </send-request>
 
     <send-request mode="new" response-variable-name="accidentdata" timeout="20" ignore-error="true">
-    <set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+    <set-url>@($"https://production.acme.com/accidentdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
       <set-method>GET</set-method>
     </send-request>
 

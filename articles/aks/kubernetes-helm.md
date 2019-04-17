@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0ebf317bf29a378f8cbbed647d3d3e07d2aa6bab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2fcdb72fa2717659e78e6f767bdc73b0d7be0886
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757156"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618109"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -133,7 +133,7 @@ stable/datadog                 0.18.0           6.3.0        DataDog Agent
 ```console
 $ helm repo update
 
-Hang tight while we grab the latest from your chart repositories...
+Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈

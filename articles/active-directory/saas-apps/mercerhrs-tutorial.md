@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 8debca0b473807c3ef6d49dcd29d528b266a1e31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8944e4533448f5787f5c85c12e4ab2747eb96e4e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900796"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>チュートリアル:Azure Active Directory と Mercer BenefitsCentral (MBC) の統合
 
@@ -50,7 +50,7 @@ Azure AD と Mercer BenefitsCentral (MBC) の統合を構成するには、次�
 
 Azure AD への Mercer BenefitsCentral (MBC) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Mercer BenefitsCentral (MBC) を追加する必要があります。
 
-**ギャラリーから Mercer BenefitsCentral (MBC) を追加するには、次の手順に従います。**
+**ギャラリーから Mercer BenefitsCentral (MBC) を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -104,9 +104,9 @@ Mercer BenefitsCentral (MBC) を利用して Azure AD シングル サインオ�
 
     ![[Mercer BenefitsCentral (MBC) Domain and URLs]\(Mercer BenefitsCentral (MBC) のドメインと URL\) のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに、`stg.mercerhrs.com/saml2.0` という URL を入力します。
+    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `stg.mercerhrs.com/saml2.0`
 
-    b. **[応答 URL]** ボックスに、`https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx`
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Mercer BenefitsCentral (MBC) サポート チーム](https://www.mercer.com/contact-us.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -194,7 +194,7 @@ Mercer BenefitsCentral (MBC) を利用して Azure AD シングル サインオ�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

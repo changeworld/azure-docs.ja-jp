@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295455"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271800"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>認証と承認エラー コード
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50007 | PartnerEncryptionCertificateMissing - このアプリのパートナー暗号化証明書が見つかりませんでした。 この問題を解決するには、Microsoft への[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50008 | InvalidSamlToken - トークンに SAML アサーションがないか、正しく構成されていません。 フェデレーション プロバイダーに問い合わせてください。 |
 | AADSTS50010 | AudienceUriValidationFailed - トークン オーディエンスが構成されていないため、アプリのオーディエンス URI の検証が失敗しました。 |
-| AADSTS50011 | InvalidReplyTo - 返信アドレスがないか、正しく構成されていません。または、アプリに対して構成されている返信アドレスと一致しません。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) で説明されている解決策を試してください。 問題が引き続き発生する場合は、アプリの所有者またはアプリ管理者に問い合わせてください。 |
+| AADSTS50011 | InvalidReplyTo - 返信アドレスがないか、正しく構成されていません。または、アプリに対して構成されている返信アドレスと一致しません。  解決方法として、この存在していない返信アドレスを Azure Active Directory アプリケーションに必ず追加するか、またはアクセス許可を持つ他のユーザーに Active Directory でアプリケーションを管理してもらいます。|
 | AADSTS50012 | AuthenticationFailed - 次のいずれかの理由で認証に失敗しました。<ul><li>署名証明書のサブジェクト名が承認されていない</li><li>承認されたサブジェクト名に一致する信頼された証明機関ポリシーが見つからなかった</li><li>証明書チェーンが無効</li><li>署名証明書が無効</li><li>テナントにポリシーが構成されていない</li><li>署名証明書の拇印が承認されていない</li><li>クライアント アサーションに無効な署名が含まれている</li></ul> |
 | AADSTS50013 | InvalidAssertion - さまざまな理由によりアサーションが無効です。たとえば、トークンの発行者が有効期間内の API バージョンと一致しない、期限が切れている、形式が正しくない、アサーションの更新トークンがプライマリ更新トークンではない、などです。 |
 | AADSTS50014 | GuestUserInPendingState - ユーザーの受諾が保留中の状態です。 ゲスト ユーザー アカウントがまだ完全には作成されていません。 |

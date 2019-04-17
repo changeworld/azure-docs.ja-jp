@@ -36,7 +36,7 @@ items:
       maintainContext: true
   - name: 開発
     items:
-    - name: Apache HBase .NET SDK の使用
+    - name: .NET 用 Apache HBase SDK の使用
       href: apache-hbase-rest-sdk.md
     - name: Java アプリケーションの開発
       href: apache-hbase-build-java-maven-linux.md
@@ -89,21 +89,9 @@ items:
       maintainContext: true
   - name: 管理
     items:
-    - name: Linux クラスターを作成する
+    - name: HDInsight クラスターの作成
       href: ../hdinsight-hadoop-provision-linux-clusters.md
       items:
-      - name: Azure PowerShell の使用
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-        maintainContext: true
-      - name: cURL とAzure REST API を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-        maintainContext: true
-      - name: .NET SDK を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        maintainContext: true
-      - name: Azure クラシック CLI を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-        maintainContext: true
       - name: Azure ポータルの使用
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
@@ -111,16 +99,39 @@ items:
         displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
+      - name: .NET 用 SDK の使用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster
+      - name: Python 用 SDK の使用
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster
+      - name: Java 用 SDK の使用
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster
+      - name: Azure PowerShell の使用
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+        maintainContext: true
+      - name: cURL とAzure REST API を使用する
+        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+        maintainContext: true
+      - name: Azure クラシック CLI を使用する
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+        maintainContext: true
+      - name: オンデマンド クラスターの作成
+        href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+        maintainContext: true
       maintainContext: true
     - name: オンデマンド クラスターの作成
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Apache Hadoop クラスターの管理
+    - name: HDInsight クラスターの管理
       href: ../hdinsight-administer-use-portal-linux.md
       items:
-      - name: .NET SDK の使用
-        href: ../hdinsight-administer-use-dotnet-sdk.md
-        maintainContext: true
+      - name: .NET 用 SDK の使用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management
+      - name: Python 用 SDK の使用
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+      - name: Java 用 SDK の使用
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+      - name: Go 用 SDK の使用 (プレビュー)
+        href: https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview
       - name: Azure PowerShell の使用
         href: ../hdinsight-administer-use-powershell.md
         maintainContext: true
@@ -162,7 +173,7 @@ items:
         href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
       - name: cURL を使用して実行する
         href: ../hadoop/apache-hadoop-use-sqoop-curl.md
-      - name: .NET SDK を使用して実行する
+      - name: .NET 用 SDK を使用して実行する
         href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
       - name: Azure PowerShell を使用して実行する
         href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
@@ -258,13 +269,13 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/az.hdinsight
-  - name: .NET SDK
+  - name: .NET 用 SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Python SDK
+  - name: Python 用 SDK
     href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Java SDK
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
-  - name: Go SDK
+  - name: Java 用 SDK
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+  - name: Go 用 SDK
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
@@ -307,9 +318,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 39bc984d593f9026a3f6db85da8b8d1b80038335
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 286fd982c110e71b8e9bb454a6ad6a3068f8a4bf
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847024"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578970"

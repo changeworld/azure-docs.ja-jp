@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452693"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578749"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
- Azure Blockchain Workbench アプリケーションは、構成メタデータとスマート コントラクト コードで定義されたマルチパーティ ワークフローです。 構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 スマート コントラクトを使用して、ブロックチェーン アプリケーションのビジネス ロジックを定義します。 Workbench は、構成とスマート コントラクト コードを使用して、ブロックチェーン アプリケーションのユーザー エクスペリエンスを生成します。
+Azure Blockchain Workbench アプリケーションは、構成メタデータとスマート コントラクト コードで定義されたマルチパーティ ワークフローです。 構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 スマート コントラクトを使用して、ブロックチェーン アプリケーションのビジネス ロジックを定義します。 Workbench は、構成とスマート コントラクト コードを使用して、ブロックチェーン アプリケーションのユーザー エクスペリエンスを生成します。
 
 構成のメタデータには、各ブロックチェーン アプリケーションの次の情報が指定されます。
 

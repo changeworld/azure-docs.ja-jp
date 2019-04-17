@@ -1,8 +1,8 @@
 ---
-title: Human interaction and timeouts in Durable Functions - Azure
-description: Learn how to handle human interaction and timeouts in the Durable Functions extension for Azure Functions.
+title: Durable Functions での人による操作とタイムアウト - Azure
+description: Azure Functions の Durable Functions 拡張機能で人による操作とタイムアウトを処理する方法について説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,94 +10,94 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 136b819f6bbbc1b546b66f54e771dbec8c71202c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548151"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609338"
 ---
-# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Human interaction in Durable Functions - Phone verification sample
+# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
-This sample demonstrates how to build a [Durable Functions](durable-functions-overview.md) orchestration that involves human interaction. Whenever a real person is involved in an automated process, the process must be able to send notifications to the person and receive responses asynchronously. It must also allow for the possibility that the person is unavailable. (This last part is where timeouts become important.)
+このサンプルでは、人による操作を含む [Durable Functions](durable-functions-overview.md) オーケストレーションを構築する方法を示します。 自動プロセスに実際の人が関与する場合、プロセスは人への通知の送信と応答の受信を非同期に行うことができる必要があります。 また、人がいない可能性にも対応する必要があります  (この最後の部分では、タイムアウトが重要になります)。
 
-This sample implements an SMS-based phone verification system. These types of flows are often used when verifying a customer's phone number or for multi-factor authentication (MFA). This is a powerful example because the entire implementation is done using a couple small functions. No external data store, such as a database, is required.
+このサンプルでは、SMS ベースの電話確認システムを実装します。 この種のフローは、顧客の電話番号を確認するとき、または多要素認証 (MFA) に、よく使われます。 これは、実装全体が 2 つの小さい関数を使って行われる強力な例です。 データベースなどの外部データ ストアは必要ありません。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
-## <a name="scenario-overview"></a>Scenario overview
+## <a name="scenario-overview"></a>シナリオの概要
 
-Phone verification is used to verify that end users of your application are not spammers and that they are who they say they are. Multi-factor authentication is a common use case for protecting user accounts from hackers. The challenge with implementing your own phone verification is that it requires a **stateful interaction** with a human being. An end user is typically provided some code (for example, a 4-digit number) and must respond **in a reasonable amount of time**.
+電話確認は、アプリケーションのエンド ユーザーがスパマーではなく本人であることを確認するために使われます。 多要素認証は、ハッカーからユーザー アカウントを保護するための一般的なユース ケースです。 独自の電話確認を実装する場合の課題は、人間との**ステートフルな相互作用**が必要になることです。 通常、エンド ユーザーは何らかのコード (4 桁の数字など) を提供されて、**一定の時間内に**応答する必要があります。
 
-Ordinary Azure Functions are stateless (as are many other cloud endpoints on other platforms), so these types of interactions involve explicitly managing state externally in a database or some other persistent store. In addition, the interaction must be broken up into multiple functions that can be coordinated together. For example, you need at least one function for deciding on a code, persisting it somewhere, and sending it to the user's phone. Additionally, you need at least one other function to receive a response from the user and somehow map it back to the original function call in order to do the code validation. A timeout is also an important aspect to ensure security. This can get fairly complex quickly.
+通常の Azure Functions は (他のプラットフォームの他の多くのクラウド エンドポイントと同様) ステートレスなので、この種の相互作用には、外部のデータベースまたは他の永続的なストアで状態を明示的に管理する必要があります。 さらの、連携できる複数の関数に相互作用を分割する必要があります。 たとえば、コードを決定し、それをどこかに永続化して、ユーザーの電話に送信するために、少なくとも 1 つの関数が必要です。 さらに、ユーザーからの応答を受信し、コードの検証を行うために何らかの方法で元の関数呼び出しにマップするために、他に少なくとも 1 つの関数が必要です。 また、セキュリティを確保するためにはタイムアウトも重要な側面です。 これは非常に複雑になる可能性があります。
 
-The complexity of this scenario is greatly reduced when you use Durable Functions. As you will see in this sample, an orchestrator function can manage the stateful interaction easily and without involving any external data stores. Because orchestrator functions are *durable*, these interactive flows are also highly reliable.
+このシナリオの複雑さは、Durable Functions を使うと大幅に軽減できます。 このサンプルを見るとわかるように、オーケストレーター関数は、外部データ ストアを必要とすることなく、簡単にステートフルな相互作用を管理できます。 オーケストレーター関数は "*永続的*" であるため、これらの対話型フローは高信頼性でもあります。
 
-## <a name="configuring-twilio-integration"></a>Configuring Twilio integration
+## <a name="configuring-twilio-integration"></a>Twilio 統合の構成
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="the-functions"></a>The functions
+## <a name="the-functions"></a>関数
 
-This article walks through the following functions in the sample app:
+この記事では、サンプル アプリで使われている次の関数について説明します。
 
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-The following sections explain the configuration and code that are used for C# scripting and JavaScript. The code for Visual Studio development is shown at the end of the article.
+以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>The SMS verification orchestration (Visual Studio Code and Azure portal sample code)
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 確認オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
 
-The **E4_SmsPhoneVerification** function uses the standard *function.json* for orchestrator functions.
+**E4_SmsPhoneVerification** 関数は、オーケストレーター関数用の標準的な *function.json* を使います。
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
-Here is the code that implements the function:
+関数を実装するコードを次に示します。
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
-Once started, this orchestrator function does the following:
+開始されると、このオーケストレーター関数は次のことを行います。
 
-1. Gets a phone number to which it will *send* the SMS notification.
-2. Calls **E4_SendSmsChallenge** to send an SMS message to the user and returns back the expected 4-digit challenge code.
-3. Creates a durable timer that triggers 90 seconds from the current time.
-4. In parallel with the timer, waits for an **SmsChallengeResponse** event from the user.
+1. SMS 通知を "*送信*" する電話番号を取得します。
+2. **E4_SendSmsChallenge** を呼び出して SMS メッセージをユーザーに送信し、予期される 4 桁のチャレンジ コードを返します。
+3. 現在の時刻から 90 秒後にトリガーする永続的なタイマーを作成します。
+4. タイマーと並行して、ユーザーからの **SmsChallengeResponse** イベントを待ちます。
 
-The user receives an SMS message with a four-digit code. They have 90 seconds to send that same 4-digit code back to the orchestrator function instance to complete the verification process. If they submit the wrong code, they get an additional three tries to get it right (within the same 90-second window).
+ユーザーは、4 桁のコードで SMS メッセージを受け取ります。 ユーザーが同じ 4 桁のコードをオーケストレーター関数のインスタンスに返送して確認プロセスを完了するまでに、90 秒の猶予があります。 正しくないコードを送信した場合、(同じ 90 秒の間に) さらに 3 回 正しいコードの送信を試みることができます。
 
 > [!NOTE]
-> It may not be obvious at first, but this orchestrator function is completely deterministic. This is because the `CurrentUtcDateTime` (.NET) and `currentUtcDateTime` (JavaScript) properties are used to calculate the timer expiration time, and these properties return the same value on every replay at this point in the orchestrator code. This is important to ensure that the same `winner` results from every repeated call to `Task.WhenAny` (.NET) or `context.df.Task.any` (JavaScript).
+> 最初はわかりにくいかもしれませんが、このオーケストレーター関数は完全に決定論的です。 これは、タイマーの期限切れ日時を計算するために `CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) プロパティが使用され、これらのプロパティが、オーケストレーター コード内のこのポイントで再生されるたびに同じ値を返すためです。 これは、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) への呼び出しが繰り返されるたびに、確実に同じ `winner` が得られるようにするために重要です。
 
 > [!WARNING]
-> It's important to [cancel timers](durable-functions-timers.md) if you no longer need them to expire, as in the example above when a challenge response is accepted.
+> タイマーが期限切れになる必要がなくなった場合は (上の例でチャレンジ応答を受け取った場合)、[タイマーをキャンセルする](durable-functions-timers.md)ことが重要です。
 
-## <a name="send-the-sms-message"></a>Send the SMS message
+## <a name="send-the-sms-message"></a>SMS メッセージの送信
 
-The **E4_SendSmsChallenge** function uses the Twilio binding to send the SMS message with the 4-digit code to the end user. The *function.json* is defined as follows:
+**E4_SendSmsChallenge** 関数は、Twilio バインディングを使って、4 桁のコードを含む SMS メッセージをエンド ユーザーに送信します。 *function.json* の定義は次のようになります。
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
-And here is the code that generates the 4-digit challenge code and sends the SMS message:
+次に示すのは、4 桁のチャレンジ コードを生成して SMS メッセージを送信するコードです。
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x only)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-This **E4_SendSmsChallenge** function only gets called once, even if the process crashes or gets replayed. This is good because you don't want the end user getting multiple SMS messages. The `challengeCode` return value is automatically persisted, so the orchestrator function always knows what the correct code is.
+この **E4_SendSmsChallenge** 関数は、プロセスがクラッシュしたりリプレイされたりする場合であっても、1 回だけしか呼び出されません。 エンド ユーザーが複数の SMS メッセージを受け取るのは望ましくないので、これはよいことです。 戻り値の `challengeCode` は自動的に永続化されるので、オーケストレーター関数はいつでも正しいコードがわかります。
 
-## <a name="run-the-sample"></a>Run the sample
+## <a name="run-the-sample"></a>サンプルを実行する
 
-Using the HTTP-triggered functions included in the sample, you can start the orchestration by sending the following HTTP POST request:
+サンプルに含まれる HTTP によってトリガーされる関数を使って、次の HTTP POST 要求を送信することによりオーケストレーションを開始できます。
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -116,9 +116,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-The orchestrator function receives the supplied phone number and immediately sends it an SMS message with a randomly generated 4-digit verification code &mdash; for example, *2168*. The function then waits 90 seconds for a response.
+オーケストレーター関数は、指定された電話番号を受け取ると、すぐにランダムに生成された 4 桁の確認コード (*2168* など) を含む SMS メッセージをその番号に送信します。 その後、関数は 90 秒間応答を待機します。
 
-To reply with the code, you can use [`RaiseEventAsync` (.NET) or `raiseEvent` (JavaScript)](durable-functions-instance-management.md) inside another function or invoke the **sendEventUrl** HTTP POST webhook referenced in the 202 response above, replacing `{eventName}` with the name of the event, `SmsChallengeResponse`:
+このコードに応答するには、別の関数内で [`RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript)](durable-functions-instance-management.md) を使用するか、または上の 202 応答で参照されている **sendEventUrl** HTTP POST webhook を呼び出して `{eventName}` をイベントの名前 `SmsChallengeResponse` に置き換えることができます。
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -128,7 +128,7 @@ Content-Type: application/json
 2168
 ```
 
-If you send this before the timer expires, the orchestration completes and the `output` field is set to `true`, indicating a successful verification.
+タイマーの期限が切れる前にこれを送信すると、オーケストレーションが完了し、`output` フィールドに確認成功を示す `true` が設定されます。
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -142,7 +142,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-If you let the timer expire, or if you enter the wrong code four times, you can query for the status and see a `false` orchestration function output, indicating that phone verification failed.
+タイマーの期限が切れるようにするか、または正しくないコードを 4 回入力した場合は、状態を照会して、オーケストレーション関数の出力が電話番号確認失敗を示す `false` であることを確認できます。
 
 ```
 HTTP/1.1 200 OK
@@ -152,18 +152,18 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio sample code
+## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
-Here is the orchestration as a single C# file in a Visual Studio project:
+Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
 
 > [!NOTE]
-> You will need to install the `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget package to run the sample code below.
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
-This sample has demonstrated some of the advanced capabilities of Durable Functions, notably `WaitForExternalEvent` and `CreateTimer`. You've seen how these can be combined with `Task.WaitAny` to implement a reliable timeout system, which is often useful for interacting with real people. You can learn more about how to use Durable Functions by reading a series of articles that offer in-depth coverage of specific topics.
+このサンプルでは、Durable Functions の高度な機能のいくつか、特に `WaitForExternalEvent` と `CreateTimer` について説明しました。 これらを `Task.WaitAny` と組み合わせて、信頼性の高いタイムアウト システムを実装する方法を示しました。これは、実際の人と対話する場合に役に立つことがよくあります。 Durable Functions の使用方法の詳細については、特定のトピックについて詳しく解説している一連の記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [Go to the first article in the series](durable-functions-bindings.md)
+> [シリーズの最初の記事に移動する](durable-functions-bindings.md)

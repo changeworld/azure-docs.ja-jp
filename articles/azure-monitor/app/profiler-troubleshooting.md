@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855675"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471530"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -67,9 +67,15 @@ Profiler では、トレース メッセージとカスタム イベントが Ap
 Profiler を正常に動作させるためには:
 * Web アプリ サービス プランは Basic レベル以上である必要があります。
 * Web アプリで Application Insights が有効になっている必要があります。
-* Web アプリは、**APPINSIGHTS_INSTRUMENTATIONKEY** 設定が、Application Insights SDK で使用されているインストルメンテーション キーと同じキーで構成されている必要があります。
-* Web アプリには、**APPINSIGHTS_PROFILERFEATURE_VERSION** アプリ設定が定義され、1.0.0 に設定されている必要があります。
-* Web アプリでは、**DiagnosticServices_EXTENSION_VERSION** アプリ設定が定義され、3 以下の値に設定されている必要があります。
+* Web アプリには、次のアプリ設定が必要です。
+
+    |アプリ設定    | 値    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+
+
 * **ApplicationInsightsProfiler3** WebJob が実行されている必要があります。 WebJob を確認するには:
    1. [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/) に移動します。
    1. **[Tools]\(ツール\)** メニューの **[WebJobs Dashboard]\(WebJobs ダッシュボード\)** を選択します。  
@@ -93,12 +99,13 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 1. **.NET Framework バージョン**を **v4.6** に設定します。
 
 1. **[Always On]** を**オン**に設定します。
+1. 次のアプリ設定を作成します。
 
-1. **APPINSIGHTS_INSTRUMENTATIONKEY** アプリ設定を追加し、その値を SDK によって使用されているものと同じインストルメンテーション キーに設定します。
-
-1. **APPINSIGHTS_PROFILERFEATURE_VERSION** アプリ設定を追加し、値を 1.0.0 に設定します。
-
-1. **DiagnosticServices_EXTENSION_VERSION** アプリ設定を追加し、値を 3 以下に設定します。
+    |アプリ設定    | 値    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>アクティブなプロファイリング セッションが多すぎる
 
@@ -124,7 +131,7 @@ Profiler は、Web アプリ内の継続的な WebJob として実行されま�
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure 診断に関する問題のトラブルシューティング
 
-  >**Cloud Services 向けの WAD の最新バージョンに付属しているプロファイラーにはバグがあります。** クラウド サービスでプロファイラーを使用するために、サポートされる AI SDK はバージョン 2.7.2 までのみです。 AI SDK の新しいバージョンを使用している場合は、プロファイラーを使用するために、2.7.2 に戻す必要があります。 Visual Studio を使用して、App Insights SDK のバージョンをダウン グレードすると、実行時にバインディング リダイレクト エラーが発生する可能性があります。 これは、AI SDK のダウン グレード後に Microsoft.ApplicationInsights の web.config ファイル内の "newVersion" を "2.7.2.0" に設定する必要がありますが、自動的に更新されないからです。
+>**Cloud Services 向けの WAD に付属しているプロファイラーのバグが修正されました。** Cloud Services 向け WAD の最新バージョン (1.12.2.0) は、最近リリースされたすべての App Insights SDK バージョンで動作します。 Cloud Service のホストでは WAD が自動的にアップグレードされますが、即時に行われるわけではありません。 アップグレードを強制するには、サービスを再デプロイするか、ノードを再起動します。
 
 Azure 診断によって Profiler が正しく構成されているかどうかを確認するには、次の 3 つのことを行います。 
 1. 1 つ目として、デプロイされている Azure 診断の構成の内容が意図したとおりであることを確認します。 

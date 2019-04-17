@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd2ba0ec3427cd99da3321b50fb43f4c00f2d1a9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822823"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524942"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -62,7 +62,7 @@ Linux を実行しているノードの場合は、次のディストリビュ�
 
 DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux ディストリビューションがすべてサポートされます。
 
-ディストリビューション | Version
+ディストリビューション | バージョン
 -|-
 Debian  | すべてのバージョン
 Ubuntu  | 18.04
@@ -117,7 +117,7 @@ Azure で実行しているすべての Linux ノードで、オンボード中�
 > [!NOTE]
 > このビデオで解説されている概念とライフ サイクルは正しいものですが、このビデオが作成されてから Azure Automation State Configuration はかなり進歩しています。 Azure Automation DSC は一般公開され、Azure ポータルでさまざまな UI を使用できるようになり、多数の機能がサポートされています。
 
-<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>次の手順
 

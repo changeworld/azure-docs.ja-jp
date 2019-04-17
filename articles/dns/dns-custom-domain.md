@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: 78496dbc7891fe911ab0affd81f8a7d887e5d76e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c098c6c22b079d586c0bd808df9af4a737c17a8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111414"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521854"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
@@ -41,7 +41,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
 |Name     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|type     | CNAME        | CNAME レコードを別名として使用します。        |
+|Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | adatumfunction.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Function App によって提供される adatumfunction.azurewebsites.net という DNS 名です。        |
@@ -66,10 +66,10 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
 |Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
+|Type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|IP アドレス     | <your ip address>       | パブリック IP アドレス。|
+|IP アドレス     | `<your ip address>`       | パブリック IP アドレス。|
 
 ![A レコードを作成する](./media/dns-custom-domain/arecord.png)
 
@@ -93,7 +93,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
 |Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
+|Type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | webserver.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Web アプリに与えられる webserver.azurewebsites.net という DNS 名です。        |
@@ -127,7 +127,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
 |Name     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|type     | CNAME        | CNAME レコードを別名として使用します。        |
+|Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる asverify.adatumfunctiona9ed.blob.core.windows.net という DNS 名です。        |
@@ -155,7 +155,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
 |Name     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|type     | CNAME        | CNAME レコードを別名として使用します。        |
+|Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | cdnverify.adatumcdnendpoint.azureedge.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる cdnverify.adatumcdnendpoint.azureedge.net という DNS 名です。        |

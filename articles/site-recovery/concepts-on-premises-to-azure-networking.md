@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 7f5d3ff6759cebca2f592e1cd4822ee85959ecb9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361304"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565684"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための IP アドレス指定を設定する
 
@@ -62,7 +62,7 @@ Woodgrove が IP アドレスを維持したまま VM を Azure にレプリケ�
 
 1. オンプレミス マシンのフェールオーバーの後に Azure VM が作成される Azure 仮想ネットワークを作成します。 これは、アプリケーションがシームレスにフェールオーバーできるように、オンプレミス ネットワークの拡張機能となります。
 2. フェールオーバー前に、Site Recovery で、マシンのプロパティに同じ IP アドレスを割り当てます。 フェールオーバー後、Site Recovery は Azure 仮想マシンにこのアドレスを割り当てます。
-3. フェールオーバーが実行され、同じ IP アドレスで Azure VM が作成されると、それらは [Vnet 間接続](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)を使用してネットワークに接続します。 このアクションはスクリプト化することができます。
+3. フェールオーバーが実行され、同じ IP アドレスで Azure VM が作成されると、それらは [Vnet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してネットワークに接続します。 このアクションはスクリプト化することができます。
 4. 192.168.1.0/24 が Azure に移動したことを反映させるためには、ルートを変更する必要があります。
 
 

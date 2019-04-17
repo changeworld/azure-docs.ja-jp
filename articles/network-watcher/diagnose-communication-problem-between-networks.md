@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: a35e65237a3f4278e9154daddff328887d9f36ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f5fbbb9d06f9fcb8858625b57957fc18c5c1f1f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997377"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046913"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する
 
@@ -33,10 +33,13 @@ ms.locfileid: "57997377"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 VPN 診断を使用するには、既存の動作している VPN ゲートウェイが必要です。 診断する既存の VPN ゲートウェイがない場合は、[PowerShell スクリプト](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)を使用してゲートウェイを 1 つデプロイすることができます。 次の場所から PowerShell スクリプトを実行できます。
-- **ローカルにインストールされている PowerShell**: スクリプトを使用するには、AzureRM PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell のインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- **ローカルにインストールされている PowerShell**: このスクリプトは Azure PowerShell `Az` モジュールを必要とします。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell のインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 - **Azure Cloud Shell**: [Azure Cloud Shell](https://shell.azure.com/powershell) には最新バージョンの PowerShell がインストールされ構成されており、ユーザーは Azure にログインされます。
 
 このスクリプトで VPN ゲートウェイを作成するのに、約 1 時間かかります。 残りの手順は、診断しようとしているゲートウェイが、このスクリプトによってデプロイされたものであることが前提となっています。 そうではなく、既存のゲートウェイを診断する場合は、異なる結果となります。
@@ -105,7 +108,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 1. ポータル上部の **[検索]** ボックスに「*TestRG1*」と入力します。 検索結果に **TestRG1** が表示されたら選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:](リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、**[削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: b844c93a1f3e83d682b51db6f9854f11b24d82e7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319518"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543750"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする
 
@@ -37,7 +37,7 @@ ms.locfileid: "58319518"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
 
 > [!NOTE]
 > Red Hat Enterprise Linux 上の Pacemaker では、必要に応じてクラスター ノードをフェンシングするのに Azure Fence Agent を使用します。 リソースの停止に失敗した場合や、クラスター ノードが互いに通信できなくなった場合、フェールオーバーに最大 15 分かかります。 詳細については、「[Azure VM running as a RHEL High Availability cluster member take a very long time to be fenced, or fencing fails / times-out before the VM shuts down](https://access.redhat.com/solutions/3408711)」 (RHEL 高可用性クラスターのメンバーを実行している Azure VM のフェンシングに非常に長い時間がかかる、フェンシングが失敗する、VM がシャットダウンする前にタイムアウトする) を参照してください。

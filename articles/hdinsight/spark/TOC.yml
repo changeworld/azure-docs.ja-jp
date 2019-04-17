@@ -40,6 +40,17 @@ items:
   - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
     href: ../hdinsight-cluster-availability.md
     maintainContext: true
+- name: サンプル
+  items:
+  - name: .NET のサンプル
+    href: ../hdinsight-sdk-dotnet-samples.md
+    maintainContext: true
+  - name: Java のサンプル
+    href: ../hdinsight-sdk-java-samples.md
+    maintainContext: true
+  - name: Python のサンプル
+    href: ../hdinsight-sdk-python-samples.md
+    maintainContext: true
 - name: 方法
   items:
   - name: クラスター ストレージの使用
@@ -214,45 +225,53 @@ items:
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
-    - name: Linux クラスターを作成する
+    - name: HDInsight クラスターの作成
       href: ../hdinsight-hadoop-provision-linux-clusters.md
       items:
-      - name: Azure PowerShell の使用
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-        maintainContext: true
-      - name: cURL とAzure REST API を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-        maintainContext: true
-      - name: .NET SDK を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        maintainContext: true
-      - name: Azure クラシック CLI を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-        maintainContext: true
       - name: Azure ポータルの使用
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: Azure リソース マネージャー テンプレートの使用
         displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
-      maintainContext: true
-    - name: オンデマンド クラスターの作成
-      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+        maintainContext: true
+      - name: .NET 用 SDK の使用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster
+      - name: Python 用 SDK の使用
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster
+      - name: Java 用 SDK の使用
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster
+      - name: Azure PowerShell の使用
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+        maintainContext: true
+      - name: cURL とAzure REST API を使用する
+        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+        maintainContext: true
+      - name: Azure クラシック CLI を使用する
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+        maintainContext: true
+      - name: オンデマンド クラスターの作成
+        href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+        maintainContext: true
       maintainContext: true
     - name: HDInsight クラスターの管理
+      href: ../hdinsight-administer-use-portal-linux.md
       items:
-      - name: ポータルの使用
-        href: ../hdinsight-administer-use-portal-linux.md
-        maintainContext: true
-      - name: .NET SDK の使用
-        href: ../hdinsight-administer-use-dotnet-sdk.md
-        maintainContext: true
+      - name: .NET 用 SDK の使用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management
+      - name: Python 用 SDK の使用
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+      - name: Java 用 SDK の使用
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+      - name: Go 用 SDK の使用 (プレビュー)
+        href: https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview
       - name: Azure PowerShell の使用
         href: ../hdinsight-administer-use-powershell.md
         maintainContext: true
       - name: Azure クラシック CLI を使用する
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
+      maintainContext: true
     - name: Apache Ambari Web UI を使用したクラスターの管理
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
@@ -284,7 +303,7 @@ items:
       - name: cURL を使用して実行する
         href: ../hadoop/apache-hadoop-use-sqoop-curl.md
         maintainContext: true
-      - name: .NET SDK を使用して実行する
+      - name: .NET 用 SDK を使用して実行する
         href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
         maintainContext: true
       - name: Azure PowerShell を使用して実行する
@@ -403,13 +422,13 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/az.hdinsight
-  - name: .NET SDK
+  - name: .NET 用 SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Python SDK
+  - name: Python 用 SDK
     href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Java SDK
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
-  - name: Go SDK
+  - name: Java 用 SDK
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+  - name: Go 用 SDK
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
@@ -432,19 +451,19 @@ items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: フォーラムで質問する
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight
   - name: ラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
   - name: ビッグ データに関する Microsoft プロフェッショナル プログラム
-    href: https://academy.microsoft.com/en-us/professional-program/big-data/
+    href: https://academy.microsoft.com/en-us/professional-program/tracks/big-data/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: d219c54110d8e2c24823c858f152d3fb6ae874ba
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c345237788f49bd9fc785eeaed5831b89231bff4
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544162"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578392"

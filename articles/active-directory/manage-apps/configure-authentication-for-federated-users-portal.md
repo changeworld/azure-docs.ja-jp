@@ -1,6 +1,6 @@
 ---
 title: ホーム領域検出ポリシーを使用して、アプリケーションのサインイン自動高速化を構成する | Microsoft Docs
-description: Azure AD テナントの概要、および Azure Active Directory で Azure を管理する方法を説明します。
+description: 自動高速化やドメインのヒントを含む、フェデレーション ユーザーのための Azure Active Directory 認証のホーム領域検出ポリシーを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,19 +11,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 04/08/2019
 ms.author: celested
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333258ef9696e6dbe4aab5b10e815bb84428d425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190264"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360936"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
-以下のドキュメントでは、フェデレーション ユーザーに対する Azure Active Directory 認証動作の構成方法について説明します。   また、フェデレーション ドメイン内のユーザーに対する自動高速化および認証制限の構成方法についても説明します。
+この記事では、フェデレーション ユーザーに対する Azure Active Directory 認証動作の構成方法について説明します。 また、フェデレーション ドメイン内のユーザーに対する自動高速化および認証制限の構成方法についても説明します。
 
 ## <a name="home-realm-discovery"></a>ホーム領域検出
 ホーム領域検出 (HRD) は、ユーザーの認証が必要な場所を、Azure Active Directory (Azure AD) がサインイン時に決定できるようにするプロセスです。  ユーザーは、Azure AD テナントにサインインしてリソース (または Azure AD の共通サインイン ページ) にアクセスするとき、ユーザー名 (UPN) を入力します。 Azure AD はそれを使用して、ユーザーがどこにサインインする必要があるかを決定します。 

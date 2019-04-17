@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 990991eb1ceb5d74c042b42cfa265c75a073e5ef
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ee024d627efc42a87d7f6b1971fa8e2e92357a00
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670899"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545231"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -103,7 +103,7 @@ import os
 
 既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
 
-`Workspace.from_config()` は、**aml_config/config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクトに読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
+`Workspace.from_config()` は、**config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクト内に読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
 
 ワークスペース オブジェクトを用意したら、実験の名前を指定します。 ワークスペースが含まれるローカル ディレクトリを作成して登録します。 すべての実行履歴が、指定された実験と [Azure portal](https://portal.azure.com) に記録されます。
 
@@ -136,8 +136,7 @@ import azureml.dataprep as dprep
 
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-package_saved = dprep.Package.open(file_path)
-dflow_prepared = package_saved.dataflows[0]
+dflow_prepared = dprep.Dataflow.open(file_path)
 dflow_prepared.get_profile()
 ```
 

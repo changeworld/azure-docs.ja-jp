@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665323"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359424"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
 Service Fabric で実行できる内容とその使用方法に関してよく寄せられる多数の質問があります。 このドキュメントでは、これらのよく寄せられる質問とその回答を示します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>クラスターのセットアップと管理
 
@@ -133,7 +136,7 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 アプリケーションを KeyVault に対して認証するための資格情報を取得する方法を次に示します。
 
 A. アプリケーションのビルド/パッキング ジョブ中に、SF アプリのデータ パッケージに証明書をプルし、これを使用して KeyVault に対して認証することができます。
-B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[key Vault からシークレットを取得](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret)することができます
+B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[KeyVault からシークレットを取得](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)することができます。
 
 ## <a name="application-design"></a>アプリケーションの設計
 
@@ -189,4 +192,4 @@ Service Fabric ラインタイムをオープン ソース化する予定であ�
 
 ## <a name="next-steps"></a>次の手順
 
-[Service Fabric の中心概念](service-fabric-technical-overview.md)と[ベスト プラクティス](service-fabric-best-practices-overview.md)を学習する
+[コア Service Fabric の概念](service-fabric-technical-overview.md)および[ベスト プラクティス](service-fabric-best-practices-overview.md) Service Fabric の概念](service-fabric-technical-overview.md) および[ベスト プラクティス](service-fabric-best-practices-overview.md)

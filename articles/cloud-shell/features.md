@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 04/10/2019
 ms.author: damaerte
-ms.openlocfilehash: fe04c5450ecd2c21affa5cbb89c627bc30cf7b6f
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903456"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500619"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -57,7 +57,7 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 
 ## <a name="tools"></a>ツール
 
-|Category   |名前   |
+|Category   |Name   |
 |---|---|
 |Linux ツール            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure ツール            |[Azure CLI](https://github.com/Azure/azure-cli) と [Azure クラシック CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
@@ -76,7 +76,7 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.1.2](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.2.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 および 3.5 (既定)|
 
 ## <a name="next-steps"></a>次の手順

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 197c2c021dd9f674d196fb1169155bc6015f2e79
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891805"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578612"
 ---
 # <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge のセキュリティとデータ保護
 
@@ -123,7 +123,7 @@ Data Box Edge/Data Box Gateway サービスは、次の主要なインスタン�
 - **注文の詳細** - 発注後、ユーザーの配送先住所、メール、連絡先情報が Azure portal に格納されます。 たとえば、次の情報が保存の対象となります。
   - 連絡先の名前
   - 電話番号
-  - 電子メール
+  - Email
   - 番地
   - City
   - 郵便番号

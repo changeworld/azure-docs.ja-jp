@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 04/15/2019
+ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354452"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617786"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
@@ -20,7 +20,7 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | コンピューティング世代 | Gen 5 |Gen 5 | Gen 5 |
-| 仮想コア | 1、2 | 2、4、8、16、32 |2、4、8、16 |
+| 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 仮想コアあたりのメモリ | 2 GB | 5 GB | 10 GB |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
@@ -49,7 +49,7 @@ Azure Database for MariaDB サーバーは、次の 3 つの価格レベルの�
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 可変 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
+| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
 
 サーバーの作成中および作成後に、ストレージ容量を追加できます。 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 

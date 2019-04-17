@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Azure の仮想ネットワーク ピアリングについて説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880425"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489983"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -80,7 +80,6 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 仮想ネットワークがグローバルにピアリングされている場合のみ、次の制約が適用されます。
 - 仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Basic 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 Basic Load Balancer のサポートは、同じリージョン内でのみ存在します。 Standard Load Balancer のサポートはグローバル VNet ピアリングに存在します。
-- プレビューでグローバルにピアリングされた仮想ネットワークでは、リモート ゲートウェイを使用でき、ゲートウェイ転送を許可できます。 プレビューは、すべての Azure リージョン、中国のクラウド リージョン、および政府のクラウド リージョンで利用できます。 ホワイト リストに登録する必要はありません。 CLI、PowerShell、テンプレート、または API を介してプレビューをテストできます。 プレビューではポータルはサポートされていません。
 
 要件と制約の詳細については、[仮想ネットワーク ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)に関するページを参照してください。 仮想ネットワークで作成できるピアリングの数の制限については、[Azure ネットワーキングの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。 
 

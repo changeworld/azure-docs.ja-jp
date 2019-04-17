@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497841"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500143"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
@@ -51,7 +51,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、セッション ハンドラーが登録されます。
 
-[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトが受け入れられクライアントに保持されている間、そのクライアントはそのセッションの [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
+[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトが受け入れられクライアントに保持されている間、そのクライアントはそのセッションの [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
 
 ロックが解除されるのは、**Close** または **CloseAsync** が呼び出されたとき、またはロックの有効期限が切れ、アプリケーションが終了操作を実行できないときです。 セッション ロックは、ファイルの排他的ロックと同様に処理する必要があり、アプリケーションは、セッションが不要になったらただちにセッションを閉じ、それ以上のメッセージを期待しない必要があります。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: cf91afa2c4913be9d63c40d92272d62b15410bed
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 63905a1130ffb972ff71ebcce232cd242961dcad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849443"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>チュートリアル:Azure Active Directory と ThirdPartyTrust の統合
 
@@ -51,7 +51,7 @@ ThirdPartyTrust と Azure AD の統合を構成するには、次のものが必
 
 Azure AD への ThirdPartyTrust の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ThirdPartyTrust を追加する必要があります。
 
-**ギャラリーから ThirdPartyTrust を追加するには、次の手順に従います。**
+**ギャラリーから ThirdPartyTrust を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -195,7 +195,7 @@ ThirdPartyTrust との Azure AD シングル サインオンを構成するに�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

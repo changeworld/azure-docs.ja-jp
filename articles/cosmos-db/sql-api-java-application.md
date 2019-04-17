@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 4d6d26bd142a62d57b55caa290a2a94a3988737d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a915792ad5cd1352c666f8224345c54e278ab899
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008711"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526879"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 
@@ -71,7 +71,7 @@ JSP アプリケーションを作成するには:
    
     ![新しい JSP ファイルの作成 - Java Web アプリケーションのチュートリアル](./media/sql-api-java-application/image11.png)
 5. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
-6. index.jsp ファイルが Eclipse で開いたら、**Hello World!** を表示するためのテキストを追加します。 既存の <body> 要素に追加します。 更新した <body> の内容は次のようになります。
+6. index.jsp ファイルが Eclipse で開いたら、**Hello World!** を表示するためのテキストを追加します。 既存の `<body>` 要素に追加します。 更新した `<body>` の内容は次のようになります。
    
         <body>
             <% out.println("Hello World!"); %>
@@ -99,8 +99,13 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
    ![SQL Java アプリケーション SDK をインストールする](./media/sql-api-java-application/image13.png)
      
    * または、テキスト エディターを使用して、Group ID および Artifact ID の依存関係 XML を直接 pom.xml に追加します。
-     
-        <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
+        ```xml
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-documentdb</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        ```
 6. **[OK]** をクリックします。Maven によって SQL Java SDK がインストールされます。
 7. pom.xml ファイルを保存します。
 

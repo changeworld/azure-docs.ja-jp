@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: ac2edb4c12e95a915790c1fadfb2dcdcce554aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202709"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545575"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数 (UDF) を使用する
 
@@ -46,8 +46,6 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 * __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
 
     .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
-
-    特定のバージョンの Mono を使用する方法については、[Mono のインストールと更新](../hdinsight-hadoop-install-mono.md) に関するドキュメントを参照してください。
 
 * __Windows ベースの HDInsight__ クラスターでは、Microsoft .NET CLR を使用して、.NET アプリケーションを実行します。
 

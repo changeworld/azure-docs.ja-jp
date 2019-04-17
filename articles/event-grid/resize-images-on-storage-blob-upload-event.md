@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 919bd20bc5650bc2a843680770fad6190ef01361
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 652fe182663d37c389658c8fe3b172826168e51f
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182338"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617990"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル: Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -145,7 +145,7 @@ THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```azurecli-interactive
 blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
 
-blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
+blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
 -n $blobStorageAccount --query [0].value --output tsv)
 
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \

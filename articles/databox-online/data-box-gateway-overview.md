@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e7a65a6b49544783ed3f40194e2338540819536b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 340ff99aae9acff49ffdeaa43463521debb16a07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400954"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282816"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Azure Data Box Gateway とは
 
@@ -29,6 +29,8 @@ Data Box Gateway は、クラウド アーカイブやディザスター リカ�
 - **継続的なデータ インジェスト** - データ サイズに関係なく、データをデバイスに継続的に取り込んでクラウドにコピーします。 ゲートウェイ デバイスにデータが書き込まれると、デバイスによってデータが Azure Storage にアップロードされます。  
 
 - **増分転送に先立つ初期一括転送** - オフライン モードでの一括転送 (初期シード) に Data Box を使用し、ネットワーク経由の増分転送 (継続的なフィード) に Data Box Gateway を使用します。
+
+詳細については、[Azure Data Box Gateway のユース ケース](data-box-gateway-use-cases.md)に関するページを参照してください。
 
 ## <a name="benefits"></a>メリット
 

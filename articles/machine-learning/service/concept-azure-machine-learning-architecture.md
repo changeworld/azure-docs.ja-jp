@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361100"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269131"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
 この記事では、Azure Machine Learning service のアーキテクチャと概念について説明します。 サービスの主要なコンポーネントと、サービスを使用する場合の一般的なワークフローを、以下の図に示します。
 
-[![Azure Machine Learning service のアーキテクチャとワークフロー](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![AAzure Machine Learning service のアーキテクチャとワークフロー(./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 ワークフローの一般的なシーケンスは次のとおりです。
 
@@ -46,11 +46,13 @@ ms.locfileid: "58361100"
 
 モデルはワークスペースに登録します。 登録されたモデルとスコアリング スクリプトを使用して、イメージを作成します。 その後、イメージを REST ベースの HTTP エンドポイントとして Azure Container Instances、Azure Kubernetes Service、またはフィールド プログラマブル ゲート アレイ (FPGA) にデプロイすることができます。 また、モジュールとして Azure IoT Edge デバイスにデプロイすることもできます。
 
-複数のワークスペースを作成でき、各ワークスペースを複数のユーザーで共有できます。 ワークスペースを共有する場合は、次のロールをユーザーに割り当てることで、ワークスペースへのアクセスを制御できます。
+複数のワークスペースを作成でき、各ワークスペースを複数のユーザーで共有できます。 ワークスペースを共有する場合は、ユーザーを次のロールに割り当てることで、ワークスペースへのアクセスを制御できます。
 
 * Owner
 * Contributor
 * Reader
+
+これらのロールの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」をご覧ください。
 
 新しいワークスペースを作成すると、ワークスペースによって使用される複数の Azure リソースが自動的に作成されます。
 
@@ -64,7 +66,7 @@ ms.locfileid: "58361100"
 
 ワークスペースの分類を次の図に示します。
 
-[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Wワークスペースの分類(./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>実験
 
@@ -78,7 +80,7 @@ ms.locfileid: "58361100"
 
 モデルは、Azure Machine Learning での実行によって生成されます。 Azure Machine Learning の外部でトレーニングされるモデルを使用することもできます。 Azure Machine Learning service ワークスペースにモデルを登録することができます。
 
-Azure Machine Learning service はフレームワークに依存しません。 モデルを作成するときに、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer、Microsoft Cognitive Toolkit (旧称: CNTK) などの人気のある機械学習フレームワークを使用できます。
+Azure Machine Learning service はフレームワークに依存しません。 モデルを作成するときは、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer などの任意の人気のある機械学習フレームワークを使用できます。
 
 モデルのトレーニング例については、[チュートリアル: Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
 
@@ -184,6 +186,10 @@ Azure Machine Learning では、次の 2 種類のイメージを作成できま
 * **FPGA イメージ**:Azure のフィールド プログラマブル ゲート アレイにデプロイするときに使用されます。
 * **Docker イメージ**:FPGA 以外のコンピューティング先にデプロイするときに使用されます。 例として、Azure Container Instances や Azure Kubernetes Service があります。
 
+Azure Machine Learning service は基本イメージを提供し、それが既定で使用されます。 独自のカスタム イメージを指定することもできます。
+
+詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#configureimage)に関するページの、イメージの構成と登録のセクションを参照してください。
+
 イメージの作成例については、「[Azure Container Instances に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)」を参照してください。
 
 ### <a name="image-registry"></a>イメージ レジストリ
@@ -226,7 +232,7 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
 
-* [Azure Machine Learning service とは](overview-what-is-azure-ml.md)
-* [Azure Machine Learning service のワークスペースを作成する](setup-create-workspace.md)
+* [Azure Machine Learning サービスの概要](overview-what-is-azure-ml.md)
+* [Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md)
 * [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
 * [Resource Manager テンプレートでワークスペースを作成する](how-to-create-workspace-template.md)

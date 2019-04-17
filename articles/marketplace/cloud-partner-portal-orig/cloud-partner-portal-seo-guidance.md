@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pbutlerm
 ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469660"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488851"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO ガイド
 

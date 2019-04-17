@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444125"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549305"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -53,7 +53,7 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:---|:---|
 | Name   | ポータルに表示するクエリの名前。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
@@ -127,15 +127,15 @@ Active Directory または WSUS から作成されたコンピューター グ�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Type |*ComputerGroup* |
-| SourceSystem |*SourceSystem* |
-| Computer |メンバー コンピューターの名前。 |
-| Group |グループの名前。 |
-| GroupFullName |ソースとソース名を含んだグループの完全パス。 |
-| GroupSource |グループの収集元となったソース。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |グループの収集元となったソースの名前。  Active Directory の場合はドメイン名になります。 |
-| ManagementGroupName |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
-| TimeGenerated |コンピューター グループが作成または更新された日時。 |
+| `Type` |*ComputerGroup* |
+| `SourceSystem` |*SourceSystem* |
+| `Computer` |メンバー コンピューターの名前。 |
+| `Group` |グループの名前。 |
+| `GroupFullName` |ソースとソース名を含んだグループの完全パス。 |
+| `GroupSource` |グループの収集元となったソース。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
+| `GroupSourceName` |グループの収集元となったソースの名前。  Active Directory の場合はドメイン名になります。 |
+| `ManagementGroupName` |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
+| `TimeGenerated` |コンピューター グループが作成または更新された日時。 |
 
 ## <a name="next-steps"></a>次の手順
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  

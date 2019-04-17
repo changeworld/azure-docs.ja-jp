@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: cface0b7848182db5d9aee282a2effb631c065bf
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b48add54e83eb2d30b40faf64bc1b5c2c769f237
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648831"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521677"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure China 21Vianet の開発者ガイド
 Microsoft では、開発者によるクラウド アプリケーションの作成と、グローバルな Microsoft Azure サービス ("グローバル Azure") および 21Vianet (Azure China 21Vianet) が運営する Microsoft Azure へのデプロイを実行するのに役立つツールを提供しています。 [Azure ドキュメント センター](https://azure.microsoft.com/documentation/)など、現在利用可能な技術的コンテンツのほとんどは、アプリケーションがグローバル Azure 用に開発されることを前提としているため、どの[サービスおよび機能](https://www.azure.cn/home/features/products-by-region)が Microsoft Azure China 21Vianet で利用できるかを把握することが重要です。
@@ -52,7 +52,7 @@ Microsoft Azure China 21Vianet はグローバル Azure とは異なるため、
 
 関連項目:
 - [中国の Azure アプリケーション開発者向けのメモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-- [中国の Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=42064) 
+- [中国の Azure データセンターの IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=57062) 
 - [開発者ガイド](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide) (中国語)
 
 | サービス カテゴリ | グローバル Azure URI | Azure URI (中国) |
@@ -81,6 +81,6 @@ Microsoft Azure China 21Vianet はグローバル Azure とは異なるため、
 
 ## <a name="next-steps"></a>次の手順
 - [開発者ガイド](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide) (中国語)
-- [中国の Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=42064)
+- [中国の Azure データセンターの IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=57062)
 - [パフォーマンスと接続性を管理する](/azure/china/china-how-to-manage-performance)
 - [Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/)

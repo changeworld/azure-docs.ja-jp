@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 379c7913f803c599865df080524da5c3fb1d0e52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120518"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526345"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -165,7 +165,7 @@ Cosmos DB コレクションで新しいドキュメントが作成される、�
 
 1. エクスプローラーのリポジトリに戻り、**[ChangeFeedFunction.sln]** を右クリックして、それを Visual Studio の新しいウィンドウでもう一度開きます。  
 
-2. **App.config** ファイルに移動します。<appSettings> ブロックに、前に取得した Azure Cosmos DB アカウントのエンドポイントおよび一意の**主キー**を追加します。  
+2. **App.config** ファイルに移動します。`<appSettings>` ブロックに、前に取得した Azure Cosmos DB アカウントのエンドポイントおよび一意の**主キー**を追加します。  
 
 3. **コレクション**名と**データベース**名を追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
 

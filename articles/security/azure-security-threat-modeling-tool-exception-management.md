@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877295"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527423"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム:例外管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -201,7 +201,7 @@ ASP.NET Web API での例外処理とモデルの検証の詳細については�
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET エラー ページ設定の編集ダイアログ ボックス](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の <customErrors> タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off:** カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これが既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
+| **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の `<customErrors>` タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off:** カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これが既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
 
 ## <a id="deployment"></a>IIS の deployment メソッドを retail に設定する
 

@@ -1,21 +1,21 @@
 ---
 title: SQL API を使って Azure Cosmos DB による .NET Web アプリを作る
-description: このクイック スタートでは、Azure Cosmos DB SQL API と Azure Portal を使って .NET Web アプリを作成します。
+description: このクイック スタートでは、Azure portal と .NET Web アプリを使って Azure Cosmos DB に SQL API アカウント リソースを作成して管理します。
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/15/2019
-ms.openlocfilehash: 1ef414b2de2acbf5b92661c8b5f1e249549b14df
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 04/05/2019
+ms.openlocfilehash: 7ecb2269243ae96b629a20a26956e6220a2e616c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259144"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280844"
 ---
-# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して .NET Web アプリをビルドする
+# <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -27,60 +27,62 @@ ms.locfileid: "58259144"
 >  
 > 
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用して、キー/値データベース、ドキュメント データベース、およびグラフ データベースをすばやく作成し、クエリを実行できます。そのすべてで、Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用します。 
 
-このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コレクションを作成し、サンプル データをコレクションに追加する方法を説明します。 さらに、[SQL .NET SDK](sql-api-sdk-dotnet.md) を使用して todo Web アプリをビルドしてデプロイし、コレクション内の管理データを追加します。 
+このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コレクションを作成し、データをコレクションに追加する方法を説明します。 その後、[SQL .NET SDK](sql-api-sdk-dotnet.md) Web アプリを使用して、コレクションにデータをさらに追加します。 
+
+このクイック スタートでは、Azure portal のデータ エクスプローラーを使用してデータベースとコレクションを作成します。 また、.NET サンプル コードを使用してデータベースとコレクションを作成することもできます。 詳細については、「[.NET コードの確認](#review-the-net-code)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+Azure 開発ワークフローがインストールされている Visual Studio 2017
+- **無料**の [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+Azure サブスクリプションまたは Azure Cosmos DB の無料試用版アカウント
+- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
-## <a name="create-an-account"></a>アカウントの作成
+## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <a id="create-collection-database"></a>
-## <a name="add-a-database-and-a-collection"></a>データベースとコレクションの追加
+## <a name="add-a-database-and-a-collection"></a>データベースとコレクションの追加 
 
-Azure Portal でデータ エクスプローラー ツールを使用してデータベースとコレクションを作成できるようになりました。 
+Azure portal のデータ エクスプローラーを使用してデータベースとコレクションを作成できます。 
 
-1. **[データ エクスプローラー]** > **[新しいコレクション]** をクリックします。 
+1.  ご使用の Azure Cosmos DB アカウント ページの左側のナビゲーションから **[データ エクスプローラー]** を選択してから **[新しいコレクション]** を選択します。 
     
-    **[コレクションの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
-
+    **[コレクションの追加]** 領域を表示するために、右へスクロールする必要がある場合があります。
+    
     ![Azure portal の [データ エクスプローラー] の [コレクションの追加] ウィンドウ](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
-
-2. **[コレクションの追加]** ページで、新しいコレクションの設定を入力します。
-
-    設定|推奨値|説明
-    ---|---|---
-    **データベース ID**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。
-    **コレクション ID**|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。
-    **パーティション キー**| `<your_partition_key>`| パーティション キーを入力します。 この記事で説明するサンプルでは、*/category* をパーティション キーとして使用します。
-    **スループット**|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 
     
-    上記の設定に加え、必要に応じて、このコレクション用に**一意なキー**を追加できます。 この例では、このフィールドを空のままにしましょう。 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コレクションの作成中に一意キー ポリシーを作成すると、パーティション キーごとに 1 つ以上の値の一意性が保証されます。 詳細については、記事「[Azure Cosmos DB における一意なキー](unique-keys.md)」を参照してください。
+1.  **[コレクションの追加]** ページで、新しいコレクションの設定を入力します。
     
-    Click **OK**.
-
+    |設定|推奨値|説明
+    |---|---|---|
+    |**データベース ID**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。|
+    |**コレクション ID**|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。|
+    |**パーティション キー**| /category| この記事で説明するサンプルでは、*/category* をパーティション キーとして使用します。|
+    |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
+    
+    この例では、**一意のキー**を追加しません。 一意のキーを使用すると、パーティション キーごとに 1 つまたは複数の値の一意性を確保して、データベースにデータ整合性のレイヤーを追加できます。 詳細については、[Azure Cosmos DB における一意のキー](unique-keys.md)に関するページをご覧ください。
+    
+1.  **[OK]** を選択します。 
     新しいデータベースとコレクションがデータ エクスプローラーに表示されます。
-
+    
     ![新しいデータベースとコレクションを示す Azure Portal のデータ エクスプローラー](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
-<a id="add-sample-data"></a>
-## <a name="add-sample-data"></a>サンプル データの追加
+## <a name="add-data-to-your-database"></a>ご自分のデータベースにデータを追加する
 
-これで、データ エクスプローラーを使用して、新しいコレクションにデータを追加できます。
+データ エクスプローラーを使用して、ご自分の新しいデータベースにデータを追加します。
 
-1. データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **[タスク]** データベースを展開し、**[項目]** コレクションを展開して、**[ドキュメント]** をクリックし、**[新しいドキュメント]** をクリックします。 
-
+1. **データ エクスプローラー**の **[コレクション]** ウィンドウに新しいデータベースが表示されます。 **[ToDoList]** データベースを展開し、**[項目]** コレクションを展開して、**[ドキュメント]** を選択し、**[新しいドキュメント]** を選択します。 
+   
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
-  
-2. ここで、次の構造のドキュメントをコレクションに追加します。
+   
+1. **[ドキュメント]** ウィンドウの右側でドキュメントに次の構造を追加します。
 
      ```json
      {
@@ -92,59 +94,104 @@ Azure Portal でデータ エクスプローラー ツールを使用してデ�
      }
      ```
 
-3. json を **[ドキュメント]** タブに追加したら、**[保存]** をクリックします。
-
-    ![json データをコピーし、Azure Portal のデータ エクスプローラーで [保存] をクリックします。](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
-
-4. もう 1 つドキュメントを作成して保存します。`id` プロパティには一意の値を挿入し、その他のプロパティについては適宜変更してください。 Azure Cosmos DB では、データにスキーマを課さないため、新しいドキュメントは必要な任意の構造にすることができます。
+1. **[保存]** を選択します。
+   
+   ![json データをコピーし、Azure portal のデータ エクスプローラーで [保存] を選択する](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   
+1. **[新しいドキュメント]** をもう一度選択し、一意の `id` に加え、必要なその他のプロパティと値を指定したもう 1 つのドキュメントを作成して保存します。 Azure Cosmos DB では、データにスキーマが課されないため、ご自分のドキュメントは任意の構造にすることができます。
 
 ## <a name="query-your-data"></a>データのクエリ
 
 [!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="use-the-net-web-app-to-manage-data"></a>.NET Web アプリを使用してデータを管理する
 
-次は、コードを使った作業に移りましょう。 [GitHub から SQL API アプリ](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)の複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+プログラムを使って Azure Cosmos DB データを操作するのがいかに簡単かを確認するために、GitHub からサンプルの SQL API .NET Web アプリを複製し、接続文字列を更新し、アプリを実行してご自分のデータを更新します。 
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+また、.NET サンプル コードを使用してデータベースとコレクションを作成することもできます。 詳細については、「[.NET コードの確認](#review-the-net-code)」を参照してください。
 
-    ```bash
-    md "C:\git-samples"
-    ```
+### <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
-2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+まず、GitHub から C# [SQL API アプリ](https://github.com/Azure-Samples/documentdb-dotnet-todo-app)を複製します。 
 
-    ```bash
-    cd "C:\git-samples"
-    ```
+1. Git ターミナル ウィンドウ (Git Bash など) を開き、*git-samples* という名前の新しいディレクトリを作成し、そのディレクトリに変更します。 
+   
+   ```bash
+   mkdir /c/git-samples/
+   cd /c/git-samples/
+   ```
+   
+1. 次のコマンドを実行して、サンプル リポジトリを複製し、サンプル アプリのコピーをご使用のコンピューター上に作成します。
+   
+   ```bash
+   git clone https://github.com/Azure-Samples/documentdb-dotnet-todo-app.git
+   ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+### <a name="update-the-connection-string"></a>接続文字列を更新する 
 
-    ```bash
-    git clone https://github.com/Azure-Samples/documentdb-dotnet-todo-app.git
-    ```
+1. ご自分の複製したアプリの *todo.sln* ファイルに移動し、Visual Studio で開きます。 
 
-4. 次に、Visual Studio で todo ソリューション ファイルを開きます。 
+1. Visual Studio の**ソリューション エクスプローラー**から *web.config* ファイルを開きます。 
 
-## <a name="review-the-code"></a>コードの確認
+1. Azure portal に戻り、ご自分の接続文字列情報をコピーし、*web.config* に貼り付けます。
+   
+   1. ご使用の Azure Cosmos DB アカウントの左側のナビゲーションにある **[キー]** を選択します。
+      
+      ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
+      
+   1. **[読み取り/書き込みキー]** の下にある **[URI]** の値を右側にあるコピー ボタンを使用してコピーし、*web.config* 内の `endpoint` キーに貼り付けます。例:  
+      
+      `<add key="endpoint" value="https://mysqlapicosmosdb.documents.azure.com:443/" />`
+      
+   1. **[プライマリ キー]** の値をコピーし、*web.config* 内の `authKey` キーに貼り付けます。例: 
+      
+      `<add key="authKey" value="19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==" />`
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 このクイック スタートでは、Azure portal を使用してデータベースとコレクションを作成し、.NET サンプルを使用してサンプル データを追加します。 ただし、.NET サンプルを使用してデータベースとコレクションを作成することもできます。 
+       
+1. *web.config* 内のデータベースとコレクションの値が以前に作成した名前と一致していることを確認します。 
 
-次のスニペットはすべて DocumentDBRepository.cs ファイルからのものです。
+   ```csharp
+   <add key="database" value="ToDoList"/>
+   <add key="collection" value="Items"/>
+   ```
+ 
+1. *web.config* を保存します。これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。
 
-* 次のコードのように、DocumentClient が初期化されます。
+### <a name="run-the-web-app"></a>Web アプリの実行
+
+1. Visual Studio の**ソリューション エクスプローラー**で **todo** プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 
+
+1. NuGet の **[参照]** ボックスに「*DocumentDB*」と入力します。
+
+1. 結果から、**Microsoft.Azure.DocumentDB** ライブラリをインストールします (まだインストールしていない場合)。 これにより、[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) パッケージとすべての依存関係がインストールされます。
+   
+   NuGet パッケージ マネージャーに、いくつかのパッケージがソリューションに不足していることを示すメッセージが表示された場合は、**[復元]** を選択して、内部ソースからそれらのパッケージをインストールします。 
+
+1. **Ctrl**+**F5** キーを押して、ご使用のブラウザーでアプリを実行します。 
+
+1. todo アプリで **[Create New]\(新規作成\)** を選択し、いくつかの新しいタスクを作成します。
+
+   ![todo アプリとサンプル データ](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
+
+Azure portal のデータ エクスプローラーに戻り、ご自分の新しいデータの表示、クエリ、変更、操作を行うことができます。 
+
+## <a name="review-the-net-code"></a>.NET コードの確認
+
+この手順は省略可能です。 このクイック スタートでは、Azure portal 内でデータベースとコレクションを作成し、.NET サンプルを使用してサンプル データを追加しました。 ただし、.NET サンプルを使用してデータベースとコレクションを作成することもできます。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認してください。 スニペットはすべて **todo** プロジェクトの *DocumentDBRepository.cs* ファイルからのものです。
+
+* このコードは `DocumentClient` を初期化します。 
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* 次のコードのように、`CreateDatabaseAsync` メソッドを使用して新しいデータベースが作成されます。
+* このコードは `CreateDatabaseAsync` メソッドを使用して、新しいデータベースを作成します。
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* 次のコードのように、`CreateDocumentCollectionAsync` メソッドを使用して新しいコレクションが作成されます。
+* 次のコードは `CreateDocumentCollectionAsync` メソッドを使用して、新しいコレクションを作成します。
 
     ```csharp
     private static async Task CreateCollectionIfNotExistsAsync()
@@ -173,59 +220,14 @@ Azure Portal でデータ エクスプローラー ツールを使用してデ�
     }
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列を更新する
-
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
-
-1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左のナビゲーションの **[キー]** を選択してから **[読み取り/書き込みキー]** を選択します。 次の手順では、画面の右側のコピー ボタンを使用して、URI とプライマリ キーを web.config ファイルにコピーします。
-
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
-
-2. Visual Studio 2017 で web.config ファイルを開きます。 
-
-3. ポータルから (コピー ボタンを使用して) URI 値をコピーし、web.config の endpoint キーの値に設定します。 
-
-    `<add key="endpoint" value="FILLME" />`
-
-4. ポータルから PRIMARY KEY 値をコピーし、web.config の authKey の値に設定します。 
-
-    `<add key="authKey" value="FILLME" />`
-    
-5. 次に、先ほど作成したデータベースとの名前に合わせて database と collection の値を更新します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
-
-   ```csharp
-   <add key="database" value="ToDoList"/>
-   <add key="collection" value="Items"/>
-   ```
- 
-## <a name="run-the-web-app"></a>Web アプリの実行
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 
-
-2. NuGet の **[参照]** ボックスに「*DocumentDB*」と入力します。
-
-3. 結果から、**Microsoft.Azure.DocumentDB** ライブラリをインストールします。 これにより、Microsoft.Azure.DocumentDB パッケージとすべての依存関係がインストールされます。
-
-4. Ctrl + F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
-
-5. ブラウザーで **[新規作成]** を選択し、to-do アプリでいくつかの新しいタスクを作成します。
-
-   ![todo アプリとサンプル データ](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
-
-これで、データ エクスプローラーに戻って、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
-
-## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
-
-[!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Web アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
+このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してデータベースとコレクションを作成し、.NET Web アプリを実行してご自分のデータを更新する方法を説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)
-
 

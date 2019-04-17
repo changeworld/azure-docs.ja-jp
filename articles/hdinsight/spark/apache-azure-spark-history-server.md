@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076804"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524176"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
@@ -32,7 +32,7 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
     ![Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Spark History Server Web UI を URL で開く
-次の URL を参照することで、Spark History Server を開きます。<ClusterName> を、お客様の Spark クラスター名に置き換えてください。
+次の URL を参照することで、Spark History Server を開きます。`<ClusterName>` を、お客様の Spark クラスター名に置き換えてください。
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084100"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527474"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -69,7 +69,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    
     代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
-- **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](https://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
+- **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` `<args>` など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](https://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
    
     次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 

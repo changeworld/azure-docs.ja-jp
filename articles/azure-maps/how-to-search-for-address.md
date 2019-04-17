@@ -1,23 +1,30 @@
 ---
 title: Azure Maps Search サービスを使用して住所を検索する方法 | Microsoft Docs
 description: Azure Maps Search サービスを使用して住所を検索する方法について説明します。
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875788"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277325"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
 Maps Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計された RESTful API のセットです。 このサービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 検索で返された緯度と経度の値は、ルートや交通の流れなどの他の Maps サービスのパラメーターとして使用できます。
+
+この記事では、次のことについて説明します。
+
+* [あいまい検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) を使用した住所の検索
+* 住所をプロパティや座標と一緒に検索
+* 番地を検索するための[住所の逆引き検索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)の実行
+* [交差点住所の逆引き検索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet) を使用した交差点の検索
 
 ## <a name="prerequisites"></a>前提条件
 

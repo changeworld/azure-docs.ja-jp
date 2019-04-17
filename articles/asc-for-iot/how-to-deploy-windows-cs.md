@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: b45d64f56653ad6d0baabef4a63351ef14f24c42
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 601ee706adedf522890acc3f3996a7d36b349348
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58861957"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577840"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -86,7 +86,7 @@ ms.locfileid: "58861957"
 ### <a name="verify-deployment-status"></a>デプロイ状態の確認
 
 - 以下を実行して、エージェントのデプロイの状態を確認します。<br>
-    ```sc.exe query "ASC IoT Agent" ```
+    ```sc.exe query "ASC IoT Agent"```
 
 ### <a name="uninstall-the-agent"></a>エージェントのアンインストール
 
@@ -135,7 +135,7 @@ ms.locfileid: "58861957"
 
 1. ログ ファイルで、エラーの詳細情報を調べます。
 
-   ログ ファイルの保存先:  `%WinDir%/System32/IoTAgentLog.log`
+   ログ ファイルの保存先: `%WinDir%/System32/IoTAgentLog.log`
 
 
 ## <a name="next-steps"></a>次の手順

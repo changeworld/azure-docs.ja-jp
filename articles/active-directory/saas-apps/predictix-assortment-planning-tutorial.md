@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e2846f5c70fe588e42f95afb0980f5e5c7d3ac56
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: c5d2002393165eb734b80e0fbc3677915809ba8b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576915"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282629"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル: Azure Active Directory と Predictix Assortment Planning の統合
 
@@ -51,7 +51,7 @@ Predictix Assortment Planning と Azure AD の統合を構成するには、次�
 
 Azure AD への Predictix Assortment Planning の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Predictix Assortment Planning を追加する必要があります。
 
-**ギャラリーから Predictix Assortment Planning を追加するには、次の手順に従います。**
+**ギャラリーから Predictix Assortment Planning を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -209,7 +209,7 @@ Predictix Assortment Planning で Azure AD シングル サインオンを構成
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

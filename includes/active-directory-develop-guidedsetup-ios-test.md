@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 918e4016f638555bfe2dbaeaa849e963e352c78e
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e48aaa03463bb968ec366b27308ca908aab30d99
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203482"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502826"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>iOS アプリケーションから Microsoft Graph API にクエリ実行をテストする
 
@@ -36,7 +36,8 @@ ms.locfileid: "58203482"
 ![アプリケーションによるアクセスに同意する](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
-サインインした後、**[ログ]** セクションに、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 
+
+サインインした後、**[ログ]** セクションに、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細

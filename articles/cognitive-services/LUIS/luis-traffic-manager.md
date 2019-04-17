@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a71b09ba8b3e7fa7299c34c3cdc64503ae4e9857
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736551"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523411"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、**[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
@@ -86,7 +86,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |-RelativeDnsName|luis-dns-eastus|サービスのサブドメイン (luis-dns-eastus.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|<appIdLuis> と <subscriptionKeyLuis> を独自の値に置き換えます。|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|`<appIdLuis>` と `<subscriptionKeyLuis>` を独自の値に置き換えます。|
     
     要求が成功した場合、応答はありません。
 
@@ -154,7 +154,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |-RelativeDnsName|luis-dns-westus|サービスのサブドメイン (luis-dns-westus.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|<appId> と <subscriptionKey> を独自の値に置き換えます。 このエンドポイント キーは東部のエンドポイント キーとは異なることに注意してください。|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|`<appId>` と `<subscriptionKey>` を独自の値に置き換えます。 このエンドポイント キーは東部のエンドポイント キーとは異なることに注意してください。|
     
     要求が成功した場合、応答はありません。
 

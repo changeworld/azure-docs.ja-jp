@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bed1c201831b1edf4f5c267d2093ada4ba91d7df
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: bc8431e2c45cc3bfdfa08dd0078220ab2d290309
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263317"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル:Azure Active Directory と Velpic SAML の統合
 
@@ -52,7 +52,7 @@ Velpic SAML と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への Velpic SAML の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Velpic SAML を追加する必要があります。
 
-**ギャラリーから Velpic SAML を追加するには、次の手順に従います。**
+**ギャラリーから Velpic SAML を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,9 +106,9 @@ Velpic SAML で Azure AD シングル サインオンを構成するには、次
 
     ![[Velpic SAML のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<sub-domain>.velpicsaml.net`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<sub-domain>.velpicsaml.net`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://auth.velpic.com/saml/v2/<entity-id>/login`
 
     > [!NOTE]
     > サインオン URL は Velpic SAML チームによって提供され、識別子の値は Velpic SAML 側の SSO プラグインの構成時に入手できます。 Velpic SAML アプリケーションのページからこの値をコピーして、ここに貼り付けてください。
@@ -251,9 +251,9 @@ Velpic SAML 企業サイトに管理者としてサインインし、次の手�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [ SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 1e17ec48c35a7e01ca87016406fb416a05544b41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087195"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283479"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN ルール エンジンの一致条件 
 この記事では、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件について詳しく説明します。
@@ -45,7 +45,7 @@ Name | 目的
 
 Name | 目的
 -----|--------
-[デバイス](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
+[Device](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
 
 ## <a name="location-match-conditions"></a>「Location (場所)」一致条件
 
@@ -71,7 +71,7 @@ Name | 目的
 
 Name | 目的
 -----|--------
-[Client IP Address (クライアント IP アドレス)](#client-ip-address) | 特定の IP アドレスから送信される要求を識別します。
+[Client IP Address (現在の IP アドレス)](#client-ip-address) | 特定の IP アドレスから送信される要求を識別します。
 [Cookie Parameter (Cookie パラメーター)](#cookie-parameter) | 指定した値の各要求に関連付けられている Cookie を確認します。
 [Cookie Parameter Regex (Cookie パラメーターの正規表現)](#cookie-parameter-regex) | 指定した正規表現の各要求に関連付けられている Cookie を確認します。
 [Edge Cname (エッジ CNAME)](#edge-cname) | 特定の CNAME を指す要求を識別します。
@@ -101,7 +101,7 @@ Name | 目的
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>ルール エンジンの一致条件のリファレンス
-
+<a name="main"></a>
 ---
 ### <a name="always"></a>Always (常に)
 
@@ -306,7 +306,7 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
 #### <a name="string-type"></a>文字列の種類
 通常、WURFL 機能では、数字、文字、記号の任意の組み合わせを受け入れます。 この機能は柔軟性があるため、この一致条件に関連する値を解釈する方法を選択する必要があります。 次の表に、使用可能な一連のオプションを示します。
 
-type     | 説明
+Type     | 説明
 ---------|------------
 リテラル  | [リテラル値](cdn-rules-engine-reference.md#literal-values)を使用して、ほとんどの文字が特別な意味を持たないようにするには、このオプションを選択します。
 ワイルドカード | すべての[ワイルドカード文字] ([ワイルドカード値](cdn-rules-engine-reference.md#wildcard-values)) を利用するには、このオプションを選択します。

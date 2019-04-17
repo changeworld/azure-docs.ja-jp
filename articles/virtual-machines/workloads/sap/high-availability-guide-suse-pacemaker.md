@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 51db372b288ce388f58ca0e7fdcb2e1b97e511de
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755721"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577797"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -28,8 +28,8 @@ ms.locfileid: "58755721"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
@@ -84,7 +84,7 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
 
 すべての **iSCSI ターゲット仮想マシン**に対して次のコマンドを実行し、SAP システムによって使用されるクラスター用の iSCSI ディスクを作成します。 次の例では、複数のクラスターに対して SBD デバイスが作成されています。 この例では、複数のクラスターに対して 1 つの iSCSI ターゲット サーバーを使用する方法を示しています。 SBD デバイスは OS ディスク上に配置されます。 十分な容量があることを確認してください。
 
-**` nfs`** は、NFS クラスターを識別するために使用されます。**ascsnw1** は **NW1** の ASCS クラスターを識別するために使用され、**dbnw1** は **NW1** のデータベース クラスターを識別するために使用されます。**nfs-0** と **nfs-1** は、NFS クラスター ノードのホスト名で、**nw1-xscs-0** と **nw1-xscs-1** は、**NW1** の ASCS クラスター ノードのホスト名です。**nw1-db-0** と **nw1-db-1** は、データベース クラスター ノードのホスト名です。 これらは、実際のクラスター ノードのホスト名と、実際の SAP システムの SID に置き換えてください。
+**`nfs`** は、NFS クラスターを識別するために使用されます。**ascsnw1** は **NW1** の ASCS クラスターを識別するために使用され、**dbnw1** は **NW1** のデータベース クラスターを識別するために使用されます。**nfs-0** と **nfs-1** は、NFS クラスター ノードのホスト名で、**nw1-xscs-0** と **nw1-xscs-1** は、**NW1** の ASCS クラスター ノードのホスト名です。**nw1-db-0** と **nw1-db-1** は、データベース クラスター ノードのホスト名です。 これらは、実際のクラスター ノードのホスト名と、実際の SAP システムの SID に置き換えてください。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ o- / ...........................................................................
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   ` softdog` 構成ファイルを作成します
+   `softdog` 構成ファイルを作成します
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>

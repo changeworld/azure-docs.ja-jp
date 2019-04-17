@@ -206,7 +206,7 @@ items:
           href: platform/gateway.md
         - name: エージェント管理
           href: platform/agent-manage.md
-      - name: Azure 診断拡張機能
+      - name: Azure Diagnostics 拡張機能
         items:
         - name: 概要
           href: platform/diagnostics-extension-overview.md
@@ -909,7 +909,7 @@ items:
           href: app/powershell-script-create-resource.md
         - name: アラートの設定
           href: app/powershell-alerts.md
-        - name: Azure 診断の取得
+        - name: Azure Diagnostics の取得
           href: app/powershell-azure-diagnostics.md
     - name: Azure CLI のサンプル
       href: platform/cli-samples.md
@@ -1021,7 +1021,7 @@ items:
       href: platform/diagnostic-logs-schema.md
     - name: アクティビティ ログのイベント スキーマ
       href: platform/activity-log-schema.md
-    - name: Azure 診断拡張機能のスキーマ
+    - name: Azure Diagnostics 拡張機能のスキーマ
       href: platform/diagnostics-extension-schema.md
       items:
       - name: 1.3 以降

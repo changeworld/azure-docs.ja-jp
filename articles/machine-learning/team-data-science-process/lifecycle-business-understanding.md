@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477456"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545316"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのビジネスの把握ステージ
 
@@ -46,7 +46,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ### <a name="define-objectives"></a>目標を定義する
 1. このステップの中心となる目標は、分析によって予測する必要がある、主要なビジネス変数を特定することです。 これらの変数は*モデル ターゲット*と呼ばれ、これらの変数に関連付けられているメトリックがプロジェクトの成功を評価するために使用されます。 このようなターゲットの 2 つの例は、売上予測とある注文が不正な注文である確率です。
 
-2. 関連性があり、具体的かつ明確な "鋭い" 質問の問いかけと改善を行うことで、プロジェクトの目標を定義します。 データ サイエンスは、名前と数字を使用してこのような質問に回答するプロセスです。 鋭い質問の問いかけについて詳しくは、ブログ「[How to do Data Science](https://blogs.technet.microsoft.com/machinelearning/2016/03/28/how-to-do-data-science/)」(データ サイエンスの実施方法) をご覧ください。 データ サイエンスや機械学習は、一般的には以下の 5 種類の質問に回答するために使用されます。
+2. 関連性があり、具体的かつ明確な "鋭い" 質問の問いかけと改善を行うことで、プロジェクトの目標を定義します。 データ サイエンスは、名前と数字を使用してこのような質問に回答するプロセスです。 データ サイエンスや機械学習は、一般的には以下の 5 種類の質問に回答するために使用されます。
  
    * どのくらいの量または数か  (回帰)
    * どのカテゴリか  (分類)

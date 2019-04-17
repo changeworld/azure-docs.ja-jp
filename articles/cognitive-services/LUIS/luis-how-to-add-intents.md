@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593424"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521744"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
@@ -69,7 +69,7 @@ ms.locfileid: "56593424"
 
 ## <a name="add-a-prebuilt-entity"></a>作成済みエンティティの追加
 
-詳しくは、「[事前構築済みのエンティティ](luis-how-to-add-entities.md#add-prebuilt-entity)」をご覧ください。
+詳しくは、「[事前構築済みのエンティティ](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)」をご覧ください。
 
 ## <a name="using-the-contextual-toolbar"></a>コンテキスト ツールバーの使用
 
