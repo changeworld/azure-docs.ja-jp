@@ -44,7 +44,7 @@ Front Door サービスで Azure Web アプリケーション ファイアウォ
     - Any: 一致する規則がない場合の既定のアクションを定義するためによく使用されます。 Any はすべての演算子と一致します。
     - IPMatch: RemoteAddr 変数に対する IP 制限を定義します
     - GeoMatch: RemoteAddr 変数に対する geo フィルタリングを定義します
-    - 等しい
+    - Equal
     - Contains
     - LessThan: サイズの制約
     - GreaterThan: サイズの制約
@@ -61,7 +61,7 @@ Front Door サービスで Azure Web アプリケーション ファイアウォ
 - POST
 - PUT
 - HEAD
-- 削除
+- DELETE
 - LOCK
 - UNLOCK
 - PROFILE
