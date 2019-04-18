@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/23/2019
-ms.openlocfilehash: 028e9a2973ed524037f6415d9e802f947458cfa6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166771"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260458"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -45,12 +45,12 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 次に、インストールを使用する方法の主な利点について説明します。
 
 - インストールの作成または更新は、完全にべき等です。 そのため、重複した登録について心配することなく、再試行できます。
-- インストール モデルを使用すると、特定のデバイスを対象にした個別のプッシュを簡単に実行できるようになります。 システム タグ **"$InstallationId:[installationId]"** は、インストール ベースの登録ごとに自動的に追加されます。 そのため、コードを追加することなく、特定のデバイスを対象にしてこのタグに対する送信を呼び出すことができます。
+- このインストール モデルは、特定のデバイスに通知を直接送信できるようになる特殊なタグ形式 (`$InstallationId:{INSTALLATION_ID}`) をサポートしています。 たとえば、アプリのコードがこの特定のデバイスのインストール ID `joe93developer` を設定している場合、開発者は `$InstallationId:{joe93developer}` タグに通知を送信するときにこのデバイスを対象にすることができます。 こうすることで、コードを追加することなく、特定のデバイスを対象にすることができます。
 - また、インストールを使用することで、部分的な登録の更新を実行できます。 インストールの部分的な更新は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。 これは、登録時にタグを更新する場合に役立ちます。 登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
 インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://msdn.microsoft.com/library/azure/mt621153.aspx)に関するページ、または[インストール プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)に関するページを参照してください。
 
-```javascript
+```json
 // Example installation format to show some supported properties
 {
     installationId: "",
@@ -101,8 +101,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 
 Windows ストア クライアント アプリケーションの場合、セカンダリ タイルに通知を送信する処理は、プライマリ タイルに送信する場合と同じです。 この処理もインストールでサポートされています。 セカンダリ タイルには、クライアント アプリ上の SDK が透過的に処理する別の ChannelUri があります。
 
-SecondaryTiles ディクショナリは、Windows ストア アプリで SecondaryTiles オブジェクトを作成するために使用されたものと同じ TileId を使用します。
-プライマリ タイルの ChannelUri と同様に、セカンダリ タイルの ChannelUris は常に変化する可能性があります。 通知ハブのインストールを最新の状態に保つには、デバイスがセカンダリ タイルの最新の ChannelUris を使用して更新する必要があります。
+SecondaryTiles ディクショナリは、Windows ストア アプリで SecondaryTiles オブジェクトを作成するために使用されたものと同じ TileId を使用します。 プライマリ タイルの ChannelUri と同様に、セカンダリ タイルの ChannelUris は常に変化する可能性があります。 通知ハブのインストールを最新の状態に保つには、デバイスがセカンダリ タイルの最新の ChannelUris を使用して更新する必要があります。
 
 ## <a name="registration-management-from-the-device"></a>デバイスからの登録管理
 

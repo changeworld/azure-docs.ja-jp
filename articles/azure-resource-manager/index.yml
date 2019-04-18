@@ -60,7 +60,7 @@ sections:
         style: unordered
         className: spaced noBullet
         items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure のクイック スタート テンプレート</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure クイックスタート テンプレート</a>'
           - html: '<a href="https://resources.azure.com/">Azure Resource Explorer (プレビュー)</a>'
   - title: リファレンス
     items:

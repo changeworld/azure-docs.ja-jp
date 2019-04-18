@@ -10,21 +10,24 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091496"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471241"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項
 
 ここでは、SQL Server から Azure SQL Database へのオンライン移行に関する既知の問題点と制限事項について説明します。
 
+> [!IMPORTANT]
+> SQL Server から Azure SQL Database へのオンライン移行では、SQL_variant データ型の移行はサポートされていません。
+
 ### <a name="migration-of-temporal-tables-not-supported"></a>テンポラル テーブルの移行はサポートされていません
 
-**症状:**
+**症状**
 
 ソース データベースが 1 つ以上のテンポラル テーブルで構成されている場合、"全体のデータの読み込み" 操作中にデータベースの移行が失敗し、次のメッセージが表示されることがあります。
 
@@ -48,7 +51,7 @@ ms.locfileid: "58091496"
  
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>テーブルの移行には、hierarchyid データ型を持つ 1 つまたは複数の列が含まれます
 
-**症状:**
+**症状**
 
 "全体のデータの読み込み" 操作中に、"ntext が hierarchyid と非互換である" ことを示す SQL 例外が表示されることがあります。
      
@@ -62,24 +65,27 @@ ms.locfileid: "58091496"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
-   1. 移行するテーブルを指定する **[Configure migration settings]\(移行設定の構成\)** ブレードからこれらのテーブルを除外します。
+2. 移行するテーブルを指定する **[Configure migration settings]\(移行設定の構成\)** ブレードからこれらのテーブルを除外します。
 
-   1. 移行アクティビティを再実行します。
+3. 移行アクティビティを再実行します。
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>"全体のデータの読み込み" または "増分データ同期" 中のスキーマ内のアクティブ トリガーに関する各種の整合性違反による移行エラー
 
 **対処法**
+
 1. 次のクエリを使用して、ソース データベースで現在アクティブなトリガーを検索します。
+
      ```
      select * from sys.triggers where is_disabled =0
      ```
+
 2. 「[DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」に記載されている手順を使用して、ソース データベースのトリガーを無効にします。
 
 3. 移行アクティビティを再実行します。
 
 ### <a name="support-for-lob-data-types"></a>LOB データ型のサポート
 
-**症状:**
+**症状**
 
 ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。 
 
@@ -93,7 +99,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 ### <a name="issues-with-timestamp-columns"></a>タイムスタンプ列に関する問題
 
-**症状:**
+**症状**
 
 DMS は、ソースのタイムスタンプ値を移行しません。代わりに、DMS は、ターゲットのテーブルに新しいタイムスタンプ値を生成します。
 
@@ -101,9 +107,9 @@ DMS は、ソースのタイムスタンプ値を移行しません。代わり�
 
 DMS でソース テーブルに格納されている正確なタイムスタンプ値を移行する必要がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
-### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません。
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません。
 
-**症状:**
+**症状**
 
 データベースの詳細状態ビューに移行エラーが表示された場合、上部のリボンの **[Data migration errors]\(データ移行エラー\)** リンクを選択しても移行エラーに関する詳細が表示されないことがあります。
 

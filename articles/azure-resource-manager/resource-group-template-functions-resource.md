@@ -4,22 +4,20 @@ description: Azure Resource Manager テンプレートで、リソースに関�
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 87ce2019f85a2c1be742d3abf6c2fc61c5dcec10
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866931"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470714"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -34,8 +32,6 @@ ms.locfileid: "56866931"
 
 パラメーター、変数、現在のデプロイから値を取得する方法については、「 [デプロイの値関数](resource-group-template-functions-deployment.md)」を参照してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 <a id="listkeys" />
 <a id="list" />
 
@@ -47,11 +43,11 @@ ms.locfileid: "56866931"
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |文字列 |リソースの一意識別子です。 |
-| apiVersion |はい |文字列 |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
-| functionValues |いいえ  |オブジェクト | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 | 
+| resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
+| apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
+| functionValues |いいえ  |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 | 
 
 ### <a name="implementations"></a>実装
 
@@ -173,11 +169,13 @@ list* の使用例を次の表にまとめています。
 }
 ```
 
-他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。 
+他のリスト関数の戻り値の形式はさまざまです。 関数の形式を確認するには、テンプレートの例に示すように、outputs セクションにその関数を含めてください。
 
 ### <a name="remarks"></a>解説
 
 リソース名または [resourceId 関数](#resourceid)を使用して、リソースを指定します。 参照されているリソースをデプロイするのと同じテンプレートでリスト関数を使うときは、リソース名を使ってください。
+
+**list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースが存在する場合にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と list を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
 
 ### <a name="example"></a>例
 
@@ -246,33 +244,20 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
         }
     }
 }
-``` 
-
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storagename=<your-storage-account>
 ```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storagename <your-storage-account>
-```
-
-<a id="providers" />
 
 ## <a name="providers"></a>providers
+
 `providers(providerNamespace, [resourceType])`
 
 リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。 リソースの種類を指定しない場合、関数はリソース プロバイダーでサポートされているすべての種類を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |はい |文字列 |プロバイダーの名前空間 |
-| resourceType |いいえ  |文字列 |指定した名前空間内にあるリソースの種類。 |
+| providerNamespace |はい |string |プロバイダーの名前空間 |
+| resourceType |いいえ  |string |指定した名前空間内にあるリソースの種類。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -336,32 +321,19 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json --parameters providerNamespace=Microsoft.Web resourceType=sites
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json -providerNamespace Microsoft.Web -resourceType sites
-```
-
-<a id="reference" />
-
 ## <a name="reference"></a>reference
+
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 リソースのランタイム状態を表すオブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |はい |文字列 |名前またはリソースの一意の識別子。 |
-| apiVersion |いいえ  |文字列 |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
-| 'Full' |いいえ  |文字列 |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
+| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
+| apiVersion |いいえ  |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+| 'Full' |いいえ  |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -374,6 +346,8 @@ reference 関数は、以前にデプロイされたリソースまたは現在�
 reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。
 
 参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
+
+**reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースが存在する場合にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と reference を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
 
 ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
 
@@ -514,18 +488,6 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json --parameters storageAccountName=<your-storage-account>
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
-```
-
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json)では、このテンプレートでデプロイされていないストレージ アカウントが参照されます。 このストレージ アカウントは、既に同じサブスクリプション内に存在します。
 
 ```json
@@ -550,21 +512,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageResourceGroup=<rg-for-storage> storageAccountName=<your-storage-account>
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageResourceGroup <rg-for-storage> -storageAccountName <your-storage-account>
-```
-
-<a id="resourcegroup" />
-
 ## <a name="resourcegroup"></a>resourceGroup
+
 `resourceGroup()`
 
 現在のリソース グループを表すオブジェクトを返します。 
@@ -635,34 +584,21 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
-```
-
-<a id="resourceid" />
-
 ## <a name="resourceid"></a>resourceId
+
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
 リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ  |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceGroupName |いいえ  |文字列 |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceType |はい |文字列 |リソース プロバイダーの名前空間を含むリソースの種類。 |
-| resourceName1 |はい |文字列 |リソースの名前。 |
-| resourceName2 |いいえ  |文字列 |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| resourceGroupName |いいえ  |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |string |リソースの名前。 |
+| resourceName2 |いいえ  |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -782,28 +718,15 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
-```
-
-<a id="subscription" />
-
 ## <a name="subscription"></a>サブスクリプション
+
 `subscription()`
 
 現在のデプロイのサブスクリプションの詳細を返します。 
@@ -839,19 +762,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
-```
-
 ## <a name="next-steps"></a>次の手順
+
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

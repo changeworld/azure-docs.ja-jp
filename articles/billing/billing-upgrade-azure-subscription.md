@@ -17,16 +17,16 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6cb875aa686d9e2d0ba7bf51563d3b51b1572a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6af7106e991f0306ae2fef69129888219a9c0e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094230"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469524"
 ---
 # <a name="upgrade-your-free-trial-or-azure-for-students-starter-subscription-to-pay-as-you-go"></a>無料試用版または Azure for Students Starter サブスクリプションを従量課金制にアップグレードする
 
-[無料試用版](https://azure.microsoft.com/free/)をお持ちの場合は、Azure portal で[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードできます。 [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) サブスクリプションをお持ちの場合は、Azure アカウント センターで[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードできます。
+[無料試用版](https://azure.microsoft.com/free/)または [Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/) サブスクリプションをお持ちの場合は、Azure portal で[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードできます。 Azure for Students Starter サブスクリプションを所有していて、無料試用の対象となっている場合は、無料試用版にアップグレードできます。
 
 <a id="freetrial"></a>
 
@@ -35,9 +35,9 @@ ms.locfileid: "58094230"
 無料試用版サブスクリプションからアップグレードした場合、残りのクレジットは、サブスクリプションの作成後、丸 30 日間保持されます。 また、12 か月間の無料サービスにアクセスすることもできます。
 
 1. [Azure ポータル](https://portal.azure.com)
-1. **[コストの管理と請求]** で検索します。
+1. "**サブスクリプション**" を検索します。
 
-    ![検索を示すスクリーンショット](./media/billing-upgrade-azure-subscription/search.png)
+    ![検索を示すスクリーンショット](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. 無料試用版サブスクリプションを選択します。
 1. サブスクリプションの概要ブレードで、コマンド バーの **[サブスクリプションのアップグレード]** をクリックします。
@@ -63,15 +63,24 @@ ms.locfileid: "58094230"
 
 ## <a name="upgrade-your-azure-for-students-starter-subscription-to-pay-as-you-go"></a>Azure for Students Starter サブスクリプションから従量課金制へのアップグレード
 
-1. [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
+無料試用の対象となっている場合は、次の手順に従うと、無料試用版にアップグレードするオプションが提供されます。
+
+1. [Azure ポータル](https://portal.azure.com)
+1. "**サブスクリプション**" を検索します。
+
+    ![検索を示すスクリーンショット](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
+
 1. Azure for Students Starter サブスクリプションを選択します。
-1. **[サブスクリプションの状態]** の下で **[今すぐアップグレード]** をクリックします。
+1. サブスクリプションの概要ブレードで、コマンド バーの **[サブスクリプションのアップグレード]** をクリックします。
 
-    ![学生向けアップグレードを示すスクリーンショット](./media/billing-upgrade-azure-subscription/student-upgrade-button.png)
+    ![学生向けアップグレード ボタンを示すスクリーンショット](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
 
+1. 従量課金制にアップグレードするときにサブスクリプションの支払い方法をまだ設定していない場合は、追加するように求められます。
+1. 本人確認のために電話番号の入力が必要となる場合があります。
 1. サブスクリプションの名前を入力します。
+1. 従量課金制にアップグレードする場合は、サブスクリプションのサポート プランを選択します。 サポート プランの詳細については、[Azure のサポート プラン](https://azure.microsoft.com/us/support/plans/)に関するページを参照してください。
 
-1. **[今すぐアップグレード]** をクリックします。
+1. **[アップグレード]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

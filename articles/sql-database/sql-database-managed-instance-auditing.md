@@ -13,20 +13,20 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086056"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357427"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database マネージド インスタンスの監査の概要
 
 [マネージド インスタンス](sql-database-managed-instance.md)の監査では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
 
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
-- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
+- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムについて詳しくは、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Azure ストレージに対するサーバー監査の設定
 
@@ -60,7 +60,7 @@ ms.locfileid: "58086056"
 
         ![BLOB コンテナーのプロパティ ボタン](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. コピー アイコンをクリックしてコンテナーの URL をコピーし、後で使えるように (メモ帳などに) URL を保存します。 コンテナー URL は、`https://<StorageName>.blob.core.windows.net/<ContainerName>` という形式になっている必要があります。
+     1. コピー アイコンをクリックしてコンテナーの URL をコピーし、後で使えるように (メモ帳などに) URL を保存します。 コンテナー URL は、次の形式になっている必要があります `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![BLOB コンテナーの URL をコピーする](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "58086056"
 
         - 次に示すように SAS を構成します。
 
-          - **使用できるサービス**:BLOB
+          - **使用できるサービス**:Blob
 
           - **開始日**: タイム ゾーンに関連する問題を回避するため、前日の日付を使うことをお勧めします
 
@@ -242,7 +242,7 @@ Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違
 ## <a name="next-steps"></a>次の手順
 
 - 監査ログの使い方の完全な一覧については、「[SQL Database 監査の使用](sql-database-auditing.md)」をご覧ください。
-- 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
+- 標準コンプライアンスをサポートする Azure プログラムについて詳しくは、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 <!--Image references-->
 

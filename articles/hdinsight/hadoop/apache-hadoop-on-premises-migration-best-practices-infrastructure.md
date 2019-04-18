@@ -3,24 +3,22 @@ title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight �
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのインフラストラクチャのベスト プラクティスについて説明します。
 services: hdinsight
 author: hrasheed-msft
-ms.reviewer: ashishth
+ms.reviewer: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6c57b62d63be55abc51b85327957afffa5dd3a42
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360199"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274691"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
 この記事では、Azure HDInsight クラスターのインフラストラクチャを管理するための推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="plan-for-hdinsight-cluster-capacity"></a>HDInsight クラスターの容量計画
 
@@ -43,7 +41,7 @@ HDInsight の各バージョンは、あるバージョンの Hortonworks Data P
 
 また、Apache Ambari UI または Ambari REST API を使用して、HDInsight での Hadoop コンポーネントとバージョンを確認することもできます。
 
-オンプレミス クラスター上で使用していたが、HDInsight クラスターの一部ではないアプリケーションまたはコンポーネントは、エッジ ノードまたは HDInsight クラスターと同じ VNet 内の VM に追加できます。 Azure HDInsight では利用できないサード パーティ製 Hadoop アプリケーションは、HDInsight クラスターの「アプリケーション」オプションを使用してインストールできます。 カスタム Hadoop アプリケーションは、「スクリプト アクション」を使用して HDInsight クラスターにインストールできます。 次の表に、いくつかの一般的なアプリケーションと、それらの HDInsight との統合オプションを示します。
+オンプレミス クラスター上で使用していたが、HDInsight クラスターの一部ではないアプリケーションまたはコンポーネントは、エッジ ノード上または HDInsight クラスターと同じ VNet 内の VM 上に追加できます。 Azure HDInsight では利用できないサード パーティ製 Hadoop アプリケーションは、HDInsight クラスターの「アプリケーション」オプションを使用してインストールできます。 カスタム Hadoop アプリケーションは、「スクリプト アクション」を使用して HDInsight クラスターにインストールできます。 次の表に、いくつかの一般的なアプリケーションと、それらの HDInsight との統合オプションを示します。
 
 |**アプリケーション**|**統合**
 |---|---|
@@ -105,7 +103,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>ブートストラップを使って HDInsight 構成をカスタマイズする
 
-`core-site.xml`、`hive-site.xml`、`oozie-env.xml` などの構成ファイルの構成の変更は、ブートス トラップを使って実行できます。 次のスクリプトは Powershell を使用した例です。
+`core-site.xml`、`hive-site.xml`、`oozie-env.xml` などの構成ファイルの構成の変更は、ブートス トラップを使って実行できます。 次のスクリプトは、Powershell の [AZ モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) コマンドレットである [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) を使用している例です。
 
 ```powershell
 # hive-site.xml configuration
@@ -130,7 +128,7 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](../hdinsight-hadoop-customize-cluster-bootstrap.md)」の記事を参照してください。
+詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](../hdinsight-hadoop-customize-cluster-bootstrap.md)」の記事を参照してください。  「[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)」もご覧ください。
 
 ## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>HDInsight Hadoop クラスターのエッジ ノードからクライアント ツールにアクセスする
 
@@ -148,37 +146,10 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>クラスターのスケールアップおよびスケールダウン機能を使用する
 
-HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 この機能により、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。
+HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 この機能により、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。 詳細については、次を参照してください。
 
-クラスターのスケーリングは次の方法を使用して自動化できます。
-
-### <a name="powershell-cmdlet"></a>PowerShell コマンドレット
-
-```powershell
-Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```powershell
-azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-```
-
-### <a name="azure-portal"></a>Azure ポータル
-
-実行中の HDInsight クラスターにノードを追加する場合、保留中または実行中のジョブに影響はありません。 スケーリング処理の実行中に新しいジョブを安全に送信できます。 スケーリング操作が何らかの理由で失敗した場合、その失敗は適切に処理され、クラスターの機能状態は維持されます。
-
-ただし、ノードを削除してクラスターをスケールダウンしている場合、保留中または実行中のジョブは、スケーリング操作の完了時に失敗します。 この失敗の原因は、処理中にいくつかのサービスが再起動されることにあります。 この問題に対処するには、ジョブが完了するまで待ってからクラスターをスケールダウンするか、ジョブを手動で終了させるか、スケーリング操作の完了後にジョブを再送信します。
-
-ワーカー ノードが最低限の 1 つになるようにクラスターを縮小した場合、パッチの適用のためにワーカー ノードが再起動されたときまたはスケーリング操作の直後に、HDFS がセーフ モードのままになることがあります。 次のコマンドを実行して、HDFS のセーフ モードを終了することができます。
-
-```bash
-hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
-```
-
-セーフ モードを終了すると、手動で一時ファイルを削除するか、Hive が最終的にそれらを自動クリーンアップするまで待つことができます。
-
-詳細については、「[HDInsight クラスターのスケーリング](../hdinsight-scaling-best-practices.md)」の記事を参照してください。
+* [HDInsight クラスターのスケーリング](../hdinsight-scaling-best-practices.md)。
+* [クラスターのスケーリング](../hdinsight-administer-use-portal-linux.md#scale-clusters)。
 
 ## <a name="use-hdinsight-with-azure-virtual-network"></a>Azure Virtual Network で HDInsight を使用する
 
@@ -202,11 +173,11 @@ HDInsight は、新規または既存の Azure Virtual Network に追加でき�
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure Virtual Network サービス エンドポイントを使用して Azure サービスに安全に接続する
 
-HDInsight は、Azure Blob Storage、Azure Data Lake Storage Gen2、Cosmos DB、および SQL データベースに安全に接続できる[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) をサポートします。 Azure HDInsight のサービス エンドポイントを有効にすると、トラフィックは Azure データ センター内からセキュリティで保護されたルートを経由します。 ネットワーク レイヤーでセキュリティをこのレベルに高めることにより、ビッグ データのストレージ アカウントを指定された仮想ネットワーク (Vnet) にロックし、HDInsight クラスターをシームレスに使用してデータにアクセスして処理することができます。
+HDInsight では、Azure Blob Storage、Azure Data Lake Storage Gen2、Cosmos DB、および SQL データベースに安全に接続できる[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)をサポートします。 Azure HDInsight のサービス エンドポイントを有効にすると、トラフィックは Azure データ センター内からセキュリティで保護されたルートを経由します。 ネットワーク レイヤーでセキュリティをこのレベルに高めることにより、ビッグ データのストレージ アカウントを指定された仮想ネットワーク (Vnet) にロックし、HDInsight クラスターをシームレスに使用してデータにアクセスして処理することができます。
 
 詳細については、次の記事を参照してください。
 
-- [仮想ネットワーク サービスのエンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)
+- [Virtual Network サービスのエンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [サービス エンドポイントによる HDInsight のセキュリティの強化](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続

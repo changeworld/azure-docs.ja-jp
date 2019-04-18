@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244368"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469797"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
@@ -143,7 +143,25 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 10. 最後に、アラートの詳細 (アラート ルール名、説明、重大度) を追加します。 完了したら、下部にある **[アラート ルールの作成]** をクリックします。
 
-    ![[アラート詳細] で、アラート ルール名を入力し、説明を記述して重大度を選ぶ ](./media/alerts/9alertdetails.png)
+    ![[アラート詳細] で、アラート ルール名を入力し、説明を記述して重大度を選ぶ](./media/alerts/9alertdetails.png)
+
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>クラシック アラートのメール通知の登録を解除する方法
+
+このセクションは、**従来の可用性アラート**、**Application Insights のメトリック アラート**、**従来の障害異常アラート**に適用されます。
+
+次のいずれかに該当する場合は、これらのクラシック アラートのメール通知を受信しています。
+
+* 自分のメール アドレスが、アラート ルール設定の [通知メール受信者] フィールドの一覧に表示されている。
+
+* サブスクリプションの特定の役割を持つユーザーに通知メールを送信するオプションが有効になっていて、その特定の Azure サブスクリプションの該当する役割を持っている。
+
+![アラート通知のスクリーンショット](./media/alerts/alert-notification.png)
+
+セキュリティとプライバシーをより細かく制御するには、**[通知メールの受信者]** フィールドでクラシック アラートの通知メールの受信者を明示的に指定することが一般的に推奨されます。 特定の役割を持つすべてのユーザーに通知するオプションは、旧バージョンとの互換性のために提供されています。
+
+特定のアラート ルールによって生成される通知メールの登録を解除するには、自分のメール アドレスを **[通知メールの受信者]** フィールドから削除します。
+
+一覧に自分のメール アドレスが明示的に表示されていない場合は、特定の役割を持つすべてのメンバーに自動的に通知するオプションを無効にし、代わりに [通知メールの受信者] フィールドの一覧で、そのアラート ルールの通知を受信する必要があるすべてのユーザーのメール アドレスを指定することをお勧めします。
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
 
@@ -160,7 +178,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ## <a name="automation"></a>Automation
 * [PowerShell を使用したアラートの設定の自動化](../../azure-monitor/app/powershell-alerts.md)
-* [webhook を使用したアラートへの対応の自動化](../../azure-monitor/platform/alerts-webhooks.md)
+* [Webhook を使用したアラートへの対応の自動化](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>関連項目
 * [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)

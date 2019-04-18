@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877702"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358046"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
@@ -23,6 +23,7 @@ Speech Services の機能を調べ始めたばかりですか。 アプリケー
 
 > [!div class="checklist"]
 > * *Azure Cognitive Services* の新たな開発情報を随時確認し、*Speech Service* に関連する最新ニュースを検索します。
+> * リリース ノートには、すべてのリリースの情報が含まれています。
 > * 問題がコミュニティで話題に上がっていないかどうかや、実装しようとしている機能が既存のドキュメントで既に説明されていないかどうかを、検索して確認します。
 > * 十分な答えが見つからない場合は、*Stack Overflow* で質問を投稿します。
 > * GitHub のサンプルに関する問題の場合は、*GitHub* で問題を提起します。
@@ -31,6 +32,10 @@ Speech Services の機能を調べ始めたばかりですか。 アプリケー
 ## <a name="stay-informed"></a>最新情報を入手
 
 Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech Services 関連の最新情報については、[Speech Services ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
+
+## <a name="release-notes"></a>リリース ノート
+
+[リリース ノート](https://aka.ms/csspeech/whatsnew)は、新しいリリースが使用可能になるとすぐに更新されます。 ノートには、新機能、改善、バグ修正に関する情報が含まれます。
 
 ## <a name="search"></a>Search
 
@@ -50,7 +55,7 @@ Cognitive Services に関するニュースは、[Cognitive Services ブログ](
 
 Azure ユーザーは、Azure portal でサポート要求を作成し、管理できます。
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [米国政府機関向け Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する

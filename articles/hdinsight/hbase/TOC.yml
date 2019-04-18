@@ -299,12 +299,15 @@ items:
 - name: リソース
   items:
   - name: リリース ノート
-    href: ../hdinsight-release-notes.md
     items:
+    - name: 最新のリリース ノート
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
     - name: アーカイブされたリリース ノート
       href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-    maintainContext: true
+  - name: クラスター構成へのアクセスの変更
+    href: ../hdinsight-migrate-granular-access-cluster-configurations.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: フォーラムで質問する
@@ -318,9 +321,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 286fd982c110e71b8e9bb454a6ad6a3068f8a4bf
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 09d43f60cc42d8c6ed5a1a234bd618c0583cdf8d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578970"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615967"

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 5ac8e35614d6f0514f60932bc34aa8cab2c0ad11
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2eabe0c234df6165b78e2dc55dcdc73067aabaa6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542150"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273228"
 ---
 # <a name="marketplace-faqs"></a>Marketplace に関する FAQ
 
@@ -74,7 +74,7 @@ Azure Marketplace のオファーは、次の場所から購入できます。
 
 **Azure Marketplace での購入物を、どの Microsoft Azure リージョンにデプロイするかを選択できますか?**
 
-発行元は、自分が有効にする任意の Azure データ センター リージョンにデプロイできます。 パフォーマンスを最適化し、予算を制御するために、使用しているサービスに最も近いデータ センターの場所を選択することをお勧めします。
+お客様は、自分が有効にする任意の Azure データ センター リージョンにデプロイできます。 パフォーマンスを最適化し、予算を制御するために、使用しているサービスに最も近いデータ センターの場所を選択することをお勧めします。
 
 **Azure Marketplace での購入物を誤って削除した場合、その操作を "元に戻す" ことはできますか?**
 
@@ -90,7 +90,7 @@ Azure Marketplace のオファリングに対する依存関係は自動的に�
 
 **Azure Marketplace のソリューションを Azure Cloud Solution Provider から購入できますか?**
 
-現在、Azure CSP およびオープンのお客様は、無料とライセンス持ち込み (BYOL) の Marketplace サービスのみをご利用いただけます。
+発行元が CSP チャネルを介して入手できるようにオファリングを構成している場合は、リセラーを介して入手できるようになります。
 
 **Azure Marketplace 経由で販売またはプロビジョニングされるアプリケーションやサービスを購入するために、どの国がサポートされていますか?**
 
@@ -102,11 +102,11 @@ Azure Marketplace は、[参加ポリシー](https://docs.microsoft.com/legal/ma
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Azure Marketplace からのソリューションのデプロイ
 
-**Azure Marketplace の仮想マシン (VM) を既にサブスクリプションにデプロイしており、次にそのサブスクリプションをある Azure アカウントから別のアカウントに移行したいと考えています。これは現在サポートされていますか?**
+**Azure Marketplace の仮想マシン (VM) を既にサブスクリプションにデプロイしており、次にそのサブスクリプションをある Azure アカウントから別のアカウントに移行したいと考えています。 これは現在サポートされていますか?**
 
 Azure サブスクリプション (Azure Marketplace の VM やサービスを含む) を移行するには、新しい Azure アカウントに関連付ける前に、以前の Azure サブスクリプションをすべて削除するか、またはキャンセルします。 移行が完了すると、最終的な使用料金は、新しい登録されたアカウントの支払い方法を使用して課金されます。
 
-**Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行したいと考えています。これは現在サポートされていますか?**
+**Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行したいと考えています。 これは現在サポートされていますか?**
 
 Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行するには、移行の前に以前のサブスクリプションをすべて停止するか、またはキャンセルします。 Azure アカウントおよび関連付けられているサブスクリプションの移行が完了すると、Azure Marketplace の VM またはサービスを再購入できます。  最終的な使用料金は、ご利用の Enterprise Agreement に基づいて四半期ごとに課金されます。
 
@@ -181,7 +181,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 いいえ。 Azure Marketplace でソリューションを所有する発行元が価格を設定できます。  Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
 
-**サブスクリプションに対する支払いはどのようにすればよいですか?Azure Marketplace での購入物は、Azure の請求書に記載されますか、それとも別の請求書となりますか?**
+**サブスクリプションに対する支払いはどのようにすればよいですか? Azure Marketplace での購入物は、Azure の請求書に記載されますか、それとも別の請求書となりますか?**
 
 MOSP - [マイクロソフト オンライン サブスクリプション プログラム](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web ダイレクト) のお客様は、自分の Azure サブスクリプション プロファイルのファイル上にある同じクレジット カードに対して請求されます。 ファイル上にクレジット カードがない場合は、Azure Marketplace から購入できません。 この場合は、代わりに Azure の料金が自分に請求されるようにする特別な免除を受けています。
 
@@ -339,7 +339,7 @@ Azure Marketplace 経由で一覧、試用版、または BYOL (ライセンス�
 
 Azure Marketplace 経由でソリューションのライセンスが購入されると、ソフトウェア ライセンスの収益は発行元と Microsoft の間で分割されます。  これは、[Marketplace 発行者契約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)にある使用条件に従って実行されます。 さらに、BYOL (ライセンス持ち込み) 発行元のソリューションに取引手数料は発生しません。
 
-**標準的な契約とはどのようなものですか?**
+**標準契約とはどのようなものですか?**
 
 Microsoft が提示する標準的な契約条件を発行元は活用することができ、結果、顧客が行う調達プロセスおよび法的調査のプロセスは簡略化されます。
 
@@ -472,10 +472,6 @@ Azure Marketplace は、IT プロフェッショナルや開発者が Azure 向�
 
 Azure Marketplace のオファーは、[Web ベースのネットショップ](https://azuremarketplace.microsoft.com/marketplace/)、[Microsoft Azure の管理ポータル](https://portal.azure.com/)、または [Azure Marketplace のコマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) で見つけることができます。 Azure Marketplace にログインすると、Microsoft やパートナーのソリューションを見つけて購入することができます。 注:プリペイド クレジットやその他の形式の年額コミットメントは、ソフトウェア ライセンス料には使用されません。  代わりに、関連する Azure 使用料金に対応しています。 例外は、[Azure 年額コミットメント](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)に関するページに一覧表示されています。
 
-**Azure Marketplace での購入物が、どの Microsoft Azure リージョンにデプロイされるかを選択できますか?**
-
-お客様は、発行元が有効にする任意の Azure データ センター リージョンにデプロイできます。 パフォーマンスを最適化し、予算を管理するために、使用しているサービスに最も近いデータ センターの場所を選択できます。
-
 **Azure Marketplace での購入物を誤って削除した場合、その操作を "元に戻す" ことはできますか?**
 
 いいえ、削除は元に戻せません。 サブスクリプションを誤って削除した場合は、そのサブスクリプションを再購入することによって容易に再開できます。  ただし、未使用の機能や前払いサービスはすべて失われるため、サブスクリプションを削除する場合は注意してください。
@@ -487,10 +483,6 @@ Azure Marketplace のオファーは、[Web ベースのネットショップ](h
 **Azure Marketplace での購入物に Azure Web サイトなどの他の資産への何らかの依存関係がある場合、それらを自分で管理する必要がありますか?**
 
 Azure Marketplace のオファリングに対する依存関係は自動的には管理されません。 Azure Marketplace での購入物を使用する前に、その説明を慎重に確認してください。  ソリューションをデプロイする前に、何らかの依存関係があるかどうかを判定する必要があります。
-
-**Azure Marketplace のソリューションを Azure Cloud Solution Provider (CSP) から購入できますか?**
-
-現在、Azure CSP およびオープンのお客様は、無料とライセンス持ち込み (BYOL) の Marketplace サービスのみをご利用いただけます。
 
 **Azure Marketplace 経由で販売またはプロビジョニングされるアプリケーションやサービスを購入できるのはだれですか?**
 
@@ -515,7 +507,7 @@ Azure Marketplace は、次の国の Microsoft Azure のお客様が利用でき
 
 <!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
 
-**パブリッシャーは既存のプランの利用可能な地域をどのように変更できますか?**
+**パブリッシャーは既存のオファーの利用可能な地域をどのように変更できますか?**
 
 パブリッシャーは、既存のプランを編集し、新規の国を選択し、スプレッドシートのダウンロード/アップロード関数を使用して価格を設定することができます。
 
@@ -529,11 +521,11 @@ Azure Marketplace でには、顧客の請求先住所で定義されている 1
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Azure Marketplace からのソリューションのデプロイ
 
-**Azure Marketplace の仮想マシン (VM) を既にサブスクリプションにデプロイしており、次にそのサブスクリプションをある Azure アカウントから別のアカウントに移行したいと考えています。これは現在サポートされていますか?**
+**Azure Marketplace の仮想マシン (VM) を既にサブスクリプションにデプロイしており、次にそのサブスクリプションをある Azure アカウントから別のアカウントに移行したいと考えています。 これは現在サポートされていますか?**
 
 Azure サブスクリプション、Marketplace VM、およびサービスを移行するには、Azure サブスクリプションを新しい Azure アカウントに関連付ける前に、それらを削除またはキャンセルする必要があります。 Azure サブスクリプションの移行が完了すると、Azure Marketplace サービスを再購入できます。 最終的な使用料金は、現在のアカウントの登録された支払い方法を使用して課金されます。 
 
-**Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行したいと考えています。これは現在サポートされていますか?**
+**Azure Marketplace の仮想マシン (VM) サブスクリプションを Enterprise Agreement に移行したいと考えています。 これは現在サポートされていますか?**
 
 BYOL の VM を EA サブスクリプションに移行する場合、それらを再構築する必要はありません。 MOSP - マイクロソフト オンライン サブスクリプション プログラム (Web ダイレクト) サブスクリプションは EA に直接変換できます。
 
@@ -588,7 +580,7 @@ EA インダイレクト カスタマーは、Azure Marketplace の価格に関�
 
 いいえ。 Azure Marketplace でソリューションを所有する ISV が価格を設定できます。 Azure Marketplace での購入物に対して標準のマイクロソフト ボリューム ライセンス割引は適用されません。
 
-**サブスクリプションに対する支払いはどのようにすればよいですか?Azure Marketplace での購入物は、Azure の請求書に記載されますか、それとも別の請求書となりますか?**
+**サブスクリプションに対する支払いはどのようにすればよいですか? Azure Marketplace での購入物は、Azure の請求書に記載されますか、それとも別の請求書となりますか?**
 
 Azure Marketplace での購入物は、Azure サブスクリプションと同じ支払い方法を継承します。 これらは、年額コミットメントの消費が有効になっていない限り、Azure 使用料金とは別に課金されます。
 

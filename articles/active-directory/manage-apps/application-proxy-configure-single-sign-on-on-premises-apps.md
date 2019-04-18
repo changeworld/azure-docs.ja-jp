@@ -16,18 +16,18 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 415b33dce42945c40aedd996d4dcfa5c6b987b44
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 2e103604af7aba2a0ef2e3d0e02a721ae4740c40
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336220"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469694"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
 SAML 認証でセキュリティ保護されているオンプレミスのアプリケーションに対してシングル サインオン (SSO) を提供し、アプリケーション プロキシを通じてこれらのアプリケーションへのリモート アクセスを提供できます。 SAML によるシングル サインオンでは、ユーザーの Azure Active Directory (Azure AD) アカウントを使用して、Azure AD がアプリケーションに対する認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 また、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。 SAML SSO に加えてアプリケーション プロキシを有効にすると、ユーザーには、アプリケーションへの外部アクセスと、シームレスな SSO エクスペリエンスが提供されます。
 
-アプリケーションでは、**Azure Active Directory** によって発行された SAML トークンを使用できる必要があります。 この構成は、オンプレミスの ID プロバイダーを使用するアプリケーションには適用されません。 このようなシナリオの場合は、「[アプリケーションを Azure Active Directory に移行するためのリソース](migration-resources.md)」を見ることをお勧めします。
+アプリケーションでは、**Azure Active Directory** によって発行された SAML トークンを使用できる必要があります。 この構成は、オンプレミスの ID プロバイダーを使用するアプリケーションには適用されません。 このようなシナリオの場合は、[アプリケーションを Azure AD に移行するためのリソース](migration-resources.md)に関するページを参照することをお勧めします。
 
 アプリケーション プロキシを使用する SAML SSO は、SAML トークンの暗号化機能でも動作します。 詳しくは、「[Azure AD SAML トークン暗号化の構成](howto-saml-token-encryption.md)」をご覧ください。
 
@@ -35,13 +35,13 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 オンプレミスのアプリケーションに SSO を提供するには、その前に、アプリケーション プロキシを有効にして、コネクタをインストールする必要があります。 方法については、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)」をご覧ください。
 
-チュートリアルを実行するときは、次のことに留意してください。
+このチュートリアルを読み進める際は、次のことに留意してください。
 
 * チュートリアルの指示に従って、アプリケーションを発行します。 アプリケーションの**事前認証**の方法として、**Azure Active Directory** を選択します (「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad
 )」のステップ 4)。
 * アプリケーションの**外部 URL** をコピーします。
 * ベスト プラクティスとして、最適化されたユーザー エクスペリエンスのため、可能な限り、カスタム ドメインを使用します。 詳しくは、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」をご覧ください。
-* アプリケーションに少なくとも 1 人のユーザーを追加し、テスト アカウントがオンプレミスのアプリケーションにアクセスできることを確認します。
+* アプリケーションに少なくとも 1 人のユーザーを追加し、テスト アカウントがオンプレミスのアプリケーションにアクセスできることを確認します。 アプリケーション プロキシが正しく設定されていることを確認するために、テスト アカウントを使用して**外部 URL** にアクセスして、アプリケーションにアクセスできるかどうかをテストします。 トラブルシューティング情報については、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」をご覧ください。
 
 ## <a name="set-up-saml-sso"></a>SAML SSO を設定する
 
@@ -50,7 +50,8 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 1. シングル サインオンの方法として、**[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、**[基本的な SAML 構成]** のデータを編集し、「[基本的な SAML 構成を入力する](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)」の手順に従って、アプリケーションに対して SAML に基づく認証を構成します。
 
-   * **[応答 URL]** のルートが、Azure AD でアプリケーション プロキシ経由のリモート アクセス用に追加したオンプレミスのアプリケーションに対する **[外部 URL]** と一致するか、またはその下のパスであることを確認します。
+   * **応答 URL** が、Application Proxy を介して発行したオンプレミス アプリケーションの**外部 URL** と一致するか、その下のパスであることを確認します。 SAML 構成のために別の**応答 URL** を必要とするアプリケーションの場合は、これをリストの **1 つ目**の URL として追加し、**外部 URL** を追加の URL として 1 つ目の後に維持します。
+   * アプリケーションで認証トークンを受け取るために使用する適切な**応答 URL** または Assertion Consumer Service URL も指定されていることを確認します。
 
      ![基本的な SAML 構成データを入力する](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
@@ -62,7 +63,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 以上の手順がすべて完了すれば、アプリは正常に動作します。 アプリをテストするには:
 
 1. ブラウザーを開き、アプリを発行したときに作成した外部 URL に移動します。 
-1. サインインには、アプリに割り当てたテスト アカウントを使用します。
+1. サインインには、アプリに割り当てたテスト アカウントを使用します。 アプリケーションを読み込み、アプリケーションにシングル サインオンできるようになります。
 
 ## <a name="next-steps"></a>次の手順
 

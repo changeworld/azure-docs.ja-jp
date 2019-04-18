@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca9c4c959d21f26369600129f3897b7624dd84f2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371176"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267703"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット
 
@@ -23,7 +23,7 @@ ms.locfileid: "58371176"
 
 ワークロードがアプリケーションのパーティションで処理できる上限に達すると、Azure Storage はエラー コード 503 (サーバーがビジー状態) またはエラー コード 500 (操作タイムアウト) の応答を返し始めます。 503 エラーが発生する場合は、再試行に対してエクスポネンシャル バックオフ ポリシーを使用するようアプリケーションを変更することを検討します。 指数関数的バックオフによって、そのパーティションへの負荷が減少し、そのパーティションへのトラフィック量の増加が緩和されます。
 
-## <a name="standard-performance-storage-account-scale-limits"></a>Standard パフォーマンス ストレージ アカウントのスケールの上限
+## <a name="storage-account-scale-limits"></a>ストレージ アカウントのスケールの上限
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
@@ -45,6 +45,36 @@ Azure Files と Azure File Sync のスケールおよびパフォーマンス �
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+### <a name="premium-files-scale-targets"></a>Premium ファイルのスケール ターゲット
+
+Premium ファイルについては、ストレージ アカウント、共有、ファイルという 3 つの制限カテゴリについて考慮する必要があります。
+
+例: 1 つの共有で 100,000 IOPS を達成できます。1 つのファイルで最大 5,000 IOPS までスケールアップできます。 そのため、たとえば、1 つの共有に 3 つのファイルを置くと、その共有から得られる最大 IOPS は 15,000 となります。
+
+#### <a name="premium-file-share-limits"></a>Premium ファイル共有の制限
+
+> [!IMPORTANT]
+> ストレージ アカウントの制限はすべての共有に適用されます。 ストレージ アカウントの最大までスケールアップすることは、ストレージ アカウントごとの共有が 1 つだけの場合にのみ達成できます。
+
+|領域  |ターゲット  |
+|---------|---------|
+|最小サイズ                        |100 GiB      |
+|最大サイズ                        |100 TiB      |
+|最小サイズ増減    |1 GiB      |
+|ベースライン IOPS    |GiB あたり 1 IOPS (最大 100,000)|
+|IOPS バースト    |GiB あたり 3x IOPS (最大 100,000)|
+|最小帯域幅                     |100        |
+|帯域幅 |GiB あたり 0.1 MB/秒 (最大 5 GiB/秒)     |
+|スナップショットの最大数        |200       |
+
+#### <a name="premium-file-limits"></a>Premium ファイルの制限
+
+|領域  |ターゲット  |
+|---------|---------|
+|Size                  |1 TiB         |
+|ファイルあたりの最大 IOPS     |5,000         |
+|コンカレント処理数    |2,000         |
+
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync のスケール ターゲット
 
 Azure File Sync は使用量無制限を目標に設計されていますが、使用量無制限が常に可能なわけではありません。 次の表では、Microsoft のテストの境界と、どのターゲットがハード制限かを示します。
@@ -61,7 +91,7 @@ Azure File Sync は使用量無制限を目標に設計されていますが、�
 
 ## <a name="see-also"></a>関連項目
 
-- [Storage の料金詳細](https://azure.microsoft.com/pricing/details/storage/)
+- [Storage の価格の詳細](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)
-- [Azure Storage のレプリケーション](../storage-redundancy.md)
+- [Azure Storage レプリケーション](../storage-redundancy.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage-performance-checklist.md)

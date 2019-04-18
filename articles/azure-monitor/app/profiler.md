@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: f3ec10a970406cbb1bb6a1a52ffa8508e37fc516
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414169"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469983"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
-プロファイラーは、現在、Azure App Service で実行されている ASP.NET アプリおよび ASP.NET Core アプリに対して使用できます。 Profiler を使用するには、Basic 以上のサービス レベルが必要です。 現時点では、[この方法](profiler-aspnetcore-linux.md)でのみ Linux で Profiler を有効にできます。
+Profiler は、Basic 以上のサービス レベルを使用し、Azure App Service で実行されている ASP.NET および ASP.NET Coreアプリで実行できます。 現時点では、[この方法](profiler-aspnetcore-linux.md)でのみ Linux で Profiler を有効にできます。
 
 ## <a id="installation"></a> アプリの Profiler を有効にする
 アプリで Profiler を有効にするには、次の手順に従います。 別の種類の Azure サービスを実行している場合、以下のサポートされている他のプラットフォームで Profiler を有効にする手順を参照してください。
@@ -29,20 +29,35 @@ ms.locfileid: "56414169"
 * [Service Fabric アプリケーション](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler は App Services ランタイムの一部としてプレインストールされますが、App Service アプリのプロファイルを取得するには、有効にする必要があります。 ソース コードに App Insights SDK を含めている場合でも、アプリをデプロイした後にプロファイラーを有効にするには、次の手順に従います。
+Application Insights Profiler は、App Services ランタイムの一部として事前インストールされています。 次の手順は、これを App Service で有効にする方法を示しています。 App Insights SDK をアプリケーションのビルド時に含めている場合でも、これらの手順に従ってください。
 
+1. App Service の "Always On" 設定を有効にします。 この設定は、App Service の構成ページの [全般設定] で更新することができます。
 1. Azure Portal の **[App Services]** ウィンドウに移動します。
-2. **[設定] > [Application Insights]** ウィンドウに移動します。
+1. **[設定] > [Application Insights]** ウィンドウに移動します。
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 
-3. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションでは、Profiler を手動で有効にする手順を説明します。](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
-4. App Services のアプリ設定を使用して Profiler を有効にできるようになりました。
+1. App Services のアプリ設定を使用して Profiler を有効にできるようになりました。
 
     ![Profiler 用のアプリ設定][profiler-app-setting]
+
+## <a name="enable-profiler-manually-or-with-azure-resource-manager"></a>手動または Azure Resource Manager を使用して Profiler を有効にする
+Azure App Service のアプリ設定を作成することで、Application Insights Profiler を有効にすることができます。 これらのアプリ設定は、上記のオプションのページを使って作成します。 ただし、テンプレートやその他の手段を使えば、これらの設定の作成を自動化することができます。 これらの設定は、Application Insights リソースと Azure App Service のサブスクリプションが違っていても動作します。
+Profiler を有効にするために必要な設定は次のとおりです。
+
+|アプリ設定    | 値    |
+|---------------|----------|
+|APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights リソースの iKey    |
+|APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+|DiagnosticServices_EXTENSION_VERSION | ~3 |
+
+
+これらの値は、[Azure Resource Manager テンプレート](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) または [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest) を使用して設定できます。
+
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
@@ -52,8 +67,7 @@ Application Insights Profiler は App Services ランタイムの一部として
 
 パフォーマンスの問題をできるだけ早く検出するために、すべてのアプリで Profiler を有効にすることをお勧めします。
 
-Web アプリに対する変更を WebDeploy を使用してデプロイする場合は、デプロイ中の削除対象から App_Data フォルダーを除外してください。 そうしないと、次に Azure に Web アプリケーションをデプロイするときに Profiler 拡張機能のファイルが削除されます。
-
+WebDeploy を使用して Web アプリケーションへの変更をデプロイするときに、Profiler のファイルを削除できます。 App_Data フォルダーを除外しておけば、デプロイ中に削除されることを防ぐことができます。 
 
 
 ## <a name="next-steps"></a>次の手順

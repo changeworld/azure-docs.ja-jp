@@ -7,18 +7,24 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123183"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274539"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>App Service を使用した Application Gateway のトラブルシューティング - App Service の URL へのリダイレクト
+# <a name="troubleshoot-application-gateway-with-app-service"></a>Application Gateway と App Service のトラブルシューティング
 
- App Service の URL が公開されている Application Gateway でリダイレクトの問題を診断して解決する方法について説明します。
+Application Gateway とバックエンド サーバーとしての App Service で発生した問題を診断して解決する方法について説明します。
 
 ## <a name="overview"></a>概要
+
+この記事では、次の問題のトラブルシューティング方法について説明します。
+
+> [!div class="checklist"]
+> * リダイレクトが生じたときに App Service の URL がブラウザーに公開される
+> * App Service の ARRAffinity Cookie ドメインが元のホストではなく App Service のホスト名 (example.azurewebsites.net) に設定される
 
 Application Gateway のバックエンド プールで公開される App Service を構成し、アプリケーション コードでリダイレクトを構成した場合、Application Gateway にアクセスすると、ブラウザーから App Service の URL に直接リダイレクトされることがあります。
 
@@ -28,6 +34,8 @@ Application Gateway のバックエンド プールで公開される App Servic
 - Azure AD 認証が構成されており、これが原因でリダイレクトが実行されています。
 - Application Gateway の HTTP 設定で [バックエンド アドレスからホスト名を選択します] スイッチを有効にしています。
 - カスタム ドメインを App Service に登録していません。
+
+また、Application Gateway の内側で App Services を使用していて、かつカスタム ドメインを使用して Application Gateway にアクセスしている場合、App Service によって設定される ARRAffinity Cookie のドメイン値に "example.azurewebsites.net" というドメイン名が反映されることがわかります。 元のホスト名を Cookie ドメインとしても使用したい場合は、この記事の解決策に従ってください。
 
 ## <a name="sample-configuration"></a>サンプル構成
 
@@ -94,6 +102,16 @@ X-Powered-By: ASP.NET
 - カスタム プローブを元どおりバックエンドの HTTP 設定に関連付け、バックエンドの正常性に問題がないことを確認します。
 
 - これが完了すると、Application Gateway は同じホスト名 "www.contoso.com" を App Service に転送し、同じホスト名でリダイレクトが実行されます。 以下の要求と応答のヘッダー例を参照してください。
+
+既存の構成に対し、PowerShell を使用して前述の手順を実装するには、下のサンプル PowerShell スクリプトに従ってください。 Probe と HTTP Settings の構成に -PickHostname スイッチを使用していないことに注目してください。
+
+```azurepowershell-interactive
+$gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway $gw -Name AppServiceProbe -Protocol Http -HostName "example.azurewebsites.net" -Path "/" -Interval 30 -Timeout 30 -UnhealthyThreshold 3
+$probe=Get-AzApplicationGatewayProbeConfig -Name AppServiceProbe -ApplicationGateway $gw
+Set-AzApplicationGatewayBackendHttpSettings -Name appgwhttpsettings -ApplicationGateway $gw -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 30
+Set-AzApplicationGateway -ApplicationGateway $gw
+```
   ```
   ## Request headers to Application Gateway:
 

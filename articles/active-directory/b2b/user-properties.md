@@ -1,27 +1,27 @@
 ---
-title: B2B コラボレーション ユーザーのプロパティ - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます
+title: B2B ゲスト ユーザーのプロパティ - Azure Active Directory | Microsoft Docs
+description: 招待に応じる前と後の Azure Active Directory B2B ゲスト ユーザーのプロパティと状態
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294656"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257605"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
-Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユーザーは、UserType = Guest のユーザーです。 このゲスト ユーザーは通常、パートナー組織に属しており、既定では招待側のディレクトリ内で制限された権限を付与されています。
+この記事では、招待に応じる前と後の Azure Active Directory (Azure AD) 内の B2B ゲスト ユーザー オブジェクトのプロパティと状態について説明します。 Azure AD 企業間 (B2B) コラボレーション ユーザーは、UserType = Guest のユーザーです。 このゲスト ユーザーは通常、パートナー組織に属しており、既定では招待側のディレクトリ内で制限された権限を付与されています。
 
 招待側の組織のニーズに応じて、Azure AD B2B コラボレーション ユーザーは、以下のいずれかのアカウント状態になります。
 

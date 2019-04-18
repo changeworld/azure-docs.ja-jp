@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838274"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470697"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -49,6 +49,14 @@ sudo reboot
 ```
 uname -a
 ```
+
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Azure 仮想マシン エージェントおよび拡張機能のバージョンを更新する
+
+Azure 仮想マシン エージェントのサポートされていないバージョンを使用した仮想マシン イメージでは、Azure Disk Encryption 操作が失敗する場合があります。 詳細については、「[Minimum version support for virtual machine agents in Azure (Azure での仮想マシン エージェントの最小バージョンのサポート)](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください。  
+
+Microsoft.Azure.Security.AzureDiskEncryption または Microsoft.Azure.Security.AzureDiskEncryptionForLinux ゲスト エージェント拡張機能の適切なバージョンも必要です。 Azure 仮想マシン エージェントの前提条件が満たされ、サポートされているバージョンの仮想マシン エージェントが使用されている場合は、拡張機能のバージョンがプラットフォームによって自動的に管理および更新されます。
+
+Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 拡張機能は非推奨になったため、現在はサポートされていません。  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>Linux のディスクを暗号化できない
 
@@ -148,5 +156,5 @@ Azure Disk Encryption を正しく無効にするには、暗号化が有効な�
 
 このドキュメントでは、Azure Disk Encryption で発生する一般的な問題の詳細と、それらの問題のトラブルシューティング方法について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 
-- [Azure Security Center でディスクの暗号化を適用する](../security-center/security-center-apply-disk-encryption.md)
+- [Azure Security Center で Disk Encryption を適用する](../security-center/security-center-apply-disk-encryption.md)
 - [保存時の Azure データの暗号化](azure-security-encryption-atrest.md)

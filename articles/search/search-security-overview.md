@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342424"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269556"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure Search のセキュリティとデータ プライバシー
 
@@ -58,6 +58,8 @@ Azure Search は次の標準について認定され、[2018 年 6 月に発表�
 
 ロールベースのアクセス制御 (RBAC) はすべての Azure サービスでサポートされており、すべてのサービスで一貫してアクセスのレベルを設定できます。 たとえば、機微なデータ (管理者キーなど) の表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。 RBAC には所有者、共同作成者、閲覧者のロールがあります。 既定では、すべてのサービス管理者が、所有者ロールのメンバーです。
 
+<a name="service-access-and-authentication"></a>
+
 ## <a name="service-access-and-authentication"></a>サービス アクセスと認証
 
 Azure Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
@@ -65,11 +67,11 @@ Azure Search は Azure プラットフォームのセキュリティ保護機能
 検索サービスへのアクセスには 2 つのレベルがあり、次の 2 種類のキーによって有効になります。
 
 * 管理者アクセス (サービスに対するすべての読み取り/書き込み操作に有効)
-* クエリ アクセス (インデックスに対するクエリなどの読み取り専用操作に有効)
+* クエリ アクセス (インデックスのドキュメント コレクションに対するクエリなどの読み取り専用操作に有効)
 
-*管理者キー*は、サービスのプロビジョニング時に作成されます。 2 つの管理者キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理者キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 どちらの管理者キーも再生成できますが、管理者キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理者キーがあります。
+*管理者キー*は、サービスのプロビジョニング時に作成されます。 2 つの管理キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 Azure のセキュリティのベスト プラクティスに従って[管理キーを再生成](search-security-api-keys.md#regenerate-admin-keys)できますが、管理キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理キーがあります。
 
-*クエリ キー*は必要に応じて作成され、Search を直接呼び出すクライアント アプリケーション向けに設計されています。 クエリ キーは最大 50 個まで作成できます。 アプリケーション コードでは、サービスへの読み取り専用アクセスを許可するために検索の URL とクエリ API キーを指定します。 また、アプリケーション コードでは、アプリケーションで使用されるインデックスも指定します。 エンドポイント、読み取り専用アクセスのための API キー、およびターゲット インデックスの組み合わせにより、クライアント アプリケーションからの接続のスコープとアクセス レベルが定義されます。
+*クエリ キー*は必要に応じて作成され、クエリを発行するクライアント アプリケーション向けに設計されています。 クエリ キーは最大 50 個まで作成できます。 アプリケーション コードでは、特定のインデックスのドキュメント コレクションへの読み取り専用アクセスを許可するために検索の URL とクエリ API キーを指定します。 エンドポイント、読み取り専用アクセスのための API キー、およびターゲット インデックスの組み合わせにより、クライアント アプリケーションからの接続のスコープとアクセス レベルが定義されます。
 
 要求ごとに認証が必要です。この各要求は必須のキー、操作、およびオブジェクトで構成されています。 2 つのアクセス許可レベル (完全または読み取り専用) とコンテキスト (インデックスでのクエリ操作など) を組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 キーの詳細については、[API キーの作成と管理](search-security-api-keys.md)に関するページを参照してください。
 
@@ -83,17 +85,11 @@ Azure Search では、個別のインデックスはセキュリティ保護可�
 
 インデックス レベルでセキュリティ境界が必要なマルチテナントのソリューションでは、通常、そのソリューションに顧客がインデックス分離を処理するための中間層が含まれています。 マルチテナントのユース ケースの詳細については、「[マルチテナント SaaS アプリケーションと Azure Search の設計パターン](search-modeling-multitenant-saas-applications.md)」を参照してください。
 
-## <a name="admin-access-from-client-apps"></a>クライアント アプリからの管理者アクセス
+## <a name="admin-access"></a>管理者アクセス
 
-Azure Search 管理 REST API は、Azure リソース マネージャーの拡張機能であり、その依存関係を共有します。 そのため、Azure Search のサービス管理にとって、Active Directory は必須となります。 クライアント コードからのすべての管理要求は、Resource Manager に到達する前に、Azure Active Directory を使用して認証される必要があります。
+[ロールベースのアクセス (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) によって、サービスとそのコンテンツに対するコントロールにアクセスできるかどうかが決まります。 Azure Search サービスの所有者または共同作成者であれば、ポータルまたは PowerShell **Az.Search** モジュールを使用して、サービス上のオブジェクトを作成、更新、または削除できます。 [Azure Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) を使用することもできます。
 
-インデックスの作成 (Azure Search サービス REST API) やドキュメントの検索 (Azure Search サービス REST API) など、Azure Search サービス エンドポイントに対するデータ要求では、要求ヘッダーで API キーが使用されます。
-
-サービス管理操作と検索インデックスまたは検索ドキュメントに対するデータ操作をアプリケーション コードで処理する場合、2 つの認証アプローチ (Azure Search にネイティブなアクセス キーと Resource Manager に必要な Active Directory 認証方法) をコードに実装します。 
-
-Azure Search での要求の構成について詳しくは、「[Azure Search Service REST (Azure Search サービス REST API)](https://docs.microsoft.com/rest/api/searchservice/)」を参照してください。 Resource Manager に関する認証要件の詳細については、「[サブスクリプションにアクセスするための Resource Manager 認証 API の使用](../azure-resource-manager/resource-manager-api-authentication.md)」を参照してください。
-
-## <a name="user-access-to-index-content"></a>インデックス コンテンツへのユーザー アクセス
+## <a name="user-access"></a>ユーザー アクセス
 
 既定では、インデックスへのユーザー アクセスは、クエリ要求のアクセス キーによって決まります。 ほとんどの開発者は、クライアント側の検索要求に対して "[*クエリ キー*](search-security-api-keys.md)" を作成して割り当てます。 クエリ キーは、インデックス内のすべてのコンテンツに対する読み取りアクセスを付与します。
 

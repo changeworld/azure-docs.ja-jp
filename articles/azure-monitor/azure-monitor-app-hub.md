@@ -5,17 +5,17 @@ title: Azure Monitor Application Insights のドキュメント - チュート�
 description: Azure Monitor Application Insights では、コード レベルの詳細なアプリケーション パフォーマンスの監視を提供します。
 services: application-insights
 author: mrbullwinkle
-manager: carmonmills
+manager: carmonm
 ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4bf1ccd3da83900208ab8f15b54ea110b1dbb2f4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 514f0c193dbbca6d8583c9f93feadee3415f163c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244243"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426275"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -85,7 +85,7 @@ ms.locfileid: "56244243"
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
-                                                            <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
+                                                            <a href="./learn/mobile-center-quickstart.md">モバイル</a><br>
                                                             <a href="./app/website-monitoring.md">ブラウザー/クライアント側の監視</a>
                                                         </p>
                                                         <br><br>
@@ -115,7 +115,7 @@ ms.locfileid: "56244243"
                                                             <a href="./app/proactive-potential-memory-leak.md">メモリ リーク</a><br>
                                                             <a href="./app/proactive-low-utilization-cloud-resources.md">低い CPU 使用率</a><br>
                                                             <a href="./app/proactive-application-security-detection-pack.md">セキュリティの問題</a><br>
-                                                            <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
+                                                            <a href="./app/proactive-cloud-services.md">Azure クラウド サービス</a><br>
                                                             <a href="./app/proactive-arm-config.md">テンプレートを使用したスマート検出規則の管理</a>
                                                         </p>
                                                         <br><br>
@@ -139,12 +139,12 @@ ms.locfileid: "56244243"
                                                         <h3>Java アプリケーション</h3>
                                                         <p>
                                                             <a href="./app/java-get-started.md">詳細な監視構成</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot Starter</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot スターター</a><br>
                                                             <a href="./app/micrometer-java.md">Micrometer メトリック</a><br>
                                                             <a href="./app/java-filter-telemetry.md">テレメトリのフィルター処理</a><br>
                                                             <a href="./app/java-trace-logs.md">トレース ログ</a><br>
                                                             <a href="./app/java-agent.md">依存関係の追跡のエージェントの構成</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリックス</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリック</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
 ">Config .xml</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-Java">オープン ソース Java SDK GitHub リポジトリ</a>
@@ -155,7 +155,7 @@ ms.locfileid: "56244243"
                                                             <a href="./app/asp-net.md">詳細な監視構成</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Status Monitor</a><br>
                                                             <a href="./app/azure-web-apps.md">App Service の監視</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリックス</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリック</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">オープン ソース .NET SDK GitHub リポジトリ</a>
                                                         </p>
                                                         <br><br>
@@ -163,21 +163,21 @@ ms.locfileid: "56244243"
                                                         <p>
                                                             <a href="./app/asp-net-core.md">詳細な監視構成</a><br>
                                                             <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core プロファイル</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリックス</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリック</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">オープン ソース .NET Core SDK GitHub リポジトリ</a>
                                                         </p>
                                                         <br><br>
                                                           <h3>Node.js アプリケーション</h3>
                                                         <p>
                                                             <a href="./app/nodejs.md">詳細な監視構成</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリックス</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリック</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-node.js">オープン ソース Node.js SDK GitHub リポジトリ</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>クライアント/ブラウザー側の監視</h3>
                                                         <p>
                                                             <a href="./app/javascript.md">詳細な監視構成</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリックス</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリック</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-JS">オープン ソース JavaScript SDK GitHub リポジトリ</a><br>
                                                         </p>
                                                     </div>
@@ -204,7 +204,7 @@ ms.locfileid: "56244243"
                                                         <br><br>
                                                         <h3>リアルタイム監視、<br> 視覚化、分析</h3>
                                                         <p>
-                                                            <a href="./app/overview-dashboard.md">概要ダッシュボード &amp; アプリケーション ダッシュボード</a><br>
+                                                            <a href="./app/overview-dashboard.md">概要ダッシュボードとアプリケーション ダッシュボード</a><br>
                                                             <a href="./app/monitor-web-app-availability.md">グローバルな可用性の監視</a><br>
                                                             <a href="./app/live-stream.md">Live Metrics Stream</a><br>
                                                             <a href="./app/app-map.md">分散アプリケーションのマッピング</a><br>
@@ -217,22 +217,22 @@ ms.locfileid: "56244243"
                                                         <h3>プライバシー、セキュリティ、使用状況、コスト</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">個人データの処理</a><br>
-                                                            <a href="./app/data-retention-privacy.md">データの収集、保持、&amp;保存</a><br>
+                                                            <a href="./app/data-retention-privacy.md">データの収集、保持、保存</a><br>
                                                             <a href="./app/resources-roles-access-control.md">ロールベースのアクセス</a><br>
-                                                            <a href="./app/ip-addresses.md">IP アドレス &amp; ファイアウォール例外</a><br>
+                                                            <a href="./app/ip-addresses.md">IP アドレスとファイアウォール例外</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">使用量と推定コスト</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>データ モデル</h3>
                                                         <p>
                                                             <a href="./app/data-model.md">概要</a><br>
-                                                            <a href="./app/data-model-request-telemetry.md">要求</a><br>
+                                                            <a href="./app/data-model-request-telemetry.md">Request</a><br>
                                                             <a href="./app/data-model-dependency-telemetry.md">依存関係</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">例外</a><br>
-                                                            <a href="./app/data-model-trace-telemetry.md">トレース</a><br>
+                                                            <a href="./app/data-model-trace-telemetry.md">Trace</a><br>
                                                             <a href="./app/data-model-event-telemetry.md">Event</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">メトリック</a><br>
-                                                            <a href="./app/data-model-context.md">コンテキスト</a>
+                                                            <a href="./app/data-model-context.md">Context</a>
                                                             </p>
                                                         </p>
                                                     </div>

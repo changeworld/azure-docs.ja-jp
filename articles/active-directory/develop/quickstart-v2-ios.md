@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2 iOS クイック スタート | Microsoft Docs
+title: Microsoft ID プラットフォーム iOS のクイック スタート | Azure
 description: iOS ネイティブ アプリケーションでユーザーにサインインし、Microsoft Graph に対してクエリを実行する方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439264"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496131"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート:iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "58439264"
 
 このクイック スタートには、ネイティブ iOS アプリケーションから個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
 
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro-updated.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>登録とダウンロード
@@ -49,7 +49,7 @@ ms.locfileid: "58439264"
 > > [この変更を行う]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-ios/green-check.png) アプリケーションはこの属性で構成されています
+> > ![構成済み](media/quickstart-v2-ios/green-check.png) ご自分のアプリケーションはこの属性で構成されています
 
 #### <a name="step-2-download-your-web-server-or-project"></a>手順 2:Web サーバーまたはプロジェクトのダウンロード
 
@@ -147,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |各値の説明: ||
 > |---------|---------|
 > | `clientId` | *portal.azure.com* に登録されているアプリケーションの Application ID |
-> | `authority` | Azure AD v2.0 エンドポイント。 ほとんどの場合は *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合は *https<span/>://login.microsoftonline.com/common* |
 
 ### <a name="requesting-tokens"></a>トークンの要求
 
@@ -155,7 +155,7 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `acquire
 
 #### <a name="getting-an-access-token-interactively"></a>アクセス トークンを対話形式で取得する
 
-Azure Active Directory (Azure AD) v2.0 エンドポイントの操作が強制される場合があります。その場合、コンテキストがシステム ブラウザーに切り替わり、ユーザーの資格情報の検証または同意が求められます。 次に例をいくつか示します。
+ユーザーは Microsoft ID プラットフォーム エンドポイントの操作を強制される場合があります。その場合、コンテキストがシステム ブラウザーに切り替わり、ユーザーの資格情報の検証または同意が求められます。 次に例をいくつか示します。
 
 * ユーザーが初めてアプリケーションにサインインした場合
 * パスワードの有効期限が切れているため、ユーザーが資格情報を再入力する必要がある場合

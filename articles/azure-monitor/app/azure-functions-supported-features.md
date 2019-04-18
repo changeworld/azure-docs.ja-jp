@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510325"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471666"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
@@ -27,12 +27,12 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.7.2**         |
+| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **自動収集の対象**        |                 |                   |               
 | &bull; 要求                     | はい             | はい               | 
 | &bull; 例外                   | はい             | はい               | 
-| &bull; パフォーマンス カウンター         | はい             |                   |
+| &bull; パフォーマンス カウンター         | はい             | はい               |
 | &bull; 依存関係                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | はい               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | はい               | 
@@ -49,7 +49,7 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 | &bull; ServiceBus                     |                   | はい               | 
 | &bull; EventHub                       |                   | はい               | 
 | | | | 
-| **構成可否**                      |                   |                   |           
+| **構成可能**                      |                   |                   |           
 | &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
 
 
@@ -65,3 +65,30 @@ Azure Functions では、ILogger インターフェイス経由で使用でき�
 ## <a name="sampling"></a>サンプリング
 
 Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)に関するページをご覧ください。
+
+プロジェクトで Application Insights SDK に依存してテレメトリ追跡を手動で行っている場合、ご使用のサンプリング構成が Functions のサンプリング構成と異なっていると、予想外の動作が起こることがあります。 
+
+Functions と同じ構成を使用することをお勧めします。 **Functions v2** では、コンストラクターで依存関係の挿入を使用することで、同じ構成を取得できます。
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+
+public class Function1 
+{
+
+    private readonly TelemetryClient telemetryClient;
+
+    public Function1(TelemetryConfiguration configuration)
+    {
+        this.telemetryClient = new TelemetryClient(configuration);
+    }
+
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger logger)
+    {
+        this.telemetryClient.TrackTrace("C# HTTP trigger function processed a request.");
+    }
+}
+```

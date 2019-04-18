@@ -8,23 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d53019294a255e42c4cf66f59226c9234a5adf73
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856092"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359751"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
+
+これは、JavaScript のみのリリースです。 機能は追加されていません。 以下の修正が行われました。
+
+* Webpack でHTTPS プロキシ エージェントが読み込まれないようにしました。
+
+## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: 2019 年 4 月リリース
+
+**新機能** 
+
+* SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++、C#、Java からサポートされます。 詳しくは、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事をご覧ください。
+* SDK で、ストリーム入力ファイルとして MP3 および Opus/Ogg オーディオ ファイルがサポートされるようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-compressed-audio-input-streams.md))。
+* Java、.NET Core、C++、Objective-C 用の Speech SDK で、macOS がサポートされるようになりました。 Objective-C での MacOS のサポートは、現在ベータ版です。
+* iOS:iOS (Objective-C) 用の Speech SDK が、CocoaPod としても公開されるようになりました。
+* JavaScript:入力デバイスとしての既定以外のマイクのサポート。
+* JavaScript:Node.js に対するプロキシのサポート。
+
+**サンプル**
+
+* macOS の C++ および Objective-C での Speech SDK の使用のサンプルが追加されました。
+* テキスト読み上げサービスの使用方法を示すサンプルが追加されました。
+
+**機能強化/変更**
+
+* Python: 認識結果の追加のプロパティが、`properties` プロパティで公開されるようになりました。
+* 開発とデバッグの追加サポートでは、SDK のログ記録と診断情報をログ ファイルにリダイレクトすることができます (詳しくは[こちら](how-to-use-logging.md))。
+* JavaScript:オーディオ処理のパフォーマンスが向上しました。
+
+**バグの修正**
+
+* Mac/iOS:Speech Service への接続を確立できないときに長い待機時間が発生する原因のバグを修正しました。
+* Python: Python コールバックでの引数のエラー処理が向上しました。
+* JavaScript:RequestSession で終了した音声の正しくない状態レポートが修正されました。
 
 ## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1:2019 年 2 月更新
 
 これはバグ修正リリースで、ネイティブ/マネージド SDK にのみ影響します。 JavaScript バージョンの SDK には影響しません。
 
-**バグ修正**
+**バグの修正**
 
 * マイク入力を使用する際のメモリ リークを修正しました。 ストリーム ベースの入力やファイル入力には影響しません。
 
@@ -257,7 +291,7 @@ ms.locfileid: "57856092"
 
   `SpeechRecognizer` を作成するときに、`Detailed` または `Simple` 出力形式を要求できます。 `DetailedSpeechRecognitionResult` には、信頼度スコア、認識されるテキスト、生の語彙形式、正規化形式、および不適切な内容がマスクされた正規化形式が含まれます。
 
-**重大な変更**
+**破壊的変更**
 
 - C# で `SpeechRecognitionResult.Text` から `SpeechRecognitionResult.RecognizedText` に変更されました。
 

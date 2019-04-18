@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518786"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279875"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -81,7 +81,7 @@ EA API は、認証と承認に API キーを使用します。 MCA API は Azur
 | 目的 | 古いオファリング | 新しいオファリング |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) コンテンツ パックおよびコネクタ | [Microsoft Azure Consumption Insights Power BI アプリ](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)および[ Azure Consumption Insights コネクタ](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) コンテンツ パックおよびコネクタ | [Microsoft Azure Consumption Insights Power BI アプリ](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)および [Azure Consumption Insights コネクタ](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>残高とクレジットを取得するための API
 
@@ -547,4 +547,4 @@ Azure Cost Management では、次の操作が可能になります。
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure の支出を監視し制御する方法について、または、Cost Management でのリソースの使用を最適化する場合は、[Cost Management のドキュメント](index.yml)を参照してください。 Or, if you want to optimize resource use with Cost Management.
+- Azure の支出を監視し制御する方法については、[Cost Management のドキュメント](index.yml)を参照してください。 または、Cost Management でリソースの使用を最適化したい場合。

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803219"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046991"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
 この記事では、Azure Network Watcher のトラフィック分析についてよく寄せられる質問の多くをまとめました。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>トラフィック分析を使用する前提条件は何ですか?
 
@@ -51,11 +54,11 @@ Traffic Analytics では、次の前提条件が必要です。
         
 サブスクリプションのユーザーに割り当てられているロールを確認するには、次の手順を実行します。
 
-1. **Login-AzureRmAccount** を使用して Azure にサインインします。 
+1. **Login-AzAccount** を使用して、Azure にサインインします。 
 
-2. **Select-AzureRmSubscription** を使用して、必要なサブスクリプションを選択します。 
+2. **Select-AzSubscription** を使用して、必要なサブスクリプションを選択します。 
 
-3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzureRmRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します 
+3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します。 
 
 出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)に関するページを参照してください。
 
@@ -139,8 +142,8 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 フロー ログが正しく機能するには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>ソリューションを構成しました。 ダッシュボードに何も表示されないのはなぜですか?
@@ -170,7 +173,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>PowerShell または Azure Resource Manager テンプレートまたはクライアントを使用してトラフィック分析を構成できますか?
 
-バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus) を参照してください。
+バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) を参照してください。
 
 現在、Azure Resource Manager テンプレートを使用してトラフィック分析を構成することはできません。
 

@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821390"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358050"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -106,9 +106,9 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 Windows Server 2012 以降では、[Active Directory Domain Services (AD DS)に追加のセーフガードが組み込まれています](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 土台となるハイパーバイザー プラットフォームが **VM-GenerationID** に対応している場合、これらのセーフガードによって USN ロールバックから仮想ドメイン コントローラーを保護できます。 Azure は **VM-GenerationID** に対応しています。 そのため、Azure 仮想マシン上で Windows Server 2012 以降を実行しているドメイン コントローラーには、これらの追加のセーフガードが備わっています。
 
 
-**VM-GenerationID** がリセットされると、AD DS データベースの **InvocationID** 値もリセットされます。 さらに、RID プールが破棄され、SYSVOL が権限なしとしてマークされます。 詳細については、[Active Directory Domain Services の仮想化の概要](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)に関するページと、「[Safely virtualizing DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)」(DFSR の安全な仮想化) をご覧ください。
+**VM-GenerationID** がリセットされると、AD DS データベースの **InvocationID** 値もリセットされます。 さらに、RID プールが破棄され、sysvol フォルダーが権限なしとしてマークされます。 詳細については、[Active Directory Domain Services の仮想化の概要](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)に関するページと、「[Safely virtualizing DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)」(DFSR の安全な仮想化) をご覧ください。
 
-Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。
+Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにサインインできるまでに "*かなり時間がかかる*" 可能性があります。
 
 このドメイン コントローラーはテスト フェールオーバー専用であるため、仮想化のセーフガードは必要ありません。 ドメイン コントローラー仮想マシンの **VM-GenerationID** が変更されないようにするには、オンプレミス ドメイン コントローラーで次の DWORD の値を **4** に変更します。
 
@@ -128,11 +128,11 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     ![呼び出し ID の変更](./media/site-recovery-active-directory/Event1109.png)
 
-* SYSVOL 共有と NETLOGON 共有が使用不可
+* Sysvol フォルダー共有と NETLOGON 共有が使用不可。
 
-    ![SYSVOL 共有](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Sysvol フォルダーの共有](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![NtFrs sysvol フォルダー](./media/site-recovery-active-directory/Event13565.png)
 
 * DFSR データベースが削除
 
@@ -146,7 +146,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 >
 >
 
-1. コマンド プロンプトで次のコマンドを実行して、SYSVOL フォルダーと NETLOGON フォルダーが共有されているかどうかを確認します。
+1. コマンド プロンプトで次のコマンドを実行して、sysvol フォルダーと NETLOGON フォルダーが共有されているかどうかを確認します。
 
     `NET SHARE`
 
@@ -166,7 +166,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
     * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。
 
         BurFlags の詳細については、ブログ記事「[D2 and D4:What is it for? (D2 と D4: 何のために使用するか?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」をご覧ください。
-    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated SYSVOL (like "D4/D2" for FRS)](https://support.microsoft.com/kb/2218556)」(DFSR でレプリケートされた SYSVOL (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する) をご覧ください。
+    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated sysvol folder (like "D4/D2" for FRS) (DFSR でレプリケートされた sysvol フォルダー (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する)](https://support.microsoft.com/kb/2218556)」をご覧ください。
 
         PowerShell 関数を使用することもできます。 詳細については、「[DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)」(DFSR-SYSVOL の権限のある/権限のない復元の PowerShell 関数) をご覧ください。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 JavaScript クイック スタート | Microsoft Docs
-description: JavaScript アプリケーションで、アクセス トークンを必要とする API を Azure Active Directory v2.0 エンドポイントから呼び出す方法を説明します
+title: Microsoft ID プラットフォーム JavaScript のクイックスタート | Azure
+description: JavaScript アプリケーションで、アクセス トークンを必要とする API を Microsoft ID プラットフォーム エンドポイントから呼び出す方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -12,24 +12,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2021c5028637a6f7e732df61b6f7c034ef79324f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203049"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547399"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート:ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>クイック スタート:ユーザーをサインインし、JavaScript のシングルページ アプリケーション (SPA) からアクセス トークンを取得する
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 このクイック スタートでは、JavaScript シングル ページ アプリケーション (SPA) が個人用アカウントや職場および学校アカウントをサインインし、Microsoft Graph API や任意の Web API を呼び出すためのアクセス トークンを取得する方法を示すサンプル コードの使用方法について説明します。
 
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+
+## <a name="prerequisites"></a>前提条件
+
+このクイックスタートでは、次の設定が必要になります。
+* node.js server でプロジェクトを実行するために:
+    *  [Node.js](https://nodejs.org/en/download/)
+    * プロジェクト ファイルを編集するために [Visual Studio Code](https://code.visualstudio.com/download) をインストールする
+* プロジェクトを Visual Studio ソリューションとして実行するために、[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) をインストールする。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
@@ -39,7 +47,9 @@ ms.locfileid: "58203049"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) に移動します。
+> 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+> 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
+> 1. 新しい [Azure portal の [アプリの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) ウィンドウに移動します。
 > 1. アプリケーションの名前を入力して **[登録]** をクリックします。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -47,9 +57,10 @@ ms.locfileid: "58203049"
 >
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 >
-> 1. アプリケーションを登録するために、[Azure portal](https://portal.azure.com/) にサインインします。
-> 1. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的のテナントに設定します。
-> 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)] > [新規登録]** を選択します。
+> 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+> 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
+> 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+> 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
 > 1. **[サポートされているアカウントの種類]** で、**[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[リダイレクト URI]** セクションで **[Web]** プラットフォームを選択し、値を `http://localhost:30662/` に設定します。
@@ -121,14 +132,16 @@ var applicationConfig = {
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。
 
+ブラウザーにアプリケーションが読み込まれたら、**[サインイン]** をクリックします。  初回サインイン時に、アプリケーションがユーザーのプロファイルにアクセスし、ユーザーをサインインすることへの同意を求められます。 正常にサインインすると、ページにユーザー プロファイル情報が表示されます。
+
 ## <a name="more-information"></a>詳細情報
 
 ### <a name="msaljs"></a>*msal.js*
 
-MSAL はユーザーをサインインし、Microsoft Azure Active Directory (Azure AD) によって保護されている API にアクセスするトークンを要求するときに使用するライブラリです。 クイック スタートの *index.html* にはライブラリへの参照が含まれています。
+MSAL はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 クイック スタートの *index.html* にはライブラリへの参照が含まれています。
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
 ```
 
 また、Node がインストールされている場合は、npm を介してダウンロードできます。
@@ -189,14 +202,14 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-ユーザーに Azure AD v2.0 エンドポイントとのやり取りを強制しなければならない場合があります。 例: 
+ユーザーに Microsoft ID プラットフォーム エンドポイントとのやり取りを強制しなければならない場合があります。 例: 
 * パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある
 * お使いのアプリケーションが、ユーザーによる同意が必要な追加のリソース スコープへのアクセスを要求している
 * 2 要素認証が必須である
 
 アプリケーションのほとんどについて、通常は、最初に `acquireTokenSilent` を呼び出し、例外をキャッチしてから、`acquireTokenRedirect` (または `acquireTokenPopup`) を呼び出して、対話型要求を開始するパターンをお勧めします。
 
-`acquireTokenPopup(scope)` を呼び出すと、サインインするためのポップアップ ウィンドウが表示されます (または、`acquireTokenRedirect(scope)` を呼び出すと、ユーザーが Azure AD v2.0 エンドポイントにリダイレクトされます)。ここで、ユーザーは自分の資格情報を確認するか、必要なリソースへの同意を示すか、または 2 要素認証を完了するかのいずれかの操作を行う必要があります。
+`acquireTokenPopup(scope)` を呼び出すと、サインインするためのポップアップ ウィンドウが表示されます (または、`acquireTokenRedirect(scope)` を呼び出すと、ユーザーが Microsoft ID プラットフォーム エンドポイントにリダイレクトされます)。ここで、ユーザーは自分の資格情報を確認するか、必要なリソースへの同意を示すか、または 2 要素認証を完了するかのいずれかの操作を行う必要があります。
 
 ```javascript
 myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed27830aa1f4212e4bc26af8da4febc1b61a76cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175103"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266972"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>v2.0 プロトコル - OAuth 2.0 と OpenID Connect
 
@@ -41,10 +41,11 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 * **承認サーバー**は、v2.0 エンドポイントとして、ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。 承認サーバーは、ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、承認サーバーによって安全に処理されます。
 * **リソース所有者** とは通常、エンド ユーザーを指します。 データを所有し、そのデータ (またはリソース) へのアクセスをサード パーティに許可する権限を持つ当事者です。
 * **OAuth クライアント**は、皆さんが開発するアプリです。対応するアプリケーション ID で識別されます。 通常は、OAuth クライアントがエンド ユーザーと情報をやり取りし、承認サーバーにトークンを要求します。 クライアントには、リソース所有者がリソースへのアクセス権を付与する必要があります。
-* **リソース サーバー**は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。リソースへのアクセスを許可するためにベアラー トークン (access_tokens) が使用されます。
+* **リソース サーバー**は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。リソースへのアクセスを許可するためにベアラー アクセス トークンが使用されます。
 
 ## <a name="app-registration"></a>アプリケーションの登録
-v2.0 エンドポイントを使うアプリはすべて、[apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)、または [Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) の新しい**アプリの登録 (プレビュー)** エクスペリエンスを通じて登録する必要があります。登録後、OAuth または OpenID Connect を使用して対話できるようになります。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+
+個人用アカウントと職場または学校アカウントの両方を受け付けるアプリはすべて、[Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) の新しい**アプリの登録 (プレビュー)** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
 * **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
@@ -68,9 +69,12 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 | `common` | 個人の Microsoft アカウントと Azure AD の職場/学校アカウントのどちらでもアプリケーションにサインインできます。 |
 | `organizations` | Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
 | `consumers` | 個人の Microsoft アカウント (MSA) を持つユーザーのみがアプリケーションにサインインできます。 |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` または `contoso.onmicrosoft.com` | 特定の Azure AD テナントの職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` or `contoso.onmicrosoft.com` | 特定の Azure AD テナントの職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 |
 
 これらのエンドポイントと対話する方法について学習するには、「[プロトコル](#protocols)」セクションで特定のアプリの種類を選択し、リンクから詳細情報にアクセスしてください。
+
+> [!TIP]
+> Azure AD に登録されたすべてのアプリは、個人用アカウントにサインインしなくても、v2.0 エンドポイントを使用できます。  アプリケーションを作成し直さなくても、このようにして既存のアプリケーションを v2.0 と [MSAL](reference-v2-libraries.md) に移行することができます。  
 
 ## <a name="tokens"></a>トークン
 

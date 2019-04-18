@@ -254,6 +254,8 @@ items:
       - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
+      - name: クラスター構成へのアクセスの変更
+        href: ../hdinsight-migrate-granular-access-cluster-configurations.md
     maintainContext: true
 - name: エンタープライズ対応
   items:
@@ -307,12 +309,13 @@ items:
   - name: R 開発者ガイド
     href: ../../machine-learning/r-developers-guide.md
   - name: リリース ノート
-    href: ../hdinsight-release-notes.md
     items:
+    - name: 最新のリリース ノート
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
     - name: アーカイブされたリリース ノート
       href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-    maintainContext: true
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: フォーラムで質問する
@@ -326,9 +329,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: cfeff50427913e7df70bd3a2af3ea83519d27cfe
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 918489a8dbac91078af6114ae4942d8411460a21
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579089"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615746"

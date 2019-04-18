@@ -3,17 +3,17 @@ title: Raspberry Pi を Azure IoT Central アプリケーションに接続す�
 description: デバイス開発者として、C# を使用して Raspberry Pi を Azure IoT Central アプリケーションに接続する方法。
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 341b4d23664900cdf1f9a209df663ad4e6e96fe4
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108360"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426360"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -25,37 +25,34 @@ ms.locfileid: "58108360"
 
 この記事の手順を完了するには、次のコンポーネントが必要です。
 
-* 開発コンピューターにインストールされた [.NET Core 2](https://www.microsoft.com/net)。 [Visual Studio Code](https://code.visualstudio.com/) などの適切なコード エディターも用意する必要があります。
 * **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
-* Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。
-
+* Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 Raspberry Pi からインターネットに接続できる必要があります。 詳細については、「[Setting up your Raspberry Pi (Raspberry Pi を設定する)](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)」を参照してください。
 
 ## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。 
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。
 
 - デバイスが収集する次の測定値を含むテレメトリ:
-    - 湿度
-    - 気温
-    - 圧力
-    - 磁力計 (X、Y、Z)
-    - 加速度計 (X、Y、Z)
-    - ジャイロスコープ (X、Y、Z)
+  - 湿度
+  - 気温
+  - 圧力
+  - 磁力計 (X、Y、Z)
+  - 加速度計 (X、Y、Z)
+  - ジャイロスコープ (X、Y、Z)
 - 設定
-    - 電圧
-    - Current
-    - ファン速度
-    - IR 切り替え。
+  - 電圧
+  - Current
+  - ファン速度
+  - IR 切り替え。
 - Properties
-    - Die number デバイス プロパティ
-    - Location クラウド プロパティ
+  - Die number デバイス プロパティ
+  - Location クラウド プロパティ
 
-デバイス テンプレートの構成について詳しくは、「[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)」をご覧ください。
-
+デバイス テンプレートの構成について詳しくは、「[Raspberry Pi デバイス テンプレートの詳細](#raspberry-pi-device-template-details)」を参照してください。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実際のデバイスを追加します。 デバイス接続の詳細 (**スコープ ID**、**デバイス ID**、および**主キー**) をメモします。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
 ### <a name="create-your-net-application"></a>.NET アプリケーションを作成する
 
@@ -86,7 +83,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
         <RuntimeIdentifiers>win-arm;linux-arm</RuntimeIdentifiers>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.5.2" />
+        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.19.0" />
       </ItemGroup>
     </Project>
     ```
@@ -272,12 +269,9 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 ## <a name="run-your-net-application"></a>.NET アプリケーションを実行する
 
-デバイスが Azure IoT Central で認証されるためのコードにデバイス固有の接続文字列を追加します。 この接続文字列は、実デバイスを Azure IoT Central アプリケーションに追加したときに書きとめました。
+デバイスが Azure IoT Central で認証されるためのコードにデバイス固有の接続文字列を追加します。 次の手順に従って、前にメモした**スコープ ID**、**デバイス ID**、および**主キー**を使用して、[デバイス接続文字列を生成](howto-generate-connection-string.md)します。
 
-  > [!NOTE]
-   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#get-a-connection-string)し、チュートリアルの残りを続けてください。
-
-1. **Program.cs** ファイル内の `{your device connection string}` を、前に書きとめた接続文字列に置き換えます。
+1. **Program.cs** ファイル内の `{your device connection string}` を、生成した接続文字列に置き換えます。
 
 1. コマンドライン環境で次のコマンドを実行します。
 
@@ -286,7 +280,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
    dotnet publish -r linux-arm
    ```
 
-1. `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` フォルダーを Raspberry Pi デバイスにコピーします。 たとえば、**scp** コマンドを使用してファイルをコピーできます。
+1. `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` フォルダーを Raspberry Pi デバイスにコピーします。 たとえば、**scp** コマンドを使用してファイルをコピーできます。
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
@@ -321,8 +315,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
      ![Raspberry Pi が設定の変更を受信する](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
-
-## <a name="raspberry-pi-device-template-details"></a>Raspberry PI デバイス テンプレートの詳細
+## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi デバイス テンプレートの詳細
 
 **サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。
 
@@ -347,7 +340,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 数値設定
 
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| Display name | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
 | Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
@@ -355,13 +348,13 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 トグル設定
 
-| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
+| Display name | フィールド名 | オンテキスト | オフテキスト | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
 ### <a name="properties"></a>Properties
 
-| type            | 表示名 | フィールド名 | データ型 |
+| Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |

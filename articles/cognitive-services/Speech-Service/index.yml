@@ -232,7 +232,7 @@ sections:
         items:
           - title: SDK リファレンス
             html: |
-              <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET、Unity)</a></p>
+              <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET、および Unity)</a></p>
               <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
               <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
               <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>

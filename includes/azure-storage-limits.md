@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: dccc967e7899d8cc9c4bde6829d6fc44f9cba4e0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2957b45a0a26c590e2db1b402f4956ae9c3b8000
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891008"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291659"
 ---
 次の表は、Azure Storage の既定の制限について説明しています。 *受信*制限は、ストレージ アカウントに送信される要求のすべてのデータを指します。 *送信*制限は、ストレージ アカウントから受信する応答のすべてのデータを指します。
 
@@ -22,10 +22,15 @@ ms.locfileid: "58891008"
 | サブスクリプションあたりの各リージョンのストレージ アカウント数 (Standard アカウントと Premium アカウント両方を含む) | 250 |
 | ストレージ アカウントの最大容量 | 米国とヨーロッパでは 2 PB、英国を含む他のすべてのリージョンでは 500 TB |
 | ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数 | 制限なし |
+| FileStorage (プレビュー) ストレージ アカウントの最大サイズ | 100,000 GiB |
+| FileStorage (プレビュー) ストレージ アカウントの最大 IOPS | 100,000 |
+| FileStorage (プレビュー) ストレージ アカウントの最大帯域幅 | 5 GB/秒 |
 | ストレージ アカウントあたりの最大要求レート<sup>1</sup> | 1 秒あたり 20,000 要求 |
 | ストレージ アカウントあたりの最大受信速度<sup>1</sup> (米国リージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS<sup>2</sup> の場合は 20 Gbps |
 | ストレージ アカウントあたりの最大受信速度<sup>1</sup> (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 5 Gbps、LRS/ZRS<sup>2</sup> の場合は 10 Gbps |
-| 汎用 v2 および BLOB ストレージ アカウントの最大送信速度 (すべてのリージョン) | 50 Gbps |
+| FileStorage (プレビュー) ストレージ アカウントあたりの最大イングレス (米国リージョン) | 20 Gbps (LRS のみ) |
+| FileStorage (プレビュー) ストレージ アカウントあたりの最大イングレス (非米国リージョン) | 10 Gbps (LRS のみ)|
+| 汎用 v2、FileStorage (プレビュー)、および BLOB のストレージ アカウントの最大エグレス (すべてのリージョン) | 50 Gbps |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国リージョン) | RA-GRS/GRS が有効な場合は 20 Gbps、LRS/ZRS<sup>2</sup> の場合は 30 Gbps |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS<sup>2</sup> の場合は 15 Gbps |
 

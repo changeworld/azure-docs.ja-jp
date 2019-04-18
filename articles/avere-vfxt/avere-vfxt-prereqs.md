@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 352833b12c00abbefcf7016d27dfb580ee25e450
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417974"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275880"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Avere vFXT の作成を準備する
 
@@ -30,23 +30,16 @@ Azure portal で新しい Azure サブスクリプションを作成するには
 
 ## <a name="configure-subscription-owner-permissions"></a>サブスクリプション所有者のアクセス許可を構成する
 
-サブスクリプションの所有者アクセス許可を持つユーザーが、vFXT クラスターを作成する必要があります。 たとえば次のような操作に、サブスクリプション所有者のアクセス許可が必要です。
+サブスクリプションの所有者アクセス許可を持つユーザーが、vFXT クラスターを作成する必要があります。 ソフトウェアのサービス使用条件に同意して他の操作を実行するには、サブスクリプションの所有者アクセス許可が必要になります。 
 
-* Avere vFXT ソフトウェアの条件に同意する
-* クラスター ノードのアクセス ロールを作成する 
+所有者以外が Avere vFTX for Azure クラスターを作成できるように、回避策のシナリオがいくつかあります。 これらのシナリオでは、リソースの制限と、作成者に対する追加ロールの割り当てが行われます。 また、どちらの場合にも、サブスクリプションの所有者が、事前に [Avere vFXT ソフトウェアの条件に同意](#accept-software-terms)している必要があります。 
 
-vFXT を作成するユーザーに所有者アクセス権を付与したくない場合は、2 つの回避策があります。
-
-* 次の条件が満たされる場合、リソース グループ所有者がクラスターを作成できます。
-
-  * サブスクリプション所有者が、[Avere vFXT ソフトウェアの条件に同意](#accept-software-terms)し、[クラスター ノードのアクセス ロールを作成する](#create-the-cluster-node-access-role)必要があります。 
-  * 次のような Avere vFXT のすべてのリソースを、リソース グループ内に展開する必要があります。
-    * クラスター コントローラー
-    * クラスター ノード
-    * BLOB ストレージ
-    * ネットワーク要素
+| シナリオ | 制限 | Avere vFXT クラスターを作成するために必要なアクセス ロール | 
+|----------|--------|-------|
+| リソース グループの管理者 | 仮想ネットワーク、クラスター コントローラー、およびクラスター ノードが、リソース グループ内に作成されている必要がある。 | [ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)および[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロール。両方とも、スコープはターゲット リソース グループに指定されている | 
+| 外部の vnet | クラスター コントローラーとクラスター ノードはリソース グループ内に作成されるが、別のリソース グループにある既存の仮想ネットワークが使用される | (1) [ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)および[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロール。スコープは vFXT リソース グループに指定されている (2) [仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、[ユーザー アクセス管理者](../role-based-access-control/built-in-roles.md#user-access-administrator)、および [Avere 共同作成者](../role-based-access-control/built-in-roles.md#avere-contributor) ロール。スコープは VNET リソース グループに指定されている |
  
-* 所有者特権のないユーザーは、前もってロールベースのアクセス制御 (RBAC) を使用してそのユーザーに特権を割り当てることで、vFXT クラスターを作成できます。 この方法では、ユーザーに重要なアクセス許可が与えられます。 所有者以外のユーザーにクラスターの作成を承認するためのアクセス ロールを作成する方法については、[こちらの記事](avere-vfxt-non-owner.md)をご覧ください。
+別の方法として、[こちらの記事](avere-vfxt-non-owner.md)に説明されているように、カスタム ロールベースのアクセス制御 (RBAC) ロールを使用してユーザーに権限を割り当てることもできます。 この方法では、ユーザーに重要なアクセス許可が与えられます。 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT クラスターのクォータ
 
@@ -83,75 +76,6 @@ vFXT を作成するユーザーに所有者アクセス権を付与したくな
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
-
-## <a name="create-access-roles"></a>アクセス ロールを作成する 
-
-[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) により、vFXT クラスター コントローラーとクラスター ノードに、必要なタスクを実行する承認が与えられます。
-
-* クラスターを作成するために、クラスター コントローラーには VM を作成して変更するためのアクセス許可が必要です。 
-
-* 個々の vFXT ノードでは、通常のクラスター操作の一環として、Azure リソース プロパティの読み取り、ストレージの管理、他のノードのネットワーク インターフェイス設定の制御などを行う必要があります。
-
-Avere vFXT クラスターを作成する前に、クラスター ノードで使用するカスタム ロールを定義する必要があります。 
-
-クラスター コントローラーについては、テンプレートの既定のロールをそのまま使用できます。 既定では、クラスター コントローラーにはリソース グループの所有者特権が与えられます。 コントローラー用にカスタム ロールを作成する場合は、「[コントローラーのアクセス ロールのカスタマイズ](avere-vfxt-controller-role.md)」を参照してください。
-
-> [!NOTE] 
-> ロールを作成できるのは、サブスクリプションの所有者と、所有者ロールまたはユーザー アクセス管理者ロールを持つユーザーのみです。 ロールは前もって作成できます。  
-
-### <a name="create-the-cluster-node-access-role"></a>クラスター ノードのアクセス ロールを作成する
-
-<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
-
-Azure クラスターの Avere vFXT を作成する前に、クラスター ノードのロールを作成する必要があります。
-
-> [!TIP] 
-> Microsoft の内部ユーザーは、作成する代わりに "Avere Cluster Runtime Operator" という名前の既存のロールを使用する必要があります。 
-
-1. このファイルをコピーします。 AssignableScopes の行にサブスクリプション ID を追加します。
-
-   (このファイルの現在のバージョンは、github.com/Azure/Avere リポジトリに [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt) として格納されています。)  
-
-   ```json
-   {
-      "AssignableScopes": [
-          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
-      ],
-      "Name": "Avere Operator",
-      "IsCustom": "true",
-      "Description": "Used by the Avere vFXT cluster to manage the cluster",
-      "NotActions": [],
-      "Actions": [
-          "Microsoft.Compute/virtualMachines/read",
-          "Microsoft.Network/networkInterfaces/read",
-          "Microsoft.Network/networkInterfaces/write",
-          "Microsoft.Network/virtualNetworks/read",
-          "Microsoft.Network/virtualNetworks/subnets/read",
-          "Microsoft.Network/virtualNetworks/subnets/join/action",
-          "Microsoft.Network/networkSecurityGroups/join/action",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
-      ],
-      "DataActions": [
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-      ]
-   }
-   ```
-
-1. このファイルを ``avere-operator.json`` として、または同様の覚えやすいファイル名で保存します。 
-
-
-1. Azure Cloud Shell を開き、お使いの ([このドキュメントで前に](#accept-software-terms)説明した) サブスクリプション ID を使用してサインインします。 以下のコマンドを使用して、ロールを作成します。
-
-   ```bash
-   az role definition create --role-definition /avere-operator.json
-   ```
-
-ロール名は、クラスターの作成時に使用されます。 この例では、名前は ``avere-operator`` です。
 
 ## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>仮想ネットワークにストレージ サービス エンドポイントを作成する (必要な場合)
 

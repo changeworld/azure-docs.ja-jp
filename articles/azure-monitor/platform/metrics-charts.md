@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor メトリックス エクスプローラー
-description: Azure Monitor メトリックス エクスプローラーの新機能について説明します
+title: Azure メトリックス エクスプローラーの高度な機能
+description: Azure メトリックス エクスプローラーの高度な機能について説明します
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,51 +8,46 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337077"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271681"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
-Azure Monitor メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリック内の値の急上昇と急降下を調べることができる Microsoft Azure portal のコンポーネントです。 メトリックス エクスプローラーは、Azure でホストされているか Azure Monitor サービスによって監視されているアプリケーションとインフラストラクチャのさまざまなパフォーマンスと可用性の問題を調査するための重要な出発点です。
+> [!NOTE]
+> この記事は、メトリックス エクスプローラーの基本的な機能を理解していることを前提としています。 新規のユーザーで、初めてのメトリック グラフを作成する方法を確認するには、「[Azure メトリックス エクスプローラーの概要](metrics-getting-started.md)」を参照してください。
 
 ## <a name="metrics-in-azure"></a>Azure のメトリック
 
-[Azure Monitor におけるメトリック](data-collection.md#metrics)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 カスタム メトリックは、[カスタム イベントとメトリック用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、[Windows Azure Diagnostics (WAD) 拡張機能](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)、または [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) を使用して、アプリケーションによって Azure に送信されます。
+[Azure Monitor におけるメトリック](data-platform-metrics.md)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 カスタム メトリックは、[カスタム イベントとメトリック用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、[Windows Azure Diagnostics (WAD) 拡張機能](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)、または [Azure Monitor REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) を使用して、アプリケーションによって Azure に送信されます。
 
-## <a name="create-a-new-chart"></a>新しいグラフを作成する
+## <a name="create-views-with-multiple-metrics-and-charts"></a>複数のメトリックとグラフがあるビューを作成する
 
-1. Azure ポータルを開きます
-2. 新しい **[監視]** タブに移動し、その下にある **[メトリック]** を選択します。
+複数のメトリックの線をプロットするグラフを作成することや、一度に複数のメトリック グラフを表示することができます。 この機能を利用すると、次のことが可能になります。
 
-   ![メトリックのイメージ](./media/metrics-charts/00001.png)
+- 1 つの値が別の値とどのように関連しているかを確認できるように、同じグラフ上の関連するメトリックの相互関係を示す
+- 測定単位が異なるメトリックを近くに表示する
+- 複数のリソースのメトリックを視覚的に集計して比較する
 
-3. **メトリック セレクター**が自動的に開きます。 関連付けられているメトリックを表示するには、一覧からリソースを選択します。 一覧には、メトリックがあるリソースのみが表示されます。
+たとえば、5 つのストレージ アカウントがあり、それらの間で消費される合計領域サイズを確認するには、特定の時点における個々の値とすべての値の合計を示す (積み上げ) 面グラフを作成します。
 
-   ![メトリックのイメージ](./media/metrics-charts/00002.png)
+### <a name="multiple-metrics-on-the-same-chart"></a>同じグラフ上の複数のメトリック
 
-   > [!NOTE]
-   >1 つ以上の Azure サブスクリプションがある場合、メトリックス エクスプローラーには、[ポータルの設定] -> [サブスクリプションでフィルター] の一覧で選択されているすべてのサブスクリプションのリソースが表示されます。 これを変更するには、画面上部にある [ポータルの設定] 歯車アイコンをクリックし、使用するサブスクリプションを選択します。
-
-4. 一部のリソースの種類 (ストレージ アカウントと Virtual Machines) では、メトリックを選択する前に **[名前空間]** を選択する必要があります。 各名前空間には、その名前空間のみに関連付けられ、他の名前空間には関連付けられていない独自のメトリック セットがあります。
-
-   たとえば、Azure Storage には、"BLOB"、"ファイル"、"キュー"、および "テーブル" というサブサービスのメトリックがあり、これらは、すべてがストレージ アカウントの一部です。 ただし、"キュー メッセージの数" メトリックは、もちろん "キュー" サブサービスに適用され、それ以外のストレージ アカウントのサブサービスには適用されません。
-
-   ![メトリックのイメージ](./media/metrics-charts/00003.png)
-
-5. 一覧からメトリックを選択します。 メトリックの名前の一部がわかっている場合は、入力を開始して、使用可能なメトリックのフィルター処理された一覧を表示できます。
-
-   ![メトリックのイメージ](./media/metrics-charts/00004.png)
-
-6. メトリックを選択すると、選択したメトリックの既定の集計でグラフが表示されます。 この時点で、**メトリック セレクター**の外側をクリックするだけで、セレクターを閉じることができます。 必要に応じて、グラフを異なる集計に切り替えることもできます。 一部のメトリックでは、集計の切り替えによって、グラフに表示する値を選択できます。 たとえば、平均値、最小値、および最大値の間で切り替えることができます。 
-
-7. **[メトリックの追加]** をクリックして手順 3 から 6 を繰り返すことで、同じグラフにさらにメトリックを追加できます。
+まず、[新しいグラフを作成](metrics-getting-started.md#create-your-first-metric-chart)します。 **[メトリックの追加]** をクリックし、同じ手順を繰り返して同じグラフに別のメトリックを追加します。
 
    > [!NOTE]
    > 通常は、単位が異なるメトリック ("ミリ秒" と "キロバイト") やスケールが大幅に異なるメトリックを 1 つのグラフには表示しません。 代わりに、複数のグラフを使用することを検討してください。 メトリックス エクスプローラーで複数のグラフを作成するには、[グラフの追加] ボタンをクリックします。
+
+### <a name="multiple-charts"></a>複数のグラフ
+
+**[グラフの追加]** をクリックして、異なるメトリックを使用する別のグラフを作成します。
+
+### <a name="order-or-delete-multiple-charts"></a>複数のグラフの並べ替えまたは削除
+
+複数のグラフを並べ替えるには、省略記号 (**...**) をクリックしてグラフ メニューを開き、必要に応じて **[上に移動]**、**[下に移動]**、または **[削除]** を選択します。
 
 ## <a name="apply-filters-to-charts"></a>グラフにフィルターを適用する
 
@@ -76,11 +71,13 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 5. 手順 1 ～ 4 を繰り返して、同じグラフに複数のフィルターを適用できます。
 
+
+
 ## <a name="apply-splitting-to-a-chart"></a>グラフに分割を適用する
 
-メトリックをディメンションによって分割し、メトリックの異なるセグメントの比較を視覚化して、ディメンションの値が異常なセグメントを識別できます。 
+メトリックをディメンションによって分割し、メトリックの異なるセグメントの比較を視覚化して、ディメンションの値が異常なセグメントを識別できます。
 
-### <a name="to-apply-splitting"></a>分割を適用するには
+### <a name="apply-splitting"></a>分割を適用する
 
 1. グラフの上の **[Apply splitting]\(分割の適用\)** をクリックします。
  

@@ -1,21 +1,20 @@
 ---
-title: Jupyter Notebook と Kqlmagic を使用してデータを分析する
-description: このトピックでは、Jupyter Notebook と KQLmagic を使用してデータを分析する方法を説明します
-services: data-explorer
+title: Jupyter Notebook を使用して、Azure Data Explorer 内のデータを分析する
+description: このトピックでは、Jupyter Notebook と Kqlmagic 拡張機能を使用して、Azure Data Explorer 内のデータを分析する方法を説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e7d6148297dd4208374d9900e10564ac4052c67
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756207"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045067"
 ---
-# <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>Jupyter Notebook と KQL magic を使用したデータ分析
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook と Kqlmagic 拡張機能を使用して、Azure Data Explorer 内のデータを分析します。
 
 Jupyter Notebook はオープン ソースの Web アプリケーションであり、ライブ コード、数式、視覚化、説明テキストを含むドキュメントを作成して共有するために使用できます。 用途には、データのクリーニングと変換、数値シミュレーション、統計モデリング、データの視覚化、機械学習などが含まれています。
 [Jupyter Notebook](https://jupyter.org/) では、追加コマンドをサポートすることによってカーネルの機能を拡張するマジック関数がサポートされています。 KQL magic は、Kusto 言語のクエリをネイティブに実行できるように、Jupyter Notebook で Python カーネルの機能を拡張するコマンドです。 Python と Kusto クエリ言語を簡単に組み合わせて、`render` コマンドに統合されたリッチな Plot.ly ライブラリを使用してデータのクエリと視覚化を実行できます。 クエリを実行するためのデータ ソースがサポートされています。 このようなデータ ソースとしては、ログとテレメトリ データのための高速でスケーラブルなデータ探索サービスである Azure Data Explorer や、Azure Monitor ログ、Application Insights などがあります。 KQL magic は、Azure Notebooks、Jupyter Lab、および Visual Studio Code Jupyter 拡張機能でも動作します。

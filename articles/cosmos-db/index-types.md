@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB のインデックスの種類
 description: Azure Cosmos DB でのインデックスの種類の概要
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 3/13/2019
-ms.author: mjbrown
-ms.openlocfilehash: 56c0fcb24ac5d255c6a36bcffd327df76f459963
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: 5e7ee7c0bdfd0cff6be182e6d087cc264910e440
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990546"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271562"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Azure Cosmos DB のインデックスの種類
 
@@ -19,7 +19,7 @@ ms.locfileid: "57990546"
 
 - **データ型**: String、Number、Point、Polygon、LineString (各パスのデータ型ごとにエントリを 1 つだけ含めることができます)。
 
-- **インデックスの種類**: 範囲 (等値、範囲、ORDER BY クエリ)、または空間 (空間クエリ)。
+- **インデックスの種類**: 範囲 (等値、範囲、ORDER BY クエリの場合)、または空間 (空間クエリの場合)。
 
 - **有効桁数**: 範囲インデックスの場合、最大有効桁数は -1 です。これは既定値です。
 
@@ -33,7 +33,7 @@ Azure Cosmos DB では、String、Number、またはその両方のデータ型�
 
 範囲および空間の各インデックスを使用して処理できるクエリの例を次に示します。
 
-| **インデックスの種類** | **説明/ユース ケース** |
+| **インデックスの種類** | **説明またはユース ケース** |
 | ---------- | ---------------- |
 | Range      | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop<br><br>Range を /props/[]/? (または / または /props/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5  |
 | Spatial    | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE ST_DISTANCE(c.prop, {"type":"Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type":"Point", ... }) --ポイントに対するインデックス付けが有効になっている場合<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type":"Polygon", ... }, c.prop) --ポリゴンに対するインデックスが有効になっている場合。 |
@@ -42,9 +42,9 @@ Azure Cosmos DB では、String、Number、またはその両方のデータ型�
 
 - クエリを処理するにはスキャンが必要であることを通知する、任意の有効桁数が指定された範囲インデックス が存在しない場合、既定では、>= のような範囲演算子を使用したクエリにはエラーが返されます。
 
-- "x-ms-documentdb-enable-scan" ヘッダーを REST API で使用するか、.NET SDK で "EnableScanInQuery" 要求オプションを使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。 Azure Cosmos DB でインデックスを使用してフィルター処理できるその他のフィルターがクエリにない場合、エラーは返されません。
+- **x-ms-documentdb-enable-scan** ヘッダーを REST API で使用するか、または .NET SDK を使用した **EnableScanInQuery** 要求オプションで使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。 Azure Cosmos DB でインデックスを使用してフィルター処理できるその他のフィルターがクエリにない場合、エラーは返されません。
 
-- 既定では、空間インデックスがない場合、またはインデックスからサービスを提供できる他のフィルターがない場合、空間クエリにはエラーが返されます。 このようなクエリは、x-ms-documentdb-enable-scan または EnableScanInQuery を使用して、スキャンとして実行できます。
+- 既定では、空間インデックスがない場合、またはインデックスからサービスを提供できる他のフィルターがない場合、空間クエリにはエラーが返されます。 このようなクエリは、**x-ms-documentdb-enable-scan** または **EnableScanInQuery** を使用して、スキャンとして実行できます。
 
 ## <a name="index-precision"></a>インデックスの有効桁数
 

@@ -11,16 +11,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4c330e36210e97172c8f06bbfc3850210e200777
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918945"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260342"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用して Azure 仮想マシンの正常性を把握する
+# <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する 
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Azure Monitor を使用してさまざまな条件を監視することができたものの、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
 
 Azure VM と基になるオペレーティング システムの全体的な正常性状態は、VM の Azure Monitorm の正常性では、仮想マシンからの直接的な観点と、Azure Monitor からのリソース グループ内の全 VM に対する観点という 2 つの観点で観察できます。
@@ -93,7 +93,7 @@ VM に対して定義されている正常性状態の説明をまとめたも�
 |アイコン |正常性の状態 |意味 |
 |-----|-------------|------------|
 | |Healthy |定義されている正常性基準の範囲内にある場合、正常性の状態は正常であり、その VM に関して問題は検出されておらず、要求されたとおりに機能していることを示します。 親ロールアップ モニターの場合は、正常性はロールアップされて、子の最善または最悪の状態を反映します。|
-| |重大 |定義されている正常性基準の範囲内にない場合、正常性の状態は重大です。これは、1 つまたは複数の重大な問題が検出されており、正常な機能に戻すには処置が必要であることを示します。 親ロールアップ モニターの場合は、正常性はロールアップされて、子の最善または最悪の状態を反映します。|
+| |重大 |定義されている正常性基準の範囲内にない場合、正常性の状態は重大です。これは、1 つまたは複数の重大な問題が検出されており、正常な機能に戻すには処置が必要であることを示します。 親ロールアップ モニターでは、正常性はロールアップされて、子の最善または最悪の状態を反映します。|
 | |警告 |定義されている正常性基準の 2 つのしきい値 (1 つは "*警告*" 状態を示し、もう 1 つは "*重大*" 状態を示します) の間にある場合、正常性の状態は警告です (正常性状態の 3 つのしきい値を構成できます)。また、重大な問題の原因となる可能性がある重大ではない問題が検出された場合も、正常性の状態は警告になります (その問題が解決されていない場合)。 親ロールアップ モニターでは、1 つ以上の子が警告状態の場合、親は "*警告*" 状態を反映します。 "*重大*" 状態の子と "*警告*" 状態の子がある場合は、親のロールアップの正常性状態は "*重大*" を示します。|
 | |Unknown |データを収集できない、サービスが初期化されていないなど、何らかの理由により正常性の状態を計算できない場合、正常性状態は "*不明*" 状態になります。この正常性状態は構成できません。| 
 
@@ -133,7 +133,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 
 ![選択した Azure 仮想マシンの VM 分析情報](./media/vminsights-health/vminsights-directvm-health.png)
 
-ここでは、仮想マシンの**正常性状態**のロールアップと重大度別の**アラート**が表示されます。これは、正常性基準の正常性状態が正常から異常に変化したときに生成される VM 正常性アラートを表します。  **[VMs in critical condition]\(重大状態の VM\)** を選択すると、重大な正常性状態になっている VM の一覧のページが開きます。  リスト内の VM のいずれかの正常性状態をクリックすると、VM の **[正常性の診断]** ビューが表示されます。  ここでは、正常性状態の問題を反映している正常性の基準を確認できます。 **[正常性の診断]** ページが開くと、VM のすべてのコンポーネントおよびそれらに関連付けられている正常性基準と現在の正常性状態が示されます。  詳しくは、「[正常性の診断](#health-diagnostics)」セクションをご覧ください。  
+ここでは、仮想マシンの**正常性状態**のロールアップと重大度別の**アラート**が表示されます。これは、正常性基準の正常性状態が正常から異常に変化したときに生成される VM 正常性アラートを表します。  **[VMs in critical condition]\(重大状態の VM\)** を選択すると、重大な正常性状態になっている VM の一覧のページが開きます。  リスト内の VM のいずれかの正常性状態をクリックすると、VM の **[正常性の診断]** ビューが表示されます。  ここでは、正常性状態の問題を反映している正常性の基準を確認できます。 **[正常性の診断]** ページが開くと、VM のすべてのコンポーネントおよびそれらに関連付けられている正常性基準と現在の正常性状態が示されます。 詳細については、「[正常性の診断](#health-diagnostics)」を参照してください。  
 
 **[正常性のすべての条件を表示]** を選択すると、この機能で使用可能なすべての正常性基準の一覧を表示するページが開きます。  次のオプションに基づいて情報をさらにフィルター処理できます。
 
@@ -164,7 +164,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 * 可用性
 * パフォーマンス
  
-論理ディスク、CPU などの特定のコンポーネントに対して定義されているすべての正常性基準。また、**[正常性の基準]** 列の基準の横で監視のカテゴリを確認できます。  
+論理ディスク、CPU などの特定のコンポーネントに定義されたすべての正常性基準は、ページ上で **[可用性]** または **[パフォーマンス]** オプションを選択するときに、2 つのカテゴリ (つまり、すべての基準をまとめたビュー) でフィルター処理せずに表示するか、いずれかのカテゴリで結果をフィルター処理することができます。 また、**[正常性の基準]** 列の基準の横で基準のカテゴリを確認できます。 基準が選択したカテゴリと一致しない場合は、**[正常性の基準]** 列に "**選択したカテゴリに使用できる正常性基準がありません**" というメッセージが表示されます。  
 
 正常性基準の状態は、4 つの状態 (*[重大]*、*[警告]*、*[正常]*、および *[不明]*) のいずれかで定義されます。 最初の 3 つの状態は構成可能です。つまり、[ワークロード監視 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update) を使用して監視のしきい値を変更できます。 *[不明]* は構成不可であり、特定のシナリオのために予約されています。  
 
@@ -241,7 +241,7 @@ VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor
 |リソース グループ |1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 | 
 |リソースの種類 |1 つ以上のリソースの種類を選択します。 既定では、ターゲットが**仮想マシン**のアラートのみが選択されて、このビューに表示されます。 この列は、リソース グループを指定した後でのみ使用できます。 | 
 |Resource |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類を指定した後でのみ使用できます。 | 
-|severity |アラートの重大度を選択するか、または *[すべて]* を選択してすべての重大度のアラートを含めます。 | 
+|Severity |アラートの重大度を選択するか、または *[すべて]* を選択してすべての重大度のアラートを含めます。 | 
 |[Monitor Condition] (監視条件) |アラートをフィルター処理する監視状態として、システムによるアラートの "*生成*" または状態がアクティブではなくなった場合のシステムによる "*解決*" を選択します。 または、"*すべて*" を選択してすべての状態のアラートを含めます。 | 
 |アラートの状態 |アラートの状態を *[新規]*、*[確認済み]*、*[解決済み]* から選択するか、または *[すべて]* を選択してすべての状態のアラートを含めます。 | 
 |サービスの監視 |サービスを選択するか、または *[すべて]* を選択してすべてのサービスを含めます。 この機能では *VM Insights* からのアラートのみがサポートされます。| 
@@ -256,6 +256,64 @@ VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor
 ![選択したアラートの [アラートの詳細] ウィンドウ](./media/vminsights-health/alert-details-pane-01.png)
 
 **[すべてのアラート]** ページでアラートを選択してから左上隅の **[状態の変更]** を選択することで、1 つまたは複数のアラートの状態を変更することもできます。 **[アラートの状態の変更]** ページで状態のいずれかを選択して、**[コメント]** フィールドに変更の説明を追加し、**[OK]** をクリックして変更をコミットします。 情報が検証され、変更が適用されている間、メニューの **[通知]** でその進行状況を追跡することができます。  
+
+### <a name="configure-alerts"></a>アラートを構成する
+一部のアラート管理タスクは Azure portal から管理できないため、[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) を使用して実行する必要があります。 具体的には次の処理が行われます。
+
+- 正常性基準のアラートを有効または無効にする 
+- 正常性基準アラートの通知を設定する 
+
+各例で使用されているアプローチは、お使いの Windows マシンで [ARMClient](https://github.com/projectkudu/armclient) を使用しています。 この方法に慣れていない場合は、「[ARMClient の使用](../platform/rest-api-walkthrough.md#use-armclient)」を参照してください。  
+
+#### <a name="enable-or-disable-alert-rule"></a>アラート ルールを有効または無効にする
+
+特定の正常性基準のアラート ルールを有効または無効にするには、正常性基準のプロパティ *alertGeneration* を **Disabled** または **Enabled** の値に変更する必要があります。 特定の正常性基準の *monitorId* を識別するために、次の例では、基準の **LogicalDisk\Avg Disk Seconds Per Transfer** に対してその値をクエリする方法を示します。
+
+1. ターミナル ウィンドウで、「 **armclient.exe login**」と入力します。 これにより Azure にサインインするよう求められます。
+
+2. 次のコマンドを入力して特定の仮想マシン上でアクティブなすべての正常性基準を取得し、*monitorId* プロパティの値を識別します。 
+
+    ```
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    ```
+
+    次の例は、そのコマンドの出力を示します。 赤色で強調表示されている *MonitorId* の値をメモします。 この値は、次の手順で必要になります。次の手順では、正常性基準の ID を指定し、そのプロパティを変更してアラートを作成する必要があります。
+
+    ![正常性基準のモニター ID の取得例](./media/vminsights-health/get-monitor-identifier-01.png)
+
+3. 次のコマンドを入力して *alertGeneration* プロパティを変更します。
+
+    ```
+    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview 1-preview "{'properties':{'alertGeneration':'Disabled'}}"
+    ```   
+
+4. 手順 2 で使用した GET コマンドを入力して、プロパティの値が **Disabled** に設定されていることを確認します。  
+
+#### <a name="associate-action-group-with-health-criteria"></a>アクション グループを正常性基準と関連付ける
+
+Azure Monitor for VMs Health は、正常性基準が正常ではない状態になってアラートが生成されるときの SMS とメール通知をサポートします。 通知を構成するには、SMS またはメール通知を送信するように構成されているアクション グループの名前をメモする必要があります。 
+
+>[!NOTE]
+>このアクションは、通知を受信する監視対象の各 VM に対して実行する必要があります。
+
+1. ターミナル ウィンドウで、「 **armclient.exe login**」と入力します。 これにより Azure にサインインするよう求められます。
+
+2. 次のコマンドを入力して、アクション グループをアラート ルールに関連付けます。
+ 
+    ```
+    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}" 
+    armclient PUT https://management.azure.com/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings/default?api-version=2018-08-31-preview $payload
+    ```
+
+3. プロパティ **actionGroupResourceIds** の値が正常に更新されたことを確認するには、次のコマンドを入力します。
+
+    ```
+    armclient GET "subscriptions/subscriptionName/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings?api-version=2018-08-31-preview"
+    ```
+
+    出力は次のようになります。
+    
+    ![notificationSettings の取得の出力例](./media/vminsights-health/get-notification-config-status.png)
 
 ## <a name="next-steps"></a>次の手順
 VM のパフォーマンスのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。または、検出されたアプリケーションの依存関係を表示するには、[VM 用 Azure Monitor のマップの表示](vminsights-maps.md)に関するページを参照してください。 

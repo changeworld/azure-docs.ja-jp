@@ -8,18 +8,41 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/03/2019
 ms.author: carlrab
-ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861293"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360092"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
-この記事では、SQL Database サービスの新機能と機能強化、および SQL Database のドキュメントの改善について説明します。 SQL Database サービスの機能強化については、[SQL Database サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-database)も参照してください。 その他の Azure サービスの機能強化については、[サービスの更新情報](https://azure.microsoft.com/updates)を参照してください。
+この記事では、SQL Database サービスの新機能と機能強化、および SQL Database のドキュメントの改善について説明します。 SQL Database サービスの機能強化については、[SQL Database サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-database)も参照してください。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
+
+## <a name="features-in-public-preview"></a>パブリック プレビュー段階の機能
+
+| 機能 | 詳細 |
+| ---| --- |
+| エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください |
+| エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](sql-database-elastic-transactions-overview.md) |
+| エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](sql-database-elastic-query-overview.md)に関する記事をご覧ください |
+| マネージド インスタンスでのレプリケーション |詳しくは、「[Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する](replication-with-sql-database-managed-instance.md)」をご覧ください|
+| マネージド インスタンスでのインスタンス照合順序 |詳しくは、「[PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)」をご覧ください|
+| 単一データベースとエラスティック プールでの R サービス/機械学習 |詳しくは、「[Machine Learning Services in Azure SQL Database (Azure SQL Database での Machine Learning Services)](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)」をご覧ください|
+| 単一データベースとエラスティック プールでの高速データベース復旧 | 詳しくは、「[高速データベース復旧](sql-database-accelerated-database-recovery.md)」をご覧ください|
+| データの検出と分類  |詳しくは、「[Azure SQL Database および SQL Data Warehouse のデータの検出と分類](sql-database-data-discovery-and-classification.md)」をご覧ください|
+| マネージド インスタンスでの Bring Your Own Key (BYOK) の Transparent Data Encryption (TDE) |詳しくは、「[Azure Key Vault のユーザー管理キーを使用した Azure SQL Transparent Data Encryption: Bring Your Own Key のサポート](transparent-data-encryption-byok-azure-sql.md)」をご覧ください|
+| マネージ インスタンスで削除されたデータベースを再作成する |詳しくは、「[Re-create dropped databases in Azure SQL Managed Instance (Azure SQL Managed Instance で削除されたデータベースを再作成する)](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)」をご覧ください|
+| マネージド インスタンスでの脅威の検出 |詳しくは、「[Azure SQL Database Managed Instance で脅威検出を構成する](sql-database-managed-instance-threat-detection.md)」をご覧ください|
+| 単一データベースでのハイパースケール サービス レベル |詳しくは、「[最大 100 TB のハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)」をご覧ください|
+| Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](sql-database-connect-query-portal.md)」をご覧ください|
+|個別の概算数|詳しくは、[個別の概算数](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)に関する記事をご覧ください|
+|行ストアでのバッチ モード (互換性レベル 150)|詳しくは、「[行ストアでのバッチ モード](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)」をご覧ください|
+|メモリ許可フィードバック (行モード) (互換性レベル 150)|詳しくは、「[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)」をご覧ください|
+|テーブル変数の遅延コンパイル (互換性レベル 150)|詳しくは、「[テーブル変数の遅延コンパイル](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)」をご覧ください|
+|||
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -27,7 +50,7 @@ ms.locfileid: "57861293"
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-| 近日対応予定 ||
+| 一般提供: Azure SQL Database の読み取りスケールアウトのサポート | 詳細しくは、[読み取りスケールアウト](sql-database-read-scale-out.md)に関する記事をご覧ください|
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>ドキュメントの改善

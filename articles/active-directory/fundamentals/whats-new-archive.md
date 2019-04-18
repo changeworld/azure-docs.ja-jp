@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b49ce05eb3309f5b21761dc55ab17a1a18f7cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f6fe7b2cefdd29f0497bbc18e969a77ac295ba42
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670933"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051956"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -308,7 +308,7 @@ Azure AD Connect の最新リリースは次のとおりです。
 
 TOU エンドユーザー UI の同意の文字列を更新しています。
 
-**現在のテキスト** [tenantName] リソースにアクセスするには、使用条件に同意する必要があります。<br>**新しいテキスト** [tenantName] リソースにアクセスするには、使用条件を読む必要があります。
+**現在のテキスト。** [tenantName] リソースにアクセスするには、使用条件に同意する必要があります。<br>**新しいテキスト。** [tenantName] リソースにアクセスするには、使用条件を読む必要があります。
 
 **現在のテキスト:** 合意を選択すると上記の使用条件すべてに同意することを意味します。<br>**新しいテキスト:** 使用条件を読んで理解したことを確定するには、[同意する] をクリックしてください。
 
@@ -466,7 +466,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 使用条件 (ToU) の作成時に、"すべてのゲスト" および "すべてのアプリ" 用の新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
 
-詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」を参照してください。
+詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
 ---
 
@@ -478,7 +478,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 使用条件 (ToU) の作成時に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
 
-詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」を参照してください。
+詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
 ---
 
@@ -590,7 +590,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS �
 
 - [BlueJeans](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bluejeans-provisioning-tutorial)
 
-- [Cornerstone OnDemand](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
+- [cornerstone ondemand](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
 
 - [Zendesk](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
 
@@ -739,7 +739,7 @@ SAML ベースの SSO アプリケーションを構成するときに、構成�
  
 管理者が特定の使用条件 (ToU) を選択し、その ToU に同意したすべてのユーザーと、同意された日時を確認できるようになりました。
 
-詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)に関するページを参照してください。
+詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)に関するページを参照してください。
 
 ---
  
@@ -782,7 +782,7 @@ Connect Health で、U/P ログインの失敗のしきい値を超える IP ア
 
 Azure AD Terms of Use がパブリック プレビューから一般公開になりました。
 
-詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)に関するページを参照してください。
+詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)に関するページを参照してください。
 
 ---
 
@@ -916,9 +916,9 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
 
 詳細については、次を参照してください。
 
-- [アプリケーションベースの条件付きアクセスの設定](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [アプリケーションベースの条件付きアクセスの設定に関するページ](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
-- [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)  
+- [Managed Browser ポリシーの構成に関するページ](https://aka.ms/managedbrowser)  
 
 ---
  
@@ -1388,7 +1388,7 @@ MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあり�
 
 詳細については、次を参照してください。
 
-- [Azure Active Directory Reporting API の概要](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
+- [Azure Active Directory レポート API の概要](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
 - [Azure Active Directory Identity Protection と Microsoft Graph の基本](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 
@@ -1414,7 +1414,7 @@ MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあり�
 
 4. 承認した使用条件を確認できます。 
 
-詳細については、「[Azure Active Directory Terms of Use 機能 (プレビュー)](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」をご覧ください。
+詳細については、「[Azure Active Directory Terms of Use 機能 (プレビュー)](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」をご覧ください。
  
 ---
  
@@ -1454,7 +1454,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 [ユーザーは使用条件を展開する必要があります] を **[オン]** にするか **[オフ]** にするかを選択します。 **[オン]** に設定すると、同意前に使用条件を承認するようユーザーに要求します。
 
-詳細については、「[Azure Active Directory Terms of Use 機能 (プレビュー)](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」をご覧ください。
+詳細については、「[Azure Active Directory Terms of Use 機能 (プレビュー)](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」をご覧ください。
  
 ---
 
@@ -1660,13 +1660,13 @@ Azure AD に接続されているすべてのデバイスと、それらのデ�
 Azure AD 条件付きアクセス ポリシーのデバイス プラットフォームの条件に macOS を追加 (または除外) できるようになりました。 サポートされるデバイス プラットフォームに macOS が追加されたことで、以下の操作が可能になりました。
 
 - **Intune を使用して macOS デバイスを登録、管理する。** iOS や Android などのプラットフォームと同様に、macOS でも登録を統合するポータル サイト アプリケーションを使用できるようになりました。 macOS 用の新しいポータル サイト アプリを使用すれば、Intune と Azure AD にデバイスを登録できます。
-- **Intune で定義したご所属の組織のコンプライアンス ポリシーを厳守するよう macOS デバイスを設定する。** Azure Portal の Intune では、macOS デバイス用のコンプライアンス ポリシーを設定できます。 
-- **Azure AD のアプリケーションにアクセスできるデバイスを、ポリシーに準拠した macOS デバイスのみに制限する。** 条件付きアクセス ポリシーを作成する際、別のデバイス プラットフォーム オプションとして macOS を選択できます。 Azure で設定済みのターゲット アプリケーション向けに macOS 専用の条件付きアクセス ポリシーを作成できます。
+- **Intune で定義した組織のコンプライアンス ポリシーに準拠するように macOS デバイスを設定する。** Azure Portal の Intune では、macOS デバイス用のコンプライアンス ポリシーを設定できます。 
+- **Azure AD 内のアプリケーションにアクセスできるデバイスを、ポリシーに準拠した macOS デバイスのみに制限する。** 条件付きアクセス ポリシーを作成する際、別のデバイス プラットフォーム オプションとして macOS を選択できます。 Azure で設定済みのターゲット アプリケーション向けに macOS 専用の条件付きアクセス ポリシーを作成できます。
 
 詳細については、次を参照してください。
 
-- [Intune で macOS デバイス用のデバイス コンプライアンス ポリシーを作成する](https://aka.ms/macoscompliancepolicy)
-- [Azure Active Directory の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+- [Intune による macOS デバイス用のデバイス コンプライアンス ポリシーの作成に関するページ](https://aka.ms/macoscompliancepolicy)
+- [Azure AD の条件付きアクセスに関するページ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
 
@@ -1807,7 +1807,7 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 - ユーザーの属性 (たとえば、動的グループによって行われる、医師と看護師や、国内の従業員と国外の従業員などの区別) に基づいた特定の使用条件
 - ビジネスへの影響が大きいアプリ (Salesforce など) へのアクセスのための特定の使用条件
 
-詳細については、[Azure AD の使用条件](https://docs.microsoft.com/azure/active-directory/active-directory-tou)に関するページをご覧ください。
+詳細については、[Azure AD の使用条件](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)に関するページをご覧ください。
 
 ---
 

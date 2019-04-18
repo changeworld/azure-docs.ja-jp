@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990987"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271069"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT システムの計画
 
@@ -42,7 +42,7 @@ Avere vFXT システムのネットワーク インフラストラクチャを�
 
 * クラスター作成テンプレートは、リソース グループ、仮想ネットワーク、サブネット、およびストレージ アカウントなど、クラスターの必要なインフラストラクチャーのほとんどを作成できます。 既に存在するリソースを使用する場合は、それらのリソースが以下の表の要件を満たしていることを確認してください。 
 
-  | リソース | 既存のリソースを使用するか | 必要条件 |
+  | Resource | 既存のリソースを使用するか | 必要条件 |
   |----------|-----------|----------|
   | リソース グループ | 空の場合、はい | 空でなければならない| 
   | ストレージ アカウント | クラスターの作成後、既存の Blob コンテナーを接続する場合は、はい <br/>  クラスター作成中に新しい Blob コンテナーを作成する場合は、いいえ | 既存の Blob コンテナーは空でなければならない <br/> &nbsp; |
@@ -130,6 +130,17 @@ Azure クラスターの Avere vFXT は、プライベート サブネット内�
 
 * 新しい vnet またはサブネットを作成する場合は、クラスター コントローラーにパブリック IP アドレスが割り当てられます。
 * 既存の vnet とサブネットを選択すると、クラスター コントローラーはプライベート IP アドレスのみを持つことになります。 
+
+## <a name="vm-access-roles"></a>VM アクセス ロール 
+
+Azure では、[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用し、クラスターの VM を承認して特定のタスクを実行します。 たとえば、クラスター コントローラーは、クラスター ノード VM を作成して構成するための承認を必要とします。 クラスター ノードは、IP アドレスを他のクラスター ノードに割り当てたり、再割り当てしたりできる必要があります。
+
+Avere vFXT 仮想マシンでは、次の 2 つの組み込み Azure ロールが使用されます。 
+
+* クラスター コントローラーには、組み込みロール [Avere Contributor](../role-based-access-control/built-in-roles.md#avere-contributor) が使用されます。 
+* クラスター ノードには、組み込みロール [Avere Operator](../role-based-access-control/built-in-roles.md#avere-operator) が使用されます。
+
+Avere vFXT コンポーネントのアクセス ロールをカスタマイズする必要がある場合は、独自のロールを定義して、VM に対しその作成時に割り当てる必要があります。 Azure Marketplace ではデプロイ テンプレートを使用できません。 「[お使いのシステムでサポートを受ける](avere-vfxt-open-ticket.md)」の説明に従って Azure portal からサポート チケットを開き、マイクロソフト カスタマー サービスおよびサポートに相談してください。 
 
 ## <a name="next-step-understand-the-deployment-process"></a>次のステップ: デプロイ プロセスを理解する
 

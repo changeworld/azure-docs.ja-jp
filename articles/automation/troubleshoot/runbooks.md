@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805076"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267346"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -483,6 +483,29 @@ Webhook が無効な場合は、Azure portal から Webhook を再度有効に�
 
 * Runbook を編集し、出力されるジョブ ストリームの数を減らします。
 * コマンドレットを実行するときに取得されるストリーム数を減らします。 この動作の後に、`Get-AzureRmAutomationJobOutput` コマンドレットに `-Stream Output` パラメーターを指定して出力ストリームのみを取得することができます。 
+
+### <a name="cannot-invoke-method"></a>シナリオ:PowerShell ジョブが次のエラーで失敗する: メソッドを呼び出せません
+
+#### <a name="issue"></a>問題
+
+Azureで実行されている Runbook で PowerShell ジョブを開始しているときに、次のエラー メッセージが表示されます。
+
+```error
+Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
+```
+
+#### <a name="cause"></a>原因
+
+Azure で実行された Runbook で PowerShell ジョブを開始すると、このエラーが発生することがあります。 この動作が発生するのは、Azure サンドボックスで実行された Runbook が[完全言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行されないことがあるためです。
+
+#### <a name="resolution"></a>解決策
+
+このエラーを解決するには、次の 2 つの方法があります。
+
+* `Start-Job` の代わりに `Start-AzureRmAutomationRunbook` を使用して Runbook を開始する
+* お使いの Runbook でこのエラー メッセージが表示された場合、それを Hybrid Runbook Worker で実行する
+
+この動作や、Azure Automation Runbook の他の動作の詳細については、「[Runbook の動作](../automation-runbook-execution.md#runbook-behavior)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

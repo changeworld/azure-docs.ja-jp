@@ -45,4 +45,4 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Terms of use を使用してできること</a>
+          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">利用規約でできること</a>

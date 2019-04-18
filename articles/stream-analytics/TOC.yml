@@ -23,7 +23,7 @@ items:
     href: stream-analytics-javascript-user-defined-functions.md
   - name: 4 - Azure Pipelines での CI/CD によるデプロイ
     href: stream-analytics-tools-visual-studio-cicd-vsts.md
-  - name: 5 - Edge での C# UDF の実行
+  - name: 5 - IoT Edge での C# UDF の実行
     href: stream-analytics-edge-csharp-udf.md
 - name: サンプル
   items:
@@ -142,7 +142,7 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: Azure PowerShell の使用
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: Edge ジョブへの API の使用
+    - name: IoT Edge ジョブへの API の使用
       href: stream-analytics-cicd-api.md
   - name: Visual Studio Tools
     items:
@@ -154,11 +154,11 @@ items:
       href: stream-analytics-live-data-local-testing.md
     - name: Visual Studio でのジョブの表示
       href: stream-analytics-vs-tools.md
-    - name: Edge ジョブの開発
+    - name: エッジ ジョブの開発
       href: stream-analytics-tools-for-visual-studio-edge-jobs.md
     - name: CI/CD パイプラインの設定
       href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: Edge 用に .NET UDF を記述する
+    - name: Edge 用の .NET UDF の記述
       href: stream-analytics-edge-csharp-udf-methods.md
   - name: トラブルシューティング
     items:
@@ -365,6 +365,9 @@ items:
       - name: POWER
         href: /stream-analytics-query/power-azure-stream-analytics
         maintainContext: true
+      - name: ROUND
+        href: /stream-analytics-query/round-azure-stream-analytics.md
+        maintainContext: true
       - name: SIGN
         href: /stream-analytics-query/sign-azure-stream-analytics
         maintainContext: true
@@ -408,6 +411,9 @@ items:
       - name: REGEXMATCH
         href: /stream-analytics-query/regexmatch-azure-stream-analytics
         maintainContext: true
+      - name: REPLACE
+        href: /stream-analytics-query/replace-azure-stream-analytics.md
+        maintainContext: true
       - name: SUBSTRING
         href: /stream-analytics-query/substring-azure-stream-analytics
         maintainContext: true
@@ -449,6 +455,9 @@ items:
       maintainContext: true
     - name: CASE
       href: /stream-analytics-query/case-azure-stream-analytics
+      maintainContext: true
+    - name: COALESCE
+      href: /stream-analytics-query/coalesce-azure-stream-analytics.md
       maintainContext: true
     - name: CREATE TABLE
       href: /stream-analytics-query/create-table-stream-analytics
@@ -536,9 +545,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: b4b6bf1578e2e8b30e04b93717bfe679d86b25ff
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: ddb035686e8788710aeea5c6dc532ef6a87310a0
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360128"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609355"

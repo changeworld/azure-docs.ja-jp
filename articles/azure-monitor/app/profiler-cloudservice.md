@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895483"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470859"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -33,7 +33,7 @@ Application Insights Profiler は、Azure 診断拡張機能と共にインス�
 
 1. [Application Insights SDK を Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) に追加します。
 
-   >**Cloud Services 向けの WAD の最新バージョンに付属しているプロファイラーにはバグがあります。** クラウド サービスでプロファイラーを使用するために、サポートされる AI SDK はバージョン 2.7.2 までのみです。 AI SDK の新しいバージョンを使用している場合は、プロファイラーを使用するために、2.7.2 に戻す必要があります。 Visual Studio を使用して、App Insights SDK のバージョンをダウングレードすると、実行時にバインド リダイレクト エラーが発生する可能性があります。 これは、AI SDK のダウングレード後に web.config ファイル内の Microsoft.ApplicationInsights の "newVersion" を "2.7.2.0" に設定する必要がありますが、自動的に更新されないからです。
+    **Cloud Services 向けの WAD に付属しているプロファイラーのバグが修正されました。** Cloud Services 向け WAD の最新バージョン (1.12.2.0) は、最近リリースされたすべての App Insights SDK バージョンで動作します。 Cloud Service のホストでは WAD が自動的にアップグレードされますが、即時に行われるわけではありません。 アップグレードを強制するには、サービスを再デプロイするか、ノードを再起動します。
 
 1. Application Insights で要求を追跡します。
 

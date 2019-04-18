@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983383"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426224"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Azure での Agent Health ソリューション
-Azure において Agent Health ソリューションを使用すると、Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
+#  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor での Agent Health ソリューション
+Azure において Agent Health ソリューションを使用すると、Azure Monitor の Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../../log-analytics/log-analytics-windows-agent.md)が、Log Analytics ワークスペースに対して、またはワークスペースに統合されている [Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)に対して報告を行っていることを確認してください。
@@ -62,8 +62,8 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 | Distribution by OS Type (OS の種類ごとの分布) | 対象の環境に存在する Windows エージェントと Linux エージェントの区分。|
 | Distribution by Agent Version (エージェントのバージョンごとの分布) | 対象の環境にインストールされている各種エージェント バージョンの区分と各バージョンの数。|
 | Distribution by Agent Category (エージェントのカテゴリごとの分布) | ハートビート イベントを送信するエージェントの各カテゴリの区分 (ダイレクト エージェント、OpsMgr エージェント、または OpsMgr 管理サーバー)。|
-| Distribution by Management Group (管理グループごとの分布) | 対象の環境に存在する各種 SCOM 管理グループの区分。|
-| Geo-location of Agents (エージェントの地理的な位置) | エージェントが存在する国の区分と、それぞれの国でインストールされているエージェントの総数。|
+| 管理グループごとの分布 | 対象の環境に存在する各種 Operations Manager 管理グループの区分。|
+| エージェントの地理的な位置 | エージェントが存在する国の区分と、それぞれの国でインストールされているエージェントの総数。|
 | Count of Gateways Installed (インストールされたゲートウェイの数) | Log Analytics ゲートウェイがインストールされているサーバーの数とその一覧。|
 
 ![Agent Health ソリューション ダッシュボードの例](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  
@@ -76,21 +76,21 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 
 | プロパティ | 説明 |
 | --- | --- |
-| type | *Heartbeat*|
-| Category | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
-| Computer | コンピューター名。|
-| OSType | Windows または Linux オペレーティング システム。|
-| OSMajorVersion | オペレーティング システムのメジャー バージョン。|
-| OSMinorVersion | オペレーティング システムのマイナー バージョン。|
-| Version | Log Analytics エージェントまたは Operations Manager エージェントのバージョン。|
-| SCAgentChannel | *Direct* と *SCManagementServer* のいずれかの値になります。|
-| IsGatewayInstalled | Log Analytics ゲートウェイがインストールされている場合、値は *true* です。それ以外の場合は *false* になります。|
-| ComputerIP | コンピューターの IP アドレス。|
-| RemoteIPCountry | コンピューターがデプロイされている地理的位置。|
-| ManagementGroupName | Operations Manager 管理グループの名前。|
-| SourceComputerId | コンピューターの一意の ID。|
-| RemoteIPLongitude | コンピューターの地理的位置の経度。|
-| RemoteIPLatitude | コンピューターの地理的位置の緯度。|
+| `Type` | *Heartbeat*|
+| `Category` | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
+| `Computer` | コンピューター名。|
+| `OSType` | Windows または Linux オペレーティング システム。|
+| `OSMajorVersion` | オペレーティング システムのメジャー バージョン。|
+| `OSMinorVersion` | オペレーティング システムのマイナー バージョン。|
+| `Version` | Log Analytics エージェントまたは Operations Manager エージェントのバージョン。|
+| `SCAgentChannel` | *Direct* と *SCManagementServer* のいずれかの値になります。|
+| `IsGatewayInstalled` | Log Analytics ゲートウェイがインストールされている場合、値は *true* です。それ以外の場合は *false* になります。|
+| `ComputerIP` | コンピューターの IP アドレス。|
+| `RemoteIPCountry` | コンピューターがデプロイされている地理的位置。|
+| `ManagementGroupName` | Operations Manager 管理グループの名前。|
+| `SourceComputerId` | コンピューターの一意の ID。|
+| `RemoteIPLongitude` | コンピューターの地理的位置の経度。|
+| `RemoteIPLatitude` | コンピューターの地理的位置の緯度。|
 
 Operations Manager 管理サーバーに対して報告を行う各エージェントからは 2 つのハートビートが送信され、サブスクリプション内で有効にしたデータ ソースと監視ソリューションによっては、SCAgentChannel プロパティが **Direct** および **SCManagementServer** の両方の値を取ります。 ソリューションからのデータは、Operations Manager 管理サーバーから Azure Monitor に直接送信される場合と、エージェントで収集されるデータのボリュームが原因で、エージェントから Azure Monitor に直接送信される場合とがあることを思い出してください。 この値が **SCManagementServer** であるハートビート イベントの場合、データは実質的に管理サーバーによってアップロードされるため、ComputerIP の値は、管理サーバーの IP アドレスになります。  SCAgentChannel が **Direct** に設定されているハートビートの場合は、エージェントのパブリック IP アドレスになります。  
 
@@ -117,4 +117,4 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 
 ## <a name="next-steps"></a>次の手順
 
-* Log Analytics からのアラートの生成について詳しくは、[Azure Monitor のアラート](../platform/alerts-overview.md)に関するページを参照してください。 
+* ログ クエリからのアラートの生成について詳しくは、[Azure Monitor でのアラート](../platform/alerts-overview.md)に関する記事をご覧ください。 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 Android クイック スタート | Microsoft Docs
-description: Android アプリケーションで、アクセス トークンを必要とする API を Azure Active Directory v2.0 エンドポイントから呼び出す方法
+title: Microsoft ID プラットフォーム Android のクイック スタート | Azure
+description: Android アプリケーションで、Microsoft ID プラットフォーム エンドポイントによるアクセス トークンを必要とする API を呼び出す方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/11/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd78e6acd801f3b973cc45609b72f86b257f4d43
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862762"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495313"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "58862762"
 
 このクイック スタートには、Android アプリケーションから個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
 
-![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-android/android-intro-updated.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **前提条件**
@@ -47,7 +47,7 @@ ms.locfileid: "58862762"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリを登録するには、
-> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) に移動します。
+> 1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs) ウィンドウに移動します。
 > 1. アプリケーションの名前を入力し、**[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -58,7 +58,8 @@ ms.locfileid: "58862762"
 >
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 > 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-> 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** > **[新規登録]** を選択します。
+> 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+> 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `Android-Quickstart`)。
 >      - [`Register`] ボタンをクリックします。
@@ -145,7 +146,7 @@ ms.locfileid: "58862762"
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) はユーザーにサインインし、Microsoft Azure Active Directory (Azure AD) によって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 Gradle を使用してこれをインストールするには、**Gradle Scripts** > **build.gradle (Module: app)** の **Dependencies** に以下を追加します。
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API へのアクセス用のトークンを要求するために使用するライブラリです。 Gradle を使用してこれをインストールするには、**Gradle Scripts** > **build.gradle (Module: app)** の **Dependencies** に以下を追加します。
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -178,7 +179,7 @@ MSAL には、トークンの取得に使用する 2 つのメソッドがあり
 
 #### <a name="getting-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-Azure AD v2.0 エンドポイントの操作が強制される場合があります。その場合、コンテキストがシステム ブラウザーに切り替わり、ユーザーの資格情報の検証または同意が求められます。 次に例をいくつか示します。
+ユーザーは Microsoft ID プラットフォーム エンドポイントの操作を強制される場合があります。その場合、コンテキストがシステム ブラウザーに切り替わり、ユーザーの資格情報の検証または同意が求められます。 次に例をいくつか示します。
 
 * ユーザーが初めてアプリケーションにサインインした場合
 * パスワードの有効期限が切れているため、ユーザーが資格情報を再入力する必要がある場合

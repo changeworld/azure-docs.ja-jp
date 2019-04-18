@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2580f1177bf9e6e3a92934f88a5d8ab51894e8d9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500051"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269488"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>マップにシンボル レイヤーを追加する
 
 この記事では、データ ソースからのポイント データをマップ上にシンボル レイヤーとしてレンダリングする方法について説明します。 シンボル レイヤーは WebGL を使用してレンダリングされ、HTML マーカーよりはるかに多くのデータ ポイントをサポートしますが、従来の CSS と HTML 要素のスタイルはサポートしていません。  
 
 > [!TIP]
-> シンボル レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', '$type', 'Point']` に設定します。
+> シンボル レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'Point']` に設定します。または、MultiPoint フィーチャーも含める場合は、`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` に設定します。
 
 ## <a name="add-a-symbol-layer"></a>シンボル レイヤーを追加する
 
@@ -34,14 +34,14 @@ ms.locfileid: "58500051"
 
 3 番目のコード ブロックでは、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が作成され、マウス クリック時にシェイプ クラスの [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) メソッドを使用して、ポイントの座標が更新されます。
 
-[シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  データ ソース、クリック イベント リスナー、およびシンボル レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、ポイントが表示されます。
+[シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  データ ソース、クリック イベント リスナー、およびシンボル レイヤーが作成され、`ready` [イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが読み込まれてアクセス可能な状態になった後に、ポイントが表示されます。
 
 > [!TIP]
 > 既定では、パフォーマンスのために、重複するシンボルがシンボル レイヤーによって非表示になり、シンボルのレンダリングが最適化されます。 非表示のシンボルを拡大すると、表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconOptions` オプションの `allowOverlap` プロパティを `true` に設定します。
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>シンボル レイヤーにカスタム アイコンを追加する
 
-シンボル レイヤーは WebGL を使用してレンダリングされます。 このため、アイコンの画像などのすべてのリソースを WebGL コンテキストに読み込む必要があります。 このサンプルでは、カスタム シンボル アイコンをマップ リソースに追加した後、それを使用してカスタム シンボルとポイント データをマップ上にレンダリングする方法を示します。 シンボル レイヤーの `textField` プロパティに式を指定する必要があります。 ここでは、ポイント フィーチャーの温度プロパティをテキスト値としてレンダリングします。 これは、この式 (`['get', 'temperature']`) で実現できます。 
+シンボル レイヤーは WebGL を使用してレンダリングされます。 このため、アイコンの画像などのすべてのリソースを WebGL コンテキストに読み込む必要があります。 このサンプルでは、カスタム アイコンをマップ リソースに追加した後、それを使用してカスタム シンボルとポイント データをマップ上にレンダリングする方法を示します。 シンボル レイヤーの `textField` プロパティに式を指定する必要があります。 このケースでは、温度プロパティをレンダリングします。ただし、このプロパティは数値なので、文字列に変換する必要があります。 加えて、そこに "°F" を追加したいと思います。 `['concat', ['to-string', ['get', 'temperature']], '°F']` という式を使えば、それを実現できます。 
 
 <br/>
 
@@ -76,13 +76,16 @@ ms.locfileid: "58500051"
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [ポップアップを追加する](./map-add-popup.md)
+> [ポップアップを追加する](map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [シェイプを追加する](./map-add-shape.md)
+> [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [バブル レイヤーを追加する](./map-add-bubble-layer.md)
+> [図形を追加する](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [HTML マーカーを追加する](./map-add-bubble-layer.md)
+> [バブル レイヤーを追加する](map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [HTML マーカーを追加する](map-add-bubble-layer.md)

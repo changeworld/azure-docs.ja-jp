@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338656"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469099"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する 
+# <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する
 
-Bing Visual Search API は、Bing.com/images に表示される画像の詳細のようなエクスペリエンスを提供します。 Visual Search を使うと、画像を指定して、見た目が似た画像、ショッピング ソース、画像を含む Web ページなど、画像に関する分析情報を取得できます。 
+Bing Visual Search API は、画像に関する分析情報を返します。 画像をアップロードするか、画像の URL を指定することができます。 分析情報とは、視覚的に似ている画像、ショッピング ソース、その画像が含まれる Web ページなどです。 Bing Visual Search API によって返される分析情報は、Bing.com/images に表示される情報と似ています。
 
-この記事では、Bing Image Search API 用にシングルページ Web アプリを拡張する方法について説明します。 そのチュートリアルを見たり、ここで使用されるソース コードを取得したりするには、「[チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)」をご覧ください。 
+このチュートリアルでは、Bing Image Search API 用にシングルページ Web アプリを拡張する方法について説明します。 そのチュートリアルを見たり、ここで使用されるソース コードを取得したりするには、「[チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)」をご覧ください。
 
 このアプリケーションの完全なソース コード (Bing Visual Search API を使用するように拡張した後のもの) は、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) で入手できます。
 
@@ -65,7 +65,6 @@ function handleVisualSearchResponse(){
 
 次のコードでは、検索要求を API に送信し、イベント リスナーを使用して `handleVisualSearchResponse()` を呼び出します。
 
-
 ```javascript
 function bingVisualSearch(insightsToken){
     let visualSearchBaseURL = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch',
@@ -83,8 +82,8 @@ function bingVisualSearch(insightsToken){
     let requestBody = startBoundary + newLine;
     requestBody += bodyHeader;
     requestBody += JSON.stringify(postBody) + newLine + newLine;
-    requestBody += endBoundary + newLine;       
-    
+    requestBody += endBoundary + newLine;
+
     let request = new XMLHttpRequest();
 
     try {
@@ -102,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>分析情報トークンをキャプチャする
 
-次のコードを `searchItemsRenderer` オブジェクトに追加します。 このコードは、クリックされたときに `bingVisualSearch` 関数を呼び出す **find similar** リンクを追加します。 この関数は引数として imageInsightsToken を受け取ります。
+次のコードを `searchItemsRenderer` オブジェクトに追加します。 このコードは、クリックされたときに `bingVisualSearch` 関数を呼び出す **find similar** リンクを追加します。 この関数は引数として `imageInsightsToken` を受け取ります。
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -110,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>類似した画像を表示する
 
-次の HTML コードを 601 行目に追加します。 このマークアップ コードは、Bing Visual Search API 呼び出しの結果の表示に使用される要素を追加します。
+次の HTML コードを 601 行目に追加します。 このマークアップ コードでは、Bing Visual Search API 呼び出しの結果を表示するための要素が追加されます。
 
 ``` html
 <div id="insights">
@@ -124,4 +123,4 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [画像をトリミングしてアップロードする](tutorial-visual-search-crop-area-results.md)
+> [チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする](tutorial-visual-search-crop-area-results.md)
