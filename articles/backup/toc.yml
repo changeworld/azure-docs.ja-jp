@@ -68,6 +68,8 @@ items:
     href: backup-azure-backup-server-import-export-.md
   - name: テープ ライブラリからの移行
     href: backup-azure-backup-cloud-as-tape.md
+  - name: Azure の一般的なセキュリティ属性
+    href: backup-security-attributes.md
 - name: 方法
   items:
   - name: Azure Backup Server
@@ -266,8 +268,6 @@ items:
     href: /azure/templates/microsoft.recoveryservices/allversions
 - name: リソース
   items:
-  - name: 一般的なセキュリティ属性
-    href: backup-security-attributes.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: MSDN フォーラム
@@ -280,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 6c11bfcedc01bfc3c1dfcdc16b04ddccfdaf4bb9
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: b9fa6548951ca06a8568a00bbafe5c24518923ab
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851141"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681082"

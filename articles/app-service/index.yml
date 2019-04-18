@@ -106,7 +106,7 @@ sections:
         style: ordered
         items:
           - html: <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET と Azure SQL DB</a> または <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">既存のカスタム ドメインをアプリケーションにマップする </a>
+          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">既存のカスタム ドメインをアプリケーションにマップする</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">既存の SSL 証明書をアプリケーションにバインドする</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">CDN をアプリケーションに追加する</a>
   - title: Microsoft Learn でスキルを身に付ける

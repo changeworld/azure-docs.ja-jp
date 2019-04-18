@@ -22,8 +22,8 @@ items:
   items:
   - name: ASP.NET Core で動的な構成を有効にする
     href: enable-dynamic-configuration-aspnet-core.md
-  - name: Azure マネージド サービス ID と統合する
-    href: integrate-azure-managed-service-identity.md
+  - name: CI/CD パイプラインとの統合
+    href: integrate-ci-cd-pipeline.md
 - name: サンプル
   items:
   - name: Azure CLI
@@ -36,10 +36,10 @@ items:
     href: concept-point-time-snapshot.md
 - name: ハウツー ガイド
   items:
+  - name: Azure マネージド サービス ID と統合する
+    href: howto-integrate-azure-managed-service-identity.md
   - name: 構成データのインポートまたはエクスポート
     href: howto-import-export-data.md
-  - name: CI/CD パイプラインとの統合
-    href: howto-integrate-ci-cd-pipeline.md
 - name: リファレンス
   items:
   - name: .NET Core 構成プロバイダー
@@ -56,9 +56,9 @@ items:
   items:
   - name: 製品フィードバックの提供
     href: https://github.com/Azure/AppConfiguration
-ms.openlocfilehash: c4712f08112a1abaf8524677746d9c0e929ee097
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 74de90cd0e8274f7192b177c41aba165eabbed40
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576413"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699612"

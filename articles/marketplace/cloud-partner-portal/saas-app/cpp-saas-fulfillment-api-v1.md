@@ -12,141 +12,35 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 5c25d6703fe631a401994039200539156cc7b4de
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579463"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009736"
 ---
-# <a name="saas-fulfillment-apis-version-1"></a>SaaS Fulfillment API バージョン 1
+# <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS Fulfillment API バージョン 1 (非推奨)
 
-この記事では、API を使用して SaaS オファーを作成する方法について説明します。 API は、Azure を通じた販売を選択した場合に、SaaS オファーへのサブスクリプションを許可するために必要です。  
+この記事では、API を使用して SaaS オファーを作成する方法について説明します。 API は REST メソッドとエンドポイントで構成され、Azure を通じた販売を選択した場合に、SaaS オファーへのサブスクリプションを許可するために必要です。  
 
 > [!WARNING]
-> この最初のバージョンの SaaS Fulfillment API は非推奨になっています。代わりに [SaaS Fulfillment API V2](./cpp-saas-fulfillment-api-v2.md) をご利用ください。
-
-
-この記事は、次の 2 つのセクションに分かれています。
-
--   SaaS サービスと Azure Marketplace とのサービス間認証
--   API メソッドとエンドポイント
+> この最初のバージョンの SaaS Fulfillment API は非推奨になっています。代わりに [SaaS Fulfillment API V2](./cpp-saas-fulfillment-api-v2.md) をご利用ください。  この API は、既存のパブリッシャーにサービスを提供するためにのみ、現在も維持されています。 
 
 SaaS サービスと Azure の統合を支援するために、以下の API シリーズが用意されています。
 
 -   解決
 -   購入
--   Convert
+-   変換
 -   サブスクライブ解除
 
-次の図は、新しい顧客のサブスクリプションのフローと、これらの API をいつ使用するかを示しています。
 
-![SaaS オファーの API フロー](./media/saas-offer-publish-api-flow-v1.png)
-
-
-## <a name="service-to-service-authentication-between-saas-service-and-azure-marketplace"></a>SaaS サービスと Azure Marketplace とのサービス間認証
-
-Azure では、SaaS サービスがそのエンド ユーザーに公開する認証に対して、制約がありません。 ただし、Azure Marketplace API シリーズと通信する SaaS サービスについては、Azure Active Directory (Azure AD) アプリケーションのコンテキストで認証が行われます。
-
-次のセクションでは、Azure AD アプリケーションを作成する方法について説明します。
-
-
-### <a name="register-an-azure-ad-application"></a>Azure AD アプリケーションの登録
-
-アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーが認証された後の応答の送信先となる URL、アプリを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
-
-Azure portal を使用して新しいアプリケーションを登録するには、次の手順を実行します。
-
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
-3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
-
-   ![SaaS AD のアプリ登録](./media/saas-offer-app-registration-v1.png)
-
-4. [作成] ページで、アプリケーションの登録情報を入力します。
-   - **[名前]**:わかりやすいアプリケーション名を入力します
-   - **アプリケーションの種類**: 
-     - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
-     - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
-     同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
-   - **サインオン URL**:Web アプリまたは API アプリケーションの場合は、アプリのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http:\//localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
-   - **リダイレクト URI**:ネイティブ アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 **http:\//MyFirstAADApp** など、ご自分のアプリケーションに固有の値を入力してください。
-
-     ![SaaS AD のアプリ登録](./media/saas-offer-app-registration-v1-2.png)
-
-     Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
-
-5. 完了したら、**[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
-
->[!Note]
->既定では、新しく登録されたアプリケーションは、同じテナントのユーザーのみサインインできる構成になります。
-
-<a name="api-methods-and-endpoints"></a>API メソッドとエンドポイント
--------------------------
+## <a name="api-methods-and-endpoints"></a>API メソッドとエンドポイント
 
 以降のセクションでは、SaaS オファーのサブスクリプションを有効にするために使用できる API メソッドとエンドポイントについて説明します。
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Azure AD アプリに基づいたトークンの取得
-
-HTTP メソッド
-
-`GET`
-
-*要求 URL*
-
-**https://login.microsoftonline.com/*{tenantId}*/oauth2/token**
-
-*URI パラメーター*
-
-|  **パラメーター名**  | **必須**  | **説明**                               |
-|  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True          | 登録された AAD アプリケーションのテナント ID   |
-|  |  |  |
-
-
-*要求ヘッダー*
-
-|  **ヘッダー名**  | **必須** |  **説明**                                   |
-|  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True         | 要求に関連付けられたコンテンツの種類。 既定値は `application/x-www-form-urlencoded` です。  |
-|  |  |  |
-
-
-*要求本文*
-
-| **プロパティ名**   | **必須** |  **説明**                                                          |
-| -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | 付与タイプ。 既定値は `client_credentials` です。                    |
-|  Client_id          | True         |  Azure AD アプリに関連付けられているクライアントまたはアプリの識別子。                  |
-|  client_secret      | True         |  Azure AD アプリに関連付けられているパスワード。                               |
-|  リソース           | True         |  トークンを要求されたターゲット リソース。 既定値は `62d94f6c-d599-489b-a797-3e10e42fbe22` です。 |
-|  |  |  |
-
-
-*応答*
-
-|  **名前**  | **種類**       |  **説明**    |
-| ---------- | -------------  | ------------------- |
-| 200 OK    | TokenResponse  | 要求成功   |
-|  |  |  |
-
-*TokenResponse*
-
-サンプル応答トークン:
-
-``` json
-  {
-      "token_type": "Bearer",
-      "expires_in": "3600",
-      "ext_expires_in": "0",
-      "expires_on": "15251…",
-      "not_before": "15251…",
-      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
-  }               
-```
 
 ### <a name="marketplace-api-endpoint-and-api-version"></a>Marketplace API エンドポイントと API バージョン
 
@@ -196,7 +90,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 }
 ```
 
-| **パラメーター名** | **データの種類** | **説明**                       |
+| **パラメーター名** | **データ型** | **説明**                       |
 |--------------------|---------------|---------------------------------------|
 | id                 | String        | SaaS サブスクリプションの ID。          |
 | subscriptionName| String| SaaS サービスへのサブスクライブ中に、Azure でユーザーによって設定される SaaS サブスクリプションの名前。|
@@ -217,18 +111,18 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 |  |  |  |
 
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | はい          | クライアントから受け取った要求 ID。                                                                   |
 | x-ms-correlationid | はい          | クライアントから渡される場合は、関連付け ID。そうでない場合は、この値はサーバー関連付け ID。                   |
-| x-ms-activityid    | はい          | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。 |
+| x-ms-activityid    | はい          | サービスからの要求を追跡するための一意の文字列値。 この ID は任意の調整に使用されます。 |
 | Retry-After        | いいえ            | この値は、429 応答に対してのみ設定されます。                                                                   |
 |  |  |  |
 
 
-### <a name="subscribe"></a>購入
+### <a name="subscribe"></a>サブスクライブ
 
 サブスクライブ エンドポイントを使用すると、ユーザーは指定したプランの SaaS サービスへのサブスクリプションを開始し、商取引システムで課金を有効にすることができます。
 
@@ -262,7 +156,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 }
 ```
 
-| **要素名** | **データの種類** | **説明**                      |
+| **要素名** | **データ型** | **説明**                      |
 |------------------|---------------|--------------------------------------|
 | planId           | (必須) 文字列        | ユーザーがサブスクライブする SaaS サービスのプラン ID。  |
 |  |  |  |
@@ -282,7 +176,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 202 応答の場合は、"Operation-location" ヘッダーで要求操作の状態を追跡します。 認証は、他の Marketplace API と同じです。
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -307,7 +201,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | api-version         | この要求で使用する操作のバージョン。 |
 |  |  |
 
-*ヘッダー*
+*headers*
 
 | **ヘッダー キー**          | **必須** | **説明**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
@@ -326,7 +220,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 }
 ```
 
-|  **要素名** |  **データの種類**  | **説明**                              |
+|  **要素名** |  **データ型**  | **説明**                              |
 |  ---------------- | -------------   | --------------------------------------       |
 |  planId           |  (必須) 文字列         | ユーザーがサブスクライブする SaaS サービスのプラン ID。          |
 |  |  |  |
@@ -344,7 +238,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | 503                  | `ServiceUnavailable` | サービスが一時的にダウンしています。後で再試行してください。                          |
 |  |  |  |
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -359,9 +253,9 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 サブスクライブ エンドポイントでの DELETE アクションにより、ユーザーは特定の ID のサブスクリプションを削除することができます。
 
-*要求*
+*Request*
 
-**DELETE**
+**削除**
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
@@ -371,7 +265,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | api-version         | この要求で使用する操作のバージョン。 |
 |  |  |
 
-*ヘッダー*
+*headers*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
@@ -394,7 +288,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 202 応答の場合は、"Operation-location" ヘッダーで要求操作の状態を追跡します。 認証は、他の Marketplace API と同じです。
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -442,7 +336,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 }
 ```
 
-| **パラメーター名** | **データの種類** | **説明**                                                                                                                                               |
+| **パラメーター名** | **データ型** | **説明**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | String        | 操作の ID。                                                                      |
 | status             | 列挙型          | 操作の状態。`In Progress`、`Succeeded`、`Failed` のいずれか。          |
@@ -463,7 +357,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | 503                  | `ServiceUnavailable` | サービスが一時的にダウンしています。後で再試行してください。                             |
 |  |  |  |
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -477,7 +371,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 サブスクライブ エンドポイントでの GET アクションにより、ユーザーは特定のリソース ID のサブスクリプションを取得することができます。
 
-*要求*
+*Request*
 
 **GET**
 
@@ -489,7 +383,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | api-version         | この要求で使用する操作のバージョン。 |
 |  |  |
 
-*ヘッダー*
+*headers*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
@@ -512,7 +406,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 }
 ```
 
-| **パラメーター名**     | **データの種類** | **説明**                               |
+| **パラメーター名**     | **データ型** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Azure の SaaS サブスクリプション リソースの ID。    |
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。         |
@@ -535,7 +429,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | 503                  | `ServiceUnavailable` | サービスが一時的にダウンしています。後で再試行してください。                             |
 |  |  |  |
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -550,7 +444,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 サブスクリプション エンドポイントでの GET アクションにより、ユーザーはすべてのオファーに関するすべてのサブスクリプションを ISV から取得することができます。
 
-*要求*
+*Request*
 
 **GET**
 
@@ -561,7 +455,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | api-version         | この要求で使用する操作のバージョン。 |
 |  |  |
 
-*ヘッダー*
+*headers*
 
 | **ヘッダー キー**     | **必須** | **説明**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
@@ -584,7 +478,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 }
 ```
 
-| **パラメーター名**     | **データの種類** | **説明**                               |
+| **パラメーター名**     | **データ型** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Azure の SaaS サブスクリプション リソースの ID。    |
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。         |
@@ -607,7 +501,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | 503                  | `ServiceUnavailable` | サービスが一時的にダウンしています。 後で再試行してください。                             |
 |  |  |  |
 
-*応答ヘッダー*
+*レスポンス ヘッダー*
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
@@ -634,7 +528,7 @@ SaaS の webhook は、SaaS サービスに事前に変更を通知するため�
   }
 ```
 
-| **パラメーター名**     | **データの種類** | **説明**                               |
+| **パラメーター名**     | **データ型** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id  | String       | トリガーされた操作の一意の ID。                |
 | activityId   | String        | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。               |

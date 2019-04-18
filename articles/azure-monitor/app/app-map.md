@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622112"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009197"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -109,7 +109,8 @@ namespace CustomInitializer.Telemetry
             if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
             {
                 //set custom role name here
-                telemetry.Context.Cloud.RoleName = "RoleName";
+                telemetry.Context.Cloud.RoleName = "Custom RoleName";
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
             }
         }
     }
@@ -184,6 +185,32 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+
+### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>アプリケーション マップのコンテキスト内での Cloud.RoleName の理解
+
+Cloud.RoleName をどのように考えるかに関する限り、複数の Cloud.RoleNames が存在するアプリケーション マップを調べると役に立つ可能性があります。
+
+![アプリケーション マップのスクリーンショット](media/app-map/cloud-rolename.png)
+
+上記のアプリケーション マップでは、緑色の囲みの中の名前が、それぞれこの特定の分散アプリケーションの異なる側面の Cloud.RoleName/ロール値になります。 したがって、このアプリでは、ロールは `Authentication`、`acmefrontend`、`Inventory Management`、`Payment Processing Worker Role` で構成されます。 
+
+このアプリの場合、`Cloud.RoleNames` のそれぞれが、一意の Application Insights リソースと各自のインストルメンテーション キーも表しています。 このアプリケーションの所有者は、これら 4 つの異なる Application Insights リソースにアクセスできるため、アプリケーション マップによって基になる関係を 1 つのマップにまとめることができます。
+
+[公式な定義](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
+
+```
+   [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
+    [MaxStringLength("256")]
+    705: string      CloudRole = "ai.cloud.role";
+    
+    [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
+    [MaxStringLength("256")]
+    715: string      CloudRoleInstance = "ai.cloud.roleInstance";
+```
+
+または、Cloud.RoleName によって Web フロント エンドのどこかに問題があることが通知されたが、Web フロント エンドは複数の負荷分散サーバーで実行されているため、Kusto クエリによってレイヤーを深くドリルインして、問題がすべての Web フロント エンド サーバー/インスタンスに影響するのか、1 つだけに影響するのかを知ることが非常に重要なシナリオでは、Cloud.RoleInstance が有用である可能性があります。
+
+コンテナー化された環境でアプリが実行されている場合は、個々のサーバーを知るだけでは特定の問題を見つけられない可能性があり、Cloud.RoleInstance の値をオーバーライドしたくなるシナリオです。
 
 cloud_RoleName プロパティをテレメトリ初期化子でオーバーライドする方法については、[ITelemetryInitializer プロパティの追加](api-filtering-sampling.md#add-properties-itelemetryinitializer)に関するページを参照してください。
 

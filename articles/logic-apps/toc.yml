@@ -324,7 +324,6 @@ items:
 - name: リファレンス
   items:
   - name: アーキテクチャのパターン
-    href: /azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration
     items:
     - name: 基本的なエンタープライズ統合
       href: /azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration
@@ -381,9 +380,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 53c848fdd20965db63071a95c5f4f6cee4ec5c50
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: b611e553280f67f2af00f29e0efe5733dc0a4a4a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894544"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699510"

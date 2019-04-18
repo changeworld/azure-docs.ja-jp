@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/09/2019
-ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471241"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520750"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -27,12 +27,14 @@ ms.locfileid: "59471241"
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>テンポラル テーブルの移行はサポートされていません
 
-**症状**
+**症状:**
 
 ソース データベースが 1 つ以上のテンポラル テーブルで構成されている場合、"全体のデータの読み込み" 操作中にデータベースの移行が失敗し、次のメッセージが表示されることがあります。
 
-{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"データベースの移行エラー", "errorEvents":"["Capture functionalities could not be set. (キャプチャ機能を設定できません。) RetCode:SQL_ERROR SqlState:42000 NativeError:13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line:1 Column: -1 "]" }
- 
+```
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
+```
+
  ![テンポラル テーブルのエラーの例](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **対処法**
@@ -51,7 +53,7 @@ ms.locfileid: "59471241"
  
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>テーブルの移行には、hierarchyid データ型を持つ 1 つまたは複数の列が含まれます
 
-**症状**
+**症状:**
 
 "全体のデータの読み込み" 操作中に、"ntext が hierarchyid と非互換である" ことを示す SQL 例外が表示されることがあります。
      
@@ -85,7 +87,7 @@ ms.locfileid: "59471241"
 
 ### <a name="support-for-lob-data-types"></a>LOB データ型のサポート
 
-**症状**
+**症状:**
 
 ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。 
 
@@ -99,7 +101,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 ### <a name="issues-with-timestamp-columns"></a>タイムスタンプ列に関する問題
 
-**症状**
+**症状:**
 
 DMS は、ソースのタイムスタンプ値を移行しません。代わりに、DMS は、ターゲットのテーブルに新しいタイムスタンプ値を生成します。
 
@@ -109,7 +111,7 @@ DMS でソース テーブルに格納されている正確なタイムスタン
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません。
 
-**症状**
+**症状:**
 
 データベースの詳細状態ビューに移行エラーが表示された場合、上部のリボンの **[Data migration errors]\(データ移行エラー\)** リンクを選択しても移行エラーに関する詳細が表示されないことがあります。
 

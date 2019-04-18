@@ -591,7 +591,7 @@ items:
     - name: Azure サービスと統合する
       items:
       - name: HDInsight クラスターで使用する
-        href: ../blobs/data-lake-storage-use-hdi-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        href: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Hadoop ファイル システム CLI で使用する
         href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Azure Databricks で使用する
@@ -640,9 +640,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 8335f62d739f75a8ca7cf455f9e29660074adf1c
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 3b676affdec9ac163f5a1a2925b7806e90ec1a23
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005899"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683520"

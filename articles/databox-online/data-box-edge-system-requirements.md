@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401755"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006345"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge のシステム要件
 
@@ -80,16 +80,59 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ### <a name="url-patterns-for-compute-feature"></a>コンピューティング機能の URL パターン
 
-| URL パターン                      | コンポーネントまたは機能                     |   |
-|----------------------------------|---------------------------------------------|---|
-| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |   |
-| https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) |   |
-| https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             |   |
+| URL パターン                      | コンポーネントまたは機能                     |   
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |
+| https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) | 
+| https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             | 
+
+### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure Government 用のゲートウェイの URL パターン
+
+[!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-compute-for-azure-government"></a>Azure Government 用のコンピューティングの URL パターン
+
+| URL パターン                      | コンポーネントまたは機能                     |  
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft コンテナー レジストリ (必須)               |
+| https://\*.azure-devices.us              | IoT Hub アクセス (必須)           |
+| https://\*.azurecr.us                    | 個人やサード パーティのコンテナー レジストリ (任意) | 
 
 ## <a name="internet-bandwidth"></a>インターネット帯域幅
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
+## <a name="compute-sizing-considerations"></a>コンピューティングのサイズに関する考慮事項
+
+ソリューションの開発とテスト中は、ご自身の経験を活用して、Data Box Edge デバイスに十分が容量があること、およびデバイスから最適なパフォーマンスが得られることを確認します。
+
+考慮すべき要素には、以下が含まれます。
+
+- **コンテナーの詳細** - 以下について検討します。
+
+    - ワークロード内のコンテナーはいくつあるか。 多数の軽量のコンテナーまたは少数のリソース集約型のコンテナーがある可能性があります。
+    - これらのコンテナーに割り当てられるリソースは何か、これらのコンテナーが消費するリソースは何か。
+    - コンテナーで共有されるレイヤーはいくつあるか。
+    - 未使用のコンテナーはあるか。 停止されたコンテナーも、ディスク領域を消費します。
+    - コンテナーはどの言語で記述されるか。
+- **処理されるデータのサイズ** - コンテナーで処理されるデータの量はどれくらいか。 このデータはディスク領域を消費するのか、メモリで処理されるのか。
+- **期待されるパフォーマンス** - ソリューションの望ましいパフォーマンス特性は何か。 
+
+ソリューションのパフォーマンスを理解して改良するために、以下を使用できます。
+
+- Azure portal で入手できるコンピューティング メトリック。 Data Box Edge リソースに移動し、**[監視] > [メトリック]** に移動します。 **[Edge コンピューティング - メモリ使用量]** と **[Edge コンピューティング - CPU の割合]** を調べて、使用できるリソースとリソースがどのように消費されているかを理解します。
+- デバイスの PowerShell インターフェイスから次のような監視コマンドを使用できます。
+
+    - `dkr` : コンテナー リソースの使用状況統計のライブ ストリームを取得します。 このコマンドは、CPU、メモリ使用量、メモリの制限、およびネットワーク IO のメトリックをサポートします。
+    - `dkr system df` : 使用されたディスク領域の量に関する情報を取得します。 
+    - `dkr image [prune]` : 未使用のイメージをクリーンアップして領域を解放します。
+    - `dkr ps --size` : 実行中のコンテナーのおおよそのサイズを表示します。 
+
+    使用可能なコマンドの詳細については、「[Monitor and troubleshoot compute modules (コンピューティング モジュールの監視とトラブルシューティング)](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)」を参照してください。
+
+最後に、お使いのデータセットに対するご自身のソリューションの検証を実行し、運用環境にデプロイする前に Data Box Edge でパフォーマンスを数量化します。
+
+
 ## <a name="next-step"></a>次のステップ
 
-- [Azure Data Box Edge をデプロイする](data-box-Edge-deploy-prep.md)
+- [Azure Data Box Edge をデプロイする](data-box-edge-deploy-prep.md)

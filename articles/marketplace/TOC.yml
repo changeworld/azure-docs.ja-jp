@@ -118,11 +118,6 @@ items:
       href: ./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md
     - name: プライベート SKU
       href: ./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md
-    - name: 価格に関する考慮事項
-      items:
-      - name: 簡略化された通貨による価格
-      - name: 税金と価格に関する情報
-      - name: 価格のエクスポート/インポート
     - name: リードの管理
       items:
       - name: 潜在顧客の構成
@@ -365,7 +360,7 @@ items:
         href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
       - name: 既存のオファーの更新
         href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-      - name: SaaS Fulfillment API シリーズ
+      - name: SaaS Fulfillment API
         href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
         items:
         - name: SaaS アプリケーションの登録
@@ -469,9 +464,9 @@ items:
       href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
   - name: サポートの利用
     href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-ms.openlocfilehash: 9b4b1dd0a98ef8717ddc522d69e38a6b15b56cb4
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 20c4838d32be47332a68b7f2585a9ad19141d4b9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010860"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683802"
