@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/22/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d99c6b419ee201be50e74849cd95a332845f5b73
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 483f9092d29fc40937ed9d54510269af2af30872
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623340"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008648"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Azure Automation の Runbook をスケジュール設定する
 
@@ -29,7 +29,7 @@ Azure Automation から PowerShell を使用してスケジュールを作成し
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |スケジュールを取得します。 |
+| [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |スケジュールを取得します。 |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |新しいスケジュールを作成します。 |
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |スケジュールを削除します。 |
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |既存のスケジュールのプロパティを設定します。 |
@@ -156,6 +156,9 @@ Azure Automation のスケジュールを構成できる最も短い間隔は 1 
 1. Azure Portal の Automation アカウントから、左側の **[共有リソース]** セクションで **[スケジュール]** を選択します。
 2. スケジュールの名前をクリックして、その詳細ウィンドウを開きます。
 3. **有効** を **いいえ** に変更します
+
+> [!NOTE]
+> 開始時刻が過去であるスケジュールを無効にする場合は、保存する前に、開始日を将来の時刻に変更する必要があります。
 
 ### <a name="to-disable-a-schedule-with-powershell"></a>PowerShell でスケジュールを無効にするには
 

@@ -1,21 +1,21 @@
 ---
 title: シミュレートした Raspberry Pi から クラウドへ (Node.js) - Raspberry Pi Web シミュレーターの Azure IoT Hub への接続 | Microsoft Docs
 description: Raspberry Pi Web シミュレーターを Azure IoT Hub に接続し、Raspberry Pi で Azure クラウドにデータを送信します。
-author: rangv
-manager: ''
+author: wesmc7777
+manager: philmea
 keywords: raspberry pi シミュレーター, azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.author: wesmc
+ms.openlocfilehash: 58e05ba4fb2e362147f7ca28d83440ddabb6ef38
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847214"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267737"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続 (Node.js)
 
@@ -94,7 +94,7 @@ Web シミュレーターには3 つの領域があります。
 
 2. **[実行]** をクリックまたは `npm start` と入力してアプリケーションを実行します。
 
-IoT Hub に送信されるセンサー データとメッセージを示す次の出力が表示されます。![出力 - Raspberry Pi から IoT Hub に送信されるセンサー データ](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
+IoT ハブに送信されるセンサー データとメッセージを示す次の出力が表示されます。![出力 - Raspberry Pi から IoT ハブに送信されるセンサー データ](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>ハブに送信されたメッセージを読み取る
 

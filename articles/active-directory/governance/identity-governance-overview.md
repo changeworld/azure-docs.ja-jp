@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579718"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045486"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -56,7 +56,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリ](../saas-apps/tutorial-list.md)または [SCIM と統合されたアプリ](../manage-apps/use-scim-to-provision-users-and-groups.md)と組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。  また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../b2b/hybrid-cloud-to-on-premises.md)を制御することもできます。  それにより、[Azure AD アクセス レビュー](access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。
 
-ユーザーがアプリケーションにアクセスしようとすると、Azure AD は[条件付きアクセス](/azure/active-directory/conditional-access/)ポリシーを適用します。 条件付きアクセス ポリシーには、たとえば、[使用条件](active-directory-tou.md)を表示することと、[ユーザーがそれらの条件に確実に同意した](../conditional-access/require-tou.md)後でアプリケーションにアクセスできるようになることを含めることができます。
+ユーザーがアプリケーションにアクセスしようとすると、Azure AD は[条件付きアクセス](/azure/active-directory/conditional-access/)ポリシーを適用します。 条件付きアクセス ポリシーには、たとえば、[使用条件](../conditional-access/terms-of-use.md)を表示することと、[ユーザーがそれらの条件に確実に同意した](../conditional-access/require-tou.md)後でアプリケーションにアクセスできるようになることを含めることができます。
 
 ## <a name="privileged-access-lifecycle"></a>特権アクセスのライフサイクル
 
@@ -81,8 +81,8 @@ Azure AD Privileged Identity Management (PIM) により、Azure AD、Azure、お
 
 ### <a name="terms-of-use"></a>使用条件
 
-- [利用規約でできること](active-directory-tou.md)
+- [Terms of use を使用してできること](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-- [Azure AD PIMとは](../privileged-identity-management/pim-configure.md)
+- [Azure AD PIM とは](../privileged-identity-management/pim-configure.md)

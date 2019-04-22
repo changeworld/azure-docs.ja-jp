@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, vanto
+ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: 5c9e11572bc142637066214e1a807a80ce711c48
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/08/2019
+ms.openlocfilehash: 15b7bfc9e1d747fcefdbba03ca254a9604197b5f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877688"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361821"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>SQL Database Advanced Data Security の仮想ネットワークでの使用と 100% に近い互換性
 
@@ -50,7 +50,7 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 |分離環境 ([VNet 統合](sql-database-managed-instance-connectivity-architecture.md)、シングル テナント サービス、専用のコンピューティングおよびストレージ) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 認証](sql-database-aad-authentication.md)、シングル サインオンのサポート <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD サーバー プリンシパル (ログイン)</a> (**パブリック プレビュー**) <br>Azure SQL Database と同じコンプライアンス標準に準拠 <br>[SQL 監査](sql-database-managed-instance-auditing.md) <br>[脅威検出](sql-database-managed-instance-threat-detection.md) |サービスのプロビジョニングとスケーリングを自動化するための Azure Resource Manager API <br>手動でのサービスのプロビジョニングとスケーリングに対応する Azure Portal の機能 <br>データ移行サービス
 
 > [!IMPORTANT]
-> Azure SQL Database (すべてのデプロイ オプション) は、さまざまなコンプライアンス基準に対する認証を受けています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)の一覧を入手できます。
+> Azure SQL Database (すべてのデプロイ オプション) は、さまざまなコンプライアンス標準に対して認定されています。 詳細については、[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 マネージド インスタンスの主な機能を次の表に示します。
 

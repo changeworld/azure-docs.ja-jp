@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 523567a0db79e54bea1ed6ff23557c7fa29c74f6
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b354492778426d1e3c31e53e277fd9be1e22c93
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541113"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048114"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -101,29 +101,29 @@ ms.locfileid: "58541113"
 
 - 次のようにインストールします。
 
-    ``` 
+    ```
     UnifiedAgent.exe /Role "MS" /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /Platform "VmWare" /Silent
     ```
 
 - 構成サーバーにエージェントを登録します。
 
-    ``` 
+    ```
     cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
     UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
     ```
 
 #### <a name="installation-settings"></a>インストールの設定
-**設定** | **詳細**
+**Setting** | **詳細**
 --- | ---
 使用法 | UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 セットアップ ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log の下。
 /Role | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 /InstallLocation| 省略可能なパラメーター。 モビリティ サービスのインストール場所 (任意のフォルダー) を指定します。
-/Platform | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。 
+/Platform | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。
 /Silent| 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
-**設定** | **詳細**
+**Setting** | **詳細**
 --- | ---
 使用法 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
 エージェント構成ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log の下。
@@ -136,7 +136,7 @@ ms.locfileid: "58541113"
 
     ```
     cd /tmp ;
-    tar -xvzf Microsoft-ASR_UA*release.tar.gz
+    tar -xvf Microsoft-ASR_UA*release.tar.gz
     ```
 
 2. 次のようにインストールします。
@@ -152,16 +152,16 @@ ms.locfileid: "58541113"
     ```
 
 #### <a name="installation-settings"></a>インストールの設定
-**設定** | **詳細**
+**Setting** | **詳細**
 --- | ---
 使用法 | ./install -d \<Install Location> -r <MS|MT> -v VmWare -q
 -r | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 -d | 省略可能なパラメーター。 モビリティ サービスのインストール場所 (/usr/local/ASR) を指定します。
--v | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。 
+-v | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。
 パラメーター | 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
-**設定** | **詳細**
+**Setting** | **詳細**
 --- | ---
 使用法 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
 -i | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。
@@ -176,18 +176,18 @@ ms.locfileid: "58541113"
 
 構成サーバーの %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository フォルダーに移動します。 オペレーティング システムに基づいて、必要なインストーラーを確認します。 VMware VM と物理サーバーのオペレーティング システム別のインストーラー ファイルをまとめたのが次の表です。 開始前に[サポートされているオペレーティング システム](vmware-physical-azure-support-matrix.md#replicated-machines)を確認できます。
 
-**インストーラー ファイル** | **オペレーティング システム (64 ビットのみ)** 
+**インストーラー ファイル** | **オペレーティング システム (64 ビットのみ)**
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 
+Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1
 Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.* 
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1、SP2、SP3 
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 
+Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.*
+Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1、SP2、SP3
+Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
+Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
 Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4、6.5
 icrosoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04
 Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS サーバー
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 
+Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
 Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
 
 ## <a name="next-steps"></a>次の手順

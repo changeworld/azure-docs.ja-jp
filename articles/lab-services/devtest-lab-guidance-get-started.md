@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs の使用を始める
+title: Azure DevTest Labs を使用する一般的なシナリオ
 description: この記事では、Azure DevTest Labs と 2 つの一般的な方針を使用して、組織でサービスの使用を開始するための主要なシナリオを提供します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803801"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272386"
 ---
-# <a name="get-started-with-using-azure-devtest-labs"></a>Azure DevTest Labs の使用を始める
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs を使用する一般的なシナリオ
 DevTest Labs は企業のニーズに応じてさまざまな要件を満たすように構成できます。  この記事では、一般的なシナリオについて説明します。 各シナリオでは、DevTest Labs を使用するメリットと、これらのシナリオの実装に使用するリソースについて説明します。  
 
 - 開発者デスクトップ

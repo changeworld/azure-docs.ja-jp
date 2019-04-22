@@ -13,18 +13,39 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/01/2019
+ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b186aa2692033a774d1d8f294315fcc0f5e874d5
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58763074"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009370"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 このドキュメントでは、[HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます
+
+## <a name="register-hana-large-instance-resource-provider"></a>HANA Large Instance リソース プロバイダーを登録する
+通常、HANA Large Instance のデプロイに使用した Azure サブスクリプションは、HANA Large Instance リソース プロバイダーに登録されます。 ただし、HANA Large Instance ユニットをデプロイしたことを確認できない場合は、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 HANA Large Instance リソース プロバイダーを登録するには 2 つの方法があります。
+
+### <a name="register-through-cli-interface"></a>CLI インターフェイスを使用して登録する
+Azure CLI インターフェイスを介した HANA Large Instance のデプロイに使用する Azure サブスクリプションにログインする必要があります。 次のコマンドで、HANA Large Instance プロバイダーを (再) 登録することができます。
+    
+    az provider register --namespace Microsoft.HanaOnAzure
+
+詳細については、「[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli)」の記事を参照してください。
+
+
+### <a name="register-through-azure-portal"></a>Azure portal を使用して登録する
+Azure portal を使用して HANA Large Instance リソース プロバイダーを (再) 登録できます。 Azure portal でサブスクリプションを一覧表示し、HANA Large Instance ユニットのデプロイに使用したサブスクリプションをダブル クリックする必要があります。 サブスクリプションの概要ページが表示されたら、次のように [リソース プロバイダー] を選択し、検索ウィンドウに「HANA」と入力します。 
+
+![Azure portal を使用して HLI RP を登録する](./media/hana-li-portal/portal-register-hli-rp.png)
+
+このスクリーンショットでは、リソース プロバイダーは既に登録されています。 リソース プロバイダーがまだ登録されていない場合は、[再登録] または [登録] を押します。
+
+詳細については、「[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell)」の記事を参照してください。
+
 
 ## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Azure portal での HANA Large Instance ユニットの表示
 HANA Large Instance のデプロイ要求を送信するときは、HANA Large Instances にも接続している Azure サブスクリプションを指定するように求められます。 HANA Large Instance ユニットに対して動作する SAP アプリケーション レイヤーのデプロイに使っているのと同じサブスクリプションを使うことをお勧めします。
@@ -45,6 +66,8 @@ HANA Large Instance のデプロイ要求を送信するときは、HANA Large I
 ![Azure portal の HLI 一覧](./media/hana-li-portal/portal-hli-units-list.png)
 
 一覧表示されるすべてのユニットは、サブスクリプションにデプロイされている 1 つの HANA Large Instance ユニットを表しています。 この例では 8 つの異なる HANA Large Instance ユニットが表示されており、それらはご自分のサブスクリプションにデプロイされています。
+
+同じ Azure サブスクリプションに複数の HANA Large Instance インスタンス テナントをデプロイした場合は、複数の Azure リソース グループが表示されます。 
 
 
 ## <a name="look-at-attributes-of-single-hli-unit"></a>1 つの HLI ユニットの属性を調べる
@@ -86,7 +109,7 @@ HANA Large Instance ユニットの概要だけでなく、特定のユニット
 
 ![Azure portal での HLI プロパティの上部](./media/hana-li-portal/portal-properties-top.png)
 
-最初のいくつかのデータ項目は、概要画面で既に見たものです。 しかし、データの重要な部分は ExpressRoute 回線 ID であり、最初にデプロイされたユニットが引き渡されるときに取得します。 サポート ケースによっては、そのデータを求められることがあります。 重要なデータ エントリは、スクリーンショットの下部に示されています。 表示されるデータは、HANA Large Instance スタック内のご自分の**テナント**に対してストレージを分離する NFS ストレージ ヘッドの IP アドレスです。 この IP アドレスは、[ストレージ スナップショット バックアップの構成ファイル](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)を編集するときにも必要です。 
+最初のいくつかのデータ項目は、概要画面で既に見たものです。 しかし、データの重要な部分は ExpressRoute 回線 ID です。この ID は、最初にデプロイされたユニットが引き渡し時に取得されました。 サポート ケースによっては、そのデータを求められることがあります。 重要なデータ エントリは、スクリーンショットの下部に示されています。 表示されるデータは、HANA Large Instance スタック内のご自分の**テナント**に対してストレージを分離する NFS ストレージ ヘッドの IP アドレスです。 この IP アドレスは、[ストレージ スナップショット バックアップの構成ファイル](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots)を編集するときにも必要です。 
 
 プロパティ ウィンドウを下にスクロールすると、ご自分の HANA Large Instance ユニットの一意のリソース ID や、デプロイに割り当てられたサブスクリプション ID のような、その他のデータが表示されます。
 
@@ -99,6 +122,9 @@ Linux オペレーティング システムの再起動を開始するときに�
 
 > [!NOTE]
 > 再起動プロセスでは、ユニットの状態が **[Starting]\(開始中\)** から **[Started]\(開始済み\)** に変わるまでにしばらく時間がかかります。 **[Started]\(開始済み\)** 状態になることは、OS が起動中であること、または OS が完全に起動したことを意味します。 その結果、ユニットの再起動後、状態が **[Started]\(開始済み\)** に切り替わったらすぐにユニットにログインすることはできません。
+
+> [!IMPORTANT]
+> HANA Large Instance ユニットのメモリ容量によっては、ハードウェアとオペレーティング システムの再開と再起動に最大 1 時間かかることがあります。
 
 
 ## <a name="open-a-support-request-for-hana-large-instances"></a>HANA large Instances のサポート リクエストを開く
@@ -115,7 +141,7 @@ Azure portal の HANA Large Instance ユニットの表示では、特に HANA l
 
 ![Azure portal で問題のクラスを選択する](./media/hana-li-portal/portal-select-problem-class.png)
 
-さまざまな問題の種類のそれぞれに、問題の特徴をさらに指定するために選択する必要がある問題のサブタイプの選択肢があります。 サブタイプを選択した後は、件名を指定できます。 選択プロセスが完了すると、作成の次のステップに移動できます。 **[Solutions]\(解決策\)** セクションでは、HANA Large Instances に関するドキュメントが示されており、問題を解決できる可能性があります。 示されているドキュメントで問題の解決策が見つからない場合は、次のステップに進みます。 次のステップでは、問題が VM に関するものか、それとも HANA Large Instance ユニットに関するものかを尋ねられます。 これは、適切な専門家にサポート リクエストを送るのに役立ちます。 
+さまざまな問題の種類のそれぞれに、問題の特徴をさらに指定するために選択する必要がある問題のサブタイプの選択肢があります。 サブタイプを選択した後は、件名を指定できます。 選択プロセスが完了すると、作成の次のステップに移動できます。 **[Solutions]\(解決策\)** セクションでは、HANA Large Instances に関するドキュメントが示されており、問題を解決できる可能性があります。 示されているドキュメントで問題の解決策が見つからない場合は、次のステップに進みます。 次のステップでは、問題が VM に関するものか、それとも HANA Large Instance ユニットに関するものかを尋ねられます。 この情報は、適切な専門家にサポート リクエストを送るのに役立ちます。 
 
 ![Azure portal でのサポート ケースの詳細](./media/hana-li-portal/portal-support-request-details.png)
 

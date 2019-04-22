@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e60a58a8d2f1c69728a2d049fe1414ca1997893e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878181"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283275"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -31,7 +31,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。 
 - Windows システムで BitLocker を有効にする。 [BitLocker を有効にする方法](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
 - Windows システムに [WAImportExport バージョン 1 をダウンロード](https://aka.ms/waiev1)します。 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
-- FedEx または DHL のアカウントを用意します。  
+- FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。  
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
     - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
@@ -113,7 +113,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 4. **[差出人住所の詳細]** で次の操作を実行します。
 
-   - ドロップダウン リストから運送業者を選択します。
+   - ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
    - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 アカウント番号をお持ちでない場合は、[FedEx](https://www.fedex.com/us/oadr/) または [DHL](http://www.dhl.com/) の運送業者アカウントを作成してください。
    - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。 
         

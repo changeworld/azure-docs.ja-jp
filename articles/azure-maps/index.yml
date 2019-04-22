@@ -34,17 +34,17 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/azure-maps/tutorial-search-location">目的地を検索する</a>
-          - html: <a href="/azure/azure-maps/tutorial-route-location">目的地へのルートを検索する</a>
-          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">移動モード別にルートを検索する</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">ストア ロケーターを作成する</a>
+          - html: <a href="/azure/azure-maps/tutorial-search-location">観光名所の検索</a>
+          - html: <a href="/azure/azure-maps/tutorial-route-location">観光名所までのルート設定</a>
+          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">移動モード別のルート</a>
+          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">ストア ロケーターの作成</a>
       - html: <b>REST API のチュートリアル</b>
       - type: paragraph
         text: Azure Maps REST サービスを呼び出す地理空間アプリケーションを構築します。
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/azure-maps/tutorial-geofence">ジオフェンスを設定する</a>
+          - html: <a href="/azure/azure-maps/tutorial-geofence">ジオフェンスの設定</a>
   - title: リファレンス
     items:
       - type: list
@@ -54,4 +54,4 @@ sections:
           - title: JavaScript
             html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p>'
           - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">データ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">位置情報サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">検索サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空間サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">データ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">位置情報サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空間サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>'

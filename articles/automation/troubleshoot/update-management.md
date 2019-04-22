@@ -4,16 +4,16 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/05/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b92ce1d5fb0e0b2b043b1bbfcb78dbaf3dde2e23
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804464"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274588"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -45,7 +45,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 2. 複製されたイメージを使用する場合:
    1. Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します (表示された場合)。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
-   2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` を実行します。
+   2. ラン `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
    3. `Restart-Service HealthService` を実行して `HealthService` を再起動します。 これにより、キーが再作成され、新しい UUID が生成されます。
    4. これが機能しない場合は、そのイメージを先に sysprep した後、MMA エージェントをインストールします。
 
@@ -177,10 +177,12 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 |例外  |解決策または対策  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | [Windows Update エラー コード一覧](https://support.microsoft.com/help/938205/windows-update-error-code-list)で該当するエラー コードを検索して、例外の原因の詳細を確認します。        |
-|`0x8024402C` または `0x8024401C`     | これらのエラーはネットワーク接続の問題です。 お使いのマシンが Update Management に適切にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)に関するセクションをご覧ください。        |
+|`0x8024402C` or `0x8024401C`     | これらのエラーはネットワーク接続の問題です。 お使いのマシンが Update Management に適切にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)に関するセクションをご覧ください。        |
 |`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値に正しい WSUS サーバーが含まれていることを確認します。        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
 |その他の一般的な例外     | 考えられる解決策をインターネットで検索し、最寄りの IT サポートと連携してください。         |
+
+`windowsupdate.log` を確認すると、可能性がある原因を特定するのにも役立ちます。 ログを読み取る方法については、「[Windowsupdate.log ファイルの解釈](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)」を参照してください。
 
 さらに、[Windows Update トラブルシューティング ツール](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)をダウンロードして実行し、コンピューター上の Windows Update に問題がないか確認できます。
 

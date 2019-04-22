@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 52aa57b0a0de0a8ca82e57adda8b41862aa66980
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: f17dc61f47dadf4c808467b2158cd9ef034e1ce9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918656"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277121"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Windows IaaS VM で Azure Disk Encryption を有効にする
 
@@ -156,7 +156,7 @@ ms.locfileid: "58918656"
      $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $KVRGname;
      $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
      $KeyVaultResourceId = $KeyVault.ResourceId;
-     Set-AzVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGame -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
+     Set-AzVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGname -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
 
 
 -  **Encrypt a running virtual machine scale set using KEK to wrap the key**:
@@ -171,7 +171,7 @@ ms.locfileid: "58918656"
      $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
      $KeyVaultResourceId = $KeyVault.ResourceId;
      $KeyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
-     Set-AzRmVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGame -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
+     Set-AzRmVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGname -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
     ```
 
    >[!NOTE]
@@ -223,8 +223,7 @@ ms.locfileid: "58918656"
 Windows 仮想マシン スケール セットを暗号化または暗号化解除するには、Azure Resource Manager テンプレートと次の手順を使用します:
 
 - [Windows 仮想マシン スケール セットでの暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-- [ジャンプボックスで Windows VM の VM スケール セットをデプロイし、Windows VM スケール セットで暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-- [Windows VM スケール セットでの暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Windows 仮想マシン スケール セットでの暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
      1. **[Azure へのデプロイ]** をクリックします。
      2. 必須のフィールドに入力し、使用条件に同意します。

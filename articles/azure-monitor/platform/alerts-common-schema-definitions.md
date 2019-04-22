@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 1a55fa4f39f2ebc2cdcc421eb6d7fecc62277f90
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851611"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010398"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -80,7 +80,7 @@ ms.locfileid: "58851611"
 |:---|:---|
 | alertId | アラート インスタンスを一意に識別する GUID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
-| severity | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、Sev4 |
+| Severity | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、Sev4 |
 | signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、Activity Log |
 | monitorCondition | アラートが発生すると、アラートの監視条件は "Fired" に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は "Resolved" に設定されます。   |
 | monitoringService | アラートを生成した監視サービスまたはソリューション。 アラート コンテキストのフィールドは、監視サービスによって決まります。 |
@@ -152,6 +152,9 @@ ms.locfileid: "58851611"
 ```
 
 ### <a name="log-alerts"></a>ログ アラート
+
+> [!NOTE]
+> 既存のログ アラートにカスタム JSON オプションを使用した場合、カスタマイズ内容は共通スキーマに保存されません。
 
 #### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
 

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668196"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266139"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Linux オペレーティング システムへのパッチの適用
 
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
+> * [ Windows](service-fabric-patch-orchestration-application.md)
 > * [Linux](service-fabric-patch-orchestration-application-linux.md)
 >
 >
@@ -76,7 +76,7 @@ Azure Linux クラスターの持続性層がシルバーおよびゴールド�
 
 ##### <a name="azure-portal"></a>Azure ポータル
 クラスターの設定時に Azure Portal から修復マネージャーを有効にすることができます。 クラスターの構成時に **[アドオン機能]** で **[Repair Manager を含める]** オプションを選択します。
-![Azure Portal から修復マネージャーを有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+![Azure portal から Repair Manager を有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデル
 [Azure Resource Manager デプロイ モデル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Azure Resource Manager デプロイ モデル テンプレートを作成することもできます。 
@@ -121,7 +121,7 @@ Ubuntu の場合、[unattended-upgrades](https://help.ubuntu.com/community/Autom
 
 インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=867984)からダウンロード可能です。
 
-sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v2.0.2.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/POA/POA_v2.0.3.sfpkg)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
@@ -173,7 +173,8 @@ sfpkg 形式のアプリケーションは、[sfpkg リンク](https://aka.ms/PO
 
 ## <a name="view-the-update-results"></a>更新結果の確認
 
-パッチ オーケストレーション アプリケーションは、結果の履歴をユーザーに表示するための REST API を公開しています。 サンプル結果を次に示します。```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+パッチ オーケストレーション アプリケーションは、結果の履歴をユーザーに表示するための REST API を公開しています。 サンプル結果を次に示します。
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -285,11 +286,11 @@ A. インストール プロセス中に、パッチ オーケストレーショ
 
 問題が解決しない場合は、「トラブルシューティング」を参照してください。
 
-Q. **パッチ オーケストレーション アプリケーションが警告状態になっています。**
+Q. **パッチ オーケストレーション アプリケーションが警告状態になっています**
 
 A. アプリケーションに対してポストされた正常性レポートが根本的な原因であるかどうかを確認してください。 通常、警告には問題の詳細が含まれています。 問題が一時的なものであれば、アプリケーションはこの状態から自動的に回復すると考えられます。
 
-Q. **クラスターに異常があり、オペレーティング システムの更新をすぐに実行する必要がある場合はどうすればよいですか?**
+Q. **クラスターに異常がある場合で、オペレーティング システムの更新をすぐに実行する必要がある場合はどうすればよいですか?**
 
 A. クラスターに異常がある間は、パッチ オーケストレーション アプリケーションによって更新プログラムはインストールされません。 パッチ オーケストレーション アプリケーションのワークフローをブロック解除するには、クラスターを正常な状態にしてください。
 
@@ -308,7 +309,7 @@ Q. **パッチ オーケストレーション アプリケーションでは、�
 A. パッチ オーケストレーション アプリケーションは、使用可能な更新プログラムのうちどれがセキュリティ更新プログラムであるかの判断にディストリビューション固有のロジックを使用します。 例: Ubuntu では、アプリケーションはアーカイブ $RELEASE-security、$RELEASE-updates ($RELEASE = xenial または linux 標準ベース リリース バージョン) から更新プログラムを検索します。 
 
  
-Q. **パッケージを特定のバージョンにロックするにはどのようにしますか?**
+Q. **パッケージを特定のバージョンをロックするにはどのようにしますか?**
 
 A. パッケージを特定のバージョンにロックするには ApprovedPatches 設定を使用します。 
 
@@ -318,11 +319,11 @@ Q. **Ubuntu で自動更新を有効にするとどうなりますか?**
 A. クラスターでパッチ オーケストレーション アプリケーションをインストールするとすぐに、クラスター ノード上の unattended-upgrades が無効になります。 すべての定期的な更新ワークフローは、パッチ オーケストレーション アプリケーションによって駆動されます。
 クラスター全体にわたって環境の一貫性を確保するために、パッチ オーケストレーション アプリケーションのみを使用して更新プログラムをインストールすることをお勧めします。 
  
-Q. **アップグレード後に、オーケストレーション アプリケーションは使用されていないパッケージのクリーンアップを行いますか?**
+Q. **アップグレード後に、パッチ オーケストレーション アプリケーションによって、使用されていないパッケージのクリーンアップが行われますか?**
 
 A. はい、クリーンアップはインストール後の手順の一部として行われます。 
 
-Q. **パッチ オーケストレーション アプリを、自分の開発クラスター (1 ノード クラスター) にパッチを適用するために使用できますか?**
+Q. **自分の開発クラスター (1 ノード クラスター) にパッチを適用するために、パッチ オーケストレーション アプリを使用できますか?**
 
 A. いいえ、パッチ オーケストレーション アプリは、1 ノード クラスターへのパッチ適用には使用できません。 この制限は設計によるものです。パッチ適用の修復ジョブは、[Service Fabric のシステム サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)または任意の顧客アプリにダウンタイムが発生するため、いずれも修復マネージャーからの承認が得られないからです。
 
@@ -373,5 +374,10 @@ A. いいえ、パッチ オーケストレーション アプリは、1 ノー�
 ### <a name="version-201"></a>バージョン 2.0.1
 - 最新の Service Fabric SDK を使用してアプリを再コンパイル
 
-### <a name="version-202-latest"></a>バージョン 2.0.2 (最新)
+### <a name="version-202"></a>バージョン 2.0.2 
 - 再起動時に正常性の警告が残る問題を修正しました。
+
+### <a name="version-203-latest"></a>バージョン 2.0.3 (最新)
+- Standard_D1_v2 VM 上でノード エージェント デーモン サービスの CPU 使用率が最大で 99% に到達するという問題の修正。
+- 現在のノード名のサブセットである名前を持つノードがある場合に、ノードでのパッチ適用のライフサイクルに影響を与える問題の修正。 このようなノードでは、パッチが適用されなかったり、再起動が保留になる可能性があります。
+- 破損している設定がサービスに渡されると、ノード エージェント デーモンがクラッシュしたままになるという問題を招くバグを修正しました。

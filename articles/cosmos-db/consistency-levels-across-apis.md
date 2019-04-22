@@ -1,18 +1,18 @@
 ---
 title: 整合性レベルと Azure Cosmos DB API
 description: Azure Cosmos DB の API 間での整合性レベルについて理解します。
-author: markjbrown
-ms.author: mjbrown
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/08/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 902303a8f55f4494e0cc6c21b0438e41437c0567
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 7a8617ae2b01fc89a4c957b8610164a2b53a16f5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620667"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274775"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
@@ -33,7 +33,7 @@ Apache Cassandra は、AzureCosmos DB とは異なり、整合性の保証がネ
 
 次の表に、Cassandra API を使用した場合に、ネイティブ Cassandra 整合性レベルがどのように Azure Cosmos DB の整合性レベルにマップされるかを示しています。  
 
-[ ![Cassandra の整合性モデル マッピング](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![CCassandra の整合性モデルのマッピング](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>MongoDB と Azure Cosmos DB の間の整合性レベルのマッピング
 
@@ -51,7 +51,7 @@ MongoDB で Azure Cosmos DB の API を使用する場合:
 
 次の表では、MongoDB で Azure Cosmos DB の API を使用する場合、ネイティブ MongoDB 書き込み/読み込み保証が Azure Cosmos 整合性レベルにどのようにマップされるかを示しています。
 
-[ ![MongoDB の整合性モデルのマッピング](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![MMongoDB の整合性モデルのマッピング](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 

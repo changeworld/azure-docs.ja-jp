@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4410dd9e61fe5b585ca5b245dbf33dbf8c38e701
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444816"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010228"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
@@ -29,6 +29,9 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 > 自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU は、現在、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+> [!NOTE]
+> 自動スケーリングとゾーン冗長アプリケーション ゲートウェイ SKU は、バックエンド プール内のすべてのリソースの正常性を自動的に監視し、異常と見なされたリソースをプールから削除する[既定の正常性プローブ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe)をサポートするようになりました。 既定の正常性プローブは、カスタム プローブ構成を設定していないすべてのバックエンドに自動的に構成されます。 詳細については、[アプリケーション ゲートウェイの正常性プローブ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview)に関するページを参照してください。
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>v1 SKU と v2 SKU の機能比較
 
