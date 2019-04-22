@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a1c74f0ed9fd9b9abccfb7c2762cadf948c8fce0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ba0f584e8026fe3828ec79c4b6c0ff5a0bb89f5a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884797"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492364"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -34,9 +34,9 @@ Azure Sentinel をオンボードするには、まずデータ ソースに接�
 
 ![データ コレクター](./media/collect-data/collect-data-page.png)
 
-## <a name="data-collection-methods"></a>データ収集方法
+## <a name="data-connection-methods"></a>データ接続方法
 
-Azure Sentinel では、次のデータ収集方法がサポートされています。
+Azure Sentinel では、次のデータ接続方法がサポートされています。
 
 - **Microsoft のサービス**:<br> Microsoft のサービスは、標準統合用の Azure 基盤を利用して、ネイティブに接続されるので、ほんの数回のクリックで次のソリューションを接続できます。
     - [Office 365](connect-office-365.md)
@@ -52,14 +52,14 @@ Azure Sentinel では、次のデータ収集方法がサポートされてい�
 
 - **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
     - [Barracuda](connect-barracuda.md)
-    - Symantec
+    - [Symantec](connect-symantec.md)
 - **エージェントによる外部ソリューション**:Azure Sentinel は、Syslog プロトコルを使用してリアルタイムのログ ストリーミングを実行できる他のすべてのデータ ソースに対し、エージェントを使用して接続できます。 <br>ほとんどのアプライアンスでは、Syslog プロトコルを使用して、ログ自体とログに関するデータが含まれるイベント メッセージが送信されます。 ログの形式は異なりますが、ほとんどのアプライアンスで 共通イベント形式 (CEF) 標準がサポートされています。 <br>OMS エージェントに基づく Azure Sentinel エージェントでは、CEF 形式のログが、Log Analytics で取り込むことのできる形式に変換されます。 アプライアンスの種類により、エージェントは、アプライアンス上に直接、または専用の Linux サーバー上にインストールされます。 Linux 用エージェントは、UDP 経由で Syslog デーモンからイベントを受信しますが、Linux マシンで大量の Syslog イベントを収集することが予想される場合は、イベントは TCP 経由で Syslog デーモンからエージェントに送信され、そこから Log Analytics に送信されます。
     - ファイアウォール、プロキシ、エンドポイント:
         - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [パロ アルト](connect-paloalto.md)
         - [その他の CEF アプライアンス](connect-common-event-format.md)
         - [その他の Syslog アプライアンス](connect-syslog.md)
     - DLP ソリューション
@@ -75,7 +75,7 @@ Azure Sentinel では、次のデータ収集方法がサポートされてい�
 
 ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
-または、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントを展開することもできます。
+これ以外の場合は、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントを展開します。
 
 ![オンプレミスの CEF](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -83,4 +83,4 @@ Azure Sentinel では、次のデータ収集方法がサポートされてい�
 ## <a name="next-steps"></a>次の手順
 
 - Azure Sentinel を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- [データを Azure Sentine にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](quickstart-get-visibility.md)方法を説明します。
+- [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](quickstart-get-visibility.md)方法を確認します。

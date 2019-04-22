@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 0aaa88e1ebe1c8cefadbe55a8348d730ae04bb56
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/16/2019
+ms.openlocfilehash: b39ce138677fc8933b62bd999f20abc21c0ae690
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883058"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617956"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの MySQL インスタンスから [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL に移行します。
@@ -120,6 +120,9 @@ SET group_concat_max_len = 8192;
  ```
         
 クエリの結果内の外部キー削除 (2 列目) を実行して、外部キーを削除します。
+
+> [!IMPORTANT]
+> また、移行エラーを防ぐために、DEFINER ステートメントは必ずスキーマから削除してください。
 
 データにトリガー (insert または update トリガー) が含まれている場合は、ソースからのデータのレプリケート前に先立って、ターゲットにデータの整合性が適用されます。 移行時はターゲットのすべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
 
