@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: cae0c97cb3084b0578f277852d646c199d1e2313
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d2eaab80abed6615f46ef190bae56b8a70db2888
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316254"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050681"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
@@ -22,17 +22,20 @@ HDInsight では、クラスター内のワーカー ノードの数をスケー
 
 たとえば、1 日 1 回または月 1 回に発生するバッチ処理がある場合、そのスケジュールされたイベントの数分前に HDInsight クラスターをスケールアップして、十分な量のメモリと CPU のコンピューティング能力を確保できます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="utilities-to-scale-clusters"></a>クラスターをスケーリングするユーティリティ
 
 Microsoft では、クラスターをスケーリングするための次のユーティリティを提供しています。
 
 |ユーティリティ | 説明|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/overview) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
 |[Azure クラシック CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count>|
-|[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
+|[Azure ポータル](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
 ![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
@@ -325,5 +328,5 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 ## <a name="next-steps"></a>次の手順
 
 * [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)
-* [クラスターのスケーリング](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [クラスターのスケール](hdinsight-administer-use-portal-linux.md#scale-clusters)
 * [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)

@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878028"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59010574"
 ---
-# <a name="saas-fulfillment-api"></a>SaaS Fulfillment API
+# <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
 この記事では、独立系ソフトウェア ベンダー (ISV) が Azure Marketplace と SaaS アプリケーションを統合できるようにする API について説明します。 この API により、ISV アプリケーションは、すべての商取引が有効になっているチャネル (直接、パートナー主導 (再販業者)、フィールド主導) に参加できるようになります。  この API は、Azure Marketplace で取引可能な SaaS オファーを一覧表示するための要件になります。
 
@@ -73,14 +73,34 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 
 明示的な顧客の要求に応じて、または料金の未払いに対応して、サブスクリプションがこの状態に到達します。 ISV からの期待は、顧客のデータが、最低 X 日間、要求時の回復のために保持された後、削除されるというものです。 
 
+
 ## <a name="api-reference"></a>API リファレンス
 
-このセクションでは、SaaS *サブスクリプション API* および *Operations API* について説明します。
+このセクションでは、SaaS *サブスクリプション API* および *Operations API* について説明します。  バージョン 2 API の `api-version` パラメーターの値は `2018-08-31` です。  
+
+
+### <a name="parameter-and-entity-definitions"></a>パラメーターとエンティティの定義
+
+次の表は、Fulfillment API で使用される一般的なパラメーターとエンティティの定義の一覧です。
+
+|     エンティティ/パラメーター     |     定義                         |
+|     ----------------     |     ----------                         |
+| `subscriptionId`         | SaaS リソースの GUID 識別子  |
+| `name`                   | お客様がこのリソースに付けたフレンドリ名 |
+| `publisherId`            | 発行元ごとに自動的に生成される一意の文字列識別子 (たとえば "conotosocorporation") |
+| `offerId`                | オファーごとに自動的に生成される一意の文字列識別子 (たとえば "contosooffer1")  |
+| `planId`                 | プラン/sku ごとに自動的に生成される一意の文字列識別子 (たとえば "contosobasicplan") |
+| `operationId`            | 特定の操作の GUID 識別子  |
+|  `action`                | ソースに対して実行されているアクション。`subscribe`、`unsubscribe`、`suspend`、`reinstate`、または `changePlan`  |
+|   |   |
+
+グローバルに一意な識別子 ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) は、通常、自動的に生成される 128 ビット (32 桁の 16 進数) の数値です。 
 
 
 ### <a name="subscription-api"></a>サブスクリプション API
 
 サブスクリプション API は、次の HTTPS 操作をサポートしています。**Get**、**Post**、**Patch**、および **Delete** です。
+
 
 #### <a name="list-subscriptions"></a>サブスクリプションの一覧
 
@@ -106,34 +126,37 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 *応答コード:*
 
 コード:200<br>
-認証トークンに基づいて、すべてのパブリッシャーのオファーに対するパブリッシャーおよび対応するサブスクリプションを取得します。<br> 応答ペイロード:<br>
+authN トークンに基づいて、すべてのパブリッシャーのオファーに対するパブリッシャーおよび対応するサブスクリプションを取得します。<br> 応答ペイロード:<br>
 
 ```json
 {
-  "subscriptions": [
+  [
       {
-          "id": "",
-          "name": "CloudEndure for Production use",
-          "publisherId": "cloudendure",
-          "offerId": "ce-dr-tier2",
+          "id": "<guid>",
+          "name": "Contoso Cloud Solution",
+          "publisherId": "contoso",
+          "offerId": "cont-cld-tier2",
           "planId": "silver",
           "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "status": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
       }
   ],
   "continuationToken": ""
 }
 ```
+
+継続トークンは、取得するプランの追加の "ページ" がある場合にのみ存在します。 
+
 
 コード:403 <br>
 権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。 
@@ -180,16 +203,16 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 Response Body:
 { 
         "id":"",
-        "name":"CloudEndure for Production use",
-        "publisherId": "cloudendure",
-        "offerId": "ce-dr-tier2",
+        "name":"Contoso Cloud Solution",
+        "publisherId": "contoso",
+        "offerId": "cont-cld-tier2",
         "planId": "silver",
         "quantity": "10"",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
@@ -240,18 +263,16 @@ Response Body:
 コード:200<br>
 顧客の利用可能なプランの一覧を取得します。<br>
 
+応答本文:
+
 ```json
-Response Body:
-[{
-    "planId": "silver",
-    "displayName": "Silver",
-    "isPrivate": false
-},
 {
-    "planId": "silver-private",
-    "displayName": "Silver-private",
-    "isPrivate": true
-}]
+    "plans": [{
+        "planId": "Platinum001",
+        "displayName": "Private platinum plan for Contoso",
+        "isPrivate": true
+    }]
+}
 ```
 
 コード:404<br>
@@ -301,12 +322,12 @@ Response Body:
 ```json
 Response body:
 {
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",  
-    "subscriptionName": "My Saas application",
-    "offerId": "ce-dr-tier2",
+    "subscriptionId": "<guid>",  
+    "subscriptionName": "Contoso Cloud Solution",
+    "offerId": "cont-cld-tier2",
     "planId": "silver",
     "quantity": "20",
-    "operationId": " be750acb-00aa-4a02-86bc-476cbe66d7fa"  
+    "operationId": "<guid>"  
 }
 ```
 
@@ -348,7 +369,7 @@ Response body:
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  x-ms-correlationid  | クライアントでの操作に対する一意の文字列値。 これによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  x-ms-correlationid  | クライアントでの操作に対する一意の文字列値。 この文字列によって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  authorization     |  JSON Web トークン (JWT) ベアラー トークン |
 
 *要求:*
@@ -511,7 +532,7 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 指定された値でサブスクリプションを更新します。
 
-**Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operation/<operationId>?api-version=<ApiVersion>`**
+**Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -534,15 +555,15 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 ```json
 {
-    "planId": "",
-    "quantity": "",
+    "planId": "cont-cld-tier2",
+    "quantity": "44",
     "status": "Success"    // Allowed Values: Success/Failure. Indicates the status of the operation.
 }
 ```
 
 *応答コード:*
 
-コード:200<br> ISV 側での操作の完了を通知する呼び出し。 たとえば、これはシート/プランの変更になる可能性があります。
+コード:200<br> ISV 側での操作の完了を通知する呼び出し。 たとえば、この応答で、シート/プランの変更を通知することもできます。
 
 コード:404<br>
 見つかりません
@@ -597,11 +618,11 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 ```json
 [{
-    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",  
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+    "id": "<guid>",  
+    "activityId": "<guid>",
+    "subscriptionId": "<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
@@ -634,7 +655,7 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 #### <a name="get-operation-status"></a>操作状態を取得する
 
-ユーザーが、トリガーされた非同期操作 (プランのサブスクライブ、サブスクライブ解除、変更) の状態を追跡できるようにします。
+ユーザーが、指定したトリガーによる非同期操作 (プランのサブスクライブ、サブスクライブ解除、変更) の状態を追跡できるようにします。
 
 **Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
@@ -653,23 +674,23 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  authorization     | JSON Web トークン (JWT) ベアラー トークン。  |
 
-*応答コード:* コード:200<br> 保留中のすべての SaaS 操作の一覧を取得します<br>
+*応答コード:* コード:200<br> 指定した保留中のすべての SaaS 操作を取得します<br>
 応答ペイロード:
 
 ```json
 Response body:
-[{
-    "id  ": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+{
+    "id  ": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
     "timeStamp": "2018-12-01T00:00:00",
     "status": "NotStarted"
-}]
+}
 
 ```
 
@@ -700,11 +721,11 @@ Response body:
 
 ```json
 {
-    "operationId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",
+    "operationId": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",
     "planId": "silver",
     "quantity": "20"  ,
     "action": "Activate",   // Activate/Delete/Suspend/Reinstate/Change[new]  
@@ -713,14 +734,12 @@ Response body:
 
 ```
 
-<!-- Review following, might not be needed when this publishes -->
-
 
 ## <a name="mock-api"></a>モック API
 
 開発、特にプロジェクトのプロトタイプ作成およびテストの開始に役立てるためにモック API を使用できます。 
 
-ホスト エンドポイント:https://marketplaceapi.microsoft.com/api API バージョン:2018-09-15 認証を必要としない サンプル URI: https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15
+ホスト エンドポイント:`https://marketplaceapi.microsoft.com/api` API バージョン:`2018-09-15` 認証を必要としないサンプル URI: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
 
 この記事の API 呼び出しはどれも、モック ホスト エンドポイントに対して行えます。 応答としてモック データを取り戻すことができます。
 

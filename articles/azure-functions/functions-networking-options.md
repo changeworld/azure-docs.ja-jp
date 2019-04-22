@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 1/14/2019
 ms.author: alkarche
-ms.openlocfilehash: 8bbc44e7af68f005f30fff143741bc4bfe0adcf2
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896740"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358174"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -43,7 +43,8 @@ Function App はいくつかの方法でホストできます。
 
 IP 制限を使用すると、アプリへのアクセスを許可されている IP アドレスの優先度順の許可/拒否リストを定義できます。 許可リストには、IPv4 アドレスと IPv6 アドレスを含めることができます。 1 つまたは複数のエントリがある場合、リストの最後にあるものはすべて暗黙的に拒否されます。 IP 制限機能は、すべての関数ホスティング オプションで有効です。
 
-> ![重要] Azure portal エディターを使用できるようにするには、実行中の関数アプリに Azure portal が直接アクセスできる必要があり、かつ Azure portal にアクセスするために使用しているデバイスの IP がホワイトリストに登録されている必要があります。 ネットワーク制限が設定されていても、**[プラットフォーム機能]** タブのどの機能にもアクセスできます。
+> [!NOTE]
+> Azure portal エディターを使用できるようにするには、実行中の関数アプリに Azure portal が直接アクセスできる必要があり、かつ Azure portal にアクセスするために使用しているデバイスの IP がホワイトリストに登録されている必要があります。 ネットワーク制限が設定されていても、**[プラットフォーム機能]** タブのどの機能にもアクセスできます。
 
 [詳しくは、こちらをご覧ください](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 

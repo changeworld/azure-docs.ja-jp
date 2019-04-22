@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620651"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273398"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -114,7 +114,7 @@ Azure blob のインデックスのイメージ分析、コグニティブ検索
 | BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |該当なし  |256 |256 |
 | BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数 |32,000 |64,000 |400 万 |400 万 |400 万 |該当なし |400 万 |400 万 |
 
-<sup>1</sup> Free サービスのインデクサーの最大実行時間は、BLOB ソースの場合は 3 分、その他のすべてのデータ ソースの場合は 1 分です。
+<sup>1</sup> Free サービスのインデクサーの最大実行時間は、BLOB ソースの場合は 3 分、その他のすべてのデータ ソースの場合は 1 分です。 Cognitive Services に呼び出しを行う AI インデックスについては、トランザクションが強化パイプラインを正常に通過するドキュメントとして定義された場合、無料のサービスは 1 日あたり 20 個の無料トランザクションに制限されます。
 
 <sup>2</sup> 2017 年末以降に作成された Basic サービスについては、インデックス、データ ソース、およびインデクサーの制限が 15 に増えました。 その前に作成されたサービスについては 5 です。
 

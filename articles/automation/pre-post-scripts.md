@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793660"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263810"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
 
@@ -67,6 +67,23 @@ Runbook が事前または事後スクリプトとして使用されるように
 別のオブジェクト型が必要な場合は、Runbook 内の独自のロジックで別の方にキャストできます。
 
 標準の Runbook パラメーターに加えて、追加のパラメーターが表示されます。 このパラメーターは **SoftwareUpdateConfigurationRunContext** です。 このパラメーターは JSON 文字列であるため、事前または事後スクリプトで定義すると、このパラメーターは更新プログラムの展開によって自動的に渡されます。 このパラメーターには、更新プログラムの展開に関する情報が含まれています。これは、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) によって返される情報のサブセットです。次の表に、この変数で提供されるプロパティを示します。
+
+## <a name="stopping-a-deployment"></a>デプロイの停止
+
+事前スクリプトに基づくデプロイを停止する場合は、例外を[スロー](automation-runbook-execution.md#throw)する必要があります。 例外をスローしないと、デプロイと事後スクリプトが引き続き実行されます。 ギャラリー内の [Runbook の例](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)に、その方法が示されています。 その Runbook からのスニペットを次に示します。
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
@@ -231,6 +248,17 @@ if ($summary.Type -eq "Error")
 }
 ```
 
+## <a name="abort-patch-deployment"></a>修正プログラムのデプロイを中止する
+
+ご利用の事前スクリプトからエラーが返された場合、デプロイを中止したい場合があります。 それを行うには、障害を引き起こしているロジックに対してご利用のスクリプト内でエラーを[スロー](/powershell/module/microsoft.powershell.core/about/about_throw)する必要があります。
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.  
+    throw "There was an error, abort deployment"
+}
+```
 ## <a name="known-issues"></a>既知の問題
 
 * 事前および事後スクリプトを使用している場合は、パラメーターにオブジェクトまたは配列を渡すことができません。 その Runbook が失敗します。

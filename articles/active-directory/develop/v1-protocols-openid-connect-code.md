@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851192"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261991"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
@@ -47,12 +47,12 @@ OpenID Connect はメタデータ ドキュメントについて説明するも�
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net)に詳しく記載されています。 上記の {tenant} に `common` ではなくテナントを指定すると、JSON オブジェクトのテナント固有の URI が返されます。
+メタデータは、単純な JavaScript Object Notation (JSON) ドキュメントです。 例については、次のスニペットを参照してください。 スニペットの内容については、[OpenID Connect の仕様](https://openid.net)に詳しく記載されています。 上記の {tenant} に `common` ではなくテナント ID を指定すると、JSON オブジェクトのテナント固有の URI が返されます。
 
 ```
 {
-    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
-    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "authorization_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/token",
     "token_endpoint_auth_methods_supported":
     [
         "client_secret_post",
@@ -64,6 +64,8 @@ https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
     ...
 }
 ```
+
+[claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果として、アプリにカスタム署名キーがある場合は、アプリの署名キー情報をポイントする `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
 
 ## <a name="send-the-sign-in-request"></a>サインイン要求を送信する
 
@@ -91,7 +93,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター |  | 説明 |
 | --- | --- | --- |
 | tenant |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
-| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選び、アプリケーション ページでアプリケーション ID を特定します。 |
+| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選択して、アプリケーション ページでアプリケーション ID を特定します。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` や `token` などの他の response_types が含まれていてもかまいません。 |
 | scope | 推奨 | OpenID Connect の仕様では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 これとその他の OIDC スコープは v1.0 エンドポイントでは無視されますが、標準に準拠したクライアントにとっては依然としてベスト プラクティスです。 |
 | nonce |必須 |アプリによって生成された、要求に含まれる値。この値が、最終的な `id_token` に要求として含まれます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常、この値はランダム化された一意の文字列または GUID になっており、要求の送信元を特定する際に使用できます。 |
@@ -179,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
-| post_logout_redirect_uri |推奨 |ログアウトの正常終了後にユーザーをリダイレクトする URL。 指定しない場合、ユーザーに汎用メッセージが表示されます。 |
+| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。指定しない場合、ユーザーに汎用メッセージが表示されます。 |
 
 ## <a name="single-sign-out"></a>シングル サインアウト
 
@@ -200,7 +202,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // `form_post' or 'fragment'

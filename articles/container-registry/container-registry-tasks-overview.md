@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915926"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256194"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する
 
@@ -97,10 +97,9 @@ OS とフレームワークの修正プログラムの適用については、[A
 
 ## <a name="next-steps"></a>次の手順
 
-クラウドでコンテナー イメージをビルドすることで OS とフレームワークの修正プログラム適用を自動化する準備ができたら、ACR タスクに関する 3 部構成のチュートリアル シリーズをご覧ください。
+クラウドでコンテナー イメージをビルドすることで OS とフレームワークの修正プログラム適用を自動化する準備ができたら、[ACR タスクに関する 3 部構成のチュートリアル シリーズ](container-registry-tutorial-quick-task.md)を参照してください。
 
-> [!div class="nextstepaction"]
-> [Azure Container Registry タスクを使用してクラウド内のコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)
+Azure コンテナー レジストリを使用するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

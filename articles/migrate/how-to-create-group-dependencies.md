@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895433"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357176"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -21,9 +21,10 @@ ms.locfileid: "55895433"
 > [!NOTE]
 > 依存関係を視覚化するグループには、10 個を超えるマシンを含めないでください。 グループ内に 10 個を超えるマシンがある場合、依存関係視覚化機能を利用するには小さいグループに分割することをお勧めします。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prepare-for-dependency-visualization"></a>依存関係視覚化を準備する
-Azure Migrate は、マシンの依存関係を視覚化できるように Log Analytics の Service Map ソリューションを活用します。
+Azure Migrate では、マシンの依存関係を視覚化できるように Azure Monitor ログで Service Map ソリューションを活用します。
 
 > [!NOTE]
 > 依存関係可視化機能は、Azure Government では使用できません。
@@ -62,7 +63,7 @@ Windows マシンにエージェントをインストールするには、次の
 4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
-エージェントのインストールは、コマンド ラインから、または Azure Automation DSC や System Center Configuration Manager などの自動化された方法を使用して行うことができます。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
+エージェントは、コマンド ラインからインストールするか、System Center Configuration Manager などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>Linux マシンにエージェントをインストールする
 
@@ -93,18 +94,18 @@ Operations Manager 2012 R2 以降によって監視されているマシンの�
 1. Azure Migrate プロジェクトで、**[管理]** の  **[グループ]** をクリックし、グループを選択します。
 2. グループ ページで  **[依存関係の表示]** をクリックして、グループの依存関係マップを開きます。
 3. グループの依存関係マップには次の詳細情報が表示されます。
-    - グループに含まれるすべてのマシンに対する受信 (クライアント) と送信 (サーバー) の TCP 接続
-        - MMA と依存関係エージェントがインストールされていない依存マシンは、ポート番号によってグループ化されます。
-        - MMA と依存関係エージェントがインストールされている依存マシンは、別のボックスに表示されます。
-    - マシンで実行しているプロセス。各マシンのボックスを展開してプロセスを表示できます。
-    - 各マシンの完全修飾ドメイン名、オペレーティング システム、MAC アドレスなどのプロパティ。各マシンのボックスをクリックして、これらの詳細を表示できます。
+   - グループに含まれるすべてのマシンに対する受信 (クライアント) と送信 (サーバー) の TCP 接続
+       - MMA と依存関係エージェントがインストールされていない依存マシンは、ポート番号によってグループ化されます。
+       - MMA と依存関係エージェントがインストールされている依存マシンは、別のボックスに表示されます。
+   - マシンで実行しているプロセス。各マシンのボックスを展開してプロセスを表示できます。
+   - 各マシンの完全修飾ドメイン名、オペレーティング システム、MAC アドレスなどのプロパティ。各マシンのボックスをクリックして、これらの詳細を表示できます。
 
      ![グループの依存関係の表示](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. さらに細かい依存関係を表示するには、時間の範囲をクリックして変更します。 既定では、範囲は 1 時間です。 時間の範囲を変更することも、開始日と終了日および期間を指定することもできます。
 
-    > [!NOTE]
-      現在、依存関係の視覚化 UI は、1 時間を超える時間の範囲の選択をサポートしていません。 長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-a-group)には、Log Analytics を使用してください。
+   > [!NOTE]
+   >    現在、依存関係の視覚化 UI は、1 時間を超える時間の範囲の選択をサポートしていません。 長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-a-group)には、Azure Monitor ログを使用してください。
 
 4. 依存マシンと、各マシン内で実行しているプロセスを確認し、グループに対して追加または削除する必要があるマシンを特定します。
 5. グループにマシンを追加またはグループから削除するには、Ctrl キーを押しながらクリックしてマップ上でマシンを選択します。
@@ -117,20 +118,56 @@ Operations Manager 2012 R2 以降によって監視されているマシンの�
 
 グループの依存関係マップに表示されている特定のマシンの依存関係を確認する場合は、[マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を設定します。
 
-## <a name="query-dependency-data-from-log-analytics"></a>Log Analytics から依存関係データのクエリを実行する
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>Azure Monitor ログから依存関係データにクエリを実行する
 
-Service Map によってキャプチャされた依存関係データは、Azure Migrate プロジェクトに関連付けられている Log Analytics ワークスペースでのクエリに使用できます。 Log Analytics 内でクエリを実行する Service Map データ テーブルの[詳細についてはこちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)を参照してください。 
+Service Map によってキャプチャされた依存関係データは、Azure Migrate プロジェクトに関連付けられている Log Analytics ワークスペースでのクエリに使用できます。 Azure Monitor ログ内でクエリを実行する Service Map データ テーブルの[詳細を参照してください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)。 
 
-Log Analytics クエリを実行するには:
+Kusto クエリを実行するには:
 
 1. エージェントをインストールしたら、ポータルに移動し、**[概要]** をクリックします。
 2. **[概要]** で、プロジェクトの **[基本]** セクションに移動し、**[OMS ワークスペース]** の横にあるワークスペース名をクリックします。
 3. Log Analytics ワークスペース ページで **[全般]**、**[ログ]** の順にクリックします。
-4. Log Analytics を使用して依存関係データを収集するクエリを作成します。 依存関係データを収集するサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
+4. Azure Monitor ログを使用して依存関係データを収集するためのクエリを作成します。 次のセクションでサンプル クエリを見つけます。
 5. [実行] をクリックしてクエリを実行します。 
 
-Log Analytics クエリの作成方法の[詳細についてはこちら](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)を参照してください。 
+Kusto クエリの作成方法の[詳細を参照してください](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。 
 
+## <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor ログのサンプル クエリ
+
+依存関係データを抽出するために使用できるサンプル クエリは次のとおりです。 クエリを変更して、目的のデータ ポイントを抽出できます。 依存関係データ レコード内のフィールドを網羅した一覧は、[ここ](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)で入手できます。 その他のサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
+
+### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>一連のマシンの受信接続を集計する
+
+接続メトリック用のテーブル内のレコード (VMConnection) は、個々の物理ネットワーク接続を表していないことに注意してください。 複数の物理ネットワーク接続は、論理接続にグループ化されます。 物理ネットワーク接続データがどのように VMConnection 内の単一の論理レコードに集約されるかについては、[詳細を確認](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)してください。 
+
+```
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+let StartDateTime = datetime(2019-03-25T00:00:00Z);
+let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+VMConnection
+| where Direction == 'inbound' 
+| where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
+| join kind=inner (ips) on $left.DestinationIp == $right.ips
+| summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
+```
+
+#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>一連のマシン間での受信接続で送受信されたデータの量を集計する
+
+```
+// the machines of interest
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+let StartDateTime = datetime(2019-03-25T00:00:00Z);
+let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+VMConnection
+| where Direction == 'inbound' 
+| where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
+| join kind=inner (ips) on $left.DestinationIp == $right.ips
+| summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
+```
 
 ## <a name="next-steps"></a>次の手順
 - [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)、よく寄せられる質問を確認します。

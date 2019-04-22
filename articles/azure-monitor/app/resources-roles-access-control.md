@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905683"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361877"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -48,7 +48,7 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 
 ## <a name="access"></a> リソース グループのコントロール制御
 
-アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはアプリケーションと同じ [リソース グループ](#resource-group) に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
+アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはご利用の Application Insights リソースと同じ[リソース グループ](#resource-group)に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
 
 これらのリソースのアクセスを制御するには、次の処置が推奨されます。
 

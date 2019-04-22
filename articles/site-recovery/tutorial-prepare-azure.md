@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358490"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617416"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-1. Azure portal で **[+ リソースの作成]** をクリックし、Marketplace で "**Recovery services**" を検索します。
+1. Azure portal で **[+ リソースの作成]** をクリックし、Marketplace で "**Recovery**" を検索します。
 2. **[Backup and Site Recovery (OMS)]** をクリックし、[Backup and Site Recovery] ページで **[作成]** をクリックします。 
 1. **[Recovery Services コンテナー]** > **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
 2. **[リソース グループ]** で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは **contosoRG** を使用しています。
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。
 3. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使います。
 4. ネットワークを作成するリソース グループを指定します。 既存のリソース グループ **contosoRG** を使っています。
-5. **[アドレス範囲]** に、ネットワークの範囲を入力します。 ここでは、サブネットを使用せずに **10.0.0.0/24** を使用しています。
+5. **[アドレス範囲]** に、ネットワークの範囲を入力します。 ここでは、サブネットを使用せずに **10.1.0.0/24** を使用しています。
 6. **[サブスクリプション]** で、ネットワークを作成するサブスクリプションを選択します。
 7. **[場所]** で、Recovery Services コンテナーが作成されたリージョンと同じリージョンを選択します。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。 ネットワークは、コンテナーと同じリージョンにある必要があります。
 8. 基本的な DDoS 保護の既定のオプションのままにし、ネットワーク上にサービス エンドポイントはありません。

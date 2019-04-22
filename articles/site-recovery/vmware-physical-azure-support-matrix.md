@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: raynew
-ms.openlocfilehash: 199f9508b599e2f946404446a23e9608bb969ba7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4e5a785d219e1b776a1d512512d0a2a74532c550
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649460"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282731"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -30,7 +30,7 @@ VMware VM | オンプレミス VMware VM の Azure へのレプリケーショ�
 
 ## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
-**サーバー** | **要件** | **詳細**
+**サーバー** | **必要条件** | **詳細**
 --- | --- | ---
 VMware | vCenter Server 6.7、6.5、6.0、5.5、または vSphere 6.7、6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。<br/><br/> vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバー コンポーネントは構成サーバーで実行されるため、専用のプロセス サーバーを設定していなければ、これがその中に構成サーバーを設定するネットワークになります。
 物理 | 該当なし
@@ -39,7 +39,7 @@ VMware | vCenter Server 6.7、6.5、6.0、5.5、または vSphere 6.7、6.5、6.
 
 構成サーバーはオンプレミスのマシンで、構成サーバー、プロセス サーバー、マスター ターゲット サーバーを含む Site Recovery のコンポーネントを実行します。 VMware のレプリケーションの場合は、VMware VM を作成する OVF テンプレートを使用して、すべての要件を含む構成サーバーを設定します。 物理サーバーのレプリケーションの場合は、構成サーバーのマシンを手動で設定します。
 
-**コンポーネント** | **要件**
+**コンポーネント** | **必要条件**
 --- |---
 CPU コア数 | 8
 RAM | 16 GB
@@ -66,7 +66,7 @@ Site Recovery は、サポートされているマシンで実行されている
 マシンのワークロード | Site Recovery は、サポートされているマシンで実行されている任意のワークロード (たとえば Active Directory、SQL サーバーなど) のレプリケーションをサポートします。 [詳細情報](https://aka.ms/asr_workload)。
 Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
 Linux オペレーティング システムのアーキテクチャ | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません
-Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>CentOS:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
+Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>CentOS:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [(サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
@@ -96,7 +96,7 @@ Debian 8 | [9.20][9.20 UR]、[9.21][9.21 UR]、[9.22][9.22 UR]、[9.23][9.23 UR]
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 のサポートされるカーネルのバージョン
 
-**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.23][9.23 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.79-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.22][9.22 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
@@ -108,7 +108,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.20][9.20 UR] | SP1 3.12.4
 **コンポーネント** | **サポートされています**
 --- | ---
 ファイル システム | ext3、ext4、XFS
-ボリューム マネージャー | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1.LVM2 がサポートされています。 <br/> 2.LVM は、データ ディスクでのみサポートされています。 <br/> 手順 3.Azure VM には、OS ディスクが 1 つだけあります。<br/><br/>[バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 以降では、LVM と LVM2 がサポートされています。
+ボリューム マネージャー | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1.LVM はサポートされています。 <br/> 2. LVM ボリューム上の /boot はサポートされていません。 <br/> 手順 3.複数の OS ディスクはサポートされていません。<br/><br/>[9.20 バージョン以降](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、LVM 上の /boot がサポートされています。 複数の OS ディスクはサポートされていません。
 準仮想化ストレージ デバイス | 準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
 マルチ キュー ブロック IO デバイス | サポートされていません。
 HP CCISS ストレージ コントローラーを使用する物理サーバー | サポートされていません。
@@ -120,7 +120,7 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー 
 
 ## <a name="vmdisk-management"></a>VM/ディスク管理
 
-**アクション** | **詳細**
+**Action** | **詳細**
 --- | ---
 レプリケートされた VM のディスク サイズの変更 | サポートされています。
 レプリケートされた VM のディスクの追加 | VM のレプリケーションを無効にし、ディスクを追加してから、レプリケーションを再び有効にします。 レプリケート VM へのディスクの追加は現在サポートされていません。
@@ -187,6 +187,7 @@ Docker ディスク構成 | いいえ
 >
 > - Azure への移行のみがサポートされています。 オンプレミスの VMware サイトへのフェールバックはサポートされていません。
 > - サーバーには、OS ディスクに 4 個を超えるパーティションを持たせないでください。
+> - NTFS のみがサポートされます。
 > - バージョン 9.13 以降のモビリティ サービスが必要です。
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -218,7 +219,7 @@ Premium Storage | はい
 
 Azure にレプリケートするオンプレミス VM は、この表にまとめられている Azure VM の要件を満たしている必要があります。 Site Recovery が前提条件確認を実行するとき、満たされていない要件がある場合には確認が失敗します。
 
-**コンポーネント** | **要件** | **詳細**
+**コンポーネント** | **必要条件** | **詳細**
 --- | --- | ---
 ゲスト オペレーティング システム | レプリケートするマシンの[サポート対象のオペレーティング システム](#replicated-machines)を確認します。 | サポートされていない場合、確認は失敗します。
 ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。
@@ -255,7 +256,7 @@ VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/�
 
 ## <a name="vault-tasks"></a>資格情報コンテナーのタスク
 
-**アクション** | **サポートされています**
+**Action** | **サポートされています**
 --- | ---
 リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 

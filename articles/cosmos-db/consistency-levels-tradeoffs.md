@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のさまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ
 description: Azure Cosmos DB のさまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ。
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 2/13/2019
-ms.author: mjbrown
+ms.date: 04/08/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407523"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266428"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>整合性、可用性、パフォーマンスのトレードオフ 
 
@@ -20,11 +20,11 @@ ms.locfileid: "58407523"
 
 Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性に対応しています。 このアプローチには、厳密で最終的な整合性という 2 つの極端な方法よりも多くの選択肢があります。 整合性の程度に応じて明確に定義された 5 種類のモデルから選択することができます。 最強から最弱の順に、次のモデルがあります。
 
-- *厳密*
-- *有界整合性制約*
-- *セッション*
+- *Strong*
+- *Bounded staleness*
+- *Session*
 - *一貫性のあるプレフィックス*
-- *最終的*
+- *Eventual*
 
 いずれのモデルでも、可用性とパフォーマンスのトレードオフが提供され、包括的な SLA によって裏付けられています。
 
@@ -67,6 +67,6 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 
 分散システムでのグローバル分散および一般的な整合性のトレードオフについて学習します。 次の記事を参照してください。
 
-- [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+- [Consistency tradeoffs in modern distributed database systems design (先進的な分散データベース システム設計における整合性のトレードオフ)](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [高可用性](high-availability.md)
-- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB の SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

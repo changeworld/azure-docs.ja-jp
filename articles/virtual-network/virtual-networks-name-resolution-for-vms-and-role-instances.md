@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Azure IaaS、ハイブリッド ソリューション、異なるクラウド サービス間、Active Directory、および独自の DNS サーバーの使用に関係する名前解決シナリオです。
 services: virtual-network
 documentationcenter: na
-author: subsarma
+author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
-ms.author: subsarma
-ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: rohink
+ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418739"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426428"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -34,7 +34,7 @@ Azure を使用して IaaS、PaaS、ハイブリッド ソリューションを�
 > シナリオに応じて、現在パブリック プレビュー段階の Azure DNS Private Zones 機能を使用することをお勧めします。 詳しくは、「[プライベート ドメインに Azure DNS を使用する](../dns/private-dns-overview.md)」をご覧ください。
 >
 
-| **シナリオ** | **ソリューション** | **サフィックス** |
+| **シナリオ** | **解決策** | **サフィックス** |
 | --- | --- | --- |
 | 同じ仮想ネットワーク内に配置された VM 間、または同じクラウド サービス内の Azure クラウド サービスのロール インスタンス間での名前解決。 | [Azure DNS Private Zones](../dns/private-dns-overview.md) または [Azure で提供される名前解決](#azure-provided-name-resolution) |ホスト名または FQDN |
 | 異なる仮想ネットワーク内の VM 間または異なるクラウドサービスのロール インスタンス間での名前解決。 |[Azure DNS Private Zones](../dns/private-dns-overview.md)、または Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
@@ -220,5 +220,5 @@ Azure Resource Manager デプロイ モデル:
 クラシック デプロイ モデル:
 
 * [Azure サービス構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710)
-* [仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100)
-* [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
+* [Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100)
+* [ネットワーク構成ファイルを使用した Virtual Network の構成](virtual-networks-using-network-configuration-file.md)

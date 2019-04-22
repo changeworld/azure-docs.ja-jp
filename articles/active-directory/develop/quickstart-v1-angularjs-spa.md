@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c508c402707663489fc383dccd958559df6b217f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194684"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544942"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 
@@ -45,6 +45,9 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 1. アプリを Azure AD に登録する。
 2. ADAL をインストールし、シングルページ アプリを構成する。
 3. ADAL を使用して、シングルページ アプリ内のページの保護をサポートする。
+
+> [!NOTE]
+> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、*[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* を使用できます。 詳細については、[こちらの JavaScript SPA のチュートリアル](tutorial-v2-javascript-spa.md)と、*Microsoft ID プラットフォーム エンドポイント*を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。 
 
 ## <a name="prerequisites"></a>前提条件
 

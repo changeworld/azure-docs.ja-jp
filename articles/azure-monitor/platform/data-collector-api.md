@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883940"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264095"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -44,24 +44,25 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 ### <a name="request-uri"></a>要求 URI
 | Attribute | プロパティ |
 |:--- |:--- |
-| 方法 |POST |
+| Method |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| コンテンツの種類 |application/json |
+| Content type |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
 | パラメーター | 説明 |
 |:--- |:--- |
 | CustomerID |Log Analytics ワークスペースの一意識別子です。 |
 | Resource |API のリソース名は "/api/logs" です。 |
-| API バージョン |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
+| API Version |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
 
 ### <a name="request-headers"></a>要求ヘッダー
 | ヘッダー | 説明 |
 |:--- |:--- |
-| 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
+| Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 このパラメーターのサイズ制限は 100 文字です。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
-| time-generated-field |データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
+| x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](log-standard-properties.md#_resourceid) プロパティに値が設定され、[リソース中心の](manage-access.md#access-modes)クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース中心のクエリにデータは含まれません。 |
+| time-generated-field | データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
 
 ## <a name="authorization"></a>Authorization
 Azure Monitor HTTP データ コレクター API への要求には、Authorization ヘッダーを含める必要があります。 要求を認証するには、その要求を行っているワークスペースの主キーまたはセカンダリ キーのどちらかを使用して、要求に署名する必要があります。 次に、その署名を要求の一部として渡します。   

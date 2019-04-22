@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1027398a1a7f790adedf6c7eebed44a8db501b8a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905037"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358877"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
@@ -39,7 +39,7 @@ Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリ
 | アラート: | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。 |
 | 自動化 |  [自動スケーリング](autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
 | エクスポート | [メトリックをログにルーティング](diagnostic-logs-stream-log-store.md)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
-| デバイス ハンドルの | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
+| デバイス ハンドルの | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
 | アーカイブ | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](..//learn/tutorial-archive-data.md)します。 |
 
 

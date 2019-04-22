@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 5a619b768d61875a03e53a613dfb9a3fb01dd7aa
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540179"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006273"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースへの Azure サービスのログとメトリックの収集
 
@@ -32,7 +32,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 
 | Service                 | リソースの種類                           | ログ        | メトリック     | 解決策 |
 | --- | --- | --- | --- | --- |
-| アプリケーション ゲートウェイ    | Microsoft.Network/applicationGateways   | 診断 | 診断 | [Azure Application Gateway 分析](../../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| アプリケーション ゲートウェイ    | Microsoft.Network/applicationGateways   | 診断 | 診断 | [Azure Application Gateway 分析](../insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) |
 | Application Insights    |                                         | コネクタ   | コネクタ   | [Application Insights コネクタ](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (プレビュー) |
 | Automation アカウント     | Microsoft.Automation/AutomationAccounts | 診断 |             | [詳細情報](../../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Batch アカウント          | Microsoft.Batch/batchAccounts           | 診断 | 診断 | |
@@ -42,15 +42,15 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | 診断 |             | |
 | Event Hub 名前空間     | Microsoft.EventHub/namespaces           | 診断 | 診断 | |
 | IoT Hub                | Microsoft.Devices/IotHubs               |             | 診断 | |
-| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault 分析](../../azure-monitor/insights/azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault Analytics](../insights/azure-key-vault.md) |
 | ロード バランサー          | Microsoft.Network/loadBalancers         | 診断 |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 診断 | 診断 | |
-| ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure ネットワーク セキュリティ グループ分析](../../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure ネットワーク セキュリティ グループ分析](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) |
 | Recovery コンテナー         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (プレビュー)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Search サービス         | Microsoft.Search/searchServices         | 診断 | 診断 | |
 | Service Bus 名前空間   | Microsoft.ServiceBus/namespaces         | 診断 | 診断 | [Service Bus Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 | Service Fabric          |                                         | Storage     |             | [Service Fabric Analytics (プレビュー)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 診断 | [Azure SQL Analytics (プレビュー)](../../azure-monitor/insights/azure-sql.md) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 診断 | [Azure SQL Analytics (プレビュー)](../insights/azure-sql.md) |
 | Storage                 |                                         |             | スクリプト      | [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | 内線番号   | 拡張機能 <br> 診断  | |
 | 仮想マシン スケール セット | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 診断 | |

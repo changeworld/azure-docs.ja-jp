@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918044"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267908"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -33,7 +33,10 @@ Translator Text API では、テキスト対テキストの翻訳について、
 * ニューラルが既定: ニューラルが既定の翻訳システムです。 Microsoft Translator Hub 用の統計システムにアクセスするには、パラメーター `category=smt` を使用します。
 * ニューラルのみ: 利用できるのはニューラル翻訳のみです。
 
-**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 カスタム トランスレーターは、ニューラル言語でのみ使用できます。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
+**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 
+
+> [!NOTE]
+> 現在、ニューラル言語のサブセットはカスタム翻訳ツールで利用することができ、Mcrosoft では、段階的に内容を追加しています。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
 
 |言語|  言語コード|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|

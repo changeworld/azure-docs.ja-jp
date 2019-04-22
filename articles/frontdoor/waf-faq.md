@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: ef021bc9a4f3cb8b49ab3b455e00dfa8dc27dc76
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58909981"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255922"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 

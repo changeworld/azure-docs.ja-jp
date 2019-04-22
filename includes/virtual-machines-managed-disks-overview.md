@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807742"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291723"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -31,6 +31,10 @@ ms.locfileid: "58807742"
 
 マネージド ディスクは可用性セットと統合されており、[可用性セット内の VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが単一障害点にならないように相互に十分に分離されます。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
+## <a name="integration-with-availability-zones"></a>Availability Zones との統合
+
+マネージド ディスクでは [Availability Zones](../articles/availability-zones/az-overview.md) をサポートします。これは高可用性を備えたサービスであり、アプリケーションをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
+
 ### <a name="azure-backup-support"></a>Azure Backup のサポート
 
 リージョン全体の災害から保護するために、[Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) を使用し、時間ベースのバックアップとバックアップ保存ポリシーを指定してバックアップ ジョブを作成できます。 こうすることで、簡単な VM の復元を任意で実行できます。 現在、Azure Backup では、最大 4 テビバイト (TiB) のディスク サイズがサポートされています。 詳細については、[マネージド ディスクを使用する VM での Azure Backup の使用](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページを参照してください。
@@ -41,11 +45,15 @@ ms.locfileid: "58807742"
 
 ## <a name="disk-roles"></a>ディスク ロール
 
-### <a name="data-disks"></a>データ ディスク
+Azure には、データ ディスク、OS ディスク、一時ディスクという 3 つのメイン ディスク ロールがあります。 これらのロールは、ご利用の仮想マシンに接続されているディスクにマップされます。
+
+![動作中のディスク ロール](media/virtual-machines-managed-disks-overview/disk-types.png)
+
+### <a name="data-disk"></a>データ ディスク
 
 データ ディスクは仮想マシンに取り付けられるマネージド ディスクであり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各データ ディスクの最大容量は 32,767 ギビバイト (GiB) です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
-### <a name="os-disks"></a>OS ディスク
+### <a name="os-disk"></a>OS ディスク
 
 どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 その OS ディスクには、VM の作成時に選択された OS がプリインストールされています。
 
@@ -70,7 +78,7 @@ ms.locfileid: "58807742"
 
 イメージの作成方法については、次の記事をご覧ください。
 
-* [Azure の汎用化された VM の管理対象イメージをキャプチャする方法](../articles/virtual-machines/windows/capture-image-resource.md)
+* [Azure で一般化された VM の管理対象イメージをキャプチャする方法](../articles/virtual-machines/windows/capture-image-resource.md)
 * [Azure CLI を使用して Linux 仮想マシンを一般化してキャプチャする方法](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>イメージとスナップショット

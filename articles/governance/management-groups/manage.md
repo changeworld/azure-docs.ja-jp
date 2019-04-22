@@ -3,15 +3,15 @@ title: 管理グループを変更、削除、または管理する方法 - Azur
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
 author: rthorn17
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881054"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272480"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -34,6 +34,8 @@ ms.locfileid: "58881054"
 1. **[すべてのサービス]** > **[管理グループ]** を選択します。
 
 1. 名前を変更する管理グループを選択します。
+
+1. **詳細**を選択します。
 
 1. ページの上部にある **[グループ名の変更]** オプションを選択します。
 
@@ -80,6 +82,8 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 1. **[すべてのサービス]** > **[管理グループ]** を選択します。
 
 1. 削除する管理グループを選択します。
+
+1. **詳細**を選択します。
 
 1. **[削除]** を選択します
 
@@ -303,7 +307,8 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 管理グループを別のグループの下に移動するには、PowerShell で Update-AzManagementGroup コマンドを使用します。
 
 ```azurepowershell-interactive
-Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoIT'
+$parentGroup = Get-AzManagementGroup -GroupName ContosoIT
+Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
 ```  
 
 ### <a name="move-management-groups-in-azure-cli"></a>Azure CLI での管理グループの移動
@@ -311,7 +316,7 @@ Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Ma
 Azure CLI で管理グループを移動するには update コマンドを使用します。
 
 ```azurecli-interactive
-az account management-group update --name 'Contoso' --parent-id '/providers/Microsoft.Management/managementGroups/ContosoIT'
+az account management-group update --name 'Contoso' --parent ContosoIT
 ```
 
 ## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
