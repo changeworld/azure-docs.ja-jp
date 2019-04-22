@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904850"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521664"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -217,7 +217,7 @@ Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupNa
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 使用するパスワードは、パラメーター ファイルにあるものです。
-Linux VM へのログオン後、ポータルでリソース <prefix>hsm_vnic に表示されるプライベート IP アドレスを使用して、HSM にログインできます。
+Linux VM へのログオン後、ポータルでリソース \<prefix>hsm_vnic に表示されるプライベート IP アドレスを使用して、HSM にログインできます。
 
 ```powershell
 
@@ -280,4 +280,4 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [監視](monitoring.md)
-* [サポート](supportability.md)
+* [サポート可能性](supportability.md)

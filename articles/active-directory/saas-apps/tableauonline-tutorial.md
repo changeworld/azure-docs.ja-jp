@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ccf978ab33226dc029d534a343a87a796ab69e8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278107"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617308"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル:Azure Active Directory と Tableau Online の統合
 
@@ -105,9 +105,9 @@ Tableau Online で Azure AD シングル サインオンを構成するには、
 
     ![[Tableau Online のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、URL として次のように入力します:  `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
+    a. **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com/public/sp/login?alias=<entityid>`」と入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します:  `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
+    b. **[識別子 (エンティティ ID)]** ボックスに `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>` という URL を入力します。
 
     > [!NOTE]
     > `<entityid>` 値は、このチュートリアルの **[Tableau Online のセットアップ]** セクションで取得します。 エンティティ ID 値は、**[Tableau Online のセットアップ]** セクションの **[Azure AD 識別子]** 値になります。
@@ -144,7 +144,7 @@ Tableau Online で Azure AD シングル サインオンを構成するには、
   
     a. Azure Portal で **Tableau Online** アプリケーション統合ページに移動します。
 
-    b. **[User Attributes & Claims]\(ユーザー属性とクレーム\)**** セクションで、編集アイコンをクリックします。
+    b. **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、編集アイコンをクリックします。
 
    ![Configure single sign-on](./media/tableauonline-tutorial/attributesection.png)
 
@@ -189,7 +189,7 @@ Tableau Online で Azure AD シングル サインオンを構成するには、
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    たとえば、「BrittaSimon\@contoso.com」です。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 

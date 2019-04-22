@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1973d7e360f77aed028d8a93a625f0f6cb7e1ab8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730359"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523445"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -58,7 +58,7 @@ App Service は、ファイルの展開に FTP と FTPS の両方をサポート
 
 既定で、App Service アプリはインターネットを介したすべての IP アドレスの要求を受け入れますが、そのアクセスをごく一部の IP アドレスに制限することができます。 Windows 上の App Service では、アプリへのアクセスを許可されている IP アドレスの一覧を定義できます。 許可一覧には、個々 の IP アドレスまたはサブネット マスクによって定義された IP アドレスの範囲を含めることができます。 詳細については、「[Azure App Service 静的 IP 制限](app-service-ip-restrictions.md)」を参照してください。
 
-Windows 上の App Service の場合、_web.config_ を構成して IP アドレスを動的に制限することもできます。詳細については、「[Dynamic IP Security<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)」(動的 IP セキュリティ) を参照してください。
+Windows 上の App Service の場合、_web.config_ を構成して IP アドレスを動的に制限することもできます。詳細については、[動的 IP セキュリティ \<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/) に関するページを参照してください。
 
 ## <a name="client-authentication-and-authorization"></a>クライアントの認証と承認
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: be9bde90684b46adef509532eb7b0cc236c5efb1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180604"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490361"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>接続済みファクトリ ソリューション アクセラレータのチュートリアル
 
@@ -230,7 +230,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 引き続き IoT ソリューション アクセラレータの概要について学習するには、次の記事を参照してください。
 
 * [azureiotsolutions.com サイトでのアクセス許可][lnk-permissions]
-* [接続済みファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-accelerators-connected-factory-gateway-deployment.md)
+* [接続済みファクトリ ソリューション アクセラレータ用ゲートウェイを Windows または Linux 上にデプロイする](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC Publisher のリファレンス実装](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png

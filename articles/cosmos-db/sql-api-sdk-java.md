@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648558"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617134"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * Change Feed のサポートを追加しました。
 * RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
 * RequestOptions.setScriptLoggingEnabled を介したストアド プロシージャ スクリプトのログ記録のサポートを追加しました。
-* スロットル エラーが発生した場合に DirectHttps モードのクエリがハングすることがあるバグを修正しました。
+* スロットル エラーが発生した場合に DirectHttps モードのクエリが応答を停止させるおそれのあるバグを修正しました。
 * セッションの整合性モードのバグを修正しました。
 * 要求レートが高いときに HttpContext の NullReferenceException を引き起こす可能性のあるバグを修正しました。
 * DirectHttps モードのパフォーマンスを改善しました。

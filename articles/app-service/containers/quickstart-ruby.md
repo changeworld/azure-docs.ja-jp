@@ -4,8 +4,8 @@ description: App Service on Linux で Ruby on Rails アプリを作成する方�
 keywords: Azure App Service、Linux、OSS、Ruby、Rails
 services: app-service
 documentationcenter: ''
-author: SyntaxC4
-manager: cfowler
+author: cephalin
+manager: jeconnoc
 editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
-ms.author: cfowler
+ms.date: 03/27/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870437"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545147"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
 [Azure App Service on Linux](app-service-linux-intro.md) は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Web App on Linux として Azure にデプロイできる基本的な [Ruby on Rails](https://rubyonrails.org/) アプリケーションの作成方法を示します。
 
 > [!NOTE]
-> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用するか、[サポートされていない Ruby バージョン](app-service-linux-intro.md)を使用する場合は、[Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/) のクイック スタートを参照してください。
+> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用するか、[サポートされていない Ruby バージョン](app-service-linux-intro.md)を使用する場合は、[カスタム コンテナーで実行](quickstart-docker-go.md)する必要があります。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -139,4 +139,7 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Ruby on Rails と Postgres](tutorial-ruby-postgres-app.md)
+> [チュートリアル:Ruby on Rails と Postgres](tutorial-ruby-postgres-app.md)
+
+> [!div class="nextstepaction"]
+> [Ruby アプリを構成する](configure-language-ruby.md)

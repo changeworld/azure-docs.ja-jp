@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64e3cbd082f2d18668dff87fbec098add73ffda6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 30c4a6817272f7b5f1810873a93280b234ff6cc9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010083"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524312"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Traffic Manager を使用した地理的トラフィック ルーティング方法の構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "58010083"
 1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
 2. **[リソースの作成]** > **[ネットワーク]** > **[Traffic Manager プロファイル]** > **[作成]** の順にクリックします。
 4. **[Traffic Manager プロファイルの作成]** で、以下の手順に従います。
-    1. プロファイルの名前を指定します。 この名前は、trafficmanager.net zone 内で一意である必要があります。 Traffic Manager プロファイルにアクセスするには、DNS 名 <profilename>.trafficmanager.net を使用します。
+    1. プロファイルの名前を指定します。 この名前は、trafficmanager.net zone 内で一意である必要があります。 Traffic Manager プロファイルにアクセスするには、ご自分の DNS 名 `<profilename>.trafficmanager.net` を使用します。
     2. **地理的**ルーティング方法を選択します。
     3. このプロファイルを作成するサブスクリプションを選択します。
     4. 既存のリソース グループを使用するか、新しいリソース グループを作成して、その下にこのプロファイルを配置します。 新しいリソース グループを作成する場合は、**[リソース グループの場所]** ドロップダウンを使用して、リソース グループの場所を指定します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。

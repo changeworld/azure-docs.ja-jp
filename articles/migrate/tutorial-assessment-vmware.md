@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313109"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490322"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -56,7 +56,7 @@ Azure Migrate は、評価対象の VM を自動的に検出するために、VM
 4. 新しいリソース グループを作成します。
 5. プロジェクトを作成する地理的な場所を指定して、**[作成]** をクリックします。 Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、対象となる任意の Azure の場所について移行を計画することもできます。 プロジェクトのために指定した地理的な場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用されます。
 
-**地理的な場所** | **保存場所**
+**[地理的な場所]** | **保存先**
 --- | ---
 Azure Government | 米国政府バージニア州
 アジア | 東南アジア
@@ -194,6 +194,9 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     - vCenter サーバーの名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter サーバーの VM を検出するために使用する読み取り専用の資格情報を指定します。
     - **[コレクション スコープ]** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1,500 台を超えないようにします。 大規模な環境を検出する方法の詳細については、[こちら](how-to-scale-assessment.md)を参照してください。
+
+       > [!NOTE]
+       > **[コレクション スコープ]** では、ホストとクラスターのフォルダーのみが一覧表示されます。 VM のフォルダーをコレクション スコープとして直接選択することはできません。 ただし、個々の VM へのアクセス権を持つ vCenter アカウントを使用して、検出できます。 VM のフォルダーを検出する方法については、[こちらを参照](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions)してください。
 
 7. **[Specify migration project]\(移行プロジェクトの指定\)** で、ポータルからコピーした Azure Migrate プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** をクリックして値をコピーします。  
 8. **[View collection progress]\(収集の進行状況を表示)** で、検出の状態を監視します。 Azure Migrate Collector によって収集されるデータの詳細については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)を参照してください。

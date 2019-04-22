@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 66293d6d6d0e15af7d879e6784d85f9e85457aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649724"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544332"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -39,7 +39,7 @@ ms.locfileid: "58649724"
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
-1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 
+1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
 2. **[サインイン]** を選択して、資格情報を入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 3. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定します。 
@@ -59,7 +59,7 @@ ms.locfileid: "58649724"
 
         > [!IMPORTANT]
         > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。
-    3. **作成**を選択します。 
+    3. **作成** を選択します。 
 
         ![資格情報の設定](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. **[Configure template**]\(テンプレートの構成\) ページで、ラボの作成プロセスの状態を確認します。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 

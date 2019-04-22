@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 6b109f347ee7a917b57acfc56ab4418755295bc5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896702"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578477"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 
@@ -460,7 +460,7 @@ ODBC をインストールするには:
 
      既定では、unixODBC は /usr/local にインストールされるので、場所を変更する値を `--prefix` で渡します。 同様に、構成ファイルは /etc に既定でインストールされるため、目的の場所の値を `--sysconfdir` で渡します。
 
-4. メイクファイルを実行します。 `[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. メイクファイル `[oframe7@ofdemo unixODBC-2.3.4]$ make` を実行します。
 
 5. コンパイルした後、実行可能ファイルをプログラム ディレクトリにコピーします。 例: 
 
@@ -558,7 +558,7 @@ Azure 上でシステムを管理するために OpenFrame で使用される個
      alias defvol='cd $OPENFRAME_HOME/volume_default'
      ```
 
-3. bash プロファイルを実行します。`[oframe7@ofdemo ~]$ . .bash_profile`
+3. bash プロファイル `[oframe7@ofdemo ~]$ . .bash_profile` を実行します。
 4. Tibero プロセスが実行されていることを確認します。 例: 
 
      ```linux
@@ -945,7 +945,7 @@ ProSort は、バッチ トランザクションでデータの並べ替えに�
      export PATH
      ```
 
-6. bash プロファイルを実行するには、コマンド プロンプトで次のように入力します。 ` . .bash_profile`
+6. bash プロファイルを実行するには、コマンド プロンプトで次のように入力します: `. .bash_profile`。
 
 7. 構成ファイルを作成します。 例: 
 
@@ -1055,7 +1055,7 @@ OFCOBOL は、メインフレームの COBOL プログラムを解釈する Open
      0 NonFatalErrors 
      0 FatalError
      ```
-10. `ofcob --version ` コマンドを使用してバージョン番号を表示し、インストールを確認します。 例: 
+10. `ofcob --version` コマンドを使用してバージョン番号を表示し、インストールを確認します。 例: 
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 
@@ -1342,7 +1342,7 @@ JEUS をインストールする前に、Apache Ant パッケージをインス�
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. `jeus.password=jeusadmin nodename=Tmaxsoft` を次のように変更します `jeus.password=tmax1234 nodename=ofdemo`
+7. `jeus.password=jeusadmin nodename=Tmaxsoft` を `jeus.password=tmax1234 nodename=ofdemo` に変更します。
 
 8. `ant install` コマンドを実行して JEUS をビルドします。
 9.  次に示すように、.bash\_profile ファイルを JEUS の変数で更新します。
@@ -1476,6 +1476,6 @@ OFManager では、Web 環境での OpenFrame の運用と管理の機能が提�
 
 メインフレームの移行を検討している場合は、当社の拡大しているパートナー エコシステムを使用すると役に立ちます。 パートナー ソリューションの選択に関する詳細なガイダンスについては、「[Platform Modernization Alliance (プラットフォーム最新化アライアンス)](https://www.platformmodernization.org/pages/mainframe.aspx)」を参照してください。
 
--   [Azure の概要](https://docs.microsoft.com/azure/)
+-   [Azure を使ってみる](https://docs.microsoft.com/azure/)
 -   [Host Integration Server (HIS) のドキュメント](https://docs.microsoft.com/host-integration-server/)
 -   [Azure 仮想データ センターのリフトアンドシフト ガイド](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)

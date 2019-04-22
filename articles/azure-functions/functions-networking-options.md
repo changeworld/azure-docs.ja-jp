@@ -3,17 +3,17 @@ title: Azure Functions のネットワーク オプション
 description: Azure Functions で利用可能なすべてのネットワーク オプションの概要
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 1/14/2019
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a4ae2d8bad50a4103da6afaa0bee5cbb75c877aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358174"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545507"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -32,9 +32,9 @@ Function App はいくつかの方法でホストできます。
 |                |[従量課金プラン](functions-scale.md#consumption-plan)|⚠ [Premium プラン](functions-scale.md##premium-plan-public-preview)|[App Service プラン](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[**受信 IP の制限**](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
-|[**VNET 統合**](#vnet-integration)|❌いいえ|⚠ はい|✅はい|✅はい|
-|[**プレビューの VNET 統合 (Express Route およびサービス エンドポイント)**](#preview-vnet-integration)|❌いいえ|⚠ はい|⚠ はい|✅はい|
-|[**ハイブリッド接続と**](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
+|[**VNET 統合**](#vnet-integration)|❌いいえ|❌いいえ|✅はい|✅はい|
+|[**プレビューの VNET 統合 (Express Route およびサービス エンドポイント)**](#preview-vnet-integration)|❌いいえ|⚠はい|⚠はい|✅はい|
+|[**ハイブリッド接続**](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
 |[**プライベート サイトへのアクセス**](#private-site-access)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
 
 ⚠ プレビュー機能 (実稼働用ではありません)
@@ -46,7 +46,7 @@ IP 制限を使用すると、アプリへのアクセスを許可されてい�
 > [!NOTE]
 > Azure portal エディターを使用できるようにするには、実行中の関数アプリに Azure portal が直接アクセスできる必要があり、かつ Azure portal にアクセスするために使用しているデバイスの IP がホワイトリストに登録されている必要があります。 ネットワーク制限が設定されていても、**[プラットフォーム機能]** タブのどの機能にもアクセスできます。
 
-[詳しくは、こちらをご覧ください](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
+[詳しくはこちらをご覧ください](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 
 ## <a name="vnet-integration"></a>VNET 統合
 
@@ -76,7 +76,7 @@ VNet 統合機能には、プレビュー段階の新しいバージョンがあ
 
 プレビューの VNET 統合の使用について詳しくは、[[関数アプリを Azure 仮想ネットワークに統合する]](functions-create-vnet.md) を参照してください。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続と
+## <a name="hybrid-connections"></a>Hybrid Connections (ハイブリッド接続)
 
 [ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションへのアクセスには使用できません。 ハイブリッド接続は、[App Service プラン](functions-scale.md#app-service-plan)および [App Service Environment](../app-service/environment/intro.md) で実行されている関数に使用できます。
 
@@ -89,3 +89,13 @@ VNet 統合機能には、プレビュー段階の新しいバージョンがあ
 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 プライベート サイトには、内部ロード バランサー (ILB) を使用して ASE が構成されている場合のみアクセスできます。 ILB ASE の使用について詳しくは、[ILB ASE の作成と使用](../app-service/environment/create-ilb-ase.md)に関する記事を参照してください。
 
 他のホスティング オプションで VNET リソースにアクセスするには多くの方法がありますが、VNET を介して関数のトリガーを許可する唯一の方法は ASE です。
+
+## <a name="next-steps"></a>次の手順
+ネットワークと関数の詳細については、以下を参照してください。 
+
+* [VNET 統合の入門チュートリアル](./functions-create-vnet.md)
+* [関数のネットワークに関してよく寄せられこちらの質問](./functions-networking-faq.md)
+* [App Service または Functions との VNET 統合についての詳細情報](../app-service/web-sites-integrate-with-vnet.md)
+* [Azure での VNET についての詳細情報](../virtual-network/virtual-networks-overview.md)
+* [App Service Environment でさらなるネットワーク機能と制御を可能にする](../app-service/environment/intro.md)
+* [ハイブリッド接続を使用して、ファイアウォールを変更せずに個々のオンプレミス リソースに接続する](../app-service/app-service-hybrid-connections.md)

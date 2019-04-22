@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 04/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e07678604797e7e2090f5fefcdb3f3adff40161
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521773"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544570"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Azure Data Box Edge とは 
 
@@ -93,7 +93,7 @@ Data Box Edge 物理デバイス、Azure リソース、データ転送先のタ
     - **欧州連合** - 欧州西部
     - **アジア太平洋** - 東南アジア
     
-    Data Box Gateway は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
+    Data Box Edge は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
     
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 
 

@@ -1,242 +1,214 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Reward Gateway | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Reward Gateway.
+title: チュートリアル:Azure Active Directory と Reward Gateway の統合 | Microsoft Docs
+description: Azure Active Directory と Reward Gateway の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 34336386-998a-4d47-ab55-721d97708e5e
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/30/2017
+ms.topic: tutorial
+ms.date: 03/26/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34e0e9b83dabfb5b389030248f1787e1e8ef9dd4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d0dbcda886b3a44917548e19b69ced1b59df9e3e
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840666"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565599"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Azure Active Directory integration with Reward Gateway
+# <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル:Azure Active Directory と Reward Gateway の統合
 
-In this tutorial, you learn how to integrate Reward Gateway with Azure Active Directory (Azure AD).
+このチュートリアルでは、Reward Gateway と Azure Active Directory (Azure AD) を統合する方法について説明します。
+Reward Gateway と Azure AD の統合には、次の利点があります。
 
-Integrating Reward Gateway with Azure AD provides you with the following benefits:
+* Reward Gateway にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Reward Gateway に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to Reward Gateway
-- You can enable your users to automatically get signed-on to Reward Gateway (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure portal
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Azure AD と Reward Gateway の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with Reward Gateway, you need the following items:
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Reward Gateway でのシングル サインオンが有効なサブスクリプション
 
-- An Azure AD subscription
-- A Reward Gateway single sign-on enabled subscription
+## <a name="scenario-description"></a>シナリオの説明
 
-> [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-To test the steps in this tutorial, you should follow these recommendations:
+* Reward Gateway では、**IDP** によって開始される SSO がサポートされます
 
-- Do not use your production environment, unless it is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+## <a name="adding-reward-gateway-from-the-gallery"></a>ギャラリーからの Reward Gateway の追加
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
+Azure AD への Reward Gateway の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Reward Gateway を追加する必要があります。
 
-1. Adding Reward Gateway from the gallery
-1. Configuring and testing Azure AD single sign-on
+**ギャラリーから Reward Gateway を追加するには、次の手順に従います。**
 
-## <a name="adding-reward-gateway-from-the-gallery"></a>Adding Reward Gateway from the gallery
-To configure the integration of Reward Gateway into Azure AD, you need to add Reward Gateway from the gallery to your list of managed SaaS apps.
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-**To add Reward Gateway from the gallery, perform the following steps:**
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon. 
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![Active Directory][1]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Navigate to **Enterprise applications**. Then go to **All applications**.
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![Applications][2]
-    
-1. To add new application, click **New application** button on the top of dialog.
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![Applications][3]
+4. 検索ボックスに「**Reward Gateway**」と入力し、結果ウィンドウで **[Reward Gateway]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-1. In the search box, type **Reward Gateway**.
+     ![結果一覧の Reward Gateway](common/search-new-app.png)
 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/tutorial_rewardgateway_search.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-1. In the results panel, select **Reward Gateway**, and then click **Add** button to add the application.
+このセクションでは、**Britta Simon**というテスト ユーザーに基づいて、Reward Gateway で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Reward Gateway 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/tutorial_rewardgateway_addfromgallery.png)
+Reward Gateway で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with Reward Gateway based on a test user called "Britta Simon".
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[ シングル サインオンの構成](#configure-reward-gateway-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Reward Gateway のテスト ユーザーの作成](#create-reward-gateway-test-user)** - Reward Gateway で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Reward Gateway is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Reward Gateway needs to be established.
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-In Reward Gateway, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-To configure and test Azure AD single sign-on with Reward Gateway, you need to complete the following building blocks:
+Reward Gateway で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
-1. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-1. **[Creating a Reward Gateway test user](#creating-a-reward-gateway-test-user)** - to have a counterpart of Britta Simon in Reward Gateway that is linked to the Azure AD representation of user.
-1. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. [Azure portal](https://portal.azure.com/) の **Reward Gateway** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Reward Gateway application.
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-**To configure Azure AD single sign-on with Reward Gateway, perform the following steps:**
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. In the Azure portal, on the **Reward Gateway** application integration page, click **Single sign-on**.
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][4]
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.
- 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_samlbase.png)
+4. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
 
-1. On the **Reward Gateway Domain and URLs** section, perform the following steps:
+    ![[Reward Gateway のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_url.png)
-
-    a. In the **Identifier** textbox, type a URL using the following pattern:
-
-    | |
-    |--|
-    | `https://<companyname>.rewardgateway.com` |
-    | `https://<companyname>.rewardgateway.co.uk/` |
-    | `https://<companyname>.rewardgateway.co.nz/` |
-    | `https://<companyname>.rewardgateway.com.au/` |
-
-    b. In the **Reply URL** textbox, type a URL using the following pattern:
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
     
     | |
     |--|
-    |  `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>` |
-    | `https://<companyname>.rewardgateway.co.uk/Authentication/EndLogin?idp=<Unique Id>` |
-    | `https://<companyname>.rewardgateway.co.nz/Authentication/EndLogin?idp=<Unique Id>` |
-    | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
+    | `https://<companyname>.rewardgateway.com`|
+    | `https://<companyname>.rewardgateway.co.uk/`|
+    | `https://<companyname>.rewardgateway.co.nz/`|
+    | `https://<companyname>.rewardgateway.com.au/`|
 
-    > [!NOTE] 
-    > These values are not real. Update these values with the actual Identifier and Reply URL. To get these values start setting up an Integration on the Reward Manager Portal. Details can be found on https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
- 
-1. On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.
-
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_certificate.png) 
-
-1. Click **Save** button.
-
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_general_400.png)
-
-1. To configure single sign-on on **Reward Gateway** side, start setting up an Integration on the Reward Manager Portal. Use the downloaded metadata to obtain your Signing Certificate and upload that during the configuration. Details can be found on https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
-
-> [!TIP]
-> You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!  After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom. You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure portal called Britta Simon.
-
-![Create Azure AD User][100]
-
-**To create a test user in Azure AD, perform the following steps:**
-
-1. In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.
-
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_01.png) 
-
-1. To display the list of users, go to **Users and groups** and click **All users**.
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
     
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_02.png) 
+    | |
+    |--|
+    |  `https://<companyname>.rewardgateway.com/Authentication/EndLogin?idp=<Unique Id>`|
+    | `https://<companyname>.rewardgateway.co.uk/Authentication/EndLogin?idp=<Unique Id>`|
+    | `https://<companyname>.rewardgateway.co.nz/Authentication/EndLogin?idp=<Unique Id>`|
+    | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
-1. To open the **User** dialog, click **Add** on the top of the dialog.
- 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_03.png) 
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、Reward Manager Portal で統合のセットアップを開始します。 詳細については、 https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication を参照してください。
 
-1. On the **User** dialog page, perform the following steps:
- 
-    ![Creating an Azure AD test user](./media/reward-gateway-tutorial/create_aaduser_04.png) 
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-    a. In the **Name** textbox, type **BrittaSimon**.
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-    b. In the **User name** textbox, type the **email address** of BrittaSimon.
+6. **[Reward Gateway のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
-    c. Select **Show Password** and write down the value of the **Password**.
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    d. Click **Create**.
- 
-### <a name="creating-a-reward-gateway-test-user"></a>Creating a Reward Gateway test user
+    a. ログイン URL
 
-In this section, you create a user called Britta Simon in Reward Gateway. Work with Reward Gateway [support team](mailto:clientsupport@rewardgateway.com) to add the users in the Reward Gateway platform.
+    b. Azure AD 識別子
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+    c. ログアウト URL
 
-In this section, you enable Britta Simon to use Azure single sign-on by granting access to Reward Gateway.
+### <a name="configure-reward-gateway-single-sign-on"></a>Reward Gateway でのシングル サインオンの構成
 
-![Assign User][200] 
+**Reward Gateway** 側でシングル サインオンを構成するには、Reward Manager Portal で統合のセットアップを開始します。 ダウンロードしたメタデータを使用して署名証明書を取得し、これを構成の際にアップロードします。 詳細については、 https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication を参照してください。
 
-**To assign Britta Simon to Reward Gateway, perform the following steps:**
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-1. In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-    ![Assign User][201] 
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-1. In the applications list, select **Reward Gateway**.
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-    ![Configure Single Sign-On](./media/reward-gateway-tutorial/tutorial_rewardgateway_app.png) 
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-1. In the menu on the left, click **Users and groups**.
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-    ![Assign User][202] 
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-1. Click **Add** button. Then select **Users and groups** on **Add Assignment** dialog.
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    ![Assign User][203]
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-1. On **Users and groups** dialog, select **Britta Simon** in the Users list.
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
-1. Click **Select** button on **Users and groups** dialog.
+    d. **Create** をクリックしてください。
 
-1. Click **Assign** button on **Add Assignment** dialog.
-    
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+このセクションでは、Britta Simon に Reward Gateway へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-When you click the Reward Gateway tile in the Access Panel, you should get automatically signed-on to your Reward Gateway application.
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Reward Gateway]** の順に選択します。
 
-## <a name="additional-resources"></a>Additional resources
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+2. アプリケーションの一覧で **[Reward Gateway]** を選択します。
 
+    ![アプリケーションの一覧の Reward Gateway のリンク](common/all-applications.png)
 
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-<!--Image references-->
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-[1]: ./media/reward-gateway-tutorial/tutorial_general_01.png
-[2]: ./media/reward-gateway-tutorial/tutorial_general_02.png
-[3]: ./media/reward-gateway-tutorial/tutorial_general_03.png
-[4]: ./media/reward-gateway-tutorial/tutorial_general_04.png
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-[100]: ./media/reward-gateway-tutorial/tutorial_general_100.png
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-[200]: ./media/reward-gateway-tutorial/tutorial_general_200.png
-[201]: ./media/reward-gateway-tutorial/tutorial_general_201.png
-[202]: ./media/reward-gateway-tutorial/tutorial_general_202.png
-[203]: ./media/reward-gateway-tutorial/tutorial_general_203.png
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-reward-gateway-test-user"></a>Reward Gateway テスト ユーザーの作成
+
+このセクションでは、Reward Gateway で Britta Simon というユーザーを作成します。 Reward Gateway  [サポート チーム](mailto:clientsupport@rewardgateway.com)と連携して、Reward Gateway プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネル上で [Reward Gateway] タイルをクリックすると、SSO を設定した Reward Gateway に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+## <a name="additional-resources"></a>その他のリソース
+
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

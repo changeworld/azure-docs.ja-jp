@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 1448c72e87d51c0bb88c9ee521a7a3112060473b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483831"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500517"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -142,7 +142,7 @@ $storageName = 'demostorage'
 #Publish the configuration script to user storage
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
-Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
@@ -202,7 +202,7 @@ az vm extension set \
 
 ## <a name="logs"></a>ログ
 
-拡張機能のログは、次の場所に格納されます。`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+拡張機能のログは、次の場所に格納されます。 `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>次の手順
 

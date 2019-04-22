@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: db0b1cd9d61e498430bff417573b63f99c0ae7e4
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: aa7f77299750a969bf936a3ed9b6ae76653a90c4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301732"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526692"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
@@ -171,7 +171,7 @@ ms.locfileid: "55301732"
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Event Hubs の SAS URL は、 https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken> という構造になっています。 たとえば、 https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender のように指定します。
+    Event Hubs の SAS URL は、`https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>` という構造になっています。 たとえば、`https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender` のように指定します。
 
 12. *sfdeploy.parameters.json* ファイルを開いて、次の内容を、先行する手順で得た値に置き換えます。 [SAS-URL-STORAGE-ACCOUNT] は、手順 8 でメモしました。 [SAS-URL-EVENT-HUBS] は、手順 11 でメモしました。
 

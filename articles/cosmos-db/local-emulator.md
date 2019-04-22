@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470918"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525424"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -179,7 +179,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="gremlin-api"></a>Gremlin API
 
-管理者のコマンド プロンプトからエミュレーターを起動します。その際、一緒に "/EnableGremlinEndpoint" を指定します。 代わりに、次の環境変数を設定することもできます。 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+管理者のコマンド プロンプトからエミュレーターを起動します。その際、一緒に "/EnableGremlinEndpoint" を指定します。 代わりに、環境変数 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` を設定することもできます
 
 * [apache-tinkerpop-gremlin-console-3.3.4 をインストールします](http://tinkerpop.apache.org/downloads.html)
 
@@ -236,14 +236,14 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `CosmosDB.Emulator.exe /?` 」と入力します。
 
-|**オプション** | **説明** | **command**| **引数**|
+|**オプション** | **説明** | **コマンド**| **引数**|
 |---|---|---|---|
 |[引数なし] | 既定の設定で Azure Cosmos Emulator を起動します。 |CosmosDB.Emulator.exe| |
 |[Help] |サポートされるコマンド ライン引数の一覧を表示します。|CosmosDB.Emulator.exe /? | |
 | GetStatus |Azure Cosmos Emulator の状態を取得します。 この状態は、終了コードで示されます。終了コードは、1 = 開始中、2 = 実行中、3 = 停止済みです。 負の終了コードは、エラーが発生したことを示します。 その他の出力は生成されません。 | CosmosDB.Emulator.exe /GetStatus| |
 | Shutdown| Azure Cosmos Emulator をシャットダウンします。| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | データ ファイルを格納するパスを指定します。 既定値は %LocalAppdata%\CosmosDBEmulator です。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>:アクセスできるパス |
-|ポート | エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>:単一のポート番号 |
+|Port | エミュレーターで使用するポート番号を指定します。 既定値は 8081 です。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>:単一のポート番号 |
 | MongoPort | MongoDB 互換性 API に使用するポート番号を指定します。 既定値は 10255 です。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>:単一のポート番号|
 | CassandraPort | Cassandra エンドポイントで使用するポート番号を指定します。 既定値は 10350 です。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>:単一のポート番号 |
 | ComputePort | Compute Interop Gateway サービスに使用するポート番号を指定します。 ゲートウェイの HTTP エンドポイント プローブ ポートのポート番号は、ComputePort に 79 を加えた値として計算されます。 このため、ComputePort と ComputePort に 79 を加えた番号のポートは、開いて利用可能な状態にしておく必要があります。 既定値は 8900 と 8979 です。 | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>:単一のポート番号 |
@@ -252,7 +252,7 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 | GremlinPort | Gremlin エンドポイントに使用するポート番号です。 既定値は 8901 です。 | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>:単一のポート番号 |
 |TablePort | Azure Table エンドポイントに使用するポート番号です。 既定値は 8902 です。 | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>:単一のポート番号|
 | KeyFile | 指定されたファイルから承認キーを読み取ります。 キーファイルの生成には、/GenKeyFile オプションを使用します | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>:ファイルへのパス |
-| ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | CosmosDB.Emulator.exe /ResetDataPath[=<path>] | \<path\>:ファイル パス  |
+| ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>:ファイル パス  |
 | StartTraces  |  デバッグ トレース ログの収集を開始します。 | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | デバッグ トレース ログの収集を停止します。 | CosmosDB.Emulator.exe /StopTraces  | |
 |EnableTableEndpoint | Azure Table API を有効にします | CosmosDB.Emulator.exe /EnableTableEndpoint | |
@@ -439,7 +439,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`。 プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
+2. `CosmosDB.Emulator.exe /shutdown` プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。

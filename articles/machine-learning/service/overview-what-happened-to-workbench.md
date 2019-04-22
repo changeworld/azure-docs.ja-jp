@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 217eecfe8f380718361c2f1b56965e4af85d54c9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360286"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526709"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -76,7 +76,7 @@ Azure Machine Learning Data Prep SDK の使い方について詳しくは、[こ
 
 コードや作業が失われることはありません。 以前のバージョンでは、プロジェクトは、ローカル ディレクトリのあるクラウド エンティティです。 最新バージョンでは、ローカルの構成ファイルを使用して、ローカル ディレクトリを Azure Machine Learning service ワークスペースに接続します。 [最新アーキテクチャの図](concept-azure-machine-learning-architecture.md)をご覧ください。
 
-プロジェクトのコンテンツの多くは、ローカル コンピューター上に既にありました。 そのため、ワークスペースに接続するには、そのディレクトリ内に構成ファイルを作成し、それをコードで参照するだけで済みます。 ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python コマンドで指定するか、または 'az ml project attach' CLI コマンドを使用します。  例: 
+プロジェクトのコンテンツの多くは、ローカル コンピューター上に既にありました。 そのため、ワークスペースに接続するには、そのディレクトリ内に構成ファイルを作成し、それをコードで参照するだけで済みます。 ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python コマンドで指定するか、または `az ml project attach` CLI コマンドを使用します。  例: 
 ```python
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```

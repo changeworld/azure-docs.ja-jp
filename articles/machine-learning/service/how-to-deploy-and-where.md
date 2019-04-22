@@ -627,7 +627,7 @@ IoT Edge モジュールをお客様のデバイスにデプロイするには�
 
 ### <a name="deploy-the-model-to-the-device"></a>デバイスにモデルをデプロイする
 
-デバイスにモデルをデプロイするには、「[コンテナー レジストリの資格情報を取得する](#getcontainer)」セクションの IoT Edge モジュールのモジュール デプロイ手順で収集したレジストリ情報を使用します。 たとえば、[Azure portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)場合は、デバイスの__レジストリ設定__を構成する必要があります。 お客様のワークスペースにあるコンテナー レジストリの__ログイン サーバー__、__ユーザー名__、__パスワード__を使用します。
+デバイスにモデルをデプロイするには、「[コンテナー レジストリの資格情報を取得する](#getcontainer)」セクションの IoT Edge モジュールのモジュール デプロイ手順で収集したレジストリ情報を使用します。 たとえば、[Azure portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)場合は、デバイスの__レジストリ設定__を構成する必要があります。 お客様のワークスペースにあるコンテナー レジストリの __ログイン サーバー__、__ユーザー名__、__パスワード__ を使用します。
 
 [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) と [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode) を使用してデプロイすることもできます。
 

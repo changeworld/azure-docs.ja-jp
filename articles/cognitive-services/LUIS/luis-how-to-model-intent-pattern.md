@@ -1,7 +1,7 @@
 ---
 title: パターンと精度
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Language Understanding (LUIS) アプリケーションでパターン テンプレートを追加して予測精度を改善する方法を説明します。
+description: Language Understanding (LUIS) アプリケーションで、パターン テンプレートを追加して予測精度を改善します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 132f6eab86c02e28fe562a0c7d3357175e5813b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195049"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521256"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
-LUIS アプリでエンドポイント発話を受信したら、単語の順序と選択を示す[パターン](luis-concept-patterns.md)を使用して、発話の予測精度を改善します。 パターンでは、特定の[構文](luis-concept-patterns.md#pattern-syntax)を使用して、[エンティティ](luis-concept-entity-types.md)、エンティティのロール、および省略可能なテキストの場所を示します。
+LUIS アプリでエンドポイント発話を受信したら、単語の順序と選択を示す[パターン](luis-concept-patterns.md)を使用して、発話の予測精度を改善します。 パターンでは、特定の[構文](luis-concept-patterns.md#pattern-syntax)を使用して、[エンティティ](luis-concept-entity-types.md)、エンティティの[ロール](luis-concept-roles.md)、およびオプションのテキストの場所を示します。
 
 ## <a name="add-template-utterance-to-create-pattern"></a>パターンを作成するためのテンプレート発話の追加
 1. **[マイ アプリ]** ページでアプリの名前を選択してアプリを開き、左側のパネルの **[アプリのパフォーマンス向上]** の下で **[パターン]** を選択します。
@@ -34,7 +34,7 @@ LUIS アプリでエンドポイント発話を受信したら、単語の順序
 
     ![パターンのエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    ご自身のエンティティにロールが含まれている場合、エンティティ名の後ろに 1 つのコロン `:`を付けてロールを指定します (`{Location:Origin}` など)。 エンティティのロールの一覧が表示されます。 ロールを選択し、Enter キーを押します。 
+    ご自身のエンティティに[ロール](luis-concept-roles.md)が含まれる場合、エンティティ名の後ろにコロンを 1 つ付けて`:`ロールを指定します (`{Location:Origin}` など)。 エンティティのロールの一覧が表示されます。 ロールを選択し、Enter キーを押します。 
 
     ![ロールを含むエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 

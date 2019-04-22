@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b5404f19a9b692b3984dafd6f029729822284dc
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106901"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548748"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
 
@@ -44,14 +44,15 @@ ms.locfileid: "58106901"
 - データのコピー中は、そのサイズが [Azure Storage と Data Box Disk の制限](data-box-disk-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。
 - Data Box Disk によってアップロードされているデータが、Data Box Disk の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 
-マネージド ディスクを順に指定した場合は、以下の追加の考慮事項を確認してください。
+   > [!IMPORTANT]
+   >  注文の作成時にマネージド ディスクを保管先の 1 つとして指定した場合は、次のセクションが該当します。
 
 - 事前に作成されたすべてのフォルダーにわたり、また、すべての Data Box Disk にわたって 1 つのリソース グループ内で特定の名前を持つマネージド ディスクを 1 つだけ保持できます。 これは、事前に作成されたフォルダーにアップロードされた VHD は一意の名前でなければならないことを意味します。 指定した名前が、リソース グループ内の既存のマネージド ディスクと一致しないようにしてください。 VHD の名前が同じである場合、1 つの VHD のみがその名前を持つマネージド ディスクに変換されます。 その他の VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
-- VHD は必ず、事前に作成されたフォルダーの 1 つにコピーします。 これらのフォルダー以外または自分で作成したフォルダーに VHD をコピーすると、VHD はマネージド ディスクではなく、ページ BLOB として Azure ストレージ アカウントにアップロードされます。
+- VHD は必ず、事前に作成されたフォルダーの 1 つにコピーします。 これらのフォルダー以外または自分で作成したフォルダーに VHD をコピーすると、VHD はマネージド ディスクではなく、ページ BLOB として Azure Storage アカウントにアップロードされます。
 - マネージド ディスクを作成するためにアップロードできるのは、容量固定の VHD のみです。 動的 VHD、差分 VHD、VHDX ファイルはサポートされていません。
 
 
-ご利用のコンピューターから Data Box Disk に接続してデータをコピーするには、次の手順を実行します。
+## <a name="perform-the-following-steps-to-connect-and-copy-data-from-your-computer-to-the-data-box-disk"></a>ご利用のコンピューターから Data Box Disk に接続してデータをコピーするには、次の手順を実行します。
 
 1. ロックを解除したドライブの内容を表示します。 ドライブの事前に作成されたフォルダーとサブフォルダーのリストは、Data Box Disk の注文時に選択したオプションによって異なります。
 
@@ -91,12 +92,12 @@ ms.locfileid: "58106901"
     |宛先       | コピー先ディレクトリのパスを指定します。        |
     |/E                  | サブディレクトリをコピーします (空のディレクトリを含む)。 |
     |/MT[:N]             | スレッド数 N のマルチスレッド コピーを作成します。N は 1 から 128 の整数です。 <br>N の既定値は 8 です。        |
-    |/R: <N>             | 失敗したコピーの再試行回数を指定します。 N の既定値は 1,000,000 です (再試行回数 100 万回)。        |
-    |/W: <N>             | 再試行間の待ち時間 (秒) を指定します。 N の既定値は 30 です (待ち時間 30 秒)。        |
+    |/R: \<N>             | 失敗したコピーの再試行回数を指定します。 N の既定値は 1,000,000 です (再試行回数 100 万回)。        |
+    |/W: \<N>             | 再試行間の待ち時間 (秒) を指定します。 N の既定値は 30 です (待ち時間 30 秒)。        |
     |/NFL                | ファイル名をログに記録しないように指定します。        |
     |/NDL                | ディレクトリ名をログに記録しないように指定します。        |
     |/FFT                | FAT ファイル時間 (2 秒の精度) を想定します。        |
-    |/Log:<Log File>     | 状態出力をログ ファイルに書き込みます (既存のログ ファイルを上書きします)。         |
+    |/Log:\<ログ ファイル>     | 状態出力をログ ファイルに書き込みます (既存のログ ファイルを上書きします)。         |
 
     複数のディスクを並列に使用しながら、各ディスクで複数のジョブを実行することができます。
 
@@ -222,7 +223,7 @@ ms.locfileid: "58106901"
  
 7. コマンド プロンプト ウィンドウを開きます。 
 
-8. `DataBoxDiskSplitCopy.exe` を実行します。 type
+8. `DataBoxDiskSplitCopy.exe` を実行します。 Type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 

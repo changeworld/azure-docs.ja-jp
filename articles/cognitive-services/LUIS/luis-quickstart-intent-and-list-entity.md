@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5417c1c008b5abaada158530c7c29c67e0dc1ca0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119668"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521273"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 
@@ -185,5 +185,5 @@ ms.locfileid: "58119668"
 引き続きこのアプリで、[複合エンティティを追加します](luis-tutorial-composite-entity.md)。
 
 > [!div class="nextstepaction"]
-> [階層エンティティをアプリに追加する](luis-quickstart-intent-and-hier-entity.md)
+> [ロールを持つ事前構築済みエンティティをアプリに追加する](tutorial-entity-roles.md)
 

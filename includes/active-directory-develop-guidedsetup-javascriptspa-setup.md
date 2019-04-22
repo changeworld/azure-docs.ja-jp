@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: a9aeb2f45ec8c882c47425879ab6ef726ca94060
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: da2477b19327273fe922ac81f909233cb4ef8f06
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203331"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502936"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
@@ -34,6 +34,8 @@ ms.locfileid: "58203331"
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを実行するには、[Node.js](https://nodejs.org/en/download/)、[.NET Core](https://www.microsoft.com/net/core)、または [Visual Studio 2017](https://www.visualstudio.com/downloads/) と統合された IIS Express などのローカル Web サーバーが必要です。
 
+Node.js を使用してプロジェクトを実行する場合は、[Visual Studio Code](https://code.visualstudio.com/download) などの IDE をインストールしてプロジェクト ファイルを編集します。
+
 このガイドの手順は Node.js と Visual Studio 2017 の両方に基づいていますが、他の開発環境または Web サーバーでも自由に使用できます。
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
@@ -42,7 +44,7 @@ ms.locfileid: "58203331"
 > [Node.js](https://nodejs.org/en/download/) がインストールされていることを確認し、以下の手順に従います。
 > - アプリケーションをホストするフォルダーを作成します。
 
-<p/><!-- -->
+<p><!-- -->
 
 > ### <a name="option-2-visual-studio"></a>オプション 2:Visual Studio
 > Visual Studio を使用して新しいプロジェクトを作成している場合は、以下の手順に従って新しい Visual Studio ソリューションを作成します。
@@ -50,7 +52,6 @@ ms.locfileid: "58203331"
 > 2.    **[Visual C#\Web]** で **[ASP.NET Web アプリケーション (.NET Framework)]** を選択します
 > 3.    アプリケーションの名前を入力し、**[OK]** を選択します
 > 4.    **[新しい ASP.NET Web アプリケーション]** で **[空]** を選択します
-
 
 ## <a name="create-your-single-page-applications-ui"></a>Single Page Application の UI を作成する
 1. JavaScript SPA の `index.html` ファイルを作成します。 Visual Studio を使用している場合は、プロジェクト (プロジェクト ルート フォルダー) を選択し、右クリックして **[追加] > [新しい項目] > [HTML ページ]** を選択し、ページの名前を index.html にします。
@@ -62,7 +63,7 @@ ms.locfileid: "58203331"
    <head>
        <title>Quickstart for MSAL JS</title>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.js"></script>
        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
    </head>
    <body>

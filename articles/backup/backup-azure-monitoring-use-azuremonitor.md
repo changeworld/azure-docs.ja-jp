@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 15bb64917fa58ba2d13c6f372640957508ab29c1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258583"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494561"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -39,7 +39,7 @@ Azure Recovery Services コンテナーなどの Azure Resource Manager リソ�
 
 ![送信先が LA になっている RS コンテナーの診断設定](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-送信先として別のサブスクリプションの LA ワークスペースを選択できます。 "*複数の RS コンテナーに対して同じ LA ワークスペースを選択することで、サブスクリプションにまたがったコンテナーを一箇所で監視できます。*" ログとして AzureBackupReport を選択して、すべての Azure Backup 関連情報を LA ワークスペースに送ります。
+送信先として別のサブスクリプションの LA ワークスペースを選択できます。 *複数の RS コンテナーに対して同じ LA ワークスペースを選択することで、サブスクリプションにまたがるコンテナーを一箇所で監視できます。* ログとして AzureBackupReport を選択して、すべての Azure Backup 関連情報を LA ワークスペースに送ります。
 
 > [!IMPORTANT]
 > 構成を完了した後で、最初のデータ プッシュが完了するまで 24 時間待つ必要があります。 その後は、[頻度に関するセクション](#diagnostic-data-update-frequency)で説明しているようにすべてのイベントがプッシュされます。
@@ -109,7 +109,7 @@ Azure Monitor では、ユーザーが自分のアラートを LA ワークス�
 
 ![LAAzureBackupAlertCondition](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-必要であれば Kusto クエリを編集し、適切なしきい値 (アラートを発生させるタイミングを決定)、適切な期間 (クエリを実行する期間) および頻度を選択します。 次に例を示します。次に例を示します。しきい値が 0 より大、期間が 5 分、頻度が 5 分ごとの場合は、「直近の 5 分間に 5 分ごとにクエリを実行して、結果の数が 0 より大きい場合には選択したアクション グループを介して通知する」という意味になります。
+必要であれば Kusto クエリを編集し、適切なしきい値 (アラートを発生させるタイミングを決定)、適切な期間 (クエリを実行する期間) および頻度を選択します。 次に例を示します。しきい値が 0 より大、期間が 5 分、頻度が 5 分ごとの場合は、「直近の 5 分間に 5 分ごとにクエリを実行して、結果の数が 0 より大きい場合には選択したアクション グループを介して通知する」という意味になります。
 
 #### <a name="action-group-integration"></a>アクション グループの統合
 
@@ -230,7 +230,7 @@ on BackupItemUniqueId_s
 アクティビティ ログを使用して、バックアップ成功などのイベントの通知を受け取ることもできます。
 
 > [!CAUTION]
-> **これは Azure VM バックアップにしか適用されないことに注意してください。** Azure Backup エージェント、Azure 内での SQL バックアップ、Azure Files など他のソリューションではこれは使用できません。
+> **これは Azure VM バックアップにのみ適用されることに注意してください。** Azure Backup エージェント、Azure 内での SQL バックアップ、Azure Files など他のソリューションではこれは使用できません。
 
 ### <a name="sign-in-into-azure-portal"></a>Azure portal にサインインする
 
@@ -252,7 +252,7 @@ Azure portal にサインインし、関連する Azure Recovery Services コン
 
 ## <a name="recommendation"></a>推奨
 
-"***アクティビティ ログと LA ワークスペースから作成されるすべてのアラートは、 Azure Monitor の左側の [アラート] ウィンドウに表示されます。***"
+***アクティビティ ログと LA ワークスペースから作成されるすべてのアラートは、Azure Monitor の左側にある [アラート] ウィンドウに表示されます。***
 
 アクティビティ ログを介した通知を使用できる一方で、"***Azure Backup サービスでは、以下の理由から大規模な監視のためにはアクティビティ ログではなく LA を使用することを強く推奨します***"。
 

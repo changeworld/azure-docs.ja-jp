@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848928"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521596"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>P2S 用公開 CA ゲートウェイ証明書への移行
 
@@ -56,7 +56,7 @@ Azure VPN Gateway では、P2S 接続用のゲートウェイに対して Azure 
 
 ### <a name="classic"></a>クラシック
 
-1. クライアント コンピューターで、パス %appdata%/Microsoft/Network/Connections/Cm/<gatewayID> に移動します。 Gateway ID フォルダーで、証明書を見ることができます。
+1. クライアント コンピューターで、パス `%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>` に移動します。 Gateway ID フォルダーで、証明書を見ることができます。
 2. 証明書の [全般] タブで、発行機関が "DigiCert Global Root CA" であることを確認します。 これ以外の発行機関である場合、そのゲートウェイ証明書は更新の対象となり、移行されます。
 
 ## <a name="2-check-certificate-transition-schedule"></a>2.証明書の移行スケジュールを確認する

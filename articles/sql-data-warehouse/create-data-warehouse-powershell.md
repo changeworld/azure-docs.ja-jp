@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: manage
-ms.date: 11/16/2018
+ms.date: 4/11/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 01a1c1fef5dd2dabf99677d59126caf41e1f6885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d76f7ac6c8b60e2dec7d7d95cf419e1352b97f15
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900609"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545130"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure SQL データ ウェアハウスを作成し、クエリを実行する
 
@@ -103,8 +103,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse-with-sample-data"></a>サンプル データを使用してデータ ウェアハウスを作成する
-この例では、以前に定義した変数を使用してデータ ウェアハウスを作成します。  サービス目標には DW400 を指定します、これは、データ ウェアハウス用の低コストの開始点です。 
+## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
+この例では、以前に定義した変数を使用してデータ ウェアハウスを作成します。  サービス目標には DW100c を指定します。これは、データ ウェアハウス用の低コストの開始点です。 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -112,7 +112,7 @@ New-AzSqlDatabase `
     -ServerName $servername `
     -DatabaseName $databasename `
     -Edition "DataWarehouse" `
-    -RequestedServiceObjectiveName "DW400" `
+    -RequestedServiceObjectiveName "DW100c" `
     -CollationName "SQL_Latin1_General_CP1_CI_AS" `
     -MaxSizeBytes 10995116277760
 ```
@@ -128,7 +128,7 @@ New-AzSqlDatabase `
 省略可能なパラメーターは次のとおりです。
 
 - **CollationName**:照合順序が指定されていない場合の既定の照合順序は SQL_Latin1_General_CP1_CI_AS です。 データベースの照合順序は変更できません。
-- **MaxSizeBytes**:データベースの既定の最大サイズは 10 GB です。
+- **MaxSizeBytes**:データベースの既定の最大サイズは 240TB です。 最大サイズでは、行ストア データは制限されます。 列指向データには無制限のストレージがあります。
 
 パラメーター オプションの詳細については、「[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)」を参照してください。
 

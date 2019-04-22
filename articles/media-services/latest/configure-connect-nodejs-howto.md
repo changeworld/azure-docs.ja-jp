@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 7f3afa59b4c8eaaeaf54576eb9fcaad626749683
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 40880a2c28ce28a671930ef8837082247e61e24b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358906"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495090"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -122,10 +122,10 @@ node index.js
 
 ## <a name="see-also"></a>関連項目
 
-[.NET リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+- [Media Services の概念](concepts-overview.md)
+- [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>次の手順
 
-- [Media Services の概念](concepts-overview.md)
-- [Node.js リファレンス](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/?view=azure-node-latest)
-- [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)<br>
+Media Services の [Node.js リファレンス](https://aka.ms/ams-v3-nodejs-ref) ドキュメントを調べて、node.js で Media Services API を使用する方法が示されている[サンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)をご覧ください。
+

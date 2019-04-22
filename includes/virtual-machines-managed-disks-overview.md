@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 4563bb0de688a8328796badffc8a133a33f64fcc
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59291723"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566545"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -31,7 +31,7 @@ ms.locfileid: "59291723"
 
 マネージド ディスクは可用性セットと統合されており、[可用性セット内の VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが単一障害点にならないように相互に十分に分離されます。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
-## <a name="integration-with-availability-zones"></a>Availability Zones との統合
+### <a name="integration-with-availability-zones"></a>Availability Zones との統合
 
 マネージド ディスクでは [Availability Zones](../articles/availability-zones/az-overview.md) をサポートします。これは高可用性を備えたサービスであり、アプリケーションをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。
 
@@ -78,7 +78,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 イメージの作成方法については、次の記事をご覧ください。
 
-* [Azure で一般化された VM の管理対象イメージをキャプチャする方法](../articles/virtual-machines/windows/capture-image-resource.md)
+* [Azure の汎用化された VM の管理対象イメージをキャプチャする方法](../articles/virtual-machines/windows/capture-image-resource.md)
 * [Azure CLI を使用して Linux 仮想マシンを一般化してキャプチャする方法](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>イメージとスナップショット

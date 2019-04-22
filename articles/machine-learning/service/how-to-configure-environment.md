@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469898"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548888"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -280,7 +280,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
 ### <a name="set-up-your-databricks-cluster"></a>Databricks クラスターを設定する
 
 [Databricks クラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。 一部の設定は、Databricks に自動化された機械学習用の SDK をインストールする場合にのみ適用されます。
-**クラスターが作成されるまで数分かかります。**
+**クラスターの作成には数分かかります。**
 
 次の設定を使用します。
 
@@ -320,15 +320,15 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
       
    次の点も考慮します。
    + Automl 構成では、Azure Databricks を使用するときに次のパラメーターを追加してください。
-        1. ```max_concurrent_iterations``` は、クラスター内のワーカー ノードの数に基づきます。 
+        1. ```max_concurrent_iterations``` は、ご利用のクラスター内のワーカー ノードの数に基づきます。 
         2. ```spark_context=sc``` は、既定の Spark コンテキストに基づきます。 
    + または、古いバージョンの SDK がある場合は、クラスターのインストール済みライブラリでその SDK の選択を解除し、ごみ箱に移動します。 新しいバージョンの SDK をインストールし、クラスターを再起動します。 その後問題がある場合は、クラスターをデタッチし、再アタッチします。
 
 インストールが成功した場合、インポートされたライブラリは次のどちらかのような外観になります。
    
-自動化された機械学習が "**_ない_**" Databricks 用 SDK![Databricks 用 Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+自動化された機械学習機能を**_持たない_** Databricks 用 SDK ![Databricks 用 Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-自動化された機械学習が**ある** Databricks 用 SDK![自動化された機械学習が Databricks にインストールされている SDK](./media/how-to-configure-environment/automlonadb.jpg)
+自動化された機械学習機能を**持つ** Databricks 用 SDK ![自動化された機械学習機能が Databricks にインストールされた SDK](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>実際に使ってみる
 
@@ -350,7 +350,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
 }
 ```
 
-この JSON ファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内にある必要があります。 同じディレクトリ内、*aml_config* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。
+この JSON ファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内にある必要があります。 それは、同じディレクトリ内、*.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。
 
 コードからこのファイルを使用するには、`ws=Workspace.from_config()` を使用します。 このコードは、ファイルから情報を読み込み、ワークスペースに接続します。
 
@@ -379,7 +379,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
         print('Workspace not found')
     ```
 
-    このコードは、構成ファイルを *aml_config/config.json* ファイルに書き込みます。
+    このコードでは、構成ファイルが *.azureml/config.json* ファイルに書き込まれます。
 
 
 ## <a name="next-steps"></a>次の手順

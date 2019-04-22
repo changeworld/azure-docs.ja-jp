@@ -9,12 +9,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 96ec1f3ecdca6437e1d25eca433d385573f6c659
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 29e64a02cd4af3e1679283ffddb4afab065f8747
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220780"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609134"
 ---
 # <a name="geographic-availability-and-currency-support"></a>利用可能な地域と通貨サポート
 
@@ -98,7 +98,7 @@ Azure Marketplace オファリングは、顧客の請求先住所で定義さ�
 | リトアニア                           | LT        | EUR          |
 | ルクセンブルク                          | LU        | EUR          |
 | 中華人民共和国マカオ特別行政区                           | MO        | USD          |
-| マケドニア (旧ユーゴスラビア共和国)                      | MK        | USD          |
+| 北マケドニア                     | MK        | USD          |
 | マレーシア                            | MY        | USD          |
 | マルタ                               | MT        | EUR          |
 | モーリシャス                           | MU        | USD          |

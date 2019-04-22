@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897624"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524635"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -50,7 +50,7 @@ Azure AD のユーザー プロビジョニング サービスでサポートさ
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>このユーザー プロビジョニング ソリューションが最適な場合
 
-この Workday ユーザー プロビジョニング ソリューションは、現在パブリック プレビュー段階です。このソリューションは次のお客様に最適です。
+この Workday ユーザー プロビジョニング ソリューションは、次のお客様に最適です。
 
 * Workday ユーザー プロビジョニング用に事前に構築されたクラウドベースのソリューションを求めている組織
 
@@ -460,7 +460,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 2. **[ソース オブジェクト スコープ]** フィールドでは、属性ベースのフィルター セットを定義して、AD へのプロビジョニングの対象にする Workday のユーザー セットを選択できます。 既定のスコープは、"Workday のすべてのユーザー" です。 フィルターの例:
 
-   * 例:1000000 から 2000000 までの Worker ID を持つユーザーにスコープを設定
+   * 例:1000000 から 2000000 (2000000 を除く) までの Worker ID を持つユーザーにスコープを設定
 
       * 属性:WorkerID
 

@@ -12,24 +12,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 4862377a8441d5ec920d6b52dbed8ad405144227
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ce9c5ddb08f3e81a0f0050048a8afef24e4c625
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857965"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607536"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。 ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
+この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。 紹介するシナリオは次のとおりです。
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- キュー、トピック、およびサブスクリプションを作成する 
+- サブスクリプション フィルターを作成する 
+- メッセージをトピックに送信する 
+- サブスクリプションからメッセージを受信する
+- トピックとサブスクリプションを削除する
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+## <a name="prerequisites"></a>前提条件
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 「[Quickstart:Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md)」(クイック スタート: Azure portal を使用して Service Bus トピックとその中に含まれるサブスクリプションを作成する) の手順に従って、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
+
+    > [!NOTE]
+    > このクイック スタートでは、**PHP** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
 Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
@@ -131,7 +140,7 @@ catch(ServiceException $e){
 トピック サブスクリプションも `ServiceBusRestProxy->createSubscription` メソッドで作成します。 サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>既定の (MatchAll) フィルターを適用したサブスクリプションの作成
-新しいサブスクリプションの作成時にフィルターが指定されていない場合は､**MatchAll** フィルター (既定) が使用されます｡ **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、'mysubscription' という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
+新しいサブスクリプションの作成時にフィルターが指定されていない場合は､**MatchAll** フィルター (既定) が使用されます｡ **MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。 次の例では、`mysubscription` という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 ```php
 require_once 'vendor/autoload.php';

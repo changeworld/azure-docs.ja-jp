@@ -9,16 +9,18 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 64c6ff077f9afadc57741900b81816096d9dc172
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f411e4fce32e31bfd02db554999e467770409857
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449241"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490750"
 ---
 # <a name="migrate-security-resources-to-global-azure"></a>セキュリティ リソースをグローバル Azure に移行する
 
 この記事には、Azure セキュリティ リソースの Azure Germany からグローバル Azure への移行に役立つ可能性のある情報が含まれています。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -40,20 +42,20 @@ Azure Key Vault の一部の機能は、Azure Germany からグローバル Azur
 - Azure Germany で現在のシークレットを読み取ってから、新しいコンテナーに値を入力します。
 
 ```powershell
-Get-AzureKeyVaultSecret -vaultname mysecrets -name Deploydefaultpw
+Get-AzKeyVaultSecret -vaultname mysecrets -name Deploydefaultpw
 ```
 
 詳細:
 
 - [Key Vault のチュートリアル](https://docs.microsoft.com/azure/key-vault/#step-by-step-tutorials)を完了することによって知識を更新してください。
 - [Key Vault の概要](../key-vault/key-vault-overview.md)を確認してください。
-- [Key Vault PowerShell コマンドレット](/powershell/module/azurerm.keyvault/)を確認してください。
+- [Key Vault PowerShell コマンドレット](/powershell/module/az.keyvault/)を確認してください。
 
 ## <a name="vpn-gateway"></a>VPN Gateway
 
 現時点では、Azure VPN Gateway インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、VPN Gateway の新しいインスタンスを作成および構成することをお勧めします。
 
-現在の VPN Gateway 構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzureRmVirtualNetworkGateway*` で始まる一連のコマンドレットを使用します。
+現在の VPN Gateway 構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzVirtualNetworkGateway*` で始まる一連のコマンドレットを使用します。
 
 オンプレミスの構成を確実に更新するようにしてください。 また、Azure ネットワーク環境を更新した後、古い IP アドレス範囲の既存のルールもすべて削除してください。
 
@@ -61,20 +63,20 @@ Get-AzureKeyVaultSecret -vaultname mysecrets -name Deploydefaultpw
 
 - [VPN Gateway のチュートリアル](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials)を完了することによって知識を更新してください。
 - [サイト間接続を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)方法を学習してください。
-- [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway) PowerShell コマンドレットを確認してください。
+- [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway) PowerShell コマンドレットを確認してください。
 - [サイト間接続の作成](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/)に関するブログの投稿を参照してください。
   
 ## <a name="application-gateway"></a>Application Gateway
 
 現時点では、Azure Application Gateway インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、新しいゲートウェイを作成および構成することをお勧めします。
 
-現在のゲートウェイ構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzureRmApplicationGateway*` で始まる一連のコマンドレットを使用します。
+現在のゲートウェイ構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzApplicationGateway*` で始まる一連のコマンドレットを使用します。
 
 詳細:
 
 - [Application Gateway のチュートリアル](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials)を完了することによって知識を更新してください。
 - [アプリケーション ゲートウェイを作成する](../application-gateway/quick-create-portal.md)方法を学習してください。
-- [Get-AzureRmApplicationGateway](/powershell/module/azurerm.network/get-azurermapplicationgateway) PowerShell コマンドレットを確認してください。
+- [Get-AzApplicationGateway](/powershell/module/az.network/get-azapplicationgateway) PowerShell コマンドレットを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

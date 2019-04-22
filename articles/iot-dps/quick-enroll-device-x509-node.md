@@ -3,19 +3,19 @@ title: このクイック スタートは、Node.js を使用して X.509 デバ
 description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、Node.js Service SDK を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/21/2017
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 3459814108450e3c8faead6ab373ce62b951885e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a861bc52734f5b2bc6e455965428328cd1415b76
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095799"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500670"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>クイック スタート: Node.js を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -50,7 +50,7 @@ ms.locfileid: "55095799"
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
    ```
 
-   このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+   この操作は、完了するまでに数分かかります。
 
    テスト ツールは複製したリポジトリの *azure-iot-sdk-c/tools/CACertificates* にあります。    
 

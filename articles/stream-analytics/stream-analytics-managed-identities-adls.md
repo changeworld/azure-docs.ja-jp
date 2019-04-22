@@ -1,19 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 出力に対して Azure Stream Analytics ジョブを認証する
 description: この記事では、マネージド ID を使用して、Azure Data Lake Storage Gen1 出力に対してご自身の Azure Stream Analytics ジョブを認証する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/8/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9eb66a9000c9add0718c6edf6674a26ce8e479b3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257979"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522063"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
 
@@ -100,33 +99,37 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
    このプロパティは、Azure Stream Analytics ジョブの ID を作成して管理するように Azure Resource Manager に通知します。
 
    **サンプル ジョブ**
-
-    ```json
-    {
-      "Name": "AsaJobWithIdentity",
-      "Type": "Microsoft.StreamAnalytics/streamingjobs",
-      "Location": "West US",
-      "Identity": {
-        "Type": "SystemAssigned",
-      },
-      "properties": {
-        "sku": {
-          "name": "standard"
-        },
-        "outputs": [
-          {
-            "name": "string",
-            "properties":{
-              "datasource": {
-                "type": "Microsoft.DataLake/Accounts",
-                "properties": {
-                  "accountName": "myDataLakeAccountName",
-                  "filePathPrefix": "cluster1/logs/{date}/{time}",
-                  "dateFormat": "YYYY/MM/DD",
-                  "timeFormat": "HH",
-                  "authenticationMode": "Msi"
-                }
-              }
+   
+   ```json
+   {
+     "Name": "AsaJobWithIdentity",
+     "Type": "Microsoft.StreamAnalytics/streamingjobs",
+     "Location": "West US",
+     "Identity": {
+       "Type": "SystemAssigned",
+     },
+     "properties": {
+       "sku": {
+         "name": "standard"
+       },
+       "outputs": [
+         {
+           "name": "string",
+           "properties":{
+             "datasource": {
+               "type": "Microsoft.DataLake/Accounts",
+               "properties": {
+                 "accountName": "myDataLakeAccountName",
+                 "filePathPrefix": "cluster1/logs/{date}/{time}",
+                 "dateFormat": "YYYY/MM/DD",
+                 "timeFormat": "HH",
+                 "authenticationMode": "Msi"
+             }
+           }
+         }
+       }
+     }
+   }
    ```
   
    **サンプル ジョブの応答**
@@ -145,7 +148,8 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
         "sku": {
           "name": "standard"
         },
-      }
+     }
+   }
    ```
 
    ジョブの応答から、必要な ADLS リソースへのアクセスを許可するプリンシパル ID (principalId) をメモしておきます。
@@ -169,15 +173,14 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   上記の PowerShell コマンドの詳細については、[Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) のドキュメントを参照してください。
+   上記の PowerShell コマンドの詳細については、[Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) のドキュメントを参照してください。
 
 ## <a name="limitations"></a>制限事項
 この機能は次をサポートしません。
 
-1.  **マルチテナント アクセス**: 特定の Stream Analytics ジョブに対して作成されたサービス プリンシパルは、ジョブが作成された Azure Active Directory テナント上に配置され、別の Azure Active Directory テナントに配置されたリソースに対しては使用できません。 そのため、MSI は、Azure Stream Analytics ジョブと同じ Azure Active Directory テナント内にある ADLS ジェネレーション 1 リソースに対してのみ使用できます。 
+1. **マルチテナント アクセス**: 特定の Stream Analytics ジョブに対して作成されたサービス プリンシパルは、ジョブが作成された Azure Active Directory テナント上に配置され、別の Azure Active Directory テナントに配置されたリソースに対しては使用できません。 そのため、MSI は、Azure Stream Analytics ジョブと同じ Azure Active Directory テナント内にある ADLS ジェネレーション 1 リソースに対してのみ使用できます。 
 
-2.  **[ユーザー割り当て ID](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**: サポートされていません。つまりユーザーは、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics によって生成されます。 
-
+2. **[ユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md)**: サポートされていません。 つまりユーザーは、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics によって生成されます。
 
 ## <a name="next-steps"></a>次の手順
 

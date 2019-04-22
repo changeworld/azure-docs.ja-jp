@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58b439d12b313bd6f01c9524b230bbfecc21ef0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 47adab265978b4b760450ab1176cf28c55bc0548
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283913"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563683"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certent-equity-management"></a>チュートリアル:Azure Active Directory と Certent Equity Management の統合
 
@@ -106,9 +106,9 @@ Certent Equity Management との Azure AD シングル サインオンを構成�
 
     ![[Certent Equity Management のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx`
+    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx`
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.certent.com/sys/sso/saml/acs.aspx` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、顧客対応マネージャーによって割り当てられた Certent 統合アナリストにお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -224,9 +224,9 @@ Certent Equity Management との Azure AD シングル サインオンを構成�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [ SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

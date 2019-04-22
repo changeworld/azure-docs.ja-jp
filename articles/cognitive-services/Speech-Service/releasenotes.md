@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d53019294a255e42c4cf66f59226c9234a5adf73
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359751"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549407"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -30,7 +30,7 @@ ms.locfileid: "59359751"
 
 **新機能** 
 
-* SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++、C#、Java からサポートされます。 詳しくは、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事をご覧ください。
+* SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳しくは、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事をご覧ください。
 * SDK で、ストリーム入力ファイルとして MP3 および Opus/Ogg オーディオ ファイルがサポートされるようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-compressed-audio-input-streams.md))。
 * Java、.NET Core、C++、Objective-C 用の Speech SDK で、macOS がサポートされるようになりました。 Objective-C での MacOS のサポートは、現在ベータ版です。
 * iOS:iOS (Objective-C) 用の Speech SDK が、CocoaPod としても公開されるようになりました。
@@ -58,7 +58,7 @@ ms.locfileid: "59359751"
 
 これはバグ修正リリースで、ネイティブ/マネージド SDK にのみ影響します。 JavaScript バージョンの SDK には影響しません。
 
-**バグの修正**
+**バグ修正**
 
 * マイク入力を使用する際のメモリ リークを修正しました。 ストリーム ベースの入力やファイル入力には影響しません。
 
@@ -291,7 +291,7 @@ ms.locfileid: "59359751"
 
   `SpeechRecognizer` を作成するときに、`Detailed` または `Simple` 出力形式を要求できます。 `DetailedSpeechRecognitionResult` には、信頼度スコア、認識されるテキスト、生の語彙形式、正規化形式、および不適切な内容がマスクされた正規化形式が含まれます。
 
-**破壊的変更**
+**重大な変更**
 
 - C# で `SpeechRecognitionResult.Text` から `SpeechRecognitionResult.RecognizedText` に変更されました。
 

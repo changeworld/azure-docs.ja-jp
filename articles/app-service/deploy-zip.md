@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: ef313ea631a963aa7893bf15e826e591c9d9cfc3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619800"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544060"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -31,7 +31,7 @@ ms.locfileid: "58619800"
 - 既定のビルド プロセスを有効にするオプション (パッケージの復元を含む)。
 - [デプロイのカスタマイズ](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings) (デプロイ スクリプトの実行など)。  
 - デプロイ ログ。 
-- ファイル サイズの上限は 512 MB です。
+- ファイル サイズの上限は 2048 MB です。
 
 詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)をご覧ください。
 
@@ -73,13 +73,23 @@ Azure CLI バージョンが 2.0.21 以降であることを確認します。 �
 
 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。  
 
-次に示すのは、アップロードした ZIP ファイルをデプロイするコマンドの例です。 Azure CLI のローカル インストールを使用する場合は、`--src` にローカル ZIP ファイルのパスを指定します。   
+次に示すのは、アップロードした ZIP ファイルをデプロイするコマンドの例です。 Azure CLI のローカル インストールを使用する場合は、`--src` にローカル ZIP ファイルのパスを指定します。
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
-このコマンドは、ファイルとディレクトリを ZIP ファイルから既定の App Service アプリケーション フォルダー (`\home\site\wwwroot`) にデプロイし、アプリを再起動します。 任意の追加のカスタム ビルド プロセスが構成されている場合、そのプロセスも実行されます。 詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)をご覧ください。
+このコマンドは、ファイルとディレクトリを ZIP ファイルから既定の App Service アプリケーション フォルダー (`\home\site\wwwroot`) にデプロイし、アプリを再起動します。
+
+既定で、展開エンジンでは ZIP ファイルがそのまま実行できる状態で、ビルド自動化は実行されないことが想定されています。 [Git デプロイ](deploy-local-git.md)の場合と同じビルド自動化を有効にするには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行することで、`SCM_DO_BUILD_DURING_DEPLOYMENT` アプリ設定を設定します。
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+```
+
+
+
+詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)をご覧ください。
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
 

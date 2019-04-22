@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046991"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549373"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -239,12 +239,27 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-
 ## <a name="how-is-traffic-analytics-priced"></a>Traffic Analytics はどのように課金されますか?
 
 Traffic Analytics は従量制です。 測定は、サービスによるフロー ログ データの処理と、その結果として生成された拡張ログの Log Analytics ワークスペースへの格納に基づいています。 
 
 たとえば、[価格プラン](https://azure.microsoft.com/pricing/details/network-watcher/)に従い、米国中西部リージョンを考えてみます。ストレージ アカウントに格納され、Traffic Analytics によって処理されるフロー ログ データが 10 GB で、Log Analytics ワークスペースに取り込まれる拡張ログが 1 GB の場合、適用される料金は次のようになります: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Traffic Analytics ではデータがどのような頻度に処理されますか?
+
+Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation)」セクションを参照してください。
+
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Traffic Analytics では悪意のある IP であるかどうかがどのように判断されますか? 
+
+Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Mircosoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合は、その詳細を知らせるサポート チケットを発行してください。
+
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Traffic Analytics のデータに対してアラートを設定するにはどうすればよいですか?
+
+Traffic Analytics には、アラートに対する組み込みのサポートがありません。 ただし、Traffic Analytics のデータは Log Analytics に格納されるので、カスタム クエリを作成し、それらに対してアラートを設定することができます。 手順: 
+- Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 
+- [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
+- [新しいアラート ルール] をクリックして、アラートを作成します。
+- [ログ アラートのドキュメント](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)を参照して、アラートを作成します。
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>geo マップ ビューでキーボードを使用して操作するにはどうすればよいですか?
 

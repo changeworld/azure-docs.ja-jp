@@ -1,10 +1,10 @@
 ---
-title: Linux で SQL Database を使用して .NET Core アプリをビルドする - Azure App Service | Microsoft Docs
-description: SQL Database に接続された .NET Core アプリを Azure App Service on Linux で動作させる方法について説明します。
+title: Linux での ASP.NET Core と SQL Database - Azure App Service | Microsoft Docs
+description: SQL Database に接続された ASP.NET Core アプリを Azure App Service on Linux で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
-manager: syntaxc4
+manager: jeconnoc
 editor: ''
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.service: app-service-web
@@ -12,17 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9d4aee884e91c52be48c8a44f185f188b0c93ab5
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511141"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547829"
 ---
-# <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での .NET Core および SQL Database のアプリの作成
+# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での ASP.NET Core および SQL Database アプリの作成
 
 > [!NOTE]
 > この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure App Service での .NET Core および SQL Database のアプリの作成](../app-service-web-tutorial-dotnetcore-sqldb.md)に関するページを参照してください。
@@ -32,7 +32,7 @@ ms.locfileid: "55511141"
 
 ![App Service on Linux で実行されるアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-学習内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で SQL データベースを作成する
@@ -100,11 +100,11 @@ SQL Database については、このチュートリアルでは [Azure SQL Data
 
 Cloud Shell で、[`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) コマンドを使用して SQL Database 論理サーバーを作成します。
 
-"*\<server_name >*" プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server_name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、"*\<db_username >*" と "*db_password >\<*" を選択したユーザー名とパスワードで置換します。 
+*\<server-name>* プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server-name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、*\<db-username>* と *\<db-password>* を、選択したユーザー名とパスワードで置換します。 
 
 
 ```azurecli-interactive
-az sql server create --name <server_name> --resource-group myResourceGroup --location "West Europe" --admin-user <db_username> --admin-password <db_password>
+az sql server create --name <server-name> --resource-group myResourceGroup --location "West Europe" --admin-user <db-username> --admin-password <db-password>
 ```
 
 SQL Database 論理サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
@@ -113,12 +113,12 @@ SQL Database 論理サーバーが作成されると、Azure CLI によって、
 {
   "administratorLogin": "sqladmin",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<server_name>.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/<server_name>",
+  "fullyQualifiedDomainName": "<server-name>.database.windows.net",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/<server-name>",
   "identity": null,
   "kind": "v12.0",
   "location": "westeurope",
-  "name": "<server_name>",
+  "name": "<server-name>",
   "resourceGroup": "myResourceGroup",
   "state": "Ready",
   "tags": null,
@@ -132,7 +132,7 @@ SQL Database 論理サーバーが作成されると、Azure CLI によって、
 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) コマンドを使用して、[Azure SQL Database のサーバー レベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
-az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 ### <a name="create-a-database"></a>データベースを作成する
@@ -140,15 +140,15 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) コマンドで [S0 パフォーマンス レベル](../../sql-database/sql-database-service-tiers-dtu.md)のデータベースをサーバーに作成します。
 
 ```azurecli-interactive
-az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
+az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
 ```
 
 ### <a name="create-connection-string"></a>接続文字列を作成する
 
-次の文字列を前に使用した "*\<server_name>*"、"*\<db_username>*"、"*\<db_password>*" で置換します。
+次の文字列を、前に使用した *\<server-name>*、*\<db-username>*、*\<db-password>* で置換します。
 
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
+Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
 ```
 
 これは .NET Core アプリの接続文字列です。 後で使用するためコピーします。
@@ -171,18 +171,18 @@ Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_u
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
-Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、"*\<app name>*" および "*\<connection_string>*" パラメーターを先ほど作成した接続文字列で置換します。
+Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、*\<app-name>* および *\<connection-string>* パラメーターを、先ほど作成した接続文字列で置換します。
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
 次に、`ASPNETCORE_ENVIRONMENT` アプリ設定を "_Production_" に設定します。 ローカル開発環境では SQLite を使用し、Azure 環境では SQL Database を使用するため、Azure で実行しているかどうかをこの設定で把握できます。
 
-次の例では、Azure アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 "*\<appname>*" プレースホルダーを置換します。
+次の例では、Azure アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 *\<app-name>* プレースホルダーを置換します。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
 ### <a name="connect-to-sql-database-in-production"></a>運用環境の SQL Database に接続する
@@ -209,11 +209,11 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-このコードは、運用環境 (Azure 環境を示します) で実行されていることを検出すると、SQL Database に接続するように構成した接続文字列を使用します。
+このコードは、運用環境 (Azure 環境を示します) で実行されていることを検出すると、SQL Database に接続するように構成した接続文字列を使用します。 App Service でアプリ設定にアクセスする方法については、「[Access environment variables (環境変数にアクセスする)](configure-language-dotnetcore.md#access-environment-variables)」を参照してください。
 
-`Database.Migrate()` 呼び出しは、移行の構成に基づいて .NET Core アプリが必要とするデータベースを自動的に作成するため、Azure で実行するときに役立ちます。 
+`Database.Migrate()` 呼び出しは、移行の構成に基づいて .NET Core アプリが必要とするデータベースを自動的に作成するため、Azure で実行するときに役立ちます。
 
-変更を保存し、それを Git リポジトリにコミットします。 
+変更を保存し、それを Git リポジトリにコミットします。
 
 ```bash
 git add .
@@ -246,7 +246,7 @@ remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
@@ -255,7 +255,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 Web ブラウザーを使用して、デプロイされたアプリを参照します。
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 いくつかの To Do アイテムを追加します。
@@ -369,23 +369,9 @@ git push azure master
 
 > [!NOTE]
 > プロジェクトのログ レベルは、*appsettings.json* で `Information` に設定されています。
-> 
+>
 
-App Service on Linux では、アプリは、既定の Docker イメージのコンテナー内で実行されます。 コンテナー内から生成されたコンソール ログにアクセスできます。 ログを取得するには、まず Cloud Shell で [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) コマンドを実行して、コンテナーのログ記録をオンにします。
-
-```azurecli-interactive
-az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
-```
-
-コンテナーのログが有効になったら、Cloud Shell から [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) コマンドを実行してログ ストリームを観察します。
-
-```azurecli-interactive
-az webapp log tail --name <app_name> --resource-group myResourceGroup
-```
-
-ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
-
-任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
 ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NET Core でのログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging)」を参照してください。
 
@@ -419,4 +405,9 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)
+> [チュートリアル:カスタム DNS 名をアプリにマップする](../app-service-web-tutorial-custom-domain.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)

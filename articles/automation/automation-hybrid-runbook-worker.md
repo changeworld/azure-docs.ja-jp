@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/31/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55dff6cf073612e3e5473da3a5f1bf722b2ccdbd
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852922"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608556"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
@@ -27,6 +27,9 @@ Azure Automation の Runbook は Azure クラウド プラットフォームで�
 各 Hybrid Runbook Worker は、エージェントのインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループには単一のエージェントを含めることができますが、高可用性グループに複数のエージェントをインストールすることができます。
 
 Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 ジョブ キューの処理時間は、Hybrid Worker のハードウェア プロファイルと負荷によって異なります。 特定の worker を指定することはできません。 Hybrid Runbook Worker では、Azure サンドボックスが持つ制限の多くが共有されません。 ディスク領域、メモリ、ネットワーク ソケットに関する制限が異なります。 Hybrid Runbook Worker の動作は、Hybrid Runbook Worker 自体のリソースによってのみ制限されます。 また、Hybrid Runbook Worker では、Azure サンドボックスが持つ 180 分の [fair share](automation-runbook-execution.md#fair-share) 時間制限は共有されません。 Azure サンドボックスと Hybrid Runbook Worker のサービス制限について詳しくは、ジョブ[制限](../azure-subscription-service-limits.md#automation-limits)に関するページをご覧ください。
+
+> [!NOTE]
+> Hybrid Runbook Worker は、Azure China ではサポートされていません。
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker をインストールする
 
@@ -97,11 +100,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>Hybrid Worker ロール
 
-Hybrid Runbook Worker が Azure Monitor ログに接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Azure Monitor ログに接続するために [Microsoft Monitoring Agent に必要なポートと URL](../azure-monitor/platform/agent-windows.md) に加えて必要です。
+Hybrid Runbook Worker が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Azure Monitor ログに接続するために [Microsoft Monitoring Agent に必要なポートと URL](../azure-monitor/platform/agent-windows.md) に加えて必要です。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-エージェントと Azure Monitor サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、ハイブリッド worker 用に構成されていることを確認してください。 これを行う方法の詳細については、[Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)に関するセクションを参照してください。
+エージェントと Azure Automation サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 Hybrid Runbook Worker および Automation サービスからの要求のタイムアウトは 30 秒です。 3 回試行した後の要求は失敗します。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、ハイブリッド worker 用に構成されていることを確認してください。 これを行う方法の詳細については、[Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)に関するセクションを参照してください。
 
 Hybrid Runbook Worker ロールが Automation と通信するには、次のポートと URL が必要です。
 
@@ -126,6 +129,7 @@ Hybrid Runbook Worker ロールが Automation と通信するには、次のポ�
 | 東南アジア |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | インド中部 |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | 東日本 |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| オーストラリア東部 |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | オーストラリア東南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |

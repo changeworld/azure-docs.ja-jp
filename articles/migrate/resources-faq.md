@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 366240c273feed559edb6e569640020046cc9471
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578647"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578919"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -60,6 +60,10 @@ Azure Government | 米国政府バージニア州
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>オンプレミス サイトはどのようにして Azure Migrate に接続しますか。
 
 インターネット経由の接続、または ExpressRoute とパブリック ピアリングを使用した接続が可能です。
+
+### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate"></a>Azure Migrate にはどのようなネットワーク接続要件が必要でしょうか。
+
+Azure Migrate が Azure と通信するために必要な URL およびポートについては、「[接続用 URL](https://docs.microsoft.com/azure/migrate/concepts-collector#urls-for-connectivity)」を参照してください。
 
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>OVA テンプレートを使用して VM セットアップを強化できますか。
 

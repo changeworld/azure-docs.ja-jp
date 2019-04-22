@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3b286bbe2c246345bf6acd84a4fc0c400451c706
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 04b13c1e511f54c1fcf7b632d3a368fde16bf319
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445349"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549030"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -36,13 +36,13 @@ Data Box などの転送ツールをオフライン移行に使用する主な�
 - Data Box と Azure File Sync を使用すると、ダウンタイムは発生しません。 Data Box を使用して Azure にデータを転送すると、ネットワーク帯域幅を効率的に使用し、ファイルの忠実性を維持できます。 また、ユーザーが Azure にデータを移動した後に変更されたファイルのみをアップロードすることによって、名前空間を最新の状態に保ちます。
 
 ## <a name="prerequisites-for-the-offline-data-transfer"></a>オフライン データ転送の前提条件
-オフライン データ転送を開始する前に、次のことを確認してください。
+オフライン データ転送を完了する前に、移行するサーバーでの同期を有効にする必要があります。 開始する前の考慮すべきその他の事項は次のとおりです。
 
-- Azure File Sync との同期を有効にする前に、1 つまたは複数の Azure ファイル共有に大量のデータを移行します。
-- 一括移行に Data Box を使用する予定の場合は、[Data Box のデプロイの前提条件](../../databox/data-box-deploy-ordered.md#prerequisites)を確認してください。
-- 最終的な Azure File Sync トポロジを計画します。 詳しくは、「[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)」をご覧ください。
-- 同期するファイル共有を保持する Azure Storage アカウントを選択します。 同じストレージ アカウント内の一時的なステージング共有に大量のデータを移行してください。 使用できるのは、同じストレージ アカウント内の最終およびステージングの共有のみです。
-- サーバーの場所との新しい同期関係を作成します。 既存の同期関係を使用して大量のデータを移行することはできません。
+- 一括移行に Data Box を使用する予定の場合は、[Data Box のデプロイの前提条件](../../databox/data-box-deploy-ordered.md#prerequisites)に関する説明を確認してください。
+- 最終的な Azure File Sync トポロジを計画します:[Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
+- 同期するファイル共有を保持する Azure ストレージ アカウントを選択します。 一括移行が、同じストレージ アカウント内の一時的なステージング共有に対して行われるようにしてください。 一括移行は、同じストレージ アカウントに存在する最終およびステージングの共有を使用してのみ有効にできます。
+- 一括移行は、サーバーの場所との新しい同期関係を作成するときにのみ使用できます。 既存の同期関係で一括移行を有効にすることはできません。
+
 
 ## <a name="process-for-offline-data-transfer"></a>オフライン データ転送のプロセス
 ここでは、Azure Data Box などの一括移行ツールと互換性のある方法で Azure File Sync を設定する方法について説明します。
@@ -51,7 +51,7 @@ Data Box などの転送ツールをオフライン移行に使用する主な�
 
 | 手順 | 詳細 |
 |---|---------------------------------------------------------------------------------------|
-| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します。*\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>*。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
+| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します: *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>*。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
 | ![手順 2.](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 一時的なステージング共有として選択した Azure ファイル共有にファイルが表示されるまで待ちます。 *それらの共有への同期を有効にしないでください。* |
 | ![手順 3.](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Data Box によって作成されたファイル共有ごとに、空の新しい共有を作成します。 この新しい共有は Data Box 共有と同じストレージ アカウントにある必要があります。 [新しい Azure ファイル共有を作成する方法](storage-how-to-create-file-share.md)。 |
 | ![手順 4.](media/storage-sync-files-offline-data-transfer/bullet_4.png) | ストレージ同期サービスで[同期グループを作成](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)します。 空の共有をクラウド エンドポイントとして参照します。 Data Box のファイル共有ごとにこの手順を繰り返します。 [Azure File Sync を設定します](storage-sync-files-deployment-guide.md)。 |

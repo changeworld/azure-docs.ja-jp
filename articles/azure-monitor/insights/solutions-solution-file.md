@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 298bf10cf07467de897c7e38af9539fc71375eab
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776650"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526369"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -83,14 +83,14 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | type | 説明 |
+| パラメーター | Type | 説明 |
 |:--- |:--- |:--- |
-| accountName |文字列 |Azure automation アカウント名。 |
-| pricingTier |文字列 |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
-| regionId |文字列 |Azure Automation アカウントのリージョン。 |
-| solutionName |文字列 |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
-| workspaceName |文字列 |Log Analytics ワークスペース名。 |
-| workspaceRegionId |文字列 |Log Analytics ワークスペースのリージョン。 |
+| accountName |string |Azure automation アカウント名。 |
+| pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
+| regionId |string |Azure Automation アカウントのリージョン。 |
+| solutionName |string |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
+| workspaceName |string |Log Analytics ワークスペース名。 |
+| workspaceRegionId |string |Log Analytics ワークスペースのリージョン。 |
 
 
 次に、コピーして、ソリューション ファイルに貼り付けることができる標準パラメーターの構造を示します。  
@@ -213,7 +213,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 形式での、Log Analytics ワークスペースの ID。 |
+| workspaceResourceId |*\<リソース グループ ID>/プロバイダー/Microsoft.OperationalInsights/ワークスペース/\<ワークスペース名\>* という形式の Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
 | containedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
 

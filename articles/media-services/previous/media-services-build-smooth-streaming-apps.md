@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882728"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524771"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
@@ -60,41 +60,42 @@ Windows ストア アプリケーションの開発の詳細については、�
 3. コード ビハインド ファイルの変更
 4. アプリケーションのコンパイルとテスト
 
-**Windows ストア プロジェクトを作成するには**
+### <a name="to-create-a-windows-store-project"></a>Windows ストア プロジェクトを作成するには
 
 1. Visual Studio を実行します。バージョン 2012 から 2015 がサポートされます。
-2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-3. [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
+1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
+1. [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
-| Name | 値 |
-| --- | --- |
-| テンプレート グループ |インストール済み/テンプレート/Visual C#/Windows ストア |
-| Template |新しいアプリケーション (XAML) |
-| Name |SSPlayer |
-| Location |C:\SSTutorials |
-| ソリューション名 |SSPlayer |
-| ソリューションのディレクトリを作成 |(オン) |
+    | Name | 値 |
+    | --- | --- |
+    | テンプレート グループ |インストール済み/テンプレート/Visual C#/Windows ストア |
+    | Template |新しいアプリケーション (XAML) |
+    | Name |SSPlayer |
+    | Location |C:\SSTutorials |
+    | ソリューション名 |SSPlayer |
+    | ソリューションのディレクトリを作成 |(オン) |
 
 1. Click **OK**.
 
-**Smooth Streaming Client SDK への参照を追加するには**
+### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>スムーズ ストリーミング クライアント SDK への参照を追加するには
 
 1. ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、**[参照の追加]** をクリックします。
-2. 次の値を入力または選択します。
+1. 次の値を入力または選択します。
 
-| Name | 値 |
-| --- | --- |
-| 参照グループ |Windows/拡張 |
-| リファレンス |Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択 |
+    | Name | 値 |
+    | --- | --- |
+    | 参照グループ |Windows/拡張 |
+    | リファレンス |Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択 |
 
 1. Click **OK**. 
 
 参照を追加した後、対象プラットフォーム (x64 または x86) を選択します。[任意の CPU] プラットフォーム構成では参照の追加が機能しません。  この場合は、ソリューション エクスプローラーで、追加した参照に黄色の警告マークが表示されます。
 
-**プレーヤー ユーザー インターフェイスを設計するには**
+### <a name="to-design-the-player-user-interface"></a>プレーヤー ユーザー インターフェイスを設計するには
 
 1. ソリューション エクスプローラーで、 **MainPage.xaml** をダブルクリックしてデザイン ビューを開きます。
 2. XAML ファイル内で **&lt;Grid&gt;** タグと **&lt;/Grid&gt;** タグを探し、2 つのタグの間に次のコードを貼り付けます。
+
    ```xml
          <Grid.RowDefinitions>
 
@@ -146,7 +147,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 この XAML ファイル内で、いくつかのイベント ハンドラーがコントロールに関連付けられています。  これらのイベント ハンドラーを定義する必要があります。
 
-**コード ビハインド ファイルを変更するには**
+### <a name="to-modify-the-code-behind-file"></a>分離コード ファイルを変更するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
@@ -210,7 +211,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ![Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション][CodeViewPic]
 
-**アプリケーションのコンパイルとテストを行うには**
+### <a name="to-compile-and-test-the-application"></a>アプリケーションのコンパイルとテストを行うには
 
 1. **[ビルド]** メニューの **[構成マネージャー]** をクリックします。
 2. **[アクティブ ソリューション プラットフォーム]** を、開発プラットフォームに一致するように変更します。
@@ -238,7 +239,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 5. スライダー関連コードの追加
 6. アプリケーションのコンパイルとテスト
 
-**スムーズ ストリーミング バイトストリーム ハンドラーを登録して propertyset を渡すには**
+### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>スムーズ ストリーミング バイトストリーム ハンドラーを登録して propertyset を渡すには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
@@ -283,7 +284,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 6. **Ctrl + S** キーを押して、ファイルを保存します。
 
-**アダプティブ ソース マネージャー レベルのイベント ハンドラーを追加するには**
+### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>アダプティブ ソース マネージャー レベルのイベント ハンドラーを追加するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. **MainPage** クラス内で、次のデータ メンバーを追加します。
@@ -311,7 +312,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 5. **Ctrl + S** キーを押して、ファイルを保存します。
 
-**アダプティブ ソース レベルのイベント ハンドラーを追加するには**
+### <a name="to-add-adaptive-source-level-event-handlers"></a>アダプティブ ソース レベルのイベント ハンドラーを追加するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. **MainPage** クラス内で、次のデータ メンバーを追加します。
@@ -362,7 +363,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 アダプティブ ソース マネージャー レベルにも同じイベントがあり、これらは、アプリケーション内ですべてのメディア要素に共通した機能の処理に使用できます。 各 AdaptiveSource には独自のイベントがあり、すべての AdaptiveSource イベントは AdaptiveSourceManager からカスケード処理されます。
 
-**MediaElement イベント ハンドラーを追加するには**
+### <a name="to-add-media-element-event-handlers"></a>MediaElement イベント ハンドラーを追加するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. **MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
@@ -398,7 +399,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 4. **Ctrl + S** キーを押して、ファイルを保存します。
 
-**スライダー関連コードを追加するには**
+### <a name="to-add-slider-bar-related-code"></a>スライダー バー関連コードを追加するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
@@ -531,7 +532,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 8. **Ctrl + S** キーを押して、ファイルを保存します。
 
-**アプリケーションのコンパイルとテストを行うには**
+### <a name="to-compile-and-test-the-application"></a>アプリケーションのコンパイルとテストを行うには
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -548,7 +549,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 2. コード ビハインド ファイルの変更
 3. アプリケーションのコンパイルとテスト
 
-**XAML ファイルを変更するには**
+### <a name="to-modify-the-xaml-file"></a>XAML ファイルを変更するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
 2. &lt;Grid.RowDefinitions&gt; を探し、次のように各 RowDefinition を変更します。
@@ -591,7 +592,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 4. **Ctrl + S** キーを押して、変更を保存します。
 
-**コード ビハインド ファイルを変更するには**
+### <a name="to-modify-the-code-behind-file"></a>分離コード ファイルを変更するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
@@ -807,7 +808,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             changeStreams(selectedStreams);
         }
    ```
-   **アプリケーションのコンパイルとテストを行うには**
+
+### <a name="to-compile-and-test-the-application"></a>アプリケーションのコンパイルとテストを行うには
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -818,13 +820,14 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 これでレッスン 3 が完了しました。  このレッスンでは、ストリームを選択する機能を追加しました。
 
 ## <a name="lesson-4-select-smooth-streaming-tracks"></a>レッスン 4: スムーズ ストリーミング トラックの選択
+
 スムーズ ストリーミング プレゼンテーションには、別々の品質レベル (ビット レート) と解像度でエンコードされた複数のビデオ ファイルが含まれていることがあります。 このレッスンでは、ユーザーによるトラック選択を有効にします。 このレッスンは、次の工程で構成されています。
 
 1. XAML ファイルの変更
 2. コード ビハインド ファイルの変更
 3. アプリケーションのコンパイルとテスト
 
-**XAML ファイルを変更するには**
+### <a name="to-modify-the-xaml-file"></a>XAML ファイルを変更するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
 2. Name 属性が **gridStreamAndBitrateSelection** である &lt;Grid&gt; タグを探し、タグの末尾に次のコードを追加します。
@@ -846,7 +849,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 3. **Ctrl + S** キーを押して、変更を保存します。
 
-**コード ビハインド ファイルを変更するには**
+### <a name="to-modify-the-code-behind-file"></a>分離コード ファイルを変更するには
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
@@ -1009,7 +1012,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             changeStreams(selectedStreams);
          }
    ```
-   **アプリケーションのコンパイルとテストを行うには**
+   
+### <a name="to-compile-and-test-the-application"></a>アプリケーションのコンパイルとテストを行うには
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -1020,6 +1024,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 これでレッスン 4 が完了しました。  このレッスンでは、トラックを選択する機能を追加しました。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

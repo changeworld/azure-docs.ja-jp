@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970e570d9ad27da2690cd38fe480823128322db0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: c5f37873b51d6257ffec3ada10be886995f7f5d5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370705"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521871"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Windows Server の AD FS と連携するように Azure Multi-Factor Authentication Server を構成する
 
@@ -81,7 +81,7 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
 次の手順に従って、MultiFactorAuthenticationAdfsAdapter.config ファイルを編集します。
 
 1. **UseWebServiceSdk** ノードを **true** に設定します。  
-2. **WebServiceSdkUrl** の値を、Multi-Factor Authentication Web サービス SDK の URL に設定します。 例: *<https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx>* (*certificatename* は自分の証明書の名前です)。  
+2. **WebServiceSdkUrl** の値を、Multi-Factor Authentication Web サービス SDK の URL に設定します。 例: *https:\/\/contoso.com/\<certificatename>/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx* (ここで、*\<certificatename>* にはご自分の証明書の名前が入ります)。  
 3. Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを編集します。具体的には、`-ConfigurationFilePath &lt;path&gt;` を `Register-AdfsAuthenticationProvider` コマンドの末尾に追加します。このときの *&lt;パス&gt;* は、MultiFactorAuthenticationAdfsAdapter.config ファイルへの完全なパスです。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>Web サービス SDK をユーザー名とパスワードを使って構成する

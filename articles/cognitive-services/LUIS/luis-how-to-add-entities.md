@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106935"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522352"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
@@ -56,7 +56,7 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 <a name="add-regular-expression-entities"></a>
 
-## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>高度に構造化された概念用に正規表現エンティティを追加する
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>高度に構造化された概念のための正規表現エンティティを追加する
 
 正規表現エンティティは、指定された正規表現に基づいて発話からデータを抽出するために使用されます。 
 
@@ -135,7 +135,7 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>異なるコンテキストを区別するためにロールを追加する
 
-ロールは、文脈に基づいたエンティティの名前付きサブタイプです。 [階層構造](#add-hierarchical-entities)エンティティと比較できますが、ロールは[パターン](luis-how-to-model-intent-pattern.md)内でのみ使用されます。 
+ロールは、文脈に基づいた名前付きサブタイプです。 事前構築済みエンティティや非マシン学習エンティティを含む、すべてのエンティティで使用できます。 
 
 出発地と到着地の階層構造エンティティと同じ例を使用した場合、違うのは、ロールが階層構造の子ではなく、名前付きの出発地であるという点です。 
 

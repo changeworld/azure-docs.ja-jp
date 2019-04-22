@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 7aa171a49ea03769c3ecbb5d35ae31ac6fae052e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 772f15f54819f31d92411df747fc10d54b3e96cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473101"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544114"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>クイック スタート:Anomaly Detector REST API および C# を使用して時系列データ内の異常を検出する 
 
@@ -81,24 +81,19 @@ ms.locfileid: "58473101"
 1. 上記で作成した変数を取る `Request` という新しい非同期関数を作成します。
 
 2. `HttpClient`オブジェクトを使用して、クライアントのセキュリティ プロトコルとヘッダー情報を設定します。 `Ocp-Apim-Subscription-Key` ヘッダーには必ずサブスクリプション キーを追加してください。 その後、要求の `StringContent` オブジェクトを作成します。
- 
-3. `PostAsync()` を使用して要求を送信します。 要求が成功した場合は、応答を返します。  
+
+3. `PostAsync()` を使用して要求を送信してから、応答を返します。
 
 ```csharp
-static async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData){
-    using (HttpClient client = new HttpClient { BaseAddress = new Uri(baseAddress) }){
+static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
+    using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
         System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
         var content = new StringContent(requestData, Encoding.UTF8, "application/json");
         var res = await client.PostAsync(endpoint, content);
-        if (res.IsSuccessStatusCode){
-            return await res.Content.ReadAsStringAsync();
-        }
-        else{
-            return $"ErrorCode: {res.StatusCode}";
-        }
+        return await res.Content.ReadAsStringAsync();
     }
 }
 ```
@@ -109,9 +104,9 @@ static async Task<string> Request(string baseAddress, string endpoint, string su
 
 2. JSON オブジェクトを逆シリアル化し、それをコンソールに書き込みます。
 
-3. データ セット内の異常の位置を検索します。 応答の `isAnomaly` フィールドには、ブール値の配列が含まれており、各値はデータ ポイントが異常であるかどうかを示します。 応答オブジェクトの `ToObject<bool[]>()` 関数を使用して、これを文字列配列に変換します。
+3. 応答に `code` フィールドが含まれる場合は、エラー コードとエラー メッセージを印刷します。 
 
-4. 配列を反復処理して、すべての `true` 値のインデックスを出力します。 これらの値は、異常なデータ ポイントが見つかった場合、そのインデックスに対応します。
+4. そうでない場合は、データ セット内の異常の位置を検索します。 応答の `isAnomaly` フィールドには、ブール値の配列が含まれており、各値はデータ ポイントが異常であるかどうかを示します。 応答オブジェクトの `ToObject<bool[]>()` 関数を使用して、これを文字列配列に変換します。 配列を反復処理して、すべての `true` 値のインデックスを出力します。 これらの値は、異常なデータ ポイントが見つかった場合、そのインデックスに対応します。
 
 ```csharp
 static void detectAnomaliesBatch(string requestData){
@@ -126,11 +121,17 @@ static void detectAnomaliesBatch(string requestData){
     dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
     System.Console.WriteLine(jsonObj);
 
-    bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
-    System.Console.WriteLine("\n Anomalies detected in the following data positions:");
-    for (var i = 0; i < anomalies.Length; i++) {
-        if (anomalies[i]) {
-            System.Console.Write(i + ", ");
+    if (jsonObj["code"] != null){
+        System.Console.WriteLine($"Detection failed. ErrorCode:{jsonObj["code"]}, ErrorMessage:{jsonObj["message"]}");
+    }
+    else{
+        bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
+        System.Console.WriteLine("\nAnomalies detected in the following data positions:");
+        for (var i = 0; i < anomalies.Length; i++){
+            if (anomalies[i])
+            {
+                System.Console.Write(i + ", ");
+            }
         }
     }
 }
@@ -140,11 +141,11 @@ static void detectAnomaliesBatch(string requestData){
 
 1. `detectAnomaliesLatest()` という新しい関数を作成します。 要求を構成し、エンドポイント、サブスクリプション キー、ポイント異常検出の URL、および時系列データを使用して `Request()` 関数を呼び出すことで送信します。
 
-2. JSON オブジェクトを逆シリアル化し、それをコンソールに書き込みます。 
+2. JSON オブジェクトを逆シリアル化し、それをコンソールに書き込みます。
 
 ```csharp
 static void detectAnomaliesLatest(string requestData){
-    System.Console.WriteLine("\n\n Determining if latest data point is an anomaly");
+    System.Console.WriteLine("\n\nDetermining if latest data point is an anomaly");
     var result = Request(
         endpoint,
         latestPointDetectionUrl,

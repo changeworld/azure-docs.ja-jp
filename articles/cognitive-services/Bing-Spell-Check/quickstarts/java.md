@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: d2905d05dce48b705de44780425ed2b55b02555c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888986"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616697"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
 
@@ -23,18 +23,20 @@ ms.locfileid: "56888986"
 
 ## <a name="prerequisites"></a>前提条件
 
-Java Development Kit(JDK) 7 以降
+* Java Development Kit(JDK) 7 以降
+
+* [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) または最新バージョンの [Gson](https://github.com/google/gson) をインポートします。 コマンド ライン実行の場合は、main クラスがある Java フォルダーに `.jar` を追加します。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-
 ## <a name="create-and-initialize-an-application"></a>アプリケーションを作成して初期化する
 
-1. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成し、以下のパッケージをインポートします。
+1. 普段使用している IDE またはエディターで、任意のクラス名を使用して、新しい Java プロジェクトを作成し、以下のパッケージをインポートします。
 
     ```java
     import java.io.*;
     import java.net.*;
+    import com.google.gson.*;
     import javax.net.ssl.HttpsURLConnection;
     ```
 
@@ -44,7 +46,7 @@ Java Development Kit(JDK) 7 以降
     static String host = "https://api.cognitive.microsoft.com";
     static String path = "/bing/v7.0/spellcheck";
 
-    static String key = "ENTER YOUR KEY HERE";
+    static String key = "<ENTER-KEY-HERE>";
 
     static String mkt = "en-US";
     static String mode = "proof";
@@ -58,7 +60,7 @@ Java Development Kit(JDK) 7 以降
    ```java
    public static void check () throws Exception {
        String params = "?mkt=" + mkt + "&mode=" + mode;
-   //...
+      // add the rest of the code snippets here (except prettify() and main())...
    }
    ```
 
@@ -66,13 +68,12 @@ Java Development Kit(JDK) 7 以降
 
     ```java
     URL url = new URL(host + path + params);
-    HttpsURLConnection connection = (HttpsURLConnection) 
+    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. その URL への接続を開きます。 要求メソッドを `POST` に設定します。 要求のパラメーターを追加します。 `Ocp-Apim-Subscription-Key` ヘッダーには必ずサブスクリプション キーを追加してください。 
+3. その URL への接続を開きます。 要求メソッドを `POST` に設定します。 要求のパラメーターを追加します。 `Ocp-Apim-Subscription-Key` ヘッダーには必ずサブスクリプション キーを追加してください。
 
     ```java
-    url.openConnection();
     connection.setRequestMethod("POST");
     connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
@@ -88,21 +89,34 @@ Java Development Kit(JDK) 7 以降
         wr.close();
     ```
 
-## <a name="read-the-response"></a>応答を読み取る
+## <a name="format-and-read-the-api-response"></a>API の応答を書式設定して読み取る
 
-1. `BufferedReader` を作成して、API から応答を読み取ります。 それをコンソールに出力します。
+1. このメソッドをクラスに追加します。 出力を判読しやすいよう JSON が書式設定されます。
+
+    ``` java
+    // This function prettifies the json response.
+    public static String prettify(String json_text) {
+        JsonParser parser = new JsonParser();
+        JsonElement json = parser.parse(json_text);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(json);
+    }
+
+1. Create a `BufferedReader` and read the response from the API. Print it to the console.
     
     ```java
     BufferedReader in = new BufferedReader(
     new InputStreamReader(connection.getInputStream()));
     String line;
     while ((line = in.readLine()) != null) {
-        System.out.println(line);
+        System.out.println(prettify(line);
     }
     in.close();
     ```
 
-2. アプリケーションの main 関数から、上で作成した関数を呼び出します。 
+## <a name="call-the-api"></a>API を呼び出す
+
+アプリケーションの main 関数で、上で作成した check() メソッドを呼び出します。
 
     ```java
     public static void main(String[] args) {
@@ -114,10 +128,26 @@ Java Development Kit(JDK) 7 以降
         }
     }
     ```
-    
+
+## <a name="run-the-application"></a>アプリケーションの実行
+
+プロジェクトをビルドして実行します。
+
+コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルド、実行します。
+
+**ビルド:** 
+```bash
+javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+```
+
+**実行:** 
+```bash
+java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+```
+
 ## <a name="example-json-response"></a>JSON の応答例
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {

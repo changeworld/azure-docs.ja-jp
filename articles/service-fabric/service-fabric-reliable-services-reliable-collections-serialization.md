@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: 48f7153dcee45a6271919ac756ad794186faaed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668443"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522388"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -40,7 +40,7 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 - sbyte
 - byte[]
 - char
-- 文字列
+- string
 - decimal
 - double
 - float
@@ -96,7 +96,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-IStateSerializer<OrderKey> の実装例を次に示します。
+IStateSerializer\<OrderKey> の実装例を次に示します。
 baseValue を受け取る読み取りと書き込みのオーバーロードが、上位互換性のためにそれぞれのオーバーロードを呼び出していることに注意してください。
 
 ```csharp

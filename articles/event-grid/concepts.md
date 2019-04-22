@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474355"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617599"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 

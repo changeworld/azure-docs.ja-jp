@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Office 365 データを収集する | Microsoft Docs
-description: Azure Sentinel で Office 365 データを収集する方法について説明します。
+title: Azure Sentinel Preview に Office 365 データを接続する | Microsoft Docs
+description: Azure Sentinel に Office 365 データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 77587b0b7506ef0ccadbeb6d1f010f5b6a72d93e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574860"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495192"
 ---
-# <a name="collect-data-from-office-365-logs"></a>Office 365 のログからデータを収集する
+# <a name="connect-data-from-office-365-logs"></a>Office 365 ログからデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -37,7 +37,7 @@ ms.locfileid: "58574860"
 
 ## <a name="connect-to-office-365"></a>Office 365 への接続
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Office 365]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Office 365]** タイルをクリックします。
 
 2. まだ有効でない場合は、**[接続]** で、**[有効化]** を使用して Office 365 ソリューションを有効にします。 既に有効な場合は、既に有効になっていることが接続画面で識別されます。
 1. Office 365 により、複数のテナントから Azure Sentinel にデータをストリーミングできます。 接続先のテナントごとに、**[Connect tenants to Azure Sentinel]\(Azure Sentinel にテナントを接続\)** でテナントを追加します。 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092720"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493639"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -143,11 +143,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`、`PageView`                 | `span.kind = server` を含む `Span`                  |
-| `Dependency`                          | `span.kind = client` を含む `Span`                  |
-| `Request` と `Dependency` の `Id`    | `SpanId`                                          |
+| `Request`, `PageView`                 | `Span` を以下に置き換えることができます。 `span.kind = server`                  |
+| `Dependency`                          | `Span` を以下に置き換えることができます。 `span.kind = client`                  |
+| `Id` `Request` と `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | タイプ `ChildOf` の `Reference` (親スパン)   |
+| `Operation_ParentId`                  | `Reference` タイプ `ChildOf` の (親スパン)   |
 
 詳細については、「[Application Insights Telemetry のデータ モデル](../../azure-monitor/app/data-model.md)」をご覧ください。 
 
@@ -157,18 +157,18 @@ OpenTracing の概念の定義については、OpenTracing の[仕様](https://
 
 .NET では、長い時間をかけて、テレメトリと診断ログを関連付けるためのいくつかの方法を定義してきました。
 
-- `System.Diagnostics.CorrelationManager` では、[LogicalOperationStack and ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) を追跡できます。 
-- `System.Diagnostics.Tracing.EventSource` および Windows イベント トレーシング (ETW) では、[SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) メソッドが定義されています。
-- `ILogger` は [ログ スコープ](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes) を使用します。 
+- `System.Diagnostics.CorrelationManager`  では、[LogicalOperationStack and ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) を追跡できます。 
+- `System.Diagnostics.Tracing.EventSource`  および Windows イベント トレーシング (ETW) では、[SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) メソッドが定義されています。
+- `ILogger`  は[ログ スコープ](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)を使用します。 
 - Windows Communication Foundation (WCF) および HTTP では、"現在の" コンテキストの伝達が接続されます。
 
-ただし、これらの方法では、自動分散トレースがサポートされていませんでした。 `DiagnosticSource` は、マシン間の自動的な関連付けをサポートする 1 つの方法です。 .NET ライブラリは 'DiagnosticSource' をサポートしており、HTTP などのトランスポート経由で、関連付けのコンテキストをマシン間で自動的に伝達できます。
+ただし、これらの方法では、自動分散トレースがサポートされていませんでした。 `DiagnosticSource`  は、マシン間の自動的な関連付けをサポートする 1 つの方法です。 .NET ライブラリは 'DiagnosticSource' をサポートしており、HTTP などのトランスポート経由で、関連付けのコンテキストをマシン間で自動的に伝達できます。
 
 アクティビティの追跡の基本については、`DiagnosticSource` の [アクティビティのガイド](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)に関するページをご覧ください。
 
 ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビティの開始がサポートされています。
 
-バージョン 4.1.0 以降の `System.Net.HttpClient` では、関連付け HTTP ヘッダーの自動挿入と、アクティビティとしての HTTP 呼び出しの追跡がサポートされています。
+`System.Net.HttpClient` では、バージョン 4.1.0 以降、関連付け HTTP ヘッダーの自動挿入と、アクティビティとしての HTTP 呼び出しの追跡がサポートされています。
 
 クラシック ASP.NET 用には、新しい HTTP モジュール [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) があります。 このモジュールは `DiagnosticSource` を使用してテレメトリの関連付けを実装します。 これは、受信要求ヘッダーに基づいてアクティビティを開始します。 また、インターネット インフォメーション サービス (IIS) の処理の各段階が別のマネージド スレッド上で実行される場合でも、要求処理のさまざまな段階からのテレメトリを関連付けます。
 
@@ -183,6 +183,11 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 > この関連付け機能では、Apache HTTPClient を使用して行われた呼び出しのみがサポートされます。 Spring RestTemplate または Feign を使用している場合、どちらも Apache HTTP クライアントで内部的に使用できます。
 
 現時点では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 ただし、`trackDependency` および `trackRequest` API を使用してそのようなシナリオを手動でコーディングすることはできます。 これらの API では、依存関係テレメトリはプロデューサーによってエンキューされるメッセージを表し、要求はコンシューマーによって処理されるメッセージを表します。 この場合、`operation_id` と `operation_parentId` の両方を、メッセージのプロパティで伝達する必要があります。
+
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>非同期 Java アプリケーションにおけるテレメトリの関連付け
+
+非同期の Spring Boot アプリケーションでテレメトリを関連付けるには、[こちら](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)の詳細な記事に従ってください。 Spring の [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) と [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) をインストルメント化するためのガイダンスが提供されています。 
+
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>ロール名

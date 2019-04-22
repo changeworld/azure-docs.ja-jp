@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 04/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 16844f60f03e2bf488450797f43915462df08064
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904918"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617973"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Python 用の Azure Cognitive Services Computer Vision SDK
 
@@ -46,8 +46,8 @@ Computer Vision サービスの **[試用][computervision_resource]** エクス�
 
 キーの作成後は、次の情報を記録しておいてください。
 
-* キー値: 次の形式の 32 文字の文字列:  `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
-* キーのエンドポイント: ベース エンドポイント URL: https://westcentralus.api.cognitive.microsoft.com
+* キー値: 32 文字の文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 形式)
+* キーのエンドポイント: ベース エンドポイント URL: https\://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Azure サブスクリプションをお持ちの場合
 
@@ -216,12 +216,13 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>画像からテキストを取得する
 
-画像から手書きのテキストや印刷されたテキストを取得できます。 これには、SDK に対する 2 つの呼び出し ([`recognize_text`][ref_computervisionclient_recognize_text] と [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]) が必要です。 recognize_text の呼び出しは非同期です。 get_text_operation_result 呼び出しの結果では、テキスト データを抽出する前に、[`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] を使用して、最初の呼び出しが完了しているかどうかを確認する必要があります。 結果には、テキストと、テキストの境界ボックスの座標が含まれます。
+画像から手書きのテキストや印刷されたテキストを取得できます。 これには、SDK に対する 2 つの呼び出し ([`batch_read_file`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) と [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-)) が必要です。 `batch_read_file` の呼び出しは非同期です。 `get_read_operation_result` 呼び出しの結果では、テキスト データを抽出する前に、[`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] を使用して、最初の呼び出しが完了しているかどうかを確認する必要があります。 結果には、テキストと、テキストの境界ボックスの座標が含まれます。
 
 ```Python
 # import models
 from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
 from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+import time
 
 url = "https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
 mode = TextRecognitionMode.handwritten
@@ -230,7 +231,7 @@ custom_headers = None
 numberOfCharsInOperationId = 36
 
 # Async SDK call
-rawHttpResponse = client.recognize_text(url, mode, custom_headers,  raw)
+rawHttpResponse = client.batch_read_file(url, mode, custom_headers,  raw)
 
 # Get ID from returned headers
 operationLocation = rawHttpResponse.headers["Operation-Location"]
@@ -239,16 +240,17 @@ operationId = operationLocation[idLocation:]
 
 # SDK call
 while True:
-    result = client.get_text_operation_result(operationId)
+    result = client.get_read_operation_result(operationId)
     if result.status not in ['NotStarted', 'Running']:
         break
     time.sleep(1)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
-    for line in result.recognition_result.lines:
-        print(line.text)
-        print(line.bounding_box)
+    for textResult in result.recognition_results:
+        for line in textResult.lines:
+            print(line.text)
+            print(line.bounding_box)
 ```
 
 ### <a name="generate-thumbnail"></a>サムネイルを生成する
@@ -314,12 +316,6 @@ except HTTPFailure as e:
 
 [ComputerVisionClient][ref_computervisionclient] クライアントの操作中に、このサービスによって適用された[レート制限][computervision_request_units]によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン][azure_pattern_retry]」および「[サーキット ブレーカー パターン][azure_pattern_circuit_breaker]」を参照してください。
 
-### <a name="more-sample-code"></a>その他のサンプル コード
-
-Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジトリでいくつか公開されています。 これらのサンプルでは、Computer Vision の操作中によく発生する追加のシナリオのコード例を示しています。
-
-* [recognize_text][recognize-text]
-
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
@@ -329,7 +325,7 @@ Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジ�
 [pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org/downloads/
 
-[azure_cli]: https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create
+[azure_cli]: https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create
 [azure_pattern_circuit_breaker]: https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker
 [azure_pattern_retry]: https://docs.microsoft.com/azure/architecture/patterns/retry
 [azure_portal]: https://portal.azure.com
@@ -350,7 +346,7 @@ Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジ�
 [ref_httpfailure]: https://docs.microsoft.com/python/api/msrest/msrest.exceptions.httpoperationerror?view=azure-python
 
 
-[computervision_resource]: https://azure.microsoft.com/en-us/try/cognitive-services/?
+[computervision_resource]: https://azure.microsoft.com/try/cognitive-services/?
 
 [computervision_docs]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/home
 
@@ -364,8 +360,6 @@ Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジ�
 
 [ref_computervisionclient_describe_image]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
 
-[ref_computervisionclient_recognize_text]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
-
 [ref_computervisionclient_get_text_operation_result]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
 
 [ref_computervisionclient_generate_thumbnail]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
@@ -376,6 +370,3 @@ Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジ�
 [ref_computervision_model_textoperationstatuscodes]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.textoperationstatuscodes?view=azure-python
 
 [computervision_request_units]:https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/
-
-[recognize-text]:https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/vision/computer_vision_samples.py
-

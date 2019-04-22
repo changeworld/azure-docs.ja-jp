@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417512"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549490"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
@@ -121,6 +121,9 @@ App Service によって、アプリで使用するようにユーザーが構�
 * ログ ファイルはバックアップしない。
 
 部分バックアップでは、バックアップするファイルを詳細に選択できます。
+
+> [!NOTE]
+> バックアップ内の個々のデータベースは最大 4 GB となりますが、バックアップの合計最大サイズは 10 GB です。
 
 ### <a name="exclude-files-from-your-backup"></a>バックアップからファイルを除外する
 一度バックアップされており今後まったく変更されることがないログ ファイルや静止画像を含むアプリがあるとします。 このような場合には、将来のバックアップ時にそれらのフォルダーやファイルを保存しないように除外できます。 バックアップからファイルやフォルダーを除外するには、アプリの `D:\home\site\wwwroot`フォルダー内に `_backup.filter` ファイルを作成します。 このファイルに、除外するファイルやフォルダーの一覧を指定します。 

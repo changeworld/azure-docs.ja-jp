@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260393"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496303"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 そして、 詳細については、[ゲスト ユーザーのロールへの追加](add-guest-to-role.md)に関するページをご覧ください。
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B コラボレーションでは、B2B ユーザーの Azure ポータルへのアクセスを許可していますか。
-B2B コラボレーション ユーザーは、制限付き管理者または全体管理者のロールが割り当てられない限り、Azure ポータルにアクセスする必要はありません。 ただし、制限付き管理者または全体管理者のロールを割り当てられている B2B コラボレーション ユーザーはポータルにアクセスできます。 また、これらのいずれかの管理者ロールが割り当てられていないゲスト ユーザーがポータルにアクセスすると、ユーザーは、エクスペリエンスの特定の部分にアクセスできます。 ゲスト ユーザー ロールは、ディレクトリのアクセス許可の一部を持ちます。
+B2B コラボレーション ユーザーは、制限付き管理者のロールが割り当てられない限り、Azure portal にアクセスする必要はありません。 ただし、制限付き管理者のロールを割り当てられている B2B コラボレーション ユーザーは portal にアクセスできます。 また、これらのいずれかの管理者ロールが割り当てられていないゲスト ユーザーがポータルにアクセスすると、ユーザーは、エクスペリエンスの特定の部分にアクセスできます。 ゲスト ユーザー ロールは、ディレクトリのアクセス許可の一部を持ちます。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>ゲスト ユーザーに対して Azure Portal へのアクセスをブロックできますか。
 はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。

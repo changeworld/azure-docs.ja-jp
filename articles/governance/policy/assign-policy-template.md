@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 3b7ceb07fe874ebc012696f73c21d5c270cb3cee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268995"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524074"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -37,14 +37,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次のイメージを選択して、Azure portal にサインインし、テンプレートを開きます。
 
-   [![Dポリシーのテンプレートを Azure にデプロイする](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![ポリシーのテンプレートを Azure にデプロイする](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. 次の値を選択または入力します。
 
    | Name | 値 |
    |------|-------|
    | サブスクリプション | Azure サブスクリプションを選択します。 |
-   | リソース グループ | **[新規作成]** を選択し、名前を指定して、**[OK]** を選択します。 スクリーンショットでは、リソース グループ名は *mypolicyquickstart<Date in MMDD>rg* です。 |
+   | リソース グループ | **[新規作成]** を選択し、名前を指定して、**[OK]** を選択します。 スクリーンショットでは、リソース グループ名は *mypolicyquickstart\<MMDD 形式の日付>rg* です。 |
    | Location | リージョンを選択します。 たとえば **[米国中部]** です。 |
    | ポリシーの割り当て名 | ポリシーの割り当て名を指定します。 必要に応じて、ポリシー定義の表示を使用できます。 たとえば、"**マネージド ディスクを使用していない VM の監査**" などです。 |
    | Rg Name \(RG 名\) | ポリシーを割り当てるリソース グループ名を指定します。 このクイック スタートでは、既定値 **[resourceGroup().name]** を使用します。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** は、リソース グループを取得するテンプレート関数です。 |

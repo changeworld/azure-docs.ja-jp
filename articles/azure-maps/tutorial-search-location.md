@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d35c33a45f2ce23dabfba20bbd902c058e3033d3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 125e0c4331eea105ffc201bd1f5f26bdbec1c553
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540465"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549390"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -28,7 +28,7 @@ ms.locfileid: "58540465"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -81,11 +81,11 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -116,7 +116,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
    HTML ヘッダーに、Azure マップ コントロール ライブラリによってホストされる CSS および JavaScript のリソース ファイルが含まれることに注意してください。 ページ本体の `onload` イベントに注目してください。ページの本体が読み込まれると、このイベントによって `GetMap` 関数が呼び出されます。 `GetMap` 関数には、Azure Maps API にアクセスするためのインライン JavaScript コードが含まれます。
 
-3. 次の JavaScript コードを、HTML ファイルの `GetMap` 関数に追加します。 **\<Your Azure Maps Key\>** という文字列を、Maps アカウントからコピーした主キーに置き換えてください。
+3. 次の JavaScript コードを、HTML ファイルの `GetMap` 関数に追加します。 `<Your Azure Maps Key>` という文字列は、Maps アカウントからコピーした主キーに置き換えてください。
 
     ```JavaScript
     //Instantiate a map object
@@ -129,17 +129,17 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     });
     ```
 
-   このセグメントは、Azure Maps アカウント キーに対するマップ コントロール API を開始します。 **atlas** は、API および関連するビジュアル コンポーネントを含む名前空間です。 **atlas.Map** は、ビジュアルと対話型 Web マップに対するコントロールを提供します。
+   このセグメントは、Azure Maps アカウント キーに対するマップ コントロール API を開始します。 `atlas` は、API および関連するビジュアル コンポーネントを含む名前空間です。 `atlas.Map` は、ビジュアルと対話型 Web マップに対するコントロールを提供します。
 
-4. 変更をファイルに保存し、ブラウザーで HTML ページを開きます。 これは、**atlas.map** を呼び出し、アカウント キーを使用することで作成できる最も基本的なマップです。
+4. 変更をファイルに保存し、ブラウザーで HTML ページを開きます。 これは、アカウント キーを使用して `atlas.Map` を呼び出すことで作成できる、最も基本的なマップです。
 
    ![マップの表示](./media/tutorial-search-location/basic-map.png)
 
 5. `GetMap` 関数で、マップを初期化した後、次の JavaScript コードを追加します。
 
     ```JavaScript
-    //Wait until the map resources are loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -161,7 +161,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     });
     ```
 
-   このコード セグメントで、読み込みイベントがマップに追加されます。これは、マップ リソースが完全に読み込まれたときに発生します。 マップの読み込みイベントのハンドラーで、結果データを格納するためのデータ ソースを作成します。 記号レイヤーを作成し、データ ソースにアタッチします。 データ ソースに格納された結果データのレンダリング方法は、このレイヤーで指定します。ここでは、濃い青色の円形のピン アイコンが、結果座標上に中央揃えで、結果データと共に表示されます。また、このピン アイコン上には他のアイコンを重ねて表示することができます。 その結果のレイヤーがマップ レイヤーに追加されます。
+   このコード セグメントで、`ready` イベントがマップに追加されます。このイベントは、マップ リソースが読み込まれ、マップへのアクセスの準備ができたときに発生します。 マップの `ready` イベントのハンドラーに、結果データを格納するためのデータ ソースが作成されます。 記号レイヤーを作成し、データ ソースにアタッチします。 データ ソースに格納された結果データのレンダリング方法は、このレイヤーで指定します。ここでは、濃い青色の円形のピン アイコンが、結果座標上に中央揃えで、結果データと共に表示されます。また、このピン アイコン上には他のアイコンを重ねて表示することができます。 その結果のレイヤーがマップ レイヤーに追加されます。
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 ### <a name="service-module"></a>サービス モジュール
 
-1. マップの読み込みイベント ハンドラーに次の JavaScript コードを追加して、検索サービスの URL を構築します。
+1. マップの `ready` イベント ハンドラーに次の JavaScript コードを追加して、検索サービスの URL を構築します。
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -184,9 +184,9 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   **SubscriptionKeyCredential** は、Azure Maps に対してサブスクリプション キーで HTTP 要求を認証する **SubscriptionKeyCredentialPolicy** を作成します。 **atlas.service.MapsURL.newPipeline()** は、**SubscriptionKeyCredential** ポリシーを受け取って、[Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) のインスタンスを作成します。 **searchURL** は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
 
-2. 続けて次のスクリプト ブロックを追加して検索クエリを作成します。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、住所、場所、目的地 (POI) など、ほとんどのファジー入力を処理します。 このコードは、指定された緯度と経度の指定された半径内で、近くにあるガソリン スタンドを検索します。 その応答から **geojson.getFeatures()** メソッドを使用して GeoJSON のフィーチャー (地物) コレクションが抽出されます。そのコレクションがデータ ソースに追加されることにより、シンボル レイヤーを介してデータがマップ上に自動的にレンダリングされます。 スクリプトの最後の部分では、結果の境界ボックスとマップの [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用して、マップのカメラ ビューを設定しています。
+2. 続けて次のスクリプト ブロックを追加して検索クエリを作成します。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、住所、場所、目的地 (POI) など、ほとんどのファジー入力を処理します。 このコードは、指定された緯度と経度の指定された半径内で、近くにあるガソリン スタンドを検索します。 次に、`geojson.getFeatures()` メソッドを使用して応答から GeoJSON のフィーチャー コレクションが抽出されて、データ ソースに追加されます。それにより、シンボル レイヤーを介してマップ上でデータが自動的にレンダリングされます。 スクリプトの最後の部分では、結果の境界ボックスとマップの [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用して、マップのカメラ ビューを設定しています。
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -229,7 +229,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
 作成したマップでは、これまで検索結果の経度/緯度データだけを参照してきました。 しかし、Maps 検索サービスが返す生の JSON を参照すると、名前や番地など、各ガソリン スタンドに関する追加情報が含まれていることがわかります。 対話型のポップアップ ボックスで、そのデータをマップに組み込むことができます。
 
-1. マップの読み込みイベントのハンドラーに次のコード行を追加します。ファジー検索サービスを照会するコードの後に追加してください。 これにより、Popup のインスタンスが作成され、mouseover イベントが記号レイヤーに追加されます。
+1. マップの `ready` イベントのハンドラーに次のコード行を追加します。ファジー検索サービスを照会するコードの後に追加してください。 これにより、Popup のインスタンスが作成され、mouseover イベントが記号レイヤーに追加されます。
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,7 +239,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API **atlas.Popup** は、マップ上の目的の位置に固定された情報ウィンドウを提供します。 
+    API `sup` は、マップ上の目的の位置に固定された情報ウィンドウを提供します。 
 
 2. *script* タグの `GetMap` 関数に続けて、次のコードを追加します。これは、マウス オーバーした結果の情報をポップアップに表示するものです。
 
@@ -280,11 +280,11 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 > * マップ コントロール API を使って新しい Web ページを作成する
 > * Search Service を使って近くの目的地を検索する
 
-以下から、このチュートリアルのコード サンプルにアクセスできます。
+> [!div class="nextstepaction"]
+> [ソース コード全体を見る](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-> [Azure Maps での場所の検索](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-[こちらでライブ サンプルをご覧いただけます](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+> [!div class="nextstepaction"]
+> [ライブ サンプルを見る](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 次のチュートリアルでは、2 つの場所間のルートを表示する方法を示します。
 

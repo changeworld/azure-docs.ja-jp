@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77dadeda8bb270689530a34c3e36d33e439ea9e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180387"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616596"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -50,6 +50,10 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
 いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー _されません_。 ユーザーのサインイン エラーを回避するには、[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)向けにパススルー認証を構成する必要があります。
+
+## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>パスワード ハッシュ同期からパススルー認証に切り替えるとどうなりますか。
+
+Azure AD Connect を使用して、サインイン方法をパスワード ハッシュ同期からパススルー認証に切り替えると、パススルー認証がマネージド ドメイン内でのユーザーのプライマリ サインイン方法になります。 パスワード ハッシュ同期によって以前同期されていたすべてのユーザーのパスワード ハッシュは、Azure AD に格納されたままになることに注意してください。
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 

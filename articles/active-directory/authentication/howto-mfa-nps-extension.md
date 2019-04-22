@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470357"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564533"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -78,6 +78,12 @@ NPS サーバーは、ポート 80 および 443 を使って次の URL と通�
 
 * https://adnotifications.windowsazure.com  
 * https://login.microsoftonline.com
+
+さらに、[指定された PowerShell スクリプトを使用してアダプターの設定](#run-the-powershell-script)を行うには、次の URL への接続が必要です。
+
+- https://login.microsoftonline.com
+- https://provisioningapi.microsoftonline.com
+- https://aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -142,6 +148,14 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 1. Microsoft ダウンロード センターから [NPS 拡張機能をダウンロード](https://aka.ms/npsmfa)します。
 2. 構成するネットワーク ポリシー サーバーにバイナリをコピーします。
 3. *setup.exe* を実行してインストールの指示に従います。 エラーが発生した場合は、前提条件のセクションの 2 つのライブラリが正常にインストールされていることを再確認します。
+
+#### <a name="upgrade-the-nps-extension"></a>NPS 拡張機能のアップグレード
+
+既存の NPS 拡張機能のインストールをアップグレードするときは、基になるサーバーの再起動を回避するために、次の手順を行います。
+
+1. 既存のバージョンをアンインストールする
+1. 新しいインストーラーを実行する
+1. ネットワーク ポリシー サーバー (IAS) サービスを再起動する
 
 ### <a name="run-the-powershell-script"></a>PowerShell スクリプトの実行
 
@@ -231,7 +245,7 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-このコマンドを実行したら、C ドライブに移動して、このファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンし、サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
+このコマンドを実行したら、ご利用の C ドライブに移動して、そのファイルを見つけてダブルクリックします。 [詳細] に移動して、[サムプリント] までスクロール ダウンし、サーバーにインストールされている証明書のサムプリントとこれを比較します。 証明書のサムプリントが一致する必要があります。
 
 1 つ以上の証明書が返されている場合は、判読できる形式のタイムスタンプ Valid-From と Valid-Until を使用して、明らかに無関係な証明書を除外することができます。
 
@@ -270,7 +284,7 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 
 以前のコンピューター証明書が期限切れになり、新しい証明書が生成された場合は、期限切れの証明書をすべて削除する必要があります。 期限切れの証明書があると、NPS 拡張機能の起動で問題が生じる可能性があります。
 
-有効な証明書があるかどうかを確認するには、MMC を使用してローカル コンピューター アカウントの証明書ストアをチェックし、その証明書が有効期限を過ぎていないことを確認してください。 有効な証明書を新しく生成するには、「[PowerShell スクリプトの実行](#run-the-powershell-script)」セクションの手順を再度実行します。
+有効な証明書があるかどうかを確認するには、MMC を使用してローカル コンピューター アカウントの証明書ストアをチェックし、その証明書が有効期限を過ぎていないことを確認してください。 有効な証明書を新しく生成するには、「[PowerShell スクリプトの実行](#run-the-powershell-script)」セクションの手順を再度行います。
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL プロトコルと暗号スイートの管理
 

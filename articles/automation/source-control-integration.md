@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3b2df5b24a12f3d2ea5d8a03721c08f8d2a742ad
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539992"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607094"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -47,7 +47,7 @@ Automation アカウント内で、**[ソース管理]** を選択し、**[+ 追
 
 |プロパティ  |説明  |
 |---------|---------|
-|ソース管理名     | ソース管理のわかりやすい名前        |
+|ソース管理名     | ソース管理のためのフレンドリ名。 *この名前は、アルファベットと数字でのみ構成されている必要があります。*        |
 |ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
 |リポジトリ     | リポジトリまたはプロジェクトの名前。 最初の 200 個のリポジトリが返されます。 リポジトリを検索するには、フィールドに名前を入力して、**[Search on GitHub]\(GitHub で検索\)** をクリックします。|
 |[Branch]\(ブランチ\)     | ソース ファイルの抽出元のブランチ。 TFVC ソース管理の種類では、ブランチのターゲット設定は使用できません。          |

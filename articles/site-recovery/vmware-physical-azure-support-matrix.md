@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 4e5a785d219e1b776a1d512512d0a2a74532c550
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 94fd70dccf367d43b1caaa9f3a11ed934f9950ea
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282731"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618058"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -21,16 +21,16 @@ ms.locfileid: "59282731"
 
 最も簡単なデプロイ シナリオで Azure Site Recovery の使用を開始するには、こちらの[チュートリアル](tutorial-prepare-azure.md)を参照してください。 Azure Site Recovery アーキテクチャの詳細については、[こちら](vmware-azure-architecture.md)をご覧ください。
 
-## <a name="replication-scenario"></a>レプリケーション シナリオ
+## <a name="deployment-scenario"></a>デプロイ シナリオ
 
 **シナリオ** | **詳細**
 --- | ---
-VMware VM | オンプレミス VMware VM の Azure へのレプリケーション。 このシナリオは、Azure portal または [PowerShell](vmware-azure-disaster-recovery-powershell.md) を使用してデプロイできます。
-物理サーバー | オンプレミスの Windows または Linux の物理サーバーから Azure へのレプリケーション。 このシナリオは、Azure Portal で展開できます。
+VMware VM のディザスター リカバリー | オンプレミス VMware VM の Azure へのレプリケーション。 このシナリオは、Azure portal または [PowerShell](vmware-azure-disaster-recovery-powershell.md) を使用してデプロイできます。
+物理サーバーのディザスター リカバリー | オンプレミスの Windows または Linux の物理サーバーから Azure へのレプリケーション。 このシナリオは、Azure Portal で展開できます。
 
 ## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
-**サーバー** | **必要条件** | **詳細**
+**サーバー** | **要件** | **詳細**
 --- | --- | ---
 VMware | vCenter Server 6.7、6.5、6.0、5.5、または vSphere 6.7、6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。<br/><br/> vSphere ホストと vCenter サーバーはプロセス サーバーと同じネットワーク内に存在することが推奨されます。 既定では、プロセス サーバー コンポーネントは構成サーバーで実行されるため、専用のプロセス サーバーを設定していなければ、これがその中に構成サーバーを設定するネットワークになります。
 物理 | 該当なし
@@ -39,7 +39,7 @@ VMware | vCenter Server 6.7、6.5、6.0、5.5、または vSphere 6.7、6.5、6.
 
 構成サーバーはオンプレミスのマシンで、構成サーバー、プロセス サーバー、マスター ターゲット サーバーを含む Site Recovery のコンポーネントを実行します。 VMware のレプリケーションの場合は、VMware VM を作成する OVF テンプレートを使用して、すべての要件を含む構成サーバーを設定します。 物理サーバーのレプリケーションの場合は、構成サーバーのマシンを手動で設定します。
 
-**コンポーネント** | **必要条件**
+**コンポーネント** | **要件**
 --- |---
 CPU コア数 | 8
 RAM | 16 GB
@@ -54,7 +54,7 @@ Windows Server の役割 | 以下は有効にしません: <br/> - Active Direct
 IIS | 以下を実行します。<br/><br/> - 既定の Web サイトが事前に存在しないようにする <br/> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br/> - ポート 443 でリッスンしている既存の Web サイト/アプリがないようにする<br/>
 NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合)
 IP アドレスの種類 | 静的
-ポート | コントロール チャネルのオーケストレーションに使用される 443<br/>データ転送に使用される 9443
+Port | コントロール チャネルのオーケストレーションに使用される 443<br/>データ転送に使用される 9443
 
 ## <a name="replicated-machines"></a>レプリケートされるマシン
 
@@ -96,9 +96,9 @@ Debian 8 | [9.20][9.20 UR]、[9.21][9.21 UR]、[9.22][9.22 UR]、[9.23][9.23 UR]
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 のサポートされるカーネルのバージョン
 
-**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.23][9.23 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.79-default |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.23][9.23 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.79-default</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.22][9.22 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.21][9.21 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.156-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.20][9.20 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.156-94.64-default |
@@ -120,7 +120,7 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー 
 
 ## <a name="vmdisk-management"></a>VM/ディスク管理
 
-**Action** | **詳細**
+**アクション** | **詳細**
 --- | ---
 レプリケートされた VM のディスク サイズの変更 | サポートされています。
 レプリケートされた VM のディスクの追加 | VM のレプリケーションを無効にし、ディスクを追加してから、レプリケーションを再び有効にします。 レプリケート VM へのディスクの追加は現在サポートされていません。
@@ -167,7 +167,6 @@ Docker ディスク構成 | いいえ
 ホスト マルチパス (MPIO) | はい - テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 ホストの仮想ボリューム (VVols) | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ゲスト/サーバー VMDK | はい
-ゲスト/サーバー EFI/UEFI| 一部 (Windows Server 2012 以降の Azure への移行) <br/><br/> この表の下部の注意事項をご覧ください
 ゲスト/サーバー共有クラスター ディスク | いいえ 
 ゲスト/サーバー暗号化ディスク | いいえ 
 ゲスト/サーバー NFS | いいえ 
@@ -181,14 +180,8 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ 
 ゲスト/サーバー - ディスクの除外 | はい
 ゲスト/サーバー マルチパス (MPIO) | いいえ 
+ゲスト/サーバー EFI/UEFI ブート | Windows Server 2012 以降を実行している VMware VM または物理サーバーを Azure に移行する場合にサポートされます。<br/><br/> VM は移行の場合にのみレプリケートできます。 オンプレミスへのフェールバックはサポートされていません。<br/><br/> サーバーには、OS ディスクに 4 個を超えるパーティションを持たせないでください。<br/><br/> バージョン 9.13 以降のモビリティ サービスが必要です。<br/><br/> NTFS のみがサポートされます。
 
-> [!NOTE]
-> Windows Server 2012 以降を実行する VMware 仮想マシンの UEFI ブートは、Azure に移行できます。 次の制限事項が適用されます。
->
-> - Azure への移行のみがサポートされています。 オンプレミスの VMware サイトへのフェールバックはサポートされていません。
-> - サーバーには、OS ディスクに 4 個を超えるパーティションを持たせないでください。
-> - NTFS のみがサポートされます。
-> - バージョン 9.13 以降のモビリティ サービスが必要です。
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -219,7 +212,7 @@ Premium Storage | はい
 
 Azure にレプリケートするオンプレミス VM は、この表にまとめられている Azure VM の要件を満たしている必要があります。 Site Recovery が前提条件確認を実行するとき、満たされていない要件がある場合には確認が失敗します。
 
-**コンポーネント** | **必要条件** | **詳細**
+**コンポーネント** | **要件** | **詳細**
 --- | --- | ---
 ゲスト オペレーティング システム | レプリケートするマシンの[サポート対象のオペレーティング システム](#replicated-machines)を確認します。 | サポートされていない場合、確認は失敗します。
 ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。
@@ -256,7 +249,7 @@ VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/�
 
 ## <a name="vault-tasks"></a>資格情報コンテナーのタスク
 
-**Action** | **サポートされています**
+**アクション** | **サポートされています**
 --- | ---
 リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 

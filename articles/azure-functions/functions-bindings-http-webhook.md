@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: c92bb8e7441e9701d11f3223fa6ebde7869d6233
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a1d66cf4506e3b8f58572576db908812f4e2be07
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895729"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490412"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -117,6 +117,8 @@ public static async Task<IActionResult> Run(
 `HttpRequest` にバインドする C# スクリプト コードを次に示します。
 
 ```cs
+#r "Newtonsoft.Json"
+
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -330,9 +332,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 ### <a name="trigger---java-examples"></a>トリガー - Java の例
 
 * [クエリ文字列からのパラメーターの読み取り](#read-parameter-from-the-query-string-java)
-* [Post 要求からの本文の読み取り](#read-body-from-a-post-request-java)
+* [POST 要求からの本文の読み取り](#read-body-from-a-post-request-java)
 * [ルートからのパラメーターの読み取り](#read-parameter-from-a-route-java)
-* [Post 要求からの POJO 本文の読み取り](#read-pojo-body-from-a-post-request-java)
+* [POST 要求からの POJO 本文の読み取り](#read-pojo-body-from-a-post-request-java)
 
 次の例は、*function.json* ファイルの HTTP トリガー バインドと、そのバインドを使用する個別の [Java 関数](functions-reference-java.md)を示しています。 
 
@@ -561,9 +563,9 @@ public static Task<IActionResult> Run(
 | **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
 | **name** | 該当なし| 必須 - 要求または要求本文の関数コードで使用される変数名。 |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |関数を呼び出すために、要求にどのキーが存在する必要があるかを決定します。 承認レベルは、次のいずれかの値になります。 <ul><li><code>anonymous</code>&mdash;API キーは必要ありません。</li><li><code>function</code>&mdash;関数固有の API キーが必要です。 何も指定されなかった場合は、これが既定値になります。</li><li><code>admin</code>&mdash;マスター キーが必要です。</li></ul> 詳しくは、[承認キー](#authorization-keys)に関するセクションをご覧ください。 |
-| **methods** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
-| **route** | **Route** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
-| **webHookType** | **WebHookType** | _バージョン 1.x ランタイムでのみサポートされます。_<br/><br/>指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に応答します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に応答します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
+| **メソッド** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
+| **ルート** | **ルート** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
+| **webHookType** | **WebHookType** | _バージョン 1.x ランタイムでのみサポートされます。_<br/><br/>指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に対応します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に対応します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
@@ -790,7 +792,7 @@ HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場�
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインドには、HTTP トリガーが必要です。このバインドを使用すると、トリガーの要求に関連付けられている応答をカスタマイズすることができます。 HTTP 出力バインドが提供されていない場合、HTTP トリガーは、Functions 1.x では HTTP 200 OK と空の本文を返し、Functions 2.x では HTTP 204 No Content と空の本文を返します。
 

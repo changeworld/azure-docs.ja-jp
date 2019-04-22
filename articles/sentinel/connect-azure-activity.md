@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Azure アクティビティ データを収集する | Microsoft Docs
-description: Azure Sentinel で Azure アクティビティ データを収集する方法を説明します。
+title: Azure Sentinel Preview に Azure アクティビティ データを接続する | Microsoft Docs
+description: Azure Sentinel に Azure アクティビティ データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 42ce8d06489cfacf7ba9bb3de1425224b5df95e7
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d0cc13227bfe02594a57a7fb0ba8ee1cb3383d56
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240577"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494680"
 ---
-# <a name="collect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを収集する
+# <a name="connect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -37,7 +37,7 @@ ms.locfileid: "57240577"
 
 ## <a name="connect-to-azure-activity-log"></a>Azure アクティビティ ログに接続する
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Azure アクティビティ ログ]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure アクティビティ ログ]** タイルをクリックします。
 
 2. [Azure アクティビティ ログ] ウィンドウで、Azure Sentinel にストリーミングするサブスクリプションを選択します。 
 
@@ -50,5 +50,5 @@ ms.locfileid: "57240577"
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure アクティビティ ログを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法を確認します。
-- [Azure Sentinel を使用した驚異の検出](tutorial-detect-threats.md)を開始します。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

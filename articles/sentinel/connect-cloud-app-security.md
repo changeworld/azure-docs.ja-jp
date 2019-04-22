@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Cloud App Security データを収集する | Microsoft Docs
-description: Azure Sentinel で Cloud App Security データを収集する方法について説明します。
+title: Azure Sentinel Preview に Cloud App Security データを接続する | Microsoft Docs
+description: Azure Sentinel に Cloud App Security データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b0033f5f8636053f88825541b8b2cfcbf2fc9f8b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a7dfeed7b52453b38720c21c7d213679b8d2854
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245490"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496371"
 ---
-# <a name="collect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを収集する 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -39,7 +39,7 @@ Cloud App Security が既にある場合は、[ネットワークで有効](http
 Cloud App Security がデプロイされていてデータを取り込んでいる場合は、アラート データを Azure Sentinel に簡単にストリーミングすることができます。
 
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Cloud App Security]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Cloud App Security]** タイルをクリックします。
 
 2. **[接続]** をクリックします。
 

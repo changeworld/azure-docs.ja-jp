@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Azure Information Protection のデータを収集する | Microsoft Docs
-description: Azure Sentinel で Azure Information Protection のデータを収集する方法について説明します。
+title: Azure Sentinel Preview に Azure Information Protection データを接続する | Microsoft Docs
+description: Azure Sentinel で Azure Information Protection データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c5866d3096823f91a70b28c7c5dd1790e1b3bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537169"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489830"
 ---
-# <a name="collect-data-from-azure-information-protection"></a>Azure Information Protection からのデータの収集
+# <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -41,7 +41,7 @@ Azure Information Protection が既にある場合は、[ネットワークで�
 Azure Information Protection がデプロイされ、データを取得している場合は、アラート データを Azure Sentinel に簡単にストリーミングできます。
 
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Azure Information Protection]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure Information Protection]** タイルをクリックします。
 
 2. [Azure Information Protection ポータル](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade)に移動します。 
 
@@ -58,5 +58,5 @@ Azure Information Protection がデプロイされ、データを取得してい
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Information Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化する](quickstart-get-visibility.md)方法を確認する。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)を開始する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

@@ -8,23 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 0d40bfa3a4215b671fcd01402a2cbceaea0cd75d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0214fbbe1ecc0d0b6b20b740ec898f24cf5b58ec
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536285"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571296"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
-すべての IoT ソリューションは異なるので、Azure IoT Hub には価格とスケールに基づいて複数のオプションが用意されています。 この記事は、IoT Hub のニーズを評価するときに役立ちます。 IoT Hub の各レベルの価格については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub)」をご覧ください。 
+すべての IoT ソリューションは異なるので、Azure IoT Hub には価格とスケールに基づいて複数のオプションが用意されています。 この記事は、IoT Hub のニーズを評価するときに役立ちます。 IoT Hub の各レベルの価格については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub)」をご覧ください。
 
 ソリューションに適した IoT Hub のレベルを決定するには、次の 2 つの質問に答えてください。
 
 **どのような機能を使う予定か?**
+
 Azure IoT Hub には Basic と Standard の 2 つのレベルがあり、サポートする機能の数が異なります。 IoT ソリューションが主にデバイスからデータを収集して集中的に分析するものである場合は、おそらく Basic レベルが適しています。 さらに高度な構成を使って、IoT デバイスをリモート制御したり、ワークロードの一部をデバイス自体に分散させたりしたい場合は、Standard レベルを検討する必要があります。 各レベルに含まれる機能について詳しくは、後の「[Basic レベルと Standard レベル](#basic-and-standard-tiers)」をご覧ください。
 
 **移動するデータの 1 日当たりの量はどれくらいか?**
+
 各 IoT Hub レベルは、1 日に処理できるデータ スループットの量に基づいて、3 つのサイズで利用できます。 これらのサイズは、1、2、3 という数字で示されます。 たとえば、レベル 1 の IoT Hub の各ユニットは 1 日に 40 万件のメッセージを処理できるのに対し、レベル 3 のユニットは 3 億件を処理できます。 データのガイドラインについて詳しくは、後の「[メッセージのスループット](#message-throughput)」をご覧ください。
 
 ## <a name="basic-and-standard-tiers"></a>Basic レベルと Standard レベル
@@ -46,15 +48,13 @@ IoT Hub の Standard レベルではすべての機能が有効になり、双�
 | [デバイス ストリーム (プレビュー)](iot-hub-device-streams-overview.md) |   | はい |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | はい |
 
-IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。 
-
+IoT Hub では、テストおよび評価のための Free レベルも提供されています。 Free レベルは、機能的には Standard レベルと同じですが、メッセージングの許容量が限られます。 Free レベルから Basic レベルまたは Standard レベルにアップグレードすることはできません。
 
 ## <a name="partitions"></a>パーティション
 
-Azure IoT Hub には、[パーティション](../event-hubs/event-hubs-features.md#partitions)を含む [Azure Event Hubs](../event-hubs/event-hubs-features.md) の多数のコア コンポーネントが含まれています。 IoT Hubs のイベント ストリームには、通常はさまざまな IoT デバイスによって報告される受信テレメトリ データが入力されます。 イベント ストリームに対する読み取りと書き込みが同時に行われるときに発生する競合を削減するために、イベント ストリームのパーティション分割が使用されます。 
+Azure IoT Hub には、[パーティション](../event-hubs/event-hubs-features.md#partitions)を含む [Azure Event Hubs](../event-hubs/event-hubs-features.md) の多数のコア コンポーネントが含まれています。 IoT Hubs のイベント ストリームには、通常はさまざまな IoT デバイスによって報告される受信テレメトリ データが入力されます。 イベント ストリームに対する読み取りと書き込みが同時に行われるときに発生する競合を削減するために、イベント ストリームのパーティション分割が使用されます。
 
 パーティション数の制限は IoT Hub の作成時に選択され、変更することはできません。 Basic レベルの IoT Hub と Standard レベルの IoT Hub のパーティションの上限は 32 個であることにご注意ください。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 パーティション数を決定する方法の詳細については、Event Hubs の FAQ ([パーティションはいくつ必要ですか](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)) を参照してください。
-
 
 ## <a name="tier-upgrade"></a>レベルのアップグレード
 
@@ -62,10 +62,9 @@ IoT Hub の作成後に、既存の操作を中断することなく、Basic レ
 
 Basic レベルから Standard レベルに移行しても、パーティション構成は変わりません。
 
-
 ## <a name="iot-hub-rest-apis"></a>IoT Hub の REST API
 
-IoT Hub の Basic レベルと Standard レベルでサポートされる機能が違うことは、一部の API 呼び出しが Basic レベルのハブでは動作しないことを意味します。 次の表では、利用できる API を示します。 
+IoT Hub の Basic レベルと Standard レベルでサポートされる機能が違うことは、一部の API 呼び出しが Basic レベルのハブでは動作しないことを意味します。 次の表では、利用できる API を示します。
 
 | API | Basic レベル | Free または Standard レベル |
 | --- | ---------- | ------------- |
@@ -116,26 +115,24 @@ IoT Hub ソリューションのサイズを設定する方法として最適な
 | B2、S2 |ユニットあたり最大 16 MB/分<br/>(22.8 GB/日/ユニット) |ユニットあたり平均 4,167 メッセージ/分<br/>(ユニットあたり 600 万メッセージ/日) |
 | B3、S3 |ユニットあたり最大 814 MB/分<br/>(1144.4 GB/日/ユニット) |ユニットあたり平均 208,333 メッセージ/分<br/>(ユニットあたり 3 億件のメッセージ/日) |
 
-このスループット情報に加え、[IoT Hub のクォータとスロットル][IoT Hub quotas and throttles]に関するページを参照して、適切にソリューションを設計してください。
+このスループット情報に加え、「 [IoT Hub のクォータとスロットル](iot-hub-devguide-quotas-throttling.md) に関するページを参照して、適切にソリューションを設計してください。
 
 ### <a name="identity-registry-operation-throughput"></a>ID レジストリ操作のスループット
+
 IoT Hub の ID レジストリの操作は、ほとんどがデバイス プロビジョニングに関連しているため、ランタイム操作にはなりません。
 
-特定のバースト パフォーマンスの数値については、[IoT Hub のクォータと調整][IoT Hub quotas and throttles]に関するページを参照してください。
+特定のバースト パフォーマンスの数値については、 [IoT Hub のクォータとスロットル](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。
 
 ## <a name="auto-scale"></a>自動スケール
+
 お使いの IoT Hub で許可されているメッセージ上限に到達しそうな場合、[自動スケーリングの手順](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)を使用して、同じ IoT Hub レベルにある IoT Hub ユニットを増分します。
 
 ## <a name="sharding"></a>シャーディング
+
 1 つの IoT Hub を数百万のデバイスに拡張できますが、使用しているソリューションに、1 つの IoT Hub では保証できない特定のパフォーマンス特性が必要になる場合があります。 その場合は、複数の IoT ハブにデバイスをパーティション分割できます。 複数の IoT hub は、トラフィックの急増を抑え、必要なスループットまたは必要とされる操作の速度を取得します。
 
 ## <a name="next-steps"></a>次の手順
 
-* IoT Hub の機能とパフォーマンスについて詳しくは、「[IoT Hub の価格][lnk-pricing]」または「[IoT Hub のクォータと調整][IoT Hub quotas and throttles]」をご覧ください。
+* IoT Hub の機能とパフォーマンスの詳細については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub)」または「[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)」を参照してください。
+
 * IoT Hub のレベルを変更する方法については、「[IoT Hub のアップグレード方法](iot-hub-upgrade.md)」をご覧ください。
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

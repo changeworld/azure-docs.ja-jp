@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370569"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526274"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault の管理対象ストレージ アカウント - CLI
 
@@ -109,7 +109,7 @@ Key Vault を使用して SAS (Shared Access Signature) トークンを生成す
 上記の手順を完了すると、以下のコマンドを実行して Key Vault で SAS トークンを生成できます。 
 
 以下の手順で行われる処理は次のとおりです。
-- コンテナー "<VaultName>" 内の Key Vault マネージド ストレージ アカウント "<YourStorageAccountName>" に "<YourSASDefinitionName>" という名前のアカウントの SAS 定義を設定します。 
+- ご自分のコンテナーの中にある `<VaultName>`KeyVault マネージド ストレージ アカウント`<YourStorageAccountName>` に `<YourSASDefinitionName>` という名前のアカウント SAS 定義を設定します。 
 - サービス、コンテナー、オブジェクトの各リソースの種類に対して、BLOB、ファイル、テーブル、キューの各サービス用のアカウントの SAS トークンを作成します。すべてのアクセス許可を付与し、https を使用し、開始日と終了日を指定します。
 - Key Vault マネージド ストレージの SAS 定義をコンテナーに設定します。上記で作成した SAS トークンをテンプレート URI として指定し、SAS の種類は "account" にして、有効期間は N 日にします。
 - SAS 定義に対応する KeyVault シークレットから実際のアクセス トークンを取得します。

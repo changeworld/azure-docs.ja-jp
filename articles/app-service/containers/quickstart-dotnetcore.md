@@ -5,7 +5,7 @@ keywords: Azure App Service, Web アプリ, .NET, コア, Linux, OSS
 services: app-service
 documentationCenter: ''
 author: cephalin
-manager: syntaxc4
+manager: jeconnoc
 editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: linux
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/11/2018
-ms.author: cfowler
+ms.date: 03/27/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43016b3c31a0371f953f758bc7afb53bd1508495
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278515"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543895"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>App Service on Linux で ASP.NET Core アプリを作成する
 
@@ -41,8 +41,8 @@ ms.locfileid: "59278515"
 
 このクイック スタートを完了するには、以下が必要です。
 
-* <a href="https://git-scm.com/" target="_blank">Git のインストール</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core のインストール</a>
+* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core をインストールする</a>
 
 ## <a name="create-the-app-locally"></a>アプリをローカルで作成する
 
@@ -188,4 +188,7 @@ git push azure master
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure App Service on Linux での .NET Core および SQL Database のアプリの作成](tutorial-dotnetcore-sqldb-app.md)
+> [チュートリアル:ASP.NET Core アプリと SQL Database](tutorial-dotnetcore-sqldb-app.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core アプリの構成](configure-language-dotnetcore.md)

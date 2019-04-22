@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 2/6/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43123e77a5c1cfb37f51c472420d3d7f2d440c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173370"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490913"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
-グローバル管理者、またはいずれかの制限付き管理者ディレクトリ ロールを割り当てられたユーザーとして、Azure Portal を使用して B2B コラボレーション ユーザーを招待できます。 ゲスト ユーザーをディレクトリ、グループ、またはアプリケーションに招待できます。 これらのメソッドを使用してユーザーを招待すると、招待されたユーザーのアカウントが、"*ゲスト*" というユーザー タイプで Azure Active Directory (Azure AD) に追加されます。 次に、ゲスト ユーザーは、招待に応じてリソースにアクセスします。
+制限付き管理者ディレクトリ ロールのいずれかを割り当てられたユーザーとして、Azure portal を使用して B2B コラボレーション ユーザーを招待できます。 ゲスト ユーザーをディレクトリ、グループ、またはアプリケーションに招待できます。 これらのメソッドを使用してユーザーを招待すると、招待されたユーザーのアカウントが、"*ゲスト*" というユーザー タイプで Azure Active Directory (Azure AD) に追加されます。 次に、ゲスト ユーザーは、招待に応じてリソースにアクセスします。
 
 ゲスト ユーザーをディレクトリに追加すると、共有アプリへの直接リンクをゲスト ユーザーに送信するか、ゲスト ユーザーが招待メール内の引き換えの URL をクリックできます。 引き換えプロセスの詳細については、[B2B コラボレーションの招待の利用](redemption-experience.md)に関するページを参照してください。
 
@@ -31,7 +31,7 @@ ms.locfileid: "56173370"
 
 B2B コラボレーション ユーザーをディレクトリに追加するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
+1. 制限付き管理者ディレクトリ ロールのいずれかが割り当てられたユーザーとして、[Azure portal](https://portal.azure.com) にサインインします。
 2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
 3. **[管理]** にある **[ユーザー]** を選択します。
 4. **[新しいゲスト ユーザー]** を選択します。

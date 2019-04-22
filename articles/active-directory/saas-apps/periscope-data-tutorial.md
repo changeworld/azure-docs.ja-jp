@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 593948c9646304da73fd25e4975e65fa71aed6e2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 878d9b40172313ac6c3d816cbf0da6aba5e18542
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275540"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>チュートリアル:Azure Active Directory と Periscope Data の統合
 
@@ -111,7 +111,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
     | `https://app.periscopedata.com/` |
     | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://app.periscopedata.com/<SITENAME>/sso`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新してください。 この値を取得するには、[Periscope Data クライアント サポート チーム](mailto:support@periscopedata.com)にお問い合わせください。識別子の値は、このチュートリアルで後ほど説明する「**Periscope Data のシングル サインオンの構成**」セクションで取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -136,7 +136,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
     d. **SingleLogoutService** タグを見つけて、**Location** 値を **[SLO URL]\(SLO の URL\)** ボックスに貼り付けます。
 
-    e. インスタンスの **[Identifier]\(識別子\)** をコピーして、Azure portal の  **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
+    e. インスタンスの **[Identifier]\(識別子\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
 
     f. XML ファイルの最初のタグを見つけて、**entityID** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
 
@@ -203,7 +203,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
 Azure AD ユーザーが Periscope Data にログインできるようにするには、ユーザーを Periscope Data にプロビジョニングする必要があります。 Periscope Data では、プロビジョニングは手動のタスクです。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. Periscope Data に管理者としてログインします。
 

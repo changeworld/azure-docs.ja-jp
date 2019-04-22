@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102671"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524516"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "58102671"
 
 この例では、アプリケーションの展開でパラメーターを使って構成値をオーバーライドします。
 
-1. サービス プロジェクト内の *<MyService>\PackageRoot\Config\Settings.xml* ファイルを開きます。
+1. サービス プロジェクト内の *\<MyService>\PackageRoot\Config\Settings.xml* ファイルを開きます。
 1. 次の XML を追加して、構成パラメーターの名前と値を設定します (たとえば、キャッシュ サイズ = 25)。
 
    ```xml
@@ -37,7 +37,7 @@ ms.locfileid: "58102671"
    ```
 
 1. ファイルを保存して閉じます。
-1. *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* ファイルを開きます。
+1. *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* ファイルを開きます。
 1. ApplicationManifest.xml ファイルで、`Parameters` 要素にパラメーターと既定値を宣言します。  パラメーター名にはサービスの名前 (たとえば "MyService") を含めることをお勧めします。
 
    ```xml

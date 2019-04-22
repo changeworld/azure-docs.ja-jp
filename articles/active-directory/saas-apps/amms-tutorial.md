@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e91f51de53b920d1a130c3983489a08b7f1f6cfd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 798245dc293ecac01fb874fc57b98b14d258f686
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283833"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564885"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amms"></a>チュートリアル:Azure Active Directory と AMMS の統合
 
@@ -106,9 +106,9 @@ AMMS で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[AMMS ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.microwestcloud.com/amms/pages/login.aspx`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.microwestcloud.com/amms/pages/login.aspx`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `<SUBDOMAIN>.microwestcloud.com/amms`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<SUBDOMAIN>.microwestcloud.com/amms`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[AMMS クライアント サポート チーム](mailto:techsupport@microwestsoftware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -183,9 +183,9 @@ AMMS で Azure AD シングル サインオンを構成するには、次の手�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [ SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

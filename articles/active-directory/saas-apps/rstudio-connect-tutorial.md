@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ee8c94b216b9e4e0699e70819e3eb775d62234
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d4bda20d9ce06f756913e6dfb3e980399ac7e0a6
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283873"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>チュートリアル:Azure Active Directory と RStudio Connect の統合
 
@@ -108,9 +108,9 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
 
     ![[RStudio Connect のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://connect.<example>.com/__login__/saml`
+    a. **[識別子]** ボックスに、`https://connect.<example>.com/__login__/saml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://connect.<example>.com/__login__/saml/acs`
+    b. **[応答 URL]** ボックスに、`https://connect.<example>.com/__login__/saml/acs` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -195,9 +195,9 @@ RStudio Connect で Azure AD シングル サインオンを構成するには�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [ SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

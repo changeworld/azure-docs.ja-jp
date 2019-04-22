@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c5c103fcb7f80533f6f34cb51fd661364d77d6ef
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477728"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549028"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB の IP ファイアウォール
 
@@ -19,7 +19,7 @@ ms.locfileid: "55477728"
 
 ## <a id="ip-access-control-overview"></a>IP アクセス制御の概要
 
-既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。
+既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。 データ エクスプローラーを使用する場合は、Azure portal にアカウントへのアクセスを許可するだけでなく、ファイアウォール規則に現在の IP アドレスを追加するようファイアウォール設定を更新する必要もあります。 ファイアウォールの変更が反映されるまでに最大 15 分かかる場合があります。 
 
 IP ベースのファイアウォールと、サブネットおよび VNET のアクセス制御を組み合わせることができます。 これらを組み合わせることで、パブリック IP を保持する任意のソースへのアクセスや、VNET 内の特定のサブネットからのアクセスを制限できます。 サブネットおよび VNET ベースのアクセス制御に関する詳細については、[仮想ネットワークから Azure Cosmos DB リソースへのアクセス](vnet-service-endpoint.md)に関するページを参照してください。
 

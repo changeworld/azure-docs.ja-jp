@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Azure AD データを収集する | Microsoft Docs
-description: Azure Sentinel で Azure Active Directory データを収集する方法を説明します。
+title: Azure Sentinel Preview に Azure AD データを接続する | Microsoft Docs
+description: Azure Sentinel に Azure Active Directory データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f29ae9a8fcaecfc345efae02084f31d133e67b5d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575132"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494886"
 ---
-# <a name="collect-data-from-azure-active-directory"></a>Azure Active Directory からのデータの収集
+# <a name="connect-data-from-azure-active-directory"></a>Azure Active Directory からデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -38,7 +38,7 @@ Azure Sentinel では、[Azure Active Directory](../active-directory/fundamental
 
 ## <a name="connect-to-azure-ad"></a>Azure への接続
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Azure Active Directory]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure Active Directory]** タイルをクリックします。
 
 2. Azure Sentinel にストリーミングするログの隣の **[接続する]** をクリックします。
 
@@ -50,4 +50,4 @@ Azure Sentinel では、[Azure Active Directory](../active-directory/fundamental
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure AD を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md) を開始する。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

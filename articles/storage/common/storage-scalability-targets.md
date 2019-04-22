@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267703"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521752"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット
 
@@ -58,13 +58,13 @@ Premium ファイルについては、ストレージ アカウント、共有�
 
 |領域  |ターゲット  |
 |---------|---------|
-|最小サイズ                        |100 GiB      |
-|最大サイズ                        |100 TiB      |
+|プロビジョニングされた最小サイズ                        |100 GiB      |
+|プロビジョニングされた最大サイズ                        |100 TiB      |
 |最小サイズ増減    |1 GiB      |
 |ベースライン IOPS    |GiB あたり 1 IOPS (最大 100,000)|
 |IOPS バースト    |GiB あたり 3x IOPS (最大 100,000)|
-|最小帯域幅                     |100        |
-|帯域幅 |GiB あたり 0.1 MB/秒 (最大 5 GiB/秒)     |
+|エグレス レート         |60 MiB/s + 0.06 * プロビジョニング済み GiB        |
+|イングレス レート| 40 MiB/s + 0.04 * プロビジョニング済み GiB |
 |スナップショットの最大数        |200       |
 
 #### <a name="premium-file-limits"></a>Premium ファイルの制限
@@ -91,7 +91,7 @@ Azure File Sync は使用量無制限を目標に設計されていますが、�
 
 ## <a name="see-also"></a>関連項目
 
-- [Storage の価格の詳細](https://azure.microsoft.com/pricing/details/storage/)
+- [Storage の料金詳細](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)
-- [Azure Storage レプリケーション](../storage-redundancy.md)
+- [Azure Storage のレプリケーション](../storage-redundancy.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage-performance-checklist.md)

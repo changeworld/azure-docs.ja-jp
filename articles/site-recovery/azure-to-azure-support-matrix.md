@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905003"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609406"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
@@ -24,7 +24,7 @@ ms.locfileid: "58905003"
 
 **Deployment** |  **サポート**
 --- | ---
-**Azure ポータル** | サポートされています。
+**Azure Portal** | サポートされています。
 **PowerShell** | サポートされています。 [詳細情報](azure-to-azure-powershell.md)
 **REST API** | サポートされています。
 **CLI** | 現在、サポートされていません
@@ -32,7 +32,7 @@ ms.locfileid: "58905003"
 
 ## <a name="resource-support"></a>リソースのサポート
 
-**Resource action** | **詳細**
+**リソースのアクション** | **詳細**
 --- | --- | ---
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> VM のレプリケート後に VM や関連コンポーネント (ストレージやネットワークなど) を移動する場合は、その VM のレプリケーションを無効にしてから、再度有効にする必要があります。
@@ -45,9 +45,9 @@ ms.locfileid: "58905003"
 同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして、復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。
 
 
-**地理クラスター** | **Azure Azure リージョン**
+**地理クラスター** | **Azure リージョン**
 -- | --
-アメリカ合衆国 | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
+アメリカ | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
 ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ、フランス中部、フランス南部
 アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部
 オーストラリア   | オーストラリア東部、オーストラリア南東部、オーストラリア中部、オーストラリア中部 2
@@ -69,7 +69,7 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 
 この表は、レプリケーション中に Site Recovery によって使用されるキャッシュ ストレージ アカウントのサポートをまとめたものです。
 
-**Setting** | **サポート** | **詳細**
+**設定** | **サポート** | **詳細**
 --- | --- | ---
 汎用目的 V2 ストレージ アカウント (ホット層とクール層) | サポートされていません。 | V2 のトランザクション コストは V1 ストレージ アカウントより大幅に多いため、キャッシュ ストレージに制限があります。
 仮想ネットワークの Azure Storage ファイアウォール  | サポートされています | ファイアウォールが有効なキャッシュ ストレージ アカウントまたはターゲット ストレージ アカウントを使用している場合は必ず、['信頼できる Microsoft サービスを許可'](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) してください。
@@ -79,7 +79,7 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 
 Site Recovery は、このセクションに示したオペレーティング システムを実行する Azure VM のレプリケーションをサポートしています。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 **オペレーティング システム** | **詳細**
 --- | ---
@@ -99,7 +99,7 @@ Ubuntu 14.04 LTS Server | [サポートされるカーネル バージョン](#s
 Ubuntu 16.04 LTS Server | [サポートされるカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> パスワード ベースの認証とログインを使用しており、cloud-init パッケージを使用してクラウド VM を構成する Ubuntu サーバーでは、(cloudinit 構成に応じて) フェールオーバー時にパスワード ベースのログインが無効になっている場合があります。 パスワード ベースのログインは、Azure portal で、フェールオーバーされた VM の [サポート] > [トラブルシューティング] > [設定] メニューからパスワードをリセットすることで、その仮想マシンで再度有効にできます。
 Debian 7 | [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1、SP2、SP3。 [(サポートされるカーネル バージョン)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4。 [(サポートされるカーネル バージョン)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> レプリケートするマシンの SP3 から SP4 へのアップグレードはサポートされません。 レプリケートされたマシンがアップグレードされた場合は、レプリケーションを無効にして、アップグレード後にレプリケーションを再度有効にする必要があります。
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) のいずれかを実行している。
@@ -107,7 +107,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Ubuntu カーネル バージョン
 
-**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
 14.04 LTS | 9.23 | 3.13.0-24-generic から 3.13.0-165-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-142-generic、<br/>4.15.0-1023-azure から 4.15.0-1037-azure |
 14.04 LTS | 9.22 | 3.13.0-24-generic から 3.13.0-164-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-140-generic、<br/>4.15.0-1023-azure から 4.15.0-1036-azure |
@@ -121,7 +121,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Debian カーネル バージョン
 
-**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
 Debian 7 | 9.19、9.20、9.21、9.22、9.23 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
@@ -130,9 +130,9 @@ Debian 8 | 9.19 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 か
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる SUSE Linux Enterprise Server 12 カーネル バージョン
 
-**Release** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.23 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.79-default |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.23 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.79-default</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.22 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.21 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.20 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.69-default |
@@ -147,7 +147,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.20 | SP1 3.12.49-11-defaul
 
 ## <a name="replicated-machines---compute-settings"></a>レプリケートされるマシン - コンピューティングの設定
 
-**Setting** | **サポート** | **詳細**
+**設定** | **サポート** | **詳細**
 --- | --- | ---
 Size | 少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)を確認してください。
 可用性セット | サポートされています | 既定のオプションを使用して Azure VM のレプリケーションを有効にした場合は、ソース リージョンの設定に基づいて可用性セットが自動的に作成されます。 次の設定を変更できます。
@@ -162,7 +162,7 @@ RBAC ポリシー | サポートされていません | VM でのロールベー
 
 ## <a name="replicated-machines---disk-actions"></a>レプリケートされるマシン - ディスクのアクション
 
-**Action** | **詳細**
+**アクション** | **詳細**
 -- | ---
 レプリケートされた VM のディスク サイズの変更 | サポートされています
 レプリケートされた VM にディスクを追加する | サポートされていません。<br/><br/> VM のレプリケーションを無効にし、ディスクを追加してから、レプリケーションを再び有効にする必要があります。
@@ -226,7 +226,7 @@ Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスク
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
 Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 | (ディスクあたり) 1,684 GB
 ## <a name="replicated-machines---networking"></a>レプリケートされるマシン - ネットワーク
-**Setting** | **サポート** | **詳細**
+**設定** | **サポート** | **詳細**
 --- | --- | ---
 NIC | 特定の Azure VM サイズでサポートされる最大数 | フェールオーバー中に VM が作成されるときには NIC が作成されます。<br/><br/> フェールオーバー VM 上の NIC 数は、レプリケーションが有効にされたときのソース VM 上の NIC 数によって決まります。 レプリケーションを有効にした後に NIC を追加または削除しても、フェールオーバー後、レプリケートされた VM 上にある NIC の数は影響を受けません。
 インターネット Load Balancer | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、構成済みロード バランサーを関連付けます。

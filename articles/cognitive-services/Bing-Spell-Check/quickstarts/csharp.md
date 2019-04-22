@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: b439b702fb5ae4990c8c31838fe9677cb882d2a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7a17c695482f2e9c8158c437c9c40c0abcb07e67
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546321"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616290"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
 
@@ -24,7 +24,10 @@ ms.locfileid: "57546321"
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
-* NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
+* Visual Studio の NuGet パッケージとして `Newtonsoft.Json` をインストールするには:
+    1. ソリューション エクスプローラーで、ソリューション ファイルを右クリックします。
+    1. **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. `Newtonsoft.Json` を探して、パッケージをインストールします。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
@@ -52,14 +55,14 @@ ms.locfileid: "57546321"
         {
             static string host = "https://api.cognitive.microsoft.com";
             static string path = "/bing/v7.0/spellcheck?";
-            static string key = "enter your key here";
+            static string key = "<ENTER-KEY-HERE>";
             //text to be spell-checked
             static string text = "Hollo, wrld!";
         }
     }
     ```
 
-3. 検索パラメーターの変数を作成します。 該当する市場コードを `mkt=` に追加し、スペルチェック モードを `&mode=` に追加します。
+3. 検索パラメーターの変数を作成します。 `mkt=` の後に市場コードを追加します。 市場コードは、要求の送信元となる国です。 さらに、スペルチェック モードを `&mode=` の後に追加します。 モードは `proof` (ほとんどのスペル/文法の誤りが検出されます) または `spell` (スペルの誤りはほとんど検出されますが、文法の誤りの検出数は相対的に少なくなります) のどちらかです。
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -76,10 +79,10 @@ ms.locfileid: "57546321"
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
         HttpResponseMessage response = new HttpResponseMessage();
-        //...
+        // add the rest of the code snippets here (except for main())...
     }
 
-2. Create the URI for your request by appending your host, path, and parameters. 
+2. Create the URI for your request by appending your host, path, and parameters.
     
     ```csharp
     string uri = host + path + params_;
@@ -181,7 +184,7 @@ static void Main(string[] args)
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
+> [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

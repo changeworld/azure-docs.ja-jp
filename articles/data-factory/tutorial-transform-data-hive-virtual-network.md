@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 8ab647a7d97ace0d0f67fa462ada06901184933f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1905174eea9c765f52a9a89015a9a573048b15a9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102994"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523581"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -222,7 +222,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - **userName**。 クラスターの作成時に指定したクラスター ログイン ユーザーの名前。 
 - **password**。 ユーザーのパスワード。
-- **clusterUri**。 https://<clustername>.azurehdinsight.net の形式で、HDInsight クラスターの URL を指定します。  この記事では、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://clustername.azurehdinsight.net` でクラスターに接続できます。 このアドレスではパブリック ゲートウェイが使用されていますが、ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。 Data Factory が Azure Virtual Network の HDInsight クラスターにジョブを送信するには、HDInsight によって使用されるゲートウェイのプライベート IP アドレスに URL を解決できるように、Azure Virtual Network を構成する必要があります。
+- **clusterUri**。 HDInsight クラスターの URL を次の形式で指定します: `https://<clustername>.azurehdinsight.net`。  この記事では、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://clustername.azurehdinsight.net` でクラスターに接続できます。 このアドレスではパブリック ゲートウェイが使用されていますが、ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。 Data Factory が Azure Virtual Network の HDInsight クラスターにジョブを送信するには、HDInsight によって使用されるゲートウェイのプライベート IP アドレスに URL を解決できるように、Azure Virtual Network を構成する必要があります。
 
   1. Azure Portal で、HDInsight がある仮想ネットワークを開きます。 名前が `nic-gateway-0` で始まるネットワーク インターフェイスを開きます。 そのプライベート IP アドレスをメモしておきます。 たとえば、10.6.0.15 です。 
   2. Azure 仮想ネットワークに DNS サーバーがある場合は、HDInsight クラスターの URL `https://<clustername>.azurehdinsight.net` を `10.6.0.15` に解決できるように、DNS レコードを更新します。 これが推奨される方法です。 Azure 仮想ネットワークに DNS サーバーがない場合は、セルフホステッド統合ランタイム ノードとして登録されているすべての VM の hosts ファイル (C:\Windows\System32\drivers\etc) を編集し、次のようなエントリを追加することで、一時的にこれを回避することができます。 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8e20f612bc54433091036377d51a7e59e3abec51
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402152"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548043"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法
 この記事では、クラスルーム ラボにアクセスし、ラボの VM に接続して、VM を停止する方法について説明します。 
@@ -36,7 +36,7 @@ ms.locfileid: "58402152"
 ## <a name="view-all-the-classroom-labs"></a>すべてのクラスルーム ラボを表示する
 ラボへの登録後は、次の手順に従ってクラスルーム ラボを表示できます。 
 
-1. [https://labs.azure.com](https://labs.azure.com) に移動します。 
+1. [https://labs.azure.com](https://labs.azure.com) に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
 2. ラボへの登録に使用したユーザー アカウントを使用してサービスにサインインします。 
 3. 自分にアクセス権があるすべてのラボが表示されることを確認します。 
 

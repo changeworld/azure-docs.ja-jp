@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
-ms.author: aahi
-ms.openlocfilehash: 8e3379a086eb09745142f4e3997ed195eb4d1de5
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 04/02/2019
+ms.author: aahill
+ms.openlocfilehash: 0a1260de6428f6ebc70757261cdcc3002820ec7b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56885909"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547766"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>クイック スタート:Bing Spell Check REST API と Node.js を使用してスペルをチェックする
 
-このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Python アプリケーションは、API に要求を送信して、認識されなかった一連の単語と修正候補を返します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) で入手できます。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Node アプリケーションは、API に要求を送信して、認識されなかった単語とそれに続く修正候補のリストを返します。 このアプリケーションは Node.js で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,18 +30,18 @@ ms.locfileid: "56885909"
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成します。 厳格度を設定し、https を要求します。 次に、API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。
+1. 普段使用している IDE またはエディターで新しい JavaScript ファイルを作成します。 厳格度を設定し、`https` を要求します。 次に、API エンドポイントのホスト、パス、サブスクリプション キーの変数を作成します。
 
     ```javascript
     'use strict';
     let https = require ('https');
-    
+
     let host = 'api.cognitive.microsoft.com';
     let path = '/bing/v7.0/spellcheck';
-    let key = 'ENTER KEY HERE';
+    let key = '<ENTER-KEY-HERE>';
     ```
 
-2. 市場、スペルチェック モード、チェック対象のテキストに使用する変数を作成します。 次に、該当する市場の前に `?mkt=` パラメーターを、また該当するモードの前に `&mode=` を追加する文字列を作成します。
+2. 検索パラメーターとチェック対象のテキストの変数を作成します。 `mkt=` の後に市場コードを追加します。 市場コードは、要求の送信元となる国です。 さらに、スペルチェック モードを `&mode=` の後に追加します。 モードは `proof` (ほとんどのスペル/文法の誤りが検出されます) または `spell` (スペルの誤りはほとんど検出されますが、文法の誤りの検出数は相対的に少なくなります) のどちらかです。
 
     ```javascript
     let mkt = "en-US";
@@ -78,7 +78,8 @@ let response_handler = function (response) {
         body += d;
     });
     response.on ('end', function () {
-        console.log (body);
+        let body_ = JSON.parse (body);
+        console.log (body_);
     });
     response.on ('error', function (e) {
         console.log ('Error: ' + e.message);
@@ -98,7 +99,7 @@ req.end ();
 
 ## <a name="example-json-response"></a>JSON の応答例
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {

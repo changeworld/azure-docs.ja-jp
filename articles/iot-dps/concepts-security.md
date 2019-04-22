@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046900"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490274"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub デバイス プロビジョニング サービスのセキュリティの概念 
 
@@ -77,7 +77,11 @@ X.509 証明書を構成証明メカニズムとして使用することは、�
 
 ### <a name="end-entity-leaf-certificate"></a>エンド エンティティ "リーフ" 証明書
 
-リーフ証明書、つまりエンドエンティティ証明書は、証明書の所有者を識別します。 リーフ証明書には、証明書チェーン内のルート証明書と 0 個以上の中間証明書が含まれます。 リーフ証明書は、他の証明書の署名には使用されません。 プロビジョニング サービスに対してデバイスを一意に識別し、デバイス証明書と呼ばれることもあります。 デバイスは認証時に、この証明書に関連付けられた秘密キーを使用して、サービスからの所有証明チャレンジに応答します。 詳細については、「[X.509 CA 証明書で署名されたデバイスを認証する](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)」をご覧ください。
+リーフ証明書、つまりエンドエンティティ証明書は、証明書の所有者を識別します。 リーフ証明書には、証明書チェーン内のルート証明書と 0 個以上の中間証明書が含まれます。 リーフ証明書は、他の証明書の署名には使用されません。 プロビジョニング サービスに対してデバイスを一意に識別し、デバイス証明書と呼ばれることもあります。 デバイスは認証時に、この証明書に関連付けられた秘密キーを使用して、サービスからの所有証明チャレンジに応答します。
+
+[個別の登録](./concepts-service.md#individual-enrollment)エントリで使用されるリーフ証明書には、**サブジェクト名**を個別の登録エントリの登録 ID に設定しなければならないという要件があります。 [登録グループ](./concepts-service.md#enrollment-group)エントリで使用されるリーフ証明書では、**サブジェクト名**が、登録グループ内にある認証済みデバイスの**登録レコード**に表示されているご希望のデバイス ID に設定される必要があります。
+
+詳細については、「[X.509 CA 証明書で署名されたデバイスを認証する](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)」をご覧ください。
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する
 

@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470697"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490043"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 

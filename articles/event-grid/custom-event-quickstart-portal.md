@@ -9,12 +9,12 @@ ms.date: 03/27/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: b0fb6ea527c46ab6a9de95ba5f5ae39b8a5d50b1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0861c47ef9f9649dfe223d8abeb51310a87ea4a9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576984"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549969"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート: Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
@@ -49,7 +49,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     5. **[イベント スキーマ]** フィールドでは、既定値の **[イベント グリッド スキーマ]** をそのまま使用します。 
 
        ![[トピックの作成] ページ](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. **作成**を選択します。 
+    6. **作成** を選択します。 
 5. カスタム トピックが作成されると、成功の通知が表示されます。 **[リソース グループに移動]** を選択します。 
 
    ![成功の通知を確認](./media/custom-event-quickstart-portal/success-notification.png)

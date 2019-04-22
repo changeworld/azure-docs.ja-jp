@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314452"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525532"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Device Manager サービスを使用して StorSimple アラートを表示および管理する
 
@@ -160,7 +160,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 | デバイスが <*デバイス名*> にフェールオーバーされました。 |その他の原因、または不明な原因です。 |これらのアラートの数が多い場合は、Microsoft サポートにお問い合わせください。 問題が解決したら、このアラートをアラート ページでクリアしてください。 |
 | 重要なデバイス サービスから、状態が "失敗" と報告されました。 |データパス サービスのエラーです。 |Microsoft サポートに対処方法をお問い合わせください。 |
 | ネットワーク インターフェイス <*DATA #*> の仮想 IP アドレスから、状態が "失敗" と報告されました。 |その他の原因、または不明な原因です。 |一時的な状況がこれらのアラートの原因になっている場合があります。 その場合、しばらくするとこのアラートが自動的にクリアされます。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |
-| ネットワーク インターフェイス <*DATA #*> の仮想 IP アドレスから、状態が "失敗" と報告されました。 |重複する IP アドレスがネットワーク上で検出されたため、インターフェイス名: <*DATA #*> IP アドレス <IP address> をオンラインにできません。 |重複する IP アドレスをネットワークから削除するか、別の IP アドレスでインターフェイスを再構成します。 |
+| ネットワーク インターフェイス <*DATA #*> の仮想 IP アドレスから、状態が "失敗" と報告されました。 |重複する IP アドレスがネットワーク上で検出されたため、インターフェイス名: <*DATA #*> IP アドレス `<IP address>` をオンラインにできません。 |重複する IP アドレスをネットワークから削除するか、別の IP アドレスでインターフェイスを再構成します。 |
 
 ### <a name="disaster-recovery-alerts"></a>障害復旧のアラート
 
@@ -200,8 +200,8 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 | アラートのテキスト | Event | 追加情報 / 推奨される対処法 |
 |:--- |:--- |:--- |
 | StorSimple サービスを開始できませんでした。 |データパス エラー |問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
-| 'Data0' で、重複する IP アドレスが検出されました。 | |システムによって、IP アドレス '10.0.0.1' の競合が検出されました。 デバイス *<device1>* のネットワーク リソース 'Data0' がオフラインになっています。 この IP アドレスが、このネットワーク内の他のエンティティによって使用されていないことを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 この問題を解決する方法については、ネットワーク管理者にお問い合わせください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
-| 'Data0' の IPv4 (または IPv6) アドレスがオフラインです。 | |IP アドレス '10.0.0.1' を使用するネットワーク リソース 'Data0'  (デバイス *<device1>* でプレフィックス長 '22') がオフラインになっています。 このインターフェイスが接続されているスイッチ ポートが動作可能であることを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 |
+| 'Data0' で、重複する IP アドレスが検出されました。 | |システムによって、IP アドレス '10.0.0.1' の競合が検出されました。 デバイス *\<device1>* 上のネットワーク リソース 'Data0' がオフラインになっています。 この IP アドレスが、このネットワーク内の他のエンティティによって使用されていないことを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 この問題を解決する方法については、ネットワーク管理者にお問い合わせください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
+| 'Data0' の IPv4 (または IPv6) アドレスがオフラインです。 | |IP アドレス '10.0.0.1' を使用するネットワーク リソース 'Data0'  (デバイス *\<device1>* 上でプレフィックス長 '22') がオフラインになっています。 このインターフェイスが接続されているスイッチ ポートが動作可能であることを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 |
 | 認証サービスに接続できませんでした。 |データパス エラー |認証に使用されている URL はアクセスできません。 StorSimple デバイスに指定された URL パターンがファイアウォール規則に含まれていることを確認してください。 Azure portal の URL パターンの詳細については、https:\//aka.ms/ss-8000-network-reqs をご覧ください。 Azure Government Cloud を使用している場合は、https:\//aka.ms/ss8000-gov-network-reqs の URL パターンをご覧ください。|
 
 ### <a name="performance-alerts"></a>パフォーマンスのアラート

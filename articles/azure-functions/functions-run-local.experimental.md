@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: a5acc65609b7d8387eca0ec4e091bf823d9d1d67
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402696"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59497102"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -32,8 +32,8 @@ Core Tools を使用して、ローカル コンピューターで関数を開�
 > * [トリガーとバインド拡張を登録します。](#register-extensions)
 > * [ストレージとその他の接続を定義します。](#local-settings-file)
 > * [トリガーおよび言語固有のテンプレートから関数を作成します。](#create-func)
-> * [関数をローカルで実行します](#start)
-> * [Azure にプロジェクトを発行します](#publish)
+> * [関数をローカルで実行する](#start)
+> * [Azure にプロジェクトを発行する](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools のバージョン
 
@@ -472,12 +472,21 @@ func deploy
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 現在のユーザーがサインインしている Docker レジストリの名前。 |
-| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは `kubernetes` です。 |
+| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは次のとおりです。 `kubernetes` |
 | **`--name`** | 関数アプリの名前。 |
 | **`--max`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最大数を設定します。 |
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
 
+## <a name="monitoring-functions"></a>関数の監視
+
+関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+
+関数アプリ用に Application Insights を有効にするには:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 ## <a name="next-steps"></a>次の手順
 
 Azure Functions Core Tools は[オープン ソースであり、GitHub でホストされています](https://github.com/azure/azure-functions-cli)。  

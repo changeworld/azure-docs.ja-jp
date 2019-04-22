@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257435"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566007"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -491,11 +491,12 @@ END
 1. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** で **[SinkDataset]** を選択します。 
         
     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. **[パラメーター]** タブに切り替えて、次の手順を実行します。
+1. 次の手順を実行します。
 
-    1. **[Sink Stored Procedure Name]\(シンク ストアド プロシージャ名\)** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
-    1. **[Sink Table Type]\(シンク テーブル型\)** プロパティに「`@{item().TableType}`」と入力します。
-    1. **[Sink Dataset]\(シンク データセット\)** セクションで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
+    1. **[データセット]** プロパティで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
+    1. **[ストアド プロシージャ名]** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
+    1. **[テーブルの種類]** プロパティに「`@{item().TableType}`」と入力します。
+
 
         ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを**ストアド プロシージャ** アクティビティに接続します。 
@@ -565,12 +566,12 @@ END
 ## <a name="review-the-results"></a>結果の確認
 SQL Server Management Studio からターゲット SQL データベースに対して次のクエリを実行し、ソース テーブルからターゲット テーブルにデータがコピーされていることを確かめます。 
 
-**Query** 
+**クエリ** 
 ```sql
 select * from customer_table
 ```
 
-**出力**
+**Output**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -582,13 +583,13 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Query**
+**クエリ**
 
 ```sql
 select * from project_table
 ```
 
-**出力**
+**Output**
 
 ```
 ===================================
@@ -599,13 +600,13 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Query**
+**クエリ**
 
 ```sql
 select * from watermarktable
 ```
 
-**出力**
+**Output**
 
 ```
 ======================================
@@ -667,12 +668,12 @@ VALUES
 ## <a name="review-the-final-results"></a>最終結果を確認する
 SQL Server Management Studio からターゲット データベースに対して次のクエリを実行し、更新されたデータや新しいデータがソース テーブルからターゲット テーブルにコピーされていることを確かめます。 
 
-**Query** 
+**クエリ** 
 ```sql
 select * from customer_table
 ```
 
-**出力**
+**Output**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -686,13 +687,13 @@ PersonID    Name    LastModifytime
 
 **PersonID** 3 を見ると、**Name** と **LastModifytime** が新しい値であることがわかります。 
 
-**Query**
+**クエリ**
 
 ```sql
 select * from project_table
 ```
 
-**出力**
+**Output**
 
 ```
 ===================================
@@ -706,13 +707,13 @@ NewProject  2017-10-01 00:00:00.000
 
 project_table に **NewProject** というエントリが追加されていることがわかります。 
 
-**Query**
+**クエリ**
 
 ```sql
 select * from watermarktable
 ```
 
-**出力**
+**Output**
 
 ```
 ======================================

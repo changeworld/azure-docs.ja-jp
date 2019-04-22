@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 8ad472b9c92e3bc2164146191a63985fd26becab
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470859"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492517"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -26,7 +26,7 @@ Application Insights Profiler を次のサービスにデプロイすること�
 * [Azure Service Fabric アプリケーション](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Application Insights Profiler は、Azure 診断拡張機能と共にインストールされています。 必要な作業は、Profiler をインストールして Application Insights リソースにプロファイルを送信するように、Azure 診断を構成することだけです。
+Application Insights Profiler は、Azure Diagnostics 拡張機能と共にインストールされています。 必要な作業は、Profiler をインストールして Application Insights リソースにプロファイルを送信するように、Azure Diagnostics を構成することだけです。
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Azure Cloud Services に対して Profiler を有効にする
 1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 *ServiceConfiguration.\*.cscfg* ファイルの `osFamily` 値が "5" 以上になっていることを確認すれば十分です。
@@ -41,9 +41,9 @@ Application Insights Profiler は、Azure 診断拡張機能と共にインス�
 
     * worker ロールの場合、[要求を追跡するコードを追加します](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)。
 
-1. 次のようにして、Profiler を有効にするように Azure 診断拡張機能を構成します。
+1. Profiler を有効にするために Azure Diagnostics 拡張機能を次のように構成します。
 
-    a. アプリケーション ロールで、[Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)の *diagnostics.wadcfgx* ファイルを探します。  
+    a. アプリケーション ロールで、[Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) の *diagnostics.wadcfgx* ファイルを探します。  
 
       ![診断構成ファイルの場所](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 

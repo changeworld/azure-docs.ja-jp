@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3a5e8d15d9a705892fe54c50e9b79e6d42af78d9
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426663"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615763"
 ---
 # <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションに接続するためのデバイスの接続文字列を生成する
 
@@ -23,14 +23,14 @@ ms.locfileid: "59426663"
 
 この記事の手順を完了するには、次のものが必要です。
 
-1. Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
-1. [Node.js](https://nodejs.org/) バージョン 8.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
+- Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+- [Node.js](https://nodejs.org/) バージョン 8.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 
 ## <a name="get-connection-information"></a>接続情報の取得
 
 次の手順では、デバイスの SAS 接続文字列を生成するために必要な情報を入手する方法について説明します。
 
-1. **エクスプローラー**で、アプリケーションに接続する実際のデバイスを探します。
+1. **デバイス エクスプローラー**内で、ご利用のアプリケーションに接続する実際のデバイスを探します。
 
     ![実際のデバイスを選択する](media/howto-generate-connection-string/real-devices.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "59426663"
 ここでは、実デバイスを Azure IoT Central アプリケーションに接続するための接続文字列を生成しました。推奨される次の手順は以下のとおりです。
 
 * [DevKit デバイスを準備して接続する (C)](howto-connect-devkit.md)
-* [Raspberry Pi (Python) を準備して接続する](howto-connect-raspberry-pi-python.md)
-* [Raspberry Pi (C#) を準備して接続する](howto-connect-raspberry-pi-csharp.md)
+* [Raspberry Pi を準備して接続する (Python)](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi を準備して接続する (C#)](howto-connect-raspberry-pi-csharp.md)
 * [Windows 10 IoT Core デバイスを準備して接続する (C#)](howto-connect-windowsiotcore.md)
 * [汎用の Node.js クライアント を Azure IoT Central アプリケーションに接続する](howto-connect-nodejs.md)

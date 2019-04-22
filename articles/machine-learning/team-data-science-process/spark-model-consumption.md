@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888112"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524584"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 
@@ -112,7 +112,7 @@ Jupyter Notebook で提供される PySpark カーネルには、コンテキス
 PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
 * **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。 コードは有効な Python コードにする必要があります。
-* **%%sql -o <variable name>** 
+* **%%sql -o \<変数名>** 
 * sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
 Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。

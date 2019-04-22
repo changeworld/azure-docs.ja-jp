@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276050"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501605"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -55,7 +55,7 @@ OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサ�
 
 ## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
 
-アクセス トークンを要求するには、次のパラメーターを使用して、テナントに固有の v2.0 トークン エンドポイントへの HTTP POST を作成します。
+アクセス トークンを要求するには、次のパラメーターを使用して、テナントに固有の Microsoft ID プラットフォーム トークン エンドポイントへの HTTP POST を作成します。
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -191,13 +191,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>中間層アプリケーションの同意の取得
 
-アプリケーションの対象ユーザーに基づき、OBO フローを確実に成功させるためのさまざまな方法を検討することをお勧めします。 すべての場合において、最終的な目標は適切な同意が得られるようにすることです。 ただし、それがどのように行われるかは、アプリケーションがサポートしているユーザーによって異なります。 
+アプリケーションの対象ユーザーに基づき、OBO フローを確実に成功させるためのさまざまな方法を検討することをお勧めします。 すべての場合において、最終的な目標は適切な同意が得られるようにすることです。 ただし、それがどのように行われるかは、アプリケーションがサポートしているユーザーによって異なります。
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Azure AD 専用アプリケーションの同意
 
 #### <a name="default-and-combined-consent"></a>/.default と組み合わせ同意
 
-職場または学校のアカウントにのみサインインする必要のあるアプリケーションの場合、従来の "既知のクライアント アプリケーション" のアプローチで十分です。 中間層アプリケーションは、そのマニフェストの既知のクライアント アプリケーションの一覧にクライアントを追加します。その後、そのクライアントは、それ自体と中間層アプリケーションの両方に対して組み合わせ同意フローをトリガーできます。 v2.0 エンドポイントでは、これは [`/.default` スコープ](v2-permissions-and-consent.md#the-default-scope)を使用して行われます。 既知のクライアント アプリケーションと `/.default` を使用して同意画面をトリガーすると、その同意画面には、クライアントと中間層 API の両方に対するアクセス許可が表示され、その中間層 API で必要となるすべてのアクセス許可が要求されます。 ユーザーが両方のアプリケーションに対して同意を行うと、OBO フローが動作します。
+職場または学校のアカウントにのみサインインする必要のあるアプリケーションの場合、従来の "既知のクライアント アプリケーション" のアプローチで十分です。 中間層アプリケーションは、そのマニフェストの既知のクライアント アプリケーションの一覧にクライアントを追加します。その後、そのクライアントは、それ自体と中間層アプリケーションの両方に対して組み合わせ同意フローをトリガーできます。 Microsoft ID プラットフォームのエンドポイント上では、これは[`/.default`スコープ](v2-permissions-and-consent.md#the-default-scope)を使用して行われます。 既知のクライアント アプリケーションと `/.default` を使用して同意画面をトリガーすると、その同意画面には、クライアントと中間層 API の両方に対するアクセス許可が表示され、その中間層 API で必要となるすべてのアクセス許可が要求されます。 ユーザーが両方のアプリケーションに対して同意を行うと、OBO フローが動作します。
 
 現時点で、Microsoft 個人アカウント システムは、組み合わせ同意をサポートしていません。そのため、このアプローチは、特に個人アカウントにサインインするアプリに対しては機能しません。 テナントでゲスト アカウントとして使用される Microsoft 個人アカウントは、Azure AD システムを使用して処理され、組み合わせ同意で処理できます。
 

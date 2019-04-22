@@ -3,7 +3,7 @@ title: Azure Security Center クイック スタート - Azure Stack 仮想マ�
 description: このクイック スタートでは、Azure Monitor, Update and Configuration Management 仮想マシン拡張機能を Azure Stack 仮想マシンにプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: pipposera
 manager: dsavage
 editor: ''
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 9efd6514b722168f8ecb1235159e7463ce318118
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.author: fiseraci
+ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904017"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563796"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>クイック スタート:Azure Stack 仮想マシンを Security Center にオンボードする
 Azure サブスクリプションをオンボードした後、Azure Stack Marketplace から **Azure Monitor, Update and Configuration Management** 仮想マシン拡張機能を追加することにより、Security Center を有効にして、Azure Stack で動作している仮想マシンを保護できます。
@@ -32,7 +32,7 @@ Azure サブスクリプションをオンボードした後、Azure Stack Marke
 
 このクイック スタートを開始する前に、Security Center の Standard レベルの Azure サブスクリプションを用意する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard レベルは、30 日間無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
-## <a name="add-an-azure-stack-virtual-machine"></a>Azure Stack 仮想マシンの追加
+## <a name="select-your-workspace-in-azure-security-center"></a>Azure Security Center のワークスペースの選択
 
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。 
@@ -65,6 +65,10 @@ Azure サブスクリプションをオンボードした後、Azure Stack Marke
 3. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
 4. **[Add (追加)]** タブをクリックします。**[新しいリソース]** メニュー ブレードが開かれ、使用可能な仮想マシン拡張機能の一覧が表示されます。 
 5. **Azure Monitor, Update and Configuration Management** 拡張機能を選択し、**[作成]** をクリックします。 **[拡張機能のインストール]** 構成ブレードが開かれます。
+
+>[!NOTE]
+> **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、該当の Azure Stack オペレーターに連絡して使用可能にしてください。
+
 6. **[拡張機能のインストール]** 構成ブレードに、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
 7.  必要な構成設定の指定が終了したら、**[OK]** をクリックします。
 8. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Security Center ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。

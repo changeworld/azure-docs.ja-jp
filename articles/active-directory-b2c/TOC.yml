@@ -85,8 +85,8 @@ items:
     href: add-native-application.md
   - name: 年齢制限を構成する
     href: basic-age-gating.md
-  - name: トークンを構成する
-    href: active-directory-b2c-token-session-sso.md
+  - name: セッションの動作を構成する
+    href: session-behavior.md
   - name: 言語をカスタマイズする
     href: active-directory-b2c-reference-language-customization.md
   - name: パスワードをカスタマイズする
@@ -111,8 +111,6 @@ items:
       href: active-directory-b2c-ui-customization-custom.md
     - name: UI の動的なカスタマイズ
       href: active-directory-b2c-ui-customization-custom-dynamic.md
-    - name: トークンのカスタマイズ
-      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
     - name: カスタム属性を定義する
       href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
     - name: '[サインインしたままにする] の有効化'
@@ -147,8 +145,6 @@ items:
         href: active-directory-b2c-custom-setup-twitter-idp.md
     - name: ページ コントラクト
       href: page-contract.md
-    - name: アクセス トークンのパススルー
-      href: idp-pass-through-custom.md
     - name: パスワードの複雑さ
       href: active-directory-b2c-reference-password-complexity-custom.md
     - name: パスワードの変更
@@ -159,6 +155,12 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: Salesforce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: トークン
+      items:
+      - name: トークンのカスタマイズ
+        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+      - name: アクセス トークンのパススルー
+        href: idp-pass-through-custom.md
     - name: ユーザー動作の追跡
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: リファレンス
@@ -272,10 +274,6 @@ items:
       href: active-directory-b2c-devquickstarts-ios.md
     - name: AppAuth を使用した Android
       href: active-directory-b2c-devquickstarts-android.md
-  - name: アクセス トークンを取得する
-    href: active-directory-b2c-access-tokens.md
-  - name: アクセス トークンのパススルー
-    href: idp-pass-through-user-flow.md
   - name: レポートの使用
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: リソース所有者のパスワード資格情報
@@ -284,6 +282,14 @@ items:
     href: direct-signin.md
   - name: セルフサービスパスワードのリセットの設定
     href: active-directory-b2c-reference-sspr.md
+  - name: トークン
+    items:
+    - name: トークンを構成する
+      href: configure-tokens.md
+    - name: アクセス トークンのパススルー
+      href: idp-pass-through-user-flow.md
+    - name: アクセス トークンの要求
+      href: active-directory-b2c-access-tokens.md
   - name: b2clogin.com の使用
     href: b2clogin.md
   - name: Azure AD Graph API を使用する
@@ -326,9 +332,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: cebc59a7d10ce669fd8187687b80f291a07d1c06
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: de9ae82220bd464cbee7345b7f2421d02f0fc545
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886575"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681133"

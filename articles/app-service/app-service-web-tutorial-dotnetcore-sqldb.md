@@ -1,5 +1,5 @@
 ---
-title: SQL Database を使用して .NET Core アプリをビルドする - Azure App Service | Microsoft Docs
+title: ASP.NET Core と SQL Database - Azure App Service | Microsoft Docs
 description: SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: dotnet
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d62e74c5d81cdf3331bde349a9ec5dfe3071e7f8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: c83e14d65b30775f0dad54ab9ade1a7bed5ac821
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510699"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548869"
 ---
-# <a name="tutorial-build-a-net-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service で .NET Core および SQL Database のアプリを作成する
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 App Service on _Linux_ にデプロイするには、[Azure App Service on Linux での .NET Core および SQL Database のアプリの作成](./containers/tutorial-dotnetcore-sqldb-app.md)に関する記事をご覧ください。

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: e95006c6448bf1179d33bcd00c16d6e4246db148
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1cf46fd5ec55f0b240f6bb4adbe49c1344a4663b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887320"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547681"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>クイック スタート:Bing Spell Check REST API と Python を使用してスペルをチェックする
 
@@ -26,7 +26,6 @@ ms.locfileid: "56887320"
 * Python [3.x](https://www.python.org)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
-
 
 ## <a name="initialize-the-application"></a>アプリケーションを初期化する
 
@@ -40,7 +39,7 @@ ms.locfileid: "56887320"
 2. スペル チェックの対象となるテキスト、サブスクリプション キー、Bing Spell Check エンドポイントに使用する変数を作成します。
 
     ```python
-    api_key = "enter-your-key-here"
+    api_key = "<ENTER-KEY-HERE>"
     example_text = "Hollo, wrld" # the text to be spell-checked
     endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
     ```
@@ -53,7 +52,7 @@ ms.locfileid: "56887320"
     data = {'text': example_text}
     ```
 
-2. 要求のパラメーターを追加します。 `mkt` パラメーターを該当する市場に、`mode` を `proof` に設定します。 
+2. 要求のパラメーターを追加します。 `mkt=` の後に市場コードを追加します。 市場コードは、要求の送信元となる国です。 さらに、スペルチェック モードを `&mode=` の後に追加します。 モードは `proof` (ほとんどのスペル/文法の誤りが検出されます) または `spell` (スペルの誤りはほとんど検出されますが、文法の誤りの検出数は相対的に少なくなります) のどちらかです。
 
     ```python
     params = {
@@ -80,7 +79,7 @@ ms.locfileid: "56887320"
     ```
 
 2. JSON 応答を取得して出力します。
-    
+
     ```python
     json_response = response.json()
     print(json.dumps(json_response, indent=4))
@@ -88,7 +87,7 @@ ms.locfileid: "56887320"
 
 ## <a name="example-json-response"></a>JSON の応答例
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {

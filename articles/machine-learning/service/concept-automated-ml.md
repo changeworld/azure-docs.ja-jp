@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf010e33a5ef77fcfde2506bfef9760a09667a9d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 620dbd22613df37fdc3c20e34906684446b2251f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867254"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546013"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -51,27 +51,14 @@ ms.locfileid: "56867254"
 
 ログされた実行情報を検査できます。これには、実行中に収集したメトリックが含まれています。 トレーニングを実行すると、モデルおよびデータ前処理を含む Python シリアル化オブジェクト (`.pkl` ファイル) も生成されます。
 
-## <a name="model-explainability"></a>モデル説明
-
-自動化された機械学習の一般的な落とし穴は、エンド ツー エンドのプロセスを確認できないことです。 Azure Machine Learning では、モデルに関する詳細情報を表示し、バックエンドで実行されている機能に対する透明性を高めることができます。 線形回帰などの一部のモデルは、かなり簡単なものだと考えられているため、理解するのが容易です。 しかし、より多くの機能が追加され、より複雑な機械学習モデルが使われているため、それらを理解することがますます困難になってきています。 機械学習における透明性には 2 つの重要な側面があります。
-
-1. データの前処理/特徴付けやハイパーパラメーターの値を含め、機械学習パイプラインと、関係があるすべてのステップの認識。
-1. 入力変数 ("特徴" とも呼ばれます) とモデル出力の間にある関係の理解。  予測された値に関する各特徴の大きさと方向の両方を把握することが、モデルより深く理解し、説明する助けとなります。 これは、特徴の重要性と呼ばれています。
-
-グローバルな特徴の重要性を、選択したパイプラインに対してトレーニング後にオンデマンドで有効にすることも、自動化された機械学習トレーニングの一部としてすべてのパイプラインに対して有効にすることもできます。 医療機関や銀行などの規制の厳しい業界では、規則やベスト プラクティスに準拠するために、これが重要になります。  次に、いくつかの実際のシナリオを挙げて例示します。
-
-1. ある製造会社において、メンテナンス作業を積極的に実施できるように、機械学習を利用して今後の機器の故障を予測している。 機器に故障が発生しそうであることがわかったら、予防的なメンテナンスを迅速に実施できるように、最も可能性が高いと考えられる原因は何か。
-1. ある金融機関において、機械学習を利用してローンやクレジット カードの適用を処理している。 モデルで正しい処理が実行されているかをどうやって把握するか、また、適用が拒否された理由について顧客が詳細を尋ねた場合、どう回答するか。
-1. あるオンラインの小売店舗または独立系ソフトウェア プロバイダーにおいて、機械学習を利用して顧客離れを予測している。 顧客離れの主な要因は何か、また、どうしたら顧客離れを防げるか。
-
-これはプレビュー機能であり、提供する情報をより充実させて機械学習モデルをさらに深く理解していただけるように、今後も投資していきます。 この[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb)に従って、Azure Machine Learning でのモデルの説明を使用して実験を行います。
 
 ## <a name="next-steps"></a>次の手順
 
 例を参照して、Automated Machine Learning を使用してモデルを構築する方法を学習してください。
-+ [サンプル:Jupyter Notebook を使用して Azure Machine Learning service を探索する](samples-notebooks.md#automated-ml-setup)
 
 + [チュートリアル:Azure Automated Machine Learning で分類モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
+
++ [ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 
 + [リモート リソースで自動トレーニングを使用する](how-to-auto-train-remote.md)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a1034a55bc4d516244e11d035f17fcc3b94929
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855641"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>チュートリアル:Azure Active Directory と SAP NetWeaver の統合
 
@@ -135,7 +135,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 6. **プロバイダー名** を T01122 から `http://T01122` に変更し、**[保存]** をクリックします。
 
     > [!NOTE]
-    > 既定ではプロバイダー名は <sid><client> という形式ですが、Azure AD では <protocol>://<name> という形式の名前が想定されています。プロバイダー名は https://<sid><client> のままにして、Azure AD で複数の SAP NetWeaver ABAP エンジンを構成できるようにすることをお勧めします。
+    > 既定ではプロバイダー名は `<sid><client>` という形式ですが、Azure AD では `<protocol>://<name>` という形式の名前が想定されています。プロバイダー名は `https://<sid><client>` のままにして、Azure AD で複数の SAP NetWeaver ABAP エンジンを構成できるようにすることをお勧めします。
 
     ![証明書のダウンロードのリンク](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
@@ -316,7 +316,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

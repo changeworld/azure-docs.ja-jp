@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 332f899f3502f34e46b4f158a6980dc96248140e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651125"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544026"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -28,7 +28,7 @@ ms.locfileid: "58651125"
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
-1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 
+1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていないことに注意してください。 
 2. **[サインイン]** をクリックします。 ラボ アカウントに**ラボの作成者**のメンバーである**ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 3. **[New Lab]\(新しいラボ\)** ウィンドウで、次のようにします。 
     1. ラボの**名前**を指定します。 
@@ -49,7 +49,7 @@ ms.locfileid: "58651125"
 
         > [!IMPORTANT]
         > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。
-    3. **作成**を選択します。 
+    3. **作成** を選択します。 
 
         ![資格情報の設定](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. **[Configure template**]\(テンプレートの構成\) ページで、ラボの作成プロセスの状態を確認します。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 ラボ内のテンプレートは仮想マシンの基本イメージで、すべてのユーザーの仮想マシンがこのイメージに基づいて作成されます。 テンプレート仮想マシンを設定して、ラボ ユーザーに提供する正しい仮想マシンが構成されるようにします。  

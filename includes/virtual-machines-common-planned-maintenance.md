@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53805755"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551484"
 ---
 Azure は、定期的にプラットフォームを更新して、仮想マシンのホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 これらの更新は、ホスティング環境のソフトウェア コンポーネントの修正から、ネットワーク コンポーネントのアップグレード、ハードウェアの使用停止まで、広い範囲に及びます。 これらの更新のほとんどは、ホストされている仮想マシンに影響を及ぼしません。 ただし、更新プログラムが影響を及ぼす場合に Azure が最も影響の小さな更新方法を選択することがあります。
 
@@ -27,9 +27,9 @@ Azure は、定期的にプラットフォームを更新して、仮想マシ�
 
 計画メンテナンスを管理する場合の「方法」については、[Linux](../articles/virtual-machines/linux/maintenance-notifications.md) または [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) の計画メンテナンスの通知の処理に関するページを参照してください。
 
-## <a name="memory-preserving-maintenance"></a>メモリ保持メンテナンス
+## <a name="maintenance-not-requiring-a-reboot"></a>再起動を必要としないメンテナンス
 
-ほとんどの再起動を伴わない更新では、目標とする VM の一時停止時間を 10 秒未満としています。 場合によっては、メモリ保持メンテナンス メカニズムが使用されます。この場合、VM は最大で 30 秒間一時停止状態になり、RAM 内のメモリは保持されます。 その後仮想マシンが再開され、仮想マシンの時計が自動的に同期されます。 Azure では、ライブ マイグレーション テクノロジの使用を拡大すると共に、一時停止期間を短縮するためのメモリ保持メンテナンス メカニズムの改善に努めています。
+再起動を必要としないほとんどのメンテナンスでは、VM の一時停止を 10 秒未満に留めることを目標としています。 場合によっては、メモリ保持メンテナンス メカニズムが使用されます。この場合、VM は最大で 30 秒間一時停止状態になり、RAM 内のメモリは保持されます。 その後仮想マシンが再開され、仮想マシンの時計が自動的に同期されます。 Azure では、ライブ マイグレーション テクノロジの使用を拡大すると共に、一時停止期間を短縮するためのメモリ保持メンテナンス メカニズムの改善に努めています。
 
 これらの再起動を伴わないメンテナンス操作は障害ドメインごとに適用され、警告の正常性シグナルを受信した場合、進行が停止します。 
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d84a4dd0b69ce9ca7fc594dffce3238c620c426
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167135"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543975"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -35,71 +35,11 @@ SSH と SFTP を使用して、ローカル開発マシンからコンテナー�
 
 ## <a name="open-ssh-session-in-browser"></a>ブラウザーで SSH セッションを開く
 
-コンテナーとの SSH クライアント接続を確立するには、アプリが実行されている必要があります。
-
-ブラウザーに次の URL を貼り付け、\<app_name> をアプリの名前に置き換えます。
-
-```
-https://<app_name>.scm.azurewebsites.net/webssh/host
-```
-
-既に認証されていない場合、接続するには Azure サブスクリプションで認証する必要があります。 認証されると、ブラウザー内シェルが表示され、コンテナー内でコマンドを実行することができます。
-
-![SSH 接続](./media/app-service-linux-ssh-support/app-service-linux-ssh-connection.png)
+[!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>カスタム Docker イメージで SSH サポートを使用する
 
-Azure ポータルでのコンテナーとクライアント間の SSH 通信をカスタム Docker イメージでサポートするために、Docker イメージに対して次の手順を実行します。
-
-これらの手順は、Azure App Service リポジトリに[例](https://github.com/Azure-App-Service/node/blob/master/6.9.3/)として示されています。
-
-1. イメージ用の Dockerfile ファイルの [`RUN` 命令](https://docs.docker.com/engine/reference/builder/#run)に `openssh-server` のインストールを含め、ルート アカウントのパスワードとして `"Docker!"` を設定します。
-
-    > [!NOTE]
-    > この構成では、コンテナーへの外部接続は許可されません。 SSH は Kudu/SCM サイト経由でのみアクセスでき、公開されている資格情報を使用して認証されます。
-
-    ```Dockerfile
-    # ------------------------
-    # SSH Server support
-    # ------------------------
-    RUN apt-get update \
-        && apt-get install -y --no-install-recommends openssh-server \
-        && echo "root:Docker!" | chpasswd
-    ```
-
-2. [sshd_config](https://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)を参照してください)。
-
-    > [!NOTE]
-    > *sshd_config* ファイルには次の項目を指定する必要があります。指定がない場合、接続は失敗します。 
-    > * `Ciphers` には次の値を少なくとも 1 つ指定する必要あります。`aes128-cbc,3des-cbc,aes256-cbc`
-    > * `MACs` には次の値を少なくとも 1 つ指定する必要あります。`hmac-sha1,hmac-sha1-96`
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
-    ```
-
-3. Dockerfile の [`EXPOSE` 命令](https://docs.docker.com/engine/reference/builder/#expose)に、ポート 2222 を含めます。 ルート パスワードはわかっていますが、ポート 2222 はインターネットからアクセスすることはできません。 それはプライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできる内部専用ポートです。
-
-    ```Dockerfile
-    EXPOSE 2222 80
-    ```
-
-4. シェル スクリプトを使って SSH サービスを開始します ([init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) の例を参照)。
-
-    ```bash
-    #!/bin/bash
-    service ssh start
-    ```
-
-Dockerfile では、[`ENTRYPOINT` 命令](https://docs.docker.com/engine/reference/builder/#entrypoint)を使用してスクリプトを実行します。
-
-    ```Dockerfile
-    COPY init_container.sh /opt/startup
-    ...
-    RUN chmod 755 /opt/startup/init_container.sh
-    ...
-    ENTRYPOINT ["/opt/startup/init_container.sh"]
-    ```
+[カスタム コンテナーでの SSH の構成](configure-custom-container.md#enable-ssh)に関するページを参照してください。
 
 ## <a name="open-ssh-session-from-remote-shell"></a>リモート シェルから SSH セッションを開く
 
@@ -111,10 +51,10 @@ TCP トンネリングを使用して、認証済みの WebSocket 接続経由�
 
 最初に、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。 
 
-[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription\_id>_、_\<group\_name>_、および \_<app\_name> を指定します。
+[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 お使いのアプリの _\<subscription-id>_、_\<group-name>_、および \_<app-name>_ を指定します。
 
 ```azurecli-interactive
-az webapp remote-connection create --subscription <subscription_id> --resource-group <group_name> -n <app_name> &
+az webapp remote-connection create --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]

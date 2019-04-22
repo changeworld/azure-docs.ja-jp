@@ -1,10 +1,10 @@
 ---
-title: シャード マップ マネージャーのパフォーマンス カウンター
+title: パフォーマンス カウンターを作成してシャード マップ マネージャーのパフォーマンスを追跡する
 description: ShardMapManager クラスとデータ依存ルーティング パフォーマンス カウンター
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
@@ -12,20 +12,21 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 2823f997a38e280bdbf19beb3a478a73ef1ae842
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895178"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494920"
 ---
-# <a name="performance-counters-for-shard-map-manager"></a>シャード マップ マネージャーのパフォーマンス カウンター
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>パフォーマンス カウンターを作成してシャード マップ マネージャーのパフォーマンスを追跡する
+
+パフォーマンス カウンターを使用して、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)操作のパフォーマンスを追跡します。 これらのカウンターは、パフォーマンス モニターの [エラスティック データベース: シャード管理] カテゴリでアクセスできます。
 
 特に[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を使用するときに、[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)のパフォーマンスをキャプチャできます。 カウンターは、Microsoft.Azure.SqlDatabase.ElasticScale.Client クラスのメソッドを使用して作成されます。  
 
-カウンターを使用して、 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md) 操作のパフォーマンスを追跡します。 これらのカウンターは、パフォーマンス モニターの [エラスティック データベース: シャード管理] カテゴリでアクセスできます。
 
-**最新バージョン:** [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動してください。 「 [最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md)」も参照してください。
+**最新バージョン:**[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動してください。 「 [最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md)」も参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
