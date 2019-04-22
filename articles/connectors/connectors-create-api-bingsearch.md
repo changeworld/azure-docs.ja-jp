@@ -155,7 +155,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    |----------|----------|-------|-------------|
    | 接続名 | はい | <*connection-name*> | 作成する接続の名前 |
    | API バージョン | はい | <*API-version*> | 既定では、Bing Search API バージョンは現在のバージョンに設定されています。 必要に応じて、以前のバージョンを選択できます。 |
-   | [API キー] | はい | <*API-key*> | 前に取得した Bing Search API キー。 キーがない場合は、ご自身の [API キーを今すぐ](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)取得します。 |  
+   | API キー | はい | <*API-key*> | 前に取得した Bing Search API キー。 キーがない場合は、ご自身の [API キーを今すぐ](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)取得します。 |  
    |||||  
 
    例: 
