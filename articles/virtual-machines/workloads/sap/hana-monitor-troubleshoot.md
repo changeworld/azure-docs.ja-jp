@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014403"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616358"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -94,7 +94,7 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 [SAP Note #2081065 – SAP HANA ネットワークのトラブルシューティング](https://launchpad.support.sap.com/#/notes/2081065)のページを参照して、この SAP Note に記載されているネットワークに関するトラブルシューティングの手順を実行してください。
 
 1. サーバーとクライアント間のラウンド トリップ時間を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)__  を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
   
 2. ノード間通信を分析します。
   A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
@@ -108,7 +108,7 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 
 ## <a name="storage"></a>Storage
 
-I/O パフォーマンスに問題があると、エンドユーザーの観点からは、アプリケーション (またはシステム全体) が遅い、反応しない、さらには停止していると思われてしまう場合があります。 SAP HANA Studio の **[Volumes (ボリューム)]** タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できます。
+I/O パフォーマンスに問題がある場合、エンドユーザーからは、アプリケーション (またはシステム全体) が遅い、反応しない、さらには反応が停止しているように感じられる場合があります。 SAP HANA Studio の **[Volumes (ボリューム)]** タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できます。
 
 ![SAP HANA Studio の [Volumes (ボリューム)] タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できる](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -130,7 +130,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、**
 
 ローカルに保存されている SQL Statements.zip ファイルを選択すると、対応する SQL ステートメントが含まれているフォルダーがインポートされます。 この時点で、これらの SQL ステートメントを使用して、さまざまな診断チェックを実行できます。
 
-たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)]** の下の **Bandwidth** ステートメントを右クリックし、SQL コンソールの **[開く]** を選択します。
+たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで [Replication: Bandwidth (レプリケーション: 帯域幅)] の下の **Bandwidth** ステートメントを右クリックし、**** SQL コンソールの **[開く]** を選択します。
 
 完全な SQL ステートメントが開かれるので、入力パラメーター (変更セクション) を変更し、実行することができます。
 

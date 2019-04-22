@@ -122,7 +122,7 @@ SQL Server 仮想マシンを構成するタブが複数あります。 この�
 * **[詳細]** で、**[Managed Disks を使用]** の下の **[はい]** を選択します。
 
    > [!NOTE]
-   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳しくは、「Azure Managed Disks の概要」(../managed-disks-overview.md) をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../manage-availability.md)」を参照してください。
+   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳しくは、[Azure Managed Disks の概要](../managed-disks-overview.md) をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../manage-availability.md)」を参照してください。
 
 ![SQL VM ディスク設定](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -190,7 +190,7 @@ SQL Server 仮想マシンを構成するタブが複数あります。 この�
 
 SQL Server 認証が必要な場合は、 **[有効]** under **[有効]** にアクセスしてください。
 
-![パブリック](./media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
+![SQL Server 認証](./media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
 
 > [!NOTE]
 > インターネット経由で SQL Server にアクセスする場合 (パブリック接続オプション)、ここで SQL 認証を有効にする必要があります。 SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
@@ -295,7 +295,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 ## <a id="connect"></a> SQL Server にリモート接続する
 
-このチュートリアルでは、仮想マシンと **SQL Server 認証**に**パブリック** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
+このチュートリアルでは、仮想マシンと **SQL Server 認証**に**SQL Server 認証** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
 
 > [!NOTE]
 > プロビジョニング中に [パブリック] を選択しなかった場合は、プロビジョニング後にポータルで SQL 接続設定を変更できます。 詳細については、「[Change your SQL connectivity settings (SQL 接続設定の変更)](virtual-machines-windows-sql-connect.md#change)」を参照してください。

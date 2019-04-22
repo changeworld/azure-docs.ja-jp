@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: ca473474c62d0cb57c3ee76095740568398c67d7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272752"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698913"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 
@@ -36,7 +36,7 @@ VDC は、Microsoft がその最大規模のエンタープライズのお客様
 - [Log Analytics](../../../../azure-monitor/overview.md) は、セキュリティで保護されたデプロイの開始以降、すべてのアクションとサービス ログを一元化する最初の Azure サービスとしてデプロイされます。
 - オンプレミス データセンター、インターネット接続用のイングレス/エグレス スタック、および以下を含むフル マイクロセグメンテーション用に NSG および ASG を使用する共有サービス サブネットへの折り返し接続用のサブネットをサポートする仮想ネットワーク。
   - 管理目的で使用されるジャンプボックスまたは要塞ホスト。イングレス スタック サブネットにデプロイされた [Azure Firewall](../../../../firewall/overview.md) 経由でのみアクセスできます。
-  - ジャンプボックスからのみアクセスできる Active Directory Directory Services (ADDS) および DNS を実行する 2 つの仮想マシン。VPN または [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 接続 (ブループリントでデプロイされていない) 経由で AD をレプリケートするためだけに構成できます。
+  - ジャンプボックスからのみアクセスできる Active Directory Domain Services (ADDS) および DNS を実行する 2 つの仮想マシン。VPN または [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 接続 (ブループリントでデプロイされていない) 経由で AD をレプリケートするためだけに構成できます。
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) と標準 DDoS 保護の使用
 - [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
 
