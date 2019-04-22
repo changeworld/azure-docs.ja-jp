@@ -77,9 +77,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|型|Description|  
 |--------------|----------|-----------------|  
-|ページング|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
-|フィルター処理|[フィルター処理](api-management-template-data-model-reference.md#Filtering)エンティティ。|製品リスト ページのフィルター処理情報。|  
-|[成果物]|[製品](api-management-template-data-model-reference.md#Product)エンティティのコレクション。|現在のユーザーに表示される製品。|  
+|Paging|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
+|Filtering|[フィルター処理](api-management-template-data-model-reference.md#Filtering)エンティティ。|製品リスト ページのフィルター処理情報。|  
+|Products|[製品](api-management-template-data-model-reference.md#Product)エンティティのコレクション。|現在のユーザーに表示される製品。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -202,14 +202,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|型|説明|  
 |--------------|----------|-----------------|  
-|製品|[成果物](api-management-template-data-model-reference.md#Product)|指定された製品。|  
+|Product|[成果物](api-management-template-data-model-reference.md#Product)|指定された製品。|  
 |IsDeveloperSubscribed|boolean|現在のユーザーがこの製品をサブスクライブしているかどうか。|  
 |SubscriptionState|number|サブスクリプションの状態。 次の状態があります。<br /><br /> -   `0 - suspended` – サブスクリプションがブロックされています。サブスクライバーは製品の API を呼び出すことができません。<br />-   `1 - active` – サブスクリプションがアクティブです。<br />-   `2 - expired` – サブスクリプションの期限になり、サブスクリプションが非アクティブ化されました。<br />-   `3 - submitted` – サブスクリプション要求が開発者によって行われましたが、まだ承認または拒否されていません。<br />-   `4 - rejected` – サブスクリプション要求が管理者によって拒否されました。<br />-   `5 - cancelled` – サブスクリプションが開発者または管理者によってキャンセルされました。|  
-|制限|array|このプロパティは廃止されました。使用しないでください。|  
+|Limits|array|このプロパティは廃止されました。使用しないでください。|  
 |DelegatedSubscriptionEnabled|boolean|このサブスクリプションで[委任](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)が有効かどうか。|  
 |DelegatedSubscriptionUrl|string|委任が有効になっている場合、委任されたサブスクリプションの URL。|  
 |IsAgreed|boolean|製品に条件がある場合、現在のユーザーがその条件に同意したかどうか。|  
-|サブスクリプション|[サブスクリプションの概要](api-management-template-data-model-reference.md#SubscriptionSummary)エンティティのコレクション。|製品のサブスクリプション。|  
+|Subscriptions|[サブスクリプションの概要](api-management-template-data-model-reference.md#SubscriptionSummary)エンティティのコレクション。|製品のサブスクリプション。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) エンティティのコレクション。|この製品の API。|  
 |CannotAddBecauseSubscriptionNumberLimitReached|boolean|サブスクリプション数制限に関して、現在のユーザーがこの製品をサブスクライブできるかどうか。|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|複数サブスクリプションの可否に関して、現在のユーザーがこの製品をサブスクライブできるかどうか。|  
