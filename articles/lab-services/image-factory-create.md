@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879150"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148987"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
-この記事では、[Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory)にあるサンプル スクリプトを使用してカスタム イメージ ファクトリを設定する方法について説明します。
+この記事では、[Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)にあるサンプル スクリプトを使用してカスタム イメージ ファクトリを設定する方法について説明します。
 
 ## <a name="whats-an-image-factory"></a>イメージ ファクトリについて
 イメージ ファクトリはコードとしての構成ソリューションです。イメージを定期的に、すべての必要な構成と共に、ビルドして配布します。 イメージ ファクトリ内のイメージは常に最新の状態であり、一度プロセス全体が自動化されると、継続的なメンテナンスはほぼゼロとなります。 また、必要な構成がすべてイメージ内に存在するため、ベース OS で VM が作成された後にシステムを手動で構成する時間を節約できます。
@@ -39,7 +39,7 @@ ms.locfileid: "58879150"
 
 ![ソリューションの概要](./media/create-image-factory/high-level-view-of-solution.png)
 
-[DevTest Labs 用の VSTS 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)を使用すると、次の各手順を行うことができます。 
+[DevTest Labs 用の VSTS 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)を使用すると、次の各手順を行うことができます。
 
 - カスタム イメージを作成する
 - VM を作成する

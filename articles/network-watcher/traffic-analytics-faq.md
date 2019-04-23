@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549373"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149288"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -72,7 +72,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 - 米国東部 2
 - 米国中北部
 - 米国中南部
-- 米国中央部
+- 米国中部
 - 米国西部
 - 米国西部 2
 - フランス中部
@@ -130,12 +130,6 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>"見つかりません" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?
 
 サポートされているリージョンを選択します。 サポートされていないリージョンを選択すると、[見つかりません] エラーが表示されます。 サポートされているリージョンについては、この記事で前述しています。
-
-## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>米国政府バージニア州の NSG を有効化しようとする際に、"...InternalServerError... のフローのログ設定を更新できませんでした" というエラーが返されるのはなぜですか?
-
-これは、"Microsoft.Network" リソース プロバイダーが米国政府バージニア州のサブスクリプション用に再登録されていないバグによるものです。 現在、担当チームがこの問題の修正に取り組んでいます。 この問題を回避するには、["Microsoft.Network" RP を手動で再登録する](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors)必要があります。 
-
-問題が解決しない場合は、サポートにお問い合わせください。 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>NSG フロー ログ ページの下に "読み込みに失敗しました" という状態が表示される場合はどうすればよいですか?
 

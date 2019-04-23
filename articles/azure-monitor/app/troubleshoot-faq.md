@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521824"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149284"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -26,7 +26,7 @@ ms.locfileid: "58521824"
 
 * [.NET アプリ](asp-net-troubleshoot-no-data.md)
 * [既に実行中のアプリの監視](monitor-performance-live-website-now.md#troubleshoot)
-* [Azure 診断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+* [Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Java Web アプリ](java-troubleshoot.md)
 
 *サーバーからデータを取得できません。*
@@ -118,7 +118,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 その他のソースから (構成する場合):
 
-* [Azure 診断](../platform/diagnostics-extension-to-application-insights.md)
+* [Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md)
 * [Analytics へのインポート](../platform/data-collector-api.md)
 * [Log Analytics](../platform/data-collector-api.md)
 * [Logstash](../platform/data-collector-api.md)
@@ -134,7 +134,7 @@ ASP.NET の場合は[こちら](api-filtering-sampling.md)、Java の場合は[�
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>市区町村や国などの geo ロケーション データはどのように計算されますか?
 
-Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) を使用しています。
+Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) を使用しています。
 
 * ブラウザー テレメトリ:送信者の IP アドレスを収集します。
 * サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
