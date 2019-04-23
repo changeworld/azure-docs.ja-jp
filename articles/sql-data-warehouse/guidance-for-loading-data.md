@@ -12,11 +12,11 @@ ms.author: cakarst
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
 ms.openlocfilehash: a8cb3714d11994b36991e56df7fc0f97d08c89ff
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256908"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791373"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータ読み込みのベスト プラクティス
 

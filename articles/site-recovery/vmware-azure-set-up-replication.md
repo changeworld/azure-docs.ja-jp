@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278226"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792455"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのレプリケーション ポリシーの構成と管理
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM を Azure に レプリケートする場合の、レプリケーション ポリシーの構成方法について説明します。

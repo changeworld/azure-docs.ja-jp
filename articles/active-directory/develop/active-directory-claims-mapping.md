@@ -14,11 +14,11 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260308"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791338"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -177,7 +177,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| username |
+| ユーザー名 |
 | uti |
 | ver |
 | verified_primary_email |

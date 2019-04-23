@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 3d35860452aabb6aecc4e8549c7b5ce4447d7aa4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047672"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789858"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 

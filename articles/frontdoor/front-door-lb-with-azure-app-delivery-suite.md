@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879661"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790326"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 

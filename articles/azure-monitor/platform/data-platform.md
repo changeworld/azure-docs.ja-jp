@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862065"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790928"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor データ プラットフォーム
 
@@ -67,12 +67,12 @@ Azure Monitor の分散トレースは、[Application Insights SDK](../app/distr
 
 次の表は、Azure Monitor のメトリックとログを比較しています。
 
-| 属性  | メトリック | ログ |
+| Attribute  | メトリック | ログ |
 |:---|:---|:---|
 | メリット | 軽量であり、アラートなどのリアルタイムに近いシナリオが可能です。 問題の迅速な検出に最適です。 | 豊富な分析クエリ言語を使用して分析されます。 詳細な分析と根本原因の識別に最適です。 |
 | データ | 数値のみ | テキストまたは数値データ |
-| 構造 | サンプリング時間、監視対象のリソース、数値を含むプロパティの標準セット。 一部のメトリックには、定義を深めるための複数のディメンションが含まれます。 | ログの種類に応じたプロパティの一意のセット。 |
-| 収集 | 一定の間隔で収集されます。 | イベントによってレコードの作成がトリガされるときに、散発的に収集される可能性があります。 |
+| Structure | サンプリング時間、監視対象のリソース、数値を含むプロパティの標準セット。 一部のメトリックには、定義を深めるための複数のディメンションが含まれます。 | ログの種類に応じたプロパティの一意のセット。 |
+| コレクション | 一定の間隔で収集されます。 | イベントによってレコードの作成がトリガされるときに、散発的に収集される可能性があります。 |
 | Azure portal に表示 | メトリックス エクスプローラー | Log Analytics |
 | 含まれるデータ ソース | Azure リソースから収集されたプラットフォームのメトリック。<br>Application Insights によって監視されるアプリケーション。<br>アプリケーションまたは API によってカスタム に定義される。 | アプリケーションと診断ログ。<br>監視ソリューション。<br>エージェントと VM 拡張機能。<br>アプリケーションの要求と例外。<br>Azure Security Center。<br>Data Collector API。 |
 

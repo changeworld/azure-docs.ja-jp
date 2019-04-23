@@ -15,11 +15,11 @@ ms.date: 04/03/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: f76dd423cb3f7fbae6cc88d064e49dc2d56f1a1c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045289"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792728"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 

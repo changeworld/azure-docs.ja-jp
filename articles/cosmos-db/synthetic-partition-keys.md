@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
 ms.openlocfilehash: 6b3499c36ae7abd03c4a1f1ca3a3a46e2c315120
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762737"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792100"
 ---
 # <a name="create-a-synthetic-partition-key"></a>合成パーティション キーの作成
 

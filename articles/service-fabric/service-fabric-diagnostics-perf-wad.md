@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric - Windows Azure 診断拡張機能を使用したパフォーマンスの監視 | Microsoft Docs
-description: Windows Azure 診断を使用して、Azure Service Fabric クラスターのパフォーマンス カウンターを収集します。
+title: Azure Service Fabric - Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視 | Microsoft Docs
+description: Windows Azure Diagnostics を使用して、Azure Service Fabric クラスターのパフォーマンス カウンターを収集します。
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049457"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791509"
 ---
-# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure 診断拡張機能を使用したパフォーマンスの監視
+# <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視
 
-このドキュメントでは、Windows Azure 診断 (WAD) 拡張機能を使用して Windows クラスター用のパフォーマンス カウンターの収集を設定するために必要な手順について説明します。 Linux クラスターの場合は、[Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)を設定して、ノードのパフォーマンス カウンターを収集します。 
+このドキュメントでは、Windows Azure Diagnostics (WAD) 拡張機能を使用して Windows クラスター用のパフォーマンス カウンターの収集を設定するために必要な手順について説明します。 Linux クラスターの場合は、[Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)を設定して、ノードのパフォーマンス カウンターを収集します。 
 
  > [!NOTE]
-> これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)をご覧ください。  
+> これらの手順が機能するように、WAD 拡張機能をクラスターにデプロイする必要があります。 セットアップが目的でなければ、[Windows Azure Diagnostics を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)をご覧ください。  
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

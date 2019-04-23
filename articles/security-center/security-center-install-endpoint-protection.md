@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494032"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789653"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Security Center での Endpoint Protection の問題の管理
 Azure Security Center では、マルウェア保護の状態を監視し、[Endpoint protection issues]\(Endpoint Protection の問題\) ブレードでこれを報告します。 Security Center では、仮想マシン (VM) やコンピューターをマルウェアの脅威に対して脆弱にする可能性のある問題 (検出された脅威や不十分な保護など) が示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\)** に表示される情報を使用して、特定された問題に対処する計画を立てることができます。

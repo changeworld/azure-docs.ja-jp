@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
 ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918163"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792480"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化
 クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。
@@ -107,7 +107,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 **Instances** プロパティによって、**RoleInstance** オブジェクトのコレクションが返されます。 このコレクションには常に、現在のインスタンスが含まれています。 ロールによって内部エンドポイントが定義されていない場合、コレクションに現在のインスタンスは含まれますが、その他のインスタンスは含まれません。 コレクション内のロール インスタンスの数は、そのロールの内部エンドポイントが定義されていない場合は常に 1 になります。 ロールによって内部エンドポイントが定義されている場合は、そのインスタンスは実行時に検索可能で、コレクション内のインスタンスの数は、そのロールに対してサービス構成ファイルで指定されたインスタンスの数に一致します。
 
 > [!NOTE]
-> Azure マネージド ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。 [Azure 診断](cloud-services-dotnet-diagnostics.md) を使用すると、実行中のロール インスタンスの情報を取得できます。
+> Azure マネージド ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。 [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) を使用すると、実行中のロール インスタンスの情報を取得できます。
 > 
 > 
 
