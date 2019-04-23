@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274792"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum Proof-of-Authority Consortium
@@ -220,7 +220,7 @@ SSH キー ([認証の種類] = [公開キー])|リモート ログインに使�
 リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||NA
 Location|リソース グループの Azure リージョン。||NA
 
-デプロイの例を次に示します: ![基本ブレード](./media/ethereum-poa-deployment/basic-blade.png)
+デプロイの例を次に示します: ![基本 ブレード](./media/ethereum-poa-deployment/basic-blade.png)
 
 #### <a name="deployment-regions"></a>Deployment regions (デプロイ リージョン)
 
@@ -252,9 +252,9 @@ Location|リソース グループの Azure リージョン。||NA
   Validator node storage performance (バリデーター ノード ストレージのパフォーマンス)|デプロイされる各バリデーター ノードをバッキングするマネージド ディスクの種類。|Standard SSD または Premium|Standard SSD
   Validator node virtual machine size (バリデーター ノードの仮想マシンのサイズ)|バリデーター ノードに使用される仮想マシンのサイズ。|Standard A、Standard D、Standard D-v2、Standard F シリーズ、Standard DS、Standard FS|Standard D1 v2
 
-[ストレージの料金詳細](https://azure.microsoft.com/pricing/details/managed-disks/)
+[Storage の料金詳細](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-[仮想マシンの料金詳細](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+[Virtual Machine の料金詳細](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 
 仮想マシンとストレージ層はネットワークのパフォーマンスに影響します。  必要なコスト効率に基づいて次の SKU をお勧めします。
 

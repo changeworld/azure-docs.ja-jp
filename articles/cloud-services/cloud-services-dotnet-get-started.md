@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917478"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
@@ -417,8 +417,8 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 以降のセクションでは、Azure 環境、BLOB、およびキューの操作に関連するコードについて説明します。 このチュートリアルでは、スキャフォールディングを使用した MVC コントローラーおよびビューの作成方法、SQL Server データベースで動作する Entity Framework コードの作成方法、ASP.NET 4.5 での非同期プログラミングの基礎については説明していません。 これらのトピックについては、次のリソースを参照してください。
 
-* [MVC 5 の概要](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
-* [EF 6 と MVC 5 の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
+* [ASP.NET MVC 5 の概要](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [MVC 5 を使用する Entity Framework 6 Code First の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc)
 * [.NET 4.5 での非同期プログラミングの概要](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)
 
 ### <a name="contosoadscommon---adcs"></a>ContosoAdsCommon - Ad.cs
@@ -703,7 +703,7 @@ public override void Run()
 
 ときには、キュー メッセージの内容が原因で処理エラーが生じることがあります。 このようなメッセージは *有害メッセージ*と呼ばれ、エラーをログに記録してループを再開するだけでは、このメッセージを処理する試みが際限なく繰り返されることになります。  そこで、catch ブロックに if ステートメントを含めて、アプリが現在のメッセージを処理しようと試みた回数を調べ、その回数が 5 回を超えた場合はメッセージをキューから削除するようにしています。
 
-`ProcessQueueMessage`  は、キュー メッセージが見つかったときに呼び出されます。
+`ProcessQueueMessage` は、キュー メッセージが見つかったときに呼び出されます。
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)
@@ -775,7 +775,7 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 
 詳細については、次のリソースを参照してください。
 
-* [Azure Cloud Services パート 1: はじめに](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure Cloud Services パート 1:概要](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

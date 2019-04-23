@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280946"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
@@ -48,7 +48,7 @@ Cosmos DB を使用すると、応答性に優れた世界規模のアプリケ�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>明確に定義された複数の整合性の選択肢
 
-Cosmos DB でグローバルに分散されたアプリケーションを構築する際に、極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、"*強固*"、"*有界整合性制約*"、"*セッション*"、"*一貫性のあるプレフィックス*"、"*最終*" という [5 つの明確な整合性の選択肢](consistency-levels.md)を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
+Cosmos DB でグローバルに分散されたアプリケーションを構築する際に、極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、"*強固*"、"*有界整合性制約*"、"*セッション*"、"*一貫性のあるプレフィックス*"、"*最終*" という [5 つの明確な整合性の選択肢](consistency-levels.md) -  を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
 
 ### <a name="no-schema-or-index-management"></a>スキーマやインデックスの管理が不要
 
@@ -98,7 +98,7 @@ Cosmos DB のコア概念である[ターンキー グローバル分散](distri
 以下のクイック スタートのいずれかに従って、実際に Azure Cosmos DB を使ってみましょう。
 
 * [Azure Cosmos DB SQL API を使ってみる](create-sql-api-dotnet.md)
-* [Azure Cosmos DB の MongoDB 用 API を使ってみる](create-mongodb-nodejs.md)
+* [Azure Cosmos DB の MongoDB 用 API の概要](create-mongodb-nodejs.md)
 * [Azure Cosmos DB Cassandra API を使ってみる](create-cassandra-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)

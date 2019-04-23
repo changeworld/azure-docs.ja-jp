@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050103"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>出品する仮想マシンの技術資産を作成する
@@ -57,9 +57,9 @@ VHD と VM の管理に役立つ次のスクリプト環境のいずれか一方
 
 また､開発環境には次にツールを加えることを推奨します｡ 
 
--   [Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   拡張機能: [Azure リソース マネージャー ツール[
+    *   拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     *   拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 

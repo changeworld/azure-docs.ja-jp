@@ -122,8 +122,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Product"></a> 製品  
- **製品** テンプレートを使用すると、開発者ポータルで製品 ページの本文をカスタマイズすることができます。  
+##  <a name="Product"></a> Product  
+ **Product** テンプレートを使用すると、開発者ポータルで製品 ページの本文をカスタマイズすることができます。  
   
  ![Developer portal product page](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793641"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management、Event Hubs、Moesif を使用した API の監視
@@ -293,7 +293,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` では、サービスに HTTP イベント データを簡単にプッシュできる [C# Moesif API ライブラリ](https://www.moesif.com/docs/api?csharp#events)が利用されています。 HTTP データを Moesif Collector API に送信するには、アカウントとアプリケーション ID が必要です。Moesif アプリケーション ID は、[Moesif の Web サイト](https://www.moesif.com)でアカウントを作成してから、"_右上のメニュー_" で _[App Setup]\(アプリ セットアップ\)_ に移動して取得します。
+`MoesifHttpMessageProcessor` では、サービスに HTTP イベント データを簡単にプッシュできる [C# Moesif API ライブラリ](https://www.moesif.com/docs/api?csharp#events)が利用されています。 HTTP データを Moesif Collector API に送信するには、アカウントとアプリケーション ID が必要です。Moesif アプリケーション ID は、[Moesif の Web サイト](https://www.moesif.com)でアカウントを作成してから、"_右上のメニュー_ -> " で _[App Setup]\(アプリ セットアップ\)_ に移動して取得します。
 
 ## <a name="complete-sample"></a>完全なサンプル
 サンプルの[ソース コード](https://github.com/dgilling/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](get-started-create-service-instance.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/common/storage-create-storage-account.md)が必要です。   
