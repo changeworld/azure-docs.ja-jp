@@ -98,7 +98,7 @@ Conversation Learner UI の外部でボットを実行するには、ボット�
 
 Conversation Learner Bot を Azure にデプロイするための手順を以下に示します。  これらの手順では、Azure DevOps Services、GitHub、BitBucket、OneDrive などのクラウド ベースのソースからご自分のボット ソースを使用できることを前提とし、継続的デプロイ用にボットを構成します。
 
-1. https://portal.azure.com で、Azure Portal にログインします。
+1.  https://portal.azure.com で、Azure Portal にログインします。
 
 2. 次の手順を実行して、新しい "Web App Bot" リソースを作成します。 
 

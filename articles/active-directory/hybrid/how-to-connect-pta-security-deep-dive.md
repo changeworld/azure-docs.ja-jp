@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096862"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617218"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -136,7 +136,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 4. ユーザーが **[ユーザー サインイン]** ページにユーザー名を入力し、**[次へ]** ボタンを選択します。
 5. ユーザーが **[ユーザー サインイン]** ページにパスワードを入力し、**[サインイン]** ボタンを選択します。
 6. ユーザー名とパスワードが HTTPS POST 要求で Azure AD STS に送信されます。
-7. Azure AD STS が、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。 
+7. Azure AD STS が、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。
     - テナントで登録された "N" 個の認証エージェントに対し、"N" 個の暗号化されたパスワード値が生成されます。
 8. Azure AD STS が、ユーザー名と暗号化されたパスワードの値で構成されるパスワード検証要求を、テナントに固有の Service Bus キューに配置します。
 9. 初期化された認証エージェントは Service Bus キューに永続的に接続されるため、使用可能な認証エージェントのいずれかがパスワード検証要求を取得します。
@@ -145,6 +145,9 @@ Azure AD の運用、サービス、データのセキュリティに関する�
     - この API は、フェデレーション サインイン シナリオでユーザーのサインイン時に Active Directory フェデレーション サービス (AD FS) によって使用されるものと同じ API です。
     - この API は、Windows Server の標準的な解決プロセスに従ってドメイン コントローラーを検索します。
 12. 認証エージェントが Active Directory から結果を受け取ります。成功、ユーザー名またはパスワードが正しくない、パスワードの期限が切れているなどです。
+
+   > [!NOTE]
+   > 認証エージェントがサインイン プロセスの間に失敗した場合は、サインイン要求全体が破棄されます。 ある認証エージェントからオンプレミスの別の認証エージェントに、サインイン要求が引き継がれることはありません。 これらのエージェントはクラウドのみと通信し、相互には通信しません。
 13. 認証エージェントは、ポート 443 を介して相互認証された送信 HTTPS チャネル経由で Azure AD STS に結果を戻します。 相互認証では、登録時に認証エージェントに対して以前に発行された証明書を使用します。
 14. Azure AD STS は、この結果がテナントの特定のサインイン要求と関連していることを確認します。
 15. Azure AD STS は、構成どおりにサインインの手順を続行します。 たとえば、パスワードの検証が成功した場合、ユーザーは Multi-Factor Authentication のためにチャレンジされるか、アプリケーションにリダイレクトされることがあります。
@@ -181,7 +184,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 
 ## <a name="auto-update-of-the-authentication-agents"></a>認証エージェントの自動更新
 
-アップデーター アプリケーションは、新しいバージョンがリリースされたときに自動的に認証エージェントを更新します。 このアプリケーションでは、テナントのパスワード検証要求は処理されません。 
+新しいバージョンが (バグ修正またはパフォーマンスの強化が行われて) リリースされると、アップデーター アプリケーションによって認証エージェントが自動的に更新されます。 アップデーター アプリケーションでは、テナントに対するパスワード検証要求は処理されません。
 
 Azure AD は、新しいバージョンのソフトウェアを、署名済みの **Windows インストーラー パッケージ (MSI)** としてホストします。 MSI への署名は、ダイジェスト アルゴリズムに SHA256 を指定した [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) を使用することによって行われます。 
 
@@ -203,7 +206,7 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
     - 認証エージェント サービスの再起動
 
 >[!NOTE]
->テナントに複数の認証エージェントが登録されている場合、Azure AD がそれらの証明書を同時に更新することはありません。 代わりに、Azure AD は段階的に更新し、サインイン要求の高可用性を確保します。
+>テナントに複数の認証エージェントが登録されている場合、Azure AD がそれらの証明書を同時に更新することはありません。 代わりに、Azure AD では一度に 1 つずつ行われて、サインイン要求の高可用性が保証されます。
 >
 
 

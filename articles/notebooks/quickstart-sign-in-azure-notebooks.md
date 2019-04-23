@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280861"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608186"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>クイック スタート:サインインとユーザー ID の設定
 
@@ -33,6 +33,9 @@ ms.locfileid: "59280861"
 1. 入力を求められたら、Microsoft アカウントか、職場または学校アカウントのメール アドレスを入力して、**[次へ]** を選択します。 アカウントの種類は、「[Your user account for Azure Notebooks (Azure Notebook のユーザー アカウント)](azure-notebooks-user-account.md)」で説明されています。 Microsoft アカウントがない場合、または Azure Notebooks 専用のアカウントにしたい場合は、**[Create one]\(作成\)** を選択します。
 
     ![サインイン プロンプトでの Microsoft アカウント新規作成コマンド](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > 既にアカウントが関連付けられている電子メール アドレスで新しいアカウントを作成しようとすると、「職場または学校のメール アドレスではここにサインアップできません。Gmail や Yahoo! などの個人用メールを使用するか、新しい Outlook メールを取得してください」というメッセージが表示される場合があります。 Use a personal email, such as Gmail or Yahoo!, or get a new Outlook email." その場合は、新しいアカウントを作成せずに仕事用メール アドレスでサインインしてみてください。
 
 1. パスワードを求められたら、入力します。
 
@@ -64,4 +67,4 @@ ms.locfileid: "59280861"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート:ノートブックの作成と共有](quickstart-create-share-jupyter-notebook.md)
+> [クイック スタート:ノートブックを作成して共有する](quickstart-create-share-jupyter-notebook.md)

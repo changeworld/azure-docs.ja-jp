@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497929"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996511"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -61,7 +61,7 @@ Azure Stack ワークロードで使用されるすべての仮想マシンは�
 各 Azure Stack 仮想マシンには一時的なディスク記憶域があり、ユーザーはボリューム `D:\` として利用できます。 Azure Backup が必要とするローカルのステージング領域は、`D:\` に内に配置するように構成できます。また、キャッシュ場所は `C:\` に配置できます。 このようにすると、Azure Backup Server 仮想マシンに接続されたデータ ディスクから記憶域を切り離す必要がありません。
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>ローカル ディスクと Azure にバックアップ データを保存する
-Azure Backup Server は、運用の復旧のために、仮想マシンに接続された Azure ディスクにバックアップ データを保存します。 ディスクと記憶域スペースが仮想マシンに接続されると、記憶域は Azure Backup Server で管理されます。 バックアップ データ記憶域のサイズは、各 [Azure Stack 仮想マシン](../azure-stack/user/azure-stack-storage-overview.md)に接続されているディスクの数とサイズによって変わります。 Azure Stack VM の各サイズには、仮想マシンに接続できるディスクの最大数があります。 たとえば、A2 は 4 ディスクです。 A3 は 8 ディスクです。 A4 は 16 ディスクです。 ここでも、ディスクのサイズと数によってバックアップ ストレージ プール全体が決まります。
+Azure Backup Server は、運用の復旧のために、仮想マシンに接続された Azure ディスクにバックアップ データを保存します。 ディスクと記憶域スペースが仮想マシンに接続されると、記憶域は Azure Backup Server で管理されます。 バックアップ データ記憶域のサイズは、各 [Azure Stack 仮想マシン](/azure-stack/user/azure-stack-storage-overview)に接続されているディスクの数とサイズによって変わります。 Azure Stack VM の各サイズには、仮想マシンに接続できるディスクの最大数があります。 たとえば、A2 は 4 ディスクです。 A3 は 8 ディスクです。 A4 は 16 ディスクです。 ここでも、ディスクのサイズと数によってバックアップ ストレージ プール全体が決まります。
 
 > [!IMPORTANT]
 > Azure Backup Server に接続されたディスク上に、5 日間を超える運用の復旧 (バックアップ) データを保持することは推奨**されません**。
@@ -73,7 +73,7 @@ Azure にバックアップ データを保存するには、Recovery Services �
  
 ### <a name="scaling-deployment"></a>展開のスケーリング
 展開をスケーリングするには、次の選択肢があります。
-  - スケールアップ - Azure Backup Server 仮想マシンのサイズを A シリーズから D シリーズに増やし、[Azure Stack 仮想マシンの手順に従って](../azure-stack/user/azure-stack-manage-vm-disks.md)ローカル記憶域を増やします。
+  - スケールアップ - Azure Backup Server 仮想マシンのサイズを A シリーズから D シリーズに増やし、[Azure Stack 仮想マシンの手順に従って](/azure-stack/user/azure-stack-manage-vm-disks)ローカル記憶域を増やします。
   - データをオフロードする - 古いデータを Azure に送信し、Azure Backup Server に接続された記憶域に最新のデータのみを保持します。
   - スケールアウト - Azure Backup Server をさらに追加してワークロードを保護します。
 

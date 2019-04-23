@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892434"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS アプリを作成する
@@ -49,7 +49,7 @@ ms.locfileid: "58892434"
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-xamarinios-app"></a>Xamarin.iOS アプリのダウンロードと実行
-1. [Azure ポータル] をブラウザー ウィンドウで開きます。
+1. [Azure Portal] をブラウザー ウィンドウで開きます。
 2. モバイル アプリの [設定] ブレードで、**[開始]**  >  **[Xamarin.iOS]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
       モバイル バックエンドに接続されているクライアント アプリケーションがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
@@ -88,4 +88,4 @@ ms.locfileid: "58892434"
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

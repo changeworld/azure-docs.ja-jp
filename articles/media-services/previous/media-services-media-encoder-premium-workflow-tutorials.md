@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189786"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523836"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
 ## <a name="overview"></a>概要
@@ -760,7 +760,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 *出力されたクリップ リストのログ*
 
-ビデオ ストリームとオーディオ ストリームがどのようにクリッピングされたかを確認するためにテスト ランを実行します。 ところが、トリミング ポイントの値を変えながら複数回にわたってテスト ランを実行すると、それらの値が考慮されていないことがわかります。 この理由は、Azure のランタイムとは異なり、デザイナーでは、実行の都度、クリップ リスト XML がオーバーライドされることはないためです。 つまり、この XML が変換されるのは、最初にクリッピングの開始と終了を設定したときだけです。それ以外は、2 つ目以降の trim 要素を追加できないようにするガード句 (if(clipListXML.indexOf("<trim>") == -1)) によって処理がスキップされます。
+ビデオ ストリームとオーディオ ストリームがどのようにクリッピングされたかを確認するためにテスト ランを実行します。 ところが、トリミング ポイントの値を変えながら複数回にわたってテスト ランを実行すると、それらの値が考慮されていないことがわかります。 この理由は、Azure のランタイムとは異なり、デザイナーでは、実行の都度、クリップ リスト XML がオーバーライドされることはないためです。 つまり、この XML が変換されるのは、最初にクリッピングの開始と終了を設定したときだけです。それ以外は、ワークフローが 2 つ目以降の trim 要素を追加できないようにするガード句 (if(`clipListXML.indexOf("<trim>") == -1`)) によって処理がスキップされます。
 
 ローカルでワークフローをテストしやすいように、既存の trim 要素があるかどうかを調べる監視コードを追加した方がよさそうです。 そうすれば、既存の要素を削除したうえで、新しい値を使って xml を更新することができます。 これは純粋な文字列操作よりも、文字どおり xml オブジェクト モデルの解析によって行った方がおそらく安全です。
 

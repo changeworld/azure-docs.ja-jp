@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2018
+ms.date: 04/10/2019
 ms.author: aljo
-ms.openlocfilehash: 379477cd063192fc8c23c73b4a8814ad13507043
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667534"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526539"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -87,7 +87,7 @@ ms.locfileid: "58667534"
 |MaxDataMigrationTimeout |時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 Fabric のアップグレードが実行された後のデータ移行復旧操作の最大タイムアウト。 |
 |MaxOperationRetryDelay |時間 (秒単位)、既定値は 5|動的| timespan を秒単位で指定します。 エラーが発生したときの内部再試行の最大遅延。 |
 |MaxOperationTimeout |時間 (秒単位)、既定値は MaxValue |動的| timespan を秒単位で指定します。 ClusterManager での操作を内部的に処理する際の最大グローバル タイムアウト。 |
-|MaxTimeoutRetryBuffer | 時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 タイムアウトによって内部的に再試行する際の操作の最大タイムアウトは <Original Time out> + <MaxTimeoutRetryBuffer> です。 その他のタイムアウトは、MinOperationTimeout 単位で追加されます。 |
+|MaxTimeoutRetryBuffer | 時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 タイムアウトによって内部的に再試行する際の操作の最大タイムアウトは `<Original Time out> + <MaxTimeoutRetryBuffer>` です。 その他のタイムアウトは、MinOperationTimeout 単位で追加されます。 |
 |MinOperationTimeout | 秒単位。既定値は 60 |動的|timespan を秒単位で指定します。 ClusterManager での操作を内部的に処理する際の最小グローバル タイムアウト。 |
 |MinReplicaSetSize |int、既定値は 3 |禁止|ClusterManager の MinReplicaSetSize。 |
 |PlacementConstraints | string、既定値は "" |禁止|ClusterManager の PlacementConstraints。 |
@@ -159,7 +159,7 @@ ms.locfileid: "58667534"
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |時間 (秒単位)、既定値は 2 |動的|timespan を秒単位で指定します。 クライアントがゲートウェイへの接続を開こうとするときの接続タイムアウト間隔。|
 |HealthOperationTimeout |時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 Health Manager に送信されるレポート メッセージのタイムアウト。 |
-|HealthReportRetrySendInterval |秒単位。既定値は 30 |動的|timespan を秒単位で指定します。 レポート コンポーネントが、累積した正常性レポートを Health Manager に再送信する間隔。 |
+|HealthReportRetrySendInterval |時間 (秒単位)、既定値は 30、最小値は 1 |動的|timespan を秒単位で指定します。 レポート コンポーネントが、累積した正常性レポートを Health Manager に再送信する間隔。 |
 |HealthReportSendInterval |秒単位。既定値は 30 |動的|timespan を秒単位で指定します。 レポート コンポーネントが、累積した正常性レポートを Health Manager に送信する間隔。 |
 |KeepAliveIntervalInSeconds |int、既定値は 20 |静的|FabricClient トランスポートが、ゲートウェイにキープアライブ メッセージを送信する間隔。 0 の場合、keepAlive は無効になります。 正の数を指定する必要があります。 |
 |MaxFileSenderThreads |uint、既定値は 10 |静的|並列転送されるファイルの最大数。 |
@@ -403,15 +403,19 @@ ms.locfileid: "58667534"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
+|AutomaticUnprovisionInterval|TimeSpan、既定値は Common::TimeSpan::FromMinutes(5)|動的|timespan を秒単位で指定します。 アプリケーションの種類の自動クリーンアップ中にアプリケーションの種類を登録解除するために許可されたクリーンアップ間隔。|
 |AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
 |AzureStorageMaxWorkerThreads | int、既定値は 25 |動的|並列 worker スレッドの最大数。 |
 |AzureStorageOperationTimeout | 時間 (秒単位)、既定値は 6000 |動的|timespan を秒単位で指定します。 xstore 操作が完了するまでのタイムアウト。 |
-|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|この構成は、成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。 |
+|CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。 |
+|CleanupUnusedApplicationTypes|ブール値、既定値は FALSE |動的|この構成が有効な場合は、未使用のアプリケーションの種類のバージョンが自動的に登録解除され、直近の未使用の 3 バージョンがスキップされるため、イメージ ストアが占有するディスク領域が削減されます。 自動クリーンアップはその特定のアプリケーションの種類のプロビジョニングが成功した後にトリガーされるだけでなく、すべてのアプリケーションの種類で、1 日に 1 回定期的に実行されます。 スキップする未使用のバージョンの数は、パラメーター "MaxUnusedAppTypeVersionsToKeep" を使用して構成できます。 |
 |DisableChecksumValidation | ブール値、既定値は false |静的| この構成により、アプリケーションのプロビジョニング時におけるチェックサムの検証を有効または無効にすることができます。 |
 |DisableServerSideCopy | ブール値、既定値は false |静的|この構成により、アプリケーションのプロビジョニング時における、ImageStore でのアプリケーション パッケージのサーバー側のコピーを有効または無効にできます。 |
 |ImageCachingEnabled | ブール値、既定値は true |静的|この構成により、キャッシュを有効または無効にすることができます。 |
 |ImageStoreConnectionString |SecureString |静的|ImageStore のルートへの接続文字列。 |
 |ImageStoreMinimumTransferBPS | int、既定値は 1024 |動的|クラスターと ImageStore 間の最小転送速度。 この値を使用して、外部 ImageStore にアクセスするときのタイムアウトを決定します。 クラスターが外部 ImageStore からダウンロードする際により多くの時間を確保できるように、クラスターと ImageStore 間の待機時間が長い場合にのみ、この値を変更します。 |
+|MaxUnusedAppTypeVersionsToKeep | int、既定値は 3 |動的|この構成により、クリーンアップでスキップされる未使用のアプリケーションの種類のバージョンの数が定義されます。 このパラメーターは、パラメーター CleanupUnusedApplicationTypes が有効になっている場合にのみ適用できます。 |
+
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |

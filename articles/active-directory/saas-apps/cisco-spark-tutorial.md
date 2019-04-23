@@ -16,10 +16,10 @@ ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 05127e8ecfe68b4cb6330f838f252557bbd5e11d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272701"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory と Cisco Webex の統合
@@ -107,9 +107,9 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
     ![[Cisco Webex のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のような URL を入力します:  `https://web.ciscospark.com/#/signin`
+    a. **[サインオン URL]** ボックスに、「`https://web.ciscospark.com/#/signin`」と入力します。
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://idbroker.webex.com/<Org Id>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://idbroker.webex.com/<Org Id>`
 
     > [!NOTE]
     > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 サービス プロバイダーのメタデータがある場合は、それを **[基本的な SAML 構成]** セクションでアップロードすれば、**[識別子 (エンティティ ID)]** の値が自動的に事前設定されます。

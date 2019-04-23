@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243621"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617633"
 ---
 # <a name="encoding-with-media-services"></a>Media Services でのエンコード
 
@@ -54,21 +54,40 @@ Media Services でエンコードする場合、プリセットを使用して�
 
 現在サポートされているプリセットは次のとおりです。
 
-- **EncoderNamedPreset.AdaptiveStreaming** (推奨)。 詳細については、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページを参照してください。
 - **EncoderNamedPreset.AACGoodQualityAudio** - 192kbps でエンコードされたステレオ オーディオのみを含む単一の MP4 ファイルを生成します。
+- **EncoderNamedPreset.AdaptiveStreaming** (推奨)。 詳細については、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページを参照してください。
+- **EncoderNamedPreset.ContentAwareEncodingExperimental** - コンテンツに対応したエンコードの実験用のプリセットを公開します。 入力コンテンツを指定すると、サービスにより、アダプティブ ストリーミングによる配信に最適なレイヤーの数および適切なビット レートと解像度の設定の決定が、自動的に試みられます。 基になるアルゴリズムは、時間と共に進化を続けています。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、「[コンテンツに対応したエンコードの試験的プリセット](cae-experimental.md)」を参照してください。
 - **EncoderNamedPreset.H264MultipleBitrate1080p** - GOP がアラインメントされた、ビットレートが 6,000 kbps から 400 kbps、オーディオが AAC ステレオである 8 つの MP4 ファイルを生成します。 解像度の上限は 1080p で下限は 360p です。
 - **EncoderNamedPreset.H264MultipleBitrate720p** - GOP がアラインメントされた、ビットレートが 3,400 kbps から 400 kbps、オーディオが AAC ステレオである 6 つの MP4 ファイルを生成します。 解像度の上限は 720p で下限は 360p です。
-- **EncoderNamedPreset.H264MultipleBitrateSD** - GOP がアラインメントされた、ビットレートが 1,600 kbps から 400 kbps、オーディオが AAC ステレオである 5 つの MP4 ファイルを生成します。 解像度の上限は 480p で下限は 360p です。<br/><br/>詳細については、[ファイルのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)に関するページを参照してください。
+- **EncoderNamedPreset.H264MultipleBitrateSD** - GOP がアラインメントされた、ビットレートが 1,600 kbps から 400 kbps、オーディオが AAC ステレオである 5 つの MP4 ファイルを生成します。 解像度の上限は 480p で下限は 360p です。
+- **EncoderNamedPreset.H264SingleBitrate1080p** - ビデオが 6750 kbps の H.264 コーデックと 1080 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
+- **EncoderNamedPreset.H264SingleBitrate720p** - ビデオが 4500 kbps の H.264 コーデックと 720 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
+- **EncoderNamedPreset.H264SingleBitrateSD** - ビデオが 2200 kbps の H.264 コーデックと 480 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
+
+最新のプリセットの一覧を見るには、[ビデオのエンコードに使用される組み込みのプリセット](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)に関する記事をご覧ください。
+
+プリセットがどのように使われるかについては、[ファイルのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)に関する記事をご覧ください。
 
 ### <a name="standardencoderpreset-preset"></a>StandardEncoderPreset プリセット
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) には、Standard Encoder を使用して入力ビデオをエンコードするときに使用する設定を記述します。 変換プリセットをカスタマイズする場合は、このプリセットを使用します。 
 
-#### <a name="custom-presets"></a>カスタム プリセット
+#### <a name="considerations"></a>考慮事項
 
-Media Services では、特定のエンコーディング ニーズと要件を満たすようにプリセットのすべての値をカスタマイズできます。 変換プリセットをカスタマイズする場合は、**StandardEncoderPreset** プリセットを使用します。 詳細な説明と例については、[エンコーダー プリセットのカスタマイズ方法](customize-encoder-presets-how-to.md)に関するページを参照してください。
+カスタム プリセットを作成するときは、次の考慮事項が適用されます。
 
-## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケール
+- AVC コンテンツの高さと幅のすべての値は、4 の倍数である必要があります。
+- Azure Media Services v3 では、エンコード ビットレートはすべてビット/秒単位で指定されます。 これは v2 API のプリセットとは異なります。v2 では、キロビット/秒が単位として使用されていました。 たとえば、v2 でビットレートが 128 (キロビット/秒) に指定されていた場合、v3 では 128000 (ビット/秒) に設定されます。
+
+#### <a name="examples"></a>例
+
+Media Services では、特定のエンコーディング ニーズと要件を満たすようにプリセットのすべての値をカスタマイズできます。 エンコーダー プリセットをカスタマイズする方法の例については、以下をご覧ください。
+
+- [.NET でプリセットをカスタマイズする](customize-encoder-presets-how-to.md)
+- [CLI でプリセットをカスタマイズする](custom-preset-cli-howto.md)
+- [REST でプリセットをカスタマイズする](custom-preset-rest-howto.md)
+
+## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
 

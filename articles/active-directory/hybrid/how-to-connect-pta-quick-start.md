@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101008"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617803"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -111,7 +111,15 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 >[!IMPORTANT]
 >運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 
-次の手順に従って、認証エージェント ソフトウェアをダウンロードします。
+複数のパススルー認証エージェントをインストールすると高可用性が確保されますが、認証エージェント間の確定的な負荷分散は提供されません。 テナントに必要な認証エージェントの数を決定するには、テナントで発生することが予想されるサインイン要求のピーク時と平均の負荷を検討します。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300 - 400 の認証を処理できます。
+
+ネットワーク トラフィックを見積もるには、サイズ設定に関する次のガイダンスに従ってください。
+- 各要求のペイロード サイズは、(0.5K + 1K * num_of_agents) バイトで、これは Azure AD から認証エージェントへのデータ量に相当します。 ここで "num_of_agents" は、テナントに登録されている認証エージェントの数を示します。
+- 各応答のペイロード サイズは 1K バイトで、これは認証エージェントから Azure AD へのデータ量に相当します。
+
+ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 3 つの認証エージェントがあれば十分です。 サインインの待機時間を向上させるために、認証エージェントは、ドメイン コントローラーの近くにインストールする必要があります。
+
+最初に、次の手順に従って、認証エージェント ソフトウェアをダウンロードします。
 
 1. 最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードするには、テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
@@ -141,6 +149,13 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 3. **C:\Program Files\Microsoft Azure AD Connect 認証エージェント**に移動し、作成済みの `$cred` オブジェクトを使用して次のスクリプトを実行します。
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+>[!IMPORTANT]
+>仮想マシンに認証エージェントをインストールする場合は、仮想マシンを複製して、別の認証エージェントを設定することはできません。 この方法は**サポートされていません**。
+
+## <a name="step-5-configure-smart-lockout-capability"></a>手順 5:スマート ロックアウト機能を構成する
+
+スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 Azure AD でのスマート ロックアウトの設定と、オンプレミスの Active Directory での適切なロックアウトの設定の両方または一方を構成することにより、攻撃は Active Directory に到達する前にフィルターで除去されます。 テナントにスマート ロックアウトの設定を構成してユーザー アカウントを保護する方法の詳細については、[こちらの記事](../authentication/howto-password-smart-lockout.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - [AD FS からパススルー認証への移行](https://aka.ms/adfstoptadp) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。

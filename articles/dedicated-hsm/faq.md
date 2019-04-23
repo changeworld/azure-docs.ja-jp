@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/27/2019
+ms.date: 4/15/2019
 ms.author: barclayn
-ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540824"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608865"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -155,7 +155,11 @@ Azure 専用 HSM は、移行のシナリオに最適です。 つまり、既�
 
 Microsoft は HSM に対して、管理制御または暗号制御を行うことはできません。 Microsoft では、温度やコンポーネントの正常性などの基本のテレメトリを取得するために、シリアル ポート接続経由で監視レベルのアクセス権を保持しています。 これにより、Microsoft では、正常性の問題に関する事前通知を提供しています。 必要に応じて、お客様はこのアカウントを無効にできます。
 
-### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Q: Microsoft または Microsoft の担当者は、ユーザーの専用 HSM 内のキーにアクセスできますか。
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Q:Microsoft で使われている "tenantadmin" アカウントとは何ですか。SafeNet HSM で管理者ユーザーは "admin" であるのに慣れています。
+
+HSM デバイスには、既定の管理者ユーザーと通常の既定のパスワードが付属しています。 Microsoft は、デバイスがプール内でお客様によるプロビジョニングを待っている間、既定のパスワードが使用されるのを望みませんでした。 これは、弊社の厳密なセキュリティ要件を満たしません。 このため、プロビジョニング時に破棄される強力なパスワードが設定されています。 また、プロビジョニング時には、"tenantadmin" という名前の管理者ロールで、新しいユーザーが作成されます。 このユーザーには既定のパスワードが設定されており、お客様は、新しくプロビジョニングされたデバイスに初めてログインするときに、最初のアクションとしてこれを変更します。 このプロセスにより、高度なセキュリティが確保され、お客様に対する唯一の管理制御という約束が維持されます。 お客様がそのアカウントの使用を希望される場合、"tenantadmin" ユーザーを使って管理者ユーザーのパスワードをリセットできることに注意する必要があります。 
+
+### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Q:Microsoft または Microsoft の担当者は、ユーザーの専用 HSM 内のキーにアクセスできますか。
 
 いいえ。 お客様に割り当てられている専用 HSM に格納されたキーに対しては、Microsoft はアクセス権を保持しません。
 
@@ -181,7 +185,7 @@ HSM およびパーティションの管理には、Gemalto のHSM クライア�
 
 ## <a name="high-availability"></a>高可用性
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Q: 同じリージョン内で、または複数のリージョンにまたがって高可用性を構成できますか。
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Q:同じリージョン内で、または複数のリージョンにまたがって高可用性を構成できますか。
 
 はい。 高可用性の構成とセットアップは、Gemalto が提供する HSM クライアント ソフトウェアで実行されます。 同一リージョン内またはリージョン間での同じ VNET または別の VNET からの HSM や、サイト対サイトまたはポイント ツー ポイントの VPN を使用して VNET に接続されているオンプレミス HSM は、同じ高可用性の構成に追加できます。 これによってキー マテリアルのみが同期し、ロールなど特定の構成項目は同期されないことに注意する必要があります。
 

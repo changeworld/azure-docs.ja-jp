@@ -26,7 +26,7 @@ Name    |説明                                        |type       | 操作
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                                          |Int64      |等しい
 Ti      |論文のタイトル                                        |String     |Equals、<br/>StartsWith
-L       |"\@@@" で区切られた論文の言語コード            |String     |等しい
+L       | "\@@@" で区切られた論文の言語コード            |String     |等しい
 Y       |論文の年                                         |Int32      |Equals、<br/>IsBetween
 D       |論文の日付                                         |Date       |Equals、<br/>IsBetween
 CC      |引用数                                     |Int32      |なし  

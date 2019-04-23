@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
-ms.author: carlrab
+ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 04/11/2019
+ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486820"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549697"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のコピーを作成する
 
@@ -90,10 +90,16 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
+    
+> [!IMPORTANT]
+> T-SQL COPY コマンドを発行するクライアントの IP からのインバウンド接続を許可するように、両方のサーバーのファイアウォールを構成する必要があります。
 
-## <a name="to-move-a-database-between-subscriptions"></a>サブスクリプション間でデータベースを移動するには
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>別のサブスクリプションに SQL データベースをコピーする
 
-[Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]** をクリックし、移動するリソースと移動先のサブスクリプションを選択します。
+前のセクションに示された手順を使用して、別のサブスクリプションの SQL Database サーバーにデータベースをコピーすることができます。 名前とパスワードがソース データベースのデータベース所有者と同じであるログインを使用しており、それが dbmanager ロールのメンバーであるか、サーバーレベルのプリンシパル ログインであることを確認してください。 
+
+> [!NOTE]
+> [Azure portal](https://portal.azure.com) では、別のサブスクリプションへのコピーはサポートされていません。ポータルでは ARM API を呼び出し、サブスクリプション資格情報を使用して、geo レプリケーションに関係する両方のサーバーにアクセスするためです。  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 

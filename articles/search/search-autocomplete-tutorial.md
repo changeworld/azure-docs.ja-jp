@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9fb3cdd4b4b809e45180cd95b8fe930cce86826e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498810"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495738"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>例:お使いの Azure Search アプリケーションに検索候補またはオートコンプリートを追加する
 
-この例では、[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)および[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)を使用して、入力との並行検索の動作をサポートするパワフルな検索ボックスを作成します。
+この記事では、[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)および[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)を使用して、search-as-you-type (入力と並行して検索) の動作をサポートするパワフルな検索ボックスを作成します。
 
-+ *検索候補*は、入力時に生成される候補の結果の一覧です。各検索候補は、それまでにユーザーが入力した内容と一致するインデックスからの単一の結果です。 
++ *検索候補*は、入力時に生成される候補の結果です。各検索候補は、それまでにユーザーが入力した内容と一致するインデックスからの単一の結果です。 
 
-+ *オートコンプリート* ([プレビュー機能)](search-api-preview.md) は、ユーザーが現在入力している単語または語句を「完成」させます。 検索候補と同様に、完成された単語や語句はインデックスでの一致に基づいています。 
++ *オートコンプリート* ([プレビュー機能)](search-api-preview.md) は、ユーザーが現在入力している単語または語句を「完成」させます。 結果が返される代わりに、クリエが完成されます。ユーザーがそのクエリを実行し、結果を返すことができます。 検索候補と同様に、クエリ内の完成された単語や語句はインデックスでの一致に基づいています。 インデックスでゼロの結果を返すクエリはこのサービスから提供されません。
 
 **DotNetHowToAutocomplete** のサンプル コードをダウンロードして実行し、これらの機能を評価できます。 サンプル コードは、[NYCJobs デモ データ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)を使用して設定される事前構築済みのインデックスをターゲットとします。 NYCJobs インデックスには、[Suggester の作成](index-add-suggesters.md)が含まれます。これは、検索候補またはオートコンプリートを使用する場合の要件です。 サンドボックス サービスでホストされる用意されたインデックスを使用するか、NYCJobs サンプル ソリューション内のデータ ローダーを使用して[独自のインデックスにデータを設定](#configure-app)できます。 
 
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-上記のコードは、ページの読み込み時にブラウザーで実行され、"example1a" 入力ボックスの jQuery UI オートコンプリートを構成します。  `minLength: 3` は、検索ボックスに少なくとも 3 文字が入力されたときのみ、検索候補を表示することを保証します。  重要なのは、source 値です。
+上記のコードは、ページの読み込み時にブラウザーで実行され、"example1a" 入力ボックスの jQuery UI オートコンプリートを構成します。  `minLength: 3` により、検索ボックスに少なくとも 3 文字が入力されたときのみ、検索候補が表示されます。  重要なのは、source 値です。
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",
@@ -156,7 +156,7 @@ $(function () {
 });
 ```
 
-## <a name="c-version"></a>C# バージョン
+## <a name="c-example"></a>C# の例
 
 Web ページの JavaScript コードの見直しが終わったので、次は、Azure Search .NET SDK を使用して検索候補の一致を実際に取得するサーバー側の C# コントローラー コードを見ていきましょう。
 
@@ -164,7 +164,7 @@ Controllers ディレクトリ内の **HomeController.cs** ファイルを開き
 
 最初に気付くのは、クラスの上部にある `InitSearch` と呼ばれるメソッドです。 これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。 詳細については、「[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」をご覧ください。
 
-行 41 の Suggest 関数に注目してください。 これは、[DocumentsOperationsExtensions.Suggest メソッド](https://docs.microsoft.com/dotnet/api/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview)に基づいています。
+行 41 の Suggest 関数に注目してください。 これは、[DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview)に基づいています。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -229,9 +229,11 @@ Autocomplete 関数は、検索用語の入力を取得します。 このメソ
 
 ページ上のその他の例でも、同じパターンに従って、ヒットの強調表示と、オートコンプリートの結果のクライアント側のキャッシュをサポートするファセットが追加されています。 これらを見直してそのしくみを理解し、検索エクスペリエンスでどのように活用するかを判断してください。
 
-## <a name="javascript-version-with-rest"></a>REST を使用した JavaScript バージョン
+## <a name="javascript-example"></a>JavaScript の例
 
-JavaScript での実装では、**IndexJavaScript.cshtml** を開きます。 検索ボックスに jQuery UI Autocomplete 関数も使用され、検索用語の入力を収集し、検索候補の一致または完成された用語を取得するために Azure Search に非同期呼び出しを実行します。 
+オートコンプリートと検索候補の JavaScript 実装により REST API が呼び出されます。その際、ソースとして URI が使用され、インデックスと操作が指定されます。 
+
+JavaScript 実装を確認するには、**IndexJavaScript.cshtml** を開きます。 検索ボックスに jQuery UI Autocomplete 関数も使用され、検索用語の入力を収集し、検索候補の一致または完成された用語を取得するために Azure Search に非同期呼び出しを実行します。 
 
 最初の例の JavaScript コードを見てみましょう。
 

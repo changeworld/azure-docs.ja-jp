@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917619"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
@@ -88,7 +88,7 @@ EXIT /B 0
 > 
 
 ## <a name="description-of-task-attributes"></a>タスクの属性の説明
-次に、 **ServiceDefinition.csdef** ファイルの [Task] 要素の属性について説明します。
+次に、 **ServiceDefinition.csdef** ファイルの [ServiceDefinition.csdef] 要素の属性について説明します。
 
 **commandLine** -スタートアップ タスクのコマンド ラインを指定します。
 
@@ -111,7 +111,7 @@ EXIT /B 0
 
 **taskType** -スタートアップ タスクを実行する方法を指定します。
 
-* **simple**  
+* **単純な**  
   タスクは、 [ServiceDefinition.csdef] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。 ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。 それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。   
   
   > [!NOTE]
@@ -122,7 +122,7 @@ EXIT /B 0
     バッチ ファイルを 0 の **errorlevel** で確実に終了させるには、バッチ ファイル プロセスの最後で `EXIT /B 0` コマンドを実行します。
 * **background**  
    タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
-* **foreground**  
+* **フォアグラウンド**  
    タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
 
 ## <a name="environment-variables"></a>環境変数
@@ -130,9 +130,9 @@ EXIT /B 0
 
 スタートアップ タスクの環境変数には、静的環境変数と、 [RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。 どちらも [ServiceDefinition.csdef] ファイルの [Environment] セクションにあり、[Variable] 要素と **name** 属性を使用します。
 
-静的環境変数は、 **Variable** 要素の [value] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
+静的環境変数は、 **Variable** 要素の [Variable] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
 
-RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [value] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
+RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [Variable] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
 
 たとえば、インスタンスがコンピューティング エミュレーターで実行しているときは "**true**"、クラウドで実行しているときは "**false**" になる環境変数を作成するには、次の [Variable] 要素と [RoleInstanceValue] 要素を使用します。
 
@@ -161,10 +161,10 @@ Cloud Service で [一般的なスタートアップ タスク](cloud-services-s
 [パッケージ化](cloud-services-model-and-package.md) します。  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[タスク]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[ランタイム]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[可変]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
+[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

@@ -8,11 +8,11 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: d27f2495c70dbe6e10fb3adf5370a31903be3abf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267925"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792403"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルをデプロイする
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側の **[はじめに]** ページで、_[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
-1. _[その他のサンプル]_ の下で **[ISO 27001:Shared Services]\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**[このサンプルを使用する]** を選択します。
+1. [その他のサンプル] の下で **[ISO 27001:Shared Services]\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**[このサンプルを使用する]** を選択します。
 
 1. ブループリント サンプルの _[基本]_ を入力します。
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895547"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528035"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
@@ -24,7 +24,15 @@ ms.locfileid: "58895547"
 
 ## <a name="entity-compared-to-intent"></a>エンティティと意図の比較
 
-エンティティは、抽出しようとしている発話内の単語またはフレーズを表します。 発話には、多数のエンティティを含めることも、まったく含めないこともできます。 エンティティは、類似したオブジェクトのコレクション (場所、もの、人、イベント、または概念) を含むクラスを表します。 エンティティは、意図に関連する情報を説明し、アプリがタスクを実行するうえで不可欠なこともあります。 たとえば、ニュース検索アプリには、"トピック"、"ソース"、"キーワード"、"公開日" などのエンティティが含まれることがありますが、これらはニュースを検索する際のキー データです。 旅行予約アプリでは、"場所"、"日付"、"航空会社"、"旅行クラス"、および "チケット" が、航空券の予約のキー情報です ("航空券予約" という意図に関連して)。
+エンティティは、抽出しようとしている発話内の単語またはフレーズを表します。 発話には、多数のエンティティを含めることも、まったく含めないこともできます。 クライアント アプリケーションでは、そのタスクを実行するため、あるいはユーザーに提示するいくつかの選択肢のガイドとして使用するためのエンティティが必要になる場合があります。 
+
+エンティティでは次のことを行います。
+
+* 類似したオブジェクトのコレクション (場所、もの、人、イベント、または概念) を含むクラスを表す。 
+* 意図に関連する情報を説明する
+
+
+たとえば、ニュース検索アプリには、"トピック"、"ソース"、"キーワード"、"公開日" などのエンティティが含まれることがありますが、これらはニュースを検索する際のキー データです。 旅行予約アプリでは、"場所"、"日付"、"航空会社"、"旅行クラス"、および "チケット" が、航空券の予約のキー情報です ("航空券予約" という意図に関連して)。
 
 一方、意図は、発話全体の予測を表します。 
 
@@ -89,14 +97,14 @@ LUIS では、さまざまな種類のエンティティが提供されます。
 |機械学習|マーク可能|チュートリアル|例<br>Response|エンティティの種類|目的|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**複合**](#composite-entity)|エンティティ型に関係なく、エンティティのグループ。|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**階層構造**](#hierarchical-entity)|シンプルなエンティティのグループ。|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**List**](#list-entity)|項目の一覧と、完全なテキスト一致を使用して抽出されたそれらのシノニム。|
+|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**階層構造**](#hierarchical-entity)|シンプルなエンティティのグループ。|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**リスト**](#list-entity)|項目の一覧と、完全なテキスト一致を使用して抽出されたそれらのシノニム。|
 |混合||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|エンティティの末尾の特定が困難なエンティティ。|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**事前構築済み**](#prebuilt-entity)|さまざまな種類のデータを抽出するために既にトレーニングされています。|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**正規表現**](#regular-expression-entity)|正規表現を使用してテキストを照合します。|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**シンプル**](#simple-entity)|単語または語句に 1 つの概念が含まれています。|
 
-すべての意図の発話の例では、機械学習エンティティのみをマークする必要があります。 機械学習エンティティは、[エンドポイント クエリ](luis-concept-test.md#endpoint-testing)を使用してテストし、[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)を行うと、最適に動作します。 
+発話の例では、機械学習エンティティのみをマークする必要があります。 機械学習エンティティは、[エンドポイント クエリ](luis-concept-test.md#endpoint-testing)を使用してテストし、[エンドポイントの発話の確認](luis-how-to-review-endoint-utt.md)を行うと、最適に動作します。 
 
 Pattern.any エンティティは、意図のユーザー例内ではなく、[パターン](luis-how-to-model-intent-pattern.md) テンプレート例内でマークする必要があります。 
 
@@ -121,29 +129,15 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 ## <a name="hierarchical-entity"></a>階層構造エンティティ
 
+**階層エンティティは最終的に非推奨になります。エンティティのサブタイプを決定するには、階層エンティティではなく、[エンティティ ロール](luis-concept-roles.md)を使用します。**
+
 階層構造エンティティは、コンテキストから学習された子と呼ばれるシンプル エンティティのカテゴリです。
-
-このエンティティは、次のようなデータに最適です。
-
-* シンプル エンティティである。
-* 発話のコンテキストで相互に関連する。
-* 特定の単語の選択を使用して、それぞれの子エンティティを表す  ("から/への"、"を出て/に向かう"、"から/に" などの単語)。
-* 子が同じ発話内に頻出する。 
-* クライアント アプリによって情報の単位としてグループ化され、処理される必要がある。
-
-次の場合は使用しないでください。
-
-* コンテキストに関係なく、子にテキストが完全に一致するエンティティが必要。 代わりに[リスト エンティティ](#list-entity)を使用してください。 
-* 他のエンティティ型と親子関係があるエンティティが必要。 [複合エンティティ](#composite-entity)を使用してください。
 
 ![階層構造エンティティ](./media/luis-concept-entities/hierarchical-entity.png)
 
-[チュートリアル](luis-quickstart-intent-and-hier-entity.md)<br>
-[エンティティの JSON 応答例](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
-
 ### <a name="roles-versus-hierarchical-entities"></a>ロールと階層エンティティ
 
-パターンの[ロール](luis-concept-roles.md#roles-versus-hierarchical-entities)は、階層型エンティティと同じ問題を解決しますが、すべてのエンティティ型に適用されます。 ロールは、現在パターンでのみ使用できます。 ロールは、意図の発話の例で使用できません。  
+[ロール](luis-concept-roles.md)では階層エンティティと同じ問題を解決しますが、すべてのエンティティの種類に適用されます。  
 
 ## <a name="list-entity"></a>リスト エンティティ
 
@@ -262,24 +256,15 @@ LUIS ポータルでは、事前構築済みエンティティがご自分のカ
 
 [制限](luis-boundaries.md#model-boundaries)を確認して、モデルに追加できるエンティティの種類ごとの数を把握してください。
 
-## <a name="composite-vs-hierarchical-entities"></a>複合エンティティと階層構造エンティティの比較
-
-複合エンティティと階層構造エンティティは、どちらも親子関係を持ち、機械学習されます。 機械学習により、LUIS では、異なるコンテキスト (単語の配置) に基づいてエンティティを理解できます。 複合エンティティでは、子としてさまざまな種類のエンティティを使用できるため、より柔軟です。 階層構造エンティティの子は、シンプルなエンティティのみです。 
-
-|Type|目的|例|
-|--|--|--|
-|階層構造|シンプルなエンティティの親子|Location.Origin=New York<br>Location.Destination=London|
-|複合|親子エンティティ: 事前構築済み、リスト、シンプル、階層構造| number=3<br>list=first class<br>prebuilt.datetimeV2=March 5|
-
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>最大数を超えるエンティティが必要な場合 
 
-階層構造エンティティと複合エンティティを使用することが必要になる場合があります。 階層構造エンティティには、特性を共有しているエンティティ間や、カテゴリのメンバーであるエンティティ間の関係が反映されます。 子エンティティは、その親のカテゴリのすべてのメンバーです。 たとえば、PlaneTicketClass という名前の階層構造エンティティは、子エンティティ EconomyClass および FirstClass を持つことができます。 階層の範囲は、1 つのレベルの深さのみです。  
+エンティティ ロールと組み合わせて複合エンティティを使用する必要がある場合があります。
 
-複合エンティティは、全体の一部を表します。 たとえば、PlaneTicketOrder をという名前の複合エンティティは、子エンティティ Airline、Destination、DepartureCity、DepartureDate、および PlaneTicketClass を持つことができます。 複合エンティティは、既存のシンプルなエンティティ、階層構造エンティティの子、または事前構築済みのエンティティから作成します。  
+複合エンティティは、全体の一部を表します。 たとえば、PlaneTicketOrder をという名前の複合エンティティは、子エンティティ Airline、Destination、DepartureCity、DepartureDate、および PlaneTicketClass を持つことができます。
 
 LUIS には、機械学習は行われないが、LUIS アプリに固定の値リストを指定できるリスト エンティティ型も用意されています。 「[LUIS Boundaries (LUIS の境界)](luis-boundaries.md)」を参照し、リスト エンティティの種類の制限を確認してください。 
 
-階層構造エンティティ、複合エンティティ、リスト エンティティを検討した結果、制限を超えるエンティティが必要な場合は、サポートにお問い合わせください。 それを行うには、システムに関する詳細情報を収集し、[LUIS](luis-reference-regions.md#luis-website) Web サイトにアクセスして **[サポート]** を選択します。 Azure サブスクリプションにサポート サービスが含まれている場合は、[Azure のテクニカル サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 
+これらのエンティティを検討し、それでも制限を超えるエンティティが必要な場合は、サポートにお問い合わせください。 それを行うには、システムに関する詳細情報を収集し、[LUIS](luis-reference-regions.md#luis-website) Web サイトにアクセスして **[サポート]** を選択します。 Azure サブスクリプションにサポート サービスが含まれている場合は、[Azure のテクニカル サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 
 
 ## <a name="next-steps"></a>次の手順
 

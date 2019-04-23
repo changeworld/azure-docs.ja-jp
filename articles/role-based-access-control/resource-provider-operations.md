@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2cceaf61129c6c756fadb3d41e825264fa23331f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6c3accdd74ce3277181f6cdfc890de0d8c55bf07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278872"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549541"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
-この記事は、Azure Resource Manager の各リソース プロバイダーで使用できる操作の一覧です。 これらの操作を[カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに詳細な[ロールベースのアクセス制御 (RBAC)](overview.md) を提供できます。 操作文字列は、次の形式です。 `{Company}.{ProviderName}/{resourceType}/{action}`
+この記事は、Azure Resource Manager の各リソース プロバイダーで使用できる操作の一覧です。 これらの操作を[カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに詳細な[ロールベースのアクセス制御 (RBAC)](overview.md) を提供できます。 操作文字列は、`{Company}.{ProviderName}/{resourceType}/{action}` という形式です。
 
 リソース プロバイダー操作は常に進化しています。 最新の操作を取得するには、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) または [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) を使用してください。
 
@@ -1092,57 +1092,43 @@ ms.locfileid: "59278872"
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | 指定された顔リストを削除します。 顔リスト内の関連する顔画像も削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/delete | 指定された faceListId と persisitedFaceId に基づいて顔リストから顔を削除します。 関連する顔画像も削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/write | 指定された顔リストに顔を追加します (最大 1,000 個)。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | 顔リストの faceListId、name、userData、および顔リスト内の顔を取得します。
-顔リストの faceListId、name、userData を一覧表示します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | ユーザーが指定した faceListId、name、および userData (オプション) を使用して空の顔リストを作成します。 最大 64 個の顔リストが許可されています。
-name と userData など、顔リストの情報を更新します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | 顔リストの faceListId、name、userData、および顔リスト内の顔を取得します。 顔リストの faceListId、name、userData を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | ユーザーが指定した faceListId、name、および userData (オプション) を使用して空の顔リストを作成します。 最大 64 個の顔リストが許可されています name と userData 含む、顔リストの情報を更新します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/findsimilars/action | 与えられたクエリの顔の faceId に対して、faceId 配列、顔リスト、または大規模顔リストから類似の顔を検索します。 faceId |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/group/action | 顔の類似性に基づいて候補の顔をグループ分けします。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/identify/action | 1 対多の識別により、人物グループまたは大規模人物グループから、特定のクエリの人物の顔に最も近い一致を見つけます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/delete | 指定された大規模顔リストを削除します。 大規模顔リスト内の関連する顔画像も削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/delete | 指定された largeFaceListId と persisitedFaceId に基づいて大規模顔リストから顔を削除します。 関連する顔画像も削除されます。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | largeFaceListId と persistedFaceId に基づいて大規模顔リストで永続化されている顔を取得します。
-指定された大規模顔リスト内の顔の persistedFaceId と userData を一覧表示します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | 指定された大規模顔リストに顔を追加します (最大 1,000,000 個)。
-persistedFaceId に基づいて、大規模顔リスト内の指定された顔の userData フィールドを更新します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | 大規模顔リストの largeFaceListId、name、userData を取得します。
-大規模顔リストの情報 (largeFaceListId、name、および userData) を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | largeFaceListId と persistedFaceId に基づいて大規模顔リストで永続化されている顔を取得します。 指定された大規模顔リスト内の顔の persistedFaceId と userData を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | 指定された大規模顔リストに顔を追加します (最大 1,000,000 個)。 persistedFaceId に基づいて、大規模顔リスト内の指定された顔の userData フィールドを更新します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | 大規模顔リストの largeFaceListId、name、userData を取得します。 大規模顔リストの情報 (largeFaceListId、name、および userData) を一覧表示します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | 大規模顔リストのトレーニング タスクを送信します。 トレーニングは重要な手順です。使用できるのはトレーニング済みの大規模顔リストのみです。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/training/read | 大規模顔リストのトレーニング状態が完了か実行中かをチェックします。 LargeFaceList トレーニングは非同期操作です。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | ユーザー指定の largeFaceListId、name、および userData (オプション) を使用して空の大規模顔リストを作成します。
-name や userData など、大規模顔リストの情報を更新します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | ユーザー指定の largeFaceListId、name、および userData (オプション) を使用して空の大規模顔リストを作成します。 name や userData など、大規模顔リストの情報を更新します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/delete | 指定された personGroupId に基づいて、既存の大規模人物グループを削除します。 この大規模人物グループ内の永続化されているデータは削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/action | 指定された大規模人物グループに新しい人物を作成します。 この人物に顔を追加するには、問い合わせてください。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/delete | 大規模人物グループから既存の人物を削除します。 格納されているすべての人物データと人物エントリ内の顔画像が削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/delete | 大規模人物グループ内の人物の顔を削除します。 顔データとその顔エントリに関連する画像も削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/read | 人物の顔の情報を取得します。 永続化されている人物の顔は、largePersonGroupId、personId、および persistedFaceId によって指定されます。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | 顔識別または顔検証のために、人物の顔画像を大規模人物グループに追加します。 画像を扱います。
-人物の永続化された顔の userData フィールドを更新します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | 人物の name と userData、および登録された人物の顔画像に対応する persistedFaceIds を取得します。
-指定された大規模人物グループのすべての人物の情報 (personId、name、userData、persistedFaceIds など) を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | 顔識別または顔検証のために、人物の顔画像を大規模人物グループに追加します。 画像を扱います 人物の永続化された顔の userData フィールドを更新します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | 人物の name と userData、および登録された人物の顔画像に対応する persistedFaceIds を取得します。 指定された大規模人物グループのすべての人物の情報 (personId、name、userData、persistedFaceIds など) を一覧表示します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/write | 人物の name または userData を更新します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | name や userData など、大規模人物グループの情報を取得します。 この API は大規模人物グループの情報を返します
-既存のすべての大規模人物グループの largePesonGroupId、name、および userData を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | name や userData など、大規模人物グループの情報を取得します。 この API では大規模人物グループの情報が返されます 既存のすべての大規模人物グループの largePesonGroupId、name、および userData をリストします。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | 大規模人物グループのトレーニング タスクを送信します。 トレーニングは重要な手順です。使用できるのはトレーニング済みの大規模人物グループのみです。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/training/read | 大規模人物グループのトレーニング状態が完了か実行中かをチェックします。 LargePersonGroup トレーニングは非同期操作です。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | ユーザー指定の largePersonGroupId、name、および userData (オプション) を使用して新しい大規模人物グループを作成します。
-既存の大規模人物グループの name と userData を更新します。 プロパティが要求本文にない場合、プロパティは変更されません。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | ユーザー指定の largePersonGroupId、name、および userData (オプション) を使用して新しい大規模人物グループを作成します。 既存の大規模人物グループの name と userData を更新します。 プロパティが要求本文にない場合、プロパティは変更されません。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/delete | 指定された personGroupId に基づいて、既存の人物グループを削除します。 この人物グループ内の永続化されているデータが削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/action | 指定された人物グループに新しい人物を作成します。 この人物に顔を追加するには、問い合わせてください。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/delete | 人物グループから既存の人物を削除します。 格納されているすべての人物データと人物エントリ内の顔画像が削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/delete | 人物グループ内の人物の顔を削除します。 顔データとその顔エントリに関連する画像も削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/read | 人物の顔の情報を取得します。 永続化されている人物の顔は、personGroupId、personId、および persistedFaceId によって指定されます。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | 顔識別または顔検証のために、人物の顔画像を人物グループに追加します。 複数の画像を扱います。
-人物の永続化された顔の userData フィールドを更新します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | 人物の name と userData、および登録された人物の顔画像に対応する persistedFaceIds を取得します。
-指定された人物グループのすべての人物の情報 (登録されている personId、name、userData、persistedFaceIds など) を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | 顔識別または顔検証のために、人物の顔画像を人物グループに追加します。 複数の画像を扱います 人物の永続化された顔の userData フィールドを更新します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | 人物の name と userData、および登録された人物の顔画像に対応する persistedFaceIds を取得します。 指定された人物グループのすべての人物の情報 (登録されている personId、name、userData、persistedFaceIds など) を一覧表示します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/write | 人物の name または userData を更新します。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | 人物グループの name と userData を取得します。 この personGroup 内の人物の情報を取得するために使用します。
-人物グループの pesonGroupId、name、および userData を一覧表示します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | 人物グループの name と userData を取得します。 この personGroup 下の人物の情報を取得するために使用します 人物グループの pesonGroupId、name、および userData をリストします。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | 人物グループのトレーニング タスクを送信します。 トレーニングは重要な手順です。使用できるのはトレーニング済みの人物グループのみです。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | 人物グループのトレーニング状態が完了か実行中かをチェックします。 PersonGroup トレーニングは、トリガーされる非同期操作です。 |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | 指定された personGroupId、name、およびユーザー提供の userData を使用して新しい人物グループを作成します。
-既存の人物グループの name と userData を更新します。 プロパティが要求本文にない場合、プロパティは変更されません。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | 指定された personGroupId、name、およびユーザー提供の userData を使用して新しい人物グループを作成します。 既存の人物グループの name と userData を更新します。 プロパティが要求本文にない場合、プロパティは変更されません。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | 2 つの顔が同一人物に属しているか 1 つの顔が 1 人の人物に属しているかを確認します。 |
 > | Action | Microsoft.CognitiveServices/accounts/listKeys/action | キーを一覧表示します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | 指定されたクエリについて公開されたエンドポイント予測を取得します。 |
