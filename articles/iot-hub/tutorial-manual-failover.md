@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ff8ef576a0dae0f03cc0c80f83ce0c24cf3945a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40a7bba99068ebc2368e413199cf966bd2e4f25c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093737"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002903"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する (パブリック プレビュー)
 
@@ -49,9 +49,6 @@ ms.locfileid: "58093737"
 
     **[リージョン]**: プレビューに含まれている、近くのリージョンを選択します。 このチュートリアルでは `westus2` を使用します。 フェールオーバーは Azure の geo ペア リージョン間でのみ実行できます。 westus2 の geo ペア リージョンは WestCentralUS です。
     
-   > [!NOTE]
-   > 手動フェールオーバーは現在パブリック プレビュー中であり、次の Azure リージョンでは "*利用できません*":米国東部、米国西部、ヨーロッパ北部、ヨーロッパ西部、ブラジル南部、米国中南部。
-
    **[IoT Hub 名]**: Iot ハブの名前を指定します。 このハブ名はグローバルに一意である必要があります。 
 
    ![IoT ハブを作成するための [基本] ウィンドウを示すスクリーンショット](./media/tutorial-manual-failover/create-hub-02-basics.png)

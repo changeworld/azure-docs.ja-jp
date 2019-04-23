@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
-ms.openlocfilehash: 1f8bec6fbf0bce9a3ac272231058a96a5d9e84cc
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: ed3a171e60c078975de7003cdf599f0bac62c402
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762499"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004756"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>コンテナーとデータベースのスループットのプロビジョニング
 
@@ -88,7 +88,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 .NET SDK を使用する場合、[DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) メソッドを使用して、コンテナーまたはデータベースの最小スループットを取得できます。 
 
-コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 スケール ダウン操作は、4 時間のアイドル期間後に実行できます。 アイドル期間は、コンテナーまたはデータベースに対する置換操作 (スケールアップとスケールダウンを含む) が行われなかった期間と定義されます。 
+コンテナーまたはデータベースのプロビジョニング済みスループットはいつでもスケールできます。 
 
 ## <a name="comparison-of-models"></a>モデルの比較
 

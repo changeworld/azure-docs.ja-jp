@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 718eefc95384dde050a4a25e6850fe6db574d294
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ef62ec78bc7fc01bd2e6dd7c5561b15be85540d2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59258931"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007901"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
@@ -136,12 +136,12 @@ ms.locfileid: "59258931"
 | カンボジア                       |        ✓       |                      |             |
 | フィジー                           |        ✓       |                      |             |
 | グアム                           |        ✓       |                      |             |
-| 香港特別行政区                      |        ✓       |         ✓            |             |
+| 香港特別行政区                  |        ✓       |         ✓            |             |
 | インド                          |        ✓       |         ✓            |             |
 | インドネシア                      |        ✓       |         ✓            |             |
 | 韓国                          |        Ø       |                      |             |
 | ラオス                           |        ✓       |                      |             |
-| マカオ                          |        ✓       |         ✓            |             |
+| 中華人民共和国マカオ特別行政区                      |        ✓       |         ✓            |             |
 | マレーシア                       |        ✓       |         ✓            |             |
 | ミャンマー                        |        ✓       |                      |             |
 | ニュージーランド                    |        ✓       |         ✓            |     ✓       | 
@@ -190,7 +190,7 @@ ms.locfileid: "59258931"
 | リヒテンシュタイン                  |        ✓       |         ✓            |             |
 | リトアニア                      |        ✓       |         ✓            |     ✓      | 
 | ルクセンブルク                     |        ✓       |         ✓            |     ✓      | 
-| マケドニア                      |        ✓       |                      |             |
+| 北マケドニア                |        ✓       |                      |             |
 | マルタ                          |        ✓       |         ✓            |             |
 | モルドバ                        |        ✓       |                      |             |
 | モナコ                         |        ✓       |         ✓            |             |

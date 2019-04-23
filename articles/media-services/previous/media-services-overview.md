@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7a98d3acc3f45772f9e28c23a639f495b75bea0a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: efdc3f657712794325f8af6f1b0178915e7a8e6b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850048"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000302"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要 
 
@@ -75,12 +75,6 @@ Azure Media Services の概念については、「 [概念](media-services-conc
 詳細については、[AMS のシナリオおよびデータ センター全体における機能とサービスの可用性](scenarios-and-availability.md)に関する記事を参照してください。
 
 ## <a name="service-level-agreement-sla"></a>サービス レベル アグリーメント (SLA)
-
-* Media Services Encoding では、REST API トランザクションの可用性が 99.9% 保証されます。
-* ストリーミングでは、Standard または Premium ストリーミング エンドポイントが購入された場合、既存のメディア コンテンツに対して 99.9% の可用性で要求が適切に処理されます。
-* ライブ チャンネルでは、実行中のチャンネルが 99.9% 以上の時間において外部に接続されることが保証されます。
-* Content Protection では、99.9% 以上の時間においてキー要求が適切に処理されることが保証されます。
-* インデクサーでは、エンコード予約ユニットの 99.9% の時間においてインデクサー タスクの要求が適切に処理されます。
 
 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」参照してください。
 

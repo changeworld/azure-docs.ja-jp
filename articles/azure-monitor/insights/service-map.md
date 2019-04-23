@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485154"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000727"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -297,37 +297,37 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 コストと複雑さを管理するため、接続レコードは個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化され、その後それぞれのテーブルに反映されます。  つまり、*VMConnection* テーブル内のレコードは、論理グルーピングを表しており、観察されている個々の物理接続を表していません。 所定の 1 分間隔で次の属性に同じ値を共有する物理ネットワーク接続は、*VMConnection* 内で 1 つの論理レコードに集約されます。 
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-|Direction |接続の方向であり、値は*受信*または*送信*です |
-|Machine |コンピューターの FQDN |
-|Process |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
-|SourceIp |送信元の IP アドレス |
-|DestinationIp |送信先の IP アドレス |
-|DestinationPort |送信先のポート番号 |
-|Protocol |接続に使用されるプロトコル。  値は *tcp* です。 |
+| `Direction` |接続の方向であり、値は*受信*または*送信*です |
+| `Machine` |コンピューターの FQDN |
+| `Process` |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
+| `SourceIp` |送信元の IP アドレス |
+| `DestinationIp` |送信先の IP アドレス |
+| `DestinationPort` |送信先のポート番号 |
+| `Protocol` |接続に使用されるプロトコル。  値は *tcp* です。 |
 
 グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-|LinksEstablished |報告時間枠の間に確立された物理ネットワーク接続の数 |
-|LinksTerminated |報告時間枠の間に切断された物理ネットワーク接続の数 |
-|LinksFailed |報告時間枠の間に失敗した物理ネットワーク接続の数。 現在のところ、この情報は送信接続に対してのみ使用できます。 |
-|LinksLive |報告時間枠の終了時点で開いていた物理ネットワーク接続の数|
+| `LinksEstablished` |報告時間枠の間に確立された物理ネットワーク接続の数 |
+| `LinksTerminated` |報告時間枠の間に切断された物理ネットワーク接続の数 |
+| `LinksFailed` |報告時間枠の間に失敗した物理ネットワーク接続の数。 現在のところ、この情報は送信接続に対してのみ使用できます。 |
+| `LinksLive` |報告時間枠の終了時点で開いていた物理ネットワーク接続の数|
 
 #### <a name="metrics"></a>メトリック
 
 接続数メトリックに加えて、所定の論理接続またはネット ワークポートで送受信されるデータ量に関する情報も、レコードの次のプロパティに加えられています。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-|BytesSent |報告時間枠の間に送信された合計バイト数 |
-|BytesReceived |報告時間枠の間に受信された合計バイト数 |
-|Responses |報告時間枠の間に観測された応答の数。 
-|ResponseTimeMax |報告時間枠の間に観測された最長応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
-|ResponseTimeMin |報告時間枠の間に観測された最短応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
-|ResponseTimeSum |報告時間枠の間に観測された全応答時間の合計 (ミリ秒)。  値がない場合、プロパティは空欄です|
+| `BytesSent` |報告時間枠の間に送信された合計バイト数 |
+| `BytesReceived` |報告時間枠の間に受信された合計バイト数 |
+| `Responses` |報告時間枠の間に観測された応答の数。 
+| `ResponseTimeMax` |報告時間枠の間に観測された最長応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
+| `ResponseTimeMin` |報告時間枠の間に観測された最短応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
+| `ResponseTimeSum` |報告時間枠の間に観測された全応答時間の合計 (ミリ秒)。  値がない場合、プロパティは空欄です|
 
 報告される第 3 のタイプのデータは応答時間です。これは、発信者が接続を介して送信した要求が処理されて、リモート エンドポイントによって応答されるのを待機する時間です。 報告される応答時間は、内在するアプリケーション プロトコルの実際の応答時間の推定値です。 これは、物理ネットワーク接続の送信元と送信先の間のデータ フローの観察に基づき、経験則を使用して計算されます。 これは、概念上、要求の最後のバイトが送信者を離れる時間と、応答の最後のバイトが送信者に返される時間の差です。 これらの 2 つのタイムスタンプは、所定の物理接続で要求イベントと応答イベントを明確化するために使用されます。 これらの差は、1 つの要求の応答時間を表します。 
 
@@ -346,28 +346,28 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 #### <a name="geolocation"></a>地理的位置情報
 *VMConnection*では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-|RemoteCountry |RemoteIp をホストしている国の名前。  例: *United States* |
-|RemoteLatitude |地理的位置情報の緯度。  例: *47.68* |
-|RemoteLongitude |地理的位置情報の経度。  例: *-122.12* |
+| `RemoteCountry` |RemoteIp をホストしている国の名前。  例: *United States* |
+| `RemoteLatitude` |地理的位置情報の緯度。  例: *47.68* |
+| `RemoteLongitude` |地理的位置情報の経度。  例: *-122.12* |
 
 #### <a name="malicious-ip"></a>悪意のある IP
 *VMConnection* テーブル内のすべての RemoteIp プロパティは、一連の IP に対して、知られている悪意のあるアクティビティがチェックされます。 RemoteIp が悪意のあると識別される場合、レコードの以下のプロパティに設定されます (IP が悪意のあるとみなされない場合、これらは空です)。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-|MaliciousIp |RemoteIp アドレス |
-|IndicatorThreadType |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
-|Description |観察対象の脅威の説明。 |
-|TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
-|Confidence |値は "*0 から 100*" です。 |
-|Severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
-|FirstReportedDateTime |プロバイダーが初めてインジケーターをレポートした時間。 |
-|LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
-|IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
-|ReportReferenceLink |特定の観測可能な脅威に関連するレポートにリンクします。 |
-|AdditionalInformation |該当する場合は、観察対象の脅威についての追加情報を提供します。 |
+| `MaliciousIp` |RemoteIp アドレス |
+| `IndicatorThreadType` |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
+| `Description` |観察対象の脅威の説明。 |
+| `TLPLevel` |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
+| `Confidence` |値は "*0 から 100*" です。 |
+| `Severity` |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+| `FirstReportedDateTime` |プロバイダーが初めてインジケーターをレポートした時間。 |
+| `LastReportedDateTime` |Interflow によってインジケーターが最後に表示された時間。 |
+| `IsActive` |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
+| `ReportReferenceLink` |特定の観測可能な脅威に関連するレポートにリンクします。 |
+| `AdditionalInformation` |該当する場合は、観察対象の脅威についての追加情報を提供します。 |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーのインベントリ データが含まれます。 これらのレコードは、次の表に示したプロパティを持ちます。
@@ -397,9 +397,9 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--|:--|
-| `Type | *ServiceMapProcess_CL* |
+| `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
 | `ResourceId` | ワークスペース内のプロセスに対する一意識別子 |
 | `ResourceName_s` | 実行中のマシン内のプロセスに対する一意識別子|

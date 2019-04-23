@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: damaerte
 ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500619"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
@@ -80,7 +80,7 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 |Python     |2.7 および 3.5 (既定)|
 
 ## <a name="next-steps"></a>次の手順
-[Cloud Shell の Bash のクイック スタート](quickstart.md) <br>
+[Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
-[Azure CLI について学習する](https://docs.microsoft.com/cli/azure/) <br>
-[Azure PowerShell について学習する](https://docs.microsoft.com/powershell/azure/) <br>
+[Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
+[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/) <br>

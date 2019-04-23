@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360632"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003685"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -112,7 +112,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 | データ | 説明 |
 |:---|:---|
-| Azure Monitor for Containers | [Azure Monitor for containers](../insights/container-insights-overview.md) によって収集されたインベントリとパフォーマンス データです。 テーブルの一覧については、「[コンテナーのデータ収集の詳細](../insights/container-insights-analyze.md#container-data-collection-details)」をご覧ください。 |
+| コンテナーに対する Azure Monitor | [Azure Monitor for containers](../insights/container-insights-overview.md) によって収集されたインベントリとパフォーマンス データです。 テーブルの一覧については、「[コンテナーのデータ収集の詳細](../insights/container-insights-log-search.md#container-records)」をご覧ください。 |
 | VM に対する Azure Monitor | [Azure Monitor for VMs](../insights/vminsights-overview.md) によって収集されたマップとパフォーマンス データです。 このデータのクエリについて詳しくは、「[VM 用 Azure Monitor からログを照会する方法](../insights/vminsights-log-search.md)」をご覧ください。 |
 
 ### <a name="custom"></a>カスタム 

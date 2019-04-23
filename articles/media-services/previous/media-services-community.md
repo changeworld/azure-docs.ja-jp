@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877073"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000047"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
 
@@ -37,10 +37,13 @@ ms.locfileid: "57877073"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="discussion"></a>ディスカッション
+
 ### <a name="twitter"></a>Twitter
+
 Twitter ハンドル [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) を使用してお問い合わせいただくか、Twitter で最新情報をフォローしてください。 また、 [@AzureSupport](https://twitter.com/azuresupport) twitter ハンドルを使用して、Twitter でサポートを依頼することができます。  
 
 ### <a name="online-forums"></a>オンライン フォーラム
+
 次のフォーラムを使用して、現在の製品と機能に関する質問をすることができます。
 
 現在、Media Services チームの主要なコミュニティ フォーラムは MSDN です。
@@ -48,14 +51,16 @@ Twitter ハンドル [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) を�
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 また同チームでは、Stack Overflow に "azure-media-services" タグで投稿された質問をモニタリングしています。
+
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>チームへのお問い合わせ
+
 Azure Media Services の主要なサポート メール アドレスは **amshelp\@microsoft.com** です。
 
 次の表は、機能のサブチームの電子メール アドレス一覧です。
 
-| 機能 | 電子メール |
+| 機能 | Email |
 | --- | --- |
 | Azure Media Analytics |amsanalytics@microsoft.com |
 | Azure Media Player |ampinfo@microsoft.com |

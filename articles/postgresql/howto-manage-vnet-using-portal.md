@@ -1,17 +1,17 @@
 ---
 title: Azure portal を使用した Azure Database for PostgreSQL VNet サービス エンドポイントおよびルールの作成と管理
 description: Azure portal を使用した Azure Database for PostgreSQL VNet サービス エンドポイントおよびルールの作成と管理
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: bf34b99ca1d328a2de47aade0dcdff5b584ff07c
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 0f11894e939f589134720f22deb99390e14db9fb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006377"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002490"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL VNet サービス エンドポイントおよび VNet ルールの作成と管理
 仮想ネットワーク (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for PostgreSQL サーバーに拡張します。 制限事項も含め、Azure Database for PostgreSQL VNet サービス エンドポイントの概要については、[Azure Database for PostgreSQL サーバー VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)に関する記事をご覧ください。 VNet サービス エンドポイントは、Azure Database for PostgreSQL でサポートされるすべてのリージョンで利用できます。

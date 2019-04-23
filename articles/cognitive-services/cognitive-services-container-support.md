@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: c6cf3f188309891b0456b034e3809a0f0209c124
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 172774c90633c96c3a8e2c128df050fedeb8b52b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489435"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005963"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
@@ -25,7 +25,7 @@ Azure Cognitive Services でのコンテナーのサポートを使用すると�
 
 次のビデオでは、Cognitive Services コンテナーを使用するデモンストレーションを行っています。
 
-[![CCognitive Services のコンテナーのデモ](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+[![Cognitive Services のコンテナーのデモンストレーション](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
 [Computer Vision](Computer-vision/Home.md)、[Face](Face/Overview.md)、[Text Analytics](text-analytics/overview.md)、および [Language Understanding (LUIS) ](LUIS/what-is-luis.md) サービスは、[Microsoft Azure](https://azure.microsoft.com) で使用できます。 これらのサービス用の Azure リソースを作成して調べるには、[Azure portal](https://portal.azure.com/) にサインインしてください。
 
@@ -33,7 +33,7 @@ Azure Cognitive Services でのコンテナーのサポートを使用すると�
 
 - **データの制御**:これらの Cognitive Services がお客様のデータをどこで処理するかをお客様が選択できるようにします。 これは、クラウドにデータを送信することはできないが、Cognitive Services テクノロジにアクセスする必要があるお客様にとって重要です。 ハイブリッド環境でデータ、管理、ID、セキュリティの整合性をサポートします。
 - **モデルの更新の制御**:お客様は、ソリューションにデプロイされているモデルのバージョン管理と更新を柔軟に行うことができます。
-- **移植可能なアーキテクチャ**:Azure、オンプレミス、エッジにデプロイできる移植可能なアプリケーション アーキテクチャを作成できます。 コンテナーは、[Azure Kubernetes Service](../aks/index.yml)、[Azure Container Instances](../container-instances/index.yml)、または [Azure Stack](../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイできます。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」をご覧ください。
+- **移植可能なアーキテクチャ**:Azure、オンプレミス、エッジにデプロイできる移植可能なアプリケーション アーキテクチャを作成できます。 コンテナーは、[Azure Kubernetes Service](../aks/index.yml)、[Azure Container Instances](../container-instances/index.yml)、または [Azure Stack](/azure-stack/operator) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイできます。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
 - **高スループット/低待ち時間**:お客様は、アプリケーションのロジックとデータに物理的に近い場所で Cognitive Services を実行できるようにすることで、高いスループットと低待ち時間の要件に合わせてスケーリングできます。 コンテナーでは、1 秒あたりのトランザクション数 (TPS) は制限されません。必要なハードウェア リソースを提供した場合は、コンテナーのスケールアップとスケールアウトの両方を行って需要を処理することができます。 
 
 
@@ -43,7 +43,7 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 
 | Service | サポートされている価格レベル | コンテナー | 説明 |
 |---------|----------|----------|-------------|
-|[Computer Vision](Computer-vision/computer-vision-how-to-install-containers.md) |F0、S1|**テキスト認識** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。<br/><br/>**重要:** テキスト認識コンテナーは現在のところ、英語でのみ機能します。<br>[アクセスの要求](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Computer Vision](Computer-vision/computer-vision-how-to-install-containers.md) |F0、S1|**Recognize Text** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。<br/><br/>**重要:** テキスト認識コンテナーは現在のところ、英語でのみ機能します。<br>[アクセスの要求](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Face](Face/face-how-to-install-containers.md) |F0、S0|**Face** |Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。<br>[アクセスの要求](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[LUIS](LUIS/luis-container-howto.md) |F0、S0|**LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204))|トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。|
 |[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|**キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757)) |主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
