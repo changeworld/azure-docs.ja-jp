@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94ecf05272ecb29f914bb00fa407a564fef96c17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562081"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148834"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 
@@ -33,7 +33,7 @@ Marketo から、サポートされている任意のシンク データ スト�
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
 >[!NOTE]
->この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](http://developers.marketo.com/rest-api/)があることに注意してください。 次のようなエラーが発生することがあります。"Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Max rate limit '100' exceeded with in '20' secs (606) ('20' 秒以内の最大レート制限 '100' を超過した時間がありました (606))"、または "Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Concurrent access limit '10' reached (615) (同時アクセス制限 '10' に達しました (615))"。この場合には、サービスへの要求の数を減らすために、同時コピー アクティビティ実行を削減することを検討してください。
+>この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](https://developers.marketo.com/rest-api/)があることに注意してください。 次のようなエラーが発生することがあります。"Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Max rate limit '100' exceeded with in '20' secs (606) ('20' 秒以内の最大レート制限 '100' を超過した時間がありました (606))"、または "Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Concurrent access limit '10' reached (615) (同時アクセス制限 '10' に達しました (615))"。この場合には、サービスへの要求の数を減らすために、同時コピー アクティビティ実行を削減することを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 

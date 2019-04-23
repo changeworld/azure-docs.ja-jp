@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562194"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002699"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -107,7 +107,7 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 Event Hubs Standard SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 
 
 > [!NOTE]
-> Azure Event Hubs Standard に対する Availability Zones のサポートは、可用性ゾーンが存在する [Azure リージョン](../availability-zones/az-overview.md#regions-that-support-availability-zones)内でのみ利用できます。
+> Azure Event Hubs Standard に対する Availability Zones のサポートは、可用性ゾーンが存在する [Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)内でのみ利用できます。
 
 Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Event Hubs では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
 

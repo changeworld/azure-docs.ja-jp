@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 0214fbbe1ecc0d0b6b20b740ec898f24cf5b58ec
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 8be2e59898ea5fcca1dbf1710974d0420941973e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571296"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002138"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -83,7 +83,7 @@ IoT Hub の Basic レベルと Standard レベルでサポートされる機能�
 | [デバイス イベントの送信](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | はい | はい |
 | モジュール イベントの送信 | はい | はい |
 | [ファイル アップロード ステータスの更新](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | はい | はい |
-| [デバイスの一括操作](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentoperation) | はい (IoT Edge 機能を除く) | はい | 
+| [デバイスの一括操作](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentgroupoperation) | はい (IoT Edge 機能を除く) | はい | 
 | [コマンド キューの消去](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | はい |
 | [デバイス ツインの取得](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | はい |
 | モジュール ツインの取得 |   | はい |

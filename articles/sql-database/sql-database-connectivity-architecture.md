@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006778"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799271"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -68,7 +68,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | ブラジル南部 | 104.41.11.5 | |
 | カナダ中部 | 40.85.224.249 | |
 | カナダ東部 | 40.86.226.166 | |
-| 米国中央部 | 23.99.160.139 | 13.67.215.62 |
+| 米国中部 | 23.99.160.139 | 13.67.215.62 |
 | 中国東部 1 | 139.219.130.35 | |
 | 中国東部 2 | 40.73.82.1 | |
 | 中国北部 1 | 139.219.15.17 | |

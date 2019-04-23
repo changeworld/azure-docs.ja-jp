@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a5d34b2964d805cdbeced0d4fad3dd889da9f3e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900626"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996647"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>クイック スタート:Azure Spatial Anchors を使用する iOS アプリを Swift または Objective-C で作成する
 
@@ -88,15 +88,15 @@ open ./SampleObjC.xcworkspace
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-`iOS/Swift/SampleSwift/ViewController.swift`を開きます。
+`iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`を開きます。
 
-`SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
+`spatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 
-`SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
+`spatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-`iOS/Objective-C/SampleObjC/ViewController.m`を開きます。
+`iOS/Objective-C/SampleObjC/BaseViewController.m`を開きます。
 
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 

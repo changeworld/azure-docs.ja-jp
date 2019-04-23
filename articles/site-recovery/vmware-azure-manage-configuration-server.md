@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: c23f3ec9c85bb3997380d83c097f2690b91c1f4f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049699"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149497"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
@@ -151,7 +151,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
 
 1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** に移動します。
 2. 更新プログラムがある場合は、**[エージェントのバージョン]** 列にリンクが表示されます。
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
 
     ![アップデート](./media/vmware-azure-manage-configuration-server/update1.png)
