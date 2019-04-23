@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
 ms.openlocfilehash: f339d2e3e329ae40ca8bb8bf651d698c73482a7d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049270"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (C#)
@@ -129,7 +129,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 2. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
-    | 可変 | 値 |
+    | 変数 | 値 |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
     | `s_eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
@@ -162,4 +162,4 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:IoT ハブに接続されたデバイスを制御する](quickstart-control-device-dotnet.md)
+> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-dotnet.md)

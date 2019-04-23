@@ -11,17 +11,17 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282663"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [postman](search-fiddler.md)
+> * [Postman](search-fiddler.md)
 > * [C#](search-create-index-dotnet.md)
 >*
 
@@ -274,4 +274,4 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 * [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [REST API を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Postman または Fiddler と Azure Search REST API シリーズを使用してインデックスを作成する](search-fiddler.md)
+* [Postman または Fiddler と Azure Search REST API を使用してインデックスを作成する](search-fiddler.md)

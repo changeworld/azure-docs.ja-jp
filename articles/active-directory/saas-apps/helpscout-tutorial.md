@@ -16,10 +16,10 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273381"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル:Azure Active Directory と Help Scout の統合
@@ -106,9 +106,9 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![[Help Scout のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **識別子**は、Help Scout の**対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭には次が使用されます:  `urn:`
+    a. **識別子**は、Help Scout の**対象ユーザー URI (サービス プロバイダーのエンティティ ID)** で、先頭は `urn:` です
 
-    b. **応答 URL** は、Help Scout の**ポスト バック URL (Assertion Consumer Service URL)** で、先頭には次が使用されます:  `https://` 
+    b. **応答 URL** は、Help Scout の**ポスト バック URL (Assertion Consumer Service URL)** で、先頭は `https://` です 
 
     > [!NOTE]
     > これらの URL の値は、単なる例です。 これらの値は、実際の応答 URL と識別子で更新する必要があります。 この値は、[認証] セクションの **[シングル サインオン]** タブから取得します。これについては後で説明します。
@@ -117,7 +117,7 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     ![[Help Scout のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、次のような URL を入力します。 `https://secure.helpscout.net/members/login/`
+    **[サインオン URL]** ボックスに、「`https://secure.helpscout.net/members/login/`」と入力します。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

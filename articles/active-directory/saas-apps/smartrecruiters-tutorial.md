@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 79223a7f5c1f16eaf09de8efd05e0ec096ac73ab
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル:Azure Active Directory と SmartRecruiters の統合
@@ -51,7 +51,7 @@ SmartRecruiters と Azure AD の統合を構成するには、次のものが必
 
 Azure AD への SmartRecruiters の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SmartRecruiters を追加する必要があります。
 
-**ギャラリーから SmartRecruiters を追加するには、次の手順を実行します。**
+**ギャラリーから SmartRecruiters を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
     ![[SmartRecruiters のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
+    a. **[識別子]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
+    b. **[応答 URL]** ボックスに、`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

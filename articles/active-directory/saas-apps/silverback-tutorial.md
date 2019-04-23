@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>チュートリアル:Azure Active Directory と Silverback の統合
@@ -105,11 +105,11 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     ![[Silverback のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<YOURSILVERBACKURL>.com/ssp`
+    a. **[サインオン URL]** ボックスに、`https://<YOURSILVERBACKURL>.com/ssp` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 `<YOURSILVERBACKURL>.com`
+    b. **[識別子]** ボックスに、`<YOURSILVERBACKURL>.com` という形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. **[応答 URL]** ボックスに、`https://<YOURSILVERBACKURL>.com/sts/authorize/login` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Silverback クライアント サポート チーム](mailto:helpdesk@matrix42.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -201,7 +201,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
 Azure AD ユーザーが Silverback にログインできるようにするには、そのユーザーを Silverback にプロビジョニングする必要があります。 Silverback では、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. Silverback Server に Administrator としてログインします。
 

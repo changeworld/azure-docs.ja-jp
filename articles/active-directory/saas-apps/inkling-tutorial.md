@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 24b18a07a4581eadc556e358f6505345610927c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>チュートリアル:Azure Active Directory と Inkling の統合
@@ -51,7 +51,7 @@ Inkling と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Inkling の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Inkling を追加する必要があります。
 
-**ギャラリーから Inkling を追加するには、次の手順を実行します。**
+**ギャラリーから Inkling を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Inkling で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Inkling のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://api.inkling.com/saml/v2/metadata/<user-id>`
+    a. **[識別子]** ボックスに、`https://api.inkling.com/saml/v2/metadata/<user-id>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://api.inkling.com/saml/v2/acs/<user-id>`
+    b. **[応答 URL]** ボックスに、`https://api.inkling.com/saml/v2/acs/<user-id>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Inkling クライアント サポート チーム](mailto:press@inkling.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

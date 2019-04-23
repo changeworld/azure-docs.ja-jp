@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877280"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
@@ -33,10 +33,10 @@ ms.locfileid: "58877280"
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
 
 * [ナレッジ ベース (KB) を作成する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [操作の詳細の取得](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [取得操作の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 * [ナレッジ ベースの詳細を取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
 * [ナレッジ ベースのエンドポイントを取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
-* [発行](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
+* [[発行]](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
 
 ## <a name="prerequisites"></a>前提条件
 

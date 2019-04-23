@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 7f5996b41da68adc83c26e836c9fb1a175107337
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>チュートリアル:Azure Active Directory と Infogix Data3Sixty Govern の統合
@@ -52,7 +52,7 @@ Infogix Data3Sixty Govern と Azure AD の統合を構成するには、次の�
 
 Azure AD への Infogix Data3Sixty Govern の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Infogix Data3Sixty Govern を追加する必要があります。
 
-**ギャラリーから Infogix Data3Sixty Govern を追加するには、次の手順を実行します。**
+**ギャラリーから Infogix Data3Sixty Govern を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,9 +106,9 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
 
     ![[Infogix Data3Sixty Govern Domain and URLs]\(Infogix Data3Sixty Govern のドメインと URL) のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `https://data3sixty.com/ui`
+    a. **[識別子]** テキスト ボックスに、`https://data3sixty.com/ui` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.data3sixty.com/sso/acs`
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.data3sixty.com/sso/acs` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -129,7 +129,7 @@ Infogix Data3Sixty Govern で Azure AD シングル サインオンを構成す�
     | -----------| -------------- |
     | firstname  | User.givenname |
     | lastname   | User.surname |
-    | username   | User.mail    |
+    | ユーザー名   | User.mail    |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 

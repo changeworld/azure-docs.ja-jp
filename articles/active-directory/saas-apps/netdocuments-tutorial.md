@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: cc5d8e4791bc109f4a804aad33bfc258eed97a25
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory と NetDocuments の統合
@@ -104,9 +104,9 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
 
     ![[NetDocuments のドメインと URL] のシングル サインオン情報](common/sp-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    b. **[応答 URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 これらの値を取得するには、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/) に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -205,7 +205,7 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
 Azure AD ユーザーが NetDocuments にログインできるようにするには、そのユーザーを NetDocuments にプロビジョニングする必要があります。  
 NetDocuments の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **NetDocuments** 企業サイトに管理者としてサインオンします。
 

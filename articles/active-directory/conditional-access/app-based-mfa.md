@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5ab513034d6e2946dcb31f3a31dbf86f14873e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895987"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[新規]** ページの **[名前]** テキストボックスに、「**Azure Portal にアクセスするには MFA が必要です**」と入力します。
 
-   ![名前](./media/app-based-mfa/05.png)
+   ![Name](./media/app-based-mfa/05.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 

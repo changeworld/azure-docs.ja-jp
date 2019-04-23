@@ -16,10 +16,10 @@ ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
 ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893743"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
@@ -672,9 +672,9 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
-   | **サーバー管理者のログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
+   | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
-   | **Location** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |
+   | **場所** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |
 
 1. **[ダッシュボードにピン留めする]** をクリックした後、**[作成]** をクリックして、新しいデータベースとサーバーを作成します。
 

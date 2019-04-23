@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
 ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916112"
 ---
 # <a name="data-filtering"></a>データのフィルタリング
@@ -49,9 +49,9 @@ ms.locfileid: "58916112"
 
 ## <a name="unescaped-xml-tags"></a>エスケープされていない XML タグ
 フィルター処理によって、エスケープされていないタグをエスケープされたタグに変換します。
-* `&lt;`  →  `&amp;lt;`
-* `&gt;`  →  `&amp;gt;`
-* `&amp;`  →  `&amp;amp;`
+* `&lt;` は `&amp;lt;` になります
+* `&gt;` は `&amp;gt;` になります
+* `&amp;` は `&amp;amp;` になります
 
 ## <a name="invalid-characters"></a>無効な文字
 カスタム トランスレーターでは、Unicode 文字 U+FFFD を含む文が削除されます。 文字 U+FFFD は、エンコード変換が失敗したことを示します。

@@ -11,10 +11,10 @@ ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 8690c9f58a539337659d18ef954f88e4bb2baf9d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881496"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Azure PowerShell を使用して、URL に基づいて Web トラフィックをルーティングする
@@ -413,7 +413,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスは、[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して取得します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、`http://52.168.55.24`、`http://52.168.55.24:8080/images/test.htm`、`http://52.168.55.24:8080/video/test.htm` などです。
+[Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、アプリケーション ゲートウェイのパブリック IP アドレスを取得します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、`http://52.168.55.24`、`http://52.168.55.24:8080/images/test.htm`、`http://52.168.55.24:8080/video/test.htm` などです。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

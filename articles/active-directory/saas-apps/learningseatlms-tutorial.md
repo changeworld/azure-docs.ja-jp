@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e4e564a8c41065f6f68d93735d441ba6c69479a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>チュートリアル:Azure Active Directory と Learning Seat LMS の統合
@@ -51,7 +51,7 @@ Learning Seat LMS と Azure AD の統合を構成するには、次のものが�
 
 Azure AD への Learning Seat LMS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Learning Seat LMS を追加する必要があります。
 
-**ギャラリーから Learning Seat LMS を追加するには、次の手順を実行します。**
+**ギャラリーから Learning Seat LMS を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Learning Seat LMS で Azure AD シングル サインオンを構成するには
 
     ![[Learning Seat LMS のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.learningseatlms.com`
+    a. **[識別子]** ボックスに、`https://<subdomain>.learningseatlms.com` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService`
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

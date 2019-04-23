@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 7298c8a9220332f1361e673b5000c2df37a88865
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>チュートリアル:Azure Active Directory と Namely の統合
@@ -104,9 +104,9 @@ Namely で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Namely Domain and URLs]\(Namely のドメインと URL\) のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.namely.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.namely.com`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<subdomain>.namely.com/saml/metadata`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.namely.com/saml/metadata`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Namely クライアント サポート チーム](https://www.namely.com/contact/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

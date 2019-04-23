@@ -16,10 +16,10 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9faf5068f6007cc357bcd22480c08af4223ba906
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyward-qmlativ"></a>チュートリアル:Azure Active Directory と Skyward Qmlativ の統合
@@ -105,9 +105,9 @@ Skyward Qmlativ で Azure AD シングル サインオンを構成するには�
 
     ![[Skyward Qmlativ のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.skyward.com/<CUSTOMERIDENTIFIERSTS>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.skyward.com/<CUSTOMERIDENTIFIERSTS>`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<BASEURL>/customeridentifierSTS`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<BASEURL>/customeridentifierSTS`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Skyward Qmlativ クライアント サポート チーム](mailto:steveb@skyward.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

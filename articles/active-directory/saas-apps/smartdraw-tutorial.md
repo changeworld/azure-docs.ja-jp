@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 7d811cd69185e77f50749fc48974dee684fb7cfa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>チュートリアル:Azure Active Directory と SmartDraw の統合
@@ -126,7 +126,7 @@ SmartDraw で Azure AD シングル サインオンを構成するには、次�
     | ---------------| --------------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
-    | 電子メール | User.mail |
+    | Email | User.mail |
     | グループ | user.groups |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。

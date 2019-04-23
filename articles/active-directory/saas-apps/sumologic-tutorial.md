@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 4edd445fe526b9be5c421b21b25f9b095c734f43
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>チュートリアル:Azure Active Directory と SumoLogic の統合
@@ -105,7 +105,7 @@ SumoLogic で Azure AD シングル サインオンを構成するには、次�
 
     ![[SumoLogic のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<tenantname>.SumoLogic.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenantname>.SumoLogic.com`
 
    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
@@ -225,7 +225,7 @@ SumoLogic で Azure AD シングル サインオンを構成するには、次�
 
 Azure AD ユーザーが SumoLogic にサインインできるようにするには、そのユーザーを SumoLogic にプロビジョニングする必要があります。 SumoLogic の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **SumoLogic** テナントにサインインします。
 

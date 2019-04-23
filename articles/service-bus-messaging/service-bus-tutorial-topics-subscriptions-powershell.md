@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 845fc32d527158258304a92c6855017c9d8c0492
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049559"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル:PowerShell とトピック/サブスクリプションを使用して在庫を更新する
@@ -289,4 +289,4 @@ Service Bus の公開/サブスクライブ機能の使用方法の詳細につ�
 > [PowerShell とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Azure PowerShell のインストールと構成]: /powershell/azure/install-Az-ps
+[Azure PowerShell モジュールのインストールと構成]: /powershell/azure/install-Az-ps

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 34fe5d85829d909989513214406ba96ea5be0aa8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271103"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル:Azure Active Directory と Pega Systems の統合
@@ -105,9 +105,9 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     ![[Pega Systems のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
+    a. **[識別子]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
+    b. **[応答 URL]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -115,7 +115,7 @@ Pega Systems で Azure AD シングル サインオンを構成するには、�
 
     a. **[サインオン URL]** ボックスに、サインオン URL の値を入力します。
 
-    b. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
+    b. **[リレー状態]** ボックスに、`https://<CUSTOMERNAME>.pegacloud.io/prweb/sso` のパターンで URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態 URL でこれらの値を更新します。 このチュートリアルの後半で説明する Pega アプリケーションで、識別子と応答 URL の値を見つけることができます。 リレー状態については、[Pega Systems のクライアント サポート チーム](https://www.pega.com/contact-us)に連絡して値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

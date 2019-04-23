@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2018
 ms.author: diberry
 ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273840"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>音声サービスを Language Understanding アプリと統合する
@@ -66,7 +66,7 @@ Azure portal で、LUIS アプリ用の **Cognitive Service** (LUIS) キーを[�
 
 Speech SDK が既に参照として含まれています。 
 
-[![SMicrosoft.CognitiveServices.Speech NuGet パッケージが表示された Visual Studio 2017 のスクリーンショット](./media/luis-tutorial-speech-to-intent/nuget-package.png "Microsoft.CognitiveServices.Speech NuGet パッケージが表示された Visual Studio 2017 のスクリーンショット")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Microsoft.CognitiveServices.Speech NuGet パッケージが表示された Visual Studio 2017 のスクリーンショット](./media/luis-tutorial-speech-to-intent/nuget-package.png "Microsoft.CognitiveServices.Speech NuGet パッケージが表示された Visual Studio 2017 のスクリーンショット")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>C# コードを編集する
 `Program.cs` ファイルを開き、次の変数を変更します。
@@ -74,7 +74,7 @@ Speech SDK が既に参照として含まれています。
 |変数名|目的|
 |--|--|
 |LUIS_assigned_endpoint_key|[発行] ページからのエンドポイント URL の割り当てられたサブスクリプション キーの値に対応しています|
-|LUIS_endpoint_key_region|エンドポイント URL の最初のサブドメインに対応しています。例: `westus`|
+|LUIS_endpoint_key_region|エンドポイント URL の最初のサブドメインに対応しています (例: `westus`)|
 |LUIS_app_ID|**apps/** の後に続く、エンドポイント URL のルートに対応します|
 
 `Program.cs` ファイルには既に人事意図がマップされています。

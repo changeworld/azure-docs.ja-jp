@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4904e98556f5d4a033b178bfdc4305714a80e07e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>チュートリアル:Azure Active Directory と Pluralsight の統合
@@ -106,17 +106,17 @@ Pluralsight で Azure AD シングル サインオンを構成するには、次
 
     ![[Pluralsight のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<instancename>.pluralsight.com/sso/<companyname>`
+    a. **[サインオン URL]** ボックスに、`https://<instancename>.pluralsight.com/sso/<companyname>` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、URL を入力します。 `www.pluralsight.com`
+    b. **[識別子]** ボックスに、URL `www.pluralsight.com` を入力します。
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<instancename>.pluralsight.com/sp/ACS.saml2`
+    c. **[応答 URL]** ボックスに、`https://<instancename>.pluralsight.com/sp/ACS.saml2` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[Pluralsight クライアント サポート チーム](mailto:support@pluralsight.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. Pluralsight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
-    ![image](common/edit-attribute.png)
+    ![画像](common/edit-attribute.png)
 
     >[!NOTE]
     >**"一意の ID"** 属性を追加し、EmployeeID などの組織に合った適切な値を設定することもできます。 これは必須の属性ではありませんが、一意のユーザーを識別するために追加できます。
@@ -127,7 +127,7 @@ Pluralsight で Azure AD シングル サインオンを構成するには、次
     | --------------- | --------- |
     | 名  | User.givenname  |
     | 姓  | User.surname  |
-    | 電子メール  | User.mail  |
+    | Email  | User.mail  |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 

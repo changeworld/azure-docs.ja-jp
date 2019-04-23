@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e8b334998983684d50c4faddceb03a0f30fd257
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>チュートリアル:Azure Active Directory と Workpath の統合
@@ -113,15 +113,15 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
     ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url.png)
 
-    a. **[識別子]** ボックスに、次のパターンで URL を入力します。 `https://api.workpath.com/v1/saml/metadata/<instancename>`
+    a. **[識別子]** ボックスに、`https://api.workpath.com/v1/saml/metadata/<instancename>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://api.workpath.com/v1/saml/assert/<instancename>`
+    b. **[応答 URL]** ボックスに、`https://api.workpath.com/v1/saml/assert/<instancename>` のパターンを使用して URL を入力します。
 
 1. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
     ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url1.png)
 
-    **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.workpath.com/`
+    **[サインオン URL]** ボックスに、`https://<subdomain>.workpath.com/` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Workpath サポート チーム](https://help.workpath.com)に連絡してください。

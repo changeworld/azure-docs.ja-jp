@@ -16,10 +16,10 @@ ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262314"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル:Azure Active Directory と Bersin の統合
@@ -104,11 +104,11 @@ Bersin で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Bersin のドメインと URL] のシングル サインオン情報](common/idp-identifier-relay.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://www.bersin.com/shibboleth`
+    a. **[識別子]** ボックスに、`https://www.bersin.com/shibboleth` の形式で URL を入力します。
 
     b. **[追加の URL を設定します]** をクリックします。
 
-    c. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://www.bersin.com/secure/`
+    c. **[リレー状態]** ボックスに、`https://www.bersin.com/secure/` のパターンで URL を入力します。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

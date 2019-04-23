@@ -9,10 +9,10 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049151"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
@@ -223,7 +223,7 @@ Azure File Sync をデプロイするには、最初に、お客様が選択し�
    | **Name** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは _afssyncservice02_ を使用します。 |
    | **サブスクリプション** | お客様がこのチュートリアルに使用する Azure サブスクリプション。 |
    | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。<br><br>このチュートリアルでは、_afsresgroup101918_ を使用します。 |
-   | **Location** | 米国東部 |
+   | **場所** | 米国東部 |
 
 1. 完了したら、**[作成]** を選択して、**ストレージ同期サービス**をデプロイします。
 1. **[通知]** タブ、**[リソースに移動]** の順に選択します。
@@ -253,7 +253,7 @@ Azure Sync Service をデプロイし、Windows Server 2016 Datacenter VM にエ
 
 お客様の Windows サーバーをストレージ同期サービスに登録すると、サーバー (またはクラスター) とストレージ同期サービスの間に信頼関係が確立されます。 サーバーは、1 つのストレージ同期サービスにのみ登録できます。 そのストレージ同期サービスに関連付けられている他のサーバーおよび Azure ファイル共有と同期できます。
 
-Azure File Sync エージェントをインストールした後、サーバー登録 UI が自動的に開かれます。 開かない場合、これを次に示すファイルの場所から手動で開くことができます:  `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+Azure File Sync エージェントをインストールした後、サーバー登録 UI が自動的に開かれます。 開かない場合、ファイルの場所 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.` から手動で開くことができます。
 
 1. VM でサーバー登録 UI が開いたら、**[OK]** を選択します。
 1. **[サインイン]** を選択して開始します。
@@ -308,7 +308,7 @@ Azure File Sync エージェントをインストールした後、サーバー�
    | ----- | ----- |
    | 値 | 説明 |
    | **登録済みサーバー** | お客様が作成したサーバーの名前。 このチュートリアルでは *afsvm101918* を使用します。 |
-   | **Path** | お客様が作成したドライブへの Windows Server パス。 このチュートリアルでは、*f:\filestosync* を使用します。 |
+   | **パス** | お客様が作成したドライブへの Windows Server パス。 このチュートリアルでは、*f:\filestosync* を使用します。 |
    | **クラウドの階層化** | このチュートリアルでは、無効のままにします。 |
    | **ボリュームの空き領域** | このチュートリアルでは空白のままにします。 |
 

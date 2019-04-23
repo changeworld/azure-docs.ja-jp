@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cde9d4efd3d6eb5bc987a4bf7eb423447ceddc2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>チュートリアル:Azure Active Directory と IMAGE WORKS の統合
@@ -51,7 +51,7 @@ Azure AD と IMAGE WORKS の統合を構成するには、次のものが必要�
 
 Azure AD への IMAGE WORKS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に IMAGE WORKS を追加する必要があります。
 
-**ギャラリーから IMAGE WORKS を追加するには、次の手順を実行します。**
+**ギャラリーから IMAGE WORKS を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ IMAGE WORKS で Azure AD シングル サインオンを構成するには、次
 
     ![[IMAGE WORKS のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[IMAGE WORKS クライアント サポート チーム](mailto:iw-sd-support@fujifilm.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

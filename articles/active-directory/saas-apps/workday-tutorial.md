@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 8451fd692409933803f5f8023f1e1161c3a97daf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル:Azure Active Directory と Workday の統合
@@ -104,9 +104,9 @@ Workday で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Workday のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https:\//impl.workday.com/<tenant>/login-saml2.flex`
+    a. **[サインオン URL]** ボックスに、`https:\//impl.workday.com/<tenant>/login-saml2.flex` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://www.workday.com`
+    b. **[識別子]** ボックスに、`https://www.workday.com` の形式で URL を入力します。
 
 5. **[追加の URL を設定します]** をクリックして、次の手順のようにします。
 

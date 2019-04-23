@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
 ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009429"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:.NET Core 用 Speech SDK を使用して音声を認識する
@@ -32,9 +32,9 @@ ms.locfileid: "59009429"
 
 このクイック スタートでは以下が必要です。
 
-* [.NET Core SDK](https://dotnet.microsoft.com/download)
+* [.NET コア SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -71,7 +71,7 @@ ms.locfileid: "59009429"
 オーディオ ファイルから音声を読み取る方法など、追加のサンプルは GitHub で入手できます。
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
+> [GitHub で C# のサンプル コードを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 

@@ -14,10 +14,10 @@ ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: ce882ecee25f9570082a978b72a76ca903bfc12f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279383"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
@@ -126,14 +126,14 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
 3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
 
-# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

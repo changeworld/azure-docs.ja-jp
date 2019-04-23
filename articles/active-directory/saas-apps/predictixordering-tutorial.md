@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 2f4a877974c21dd7aead00f0b6aa949c84e2b80f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282612"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>チュートリアル:Azure Active Directory と Predictix Ordering の統合
@@ -51,7 +51,7 @@ Predictix Ordering と Azure AD の統合を構成するには、次のものが
 
 Azure AD への Predictix Ordering の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Predictix Ordering を追加する必要があります。
 
-**ギャラリーから Predictix Ordering を追加するには、次の手順を実行します。**
+**ギャラリーから Predictix Ordering を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,7 +105,7 @@ Predictix Ordering で Azure AD シングル サインオンを構成するに�
 
     ![[Predictix Ordering のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<companyname-pricing>.ordering.predictix.com/sso/request`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 

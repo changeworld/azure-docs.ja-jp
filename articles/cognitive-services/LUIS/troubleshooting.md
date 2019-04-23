@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894459"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
@@ -240,7 +240,7 @@ Microsoft の取り組みと、Azure サービスでのデータ管理とアク�
 #### <a name="resolve-issue-in-luis"></a>LUIS での問題を解決する
 [LUIS エンドポイント](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
 
-* `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-pricing-tier)を変更する必要があることを示しています。 
+* `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-pricing-tier)を変更する必要があることを、示しています。 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure Bot Service で問題を解決する
 
@@ -286,7 +286,7 @@ LUIS のサンプルを使用して、プログラムで[リージョンを検�
 
 Build 2018 Conference では、次の機能がリリースされました。
 
-|名前|コンテンツ|
+|Name|コンテンツ|
 |--|--|
 |強化された機能|[正規表現](luis-concept-data-extraction.md##regular-expression-entity-data)エンティティと[キー フレーズ](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) エンティティ
 |パターン|パターンの[概念](luis-concept-patterns.md)、[チュートリアル](luis-tutorial-pattern.md)、[ハウツー](luis-how-to-model-intent-pattern.md)<br>例外に対する[明示的なリスト](luis-concept-patterns.md#explicit-lists)を含む [Patterns.Any](luis-concept-entity-types.md) エンティティの概念<br>[ロール](luis-concept-roles.md)の概念|
@@ -296,7 +296,7 @@ Build 2018 Conference では、次の機能がリリースされました。
 追加のオーサリング [API ルート](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md)が組み込まれました。
 
 ビデオ:
-* [Build 2018 での Azure Friday:Cognitive Services - Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
+* [Build 2018 での Azure Friday: Cognitive Services - Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 の AI ショー - Language Understanding Intelligent Service の新機能](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
 * [Build 2018 のセッション - ボット インテリジェンス、音声機能、NLU のベスト プラクティス](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - LUIS 更新](https://channel9.msdn.com/events/Build/2018/THR3118/player)

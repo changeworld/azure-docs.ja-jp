@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 7380cf6727817d99edbedf5552c8bea42f177074
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル:Azure Active Directory と N2F - Expense reports の統合
@@ -209,7 +209,7 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
 Azure AD ユーザーが N2F - Expense reports にログインできるようにするには、そのユーザーを N2F - Expense reports にプロビジョニングする必要があります。 N2F - Expense reports の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. N2F - Expense reports 企業サイトに管理者としてログインします。
 

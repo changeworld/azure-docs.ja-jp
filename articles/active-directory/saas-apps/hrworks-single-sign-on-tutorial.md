@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 06a10cab81b1253658f505b3cd3f2c520ef9cea8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>チュートリアル:Azure Active Directory と HRworks Single Sign-On の統合
@@ -196,7 +196,7 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
 
 Azure AD ユーザーが HRworks Single Sign-On にサインインできるようにするには、ユーザーを HRworks Single Sign-On にプロビジョニングする必要があります。 HRworks Single Sign-On では、プロビジョニングは手動のタスクです。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. 管理者として HRworks Single Sign-On にサインインします。
 

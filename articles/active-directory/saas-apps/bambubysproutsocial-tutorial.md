@@ -16,10 +16,10 @@ ms.date: 02/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 902abe2f6ba122537eae1a49015c990493cd1e3d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル:Azure Active Directory と Bambu by Sprout Social の統合
@@ -52,7 +52,7 @@ Azure AD と Bambu by Sprout Social の統合を構成するには、次のも�
 
 Azure AD への Bambu by Sprout Social の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Bambu by Sprout Social を追加する必要があります。
 
-**ギャラリーから Bambu by Sprout Social を追加するには、次の手順を実行します。**
+**ギャラリーから Bambu by Sprout Social を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 

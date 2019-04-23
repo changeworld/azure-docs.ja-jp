@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: fc0ef38193bbd6e5044764a26a5793a4d115348d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>チュートリアル:Azure Active Directory と Grovo の統合
@@ -106,13 +106,13 @@ Grovo で Azure AD シングル サインオンを構成するには、次の手
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](common/idp-relay.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.grovo.com/sso/saml2/metadata`
+    a. **[識別子]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/saml-assertion` のパターンを使用して URL を入力します
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、次のパターンで URL を入力します:  `https://<subdomain>.grovo.com`
+    d. **[リレー状態]** ボックスに、`https://<subdomain>.grovo.com` のパターンで URL を入力します。
 
 5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 

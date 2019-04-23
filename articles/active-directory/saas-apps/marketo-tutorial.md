@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 09f452a0971e2a0e74e51edd2db44eecda39c204
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル:Marketo と Azure Active Directory の統合
@@ -104,9 +104,9 @@ Marketo で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Marketo のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://saml.marketo.com/sp`
+    a. **[識別子]** ボックスに、`https://saml.marketo.com/sp` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://login.marketo.com/saml/assertion/\<munchkinid\>`
+    b. **[応答 URL]** ボックスに、`https://login.marketo.com/saml/assertion/\<munchkinid\>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Marketo クライアント サポート チーム](http://investors.marketo.com/contactus.cfm)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

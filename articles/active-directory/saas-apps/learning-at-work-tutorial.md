@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fd941e2c6d4b830bea6458e74fd27123b25efdf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>チュートリアル:Azure Active Directory と Learning at Work の統合
@@ -105,9 +105,9 @@ Learning at Work を利用して Azure AD シングル サインオンを構成�
 
     ![[Learning at Work のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.sabacloud.com/Saba/Web/<company code>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sabacloud.com/Saba/Web/<company code>`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<subdomain>.sabacloud.com/Saba/saml/SSO/alias/<company name>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sabacloud.com/Saba/saml/SSO/alias/<company name>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Learning at Work クライアント サポート チーム](https://www.learninga-z.com/site/contact/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

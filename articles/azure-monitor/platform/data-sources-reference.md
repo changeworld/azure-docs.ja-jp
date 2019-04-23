@@ -9,10 +9,10 @@ ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: c703f735f59a8425c2a14641781f482a6e2d1c78
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58848546"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
@@ -26,13 +26,13 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 | データ型 | Category | サポートされているサービス | アクセスの方法 |
 | --- | --- | --- | --- |
 | Azure Monitor プラットフォーム レベルのメトリック | メトリック | [この一覧をご覧ください](metrics-supported.md) | <ul><li>**REST API:** [Azure Monitor メトリック API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Storage BLOB またはイベント ハブ:** [診断設定](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
-| ゲスト OS メトリック ( Perf counters など) のコンピューティング | メトリック | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) と Linux の仮想マシン (v2)、[Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは BLOB:** [Windows または Linux の Azure 診断](diagnostics-extension-to-storage.md)</li><li>**イベント ハブ:** [Windows の Azure 診断](diagnostics-extension-stream-event-hubs.md)</li></ul> |
+| ゲスト OS メトリック ( Perf counters など) のコンピューティング | メトリック | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) と Linux の仮想マシン (v2)、[Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは BLOB:** [Windows または Linux の Azure Diagnostics](diagnostics-extension-to-storage.md)</li><li>**イベント ハブ:** [Windows の Azure Diagnostics](diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | カスタムまたはアプリケーション メトリック | メトリック | Application Insights を使用してインストルメント化されたすべてのアプリケーション | <ul><li>**REST API:** [Application Insights REST API](https://dev.applicationinsights.io/reference)</li></ul> |
 | Storage のメトリック | メトリック | Azure Storage | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 課金データ | メトリック | すべての Azure サービス | <ul><li>**REST API:** [Azure Resource Usage API と RateCard API](../../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | アクティビティ ログ | events | すべての Azure サービス | <ul><li>**REST API:** [Azure Monitor イベント API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**Storage BLOB またはイベント ハブ:** [ログ プロファイル](activity-logs-overview.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | Azure Monitor 診断ログ | events | [この一覧をご覧ください](diagnostic-logs-schema.md) | <ul><li>**Storage BLOB またはイベント ハブ:** [診断設定](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
-| ゲスト OS ログ ( IIS、ETW、Syslog など) のコンピューティング | events | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) と Linux の仮想マシン (v2)、[Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは BLOB:** [Windows または Linux の Azure 診断](diagnostics-extension-to-storage.md)</li><li>**イベント ハブ:** [Windows の Azure 診断](diagnostics-extension-stream-event-hubs.md)</li></ul> |
+| ゲスト OS ログ ( IIS、ETW、Syslog など) のコンピューティング | events | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) と Linux の仮想マシン (v2)、[Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは BLOB:** [Windows または Linux の Azure Diagnostics](diagnostics-extension-to-storage.md)</li><li>**イベント ハブ:** [Windows の Azure Diagnostics](diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | App Service ログ | events | App Services | <ul><li>**ファイル、テーブル、または Blob Storage:** [Web アプリ診断](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
 | ストレージ ログ | events | Azure Storage | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Security Center のアラート | events | Azure Security Center | <ul><li>**REST API:** [セキュリティのアラート](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |

@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 ms.openlocfilehash: 61a10d4401daeedcf81ea85b7b837f5c1fbfb909
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357145"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したマルチサービスの開発
@@ -60,7 +60,7 @@ ms.locfileid: "59357145"
        });
     });
     ```
-   1. 次の末尾の `server.close()` 行を "*削除*" します:  `server.js`
+   1. `server.js` の最後の行 `server.close()` の*削除*
 
 前述のコード例は、`azds-route-as` ヘッダーを受信要求から送信要求に転送します。 これがチームによる共同開発にどのように役立つかについては、後ほど説明します。
 

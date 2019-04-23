@@ -12,10 +12,10 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 ms.openlocfilehash: 58807aa5a540de6eaa9a337caa0c34fee9408296
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361439"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
@@ -58,8 +58,8 @@ Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開
 ### <a name="set-up-your-baseline"></a>ベースラインを設定する
 最初に、サービスのベースラインをデプロイする必要があります。 このデプロイは "前回の既知の正常な状態" を表すため、ローカル コードとチェックイン バージョンの動作を簡単に比較できます。 次に、このベースラインに基づいて子空間を作成して、より大きなアプリケーションのコンテキスト内で *mywebapi* に対する変更をテストできるようにします。
 
-1. [Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製します。 `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. リモート ブランチ *azds_updates* をチェックアウトします。 `git checkout -b azds_updates origin/azds_updates`
+1. [Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製します。`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. リモート ブランチ *azds_updates* をチェックアウトします。`git checkout -b azds_updates origin/azds_updates`
 1. 両方のサービスの F5/デバッグ セッションをすべて閉じます。ただし、Visual Studio ウィンドウでプロジェクトを開いたままにしておきます。
 1. _mywebapi_ プロジェクトがある Visual Studio ウィンドウに切り替えます。
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[プロパティ]** を選択します。

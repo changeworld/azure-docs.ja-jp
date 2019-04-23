@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32511b638d4674198ce919b8b3a90e67b1c3cfc7
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793256"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Azure Active Directory で削除された Office 365 グループを復元する

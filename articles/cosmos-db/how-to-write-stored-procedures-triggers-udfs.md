@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268416"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
@@ -324,4 +324,4 @@ Azure Cosmos DB でストアド プロシージャ、トリガー、およびユ
 
 * [Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する](stored-procedures-triggers-udfs.md)
 
-* [Azure Cosmos DB で JavaScript 言語統合クエリ API を操作する](javascript-query-api.md)
+* [Azure Cosmos DB のJavaScript 言語統合クエリ API の操作](javascript-query-api.md)

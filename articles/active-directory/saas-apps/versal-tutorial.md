@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 83a5d4c1d9c0475609a506fbfe6ae23bd9e236fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>チュートリアル:Azure Active Directory と Versal の統合
@@ -105,9 +105,9 @@ Versal で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Versal のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `VERSAL`
+    a. **[識別子]** テキスト ボックスに、`VERSAL` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://versal.com/sso/saml/orgs/<organization_id>`
+    b. **[応答 URL]** ボックスに、`https://versal.com/sso/saml/orgs/<organization_id>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Versal クライアント サポート チーム](https://support.versal.com/hc/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

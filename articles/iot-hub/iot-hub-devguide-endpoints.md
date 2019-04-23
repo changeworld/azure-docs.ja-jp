@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 5015068f9b165190bef3b0cb97ddb194e173303e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045919"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
@@ -102,5 +102,5 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
 * [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語](iot-hub-devguide-query-language.md)
-* [クォータと調整](iot-hub-devguide-quotas-throttling.md)
+* [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md)

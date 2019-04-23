@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
 ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009273"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
@@ -52,7 +52,7 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
     1. 既に Apple Developer アカウントをお持ちの場合は、適切な組織名と組織 ID を入力します。 テスト目的の場合は、単に `testorg` のような名前を選択できます。 アプリに署名するためには、適切なプロビジョニング プロファイルが必要です。 詳細については、[Apple の開発者向けサイト](https://developer.apple.com/)を参照してください。
     1. プロジェクトの言語として Objective-C が選択されていることを確認します。
     1. テストとコア データに関するすべてのチェック ボックスを無効にします。
-    ![プロジェクト設定](media/sdk/qs-objectivec-project-settings.png)
+    ![プロジェクトの設定](media/sdk/qs-objectivec-project-settings.png)
 1. プロジェクト ディレクトリの選択
     1. ホーム ディレクトリを選択して、プロジェクトを配置します。 これにより、ホーム ディレクトリ内に `helloworld` ディレクトリが作成され、Xcode プロジェクトのすべてのファイルが入れられます。
     1. このサンプル プロジェクトの Git リポジトリの作成を無効にします。

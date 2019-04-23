@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: cf414f9dd0f3a7ab638dc72e50aa8f3997308cc7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル:Azure Active Directory と Vibe HCM の統合
@@ -51,7 +51,7 @@ Vibe HCM と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Vibe HCM の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Vibe HCM を追加する必要があります。
 
-**ギャラリーから Vibe HCM を追加するには、次の手順を実行します。**
+**ギャラリーから Vibe HCM を追加するには、次の手順を行います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 

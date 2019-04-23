@@ -16,10 +16,10 @@ ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
 ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895785"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
@@ -90,7 +90,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-変更を監視する対象となるファイルの一覧です (セミコロン区切り)。 ファイルを変更すると、アプリケーションのリサイクルが発生します。 各エントリは、省略可能なディレクトリ名と必須のファイル名で構成されます。これらの名前は、アプリケーションのメイン エントリ ポイントがあるディレクトリからの相対位置になります。 ワイルドカードは、ファイル名部分のみに使用できます。 既定値は `*.js;iisnode.yml`
+変更を監視する対象となるファイルの一覧です (セミコロン区切り)。 ファイルを変更すると、アプリケーションのリサイクルが発生します。 各エントリは、省略可能なディレクトリ名と必須のファイル名で構成されます。これらの名前は、アプリケーションのメイン エントリ ポイントがあるディレクトリからの相対位置になります。 ワイルドカードは、ファイル名部分のみに使用できます。 既定値は `*.js;iisnode.yml` です。
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-次のデバッグ コンソール サイトに移動します:  `https://yoursite.scm.azurewebsites.net/DebugConsole`
+デバッグ コンソール サイト (`https://yoursite.scm.azurewebsites.net/DebugConsole`) に移動します。
 
 site/wwwroot ディレクトリに移動します。 次の図のようなコマンド プロンプトが表示されます。
 
@@ -274,15 +274,15 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 | 503 |1002 |実際の理由については、win32 エラー コードを確認してください。要求を node.exe にディスパッチできませんでした。 |
 | 503 |1003 |名前付きパイプがビジー状態です – ノードが CPU を大量に消費しているかどうかを確認してください。 |
 
-NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります。 Azure App Service では、この値は 5000 に設定されています。 つまり、node.exe では名前付きパイプを使用して同時に 5000 個の要求を受け入れることができます。 Azure App Service で実行されるほとんどのノード アプリケーションでは、この値で十分です。 次の設定には大きい値が割り当てられているため、Azure App Service に 503.1003 が表示されることはありません:  `NODE_PENDING_PIPE_INSTANCES`
+NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります。 Azure App Service では、この値は 5000 に設定されています。 つまり、node.exe では名前付きパイプを使用して同時に 5000 個の要求を受け入れることができます。 Azure App Service で実行されるほとんどのノード アプリケーションでは、この値で十分です。 `NODE_PENDING_PIPE_INSTANCES` には大きい値が設定されているため、Azure App Service に 503.1003 が表示されることはありません。
 
 ## <a name="more-resources"></a>その他のリソース
 
 Azure App Service での node.js アプリケーションの詳細については、以下のリンクを参照してください。
 
-* [Azure App Service での Node.js Web アプリの使用](app-service-web-get-started-nodejs.md)
+* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)
 * [Azure App Service で Node.js Web アプリをデバッグする方法](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
-* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps:Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js デベロッパー センター](../nodejs-use-node-modules-azure-apps.md)
 * [優れた Kudu デバッグ コンソールの詳細](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 59cfdfaae597feb8f1cab212b407a8879d78f9f9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>チュートリアル:Azure Active Directory と Sansan の統合
@@ -51,7 +51,7 @@ Sansan と Azure AD の統合を構成するには、次のものが必要です
 
 Azure AD への Sansan の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Sansan を追加する必要があります。
 
-**ギャラリーから Sansan を追加するには、次の手順に従います。**
+**ギャラリーから Sansan を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 

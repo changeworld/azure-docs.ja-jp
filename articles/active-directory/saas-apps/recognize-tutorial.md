@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 94e0b365d159ef18d7c0e6216ac9f5babb0d6231
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル:Azure Active Directory と Recognize の統合
@@ -229,7 +229,7 @@ Azure AD ユーザーが Recognize にログインできるようにするには
 
 このアプリは SCIM プロビジョニングをサポートしていませんが、ユーザーをプロビジョニングする代替ユーザー同期があります。 
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. Recognize 企業サイトに管理者としてサインインします。
 

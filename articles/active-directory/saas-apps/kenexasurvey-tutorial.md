@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 385092cb9c760e6f9fa848449bd61663541573b9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル:Azure Active Directory と IBM Kenexa Survey Enterprise の統合
@@ -105,9 +105,9 @@ IBM Kenexa Survey Enterprise で Azure AD シングル サインオンを構成�
 
     ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://surveys.kenexa.com/<companycode>`
+    a. **[識別子]** ボックスに、`https://surveys.kenexa.com/<companycode>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. **[応答 URL]** ボックスに、`https://surveys.kenexa.com/<companycode>/tools/sso.asp` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を入手するには、[IBM Kenexa Survey Enterprise クライアント サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

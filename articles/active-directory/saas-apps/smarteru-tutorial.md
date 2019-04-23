@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: d1b2d80a1960abb37262ef7429ee5b99665986b4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265136"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル:Azure Active Directory と SmarterU の統合
@@ -202,7 +202,7 @@ SmarterU で Azure AD シングル サインオンを構成するには、次の
 
 Azure AD ユーザーが SmarterU にサインインできるようにするには、そのユーザーを SmarterU にプロビジョニングする必要があります。 SmarterU の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **SmarterU** テナントにサインインします。
 

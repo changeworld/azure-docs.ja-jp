@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 5b3e839af886dc23bdfb11dacfb1854a2277bf3a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>チュートリアル:Azure Active Directory と FloQast の統合
@@ -50,7 +50,7 @@ FloQast と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への FloQast の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に FloQast を追加する必要があります。
 
-**ギャラリーから FloQast を追加するには、次の手順を実行します。**
+**ギャラリーから FloQast を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -122,7 +122,7 @@ FloQast で Azure AD シングル サインオンを構成するには、次の�
     | ------------------- | -------------------- |    
     | FirstName           | User.givenname |
     | LastName            | User.surname |
-    | 電子メール               | User.mail    |
+    | Email               | User.mail    |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 

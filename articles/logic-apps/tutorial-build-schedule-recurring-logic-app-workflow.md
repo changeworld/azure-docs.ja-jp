@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884688"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Azure Logic Apps を使用してスケジュールに従ってトラフィックをチェックする
@@ -43,7 +43,7 @@ Azure サブスクリプションがない場合は、始める前に<a href="ht
 
 * ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing 地図のキーを取得する方法</a>に関するページの手順に従ってください。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
@@ -59,10 +59,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **名前** | LA-TravelTime | ロジック アプリの名前 | 
+   | **Name** | LA-TravelTime | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
    | **リソース グループ** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **Location** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
+   | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
@@ -78,8 +78,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    !["スケジュール-繰り返し" トリガーを探して追加](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. **[繰り返し]** シェイプの**省略記号** (**...**) ボタンを選択し、**[名前の変更]** を選択します。 トリガーの名前を次の説明に変更します: 
-```Check travel time every weekday morning```
+2. **[繰り返し]** シェイプの**省略記号** (**...**) ボタンを選択し、**[名前の変更]** を選択します。 トリガーの名前をわかりやすく「```Check travel time every weekday morning```」に変更します。
 
    ![トリガーの名前変更](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -91,7 +90,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **interval** | 1 | チェックの間隔 (単位数) | 
+   | **間隔** | 1 | チェックの間隔 (単位数) | 
    | **頻度** | 週 | 定期実行の時間の単位 | 
    | **タイム ゾーン** | なし | 開始時刻を指定したときに限り適用されます。 ローカル タイム ゾーン以外のタイム ゾーンを指定するときなどに使います。 | 
    | **開始時刻** | なし | 特定の日時まで定期実行を先送りします。 詳細については、[定期的に実行されるタスクとワークフローのスケジューリング](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
@@ -126,12 +125,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | 説明 |
    | ------- | ----- | ----------- |
-   | **接続名** | BingMapsConnection | 接続の名前を指定します。 | 
-   | **[API キー]** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
+   | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
+   | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
    | | | |  
 
-4. アクションの名前を次の説明に変更します: 
-```Get route and travel time with traffic```
+4. アクションの名前をわかりやすく「```Get route and travel time with traffic```」に変更します。
 
 5. **[Get route]\(ルートを取得する\)** アクションを次のように指定します。
 
@@ -144,9 +142,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | **回避** | なし | ルート上で回避する要素 (高速道路、通行料金など) | 
    | **最適化** | timeWithTraffic | ルートを最適化するためのパラメーター (距離、最新の交通量を加味した移動時間など) このパラメーターとして "timeWithTraffic" を選択します。 | 
    | **距離単位** | <*your-preference*> | ルートの距離の単位。 この記事では、次の単位を使用します: "マイル"  | 
-   | **移動手段** | Driving (車) | ルートの移動手段。 次の手段を選択します: "車" | 
-   | **交通機関の日時** | なし | 移動手段が交通機関の場合のみ | 
-   | **日時の種類** | なし | 移動手段が交通機関の場合のみ | 
+   | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段。 次の手段を選択します: "車" | 
+   | **Transit Date-Time (交通機関の日時)** | なし | 移動手段が交通機関の場合のみ | 
+   | **Date-Time Type (日時の種類)** | なし | 移動手段が交通機関の場合のみ | 
    |||| 
 
    これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://msdn.microsoft.com/library/ff701717.aspx)」を参照してください。
@@ -167,14 +165,13 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[変数 - 変数を初期化する] アクションを選択](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
-3. このアクションの名前を次の説明に変更します: 
-```Create variable to store travel time```
+3. このアクションの名前をわかりやすく「```Create variable to store travel time```」に変更します。
 
 4. 変数の詳細を次のように入力します。
 
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
-   | **名前** | travelTime | 変数の名前 | 
+   | **Name** | travelTime | 変数の名前 | 
    | **Type** | 整数 | 変数のデータ型 | 
    | **値** | 最新の移動時間を秒から分に変換する式 (この表の下の手順を参照)。 | 変数の初期値 | 
    |||| 
@@ -193,7 +190,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       ブラウザーの幅が広い場合、動的コンテンツ リストが表示されます。 
       ブラウザーの幅が狭い場合は、パラメーター リストが、現在フォーカスのある編集ボックスの下にインラインで表示されます。
 
-   2. 式エディターに、次の式を入力します:  ```div(,60)```
+   2. 式エディターに、「```div(,60)```」という式を入力します。
 
       ![「div(,60)」という式を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
@@ -222,7 +219,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. 直前のアクションの下で、**[+ 新しいステップ]** > **[条件の追加]** の順に選択します。 
 
-2. 条件の名前を次の説明に変更します:  ```If travel time exceeds limit```
+2. 条件の名前をわかりやすく「```If travel time exceeds limit```」に変更します。
 
 3. **travelTime** が特定の上限を超えているかどうかを調べる条件を次の説明に従って作成します。
 
@@ -259,8 +256,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    Logic Apps によって電子メール アカウントへの接続が作成されます。
 
-4. アクションの名前を次の説明に変更します: 
-```Send email with travel time```
+4. アクションの名前をわかりやすく「```Send email with travel time```」に変更します。
 
 5. **[宛先]** ボックスに、受信者の電子メール アドレスを入力します。 テスト目的のため、ご自身のメール アドレスを使ってください。
 
@@ -342,4 +338,4 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 このチュートリアルでは、指定したスケジュールに基づいて (平日朝毎日) 交通量をチェックし、移動時間が指定の上限を超えたときに、必要なアクション (メール送信) を実行するロジック アプリを作成しました。 次回は、Azure サービスや Microsoft サービスなど、各種の SaaS アプリを連携させることによって、メーリング リストの登録申請を送信するロジック アプリの作成方法について詳しく見ていきましょう。
 
 > [!div class="nextstepaction"]
-> [メーリング リスト要求の管理](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
+> [メーリング リストの登録申請の管理](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 4788b65201792292d79cd8c4d1b22f22c5e67eb6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>チュートリアル:Azure Active Directory と Nuclino の統合
@@ -106,9 +106,9 @@ Nuclino で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Nuclino のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://api.nuclino.com/api/sso/<UNIQUE-ID>/metadata`
+    a. **[識別子]** ボックスに、`https://api.nuclino.com/api/sso/<UNIQUE-ID>/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://api.nuclino.com/api/sso/<UNIQUE-ID>/acs`
+    b. **[応答 URL]** ボックスに、`https://api.nuclino.com/api/sso/<UNIQUE-ID>/acs` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 **[認証]** セクションの実際の識別子と応答 URL にこれらの値を置き換えます。実際の値については後で説明します。

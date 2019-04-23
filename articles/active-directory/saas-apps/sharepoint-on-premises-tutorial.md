@@ -16,10 +16,10 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ba9f4df36f753a1caf619ad90015fa073a00de3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合
@@ -106,11 +106,11 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
 
     ![[SharePoint オンプレミスのドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<YourSharePointServerURL>/_trust/default.aspx`
+    a. **[サインオン URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 `urn:sharepoint:federation`
+    b. **[識別子]** ボックスに、`urn:sharepoint:federation` という形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<YourSharePointServerURL>/_trust/default.aspx`
+    c. **[応答 URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SharePoint オンプレミス クライアント サポート チーム](https://support.office.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -122,7 +122,7 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
     > [!Note]
     > 証明書ファイルをダウンロードしたファイル パスは、構成時に PowerShell スクリプトで後から使用する必要があるため、書き留めておいてください。
 
-6. **[Set up SharePoint on-premises]\(SharePoint オンプレミスのセットアップ\)** セクションで、要件どおりの適切な URL をコピーします。 **[シングル サインオン サービス URL]** に次のパターンの値を使用します。 `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+6. **[Set up SharePoint on-premises]\(SharePoint オンプレミスのセットアップ\)** セクションで、要件どおりの適切な URL をコピーします。 **[シングル サインオン サービス URL]** に次のパターンの値を使用します。`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ は Azure Ad サブスクリプションのテナント ID です。
@@ -142,7 +142,7 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
 
 1. 別の Web ブラウザー ウィンドウで、Sharepoint オンプレミスの企業サイトに管理者としてログインします。
 
-2. **SharePoint Server 2016 で、信頼できる ID プロバイダーを新しく構成します**
+2. **SharePoint Server 2016 で信頼できる ID プロバイダーを新しく構成する**
 
     SharePoint Server 2016 サーバーにサインインし、SharePoint 2016 管理シェルを開きます。 Azure Portal から $realm (Azure Portal の [SharePoint オンプレミスのドメインと URL] からの [識別子] の値)、$wsfedurl ([シングル サインオン サービス URL])、および $filepath (証明書ファイルをダウンロードしたファイル パス) の値を入力し、次のコマンドを実行して信頼済みの新しい ID プロバイダーを構成します。
 

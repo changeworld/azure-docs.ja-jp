@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: d73bc9cc845f214eab490a542892aa67bf9d0216
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282255"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>チュートリアル:Azure Active Directory と TurboRater の統合
@@ -105,7 +105,7 @@ TurboRater で Azure AD シングル サインオンを構成するには、次�
 
     ![[TurboRater のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `https://www.itcdataservices.com`
+    a. **[識別子]** テキスト ボックスに、`https://www.itcdataservices.com` という URL を入力します。
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 

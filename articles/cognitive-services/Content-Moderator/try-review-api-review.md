@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882018"
 ---
 # <a name="create-human-reviews-rest"></a>人によるレビューの作成 (REST)
@@ -36,7 +36,7 @@ ms.locfileid: "58882018"
 **teamName** と **Ocp-Apim-Subscription-Key** の値を入力します。
 
 - **teamName**:[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールド内にあります)。
-- **Ocp-Apim-Subscription-Key**: Content Moderator のキー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
+- **Ocp-Apim-Subscription-Key**: ご自分の Content Moderator キー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
 
 ### <a name="enter-a-review-definition"></a>レビューの定義を入力する
 

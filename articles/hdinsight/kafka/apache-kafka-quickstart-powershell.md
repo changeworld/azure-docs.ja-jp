@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850329"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスター上に Apache Kafka を作成する

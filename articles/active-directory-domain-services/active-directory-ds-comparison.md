@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892298"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Azure AD Domain Services がユースケースに適しているかを判断する方法
@@ -39,17 +39,17 @@ Azure AD ドメイン サービスを使用を決定する材料として、次�
 | [**管理されたサービス**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**安全なデプロイ**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |管理者がデプロイを保護する必要があります。 |
 | [**DNS サーバー**](active-directory-ds-comparison.md#dns-server) |**&amp;#x2713;** (管理されたサービス) |**&#x2713;** |
-| [**ドメインまたはエンタープライズ管理者の特権**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Domain Join**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**NTLM と Kerberos を使用するドメインの認証**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Kerberos の制約付き委任**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|リソースベース|リソースベースとアカウントベース|
 | [**カスタムの OU 構造**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
 | [**スキーマの拡張機能**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD ドメイン/フォレストの信頼**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
-| [**LDAP の読み取り**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
-| [**Secure LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
+| [**LDAP read**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
+| [**セキュリティで保護された LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
 | [**LDAP write**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
-| [**グループ ポリシー**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**Group Policy**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
 | [**地理的に分散したデプロイ**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>管理されたサービス
@@ -120,4 +120,4 @@ Azure AD Domain Services のマネージド ドメインは、Azure の 1 つの
 ## <a name="related-content"></a>関連コンテンツ
 * [機能 - Azure AD Domain Services](active-directory-ds-features.md)
 * [デプロイ シナリオ - Azure AD Domain Services](active-directory-ds-scenarios.md)
-* [Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)
+* [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)

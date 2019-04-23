@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: bb18aa35c89657f01319512eac6c15096174891f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>チュートリアル:Azure Active Directory と ExcelityGlobal の統合
@@ -106,15 +106,15 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    **運用環境の場合**:  `https://ess.excelityglobal.com`
+    **運用環境**: `https://ess.excelityglobal.com`
 
-    **サンドボックス環境の場合**:  `https://s6.excelityglobal.com`
+    **サンドボックス環境**: `https://s6.excelityglobal.com`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    **運用環境の場合**:  `https://ess.excelityglobal.com/ACS`
+    **運用環境**: `https://ess.excelityglobal.com/ACS`
 
-    **サンドボックス環境の場合**:  `https://s6.excelityglobal.com/ACS`
+    **サンドボックス環境**: `https://s6.excelityglobal.com/ACS`
 
 5. ExcelityGlobal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 ExcelityGlobal アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
  

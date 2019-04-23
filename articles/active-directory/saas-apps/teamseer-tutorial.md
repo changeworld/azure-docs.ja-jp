@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: ef11011ec37f72003dd6c238ce748d417bfcd505
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>チュートリアル:Azure Active Directory と TeamSeer の統合
@@ -213,7 +213,7 @@ TeamSeer で Azure AD シングル サインオンを構成するには、次の
 
 Azure AD ユーザーが TeamSeer にログインできるようにするには、ユーザーを ShiftPlanning にプロビジョニングする必要があります。 TeamSeer の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **TeamSeer** 企業サイトに管理者としてサインインします。
 

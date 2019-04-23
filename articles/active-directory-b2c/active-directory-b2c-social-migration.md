@@ -11,10 +11,10 @@ ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894903"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
@@ -29,11 +29,11 @@ ms.locfileid: "58894903"
 
 * **ソーシャル アカウント** の ID は、`userIdentities` コレクションに格納されます。 エントリでは、facebook.com や `issuerUserId` など、発行者の一意のユーザー識別子である `issuer` (ID プロバイダー名) を指定します。 `userIdentities` 属性には、ソーシャル アカウントの種類を指定する 1 つ以上の UserIdentity レコードと、ソーシャル ID プロバイダーからの一意のユーザー識別子が含まれます。
 
-* **ローカル アカウントをソーシャル ID と結合します**。 前述のように、ローカル アカウントのサインイン名とソーシャル アカウント ID は異なる属性に格納されます。 `signInNames`  はローカル アカウントに使われ、`userIdentities` はソーシャル アカウントに使われます。 1 つのユーザー レコードで、1 つの Azure AD B2C アカウントは、ローカル アカウントのみまたはソーシャル アカウントのみとするか、ローカル アカウントとソーシャル ID を結合したものにすることができます。 この動作により、管理するアカウントは 1 つになりますが、ユーザーはローカル アカウントの資格情報またはソーシャル ID でサインインできます。
+* **ローカル アカウントをソーシャル ID と結合します**。 前述のように、ローカル アカウントのサインイン名とソーシャル アカウント ID は異なる属性に格納されます。 `signInNames` はローカル アカウントに使われ、`userIdentities` はソーシャル アカウントに使われます。 1 つのユーザー レコードで、1 つの Azure AD B2C アカウントは、ローカル アカウントのみまたはソーシャル アカウントのみとするか、ローカル アカウントとソーシャル ID を結合したものにすることができます。 この動作により、管理するアカウントは 1 つになりますが、ユーザーはローカル アカウントの資格情報またはソーシャル ID でサインインできます。
 
-* `UserIdentity`  種類 - Azure AD B2C テナント内のソーシャル アカウント ユーザーの ID に関する情報が含まれています。
-  * `issuer`  facebook.com など、ユーザー識別子を発行した ID プロバイダーの文字列表現。
-  * `issuerUserId`  ソーシャル ID プロバイダーによって使われる base64 形式での一意のユーザー識別子。
+* `UserIdentity` 種類 - Azure AD B2C テナント内のソーシャル アカウント ユーザーの ID に関する情報が含まれています。
+  * `issuer` facebook.com など、ユーザー識別子を発行した ID プロバイダーの文字列表現。
+  * `issuerUserId` ソーシャル ID プロバイダーによって使われる base64 形式での一意のユーザー識別子。
 
     ```JSON
     "userIdentities": [{

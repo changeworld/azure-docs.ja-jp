@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d50c4366128edb5b4bc76408eb1085817af1ce3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル:Azure Active Directory と New Relic の統合
@@ -50,7 +50,7 @@ New Relic と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への New Relic の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に New Relic を追加する必要があります。
 
-**ギャラリーから New Relic を追加するには、次の手順に従います。**
+**ギャラリーから New Relic を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,7 +106,7 @@ New Relic で Azure AD シングル サインオンを構成するには、次�
 
     a. **[サインオン URL]** テキスト ボックスに、`https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` のパターンを使用して URL を入力します。必ずご自身の New Relic アカウント ID に置き換えてください。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `rpm.newrelic.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、`rpm.newrelic.com` という URL を入力します。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

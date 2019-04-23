@@ -16,10 +16,10 @@ ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
 ms.openlocfilehash: 4f5fbbb9d06f9fcb8858625b57957fc18c5c1f1f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046913"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する

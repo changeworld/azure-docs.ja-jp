@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: ed8884462030e10625f332b182bd900e833f34f4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272735"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
@@ -60,8 +60,8 @@ Data Lake Storage Gen1 を追加のストレージ アカウントとして使�
 
 Data Lake Storage Gen1 を既定のストレージとして HDInsight がデプロイされている場合、クラスター関連のファイルは `adl://mydatalakestore/<cluster_root_path>/` に格納されます。`<cluster_root_path>` は、Data Lake Storage にお客様が作成したフォルダーの名前です。 クラスターごとにルート パスを指定することで、複数のクラスターに対して同じ Data Lake Storage アカウントを使うことができます。 このため、次の場所にセットアップを設定できます。
 
-* Cluster1 は、次のパスを使用できます `adl://mydatalakestore/cluster1storage`
-* Cluster2 は、次のパスを使用できます `adl://mydatalakestore/cluster2storage`
+* Cluster1 は、パス `adl://mydatalakestore/cluster1storage` を使用できます
+* Cluster2 は、パス `adl://mydatalakestore/cluster2storage` を使用できます
 
 両方のクラスターが同じ Data Lake Storage Gen1 アカウント **mydatalakestore** を使用していることに注意してください。 クラスターそれぞれが、Data Lake Storage で独自のルート ファイルシステムにアクセスします。 特に Azure Portal をデプロイすると、ルート パスの **/clusters/\<clustername >** などのフォルダー名を使用するよう求められます。
 
@@ -243,7 +243,7 @@ Invoke-AzResourceAction `
 詳細については、次を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
-* [クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Azure PowerShell を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での Apache Hive の使用][hdinsight-use-hive]

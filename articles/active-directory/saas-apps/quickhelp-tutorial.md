@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 45ffcaa1d5bccb0746ce86ec0f98342ce5e9bcc9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル:Azure Active Directory と QuickHelp の統合
@@ -107,9 +107,9 @@ QuickHelp で Azure AD シングル サインオンを構成するには、次�
 
     ![[QuickHelp ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://quickhelp.com/<ROUTEURL>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://quickhelp.com/<ROUTEURL>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次の URL を入力します。 `https://auth.quickhelp.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、`https://auth.quickhelp.com` という URL を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 組織の QuickHelp 管理者や BrainStorm Client Success マネージャーに値を問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

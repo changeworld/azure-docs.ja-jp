@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 490ef95e061da4a008bf50ef664aaa379d5b3062
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル:Azure Active Directory と OneTrust Privacy Management Software の統合
@@ -107,9 +107,9 @@ OneTrust Privacy Management Software で Azure AD シングル サインオン�
 
     ![[OneTrust Privacy Management Software のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `https://www.onetrust.com/saml2`
+    a. **[識別子]** テキスト ボックスに、`https://www.onetrust.com/saml2` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.onetrust.com/auth/consumerservice`
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.onetrust.com/auth/consumerservice` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

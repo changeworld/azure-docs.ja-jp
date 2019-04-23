@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 926deea2f9754febb76e8ccc81933a792f3a9dbc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>チュートリアル:Azure Active Directory と Neota Logic Studio の統合
@@ -104,9 +104,9 @@ Neota Logic Studio で Azure AD シングル サインオンを構成するに�
 
     ![[Neota Logic Studio のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<sub domain>.neotalogic.com/a/<sub application>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<sub domain>.neotalogic.com/a/<sub application>`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<sub domain>.neotalogic.com/wb`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<sub domain>.neotalogic.com/wb`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Neota Logic Studio クライアント サポート チーム](https://www.neotalogic.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 59012bf32a4e1f0532b4d42e510d431180c35730
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル:Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
@@ -105,7 +105,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD シングル サインオンを�
 
     ![[Veritas Enterprise Vault.cloud SSO のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+    a. **[サインオン URL]** ボックスに、`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>` という形式で URL を入力します。
 
     b. **[識別子]** ボックスでは、データセンターに応じた URL を使用します。
 

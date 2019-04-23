@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6304f4afa05850ced8b88bb81c0f94e4a31fb5be
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>チュートリアル:Azure Active Directory と Jostle の統合
@@ -51,7 +51,7 @@ Azure AD と Jostle の統合を構成するには、次のものが必要です
 
 Azure AD への Jostle の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Jostle を追加する必要があります。
 
-**ギャラリーから Jostle を追加するには、次の手順を実行します。**
+**ギャラリーから Jostle を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,11 +105,11 @@ Jostle で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Jostle のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します:  `https://login-prod.jostle.us`
+    a. **[サインオン URL]** テキスト ボックスに、URL として「`https://login-prod.jostle.us`」と入力します。
 
-    b. **[識別子]** ボックスに、次の URL を入力します:  `https://jostle.us`
+    b. **[識別子]** ボックスに、URL として「`https://jostle.us`」と入力します。
 
-    c. **[応答 URL]** ボックスに、次の URL を入力します:  `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
+    c. **[応答 URL]** ボックスに、URL として「`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`」と入力します。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

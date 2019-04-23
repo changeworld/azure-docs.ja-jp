@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 120be3ef7299391e611dc393e70af697c1daf2ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>チュートリアル:Azure Active Directory と MobiControl の統合
@@ -51,7 +51,7 @@ MobiControl と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への MobiControl の統合を構成するには、マネージド SaaS アプリの一覧にギャラリーから MobiControl を追加する必要があります。
 
-**ギャラリーから MobiControl を追加するには、次の手順を実行します。**
+**ギャラリーから MobiControl を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ MobiControl で Azure AD シングル サインオンを構成するには、次
 
     ![[MobiControl のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.corp.soti.net/mobicontrol`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.corp.soti.net/mobicontrol`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<SUBDOMAIN>.mobicontrolcloud.com/mobicontrol`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.mobicontrolcloud.com/mobicontrol`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[MobiControl クライアント サポート チーム](https://www.soti.net/about/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

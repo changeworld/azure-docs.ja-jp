@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
 ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006576"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)
@@ -130,7 +130,7 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 
 5. アプリが読み込まれたら、**[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
 
-    ![アプリケーション](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Application](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
 利用統計情報の送信間隔を実行時に更新するためには、サービス SDK サンプルを実行している間、物理デバイスまたはエミュレーター上でこのアプリを実行状態にしておく必要があります。
 
@@ -206,4 +206,4 @@ az iot hub show-connection-string --name YourIoTHubName --output table
 デバイスからクラウドへのメッセージをクラウド内の異なる宛先にルーティングする方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)
+> [チュートリアル: 処理のために利用統計情報を異なるエンドポイントにルーティングする](tutorial-routing.md)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 33c2d211fad16a81a307a5c0f2a9d048ef07bf4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル:Azure Active Directory と Questetra BPM Suite の統合
@@ -105,9 +105,9 @@ Questetra BPM Suite で Azure AD シングル サインオンを構成するに�
 
     ![[Questetra BPM Suite ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<subdomain>.questetra.net/`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.questetra.net/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値は、**Questetra BPM Suite** 企業サイトの **[SP Information]\(SP 情報\)** セクションから取得できます。これについては、チュートリアルの後半で説明します。または、[Questetra BPM Suite クライアント サポート チーム](https://www.questetra.com/contact/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

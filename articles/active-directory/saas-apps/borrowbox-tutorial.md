@@ -16,10 +16,10 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d11c6472265d7efca98a7e822ca8b8945a13c2ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル:Azure Active Directory と BorrowBox の統合
@@ -52,7 +52,7 @@ BorrowBox と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への BorrowBox の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に BorrowBox を追加する必要があります。
 
-**ギャラリーから BorrowBox を追加するには、次の手順に従います。**
+**ギャラリーから BorrowBox を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 

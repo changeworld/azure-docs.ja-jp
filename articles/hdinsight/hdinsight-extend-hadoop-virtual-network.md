@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883566"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
@@ -111,10 +111,10 @@ ms.locfileid: "58883566"
 
 4. HDInsight クラスターを作成し、構成時に Azure Virtual Network を選択します。 次のドキュメントの手順を使って、クラスターの作成プロセスを理解してください。
 
-    * [Azure portal を使用して HDInsight を作成する](hdinsight-hadoop-create-linux-clusters-portal.md)
-    * [Azure PowerShell を使用して HDInsight を作成する](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [Azure クラシック CLI を使用して HDInsight を作成する](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
-    * [Azure Resource Manager テンプレートを使用して HDInsight を作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+    * [Azure Portal を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-portal.md)
+    * [Azure PowerShell を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+    * [Azure クラシック CLI を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Azure Resource Manager テンプレートを使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
    > [!IMPORTANT]  
    > 仮想ネットワークへの HDInsight の追加はオプションの構成手順です。 必ず、クラスターを構成するときに仮想ネットワークを選択してください。
@@ -259,7 +259,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 1. 常に次の IP アドレスからのトラフィックを許可する必要があります。
 
-    | 送信元 IP アドレス | 宛先ポート | 方向 |
+    | 送信元 IP アドレス | 宛先ポート | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | 受信 |
     | 23.99.5.239 | 443 | 受信 |
@@ -271,7 +271,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
     > [!IMPORTANT]  
     > 使用している Azure リージョンが一覧にない場合は、手順 1. の 4 つの IP アドレスのみを使用してください。
 
-    | Country | リージョン | 許可されているソース IP アドレス | 許可されている宛先ポート | 方向 |
+    | Country | リージョン | 許可されているソース IP アドレス | 許可されている宛先ポート | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | 443 | 受信 |
     | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | 443 | 受信 |
@@ -297,7 +297,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
     | &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | 443 | 受信
     | イギリス | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
     | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | 443 | 受信 |
-    | 米国 | 米国中央部 | 13.67.223.215</br>40.86.83.253 | 443 | 受信 |
+    | 米国 | 米国中部 | 13.67.223.215</br>40.86.83.253 | 443 | 受信 |
     | &nbsp; | 米国東部 | 13.82.225.233</br>40.71.175.99 | 443 | 受信 |
     | &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | 443 | 受信 |
     | &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | 443 | 受信 |
@@ -328,7 +328,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 次の Resource Management テンプレートは、受信トラフィックを制限するが HDInsight が必要とする IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。 さらに、このテンプレートは、仮想ネットワークに HDInsight クラスターを作成します。
 
-* [セキュリティで保護された Azure 仮想ネットワークと HDInsight Hadoop クラスターをデプロイする](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
+* [セキュリティで保護された Azure Virtual Network と HDInsight Hadoop クラスターのデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
 > [!IMPORTANT]  
 > この例で使用されている IP アドレスを、使用している Azure のリージョンに合わせて変更してください。 詳細については、「[HDInsight でネットワーク セキュリティ グループとユーザー定義のルートを使用](#hdinsight-ip)」のセクションをご覧ください。
