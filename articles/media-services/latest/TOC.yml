@@ -242,6 +242,9 @@
       href: /azure/templates/microsoft.media/allversions
 - name: リソース
   items:
+    - name: Azure Media Services コミュニティ
+      displayName: 'forums, twitter, feedback'
+      href: media-services-community.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
     - name: 価格

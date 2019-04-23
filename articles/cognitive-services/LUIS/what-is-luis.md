@@ -55,7 +55,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 ## <a name="build-the-luis-model"></a>LUIS モデルの構築
 モデルの構築には、[オーサリング](https://aka.ms/luis-authoring-apis) API または LUIS ポータルを使用します。
 
-LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを "**[意図](luis-concept-intent.md)**" といいます。 意図にはそれぞれ、ユーザー**[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、**[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
+LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを "**[意図](luis-concept-intent.md)**" といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、**[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
 
 |ユーザーの発話例|意図|エンティティ|
 |-----------|-----------|-----------|

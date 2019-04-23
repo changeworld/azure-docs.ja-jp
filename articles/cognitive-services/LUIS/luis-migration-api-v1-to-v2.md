@@ -134,7 +134,7 @@ LUIS メタデータを返す API のいくつかが新しい名前に変更さ�
 
 
 ## <a name="sample-renamed-to-suggest"></a>"sample" から "suggest" への名前変更
-LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endpoint-utterances.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは**[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)** と呼ばれます。
+LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endpoint-utterances.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは **[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)** と呼ばれます。
 
 | version | ルート |
 |--|--|
