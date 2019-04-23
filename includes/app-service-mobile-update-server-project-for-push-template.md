@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890999"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804468"
 ---
 このセクションでは、Mobile Apps の既存のバックエンド プロジェクトのコードを更新して、新しい項目が追加されるたびにプッシュ通知を送信するようにします。 このプロセスは、Azure Notification Hubs の[テンプレート](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)機能を使用しており、クロスプラットフォームのプッシュを有効にします。 テンプレートを使用してさまざまなクライアントがプッシュ通知に登録されるため、1 つの汎用プッシュがすべてのクライアント プラットフォームに届きます。
 

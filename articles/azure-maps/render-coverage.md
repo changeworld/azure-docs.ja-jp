@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 536a74046f46c7f83907833846e9ec99e8d8a289
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 36879ad070848f1779804d4eb3958058b9b86689
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370280"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996579"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
@@ -169,7 +169,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | ココス諸島   |   | Ø |
 | 韓国 |   | Ø |
 | 竹島と独島       |   | Ø |
-| 香港特別行政区                 | ✓ | ✓ |
+| 香港特別行政区             | ✓ | ✓ |
 | インド                     | Ø | ✓ | 
 | インドネシア                 | ✓ | ✓ |
 | イラン                      |   | Ø |
@@ -182,7 +182,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | キルギス                |   | Ø |
 | ラオス人民民主共和国 |   | Ø |
 | レバノン                   | ✓ | ✓ |
-| マカオ                     | ✓ | ✓ |
+| 中華人民共和国マカオ特別行政区                 | ✓ | ✓ |
 | マレーシア                  | ✓ | ✓ |
 | モルディブ                  |   | Ø |
 | モンゴル                  |   | Ø |
@@ -276,7 +276,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | リヒテンシュタイン             | ✓ | ✓ |
 | リトアニア                 | ✓ | ✓ |
 | ルクセンブルク                | ✓ | ✓ |
-| マケドニア                 | ✓ | ✓ |
+| 北マケドニア           | ✓ | ✓ |
 | マルタ                     | ✓ | ✓ |
 | モルドバ                   | ✓ | ✓ |
 | モナコ                    | ✓ | ✓ |

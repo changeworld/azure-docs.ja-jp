@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 61871ada0679a68b7f9d872a0df36d22cfb1f0de
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: fedab8cc45fff6d7830f67e7a23786b5952f83a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491204"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995967"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 
@@ -390,7 +390,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 現在の `$ConfirmPreference` 設定は `-Confirm` パラメーターを使用してオーバーライドできます。 `-Confirm` または `-Confirm:$True` を指定した場合は、コマンドレットによって実行前に確認のプロンプトが表示されます。 `-Confirm:$False` を指定した場合は、コマンドレットによって確認のプロンプトが表示されません。 
 
-`-Confirm` と `$ConfirmPreference` の詳細については、「[About Preference Variables (設定変数について)](/powershell/module/microsoft.powershell.core/about/about_preference_variables.1)」を参照してください。
+`-Confirm` と `$ConfirmPreference` の詳細については、「[About Preference Variables (設定変数について)](/powershell/module/microsoft.powershell.core/about/about_preference_variables)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
