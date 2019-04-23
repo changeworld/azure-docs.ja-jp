@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/25/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444651"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579157"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -23,6 +23,41 @@ ms.locfileid: "58444651"
 + Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-15"></a>2019-04-15
+
+### <a name="azure-portal"></a>Azure Portal
+  + 既存のリモート コンピューティング クラスターで実行されている既存のスクリプトを再送信できるようになりました。 
+  + [パイプライン] タブで、新しいパラメーターで発行されたパイプラインを実行できるようになりました。 
+  + 詳細の実行で、新しいスナップショット ファイル ビューアーがサポートされるようになりました。 特定の実行を送信したときのディレクトリのスナップショットを表示することができます。 また、実行を開始するために送信されたノートブックをダウンロードすることもできます。
+
+## <a name="2019-04-08"></a>2019-04-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1023"></a>Azure Machine Learning SDK for Python v1.0.23
+
++ **新機能**
+  + Azure Machine Learning SDK で Python 3.7 がサポートされるようになりました。
+  + Azure Machine Learning DNN Estimator で、組み込みマルチバージョン サポートが提供されるようになりました。 たとえば、`TensorFlow`  Estimator は `framework_version` パラメーターを受け入れるようになり、ユーザーはバージョン '1.10' や '1.12' を指定することができます。 現在の SDK リリースでサポートされているバージョンの一覧については、目的のフレームワーク クラスで `get_supported_versions()` を呼び出します (例、`TensorFlow.get_supported_versions()`)。
+  最新の SDK リリースでサポートされているバージョンの一覧については、[DNN Estimator のドキュメント](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)を参照してください。
+
+### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure Machine Learning Data Prep SDK v1.1.1
+
++ **新機能**
+  + read_* transforms を使用して複数の Datastore/DataPath/DataReference ソースを読み取ることができます。
+  + 列で次の演算を実行して新しい列を作成することができます: division、floor、modulo、power、length。
+  + Data Prep が Azure ML 診断スイートの一部になり、既定で診断情報がログに記録されるようになりました。
+    + これをオフにするには、次の環境変数を true に設定します:DISABLE_DPREP_LOGGER
+
++ **バグの修正と機能強化**
+  + 一般的に使用されるクラスと関数のコード ドキュメントが改善されました。
+  + Excel ファイルの読み取りに失敗した auto_read_file のバグが修正されました。
+  + read_pandas_dataframe のフォルダーを上書きするオプションが追加されました。
+  + dotnetcore2 依存関係のインストールのパフォーマンスが改善され、Fedora 27/28 と Ubuntu 1804 のサポートが追加されました。
+  + Azure Blob からの読み取りのパフォーマンスが改善されました。
+  + 列の型の検出で、Long 型の列がサポートされるようになりました。
+  + 一部の日付値が Python の datetime オブジェクトではなく timestamp として表示されていたバグが修正されました。
+  + 一部の型カウントが integer ではなく double として表示されていたバグを修正しました。
+
+  
 ## <a name="2019-03-25"></a>2019-03-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK for Python v1.0.21

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669778"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609077"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -325,3 +325,57 @@ configurations:
 
 ### <a name="try"></a>試す
 この問題の一時的な対処法として、クラスター内の各ノード上で *fs.inotify.max_user_watches* の値を増やし、そのノードを再起動して変更を有効にしてください。
+
+## <a name="new-pods-are-not-starting"></a>新しいポッドが開始しない
+
+### <a name="reason"></a>理由
+
+Kubernetes の初期化子は、クラスター内の *cluster-admin* ロールに対する RBAC 権限の変更により、新しいポッドに PodSpec を適用できません。 ポッドに関連付けられているサービス アカウントが存在しないなど、新しいポッドに無効な PodSpec が含まれている可能性もあります。 初期化子の問題により *[保留中]* の状態になっているポッドを確認するには、`kubectl get pods` コマンドを使用します。
+
+```bash
+kubectl get pods --all-namespaces --include-uninitialized
+```
+
+この問題は、クラスター内の*すべての名前空間* (Azure Dev Spaces が無効な名前空間を含む) のポッドに影響を与える可能性があります。
+
+### <a name="try"></a>試す
+
+[Dev Spaces CLI を最新バージョンに更新](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) して、Azure Dev Spaces コントローラーから *azds InitializerConfiguration* を削除します。
+
+```bash
+az aks get-credentials --resource-group <resource group name> --name <cluster name>
+kubectl delete InitializerConfiguration azds
+```
+
+Azure Dev Spaces コントローラーから *azds InitializerConfiguration* を削除したら、`kubectl delete` を使用して *[保留中]* 状態のポッドをすべて削除します。 保留中のポッドをすべて削除したら、ポッドを再デプロイします。
+
+再デプロイ後も新しいポッドが *[保留中]* 状態のままになっている場合は、`kubectl delete` を使用して *[保留中]* 状態のポッドをすべて削除してください。 保留中のポッドをすべて削除したら、コントローラーをクラスターから削除して再インストールします。
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+コントローラーを再インストールしたら、ポッドを再デプロイします。
+
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Dev Spaces コントローラーと API を呼び出すための RBAC 権限が正しくない
+
+### <a name="reason"></a>理由
+Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS クラスター上の管理者用の *kubeconfig* を読み取るためのアクセス権を持っている必要があります。 たとえば、この権限は、[組み込みの Azure Kubernetes Service クラスター管理者ロール](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)で利用できます。 また、Azure Dev Spaces コントローラーにアクセスするユーザーには、コントローラーの "*共同作成者*" または "*所有者*" の RBAC ロールが設定されている必要もあります。
+
+### <a name="try"></a>試す
+AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user)で確認できます。
+
+コントローラーに対するユーザーの RBAC ロールを更新するには、次のようにします。
+
+1. Azure Portal ( https://portal.azure.com ) にサインインします。
+1. コントローラーを含むリソース グループに移動します。これは通常、お使いの AKS クラスターと同じです。
+1. *[非表示の型の表示]* チェック ボックスをオンにします。
+1. コントローラーをクリックします。
+1. *[アクセス制御] (IAM)* ウィンドウを開きます。
+1. *[ロールの割り当て]* タブをクリックします。
+1. *[追加]* をクリックして、*[ロールの割り当ての追加]* をクリックします。
+    * *[ロール]* で、*[共同作成者]* または *[所有者]* を選択します。
+    * *[アクセスの割り当て先]* で、*[Azure AD のユーザー、グループ、サービス プリンシパル]* を選択します。
+    * *[選択]* で、権限を付与するユーザーを検索します。
+1. [ *Save*] をクリックします。

@@ -1,6 +1,6 @@
 ---
-title: トリガーとアクションの種類のリファレンス - Azure Logic Apps | Microsoft Docs
-description: ワークフロー定義言語スキーマで記述する Azure Logic Apps のトリガーとアクションの種類について説明します。
+title: ワークフロー定義言語のトリガーとアクションの種類のリファレンス - Azure Logic Apps
+description: Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス ガイド
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -9,22 +9,23 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: c817f017c7394943864e7f20a130c90d3f8485d9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885980"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617921"
 ---
-# <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類に関するリファレンス
+# <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) では、すべてのロジック アプリのワークフローは、アクションに続くトリガーから開始されます。 この記事では、タスク、プロセス、ワークフローを自動化するためのロジック アプリを作成するときに使用できる、トリガーとアクションの種類について説明します。 ロジック アプリ ワークフローは Logic Apps デザイナーを使用して作成でき、視覚的に作成する方法と、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)を使用して基になるワークフロー定義を作成する方法があります。 ロジック アプリは、Azure portal または Visual Studio のどちらでも作成できます。 トリガーとアクションを含む、ワークフロー全体の基になる定義には、Javascript Object Notation (JSON) を使用します。
+このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。
+ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](https://docs.microsoft.com/connectors/)にある一覧を参照してください。
 
 <a name="triggers-overview"></a>
 
 ## <a name="triggers-overview"></a>トリガーの概要
 
-すべてのロジック アプリはトリガーから開始されます。トリガーには、ロジック アプリのワークフローをインスタンス化して開始する呼び出しが定義されています。 一般的なトリガーのカテゴリを次に示します。
+すべてのワークフローにはトリガーが含まれています。トリガーには、ワークフローをインスタンス化して開始する呼び出しが定義されています。 一般的なトリガーのカテゴリを次に示します。
 
 * *ポーリング* トリガーでは、定期的にサービスのエンドポイントをチェックすることができます。
 
@@ -78,7 +79,7 @@ ms.locfileid: "58885980"
 |--------------|-------------| 
 | [**HTTP**](#http-trigger) | エンドポイントをチェックまたは*ポーリング*します。 このエンドポイントは特定のトリガー コントラクトに準拠する必要があり、そのためには、"202" 非同期パターンを使用するか、配列を返す必要があります。 | 
 | [**HTTPWebhook**](#http-webhook-trigger) | ロジック アプリ用の呼び出し可能なエンドポイントを作成しますが、登録または登録解除を行うために指定された URL を呼び出します。 |
-| [**繰り返し**](#recurrence-trigger) | 定義されているスケジュールに基づいて呼び出されます。 今後このトリガーを呼び出す日時を設定できます。 頻度に基づいて、ワークフローを実行する時間数および日数を指定することもできます。 | 
+| [**Recurrence**](#recurrence-trigger) | 定義されているスケジュールに基づいて呼び出されます。 今後このトリガーを呼び出す日時を設定できます。 頻度に基づいて、ワークフローを実行する時間数および日数を指定することもできます。 | 
 | [**Request**](#request-trigger)  | ロジック アプリ用の呼び出し可能なエンドポイントを作成します。"手動" トリガーとも呼ばれます。 例として、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 | 
 ||| 
 
@@ -145,13 +146,13 @@ ms.locfileid: "58885980"
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター。 たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
-| <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、次の式は、トリガー本文の内容の中に返される配列の項目を表します:  `@triggerbody()?['value']` |
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、`@triggerbody()?['value']` という式は、トリガー本文の内容の中に返される配列の項目を表します。 |
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 |
 ||||
 
-*出力*
+*Outputs*
  
 | 要素 | Type | 説明 |
 |---------|------|-------------|
@@ -235,9 +236,9 @@ ms.locfileid: "58885980"
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
-| <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、次の式は、トリガー本文の内容の中に返される配列の項目を表します:  `@triggerbody()?['value']` |
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、`@triggerbody()?['value']` という式は、トリガー本文の内容の中に返される配列の項目を表します。 |
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
@@ -319,12 +320,12 @@ ms.locfileid: "58885980"
 | <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 Scheduler 以外に、`authority` プロパティがサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、別の値を使用できます。 |
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 |  
  <*query-parameters*> | JSON オブジェクト | 要求に含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を要求に追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
-*出力*
+*Outputs*
 
 | 要素 | Type | 説明 |
 |---------|------|-------------| 
@@ -414,12 +415,12 @@ ms.locfileid: "58885980"
 | <*body-content*> | String | サブスクリプションまたは取り消しの要求で送信するメッセージの内容 | 
 | <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
-*出力* 
+*Outputs* 
 
 | 要素 | Type | 説明 |
 |---------|------|-------------| 
@@ -508,8 +509,8 @@ ms.locfileid: "58885980"
 | <*one-or-more-hour-marks*> | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻として 0 ～ 23 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば "10"、"12"、"14" を指定した場合、時刻のマークとして 10 AM、12 PM、2 PM が取得されます。 | 
 | <*one-or-more-minute-marks*> | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻の分として 0 ～ 59 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 | 
 | weekDays | 文字列または文字列配列 | `frequency` に "Week" を指定した場合、ワークフローを実行する 1 日または複数の日 ("Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、および "Sunday") をコンマ区切りで指定できます | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
@@ -615,8 +616,8 @@ ms.locfileid: "58885980"
 | <*method-type*> | String | 受信要求でのロジック アプリの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | 使用しているエンドポイントの URL で受け入れ可能なパラメーターの相対パス | 
 | <*required-properties*> | Array | 値が必要な 1 つ以上のプロパティ | 
-| <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
+| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
+| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
 
@@ -657,7 +658,7 @@ ms.locfileid: "58885980"
 
 ## <a name="trigger-conditions"></a>トリガーの条件
 
-トリガーのみですが、どのトリガーにも、ワークフローを実行するかどうかを決める条件を表した 1 つまたは複数の式を含む配列を追加できます。 ロジック アプリ内のトリガーに `conditions` プロパティを追加するには、ロジック アプリをコード ビュー エディターで開きます。
+トリガーのみですが、どのトリガーにも、ワークフローを実行するかどうかを決める条件を表した 1 つまたは複数の式を含む配列を追加できます。 ワークフロー内のトリガーに `conditions` プロパティを追加するには、ロジック アプリをコード ビュー エディターで開きます。
 
 たとえば、Web サイトから内部サーバー エラーが返されたときに限ってトリガーが起動するように指定する場合は、次のように `conditions` プロパティ内のトリガーの状態コードを参照します。
 
@@ -682,7 +683,7 @@ ms.locfileid: "58885980"
 
 ## <a name="trigger-multiple-runs"></a>複数の実行をトリガーする
 
-トリガーによって返される配列をロジック アプリが処理する場合、"for each" ループに時間がかかりすぎて、配列の各項目を処理できないことがあります。 この場合は、トリガーで **SplitOn** プロパティを使用すると、配列を "*バッチ解除*" できます。 バッチ解除すると、配列の項目が分割され、配列の各項目に対して実行する新しいロジック アプリ インスタンスが起動されます。 このアプローチが役立つのは、たとえば、エンドポイントをポーリングするときに、ポーリング間隔のたびに複数の新しい項目が返される場合です。
+トリガーによって返される配列をロジック アプリが処理する場合、"for each" ループに時間がかかりすぎて、配列の各項目を処理できないことがあります。 この場合は、トリガーで **SplitOn** プロパティを使用すると、配列を "*バッチ解除*" できます。 バッチ解除すると、配列の項目が分割されて、配列の項目ごとに実行される新しいワークフロー インスタンスが開始されます。 このアプローチが役立つのは、たとえば、エンドポイントをポーリングするときに、ポーリング間隔のたびに複数の新しい項目が返される場合です。
 **SplitOn** が 1 つのロジック アプリ実行で処理できる配列項目の最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に関するページをご覧ください。 
 
 > [!NOTE]
@@ -820,17 +821,17 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 | アクションの種類 | 説明 | 
 |-------------|-------------| 
 | [**作成**](#compose-action) | さまざまな種類を持つ可能性がある複数の入力から、単一の出力を作成します。 | 
-| [**関数**](#function-action) | Azure 関数を呼び出します。 | 
+| [**Function**](#function-action) | Azure 関数を呼び出します。 | 
 | [**HTTP**](#http-action) | HTTP エンドポイントを呼び出します。 | 
-| [**結合**](#join-action) | 配列内のすべての項目から 1 個の文字列を作成します。それらの項目は指定した区切り文字を使って区切ります。 | 
-| [**JSON の解析**](#parse-json-action) | JSON のコンテンツ内にあるプロパティから、ユーザー フレンドリなトークンを作成します。 その後はロジック アプリ内にトークンを含めることで、それらのプロパティを参照できます。 | 
+| [**Join**](#join-action) | 配列内のすべての項目から 1 個の文字列を作成します。それらの項目は指定した区切り文字を使って区切ります。 | 
+| [**Parse JSON**](#parse-json-action) | JSON のコンテンツ内にあるプロパティから、ユーザー フレンドリなトークンを作成します。 その後はロジック アプリ内にトークンを含めることで、それらのプロパティを参照できます。 | 
 | [**Query**](#query-action) | 条件またはフィルターに基づいて別の配列内の項目から配列を作成します。 | 
 | [**Response**](#response-action) | 受信する呼び出しまたは要求に対する応答を作成します。 | 
-| [**選択**](#select-action) | 指定したマップに基づいて別の配列の項目を変換することによって、JSON オブジェクトの配列を作成します。 | 
-| [**テーブル**](#table-action) | 配列から CSV または HTML のテーブルを作成します。 | 
+| [**Select**](#select-action) | 指定したマップに基づいて別の配列の項目を変換することによって、JSON オブジェクトの配列を作成します。 | 
+| [**Table**](#table-action) | 配列から CSV または HTML のテーブルを作成します。 | 
 | [**Terminate**](#terminate-action) | アクティブに実行中のワークフローを停止します。 | 
-| [**待機**](#wait-action) | 指定した期間、または指定した日付と時刻まで、ワークフローを一時停止します。 | 
-| [**ワークフロー**](#workflow-action) | ワークフローを別のワークフローの中に入れ子にします。 | 
+| [**Wait**](#wait-action) | 指定した期間、または指定した日付と時刻まで、ワークフローを一時停止します。 | 
+| [**Workflow**](#workflow-action) | ワークフローを別のワークフローの中に入れ子にします。 | 
 ||| 
 
 <a name="managed-api-actions"></a>
@@ -852,8 +853,8 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 | アクションの種類 | 説明 | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | 配列内のすべての項目に対して同じアクションをループ実行します。 | 
-| [**状況**](#if-action) | 指定した条件が true であるか false であるかに基づいて、アクションを実行します。 | 
-| [**Scope (スコープ)**](#scope-action) | 一連のアクションから得られるグループの状態に基づいて、アクションを実行します。 | 
+| [**If**](#if-action) | 指定した条件が true であるか false であるかに基づいて、アクションを実行します。 | 
+| [**Scope**](#scope-action) | 一連のアクションから得られるグループの状態に基づいて、アクションを実行します。 | 
 | [**Switch**](#switch-action) | 式、オブジェクト、またはトークンの値が、各ケースによって指定された値と一致する場合、ケース別に構成されたアクションを実行します。 | 
 | [**Until**](#until-action) | 指定した条件が true になるまで、アクションをループ実行します。 | 
 |||  
@@ -1205,7 +1206,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 `[1,2,3,4]` 
 
-このアクション定義では、式の中で `variables()` 関数を使用してこの変数から値を取得し、コンマで区切ったそれらの値を含む次の文字列を作成します:  `"1,2,3,4"`
+このアクション定義では、式の中で `variables()` 関数を使用してこの変数から値を取得し、コンマで区切ったそれらの値を含む `"1,2,3,4"` という文字列を作成します。
 
 ```json
 "Join": {
@@ -1220,7 +1221,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 <a name="parse-json-action"></a>
 
-### <a name="parse-json-action"></a>JSON の解析アクション
+### <a name="parse-json-action"></a>Parse JSON アクション
 
 JSON コンテンツのプロパティからユーザー フレンドリなフィールドまたは*トークン*を作成するアクションです。 作成したトークンをロジック アプリ内でプロパティの代わりに使用して、それらのプロパティにアクセスできます。 たとえば、Azure Service Bus や Azure Cosmos DB といったサービスからの JSON 出力を使用する場合、このアクションをロジック アプリに追加することで、その出力に含まれるデータをより簡単に参照できます。 
 
@@ -1245,9 +1246,9 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 
 *例*
 
-このアクション定義では、ロジック アプリのワークフロー内で使用できる以下のトークンを作成しますが、これらを使用できるのは、**Parse JSON** アクションに続けて実行されるアクション内に限ります。 
+このアクション定義により、ワークフローで使用できる以下のトークンが作成されますが、これらを使用できるのは、**Parse JSON** アクションに続いて実行されるアクション内に限ります。 
 
-`FirstName`、`LastName`、および `Email`
+`FirstName`、`LastName`、`Email`
 
 ```json
 "Parse_JSON": {
@@ -1415,7 +1416,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 }
 ```
 
-*制限*
+*制限事項*
 
 他のアクションとは異なり、**Response** アクションには特別な制限があります。 
 
@@ -1648,7 +1649,7 @@ ID,Product_Name
 
 ### <a name="terminate-action"></a>終了アクション
 
-ロジック アプリ ワークフロー インスタンスの実行を停止するアクションです。進行中のすべてのアクションをキャンセルし、残りのアクションをスキップして、指定した状態を返します。 たとえば、エラー状態のロジック アプリを完全に終了する必要があるときに、**Terminate** アクションを使用できます。 このアクションは、既に完了しているアクションには影響しません。また、順次ループを含めて、**Foreach** ループと **Until** ループの内部には指定できません。 
+このアクションは、ワークフロー インスタンスの実行を停止し、進行中のすべてのアクションをキャンセルし、残りのアクションをすべてスキップして、指定された状態を返します。 たとえば、エラー状態のロジック アプリを完全に終了する必要があるときに、**Terminate** アクションを使用できます。 このアクションは、既に完了しているアクションには影響しません。また、順次ループを含めて、**Foreach** ループと **Until** ループの内部には指定できません。 
 
 ```json
 "Terminate": {
@@ -1826,7 +1827,7 @@ ID,Product_Name
 | <*body-content*> | JSON オブジェクト | 呼び出しで送信するメッセージの内容 | 
 ||||
 
-*出力*
+*Outputs*
 
 このアクションの出力は、入れ子になったロジック アプリの Response アクションに応じて異なります。 入れ子になったロジック アプリに Response アクションが含まれていない場合、出力は空です。
 
@@ -2297,8 +2298,8 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 | プロパティ | Type | 説明 | トリガーまたはアクション | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | 整数 | 同時に (並行して) 実行できるロジック アプリ インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 この値を使用して、バックエンド システムが受信する要求の数を制限できます。 <p>`runs` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機できるロジック アプリ インスタンスの数に対する、[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
+| `runtimeConfiguration.concurrency.runs` | 整数 | 同時に、または並行して実行できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 この値を使用して、バックエンド システムが受信する要求の数を制限できます。 <p>`runs` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ワークフローが最大数の同時実行インスタンスを既に実行しているときに実行を待機できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.repetitions` | 整数 | 同時に (並行して) 実行できる "for each" ループ繰り返し回数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 <p>`repetitions` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」、または「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | アクション: <p>[Foreach](#foreach-action) | 
 ||||| 
 
@@ -2310,7 +2311,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 | 操作オプション | Type | 説明 | トリガーまたはアクション | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#asynchronous-patterns)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[Response](#response-action) | 
+| `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#asynchronous-patterns)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[応答](#response-action) | 
 | `OptimizedForHighThroughput` | String | 5 分あたりのアクション実行回数に対する[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)を[上限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に変更します。 <p><p>このオプションを設定するには、「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 | すべてのアクション | 
 | `Sequential` | String | "for each" ループの反復処理を、すべて同時に並行して実行するのではなく、一度に 1 つずつ実行します。 <p>このオプションは、`runtimeConfiguration.concurrency.repetitions` プロパティを `1` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p><p>このオプションを設定するには、「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。| アクション: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 各ロジック アプリ インスタンスのトリガーを順次実行し、直前のアクティブな実行が終了するまで待機してから、次のロジック アプリ インスタンスをトリガーします。 <p><p>このオプションは、`runtimeConfiguration.concurrency.runs` プロパティを `1` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>このオプションを設定するには、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
@@ -2320,9 +2321,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="change-trigger-concurrency"></a>トリガーのコンカレンシーを変更する
 
-既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 そのため、先行するロジック アプリ インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
+既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 そのため、先行するワークフロー インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
 
-既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティでは、並行して実行できるロジック アプリ インスタンスの最大数を制御します。 
+既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 
 
 > [!NOTE] 
 > デザイナーまたはコード ビュー エディターを使用してトリガーの順次実行を設定する場合、コード ビュー エディターでトリガーの `operationOptions` プロパティを `SingleInstance` に設定しないでください。 これに従わないと、検証エラーになります。 詳細については、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。
@@ -2397,7 +2398,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="change-waiting-runs-limit"></a>実行待機の制限を変更する
 
-既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 直前のアクティブなロジック アプリ インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 [この既定の制限を変更する](#change-trigger-concurrency)ことができますが、ロジック アプリ インスタンスの数が新しいコンカレンシーの制限に達した場合、他の新しいインスタンスは実行を待機する必要があります。 
+既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまではすべて同時に、または並行して実行されます。 直前のアクティブなロジック アプリ インスタンスが実行を終了する前に、各トリガー インスタンスが起動します。 [この既定の制限は変更](#change-trigger-concurrency)できますが、ワークフロー インスタンスの数が新しいコンカレンシーの制限に達すると、他の新しいインスタンスは実行を待機する必要があります。 
 
 待機できる実行の数にも[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)があり、既定の制限は変更できます。 ただし、ロジック アプリが実行待機の制限に達すると、Logic Apps エンジンで新しい実行が受け付けられなくなります。 要求と webhook のトリガーは 429 エラーを返し、繰り返しトリガーによるポーリングの試行がスキップされ始めます。
 
@@ -2422,7 +2423,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="trigger-instances-sequentially"></a>インスタンスを順次トリガーする
 
-各ロジック アプリ インスタンスを、必ず直前のインスタンスの実行が終了してから実行するには、トリガーの順次実行を設定します。 コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 
+各ロジック アプリ ワークフロー インスタンスを、必ず直前のインスタンスの実行が終了してから実行するには、トリガーの順次実行を設定します。 コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 
 
 > [!NOTE] 
 > デザイナーまたはコード ビュー エディターを使用してトリガーの順次実行を設定する場合、コード ビュー エディターでトリガーの `operationOptions` プロパティを `Sequential` に設定しないでください。 これに従わないと、検証エラーになります。 
@@ -2448,7 +2449,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 }
 ```
 
-*または*
+*- または -*
 
 `operationOptions` プロパティを `SingleInstance` に設定します。
 
@@ -2500,7 +2501,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 }
 ```
 
-*または*
+*- または -*
 
 `operationOptions` プロパティを `Sequential` に設定します。
 
@@ -2655,7 +2656,7 @@ Azure Active Directory を使用する[証明書ベース認証](../active-direc
 | **type** | はい | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") |
 | **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |
 | **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
-| **対象となる読者** | はい | <*resource-to-authorize*> | 承認で使用するリソース (次の例を参照):  `https://management.core.windows.net/` |
+| **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
 | **credentialType** | はい | "Certificate" または "Secret" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 |
 | **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |

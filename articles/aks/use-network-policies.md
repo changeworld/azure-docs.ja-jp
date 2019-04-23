@@ -5,29 +5,29 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: iainfou
-ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181488"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494767"
 ---
 # <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用して、ポッド間のトラフィックをセキュリティ保護する
 
 Kubernetes で最新のマイクロサービス ベースのアプリケーションを実行するときは、どのコンポーネントが互いに通信できるかを制御したいことがよくあります。 最小特権の原則は、Azure Kubernetes Service (AKS) クラスター内のポッド間でトラフィックをどのように送受信できるかに対して適用する必要があります。 たとえば、バックエンド アプリケーションへの直接のトラフィックをブロックしたい場合があります。 Kubernetes の*ネットワーク ポリシー*機能を使用すると、クラスター内のポッド間のイングレスおよびエグレス トラフィックのルールを定義できます。
 
-Tigera によって開発されたオープンソースのネットワークおよびネットワーク セキュリティ ソリューションである Calico には、Kubernetes ネットワーク ポリシー規則を実装できるネットワーク ポリシー エンジンが用意されています。 この記事では、Calico ネットワーク ポリシー エンジンをインストールし、AKS 内のポッド間のトラフィック フローを制御するための Kubernetes ネットワーク ポリシーを作成する方法について説明します。
+この記事では、ネットワーク ポリシー エンジンをインストールし、AKS 内のポッド間のトラフィック フローを制御するために Kubernetes ネットワーク ポリシーを作成する方法について説明します。 現在、この機能はプレビュー段階にあります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、コミュニティからフィードバックやバグを収集するために提供されます。 ただし、これらは Azure テクニカル サポートではサポートされません。 クラスターを作成するか、または既存のクラスターにこれらの機能を追加した場合、そのクラスターは、この機能がプレビューでなくなり、一般提供 (GA) となるまでサポートされません。
+> AKS のプレビュー機能は、セルフサービスかつオプトインです。 プレビューは、コミュニティからフィードバックやバグを収集するために提供されます。 ただし、これらは Azure テクニカル サポートではサポートされません。 クラスターを作成するか、または既存のクラスターにこれらの機能を追加した場合、そのクラスターは、この機能がプレビューでなくなり、一般提供 (GA) となるまでサポートされません。
 >
-> プレビュー機能に関する問題が発生した場合は、バグ タイトルにプレビュー機能の名前を使用して、[AKS GitHub リポジトリで問題を開きます][aks-github]。
+> プレビュー機能に関する問題が発生した場合は、バグ タイトルにプレビュー機能の名前を使用して、[AKS GitHub リポジトリで問題をオープンします][aks-github]。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.56 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ネットワーク ポリシーを使用できる AKS クラスターを作成するには、まずサブスクリプションで機能フラグを有効にします。 *EnableNetworkPolicy* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
 
@@ -51,7 +51,35 @@ az provider register --namespace Microsoft.ContainerService
 
 既定では、AKS クラスター内のすべてのポッドが制限なしでトラフィックを送受信できます。 セキュリティを向上させるために、トラフィック フローを制御するルールを定義できます。 たとえば、バックエンド アプリケーションは多くの場合、必要なフロントエンド サービスにのみ公開されます。 または、データベース コンポーネントは、そこに接続するアプリケーション層からのみアクセスできます。
 
-ネットワーク ポリシーは、ポッド間のトラフィック フローを制御できる Kubernetes リソースです。 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可または拒否することを選択できます。 ネットワーク ポリシーは、YAML マニフェストとして定義されます。 これらのポリシーは、デプロイまたはサービスも作成するより広範囲のマニフェストの一部として含めることができます。
+ネットワーク ポリシーは、ポッド間の通信のアクセス ポリシーを定義する Kubernetes の仕様です。 ネットワーク ポリシーを使用して、トラフィックを送受信するための順序付けされたルール セットを定義し、1 つまたは複数のラベル セレクターに一致するポッドのコレクションにそれらを適用します。
+
+それらのネットワーク ポリシー ルールは、YAML マニフェストとして定義されます。 ネットワーク ポリシーは、デプロイまたはサービスも作成する、より広範囲のマニフェストの一部として含めることができます。
+
+### <a name="network-policy-options-in-aks"></a>AKS でのネットワーク ポリシーのオプション
+
+Azure には、ネットワーク ポリシーを実装する 2 つの方法が用意されています。 AKS クラスターを作成するときに、ネットワーク ポリシーのオプションを選択します。 クラスターの作成後は、ポリシー オプションは変更できません。
+
+* *Azure ネットワーク ポリシー*という、Azure の独自の実装。
+* [Tigera][tigera] によって設立されたオープンソース ネットワークおよびネットワーク セキュリティ ソリューションである *Calico ネットワーク ポリシー*。
+
+どちらの実装も Linux *IPTables* を使用して、指定されたポリシーを適用します。 ポリシーは、許可される IP ペアと許可されない IP ペアのセットに変換されます。 その後、これらのペアは IPTable フィルタ ルールとしてプログラミングされます。
+
+ネットワーク ポリシーは、Azure の CNI (詳細) オプションでのみ機能します。 これらの 2 つのオプションの実装は異なります。
+
+* *Azure ネットワーク ポリシー* -Azure CNI は、イントラ ノード ネットワークの VM ホストにブリッジを設定します。 フィルター ルールは、パケットがブリッジを通過するときに適用されます。
+* *Calico ネットワーク ポリシー* -Azure CNI は、イントラ ノード トラフィックのローカル カーネル ルートを設定します。 これらのポリシーは、ポッドのネットワーク インターフェースで適用されます。
+
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure と Calico のポリシーとその機能の相違点
+
+| 機能                               | Azure                      | Calico                      |
+|------------------------------------------|----------------------------|-----------------------------|
+| サポートされるプラットフォーム                      | Linux                      | Linux                       |
+| サポートされているネットワーク オプション             | Azure CNI                  | Azure CNI                   |
+| Kubernetes 仕様の準拠 | サポートされているすべてのポリシーの種類 |  サポートされているすべてのポリシーの種類 |
+| その他の機能                      | なし                       | グローバル ネットワーク ポリシー、グローバル ネットワーク セット、およびホスト エンドポイントで構成される拡張ポリシー モデル。 `calicoctl` CLI を使用した拡張機能の管理の詳細については、[calicoctl ユーザー リファレンス][calicoctl]を参照してください。 |
+| サポート                                  | Azure のサポートとエンジニアリング チームによってサポートされる | Calico コミュニティ サポート。 その他の有料サポートの詳細については、[Project Calico support options][calico-support] を参照してください。 |
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS クラスターを作成してネットワーク ポリシーを有効にする
 
 動作中のネットワーク ポリシーを確認するために、トラフィック フローを定義するポリシーを作成してから展開しましょう。
 
@@ -59,9 +87,7 @@ az provider register --namespace Microsoft.ContainerService
 * ポッド ラベルに基づいてトラフィックを許可します。
 * 名前空間に基づいてトラフィックを許可します。
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS クラスターを作成してネットワーク ポリシーを有効にする
-
-ネットワーク ポリシーは、クラスターが作成されたときにのみ有効にできます。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。 
+最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。 ネットワーク ポリシー機能を有効にできるのは、クラスターの作成時のみになります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。
 
 AKS クラスターでネットワーク ポリシーを使用するには、[Azure CNI プラグイン][azure-cni]を使用し、独自の仮想ネットワークとサブネットを定義する必要があります。 必要なサブネット範囲を計画する方法の詳細については、[高度なネットワークの構成][use-advanced-networking]に関するページを参照してください。
 
@@ -71,6 +97,7 @@ AKS クラスターでネットワーク ポリシーを使用するには、[Az
 * AKS クラスターで使用するための Azure Active Directory (Azure AD) サービス プリンシパルを作成します。
 * 仮想ネットワーク上の AKS クラスター サービス プリンシパルに*共同作成者*のアクセス許可を割り当てます。
 * 定義された仮想ネットワーク内に AKS クラスターを作成し、ネットワーク ポリシーを有効にします。
+    * *azure* ネットワーク ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。
 
 独自の安全な *SP_PASSWORD* を指定してください。 *RESOURCE_GROUP_NAME* および *CLUSTER_NAME* 変数を置き換えることができます。
 
@@ -122,7 +149,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico
+    --network-policy azure
 ```
 
 クラスターの作成には数分かかります。 クラスターの準備ができたら、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して、Kubernetes クラスターに接続するように `kubectl` を構成します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
@@ -454,6 +481,9 @@ kubectl delete namespace development
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues]
+[tigera]: https://www.tigera.io/
+[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calico-support]: https://www.projectcalico.org/support
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
