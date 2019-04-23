@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/15/2019
 ms.author: aljo
-ms.openlocfilehash: 132609529fbeda9b6dbd76a3ef6c824e84c15164
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c02e38880fdf8e8f1a2229f009b343d6431af853
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670763"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699185"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -39,7 +39,7 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 2. zip ファイルを右クリックし、**[プロパティ]** を選択して **[ブロック解除]** チェックボックスをオンにし、**[適用]** をクリックします。
 3. zip ファイルを解凍します。
 
-## <a name="create-azure-ad-applications-and-asssign-users-to-roles"></a>Azure AD アプリケーションを作成し、ユーザーをロールに割り当てる
+## <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD アプリケーションを作成し、ユーザーをロールに割り当てる
 クラスターへのアクセスを制御するために、Web アプリケーションとネイティブ アプリケーションの 2 つの Azure AD アプリケーションを作成します。 クラスターを表すアプリケーションを作成したら、[Service Fabric によってサポートされるロール](service-fabric-cluster-security-roles.md) (read-only と admin) にユーザーを割り当てます。
 
 `SetupApplications.ps1` を実行します。パラメーターとして、テナント ID、クラスター名、および Web アプリケーション応答 URL を指定します。  ユーザー名とユーザーのパスワードも指定します。  例: 

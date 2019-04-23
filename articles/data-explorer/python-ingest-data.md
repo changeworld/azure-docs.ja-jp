@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
 ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046463"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む
@@ -24,7 +24,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [クラスターとデータベース。](create-cluster-database-portal.md)
+* [クラスターとデータベース](create-cluster-database-portal.md)
 
 * 開発用コンピューターに [Python](https://www.python.org/downloads/) がインストール済み
 

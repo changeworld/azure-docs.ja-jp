@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010118"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
@@ -110,13 +110,13 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - **_[推奨]_ 関数に渡されるパラメーターとして。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーとして。** 各メンバーの名前は、*function.json* で定義されている `name` プロパティによって決まります。
+ - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、*function.json* で定義されている `name` プロパティによって決まります。
  
    ```javascript
    module.exports = async function(context) { 
@@ -126,7 +126,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
    };
    ```
    
- - **JavaScript の [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) オブジェクトを使用した入力として。** これは、基本的にパラメーターとして入力を渡すのと同じですが、動的に入力を処理することができます。
+ - **JavaScript の [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) オブジェクトの入力を使用します。** これは、基本的にパラメーターとして入力を渡すのと同じですが、動的に入力を処理することができます。
  
    ```javascript
    module.exports = async function(context) { 
@@ -156,7 +156,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
   ```
 
   同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
-- **_[出力が 1 つの場合に推奨]_ 値を直接返し、$return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
+- **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
 - **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
 
   ```javascript
@@ -271,7 +271,7 @@ context.log(message)
 既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
 
 
-| 方法                 | 説明                                |
+| Method                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -625,7 +625,7 @@ Azure Functions アプリケーションでサービス固有のクライアン�
 詳細については、次のリソースを参照してください。
 
 + [Azure Functions のベスト プラクティス](functions-best-practices.md)
-+ [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
-+ [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)
++ [Azure Functions 開発者向けリファレンス](functions-reference.md)
++ [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
 [`func azure functionapp publish`]: functions-run-local.md#project-file-deployment

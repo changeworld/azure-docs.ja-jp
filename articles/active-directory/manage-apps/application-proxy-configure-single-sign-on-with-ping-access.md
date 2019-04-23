@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882792"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
@@ -115,7 +115,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
     ![アクセス許可を選択](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
 
 17. アクセス許可を付与してから、アクセス許可画面を閉じてください。 
-    ![アクセス許可の付与](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
+    ![アクセス許可を付与する](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
 
 ### <a name="collect-information-for-the-pingaccess-steps"></a>PingAccess の手順で使う情報の収集
 

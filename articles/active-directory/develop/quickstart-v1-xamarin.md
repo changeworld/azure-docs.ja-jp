@@ -19,10 +19,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881887"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>クイック スタート:Microsoft のサインインを統合する Xamarin アプリを作成する
@@ -104,7 +104,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 
 ほとんどすべてのアプリの認証ロジックは、`DirectorySearcher.SearchByAlias(...)` 内にあります。 プラットフォーム固有プロジェクトで必要なのは、`DirectorySearcher` PCL にコンテキスト パラメーターを渡すことだけです。
 
-1. DirectorySearcher.cs を開いて新しいパラメーターを `SearchByAlias(...)` メソッドに追加します。 `IPlatformParameters`  はコンテキスト パラメーターであり、認証を実行するために ADAL が必要とするプラットフォーム固有のオブジェクトをカプセル化しています。
+1. DirectorySearcher.cs を開いて新しいパラメーターを `SearchByAlias(...)` メソッドに追加します。 `IPlatformParameters` はコンテキスト パラメーターであり、認証を実行するために ADAL が必要とするプラットフォーム固有のオブジェクトをカプセル化しています。
 
     ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
@@ -130,7 +130,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
     ...
     ```
 
-    `AcquireTokenAsync(...)`  は最初に、ユーザーに資格情報の入力を求めずに、古いトークンのキャッシュまたは更新によって、要求されたリソース (この場合は Graph API) 用のトークンを返そうとします。 要求されたトークンの取得にサインインが必要な場合は、Azure AD のサインイン ページがユーザーに表示されます。
+    `AcquireTokenAsync(...)` は最初に、ユーザーに資格情報の入力を求めずに、古いトークンのキャッシュまたは更新によって、要求されたリソース (この場合は Graph API) 用のトークンを返そうとします。 要求されたトークンの取得にサインインが必要な場合は、Azure AD のサインイン ページがユーザーに表示されます。
 4. Graph API 要求の **Authorization** ヘッダーにアクセス トークンを設定します。
 
     ```csharp

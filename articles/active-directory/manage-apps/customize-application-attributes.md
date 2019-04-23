@@ -16,10 +16,10 @@ ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267210"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
@@ -123,10 +123,10 @@ ServiceNow、Box、Google Apps などいくつかのアプリケーションで�
    * *Integer* - 属性には整数が含まれます。
    * *Reference* - 属性には、ターゲット アプリケーションの別のテーブルに格納されている値を参照するための ID が含まれます。
    * *String*  - 属性にはテキスト文字列が含まれます。 
-* **主キー** - ターゲット オブジェクトのスキーマで属性が主キー フィールドとして定義されているかどうか。
+* **[Primary Key?]\(主キー\)** - ターゲット オブジェクトのスキーマで属性が主キー フィールドとして定義されているかどうか。
 * **必須** - ターゲット アプリケーションまたはシステムに属性を移入する必要があるかどうか。
-* **複数値** - 属性が複数値をサポートするかどうか。
-* **大文字と小文字の区別** - 大文字と小文字を区別して属性値を評価するかどうか。
+* **[Multi-value?]\(複数値\)** - 属性が複数値をサポートするかどうか。
+* **[Exact case?]\(大文字小文字の区別\)** - 大文字と小文字を区別して属性値を評価するかどうか。
 * **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
 * **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
@@ -153,10 +153,10 @@ ServiceNow、Box、Google Apps などいくつかのアプリケーションで�
 
 ## <a name="next-steps"></a>次の手順
 
-* [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
+* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
-* [ユーザー プロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
+* [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](use-scim-to-provision-users-and-groups.md)
-* [SaaS アプリを統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
 
 

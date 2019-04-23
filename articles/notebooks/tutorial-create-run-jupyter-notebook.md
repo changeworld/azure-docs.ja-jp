@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
 ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258536"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
@@ -128,7 +128,7 @@ ms.locfileid: "59258536"
 1. 環境設定に *requirements.txt* ファイルがあるので、"Waiting for your container to finish being prepared" (コンテナーの準備が完了するのを待っています) というメッセージが表示されます。 **[OK]** を選択してメッセージを閉じ、ノートブックでの作業を継続できます。ただし、環境が完全に設定されるまで、コード セルを実行することはできません。
 1. 既定で空のコード セルが 1 つ含まれるノートブックが、Jupyter のインターフェイスで開きます。
 
-    [![IAzure Notebooks での新しいノートブックの初期表示(media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Azure Notebooks での新しいノートブックの初期表示](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Notebook のインターフェイスをツアーする
 
@@ -144,7 +144,7 @@ ms.locfileid: "59258536"
 (F) ノートブックが信頼されているかどうかを示すインジケーター (既定では**信頼されていません**)。
 (G) ノートブックが実行されているカーネルと、アクティビティ インジケーター。
 
-[![PJupyter インターフェイスの主な UI 領域(media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Jupyter インターフェイスの主な UI 領域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter では、主な UI 要素の組み込みツアーが提供されています。 ツアーを始めるには、**[Help]\(ヘルプ\)** > **[User Interface Tour]\(ユーザー インターフェイス ツアー\)** コマンドを選択し、ポップアップをクリックします。
 
@@ -426,8 +426,8 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 ハウツー記事:
 
 - [プロジェクトの作成と複製](create-clone-jupyter-notebooks.md)
-- [プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
-- [ノートブック内からパッケージをインストールする](install-packages-jupyter-notebook.md)
+- [デバイスの構成と管理](configure-manage-azure-notebooks-projects.md)
+- [ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
 - [スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [データ ファイルの操作](work-with-project-data-files.md)
 - [データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)

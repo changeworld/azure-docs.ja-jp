@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: tomfitz
 ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256925"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
@@ -40,7 +40,7 @@ ms.locfileid: "59256925"
 
 次のコマンドを実行するには、サブスクリプションが既定で作成されるディレクトリである、アカウント所有者の*ホーム ディレクトリ*にログインしている必要があります。
 
-# [<a name="rest"></a>REST](#tab/rest)
+# <a name="resttabrest"></a>[REST](#tab/rest)
 
 すべての登録アカウントを一覧表示することを要求する:
 
@@ -73,7 +73,7 @@ GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?
 }
 ```
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) コマンドレットを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
@@ -89,7 +89,7 @@ ObjectId                               | PrincipalName
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
-# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。
 
@@ -130,7 +130,7 @@ az billing enrollment-account list
 
 次の例では、*開発チーム サブスクリプション*という名前で、サブスクリプション オファー *MS-AZR-0017P* (正規 EA) のサブスクリプションを作成する要求を作成します。 登録アカウントは `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (プレースホルダーの値、この値は GUID です) で、これは SignUpEngineering@contoso.com の登録アカウントです。 また、必要に応じて RBAC 所有者として 2 人のユーザーをサブスクリプションに追加することもできます。
 
-# [<a name="rest"></a>REST](#tab/rest)
+# <a name="resttabrest"></a>[REST](#tab/rest)
 
 サブスクリプションを作成する要求のパスに、`enrollmentAccount` の`id` を使用します。
 
@@ -159,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 監視対象の `subscriptionOperation` オブジェクトが返されます。 サブスクリプションの作成が完了すると、`subscriptionOperation` オブジェクトから、サブスクリプション ID を持つ `subscriptionLink` オブジェクトが返されます。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 このプレビュー モジュールを使用するには、まず `Install-Module Az.Subscription -AllowPrerelease` を実行してモジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
 
@@ -180,7 +180,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 すべてのパラメーターの完全な一覧については、[New-AzSubscription](/powershell/module/az.subscription.preview) を参照してください。
 
-# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 このプレビュー拡張機能を使用するには、まず `az extension add --name subscription` を実行して拡張機能をインストールします。
 

@@ -13,10 +13,10 @@ ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357935"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
@@ -83,8 +83,8 @@ Azure ハイブリッド特典では、SQL データベース エンジン自体
 
 - REST API を使用してライセンスの種類を設定または更新するには:
 
-  - [Databases - Create Or Update](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Databases - Update](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
   - [Managed Instances - Create Or Update](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Managed Instances - Update](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 

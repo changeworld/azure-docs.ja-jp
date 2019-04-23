@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903762"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
@@ -30,7 +30,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [サブスクリプション](#Subscriptions)  
   
--   [[アプリケーション]](#Applications)  
+-   [アプリケーション](#Applications)  
   
 -   [アカウント情報の更新](#UpdateAccountInfo)  
   
@@ -106,15 +106,15 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|Type|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|文字列|現在のユーザーの名。|  
-|`lastName`|文字列|現在のユーザーの姓。|  
-|`companyName`|文字列|現在のユーザーの会社名。|  
-|`addresserEmail`|文字列|現在のユーザーの電子メール アドレス。|  
-|`developersUsageStatisticsLink`|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
+|`firstName`|string|現在のユーザーの名。|  
+|`lastName`|string|現在のユーザーの姓。|  
+|`companyName`|string|現在のユーザーの会社名。|  
+|`addresserEmail`|string|現在のユーザーの電子メール アドレス。|  
+|`developersUsageStatisticsLink`|string|現在のユーザーの分析結果を表示するための相対 URL。|  
 |`subscriptions`|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
 |`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
-|`changePasswordUrl`|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
-|`changeNameOrEmailUrl`|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
+|`changePasswordUrl`|string|現在のユーザーのパスワードを変更するための相対 URL。|  
+|`changeNameOrEmailUrl`|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
 |`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
 |`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
@@ -327,15 +327,15 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|Type|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|文字列|現在のユーザーの名。|  
-|`lastName`|文字列|現在のユーザーの姓。|  
-|`companyName`|文字列|現在のユーザーの会社名。|  
-|`addresserEmail`|文字列|現在のユーザーの電子メール アドレス。|  
-|`developersUsageStatisticsLink`|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
+|`firstName`|string|現在のユーザーの名。|  
+|`lastName`|string|現在のユーザーの姓。|  
+|`companyName`|string|現在のユーザーの会社名。|  
+|`addresserEmail`|string|現在のユーザーの電子メール アドレス。|  
+|`developersUsageStatisticsLink`|string|現在のユーザーの分析結果を表示するための相対 URL。|  
 |`subscriptions`|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
 |`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
-|`changePasswordUrl`|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
-|`changeNameOrEmailUrl`|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
+|`changePasswordUrl`|string|現在のユーザーのパスワードを変更するための相対 URL。|  
+|`changeNameOrEmailUrl`|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
 |`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
 |`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   
@@ -490,15 +490,15 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|Type|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|文字列|現在のユーザーの名。|  
-|`lastName`|文字列|現在のユーザーの姓。|  
-|`companyName`|文字列|現在のユーザーの会社名。|  
-|`addresserEmail`|文字列|現在のユーザーの電子メール アドレス。|  
-|`developersUsageStatisticsLink`|文字列|現在のユーザーの分析結果を表示するための相対 URL。|  
+|`firstName`|string|現在のユーザーの名。|  
+|`lastName`|string|現在のユーザーの姓。|  
+|`companyName`|string|現在のユーザーの会社名。|  
+|`addresserEmail`|string|現在のユーザーの電子メール アドレス。|  
+|`developersUsageStatisticsLink`|string|現在のユーザーの分析結果を表示するための相対 URL。|  
 |`subscriptions`|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
 |`applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーのアプリケーション。|  
-|`changePasswordUrl`|文字列|現在のユーザーのパスワードを変更するための相対 URL。|  
-|`changeNameOrEmailUrl`|文字列|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
+|`changePasswordUrl`|string|現在のユーザーのパスワードを変更するための相対 URL。|  
+|`changeNameOrEmailUrl`|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
 |`canChangePassword`|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
 |`isSystemUser`|ブール値|現在のユーザーが、いずれかの組み込み[グループ](api-management-key-concepts.md#groups)のメンバーであるかどうか。|  
   

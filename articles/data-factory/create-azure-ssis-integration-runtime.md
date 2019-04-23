@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361473"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
@@ -33,7 +33,7 @@ ms.locfileid: "59361473"
 
 この記事では、Azure SSIS IR のさまざまなプロビジョニング方法を示します。
 
-- [Azure ポータル](#azure-portal)
+- [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Azure Resource Manager テンプレート](#azure-resource-manager-template)
 
@@ -69,9 +69,9 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 | 機能 | 単一データベース/エラスティック プール| マネージド インスタンス |
 |---------|--------------|------------------|
 | **スケジュール設定** | SQL Server エージェントは使用できません。<br/><br/>[ADF パイプラインでのパッケージの実行のスケジュール](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)に関するページを参照してください。| マネージド インスタンス エージェントを使用できます。 |
-| **Authentication** | **db_owner** ロールのメンバーとして ADF のマネージド ID を持つ AAD グループを表す包含データベース ユーザーを使用して、SSISDB を作成できます。<br/><br/>[Azure SQL Database サーバーで SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)に関するページを参照してください。 | ADF のマネージド ID を表す包含データベース ユーザーを使用して、SSISDB を作成できます。 <br/><br/>[Azure SQL Database Managed Instance で SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)に関するページを参照してください。 |
-| **サービス階層** | Azure SQL Database サーバーで Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択できます。 複数のサービス レベルがあります。 | Managed Instance で Azure-SSIS IR を作成するときは、SSISDB のサービス レベルを選択することはできません。 Managed Instance 上のすべてのデータベースは、そのインスタンスに割り当てられた同じリソースを共有します。 |
-| **仮想ネットワーク** | Azure SQL Database サーバーと仮想ネットワーク サービス エンドポイントを使用する場合、またはオンプレミスのデータ ストアにアクセスする必要がある場合は、Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 | Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 仮想ネットワークは常に必須です。<br/><br/>Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ず Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリングまたは仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。 |
+| **認証** | **db_owner** ロールのメンバーとして ADF のマネージド ID を持つ AAD グループを表す包含データベース ユーザーを使用して、SSISDB を作成できます。<br/><br/>[Azure SQL Database サーバーで SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)に関するページを参照してください。 | ADF のマネージド ID を表す包含データベース ユーザーを使用して、SSISDB を作成できます。 <br/><br/>[Azure SQL Database Managed Instance で SSISDB を作成するための Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)に関するページを参照してください。 |
+| **サービス レベル** | Azure SQL Database サーバーで Azure-SSIS IR を作成するときに、SSISDB のサービス レベルを選択できます。 複数のサービス レベルがあります。 | Managed Instance で Azure-SSIS IR を作成するときは、SSISDB のサービス レベルを選択することはできません。 Managed Instance 上のすべてのデータベースは、そのインスタンスに割り当てられた同じリソースを共有します。 |
+| **Virtual Network** | Azure SQL Database サーバーと仮想ネットワーク サービス エンドポイントを使用する場合、またはオンプレミスのデータ ストアにアクセスする必要がある場合は、Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 | Azure-SSIS IR の参加用に、Azure Resource Manager 仮想ネットワークのみがサポートされます。 仮想ネットワークは常に必須です。<br/><br/>Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ず Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリングまたは仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。 |
 | **分散トランザクション** | エラスティック トランザクションを介してサポートされます。 Microsoft 分散トランザクション コーディネーター (MSDTC) トランザクションはサポートされていません。 SSIS パッケージが MSDTC を使用して分散トランザクションを調整している場合は、Azure SQL Database 用のエラスティック トランザクションに移行することを検討してください。 詳細については、「[クラウド データベースにまたがる分散トランザクション](../sql-database/sql-database-elastic-transactions-overview.md)」を参照してください。 | サポートされていません。 |
 | | | |
 

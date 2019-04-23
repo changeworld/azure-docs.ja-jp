@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 04/04/2019
 ms.openlocfilehash: 5e323b28913e0ba259654d39f97e0436e6bff2db
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010483"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786024"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>最大 100 TB のハイパースケール サービス レベル (プレビュー)
 

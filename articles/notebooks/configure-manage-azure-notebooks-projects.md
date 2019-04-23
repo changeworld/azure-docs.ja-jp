@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268009"
 ---
 # <a name="manage-and-configure-projects"></a>プロジェクトの管理と構成
@@ -96,9 +96,9 @@ DSVM インスタンスを選択すると、Azure Notebooks によって、VM �
 | 項目の種類 | 説明 | コマンドの動作 |
 | --- | --- | --- |
 | **ノートブック** | Jupyter Notebook | ノートブックのファイル名と言語を指定するためのポップアップを表示します。 |
-| **Folder** | サブフォルダー | プロジェクトのファイル リストで、フォルダー名を入力する編集フィールドを作成します。 |
+| **フォルダー** | サブフォルダー | プロジェクトのファイル リストで、フォルダー名を入力する編集フィールドを作成します。 |
 | **空のファイル** | テキスト、データなど、任意のコンテンツを格納できるファイル。 | プロジェクトのファイル リストで、ファイル名を入力する編集フィールドを作成します。 |
-| **Markdown** | マークダウン ファイル。 | プロジェクトのファイル リストで、ファイル名を入力する編集フィールドを作成します。 |
+| **マークダウン** | マークダウン ファイル。 | プロジェクトのファイル リストで、ファイル名を入力する編集フィールドを作成します。 |
 
 ### <a name="upload-files"></a>ファイルをアップロードする
 

@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 096daa28b7548401adc857c3c6c8327ef1d1eb00
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769406"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681567"
 ---
-# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>チュートリアル:Azure IoT Central でデバイスのルールとアクションを構成する (新しい UI デザイン)
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でデバイスのルールとアクションを構成する
 
 *この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 

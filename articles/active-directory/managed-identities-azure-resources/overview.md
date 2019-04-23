@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261464"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
@@ -73,7 +73,7 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
     1. Azure Instance Metadata Service の ID エンドポイントを、サービス プリンシパルのクライアント ID と証明書で更新します。
     1. VM 拡張機能 (2019 年 1 月に非推奨となる予定) をプロビジョニングし、サービス プリンシパルのクライアント ID と証明書を追加します。 (この手順は非推奨となる予定です。)
 4. VM に ID が設定された後、Azure リソースにアクセスする権利を VM に与えるには、そのサービス プリンシパル情報を使用します。 Azure Resource Manager を呼び出すには、Azure AD のロールベースのアクセス制御 (RBAC) を使用して、VM のサービス プリンシパルに適切なロールを割り当てます。 Key Vault を呼び出すには、Key Vault 内の特定のシークレットまたは特定のキーにアクセスする権利をコードに与えます。
-5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata サービス エンドポイントにトークンを要求できます。 `http://169.254.169.254/metadata/identity/oauth2/token`
+5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata サービス エンドポイントにトークン (`http://169.254.169.254/metadata/identity/oauth2/token`) を要求できます。
     - リソース パラメーターは、トークンの送信先のサービスを指定します。 Azure Resource Manager に対して認証を行うには、`resource=https://management.azure.com/` を使用します。
     - API バージョン パラメーターは、IMDS バージョンを指定します。api-version=2018-02-01 以降を使用してください。
 
@@ -95,7 +95,7 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
    > [!Note]
    > この手順は、手順 3. の前に行ってもかまいません。
 
-5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata Service ID エンドポイントにトークンを要求できます。 `http://169.254.169.254/metadata/identity/oauth2/token`
+5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata Service ID エンドポイントにトークン (`http://169.254.169.254/metadata/identity/oauth2/token`) を要求できます。
     - リソース パラメーターは、トークンの送信先のサービスを指定します。 Azure Resource Manager に対して認証を行うには、`resource=https://management.azure.com/` を使用します。
     - クライアント ID パラメーターは、トークンの要求先の ID を指定します。 この値は、1 つの VM 上に複数のユーザー割り当て ID がある場合に、あいまいさを解消するために必要です。
     - Azure Instance Metadata Service のバージョンは、API バージョン パラメーターで指定します。 `api-version=2018-02-01` 以降を使用してください。
@@ -115,17 +115,17 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
 
 Windows VM でマネージド ID を使用する方法については、以下のページをご覧ください。
 
-* [Azure Data Lake Store へのアクセス](tutorial-windows-vm-access-datalake.md)
-* [Azure Resource Manager へのアクセス](tutorial-windows-vm-access-arm.md)
-* [Azure SQL へのアクセス](tutorial-windows-vm-access-sql.md)
+* [Azure Data Lake Store にアクセスする](tutorial-windows-vm-access-datalake.md)
+* [Azure Resource Manager にアクセスする](tutorial-windows-vm-access-arm.md)
+* [Azure SQL にアクセスする](tutorial-windows-vm-access-sql.md)
 * [アクセス キーを使用して Azure Storage にアクセスする](tutorial-windows-vm-access-storage.md)
 * [Shared Access Signature を使用して Azure Storage にアクセスする](tutorial-windows-vm-access-storage-sas.md)
 * [Azure Key Vault で Azure AD 以外のリソースにアクセスする](tutorial-windows-vm-access-nonaad.md)
 
 Linux VM でマネージド ID を使用する方法については、以下のページをご覧ください。
 
-* [Azure Data Lake Store へのアクセス](tutorial-linux-vm-access-datalake.md)
-* [Azure Resource Manager へのアクセス](tutorial-linux-vm-access-arm.md)
+* [Azure Data Lake Store にアクセスする](tutorial-linux-vm-access-datalake.md)
+* [Azure Resource Manager にアクセスする](tutorial-linux-vm-access-arm.md)
 * [アクセス キーを使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage.md)
 * [Shared Access Signature を使用して Azure Storage にアクセスする](tutorial-linux-vm-access-storage-sas.md)
 * [Azure Key Vault で Azure AD 以外のリソースにアクセスする](tutorial-linux-vm-access-nonaad.md)

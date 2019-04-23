@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: ramamill
 ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362159"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>追加のプロセス サーバーによるフェールバックのスケール
@@ -31,7 +31,7 @@ VMware レプリケーションのために[容量計画](site-recovery-plan-cap
 
 表にまとめられているサイズ変更の要件を確認します。 一般に、ソース マシンが 200 台を超えるまでデプロイメントをスケールする必要がある場合や、合計日次変更率が 2 TB を超える場合は、トラフィック ボリュームの処理のために追加のプロセス サーバーが必要です。
 
-| **追加のプロセス サーバー** | **キャッシュ ディスク サイズ** | **データ変化率** | **保護対象のマシン** |
+| **追加のプロセス サーバー** | **キャッシュ ディスク サイズ** | **データの変更率** | **保護されたマシン** |
 | --- | --- | --- | --- |
 |4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ |300 GB |250 GB 以下 |85 台以下のマシンをレプリケートします。 |
 |8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ |600 GB |250 GB ～ 1 TB |85 ～ 150 台のマシンをレプリケートします。 |

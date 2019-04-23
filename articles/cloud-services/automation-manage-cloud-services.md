@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
 ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918469"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Automation を使用した Azure Cloud Services の管理
@@ -42,6 +42,6 @@ Azure Automation を使用して、次のような Azure Cloud Services を管�
 ## <a name="next-steps"></a>次の手順
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure クラウド サービスを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
-* [Azure Automation の概要](../automation/automation-intro.md)
+* [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)
 * [初めての Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure Automation の学習マップ](https://azure.microsoft.com/documentation/learning-paths/automation/)

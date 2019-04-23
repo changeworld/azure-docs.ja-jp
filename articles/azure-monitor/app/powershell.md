@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
 ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883413"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
@@ -168,8 +168,8 @@ ms.locfileid: "58883413"
 
     ``` 
    
-   * `-ResourceGroupName`  は、新しいリソースを作成するグループです。
-   * `-TemplateFile`  は、カスタム パラメーターの前に置く必要があります。
+   * `-ResourceGroupName` は、新しいリソースを作成するグループです。
+   * `-TemplateFile` は、カスタム パラメーターの前に置く必要があります。
    * `-appName` 作成するリソースの名前です。
 
 その他のパラメーターを追加することもできます。テンプレートのパラメーター セクションに説明があります。
@@ -447,9 +447,9 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法
-* [アラートを設定する](powershell-alerts.md)
+* [PowerShell を使用して Application Insights のアラートを設定する](powershell-alerts.md)
 * [Web テストを作成する](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [Azure 診断を Application Insights に送信する](powershell-azure-diagnostics.md)
+* [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
 * [GitHub から Azure にデプロイする](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

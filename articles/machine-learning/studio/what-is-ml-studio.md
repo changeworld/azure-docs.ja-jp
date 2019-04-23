@@ -14,13 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/28/2018
-ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/20/2019
+ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894004"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683003"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -108,7 +108,7 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 ## <a name="deploying-a-predictive-analytics-web-service"></a>予測分析 Web サービスのデプロイ
 予測分析モデルの準備が整ったら、それを Machine Learning Studio から Web サービスとしてデプロイすることができます。 このプロセスの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」を参照してください。
 
-
+<a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Machine Learning Studio と Azure Machine Learning service の違い
 
 [Azure Machine Learning service](../service/overview-what-is-azure-ml.md) には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK とサービスが用意されています。 自動スケーリング コンピューティングとパイプラインを使用して、生産性とコストを改善します。 PyTorch、TensorFlow、scikit-learn など、オープンソースの Python フレームワークと共にこれらの機能を使用します。 

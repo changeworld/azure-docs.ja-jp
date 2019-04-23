@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: v-erkell
 ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257316"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
@@ -29,7 +29,7 @@ ms.locfileid: "59257316"
 作成テンプレートを使用する前に、以下の前提条件への対応が済んでいることを確認します。  
 
 1. [新しいサブスクリプション](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [サブスクリプション所有者アクセス許可](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+1. [サブスクリプション所有者のアクセス許可](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [ストレージ サービス エンドポイント (必要な場合)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) - 既存の仮想ネットワークを使用し、Blob Storage を作成するデプロイで必要
 

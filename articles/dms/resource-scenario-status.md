@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
 ms.openlocfilehash: f25bc9bc3a958b2fa97ae4d5ab3715b602110393
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915477"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
@@ -47,7 +47,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure SQL DB MI** | SQL Server | ✔ | 一般公開 |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL 仮想マシン** | SQL Server | ✔ | 一般公開 |
+| **Azure SQL VM** | SQL Server | ✔ | 一般公開 |
 |   | Oracle |   |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | パブリック プレビュー |
 | **Azure DB for MySQL** | MySQL |   |   |
@@ -66,7 +66,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure SQL DB MI** | SQL Server | ✔ | 一般公開 |
 |   | RDS SQL | ✔ | 一般公開 |
 |   | Oracle | ✔ | プライベート プレビュー |
-| **Azure SQL 仮想マシン** | SQL Server |   |   |
+| **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | パブリック プレビュー |
 | **Azure DB for MySQL** | MySQL | ✔ | 一般公開 |

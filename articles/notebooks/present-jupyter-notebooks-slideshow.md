@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280470"
 ---
 # <a name="run-a-notebook-slideshow"></a>ノートブックのスライドショーを実行する
@@ -102,7 +102,7 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
 
 ## <a name="next-steps"></a>次の手順
 
-- [方法:プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
-- [方法:ノートブック内からパッケージをインストールする](install-packages-jupyter-notebook.md)
-- [方法:データ ファイルの操作](work-with-project-data-files.md)
-- [方法:データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
+- [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
+- [方法: ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
+- [方法: データ ファイルの操作](work-with-project-data-files.md)
+- [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)

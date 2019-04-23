@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047326"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786938"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイ プロジェクトを使用した Azure DevOps Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Azure DevOps Services にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。

@@ -10,11 +10,11 @@ ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005537"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784995"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -39,7 +39,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 > [!NOTE]
 > 現在、複数コンテナー グループでサポートされているのは、Linux コンテナーのみです。 Windows コンテナーの場合、Azure Container Instances では、1 つのインスタンスのデプロイのみをサポートします。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、サービスの[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 複数コンテナー グループをデプロイするには、一般的な方法が 2 つあります: [Resource Manager テンプレート][resource-manager template]または [YAML ファイル][yaml-file]を使用します。 コンテナー インスタンスのデプロイ時に追加の Azure サービス リソース ([Azure Files 共有][azure-files]など) をデプロイする必要がある場合は、Resource Manager テンプレートをお勧めします。 YAML フォーマットは簡潔であるため、デプロイにコンテナー インスタンスのみが含まれている場合は、YAML ファイルをお勧めします。
 
@@ -73,7 +73,7 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 必要に応じて、[Azure 仮想ネットワーク][virtual-network] (プレビュー) にコンテナー グループをデプロイして、コンテナーで仮想ネットワーク内の他のリソースと安全に通信することを許可します。
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 
 コンテナー グループにマウントする外部ボリュームを指定できます。 これらのボリュームは、グループの個別のコンテナーの特定のパスにマップできます。
 

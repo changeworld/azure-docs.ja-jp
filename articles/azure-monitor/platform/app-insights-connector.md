@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
 ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905700"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
@@ -54,7 +54,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 | [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
 | [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
-| [Azure ストレージ アカウント](collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
+| [Azure Storage アカウント](collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -99,9 +99,9 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 | **列** | **説明** |
 | --- | --- |
-| アプリケーション: アプリケーションの数 | アプリケーション リソース内のアプリケーションの数を示します。 アプリケーションの名前と各アプリケーションのレコードの数も示されます。 数値をクリックすると、次のログ検索が実行されます:  <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  アプリケーション名をクリックすると、アプリケーションのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
-| データ ボリューム: データを送信中のホスト | データを送信しているコンピューター ホストの数を示します。 コンピューター ホストと各ホストのレコード数も示されます。 数値をクリックすると、次のログ検索が実行されます:  <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> コンピューター名をクリックすると、ホストのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
-| 可用性: Web テストの結果 | Web テストの結果 (合格または不合格) を示すドーナツ グラフを表示します。 グラフをクリックすると、次のログ検索が実行されます:  <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> 結果は、すべてのテストの合格数と不合格数を示します。 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 アプリケーション名をクリックすると、不合格だった Web テストの詳細を示すログ検索が表示されます。 |
+| アプリケーション: アプリケーションの数 | アプリケーション リソース内のアプリケーションの数を示します。 アプリケーションの名前と各アプリケーションのレコードの数も示されます。 数値をクリックすると、ログ検索 (<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code>) が実行されます。 <br><br>  アプリケーション名をクリックすると、アプリケーションのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
+| データ ボリューム: データを送信中のホスト | データを送信しているコンピューター ホストの数を示します。 コンピューター ホストと各ホストのレコード数も示されます。 数値をクリックすると、ログ検索 (<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code>) が実行されます。 <br><br> コンピューター名をクリックすると、ホストのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
+| 可用性: Web テストの結果 | Web テストの結果 (合格または不合格) を示すドーナツ グラフを表示します。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code>) が実行されます。 <br><br> 結果は、すべてのテストの合格数と不合格数を示します。 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 アプリケーション名をクリックすると、不合格だった Web テストの詳細を示すログ検索が表示されます。 |
 | サーバー要求: 1 時間あたりの要求の数 | さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での要求の受信数が多い上位 3 つのアプリケーションが表示されます。 要求を受信しているアプリケーションの一覧と、選択した期間中の要求の数も示されます。 <br><br>グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を示す詳細な折れ線グラフが表示されます。 <br><br> 一覧のアプリケーションをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、要求の一覧、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および要求応答コードの一覧が表示されます。   |
 | 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、失敗した要求の数、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
 | 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>) が実行され、例外、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |

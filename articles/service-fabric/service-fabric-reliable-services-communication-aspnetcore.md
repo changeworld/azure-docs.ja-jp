@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268519"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
@@ -340,7 +340,7 @@ ASP.NET Core でのアプリの構成には、構成プロバイダーで確立�
 このセクションでは、`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet パッケージをインポートして、ASP.NET Core の構成に Service Fabric 構成プロバイダーを統合する方法について説明します。
 
 ### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration 起動の拡張機能
-`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet パッケージをインポートしたら、次に対し `Microsoft.ServiceFabric.AspNetCore.Configuration` 名前空間に、**AddServiceFabricConfiguration** 拡張機能で ASP.NET Core 構成 API に Service Fabric 構成ソースを登録する必要があります。 `IConfigurationBuilder`
+`Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet パッケージをインポートしたら、`IConfigurationBuilder` に対し `Microsoft.ServiceFabric.AspNetCore.Configuration` 名前空間に、**AddServiceFabricConfiguration** 拡張機能で ASP.NET Core 構成 API に Service Fabric 構成ソースを登録する必要があります。
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;

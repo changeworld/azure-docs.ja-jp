@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
 ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360487"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance に接続するように Azure VM を構成する
@@ -45,7 +45,7 @@ ms.locfileid: "59360487"
 
 3. 次の表の情報を参考にして、フォームに必要事項を入力します。
 
-   | Setting| 推奨値 | 説明 |
+   | Setting| 推奨値 | Description |
    | ---------------- | ----------------- | ----------- |
    | **Name** | 有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    | **アドレス範囲 (CIDR ブロック)** | 有効な範囲 | このクイック スタートでは既定値で問題ありません。|
@@ -78,16 +78,16 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
    | ---------------- | ----------------- | ----------- |
    | **サブスクリプション** | 有効なサブスクリプション | 新しいリソースを作成するアクセス許可があるサブスクリプションでなければなりません。 |
    | **リソース グループ** |「[マネージド インスタンスを作成する](sql-database-managed-instance-get-started.md)」クイック スタートで指定したリソース グループ。|VNet が存在するリソース グループでなければなりません。|
-   | **Location** | リソース グループの場所 | この値は、選択したリソース グループに基づいて設定されます。 |
+   | **場所** | リソース グループの場所 | この値は、選択したリソース グループに基づいて設定されます。 |
    | **仮想マシン名**  | 有効な名前 | 有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    |**管理ユーザー名**|有効なユーザー名|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このユーザー名を使用します。|
    |**パスワード**|有効なパスワード|パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。<br>[VM に接続](#connect-to-virtual-machine)するときは常に、このパスワードを使用します。|
-   | **仮想マシンのサイズ** | 任意の有効なサイズ | このクイック スタートでは、このテンプレートの既定値 **Standard_B2s** で十分です。 |
-   | **Location**|[resourceGroup().location]| この値は変更しないでください。 |
+   | **仮想マシン サイズ** | 任意の有効なサイズ | このクイック スタートでは、このテンプレートの既定値 **Standard_B2s** で十分です。 |
+   | **場所**|[resourceGroup().location]| この値は変更しないでください。 |
    | **仮想ネットワーク名**|マネージド インスタンスを作成した仮想ネットワーク。|
    | **サブネット名**|前の手順で作成したサブネットの名前| マネージド インスタンスを作成したサブネットは選択しないでください。|
-   | **artifacts の場所** | [deployment().properties.templateLink.uri] | この値は変更しないでください。 |
-   | **Sas トークンとしての artifacts の場所** | 空白のままにする | この値は変更しないでください。 |
+   | **artifacts Location (成果物の場所)** | [deployment().properties.templateLink.uri] | この値は変更しないでください。 |
+   | **artifacts Location Sas token (成果物の場所 SAS トークン)** | 空白のままにする | この値は変更しないでください。 |
 
    ![クライアント VM の作成](./media/sql-database-managed-instance-configure-vm/create-client-sql-vm.png)
 

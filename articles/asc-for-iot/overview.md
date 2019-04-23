@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863034"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要
@@ -59,6 +59,6 @@ ASC for IoT を使用して、マシン、ネットワーク、および Azure �
 - [サービスの前提条件](service-prerequisites.md)
 - [使用の開始](getting-started.md)
 - [ソリューションを定義する](quickstart-configure-your-solution.md)
-- [ASC for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)
+- [ASC for IoT についてのよく寄せられる質問](resources-frequently-asked-questions.md)
 - [ASC for IoT アラート](concept-security-alerts.md)
 

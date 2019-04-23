@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878725"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
@@ -60,7 +60,7 @@ ms.locfileid: "58878725"
         2.  同じゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS では同期ホット スタンバイの同期メソッドが提供されており、運用システムに推奨されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)」と関連ドキュメントから始まるさまざまなデータベースについての SAP 関連ドキュメントもチェックしてください。
             1.  たとえば[こちら](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows フェールオーバー クラスター サービスを使用することは、サポートされて**いません**。 代わりに次のようなソリューションがあります。
                 1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
-                2.  [Oracle データの保護](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [HANA システム レプリケーション](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  異なる Azure リージョン間のディザスター リカバリーの場合は、さまざまな DBMS ベンダーによって提供される可能性を確認します。 そのほとんどでは、非同期レプリケーションまたはログ配布がサポートされています
         4.  SAP アプリケーション層では、ビジネス回帰テスト システムを実行するかどうかを定義します。理想的には、同じ Azure リージョンまたはお使いの DR リージョン内の、運用デプロイのレプリカです。 後者の場合、そのビジネス回帰システムを運用環境の DR ターゲットとすることができます

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892828"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>要求コンポーネントと応答コンポーネントの概要
@@ -86,7 +86,7 @@ HTTP 応答アクションの追加方法を次に示します。
 #### <a name="request-trigger"></a>要求トリガー
 受信 HTTP 要求からのトリガーの入力フィールドを次に示します。
 
-| 表示名 | プロパティ名 | 説明 |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | JSON スキーマ |schema |HTTP 要求本文の JSON スキーマ |
 
@@ -98,13 +98,13 @@ HTTP 応答アクションの追加方法を次に示します。
 
 | プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
-| headers |オブジェクト |要求ヘッダー |
-| 本文 |オブジェクト |要求オブジェクト |
+| headers |object |要求ヘッダー |
+| 本文 |object |要求オブジェクト |
 
 #### <a name="response-action"></a>応答アクション
 HTTP 応答アクションの入力フィールドを次に示します。 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | 説明 |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | 状態コード* |StatusCode |HTTP 状態コード |
 | headers |headers |含める任意の応答ヘッダーの JSON オブジェクト |

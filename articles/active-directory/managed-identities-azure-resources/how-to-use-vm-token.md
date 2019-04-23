@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258914"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
@@ -365,7 +365,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 | 要素 | 説明 |
 | ------- | ----------- |
 | error   | エラー識別子。 |
-| error_description | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。 エラーの説明に含まれる値に基づいて分岐するコードを作成しないでください。**|
+| error_description | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。エラーの説明に含まれる値に基づいて分岐するコードを作成しないでください。**|
 
 ### <a name="http-response-reference"></a>HTTP 応答リファレンス
 

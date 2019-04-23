@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359985"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する
@@ -72,7 +72,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
    | ------------ | ------------------ | ----------- |
    | **サーバーの種類** | データベース エンジン | 必須値。 |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
-   | **Authentication** | パブリック | このチュートリアルでは、SQL 認証を使用します。 |
+   | **認証** | SQL Server 認証 | このチュートリアルでは、SQL 認証を使用します。 |
    | **ログイン** | サーバー管理者アカウントのユーザー ID | サーバーを作成するために使用するサーバー管理者アカウントのユーザー ID。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    ||||

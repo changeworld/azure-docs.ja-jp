@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273160"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>REST API で Azure Blueprint を定義して割り当てる
@@ -71,7 +71,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
-- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
+- `{subscriptionId}` - サブスクリプション ID で置き換えます
 
 > [!NOTE]
 > ブループリントはサブスクリプション レベルで作成することもできます。 例については、[サブスクリプションでのブループリントの作成例](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)を参照してください。
@@ -338,7 +338,7 @@ REST API を使用してブループリントを発行した後は、それを�
 
 - `{tenantId}` - 実際のテナント ID に置き換えます
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
-- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
+- `{subscriptionId}` - サブスクリプション ID で置き換えます
 
 1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの**所有者**ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 認可が異なる [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用しています。
 

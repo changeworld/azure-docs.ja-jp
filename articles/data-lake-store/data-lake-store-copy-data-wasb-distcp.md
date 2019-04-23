@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fbefe233ce0d2477982faf0a9f38a73062e0c7a1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884467"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Distcp を使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
@@ -111,7 +111,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 * Azure Blob Storage アカウントからコピーする場合、コピー ジョブは、Blob Storage 側で調整されることがあります。 これにより、コピー ジョブのパフォーマンスが低下します。 Azure Blob Storage の制限の詳細については、[Azure サブスクリプションとサービスの制限事項](../azure-subscription-service-limits.md)に関するページをご覧ください。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする](data-lake-store-copy-data-azure-storage-blob.md)
-* [Data Lake Storage Gen1 のデータをセキュリティ保護する](data-lake-store-secure-data.md)
+* [Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
+* [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 * [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Storage Gen1 で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)

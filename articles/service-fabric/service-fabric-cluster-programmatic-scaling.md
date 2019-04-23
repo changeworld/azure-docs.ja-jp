@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047941"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
@@ -34,9 +34,9 @@ Azure で実行される Service Fabric クラスターは仮想マシン スケ
 サービス プリンシパルは、次の手順で作成できます。
 
 1. 仮想マシン スケール セットへのアクセス権を持つユーザーとして Azure CLI (`az login`) にログインします。
-2. 次のものでサービス プリンシパルを作成します。 `az ad sp create-for-rbac`
+2. `az ad sp create-for-rbac` でサービス プリンシパルを作成します。
     1. appId (場所によっては "クライアント ID" と呼ばれる)、名前、パスワード、テナントを、後で使用するためにメモしておきます。
-    2. サブスクリプション ID も必要になります。これは次のもので表示できます。 `az account list`
+    2. サブスクリプション ID も必要になります。これは `az account list` で表示できます。
 
 fluent コンピューティング ライブラリは、次のとおり、これらの資格情報を使用してログインできます (`IAzure` などのコアの fluent Azure タイプは [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) パッケージにあります)。
 

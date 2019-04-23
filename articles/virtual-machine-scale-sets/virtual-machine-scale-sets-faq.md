@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541037"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683955"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -29,13 +29,13 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Scale Sets に関してよく寄せられる質問
 
-**Q.** Scale Sets には何個の VM を設定できますか?
+### <a name="how-many-vms-can-i-have-in-a-scale-set"></a>Scale Sets には何個の VM を設定できますか?
 
-**A.** スケール セットには、プラットフォーム イメージに基づいて 0 から 1,000 個の VM、またはカスタム イメージに基づいて 0 から 600 個の VM を含めることができます。
+スケール セットには、プラットフォーム イメージに基づいて 0 から 1,000 個の VM、またはカスタム イメージに基づいて 0 から 600 個の VM を含めることができます。
 
-**Q.** Scale Sets 内でデータ ディスクはサポートされていますか?
+### <a name="are-data-disks-supported-within-scale-sets"></a>Scale Sets 内でデータ ディスクはサポートされていますか?
 
-**A.** はい。 スケール セットでは、セット内のすべての VM に適用される、接続されたデータ ディスクの構成を定義できます。 詳細については、[Azure Scale Sets と接続されたデータ ディスク](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。 データを格納するための他のオプションを次に示します。
+はい。 スケール セットでは、セット内のすべての VM に適用される、接続されたデータ ディスクの構成を定義できます。 詳細については、[Azure Scale Sets と接続されたデータ ディスク](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。 データを格納するための他のオプションを次に示します。
 
 * Azure ファイル (SMB 共有ドライブ)
 * OS ドライブ
@@ -43,33 +43,33 @@ Azure における仮想マシン スケール セットについてよく寄せ
 * Azure データ サービス (Azure テーブル、Azure BLOB など)
 * 外部データ サービス (リモート データベースなど)
 
-**Q.** Scale Sets は、どの Azure リージョンでサポートされていますか?
+### <a name="which-azure-regions-support-scale-sets"></a>Scale Sets は、どの Azure リージョンでサポートされていますか?
 
-**A.** すべてのリージョンで Scale Sets がサポートされています。
+すべてのリージョンで Scale Sets がサポートされています。
 
-**Q.** カスタム イメージを使用して Scale Sets を作成するにはどうすればよいですか?
+### <a name="how-do-i-create-a-scale-set-by-using-a-custom-image"></a>カスタム イメージを使用して Scale Sets を作成するにはどうすればよいですか?
 
-**A.** VM イメージを作成しキャプチャしてから、それをスケール セットのソースとして使用します。 カスタム VM イメージを作成して使用する方法のチュートリアルについては、[Azure CLI](tutorial-use-custom-image-cli.md) または [Azure PowerShell](tutorial-use-custom-image-powershell.md) に関するページを参照してください。
+VM イメージを作成しキャプチャしてから、それをスケール セットのソースとして使用します。 カスタム VM イメージを作成して使用する方法のチュートリアルについては、[Azure CLI](tutorial-use-custom-image-cli.md) または [Azure PowerShell](tutorial-use-custom-image-powershell.md) に関するページを参照してください。
 
-**Q.** Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
+### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
 
-**A.** 可用性を最大限に高めるために、仮想マシンは、すべての更新ドメインと障害ドメインのスケール セットから均等に削除されます。 ID が最大の VM が最初に削除されます。
+可用性を最大限に高めるために、仮想マシンは、すべての更新ドメインと障害ドメインのスケール セットから均等に削除されます。 ID が最大の VM が最初に削除されます。
 
-**Q.** その後、容量を 15 から 18 に増やすとどうなりますか。
+### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>その後、容量を 15 から 18 に増やすとどうなりますか。
 
-**A.** 容量を 18 に増やすと、3 つの新しい VM が作成されます。 VM が作成されるたびに、VM インスタンス ID は前の最大値に増分された値となります (例: 20、21、22)。 VM は障害ドメインと更新ドメインに分散されます。
+容量を 18 に増やすと、3 つの新しい VM が作成されます。 VM が作成されるたびに、VM インスタンス ID は前の最大値に増分された値となります (例: 20、21、22)。 VM は障害ドメインと更新ドメインに分散されます。
 
-**Q.** Scale Sets で複数の拡張機能を使用する場合、実行順序を強制できますか?
+### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Scale Sets で複数の拡張機能を使用する場合、実行順序を強制できますか?
 
-**A.** はい、スケール セット[拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)を使用できます。
+はい、スケール セット[拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)を使用できます。
 
-**Q.** Scale Sets は、Azure 可用性セットと連携できますか?
+### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Scale Sets は、Azure 可用性セットと連携できますか?
 
-**A.** リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能します。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能します。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
 
-**Q.** スケール セットは、Azure 可用性ゾーンと連携しますか。
+### <a name="do-scale-sets-work-with-azure-availability-zones"></a>スケール セットは、Azure 可用性ゾーンと連携しますか。
 
-**A.** はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
+はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
 
 
 ## <a name="autoscale"></a>自動スケール
@@ -307,7 +307,7 @@ CRP コンポーネントは、ユーザーのシークレットを保持しま�
 
 Azure Key Vault のドキュメントに記載されているように、Get Secret REST API は、バージョンが指定されていない場合にシークレットの最新バージョンを返します。
 
-方法 | URL
+Method | URL
 --- | ---
 GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 

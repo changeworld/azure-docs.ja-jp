@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267159"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
@@ -254,6 +254,6 @@ Azure Data Factory のバージョン 1 では、パーティション分割さ�
 ## <a name="next-steps"></a>次の手順
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。
 
-- [同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする](quickstart-create-data-factory-dot-net.md)
-- [Azure Blob Storage から Azure SQL Database にコピーする](tutorial-copy-data-dot-net.md)
-- [オンプレミスの SQL Server から Azure にデータをコピーする](tutorial-hybrid-copy-powershell.md)
+- [Copy data from one location to another location in the same Azure Blob Storage (同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする)](quickstart-create-data-factory-dot-net.md)
+- [Copy data from Azure Blob Storage to Azure SQL Database (Azure Blob Storage から Azure SQL Database にデータをコピーする)](tutorial-copy-data-dot-net.md)
+- [Copy data from on-premises SQL Server to Azure (オンプレミスの SQL Server から Azure にデータをコピーする)](tutorial-hybrid-copy-powershell.md)

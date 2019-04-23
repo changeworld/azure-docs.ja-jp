@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 0dfe6553778092c33f9e1bd55ac7a7ae65137a6e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881003"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
@@ -42,7 +42,7 @@ ms.locfileid: "58881003"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
-| 方法 | はい | 検証に使用するメソッドの型。 指定できる値**IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
+| Method | はい | 検証に使用するメソッドの型。 指定できる値**IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
 
 **Predicate** 要素には、次の要素が含まれています。
 
@@ -194,7 +194,7 @@ ms.locfileid: "58881003"
 - **Lowercase**: `IncludesCharacters` メソッドを使用して、パスワードに小文字が含まれていることを検証します。
 - **Uppercase**: `IncludesCharacters` メソッドを使用して、パスワードに大文字が含まれていることを検証します。
 - **Number**: `IncludesCharacters` メソッドを使用して、パスワードに数字が含まれていることを検証します。
-- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードに次のいずれかの記号が含まれていることを検証します:  `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードに次のいずれかの記号が含まれていることを検証します `@#$%^&*\-_+=[]{}|\:',?/~"();!`
 - **PIN**: `MatchesRegex` メソッドを使用して、パスワードに数字のみが含まれていることを検証します。
 - **AllowedAADCharacters**: `MatchesRegex` メソッドを使用して、パスワードのみの無効な文字が指定されたことを検証します。
 - **DisallowedWhitespace**: `MatchesRegex` メソッドを使用して、パスワードが空白文字で開始または終了していないことを検証します。

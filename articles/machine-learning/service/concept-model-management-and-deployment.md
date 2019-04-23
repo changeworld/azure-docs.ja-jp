@@ -12,10 +12,10 @@ ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275444"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを管理、デプロイ、および監視する
@@ -33,7 +33,7 @@ ms.locfileid: "59275444"
 
 各手順を個別に、または 1 つのデプロイ コマンドの一部として実行できます。 さらに、次の図に示すように、デプロイを **CI/CD ワークフロー**に統合することもできます。
 
-[!['Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル(media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!["Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル"](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>手順 1:モデルの登録
 
@@ -75,7 +75,7 @@ Azure Container Registry にアップロードして、Azure Machine Learning �
 
 Web サービスのデプロイも検索可能です。 たとえば、特定のモデルまたはイメージのすべてのデプロイを検索できます。
 
-[![Iターゲットの推論(media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![ターゲットの推論](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 ご自身のイメージを、クラウド内の次のデプロイ ターゲットにデプロイできます。
 

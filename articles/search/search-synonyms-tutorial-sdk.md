@@ -10,10 +10,10 @@ ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008976"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>例:C# で Azure Search にシノニムを追加する

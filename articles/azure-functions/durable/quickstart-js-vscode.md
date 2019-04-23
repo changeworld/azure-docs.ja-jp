@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
 ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281235"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
@@ -170,4 +170,4 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 Visual Studio Code を使用して、JavaScript の Durable Functions アプリを作成して発行しました。
 
 > [!div class="nextstepaction"]
-> [持続的な関数の一般的なパターンについて学習する](durable-functions-concepts.md)
+> [Durable Functions の一般的なパターンについて学習する](durable-functions-concepts.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 4a53bcf77696d3aa53a4a404bfacd6f6d468885b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862104"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
@@ -52,7 +52,7 @@ ms.locfileid: "58862104"
 
 1. パッケージの内容を展開し、_/Install_ フォルダーに移動します。
 
-1. 次のコマンドを実行して、**InstallSecurityAgent** スクリプトに実行アクセス許可を追加します:  `chmod +x InstallSecurityAgent.sh` 
+1. `chmod +x InstallSecurityAgent.sh` を実行して、**InstallSecurityAgent スクリプト**に実行アクセス許可を追加します。 
 
 1. 次に、以下を実行します。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "58862104"
 - 指定された認証パラメーターでエージェントを構成する。
 
 
-追加のヘルプについては、–help パラメーターを指定してスクリプトを実行します。 `./InstallSecurityAgent.sh --help`
+追加のヘルプについては、–help パラメーターを指定してスクリプトを実行します (`./InstallSecurityAgent.sh --help`)。
 
 ### <a name="uninstall-the-agent"></a>エージェントのアンインストール
 
@@ -118,7 +118,7 @@ ms.locfileid: "58862104"
 
    1. ログ ファイルで、エラーの詳細情報を調べます。  
 
-       ログ ファイルの場所は次のとおりです:  `/var/ASCIoTAgent/IotAgentLog.log`
+       ログ ファイルの場所は、`/var/ASCIoTAgent/IotAgentLog.log` です。
 
        ファイルの場所のパスは、手順 2. で **logFilePath** に対して選択した名前に応じて変わります。 
 

@@ -14,10 +14,10 @@ ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
 ms.openlocfilehash: 8db65fd9a1f271aea4ceb345f4d9dfbb6b9ff8a6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877382"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>App Service on Linux の Java Enterprise ガイド
@@ -119,5 +119,4 @@ App Service には、アプリケーションの問題のトラブルシュー�
 
 -   左側のナビゲーション ウィンドウの **[診断ログ]** をクリックして、ログを有効にします。 **[ファイル システム]** をクリックして、ストレージ クォータおよび保持期間を設定し、変更を保存します。 これらのログは、`/home/LogFiles/` にあります。
 -   [SSH を使用して、アプリケーション インスタンスに接続し](app-service-linux-ssh-support.md)、実行中のアプリケーションのログを表示します。
--   ポータルの **[診断ログ]** パネルの診断ログまたは Azure CLI コマンドを使用して、診断ログを確認します。
-`az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`
+-   portal の **[診断ログ]** パネルの診断ログまたは Azure CLI コマンド `az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>` を使用して、診断ログを確認します。

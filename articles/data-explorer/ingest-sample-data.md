@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050630"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Azure のデータ エクスプローラーにサンプル データを取り込む
@@ -63,4 +63,4 @@ ms.locfileid: "59050630"
 > [クエリを作成する](write-queries.md)
 
 > [!div class="nextstepaction"]
-> [Azure データ エクスプローラーでのデータ インジェスト](ingest-data-overview.md)
+> [Azure のデータ エクスプローラーへのデータの取り込み](ingest-data-overview.md)

@@ -8,10 +8,10 @@ ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275455"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
@@ -37,7 +37,7 @@ Azure Migrate によって次のことが可能になります。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
 -  Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、他の Azure のターゲット場所について評価を作成できないという訳ではありません。
 
-    **[地理的な場所]** | **保存先**
+    **地理的な場所** | **保存場所**
     --- | ---
     Azure Government | 米国政府バージニア州
     アジア | 東南アジアまたは東アジア
@@ -67,9 +67,9 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 **快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 既定の快適性設定は 1.3x です。
 **VM シリーズ** | サイズ見積もりに使用する VM シリーズ。 たとえば、Azure で A シリーズ VM に移行する予定がない運用環境がある場合は、リストまたはシリーズから A シリーズを除外することができます。 サイズ変更は、選択したシリーズに基づいてのみ実行されます。   
 **通貨** | 請求通貨です。 既定値は、米ドルです。
-**割引 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引です。 既定の設定は 0% です。
+**割引率 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引です。 既定の設定は 0% です。
 **VM のアップタイム** | VM が Azure 上で 24 時間 365 日稼働するわけではない場合は、Azure 上で稼働する期間 (1 か月あたりの日数と １ 日あたりの時間数) を指定できます。それに応じてコストの見積もりが行われます。 既定値は、1 か月あたり 31 日、1 日あたり 24 時間です。
-**Azure プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate はそれに応じてコストを見積もります。
+**Azure オファー** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate はそれに応じてコストを見積もります。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用してコストの割引を受ける資格があるかどうか。
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate のしくみ

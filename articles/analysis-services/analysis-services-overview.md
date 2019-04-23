@@ -9,10 +9,10 @@ ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893131"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
@@ -84,7 +84,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
 |米国東部 2     |     S8、S9   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
-|米国中央部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+|米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
@@ -255,10 +255,10 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [無料の Azure 試用版にサインアップする](https://azure.microsoft.com/offers/ms-azr-0044p/)   
+> [Azure 無料アカウントにサインアップする](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート:サーバーの作成 - ポータル](analysis-services-create-server.md)   
+> [クイック スタート: サーバーの作成 - ポータル](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [クイック スタート:サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  
+> [クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)  

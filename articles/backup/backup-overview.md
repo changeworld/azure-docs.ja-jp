@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361809"
 ---
 # <a name="what-is-azure-backup"></a>Azure Backup とは
@@ -58,7 +58,7 @@ Azure Backup と Azure Site Recovery は、どちらもお客様のビジネス�
 
 お客様の BCDR のニーズを把握するために、表の項目をお役立てください。
 
-**目的** | **詳細** | **比較**
+**目標** | **詳細** | **比較**
 --- | --- | ---
 **データのバックアップおよび保有** | バックアップ データは、コンプライアンスの観点からの必要に応じて、数日、数か月、さらには数年にわたって保有および格納できます。 | Azure Backup のようなバックアップ ソリューションでは、バックアップしたいデータを細かく選択し、バックアップ ポリシーと保有ポリシーを微調整できます。<br/><br/> Site Recovery では、同じ細かな調整はできません。
 **目標復旧時点 (RPO)** | 復旧を行う必要がある場合に許容されるデータ損失の量です。 | バックアップでは、RPO がより可変的です。<br/><br/> VM バックアップの RPO は通常 1 日であるのに対し、データベース バックアップの RPO は最低 15 分です。<br/><br/> Site Recovery では、低い RPO が提供されます。これは、ソースとレプリカ コピーとの差分が小さくなるように、レプリケーションが継続的または頻繁に行われるためです。
@@ -105,7 +105,7 @@ Azure Backup では、オンプレミス マシンと Azure VM の両方をバ�
 
 ## <a name="which-backup-agent-should-i-use"></a>使用が推奨されるバックアップ エージェント
 
-**バックアップ** | **解決策** | **制限事項**
+**Backup** | **ソリューション** | **制限事項**
 --- | --- | ---
 **Azure VM 全体をバックアップしたい** | VM のバックアップを有効にします。 バックアップ拡張機能は、Windows または Linux の Azure VM 上で自動的に構成されます。 | VM 全体がバックアップされます <br/><br/> Windows VM の場合、バックアップにはアプリ整合性があります。 Linux の場合、バックアップにはファイル整合性があります。 Linux VM のアプリ対応が必要な場合は、カスタム スクリプトを使用してこれを構成する必要があります。
 **Azure VM 上の特定のファイル/フォルダーをバックアップしたい** | MARS エージェントを VM にデプロイします。

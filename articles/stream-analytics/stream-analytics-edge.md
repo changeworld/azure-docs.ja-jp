@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 4/2/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892230"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
@@ -50,7 +50,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 | 1   | **ストレージ コンテナーを作成する**   | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
 | 2   | **ASA エッジ ジョブを作成する**   |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
 | 3   | **デバイス上に IoT Edge 環境を設定する**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 用の手順。          |
-| 4   | **ASA を IoT Edge デバイスにデプロイする**   |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
+| 4   | **ASA を IoT Edge デバイスに展開する**   |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
 
 最初の ASA ジョブを IoT Edge に展開するには、[順を追って解説したこちらのチュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)に従ってください。 次のビデオは、IoT Edge デバイスで Stream Analytics ジョブを実行するプロセスを理解するのに役立ちます。  
 
@@ -106,7 +106,7 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 - Azure portal で IoT Hub を開き、**[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
 - **[モジュールの設定]**、**[+ 追加]**、**[Azure Stream Analytics モジュール]** の順に選択します。
 - サブスクリプションと、作成した ASA Edge ジョブを選択します。 [保存] をクリックします。
-![ASA モジュールをデプロイに追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
+![ASA モジュールを展開に追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
 ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051172"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
@@ -57,7 +57,7 @@ Azure リージョンに関する詳細については、「[Azure リージョ�
 Azure では、顧客に提供されるサービスのカテゴリに基づいたクラウド コンピューティング モデルを使用します。 サービス の 3 つのカテゴリとして、サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのプラットフォーム (PaaS)、およびサービスとしてのソフトウェア (SaaS) があります。 ベンダーは、これらの各カテゴリのコンピューティング スタック内にあるコンポーネントに対して、一部またはすべての責任を共有します。 クラウド コンピューティングの各カテゴリを確認しましょう。
 ![クラウド コンピューティング スタックの比較](./media/cloud-computing-comparison.png)
 
-#### <a name="iaas-infrastructure-as-a-service"></a>IaaS:サービスとしてのインフラストラクチャ
+#### <a name="iaas-infrastructure-as-a-service"></a>IaaS: サービスとしてのインフラストラクチャ
 
 IaaS クラウド ベンダーがあらゆる物理的コンピューティング リソースとコンピューターの仮想化に必要なソフトウェアを実行し、管理します。 このサービスの利用者は、ホステッド データセンターに仮想マシンをデプロイします。 仮想マシンは離れた場所のデータセンターに置かれますが、IaaS コンシューマーは、基になるインフラストラクチャをクラウド ベンダーに配置したままのオペレーティング システムを自由に構成し、管理できます。
 

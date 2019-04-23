@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271630"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
@@ -71,7 +71,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [パーティション内のセカンダリ インデックス パターン](#inter-partition-secondary-index-pattern)
+* [パーティション内セカンダリ インデックス パターン](#inter-partition-secondary-index-pattern)
 * [複合キー パターン](#compound-key-pattern)
 * エンティティ グループ トランザクション
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
@@ -197,7 +197,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1:Blob Storage を使用する</u>  
+<u>オプション 1:Blob ストレージを使用する</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
@@ -362,7 +362,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [先頭または末尾に追加するアンチパターン](#prepend-append-anti-pattern)  
+* [先頭または末尾に追加するアンチ パターン](#prepend-append-anti-pattern)  
 * [エンティティの取得](#retrieving-entities)  
 
 ## <a name="high-volume-delete-pattern"></a>頻度の高いパターンを削除する
@@ -426,7 +426,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [大型エンティティ パターン](#large-entities-pattern)  
+* [ラージ エンティティ パターン](#large-entities-pattern)  
 * [マージまたは置換](#merge-or-replace)  
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern) (格納するデータ系列を Blob に格納している場合)  
 
@@ -481,7 +481,7 @@ BLOB ストレージを使用して、大きなプロパティ値を格納しま
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
-* [ワイド エンティティ パターン](#wide-entities-pattern)
+* [ワイド エンティティパターン](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>
 
@@ -513,7 +513,7 @@ BLOB ストレージを使用して、大きなプロパティ値を格納しま
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [複合キー パターン](#compound-key-pattern)  
-* [ログ テール パターン](#log-tail-pattern)  
+* [ログ テールパターン](#log-tail-pattern)  
 * [エンティティの変更](#modifying-entities)  
 
 ## <a name="log-data-anti-pattern"></a>ログ データのアンチパターン
@@ -724,7 +724,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -744,7 +744,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -781,7 +781,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -817,7 +817,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -839,7 +839,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -880,7 +880,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>

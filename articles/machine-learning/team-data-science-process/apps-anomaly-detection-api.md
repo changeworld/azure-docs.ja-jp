@@ -12,10 +12,10 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793137"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
@@ -131,7 +131,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。
 
 | 出力 | 説明 |
@@ -174,7 +174,7 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 | seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |該当なし |
 | postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。
 
 | 出力 | 説明 |

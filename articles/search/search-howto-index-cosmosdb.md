@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883396"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Azure Search インデクサーを使用して Cosmos DB のインデックスを作成する方法
@@ -75,19 +75,19 @@ Azure Search サービス ページのコマンド バーから、またはス�
 
 ドキュメントをインポートするときは、コグニティブ スキルを追加する必要はありません。 インデックス作成パイプラインに [Cognitive Services APIs と変換を含める](cognitive-search-concept-intro.md)特定のニーズがない限り、このステップをスキップする必要があります。
 
-このステップをスキップするには、最初に次のページに移動します。
+このステップをスキップするには、先に次のページに移動します。
 
    ![コグニティブ検索用の次のページ ボタン](media/search-get-started-portal/next-button-add-cog-search.png)
 
-そのページから、インデックスのカスタマイズに進んでください。
+そのページから、インデックスのカスタマイズに進むことができます。
 
    ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
 
 ### <a name="5---set-index-attributes"></a>5 - インデックスの属性を設定する
 
-**[インデックス]** ページには、フィールドとデータ型およびインデックスの属性を設定するための一連のチェック ボックスが一覧表示されます。 ウィザードでは、メタデータに基づき、ソース データをサンプリングすることで、フィールドの一覧を生成できます。 
+**[インデックス]** ページには、フィールドとデータ型およびインデックスの属性を設定するための一連のチェック ボックスが一覧表示されます。 このウィザードで、メタデータに基づいてソース データをサンプリングすることで、フィールドの一覧を生成できます。 
 
-属性列の上部にあるチェック ボックスをクリックすることで、属性を一括選択できます。 クライアント アプリに返してフル検索処理の対象にする必要があるすべてのフィールドで、**[取得可能]** と **[検索可能]** を選択します。 整数はフルテキスト検索可能またはあいまい検索可能ではないことに注意してください (数値は逐語的に評価され、多くの場合フィルターで役に立ちます)。
+属性列の上部にあるチェック ボックスをクリックすることで、属性を一括選択できます。 クライアント アプリに返してフル検索処理の対象にする必要があるすべてのフィールドで、**[取得可能]** と **[検索可能]** を選択します。 整数はフルテキスト検索もあいまい検索もできないことに注意してください (数値は逐語的に評価され、多くの場合フィルターで役立ちます)。
 
 詳細については、[インデックス属性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)と[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)の説明を参照してください。 
 
@@ -110,7 +110,7 @@ Azure Search サービス ページのコマンド バーから、またはス�
 インデックスの作成が完了したら、[Search エクスプローラー](search-explorer.md)を使用してインデックスのクエリを実行できます。
 
 > [!NOTE]
-> 期待どおりのデータが表示されない場合は、その他のフィールドにその他の属性を設定する必要がある場合があります。 今作成したインデックスとインデクサーを削除し、もう一度ウィザードの手順に従って、手順 5 でインデックス属性の選択内容を変更してください。 
+> 期待どおりのデータが表示されない場合は、その他のフィールドにその他の属性を設定する必要があります。 今作成したインデックスとインデクサーを削除し、もう一度ウィザードの手順に従って、手順 5 でインデックス属性の選択内容を変更してください。 
 
 <a name="cosmosdb-indexer-rest"></a>
 
@@ -128,7 +128,7 @@ MongoDB を評価する場合は、REST API を使用してデータ ソース�
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
 
-要求ごとに、Azure Search のサービス名と管理者キーを POST ヘッダーに指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-fiddler.md) を使用すると、Azure Search に HTTP 要求を送信できます。
+要求ごとに、Azure Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-fiddler.md) を使用して、Azure Search に HTTP 要求を送信できます。
 
 次の 4 つの値をメモ帳にコピーして、要求に貼り付けることができるようにします。
 
@@ -173,7 +173,7 @@ MongoDB を評価する場合は、REST API を使用してデータ ソース�
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `documentdb`である必要があります。 |
-|**資格情報** | 必須。 Cosmos DB の接続文字列でなければなりません。<br/>SQL コレクションの接続文字列の形式は次のとおりです:  `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
+|**credentials** | 必須。 Cosmos DB の接続文字列でなければなりません。<br/>SQL コレクションでは、接続文字列の形式は `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` です<br/>MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
 | **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB コレクションの場合、クエリはサポートされません。 |
 | **dataChangeDetectionPolicy** | 推奨。 「[変更されたドキュメントのインデックス作成](#DataChangeDetectionPolicy)」セクションを参照してください。|
 |**dataDeletionDetectionPolicy** | 省略可能。 「[削除されたドキュメントのインデックス作成](#DataDeletionDetectionPolicy)」セクションを参照してください。|

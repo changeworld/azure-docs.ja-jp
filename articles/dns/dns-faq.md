@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/21/2019
 ms.author: victorh
 ms.openlocfilehash: 4f0800dfd264059e1dc8aac32a54f216f777647f
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905717"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
@@ -116,10 +116,10 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>エイリアス レコード セットのターゲットとしては、どのようなリソースがサポートされていますか。
 
-- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする。** A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
-- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする。** DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
+- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
+- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
 - **Azure Content Delivery Network (CDN) エンドポイントをポイントする**。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。
-- **同じゾーン内の別の DNS レコード セットをポイントする。** エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコード セットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
+- **同じゾーン内の別の DNS レコード セットをポイントする**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコード セットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Azure portal からエイリアス レコードを作成および更新できますか。
 

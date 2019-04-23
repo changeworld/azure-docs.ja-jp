@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256823"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
@@ -22,9 +22,9 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 次の高度なクエリを説明します。
 
 > [!div class="checklist"]
-> - [VMSS の容量とサイズを取得する](#vmss-capacity)
-> - [すべてのタグ名を一覧表示する](#list-all-tags)
-> - [正規表現に一致する仮想マシン](#vm-regex)
+> - [VMSS の容量とサイズを取得します](#vmss-capacity)
+> - [すべてのタグ名を一覧表示します](#list-all-tags)
+> - [ regexに一致する仮想マシン](#vm-regex)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
 

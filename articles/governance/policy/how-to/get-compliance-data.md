@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263782"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
@@ -56,7 +56,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
 - `{YourRG}` - リソース グループの名前に置き換えます
-- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
+- `{subscriptionId}` - サブスクリプション ID で置き換えます
 
 スキャンは、サブスクリプションまたはリソース グループ内のリソースの評価をサポートしています。 次の URI の構造を使用して、REST API の **POST** コマンドでスコープによるスキャンを開始します。
 

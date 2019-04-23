@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
 ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895581"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Webhook と Azure Logic Apps を使ってイベント ベースのワークフローまたはアクションを作成する
@@ -33,7 +33,7 @@ webhook アクションおよびトリガーを使用すると、フローを開
 
 ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。 これらの手順では、[ロジック アプリでの webhook のサブスクライブおよびサブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。 
 
-**Webhook トリガーを追加するには**
+**webhook トリガーを追加するには、次の手順に従います。**
 
 1. ロジック アプリでの最初の手順として、**HTTP Webhook** トリガーを追加します。
 2. webhook サブスクライブ呼び出しおよびサブスクライブ解除呼び出しのパラメーターを入力します。
@@ -58,7 +58,7 @@ webhook アクションおよびトリガーを使用すると、フローを開
 
 ロジック アプリ デザイナーで webhook アクションをセットアップする方法の例を次に示します。 これらの手順では、[ロジック アプリでの webhook のサブスクライブおよびサブスクライブ解除パターン](../logic-apps/logic-apps-create-api-app.md#webhook-actions)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。 
 
-**Webhook アクションを追加するには**
+**webhook アクションを追加するには、次の手順に従います。**
 
 1. **[新しいステップ]** > **[アクションの追加]** の順に選択します。
 
@@ -101,7 +101,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 | Unsubscribe URI (URI のサブスクライブ解除)* |uri |サブスクライブ解除要求に使用する HTTP URI |
 | Subscribe Body (本文のサブスクライブ) |body |サブスクライブの HTTP 要求本文 |
 | Subscribe Headers (ヘッダーのサブスクライブ) |headers |サブスクライブの HTTP 要求ヘッダー |
-| Subscribe Authentication (認証のサブスクライブ) |[認証] |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
+| Subscribe Authentication (認証のサブスクライブ) |認証 |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
 | Unsubscribe Body (本文のサブスクライブ解除) |body |サブスクライブ解除の HTTP 要求本文 |
 | Unsubscribe Headers (ヘッダーのサブスクライブ解除) |headers |サブスクライブ解除の HTTP 要求ヘッダー |
 | Unsubscribe Authentication (認証のサブスクライブ解除) |authentication |サブスクライブ解除に使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
@@ -112,8 +112,8 @@ Webhook 要求
 
 | プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
-| headers |オブジェクト |Webhook 要求ヘッダー |
-| 本文 |オブジェクト |Webhook 要求オブジェクト |
+| headers |object |Webhook 要求ヘッダー |
+| 本文 |object |Webhook 要求オブジェクト |
 | 状態コード |int |Webhook 要求の状態コード |
 
 ## <a name="webhook-actions"></a>Webhook アクション
@@ -137,7 +137,7 @@ Webhook 要求
 | Unsubscribe URI (URI のサブスクライブ解除)* |uri |サブスクライブ解除要求に使用する HTTP URI |
 | Subscribe Body (本文のサブスクライブ) |body |サブスクライブの HTTP 要求本文 |
 | Subscribe Headers (ヘッダーのサブスクライブ) |headers |サブスクライブの HTTP 要求ヘッダー |
-| Subscribe Authentication (認証のサブスクライブ) |[認証] |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
+| Subscribe Authentication (認証のサブスクライブ) |認証 |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
 | Unsubscribe Body (本文のサブスクライブ解除) |body |サブスクライブ解除の HTTP 要求本文 |
 | Unsubscribe Headers (ヘッダーのサブスクライブ解除) |headers |サブスクライブ解除の HTTP 要求ヘッダー |
 | Unsubscribe Authentication (認証のサブスクライブ解除) |authentication |サブスクライブ解除に使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
@@ -148,11 +148,11 @@ Webhook 要求
 
 | プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
-| headers |オブジェクト |Webhook 要求ヘッダー |
-| 本文 |オブジェクト |Webhook 要求オブジェクト |
+| headers |object |Webhook 要求ヘッダー |
+| 本文 |object |Webhook 要求オブジェクト |
 | 状態コード |int |Webhook 要求の状態コード |
 
 ## <a name="next-steps"></a>次の手順
 
-* [ロジック アプリを作成します](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [他のコネクタを見つけます](apis-list.md)

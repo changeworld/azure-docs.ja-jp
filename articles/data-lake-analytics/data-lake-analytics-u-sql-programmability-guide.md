@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489658"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
@@ -85,7 +85,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>C# の式を使って今日の日付を取得する
 
-今日の日付を取得するには、次の C# の式を使用します。 `DateTime.Now.ToString("M/d/yyyy")`
+今日の日付を取得するには、C# の式 `DateTime.Now.ToString("M/d/yyyy")` を使用します。
 
 この式をスクリプトで使う方法の例を以下に示します。
 
@@ -533,9 +533,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **シリアル化**: 指定されたルートのオブジェクトまたはオブジェクトのグラフをシリアル化し、指定されたストリームに送ります。
 
-`MyType` instance:型のインスタンスです。  
-`IColumnWriter` writer / `IColumnReader` reader:基になる列ストリームです。  
-`ISerializationContext` context:シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
+`MyType` instance: 型のインスタンスです。  
+`IColumnWriter` writer / `IColumnReader` reader: 基になる列ストリームです。  
+`ISerializationContext` context: シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
 
 * **中間**: ソースまたは宛先に関するコンテキストが永続的なストアでないことを指定します。
 

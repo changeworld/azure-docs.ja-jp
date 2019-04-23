@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065802"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679127"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -418,7 +418,7 @@ Azure portal でゲートウェイの登録を確認するには、"*すべて*"
 
 各種のログがある他の場所は以下のとおりです。
 
-| ログのタイプ | 場所 | 
+| ログのタイプ | Location | 
 |----------|----------| 
 | **インストーラー ログ** | %localappdata%\Temp\On-premises_data_gateway_<*yyyymmdd*>.<*数値*>.log | 
 | **構成ログ** | C:\Users\<*ユーザー名*>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator<*yyyymmdd*>.<*数値*>.log | 
@@ -434,26 +434,6 @@ Azure portal でゲートウェイの登録を確認するには、"*すべて*"
 3. **[On-premises data gateway service]\(オンプレミス データ ゲートウェイ サービス\)** を選択します。
 
    ![ゲートウェイのイベント ログの表示](./media/logic-apps-gateway-install/event-viewer.png)
-
-### <a name="telemetry"></a>テレメトリ
-
-追加の監視とトラブルシューティングを目的として、テレメトリを有効にして収集できます。 
-
-1. オンプレミス データ ゲートウェイ クライアントの場所を参照します。これは通常、```C:\Program Files\On-premises data gateway``` にあります。
-
-   そうでない場合にクライアントの場所を探すには、同じコンピューターのサービス コンソールを開き、**オンプレミス データ ゲートウェイ サービス**を探して、**実行可能ファイルへのパス** プロパティを表示します。
-
-2. 次の*構成*ファイルを開きます。**Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
-
-3. **SendTelemetry** の値を **true** に変更します。
-
-   ```html
-   <setting name="SendTelemetry" serializeAs="String">
-      <value>true</value>
-   </setting>
-   ```
-
-4. 変更を保存してから Windows サービスを再起動します。
 
 ### <a name="review-slow-query-performance"></a>低速なクエリ パフォーマンスの確認
 
@@ -526,7 +506,7 @@ Azure portal でゲートウェイの登録を確認するには、"*すべて*"
 
 ### <a name="trace-traffic-with-fiddler"></a>Fiddler によるトラフィックのトレース
 
-[Fiddler](http://www.telerik.com/fiddler) は、HTTP トラフィックを監視する Telerik の無料ツールです。 Power BI サービスに関するこのトラフィックをクライアント マシンで確認できます。 このサービスを利用することで、エラーやその他の関連情報が明らかになる場合があります。
+[Fiddler](https://www.telerik.com/fiddler) は、HTTP トラフィックを監視する Telerik の無料ツールです。 Power BI サービスに関するこのトラフィックをクライアント マシンで確認できます。 このサービスを利用することで、エラーやその他の関連情報が明らかになる場合があります。
 
 ## <a name="next-steps"></a>次の手順
     

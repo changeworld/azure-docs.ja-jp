@@ -9,15 +9,15 @@ ms.date: 03/26/2019
 ms.topic: conceptual
 manager: peterpr
 ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263572"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを構築して他の IoT クラウドを IoT Central に接続する
 
-*このトピックは管理者向けです。*
+*このトピックでは、管理者に適用されます。*
 
 IoT Central デバイス ブリッジは、Sigfox、Particle、The Things Network などの他のクラウドを IoT Central アプリに接続するオープン ソース ソリューションです。 Sigfox の LPWAN (Low-Power-Wide Area Network: 低消費電力広域通信網) に接続された資産追跡デバイスや Particle Device Cloud の大気監視デバイス、TTN の土壌水分監視デバイスなど、どのようなデバイスを使用している場合でも、IoT Central デバイス ブリッジを使用して、IoT Central のパワーを直接利用できます。 デバイス ブリッジでは、IoT Central アプリを通じて他のクラウドに送信されるデバイスのデータを転送 るすることによって、他の IoT クラウドを IoT Central に接続します。 IoT Central アプリでは、データに対する規則の作成と分析の実行、Microsoft Flow と Azure Logic Apps でのワークフローの作成、データのエクスポートなどを実行できます。 GitHub から [IoT Central デバイス ブリッジ](https://aka.ms/iotcentralgithubdevicebridge)を取得してください。
 
@@ -45,4 +45,4 @@ Azure リソースは Azure サブスクリプションで提供されます。 
 ここでは、IoT Central デバイス ブリッジを構築する方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [デバイスを管理する](howto-manage-devices.md)
+> [デバイスの管理](howto-manage-devices.md)

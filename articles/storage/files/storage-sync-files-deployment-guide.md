@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: a5d6f7757b5a4a5a2048c9822c4f52bee6d19bfe
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905122"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
@@ -47,7 +47,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Azure File Sync で使用する Windows Server の準備
 フェールオーバー クラスターの各サーバー ノードなど、Azure File Sync で使用する各サーバーで、**Internet Explorer セキュリティ強化の構成**を無効にします。 これは、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
 
-# [<a name="portal"></a>ポータル](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 1. サーバー マネージャーを開きます。
 2. **[ローカル サーバー]** をクリックします。  
     ![サーバー マネージャー UI の左側にある [ローカル サーバー]](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
@@ -56,7 +56,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 4. **[Internet Explorer セキュリティ強化の構成]** ダイアログ ボックスで、**[管理者]** と **[ユーザー]** の両方で **[オフ]** を選択します。  
     ![[オフ] が選択された [Internet Explorer セキュリティ強化の構成] ポップアップ ウィンドウ](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Internet Explorer セキュリティ強化の構成を無効にするには、管理者特権の PowerShell セッションから次を実行します。
 
 ```powershell
@@ -82,7 +82,7 @@ Azure File Sync のデプロイでは最初に、選択したサブスクリプ�
 > [!Note]
 > ストレージ同期サービスは、デプロイされたサブスクリプションとリソース グループからアクセス許可を継承します。 アクセス権を持つユーザーを慎重に確認することをお勧めします。 書き込みアクセス権を持つエンティティは、このストレージ同期サービスに登録されたサーバーからファイルの新しいセットの同期を開始することができ、それらにアクセスできる Azure Storage にデータが送られます。
 
-# [<a name="portal"></a>ポータル](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 ストレージ同期サービスをデプロイするには、[Azure portal](https://portal.azure.com/) に移動し、*[リソースの作成]* をクリックして、Azure File Sync を検索します。検索結果から **[Azure File Sync]** を選択した後、**[作成]** を選択して **[ストレージ同期のデプロイ]** タブを開きます。
 
 開いたウィンドウに、次の情報を入力します。
@@ -94,7 +94,7 @@ Azure File Sync のデプロイでは最初に、選択したサブスクリプ�
 
 完了したら、**[作成]** を選択して、ストレージ同期サービスをデプロイします。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Azure File Sync 管理コマンドレットを使用する前に、DLL をインポートし、Azure File Sync 管理コンテキストを作成する必要があります。 これは、Azure File Sync 管理コマンドレットはまだ Azure PowerShell モジュールの一部ではないために必要です。
 
 > [!Note]  
@@ -170,7 +170,7 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 ## <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
 Azure File Sync エージェントは、Windows Server を Azure ファイル共有と同期できるようにするダウンロード可能なパッケージです。 
 
-# [<a name="portal"></a>ポータル](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 このエージェントは、[Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257) からダウンロードできます。 ダウンロードが完了したら、MSI パッケージをダブルクリックして Azure File Sync エージェントのインストールを開始します。
 
 > [!Important]  
@@ -182,7 +182,7 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 
 Azure File Sync エージェントのインストールが完了すると、サーバー登録 UI が自動的に開きます。 登録の前にストレージ同期サービスが必要です。ストレージ同期サービスを作成する方法については、次のセクションをご覧ください。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 次の PowerShell コードを実行して、お使いの OS に適したバージョンの Azure File Sync エージェントをダウンロードし、システムにインストールします。
 
 > [!Important]  
@@ -228,7 +228,7 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 > [!Note]
 > サーバーの登録時には、Azure 資格情報を使ってストレージ同期サービスと Windows Server の間に信頼関係が作成されますが、その後、サーバーは独自の ID を作成して使用します。この ID は、サーバーが登録されていて、現在の Shared Access Signature トークン (ストレージ SAS) が有効な間だけ有効です。 サーバーの登録が解除されるとサーバーに新しい SAS トークンを発行できなくなるので、サーバーは Azure ファイル共有にアクセスできず、すべての同期を停止します。
 
-# [<a name="portal"></a>ポータル](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 Azure File Sync エージェントがインストールされると、サーバー登録 UI が自動的に開きます。 開かない場合、これを次に示すファイルの場所から手動で開くことができます: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。 サーバー登録 UI が開いたら、**[サインイン]** を選択して開始します。
 
 サインインすると、次の情報の入力を求められます。
@@ -241,7 +241,7 @@ Azure File Sync エージェントがインストールされると、サーバ�
 
 適切な情報を選択したら、**[登録]** を選択してサーバー登録を完了します。 登録プロセスの一環として、追加のサインインを求められます。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
@@ -256,7 +256,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 > [!Important]  
 > 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
-# [<a name="portal"></a>ポータル](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 同期グループを作成するには、[Azure Portal](https://portal.azure.com/) でストレージ同期サービスに移動し、**[+ 同期グループ]** を選びます。
 
 ![Azure Portal で新しい同期グループを作成する](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -268,7 +268,7 @@ $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $s
 - **ストレージ アカウント**: **[ストレージ アカウントの選択]** を選んだ場合は、同期する Azure ファイル共有を持っているストレージ アカウントを選択できる別のウィンドウが表示されます。
 - **Azure ファイル共有**: 同期する Azure ファイル共有の名前。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 同期グループを作成するには、次の PowerShell を実行します。 `<my-sync-group>` は、同期グループの適切な名前に置き換えます。
 
 ```powershell
@@ -318,7 +318,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 ## <a name="create-a-server-endpoint"></a>サーバー エンドポイントを作成する
 サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 サーバー エンドポイントは (マウントされた共有ではなく) 登録されたサーバー上のパスであり、クラウドの階層化を使用するには、パスが非システム ボリューム上にある必要があります。 ネットワーク接続ストレージ (NAS) はサポートされていません。
 
-# [<a name="portal"></a>ポータル](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 サーバー エンドポイントを追加するには、新しく作成した同期グループに移動し、**[サーバー エンドポイントの追加]** を選びます。
 
 ![[同期グループ] ウィンドウで新しいサーバー エンドポイントを追加する](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -332,7 +332,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 
 サーバー エンドポイントを追加するには、**[作成]** を選びます。 Azure ファイル共有と Windows Server でファイルの同期が維持されます。 
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 サーバー エンドポイントを作成するには、次の PowerShell コマンドを実行します。`<your-server-endpoint-path>` と `<your-volume-free-space>` は適切な値に置き換えてください。
 
 ```powershell

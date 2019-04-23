@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359695"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database を使用する方法
@@ -58,10 +58,10 @@ ms.locfileid: "59359695"
 ## <a name="configure-features"></a>機能の構成
 
 - [Azure AD 認証の構成](sql-database-aad-authentication-configure.md)
-- [条件付きアクセスを構成する](sql-database-conditional-access.md)
+- [条件付きアクセスの構成](sql-database-conditional-access.md)
 - [多要素 AAD 認証](sql-database-ssms-mfa-authentication.md)
 - [多要素認証の構成](sql-database-ssms-mfa-authentication-configure.md)
-- [一時的なリテンション ポリシーの構成方法](sql-database-temporal-tables-retention-policy.md)
+- [一時的なアイテム保持ポリシーの構成](sql-database-temporal-tables-retention-policy.md)
 - [BYOK を使用した TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)
 - [TDE BYOK キーの回転](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - [TDE 保護機能の削除](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916803"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Azure CDN で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
 > * [Azure Web コンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure BLOB ストレージ](cdn-manage-expiration-of-blob-content.md)
+> * [Azure BLOB Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
@@ -180,6 +180,6 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 BLOB の TTL 設定を簡単に確認できます。 ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使って、BLOB に `Cache-Control` 応答ヘッダーが含まれているかどうかをテストします。 [Wget](https://www.gnu.org/software/wget/)、[Postman](https://www.getpostman.com/)、[Fiddler](https://www.telerik.com/fiddler) などのツールを使って応答ヘッダーを確認することもできます。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を学習する](cdn-manage-expiration-of-cloud-service-content.md)
-* [キャッシュの概念について学習する](cdn-how-caching-works.md)
+* [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します](cdn-manage-expiration-of-cloud-service-content.md)
+* [キャッシュの概念を学習する](cdn-how-caching-works.md)
 

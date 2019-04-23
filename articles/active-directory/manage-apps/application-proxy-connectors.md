@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853012"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684091"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -74,6 +74,8 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 コネクタの更新を行う際、次のような場合ダウンタイムが生じることがあります。  
 - コネクタが 1 つしかない場合。2 つ目のコネクタをインストールして、[コネクタ グループを作成する](application-proxy-connector-groups.md)ことをお勧めします。 これにより、ダウンタイムを回避して、より高い可用性を提供します。  
 - 更新の開始時にコネクタがトランザクションの処理中であった場合:  初期トランザクションは失われますが、ブラウザーにより自動で操作が再試行されます。ページを更新しても構いません。 要求が再送信されると、トラフィックはバックアップ コネクタへルーティングされます。
+
+過去にリリースされたバージョンと変更履歴については、[アプリケーション プロキシのバージョン リリース履歴](application-proxy-release-version-history.md)に関するページを参照してください。
 
 ## <a name="creating-connector-groups"></a>コネクタ グループの作成
 

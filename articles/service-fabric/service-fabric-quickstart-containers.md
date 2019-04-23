@@ -16,10 +16,10 @@ ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
 ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051548"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする

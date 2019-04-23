@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358424"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
@@ -88,7 +88,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の SDL Database サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
-|**ユーザーの条件**|**SQL Database / SQL Data Warehouse**|
+|**ユーザーの条件**|**SQL Database/SQL Data Warehouse**|
 |---|---|
 |Azure で Azure Active Directory (AD) を使用しない|[SQL 認証](sql-database-security-overview.md)を使用します。|
 |オンプレミスの SQL Server で AD を使用している|[AD と Azure AD をフェデレーションして](../active-directory/hybrid/whatis-hybrid-identity.md)、Azure AD 認証を使用します。 これにより、シングル サインオンを使用できます。|
@@ -149,7 +149,7 @@ SQL Database では、監査を有効にしてデータベース イベントを
 SQL Database では、既定により、記憶域サブシステムのデータ ファイルとログ ファイルに保存されているデータは、[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) によって常に完全に暗号化されます。 バックアップも暗号化されます。 TDE を使う場合、このデータにアクセスするアプリケーション側を変更する必要はありません。 名前のとおり、暗号化と復号化は透過的に行われます。
 使用中と保存中の機微なデータを保護するため、SQL Database には [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) という名前の機能が用意されています。 AE はクライアント側暗号化の 1 種であり、データベースの機密列を暗号化します (このため、これらの列は、データベース管理者および未承認ユーザーに対しては暗号化テキストになります)。 サーバーは、最初に暗号化されたデータを受け取ります。 Always Encrypted のキーもクライアント側に格納されるため、機密列の暗号化を解除できるのは承認済みクライアントのみに限られます。 暗号化キーはクライアントに格納されるため、サーバー管理者およびデータ管理者は機微なデータを確認することはできません。 AE は、未承認のクライアントから物理ディスクまで、テーブル内の機密列をエンド ツー エンドで暗号化します。 AE では現在等値比較がサポートされているため、DBA では引き続き、SQL コマンドの一環として暗号化された列に対してクエリを行うことができます。 Always Encrypted は、[Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)、Windows 証明書ストア、ローカル ハードウェアのセキュリティ モジュールなどの多様なキー ストア オプションと組み合わせて使用できます。
 
-|**特性**|**Always Encrypted**|**Transparent Data Encryption**|
+|**特性**|**常に暗号化**|**透過的なデータ暗号化**|
 |---|---|---|
 |**暗号化の範囲**|End-to-end|保存データ|
 |**データベース サーバーは機微なデータにアクセスできる**|いいえ |はい (暗号化は保存データに対するものであるため)|
@@ -195,15 +195,15 @@ Always Encrypted は [2 キー階層](/sql/relational-databases/security/encrypt
 
 組織と SQL Database の間のネットワーク トラフィックは、一般に、パブリック ネットワーク経由でルーティングされます。 ただし、このパスを最適化してセキュリティを強化する場合は、ExpressRoute を検討できます。 ExpressRoute を使うと、基本的に、プライベート接続経由で企業ネットワークを Azure プラットフォームに拡張できます。 これにより、パブリック インターネットを使う必要がなくなります。 また、パブリック インターネット経由の場合より、セキュリティと信頼性が強化され、ルーティングの最適化によりネットワーク待機時間が短縮されてはるかに高速になります。 組織と Azure の間で大きなデータ チャンクを転送することを計画している場合、ExpressRoute を使うとコストの点でメリットがあります。 組織 から Azure への接続は、3 つの異なる接続モデルから選ぶことができます。
 
-- [クラウド エクスチェンジでの同一場所への配置](../expressroute/expressroute-connectivity-models.md#CloudExchange)
+- [クラウドの Exchange で同一場所配置](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [任意の環境間](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [ポイントツーポイント](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [ポイント ツー ポイント](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 また、ExpressRoute では、購入した帯域幅制限の最大 2 倍を追加料金なしで利用できます。 また、ExpressRoute を使用してリージョン間接続を構成することもできます。 ER 接続プロバイダーの一覧については、「[Express Route パートナーとピアリングの場所](../expressroute/expressroute-locations.md)」を参照してください。 次の記事では、ExpressRoute についてさらに詳しく説明されています。
 
 - [ExpressRoute の概要](../expressroute/expressroute-introduction.md)
 - [前提条件](../expressroute/expressroute-prerequisites.md)
-- [Workflows](../expressroute/expressroute-workflows.md)
+- [ワークフロー](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database はすべての規制要件に準拠していますか。また、SQL Database は組織のコンプライアンスにどのように役立ちますか
 
@@ -281,7 +281,7 @@ Azure portal でデータベースを選択し [概要] ペインのグラフを
 
 SQL Database には、Basic、Standard、Premium というさまざまなサービス レベルが用意されています。 各サービス レベルに対応した予測可能なパフォーマンスが保証されます。 ワークロードによっては、アクティビティのバーストにより、リソース使用率が現在のコンピューティング サイズの上限に達する可能性があります。 このような場合は、最初にチューニングが役に立つかどうかを評価するのが有効です (たとえば、インデックスの追加や変更など)。 まだ制限の問題が発生する場合は、上位のサービス レベルまたはコンピューティング サイズへの移行を検討します。
 
-|**サービス階層**|**一般的なユース ケース シナリオ**|
+|**サービス レベル**|**一般的なユース ケース シナリオ**|
 |---|---|
 |**Basic**|コンカレンシー、スケール、パフォーマンスに関する要件が高くない、ユーザーとデータベースの数が少ないアプリケーション。 |
 |**Standard**|コンカレンシー、スケール、パフォーマンスの要件が高く、IO の要求が低から中程度であるアプリケーション。 |

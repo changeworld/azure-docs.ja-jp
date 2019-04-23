@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861881"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-probe-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure クラシック PowerShell](application-gateway-create-probe-classic-ps.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
 
 この記事では、PowerShell を使用して既存の Application Gateway にカスタム プローブを追加します。 カスタム プローブは、特定の正常性チェック ページがあるアプリケーションや、既定の Web アプリケーションに対して正常な応答を返さないアプリケーションに役立ちます。
 
@@ -150,10 +150,10 @@ Get-AzureApplicationGateway AppGwTest
 
 |パラメーター|説明|
 |---|---|
-|**名前** |カスタム プローブの参照名。 |
-| **Protocol** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
+|**Name** |カスタム プローブの参照名。 |
+| **プロトコル** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
 | **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、http:\//contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http:\//contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
-| **interval** | プローブのチェック間隔を秒単位で指定します。|
+| **間隔** | プローブのチェック間隔を秒単位で指定します。|
 | **タイムアウト** | プローブの HTTP 応答チェックのタイムアウト期間を定義します。|
 | **UnhealthyThreshold** | バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。|
 

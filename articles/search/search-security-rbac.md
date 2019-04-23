@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277785"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>管理アクセス用の RBAC ロールを設定する
@@ -38,6 +38,6 @@ Azure Search の場合、ロールは次の管理タスクをサポートする�
 
 ## <a name="see-also"></a>関連項目
 
-+ [PowerShell を使用して管理する](search-manage-powershell.md) 
-+ [Performance and optimization in Azure Search (Azure Search のパフォーマンスと最適化)](search-performance-optimization.md)
++ [PowerShell を使用した管理](search-manage-powershell.md) 
++ [Performance and optimization in Azure Search](search-performance-optimization.md) (Azure Search のパフォーマンスと最適化)
 + [Azure Portal でのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)

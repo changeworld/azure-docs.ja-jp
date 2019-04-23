@@ -11,10 +11,10 @@ ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
 ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58805178"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
@@ -47,7 +47,7 @@ ISE ベース ユニットの容量は固定されているため、さらにス
 
 <a name="connectors"></a>
 
-## <a name="connectors"></a>コネクタ
+## <a name="connectors"></a>Connectors
 
 Azure Logic Apps のコネクタを使用すると、ご自身のロジック アプリに[トリガー](#triggers)、[アクション](#actions)、または両方を用意することで、クラウドまたはオンプレミスのアプリ、サービス、およびシステムにアクセスできます。 コネクタは、標準またはエンタープライズのいずれかとして分類されます。 これらの接続の概要については、「[Azure Logic Apps のコネクタ](../connectors/apis-list.md)」を参照してください。 以下のセクションで、トリガーとアクションの課金のしくみについて詳しく説明します。
 
@@ -57,7 +57,7 @@ Azure Logic Apps のコネクタを使用すると、ご自身のロジック �
 
 トリガーは、特定のイベントが発生したときに、ロジック アプリ インスタンスを作成する特別なアクションです。 トリガーにはさまざまな動作があり、それによってロジック アプリの課金方法が変わります。 Azure Logic Apps 内に存在するさまざまな種類のトリガーを次に示します。
 
-* **ポーリング トリガー**:このトリガーは、ロジック アプリ インスタンスを作成してワークフローを開始する条件を満たすメッセージの有無について、継続的にエンドポイントをチェックします。 ロジック アプリ インスタンスが作成されない場合でも、Logic Apps は各ポーリング要求を実行として課金します。 ポーリング間隔を指定するには、ロジック アプリ デザイナーを使用してトリガーを設定します。
+* **ポーリング トリガー**:このトリガーは、ロジック アプリ インスタンスを作成してワークフローを開始する条件を満たすメッセージの有無について、継続的にエンドポイントをチェックします。 ロジック アプリ インスタンスが作成されていない場合でも、Logic Apps は各ポーリング要求を実行として課金します。 ポーリング間隔を指定するには、ロジック アプリ デザイナーを使用してトリガーを設定します。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
@@ -67,7 +67,7 @@ Azure Logic Apps のコネクタを使用すると、ご自身のロジック �
 
 <a name="actions"></a>
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 Logic Apps では、HTTP などの "組み込み" アクションはネイティブ アクションとして課金されます。 たとえば、組み込みアクションには、HTTP 呼び出し、Azure Functions または API Management からの呼び出し、Condition、Loop、Switch ステートメントなどの制御フローのステップが含まれます。 各アクションには、独自のアクションの種類があります。 たとえば、[コネクタ](https://docs.microsoft.com/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 "*プレビュー*" 段階のエンタープライズ コネクタは、標準コネクタとして課金されます。
 

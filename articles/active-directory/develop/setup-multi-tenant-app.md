@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff314e0bbf548c96c4f652213cdea21f86ed1125
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006114"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチ テナント アプリケーションを構成する方法
@@ -32,4 +32,4 @@ ms.locfileid: "59006114"
 - [マルチテナント アプリケーションがエンド ツー エンドでどのように構成されコードされているか](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)、つまり登録方法、 "一般的な " エンドポイントの使用、 "ユーザー " と "管理者 " の同意の実装、より詳しい多層シナリオの実装方法などについて詳しく学習する
 
 ## <a name="next-steps"></a>次の手順
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

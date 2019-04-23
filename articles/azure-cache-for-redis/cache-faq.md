@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
 ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895598"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
@@ -59,7 +59,7 @@ Azure Cache for Redis についてよく寄せられる質問に対する回答�
 * [Redis コマンドの実行方法](#how-can-i-run-redis-commands)
 * [他のいくつかの Azure サービスと異なり Azure Cache for Redis の MSDN クラス ライブラリ リファレンスが提供されない理由](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 * [Azure Cache for Redis を PHP セッションのキャッシュとして使用できるか](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
-* [Redis データベースとは](#what-are-redis-databases)
+* [Redis データベースについて](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
 * [Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
@@ -269,7 +269,7 @@ Microsoft Azure Cache for Redis は、広く普及しているオープン ソ�
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> キーが URL エンコードされていない場合、次のようなメッセージの例外が表示されます。 `Failed to parse session.save_path`
+> キーが URL エンコードされていない場合、次のようなメッセージの例外が表示されます。`Failed to parse session.save_path`
 >
 >
 

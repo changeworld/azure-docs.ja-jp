@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896025"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
@@ -204,4 +204,4 @@ Data Management Gateway と PowerBIGateway のログは、**[アプリケーシ�
 ## <a name="next-steps"></a>次の手順
 * [オンプレミスのデータ ゲートウェイをインストールして構成する](analysis-services-gateway-install.md)   
 * [Analysis Services を管理する](analysis-services-manage.md)
-* [Azure Analysis Services からデータを取得](analysis-services-connect.md)
+* [Azure Analysis Services からデータを取得する](analysis-services-connect.md)

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
 ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892468"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
@@ -140,7 +140,7 @@ CREATE TABLE Collection (
 ## <a name="next-steps"></a>次の手順
 Azure SQL Database のマルチモデル機能は、Azure SQL Database と SQL Server の間で共有される、SQL Server データベース エンジンのコア機能でもあります。 これらの機能の詳細については、次の SQL リレーショナル データベース ドキュメントのページを参照してください。
 
-* [グラフ処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
+* [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
 * [JSON データ](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
 * [空間サポート](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
 * [XML データ](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server)

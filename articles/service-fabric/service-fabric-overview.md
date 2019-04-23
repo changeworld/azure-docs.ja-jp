@@ -16,10 +16,10 @@ ms.date: 09/20/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: cd2895378f713749b3a1d0ac01986b728ceafd2b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009005"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要

@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258744"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
@@ -78,7 +78,7 @@ ms.locfileid: "59258744"
 
 - [Azure AD 登録済みデバイス](../devices/overview.md#azure-ad-registered-devices)
 - [Azure AD 参加済みデバイス](../devices/overview.md#azure-ad-joined-devices)  
-- [ハイブリッド Azure AD 参加済みデバイス](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [Hybrid Azure AD 参加済みデバイス](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](require-managed-devices.md)に関するページを参照してください。
 

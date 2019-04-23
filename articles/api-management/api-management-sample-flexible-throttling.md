@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 22c3987121e2ab3479274c89c359c679f5f1135e
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793358"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783790"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management を使用した高度な要求スロットル
 受信要求のスロットルは、Azure API Management の重要な役割の 1 つです。 要求のレートや転送される要求/データの合計を制御できるため、API プロバイダーは API Management を使用して、さまざまな API 成果物階層に対する値の不正使用や作成から API を保護できます。

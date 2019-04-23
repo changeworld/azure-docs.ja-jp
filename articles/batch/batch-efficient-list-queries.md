@@ -16,10 +16,10 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918537"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
@@ -98,8 +98,8 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 * すべてのプロパティ名では大文字と小文字が区別されますが、プロパティの値は大文字と小文字を区別しません。
 * 日付/時刻文字列は、次の 2 つの形式のいずれかを使用でき、前に `DateTime`を付ける必要があります。
   
-  * W3C-DTF 形式の例:  `creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 形式の例:  `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  * W3C-DTF 形式の例: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 形式の例: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 * ブール文字列は、`true` と `false` のいずれかです。
 * 無効なプロパティまたは演算子を指定すると、 `400 (Bad Request)` エラーが発生します。
 

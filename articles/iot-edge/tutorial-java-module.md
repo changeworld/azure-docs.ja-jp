@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: f654f33fe03b29a3aa93386d49e8f5a43cffc9c8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493044"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル:Java IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
@@ -324,5 +324,5 @@ IoT ハブに到着したメッセージは、Visual Studio Code を使用して
 このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 引き続き次のチュートリアルに進み、Azure IoT Edge が、エッジでデータをビジネス上の分析情報に変えるうえで、どのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
-> [SQL Server データベースを使用したエッジでのデータの格納](tutorial-store-data-sql-server.md)
+> [SQL Server データベースを使用してエッジでデータを格納する](tutorial-store-data-sql-server.md)
 

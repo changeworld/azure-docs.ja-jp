@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.openlocfilehash: 1be13090244a94c1bf3f731c8b6d73fa0848c393
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047604"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート:Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![クラスター、データベース、テーブルのオプション](media/power-bi-connector/cluster-database-table.png)
 
-    **Setting** | **値** | **フィールドの説明**
+    **設定** | **値** | **フィールドの説明**
     |---|---|---|
     | クラスター | *https://help.kusto.windows.net* | ヘルプ クラスターの URL。 その他のクラスターでは、URL が *https://\<クラスター名\>.\<リージョン\>.kusto.windows.net* 形式になります。 |
     | Database | 空白 | 接続先のクラスターでホストされるデータベース。 これは後の手順で選択します。 |

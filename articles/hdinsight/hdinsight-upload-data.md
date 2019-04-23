@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a56f2546eec12d04dcc64665e60a9874b8e991b6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201927"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684142"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
-Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 および Gen2) を経由した、フル機能を備えた Hadoop 分散ファイル システム (HDFS) が用意されています。 Azure Storage と Data Lake Storage Gen1 および Gen2 は、顧客にシームレスなエクスペリエンスを提供する HDFS 拡張機能として設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1 および Gen2 は、そのデータに対する格納と計算のために最適化された個別のファイル システムです。 Azure Storage を使用するメリットについては、[HDInsight での Azure Storage の使用][hdinsight-storage]、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)、および [HDInsight での Data Lake Storage Gen2 の使用](../storage/blobs/data-lake-storage-use-hdi-cluster.md)のそれぞれに関するページを参照してください。
+Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 および Gen2) を経由した、フル機能を備えた Hadoop 分散ファイル システム (HDFS) が用意されています。 Azure Storage と Data Lake Storage Gen1 および Gen2 は、顧客にシームレスなエクスペリエンスを提供する HDFS 拡張機能として設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1 および Gen2 は、そのデータに対する格納と計算のために最適化された個別のファイル システムです。 Azure Storage を使用するメリットについては、[HDInsight での Azure Storage の使用][hdinsight-storage]、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)、および [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)のそれぞれに関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 およ�
 
     - [HDInsight での Azure Storage の使用][hdinsight-storage]
     - [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
-    - [HDInsight での Data Lake Storage Gen2 の使用](../storage/blobs/data-lake-storage-use-hdi-cluster.md)  
+    - [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Azure Storage へのデータのアップロード
 
@@ -79,7 +79,7 @@ or
 ## <a name="graphical-clients"></a>グラフィカル クライアント
 Azure Storage を操作するためのグラフィカル インターフェイスを提供するアプリケーションもいくつかあります。 これらのアプリケーションの一部を次の一覧表に示します。
 
-| クライアント | Linux | OS X | Windows |
+| Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
