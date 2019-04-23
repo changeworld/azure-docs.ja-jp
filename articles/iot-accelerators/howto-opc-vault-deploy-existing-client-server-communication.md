@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495296"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>OPC UA クライアントと OPC UA サーバー アプリケーションをセキュリティで保護する 
@@ -34,24 +34,24 @@ OPC Vault スクリプト:
 - 環境変数 `$env:_OPCVAULTID` を、OPC Vault で再度データを見つけることができる文字列に設定します。 6 桁の数字に設定することをお勧めします。 この例では、この変数の値として "123456" が使用されています。
 - Docker ボリュームの `opcclient` や `opcplc` がないようにします。 `docker volume ls` で調べて、`docker volume rm <volumename>` でそれらを削除します。 コンテナーによってまだボリュームが使用されている場合は、`docker rm <containerid>` でコンテナーも削除する必要が生じることがあります。
 
-**クイック スタート**
+**クイックスタート**
 1. [OPC Vault の Web サイト](https://opcvault.azurewebsites.net/)に移動します。
 
-1. 選択 `Register New`
+1. `Register New` を選択します
 
 1. 前のテスト環境のログ出力の `CreateSigningRequest information` 領域に示された OPC PLC の情報を `Register New OPC UA Application` ページの入力フィールドに入力し、ApplicationType として `Server` を選択します。
 
-1. 選択 `Register`
+1. `Register` を選択します
 
-1. 次のページで `Request New Certificate for OPC UA Application` により次が選択されます。 `Request new KeyPair and Certificate`
+1. 次のページ `Request New Certificate for OPC UA Application` で `Request new KeyPair and Certificate` を選択します。
 
 1. 次のページ `Generate a new Certificate with a Signing Request` で、ログ出力からの `CSR (base64 encoded)` 文字列を `CreateRequest` 入力フィールドに貼り付けます。 文字列全体をコピーしたことを確認します。
 
-1. 次のページで `Request New Certificate for OPC UA Application` により次が選択されます。 `Request new Certificate with Signing Request`
+1. 次のページ `Request New Certificate for OPC UA Application` で `Request new Certificate with Signing Request` を選択します。
 
 1. 次のページ `Generate a new KeyPair and for an OPC UA Application` で、SubjectName として `CN=OpcPlc` を入力し、DomainName として `opcplc-<_OPCVAULTID>` を入力し (`<_OPCVAULTID>` をご使用の ID と置き換えてください)、PrivateKeyFormat として `PEM` を選択し、パスワード (後で `<certpassword-string>` として参照します) を入力します。
 
-1. 選択 `Generate New KeyPair`
+1. `Generate New KeyPair` を選択します
 
 1. 次に `View Certificate Request Details` に進みます。 このページでは、`opc-plc` の証明書ストアをプロビジョニングするために必要なすべての情報をダウンロードできます。
 
@@ -75,7 +75,7 @@ OPC Vault スクリプト:
     > [!NOTE] 
     > このシナリオの作業中に、`opcplc` と `opcclient` について、`<addissuercertbase64-string>` と `<updatecrlbase64-string>` の値が同一であると気付いたかもしれません。 今回のユース ケースの場合はそのとおりで、手順の実行中に少し時間の節約になります。
 
-**クイック スタート**
+**クイックスタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 
@@ -136,7 +136,7 @@ opcclient-123456 | [13:40:12 INF] Value (ActionId: 000 ActionType: 'OpcTestActio
 
 ### <a name="a-testbed-for-opc-publisher"></a>OPC Publisher のテスト環境 ###
 
-**クイック スタート**
+**クイックスタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 ```

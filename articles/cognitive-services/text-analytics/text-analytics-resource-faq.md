@@ -53,5 +53,5 @@ ms.locfileid: "57545296"
 
 ## <a name="see-also"></a>関連項目
 
- [StackOverflow:Text Analytics API   
+ [StackOverflow:Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow:Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

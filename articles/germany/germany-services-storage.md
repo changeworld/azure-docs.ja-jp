@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
 ms.openlocfilehash: 2a2a9242642c8bc661859e3c847467fd724e461a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489786"
 ---
 # <a name="azure-germany-storage-services"></a>Azure Germany のストレージ サービス
@@ -40,12 +40,12 @@ Storage Service Encryption によって、Azure ストレージ アカウント�
 
 | Service | ドイツ中部 | ドイツ北東部 |
 | --- | --- | --- |
-| [BLOB ストレージ](../storage/common/storage-introduction.md#blob-storage) |一般公開 |一般公開 |
+| [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |一般公開 |一般公開 |
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | 一般公開 | 一般公開 |
-| [テーブル ストレージ](../storage/common/storage-introduction.md#table-storage) |一般公開  |一般公開 |
-| [ストレージ](../storage/common/storage-introduction.md#queue-storage) |一般公開 | 一般公開 |
+| [Table Storage](../storage/common/storage-introduction.md#table-storage) |一般公開  |一般公開 |
+| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |一般公開 | 一般公開 |
 | [ホット/クール BLOB ストレージ](../storage/blobs/storage-blob-storage-tiers.md) |一般公開 |一般公開 |
-| [Storage Service Encryption](../storage/common/storage-service-encryption.md) |一般公開 |一般公開 |
+| [ストレージ サービスの暗号化](../storage/common/storage-service-encryption.md) |一般公開 |一般公開 |
 | Import/Export |NA |NA |
 | StorSimple |NA |NA |
 

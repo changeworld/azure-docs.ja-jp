@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492704"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
@@ -58,8 +58,8 @@ ms.locfileid: "59492704"
 
 - [ユーザーにロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 
-- [ユーザー プロファイル情報の追加または変更](active-directory-users-profile-azure-portal.md)
+- [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
-- [基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)
+- [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
 または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の使用可能なアクションについて詳しくは、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」をご覧ください。

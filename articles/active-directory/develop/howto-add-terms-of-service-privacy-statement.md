@@ -18,10 +18,10 @@ ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500302"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
@@ -50,13 +50,13 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 | 有効なスキーマ | HTTP および HTTPS<br/>HTTPS を推奨 |
 | 最大長    | 2048 文字                       |
 
-例: `https://myapp.com/terms-of-service` および `https://myapp.com/privacy-statement`
+例: `https://myapp.com/terms-of-service`、`https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>サービス利用規約とプライバシーに関する声明へのリンクを追加する
 
 サービス利用規約とプライバシーに関する声明の準備ができたら、次のメソッドのいずれかを使用して、自分のアプリにこれらのドキュメントへのリンクを追加できます。
 
-* [Azure portal を使用](#registered-in-azure-portal)
+* [Azure portal を使用する](#registered-in-azure-portal)
 * [アプリケーション登録ポータル、またはデベロッパー センター内](#registered-in-app-reg-portal)
 * [アプリ オブジェクト JSON を使用する](#app-object-json)
 * [MSGraph beta REST API を使用する](#msgraph-beta-rest-api)
@@ -114,5 +114,5 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 ```
 
 > [!NOTE]
-> * 次のフィールドに割り当てた既存の値を上書きしないようにご注意ください。`supportUrl`、`marketingUrl`、 `logoUrl`
+> * 次のフィールド (`supportUrl`、`marketingUrl`、`logoUrl`) に割り当てた既存の値を上書きしないように注意してください。
 > * MSGraph beta REST API は、Azure AD アカウントを使ってサインインしたときにのみ動作します。 個人用 Microsoft アカウントはサポートされていません。

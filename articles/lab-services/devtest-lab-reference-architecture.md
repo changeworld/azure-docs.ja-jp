@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 61e76369a4d73bd171c9e5c2462b3f261681ba00
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551069"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996613"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Azure DevTest Labs - エンタープライズ向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 これには、Express Route を介したオンプレミスの接続性、仮想マシンにリモートでサインインするためのリモート デスクトップ ゲートウェイ、プライベート成果物用の成果物リポジトリへの接続性、ラボ内で使用されるその他の PaaS サービスが含まれています。
@@ -37,7 +37,7 @@ ms.locfileid: "59551069"
     - セキュリティ/コンプライアンス上の理由から、クラウド環境との間のすべてのネットワーク トラフィックを強制的にオンプレミスのファイアウォール経由にする
 - **ネットワーク セキュリティ グループ**:ソースと宛先の IP アドレスに基づいてクラウド環境への (またはクラウド環境内での) トラフィックを制限する一般的な方法は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使用することです。 たとえば、企業ネットワークからラボのネットワークに送信されたネットワーク トラフィックのみを許可します。
 - **リモート デスクトップ ゲートウェイ**:通常、企業は企業のファイアウォールで発信リモート デスクトップ接続をブロックします。 DevTest Labs 内でクラウドベース環境への接続を有効にするには、[リモート デスクトップ ゲートウェイ](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)の使用 (ゲートウェイ ロード バランサーの静的 IP アドレスをホワイトリストに登録) や、Express Route/サイト間 VPN 接続上に[すべての着信 RDP トラフィックを転送](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)するなどの複数のオプションがあります。 これは、企業内での DevTest Labs のデプロイを計画する際の一般的な考慮事項です。
-- **Azure のネットワーク (VNet、サブネット)**:[Azure のネットワーク](../networking/networking-overview.md) トポロジも、DevTest Labs の全体的なアーキテクチャの重要な要素です。 これは、ラボからのリソースが通信できる (またはできない)、オンプレミスにアクセスできる (またはできない)、およびインターネットにアクセスできる (またはできない) ようにします。 アーキテクチャ図には、お客様が DevTest Labs を使用する最も一般的な方法 (すべてのラボが[ハブスポーク モデル](/architecture/reference-architectures/hybrid-networking/hub-spoke)を使用して [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)を介して Express Route/サイト間 VPN 接続経由でオンプレミスに接続) が含まれていますが、DevTest Labs では Azure のネットワークが直接使用されているので、ネットワーク インフラストラクチャの設定方法に制限はありません。
+- **Azure のネットワーク (VNet、サブネット)**:[Azure のネットワーク](../networking/networking-overview.md) トポロジも、DevTest Labs の全体的なアーキテクチャの重要な要素です。 これは、ラボからのリソースが通信できる (またはできない)、オンプレミスにアクセスできる (またはできない)、およびインターネットにアクセスできる (またはできない) ようにします。 アーキテクチャ図には、お客様が DevTest Labs を使用する最も一般的な方法 (すべてのラボが[ハブスポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を使用して [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)を介して Express Route/サイト間 VPN 接続経由でオンプレミスに接続) が含まれていますが、DevTest Labs では Azure のネットワークが直接使用されているので、ネットワーク インフラストラクチャの設定方法に制限はありません。
 - **DevTest ラボ**:DevTest Labs は、全体的なアーキテクチャの重要な部分です。 サービスについて詳しくは、[DevTest Labs](devtest-lab-overview.md) に関する記事をご覧ください。
 - **仮想マシンとその他のリソース (SaaS、PaaS、IaaS)**:DevTest Labs でサポートされている主要なワークロードの 1 つは、他の Azure リソースを含む仮想マシンです。  DevTest Labs によって、企業はより速く簡単に Azure のリソース (仮想マシンとその他の Azure リソースを含む) へのアクセス権を付与できます。  [開発者](devtest-lab-developer-lab.md)と[テスト担当者](devtest-lab-test-env.md)の Azure へのアクセス権の詳細をご確認ください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545401"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150015"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -64,7 +64,7 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 * 米国東部 2
 * 米国中北部
 * 米国中南部
-* 米国中央部
+* 米国中部
 * 米国西部
 * 米国西部 2
 * フランス中部
@@ -130,14 +130,6 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 ### <a name="enable-network-watcher"></a>Network Watcher を有効にする
 
 トラフィックを分析するには、トラフィックの分析対象となる NSG がある各リージョンで、既存の Network Watcher を使用するか、[Network Watcher を有効にする](network-watcher-create.md)必要があります。 トラフィック分析は、[サポートされているリージョン](#supported-regions)のいずれかでホストされている NSG に対して有効にすることができます。
-
-### <a name="re-register-the-network-resource-provider"></a>ネットワーク リソース プロバイダーを再登録する
-
-トラフィック分析を使用するには、事前にネットワーク リソース プロバイダーを再登録しておく必要があります。 次のコード ボックスの **[Try It]** をクリックして、Azure Cloud Shell を開きます。 Cloud Shell により、Azure サブスクリプションに自動的にログインします。 Cloud Shell が開いたら、次のコマンドを入力して、ネットワーク リソース プロバイダーを再登録します。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
-```
 
 ### <a name="select-a-network-security-group"></a>ネットワーク セキュリティ グループを選択する
 

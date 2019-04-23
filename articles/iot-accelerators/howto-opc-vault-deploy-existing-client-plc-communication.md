@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494015"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>OPC クライアントと OPC PLC の通信をセキュリティで保護する
@@ -39,7 +39,7 @@ OPC Vault スクリプト:
 
 - Docker ボリュームの `opcclient` や `opcplc` がないようにします。 `docker volume ls` で調べて、`docker volume rm <volumename>` でそれらを削除します。 コンテナーによってまだボリュームが使用されている場合は、`docker rm <containerid>` でコンテナーも削除する必要が生じることがあります。
 
-**クイック スタート**
+**クイックスタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 
@@ -92,7 +92,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
     
 1. [OPC Vault の Web サイト](https://opcvault.azurewebsites.net/)に移動します。
 
-1. 選択 `Register New`
+1. `Register New` を選択します
 
 1. ログ出力の `CreateSigningRequest information` 領域から得た OPC PLC の情報を `Register New OPC UA Application` ページの入力フィールドに入力し、ApplicationType として `Server` を選択します。
 
@@ -130,7 +130,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
 > [!NOTE]
 > このシナリオの作業中に、`opcplc` と `opcclient` について、`<addissuercertbase64-string>` と `<updatecrlbase64-string>` の値が同一であると気付いたかもしれません。 今回のユース ケースの場合はそのとおりで、手順の実行中に少し時間の節約になります。
 
-**クイック スタート**
+**クイックスタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 

@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496898"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC Vault をゼロからデプロイする
@@ -106,11 +106,11 @@ Visual Studio 2017 を使用した手順:
 
 プロジェクトには、このセットアップに役立つ Bash スクリプトがいくつか含まれています。
 
-- 新しい IoT ハブを作成します: `./scripts/iothub/create-hub.sh`
+- 新しい IoT Hub を作成します: `./scripts/iothub/create-hub.sh`
 
 - 既存のハブを一覧表示します: `./scripts/iothub/list-hubs.sh`
 
-- IoT ハブの詳細 (キーなど) を表示します: `./scripts/iothub/show-hub.sh`
+- IoT Hub の詳細 (キーなど) を表示します: `./scripts/iothub/show-hub.sh`
 
 Azure サブスクリプションが複数あった場合:
 

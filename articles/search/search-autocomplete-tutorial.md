@@ -11,10 +11,10 @@ ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
 ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495738"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>例:お使いの Azure Search アプリケーションに検索候補またはオートコンプリートを追加する
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-上記のコードは、ページの読み込み時にブラウザーで実行され、"example1a" 入力ボックスの jQuery UI オートコンプリートを構成します。  `minLength: 3` により、検索ボックスに少なくとも 3 文字が入力されたときのみ、検索候補が表示されます。  重要なのは、source 値です。
+上記のコードは、ページの読み込み時にブラウザーで実行され、"example1a" 入力ボックスの jQuery UI オートコンプリートを構成します。  `minLength: 3` は、検索ボックスに少なくとも 3 文字が入力されたときのみ、検索候補を表示することを保証します。  重要なのは、source 値です。
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",

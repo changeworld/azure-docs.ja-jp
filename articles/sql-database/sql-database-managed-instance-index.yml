@@ -69,16 +69,15 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="sql-database-managed-instance#business-critical-service-tier">Business Critical サービス レベル</a>は現在、<a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">一般公開 (GA)</a> されています。'
-          - html: '(プレビュー) <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> を使用して、<a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> を作成します。'
-          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-collation">任意のサーバー レベルの照合順序</a>を使用してインスタンスを作成します。'
-          - html: 'ポイントインタイム リストアのために<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日のバックアップ保有期間を構成します</a>。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないため、代わりに<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できることに注意してください。'
-          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-failover-groups">地理的に分散されたフェールオーバー グループ</a>を使用して別のリージョン内のインスタンスのコピーを保持し、地域災害が発生した場合でも確実にデータが使用可能になるようにします。'
-          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-tde-byok">暗号化キーの持ち込み</a>を行いながら、Transparent Data Encryption (TDE) が既に有効になっているオンプレミス データベースを移行します。'
-          - html: マネージド インスタンスが<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>で保護されます。
-          - html: '(プレビュー) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">PowerShell を使用して、削除されたデータベースを再作成します</a>'
-          - html: 'Geo リストア機能を使用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用して、ご自身のデータベースを別のデータ センターに復元</a>できます。'
           - html: '(プレビュー) インスタンスの作成時に<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">タイム ゾーンを構成します</a>。'
+          - html: 'Geo リストア機能を使用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用して、ご自身のデータベースを別のデータ センターに復元</a>できます。'
+          - html: '(プレビュー) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">PowerShell を使用して、削除されたデータベースを再作成します</a>'
+          - html: マネージド インスタンスが<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>で保護されます。
+          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-tde-byok">暗号化キーの持ち込み</a>を行いながら、Transparent Data Encryption (TDE) が既に有効になっているオンプレミス データベースを移行します。'
+          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-failover-groups">地理的に分散されたフェールオーバー グループ</a>を使用して別のリージョン内のインスタンスのコピーを保持し、地域災害が発生した場合でも確実にデータが使用可能になるようにします。'
+          - html: 'ポイントインタイム リストアのために<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日のバックアップ保有期間を構成します</a>。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないため、代わりに<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できることに注意してください。'
+          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-collation">任意のサーバー レベルの照合順序</a>を使用してインスタンスを作成します。'
+          - html: '(プレビュー) <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> を使用して、<a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> を作成します。'
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph

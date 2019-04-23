@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: b8d43188c337e0c12db60b51dee053ef7259701a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492942"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>U-SQL の Cognitive 機能を使い始める
@@ -32,6 +32,6 @@ Cognitive 機能を使用するには、次のサンプルを利用できます�
 開始する前に、次の記事の手順に従い、U-SQL で Cognitive 拡張機能を登録します。「[U-SQL での Cognitive 拡張機能の登録](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)」
 
 ## <a name="next-steps"></a>次の手順
-* [U-SQL Cognitive のサンプル](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [U-SQL/Cognitive のサンプル](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)

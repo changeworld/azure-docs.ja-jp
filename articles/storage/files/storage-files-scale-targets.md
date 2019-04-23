@@ -9,10 +9,10 @@ ms.date: 7/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 630ad1e0558fc089d79eee50175e497b771a0a8a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494971"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
@@ -36,7 +36,7 @@ Azure ファイル共有の親リソースは、Azure ストレージ アカウ�
 
 ### <a name="premium-files-scale-targets"></a>Premium ファイルのスケール ターゲット
 
-Premium ファイルについては、アカウント、共有、ファイルという 3 つの制限カテゴリについて考慮する必要があります。
+Premium ファイルについては、ストレージ アカウント、共有、ファイルという 3 つの制限カテゴリについて考慮する必要があります。
 
 例: 1 つの共有で 100,000 IOPS を達成でき、1 つのファイルで最大 5,000 IOPS までスケールアップできます。 そのため、たとえば 1 つの共有に 3 つのファイルを置くと、その共有から得られる最大 IOPS は 15,000 となります。
 
@@ -106,4 +106,4 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 - [Azure Files のデプロイの計画](storage-files-planning.md)
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-- [他のストレージ サービスのスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md)
+- [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md)

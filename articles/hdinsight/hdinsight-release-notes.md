@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 6ba9e77faeb297f9862b39384d397b478dc7cf36
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 5769f90ef69a82497194ff6de01b378acc84deec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617735"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678396"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
 
@@ -29,7 +29,7 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 ## <a name="new-features"></a>新機能
 
-HDInsight 4.0 での重要な変更の詳細については、「[HDI 4.0 の新機能](../hdinsight/hdinsight-version-release.md#whats-new-in-hdi-40)」を参照してください。
+HDInsight 4.0 での重要な変更の詳細については、「[HDI 4.0 の新機能](../hdinsight/hdinsight-version-release.md)」を参照してください。
 
 ## <a name="component-versions"></a>コンポーネントのバージョン
 

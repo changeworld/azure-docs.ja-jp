@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: bfafc74cbcb97f28cc085196a2cbaf4e9bf2e871
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 405bc9aed4605e9728e112595f33c879bf55ec7f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548321"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005623"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure PowerShell
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
-- v1 SKU ではヘッダーの書き換え機能がサポートされていないため、Application Gateway v2 SKU が必要です。 v2 SKU をお持ちでない場合は、開始する前に [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>) を作成してください。
+- v1 SKU ではヘッダーの書き換え機能がサポートされていないため、Application Gateway v2 SKU が必要です。 v2 SKU をお持ちでない場合は、開始する前に [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) を作成してください。
 
 ## <a name="what-is-required-to-rewrite-a-header"></a>ヘッダーの書き換えに必要なもの
 
@@ -40,13 +40,13 @@ HTTP ヘッダーの書き換えを構成するには、次のようにする必
 
    - **ActionSet**: このオブジェクトには、上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。
 
-   - **条件**: これはオプション構成です。 書き換え条件が追加された場合、HTTP(S) 要求と応答の内容が評価されます。 書き換え条件に関連付けられた書き換えアクションの実行の決定は、HTTP(S) 要求または応答が書き換え条件と一致するかどうかに基づきます。 
+   - **条件**: これはオプション構成です。 書き換え条件が追加された場合、HTTP(S) 要求と応答のコンテンツが評価されます。 書き換え条件に関連付けられた書き換えアクションの実行は、HTTP(S) 要求または応答が書き換え条件と一致するかどうかに基づいて決定されます。 
 
      1 つのアクションに複数の条件が関連付けられている場合、そのアクションが実行されるのは、すべての条件が満たされている場合のみです。つまり、論理 AND 演算が実行されます。
 
    - **RewriteRule**: 複数の書き換えアクション (書き換え条件の組み合わせ) が含まれます。
 
-   - **RuleSequence**:これはオプション構成です。 別の書き換えルールの実行順序を決定するのに役立ちます。 これは、書き換えセットに複数の書き換えルールがある場合に便利です。 まず、ルール順序の値が小さい書き換えルールが実行されます。 2 つの書き換えルールに同じルール順序を指定した場合、実行順序は非決定性となります。
+   - **RuleSequence**:これはオプション構成です。 別の書き換えルールの実行順序を決定するのに役立ちます。 これは、書き換えセットに複数の書き換えルールがある場合に便利です。 ルール順序の値が小さい書き換えルールから先に実行されます。 2 つの書き換えルールに同じルール順序を指定した場合、実行順序は非決定性となります。
 
      RuleSequence を明示的に指定しない場合、既定値の 100 が設定されます。
 

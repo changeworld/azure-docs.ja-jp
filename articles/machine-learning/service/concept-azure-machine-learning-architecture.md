@@ -11,17 +11,17 @@ author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489949"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
 Azure Machine Learning service のアーキテクチャ、概念、ワークフローについて説明します。 サービスの主要なコンポーネントと、サービスを使用する場合の一般的なワークフローを、以下の図に示します。
 
-[![AAzure Machine Learning service のアーキテクチャとワークフロー(./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Azure Machine Learning service のアーキテクチャとワークフロー](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -68,7 +68,7 @@ Azure Machine Learning service のアーキテクチャ、概念、ワークフ�
 
 ワークスペースの分類を次の図に示します。
 
-[![Wワークスペースの分類(./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>実験
 
@@ -234,7 +234,7 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
 
-* [Azure Machine Learning サービスの概要](overview-what-is-azure-ml.md)
-* [Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md)
+* [Azure Machine Learning service とは](overview-what-is-azure-ml.md)
+* [Azure Machine Learning service のワークスペースを作成する](setup-create-workspace.md)
 * [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
 * [Resource Manager テンプレートでワークスペースを作成する](how-to-create-workspace-template.md)
