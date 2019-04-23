@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d7b9dff034aca6c7602ea72fadfcdc53b11fe15
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335880"
 documentType: LandingData
 title: アプリケーション管理のドキュメント
 metadata:
@@ -14,7 +8,7 @@ metadata:
   author: barbkess
   manager: daveba
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: active-directory
   ms.topic: landing-page
   ms.date: 09/14/2018
@@ -23,35 +17,35 @@ abstract:
   description: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Office 365 や数千もの他のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Azure AD を使ったアプリケーションへのアクセスのセキュリティ保護 (1:47)
-    href: https://youtu.be/BSUuXXcJKCk/
+    title: 'Azure AD を使ったアプリケーションへのアクセスのセキュリティ保護 (1:47)'
+    href: 'https://youtu.be/BSUuXXcJKCk/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: ユーザーが Azure Active Directory を通じてアクセスできるよう、アプリケーションを追加する方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: アプリケーションを追加する
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: アプリケーションを表示する
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: アプリケーションでシンプルかつ安全なサインイン プロセスを有効にする方法について説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: ユーザーが Azure Active Directory を通じてアクセスできるよう、アプリケーションを追加する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: アプリケーションを追加する
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: アプリケーションを表示する
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">Saas アプリケーションのチュートリアル</a>
-    - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">シングル サインオンの構成</a>
+      - type: paragraph
+        text: アプリケーションでシンプルかつ安全なサインイン プロセスを有効にする方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">Saas アプリケーションのチュートリアル</a>'
+          - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">シングル サインオンの構成</a>

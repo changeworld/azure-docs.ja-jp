@@ -1,52 +1,45 @@
-items:
 - name: Project Acoustics のドキュメント
 - name: 概要
   items:
-  - name: Project Acoustics とは
-    href: what-is-acoustics.md
+    - name: Project Acoustics とは
+      href: what-is-acoustics.md
 - name: クイック スタート
   items:
-  - name: Unity でのクイック スタート
-    href: unity-quickstart.md
-  - name: Unreal でのクイック スタート
-    href: unreal-quickstart.md
+    - name: Unity でのクイック スタート
+      href: unity-quickstart.md
+    - name: Unreal でのクイック スタート
+      href: unreal-quickstart.md
 - name: チュートリアル
   items:
-  - name: Unity
-    items:
-    - name: Unity での音響のベイク処理
-      href: unity-baking.md
-    - name: Unity デザイン ワークフロー
-      href: unity-workflow.md
-  - name: Unreal/Wwise
-    items:
-    - name: Unreal/Wwise での音響のベイク処理
-      href: unreal-baking.md
-    - name: Unreal/Wwise デザイン ワークフロー
-      href: unreal-workflow.md
+    - name: Unity
+      items:
+        - name: Unity での音響のベイク処理
+          href: unity-baking.md
+        - name: Unity デザイン ワークフロー
+          href: unity-workflow.md
+    - name: Unreal/Wwise
+      items:
+        - name: Unreal/Wwise での音響のベイク処理
+          href: unreal-baking.md
+        - name: Unreal/Wwise デザイン ワークフロー
+          href: unreal-workflow.md
 - name: 概念
   items:
-  - name: Acoustics シミュレーションによる設計概念
-    href: design-process.md
-  - name: ベイク精度
-    href: bake-resolution.md
+    - name: Acoustics シミュレーションによる設計概念
+      href: design-process.md
+    - name: ベイク精度
+      href: bake-resolution.md
 - name: 方法
   items:
-  - name: Azure Batch アカウントの作成
-    href: create-azure-account.md
-  - name: Project Acoustics を Unity に統合する
-    href: unity-integration.md
-  - name: Project Acoustics を Unreal/Wwise に統合する
-    href: unreal-integration.md
+    - name: Azure Batch アカウントの作成
+      href: create-azure-account.md
+    - name: Project Acoustics を Unity に統合する
+      href: unity-integration.md
+    - name: Project Acoustics を Unreal/Wwise に統合する
+      href: unreal-integration.md
 - name: リソース
   items:
-  - name: よく寄せられる質問
-    href: faq.md
-  - name: 既知の問題
-    href: known-issues.md
-ms.openlocfilehash: 0a445890369e48f61dfa545d7107f46e3d0675a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787885"
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: 既知の問題
+      href: known-issues.md

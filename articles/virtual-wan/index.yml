@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7ec8d7df1ab9480fd0b0cd98182b5fb49e957d9e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407359"
 documentType: LandingData
 title: Azure Virtual WAN
 metadata:
-  document_id: 
+  document_id: null
   title: Virtual WAN のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: Learn how to configure, create, and manage an Azure Virtual WAN. Build secure global scale branch connectivity.
+  meta.description: 'Learn how to configure, create, and manage an Azure Virtual WAN. Build secure global scale branch connectivity.'
   services: virtual-wan
   author: cherylmc
   manager: jeconnoc
@@ -23,24 +17,24 @@ metadata:
 abstract:
   description: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 グローバルなスケールで支社の安全な接続を作成します。
 sections:
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure Virtual WAN を使用して接続を構成、作成、管理する方法を学習します。
-  - type: list
-    style: unordered
-    className: spaced Bullet
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/virtual-wan/virtual-wan-site-to-site-portal">サイト間接続</a>
-    - html: <a href="/azure/virtual-wan/virtual-wan-point-to-site-portal">ポイント対サイト接続</a>
-    - html: <a href="/azure/virtual-wan/virtual-wan-expressroute-portal">ExpressRoute 接続</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure Virtual WAN を使用して接続を構成、作成、管理する方法を学習します。
+      - type: list
+        style: unordered
+        className: spaced Bullet
+        items:
+          - html: <a href="/azure/virtual-wan/virtual-wan-site-to-site-portal">サイト間接続</a>
+          - html: <a href="/azure/virtual-wan/virtual-wan-point-to-site-portal">ポイント対サイト接続</a>
+          - html: <a href="/azure/virtual-wan/virtual-wan-expressroute-portal">ExpressRoute 接続</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/ext/virtual-wan">Azure CLI</a></p>
-    - title: REST
-      html: <p><a href="https://go.microsoft.com/fwlink/p/?linkid=2005000">REST API リファレンス</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/ext/virtual-wan">Azure CLI</a></p>'
+          - title: REST
+            html: '<p><a href="https://go.microsoft.com/fwlink/p/?linkid=2005000">REST API リファレンス</a></p>'

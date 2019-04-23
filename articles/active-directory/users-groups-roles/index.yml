@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 00752e0b42b907699e9f314c2f216b69c9d3b2e8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506738"
 documentType: LandingData
 title: Enterprise ユーザー管理のドキュメント - Azure Active Directory
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory のユーザー、グループ、ロール、ライセンスに関するドキュメント
   description: ユーザー、グループ、ロール、ライセンスを使用して、テナントの Azure クラウド サービスへの認証を管理する方法について説明します。
   services: active-directory
@@ -22,31 +16,31 @@ metadata:
 abstract:
   description: グループや管理者ロールの割り当てなどの Azure AD ユーザー管理ツールは、優先順位の高いタスクをより迅速に完了して成長に対応する役に立ちます。 ライセンスまたは SaaS アプリへのアクセスを個人ではなくグループに割り当てることができるほか、アクセス許可を委任して Azure AD ID 管理のオーバーヘッドを分散することができます。
 sections:
-- title: 5 分間のクイックスタート
-  items:
-  - type: paragraph
-    text: Azure Active Directory の管理ツールを使用する方法について説明します
-  - type: list
-    style: unordered
+  - title: 5 分間のクイックスタート
     items:
-    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Azure AD へのユーザーの追加</a>
-    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">ユーザーへのライセンスの割り当て</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium へのサインアップ</a>
-    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">ユーザーが作成したグループの有効期限の設定</a>
-    - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">ユーザーが作成したグループの名前付けポリシーの設定</a>
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure Active Directory でグループを動的に設定する方法について説明します
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Azure Active Directory の管理ツールを使用する方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Azure AD へのユーザーの追加</a>
+          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">ユーザーへのライセンスの割り当て</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium へのサインアップ</a>
+          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">ユーザーが作成したグループの有効期限の設定</a>
+          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">ユーザーが作成したグループの名前付けポリシーの設定</a>
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">動的に設定されるグループの作成</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure Active Directory でグループを動的に設定する方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">動的に設定されるグループの作成</a>
+  - title: リファレンス
     items:
-    - title: リファレンスのリンク
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell コマンドレット</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: リファレンスのリンク
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell コマンドレット</a></p>'

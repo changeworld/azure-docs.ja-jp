@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 854e944d91c5d43131cf6a9c05e69d5684267022
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161802"
 documentType: LandingData
 title: Azure Active Directory のレポートと監視
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory レポートと監視のドキュメント - チュートリアル、クイック スタート、概念 | Microsoft Docs
   description: Azure Active Directory レポートと監視ソリューションを構成してテストする方法について説明します
   services: active-directory
@@ -24,31 +18,31 @@ metadata:
 abstract:
   description: セキュリティを表示し、環境に関するレポートを監査したり、それらを時間をかけて監視して使用パターンに関する情報を把握したりする方法を説明します。 Azure Active Directory (Azure AD) レポートを使用すると、環境におけるセキュリティや使用パターンに関する分析情報を得ることができます。 たとえば、次の質問への回答を導き出すことができます。<ul><li>アプリケーションまたはサービスをユーザーはどのように活用しているか</li><li>環境の正常性に影響する潜在的リスクは何か</li><li>ユーザーの作業を妨げている問題をトラブルシューティングする方法</li>
 sections:
-- title: 5 分間のクイックスタート
-  items:
-  - type: paragraph
-    text: アクティビティ レポートをダウンロードして、ログを Azure ストレージ アカウントにルーティングする方法について説明します
-  - type: list
-    style: unordered
+  - title: 5 分間のクイックスタート
     items:
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">サインイン レポートのダウンロード</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">監査レポートのダウンロード</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">レポート用に Power BI コンテンツ パックをインストールする</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">ストレージ アカウントへのログのルーティング</a>
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: レポートにアクセスして、アクティビティ ログを任意の監視システムにストリーミングする方法について説明します
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: アクティビティ レポートをダウンロードして、ログを Azure ストレージ アカウントにルーティングする方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">サインイン レポートのダウンロード</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">監査レポートのダウンロード</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">レポート用に Power BI コンテンツ パックをインストールする</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">ストレージ アカウントへのログのルーティング</a>
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">証明書を使用してプログラムでレポート API にアクセスする</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">アクティビティ ログをイベント ハブにストリーミングする</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: レポートにアクセスして、アクティビティ ログを任意の監視システムにストリーミングする方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">証明書を使用してプログラムでレポート API にアクセスする</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">アクティビティ ログをイベント ハブにストリーミングする</a>
+  - title: リファレンス
     items:
-    - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">サインイン エラー コード</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure Monitor での Azure AD 監査ログのスキーマ</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure Monitor での Azure AD サインインのスキーマ</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">サインイン エラー コード</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure Monitor での Azure AD 監査ログのスキーマ</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure Monitor での Azure AD サインインのスキーマ</a>

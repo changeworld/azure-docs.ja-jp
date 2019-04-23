@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46eb23cf23506b950142068146283345db71a3ea
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520821"
 documentType: LandingData
 title: Azure AD デバイス管理のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory デバイス管理のドキュメント - チュートリアル、概念、リファレンス | Microsoft Docs
   description: Azure Active Directory のデバイス管理を構成してテストする方法について説明します。
   services: active-directory
@@ -24,18 +18,18 @@ metadata:
 abstract:
   description: ユーザーは、デバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイスを管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。<br>デバイス管理は、デバイスに基づく条件付きアクセスの基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。
 sections:
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: オンプレミスの AD 参加済みデバイスと Azure AD を統合する方法について説明します。
-  - type: list
-    style: icon48
+  - title: ステップバイステップのチュートリアル
     items:
-    - image:
-        src: ./media/index/i_security-management.png
-      text: マネージド ドメイン
-      href: hybrid-azuread-join-managed-domains.md
-    - image:
-        src: ./media/index/i_security-management.png
-      text: フェデレーション ドメイン
-      href: hybrid-azuread-join-federated-domains.md
+      - type: paragraph
+        text: オンプレミスの AD 参加済みデバイスと Azure AD を統合する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_security-management.png
+            text: マネージド ドメイン
+            href: hybrid-azuread-join-managed-domains.md
+          - image:
+              src: ./media/index/i_security-management.png
+            text: フェデレーション ドメイン
+            href: hybrid-azuread-join-federated-domains.md

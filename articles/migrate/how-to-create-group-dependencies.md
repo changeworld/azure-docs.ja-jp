@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
 ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357176"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786880"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -126,7 +126,7 @@ Kusto クエリを実行するには:
 
 1. エージェントをインストールしたら、ポータルに移動し、**[概要]** をクリックします。
 2. **[概要]** で、プロジェクトの **[基本]** セクションに移動し、**[OMS ワークスペース]** の横にあるワークスペース名をクリックします。
-3. Log Analytics ワークスペース ページで **[全般]**、**[ログ]** の順にクリックします。
+3. Log Analytics ワークスペース ページで **[全般]** > 、**[ログ]** の順にクリックします。
 4. Azure Monitor ログを使用して依存関係データを収集するためのクエリを作成します。 次のセクションでサンプル クエリを見つけます。
 5. [実行] をクリックしてクエリを実行します。 
 
@@ -134,7 +134,7 @@ Kusto クエリの作成方法の[詳細を参照してください](https://doc
 
 ## <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor ログのサンプル クエリ
 
-依存関係データを抽出するために使用できるサンプル クエリは次のとおりです。 クエリを変更して、目的のデータ ポイントを抽出できます。 依存関係データ レコード内のフィールドを網羅した一覧は、[ここ](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)で入手できます。 その他のサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
+依存関係データを抽出するために使用できるサンプル クエリは次のとおりです。 クエリを変更して、目的のデータ ポイントを抽出できます。 依存関係データ レコード内のフィールドの完全なリストは、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)で入手できます。 その他のサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
 
 ### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>一連のマシンの受信接続を集計する
 

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 08426b9cb6dee2abd445f2e29eb4bf4d20a6e06d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475680"
 documentType: LandingData
 title: Azure データ サイエンス仮想マシンのドキュメント
 metadata:
@@ -23,43 +17,43 @@ metadata:
 abstract:
   description: データ サイエンスおよびディープ ラーニング仮想マシンは、Azure 上のカスタマイズされた VM イメージであり、高度な分析用のインテリジェントなアプリケーションを構築するためのデータ サイエンス ツールと共に読み込まれます。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Windows または Linux ベースのデータ サイエンス VM を設定する方法を学習します。
-  - type: list
-    style: unordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="provision-vm.md">Windows</a>
-    - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
-    - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: データ サイエンス VM をプロビジョニングして使用する方法を学習します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Windows または Linux ベースのデータ サイエンス VM を設定する方法を学習します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="provision-vm.md">Windows</a>
+          - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
+          - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="provision-vm">Windows DSVM をプロビジョニングする</a>
-    - html: <a href="vm-do-ten-things">Windows DSVM を使用する</a>
-    - html: <a href="linux-dsvm-intro">Linux CentOS DSVM をプロビジョニングする</a>
-    - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu DSVM をプロビジョニングする</a>
-    - html: <a href="linux-dsvm-walkthrough">Linux DSVM を使用する</a>
-- title: その他の Azure Machine Learning テクノロジ
-  items:
-  - type: paragraph
-    text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: データ サイエンス VM をプロビジョニングして使用する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="provision-vm">Windows DSVM をプロビジョニングする</a>
+          - html: <a href="vm-do-ten-things">Windows DSVM を使用する</a>
+          - html: <a href="linux-dsvm-intro">Linux CentOS DSVM をプロビジョニングする</a>
+          - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu DSVM をプロビジョニングする</a>
+          - html: <a href="linux-dsvm-walkthrough">Linux DSVM を使用する</a>
+  - title: その他の Azure Machine Learning テクノロジ
     items:
-    - title: Azure Machine Learning サービス (プレビュー)
-      href: /azure/machine-learning/service/
-      image:
-        src: media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/
-    - title: Azure Machine Learning Studio
-      href: /azure/machine-learning/studio/
-      image:
-        src: media/index/machine-learning-studio.svg
-        href: /azure/machine-learning/studio/
+      - type: paragraph
+        text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Machine Learning サービス (プレビュー)
+            href: /azure/machine-learning/service/
+            image:
+              src: media/index/i_machine-learning.svg
+              href: /azure/machine-learning/service/
+          - title: Azure Machine Learning Studio
+            href: /azure/machine-learning/studio/
+            image:
+              src: media/index/machine-learning-studio.svg
+              href: /azure/machine-learning/studio/

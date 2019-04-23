@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB は:Python と SQL API によるアプリの構築
+title: Azure Cosmos DB:Python と SQL API によるアプリの構築
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
 author: SnehaGunda
 ms.service: cosmos-db
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/15/2019
 ms.locfileid: "59565063"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB は:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
+# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "59565063"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、グラフ データベースをすばやく作成して照会することができます。 そのすべての操作に、Azure Cosmos DB が備える分散とスケールは利益をもたらします。
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、グラフ データベースをすばやく作成して照会することができます。 そのすべての操作に、Azure Cosmos DB が備える分散とスケールは利益をもたらします。
 
 このクイック スタートでは、Azure portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コンテナーを作成する方法を説明します。 その後、[SQL API](sql-api-sdk-python.md) 用の Python SDK で構築されたコンソール アプリを構築して実行します。 このクイック スタートでは、[Python SDK] のバージョン 3.0 (https://pypi.org/project/azure-cosmos)) を使用します。
 
