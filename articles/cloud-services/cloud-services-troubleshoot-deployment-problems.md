@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916854"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798572"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>クラウド サービスのデプロイメントに関する問題のトラブルシューティング
 クラウド サービス アプリケーション パッケージを Azure にデプロイするとき、デプロイメントに関する情報は、Azure Portal の **[プロパティ]** ウィンドウで確認できます。 クラウド サービスに関する問題は、このウィンドウの情報を頼りにトラブルシューティングすることができます。新規にサポート リクエストを行う際も、この情報を Azure サポートに提供してください。
