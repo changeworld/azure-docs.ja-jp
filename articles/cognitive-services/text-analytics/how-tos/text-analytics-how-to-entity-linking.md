@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: d1f4c72ec0a67baa6f523c1ab632903b0580f3a7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339382"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505577"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -56,7 +56,7 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | Quantity      | 気温   | "32 degrees"    |
 | DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
 | DateTime      | Date          | "May 2nd, 2017", "05/02/2017"   | 
-| Date Time     | Time          | "8am", "8:00"  | 
+| DateTime      | Time          | "8am", "8:00"  | 
 | DateTime      | DateRange     | "May 2nd to May 5th"    | 
 | DateTime      | TimeRange     | "6pm to 7pm"     | 
 | DateTime      | Duration      | "1 minute and 45 seconds"   | 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9daa7fc15ecbb4065c8d26bb5cefa27f17f66f4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878268"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524091"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Azure Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターを作成する
 
 > [!div class="op_single_selector"]
-> * [Azure ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Azure Portal の使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Resource Manager の使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -215,7 +215,7 @@ Azure Data Lake Storage Gen1 の Active Directory 認証を設定するには、
     コマンドレットが正常に完了すると、クラスターの詳細を一覧表示する出力が表示されます。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターでテスト ジョブを実行する
-HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、クラスターが Data Lake Storage Gen1 に確実にアクセスできるかどうかをテストできます。 これを行うには、Data Lake Storage Gen1 (*<cluster root>/example/data/sample.log*) に既にあるサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
+HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、クラスターが Data Lake Storage Gen1 に確実にアクセスできるかどうかをテストできます。 これを行うには、Data Lake Storage Gen1 (*\<クラスターのルート>/example/data/sample.log*) に既にあるサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
 このセクションでは、作成した HDInsight Linux クラスターに Secure Shell (SSH) 接続し、サンプルの Hive クエリを実行します。
 
@@ -255,7 +255,7 @@ Data Lake Storage Gen1 を使用するように HDInsight クラスターを構�
 
 ## <a name="see-also"></a>関連項目
 * [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure portal:Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure portal: Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

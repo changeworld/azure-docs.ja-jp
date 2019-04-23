@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283071"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
@@ -160,9 +160,9 @@ Spark クラスターのワークロードによっては、既定以外の Spar
 
 調整可能ないくつかの一般的なパラメーターを、次に示します。
 
-* `--num-executors` これは、適切な数の実行プログラムを設定します。
-* `--executor-cores` これは、各実行プログラムのコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、通常は中規模な実行プログラムにしてください。
-* `--executor-memory` これは、YARN のヒープ サイズを制御する、各実行プログラムのメモリ サイズを設定します。 実行のオーバーヘッド用のメモリを残しておいてください。
+* `--num-executors` は、適切な数の実行プログラムを設定します。
+* `--executor-cores` は、各実行プログラムのコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、通常は中規模な実行プログラムにしてください。
+* `--executor-memory` は、YARN のヒープ サイズを制御する、各実行プログラムのメモリ サイズを設定します。 実行のオーバーヘッド用のメモリを残しておいてください。
 
 ### <a name="select-the-correct-executor-size"></a>実行プログラムの適切なサイズの選択
 
@@ -214,7 +214,7 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ## <a name="next-steps"></a>次の手順
 
 * [Azure HDInsight で実行される Apache Spark ジョブのデバッグ](apache-spark-job-debugging.md)
-* [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)
+* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [Apache Spark REST API を使用してリモート ジョブを Apache Spark クラスターに送信する](apache-spark-livy-rest-interface.md)
 * [Apache Spark のチューニング](https://spark.apache.org/docs/latest/tuning.html)
 * [Apache Spark を適切に機能させるための実際のチューニング方法](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)

@@ -9,16 +9,18 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: a4a412330a1cfab9e4091ff775a25a062033bb7e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2d6814653967fa76ad22bcefcc94df42d60d67b1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448223"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496225"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>ネットワーク リソースをグローバル Azure に移行する
 
 ほとんどのネットワーク サービスは、Azure Germany からグローバル Azure への移行をサポートしていません。 ただし、サイト間 VPN を使用して、両方のクラウド環境内のネットワークを接続できます。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 クラウドの間でサイト間 VPN を設定するために実行する手順は、オンプレミスのネットワークと Azure の間でサイト間 VPN をデプロイするために実行する手順に似ています。 両方のクラウドでゲートウェイを定義した後、互いに通信する方法を VPN に指示します。 「[Azure Portal でサイト間接続を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)」では、サイト間 VPN をデプロイするために完了する手順について説明しています。 手順の概要を次に示します。
 
@@ -59,8 +61,8 @@ ms.locfileid: "58448223"
 ネットワーク セキュリティ グループの現在の構成はポータルから、または次の PowerShell コマンドを実行することによって取得します。
 
 ```powershell
-$nsg=Get-AzureRmNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <resourcegroupname>
-Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
+$nsg=Get-AzNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <resourcegroupname>
+Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 ```
 
 詳細:
@@ -84,7 +86,7 @@ Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
 現時点では、Azure VPN Gateway インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、VPN Gateway の新しいインスタンスを作成および構成することをお勧めします。
 
-現在の VPN Gateway 構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzureRmVirtualNetworkGateway*` で始まる一連のコマンドレットを使用します。
+現在の VPN Gateway 構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzVirtualNetworkGateway*` で始まる一連のコマンドレットを使用します。
 
 オンプレミスの構成を確実に更新するようにしてください。 また、Azure ネットワーク環境を更新した後、古い IP アドレス範囲の既存のルールもすべて削除してください。
 
@@ -92,20 +94,20 @@ Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 
 - [VPN Gateway のチュートリアル](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials)を完了することによって知識を更新してください。
 - [サイト間接続を作成する](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)方法を学習してください。
-- [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway) PowerShell コマンドレットを確認してください。
+- [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway) PowerShell コマンドレットを確認してください。
 - [サイト間接続の作成](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/)に関するブログの投稿を参照してください。
  
 ## <a name="application-gateway"></a>Application Gateway
 
 現時点では、Azure Application Gateway インスタンスの Azure Germany からグローバル Azure への移行はサポートされていません。 グローバル Azure で、新しいゲートウェイを作成および構成することをお勧めします。
 
-現在のゲートウェイ構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzureRmApplicationGateway*` で始まる一連のコマンドレットを使用します。
+現在のゲートウェイ構成に関する情報は、ポータルまたは PowerShell を使用して収集できます。 PowerShell で、`Get-AzApplicationGateway*` で始まる一連のコマンドレットを使用します。
 
 詳細:
 
 - [Application Gateway のチュートリアル](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials)を完了することによって知識を更新してください。
 - [アプリケーション ゲートウェイを作成する](../application-gateway/quick-create-portal.md)方法を学習してください。
-- [Get-AzureRmApplicationGateway](/powershell/module/azurerm.network/get-azurermapplicationgateway) PowerShell コマンドレットを確認してください。
+- [Get-AzApplicationGateway](/powershell/module/az.network/get-azapplicationgateway) PowerShell コマンドレットを確認してください。
 
 ## <a name="dns"></a>DNS
 
@@ -157,28 +159,28 @@ az network dns record-set ns list -g <resource group> -z --output json
 
 詳細:
 
-- [Network Watcher のチュートリアル](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Network Watcher のチュートリアル](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials)を完了して、新しい知識を得ましょう。
 - [Network Watcher の概要](../network-watcher/network-watcher-monitoring-overview.md)を確認してください。
 - [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md)の詳細を学習してください。
 - [接続モニター](../network-watcher/connection-monitor.md)に関するページを参照してください。
 
 ## <a name="traffic-manager"></a>Traffic Manager
 
-Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません。 (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります。)
+Azure Traffic Manager は、スムーズな移行を完了するために役立ちます。 ただし、Azure Germany で作成した Traffic Manager プロファイルをグローバル Azure に移行することはできません  (移行中に Traffic Manager エンドポイントをターゲット環境に移行するため、いずれにしても Traffic Manager プロファイルを更新する必要があります)。
 
 ソース環境で引き続き実行されている Traffic Manager を使用して、ターゲット環境で追加のエンドポイントを定義できます。 Traffic Manager が新しい環境で実行されている場合も引き続き、ソース環境でまだ移行されていないエンドポイントを定義できます。 このシナリオは、[ブルーグリーン シナリオ](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/)と呼ばれます。 このシナリオには、次の手順が必要です。
 
 1. グローバル Azure で、新しい Traffic Manager プロファイルを作成します。
 1. Azure Germany でエンドポイントを定義します。
-1. DNS CNAME レコードを新しい Traffic Manager プロファイルに変更します。
+1. ご利用の DNS CNAME レコードを新しい Traffic Manager プロファイルに変更します。
 1. 古い Traffic Manager プロファイルを無効にします。
-1. エンドポイントを移行して構成します。 Azure Germany 内のエンドポイントごとに、次を実行します。
+1. エンドポイントを移行して構成します。 Azure Germany 内のエンドポイントごとに、次の操作を行います。
    1. エンドポイントをグローバル Azure に移行します。
    1. 新しいエンドポイントを使用するように Traffic Manager プロファイルを変更します。
 
 詳細:
 
-- [Traffic Manager のチュートリアル](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials)を完了することによって知識を更新してください。
+- [Traffic Manager のチュートリアル](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials)を完了して、新しい知識を得ましょう。
 - [Traffic Manager の概要](../traffic-manager/traffic-manager-overview.md)を確認してください。
 - [Traffic Manager プロファイルの作成](../traffic-manager/traffic-manager-create-profile.md)方法を確認します。
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 412bf66902f156c6c8720a720973f97d1d7b1d8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751618"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527984"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -79,7 +79,7 @@ Azure portal を使用して証明書をダウンロードします。
 
 1. Azure portal にサインインします。
 2. お客様の Data Box の注文に移動し、**[全般]、[デバイスの詳細]** の順に移動します。
-3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、**<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
+3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、**\<注文名>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -171,7 +171,7 @@ AzCopy を使用して、フォルダー内のすべてのファイルを Window
         --dest-key <key> \
         --recursive
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
@@ -196,7 +196,7 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 

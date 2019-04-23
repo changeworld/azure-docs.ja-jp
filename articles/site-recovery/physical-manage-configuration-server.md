@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050137"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
@@ -40,7 +40,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) |
 | IP アドレスの種類 | 静的 |
 | インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (スケールアウト プロセス サーバーには必要なし) <br> - time.nist.gov <br> - time.windows.com |
-| ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
+| Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
 
 ## <a name="download-the-latest-installation-file"></a>最新のインストール ファイルのダウンロード
 

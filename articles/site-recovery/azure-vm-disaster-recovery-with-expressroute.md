@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272769"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618100"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -93,7 +93,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 - **ハブ vNet**。 1 つのハブ vNet があります。**ソース ハブ vNet**: 10.10.10.0/24。
   - このハブ vNet はゲートキーパーとして機能します。
   - サブネット間でのすべての通信は、このハブを通過します。
-    - ****ハブ vNet のサブネット**。 ハブ vNet には、次の 2 つのサブネットがあります。
+    - **ハブ vNet のサブネット**。 ハブ vNet には、次の 2 つのサブネットがあります。
     - **NVA サブネット**: 10.10.10.0/25。 このサブネットには NVA (10.10.10.10) が含まれています。
     - **ゲートウェイ サブネット**: 10.10.10.128/25。 このサブネットには、ExpressRoute 接続に接続された ExpressRoute ゲートウェイがあります。これは、プライベート ピアリング ルーティング ドメインを通じてオンプレミス サイトにルーティングされます。
 - オンプレミス データ センターでは、香港のパートナー エッジを介した ExpressRoute 回線接続が使用されています。
@@ -104,7 +104,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 
 #### <a name="spoke-to-hub"></a>スポークからハブへ
 
-**方向** | **Setting** | **状態**
+**方向** | **設定** | **State**
 --- | --- | ---
 スポークからハブへ | 仮想ネットワーク アドレスを許可する | Enabled
 スポークからハブへ | 転送されたトラフィックを許可する | Enabled
@@ -115,7 +115,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 
 #### <a name="hub-to-spoke"></a>ハブからスポークへ
 
-**方向** | **Setting** | **状態**
+**方向** | **設定** | **State**
 --- | --- | ---
 ハブからスポークへ | 仮想ネットワーク アドレスを許可する | Enabled
 ハブからスポークへ | 転送されたトラフィックを許可する | Enabled

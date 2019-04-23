@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286433"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491517"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -34,7 +34,7 @@ Backup サービスに VM を登録してスケジュール設定すると、Bac
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
 **原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
-**原因 5:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+**原因 5:[VM にインターネット アクセスがない](#the-vm-has-no-internet-access)**
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Could not communicate with the VM agent for snapshot status (スナップショットの状態について VM エージェントと通信できませんでした)
 
@@ -44,14 +44,14 @@ Backup サービスに VM を登録してスケジュール設定すると、Bac
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
 **原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+**原因 3:[VM にインターネット アクセスがない](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
 
 **エラー コード**:UserErrorRpCollectionLimitReached <br>
 **エラー メッセージ**:復元ポイント コレクションの上限に達しました。 <br>
 * この問題は、復旧ポイントの自動クリーンアップを妨げる、復旧ポイント リソース グループに対するロックが存在する場合に発生することがあります。
-* この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント RP は 7 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 つだけのバックアップを推奨します。 <br>
+* この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント復元ポイントは設定されているスナップショット保有期間基づき 1 日から 5 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 つだけのバックアップをお勧めします。 <br>
 
 推奨される操作:<br>
 この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。
@@ -76,7 +76,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。    
 **原因 1:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+**原因 3:[VM にインターネット アクセスがない](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - VMSnapshot の拡張操作に失敗しました。
 
@@ -95,12 +95,12 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー メッセージ**:バックアップ操作は内部エラーのため失敗しました - 数分以内に操作をやり直してください <br>
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
-**原因 1:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
 **原因 5:リソース グループのロックが原因で、バックアップ サービスに古い復元ポイントを削除するためのアクセス許可がない** <br>
-**原因 6:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
+**原因 6:[VM にインターネット アクセスがない](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize - 現在、Azure Backup では 4095 GB を超えるディスク サイズはサポートされていません
 
@@ -164,7 +164,7 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
    > [!NOTE]
    > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
 
-2. `ps -e` コマンドを実行して、Azure エージェントが VM で実行されていることを確認します。
+2. 次のコマンドを実行して、Azure エージェントが VM で確実に実行されるようにします。 `ps -e`
 
    このプロセスが実行されていない場合は、次のコマンドを使用してプロセスを再起動します。
 

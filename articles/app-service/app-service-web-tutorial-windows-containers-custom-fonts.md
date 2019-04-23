@@ -15,10 +15,10 @@ ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904068"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
@@ -142,7 +142,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 | Setting  | 推奨値 | BLOB の詳細 |
 | ----------------- | ------------ | ----|
-|**アプリケーション名**| 一意の名前を入力します。 | Web アプリの URL は `http://<app_name>.azurewebsites.net` です。`<app_name>` には自分のアプリの名前を指定します。 |
+|**アプリ名**| 一意の名前を入力します。 | Web アプリの URL は `http://<app_name>.azurewebsites.net` です。`<app_name>` には自分のアプリの名前を指定します。 |
 |**リソース グループ**| **[既存のものを使用]** を選択し、「**myResourceGroup**」と入力します。 |  |
 |**OS**| Windows (プレビュー) | |
 

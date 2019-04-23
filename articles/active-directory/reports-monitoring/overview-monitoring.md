@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 監視とは  | Microsoft Docs
+title: Azure Active Directory 監視とは | Microsoft Docs
 description: Azure Active Directory 監視の概要について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de416d18505d0258da446318b3dc6a9853ff13e7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434859"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009040"
 ---
-# <a name="what-is-azure-active-directory-monitoring-preview"></a>Azure Active Directory 監視とは
+# <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory 監視とは
 
 Azure Active Directory (Azure AD) 監視を使用すると、Azure AD のアクティビティ ログを別のエンドポイントにルーティングできるようになります。 その後、それを長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合して環境の分析情報を取得したりすることができます。
 

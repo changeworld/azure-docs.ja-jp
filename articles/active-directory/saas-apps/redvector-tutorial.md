@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 22f56fb44737bab30b113e3afe6b8ba21518330d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>チュートリアル:Azure Active Directory と RedVector の統合
@@ -105,9 +105,9 @@ RedVector で Azure AD シングル サインオンを構成するには、次�
 
     ![[RedVector のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://sso2.redvector.com/adfs/<Companyname>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://sso2.redvector.com/adfs/<Companyname>`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<Companyname>.redvector.com/saml2`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<Companyname>.redvector.com/saml2`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[RedVector クライアント サポート チーム](mailto:sso@redvector.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

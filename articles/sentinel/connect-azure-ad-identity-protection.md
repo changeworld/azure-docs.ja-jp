@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Azure AD Identity Protection のデータを収集する | Microsoft Docs
-description: Azure Sentinel で Azure AD Identity Protection のデータを収集する方法について説明します。
+title: Azure Sentinel Preview に Azure AD Identity Protection データを接続する | Microsoft Docs
+description: Azure Sentinel に Azure AD Identity Protection データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 609aced38b7e30f78d81934867196c568dcc85ca
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d8306056655809c69af2ed39b5bbf8efebe05d3f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240000"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787537"
 ---
-# <a name="collect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを収集する
+# <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -42,7 +42,7 @@ Azure AD Identity Protection が既にある場合は、[お使いのネット�
 Azure AD Identity Protection がデプロイされ、データを取得している場合は、アラート データを Azure Sentinel に簡単にストリーミングできます。
 
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Azure AD Identity Protection]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure AD Identity Protection]** タイルをクリックします。
 
 2. **[接続]** をクリックして、Azure AD Identity Protection のイベントの Azure Sentinel へのストリーミングを開始します。
 
@@ -51,5 +51,5 @@ Azure AD Identity Protection がデプロイされ、データを取得してい
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure AD Identity Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法を確認します。
-- [Azure Sentinel を使用した驚異の検出](tutorial-detect-threats.md)を開始します。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

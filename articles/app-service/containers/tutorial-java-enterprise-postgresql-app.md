@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: a4bf2ef252b5a948f2e3614e3e7cf64a4cb19277
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772060"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545352"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
 このチュートリアルでは、Azure App Service に Java Enterprise Edition (EE) Web アプリを作成し、それを Postgres データベースに接続する方法について説明します。 完了すると、Azure [App Service on Linux](app-service-linux-intro.md) で稼働中の [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) にデータを格納する [WildFly](https://www.wildfly.org/about/) アプリケーションが完成します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Maven を使用して Java EE アプリを Azure にデプロイする
 > * Azure で Postgres データベースを作成する
@@ -158,7 +158,9 @@ _pom.xml_ で、大文字のプレースホルダーの値を、Postgres サー�
 
 ## <a name="configure-the-wildfly-application-server"></a>WildFly アプリケーション サーバーを構成する
 
-再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
+再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 他の構成情報については、「[Configure WildFly server (WildFly サーバーの構成)](configure-language-java.md#configure-wildfly-server)」を参照してください。
+
+サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
 
 - **postgresql-42.2.5.jar**:この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
 - **postgres-module.xml**:この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
@@ -172,7 +174,6 @@ _pom.xml_ で、大文字のプレースホルダーの値を、Postgres サー�
 `wildfly_config/` の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を参照してください。
 
 任意の FTP ツールを使用して、`wildfly_config/` 内の 4 つのファイルを `/home/site/deployments/tools/` に転送します  (ディレクトリではなく、ファイル自体だけを転送することに注意してください)。
-
 
 ### <a name="finalize-app-service"></a>App Service を最終処理する
 
@@ -195,9 +196,26 @@ mvn clean install -DskipTests azure-webapp:deploy
 これらのリソースが別のチュートリアルで不要である場合 (「次のステップ」を参照)、次のコマンドを実行して削除することができます。
 
 ```bash
-az group delete --name <your_resource_group> 
+az group delete --name <your-resource-group>
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-これで、Java EE アプリケーションを App Service にデプロイできました。サービスの設定、トラブルシューティング、お客様のアプリケーションのスケーリングに関する詳細については、[Java エンタープライズ開発者ガイド](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-java)を参照してください。
+このチュートリアルでは、以下の内容を学習しました。
+
+> [!div class="checklist"]
+> * Maven を使用して Java EE アプリを Azure にデプロイする
+> * Azure で Postgres データベースを作成する
+> * Postgres を使用するために WildFly サーバーを構成する
+> * アプリを更新して再デプロイする
+> * WildFly 上で単体テストを実行する
+
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
+
+> [!div class="nextstepaction"]
+> [チュートリアル:カスタム DNS 名をアプリにマップする](../app-service-web-tutorial-custom-domain.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [Java アプリを構成する](configure-language-java.md)

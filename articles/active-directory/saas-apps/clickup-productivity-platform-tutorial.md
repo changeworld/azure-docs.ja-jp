@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282646"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
@@ -50,7 +50,7 @@ ClickUp Productivity Platform と Azure AD の統合を構成するには、次�
 
 Azure AD への ClickUp Productivity Platform の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に ClickUp Productivity Platform を追加する必要があります。
 
-**ギャラリーから ClickUp Productivity Platform を追加するには、次の手順を実行します。**
+**ギャラリーから ClickUp Productivity Platform を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -104,9 +104,9 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
     ![[ClickUp Productivity Platform ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します:  `https://app.clickup.com/login/sso`
+    a. **[サインオン URL]** ボックスに URL として「`https://app.clickup.com/login/sso`」と入力します。
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://api.clickup.com/v1/team/<team_id>/microsoft`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
     > この識別子の値は実際のものではありません。 この値は、実際の識別子に置き換えてください。これについては後で説明します。

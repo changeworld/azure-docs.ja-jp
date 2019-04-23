@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471020"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565966"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -99,7 +99,7 @@ Application Insights の次の領域は、関数の動作、パフォーマン�
 
 | Tab | 説明 |
 | ---- | ----------- |
-| **[エラー](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
+| **[障害](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
 | **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | パフォーマンスの問題を分析します。 |
 | **サーバー** | サーバーごとのリソース使用率とスループットを表示します。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、**クラウド ロール インスタンス**と呼ばれます。 |
 | **[メトリック](../azure-monitor/app/metrics-explorer.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
@@ -217,7 +217,7 @@ v2.x ランタイムでは、[.NET Core のログ記録フィルター階層](ht
 * カテゴリが `Host.Aggregator` のログについては、すべてのログを Application Insights に送信する。 `Trace` ログ レベルは、一部のロガーで `Verbose` と呼ばれるものと同じですが、[host.json] ファイルでは `Trace` を使用します。
 * その他すべてのログについては、`Information` 以上のレベルのみを Application Insights に送信する。
 
-[host.json] 内のカテゴリ値により、先頭の値が同一のすべてのカテゴリについてログを制御する。 `Host` [host.json] の XXX は、`Host.General`、`Host.Executor`、`Host.Results` などのログを制御します。
+[host.json] 内のカテゴリ値により、先頭の値が同一のすべてのカテゴリについてログを制御する。 [host.json] の `Host` は、`Host.General`、`Host.Executor`、`Host.Results` などのログを制御します。
 
 [host.json] に先頭の文字列が同一のカテゴリが複数含まれる場合は、同一の部分がより長いものが最初に一致する。 `Host.Aggregator` 以外のランタイムからのすべてのログを `Error` レベルで記録し、`Host.Aggregator` のログは `Information` レベルで記録するとします。
 
@@ -595,7 +595,9 @@ module.exports = function (context, req) {
 
 ## <a name="dependencies"></a>依存関係
 
-他のサービスに対する関数の依存関係は自動的には表示されません。 依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#log-custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
+Functions v2 は、HTTP 要求、ServiceBus、SQL の依存関係を自動的に収集します。
+
+依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#log-custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
 
 ![アプリケーション マップ](./media/functions-monitoring/app-map.png)
 

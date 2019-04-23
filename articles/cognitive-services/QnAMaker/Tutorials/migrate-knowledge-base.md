@@ -12,10 +12,10 @@ ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264320"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
@@ -63,4 +63,4 @@ ms.locfileid: "59264320"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの編集](../How-To/edit-knowledge-base.md)
+> [ナレッジ ベースを編集する](../How-To/edit-knowledge-base.md)

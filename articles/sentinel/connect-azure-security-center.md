@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Azure Security Center のデータを収集する | Microsoft Docs
-description: Azure Sentinel で Azure Security Center のデータを収集する方法を説明します。
+title: Azure Sentinel Preview に Azure Security Center データを接続する | Microsoft Docs
+description: Azure Sentinel に Azure Security Center データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: f59c5f6a9f497a6420172996f9f327f16ffd26f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bd6fe027da8c16157c7fce6c348e49c0a6b73ea3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242275"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791173"
 ---
-# <a name="collect-data-from-azure-security-center"></a>Azure Security Center からデータを収集する
+# <a name="connect-data-from-azure-security-center"></a>Azure Security Center からデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -29,7 +29,7 @@ ms.locfileid: "57242275"
 
 
 
-Azure Sentinel では、[Azure Security Center](../security-center/security-center-intro.md) からアラートを収集して、それらを Azure Sentinel にストリーミングできます。 
+Azure Sentinel では、[Azure Security Center](../security-center/security-center-intro.md) からアラートを接続して、それらを Azure Sentinel にストリーミングできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ Azure Sentinel では、[Azure Security Center](../security-center/security-cent
 
 ## <a name="connect-to-azure-security-center"></a>Azure Security Center に接続する
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Azure Security Center]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure Security Center]** タイルをクリックします。
 1. 右側で、そのアラームを Azure Sentinel にストリーミングするサブスクリプションの横にある **[接続]**  をクリックします。 アラートを Azure Sentinel にストリーミングするには、各サブスクリプションが Azure Security Center Standard レベルにアップグレードされていることを確認します。
 
 3. **[接続]** をクリックします。
@@ -51,5 +51,5 @@ Azure Sentinel では、[Azure Security Center](../security-center/security-cent
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Security Center を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法を確認します。
-- [Azure Sentinel を使用した驚異の検出](tutorial-detect-threats.md)を開始します。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

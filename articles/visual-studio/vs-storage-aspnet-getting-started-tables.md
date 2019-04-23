@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010143"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
@@ -31,7 +31,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 ## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure ストレージ アカウント](../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -711,4 +711,4 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
-  * [Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)
+  * [Azure キュー ストレージと Visual Studio 接続済みサービスの概要](../storage/vs-storage-aspnet-getting-started-queues.md)

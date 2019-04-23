@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469797"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548713"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
@@ -147,7 +147,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>クラシック アラートのメール通知の登録を解除する方法
 
-このセクションは、**従来の可用性アラート**、**Application Insights のメトリック アラート**、**従来の障害異常アラート**に適用されます。
+このセクションは、**従来の可用性アラート**、**従来の Application Insights のメトリック アラート**、**従来の障害異常アラート**に適用されます。
 
 次のいずれかに該当する場合は、これらのクラシック アラートのメール通知を受信しています。
 
@@ -178,7 +178,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ## <a name="automation"></a>Automation
 * [PowerShell を使用したアラートの設定の自動化](../../azure-monitor/app/powershell-alerts.md)
-* [Webhook を使用したアラートへの対応の自動化](../../azure-monitor/platform/alerts-webhooks.md)
+* [webhook を使用したアラートへの対応の自動化](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>関連項目
 * [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)

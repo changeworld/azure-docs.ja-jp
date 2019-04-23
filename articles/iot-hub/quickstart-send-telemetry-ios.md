@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/03/2019
 ms.openlocfilehash: a3f72c2a55acfc53d7d8a07bd10250c6ed6102ea
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006904"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート:デバイスから IoT ハブへのテレメトリの送信 (iOS)
@@ -140,7 +140,7 @@ az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:IoT ハブに接続されたデバイスを制御する](quickstart-control-device-node.md)
+> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-node.md)
 
 <!-- Links -->
 [lnk-process-d2c-tutorial]: tutorial-routing.md

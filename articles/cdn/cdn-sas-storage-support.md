@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918554"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
@@ -89,8 +89,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    ![CDN URL 書き換えルール - 左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![CDN URL 書き換えルール - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. 新しいルールがアクティブになった後は、URL で SAS トークンを使用しているかどうかに関係なく、CDN エンドポイント上の指定されたコンテナー内のファイルにだれでもアクセスできます。 形式は次のとおりです: 
-   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. 新しいルールがアクティブになった後は、URL で SAS トークンを使用しているかどうかに関係なく、CDN エンドポイント上の指定されたコンテナー内のファイルにだれでもアクセスできます。 形式は次のとおりです: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    例:    
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -145,6 +144,6 @@ SAS パラメーターは Azure CDN からは認識できないため、Azure CD
 
 SAS の詳細については、次の記事を参照してください。
 - [Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [Shared Access Signature、パート 2: BLOB ストレージでの SAS の作成と使用](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
 
 トークン認証設定の詳細については、「[トークン認証による Azure Content Delivery Network 資産の保護](https://docs.microsoft.com/azure/cdn/cdn-token-auth)」をご覧ください。

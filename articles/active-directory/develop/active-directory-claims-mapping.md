@@ -13,12 +13,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884079"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791338"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -177,7 +177,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| username |
+| ユーザー名 |
 | uti |
 | ver |
 | verified_primary_email |
@@ -415,7 +415,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 ポリシーの影響を受ける発行済みトークンすべてが、このカスタム署名キーで署名されます。アプリケーションは、この署名キーで署名されたトークンを受け入れるように構成する必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。
+要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。  要求のマッピングが有効なアプリは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーの特殊な URI を確認する必要があります。  
 
 ### <a name="cross-tenant-scenarios"></a>テナント間のシナリオ
 

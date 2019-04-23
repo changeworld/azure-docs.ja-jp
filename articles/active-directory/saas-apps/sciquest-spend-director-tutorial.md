@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 371ea6609181b84ff8554b9e2f1a5047d2d48c48
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258455"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル:Azure Active Directory と SciQuest Spend Director の統合
@@ -106,11 +106,11 @@ SciQuest Spend Director で Azure AD シングル サインオンを構成する
 
     ![[SciQuest Spend Director のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 `https://<companyname>.sciquest.com`
+    b. **[識別子]** ボックスに、`https://<companyname>.sciquest.com` という形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+    c. **[応答 URL]** ボックスに、`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SciQuest Spend Director クライアント サポート チーム](https://www.jaggaer.com/contact-us/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

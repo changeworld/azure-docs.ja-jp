@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: c9be129624c87ca0bff1e85a5d1c71425ef06b89
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.date: 04/10/2019
+ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471784"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489692"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン
+# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Azure SQL Database Managed Instance のタイム ゾーン (プレビュー)
 
 クラウド ソリューションのデータ層では協定世界時 (UTC) を使用することが推奨プラクティスですが、Azure SQL Database Managed Instance では、特定のタイム ゾーンの暗黙的コンテキストにおいて、日付と時刻の値を格納し、日付と時刻関数を呼び出す既存のアプリケーションのニーズを満たすために、タイム ゾーンを選べるようになっています。
 
@@ -72,7 +72,7 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ## <a name="checking-the-time-zone-of-instance"></a>インスタンスのタイム ゾーンを確認する
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timestamp-transact-sql) 関数は、インスタンスのタイム ゾーンの表示名を返します。
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) 関数は、インスタンスのタイム ゾーンの表示名を返します。
 
 ## <a name="cross-feature-considerations"></a>機能をまたいだ考慮事項
 

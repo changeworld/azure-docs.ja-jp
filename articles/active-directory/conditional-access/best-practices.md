@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 11d4d319fa31dd2493810dc7293d415554f79d94
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895564"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571122"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -109,7 +109,7 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
 
-はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
+はい。いくつかの[制限](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync)が付いている条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 アプリでは条件付きアクセスをどのように構成すればよいですか。
 
@@ -138,6 +138,7 @@ Office 365 のアプリは相互接続されているため、ポリシーを作
 
 - **ドメインへの参加が必要** - このポリシーでは、ドメイン参加済みデバイスをまだ持っていない場合に、組織内のすべてのユーザーのアクセスがブロックされる可能性もあります。
 
+- **アプリの保護ポリシーが必要** - このポリシーでは、Intune ポリシーがない場合に、組織内のすべてのユーザーのアクセスがブロックされる可能性もあります。 Intune のアプリの保護ポリシーがあるクライアント アプリケーションを使用していない管理者は、Intune や Azure などのポータルに戻ることが、このポリシーによってブロックされます。
 
 **すべてのユーザー、すべてのクラウド アプリ、すべてのデバイス プラットフォームに対して:**
 

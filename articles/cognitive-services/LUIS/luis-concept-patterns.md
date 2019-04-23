@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547420"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523105"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 
@@ -41,7 +41,7 @@ ms.locfileid: "57547420"
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>パターンは意図を保証するものではない
 パターンは、さまざまな予測テクノロジを使用します。 パターンにテンプレートの発話の意図を設定することは、意図の予測を保証するものではありませんが、強力なシグナルになります。 
 
-<a name="patterns-do-not-improve-entity-detection"/>
+<a name="patterns-do-not-improve-entity-detection"/></a>
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>パターンでは機械学習エンティティの検出は改善されない
 
@@ -50,7 +50,7 @@ ms.locfileid: "57547420"
 複数の発話を 1 つのパターンにまとめた場合は、エンティティ予測の向上を期待しないでください。 単純エンティティを動作させるには、発話を追加するか、リスト エンティティを使用する必要があります。そうでないと、パターンは動作しません。
 
 ## <a name="patterns-use-entity-roles"></a>パターンはエンティティのロールを使用する
-パターン内の 2 つ以上のエンティティがコンテキスト上関連性がある場合、パターンはエンティティの[ロール](luis-concept-roles.md)を使用して、エンティティに関するコンテキスト情報を抽出します。 これは階層におけるエンティティの子要素と同等ですが、パターンで**のみ**有効です。 
+パターン内の 2 つ以上のエンティティがコンテキスト上関連性がある場合、パターンはエンティティの[ロール](luis-concept-roles.md)を使用して、エンティティに関するコンテキスト情報を抽出します。  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>パターンありとなしの場合の予測スコア
 発話例が十分に指定されている場合、LUIS はパターンなしで予測の信頼度を改善できます。 パターンがあれば、それほど多くの発話を指定しなくても信頼度スコアを改善できます。  
@@ -65,7 +65,7 @@ ms.locfileid: "57547420"
 
 パターン構文では、次の構文がサポートされています。
 
-|関数|構文|入れ子レベル|例|
+|Function|構文|入れ子レベル|例|
 |--|--|--|--|
 |エンティティ| {} - 中かっこ|2|フォーム {エンティティ名} はどこですか?|
 |省略可能|[] - 大かっこ<BR><BR>省略可能とグループ化の組み合わせの入れ子レベルは、3 に制限されています |2|疑問符は省略可能です [?]|
@@ -83,7 +83,7 @@ ms.locfileid: "57547420"
 |is a new form (新しいフォームです)|外部の省略可能な単語およびパターン内の省略可能ではない単語と一致します|
 |a new form (新しいフォーム)|必要な単語のみと一致します|
 
-かっこによる**グループ化**構文は、2 レベルまで入れ子にできます。 (例: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`)。 これにより、3 つのエンティティのどれとでも一致できます。 
+かっこによる**グループ化**構文は、2 レベルまで入れ子にできます。 (例: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`)。 この機能により、3 つのエンティティのどれとでも一致できます。 
 
 Entity1 が出発地 (Seattle) や到着地 (Cairo) などの役割を持つ場所であり、Entity 2 がリスト エンティティの既知のビル名 (RedWest-C) である場合、次の発話はこのパターンにマップされます。
 

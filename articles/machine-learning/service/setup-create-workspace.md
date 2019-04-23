@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879286"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547950"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースを作成する
 
@@ -37,7 +37,7 @@ Azure Machine Learning service を使用するには、[**Azure Machine Learning
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->他の Azure サービスと同様に、特定の制限とクォータが Machine Learning に関連付けられています。 [クォータの説明と、クォータの引き上げを要求する方法については、こちらを参照してください。](how-to-manage-quotas.md)
+>他の Azure サービスと同様に、特定の制限とクォータが Machine Learning に関連付けられています。 クォータの説明と、クォータの引き上げを要求する方法については、[こちら](how-to-manage-quotas.md)を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -160,7 +160,7 @@ Python SDK を使用して Jupyter Notebook にワークスペースを作成し
 
 ### <a name="write-a-configuration-file"></a>構成ファイルの記述
 
-構成ファイル内のワークスペースの詳細を現在のディレクトリに保存します。 このファイルは *aml_config/config.json* という名前です。  
+構成ファイル内のワークスペースの詳細を現在のディレクトリに保存します。 このファイルは *.azureml/config.json* という名前です。  
 
 このワークスペース構成ファイルを使用すると、後で同じワークスペースを簡単に読み込むことができます。 コード `ws=Workspace.from_config()` を使用し、同じディレクトリまたはサブディレクトリ内の他のノートブックやスクリプトと共に読み込むことができます。 
 
@@ -177,13 +177,14 @@ Python SDK を使用して Jupyter Notebook にワークスペースを作成し
 ```
 
 > [!TIP]
-> 他のディレクトリにある Python スクリプトや Jupyter Notebooks でワークスペースを使用するには、このファイルをそのディレクトリにコピーします。 このファイルは同じディレクトリ内、*aml_config* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。
+> 他のディレクトリにある Python スクリプトや Jupyter Notebooks でワークスペースを使用するには、このファイルをそのディレクトリにコピーします。 ファイルは、同じディレクトリ内、*.azureml* という名前のサブディレクトリ内、親ディレクトリ内に置くことができます。
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
 
 テンプレートでワークスペースを作成するには、「[テンプレートを使用して Azure Machine Learning service ワークスペースを作成する](how-to-create-workspace-template.md)」を参照してください
 
-## <a name="cli"></a>CLI
+<a name="cli"></a>
+## <a name="command-line-interface"></a>コマンド ライン インターフェイス
 
 CLI でワークスペースを作成するには、「[Azure Machine Learning service 用 CLI 拡張機能の使用](reference-azure-machine-learning-cli.md)」を参照してください。
 

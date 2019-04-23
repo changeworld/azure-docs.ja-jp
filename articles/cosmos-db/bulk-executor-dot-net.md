@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258464"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523343"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -115,7 +115,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |NumberOfDocumentsImported (long)   |  一括インポート API 呼び出しに渡されたドキュメントのうち正常にインポートされたドキュメントの総数。       |
    |TotalRequestUnitsConsumed (double)   |   一括インポート API 呼び出しによって使用された要求ユニット (RU) の合計数。      |
    |TotalTimeTaken (TimeSpan)    |   一括インポート API 呼び出しが実行を完了するまでに要した合計時間。      |
-   |BadInputDocuments (List<object>)   |     一括インポート API 呼び出しで正常にインポートされなかった、形式が正しくないドキュメントの一覧。 ユーザーは返されたドキュメントを修正し、インポートを再試行する必要があります。 形式が正しくないドキュメントには、ID 値が文字列ではないドキュメントがあります (null やその他のデータ型は無効と見なされます)。    |
+   |BadInputDocuments (List\<object>)   |     一括インポート API 呼び出しで正常にインポートされなかった、形式が正しくないドキュメントの一覧。 ユーザーは返されたドキュメントを修正し、インポートを再試行する必要があります。 形式が正しくないドキュメントには、ID 値が文字列ではないドキュメントがあります (null やその他のデータ型は無効と見なされます)。    |
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの一括更新
 

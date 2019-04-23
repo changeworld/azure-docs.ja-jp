@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ab8a231d4d44cfe2bfaf7c003ca57772a7a1814
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896710"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010281"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
 
@@ -33,7 +33,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 |[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|新しい証明書を Azure Automation に作成します。|
 [Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|証明書を Azure Automation から削除します。|
 |[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|証明書ファイルのアップロードや .pfx のパスワードの設定など、既存の証明書のプロパティを設定します。|
-|[Add-AzureCertificate](/previous-versions/azure/dn495214)|指定されたクラウド サービスのサービス証明書をアップロードします。|
+|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|指定されたクラウド サービスのサービス証明書をアップロードします。|
 
 ## <a name="activities"></a>Activities
 
@@ -50,7 +50,7 @@ Runbook および DSC 構成で証明書にアクセスするために、次の�
 
 次の表の関数を使用して、Python2 Runbook の証明書にアクセスします。
 
-| 関数 | 説明 |
+| Function | 説明 |
 |:---|:---|
 | automationassets.get_automation_certificate | 証明書の資産に関する情報を取得します。 |
 

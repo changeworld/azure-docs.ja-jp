@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339559"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525128"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -163,7 +163,7 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 次のアプリケーション設定を作成します。
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (完全な URL、例: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_URL (完全な URL、例: `https://<server-name>.azurecr.io`)
 - DOCKER_REGISTRY_SERVER_PASSWORD (ACR 設定で管理者アクセスを有効にする)
 
 次の例のように、構成ファイル内で ACR イメージを参照します。

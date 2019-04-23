@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: f7d1c5bc54d909d1a948123839d95e1ee1158a5c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444816"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548728"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
@@ -29,6 +29,9 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 > 自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU は、現在、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+
+> [!NOTE]
+> 自動スケーリングとゾーン冗長アプリケーション ゲートウェイ SKU では、[既定の正常性プローブ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe)がサポートされるようになりました。これにより、そのバックエンド プール内のすべてのリソースの正常性が自動的に監視され、異常と見なされたバックエンド メンバーは強調表示されます。 既定の正常性プローブは、カスタム プローブ構成を設定していないすべてのバックエンドに自動的に構成されます。 詳細については、[アプリケーション ゲートウェイの正常性プローブ](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview)に関するページを参照してください。
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>v1 SKU と v2 SKU の機能比較
 
@@ -69,7 +72,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 |同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません|
 |Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされていません|
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
-|Azure 診断でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
+|Azure Diagnostics でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
 |課金|現在は請求されません。|
 |FIPS モード|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|

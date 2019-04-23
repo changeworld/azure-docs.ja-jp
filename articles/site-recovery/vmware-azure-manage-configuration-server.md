@@ -5,18 +5,21 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93e05390d28b9e9998d84935417121696d2963cc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877229"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149497"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを設定します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事は、展開後に構成サーバーを管理するための一般的なタスクをまとめたものです。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="access-configuration-server"></a>構成サーバーにアクセスする
 
@@ -148,7 +151,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
 
 1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** に移動します。
 2. 更新プログラムがある場合は、**[エージェントのバージョン]** 列にリンクが表示されます。
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
 
     ![アップデート](./media/vmware-azure-manage-configuration-server/update1.png)
@@ -234,28 +237,28 @@ ProxyPassword="Password"
 
 必要に応じて、PowerShell を使って構成サーバーを削除できます。
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)します。
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 2. 次のコマンドを使用して Azure アカウントにサインインします。
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 3. コンテナーのサブスクリプションを選びます。
 
-     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+     `Get-AzSubscription –SubscriptionName <your subscription name> | Select-AzSubscription`
 3.  コンテナーのコンテキストを設定します。
 
     ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    $vault = Get-AzRecoveryServicesVault -Name <name of your vault>
+    Set-AzSiteRecoveryVaultSettings -ARSVault $vault
     ```
 4. 構成サーバーを検索します。
 
-    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$fabric = Get-AzSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 構成サーバーを削除します。
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force]`
+    `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> Remove-AzureRmSiteRecoveryFabric で **-Force** オプションを使うと、構成サーバーを強制的に削除できます。
+> Remove-AzSiteRecoveryFabric で **-Force** オプションを使うと、構成サーバーを強制的に削除できます。
 
 ## <a name="generate-configuration-server-passphrase"></a>構成サーバーのパスフレーズを生成する
 

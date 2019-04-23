@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878300"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280895"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -87,6 +87,8 @@ model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
 
 **Azure Container Instance**、**Azure Kubernetes Service**、**Azure IoT Edge** のデプロイでは、イメージの構成を作成するために [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) クラスが使用されます。 そして、新しい Docker イメージを作成するために、このイメージの構成が使用されます。
 
+イメージの構成を作成する場合、Azure Machine Learning service によって提供される__既定のイメージ__または指定した__カスタム イメージ__のいずれかを使用できます。
+
 次のコードは、新しいイメージの構成を作成する方法を示しています。
 
 ```python
@@ -112,6 +114,36 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
 イメージ構成の作成例については、[画像分類子のデプロイ](tutorial-deploy-models-with-aml.md)に関するページを参照してください。
 
 詳細については、[ContainerImage クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)のリファレンス ドキュメントを参照してください。
+
+### <a id="customimage"></a>カスタム イメージの使用
+
+カスタム イメージを使用する場合、次の要件を満たしている必要があります。
+
+* Ubuntu 16.04 以上
+* Conda 4.5.# 以上
+* Python 3.5.# または 3.6.#
+
+カスタム イメージを使用するには、イメージ構成の `base_image` プロパティにイメージのアドレスを設定します。 次の例は、パブリックとプライベートの両方の Azure Container Registry からイメージを使用する方法を示しています。
+
+```python
+# use an image available in public Container Registry without authentication
+image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+image_config.base_image_registry.address = "myregistry.azurecr.io"
+image_config.base_image_registry.username = "username"
+image_config.base_image_registry.password = "password"
+```
+
+Azure Container Registry にイメージをアップロードする詳細については、[プライベート Docker コンテナー レジストリに最初のイメージをプッシュする](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)方法に関するページを参照してください。
+
+モデルを Azure Machine Learning コンピューティングでトレーニングする場合、__バージョン 1.0.22 以上__の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 次の例は、このイメージを使用する方法を示しています。
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
 
 ### <a id="script"></a> 実行スクリプト
 
@@ -154,7 +186,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>バイナリ データの使用
 
-モデルが__バイナリ データ__を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
+モデルが __バイナリ データ__ を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -595,7 +627,7 @@ IoT Edge モジュールをお客様のデバイスにデプロイするには�
 
 ### <a name="deploy-the-model-to-the-device"></a>デバイスにモデルをデプロイする
 
-デバイスにモデルをデプロイするには、「[コンテナー レジストリの資格情報を取得する](#getcontainer)」セクションの IoT Edge モジュールのモジュール デプロイ手順で収集したレジストリ情報を使用します。 たとえば、[Azure portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)場合は、デバイスの__レジストリ設定__を構成する必要があります。 お客様のワークスペースにあるコンテナー レジストリの__ログイン サーバー__、__ユーザー名__、__パスワード__を使用します。
+デバイスにモデルをデプロイするには、「[コンテナー レジストリの資格情報を取得する](#getcontainer)」セクションの IoT Edge モジュールのモジュール デプロイ手順で収集したレジストリ情報を使用します。 たとえば、[Azure portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)場合は、デバイスの__レジストリ設定__を構成する必要があります。 お客様のワークスペースにあるコンテナー レジストリの __ログイン サーバー__、__ユーザー名__、__パスワード__ を使用します。
 
 [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) と [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode) を使用してデプロイすることもできます。
 

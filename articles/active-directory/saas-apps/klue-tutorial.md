@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8e1199826601f8f2ddd82164dac1a20013d9b7bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル:Azure Active Directory と Klue の統合
@@ -106,9 +106,9 @@ Klue を利用して Azure AD シングル サインオンを構成するには�
 
     ![[Klue のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `urn:klue:<Customer ID>`
+    a. **[識別子]** ボックスに、`urn:klue:<Customer ID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
+    b. **[応答 URL]** ボックスに、`https://app.klue.com/account/auth/saml/<Customer UUID>/callback` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

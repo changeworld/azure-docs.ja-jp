@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
 ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006466"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
@@ -24,10 +24,10 @@ ms.locfileid: "59006466"
 
 | | |
 |-|-|
-| **[アプリケーション]** ||
+| **アプリケーション** ||
 | [WordPress][app-wp] | コンテナー グループに WordPress Web サイトと、MySQL データベースを作成します。 WordPress サイトのコンテンツと MySQL データベースは、Azure Files 共有で永続化されます。 WordPress へのパブリック ネットワーク アクセスを公開するアプリケーション ゲートウェイも作成します。 |
 | [SQL Server と IIS を使用する MS NAV][app-nav] | 全機能を備えた自己完結型 Dynamics NAV / Dynamics 365 Business Central 環境に単一の Windows コンテナーを展開します。 |
-| **ボリューム** ||
+| **Volumes** ||
 | [emptyDir][vol-emptydir] | emptyDir ボリュームを共有する 2 つの Linux コンテナーを展開します。 |
 | [gitRepo][vol-gitrepo] | GitHub リポジトリのクローンを作成し、ボリュームとしてマウントする Linux コンテナーを展開します。 |
 | [secret][vol-secret] | シークレット ボリュームとしてマウントされている PFX 証明書を使用して Linux コンテナーを配置します。 |

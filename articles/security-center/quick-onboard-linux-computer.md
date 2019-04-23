@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104677"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521922"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
@@ -57,7 +57,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
    ![エージェントをインストールする][5]
 
-Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/<workspace id>/log/* にあります
+Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/\<ワークスペース ID>/log/* にあります
 
   ![エージェントのログ][6]
 

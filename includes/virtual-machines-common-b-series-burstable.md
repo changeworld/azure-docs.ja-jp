@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e0b78d1e492e4d0fbbf0a44b57bebc2d8d3b1e7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d76a3bb463452207e4b5b023cfe07dfd156e95f4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58763311"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684686"
 ---
 B シリーズ VM ファミリでは、ワークロードで必要とされるベース レベル パフォーマンスを備えた VM を選べるだけでなく、負荷が急増した場合に Intel® Broadwell E5-2673 v4 2.3 GHz または Intel® Haswell 2.4 GHz E5-2673 v3 プロセッサ vCPU の CPU パフォーマンスを 100% 引き出すことができます。
 

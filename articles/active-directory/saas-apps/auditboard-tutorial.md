@@ -16,10 +16,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>チュートリアル:Azure Active Directory と AuditBoard の統合
@@ -105,13 +105,13 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
     ![[AuditBoard のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
+    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert` のパターンを使用して URL を入力します
 
     c. アプリケーションを **SP 開始**モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    d. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.auditboardapp.com/`
+    d. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/` という形式で URL を入力します。
 
     ![[AuditBoard のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 

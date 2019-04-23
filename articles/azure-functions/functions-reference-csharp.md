@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
 ms.openlocfilehash: 232a235cdbf9dc3934bdac14f9612d6865718823
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892417"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
@@ -218,7 +218,7 @@ public class Order
 
 * `#load "mylogger.csx"` によって、関数フォルダーにあるファイルが読み込まれます。
 * `#load "loadedfiles\mylogger.csx"` によって、関数フォルダー内のフォルダーにあるファイルが読み込まれます。
-* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル (*wwwroot* の直下) にあるフォルダー内のファイルが読み込まれます。
+* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル ( *wwwroot*の直下) にあるフォルダーのファイルが読み込まれます。
 
 `#load` ディレクティブは、*.csx* ファイルでのみ機能し、*.cs* ファイルでは機能しません。
 
@@ -254,7 +254,7 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、**Azure Functions の監視**に関する記事にある、[C# 関数でのログの書き込み](functions-monitoring.md#write-logs-in-c-functions)についての説明をご覧ください。
+> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、「**Azure Functions を監視する**」の記事にある、「[C# 関数でログを書き込む](functions-monitoring.md#write-logs-in-c-functions)」をご覧ください。
 
 ## <a name="async"></a>非同期
 

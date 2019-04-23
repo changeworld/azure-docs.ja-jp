@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 62cb8222b592660f2e7ab32d438fd4073246ee50
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5a3d6e51a71f6aab742fe042d6e6e281192319a4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439686"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523020"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
 この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
@@ -44,12 +44,12 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 代わりに使用する既存の DevOps アカウントまたはプロジェクトがある場合、この手順をスキップします。
 
-開始するには、Azure DevOps で無料アカウントを作成します。 https://www.visualstudio.com/ にアクセスし、**Azure DevOps** (以前の VSTS) の真下にある **[無償版の入手]** を選択します。 一意のアカウント名を選択し、Git を使用してコードを管理することを確実に選択する必要があります。 これが作成されたら、チーム プロジェクトに URL を保存します。 サンプル URL を次に示します。 https://<accountname>.visualstudio.com/MyFirstProject
+開始するには、Azure DevOps で無料アカウントを作成します。 https://www.visualstudio.com/ にアクセスし、**Azure DevOps** (以前の VSTS) の真下にある **[無償版の入手]** を選択します。 一意のアカウント名を選択し、Git を使用してコードを管理することを確実に選択する必要があります。 これが作成されたら、チーム プロジェクトに URL を保存します。 サンプル URL を次に示します: `https://<accountname>.visualstudio.com/MyFirstProject`。
 
 ## <a name="check-in-the-image-factory-to-git"></a>イメージ ファクトリの Git へのチェックイン
 イメージ ファクトリのすべての PowerShell、テンプレート、構成は、[パブリックの DevTest Labs GitHub レポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory)内にあります。 新しいチーム プロジェクトにコードを取り込む最も速い方法は、リポジトリをインポートすることです。 これにより、DevTest Labs リポジトリ全体をプルします (こうして追加のドキュメントやサンプルを取得できます)。 
 
-1. 前の手順で作成した Azure DevOps プロジェクトを参照してください (URL は **https://<accountname>.visualstudio.com/MyFirstProject** などとなります)。
+1. 前の手順で作成した Azure DevOps プロジェクトを参照してください (URL は **https:\//\<accountname>.visualstudio.com/MyFirstProject** などとなります)。
 2. **[Import a Repository]\(リポジトリのインポート\)** を選択します。
 3. DevTest Labs リポジトリの**クローン URL** を入力します: `https://github.com/Azure/azure-devtestlab`。
 4. **[インポート]** を選択します。

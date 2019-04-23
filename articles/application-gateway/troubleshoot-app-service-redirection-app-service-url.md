@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
 ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274539"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797791"
 ---
 # <a name="troubleshoot-application-gateway-with-app-service"></a>Application Gateway と App Service のトラブルシューティング
 

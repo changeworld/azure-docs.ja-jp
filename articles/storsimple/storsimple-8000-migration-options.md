@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78508c1227c0b278041b86c3fdd698c6ad27c132
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339455"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608213"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
 > [!IMPORTANT]
-> 2019 年 7 月 31 日に、StorSimple 5000/7000 シリーズはサポート終了 (EOS) になります。 StorSimple 5000/7000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行をお勧めします。
+> 2019 年 7 月 9 日に、StorSimple 5000/7000 シリーズはサポート終了 (EOS) になります。 StorSimple 5000/7000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行をお勧めします。
 
 2019年 7 月に StorSimple 5000-7000 シリーズの[サポートは終了](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series)します。 StorSimple 5000-7000 シリーズを実行しているお客様は、他の Azure ファースト パーティのハイブリッド サービスにアップグレードできます。 この記事では、データの移行に使用できる Azure ハイブリッド オプションについて説明します。 
 
@@ -49,15 +49,28 @@ Azure File Sync にデータを移行する方法の詳細については、[Sto
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>Panzura Freedom NAS に移行する
 
-StorSimple 5000-7000 をご使用のお客様は、Azure でのデータを保持するために、Panzura Freedom NAS への移行を選択できます。 Panzura Freedom ソリューションには、データセンター、オフィス、パブリック クラウドおよびプライベート クラウドにまたがる NAS ソリューションが用意されています。 このソリューションにより、NFS、SMB、およびモバイル クライアントのローカル、ハイブリッド、およびクラウド内のデータ ワークフローが有効になります。 この移行は Panzura によってサポートされており、お客様は [Panzura Web サイト](https://panzura.com/storsimple-migration/)から移行サポートを要求することで開始することができます。
+StorSimple 5000-7000 をご使用のお客様は、Azure でのデータを保持するために、Panzura Freedom NAS への移行を選択できます。 Panzura Freedom ソリューションには、データセンター、オフィス、パブリック クラウドおよびプライベート クラウドにまたがる NAS ソリューションが用意されています。 このソリューションにより、NFS、SMB、およびモバイル クライアントのローカル、ハイブリッド、およびクラウド内のデータ ワークフローが有効になります。 
+
+この移行は Panzura によってサポートされており、お客様は [Panzura Web サイト](https://panzura.com/storsimple-migration/)から移行サポートを要求することで開始することができます。
 
 #### <a name="migrate-to-cohesity"></a>Cohesity に移行する
 
-Cohesity を使用すると、現在の StorSimple 5000–7000 から Azure の Cohesity Data Platform にデータを移行できます。 Cohesity Data Platform はソフトウェアによる Web スケール ソリューションであり、ファイル、バックアップ、オブジェクト、VM を 1 つのクラウドネイティブ ソリューションに統合します。 このデータ プラットフォームに移行後、1 か所からデータやアプリを管理し、保護し、クラウドからコアにプロビジョニングできます。 Cohesity は、3 つという少ない数のノードから始められます。 詳細については、[Cohesity DataPlatform への移行](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)に関するページを参照してください。
+Cohesity を使用すると、現在の StorSimple 5000–7000 から Azure の Cohesity Data Platform にデータを移行できます。 Cohesity Data Platform はソフトウェアによる Web スケール ソリューションであり、ファイル、バックアップ、オブジェクト、VM を 1 つのクラウドネイティブ ソリューションに統合します。 このデータ プラットフォームに移行後、1 か所からデータやアプリを管理し、保護し、クラウドからコアにプロビジョニングできます。 Cohesity は、3 つという少ない数のノードから始められます。 
+
+詳細については、[Cohesity DataPlatform への移行](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)に関するページを参照してください。
 
 #### <a name="migrate-to-nasuni"></a>Nasuni への移行
 
-Nasuni によって StorSimple 5000-7000 をご使用のお客様は、そのデータを Azure に簡単に移行して保持することができます。  Nasuni は最新の Azure ベースの NAS ストレージ ソリューションであり、クラウドの経済性とスケールにより、お客様にオンプレミス ソリューションに想定されるパフォーマンスとセキュリティを提供します。  ハイ パフォーマンスのファイル ストレージに加えて、Nasuni と Azure はバックアップと DR を処理する一方で、一元的なファイル ストレージ管理によって世界中でのデータの共有とコラボレーションを可能にします。 Nasuni では簡単に移行できます ‐ 今すぐ開始しましょう https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni によって StorSimple 5000-7000 をご使用のお客様は、そのデータを Azure に簡単に移行して保持することができます。  Nasuni は最新の Azure ベースの NAS ストレージ ソリューションであり、クラウドの経済性とスケールにより、お客様にオンプレミス ソリューションに想定されるパフォーマンスとセキュリティを提供します。  ハイ パフォーマンスのファイル ストレージに加えて、Nasuni と Azure はバックアップと DR を処理する一方で、一元的なファイル ストレージ管理によって世界中でのデータの共有とコラボレーションを可能にします。 
+
+Nasuni では簡単に移行できます ‐ 今すぐ開始しましょう https://info.nasuni.com/nasuni-storsimple-migration
+
+#### <a name="migrate-to-talon-fast"></a>Talon FAST に移行する
+
+StorSimple 5000-7000 をお使いのお客様は、Talon にすることで、StorSimple プラットフォームで得られていたメリット (無制限のクラウド リソースでサポートされた小さいオンサイト フットプリント) を、いっそう優れた機能で引き続き利用できます。  Talon FAST ソリューションでは、お客様はデータを移行して Azure に保持できますが、さらに小さいソフトウェア専用のオンサイト フットプリントが用意され、グローバル ファイル ロック、グローバル名前空間、マルチサイト コラボレーションなどのベネフィットが加わっています。  Talon は最先端の Azure エコシステム ソリューションであり、世界中のお客様が、オンプレミスのファイル サーバーのワークロードを、ユーザー ワークフローやエクスペリエンスを損なうことなく、統合された Azure ベースのフットプリントに移行しています。  
+
+クラウド統合エンタープライズに発展する方法の詳細については、 https://www.talonstorage.com/alliances/microsoft-storsimple を参照してください。
+
 
 ## <a name="migration---frequently-asked-questions"></a>移行 - よく寄せられる質問
 

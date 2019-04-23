@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 743246881463d9cb5156677a0c3ec719d80a079c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
@@ -53,7 +53,7 @@ Promapp と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Promapp の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Promapp を追加する必要があります。
 
-**ギャラリーから Promapp を追加するには、次の手順に従います。**
+**ギャラリーから Promapp を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -121,7 +121,7 @@ Promapp で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE] 
     > 現在、Promapp との Azure AD の統合は、サービスで開始された認証についてのみ構成されています。たとえば、Promapp URL にアクセスすると、認証プロセスが開始します。 ただし、応答 URL は必須フィールドです。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<DOMAINNAME>.promapp.com/azuread/saml/authenticate.aspx`
+    b. **[応答 URL]** ボックスに、`https://<DOMAINNAME>.promapp.com/azuread/saml/authenticate.aspx` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

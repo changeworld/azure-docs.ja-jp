@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994954"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523326"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Knowledge Exploration Service の作業を開始する
 
@@ -252,7 +252,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 ステージング スロットの内容を運用スロットの内容と[スワップ](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md)し、新しく展開されたサービスにライブ トラフィックを転送します。 新しいデータでサービスの更新バージョンを展開するときには、この処理を繰り返すことができます。 他のすべての Azure クラウド サービスと同様、Azure Portal を使用して[自動スケーリング](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md)を設定できます。
 
-この例では、*<vm_size>* の VM の既存のクラウド サービスのステージング スロットに、*Academic* インデックスを展開します。 次のコマンドを使用します。
+この例では、*\<vm_size>* の VM の既存のクラウド サービスのステージング スロットに、*Academic* インデックスを展開します。 次のコマンドを使用します。
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 

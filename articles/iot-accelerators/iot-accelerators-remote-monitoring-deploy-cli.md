@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793775"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
@@ -56,19 +56,19 @@ pcs login
 
 ローカル デプロイの使用方法の詳細については、[リモート監視ソリューションのローカルでの実行](iot-accelerators-remote-monitoring-deploy-local.md)に関するページを参照してください。
 
-## <a name="basic-and-standard-deployments"></a>基本デプロイと標準デプロイ
+## <a name="basic-and-standard-deployments"></a>Basic デプロイと Standard デプロイ
 
-このセクションでは、基本デプロイと標準デプロイの主な違いをまとめます。
+このセクションでは、Basic デプロイと Standard デプロイの主な違いをまとめます。
 
-### <a name="basic"></a>基本
+### <a name="basic"></a>Basic
 
 基本デプロイは、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) または CLI を使用して実行できます。
 
-基本デプロイは、ソリューションを紹介することを目的としています。 コストを削減するために、すべてのマイクロ サービスは単一の仮想マシンにデプロイされます。 このデプロイは、実稼働可能なアーキテクチャを使用しません。
+Basic デプロイは、ソリューションを紹介することを目的としています。 コストを削減するために、すべてのマイクロ サービスは単一の仮想マシンにデプロイされます。 このデプロイは、実稼働可能なアーキテクチャを使用しません。
 
-基本デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
+Basic デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
-| カウント | リソース                       | 種類         | 用途 |
+| Count | Resource                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
@@ -81,15 +81,15 @@ pcs login
 | 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
-### <a name="standard"></a>標準
+### <a name="standard"></a>Standard
 
 標準デプロイは、CLI のみを使用して実行できます。
 
-標準デプロイは、開発者がカスタマイズして拡張できる運用対応デプロイです。 標準デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用します。 アプリケーションのマイクロサービスは Docker コンテナーとして構築されており、Azure Kubernetes Service を使用してデプロイされています。 Kubernetes オーケストレーターはマイクロ サービスをデプロイ、スケーリング、および管理します。
+Standard デプロイは、開発者がカスタマイズして拡張できる運用対応デプロイです。 Standard デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用します。 アプリケーションのマイクロサービスは Docker コンテナーとして構築されており、Azure Kubernetes Service を使用してデプロイされています。 Kubernetes オーケストレーターはマイクロ サービスをデプロイ、スケーリング、および管理します。
 
-標準デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
+Standard デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
-| カウント | リソース                                     | SKU/サイズ      | 用途 |
+| Count | Resource                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| フル マネージドの Kubernetes コンテナー オーケストレーション サービスをぜひご利用ください。既定のエージェントは 3 つです。|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |

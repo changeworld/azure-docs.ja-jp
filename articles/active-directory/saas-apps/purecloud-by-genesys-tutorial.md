@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 764ad8f1ca19238e1986d1d187d19c405963a832
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory と PureCloud by Genesys の統合
@@ -146,7 +146,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
     | Name | ソース属性|
     | ---------------| --------------- |
-    | 電子メール | user.userprinicipalname |
+    | Email | user.userprinicipalname |
     | OrganizationName | `Your organization name` |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
@@ -260,7 +260,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
 Azure AD ユーザーが PureCloud by Genesys にログインできるようにするには、それらを PureCloud by Genesys にプロビジョニングする必要があります。 PureCloud by Genesys では、プロビジョニングは手動のタスクです。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. PureCloud by Genesys に管理者としてログインします。
 

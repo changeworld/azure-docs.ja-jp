@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d83cad9c6681a9d1c852c3d874028ceb6913344f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293994"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790140"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル:多要素認証を B2B ゲスト ユーザーに適用する
 
@@ -72,7 +72,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 3.  サインアウトします。
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>MFA を要求する条件付きアクセス ポリシーを作成する
-1.  [Azure portal](https://portal.azure.com/) に全体管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1.  [Azure portal](https://portal.azure.com/) にセキュリティ管理者または条件付きアクセス管理者としてサインインします。
 2.  Azure Portal で、**[Azure Active Directory]** を選びます。 
 3.  **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、**[条件付きアクセス]** を選択します。
 4.  **[条件付きアクセス]** ページで、上部のツール バーの **[新しいポリシー]** を選択します。
@@ -101,7 +101,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![[ポリシーの有効化] オプションが [オン] に設定された状態を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
-17. **作成**を選択します。
+17. **作成** を選択します。
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>What If オプションを使用してサインインをシミュレートする
 

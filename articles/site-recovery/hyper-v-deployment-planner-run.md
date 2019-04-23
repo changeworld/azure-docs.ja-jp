@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361345"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
@@ -254,14 +254,14 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 
 生成された Microsoft Excel レポートには、次の情報が含まれています。
 
-* [On-Premises summary (オンプレミス サマリー)](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
-* [Recommendations](hyper-v-deployment-planner-analyze-report.md#recommendations)
-* [VM-Storage placement (VM<->ストレージの配置)](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
+* [On-premises summary (オンプレミス サマリー)](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
+* [Recommendations (推奨事項)](hyper-v-deployment-planner-analyze-report.md#recommendations)
+* [VM-storage placement (VM-ストレージの配置)](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
 * [Compatible VMs (適合 VM)](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
 * [Incompatible VMs (不適合 VM)](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
-* [オンプレミス ストレージ要件](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
-* [IR バッチ分割](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
-* [コスト見積もり](hyper-v-deployment-planner-cost-estimation.md)
+* [On-premises storage requirement (オンプレミス ストレージ要件)](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
+* [IR batching (IR バッチ分割)](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
+* [Cost estimation (コスト見積もり)](hyper-v-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner レポート](media/hyper-v-deployment-planner-run/deployment-planner-report-h2a.png)
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001280"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526743"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 
@@ -73,8 +73,8 @@ Yeoman テンプレートは、**現在のディレクトリ**内にファイル
 1. 作成しようとしている新しい空のディレクトリを含む親ディレクトリに移動します。
 1. 「 `mkdir <new-directory-name>` 」を入力します。
 
-    >[!NOTE]
-    ><new-directory-name> を新しいディレクトリの名前に置き換えます。 この例では、新しいディレクトリを `GeneratorDocSample` という名前にします。
+    > [!NOTE]
+    > `<new-directory-name>` を新しいディレクトリの名前に置き換えます。 この例では、新しいディレクトリを `GeneratorDocSample` という名前にします。
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -250,7 +250,7 @@ Docker ファイルに代わり Cloud Shell を使用することで、このプ
 
 1. $GOPATH フォルダーがまだ存在しない場合は、作成します。「 `mkdir ~/go` 」を入力します。
 
-1. $GOPATH フォルダー内に 1 つのフォルダーを作成します。「 `mkdir ~/go/src` 」を入力します。 このフォルダーは、自分が作成する可能性のある各種プロジェクト フォルダー (次の手順で作成する <your-module-name> フォルダーなど) を格納したり整理したりする目的で使用します。
+1. $GOPATH フォルダー内に 1 つのフォルダーを作成します。「 `mkdir ~/go/src` 」を入力します。 このフォルダーは、自分が作成する可能性のある各種プロジェクト フォルダー (次の手順で作成する `<your-module-name>` フォルダーなど) を格納したり整理したりする目的で使用します。
 
 1. Terraform モジュールを格納するためのフォルダーを作成します。「 `mkdir ~/go/src/<your-module-name>` 」を入力します。
 

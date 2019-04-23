@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
 ms.openlocfilehash: b8cf0891bd2a11a4ea46cc9fb8bad266862b6971
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59005380"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート: IoT の利用統計情報を Android デバイスから送信する
@@ -99,7 +99,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 5. アプリが読み込まれたら、**[Start]\(開始\)** ボタンをクリックして、IoT ハブへの利用統計情報の送信を開始します。
 
-    ![アプリケーション](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Application](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
@@ -129,5 +129,5 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:IoT ハブに接続されたデバイスを制御する](quickstart-control-device-android.md)
+> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-android.md)
 

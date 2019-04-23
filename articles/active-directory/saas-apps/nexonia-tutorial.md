@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: d5f2f31f87bc3732b7b3a5593217ebde4ee213c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>チュートリアル:Azure Active Directory と Nexonia の統合
@@ -50,7 +50,7 @@ Azure AD と Nexonia の統合を構成するには、次のものが必要で�
 
 Azure AD への Nexonia の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Nexonia を追加する必要があります。
 
-**ギャラリーから Nexonia を追加するには、次の手順に従います。**
+**ギャラリーから Nexonia を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -104,9 +104,9 @@ Nexonia で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Nexonia のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `Nexonia`
+    a. **[識別子]** テキスト ボックスに、`Nexonia` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
+    b. **[応答 URL]** ボックスに、`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Nexonia クライアント サポート チーム](https://nexonia.zendesk.com/hc/requests/new)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

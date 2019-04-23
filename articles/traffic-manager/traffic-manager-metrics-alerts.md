@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
 ms.openlocfilehash: 1c0c48efc7abf4b810e92b5cd04d1538577c71d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268287"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
@@ -33,13 +33,13 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
   
 ![すべてのクエリの集計ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-*図 1:すべてのクエリを含む集計ビュー*
+"*図 1:すべてのクエリを含む集計ビュー*"
   
 図 2 は同じ情報を表示しますが、エンドポイント別に分割されます。 その結果、特定のエンドポイントが返されるクエリの応答数を確認できます。
 
 ![Traffic Manager メトリック - クエリ数のエンドポイント別の分割ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-*図 2:返されたエンドポイント別に表示したクエリ数の分割ビュー*
+"*図 2:返されたエンドポイント別に表示したクエリ数の分割ビュー*"
 
 ## <a name="endpoint-status-by-endpoint"></a>エンドポイント別のエンドポイント状態
 [このメトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)を使用して、プロファイルのエンドポイントの正常性状態を理解します。 これには次の 2 つの値があります。
@@ -51,12 +51,12 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 
 ![Traffic Manager メトリック - エンドポイントの状態の複合ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
 
-*図 3:エンドポイントの状態メトリックの複合ビュー – "Avg" 集計を選択*
+"*図 3:エンドポイントの状態メトリックの複合ビュー – "Avg" 集計を選択*"
 
 
 ![Traffic Manager メトリック - エンドポイントの状態の分割ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-*図 4:エンドポイントの状態メトリックの分割ビュー*
+"*図 4:エンドポイントの状態メトリックの分割ビュー*"
 
 [Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)のポータル、[REST API](https://docs.microsoft.com/rest/api/monitor/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、および [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) から、または Traffic Manager のポータル操作のメトリック選択によってこれらのメトリックを使用できます。
 

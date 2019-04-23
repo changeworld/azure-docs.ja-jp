@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124288"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544820"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -66,7 +66,7 @@ U-SQL プロジェクトの U-SQL スクリプトには、U-SQL データベー�
 詳細については、[U-SQL データベース プロジェクト](data-lake-analytics-data-lake-tools-develop-usql-database.md)に関するページを参照してください。
 
 >[!NOTE]
->現在、U-SQL データベース プロジェクトはパブリック プレビュー段階にあります。 プロジェクトに DROP ステートメントがある場合、ビルドは失敗します。 DROP ステートメントは近いうちに使用可能になる予定です。
+>DROP ステートメントでは、意図しない削除の問題が発生することがあります。 DROP ステートメントを有効にするには、MSBuild 引数を明示的に指定する必要があります。 **AllowDropStatement** では、アセンブリのドロップやテーブル値関数のドロップなど、非データ関連の DROP 操作を有効にします。 **AllowDataDropStatement** では、テーブルのドロップやスキーマのドロップなど、データ関連の DROP 操作を有効にします。 AllowDataDropStatement を使用する前に、AllowDropStatement を有効にする必要があります。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>MSBuild コマンド ラインを使用して U-SQL プロジェクトをビルドする
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 引数の定義と値は次のとおりです。
 
-* **USQLSDKPath=<U-SQL Nuget package>\build\runtime**。 このパラメーターは、U-SQL 言語サービス用の NuGet パッケージのインストール パスを参照します。
+* **USQLSDKPath=\<U-SQL Nuget package>\build\runtime**。 このパラメーターは、U-SQL 言語サービス用の NuGet パッケージのインストール パスを参照します。
 * **USQLTargetType=Merge or SyntaxCheck**:
     * **Merge**。 マージ モードでコードビハインド ファイルをコンパイルします。 たとえば、**.cs**、**.py**、**.r** などのファイルです。 結果のユーザー定義コード ライブラリを U-SQL スクリプトにインライン展開します。 たとえば、dll バイナリ、Python、R などのコードです。
     * **SyntaxCheck**。 SyntaxCheck モードでは、まずコードビハインド ファイルが U-SQL スクリプトにマージされます。 次に、U-SQL スクリプトがコンパイルされ、コードが検証されます。
-* **DataRoot=<DataRoot path>**。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
+* **DataRoot=\<DataRoot パス>**。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
 * **EnableDeployment=true** または **false**。 EnableDeployment は、ビルド処理中に参照されている U-SQL データベースをデプロイできるかどうかを示します。 U-SQL データベース プロジェクトを参照し、U-SQL スクリプトでデータベース オブジェクトを使用する場合は、このパラメーターを **true** に設定します。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines を使用した継続的インテグレーション
@@ -454,7 +454,7 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
 
 #### <a name="common-parameters"></a>一般的なパラメーター
 
-| パラメーター | 説明 | 既定値 | 必須 |
+| パラメーター | 説明 | Default value | 必須 |
 |---------|-----------|-------------|--------|
 |Package|デプロイする U-SQL データベース デプロイ パッケージのパス。|null|true|
 |Database|デプロイまたは作成されるデータベース名。|master|false|
@@ -463,13 +463,13 @@ Azure Pipelines でデータベース デプロイ タスクを設定するに�
 
 #### <a name="parameter-for-local-deployment"></a>ローカル デプロイのパラメーター
 
-|パラメーター|説明|既定値|必須|
+|パラメーター|説明|Default value|必須|
 |---------|-----------|-------------|--------|
 |DataRoot|ローカル データ ルート フォルダーのパス。|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics デプロイのパラメーター
 
-|パラメーター|説明|既定値|必須|
+|パラメーター|説明|Default value|必須|
 |---------|-----------|-------------|--------|
 |Account|アカウント名を使用して、デプロイ先の Azure Data Lake Analytics アカウント指定します。|null|true|
 |ResourceGroup|Azure Data Lake Analytics アカウントの Azure リソース グループ名。|null|true|

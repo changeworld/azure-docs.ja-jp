@@ -10,18 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918044"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577594"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
 Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。
 
 [機械翻訳の詳細](https://www.microsoft.com/translator/mt.aspx)
+
+## <a name="translation"></a>翻訳
 
 **V2 Translator API**
 
@@ -33,7 +35,10 @@ Translator Text API では、テキスト対テキストの翻訳について、
 * ニューラルが既定: ニューラルが既定の翻訳システムです。 Microsoft Translator Hub 用の統計システムにアクセスするには、パラメーター `category=smt` を使用します。
 * ニューラルのみ: 利用できるのはニューラル翻訳のみです。
 
-**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 カスタム トランスレーターは、ニューラル言語でのみ使用できます。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
+**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 
+
+> [!NOTE]
+> 現在、ニューラル言語のサブセットはカスタム翻訳ツールで利用することができ、Mcrosoft では、段階的に内容を追加しています。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
 
 |言語|  言語コード|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
@@ -110,10 +115,10 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | アラビア語 | `ar` | アラビア語 `Arab` | <--> | ラテン語 `Latn` |
 |バングラ語  | `bn` | ベンガル語 `Beng` | <--> | ラテン語 `Latn` |
-| 中国語 (簡体字) | `zh-Hans` | 中国語 (簡体字) `Hans`| <--> | ラテン語 `Latn` |
-| 中国語 (簡体字) | `zh-Hans` | 中国語 (簡体字) `Hans`| <--> | 中国語 (繁体字) `Hant`|
-| 中国語 (繁体字) | `zh-Hant` | 中国語 (繁体字) `Hant`| <--> | ラテン語 `Latn` |
-| 中国語 (繁体字) | `zh-Hant` | 中国語 (繁体字) `Hant`| <--> | 中国語 (簡体字) `Hans` |
+| 中国語 (簡体字) | `zh-Hans` | 中国語簡体字 `Hans`| <--> | ラテン語 `Latn` |
+| 中国語 (簡体字) | `zh-Hans` | 中国語簡体字 `Hans`| <--> | 中国語繁体字 `Hant`|
+| 中国語 (繁体字) | `zh-Hant` | 中国語繁体字 `Hant`| <--> | ラテン語 `Latn` |
+| 中国語 (繁体字) | `zh-Hant` | 中国語繁体字 `Hant`| <--> | 中国語簡体字 `Hans` |
 | グジャラート語 | `gu`  | グジャラート語 `Gujr` | --> | ラテン語 `Latn` |
 | ヘブライ語 | `he` | ヘブライ語 `Hebr` | <--> | ラテン語 `Latn` |
 | ヒンディー語 | `hi` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
@@ -123,9 +128,9 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | マラーティー語 | `mr` | デーヴァナーガリー `Deva` | --> | ラテン語 `Latn` |
 | オリヤー語 | `or` | オリヤー語 `Orya` | <--> | ラテン語 `Latn` |
 | パンジャーブ語 | `pa` | グルムキー文字 `Guru`  | <--> | ラテン語 `Latn`  |
-| セルビア語 (キリル文字) | `sr-Cyrl` | キリル文字 `Cyrl`  | --> | ラテン語 `Latn` |
-| セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル文字 `Cyrl`|
-| タミル語 | `ta` | タミル語 `Taml` | --> | ラテン語 `Latn` |
+| セルビア語 (キリル文字) | `sr-Cyrl` | キリル語 `Cyrl`  | --> | ラテン語 `Latn` |
+| セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
+| タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
 | テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
 | タイ語 | `th` | タイ語 `Thai` | <--> | ラテン語 `Latn` |
 
@@ -188,77 +193,8 @@ Translator Text API では、テキスト対テキストの翻訳について、
 
 ## <a name="detect"></a>Detect
 
-Detect メソッドでは以下の言語がサポートされます。 Detect では、Microsoft Translator が翻訳できない言語を識別できます。
+Translator Text API では、翻訳および音訳に使用できるすべての言語が検出されます。
 
-| 言語    |
-|:----------- |
-| アフリカーンス語 |
-| アルバニア語 |
-| アラビア語 |
-| バスク語 |
-| ベラルーシ語 |
-| ブルガリア語 |
-| カタルニア語 |
-| 中国語 |
-| 中国語 (簡体字) |
-| 中国語 (繁体字) |
-| クロアチア語 |
-| チェコ語 |
-| デンマーク語 |
-| オランダ語 |
-| 英語 |
-| エスペラント語 |
-| エストニア語 |
-| フィンランド語 |
-| フランス語 |
-| ガリシア語 |
-| ドイツ語 |
-| ギリシャ語 |
-| ハイチ クレオール語 |
-| ヘブライ語 |
-| ヒンディー語 |
-| ハンガリー語 |
-| アイスランド語 |
-| インドネシア語 |
-| アイルランド語 |
-| イタリア語 |
-| 日本語 |
-| 韓国語 |
-| クルド語 (アラビア文字) |
-| クルド語 (ラテン文字) |
-| ラテン語 |
-| ラトビア語 |
-| リトアニア語 |
-| マケドニア語 |
-| マレー語 |
-| マルタ語 |
-| ノルウェー語 |
-| ノルウェー語 (ニーノシュク) |
-| パシュトウ語 |
-| ペルシャ語 |
-| ポーランド語 |
-| ポルトガル語 |
-| ルーマニア語 |
-| ロシア語 |
-| セルビア語 (キリル文字) |
-| セルビア語 (ラテン) |
-| スロバキア語 |
-| スロベニア語 |
-| ソマリ語 |
-| スペイン語 |
-| スワヒリ語 |
-| スウェーデン語 |
-| タガログ語 |
-| テルグ語 |
-| タイ語 |
-| トルコ語 |
-| ウクライナ語 |
-| ウルドゥー語 |
-| ウズベク語 (キリル) |
-| ウズベク語 (ラテン) |
-| ベトナム語 |
-| ウェールズ語 |
-| イディッシュ語 |
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>Translator Text API の言語一覧にプログラムでアクセスする
 
@@ -291,6 +227,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | ヒンディー語      | `hi`          |
 | ハンガリー語      | `hu`          |
 | アイスランド語 | `is` |
+| インドネシア語|   `id`    |
 | イタリア語      | `it`          |
 | 日本語      | `ja`          |
 | 韓国語      | `ko`          |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047026"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>成果物を VM に追加する
@@ -167,6 +167,6 @@ if ($virtualMachine -ne $null) {
 成果物に関する次の記事をご覧ください。
 
 - [ラボに必須の成果物の指定](devtest-lab-mandatory-artifacts.md)
-- [カスタム アーティファクトを作成する](devtest-lab-artifact-author.md)
-- [アーティファクト リポジトリをラボに追加する](devtest-lab-artifact-author.md)
+- [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
+- [ラボへの成果物リポジトリの追加](devtest-lab-artifact-author.md)
 - [アーティファクトの失敗の診断](devtest-lab-troubleshoot-artifact-failure.md)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425850"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
@@ -122,13 +122,13 @@ AD Replication Status タイルには、現在発生しているレプリケー�
 **Q:AD レプリケーションの状態データはどのような頻度で更新されますか?**
 A:この情報は 5 日おきに更新されます。
 
-**Q:このデータの更新頻度を構成する方法はありますか?**
+**Q:このデータの更新頻度を構成する方法がありますか?**
 A:現時点ではありません。
 
 **Q:レプリケーションの状態の確認用に、Log Analytics ワークスペースにすべてのドメイン コントローラーを追加する必要がありますか?**
 A:いいえ。ドメイン コントローラーは 1 つのみ追加します。 Log Analytics ワークスペースにドメイン コントローラーが複数ある場合、それらのすべてのデータが Azure Monitor に送信されます。
 
-**Q:Log Analytics ワークスペースに、ドメイン コントローラーを追加したくありません。 それでも AD Replication Status ソリューションは使用できますか?**
+**Q:Log Analytics ワークスペースに、ドメイン コントローラーを追加したくありません。それでも AD レプリケーションの状態ソリューションを使用できますか?**
 
 A:はい。 レジストリ キー値を設定して、これを有効にできます。 「[非ドメイン コントローラーを有効にする](#enable-non-domain-controller)」をご覧ください。
 

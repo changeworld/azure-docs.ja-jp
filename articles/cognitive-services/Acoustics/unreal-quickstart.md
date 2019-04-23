@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492409"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Project Acoustics Unreal/Wwise のクイック スタート
@@ -50,7 +50,7 @@ Project Acoustics Unreal プラグインでは、Wwise Unreal プラグイン AP
 
     ![Wwise プロジェクトを修正するスクリプトを示す Windows エクスプローラー ウィンドウのスクリーンショット](media/patch-wwise-script.png)
 
-* DirectX SDK がインストールされていない場合は、次の DXSDK_DIR を含む行をコメントアウトする必要があります。 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* DirectX SDK がインストールされていない場合は、`AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` の DXSDK_DIR を含む行をコメントアウトする必要があります
 
     ![DXSDK がコメント アウトされているコード エディターのスクリーンショット](media/directx-sdk-comment.png)
 

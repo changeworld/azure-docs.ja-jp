@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 188cb21688ee092db426e51c6ae327def3ff02d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919277"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804490"
 ---
 | Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "58919277"
 | サブスクリプションあたりの DNS サーバー数 |9 |100 |
 | サブスクリプションあたりの予約済み IP 数 |20 |100 |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |256 |256 |
-
+| サブスクリプション名の長さ (文字) | 64 | 64 |
 
 <sup>1</sup>XS インスタンスは、使用する CPU コア数が 1 コアに満たなくても、vCPU 制限を上限として 1 vCPU とカウントされます。
 

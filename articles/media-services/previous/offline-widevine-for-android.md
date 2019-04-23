@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 9570982e18f2698400c2798dd3e29b0ca6160b8c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 55d59871ee72f755fcd881e4f89e56e6d6d1d84e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309744"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995321"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング  
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [Version 3](../latest/offline-widevine-for-android.md)
 > * [Version 2](offline-widevine-for-android.md)
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 オンライン ストリーミング用にコンテンツを保護するだけでなく、メディア コンテンツ サブスクリプション サービスとレンタル サービスは、インターネットに接続していないときに視聴できるダウンロード可能なコンテンツを提供します。 ネットワークから切断されて飛行中に機内モードで再生するには、お使いの携帯電話やタブレットにコンテンツをダウンロードすることが必要な場合があります。 コンテンツのダウンロードが必要になることがあるシナリオとしては、他に次のような場合があります。
 

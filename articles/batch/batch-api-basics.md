@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3839a1a457af1549a82b7607310a619911c78591
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761873"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617485"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -471,7 +471,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ### <a name="accounting-for-task-failures-or-interruptions"></a>タスクのエラーや中断の理由
 タスクは、エラーが発生したり中断されたりする場合があります。 タスク アプリケーション自体でエラーが発生したり、タスクが実行されているノードが再起動したりすることがあります。また、プールの割り当て解除ポリシーがタスクの完了を待たずに直ちにノードを削除するように設定されている場合は、サイズ変更操作中にノードがプールから削除されることもあります。 どのようなケースでも、Batch によってタスクを自動的にキューに戻し、別のノードで実行することができます。
 
-断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになる場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
+断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになったりする場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
 
 ### <a name="connecting-to-compute-nodes"></a>コンピューティング ノードへの接続
 リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行することもできます。

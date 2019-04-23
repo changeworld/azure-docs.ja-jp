@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 2c64019ae667ff4a2ce0694ffc4a9cd69b9116b3
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048921"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
@@ -32,28 +32,28 @@ HDInsight は、HDInsight 用の Azure Service Manager (ASM) ベースのツー�
 
 Azure クラシック CLI を使用して HDInsight を操作するための基本的なコマンドを次に示します。
 
-* `azure hdinsight cluster create` - 新しい HDInsight クラスターが作成されます
-* `azure hdinsight cluster delete` - 既存の HDInsight クラスターが削除されます
-* `azure hdinsight cluster show` - 既存のクラスターに関する情報が表示されます
-* `azure hdinsight cluster list` - Azure サブスクリプションの HDInsight クラスターが一覧表示されます
+* `azure hdinsight cluster create` - 新しい HDInsight クラスターを作成します
+* `azure hdinsight cluster delete` - 既存の HDInsight クラスターを削除します
+* `azure hdinsight cluster show` - 既存のクラスターに関する情報を表示します
+* `azure hdinsight cluster list` - Azure サブスクリプションの HDInsight クラスターを一覧表示します
 
 各コマンドの使用できるパラメーターとスイッチを調べるには、 `-h` スイッチを使用します。
 
 ### <a name="new-commands"></a>新しいコマンド
 Azure Resource Manager では、次の新しいコマンドを使用できます。
 
-* `azure hdinsight cluster resize` - クラスター内のワーカー ノード数が動的に変更されます
-* `azure hdinsight cluster enable-http-access` - クラスターに対する HTTP アクセスが有効になります (既定では有効)
-* `azure hdinsight cluster disable-http-access` - クラスターに対する HTTP アクセスが無効になります
-* `azure hdinsight script-action` - クラスターに対するスクリプト アクションを作成または管理するコマンドが表示されます
-* `azure hdinsight config` - `hdinsight cluster create` コマンドに使用して構成情報を提供することができる構成ファイルを作成するためのコマンドが表示されます
+* `azure hdinsight cluster resize` - クラスター内のワーカー ノード数を動的に変更します
+* `azure hdinsight cluster enable-http-access` - クラスターに対する HTTP アクセスを有効にします (既定は有効)
+* `azure hdinsight cluster disable-http-access` - クラスターに対する HTTP アクセスを無効にします
+* `azure hdinsight script-action` - クラスターに対するスクリプト アクションを作成または管理するコマンドを表示します
+* `azure hdinsight config` - `hdinsight cluster create` コマンドに使用して構成情報を提供することができる構成ファイルを作成するためのコマンドを表示します
 
 ### <a name="deprecated-commands"></a>非推奨のコマンド
 `azure hdinsight job` コマンドを使用してジョブを HDInsight クラスターに送信する場合、これらのコマンドは Resource Manager コマンドからは使用できません。 プログラムでスクリプトから HDInsight にジョブを送信する必要がある場合は、代わりに HDInsight に用意されている REST API を使用してください。 REST API を使用したジョブの送信については、次のドキュメントを参照してください。
 
-* [cURL を使用して HDInsight 上の Hadoop で MapReduce ジョブを実行する](hadoop/apache-hadoop-use-mapreduce-curl.md)
-* [cURL を使用して HDInsight 上の Apache Hadoop で Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-curl.md)
-* [cURL を使用して HDInsight 上の Apache Hadoop で Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-curl.md)
+* [Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-curl.md)
+* [HDInsight 上の Apache Hadoop で cURL を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-curl.md)
 
 Apache Hadoop MapReduce、Apache Hive、および Apache Pig を対話形式で実行する他の方法については、[HDInsight 上の Hadoop で MapReduce を使用する](hadoop/hdinsight-use-mapreduce.md)方法のページ、[HDInsight 上の Apache Hadoop での Apache Hive の使用を使用する](hadoop/hdinsight-use-hive.md)方法のページ、および「[HDInsight 上の Apache Pig で Apache Pig を使用する](hadoop/hdinsight-use-pig.md)」を参照してください。
 
@@ -131,7 +131,7 @@ Windows PowerShell コンソールで HDInsight ASM コマンドレットを一�
 ### <a name="new-cmdlets"></a>新しいコマンドレット
 Resource Manager モードでのみ使用できる新しいコマンドレットを次に示します。 
 
-**スクリプト操作に関連するコマンドレット: **
+**スクリプト操作に関連するコマンドレット:**
 
 * **Get-AzHDInsightPersistedScriptAction**:クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。 
 * **Get-AzHDInsightScriptActionHistory**:クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。 
@@ -141,7 +141,7 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 
 その他の使用方法について詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
-**クラスター ID に関連するコマンドレット: **
+**クラスター ID に関連するコマンドレット:**
 
 * **Add-AzHDInsightClusterIdentity**:クラスター ID をクラスター構成オブジェクトに追加して、HDInsight クラスターが Azure Data Lake Storage にアクセスできるようにします。 [Azure PowerShell を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)方法に関するページを参照してください。
 
@@ -180,7 +180,7 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
         -SshCredential $sshCredentials
 
 
-**クラスターを削除する**
+**クラスターの削除**
 
 以前のコマンド (ASM):
 
@@ -212,7 +212,7 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 
 
 #### <a name="other-samples"></a>その他のサンプル
-* [HDInsight クラスターを作成する](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+* [HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [Apache Hive ジョブを送信する](hadoop/apache-hadoop-use-hive-powershell.md)
 * [Apache Pig ジョブを送信する](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Apache Sqoop ジョブを送信する](hadoop/apache-hadoop-use-sqoop-powershell.md)

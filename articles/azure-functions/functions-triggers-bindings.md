@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58889840"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
@@ -72,8 +72,8 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 
 すべてのトリガーとバインドには、[function.json](./functions-reference.md) ファイルに `direction` プロパティがあります。
 
-- トリガーの場合、方向は常に次のとおりです:  `in`
-- 入出力バインドは次を使用します: `in` および `out`
+- トリガーの場合、方向は常に `in` です
+- 入出力バインドは `in` と `out` を使用します
 - 一部のバインドは、特殊な方向の `inout` をサポートしてします。 `inout` を使用する場合、ポータルの **[統合]** タブで使用できるのは**詳細エディター**のみです。
 
 [クラス ライブラリの属性](functions-dotnet-class-library.md)を使用してトリガーとバインドを構成した場合、その方向は属性コンストラクターで提供されるか、またはパラメーター型から推論されます。

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: cc2bbd0c1220a37de640bde6294eb096b25e5398
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル:Azure Active Directory と OrgChart Now の統合
@@ -114,7 +114,7 @@ OrgChart Now で Azure AD シングル サインオンを構成するには、�
     **[サインオン URL]** ボックスに、`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > `<YourEntityID>`  は、**[OrgChart Now のセットアップ]** セクションでコピーする **Azure AD の ID** です (このチュートリアルで後ほど説明します)。
+    > `<YourEntityID>` は、**[OrgChart Now のセットアップ]** セクションでコピーする **Azure AD の ID** です (このチュートリアルで後ほど説明します)。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

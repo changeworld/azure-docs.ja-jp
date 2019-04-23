@@ -10,10 +10,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877399"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(非推奨) Log Analytics による Azure Container Service クラスターの監視
@@ -123,7 +123,7 @@ Log Analytics ワークスペースの ID とキーを保護するには、Daemo
   KEY:    88 bytes
   ```
 
-  - 次のコマンドを実行して、omsagent daemon-set を作成します:  ```kubectl create -f omsagent-ds-secrets.yaml```
+  - ```kubectl create -f omsagent-ds-secrets.yaml``` を実行して、omsagent daemon-set を作成します。
 
 ### <a name="conclusion"></a>まとめ
 これで完了です。 しばらくすると、Log Analytics ダッシュボードへのデータ フローを確認できます。

@@ -12,38 +12,29 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: dfdea9f8d50c467bf0e4317c8d95135afefa765f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778010"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500687"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-このチュートリアルに含まれる手順は次のとおりです。
-
-1. Azure Portal を使用して Service Bus 名前空間を作成する。
-2. Azure Portal を使用して Service Bus キューを作成する。
-3. キューに一連のメッセージを送信するための .NET Core コンソール アプリケーションを作成する。
-4. それらのメッセージをキューから受信する .NET Core コンソール アプリケーションを作成する。
+このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。 
 
 ## <a name="prerequisites"></a>前提条件
 
 1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
-2. Azure サブスクリプション。
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
-
+2. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+3. 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
+    1. Service Bus **キュー**の**概要**をお読みください。 
+    2. Service Bus **名前空間**を作成します。 
+    3. **接続文字列**を取得します。 
+    4. Service Bus **キュー**を作成します。 
 
 ## <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
 

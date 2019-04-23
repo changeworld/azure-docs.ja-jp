@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283479"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN ルール エンジンの一致条件 
@@ -45,7 +45,7 @@ Name | 目的
 
 Name | 目的
 -----|--------
-[Device](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
+[デバイス](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
 
 ## <a name="location-match-conditions"></a>「Location (場所)」一致条件
 
@@ -71,7 +71,7 @@ Name | 目的
 
 Name | 目的
 -----|--------
-[Client IP Address (現在の IP アドレス)](#client-ip-address) | 特定の IP アドレスから送信される要求を識別します。
+[Client IP Address (クライアント IP アドレス)](#client-ip-address) | 特定の IP アドレスから送信される要求を識別します。
 [Cookie Parameter (Cookie パラメーター)](#cookie-parameter) | 指定した値の各要求に関連付けられている Cookie を確認します。
 [Cookie Parameter Regex (Cookie パラメーターの正規表現)](#cookie-parameter-regex) | 指定した正規表現の各要求に関連付けられている Cookie を確認します。
 [Edge Cname (エッジ CNAME)](#edge-cname) | 特定の CNAME を指す要求を識別します。
@@ -320,7 +320,7 @@ WURFL 機能とは、モバイル デバイスを記述するカテゴリを指�
 > [!NOTE] 
 > 次の変数は、**Modify Client Request Header (クライアント要求ヘッダーの修正)** と **Modify Client Response Header (クライアント応答ヘッダーの修正)** 機能でサポートされています。
 
-機能 | 可変 | 説明 | サンプルの値
+機能 | 変数 | 説明 | サンプルの値
 -----------|----------|-------------|----------------
 Brand Name | % {wurfl_cap_brand_name} | デバイスのブランド名を示す文字列です。 | Samsung
 Device OS | % {wurfl_cap_device_os} | デバイスにインストールされているオペレーティング システムを示す文字列です。 | IOS
@@ -472,7 +472,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 - POST 
 - OPTIONS 
 - PUT 
-- 削除 
+- DELETE 
 - TRACE 
 - CONNECT 
 
@@ -872,7 +872,7 @@ Name  | 値 |  結果
 ------|-------|--------
 User  | Joe   | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 User  | *     | 要求された URL のクエリ文字列に User パラメーターが含まれている場合、このパターンに一致します。
-電子メール | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始まる Email パラメーターが含まれている場合、このパターンに一致します。
+Email | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始まる Email パラメーターが含まれている場合、このパターンに一致します。
 
 [先頭に戻る](#main)
 

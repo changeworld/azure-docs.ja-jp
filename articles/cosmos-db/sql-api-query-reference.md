@@ -9,10 +9,10 @@ ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283649"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
@@ -62,7 +62,7 @@ SELECT ステートメント内の句は、上の順序で並べられている�
 
 クエリ言語は、T-SQL スタイルのコメントをサポートしています  
 
--   SQL ステートメント `-- comment text [newline]`  
+-   SQL ステートメント`-- comment text [newline]`  
 
 空白文字とコメントは文法内では何も意味がありませんが、トークンを区切る場合に使用する必要があります。 例: `-1e5` は、1 つの数値のトークンですが、`: – 1 e5` は負のトークンであり、その後に数字 1 と識別子 e5 が続いています。  
 
@@ -226,7 +226,7 @@ FROM <from_specification>
   
 ### <a name="examples-of-joins"></a>結合の例  
   
-次の FROM 句を見てみましょう:  `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+それでは、以下の FROM 句を見てみましょう。`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  各ソースで `input_alias1, input_alias2, …, input_aliasN` を定義します。 この FROM 句は、N-タプル (N 個の値を持つタプル) のセットを返します。 それぞれのタプルは、対応するセットに対する、すべてのコンテナーのエイリアスの反復によって生成された値を持ちます。  
   
@@ -236,11 +236,11 @@ FROM <from_specification>
   
 - `<from_source2>` を input_alias1 を参照するドキュメント スコープにし、次のセットを表します。  
   
-    次の場合は {1, 2}:  `input_alias1 = A,`  
+    `input_alias1 = A,` の {1, 2}  
   
-    次の場合は {3}:  `input_alias1 = B,`  
+    `input_alias1 = B,` の {3}  
   
-    次の場合は {4, 5}:  `input_alias1 = C,`  
+    `input_alias1 = C,` の {4, 5}  
   
 - FROM 句 `<from_source1> JOIN <from_source2>` の結果は次のタプルになります。  
   
@@ -254,17 +254,17 @@ FROM <from_specification>
   
 - `<from_source2>` を `input_alias1` を参照するドキュメント スコープにし、次のセットを表します。  
   
-    次の場合は {1, 2}:  `input_alias1 = A,`  
+    `input_alias1 = A,` の {1, 2}  
   
-    次の場合は {3}:  `input_alias1 = B,`  
+    `input_alias1 = B,` の {3}  
   
-    次の場合は {4, 5}:  `input_alias1 = C,`  
+    `input_alias1 = C,` の {4, 5}  
   
 - `<from_source3>` を `input_alias2` を参照するドキュメント スコープにし、次のセットを表します。  
   
-    次の場合は {100, 200}:  `input_alias2 = 1,`  
+    `input_alias2 = 1,` の {100, 200}  
   
-    次の場合は {300}:  `input_alias2 = 3,`  
+    `input_alias2 = 3,` の {300}  
   
 - FROM 句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` の結果は次のタプルになります。  
   
@@ -283,17 +283,17 @@ FROM <from_specification>
   
 - <from_source2> を input_alias1 を参照するドキュメント スコープにし、次のセットを表します。  
   
-    次の場合は {1, 2}:  `input_alias1 = A,`  
+    `input_alias1 = A,` の {1, 2}  
   
-    次の場合は {3}:  `input_alias1 = B,`  
+    `input_alias1 = B,` の {3}  
   
-    次の場合は {4, 5}:  `input_alias1 = C,`  
+    `input_alias1 = C,` の {4, 5}  
   
 - `<from_source3>` のスコープを `input_alias1` にし、次のセットを表します。  
   
-    次の場合は {100, 200}:  `input_alias2 = A,`  
+    `input_alias2 = A,` の {100, 200}  
   
-    次の場合は {300}:  `input_alias2 = C,`  
+    `input_alias2 = C,` の {300}  
   
 - FROM 句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` の結果は次のタプルになります。  
   
@@ -471,7 +471,7 @@ ORDER BY <sort_specification>
   
  **演算子のカテゴリ:**  
   
-|**Category**|**詳細**|  
+|**カテゴリ**|**詳細**|  
 |-|-|  
 |**算術**|演算子には、数値の入力が必要です。 出力も数値です。 入力のいずれかが **undefined** か数値以外の型である場合、結果は **undefined** です。|  
 |**ビット演算子**|演算子には、32 ビット符号付き整数の入力が必要です。 出力も、32 ビット符号付き整数です。<br /><br /> 任意の整数以外の値は丸められます。 正の値は切り捨てられます、負の値は切り上げられます。<br /><br /> 32 ビット整数範囲の外部にある値は、その 2 の補数表記の最後の 32 ビットを取ることによって変換されます。<br /><br /> 入力のいずれかが **undefined** か数値以外の型である場合、結果は **undefined** です。<br /><br /> **注:** 上記の動作は JavaScript のビットごとの演算子の動作と互換性があります。|  
@@ -479,27 +479,27 @@ ORDER BY <sort_specification>
 |**比較**|演算子には、同じ型の undefined ではない入力が必要です。 出力はブール値です。<br /><br /> 入力のいずれかが **undefined** か異なる型である場合、結果は **undefined** です。<br /><br /> 値の順序付けの詳細については、**比較の値の順序付けの表**を参照してください。|  
 |**string**|演算子には、文字列の入力が必要です。 出力も文字列です。<br />入力のいずれかが **undefined** か文字列以外の型である場合、結果は **undefined** です。|  
   
- **単項演算子:**  
+ **単項演算子**  
   
-|**Name**|**Operator**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -|数値を返します。<br /><br /> ビットごとの否定。 否定された数値を返します。|  
 |**ビット演算子**|~|1 の補数。 数値の補数を返します。|  
 |**論理**|**NOT**|否定します。 否定されたブール値を返します。|  
   
- **2 項演算子:**  
+ **二項演算子:**  
   
-|**Name**|**Operator**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加算。<br /><br /> 減算。<br /><br /> 乗算。<br /><br /> 除算。<br /><br /> 比率。|  
 |**ビット演算子**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|ビット演算子 OR。<br /><br /> ビット演算子 AND。<br /><br /> ビット演算子 XOR。<br /><br /> 左シフト。<br /><br /> 右シフト。<br /><br /> 0 埋め右シフト。|  
-|**論理**|**AND**<br /><br /> **または**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理和。 いずれかの引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
-|**比較**|**=**<br /><br /> **!=、<>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|等しい。 両方の引数が等しい場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 等しくない。 両方の引数が等しくない場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> より大きい。 1 番目の引数が 2 番目の引数より大きい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以上。 1 番目の引数が 2 番目の引数以上の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> より小さい。 1 番目の引数が 2 番目の引数より小さい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以下。 1 番目の引数が 2 番目の引数以下の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 結合。 最初の引数が **undefined** 値である場合、2 番目の引数を返します。|  
-|**String**|**&#124;&#124;**|連結。 両方の引数の連結を返します。|  
+|**論理**|**AND**<br /><br /> **OR**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理和。 いずれかの引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
+|**比較**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|等しい。 両方の引数が等しい場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 等しくない。 両方の引数が等しくない場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> より大きい。 1 番目の引数が 2 番目の引数より大きい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以上。 1 番目の引数が 2 番目の引数以上の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> より小さい。 1 番目の引数が 2 番目の引数より小さい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以下。 1 番目の引数が 2 番目の引数以下の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 結合。 最初の引数が **undefined** 値である場合、2 番目の引数を返します。|  
+|**文字列**|**&#124;&#124;**|連結。 両方の引数の連結を返します。|  
   
- **3 項演算子:**  
+ **三項演算子:**  
 
-|**Name**|**Operator**|**詳細**| 
+|**Name**|**演算子**|**詳細**| 
 |-|-|-|  
 |三項演算子|?|最初の引数が **true** に評価された場合、2 番目の引数を返します。それ以外の場合、3 番目の引数を返します。|  
 
@@ -511,7 +511,7 @@ ORDER BY <sort_specification>
 |**Undefined**|比較できません。|  
 |**Null**|単一の値: **Null**|  
 |**Number**|実数。<br /><br /> 負の無限大の値は、他のどの数値よりも小さくなります。<br /><br /> 正の無限大の値は、他のどの数値よりも大きくなります。**NaN** 値は比較できません。 **NaN** と比較すると、結果は **undefined** 値になります。|  
-|**String**|辞書の順序。|  
+|**文字列**|辞書の順序。|  
 |**Array**|順序付けがなく平等に扱われます。|  
 |**Object**|順序付けがなく平等に扱われます。|  
   
@@ -658,7 +658,7 @@ ORDER BY <sort_specification>
   
      次の表では、後の SQL リファレンスで構文の説明に使われる規則について説明します。  
   
-    |**規則**|**使用対象**|  
+    |**規則**|**用途**|  
     |-|-|    
     |UPPERCASE|大文字と小文字が区別されないキーワード。|  
     |lowercase|大文字と小文字が区別されるキーワード。|  
@@ -692,7 +692,7 @@ ORDER BY <sort_specification>
 |[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
 |[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[ログ](#bk_log)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
 |[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  

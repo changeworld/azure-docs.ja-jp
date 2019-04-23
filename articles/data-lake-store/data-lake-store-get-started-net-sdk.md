@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879711"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
@@ -45,7 +45,7 @@ ms.locfileid: "58879711"
    | --- | --- |
    | Category |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
-   | 名前 |CreateADLApplication |
+   | Name |CreateADLApplication |
 4. **[OK]** をクリックしてプロジェクトを作成します。
 5. NuGet パッケージをプロジェクトに追加します。
 
@@ -142,7 +142,7 @@ ms.locfileid: "58879711"
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>関連項目
-* [.NET SDK を使用した Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)
+* [.NET SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)。
 * [Data Lake Storage Gen1 .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>次の手順

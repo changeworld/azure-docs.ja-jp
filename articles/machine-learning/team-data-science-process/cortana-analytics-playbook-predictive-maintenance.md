@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650480"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524051"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -227,7 +227,7 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 これまでに説明したデータの準備作業によって、データは以下に示すように整理されています。 トレーニング、テスト、および検証データには、この論理スキーマ (この例では、日単位) が含まれています。
 
-| 資産 ID | Time | <Feature Columns> | Label |
+| 資産 ID | Time | \<特徴列> | Label |
 | ---- | ---- | --- | --- |
 | A123 |Day 1 | 。 . . | 。 |
 | A123 |Day 2 | 。 . . | 。 |

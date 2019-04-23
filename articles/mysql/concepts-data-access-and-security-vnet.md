@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL サーバーの VNet サービス エンドポイントの概要 | Microsoft Docs
 description: Azure Database for MySQL サーバーで VNet サービス エンドポイントがどのように機能するかについて説明します。
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 37cc8192cc5934cf967ad9b9c62614d0b4503fb4
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 3a7eaacc4c234ec7d1d3d88455bd423256a07e90
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006608"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005853"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の Virtual Network のサービス エンドポイントと規則を使用する
 

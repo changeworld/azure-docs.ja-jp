@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 0067cadad843b794b9476f6c278f85ad27de5bc7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d85c2e7c1aa3738ce6a9d3130d2ddc400c333a9d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "58408444"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490060"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>統合リソースをグローバル Azure に移行する
 
@@ -30,6 +30,8 @@ Azure Service Bus サービスには、データのエクスポートまたは�
 > [!IMPORTANT]
 > 場所、Azure Key Vault シークレット、証明書、および、その他の GUID を新しいリージョンと一致するように、変更します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="service-bus-metadata"></a>Service Bus メタデータ
 
 Resource Manager テンプレートをエクスポートすると、次の Service Bus メタデータ要素が再作成されます。
@@ -43,20 +45,20 @@ Resource Manager テンプレートをエクスポートすると、次の Servi
 
 ### <a name="keys"></a>構成する
 
-エクスポートし、再作成する前述の手順では、承認規則に関連付けられている Shared Access Signature キーがコピーされません。 Shared Access Signature キーを保持する必要がある場合、オプションのパラメーター `-Keyvalue` で `New-AzureRmServiceBuskey` コマンドレットを使用して、キーを文字列として受け付けます。 更新されたコマンドレットは、[PowerShell ギャラリー リリース 6.4.0 (2018 年 7 月)](https://www.powershellgallery.com/packages/AzureRM/6.4.0) または [GitHub](https://github.com/Azure/azure-powershell/releases/tag/v6.4.0-July2018) で入手できます。
+エクスポートし、再作成する前述の手順では、承認規則に関連付けられている Shared Access Signature キーがコピーされません。 Shared Access Signature キーを保持する必要がある場合、オプションのパラメーター `-Keyvalue` で `New-AzServiceBuskey` コマンドレットを使用して、キーを文字列として受け付けます。 [Azure PowerShell Az モジュール](/powershell/azure/install-az-ps)で、更新されたコマンドレットを使用できます。
 
 ### <a name="usage-example"></a>使用例
 
 ```powershell
-New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
+New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
 ```
 
 ```powershell
-New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
+New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Queue <queuename> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
 ```
 
 ```powershell
-New-AzureRmServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Topic <topicname> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
+New-AzServiceBuskey -ResourceGroupName <resourcegroupname> -Namespace <namespace> -Topic <topicname> -Name <name of Authorization rule> -RegenerateKey <PrimaryKey/SecondaryKey> -KeyValue <string - key value>
 ```
 
 > [!NOTE]
@@ -93,7 +95,7 @@ Azure Logic Apps サービスは Azure Germany で使用できません。 た�
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

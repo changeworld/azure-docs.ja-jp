@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 974e640977fcf4d580575705d7fdf0faf632c31b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361462"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496097"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -41,8 +41,8 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 **Action** | **サポート**
 --- | ---
 Windows Azure VM の作成時にバックアップを有効にする | サポート対象:Windows Server 2019 (Datacenter/Datacenter Core)、Windows Server 2016 (Datacenter/Datacenter Core); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM および SP1)
-Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 1710、1704、1604 (LTS)、1404 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3<br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
-シャットダウン状態/オフライン状態/VM をシーク中の VM をバックアップする | サポートされています。<br/><br/> スナップショットは、アプリ整合性ではなく、クラッシュ整合性のみです。
+Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 1710、1704、1604 (LTS)、1404 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
+シャットダウン状態/オフライン状態の VM をバックアップする | サポートされています。<br/><br/> スナップショットは、アプリ整合性ではなく、クラッシュ整合性のみです。
 マネージド ディスクへの移行後にディスクをバックアップする | サポートされています。<br/><br/> バックアップは引き続き機能します。 操作は必要ありません。
 リソース グループのロックを有効にした後、マネージド ディスクをバックアップする | サポートされていません。<br/><br/> Azure Backup は古いリソース ポイントを削除できないので、復元ポイントの上限に達するとバックアップが失敗するようになります。
 VM のバックアップ ポリシーを変更する | サポートされています。<br/><br/> VM は、新しいポリシーのスケジュールおよびリテンション期間の設定を使用してバックアップされます。 リテンション期間の設定が延長されている場合、既存の復旧ポイントがマークされ、保持されます。 短縮されている場合、既存の復旧ポイントは次のクリーンアップ ジョブで取り除かれ、最終的に削除されます。
@@ -149,8 +149,7 @@ VM サイズ |   少なくとも 2 つの CPU コアと 1 GB の RAM を備え�
 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) からデプロイ済みの VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |  サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 カスタム イメージ (サード パーティ) からデプロイ済みの VM をバックアップする |   サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 Azure に移行済みの VM をバックアップする  | サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
-VM の整合性をバックアップする | サポートされていません。 <br/><br/>Azure Backup では、マルチ VM 整合性をサポートしていません。
-
+マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でデータとアプリケーションに整合性はありません。
 
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
@@ -166,7 +165,7 @@ Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを
 重複除去されたディスクをバックアップする | サポートされていません。
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。
-共有ストレージ| CSV またはスケールアウト ファイル サーバーを使用して VM をバックアップすることはお勧めできません。 CSV ライターが失敗する可能性があります。
+共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用して VM をバックアップすることはお勧めできません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
 
 > [!NOTE]
 > Azure Backup では、ストライピングされたディスクはサポートしていません。 Azure Backup では、ディスクのサイズ変更は推奨されません。
@@ -213,7 +212,7 @@ Azure へのネットワーク トラフィック:
 - Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
 
-**マシン** | **転送中のデータ** | **保存中**
+**Machine** | **転送中のデータ** | **保存中**
 --- | --- | ---
 オンプレミスの Windows マシン (DPM または MABS なし) | ![はい][green] | ![はい][green]
 Azure VM | ![はい][green] | ![はい][green]
@@ -229,7 +228,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 - Azure VM では、ストレージ ネットワーク経由で Azure ストレージ アカウントから直接データが VM 拡張機能によって読み取られます。 このトラフィックを圧縮する必要はありません。
 - DPM や MABS を使用する場合は、DPM や MABS にデータをバックアップする前に圧縮することにより、帯域幅を節約できます。
 
-**マシン** | **MABS または DPM に圧縮 (TCP)** | **コンテナーに圧縮 (HTTPS)**
+**Machine** | **MABS または DPM に圧縮 (TCP)** | **コンテナーに圧縮 (HTTPS)**
 --- | --- | ---
 オンプレミスの Windows マシン (DPM または MABS なし) | NA | ![はい][green]
 Azure VM | NA | NA

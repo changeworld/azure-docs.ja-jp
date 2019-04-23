@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085679"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549154"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスに言語アナライザーを追加する
 
@@ -92,7 +92,7 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
 |アイルランド語||ga.lucene|  
 |イタリア語|it.microsoft|it.lucene|  
 |日本語|ja.microsoft|ja.lucene|  
-|カンナダ語|ka.microsoft||  
+|カンナダ語|kn.microsoft||  
 |韓国語|ko.microsoft|ko.lucene|  
 |ラトビア語|lv.microsoft|lv.lucene|  
 |リトアニア語|lt.microsoft||  

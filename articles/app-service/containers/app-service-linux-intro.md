@@ -17,10 +17,10 @@ ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
 ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793443"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
@@ -63,7 +63,7 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 * [App Service プラン](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json)のレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
 
-## <a name="locations"></a>場所
+## <a name="locations"></a>Locations
 
 [Azure ステータス ダッシュボード](https://azure.microsoft.com/status)を確認します。
 

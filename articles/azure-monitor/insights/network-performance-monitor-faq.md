@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734557"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546249"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734557"
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
+[Network Performance Monitor](/azure/networking/network-monitoring-overview) は、クラウド ベースの[ハイブリッド ネットワーク監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)ソリューションであり、ネットワーク インフラストラクチャ内のさまざまなポイント間のネットワーク パフォーマンスを監視するのに役立ちます。 また、[サービスやアプリケーションのエンドポイント](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)へのネットワーク接続の監視、および[ Azure ExpressRoute のパフォーマンスの監視](../../azure-monitor/insights/network-performance-monitor-expressroute.md)にも利用できます。 
 
 トラフィックのブラックホール、ルーティング エラーなどのネットワークの問題のほか、従来のネットワーク監視手法では検出されない問題を検出します。 ネットワーク リンクに関するしきい値を超えた場合、このソリューションはアラートと通知を生成します。 また、ネットワーク パフォーマンスの問題をタイムリーに検出できるほか、問題の原因を特定のネットワーク セグメントまたはデバイスに限定できます。 
 
@@ -40,7 +40,7 @@ NPM の様々な機能に対するプラットフォーム要件を、以下に�
 - NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>NPM 内の監視ノードとして Linux マシンを使用できますか。
-Linux ベースのノードを使用してネットワークを監視する機能は、現在はプライベート プレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 ご使用のワークスペース ID を提供すれば、機能が有効にされます。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
+Linux ベースのノードを使用してネットワークを監視する機能は、現在はプレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 ご使用のワークスペース ID を提供すれば、機能が有効にされます。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視で使用するノードのサイズ要件はありますか。
 ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 ソリューションには、使用する CPU が 5% を超えた場合に監視プロセスを停止する機能があります。

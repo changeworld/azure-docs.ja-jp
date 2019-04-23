@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309119"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523394"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
@@ -95,7 +95,7 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
 
 ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasb://container2@storage2.blob.core.windows.net` を指しています。 これは、先ほど指定した**名前ノード**です。
 
-次のように、**storage2** で /user/RevoShare/<SSH username> ディレクトリを構成する必要があります。
+次のように、**storage2** で `/user/RevoShare/<SSH username>` ディレクトリを構成する必要があります。
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3055bf4be024065bcd8db9cf523de93a5ab6b22b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 8558168b7eb35743c0fd590ded17ef13446533c4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905938"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617820"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -208,12 +208,12 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>States 
-| 名前          | 表示名   | 正常 | 注意 | 危険 | 
+| Name          | Display name   | 正常 | 注意 | 危険 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | デバイス状態   | 緑  | オレンジ  | 赤    | 
 
 #### <a name="events"></a>events 
-| 名前             | 表示名      | 
+| Name             | Display name      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | ボタン B の押下  | 
 
@@ -221,7 +221,7 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 
 数値設定
 
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| Display name | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
 | Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
@@ -229,13 +229,13 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 
 トグル設定
 
-| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
+| Display name | フィールド名 | オンテキスト | オフテキスト | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
 ### <a name="properties"></a>Properties
 
-| Type            | 表示名 | フィールド名 | データ型 |
+| Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | デバイス プロパティ | デバイスの場所   | location  | location    |
@@ -243,11 +243,11 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 
 ### <a name="commands"></a>command
 
-| 表示名 | フィールド名 | 戻り値の型 | 入力フィールドの表示名 | 入力フィールド名 | 入力フィールドの種類 |
+| Display name | フィールド名 | 戻り値の型 | 入力フィールドの表示名 | 入力フィールド名 | 入力フィールドの種類 |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | エコー         | echo       | text        | 表示する値         | displayedValue   | text             |
 | カウントダウン    | countdown  | number      | カウント開始               | countFrom        | number           |
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、DevKit デバイスを Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、[Raspberry Pi の準備と接続](howto-connect-raspberry-pi-python.md)です。
+ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

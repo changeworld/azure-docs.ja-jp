@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044176"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure データ エクスプローラーとは
@@ -63,7 +63,7 @@ Azure Data Explorer の機能は、[Azure Monitor ログ](/azure/log-analytics/)
 Azure データ エクスプローラーとそのクエリ言語に関するフィードバックをお待ちしております。次の方法をご利用ください。
 
 - 質問する
-  - [スタック オーバーフロー](https://stackoverflow.com/questions/tagged/azure-data-explorer)
+  - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [ユーザーの声で製品について提案する](https://aka.ms/AzureDataExplorer.UserVoice)

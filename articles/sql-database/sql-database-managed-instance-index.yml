@@ -15,7 +15,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 01/03/2019
+  ms.date: 04/09/2019
   ms.author: jovanpop
 abstract:
   description: Azure SQL Database の マネージド インスタンスは、Azure クラウド上でホストされるフル マネージド SQL Server データベース エンジン インスタンスです。 これは、SQL Server データベースをクラウドに移行するための最善の PaaS オプションです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、マネージド インスタンスを作成して使用する方法を確認してください。
@@ -78,6 +78,7 @@ sections:
           - html: マネージド インスタンスが<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>で保護されます。
           - html: '(プレビュー) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">PowerShell を使用して、削除されたデータベースを再作成します</a>'
           - html: 'Geo リストア機能を使用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用して、ご自身のデータベースを別のデータ センターに復元</a>できます。'
+          - html: '(プレビュー) インスタンスの作成時に<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">タイム ゾーンを構成します</a>。'
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
@@ -114,7 +115,7 @@ sections:
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/'
+              - href: null
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment'
           - title: ポイントインタイム リストア
             values:
@@ -126,7 +127,7 @@ sections:
             values:
               - href: null
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/'
+              - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
               - href: null
   - title: ステップバイステップのチュートリアルと学習教材
     items:
@@ -139,11 +140,11 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">ハードウェアの特性と制限事項</a>、<a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 言語の違い</a>、および<a href="/azure/sql-database/sql-database-managed-instance-create-manage">マネージド インスタンスを構成するための Transact-SQL、PowerShell、Azure CLI の API<a/> を学習します。
           - html: 'マネージド インスタンスがデプロイされる Azure VNet を<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">構成</a>します。'
           - html: 'マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">検証</a>します。'
-          - html: '<a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure 仮想マシン</a><a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。'
+          - html: '<a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure 仮想マシン</a><a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。'
           - html: '<a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Asisstant</a> または <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> を使用してご使用のデータベースを移行できることを確認します。'
           - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブ復元</a>または<a href="/azure/dms/tutorial-sql-server-managed-instance-online">データ移行サービス</a>を使用して、データベースをマネージド インスタンスに移行します。
           - html: 'お使いの SSIS パッケージを <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a> に、SSAS 表形式モデルを <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a> に、SSRS レポートを <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">PowerBI Premium</a> に移動します。'
-          - html: '「<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">General Purpose レベル</a>」でのストレージ レイヤーについて学習し、「<a href="https://blogs.msdn.microsoft.com/sqlcat/20../../storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">General Purpose サービス レベルのストレージ パフォーマンスのベスト プラクティスおよび考慮事項</a>」を適用します。'
+          - html: '「<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">General Purpose レベル</a>」でのストレージ レイヤーについて学習し、「<a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">General Purpose サービス レベルのストレージ パフォーマンスのベスト プラクティスおよび考慮事項</a>」を適用します。'
           - html: '<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">お使いのインスタンスをセキュリティで保護する</a>ためのベスト プラクティスと推奨事項を見つけます。'
           - html: マネージド インスタンスの構成に役立つその他の<a href="sql-database-howto-managed-instance.md">ハウツー ガイド</a>を見つけます。
   - title: リファレンス
@@ -153,8 +154,10 @@ sections:
         className: cardsD
         items:
           - title: ブログ
-            html: '<p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Medium</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Medium</a></p>'
           - title: よく寄せられる質問
-            html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">スタック オーバーフロー</a></p>'
+            html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
+          - title: コミュニティ チャネル
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">SQL コミュニティ (マネージド インスタンス)</a></p>'
           - title: トレーニング資料
             html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">ハンズオン ラボ</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">手順主体のラボ</a></p>'

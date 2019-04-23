@@ -15,10 +15,10 @@ ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
 ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878147"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用状況とコストを管理する
@@ -92,7 +92,7 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
  
 1. ワークスペースの左ウィンドウから **[使用量と推定コスト]** を選びます。
 2. **[使用量と推定コスト]** ページの上部にある **[データ ボリュームの管理]** をクリックします。
-5. ウィンドウで、スライダーを移動して日数を増減し、**[OK]** をクリックします。  *無料*プランをご利用の場合は、データ保持期間を変更できません。この設定を制御するには、有料プランにアップグレードする必要があります。<br><br> ![ワークスペースのデータ保持設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
+5. ウィンドウで、スライダーを移動して日数を増減し、**[OK]** をクリックします。  *無料*プランをご利用の場合は、データ保持期間を変更できません。この設定を制御するには、有料プランにアップグレードする必要があります。<br><br> ![ワークスペースのデータ保持の設定の変更](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
@@ -110,7 +110,7 @@ Log Analytics ワークスペースが従来の価格レベルにアクセスで
 2. ワークスペース ウィンドウで、**[全般]** の **[価格レベル]** を選択します。  
 
 3. **[価格レベル]** で価格レベルを選択し、**[選択]** をクリックします。  
-    ![選択された価格プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
+    ![選択された料金プラン](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 ワークスペースを現在の価格レベルに移行したい場合は、[Azure Monitor のサブスクリプションの監視価格レベルを変更する](usage-estimated-costs.md#moving-to-the-new-pricing-model)必要があります。これにより、そのサブスクリプションのすべてのワークスペースの価格レベルが変更されます。
 

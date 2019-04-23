@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490741"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
@@ -56,7 +56,7 @@ ms.locfileid: "59490741"
 
 ![古いイメージの回収 PowerShell タスク](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-スクリプト パラメーターは、次のものです。 `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+スクリプト パラメーターは `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)` です。
 
 ## <a name="queue-the-build"></a>ビルドをキューに配置する
 ビルド定義を完了したので、新しいビルドをキューに格納して、すべてが機能していることを確認します。 ビルドが、配布先のラボに表示された新しいカスタム イメージを正常に完了した後、イメージ ファクトリ ラボを調べた場合、プロビジョニングした VM は表示されていません。 さらに、続けてビルドをキューに格納した場合、ビルド変数で設定されたリテンション期間の値に従って、DevTest Labs から古いカスタム イメージを回収するクリーンアップ タスクが表示されます。

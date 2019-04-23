@@ -8,36 +8,34 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/12/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: ef510ca88f1b305125c7840932641c8a2359d8c9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 31b1b852c92ad671564fd54520af3f3a23b3e3c2
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045243"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499803"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>クイック スタート:Azure PowerShell を使用して Service Bus キューを作成する
-Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと絶対的な信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、2 つ以上のアプリケーション、サービスまたはプロセスを相互に分離し、状態またはデータの変更を転送する処理が含まれます。 このようなシナリオでは、別のアプリケーションまたはサービスで複数のバッチ ジョブをスケジュールする処理や、注文の実行をトリガーする処理が含まれる場合があります。 たとえば、小売企業では、補充および在庫の更新のためにバック オフィスまたは地域の流通センターに POS データを送信することがあります。 このシナリオでは、クライアント アプリは Service Bus キューとの間でメッセージを送受信します。
-
-![キュー](./media/service-bus-quickstart-powershell/quick-start-queue.png)
-
 このクイック スタートでは、Service Bus キューとの間でメッセージを送受信し、PowerShell を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成してください。
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下がインストールされていることを確認してください。
 
-- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][] を作成してください。 
+- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。 キューとの間でメッセージを送受信するサンプルを Visual Studio を使用して作成します。 このサンプルの目的は、ポータルで作成したキューをテストすることです。 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 
-このクイック スタートでは、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成][]に関するページを参照してください。
+このクイック スタートでは、Azure PowerShell の最新バージョンを実行していることを前提にしています。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成][]に関するページを参照してください。 Azure Cloud Shell を使い慣れている方は、そちらをご使用ください。お使いのマシンに Azure PowerShell をインストールする必要はありません。 Azure Cloud Shell の詳細については、「[Azure Cloud Shell の概要](../cloud-shell/overview.md)」を参照してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 1. Service Bus PowerShell モジュールをまだインストールしていない場合は、まずインストールします。
 
@@ -45,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    Install-Module Az.ServiceBus
    ```
 
-2. 次のコマンドを実行して Azure にログインします。
+2. 次のコマンドを実行して、Azure にサインインします。
 
    ```azurepowershell-interactive
    Login-AzAccount
@@ -259,10 +257,10 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの記述についてさらに詳しく学習するには、Service Bus に関する以下のチュートリアルを続けてください。
+この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの作成についてさらに詳しく学習するには、「**メッセージを送受信する**」セクションのチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]
-> [Azure PowerShell を使用して在庫を更新する](./service-bus-tutorial-topics-subscriptions-powershell.md)
+> [メッセージを送受信する](service-bus-dotnet-get-started-with-queues.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Azure PowerShell のインストールと構成]: /powershell/azure/install-Az-ps

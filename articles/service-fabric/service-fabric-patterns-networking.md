@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
 ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049899"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
@@ -26,7 +26,7 @@ Azure Service Fabric クラスターを Azure の他のネットワーク機能�
 
 - [既存の仮想ネットワークまたはサブネット](#existingvnet)
 - [静的パブリック IP アドレス](#staticpublicip)
-- [内部ロード バランサー](#internallb)
+- [内部専用ロード バランサー](#internallb)
 - [内部ロード バランサーと外部ロード バランサー](#internalexternallb)
 
 Service Fabric は標準の仮想マシン スケール セットで実行されます。 仮想マシン スケール セットで使用できる機能は、Service Fabric クラスターでも使用できます。 仮想マシン スケール セットと Service Fabric のAzure Resource Manager テンプレートのネットワーク セクションは同じです。 既存の仮想ネットワークにデプロイしたら、Azure ExpressRoute、Azure VPN Gateway、ネットワーク セキュリティ グループ、仮想ネットワーク ピアリングなどの他のネットワーク機能を簡単に組み込むことができます。

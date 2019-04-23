@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883277"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
@@ -49,7 +49,7 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
 ### <a name="configure-syslog-collection"></a>syslog の収集の構成
 1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法について詳しくは、「[Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.0 以降での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[詳細設定]** > **[Syslog]** に移動します。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. *Syslog.global.logHost* フィールドに、Linux サーバーとポート番号 *1514* を追加します。 たとえば、`tcp://hostname:1514` のようにします。 `tcp://123.456.789.101:1514`
+1. *Syslog.global.logHost* フィールドに、Linux サーバーとポート番号 *1514* を追加します。 たとえば、`tcp://hostname:1514` や `tcp://123.456.789.101:1514` のようにします。
 1. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[セキュリティ プロファイル]** > **[ファイアウォール]** をクリックし、**[プロパティ]** を開きます。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
@@ -186,20 +186,20 @@ ESXi ホストに syslog タイムスタンプのバグがありました。 詳
 
 * omsagent を実行している VM に、ESXi ホストがデータを正しくプッシュしていません。 これをテストするには、次の手順を実行します。
 
-  1. 確認するには、ssh を使用して ESXi ホストにログオンし、次のコマンドを実行します。 `nc -z ipaddressofVM 1514`
+  1. 確認するには、ssh を使用して ESXi ホストにログオンし、`nc -z ipaddressofVM 1514` コマンドを実行します。
 
       このコマンドが失敗した場合は、[詳細構成] の vSphere 設定に誤りがあると考えられます。 syslog 転送用に ESXi ホストを設定する方法については、「[syslog の収集の構成](#configure-syslog-collection)」をご覧ください。
-  1. syslog ポートの接続は成功しているにも関わらず、データが引き続き表示されない場合は、ssh を使用して次のコマンドを実行し、ESXi ホストで syslog を再読み込みします。 `esxcli system syslog reload`
+  1. syslog ポートの接続は成功しているにも関わらず、データが引き続き表示されない場合は、ssh を使用して `esxcli system syslog reload` コマンドを実行し、ESXi ホストで syslog を再読み込みします。
 * Log Analytics エージェントがインストールされた VM が正しく設定されていません。 これをテストするには、次の手順を実行します。
 
-  1. Log Analytics は、ポート 1514 をリッスンします。 このポートが開いていることを確認するには、次のコマンドを実行します。 `netstat -a | grep 1514`
+  1. Log Analytics は、ポート 1514 をリッスンします。 このポートが開いていることを確認するには、`netstat -a | grep 1514` コマンドを実行します。
   1. ポート `1514/tcp` が開いていることがわかります。 この情報が表示されない場合は、omsagent が正しくインストールされていることを確認します。 ポート情報が表示されない場合、VM で syslog ポートが開いていません。
 
-    a. `ps -ef | grep oms` を使用して、Log Analytics エージェントが実行されていることを確認します。 実行されていない場合は、次のコマンドを実行してプロセスを開始します。 `sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. `ps -ef | grep oms` を使用して、Log Analytics エージェントが実行されていることを確認します。 実行されていない場合は、`sudo /opt/microsoft/omsagent/bin/service_control start` コマンドを実行してプロセスを開始します。
 
      b. `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` ファイルを開きます。
 
-     c. 次のように、適切なユーザーおよびグループ設定が有効であることを確認します。 `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf` のように、適切なユーザーおよびグループ設定が有効であることを確認します。
 
      d. このファイルがない場合や、ユーザーおよびグループ設定に問題がある場合は、[Linux サーバーを準備](#prepare-a-linux-server)して、修正措置を講じます。
 

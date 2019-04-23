@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876328"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する (プレビュー)
@@ -45,7 +45,7 @@ ms.locfileid: "58876328"
 
 Virtual WAN を構成する前に、まずプレビューにサブスクリプションを登録する必要があります。 これを行わないと、ポータルで Virtual WAN を使用できません。 登録を行うには、サブスクリプション ID を記載したメールを **azurevirtualwan\@microsoft.com** までお送りください。 サブスクリプションが登録されると、メールが届きます。
 
-**プレビューの考慮事項:**
+**プレビュー考慮事項:**
 
 [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) をサポートする国では、ExpressRoute 回線を有効にする必要があります。
 

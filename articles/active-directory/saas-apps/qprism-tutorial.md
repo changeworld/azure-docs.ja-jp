@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: bf6c50a486acfaf8c0410616a75d9bcbe36987e6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル:Azure Active Directory と QPrism の統合
@@ -51,7 +51,7 @@ QPrism と Azure AD の統合を構成するには、次のものが必要です
 
 Azure AD への QPrism の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に QPrism を追加する必要があります。
 
-**ギャラリーから QPrism を追加するには、次の手順を実行します。**
+**ギャラリーから QPrism を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ QPrism で Azure AD シングル サインオンを構成するには、次の�
 
     ![[QPrism のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<customer domain>.qmyzone.com/login`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<customer domain>.qmyzone.com/login`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<customer domain>.qmyzone.com/metadata.php`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<customer domain>.qmyzone.com/metadata.php`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[QPrism クライアント サポート チーム](mailto:qsupport-ce@quatrro.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

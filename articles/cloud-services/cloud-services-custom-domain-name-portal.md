@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267147"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
@@ -68,7 +68,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
        ![サイトの URL を表示する [概要] セクション][csurl]
 
-       **または**
+       **OR**
    * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
 
        ```powershell
@@ -101,7 +101,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
        ![VIP を表示する [概要] セクション][vip]
 
-       **または**
+       **OR**
    * [Azure Powershell](/powershell/azure/overview)をインストールして構成し、次のコマンドを使用します。
 
        ```powershell
@@ -141,6 +141,6 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png

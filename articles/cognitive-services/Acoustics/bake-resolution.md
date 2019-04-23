@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: KyleStorck
 ms.openlocfilehash: 7dbf63ba39c5dcdebb363cfc37a45f0216a07497
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471782"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789756"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Project Acoustics のベイク精度
 この概念的概要では、音響のベイク操作をする際の粗分解能と細分解能の違いについて説明します。 この設定は、ベイク ワークフローのプローブ手順で選択します。

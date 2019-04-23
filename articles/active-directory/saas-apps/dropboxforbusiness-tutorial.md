@@ -16,10 +16,10 @@ ms.date: 12/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d55ae4077b3ec14cb8dc2226714b094574ed9522
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>チュートリアル:Azure Active Directory と Dropbox for Business の統合
@@ -53,7 +53,7 @@ Azure AD と Dropbox for Business の統合を構成するには、次のもの�
 
 Azure AD への Dropbox for Business の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Dropbox for Business を追加する必要があります。
 
-**ギャラリーから Dropbox for Business を追加するには、次の手順を実行します。**
+**ギャラリーから Dropbox for Business を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,9 +107,9 @@ Dropbox for Business で Azure AD シングル サインオンを構成するに
 
     ![[Dropbox for Business のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://www.dropbox.com/sso/<id>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.dropbox.com/sso/<id>`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次の値を入力します:  `Dropbox`
+    b. **[識別子 (エンティティ ID)]** ボックスに、`Dropbox` という値を入力します。
 
     > [!NOTE]
     > 上記のサインオン URL の値は、実際の値ではありません。 実際のサインオン URL に値を置き換えます。実際の値については後で説明します。

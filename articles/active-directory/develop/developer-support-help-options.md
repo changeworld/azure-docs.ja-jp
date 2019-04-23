@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f3f041fa3b594b4b680d794c1c013e55b97da4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235191"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501597"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -55,7 +55,6 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 | ツール  | 説明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | ID またはアクセス トークンを貼り付けて、要求の名前と値をデコードする。 |
-| [エラー コード分析ツール](https://apps.dev.microsoft.com/portal/tools/errors)| サインイン中または同意ページで受け取ったエラー コードを貼り付けて、考えられる原因や解決策を確認する。 |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Microsoft Graph API に対して要求を行って応答を確認できるツール。 |
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する
@@ -76,12 +75,12 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 
 Stack Overflow の次の投稿には、質問方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、質問に対するコミュニティ メンバーからの評価や回答がより早く返ってくる可能性が高まります。
 
-* [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
+* [良い質問をする方法](https://stackoverflow.com/help/how-to-ask)
 * [最小限の例、完全な例、実証可能な例を作成する方法](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>GitHub の issue を作成する
 
-ライブラリに関するバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、Pull Request を送信することもできます。
+ライブラリに関するバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、プル要求を送信することもできます。
 
 ライブラリの一覧と GitHub リポジトリを確認するには、次の記事を参照してください。
 

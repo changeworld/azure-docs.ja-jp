@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Microsoft Web アプリケーション ファイアウォール データを収集する | Microsoft Docs
-description: Azure Sentinel で Microsoft Web アプリケーション ファイアウォール データを収集する方法について説明します。
+title: Azure Sentinel Preview に Microsoft Web アプリケーション ファイアウォール データを接続する | Microsoft Docs
+description: Azure Sentinel に Microsoft Web アプリケーション ファイアウォール データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2238060acb60b1be0d06b81f62fb45a7f1c7a9b6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5316fa7e3aa4465349b762b99bec9171f821062f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580866"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798999"
 ---
-# <a name="collect-data-from-microsoft-web-application-firewall"></a>Microsoft Web アプリケーション ファイアウォールからデータを収集する
+# <a name="connect-data-from-microsoft-web-application-firewall"></a>Microsoft Web アプリケーション ファイアウォールからデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -39,17 +39,17 @@ Azure Application Gateway の Microsoft Web アプリケーション ファイ�
 既に Microsoft Web アプリケーション ファイアウォールがある場合は、既存のゲートウェイ リソースがあることを確認します。
 Microsoft Web アプリケーション ファイアウォールがデプロイされ、データを取得している場合は、アラート データを Azure Sentinel に簡単にストリーミングできます。
     
-5. Azure Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。
-5. [Data connectors]\(データ コネクタ\) ページで **[WAF]** タイルを選択します。
+1. Azure Sentinel ポータルで **[Data connectors]\(データ コネクタ\)** を選択します。
+1. [Data connectors]\(データ コネクタ\) ページで **[WAF]** タイルを選択します。
 1. [[Application Gateway resource]\(Application Gateway リソース\)](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)  に移動し、使用する WAF を選択します。
     1.  **[診断設定]** を選択します。
     1. 表の下の  **[+ Add diagnostic setting]\(+ 診断設定の追加\)** を選択します。
     1.  **[診断設定]** ページの  **[名前]** に入力し、 **[Log Analytics への送信]** を選択します。
     1. **[Log Analytics ワークスペース]** の下で Azure Sentinel ワークスペースを選択します。
     1. 分析するログの種類を選択します。 お勧めするのは、ApplicationGatewayAccessLog および ApplicationGatewayFirewallLog です。
-6. Microsoft Web アプリケーション ファイアウォール アラートのために Log Analytics 内で関連するスキーマを使用するには、**AzureDiagnostics** を検索します。
+1. Microsoft Web アプリケーション ファイアウォール アラートのために Log Analytics 内で関連するスキーマを使用するには、**AzureDiagnostics** を検索します。
 
 ## <a name="next-steps"></a>次の手順
-このドキュメントでは、Microsoft Web アプリケーション ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+このドキュメントでは、Microsoft Web アプリケーション ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

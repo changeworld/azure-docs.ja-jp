@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 24e12184070909943c5660d94d8e19ce9df1de30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111125"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526148"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -299,7 +299,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 ### <a name="TestVNet5"></a>手順 7 - TestVNet5 を作成し、構成する
 
-この手順は、新しいサブスクリプション (サブスクリプション 5) との関連で実行する必要があります。 この部分は、サブスクリプションを所有する別の組織の管理者が実行することがあります。 サブスクリプションを切り替えるには、"az account list --all" を実行して、アカウントで使用できるサブスクリプションを一覧表示します。次に、"az account set --subscription <subscriptionID>" を実行して、使用するサブスクリプションに切り替えます。
+この手順は、新しいサブスクリプション (サブスクリプション 5) との関連で実行する必要があります。 この部分は、サブスクリプションを所有する別の組織の管理者が実行することがあります。 サブスクリプションを切り替えるには、`az account list --all` を使用して、ご自分のアカウントで使用できるサブスクリプションを一覧表示します。次に、`az account set --subscription <subscriptionID>` を実行して、使用するサブスクリプションに切り替えます。
 
 1. サブスクリプション 5 に接続していることを確認し、リソース グループを作成します。
 
@@ -338,7 +338,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 ### <a name="connections5"></a>手順 8 - 接続を作成する
 
-ゲートウェイが異なるサブスクリプションにあるため、この手順は、**[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションに分かれています。 サブスクリプションを切り替えるには、"az account list --all" を実行して、アカウントで使用できるサブスクリプションを一覧表示します。次に、"az account set --subscription <subscriptionID>" を実行して、使用するサブスクリプションに切り替えます。
+ゲートウェイが異なるサブスクリプションにあるため、この手順は、**[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションに分かれています。 サブスクリプションを切り替えるには、`az account list --all` を使用して、ご自分のアカウントで使用できるサブスクリプションを一覧表示します。次に、`az account set --subscription <subscriptionID>` を実行して、使用するサブスクリプションに切り替えます。
 
 1. **[サブスクリプション 1]** サブスクリプション 1 にログインして接続します。 次のコマンドを実行し、その出力からゲートウェイの名前と ID を取得します。
 

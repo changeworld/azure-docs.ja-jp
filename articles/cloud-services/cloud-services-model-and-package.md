@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917313"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について
@@ -110,10 +110,10 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 **LocalResources**  
  には、ローカル ストレージ リソースの定義が含まれています。 ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
 
-**インポートする**  
+**Imports**  
  には、インポートされたモジュールの定義が含まれています。 上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
 
-**Startup**  
+**スタートアップ**  
 には、ロールの開始時に実行されるタスクが含まれています。 タスクは、.cmd ファイルか実行可能ファイルで定義されます。
 
 <a name="cscfg"></a>
@@ -143,7 +143,7 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 
 ここで使用する XML スキーマの詳細については、[サービスの構成スキーマ](/previous-versions/azure/reference/ee758710(v=azure.100))に関するページをご覧ください。ここでは、各要素について簡単に説明します。
 
-**Instances**  
+**インスタンス**  
 は、ロールの実行するインスタンスの数を設定します。 アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールのインスタンスは複数デプロイすることをお勧めします。 複数のインスタンスをデプロイすることにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
 
 **ConfigurationSettings**  
@@ -266,7 +266,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 変数が定義されている場所は次のとおりです。
 
-| 可変 | 値 |
+| 変数 | 値 |
 | --- | --- |
 | \[DirectoryName\] |Azure プロジェクトの .csdef ファイルを含むルート プロジェクト ディレクトリの下のサブディレクトリです。 |
 | \[ServiceDefinition\] |サービス定義ファイルの名前。 既定では、このファイルの名前は ServiceDefinition.csdef です。 |

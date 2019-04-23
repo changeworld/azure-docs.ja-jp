@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184892"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616211"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -71,6 +71,9 @@ ms.locfileid: "56184892"
 | 80007 | 認証エージェントが Active Directory に接続できません。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
 | 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。 
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
+
+>[!IMPORTANT]
+>パススルー認証エージェントでは、[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
 
 ## <a name="authentication-agent-installation-issues"></a>認証エージェントのインストールに関する問題
 

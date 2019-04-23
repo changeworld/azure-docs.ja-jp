@@ -9,10 +9,10 @@ ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 0f18467bfefdb27f2cb9c2c3f56942f679673c16
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048448"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
@@ -194,6 +194,6 @@ Windows Server 仮想化ホストで実行されている仮想マシンで Azur
 
 ## <a name="see-also"></a>関連項目
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-- [Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)
+- [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
 - [Azure File Sync の監視](storage-sync-files-monitoring.md)
 - [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)

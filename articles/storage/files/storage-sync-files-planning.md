@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918639"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996358"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -159,7 +159,7 @@ CSV で結果を表示するには:
 | \*.laccdb | Access データベースのロック ファイル|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | 内部の同期ファイル|
 | \\System Volume Information | ボリュームに固有のフォルダー |
-| $RECYCLE.BIN| フォルダー |
+| $RECYCLE.BIN| Folder |
 | \\SyncShareState | 同期用のフォルダー |
 
 ### <a name="failover-clustering"></a>フェールオーバー クラスタリング
@@ -241,7 +241,7 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | カナダ中部 | トロント |
 | カナダ東部 | ケベック シティ |
 | インド中部 | プネー |
-| 米国中央部 | アイオワ州 |
+| 米国中部 | アイオワ州 |
 | 東アジア | 香港特別行政区 |
 | 米国東部 | バージニア州 |
 | 米国東部 2 | バージニア州 |
@@ -274,10 +274,10 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | カナダ中部      | カナダ東部        |
 | カナダ東部         | カナダ中部     |
 | インド中部       | インド南部        |
-| 米国中央部          | 米国東部 2          |
+| 米国中部          | 米国東部 2          |
 | 東アジア           | 東南アジア     |
 | 米国東部             | 米国西部            |
-| 米国東部 2           | 米国中央部         |
+| 米国東部 2           | 米国中部         |
 | 韓国中部       | 韓国南部        |
 | 韓国南部         | 韓国中部      |
 | 北ヨーロッパ        | 西ヨーロッパ        |
@@ -295,6 +295,6 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 ## <a name="next-steps"></a>次の手順
 * [ファイアウォールとプロキシの設定の考慮事項](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files のデプロイの計画](storage-files-planning.md)
-* [Azure Files のデプロイ](storage-files-deployment-guide.md)
-* [Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)
+* [Azure Files をデプロイする](storage-files-deployment-guide.md)
+* [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
 * [Azure File Sync の監視](storage-sync-files-monitoring.md)

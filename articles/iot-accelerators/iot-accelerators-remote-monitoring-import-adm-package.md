@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009854"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>自動デバイス管理パッケージをリモート監視ソリューション アクセラレータにインポートする
 
 自動デバイス管理構成では、デバイスのグループに展開する構成の変更が定義されています。 この記事では、組織内の開発者が既に自動デバイス管理構成を作成していることを前提としています。 開発者が構成を作成する方法について詳しくは、IoT Hub の操作方法に関する次の記事のいずれかをご覧ください。
 
-- [Azure Portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config.md)
+- [Azure portal を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config.md)
 - [Azure CLI を使って多数の IoT デバイスを構成および監視する](../iot-hub/iot-hub-auto-device-config-cli.md)
 
 開発者は、開発環境で自動デバイス管理構成を作成してテストします。 準備ができたら、構成をリモート監視ソリューション アクセラレータにインポートできます。
@@ -30,14 +30,14 @@ ms.locfileid: "59009854"
 
 1. Azure portal で、IoT デバイスの開発とテストに使用している IoT ハブに移動します。 **[IoT デバイスの構成]** をクリックします。
 
-    [![IIoT デバイスの構成(./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
+    [IoT デバイスの構成![](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
 1. 使用する構成をクリックします。 **[デバイス構成の詳細]** ページが表示されます。
 
-    [![IIoT デバイス構成の詳細(./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
+    [![IoT デバイス構成の詳細](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
 1. **[Download configuration file]\(構成ファイルのダウンロード\)** をクリックする。
 
-    [![D構成ファイルをダウンロード(./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![構成ファイルのダウンロード](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
 1. JSON ファイルを **configuration.json** というローカル ファイルとして保存します。
 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265612"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Azure Notebooks のプロファイルとユーザー ID
 
 機能豊富な共同作業領域の Azure Notebooks 内では、自分のユーザー プロファイルに他のユーザーへのパブリック イメージが示されます。
 
-[![AAzure Notebooks プロファイル ページ](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Azure Notebooks プロファイル ページ](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 ユーザー ID は、プロジェクトとノートブックの共有に使用する URL の一部です。 次の一覧はさまざまな URL パターンを示しています。
 

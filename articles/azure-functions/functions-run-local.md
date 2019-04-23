@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
 ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495534"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
@@ -461,7 +461,7 @@ func deploy
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 現在のユーザーがサインインしている Docker レジストリの名前。 |
-| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは次のとおりです。 `kubernetes` |
+| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは `kubernetes` です。 |
 | **`--name`** | 関数アプリの名前。 |
 | **`--max`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最大数を設定します。 |
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |

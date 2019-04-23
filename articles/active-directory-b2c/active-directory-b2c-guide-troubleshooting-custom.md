@@ -11,10 +11,10 @@ ms.date: 05/07/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880646"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング
@@ -41,16 +41,16 @@ XML ルールのレビューが役に立つ可能性があります。 Azure AD 
  
  一般的な検証エラーには、次のものがあります。
 
-エラー スニペット:  `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
+エラー スニペット: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * ClaimType 値のスペルが間違っているか、スキーマに存在しない可能性があります。
 * ClaimType 値は、ポリシー内の少なくとも 1 つのファイルで定義されている必要があります。 
-    例:  `<ClaimType Id="socialIdpUserId">`
+    次に例を示します。`<ClaimType Id="socialIdpUserId">`
 * ClaimType が拡張ファイルで定義されているが、ベース ファイルの TechnicalProfile でも使用される場合、ベース ファイルのアップロードでエラーが発生します。
 
-エラー スニペット:  `...makes a reference to a ClaimsTransformation with id...`
+エラー スニペット: `...makes a reference to a ClaimsTransformation with id...`
 * このエラーの原因は、ClaimType エラーと同じである可能性があります。
 
-エラー スニペット:  `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+エラー スニペット: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 * **\<TrustFrameworkPolicy\>** と **\<BasePolicy\>** の各要素の TenantId の値が、ターゲット Azure AD B2C テナントに一致していることを確認します。  
 
 ## <a name="troubleshoot-the-runtime"></a>ランタイムのトラブルシューティング
@@ -66,7 +66,7 @@ XML ルールのレビューが役に立つ可能性があります。 Azure AD 
 
 ## <a name="recommended-practices"></a>推奨プラクティス
 
-**複数のバージョンのシナリオを保持する。 アプリケーションを使用してプロジェクトでそれらをグループ化する。** ベース ファイル、拡張ファイル、証明書利用者ファイルは互いに直接依存しています。 これらのファイルを 1 つのグループとして保存します。 新機能がポリシーに追加されたら、作業バージョンを別々に保持します。 これらのファイルがやり取りするアプリケーション コードを使用して、独自のファイル システムで作業バージョンをステージングします。  アプリケーションによって、テナント内で多様な証明書利用者ポリシーが呼び出される可能性があります。 これらが、Azure AD B2C ポリシーからの想定される要求に依存するようになることがあります。
+**複数のバージョンのシナリオを保持する。アプリケーションを使用してプロジェクトでそれらをグループ化する。** ベース ファイル、拡張ファイル、証明書利用者ファイルは互いに直接依存しています。 これらのファイルを 1 つのグループとして保存します。 新機能がポリシーに追加されたら、作業バージョンを別々に保持します。 これらのファイルがやり取りするアプリケーション コードを使用して、独自のファイル システムで作業バージョンをステージングします。  アプリケーションによって、テナント内で多様な証明書利用者ポリシーが呼び出される可能性があります。 これらが、Azure AD B2C ポリシーからの想定される要求に依存するようになることがあります。
 
 **既知のユーザー体験を使用して技術プロファイルの開発とテストを行う。** テストが済んでいるスターター パックのポリシーを使用して技術プロファイルを設定します。 独自のユーザー体験に組み込む前に個別にテストします。
 

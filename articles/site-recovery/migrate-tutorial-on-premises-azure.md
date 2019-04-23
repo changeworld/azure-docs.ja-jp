@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357978"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
@@ -90,7 +90,7 @@ Hyper-V | [レプリケーション ポリシー](hyper-v-azure-tutorial.md#set-
 --- | --- 
 VMware | VMware VM の [レプリケーションを有効にします](vmware-azure-enable-replication.md)。
 物理マシン | 物理マシンの[レプリケーションを有効にします](physical-azure-disaster-recovery.md#enable-replication)。
-Hyper-V | [レプリケーションを有効にする](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> System Center VMM と共にデプロイされた Hyper-V の[レプリケーションを有効にします](hyper-v-vmm-azure-tutorial.md#enable-replication)。
+Hyper-V | [Enable replication](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> System Center VMM と共にデプロイされた Hyper-V の[レプリケーションを有効にします](hyper-v-vmm-azure-tutorial.md#enable-replication)。
 
 
 ## <a name="run-a-test-migration"></a>テスト移行を実行する

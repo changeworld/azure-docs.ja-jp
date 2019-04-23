@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: b8d43188c337e0c12db60b51dee053ef7259701a
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469048"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492942"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>U-SQL の Cognitive 機能を使い始める
 
@@ -29,7 +29,7 @@ Cognitive 機能を使用するには、次のサンプルを利用できます�
 * テキスト:[キー フレーズ抽出と感情分析](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>U-SQL での Cognitive 拡張機能の登録
-開始する前に、「[U-SQL での Cognitive 拡張機能の登録](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)」の記事の手順に従い、U-SQL で Cognitive 拡張機能を登録します。
+開始する前に、次の記事の手順に従い、U-SQL で Cognitive 拡張機能を登録します。「[U-SQL での Cognitive 拡張機能の登録](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)」
 
 ## <a name="next-steps"></a>次の手順
 * [U-SQL Cognitive のサンプル](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)

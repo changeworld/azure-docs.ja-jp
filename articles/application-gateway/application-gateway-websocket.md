@@ -1,18 +1,18 @@
 ---
 title: Azure Application Gateway による WebSocket のサポート | Microsoft Docs
 description: このページでは、Application Gateway による WebSocket のサポートの概要を示します。
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168121"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606907"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
 
@@ -32,7 +32,7 @@ WebSocket の接続を確立するために、特定の HTTP ベースのハン�
 
 ### <a name="listener-configuration-element"></a>リスナーの構成要素
 
-既存の HTTP リスナーを使用して WebSocket トラフィックをサポートできます。 サンプル テンプレート ファイルの httpListeners 要素のスニペットを次に示します。 WebSocket トラフィックおよびセキュリティで保護された WebSocket トラフィックをサポートするには、HTTP リスナーと HTTPS リスナーの両方が必要です。 同様に、[ポータル](application-gateway-create-gateway-portal.md)または [PowerShell](application-gateway-create-gateway-arm.md) を使用して、ポート 80/443 にリスナーを設定したアプリケーション ゲートウェイを作成して WebSocket トラフィックをサポートできます。
+既存の HTTP リスナーを使用して WebSocket トラフィックをサポートできます。 サンプル テンプレート ファイルの httpListeners 要素のスニペットを次に示します。 WebSocket トラフィックおよびセキュリティで保護された WebSocket トラフィックをサポートするには、HTTP リスナーと HTTPS リスナーの両方が必要です。 同様に、ポータルまたは Azure PowerShell を使用して、ポート 80/443 にリスナーを設定したアプリケーション ゲートウェイを作成して WebSocket トラフィックをサポートできます。
 
 ```json
 "httpListeners": [
@@ -123,5 +123,4 @@ WebSocket が動作するためには、バックエンドの構成済みのポ�
 
 ## <a name="next-steps"></a>次の手順
 
-WebSocket のサポートについて学習した後は、 [アプリケーション ゲートウェイの作成](application-gateway-create-gateway.md) に関するページに進んで、WebSocket が有効な Web アプリケーションを作成しましょう。
-
+WebSocket のサポートについて学習した後は、 [アプリケーション ゲートウェイの作成](quick-create-powershell.md) に関するページに進んで、WebSocket が有効な Web アプリケーションを作成しましょう。

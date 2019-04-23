@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d69271f65c326237a380624d994d8f5339537114
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル:Azure Active Directory と PingBoard の統合
@@ -53,7 +53,7 @@ PingBoard と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への PingBoard の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PingBoard を追加する必要があります。
 
-**ギャラリーから Pingboard を追加するには、次の手順に従います。**
+**ギャラリーから PingBoard を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,9 +107,9 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
     ![[Pingboard のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。 `http://app.pingboard.com/sp`
+    a. **[識別子]** テキスト ボックスに、`http://app.pingboard.com/sp` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<entity-id>.pingboard.com/auth/saml/consume`
+    b. **[応答 URL]** ボックスに、`https://<entity-id>.pingboard.com/auth/saml/consume` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -210,7 +210,7 @@ Pingboard で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Pingboard に Bitta Simon というユーザーを作成することです。 Pingboard では、　自動ユーザー プロビジョニングがサポートされています。この設定は、規定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](pingboard-provisioning-tutorial.md)をご覧ください。
 
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します。**
+**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
 1. Pingboard 企業サイトに管理者としてサインインします。
 

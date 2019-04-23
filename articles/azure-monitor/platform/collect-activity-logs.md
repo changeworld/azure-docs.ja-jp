@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905989"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505636"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 
 ![Azure アクティビティ ログのシンボル](./media/collect-activity-logs/activity-log-analytics.png)
 
-Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる [Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)の分析や検索に役立ちます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのイベントが報告されるため、以前は*監査ログ*または*操作ログ*と呼ばれていました。
+Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる [Azure アクティビティ ログ](activity-logs-overview.md)の分析や検索に役立ちます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する洞察が得られます。 アクティビティ ログではサブスクリプションのイベントが報告されるため、以前は*監査ログ*または*操作ログ*と呼ばれていました。
 
 アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、*いつ*、*誰が*、*何を*行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック デプロイ モデルを使用するリソースに対する操作は含まれません。
 
@@ -52,28 +52,39 @@ Free 価格レベルの場合は、アクティビティ ログに毎日のデ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
-| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
+| [Windows エージェント](agent-windows.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [System Center Operations Manager 管理グループ](om-agents.md) | いいえ  | このソリューションでは、Operations Manager 管理グループに報告を行うエージェントから情報を収集しません。 |
 | [Azure ストレージ アカウント](collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure アクティビティ ログの情報にアクセスするには、Azure サブスクリプションが必要です。
+Azure アクティビティ ログの情報にアクセスするには、Azure サブスクリプションが必要です。
+
+また、このソリューションでは、次の 2 つのリソース プロバイダーがサブスクリプションに登録されている必要もあります。
+
+1. Microsoft.OperationalInsights
+2. Microsoft.OperationsManagement
+
+これらを登録する方法、または登録されていることを確認する方法については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください
 
 ## <a name="configuration"></a>構成
 
 ワークスペースの Activity Log Analytics ソリューションを構成するには、次の手順を実行します。
 
-1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従って有効にしてください。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+
+2. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../insights/solutions.md)に関するページで説明されている手順に従って有効にしてください。
+
 2. Log Analytics ワークスペースに接続するようにアクティビティ ログを構成します。
     1. Azure Portal で、ワークスペースを選択し、**[Azure Activity log]**(Azure アクティビティ ログ) をクリックします。
     2. サブスクリプションごとに、サブスクリプションの名前をクリックします。  
+        
         ![サブスクリプションの追加](./media/collect-activity-logs/add-subscription.png)
+    
     3. *[SubscriptionName]*(SubscriptionName) ブレードで、**[Connect]**(接続) をクリックします。  
+    
         ![サブスクリプションの接続](./media/collect-activity-logs/subscription-connect.png)
-
-Azure Portal にサインインして、Azure サブスクリプションをワークスペースに接続します。  
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
@@ -98,5 +109,5 @@ Activity Log Analytics ソリューションをワークスペースに追加す
 
 ## <a name="next-steps"></a>次の手順
 
-- 特定のアクティビティが発生した場合に[アラート](../../azure-monitor/platform/alerts-metric.md)を作成します。
-- [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用して、アクティビティ ログの詳細情報を表示します。
+- 特定のアクティビティが発生した場合に[アラート](../platform/alerts-metric.md)を作成します。
+- [ログ検索](../log-query/log-query-overview.md)を使用して、アクティビティ ログの詳細情報を表示します。

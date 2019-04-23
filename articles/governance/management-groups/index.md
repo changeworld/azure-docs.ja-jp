@@ -4,15 +4,15 @@ description: 管理グループ、そのアクセス許可のしくみ、その�
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/17/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: bd874ffe9293d01fced7ff6df5d329a829b7d8b4
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804836"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699391"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 
@@ -43,11 +43,11 @@ ms.locfileid: "58804836"
 ## <a name="root-management-group-for-each-directory"></a>各ディレクトリのルート管理グループ
 
 各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。
-このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 [Azure AD 全体管理者は自分自身を昇格させて](../../role-based-access-control/elevate-access-global-admin.md)、最初にこのルート グループの所有者にする必要があります。 グループの所有者になった管理者は、任意の RBAC ロールを他のディレクトリ ユーザーまたはグループに割り当てて、階層を管理することができます。
+このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 [Azure AD 全体管理者は自分自身を昇格させて](../../role-based-access-control/elevate-access-global-admin.md)、最初にこのルート グループのユーザー アクセス管理者ロールにする必要があります。 アクセス権の昇格後、管理者は、任意の RBAC ロールを他のディレクトリ ユーザーまたはグループに割り当てて階層を管理することができます。 管理者の場合は、自分のアカウントをルート管理グループの所有者として割り当てることができます。
 
 ### <a name="important-facts-about-the-root-management-group"></a>ルート管理グループに関する重要な事実
 
-- ルート管理グループの名前と ID は、既定で設定されています。 表示名はいつでも更新でき、Azure Portal 内での表示を変えることができます。
+- ルート管理グループの名前と ID は、既定で設定されています。 表示名はいつでも更新でき、Azure Portal 内での表示を変えることができます。 [その名前を変更する](manage.md#change-the-name-of-a-management-group)には、そのルート管理グループの所有者または共同作成者ロールを自分のアカウントに割り当てる必要があります。
   - 名前は "Tenant root group" になります。
   - ID は Azure Active Directory ID になります。
 - 他の管理グループと異なり、ルート管理グループを移動または削除することはできません。  
@@ -69,7 +69,7 @@ ms.locfileid: "58804836"
 
 ## <a name="trouble-seeing-all-subscriptions"></a>サブスクリプションの表示の問題
 
-2018 年 6 月 25 日より前のプレビューで初期に管理グループの使用を開始した数個のディレクトリでは、一部のサブスクリプションが階層内にないという問題が発生していました。  すべてのサブスクリプションを階層に含めるプロセスは、ディレクトリ内のルート管理グループに対してロールまたはポリシーの割り当てが行われた後に導入されました。
+2018 年 6 月 25 日より前のプレビューで初期に管理グループの使用を開始した数個のディレクトリでは、一部のサブスクリプションが階層内にないという問題が発生していました。 すべてのサブスクリプションを階層に含めるプロセスは、ディレクトリ内のルート管理グループに対してロールまたはポリシーの割り当てが行われた後に導入されました。 
 
 ### <a name="how-to-resolve-the-issue"></a>この問題を解決する方法
 

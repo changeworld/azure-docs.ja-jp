@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259033"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798478"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Azure Monitor におけるログ データの表示と分析
 Log Analytics は、Azure Monitor におけるログ データ操作とクエリ作成の主要なエクスペリエンスです。 **[Azure Monitor]** メニューの **[ログ]** から Log Analytics を開きます。 「[Azure portal で Log Analytics の使用を開始する](get-started-portal.md)」で、このポータルの概要を参照して、その機能を確認できます。
@@ -55,7 +55,7 @@ Log Analytics は Virtual Machines などのさまざまな Azure リソース�
 ## <a name="firewall-requirements"></a>ファイアウォールの要件
 Log Analytics にアクセスするには、ブラウザーが次のアドレスにアクセスできる必要があります。  ブラウザーがファイアウォールを介して Azure Portal にアクセスしている場合は、これらのアドレスへのアクセスを有効にする必要があります。
 
-| Uri | IP | ポート |
+| Uri | IP | Port |
 |:---|:---|:---|
 | portal.loganalytics.io | 動的 | 80,443 |
 | api.loganalytics.io    | 動的 | 80,443 |

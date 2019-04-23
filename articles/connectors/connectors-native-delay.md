@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893726"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>遅延アクションと延期期限アクションの概要
@@ -55,10 +55,10 @@ ms.locfileid: "58893726"
 一定期間、実行を遅延します。
 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | 説明 |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | カウント* |count |遅延する時間の単位数 |
-| 単位* |unit |時間の単位: `Second`、`Minute`、`Hour`、 `Day` |
+| 単位* |unit |時間の単位: `Second`、`Minute`、`Hour`、`Day` のいずれか |
 
 <br>
 
@@ -66,7 +66,7 @@ ms.locfileid: "58893726"
 指定した日付/時刻まで実行を遅延します。
 * は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | 説明 |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | 年* |timestamp |遅延後の年 (GMT) |
 | 月* |timestamp |遅延後の月 (GMT) |

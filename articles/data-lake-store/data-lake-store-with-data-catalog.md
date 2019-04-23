@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877886"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
@@ -74,10 +74,10 @@ ms.locfileid: "58877886"
      ![カタログ内のデータの検索](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "カタログ内のデータの検索")
 1. これで、データへの注釈やドキュメントの追加などの操作を実行できるようになりました。 詳細については、次のリンクを参照してください。
 
-    * [Data Catalog でデータ ソースに注釈を付ける方法](../data-catalog/data-catalog-how-to-annotate.md)
-    * [Data Catalog でのデータ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
+    * [データ ソースに注釈を付ける方法](../data-catalog/data-catalog-how-to-annotate.md)
+    * [データ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>関連項目
-* [Data Catalog でデータ ソースに注釈を付ける方法](../data-catalog/data-catalog-how-to-annotate.md)
-* [Data Catalog でのデータ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
+* [データ ソースに注釈を付ける方法](../data-catalog/data-catalog-how-to-annotate.md)
+* [データ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Storage Gen1 とその他の Azure サービスの統合](data-lake-store-integrate-with-other-services.md)

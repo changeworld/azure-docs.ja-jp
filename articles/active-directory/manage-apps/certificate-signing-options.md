@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5548e7a5f60d9882fdfb4fb6eb777ab993e121
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916004"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549339"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory のギャラリー アプリ用の SAML トークンの詳細な証明書署名オプション
 
@@ -49,7 +49,7 @@ Azure AD では、SAML 応答に署名するための次の 2 つの署名アル
 
 * **SHA-1**。 これは古いアルゴリズムであり、SHA-256 より安全性が低いと考えられています。 アプリケーションでこの署名アルゴリズムしかサポートされていない場合は、このオプションを **[署名アルゴリズム]** ドロップダウン リストから選択してください。 これで、Azure AD は SHA-1 アルゴリズムを使用して SAML 応答に署名します。
 
-## <a name="change-the-certificate-signing-options-and-certificate-signing-algorithm"></a>証明書署名オプションと証明書署名アルゴリズムを変更する
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>証明書署名オプションと署名アルゴリズムを変更する
 
 アプリケーションの SAML 証明書署名オプションと証明書署名アルゴリズムを変更するには、対象のアプリケーションを選択します。
 
@@ -82,4 +82,4 @@ Azure AD では、SAML 応答に署名するための次の 2 つの署名アル
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML に基づいたシングル サインオンのトラブルシューティング](../develop/howto-v1-debug-saml-sso-issues.md)
+* [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](../develop/howto-v1-debug-saml-sso-issues.md)

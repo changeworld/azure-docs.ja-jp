@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e3106a792f486a62986734e562c96b41dd8a75dc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895637"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524125"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -208,7 +208,7 @@ VM の作成には数分かかります。 VM が作成されると、Azure CLI 
 
 ## <a name="route-traffic-through-an-nva"></a>NVA を経由するトラフィックのルーティング
 
-次のコマンドを使用して、*myVmPrivate* VM との SSH セッションを作成します。 *<publicIpAddress>* を VM のパブリック IP アドレスに置き換えます。 上の例では、IP アドレスは *13.90.242.231* です。
+次のコマンドを使用して、*myVmPrivate* VM との SSH セッションを作成します。 *\<publicIpAddress>* を VM のパブリック IP アドレスに置き換えます。 上の例では、IP アドレスは *13.90.242.231* です。
 
 ```bash 
 ssh azureuser@<publicIpAddress>

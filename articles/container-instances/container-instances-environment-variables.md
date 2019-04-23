@@ -5,18 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904901"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606890"
 ---
-# <a name="set-environment-variables"></a>環境変数の設定
+# <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 
-Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 コンテナーで環境変数を設定するには、コンテナー インスタンスを作成するときに指定します。 環境変数の設定は、[Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example)、および [Azure Portal](#azure-portal-example) を使用してコンテナーを開始するときに行えます。
+Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 これは、`docker run` に対する `--env` コマンドライン引数に似ています。 
+
+コンテナーで環境変数を設定するには、コンテナー インスタンスを作成するときに指定します。 この記事では、[Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example)、および [Azure portal](#azure-portal-example) を使用してコンテナーを開始する際の環境変数の設定の例を示します。 
 
 たとえば、Microsoft [aci-wordcount][aci-wordcount] コンテナー イメージを実行する場合は、次の環境変数を指定することによって動作を変更できます。
 
@@ -143,7 +145,7 @@ Azure:\
 
 Azure Portal でコンテナーを開始するときに環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
 
-ポータルでデプロイするときには、変数の数が現在は 3 つに制限されていて、次の形式で入力する必要があります:  `"variableName":"value"`
+ポータルでデプロイするときには、変数の数が現在は 3 つに制限されていて、次の形式で入力する必要があります: `"variableName":"value"`
 
 例を表示するには、*NumWords* 変数と *MinLength* 変数を指定して [aci-wordcount][aci-wordcount] コンテナーを開始します。
 
@@ -241,7 +243,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>次の手順
 
-いくつかのコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、実行時にカスタムの環境変数のメリットがあります。 タスク ベースのコンテナーの実行に関する詳細については、「[Azure Container Instances でコンテナー化タスクを実行する](container-instances-restart-policy.md)」を参照してください。
+いくつかのコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、実行時にカスタムの環境変数のメリットがあります。 タスク ベースのコンテナーの実行に関する詳細については、「[再起動ポリシーによるコンテナー化タスクの実行](container-instances-restart-policy.md)」を参照してください。
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

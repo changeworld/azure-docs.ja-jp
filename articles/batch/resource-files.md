@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: f6693de861658c7174614e80906ee83633fcb313
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500911"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995627"
 ---
 # <a name="creating-and-using-resource-files"></a>リソース ファイルを作成して使用する
 
@@ -72,7 +72,7 @@ SAS URL を生成する代わりに、Azure Blob Storage のコンテナーと�
 
 SAS URL を構成して作成する代わりに、BLOB データにアクセスするために Azure ストレージ コンテナーの名前を使用できます。 使用されるストレージ コンテナーは、autostorage アカウントと呼ばれる Batch アカウントにリンクされている Azure ストレージ アカウントにある必要があります。 autostorage アカウントのストレージ コンテナー名を使用すると、ストレージ コンテナーにアクセスするための SAS URL の構成と作成をバイパスすることができます。
 
-この例では、リソース ファイルの作成に使用するデータは、Batch アカウントにリンクされている Azure ストレージ アカウントに既にあると仮定しています。 Autostorage アカウントを持っていない場合、アカウントを作成してリンクする方法の詳細については、[Batch アカウントの作成](/create-a-batch-account.md)の手順を参照してください。
+この例では、リソース ファイルの作成に使用するデータは、Batch アカウントにリンクされている Azure ストレージ アカウントに既にあると仮定しています。 Autostorage アカウントを持っていない場合、アカウントを作成してリンクする方法の詳細については、[Batch アカウントの作成](batch-account-create-portal.md)の手順を参照してください。
 
 リンクされたストレージ アカウントを使用することで、ストレージ コンテナーへの SAS URL の作成と構成は必要なくなります。 代わりに、リンクされたストレージ アカウントでストレージ コンテナーの名前を指定します。
 

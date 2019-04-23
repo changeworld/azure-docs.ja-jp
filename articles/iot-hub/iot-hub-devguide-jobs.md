@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.openlocfilehash: aacb0ab69dad45f9ca7655daaae0c2acff0403f5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044374"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
@@ -32,7 +32,7 @@ Azure IoT Hub では、[デバイス ツインのプロパティとタグ](iot-h
 ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。 ジョブは、サービス向け URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`) を通して照会できます。 ジョブが開始された後で実行中のジョブの状態を更新するには、ジョブ クエリを実行します。
 
 > [!NOTE]
-> ジョブを呼び出すとき、プロパティ名と値には次のものを除く US-ASCII 印刷可能英数字のみを使用できます。 `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> ジョブを呼び出すとき、プロパティ名と値には `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT` を除く US-ASCII 印刷可能英数字のみを使用できます。
 
 ## <a name="jobs-to-execute-direct-methods"></a>ダイレクト メソッドを実行するジョブ
 

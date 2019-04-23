@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 426dd265f4d608b8dd3c9ab746479ea103419562
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884365"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579344"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -393,7 +393,7 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 | ディメンション名 | 説明 |
 | ------------------- | ----------------- |
 | BlobType | BLOB メトリックの BLOB の種類のみ。 サポートされる値は **BlockBlob** と **PageBlob** です。 BlockBlob には Append Blob が含まれます。 |
-| ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError:記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError:HTTP 503 ステータス コードを返した認証済み要求。 </li> <li> ServerTimeoutError:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> AuthorizationError:データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError:ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>    ClientThrottlingError:クライアント側の調整エラー。 </li> <li> ClientTimeoutError:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError:記述されていない、その他すべてのクライアント側エラー。 </li> <li> Success:成功した要求|
+| ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError:記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError:HTTP 503 ステータス コードを返した認証済み要求。 </li> <li> ServerTimeoutError:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> AuthorizationError:データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError:ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>    ClientThrottlingError:クライアント側の調整エラー。 </li> <li> ClientTimeoutError:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError:記述されていない、その他すべてのクライアント側エラー。 </li> <li> 成功: 成功した要求。|
 | GeoType | プライマリ クラスターまたはセカンダリ クラスターからのトランザクション。 使用可能な値は Primary と Secondary です。 セカンダリ テナントからオブジェクトを読み取るときに、読み取りアクセス geo 冗長ストレージ (RA-GRS) に適用されます。 |
 | ApiName | 操作の名前。 例:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> すべての操作名については、こちらの[ドキュメント](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)を参照してください。 |
 | Authentication | トランザクションで使用される認証の種類。 次の値をご利用いただけます。 <br/> <li>AccountKey:トランザクションは、ストレージ アカウント キーを使って認証されます。</li> <li>SAS:トランザクションは、Shared Access Signature を使って認証されます。</li> <li>OAuth:トランザクションは、OAuth アクセス トークンを使って認証されます。</li> <li>Anonymous:トランザクションは匿名で要求されます。 プリフライト要求は含まれません。</li> <li>AnonymousPreflight:トランザクションは、プリフライト要求です。</li> |
@@ -410,7 +410,7 @@ Azure Monitor 管理メトリックと並行して従来のメトリックを利
 
 いいえ。Azure Monitor の新しいメトリックは、Azure Resource Manager ストレージ アカウントのみサポートしています。 ストレージ アカウントに対してメトリックを使用する場合、Azure Resource Manager ストレージ アカウントに移行する必要があります。 [Azure Resource Manager への移行](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)に関するページを参照してください。
 
-**Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか?**
+**Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか。**
 
 いいえ、Azure Compute はディスク上のメトリックをサポートします。 詳しくは、[この記事](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)をご覧ください。
 

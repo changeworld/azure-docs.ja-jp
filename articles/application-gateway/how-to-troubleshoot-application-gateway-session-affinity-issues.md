@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904527"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683156"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
@@ -96,7 +96,7 @@ Internet Explorer や他のブラウザーが、短縮名 URL で Cookie を格�
 
 #### <a name="resolution"></a>解決策
 
-この問題を解決するには、FQDN を使用して Application Gateway にアクセスする必要があります。 たとえば、[http://website.com](http://website.com/) または [http://appgw.website.com](http://appgw.website.com/) を使用します。
+この問題を解決するには、FQDN を使用して Application Gateway にアクセスする必要があります。 たとえば、[http://website.com](https://website.com/) または [http://appgw.website.com](http://appgw.website.com/) を使用します。
 
 ## <a name="additional-logs-to-troubleshoot"></a>トラブルシューティングのためのその他のログ
 

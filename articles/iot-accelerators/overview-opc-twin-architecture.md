@@ -1,5 +1,5 @@
 ---
-title: Azure IoT OPC UA デバイス管理のアーキテクチャ | Microsoft Docs
+title: OPC Twin のアーキテクチャ - Azure | Microsoft Docs
 description: OPC Twin のアーキテクチャ
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 904c889866d3aa24e1da387af44b3f589b7769aa
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759793"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783904"
 ---
 # <a name="opc-twin-architecture"></a>OPC Twin のアーキテクチャ
 

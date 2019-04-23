@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6d434295a6a46ee5b7089608cbf788ff91589fb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>チュートリアル:Azure Active Directory と Citrix Netscaler の統合
@@ -53,7 +53,7 @@ Azure AD と Citrix Netscaler の統合を構成するには、次のものが�
 
 Azure AD への Citrix Netscaler の統合を構成するには、ギャラリーから管理対象 SaaS アプリのリストに Citrix Netscaler を追加する必要があります。
 
-**ギャラリーから Citrix Netscaler を追加するには、次の手順を実行します。**
+**ギャラリーから Citrix Netscaler を追加するには、次の手順を行います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,11 +107,11 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     ![Citrix Netscaler のドメインと URL のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
     
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<<Your FQDN>>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<<Your FQDN>>`
 
-    c. **[応答 URL (Assertion Consumer Service URL)]** ボックスに、次のパターンを使用して URL を入力します:  `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    c. **[応答 URL (Assertion Consumer Service URL)]** テキスト ボックスに、`https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx` というパターンを使用して URL を入力します。
     
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得する場合は、[Citrix Netscaler クライアント サポート チーム](https://www.citrix.com/contact/technical-support.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

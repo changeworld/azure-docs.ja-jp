@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5e55399337e06314a5079f9d0e692a771855f8ca
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885351"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>チュートリアル:Azure Active Directory と GoodPractice Toolkit の統合
 
@@ -69,7 +70,7 @@ Azure AD への GoodPractice Toolkit の統合を構成するには、管理対�
 4. 検索ボックスに「**GoodPractice Toolkit**」と入力し、結果パネルで **GoodPractice Toolkit** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の GoodPractice Toolkit](common/search-new-app.png)
-   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、GoodPractice Toolkit で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと GoodPractice Toolkit 内の関連ユーザー間にリンク関係が確立されている必要があります。
@@ -79,8 +80,8 @@ GoodPractice Toolkit で Azure AD のシングル サインオンを構成して
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[GoodPractice Toolkit シングル サインオンの構成](#configure-goodpractice-toolkit-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[GoodPractice Toolkit のテスト ユーザーの作成](#create-goodpractice-toolkit-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを GoodPractice Toolkit で作成します。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[GoodPractice Toolkit のテスト ユーザーの作成](#create-goodpractice-toolkit-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを GoodPractice Toolkit で作成します。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -146,8 +147,7 @@ GoodPractice Toolkit で Azure AD シングル サインオンを構成するに
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 

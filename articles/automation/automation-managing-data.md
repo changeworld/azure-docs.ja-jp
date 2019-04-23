@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916837"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784978"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation のデータの管理
 この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。
@@ -70,7 +70,7 @@ Azure Automation アカウントでの標準である geo レプリケーショ�
 | プライマリ | セカンダリ |
 | --- | --- |
 | 米国中南部 |米国中北部 |
-| 米国東部 2 |米国中央部 |
+| 米国東部 2 |米国中部 |
 | 西ヨーロッパ |北ヨーロッパ |
 | 東南アジア |東アジア |
 | 東日本 |西日本 |

@@ -17,10 +17,10 @@ ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
 ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884875"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
@@ -112,5 +112,5 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 ## <a name="next-steps"></a>次の手順
 事前構成済みの Visual Studio イメージについて確認したので、次の手順では新しい VM を作成します。
 
-* [Azure portal を使用した VM の作成](quick-create-portal.md)
+* [Azure Portal を使用した VM の作成](quick-create-portal.md)
 * [Windows 仮想マシンの概要](overview.md)

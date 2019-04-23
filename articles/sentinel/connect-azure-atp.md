@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Azure ATP データを収集する | Microsoft Docs
-description: Azure Sentinel で Azure ATP データを収集する方法を説明します。
+title: Azure Sentinel プレビューに Azure ATP データを接続する | Microsoft Docs
+description: Azure Sentinel に Azure ATP データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574945"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492653"
 ---
-# <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを収集する
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを接続する
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -42,7 +42,7 @@ Azure ATP がデプロイされていて、データを取り込んでいる場�
 
 
 
-1. Azure Sentinel で **[データ収集]** を選択し、**[Azure ATP]** タイルをクリックします。
+1. Azure Sentinel で **[データ コネクタ]** を選択し、**[Azure ATP]** タイルをクリックします。
 
 2. **[接続]** をクリックします。
 
@@ -51,5 +51,5 @@ Azure ATP がデプロイされていて、データを取り込んでいる場�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Advanced Threat Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md) を開始する。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
 ms.openlocfilehash: ef5ab3d4fe71f688a0b4f3879248ea1715874a0b
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793732"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
@@ -124,7 +124,7 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 Service Map は、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 つまり、サーバーには Log Analytics エージェントをインストールしておき、Dependency Agent を使用して構成する必要があります。  次の表では、Service Map ソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポート | 説明 |
+| 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
 | Windows エージェント | はい | Service Map は、Windows コンピューターからのデータを分析して収集します。 <br><br>[Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「サポートされているオペレーティング システム」を参照してください。 |
 | Linux エージェント | はい | Service Map は、Linux コンピューターからのデータを分析して収集します。 <br><br>[Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「サポートされているオペレーティング システム」を参照してください。 |

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662372"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617769"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -166,14 +166,11 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 - 最小容量プールは 4 TiB です。 容量プールのサイズは 4 TiB の倍数である必要があります。
 - 最小ボリュームは 100 GiB です。
-- Azure NetApp Files と、Azure NetApp Files ボリュームがマウントされるすべての仮想マシンは、同じ Azure Virtual Network 内に存在する必要があります。 Azure NetApp Files では、[仮想ネットワーク ピアリング](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)はまだサポートされていません。
+- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)内に存在する必要があります。 同じリージョン内の VNET ピアリング経由での Azure NetApp Files のアクセスが、サポートされるようになっています。 グローバル ピアリング経由での Azure NetApp Files のアクセスは、まだサポートされていません。
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
 - 現在、Azure NetApp Files でサポートされるのは NFSv3 のみです。 
 - Azure NetApp Files の[エクスポート ポリシー](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。 
-
-   > [!NOTE]
-   > Azure NetApp Files では、仮想ネットワーク ピアリングはまだサポートされていないことに注意してください。 VM および Azure NetApp Files ボリュームは、同じ仮想ネットワーク内にデプロイします。
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Azure portal 経由での手動による Linux VM のデプロイ
 
@@ -574,6 +571,8 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 9. **[1]** SAP クラスター リソースを作成します
 
+エンキュー サーバー 1 のアーキテクチャ (ENSA1) を使用する場合は、次のようにリソースを定義します。
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
@@ -599,6 +598,35 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    sudo crm node online <b>anftstsapcl1</b>
    sudo crm configure property maintenance-mode="false"
    </code></pre>
+
+   SAP では、SAP NW 7.52 の時点で、レプリケーションを含む、エンキュー サーバー 2 のサポートが導入されました。 ABAP Platform 1809 以降では、エンキュー サーバー 2 が既定でインストールされます。 エンキュー サーバー 2 のサポートについては、SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) を参照してください。
+エンキュー サーバー 2 のアーキテクチャ ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) を使用する場合は、以下のようにリソースを定義します。
+
+   <pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
+   
+   sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>QAS</b>_ERS add rsc_sap_<b>QAS</b>_ERS<b>01</b>
+   
+   sudo crm configure colocation col_sap_<b>QAS</b>_no_both -5000: g-<b>QAS</b>_ERS g-<b>QAS</b>_ASCS
+   sudo crm configure order ord_sap_<b>QAS</b>_first_start_ascs Optional: rsc_sap_<b>QAS</b>_ASCS<b>00</b>:start rsc_sap_<b>QAS</b>_ERS<b>01</b>:stop symmetrical=false
+   
+   sudo crm node online <b>anftstsapcl1</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+   以前のバージョンからアップグレードしてエンキュー サーバー 2 に切り替える場合は、SAP Note [2641019](https://launchpad.support.sap.com/#/notes/2641019) を参照してください。 
 
    クラスターの状態が正常であることと、すべてのリソースが起動されていることを確認します。 リソースがどのノードで実行されているかは重要ではありません。
 
@@ -1051,7 +1079,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   エンキュー ロックを作成します (たとえば、トランザクション su01 でユーザーを編集します)。 ASCS インスタンスが実行されているノード上で、次のコマンドを <sapsid\>adm として実行します。 このコマンドは、ASCS インスタンスを停止し、もう一度開始します。 エンキュー ロックは、このテスト中に失われることが期待されます。
+   エンキュー ロックを作成します (たとえば、トランザクション su01 でユーザーを編集します)。 ASCS インスタンスが実行されているノード上で、次のコマンドを <sapsid\>adm として実行します。 このコマンドは、ASCS インスタンスを停止し、もう一度開始します。 エンキュー サーバー 1 のアーキテクチャを使用する場合、このテストでエンキュー ロックが失われることが予想されます。 エンキュー サーバー 2 のアーキテクチャを使用する場合、エンキューは保持されます。 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1066,7 +1094,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   トランザクション su01 のエンキュー ロックが失われ、バックエンドがリセットされます。 テスト後のリソースの状態:
+   エンキュー サーバー レプリケーション 1 アーキテクチャを使用している場合は、トランザクション su01 のエンキュー ロックが失われ、バックエンドがリセットされます。 テスト後のリソースの状態:
 
    <pre><code>
     Resource Group: g-QAS_ASCS

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045271"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
@@ -36,7 +36,7 @@ Azure Resource Manager テンプレートを使用すると、ソリューショ
 
 これらの Service Bus Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。 次のリンクをクリックすると、それぞれの詳細情報と、GitHub のテンプレートを参照できます。
 
-* [Service Bus 名前空間を作成する](service-bus-resource-manager-namespace.md)
+* [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 * [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 * [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)

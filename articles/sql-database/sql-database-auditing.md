@@ -11,13 +11,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: a98ec18f2ed38b290d04c3fdc36d9a6ff80a675a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.date: 04/08/2019
+ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407353"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361281"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -25,7 +25,7 @@ Azure [SQL Database](sql-database-technical-overview.md) および [SQL Data War
 
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 
-- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準準拠をサポートする Azure プログラムの詳細については、 [Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/compliance/)のページを参照してください。
+- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)を参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 
 > [!NOTE] 
@@ -240,17 +240,17 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **REST API**:
 
-- [データベース監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [サーバー監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [サーバー監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [データベース監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [サーバー監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [サーバー監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
-- [データベース "*拡張*" 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [サーバー "*拡張*" 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース "*拡張*" 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [サーバー "*拡張*" 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [データベース "*拡張*" 監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [サーバー "*拡張*" 監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース "*拡張*" 監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [サーバー "*拡張*" 監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>ARM テンプレートを使用して SQL Database の監査を管理する
 

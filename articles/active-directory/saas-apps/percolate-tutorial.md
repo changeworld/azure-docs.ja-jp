@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d399e83dbd1324827cc395cbf7834672baffa791
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275846"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>チュートリアル:Azure Active Directory と Percolate との統合
 
@@ -101,7 +101,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4.  **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、**[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、**[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
     ![[Percolate のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
@@ -141,7 +141,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
     b. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    c. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして  **[x509 certificates]\(x509 証明書\)** ボックスに貼り付けます。
+    c. Azure portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[x509 certificates]\(x509 証明書\)** ボックスに貼り付けます。
 
     d. **[Email attribute]\(メール属性\)** ボックスに、「**emailaddress**」と入力します。
 
@@ -207,7 +207,7 @@ Percolate で Azure AD シングル サインオンを構成するには、次�
 
 Azure AD ユーザーが Percolate にサインインできるようにするには、ユーザーを Percolate にプロビジョニングする必要があります。 Percolate では、プロビジョニングは手動のタスクです。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. 管理者として Percolate にサインインします。
 
@@ -219,9 +219,9 @@ Azure AD ユーザーが Percolate にサインインできるようにするに
 
     ![Configure single sign-on](./media/percolate-tutorial/configure04.png)
 
-    a.  **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: brittasimon@contoso.com)。
+    a. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: brittasimon@contoso.com)。
 
-    b.  **[Fullname]\(フルネーム\)** ボックスに、ユーザーの名前を入力します (例: **Brittasimon**)。
+    b. **[Fullname]\(フル ネーム\)** ボックスに、ユーザーの名前を入力します (例: **Brittasimon**)。
 
     c. **[Create users]\(ユーザーの作成\)** をクリックします。
 

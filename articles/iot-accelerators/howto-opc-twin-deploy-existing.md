@@ -1,5 +1,5 @@
 ---
-title: Azure IoT OPC UA デバイス管理モジュールを既存のプロジェクトにデプロイする方法 | Microsoft Docs
+title: 既存の Azure プロジェクトに OPC Twin モジュールをデプロイする方法 | Microsoft Docs
 description: 既存のプロジェクトに OPC Twin をデプロイする方法。
 author: dominicbetts
 ms.author: dobett
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255888"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493248"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
 
-OPC Device Twin モジュールは IoT Edge 上で動作し、OPC Device Twin および Registry サービスにいくつかのエッジ サービスを提供します。 
+OPC Twin モジュールは IoT Edge 上で動作し、OPC Twin およびレジストリ サービスにいくつかのエッジ サービスを提供します。 
 
-OPC Device Twin マイクロサービスは、OPC Twin IoT Edge モジュールを介して、工場オペレーターと、工場フロアにある OPC UA サーバー デバイスの間の通信を容易にします。 マイクロサービスは、その REST API を介して OPC UA サービス (参照、読み取り、書き込み、実行) を公開します。 
+OPC Twin マイクロサービスは、OPC Twin IoT Edge モジュールを介して、工場オペレーターと、工場フロアにある OPC UA サーバー デバイスの間の通信を容易にします。 マイクロサービスは、その REST API を介して OPC UA サービス (参照、読み取り、書き込み、実行) を公開します。 
 
-OPC UA Device Registry マイクロサービスは、登録済みの OPC UA アプリケーションとそのエンドポイントへのアクセスを提供します。 オペレーターと管理者は、新しい OPC UA アプリケーションを登録および登録解除したり、既存のアプリケーションをそのエンドポイントを含めて参照したりできます。 アプリケーションとエンドポイントの管理に加えて、レジストリ サービスは登録済みの OPC Device Twin IoT Edge モジュールのカタログ化も行います。 サービス API を使用して、エッジ モジュールの機能を制御できます。たとえば、サーバー検出 (スキャン サービス)を開始または停止したり、OPC Twin マイクロサービスを使用してアクセスできる新しいエンドポイント ツインをアクティブ化したりできます。
+OPC UA Device Registry マイクロサービスにより、登録済みの OPC UA アプリケーションとそのエンドポイントへのアクセスが提供されます。 オペレーターと管理者は、新しい OPC UA アプリケーションを登録および登録解除したり、既存のアプリケーションをそのエンドポイントを含めて参照したりできます。 レジストリ サービスにより、アプリケーションとエンドポイントの管理のほか、登録済みの OPC Twin IoT Edge モジュールのカタログ化が行われます。 サービス API を使用して、エッジ モジュールの機能を制御できます。たとえば、サーバー検出 (スキャン サービス)を開始または停止したり、OPC Twin マイクロサービスを使用してアクセスできる新しいエンドポイント ツインをアクティブ化したりできます。
 
-モジュールのコアはスーパーバイザー ID です。 スーパーバイザーはエンドポイント ツインを管理します。エンドポイント ツインは、対応する OPC UA レジストリ API を使用してアクティブ化される OPC UA サーバー エンドポイントに対応します。 このエンドポイント ツインは、クラウドで実行されている OPC Twin マイクロサービスから受信した OPC UA JSON を OPC UA バイナリ メッセージに変換し、このメッセージが、セキュリティで保護されたステートフル チャネル経由で管理対象エンドポイントに送信されます。 また、スーパーバイザーが提供する検出サービスは、デバイス検出イベントを OPC UA Device Onboarding サービスに送信して処理を委ね、これらのイベントの結果として OPC UA レジストリが更新されます。  この記事では、既存のプロジェクトに OPC Twin モジュールをデプロイする方法を示します。 
+モジュールのコアはスーパーバイザー ID です。 スーパーバイザーはエンドポイント ツインを管理します。エンドポイント ツインは、対応する OPC UA レジストリ API を使用してアクティブ化される OPC UA サーバー エンドポイントに対応します。 このエンドポイント ツインは、クラウドで実行されている OPC Twin マイクロサービスから受信した OPC UA JSON を OPC UA バイナリ メッセージに変換し、このメッセージが、セキュリティで保護されたステートフル チャネル経由で管理対象エンドポイントに送信されます。 また、スーパーバイザーが提供する検出サービスにより、デバイス検出イベントが処理用に OPC UA Device Onboarding サービスに送信され、これらのイベントの結果として OPC UA レジストリが更新されます。  この記事では、既存のプロジェクトに OPC Twin モジュールをデプロイする方法を示します。 
 
 > [!NOTE]
 > デプロイの詳細と手順については、GitHub の[リポジトリ](https://github.com/Azure/azure-iiot-opc-twin-module)を参照してください。
@@ -71,7 +71,7 @@ Web サイトの名前が既に使用されている可能性があります。 
 2. または、プライベート AAD テナントを別のサブスクリプションにデプロイし、スクリプトを再起動して、それを使用することを選択します。
 
 > [!WARNING]
-> 認証なしで続行しないでください。  そのようにした場合、誰もがインターネットから認証なしで OPC Device Management エンドポイントにアクセスできる状態になってしまいます。   いつでも、["local" デプロイ オプション](howto-opc-twin-deploy-dependencies.md)を選択することで簡単なチェックができます。
+> 認証なしで続行しないでください。  そのように選択した場合、誰もがインターネットから認証なしで OPC Twin エンドポイントにアクセスできる状態になってしまいます。   いつでも、["local" デプロイ オプション](howto-opc-twin-deploy-dependencies.md)を選択することで簡単なチェックができます。
 
 ## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>オールインワンの産業用 IoT サービス デモをデプロイする
 

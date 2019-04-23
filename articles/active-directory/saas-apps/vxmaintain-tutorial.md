@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル:Azure Active Directory と vxMaintain の統合
@@ -105,9 +105,9 @@ vxMaintain で Azure AD シングル サインオンを構成するには、次�
 
     ![[vxMaintain のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<company name>.verisae.com`
+    a. **[識別子]** ボックスに、`https://<company name>.verisae.com` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. **[応答 URL]** ボックスに、`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[vxMaintain クライアント サポート チーム](https://www.hubspot.com/company/contact)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

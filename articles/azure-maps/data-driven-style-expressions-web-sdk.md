@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 0f63ed7d00f1ae3e30cdac76606559a4e9f49f04
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287508"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579497"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -43,9 +43,9 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
 
 | 式の種類 | 説明 |
 |---------------------|-------------|
-| [ブール式](#boolean-expressions) | ブール式では、ブール値の比較を評価するためにブール演算子式のセットを提供します。 |
+| [ブール式](#boolean-expressions) | ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。 |
 | [色の式](#color-expressions) | 色の式を使用すると、色の値の作成と操作が容易になります。 |
-| [条件式](#conditional-expressions) | 条件式では、if ステートメントのようなロジック操作を提供します。 |
+| [条件式](#conditional-expressions) | 条件式では、if ステートメントのようなロジック操作が提供されます。 |
 | [データ式](#data-expressions) | 機能内のプロパティ データへのアクセスを提供します。 |
 | [補間式とステップ式](#interpolate-and-step-expressions) | 補間式とステップ式は、補間曲線またはステップ関数に沿って値を計算するために使用できます。 |
 | [レイヤー固有の式](#layer-specific-expressions) | 1 つのレイヤーにのみ適用できる特殊な式。 |
@@ -234,7 +234,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 `match` 式は、ロジックなどの switch ステートメントを提供する一種の条件式です。 入力には、文字列または数値を返す `['get', 'entityType']` などの任意の式を使用できます。 各ラベルは、1 つのリテラル値、または値がすべて文字列またはすべて数値であるリテラル値の配列である必要があります。 配列内のいずれかの値が一致する場合、入力は一致します。 各ラベルは一意である必要があります。 入力の型がラベルの型と一致しない場合、結果はフォールバック値になります。
 
-次の疑似コードでは、`match` 式の構造を定義します。 
+次の疑似コードでは、`match` 式の構造が定義されます。 
 
 ```javascript
 [
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 `coalesce` 式では、一連の式を通過し、最初の null 以外の値を取得したら、その値が返されます。 
 
-次の疑似コードでは、` coalesce` 式の構造を定義します。 
+次の疑似コードでは、`coalesce` 式の構造が定義されます。 
 
 ```javascript
 [
@@ -446,7 +446,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 |---------|-------------|--------------|
 | ![線形補間グラフ](media/how-to-expressions/linear-interpolation.png) | ![指数補間グラフ](media/how-to-expressions/exponential-interpolation.png) | ![3 次ベジエ補間グラフ](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-次の疑似コードでは、`interpolate` 式の構造を定義します。 
+次の疑似コードでは、`interpolate` 式の構造が定義されます。 
 
 ```javascript
 [
@@ -612,7 +612,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[実際に操作できる例をご覧ください。](map-add-shape.md#line-stroke-gradient)
+[実際に操作できる例をご覧ください](map-add-shape.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>テキスト フィールドの書式指定式
 
@@ -745,7 +745,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 };
 ```
 
-[実際に操作できる例をご覧ください。](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
+[実際に操作できる例をご覧ください](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
 
 ## <a name="variable-binding-expressions"></a>変数バインド式
 

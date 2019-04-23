@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
-ms.openlocfilehash: 537d7d830ef5e6d779c3c236314717a768822e71
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 1d45b815b9becae6f6f8e8e3ea17dd0c7cb9245f
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046727"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571184"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -73,7 +73,7 @@ ms.locfileid: "59046727"
     <div class="container">
         <ul class="pivots">
             <li>
-                <a href="#get-started">作業の開始</a>
+                <a href="#get-started">作業開始</a>
                 <ul id="get-started">
                     <li>
                         <a href="#get-started1"></a>
@@ -91,8 +91,8 @@ ms.locfileid: "59046727"
                                             <div class="cardText">
                                                 <h3>インフラストラクチャのデプロイ</h3>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux Virtual Machines</a></li>
-                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows Virtual Machines</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux virtual machines</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows virtual machines</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -145,7 +145,7 @@ ms.locfileid: "59046727"
                                                     <h4>アプリ モデル</h4>
                                                     <ul class="noBullet">
                                                         <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
-                                                        <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
+                                                        <li><a class="barLink" href="/azure/azure-functions/">サーバーレスな Functions</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -161,9 +161,9 @@ ms.locfileid: "59046727"
                                                 <h3>データと AI の管理</h3>
                                                 <h4>リレーショナル データベース</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/sql-database/">サービスとしての SQL データベース</a></li>
-                                                    <li><a class="barLink" href="/azure/postgresql/">サービスとしての PostgreSQL データベース</a></li>
-                                                    <li><a class="barLink" href="/azure/mysql/">サービスとしての MySQL データベース</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-database/">サービスとしての SQL Database</a></li>
+                                                    <li><a class="barLink" href="/azure/postgresql/">サービスとしての PostgreSQL Database</a></li>
+                                                    <li><a class="barLink" href="/azure/mysql/">サービスとしての MySQL Database</a></li>
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
@@ -220,7 +220,7 @@ ms.locfileid: "59046727"
                 <a href="#services">サービス</a>
                 <ul id="services">
                     <li>
-                        <a href="#all">All</a>
+                        <a href="#all">すべて</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
@@ -1030,7 +1030,7 @@ ms.locfileid: "59046727"
                         </ul>
                     </li>
                     <li>
-                        <a data-default="true" href="#Compute">Compute</a>
+                        <a data-default="true" href="#Compute">コンピューティング</a>
                         <ul id="Compute" class="cardsA">
                             <li>
                                 <a href="/azure/virtual-machines/linux/">
@@ -1400,7 +1400,7 @@ ms.locfileid: "59046727"
                         </ul>
                     </li>
                     <li>
-                        <a href="#storage">Storage</a>
+                        <a href="#storage">ストレージ</a>
                         <ul id="storage" class="cardsA">
                             <li>
                                 <a href="/azure/storage/">
@@ -1657,7 +1657,7 @@ ms.locfileid: "59046727"
                         </ul>
                     </li>
                     <li>
-                        <a href="#containers">Containers</a>
+                        <a href="#containers">コンテナー</a>
                         <ul id="containers" class="cardsA">
                             <li>
                                 <a href="/azure/container-service/">
@@ -1904,7 +1904,7 @@ ms.locfileid: "59046727"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>データの変換と移動を調整、管理</p>
+                                                    <p>データの変換と移動を調整および管理します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2413,7 +2413,7 @@ ms.locfileid: "59046727"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Time Series Insights</h3>
-                                                    <p>時系列のデータを瞬時に調査して分析</p>
+                                                    <p>時系列のデータを瞬時に調査して分析します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2789,7 +2789,7 @@ ms.locfileid: "59046727"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HockeyApp</h3>
-                                                    <p>モバイル アプリのデプロイ、フィードバックおよびクラッシュ レポートの収集、使用量の監視</p>
+                                                    <p>モバイル アプリのデプロイ、フィードバックおよびクラッシュ レポートの収集、使用量の監視を実現します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3065,7 +3065,7 @@ ms.locfileid: "59046727"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure Stack</h3>
-                                                    <p>この新しいハイブリッド クラウド プラットフォームを使用してお客様自身のデータセンターから Azure サービスを提供</p>
+                                                    <p>この新しいハイブリッド クラウド プラットフォームを使用して自社のデータセンターから Azure サービスを提供します</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3182,7 +3182,7 @@ ms.locfileid: "59046727"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">Java 用 Azure ライブラリの入手</a>
+                                                    <a href="/java/azure/java-sdk-azure-install">Azure Libraries for Java の取得</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/java/">作業開始</a>
@@ -3290,7 +3290,7 @@ ms.locfileid: "59046727"
                                             <div class="cardText">
                                                 <h3>Azure CLI </h3>
                                                 <p>
-                                                    <a href="/cli/azure">作業の開始</a>
+                                                    <a href="/cli/azure">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/install-azure-cli">Azure CLI のダウンロード</a>
@@ -3315,7 +3315,7 @@ ms.locfileid: "59046727"
                                             <div class="cardText">
                                                 <h3>PowerShell</h3>
                                                 <p>
-                                                    <a href="/powershell/azure/get-started-azureps">作業の開始</a>
+                                                    <a href="/powershell/azure/get-started-azureps">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/install-Az-ps">Azure PowerShell のダウンロード</a>
@@ -3340,7 +3340,7 @@ ms.locfileid: "59046727"
                                             <div class="cardText">
                                                 <h3>Azure クラシック CLI </h3>
                                                 <p>
-                                                    <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">作業の開始</a>
+                                                    <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://aka.ms/linux-azure-cli">Linux 用 Azure CLI のダウンロード</a>
@@ -3399,7 +3399,7 @@ ms.locfileid: "59046727"
                                                     <a href="https://github.com/Microsoft/DockerToolsDocs">Docker ツール</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">作業の開始</a>
+                                                    <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=Click2CloudInc.Click2CloudDockerExtensionForVisualStudio2017">Visual Studio 用のダウンロード</a>
@@ -3447,10 +3447,10 @@ ms.locfileid: "59046727"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://storageexplorer.com">ストレージ エクスプローラー</a>
+                                                    <a href="https://storageexplorer.com">Storage Explorer</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">作業の開始</a>
+                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">作業開始</a>
                                                 </p>
                                                 <p>
                                                      <a  href="https://go.microsoft.com/fwlink/?LinkId=722418">Linux 用のダウンロード</a>

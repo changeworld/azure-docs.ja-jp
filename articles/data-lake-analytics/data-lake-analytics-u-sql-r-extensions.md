@@ -10,10 +10,10 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885028"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で R コードを使用した U-SQL スクリプトの拡張
@@ -93,7 +93,7 @@ U-SQL スクリプトを使用して、その R スクリプトを DEPLOY RESOUR
 ### <a name="datatypes"></a>データ型
 * R データ フレームと U-SQL の間では、U-SQL の文字列と数値列は現状のまま変換されます (サポートされる型: `double`、`string`、`bool`、`integer`、`byte`)。
 * `Factor` データ型は U-SQL ではサポートされていません。
-* `byte[]`  は、base64 でエンコードされた `string` としてシリアル化する必要があります。
+* `byte[]` は、base64 でエンコードされた`string`としてシリアル化する必要があります。
 * U-SQL で R の入力データ フレームを作成するか、レジューサ パラメーター `stringsAsFactors: true` を設定することによって、U-SQL の文字列を R コードの因子に変換できます。
 
 ### <a name="schemas"></a>スキーマ

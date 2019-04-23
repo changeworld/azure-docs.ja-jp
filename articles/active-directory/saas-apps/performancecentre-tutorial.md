@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 0ce92abda9652351712f086ab24aff8575d84c8d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル:Azure Active Directory と PerformanceCentre の統合
@@ -105,9 +105,9 @@ PerformanceCentre で Azure AD シングル サインオンを構成するには
 
     ![[PerformanceCentre のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `http://<companyname>.performancecentre.com/saml/SSO`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`http://<companyname>.performancecentre.com/saml/SSO`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `http://<companyname>.performancecentre.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://<companyname>.performancecentre.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PerformanceCentre クライアント サポート チーム](https://www.performancecentre.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

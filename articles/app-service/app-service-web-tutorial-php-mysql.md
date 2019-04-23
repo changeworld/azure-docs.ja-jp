@@ -1,6 +1,6 @@
 ---
-title: MySQL を使用して PHP アプリをビルドする - Azure App Service | Microsoft Docs
-description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。
+title: PHP (Laravel) と MySQL - Azure App Service | Microsoft Docs
+description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。 このチュートリアルでは Laravel を使用します。
 services: app-service\web
 documentationcenter: php
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c906880897b14cf999fcffd17abba0adebc1adf6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: eddccc9897380e3ff47de49771a617bf6cacc407
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552131"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680504"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL アプリを構築する
 
@@ -361,7 +361,7 @@ Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/ap
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-PHP [getenv](http://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
+PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
 
 ```php
 'mysql' => [

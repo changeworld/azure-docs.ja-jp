@@ -10,10 +10,10 @@ ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 9c24bd45e7a44b1ccbf651cda0e36c87a5d8f90c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489168"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>計算リソースをグローバル Azure に移行する
@@ -217,7 +217,7 @@ Azure Service Fabric リソースを Azure Germany からグローバル Azure �
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
+次のサービス カテゴリのリソースを移行するためのツール、手法、および推奨事項について説明します。
 
 - [ネットワーク](./germany-migration-networking.md)
 - [Storage](./germany-migration-storage.md)

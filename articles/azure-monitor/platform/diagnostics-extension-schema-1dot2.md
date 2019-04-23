@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1ffeab91933bfcba9f3ffa0b557e849a1e6890f5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486157"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496490"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure Diagnostics 1.2 構成スキーマ
 > [!NOTE]
@@ -100,19 +100,19 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**WadCfg**|必須。 収集するテレメトリ データの構成設定。|  
 |**StorageAccount**|データを格納する Azure ストレージ アカウントの名前。 Set-AzureServiceDiagnosticsExtension コマンドレットを実行するときに、パラメーターとして指定することもできます。|  
-|**LocalResourceDirectory**|監視エージェントがイベント データの格納に使用する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> -                      **path** - Azure 診断で使用するシステム上のディレクトリ。<br /><br /> -                      **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
+|**LocalResourceDirectory**|監視エージェントがイベント データの格納に使用する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> -                      **path** - Azure Diagnostics で使用するシステム上のディレクトリ。<br /><br /> -                      **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
 
 ## <a name="wadcfg-element"></a>WadCFG 要素  
 収集するテレメトリ データの構成設定を定義します。 次の表で、子要素について説明します。  
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**DiagnosticMonitorConfiguration**|必須。 オプションの属性は次のとおりです。<br /><br /> -                     **overallQuotaInMB** - Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br /><br /> -                     **useProxyServer** - IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|  
-|**CrashDumps**|クラッシュ ダンプの収集を有効にします。 オプションの属性は次のとおりです。<br /><br /> -                     **containerName** - クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。<br /><br /> -                     **crashDumpType** - 小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように Azure 診断を構成します。<br /><br /> -                     **directoryQuotaPercentage** - VM でクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
+|**DiagnosticMonitorConfiguration**|必須。 オプションの属性は次のとおりです。<br /><br /> -                     **overallQuotaInMB** - Azure Diagnostics によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br /><br /> -                     **useProxyServer** - Azure Diagnostics を、IE 設定で設定されたプロキシ サーバー設定を使用するように構成します。|  
+|**CrashDumps**|クラッシュ ダンプの収集を有効にします。 オプションの属性は次のとおりです。<br /><br /> -                     **containerName** - クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。<br /><br /> -                     **crashDumpType** - 小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように Azure Diagnostics を構成します。<br /><br /> -                     **directoryQuotaPercentage** - VM でクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 |**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
-|**Directories**|ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**ディレクトリ**|ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**EtwProviders**|EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。|  
-|**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性: <br /><br /> **resourceId** - これは、Azure 診断のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。|  
+|**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性: <br /><br /> **resourceId** - これは、Azure Diagnostics のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。|  
 |**PerformanceCounters**|パフォーマンス カウンターの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**WindowsEventLog**|Windows イベント ログの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
@@ -121,7 +121,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
+|**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure Diagnostics でクラッシュ ダンプを収集するプロセスの名前。|  
 |**crashDumpType**|Azure Diagnostics を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
 |**directoryQuotaPercentage**|VM でのクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 

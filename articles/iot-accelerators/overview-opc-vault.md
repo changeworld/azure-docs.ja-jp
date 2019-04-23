@@ -1,5 +1,5 @@
 ---
-title: Azure IoT OPC UA 証明書管理とは | Microsoft Docs
+title: OPC Vault とは - Azure | Microsoft Docs
 description: OPC Vault の概要
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ba3313d927ec4317d6c051f6058d75a415b92288
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759773"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783519"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-ua-certificate-management"></a>Azure IoT Open Platform Communications (OPC) UA 証明書管理とは
+# <a name="what-is-opc-vault"></a>OPC Vault とは
 
-Azure IoT OPC UA 証明書管理 (OPC Vault とも呼ばれます) は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault の単純なユース ケースについて説明します。
+OPC Vault は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault の単純なユース ケースについて説明します。
 
 ## <a name="certificate-management"></a>証明書の管理
 

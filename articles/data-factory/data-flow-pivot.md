@@ -1,21 +1,19 @@
 ---
 title: Azure Data Factory Mapping Data Flow のピボット変換
-description: Azure Data Factory Mapping Data Flow のピボット変換
+description: Azure Data Factory Mapping Data Flow のピボット変換を使用した行から列へのデータのピボット
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569894"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490189"
 ---
-# <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure Data Factory Mapping Data Flow のピボット変換
-
+# <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory のピボット変換
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 ADF Data Flow のピボットを集計として使用します。この場合、1 つまたは複数のグループ化された列が、個々の列に変換された個別の行の値を持ちます。 基本的には、行の値を新しい列にピボット (データをメタデータに変換) することができます。
@@ -32,7 +30,7 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 
 ![ピボットのオプション](media/data-flow/pivot3.png "ピボット 3")
 
-ピボット キーは、ADF によって行から列にピボットされる列です。 既定では、データセット内のこのフィールドの一意の値が列にピボットされます。 ただし、必要に応じて、データセットから列の値にピボットする値を入力できます。
+ピボット キーは、ADF によって行から列にピボットされる列です。 既定では、データセット内のこのフィールドの一意の値が列にピボットされます。 ただし、必要に応じて、データセットから列の値にピボットする値を入力できます。 この列によって、作成される新しい列が決まります。
 
 ## <a name="pivoted-columns"></a>ピボットされた列
 
@@ -54,9 +52,20 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 
 式ビルダーで、ADF Data Flow 記述言語を使ってピボット列の変換を記述します (https://aka.ms/dataflowexpressions)。
 
+## <a name="pivot-metadata"></a>ピボットのメタデータ
+
+ピボット変換では、受信データに基づいて動的に変化する新しい列名が生成されます。 ピボット キーによって、新しい列名のそれぞれに値が生成されます。 個々の値を指定せず、ピボット キーの一意の値ごとに動的な列名を作成する場合は、UI の [Inspect]\(検査\) にメタデータが表示されず、シンク変換に列は反映されません。 ピボット キーに値を設定すると、ADF が新しい列名を特定できるようになり、その列名を検査とシンクのマッピングで使用できます。
+
+### <a name="landing-new-columns-in-sink"></a>シンクでの新しい列の取得
+
+ピボットで動的な列名が使用される場合でも、新しい列名と値を宛先ストアにシンクできます。 シンク設定で、[Allow Schema Drift]\(スキーマの誤差を許可\) をオンに設定します。 列のメタデータ内の新しい動的な名前は表示されませんが、スキーマの誤差のオプションによってデータを取得することができます。
+
+### <a name="view-metadata-in-design-mode"></a>デザイン モードでのメタデータの表示
+
+[Inspect]\(検査\) で新しい列名をメタデータとして表示し、その列をシンク変換へ明示的に反映させる場合は、[Pivot Key]\(ピボット キー\) タブで明示的な値を設定します。
+
 ### <a name="how-to-rejoin-original-fields"></a>元のフィールドを再結合する方法
-> [!NOTE]
-> ピボット変換では、集計、グループ化、およびピボット操作で使用された列のみが出力されます。 フロー内に前の手順の別の列を含めたい場合は、前の手順からの新しい分岐を使用し、自己結合パターンを使ってフローを元のメタデータと接続します。
+ピボット変換では、集計、グループ化、およびピボット操作で使用された列のみが出力されます。 フロー内に前の手順の別の列を含めたい場合は、前の手順からの新しい分岐を使用し、自己結合パターンを使ってフローを元のメタデータと接続します。
 
 ## <a name="next-steps"></a>次の手順
 

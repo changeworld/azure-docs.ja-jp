@@ -9,10 +9,10 @@ ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 6d6ca1fe1256f1571079027ebd299492bfa62f41
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280742"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
@@ -362,7 +362,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
 
-場合によっては、ネットワーク境界の外側から診断ログとメトリックを読み取るためにアクセスする必要があります。 ネットワーク ルールに対する例外を許可して、ストレージ アカウントのログ ファイル、メトリック テーブル、またはその両方への読み取りアクセスを許可できます。 [ストレージ分析の使用の詳細を確認してください。](/azure/storage/storage-analytics)
+場合によっては、ネットワーク境界の外側から診断ログとメトリックを読み取るためにアクセスする必要があります。 ネットワーク ルールに対する例外を許可して、ストレージ アカウントのログ ファイル、メトリック テーブル、またはその両方への読み取りアクセスを許可できます。 [ストレージ分析の使用に関する説明](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>例外の管理
 

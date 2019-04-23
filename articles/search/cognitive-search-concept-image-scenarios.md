@@ -12,10 +12,10 @@ ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916973"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
@@ -109,7 +109,7 @@ OCR スキルでは、画像内のテキストの検出に使用するアルゴ�
 
 一般的なシナリオとして挙げられるのは、すべてのファイル コンテンツ (テキストと画像由来テキストの両方) を含んだ、1 つの文字列を作成するケースです。これは次の手順で実行されます。  
 
-1. [normalized_images を抽出します](#get-normalized-images)
+1. [Normalized_images を抽出します](#get-normalized-images)
 1. `"/document/normalized_images"` を入力として使用し、OCR スキルを実行します
 1. それらの画像のテキスト表現を、ファイルから抽出された未加工のテキストとマージします。 [テキスト マージ](cognitive-search-skill-textmerger.md)スキルを使用することで、両方のテキスト チャンクを 1 つの大きな文字列に統合できます。
 

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: b1a60c4110d69aec7a384a869ce4a2841741e920
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275248"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>チュートリアル:Azure Active Directory と Nomadesk の統合
@@ -52,7 +52,7 @@ Nomadesk と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Nomadesk の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Nomadesk を追加する必要があります。
 
-**ギャラリーから Nomadesk を追加するには、次の手順を実行します。**
+**ギャラリーから Nomadesk を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -106,9 +106,9 @@ Nomadesk で Azure AD シングル サインオンを構成するには、次の
 
     ![[Nomadesk のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://mynomadesk.com/logon/saml/<TENANTID>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://mynomadesk.com/logon/saml/<TENANTID>`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://secure.nomadesk.com/saml/<instancename>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://secure.nomadesk.com/saml/<instancename>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Nomadesk クライアント サポート チーム](mailto:support@nomadesk.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

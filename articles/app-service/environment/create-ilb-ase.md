@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101535"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546544"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -117,7 +117,7 @@ ILB ASE を作成する方法は次のとおりです。
 
 1. App Service プランを選択または作成します。 新しい App Service プランを作成する場合は、ご使用の ASE を作成場所に選択します。 App Service プランを作成するワーカー プールを選択します。 App Service プランを作成するときに、ご使用の ASE を作成場所に選択し、ワーカー プールを選択します。 アプリの名前を指定すると、アプリ名の下のドメインが、ASE のドメインによって置き換えられます。
 
-1. **作成**を選択します。 アプリをダッシュボードに表示する場合は、 **[ダッシュボードにピン留めする]**  チェックボックスを選択します。
+1. **作成** を選択します。 アプリをダッシュボードに表示する場合は、 **[ダッシュボードにピン留めする]**  チェックボックスを選択します。
 
     ![App Service プランの作成][2]
 
@@ -170,13 +170,13 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
 
 4. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、アプリの名前を VIP の IP アドレスに設定します。
 
-    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前のアプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。 その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前のアプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。 その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 
 5. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 (またはドメインにアプリ名が含まれるいずれかのアドレスに移動します)。
 
-6. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
+6. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
 
     ご使用の ILB の IP アドレスは **[IP アドレス]** の下の一覧に表示されます。 この一覧には、外部 VIP で使用される IP アドレスや受信管理トラフィック用の IP アドレスも含まれます。
 

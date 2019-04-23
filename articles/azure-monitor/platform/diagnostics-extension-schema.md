@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471652"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526344"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics 拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure Diagnostics 拡張機能のスキーマのバージョン一覧を示します。  
@@ -29,7 +29,7 @@ ms.locfileid: "54471652"
 >
 > このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 
-Azure Diagnostics 拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](../../azure-monitor/overview.md)を参照してください。
+Azure Diagnostics 拡張機能は、Application Insights や Log Analytics が含まれている Azure Monitor などの他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](../../azure-monitor/overview.md)を参照してください。
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK のバージョンと診断のバージョンの一覧  
 
@@ -187,7 +187,7 @@ Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに
 
 * Azure SDK 2.4 以前では、実行時に診断プラグインが診断ログを転送するためのストレージ アカウント情報を取得する目的で接続文字列を使用していました。
 * Azure SDK 2.6 以降では、Visual Studio が診断接続文字列を使用して、発行時に診断拡張機能を適切なストレージ アカウント情報で構成します。 Visual Studio が発行時に使用する各種サービス構成に対し、異なるストレージ アカウントを接続文字列で定義することができます。 しかし、(Azure SDK 2.5 以降) 診断プラグインが使用できなくなったため、.cscfg ファイルだけでは診断拡張機能を有効にできません。 Visual Studio や PowerShell などのツールを使用して個別に拡張機能を有効にする必要があります。
-* PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。 Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。 このパブリック構成ファイルは、PaaSDiagnostics<RoleName>.PubConfig.xml という名前で拡張機能フォルダーに作成されます。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
+* PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。 Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。 パブリック構成ファイルは拡張機能フォルダーに作成され、`PaaSDiagnostics.<RoleName>.PubConfig.xml` というパターンに従います。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
 * .cscfg ファイル内の接続文字列は、Azure Portal で診断データにアクセスするときにも使用されるため、**[監視]** タブで確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Azure SDK 2.6 以降へのプロジェクトの移行

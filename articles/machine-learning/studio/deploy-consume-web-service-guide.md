@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359666"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web サービス:デプロイと使用
@@ -36,7 +36,7 @@ Studio ポータルと Microsoft Azure Machine Learning Web サービス ポー�
 * Web サービスを作成してデプロイする方法の詳細なチュートリアルについては、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 * Web サービス デプロイの具体的な例については、次をご覧ください。
 
-  * [チュートリアル 3:信用リスク モデルをデプロイする](tutorial-part3-credit-risk-deploy.md)
+  * [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
   * [複数のリージョンに Web サービスをデプロイする方法](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Web サービス リソースプロバイダー API を使う (Azure Resource Manager API)
@@ -89,7 +89,7 @@ Azure Machine Learning Web サービス ポータルから Web サービスを�
 
 * [新しい Web サービスのデプロイ](publish-a-machine-learning-web-service.md)
 * [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
-* [チュートリアル 3:信用リスク モデルをデプロイする](tutorial-part3-credit-risk-deploy.md)
+* [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Excel から
 

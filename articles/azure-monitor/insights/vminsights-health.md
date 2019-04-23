@@ -11,17 +11,18 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 04/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 4c330e36210e97172c8f06bbfc3850210e200777
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f2a0d64da5a88e82c0ae1fd893af52f2070268f8
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260342"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549867"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する 
-Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Azure Monitor を使用してさまざまな条件を監視することができたものの、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
+# <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
+
+Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。 Azure Monitor を使用してさまざまな条件を監視することができたものの、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。 VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
 
 Azure VM と基になるオペレーティング システムの全体的な正常性状態は、VM の Azure Monitorm の正常性では、仮想マシンからの直接的な観点と、Azure Monitor からのリソース グループ内の全 VM に対する観点という 2 つの観点で観察できます。
 
@@ -30,6 +31,7 @@ Azure VM と基になるオペレーティング システムの全体的な正�
 Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有効化](vminsights-onboard.md)に関する記事をご覧ください。
 
 ## <a name="monitoring-configuration-details"></a>監視の構成の詳細
+
 このセクションでは、Azure の Windows および Linux 仮想マシンを監視するために定義されている既定の正常性基準について説明します。 すべての正常性条件は、非正常状態になったら通知するように事前に構成されています。 
 
 ### <a name="windows-vms"></a>Windows VM
@@ -76,17 +78,20 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 - Operating System Available Megabytes of Memory (オペレーティング システムの使用可能なメモリ メガバイト数)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
 ## <a name="introduction-to-health-experience"></a>正常性エクスペリエンスの概要
+
 単一の仮想マシンまたは仮想マシンのグループの正常性機能の使用について説明する前に、情報の表示方法および視覚エフェクトで表現されているものの概要を説明します。  
 
 ## <a name="view-health-directly-from-a-virtual-machine"></a>仮想マシンから正常性を直接表示する 
+
 Azure VM の正常性を表示するには、仮想マシンの左側のウィンドウから **[Insights (プレビュー)]** を選択します。 VM の分析情報のページでは、**[Health]\(正常性\)** が既定で開いて、VM の正常性ビューが示されます。  
 
 ![選択した Azure 仮想マシン正常性の概要が表示されている VM の Azure Monitor](./media/vminsights-health/vminsights-directvm-health.png)
 
-**[Health]\(正常性\)** タブの **[ゲスト VM の正常性]** セクションのテーブルには、仮想マシンの現在の正常性状態と、異常なコンポーネントによって生成された VM 正常性アラートの合計数が示されます。 アラート エクスペリエンスの詳細については、「アラート」セクションを参照してください。  
+**[Health]\(正常性\)** タブの **[ゲスト VM の正常性]** セクションのテーブルには、仮想マシンの現在の正常性状態と、異常なコンポーネントによって生成された VM 正常性アラートの合計数が示されます。 詳細については、アラート エクスペリエンスのその他の詳細に関する「[アラート](#alerts)」を参照してください。  
 
 VM に対して定義されている正常性状態の説明をまとめたものが次の表です。 
 
@@ -104,6 +109,7 @@ VM に対して定義されている正常性状態の説明をまとめたも�
 Windows オペレーティング システムを実行する Azure VM から正常性にアクセスすると、上位 5 つのコア Windows サービスの正常性状態が **[コア サービスの正常性]** セクションに表示されます。  いずれかのサービスを選択すると、そのコンポーネントとその正常性状態を監視する正常性基準が一覧表示されます。  正常性基準の名前をクリックするとプロパティ ウィンドウを開き、そこからは、正常性基準に対応する Azure Monitor アラートが定義されているかどうかなど、構成の詳細を確認できます。 詳細については、[正常性の診断と正常性基準の使用](#health-diagnostics)に関するページを参照してください。  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>仮想マシンの観点を集約する
+
 リソース グループ内のすべての仮想マシンの正常性のコレクションを表示するには、ポータルのナビゲーション リストから、**[モニター]** を選択し、**[Virtual Machines (プレビュー)]** を選択します。  
 
 ![Azure Monitor からの VM 分析情報監視ビュー](./media/vminsights-health/vminsights-aggregate-health.png)
@@ -147,6 +153,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 **[正常でないコンポーネント]** 列の値をクリックすることにより、さらにドリルダウンして、異常なインスタンスを確認できます。  そのページのテーブルには、重大の正常性状態にあるコンポーネントが一覧表示されます。    
 
 ## <a name="health-diagnostics"></a>正常性の診断
+
 **[正常性の診断]** ページでは、VM のすべてのコンポーネント、関連する正常性基準、状態の変化、および監視コンポーネントによって検出された VM に関連するその他の重要な問題を一覧表示することで、VM の正常性モデルを可視化できます。
 
 ![VM の [正常性の診断] ページの例](./media/vminsights-health/health-diagnostics-page-01.png)
@@ -166,7 +173,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
  
 論理ディスク、CPU などの特定のコンポーネントに定義されたすべての正常性基準は、ページ上で **[可用性]** または **[パフォーマンス]** オプションを選択するときに、2 つのカテゴリ (つまり、すべての基準をまとめたビュー) でフィルター処理せずに表示するか、いずれかのカテゴリで結果をフィルター処理することができます。 また、**[正常性の基準]** 列の基準の横で基準のカテゴリを確認できます。 基準が選択したカテゴリと一致しない場合は、**[正常性の基準]** 列に "**選択したカテゴリに使用できる正常性基準がありません**" というメッセージが表示されます。  
 
-正常性基準の状態は、4 つの状態 (*[重大]*、*[警告]*、*[正常]*、および *[不明]*) のいずれかで定義されます。 最初の 3 つの状態は構成可能です。つまり、[ワークロード監視 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update) を使用して監視のしきい値を変更できます。 *[不明]* は構成不可であり、特定のシナリオのために予約されています。  
+正常性基準の状態は、4 つの状態 (*[重大]*、*[警告]*、*[正常]*、および *[不明]*) のいずれかで定義されます。 最初の 3 つは構成可能です。つまり、正常性基準の構成ウィンドウから、または Azure Monitor REST API の[update monitor 操作](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)を使用して、モニターのしきい値を直接変更することができます。 *[不明]* は構成不可であり、特定のシナリオのために予約されています。  
 
 [正常性の診断] ページには、次の 3 つの主要なセクションがあります。
 
@@ -177,6 +184,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 ![[正常性の診断] ページのセクション](./media/vminsights-health/health-diagnostics-page-02.png)
 
 ### <a name="component-model"></a>コンポーネント モデル
+
 [正常性の診断] ページの一番左の列は、コンポーネント モデルです。 VM に関連付けられているすべてのコンポーネントが、それらの現在の正常性状態とともに、この列に表示されます。 
 
 次の例では、検出されたコンポーネントはディスク、論理ディスク、プロセッサ、メモリ、およびオペレーティング システムです。 これらのコンポーネントの複数のインスタンスが検出され、この列に表示されます。 たとえば、次の図では、VM に論理ディスクの 2 つのインスタンス、C: と D: があり、どちらも正常状態です。  
@@ -184,19 +192,20 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 ![[正常性の診断] に表示されたコンポーネント モデルの例](./media/vminsights-health/health-diagnostics-page-component.png)
 
 ### <a name="health-criteria"></a>正常性の基準
+
 [正常性の診断] ページの中央の列は、**[正常性の基準]** 列です。 VM に対して定義されている正常性モデルが、階層ツリーに表示されます。 VM の正常性モデルは、ユニットおよび集計の正常性基準で構成されます。  
 
 ![[正常性の診断] に表示された正常性の基準の例](./media/vminsights-health/health-diagnostics-page-healthcriteria.png)
 
 正常性基準により、何らかの基準 (しきい値、エンティティの状態など) で監視対象インスタンスの正常性が測定されます。前述したように、正常性基準には、2 つまたは 3 つの構成可能な正常性状態のしきい値があります。 特定の時点において、正常性の基準は取り得る状態のいずれか 1 つだけになることができます。 
 
-ターゲットの全体的な正常性は、正常性モデルで定義されている各正常性基準の正常性によって決定されます。 これは、ターゲットを直接対象とする正常性基準と、集約正常性基準によってターゲットにロールアップするコンポーネントで対象になっている正常性基準を、組み合わせたものです。 この階層は、[正常性の診断] ページの **[正常性の基準]** セクションで示されます。 正常性ロールアップ ポリシーは、集約正常性基準の構成の一部です (既定では *[Worst-of]\(最低\)* に設定されています)。 この機能の一部として実行される正常性基準の既定のセットの一覧は、「[監視の構成の詳細](#monitoring-configuration-details)」セクションで確認できます。  
+ターゲットの全体的な正常性は、正常性モデルで定義されている各正常性基準の正常性によって決定されます。 これは、ターゲットを直接対象とする正常性基準と、集約正常性基準によってターゲットにロールアップするコンポーネントで対象になっている正常性基準を、組み合わせたものです。 この階層は、[正常性の診断] ページの **[正常性の基準]** セクションで示されます。 正常性ロールアップ ポリシーは、集約正常性基準の構成の一部です (既定では *[Worst-of]\(最低\)* に設定されています)。 「[監視の構成の詳細](#monitoring-configuration-details)」セクションでこの機能の一部として実行されている既定の正常性基準セットの一覧を取得できます。さらに、Azure Monitor REST API の [monitor instances - list by resource 操作](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitorinstances/listbyresource)を使用すると、Azure VM リソースに対して実行されている正常性基準とその詳細な構成のすべての一覧を取得できます。  
 
 正常性基準の種類 "**ユニット**" は、右端の省略記号リンクをクリックして **[詳細の表示]** を選択して構成ウィンドウを開くことにより、構成を変更できます。 
 
 ![正常性基準の構成の例](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 
-選択した正常性基準の構成ウィンドウで、例 **[Average Disk Seconds Per Write]/(ディスクの平均書き込み秒数/)** を使用して、そのしきい値として異なる数値を構成できます。 これは 2 状態の監視です。つまり、正常から警告への変化のみ監視されます。 他の正常性基準は 3 状態の場合があり、警告と重大の正常性状態のしきい値の値を構成できます。  
+選択した正常性基準の構成ウィンドウで、例 **[Average Disk Seconds Per Write]/(ディスクの平均書き込み秒数/)** を使用して、そのしきい値として異なる数値を構成できます。 これは 2 状態の監視です。つまり、正常から警告への変化のみ監視されます。 他の正常性基準は 3 状態の場合があり、警告と重大の正常性状態のしきい値の値を構成できます。 Azure Monitor REST API の [update monitor 操作](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)を使用して、しきい値を変更することもできます。
 
 >[!NOTE]
 >1 つのインスタンスに正常性基準の構成の変更を適用すると、すべての監視対象インスタンスに適用されます。  たとえば、**[Disk -1 D:]/(ディスク - 1 D:/)** を選択し、**[Average Disk Seconds Per Write]/(ディスクの平均書き込み秒数/)** のしきい値を変更すると、この変更は、そのインスタンスに適用されるだけでなく、VM で検出されて監視されている他のすべてのディスク インスタンスにも適用されます。
@@ -207,6 +216,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 正常性インジケーターの詳細が必要な場合は、問題、原因、および解決策を識別するために役立つナレッジ記事が含まれています。 このページにある **[View information] (情報の表示)** リンクをクリックすると、特定のナレッジ記事を示す新しいタブがブラウザーで開きます。 VM 用 Azure Monitor の正常性機能に含まれている正常性基準に関するナレッジ記事はすべて、[ここ](https://docs.microsoft.com/azure/monitoring/infrastructure-health/)でいつでも確認できます。
   
 ### <a name="state-changes"></a>状態の変化
+
 [正常性の診断] ページの右端の列は **[State Changes]\(状態の変化\)** です。 この列には、**[正常性の基準]** セクションで選択されている正常性基準に関連付けられているすべての状態変化、またはテーブルの **[Component Model]\(コンポーネント モデル\)** 列または **[正常性の基準]** 列で VM が選択されている場合は VM の状態変化が、一覧表示されます。 
 
 ![[正常性の診断] に表示された状態の変化の例](./media/vminsights-health/health-diagnostics-page-statechanges.png)
@@ -214,6 +224,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 このセクションは、正常性基準の状態とそれに関連する時刻で構成され、時刻の降順に並んでいます。   
 
 ### <a name="association-of-component-model-health-criteria-and-state-change-columns"></a>コンポーネント モデル、正常性基準、状態変化の列の関連 
+
 3 つの列は相互に関連しています。 **[コンポーネント モデル]** セクションで検出されたインスタンスを選択すると、**[正常性の基準]** セクションはそのコンポーネント ビューでフィルター処理され、それに対応して **[State Changes]\(状態の変化\)** セクションも、選択された正常性基準に基づいて更新されます。 
 
 ![監視対象のインスタンスと結果の選択の例](./media/vminsights-health/health-diagnostics-vm-example-01.png)
@@ -223,13 +234,16 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 更新された正常性状態を表示するには、**[最新の情報に更新]** リンクをクリックして [正常性の診断] ページを更新します。  定義済みのポーリング間隔に基づいて、正常性基準の正常性状態に更新がある場合、このタスクにより待機を避けて最新の正常性状態を反映できます。  **[正常性基準の状態]** はフィルターであり、選択されている正常性の状態 (*[正常]*、*[警告]*、*[重大]*、*[不明]*、および *[すべて]*) に基づいて結果を絞り込むことができます。  右上隅の **[最終更新日時]** は、[正常性の診断] ページが最後に更新された日時を表します。  
 
 ## <a name="alerts"></a>アラート
-VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor/platform/alerts-overview.md)と統合し、状態が検出されて定義済みの正常性基準が正常から異常状態に変化すると、アラートを生成します。 アラートは重大度 0 ～ 4 で分類され、重要度 0 が最も高い重大度レベルを表します。  
+
+VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor/platform/alerts-overview.md)と統合し、状態が検出されて定義済みの正常性基準が正常から異常状態に変化すると、アラートを生成します。 アラートは重大度 0 ～ 4 で分類され、重要度 0 が最も高い重大度レベルを表します。 
+
+アラートはアクション グループに関連付けられていないので、アラートがトリガーされても通知は届きません。 サブスクリプションの所有者は、[このセクションで後述する](#configure-alerts)手順に従って通知を構成する必要があります。   
 
 重大度によって分類された VM 正常性アラートの合計数は、**[アラート]** セクションの **[正常性]** ダッシュボードで確認できます。 アラートの合計数、または重大度レベルに対応する数のいずれかを選択すると、**[アラート]** ページが開き、選択に一致するすべてのアラートが一覧表示されます。  たとえば、**重大度レベル 1** に対応する行を選択した場合、次のようなビューが表示されます。
 
 ![重大度レベル 1 のすべてのアラートの例](./media/vminsights-health/vminsights-sev1-alerts-01.png)
 
-**[アラート]** ページでは、選択内容に一致するアラートを表示するようにスコープされるだけではなく、仮想マシン リソースによって生成された正常性アラートだけを表示するように **[リソースの種類]** によってもフィルターされます。  これは、**[ターゲット リソース]** 列の下のアラートの一覧に反映され、特定の正常性条件に関して非正常状態になったためにアラートが生成された Azure VM が表示されます。  
+**[アラート]** ページでは、選択内容に一致するアラートを表示するようにスコープされるだけではなく、仮想マシン リソースによって生成された正常性アラートだけを表示するように **[リソースの種類]** によってもフィルターされます。  これは、**[ターゲット リソース]** 列の下のアラートの一覧に反映されます。そして、特定の正常性基準の異常条件が満たされたときにアラートが生成された Azure VM が表示されます。  
 
 他のリソースの種類またはサービスからのアラートは、このビューに表示されることは意図されていません。たとえば、ログ クエリに基づくログ アラートや、通常は既定の Azure Monitor の [[すべてのアラート]](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) ページに表示されるメトリック アラートなどです。 
 
@@ -267,7 +281,7 @@ VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor
 
 #### <a name="enable-or-disable-alert-rule"></a>アラート ルールを有効または無効にする
 
-特定の正常性基準のアラート ルールを有効または無効にするには、正常性基準のプロパティ *alertGeneration* を **Disabled** または **Enabled** の値に変更する必要があります。 特定の正常性基準の *monitorId* を識別するために、次の例では、基準の **LogicalDisk\Avg Disk Seconds Per Transfer** に対してその値をクエリする方法を示します。
+特定の正常性基準のアラートを有効または無効にするには、正常性基準のプロパティ *alertGeneration* を **Disabled** または **Enabled** のいずれかの値に変更する必要があります。 特定の正常性基準の *monitorId* を識別するために、次の例では、基準の **LogicalDisk\Avg Disk Seconds Per Transfer** に対してその値をクエリする方法を示します。
 
 1. ターミナル ウィンドウで、「 **armclient.exe login**」と入力します。 これにより Azure にサインインするよう求められます。
 
@@ -277,14 +291,49 @@ VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor
     armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
     ```
 
-    次の例は、そのコマンドの出力を示します。 赤色で強調表示されている *MonitorId* の値をメモします。 この値は、次の手順で必要になります。次の手順では、正常性基準の ID を指定し、そのプロパティを変更してアラートを作成する必要があります。
+    次の例は、そのコマンドの出力を示します。 *MonitorId* の値をメモします。 この値は、次の手順で必要になります。次の手順では、正常性基準の ID を指定し、そのプロパティを変更してアラートを作成する必要があります。
 
-    ![正常性基準のモニター ID の取得例](./media/vminsights-health/get-monitor-identifier-01.png)
+    ```
+    "id": "/subscriptions/a7f23fdb-e626-4f95-89aa-3a360a90861e/resourcegroups/Lab/providers/Microsoft.Compute/virtualMachines/SVR01/providers/Microsoft.WorkloadMonitor/monitors/ComponentTypeId='LogicalDisk',MonitorId='Microsoft_LogicalDisk_AvgDiskSecPerRead'",
+      "name": "ComponentTypeId='LogicalDisk',MonitorId='Microsoft_LogicalDisk_AvgDiskSecPerRead'",
+      "type": "Microsoft.WorkloadMonitor/virtualMachines/monitors"
+    },
+    {
+      "properties": {
+        "description": "Monitor the performance counter LogicalDisk\\Avg Disk Sec Per Transfer",
+        "monitorId": "Microsoft_LogicalDisk_AvgDiskSecPerTransfer",
+        "monitorName": "Microsoft.LogicalDisk.AvgDiskSecPerTransfer",
+        "monitorDisplayName": "Average Logical Disk Seconds Per Transfer",
+        "parentMonitorName": null,
+        "parentMonitorDisplayName": null,
+        "monitorType": "Unit",
+        "monitorCategory": "PerformanceHealth",
+        "componentTypeId": "LogicalDisk",
+        "componentTypeName": "LogicalDisk",
+        "componentTypeDisplayName": "Logical Disk",
+        "monitorState": "Enabled",
+        "criteria": [
+          {
+            "healthState": "Warning",
+            "comparisonOperator": "GreaterThan",
+            "threshold": 0.1
+          }
+        ],
+        "alertGeneration": "Enabled",
+        "frequency": 1,
+        "lookbackDuration": 17,
+        "documentationURL": "https://aka.ms/Ahcs1r",
+        "configurable": true,
+        "signalType": "Metrics",
+        "signalName": "VMHealth_Avg. Logical Disk sec/Transfer"
+      },
+      "etag": null,
+    ```
 
 3. 次のコマンドを入力して *alertGeneration* プロパティを変更します。
 
     ```
-    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview 1-preview "{'properties':{'alertGeneration':'Disabled'}}"
+    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview "{'properties':{'alertGeneration':'Disabled'}}"
     ```   
 
 4. 手順 2 で使用した GET コマンドを入力して、プロパティの値が **Disabled** に設定されていることを確認します。  
@@ -313,7 +362,25 @@ Azure Monitor for VMs Health は、正常性基準が正常ではない状態に
 
     出力は次のようになります。
     
-    ![notificationSettings の取得の出力例](./media/vminsights-health/get-notification-config-status.png)
+    ```
+    {
+      "value": [
+        {
+          "properties": {
+            "actionGroupResourceIds": [
+              "/subscriptions/a7f23fdb-e626-4f95-89aa-3a360a90861e/resourceGroups/Lab/providers/microsoft.insights/actionGroups/Lab-IT%20Ops%20Notify"
+            ]
+          },
+          "etag": null,
+          "id": "/subscriptions/a7f23fdb-e626-4f95-89aa-3a360a90861e/resourcegroups/Lab/providers/Microsoft.Compute/virtualMachines/SVR01/providers/Microsoft.WorkloadMonitor/notificationSettings/default",
+          "name": "notificationSettings/default",
+          "type": "Microsoft.WorkloadMonitor/virtualMachines/notificationSettings"
+        }
+      ],
+      "nextLink": null
+    }
+    ```
 
 ## <a name="next-steps"></a>次の手順
+
 VM のパフォーマンスのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。または、検出されたアプリケーションの依存関係を表示するには、[VM 用 Azure Monitor のマップの表示](vminsights-maps.md)に関するページを参照してください。 

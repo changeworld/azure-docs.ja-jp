@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 04/05/2019
 ms.author: sogup
-ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905972"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794779"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -23,12 +23,11 @@ ms.locfileid: "58905972"
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
 
 * コンテナーへのデータ転送の終了を待たずに、復旧に利用できるバックアップ ジョブの一環として取得されるスナップショットを使用できます。 これにより、復元をトリガーする前にスナップショットをコンテナーにコピーする待機時間が短縮されます。
-* スナップショットを既定で 2 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。 この既定値は、1 ～ 5 日の間の任意の値に構成できます。
-* 最大 4 TB のディスク サイズがサポートされます。
+* スナップショットを既定で 2 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。 この既定のスナップショット リテンション期間の値は、1 から 5 日の間の任意の値に構成できます。
+* 最大 4 TB のディスク サイズがサポートされます。 Azure Backup では、ストライピングされたディスクはサポートされていません。 Azure Backup では、ディスクのサイズ変更は推奨されません。
 * Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
 *   復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>この機能の更新点
 
@@ -75,9 +74,9 @@ Azure portal で、**VM バックアップ ポリシー** ブレード (**[イ�
 > Az PowerShell バージョン 1.6.0 以降では、PowerShell を使用して、ポリシーのインスタント リストアのスナップショット保持期間を更新できます
 
 ```powershell
-PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 各ポリシーの既定のスナップショット リテンション期間は、2 日に設定されます。 ユーザーは、最小で 1 日、最大で 5 日に値を変更できます。 スナップショット リテンション期間は、週間ポリシーでは 5 日に固定されています。
 

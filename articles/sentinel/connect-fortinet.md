@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Fortinet のデータを収集する | Microsoft Docs
-description: Azure Sentinel で Fortinet のデータを収集する方法を説明します。
+title: Azure Sentinel プレビューに Fortinet データを接続する | Microsoft Docs
+description: Azure Sentinel に Fortinet データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6c4bfbf67e45284f8f21166543228a821074b3b9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 612e384a2ee5bdc449d22ba469026d38c7469e73
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883218"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492124"
 ---
 # <a name="connect-your-fortinet-appliance"></a>お使いの Fortinet アプライアンスを接続する 
 
@@ -36,16 +36,16 @@ ms.locfileid: "58883218"
 
 お使いの Fortinet アプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) にデプロイして、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントの展開は、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
 
-これ以外の場合は、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントを展開します。
+または、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントをデプロイすることもできます。
 
-両方のオプションのネットワーク図を表示するには、[データ ソースの接続](connect-data-sources.md#agent-options)に関する説明を参照してください。
+両方のオプションのネットワーク図を表示するには、「[データ ソースの接続](connect-data-sources.md#agent-options)」を参照してください。
 
-### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントをデプロイする
+### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントを展開する
 
-1. Azure Sentinel ポータルで、**[データ収集]** をクリックして、アプライアンスの種類を選択します。 
+1. Azure Sentinel ポータルで、**[データ コネクタ]** をクリックして、アプライアンスの種類を選択します。 
 
-1. **[Linux Syslog agent configuration]\(Linux Syslog エージェント構成\)** の下で、次を実行します。
-   - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[Automatic deployment]\(自動展開\)** を選択して、**[Automatic agent deployment]\(エージェントの自動展開\)** をクリックします。 これにより、ワークスペースに自動的に接続する専用 VM の購入ページが表示されます。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
+1. **[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で:
+   - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[自動展開]** を選択して、**[Automatic agent deployment]\(エージェントの自動展開\)** をクリックします。 これにより、お使いのワークスペースに自動的に接続される専用 VM の購入ページに移動します。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
       1. **[カスタム デプロイ]** ページで詳細を入力し、ユーザー名とパスワードを選択し、使用条件に同意する場合は、VM を購入します。
       1. 接続ページに一覧表示されている設定を使用して、ログを送信するようにアプライアンスを構成します。 標準の共通イベント形式コネクタの場合、以下の設定を使用します。
          - プロトコル = UDP
@@ -55,8 +55,8 @@ ms.locfileid: "58883218"
    - 既存の VM を Azure Sentinel エージェントをインストールする専用の Linux マシンとして使用する場合、**[Manual deployment]\(手動配置\)** を選択します。 
       1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、**[Azure Linux virtual machine]\(Azure Linux 仮想マシン\)** を選択します。 
       1. 開いた **[仮想マシン]** 画面で、使用するマシンを選択し、**[接続]** をクリックします。
-      1. コネクタ画面の **[Configure and forward Syslog]** \(Syslog の構成と転送\) の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
-      1. これらのコマンドをコピーし、お使いのアプライアンス上で実行します。
+      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+      1. これらのコマンドをコピーし、アプライアンス上で実行します。
           - rsyslog.d を選択した場合:
               
             1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
@@ -74,16 +74,16 @@ ms.locfileid: "58883218"
       2. 次のコマンドを使用して、Syslog エージェントを再起動します:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します:  `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>オンプレミスの Linux サーバーにエージェントを配置する
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>オンプレミス Linux サーバーにエージェントをデプロイする
 
-Azure を使用していない場合は、専用の Linux サーバーで実行するように Azure Sentinel エージェントを手動で配置します。
+Azure を使用していない場合は、専用の Linux サーバーで実行するように Azure Sentinel エージェントを手動でデプロイします。
 
 
-1. Azure Sentinel ポータルで、**[データ収集]** をクリックして、アプライアンスの種類を選択します。
+1. Azure Sentinel ポータルで、**[データ コネクタ]** をクリックして、アプライアンスの種類を選択します。
 1. 専用の Linux VM を作成するには、**[Linux Syslog agent configuration]** \(Linux Syslog エージェント構成\) の下で **[Manual deployment]\(手動配置\)** を選択します。
    1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、**[Non-Azure Linux machine]\(Azure ではない Linux マシン\)** を選択します。 
    1. 開いた **[ダイレクト エージェント]** 画面で、**[Linux 用エージェント]** を選択して、エージェントをダウンロードするか、次のコマンドを実行してお使いの Linux マシンにダウンロードします。`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-      1. コネクタ画面の **[Configure and forward Syslog]** \(Syslog の構成と転送\) の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
       1. これらのコマンドをコピーし、お使いのアプライアンス上で実行します。
          - rsyslog を選択した場合:
            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
@@ -126,7 +126,7 @@ Syslog のエージェントを介してお使いの Azure ワークスペース
 
 1. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 514 -vv` このコマンドでは、デバイスから Syslog マシンにストリーミングされるログを表示します。ログが、正しいポートとファシリティでソース アプライアンスから受信されていることを確認します。
 
-2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 25226 -vv` このコマンドによって、デバイスから Syslog コンピューターにストリーミングされるログが表示されます。ログがエージェント上でも受信されていることを確認します。
+2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv` このコマンドによって、デバイスから Syslog コンピューターにストリーミングされるログが表示されます。ログがエージェント上でも受信されていることを確認します。
 
 1. エージェントが自分の Fortinet のログを受信していない場合、使用している Syslog デーモンの種類に応じこのコマンドを実行し、ファシリティを設定し、ログ内で Fortinet という語を検索するようログを設定します。
    - rsyslog.d: `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
@@ -143,6 +143,6 @@ Syslog のエージェントを介してお使いの Azure ワークスペース
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Fortinet アプライアンスを Azure Sentinel に接続する方法について学びました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [お使いのデータと潜在的な脅威を可視化する](quickstart-get-visibility.md)方法を確認する。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)を開始する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

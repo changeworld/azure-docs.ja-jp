@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863357"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524023"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -118,8 +118,8 @@ ms.locfileid: "57863357"
    |int getNumberOfDocumentsImported()  |   一括インポート API 呼び出しに渡されたドキュメントのうち正常にインポートされたドキュメントの総数。      |
    |double getTotalRequestUnitsConsumed()   |  一括インポート API 呼び出しによって使用された要求ユニット (RU) の合計数。       |
    |Duration getTotalTimeTaken()   |    一括インポート API 呼び出しが実行を完了するまでに要した合計時間。     |
-   |List<Exception> getErrors() |  一括インポート API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。       |
-   |List<Object> getBadInputDocuments()  |    一括インポート API 呼び出しで正常にインポートされなかった、形式が正しくないドキュメントの一覧。 ユーザーは返されたドキュメントを修正し、インポートを再試行する必要があります。 形式が正しくないドキュメントには、ID 値が文字列ではないドキュメントがあります (null やその他のデータ型は無効と見なされます)。     |
+   |List\<Exception> getErrors() |  一括インポート API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。       |
+   |List\<Object> getBadInputDocuments()  |    一括インポート API 呼び出しで正常にインポートされなかった、形式が正しくないドキュメントの一覧。 ユーザーは返されたドキュメントを修正し、インポートを再試行する必要があります。 形式が正しくないドキュメントには、ID 値が文字列ではないドキュメントがあります (null やその他のデータ型は無効と見なされます)。     |
 
 5. 一括インポート アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 
@@ -182,7 +182,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
    |int getNumberOfDocumentsUpdated()  |   一括更新 API 呼び出しに渡されたドキュメントのうち正常に更新されたドキュメントの総数。      |
    |double getTotalRequestUnitsConsumed() |  一括更新 API 呼び出しによって使用された要求ユニット (RU) の合計数。       |
    |Duration getTotalTimeTaken()  |   一括更新 API 呼び出しが実行を完了するまでに要した合計時間。      |
-   |List<Exception> getErrors()   |     一括更新 API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。      |
+   |List\<Exception> getErrors()   |    一括更新 API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。      |
 
 3. 一括更新アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 

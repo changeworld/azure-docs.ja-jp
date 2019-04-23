@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904629"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
@@ -92,7 +92,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    * 次の PowerShell コマンドを使用して、サービスが実行されていることを確認します。
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`。
+      `Get-Service AzureADPasswordProtectionProxy | fl`
 
      結果の **Status** が "Running" と表示される必要があります。
 

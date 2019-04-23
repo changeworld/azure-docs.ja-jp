@@ -11,10 +11,10 @@ ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 07865b2120aa91381d3711688e1a5c8e3187fab3
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793382"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
@@ -248,7 +248,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 7. **[キー使用法]** には **[署名]** を選択します。
 
-8. **作成**を選択します。
+8. **作成** を選択します。
 
 9. `B2C_1A_B2cRestClientId` キーを作成したことを確認します。
 
@@ -269,7 +269,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 7. **[キー使用法]** には **[署名]** を選択します。
 
-8. **作成**を選択します。
+8. **作成** を選択します。
 
 9. `B2C_1A_B2cRestClientSecret` キーを作成したことを確認します。
 

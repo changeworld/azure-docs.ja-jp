@@ -6,13 +6,13 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/10/2019
+ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59043974"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524720"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -32,7 +32,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="configure-the-cli-parameters"></a>CLI パラメーターを構成する
 
@@ -58,7 +58,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
     ```
 
-   |**Setting** | **推奨値** | **フィールドの説明**|
+   |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | name | *azureclitest* | クラスターの任意の名前。|
    | sku | *D13_v2* | クラスターに使用される SKU。 |
@@ -79,16 +79,16 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 1. 次のコマンドを使用して、データベースを作成します。
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
     ```
 
-   |**Setting** | **推奨値** | **フィールドの説明**|
+   |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | cluster-name | *azureclitest* | データベースの作成先となるクラスターの名前。|
    | name | *clidatabase* | データベースの名前。|
    | resource-group | *testrg* | クラスターが作成されるリソース グループの名前。 |
-   | soft-delete-period | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
-   | hot-cache-period | *3650:00:00:00* | データをキャッシュに保持する時間。 |
+   | soft-delete-period | *P365D* | データをクエリに使用できるようにしておく時間を示します。 詳細については、[アイテム保持ポリシー](/azure/kusto/concepts/retentionpolicy)に関するページを参照してください。 |
+   | hot-cache-period | *P31D* | データをキャッシュに保持する時間を示します。 詳細については、[キャッシュ ポリシー](/azure/kusto/concepts/cachepolicy)に関するページを参照してください。 |
 
 1. 次のコマンドを実行して、作成したデータベースを確認します。
 

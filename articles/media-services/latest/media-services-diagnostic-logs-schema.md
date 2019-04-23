@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850631"
 ---
 # <a name="diagnostic-logs-schemas"></a>診断ログのスキーマ
@@ -38,7 +38,7 @@ ms.locfileid: "58850631"
 
 これらのプロパティは、キー配信ログのスキーマに固有です。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |keyId|要求されたキーの ID。|
 |keyType|次のいずれかの値を指定できます:"Clear" (暗号化なし)、"FairPlay"、"PlayReady"、または"Widevine"。|

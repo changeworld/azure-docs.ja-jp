@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d68c8a63dd3adaee0c04f5438f91da68f3903aea
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>チュートリアル:Azure Active Directory と SumTotalCentral の統合
@@ -105,9 +105,9 @@ SumTotalCentral で Azure AD のシングル サインオンを構成するに�
 
     ![[SumTotalCentral Domain and URLs]\(SumTotalCentral のドメインと URL\) のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.sumtotalsystems.com/sites/default`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.sumtotalsystems.com/sites/default`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次の値を入力します:  `SumTotalFederationGateway`
+    b. **[識別子 (エンティティ ID)]** ボックスに、`SumTotalFederationGateway` という値を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[SumTotalCentral クライアント サポート チーム](http://www.sumtotalsystems.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

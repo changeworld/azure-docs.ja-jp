@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051888"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545401"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -173,15 +173,16 @@ New-AzStorageAccount `
 図に示すように、次のオプションを選択します。
 
 1. *[状態]* で、**[オン]** を選択します。
-2. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。
-3. **[リテンション期間]** を、データを保存する日数に設定します。
-4. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、**[オン]** を選択します。
-5. 既存の Log Analytics ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、サポートされているリージョンのいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+2. **[フロー ログ バージョン]** で、*[バージョン 2]* を選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
+3. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。
+4. **[リテンション期間]** を、データを保存する日数に設定します。
+5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、**[オン]** を選択します。
+6. 既存の Log Analytics (OMS) ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
-    トラフィック分析ソリューションをホストする Log Analytics ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
-6. **[保存]** を選択します。
+    トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
+7. **[保存]** を選択します。
 
-    ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
+    ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
 トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。
 
@@ -300,7 +301,7 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
     ![仮想ネットワークの分布を示すダッシュボード](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - 仮想ネットワーク トポロジの上部には、仮想ネットワーク (仮想ネットワーク間接続/アクティブ/非アクティブ)、仮想ネットワークの外部接続、アクティブなフロー、悪意のあるフローなどのパラメーターを選択できるリボンが表示されます。
-- サブスクリプション、ワークスペース、リソース グループ、および時間間隔に基づいて、仮想ネットワーク トポロジをフィルター処理することができます。 フローの理解に役立つ追加フィルターは次のとおりです。フローの種類 (InterVNet、IntraVNET など)、フローの方向 (受信、送信)、フローの状態 (許可、ブロック)、VNet (対象および接続)、接続の種類 (ピアリングまたはゲートウェイ - P2S および S2S)、および NSG。 これらのフィルターを使用して、詳細に調べる VNet に照準を絞ります。
+- サブスクリプション、ワークスペース、リソース グループ、および時間間隔に基づいて、仮想ネットワーク トポロジをフィルター処理することができます。 フローの理解に役立つ追加フィルターは次のとおりです。フローの種類 (InterVNet、IntraVNET など)、フローの方向 (受信、送信)、フローの状態 (許可、ブロック)、VNet (対象および接続)、接続の種類 (ピアリングまたはゲートウェイ - P2S および S2S)、NSG。 これらのフィルターを使用して、詳細に調べる VNet に照準を絞ります。
 - 仮想ネットワーク トポロジには、フロー (許可された/ブロックされた/受信/送信/問題のない/悪意のあるフロー)、アプリケーション プロトコル、ネットワーク セキュリティ グループなどについて、仮想ネットワークへのトラフィック分布が表示されます。
 
     ![トラフィック分布とフローの詳細を示す仮想ネットワーク トポロジ](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
@@ -368,3 +369,8 @@ Application Gateway および Load Balancer ごとのトラフィック分布、
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 よく寄せられる質問とその回答については、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) のページをご覧ください。
+
+## <a name="next-steps"></a>次の手順
+
+- フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
+- Traffic Analytics のスキーマと処理の詳細について学ぶには、「[Traffic Analytics のスキーマ](traffic-analytics-schema.md)」を参照してください。

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 5a77295ccf4dbd564b1c04f1a5d097cfe408797e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bfa076f33ce3b2e7315a07717bba5768b89511c2
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442729"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495286"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>データベース リソースをグローバル Azure に移行する
 
@@ -35,9 +35,11 @@ ms.locfileid: "58442729"
 
 詳細:
 
-- [BACPAC ファイルにデータベースをエクスポートする](../sql-database/sql-database-export.md)方法を説明します。
-- [BACPAC ファイルをデータベースにインポートする](../sql-database/sql-database-import.md)方法を説明します。
+- [BACPAC ファイルにデータベースをエクスポート](../sql-database/sql-database-export.md)する方法を学習してください。
+- [BACPAC ファイルをデータベースにインポート](../sql-database/sql-database-import.md)する方法を学習してください。
 - [Azure SQL Database のドキュメント](https://docs.microsoft.com/azure/sql-database/)を確認してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
@@ -65,7 +67,7 @@ Azure Cosmos DB リソースを移行するには、次の手順を完了する�
 
 詳細:
 
-- [Azure Cosmos DB の概要](../cosmos-db/introduction.md)を参照してください。
+- [Azure Cosmos DB の概要](../cosmos-db/introduction.md) を参照してください。
 - [Azure Cosmos DB にデータをインポートする](../cosmos-db/import-data.md)方法を説明します。
 
 ## <a name="azure-cache-for-redis"></a>Azure Cache for Redis
@@ -106,13 +108,13 @@ Azure Cache for Redis チームのメンバーは、Azure Cache for Redis のあ
 ソース インスタンスからエクスポートし、宛先インスタンスにインポートするには、次のようにします。
 
 1. ターゲット リージョンに、新しい Premium レベルの Azure Cache for Redis を作成します。 ソースの Azure Cache for Redis インスタンスと同じサイズを使用します。
-1. [ソースのキャッシュからデータをエクスポート](../redis-cache/cache-how-to-import-export-data.md)するか、または [Export-AzureRmRedisCache PowerShell コマンドレット](/powershell/module/azurerm.rediscache/export-azurermrediscache)を使用します。
+1. [ソースのキャッシュからデータをエクスポート](../redis-cache/cache-how-to-import-export-data.md)するか、または [Export-AzRedisCache PowerShell コマンドレット](/powershell/module/az.rediscache/export-azrediscache)を使用します。
 
    > [!NOTE]
    > エクスポート Azure Storage アカウントは、キャッシュ インスタンスと同じリージョンに存在する必要があります。
 
 1. エクスポートされた BLOB を宛先リージョンのストレージ アカウントに (たとえば AzCopy を使用して) コピーします。
-1. [宛先キャッシュにデータをインポート](../redis-cache/cache-how-to-import-export-data.md)するか、または [Import-AzureRmRedisCAche PowerShell コマンドレット](/powershell/module/azurerm.rediscache/import-azurermrediscache)を使用します。
+1. [宛先キャッシュにデータをインポート](../redis-cache/cache-how-to-import-export-data.md)するか、または [Import-AzRedisCAche PowerShell コマンドレット](/powershell/module/az.rediscache/import-azrediscache)を使用します。
 1. ターゲットの Azure Cache for Redis を使用するように、アプリケーションを再構成します。
 
 ### <a name="option-4-write-data-to-two-azure-cache-for-redis-instances-read-from-one-instance"></a>オプション 4: データを 2 つの Azure Cache for Redis インスタンスに書き込み、1 つのインスタンスから読み取る
@@ -128,7 +130,7 @@ Azure Cache for Redis チームのメンバーは、Azure Cache for Redis のあ
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、手法、および推奨事項について説明します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

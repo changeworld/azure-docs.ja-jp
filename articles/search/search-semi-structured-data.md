@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:JSON BLOB で半構造化されたデータのインデックスを作成する - Azure Search
-description: Azure Search と Postman を使用して、半構造化された Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
+description: Azure Search REST API と Postman を使用して、半構造化された Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471462"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525349"
 ---
-# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>チュートリアル:Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST チュートリアル:Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 
 Azure Search は、半構造化データの読み取り方法を解している[インデクサー](search-indexer-overview.md)を使用して、Azure Blob Storage に格納されている JSON のドキュメントや配列のインデックスを作成することができます。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータは、非構造化データ (全体にインデックスを付ける必要がある) と正式に構造化されたデータ (フィールドごとにインデックス付け可能な、リレーショナル データベース スキーマなどのデータ モデルに準拠) を折衷するものです。
 
@@ -39,7 +39,7 @@ Azure Search は、半構造化データの読み取り方法を解している[
 
 サンプル データの格納に使用される [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
 
-[Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search に要求を送信するために使用されます。
+Azure Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)。
 
 [Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) には、このチュートリアルで使用されるデータが含まれています。 このファイルをローカルのフォルダーにダウンロードし、展開します。 データの出典は [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) で、このチュートリアルで使用するために JSON に変換しています。
 
@@ -59,9 +59,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、**[+ コンテナー]** をクリックします。
 
-1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 接続にキーとストレージ アカウント名を使用するため、コンテナーの [パブリック アクセス レベル] が [コンテナー (コンテナーの匿名読み取りアクセス)] に設定されていることを確認します。
-
-   ![パブリック アクセス レベルの設定](media/search-semi-structured-data/container-public-access-level.png "パブリック アクセス レベルの設定")
+1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
 1. コンテナーが作成されたら、コンテナーを開いてコマンド バーの **[アップロード]** を選択します。
 
@@ -295,7 +293,7 @@ Azure portal で、検索サービスの **[概要]** ページを開き、**[�
 
 ## <a name="next-steps"></a>次の手順
 
-AI を活用した Cognitive Services アルゴリズムをインデクサー パイプラインにアタッチすることができます。 引き続き次のチュートリアルに進んでください。
+JSON BLOB のインデックス作成には、いくつかの方法と複数のオプションがあります。 次の手順では、さまざまなオプションの検討とテストを行い、自分のシナリオに最適なオプションを確認します。
 
 > [!div class="nextstepaction"]
-> [AI によるインデックス作成](cognitive-search-tutorial-blob.md)
+> [Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法](search-howto-index-json-blobs.md)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 30f431c1806c6a0697a6b74b43f1cc35660fc85e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>チュートリアル:Azure Active Directory と Pantheon の統合
@@ -105,9 +105,9 @@ Pantheon で Azure AD シングル サインオンを構成するには、次の
 
     ![[Pantheon のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `urn:auth0:pantheon:<orgname>-SSO`
+    a. **[識別子]** ボックスに、`urn:auth0:pantheon:<orgname>-SSO` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://pantheon.auth0.com/login/callback?connection=<orgname>-SSO`
+    b. **[応答 URL]** ボックスに、`https://pantheon.auth0.com/login/callback?connection=<orgname>-SSO` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Pantheon クライアント サポート チーム](https://pantheon.io/docs/getting-support/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

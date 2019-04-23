@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2019
+ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189140"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571094"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -36,17 +36,18 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 - [Big Switch Big Monitoring Fabric](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
+- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>セキュリティ分析、ネットワーク/アプリケーションのパフォーマンス管理
 
 - [Awake Security](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
@@ -56,7 +57,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ## <a name="prerequisites"></a>前提条件
 
-仮想ネットワーク TAP を作成する前に、プレビューへの登録を確認するメールを受信済みであり、米国中西部リージョンの TAP トラフィック集計するために、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) デプロイ モデルとパートナー ソリューションを使用して 1 つ以上の仮想マシンを作成している必要があります。 仮想ネットワークにパートナー ソリューションがない場合は、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してデプロイしてください。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションの複数のネットワーク インターフェイスからのトラフィックを集計できます。 監視対象のネットワーク インターフェイスが異なるサブスクリプションに属している場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 また、監視対象のネットワーク インターフェイスと、TAP トラフィックを集計するための宛先エンドポイントは、同じリージョン内のピアリングされた仮想ネットワーク内に存在することができます。 このデプロイ モデルを使用している場合は、仮想ネットワーク TAP を構成する前に[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)が有効になっていることを確認してください。
+仮想ネットワーク TAP を作成する前に、プレビューへの登録を確認するメールを受信済みであり、同じ Azure リージョンの TAP トラフィックを集計するために、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) デプロイ モデルとパートナー ソリューションを使用して 1 つまたは複数の仮想マシンを作成している必要があります。 仮想ネットワークにパートナー ソリューションがない場合は、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してデプロイしてください。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションの複数のネットワーク インターフェイスからのトラフィックを集計できます。 監視対象のネットワーク インターフェイスが異なるサブスクリプションに属している場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 また、監視対象のネットワーク インターフェイスと、TAP トラフィックを集計するための宛先エンドポイントは、同じリージョン内のピアリングされた仮想ネットワーク内に存在することができます。 このデプロイ モデルを使用している場合は、仮想ネットワーク TAP を構成する前に[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)が有効になっていることを確認してください。
 
 ## <a name="permissions"></a>アクセス許可
 

@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce76fa7fecb8a82f76d40827bfa868061a0ed584
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204901"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492704"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
+
 パスワードを忘れた場合、ユーザーがデバイスからロックアウトされた場合、またはユーザーがパスワードを受け取っていない場合、管理者はユーザーのパスワードをリセットできます。
 
 >[!Note]
@@ -32,7 +33,7 @@ ms.locfileid: "56204901"
 
 ## <a name="to-reset-a-password"></a>パスワードをリセットするには
 
-1. [Azure portal](https://portal.azure.com/) に全体管理者、ユーザー管理者、またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページを参照してください。
+1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページを参照してください。
 
 2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、**[パスワードのリセット]** を選択します。
 
@@ -50,14 +51,15 @@ ms.locfileid: "56204901"
     >一時パスワードに期限はありません。 次回ユーザーがサインインすると、一時パスワードが生成されてから経過している時間にかかわらず、パスワードは引き続き機能します。
 
 ## <a name="next-steps"></a>次の手順
+
 ユーザーのパスワードをリセットしたら、次の基本的な手順を行うことができます。
 
 - [ユーザーを追加または削除する](add-users-azure-active-directory.md)
 
 - [ユーザーにロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 
-- [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
+- [ユーザー プロファイル情報の追加または変更](active-directory-users-profile-azure-portal.md)
 
-- [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
+- [基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)
 
 または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の使用可能なアクションについて詳しくは、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」をご覧ください。

@@ -16,10 +16,10 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b57786aaf699f562743bfdd6cf5c2d8f1b41b0d7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>チュートリアル:Azure Active Directory と Hightail の統合
@@ -127,7 +127,7 @@ Hightail で Azure AD シングル サインオンを構成するには、次の
     | -------- |-------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
-    | 電子メール | User.mail |
+    | Email | User.mail |
     | UserIdentity | User.mail |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。

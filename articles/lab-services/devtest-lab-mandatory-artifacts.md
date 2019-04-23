@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905802"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795408"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに対する必須成果物を指定する
 ラボ所有者として、ラボ内に作成されるすべてのマシンに適用される必須成果物を指定できます。 ラボ内の各マシンを企業ネットワークに接続してほしいシナリオを想像してください。 この場合、各ラボ ユーザーは、仮想マシンの作成時にドメイン参加成果物を追加して、各自のマシンが企業ドメインに接続されるようにする必要があります。 つまり、ラボ ユーザーが各自のマシンに必須成果物を適用するのを忘れた場合、基本的にはマシンを作成し直す必要があります。 ラボ所有者として、ドメイン参加成果物をラボの必須成果物として作成します。 この手順により、各マシンが企業ネットワークに確実に接続され、ラボ ユーザーの時間と労力が節約されます。

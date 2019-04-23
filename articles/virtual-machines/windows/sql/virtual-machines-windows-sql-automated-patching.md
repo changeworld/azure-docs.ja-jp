@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848249"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425987"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)
 > [!div class="op_single_selector"]
-> * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
+> * [リソース マネージャー](virtual-machines-windows-sql-automated-patching.md)
 > * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
 自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。 このメンテナンス期間にのみ、自動更新プログラムをインストールできます。 これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。 
@@ -69,7 +69,7 @@ ms.locfileid: "58848249"
 | **自動修正** |有効/無効 (無効) |Azure 仮想マシンの自動修正を有効または無効にします。 |
 | **メンテナンス スケジュール** |毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日 |仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。 |
 | **メンテナンスの開始時間** |0 ～ 24 |仮想マシンを更新するローカルの開始時刻。 |
-| **メンテナンス時間** |30 ～ 180 |更新プログラムのダウンロードとインストールを完了するのに許可されている時間 (分単位) |
+| **メンテナンス期間** |30 ～ 180 |更新プログラムのダウンロードとインストールを完了するのに許可されている時間 (分単位) |
 | **パッチのカテゴリ** |重要 | ダウンロードしてインストールする Windows 更新プログラムのカテゴリ。|
 
 ## <a name="configuration-in-the-portal"></a>ポータルでの構成
@@ -96,11 +96,6 @@ Resource Manager デプロイ モデルで新しい SQL Server 仮想マシン�
 終了したら、**[SQL Server の構成]** ブレードの下部にある **[OK]** ボタンをクリックして変更を保存します。
 
 自動修正を初めて有効にすると、バックグラウンドで SQL Server IaaS Agent が構成されます。 この間、自動修正が構成されていることは、Azure ポータルに示されない可能性があります。 エージェントがインストールされ、構成されるまで数分待ちます。 その後、Azure ポータルに新しい設定が反映されます。
-
-> [!NOTE]
-> テンプレートを使用して自動修正を構成することもできます。 詳細については、 [自動修正用の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autopatching-update)に関するページをご覧ください。
-> 
-> 
 
 ## <a name="configuration-with-powershell"></a>PowerShell での構成
 SQL VM をプロビジョニングしたら、PowerShell を使用して自動修正を構成します。

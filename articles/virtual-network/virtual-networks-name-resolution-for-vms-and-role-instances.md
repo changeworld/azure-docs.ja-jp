@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Azure IaaS、ハイブリッド ソリューション、異なるクラウド サービス間、Active Directory、および独自の DNS サーバーの使用に関係する名前解決シナリオです。
 services: virtual-network
 documentationcenter: na
-author: subsarma
+author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
-ms.author: subsarma
-ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: rohink
+ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418739"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527185"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -147,7 +147,7 @@ resolv.conf ファイルは通常は自動生成され、編集すべきでは�
 
 > [!NOTE]
 > ロール インスタンスは、同じ仮想ネットワーク内の VM の名前解決を実行できます。 これは、VM のホスト名と **internal.cloudapp.net** DNS サフィックスで構成される FQDN を使用することで可能になります。 ただし、この場合、名前解決は、ロール インスタンスが[ロール スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/jj156212.aspx) に定義されている VM 名を持っている場合にのみ成功します。
-> <Role name="<role-name>" vmName="<vm-name>">
+> `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > 別の仮想ネットワーク内の VM の名前解決 (**internal.cloudapp.net** サフィックスを使用する FQDN) を実行する必要があるロール インスタンスは、このセクションで説明する方法 (2 つの仮想ネットワーク間で転送を行うカスタム DNS サーバー) を使用してこの操作を行う必要があります。
 >

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880068"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen1 のデータを分析する
@@ -97,5 +97,5 @@ ms.locfileid: "58880068"
 Power BI Desktop で視覚エフェクトを作成したら、Power BI サービスに発行して他のユーザーと共有することができます。 その手順については、「 [Power BI Desktop からの発行](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/)」参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [Data Lake Analytics を使用して Data Lake Storage Gen1 のデータを分析する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Analytics を使用して Data Lake Storage Gen1 using Data Lake Analytics のデータを分析する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

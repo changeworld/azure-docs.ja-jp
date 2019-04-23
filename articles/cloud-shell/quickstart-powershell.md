@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
 ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905071"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
@@ -36,7 +36,7 @@ ms.locfileid: "58905071"
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. ドロップダウンで PowerShell 環境を選ぶと、Azure ドライブになります `(Azure:)`
+2. ドロップダウンで PowerShell 環境を選ぶと、Azure ドライブ `(Azure:)` になります
 
    ![](media/quickstart-powershell/environment-ps.png)
 
@@ -68,7 +68,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd`  を実行して目的のサブスクリプションに移動します
+ 2. `cd` を実行して目的のサブスクリプションに移動します
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -344,7 +344,7 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
   git clone https://<your-access-token>@github.com/username/repo.git
 ```
 
-## <a name="exit-the-shell"></a>シェルを終了する
+## <a name="exit-the-shell"></a>シェルを終了します。
 
 「`exit`」と入力してセッションを終了します。
 

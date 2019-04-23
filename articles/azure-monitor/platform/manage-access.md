@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276413"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
@@ -35,7 +35,7 @@ Log Analytics ワークスペースを作成するには、以下を行う必要
 
 ワークスペースの作成について詳しくは以下の記事を参照してください。
 
-- [Azure ポータルで Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)
+- [Azure portal で Log Analytics ワークスペースを作成する](../learn/quick-create-workspace.md)
 - [Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する](../learn/quick-create-workspace-cli.md)
 - [Azure PowerShell を使用して Log Analytics ワークスペースを作成する](../learn/quick-create-workspace-posh.md)
 
@@ -209,13 +209,13 @@ Azure には、Log Analytics ワークスペース用に、次の 2 つの組み
 
 "*Log Analytics 閲覧者*" ロールのメンバーは、以下の操作を行うことができます。
 - すべての監視データを表示および検索する 
-- 監視設定を表示する。これには、すべての Azure リソースに対する Azure 診断の構成の表示などが含まれます。
+- 監視設定を表示する。これには、すべての Azure リソースに対する Azure Diagnostics の構成の表示などが含まれます。
 
 Log Analytics 閲覧者ロールには、次の Azure アクションが含まれています。
 
 | Type    | アクセス許可 | 説明 |
 | ------- | ---------- | ----------- |
-| Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
+| Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定 |
 | Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
 | Action | `Microsoft.OperationalInsights/workspaces/search/action` | ログ検索 v1 クエリを実行する機能 |
 | Action | `Microsoft.Support/*` | サポート ケースを開く機能 |
@@ -233,7 +233,7 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 - Azure Storage からのログの収集の構成  
 - 次のような、Azure リソースの監視設定の編集
   - VM への VM 拡張機能の追加
-  - すべての Azure リソースに対する Azure 診断の構成
+  - すべての Azure リソースに対する Azure Diagnostics の構成
 
 > [!NOTE] 
 > 仮想マシンに仮想マシン拡張機能を追加する機能を使用して、仮想マシンに対するフル コントロールを取得することができます。
@@ -242,7 +242,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 | アクセス許可 | 説明 |
 | ---------- | ----------- |
-| `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
+| `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定 |
 | `Microsoft.Automation/automationAccounts/*` | Runbook の追加と編集など、Azure Automation アカウントを作成および構成する機能 |
 | `Microsoft.ClassicCompute/virtualMachines/extensions/*` <br> `Microsoft.Compute/virtualMachines/extensions/*` | Microsoft Monitoring Agent 拡張機能、OMS Agent for Linux 拡張機能など、仮想マシン拡張機能を追加、更新、および削除する |
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | ストレージ アカウント キーを表示する。 Azure Storage アカウントからログを読み取るように Log Analytics を構成するために必要です |

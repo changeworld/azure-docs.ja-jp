@@ -16,22 +16,22 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 23d1e53785ece50943d732db12b4cf460ba6752a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e813b26a91d25fbaa1298acd455f27d2cac705f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767483"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997055"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure Portal を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
 この記事では、Azure Portal を使用して Azure 可用性ゾーン内に仮想マシンを作成する手順を説明します。 [可用性ゾーン](../../availability-zones/az-overview.md)とは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。
 
-可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#regions-that-support-availability-zones)に仮想マシンを作成します。
+可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#services-support-by-region)に仮想マシンを作成します。
 
-## <a name="log-in-to-azure"></a>Azure にログインする 
+## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
@@ -39,7 +39,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
 
-3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。 米国東部 2 など、可用性ゾーンをサポートする場所を選びます。 完了したら、**[OK]** をクリックします。
+3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのサインインに使用されます。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。 米国東部 2 など、可用性ゾーンをサポートする場所を選びます。 完了したら、**[OK]** をクリックします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 

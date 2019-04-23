@@ -11,10 +11,10 @@ description: Azure のコンテナーとマイクロサービスを使用した�
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: mmontwil
 ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426309"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure Dev Spaces での Java の使用
@@ -148,7 +148,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 > Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
 1. ターミナル ウィンドウで、`Ctrl+C` キーを押して `azds up` を停止します。
-1. `src/main/java/com/ms/sample/webfrontend/Application.java` という名前のコード ファイルを開き、次のようにあいさつメッセージを編集します。 `return "Hello from webfrontend in Azure!";`
+1. `src/main/java/com/ms/sample/webfrontend/Application.java` という名前のコード ファイルを開き、あいさつメッセージ (`return "Hello from webfrontend in Azure!";`) を編集します。
 1. ファイルを保存します。
 1. ターミナル ウィンドウで `azds up` を実行します。
 

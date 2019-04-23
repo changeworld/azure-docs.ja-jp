@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd937aba302004f23904e4f743c93e69460f9026
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 87e1e57a969fc5e65302dcce44231773f7e74b3a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541147"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548832"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>自動機械学習の実験を構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "58541147"
 
 自動機械学習で使用できる構成オプション:
 
-* 実験の種類を選択する:分類、回帰、または予測
+* 実験の種類を選択する:分類、回帰、または時系列予測
 * データ ソース、形式、およびデータのフェッチ
 * コンピューティング先を選択する: ローカルまたはリモート
 * 自動機械学習の実験の設定
@@ -39,7 +39,7 @@ ms.locfileid: "58541147"
 
 自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 DNN アルゴリズムはトレーニング中に使用できますが、自動 ML は DNN モデルをビルドしません。
 
-分類 | 回帰 | 予測
+分類 | 回帰 | 時系列予測
 |-- |-- |--
 [ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -112,7 +112,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` スクリプトは次のものを返すことができます。
 
-キー | Type |    相互に排他的 | 説明
+キー | Type | 相互に排他的    | 説明
 ---|---|---|---
 X | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |  トレーニングするすべての機能
 y | Pandas データフレームまたは Numpy 配列 |   label   | トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。
@@ -121,7 +121,7 @@ y_valid |   Pandas データフレームまたは Numpy 配列 | data_train、la
 sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します
 sample_weight_valid | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |    "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます
 data_train |    Pandas データフレーム |  X、y、X_valid、y_valid |    トレーニングするすべてのデータ (機能 + ラベル)
-label | 文字列  | X、y、X_valid、y_valid |  data_train 内のどの列がラベルを表すか
+label | string  | X、y、X_valid、y_valid |  data_train 内のどの列がラベルを表すか
 columns | 文字列の配列  ||  "_省略可能_" 機能に使用する列のホワイトリスト
 cv_splits_indices   | 整数の配列 ||  "_省略可能_" クロス検証用にデータを分割するためのインデックスのリスト
 
@@ -173,7 +173,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 *   ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
 *   クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
 
-ローカルとリモートのコンピューティング先を使用したノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl)をご覧ください。
+ローカルとリモートのコンピューティング先を使用したノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
 
 <a name='configure-experiment'></a>
 
@@ -191,6 +191,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
+        blacklist_models='XGBoostClassifier',
         X=X,
         y=y,
         n_cross_validations=2)
@@ -202,55 +203,25 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
         task='regression',
         max_time_sec=600,
         iterations=100,
+        whitelist_models='kNN regressor'
         primary_metric='r2_score',
         X=X,
         y=y,
         n_cross_validations=5)
     ```
 
-適用するアルゴリズムのリストを決定する 3 つの異なる `task` パラメーター値があります。  使用可能なアルゴリズムを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。
-* 分類
-    * LogisticRegression
-    * SGD
-    * MultinomialNaiveBayes
-    * BernoulliNaiveBayes
-    * SVM
-    * LinearSVM
-    * KNN
-    * DecisionTree
-    * RandomForest
-    * ExtremeRandomTrees
-    * LightGBM
-    * GradientBoosting
-    * TensorFlowDNN
-    * TensorFlowLinearClassifier
-    * XGBoostClassifier
-* 回帰
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
-* 予測
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
+3 つの異なる `task` パラメーター値では、適用するアルゴリズムのリストを決定します。  使用可能なアルゴリズムを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされるモデルの一覧は、[SupportedAlgorithms クラス](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)で見つけることができます。
+
+## <a name="primary-metric"></a>主要メトリック
+上記の例で示されているように、主要メトリックでは、最適化のためのモデル トレーニング時に使用されるメトリックを決定します。 選択できる主要メトリックは、選択したタスクの種類によって決定されます。 使用できるメトリックの一覧を次に示します。
+
+|分類 | 回帰 | 時系列予測
+|-- |-- |--
+|accuracy| spearman_correlation | spearman_correlation
+|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
+|average_precision_score_weighted | r2_score | r2_score
+|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
+|precision_score_weighted |
 
 ## <a name="data-pre-processing-and-featurization"></a>データの前処理と特徴付け
 
@@ -267,9 +238,12 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
     * 一意の値がほとんどない数値特徴は、カテゴリ特徴に変換されます。
     * カテゴリ特徴のカーディナリティに応じて、ラベル エンコードまたは (ハッシュ) ワンホット エンコードを実行します。
 
+## <a name="ensemble-models"></a>アンサンブル モデル
+アンサンブル学習では、1 つのモデルを使用するのではなく、多くのモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 自動化された機械学習を使用する場合は、[並び変えられたアンサンブルの初期化を含む Caruana アンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用してアンサンブル モデルをトレーニングすることができます。 アンサンブル イテレーションは、実行の最後のイテレーションとして表示されます。
+
 ## <a name="time-series-forecasting"></a>時系列予測
 時系列予測タスクの種類には、定義する追加のパラメータがあります。
-1. time_horizon_name - 日付/時系列を含むトレーニング データの列の名前を定義する必須パラメーターです。 
+1. time_column_name - 日付/時系列を含むトレーニング データの列の名前を定義する必須パラメーターです。 
 1. max_horizon - トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
 1. grain_column_names - トレーニング データに個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。
 
@@ -299,7 +273,6 @@ automl_config = AutoMLConfig(task='forecasting',
                              X=X_train,
                              y=y_train,
                              n_cross_validations=5,
-                             enable_ensembling=False,
                              path=project_folder,
                              verbosity=logging.INFO,
                              **time_series_settings)
@@ -323,7 +296,6 @@ run = experiment.submit(automl_config, show_output=True)
 1. イテレーションの数 - 実行する実験のイテレーションの数を定義します。 オプションで iteration_timeout_minutes を追加して、イテレーションあたりの制限時間を分単位で定義できます。
 1. しばらくして終了 - 設定で experiment_timeout_minutes を使用すると、実験を継続して実行する時間を分単位で定義できます。
 1. スコアに達した後に終了 - experiment_exit_score を使用すると、主なメトリックに基づくスコアに達した後に実験を完了するよう選択できます。
-
 
 ## <a name="explore-model-metrics"></a>モデル メトリックを探索する
 結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-track-experiments.md#view-run-details)に関するセクションをご覧ください。
@@ -355,7 +327,7 @@ recall_score_micro|再現率は、あるクラスに実際に存在し、正し�
 recall_score_weighted|再現率は、あるクラスに実際に存在し、正しくラベル付けされている要素の割合です。 重み付けは各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|重み付けされた精度は、それぞれの例に対して指定された重みが、その例の true クラス内の true インスタンスの割合に一致する精度です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight は、ターゲット内の各要素に対して、そのクラスの割合が等しいベクターです|
 
-### <a name="regression-and-forecasting-metrics"></a>回帰メトリックと予測メトリック
+### <a name="regression-and-time-series-forecasting-metrics"></a>回帰メトリックと時系列予測メトリック
 回帰タスクまたは予測タスクの各イテレーションで、次のメトリックが保存されます。
 
 |メトリック|説明|計算|追加のパラメーター

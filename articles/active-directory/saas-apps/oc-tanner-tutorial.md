@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 21cbef1532928d51ba0c9f11e80304933df505b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>チュートリアル:Azure Active Directory と O.C. の統合 Azure AD で制御できます。
@@ -51,7 +51,7 @@ Azure AD と O.C.  Tanner - AppreciateHub の統合を構成するには、次�
 
 Azure AD への O.C.  Tanner - AppreciateHub の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に O.C.  Tanner - AppreciateHub を追加する必要があります。
 
-**ギャラリーから O.C.  Tanner - AppreciateHub を追加するには、次の手順に従います。**
+**ギャラリーから O.C. Tanner - AppreciateHub を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -193,7 +193,7 @@ Azure AD シングル サインオンを O.C.  Tanner - AppreciateHub で構成�
 
 このセクションの目的は、O.C.  Tanner - AppreciateHub で Britta Simon というユーザーを作成することです。
 
-**Britta Simon というユーザーを O.C.  Tanner - AppreciateHub で作成するには、次の手順に従います。**
+**O.C. Tanner - AppreciateHub で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
 [O.C.Tanner - AppreciateHub サポート チーム](mailto:sso@octanner.com)に、Azure AD 内のユーザー名 Britta Simon と同じ値の nameID 属性を持つユーザーを作成することを依頼します。
 

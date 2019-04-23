@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121351"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577900"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -86,6 +86,9 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 ### <a name="view-and-export"></a>表示とエクスポート
 
 データ要求の表示とエクスポートの両方に、[Log Analytics クエリ API](https://dev.loganalytics.io/) または [Application Insights クエリ API](https://dev.applicationinsights.io/quickstart) を使用する必要があります。 必要な場合、ユーザーに提供するためにデータの形式を適切なものに変換するロジックを実装できます。 そのようなロジックをホストするには、[Azure Functions](https://azure.microsoft.com/services/functions/) が適しています。
+
+> [!IMPORTANT]
+>  消去操作の大部分は SLA よりもずっと短期間に完了する場合がありますが、使用されるデータ プラットフォームへの影響が大きいため、**消去操作の完了の正式な SLA は 30 日に設定されています**。 これは自動化されたプロセスです。操作処理の高速化を要求する方法はありません。
 
 ### <a name="delete"></a>削除
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
 ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359135"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
@@ -47,9 +47,9 @@ Service Bus 名前空間を操作する場合は、[Get-AzServiceBusNamespace](/
 
 この例では、スクリプトでローカル変数 `$Namespace` と `$Location` を作成します。
 
-* `$Namespace` は、操作する Service Bus 名前空間の名前です。
-* `$Location` は、名前空間をプロビジョニングするデータ センターを識別します。
-* `$CurrentNamespace` は、取得 (または作成する) 参照名前空間を格納します。
+* `$Namespace` は操作する Service Bus 名前空間の名前です。
+* `$Location` は名前空間をプロビジョニングするデータ センターを識別します。
+* `$CurrentNamespace` では取得 (または作成) する参照名前空間を保存します。
 
 実際のスクリプトでは `$Namespace` と `$Location` はパラメーターとして渡すことができます。
 
@@ -170,9 +170,9 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 これ以外の Service Bus エンティティを管理する方法については、次のブログ投稿で説明されています。
 
-* [PowerShell スクリプトを使用して Service Bus キュー、トピック、およびサブスクリプションを作成する方法](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [PowerShell スクリプトを使用して Service Bus 名前空間とイベント ハブを作成する方法](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
-* [Service Bus PowerShell スクリプト](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 

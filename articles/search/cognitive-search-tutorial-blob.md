@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:インデックス パイプラインで Cognitive Services APIs を呼び出す - Azure Search
-description: JSON BLOB を介したデータの抽出と変換のために Azure Search のインデックス作成で行われる、データ抽出、自然言語、画像の AI 処理の例を段階的に説明していきます。
+title: チュートリアル:インデックス パイプラインで Cognitive Services の REST API を呼び出す - Azure Search
+description: JSON BLOB を介したデータの抽出と変換のために Azure Search のインデックス作成で行われる、データ抽出、自然言語、画像の AI 処理の例を、Postman と REST API を使用して段階的に説明していきます。
 manager: pablocas
 author: luiscabrer
 services: search
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b6e3335ba78d29896c8a253ac710e6ec0da1829a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261923"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528375"
 ---
-# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services APIs を呼び出す (プレビュー)
+# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>REST チュートリアル: Azure Search のインデックス パイプラインで Cognitive Services APIs を呼び出す (プレビュー)
 
 このチュートリアルでは、*コグニティブ スキル*を使用した Azure Search でのデータ エンリッチメントのプログラミングのしくみを学習します。 複数のスキルが、Cognitive Services の自然言語処理 (NLP) と画像分析機能によって支えられています。 スキルセットを複合および構成することで、画像やスキャンされたドキュメント ファイルのテキストとテキスト表現を抽出できます。 また、言語、エンティティ、キーフレーズなども検出できます。 最終的に、AI で強化されたインデックス パイプラインによって作成された豊富なコンテンツが Azure Search インデックスに追加されます。 
 
@@ -43,31 +43,37 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
+このチュートリアルでは、次のサービス、ツール、およびデータを使用します。 
+
 [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
+
+サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
 
 [Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search への REST 呼び出しを行うために使用されます。
 
-### <a name="get-an-azure-search-api-key-and-endpoint"></a>Azure Search api-key とエンドポイントを取得する
+[サンプル データ](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)は、さまざまなタイプの小さいファイル セットで構成されています。 
+
+## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
 REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-1. Azure portal の検索サービスの **[概要]** ページで、URL を取得します。 たとえば、エンドポイントは `https://my-service-name.search.windows.net` のようになります。
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure BLOB サービスを設定し、サンプル データを読み込む
+## <a name="prepare-sample-data"></a>サンプル データの準備
 
-エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 コグニティブ検索では Azure Table Storage はサポートされていないことに注意してください。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
+エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 Cognitive Search では Azure Table Storage はサポートされていません。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
 
-1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 
+1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、**[+ コンテナー]** をクリックします。
 
-1. [Azure Blob Storage にサインアップ](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)してストレージ アカウントを作成します。BLOB サービス ページを開き、コンテナーを作成します。 ストレージ アカウントは、Azure Search と同じリージョンに作成します。
+1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
-1. 作成したコンテナーで、**[アップロード]** をクリックし、前の手順でダウンロードしたサンプル ファイルをアップロードします。
+1. コンテナーの作成後、それを開いてコマンド バーの **[アップロード]** を選択し、前の手順でダウンロードしたサンプル ファイルをアップロードします。
 
    ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
@@ -81,11 +87,22 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 共有アクセス署名の提供など、接続文字列を指定する方法は他にもあります。 データ ソースの資格情報の詳細については、「[Azure Blob Storage のインデックスを Azure Search で作成する](search-howto-indexing-azure-blob-storage.md#Credentials)」をご覧ください。
 
+## <a name="set-up-postman"></a>Postman の設定
+
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Postman を使用して Azure Search REST API を調べる方法](search-fiddler.md)に関するページを参照してください。
+
+このチュートリアルで使用した要求メソッドは **POST**、**PUT**、**GET** です。 ヘッダーのキーは、"application/json" に設定された "Content-type" と、Azure Search サービスの管理者キーに設定された "api-key" です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 
+
+  ![半構造化検索](media/search-semi-structured-data/postmanoverview.png)
+
+Postman を使用して、検索サービスに対して 4 つの API 呼び出しを行い、データ ソース、スキルセット、インデックス、インデクサーを作成します。 データ ソースには、ストレージ アカウントと JSON データへのポインターが含まれています。 データを読み込むときに、検索サービスは接続を行います。
+
+
 ## <a name="create-a-data-source"></a>データ ソースを作成する
 
 これでサービスとソース ファイルの準備ができましたので、インデックス作成パイプラインのコンポーネントのアセンブルを開始します。 Azure Search に外部ソース データの取得方法を指示する、[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)から始めます。
 
-このチュートリアルでは、REST API と、PowerShell、Postman、Fiddler などの HTTP 要求を作成および送信できるツールを使用します。 要求ヘッダーには、Azure Search サービスの作成時に使用したサービス名と、Search サービス用に生成した api-key を入力します。 要求本文には、BLOB コンテナー名と接続文字列を指定します。
+要求ヘッダーには、Azure Search サービスの作成時に使用したサービス名と、Search サービス用に生成した api-key を入力します。 要求本文には、BLOB コンテナー名と接続文字列を指定します。
 
 ### <a name="sample-request"></a>要求のサンプル
 ```http
@@ -108,7 +125,7 @@ api-key: [admin key]
 ```
 要求を送信します。 この Web テスト ツールは、成功を確認する状態コード 201 を返します。 
 
-これは最初の要求のため、Azure Portal を調べて、データ ソースが Azure Search で作成されたことを確認します。 Search サービスのダッシュボード ページで、[データ ソース] タイルに新しい項目があることを確認します。 Portal のページが更新されるまで数分かかる場合があります。 
+これは最初の要求のため、Azure Portal を調べて、データ ソースが Azure Search で作成されたことを確認します。 Search サービスのダッシュボード ページで、[データ ソース] 一覧に新しい項目があることを確認します。 Portal のページが更新されるまで数分かかる場合があります。 
 
   ![Portal の [データ ソース] タイル](./media/cognitive-search-tutorial-blob/data-source-tile.png "Portal の [データ ソース] タイル")
 
@@ -116,13 +133,13 @@ api-key: [admin key]
 
 ## <a name="create-a-skillset"></a>スキルセットを作成する
 
-この手順では、データに適用するエンリッチメント ステップのセットを定義します。 それぞれのエンリッチメント ステップを*スキル*と呼び、エンリッチメント ステップのセットを*スキルセット*と呼びます。 このチュートリアルでは、スキルセット用に次の[定義済みのコグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
+この手順では、データに適用するエンリッチメント ステップのセットを定義します。 それぞれのエンリッチメント ステップを*スキル*と呼び、エンリッチメント ステップのセットを*スキルセット*と呼びます。 このチュートリアルでは、スキルセット用に次の[ビルトイン コグニティブ スキル](cognitive-search-predefined-skills.md)を使用します。
 
 + [言語検出](cognitive-search-skill-language-detection.md)。コンテンツの言語を識別します。
 
 + [テキスト分割](cognitive-search-skill-textsplit.md)。キー フレーズの抽出スキルを呼び出す前に、大きいコンテンツを小さいチャンクに分割します。 キー フレーズ抽出は、50,000 文字以下の入力を受け入れます。 いくつかのサンプル ファイルは、分割してこの制限内に収める必要があります。
 
-+ [名前付きエンティティの認識](cognitive-search-skill-named-entity-recognition.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
++ [エンティティの認識](cognitive-search-skill-entity-recognition.md)。BLOB コンテナーのコンテンツから組織の名前を抽出します。
 
 + [キー フレーズ抽出](cognitive-search-skill-keyphrases.md)。上位のキー フレーズを抜き出します。 
 
@@ -144,7 +161,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
       "inputs": [
@@ -217,7 +234,7 @@ Content-Type: application/json
 
 要求を送信します。 この Web テスト ツールは、成功を確認する状態コード 201 を返します。 
 
-#### <a name="about-the-request"></a>要求について
+#### <a name="explore-the-request-body"></a>要求本文を調べる
 
 キー フレーズ抽出スキルが各ページでどのように適用されるかに注意してください。 コンテキストを ```"document/pages/*"``` に設定して、ドキュメント/ページの配列のメンバーごとに (ドキュメントのページごとに) このエンリッチャーを実行します。
 
@@ -306,11 +323,13 @@ Content-Type: application/json
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>インデクサーを作成し、フィールドをマップし、変換を実行する
 
-ここまでで、データ ソース、スキルセット、およびインデックスを作成しました。 これら 3 つのコンポーネントが、各要素を複数フェーズにわたる 1 つの操作にまとめて入れる[インデクサー](search-indexer-overview.md)の一部になります。 これらをまとめてインデクサーに結び付けるには、フィールド マッピングを定義する必要があります。 フィールド マッピングはインデクサーの定義の一部であり、要求の送信時に変換を実行します。
+ここまでで、データ ソース、スキルセット、およびインデックスを作成しました。 これら 3 つのコンポーネントが、各要素を複数フェーズにわたる 1 つの操作にまとめて入れる[インデクサー](search-indexer-overview.md)の一部になります。 これらをまとめてインデクサーに結び付けるには、フィールド マッピングを定義する必要があります。 
 
-エンリッチされていないインデックス作成では、フィールド名やデータ型が正確に一致しない場合、または関数を使用する場合は、インデクサーの定義により省略可能な *fieldMappings* セクションが指定されます。
++ スキルセットの前に fieldMappings が処理されて、データ ソースのソース フィールドがインデックス内のターゲット フィールドにマッピングされます。 フィールド名と型が両側で共通していれば、マッピングは必要ありません。
 
-エンリッチメント パイプラインのあるコグニティブ検索ワークロードでは、インデクサーは *outputFieldMappings* を必要とします。 これらのマッピングは、内部プロセス (エンリッチメント パイプライン) がフィールド値のソースである場合に使用されます。 *outputFieldMappings* に固有の動作には、(シェーパー スキルを使用して) エンリッチメントの一環として作成される複合型を処理する機能が含まれます。 また、ドキュメントごとに多数の要素があることがあります (たとえば、ドキュメント内の複数の組織)。 *outputFieldMappings* コンストラクトでは、要素のコレクションを 1 つのレコードに「フラット化」するよう、システムに指示できます。
++ outputFieldMappings は、スキルセットの後に処理されます。sourceFieldNames がドキュメント解析またはエンリッチメントによって作成されるまでは、存在しない sourceFieldNames が参照されます。 targetFieldName は、インデックス内のフィールドです。
+
+入力を出力につなぐことに加え、フィールドのマッピングを使用して、データ構造をフラット化することもできます。 詳細については、「[強化されたフィールドを検索可能なインデックスにマップする方法](cognitive-search-output-field-mapping.md)」を参照してください。
 
 ### <a name="sample-request"></a>要求のサンプル
 
@@ -378,7 +397,7 @@ Content-Type: application/json
 > [!TIP]
 > インデクサーを作成すると、パイプラインが呼び出されます。 データ、入力と出力のマッピング、または操作の順序に及ぶ問題がある場合は、この段階で現れます。 コードまたはスクリプトに変更を加えてパイプラインを再実行するには、最初にオブジェクトを削除する必要がある場合があります。 詳細については、「[リセットして再実行する](#reset)」をご覧ください。
 
-### <a name="explore-the-request-body"></a>要求本文を調べる
+#### <a name="explore-the-request-body"></a>要求本文を調べる
 
 スクリプトで ```"maxFailedItems"``` を -1 に設定します。これにより、インデックス作成エンジンに、データのインポート中のエラーを無視するよう指示します。 デモのデータ ソースにはドキュメントがほとんどないため、これは便利です。 大きいデータ ソースの場合は、この値を 0 より大きい値に設定します。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで DNS データを収集する | Microsoft Docs
-description: Azure Sentinel で DNS データを収集する方法について説明します。
+title: Azure Sentinel Preview で DNS データを接続する | Microsoft Docs
+description: Azure Sentinel で DNS データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a7f075b74876ec807d790f3ffbea5dad14163535
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e34db2bdc78eb846cf4885b1ef083fd3b21e21b5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530418"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792053"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
 
@@ -29,7 +29,7 @@ ms.locfileid: "57530418"
 
 Windows 上で実行されているドメイン ネーム サーバー (DNS) を Azure Sentinel に接続できます。 そのためには、DNS マシンにエージェントをインストールします。 DNS ログを使用すると、分析および監査ログや他の関連データを DNS サーバーから収集し、分析して関連付けることによって、組織の DNS インフラストラクチャに関するセキュリティ、パフォーマンス、および操作に関連する分析情報を得ることができます。
 
-DNS ログ収集を有効にすると、次のことが可能になります。
+DNS ログ接続を有効にすると、次のことが可能になります。
 - 悪意のあるドメイン名を解決しようとしているクライアントを特定する
 - 古いリソース レコードを特定する
 - クエリ対象になる頻度が高いドメイン名と話好きな DNS クライアントを特定する
@@ -38,11 +38,11 @@ DNS ログ収集を有効にすると、次のことが可能になります。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-DNS 収集は、DNS マシンにエージェントをインストールすることによって実現されます。 エージェントは DNS からイベントを取得し、それらを Log Analytics に渡します。
+DNS マシンにエージェントをインストールすることで、DNS 接続が可能になります。 エージェントは DNS からイベントを取得し、それらを Log Analytics に渡します。
 
 ## <a name="connect-your-dns-appliance"></a>DNS アプライアンスの接続
 
-1. Azure Sentinel ポータルで、**[データ収集]** を選択し、**[DNS]** タイルを選択します。
+1. Azure Sentinel portal で、**[Data connectors]\(データ コネクタ\)** を選択し、**[DNS]** タイルを選択します。
 1. DNS マシンが Azure にある場合は、次の手順を実行します。
     1. **[Download & install agent for Windows virtual machines]\(Windows 仮想マシン用エージェントのダウンロードとインストール\)** をクリックします。
     1. **[仮想マシン]** 一覧で、Azure Sentinel にストリーミングする DNS マシンを選択します。 これが Windows VM であることを確認します。
@@ -62,5 +62,5 @@ Log Analytics で、スキーマ **DnsEvents** を検索し、イベントが存
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、DNS オンプレミス アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化する](quickstart-get-visibility.md)方法を確認する。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)を開始する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

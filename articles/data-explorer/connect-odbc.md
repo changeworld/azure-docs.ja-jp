@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.openlocfilehash: d01c825e50e30e3545a0d47e432835c658d677af
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59043883"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>ODBC を使って Azure Data Explorer に接続する
@@ -100,6 +100,6 @@ ODBC Driver for SQL Server を使用して ODBC データ ソースを構成す�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure データ エクスプローラーのクエリを記述する](write-queries.md)
+[Azure Data Explorer のクエリを記述する](write-queries.md)
 
-[チュートリアル:Power BI で Azure Data Explorer のデータを視覚化する](visualize-power-bi.md)
+[チュートリアル: Power BI で Azure Data Explorer のデータを視覚化する](visualize-power-bi.md)

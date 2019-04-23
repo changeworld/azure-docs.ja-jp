@@ -2,20 +2,20 @@
 title: ETL の代わりに Azure SQL Data Warehouse 用の ELT を設計する | Microsoft Docs
 description: ETL の代わりに、データの読み込みまたは Azure SQL Data Warehouse 用に抽出、読み込み、変換 (ELT) プロセスを設計します。
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 04/12/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96f6da7e081430768b5a6f8fd874e289b8256271
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308484"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548665"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の PolyBase データ読み込み戦略をデザインする
 
@@ -99,7 +99,7 @@ PolyBase を使用してデータを読み込むには、次のいずれかの�
 - [T-SQL を使用した PolyBase](load-data-from-azure-blob-storage-using-polybase.md) - データが Azure Blob Storage または Azure Data Lake Store 内にある場合に最適です。 読み込みプロセスを細かく制御できますが、外部データ オブジェクトの定義も必要となります。 その他の方法では、外部データ オブジェクトは、ソース テーブルを移行先テーブルにマップするときにバック グラウンドで定義されます。  T-SQL の読み込みを調整するには、Azure Data Factory、SSIS、または Azure Functions を使用します。 
 - [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse) - ソース データが SQL Server にある場合に有効です。SQL Server の場所は、オンプレミス、クラウドを問いません。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。 
 - [Azure Data Factory (ADF) を使用した PolyBase](sql-data-warehouse-load-with-data-factory.md) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。 
-- [Azure DataBricks を使用した PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) は、SQL Data Warehouse のテーブルから Databricks のデータフレームにデータを転送したり、Databricks のデータフレームから SQL Data Warehouse のテーブルにデータを書き込んだりします。
+- [Azure DataBricks を使用した PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) は、SQL Data Warehouse のテーブルから Databricks のデータフレームにデータを転送したり、PolyBase を使用して Databricks のデータフレームから SQL Data Warehouse のテーブルにデータを書き込んだりします。
 
 ### <a name="non-polybase-loading-options"></a>PolyBase 以外の読み込みオプション
 

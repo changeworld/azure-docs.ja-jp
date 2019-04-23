@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ff26acc1050a6104525ec44304fd9fee21d6d3cb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275580"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル:Azure Active Directory と Panorama9 の統合
@@ -51,7 +51,7 @@ Panorama9 と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への Panorama9 の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Panorama9 を追加する必要があります。
 
-**ギャラリーから Panorama9 を追加するには、次の手順を実行します。**
+**ギャラリーから Panorama9 を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Panorama9 で Azure AD シングル サインオンを構成するには、次�
 
     ![[Panorama9 のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します:  `https://dashboard.panorama9.com/saml/access/3262`
+    a. **[サインオン URL]** ボックスに URL として「`https://dashboard.panorama9.com/saml/access/3262`」と入力します。
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://www.panorama9.com/saml20/<tenant-name>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://www.panorama9.com/saml20/<tenant-name>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Panorama9 クライアント サポート チーム](https://support.panorama9.com/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

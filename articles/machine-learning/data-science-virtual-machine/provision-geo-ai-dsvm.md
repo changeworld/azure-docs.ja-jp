@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
 ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008840"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Azure での Geo 人工知能仮想マシンのプロビジョニング 
@@ -49,7 +49,7 @@ Geo-DSVM には、AI 用のツールが複数含まれています。これに�
 
    - **基本**
 
-      1. **[名前]**:作成するデータ サイエンス サーバーの名前です。
+      1. **名前**: 作成するデータ サイエンス サーバーの名前です。
 
       2. **ユーザー名**: 管理者アカウントのログイン ID です。
 

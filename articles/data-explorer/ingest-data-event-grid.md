@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/30/2019
 ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051854"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
@@ -36,14 +36,14 @@ Azure Data Explorer は、ログと利用統計情報のための高速でスケ
 
 1. **[基本]** タブの **[イベント サブスクリプションの作成]** ウィンドウで、次の値を指定します。
 
-    **Setting** | **推奨値** | **フィールドの説明**
+    **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | Name | *test-grid-connection* | 作成するイベント グリッドの名前。|
     | イベント スキーマ | *Event Grid スキーマ* | イベント グリッドで使用するスキーマ。 |
     | トピックの種類 | *ストレージ アカウント* | イベント グリッド トピックの種類。 |
     | トピックのリソース | *gridteststorage* | ご利用のストレージ アカウントの名前。 |
     | すべてのイベントの種類をサブスクライブする | *オフ* | すべてのイベントの通知は取得しません。 |
-    | 定義済みのイベントの種類 | *Blob created (作成された BLOB)* | 通知を取得する特定のイベント。 |
+    | 定義済みのイベントの種類 | *作成された BLOB* | 通知を取得する特定のイベント。 |
     | エンドポイントの種類 | *Event Hubs* | イベントの送信先であるエンドポイントの種類。 |
     | エンドポイント | *test-hub* | 作成したイベント ハブ。 |
     | | |
@@ -97,7 +97,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
      データ ソース:
 
-    **Setting** | **推奨値** | **フィールドの説明**
+    **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | データ接続名 | *test-hub-connection* | Azure Data Explorer で作成する接続の名前。|
     | ストレージ アカウントのサブスクリプション | サブスクリプション ID | ストレージ アカウントが存在するサブスクリプション ID。|
@@ -109,7 +109,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
     ターゲット テーブル: 
 
-     **Setting** | **推奨値** | **フィールドの説明**
+     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
     | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 |

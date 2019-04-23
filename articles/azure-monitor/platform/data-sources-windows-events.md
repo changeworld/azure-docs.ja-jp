@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 1f55e03d9a925bf939d627f376d29edf27461e74
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001121"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522712"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](agent-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -54,7 +54,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | EventLevelName |テキスト形式で示すイベントの重大度。 |
 | EventLog |イベント収集元のイベント ログの名前。 |
 | ParameterXml |XML 形式でのイベント パラメーターの値。 |
-| ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は AOI-<workspace ID> です。 |
+| ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は `AOI-<workspace ID>` です |
 | RenderedDescription |イベントの説明とパラメーターの値 |
 | Source |イベントのソース。 |
 | SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |

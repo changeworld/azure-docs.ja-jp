@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 8fce2451c915eb4480f6068667350da80e5cf7c5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>チュートリアル:Azure Active Directory と Confirmit Horizons の統合

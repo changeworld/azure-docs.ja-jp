@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359038"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
@@ -111,19 +111,19 @@ VM を手動で追加するには、次の手順に従います。
 
     b. **[IaaS size (Your selection)]\(IaaS サイズ (ユーザーが選択)\)**
 
-    c. **[Storage type Standard/Premium]\(ストレージの種類 (Standard/Premium)\)**
+    c. **[Storage type (Standard/Premium)]\(ストレージの種類 (Standard/Premium)\)**
 
     d. **[VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)**
 
-    e. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**
+    e. **[Number of DR Drills in a year]\(年間 DR ドリル数\)**
 
-    f. **[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**
+    f. **[Each DR drill duration (Days)]\(各 DR ドリル期間 (日数)\)**
 
     g. **[OS Type]\(OS の種類\)**
 
-    h. **データの冗長性**
+    h. **[Data redundancy]\(データの冗長性\)**
 
-    i. **Azure Hybrid Use Benefit**
+    i. **Azure Hybrid 利用特典**
 
 1. **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**、**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**、**[Data redundancy]\(データの冗長性\)**、**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)** に関しては、**[Apply to all]\(すべてに適用\)** を選択すると、テーブル内のすべての VM に同じ値を適用することができます。
 

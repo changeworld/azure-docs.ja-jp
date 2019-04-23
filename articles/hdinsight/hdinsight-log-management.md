@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ff89e12a1011c0a16644324584eb1610302b1b3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500476"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544284"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -176,5 +176,5 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight の監視とログの方法](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Linux ベースの HDInsight への Apache Hadoop YARN アプリケーションのサインインにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [さまざまな Apache Hadoop コンポーネントのログ ファイルのサイズを制御する方法](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

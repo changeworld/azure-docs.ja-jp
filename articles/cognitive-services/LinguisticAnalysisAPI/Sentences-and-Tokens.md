@@ -75,4 +75,4 @@ ms.locfileid: "55879396"
 ## <a name="specification"></a>仕様
 
 文およびトークンを何が構成するかについて、一貫性がある決定を行うことが重要です。
-ここでは [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) の仕様に依存しています (詳細については、ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html で入手できます)。
+ここでは [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) の仕様に依存しています (詳細については、 ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html で入手できます)。

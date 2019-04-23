@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905094"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
@@ -32,7 +32,7 @@ Durable Functions のチェーンのサンプルは、WebJobs SDK 2.x バージ�
 この記事では、WebJobs SDK、Azure Functions 用の C# クラス ライブラリ開発、および Durable Functions について、読者が基本的な知識を持っていることを前提としています。 これらのトピックの概要については、次のリソースを参照してください。
 
 * [WebJobs SDK の概要](../../app-service/webjobs-sdk-get-started.md)
-* [Visual Studio を使用して初めての関数を作成する](../functions-create-your-first-function-visual-studio.md)
+* [Visual Studio での初めての関数の作成](../functions-create-your-first-function-visual-studio.md)
 * [Durable Functions](durable-functions-sequence.md)
 
 この記事の手順を完了するには、次のことが条件となります。

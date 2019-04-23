@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: fc454fdba6ec875c3d3b572a7aba91bb9d389845
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917840"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617220"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -114,7 +114,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 ### <a name="general-remarks"></a>一般的な注釈
 
-以前にコネクタをインストールした場合は、再インストールして最新バージョンにします。
+以前にコネクタをインストールした場合は、再インストールして最新バージョンにします。 過去にリリースされたバージョンと変更履歴については、[アプリケーション プロキシのバージョン リリース履歴](application-proxy-release-version-history.md)に関するページを参照してください。
 
 オンプレミス アプリケーション用に複数の Windows サーバーを選択する場合は、サーバーごとにコネクタをインストールして登録する必要があります。 コネクタはコネクタ グループに整理できます。 詳しくは、[コネクタ グループ](application-proxy-connector-groups.md)に関するページをご覧ください。 
 
@@ -122,7 +122,6 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 コネクタ、能力計画、コネクタを最新の状態に維持する方法については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」をご覧ください。 
 
-Qlik Sense アプリケーションを使用する場合は、常に最新のコネクタをインストールしてください。 Qlik Sense では WebSockets が使用されますが、これは 1.5.612.0 以降のバージョンのコネクタでのみサポートされます。
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>コネクタが正しくインストールおよび登録されていることを確認する
 
@@ -172,7 +171,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
     | フィールド | 説明 |
     | :---- | :---------- |
-    | **名前** | アクセス パネルと Azure portal に表示されるアプリケーションの名前。 |
+    | **Name** | アクセス パネルと Azure portal に表示されるアプリケーションの名前。 |
     | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリケーションが https:\//yourapp/app にあり、https:\//yourapp/media にある画像を使用する場合は、パスとして https:\//yourapp/ を発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
     | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関する記事を参照してください。|
     | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication などの Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure Active Directory に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
@@ -183,11 +182,11 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | フィールド | 説明 |
     | :---- | :---------- |
     | **バックエンド アプリケーションのタイムアウト** | アプリケーションの認証と接続に時間がかかる場合のみ、この値を **[遅い]** に設定します。 |
-    | **[HTTP 専用 Cookie を使用する]** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、この値を **[いいえ]** に設定します。|
-    | **[Use Secure Cookie] (セキュリティで保護された Cookie を使用する)**| 暗号化された HTTPS 要求などのセキュリティ保護されたチャネル経由で Cookie を送信するために、この値を **[はい]** に設定します。
-    | **[Use Persistent Cookie] (永続的な Cookie を使用する)**| この値は、**[いいえ]** のままにしておきます。 この設定は、プロセス間で Cookie を共有できないアプリケーションにのみ使用する必要があります。 Cookie の設定の詳細については、「[Cookie settings for accessing on-premises applications in Azure Active Directory (Azure Active Directory でのオンプレミス アプリケーションにアクセスするための Cookie の設定)](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)」を参照してください。
+    | **HTTP 専用 Cookie を使用する** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、この値を **[いいえ]** に設定します。|
+    | **セキュリティで保護された Cookie を使用します**| 暗号化された HTTPS 要求などのセキュリティ保護されたチャネル経由で Cookie を送信するために、この値を **[はい]** に設定します。
+    | **永続 Cookie を使用**| この値は、**[いいえ]** のままにしておきます。 この設定は、プロセス間で Cookie を共有できないアプリケーションにのみ使用する必要があります。 Cookie の設定の詳細については、「[Cookie settings for accessing on-premises applications in Azure Active Directory (Azure Active Directory でのオンプレミス アプリケーションにアクセスするための Cookie の設定)](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)」を参照してください。
     | **ヘッダーの URL を変換する** | 認証要求でアプリケーションの元のホスト ヘッダーが必要でない場合を除き、この値は **[はい]** のままにします。 |
-    | **アプリケーション本文の URL を変換する** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リングがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。<br><br>このアプリケーションを Microsoft Cloud App Security (MCAS) を使用して監視する予定の場合は、この値を **[はい]** に設定します。 詳しくは、「[Configure real-time application access monitoring with Microsoft Cloud App Security and Azure Active Directory (Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する)](application-proxy-integrate-with-microsoft-cloud-application-security.md)」をご覧ください。 |
+    | **Translate URLs in Application Body (アプリケーションの本文内の URL を変換する)** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リングがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。<br><br>このアプリケーションを Microsoft Cloud App Security (MCAS) を使用して監視する予定の場合は、この値を **[はい]** に設定します。 詳しくは、「[Configure real-time application access monitoring with Microsoft Cloud App Security and Azure Active Directory (Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する)](application-proxy-integrate-with-microsoft-cloud-application-security.md)」をご覧ください。 |
    
 6. **[追加]** を選択します。
 
@@ -239,4 +238,4 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 シングル サインオン用にアプリケーションを構成する準備が整いました。 次のリンクを使用してシングル サインオン方法を選択し、シングル サインオンのチュートリアルを見つけてください。 
 
 > [!div class="nextstepaction"]
->[Configure single sign-on](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+>[シングル サインオンの構成](what-is-single-sign-on.md#choosing-a-single-sign-on-method)

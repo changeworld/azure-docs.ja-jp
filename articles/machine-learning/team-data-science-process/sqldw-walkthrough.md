@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838886"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523598"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -77,7 +77,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **Azure SQL DW インスタンスをプロビジョニングします。**
 「 [SQL Data Warehouse の作成](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) 」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。 後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
 
-* **サーバー名**: <server Name>.database.windows.net
+* **サーバー名**: \<サーバー名>.database.windows.net
 * **SQLDW (データベース) 名**
 * **ユーザー名**
 * **パスワード**

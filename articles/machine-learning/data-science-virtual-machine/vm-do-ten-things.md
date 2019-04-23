@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046184"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
@@ -311,20 +311,20 @@ AzCopy コマンドを実行して Azure BLOB にコピーするとすぐに、�
 
 ![アップロードされた CSV ファイルを表示する、ストレージ アカウントのスクリーン ショット](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**VM から Azure BLOB にデータを移動する: Azure ストレージ エクスプローラー**
+**VM から Azure BLOB にデータを移動する: Azure Storage Explorer**
 
 Azure ストレージ エクスプローラーを使用して、VM 内のローカル ファイルからデータをアップロードすることもできます。
 
-* コンテナーにデータをアップロードするには、ターゲット コンテナーを選択し、**[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
+* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
 * **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード ダイアログのスクリーンショット](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Azure BLOB からデータの読み取り: Machine Learning リーダー モジュール**
+**Azure Blob からデータの読み取り: Machine Learning リーダー モジュール**
 
 Azure Machine Learning Studio では、 **データのインポート モジュール** を使用して BLOB からデータを読み取ることができます。
 
 ![Machine Learning Studio でのデータのインポート モジュールのスクリーンショット](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Azure BLOB からデータの読み取り: Python ODBC**
+**Azure Blob からデータの読み取り: Python ODBC**
 
 **BlobService** ライブラリを使用すると、Jupyter Notebook または Python プログラムで BLOB から直接データを読み取ることができます。
 
@@ -592,7 +592,7 @@ for i in range(1,13):
 
 HDI クラスターにデータを読み込んだら、Azure Storage エクスプローラーでデータを確認することができます。 加えて、HDI クラスターには、nyctaxidb というデータベースが作成されます。
 
-**データの探索: Python での Hive クエリ**
+**データデータ探索: Python での Hive クエリ**
 
 Hadoop クラスターにデータが存在するため、pyodbc パッケージを使用して Hadoop クラスターに接続し、Hive を使ってデータベースを照会することによって探索や特徴エンジニアリングを実行できます。 前提条件の手順で作成した既存のテーブルを表示できます。
 
@@ -817,7 +817,7 @@ pd.read_sql(queryString,connection)
 
 ![テーブルのデータの上位の行](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-**Machine Learning のリーダー モジュールを使用して HDI からのデータを読み取る**
+**Machine Learning のリーダー モジュール を使用して HDI からのデータを読み取る**
 
 Machine Learning Studio で **リーダー** モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
 

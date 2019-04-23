@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 29ced587022bc15e82c756cb5f1b80554cfcceb2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a61a825ce223282e85c9262c613814530ba130f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009410"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527304"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -188,7 +188,7 @@ Scout 更新プログラム 6 は累積的な更新プログラムです。 更�
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
 - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- RHEL5、OL5、OL6、SUSE 10、SUSE 11 向け UA 更新プログラム 4:UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+- RHEL5、OL5、OL6、SUSE 10、SUSE 11 向け UA 更新プログラム 4:UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   1. .zip ファイルを抽出します。
   2. **RX サーバー**:**RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** を RX サーバーにコピーし、展開します。 抽出先のフォルダーで、 **/Install**を実行します。
   3. **構成サーバーとプロセス サーバー**:**CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** を構成サーバーとプロセス サーバーにコピーします。 ファイルをダブルクリックして実行します。<br>

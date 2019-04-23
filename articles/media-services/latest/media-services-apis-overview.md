@@ -9,19 +9,49 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 18b72ceaee0ca0747a0bf2144d5f9ffddbee8b8c
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: ed10354047060825b4368e02160d4655e33bc8f6
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471790"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617398"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API を使用した開発
 
 この記事では、Media Services v3 を使用して開発を行う際にエンティティと API に適用される規則について説明します。
+
+## <a name="accessing-the-azure-media-services-api"></a>Azure Media Services API へのアクセス
+
+Azure Media Services リソースにアクセスするには、Azure Active Directory (AD) のサービス プリンシパル認証を使うことができます。
+Media Services API では、REST API 要求を行うユーザーまたはアプリケーションは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者**または**所有者**のロールを使用することが必要です。 **閲覧者**ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List**  だけです。 詳細については、「[Media Services アカウント用のロールベースのアクセス制御](rbac-overview.md)」を参照してください。
+
+サービス プリンシパルを作成する代わりに、Azure リソースに対するマネージド ID を使い、Azure Resource Manager で Media Services API にアクセスすることを検討してください。 Azure リソースに対するマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+
+### <a name="azure-ad-service-principal"></a>Azure AD のサービス プリンシパル 
+
+Azure AD アプリケーションとサービス プリンシパルを作成する場合、アプリケーションは専用のテナントに置く必要があります。 アプリケーションを作成した後、アプリの**共同作成者**または**所有者**ロールのアクセス権を、Media Services アカウントに付与します。 
+
+Azure AD アプリケーションを作成するためのアクセス許可を自分が持っているかどうかわからない場合は、「[必要なアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」を参照してください。
+
+次の図の番号は、要求のフローを時系列で表したものです。
+
+![中間層アプリ](../previous/media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+
+1. 中間層アプリが、次のパラメーターが含まれた Azure AD アクセス トークンを要求します。  
+
+   * Azure AD テナント エンドポイント。
+   * Media Services リソース URI。
+   * REST Media Services のリソース URI。
+   * Azure AD アプリケーションの値 (クライアント ID と クライアント シークレット)。
+   
+   必要な値をすべて取得するには、「[Azure CLI で Azure Media Services API にアクセスする](access-api-cli-how-to.md)」をご覧ください
+
+2. Azure AD アクセス トークンが中間層アプリに送信されます。
+4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。
+5. Media Services からデータが中間層アプリに返されます。
 
 ## <a name="naming-conventions"></a>名前付け規則
 
@@ -30,17 +60,6 @@ Azure Media Services v3 のリソース名 (アセット、ジョブ、変換な
 Media Services リソース名には、"<",">"、"%"、"&"、":"、"&#92;"、"?"、"/"、"*"、"+"、"."、一重引用符などの制御文字を使用することができません。 それ以外の文字は使用できます。 リソース名の最大文字数は 260 文字です。 
 
 Azure Resource Manager の名前付けの詳細については、[名前付けの要件](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)と[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。
-
-## <a name="v3-api-design-principles-and-rbac"></a>v3 API の設計原則と RBAC
-
-v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API は、**Get** または **List** 操作でシークレットまたは資格情報を返しません。 キーは常に、null または空であるか、応答から削除されます。 ユーザーがシークレットまたは資格情報を取得するには、別のアクション メソッドを呼び出す必要があります。 **Reader** ロールでは、操作を呼び出せないので、Asset.ListContainerSas、StreamingLocator.ListContentKeys、ContentKeyPolicies.GetPolicyPropertiesWithSecrets などの操作を呼び出すことはできません。 別のアクションがあることにより、必要に応じてカスタム ロールに、より細かい RBAC セキュリティ許可を設定できます。
-
-詳細については、次を参照してください。
-
-- [組み込みのロールの定義](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-- [RBAC を使用したアクセス管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Media Services アカウント用のロールベースのアクセス制御](rbac-overview.md)
-- [コンテンツ キー ポリシーの取得 - .NET](get-content-key-policy-dotnet-howto.md)。
 
 ## <a name="long-running-operations"></a>長時間にわたって実行される操作
 

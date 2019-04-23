@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1393e548c46c23f6b50c1b18a274febb74914ae8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054506"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523509"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Azure API Management でサブスクリプションを作成する
 
@@ -38,7 +38,8 @@ Azure API Management を介して API を公開する場合、これらの API �
 1. 左側のメニューで **[サブスクリプション]** を選択します。
 2. **[サブスクリプションの追加]** を選択します。
 3. サブスクリプションの名前を指定し、範囲を選択します。
-4. **[保存]** を選択します。
+4. 必要に応じて、サブスクリプションをユーザーに関連付けるかどうかを選択します。
+5. **[保存]** を選択します。
 
 ![柔軟なサブスクリプション](./media/api-management-subscriptions/flexible-subscription.png)
 

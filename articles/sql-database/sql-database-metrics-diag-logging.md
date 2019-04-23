@@ -1,10 +1,10 @@
 ---
 title: Azure SQL Database のメトリックと診断のロギング | Microsoft Docs
-description: Azure SQL Database リソースを構成して、リソースの使用状況およびクエリ実行の統計情報を保存する方法について説明します。
+description: Azure SQL Database の診断を有効にし、リソース使用率とクエリ実行統計に関する情報を格納する方法を学習します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
@@ -12,14 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905205"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548642"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
+
+このトピックでは、Azure portal、PowerShell、Azure CLI、Azure Monitor REST API、および Azure Resource Manager テンプレートを使用して、Azure SQL Database の診断テレメトリのログを構成する方法を学習します。 これらの診断は、リソース使用率とクエリ実行統計を測定するために使用できます。 
 
 単一データベース、エラスティック プール内にプールされたデータベース、マネージド インスタンス内のインスタンス データベースは、パフォーマンス監視を容易にするためのメトリックと診断ログをストリーミングできます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに送信するようにデータベースを構成することができます。
 
@@ -32,7 +34,7 @@ ms.locfileid: "58905205"
 各種の Azure サービスでサポートされているメトリックとログ カテゴリの詳細については、次の資料を参照してください。
 
 - [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure 診断の概要](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Azure Diagnostics の概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 この記事では、Azure SQL データベース、エラスティック プール、およびマネージド インスタンスの診断テレメトリを有効にするためのガイダンスを提供します。 また、データベース診断テレメトリを表示するための監視ツールとして Azure SQL Analytics を構成する方法の理解にも役立ちます。
 
@@ -77,11 +79,11 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 > エラスティック プールとマネージド インスタンスには、それらに含まれるデータベースとは別の、独自の診断テレメトリがあります。 つまり、以下に示すように、診断テレメトリはそのリソースごとに個別に構成されているということに注意する必要があります。
 
 > [!NOTE]
-> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)に関するページを参照してください。
+> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-Azure portal で単一データベース、プールされたデータベースまたはインスタンス データベースのそれぞれに対して **[診断設定]** メニューを使用して、診断テレメトリのストリーミングを構成できます。 さらに、診断テレメトリは、エラスティック プールとマネージ インスタンスという各データベース コンテナー用に個別に構成することもできます。 診断テレメトリのストリーム先に次の宛先を設定できます。Azure Storage、Azure Event Hubs、Azure Monitor ログです。
+Azure portal で単一データベース、プールされたデータベース、またはインスタンス データベースのそれぞれに対して **[診断設定]** メニューを使用して、診断テレメトリのストリーミングを構成できます。 さらに、診断テレメトリは、エラスティック プールとマネージ インスタンスという各データベース コンテナー用に個別に構成することもできます。 診断テレメトリのストリーム先に次の宛先を設定できます。Azure Storage、Azure Event Hubs、Azure Monitor ログです。
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>エラスティック プールの診断テレメトリのストリーミングを構成する
 
@@ -117,7 +119,7 @@ Azure portal で単一データベース、プールされたデータベース�
 1. さらに、次のセクションで説明されている手順に従って、監視対象のエラスティック プール内の各データベースに対して診断テレメトリのストリーミングを構成します。
 
 > [!IMPORTANT]
-> 以下に示すように、エラスティック プールの診断テレメトリの構成に加えて、エラスティック プール内の各データベースの診断テレメトリも構成する必要があります。 
+> 以下に示すように、エラスティック プールの診断テレメトリの構成に加え、エラスティック プール内の各データベースの診断テレメトリも構成する必要があります。 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>単一データベース、またはエラスティック プール内のデータベースの診断テレメトリのストリーミングを構成する
 
@@ -141,7 +143,7 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 監視するデータベースごとにこれらの手順を繰り返します。
 
 > [!NOTE]
-> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)に関するページを参照してください。
+> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)に関するページを参照してください。
 > [!TIP]
 > 監視する Azure SQL Database ごとにこれらの手順を繰り返します。
 
@@ -160,7 +162,7 @@ Azure portal で単一データベース、プールされたデータベース�
 - マネージド インスタンスの診断テレメトリのストリーミングを有効にし、**かつ**
 - 各インスタンス データベースの診断テレメトリのストリーミングを有効にします
 
-これは、マネージド インスタンスはデータベース コンテナーであり、個々のインスタンス データベースのテレメトリとは別に独自のテレメトリを持っているためです。
+これは、マネージド インスタンスがデータベース コンテナーであり、個々のインスタンス データベースのテレメトリとは別に独自のテレメトリを持っているためです。
 
 マネージド インスタンス リソースに対して診断テレメトリのストリーミングを有効にするには、次の手順に従います。
 
@@ -338,7 +340,7 @@ Azure SQL Analytics を使用すると、SQL Database フリートを監視で�
 
 ### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>メトリックと診断ログを記録するようデータベースを構成する
 
-データベースがメトリックを記録する場所を構成する最も簡単な方法は、Microsoft Azure portal を使用する方法です。 前述のように、Microsoft Azure portal で Microsoft Azure SQL Database リソースに移動し、**[診断設定]** を選択します。
+データベースでメトリックを記録する場所を構成する最も簡単な方法は、Azure portal を使用することです。 前述のように、Microsoft Azure portal で Microsoft Azure SQL Database リソースに移動し、**[診断設定]** を選択します。
 
 エラスティック プールまたはマネージド インスタンスを使用している場合、ワークスペースに診断テレメトリをストリーミングできるようにするには、これらのリソースで診断設定を構成する必要もあります。
 
@@ -354,7 +356,7 @@ Azure SQL Database のメトリックと診断ログは、Microsoft Azure portal
 
 選択したデータが Event Hubs にストリーミングされると、高度な監視シナリオを有効にできます。 Event Hubs は、イベント パイプラインの玄関口として機能します。 イベント ハブに収集されたデータは、リアルタイム分析プロバイダーやストレージ アダプターを使用して、変換および保存できます。 Event Hubs は、イベントのストリームの運用と、イベントの消費を分離します。 これにより、イベントのコンシューマーは独自のスケジュールでイベントにアクセスできます。 Event Hubs の詳細については、以下を参照してください。
 
-- [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
+- [Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
 Azure Event Hubs でストリーミングされたメトリックは、次の目的に使用できます。
@@ -415,19 +417,19 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ### <a name="all-metrics-for-elastic-pools"></a>エラスティック プールのすべてのメトリック
 
-|**Resource**|**メトリック**|
+|**リソース**|**メトリック**|
 |---|---|
 |エラスティック プール|eDTU の割合、使用中の eDTU、eDTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、XTP ストレージの割合 |
 
 ### <a name="all-metrics-for-azure-sql-databases"></a>Azure SQL Database のすべてのメトリック
 
-|**Resource**|**メトリック**|
+|**リソース**|**メトリック**|
 |---|---|
 |Azure SQL データベース|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
 
 ## <a name="all-logs"></a>すべてのログ
 
-すべてのログで利用可能なテレメトリの詳細を次の表で公開しています。 特定のデータベースのフレーバー (Azure SQL の単一、プールされたデータベース、またはインスタンス データベース) でどのログがサポートされているかを理解するには、[サポートされている診断ログ](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)に関するセクションを参照してください。
+すべてのログで利用可能なテレメトリの詳細は、以下の表に記載されています。 特定のデータベースのフレーバー (Azure SQL の単一、プールされたデータベース、またはインスタンス データベース) でどのログがサポートされているかを理解するには、[サポートされている診断ログ](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)に関するセクションを参照してください。
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>マネージド インスタンスのリソース使用状況の統計
 
@@ -565,7 +567,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |Message|プレーンテキストでのエラー メッセージ |
 |user_defined_b|エラーがユーザー定義ビットかどうか |
 |error_number_d|エラー コード |
-|severity|エラーの重大度 |
+|Severity|エラーの重大度 |
 |state_d|エラーの状態 |
 |query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ |
 |query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ |
@@ -708,7 +710,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
 - [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-- [Azure 診断の概要](../azure-monitor/platform/diagnostic-logs-overview.md)
+- [Azure Diagnostics の概要](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Event Hubs の詳細については、次の資料を参照してください。
 

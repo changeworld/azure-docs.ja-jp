@@ -10,10 +10,10 @@ ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5de6ba8ab64797da24039718ca7f2c0b88d1d33d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881343"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
@@ -52,7 +52,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
 このチュートリアルの手順以外の部分では、オンプレミス VMware 仮想マシンと Windows Server 2008 または 2008 R2 を実行している物理サーバーを移行する方法を説明しています。
 > [!TIP]
-> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリックしてください](https://aka.ms/migrateVMs-signup)
+> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください。
 
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題

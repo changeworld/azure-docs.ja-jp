@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 40f771e97b61c28229b0eff29191247ef2fef695
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862847"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505619"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -75,8 +75,25 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
 1. **[モジュールの追加]** タブの **[デプロイ モジュール]** 領域で、**[AzureSecurityCenterforIoT]** をクリックします。 
    
 1. **名前**を **azureiotsecurity** に変更します。
-1. **[イメージの URI]** の名前を **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1** に変更します。
-      
+1. **[イメージの URI]** を **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3** に変更します。
+1. **[コンテナーの作成オプション]** の値が次のように設定されていることを確認します。      
+    ``` json
+    {
+        "NetworkingConfig": {
+            "EndpointsConfig": {
+                "host": {}
+            }
+        },
+        "HostConfig": {
+            "Privileged": true,
+            "NetworkMode": "host",
+            "PidMode": "host",
+            "Binds": [
+                "/:/host"
+            ]
+        }
+    }    
+    ```
 1. **[モジュール ツインの必要なプロパティの設定]** が選択されていることを確認し、構成オブジェクトを次のように変更します。
       
     ``` json
@@ -89,12 +106,16 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
 1. **[Save]** をクリックします。
 1. タブの一番下までスクロールし、**[Edge ランタイムの詳細設定を構成する]** を選択します。
    
-  >[!Note]
-  > IoT Edge ハブの AMQP 通信は**無効にしない**でください。
-  > Azure Security Center for IoT モジュールには、IoT Edge ハブとの AMQP 通信が必要です。
+   >[!Note]
+   > IoT Edge ハブの AMQP 通信は**無効にしない**でください。
+   > Azure Security Center for IoT モジュールには、IoT Edge ハブとの AMQP 通信が必要です。
    
-1. **[Edge ハブ]** の下の **[イメージ]** を **mcr.microsoft.com/ascforiot/edgehub:1.05-preview** に変更します。
-      
+1. **[Edge ハブ]** の下の **[イメージ]** を **mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview** に変更します。
+
+   >[!Note]
+   > Azure Security Center for IoT モジュールでは、SDK バージョン 1.20 に基づき、フォークしたバージョンの IoT Edge ハブが必要です。
+   > IoT Edge ハブのイメージを変更することで、IoT Edge デバイスでは、最新の安定版リリースを、フォークしたバージョンの IoT Edge ハブに置き換えることになります。フォークしたバージョンは、IoT Edge サービスで正式にサポートされていません。
+
 1. **[作成オプション]** が次のように設定されていることを確認します。 
          
     ``` json
@@ -135,10 +156,10 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
    
 1. 次のコンテナーが実行中であることを確認します。
    
-   | 名前 | イメージ |
+   | Name | イメージ |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1 |
-   | edgeHub | asotcontainerregistry.azurecr.io/edgehub:1.04-preview |
+   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    最低限必要なコンテナーが存在しない場合は、IoT Edge のデプロイ マニフェストが推奨設定と一致しているかどうかを確認してください。 詳細については、[IoT Edge モジュールのデプロイ](#deployment-using-azure-portal)に関する記事を参照してください。

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: diberry
 ms.openlocfilehash: a1093c2a6303b453a17a52058303913de5ecfa8d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893199"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) Cognitive Services でのデータの格納と削除
@@ -66,4 +66,4 @@ LUIS では、キーによって指定された領域に対応する Azure の�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [アプリのエクスポートと削除について確認する](luis-how-to-start-new-app.md)
+> [アプリのエクスポートと削除について確認します](luis-how-to-start-new-app.md)

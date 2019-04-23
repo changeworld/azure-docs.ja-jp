@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: a41bdda303c9e636929fba00a2fe4279002e42b3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>チュートリアル:Azure Active Directory と Wingspan eTMF の統合
@@ -105,11 +105,11 @@ Wingspan eTMF で Azure AD シングル サインオンを構成するには、�
 
     ![[Wingspan eTMF ドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<customer name>.<instance name>.mywingspan.com/saml`
+    a. **[サインオン URL]** ボックスに、`https://<customer name>.<instance name>.mywingspan.com/saml` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 `http://saml.<instance name>.wingspan.com/shibboleth`
+    b. **[識別子]** ボックスに、`http://saml.<instance name>.wingspan.com/shibboleth` という形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<customer name>.<instance name>.mywingspan.com/`
+    c. **[応答 URL]** ボックスに、`https://<customer name>.<instance name>.mywingspan.com/` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Wingspan eTMF クライアント サポート チーム](http://www.wingspan.com/contact-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

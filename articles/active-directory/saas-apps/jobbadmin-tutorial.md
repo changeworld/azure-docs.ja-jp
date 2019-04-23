@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad55656ba91c2f344024700344550849a36ed9b6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobbadmin"></a>チュートリアル:Azure Active Directory と Jobbadmin の統合
@@ -105,11 +105,11 @@ Jobbadmin で Azure AD シングル サインオンを構成するには、次�
 
     ![[Jobbadmin のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<instancename>.jobnorge.no`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<instancename>.jobnorge.no`
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`
+    c. **[応答 URL]** ボックスに、`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx` のパターンを使用して URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Jobbadmin クライアント サポート チーム](https://www.jobbnorge.no/om-oss/kontakt-oss)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

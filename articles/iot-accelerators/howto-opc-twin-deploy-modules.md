@@ -1,5 +1,5 @@
 ---
-title: Azure IoT OPC UA デバイス管理モジュールをゼロからデプロイする方法 | Microsoft Docs
+title: Azure 用 OPC Twin モジュールをゼロからデプロイする方法 |Microsoft Docs
 description: OPC Twin をゼロからデプロイする方法
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fe1b141ecacbd1d96c217322e69709828a3bf36c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759212"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491358"
 ---
-# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin Module と依存関係をゼロからデプロイする
+# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
-OPC Device Twin モジュールは IoT Edge 上で動作し、OPC Device Twin および Registry サービスにいくつかのエッジ サービスを提供します。 
+OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツインおよびレジストリ サービスにいくつかのエッジ サービスを提供します。 
 
 モジュールを [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) ゲートウェイにデプロイする方法は、次の方法など、いくつかあります。
 
@@ -109,7 +109,7 @@ OPC Device Twin モジュールは IoT Edge 上で動作し、OPC Device Twin �
 
 ### <a name="prerequisites"></a>前提条件
 
-1. OPC UA デバイス管理の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得しました。 結果の `.env` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `hub name` をメモします。
+1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得した。 結果の `.env` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `hub name` をメモします。
 
 2. [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) または [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge ゲートウェイを登録して起動し、その `device id` をメモします。
 
@@ -189,7 +189,7 @@ OPC Device Twin モジュールは IoT Edge 上で動作し、OPC Device Twin �
    ```
 
    `device id` パラメーターは、大文字と小文字が区別されます。 content パラメーターは、保存した配置マニフェスト ファイルを指します。 
-    ![az IoT Edge set-modules の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+    ![az IoT Edge モジュール設定の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. モジュールをデバイスにデプロイした後で、そのすべてを次のコマンドで表示できます。
 
@@ -205,7 +205,7 @@ OPC Device Twin モジュールは IoT Edge 上で動作し、OPC Device Twin �
 
 ### <a name="prerequisites"></a>前提条件
 
-1. OPC UA デバイス管理の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイします。
+1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイする。
 
 2. [Windows](https://docs.docker.com/docker-for-windows/install/)、[macOS](https://docs.docker.com/docker-for-mac/install/)、または [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce) に [Docker CE (18.02.0 以降)](https://www.docker.com/community-edition) をインストールします。
 

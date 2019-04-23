@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524193"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998925"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -53,17 +53,6 @@ Basic と Standard の Notification Hubs レベルでは、適切に構成され
 
 > [!NOTE]
 > プッシュ通知はサードパーティのプラットフォーム通知システム (Apple の APNS、Google の FCM など) に依存するため、これらのメッセージの配信に対する SLA 保証はありません。 Notification Hubs がプラットフォーム通知システムにバッチを送信 (SLA 保証あり) した後、プッシュの配信 (SLA 保証なし) はプラットフォーム通知システムの責任です。
-
-### <a name="which-customers-are-using-notification-hubs"></a>Notification Hubs を使用している顧客を教えてください。
-
-多くのお客様が Notification Hubs を使用しています。 たとえば、次のようなお客様です。
-
-* ソチ 2014 冬季オリンピック: 数百におよぶ利益団体、300 万台以上のデバイス、2 週間でディスパッチした通知 1 億 5,000 万件以上。 [ケース スタディ:ソチ]
-* Skanska:[ケース スタディ:Skanska]
-* シアトル タイムズ:[ケース スタディ:シアトル タイムズ]
-* Mural.ly:[ケース スタディ:Mural.ly]
-* 7Digital:[ケース スタディ:7Digital]
-* Bing アプリ:数千万台のデバイスが、1 日あたり 300 万件の通知を送信。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>ハブまたは名前空間を別のレベルにアップグレードまたはダウングレードする方法を教えてください。
 
@@ -219,11 +208,6 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs の価格]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[ケース スタディ:ソチ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[ケース スタディ:Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[ケース スタディ:シアトル タイムズ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[ケース スタディ:Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[ケース スタディ:7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Notification Hubs REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Notification Hubs の使用チュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Chrome アプリのチュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/

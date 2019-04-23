@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008904"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
@@ -115,10 +115,10 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 構成には、次のセクションが含まれます。
 
-* `content` 選択したデバイスに送信されるファームウェアの必要なプロパティを指定します。
-* `metrics` ファームウェア更新の状態をレポートするために実行するクエリを指定します。
-* `targetCondition` ファームウェアの更新プログラムを受信するデバイスを選択します。
-* `priorty` 他の構成に対するこの構成の相対的な優先度を設定します。
+* `content`: 選択したデバイスに送信されるファームウェアの必要なプロパティを指定します。
+* `metrics`: ファームウェア更新の状態を報告するために実行するクエリを指定します。
+* `targetCondition`: ファームウェアの更新プログラムを受信するデバイスを選択します。
+* `priorty`: 他の構成に対するこの構成の相対的な優先度を設定します。
 
 バックエンド アプリケーションは、次のコードを使用して、必要なプロパティを設定するための構成を作成します。
 

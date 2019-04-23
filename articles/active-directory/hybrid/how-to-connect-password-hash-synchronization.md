@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916378"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
@@ -124,7 +124,7 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 1. %programfiles%\Azure AD Sync\Bin に移動します。
 2. miiserver.exe.config を開きます。
 3. ファイルの末尾にある configuration/runtime ノードに移動します。
-4. 次のノードを追加します。 `<enforceFIPSPolicy enabled="false"/>`
+4.  `<enforceFIPSPolicy enabled="false"/>`
 5. 変更を保存します。
 
 参考までに、このスニペットは次のようになります。

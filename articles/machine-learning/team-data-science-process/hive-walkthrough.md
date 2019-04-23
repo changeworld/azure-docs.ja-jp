@@ -1,6 +1,6 @@
 ---
-title: Explore data in a Hadoop cluster - Team Data Science Process
-description: Using the Team Data Science Process for an end-to-end scenario, employing an HDInsight Hadoop cluster to build and deploy a model.
+title: Hadoop クラスターでのデータの探索 - Team Data Science Process
+description: HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Team Data Science Process を使用し、モデルを構築してデプロイします。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881148"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524006"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>The Team Data Science Process in action: Use Azure HDInsight Hadoop clusters
-In this walkthrough, we use the [Team Data Science Process (TDSP)](overview.md) in an end-to-end scenario. We use an [Azure HDInsight Hadoop cluster](https://azure.microsoft.com/services/hdinsight/) to store, explore, and feature-engineer data from the publicly available [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) dataset, and to down-sample the data. To handle binary and multiclass classification and regression predictive tasks, we build models of the data with Azure Machine Learning. 
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
+このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
 
-For a walkthrough that shows how to handle a larger dataset, see [Team Data Science Process - Using Azure HDInsight Hadoop Clusters on a 1 TB dataset](hive-criteo-walkthrough.md).
+大規模なデータ セットの処理方法を説明したチュートリアルについては、「[Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)」を参照してください。
 
-You can also use an IPython notebook to accomplish the tasks presented in the walkthrough that uses the 1 TB dataset. For more information, see [Criteo walkthrough using a Hive ODBC connection](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
+IPython Notebook を使用して、このチュートリアルで説明する 1 TB のデータセットを使用したタスクを実行することもできます。 詳細については、[Hive ODBC 接続を使用する Criteo のチュートリアル](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)を参照してください。
 
-## <a name="dataset"></a>NYC Taxi Trips dataset description
-The NYC Taxi Trip data is about 20 GB of compressed comma-separated values (CSV) files (~48 GB uncompressed). It has more than 173 million individual trips, and includes the fares paid for each trip. Each trip record includes the pick-up and dropoff location and time, anonymized hack (driver's) license number, and medallion number (the taxi’s unique ID). The data covers all trips in the year 2013, and is provided in the following two datasets for each month:
+## <a name="dataset"></a>NYC タクシー乗車データセットの説明
+NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切り値 (CSV) ファイル (非圧縮で最大 48 GB) です。 このデータには、1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金が含まれています。 各旅行レコードには、pickup (乗車) と dropoff (降車) の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、および medallion 番号 (タクシーの一意の ID) が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
-- The trip_data CSV files contain trip details. This includes the number of passengers, pick-up and dropoff points, trip duration, and trip length. Here are a few sample records:
+- trip_data の CSV ファイルには、乗車の詳細が含まれます。 乗客数、乗車地点、降車地点、乗車時間、乗車距離などです。 いくつかのサンプル レコードを次に示します。
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ The NYC Taxi Trip data is about 20 GB of compressed comma-separated values (CSV)
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-- The trip_fare CSV files contain details of the fare paid for each trip. This includes payment type, fare amount, surcharge and taxes, tips and tolls, and the total amount paid. Here are a few sample records:
+- trip_fare の CSV ファイルには、各乗車に対して支払われた料金の詳細が含まれます。 支払いの種類、料金、追加料金と税、チップと道路などの通行料、合計支払金額などです。 いくつかのサンプル レコードを次に示します。
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -45,119 +45,119 @@ The NYC Taxi Trip data is about 20 GB of compressed comma-separated values (CSV)
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-The unique key to join trip\_data and trip\_fare is composed of the fields: medallion, hack\_license, and pickup\_datetime. To get all of the details relevant to a particular trip, it is sufficient to join with these three keys.
+trip\_data と trip\_fare を結合するための一意のキーは medallion、hack\_licence、pickup\_datetime の各フィールドで構成されています。 特定の乗車に関する詳細をすべて取得するには、これら 3 つのキーと連結するだけで十分です。
 
-## <a name="mltasks"></a>Examples of prediction tasks
-Determine the kind of predictions you want to make based on data analysis. This helps clarify the tasks you need to include in your process. Here are three examples of prediction problems that we address in this walkthrough. These are based on the *tip\_amount*:
+## <a name="mltasks"></a>予測タスクの例
+データ分析に基づいて予測の種類を決定します。 これは、プロセスに含める必要があるタスクを明確にするために役立ちます。 このチュートリアルで扱う予測問題の 3 つの例を以下に示します。 これらの例は、*tip\_amount* に基づいています。
 
-- **Binary classification**: Predict whether or not a tip was paid for a trip. That is, a *tip\_amount* that is greater than $0 is a positive example, while a *tip\_amount* of $0 is a negative example.
+- **二項分類**:乗車に対してチップが支払われたかどうかを予測します。 つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Multiclass classification**: Predict the range of tip amounts paid for the trip. We divide the *tip\_amount* into five classes:
+- **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つのクラスに分割します。
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **Regression task**: Predict the amount of the tip paid for a trip.  
+- **回帰タスク**:乗車で支払われたチップの金額を予測します。  
 
-## <a name="setup"></a>Set up an HDInsight Hadoop cluster for advanced analytics
+## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 > [!NOTE]
-> This is typically an admin task.
+> 通常、これは管理タスクです。
 > 
 > 
 
-You can set up an Azure environment for advanced analytics that employs an HDInsight cluster in three steps:
+HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
-1. [Create a storage account](../../storage/common/storage-quickstart-create-account.md): This storage account is used for storing data in Azure Blob storage. The data used in HDInsight clusters also resides here.
-2. [Customize Azure HDInsight Hadoop clusters for the Advanced Analytics Process and Technology](customize-hadoop-cluster.md). This step creates an HDInsight Hadoop cluster with 64-bit Anaconda Python 2.7 installed on all nodes. There are two important steps to remember while customizing your HDInsight cluster.
+1. [ストレージ アカウントを作成する](../../storage/common/storage-quickstart-create-account.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータも格納されます。
+2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md):  この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
    
-   * Remember to link the storage account created in step 1 with your HDInsight cluster when you are creating it. This storage account accesses data that is processed within the cluster.
-   * After you create the cluster, enable Remote Access to the head node of the cluster. Browse to the **Configuration** tab, and select **Enable Remote**. This step specifies the user credentials used for remote login.
-3. [Create an Azure Machine Learning workspace](../studio/create-workspace.md): You use this workspace to build machine learning models. This task is addressed after completing an initial data exploration and down-sampling, by using the HDInsight cluster.
+   * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理されるデータにアクセスします。
+   * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、**[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
+3. [Azure Machine Learning ワークスペースを作成する](../studio/create-workspace.md):このワークスペースを使用して、機械学習モデルを構築します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
-## <a name="getdata"></a>Get the data from a public source
+## <a name="getdata"></a>公開されているソースからデータを取得する
 > [!NOTE]
-> This is typically an admin task.
+> 通常、これは管理タスクです。
 > 
 > 
 
-To copy the [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) dataset to your machine from its public location, use any of the methods described in [Move data to and from Azure Blob storage](move-azure-blob.md).
+公開されている場所から [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットをコンピューターにコピーするには、「[Azure Blob ストレージとの間のデータの移動](move-azure-blob.md)」で説明されている方法のいずれかを使用します。
 
-Here, we describe how to use AzCopy to transfer the files containing data. To download and install AzCopy, follow the instructions at [Getting started with the AzCopy command-line utility](../../storage/common/storage-use-azcopy.md).
+ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。 AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../../storage/common/storage-use-azcopy.md)」に記載されている手順に従います。
 
-1. From a command prompt window, run the following AzCopy commands, replacing *<path_to_data_folder>* with the desired destination:
+1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。*\<path_to_data_folder>* を、目的の転送先に置き換えてください。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. When the copy completes, you will see a total of 24 zipped files in the data folder chosen. Unzip the downloaded files to the same directory on your local machine. Make a note of the folder where the uncompressed files reside. This folder is referred to as the *<path\_to\_unzipped_data\_files\>* in what follows.
+1. コピーが完了すると、選択したデータのフォルダー内に合計 24 個の Zip ファイルが表示されます。 ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。 圧縮されていないファイルが存在するフォルダーをメモしておきます。 *\<path\_to\_unzipped_data\_files\>* として参照されるこのフォルダーについては、後ほど説明します。
 
-## <a name="upload"></a>Upload the data to the default container of the HDInsight Hadoop cluster
+## <a name="upload"></a>データを HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 > [!NOTE]
-> This is typically an admin task.
+> 通常、これは管理タスクです。
 > 
 > 
 
-In the following AzCopy commands, replace the following parameters with the actual values that you specified when creating the Hadoop cluster and unzipping the data files.
+次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* ***<path_to_data_folder>*** The directory (along with the path) on your machine that contains the unzipped data files.  
-* ***<storage account name of Hadoop cluster>*** The storage account associated with your HDInsight cluster.
-* ***<default container of Hadoop cluster>*** The default container used by your cluster. Note that the name of the default container is usually the same name as the cluster itself. For example, if the cluster is called "abc123.azurehdinsight.net", the default container is abc123.
-* ***<storage account key>*** The key for the storage account used by your cluster.
+* ***\<path_to_data_folder>*** を解凍データ ファイルが入った、マシン上のディレクトリ (パス)。  
+* ***\<Hadoop クラスターのストレージ アカウント名>*** HDInsight クラスターに関連付けられているストレージ アカウント。
+* ***\<Hadoop クラスターの既定のコンテナー>*** クラスターで使用する既定のコンテナー。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
+* ***\<ストレージ アカウント キー>*** クラスターで使用するストレージ アカウントのキー。
 
-From a command prompt or a Windows PowerShell window, run the following two AzCopy commands.
+コマンド プロンプトまたは Windows PowerShell ウィンドウで、次の 2 つの AzCopy コマンドを実行します。
 
-This command uploads the trip data to the ***nyctaxitripraw*** directory in the default container of the Hadoop cluster.
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxitripraw*** ディレクトリに乗車データをアップロードします。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 
-This command uploads the fare data to the ***nyctaxifareraw*** directory in the default container of the Hadoop cluster.
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxifareraw*** ディレクトリに料金データをアップロードします。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 
-The data should now be in Blob storage, and ready to be consumed within the HDInsight cluster.
+これで、データが BLOB ストレージに格納され、HDInsight クラスター内で利用できるようになりました。
 
-## <a name="#download-hql-files"></a>Sign in to the head node of Hadoop cluster and prepare for exploratory data analysis
+## <a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにサインインして探索的データ分析の準備をする
 > [!NOTE]
-> This is typically an admin task.
+> 通常、これは管理タスクです。
 > 
 > 
 
-To access the head node of the cluster for exploratory data analysis and down-sampling of the data, follow the procedure outlined in [Access the head node of Hadoop Cluster](customize-hadoop-cluster.md).
+探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「[Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」で説明されている手順に従います。
 
-In this walkthrough, we primarily use queries written in [Hive](https://hive.apache.org/), a SQL-like query language, to perform preliminary data explorations. The Hive queries are stored in .hql files. We then down-sample this data to be used within Machine Learning for building models.
+このチュートリアルでは、SQL に似たクエリ言語である [Hive](https://hive.apache.org/)で記述されたクエリを主に使用して、事前のデータ探索を行います。 Hive クエリは .hql ファイルに保存されています。 その後、モデル作成のために、Machine Learning で使用されるこのデータをダウンサンプリングします。
 
-To prepare the cluster for exploratory data analysis, download the .hql files containing the relevant Hive scripts from [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) to a local directory (C:\temp) on the head node. To do this, open the command prompt from within the head node of the cluster, and run the following two commands:
+探索的データ分析用にクラスターを準備するために、関連する Hive スクリプトを含む .hql ファイルを [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) からヘッド ノード上のローカル ディレクトリ (C:\temp) にダウンロードします。 これを行うには、クラスターのヘッド ノードからコマンド プロンプトを開き、次の 2 つのコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-These two commands download all .hql files needed in this walkthrough to the local directory ***C:\temp&#92;*** in the head node.
+この 2 つのコマンドによって、このチュートリアルで必要なすべての .hql ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;*** にダウンロードされます。
 
-## <a name="#hive-db-tables"></a>Create Hive database and tables partitioned by month
+## <a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 > [!NOTE]
-> This is typically an admin task.
+> 通常、これは管理タスクです。
 > 
 > 
 
-You are now ready to create Hive tables for the NYC taxi dataset.
-In the head node of the Hadoop cluster, open the Hadoop command line on the desktop of the head node. Enter the Hive directory by running the following command:
+これで、NYC タクシー データセットの Hive テーブルを作成する準備ができました。
+Hadoop クラスターのヘッド ノードのデスクトップで Hadoop コマンド ラインを開きます。 次のコマンドを実行して Hive ディレクトリを入力します。
 
     cd %hive_home%\bin
 
 > [!NOTE]
-> Run all Hive commands in this walkthrough from the Hive bin/ directory prompt. This handles any path issues automatically. We use the terms "Hive directory prompt", "Hive bin/ directory prompt", and "Hadoop command line" interchangeably in this walkthrough.
+> このチュートリアルでは、Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。 これは自動的にすべてのパスの問題に対処します。 このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。
 > 
 > 
 
-From the Hive directory prompt, run the following command in the Hadoop command line of the head node. This submits the Hive query to create the Hive database and tables:
+Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを実行します。 Hive データベースとテーブルを作成する Hive クエリが送信されます。
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Here is the content of the **C:\temp\sample\_hive\_create\_db\_and\_tables.hql** file. This creates the Hive database **nyctaxidb**, and the tables **trip** and **fare**.
+**C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を次に示します。 これにより、Hive データベース **nyctaxidb** とテーブル **trip** および **fare** が作成されます。
 
     create database if not exists nyctaxidb;
 
@@ -198,45 +198,45 @@ Here is the content of the **C:\temp\sample\_hive\_create\_db\_and\_tables.hql**
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
     STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
 
-This Hive script creates two tables:
+この Hive スクリプトでは 2 つのテーブルが作成されます。
 
-* The **trip** table contains trip details of each ride (driver details, pick-up time, trip distance, and times).
-* The **fare** table contains fare details (fare amount, tip amount, tolls, and surcharges).
+* テーブル **trip** には、乗車ごとの詳細 (運転手の詳細、乗車時間、乗車距離、乗車回数) が含まれます。
+* テーブル **fare** には、料金の詳細 (料金、チップ、道路などの通行料、追加料金) が含まれます。
 
-If you need any additional assistance with these procedures, or you want to investigate alternative ones, see the section [Submit Hive queries directly from the Hadoop command line](move-hive-tables.md#submit).
+これらの手順について追加のサポートが必要な場合、または代わりの手順を調査する必要がある場合は、「[Hive クエリを直接 Hadoop コマンドラインから送信する](move-hive-tables.md#submit)」を参照してください。
 
-## <a name="#load-data"></a>Load data to Hive tables by partitions
+## <a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
 > [!NOTE]
-> This is typically an admin task.
+> 通常、これは管理タスクです。
 > 
 > 
 
-The NYC taxi dataset has a natural partitioning by month, which we use to enable faster processing and query times. The following PowerShell commands (issued from the Hive directory by using the Hadoop command line) load data to the trip and fare Hive tables, partitioned by month.
+NYC タクシー データセットは、月ごとに自然にパーティション分割されているので、これを使用することで処理を高速化し、クエリ時間を短縮できます。 次の (Hadoop コマンド ラインを使用して、Hive ディレクトリから発行された) PowerShell コマンドは、月ごとにパーティション分割された trip および fare Hive テーブルにデータを読み込みます。
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-The **sample\_hive\_load\_data\_by\_partitions.hql** file contains the following **LOAD** commands:
+**sample\_hive\_load\_data\_by\_partitions.hql** ファイルには、次の **LOAD** コマンドが含まれています。
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-Note that a number of the Hive queries used here in the exploration process involve looking at only one or two partitions. But these queries can be run across the entire dataset.
+ここで探索プロセスに使用される多数の Hive クエリは、1 つまたは 2 つのパーティションのみを対象にしている点に注意してください。 これらのクエリをデータセット全体に対して実行することもできます。
 
-### <a name="#show-db"></a>Show databases in the HDInsight Hadoop cluster
-To show the databases created in HDInsight Hadoop cluster inside the Hadoop command-line window, run the following command in the Hadoop command line:
+### <a name="#show-db"></a>HDInsight Hadoop クラスターのデータベースを表示する
+Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラスターで作成されたデータベースを表示するには、Hadoop コマンド ラインで次のコマンドを実行します。
 
     hive -e "show databases;"
 
-### <a name="#show-tables"></a>Show the Hive tables in the **nyctaxidb** database
-To show the tables in the **nyctaxidb** database, run the following command in the Hadoop command line:
+### <a name="#show-tables"></a>**nyctaxidb** データベースの Hive テーブルを表示する
+**nyctaxidb** データベースのテーブルを表示するには、Hadoop コマンドラインで次のコマンドを実行します。
 
     hive -e "show tables in nyctaxidb;"
 
-We can confirm that the tables are partitioned by running the following command:
+次のコマンドを実行して、テーブルがパーティション分割されていることを確認できます。
 
     hive -e "show partitions nyctaxidb.trip;"
 
-Here is the expected output:
+次のような内容が出力されます。
 
     month=1
     month=10
@@ -252,11 +252,11 @@ Here is the expected output:
     month=9
     Time taken: 2.075 seconds, Fetched: 12 row(s)
 
-Similarly, we can ensure that the fare table is partitioned by running the following command:
+同様に、次のコマンドを実行して、fare テーブルがパーティション分割されていることを確認できます。
 
     hive -e "show partitions nyctaxidb.fare;"
 
-Here is the expected output:
+次のような内容が出力されます。
 
     month=1
     month=10
@@ -272,51 +272,51 @@ Here is the expected output:
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="#explore-hive"></a>Data exploration and feature engineering in Hive
+## <a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-You  can use Hive queries to accomplish data exploration and feature engineering tasks for the data loaded into the Hive tables. Here are examples of such tasks:
+Hive クエリを使用すると、Hive テーブルに読み込まれるデータのデータの探索タスクおよび特徴エンジニアリング タスクを実行できます。 このようなタスクの例を次に示します。
 
-* View the top 10 records in both tables.
-* Explore data distributions of a few fields in varying time windows.
-* Investigate data quality of the longitude and latitude fields.
-* Generate binary and multiclass classification labels based on the tip amount.
-* Generate features by computing the direct trip distances.
+* 両方のテーブルの、上位 10 個のレコードを表示する。
+* さまざまな期間で、いくつかのフィールドのデータの分布を探索する。
+* [経度] フィールドと [緯度] フィールドのデータの品質を調査する。
+* チップの金額に基づいて、二項分類および多クラス分類のラベルを生成する。
+* 直線乗車距離を計算して、特徴を生成する。
 
-### <a name="exploration-view-the-top-10-records-in-table-trip"></a>Exploration: View the top 10 records in table trip
+### <a name="exploration-view-the-top-10-records-in-table-trip"></a>探索:trip テーブルの上位 10 個のレコードを表示する
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-To see what the data looks like, examine 10 records from each table. To inspect the records, run the following two queries separately from the Hive directory prompt in the Hadoop command-line console.
+データがどのように表示されるかを確認するために、各テーブルから 10 個のレコードを確認します。 レコードを検査するには、Hadoop コマンド ライン コンソールの Hive ディレクトリ プロンプトから次の 2 つのクエリを実行します。
 
-To get the top 10 records in the trip table from the first month:
+最初の月から trip テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 
     hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
 
-To get the top 10 records in the fare table from the first month:
+最初の月から fare テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-You can save the records to a file for convenient viewing. A small change to the preceding query accomplishes this:
+レコードをファイルに保存すると、レコードを簡単に表示できるので便利です。 これを実現するには、上記のクエリを少し変更します。
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
-### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Exploration: View the number of records in each of the 12 partitions
+### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>探索:12 個のそれぞれのパーティションのレコードの数を表示する
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-Of interest is how the number of trips varies during the calendar year. Grouping by month shows the distribution of trips.
+関心があるのは、年間で乗車数がどのように変化するかです。 月ごとにグループ化すると、乗車数の分布が表示されます。
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-This gives us the following output:
+その結果、次のように出力されます。
 
     1       14776615
     2       13990176
@@ -332,22 +332,22 @@ This gives us the following output:
     12      13971118
     Time taken: 283.406 seconds, Fetched: 12 row(s)
 
-Here, the first column is the month, and the second is the number of trips for that month.
+ここでは、最初の列は月で、2 番目の列はその月の乗車数を表しています。
 
-We can also count the total number of records in our trip dataset by running the following command at the Hive directory prompt:
+Hive ディレクトリ プロンプトで次のコマンドを実行して、乗車データ セットの合計レコード数をカウントすることもできます。
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
-This yields:
+次が生成されます。
 
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
 
-Using commands similar to those shown for the trip dataset, we can issue Hive queries from the Hive directory prompt for the fare dataset to validate the number of records.
+乗車データ セットの場合と同様のコマンドを使用して、Hive ディレクトリ プロンプトから Hive クエリを発行し、料金データ セットのレコード数を検証できます。
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
-This gives us the following output:
+その結果、次のように出力されます。
 
     1       14776615
     2       13990176
@@ -363,30 +363,30 @@ This gives us the following output:
     12      13971118
     Time taken: 253.955 seconds, Fetched: 12 row(s)
 
-Note that the exact same number of trips per month is returned for both datasets. This provides the first validation that the data has been loaded correctly.
+2 つのデータセットでまったく同じ月ごとの乗車数が返されています。 これで、データが正しく読み込まれていることが検証されました。
 
-You can count the total number of records in the fare dataset by using the following command from the Hive directory prompt:
+Hive ディレクトリ プロンプトで次のコマンドを実行して、乗車データ セットの合計レコード数をカウントすることもできます。
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
-This yields:
+次が生成されます。
 
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
 
-The total number of records in both tables is also the same. This provides a second validation that the data has been loaded correctly.
+2 つのテーブルの合計レコード数も同じです。 これで、データが正しく読み込まれていることが再度検証されました。
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Exploration: Trip distribution by medallion
+### <a name="exploration-trip-distribution-by-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-This example identifies the medallions (taxi numbers) with greater than 100 trips within a given time period. The query benefits from the partitioned table access, because it is conditioned by the partition variable **month**. The query results are written to a local file, **queryoutput.tsv**, in `C:\temp` on the head node.
+この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。 このクエリは、パーティション変数 **month**によって条件設定されているので、パーティション テーブルへのアクセスによるメリットが得られます。 クエリ結果は、ヘッド ノード上の `C:\temp` にあるローカル ファイル **queryoutput.tsv** に書き込まれます。
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-Here is the content of the **sample\_hive\_trip\_count\_by\_medallion.hql** file for inspection.
+検査用の **sample\_hive\_trip\_count\_by\_medallion.hql** ファイルの内容を次に示します。
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -395,9 +395,9 @@ Here is the content of the **sample\_hive\_trip\_count\_by\_medallion.hql** file
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-The medallion in the NYC taxi dataset identifies a unique cab. You can identify which cabs are comparatively busy by asking which ones made more than a certain number of trips in a particular time period. The following example identifies cabs that made more than a hundred trips in the first three months, and saves the query results to a local file, **C:\temp\queryoutput.tsv**.
+NYC タクシーのデータセット内にある medallion (タクシー番号) は、一意のタクシーを識別します。 特定の期間に特定の乗車数を超えるタクシーを確認することで、比較的忙しいタクシーを特定できます。 次の例では、最初の 3 か月間で乗車回数が 100 を超えるタクシーを識別し、クエリ結果を **C:\temp\queryoutput.tsv** ローカル ファイルに保存します。
 
-Here is the content of the **sample\_hive\_trip\_count\_by\_medallion.hql** file for inspection.
+検査用の **sample\_hive\_trip\_count\_by\_medallion.hql** ファイルの内容を次に示します。
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -406,19 +406,19 @@ Here is the content of the **sample\_hive\_trip\_count\_by\_medallion.hql** file
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-From the Hive directory prompt, run the following command:
+Hive ディレクトリ プロンプトから次のコマンドを実行します。
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Exploration: Trip distribution by medallion and hack license
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索:medallion および hack_license ごとの乗車回数の分布
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-When exploring a dataset, we frequently want to examine the number of co-occurrences of groups of values. This section provides an example of how to do this for cabs and drivers.
+データセットの探索時に、値のグループの出現回数を確認する必要があることがよくあります。 このセクションでは、タクシーと運転手に対してこれを行う方法の例を示します。
 
-The **sample\_hive\_trip\_count\_by\_medallion\_license.hql** file groups the fare dataset on **medallion** and **hack_license**, and returns counts of each combination. Here are its contents:
+**sample\_hive\_trip\_count\_by\_medallion\_license.hql** ファイルは、**medallion** と **hack_license** で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。 その内容を次に示します。
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -427,23 +427,23 @@ The **sample\_hive\_trip\_count\_by\_medallion\_license.hql** file groups the fa
     HAVING trip_count > 100
     ORDER BY trip_count desc;
 
-This query returns cab and driver combinations, ordered by descending number of trips.
+このクエリは、タクシーと運転手の組み合わせを乗車回数の多い順に返します。
 
-From the Hive directory prompt, run:
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
 
-The query results are written to a local file, **C:\temp\queryoutput.tsv**.
+クエリ結果は、ローカル ファイル **C:\temp\queryoutput.tsv** に書き込まれます。
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Exploration: Assessing data quality by checking for invalid longitude or latitude records
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>探索:無効な経度または緯度のレコードをチェックしてデータの品質を評価する
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-A common objective of exploratory data analysis is to weed out invalid or bad records. The example in this section determines whether either the longitude or latitude fields contain a value far outside the NYC area. Since it is likely that such records have an erroneous longitude-latitude value, we want to eliminate them from any data that is to be used for modeling.
+探索的データ分析の共通の目標は、無効または正しくないレコードを除外することです。 このセクションの例では、緯度または経度のいずれかのフィールドに NYC 領域から大きく外れる値が含まれていないかどうかを判断します。 そのようなレコードには緯度と経度の値にエラーがある可能性が高いため、モデリングに使用するすべてのデータからそれらを排除します。
 
-Here is the content of **sample\_hive\_quality\_assessment.hql** file for inspection.
+検査用の **sample\_hive\_quality\_assessment.hql** ファイルの内容を次に示します。
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -453,24 +453,24 @@ Here is the content of **sample\_hive\_quality\_assessment.hql** file for inspec
         OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
 
-From the Hive directory prompt, run:
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-The *-S* argument included in this command suppresses the status screen printout of the Hive Map/Reduce jobs. This is useful because it makes the screen print of the Hive query output more readable.
+このコマンドに含まれている引数 *-S* は、Hive の Map/Reduce ジョブの状態の画面出力を抑制します。 このコマンドは、Hive クエリの画面出力を読みやすくするので役立ちます。
 
-### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Exploration: Binary class distributions of trip tips
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>探索:チップの二項分類の分布
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-For the binary classification problem outlined in the [Examples of prediction tasks](hive-walkthrough.md#mltasks) section, it is useful to know whether a tip was given or not. This distribution of tips is binary:
+「 [予測タスクの例](hive-walkthrough.md#mltasks) 」で説明されている二項分類の問題では、チップが支払われたかどうかがわかると便利です。 このチップの分布は、次の二項です。
 
 * tip given (Class 1, tip\_amount > $0)  
 * no tip (Class 0, tip\_amount = $0)
 
-The following **sample\_hive\_tipped\_frequencies.hql** file does this:
+次に示す **sample\_hive\_tipped\_frequencies.hql** ファイルがこれを実行します。
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -480,18 +480,18 @@ The following **sample\_hive\_tipped\_frequencies.hql** file does this:
     )tc
     GROUP BY tipped;
 
-From the Hive directory prompt, run:
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
     hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 
 
-### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>Exploration: Class distributions in the multiclass setting
+### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>探索:多クラス設定での分類分布
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-For the multiclass classification problem outlined in the [Examples of prediction tasks](hive-walkthrough.md#mltasks) section, this dataset also lends itself to a natural classification to predict the amount of the tips given. We can use bins to define tip ranges in the query. To get the class distributions for the various tip ranges, use the **sample\_hive\_tip\_range\_frequencies.hql** file. Here are its contents.
+「[予測タスクの例](hive-walkthrough.md#mltasks)」で説明されている多クラス分類問題についても、このデータ セットは、支払われるチップの金額を予測する自然な分類に役立ちます。 箱を使って、クエリのチップの範囲を定義できます。 さまざまなチップの範囲のクラス分布を取得するには、**sample\_hive\_tip\_range\_frequencies.hql** ファイルを使います。 その内容を次に示します。
 
     SELECT tip_class, COUNT(*) AS tip_freq
     FROM
@@ -504,19 +504,19 @@ For the multiclass classification problem outlined in the [Examples of predictio
     )tc
     GROUP BY tip_class;
 
-Run the following command from the Hadoop command-line console:
+Hadoop コマンド ライン コンソールから、次のコマンドを実行します。
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Exploration: Compute the direct distance between two longitude-latitude locations
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>探索:経度緯度の 2 つの場所の直線距離を計算する
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-You might want to know if there is a difference between the direct distance between two locations, and the actual trip distance of the taxi. A passenger might be less likely to tip if they figure out that the driver has intentionally taken them by a longer route.
+2 つの場所間の直接距離とタクシーの実際の乗車距離に違いがあるかどうかを知りたい場合があります。 運転手が意図的に長いルートを走行したことに乗客が気づいた場合に、チップが支払われる可能性が低くなる可能性があります。
 
-To see the comparison between actual trip distance and the [Haversine distance](https://en.wikipedia.org/wiki/Haversine_formula) between two longitude-latitude points (the "great circle" distance), you can use the trigonometric functions available within Hive:
+実際の乗車距離と緯度経度の 2 つの地点の [Haversine distance (球面上の距離)](https://en.wikipedia.org/wiki/Haversine_formula) を比較するために、Hive 内で利用できる次のような三角関数を使用します。
 
     set R=3959;
     set pi=radians(180);
@@ -537,57 +537,57 @@ To see the comparison between actual trip distance and the [Haversine distance](
     and dropoff_longitude between -90 and -30
     and dropoff_latitude between 30 and 90;
 
-In the preceding query, R is the radius of the Earth in miles, and pi is converted to radians. Note that the longitude-latitude points are filtered to remove values that are far from the NYC area.
+上記のクエリで、R は地球の半径 (マイル) を表し、pi はラジアンに変換されます。 緯度経度の 2 つの地点は NYC 領域から大きく外れた値を除外するためにフィルター処理されます。
 
-In this case, we write the results to a directory called **queryoutputdir**. The sequence of the following commands first creates this output directory, and then runs the Hive command.
+この場合、**queryoutputdir** というディレクトリに結果を書き込みます。 次の一連のコマンドでは、まずこの出力ディレクトリを作成してから、Hive コマンドを実行します。
 
-From the Hive directory prompt, run:
+Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
     hdfs dfs -mkdir wasb:///queryoutputdir
 
     hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
 
-The query results are written to nine Azure blobs (**queryoutputdir/000000\_0** to  **queryoutputdir/000008\_0**), under the default container of the Hadoop cluster.
+クエリ結果は Hadoop クラスターの既定のコンテナーにある 9 つの Azure BLOB (**queryoutputdir/000000\_0** ～ **queryoutputdir/000008\_0**) に書き込まれます。
 
-To see the size of the individual blobs, run the following command from the Hive directory prompt:
+個々の BLOB のサイズを表示するには、Hive ディレクトリ プロンプトで次のコマンドを実行します。
 
     hdfs dfs -ls wasb:///queryoutputdir
 
-To see the contents of a given file, say **000000\_0**, use Hadoop's `copyToLocal` command.
+たとえば **000000\_0** などの指定されたファイルの内容を参照するには、Hadoop の `copyToLocal` コマンドを使います。
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
 > [!WARNING]
-> `copyToLocal` can be very slow for large files, and is not recommended for use with them.  
+> ファイル サイズが大きい場合、`copyToLocal` の処理に時間がかかる可能性があるため、大きなファイルではこのコマンドを使用しないことをお勧めします。  
 > 
 > 
 
-A key advantage of having this data reside in an Azure blob is that we can explore the data within Machine Learning, by using the [Import Data][import-data] module.
+Azure BLOB にこのデータがあることの主な利点は、[データのインポート][import-data] モジュールを使って Machine Learning 内でデータを探索できることです。
 
-## <a name="#downsample"></a>Down-sample data and build models in Machine Learning
+## <a name="#downsample"></a>Machine Learning でデータをダウンサンプリングしてモデルを作成する
 > [!NOTE]
-> This is typically a data scientist task.
+> 通常、これはデータ サイエンティスト タスクです。
 > 
 > 
 
-After the exploratory data analysis phase, we are now ready to down-sample the data for building models in Machine Learning. In this section, we show how to use a Hive query to down-sample the data. Machine Learning then accesses it from the [Import Data][import-data] module.
+探索的データ分析フェーズが終了したら、Machine Learning でモデルを作成するためにデータをダウンサンプリングできます。 このセクションでは、Hive クエリを使用してデータをダウンサンプリングする方法について説明します。 Machine Learning では、[データのインポート][import-data] モジュールからこのデータにアクセスされます。
 
-### <a name="down-sampling-the-data"></a>Down-sampling the data
-There are two steps in this procedure. First we join the **nyctaxidb.trip** and **nyctaxidb.fare** tables on three keys that are present in all records: **medallion**, **hack\_license**, and **pickup\_datetime**. We then generate a binary classification label, **tipped**, and a multiclass classification label, **tip\_class**.
+### <a name="down-sampling-the-data"></a>データのダウンサンプリング
+これには、2 つの手順があります。 まず、すべてのレコードに存在する 3 つのキー (**medallion**、**hack\_license**、**pickup\_datetime**) で、**nyctaxidb.trip** テーブルと **nyctaxidb.fare** テーブルを結合します。 その後、二項分類ラベル **tipped** と多クラス分類ラベル **tip\_class** を作成します。
 
-To be able to use the down-sampled data directly from the [Import Data][import-data] module in Machine Learning, you should store the results of the preceding query to an internal Hive table. In what follows, we create an internal Hive table and populate its contents with the joined and down-sampled data.
+Machine Learning の[データのインポート][import-data] モジュールからダウンサンプリングされたデータを直接使用できるようにするには、上記のクエリの結果を内部の Hive テーブルに格納する必要があります。 以下では、内部の Hive テーブルを作成し、結合されダウンサンプリングされたデータでその内容を設定します。
 
-The query applies standard Hive functions directly to generate the following from the **pickup\_datetime** field:
-- hour of day
-- week of year
-- weekday (1 stands for Monday, and 7 stands for Sunday)
+このクエリは、標準の Hive 関数を直接適用して **pickup\_datetime** フィールドから以下を生成します。
+- 時間
+- 年度の通算週
+- 曜日 (1 は月曜日、7 は日曜日)
 
-The query also generates the direct distance between the pick-up and dropoff locations. For a complete list of such functions, see [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF).
+このクエリで、乗車場所と降車場所間の直接距離も生成されます。 このような関数の一覧については、「[LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)」を参照してください。
 
-The query then down-samples the data so that the query results can fit into Azure Machine Learning Studio. Only about 1 percent of the original dataset is imported into the studio.
+さらに、クエリはデータをダウンサンプリングして、クエリの結果が Azure Machine Learning Studio に適合するようにします。 元のデータセットの約 1% だけが Studio にインポートされます。
 
-Here are the contents of **sample\_hive\_prepare\_for\_aml\_full.hql** file that prepares data for model building in Machine Learning:
+Machine Learning でモデルを作成するためのデータを準備する **sample\_hive\_prepare\_for\_aml\_full.hql** ファイルの内容を以下に示します。
 
         set R = 3959;
         set pi=radians(180);
@@ -710,121 +710,121 @@ Here are the contents of **sample\_hive\_prepare\_for\_aml\_full.hql** file that
         on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
         where t.sample_key<=0.01
 
-To run this query from the Hive directory prompt:
+このクエリは、Hive ディレクトリ プロンプトで次のように実行します。
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-We now have an internal table, **nyctaxidb.nyctaxi_downsampled_dataset**, which can be accessed by using the [Import Data][import-data] module from Machine Learning. Furthermore, we can use this dataset for building Machine Learning models.  
+これで、Machine Learning で[データのインポート][import-data] モジュールを使ってアクセスできる内部テーブル **nyctaxidb.nyctaxi_downsampled_dataset** ができました。 さらに、このデータセットを使って Machine Learning モデルを作成できます。  
 
-### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>Use the Import Data module in Machine Learning to access the down-sampled data
-To issue Hive queries in the [Import Data][import-data] module of Machine Learning, you need access to a Machine Learning workspace. You also need access to the credentials of the cluster and its associated storage account.
+### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>Machine Learning のデータのインポート モジュールを使用して、ダウンサンプリングされたデータにアクセスする
+Machine Learning の[データのインポート][import-data] モジュールで Hive クエリを発行するには、Machine Learning ワークスペースにアクセスする必要があります。 また、クラスターの資格情報とクラスターに関連付けられたストレージ アカウントにアクセスする必要もあります。
 
-Here are some details about the [Import Data][import-data] module and the parameters to input:
+[データのインポート][import-data] モジュールと入力するパラメーターの詳細は次のとおりです。
 
-**HCatalog server URI**: If the cluster name is **abc123**, this is simply: https://abc123.azurehdinsight.net.
+**HCatalog サーバー URI**:クラスター名が **abc123** である場合、これは単純に https://abc123.azurehdinsight.net です。
 
-**Hadoop user account name**: The user name chosen for the cluster (not the remote access user name).
+**Hadoop ユーザー アカウント名**:クラスターに選択したユーザー名 (リモート アクセスのユーザー名ではありません)。
 
-**Hadoop ser account password**: The password chosen for the cluster (not the remote access password).
+**Hadoop ユーザー アカウントのパスワード**:クラスターに選択したパスワード (リモート アクセスのパスワードではありません)。
 
-**Location of output data**: This is chosen to be Azure.
+**出力データの場所**:これは、Azure になるように選択されます。
 
-**Azure storage account name**: Name of the default storage account associated with the cluster.
+**Azure ストレージ アカウント名**:クラスターに関連付けられている既定のストレージ アカウント名。
 
-**Azure container name**: This is the default container name for the cluster, and is typically the same as the cluster name. For a cluster called **abc123**, this is abc123.
+**Azure コンテナー名**:クラスターの既定のコンテナー名。通常はクラスター名と同じです。 **abc123** というクラスターの場合、これは abc123 になります。
 
 > [!IMPORTANT]
-> Any table we wish to query by using the [Import Data][import-data] module in Machine Learning must be an internal table.
+> Machine Learning で[データのインポート][import-data] モジュールを使ってクエリするすべてのテーブルは、内部テーブルである必要があります。
 > 
 > 
 
-Here is how to determine if a table **T** in a database **D.db** is an internal table. From the Hive directory prompt, run the following command:
+**D.db** データベース内のテーブル **T** が内部テーブルかどうかを判断する方法を次に示します。 Hive ディレクトリ プロンプトから次のコマンドを実行します。
 
     hdfs dfs -ls wasb:///D.db/T
 
-If the table is an internal table and it is populated, its contents must show here.
+テーブルが内部テーブルであり、テーブルにデータが設定されている場合は、その内容がここで表示される必要があります。
 
-Another way to determine whether a table is an internal table is to use Azure Storage Explorer. Use it to navigate to the default container name of the cluster, and then filter by the table name. If the table and its contents show up, this confirms that it is an internal table.
+テーブルが内部テーブルかどうかを判断する別の方法は、Azure Storage Explorer を使用することです。 Azure ストレージ エクスプローラーを使用してクラスターの既定のコンテナー名に移動し、テーブル名でフィルターします。 テーブルとその内容が表示されれば、内部テーブルであることがわかります。
 
-Here is a screenshot of the Hive query and the [Import Data][import-data] module:
+Hive クエリと[データのインポート][import-data] モジュールのスクリーンショットを次に示します。
 
-![Screenshot of Hive query for Import Data module](./media/hive-walkthrough/1eTYf52.png)
+![データのインポート モジュールの Hive クエリのスクリーンショット](./media/hive-walkthrough/1eTYf52.png)
 
-Because our down-sampled data resides in the default container, the resulting Hive query from Machine Learning is very simple. It is just a **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data**.
+ダウンサンプリングされたデータは既定のコンテナーに格納されているため、Machine Learning からの結果の Hive クエリはとても簡単で、 単に **SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data** となります。
 
-The dataset can now be used as the starting point for building Machine Learning models.
+このデータセットを Machine Learning モデル作成のための出発点として使用できます。
 
-### <a name="mlmodel"></a>Build models in Machine Learning
-You can now proceed to model building and model deployment in [Machine Learning](https://studio.azureml.net). The data is ready for us to use in addressing the prediction problems identified earlier:
+### <a name="mlmodel"></a>Machine Learning でモデルを作成する
+これで、[Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データも、以前に特定した予測問題への対応に使用できる状態になりました。
 
-- **Binary classification**: To predict whether or not a tip was paid for a trip.
+- **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
 
-  **Learner used:** Two-class logistic regression
+  **使用する学習者:** 2 クラスのロジスティック回帰
 
-  a. For this problem, the target (or class) label is **tipped**. The original down-sampled dataset has a few columns that are target leaks for this classification experiment. In particular, **tip\_class**, **tip\_amount**, and **total\_amount** reveal information about the target label that is not available at testing time. We remove these columns from consideration by using the [Select Columns in Dataset][select-columns] module.
+  a. この問題では、ターゲット (またはクラス) ラベルは **tipped** です。 元のダウンサンプリングされたデータセットには、この分類実験用のターゲット リークであるいくつかの列があります。 具体的には、**tip\_class**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を考慮事項から除外します。
 
-  The following diagram shows our experiment to predict whether or not a tip was paid for a given trip:
+  次のダイアグラムは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
-  ![Diagram of experiment to predict if tip was paid](./media/hive-walkthrough/QGxRz5A.png)
+  ![チップが支払われたかどうかを予測する実験のダイアグラム](./media/hive-walkthrough/QGxRz5A.png)
 
-  b. For this experiment, our target label distributions were roughly 1:1.
+  b. この実験では、ターゲット ラベルの分布がほぼ 1:1 です。
 
-   The following chart shows the distribution of tip class labels for the binary classification problem:
+   次のグラフは、二項分類の問題のための、チップのクラス ラベルの分布を示しています。
 
-  ![Chart of distribution of tip class labels](./media/hive-walkthrough/9mM4jlD.png)
+  ![チップのクラス ラベルの分布グラフ](./media/hive-walkthrough/9mM4jlD.png)
 
-    As a result, we obtain an area under the curve (AUC) of 0.987, as shown in the following figure:
+    その結果、次の図に示す 0.987 の曲線下面積 (AUC) を取得します。
 
-  ![Chart of AUC value](./media/hive-walkthrough/8JDT0F8.png)
+  ![ACU 値のグラフ](./media/hive-walkthrough/8JDT0F8.png)
 
-- **Multiclass classification**: To predict the range of tip amounts paid for the trip, by using the previously defined classes.
+- **多クラス分類**:以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
 
-  **Learner used:** Multiclass logistic regression
+  **使用する学習者:** 多クラスのロジスティック回帰
 
-  a. For this problem, our target (or class) label is **tip\_class**, which can take one of five values (0,1,2,3,4). As in the binary classification case, we have a few columns that are target leaks for this experiment. In particular, **tipped**, **tip\_amount**, and **total\_amount** reveal information about the target label that is not available at testing time. We remove these columns by using the [Select Columns in Dataset][select-columns] module.
+  a. この問題では、ターゲット (またはクラス) ラベルは、5 つの値 (0,1,2,3,4) のいずれかを取ることができる **tip\_class** になります。 二項分類の場合と同様に、この実験用のターゲット リークであるいくつかの列があります。 具体的には、**tipped**、**tip\_amount**、**total\_amount** では、テスト時に利用できないターゲット ラベルについての情報が表示されます。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
-  The following diagram shows the experiment to predict in which bin a tip is likely to fall. The bins are: Class 0: tip = $0, Class 1: tip > $0 and tip <= $5, Class 2: tip > $5 and tip <= $10, Class 3: tip > $10 and tip <= $20, and Class 4: tip > $20.
+  次のダイアグラムは、チップが分類される可能性が高い箱を予測する実験を示しています。 ビンは、クラス 0: チップ = $0、クラス 1: チップ > $0 および チップ <= $5、クラス 2: チップ > $5 および チップ <= $10、クラス 3: チップ > $10 および チップ <= $20、クラス 4: チップ > $20 です。
 
-  ![Diagram of experiment to predict bin for tip](./media/hive-walkthrough/5ztv0n0.png)
+  ![チップのビンを予測する実験のダイアグラム](./media/hive-walkthrough/5ztv0n0.png)
 
-  We now show what the actual test class distribution looks like. Class 0 and Class 1 are prevalent, and the other classes are rare.
+  実際のテスト クラスの分布がどのようになるかを次に示します。 クラス 0 とクラス 1 は一般的ですが、他のクラスはまれであることがわかります。
 
-  ![Chart of test class distribution](./media/hive-walkthrough/Vy1FUKa.png)
+  ![テスト クラスの分布グラフ](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b. For this experiment, we use a confusion matrix to look at the prediction accuracies. This is shown here:
+  b. この実験では、混同行列を使用して予測精度を確認します。 次に例を示します。
 
-  ![Confusion matrix](./media/hive-walkthrough/cxFmErM.png)
+  ![混同行列](./media/hive-walkthrough/cxFmErM.png)
 
-  Note that while the class accuracies on the prevalent classes are quite good, the model does not do a good job of "learning" on the rarer classes.
+  一般的なクラスのクラス精度がかなり良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていないことに注意してください。
 
-- **Regression task**: To predict the amount of tip paid for a trip.
+- **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
-  **Learner used:** Boosted decision tree
+  **使用する学習者:** ブースト デシジョン ツリー
 
-  a. For this problem, the target (or class) label is **tip\_amount**. The target leaks in this case are: **tipped**, **tip\_class**, and **total\_amount**. All these variables reveal information about the tip amount that is typically unavailable at testing time. We remove these columns by using the [Select Columns in Dataset][select-columns] module.
+  a. この問題では、ターゲット (またはクラス) ラベルは **tip\_amount** です。 この場合のターゲット リークは、**tipped**、**tip\_class**、**total\_amount** です。 これらの変数はすべて、通常はテスト時に利用できないチップの金額についての情報を表示します。 ここでは、[データセット内の列の選択][select-columns]モジュールを使ってこれらの列を削除します。
 
-  The following diagram shows the experiment to predict the amount of the given tip:
+  次のダイアグラムは、支払われるチップの金額を予測する実験を示しています。
 
-  ![Diagram of experiment to predict amount of tip](./media/hive-walkthrough/11TZWgV.png)
+  ![チップの金額を予測する実験のダイアグラム](./media/hive-walkthrough/11TZWgV.png)
 
-  b. For regression problems, we measure the accuracies of the prediction by looking at the squared error in the predictions, and the coefficient of determination:
+  b. 回帰の問題については、予測の二乗誤差や決定係数を確認することで、予測の精度を測定します。
 
-  ![Screenshot of prediction statistics](./media/hive-walkthrough/Jat9mrz.png)
+  ![予測の統計情報のスクリーンショット](./media/hive-walkthrough/Jat9mrz.png)
 
-  Here, the coefficient of determination is 0.709, implying that about 71 percent of the variance is explained by the model coefficients.
+  決定係数は約 0.709 であり、これは分散の約 71% がモデル係数によって説明されることを意味します。
 
 > [!IMPORTANT]
-> To learn more about Machine Learning and how to access and use it, see [What's Machine Learning](../studio/what-is-machine-learning.md). In addition, the [Azure AI Gallery](https://gallery.cortanaintelligence.com/) covers a gamut of experiments and provides a thorough introduction into the range of capabilities of Machine Learning.
+> Machine Learning の詳細と Machine Learning にアクセスして使用する方法の詳細については、「[Machine Learning とは](../studio/what-is-machine-learning.md)」を参照してください。 また、[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)では、すべての実験についての説明があり、Machine Learning の機能範囲が詳しく説明されています。
 > 
 > 
 
-## <a name="license-information"></a>License information
-This sample walkthrough and its accompanying scripts are shared by Microsoft under the MIT license. For more details, see the **LICENSE.txt** file in the directory of the sample code on GitHub.
+## <a name="license-information"></a>ライセンス情報
+このサンプルのチュートリアルとそれに付随するスクリプトは、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある **LICENSE.txt** ファイルを参照してください。
 
-## <a name="references"></a>References
-•    [Andrés Monroy NYC Taxi Trips Download Page](https://www.andresmh.com/nyctaxitrips/)  
-•    [FOILing NYC’s Taxi Trip Data by Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
-•    [NYC Taxi and Limousine Commission Research and Statistics](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+## <a name="references"></a>参照
+•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/)  
+•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png
 [11]: ./media/hive-walkthrough/hive-reader-properties.png

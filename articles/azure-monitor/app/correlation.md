@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092720"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683024"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -184,6 +184,11 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 
 現時点では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 ただし、`trackDependency` および `trackRequest` API を使用してそのようなシナリオを手動でコーディングすることはできます。 これらの API では、依存関係テレメトリはプロデューサーによってエンキューされるメッセージを表し、要求はコンシューマーによって処理されるメッセージを表します。 この場合、`operation_id` と `operation_parentId` の両方を、メッセージのプロパティで伝達する必要があります。
 
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>非同期 Java アプリケーションにおけるテレメトリの関連付け
+
+非同期の Spring Boot アプリケーションでテレメトリを関連付けるには、[こちら](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)の詳細な記事に従ってください。 Spring の [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) と [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) をインストルメント化するためのガイダンスが提供されています。 
+
+
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>ロール名
 
@@ -212,7 +217,7 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 ## <a name="next-steps"></a>次の手順
 
 - [カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)を記述します。
-- 他の SDK における [cloud_RoleName の設定](../../azure-monitor/app/app-map.md#set-cloud_rolename)について、詳細を確認します。
+- 他の SDK における [cloud_RoleName の設定](../../azure-monitor/app/app-map.md#set-cloud-role-name)について、詳細を確認します。
 - Application Insights でマイクロサービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォーム](../../azure-monitor/app/platforms.md)を調べます。
 - [データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照して、Application Insights の種類を確認します。
 - [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。

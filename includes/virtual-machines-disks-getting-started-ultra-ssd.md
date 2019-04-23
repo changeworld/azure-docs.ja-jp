@@ -25,7 +25,7 @@ Azure Ultra SSD では、Azure IaaS VM 用に高スループット、高 IOPS、
 
 PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
-CLI: `az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS']"`
+CLI: `az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS’]”`
 
 応答は下のフォームのようになります。X は、米国東部 2 でのデプロイに使用するゾーンです。 X は 1、2、3 のいずれかになります。
 

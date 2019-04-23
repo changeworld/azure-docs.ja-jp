@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 61be963f4edc2dc50f176087f2c817c5f485588b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>チュートリアル:Azure Active Directory と PatentSQUAR の統合
@@ -51,7 +51,7 @@ PatentSQUAR と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への PatentSQUAR の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PatentSQUAR を追加する必要があります。
 
-**ギャラリーから PatentSQUARE を追加するには、次の手順に従います。**
+**ギャラリーから PatentSQUAR を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ PatentSQUARE で Azure AD シングル サインオンを構成するには、�
 
     ![[PatentSQUAR のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<companysubdomain>.pat-dss.com:443/patlics/secure/aad`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companysubdomain>.pat-dss.com:443/patlics/secure/aad`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<companysubdomain>.pat-dss.com:443/patlics`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companysubdomain>.pat-dss.com:443/patlics`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PatentSQUARE クライアント サポート チーム](https://www.panasonic.com/jp/business/its/patentsquare.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

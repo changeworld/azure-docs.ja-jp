@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 447c5b1e94b848e9e560db1188a767f2040740c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225537"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546852"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -118,9 +118,12 @@ WebSocket および HTTP/2 プロトコルによって、長時間実行され�
 
 ## <a name="rewrite-http-headers-public-preview"></a>HTTP ヘッダーを書き換える (パブリック プレビュー)
 
-クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーを書き換えることにより、HSTS/ X-XSS-Protection などのセキュリティ関連のヘッダー フィールドを追加したり、バックエンド サーバー名などの機密情報を暴露する可能性がある応答ヘッダー フィールドを削除するなど、いくつかの重要なシナリオを達成できます。 
+クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、次のようないくつかの重要なシナリオを実現できます。
+- HSTS/ X-XSS-Protection などのセキュリティ関連ヘッダー フィールドを追加する。
+- 機密情報が漏れる可能性がある応答ヘッダー フィールドを削除する。
+- X-Forwarded-For ヘッダーからポート情報を削除する。
 
-Application Gateway では、受信 HTTP 要求と送信 HTTP 応答のヘッダーを書き換える機能をサポートするようになりました。 要求/応答パケットがクライアントおよびバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 ([RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) に規定されている) 標準ヘッダー フィールドと非標準のヘッダー フィールドの両方を書き換えることができます。  
+Application Gateway では、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新する機能をサポートします。 また、条件を追加して、特定の条件が満たされた場合にのみ特定のヘッダーが書き換えられるようにする機能も提供されます。
 
 このパブリック プレビュー機能の詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
 

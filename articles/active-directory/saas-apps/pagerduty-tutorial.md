@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: ded5854c5e669ab1982641169f13a9cb400d5d6d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル:Azure Active Directory と PagerDuty の統合
@@ -51,7 +51,7 @@ PagerDuty と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への PagerDuty の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に PagerDuty を追加する必要があります。
 
-**ギャラリーから PagerDuty を追加するには、次の手順に従います。**
+**ギャラリーから PagerDuty を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ PagerDuty で Azure AD シングル サインオンを構成するには、次�
 
     ![[PagerDuty のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 `https://<tenant-name>.pagerduty.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.pagerduty.com`
 
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。 `https://<tenant-name>.pagerduty.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<tenant-name>.pagerduty.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PagerDuty クライアント サポート チーム](https://www.pagerduty.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -213,7 +213,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 >[!NOTE]
 >PagerDuty から提供されている他の PagerDuty ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. **PagerDuty** テナントにログインします。
 

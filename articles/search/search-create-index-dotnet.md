@@ -11,10 +11,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/08/2019
 ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269046"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>クイック スタート:1 - C# で Azure Search インデックスを作成する
@@ -22,7 +22,7 @@ ms.locfileid: "59269046"
 > * [C#](search-create-index-dotnet.md)
 > * [ポータル](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [postman](search-fiddler.md)
+> * [Postman](search-fiddler.md)
 >*
 
 この記事では、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して [Azure Search のインデックス](search-what-is-an-index.md)を作成するプロセスについて説明します。 これは、インデックスの作成、読み込み、照会に関する 3 部構成の演習の最初のレッスンです。 インデックスの作成は、次のタスクを実行することによって実現されます。
@@ -46,7 +46,7 @@ Azure サンプル GitHub リポジトリにある [DotNetHowTo](https://github.
 
 サービスの呼び出しには、要求ごとに URL エンドポイントとアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-1. [Azure portal にサインインし](https://portal.azure.com/)、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
 2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 

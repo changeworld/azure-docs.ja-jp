@@ -4,22 +4,24 @@ description: このページでは、Web アプリケーション ファイア�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/8/2019
+ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279705"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523921"
 ---
-# <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供されている Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
-Application Gateway Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性や悪用から Web アプリケーションを保護します。 これには、OWASP コア ルール セット 2.2.9 または 3.0 に基づいて定義されている規則が使用されます。 これらの規則は、個別に無効にすることができます。 この記事では、現在提供されている規則と規則セットを示しています。
+Application Gateway Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性や悪用から Web アプリケーションを保護します。 これには、OWASP コア ルール セット 3.0 または 2.2.9 に基づいて定義されている規則が使用されます。 これらの規則は、個別に無効にすることができます。 この記事では、現在提供されている規則と規則セットを示しています。
 
-以下の表では、Application Gateway と Web アプリケーション ファイアウォールの使用時に利用できる規則グループと規則を示しています。  各表は、特定の CRS バージョンの規則グループに含まれている規則を表します。
+次の規則グループと規則は、Application Gateway と Web アプリケーション ファイアウォールの使用時に利用できます。
 
-## <a name="owasp30"></a> OWASP_3.0
+# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+
+## <a name="owasp30"></a> ルール セット
 
 ### <a name="General"></a> <p x-ms-format-detection="none">全般</p>
 
@@ -50,7 +52,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |---|---|
 |920100|無効な HTTP 要求行|
 |920130|要求本文を解析できませんでした。|
-|920140|マルチパートの要求本文で、厳密な検証に失敗しました =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
+|920140|マルチパートの要求本文が厳密な検証に失敗しました。|
 |920160|Content-Length HTTP ヘッダーが数値ではありません。|
 |920170|本文コンテンツがある GET または HEAD 要求。|
 |920180|POST 要求に Content-Length ヘッダーがありません。|
@@ -216,7 +218,9 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |943110|可能性のあるセッション固定攻撃 = SessionID パラメーター名とドメイン外参照元|
 |943120|可能性のあるセッション固定攻撃 = 参照元のない SessionID パラメーター名|
 
-## <a name="owasp229"></a> OWASP_2.2.9
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+
+## <a name="owasp229"></a> ルール セット
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -225,7 +229,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |960911|無効な HTTP 要求行|
 |981227|Apache エラー = 要求に無効な URI が含まれています。|
 |960912|要求本文を解析できませんでした。|
-|960914|マルチパートの要求本文で、厳密な検証に失敗しました =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
+|960914|マルチパートの要求本文が厳密な検証に失敗しました。|
 |960915|マルチパート パーサーが、可能性のある不一致境界を検出しました。|
 |960016|Content-Length HTTP ヘッダーが数値ではありません。|
 |960011|本文コンテンツがある GET または HEAD 要求。|
@@ -471,6 +475,8 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |950110|バックドア アクセス|
 |950921|バックドア アクセス|
 |950922|バックドア アクセス|
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

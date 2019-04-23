@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e9df83ef81c2656bf94002feb79d7e4d99ed7954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841108"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492806"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
 
@@ -41,7 +41,8 @@ Linux と Windows のエージェントは、Log Analytics への接続だけで
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
-* Windows Server 2008 R2 以降
+* Windows Server 2019
+* Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
 * Windows 7 SP1 以降
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
@@ -76,7 +77,7 @@ Log Analytics へのデータの転送時のセキュリティを保証するた
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
 Linux および Windows エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。  
 
-|エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
+|エージェントのリソース|Port |Direction |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
 |*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
 |*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
@@ -104,7 +105,8 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 |proxyhost | プロキシ サーバー/Log Analytics ゲートウェイのアドレスまたは FQDN |
 |port | プロキシ サーバー/Log Analytics ゲートウェイのオプションのポート番号 |
 
-次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
+例: 
+`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > パスワードに "\@" などの特殊文字を使用した場合、値が正しく解析されないためにプロキシ接続エラーが発生します。  この問題を回避するには、[URLDecode](https://www.urldecoder.org/) などのツールを使用して、URL 内にパスワードをエンコードします。  

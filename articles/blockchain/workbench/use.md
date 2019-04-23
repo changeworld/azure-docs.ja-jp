@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332219"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578852"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
 
@@ -40,7 +40,7 @@ Blockchain Workbench では、コントラクトを作成し、それらのコ�
 
 Blockchain Workbench のメンバーとしてサインインする必要があります。 アプリケーションが表示されない場合は、Blockchain Workbench のメンバーではあるものの、まだどのアプリケーションのメンバーにもなっていないことになります。 アプリケーションにメンバーを割り当てることができるのは、Blockchain Workbench の管理者です。
 
-## <a name="create-new-contract"></a>新しいコントラクトの作成 
+## <a name="create-new-contract"></a>新しいコントラクトの作成
 
 新しいコントラクトを作成するには、コントラクト **イニシエーター**として指定されているメンバーになる必要があります。 コントラクトのアプリケーション ロールとイニシエーターの定義については、[構成概要ページのワークフローに関するセクション](configuration.md#workflows)を参照してください。 アプリケーション ロールにメンバーを割り当てる方法については、[アプリケーションにメンバーを追加する](manage-users.md#add-member-to-application)方法に関するページを参照してください。
 
@@ -50,7 +50,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
     ![[新しいコントラクト] ボタン](./media/use/contract-list.png)
 
-3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **作成**を選択します。
+3. **[新しいコントラクト]** ウィンドウが表示されます。 初期パラメーター値を指定します。 **作成** を選択します。
 
     ![[新しいコントラクト] ウィンドウ](./media/use/new-contract.png)
 
@@ -67,7 +67,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
     ![コントラクト詳細](./media/use/contract-details.png)
 
-    | セクション  | 説明  |
+    | Section  | 説明  |
     |---------|---------|
     | Status | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
     | 詳細 | コントラクトの現在の値です |

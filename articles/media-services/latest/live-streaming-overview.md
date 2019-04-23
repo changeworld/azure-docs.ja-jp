@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
 ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916038"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
@@ -91,7 +91,7 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [クラウド DVR の使用](live-event-cloud-dvr.md)
 - [ライブ イベントの種類の機能の比較](live-event-types-comparison.md)
 - [状態と課金](live-event-states-billing.md)
-- [Latency](live-event-latency.md)
+- [待機時間](live-event-latency.md)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 38e776a5398ea5217a0d7e385d6ebb45d2199d51
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044609"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995712"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>チュートリアル:Azure で実行されている Service Fabric クラスターを削除する
 
@@ -121,4 +121,3 @@ az resource delete --name "<name of the Resource>" --resource-type "Microsoft.Se
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用して Service Fabric クラスターを検査し、管理する方法。
 * クラスター ノードの [Windows オペレーティング システムにパッチを適用す](service-fabric-patch-orchestration-application.md)る方法。
 * [Windows クラスター](service-fabric-diagnostics-event-aggregation-wad.md)のイベントを集計および収集する方法と、クラスター イベントを監視するために [Log Analytics を設定](service-fabric-diagnostics-oms-setup.md)する方法。
-ms-setup.md) クラスター イベントを監視するために。

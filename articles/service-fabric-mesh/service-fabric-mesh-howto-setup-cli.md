@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 7b817eefc7a17966060eb7ca05e21f70f04d0878
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c716ae0a2bb30e7e8eb249a1d230097efc0d3795
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885455"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521018"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
@@ -25,7 +25,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | プライマリ CLI。Azure Service Fabric Mesh 環境でアプリケーションをデプロイしてリソースを管理するために使用できます。 
 | sfctl | ローカル クラスター | Service Fabric CLI。ローカル クラスターに対する Service Fabric リソースのデプロイメントとテストに使用できます。  
-| Maven CLI | ローカル クラスターおよび Azure Service Fabric Mesh | "az mesh" と "sfctl" のラッパー。Java 開発者が、ローカルおよび Azure の開発エクスペリエンスで使い慣れたコマンド ライン エクスペリエンスを使用できます。  
+| Maven CLI | ローカル クラスターおよび Azure Service Fabric Mesh | `az mesh` と `sfctl` のラッパー。Java 開発者は、ローカルおよび Azure の開発エクスペリエンスで使い慣れたコマンド ライン エクスペリエンスを使用できます。  
 
 プレビューでは、Azure Service Fabric Mesh CLI は Azure CLI の拡張機能として記述されています。 これは、Azure Cloud Shell または Azure CLI のローカル インストールでインストールできます。 
 

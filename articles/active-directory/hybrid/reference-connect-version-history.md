@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58803155"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
@@ -387,7 +387,7 @@ Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD C
 *   SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。 SELF については、既定のアクセス許可を維持します。
 *   以下の特定のアクセス許可を割り当てます。
 
-Type     | 名前                          | Access               | 適用対象
+Type     | Name                          | Access               | 適用対象
 ---------|-------------------------------|----------------------|--------------|
 ALLOW    | SYSTEM                        | フル コントロール         | このオブジェクト  |
 ALLOW    | Enterprise Admins             | フル コントロール         | このオブジェクト  |

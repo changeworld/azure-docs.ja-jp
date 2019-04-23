@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: cd458ba08f12e9553233a1dd3d7caf03acda56c6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463509"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59497085"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure Diagnostics の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -31,7 +31,7 @@ ms.locfileid: "54463509"
 
 ここで説明する構成ファイルは、診断モニターの開始時に、診断構成設定を設定するために使用されます。  
 
-この拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と組み合わせて使用します。
+この拡張機能は、Application Insights と Log Analytics が含まれる Azure Monitor など、他の Microsoft 診断製品と組み合わせて使用します。
 
 
 
@@ -408,7 +408,7 @@ Azure Diagnostics の詳細については、[Azure Diagnostics 拡張機能](di
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration 要素  
- *ツリー: ルート - DiagnosticsConfiguration*
+ *ツリー:ルート - DiagnosticsConfiguration*
 
 バージョン 1.3 で追加。  
 
@@ -425,7 +425,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**IsEnabled**|ブール値。 このページの他の場所の説明を参照してください。|  
 
 ## <a name="publicconfig-element"></a>PublicConfig 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig*
 
  パブリック診断構成について説明します。  
 
@@ -434,16 +434,16 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|必須。 このページの他の場所の説明を参照してください。|  
 |**StorageAccount**|データを格納する Azure ストレージ アカウントの名前。 Set-AzureServiceDiagnosticsExtension コマンドレットを実行するときに、パラメーターとして指定することもできます。|  
 |**StorageType**|*Table*、*Blob*、または *TableAndBlob* を指定できます。 既定値は Table です。 TableAndBlob を選択すると、種類ごとに 1 回、つまり合計 2 回、診断データが書き込まれます。|  
-|**LocalResourceDirectory**|監視エージェントがイベント データを保存する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> - **path** - Azure 診断で使用するシステム上のディレクトリ。<br /><br /> - **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
+|**LocalResourceDirectory**|監視エージェントがイベント データを保存する仮想マシンのディレクトリ。 設定しない場合は、既定のディレクトリが使用されます。<br /><br /> worker/Web ロールの場合: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 仮想マシンの場合: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必須属性は次のとおりです。<br /><br /> - **path** - Azure Diagnostics で使用するシステム上のディレクトリ。<br /><br /> - **expandEnvironment** - 環境変数をパス名で展開するかどうかを制御します。|  
 
 ## <a name="wadcfg-element"></a>WadCFG 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG*
 
  収集するテレメトリ データを特定して構成します。  
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 要素
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
  必須
 
@@ -460,7 +460,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumps**|このページの他の場所の説明を参照してください。|  
 |**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
-|**Directories**|このページの他の場所の説明を参照してください。|  
+|**ディレクトリ**|このページの他の場所の説明を参照してください。|  
 |**EtwProviders**|このページの他の場所の説明を参照してください。|  
 |**メトリック**|このページの他の場所の説明を参照してください。|  
 |**PerformanceCounters**|このページの他の場所の説明を参照してください。|  
@@ -470,7 +470,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="crashdumps-element"></a>CrashDumps 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
 
  クラッシュ ダンプの収集を有効にします。  
 
@@ -482,10 +482,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|必須。 各プロセスの構成値を定義します。<br /><br /> 次の属性も必須です。<br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
+|**CrashDumpConfiguration**|必須。 各プロセスの構成値を定義します。<br /><br /> 次の属性も必須です。<br /><br /> **processName** - Azure Diagnostics でクラッシュ ダンプを収集するプロセスの名前。|  
 
 ## <a name="directories-element"></a>Directories 要素
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories*
 
  ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。  
 
@@ -501,7 +501,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="datasources-element"></a>DataSources 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources*
 
  監視するディレクトリの一覧。  
 
@@ -514,7 +514,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources - DirectoryConfiguration*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources - DirectoryConfiguration*
 
  **Absolute** 要素または **LocalResource** 要素のいずれかを含めることができます。ただし、両方を含めることができません。  
 
@@ -526,7 +526,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etwproviders-element"></a>EtwProviders 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
 
  EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。  
 
@@ -538,7 +538,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
  [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。  
 
@@ -550,7 +550,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
 |子要素|説明|  
 |--------------------|-----------------|  
@@ -560,7 +560,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="metrics-element"></a>Metrics 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Metrics*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Metrics*
 
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。  
 
@@ -573,7 +573,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
 
  パフォーマンス カウンターの収集を有効にします。  
 
@@ -590,7 +590,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
 
  Windows イベント ログの収集を有効にします。  
 
@@ -604,13 +604,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="logs-element"></a>Logs 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
  バージョン 1.0 および 1.1 に存在します。 1.2 にはありません。 1.3 で再び追加されています。  
 
  基本的な Azure ログのバッファー構成を定義します。  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
@@ -618,16 +618,16 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**sinks** |**string**| 1.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。|  
 
 ## <a name="dockersources"></a>DockerSources
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
  1.9 で追加。
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**Stats**|Docker コンテナーの統計情報を収集するようにシステムに通知します。|  
+|**統計**|Docker コンテナーの統計情報を収集するようにシステムに通知します。|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
 
  診断データの送信先の一覧と、その場所に関連付けられている構成。  
 
@@ -636,34 +636,34 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**シンク**|このページの他の場所の説明を参照してください。|  
 
 ## <a name="sink-element"></a>Sink 要素
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*
 
  バージョン 1.5 で追加。  
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**name**|文字列|シンク名を特定する文字列。|  
+|**name**|string|シンク名を特定する文字列。|  
 
-|要素|type|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
-|**Application Insights**|文字列|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
-|**Channels**|文字列|追加フィルタリングごとに 1 つ|  
+|**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
+|**チャンネル**|string|追加フィルタリングごとに 1 つ|  
 
 ## <a name="channels-element"></a>Channels 要素  
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
 
  バージョン 1.5 で追加。  
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|type|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
-|**Channel**|文字列|このページの他の場所の説明を参照してください。|  
+|**チャネル**|string|このページの他の場所の説明を参照してください。|  
 
 ## <a name="channel-element"></a>Channel 要素
- *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
+ *ツリー:ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
 
  バージョン 1.5 で追加。  
 
@@ -676,7 +676,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig 要素
- *ツリー: ルート - DiagnosticsConfiguration - PrivateConfig*
+ *ツリー:ルート - DiagnosticsConfiguration - PrivateConfig*
 
  バージョン 1.3 で追加。  
 
@@ -690,7 +690,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="isenabled-element"></a>IsEnabled 要素  
- *ツリー: ルート - DiagnosticsConfiguration - IsEnabled*
+ *ツリー:ルート - DiagnosticsConfiguration - IsEnabled*
 
  ブール値。 `true` を使用して診断を有効にするか、`false` を使用して診断を無効にします。
 

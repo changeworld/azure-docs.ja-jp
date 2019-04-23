@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1c75d781c8a83b54ac9474c83388cf02b5d03e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532084"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528120"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>要求をルーティングするようにゲートウェイ リソースを構成する
 
@@ -228,8 +228,8 @@ HTTP のルーティング規則は、次のプロパティで構成されます
 ```
 
 このゲートウェイは、ポート 80 でリッスンしており、少なくとも 2 つのサービス "helloWorldService" と "counterService" で構成される、Linux アプリケーション "meshAppLinux" 用に構成されています。 受信要求の URL の構造に応じて、要求はこれらのサービスのいずれかにルーティングされます。 
-* "<IPAddress>:80/helloWorld/\<要求\>" の場合は、要求は helloWorldService の "helloWorldListener" に送られます。 
-* "<IPAddress>:80/counter/\<要求\>" の場合は、要求は counterService の "counterListener" に送られます。 
+* "\<IPAddress>:80/helloWorld/\<要求\>" の場合は、要求は helloWorldService の "helloWorldListener" に送られます。 
+* "\<IPAddress>:80/counter/\<要求\>" の場合は、要求は counterService の "counterListener" に送られます。 
 
 ## <a name="next-steps"></a>次の手順
 * [Ingress サンプル](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)をデプロイして、ゲートウェイの動作を確認する

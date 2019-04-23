@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/19/2019
-ms.openlocfilehash: b1467550ac84c57eaad9178d32fdcfaf14d84ae8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 04/17/2019
+ms.openlocfilehash: d5ada9b992afe98241162749b1c45723b89a6b77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260232"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699357"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限
 
@@ -96,7 +96,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |ターゲットの IOPS (64 KB)|500|1,000|1500|2000|2500|3000|3500|
-|ログのレート制限 (MBps)|2.5|56|7.5|10|12.5|15|17.5|
+|ログのレート制限 (MBps)|2.5|5.6|7.5|10|12.5|15|17.5|
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1,000|1200|1400|
 |許可される最大セッション数|30000|30000|30000|30000|30000|30000|30000|
 |レプリカの数|1|1|1|1|1|1|1|

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: c7bf6a22da89f0bf1e3897ec8fc30238b86b7b75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882752"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522306"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>クイック スタート:Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 
@@ -150,7 +150,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
     ```
     http://<app name>.azurewebsites.net
     ```
-また、上記のコマンドでは、ローカル Git リポジトリから Azure にデプロイできる Git 対応のアプリが作成されます。 ローカル Git リポジトリは、 https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git という URL を使って構成されています。
+また、上記のコマンドでは、ローカル Git リポジトリから Azure にデプロイできる Git 対応のアプリが作成されます。 ローカル Git リポジトリには次の URL が構成されます: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`。
 
 上記のコマンドが完了した後、ローカル Git リポジトリに Azure リモートを追加できます。 `<url>` を Git リポジトリの URL に置き換えます。
 
@@ -194,9 +194,9 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 git push azure master
 ```
 
-この後、ブラウザーから https://<app_name>.azurewebsites.net にアクセスすると、シークレット値が確認できます。 <YourKeyVaultName> の名前は、必ず実際のコンテナー名に置き換えてください。
+この後、ブラウザーから `https://<app_name>.azurewebsites.net` にアクセスすると、シークレット値を確認できます。 `<YourKeyVaultName>` の名前は、必ず実際のコンテナー名に置き換えてください。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure SDK For Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+> [Azure SDK for Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

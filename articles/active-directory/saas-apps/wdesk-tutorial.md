@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 71feb455457fdf75fb19121bac1927b42fe38b67
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>チュートリアル:Azure Active Directory と Wdesk の統合
@@ -105,9 +105,9 @@ Wdesk で Azure AD シングル サインオンを構成するには、次の手
 
     ![[Wdesk のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. **[識別子]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. **[応答 URL]** ボックスに、`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -222,7 +222,7 @@ Wdesk で Azure AD シングル サインオンを構成するには、次の手
 
 Azure AD ユーザーが Wdesk にサインインできるようにするには、ユーザーを Wdesk にプロビジョニングする必要があります。 Wdesk では、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. セキュリティ管理者として Wdesk にサインインします。
 

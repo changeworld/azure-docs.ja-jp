@@ -13,10 +13,10 @@ ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: d2bd271557ae0deefeb12a2dc7343c46fbd35363
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58847603"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning データ準備 SDK を使ってデータを変換する
@@ -498,5 +498,5 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>次の手順
 
-* 設計パターンと使用例については、SDK の[概要](https://aka.ms/data-prep-sdk)を参照してください
-* 特定のシナリオを解決するサンプルについては Azure Machine Learning Data Prep SDK の[チュートリアル](tutorial-data-prep.md)をご覧ください。
+* 設計パターンと使用例については、SDK の [概要](https://aka.ms/data-prep-sdk) を参照してください
+* 特定のシナリオを解決するサンプルについては Azure Machine Learning Data Prep SDK の [チュートリアル](tutorial-data-prep.md) をご覧ください。

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: overview
+ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e85e006a54fcb4bb677932b3e1ff9fa79352dba9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519835"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003158"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge の共有を管理する
 
@@ -85,7 +85,7 @@ ms.locfileid: "58519835"
 
 6. **[すべての権限を持つローカル ユーザー]** フィールドで、**[新規作成]** または **[既存のものを使用]** を選択します。
 
-7. **作成**を選択します。 
+7. **作成** を選択します。 
 
     ![ローカル共有の作成](media/data-box-edge-manage-shares/add-local-share-2.png)
 

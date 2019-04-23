@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c7163667ec370abf468b289cea231e86a4b5753f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046839"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499854"
 ---
 # <a name="how-to-reprovision-devices"></a>デバイスを再プロビジョニングする方法
 
@@ -27,7 +27,7 @@ IoT ソリューションのライフサイクル中に、デバイスを IoT �
 
 * **検疫**:ソリューションの変更と同様です。 正常に動作していないデバイス、セキュリティ侵害を受けたデバイス、または古いデバイスは、更新してコンプライアンスが確保された状態に戻す操作のみが可能な IoT ハブに再割り当てされることがあります。 デバイスが適切に機能するようになったら、そのメインのハブに再び移行されます。
 
-再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts (IoT Hub デバイスの再プロビジョニングの概念)](concepts-device-reprovision.md)」を参照してください。
+再プロビジョニングの詳細については、「[IoT ハブ デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)」を参照してください。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>登録割り当てポリシーを構成する

@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049798"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -35,7 +35,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 - [**パケット キャプチャを取得する**](#get-a-packet-capture)
 - [**すべてのパケット キャプチャを一覧表示する**](#list-all-packet-captures)
-- [**パケット キャプチャの状態のクエリを実行する**](#query-packet-capture-status)
+- [**パケット キャプチャの状態をクエリする**](#query-packet-capture-status)
 - [**パケット キャプチャを開始する**](#start-packet-capture)
 - [**パケット キャプチャを停止する**](#stop-packet-capture)
 - [**パケット キャプチャを削除する**](#delete-packet-capture)

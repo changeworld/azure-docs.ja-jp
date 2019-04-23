@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.openlocfilehash: bd4285a2d0f882b8c766563f2304031f1f6e2898
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904799"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787944"
 ---
 # <a name="glossary"></a>用語集
 
@@ -41,7 +41,7 @@ ms.locfileid: "58904799"
 
 詳しくは、リファレンス ドキュメントをご覧ください:[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)。
 
-#### <a name="confidence"></a>信頼度
+#### <a name="confidence"></a>Confidence
 
 信頼度は、[顔](#face)や[人物](#person)の類似性を数値化したもので、[特定](#identification)や[検証](#verification)において、検索、識別、検証された結果の類似性を示します。
 

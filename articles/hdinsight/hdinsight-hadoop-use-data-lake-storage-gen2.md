@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 186a9bafe70ab9644666868f11d5ddd865a66b8d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 43f335bdd8b918fa717d9084d3c9c30d97920c10
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802543"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004960"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -139,6 +139,5 @@ Azure サービスには、システム割り当てとユーザー割り当て�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する](../storage/blobs/data-lake-storage-use-hdi-cluster.md)
 * [Azure HDInsight と Data Lake Storage Gen2 プレビューとの統合 - ACL とセキュリティ更新プログラム](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
-* [Azure Data Lake Storage Gen2 プレビューの概要](../storage/blobs/data-lake-storage-introduction.md)
+* [Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)

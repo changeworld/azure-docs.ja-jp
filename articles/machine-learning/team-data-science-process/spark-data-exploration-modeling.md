@@ -1,6 +1,6 @@
 ---
-title: Data exploration and modeling with Spark - Team Data Science Process
-description: Showcases the data exploration and modeling capabilities of the Spark MLlib toolkit on Azure.
+title: Spark でのデータ探索およびモデリング - Team Data Science Process
+description: Azure での Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,66 +11,66 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860977"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528086"
 ---
-# <a name="data-exploration-and-modeling-with-spark"></a>Data exploration and modeling with Spark
+# <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 
-This walkthrough uses HDInsight Spark to do data exploration and binary classification and regression modeling tasks on a sample of the NYC taxi trip and fare 2013 dataset.  It walks you through the steps of the [Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, using an HDInsight Spark cluster for processing and Azure blobs to store the data and the models. The process explores and visualizes data brought in from an Azure Storage Blob and then prepares the data to build predictive models. These models are build using the Spark MLlib toolkit to do binary classification and regression modeling tasks.
+このチュートリアルでは、HDInsight Spark を使用して、2013 年 NYC タクシー乗車および料金データセットのサンプルでデータ探索を実行し、二項分類および回帰モデリング タスクを実行します。  チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。
 
-* The **binary classification** task is to predict whether or not a tip is paid for the trip. 
-* The **regression** task is to predict the amount of the tip based on other tip features. 
+* **二項分類** タスクでは、乗車でチップが支払われるかどうかを予測します。 
+* **回帰** タスクでは、チップの他の特徴に基づいてチップの金額を予測します。 
 
-The models we use include logistic and linear regression, random forests, and gradient boosted trees:
+使用するモデルは、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーです。
 
-* [Linear regression with SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) is a linear regression model that uses a Stochastic Gradient Descent (SGD) method and for optimization and feature scaling to predict the tip amounts paid. 
-* [Logistic regression with LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) or "logit" regression, is a regression model that can be used when the dependent variable is categorical to do data classification. LBFGS is a quasi-Newton optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm using a limited amount of computer memory and that is widely used in machine learning.
-* [Random forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) are ensembles of decision trees.  They combine many decision trees to reduce the risk of overfitting. Random forests are used for regression and classification and can handle categorical features and can be extended to the multiclass classification setting. They do not require feature scaling and are able to capture non-linearities and feature interactions. Random forests are one of the most successful machine learning models for classification and regression.
-* [Gradient boosted trees](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) are ensembles of decision trees. GBTs train decision trees iteratively to minimize a loss function. GBTs are used for regression and classification and can handle categorical features, do not require feature scaling, and are able to capture non-linearities and feature interactions. They can also be used in a multiclass-classification setting.
+* [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。 
+* [LBFGS を使用したロジスティック回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) ("ロジット" 回帰) は、データ分類を実行するために従属変数がカテゴリ型である場合に使用できる回帰モデルです。 LBFGS は、限られた量のコンピューター メモリを使用する Broyden–Fletcher–Goldfarb–Shanno (BFGS) アルゴリズムに近い準ニュートン最適化アルゴリズムであり、機械学習で広く使用されています。
+* [ランダム フォレスト](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストは回帰と分類に使用されます。カテゴリの特徴を処理し、多クラス分類設定に拡張できます。 特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
+* [勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT ではデシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 また、多クラス分類の設定にも使用できます。
 
-The modeling steps also contain code showing how to train, evaluate, and save each type of model. Python has been used to code the solution and to show the relevant plots.   
+また、モデリング手順には、各種モデルをトレーニング、評価し、保存する方法を示すコードも含まれています。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。   
 
 > [!NOTE]
-> Although the Spark MLlib toolkit is designed to work on large datasets, a relatively small sample (~30 Mb using 170K rows, about 0.1% of the original NYC dataset) is used here for convenience. The exercise given here runs efficiently (in about 10 minutes) on an HDInsight cluster with 2 worker nodes. The same code, with minor modifications, can be used to process larger data-sets, with appropriate modifications for caching data in memory and changing the cluster size.
+> Spark MLlib ツールキットは大規模なデータセットを操作することを目的としていますが、ここでは便宜上、比較的小規模なサンプル (最大30 MB、170,000 行使用、元の NYC データセットの約 0.1%) を使用しています。 ここでの演習は、2 つの worker ノードを含む HDInsight クラスターで効率的に実行されます (約 10 分)。 少し変更を加えれば、同じコードを使用して大規模なデータセットを処理できます。メモリへのデータのキャッシュやクラスター サイズの変更など、適切な変更を加えてください。
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
-You need an Azure account and a Spark 1.6 (or Spark 2.0) HDInsight cluster to complete this walkthrough. See the [Overview of Data Science using Spark on Azure HDInsight](spark-overview.md) for instructions on how to satisfy these requirements. That topic also contains a description of the NYC 2013 Taxi data used here and instructions on how to execute code from a Jupyter notebook on the Spark cluster. 
+## <a name="prerequisites"></a>前提条件
+このチュートリアルを実行するには、Azure アカウントと、Spark 1.6 (または Spark 2.0) HDInsight クラスターが必要です。 これらの要件を満たすための方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 このトピックには、ここで使用する 2013 年 NYC タクシー データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法の説明も含まれています。 
 
-## <a name="spark-clusters-and-notebooks"></a>Spark clusters and notebooks
-Setup steps and code are provided in this walkthrough for using an HDInsight Spark 1.6. But Jupyter notebooks are provided for both HDInsight Spark 1.6 and Spark 2.0 clusters. A description of the notebooks and links to them are provided in the [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) for the GitHub repository containing them. Moreover, the code here and in the linked notebooks is generic and should work on any Spark cluster. If you are not using HDInsight Spark, the cluster setup and management steps may be slightly different from what is shown here. For convenience, here are the links to the Jupyter notebooks for Spark 1.6 (to be run in the pySpark kernel of the Jupyter Notebook server) and  Spark 2.0 (to be run in the pySpark3 kernel of the Jupyter Notebook server):
+## <a name="spark-clusters-and-notebooks"></a>Spark クラスターと Notebook
+このチュートリアルで示すセットアップ手順とコードは HDInsight Spark 1.6 向けですが、 Jupyter Notebook は HDInsight Spark 1.6 と Spark 2.0 の両方のクラスター向けに提供されています。 ノートブックの説明およびノートブックへのリンクは、ノートブックが含まれる GitHub リポジトリの [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 内にあります。 また、このページとリンク先のノートブックに記載しているコードは汎用性があり、どの Spark クラスターでも動作します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。 作業しやすいように、Spark 1.6 (Jupyter Notebook サーバーの pySpark カーネルで実行) および Spark 2.0 (Jupyter Notebook サーバーの pySpark3 カーネルで実行) 向け Jupyter Notebook へのリンクを以下に示します。
 
-### <a name="spark-16-notebooks"></a>Spark 1.6 notebooks
+### <a name="spark-16-notebooks"></a>Spark 1.6 向け Notebook
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Provides information on how to perform data exploration, modeling, and scoring with several different algorithms.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb):複数の異なるアルゴリズムを使用してデータの探索、モデリング、スコア付けを実行する方法について説明します。
 
-### <a name="spark-20-notebooks"></a>Spark 2.0 notebooks
-The regression and classification tasks that are implemented using a Spark 2.0 cluster are in separate notebooks and the classification notebook uses a different data set:
+### <a name="spark-20-notebooks"></a>Spark 2.0 向け Notebook
+Spark 2.0 クラスターを使用して実装されている回帰タスクと分類タスクは別の Notebook にあり、分類 Notebook では別のデータセットを使用しています。
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): This file provides information on how to perform data exploration, modeling, and scoring in Spark 2.0 clusters using the NYC Taxi trip and fare data-set described [here](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). This notebook may be a good starting point for quickly exploring the code we have provided for Spark 2.0. For a more detailed notebook analyzes the NYC Taxi data, see the next notebook in this list. See the notes following this list that compare these notebooks. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): This file shows how to perform data wrangling (Spark SQL and dataframe operations), exploration, modeling and scoring using the NYC Taxi trip and fare data-set described [here](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): This file shows how to perform data wrangling (Spark SQL and dataframe operations), exploration, modeling and scoring using the well-known Airline On-time departure dataset from 2011 and 2012. We integrated the airline dataset with the airport weather data (e.g. windspeed, temperature, altitude etc.) prior to modeling, so these weather features can be included in the model.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明する NYC タクシーの乗車と料金のデータセットを使用して、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法を示します。 この Notebook は、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 NYC タクシー データを分析する詳細な Notebook については、この一覧の次の Notebook をご覧ください。 これらの Notebook の比較については、この一覧の後の「メモ」をご覧ください。 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb):このファイルでは、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)で説明されている NYC タクシーの乗車と料金のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb):このファイルでは、よく知られている 2011 から 2012 年の航空会社の定刻出発のデータセットを使用してデータのラングリング (Spark SQL およびデータフレームの操作)、探索、モデリング、スコア付けを実行する方法を示します。 モデリングの前に航空会社のデータセットを空港の気象データ (風速、気温、高度など) と統合したため、これらの気象条件をモデルに含めることができます。
 
 <!-- -->
 
 > [!NOTE]
-> The airline dataset was added to the Spark 2.0 notebooks to better illustrate the use of classification algorithms. See the following links for information about airline on-time departure dataset and weather dataset:
+> 分類アルゴリズムの使用をより理解しやすくするために、Spark 2.0 のノートブックに航空会社のデータセットが追加されました。 定刻出発のデータセットと気象のデータセットについては、次のリンクをご覧ください。
 > 
-> - Airline on-time departure data: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - 航空会社の時間どおりの出発データ: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Airport weather data: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+> - 空港の気象データ: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-> The Spark 2.0 notebooks on the NYC taxi and airline flight delay data-sets can take 10 mins or more to run (depending on the size of your HDI cluster). The first notebook in the above list shows many aspects of the data exploration, visualization and ML model training in a notebook that takes less time to run with down-sampled NYC data set, in which the taxi and fare files have been pre-joined: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) This notebook takes a much shorter time to finish (2-3 mins) and may be a good starting point for quickly exploring the code we have provided for Spark 2.0. 
+> NYC タクシーのデータセットと航空会社のフライト遅延データセットの Spark 2.0 Notebook は、(HDI クラスターのサイズによっては) 実行に 10 分以上かかる場合があります。 上記の最初のノートブックでは、タクシー ファイルと料金ファイルが事前に結合された、ダウンサンプリングされた NYC データセットを使用して短時間で実行され、Notebook でのデータ探索、視覚化、ML モデル トレーニングのさまざまな側面を示します([Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb))。このノートブックは完了までの時間が非常に短いので (2 ～ 3 分)、Spark 2.0 向けに用意されているコードをすばやく確認するための出発点として適しています。 
 
 <!-- -->
 
@@ -79,17 +79,17 @@ The regression and classification tasks that are implemented using a Spark 2.0 c
 <!-- -->
 
 > [!NOTE]
-> The descriptions below are related to using Spark 1.6. For Spark 2.0 versions, please use the notebooks described and linked above. 
+> 以降の説明は、Spark 1.6 の使用方法に関するものです。 Spark 2.0 バージョンについては、上記で説明およびリンクされている Notebook を使用してください。 
 
 <!-- -->
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Setup: storage locations, libraries, and the preset Spark context
-Spark is able to read and write to Azure Storage Blob (also known as WASB). So any of your existing data stored there can be processed using Spark and the results stored again in WASB.
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
+Spark は、Azure Storage BLOB (WASB とも呼ばれます) に対する読み取りと書き込みを実行できます。 そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
-To save models or files in WASB, the path needs to be specified properly. The default container attached to the Spark cluster can be referenced using a path beginning with: "wasb:///". Other locations are referenced by “wasb://”.
+WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、"wasb///" で始まるパスを使用して参照できます。 他の場所は "wasb://" で参照します。
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Set directory paths for storage locations in WASB
-The following code sample specifies the location of the data to be read and the path for the model storage directory to which the model output is saved:
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>WASB のストレージの場所となるディレクトリ パスの設定
+次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -101,8 +101,8 @@ The following code sample specifies the location of the data to be read and the 
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
 
-### <a name="import-libraries"></a>Import libraries
-Set up also requires importing necessary libraries. Set spark context and import necessary libraries with the following code:
+### <a name="import-libraries"></a>ライブラリのインポート
+セットアップでは、必要なライブラリのインポートも行う必要があります。 次のコードを使用して、Spark コンテキストを設定し、必要なライブラリをインポートします。
 
     # IMPORT LIBRARIES
     import pyspark
@@ -120,29 +120,29 @@ Set up also requires importing necessary libraries. Set spark context and import
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>Preset Spark context and PySpark magics
-The PySpark kernels that are provided with Jupyter notebooks have a preset context. So you do not need to set the Spark or Hive contexts explicitly before you start working with the application you are developing. These contexts are available for you by default. These contexts are:
+### <a name="preset-spark-context-and-pyspark-magics"></a>プリセットの Spark コンテキストと PySpark マジック
+Jupyter Notebook で提供される PySpark カーネルには、コンテキストがあらかじめ設定されています。 そのため、開発しているアプリケーションの操作を開始する前に Spark コンテキストまたは Hive コンテキストを明示的に設定する必要はありません。 これらのコンテキストは既定で利用できます。 各コンテキストは次のとおりです。
 
-* sc - for Spark 
-* sqlContext - for Hive
+* sc: Spark 用 
+* sqlContext: Hive 用
 
-The PySpark kernel provides some predefined “magics”, which are special commands that you can call with %%. There are two such commands that are used in these code samples.
+PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
-* **%%local** Specifies that the code in subsequent lines is to be executed locally. Code must be valid Python code.
-* **%%sql -o <variable name>** Executes a Hive query against the sqlContext. If the -o parameter is passed, the result of the query is persisted in the %%local Python context as a Pandas DataFrame.
+* **%%local**: 後続行のコードをローカルで実行することを指定します。 コードは有効な Python コードにする必要があります。
+* **%%sql -o \<変数名>** sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
-For more information on the kernels for Jupyter notebooks and the predefined "magics" that they provide, see [Kernels available for Jupyter notebooks with HDInsight Spark Linux clusters on HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
 
-## <a name="data-ingestion-from-public-blob"></a>Data ingestion from public blob
-The first step in the data science process is to ingest the data to be analyzed from sources where is resides into your data exploration and modeling environment. The environment is Spark in this walkthrough. This section contains the code to complete a series of tasks:
+## <a name="data-ingestion-from-public-blob"></a>パブリック BLOB からのデータの取り込み
+データ サイエンス プロセスでは、まず、分析するデータをソースからデータ探索およびモデリング環境に取り込みます。 このチュートリアルでは、この環境が Spark です。 ここでは、次の一連のタスクを実行するコードを示します。
 
-* ingest the data sample to be modeled
-* read in the input dataset (stored as a .tsv file)
-* format and clean the data
-* create and cache objects (RDDs or data-frames) in memory
-* register it as a temp-table in SQL-context.
+* モデル化するデータ サンプルの取り込み
+* 入力データセット (.tsv ファイルとして保存) の読み取り
+* データのフォーマットとクリーニング
+* オブジェクト (RDD またはデータ フレーム) の作成とメモリへのキャッシュ
+* SQL コンテキストでオブジェクトを一時テーブルとして登録
 
-Here is the code for data ingestion.
+データ取り込みのコードを次に示します。
 
     # INGEST DATA
 
@@ -202,22 +202,22 @@ Here is the code for data ingestion.
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**OUTPUT:**
+**出力:**
 
-Time taken to execute above cell: 51.72 seconds
+上記のセルの実行に要した時間: 51.72 秒
 
-## <a name="data-exploration--visualization"></a>Data exploration & visualization
-Once the data has been brought into Spark, the next step in the data science process is to gain deeper understanding of the data through exploration and visualization. In this section, we examine the taxi data using SQL queries and plot the target variables and prospective features for visual inspection. Specifically, we plot the frequency of passenger counts in taxi trips, the frequency of tip amounts, and how tips vary by payment amount and type.
+## <a name="data-exploration--visualization"></a>データの探索と視覚化
+データが Spark に取り込まれたら、次に、探索と視覚化によってデータの理解を深めます。 このセクションでは、SQL クエリを使用してタクシー データを調べ、視覚化するためにターゲット変数と予想される特徴をプロットします。 具体的には、タクシー乗車における乗客数の頻度、チップの金額の頻度、支払金額と支払の種類によるチップの変化をプロットします。
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Plot a histogram of passenger count frequencies in the sample of taxi trips
-This code and subsequent snippets use SQL magic to query the sample and local magic to plot the data.
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>タクシー乗車データのサンプルで乗客数の頻度のヒストグラムをプロットする
+このコードおよび後続のスニペットでは、SQL マジックを使用してサンプルを照会し、ローカル マジックを使用してデータをプロットしています。
 
-* **SQL magic (`%%sql`)** The HDInsight PySpark kernel supports easy inline HiveQL queries against the sqlContext. The (-o VARIABLE_NAME) argument persists the output of the SQL query as a Pandas DataFrame on the Jupyter server. This means it is available in the local mode.
-* The **`%%local` magic** is used to run code locally on the Jupyter server, which is the headnode of the HDInsight cluster. Typically, you use `%%local` magic in conjunction with the `%%sql` magic with -o parameter. The -o parameter would persist the output of the SQL query locally and then %%local magic would trigger the next set of code snippet to run locally against the output of the SQL queries that is persisted locally
+* **SQL マジック (`%%sql`)** HDInsight PySpark カーネルは、sqlContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (-o VARIABLE_NAME) を指定すると、SQL クエリの出力結果が Pandas データフレームとして Jupyter サーバー上に永続化されます。 つまり、出力結果をローカルから使用できるようになります。
+* **`%%local` マジック** は、Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルで実行するときに使用します。 通常、`%%local` マジックは、-o パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を -o パラメーターでローカルに永続化したうえで、%%local マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
-The output is automatically visualized after you run the code.
+その出力結果は、コードの実行後、自動的に視覚化されます。
 
-This query retrieves the trips by passenger count. 
+次のクエリは、乗客数ごとの乗車回数を取得しています。 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
@@ -228,10 +228,10 @@ This query retrieves the trips by passenger count.
     WHERE passenger_count > 0 and passenger_count < 7 
     GROUP BY passenger_count 
 
-This code creates a local data-frame from the query output and plots the data. The `%%local` magic creates a local data-frame, `sqlResults`, which can be used for plotting with matplotlib. 
+以下のコードは、クエリの出力結果からローカル データフレームを作成し、データをプロットします。 `%%local` マジックでローカル データフレーム (`sqlResults`) を作成し、そのデータを matplotlib でプロットします。 
 
 > [!NOTE]
-> This PySpark magic is used multiple times in this walkthrough. If the amount of data is large, you should sample to create a data-frame that can fit in local memory.
+> この PySpark マジックは、このチュートリアルの中でたびたび使用しています。 データの量が大きい場合はサンプリングして、ローカル メモリに収まるようにデータフレームを作成する必要があります。
 > 
 > 
 
@@ -244,7 +244,7 @@ This code creates a local data-frame from the query output and plots the data. T
     # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-Here is the code to plot the trips by passenger counts
+乗客数ごとの乗車回数をプロットするコードを次に示します。
 
     # PLOT PASSENGER NUMBER VS. TRIP COUNTS
     %%local
@@ -259,14 +259,14 @@ Here is the code to plot the trips by passenger counts
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**OUTPUT:**
+**出力:**
 
-![Trip frequency by passenger count](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
+![乗客数別乗車頻度](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-You can select among several different types of visualizations (Table, Pie, Line, Area, or Bar) by using the **Type** menu buttons in the notebook. The Bar plot is shown here.
+視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、Notebook の **[Type (タイプ)]** メニュー ボタンで選択できます。 ここに示したのは棒グラフによるプロットです。
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Plot a histogram of tip amounts and how tip amount varies by passenger count and fare amounts.
-Use a SQL query to sample data.
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
+SQL クエリを使用してデータをサンプリングします。
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
 
@@ -283,7 +283,7 @@ Use a SQL query to sample data.
     AND tip_amount < 25
 
 
-This code cell uses the SQL query to create three plots the data.
+次のコード セルでは、サンプリングされたデータに対し、SQL クエリを使用して 3 つのプロットを作成しています。
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -313,26 +313,26 @@ This code cell uses the SQL query to create three plots the data.
     plt.show()
 
 
-**OUTPUT:** 
+**出力:** 
 
-![Tip amount distribution](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
+![チップの金額の分布](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
 
-![Tip amount by passenger count](./media/spark-data-exploration-modeling/tip-amount-by-passenger-count.png)
+![乗客数別チップの金額](./media/spark-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
-![Tip amount by fare amount](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
+![料金別チップの金額](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Feature engineering, transformation and data preparation for modeling
-This section describes and provides the code for procedures used to prepare data for use in ML modeling. It shows how to do the following tasks:
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>モデリングのための特徴エンジニアリング、変換、およびデータの準備
+このセクションでは、ML モデリングで使用するデータを準備する手順について説明し、手順を実行するコードを示します。 次のタスクを実行する方法を示します。
 
-* Create a new feature by binning hours into traffic time buckets
-* Index and encode categorical features
-* Create labeled point objects for input into ML functions
-* Create a random sub-sampling of the data and split it into training and testing sets
-* Feature scaling
-* Cache objects in memory
+* 時間を乗車時間のバケットにビン分割して新しい特徴を作成する
+* カテゴリの特徴のインデックス作成とエンコードを実行する
+* ML 関数への入力用にラベル付きポイント オブジェクトを作成する
+* データのランダム サブサンプリングを作成し、トレーニング セットとテスト セットに分ける
+* 特徴のスケーリング
+* オブジェクトをメモリにキャッシュする
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Create a new feature by binning hours into traffic time buckets
-This code shows how to create a new feature by binning hours into traffic time buckets and then how to cache the resulting data frame in memory. Where Resilient Distributed Datasets (RDDs) and data-frames are used repeatedly, caching leads to improved execution times. Accordingly, we cache RDDs and data-frames at several stages in the walkthrough. 
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>時間を乗車時間のバケットにビン分割して新しい特徴を作成する
+次のコードでは、時間を乗車時間のバケットにビン分割して新しい特徴を作成する方法と、結果として生成されたデータ フレームをメモリにキャッシュする方法を示します。 Resilient Distributed Dataset (RDD) とデータ フレームを繰り返し使用する場合、キャッシュによって実行時間が短縮されます。 そのため、このチュートリアルでは複数の段階で RDD とデータ フレームをキャッシュしています。 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -353,17 +353,17 @@ This code shows how to create a new feature by binning hours into traffic time b
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**OUTPUT:** 
+**出力:** 
 
 126050
 
-### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Index and encode categorical features for input into modeling functions
-This section shows how to index or encode categorical features for input into the modeling functions. The modeling and predict functions of MLlib require features with categorical input data to be indexed or encoded prior to use. Depending on the model, you need to index or encode them in different ways:  
+### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>モデリング関数への入力用にカテゴリの特徴のインデックス作成とエンコードを実行する
+ここでは、モデリング関数への入力用に、カテゴリの特徴のインデックスを作成し、特徴をエンコードする方法について説明します。 MLlib のモデリング関数と予測関数では、特徴のカテゴリ入力データを使用する前に、データのインデックスを作成するか、データをエンコードする必要があります。 モデルに応じて、さまざまな方法でカテゴリ入力データのインデックス作成またはエンコードを実行する必要があります。  
 
-* **Tree-based modeling** requires categories to be encoded as numerical values (for example, a feature with three categories may be encoded with 0, 1, 2). This is provided by MLlib’s [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) function. This function encodes a string column of labels to a column of label indices that are ordered by label frequencies. Although indexed with numerical values for input and data handling, the tree-based algorithms can be specified to treat them appropriately as categories. 
-* **Logistic and Linear Regression models** require one-hot encoding, where, for example, a feature with three categories can be expanded into three feature columns, with each containing 0 or 1 depending on the category of an observation. MLlib provides [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) function to do one-hot encoding. This encoder maps a column of label indices to a column of binary vectors, with at most a single one-value. This encoding allows algorithms that expect numerical valued features, such as logistic regression, to be applied to categorical features.
+* **ツリー ベースのモデリング** では、カテゴリを数値としてエンコードする必要があります (たとえば、3 つのカテゴリを持つ特徴は、0、1、2 でエンコードできます)。 これは、MLlib の [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 関数によって提供されます。 この関数は、ラベルの文字列型の列を、ラベルの頻度で順序付けられたラベル インデックスの列にエンコードします。 入力とデータ処理のために数値でインデックスを作成しますが、ツリー ベースのアルゴリズムでは、これらの数値をカテゴリとして適切に処理するように指定できます。 
+* **ロジスティック回帰モデルと線形回帰モデル**では、ワンホット エンコードが必要です。たとえば、3 つのカテゴリを持つ特徴は、観察のカテゴリに応じてそれぞれ 0 または 1 が含まれた 3 つの特徴列に展開できます。 MLlib には、ワンホット エンコードを実行する [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 関数が用意されています。 このエンコーダーは、ラベル インデックスの列をバイナリ ベクトルの列にマップします。この列に含まれる値は最大でも 1 つだけです。 このエンコードにより、数値を持つ特徴を必要とするアルゴリズム (ロジスティック回帰など) をカテゴリの特徴に適用できます。
 
-Here is the code to index and encode categorical features:
+カテゴリの特徴のインデックス作成とエンコードを実行するコードを次に示します。
 
     # INDEX AND ENCODE CATEGORICAL FEATURES
 
@@ -406,16 +406,16 @@ Here is the code to index and encode categorical features:
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
-Time taken to execute above cell: 1.28 seconds
+上記のセルの実行に要した時間: 1.28 秒
 
-### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Create labeled point objects for input into ML functions
-This section contains code that shows how to index categorical text data as a labeled point data type and encode it so that it can be used to train and test MLlib logistic regression and other classification models. Labeled point objects are Resilient Distributed Datasets (RDD) formatted in a way that is needed as input data by most of ML algorithms in MLlib. A [labeled point](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) is a local vector, either dense or sparse, associated with a label/response.  
+### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>ML 関数への入力用にラベル付きポイント オブジェクトを作成する
+このセクションのコードでは、ラベル付きポイント データ型としてカテゴリ テキスト データのインデックスを作成し、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用できるように、カテゴリ テキスト データをエンコードする方法を示します。 ラベル付きポイント オブジェクトは、MLlib のほとんどの ML アルゴリズムで入力データとして必要とされる方法でフォーマットされた Resilient Distributed Dataset (RDD) です。 [ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) は、ラベル/応答に関連付けられたローカル ベクトル (密または疎) です。  
 
-This section contains code that shows how to index categorical text data as a [labeled point](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) data type and encode it so that it can be used to train and test MLlib logistic regression and other classification models. Labeled point objects are Resilient Distributed Datasets (RDD) consisting of a label (target/response variable) and feature vector. This format is needed as input by many ML algorithms in MLlib.
+このセクションのコードでは、 [ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) データ型としてカテゴリ テキスト データのインデックスを作成し、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用できるように、カテゴリ テキスト データをエンコードする方法を示します。 ラベル付きポイント オブジェクトは、ラベル (ターゲット変数/応答変数) と特徴ベクトルで構成された Resilient Distributed Dataset (RDD) です。 この形式は、MLlib の多くの ML アルゴリズムで入力として必要とされます。
 
-Here is the code to index and encode text features for binary classification.
+以下に示したのは、二項分類に使用するテキストの特徴のインデックスを作成してエンコードするコードです。
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -441,7 +441,7 @@ Here is the code to index and encode text features for binary classification.
         return  labPt
 
 
-Here is the code to encode and index categorical text features for linear regression analysis.
+以下に示したのは、線形回帰分析に使用するカテゴリ テキストの特徴をエンコードしてインデックスを作成するコードです。
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -464,8 +464,8 @@ Here is the code to encode and index categorical text features for linear regres
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Create a random sub-sampling of the data and split it into training and testing sets
-This code creates a random sampling of the data (25% is used here). Although it is not required for this example due to the size of the dataset, we demonstrate how you can sample here so you know how to use it for your own problem when needed. When samples are large, this can save significant time while training models. Next we split the sample into a training part (75% here) and a testing part (25% here) to use in classification and regression modeling.
+### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>データのランダム サブサンプリングを作成し、トレーニング セットとテスト セットに分ける
+次のコードでは、データのランダム サンプリングを作成します (ここでは 25% を使用)。 この例のデータセットのサイズでは、ランダム サンプリングを作成する必要はありませんが、必要に応じて独自の問題にランダム サンプリングを使用する方法がわかるように、ここではサンプリングの方法を示します。 サンプル数が多い場合、ランダム サンプリングを作成することで、モデルのトレーニング時に時間を大幅に節約できます。 次に、分類および回帰モデリングで使用するために、サンプルをトレーニング用 (ここでは 75%) とテスト用 (ここでは 25%) に分けます。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -501,19 +501,19 @@ This code creates a random sampling of the data (25% is used here). Although it 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
-Time taken to execute above cell: 0.24 seconds
+上記のセルの実行に要した時間: 0.24 秒
 
-### <a name="feature-scaling"></a>Feature scaling
-Feature scaling, also known as data normalization, insures that features with widely disbursed values are not given excessive weigh in the objective function. The code for feature scaling uses the [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) to scale the features to unit variance. It is provided by MLlib for use in linear regression with Stochastic Gradient Descent (SGD), a popular algorithm for training a wide range of other machine learning models such as regularized regressions or support vector machines (SVM).
+### <a name="feature-scaling"></a>特徴のスケーリング
+この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して特徴を単価差異にスケーリングします。 これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。
 
 > [!NOTE]
-> We have found the LinearRegressionWithSGD algorithm to be sensitive to feature scaling.
+> LinearRegressionWithSGD アルゴリズムは特徴のスケーリングの影響を受けやすいことがわかりました。
 > 
 > 
 
-Here is the code to scale variables for use with the regularized linear SGD algorithm.
+正規化線形 SGD アルゴリズムで使用するために変数をスケーリングするコードを次に示します。
 
     # FEATURE SCALING
 
@@ -544,12 +544,12 @@ Here is the code to scale variables for use with the regularized linear SGD algo
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
-Time taken to execute above cell: 13.17 seconds
+上記のセルの実行に要した時間: 13.17 秒
 
-### <a name="cache-objects-in-memory"></a>Cache objects in memory
-The time taken for training and testing of ML algorithms can be reduced by caching the input data frame objects used for classification, regression, and scaled features.
+### <a name="cache-objects-in-memory"></a>オブジェクトをメモリにキャッシュする
+ML アルゴリズムのトレーニングとテストの所要時間は、分類、回帰、およびスケーリングされた特徴に使用される入力データ フレーム オブジェクトをキャッシュすることで短縮できます。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -575,27 +575,27 @@ The time taken for training and testing of ML algorithms can be reduced by cachi
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:** 
+**出力:** 
 
-Time taken to execute above cell: 0.15 seconds
+上記のセルの実行に要した時間: 0.15 秒
 
-## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Predict whether or not a tip is paid with binary classification models
-This section shows how use three models for the binary classification task of predicting whether or not a tip is paid for a taxi trip. The models presented are:
+## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>二項分類モデルを使用してチップが支払われるかどうかを予測する
+このセクションでは、タクシーの乗車でチップが支払われるかどうかを予測する二項分類タスクで 3 つのモデルを使用する方法を示します。 使用するモデルは次のとおりです。
 
-* Regularized logistic regression 
-* Random forest model
-* Gradient Boosting Trees
+* 正規化ロジスティック回帰 
+* ランダム フォレスト モデル
+* 勾配ブースティング ツリー
 
-Each model building code section is split into steps: 
+各モデル構築コードのセクションは、次のステップに分けることができます。 
 
-1. **Model training** data with one parameter set
-2. **Model evaluation** on a test data set with metrics
-3. **Saving model** in blob for future consumption
+1. **モデルのトレーニング** データ
+2. **モデルの評価** 
+3. **モデルの保存** 
 
-### <a name="classification-using-logistic-regression"></a>Classification using logistic regression
-The code in this section shows how to train, evaluate, and save a logistic regression model with [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) that predicts whether or not a tip is paid for a trip in the NYC taxi trip and fare dataset.
+### <a name="classification-using-logistic-regression"></a>ロジスティック回帰を使用した分類
+このセクションのコードでは、NYC タクシーの乗車と料金のデータセットで、乗車でチップが支払われるかどうかを予測するロジスティック回帰モデル ( [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) を使用) をトレーニング、評価し、保存する方法を示します。
 
-**Train the logistic regression model using CV and hyperparameter sweeping**
+**CV とハイパーパラメーター スイープを使用してロジスティック回帰モデルをトレーニングする**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -628,15 +628,15 @@ The code in this section shows how to train, evaluate, and save a logistic regre
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT:** 
+**出力:** 
 
-Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
+係数: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
-Intercept: -0.0111216486893
+切片: -0.0111216486893
 
-Time taken to execute above cell: 14.43 seconds
+上記のセルの実行に要した時間:14.43 秒
 
-**Evaluate the binary classification model with standard metrics**
+**標準メトリックで二項分類モデルを評価する**
 
     #EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
 
@@ -682,32 +682,32 @@ Time taken to execute above cell: 14.43 seconds
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**OUTPUT:** 
+**出力:** 
 
-Area under PR = 0.985297691373
+PR 下面積 = 0.985297691373
 
-Area under ROC = 0.983714670256
+ROC 下面積 = 0.983714670256
 
-Summary Stats
+要約統計量
 
-Precision = 0.984304060189
+精度 = 0.984304060189
 
-Recall = 0.984304060189
+再現率 = 0.984304060189
 
-F1 Score = 0.984304060189
+F1 スコア = 0.984304060189
 
-Time taken to execute above cell: 57.61 seconds
+上記のセルの実行に要した時間: 57.61 秒
 
-**Plot the ROC curve.**
+**ROC 曲線をプロットする**
 
-The *predictionAndLabelsDF* is registered as a table, *tmp_results*, in the previous cell. *tmp_results* can be used to do queries and output results into the sqlResults data-frame for plotting. Here is the code.
+*predictionAndLabelsDF* は、既出のセルでテーブル *tmp_results* として登録されています。 *tmp_results* を使用してクエリを実行したり、sqlResults データフレームに結果を出力してプロットしたりできます。 次にコードを示します。
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-Here is the code to make predictions and plot the ROC-curve.
+予測を行って ROC 曲線をプロットするコードを次に示します。
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
@@ -735,12 +735,12 @@ Here is the code to make predictions and plot the ROC-curve.
     plt.show()
 
 
-**OUTPUT:**
+**出力:**
 
 ![Logistic regression ROC curve.png](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
-### <a name="random-forest-classification"></a>Random forest classification
-The code in this section shows how to train, evaluate, and save a random forest model that predicts whether or not a tip is paid for a trip in the NYC taxi trip and fare dataset.
+### <a name="random-forest-classification"></a>ランダム フォレスト分類
+このセクションのコードでは、NYC タクシー乗車および料金データセットで、乗車でチップが支払われるかどうかを予測するランダム フォレスト モデルをトレーニング、評価し、保存する方法を示します。
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING RANDOM FOREST
 
@@ -785,14 +785,14 @@ The code in this section shows how to train, evaluate, and save a random forest 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
-Area under ROC = 0.985297691373
+ROC 下面積 = 0.985297691373
 
-Time taken to execute above cell: 31.09 seconds
+上記のセルの実行に要した時間: 31.09 秒
 
-### <a name="gradient-boosting-trees-classification"></a>Gradient boosting trees classification
-The code in this section shows how to train, evaluate, and save a gradient boosting trees model that predicts whether or not a tip is paid for a trip in the NYC taxi trip and fare dataset.
+### <a name="gradient-boosting-trees-classification"></a>勾配ブースティング ツリー分類
+このセクションのコードでは、NYC タクシー乗車および料金データセットで、乗車でチップが支払われるかどうかを予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING GRADIENT BOOSTING TREES
 
@@ -831,30 +831,30 @@ The code in this section shows how to train, evaluate, and save a gradient boost
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT:**
+**出力:**
 
-Area under ROC = 0.985297691373
+ROC 下面積 = 0.985297691373
 
-Time taken to execute above cell: 19.76 seconds
+上記のセルの実行に要した時間: 19.76 秒
 
-## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Predict tip amounts for taxi trips with regression models
-This section shows how use three models for the regression task of predicting the amount of the tip paid for a taxi trip based on other tip features. The models presented are:
+## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>回帰モデルを使用してタクシー乗車でのチップの金額を予測する
+このセクションでは、チップの他の特徴に基づいて、タクシーの乗車で支払われるチップの金額を予測する回帰タスクで 3 つのモデルを使用する方法を示します。 使用するモデルは次のとおりです。
 
-* Regularized linear regression
-* Random forest
-* Gradient Boosting Trees
+* 正規化線形回帰
+* ランダム フォレスト
+* 勾配ブースティング ツリー
 
-These models were described in the introduction. Each model building code section is split into steps: 
+これらのモデルについては、「はじめに」で説明しました。 各モデル構築コードのセクションは、次のステップに分けることができます。 
 
-1. **Model training** data with one parameter set
-2. **Model evaluation** on a test data set with metrics
-3. **Saving model** in blob for future consumption
+1. **モデルのトレーニング** データ
+2. **モデルの評価** 
+3. **モデルの保存** 
 
-### <a name="linear-regression-with-sgd"></a>Linear regression with SGD
-The code in this section shows how to use scaled features to train a linear regression that uses stochastic gradient descent (SGD) for optimization, and how to score, evaluate, and save the model in Azure Blob Storage (WASB).
+### <a name="linear-regression-with-sgd"></a>SGD を使用した線形回帰
+このセクションのコードでは、スケーリングされた特徴を使用して、最適化に確率的勾配降下 (SGD) を使用する線形回帰をトレーニングする方法と、このモデルにスコアを付け、評価し、Azure BLOB Storage (WASB) に保存する方法を示します。
 
 > [!TIP]
-> In our experience, there can be issues with the convergence of LinearRegressionWithSGD models, and parameters need to be changed/optimized carefully for obtaining a valid model. Scaling of variables significantly helps with convergence. 
+> 経験上、LinearRegressionWithSGD モデルの収束で問題が発生する可能性があるため、有効なモデルを入手するために、パラメーターを慎重に変更/最適化する必要があります。 収束には変数のスケーリングがきわめて有効です。 
 > 
 > 
 
@@ -897,20 +897,20 @@ The code in this section shows how to use scaled features to train a linear regr
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
-Coefficients: [0.00457675809917, -0.0226314167349, -0.0191910355236, 0.246793409578, 0.312047890459, 0.359634405999, 0.00928692253981, -0.000987181489428, -0.0888306617845, 0.0569376211553, 0.115519551711, 0.149250164995, -0.00990211159703, -0.00637410344522, 0.545083566179, -0.536756072402, 0.0105762393099, -0.0130117577055, 0.0129304737772, -0.00171065945959]
+係数: [0.00457675809917, -0.0226314167349, -0.0191910355236, 0.246793409578, 0.312047890459, 0.359634405999, 0.00928692253981, -0.000987181489428, -0.0888306617845, 0.0569376211553, 0.115519551711, 0.149250164995, -0.00990211159703, -0.00637410344522, 0.545083566179, -0.536756072402, 0.0105762393099, -0.0130117577055, 0.0129304737772, -0.00171065945959]
 
-Intercept: 0.853872718283
+切片: 0.853872718283
 
 RMSE = 1.24190115863
 
 R-sqr = 0.608017146081
 
-Time taken to execute above cell: 58.42 seconds
+上記のセルの実行に要した時間: 58.42 秒
 
-### <a name="random-forest-regression"></a>Random Forest regression
-The code in this section shows how to train, evaluate, and save a random forest regression that predicts tip amount for the NYC taxi trip data.
+### <a name="random-forest-regression"></a>ランダム フォレスト回帰
+このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測するランダム フォレスト回帰をトレーニング、評価し、保存する方法を示します。
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -953,18 +953,18 @@ The code in this section shows how to train, evaluate, and save a random forest 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
 RMSE = 0.891209218139
 
 R-sqr = 0.759661334921
 
-Time taken to execute above cell: 49.21 seconds
+上記のセルの実行に要した時間: 49.21 秒
 
-### <a name="gradient-boosting-trees-regression"></a>Gradient boosting trees regression
-The code in this section shows how to train, evaluate, and save a gradient boosting trees model that predicts tip amount for the NYC taxi trip data.
+### <a name="gradient-boosting-trees-regression"></a>勾配ブースティング ツリー回帰
+このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
 
-**Train and evaluate**
+**トレーニングと評価**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1004,17 +1004,17 @@ The code in this section shows how to train, evaluate, and save a gradient boost
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT:**
+**出力:**
 
 RMSE = 0.908473148639
 
 R-sqr = 0.753835096681
 
-Time taken to execute above cell: 34.52 seconds
+上記のセルの実行に要した時間: 34.52 秒
 
-**Plot**
+**プロット**
 
-*tmp_results* is registered as a Hive table in the previous cell. Results from the table are output into the *sqlResults* data-frame for plotting. Here is the code
+*tmp_results* は、既出のセルで Hive テーブルとして登録されています。 このテーブルからの結果を *sqlResults* データフレームに出力し、プロットに使用しています。 次にコードを示します。
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1022,7 +1022,7 @@ Time taken to execute above cell: 34.52 seconds
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
-Here is the code to plot the data using the Jupyter server.
+Jupyter サーバーを使用してデータをプロットするコードを次に示します。
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1040,12 +1040,12 @@ Here is the code to plot the data using the Jupyter server.
     plt.show(ax)
 
 
-**OUTPUT:**
+**出力:**
 
 ![Actual-vs-predicted-tip-amounts](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="clean-up-objects-from-memory"></a>Clean up objects from memory
-Use `unpersist()` to delete objects cached in memory.
+## <a name="clean-up-objects-from-memory"></a>メモリからオブジェクトをクリーンアップする
+メモリにキャッシュされたオブジェクトを削除するには、 `unpersist()` を使用します。
 
     # REMOVE ORIGINAL DFs
     taxi_df_train_cleaned.unpersist()
@@ -1068,8 +1068,8 @@ Use `unpersist()` to delete objects cached in memory.
     oneHotTESTregScaled.unpersist()
 
 
-## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>Record storage locations of the models for consumption and scoring
-To consume and score an independent dataset described in the [Score and evaluate Spark-built machine learning models](spark-model-consumption.md) topic, you need to copy and paste these file names containing the saved models created here into the Consumption Jupyter notebook. Here is the code to print out the paths to model files you need there.
+## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>使用およびスコア付けのためにモデルのストレージの場所を記録する
+「[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)」で説明している独立データセットを使用してスコア付けするには、ここで作成した保存済みモデルを含むファイル名をコピーして、Consumption Jupyter Notebook に貼り付ける必要があります。 必要なモデル ファイルのパスを出力するコードを次に示します。
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1080,7 +1080,7 @@ To consume and score an independent dataset described in the [Score and evaluate
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**OUTPUT**
+**出力**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
@@ -1094,10 +1094,10 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
-## <a name="whats-next"></a>What's next?
-Now that you have created regression and classification models with the Spark MlLib, you are ready to learn how to score and evaluate these models. The advanced data exploration and modeling notebook dives deeper into including cross-validation, hyper-parameter sweeping, and model evaluation. 
+## <a name="whats-next"></a>次の手順
+Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープやモデルの評価などに深く踏み込みます。 
 
-**Model consumption:** To learn how to score and evaluate the classification and regression models created in this topic, see [Score and evaluate Spark-built machine learning models](spark-model-consumption.md).
+**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
 
-**Cross-validation and hyperparameter sweeping**: See [Advanced data exploration and modeling with Spark](spark-advanced-data-exploration-modeling.md) on how models can be trained using cross-validation and hyper-parameter sweeping
+**クロス検証とハイパーパラメーター スイープ**:クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。
 

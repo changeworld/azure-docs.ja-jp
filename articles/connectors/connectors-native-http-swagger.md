@@ -12,10 +12,10 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893398"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
@@ -92,13 +92,13 @@ HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用�
 Swagger メタデータを使用して HTTP 送信要求を行います。
 アスタリスク (*) は、必須フィールドであることを意味します。
 
-| 表示名 | プロパティ名 | 説明 |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | メソッド* |method |使用する HTTP 動詞 |
 | URI* |uri |HTTP 要求の URI |
 | headers |headers |含める HTTP ヘッダーの JSON オブジェクト |
 | 本文 |body |HTTP 要求の本文 |
-| Authentication |[認証] |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
+| Authentication |認証 |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
 
 **出力の詳細**
 
@@ -106,14 +106,14 @@ HTTP 応答
 
 | プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
-| headers |オブジェクト |応答ヘッダー |
-| 本文 |オブジェクト |応答オブジェクト |
+| headers |object |応答ヘッダー |
+| 本文 |object |応答オブジェクト |
 | 状態コード |int |HTTP 状態コード |
 
 ### <a name="http-responses"></a>HTTP 応答
 さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。 次の表に、対応する応答と説明を示します。
 
-| 名前 | 説明 |
+| Name | 説明 |
 | --- | --- |
 | 200 |OK |
 | 202 |承認済み |
@@ -125,5 +125,5 @@ HTTP 応答
 
 ## <a name="next-steps"></a>次の手順
 
-* [ロジック アプリを作成します](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [他のコネクタを見つけます](apis-list.md)

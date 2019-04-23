@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: a98ec0d460e050f8158ffee1262dd85f0cd07d9a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル:Azure Active Directory と Peakon の統合
@@ -105,9 +105,9 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Peakon のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://app.peakon.com/saml/<companyid>/metadata`
+    a. **[識別子]** ボックスに、`https://app.peakon.com/saml/<companyid>/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://app.peakon.com/saml/<companyid>/assert`
+    b. **[応答 URL]** ボックスに、`https://app.peakon.com/saml/<companyid>/assert` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -220,7 +220,7 @@ Peakon で Azure AD シングル サインオンを構成するには、次の�
 Azure AD ユーザーが Peakon にサインインできるようにするには、ユーザーを Peakon にプロビジョニングする必要があります。  
 Peakon の場合、プロビジョニングは手動で行います。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. Peakon 企業サイトに管理者としてサインインします。
 

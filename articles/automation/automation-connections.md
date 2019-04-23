@@ -10,10 +10,10 @@ ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918027"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
@@ -61,7 +61,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 ## <a name="python2-functions"></a>Python2 関数 
 次の表の関数を使用して、Python2 Runbook の接続にアクセスします。 
 
-| 関数 | 説明 | 
+| Function | 説明 | 
 |:---|:---| 
 | automationassets.get_automation_connection | 接続を取得します。 接続のプロパティでディクショナリを返します。 | 
 

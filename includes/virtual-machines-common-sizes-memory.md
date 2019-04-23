@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 97efb82f104742993f7b2fac40a74f4feb9e0b38
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7984172c2b66f2b09e31c646b111e4b9d04fce2b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333952"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551616"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
 * M シリーズは、クラウドの VM で最大の vCPU 数 (最大 128 個の vCPU) と最大のメモリ (最大 3.8 TiB) を提供します。  非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
 
-* Dv2 シリーズ、G シリーズ、および対応する DSv2/GS は、より高速の vCPU やより高い一時ストレージ パフォーマンスが必要なアプリケーション、またはメモリ要求がより高いアプリケーションに最適です。  多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
-
+* Dv2 シリーズ、G シリーズ、および対応する DSv2/GS は、より高速の vCPU やより高パフォーマンスの一時ストレージが必要なアプリケーション、またはメモリ要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 
 * オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。 Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。 これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) または E5-2673 v4 2.3 GHz (Broadwell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
@@ -170,7 +169,6 @@ Premium Storage Caching: サポートされていません
 <sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 <br>
 
-
 ## <a name="dsv2-series-11-15"></a>DSv2 シリーズ 11 - 15
 
 ACU: 210 から 250 <sup>1</sup>
@@ -187,14 +185,10 @@ Premium Storage Caching: サポートされています
 | Standard_DS14_v2&nbsp;<sup>3</sup>|16 |112 |224 |64 |64,000/512 (576) |51,200/768 |8/12,000 |
 | Standard_DS15_v2&nbsp;<sup>2</sup> |20 |140 |280 |64 |80,000/640 (720) |64,000/960 |8/25,000&nbsp;<sup>4</sup>
 
-
-<sup>1</sup> DSv2 シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
-
-<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
-
-<sup>3</sup> コア数を制限したサイズも提供しています。
-
-<sup>4</sup> 高速ネットワークを使用した場合、25,000 Mbps。
+<sup>1</sup> DSv2 シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。  
+<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。  
+<sup>3</sup> コア数を制限したサイズも提供しています。  
+<sup>4</sup> 高速ネットワークを使用した場合、25,000 Mbps。 
 
 <br>
 
@@ -214,13 +208,5 @@ Premium Storage Caching: サポートされていません
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 64 / 64x500                       | 8/12,000          |
 | Standard_D15_v2&nbsp;<sup>1</sup> | 20        | 140         | 1,000          | 60000/937/468                                        | 64 / 64x500                       | 8/25,000&nbsp;<sup>2</sup> |
 
-<sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。 
-
-<sup>2</sup> 高速ネットワークを使用した場合、25,000 Mbps。
-
-
-
-<br>
-
-
-
+<sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。  
+<sup>2</sup> 高速ネットワークを使用した場合、25,000 Mbps。 

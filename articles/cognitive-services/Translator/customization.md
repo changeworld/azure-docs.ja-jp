@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918231"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
@@ -66,4 +66,4 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [カスタム翻訳ツールを使用してカスタマイズされた言語システムを設定する](https://aka.ms/CustomTranslatorDocs)
+> [Custom Translator を使用してカスタマイズされた言語システムを設定します](https://aka.ms/CustomTranslatorDocs)

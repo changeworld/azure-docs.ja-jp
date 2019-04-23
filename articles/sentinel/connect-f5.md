@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで F5 データを収集する | Microsoft Docs
-description: Azure Sentinel で F5 データを収集する方法について説明します。
+title: Azure Sentinel プレビューに F5 データを接続する | Microsoft Docs
+description: Azure Sentinel に F5 データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b78ed31fec3716e06f74d9c026ca2af2c48e0312
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0f5452ade7a34a06cef4564760dc31981f1d8f37
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883464"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492568"
 ---
 # <a name="connect-your-f5-appliance"></a>F5 アプライアンスを接続する
 
@@ -30,7 +30,7 @@ ms.locfileid: "58883464"
 ログ ファイルを Syslog CEF として保存することにより、Azure Sentinel を任意の F5 アプライアンスに接続できます。 Azure Sentinel との統合により、F5 から、ログ ファイル データにわたって分析およびクエリを簡単に実行できるようになります。 Azure Sentinel が CEF データを取り込む方法の詳細については、[CEF アプライアンスの接続](connect-common-event-format.md)に関するページを参照してください。
 
 > [!NOTE]
-> - データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
+> データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 
 ## <a name="step-1-connect-your-f5-appliance-using-an-agent"></a>手順 1:エージェントを使用して F5 アプライアンスを接続する
 
@@ -40,22 +40,22 @@ F5 アプライアンスを Azure Sentinel に接続するには、エージェ�
 
 両方のオプションのネットワーク図を表示するには、「[データ ソースの接続](connect-data-sources.md#agent-options)」を参照してください。
 
-### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントをデプロイする
+### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントを展開する
 
-1. Azure Sentinel ポータルで、**[データ収集]** をクリックして、アプライアンスの種類を選択します。 
+1. Azure Sentinel ポータルで、**[データ コネクタ]** をクリックして、アプライアンスの種類を選択します。 
 
-1. **[Linux Syslog agent configuration]**(Linux Syslog エージェント構成) の下で:
-   - 前述のように、Azure Sentinel エージェントで事前インストールされ、すべての必要な構成を含んだ新しいマシンを作成する場合、**[自動デプロイ]** を選択します。 **[自動デプロイ]** を選択して、**[Automatic agent deployment]**(エージェントの自動デプロイ) をクリックします。 これにより、ワークスペースに自動的に接続する専用 VM の購入ページが表示されます。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
+1. **[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で:
+   - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[自動展開]** を選択して、**[Automatic agent deployment]\(エージェントの自動展開\)** をクリックします。 これにより、お使いのワークスペースに自動的に接続される専用 VM の購入ページに移動します。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
       1. **[カスタム デプロイ]** ページで詳細を入力し、ユーザー名とパスワードを選択し、使用条件に同意する場合は、VM を購入します。
-      1. 接続ページに一覧表示されている設定を使用してログを送信するようにアプライアンスを構成します。 一般的な共通イベント形式コネクタの場合、以下の設定を使用します。
-         - Protocol = UDP
-         - Port = 514
-         - Facility = Local-4
-         - Format = CEF
-   - Azure Sentinel エージェントのインストール先となる専用の Linux マシンとして既存の VM を使用する場合、**[Manual deployment]**(手動デプロイ) を選択します。 
-      1. **[Download and install the Syslog agent]**(Syslog エージェントのダウンロードとインストール) の下で、**[Azure Linux virtual machine]**(Azure Linux 仮想マシン) を選択します。 
+      1. 接続ページに一覧表示されている設定を使用して、ログを送信するようにアプライアンスを構成します。 標準の共通イベント形式コネクタの場合、以下の設定を使用します。
+         - プロトコル = UDP
+         - ポート = 514
+         - ファシリティ = Local-4
+         - 形式 = CEF
+   - 既存の VM を Azure Sentinel エージェントをインストールする専用の Linux マシンとして使用する場合、**[Manual deployment]\(手動配置\)** を選択します。 
+      1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、**[Azure Linux virtual machine]\(Azure Linux 仮想マシン\)** を選択します。 
       1. 開いた **[仮想マシン]** 画面で、使用するマシンを選択し、**[接続]** をクリックします。
-      1. コネクタ画面で、**[Configure and forward Syslog]**(Syslog の構成と転送) の下で、Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
       1. これらのコマンドをコピーし、アプライアンス上で実行します。
           - rsyslog.d を選択した場合:
               
@@ -79,12 +79,12 @@ F5 アプライアンスを Azure Sentinel に接続するには、エージェ�
 Azure を使用していない場合は、専用の Linux サーバーで実行するように Azure Sentinel エージェントを手動でデプロイします。
 
 
-1. Azure Sentinel ポータルで、**[データ収集]** をクリックして、アプライアンスの種類を選択します。
-1. 専用の Linux VM を作成するには、**[Linux Syslog agent configuration]**(Linux Syslog エージェント構成) の下で **[Manual deployment]**(手動デプロイ) を選択します。
-   1. **[Download and install the Syslog agent]**(Syslog エージェントのダウンロードとインストール) の下で、**[Non-Azure Linux machine]**(Azure 以外の Linux マシン) を選択します。 
-   1. 開かれた **[直接エージェント]** 画面で、**[Linux 用エージェント]** を選択して、エージェントをダウンロードするか、次のコマンドを実行して Linux マシンにダウンロードします: `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-      1. コネクタ画面で、**[Configure and forward Syslog]**(Syslog の構成と転送) の下で、Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
-      1. これらのコマンドをコピーし、アプライアンス上で実行します。
+1. Azure Sentinel ポータルで、**[データ コネクタ]** をクリックして、アプライアンスの種類を選択します。
+1. 専用の Linux VM を作成するには、**[Linux Syslog agent configuration]** \(Linux Syslog エージェント構成\) の下で **[Manual deployment]\(手動配置\)** を選択します。
+   1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、**[Non-Azure Linux machine]\(Azure ではない Linux マシン\)** を選択します。 
+   1. 開いた **[ダイレクト エージェント]** 画面で、**[Linux 用エージェント]** を選択して、エージェントをダウンロードするか、次のコマンドを実行してお使いの Linux マシンにダウンロードします。`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
+      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+      1. これらのコマンドをコピーし、お使いのアプライアンス上で実行します。
          - rsyslog を選択した場合:
            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
             
@@ -113,17 +113,17 @@ F5 の[アプリケーション セキュリティ イベント ログの構成]
 
 ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
 
-1. Syslog エージェントで、ログが適切なポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 514 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。ログが、適切なポートおよびファシリティで、ソース アプライアンスから受信されていることを確認します。
-2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。ログがエージェント上でも受信されていることを確認します。
-3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べてログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog` 型の下に未加工の形式で表示されます。
+1. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 514 -vv` このコマンドでは、デバイスから Syslog マシンにストリーミングされるログを表示します。ログが、正しいポートとファシリティでソース アプライアンスから受信されていることを確認します。
+2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv` このコマンドによって、デバイスから Syslog コンピューターにストリーミングされるログが表示されます。ログがエージェント上でも受信されていることを確認します。
+3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べて自分のログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog` 型の下に未加工の形式で表示されます。
 1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、次のファイルを調べます:  `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-4. Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します:  `message_length_limit 4096`
+4. 自分の Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します:  `message_length_limit 4096`
 6. Log Analytics で F5 イベントに関連するスキーマを使用するために、**CommonSecurityLog** を検索します。
 
 
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、F5 アプライアンスを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法をご確認ください。
-- [Azure Sentinel を使用した驚異の検出](tutorial-detect-threats.md)を開始します。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

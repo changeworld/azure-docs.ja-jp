@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: c97395981ea3af90c7b0c590cb049fccc7392304
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863068"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797194"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT ソリューション内のデバイス構成のベスト プラクティス
 

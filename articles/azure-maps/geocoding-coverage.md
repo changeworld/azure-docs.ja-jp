@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 733d27549542d3ebdd0cfba429aeaaab9f8be473
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370314"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000931"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
@@ -106,14 +106,14 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | フィジー                                                |                  |                |              |      ✓     |          ✓         |
 | 仏領ポリネシア                                    |                 |                |              |      ✓     |          ✓         |
 | ハード島とマクドナルド諸島                   |                 |                |              |      ✓     |          ✓         |
-| 香港特別行政区                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 香港特別行政区                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | インドネシア                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | インド                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | 日本                                               |                 |                |              |      ✓     |          ✓         |
 | キリバス                                            |                 |                |              |      ✓     |          ✓         |
 | 韓国                                         |                 |                |              |      ✓     |          ✓         |
 | ラオス                                                |                 |                |              |      ✓     |          ✓         |
-| マカオ                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 中華人民共和国マカオ特別行政区                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | マレーシア                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ミクロネシア                                          |                 |                |              |      ✓     |          ✓         |
 | モンゴル                                            |                 |                |              |      ✓     |          ✓         |
@@ -189,7 +189,7 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | リヒテンシュタイン                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | リトアニア                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ルクセンブルク                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| マケドニア                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 北マケドニア                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | マルタ                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | モルドバ                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | モナコ                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |

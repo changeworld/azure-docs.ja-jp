@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビューで脅威インテリジェンス データを収集する | Microsoft Docs
+title: Azure Sentinel Preview に脅威インテリジェンス データを接続する | Microsoft Docs
 description: 脅威インテリジェンス データを Azure Sentinel に接続する方法について説明します。
 documentationcenter: na
 author: rkarlin
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400623"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786186"
 ---
-# <a name="collect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを収集する 
+# <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する 
 
 > [!IMPORTANT]
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
@@ -44,7 +44,7 @@ Azure Sentinel にデータをストリーミングしたら、組織全体で�
 
 1. 脅威インテリジェンス プロバイダーを既に使用している場合は、TIP アプリケーションを参照し、インジケーターを Microsoft に送信するためのアクセス許可を付与して、サービスを Azure Sentinel として指定する必要があります。  
 
-2. Azure Sentinel で **[データ収集]** を選択し、**[脅威インテリジェンス]** タイルをクリックします。
+2. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[脅威インテリジェンス]** タイルをクリックします。
 
 3. **[接続]** をクリックします。 
 

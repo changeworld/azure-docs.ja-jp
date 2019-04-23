@@ -10,10 +10,10 @@ ms.date: 4/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 9e8f450825b7b4ad0402b8976d68bc23c18ce855
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357877"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
@@ -195,4 +195,4 @@ ms.locfileid: "59357877"
 ## <a name="next-steps"></a>次の手順
 レプリケーションを有効にした後は、訓練を実行して、すべてが予想どおりに動作することを確認します。
 > [!div class="nextstepaction"]
-> [ディザスター リカバリー訓練を実行する](site-recovery-test-failover-to-azure.md)
+> [ディザスター リカバリーのテストを実行する](site-recovery-test-failover-to-azure.md)

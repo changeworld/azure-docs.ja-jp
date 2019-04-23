@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8e249a788d80108d46a61f316b795ab04e541a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203513"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503252"
 ---
 ## <a name="setting-up-your-ios-application"></a>iOS アプリケーションをセットアップする
 
@@ -61,7 +61,7 @@ echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" >
 carthage update
 ```
 
-> 上記のプロセスは Microsoft Authentication Library (MSAL) のダウンロードとビルドに使用されます。 MSAL は、Azure Active Directory v2.0 で保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します。
+> 上記のプロセスは Microsoft Authentication Library (MSAL) のダウンロードとビルドに使用されます。 MSAL は、Microsoft ID プラットフォームによって保護されている API シリーズへのアクセスに使用されるユーザー トークンの取得、キャッシュ、および更新を処理します。
 
 ## <a name="add-the-msal-framework-to-your-application"></a>MSAL フレームワークをアプリケーションに追加する
 
@@ -91,7 +91,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 
 Main.storyboard ファイルは、プロジェクト テンプレートの一部として自動的に作成されます。 アプリの UI を作成するには、以下の手順に従います。
 
-1.  Ctrl キーを押しながら `Main.storyboard` をクリックしてコンテキスト メニューを表示し、`Open As` > `Source Code` の順にクリックします
+1.  Ctrl キーを押しながら `Main.storyboard` をクリックしてコンテキスト メニューを表示し、次をクリックします: `Open As` > `Source Code`
 2.  `<scenes>` ノードを下のコードに変更します
 
 ```xml

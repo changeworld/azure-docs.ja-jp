@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e4c5942dfba62a2c869e4eeceb9018fc926d9de9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259545"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681252"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する (新しい UI デザイン)
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
 このチュートリアルでは、作成者向けに、デバイス テンプレートを使用して、Microsoft Azure IoT Central アプリケーションでデバイスの新しい種類を定義する方法について説明します。 デバイス テンプレートでは、デバイスの種類のテレメトリ、状態、プロパティ、設定を定義します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "58259545"
     
    * 必要に応じて、わかりやすいアプリケーション名を選択することもできます (**Contoso Air Conditioners** など)。 Azure IoT Central によって、一意の URL プレフィックスが自動的に生成されます。 この URL プレフィックスは、もっと覚えやすいものに変更することができます。
     
-   * **作成**を選択します。
+   * **作成** を選択します。
 
      ![Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ](./media/tutorial-define-device-type/iotcentralcreate.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "58259545"
      | -------------------- | -----------       |
      | 表示名         | Fan Motor Error   |
      | フィールド名           | fanmotorerr       |
-     | severity             | Error             |
+     | Severity             | Error             |
 
      イベントの定義を保存するために、**[保存]** を選択します。
 

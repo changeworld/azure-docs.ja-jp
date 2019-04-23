@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276492"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
@@ -95,12 +95,12 @@ ms.locfileid: "59276492"
    _ContosoRG_ を対象とするリソース グループの名前に置き換えます。
 
    `New-AzPolicyAssignment` の **Scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは、`Get-AzResourceGroup` の **ResourceId** プロパティが返す完全なリソース パスを使用します。 各コンテナーの **Scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。
-   `{rType}` そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+   `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
-   - リソース -  `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - リソース グループ -  `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - サブスクリプション -  `/subscriptions/{subId}/`
-   - 管理グループ -  `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - リソース グループ - `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - サブスクリプション - `/subscriptions/{subId}/`
+   - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Azure Resource Manager PowerShell モジュールを使用したリソース ポリシーの管理の詳細については、「[Az.Resources](/powershell/module/az.resources/#policies)」をご覧ください。
 
@@ -223,12 +223,12 @@ Azure Resource Manager PowerShell モジュールを使用したリソース ポ
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` の **- scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **--scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+   `az policy assignment create` の **- scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは完全なリソース パスを使用します。 各コンテナーの **--scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
-   - リソース -  `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - リソース グループ -  `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - サブスクリプション -  `/subscriptions/{subID}`
-   - 管理グループ -  `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - リソース グループ - `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - サブスクリプション - `/subscriptions/{subID}`
+   - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 ポリシー定義 ID は、PowerShell で次のコマンドを実行して取得できます。
 

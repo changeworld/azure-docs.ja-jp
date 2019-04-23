@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9130717f7846c81bee2bf4892a13fcf6042257c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261725"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>チュートリアル:Azure Active Directory と Ivanti Service Manager (ISM) の統合
@@ -52,7 +52,7 @@ Ivanti Service Manager (ISM) と Azure AD の統合を構成するには、次�
 
 Azure AD と Ivanti Service Manager (ISM) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Ivanti Service Manager (ISM) を追加する必要があります。
 
-**ギャラリーから Ivanti Service Manager (ISM) を追加するには、次の手順に従います。**
+**ギャラリーから Ivanti Service Manager (ISM) を追加するには、次の手順を行います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -114,7 +114,7 @@ Ivanti Service Manager (ISM) で Azure AD シングル サインオンを構成�
     | `https://<customer>.saasiteu.com/` |
     | `https://<customer>.saasitau.com/` |
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
+    b. **[応答 URL]** ボックスに、`https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

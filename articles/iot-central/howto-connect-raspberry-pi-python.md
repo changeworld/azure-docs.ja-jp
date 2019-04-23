@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 6ac16651e2d49dd903ff994b18a8f571bd92fbf6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272361"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617447"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -115,6 +115,4 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、Raspberry Pi を Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は以下のとおりです。
-
-* [汎用の Node.js クライアント アプリケーションを Azure IoT Central に接続する](howto-connect-nodejs.md)
+ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

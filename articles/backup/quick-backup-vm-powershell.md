@@ -7,15 +7,15 @@ manager: carmonm
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 03/05/2019
+ms.date: 04/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 5aab5fea5a80eb3ab1b37e08a5e22ca296cb633e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906074"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680300"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 
@@ -29,7 +29,7 @@ ms.locfileid: "58906074"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-and-register"></a>ログインして登録する
+## <a name="sign-in-and-register"></a>サインインして登録する
 
 1. `Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
@@ -51,7 +51,7 @@ ms.locfileid: "58906074"
 
 - リソース グループと場所については、バックアップする VM のリソース グループと場所を指定します。
 - この[サンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)を使用して VM を作成した場合、リソース グループは **myResourceGroup**、VM は **myVM** になり、リソースは **WestEurope** リージョンに格納されます。
-- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップされたデータがレプリケートされます。
+- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
 
 それでは、コンテナーを作成します。
 
@@ -96,7 +96,7 @@ Azure VM のバックアップを有効にし、バックアップ ポリシー�
     $policy = Get-AzRecoveryServicesBackupProtectionPolicy     -Name "DefaultPolicy"
     ```
 
-2. [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) を使用して、VM のバックアップを有効にします。 ポリシー、リソース グループと VM の名前を指定します。
+2. [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) を使用して、VM のバックアップを有効にします。 ポリシー、リソース グループ、および VM の名前を指定します。
 
     ```powershell
     Enable-AzRecoveryServicesBackupProtection `
@@ -162,7 +162,7 @@ VM をバックアップする必要がなくなった場合は、クリーン�
 - VM の復元を試す場合は、クリーンアップをスキップします。
 - 既存の VM を使用した場合は、最後の [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを省略すると、リソース グループと VM をそのままの状態にしておくことができます。
 
-次のように、VM の保護を無効にし、復元ポイントとコンテナーを削除します。その後、リソース グループと、関連付けられている VM リソースを削除します。
+保護を無効にし、復元ポイントとコンテナーを削除します。 その後、リソース グループおよび関連付けられているVM リソースを次のように削除します。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints

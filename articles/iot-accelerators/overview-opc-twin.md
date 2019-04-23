@@ -1,5 +1,5 @@
 ---
-title: Azure IoT OPC UA デバイス管理とは | Microsoft Docs
+title: OPC Twin とは - Azure | Microsoft Docs
 description: OPC Twin の概要
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3bbc20aa61faafb1405fa756b334bae05ec4129b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759748"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496814"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Azure IoT Open Platform Communications (OPC) デバイス管理とは
-Azure IoT OPC UA デバイス管理 (OPC Twin) は、Azure IoT Edge と IoT Hub を使用してクラウドと工場のネットワークとを接続するマイクロサービスから成ります。 OPC Twin は、REST API を通じて、産業用デバイスの検出、登録、リモート制御を実現します。 OPC Twin は、OPC Unified Architecture (OPC UA) SDK を必要とせず、プログラミング言語に依存しません。また、サーバーレス ワークフローに組み込むことができます。 この記事では、OPC Twin のいくつかのユース ケースを説明します。
+
+OPC Twin は、Azure IoT Edge と IoT Hub を使用してクラウドと工場のネットワークとを接続するマイクロサービスから成ります。 OPC Twin は、REST API を通じて、産業用デバイスの検出、登録、リモート制御を実現します。 OPC Twin は、OPC Unified Architecture (OPC UA) SDK を必要とせず、プログラミング言語に依存しません。また、サーバーレス ワークフローに組み込むことができます。 この記事では、OPC Twin のいくつかのユース ケースを説明します。
 
 ## <a name="discovery-and-control"></a>検出と制御
 OPC Twin を使用することで、検出と登録を簡素化できます。

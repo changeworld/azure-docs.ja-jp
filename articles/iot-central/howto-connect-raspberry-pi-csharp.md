@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 341b4d23664900cdf1f9a209df663ad4e6e96fe4
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 8a7b2d15884f7a1cb8b6e72937b0f1e3b6cb8ca9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426360"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616018"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -26,7 +26,7 @@ ms.locfileid: "59426360"
 この記事の手順を完了するには、次のコンポーネントが必要です。
 
 * **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
-* Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 Raspberry Pi からインターネットに接続できる必要があります。 詳細については、「[Setting up your Raspberry Pi (Raspberry Pi を設定する)](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)」を参照してください。
+* Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 Raspberry Pi からインターネットに接続できる必要があります。 詳細については、[Raspberry Pi の設定](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)に関するページを参照してください。
 
 ## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
 
@@ -48,7 +48,7 @@ ms.locfileid: "59426360"
   - Die number デバイス プロパティ
   - Location クラウド プロパティ
 
-デバイス テンプレートの構成について詳しくは、「[Raspberry Pi デバイス テンプレートの詳細](#raspberry-pi-device-template-details)」を参照してください。
+デバイス テンプレートの構成の詳細については、「[Raspberry PI デバイス テンプレートの詳細](#raspberry-pi-device-template-details)」を参照してください。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
@@ -361,6 +361,4 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、Raspberry Pi を Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は以下のとおりです。
-
-* [汎用の Node.js クライアント アプリケーションを Azure IoT Central に接続する](howto-connect-nodejs.md)
+ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

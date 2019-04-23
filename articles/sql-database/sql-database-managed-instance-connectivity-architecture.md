@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651314"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358282"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ 
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
 この記事では、Azure SQL Database マネージド インスタンスの通信について説明します。 接続アーキテクチャと、コンポーネントによるマネージド インスタンスへのトラフィックの誘導方法についても説明します。  
 
@@ -97,7 +97,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| 名前       |ポート                        |Protocol|ソース           |宛先|Action|
+| Name       |ポート                        |Protocol|ソース           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |ALLOW |
@@ -105,25 +105,24 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| 名前       |ポート          |Protocol|ソース           |宛先|Action|
+| Name       |ポート          |Protocol|ソース           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80、443、12000|TCP     |任意              |AzureCloud  |ALLOW |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |ALLOW |
 
 > [!IMPORTANT]
-> ポート 9000、9003、1438、1440、1452 に対するインバウンド規則が 1 つだけあり、ポート 80、443、12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、ARM デプロイによるマネージド インスタンスのプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイはエラー コード `VnetSubnetConflictWithIntendedPolicy` で失敗します
+> ポート 9000、9003、1438、1440、1452 に対するインバウンド規則が 1 つだけあり、ポート 80、443、12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、ARM デプロイによるマネージド インスタンスのプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイは次のエラー コードで失敗します:  `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI SUBNET は、10.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
 
 > [!IMPORTANT]
 > 必須の受信セキュリティ規則では、ポート 9000、9003、1438、1440、および 1452 で "_任意_" のソースからのトラフィックを許可しますが、これらのポートは組み込みのファイアウォールによって保護されています。 詳細については、[管理エンドポイントのアドレスの確認](sql-database-managed-instance-find-management-endpoint-ip-address.md)に関する記事を参照してください。
-
 > [!NOTE]
 > マネージド インスタンスでトランザクション レプリケーションを使用しているときに、いずれかのインスタンス データベースをパブリッシャーまたはディストリビューターとして使用した場合、サブネットのセキュリティ規則でポート 445 (TCP 送信) を開きます。 このポートは、Azure ファイル共有へのアクセスを許可します。
 
 ### <a name="user-defined-routes"></a>ユーザー定義のルート
 
-|名前|アドレス プレフィックス|次ホップ|
+|Name|アドレス プレフィックス|次ホップ|
 |----|--------------|-------|
 |subnet_to_vnetlocal|[mi_subnet]|仮想ネットワーク|
 |mi-0-5-next-hop-internet|0.0.0.0/5|インターネット|

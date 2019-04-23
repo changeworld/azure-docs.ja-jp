@@ -12,25 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5cca0d866442583c87665b3a1db8c65c66d12f0a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285379"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607774"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、[Azure CLI](/cli/azure/install-azure-cli)を使用して、 App Service on Linux の組み込み Python イメージ (プレビュー) の上に Python アプリをデプロイする方法を示します。
-
-この記事の手順は、Mac、Windows、または Linux コンピューターを使って実行できます。
+このクイック スタートでは、高度にスケーラブルな自己適用型の Web ホスティング サービスである [App Service on Linux](app-service-linux-intro.md) にシンプルな Python アプリをデプロイします。 インタラクティブなブラウザーベースの Azure Cloud Shell を通じて Azure のコマンド ライン インターフェイス ([Azure CLI](/cli/azure/install-azure-cli)) を使用するので、以下の手順は、Mac、Linux、Windows のどのコンピューターからでも使用できます。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,6 +34,7 @@ ms.locfileid: "58285379"
 
 * <a href="https://www.python.org/downloads/" target="_blank">Python 3.7 をインストールする</a>
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+* Azure サブスクリプション。 まだお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 
 ## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 
@@ -109,7 +106,7 @@ Checking connectivity... done.
 
 サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
 
-次の例の <app-name> は一意のアプリ名に置き換えます。
+次の例の `<app-name>` は一意のアプリ名に置き換えます。
 
 ```bash
 cd python-docs-hello-world
@@ -174,10 +171,10 @@ return "Hello Azure!"
 
 変更内容を保存し、エディターを終了します。 コマンド `^S` を使用して保存し、`^Q` を使用して終了します。
 
-これでアプリを再デプロイします。 `<app-name>` をお客様のアプリに置き換えます。
+[`az webapp up`](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) コマンドを使用してアプリを再デプロイします。 `<app-name>` は実際のアプリの名前に置き換え、`<location-name>` には、[`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドから表示されるいずれかの値を使用して実際の場所を指定してください。
 
 ```bash
-az webapp up -n <app-name>
+az webapp up -n <app-name> -l <location-name>
 ```
 
 デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
@@ -205,13 +202,10 @@ az webapp up -n <app-name>
 App Service on Linux の組み込み Python イメージは現在プレビュー段階であり、アプリを開始するために使用するコマンドをカスタマイズすることができます。 代わりにカスタム コンテナーを使用して運用環境向け Python アプリを作成することもできます。
 
 > [!div class="nextstepaction"]
-> [Python と PostgreSQL](tutorial-python-postgresql-app.md)
+> [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [カスタム スタートアップ コマンドを構成する](how-to-configure-python.md#customize-startup-command)
+> [Python アプリの構成](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [トラブルシューティング](how-to-configure-python.md#troubleshooting)
-
-> [!div class="nextstepaction"]
-> [カスタム イメージを使用する](tutorial-custom-docker-image.md)
+> [チュートリアル:Python アプリをカスタム コンテナーで実行する](tutorial-custom-docker-image.md)

@@ -1,21 +1,19 @@
 ---
 title: Azure Stream Analytics の概要
 description: モノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ管理されたサービスである Stream Analytics について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
-ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: f0104bdc4b5ea5c5c6333e12b95defafb34665b3
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 09f402f81700b53eb9e4a95e36545ef02850660a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295506"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524482"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -51,9 +49,9 @@ Azure Stream Analytics は、あらゆるジョブの規模に対応するスケ
 
 ## <a name="ease-of-getting-started"></a>簡単に始められる
 
-Azure Stream Analytics は簡単に始めることができます。 ほんの数回のクリックでさまざまなソースやシンクに接続し、エンド ツー エンドのパイプラインを作成することができます。 ストリーミング データ インジェストに関して、Stream Analytics は、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) や [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) に接続することができます。 また、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/storage-introduction) サービスに接続して、履歴データを取り込むこともできます。 イベント ハブからのデータは、他のデータ ソースや処理エンジンと結び付けることが可能です。 ジョブの入力には、参照データ (静的なデータ、緩やかに変化するデータ) を含めることもでき、その参照データにストリーミング データを結合することで、ルックアップ操作を実行することができます。
+Azure Stream Analytics は簡単に始めることができます。 ほんの数回のクリックでさまざまなソースやシンクに接続し、エンド ツー エンドのパイプラインを作成することができます。 ストリーミング データ インジェストに関して、Stream Analytics は、[Azure Event Hubs](/azure/event-hubs/) や [Azure IoT Hub](/azure/iot-hub/) に接続することができます。 また、[Azure Blob Storage](/azure/storage/storage-introduction) サービスに接続して、履歴データを取り込むこともできます。 イベント ハブからのデータは、他のデータ ソースや処理エンジンと結び付けることが可能です。 ジョブの入力には、参照データ (静的なデータ、緩やかに変化するデータ) を含めることもでき、その参照データにストリーミング データを結合することで、ルックアップ操作を実行することができます。
 
-Stream Analytics は、[Azure BLOB](https://docs.microsoft.com/azure/storage/storage-introduction)、[Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)、[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/)、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction) など、さまざまなストレージ システムにジョブの出力をルーティングすることができます。 保存後、Azure HDInsight を使ってバッチ分析を実行したり、出力を別のサービス (イベント ハブなど) に送信して利用したり、出力を [Power BI](https://docs.microsoft.com/power-bi/) に送信して、Power BI のストリーミング API を使ってリアルタイムに視覚化したりすることができます。
+Stream Analytics は、[Azure BLOB](/azure/storage/storage-introduction)、[Azure SQL Database](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/)、[Azure Cosmos DB](/azure/cosmos-db/introduction) など、さまざまなストレージ システムにジョブの出力をルーティングすることができます。 保存後、Azure HDInsight を使ってバッチ分析を実行したり、出力を別のサービス (イベント ハブなど) に送信して利用したり、出力を [Power BI](https://docs.microsoft.com/power-bi/) に送信して、Power BI のストリーミング API を使ってリアルタイムに視覚化したりすることができます。
 
 ## <a name="programmer-productivity"></a>プログラマの生産性
 
@@ -79,7 +77,8 @@ Azure Stream Analytics では、クラウドとインテリジェント エッ�
 ## <a name="mission-critical-ready"></a>ミッション クリティカル対応
 Azure Stream Analytics は世界中の複数のリージョンで使用でき、信頼性、セキュリティ、コンプライアンスの要件をサポートすることで、ミッション クリティカルなワークロードを実行するように設計されています。
 ### <a name="reliability"></a>信頼性
-厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 [イベント配信の保証](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)に関するページで説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。 Azure Stream Analytics には、イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 また、Stream Analytics では、ジョブの状態を保持するために組み込みのチェックポイント機能が提供され、反復可能な結果が提供されます。
+厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 [イベント配信の保証](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)に関するページで説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。
+Azure Stream Analytics には、イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 また、Stream Analytics では、ジョブの状態を保持するために組み込みのチェックポイント機能が提供され、反復可能な結果が提供されます。
 
 Stream Analytics はマネージド サービスとして、分レベルで 99.9% の可用性のイベント処理が証されます。 詳細については、「[Stream Analytics の SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)」を参照してください。 
 

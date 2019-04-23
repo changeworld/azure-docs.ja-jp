@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876838"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
@@ -76,7 +76,7 @@ ms.locfileid: "58876838"
 
 次のソフトウェア要件は、StorSimple Virtual Array (ファイル サーバーとして構成されている) にアクセスする SMB クライアントに適用されます。
 
-| **SMB のバージョン** |
+| **SMB バージョン** |
 | --- |
 | SMB 2.x |
 | SMB 3.0 |
@@ -92,7 +92,7 @@ Azure ブロック BLOB ストレージのみがサポートされています�
 ## <a name="networking-requirements"></a>ネットワーク要件
 iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
-| **ポート番号 <sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
+| **ポート番号<sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |アウト |WAN |いいえ  |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | TCP 443 (HTTPS) |アウト |WAN |はい |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |

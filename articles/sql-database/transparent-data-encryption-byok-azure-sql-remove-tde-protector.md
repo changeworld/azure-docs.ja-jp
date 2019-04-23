@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 51cdd43e62bd511da55978bbac3215200c3a8e01
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847805"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528273"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 
@@ -40,6 +40,12 @@ ms.locfileid: "58847805"
 サービスまたはユーザーがキーに不正アクセスしているなど、キーが侵害された疑いがある場合は、キーを削除するのが最善です。
 
 Key Vault の TDE 保護機能を削除すると、**サーバーにある暗号化されたデータベースへのすべての接続がブロックされ、これらのデータベースはオフラインになり、24 時間以内に削除される**ことに注意してください。 侵害されたキーで暗号化された古いバックアップにはアクセスできなくなります。
+
+次の手順では、特定のデータベースの仮想ログ ファイル (VLF) でまだ使用されている TDE 保護機能の拇印を確認する方法の概要を示します。 データベースの現在の TDE 保護機能の拇印、およびデータベース ID は、SELECT [database_id],        [encryption_state], [encryptor_type], /*非対称キーは AKV を意味し、証明書はサービス管理キーを意味します*/ [encryptor_thumbprint], FROM [sys].[dm_database_encryption_keys] を実行することで確認できます 
+ 
+次のクエリでは、VLF と、使用中の暗号化機能のそれぞれの拇印が返されます。 異なる拇印でそれぞれ、Azure Key Vault (AKV) の異なるキーが参照されます。SELECT * FROM sys.dm_db_log_info (database_id) 
+
+PowerShell コマンドの Get-AzureRmSqlServerKeyVaultKey では、クエリで使用される TDE 保護機能の拇印が提供されるため、AKV で保持するキーと削除するキーを確認できます。 データベースで使用されなくなったキーのみを、Azure Key Vault から安全に削除することができます。
 
 このハウツー ガイドでは、インシデント対応後の望ましい結果に応じた次の 2 つの方法を説明します。
 

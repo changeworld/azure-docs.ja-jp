@@ -8,10 +8,10 @@ ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 01c351ad08399c0b42e831e325b3f818741d1d83
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904374"
 ---
 # <a name="manage-azure-cosmos-resources-using-powershell"></a>PowerShell を使用した Azure Cosmos リソースの管理
@@ -164,7 +164,7 @@ MongoDB アカウントの場合、MongoDB アプリをデータベース アカ
 
 * `<resource-group-name>` 新しい Azure Cosmos DB データベース アカウントが属する [Azure リソース グループ][azure-resource-groups]の名前。
 * `<database-account-name>` Azure Cosmos DB データベース アカウントの名前。
-* `<key-kind>` 再生成するキーの種類 ("Primary"、"Secondary"、"PrimaryReadonly"、"SecondaryReadonly" の 4 種類のうちのいずれか)。
+* `<key-kind>` "Primary"、"Secondary"、"PrimaryReadonly"、"SecondaryReadonly" の 4 種類のキーのいずれかを再生成します。
 
 例:
 

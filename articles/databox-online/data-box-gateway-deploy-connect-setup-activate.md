@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: de2ef4908260a62acf28a270dda6ad738a1760b9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 898cb63f8868ce2abaee8784214322edf9a56997
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402335"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000319"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を接続、設定、アクティブ化する
 
@@ -63,15 +63,15 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
  
 ダッシュボードには、仮想デバイスを構成して Data Box Gateway サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**[クラウド設定]** のみです。
    
-![ローカル Web UI [ダッシュボード] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+![ローカル Web UI の [ダッシュボード] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
 1. 左側のウィンドウで **[デバイス名]** を選択し、デバイスのフレンドリ名を入力します。 フレンドリ名は 1 から 15 文字の長さにし、文字、数字、およびハイフンを含める必要があります。
 
-    ![ローカル Web UI [デバイス名] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
+    ![ローカル Web UI の [デバイス名] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
 2. (省略可能) 左側のウィンドウで **[ネットワーク設定]** を選択し、設定を構成します。 仮想デバイスで、基になる仮想マシンで構成した数に応じて、少なくとも 1 つまたは複数のネットワーク インターフェイスが表示されます。 ネットワーク インターフェイスが 1 つ有効になっている仮想デバイスの **[ネットワーク設定]** ページは、次のように表示されます。
     
-    ![ローカル Web UI [ネットワーク設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
+    ![ローカル Web UI の [ネットワーク設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
     ネットワーク設定を構成するときは、次のことに注意してください。
 
@@ -84,7 +84,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
 
 3. (省略可能) Web プロキシ サーバーを構成します。 Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、このページでのみ構成できます。
    
-   ![ローカル Web UI [Web プロキシ設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
+   ![ローカル Web UI の [Web proxy settings] (Web プロキシ設定) ページ](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
    **[Web プロキシ]** ページで、次の操作を行います。
    
@@ -97,7 +97,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
 
     デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
     
-    ![ローカル Web UI [時刻の設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
+    ![ローカル Web UI の [時刻の設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
     **[時刻の設定]** ページで、次の操作を行います。
     
@@ -117,18 +117,18 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
 
     2. **[アクティブ化]** を選択します。
        
-         ![ローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
+         ![ローカル Web UI の [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. デバイスがアクティブ化され、緊急更新プログラム (使用可能な場合) が自動的に適用されます。 その効果に関する通知が表示されます。 Azure portal で更新の進行状況を監視します。
+    3. デバイスがアクティブ化され、緊急更新プログラム (使用可能な場合) が自動的に適用されます。 その影響に関する通知が表示されます。 Azure portal で更新の進行状況を監視します。
 
-        ![ローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![ローカル Web UI の [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **このダイアログには、コピーして安全な場所に保存する必要がある回復キーも含まれています。このキーは、デバイスが起動できない場合にデータを復旧するために使用されます。**
 
 
     4. 更新プログラムが正常に完了した後、数分待つ必要があります。 更新後が完了したら、デバイスにサインインします。 **[クラウド設定]** ページが更新され、デバイスが正常にアクティブ化されたことが示されます。
 
-        ![更新されたローカル Web UI [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
+        ![更新されたローカル Web UI の [クラウド設定] ページ](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
 デバイスの設定が完了しました。 これで、デバイスで共有を追加できます。
 

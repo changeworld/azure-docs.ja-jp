@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
 ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903405"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789030"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを管理する
 
@@ -28,8 +28,8 @@ Azure Monitor の Log Analytics ワークスペースでは、コマンド ラ�
 * Linux コンピューターの syslog からのイベントの収集
 * Windows イベント ログからのイベントの収集
 * カスタム イベント ログの収集
-* Azure 仮想マシンへの Log Analytics エージェントの追加
-* Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
+* Azure 仮想マシンへのログ分析エージェントの追加
+* Azure Diagnostics を使用して収集されたデータをログ分析でインデックスするための構成
 
 この記事の 2 つのコード サンプルで紹介しているのは、PowerShell から実行できる機能の一部です。  その他の機能については、 [Log Analytics の PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/az.operationalinsights/) を参照してください。
 

@@ -4,21 +4,19 @@ description: この記事では、現在サポートされているデータ ソ
 services: data-catalog
 author: markingmyname
 ms.author: maghan
-ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 04/15/2019
+ms.openlocfilehash: d859fc92c4adbcd224d49601678804445a313ef7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410189"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579395"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
 ユーザーは、パブリック API またはワンクリック登録ツールを使って、または Azure Data Catalog の Web ポータルに直接情報を手動で入力して、メタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのデータ ソースと、それぞれの公開機能をまとめたものです。 また、各データ ソースを弊社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
-
 
 ## <a name="list-of-supported-data-sources"></a>サポートされるデータ ソースの一覧
 
@@ -32,7 +30,7 @@ ms.locfileid: "47410189"
        <td><b>メモ</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store のディレクトリ</td>
+      <td>Azure Data Lake Store のディレクトリ (Gen 1 のみ)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -40,7 +38,7 @@ ms.locfileid: "47410189"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store のファイル</td>
+      <td>Azure Data Lake Store ファイル (Gen 1 のみ)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

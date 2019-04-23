@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: a4907a65f100fd6efcabe422becad69aaee4b6ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/12/2019
+ms.openlocfilehash: 8a2a61e821ad41265dc9262064a79a5c44abbc7f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882711"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545826"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -72,7 +72,7 @@ DTU ベースの購入モデルを使用して作成されたデータベース�
 
 ### <a name="backups-for-point-in-time-restore"></a>ポイントインタイム リストアのバックアップ
 
-SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、コンピューティング サイズとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。
+SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、コンピューティング サイズとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 バックアップ ジョブを変更または無効化することはできません。 
 
 PITR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
 
@@ -107,14 +107,14 @@ PITR リテンション期間が 35 日間である DTU ベースのサービス
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>PITR のバックアップの保有期間を変更する方法
 
-Azure portal、PowerShell、または REST API を使用して、既定の PITR のバックアップの保有期間を変更できます。 サポートされる値は7、14、21、28、または 35 日間です。 次の例では、PITR リテンション期間を 28 日間に変更する方法を示します。
+既定の PITR バックアップ保持期間は、Azure portal、PowerShell、または REST API を使用して変更できます。 サポートされる値は7、14、21、28、または 35 日間です。 次の例では、PITR リテンション期間を 28 日間に変更する方法を示します。
 
 > [!NOTE]
 > これらの API は PITR リテンション期間にのみ影響を与えます。 データベースの LTR を構成した場合、それには影響ありません。 LTR の保持期間を変更する方法については、[長期保有](sql-database-long-term-retention.md)に関するページを参照してください。
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Azure portal を使用して PITR のバックアップの保有期間を変更する
 
-Azure portal を使用して PITR バックアップ保持期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
+Azure portal を使用して PITR バックアップ保有期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
 
 #### <a name="change-pitr-for-a-sql-database-server"></a>SQL Database サーバーの PITR の変更
 

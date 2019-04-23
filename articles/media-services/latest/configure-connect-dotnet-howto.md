@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 9fad5874a0e595ee2c275f06504665ce143266f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759239"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361243"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -200,10 +200,6 @@ namespace ConsoleApp1
  
         private static async Task<ServiceClientCredentials> GetCredentialsAsync(ConfigWrapper config)
         {
-            // Use UserTokenProvider.LoginWithPromptAsync or UserTokenProvider.LoginSilentAsync to get a token using user authentication
-            //// ActiveDirectoryClientSettings.UsePromptOnly
-            //// UserTokenProvider.LoginWithPromptAsync
-
             // Use ApplicationTokenProvider.LoginSilentWithCertificateAsync or UserTokenProvider.LoginSilentAsync to get a token using service principal with certificate
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
@@ -227,7 +223,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 - [チュートリアル:ビデオのアップロード、エンコード、ストリーミング - .NET](stream-files-tutorial-with-api.md) 
 - [チュートリアル:Media Services v3 によるライブ ストリーミング - .NET](stream-live-tutorial-with-api.md)
@@ -241,6 +237,6 @@ namespace ConsoleApp1
 - [Media Services を使用してフィルターを作成する - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Azure Functions v2 と Media Services v3 の高度なビデオ オンデマンドの例](https://aka.ms/ams3functions)
 
-## <a name="next-steps"></a>次の手順
+## <a name="see-also"></a>関連項目
 
 [.NET リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)

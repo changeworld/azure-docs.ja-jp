@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199632"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492347"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 
@@ -36,9 +36,6 @@ ms.locfileid: "58199632"
 
 1. 2 つの仮想ネットワークの両方が Resource Manager デプロイ モデルを使用している
 2. スポーク仮想ネットワークがクラシックであり、ゲートウェイを含むハブ仮想ネットワークが Resource Manager である
-
-> [!IMPORTANT]  
-> ゲートウェイ転送は、現時点で、プレビュー段階のグローバルな仮想ネットワーク ピアリングでサポートされます。 プレビューは、すべての Azure リージョン、中国のクラウド リージョン、および政府のクラウド リージョンで利用できますが、クラウド間では利用できません。 ホワイト リストに登録する必要はありません。 CLI、PowerShell、テンプレート、または API を介してプレビューをテストできます。 プレビューではポータルはサポートされていません。 
 
 ## <a name="requirements"></a>必要条件
 
@@ -66,7 +63,7 @@ ms.locfileid: "58199632"
 |Hub-RM|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |クラシック|[Classic Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
 |Spoke-Classic|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-||クラシック|[従来のネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
+||クラシック|[Classic Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
 

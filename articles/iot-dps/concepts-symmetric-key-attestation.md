@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050946"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
@@ -49,7 +49,7 @@ SAS トークンの形式は次のとおりです。
 | 値 | 説明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 署名文字列。 個別の登録の場合は、対称キー (プライマリまたはセカンダリ) を使用してハッシュを実行することにより、この署名が生成されます。 登録グループの場合は、登録グループ キーから派生したキーを使用して、ハッシュを実行します。 ハッシュは、`URL-encoded-resourceURI + "\n" + expiry` の形式のメッセージに対して実行されます。 **重要**:キーは、HMAC-SHA256 計算の実行に使用する前に、base64 からデコードする必要があります。 また、署名の結果は、URL でエンコードする必要があります。 |
-| {resourceURI} |このトークンを使用してアクセスできる登録エンドポイントの URI。Device Provisioning Service インスタンスのスコープ ID で始まっています。 たとえば、次のように入力します。 `{Scope ID}/registrations/{Registration ID}` |
+| {resourceURI} |このトークンを使用してアクセスできる登録エンドポイントの URI。Device Provisioning Service インスタンスのスコープ ID で始まっています。 たとえば、`{Scope ID}/registrations/{Registration ID}` のように指定します。 |
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} |小文字のリソース URI の小文字の URL エンコード |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 対称キー構成証明でプロビジョニングするときに使用されるポリシー名は、**registration** です。 |

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c67b3abd03be42e1b596885a53c3e6cdcc7106b6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 07ecaa564f2fda21967ab6f0c30c06fa876e4171
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894723"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699194"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>ID リソースをグローバル Azure に移行する
 
@@ -136,8 +136,6 @@ Azure AD Connect は、オンプレミス Active Directory インスタンスと
 - Azure AD Connect の 2 つ目のインスタンスに追加のサーバーを使用します。 同じサーバーで Azure AD Connect の複数のインスタンスを使用することはできません。
 - ユーザーの新しいサインイン名を定義します。 サインイン名のドメイン部分 (**\@** の後) は環境ごとに異なる必要があります。
 - 逆方向 (Azure AD からオンプレミスの Active Directory へ) にも同期する場合、明確な "真実のソース" を定義します。
-
-Azure AD Connect を使用して異なるクラウド環境で同期する方法の詳細については、[複数のクラウドで Azure AD Connect を使用する](https://blogs.technet.microsoft.com/ralfwi/2017/01/24/using-adconnect-with-multiple-clouds/)方法に関するブログの投稿を参照してください。
 
 既に Azure AD Connect を使用して、Azure Germany 間で同期している場合は、手動で作成したすべてのユーザーを移行してください。 次の PowerShell コマンドレットでは、Azure AD Connect を使用して同期されないすべてのユーザーが一覧表示されます。
 

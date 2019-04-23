@@ -6,14 +6,14 @@ author: alexkarcher-msft
 manager: jehollan
 ms.service: azure-functions
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 4f27bbeb43bbf373b621d151d68583f0041378b3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894208"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523734"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>関数アプリを Azure 仮想ネットワークに統合する
 
@@ -99,7 +99,7 @@ VNET 内からファイルをホストしている WordPress サイトでは、V
     <img src="./media/functions-create-vnet/new-proxy.png" width="250">
 
 1. プロキシ名とルートを構成します。 ここではルートとして /plant を選択します。
-1. 前に確認した WordPress サイトの IP を入力し、バックエンド URL を次の値に設定します `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
+1. 前に確認した WordPress サイトの IP を入力し、バックエンド URL を `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg` に設定します
     
     <img src="./media/functions-create-vnet/create-proxy.png" width="900">
 
@@ -111,13 +111,14 @@ VNET 内からファイルをホストしている WordPress サイトでは、V
 
 ## <a name="next-steps"></a>次の手順
 
-Premium プランで実行されている関数は、Web Apps と同じ基になる App Service インフラストラクチャを共有します。 つまり、Web Apps のドキュメントはすべて、Premium プランの関数に適用されます。
+Premium プランで実行されている関数は、PV2 プラン上の Web Apps と同じ基になる App Service インフラストラクチャを共有します。 つまり、Web Apps のドキュメントはすべて、Premium プランの関数に適用されます。
 
-1. [App Service または Functions との VNET 統合についての詳細情報](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-1. [Azure での VNET についての詳細情報](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)
-1. [App Service Environment でのネットワーク機能と制御を可能にする](https://docs.microsoft.com/azure/app-service/environment/intro)
-1. [ハイブリッド接続を使用して、ファイアウォールを変更せずに個々のオンプレミス リソースに接続する](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
-1. [関数プロキシについての詳細情報](https://review.docs.microsoft.com/azure/azure-functions/functions-proxies)
+1. [関数のネットワーク オプションの詳細については、こちらをご覧ください](./functions-networking-options.md)
+1. [関数のネットワークに関する FAQ については、こちらをご覧ください](./functions-networking-faq.md)
+1. [Azure での VNET についての詳細情報](../virtual-network/virtual-networks-overview.md)
+1. [App Service Environment でさらなるネットワーク機能と制御を可能にする](../app-service/environment/intro.md)
+1. [ハイブリッド接続を使用して、ファイアウォールを変更せずに個々のオンプレミス リソースに接続する](../app-service/app-service-hybrid-connections.md)
+1. [関数プロキシについての詳細情報](./functions-proxies.md)
 
 <!--Image references-->
 [1]: ./media/functions-create-vnet/topology.png

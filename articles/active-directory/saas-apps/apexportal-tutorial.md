@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ffd7207367d0bbdd670fb8402775b26952ae5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852595"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>チュートリアル:Azure Active Directory と Apex Portal の統合
 
@@ -68,7 +69,7 @@ Azure AD への Apex Portal の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**Apex Portal**」と入力し、結果パネルで **[Apex Portal]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Apex Portal](common/search-new-app.png)
+    ![結果一覧の Apex Portal](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -106,9 +107,9 @@ Apex Portal で Azure AD シングル サインオンを構成するには、次
 
     ![[Apex Portal のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<customer name>.apexportal.net/saml/sso.aspx` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<customer name>.apexanalytix.com/saml/sso.aspx` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<customer name>.apexportal.net/saml/sso.aspx` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Apex Portal Client サポート チーム](mailto:support@apexanalytix.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -120,7 +121,7 @@ Apex Portal で Azure AD シングル サインオンを構成するには、次
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | Name | ソース属性|
-    | ------------------- | -------------------- |
+    | -------- | --------- |
     | FIRSTNAME | User.givenname |
     | LASTNAME | User.surname |
     | MAIL | User.mail |
@@ -180,8 +181,7 @@ Apex Portal で Azure AD シングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -233,4 +233,3 @@ Apex Portal で Azure AD シングル サインオンを構成するには、次
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

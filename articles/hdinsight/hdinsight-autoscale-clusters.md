@@ -1,20 +1,19 @@
 ---
 title: Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
 description: HDInsight の自動スケール機能を使用してクラスターを自動的にスケール調整する
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: 28f04f5ab3cf8310a6ee3828405910d34b31591b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 11828b3b056519d0ebe3233f078c6b3f6fc2ea1c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58229344"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997497"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
 
@@ -62,8 +61,10 @@ Azure Resource Manager テンプレートで HDInsight クラスターを作成�
     "name": "workernode",
     "targetInstanceCount": 4,
     "autoscale": {
-        "minInstanceCount": 2,
-        "maxInstanceCount": 10
+        "capacity": {
+            "minInstanceCount": 2,
+            "maxInstanceCount": 10
+        }        
     },
     "hardwareProfile": {
         "vmSize": "Standard_D13_V2"
@@ -83,7 +84,7 @@ Resource Manager テンプレートを使用してクラスターを作成する
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>実行中のクラスターの自動スケーリングの有効化および無効化
 
-2019 年 1 月 1 日以降に作成された HDInsight クラスターの自動スケーリングは、Azure portal を使用して有効または無効にすることができます。
+新しい HDInsight クラスターの自動スケーリングのみを有効または無効にすることができます。
 
 ## <a name="monitoring"></a>監視
 
@@ -108,8 +109,8 @@ Resource Manager テンプレートを使用してクラスターを作成する
 
 次の条件が検出されると、自動スケーリングによりスケールアップ要求が発行されます。
 
-* 保留中の CPU の合計が空き CPU の合計を超えて 1 分以上が経過した。
-* 保留中のメモリの合計が空きメモリの合計を超えて 1 分以上が経過した。
+* 保留中の CPU の合計が空き CPU の合計を超えて 3 分以上が経過した。
+* 保留中のメモリの合計が空きメモリの合計を超えて 3 分以上が経過した。
 
 現在の CPU とメモリの要件を満たすために必要な新しいワーカー ノードの特定の数が計算された後、その数の新しいワーカー ノードを追加するスケールアップ要求が発行されます。
 
@@ -120,7 +121,7 @@ Resource Manager テンプレートを使用してクラスターを作成する
 * 保留中の CPU の合計が空き CPU の合計を下回って 10 分以上が経過した。
 * 保留中のメモリの合計が空きメモリの合計を下回って 10 分以上が経過した。
 
-ノードごとの AM コンテナーの数および現在の CPU とメモリの要件に基づき、自動スケーリングにより、潜在的な削除候補のノードが指定されて、特定の数のノードを削除する要求が発行されます。 既定では、1 サイクルで 2 つのノードが削除されます。
+ノードごとの AM コンテナーの数および現在の CPU とメモリの要件に基づき、自動スケーリングにより、潜在的な削除候補のノードが指定されて、特定の数のノードを削除する要求が発行されます。スケール ダウンによってノードの使用停止がトリガーされ、ノードは完全に使用停止になってから削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: aac15d766439a725f593ca421cbdc6da496f29f4
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862694"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Azure Security Center for IoT の使用を開始する 
@@ -51,7 +51,7 @@ IoT デバイスと環境の要件に最適なワークフロー シナリオを
 
 デバイス ID 管理およびデバイスとクラウド間の通信パターンの監視を有効にするには、次の基本的なワークフローをテストとサービスの開始に使用します。 
 
-1. [IoT Hub で ASC for IoT サービスを有効にします。](quickstart-onboard-iot-hub.md)
+1. [IoT Hub で ASC for IoT を有効](quickstart-onboard-iot-hub.md)にします。
 1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy)します。
 1. デバイス用の [azureiotsecurity セキュリティ モジュールを作成](quickstart-create-security-twin.md)します。 
 1. [カスタム アラート](quickstart-create-custom-alerts.md)を使用して、デバイスとシステムの通常の動作を定義します。 
@@ -63,7 +63,7 @@ IoT デバイスと環境の要件に最適なワークフロー シナリオを
 
 次の基本的なワークフローを使用して、ASC for IoT の強化されたセキュリティ機能 (リモート接続、アクティブ アプリケーション、ログイン イベント、および OS 構成のベスト プラクティスの監視など) を活用し、サービスのテストと有効化を行います。 
 
-1. [IoT Hub で ASC for IoT サービスを有効にします。](quickstart-onboard-iot-hub.md)
+1. [IoT Hub で ASC for IoT サービスを有効化](quickstart-onboard-iot-hub.md)します。
 1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy)します。
 1. デバイス用の [azureiotsecurity セキュリティ モジュール](quickstart-create-security-twin.md)を作成します。
 1. 実際のデバイスにインストールするのではなく、Azure シミュレート デバイスにエージェントをインストールするには、使用可能なゾーンで[新しい Azure Virtual Machine (VM ) を作成](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)します。 

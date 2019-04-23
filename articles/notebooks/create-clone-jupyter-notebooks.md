@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282323"
 ---
 # <a name="create-and-clone-projects"></a>プロジェクトの作成と複製
@@ -30,13 +30,13 @@ Azure Notebooks では、Jupyter ノートブックや関連するファイル�
 
 `https://notebooks.azure.com/<userID>/projects` の **[マイ プロジェクト]** は、プロジェクトの表示、管理、および作成を行う場所です。
 
-[![MAzure Notebooks の [マイ プロジェクト] ダッシュボード(media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Azure Notebooks の [マイ プロジェクト] ダッシュボード](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 ダッシュボードで実行できることは、ユーザー ID を所有するアカウントでサインインしているかどうかによって変わります。
 
 | command | 対象 | 説明 |
 | --- | --- | --- |
-| **ラン** | Owner | プロジェクト サーバーを起動し、Jupyter でプロジェクト フォルダーを開きます  (さらに一般的な手順では、まずプロジェクト フォルダーに移動して、そこからノートブックを開始します)。 |
+| **Run** | Owner | プロジェクト サーバーを起動し、Jupyter でプロジェクト フォルダーを開きます  (さらに一般的な手順では、まずプロジェクト フォルダーに移動して、そこからノートブックを開始します)。 |
 | **ダウンロード** | Anyone | 選択したプロジェクトのコピーを ZIP ファイルとしてダウンロードします。 |
 | **共有** | Anyone | URL を含む "ノートブックの起動" バッジを使用して (「[起動バッジを取得する](#obtain-a-launch-badge)」を参照してください)、選択したプロジェクトの URL の取得、ソーシャル メディアへの共有、URL を含むメールの送信、および HTML またはマークダウン コードの両方の取得に使用できる共有ポップアップを表示します。 |
 | **削除** | Owner | 選択されたプロジェクトを削除します。 削除操作は元に戻すことができません。 |
@@ -122,8 +122,8 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
 - [方法:プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
-- [方法:ノートブック内からパッケージをインストールする](install-packages-jupyter-notebook.md)
+- [方法: ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
 - [方法:スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [方法:データ ファイルの操作](work-with-project-data-files.md)
-- [方法:データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法:Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
+- [方法: Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)

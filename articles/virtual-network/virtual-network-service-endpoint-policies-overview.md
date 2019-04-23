@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652588"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494175"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワークのサービス エンドポイント ポリシー (プレビュー)
 
@@ -24,7 +24,7 @@ Virtual Network (VNet) のサービス エンドポイント ポリシーでは�
 
 この機能は __プレビュー__ 段階で、次の Azure サービスとリージョンで提供されています。
 
-__Azure Storage__:WestCentralUS、WestUS2。
+__Azure Storage__:WestCentralUS、WestUS2、NorthCentralUS、SouthCentralUS、CentralUS、EastUS2。
 
 プレビューに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 

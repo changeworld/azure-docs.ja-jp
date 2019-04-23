@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/18/2019
+ms.date: 04/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189548"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546898"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。
@@ -170,33 +170,10 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 クエリが別のクエリからのリソースを積極的に待っている場合、状態は **AcquireResources**になります。  クエリに必要なリソースがすべて揃っている場合、状態は **Granted**になります。
 
 ## <a name="monitor-tempdb"></a>tempdb を監視する
-tempdb の高使用率が、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 クエリの実行中に tempdb がその制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。 次の情報は、各ノードのクエリごとの tempdb 使用率を識別する方法について説明しています。 
+tempdb は、クエリ実行中に中間結果を保持するために使用されます。 tempdb データベースの使用率が高いと、クエリのパフォーマンスが低下する可能性があります。 Azure SQL Data Warehouse の各ノードには、tempdb 用の約 1 TB の生の領域があります。 tempdb の使用状況を監視するためのヒントと、クエリでの tempdb 使用率を減らすためのヒントを以下に示します。 
 
-以下のビューを作成し、sys.dm_pdw_sql_requests に適切なノード ID を関連付けます。 ノード ID によって、他のパススルー DMV を使用して、それらのテーブルを sys.dm_pdw_sql_requests と結合できます。
-
-```sql
--- sys.dm_pdw_sql_requests with the correct node id
-CREATE VIEW sql_requests AS
-(SELECT
-       sr.request_id,
-       sr.step_index,
-       (CASE 
-              WHEN (sr.distribution_id = -1 ) THEN 
-              (SELECT pdw_node_id FROM sys.dm_pdw_nodes WHERE type = 'CONTROL') 
-              ELSE d.pdw_node_id END) AS pdw_node_id,
-       sr.distribution_id,
-       sr.status,
-       sr.error_id,
-       sr.start_time,
-       sr.end_time,
-       sr.total_elapsed_time,
-       sr.row_count,
-       sr.spid,
-       sr.command
-FROM sys.pdw_distributions AS d
-RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
-```
-tempdb を監視するには、次のクエリを実行します。
+### <a name="monitoring-tempdb-with-views"></a>ビューでの tempdb の監視
+tempdb の使用状況を監視するには、まず、「[Microsoft Toolkit for SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring)」(SQL Data Warehouse 向け Microsoft Toolkit) から [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) ビューをインストールします。 その後、次のクエリを実行し、実行したすべてのクエリのノードごとの tempdb 使用状況を確認することができます。
 
 ```sql
 -- Monitor tempdb
@@ -221,12 +198,17 @@ SELECT
 FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
     INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
-    INNER JOIN sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+    INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
     AND es.login_name <> 'sa' 
 ORDER BY sr.request_id;
 ```
+
+クエリで大量のメモリを消費しているか、tempdb の割り当てに関するエラー メッセージが表示された場合は、多くの場合、非常に大きな [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) または [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) ステートメントが実行されていることが原因です。この場合、最終的なデータの移動操作に失敗します。 これは通常、最終的な INSERT SELECT の直前の、分散クエリ プランの ShuffleMove 操作として識別できます。
+
+最も一般的な軽減策は、データ ボリュームが tempdb の制限である 1 TB (ノードあたり) を超えないように、CTAS または INSERT SELECT ステートメントを複数の LOAD ステートメントに分割することです。 また、クラスターをより大きなサイズにスケーリングすることができます。これにより、より多くのノードに tempdb サイズが分散され、個々のノードの tempdb が減ります。 
+
 ## <a name="monitor-memory"></a>メモリを監視する
 
 メモリが、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 クエリの実行中に SQL Server のメモリ使用率が制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。

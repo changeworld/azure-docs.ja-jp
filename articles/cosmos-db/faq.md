@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259909"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523955"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -95,8 +95,9 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 * MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
 * 10 GB のストレージ容量。
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です
-* 最大スループット 5 K RU/秒。
-* サブスクリプションの有効期限は 24 時間後に切れます。これは、合計で最大 48 時間まで延長できます。
+* コンテナー レベルでプロビジョニングされている場合、最大 5 K RU/s のスループット。
+* データベース レベルでプロビジョニングされている場合、最大 20 K RU/s のスループット。
+* サブスクリプションの有効期限は 30 日後に切れます。これは合計で最大 31 日まで延長できます。
 * Try Azure Cosmos DB アカウントでは Azure サポート チケットを作成できません。ただし、既存のサポート プランをご利用のサブスクライバーにはサポートが提供されます。
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB の設定
@@ -201,7 +202,7 @@ Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれか�
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>ポータルのデータ エクスプローラーから表示したとき、ドキュメント内の長い浮動小数点値が丸められるのはなぜですか?
 
-これは、JavaScript の制限です。 JavaScript では IEEE 754 で指定されている倍精度浮動小数点形式の値が使用されるため、安全に保持できるのは -(253 - 1) ～ 253 - 1 (つまり 9007199254740991) の範囲の値だけです。
+これは、JavaScript の制限です。 JavaScript では IEEE 754 で指定されている倍精度浮動小数点形式の値が使用されるため、安全に保持できるのは -(2<sup>53</sup> - 1) から 2<sup>53</sup> - 1 (つまり 9007199254740991) の範囲の値だけです。
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>アクセス許可はオブジェクト階層のどこで許可されますか?
 
@@ -265,7 +266,7 @@ REST API に関しては、Azure Cosmos DB Table API によってサポートさ
 | REST メソッド | REST エンドポイント/クエリ オプション | ドキュメントの URL | 説明 |
 | ------------| ------------- | ---------- | ----------- |
 | GET、PUT | /?restype=service@comp=properties| 「[Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties)」(Table Service のプロパティを設定する) および「[Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties)」(Table Service のプロパティを取得する) | このエンドポイントは、CORS ルールの設定、ストレージ分析の構成、ログ記録の設定に使われます。 CORS は現在サポートされておらず、Azure Cosmos DB での分析とログ記録の処理は Azure Storage Table とは異なります。 |
-| OPTIONS | /<table-resource-name> | 「[Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
+| OPTIONS | /\<table-resource-name> | 「[Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request)」(プレフライト CORS テーブル要求) | これは、Azure Cosmos DB が現在サポートしていない CORS の一部です。 |
 | GET | /?restype=service@comp=stats | 「[Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats)」(Table Service の統計情報を取得する) | プライマリとセカンダリの間でデータがレプリケートされる速度の情報を提供します。 Cosmos DB ではレプリケーションは書き込みの一部なので、これは必要ありません。 |
 | GET、PUT | /mytable?comp=acl | 「[Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl)」(テーブルの ACL を取得する) および[Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl)」(テーブルの ACL を設定する) | Shared Access Signature (SAS) の管理に使われる保存されたアクセス ポリシーを取得および設定します。 SAS はサポートされていますが、設定と管理の方法は異なります。 |
 
@@ -690,7 +691,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 この無制限のストレージは、主要概念としてパーティション分割を使用する、データの水平スケールアウトに基づいてします。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
 
-論理パーティションあたりのエンティティ数または項目数に対する 10 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (10 GB を超える) データ が割り当てられている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択し、データの分散を改善することをお勧めします。
+論理パーティションあたりのエンティティ数または項目数に対する 10 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーに大量の (10&nbsp;GB を超える) データ が割り当てられている場合にのみ発生する可能性があります。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択し、データの分散を改善することをお勧めします。
 
 ### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>パーティション キーが数百万個または数十億個あるキー値ストアとして Cassandra API を使用することはできますか?
 

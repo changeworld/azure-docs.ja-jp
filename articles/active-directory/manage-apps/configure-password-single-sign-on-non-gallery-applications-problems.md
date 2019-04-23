@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f8787008b396c2dd8ce1c006a40fee1e32e8100d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857999"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617380"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題
 
@@ -142,7 +142,7 @@ ms.locfileid: "57857999"
 
 -   手動キャプチャ プロセスをもう一度実行してみて、正しいフィールドに赤いマーカーが表示されていることを確認してください。
 
--   手動キャプチャ プロセスが停止しているように見えるか、サインイン ページで何も起きない (上の 3 つ目のケース) 場合は、手動キャプチャ プロセスを再度試します。 ただし、今回はプロセスを完了した後で **F12** キーを押して、ブラウザーの開発者コンソールを開きます。 **コンソール**が開かれたら、「**window.location="&lt;アプリの構成時に指定したサインイン URL を入力&gt;"**」と入力し、**Enter** キーを押します。 これにより、キャプチャ プロセスを終了し、キャプチャされたフィールドを格納するページ リダイレクトが強制的に実行されます。
+-   手動キャプチャ プロセスの応答が停止しているように見えるか、サインイン ページで何も起きない (上の 3 つ目のケース) 場合は、手動キャプチャ プロセスを再度試します。 ただし、今回はプロセスを完了した後で **F12** キーを押して、ブラウザーの開発者コンソールを開きます。 **コンソール**が開かれたら、「**window.location="&lt;アプリの構成時に指定したサインイン URL を入力&gt;"**」と入力し、**Enter** キーを押します。 これにより、キャプチャ プロセスを終了し、キャプチャされたフィールドを格納するページ リダイレクトが強制的に実行されます。
 
 これらのいずれの方法でも解決しなかった場合は、サポートが支援できます。 サポート ケースを開き、何をしようとしたかについての詳細と、「[ポータルの通知の詳細を確認する方法](#i-cannot-manually-detect-sign-in-fields-for-my-application)」と「[通知の詳細をサポート エンジニアに送信して支援を受ける方法](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)」のセクションで収集した情報 (該当する場合) をお知らせください。
 

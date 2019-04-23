@@ -1,6 +1,6 @@
 ---
-title: Azure IoT の OPC UA 証明書管理を使用して OPC クライアントと OPC PLC の通信をセキュリティで保護する | Microsoft Docs
-description: OPC Vault CA を使用して証明書に署名することで、OPC クライアントおよび OPC PLC の通信をセキュリティで保護します。
+title: OPC Vault を利用し、OPC クライアントと OPC PLC の通信をセキュリティで保護する - Azure | Microsoft Docs
+description: OPC Vault CA を使用して証明書に署名することで、OPC クライアントおよび OPC PLC の通信がセキュリティで保護されます。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c437f6db21956d1be5e4f6d3512f325f37ca7308
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759238"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494015"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>OPC クライアントと OPC PLC の通信をセキュリティで保護する
 
-Azure IoT の OPC UA 証明書管理 (OPC Vault とも呼ばれます) は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うことができるマイクロサービスです。 この記事では、OPC Vault CA を使用して証明書に署名することで、OPC クライアントおよび OPC PLC の通信をセキュリティで保護する方法を示します。
+OPC Vault は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault CA を使用して証明書に署名することで、OPC クライアントおよび OPC PLC の通信をセキュリティで保護する方法を示します。
 
 次のセットアップでは、OPC クライアントは OPC PLC への接続をテストします。 既定では、両方のコンポーネントが適切な証明書を使用してプロビジョニングされていないため、接続は不可能となっています。 OPC UA コンポーネントが証明書を使用してまだプロビジョニングされていなかった場合は、起動時に自己署名証明書が生成されます。 ただし、証明書の署名を証明機関 (CA) が行って、それを OPC UA コンポーネントにインストールすることができます。 OPC クライアントおよび OPC PLC に対してこれが実行されると、接続が有効になります。 下のワークフローは、このプロセスを説明しています。 OPC UA のセキュリティに関する一部の背景情報については、[このドキュメント](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf) (ホワイト ペーパー) に記載されています。 完全な情報は、OPC UA の仕様書に記載されています。
 
@@ -37,9 +37,9 @@ OPC Vault スクリプト:
 
 - 環境変数 `$env:_OPCVAULTID` を、OPC Vault で再度データを見つけることができる文字列に設定します。 英数字のみを使用できます。 たとえば、この変数の値として "123456" が使用されました。
 
-- Docker ボリュームの `opcclient` や `opcplc` がないようにします。 `docker volume ls` で調べて、`docker volume rm <volumename>` でそれらを削除します。 コンテナーによってまだボリュームが使用されている場合は、`docker rm <containerid>` でコンテナーも削除する必要が生じることもあります。
+- Docker ボリュームの `opcclient` や `opcplc` がないようにします。 `docker volume ls` で調べて、`docker volume rm <volumename>` でそれらを削除します。 コンテナーによってまだボリュームが使用されている場合は、`docker rm <containerid>` でコンテナーも削除する必要が生じることがあります。
 
-**クイックスタート**
+**クイック スタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 
@@ -49,7 +49,7 @@ docker-compose -f connecttest.yml up
 
 **確認**
 
-ログで、初回起動時にインストールされた証明書がないことを確認します。 以下に、OPC PLC のログ出力を示します (OPC クライアントについても同様に表示されます)。
+ログで、初回起動時にインストールされた証明書がないことを確認します。 OPC PLC のログ出力は次のようになります (OPC クライアントの場合も同様の内容が出力されます)。
 ```
 opcplc-123456 | [20:51:32 INF] Trusted issuer store contains 0 certs
 opcplc-123456 | [20:51:32 INF] Trusted issuer store has 0 CRLs.
@@ -59,7 +59,7 @@ opcplc-123456 | [20:51:32 INF] Rejected certificate store contains 0 certs
 ```
 報告対象の証明書が表示される場合は、上記の準備手順に従って Docker ボリュームを削除します。
 
-OPC PLC への接続が失敗したことを確認します。 OPC クライアントのログ出力に、次の出力が表示されるはずです。
+OPC PLC への接続が失敗したことを確認します。 OPC クライアント ログ出力には次の出力が表示されるはずです。
 
 ```
 opcclient-123456 | [20:51:35 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
@@ -92,7 +92,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
     
 1. [OPC Vault の Web サイト](https://opcvault.azurewebsites.net/)に移動します。
 
-1. `Register New` を選択します
+1. 選択 `Register New`
 
 1. ログ出力の `CreateSigningRequest information` 領域から得た OPC PLC の情報を `Register New OPC UA Application` ページの入力フィールドに入力し、ApplicationType として `Server` を選択します。
 
@@ -107,11 +107,11 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
 1. これで `View Certificate Request Details` に進むことになります。 このページでは、`opc-plc` の証明書ストアをプロビジョニングするために必要なすべての情報をダウンロードできます。
 
 1. このページでの手順:  
-    - `Download as Base64` で `Certificate` を選択し、`EncodedBase64` フィールドに表示されるテキスト文字列をコピーしたら、後で使用するために保存します。 以後はこれを `<applicationcertbase64-string>` と呼びます。 [`Back`] を選択します。
+    - `Download as Base64` で `Certificate` を選択し、`EncodedBase64` フィールドに表示されるテキスト文字列をコピーしたら、後で使用するために保存します。 後で `<applicationcertbase64-string>` として参照します。 [`Back`] を選択します。
 
-    - `Download as Base64` で `Issuer` を選択し、`EncodedBase64` フィールドに表示されるテキスト文字列をコピーしたら、後で使用するために保存します。 以後はこれを `<addissuercertbase64-string>` と呼びます。 [`Back`] を選択します。
+    - `Download as Base64` で `Issuer` を選択し、`EncodedBase64` フィールドに表示されるテキスト文字列をコピーしたら、後で使用するために保存します。 後で `<addissuercertbase64-string>` として参照します。 [`Back`] を選択します。
 
-    - `Download as Base64` で `Crl` を選択し、`EncodedBase64` フィールドに表示されるテキスト文字列をコピーしたら、後で使用するために保存します。 以後はこれを `<updatecrlbase64-string>` と呼びます。 [`Back`] を選択します。
+    - `Download as Base64` で `Crl` を選択し、`EncodedBase64` フィールドに表示されるテキスト文字列をコピーしたら、後で使用するために保存します。 後で `<updatecrlbase64-string>` として参照します。 [`Back`] を選択します。
 
 1. ここで、PowerShell で `$env:_PLC_OPT` という名前の変数を設定します。
 
@@ -130,7 +130,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
 > [!NOTE]
 > このシナリオの作業中に、`opcplc` と `opcclient` について、`<addissuercertbase64-string>` と `<updatecrlbase64-string>` の値が同一であると気付いたかもしれません。 今回のユース ケースの場合はそのとおりで、手順の実行中に少し時間の節約になります。
 
-**クイックスタート**
+**クイック スタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 
@@ -160,7 +160,7 @@ opcplc-123456 | [20:54:39 INF] Application certificate is for ApplicationUri 'ur
  ```
 そこにアプリケーション証明書があり、CA によって署名されています。
 
-ログで、今回はインストールされた証明書があることを確認します。 次に OPC PLC のログ出力を示します。OPC クライアントも類似の出力となります。
+ログで、今回はインストールされた証明書があることを確認します。 次に OPC PLC のログ出力を示します。OPC クライアントも同様の出力となります。
 ```
 opcplc-123456 | [20:54:39 INF] Trusted issuer store contains 1 certs
 opcplc-123456 | [20:54:39 INF] 01: Subject 'CN=Azure IoT OPC Vault CA, O=Microsoft Corp.' (thumbprint: BC78F1DDC3BB5D2D8795F3D4FF0C430AD7D68E83)
@@ -175,7 +175,7 @@ opcplc-123456 | [20:54:39 INF] Rejected certificate store contains 0 certs
 アプリケーション証明書の発行者は CA `CN=Azure IoT OPC Vault CA, O=Microsoft Corp.` で、OPC PLC は、この CA によって署名されたすべての証明書も信頼します。
 
 
-OPC PLC への接続が正常に作成されていて、OPC クライアントが OPC PLC のデータを読み取れることを確認します。 OPC クライアントのログ出力に、次の出力が表示されるはずです。
+OPC PLC への接続が正常に作成されていて、OPC クライアントが OPC PLC のデータを読み取れることを確認します。 OPC クライアント ログ出力には次の出力が表示されるはずです。
 ```
 opcclient-123456 | [20:54:42 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [20:54:42 INF] Session successfully created with Id ns=3;i=1085867946.
@@ -192,7 +192,7 @@ opcclient-123456 | [20:54:42 INF] Value (ActionId: 000 ActionType: 'OpcTestActio
 この出力が表示される場合、OPC PLC と OPC クライアントが相互に信頼するようになっています。CA によって署名された証明書がこれで両方に用意されて、両方がこの CA によって署名された証明書を信頼しているためです。
 
 > [!NOTE] 
-> 最初の 2 つの確認手順は OPC PLC についてのみ示しましたが、それらは OPC クライアントに対しても確認する必要があります。
+> OPC PLC についての最初の 2 つの確認手順のみを示しましたが、それらは OPC クライアントに対しても確認する必要があります。
 
 
 ## <a name="next-steps"></a>次の手順

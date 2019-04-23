@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: da643a4d7a1dc74385b3854c1952af5ba93bd241
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358097"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
@@ -26,7 +26,7 @@ c
 > * VM のレプリケーションを有効にします。
 
 > [!NOTE]
-> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、Site Recovery の目次の操作方法のセクションにある記事を参照してください。
+> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、Site Recovery の目次のハウツー セクションにある記事を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 これは、シリーズ 3 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクがすでに完了していることを前提としています。
@@ -38,7 +38,7 @@ c
 
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
 
-1. **[Recovery Services コンテナー]** で、コンテナーを選択します。 前のチュートリアルでコンテナー **ContosoVMVault** を準備しました。
+1. **[Recovery Services コンテナー]** で、コンテナーを選択します。 コンテナー **ContosoVMVault** を前のチュートリアルで準備しました。
 2. **[作業の開始]** で、**[Site Recovery]** をクリックします。 次に、**[インフラストラクチャの準備]** をクリックします。
 3. **[保護の目標]** > **[マシンのある場所]** で、**[オンプレミス]** を選択します。
 4. **[マシンをどこにレプリケートしますか]** で、**[To Azure]\(Azure\)** を選択します。
@@ -144,4 +144,4 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [ディザスター リカバリー訓練を実行する](tutorial-dr-drill-azure.md)
+> [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)

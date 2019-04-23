@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c37a58cb9f9d1082d02854f43e511e5431d90c13
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894253"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、サンプル ToU を作成する手順について説明します。 ToU を作成するときに、**[条件付きアクセス ポリシー テンプレートを使用して適用します]** の値を選択します。 **[カスタム ポリシー]** を選択すると、ToU が作成されるとすぐに、新しい条件付きアクセス ポリシーを作成するためのダイアログが開かれます。
 
-**利用規約を作成するには:**
+**使用条件を作成するには:**
 
 1. Microsoft Word で、新しいドキュメントを作成します。
 
@@ -114,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[新規]** ページの **[名前]** ボックスに、「**Require TOU for Isabella**」と入力します。
 
-   ![名前](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835018"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524907"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する
 このドキュメントでは、Hive クエリを使用して、Azure HDInsight Hadoop クラスターに格納されているデータの特徴を作成する方法について説明します。 これらの Hive クエリでは、埋め込みの Hive のユーザー定義関数 (UDF) を使用します。また、そのスクリプトも用意されています。
@@ -89,14 +89,14 @@ Hive には、[datetime] フィールドを処理するための UDF のセッ�
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-この Hive クエリは、*<datetime field>* が既定の datetime 形式であることを前提としています。
+この Hive クエリは、*\<datetime フィールド>* が既定の datetime 形式であることを前提としています。
 
 [datetime] フィールドが既定の形式でない場合、まず [datetime] フィールドを Unix のタイムスタンプに変換してから、Unix のタイムスタンプを既定の形式の datetime 文字列に変換する必要があります。 datetime が既定の形式の場合は、特徴を抽出するために組み込みの datetime ユーザー定義関数を適用することができます。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-このクエリでは、*<datetime field>* が *03/26/2015 12:04:39* のようなパターンである場合、*<pattern of the datetime field>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。 これをテストするために、ユーザーは次を実行できます。
+このクエリでは、*\<datetime フィールド>* が *03/26/2015 12:04:39* のようなパターンである場合、*\<datetime フィールドのパターン>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。 これをテストするために、ユーザーは次を実行できます。
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

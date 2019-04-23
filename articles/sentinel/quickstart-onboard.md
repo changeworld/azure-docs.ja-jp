@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276645"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel プレビューをオンボードする
@@ -49,7 +49,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 1. Azure portal にアクセスします。
 2. Azure Sentinel が作成されたときのサブスクリプションが選択されていることをご確認ください。 
 3. Azure Sentinel を検索します。 
-   ![検索](./media/quickstart-onboard/search-product.png)
+   ![search](./media/quickstart-onboard/search-product.png)
 
 1. **[+ 追加]** をクリックします。
 1. 使用するワークスペースを選択するか、新しいワークスペースを作成します。 複数のワークスペースで Azure Sentinel を実行できますが、データは 1 つのワークスペースに分離されます。

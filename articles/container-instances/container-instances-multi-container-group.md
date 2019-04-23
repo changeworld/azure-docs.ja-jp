@@ -1,43 +1,53 @@
 ---
-title: Azure Container Instances に複数コンテナー グループをデプロイする
-description: Azure Resource Manager テンプレートを使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
+title: チュートリアル - Azure Container Instances に複数コンテナー グループをデプロイする - テンプレート
+description: このチュートリアルでは、Azure Resource Manager テンプレートと Azure CLI を使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 93f73e133e99025b479d0b38512e26088a8eaefa
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f769beda1654dc9f58ecff733741fb1ab9118031
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369117"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006920"
 ---
-# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 
-Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
+> [!div class="op_single_selector"]
+> * [YAML](container-instances-multi-container-yaml.md)
+> * [リソース マネージャー](container-instances-multi-container-group.md)
 
-Azure CLI を使用して複数コンテナー グループをデプロイする方法は 2 つあります。
+Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
-* Resource Manager テンプレートのデプロイ (この記事)
-* [YAML ファイルのデプロイ](container-instances-multi-container-yaml.md)
+このチュートリアルでは、Azure CLI を使用して Azure Resource Manager テンプレートをデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順を行います。 学習内容は次のとおりです。
 
-コンテナー インスタンスのデプロイ時に追加の Azure サービス リソース (Azure Files 共有など) をデプロイする必要がある場合は、Resource Manager テンプレートでのデプロイをお勧めします。 YAML フォーマットは簡潔であるため、コンテナー インスタンス*のみ*を含むデプロイには YAML ファイルを使用するデプロイをお勧めします。
+> [!div class="checklist"]
+> * 複数コンテナー グループ テンプレートをデプロイする
+> * コンテナー グループをデプロイする
+> * コンテナーのログを表示する
+
+Resource Manager テンプレートは、追加の Azure サービス リソース (Azure Files 共有や仮想ネットワークなど) をコンテナー グループと共にデプロイする必要があるシナリオに合わせて簡単に適応させることができます。 
 
 > [!NOTE]
-> 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
+> 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 
 
-その他のテンプレート サンプルについては、「[Azure Container Instances のための Azure Resource Manager テンプレート](container-instances-samples-rm.md)」を参照してください。 
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="configure-the-template"></a>テンプレートの構成
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-この記事のセクションでは、Azure Resource Manager テンプレートをデプロイして、シンプルな複数コンテナー サイドカー構成を実行します。
+## <a name="configure-a-template"></a>テンプレートを構成する
 
-まず、`azuredeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。
+まず、次の JSON を `azuredeploy.json` という名前の新しいファイルにコピーします。 Azure Cloud Shell では、Visual Studio Code を使用して作業ディレクトリにファイルを作成できます。
 
-この Resource Manager テンプレートでは、2 つのコンテナー、パブリック IP アドレス、公開された 2 つのポートを備えるコンテナー グループが定義されます。 コンテナーは、パブリック Microsoft イメージからデプロイされます。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
+```
+code azuredeploy.json
+```
+
+この Resource Manager テンプレートでは、2 つのコンテナー、パブリック IP アドレス、公開された 2 つのポートを備えるコンテナー グループが定義されます。 グループの最初のコンテナーでは、インターネットに接続する Web アプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
 
 ```JSON
 {
@@ -169,9 +179,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-logs"></a>ログを表示する。
+## <a name="view-container-logs"></a>コンテナー ログの表示
 
-コンテナーのログ出力を表示するには、[az container logs][az-container-logs] コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、最初のコンテナーが指定されています。
+コンテナーのログ出力を表示するには、[az container logs][az-container-logs] コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、`aci-tutorial-app` コンテナーが指定されています。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -186,7 +196,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-サイドカー コンテナーのログを表示するには、2 番目のコンテナー名を指定して、同じコマンドを実行します。
+サイドカー コンテナーのログを表示するには、`aci-tutorial-sidecar` コンテナーを指定して、同様のコマンドを実行します。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -212,14 +222,21 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、200 OK 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
+このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、`200 OK` 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、複数コンテナーの Azure コンテナー インスタンスのデプロイに必要な手順について説明しました。 エンド ツー エンドの Azure Container Instances の操作については、Azure Container Instances チュートリアルを参照してください。
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法について学習しました。
 
-> [!div class="nextstepaction"]
-> [Azure Container Instances のチュートリアル][aci-tutorial]
+> [!div class="checklist"]
+> * 複数コンテナー グループ テンプレートをデプロイする
+> * コンテナー グループをデプロイする
+> * コンテナーのログを表示する
+
+その他のテンプレート サンプルについては、「[Azure Container Instances のための Azure Resource Manager テンプレート](container-instances-samples-rm.md)」を参照してください。
+
+[YAML ファイル](container-instances-multi-container-yaml.md)を使用してマルチコンテナー グループを指定することもできます。 YAML フォーマットは簡潔であるため、コンテナー インスタンスのみを含むデプロイには YAML ファイルを使用するデプロイをお勧めします。
+
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

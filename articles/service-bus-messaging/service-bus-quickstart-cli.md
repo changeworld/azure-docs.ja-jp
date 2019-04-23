@@ -7,36 +7,32 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076889"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500636"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
-
-Microsoft Azure Service Bus は、セキュリティで保護されたメッセージングと信頼性を提供するエンタープライズ統合メッセージ ブローカーです。 一般的な Service Bus のシナリオには、通常、複数のアプリケーション、サービス、プロセスの相互分離 (アプリケーションが同時にオンラインになる必要はありません)、状態またはデータの変更の転送、アプリケーション間でのメッセージの送信が含まれます。 
-
-たとえば、小売企業では、補充および在庫の更新のためにバック オフィスまたは地域の流通センターに POS データを送信することがあります。 この場合、クライアント アプリは Service Bus キューとの間でメッセージを送受信します。
-
-![キュー](./media/service-bus-quickstart-cli/quick-start-queue.png)
-
 このクイック スタートでは、Azure CLI と Service Bus Java ライブラリを使って、Service Bus とメッセージを送受信する方法について説明します。 最後に、技術的な詳細に関心がある場合は、サンプル コードの主要な要素の[説明を読む](#understand-the-sample-code)ことができます。
 
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
+## <a name="prerequisites"></a>前提条件
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成できます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
+**[使ってみる]** ボタンを使用して Cloud Shell を起動する場合は、自分の資格情報を使用して Azure にサインインします。 
 
-Azure portal の右上隅にあるメニューで [Cloud Shell] ボタンをクリックして、**[環境の選択]** ドロップダウンから **[Bash]** を選びます。 
+Cloud Shell を Web ブラウザーで直接起動するか、Azure portal 内で起動した場合、Cloud Shell の左上隅に **[PowerShell]** が表示されたら **[Bash]** に切り替えます。 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>Azure CLI を使用してリソースを作成する
-
-Cloud Shell の Bash プロンプトから次のコマンドを発行して、Service Bus のリソースをプロビジョニングします。 すべてのプレースホルダーを適切な値に置き換えてください。Java のサンプル プログラムでは、キュー名として BasicQueue が想定されているので、変更しないでください。 
+Cloud Shell の Bash プロンプトから次のコマンドを発行して、Service Bus のリソースをプロビジョニングします。 すべてのプレースホルダーを適切な値に置き換えてください。Java のサンプル プログラムでは、キュー名として BasicQueue が想定されているので、変更しないでください。 コマンドを 1 つずつコピーして貼り付けると、実行する前に値を置き換えることができます。 
 
 ```azurecli-interactive
 # Create a resource group
@@ -373,10 +369,10 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの記述についてさらに詳しく学習するには、Service Bus に関する以下のチュートリアルを続けてください。
+この記事では、キューでメッセージを送受信するために必要な Service Bus 名前空間と他のリソースを作成しました。 メッセージを送受信するコードの作成についてさらに詳しく学習するには、「**メッセージを送受信する**」セクションのチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]
-> [Azure CLI と Java を使用してインベントリを更新する](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [メッセージを送受信する](service-bus-dotnet-get-started-with-queues.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

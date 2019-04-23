@@ -17,10 +17,10 @@ ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1ba96c76c51abcfe5bb5ef9bd66eb8a50afdfda
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58846612"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Resource Manager テンプレートから Windows 仮想マシンを作成する
@@ -29,7 +29,7 @@ Azure Resource Manager テンプレートと、Azure Cloud シェルの Azure Po
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-通常、Azure 仮想マシンは、次の 2 つの手順に従って作成します。
+通常、Azure 仮想マシンの作成には、次の 2 つの手順が含まれます。
 
 - リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。
 - 仮想マシンを作成します。

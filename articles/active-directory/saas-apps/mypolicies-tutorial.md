@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 240291c7ec1d989e52a2896dc696f69afbee0093
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>チュートリアル:Azure Active Directory と myPolicies の統合
@@ -50,7 +50,7 @@ myPolicies と Azure AD の統合を構成するには、次のものが必要�
 
 Azure AD への myPolicies の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に myPolicies を追加する必要があります。
 
-**ギャラリーから myPolicies を追加するには、次の手順を実行します。**
+**ギャラリーから myPolicies を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -104,9 +104,9 @@ myPolicies で Azure AD シングル サインオンを構成するには、次�
 
     ![[myPolicies のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<tenantname>.mypolicies.com/`
+    a. **[識別子]** ボックスに、`https://<tenantname>.mypolicies.com/` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<tenantname>.mypolicies.com/users/auth/saml/callback`
+    b. **[応答 URL]** ボックスに、`https://<tenantname>.mypolicies.com/users/auth/saml/callback` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[myPolicies クライアント サポート チーム](mailto:support@mypolicies.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

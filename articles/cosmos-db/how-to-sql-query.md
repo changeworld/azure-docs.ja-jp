@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8e5c281a8a8b6c0b48f18bf247b451bf61a7e9dc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263045"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579220"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
@@ -484,15 +484,15 @@ FROM 句により、ソースを小さなサブセットに限定することが
 
 以下の表は、SQL API の 2 つの JSON 型で等値比較を実行した結果を示しています。
 
-| **操作** | **Undefined** | **Null** | **Boolean** | **Number** | **String** | **Object** | **Array** |
+| **演算子** | **Undefined** | **Null** | **Boolean** | **Number** | **文字列** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Null** | Undefined | **[OK]** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean** | Undefined | Undefined | **[OK]** | Undefined | Undefined | Undefined | Undefined |
-| **Number** | Undefined | Undefined | Undefined | **[OK]** | Undefined | Undefined | Undefined |
-| **String** | Undefined | Undefined | Undefined | Undefined | **[OK]** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **[OK]** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **[OK]** |
+| **Null** | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Boolean** | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined |
+| **Number** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined |
+| **文字列** | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined |
+| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
 
 `>`、`>=`、`!=`、`<`、および `<=` などの比較演算子では、種類全体または 2 つのオブジェクトや配列間の比較で、`Undefined` が生成されます。  
 
@@ -977,7 +977,7 @@ JOIN 句の便利な点は、クロス積からタプルを生成できる点で
     }
 ```
 
-`AndersenFamily` 1 人の子どもがいて、子どもはペットを 1 匹飼っています。このため、クロス積によってこの家族から 1 行 (1\*1\*1) が導出されます。 `WakefieldFamily` 子どもが 2 人いて、ペットを飼っているのは 1 人だけですが、その子どもには 2 匹のペットがいます。 この家族からのクロス積は 1\*1\*2 = 2 行となります。
+`AndersenFamily` には 1 人の子どもがいて、子どもはペットを 1 匹飼っています。このため、クロス積によってこの家族から 1 行 (1\*1\*1) が導出されます。 `WakefieldFamily` には子どもが 2 人いて、ペットを飼っているのは 1 人だけですが、その子どもには 2 匹のペットがいます。 この家族からのクロス積は 1\*1\*2 = 2 行となります。
 
 次の例では、`pet` に対するフィルターを追加します。これによって、ペットの名前が `Shadow` ではないタプルがすべて除外されます。 配列からタプルを構築し、タプルのすべての要素に対してフィルターを実行し、要素の任意の組み合わせをプロジェクションできます。
 
@@ -1238,7 +1238,7 @@ Cosmos DB 関数と ANSI SQL 関数の主な違いとして、Cosmos DB 関数�
 
 型チェック関数を使用すると、SQL クエリ内の式の型をチェックできます。 型チェック関数を使用して、項目内のプロパティの型が変数または不明の場合に型をその場で判定できます。 次の表に、サポートされている組み込みの型チェック関数を示します。
 
-| **使用法** | **説明** |
+| **使用方法** | **説明** |
 |-----------|------------|
 | [IS_ARRAY (expr)](sql-api-query-reference.md#bk_is_array) | 値の型が配列であるかどうかを示すブール値を返します。 |
 | [IS_BOOL (expr)](sql-api-query-reference.md#bk_is_bool) | 値の型がブール値であるかどうかを示すブール値を返します。 |
@@ -1714,7 +1714,7 @@ Cosmos DB は、HTTP を介したオープンな RESTful プログラミング �
 
 前の例に示したとおり、.NET クライアントは `foreach` ブロックのクエリ結果のすべてのページを自動で反復処理します。 [REST API](#RestAPI) のセクションで説明したクエリ オプションは、.NET SDK でも利用可能です。これには、`FeedOptions` および `FeedResponse` クラスを `CreateDocumentQuery` メソッドで使用します。 ページの数は `MaxItemCount` 設定を使用して制御できます。
 
-開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に ` ResponseContinuationToken` の値を読み取り、これらを`RequestContinuationToken` として`FeedOptions` 内で渡します。 `EnableScanInQuery` を設定して、構成されたインデックス作成ポリシーでクエリがサポートされない場合に、スキャンを有効にすることができます。 パーティション分割コンテナーの場合は、`PartitionKey` を使用すると 1 つのパーティションに対してクエリを実行できますが、Azure Cosmos DB ではクエリ テキストからこれを自動的に抽出できます。 `EnableCrossPartitionQuery` を使用して、複数のパーティションに対してクエリを実行できます。
+開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に `ResponseContinuationToken` の値を読み取り、これらを `RequestContinuationToken` として `FeedOptions` 内で渡します。 `EnableScanInQuery` を設定して、構成されたインデックス作成ポリシーでクエリがサポートされない場合に、スキャンを有効にすることができます。 パーティション分割コンテナーの場合は、`PartitionKey` を使用すると 1 つのパーティションに対してクエリを実行できますが、Azure Cosmos DB ではクエリ テキストからこれを自動的に抽出できます。 `EnableCrossPartitionQuery` を使用して、複数のパーティションに対してクエリを実行できます。
 
 クエリを含む他の .NET サンプルについては、GitHub の [Azure Cosmos DB .NET サンプル](https://github.com/Azure/azure-cosmosdb-dotnet)を参照してください。
 
@@ -2162,7 +2162,7 @@ SQL .NET SDK に含まれる LINQ プロバイダーでは、次の演算子が�
 - [Javascript 仕様](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 - Graefe, Goetz 「[Query evaluation techniques for large databases](https://dl.acm.org/citation.cfm?id=152611)」 *ACM Computing Surveys* 25、no. 2 (1993)
-- Graefe, G.「The Cascades framework for query optimization」 *IEEE Data Eng. Bull.* 18, no. 3 (1995)
+- Graefe, G.「The Cascades framework for query optimization」 *IEEE Data Eng.Bull.* 18, no. 3 (1995)
 - Lu、Ooi、Tan 「Query Processing in Parallel Relational Database Systems」 *IEEE Computer Society Press* (1994)
 - Olston、Christopher、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins 「Pig Latin:A Not-So-Foreign Language for Data Processing」 *SIGMOD* (2008)
 

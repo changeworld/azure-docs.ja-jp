@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 04/02/2019
 ms.author: aljo
 ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275498"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
-> * [ Windows](service-fabric-get-started.md) 
+> * [Windows](service-fabric-get-started.md) 
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
 > 
@@ -92,7 +92,7 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
 * [アプリケーションを作成、デプロイ、および管理する方法](service-fabric-tutorial-create-dotnet-app.md)
-* [プログラミング モデルReliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
+* [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。

@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: c3e2102b5794fb3770b1c77e241320fa7d2222c7
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850789"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
@@ -112,7 +112,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 ```
 
 > [!NOTE]
-> リーフ ノードの場合、`format=json` は機能しません。 これらのクエリでは、既定の形式が json である場合に、`format=text` を明示的に指定する必要があります。
+> リーフ ノードでは `format=json` は機能しません。 これらのクエリでは、既定の形式が json の場合は、`format=text` を明示的に指定する必要があります。
 
 ### <a name="security"></a>セキュリティ
 
@@ -126,7 +126,7 @@ Instance Metadata Service エンドポイントには、実行中の仮想マシ
 HTTP 状態コード | 理由
 ----------------|-------
 200 OK |
-400 Bad Request | リーフ ノードのクエリ時に `Metadata: true` ヘッダーがないか、または形式がありません
+400 Bad Request | リーフ ノードのクエリ時に `Metadata: true` ヘッダーがないか、その形式になっていません。
 404 見つかりません | 要求された要素は存在しません
 405 Method Not Allowed | `GET` 要求と `POST` 要求のみがサポートされています
 429 Too Many Requests | 現在 API は、1 秒あたり最大 5 つのクエリをサポートしています

@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2519d8b16795512c56ce76b574b0bba91fa10da3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 8f04fdc84c0bed26bc6d5f16e5cef14c6855d02b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892162"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011029"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の各種機能をデプロイする方法についてのエンド ツー エンドのガイダンスを紹介しています。 以下のデプロイ計画では、Azure AD のいくつかの代表的な機能について、そのビジネス上の価値や、正しく展開するうえで必要な計画の考慮事項、設計、運用手順をひととおり説明しています。 
@@ -37,6 +37,6 @@ ms.locfileid: "58892162"
 |[アクセス パネル](https://aka.ms/AccessPanelDPDownload)|すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、新しいアプリやグループへのアクセスを要求したり、他のユーザーに代わってこれらのリソースへのアクセスを管理したりする機能などのセルフサービス機能を使用して生産性を向上できるようにします。|
 |ADFS からパスワード ハッシュ同期への[ダウンロード可能なプラン](https://aka.ms/ADFSTOPHSDPDownload)または[オンライン プラン](https://aka.ms/deploymentplans/adfs2phs)|パスワード ハッシュ同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。これにより Azure AD は、オンプレミスの Active Directory とやり取りすることなくユーザーを認証することができます。|
 |ADFS からパススルー認証への[ダウンロード可能なプラン](https://aka.ms/ADFSTOPTADPDownload)または[オンライン プラン](https://aka.ms/deploymentplans/adfs2pta)|Azure AD パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減します。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。|
-|[Azure AD アプリケーション プロキシ](https://aka.ms/AppProxyDPDownload)|現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 タブレット、電話、ラップトップを問わず、自分のデバイスで作業したいと考えています。 そして、すべてのアプリケーション (クラウドにある SaaS アプリとオンプレミスの社内アプリの両方) にアクセスできることを期待しています。 オンプレミスのアプリケーションへのアクセス提供には、従来、仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) が必要でした。 これらのソリューションは、複雑でセキュリティ保護が困難であるだけでなく、設定と管理にコストがかかります。 もっと良い方法があります。 それが Azure AD アプリケーション プロキシです。|
+|[Azure AD アプリケーション プロキシ](https://aka.ms/deploymentplans/appproxy)|現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 タブレット、電話、ラップトップを問わず、自分のデバイスで作業したいと考えています。 そして、すべてのアプリケーション (クラウドにある SaaS アプリとオンプレミスの社内アプリの両方) にアクセスできることを期待しています。 オンプレミスのアプリケーションへのアクセス提供には、従来、仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) が必要でした。 これらのソリューションは、複雑でセキュリティ保護が困難であるだけでなく、設定と管理にコストがかかります。 もっと良い方法があります。 それが Azure AD アプリケーション プロキシです。|
 |[ユーザー プロビジョニング](https://aka.ms/UserProvisioningDPDownload)|Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド (SaaS) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。|
 |[Workday 主導の受信ユーザー プロビジョニング](https://aka.ms/WorkdayDeploymentPlan)|Active Directory への Workday 主導の受信ユーザー プロビジョニングによって、継続的な ID ガバナンスのための基礎が作成され、権限のある ID データに依存するビジネス プロセスの品質が向上します。 この機能を使用すると、Joiner-Mover-Leaver プロセス (新規採用、退職、異動など) を IT プロビジョニング アクション (アカウントの作成、有効化、無効化、削除など) にマッピングする規則を構成することによって、従業員や臨時社員の ID ライフサイクルをシームレスに管理できます。|

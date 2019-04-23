@@ -1,6 +1,6 @@
 ---
-title: Azure IoT OPC UA 証明書管理を使用した OPC UA クライアントと OPC UA サーバー アプリケーションの保護 | Microsoft Docs
-description: OPC Vault を使用する新しいキー ペアと証明書により、OPC UA クライアントと OPC UA サーバー アプリケーションを保護します。
+title: OPC Vault を利用し、OPC UA クライアントと OPC UA サーバー アプリケーションをセキュリティで保護する - Azure | Microsoft Docs
+description: OPC Vault を使用する新しいキー ペアと証明書により、OPC UA クライアントと OPC UA サーバー アプリケーションをセキュリティで保護します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bfa6bdf6a54cb5e54087055988e9682565667105
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759226"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495296"
 ---
-# <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>OPC UA クライアントと OPC UA サーバー アプリケーションを保護する 
-Azure IoT OPC UA 証明書管理 (OPC Vault とも呼ばれます) は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault を使用する新しいキー ペアと証明書で OPC UA クライアントと OPC UA サーバー アプリケーションを保護する方法について説明します。
+# <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>OPC UA クライアントと OPC UA サーバー アプリケーションをセキュリティで保護する 
+OPC Vault は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault を使用する新しいキー ペアと証明書で OPC UA クライアントと OPC UA サーバー アプリケーションを保護する方法について説明します。
 
 次のセットアップでは、OPC クライアントは OPC PLC への接続をテストします。 既定では、両方のコンポーネントが適切な証明書を使用してプロビジョニングされていないため、接続は不可能となっています。 このワークフローでは、OPC UA コンポーネントの自己署名証明書は使用せず、OPC Vault を介して署名します。 前の「[テスト環境](howto-opc-vault-deploy-existing-client-plc-communication.md)」を参照してください。 代わりに、このテスト環境では、新しい証明書に加えて、新しい秘密キーでコンポーネントをプロビジョニングします。これらは、両方とも OPC Vault によって生成されます。 OPC UA セキュリティに関する背景情報の一部が、こちらの[ホワイトペーパー](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf)に記載されています。 完全な情報は、OPC UA の仕様書に記載されています。
 
@@ -34,24 +34,24 @@ OPC Vault スクリプト:
 - 環境変数 `$env:_OPCVAULTID` を、OPC Vault で再度データを見つけることができる文字列に設定します。 6 桁の数字に設定することをお勧めします。 この例では、この変数の値として "123456" が使用されています。
 - Docker ボリュームの `opcclient` や `opcplc` がないようにします。 `docker volume ls` で調べて、`docker volume rm <volumename>` でそれらを削除します。 コンテナーによってまだボリュームが使用されている場合は、`docker rm <containerid>` でコンテナーも削除する必要が生じることがあります。
 
-**クイックスタート**
+**クイック スタート**
 1. [OPC Vault の Web サイト](https://opcvault.azurewebsites.net/)に移動します。
 
-1. `Register New` を選択します
+1. 選択 `Register New`
 
 1. 前のテスト環境のログ出力の `CreateSigningRequest information` 領域に示された OPC PLC の情報を `Register New OPC UA Application` ページの入力フィールドに入力し、ApplicationType として `Server` を選択します。
 
-1. `Register` を選択します
+1. 選択 `Register`
 
-1. 次のページ `Request New Certificate for OPC UA Application` で `Request new KeyPair and Certificate` を選択します。
+1. 次のページで `Request New Certificate for OPC UA Application` により次が選択されます。 `Request new KeyPair and Certificate`
 
 1. 次のページ `Generate a new Certificate with a Signing Request` で、ログ出力からの `CSR (base64 encoded)` 文字列を `CreateRequest` 入力フィールドに貼り付けます。 文字列全体をコピーしたことを確認します。
 
-1. 次のページ `Request New Certificate for OPC UA Application` で `Request new Certificate with Signing Request` を選択します。
+1. 次のページで `Request New Certificate for OPC UA Application` により次が選択されます。 `Request new Certificate with Signing Request`
 
 1. 次のページ `Generate a new KeyPair and for an OPC UA Application` で、SubjectName として `CN=OpcPlc` を入力し、DomainName として `opcplc-<_OPCVAULTID>` を入力し (`<_OPCVAULTID>` をご使用の ID と置き換えてください)、PrivateKeyFormat として `PEM` を選択し、パスワード (後で `<certpassword-string>` として参照します) を入力します。
 
-1. `Generate New KeyPair` を選択します
+1. 選択 `Generate New KeyPair`
 
 1. 次に `View Certificate Request Details` に進みます。 このページでは、`opc-plc` の証明書ストアをプロビジョニングするために必要なすべての情報をダウンロードできます。
 
@@ -73,9 +73,9 @@ OPC Vault スクリプト:
     - PowerShell 変数の名前として `$env:_CLIENT_OPT` を使用します。
 
     > [!NOTE] 
-    > このシナリオの作業中に、`opcplc` と `opcclient` について、`<addissuercertbase64-string>` と `<updatecrlbase64-string>` の値が同一であると気付いたかもしれません。 今回のユース ケースの場合はその通りで、手順の実行中に少し時間の節約になります。
+    > このシナリオの作業中に、`opcplc` と `opcclient` について、`<addissuercertbase64-string>` と `<updatecrlbase64-string>` の値が同一であると気付いたかもしれません。 今回のユース ケースの場合はそのとおりで、手順の実行中に少し時間の節約になります。
 
-**クイックスタート**
+**クイック スタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 
@@ -118,7 +118,7 @@ opcplc-123456 | [13:40:09 INF] Activating the new application certificate with t
 
 これで、アプリケーション証明書と秘密キーがアプリケーション証明書ストアにインストールされ、OPC UA アプリケーションによって使用されます。
 
-OPC クライアントと OPC PLC の間の接続が正常に確立でき、OPC クライアントが OPC PLC からデータを正常に読み取れることを確認します。 OPC クライアントのログ出力に、次の出力が表示されるはずです。
+OPC クライアントと OPC PLC の間の接続が正常に確立できることと、OPC クライアントにより OPC PLC からデータを正常に読み取られることを確認します。 OPC クライアント ログ出力には次の出力が表示されるはずです。
 ```
 opcclient-123456 | [13:40:12 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [13:40:12 INF] Session successfully created with Id ns=3;i=941910499.
@@ -132,11 +132,11 @@ opcclient-123456 | [13:40:12 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [13:40:12 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [13:40:12 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/21/2018 13:40:12
 ```
-この出力が表示される場合、OPC PLC と OPC クライアントが相互に信頼するようになっています。CA によって署名された証明書がこれで両方に用意されて、両方がこの CA によって署名された証明書を信頼しているためです。
+この出力が表示される場合は、OPC PLC と OPC クライアントが相互に信頼するようになっています。CA によって署名された証明書がこれで両方に用意されて、両方がこの CA によって署名された証明書を信頼しているためです。
 
 ### <a name="a-testbed-for-opc-publisher"></a>OPC Publisher のテスト環境 ###
 
-**クイックスタート**
+**クイック スタート**
 
 リポジトリのルートで次の PowerShell コマンドを実行します。
 ```

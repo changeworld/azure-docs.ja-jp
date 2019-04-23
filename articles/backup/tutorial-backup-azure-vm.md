@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 2a35435f56a4bb09a8a1958fbc175ef7c889c380
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863017"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップする

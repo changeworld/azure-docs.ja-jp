@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 94e5893caa4dc19702f45e9b42727aab4f884bcd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>チュートリアル:Azure Active Directory と Vidyard の統合
@@ -53,7 +53,7 @@ Vidyard と Azure AD の統合を構成するには、次のものが必要で�
 
 Azure AD への Vidyard の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Vidyard を追加する必要があります。
 
-**ギャラリーから Vidyard を追加するには、次の手順を実行します。**
+**ギャラリーから Vidyard を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,9 +107,9 @@ Vidyard で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Vidyard のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
+    a. **[識別子]** ボックスに、`https://secure.vidyard.com/sso/saml/<unique id>/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://secure.vidyard.com/sso/saml/<unique id>/consume`
+    b. **[応答 URL]** ボックスに、`https://secure.vidyard.com/sso/saml/<unique id>/consume` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

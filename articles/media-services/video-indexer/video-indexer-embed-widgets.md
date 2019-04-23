@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: fe3466dcccf6381f26c823ce3deb2126c9534548
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891586"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006490"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -28,7 +28,7 @@ ms.locfileid: "58891586"
 
 **コグニティブな分析情報**ウィジェットには、ビデオのインデックス作成プロセスから抽出されたビジュアルな分析情報がすべて含まれます。 分析情報ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|名前|定義|説明|
+|Name|定義|説明|
 |---|---|---|
 |widgets|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:** バージョン 2 では、widgets での URL パラメーターはサポートされません。 |
 
@@ -36,7 +36,7 @@ ms.locfileid: "58891586"
 
 **プレーヤー** ウィジェットでは、アダプティブ ビット レートを使用してビデオをストリームできます。 プレーヤー ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|名前|定義|説明|
+|Name|定義|説明|
 |---|---|---|
 |t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: t=60|
 |captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: captions=en-US|
@@ -69,9 +69,9 @@ ms.locfileid: "58891586"
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-[**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) API を使用してコグニティブな分析情報ウィジェットのコンテンツを取得します。または、[**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を使用して、それを上に示した URL にクエリ パラメーターとして追加します。 この URL を、**iframe** の **src** 値として指定します。
+[**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API を使用してコグニティブな分析情報ウィジェットのコンテンツを取得します。または、[**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を使用して、それを上に示した URL にクエリ パラメーターとして追加します。 この URL を、**iframe** の **src** 値として指定します。
 
-埋め込んだウィジェットで (Web アプリケーションにあるような) 分析情報の編集機能を提供したい場合は、編集アクセス許可を持つアクセス トークンを渡す必要があります。 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) または [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を、**&allowEdit=true** を指定して使用します。 
+埋め込んだウィジェットで (Web アプリケーションにあるような) 分析情報の編集機能を提供したい場合は、編集アクセス許可を持つアクセス トークンを渡す必要があります。 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) または [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を、**&allowEdit=true** を指定して使用します。 
 
 ## <a name="widgets-interaction"></a>ウィジェットの対話
 

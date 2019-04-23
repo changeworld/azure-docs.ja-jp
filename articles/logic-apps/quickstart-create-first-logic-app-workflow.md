@@ -12,10 +12,10 @@ ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884238"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して自動化されたワークフローを初めて作成する - Azure portal
@@ -28,7 +28,7 @@ ms.locfileid: "58884238"
 
 また、Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
@@ -44,10 +44,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------| 
-   | **名前** | MyFirstLogicApp | ロジック アプリの名前 | 
+   | **Name** | MyFirstLogicApp | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
    | **リソース グループ** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **Location** | 米国西部 | ロジック アプリの情報の保存先となるリージョン | 
+   | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
@@ -72,7 +72,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------| 
    | **RSS フィードの URL** | ```http://feeds.reuters.com/reuters/topNews``` | 監視する RSS フィードのリンク | 
-   | **interval** | 1 | チェックの間隔 (単位数) | 
+   | **間隔** | 1 | チェックの間隔 (単位数) | 
    | **頻度** | 分 | チェックの間隔に使う時間の単位  | 
    |||| 
 

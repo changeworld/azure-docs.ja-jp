@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802120"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009599"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 Azure Active Directory (Azure AD) 組織に対して、新しいユーザーの追加または既存のユーザーの削除を行います。
@@ -51,7 +51,7 @@ Azure Active Directory ポータルを使用して、新しいユーザーを作
 
 4. **[パスワード]** ボックスに入力されている自動生成されたパスワードをコピーします。 このパスワードは、最初のサインイン プロセスのためにユーザーに渡す必要があります。
 
-5. **作成**を選択します。
+5. **作成** を選択します。
 
     ユーザーが作成され、Azure AD テナントに追加されます。
 
@@ -79,11 +79,11 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 
 ユーザーを追加したら、次の基本的なプロセスを実行できます。
 
-- [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
+- [ユーザー プロファイル情報の追加または変更](active-directory-users-profile-azure-portal.md)
 
 - [ユーザーにロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 
-- [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
+- [基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)
 
 - [動的グループとユーザーを操作する](../users-groups-roles/groups-create-rule.md)
 

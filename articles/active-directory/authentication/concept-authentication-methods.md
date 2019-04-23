@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360638"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
@@ -236,10 +236,10 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ## <a name="next-steps"></a>次の手順
 
-[組織でのセルフサービスのパスワード リセットを有効にする](quickstart-sspr.md)
+[セルフサービスによるパスワードのリセットを組織で使用できるようにする](quickstart-sspr.md)
 
-[組織での Azure Multi-Factor Authentication を有効にする](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication を組織で使用できるようにする](howto-mfa-getstarted.md)
 
-[テナントでの統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
+[テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
 
 [エンドユーザーの認証方法の構成に関するドキュメント](https://aka.ms/securityinfoguide)

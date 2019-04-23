@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: e2b82c8a7bcdc1982ed4489e9422a4a0efd64f3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf5215ff5acaf08125cf280103ba8ff0123dc116
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175101"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523819"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -30,7 +30,7 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
 - 同じバージョン間の移行。 MySQL 5.6 から Azure Database for MySQL 5.7 への移行はサポートされません。
 - my.ini (Windows) または my.cnf (Unix) のバイナリ ログを有効にします
     - Server_id=1 のように、Server_id を 1 以上に設定します (MySQL 5.6 の場合のみ)
-    - log-bin = <path> を設定します (MySQL 5.6 の場合のみ)
+    - log-bin = \<パス> を設定します (MySQL 5.6 の場合のみ)
     - binlog_format = row を設定します
     - Expire_logs_days = 5 (推奨 - MySQL 5.6 の場合のみ)
 - ユーザーが ReplicationAdmin ロールを持つ必要があります。

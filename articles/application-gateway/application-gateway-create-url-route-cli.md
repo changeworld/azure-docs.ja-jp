@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9c628b02961ee289833e669a4c77de0bf824de22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999979"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527253"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Azure CLI を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -232,11 +232,11 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-URL を http://<ip-address>:8080/video/test.html (ベース URL の末尾) に変更します。次のように表示されます。
+URL を `http://<ip-address>:8080/video/test.html` (ベース URL の末尾) に変更します。次のように表示されます。
 
 ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-URL を http://<ip-address>:8080/video/test.html に変更します。次のように表示されます。
+URL を `http://<ip-address>:8080/video/test.html` に変更します。次のように表示されます。
 
 ![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 

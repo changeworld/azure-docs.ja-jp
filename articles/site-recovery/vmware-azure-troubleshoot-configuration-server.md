@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418705"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525842"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -203,7 +203,7 @@ Setting | 詳細
 
 マスター ターゲット エージェントが構成サーバー IP の TCP セッションを作成できるか確認するには、マスター ターゲット エージェントのログで次のようなトレースを探します。
 
-TCP <Replace IP with CS IP here>:52739 <Replace IP with CS IP here>:443 SYN_SENT 
+TCP \<ここで IP を CS IP に置き換える>:52739 \<ここで IP を CS IP に置き換える>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // ここでは IP は CS IP に置き換えます
 

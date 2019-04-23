@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051208"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996460"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>コマンドライン ツールを使用した Azure DevTest Labs 仮想マシンの開始と停止
 この記事では、Azure PowerShell または Azure CLI を使用して、Azure DevTest Labs 内のラボにある仮想マシンを開始または停止する方法について説明します。 PowerShell/CLI スクリプトを作成してこの操作を自動化することができます。 
@@ -34,7 +34,7 @@ Azure DevTest Labs を使用すると、高速で簡単な無駄のない開発/
 - CI/CD ワークフロー内のタスクとして使用して、フローの最初に開始し、VM をビルド マシン、テスト マシン、またはインフラストラクチャとして使用し、プロセスの完了時に VM を停止します。 たとえば、Azure DevTest Labs を使用したカスタム イメージ ファクトリなどです。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-次の PowerShell スクリプトは、ラボ内の VM を開始します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) が、このスクリプトの主な目的です。 **ResourceId** パラメーターは、ラボ内の VM の完全修飾リソース ID です。 **Action** パラメーターには、**Start** または **Stop** オプションが必要に応じて設定されます。
+次の PowerShell スクリプトは、ラボ内の VM を開始します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) が、このスクリプトの主な目的です。 **ResourceId** パラメーターは、ラボ内の VM の完全修飾リソース ID です。 **Action** パラメーターには、**Start** または **Stop** オプションが必要に応じて設定されます。
 
 ```powershell
 # The id of the subscription
@@ -93,4 +93,4 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 
 
 ## <a name="next-steps"></a>次の手順
-次の記事で、これらの操作を Azure portal を使用して行う方法について確認します: [VM を再起動する](devtest-lab-restart-vm.md)。
+次の記事で、これらの操作を Azure portal を使用して行う方法について確認します: [VM の再起動](devtest-lab-restart-vm.md)に関する記事。

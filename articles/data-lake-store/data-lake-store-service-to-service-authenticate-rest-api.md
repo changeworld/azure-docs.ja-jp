@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c48f7d7608b2b70f4ae41e2af5792cff72bb0dd2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885725"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Azure Data Lake Storage Gen1 に対する REST API を使用したサービス間認証
@@ -53,5 +53,5 @@ ms.locfileid: "58885725"
 この記事では、サービス間認証を使って、REST API を使用して Data Lake Storage Gen1 で認証する方法を説明しました。 これで、REST API を使用して Data Lake Storage Gen1 を使用する方法について説明した次の記事に進むことができます。
 
 * [REST API を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)
-* [REST API を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-rest-api.md)
+* [REST API を使用した Azure Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-rest-api.md)
 

@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 04/10/2019
 ms.author: carlrab
-ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360092"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495107"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -42,6 +42,8 @@ ms.locfileid: "59360092"
 |行ストアでのバッチ モード (互換性レベル 150)|詳しくは、「[行ストアでのバッチ モード](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)」をご覧ください|
 |メモリ許可フィードバック (行モード) (互換性レベル 150)|詳しくは、「[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)」をご覧ください|
 |テーブル変数の遅延コンパイル (互換性レベル 150)|詳しくは、「[テーブル変数の遅延コンパイル](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)」をご覧ください|
+|SQL Analytics|詳細については、[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) に関するページをご覧ください。|
+| マネージド インスタンスのタイム ゾーンのサポート|詳細については、「[Azure SQL Database Managed Instance のタイム ゾーン](sql-database-managed-instance-timezone.md)」を参照してください。|
 |||
 
 ## <a name="march-2019"></a>2019 年 3 月
@@ -57,6 +59,7 @@ ms.locfileid: "59360092"
 
 | ドキュメントの改善 | 詳細 |
 | --- | --- |
+| マネージド インスタンスのタイム ゾーンのサポート|詳細については、「[Azure SQL Database Managed Instance のタイム ゾーン](sql-database-managed-instance-timezone.md)」を参照してください。|
 | 単一データベースに関するログの制限が追加されました|詳細については、[単一データベースに対する仮想コアのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関する記事をご覧ください。|
 | エラスティック プールとプールされたデータベースに関するログの制限が追加されました|詳細については、[エラスティック プールに対する仮想コアのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関する記事をご覧ください。|
 | トランザクション ログ速度ガバナンスが追加されました| [トランザクション ログ速度ガバナンス](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)に関する新しいコンテンツが追加されました。|

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 47516f06f212dd0541da5f177401d479eb760cc0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758253"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527372"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -166,7 +166,7 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
 1. Content Moderator のチーム名。
-1. **IList<CreateVideoReviewsBodyItem>** オブジェクト。 各 **CreateVideoReviewsBodyItem** オブジェクトはビデオ レビューを表します。 このクイック スタートでは、一度に 1 つのレビューを作成します。
+1. **IList\<CreateVideoReviewsBodyItem>** オブジェクト。 各 **CreateVideoReviewsBodyItem** オブジェクトはビデオ レビューを表します。 このクイック スタートでは、一度に 1 つのレビューを作成します。
 
 **CreateVideoReviewsBodyItem** にはいくつかのプロパティがあります。 少なくとも、次のプロパティを設定してください。
 - **Content**。 レビューするビデオの URL。
@@ -224,18 +224,18 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 1. MIME の種類が含まれる文字列。"application/json" にしてください。
 1. Content Moderator のチーム名。
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
-1. **IList<VideoFrameBodyItem>** オブジェクト。 各 **VideoFrameBodyItem** オブジェクトはビデオ フレームを表します。
+1. **IList\<VideoFrameBodyItem>** オブジェクト。 各 **VideoFrameBodyItem** オブジェクトはビデオ フレームを表します。
 
 **VideoFrameBodyItem** には、次のプロパティがあります。
 - **Timestamp**。 ビデオ フレームが取得されてからのビデオ内の時間 (秒単位) が含まれる文字列。
 - **FrameImage**。 ビデオ フレームの URL。
-- **Metadata**。 An IList<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** は単純にキーと値のペアです。 有効なキーは次のとおりです。
+- **Metadata**。 IList\<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** は単純にキーと値のペアです。 有効なキーは次のとおりです。
 - **reviewRecommended**。 人間によるビデオ フレームのレビューが推奨される場合は True。
 - **adultScore**。 ビデオ フレーム内の成人向けコンテンツの重大度を評価する 0 から 1 の値。
 - **a**。 ビデオに成人向けコンテンツが含まれる場合は True。
 - **racyScore**。 ビデオ フレーム内のきわどいコンテンツの重大度を評価する 0 から 1 の値。
 - **r**。 ビデオ フレームにきわどいコンテンツが含まれている場合は True。
-- **ReviewerResultTags**。 IList<VideoFrameBodyItemReviewerResultTagsItem>。 **VideoFrameBodyItemReviewerResultTagsItem** は単純にキーと値のペアです。 アプリケーションはこれらのタグを使用してビデオ フレームを整理できます。
+- **ReviewerResultTags**。 IList\<VideoFrameBodyItemReviewerResultTagsItem>。 **VideoFrameBodyItemReviewerResultTagsItem** は単純にキーと値のペアです。 アプリケーションはこれらのタグを使用してビデオ フレームを整理できます。
 
 > [!NOTE]
 > このクイック スタートは、**adultScore** プロパティと **racyScore** プロパティにランダムな値を生成します。 運用環境のアプリケーションでは、これらの値を Azure Media Service としてデプロイされた[ビデオ モデレーション サービス](video-moderation-api.md)から取得します。

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351557"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266989"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -37,6 +37,8 @@ ms.locfileid: "58351557"
 ## <a name="march-2019"></a>2019 年 3 月
 
 動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
+
+資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associate-filters-with-streaming-locator)に関する記事を参照してください。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
@@ -83,31 +85,31 @@ CLI 2.0 モジュールが、[Azure Media Services v3 GA](https://docs.microsoft
 
 #### <a name="asset-commands"></a>アセット コマンド
 
-- ```--storage-account``` および ```--container``` 引数が追加されました。
+- ```--storage-account```  および ```--container``` 引数が追加されました。
 - ```az ams asset get-sas-url``` コマンドに有効期限 (現在 + 23 時間) とアクセス許可 (読み取り) の既定値が追加されました。
 
 #### <a name="job-commands"></a>ジョブ コマンド
 
-- ```--correlation-data``` および ```--label``` 引数が追加されました
-- ```--output-asset-names``` が ```--output-assets``` に変更されました。 "assetName=label" 形式の、スペース区切りのアセットのリストを受け入れるようになりました。 "assetName=" のようなラベルのないアセットを送信できます。
+- ```--correlation-data```  および ```--label``` 引数が追加されました。
+- ```--output-asset-names```  が ```--output-assets``` に変更されました。 "assetName=label" 形式の、スペース区切りのアセットのリストを受け入れるようになりました。 "assetName=" のようなラベルのないアセットを送信できます。
 
 #### <a name="streaming-locator-commands"></a>ストリーミング ロケーター コマンド
 
-- ```az ams streaming locator``` ベース コマンドが ```az ams streaming-locator``` に置き換えられました。
-- ```--streaming-locator-id``` および ```--alternative-media-id support``` 引数が追加されました。
-- ```--content-keys argument``` 引数が更新されました。
-- ```--content-policy-name``` が ```--content-key-policy-name``` に変更されました。
+- ```az ams streaming locator```  ベース コマンドが ```az ams streaming-locator``` に置き換えられました。
+- ```--streaming-locator-id```  および ```--alternative-media-id support``` 引数が追加されました。
+- ```--content-keys argument```  引数が更新されました。
+- ```--content-policy-name```  が ```--content-key-policy-name``` に変更されました。
 
 #### <a name="streaming-policy-commands"></a>ストリーミング ポリシー コマンド
 
-- ```az ams streaming policy``` ベース コマンドが ```az ams streaming-policy``` に置き換えられました。
+- ```az ams streaming policy```  ベース コマンドが ```az ams streaming-policy``` に置き換えられました。
 - ```az ams streaming-policy create``` での暗号化パラメーターのサポートが追加されました。
 
 #### <a name="transform-commands"></a>変換コマンド
 
-- ```--preset-names``` 引数が ```--preset``` に置き換えられました。 現在同時に設定できるのは、1 つの出力/プリセットのみです (さらに追加するには ```az ams transform output add``` を実行する必要があります)。 また、カスタムの JSON にパスを渡すことで、カスタム StandardEncoderPreset を設定することもできます。
-- ```az ams transform output remove``` は、削除する出力インデックスを渡すことで実行できます。
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 引数が、```az ams transform create``` および ```az ams transform output add``` コマンドに追加されました。
+- ```--preset-names```  引数が ```--preset``` に置き換えられました。 現在同時に設定できるのは、1 つの出力/プリセットのみです (さらに追加するには ```az ams transform output add``` を実行する必要があります)。 また、カスタムの JSON にパスを渡すことで、カスタム StandardEncoderPreset を設定することもできます。
+- ```az ams transform output remove```  は、削除する出力インデックスを渡すことで実行できます。
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```  引数が、```az ams transform create``` および ```az ams transform output add``` コマンドに追加されました。
 
 ## <a name="october-2018---ga"></a>2018 年 10 月 - GA
 

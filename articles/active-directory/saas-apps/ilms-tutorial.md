@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9bcb465f76e09675333e6e608249cba11f722e3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>チュートリアル:Azure Active Directory と iLMS の統合
@@ -51,7 +51,7 @@ iLMS と Azure AD の統合を構成するには、次のものが必要です�
 
 Azure AD への iLMS の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に iLMS を追加する必要があります。
 
-**ギャラリーから iLMS を追加するには、次の手順を実行します。**
+**ギャラリーから iLMS を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -107,13 +107,13 @@ iLMS で Azure AD シングル サインオンを構成するには、次の手�
 
     a. **[識別子]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした **[Identifier]\(識別子\)** の値を貼り付けます。
 
-    b. **[応答 URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした次の形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます。 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. **[応答 URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` という形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[iLMS のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした次の形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます。 `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    **[サインオン URL]** ボックスに、iLMS 管理ポータルで [SAML settings]\(SAML 設定\) の **[Service Provider]\(サービス プロバイダー\)** セクションからコピーした `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx` という形式の **[Endpoint (URL)]\(エンドポイント (URL)\)** の値を貼り付けます。
 
 6. iLMS アプリケーションは、JIT プロビジョニングを有効にするために特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 

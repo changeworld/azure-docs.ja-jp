@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: f47c6b63ce5f18aa896b086ec884b9a3020cadd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993269"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526165"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 
@@ -223,7 +223,7 @@ GO
 
 結果ウィンドウで、列ヘッダー **target_data_XML** の下のセルをクリックしました。 これにより、ssms.exe にもう 1 つのファイル タブが作成され、結果のセルの内容が XML として表示されました。
 
-出力は、次のブロックに示されています。 ここに含まれるのは、2 つの **<event>** 要素です。
+出力は、次のブロックに示されています。 長いように見えますが、ここに含まれるのは 2 つの **\<event>** 要素のみです。
 
 &nbsp;
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7d46e2047debe5546c6d36f245ae076cec6f73a3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001705"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618126"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイック スタート:Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -269,7 +269,7 @@ SAP のインストールを開始する前に、SAP VM のホスト名と IP �
 
 ### <a name="the-etcfstab-file"></a>/etc/fstab ファイル
 
-**nofail** パラメーターを fstab ファイルに追加すると役に立ちます。 このようにすると、ディスクに何らかの問題がある場合でも VM が起動プロセス中に停止することがありません。 ただし、追加のディスク領域を使用できず、プロセスでルート ファイル システムがいっぱいになることがあるため、特に注意を払ってください。 /hana がない場合、SAP HANA は起動しません。
+**nofail** パラメーターを fstab ファイルに追加すると役に立ちます。 このようにすると、ディスクに何らかの問題がある場合でも VM が起動プロセス中に応答を停止することがありません。 ただし、追加のディスク領域を使用できず、プロセスでルート ファイル システムがいっぱいになることがあるため、特に注意を払ってください。 /hana がない場合、SAP HANA は起動しません。
 
 ![nofail パラメーターを fstab ファイルに追加する](./media/hana-get-started/image000c.jpg)
 

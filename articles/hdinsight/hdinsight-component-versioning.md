@@ -9,20 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: 1c8977090fe0ea0dfd5822c7bb448d313de7cf14
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: a061c2705a5c0155b54dd2fa1e89f19223409a12
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917925"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609442"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
-Microsoft Azure HDInsight の[Apache Hadoop](https://hadoop.apache.org/) エコシステムのコンポーネントおよびバージョンと、Enterprise セキュリティ パッケージについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。 
+Microsoft Azure HDInsight の[Apache Hadoop](https://hadoop.apache.org/) エコシステムのコンポーネントおよびバージョンと、Enterprise セキュリティ パッケージについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。
 
 HDInsight の各バージョンは、あるバージョンの Hortonworks Data Platform (HDP) のクラウド ディストリビューションです。
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント
+
 Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 各バージョンを選択すると、特定のバージョンの HDP ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。 2017 年 4 月 4 日現在、Azure HDInsight で使用される既定のクラスター バージョンは、HDP 2.6 を基盤とした 3.6 です。
 
 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。 
@@ -30,7 +31,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 > [!NOTE]  
 > HDInsight サービスの既定のバージョンは、予告なく変更される場合があります。 バージョンの依存関係がある場合は、Azure PowerShell や Azure クラシック CLI を含む .NET SDK を使用してクラスターを作成する際に HDInsight バージョンを指定してください。
 
-| コンポーネント | HDInsight 4.0 (プレビュー) | HDInsight 3.6 (既定値) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
+| コンポーネント | HDInsight 4.0 | HDInsight 3.6 (既定値) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Apache Hadoop と YARN |3.1.1 |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -44,12 +45,12 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Sqoop |1.4.7 |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
 | Apache Oozie |4.3.1 |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
 | Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
-| Apache Storm |1.2.1 |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
+| Apache Storm |- |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
 | Apache Mahout |-|0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |2.3.1 |2.3.0、2.2.0、2.1.0 |1.6.2、2.0 |1.6.0 |1.5.2 |1.3.1 (Windows のみ) |-|-|
+| Apache Spark |2.3.2 |2.3.0、2.2.0、2.1.0 |1.6.2、2.0 |1.6.0 |1.5.2 |1.3.1 (Windows のみ) |-|-|
 | Apache Livy |0.5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1 |1.1、1.0 * (下記の「注」を参照) | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1.1 |1.1、1.0 * (下記の「注」を参照) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -70,6 +71,7 @@ HDInsight クラスターのバージョンに関連付けられた Hadoop エ�
 HDInsight の最新バージョンに関する追加のリリース ノートは、 [HDInsight リリース ノート](hdinsight-release-notes.md) を参照してください。
 
 ## <a name="supported-hdinsight-versions"></a>サポートされる HDInsight のバージョン
+
 次の表は、HDInsight のバージョンの一覧を示しています。 各 HDInsight バージョンに対応する HDP バージョンを製品のリリース日とともにまとめています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
 
 ### <a name="available-versions"></a>使用可能なバージョン
@@ -78,9 +80,8 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 | HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 <br> (プレビュー) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |はい |はい |
-| HDInsight 3.5 <br> (Spark)\* |HDP 2.6 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2019 年 3 月 13 日 |2019 年 3 月 13 日 |はい |はい |
 
 *&ast; Spark クラスターの種類についてのみ、HDInsight 3.5 のサポートが延長されました*
 
@@ -146,9 +147,11 @@ Enterprise セキュリティは、クラスターの作成のワークフロー
 Enterprise セキュリティ パッケージでは、プライマリ ストレージとアドオン ストレージの両方として Azure Data Lake Storage の使用がサポートされます。
 
 ### <a name="pricing-and-sla"></a>料金と SLA
+
 Enterprise セキュリティ パッケージの価格と SLA について詳しくは、[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)に関するページをご覧ください。
 
 ## <a name="hdinsight-windows-retirement"></a>Windows での HDInsight の提供終了
+
 Microsoft Azure HDInsight バージョン 3.3 が Windows 向け HDInsight の最終バージョンでした。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 Windows 向けの HDInsight クラスター バージョン 3.3 以前をお持ちの場合、2018 年 7 月 31 日までに Linux 向けの HDInsight (HDInsight バージョン 3.5 以降) に移行する必要があります。 Linux OS に移行しても、HDInsight クラスターの作成やサイズ変更の機能を保持できます。 Windows での HDInsight バージョン 3.3 のサポートは 2016 年 6 月 27 日で有効期限が切れました。
 
 HDInsight バージョン 3.4 以降では、Microsoft は Linux OS でのみ HDInsight をリリースしています。 その結果、HDInsight 内のコンポーネントの一部は、Linux でのみ使用できます。 これらには、[Apache Ranger](https://ranger.apache.org/)、[Apache Kafka](https://kafka.apache.org/)、Interactive Query、[Apache Spark](https://spark.apache.org/)、HDInsight の各種アプリケーション、およびプライマリ ファイル システムとしての Azure Data Lake Storage が含まれています。 HDInsight の今後のリリースは、Linux OS でのみ利用可能です。 Windows 向けの HDInsight は今後一切リリースされません。 
@@ -156,41 +159,53 @@ HDInsight バージョン 3.4 以降では、Microsoft は Linux OS でのみ HD
 ## <a name="faqs"></a>FAQ
 
 ### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>Windows 向けの HDInsight 提供終了のタイムラインはどうなっていますか。
+
 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 お客様のリージョンにおいて予定提供終了日が異なる場合は、個別に通知されます。 
 
 ### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>Windows 向けの HDInsight が提供終了することで、既存のユーザーにはどのような影響がありますか。
+
 Windows 向けの HDInsight が提供終了になった後、Windows 向けの新しい HDInsight クラスターを作成することや、既存の HDInsight のサイズを変更することはできません。 HDInsight バージョン 3.3 のサポートは 2016 年 6 月 27 日で有効期限が切れました。 したがって、HDInsight 3.3 またはそれ以前のバージョンについては、サポートやバグ修正はありません。 HDInsight の今後のリリースは、Linux OS でのみ利用可能です。 Windows 向けの HDInsight は今後一切リリースされません。
  
 ### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>Windows 向け HDInsight のどのバージョンが影響を受けますか。
+
 Azure HDInsight バージョン 3.3 が Windows 向け HDInsight の最終バージョンです。 Windows 向け HDInsight が提供終了になる前に、Windows 向けのバージョン 3.3 以前のすべての HDInsight クラスターを Linux 向け HDInsight バージョン 3.5 以降に移行する必要があります。 クラスターを Linux 向け HDInsight に移行しても、新しいクラスターの作成や既存のサイズ変更の機能は保持されます。 
 
 ### <a name="what-do-i-need-to-do"></a>何をする必要がありますか?
+
 2018 年 7 月 31 日までに、Windows 向け HDInsight クラスターをサポート対象の Linux 向け HDInsight クラスターに移行します。 詳細については、[HDInsight の移行のドキュメント](hdinsight-migrate-from-windows-to-linux.md)をご覧ください。 Azure HDInsight のバージョンの詳細については、[サポートされているバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)の一覧をご覧ください。 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>クラスター OS の種類はどこでわかりますか。
+
 Azure Portal で [HDInsight クラスターの概要] ページに移動し、**[要点]** の下の **[クラスターの種類]** を見つけます。 クラスター OS の種類は、そのページに一覧表示されます。 
 
 ### <a name="i-cant-migrate-to-an-hdinsight-linux-cluster-by-july-31-2018-what-is-the-impact-to-my-hdinsight-windows-cluster"></a>2018 年 7 月 31 日までに Linux 向け HDInsight クラスターに移行できません。 Windows 向けの HDInsight クラスターにはどのような影響がありますか。
+
 Windows 向けの HDInsight クラスターは現状のまま動作しますが、Windows 向けの新しい HDInsight クラスターを作成することや、Windows 向けの既存の HDInsight のサイズを変更することはできません。 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>クラスターには .NET との依存関係が存在します。 この依存関係は Linux でどのように解決すればいいですか。
+
 [Mono プロジェクト](https://www.mono-project.com/)を使用して、Linux 向けクラスターの依存関係を解決できます。 .NET のオープン ソースの実装は、Linux 向けの HDInsight クラスターで利用できます。 詳細については、[HDInsight の移行のドキュメント](hdinsight-migrate-from-windows-to-linux.md)をご覧ください。 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Windows 向けの HDInsight を初めて使用します。 Windows 向けの HDInsight クラスターはどうすれば作成できますか。
+
 2017 年 7 月 3 日現在、Windows 向けの新しい HDInsight クラスターを作成できるのは既存の Windows 向けの HDInsight ユーザーのみです。 新規ユーザーは、PowerShell または SDK を使用して、Azure Portal で、Windows 向けの HDInsight クラスターを作成することはできません。 新規ユーザーは Linux 向けの HDInsight クラスターを作成することをお勧めします。 既存のユーザーは、Windows 向けの HDInsight 提供終了日まで Windows 向けの新しい HDInsight クラスターを作成できます。 
 
 ### <a name="is-there-a-pricing-impact-associated-with-moving-from-hdinsight-on-windows-to-hdinsight-on-linux"></a>Windows 向け HDInsight から Linux 向け HDInsight への移行に関して、料金に影響はありますか。
+
 いいえ、いずれの OS の HDInsight でも料金は同じです。 
 
 ### <a name="what-are-the-customer-advantages-associated-with-the-move-to-only-using-hdinsight-on-linux"></a>Linux 向けの HDInsight のみを使用することによるユーザーの利点とは何ですか。
+
 * HDInsight サービスを介した、オープン ソースのビッグ データ テクノロジをより迅速に市場に提供
 * サポートを目的とした大規模なコミュニティとエコシステム
 * Hadoop などのビッグ データ テクノロジのオープン ソース コミュニティによる活発な開発を活用する機能
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Linux 向けの HDInsight では、Windows 向け HDInsight での機能を超えるような追加機能が提供されますか。
+
 HDInsight バージョン 3.4 以降では、Microsoft は Linux OS でのみ HDInsight をリリースしています。 その結果、HDInsight 内のコンポーネントの一部は、Linux でのみ使用できます。 これらには、Apache Ranger、Kafka、Interactive Query、Spark、HDInsight の各種アプリケーション、およびプライマリ ファイル システムとしての Azure Data Lake Storage が含まれています。 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight クラスター バージョンのサービス レベル アグリーメント
+
 サービス レベル アグリーメント (SLA) は、_サポート ウィンドウ_ の条件で定義されます。 サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間です。 バージョンの _サポート有効期限_ が切れている場合、HDInsight クラスターはサポート対象外となります。 サポートされているバージョンの詳細については、[サポートされている HDInsight クラスター バージョン](hdinsight-migrate-from-windows-to-linux.md)の一覧をご覧ください。 所定の HDInsight Version X のサポート有効期限は (新しい X+1 バージョンが利用可能になった後)、次の数式で計算した日付のうち、遅い方とされます。  
 
 * 数式 1:HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
@@ -220,9 +235,8 @@ _提供終了日_ とは、その日を過ぎると HDInsight でクラスター
 * HDInsight クラスター Version 2.1 は、[Hortonworks Data Platform 1.3][hdp-1-3-0] を基盤とする Hadoop ディストリビューションを使用します。
 * HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][hdp-1-1-0] を基盤とする Hadoop ディストリビューションを使用します。
 
-
-
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定のノード構成と仮想マシン サイズ
+
 次の表に、HDInsight クラスターの既定の仮想マシン (VM) サイズを示します。  このグラフは、HDInsight クラスターをデプロイする PowerShell または Azure CLI スクリプトを作成するときに使用する、VM のサイズを理解する必要があります。
 
 > [!IMPORTANT]  

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a0f21165af0bcbd8bda28f0eae20d3ee837f3be9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル:Azure Active Directory と Mozy Enterprise の統合
@@ -50,7 +50,7 @@ Mozy Enterprise と Azure AD の統合を構成するには、次のものが必
 
 Azure AD への Mozy Enterprise の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Mozy Enterprise を追加する必要があります。
 
-**ギャラリーから Mozy Enterprise を追加するには、次の手順を実行します。**
+**ギャラリーから Mozy Enterprise を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 

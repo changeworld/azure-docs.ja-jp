@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 16b5525973b93bc6b073c50c0c657dcbb4679040
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862218"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
@@ -30,7 +30,7 @@ ms.locfileid: "58862218"
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>azureiotsecurity モジュール ツインについて 
 
-Azure に構築された IoT ソリューションで、デバイス ツインは、デバイスの管理とプロセスの自動化の両方で主要な役割を果たします。 
+Azure に構築された IoT ソリューションでは、デバイス ツインが、デバイスの管理とプロセスの自動化の両方で主要な役割を果たします。 
 
 Azure Security Center (ASC) for IoT は、既存の IoT デバイス管理プラットフォームと完全に統合されるため、デバイスのセキュリティ状態を管理したり、既存のデバイス制御機能を利用したりすることができます。
 ASC for IoT の統合は、IoT Hub ツイン メカニズムを利用することによって実現されます。  

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007609"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548561"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -32,7 +32,7 @@ ms.locfileid: "58007609"
 このクイック スタートの最後では、アプリケーションは Azure Active Directory (Azure AD) と統合された組織の職場および学校のアカウントのサインインを受け入れます。
 
 > [!NOTE]
-> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、[v2.0 エンドポイント](azure-ad-endpoint-comparison.md)を使用します。 詳細については、[こちらの v2.0 エンドポイント用の ASP.NET チュートリアル](tutorial-v2-asp-webapp.md)と、v2.0 エンドポイントの現在の制限事項を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。
+> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、"*[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)*" を使用できます。 詳細については、[こちらの ASP.NET のチュートリアル](tutorial-v2-asp-webapp.md)と、"*Microsoft ID プラットフォーム エンドポイント*" を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -292,7 +292,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 |---|---|---|
 | Name | {ユーザーのフルネーム} | ユーザーの姓と名 |
 | ユーザー名 | <span>user@domain.com</span> | ログオンしたユーザーの識別に使用されるユーザー名 |
-| Subject| {件名} |Web 上でユーザーのログオンを一意に識別する文字列 |
+| サブジェクト| {件名} |Web 上でユーザーのログオンを一意に識別する文字列 |
 | テナント ID | {Guid} | ユーザーの Azure AD 組織を一意に表す *guid* |
 
 さらに、認証要求に含まれるすべてのユーザー要求が記載されたテーブルが表示されます。 ID トークンに含まれるすべての要求の一覧とその説明については、[ID トークン内の要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)をご覧ください。

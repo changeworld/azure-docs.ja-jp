@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891891"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
@@ -48,9 +48,9 @@ function.json ファイルには、関数のトリガー、バインド、その
 
 | プロパティ | 値/型 | 説明 |
 | --- | --- | --- |
-| `type` |文字列 |バインドの種類。 たとえば、「 `queueTrigger`」のように入力します。 |
+| `type` |string |バインドの種類。 たとえば、「 `queueTrigger`」のように入力します。 |
 | `direction` |"in"、"'out" |バインドが関数への受信データか、関数からの送信データかを示します。 |
-| `name` |文字列 |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
+| `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
 関数アプリからは、関数が実行される、Azure における実行コンテキストが提供されます。 関数アプリは、まとめて管理、デプロイ、およびスケールされる 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
@@ -104,7 +104,7 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 ## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
-* [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Azure Functions をローカルでコーディングしてテストする](./functions-develop-local.md)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)

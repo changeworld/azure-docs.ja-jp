@@ -16,10 +16,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59260903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>チュートリアル:Azure Active Directory と Appraisd の統合
@@ -107,9 +107,9 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
     a. **[追加の URL を設定します]** をクリックします。
 
-    b. **[リレー状態]** ボックスに、次の URL を入力します:  `<TENANTCODE>`
+    b. **[リレー状態]** テキスト ボックスに、URL `<TENANTCODE>` を入力します
 
-    c. **[SP]** 開始モードでアプリケーションを構成する場合は、**[サインオン URL]** ボックスに次のパターンで URL を入力します:  `https://app.appraisd.com/saml/<TENANTCODE>`
+    c. **[SP]** 開始モードでアプリケーションを構成する場合は、**[サインオン URL]** テキストボックスに `https://app.appraisd.com/saml/<TENANTCODE>` のパターンで URL を入力します。
 
     > [!NOTE]
     > このチュートリアルで後述する Appraisd SSO の [Configuration]\(構成\) ページで、実際の [Sign-on URL]\(サインオン URL\) と [Relay State]\(リレー状態\) の値を取得します。
@@ -242,7 +242,7 @@ Appraisd で Azure AD シングル サインオンを構成するには、次の
 
 Azure AD ユーザーが Appraisd にサインインできるようにするには、ユーザーを Appraisd にプロビジョニングする必要があります。 Appraisd では、プロビジョニングは手動のタスクです。
 
-**ユーザー アカウントをプロビジョニングするには、次の手順を実行します。**
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. セキュリティ管理者として Appraisd にサインインします。
 

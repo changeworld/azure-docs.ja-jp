@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
-ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884309"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790157"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
@@ -39,21 +39,40 @@ ms.locfileid: "55884309"
 
 1. お使いのコンピューターでコマンド プロンプト ウィンドウを開きます。 以下の指示は、あらゆる Windows、Linux、Mac 開発環境で有効です。
 
-2. ASP.NET Core MVC Web アプリケーションを作成します。
+1. ASP.NET Core MVC Web アプリケーションを作成します。
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-3. 作業ディレクトリをプロジェクトのルート フォルダーに変更します。
+1. 作業ディレクトリをプロジェクトのルート フォルダーに変更します。
 
-4. プロファイラー トレースを収集する NuGet パッケージを追加します。
+1. プロファイラー トレースを収集する NuGet パッケージを追加します。
 
-    ```
+    ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-5. **HomeController.cs** セクションに無作為で数秒遅らせるためのコード行を追加します。
+1. Program.cs で Application Insights を有効にします。
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseApplicationInsights() // Add this line of code to Enable Application Insights
+            .UseStartup<Startup>();
+    ```
+    
+1. Startup.cs でプロファイラーを有効にします。
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddServiceProfiler(); // Add this line of code to Enable Profiler
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+1. **HomeController.cs** セクションに無作為で数秒遅らせるためのコード行を追加します。
 
     ```csharp
         using System.Threading;
@@ -68,7 +87,7 @@ ms.locfileid: "55884309"
             }
     ```
 
-6. 変更内容をローカル リポジトリに保存し、コミットします。
+1. 変更内容をローカル リポジトリに保存し、コミットします。
 
     ```
         git init
@@ -143,10 +162,7 @@ ms.locfileid: "55884309"
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
-
-    ![アプリ設定を構成する](./media/profiler-aspnetcore-linux/set-appsettings.png)
 
     アプリ設定を変更すると、サイトは自動的に再起動します。 新しい設定が適用されると、すぐにプロファイラーが 2 分間実行されます。 その後、プロファイラーは 1 時間ごとに 2 分間実行されます。
 
@@ -160,16 +176,8 @@ ms.locfileid: "55884309"
 
 ## <a name="known-issues"></a>既知の問題
 
-### <a name="the-enable-action-in-the-profiler-configuration-pane-doesnt-work"></a>[プロファイラーの構成] ウィンドウの [有効化] アクションが機能しない
-
-> [!NOTE]
-> App Service on Linux を使用してアプリをホストする場合は、Application Insights ポータルの **[パフォーマンス]** ウィンドウでプロファイラーを再度有効にする必要はありません。 プロジェクトに NuGet パッケージを含めて、Web アプリの設定で Application Insights の **iKey** 値を設定することで、プロファイラーを有効にすることができます。
-
-[Windows のための Application Insights Profiler](./profiler.md) の有効化ワークフローに従い、**[Profiler の構成]** ウィンドウで **[有効化]** を選択すると、エラーが表示されます。 有効化アクションにより、Linux 環境への Windows バージョンのプロファイラー エージェントのインストールが試みられます。
-
-この問題の解決に取り組んでいます。
-
-![[パフォーマンス] ウィンドウでプロファイラーを再度有効にしないでください](./media/profiler-aspnetcore-linux/issue-enable-profiler.png)
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Linux プロファイラーで、[今すぐプロファイル] ボタンが機能しません。
+Linux バージョンの App Insights プロファイラーで、[今すぐプロファイル] ボタンを使用したオンデマンドのプロファイリングがまだサポートされていません。
 
 
 ## <a name="next-steps"></a>次の手順

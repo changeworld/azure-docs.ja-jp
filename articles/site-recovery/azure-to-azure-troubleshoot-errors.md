@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
 ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269624"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
@@ -27,7 +27,7 @@ ms.locfileid: "59269624"
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure リソースのクォータに関する問題 (エラー コード 150097)
 ディザスター リカバリー リージョンとして使用するターゲット リージョンで Azure VM を作成するには、サブスクリプションを有効にする必要があります。 また、特定のサイズの VM を作成するには、サブスクリプションで十分なクォータが有効になっている必要もあります。 Site Recovery では、既定で、ソース VM と同じサイズがターゲット VM に対して選択されます。 同じサイズを使用できない場合は、最も近いサイズが自動的に取得されます。 このエラー メッセージは、ソース VM 構成をサポートするサイズと一致するものがない場合に表示されます。
 
-**エラー コード** | **考えられる原因** | **推奨**
+**エラー コード** | **考えられる原因** | **推奨事項**
 --- | --- | ---
 150097<br></br>**メッセージ**:仮想マシン VmName のレプリケーションを有効にできませんでした。 | - ターゲット リージョンの場所で VM を作成するための、サブスクリプション ID が有効になっていない可能性があります。</br></br>- ターゲット リージョンの場所で特定の VM サイズを作成するための、サブスクリプション ID が有効になっていない可能性があります。または、十分なクォータが確保されていません。</br></br>- ターゲット リージョンの場所のサブスクリプション ID について、ソース VM の NIC 数 (2) と一致する適切なターゲットVM サイズが見つかりません。| [Azure 課金のサポート](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)に連絡して、サブスクリプションのターゲットの場所で、必要な VM サイズの VM 作成を有効にしてください。 有効にした後、失敗した操作を再試行してください。
 
@@ -40,12 +40,12 @@ ms.locfileid: "59269624"
 
 すべての最新の信頼されたルート証明書が VMにない場合、"レプリケーションの有効化" ジョブが失敗することがあります。 証明書がないと、VM からの Site Recovery サービス呼び出しの認証と承認が失敗します。 失敗した "レプリケーションの有効化" Site Recovery ジョブのエラー メッセージが表示されます。
 
-**エラー コード** | **考えられる原因** | **Recommendations**
+**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
 --- | --- | ---
 151066<br></br>**メッセージ**:Site Recovery の構成に失敗しました。 | 承認と認証に使用される、必要な信頼されたルート証明書がマシンに存在しません。 | - Windows オペレーティング システムを実行している VM については、信頼されたルート証明書がマシンに存在することを確認します。 詳細については、「[信頼されたルートおよび許可されない証明書を構成する](https://technet.microsoft.com/library/dn265983.aspx)」を参照してください。<br></br>- Linux オペレーティング システムを実行している VM については、Linux オペレーティング システム バージョンのディストリビューターによって発行された、信頼されたルート証明書のガイダンスに従ってください。
 
 ### <a name="fix-the-problem"></a>問題の解決
-** Windows**
+**Windows**
 
 すべての最新 Windows 更新プログラムを VM にインストールし、すべての信頼されたルート証明書をマシンに用意します。 接続されていない環境の場合は、組織の標準の Windows 更新プロセスに従って、証明書を取得してください。 VM に必要な証明書がない場合は、セキュリティ上の理由から、Site Recovery サービスへの呼び出しが失敗します。
 
@@ -193,8 +193,8 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 - **解決策**
   1. モビリティ サービス エージェントは、Windows では IE から、Linux では /etc/environment からプロキシ設定を検出します。
   2. プロキシを ASR モビリティ サービスにのみ設定する場合は、次の場所にある ProxyInfo.conf 内にプロキシの詳細を指定できます。</br>
-     - ``/usr/local/InMage/config/`` (***Linux***)
-     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` (***Windows***)
+     - ***Linux*** の場合は ``/usr/local/InMage/config/``
+     - ***Windows*** の場合は ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
   3. ProxyInfo.conf 内のプロキシ設定は、次の INI 形式になっている必要があります。</br>
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
@@ -209,7 +209,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 
 VM に接続された新しいディスクを初期化する必要があります。
 
-**エラー コード** | **考えられる原因** | **Recommendations**
+**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
 --- | --- | ---
 150039<br></br>**メッセージ**:論理ユニット番号 (LUN) が (LUNValue) の Azure データ ディスク (DiskName) (DiskURI) が、VM 内部から報告されている同じ LUN 値のディスクにマップされませんでした。 | - 新しいデータ ディスクが VM に接続されているが、初期化されませんでした。</br></br>- VM 内部のデータ ディスクは、そのディスクが VM に接続されている LUN 値を正しく報告していません。| データ ディスクが初期化されていることを確認し、操作を再試行します。</br></br>Windows の場合:[新しいディスクを接続し、初期化する](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>Linux の場合:[Linux で新しいデータ ディスクを初期化する](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
@@ -282,7 +282,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/ボリューム シャドウ コピー サービス エラー (エラー コード 151025)
 
-**エラー コード** | **考えられる原因** | **Recommendations**
+**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
 --- | --- | ---
 151025<br></br>**メッセージ**:サイト回復拡張機能をインストールできませんでした | - COM+ システム アプリケーション サービスが無効になっています。</br></br>- ボリューム シャドウ コピー サービスが無効になっています。| COM+ システム アプリケーション サービスとボリューム シャドウ コピー サービスを、自動または手動スタートアップ モードに設定します。
 
@@ -294,7 +294,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>サポートされていないマネージド ディスクのサイズ (エラー コード 150172)
 
 
-**エラー コード** | **考えられる原因** | **Recommendations**
+**エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
 --- | --- | ---
 150172<br></br>**メッセージ**:1024 MB のサポートされている最小サイズ未満のサイズ (DiskSize) を持つ (DiskName) が存在するため、仮想マシンの保護を有効にできませんでした。 | - このディスクは 1024 MB のサポートされているサイズ未満です| ディスク サイズがサポートされているサイズの範囲内にあることを確認し、操作を再試行してください。
 

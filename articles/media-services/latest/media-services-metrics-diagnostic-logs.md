@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
 ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848047"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785087"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Media Services のメトリックと診断ログの監視
 
@@ -34,7 +34,7 @@ ms.locfileid: "58848047"
 
 現在、次の Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックが Azure によって生成されます。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |Requests|ストリーミング エンドポイントによって処理された要求の合計数に関する詳細情報を提供します。|
 |エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
@@ -54,7 +54,7 @@ az monitor metrics list --resource \
 
 現時点では、次の診断ログを取得できます。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](media-services-diagnostic-logs-schema.md)に関するページを参照してください。|
 

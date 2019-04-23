@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096692"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524261"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 
@@ -91,6 +91,8 @@ Are there any SQL server jobs?
 
 ## <a name="add-hierarchical-entity"></a>階層構造エンティティを追加する
 
+**階層エンティティは最終的に非推奨になります。エンティティのサブタイプを決定するには、階層エンティティではなく、[エンティティ ロール](luis-concept-roles.md)を使用します。**
+
 階層構造エンティティは、文脈から学習され、概念的に関連付けられる部類のエンティティです。 次の例では、エンティティに出発地と到着地が含まれます。 
 
 発話 `Move John Smith from Seattle to Cairo` では、シアトルが出発地で、カイロが到着地です。 いずれの場所も文脈的に異なり、発話の中の単語の順序と選択から学習されます。
@@ -105,6 +107,12 @@ Are there any SQL server jobs?
 
     >[!CAUTION]
     >子エンティティ名は、1 つのアプリのエンティティ全体で一意となる必要があります。 2 つの異なる階層構造エンティティには、同じ名前の子エンティティを含めることができません。 
+
+## <a name="add-entitys-role-to-utterance"></a>発話にエンティティのロールを追加する
+
+ロールには、発話のコンテキストによって決定される、エンティティのサブタイプの名前が付けられます。 発話内のエンティティ内をエンティティとしてマークしたり、そのエンティティ内のロールを選択したりできます。 どのエンティティにも、機械学習したカスタム エンティティ (簡易エンティティと複合エンティティ) と、機械学習していないカスタム エンティティ (事前構築済みエンティティ、正規表現エンティティ、リスト エンティティ) が含まれるロールを含めることができます。 
+
+[エンティティ ロールが含まれる発話をマークする方法](tutorial-entity-roles.md)は、ハンズオン チュートリアルでご確認ください。 
 
 ## <a name="entity-status-predictions"></a>エンティティの状態の予測
 
@@ -151,11 +159,11 @@ LUIS ポータルで新しい発話を入力するとき、発話にエンティ
 
 ### <a name="add-prebuilt-entity-label"></a>事前構築済みエンティティ ラベルを追加する
 
-事前構築済みエンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 事前構築済みエンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-prebuilt-entity)に関するページを参照してください。
+事前構築済みエンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 事前構築済みエンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)に関するページを参照してください。
 
 ### <a name="add-regular-expression-entity-label"></a>正規表現エンティティ ラベルを追加する
 
-正規表現エンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 正規表現エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-regular-expression-entities)に関するページを参照してください。
+正規表現エンティティを LUIS アプリに追加する場合、発話にそれらのエンティティのタグを付ける必要はありません。 正規表現エンティティとその追加方法に関する詳細については、[エンティティの追加](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts)に関するページを参照してください。
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>発話からパターンを作成する

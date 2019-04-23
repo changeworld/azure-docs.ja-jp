@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883011"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語を理解する
@@ -41,7 +41,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 
 ![請求書の要約セクション](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
-| 用語 | 説明 |
+| 期間 | 説明 |
 | --- | --- |
 | 販売先 |請求先アカウントのプロパティに含まれる、法人の住所|
 | 請求先 |課金プロファイルのプロパティに含まれる、請求書を受け取る課金プロファイルの請求先住所|
@@ -57,7 +57,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 
 ![[課金の要約] セクション](./media/billing-understand-your-invoice-mca/billingsummary.png)
 
-| 用語 | 説明 |
+| 期間 | 説明 |
 | --- | --- |
 | Charges|この課金プロファイルに対する前回の請求期間以降の Microsoft の料金の合計額 |
 | 謝辞 |払い戻しで受け取ったクレジット |
@@ -82,7 +82,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 
 ![請求書セクションごとの詳細](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
-| 用語 |説明 |
+| 期間 |説明 |
 | --- | --- |
 | 単価 | 使用量の評価に使用される (価格設定通貨による) サービスの実効単価。 これは、製品、サービス ファミリ、測定、オファーによって異なります。 |
 | 数量 | 請求期間中に購入または使用された数量 |

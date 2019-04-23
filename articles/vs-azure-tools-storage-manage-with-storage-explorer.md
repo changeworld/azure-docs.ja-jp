@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225095"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002682"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -99,7 +99,7 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 
 2. 左側のウィンドウに、サインインしている Azure アカウントがすべて表示されます。 別のアカウントに接続するには、**[アカウントの追加]** を選択します。
 
-3. 国内クラウドまたは Azure Stack にサインインする場合は、**[Azure 環境]** ドロップダウンをクリックして、使用する Azure クラウドを選択します。 環境を選択したら、**[サインイン]** ボタンをクリックします。 Azure Stack にサインインする場合は、「[Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack/user/azure-stack-storage-connect-se.md)」を参照してください。
+3. 国内クラウドまたは Azure Stack にサインインする場合は、**[Azure 環境]** ドロップダウンをクリックして、使用する Azure クラウドを選択します。 環境を選択したら、**[サインイン]** ボタンをクリックします。 Azure Stack にサインインする場合は、「[Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](/azure-stack/user/azure-stack-storage-connect-se)」を参照してください。
 
     ![サインイン オプション][2]
 

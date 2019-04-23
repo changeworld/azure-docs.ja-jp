@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425935"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
@@ -352,14 +352,14 @@ Azure IoT Central アプリケーションに接続するようにクライア�
 
 オペレーターは、以下の方法を学ぶことができます。
 
-* [デバイスを管理する](howto-manage-devices.md)
+* [デバイスの管理](howto-manage-devices.md)
 * [デバイス セットを使用する](howto-use-device-sets.md)
 * [カスタム分析を作成する](howto-use-device-sets.md)
 
 デバイス開発者は、以下の方法を学ぶことができます。
 
 * [DevKit デバイスを準備して接続する (C)](howto-connect-devkit.md)
-* [Raspberry Pi (Python) を準備して接続する](howto-connect-raspberry-pi-python.md)
-* [Raspberry Pi (C#) を準備して接続する](howto-connect-raspberry-pi-csharp.md)
+* [Raspberry Pi を準備して接続する (Python)](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi を準備して接続する (C#)](howto-connect-raspberry-pi-csharp.md)
 * [Windows 10 IoT Core デバイスを準備して接続する (C#)](howto-connect-windowsiotcore.md)
 * [汎用の Node.js クライアント を Azure IoT Central アプリケーションに接続する](howto-connect-nodejs.md)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439334"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006460"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用して Azure リソースへのアクセスを管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "57439334"
 
 ## <a name="list-access"></a>アクセス権の表示
 
-RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 ロールの割り当てを一覧表示するには、いずれかの[ロールの割り当て - 一覧表示](/rest/api/authorization/roleassignments/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。 API を呼び出すには、指定スコープでの `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権は、[Azure リソースの組み込みロール](built-in-roles.md)の一部に付与されています。
+RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 ロールの割り当てを一覧表示するには、いずれかの[ロールの割り当て - 一覧表示](/rest/api/authorization/roleassignments/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。
 
 1. 次の要求から開始します。
 
@@ -38,11 +38,11 @@ RBAC でアクセス権を一覧表示するには、ロールの割り当てを
 
 1. URI の *{scope}* を、ロールの割り当てを一覧表示するスコープに変更します。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{filter}* には、ロールの割り当て一覧をフィルター処理するために適用する条件を指定します。
 
@@ -77,11 +77,11 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
     
 1. URI の *{scope}* をロールの割り当てのスコープに変更します。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{roleAssignmentName}* を、ロールの割り当ての GUID 識別子に置き換えます。
 
@@ -105,11 +105,11 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. URI の *{scope}* を、ロールの割り当てを削除するためのスコープに変更します。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{roleAssignmentName}* を、ロールの割り当ての GUID 識別子に置き換えます。
 

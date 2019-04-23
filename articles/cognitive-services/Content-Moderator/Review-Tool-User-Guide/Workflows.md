@@ -8,14 +8,14 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757414"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795799"
 ---
 # <a name="define-and-use-moderation-workflows"></a>モデレーション ワークフローを定義して使用する
 
@@ -65,9 +65,9 @@ ms.locfileid: "58757414"
 
 ![ワークフローのテスト](images/image-workflow-execute.PNG)
 
-この[サンプル画像](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png)をローカル ドライブに保存します。 次に **[Choose File(s)]\(ファイルの選択\)** を選択して、画像をアップロードします。
+この[サンプル画像](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)をローカル ドライブに保存します。 次に **[Choose File(s)]\(ファイルの選択\)** を選択して、画像をアップロードします。
 
-![水着の女性](images/sample-racy.PNG)
+![ランナーと引用文が示された画像](images/sample-text.jpg)
 
 ### <a name="track-progress"></a>進捗状況の追跡
 

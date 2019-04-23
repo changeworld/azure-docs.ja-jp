@@ -3,7 +3,7 @@ title: Azure Security Center でサポートされている機能とプラット
 description: このドキュメントでは、Azure Security Center でサポートされる機能とプラットフォームの一覧を示します。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/9/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5422ba1b29ac48a7255f25ac0beb43e3481d256a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 4/17/2019
+ms.author: monhaber
+ms.openlocfilehash: b5eafd15344156965d0a191688f602ffe1b5a498
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105894"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678311"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
 
@@ -37,11 +37,12 @@ ms.locfileid: "56105894"
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows コンピューターおよび VM でサポートされているプラットフォーム
 次の Windows オペレーティング システムがサポートされています。
 
-* Windows Server 2008
-* Windows Server 2008 R2
-* Windows Server 2012
-* Windows Server 2012 R2
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows Server 2008
 
 > [!NOTE]
 > Windows Defender ATP との統合は、Windows Server 2012 R2 および Windows Server 2016 のみをサポートしています。

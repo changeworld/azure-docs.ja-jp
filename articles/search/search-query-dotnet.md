@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.openlocfilehash: 1194407122123797c2564c96ac452b9582b017a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264949"
 ---
 # <a name="quickstart-3---query-an-azure-search-index-in-c"></a>クイック スタート:3 - C# で Azure Search インデックスに対するクエリを実行する
@@ -34,7 +34,7 @@ hotels サンプル データを含む [Azure Search インデックスを読み
 ## <a name="create-a-client"></a>クライアントの作成
 (前のレッスンで使用した `SearchServiceClient` に対して付与された書き込みアクセス権ではなく) 読み取り専用アクセス用のクエリ キーを付与できるようにするために、`SearchIndexClient` クラスのインスタンスを作成します。
 
-このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、検索サービスの名前、インデックスの名前、および [`SearchCredentials`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials?view=azure-dotnet) オブジェクトをパラメーターとして受け取ります。 `SearchCredentials`  は API キーをラップします。
+このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、検索サービスの名前、インデックスの名前、および [`SearchCredentials`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials?view=azure-dotnet) オブジェクトをパラメーターとして受け取ります。 `SearchCredentials` は API キーをラップします。
 
 次のコードでは、アプリケーションの構成ファイル ([サンプル アプリケーション](https://aka.ms/search-dotnet-howto)では `appsettings.json`) に格納されている検索サービスの名前と API キーの値を使用して、"hotels" インデックス用の新しい `SearchIndexClient` を作成します。
 
@@ -49,7 +49,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-`SearchIndexClient`  には [`Documents`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient.documents?view=azure-dotnet) プロパティがあります。 このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
+`SearchIndexClient` は [`Documents`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient.documents?view=azure-dotnet) プロパティを持ちます。 このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
 
 ## <a name="construct-searchparameters"></a>SearchParameters の作成
 .NET SDK を使用した検索は簡単です。`Documents.Search` メソッドを `SearchIndexClient` で呼び出します。 このメソッドは、検索テキストのほか、クエリをさらに絞り込むために使用できる `SearchParameters` オブジェクトなどのいくつかのパラメーターを受け取ります。

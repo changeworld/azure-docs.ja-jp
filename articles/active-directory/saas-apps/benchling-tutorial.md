@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 9b3725f217ef261df7bc8d9821edf972bfe58806
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benchling"></a>チュートリアル:Azure Active Directory と Benchling の統合
@@ -107,9 +107,9 @@ Benchling で Azure AD シングル サインオンを構成するには、次�
 
     ![[Benchling のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<SUBDOMAIN>.benchling.com/ext/saml/metadata.xml`
+    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.benchling.com/ext/saml/metadata.xml` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<SUBDOMAIN>.benchling.com/ext/saml/signin:finish`
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.benchling.com/ext/saml/signin:finish` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -130,7 +130,7 @@ Benchling で Azure AD シングル サインオンを構成するには、次�
     | ---------------| --------------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
-    | 電子メール | User.mail |
+    | Email | User.mail |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 8b145755f88c7a2be215ccfd78538298433331fd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>チュートリアル:Azure Active Directory と Pacific Timesheet の統合
@@ -51,7 +51,7 @@ Pacific Timesheet と Azure AD の統合を構成するには、次のものが�
 
 Azure AD への Pacific Timesheet の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Pacific Timesheet を追加する必要があります。
 
-**ギャラリーから Pacific Timesheet を追加するには、次の手順を実行します。**
+**ギャラリーから Pacific Timesheet を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -105,9 +105,9 @@ Pacific Timesheet で Azure AD シングル サインオンを構成するには
 
     ![[Pacific Timesheet のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    a. **[識別子]** ボックスに、`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    b. **[応答 URL]** ボックスに、`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Pacific Timesheet クライアント サポート チーム](https://www.pacifictimesheet.com/support)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

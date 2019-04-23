@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 ms.openlocfilehash: 4c759462d603a35e738f76a505abd04b832afc3f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426343"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Azure Dev Spaces での .NET Core の使用
@@ -145,7 +145,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
 Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
 
-1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、70 行目の `<h2>Application uses</h2>` を次のように変更します。 `<h2>Hello k8s in Azure!</h2>`
+1. `./Views/Home/Index.cshtml` ファイルを見つけ、HTML を編集します。 たとえば、70 行目の `<h2>Application uses</h2>` を `<h2>Hello k8s in Azure!</h2>` のように変更します。
 1. ファイルを保存します。 しばらくすると、ターミナル ウィンドウに、実行中のコンテナー内のファイルが更新されたことを示すメッセージが表示されます。
 1. ブラウザーに移動し、ページを更新します。 Web ページに更新された HTML が表示されます。
 
@@ -154,8 +154,8 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 ### <a name="update-a-code-file"></a>コード ファイルを更新する
 コード ファイルを更新するには、.NET Core アプリを再ビルドし、更新されたアプリケーション バイナリを生成する必要があるため、もう少し作業が必要です。
 
-1. ターミナル ウィンドウで、`Ctrl+C` キーを押して `azds up` を停止します。
-1. `Controllers/HomeController.cs` という名前のコード ファイルを開き、About ページに表示されるメッセージを編集します。 `ViewData["Message"] = "Your application description page.";`
+1. ターミナル ウィンドウで `Ctrl+C` キーを押します (`azds up`を停止します)。
+1. `Controllers/HomeController.cs` という名前のコード ファイルを開き、About ページに表示されるメッセージ (`ViewData["Message"] = "Your application description page.";`) を編集します。
 1. ファイルを保存します。
 1. ターミナル ウィンドウで `azds up` を実行します。 
 

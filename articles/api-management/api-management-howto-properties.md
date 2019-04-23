@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58791628"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
@@ -27,8 +27,8 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 | Attribute | Type | 説明 |
 | --- | --- | --- |
-| Display name |文字列 |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
-| Value |文字列 |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
+| Display name |string |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
+| Value |string |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
 |Secret|ブール値|値がシークレットかどうかと暗号化する必要があるかどうかを決定します。|
 | Tags |文字列の配列 |任意のタグ。指定されている場合、プロパティの一覧のフィルター処理に利用できます。 |
 
@@ -36,7 +36,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 プロパティ値にはリテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`ExpressionProperty` の値は、現在の日時を含む文字列を返すポリシー式です。 プロパティ `ContosoHeaderValue` はシークレットとして設定されています。そのため、その値は表示されていません。
 
-| 名前 | Value | Secret | Tags |
+| Name | Value | Secret | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |

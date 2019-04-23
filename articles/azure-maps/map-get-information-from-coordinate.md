@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256058"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
@@ -59,7 +59,7 @@ ms.locfileid: "59256058"
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [マップ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
@@ -67,7 +67,7 @@ ms.locfileid: "59256058"
 完全なコードの例については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [A から B までのルートを表示する](./map-route.md)
+> [A から B までのルートを表示する ](./map-route.md)
 
 > [!div class="nextstepaction"]
-> [交通情報を表示する](./map-show-traffic.md)
+> [トラフィックを表示する](./map-show-traffic.md)

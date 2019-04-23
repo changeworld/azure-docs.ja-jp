@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861691"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center for IoT の前提条件
@@ -44,7 +44,7 @@ ASC for IoT の分析情報とレポートは、Azure IoT Hub と Azure Security
 ## <a name="supported-service-regions"></a>サポートされているサービス リージョン 
 
 ASC for IoT は、現在のところ次の Azure リージョン内の IoT Hub でサポートされています。
-  - 米国中央部
+  - 米国中部
   - 北ヨーロッパ
   - 東南アジア
 
