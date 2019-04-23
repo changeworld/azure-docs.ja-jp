@@ -8,18 +8,17 @@ services: site-recovery
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 4f13c1beb23687b46074671fe01a0f42b26c8c03
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 399dcd744819cf4cb5d9f5f9636967c34e186a0e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312922"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004603"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Azure に VMware をディザスター リカバリーするための構成サーバーの要件
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。
 
-- 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。
 - 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。
 - 構成サーバーのコンポーネントとプロセスの[詳細をご確認ください](vmware-azure-architecture.md)。
 
@@ -59,7 +58,7 @@ IIS | - 既存の Web サイトが存在しない <br> - ポート 443 でリッ
 --- | --- 
 IP アドレスの種類 | 静的 
 インターネットへのアクセス | サーバーは、次の URL にアクセスする必要があります (直接またはプロキシ経由)。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF には次の URL へのアクセスも必要です。 <br> - https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> - https:\//auth.gfx.ms <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com <br> - https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
-ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
+Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
 NIC の種類 | VMXNET3 (構成サーバーが VMware VM である場合)
 
 ## <a name="required-software"></a>必要なソフトウェア

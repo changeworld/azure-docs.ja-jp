@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918146"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797109"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 
@@ -44,7 +44,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 ライブラリ コントロールは、Runbook に追加する [アクティビティ](#activities) を選択する場所です。 アクティビティをキャンバスに追加し、そこで他のアクティビティに接続します。 これには、以下の表で説明する次の 4 つのセクションが含まれます。
 
-| セクション | Description |
+| Section | Description |
 |:--- |:--- |
 | コマンドレット |Runbook で使用できるすべてのコマンドレットが含まれています。 コマンドレットはモジュールごとに整理されます。 オートメーション アカウントにインストールしたモジュールをすべて使用できます。 |
 | Runbooks |お使いの Automation アカウントの Runbook が含まれています。 これらの Runbook は、子 Runbook として使用するためにキャンバスに追加できます。 表示されるのは、編集中の Runbook と同じコアの種類の Runbook のみです。つまり、グラフィカル Runbook の場合は、PowerShell ベースの Runbook のみが表示されるのに対し、グラフィカル PowerShell ワークフロー Runbook の場合は、PowerShell ワークフロー ベースの Runbook のみが表示されます。 |
