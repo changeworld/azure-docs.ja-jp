@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 02/21/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338554"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548356"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Azure Machine Learning サービスによる TensorFlow モデルと Keras モデルのトレーニング
 
@@ -48,7 +48,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 パラメーター | 説明
 --|--
 `source_directory` | トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています
-`script_params` | <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ
+`script_params` | <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ。  `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
 `compute_target` | トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター)
 `entry_script` | リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages` | トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。 この場合､トレーニング スクリプトはデータの読み込みに `sklearn` を使用しますから、インストールするこのパッケージを指定します｡  コンストラクターには `pip_packages` という名前のパラメーターもあり、必要な pip パッケージに対して使用できます

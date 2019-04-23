@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Resource Manager で作成されて異なる Azure サブスクリプションに存在する仮想ネットワーク間に仮想ネットワーク ピアリングを作成する方法を説明します。
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: jdial;anavin
-ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 04/09/2019
+ms.author: anavin
+ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403470"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528260"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
 
@@ -39,7 +39,9 @@ ms.locfileid: "58403470"
 
 ## <a name="portal"></a>ピアリングの作成 - Azure Portal
 
-ピアリングしようとする仮想ネットワークが、異なる Azure Active Directory テナントに関連付けられているサブスクリプション内にある場合は、この記事の CLI および PowerShell のセクションの手順に従います。 ポータルでは、異なる Active Directory テナントのサブスクリプションに属している仮想ネットワークをピアリングすることはできません。
+ピアリングしようとする仮想ネットワークが、異なる Azure Active Directory テナントに関連付けられているサブスクリプション内にある場合は、この記事の CLI および PowerShell のセクションの手順に従います。 ポータルでは、異なる Active Directory テナントのサブスクリプションに属している仮想ネットワークをピアリングすることはできません。 
+
+Cloud Shell ではサブスクリプションとテナントの切り替えに制限があるため、異なる Azure Active Directory テナント内のサブスクリプションに属している VNet 間の VNet ピアリングまたはグローバル VNet 間ピアリングが機能しないことにご注意ください。 PowerShell または CLI をご使用ください。
 
 以下の手順では、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、ポータルからログアウトする手順と、他のユーザーのアクセス許可を仮想ネットワークに割り当てる手順はスキップできます。
 
@@ -59,7 +61,7 @@ ms.locfileid: "58403470"
 7. **[ロール]** ボックスで **[ネットワーク共同作成者]** を選択します。
 8. **[選択]** ボックスで、*[UserB]* を選択するか、UserB のメール アドレスを入力して検索します。
 9. **[保存]** を選択します。
-10. **[myVnetA - アクセス制御 (IAM)]** で、左側にある縦長のオプション一覧から **[プロパティ]** を選択します。 **リソース ID** をコピーします。これは後の手順で使用されます。 リソース ID は次の例に似ています: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA
+10. **[myVnetA - アクセス制御 (IAM)]** で、左側にある縦長のオプション一覧から **[プロパティ]** を選択します。 **リソース ID** をコピーします。これは後の手順で使用されます。 リソース ID は次の例のようになります。`/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`
 11. UserA としてポータルからログアウトし、UserB としてログインします。
 12. 手順 2 ～ 3 を繰り返し、手順 3 で次の値を入力または選択します。
 
@@ -72,7 +74,7 @@ ms.locfileid: "58403470"
     - **場所**: *米国東部*
 
 13. ポータル上部の **[リソースの検索]** ボックスに「*myVnetB*」と入力します。 検索結果に **[myVnetB]** が表示されたら、それを選択します。
-14. **[myVnetB]** で、左側にある縦長のオプション一覧から **[プロパティ]** を選択します。 **リソース ID** をコピーします。これは後の手順で使用されます。 リソース ID は次の例に似ています。/subscriptions/<Subscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
+14. **[myVnetB]** で、左側にある縦長のオプション一覧から **[プロパティ]** を選択します。 **リソース ID** をコピーします。これは後の手順で使用されます。 リソース ID は次の例のようになります。`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 15. **[myVnetB]** で **[アクセス制御 (IAM)]** を選択し、myVnetB に対して手順 5 ～ 10 を実行します。手順 8 では「**UserA**」と入力します。
 16. UserB としてポータルからログアウトし、UserA としてログインします。
 17. ポータル上部の **[リソースの検索]** ボックスに「*myVnetA*」と入力します。 検索結果に **[myVnetA]** が表示されたら、それを選択します。
@@ -109,7 +111,7 @@ ms.locfileid: "58403470"
 CLI とその依存関係をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** ボタンを選択すると Cloud Shell が開き、Azure アカウントでログインできます。
 
 1. CLI セッションを開き、`azure login` コマンドを使って UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
-2. PC で次のスクリプトをテキスト エディターにコピーし、`<SubscriptionA-Id>` を SubscriptionA の ID に置き換えた後、変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 サブスクリプション ID がわからない場合は、"az account show" コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。
+2. PC で次のスクリプトをテキスト エディターにコピーし、`<SubscriptionA-Id>` を SubscriptionA の ID に置き換えた後、変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 サブスクリプション ID がわからない場合は、`az account show` コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。
 
     ```azurecli-interactive
     # Create a resource group.

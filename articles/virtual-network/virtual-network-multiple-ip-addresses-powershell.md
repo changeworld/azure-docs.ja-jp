@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 70dac62e3e19ad0e9b33ea7b376a8fe479bf3131
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649649"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522986"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -96,7 +96,7 @@ ms.locfileid: "58649649"
 
 6. NIC のプライマリ IP 構成を定義します。 以前に定義した値を使用しなかった場合は、10.0.0.4 を作成済みのサブネットの有効なアドレスに変更します。 静的 IP アドレスを割り当てる前に、そのアドレスがまだ使用されていないことを確認しておくことをお勧めします。 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` コマンドを入力します。 このアドレスを使用できる場合、出力で *True* が返されます。 使用できない場合は、出力で *False* が返され、使用可能なアドレスの一覧が返されます。 
 
-    次のコマンドで、**<replace-with-your-unique-name> を使用する一意の DNS 名に置き換えます。** この名前は、Azure リージョン内のすべてのパブリック IP アドレス間で一意である必要があります。 これは省略可能なパラメーターです。 パブリック IP アドレスを使用して VM に接続するだけである場合は削除してかまいません。
+    次のコマンドで、**\<replace-with-your-unique-name> を使用する一意の DNS 名に置き換えます。** この名前は、Azure リージョン内のすべてのパブリック IP アドレス間で一意である必要があります。 これは省略可能なパラメーターです。 パブリック IP アドレスを使用して VM に接続するだけである場合は削除してかまいません。
 
     ```powershell
     

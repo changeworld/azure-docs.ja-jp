@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470901"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544925"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -82,7 +82,7 @@ Azure Dev Spaces の設定と使用の基本的なフローは次のとおりで
 AKS クラスターの準備には以下が含まれます。
 * AKS クラスターが [Azure Dev Spaces でサポートされている](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)リージョン内にあることを確認する。
 * Kubernetes 1.10.3 以降が実行されていることを確認する。
-* を使用して Azure Dev Spaces をクラスターで有効にする `az aks use-dev-spaces`
+* `az aks use-dev-spaces` を使用して Azure Dev Spaces をクラスターで有効にする。
 
 Azure Dev Spaces 用の AKS クラスターを作成して構成する方法の詳細については、次に示すいずれかのファースト ステップ ガイドを参照してください。
 * [Azure Dev Spaces での Java の使用](get-started-java.md)
@@ -94,7 +94,9 @@ AKS クラスターで Azure Dev Spaces を有効にすると、クラスター�
 
 * 開発スペースとして使用する Kubernetes 名前空間を作成または指定する。
 * *azds* という名前の Kubernetes 名前空間が存在する場合は、それを削除し、新しい名前空間を作成する。
-* Kubernetes 初期化子オブジェクトをデプロイする。
+* Kubernetes webhook の構成をデプロイします。
+* webhook 受付サーバーをデプロイします。
+    
 
 また、AKS クラスターが他の Azure Dev Spaces コンポーネントにサービスの呼び出しを行うために使用するものと同じサービス プリンシパルも使用します。
 
@@ -104,9 +106,9 @@ Azure Dev Spaces を使用するには、開発スペースが少なくとも 1 
 
 既定では、コントローラーが既存の *default* Kubernetes 名前空間をアップグレードして、*default* という名前の開発スペースを作成します。 クライアント側ツールを使用すると、新しい開発スペースを作成して既存の開発スペースを削除できます。 Kubernetes における制限があるため、*default* 開発スペースを削除することはできません。 また、コントローラーでは、*azds* という名前の既存の Kubernetes 名前空間を削除して、クライアント側ツールで使用される `azds` コマンドとの競合を回避します。
 
-Kubernetes 初期化子オブジェクトは、インストルメンテーション用のデプロイ時に 3 つのコンテナー (devspaces-proxy コンテナー、devspaces-proxy-init コンテナー、devspaces-build コンテナー) をポッドに挿入するために使用します。 **これらの 3 つのコンテナーはすべて、AKS クラスターでルート アクセスを使用して実行されます。** また、AKS クラスターが他の Azure Dev Spaces コンポーネントにサービスの呼び出しを行うために使用するものと同じサービス プリンシパルも使用します。
+Kubernetes webhook 受付サーバーは、インストルメンテーション用のデプロイ時に 3 つのコンテナー (devspaces-proxy コンテナー、devspaces-proxy-init コンテナー、devspaces-build コンテナー) をポッドに挿入するために使用します。 **これらの 3 つのコンテナーはすべて、AKS クラスターでルート アクセスを使用して実行されます。** また、AKS クラスターが他の Azure Dev Spaces コンポーネントにサービスの呼び出しを行うために使用するものと同じサービス プリンシパルも使用します。
 
-![Azure Dev Spaces の Kubernetes 初期化子](media/how-dev-spaces-works/kubernetes-initializer.svg)
+![Azure Dev Spaces Kubernetes webhook 受付サーバー](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
 devspaces-proxy コンテナーは、アプリケーション コンテナーに出入りするすべての TCP トラフィックを処理し、ルーティングの実行に役立つサイドカー コンテナーです。 devspaces-proxy コンテナーでは、特定のスペースが使用されている場合に HTTP メッセージを再ルーティングします。 たとえば、親スペースと子スペースのアプリケーション間で HTTP メッセージをルーティングできます。 HTTP 以外のすべてのトラフィックは、未変更の状態で devspaces-proxy を通過します。 また、devspaces-proxy container コンテナーでは、受信と送信の HTTP メッセージをすべてログに記録し、クライアント側ツールにそれらをトレースとして送信します。 これらのトレースは、アプリケーションの動作を調べるために開発者が表示できます。
 
@@ -117,7 +119,7 @@ devspaces-build コンテナーは初期化コンテナーであり、プロジ�
 > [!NOTE]
 > Azure Dev Spaces では、同じノードを使用して、アプリケーションのコンテナーをビルドおよび実行します。 そのため、Azure Dev Spaces には、アプリケーションをビルドして実行するための外部のコンテナー レジストリが必要ありません。
 
-Kubernetes 初期化子オブジェクトは AKS クラスターで作成された新しいポッドをリッスンします。 *azds.io/space=true* ラベル付きの名前空間にそのポッドがデプロイされる場合は、コンテナーを追加してポッドが挿入されます。 devspaces-build コンテナーが挿入されるのは、アプリケーションのコンテナーがクライアント側ツールを使用して実行される場合のみです。
+Kubernetes webhook 受付サーバーは AKS クラスターで作成された新しいポッドをリッスンします。 *azds.io/space=true* ラベル付きの名前空間にそのポッドがデプロイされる場合は、コンテナーを追加してポッドが挿入されます。 devspaces-build コンテナーが挿入されるのは、アプリケーションのコンテナーがクライアント側ツールを使用して実行される場合のみです。
 
 AKS クラスターの準備が完了したら、クライアント側ツールを使用して、開発スペースでコードを準備および実行できます。
 
@@ -221,7 +223,7 @@ azds up
 1. ユーザーのコンピューターから、ユーザーの AKS クラスターに固有の Azure ファイル ストレージにファイルが同期されます。 ソース コード、Helm チャート、および構成ファイルがアップロードされます。 同期プロセスの詳細については、次のセクションで説明します。
 1. 新しいセッションを開始する要求がコントローラーによって作成されます。 この要求には、一意の ID、スペース名、ソース コードのパス、デバッグ フラグなどの複数のプロパティが含まれます。
 1. コントローラーによって、Helm チャート内の *$(tag)* プレースホルダーが一意のセッション ID に置き換えられ、サービス用の Helm チャートがインストールされます。 一意のセッション ID への参照を Helm チャートに追加すると、この特定のセッション用に AKS クラスターにデプロイされたコンテナーをセッション要求と関連情報に再び関連付けることができます。
-1. Helm チャートのインストール時には、Kubernetes 初期化子オブジェクトによって、インストルメンテーションおよびプロジェクトのソース コードにアクセスするためのコンテナーがアプリケーションのポッドに追加されます。 HTTP トレースとスペースのルーティングを提供するために、devspaces-proxy コンテナーと devspaces-proxy-init コンテナーが追加されます。 アプリケーションのコンテナーのビルドに必要な Docker インスタンスとプロジェクトのソース コードへのアクセスをポッドに提供するために、devspaces-build コンテナーが追加されます。
+1. Helm チャートのインストール時には、Kubernetes webhook 受付サーバーによって、インストルメンテーションおよびプロジェクトのソース コードにアクセスするためのコンテナーがアプリケーションのポッドに追加されます。 HTTP トレースとスペースのルーティングを提供するために、devspaces-proxy コンテナーと devspaces-proxy-init コンテナーが追加されます。 アプリケーションのコンテナーのビルドに必要な Docker インスタンスとプロジェクトのソース コードへのアクセスをポッドに提供するために、devspaces-build コンテナーが追加されます。
 1. アプリケーションのポッドが開始されると、devspaces-build コンテナーと devspaces-proxy-init コンテナーを使用してアプリケーション コンテナーがビルドされます。 次に、アプリケーション コンテナーと devspaces-proxy コンテナーが開始されます。
 1. アプリケーション コンテナーの開始後、クライアント側の機能で Kubernetes の *port-forward* 機能が使用され、 http://localhost を経由してアプリケーションへの HTTP アクセスが提供されます。 このポート フォワーディングでは、開発スペース内のサービスに開発用コンピューターを接続します。
 1. ポッド内のすべてのコンテナーが開始されると、サービスが実行されています。 この時点で、クライアント側の機能は HTTP トレース、stdout、および stderr のストリーミングを開始します。 この情報は、クライアント側の機能によって開発者向けに表示されます。

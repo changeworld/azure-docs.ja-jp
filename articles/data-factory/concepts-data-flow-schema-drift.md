@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729357"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547146"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapping Data Flow のスキーマの誤差
 
@@ -26,7 +26,7 @@ ms.locfileid: "56729357"
 * フィールドおよび値をハードコーディングするのではなく、データのパターンを操作できる変換パラメーターを定義する。
 * 名前付きフィールドを使用するのではなく、受信フィールドに一致するパターンを認識する式を定義する。
 
-Azure Data Factory のデータ フローでは、次のワークフローを通じて、それらの機能が表示されます。
+## <a name="how-to-implement-schema-drift"></a>スキーマの誤差を実装する方法
 
 * ソース変換内で、[Allow Schema Drift]\(スキーマの誤差を許可\) を選択します。
 
@@ -67,3 +67,10 @@ Azure Data Factory のデータ フローの構文の場合、一致するパタ
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
+## <a name="access-new-columns-downstream"></a>下流の新しい列にアクセスする
+
+列パターンを使用して新しい列を生成すると、後から "byName" 式関数を使用してデータ フロー変換でそれらの新しい列にアクセスできます。
+
+## <a name="next-steps"></a>次の手順
+
+[データ フロー式言語](data-flow-expression-functions.md)には、"byName" や "byPosition" など、列パターンとスキーマ誤差用の追加機能があります。

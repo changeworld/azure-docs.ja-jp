@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287104"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528494"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Premium パフォーマンス ブロック BLOB ストレージ
 
@@ -25,10 +25,11 @@ Premium ファイルは、**FileStorage (プレビュー)** と呼ばれる一�
 
 |領域  |ターゲット  |
 |---------|---------|
-|最大サイズ     |5 TiB (パブリック プレビュー)、100 TiB (限定パブリック プレビュー)     |
+|プロビジョニングされた最大サイズ     |5 TiB (パブリック プレビュー)、100 TiB (限定パブリック プレビュー)     |
 |共有   |無制限  |
 |IOPS     |100,000 (限定パブリック プレビュー)    |
-|帯域幅|5 GB/秒     |
+|イングレス|4,136 MiB/秒     |
+|エグレス|6,204 MiB/秒 |
 
  Premium ファイル共有のスケール ターゲットについては、[Premium ファイルのスケール ターゲット](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets)に関するセクションを参照してください。
 

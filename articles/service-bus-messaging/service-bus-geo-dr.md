@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095618"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009176"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -129,7 +129,7 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 Service Bus Premium SKU では、Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) もサポートされています。
 
 > [!NOTE]
-> Azure Service Bus Premium に対する Availability Zones のサポートは、可用性ゾーンが利用可能な [Azure リージョン](../availability-zones/az-overview.md#regions-that-support-availability-zones)でのみ利用できます。でのみ利用できます。
+> Azure Service Bus Premium に対する Availability Zones のサポートは、可用性ゾーンが利用可能な [Azure リージョン](../availability-zones/az-overview.md#services-support-by-region)でのみ利用できます。でのみ利用できます。
 
 Azure Portal を使用して、新しい名前空間でのみ Availability Zones を有効にすることができます。 Service Bus では、既存の名前空間の移行はサポートされていません。 名前空間でゾーン冗長を有効にした後に、無効にすることはできません。
 

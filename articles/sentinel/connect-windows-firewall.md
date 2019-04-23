@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Windows ファイアウォール データを収集する | Microsoft Docs
-description: Azure Sentinel で Windows ファイアウォール データを収集する方法について説明します。
+title: Azure Sentinel プレビューに Windows ファイアウォール データを接続する | Microsoft Docs
+description: Azure Sentinel に Windows ファイアウォール データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574842"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494219"
 ---
 # <a name="connect-windows-firewall"></a>Windows ファイアウォールの接続
 
@@ -31,12 +31,11 @@ Windows ファイアウォールのログが Azure Sentinel ワークスペー�
 
 
 > [!NOTE]
-> 
-> - データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
+> データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 
 ## <a name="enable-the-connector"></a>コネクタを有効にする 
 
-1. Azure Sentinel ポータルで **[データ収集]** を選択し、次に **[Windows firewall]\(Windows ファイアウォール\)** タイルをクリックします。 
+1. Azure Sentinel ポータルで **[データ コネクタ]** を選択し、次に **[Windows ファイアウォール]** タイルをクリックします。 
 1. ストリーミングするデータの種類を選択します。
 1. **[インストール]** をクリックします。
 6. Log Analytics で Windows ファイアウォールに関連するスキーマを使用するために、**SecurityEvent** を検索します。

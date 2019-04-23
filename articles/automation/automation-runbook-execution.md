@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268502"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544757"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -46,7 +46,7 @@ Azure Automation の Runbook は、Azure のサンドボックスまたは [Hybr
 |インストーラーが必要なモジュールをインストールする|Hybrid Runbook Worker|サンドボックス用のモジュールはコピー可能であることが必要です|
 |4.7.2 以外の .NET Framework が必要な Runbook またはモジュールの使用|Hybrid Runbook Worker|Automation のサンドボックスには .NET Framework 4.7.2 が備わっており、それをアップグレードする方法がありません|
 |昇格が必要なスクリプト|Hybrid Runbook Worker|サンド ボックスでは、昇格は許可されません。 これを解決するには、Hybrid Runbook Worker を使用してください。UAC をオフにして、昇格が必要なコマンドを実行するときに `Invoke-Command` を使用できます|
-|WMI へのアクセスが必要なスクリプト|Hybrid Runbook Worker|クラウドのサンドボックスで実行しているジョブには [WMI のアクセス権がありません](#device-and-application-characteristics)|
+|WMI へのアクセスが必要なスクリプト|Hybrid Runbook Worker|クラウドのサンドボックスで実行しているジョブには [WMI へのアクセス権がありません](#device-and-application-characteristics)|
 
 ## <a name="runbook-behavior"></a>Runbook の動作
 

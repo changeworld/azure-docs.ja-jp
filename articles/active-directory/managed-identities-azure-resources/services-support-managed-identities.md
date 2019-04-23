@@ -4,18 +4,18 @@ description: Azure リソースのマネージド ID と Azure AD 認証をサ�
 services: active-directory
 author: MarkusVi
 ms.author: priyamo
-ms.date: 11/28/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 79c3f8ae183c78b19f7f520f8154bf9484a1f795
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045459"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607995"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -37,10 +37,10 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure ポータル](qs-configure-portal-windows-vm.md)
+- [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager のテンプレート](qs-configure-template-windows-vm.md)
+- [Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セット
@@ -52,10 +52,10 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 
 Azure Virtual Machine Scale Sets のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure ポータル](qs-configure-portal-windows-vm.md)
+- [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager のテンプレート](qs-configure-template-windows-vm.md)
+- [Azure リソース マネージャーのテンプレート](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -67,7 +67,7 @@ Azure Virtual Machine Scale Sets のために (それが提供されているリ
 
 Azure App Service のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure ポータル](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
@@ -93,7 +93,7 @@ Azure App Service のために (それが提供されているリージョンで
 
 Azure Functions のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure ポータル](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
@@ -107,7 +107,7 @@ Azure Functions のために (それが提供されているリージョンで) 
 
 Azure Logic Apps のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure ポータル](/azure/logic-apps/create-managed-service-identity#azure-portal)
+- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)
 - [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
@@ -119,7 +119,7 @@ Azure Logic Apps のために (それが提供されているリージョンで)
 
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure ポータル](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
@@ -213,7 +213,7 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage-blobs-and-queues"></a>Azure Storage の BLOB とキュー
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|

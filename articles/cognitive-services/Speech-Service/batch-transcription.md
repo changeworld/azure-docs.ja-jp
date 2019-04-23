@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3b403eb80bae01efe730b69b7e6a5ddaea81355a
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447652"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579361"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
@@ -88,6 +88,16 @@ Batch 文字起こし API では、次の形式がサポートされています
 | `PunctuationMode` | 認識結果内の句読点をどう扱うかを指定します。 指定できる値は、`none` (句読点を無効にする)、`dictated` (明示的な句読点)、`automatic` (デコーダーで句読点を処理する)、`dictatedandautomatic` (指定された句読点、または自動) です。 | 省略可能 |
  | `AddWordLevelTimestamps` | 単語レベルのタイムスタンプを出力に追加するかどうかを指定します。 `true` を指定すると単語レベルのタイムスタンプが有効になり、`false` (既定値) を指定すると無効になります。 | 省略可能 |
 
+### <a name="storage"></a>Storage
+
+Batch 文字起こしでは、オーディオの読み取りや、文字起こしのストレージへの書き込みに [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) をサポートしています。
+
+## <a name="webhooks"></a>Webhook 
+
+文字起こし状態のポーリングでは、最も高いパフォーマンスを実現できない場合や、最適なユーザー エクスペリエンスを提供できない場合があります。 状態をポーリングするには、コールバックを登録して、実行時間の長い文字起こしタスクが完了したときにクライアントに通知することができます。
+
+詳細については、「[Webhook](webhooks.md)」を参照してください。
+
 ## <a name="sample-code"></a>サンプル コード
 
 完全なサンプルは、[GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の `samples/batch` サブディレクトリにあります。
@@ -108,10 +118,6 @@ Batch 文字起こし API では、次の形式がサポートされています
 
 > [!NOTE]
 > ベースライン文字起こしの場合は、ベースライン モデルの ID を宣言する必要はありません。 言語モデル ID だけを指定すると (音響モデル ID を指定しない)、一致する音響モデルが自動的に選択されます。 音響モデル ID だけを指定すると、一致する言語モデルが自動的に選択されます。
-
-### <a name="supported-storage"></a>サポートされるストレージ
-
-現在は、Azure Blob Storage のみがサポートされています。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 

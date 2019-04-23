@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Windows セキュリティ イベント データを収集する | Microsoft Docs
-description: Azure Sentinel で Windows セキュリティ イベント データを収集する方法について説明します。
+title: Azure Sentinel プレビューに Windows セキュリティ イベント データを接続する | Microsoft Docs
+description: Azure Sentinel に Windows セキュリティ イベント データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90bff4cd98046a42fa31d98ff00e76d7fc9ac307
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d131d39a9d9770046fa3f9368250204e4d0b0162
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576090"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491954"
 ---
 # <a name="connect-windows-security-events"></a>Windows セキュリティ イベントの接続 
 
@@ -42,7 +42,7 @@ Azure Sentinel ワークスペースに接続されている Windows サーバ�
 
 Windows セキュリティと Azure Sentinel を完全に統合するには、以下の手順を実行します。
 
-1. Azure Sentinel ポータルで、**データ コレクション**を選択し、次に **[Windows セキュリティ イベント]** タイルをクリックします。 
+1. Azure Sentinel ポータルで、**[データ コネクタ]** を選択し、次に **[Windows セキュリティ イベント]** タイルをクリックします。 
 1. ストリーミングするデータの種類を選択します。
 1. **[Update]** をクリックします。
 6. Log Analytics で Windows セキュリティ イベントに関連するスキーマを使用するために、**SecurityEvent** を検索します。

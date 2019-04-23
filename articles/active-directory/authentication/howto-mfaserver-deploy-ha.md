@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370076"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547007"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 
@@ -36,7 +36,7 @@ MFA サーバーは、Azure Multi-Factor Authentication ソフトウェアがイ
 
 AD による認証が成功した後、MFA サーバーは MFA サービスと通信します。 MFA サーバーは、MFA サービスからの通知を待って、アプリケーションへのユーザー アクセスを許可または拒否します。
 
-MFA マスター サーバーがオフラインになった場合、認証はまだ処理できますが、MFA データベースへの変更を必要とする操作は処理できません。 (例: ユーザーの追加、セルフ サービス PIN の変更、ユーザー情報の変更)
+MFA マスター サーバーがオフラインになった場合、認証はまだ処理できますが、MFA データベースへの変更を必要とする操作は処理できません。 (例: ユーザーの追加、セルフサービス PIN の変更、ユーザー情報の変更、ユーザー ポータルへのアクセスなど)
 
 ## <a name="deployment"></a>Deployment
 

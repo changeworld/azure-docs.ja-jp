@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905887"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565540"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -39,7 +39,9 @@ ms.locfileid: "58905887"
 3. 認証キーを取得し、そのキーを使用してセルフホステッド統合ランタイムを登録します。 PowerShell の例を次に示します。
 
     ```powershell
-    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Azure Resource Manager テンプレートを使用する Azure VM でのセルフホステッド IR の設定 (オートメーション)
@@ -110,7 +112,7 @@ ms.locfileid: "58905887"
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
-セルフホステッド統合ランタイムは、複数のオンプレミス コンピューターに関連付けることができます。 これらのコンピューターは、ノードと呼ばれます。 セルフホステッド統合ランタイムには最大で 4 つのノードを関連付けることができます。 1 つの論理ゲートウェイで複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を使用する利点は次のとおりです。
+セルフホステッド統合ランタイムは、複数のオンプレミス マシンまたは Azure 上の仮想マシンに関連付けることができます。 これらのコンピューターは、ノードと呼ばれます。 セルフホステッド統合ランタイムには最大で 4 つのノードを関連付けることができます。 1 つの論理ゲートウェイで複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を使用する利点は次のとおりです。
 * セルフホステッド統合ランタイムの可用性が向上したことによって、ビッグ データ ソリューションや Azure Data Factory を使用したクラウド データ統合において、単一障害点となることはなくなり、最大 4 つのノードによって継続性が確保されます。
 * オンプレミスとクラウド データ ストアとの間のデータ移動は、パフォーマンスとスループットが向上しました。 詳しくは[パフォーマンス比較](copy-activity-performance.md)を参照してください。
 
@@ -182,13 +184,13 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 
 ### <a name="monitoring"></a>監視 
 
-- **共有された IR: **
+- **共有 IR**
 
   ![共有された統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
   ![監視するためのタブ](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
-- **リンクされた IR: **
+- **リンクされた IR**
 
   ![リンクされた統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
@@ -222,7 +224,7 @@ PowerShell を使用してセルフホステッド統合ランタイムを共有
 
 *企業ファイアウォール* レベルでは、次のドメインと送信ポートを構成する必要があります。
 
-ドメイン名 | ポート | 説明
+ドメイン名 | Port | 説明
 ------------ | ----- | ------------
 *.servicebus.windows.net | 443 | バックエンドのデータ移動サービスとの通信に使用
 *.core.windows.net | 443 | Azure Blob Storage を使用した段階的なコピーに使用 (構成されている場合)
@@ -253,7 +255,7 @@ download.microsoft.com | 443 | 更新プログラムのダウンロードに使�
 
 ![プロキシの指定](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-セルフホステッド統合ランタイムでは、プロキシ サーバーを使用してクラウド サービスに接続します。 初期セットアップ時に **[変更] リンク**を選択します。 プロキシ設定ダイアログ ボックスが表示されます。
+構成されると、セルフホステッド統合ランタイムはプロキシ サーバーを使用してクラウド サービス、ソース/コピー先 (HTTP/HTTPS プロトコルを使用しているもの) に接続します。 初期セットアップ時に **[変更] リンク**を選択します。 プロキシ設定ダイアログ ボックスが表示されます。
 
 ![プロキシの設定](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 

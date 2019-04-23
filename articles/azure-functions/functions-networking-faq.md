@@ -3,17 +3,17 @@ title: Azure Functions のネットワークについてよく寄せられる質
 description: Azure Functions のネットワークについてよく寄せられる質問とシナリオ。
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: troubleshooting
-ms.date: 2/26/2019
-ms.author: alkarche
-ms.openlocfilehash: 7946b7f45ff3df9225a27b70ccfbdb895bfd03c4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.date: 4/11/2019
+ms.author: alkarche, glenga
+ms.openlocfilehash: 126b9ccefedee1f5cefdac8a8666a58e7a4a1fef
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896694"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548643"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -54,3 +54,13 @@ VNET 内のリソースから関数をトリガーする唯一の方法は、関
 VNET の内部のみに関数アプリを作成する唯一の方法は、App Service Environment にデプロイすることです。ILB ASE の使用について詳しくは、最初にこちらの [ILB ASE の作成と使用](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)に関するページを参照してください。
 
 VNET のリソースへの一方向のアクセスのみが必要なシナリオ、または緩くネットワークを分離する必要があるシナリオについては、[Functions のネットワークの概要](functions-networking-options.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+ネットワークと関数の詳細については、以下を参照してください。 
+
+* [VNET 統合の入門チュートリアル](./functions-create-vnet.md)
+* [関数のネットワーク オプションの詳細については、こちらをご覧ください](./functions-networking-options.md)
+* [App Service または Functions との VNET 統合についての詳細情報](../app-service/web-sites-integrate-with-vnet.md)
+* [Azure での VNET についての詳細情報](../virtual-network/virtual-networks-overview.md)
+* [App Service Environment でさらなるネットワーク機能と制御を可能にする](../app-service/environment/intro.md)

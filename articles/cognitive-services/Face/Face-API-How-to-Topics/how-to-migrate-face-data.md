@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 95b339e8d7f2c5c63c30e002411152b50cece2a5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448783"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548406"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>顔データを別の Face サブスクリプションに移行する
 
@@ -79,7 +79,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> スナップショットを作成して適用するプロセスで、ソースまたはターゲットの **PersonGroup** (または **FaceList**) への通常の呼び出しが中断されることはありません。 ただし、ソース オブジェクトを変更する複数の呼び出し ([[Face List]\(顔一覧\) 管理の呼び出し](https://docs.microsoft.com/rest/api/cognitiveservices/face/facelist)と [[Person Group - Train]\(個人グループ - トレーニング\)](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup/train)の呼び出しなど) を同時に行うことは推奨されません。そのような操作の前または後にスナップショット操作が実行される場合や、スナップショット操作でエラーが発生する場合があるためです。 
+> スナップショットを作成して適用するプロセスで、ソースまたはターゲットの **PersonGroup** (または **FaceList**) への通常の呼び出しが中断されることはありません。 ただし、ソース オブジェクトを変更する複数の呼び出し ([FaceList 管理の呼び出し](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)と [PersonGroup トレーニング](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)の呼び出しなど) を同時に行うことは推奨されません。そのような操作の前または後にスナップショット操作が実行される場合や、スナップショット操作でエラーが発生する場合があるためです。
 
 ## <a name="retrieve-the-snapshot-id"></a>スナップショット ID を取得する
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280011"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521437"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
@@ -25,6 +25,8 @@ ms.locfileid: "59280011"
 ![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 ユーザー ドキュメントに基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
+
+Azure AD の結合されたセキュリティ情報の登録は、Azure US Government、Azure Germany、Azure China 21Vianet などの各国のクラウドでは現在利用できません。
 
 |     |
 | --- |
@@ -50,7 +52,7 @@ ms.locfileid: "59280011"
 | 電話 | はい | はい | はい |
 | Alternate phone | はい | はい | はい |
 | 会社電話 | いいえ  | いいえ  | いいえ  |
-| 電子メール | はい | はい | はい |
+| Email | はい | はい | はい |
 | セキュリティの質問 | はい | いいえ  | はい |
 | アプリ パスワード | はい | いいえ  | はい |
 
@@ -133,10 +135,10 @@ Multi-Factor Authentication に使用できる少なくとも 1 つの方法を�
 
 ## <a name="next-steps"></a>次の手順
 
-[テナントでの統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
+[テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
 
 [Multi-Factor Authentication と SSPR で使用可能な方法](concept-authentication-methods.md)
 
-[セルフサービスのパスワードのリセットを構成する](howto-sspr-deployment.md)
+[セルフサービスのパスワード リセットを構成する](howto-sspr-deployment.md)
 
-[Azure Multi-Factor Authentication の構成](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication を構成する](howto-mfa-getstarted.md)

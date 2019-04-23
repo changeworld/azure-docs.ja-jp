@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel プレビューで Check Point データを収集する | Microsoft Docs
-description: Azure Sentinel で Check Point データを収集する方法について説明します。
+title: Azure Sentinel プレビューに Check Point データを接続する | Microsoft Docs
+description: Azure Sentinel に Check Point データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1fb4f9165be03a7fc3cd055ef616dcfadb58ac9d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 664b09a8ad0cb7d06019281869e390a465637c00
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876498"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489178"
 ---
 # <a name="connect-your-check-point-appliance"></a>Check Point アプライアンスを接続する
 
@@ -30,7 +30,7 @@ ms.locfileid: "58876498"
 ログ ファイルを Syslog CEF として保存することにより、Azure Sentinel を任意の Check Point アプライアンスに接続できます。 Azure Sentinel との統合により、Check Point から、ログ ファイル データにわたって分析およびクエリを簡単に実行できるようになります。 Azure Sentinel が CEF データを取り込む方法の詳細については、[CEF アプライアンスの接続](connect-common-event-format.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> - データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
+> データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
 
 ## <a name="step-1-connect-your-check-point-appliance-using-an-agent"></a>手順 1:エージェントを使用した Check Point アプライアンスの接続
 
@@ -40,9 +40,9 @@ Check Point アプライアンスを Azure Sentinel に接続するには、エ�
 
 両方のオプションのネットワーク図を表示するには、「[データ ソースの接続](connect-data-sources.md)」を参照してください。
 
-### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントをデプロイする
+### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントを展開する
 
-1. Azure Sentinel ポータルで、**[データ収集]** をクリックして、アプライアンスの種類を選択します。 
+1. Azure Sentinel ポータルで、**[データ コネクタ]** をクリックして、アプライアンスの種類を選択します。 
 
 1. **[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で:
    - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[自動デプロイ]** を選択して、**[Automatic agent deployment]** (エージェントの自動デプロイ) をクリックします。 これにより、ワークスペースに自動的に接続する専用 VM の購入ページが表示されます。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: assafi
-ms.openlocfilehash: 0bc50ddbd93fce24454ca1628894f87b90d0d57c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 7051f1c1ce43be7dce5d88a06fccee9d876a70f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608154"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010179"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:C# を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -36,7 +36,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 1. **[参照]** タブを選択し、**Microsoft.Azure.CognitiveServices.Language.TextAnalytics** を検索します。
 
 > [!Tip]
->  [HTTP エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)は C# から直接呼び出すことができますが、Microsoft.Azure.CognitiveServices.Language SDK を使用すると、JSON のシリアル化とシリアル化解除について心配する必要がなく、サービスがかなり呼び出しやすくなります。
+>  [HTTP エンドポイント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)は C# から直接呼び出すことができますが、Microsoft.Azure.CognitiveServices.Language SDK を使用すると、JSON のシリアル化とシリアル化解除について心配する必要がなく、サービスがかなり呼び出しやすくなります。
 >
 > 便利なリンク:
 > - [SDK Nuget ページ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)

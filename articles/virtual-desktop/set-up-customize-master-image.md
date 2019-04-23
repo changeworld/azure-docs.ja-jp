@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: d22fffcb792227b4d0805abd005d8c050cb97248
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006205"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505602"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -158,21 +158,20 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
 ```
 
-自動更新は手動で無効にできます。
+### <a name="disable-automatic-updates"></a>自動更新を無効にする
 
-自動更新を無効にするには:
+ローカル グループ ポリシーを介して自動更新を無効にするには:
 
-1. 「[ソフトウェアの準備とインストール](set-up-customize-master-image.md#software-preparation-and-installation)」の手順に従って Office 365 をインストールします。
-2. 「[ユーザー プロファイル コンテナーを設定する (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix)」、「[Windows Defender を構成する](set-up-customize-master-image.md#configure-windows-defender)」、および「[その他のアプリケーションとレジストリを構成する](set-up-customize-master-image.md#other-applications-and-registry-configuration)」の手順に従って、追加アプリケーションをインストールします。
-3. ローカル VM 上の Windows 自動更新サービスを無効にします。
-4. **[ローカル グループ ポリシー エディター]\\[管理用テンプレート]\\[Windows コンポーネント]\\[Windows Update]** を開きます。
-5. **[Configure Automatic Update]\(自動更新の構成\)** を右クリックし、**[無効]** に設定します。
+1. **[ローカル グループ ポリシー エディター]\\[管理用テンプレート]\\[Windows コンポーネント]\\[Windows Update]** を開きます。
+2. **[Configure Automatic Update]\(自動更新の構成\)** を右クリックし、**[無効]** に設定します。
 
 コマンド プロンプトで次のコマンドを実行して自動更新を無効にすることもできます。
 
 ```batch
 reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
+
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Windows 10 PC のスタート画面のレイアウトを指定する (省略可能)
 
 Windows 10 PC のスタート画面のレイアウトを指定するには、このコマンドを実行します。
 

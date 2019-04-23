@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57976778"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523938"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -59,7 +59,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 
 1. データ選択クエリを指定する ( [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。
    
-   データ選択クエリと、アクティビティおよびデータセットの他のプロパティの場合、Data Factory 関数を呼び出す構文は **$$<function>** です。  
+   データ選択クエリと、アクティビティおよびデータセットの他のプロパティの場合、Data Factory 関数を呼び出す構文は **$$\<関数>** です。  
 2. アクティビティ入力コレクションで、Data Factory 関数を使用して入力の依存関係を指定する。
    
     入力の依存関係式を指定する場合、$$ は不要です。     
@@ -78,7 +78,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 ### <a name="functions"></a>Functions
 次の表は、Azure Data Factory の全関数の一覧です。
 
-| Category | 関数 | parameters | 説明 |
+| Category | Function | parameters | 説明 |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X:DateTime <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X:DateTime <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

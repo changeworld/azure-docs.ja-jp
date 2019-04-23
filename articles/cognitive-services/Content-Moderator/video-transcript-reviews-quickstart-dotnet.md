@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 56cd608d337d817b849a0902569e9aeddeca80ab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758570"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524499"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 
@@ -154,7 +154,7 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
 1. Content Moderator のチーム名。
-1. **IList<CreateVideoReviewsBodyItem>** オブジェクト。 各 **CreateVideoReviewsBodyItem** オブジェクトはビデオ レビューを表します。 このクイック スタートでは、一度に 1 つのレビューを作成します。
+1. **IList\<CreateVideoReviewsBodyItem>** オブジェクト。 各 **CreateVideoReviewsBodyItem** オブジェクトはビデオ レビューを表します。 このクイック スタートでは、一度に 1 つのレビューを作成します。
 
 **CreateVideoReviewsBodyItem** にはいくつかのプロパティがあります。 少なくとも、次のプロパティを設定してください。
 - **Content**。 レビューするビデオの URL。
@@ -244,15 +244,15 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
 1. Content Moderator のチーム名。
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
-1. An IList<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** には次のプロパティがあります。
-1. **Terms**。 An IList<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
+1. IList\<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** には次のプロパティがあります。
+1. **Terms**。 IList\<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
 1. **Index**。 用語のゼロベースのインデックスです。
 1. **Term**。 用語を含む文字列です。
 1. **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
 
 トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT (Web ビデオ テキスト トラック) 形式に関するページを参照してください](https://www.w3.org/TR/webvtt1/)。
 
-名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。 このメソッドは、**ContentModeratorClient.TextModeration.ScreenText** メソッドにトランスクリプトを送信します。 また、IList<TranscriptModerationBodyItem> に結果を変換し、**AddVideoTranscriptModerationResult** に送信します。
+名前空間 VideotranscriptReviews、クラス Program に次のメソッドの定義を追加します。 このメソッドは、**ContentModeratorClient.TextModeration.ScreenText** メソッドにトランスクリプトを送信します。 また、IList\<TranscriptModerationBodyItem> に結果を変換し、**AddVideoTranscriptModerationResult** に送信します。
 
 ```csharp
 /// <summary>

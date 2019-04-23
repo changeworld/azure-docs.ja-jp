@@ -12,30 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 622b1f6f6a852251c07c5576ed10cd76adbf5231
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242600"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500500"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Python で Service Bus キューを使用する方法
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-この記事では、Service Bus キューの使用方法について説明します。 サンプルは Python で記述され、[Python Azure Service Bus パッケージ][Python Azure Service Bus package]を使用しています。 紹介するシナリオは、**キューの作成、メッセージの送受信**、**キューの削除**です。
+このチュートリアルでは、Python アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>前提条件
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の手順に従ってください。
+    1. Service Bus **キュー**の**概要**をお読みください。 
+    2. Service Bus **名前空間**を作成します。 
+    3. **接続文字列**を取得します。 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-> [!IMPORTANT]
-> Python または [Python Azure Service Bus パッケージ][Python Azure Service Bus package]をインストールする方法については、「[Python インストール ガイド](../python-how-to-install.md)」をご覧ください。
-> 
-> Service Bus Python SDK のドキュメント全体については、[ここ](/python/api/overview/azure/servicebus?view=azure-python)をご覧ください。
-
+        > [!NOTE]
+        > このチュートリアルでは、Python を使用して Service Bus 名前空間で**キュー**を作成します。 
+1. Python または [Python Azure Service Bus パッケージ][Python Azure Service Bus package]をインストールする方法については、「[Python インストール ガイド](../python-how-to-install.md)」をご覧ください。 Service Bus Python SDK のドキュメント全体については、[ここ](/python/api/overview/azure/servicebus?view=azure-python)をご覧ください。
 
 ## <a name="create-a-queue"></a>キューを作成する
 **ServiceBusClient** オブジェクトを使用すると、キューを操作できます。 プログラムを使用して Service Bus にアクセスするすべての Python ファイルの先頭付近に次のコードを追加します。

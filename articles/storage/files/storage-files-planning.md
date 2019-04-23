@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 609e774c36ab685d017f311a74c8680dbb9750c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283020"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525927"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -109,9 +109,9 @@ Premium ファイル共有 (プレビュー) は、固定 GiB/IOPS/スループ�
 >
 > バースト限度 = 3 * ベースライン IOPS。 (最大 100,000 IOPS まで)。
 >
-> エグレス レート = 60 MiB/秒 + 0.06 のプロビジョニング済み GiB (最大 6 GiB/秒)
+> エグレス レート = 60 MiB/秒 + 0.06 * のプロビジョニング済み GiB
 >
-> イングレス レート = 40 MiB/秒 + 0.04 のプロビジョニング済み GiB (最大 4 GiB/秒)
+> イングレス レート = 40 MiB/秒 + 0.04 * のプロビジョニング済み GiB
 
 共有サイズはいつでも拡大できます。縮小操作は、前回の拡大時から 24 時間ごとに 1 回、いつでも実行できます。 IOPS/スループットのスケールの変更は、サイズ変更後 24 時間以内に有効になります。
 
@@ -128,9 +128,9 @@ Premium ファイル共有 (プレビュー) は、固定 GiB/IOPS/スループ�
 |10,240 *     | 10,240  | 最大 30,720  | 675 | 450   |
 |33,792 *     | 33,792  | 最大 100,000 | 2,088 | 1,392   |
 |51,200 *     | 51,200  | 最大 100,000 | 3,132 | 2,088   |
-|100,000 *    | 100,000 | 最大 100,000 | 6,204 | 4,136   |
+|102,400 *    | 100,000 | 最大 100,000 | 6,204 | 4,136   |
 
-現時点では、最大 5 TiB のファイル共有のサイズはパブリック プレビューでのサイズで、最大 102 TiB のサイズは限定パブリック プレビューでのサイズです。限定パブリック プレビューへのアクセス権を要求するには、[このアンケート](https://aka.ms/azurefilesatscalesurvey)にお答えください。
+現時点では、最大 5 TiB のファイル共有のサイズはパブリック プレビューでのサイズで、最大 100 TiB のサイズは限定パブリック プレビューでのサイズです。限定パブリック プレビューへのアクセス権を要求するには、[このアンケート](https://aka.ms/azurefilesatscalesurvey)にお答えください。
 
 ### <a name="bursting"></a>バースト
 
@@ -206,4 +206,4 @@ Azure ファイル同期を使って複数の Azure ファイル共有を 1 つ�
 ## <a name="next-steps"></a>次の手順
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 * [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
-* [Azure File Sync のデプロイ方法](storage-sync-files-deployment-guide.md)
+* [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)

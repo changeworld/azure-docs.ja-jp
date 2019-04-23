@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.openlocfilehash: bf9bc9742f516e642c8f8bcc18e97bf269dce738
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a2a9242642c8bc661859e3c847467fd724e461a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58408474"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489786"
 ---
 # <a name="azure-germany-storage-services"></a>Azure Germany のストレージ サービス
 ## <a name="storage"></a>Storage
@@ -40,12 +40,12 @@ Storage Service Encryption によって、Azure ストレージ アカウント�
 
 | Service | ドイツ中部 | ドイツ北東部 |
 | --- | --- | --- |
-| [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |一般公開 |一般公開 |
+| [BLOB ストレージ](../storage/common/storage-introduction.md#blob-storage) |一般公開 |一般公開 |
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | 一般公開 | 一般公開 |
-| [Table Storage](../storage/common/storage-introduction.md#table-storage) |一般公開  |一般公開 |
-| [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |一般公開 | 一般公開 |
+| [テーブル ストレージ](../storage/common/storage-introduction.md#table-storage) |一般公開  |一般公開 |
+| [ストレージ](../storage/common/storage-introduction.md#queue-storage) |一般公開 | 一般公開 |
 | [ホット/クール BLOB ストレージ](../storage/blobs/storage-blob-storage-tiers.md) |一般公開 |一般公開 |
-| [ストレージ サービスの暗号化](../storage/common/storage-service-encryption.md) |一般公開 |一般公開 |
+| [Storage Service Encryption](../storage/common/storage-service-encryption.md) |一般公開 |一般公開 |
 | Import/Export |NA |NA |
 | StorSimple |NA |NA |
 
@@ -64,7 +64,7 @@ Azure Germany でのストレージ アカウントの URL はグローバル Az
 >
 >
 
-API の詳細については、[クラウド ストレージ アカウント コンストラクター](https://msdn.microsoft.com/library/azure/mt616540.aspx)に関するページを参照してください。
+API の詳細については、[クラウド ストレージ アカウント コンストラクター](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.-ctor#Microsoft_WindowsAzure_Storage_CloudStorageAccount__ctor_Microsoft_WindowsAzure_Storage_Auth_StorageCredentials_System_String_System_String_System_Boolean_)に関するページを参照してください。
 
 これらのオーバーロードに使用するエンドポイント サフィックスは、*core.cloudapi.de* です。
 
@@ -75,4 +75,4 @@ API の詳細については、[クラウド ストレージ アカウント コ
 
 
 ## <a name="next-steps"></a>次の手順
-補足情報と最新情報については、[Azure Germany ブログ](https://blogs.msdn.microsoft.com/azuregermany/)をご覧ください。
+補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。

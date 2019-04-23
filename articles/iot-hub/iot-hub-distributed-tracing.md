@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439298"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501378"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -98,7 +98,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 1. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。
 
@@ -276,7 +276,7 @@ Log Analytics で表示されるログの例
 IoT メッセージのフローを可視化するために、アプリケーション マップのサンプル アプリを設定します。 サンプル アプリでは、Azure Function と Event Hub を使用して[アプリケーション マップ](../application-insights/app-insights-app-map.md)に分散トレース ログが送信されます。
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Github でのサンプルの入手</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">GitHub でのサンプルの入手</a>
 
 次の図は、3 つのルーティング エンドポイントがあるアプリケーション マップの分散トレースを示しています。
 

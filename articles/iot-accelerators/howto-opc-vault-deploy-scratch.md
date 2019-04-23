@@ -1,5 +1,5 @@
 ---
-title: Azure IoT の OPC UA 証明書管理モジュールをゼロからデプロイする方法 | Microsoft Docs
+title: OPC Vault モジュールをゼロからデプロイする方法 - Azure |Microsoft Docs
 description: OPC Vault をゼロからデプロイする方法。
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a3a9d21b70f16482f05d27aa0df8d8865459aeb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759227"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496898"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC Vault をゼロからデプロイする
 
-Azure IoT の OPC UA 証明書管理 (OPC Vault とも呼ばれます) は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault をゼロからデプロイする方法を示します。
+OPC Vault は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault をゼロからデプロイする方法を示します。
 
 ## <a name="configuration-and-environment-variables"></a>構成と環境変数
 
@@ -106,11 +106,11 @@ Visual Studio 2017 を使用した手順:
 
 プロジェクトには、このセットアップに役立つ Bash スクリプトがいくつか含まれています。
 
-- 新しい IoT Hub を作成します: `./scripts/iothub/create-hub.sh`
+- 新しい IoT ハブを作成します: `./scripts/iothub/create-hub.sh`
 
 - 既存のハブを一覧表示します: `./scripts/iothub/list-hubs.sh`
 
-- IoT Hub の詳細 (キーなど) を表示します: `./scripts/iothub/show-hub.sh`
+- IoT ハブの詳細 (キーなど) を表示します: `./scripts/iothub/show-hub.sh`
 
 Azure サブスクリプションが複数あった場合:
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471530"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495398"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -83,7 +83,7 @@ Profiler を正常に動作させるためには:
    
       ![profiler-webjob]   
    
-   1. ログなどの WebJob の詳細を見るには、**ApplicationInsightsProfiler2** リンクを選択します。  
+   1. ログなどの WebJob の詳細を見るには、**ApplicationInsightsProfiler3** リンクを選択します。  
      **[Continuous WebJob Details]\(継続的な WebJob の詳細\)** ウィンドウが開きます。
 
       ![profiler-webjob-log]
@@ -92,7 +92,7 @@ Profiler が動作していない理由がわからない場合は、ログを�
     
 ### <a name="manual-installation"></a>手動のインストール
 
-Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境で必要な場合は、更新プログラムを手動で適用できます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。 更新プログラムを手動で適用するには、次のようにします。
+Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境で必要な場合は、更新プログラムを手動で適用できます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。 更新を手動で適用するには:
 
 1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、**[設定]** を開きます。
 
@@ -129,18 +129,18 @@ Profiler が有効になっている Web Apps リソースに Web アプリを�
 
 Profiler は、Web アプリ内の継続的な WebJob として実行されます。 Web アプリのリソースは、[Azure Portal](https://portal.azure.com) で開くことができます。 **[WebJobs]** ウィンドウで、**ApplicationInsightsProfiler** の状態を確認してください。 実行されていない場合は、**[ログ]** を開いて詳細情報を入手します。
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure 診断に関する問題のトラブルシューティング
+## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure Diagnostics に関する問題のトラブルシューティング
 
 >**Cloud Services 向けの WAD に付属しているプロファイラーのバグが修正されました。** Cloud Services 向け WAD の最新バージョン (1.12.2.0) は、最近リリースされたすべての App Insights SDK バージョンで動作します。 Cloud Service のホストでは WAD が自動的にアップグレードされますが、即時に行われるわけではありません。 アップグレードを強制するには、サービスを再デプロイするか、ノードを再起動します。
 
-Azure 診断によって Profiler が正しく構成されているかどうかを確認するには、次の 3 つのことを行います。 
-1. 1 つ目として、デプロイされている Azure 診断の構成の内容が意図したとおりであることを確認します。 
+Azure Diagnostics によって Profiler が正しく構成されているかどうかを確認するには、次の 3 つのことを行います。 
+1. 1 つ目として、デプロイされている Azure Diagnostics の構成の内容が意図したとおりであることを確認します。 
 
-1. 2 つ目として、Azure 診断によって Profiler のコマンド ラインで適切な iKey が渡されていることを確認します。 
+1. 2 つ目として、Azure Diagnostics によって Profiler のコマンド ラインで適切な iKey が渡されていることを確認します。 
 
 1. 3 つ目として、Profiler は実行されたがエラーが発生したかどうかを、Profiler のログ ファイルで確認します。 
 
-Azure 診断の構成に使用された設定を確認するには:
+Azure Diagnostics の構成に使用された設定を確認するには:
 
 1. 仮想マシン (VM) にサインインした後、次の場所にあるログ ファイルを開きます。 (ドライブは c: または d: の場合があり、プラグインのバージョンは異なる可能性があります)。
 
@@ -152,7 +152,7 @@ Azure 診断の構成に使用された設定を確認するには:
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
-1. そのファイルでは、**WadCfg** という文字列を検索して、Azure 診断を構成するために VM に渡された設定を確認できます。 Profiler シンクによって使用された iKey が正しいかどうかを確認できます。
+1. そのファイルでは、**WadCfg** という文字列を検索して、Azure Diagnostics を構成するために VM に渡された設定を確認できます。 Profiler シンクによって使用された iKey が正しいかどうかを確認できます。
 
 1. Profiler の起動に使用されたコマンド ラインを確認します。 Profiler の起動に使用される引数は、次のファイルにあります。 (ドライブは c: または d:)
 

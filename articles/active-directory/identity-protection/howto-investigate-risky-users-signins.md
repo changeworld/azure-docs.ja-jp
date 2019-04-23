@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517600"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547058"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>方法:危険なユーザーとサインインの調査 
 
@@ -151,7 +151,7 @@ ms.locfileid: "58517600"
 
 ### <a name="download-risky-users-data"></a>危険なユーザー データをダウンロードする
 
-Azure portal の外部で操作する場合は、危険なユーザー データをダウンロードできます。 [ダウンロード] をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。 
+Azure portal の外部で操作する場合は、危険なユーザー データをダウンロードできます。 [ダウンロード] をクリックすると、最新の 2,500 レコードの CSV ファイルが作成されます。 
 
 ![危険なユーザー レポート](./media/howto-investigate-risky-users-signins/07.png)
 
@@ -189,7 +189,7 @@ Azure portal の外部で操作する場合は、危険なユーザー データ
 
 - User
 
-- アプリケーション
+- Application
 
 - サインインの状態
 
@@ -252,7 +252,7 @@ Azure portal の外部で操作する場合は、危険なユーザー データ
 報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用して危険なユーザー データをフィルター処理できます。
 
 - User
-- アプリケーション
+- Application
 - サインインの状態
 - リスクの状態
 - リスク レベル (集計)
@@ -320,7 +320,7 @@ Azure portal の外部で操作する場合は、危険なユーザー データ
 
 ### <a name="download-risky-sign-ins-data"></a>危険なサインイン データをダウンロードする
 
-Azure portal の外部で操作する場合は、危険なサインイン データをダウンロードできます。 [ダウンロード] をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。 
+Azure portal の外部で操作する場合は、危険なサインイン データをダウンロードできます。 [ダウンロード] をクリックすると、最新の 2,500 レコードの CSV ファイルが作成されます。 
 
 ![危険なユーザー レポート](./media/howto-investigate-risky-users-signins/15.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 0f066915046e363932652c104fabe96ed0a9d4c4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227186"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012287"
 ---
 1. 新しいアプリ構成ストアを作成するには、[Azure portal](https://aka.ms/azconfig/portal) にサインインします。 ページの左上にある **[+ リソースの作成]** を選択します。 **[Marketplace を検索]** ボックスに「**App Configuration**」と入力し、Enter キーを押します。
 
@@ -32,17 +32,6 @@ ms.locfileid: "58227186"
 
     ![アプリ構成ストア リソースを作成する](../articles/azure-app-configuration/media/quickstarts/azure-app-configuration-create.png)
 
-4. **作成**を選択します。 デプロイが完了するまでに数分かかることがあります。
+4. **作成** を選択します。 デプロイが完了するまでに数分かかることがあります。
 
 5. デプロイが完了したら、**[設定]** > **[アクセス キー]** の順に選択します。 プライマリ読み取り専用キー接続文字列またはプライマリ読み取り/書き込みキー接続文字列を書き留めます。 この接続文字列は、後で、作成したアプリ構成ストアと通信するようにアプリケーションを構成する際に使用します。
-
-6. **[キー/値のエクスプローラー]** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
-
-    | キー | 値 |
-    |---|---|
-    | TestApp:Settings:BackgroundColor | 白 |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | 黒 |
-    | TestApp:Settings:Message | Azure App Configuration からのデータ |
-
-    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。

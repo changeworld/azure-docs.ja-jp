@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: fa0a8c4baa9458a3784babe1e342d768748f8a4d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882456"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522855"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 
@@ -93,7 +93,7 @@ ms.locfileid: "55882456"
 ### <a name="use-a-phrase-list"></a>フレーズ リストの使用
 フレーズ リストを使用しても、LUIS では引き続きコンテキストが考慮され、リスト内の項目と類似しているが、完全には一致していない項目が法則化され特定されます。 ご自身の LUIS アプリでカテゴリ内の新しい項目を法則化し、特定する必要がある場合は、フレーズ リストを使用します。 
 
-新しい連絡先の名前を認識する必要がある会議スケジューラ、新しい製品を認識する必要があるインベントリ アプリなど、エンティティの新しいインスタンスを認識する必要がある場合は、シンプルなエンティティ、階層エンティティなど、別の種類の機械学習エンティティを使用します。 その後、エンティティに類似した他の単語を LUIS が見つける際の助けになる単語およびフレーズのフレーズ リストを作成します。 このリストにより、それらの単語の値に重要度が追加され、エンティティの例が LUIS によって認識されます。 
+新しい連絡先の名前を認識する必要がある会議スケジューラ、新しい製品を認識する必要があるインベントリ アプリなど、エンティティの新しいインスタンスを認識する必要がある場合は、シンプルなエンティティなど、別の種類の機械学習エンティティを使用します。 その後、エンティティに類似した他の単語を LUIS が見つける際の助けになる単語およびフレーズのフレーズ リストを作成します。 このリストにより、それらの単語の値に重要度が追加され、エンティティの例が LUIS によって認識されます。 
 
 フレーズ リストはドメイン固有のボキャブラリのようなもので、意図とエンティティの両方の解釈の質を高めるうえで役に立ちます。 フレーズ リストは、都市名などの固有名詞に使うのが一般的です。 都市名は、ハイフン、アポストロフィを含め、複数の単語で構成できます。
  

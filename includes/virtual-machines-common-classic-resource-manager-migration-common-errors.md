@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 845bd7a6ad690288585418a42e5706fdbebbf143
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 16ccd89fe6eaad3fd6c2704b2f324f486eee45e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890998"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532746"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行中に発生する一般的なエラー
 この記事では、Azure クラシック デプロイ モデルから Azure Resource Manager スタックへの IaaS リソースの移行中に発生する一般的なエラーと軽減策を一覧で示しています。
@@ -23,7 +23,7 @@ ms.locfileid: "58890998"
 | 内部サーバー エラー |場合によっては、これは再試行によって解消される一時的なエラーです。 エラーが解消されない場合は、プラットフォームのログを調べる必要があるため、[Azure サポートにご連絡](../articles/azure-supportability/how-to-create-azure-support-request.md)ください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |
 | HostedService {hosted-service-name} 内の配置 {deployment-name} は PaaS 配置 (Web/Worker) であるため、移行がサポートされません。 |これは、デプロイに Web/worker ロールが含まれている場合に発生します。 仮想マシンの移行のみがサポートされているため、デプロイから Web/ワーカー ロールを削除し、移行をやり直してください。 |
 | テンプレート {template-name} をデプロイできませんでした。 関連付け ID = {guid} |移行サービスのバックエンドでは、Azure Resource Manager テンプレートを使用して Azure Resource Manager スタック内にリソースを作成します。 テンプレートはべき等であるため、通常は移行操作を繰り返すことでこのエラーを解決しても問題はありません。 エラーが解消されない場合は、[Azure サポートに連絡](../articles/azure-supportability/how-to-create-azure-support-request.md)して関連付け ID をお知らせください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |
-| 仮想ネットワーク {virtual-network-name} は存在していません。 |これは、新しい Azure Portal で Virtual Network を作成した場合に発生する可能性があります。 実際の仮想ネットワーク名は、"グループ * <VNET name>" のパターンに従います。 |
+| 仮想ネットワーク {virtual-network-name} は存在していません。 |これは、新しい Azure Portal で Virtual Network を作成した場合に発生する可能性があります。 実際の仮想ネットワーク名は、"グループ * \<VNET name>" のパターンに従います。 |
 | HostedService {hosted-service-name} 内の VM {vm-name} に、Azure Resource Manager でサポートされない拡張機能 {extension-name} が含まれています。 移行を続行する前に、この拡張機能を VM からアンインストールすることをお勧めします。 |Azure Resource Manager では、BGInfo 1.\* などの XML 拡張機能はサポートされていません。 そのため、これらの拡張機能を移行することはできません。 これらの拡張機能が仮想マシンにインストールされている場合は、移行を完了する前に自動的にアンインストールされます。 |
 | HostedService {hosted-service-name} 内の VM {vm-name} に、移行用に現在サポートされていない拡張機能 VMSnapshot/VMSnapshotLinux が含まれています。 この機能を一度 VM からアンインストールし、移行が完了したら Azure Resource Manager を使って再インストールしてください。 |これは、仮想マシンが Azure Backup 用に構成されるシナリオです。 これは、現時点ではサポートされていないシナリオであるため、 https://aka.ms/vmbackupmigration の回避策に従ってください。 |
 | HostedService {hosted-service-name} の VM {vm-name} には、拡張機能 {extension-name} が含まれています。この拡張機能のステータスについて VM から報告がないため、 この VM を移行できません。 この拡張機能のステータスが報告されるようにするか、VM からこの拡張機能をアンインストールしたうえで、移行をやり直してください。 <br><br> HostedService {hosted-service-name} の VM {vm-name} には、拡張機能 {extension-name} が含まれています。この拡張機能のハンドラー ステータスとして {handler-status} が報告されているため、 この VM を移行できません。 この拡張機能のハンドラー ステータスとして {handler-status} が報告されるようにするか、VM からこの拡張機能をアンインストールしたうえで、移行をやり直してください。  <br><br> HostedService {hosted-service-name} 内の VM {vm-name} 用の VM エージェントが、エージェントの全体的なステータスとして [準備不完了] を報告しています。 そのため、VM に移行可能な拡張機能があっても、VM を移行できません。 VM エージェントがエージェントの全体的なステータスとして [準備完了] を報告していることを確認してください。 https://aka.ms/classiciaasmigrationfaqs を参照してください。 |Azure ゲスト エージェントと VM 拡張機能では、各自の状態を設定するために VM ストレージ アカウントへの発信インターネット アクセスが必要です。 状態エラーの一般的な原因には、以下が考えられます。 <li> ネットワーク セキュリティ グループがインターネットへの発信アクセスがブロックしている <li> VNET にオンプレミスの DNS サーバーがあるときに DNS 接続が失われている <br><br> サポートされていない状態が解決しない場合は、拡張機能をアンインストールしてこのチェックをスキップし、移行を進めることができます。 |

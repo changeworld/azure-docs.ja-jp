@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 0a9472dec9b76dfbde1690e11f13836746b0dfaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 983a090942a77c2f40e0136b00acdc0a3d49c571
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862898"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528341"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 
@@ -461,11 +461,11 @@ GO
 ```
 
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
-Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
+Transact-SQL スクリプトが完了したら、**event_data_XML** 列ヘッダーの下にあるセルをクリックします。 **\<イベント>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
 
-ここに、テスト中に生成された **<event>** 要素が 1 つあります。
+ここに、テスト中に生成された **\<イベント>** 要素が 1 つあります。
 
 
 ```xml

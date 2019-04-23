@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282391"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547987"
 ---
 # <a name="add-a-shape-to-a-map"></a>マップにシェイプを追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "59282391"
 
 `LineString` および `MultiLineString` フィーチャーは、マップ上のパスとアウトラインを表すために使用します。
 
-## <a name="use-a-line"></a>線を使用する
+### <a name="add-a-line"></a>線を追加する
 
 <iframe height='500' scrolling='no' title='マップに線を追加する' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a>」Pen を表示します。
 </iframe>
@@ -53,7 +53,7 @@ ms.locfileid: "59282391"
 
 <br/>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="ストロークのグラデーションのある線" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="ストロークのグラデーションのある線" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Line with Stroke Gradient</a>」Pen を表示します。
 </iframe>
 
@@ -156,7 +156,7 @@ Azure Maps の Web SDK は、これらの `Pooint` フィーチャーを内部�
 ## <a name="make-a-geometry-easy-to-update"></a>ジオメトリを簡単に更新する
 
 `Shape` クラスは [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) または [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) をラップしているため、更新や管理が簡単です。
-`new Shape(data: Feature<data.Geometry, any>)` シェイプ オブジェクトを作成し、指定したフィーチャーで初期化します。
+`new Shape(data: Feature<data.Geometry, any>)` はシェイプ オブジェクトを作成し、指定したフィーチャーで初期化します。
 
 <br/>
 
@@ -171,7 +171,7 @@ Azure Maps の Web SDK は、これらの `Pooint` フィーチャーを内部�
 
 4 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 ポイントがデータ ソースに追加されます。
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたデータがマップにレンダリングされます。 3 番目のコード ブロックでは、多角形レイヤーが作成されます。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 データ ソース、クリック イベント ハンドラー、および多角形レイヤーが作成され、マップの [イベント ハンドラー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内に追加されるため、マップが完全に読み込まれた後に、ポイントが表示されます。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたデータがマップにレンダリングされます。 3 番目のコード ブロックでは、多角形レイヤーが作成されます。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 データ ソース、クリック イベント ハンドラー、多角形レイヤーが作成され、マップの [イベント ハンドラー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)内に追加されるため、マップが完全に読み込まれた後に、ポイントが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

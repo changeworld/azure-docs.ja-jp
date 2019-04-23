@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001357"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608607"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
@@ -73,7 +73,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
     ![[フェールオーバー]](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. **[はい]** をクリックして、フェールオーバーを開始します。
 
-このコマンドは、セカンダリ データベースをプライマリ ロールに即座に切り替えます。
+このコマンドは、セカンダリ データベースをプライマリ ロールに即座に切り替えます。 このプロセスは、通常 30 秒以内に完了します。
 
 ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。 プライマリ データベースに複数のセカンダリ データベースがある場合は、コマンドによって、新しいプライマリに接続するように他のセカンダリが自動的に再構成されます。 通常の状況では、操作全体が完了するのに 1 分かかりません。
 

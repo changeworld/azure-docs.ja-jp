@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811530"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492721"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0 構成スキーマ
 > [!NOTE]
@@ -101,7 +101,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:
 
-|Attribute  |type   |必須| 既定値 | 説明|  
+|Attribute  |Type   |必須| 既定値 | 説明|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|duration|省略可能 | PT1M| 診断モニターが診断構成変更をポーリングする間隔を指定します。|  
 |**overallQuotaInMB**|unsignedInt|省略可能| 4000 MB。 値を指定した場合、その容量を超えることはできません |すべてのログ バッファーに割り当てられたファイル システム ストレージの合計量。|  
@@ -113,10 +113,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
-|**scheduledTransferLogLevelFilter**|文字列|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
+|**scheduledTransferLogLevelFilter**|string|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
 
 ## <a name="logs-element"></a>Logs 要素  
@@ -126,10 +126,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
-|**scheduledTransferLogLevelFilter**|文字列|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
+|**scheduledTransferLogLevelFilter**|string|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
 
 ## <a name="directories-element"></a>Directories 要素  
@@ -140,7 +140,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
@@ -152,9 +152,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**container**|文字列|ディレクトリの内容を転送するコンテナーの名前。|  
+|**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs 要素  
@@ -164,9 +164,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**container**|文字列|ディレクトリの内容を転送するコンテナーの名前。|  
+|**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
 
 ##  <a name="iislogs-element"></a>IISLogs 要素  
@@ -176,9 +176,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**container**|文字列|ディレクトリの内容を転送するコンテナーの名前。|  
+|**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
 
 ## <a name="datasources-element"></a>DataSources 要素  
@@ -193,9 +193,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**container**|文字列|ディレクトリの内容を転送するコンテナーの名前。|  
+|**container**|string|ディレクトリの内容を転送するコンテナーの名前。|  
 |**directoryQuotaInMB**|unsignedInt|省略可能。 ディレクトリの最大サイズをメガバイト単位で指定します。<br /><br /> 既定値は 0 です。|  
 
 ## <a name="absolute-element"></a>Absolute 要素  
@@ -205,9 +205,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**path**|文字列|必須。 監視するディレクトリの絶対パス。|  
+|**path**|string|必須。 監視するディレクトリの絶対パス。|  
 |**expandEnvironment**|ブール値|必須。 **true** に設定した場合は、このパスの環境変数が展開されます。|  
 
 ## <a name="localresource-element"></a>LocalResource 要素  
@@ -217,10 +217,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**name**|文字列|必須。 監視するディレクトリを含むローカル リソースの名前。|  
-|**relativePath**|文字列|必須。 監視するローカル リソースの相対パス。|  
+|**name**|string|必須。 監視するディレクトリを含むローカル リソースの名前。|  
+|**relativePath**|string|必須。 監視するローカル リソースの相対パス。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
  収集するパフォーマンス カウンターのパスを定義します。
@@ -230,7 +230,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
@@ -242,9 +242,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  属性:  
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|文字列|必須。 収集するパフォーマンス カウンターのパス。|  
+|**counterSpecifier**|string|必須。 収集するパフォーマンス カウンターのパス。|  
 |**sampleRate**|duration|必須。 パフォーマンス カウンターを収集する頻度。|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素  
@@ -254,10 +254,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
   属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
-|**scheduledTransferLogLevelFilter**|文字列|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
+|**scheduledTransferLogLevelFilter**|string|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** です。 他の有効値は **Verbose**、**Information**、**Warning**、**Error**、および **Critical** です。|  
 |**scheduledTransferPeriod**|duration|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
 
 ## <a name="datasource-element"></a>DataSource 要素  
@@ -267,7 +267,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  属性:
 
-|Attribute|type|説明|  
+|Attribute|Type|説明|  
 |---------------|----------|-----------------|  
-|**name**|文字列|必須。 収集するログを指定するための XPath 式。|  
+|**name**|string|必須。 収集するログを指定するための XPath 式。|  
 

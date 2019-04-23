@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469609"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488713"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL を使用する
 U-SQL は、あらゆる規模のデータの処理を可能にするために、宣言型の SQL と命令型の C# を組み合わせた言語です。 U-SQL のスケーラブルな分散クエリ機能を使用することで、Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。 U-SQL では、読み取り時にスキーマを適用し、カスタム ロジックと UDF を挿入することで、非構造化データを処理できます。 また、U-SQL には、スケールを実行する方法をきめ細かく制御する拡張性があります。 
@@ -27,7 +27,7 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 
 ## <a name="prerequisites"></a>前提条件
 
-このドキュメントの U-SQL のサンプルをご覧になる前に、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を読み、完了してください。 このチュートリアルでは、Azure Data Lake Tools for Visual Studio での U-SQL の使用のメカニズムについて説明しています。
+このドキュメントの U-SQL サンプルを実行する前に、次の資料を読んで完了します: 「[チュートリアル:Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)」。 このチュートリアルでは、Azure Data Lake Tools for Visual Studio での U-SQL の使用のメカニズムについて説明しています。
 
 ## <a name="your-first-u-sql-script"></a>最初の U-SQL スクリプト
 

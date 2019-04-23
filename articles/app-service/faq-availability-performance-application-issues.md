@@ -16,13 +16,17 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268381"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565965"
 ---
+> [!NOTE]
+> 以下のガイドラインのいくつかは、Windows または Linux App Services でのみ有効な場合があります。 たとえば、Linux App Services は既定で 64 ビット モードで動作します。
+>
+
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
 この記事では、[Azure App Service の Web アプリ機能](https://azure.microsoft.com/services/app-service/web/)でのアプリケーション パフォーマンスの問題に関するよくあるご質問 (FAQ) への回答を示します。

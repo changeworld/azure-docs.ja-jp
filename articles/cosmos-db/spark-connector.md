@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 5a25d0cb8fe1dffbc0a12f6ef88e2adc037a2393
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982982"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543823"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
 
 Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されているデータで [Spark](https://spark.apache.org/) ジョブを実行できます。 Cosmos は、バッチおよびストリーム処理に使用可能であり、低待機時間でのアクセスのためのサービス レイヤーとして使用できます。
 
-このコネクタは、Azure 上でマネージド Spark クラスターを提供する [Azure Databricks](https://azure.microsoft.com/services/databricks) または Azure HDInsight と一緒に使用できます。 サポートする Spark バージョンを次の表に示します。
+このコネクタは、Azure 上でマネージド Spark クラスターを提供する [Azure Databricks](https://azure.microsoft.com/services/databricks) または [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) と一緒に使用できます。 サポートする Spark バージョンを次の表に示します。
 
 | コンポーネント | Version |
 |---------|-------|
@@ -129,7 +129,7 @@ flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 ### <a name="using-databricks-notebooks"></a>Databricks ノートブックの使用
 
-Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネクタの使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)に関する記事に従って、Databricks ワークスペース内でライブラリを作成します。
+Azure Databricks ガイドのガイダンスで [Azure Cosmos DB Spark コネクタの使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)に関する記事に従って、Databricks ワークスペースでライブラリを作成します
 
 > [!NOTE]
 > **Azure Cosmos DB Spark コネクタの使用**に関するページは現在最新ではありませんのでご注意ください。 6 つの別々の jar を 6 つの異なるライブラリにダウンロードするのではなく、 https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar) の Maven から uber jar をダウンロードして、ライブラリごとに 1 つの jar をインストールすることができます。

@@ -1,29 +1,31 @@
 ---
-title: クラウドでの機械学習:用語とアーキテクチャ
+title: アーキテクチャと主要な概念
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning サービスを構成するアーキテクチャ、用語、概念について説明します。 サービスを使用する一般的なワークフローと、Azure Machine Learning service によって使用される Azure サービスについても説明します。
+description: Azure Machine Learning service を構成するアーキテクチャ、用語、概念、ワークフローについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269131"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489949"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
-この記事では、Azure Machine Learning service のアーキテクチャと概念について説明します。 サービスの主要なコンポーネントと、サービスを使用する場合の一般的なワークフローを、以下の図に示します。
+Azure Machine Learning service のアーキテクチャ、概念、ワークフローについて説明します。 サービスの主要なコンポーネントと、サービスを使用する場合の一般的なワークフローを、以下の図に示します。
 
 [![AAzure Machine Learning service のアーキテクチャとワークフロー(./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
-ワークフローの一般的なシーケンスは次のとおりです。
+## <a name="workflow"></a>ワークフロー
+
+機械学習のワークフローの一般的なシーケンスは次のとおりです。
 
 1. **Python** で機械学習トレーニング スクリプトを開発します。
 1. **コンピューティング ターゲット** を作成して構成します。

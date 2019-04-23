@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL サーバーの vnet サービス エンドポイントの概要
 description: Azure Database for PostgreSQL サーバーで VNET サービス エンドポイントがどのように機能するかについて説明します。
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006338"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009193"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の Virtual Network のサービス エンドポイントとルールを使用する
 

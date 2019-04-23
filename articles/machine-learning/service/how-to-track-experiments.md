@@ -1,7 +1,7 @@
 ---
 title: トレーニングの実行中にメトリックを記録する
 titleSuffix: Azure Machine Learning service
-description: 実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。
+description: トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行の結果を表示する方法について説明します。 実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652316"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609469"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning 内でトレーニングの実行中にメトリックを記録する
 
-Azure Machine Learning service では、実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 この記事では、トレーニング スクリプトへのログ記録の追加、実験の実行の送信、実行の監視、実行の結果の表示を行う方法について説明します。
+この記事では、Azure Machine Learning service におけるトレーニング スクリプトへのログ記録の追加、実験の実行の送信、実行の監視、実行の結果の表示を行う方法について説明します。 実験を追跡し、メトリックを監視することで、モデルの作成プロセスを拡張します。 
 
 ## <a name="list-of-training-metrics"></a>トレーニング メトリックの一覧 
 
@@ -217,37 +217,9 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
    run = experiment.submit(src)
    ```
 
-## <a name="cancel-a-run"></a>実行をキャンセルする
+## <a name="manage-a-run"></a>実行の管理
 
-実行の送信後、実験名と実行 ID を知っていれば、オブジェクト参照を失った場合でも、キャンセルできます。 
-
-
-```python
-from azureml.core import Experiment
-exp = Experiment(ws, "my-experiment-name")
-
-# if you don't know the run id, you can list all runs under an experiment
-for r in exp.get_runs():  
-    print(r.id, r.get_status())
-
-# if you know the run id, you can "rehydrate" the run
-from azureml.core import get_run
-r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
-  
-# check the returned run type and status
-print(type(r), r.get_status())
-
-# you can cancel a run if it hasn't completed or failed
-if r.get_status() not in ['Complete', 'Failed']:
-    r.cancel()
-```
-現在、ScriptRun および PipelineRun 型のみでキャンセル操作がサポートされています。
-
-さらに、次のコマンドを使用して、CLI での実行を取り消すことができます。
-```shell
-az ml run cancel -r <run_id> -p <project_path>
-```
-
+[トレーニングの実行の開始、監視、キャンセル](how-to-manage-runs.md)に関する記事では、実験の管理方法に関する特定の Azure Machine Learning ワークフローについて紹介しています。
 
 ## <a name="view-run-details"></a>実行の詳細を表示する
 

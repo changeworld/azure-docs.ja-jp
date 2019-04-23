@@ -1,7 +1,7 @@
 ---
 title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する - Azure Search
 description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
-ms.date: 02/28/2019
+ms.date: 04/11/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518747"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527355"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Search インデックスを作成し、JSON BLOB から抽出された既存のテキストとともに読み込みます。 
@@ -40,14 +40,15 @@ Azure Search と Azure Cosmos DB の両方で (可能であれば同じリージ
 
 ### <a name="1---prepare-source-data"></a>1 - ソース データを準備する
 
-Azure ストレージ アカウントと BLOB ストレージおよび JSON ドキュメントのコンテナーが必要です。 これらの要件のいずれかに慣れていない場合は、[Cognitive Search クイック スタート](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data)に関する記事の前提条件「Azure Blob service を設定し、サンプル データを読み込む」を見直してください。
+1. [Azure portal](https://portal.azure.com/)にサインインします。
 
-> [!Important]
-> コンテナーの**パブリック アクセス レベル**が [コンテナー (コンテナーと BLOB の匿名読み取りアクセス)] に設定されていることを確認します。 Azure ストレージと Azure Search は (可能であれば同じリージョン内の) 同じサブスクリプションで使用する必要があります。 
+1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してデータを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+
+**インポート データ** ウィザードでデータを取得するには、ストレージ アカウント名、コンテナー名、アクセス キーが必要です。
 
 ### <a name="2---start-import-data-wizard"></a>2 - データのインポート ウィザードを開始する
 
-Azure Search サービス ページのコマンド バーから、またはストレージ アカウントの左側のナビゲーション ウィンドウの **[Blob service]** セクションで **[Azure Search の追加]** をクリックして、[ウィザードを開始する](search-import-data-portal.md)ことができます。
+Azure Search サービスの [概要] ページで、コマンド バーから、またはストレージ アカウントの左側のナビゲーション ウィンドウの **[Blob service]** セクションで **[Azure Search の追加]** をクリックして、[ウィザードを開始する](search-import-data-portal.md)ことができます。
 
    ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを起動する")
 

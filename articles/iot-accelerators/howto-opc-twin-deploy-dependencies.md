@@ -1,5 +1,5 @@
 ---
-title: Azure IoT OPC UA デバイス管理クラウド依存関係をデプロイする方法 | Microsoft Docs
+title: Azure で OPC Twin クラウドの依存関係をデプロイする方法 | Microsoft Docs
 description: OPC Twin Azure 依存関係をデプロイする方法です。
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cdd89293328da47c8e338bb6fca8c7b93dd84f97
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759235"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491988"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
 
@@ -52,7 +52,7 @@ ms.locfileid: "58759235"
 
 ## <a name="next-steps"></a>次の手順
 
-既存プロジェクトへの OPC Device Management サービスのデプロイが正常に済んだので、次の手順が推奨されます。
+既存プロジェクトへの OPC Twin サービスのデプロイが正常に済んだので、次の手順が推奨されます。
 
 > [!div class="nextstepaction"]
-> [OPC Device Management モジュールをデプロイする方法を学習します](howto-opc-twin-deploy-modules.md)
+> [OPC Twin モジュールをデプロイする方法について学習する](howto-opc-twin-deploy-modules.md)

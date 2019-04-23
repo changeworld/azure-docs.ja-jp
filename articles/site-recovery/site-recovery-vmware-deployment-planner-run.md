@@ -1,25 +1,25 @@
 ---
 title: VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する | Microsoft Docs
 description: この記事では、VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する方法について説明します。
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361995"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565429"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Deployment Planner の実行モード
-このコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 とおりのモードで実行できます。
+このコマンド ライン ツール (ASRDeploymentPlanner.exe) は、次の 3 とおりのモードで実行できます。
 
 1.  [プロファイリング](#profile-vmware-vms)
 2.  [レポートの生成](#generate-report)
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>レポートの生成
-Deployment Planner ツールでは、デプロイの推奨情報をすべてまとめたマクロ有効 Microsoft Excel ファイル (XLSM ファイル) がレポートの出力結果として生成されます。 このレポートは、指定されたディレクトリに DeploymentPlannerReport_<unique numeric identifier>.xlsm という名前で格納されます。
+Deployment Planner ツールでは、デプロイの推奨情報をすべてまとめたマクロ有効 Microsoft Excel ファイル (XLSM ファイル) がレポートの出力結果として生成されます。 このレポートは、指定されたディレクトリに `DeploymentPlannerReport_<unique numeric identifier>.xlsm` という名前で格納されます。
 
 >[!NOTE]
->このレポートでは、Deployment Planner を実行するサーバーでコスト見積もりを生成するために "." として構成された小数点の記号が必要です。 Windows コンピューターで小数点の記号として "," を設定している場合は、コントロール パネルの [日付、時刻、または数値の形式の変更] に移動し、[追加の設定] に移動して小数点の記号を "." に変更します。
+>レポートの生成には、Excel 2013 以降がインストールされた Windows PC または Windows Server が必要です。 コストの見積もりを作成するには、このマシンの小数点記号を "." として構成する必要があります。 小数点の記号として "," を設定している場合は、コントロール パネルの [日付、時刻、または数値の形式の変更] に移動し、[追加の設定] に移動して小数点の記号を "." に変更します。
 
 プロファイリングが完了したら、レポート生成モードでツールを実行できます。 次の表は、レポート生成モードでツールを実行するための必須のパラメーターと省略可能なパラメーターの一覧です。
 
@@ -240,12 +240,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 生成された Microsoft Excel レポートには、次の情報が含まれています。
 
-* [On-premises summary (オンプレミス サマリー)](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
-* [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->storage placement (VM-ストレージの配置)](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [On-Premises Summary (オンプレミス サマリー)](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
+* [Recommendations (推奨事項)](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
+* [VM<->Storage Placement (VM<->ストレージの配置)](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [Compatible VMs (適合 VM)](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [Incompatible VMs (不適合 VM)](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [Cost estimation (コスト見積もり)](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [Cost Estimation (コスト見積もり)](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 

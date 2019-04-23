@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630624"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522730"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -445,7 +445,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
-コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス権が制限されたキーのコピーが "key_xferacId_<contosokey>" という名前のファイルに表示されます。
+コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス許可が制限されたキーのコピーが "key_xferacId_\<contosokey>" という名前のファイルに表示されます。
 
 Thales ユーティリティを使用すると、次のコマンドで ACL を確認できます。
 

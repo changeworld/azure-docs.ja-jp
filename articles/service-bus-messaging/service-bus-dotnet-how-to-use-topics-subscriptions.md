@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 19949b555a5be21c06c3acfbbd5fb9be08dc9f23
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766948"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608896"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -27,24 +27,20 @@ ms.locfileid: "57766948"
 
 このチュートリアルに含まれる手順は次のとおりです。
 
-1. Azure Portal を使用して Service Bus 名前空間を作成する。
-2. Azure Portal を使用して Service Bus トピックを作成する。
-3. そのトピックに対する Service Bus サブスクリプションを Azure Portal で作成する。
-4. トピックに一連のメッセージを送信するための .NET Core コンソール アプリケーションを作成する。
-5. それらのメッセージをサブスクリプションから受信する .NET Core コンソール アプリケーションを作成する。
+1. トピックに一連のメッセージを送信するための .NET Core コンソール アプリケーションを作成する。
+2. それらのメッセージをサブスクリプションから受信する .NET Core コンソール アプリケーションを作成する。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
-2. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
-2. Azure サブスクリプション。
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
-
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 従うべき手順を「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
+    1. Service Bus **名前空間**を作成します。
+    2. **接続文字列**を取得します。
+    3. 名前空間の**トピック**を作成します。
+    4. 名前空間のトピックへの**サブスクリプションを 1 つ**作成します。
+3. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
+4. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
+ 
 ## <a name="send-messages-to-the-topic"></a>トピックにメッセージを送信する
 
 トピックにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを作成します。

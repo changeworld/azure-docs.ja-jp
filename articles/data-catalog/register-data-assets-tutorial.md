@@ -1,17 +1,17 @@
 ---
 title: Azure Data Catalog でのデータ資産の登録
 description: Azure データ カタログにデータ資産を登録する方法
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 04/08/2019
-ms.openlocfilehash: e89bd4806e2bb2369c100e948be51dcf32f2e123
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 91f7967915fd19ae47ca207913f979aa56fcd27f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59362749"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011709"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>チュートリアル:Azure Data Catalog でのデータ資産の登録
 
