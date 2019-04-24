@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: インクルード ファイル
+description: インクルード ファイル
 services: load-balancer
 author: KumudD
 ms.service: load-balancer
@@ -16,4 +16,4 @@ ms.lasthandoff: 03/19/2019
 ms.locfileid: "58124755"
 ---
 > [!IMPORTANT]
-> Azure Load Balancer supports two different types: Basic and Standard. This article discusses Basic Load Balancer. For more information about Standard Load Balancer, see [Standard Load Balancer overview](https://aka.ms/AzureLoadBalancerStandard).
+> Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](https://aka.ms/AzureLoadBalancerStandard)に関するページをご覧ください。

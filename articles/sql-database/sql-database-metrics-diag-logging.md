@@ -79,7 +79,7 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 > エラスティック プールとマネージド インスタンスには、それらに含まれるデータベースとは別の、独自の診断テレメトリがあります。 つまり、以下に示すように、診断テレメトリはそのリソースごとに個別に構成されているということに注意する必要があります。
 
 > [!NOTE]
-> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)に関するページを参照してください。
+> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
@@ -143,7 +143,7 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 監視するデータベースごとにこれらの手順を繰り返します。
 
 > [!NOTE]
-> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)に関するページを参照してください。
+> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
 > [!TIP]
 > 監視する Azure SQL Database ごとにこれらの手順を繰り返します。
 
@@ -409,7 +409,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-以下では、Azure SQL Database、エラスティック プール、マネージド インスタンスで使用可能な監視テレメトリについて説明します。 SQL Analytics 内の収集された監視テレメトリは、[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)言語を使用した独自のカスタム分析とアプリケーション開発に利用できます。
+以下では、Azure SQL Database、エラスティック プール、マネージド インスタンスで使用可能な監視テレメトリについて説明します。 SQL Analytics 内の収集された監視テレメトリは、[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) 言語を使用した独自のカスタム分析とアプリケーション開発に利用できます。
 
 ## <a name="all-metrics"></a>すべてのメトリック
 
