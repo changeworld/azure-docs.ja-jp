@@ -1,6 +1,6 @@
 ---
-title: Spark Structured Streaming in Azure HDInsight
-description: How to use Spark Structured Streaming applications on HDInsight Spark clusters.
+title: Azure HDInsight での Spark Structured Streaming
+description: HDInsight Spark クラスターで Spark Structured Streaming アプリケーションを使用する方法。
 services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
@@ -16,52 +16,52 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/26/2019
 ms.locfileid: "56869090"
 ---
-# <a name="overview-of-apache-spark-structured-streaming"></a>Overview of Apache Spark Structured Streaming
+# <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark Structured Streaming の概要
 
-[Apache Spark](https://spark.apache.org/) Structured Streaming enables you to implement scalable, high-throughput, fault-tolerant applications for  processing  data streams. Structured Streaming is built upon the Spark SQL engine, and improves upon the constructs from Spark SQL Data Frames and Datasets so  you can write streaming queries in the same way you would write batch queries.  
+[Apache Spark](https://spark.apache.org/) Structured Streaming を使用すると、データ ストリームを処理するためのスケーラブルで、かつ高スループットのフォールト トレラント アプリケーションを実装できます。 Structured Streaming は Spark SQL エンジンに基づいて構築されており、ストリーミング クエリをバッチ クエリと同じ方法で記述できるように、Spark SQL データ フレームおよびデータセットからの構造を機能強化しています。  
 
-Structured Streaming applications run on HDInsight Spark clusters, and connect  to  streaming data from [Apache Kafka](https://kafka.apache.org/), a TCP socket (for debugging purposes), Azure Storage, or Azure Data Lake Storage. The latter two options, which rely on external storage services, enable you to watch for new files added into storage and process their contents as if they were streamed. 
+Structured Streaming アプリケーションは HDInsight Spark クラスター上で実行され、[Apache Kafka](https://kafka.apache.org/)、TCP ソケット (デバッグのため)、Azure Storage、または Azure Data Lake Storage からのストリーミング データに接続します。 外部のストレージ サービスに依存する後者の 2 つのオプションを使用すると、ストレージに追加された新しいファイルを監視し、それらのファイルがストリーミングされているかのようにその内容を処理できます。 
 
-Structured Streaming creates a long-running query during which you  apply operations to the input data, such as selection, projection, aggregation, windowing, and joining the streaming DataFrame with reference DataFrames. Next, you output the results to file storage (Azure Storage Blobs or Data Lake Storage) or to any datastore by using custom code (such as SQL Database or Power BI). Structured Streaming also provides output to the console for debugging locally, and to an in-memory table so you can see the data generated for debugging in HDInsight. 
+Structured Streaming は、入力データに選択、プロジェクション、集計、ウィンドウ化、ストリーミング データフレームの参照データフレームとの結合などの操作を適用するための、実行時間の長いクエリを作成します。 次に、その結果をファイル ストレージ (Azure Storage BLOB や Data Lake Storage) に、またはカスタム コード (SQL Database や Power BI など) を使用して任意のデータストアに出力します。 Structured Streaming ではまた、ローカルでのデバッグのためにコンソールに出力したり、HDInsight でのデバッグのために生成されたデータを表示できるようにインメモリ テーブルに出力したりする機能も提供されます。 
 
-![Stream Processing with HDInsight and Spark Structured Streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![HDInsight および Spark Structured Streaming を使用したストリーム処理](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
-> Spark Structured Streaming is  replacing Spark Streaming (DStreams). Going forward, Structured Streaming will receive enhancements and maintenance, while DStreams will be in maintenance mode only. Structured Streaming is currently not as feature-complete as DStreams for the sources and sinks that it supports out of the box, so evaluate your requirements to choose the appropriate Spark stream processing option. 
+> Spark Structured Streaming は、Spark Streaming (DStreams) を置き換えています。 将来的には、Structured Streaming が拡張機能やメンテナンスを受けるのに対して、DStreams はメンテナンス モードのみになります。 Structured Streaming は現在、標準でサポートされるソースやシンクに関して DStreams ほど機能が充実していないため、実際の要件を評価して適切な Spark ストリーム処理オプションを選択してください。 
 
-## <a name="streams-as-tables"></a>Streams as tables
+## <a name="streams-as-tables"></a>テーブルとしてのストリーム
 
-Spark Structured Streaming represents a stream of data  as a table that is unbounded in depth, that is, the table  continues to grow as new data arrives. This *input table* is continuously processed by a long-running query, and the results sent to an *output table*:
+Spark Structured Streaming は、データのストリームを深さが無限のテーブルとして表します。つまり、このテーブルは新しいデータが到着するたびに増大し続けます。 この*入力テーブル*は実行時間の長いクエリによって継続的に処理され、その結果が*出力テーブル*に送信されます。
 
-![Structured Streaming Concept](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+![Structured Streaming の概念](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-In Structured Streaming, data arrives at the system and is immediately ingested into an input table. You write queries (using the DataFrame and Dataset APIs) that perform operations against this input table. The query output yields another table,  the *results table*. The results table contains the results of your query, from which you draw data for an external datastore, such a relational database. The timing of when data is processed from the input table is controlled by the *trigger interval*. By default, the trigger interval is zero, so Structured Streaming tries to process the data as soon as it arrives. In practice, this means that as soon as Structured Streaming is done processing the run of the previous query, it starts another processing run against any newly received data. You can configure the trigger to run at an interval, so that the streaming data is processed in time-based batches. 
+Structured Streaming では、データがシステムに到着すると、直ちに入力テーブルに取り込まれます。 この入力テーブルに対して操作を実行するクエリを (データフレームおよびデータセット API を使用して) 記述します。 このクエリの出力により、別のテーブルである*結果テーブル*が生成されます。 結果テーブルにはクエリの結果が含まれており、そこから、データをリレーショナル データベースなどの外部のデータストアに取り出します。 入力テーブルのデータが処理されるタイミングは、*トリガー間隔*によって制御されます。 既定では、トリガー間隔は 0 であるため、Structured Streaming はデータが到着するとすぐに処理しようとします。 これは、実際には、Structured Streaming が前のクエリの処理を完了するとすぐに、新しく受信したデータに対する別の処理を開始することを示します。 ストリーミング データが時間ベースのバッチで処理されるように、トリガーを一定の間隔で実行されるように構成することができます。 
 
-The data in the results tables  may  contain only the data that is new since the last time the query was processed (*append mode*), or the table may be completely refreshed every time there is new data so the table includes all of the output data since the streaming query began (*complete mode*).
+結果テーブル内のデータに、最後にクエリが処理されてからの新しいデータのみを含めることも (*追加モード*)、新しいデータが到着するたびにテーブルを完全に更新して、そのテーブルにストリーミング クエリが開始されてからのすべての出力データが含まれるようにすることもできます (*完全モード*)。
 
-### <a name="append-mode"></a>Append mode
+### <a name="append-mode"></a>追加モード
 
-In append mode, only the rows added to the results table since the last query run are present in the results table and written to external storage. For example,  the simplest query  just copies all data from the input table to the results table unaltered. Each time a trigger interval elapses, the new data is processed and the rows representing that new data appear in the results table. 
+追加モードでは、最後のクエリ実行の後に結果テーブルに追加された行のみが結果テーブル内に存在し、外部ストレージに書き込まれます。 たとえば、最も単純なクエリは、すべてのデータを入力テーブルから結果テーブルにそのままコピーするだけです。 トリガー間隔が経過するたびに、新しいデータが処理され、その新しいデータを表す行が結果テーブルに現れます。 
 
-Consider a scenario where you are processing telemetry from temperature sensors, such as a  thermostat. Assume the first trigger processed one event at time 00:01 for device 1 with a temperature reading of 95 degrees. In the first trigger of the query, only the row with time 00:01  appears in the results table. At time 00:02 when another event arrives,  the only new row is the row with time 00:02 and so the results table would contain only that one row.
+サーモスタットなどの温度センサーからのテレメトリを処理しているシナリオを考えてみます。 最初のトリガーで、温度の読み取りが 95 度のデバイス 1 に関して時間 00:01 に 1 つのイベントが処理されたとします。 クエリの最初のトリガーでは、時間 00:01 の行のみが結果テーブルに現れます。 別のイベントが到着した時間 00:02 には、新しい行は時間 00:02 の行だけであるため、結果テーブルにはその 1 行のみが含まれます。
 
-![Structured Streaming Append Mode](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+![Structured Streaming の追加モード](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
 
-When using append mode, your query would be applying projections (selecting the columns it cares about), filtering (picking only rows that match certain conditions) or joining (augmenting the data with data from a static lookup table). Append mode  makes it easy to push only the relevant new data points out to external storage.
+追加モードを使用しているとき、クエリはプロジェクションを適用している (対象の列を選択している) か、フィルター処理している (特定の条件に一致する行のみを選択している) か、結合している (静的ルックアップ テーブルからのデータを含むデータを増やしている) かのいずれかです。 追加モードにより、関連する新しいデータ ポイントのみを外部ストレージにプッシュすることが容易になります。
 
-### <a name="complete-mode"></a>Complete mode
+### <a name="complete-mode"></a>完全モード
 
-Consider the same scenario, this time using  complete mode. In complete mode, the entire output table is refreshed on every trigger so the table includes data not just from the most recent trigger run, but from all runs. You could use  complete mode to copy the data unaltered from the input table to the results table. On every triggered run, the new result rows  appear along with all the previous rows. The output results table will end up storing all of the data collected since the query began, and  you would eventually run out of memory. Complete mode is intended for use with aggregate queries that  summarize the incoming data in some way, and so on every trigger the results table is updated with a new summary. 
+同じシナリオを考えますが、今回は完全モードを使用します。 完全モードでは、テーブルに最新のトリガー実行だけでなく、すべての実行のデータが含まれるように、トリガーごとに出力テーブル全体が更新されます。 完全モードを使用すると、データを入力テーブルから結果テーブルにそのままコピーすることもできます。 トリガーが実行されるたびに、新しい結果行が以前のすべての行と共に現れます。 出力結果テーブルには最終的に、クエリが開始されてから収集されたすべてのデータが格納され、最後はメモリ不足になります。 完全モードは受信データを何らかの方法で集計する集計クエリで使用されることを目的にしているため、トリガーが実行されるたびに、結果テーブルは新しい集計値で更新されます。 
 
-Assume so far there are five seconds' worth of data already processed, and it is time to   process the data for the sixth second. The input table has  events for time 00:01 and time 00:03. The goal of this example query is to give the average temperature of the device every five seconds. The implementation of this query  applies an aggregate that takes all of the values that fall within each 5-second window,  averages the temperature, and produces a row for  the average temperature over that interval. At the end of the first 5-second window, there are two tuples: (00:01, 1, 95) and (00:03, 1, 98). So for the window 00:00-00:05 the aggregation produces  a tuple with the average temperature of 96.5 degrees. In the next 5-second window, there is only  one data point at time 00:06, so the resulting average temperature is 98 degrees. At time 00:10, using complete mode, the results table has the rows for both windows 00:00-00:05 and 00:05-00:10 because the query  outputs all the aggregated rows, not just the new ones. Therefore the results table continues to grow as new windows are added.    
+これまでに既に 5 秒分のデータが処理されており、これから 6 秒目のデータが処理されるものとします。 入力テーブルには、時間 00:01 と時間 00:03 のイベントが含まれています。 このクエリ例の目標は、5 秒ごとにデバイスの平均温度を示すことです。 このクエリの実装では、各 5 秒間ウィンドウに含まれるすべての値を取得する集計を適用し、温度を平均して、その間隔の平均温度の行を生成します。 最初の 5 秒間ウィンドウの最後には、(00:01, 1, 95) と (00:03, 1, 98) の 2 組が存在します。(00:01, 1, 95) と (00:03, 1, 98) です。 そのため、ウィンドウ 00:00-00:05 に対して、この集計では 96.5 度の平均温度を含む組が生成されます。 次の 5 秒間ウィンドウでは、データ ポイントが時間 00:06 に 1 つしか存在しないため、結果として得られる平均温度は 98 度です。 時間 00:10 には、完全モードを使用しており、このクエリが新しい行だけでなく、集計されたすべての行を出力するため、結果テーブルには 00:00-00:05 と 00:05-00:10 の両方のウィンドウの行が含まれます。 そのため、結果テーブルは、新しいウィンドウが追加されるたびに増大し続けます。    
 
-![Structured Streaming Complete Mode](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+![Structured Streaming の完全モード](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
-Not all queries using complete mode will  cause the table to grow without bounds.  Consider in the previous example that rather than averaging the temperature by time window, it averaged instead by device ID. The result table  contains a fixed number of rows (one per device) with the average temperature for the device across all data points received from that device. As new temperatures are received, the results table is updated so that the averages in the table are always current. 
+完全モードを使用するすべてのクエリでテーブルが制限なく増大するわけではありません。  前の例で、温度を時間ウィンドウで平均するのではなく、代わりにデバイス ID で平均したものと考えてみます。 結果テーブルには、各デバイスから受信されたすべてのデータ ポイントにわたるそのデバイスの平均温度を含む固定された行数 (デバイスごとに 1 行) が含まれます。 新しい温度が受信されると、結果テーブルは、そのテーブル内の平均が常に最新の状態になるように更新されます。 
 
-## <a name="components-of-a-spark-structured-streaming-application"></a>Components of a Spark Structured Streaming application
+## <a name="components-of-a-spark-structured-streaming-application"></a>Spark Structured Streaming アプリケーションのコンポーネント
 
-A simple example query can summarize the temperature readings by hour-long windows. In this case, the data  is stored in JSON files in Azure Storage (attached as the default storage for the HDInsight cluster):
+単純なクエリ例では、温度の読み取りを 1 時間ウィンドウで集計できます。 この場合、データは (HDInsight クラスターの既定のストレージとして接続された) Azure Storage 内の JSON ファイルに格納されます。
 
     {"time":1469501107,"temp":"95"}
     {"time":1469501147,"temp":"95"}
@@ -69,11 +69,11 @@ A simple example query can summarize the temperature readings by hour-long windo
     {"time":1469501219,"temp":"95"}
     {"time":1469501225,"temp":"95"}
 
-These JSON files are stored in the `temps` subfolder underneath  the HDInsight cluster's container. 
+これらの JSON ファイルは、HDInsight クラスターのコンテナーの下にある `temps` サブフォルダに格納されます。 
 
-### <a name="define-the-input-source"></a>Define the input source
+### <a name="define-the-input-source"></a>入力ソースを定義する
 
-First configure a DataFrame that describes the source of the data and any settings required by that source. This example draws from the JSON files in Azure Storage and applies a schema to them at read time.
+最初に、データのソースとそのソースに必要なすべての設定を記述したデータフレームを構成します。 この例では、Azure Storage 内の JSON ファイルから取り出し、読み取り時にそれらのファイルにスキーマを適用します。
 
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
@@ -87,31 +87,31 @@ First configure a DataFrame that describes the source of the data and any settin
     //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
     val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
 
-#### <a name="apply-the-query"></a>Apply the query
+#### <a name="apply-the-query"></a>クエリを適用する
 
-Next,  apply a query that contains the desired operations against the Streaming DataFrame. In this case, an aggregation groups all the rows into 1-hour windows, and then computes the minimum, average, and maximum temperatures in that 1-hour window.
+次に、ストリーミング データフレームに対する目的の操作を含むクエリを適用します。 この場合は、集計によってすべての行が 1 時間ウィンドウにグループ化された後、その 1 時間ウィンドウ内の最低、平均、および最高温度が計算されます。
 
     val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
 
-### <a name="define-the-output-sink"></a>Define the output sink
+### <a name="define-the-output-sink"></a>出力シンクを定義する
 
-Next,  define the destination for the rows that are added to the results table within each trigger interval. This example  just outputs all  rows to an in-memory table `temps` that you can later query with SparkSQL. Complete  output mode ensures that all rows for all windows are output every time.
+次に、各トリガー間隔内の結果テーブルに追加された行の宛先を定義します。 この例では、すべての行を、後で SparkSQL でクエリを適用できるインメモリ テーブル `temps` に出力するだけです。 完全出力モードでは、すべてのウィンドウのすべての行が毎回確実に出力さます。
 
     val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
 
-### <a name="start-the-query"></a>Start the query
+### <a name="start-the-query"></a>クエリを起動する
 
-Start the streaming query and run until a termination signal is received. 
+ストリーミング クエリを起動し、終了シグナルが受信されるまで実行します。 
 
     val query = streamingOutDF.start()  
 
-### <a name="view-the-results"></a>View the results
+### <a name="view-the-results"></a>結果の確認
 
-While the query is running, in the same SparkSession, you can run a SparkSQL query against the `temps` table where the query results are stored. 
+クエリの実行中に、同じ SparkSession で、クエリの結果が格納される `temps` テーブルに対して SparkSQL クエリを実行できます。 
 
     select * from temps
 
-This query  yields results similar to the following:
+このクエリにより、次のような結果が生成されます。
 
 
 | window |  min(temp) | avg(temp) | max(temp) |
@@ -124,22 +124,22 @@ This query  yields results similar to the following:
 |{u'start': u'2016-07-26T07:00:00.000Z', u'end'...  |95 |   96.980971 | 99 |
 |{u'start': u'2016-07-26T08:00:00.000Z', u'end'...  |95 |   96.965997 | 99 |  
 
-For details on the Spark Structured Stream API, along with the input data sources, operations, and output sinks it supports, see [Apache Spark Structured Streaming Programming Guide](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+Spark Structured Stream API と、それがサポートする入力データ ソース、操作、および出力シンクの詳細については、[Apache Spark Structured Streaming プログラミング ガイド](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)を参照してください。
 
-## <a name="checkpointing-and-write-ahead-logs"></a>Checkpointing and write-ahead logs
+## <a name="checkpointing-and-write-ahead-logs"></a>チェックポイント機能と先書きログ
 
-To deliver resiliency and fault tolerance, Structured Streaming relies on *checkpointing* to ensure that stream processing can continue uninterrupted, even with node failures. In HDInsight, Spark creates checkpoints to durable storage, either Azure Storage or Data Lake Storage. These checkpoints store the progress information about the streaming query. In addition, Structured Streaming uses a *write-ahead log* (WAL). The  WAL  captures ingested data that has been received but not yet processed by a query. If  a failure occurs and processing is restarted from the WAL, any events received from the source are not lost.
+回復性とフォールト トレランスを実現するために、Structured Streaming は*チェックポイント機能*を使用して、ノード障害が発生した場合でもストリーム処理を中断なく続行できるようにします。 HDInsight では、Spark はチェックポイントを持続性のあるストレージ (Azure Storage または Data Lake Storage のどちらか) に作成します。 これらのチェックポイントでは、ストリーミング クエリに関する進行状況の情報を格納します。 さらに、Structured Streaming では*先書きログ* (WAL) も使用します。 WAL は、受信されたが、まだクエリによって処理されていない取り込まれたデータをキャプチャします。 障害が発生し、WAL から処理が再起動された場合でも、ソースから受信されたどのイベントも失われません。
 
-## <a name="deploying-spark-streaming-applications"></a>Deploying Spark Streaming applications
+## <a name="deploying-spark-streaming-applications"></a>Spark ストリーミング アプリケーションのデプロイ
 
-You typically build a Spark Streaming application locally into a JAR file and then deploy it to Spark on HDInsight by copying the JAR file  to the default storage attached to your HDInsight cluster. You can start your application  with the [Apache Livy](https://livy.incubator.apache.org/) REST APIs available from your cluster using  a POST operation. The body of the POST includes a JSON document that provides the path to your JAR, the name of the class whose main method defines and runs the streaming application, and optionally the resource requirements of the job (such as the number of executors, memory and cores), and any configuration settings your application code requires.
+通常、Spark Streaming アプリケーションは JAR ファイルにローカルに構築した後、その JAR ファイルを HDInsight クラスターに接続された既定のストレージにコピーすることによって HDInsight 上の Spark にデプロイします。 そのアプリケーションは、POST 操作を使用して、クラスターから使用可能な [Apache Livy](https://livy.incubator.apache.org/) REST API で起動できます。 POST の本文には、JAR へのパス、メイン メソッドがストリーミング アプリケーションを定義して実行するクラスの名前、オプションでジョブのリソース要件 (実行プログラム、メモリ、コアの数など)、およびアプリケーション コードに必要なすべての構成設定を指定する JSON ドキュメントが含まれています。
 
-![Deploying a Spark Streaming application](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Spark ストリーミング アプリケーションのデプロイ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-The status of all applications can also be checked with a GET request against a LIVY endpoint. Finally, you can terminate a running application by issuing a DELETE request against the LIVY endpoint. For details on the LIVY API, see [Remote jobs with Apache LIVY](apache-spark-livy-rest-interface.md)
+GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行することによって、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
-* [Create an Apache Spark cluster in HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Apache Spark Structured Streaming Programming Guide](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [Launch Apache Spark jobs remotely with Apache LIVY](apache-spark-livy-rest-interface.md)
+* [HDInsight での Apache Spark クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Apache Spark Structured Streaming プログラミング ガイド](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Apache LIVY を使用してリモートで Apache Spark ジョブを起動する](apache-spark-livy-rest-interface.md)

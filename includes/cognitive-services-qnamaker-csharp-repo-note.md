@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: インクルード ファイル
+description: インクルード ファイル
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -18,4 +18,4 @@ ms.lasthandoff: 02/23/2019
 ms.locfileid: "56740863"
 ---
 > [!NOTE] 
-> The complete solution file(s) are available from the [**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub repository](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp).
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)から入手できます。

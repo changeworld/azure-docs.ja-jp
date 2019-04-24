@@ -1,6 +1,6 @@
 ---
-title: Anomaly Finder API Reference for Microsoft Cognitive Services | Microsoft Docs
-description: Anomaly Finder API Reference for Microsoft Cognitive Services.
+title: Microsoft Cognitive Services のための Anomaly Finder API リファレンス | Microsoft Docs
+description: Microsoft Cognitive Services のための Anomaly Finder API リファレンス。
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2019
 ms.locfileid: "56732000"
 ---
-# <a name="anomaly-finder-api-reference"></a>Anomaly Finder API reference
+# <a name="anomaly-finder-api-reference"></a>Anomaly Finder API リファレンス
 
 [!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
@@ -23,7 +23,7 @@ ms.locfileid: "56732000"
 [!INCLUDE [overview](./includes/definitions.md)]
 [!INCLUDE [overview](./includes/paths.md)]
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [REST API reference](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)
+> [REST API リファレンス](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

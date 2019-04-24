@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory Mapping Data Flow Reference Node
-description: Data Factory Data Flow will add a reference node for joins, lookups, unions
+title: Azure Data Factory マッピング データ フロー参照ノード
+description: Data Factory データ フローによって、結合、検索、和集合用の参照ノードが追加されます
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -14,16 +14,16 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2019
 ms.locfileid: "56732808"
 ---
-# <a name="mapping-data-flow-reference-node"></a>Mapping Data Flow Reference Node
+# <a name="mapping-data-flow-reference-node"></a>マッピング データ フロー参照ノード
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Reference Node](media/data-flow/referencenode.png "reference node")
+![参照ノード](media/data-flow/referencenode.png "参照ノード")
 
-A reference node is automatically added to the canvas to signify that the node it is attached to references another existing node on the canvas. Think of a reference node as a pointer or a reference to another data flow transformation.
+参照ノードは、キャンバス上の別の既存ノードを参照するためにアタッチされているノードを示し、キャンバスに自動的に追加されます。 参照ノードは、別のデータ フロー変換へのポインターまたは参照として考えてください。
 
-For example: When you Join or Union more than one stream of data, the Data Flow canvas may add a reference node that reflects the name and settings of the non-primary incoming stream.
+例: 複数のデータ ストリームの結合または和集合を行うと、データ フロー キャンバスによって、プライマリ以外の受信ストリームの名前と設定を反映する参照ノードが追加されることがあります。
 
-The reference node cannot be moved or deleted. However, you can click into the node to modify the originating transformation settings.
+参照ノードは、移動または削除することはできません。 ただし、ノードをクリックして、元の変換設定を変更することができます。
 
-The UI rules that govern when Data Flow adds the reference node are based upon available space and vertical spacing between rows.
+データ フローが参照ノードを追加するタイミングを制御する UI ルールは、使用可能な領域と行間の上下の間隔に基づきます。

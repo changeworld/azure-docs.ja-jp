@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect sync: Operational tasks and considerations | Microsoft Docs'
-description: This topic describes operational tasks for Azure AD Connect sync and how to prepare for operating this component.
+title: 'Azure AD Connect 同期: 操作タスクおよび考慮事項 | Microsoft Docs'
+description: このトピックでは、Azure AD Connect Sync の運用タスクと、このコンポーネントを操作するための準備方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -23,110 +23,110 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/01/2019
 ms.locfileid: "57196128"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Staging server and disaster recovery
-With a server in staging mode, you can make changes to the configuration and preview the changes before you make the server active. It also allows you to run full import and full synchronization to verify that all changes are expected before you make these changes into your production environment.
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect:ステージング サーバーとディザスター リカバリー
+ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。 また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
 
-## <a name="staging-mode"></a>Staging mode
-Staging mode can be used for several scenarios, including:
+## <a name="staging-mode"></a>ステージング モード
+ステージング モードは、次のシナリオを含むいくつかのシナリオに使用できます。
 
-* High availability.
-* Test and deploy new configuration changes.
-* Introduce a new server and decommission the old.
+* 高可用性:
+* 新しい構成の変更をテストおよびデプロイする。
+* 新しいサーバーを導入し、古いサーバーの使用を中止する。
 
-During installation, you can select the server to be in **staging mode**. This action makes the server active for import and synchronization, but it does not run any exports. A server in staging mode is not running password sync or password writeback, even if you selected these features during installation. When you disable staging mode, the server starts exporting, enables password sync, and enables password writeback.
+インストール時、サーバーを **ステージング モード**に設定することを選択できます。 この操作により、サーバーでインポートと同期が有効になりますが、エクスポートは実行されません。 ステージング モードのサーバーでは、インストール時にパスワード同期やパスワード ライトバックを選択した場合でも、パスワード同期やパスワード ライトバックは実行されません。 ステージング モードを無効にすると、サーバーはエクスポートを開始し、パスワード同期とパスワード ライトバックが有効になります。
 
 > [!NOTE]
-> Suppose you have an Azure AD Connect with Password Hash Synchronization feature enabled. When you enable staging mode, the server stops synchronizing password changes from on-premises AD. When you disable staging mode, the server resumes synchronizing password changes from where it last left off. If the server is left in staging mode for an extended period of time, it can take a while for the server to synchronize all password changes that had occurred during the time period.
+> たとえば、Azure AD Connect でパスワード ハッシュ同期機能が有効であるとします。 ステージング モードを有効にすると、サーバーはオンプレミス AD からのパスワード変更の同期を停止します。 ステージング モードを無効にすると、サーバーは停止されたところからパスワード変更の同期を再開します。 サーバーが一定時間ステージング モードになると、サーバーはその間に発生していたすべてのパスワードの変更を同期するため、時間がかかることがあります。
 >
 >
 
-You can still force an export by using the synchronization service manager.
+同期サービス マネージャーを使用して、引き続き強制的にエクスポートすることもできます。
 
-A server in staging mode continues to receive changes from Active Directory and Azure AD. It always has a copy of the latest changes and can very fast take over the responsibilities of another server. If you make configuration changes to your primary server, it is your responsibility to make the same changes to the server in staging mode.
+ステージング モードのサーバーは、Active Directory と Azure AD から変更を受信し続けます。 サーバーには常に最新の変更のコピーが保持され、別のサーバーの役割を迅速に引き継ぐことができます。 プライマリ サーバーの構成を変更する場合、ステージング モードのサーバーに同じ変更を適用するのは管理者の責任です。
 
-For those of you with knowledge of older sync technologies, the staging mode is different since the server has its own SQL database. This architecture allows the staging mode server to be located in a different datacenter.
+従来の同期テクノロジの知識を持つ管理者にとっては、サーバーが独自の SQL Database を持つ点で、ステージング モードは異なるテクノロジに思えることでしょう。 このアーキテクチャにより、ステージング モードのサーバーを別のデータ センターに配置できます。
 
-### <a name="verify-the-configuration-of-a-server"></a>Verify the configuration of a server
-To apply this method, follow these steps:
+### <a name="verify-the-configuration-of-a-server"></a>サーバーの構成の確認
+この方法を適用するには、次の手順に従います。
 
-1. [Prepare](#prepare)
-2. [Configuration](#configuration)
-3. [Import and Synchronize](#import-and-synchronize)
-4. [Verify](#verify)
-5. [Switch active server](#switch-active-server)
+1. [準備](#prepare)
+2. [構成](#configuration)
+3. [インポートおよび同期](#import-and-synchronize)
+4. [確認](#verify)
+5. [アクティブなサーバーの切り替え](#switch-active-server)
 
-#### <a name="prepare"></a>Prepare
-1. Install Azure AD Connect, select **staging mode**, and unselect **start synchronization** on the last page in the installation wizard. This mode allows you to run the sync engine manually.
+#### <a name="prepare"></a>準備
+1. Azure AD Connect をインストールし、**[ステージング モード]** を選択します。インストール ウィザードの最後のページで、**[同期の開始]** を選択解除します。 このモードにより、同期エンジンを手動で実行することができます。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. Sign off/sign in and from the start menu select **Synchronization Service**.
+2. いったんサインオフし、サインインし直してから、[スタート] メニューの **[Synchronization Service (同期サービス)]** を選択します。
 
-#### <a name="configuration"></a>Configuration
-If you have made custom changes to the primary server and want to compare the configuration with the staging server, then use [Azure AD Connect configuration documenter](https://github.com/Microsoft/AADConnectConfigDocumenter).
+#### <a name="configuration"></a>構成
+プライマリ サーバーにカスタム変更を行い、構成をステージング サーバーと比較する場合は、[Azure AD Connect 構成データベース構造の解析](https://github.com/Microsoft/AADConnectConfigDocumenter)を使用します。
 
-#### <a name="import-and-synchronize"></a>Import and Synchronize
-1. Select **Connectors**, and select the first Connector with the type **Active Directory Domain Services**. Click **Run**, select **Full import**, and **OK**. Do these steps for all Connectors of this type.
-2. Select the Connector with type **Azure Active Directory (Microsoft)**. Click **Run**, select **Full import**, and **OK**.
-3. Make sure the tab Connectors is still selected. For each Connector with type **Active Directory Domain Services**, click **Run**, select **Delta Synchronization**, and **OK**.
-4. Select the Connector with type **Azure Active Directory (Microsoft)**. Click **Run**, select **Delta Synchronization**, and **OK**.
+#### <a name="import-and-synchronize"></a>インポートおよび同期
+1. **[コネクタ]** を選択します。種類が "**Active Directory Domain Services**" の 1 つ目のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。 この種類のすべてのコネクタに対して、これらの手順を繰り返します。
+2. 種類が " **Azure Active Directory (Microsoft)**" のコネクタを選択します。 **[Run (実行)]**、**[Full import (フル インポート)]**、**[OK]** の順にクリックします。
+3. [Connectors (コネクタ)] タブが選択されたままであることを確認します。 種類が "**Active Directory Domain Services**" の各コネクタに対し、**[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
+4. 種類が " **Azure Active Directory (Microsoft)**" のコネクタを選択します。 **[Run (実行)]**、**[Delta Synchronization (差分同期)]**、**[OK]** の順にクリックします。
 
-You have now staged export changes to Azure AD and on-premises AD (if you are using Exchange hybrid deployment). The next steps allow you to inspect what is about to change before you actually start the export to the directories.
+これで、Azure AD とオンプレミスの AD (Exchange ハイブリッド デプロイを使用している) へのエクスポートの変更がステージングされました。 次の手順では、実際にディレクトリへのエクスポートを開始する前に、変更される内容を確認できます。
 
-#### <a name="verify"></a>Verify
-1. Start a cmd prompt and go to `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Run: `csexport "Name of Connector" %temp%\export.xml /f:x` The name of the Connector can be found in Synchronization Service. It has a name similar to "contoso.com – AAD" for Azure AD.
-3. Run: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` You have a file in %temp% named export.csv that can be examined in Microsoft Excel. This file contains all changes that are about to be exported.
-4. Make necessary changes to the data or configuration and run these steps again (Import and Synchronize and Verify) until the changes that are about to be exported are expected.
+#### <a name="verify"></a>確認
+1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
+2. 次のコマンドを実行します。`csexport "Name of Connector" %temp%\export.xml /f:x` 同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
+3. 次のコマンドを実行します。`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
+4. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
 
-**Understanding the export.csv file** Most of the file is self-explanatory. Some abbreviations to understand the content:
-* OMODT – Object Modification Type. Indicates if the operation at an object level is an Add, Update, or Delete.
-* AMODT – Attribute Modification Type. Indicates if the operation at an attribute level is an Add, Update, or delete.
+**export.csv ファイルについて**: このファイルのほとんどの部分は一目瞭然です。 内容の理解に役立つ省略形のいくつかを次に示します。
+* OMODT - オブジェクトの変更の種類。 オブジェクト レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
+* AMODT - 属性の変更の種類。 属性レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
 
-**Retrieve common identifiers** The export.csv file contains all changes that are about to be exported. Each row corresponds to a change for an object in the connector space and the object is identified by the DN attribute. The DN attribute is a unique identifier assigned to an object in the connector space. When you have many rows/changes in the export.csv to analyze, it may be difficult for you to figure out which objects the changes are for based on the DN attribute alone. To simplify the process of analyzing the changes, use the csanalyzer.ps1 PowerShell script. The script retrieves common identifiers (for example, displayName, userPrincipalName) of the objects. To use the script:
-1. Copy the PowerShell script from the section [CSAnalyzer](#appendix-csanalyzer) to a file named `csanalyzer.ps1`.
-2. Open a PowerShell window and browse to the folder where you created the PowerShell script.
-3. Run: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. You now have a file named **processedusers1.csv** that can be examined in Microsoft Excel. Note that the file provides a mapping from the DN attribute to common identifiers (for example, displayName and userPrincipalName). It currently does not include the actual attribute changes that are about to be exported.
+**共通識別子を取得する**: export.csv ファイルには、エクスポートの対象となるすべての変更が含まれています。 各行はコネクタ スペースのオブジェクトの変更に対応しており、オブジェクトは DN 属性で識別されます。 DN 属性は、コネクタ スペースのオブジェクトに割り当てられている一意識別子です。 export.csv に分析対象となる行/変更が多数含まれていると、DN 属性だけに基づいて、変更が行われたオブジェクトを特定するのは難しい場合があります。 変更の分析プロセスを簡素化するには、csanalyzer.ps1 PowerShell スクリプトを使用します。 このスクリプトは、オブジェクトの共通識別子 (displayName、userPrincipalName など) を取得します。 このスクリプトを使用するには、次の手順に従います。
+1. セクション [CSAnalyzer](#appendix-csanalyzer) から `csanalyzer.ps1` という名前のファイルに PowerShell スクリプトをコピーします。
+2. PowerShell ウィンドウを開き、PowerShell スクリプトを作成したフォルダーを参照します。
+3. `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` を実行します。
+4. **processedusers1.csv** という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、DN 属性から共通識別子 (displayName、userPrincipalName など) へのマッピングが示されています。 現時点では、エクスポートの対象となる実際の属性変更は含まれていません。
 
-#### <a name="switch-active-server"></a>Switch active server
-1. On the currently active server, either turn off the server (DirSync/FIM/Azure AD Sync) so it is not exporting to Azure AD or set it in staging mode (Azure AD Connect).
-2. Run the installation wizard on the server in **staging mode** and disable **staging mode**.
+#### <a name="switch-active-server"></a>アクティブなサーバーの切り替え
+1. 現在アクティブなサーバーで、サーバー (DirSync、FIM、または Azure AD Sync) をオフにして Azure AD にエクスポートしないように設定するか、ステージング モード (Azure AD Connect) に設定します。
+2. **ステージング モード**のサーバーでインストール ウィザードを実行して、**ステージング モード**を無効にします。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
-## <a name="disaster-recovery"></a>Disaster recovery
-Part of the implementation design is to plan for what to do in case there is a disaster where you lose the sync server. There are different models to use and which one to use depends on several factors including:
+## <a name="disaster-recovery"></a>障害復旧
+実装の設計には、同期サーバーを喪失する障害の発生時の対処方法を計画することが含まれます。 モデルにはさまざまなものがあり、どのモデルを使用するかは、次の要素を含むいくつかの要素に依存します。
 
-* What is your tolerance for not being able make changes to objects in Azure AD during the downtime?
-* If you use password synchronization, do the users accept that they have to use the old password in Azure AD in case they change it on-premises?
-* Do you have a dependency on real-time operations, such as password writeback?
+* ダウンタイム中に Azure AD のオブジェクトを変更できないことに関してどれだけ許容できますか?
+* パスワード同期を使用する場合、オンプレミスでパスワードを変更する場合に備えて Azure AD で古いパスワードを使用することが求められることについてユーザーの同意が得られますか?
+* パスワード ライトバックなどのリアルタイムの操作に依存していますか?
 
-Depending on the answers to these questions and your organization’s policy, one of the following strategies can be implemented:
+これらの質問の回答と組織のポリシーに応じて、次の戦略のいずれかを実装することができます。
 
-* Rebuild when needed.
-* Have a spare standby server, known as **staging mode**.
-* Use virtual machines.
+* 必要に応じて再構築する。
+* 予備のスタンバイ サーバーを用意する (" **ステージング モード**" と呼ばれます)。
+* 仮想マシンを使用する。
 
-If you do not use the built-in SQL Express database, then you should also review the [SQL High Availability](#sql-high-availability) section.
+組み込みの SQL Express データベースを使用しない場合は、「 [SQL 高可用性](#sql-high-availability) 」セクションも確認してください。
 
-### <a name="rebuild-when-needed"></a>Rebuild when needed
-A viable strategy is to plan for a server rebuild when needed. Usually, installing the sync engine and do the initial import and sync can be completed within a few hours. If there isn’t a spare server available, it is possible to temporarily use a domain controller to host the sync engine.
+### <a name="rebuild-when-needed"></a>必要に応じて再構築する
+実行可能な戦略は、必要に応じてサーバーの再構築を計画することです。 通常、同期エンジンのインストールと最初のインポートおよび同期操作は、数時間以内に完了します。 予備のサーバーが利用できない場合は、一時的にドメイン コントローラーを使用して同期エンジンをホストすることができます。
 
-The sync engine server does not store any state about the objects so the database can be rebuilt from the data in Active Directory and Azure AD. The **sourceAnchor** attribute is used to join the objects from on-premises and the cloud. If you rebuild the server with existing objects on-premises and the cloud, then the sync engine matches those objects together again on reinstallation. The things you need to document and save are the configuration changes made to the server, such as filtering and synchronization rules. These custom configurations must be reapplied before you start synchronizing.
+オブジェクトに関する状態は同期エンジン サーバーには保存されないため、Active Directory と Azure AD 内のデータからデータベースを再構築することができます。 **sourceAnchor** 属性は、オンプレミスとクラウドからのオブジェクトを結合するために使用されます。 オンプレミスとクラウドの既存のオブジェクトを使ってサーバーを再構築する場合、同期エンジンは、再インストール時にこれらのオブジェクトをもう一度まとめて適合させます。 ドキュメント化して保存する必要があることは、フィルター規則、同期規則など、サーバーに行った構成の変更です。 同期を開始する前に、これらのカスタム構成を再適用する必要があります。
 
-### <a name="have-a-spare-standby-server---staging-mode"></a>Have a spare standby server - staging mode
-If you have a more complex environment, then having one or more standby servers is recommended. During installation, you can enable a server to be in **staging mode**.
+### <a name="have-a-spare-standby-server---staging-mode"></a>予備のスタンバイ サーバーを用意する - ステージング モード
+環境がより複雑な場合は、1 つまたは複数のスタンバイ サーバーを持つことをお勧めします。 インストール時、サーバーを **ステージング モード**に設定できます。
 
-For more information, see [staging mode](#staging-mode).
+詳しくは、「[ステージング モード](#staging-mode)」をご覧ください。
 
-### <a name="use-virtual-machines"></a>Use virtual machines
-A common and supported method is to run the sync engine in a virtual machine. In case the host has an issue, the image with the sync engine server can be migrated to another server.
+### <a name="use-virtual-machines"></a>仮想マシンを使用する
+一般的なサポートされている方法は、仮想マシンで同期エンジンを実行する方法です。 ホストに問題が発生した場合、同期エンジン サーバーを含むイメージを別のサーバーに移行できます。
 
-### <a name="sql-high-availability"></a>SQL High Availability
-If you are not using the SQL Server Express that comes with Azure AD Connect, then high availability for SQL Server should also be considered. The high availability solutions supported include SQL clustering and AOA (Always On Availability Groups). Unsupported solutions include mirroring.
+### <a name="sql-high-availability"></a>SQL 高可用性
+Azure AD Connect に付属している SQL Server Express を使用しない場合は、SQL Server の高可用性も考慮する必要があります。 サポートされている高可用性ソリューションには、SQL クラスタリングおよび AOA (Always On 可用性グループ) が含まれます。 サポートされていないソリューションには、ミラーリングがあります。
 
-Support for SQL AOA was added to Azure AD Connect in version 1.1.524.0. You must enable SQL AOA before installing Azure AD Connect. During installation, Azure AD Connect detects whether the SQL instance provided is enabled for SQL AOA or not. If SQL AOA is enabled, Azure AD Connect further figures out if SQL AOA is configured to use synchronous replication or asynchronous replication. When setting up the Availability Group Listener, it is recommended that you set the RegisterAllProvidersIP property to 0. This is because Azure AD Connect currently uses SQL Native Client to connect to SQL and SQL Native Client does not support the use of MultiSubNetFailover property.
+SQL AOA のサポートが、Azure AD Connect のバージョン 1.1.524.0 に追加されました。 Azure AD Connect をインストールする前に SQL AOA を有効にする必要があります。 インストール中、指定された SQL インスタンスで SQL AOA が有効であるかどうかが Azure AD Connect によって検出されます。 SQL AOA が有効である場合、Azure AD Connect はさらに、SQL AOA が、同期レプリケーションまたは非同期レプリケーションを使用するように構成されているかどうかを調べます。 可用性グループ リスナーを設定するときは、RegisterAllProvidersIP プロパティを 0 に設定することをお勧めします。 Azure AD Connect は現在、SQL Native Client を使用して SQL に接続していますが、SQL Native Client は、MultiSubNetFailover プロパティの使用をサポートしていないためです。
 
-## <a name="appendix-csanalyzer"></a>Appendix CSAnalyzer
-See the section [verify](#verify) on how to use this script.
+## <a name="appendix-csanalyzer"></a>付録 CSAnalyzer
+このスクリプトの使い方については、「[確認](#verify)」をご覧ください。
 
 ```
 Param(
@@ -267,8 +267,8 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>Next steps
-**Overview topics**  
+## <a name="next-steps"></a>次の手順
+**概要トピック**  
 
-* [Azure AD Connect sync: Understand and customize synchronization](how-to-connect-sync-whatis.md)  
-* [Integrating your on-premises identities with Azure Active Directory](whatis-hybrid-identity.md)  
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)  
+* [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)  
