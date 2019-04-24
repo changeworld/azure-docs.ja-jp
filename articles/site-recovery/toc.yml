@@ -29,6 +29,8 @@
           href: azure-to-azure-tutorial-migrate.md
         - name: Azure VM を Availability Zones に移動する
           href: move-Azure-VMs-AVset-Azone.md
+        - name: Government とパブリック リージョンの間で Azure VM を移動する
+          href: region-move-cross-geos.md
     - name: Azure への VMware VM のディザスター リカバリー
       items:
         - name: Azure を準備する
@@ -175,6 +177,10 @@
               href: azure-to-azure-autoupdate.md
             - name: Azure Site Recovery での更新
               href: service-updates-how-to.md
+            - name: サーバーの削除と保護の無効化
+              href: site-recovery-manage-registration-and-protection.md
+            - name: コンテナーの削除
+              href: delete-vault.md
     - name: VMware から Azure へのディザスター リカバリー
       items:
         - name: ネットワークの設定

@@ -17,18 +17,18 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d9d2e9aa5e5e805b302763f5417110cdd078eb3b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526386"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997599"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-このクイック スタートには、ユニバーサル Windows プラットフォーム (UWP) アプリケーションから個人や仕事、学校のアカウントへのユーザーのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
+このクイック スタートには、ユニバーサル Windows プラットフォーム (UWP) アプリケーションから個人用アカウントや職場または学校アカウントを持つユーザーのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
 
 ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-uwp/uwp-intro.svg)
 
@@ -72,7 +72,7 @@ ms.locfileid: "59526386"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトのダウンロード
 
- - [Visual Studio 2017 プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 
@@ -89,7 +89,7 @@ ms.locfileid: "59526386"
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
 >
 > > [!TIP]
-> > *アプリケーション ID* の値を確認するには、**[概要]** ページに移動します。
+> > "*アプリケーション ID*" の値を確認するには、ポータルの **[概要]** セクションに移動してください。
 
 #### <a name="step-4-run-your-application"></a>手順 4:アプリケーションを実行する
 
@@ -119,7 +119,7 @@ MSAL への参照を追加するには、次のコードを追加します。
 using Microsoft.Identity.Client;
 ```
 
-続いて、次のコードを使用して MSAL を初期化します。
+その後、MSAL は次のコードを使用して初期化されます。
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -133,11 +133,11 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>トークンの要求
 
-MSAL には、対話形式でトークンを取得するために使用される 2 つのメソッド `AcquireTokenInteractive` と `AcquireTokenSilent` があります。
+MSAL には、UWP アプリでトークンを取得するための 2 つのメソッド `AcquireTokenInteractive` および `AcquireTokenSilent` があります。
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-Microsoft ID プラットフォーム エンドポイントの操作を強制される場合があります。その場合、資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 次に例をいくつか示します。
+ユーザーは Microsoft ID プラットフォーム エンドポイントの操作を強制される場合があります。その場合、各自の資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 次に例をいくつか示します。
 
 - ユーザーが初めてアプリケーションにサインインした場合
 - パスワードの有効期限が切れているため、ユーザーが資格情報を再入力する必要がある場合
@@ -155,7 +155,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-リソースへのアクセスが必要になるたびに、ユーザーに自分の資格情報を検証させたくない場合があります。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を行います。 最初に `AcquireTokenAsync` メソッドを呼び出した後は、`AcquireTokenSilent` メソッドを使用して保護されたリソースにアクセス するトークンを取得することができます。
+最初の `AcquireTokenAsync` メソッドを呼び出した後、`AcquireTokenSilent` メソッドを使用して、保護されたリソースにアクセスするためのトークンを取得します。 リソースへのアクセスを必要とするたびに自分の資格情報を確認するようユーザーに要求したくありません。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を求めます。
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

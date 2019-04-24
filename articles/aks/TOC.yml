@@ -108,8 +108,6 @@
         - name: AKS クラスターの削除
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Azure AD 対応の AKS
-          href: aad-integration.md
         - name: 仮想ノードの作成 (プレビュー)
           items:
             - name: Azure CLI
@@ -172,8 +170,18 @@
           href: control-kubeconfig-access.md
         - name: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護 (プレビュー)
           href: use-network-policies.md
+        - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
+          href: use-pod-security-policies.md
         - name: クラスターのサービス プリンシパルの資格情報の更新
           href: update-credentials.md
+        - name: Azure Active Directory の統合の有効化
+          items:
+            - name: Azure CLI の使用
+              href: azure-ad-integration-cli.md
+            - name: Azure ポータルの使用
+              href: azure-ad-integration.md
+        - name: Azure AD の統合での Kubernetes RBAC の使用
+          href: azure-ad-rbac.md
         - name: ACR での認証
           href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true

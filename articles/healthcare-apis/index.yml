@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure API for FHIR プレビューのドキュメント
+metadata:
+  title: Azure API for FHIR プレビューのドキュメント
+  meta.description: Learn how Azure API for FHIR can power healthcare iteroperability in Azure.
+  services: healthcare-apis
+  author: hansenms
+  manager: dougseven
+  ms.author: mihansen
+  ms.service: healthcare-apis
+  ms.topic: landing-page
+  ms.date: 02/07/2019
+abstract:
+  description: Azure API for FHIR® プレビューは、医療上の健康データ向けのフル マネージドで標準ベースに準拠した API です。このデータを使用すると、健康データを使用した分析、機械学習、実用的なインテリジェンスに対して新しいエンゲージメント システムを作成できます。
+sections:
+  - title: null
+    items:
+      - type: paragraph
+        text: FHIR&reg; は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: 矢印リンクを選択すると、Azure API for FHIR プレビューでヘルスケア相互作用性を強化する方法を確認できます <img src="media/index/link.jpg" height="15" width="15"></img>。
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+            title: Azure ポータル
+          - image:
+              src: media/index/powershell.svg
+            title: Azure PowerShell
+          - image:
+              src: media/index/cli.svg
+            title: Azure CLI
+        rows:
+          - title: Azure API for FHIR をデプロイする
+            values:
+              - href: fhir-paas-portal-quickstart.md
+              - href: fhir-paas-powershell-quickstart.md
+              - href: fhir-paas-cli-quickstart.md
+          - title: オープンソースの FHIR Server をデプロイする
+            values:
+              - href: fhir-oss-portal-quickstart.md
+              - href: fhir-oss-powershell-quickstart.md
+              - href: fhir-oss-cli-quickstart.md

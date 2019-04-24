@@ -138,15 +138,11 @@
         - name: インデックス作成
           items:
             - name: 概要
+              displayName: 'range, spatial'
               href: index-overview.md
             - name: インデックス作成ポリシー
               displayName: 'consistent, none'
               href: index-policy.md
-            - name: インデックスの種類
-              displayName: 'hash, range, spatial'
-              href: index-types.md
-            - name: インデックスのパス
-              href: index-paths.md
         - name: Change Feed
           items:
             - name: 概要
@@ -165,6 +161,17 @@
           href: unique-keys.md
         - name: トランザクションとオプティミスティック同時実行制御
           href: database-transactions-optimistic-concurrency.md
+    - name: Change Feed
+      items:
+        - name: 概要
+          href: change-feed.md
+        - name: 変更フィードの読み取り
+          href: read-change-feed.md
+        - name: 変更フィード プロセッサ
+          href: change-feed-processor.md
+        - name: Azure Functions をトリガーする
+          displayName: change feed
+          href: change-feed-functions.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF
@@ -216,7 +223,61 @@
 - name: Cassandra、MongoDB、およびその他の API
   expanded: true
   items:
-    - name: Azure Cosmos DB の MongoDB 用 API
+    - name: Cassandra API
+      items:
+        - name: はじめに
+          href: cassandra-introduction.md
+        - name: ワイヤ プロトコルのサポート
+          href: cassandra-support.md
+        - name: クイック スタート
+          items:
+            - name: .NET
+              href: create-cassandra-dotnet.md
+            - name: Java
+              href: create-cassandra-java.md
+            - name: Node.js
+              href: create-cassandra-nodejs.md
+            - name: Python
+              href: create-cassandra-python.md
+        - name: チュートリアル
+          items:
+            - name: 1 - データの作成/管理
+              href: create-cassandra-api-account-java.md
+            - name: 2 - データの読み込み
+              href: cassandra-api-load-data.md
+            - name: 3 - データのクエリ
+              href: cassandra-api-query-data.md
+            - name: 4 - データの移行
+              displayName: import
+              href: cassandra-import-data.md
+        - name: ハウツー ガイド
+          items:
+            - name: Spring Data の格納と管理
+              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+              maintainContext: true
+            - name: Cassandra と Spark
+              items:
+                - name: はじめに
+                  href: cassandra-spark-generic.md
+                - name: Databricks を使用して接続する
+                  href: cassandra-spark-databricks.md
+                - name: HDInsight を使用して接続する
+                  href: cassandra-spark-hdinsight.md
+                - name: キースペースとテーブルを作成する
+                  href: cassandra-spark-ddl-ops.md
+                - name: データを挿入する
+                  href: cassandra-spark-create-ops.md
+                - name: データの読み取り
+                  href: cassandra-spark-read-ops.md
+                - name: データをアップサートする
+                  href: cassandra-spark-upsert-ops.md
+                - name: データの削除
+                  href: cassandra-spark-delete-ops.md
+                - name: 集計操作
+                  href: cassandra-spark-aggregation-ops.md
+                - name: テーブル データをコピーする
+                  href: cassandra-spark-table-copy-ops.md
+    - name: MongoDB API
       items:
         - name: はじめに
           href: mongodb-introduction.md
@@ -260,13 +321,18 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2 - データの移行
               displayName: import
-              href: 'https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json'
+              href: /azure/dms/tutorial-mongodb-cosmos-db
+              maintainContext: true
             - name: 3 - データのクエリ
               href: tutorial-query-mongodb.md
             - name: 4 - データのグローバル分散
               href: tutorial-global-distribution-mongodb.md
         - name: ハウツー ガイド
           items:
+            - name: 移行前ガイド
+              href: mongodb-pre-migration.md
+            - name: 移行後ガイド
+              href: mongodb-post-migration.md
             - name: 接続文字列を取得する
               href: connect-mongodb-account.md
             - name: Studio 3T を使用して接続する
@@ -324,60 +390,6 @@
             - name: Spring Data の格納と管理
               href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
               maintainContext: true
-    - name: Cassandra API
-      items:
-        - name: はじめに
-          href: cassandra-introduction.md
-        - name: ワイヤ プロトコルのサポート
-          href: cassandra-support.md
-        - name: クイック スタート
-          items:
-            - name: .NET
-              href: create-cassandra-dotnet.md
-            - name: Java
-              href: create-cassandra-java.md
-            - name: Node.js
-              href: create-cassandra-nodejs.md
-            - name: Python
-              href: create-cassandra-python.md
-        - name: チュートリアル
-          items:
-            - name: 1 - データの作成/管理
-              href: create-cassandra-api-account-java.md
-            - name: 2 - データの読み込み
-              href: cassandra-api-load-data.md
-            - name: 3 - データのクエリ
-              href: cassandra-api-query-data.md
-            - name: 4 - データの移行
-              displayName: import
-              href: cassandra-import-data.md
-        - name: ハウツー ガイド
-          items:
-            - name: Spring Data の格納と管理
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
-            - name: Cassandra と Spark
-              items:
-                - name: はじめに
-                  href: cassandra-spark-generic.md
-                - name: Databricks を使用して接続する
-                  href: cassandra-spark-databricks.md
-                - name: HDInsight を使用して接続する
-                  href: cassandra-spark-hdinsight.md
-                - name: キースペースとテーブルを作成する
-                  href: cassandra-spark-ddl-ops.md
-                - name: データを挿入する
-                  href: cassandra-spark-create-ops.md
-                - name: データの読み取り
-                  href: cassandra-spark-read-ops.md
-                - name: データをアップサートする
-                  href: cassandra-spark-upsert-ops.md
-                - name: データの削除
-                  href: cassandra-spark-delete-ops.md
-                - name: 集計操作
-                  href: cassandra-spark-aggregation-ops.md
-                - name: テーブル データをコピーする
-                  href: cassandra-spark-table-copy-ops.md
     - name: テーブル API
       items:
         - name: はじめに
@@ -420,7 +432,8 @@
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
             - name: 'F#'
-              href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+              maintainContext: true
         - name: ハウツー ガイド
           items:
             - name: Table API によるアプリの構築
@@ -483,10 +496,8 @@
           href: storage-explorer.md
         - name: Azure Cosmos Explorer を使ってデータを操作する
           href: data-explorer.md
-        - name: インデックス作成
-          items:
-            - name: インデックスを管理する
-              href: how-to-manage-indexing-policy.md
+        - name: インデックス作成ポリシーの管理
+          href: how-to-manage-indexing-policy.md
     - name: 変更フィード
       items:
         - name: 複数の Azure Cosmos DB トリガー
@@ -526,7 +537,8 @@
         - name: 診断ログの記録
           href: logging.md
         - name: Logic Apps を使用したアプリケーション ログ記録
-          href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
+          maintainContext: true
     - name: 監視
       items:
         - name: メトリックを使用した監視
@@ -578,17 +590,21 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure Search インデクサー
-          href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/search/search-howto-index-cosmosdb
+          maintainContext: true
         - name: Azure Functions
           items:
             - name: サーバーレス コンピューティング
               href: serverless-computing-database.md
             - name: Azure Functions のバインド
-              href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+              href: /azure/azure-functions/functions-bindings-cosmosdb
+              maintainContext: true
         - name: Azure Data Factory
-          href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+          href: /azure/data-factory/connector-azure-cosmos-db
+          maintainContext: true
         - name: Azure Stream Analytics
-          href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
+          maintainContext: true
         - name: Logic Apps と Service Bus
           href: change-feed-hl7-fhir-logic-apps.md
         - name: Azure Event Hubs と Azure Storage
@@ -601,7 +617,8 @@
         - name: Azure Databricks (Spark コネクタ)
           href: spark-connector.md
         - name: Spark と Kafka
-          href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
         - name: ODBC ドライバー
           href: odbc-driver.md
     - name: Bulk Executor ライブラリ

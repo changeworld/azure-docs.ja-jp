@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93e88cedfd098f450e8faeea894f7fdfc796cf17
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995208"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999588"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する (プレビュー)
 

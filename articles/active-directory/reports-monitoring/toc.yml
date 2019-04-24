@@ -1,126 +1,121 @@
-items:
 - name: レポートと監視のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure AD レポートとは
-    href: overview-reports.md
-  - name: Azure AD の監視とは
-    href: overview-monitoring.md
+    - name: Azure AD レポートとは
+      href: overview-reports.md
+    - name: Azure AD の監視とは
+      href: overview-monitoring.md
 - name: クイック スタート
-  items:
-  - name: Reports
-    items:
-    - name: サインイン レポートのダウンロード
-      href: quickstart-download-sign-in-report.md
-    - name: 監査レポートのダウンロード
-      href: quickstart-download-audit-report.md
-    - name: 名前付きの場所の構成
-      href: quickstart-configure-named-locations.md
-    - name: Power BI コンテンツ パックのインストール
-      href: quickstart-install-power-bi-content-pack.md
-  - name: 監視
-    items:
-    - name: ストレージ アカウントへのログのルーティング
-      href: quickstart-azure-monitor-route-logs-to-storage-account.md
   expanded: true
+  items:
+    - name: Reports
+      items:
+        - name: サインイン レポートのダウンロード
+          href: quickstart-download-sign-in-report.md
+        - name: 監査レポートのダウンロード
+          href: quickstart-download-audit-report.md
+        - name: 名前付きの場所の構成
+          href: quickstart-configure-named-locations.md
+        - name: Power BI コンテンツ パックのインストール
+          href: quickstart-install-power-bi-content-pack.md
+    - name: 監視
+      items:
+        - name: ストレージ アカウントへのログのルーティング
+          href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: チュートリアル
   items:
-  - name: Reports
-    items:
-    - name: 証明書によるレポート API へのアクセス
-      href: tutorial-access-api-with-certificates.md
-  - name: 監視
-    items:
-    - name: ログをイベント ハブにストリーミングする
-      href: tutorial-azure-monitor-stream-logs-to-event-hub.md
-    - name: アクティビティ ログと Splunk の統合
-      href: tutorial-integrate-activity-logs-with-splunk.md
+    - name: Reports
+      items:
+        - name: 証明書によるレポート API へのアクセス
+          href: tutorial-access-api-with-certificates.md
+    - name: 監視
+      items:
+        - name: ログをイベント ハブにストリーミングする
+          href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+        - name: アクティビティ ログと Splunk の統合
+          href: tutorial-integrate-activity-logs-with-splunk.md
 - name: 概念
   items:
-  - name: Reports
-    items:
-    - name: 監査ログ
-      href: concept-audit-logs.md
-    - name: サインイン ログ
-      href: concept-sign-ins.md
-    - name: リスクの高いサインイン
-      href: concept-risky-sign-ins.md
-    - name: リスク イベント
-      href: concept-risk-events.md
-    - name: リスクのあるユーザー
-      href: concept-user-at-risk.md
-    - name: レポート API
-      href: concept-reporting-api.md
-  - name: 監視
-    items:
-    - name: Azure Monitor での Azure AD ログ
-      href: concept-activity-logs-azure-monitor.md
+    - name: Reports
+      items:
+        - name: 監査ログ
+          href: concept-audit-logs.md
+        - name: サインイン ログ
+          href: concept-sign-ins.md
+        - name: リスクの高いサインイン
+          href: concept-risky-sign-ins.md
+        - name: リスク イベント
+          href: concept-risk-events.md
+        - name: リスクのあるユーザー
+          href: concept-user-at-risk.md
+        - name: レポート API
+          href: concept-reporting-api.md
+    - name: 監視
+      items:
+        - name: Azure Monitor での Azure AD ログ
+          href: concept-activity-logs-azure-monitor.md
 - name: ハウツー ガイド
-  items:
-  - name: Reports
-    items:
-    - name: アクティビティ レポートの検出
-      href: howto-find-activity-reports.md
-    - name: ユーザーのサインイン エラーのトラブルシューティング
-      href: howto-troubleshoot-sign-in-errors.md
-    - name: リスクのフラグ付きユーザーの修復
-      href: howto-remediate-users-flagged-for-risk.md
-    - name: Azure AD レポート用の Power BI コンテンツ パックを使用する
-      href: howto-power-bi-content-pack.md
-    - name: レポート API の構成の前提条件
-      href: howto-configure-prerequisites-for-reporting-api.md
-  - name: 監視
-    items:
-    - name: アクティビティ ログと Azure Monitor ログの統合
-      href: howto-integrate-activity-logs-with-log-analytics.md
-    - name: Azure Monitor ログでのアクティビティ ログの分析
-      href: howto-analyze-activity-logs-log-analytics.md
-    - name: Azure AD 用のログ分析ビューのインストールと使用
-      href: howto-install-use-log-analytics-views.md
-    - name: アクティビティ ログと SumoLogic の統合
-      href: howto-integrate-activity-logs-with-sumologic.md
-    - name: アクティビティ ログと ArcSight の統合
-      href: howto-integrate-activity-logs-with-arcsight.md
-  - name: トラブルシューティング
-    items:
-    - name: 見つからない監査データ
-      href: troubleshoot-missing-audit-data.md
-    - name: ダウンロードに見つからないデータ
-      href: troubleshoot-missing-data-download.md
-    - name: レポート用の Graph API にアクセスできない
-      href: troubleshoot-graph-api.md
-    - name: Power BI コンテンツ パックでのエラー
-      href: troubleshoot-content-pack.md
   expanded: true
+  items:
+    - name: Reports
+      items:
+        - name: アクティビティ レポートの検出
+          href: howto-find-activity-reports.md
+        - name: ユーザーのサインイン エラーのトラブルシューティング
+          href: howto-troubleshoot-sign-in-errors.md
+        - name: リスクのフラグ付きユーザーの修復
+          href: howto-remediate-users-flagged-for-risk.md
+        - name: Azure AD レポート用の Power BI コンテンツ パックを使用する
+          href: howto-power-bi-content-pack.md
+        - name: レポート API の構成の前提条件
+          href: howto-configure-prerequisites-for-reporting-api.md
+        - name: Azure Monitor ブックの使用方法
+          href: howto-use-azure-monitor-workbooks.md
+    - name: 監視
+      items:
+        - name: アクティビティ ログと Azure Monitor ログの統合
+          href: howto-integrate-activity-logs-with-log-analytics.md
+        - name: Azure Monitor ログでのアクティビティ ログの分析
+          href: howto-analyze-activity-logs-log-analytics.md
+        - name: Azure AD 用のログ分析ビューのインストールと使用
+          href: howto-install-use-log-analytics-views.md
+        - name: アクティビティ ログと SumoLogic の統合
+          href: howto-integrate-activity-logs-with-sumologic.md
+        - name: アクティビティ ログと ArcSight の統合
+          href: howto-integrate-activity-logs-with-arcsight.md
+    - name: トラブルシューティング
+      items:
+        - name: 見つからない監査データ
+          href: troubleshoot-missing-audit-data.md
+        - name: ダウンロードに見つからないデータ
+          href: troubleshoot-missing-data-download.md
+        - name: レポート用の Graph API にアクセスできない
+          href: troubleshoot-graph-api.md
+        - name: Power BI コンテンツ パックでのエラー
+          href: troubleshoot-content-pack.md
 - name: リファレンス
-  items:
-  - name: Reports
-    items:
-    - name: 監査ログの API リファレンス
-      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit
-    - name: サインイン ログの API リファレンス
-      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin
-    - name: 監査アクティビティ
-      href: reference-audit-activities.md
-    - name: データ保有ポリシー
-      href: reference-reports-data-retention.md
-    - name: レポート待機時間
-      href: reference-reports-latencies.md
-    - name: サインイン エラー コード
-      href: reference-sign-ins-error-codes.md
-    - name: よく寄せられる質問
-      href: reports-faq.md
-  - name: 監視
-    items:
-    - name: 監査ログのスキーマ
-      href: reference-azure-monitor-audit-log-schema.md
-    - name: サインイン ログのスキーマ
-      href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 746e3834189b9c0c478f7bbcd8b72e6760c288f6
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293772"
+  items:
+    - name: Reports
+      items:
+        - name: 監査ログの API リファレンス
+          href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+        - name: サインイン ログの API リファレンス
+          href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+        - name: 監査アクティビティ
+          href: reference-audit-activities.md
+        - name: データ保有ポリシー
+          href: reference-reports-data-retention.md
+        - name: レポート待機時間
+          href: reference-reports-latencies.md
+        - name: サインイン エラー コード
+          href: reference-sign-ins-error-codes.md
+        - name: よく寄せられる質問
+          href: reports-faq.md
+    - name: 監視
+      items:
+        - name: 監査ログのスキーマ
+          href: reference-azure-monitor-audit-log-schema.md
+        - name: サインイン ログのスキーマ
+          href: reference-azure-monitor-sign-ins-log-schema.md

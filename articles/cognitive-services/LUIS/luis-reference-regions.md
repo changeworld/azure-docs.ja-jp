@@ -49,7 +49,7 @@ ms.locfileid: "58891414"
 
 オーサリング リージョン アプリは、対応する公開リージョンにのみ公開できます。 お使いのアプリが間違ったオーサリング リージョンにある場合は、アプリをエクスポートし、ご自身の公開リージョンの正しいオーサリング リージョンにインポートしてください。 
 
-作成した LUIS アプリ https://www.luis.ai以外のすべてのエンドポイントに発行できる、[欧州](#publishing-to-europe)と[オーストラリア](#publishing-to-australia)リージョン。 
+作成した LUIS アプリ https://www.luis.ai 以外のすべてのエンドポイントに発行できる、[欧州](#publishing-to-europe)と[オーストラリア](#publishing-to-australia)リージョン。 
 
 ## <a name="publishing-to-europe"></a>ヨーロッパへの公開
 

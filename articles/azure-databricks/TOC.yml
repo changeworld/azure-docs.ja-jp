@@ -17,6 +17,8 @@
   items:
     - name: Docker コンテナーで稼働している SQL Server に対するクエリ
       href: vnet-injection-sql-server.md
+    - name: Cosmos DB サービス エンドポイントの使用
+      href: service-endpoint-cosmosdb.md
     - name: ETL 操作の実行
       href: databricks-extract-load-sql-data-warehouse.md
     - name: Event Hubs を使用したデータのストリーミング

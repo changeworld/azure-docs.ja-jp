@@ -1,130 +1,127 @@
-items:
 - name: Azure Data Box のドキュメント - オフライン転送
   href: /azure/databox
   items:
-  - name: Data Box
-    items:
-    - name: 概要
+    - name: Data Box
       items:
-      - name: Data Box とは
-        href: data-box-overview.md
-    - name: クイック スタート
+        - name: 概要
+          items:
+            - name: Data Box とは
+              href: data-box-overview.md
+        - name: クイック スタート
+          expanded: true
+          items:
+            - name: 設定 - Azure portal
+              href: data-box-quickstart-portal.md
+        - name: チュートリアル
+          items:
+            - name: 1 - 注文
+              href: data-box-deploy-ordered.md
+            - name: 2 - 設定
+              href: data-box-deploy-set-up.md
+            - name: 3 - 接続とコピー
+              items:
+                - name: SMB 経由
+                  href: data-box-deploy-copy-data.md
+                - name: NFS 経由
+                  href: data-box-deploy-copy-data-via-nfs.md
+                - name: REST 経由
+                  href: data-box-deploy-copy-data-via-rest.md
+                - name: データ コピー サービス経由
+                  href: data-box-deploy-copy-data-via-copy-service.md
+                - name: マネージド ディスクへ
+                  href: data-box-deploy-copy-data-from-vhds.md
+            - name: 4 - 返却、アップロード、確認
+              href: data-box-deploy-picked-up.md
+        - name: 概念
+          items:
+            - name: 安全性のガイドラインを読む
+              href: data-box-safety.md
+            - name: 要件を確認する
+              items:
+                - name: Data Box の場合
+                  href: data-box-system-requirements.md
+                - name: Data Box Blob ストレージの場合
+                  href: data-box-system-requirements-rest.md
+            - name: 制限を理解する
+              href: data-box-limits.md
+            - name: セキュリティを確認する
+              href: data-box-security.md
+            - name: FAQ
+              href: data-box-faq.md
+        - name: 方法
+          items:
+            - name: Azure Portal で管理する
+              href: data-box-portal-admin.md
+            - name: ローカル Web UI で管理する
+              href: data-box-local-web-ui-admin.md
+            - name: データを BLOB 層に移動する
+              href: data-box-how-to-set-data-tier.md
+            - name: デバイスをケーブル接続する
+              href: data-box-cable-options.md
+            - name: サポートに問い合わせる
+              href: data-box-disk-contact-microsoft-support.md
+            - name: 移行
+              items:
+                - name: SharePoint Online へ
+                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                - name: Azure File Sync へ
+                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: HDFS ストアから
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+            - name: トラブルシューティング
+              items:
+                - name: Data Box BLOB ストレージの問題
+                  href: data-box-troubleshoot-rest.md
+    - name: Data Box Disk
       items:
-      - name: 設定 - Azure portal
-        href: data-box-quickstart-portal.md
-      expanded: true
-    - name: チュートリアル
+        - name: 概要
+          items:
+            - name: Data Box ディスクとは
+              href: data-box-disk-overview.md
+        - name: クイック スタート
+          expanded: true
+          items:
+            - name: 設定 - Azure portal
+              href: data-box-disk-quickstart-portal.md
+        - name: チュートリアル
+          items:
+            - name: 1 - 注文
+              href: data-box-disk-deploy-ordered.md
+            - name: 2 - 設定
+              href: data-box-disk-deploy-set-up.md
+            - name: 3 - テストおよび検証
+              href: data-box-disk-deploy-copy-data.md
+            - name: 4 - 返却、アップロード、確認
+              href: data-box-disk-deploy-picked-up.md
+        - name: 概念
+          items:
+            - name: 要件を確認する
+              href: data-box-disk-system-requirements.md
+            - name: 制限を理解する
+              href: data-box-disk-limits.md
+            - name: セキュリティを確認する
+              href: data-box-disk-security.md
+            - name: FAQ
+              href: data-box-disk-faq.md
+        - name: 方法
+          items:
+            - name: Azure Portal で管理する
+              href: data-box-portal-ui-admin.md
+            - name: ディスクに関する問題のトラブルシューティング
+              href: data-box-disk-troubleshoot.md
+            - name: サポートに問い合わせる
+              href: data-box-disk-contact-microsoft-support.md
+    - name: Data Box Heavy
       items:
-      - name: 1 - 注文
-        href: data-box-deploy-ordered.md
-      - name: 2 - 設定
-        href: data-box-deploy-set-up.md
-      - name: 3 - 接続とコピー
-        items:
-        - name: SMB 経由
-          href: data-box-deploy-copy-data.md
-        - name: NFS 経由
-          href: data-box-deploy-copy-data-via-nfs.md
-        - name: REST 経由
-          href: data-box-deploy-copy-data-via-rest.md
-        - name: データ コピー サービス経由
-          href: data-box-deploy-copy-data-via-copy-service.md
-        - name: マネージド ディスクへ
-          href: data-box-deploy-copy-data-from-vhds.md
-      - name: 4 - 返却、アップロード、確認
-        href: data-box-deploy-picked-up.md
-    - name: 概念
+        - name: 概要
+          items:
+            - name: Data Box Heavy とは
+              href: data-box-heavy-overview.md
+    - name: リソース
       items:
-      - name: 安全性のガイドラインを読む
-        href: data-box-safety.md
-      - name: 要件を確認する
-        items:
-        - name: Data Box の場合
-          href: data-box-system-requirements.md
-        - name: Data Box Blob ストレージの場合
-          href: data-box-system-requirements-rest.md
-      - name: 制限を理解する
-        href: data-box-limits.md
-      - name: セキュリティを確認する
-        href: data-box-security.md
-      - name: FAQ
-        href: data-box-faq.md
-    - name: 方法
-      items:
-      - name: Azure Portal で管理する
-        href: data-box-portal-admin.md
-      - name: ローカル Web UI で管理する
-        href: data-box-local-web-ui-admin.md
-      - name: データを BLOB 層に移動する
-        href: data-box-how-to-set-data-tier.md
-      - name: デバイスをケーブル接続する
-        href: data-box-cable-options.md
-      - name: サポートに問い合わせる
-        href: data-box-disk-contact-microsoft-support.md
-      - name: 移行
-        items:
-        - name: SharePoint Online へ
-          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context
-        - name: Azure File Sync へ
-          href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-        - name: HDFS ストアから
-          href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-  - name: Data Box Disk
-    items:
-    - name: 概要
-      items:
-      - name: Data Box ディスクとは
-        href: data-box-disk-overview.md
-    - name: クイック スタート
-      items:
-      - name: 設定 - Azure portal
-        href: data-box-disk-quickstart-portal.md
-      expanded: true
-    - name: チュートリアル
-      items:
-      - name: 1 - 注文
-        href: data-box-disk-deploy-ordered.md
-      - name: 2 - 設定
-        href: data-box-disk-deploy-set-up.md
-      - name: 3 - テストおよび検証
-        href: data-box-disk-deploy-copy-data.md
-      - name: 4 - 返却、アップロード、確認
-        href: data-box-disk-deploy-picked-up.md
-    - name: 概念
-      items:
-      - name: 要件を確認する
-        href: data-box-disk-system-requirements.md
-      - name: 制限を理解する
-        href: data-box-disk-limits.md
-      - name: セキュリティを確認する
-        href: data-box-disk-security.md
-      - name: FAQ
-        href: data-box-disk-faq.md
-    - name: 方法
-      items:
-      - name: Azure Portal で管理する
-        href: data-box-portal-ui-admin.md
-      - name: ディスクに関する問題のトラブルシューティング
-        href: data-box-disk-troubleshoot.md
-      - name: サポートに問い合わせる
-        href: data-box-disk-contact-microsoft-support.md
-  - name: Data Box Heavy
-    items:
-    - name: 概要
-      items:
-      - name: Data Box Heavy とは
-        href: data-box-heavy-overview.md
-  - name: リソース
-    items:
-    - name: Data Box 製品
-      href: https://azure.microsoft.com/services/storage/databox/data/
-    - name: Data Box の価格
-      href: https://azure.microsoft.com/pricing/details/storage/databox/
-    - name: Data Box Disk の価格
-      href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 159fbf5782e51cc316e2b7f4474a5ddc94cf8a59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794008"
+        - name: Data Box 製品
+          href: 'https://azure.microsoft.com/services/storage/databox/data/'
+        - name: Data Box の価格
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+        - name: Data Box Disk の価格
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'
