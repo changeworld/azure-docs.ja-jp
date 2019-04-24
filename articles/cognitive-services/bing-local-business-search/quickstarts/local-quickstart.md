@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Send a query to the Bing Local Business Search API in C# | Microsoft Docs
+title: クイック スタート - C# で Bing Local Business Search API にクエリを送信する | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Use this article to start using the Bing Local Business Search API in C#.
+description: この記事を使って、C# での Bing Local Business Search API の使用を開始します。
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -16,22 +16,22 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57763802"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Quickstart: Send a query to the Bing Local Business Search API in C#
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
-Use this quickstart to begin sending requests to the Bing Local Business Search API, which is an Azure Cognitive Service. While this simple application is written in C#, the API is a RESTful Web service compatible with any programming language capable of making HTTP requests and parsing JSON.
+このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは C# で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
-This example application gets local response data from the API for the search query `hotel in Bellevue`.
+このサンプル アプリケーションでは、検索クエリ `hotel in Bellevue` に対する API からのローカルな応答データを取得します。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-* Any edition of [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-* If you are using Linux/MacOS, this application can be run using [Mono](https://www.mono-project.com/).
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
-You must have a [Cognitive Services API account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) with Bing Search APIs. The [free trial](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) is sufficient for this quickstart.  See also [Cognitive Services Pricing - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
-## <a name="create-the-request"></a>Create the request 
+## <a name="create-the-request"></a>要求を作成する 
 
-The following code creates a `WebRequest`, sets the access key header, and adds a query string for "restaurant in Bellevue".  It then sends the request and assigns the response to a string to contain the JSON text.
+次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"restaurant in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
 ```
     // Replace the accessKey string value with your valid access key.
@@ -51,13 +51,13 @@ The following code creates a `WebRequest`, sets the access key header, and adds 
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
 ```
 
-## <a name="run-the-complete-application"></a>Run the complete application
+## <a name="run-the-complete-application"></a>完全なアプリケーションを実行する
 
-The Bing Local Business Search API returns localized search results from the Bing search engine.
-1. Create a new Console solution in Visual Studio (the Community Edition is fine).
-2. Replace Program.cs with the code provided below.
-3. Replace the accessKey value with an access key valid for your subscription.
-4. Run the program.
+Bing Local Business Search API では、Bing 検索エンジンからのローカライズされた検索結果が返されます。
+1. Visual Studio (Community Edition で問題ありません) で新しいコンソール ソリューションを作成します。
+2. Program.cs を以下のコードで置き換えます。
+3. accessKey 値を、ご利用のサブスクリプションで有効なアクセス キーに置き換えます。
+4. プログラムを実行します。
 
 ```
 using System;
@@ -207,7 +207,7 @@ namespace localSearch
 
 ```
 
-## <a name="next-steps"></a>Next steps
-- [Local Business Search Java quickstart](local-search-java-quickstart.md)
-- [Local Business Search Node quickstart](local-search-node-quickstart.md)
-- [Local Business Search Python quickstart](local-search-python-quickstart.md)
+## <a name="next-steps"></a>次の手順
+- [Local Business Search (Java) のクイック スタート](local-search-java-quickstart.md)
+- [Local Business Search (Node.js) のクイック スタート](local-search-node-quickstart.md)
+- [Local Business Search (Python) のクイック スタート](local-search-python-quickstart.md)

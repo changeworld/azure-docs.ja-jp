@@ -70,17 +70,17 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | アクティビティの名前                     | はい      |
+| name              | アクティビティの名前                     | [はい]      |
 | description       | アクティビティの用途を説明するテキストです。 | いいえ        |
-| type              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | はい      |
-| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
-| mapper            | mapper 実行可能ファイルの名前を指定します。 | はい      |
-| reducer           | reducer 実行可能ファイルの名前を指定します。 | はい      |
+| type              | Hadoop Streaming アクティビティの場合、アクティビティの種類は HDInsightStreaming です。 | [はい]      |
+| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| mapper            | mapper 実行可能ファイルの名前を指定します。 | [はい]      |
+| reducer           | reducer 実行可能ファイルの名前を指定します。 | [はい]      |
 | combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ        |
 | fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ        |
-| filePath          | fileLinkedService によって参照される、Azure Storage に格納された マッパー、コンバイナー、レジューサ の各プログラムのパスの配列を指定します。 パスでは大文字と小文字が区別されます。 | はい      |
-| input             | マッパーの入力ファイルの WASB パスを指定します。 | はい      |
-| output            | レジューサの出力ファイルの WASB パスを指定します。 | はい      |
+| filePath          | fileLinkedService によって参照される、Azure Storage に格納された マッパー、コンバイナー、レジューサ の各プログラムのパスの配列を指定します。 パスでは大文字と小文字が区別されます。 | [はい]      |
+| input             | マッパーの入力ファイルの WASB パスを指定します。 | [はい]      |
+| output            | レジューサの出力ファイルの WASB パスを指定します。 | [はい]      |
 | getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または scriptLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値は以下の通りです。None、Always、または Failure。 既定値:なし。 | いいえ        |
 | arguments         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ        |
 | defines           | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ        | 

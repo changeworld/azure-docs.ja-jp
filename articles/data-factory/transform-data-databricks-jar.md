@@ -58,11 +58,11 @@ Databricks Jar アクティビティのサンプルの JSON 定義を次に示�
 
 |プロパティ|説明|必須|
 |:--|---|:-:|
-|name|パイプラインのアクティビティの名前。|はい|
+|name|パイプラインのアクティビティの名前。|[はい]|
 |description|アクティビティの動作を説明するテキスト。|いいえ |
-|type|Databricks Jar アクティビティでは、アクティビティの種類は DatabricksSparkJar です。|はい|
-|linkedServiceName|Jar アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
-|mainClassName|実行される main メソッドを含むクラスのフル ネーム。 このクラスは、ライブラリとして提供される JAR に含まれている必要があります。|はい|
+|type|Databricks Jar アクティビティでは、アクティビティの種類は DatabricksSparkJar です。|[はい]|
+|linkedServiceName|Jar アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|[はい]|
+|mainClassName|実行される main メソッドを含むクラスのフル ネーム。 このクラスは、ライブラリとして提供される JAR に含まれている必要があります。|[はい]|
 |parameters|main メソッドに渡されるパラメーター。  文字列の配列です。|いいえ |
 |libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|はい (mainClassName メソッドを少なくとも 1 つ含む)|
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SignalR Service internals
-description: An overview of Azure SignalR Service internals.
+title: Azure SignalR Service の内部
+description: Azure SignalR Service の内部の概要。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
@@ -13,59 +13,59 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/07/2019
 ms.locfileid: "57556434"
 ---
-# <a name="azure-signalr-service-internals"></a>Azure SignalR Service internals
+# <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部
 
-Azure SignalR Service is built on top of ASP.NET Core SignalR framework. It also supports ASP.NET SignalR as a preview feature.
+Azure SignalR Service は、ASP.NET Core SignalR フレームワーク上に構築されています。 ASP.NET SignalR もプレビュー機能としてサポートしています。
 
-> To support ASP.NET SignalR, Azure SignalR Service reimplements ASP.NET SignalR's data protocol on top of the ASP.NET Core framework
+> ASP.NET SignalR をサポートするために、Azure SignalR Service は ASP.NET Core フレームワーク上に ASP.NET SignalR のデータ プロトコルを再実装しています
 
-You can easily migrate a local ASP.NET Core SignalR application to work with SignalR Service, with a few lines of code change.
+コードを数行変更するだけで、ローカルの ASP.NET Core SignalR アプリケーションを簡単に移行して、SignalR Service と連携させることができます。
 
-The diagram below describes the typical architecture when you use the SignalR Service with your application server.
+以下の図には、アプリケーション サーバーと SignalR Service を使用する場合の一般的なアーキテクチャが示されています。
 
-The differences from self-hosted ASP.NET Core SignalR application are discussed as well.
+セルフホステッド ASP.NET Core SignalR アプリケーションとの相違点についても説明します。
 
-![Architecture](./media/signalr-concept-internals/arch.png)
+![アーキテクチャ](./media/signalr-concept-internals/arch.png)
 
-## <a name="server-connections"></a>Server connections
+## <a name="server-connections"></a>サーバー接続
 
-Self-hosted ASP.NET Core SignalR application server listens to and connects clients directly.
+セルフホステッド ASP.NET Core SignalR アプリケーション サーバーはクライアントをリッスンし、クライアントに直接接続します。
 
-With SignalR Service, the application server is no longer accepting persistent client connections, instead:
+SignalR Service を使用すると、アプリケーション サーバーは永続的なクライアント接続を受け入れる必要がなくなり、代わりに、次のようになります。
 
-1. A `negotiate` endpoint is exposed by Azure SignalR Service SDK for each hub.
-1. This endpoint will respond to client's negotiation requests and redirect clients to SignalR Service.
-1. Eventually, clients will be connected to SignalR Service.
+1. 各ハブの `negotiate` エンドポイントが Azure SignalR Service SDK によって公開されます。
+1. このエンドポイントがクライアントのネゴシエーション要求に応答し、クライアントを SignalR Service にリダイレクトします。
+1. 最終的に、クライアントが SignalR Service に接続されます。
 
-For more information, see [Client connections](#client-connections).
+詳しくは、「[クライアント接続](#client-connections)」を参照してください。
 
-Once the application server is started, 
-- For ASP.NET Core SignalR, Azure SignalR Service SDK opens 5 WebSocket connections per hub to SignalR Service. 
-- For ASP.NET SignalR, Azure SignalR Service SDK opens 5 WebSocket connections per hub to SignalR Service, and one per application WebSocket connection.
+アプリケーション サーバーが起動すると、次のようになります。 
+- ASP.NET Core SignalR の場合、Azure SignalR Service SDK により、SignalR Service への WebSocket 接続がハブあたり 5 個開かれます。 
+- ASP.NET SignalR の場合、Azure SignalR Service SDK により、SignalR Service への WebSocket 接続がハブあたり 5 個と、WebSocket 接続がアプリケーションあたり 1 個開かれます。
 
-5 WebSocket connections is the default value that can be changed in [configuration](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount).
+5 個の WebSocket 接続は既定値です。[構成](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)内で変更できます。
 
-Messages to and from clients will be multiplexed into these connections.
+クライアントとの間のメッセージは、これらの接続に多重化されます。
 
-These connections will remain connected to the SignalR Service all the time. If a server connection is disconnected for network issue,
-- all clients that are served by this server connection disconnect (for more information about it, see [Data transmit between client and server](#data-transmit-between-client-and-server));
-- the server connection starts reconnecting automatically.
+これらの接続は常に SignalR Service に接続されたままになります。 ネットワークの問題により、サーバー接続が切断された場合は、次のようになります。
+- このサーバー接続を利用するすべてのクライアントが切断されます (詳しくは、「[クライアントとサーバー間のデータ転送](#data-transmit-between-client-and-server)」を参照してください)。
+- サーバー接続が自動的に再接続を開始します。
 
-## <a name="client-connections"></a>Client connections
+## <a name="client-connections"></a>クライアント接続
 
-When you use the SignalR Service, clients connect to SignalR Service instead of application server.
-There are two steps to establish persistent connections between the client and the SignalR Service.
+SignalR Service を使用する場合、クライアントはアプリケーション サーバーではなく SignalR Service に接続します。
+クライアントと SignalR Service の間の永続的な接続は、2 つの手順によって確立されます。
 
-1. Client sends a negotiate request to the application server. With Azure SignalR Service SDK, application server returns a redirect response with SignalR Service's URL and access token.
+1. クライアントがアプリケーション サーバーにネゴシエート要求を送信します。 アプリケーション サーバーは、Azure SignalR Service SDK を使用して、SignalR Service の URL とアクセス トークンを含むリダイレクト応答を返します。
 
-- For ASP.NET Core SignalR, a typical redirect response looks like:
+- ASP.NET Core SignalR の場合、標準的なリダイレクト応答は次のようになります。
     ```
     {
         "url":"https://test.service.signalr.net/client/?hub=chat&...",
         "accessToken":"<a typical JWT token>"
     }
     ```
-- For ASP.NET SignalR, a typical redirect response looks like:
+- ASP.NET SignalR の場合、標準的なリダイレクト応答は次のようになります。
     ```
     {
         "ProtocolVersion":"2.0",
@@ -74,19 +74,19 @@ There are two steps to establish persistent connections between the client and t
     }
     ```
 
-1. After receiving the redirect response, client uses the new URL and access token to start the normal process to connect to SignalR Service.
+1. リダイレクト応答を受信すると、クライアントは新しい URL とアクセス トークンを使用して、通常の SignalR Service 接続プロセスを開始します。
 
-Learn more about ASP.NET Core SignalR's [transport protocols](https://github.com/aspnet/SignalR/blob/release/2.2/specs/TransportProtocols.md).
+詳しくは、ASP.NET Core SignalR の[トランスポート プロトコル](https://github.com/aspnet/SignalR/blob/release/2.2/specs/TransportProtocols.md)に関するページを参照してください。
 
-## <a name="data-transmit-between-client-and-server"></a>Data transmit between client and server
+## <a name="data-transmit-between-client-and-server"></a>クライアントとサーバー間のデータ転送
 
-When a client is connected to the SignalR Service, service runtime will find a server connection to serve this client
-- This step happens only once, and is a one-to-one mapping between the client and server connections.
-- The mapping is maintained in SignalR Service until the client or server disconnects.
+クライアントが SignalR Service に接続すると、サービス ランタイムによって、このクライアントに使用するサーバー接続が検索されます。
+- この手順は 1 回だけ実行されます。クライアントとサーバー接続のマッピングは 1 対 1 です。
+- このマッピングは、クライアントまたはサーバーが切断されるまで SignalR Service に保持されます。
 
-At this point, the application server receives an event with information from the new client. A logical connection to the client is created in the application server. The data channel is established from client to application server, via SignalR Service.
+この時点で、アプリケーション サーバーは新しいクライアントからの情報を含むイベントを受け取ります。 クライアントへの論理接続がアプリケーション サーバーに作成されます。 SignalR Service 経由でクライアントからアプリケーション サーバーへのデータ チャネルが確立されます。
 
-SignalR service transmits data from the client to the pairing application server. And data from the application server will be sent to the mapped clients.
+SignalR Service により、クライアントからのデータはペアになっているアプリケーション サーバーに転送されます。 アプリケーション サーバーからのデータはマッピングされているクライアントに送信されます。
 
-As you can see, the Azure SignalR Service is essentially a logical transport layer between  application server and clients. All persistent connections are offloaded to SignalR Service.
-Application server only needs to handle the business logic in hub class, without worrying about client connections.
+ご覧のように、Azure SignalR Service は基本的にアプリケーション サーバーとクライアント間の論理トランスポート層です。 すべての永続的な接続が SignalR Service にオフロードされます。
+アプリケーション サーバーでは、ハブ クラス内でビジネス ロジックの処理のみを行う必要があります。クライアント接続について心配することはありません。

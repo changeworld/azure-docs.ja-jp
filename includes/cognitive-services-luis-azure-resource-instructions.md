@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: インクルード ファイル
+description: インクルード ファイル
 services: cognitive-services
 author: diberry
 manager: cjgronlund
@@ -17,4 +17,4 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/23/2019
 ms.locfileid: "56740926"
 ---
-If you are new to Cognitive Services or new to Azure, create a [temporary key](https://azure.microsoft.com/try/cognitive-services/). If you have an Azure account, create a new resource in the portal. Language Understanding endpoint queries support two Azure Resource types: **Language Understanding** or the **Cognitive Service** resource. You need the name of the resource when you [assign](../articles/cognitive-services/luis/luis-how-to-azure-subscription.md) the key to the app.
+Cognitive Services または Azure を初めて使用する場合は、[一時キー](https://azure.microsoft.com/try/cognitive-services/)を作成します。 Azure アカウントがある場合は、ポータルで新しいリソースを作成します。 Language Understanding エンドポイントのクエリでは、2 種類の Azure リソース (**Language Understanding** または **Cognitive Service** リソース) がサポートされます。 アプリにキーを[割り当てる](../articles/cognitive-services/luis/luis-how-to-azure-subscription.md)ときには、リソースの名前が必要です。

@@ -1,7 +1,7 @@
 ---
-title: How to upload a document - Custom Translator
+title: ドキュメントをアップロードする方法 - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Using the document upload feature you can upload parallel document for your trainings. Parallel documents are pairs of documents where one is the translation of the other. One document in the pair contains sentences in the source language and the other document contains these sentences translated into the target language.
+description: ドキュメントのアップロード機能を使用すると、トレーニング用の並列ドキュメントをアップロードできます。 並列ドキュメントは、一方がもう一方の翻訳であるドキュメントのペアです。 ペアの一方のドキュメントにはソース言語の文が含まれ、もう一方のドキュメントにはターゲット言語に翻訳されたこれらの文が含まれています。
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
@@ -16,75 +16,75 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57766950"
 ---
-# <a name="upload-a-document"></a>Upload a document
+# <a name="upload-a-document"></a>ドキュメントのアップロード
 
-In [Custom Translator](https://portal.customtranslator.azure.ai), you can upload parallel documents to train your translation models. [Parallel documents](what-are-parallel-documents.md) are pairs of documents where one is a translation of the other. One document in the pair contains sentences in the source language and the other document contains these sentences translated into the target language.
+[Custom Translator](https://portal.customtranslator.azure.ai) では、並列ドキュメントをアップロードして翻訳モデルをトレーニングすることができます。 [並列ドキュメント](what-are-parallel-documents.md)は、一方がもう一方の翻訳であるドキュメントのペアです。 ペアの一方のドキュメントにはソース言語の文が含まれ、もう一方のドキュメントにはターゲット言語に翻訳されたこれらの文が含まれています。
 
-Before uploading your documents, review the [document formats and naming convention guidance](document-formats-naming-convention.md) to make sure your file format is supported in Custom Translator.
+ドキュメントをアップロードする前に、[ドキュメント形式と名前付け規則に関するガイダンス](document-formats-naming-convention.md)を検討して、使用するファイル形式が Custom Translator 内でサポートされていることを確認します。
 
-## <a name="how-to-upload-document"></a>How to upload document?
+## <a name="how-to-upload-document"></a>ドキュメントのアップロード方法
 
-From [Custom Translator](https://portal.customtranslator.azure.ai) portal, click on “Documents” tab to go to documents page.
+[Custom Translator](https://portal.customtranslator.azure.ai) ポータルから、[ドキュメント] タブをクリックしてドキュメント ページに移動します。
 
-![Document upload link](media/how-to/how-to-upload-1.png)
-
-
-1.  Click on the Upload files button on the documents page.
-
-    ![Upload document page](media/how-to/how-to-upload-2.png)
-
-2.  On the dialog fill in the following information:
-
-    a.  Document type:
-
-    -  Training: These document(s) will be used for training set.
-    -  Tuning: These document(s) will be used for tuning set.
-    -  Testing: These document(s) will be used for testing set.
-    -  Phrase Dictionary: These document(s) will be used for phrase  dictionary.
-    -  Sentence Dictionary: These document(s) will be used for sentence  dictionary
-
-    b.  Language pair
-
-    c.  Override document if exists: Select this check box if you want to overwrite any existing documents with the same name.
-
-    d.  Fill in the relevant section for either parallel data or combo data.
-
-    -  Parallel data:
-        -  Source file: Select source language file from your local computer.
-        -  Target file: Select target language file from your local computer.
-        -  Document name: Used only if you're uploading parallel files.
-
-    - Combo data:
-        -  Combo File: Select the combo file from your local computer. Your combo file has both of your source and target language sentences. [Naming convention](document-formats-naming-convention.md) is important for combo files.
-
-    e.  Click Upload
-
-    ![Upload document dialog](media/how-to/how-to-upload-dialog.png)
-
-3.  At this point, we're processing your documents and attempting to extract sentences. You can click “View upload Progress” to check the status of your documents as they process.
-
-    ![Upload document processing dialog](media/how-to/how-to-upload-processing-dialog.png)
-
-4.  This page will display the status, and any errors for each file within your upload. You can view past upload status at any time by clicking on the “Upload history” tab.
-
-    ![Upload document history dialog](media/how-to/how-to-upload-document-history.png)
+![ドキュメントのアップロード リンク](media/how-to/how-to-upload-1.png)
 
 
-## <a name="view-upload-history"></a>View upload history
+1.  ドキュメント ページの [ファイルのアップロード] ボタンをクリックします。
 
-In upload history page you can view history of all document uploads details like document type, language pair, upload status etc.
+    ![ドキュメントのアップロード ページ](media/how-to/how-to-upload-2.png)
 
-1. From the [Custom Translator](https://portal.customtranslator.azure.ai) portal,  click Upload History tab to view history.
+2.  ダイアログに次の情報を入力します。
 
-    ![Upload history tab](media/how-to/how-to-upload-history-1.png)
+    a.  ドキュメントの種類:
 
-2. This page shows the status of all of your past uploads. It displays uploads from most recent to least recent. For each upload, it shows the document name, upload status, the upload date, the number of files uploaded, type of file uploaded, and the language pair of the file.
+    -  トレーニング: これらのドキュメントはトレーニング セットに使用されます。
+    -  チューニング: これらのドキュメントはチューニング セットに使用されます。
+    -  テスト: これらのドキュメントはテスト セットに使用されます。
+    -  Phrase Dictionary (句辞書): これらのドキュメントは句辞書に使用されます。
+    -  Sentence Dictionary (文辞書): これらのドキュメントは文辞書に使用されます
 
-    ![Upload history page](media/how-to/how-to-document-history-2.png)
+    b.  言語ペア
 
-3. Click on any upload history record. In upload history details page, you can view the files uploaded as part of the upload, uploaded status of the file, language of the file and error message (if there is any error in upload).
+    c.  Override document if exists (存在する場合はドキュメントを上書きする): 既存のドキュメントを同じ名前で上書きする場合は、このチェック ボックスをオンにします。
 
-## <a name="next-steps"></a>Next steps
+    d.  関連するセクションに並列データまたは複合データを入力します。
 
-- Use the [document details page](how-to-view-document-details.md) to review list of extracted sentences.
-- [How to train a model](how-to-train-model.md).
+    -  Parallel data (並列データ):
+        -  ソース ファイル: ローカル コンピューターからソース言語ファイルを選択します。
+        -  ターゲット ファイル: ローカル コンピューターからターゲット言語ファイルを選択します。
+        -  Document name (ドキュメント名): 並列ファイルをアップロードする場合にのみ使用されます。
+
+    - Combo data (複合データ):
+        -  Combo File (複合ファイル): ローカル コンピューターから複合ファイルを選択します。 複合ファイルには、ソース言語とターゲット言語の両方の文があります。 複合ファイルには[名前付け規則](document-formats-naming-convention.md)が重要です。
+
+    e.  [アップロード] をクリックします
+
+    ![ドキュメントのアップロード ダイアログ](media/how-to/how-to-upload-dialog.png)
+
+3.  この段階では、ドキュメントを処理し、文の抽出を試行しています。 [View upload Progress]\(アップロードの進行状況の表示\) をクリックすると、処理中のドキュメントの状態を確認できます。
+
+    ![ドキュメントのアップロードの処理中ダイアログ](media/how-to/how-to-upload-processing-dialog.png)
+
+4.  このページには、アップロード中の各ファイルの状態とエラーが表示されます。 [Upload history]\(アップロード履歴\) タブをクリックすると、いつでも過去のアップロードの状態を確認できます。
+
+    ![ドキュメントのアップロードの履歴ダイアログ](media/how-to/how-to-upload-document-history.png)
+
+
+## <a name="view-upload-history"></a>アップロード履歴の表示
+
+[Upload history]\(アップロード履歴\) ページでは、ドキュメントの種類、言語ペア、アップロードの状態など、すべてのドキュメントのアップロードに関する詳細情報の履歴を表示できます。
+
+1. [Custom Translator](https://portal.customtranslator.azure.ai) ポータルから [Upload History]\(アップロード履歴\) タブをクリックして履歴を表示します。
+
+    ![[Upload history]\(アップロード履歴\) タブ](media/how-to/how-to-upload-history-1.png)
+
+2. このページには、過去のすべてのアップロードの状態が表示されます。 最近のアップロードから古いアップロードの順に表示されます。 アップロードごとに、ドキュメント名、アップロードの状態、アップロード日、アップロードされたファイル数、アップロードされたファイルの種類、ファイルの言語ペアが表示されます。
+
+    ![[Upload history]\(アップロード履歴\) ページ](media/how-to/how-to-document-history-2.png)
+
+3. 任意のアップロード履歴レコードをクリックします。 アップロード履歴の詳細ページには、アップロードの一部としてアップロードされたファイル、アップロードされたファイルの状態、ファイルの言語、エラー メッセージ (アップロードにエラーがある場合) が表示されます。
+
+## <a name="next-steps"></a>次の手順
+
+- [ドキュメントの詳細ページ](how-to-view-document-details.md)を使用して、抽出された文の一覧を確認します。
+- [モデルをトレーニングする方法](how-to-train-model.md)。

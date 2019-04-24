@@ -48,9 +48,9 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | **type** プロパティは **OData** に設定する必要があります。 |はい |
-| url | OData サービスのルート URL。 |はい |
-| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | はい |
+| type | **type** プロパティは **OData** に設定する必要があります。 |[はい] |
+| url | OData サービスのルート URL。 |[はい] |
+| authenticationType | OData ソースに接続するために使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**Windows**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 | [はい] |
 | userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ  |
 | password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ  |
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ  |
@@ -197,8 +197,8 @@ OData からデータをコピーするには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | はい |
-| path | OData リソースへのパス。 | はい |
+| type | データセットの **type** プロパティは **ODataResource** に設定する必要があります。 | [はい] |
+| path | OData リソースへのパス。 | [はい] |
 
 **例**
 
@@ -232,7 +232,7 @@ OData からデータをコピーするには、コピー アクティビティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | [はい] |
 | query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ  |
 
 **例**

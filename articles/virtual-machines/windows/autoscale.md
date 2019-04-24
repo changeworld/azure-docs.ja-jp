@@ -1,6 +1,6 @@
 ---
-title: Autoscale Azure VMs | Microsoft Docs
-description: Learn about automatically scaling Windows and Linux virtual machines in Azure.
+title: Azure VM の自動スケール | Microsoft Docs
+description: Azure での Windows と Linux の仮想マシンの自動スケーリングについて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57791531"
 ---
-# <a name="automatically-scale-virtual-machines-in-azure"></a>Automatically scale virtual machines in Azure
+# <a name="automatically-scale-virtual-machines-in-azure"></a>Azure で仮想マシンを自動的にスケーリングする
 
 [!INCLUDE [virtual-machines-autoscale](../../../includes/virtual-machines-autoscale.md)]
 

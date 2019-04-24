@@ -1,7 +1,7 @@
 ---
-title: How to create a Conversation Learner model using Node.js - Microsoft Cognitive Services | Microsoft Docs
+title: Node.js を使用して Conversation Learner モデルを作成する方法 - Microsoft Cognitive Services | Microsoft Docs
 titleSuffix: Azure
-description: Learn how to create a Conversation Learner model using Node.js.
+description: Node.js を使用して Conversation Learner モデルを作成する方法について説明します。
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -17,39 +17,39 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57994371"
 ---
-# <a name="create-a-conversation-learner-model-using-nodejs"></a>Create a Conversation Learner model using Node.js
+# <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js を使用して Conversation Learner モデルを作成する
 
-Conversation Learner reduces the complexity of building bots. It enables a hybrid development work-flow allowing hand-written code and machine learning to reduce the amount of code required to write bots. Certain fixed parts of your model, such as checking if the user is logged in, or making an API request to check store inventory, can still be coded. However, other changes in state and action selection can be learned from example dialogs given by the domain expert or developer.
+Conversation Learner を使うと、ボットを作成する複雑さが軽減されます。 ハイブリッド開発ワークフローを利用して、手書きコードと機械学習によりボットの作成に必要なコードの量を削減できます。 ユーザーがログインしているかどうかの確認や、ストア インベントリを確認するための API 要求の実行など、モデルの特定の固定された部分は引き続きコード化できます。 一方、状態とアクションの選択での他の変更は、ドメインの専門家や開発者によって提供される例のダイアログから学習できます。
 
-## <a name="invitation-required"></a>Invitation required
+## <a name="invitation-required"></a>招待が必要
 
-*An invitation is required to access Project Conversation Learner.*
+*Project Conversation Learner にアクセスするには招待が必要です*。
 
-Project Conversation Learner consists of an SDK you add to your bot, and a cloud service which the SDK accesses for machine learning.  At present, access to the Project Conversation Leaner cloud service requires an invitation.  If you haven't been invited already, [request an invitation](https://aka.ms/conversation-learner-request-invite).  If you have not received an invitation, you will be unable to access the cloud API.
+Project Conversation Learner は、ボットに追加する SDK と、機械学習のために SDK がアクセスするクラウド サービスで構成されます。  現在、Project Conversation Leaner クラウド サービスにアクセスするには、招待が必要です。  まだ招待されていない場合は、[招待を要求](https://aka.ms/conversation-learner-request-invite)してください。  招待を受け取っていない場合は、クラウド API にアクセスできません。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-- Node 8.5.0 or higher and npm 5.3.0 or higher. Install from [https://nodejs.org](https://nodejs.org).
+- Node 8.5.0 以降と npm 5.3.0 以降。 [https://nodejs.org](https://nodejs.org) からインストールします。
   
-- LUIS authoring key:
+- LUIS のオーサリング キー:
 
-  1. Log into [https://www.luis.ai](https://www.luis.ai).
+  1. [https://www.luis.ai](https://www.luis.ai) にログインします。
 
-  2. Click on your name in the upper right, then on "settings"
+  2. 右上の自分の名前クリックし、[設定] をクリックします
 
-  3. Authoring key is shown on the resulting page
+  3. 結果のページにオーサリング キーが表示されます
 
-  (Your LUIS authoring key serves 2 roles.  First, it will serve as your Conversation Learner authoring key.  Second, Conversation Learner uses LUIS for entity extraction; the LUIS authoring key is used to create LUIS models on your behalf)
+  (LUIS オーサリング キーは 2 つのロールを提供します。  第 1 に、Conversation Learner のオーサリング キーとして機能します。  第 2 に、Conversation Learner はエンティティの抽出に LUIS を使用します。LUIS オーサリング キーは、ユーザーに代わって LUIS モデルを作成するために使用されます)
 
-- Google Chrome web browser. Install from [https://www.google.com/chrome/index.html](https://www.google.com/chrome/index.html).
+- Google Chrome Web ブラウザー。 [https://www.google.com/chrome/index.html](https://www.google.com/chrome/index.html) からインストールします。
 
-- git. Install from [https://git-scm.com/downloads](https://git-scm.com/downloads).
+- git。 [https://git-scm.com/downloads](https://git-scm.com/downloads) からインストールします。
 
-- VSCode. Install from [https://code.visualstudio.com/](https://code.visualstudio.com/). Note this is recommended, not required.
+- VSCode。 [https://code.visualstudio.com/](https://code.visualstudio.com/) からインストールします。 推奨されますが、必須ではありません。
 
-## <a name="quick-start"></a>Quick start 
+## <a name="quick-start"></a>クイック スタート 
 
-1. Install and build:
+1. インストールしてビルドします。
 
     ```bash    
     git clone https://github.com/Microsoft/ConversationLearner-Samples cl-bot-01
@@ -59,41 +59,41 @@ Project Conversation Learner consists of an SDK you add to your bot, and a cloud
     ```
 
     > [!NOTE]
-    > During `npm install`, you can ignore this error if it occurs: `gyp ERR! stack Error: Can't find Python executable`
+    > `npm install` の間に次のエラーが発生した場合は無視してかまいません。`gyp ERR! stack Error: Can't find Python executable`
 
-2. Configure:
+2. 構成します。
 
-   Create a file called `.env` in the directory `cl-bot-01`.  The contents of the file should be:
+   `.env` という名前のファイルを `cl-bot-01` ディレクトリに作成します。  ファイルの内容は次のようになります。
 
    ```
    NODE_ENV=development
    LUIS_AUTHORING_KEY=<your LUIS authoring key>
    ```
 
-3. Start bot:
+3. ボットを開始します。
 
     ```
     npm start
     ```
 
-    This runs the generic empty bot in `cl-bot-01/src/app.ts`.
+    汎用の空のボットが `cl-bot-01/src/app.ts` で実行します。
 
-3. Open browser to `http://localhost:3978`
+3. ブラウザーで `http://localhost:3978` を開きます。
 
-You're now using Conversation Learner and can create and teach a Conversation Learner model.  
+Conversation Learner を使用するようになり、Conversation Learner のモデルを作成および教育できます。  
 
 > [!NOTE]
-> At launch, Project Conversation Learner is available by invitation.  If `http://localhost:3978/ui` shows an HTTP `403` error, this means your account has not been invited.  Please [request an invitation](https://aka.ms/conversation-learner-request-invite).
+> 起動時には、Project Conversation Learner は招待によって使用できます。  `http://localhost:3978/ui` で HTTP エラー `403` が表示される場合は、アカウントが招待されていないことを意味します。  [招待を要求](https://aka.ms/conversation-learner-request-invite)してください。
 
-## <a name="tutorials-demos-and-switching-between-bots"></a>Tutorials, demos, and switching between bots
+## <a name="tutorials-demos-and-switching-between-bots"></a>チュートリアル、デモ、およびボット間の切り替え
 
-The instructions above started the generic empty bot.  To run a tutorial or demo bot instead:
+上記の手順で、汎用的な空のボットが開始しました。  代わりにチュートリアルまたはデモ ボットを実行するには、次のようにします。
 
-1. If you have the Conversation Learner web UI open, return to the list of models at `http://localhost:3978/ui/home`.
+1. Conversation Learner Web UI が開いている場合は、 `http://localhost:3978/ui/home` のモデルの一覧に戻ます。
     
-2. If another bot is running (like `npm start` or `npm run demo-pizza`), stop it.  You do not need to stop the UI process, or close the web browser.
+2. 別のボットが実行している場合は (`npm start` や `npm run demo-pizza` など)、停止します。  UI プロセスを停止したり、Web ブラウザーを閉じたりする必要はありません。
 
-3. Run a demo bot from the command line (step 2 above).  Demos include:
+3. コマンドライン (上記の手順 2) からデモ ボットを実行します。  デモには次のものが含まれます。
 
    ```bash
    npm run tutorial-general
@@ -106,60 +106,60 @@ The instructions above started the generic empty bot.  To run a tutorial or demo
    npm run demo-storage
    ```
 
-4. If you're not already, switch to the Conversation Learner web UI in Chrome by loading `http://localhost:3978/ui/home`. 
+4. まだ行っていない場合は、 `http://localhost:3978/ui/home` を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
-5. Click on "Import tutorials" and select the demo model in the Conversation Learner UI that corresponds to the demo you started.
+5. [Import tutorials]\(チュートリアルのインポート\) をクリックし、開始したデモに対応するデモ モデルを Conversation Learner UI で選択します。
 
-Source files for the demos are in `cl-bot-01/src/demos`
+デモのソース ファイルは `cl-bot-01/src/demos` にあります。
 
-## <a name="create-a-bot-which-includes-back-end-code"></a>Create a bot which includes back-end code
+## <a name="create-a-bot-which-includes-back-end-code"></a>バックエンド コードを含むボットを作成する
 
-1. If you have the Conversation Learner web UI open, return to the list of models at `http://localhost:3978/ui/home`.
+1. Conversation Learner Web UI が開いている場合は、 `http://localhost:3978/ui/home` のモデルの一覧に戻ます。
     
-2. If a bot is running (like `npm run demo-pizza`), stop it.  You do not need to stop the UI process, or close the web browser.
+2. ボットが実行している場合は (`npm run demo-pizza` など)、停止します。  UI プロセスを停止したり、Web ブラウザーを閉じたりする必要はありません。
 
-3. If desired, edit code in `cl-bot-01/src/app.ts`.
+3. 必要な場合は、`cl-bot-01/src/app.ts` のコードを編集します。
 
-4. Rebuild and re-start bot:
+4. ボットを再ビルドして再起動します。
 
     ```bash    
     npm run build
     npm start
     ```
 
-5. If you're not already, switch to the Conversation Learner web UI in Chrome by loading `http://localhost:3978/ui/home`. 
+5. まだ行っていない場合は、 `http://localhost:3978/ui/home` を読み込むことによって Chrome で Conversation Learner Web UI に切り替えます。 
 
-6. Create a new Conversation Learner model in the UI, and start teaching.
+6. UI で新しい Conversation Learner モデルを作成し、学習を開始します。
 
-7. To make code changes in `cl-bot-01/src/app.ts`, repeat the steps above, starting from step 2.
+7. `cl-bot-01/src/app.ts` のコードを変更するには、手順 2 から開始します。
 
-## <a name="vscode"></a>VSCode
+## <a name="vscode"></a>VS Code
 
-In VSCode, there are run configurations for each demo, and for the "Empty bot" in `cl-bot-01/src/app.ts`.  Open the `cl-bot-01` folder in VSCode.
+VSCode では、各デモおよび "空のボット" に対する実行構成が `cl-bot-01/src/app.ts` にあります。  `cl-bot-01` フォルダーを VSCode で開きます。
 
-## <a name="advanced-configuration"></a>Advanced configuration
+## <a name="advanced-configuration"></a>詳細な構成
 
-There is a template `.env.example` file shows what environment variables you may set to configure the samples.
+テンプレート `.env.example` ファイルでは、サンプルを構成するために設定できる環境変数が示されています。
 
-You can adjust these ports to avoid conflicts between other services running on your machine by adding a `.env` file to root of project:
+`.env` ファイルをプロジェクトのルートに追加することにより、コンピューターで実行している他のサービスと競合しないように、これらのポートを調整できます。
 
 ```bash
 cp .env.example .env
 ```
 
-This uses the standard configuration, which lets you run your bot locally, and start using Conversation Learner.  (Later on, to deploy your bot to the Bot Framework, some edits to this file will be needed.)
+これでは標準構成が使用されており、ボットをローカルに実行し、Conversation Learner を使って開始できます。  (後でボットを Bot Framework に展開するには、このファイルを編集する必要があります。)
 
-## <a name="support"></a>Support
+## <a name="support"></a>サポート
 
-- Tag questions on [Stack Overflow](https://stackoverflow.com) with "microsoft cognitive"
-- Request a feature on our [User Voice page](https://aka.ms/conversation-learner-uservoice)
-- Open an issue on our [GitHub repo](https://github.com/Microsoft/ConversationLearner-Samples)
+- [Stack Overflow](https://stackoverflow.com) の質問に "microsoft cognitive" というタグを付けます
+- [User Voice ページ](https://aka.ms/conversation-learner-uservoice)で機能を要求します
+- [GitHub のリポジトリ](https://github.com/Microsoft/ConversationLearner-Samples)で問題を開きます
 
-## <a name="contributing"></a>Contributing
+## <a name="contributing"></a>寄与
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。 詳細については、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)を参照するか、[opencode@microsoft.com](mailto:opencode@microsoft.com) 宛てに質問またはコメントをお送りください。
 
-## <a name="source-repositories"></a>Source repositories
+## <a name="source-repositories"></a>ソース リポジトリ
 
 - [conversationlearner-samples](https://github.com/Microsoft/ConversationLearner-Samples)
 - [conversationlearner-sdk](https://github.com/Microsoft/ConversationLearner-SDK)
@@ -167,7 +167,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 - [conversationlearner-ui](https://github.com/Microsoft/ConversationLearner-UI)
 - [conversationlearner-webchat](https://github.com/Microsoft/ConversationLearner-WebChat)
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Hello world](./tutorials/01-hello-world.md)

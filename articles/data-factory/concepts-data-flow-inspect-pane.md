@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory Mapping Data Flow の検査とデータのプレビュー
-description: Azure Data Factory Mapping Data Flow には、データ フローのメタデータ ([Inspect](検査)) とデバッグ モード時のデータのプレビュー ([Data Preview]\(データのプレビュー)) が表示されるウィンドウがあります。
+description: Azure Data Factory Mapping Data Flow には、データ フローのメタデータ ([Inspect](検査)) とデバッグ モード時のデータのプレビュー ([Data Preview] (データのプレビュー)) が表示されるウィンドウがあります。
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
