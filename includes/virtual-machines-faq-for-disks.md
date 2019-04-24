@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2019
 ms.locfileid: "58671685"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -25,23 +25,23 @@ ms.locfileid: "58671685"
 
 Managed Disks は、ユーザーに代わってストレージ アカウントの管理を行うことで Azure IaaS VM のディスク管理を簡略化する機能です。 詳細については、[Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)に関する記事を参照してください。
 
-**Standard 管理ディスクを 80 GB の既存の VHD から作成した場合、どのくらいの料金がかかりますか?**
+**Standard マネージド ディスクを 80 GB の既存の VHD から作成した場合、どのくらいの料金がかかりますか?**
 
-80 GB の VHD から作成した Standard 管理ディスクは、1 つ上の Standard ディスク サイズである S10 ディスクとして扱われます。 S10 ディスクの価格に従って課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage)を参照してください。
+80 GB の VHD から作成した Standard マネージド ディスクは、1 つ上の Standard ディスク サイズである S10 ディスクとして扱われます。 S10 ディスクの価格に従って課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage)を参照してください。
 
 **Standard マネージド ディスクのトランザクション コストはありますか?**
 
 はい。 トランザクションごとに課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage)を参照してください。
 
-**Standard 管理ディスクでは、ディスク上の実際のデータ サイズについて課金されますか? または、ディスクのプロビジョニング容量について課金されますか?**
+**Standard マネージド ディスクでは、ディスク上の実際のデータ サイズについて課金されますか? または、ディスクのプロビジョニング容量について課金されますか?**
 
 ディスクのプロビジョニング容量に基づいて課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage)を参照してください。
 
-**Premium 管理ディスクと非管理ディスクの価格設定はどのように異なりますか?**
+**Premium マネージド ディスクとアンマネージド ディスクの価格設定はどのように異なりますか?**
 
-Premium 管理ディスクの価格は Premium 非管理ディスクと同じです。
+Premium マネージド ディスクの価格は Premium アンマネージド ディスクと同じです。
 
-**管理ディスクのストレージ アカウントのタイプ (Standard または Premium) を変更できますか?**
+**マネージド ディスクのストレージ アカウントのタイプ (Standard または Premium) を変更できますか?**
 
 はい。 マネージド ディスクのストレージ アカウント タイプは、Azure Portal、PowerShell、または Azure CLI を使用して変更できます。
 
@@ -53,17 +53,17 @@ Premium 管理ディスクの価格は Premium 非管理ディスクと同じで
 
 いいえ。
 
-**管理ディスクを使用するユーザーがスケールを制限されることはありますか?**
+**マネージド ディスクを使用するユーザーがスケールを制限されることはありますか?**
 
-Managed Disks では、ストレージ アカウントに関連する制限が排除されています。 ただし、リージョンごと、およびサブスクリプションのディスクの種類ごとに 50,000 個という管理ディスクの上限が設けられています。
+Managed Disks では、ストレージ アカウントに関連する制限が排除されています。 ただし、リージョンごと、およびサブスクリプションのディスクの種類ごとに 50,000 個というマネージド ディスクの上限が設けられています。
 
 **マネージド ディスクの増分スナップショットを作成できますか?**
 
 いいえ。 現在のスナップショット機能では、マネージド ディスクの完全なコピーが作成されます。
 
-**可用性セット内の VM でマネージド ディスクと非管理ディスクを混在させることができますか?**
+**可用性セット内の VM でマネージド ディスクとアンマネージド ディスクを混在させることができますか?**
 
-いいえ。 可用性セット内の VM は、すべて管理ディスクにするか、すべて非管理ディスクにする必要があります。 可用性セットを作成するときに、使用するディスクの種類を選択できます。
+いいえ。 可用性セット内の VM は、すべてマネージド ディスクにするか、すべてアンマネージド ディスクにする必要があります。 可用性セットを作成するときに、使用するディスクの種類を選択できます。
 
 **Managed Disks は Azure Portal の既定オプションですか?**
 
@@ -71,7 +71,7 @@ Managed Disks では、ストレージ アカウントに関連する制限が�
 
 **空のマネージド ディスクを作成できますか?**
 
-はい。 空のディスクを作成できます。 管理ディスクは VM とは独立して作成できます。たとえば、VM にアタッチせずに作成できます。
+はい。 空のディスクを作成できます。 マネージド ディスクは VM とは独立して作成できます。たとえば、VM にアタッチせずに作成できます。
 
 **Managed Disks を使用する可用性セットでサポートされる障害ドメイン数はいくつですか?**
 
@@ -91,17 +91,17 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 
 **マネージド ディスクをプライベート ストレージ アカウントにコピーまたはエクスポートする方法はありますか?**
 
-管理ディスクの読み取り専用 Shared Access Signature (SAS) URI を生成し、それを使用して、内容をプライベート ストレージ アカウントまたはオンプレミス ストレージにコピーできます。 SAS URI の使用には、Azure Portal、Azure PowerShell、Azure CLI、または [AzCopy](../articles/storage/common/storage-use-azcopy.md) を利用できます。
+マネージド ディスクの読み取り専用 Shared Access Signature (SAS) URI を生成し、それを使用して、内容をプライベート ストレージ アカウントまたはオンプレミス ストレージにコピーできます。 SAS URI の使用には、Azure Portal、Azure PowerShell、Azure CLI、または [AzCopy](../articles/storage/common/storage-use-azcopy.md) を利用できます。
 
 **マネージド ディスクのコピーを作成できますか?**
 
-管理ディスクのスナップショットを作成し、そのスナップショットを使用して別の管理ディスクを作成できます。
+マネージド ディスクのスナップショットを作成し、そのスナップショットを使用して別のマネージド ディスクを作成できます。
 
-**非管理ディスクはまだサポートされていますか?**
+**アンマネージド ディスクはまだサポートされていますか?**
 
-はい。非管理ディスクと管理ディスクの両方がサポートされています。 新しいワークロードではマネージド ディスクを使用し、現在のワークロードはマネージド ディスクに移行することをお勧めします。
+はい。アンマネージド ディスクとマネージド ディスクの両方がサポートされています。 新しいワークロードではマネージド ディスクを使用し、現在のワークロードはマネージド ディスクに移行することをお勧めします。
 
-**非管理ディスクと管理ディスクを同じ VM 上に共存させることはできますか?**
+**アンマネージド ディスクとマネージド ディスクを同じ VM 上に共存させることはできますか?**
 
 いいえ。
 
@@ -109,11 +109,11 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 
 はい。
 
-**ローカル冗長ストレージ、geo 冗長ストレージ、およびゾーン冗長ストレージ管理ディスクを作成できますか?**
+**ローカル冗長ストレージ、geo 冗長ストレージ、およびゾーン冗長ストレージ マネージド ディスクを作成できますか?**
 
-Azure Managed Disks では、現在、ローカル冗長ストレージ管理ディスクだけがサポートされています。
+Azure Managed Disks では、現在、ローカル冗長ストレージ マネージド ディスクだけがサポートされています。
 
-**管理ディスクを縮小またはダウンサイズできますか?**
+**マネージド ディスクを縮小またはダウンサイズできますか?**
 
 いいえ。 現在、この機能はサポートされていません。
 
@@ -125,7 +125,7 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ管理デ
 
 いいえ。 コンピューター名プロパティを更新することはできません。 新しい VM のコンピューター名プロパティは、オペレーティング システム ディスクの作成に使用した親 VM から継承されます。 
 
-**管理ディスクを使用して VM を作成するための Azure Resource Manager のサンプル テンプレートは、どこで見つけることができますか?**
+**マネージド ディスクを使用して VM を作成するための Azure Resource Manager のサンプル テンプレートは、どこで見つけることができますか?**
 * [Managed Disks を使用するテンプレートの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
@@ -175,13 +175,13 @@ Azure Resource Manager テンプレート、SDK、PowerShell、または CLI を
 テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
 
 **既存のディスクを Standard SSD に変換できますか?**
-はい、できます。 管理ディスクの変換に関する一般的なガイドラインについては、「[Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
+はい、できます。 マネージド ディスクの変換に関する一般的なガイドラインについては、「[Azure マネージド ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)」を参照してください。 また、次の値を使用してディスクの種類を Standard SSD に更新します。
 -AccountType StandardSSD_LRS
 
 **HDD ではなく Standard SSD ディスクを使用する利点は何ですか?**
 Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一貫性、可用性、および信頼性が優れています。 そのため、Standard SSD ではアプリケーション ワークロードがはるかにスムーズに実行されます。 I/O 負荷の高いほとんどの運用ワークロードに推奨されるソリューションが Premium SSD ディスクであることにも注意してください。
 
-**Standard SSD を非管理ディスクとして使用できますか?**
+**Standard SSD をアンマネージド ディスクとして使用できますか?**
 いいえ。Standard SSD ディスクは Managed Disks としてのみ使用できます。
 
 **Standard SSD ディスクは "単一インスタンス VM SLA" をサポートしますか?**
@@ -207,7 +207,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **既存の仮想マシン スケール セットに関して、アンマネージド ディスクから Managed Disks への移行は自動化されていますか?**
 
-いいえ。 非管理ディスクを含んだ以前のスケール セットからのイメージを使用し、Managed Disks で新しいスケール セットを作成してください。
+いいえ。 アンマネージド ディスクを含んだ以前のスケール セットからのイメージを使用し、Managed Disks で新しいスケール セットを作成してください。
 
 **Managed Disks への移行前に作成したページ BLOB のスナップショットから Managed Disks を作成することはできますか?**
 
@@ -221,13 +221,13 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 はい。 現在、Azure Site Recovery の Azure から Azure への Managed Disks を使用した VM の保護は、GA サービスとして利用できます。
 
-**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに移行できますか?**
+**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに移行できますか?**
 
 はい。
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption
 
-**Azure Storage Service Encryption は、管理ディスクを作成するときに、既定で有効になりますか?**
+**Azure Storage Service Encryption は、マネージド ディスクを作成するときに、既定で有効になりますか?**
 
 はい。
 
@@ -235,7 +235,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 暗号化キーは Microsoft が管理します。
 
-**自分の管理ディスクの Storage Service Encryption を無効にすることはできますか?**
+**自分のマネージド ディスクの Storage Service Encryption を無効にすることはできますか?**
 
 いいえ。
 
@@ -243,28 +243,28 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 いいえ。 Managed Disks を使用できるすべてのリージョンで使用できます。 Managed Disks は、すべてのパブリック リージョンおよびドイツで使用できます。 中国でも使用できますが、Microsoft 管理キーのみが対象であり、顧客管理キーは対象外です。
 
-**管理ディスクが暗号化されているかどうかは、どうすれば判断できますか?**
+**マネージド ディスクが暗号化されているかどうかは、どうすれば判断できますか?**
 
-Azure Portal、Azure CLI、および PowerShell で、管理ディスクがいつ作成されたかを調べることができます。 その日時が 2017 年 6 月 9 日より後であれば、ディスクは暗号化されています。
+Azure Portal、Azure CLI、および PowerShell で、マネージド ディスクがいつ作成されたかを調べることができます。 その日時が 2017 年 6 月 9 日より後であれば、ディスクは暗号化されています。
 
 **2017 年 6 月 10 日より前に作成された既存のディスクは、どうすれば暗号化できますか?**
 
-2017 年 6 月 10 日以降、既存の管理ディスクに書き込まれる新しいデータは自動的に暗号化されます。 既存のデータの暗号化も予定しており、暗号化はバック グラウンドで非同期的に行われます。 既存のデータを今すぐ暗号化する必要がある場合は、ディスクのコピーを作成してください。 新しいディスクは暗号化されます。
+2017 年 6 月 10 日以降、既存のマネージド ディスクに書き込まれる新しいデータは自動的に暗号化されます。 既存のデータの暗号化も予定しており、暗号化はバック グラウンドで非同期的に行われます。 既存のデータを今すぐ暗号化する必要がある場合は、ディスクのコピーを作成してください。 新しいディスクは暗号化されます。
 
-* [Azure CLI による管理ディスクのコピー](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [PowerShell による管理ディスクのコピー](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+* [Azure CLI によるマネージド ディスクのコピー](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+* [PowerShell によるマネージド ディスクのコピー](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 
 **管理スナップショットおよびイメージは、暗号化されますか?**
 
 はい。 2017 年 6 月 9 日より後に作成されたすべての管理スナップショットおよびイメージは、自動的に暗号化されます。 
 
-**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM をマネージド ディスクに変換できますか?**
+**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに変換できますか?**
 
 はい。
 
-**管理ディスクまたはスナップショットからエクスポートされた VHD も暗号化されますか?**
+**マネージド ディスクまたはスナップショットからエクスポートされた VHD も暗号化されますか?**
 
-いいえ。 ただし、暗号化された管理ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。 
+いいえ。 ただし、暗号化されたマネージド ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium ディスク: マネージドとアンマネージド
 
@@ -321,7 +321,7 @@ Azure でサポートされている最大ページ BLOB サイズは、8 TB (8,
 |Azure CLI v2     | バージョン番号 2.0.12: 2017 年 7 月以降のリリース|
 |AzCopy           | バージョン番号 6.1.0: 2017 年 6 月以降のリリース|
 
-**非管理ディスクまたはページ BLOB では、P4 および P6 ディスク サイズがサポートされていますか?**
+**アンマネージド ディスクまたはページ BLOB では、P4 および P6 ディスク サイズがサポートされていますか?**
 
 P4 (32 GiB) および P6 (64 GiB) ディスク サイズは、アンマネージド ディスクおよびページ BLOB の既定のディスク階層としてはサポートされていません。 ディスクをこれらの層にマッピングするために、P4 および P6 に対して [BLOB 階層の設定](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)を明示的に行う必要があります。 ディスク サイズまたはコンテンツの長さが 32 GiB 未満、または BLOB 階層設定がなく 32 GiB ～ 64 GiB の間のアンマネージド ディスクまたはページ BLOB をデプロイする場合は、 500 IOPS および 100 MiB/秒の P10 およびマッピングされた価格レベル上に着地し続けます。
 

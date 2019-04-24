@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543188"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001050"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -104,7 +104,7 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.micros
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ: On-Behalf-Of フローを実行するアプリ
 
-このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 さらに、そのサービスによって、"On-Behalf-Of" フローでダウンストリーム サービスが呼び出されます。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。 
+このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 呼び出されたサービスは、On-Behalf-Of フローでダウンストリーム サービスを呼び出します。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。 
 
 ![On-Behalf-Of フローを実行するアプリのフロー ダイアグラム](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -147,7 +147,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 アプリが ADAL ライブラリを使用しており、トークンの取得に失敗した場合、常に対話形式で再試行されます。 この対話型の要求が発生すると、エンドユーザーには、条件付きアクセスに準拠する機会が与えられます。 これは、要求が `AcquireTokenSilentAsync` または `PromptBehavior.Never` でない限り該当し、この場合、アプリは対話型の ```AcquireToken``` 要求を実行し、エンドユーザーはポリシーに準拠する機会が与えられます。
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ:ADAL.js を使用するシングル ページ アプリ (SPA)
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ: ADAL.js を使用するシングル ページ アプリ (SPA)
 
 このシナリオでは、条件付きアクセスで保護されている Web API を呼び出すための ADAL.js がシングル ページ アプリ (SPA) において使用される場合について説明します。 これは、単純なアーキテクチャですが、条件付きアクセスを開発するときに考慮すべき点がいくつかあります。
 

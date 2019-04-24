@@ -19,10 +19,10 @@ ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878572"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
@@ -73,9 +73,9 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 
 `NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-| 名前 | 説明 |
+| Name | 説明 |
 |------|-------------|
-| 電子メール | ユーザーの電子メール アドレス |
+| Email | ユーザーの電子メール アドレス |
 | userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |
 | onpremisessamaccount | オンプレミスの Azure AD から同期された SAM アカウント名 |
 | objectid | Azure AD でのユーザーの objectid |
@@ -89,7 +89,7 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 
 要求変換関数を使用することもできます。
 
-| 関数 | 説明 |
+| Function | 説明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
@@ -108,7 +108,7 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 
 要求変換関数を使用することもできます。
 
-| 関数 | 説明 |
+| Function | 説明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | メール アドレスまたはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
 | **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 |

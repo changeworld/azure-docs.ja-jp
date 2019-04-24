@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501061"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
@@ -103,8 +103,8 @@ ms.locfileid: "59501061"
 | プロパティ名  | 追加のプロパティ名 | 説明 |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | SAML 応答と JWT 応答の両方や、v1.0 および v2.0 トークンに使用できます。 |
-|                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、次のように入力します。 `foo_hometenant.com#EXT#@resourcetenant.com` |             
-|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです。たとえば次のようになります `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。 |             
+|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです (たとえば、`foo_hometenant.com_EXT_@resourcetenant.com`) |
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例
 
@@ -196,7 +196,7 @@ ms.locfileid: "59501061"
 
 JWT 内では、このような要求は `extn.<attributename>` という形式の名前で発行されます。
 
-SAML トークン内では、このような要求は次の URI 形式で発行されます:  `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+SAML トークン内では、このような要求は `http://schemas.microsoft.com/identity/claims/extn.<attributename>` という URI 形式で発行されます。
 
 ## <a name="optional-claims-example"></a>省略可能な要求の例
 
