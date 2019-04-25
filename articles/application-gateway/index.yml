@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9b3a65446a6f55101e93fdee4c437cde7408b7ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973079"
 documentType: LandingData
 title: Application Gateway のドキュメント
 metadata:
   title: Azure Application Gateway のドキュメント - チュートリアル、API リファレンス
-  meta.description: Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.
+  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: application-gateway
   author: davidmu1
   manager: jeconnocfte
@@ -20,57 +14,57 @@ metadata:
 abstract:
   description: サービスとしてのアプリケーション配信コントローラー (ADC) である Application Gateway をデプロイする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、スケーラブルな高可用性 Web フロントエンドを構築できるようにする、アプリケーション レベルのルーティングおよび負荷分散サービスを設定する方法を紹介します。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Application Gateway を使用してリソースへの Web トラフィックを管理する方法を説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/application-gateway/quick-create-powershell
-    - image:
-        src: https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/azure/application-gateway/quick-create-cli
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure でアプリケーション ゲートウェイをデプロイ、管理、監視する方法について説明します
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Application Gateway を使用してリソースへの Web トラフィックを管理する方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
+          - image:
+              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
+          - image:
+              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
+            text: Azure CLI
+            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">アプリケーション ゲートウェイで Web トラフィックを管理する。</a>
-    - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">アプリケーション ゲートウェイの Web アプリケーション ファイアウォールで Web トラフィックを制限する。</a>
-    - html: <a href="/azure/application-gateway/tutorial-ssl-cli">アプリケーション ゲートウェイで SSL 終了を有効にする。</a>
-    - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">アプリケーション ゲートウェイを使用して複数の Web サイトをホストする。</a>
-    - html: <a href="/azure/application-gateway/tutorial-url-route-cli">アプリケーション ゲートウェイで URL に基づいてトラフィックをルーティングする。</a>
-    - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">アプリケーション ゲートウェイ プールでトラフィックを特定のサーバーにリダイレクトする。</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: アプリケーション ゲートウェイで Web トラフィックを管理する。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Azure でアプリケーション ゲートウェイをデプロイ、管理、監視する方法について説明します
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">アプリケーション ゲートウェイで Web トラフィックを管理する。</a>
+          - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">アプリケーション ゲートウェイの Web アプリケーション ファイアウォールで Web トラフィックを制限する。</a>
+          - html: <a href="/azure/application-gateway/tutorial-ssl-cli">アプリケーション ゲートウェイで SSL 終了を有効にする。</a>
+          - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">アプリケーション ゲートウェイを使用して複数の Web サイトをホストする。</a>
+          - html: <a href="/azure/application-gateway/tutorial-url-route-cli">アプリケーション ゲートウェイで URL に基づいてトラフィックをルーティングする。</a>
+          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">アプリケーション ゲートウェイ プールでトラフィックを特定のサーバーにリダイレクトする。</a>
+  - title: サンプル
     items:
-    - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: アプリケーション ゲートウェイで Web トラフィックを管理する。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.application_gateways_operations.applicationgatewaysoperations?view=azure-python">Python</a></p>
-    - title: REST
-      html: <p><a href="https://msdn.microsoft.com/library/mt684941">詳細な REST API リファレンス</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
+          - title: Languages
+            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.application_gateways_operations.applicationgatewaysoperations?view=azure-python">Python</a></p>'
+          - title: REST
+            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">詳細な REST API リファレンス</a></p>'

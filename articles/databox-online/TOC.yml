@@ -1,120 +1,113 @@
-items:
 - name: Azure Data Box のドキュメント - オンライン転送
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
   items:
-  - name: 概要
-    items:
-    - name: Data Box Gateway とは
-      href: data-box-gateway-overview.md
-  - name: チュートリアル
-    items:
-    - name: 1 - 準備
-      href: data-box-gateway-deploy-prep.md
-    - name: 2A - Hyper-V でのプロビジョニング
-      href: data-box-gateway-deploy-provision-hyperv.md
-    - name: 2B - VMware でのプロビジョニング
-      href: data-box-gateway-deploy-provision-vmware.md
-    - name: 3 - 接続、セットアップ、アクティブ化
-      href: data-box-gateway-deploy-connect-setup-activate.md
-    - name: 4 - 追加、共有への接続
-      href: data-box-gateway-deploy-add-shares.md
-  - name: 概念
-    items:
-    - name: 要件を確認する
-      href: data-box-gateway-system-requirements.md
-    - name: 制限を理解する
-      href: data-box-gateway-limits.md
-    - name: セキュリティの概要
-      href: data-box-gateway-security.md
-    - name: ユース ケースを確認する
-      href: data-box-gateway-use-cases.md
-  - name: 方法
-    items:
-    - name: 管理
+    - name: 概要
       items:
-      - name: 共有
-        href: data-box-gateway-manage-shares.md
-      - name: ユーザー
-        href: data-box-gateway-manage-users.md
-      - name: 帯域幅のスケジュール
-        href: data-box-gateway-manage-bandwidth-schedules.md
-      - name: アクセス、電源、接続性
-        href: data-box-gateway-manage-access-power-connectivity-mode.md
-      - name: PowerShell から
-        href: data-box-gateway-connect-powershell-interface.md
-    - name: 監視
-      href: data-box-gateway-monitor.md
-    - name: トラブルシューティング
-      href: data-box-gateway-troubleshoot.md
-  - name: リリース ノート
-    items:
-    - name: 一般公開
-      href: data-box-gateway-release-notes.md
+        - name: Data Box Gateway とは
+          href: data-box-gateway-overview.md
+    - name: チュートリアル
+      items:
+        - name: 1 - 準備
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A - Hyper-V でのプロビジョニング
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B - VMware でのプロビジョニング
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: 3 - 接続、セットアップ、アクティブ化
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: 4 - 追加、共有への接続
+          href: data-box-gateway-deploy-add-shares.md
+    - name: 概念
+      items:
+        - name: 要件を確認する
+          href: data-box-gateway-system-requirements.md
+        - name: 制限を理解する
+          href: data-box-gateway-limits.md
+        - name: セキュリティの概要
+          href: data-box-gateway-security.md
+        - name: ユース ケースを確認する
+          href: data-box-gateway-use-cases.md
+    - name: 方法
+      items:
+        - name: 管理
+          items:
+            - name: 共有
+              href: data-box-gateway-manage-shares.md
+            - name: ユーザー
+              href: data-box-gateway-manage-users.md
+            - name: 帯域幅のスケジュール
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: アクセス、電源、接続性
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: PowerShell から
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: 監視
+          href: data-box-gateway-monitor.md
+        - name: トラブルシューティング
+          href: data-box-gateway-troubleshoot.md
+    - name: リリース ノート
+      items:
+        - name: 一般公開
+          href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
-  - name: 概要
-    items:
-    - name: Azure Data Box Edge とは
-      href: data-box-edge-overview.md
-  - name: チュートリアル
-    items:
-    - name: 1 - 準備
-      href: data-box-edge-deploy-prep.md
-    - name: 2 - インストール
-      href: data-box-edge-deploy-install.md
-    - name: 3 - 接続、セットアップ、アクティブ化
-      href: data-box-edge-deploy-connect-setup-activate.md
-    - name: 4 - 追加、共有への接続
-      href: data-box-edge-deploy-add-shares.md
-    - name: 5 - コンピューティングの構成
-      href: data-box-edge-deploy-configure-compute.md
-  - name: 概念
-    items:
-    - name: 要件を確認する
-      href: data-box-edge-system-requirements.md
-    - name: 制限を理解する
-      href: data-box-edge-limits.md
-    - name: セキュリティの概要
-      href: data-box-edge-security.md
-    - name: 仕様の確認
-      href: data-box-edge-technical-specifications-compliance.md
-  - name: 方法
-    items:
-    - name: コンピューティングの管理
-      href: data-box-edge-manage-compute.md
-    - name: C# モジュールの開発
-      href: data-box-edge-create-iot-edge-module.md
-    - name: 共有の管理
-      href: data-box-edge-manage-shares.md
-    - name: ユーザーの管理
-      href: data-box-edge-manage-users.md
-    - name: 帯域幅スケジュールの管理
-      href: data-box-edge-manage-bandwidth-schedules.md
-    - name: 電源、アクセス、接続の管理
-      href: data-box-edge-manage-access-power-connectivity-mode.md
-    - name: PowerShell を通じた管理
-      href: data-box-edge-connect-powershell-interface.md
-    - name: トラブルシューティング
-      href: data-box-edge-troubleshoot.md
-    - name: 監視
-      href: data-box-edge-monitor.md
-  - name: リリース ノート
-    items:
-    - name: 一般公開
-      href: data-box-gateway-release-notes.md
+    - name: 概要
+      items:
+        - name: Azure Data Box Edge とは
+          href: data-box-edge-overview.md
+    - name: チュートリアル
+      items:
+        - name: 1 - 準備
+          href: data-box-edge-deploy-prep.md
+        - name: 2 - インストール
+          href: data-box-edge-deploy-install.md
+        - name: 3 - 接続、セットアップ、アクティブ化
+          href: data-box-edge-deploy-connect-setup-activate.md
+        - name: 4 - 追加、共有への接続
+          href: data-box-edge-deploy-add-shares.md
+        - name: 5 - コンピューティングの構成
+          href: data-box-edge-deploy-configure-compute.md
+    - name: 概念
+      items:
+        - name: 要件を確認する
+          href: data-box-edge-system-requirements.md
+        - name: 制限を理解する
+          href: data-box-edge-limits.md
+        - name: セキュリティの概要
+          href: data-box-edge-security.md
+        - name: 仕様の確認
+          href: data-box-edge-technical-specifications-compliance.md
+    - name: 方法
+      items:
+        - name: コンピューティングの管理
+          href: data-box-edge-manage-compute.md
+        - name: 'C# モジュールの開発'
+          href: data-box-edge-create-iot-edge-module.md
+        - name: 共有の管理
+          href: data-box-edge-manage-shares.md
+        - name: ユーザーの管理
+          href: data-box-edge-manage-users.md
+        - name: 帯域幅スケジュールの管理
+          href: data-box-edge-manage-bandwidth-schedules.md
+        - name: 電源、アクセス、接続の管理
+          href: data-box-edge-manage-access-power-connectivity-mode.md
+        - name: PowerShell を通じた管理
+          href: data-box-edge-connect-powershell-interface.md
+        - name: トラブルシューティング
+          href: data-box-edge-troubleshoot.md
+        - name: 監視
+          href: data-box-edge-monitor.md
+    - name: リリース ノート
+      items:
+        - name: 一般公開
+          href: data-box-gateway-release-notes.md
 - name: リソース
   items:
-  - name: Data Box Edge C# モジュールのサンプル (.NET)
-    href: https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/
-  - name: Data Box Edge/Gateway 製品
-    href: https://azure.microsoft.com/services/storage/databox/edge/
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: f601de8c731354c6d01cfdc6de60115904a37d07
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679621"
+    - name: 'Data Box Edge C# モジュールのサンプル (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
+    - name: Data Box Edge/Gateway 製品
+      href: 'https://azure.microsoft.com/services/storage/databox/edge/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -13,11 +13,11 @@ ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
 ms.openlocfilehash: 1fdf195e5d02c9264bf24d9cf3ac8b1a47ed850b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878032"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61227139"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure Virtual Machines のトラブルシューティング
 

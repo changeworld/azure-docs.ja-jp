@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 89376bf654a23b37e004a1b9b00e32a0c2ac3e2a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495074"
 documentType: LandingData
 title: Azure for Containers
 metadata:
-  document_id: 
+  document_id: null
   title: Azure for Containers - クイック スタート、チュートリアル、API リファレンス
   description: コンテナーのクイック スタート、チュートリアル、およびツールを使用して Azure でコンテナー アプリのデプロイや管理を開始します。
   keywords: Azure、Containers、Docker、API、Kubernetes
@@ -19,68 +13,69 @@ metadata:
   ms.topic: article
   ms.prod: azure
   featureFlags:
-  - clicktale
+    - clicktale
   ms.technology: azure
   ms.devlang: multiple
   ms.service: multiple
 sections:
-- items:
-  - type: markdown
-    text: "コンテナーの Azure ツールやサービスを使用してコンテナー アプリのデプロイと管理を開始します。 \n"
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure サービスでコンテナーを使用する方法について説明します。
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
+  - items:
+      - type: markdown
+        text: |
+          コンテナーの Azure ツールやサービスを使用してコンテナー アプリのデプロイと管理を開始します。 
+  - title: 5 分間のクイック スタート
     items:
-    - href: ../aks/kubernetes-walkthrough.md
-      title: Azure Kubernetes Service (AKS) を使用して Kubernetes クラスターを作成する
-      image:
-        src: /azure/media/index/ContainerService.svg
-    - href: https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers
-      title: Service Fabric の Windows コンテナー アプリケーションをデプロイする
-      image:
-        src: /azure/media/index/Fabric.svg
-    - href: https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go
-      title: Azure Web App for Containers でコンテナー化されたアプリを作成する
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_linux.svg
-    - href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-      title: Azure Container Registry にプライベート Docker レジストリを作成する
-      image:
-        src: /azure/media/index/container-registry.svg
-    - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-      title: Azure Container Instances でコンテナー アプリをオンデマンドで実行する
-      image:
-        src: /azure/media/index/containerinstances.svg
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure サービスを使用してコンテナー アプリをデプロイ、管理、および更新する方法について説明します
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Azure サービスでコンテナーを使用する方法について説明します。
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: ../aks/kubernetes-walkthrough.md
+            title: Azure Kubernetes Service (AKS) を使用して Kubernetes クラスターを作成する
+            image:
+              src: /azure/media/index/ContainerService.svg
+          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
+            title: Service Fabric の Windows コンテナー アプリケーションをデプロイする
+            image:
+              src: /azure/media/index/Fabric.svg
+          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
+            title: Azure Web App for Containers でコンテナー化されたアプリを作成する
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+            title: Azure Container Registry にプライベート Docker レジストリを作成する
+            image:
+              src: /azure/media/index/container-registry.svg
+          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
+            title: Azure Container Instances でコンテナー アプリをオンデマンドで実行する
+            image:
+              src: /azure/media/index/containerinstances.svg
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">コンテナーをビルドして Azure Kubernetes Service にデプロイする</a>
-    - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">.NET コンテナー アプリをビルドして Azure Service Fabric にデプロイする</a>
-    - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Web App for Containers でマルチコンテナー アプリを作成する</a>
-    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Azure Container Registry タスクを使用してコンテナー イメージをビルドしてデプロイする</a>
-    - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナーをビルドして Azure Container Instances にデプロイする</a>
-- title: Microsoft Learn でスキルを身に付ける
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: Azure サービスを使用してコンテナー アプリをデプロイ、管理、および更新する方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">コンテナーをビルドして Azure Kubernetes Service にデプロイする</a>
+          - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">.NET コンテナー アプリをビルドして Azure Service Fabric にデプロイする</a>
+          - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Web App for Containers でマルチコンテナー アプリを作成する</a>
+          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Azure Container Registry タスクを使用してコンテナー イメージをビルドしてデプロイする</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナーをビルドして Azure Container Instances にデプロイする</a>
+  - title: Microsoft Learn でスキルを身に付ける
     items:
-    - title: Azure Container Instances での Docker コンテナーの実行
-      href: /learn/modules/run-docker-with-azure-container-instances/
-      image:
-        src: /learn/achievements/run-docker-with-azure-container-instances.svg
-        href: /learn/modules/run-docker-with-azure-container-instances/
-    - title: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
-      href: /learn/modules/build-and-store-container-images/
-      image:
-        src: /learn/achievements/build-and-store-container-images.svg
-        href: /learn/modules/build-and-store-container-images/
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Container Instances での Docker コンテナーの実行
+            href: /learn/modules/run-docker-with-azure-container-instances/
+            image:
+              src: /learn/achievements/run-docker-with-azure-container-instances.svg
+              href: /learn/modules/run-docker-with-azure-container-instances/
+          - title: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
+            href: /learn/modules/build-and-store-container-images/
+            image:
+              src: /learn/achievements/build-and-store-container-images.svg
+              href: /learn/modules/build-and-store-container-images/

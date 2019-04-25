@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dcd0461e185fa97853bcd84e53bb43aacc5799c0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517013"
 documentType: LandingData
 title: Azure Database for MariaDB のドキュメント
 metadata:
@@ -18,47 +12,47 @@ metadata:
 abstract:
   description: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 次を使用して Azure 上に MariaDB データベースを作成する方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal
-    - image:
-        src: /azure/virtual-machines/linux/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: データベースの設計とアプリの開発を行う方法について説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 次を使用して Azure 上に MariaDB データベースを作成する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/virtual-machines/linux/media/index/portal.svg
+            text: Azure Portal
+            href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal
+          - image:
+              src: /azure/virtual-machines/linux/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: データベースを設計する&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure Portal</a> | <a href="/azure/mariadb/tutorial-design-database-cli">Azure CLI</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的なタスクを管理するためのスクリプトを探します。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: データベースの設計とアプリの開発を行う方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: 'データベースを設計する&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure Portal</a> | <a href="/azure/mariadb/tutorial-design-database-cli">Azure CLI</a>'
+  - title: サンプル
     items:
-    - html: <a href="/azure/mariadb/sample-scripts-azure-cli">Azure CLI</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 一般的なタスクを管理するためのスクリプトを探します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/mariadb/sample-scripts-azure-cli">Azure CLI</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/mariadb">Azure CLI</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/mariadb/">REST API</a></p>
-    - title: Azure Resource Manager
-      html: <p><a href="/azure/templates/microsoft.dbformariadb/allversions">Resource Manager テンプレート</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/mariadb">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/mariadb/">REST API</a></p>
+          - title: Azure Resource Manager
+            html: <p><a href="/azure/templates/microsoft.dbformariadb/allversions">Resource Manager テンプレート</a></p>

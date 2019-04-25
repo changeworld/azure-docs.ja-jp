@@ -49,7 +49,7 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
-    - name: サブスクリプション
+    - name: Subscriptions
       href: api-management-subscriptions.md
     - name: Automation を使用して管理する
       href: automation-manage-api-management.md
@@ -57,6 +57,8 @@
       href: api-management-error-handling-policies.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
+    - name: Azure の一般的なセキュリティ属性
+      href: api-management-security-attributes.md
 - name: ハウツー ガイド
   items:
     - name: API の定義

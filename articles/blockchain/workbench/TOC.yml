@@ -1,80 +1,73 @@
-items:
 - name: Azure Blockchain Workbench (パブリック プレビュー)
   href: index.yml
 - name: 概要
-  items:
-  - name: Azure Blockchain Workbench について
-    href: overview.md
   expanded: true
+  items:
+    - name: Azure Blockchain Workbench について
+      href: overview.md
 - name: チュートリアル
-  items:
-  - name: ブロックチェーン アプリを作成する
-    href: create-app.md
-  - name: ブロックチェーン アプリを使用する
-    href: use.md
   expanded: true
+  items:
+    - name: ブロックチェーン アプリを作成する
+      href: create-app.md
+    - name: ブロックチェーン アプリを使用する
+      href: use.md
 - name: 概念
   items:
-  - name: アーキテクチャ
-    href: architecture.md
-  - name: 統合のパターン
-    href: integration-patterns.md
+    - name: アーキテクチャ
+      href: architecture.md
+    - name: 統合のパターン
+      href: integration-patterns.md
 - name: ハウツー ガイド
-  items:
-  - name: Workbench をデプロイする
-    href: deploy.md
-  - name: Workbench ユーザーを管理する
-    href: manage-users.md
-  - name: アプリのバージョン管理
-    href: version-app.md
-  - name: Workbench API を使用する
-    href: use-api.md
-  - name: アプリのトラブルシューティング
-    href: troubleshooting.md
-  - name: Workbench データを使用する
-    items:
-    - name: DB ファイアウォールを構成する
-      href: database-firewall.md
-    - name: DB の詳細を取得する
-      href: getdb-details.md
-    - name: Excel でデータを使用する
-      href: data-excel.md
-    - name: Power BI でデータを使用する
-      href: data-powerbi.md
-    - name: SQL Management Studio でデータを使用する
-      href: data-sql-management-studio.md
   expanded: true
+  items:
+    - name: Workbench をデプロイする
+      href: deploy.md
+    - name: Workbench ユーザーを管理する
+      href: manage-users.md
+    - name: アプリのバージョン管理
+      href: version-app.md
+    - name: Workbench API を使用する
+      href: use-api.md
+    - name: アプリのトラブルシューティング
+      href: troubleshooting.md
+    - name: Workbench データを使用する
+      items:
+        - name: DB ファイアウォールを構成する
+          href: database-firewall.md
+        - name: DB の詳細を取得する
+          href: getdb-details.md
+        - name: Excel でデータを使用する
+          href: data-excel.md
+        - name: Power BI でデータを使用する
+          href: data-powerbi.md
+        - name: SQL Management Studio でデータを使用する
+          href: data-sql-management-studio.md
 - name: リファレンス
   items:
-  - name: 構成
-    href: configuration.md
-  - name: データベース ビュー
-    href: database-views.md
-  - name: メッセージング API
-    href: messages-overview.md
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+    - name: 構成
+      href: configuration.md
+    - name: データベース ビュー
+      href: database-views.md
+    - name: メッセージング API
+      href: messages-overview.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: リソース
   items:
-  - name: ブログ
-    href: https://azure.microsoft.com/blog/topics/blockchain/
-  - name: コード サンプル
-    href: https://github.com/Azure-Samples/blockchain
-  - name: コミュニティ
-    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
-  - name: フォーラム
-    href: https://aka.ms/workbenchforum
-  - name: 製品フィードバック
-    href: https://aka.ms/blockchainuservoice
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: コード サンプル
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: コミュニティ
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: フォーラム
+      href: 'https://aka.ms/workbenchforum'
+    - name: 製品フィードバック
+      href: 'https://aka.ms/blockchainuservoice'
 - name: ソリューション テンプレート
   items:
-  - name: Ethereum Proof-of-Authority Consortium
-    href: ../templates/ethereum-poa-deployment.md
-  - name: Hyperledger Fabric コンソーシアム
-    href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001929"
+    - name: Ethereum Proof-of-Authority Consortium
+      href: ../templates/ethereum-poa-deployment.md
+    - name: Hyperledger Fabric コンソーシアム
+      href: ../templates/hyperledger-fabric-consortium-blockchain.md

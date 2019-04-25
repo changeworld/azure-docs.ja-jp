@@ -1,20 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6acffc5056f916f2e05c7a0fd3eb325fd89a9e4b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117053"
 documentType: LandingData
 title: Azure の専用 HSM のドキュメント
 metadata:
   title: Azure の専用 HSM のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
   services: dedicated-hsm
   author: barclayn
   manager: barbkess
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: dedicated-hsm
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -24,42 +18,42 @@ metadata:
 abstract:
   description: 専用 HSM 機能と、使用している環境に適用されるかどうかについて説明します。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/dedicated-hsm/overview
+            html: <p>Azure の専用 HSM の全容を学習します。</p>
+            image:
+              src: media/index/hsm.svg
+            title: Azure の専用 HSM の概要
+          - href: /azure/dedicated-hsm/faq
+            html: <p>専用 HSM を使用する場合の設計に関する考慮事項</p>
+            image:
+              src: media/index/guide.svg
+            title: デプロイ アーキテクチャの決定
+  - title: ステップバイステップのチュートリアル
     items:
-    - href: /azure/dedicated-hsm/overview
-      html: <p>Azure の専用 HSM の全容を学習します。</p>
-      image:
-        src: media/index/hsm.svg
-      title: Azure の専用 HSM の概要
-    - href: /azure/dedicated-hsm/faq
-      html: <p>専用 HSM を使用する場合の設計に関する考慮事項</p>
-      image:
-        src: media/index/guide.svg
-      title: デプロイ アーキテクチャの決定
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: ''
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cli.svg
+            text: Azure CLI
+            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
+          - image:
+              src: media/index/logo_powershell.svg
+            text: PowerShell
+            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
+  - title: リファレンス
     items:
-    - image:
-        src: media/index/cli.svg
-      text: Azure CLI
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-    - image:
-        src: media/index/logo_powershell.svg
-      text: PowerShell
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: FAQ
-      html: <p><a href="/azure/dedicated-hsm/faq/">よく寄せられる質問</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: FAQ
+            html: <p><a href="/azure/dedicated-hsm/faq/">よく寄せられる質問</a></p>

@@ -1,110 +1,109 @@
-items:
 - name: Azure VM のトラブルシューティング
   href: index.md
 - name: 割り当ての失敗
   items:
-  - name: 割り当ての失敗
-    href: allocation-failure.md
-  - name: クラシック デプロイの割り当ての失敗
-    href: allocation-failure-classic.md
+    - name: 割り当ての失敗
+      href: allocation-failure.md
+    - name: クラシック デプロイの割り当ての失敗
+      href: allocation-failure-classic.md
 - name: RDP
   href: rdp.md
   items:
-  - name: RDP のリセット
-    href: reset-rdp.md
-  - name: RDP のトラブルシューティング
-    href: troubleshoot-rdp-connection.md
-  - name: RDP のトラブルシューティングの詳細
-    href: detailed-troubleshoot-rdp.md
-  - name: 無効になっている DHCP に起因する RDP エラーのトラブルシューティング
-    href: troubleshoot-rdp-dhcp-disabled.md
-  - name: NSG 設定による RDP エラーのトラブルシューティング
-    href: troubleshoot-rdp-nsg-problem.md
-  - name: 特定のエラーのトラブルシューティング
-    href: troubleshoot-specific-rdp-errors.md
-  - name: ライセンス サーバーがない問題のトラブルシューティング
-    href: troubleshoot-rdp-no-license-server.md
-  - name: リモート デスクトップ サービスの問題のトラブルシューティング
-    href: troubleshoot-remote-desktop-services-issues.md
-  - name: 内部エラーのトラブルシューティング
-    href: Troubleshoot-rdp-internal-error.md
-  - name: 接続が頻繁に切れる問題のトラブルシューティング
-    href: troubleshoot-rdp-intermittent-connectivity.md
-  - name: 一般的なエラーのトラブルシューティング
-    href: troubleshoot-rdp-general-error.md
-  - name: 認証エラーのトラブルシューティング
-    href: troubleshoot-authentication-error-rdp-vm.md
-  - name: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
-    href: event-id-troubleshoot-vm-rdp-connecton.md
-  - name: 静的 IP に起因する VM の RDP エラーのトラブルシューティング
-    href: troubleshoot-rdp-static-ip.md
-  - name: 無効になっている NIC に起因する VM の RDP エラーのトラブルシューティング
-    href: troubleshoot-rdp-nic-disabled.md
-  - name: セーフ モードによる RDP エラーのトラブルシューティング
-    href: troubleshoot-rdp-safe-mode.md
-  - name: Azure VM でゲスト OS ファイアウォールを無効にする
-    href: disable-guest-os-firewall-windows.md
-  - name: ゲスト OS でファイアウォール規則を有効または無効にする
-    href: enable-disable-firewall-rule-guest-os.md
-  - name: ゲスト OS のファイアウォールが受信トラフィックをブロックしている
-    href: guest-os-firewall-blocking-inbound-traffic.md
-  - name: ゲスト OS のファイアウォールが正しく構成されていない
-    href: guest-os-firewall-misconfigured.md
-  - name: netvsc.sys による RDP エラーのトラブルシューティング
-    href: troubleshoot-rdp-driver-netvsc.md
+    - name: RDP のリセット
+      href: reset-rdp.md
+    - name: RDP のトラブルシューティング
+      href: troubleshoot-rdp-connection.md
+    - name: RDP のトラブルシューティングの詳細
+      href: detailed-troubleshoot-rdp.md
+    - name: 無効になっている DHCP に起因する RDP エラーのトラブルシューティング
+      href: troubleshoot-rdp-dhcp-disabled.md
+    - name: NSG 設定による RDP エラーのトラブルシューティング
+      href: troubleshoot-rdp-nsg-problem.md
+    - name: 特定のエラーのトラブルシューティング
+      href: troubleshoot-specific-rdp-errors.md
+    - name: ライセンス サーバーがない問題のトラブルシューティング
+      href: troubleshoot-rdp-no-license-server.md
+    - name: リモート デスクトップ サービスの問題のトラブルシューティング
+      href: troubleshoot-remote-desktop-services-issues.md
+    - name: 内部エラーのトラブルシューティング
+      href: Troubleshoot-rdp-internal-error.md
+    - name: 接続が頻繁に切れる問題のトラブルシューティング
+      href: troubleshoot-rdp-intermittent-connectivity.md
+    - name: 一般的なエラーのトラブルシューティング
+      href: troubleshoot-rdp-general-error.md
+    - name: 認証エラーのトラブルシューティング
+      href: troubleshoot-authentication-error-rdp-vm.md
+    - name: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
+      href: event-id-troubleshoot-vm-rdp-connecton.md
+    - name: 静的 IP に起因する VM の RDP エラーのトラブルシューティング
+      href: troubleshoot-rdp-static-ip.md
+    - name: 無効になっている NIC に起因する VM の RDP エラーのトラブルシューティング
+      href: troubleshoot-rdp-nic-disabled.md
+    - name: セーフ モードによる RDP エラーのトラブルシューティング
+      href: troubleshoot-rdp-safe-mode.md
+    - name: Azure VM でゲスト OS ファイアウォールを無効にする
+      href: disable-guest-os-firewall-windows.md
+    - name: ゲスト OS でファイアウォール規則を有効または無効にする
+      href: enable-disable-firewall-rule-guest-os.md
+    - name: ゲスト OS のファイアウォールが受信トラフィックをブロックしている
+      href: guest-os-firewall-blocking-inbound-traffic.md
+    - name: ゲスト OS のファイアウォールが正しく構成されていない
+      href: guest-os-firewall-misconfigured.md
+    - name: netvsc.sys による RDP エラーのトラブルシューティング
+      href: troubleshoot-rdp-driver-netvsc.md
 - name: SSH
   items:
-  - name: SSH のトラブルシューティング
-    href: troubleshoot-ssh-connection.md
-  - name: ファイル システム エラーのトラブルシューティング
-    href: https://support.microsoft.com/help/3213321
-  - name: カーネルに関連するブートの問題のトラブルシューティング
-    href: https://support.microsoft.com/help/4091524
-  - name: fstab エラーのトラブルシューティング
-    href: https://support.microsoft.com/help/3206699
-  - name: SSH のトラブルシューティングの詳細
-    href: detailed-troubleshoot-ssh-connection.md
+    - name: SSH のトラブルシューティング
+      href: troubleshoot-ssh-connection.md
+    - name: ファイル システム エラーのトラブルシューティング
+      href: 'https://support.microsoft.com/help/3213321'
+    - name: カーネルに関連するブートの問題のトラブルシューティング
+      href: 'https://support.microsoft.com/help/4091524'
+    - name: fstab エラーのトラブルシューティング
+      href: 'https://support.microsoft.com/help/3206699'
+    - name: SSH のトラブルシューティングの詳細
+      href: detailed-troubleshoot-ssh-connection.md
 - name: 一般的なエラー メッセージ
   href: error-messages.md
 - name: Windows VM のパフォーマンスの問題
   href: performance-diagnostics.md
   items:
-  - name: PerfInsights を使用する方法
-    href: how-to-use-perfInsights.md
-  - name: パフォーマンス診断拡張機能
-    href: performance-diagnostics-vm-extension.md
+    - name: PerfInsights を使用する方法
+      href: how-to-use-perfInsights.md
+    - name: パフォーマンス診断拡張機能
+      href: performance-diagnostics-vm-extension.md
 - name: Windows VM エージェントのオフライン インストール
   href: install-vm-agent-offline.md
 - name: VM を再デプロイする
   items:
-  - name: " Linux"
-    href: redeploy-to-new-node-linux.md
-  - name: " Windows"
-    href: redeploy-to-new-node-windows.md
+    - name: Linux
+      href: redeploy-to-new-node-linux.md
+    - name: ' Windows'
+      href: redeploy-to-new-node-windows.md
 - name: VM パスワードのリセット
   items:
-  - name: " Windows"
-    href: reset-local-password-without-agent.md
-  - name: " Linux"
-    href: reset-password.md
+    - name: ' Windows'
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
 - name: NIC のリセット
   href: reset-network-interface.md
 - name: VM の再起動またはサイズ変更
   href: restart-resize-error-troubleshooting.md
 - name: シリアル コンソールの使用
   items:
-  - name: Linux VM
-    href: serial-console-linux.md
-    items:
-    - name: シリアル コンソール GRUB/シングル ユーザー モード
-      href: serial-console-grub-single-user-mode.md
-    - name: シリアル コンソール NMI/SysRq
-      href: serial-console-nmi-sysrq.md
-  - name: Windows VM
-    href: serial-console-windows.md
-    items:
-    - name: CMD と PowerShell コマンド
-      href: serial-console-cmd-ps-commands.md
+    - name: Linux VM
+      href: serial-console-linux.md
+      items:
+        - name: シリアル コンソール GRUB/シングル ユーザー モード
+          href: serial-console-grub-single-user-mode.md
+        - name: シリアル コンソール NMI/SysRq
+          href: serial-console-nmi-sysrq.md
+    - name: Windows VM
+      href: serial-console-windows.md
+      items:
+        - name: CMD と PowerShell コマンド
+          href: serial-console-cmd-ps-commands.md
 - name: ストレージ リソースの削除時のエラー
   href: storage-resource-deletion-errors.md
 - name: クラシック ストレージ リソースの削除時のエラー
@@ -119,51 +118,51 @@ items:
   href: troubleshoot-app-connection.md
 - name: 新しい VM のデプロイ
   items:
-  - name: " Linux"
-    href: troubleshoot-deployment-new-vm-linux.md
-  - name: " Windows"
-    href: troubleshoot-deployment-new-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deployment-new-vm-linux.md
+    - name: ' Windows'
+      href: troubleshoot-deployment-new-vm-windows.md
 - name: デプロイのトラブルシューティング
   items:
-  - name: " Linux"
-    href: troubleshoot-deploy-vm-linux.md
-  - name: " Windows"
-    href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: ' Windows'
+      href: troubleshoot-deploy-vm-windows.md
 - name: デバイス名が変更されている
   href: troubleshoot-device-names-problems.md
 - name: VM の復旧方法
   items:
-  - name: " Windows"
-    items:
-    - name: PowerShell
-      href: troubleshoot-recovery-disks-windows.md
-    - name: Azure ポータル
-      href: troubleshoot-recovery-disks-portal-windows.md
-  - name: " Linux"
-    items:
-    - name: CLI
-      href: troubleshoot-recovery-disks-linux.md
-    - name: Azure ポータル
-      href: troubleshoot-recovery-disks-portal-linux.md
+    - name: ' Windows'
+      items:
+        - name: PowerShell
+          href: troubleshoot-recovery-disks-windows.md
+        - name: Azure ポータル
+          href: troubleshoot-recovery-disks-portal-windows.md
+    - name: Linux
+      items:
+        - name: CLI
+          href: troubleshoot-recovery-disks-linux.md
+        - name: Azure ポータル
+          href: troubleshoot-recovery-disks-portal-linux.md
 - name: ブート エラー
   href: boot-error-troubleshoot.md
   items:
-  - name: ブート診断
-    href: boot-diagnostics.md
-  - name: BitLocker のエラー
-    href: troubleshoot-bitlocker-boot-error.md
-  - name: ファイル システム エラーのチェック
-    href: troubleshoot-check-disk-boot-error.md
-  - name: ブルー スクリーン エラー
-    href: troubleshoot-common-blue-screen-error.md
-  - name: VM の起動が停止しています
-    href: troubleshoot-vm-boot-configure-update.md
-  - name: 重要なサービスが失敗しました
-    href: troubleshoot-critical-service-failed-boot-error.md
-  - name: 再起動ループ
-    href: troubleshoot-reboot-loop.md
-  - name: Windows Update でのスタック
-    href: troubleshoot-stuck-updating-boot-error.md
+    - name: ブート診断
+      href: boot-diagnostics.md
+    - name: BitLocker のエラー
+      href: troubleshoot-bitlocker-boot-error.md
+    - name: ファイル システム エラーのチェック
+      href: troubleshoot-check-disk-boot-error.md
+    - name: ブルー スクリーン エラー
+      href: troubleshoot-common-blue-screen-error.md
+    - name: VM の起動が停止しています
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: 重要なサービスが失敗しました
+      href: troubleshoot-critical-service-failed-boot-error.md
+    - name: 再起動ループ
+      href: troubleshoot-reboot-loop.md
+    - name: Windows Update でのスタック
+      href: troubleshoot-stuck-updating-boot-error.md
 - name: 調整エラー
   href: troubleshooting-throttling-errors.md
 - name: 入れ子になった仮想化の使用
@@ -172,9 +171,3 @@ items:
   href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382968"

@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199871"
 documentType: LandingData
 title: Azure Search のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Search のドキュメント - チュートリアル、クイックスタート、API リファレンス
   description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。
   services: search
@@ -23,52 +17,52 @@ abstract:
   description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>新しいコグニティブ検索のプレビュー。</b></a> プレリリース版の REST API を使用して、AI を使用したアルゴリズムをインデックス パイプラインにバインドします。 データを抽出し、自然言語と画像処理を呼び出して、生の非構造化コンテンツを Azure Search インデックスで検索可能なコンテンツに変換します。 <p/><a href="/azure/search/cognitive-search-quickstart-blob">リソースやサンプル データ</a>を使ってコグニティブ検索を調べるか、<a href="/azure/search/cognitive-search-concept-intro">概念</a>をさらに詳しくご確認ください。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
+      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
       width: 250
-    title: Azure Search とは (1:27)
-    href: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+    title: 'Azure Search とは (1:27)'
+    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: ポータルで Search サービスを開始した後、C# または REST でインデックスの定義、読み込み、クエリを実行できます。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/search/media/index/portal.svg
-      text: Azure ポータル
-      href: https://docs.microsoft.com/azure/search/search-create-service-portal
-    - image:
-        src: /azure/search/media/index/logo_Csharp.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
-    - image:
-        src: /azure/search/media/index/rest.svg
-      text: REST
-      href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: .NET または REST でコードを書くか、ポータルを使用して、概念の簡単なテストを実行します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'ポータルで Search サービスを開始した後、C# または REST でインデックスの定義、読み込み、クエリを実行できます。'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/search/media/index/portal.svg
+            text: Azure ポータル
+            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
+          - image:
+              src: /azure/search/media/index/logo_Csharp.svg
+            text: .NET
+            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
+          - image:
+              src: /azure/search/media/index/rest.svg
+            text: REST
+            href: 'https://docs.microsoft.com/azure/search/search-fiddler'
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">AI を使ったインデックス作成 (Cognitive Services)</a>
-    - html: <a href="/azure/search/search-howto-dotnet-sdk">.NET で Azure Search を使用する方法</a>
-    - html: <a href="/azure/search/search-indexer-tutorial">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>
-    - html: <a href="/azure/search/search-semi-structured-data">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>
-    - html: <a href="/azure/search/search-get-started-portal">インデックスの作成とクエリのテストにポータルを使用する</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: .NET または REST でコードを書くか、ポータルを使用して、概念の簡単なテストを実行します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">AI を使ったインデックス作成 (Cognitive Services)</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">.NET で Azure Search を使用する方法</a>
+          - html: <a href="/azure/search/search-indexer-tutorial">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>
+          - html: <a href="/azure/search/search-semi-structured-data">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>
+          - html: <a href="/azure/search/search-get-started-portal">インデックスの作成とクエリのテストにポータルを使用する</a>
+  - title: リファレンス
     items:
-    - title: 言語
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (管理)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (管理)</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/searchservice">Service API リファレンス</a></p><p><a href="/rest/api/searchmanagement">Management API リファレンス</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 言語
+            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (管理)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (管理)</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/searchservice">Service API リファレンス</a></p><p><a href="/rest/api/searchmanagement">Management API リファレンス</a></p>

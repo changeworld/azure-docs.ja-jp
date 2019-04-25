@@ -13,11 +13,11 @@ ms.topic: landing-page
 ms.date: 12/17/2018
 ms.author: dobett
 ms.openlocfilehash: 2295ca75b7ca266506dbc45b9017a08001ce6e2a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559997"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61451210"
 ---
 # <a name="iot-solution-accelerators-documentation"></a>IoT ソリューション アクセラレータのドキュメント
 

@@ -1,174 +1,167 @@
-items:
 - name: Azure DB for MariaDB のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure DB for MariaDB とは
-    href: overview.md
+    - name: Azure DB for MariaDB とは
+      href: overview.md
 - name: クイック スタート
-  items:
-  - name: DB の作成 - ポータル
-    href: quickstart-create-mariadb-server-database-using-azure-portal.md
-  - name: DB の作成 - Azure CLI
-    href: quickstart-create-mariadb-server-database-using-azure-cli.md
-  - name: 接続とクエリ
-    items:
-    - name: MySQL Workbench
-      href: connect-workbench.md
   expanded: true
+  items:
+    - name: DB の作成 - ポータル
+      href: quickstart-create-mariadb-server-database-using-azure-portal.md
+    - name: DB の作成 - Azure CLI
+      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: 接続とクエリ
+      items:
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: チュートリアル
   items:
-  - name: データベースの設計
-    items:
-    - name: Azure ポータル
-      href: tutorial-design-database-using-portal.md
-    - name: Azure CLI
-      href: tutorial-design-database-cli.md
+    - name: データベースの設計
+      items:
+        - name: Azure ポータル
+          href: tutorial-design-database-using-portal.md
+        - name: Azure CLI
+          href: tutorial-design-database-cli.md
 - name: サンプル
   items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+    - name: Azure CLI
+      href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-  - name: DB とサーバー
-    items:
-    - name: サーバー
-      href: concepts-servers.md
-    - name: サポートされているバージョン
-      href: concepts-supported-versions.md
-    - name: 高可用性
-      href: concepts-high-availability.md
-  - name: リソース
-    items:
-    - name: 価格レベル
-      href: concepts-pricing-tiers.md
-    - name: 制限
-      href: concepts-limits.md
-  - name: データ アクセスとセキュリティ
-    items:
-    - name: ファイアウォール規則
-      href: concepts-firewall-rules.md
-    - name: SSL の構成
-      href: concepts-ssl-connection-security.md
-    - name: VNet
-      href: concepts-data-access-security-vnet.md
-  - name: ビジネス継続性
-    items:
-    - name: 概要
-      href: concepts-business-continuity.md
-    - name: バックアップと復元
-      href: concepts-backup.md
-  - name: 監視
-    items:
+    - name: DB とサーバー
+      items:
+        - name: サーバー
+          href: concepts-servers.md
+        - name: サポートされているバージョン
+          href: concepts-supported-versions.md
+        - name: 高可用性
+          href: concepts-high-availability.md
+    - name: リソース
+      items:
+        - name: 価格レベル
+          href: concepts-pricing-tiers.md
+        - name: 制限
+          href: concepts-limits.md
+    - name: データ アクセスとセキュリティ
+      items:
+        - name: ファイアウォール規則
+          href: concepts-firewall-rules.md
+        - name: SSL の構成
+          href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-security-vnet.md
+    - name: ビジネス継続性
+      items:
+        - name: 概要
+          href: concepts-business-continuity.md
+        - name: バックアップと復元
+          href: concepts-backup.md
     - name: 監視
-      href: concepts-monitoring.md
-    - name: サーバー ログ
-      href: concepts-server-logs.md
-  - name: 開発
-    items:
-    - name: ドライバーとツールの互換性
-      href: concepts-compatibility.md
-    - name: 接続の回復性
-      href: concepts-connectivity.md
-  - name: レプリケーション
-    items:
-    - name: データイン レプリケーション
-      href: concepts-data-in-replication.md
+      items:
+        - name: 監視
+          href: concepts-monitoring.md
+        - name: サーバー ログ
+          href: concepts-server-logs.md
+    - name: 開発
+      items:
+        - name: ドライバーとツールの互換性
+          href: concepts-compatibility.md
+        - name: 接続の回復性
+          href: concepts-connectivity.md
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーション
+          href: concepts-data-in-replication.md
 - name: ハウツー ガイド
   items:
-  - name: ファイアウォール規則
-    items:
-    - name: Azure ポータル
-      href: howto-manage-firewall-portal.md
-    - name: Azure CLI
-      href: howto-manage-firewall-cli.md
-  - name: サーバーの復元
-    items:
-    - name: Azure ポータル
-      href: howto-restore-server-portal.md
-    - name: Azure CLI
-      href: howto-restore-server-cli.md
-  - name: データベースの移行
-    items:
-    - name: ダンプと復元
-      href: howto-migrate-dump-restore.md
-  - name: アプリケーションの接続
-    items:
-    - name: ユーザーの作成
-      href: howto-create-users.md
-    - name: Connection strings
-      href: howto-connection-string.md
-    - name: SSL の構成
-      href: howto-configure-ssl.md
-  - name: サーバー パラメーターの構成
-    items:
-    - name: Azure ポータル
-      href: howto-server-parameters.md
-    - name: Azure CLI
-      href: howto-configure-server-parameters-cli.md
-  - name: サーバー ログへのアクセス
-    items:
-    - name: Azure ポータル
-      href: howto-configure-server-logs-portal.md
-    - name: Azure CLI
-      href: howto-configure-server-logs-cli.md
-  - name: 監視
-    items:
-    - name: メトリックに基づいたアラートの作成
-      href: howto-alert-metric.md
-  - name: レプリケーション
-    items:
-    - name: データイン レプリケーションの構成
-      href: howto-data-in-replication.md
-  - name: トラブルシューティング
-    items:
-    - name: 接続エラーのトラブルシューティング
-      href: howto-troubleshoot-common-connection-issues.md
-    - name: クエリ パフォーマンスのトラブルシューティング
-      href: howto-troubleshoot-query-performance.md
-  - name: Virtual Network
-    items:
-    - name: Azure ポータル
-      href: howto-manage-vnet-portal.md
-    - name: Azure CLI
-      href: howto-manage-vnet-cli.md
-  - name: サーバーの再起動
-    items:
-    - name: Azure ポータル
-      href: howto-restart-server-portal.md
-    - name: Azure CLI
-      href: howto-restart-server-cli.md
+    - name: ファイアウォール規則
+      items:
+        - name: Azure ポータル
+          href: howto-manage-firewall-portal.md
+        - name: Azure CLI
+          href: howto-manage-firewall-cli.md
+    - name: サーバーの復元
+      items:
+        - name: Azure ポータル
+          href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
+    - name: データベースの移行
+      items:
+        - name: ダンプと復元
+          href: howto-migrate-dump-restore.md
+    - name: アプリケーションの接続
+      items:
+        - name: ユーザーの作成
+          href: howto-create-users.md
+        - name: Connection strings
+          href: howto-connection-string.md
+        - name: SSL の構成
+          href: howto-configure-ssl.md
+    - name: サーバー パラメーターの構成
+      items:
+        - name: Azure ポータル
+          href: howto-server-parameters.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-cli.md
+    - name: サーバー ログへのアクセス
+      items:
+        - name: Azure ポータル
+          href: howto-configure-server-logs-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-logs-cli.md
+    - name: 監視
+      items:
+        - name: メトリックに基づいたアラートの作成
+          href: howto-alert-metric.md
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーションの構成
+          href: howto-data-in-replication.md
+    - name: トラブルシューティング
+      items:
+        - name: 接続エラーのトラブルシューティング
+          href: howto-troubleshoot-common-connection-issues.md
+        - name: クエリ パフォーマンスのトラブルシューティング
+          href: howto-troubleshoot-query-performance.md
+    - name: Virtual Network
+      items:
+        - name: Azure ポータル
+          href: howto-manage-vnet-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-cli.md
+    - name: サーバーの再起動
+      items:
+        - name: Azure ポータル
+          href: howto-restart-server-portal.md
+        - name: Azure CLI
+          href: howto-restart-server-cli.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/mariadb
-  - name: REST API
-    href: /rest/api/mariadb
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.dbformariadb/allversions
-  - name: データイン レプリケーションのストアド プロシージャ
-    href: reference-data-in-stored-procedures.md
+    - name: Azure CLI
+      href: /cli/azure/mariadb
+    - name: REST API
+      href: /rest/api/mariadb
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.dbformariadb/allversions
+    - name: データイン レプリケーションのストアド プロシージャ
+      href: reference-data-in-stored-procedures.md
 - name: リソース
   items:
-  - name: デプロイ テンプレート
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/mariadb/
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-database-mariadb
-  - name: 機能をリクエストする
-    href: https://feedback.azure.com/forums/915439-azure-database-for-mariadb
-  - name: 利用可能なリージョン
-    href: https://azure.microsoft.com/regions/services/
-  - name: サポート オプション
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 1ad8ddc0cf189189b9457dabe6c2c2d665c838c3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621127"
+    - name: デプロイ テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/mariadb/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
+    - name: 機能をリクエストする
+      href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

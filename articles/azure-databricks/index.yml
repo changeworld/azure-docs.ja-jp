@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0a1c495362ef38723c61eace25ebb13ec9ed3a6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883646"
 documentType: LandingData
 title: Azure Databricks のドキュメント
 metadata:
@@ -20,45 +14,45 @@ abstract:
   description: ワンクリックで設定でき、ワークフローを合理化し、データ サイエンティスト、データ エンジニア、ビジネス アナリストの間のコラボレーションを可能にする、インタラクティブ ワークスペースを提供する Apache Spark ベースの分析プラットフォーム、Azure Databricks の使用方法について説明します。 クイック スタートとチュートリアルでは、Azure Databricks の概要と、他の Azure サービスと統合する方法を示します。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
     title: Azure Databricks の概要 (3 分 38 秒)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
+    href: 'https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/'
     width: 250
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure Databricks ワークスペースと Spark クラスターを作成してから、ジョブを実行する方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/azure-databricks/media/index/portal.svg
-      text: Azure ポータル
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-    - image:
-        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
-      text: Resource Manager テンプレート
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure Databricks を操作する方法について説明します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Azure Databricks ワークスペースと Spark クラスターを作成してから、ジョブを実行する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/azure-databricks/media/index/portal.svg
+            text: Azure ポータル
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+          - image:
+              src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+            text: Resource Manager テンプレート
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">データの抽出、変換、読み込み</a>
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Event Hubs からのデータのストリーム配信</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Cognitive Services を使用した感情分析</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">HDInsight Kafka からのデータのストリーム配信</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure Databricks を操作する方法について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">データの抽出、変換、読み込み</a>
+          - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Event Hubs からのデータのストリーム配信</a>
+          - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Cognitive Services を使用した感情分析</a>
+          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">HDInsight Kafka からのデータのストリーム配信</a>'
+  - title: リファレンス
     items:
-    - title: REST
-      html: <p><a href="/rest/api/databricks">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/databricks">REST API</a></p>
