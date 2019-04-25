@@ -1,197 +1,190 @@
-items:
 - name: Machine Learning Studio のドキュメント
   href: index.yml
 - name: 概要
-  items:
-  - name: Machine Learning Studio
-    displayName: overview
-    href: what-is-ml-studio.md
-  - name: Microsoft の ML 製品の比較
-    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-    maintainContext: true
   expanded: true
+  items:
+    - name: Machine Learning Studio
+      displayName: overview
+      href: what-is-ml-studio.md
+    - name: Microsoft の ML 製品の比較
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+      maintainContext: true
 - name: チュートリアル
   items:
-  - name: 初めての実験を作成する
-    displayName: quickstart
-    href: create-experiment.md
-  - name: 予測ソリューションを作成する
-    items:
-    - name: 1 - 実験の作成
-      href: tutorial-part1-credit-risk.md
-    - name: 2 - トレーニングと評価
-      href: tutorial-part2-credit-risk-train.md
-    - name: 3 - Web サービスのデプロイ
-      href: tutorial-part3-credit-risk-deploy.md
+    - name: 初めての実験を作成する
+      displayName: quickstart
+      href: create-experiment.md
+    - name: 予測ソリューションを作成する
+      items:
+        - name: 1 - 実験の作成
+          href: tutorial-part1-credit-risk.md
+        - name: 2 - トレーニングと評価
+          href: tutorial-part2-credit-risk-train.md
+        - name: 3 - Web サービスのデプロイ
+          href: tutorial-part3-credit-risk-deploy.md
 - name: サンプル
   items:
-  - name: 使用可能なデータセット
-    href: use-sample-datasets.md
-  - name: Azure AI ギャラリー
-    href: gallery-how-to-use-contribute-publish.md
+    - name: 使用可能なデータセット
+      href: use-sample-datasets.md
+    - name: Azure AI ギャラリー
+      href: gallery-how-to-use-contribute-publish.md
 - name: 概念
   items:
-  - name: 初心者向けデータ サイエンス解説
-    items:
-    - name: 1 - 5 つの質問
-      href: data-science-for-beginners-the-5-questions-data-science-answers.md
-    - name: 2 - データの準備はできていますか?
-      href: data-science-for-beginners-is-your-data-ready-for-data-science.md
-    - name: 3 - 適切な質問を投稿する
-      href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
-    - name: 4 - 回答を予測する
-      href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
-    - name: 5 - 他のユーザーの作業をコピーする
-      href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
-  - name: モデル管理
-    displayName: deploy, consume, web service
-    href: deploy-consume-web-service-guide.md
+    - name: 初心者向けデータ サイエンス解説
+      items:
+        - name: 1 - 5 つの質問
+          href: data-science-for-beginners-the-5-questions-data-science-answers.md
+        - name: 2 - データの準備はできていますか?
+          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
+        - name: 3 - 適切な質問を投稿する
+          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
+        - name: 4 - 回答を予測する
+          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
+        - name: 5 - 他のユーザーの作業をコピーする
+          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: モデル管理
+      displayName: 'deploy, consume, web service'
+      href: deploy-consume-web-service-guide.md
 - name: ハウツー ガイド
   items:
-  - name: ワークスペースを管理する
-    items:
-    - name: Create
-      href: create-workspace.md
-    - name: 管理
-      href: manage-workspace.md
-    - name: トラブルシューティング
-      href: troubleshooting-creating-ml-workspace.md
-    - name: ARM を使用してデプロイする
-      href: deploy-with-resource-manager-template.md
-  - name: トレーニング データをインポートする
-    items:
-    - name: Import data
-      href: import-data.md
-    - name: オンプレミス SQL からのデータの使用
-      displayName: on-premises
-      href: use-data-from-an-on-premises-sql-server.md
-  - name: モデルをトレーニングする
-    items:
-    - name: 実験のライフサイクル管理
-      href: version-control.md
-    - name: 実験イテレーションの管理
-      href: manage-experiment-iterations.md
-    - name: PowerShell でモデルを作成する
-      displayName: endpoint, endpoints
-      href: create-models-and-endpoints-with-powershell.md
-    - name: AI Gallery での実験の試行
-      displayName: gallery
-      href: sample-experiments.md
-    - name: 結果を評価し解釈する
+    - name: ワークスペースを管理する
       items:
-      - name: パフォーマンスの評価
-        href: evaluate-model-performance.md
-      - name: パラメーターを最適化する
-        displayName: optimization
-        href: algorithm-parameters-optimize.md
-      - name: 結果を解釈する
-        href: interpret-model-results.md
-      - name: デバッグ
-        href: debug-models.md
-    - name: モデルの再トレーニング
+        - name: Create
+          href: create-workspace.md
+        - name: 管理
+          href: manage-workspace.md
+        - name: トラブルシューティング
+          href: troubleshooting-creating-ml-workspace.md
+        - name: ARM を使用してデプロイする
+          href: deploy-with-resource-manager-template.md
+    - name: トレーニング データをインポートする
       items:
-      - name: "\"新しい\" Web サービス"
-        href: retrain-machine-learning-model.md
-      - name: クラシック Web サービス
-        href: retrain-classic-web-service.md
-    - name: R と Python の使用
+        - name: Import data
+          href: import-data.md
+        - name: オンプレミス SQL からのデータの使用
+          displayName: on-premises
+          href: use-data-from-an-on-premises-sql-server.md
+    - name: モデルをトレーニングする
       items:
-      - name: R の概要
-        href: r-get-started.md
-      - name: R スクリプトを実行する
-        href: extend-your-experiment-with-r.md
-      - name: カスタム R モジュールを作成する
-        href: custom-r-modules.md
-      - name: Python スクリプトを実行する
-        href: execute-python-scripts.md
-  - name: アルゴリズムを選択する
-    items:
+        - name: 実験のライフサイクル管理
+          href: version-control.md
+        - name: 実験イテレーションの管理
+          href: manage-experiment-iterations.md
+        - name: PowerShell でモデルを作成する
+          displayName: 'endpoint, endpoints'
+          href: create-models-and-endpoints-with-powershell.md
+        - name: AI Gallery での実験の試行
+          displayName: gallery
+          href: sample-experiments.md
+        - name: 結果を評価し解釈する
+          items:
+            - name: パフォーマンスの評価
+              href: evaluate-model-performance.md
+            - name: パラメーターを最適化する
+              displayName: optimization
+              href: algorithm-parameters-optimize.md
+            - name: 結果を解釈する
+              href: interpret-model-results.md
+            - name: デバッグ
+              href: debug-models.md
+        - name: モデルの再トレーニング
+          items:
+            - name: '"新しい" Web サービス'
+              href: retrain-machine-learning-model.md
+            - name: クラシック Web サービス
+              href: retrain-classic-web-service.md
+        - name: R と Python の使用
+          items:
+            - name: R の概要
+              href: r-get-started.md
+            - name: R スクリプトを実行する
+              href: extend-your-experiment-with-r.md
+            - name: カスタム R モジュールを作成する
+              href: custom-r-modules.md
+            - name: Python スクリプトを実行する
+              href: execute-python-scripts.md
     - name: アルゴリズムを選択する
-      href: algorithm-choice.md
-    - name: アルゴリズム チート シート
-      href: algorithm-cheat-sheet.md
-    - name: アルゴリズムの使用例
-      displayName: infographic, studio basics
-      href: basics-infographic-with-algorithm-examples.md
-  - name: モデルをデプロイする
-    items:
-    - name: Web サービスのデプロイ
-      displayName: publish, multiple regions
-      href: publish-a-machine-learning-web-service.md
-    - name: 動作のしくみ
-      href: model-progression-experiment-to-web-service.md
-    - name: デプロイの準備をする
-      href: convert-training-experiment-to-scoring-experiment.md
-    - name: 外部データを使用する
-      displayName: import, export
-      href: web-services-that-use-import-export-modules.md
-    - name: Web サービス パラメーターを使用する
-      href: web-service-parameters.md
-    - name: ログの有効化
-      href: web-services-logging.md
-  - name: Web サービスを管理する
-    items:
-    - name: Web サービス ポータルを使用する
-      href: manage-new-webservice.md
-    - name: API で管理する
-      displayName: endpoint, endpoints
-      href: manage-web-service-endpoints-using-api-management.md
-    - name: エンドポイントを作成する
-      displayName: scale, scaling
-      href: create-endpoint.md
-  - name: モデルを使用する
-    items:
-    - name: 概要
-      href: consume-web-services.md
-    - name: Excel を使用する
-      href: consuming-from-excel.md
-    - name: Excel アドインを使用する
-      href: excel-add-in-for-web-services.md
-    - name: Batch プールを使用する
-      href: dedicated-capacity-for-bes-jobs.md
-  - name: ユース ケース
-    items:
-    - name: 顧客離れ
-      href: azure-ml-customer-churn-scenario.md
-    - name: センチメント分析
-      href: text-analytics-module-tutorial.md
-    - name: Excel から Studio への分析の移行
-      href: linear-regression-in-azure.md
-  - name: 顧客データの削除とエクスポート
-    items:
-    - name: Studio データ
-      displayName: export
-      href: export-delete-personal-data-dsr.md
-    - name: Gallery データ
-      displayName: export
-      href: ai-gallery-control-personal-data-dsr.md
+      items:
+        - name: アルゴリズムを選択する
+          href: algorithm-choice.md
+        - name: アルゴリズム チート シート
+          href: algorithm-cheat-sheet.md
+        - name: アルゴリズムの使用例
+          displayName: 'infographic, studio basics'
+          href: basics-infographic-with-algorithm-examples.md
+    - name: モデルをデプロイする
+      items:
+        - name: Web サービスのデプロイ
+          displayName: 'publish, multiple regions'
+          href: publish-a-machine-learning-web-service.md
+        - name: 動作のしくみ
+          href: model-progression-experiment-to-web-service.md
+        - name: デプロイの準備をする
+          href: convert-training-experiment-to-scoring-experiment.md
+        - name: 外部データを使用する
+          displayName: 'import, export'
+          href: web-services-that-use-import-export-modules.md
+        - name: Web サービス パラメーターを使用する
+          href: web-service-parameters.md
+        - name: ログの有効化
+          href: web-services-logging.md
+    - name: Web サービスを管理する
+      items:
+        - name: Web サービス ポータルを使用する
+          href: manage-new-webservice.md
+        - name: API で管理する
+          displayName: 'endpoint, endpoints'
+          href: manage-web-service-endpoints-using-api-management.md
+        - name: エンドポイントを作成する
+          displayName: 'scale, scaling'
+          href: create-endpoint.md
+    - name: モデルを使用する
+      items:
+        - name: 概要
+          href: consume-web-services.md
+        - name: Excel を使用する
+          href: consuming-from-excel.md
+        - name: Excel アドインを使用する
+          href: excel-add-in-for-web-services.md
+        - name: Batch プールを使用する
+          href: dedicated-capacity-for-bes-jobs.md
+    - name: ユース ケース
+      items:
+        - name: 顧客離れ
+          href: azure-ml-customer-churn-scenario.md
+        - name: センチメント分析
+          href: text-analytics-module-tutorial.md
+        - name: Excel から Studio への分析の移行
+          href: linear-regression-in-azure.md
+    - name: 顧客データの削除とエクスポート
+      items:
+        - name: Studio データ
+          displayName: export
+          href: export-delete-personal-data-dsr.md
+        - name: Gallery データ
+          displayName: export
+          href: ai-gallery-control-personal-data-dsr.md
 - name: リファレンス
   items:
-  - name: アルゴリズムとモジュールのリファレンス
-    href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
-  - name: Azure PowerShell モジュール
-    href: powershell-module.md
-  - name: Web サービスのエラー コード
-    href: web-service-error-codes.md
-  - name: REST 管理 API
-    href: /rest/api/machinelearning
+    - name: アルゴリズムとモジュールのリファレンス
+      href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
+    - name: Azure PowerShell モジュール
+      href: powershell-module.md
+    - name: Web サービスのエラー コード
+      href: web-service-error-codes.md
+    - name: REST 管理 API
+      href: /rest/api/machinelearning
 - name: リソース
   items:
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
-  - name: サポートを受ける
-    href: support-aml-studio.md
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: カスタム ニューラル ネットワーク (Net#)
-    href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 4dacfd217bf089dac87128107901a17805117b4e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183783"
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
+    - name: サポートを受ける
+      href: support-aml-studio.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: 'カスタム ニューラル ネットワーク (Net#)'
+      href: azure-ml-netsharp-reference-guide.md

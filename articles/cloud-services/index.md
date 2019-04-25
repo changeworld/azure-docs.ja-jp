@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 300762cd98f66af80dd6fd7079005ef17ece2ade
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 80f28d5f42dfacd2fa5d553b545bff5708eb09ca
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24101884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629142"
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services のドキュメント
 
-Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法について説明します。  チュートリアルや API リファレンスなどのドキュメントでは、仮想マシン ホストの管理方法やソフトウェアの構成、修正、インストールの方法を紹介します。
+Cloud Services を使用して、可用性と拡張性に優れたクラウド アプリケーションや API をホストして実行する方法について説明します。  チュートリアルや API リファレンスなどのドキュメントでは、仮想マシンのホストの管理方法やソフトウェアの構成、修正、インストールの方法を紹介します。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -107,7 +107,7 @@ Cloud Services を使用して、可用性と拡張性に優れたクラウド �
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>言語</h3>
+                        <h3>Languages</h3>
                         <p><a href="/azure/cloud-services/schema-csdef-file">.csdef XML スキーマ</a></p>
                         <p><a href="/azure/cloud-services/schema-csdef-loadbalancerprobe">LoadBalancerProbe スキーマ</a></p>
                         <p><a href="/azure/cloud-services/schema-csdef-webrole">WebRole スキーマ</a></p>

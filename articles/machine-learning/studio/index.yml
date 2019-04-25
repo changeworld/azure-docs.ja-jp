@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4428bf710df5eae3b06c8abd38eb85d6128a574d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959427"
 documentType: LandingData
 title: Machine Learning Studio のドキュメント
 metadata:
@@ -22,42 +16,42 @@ metadata:
 abstract:
   description: Azure Machine Learning Studio は、データに基づき予測分析ソリューションを構築、テスト、デプロイするための、コラボレーションに対応したドラッグ アンド ドロップ ツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
 sections:
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: モデルの作成とデプロイについて説明する広範なチュートリアルに従います。
-  - type: list
-    style: unordered
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="create-experiment">初めての Studio 実験を作成する</a>
-    - html: <a href="tutorial-part1-credit-risk">信用リスクに対する予測ソリューションを作成およびデプロイする</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: モデルの作成とデプロイについて説明する広範なチュートリアルに従います。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="create-experiment">初めての Studio 実験を作成する</a>
+          - html: <a href="tutorial-part1-credit-risk">信用リスクに対する予測ソリューションを作成およびデプロイする</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="powershell-module">PowerShell モジュール</a></p>
-    - title: モジュール
-      html: <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">アルゴリズムとモジュールのリファレンス</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p><p><a href="web-service-error-codes">Web サービスのエラー コード</a></p>
-- title: その他の Azure Machine Learning テクノロジ
-  items:
-  - type: paragraph
-    text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="powershell-module">PowerShell モジュール</a></p>
+          - title: モジュール
+            html: '<p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">アルゴリズムとモジュールのリファレンス</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p><p><a href="web-service-error-codes">Web サービスのエラー コード</a></p>'
+  - title: その他の Azure Machine Learning テクノロジ
     items:
-    - title: Azure Machine Learning サービス
-      href: /azure/machine-learning/service/
-      image:
-        src: media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/
-    - title: データ サイエンス仮想マシン
-      href: /azure/machine-learning/data-science-virtual-machine/
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/machine-learning/data-science-virtual-machine/
+      - type: paragraph
+        text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Machine Learning サービス
+            href: /azure/machine-learning/service/
+            image:
+              src: media/index/i_machine-learning.svg
+              href: /azure/machine-learning/service/
+          - title: データ サイエンス仮想マシン
+            href: /azure/machine-learning/data-science-virtual-machine/
+            image:
+              src: media/index/virtual-machines.svg
+              href: /azure/machine-learning/data-science-virtual-machine/

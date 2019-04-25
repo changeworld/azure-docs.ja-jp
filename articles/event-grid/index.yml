@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 53f9fbdf06958189a40f78b1b8d68b8fb02b7133
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176754"
 documentType: LandingData
 title: Azure Event Grid のドキュメント
 metadata:
@@ -22,70 +16,70 @@ metadata:
 abstract:
   description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: カスタム イベントを作成してサブスクライブする方法を学習します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /azure/event-grid/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/event-grid/custom-event-quickstart
-    - image:
-        src: /azure/event-grid/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/event-grid/custom-event-quickstart-powershell
-    - image:
-        src: /azure/event-grid/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/event-grid/custom-event-quickstart-portal
-  - type: paragraph
-    text: Blob Storage イベントのルーティング方法を学習します。
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: カスタム イベントを作成してサブスクライブする方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/event-grid/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/event-grid/custom-event-quickstart
+          - image:
+              src: /azure/event-grid/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/event-grid/custom-event-quickstart-powershell
+          - image:
+              src: /azure/event-grid/media/index/portal.svg
+            text: Azure Portal
+            href: /azure/event-grid/custom-event-quickstart-portal
+      - type: paragraph
+        text: Blob Storage イベントのルーティング方法を学習します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/event-grid/media/index/cli.svg
+            text: Azure CLI
+            href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
+          - image:
+              src: /azure/event-grid/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
+  - title: ステップバイステップのチュートリアル
     items:
-    - image:
-        src: /azure/event-grid/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
-    - image:
-        src: /azure/event-grid/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: イベントに対応するアプリケーションを開発する方法を学習します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: イベントに対応するアプリケーションを開発する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">アップロードされたイメージをサイズ変更する</a>
+          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Azure Automation を Event Grid と統合する</a>
+  - title: Microsoft Learn でスキルを身に付ける
     items:
-    - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">アップロードされたイメージをサイズ変更する</a>
-    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Azure Automation を Event Grid と統合する</a>
-- title: Microsoft Learn でスキルを身に付ける
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: サービスを大まかに接続する Azure メッセージング モデルを選択する
+            href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+            image:
+              src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
+              href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-event-grid">対話型学習の詳細...</a>
+  - title: リファレンス
     items:
-    - title: サービスを大まかに接続する Azure メッセージング モデルを選択する
-      href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-      image:
-        src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
-        href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-event-grid">対話型学習の詳細...</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/az.eventgrid">PowerShell</a></p>
-    - title: REST API
-      html: <p><a href="/rest/api/eventgrid">REST</a></p>
-    - title: スキーマ
-      html: <p><a href="/azure/event-grid/subscription-creation-schema ">サブスクリプション スキーマ</a></p><p><a href="/azure/event-grid/event-schema">イベント スキーマ</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/az.eventgrid">PowerShell</a></p>
+          - title: REST API
+            html: <p><a href="/rest/api/eventgrid">REST</a></p>
+          - title: スキーマ
+            html: <p><a href="/azure/event-grid/subscription-creation-schema ">サブスクリプション スキーマ</a></p><p><a href="/azure/event-grid/event-schema">イベント スキーマ</a></p>

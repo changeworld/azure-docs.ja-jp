@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1ed169d248fce28a668c1c93fe2d9796b59547bd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619222"
 documentType: LandingData
 title: Azure Portal のドキュメント
 metadata:
@@ -25,27 +19,27 @@ metadata:
 abstract:
   description: Azure portal は Web ベースの統合コンソールで、簡単な Web アプリから複雑なクラウド アプリケーションまですべてを構築、管理、監視することができます。 これには、カスタマイズ可能なダッシュボードとユーザー補助オプションが用意されています。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/azure-preview-portal-supported-browsers-devices
-      html: <p>Azure portal は、最新のあらゆるデスクトップ、タブレット デバイス、ブラウザーで実行されます。</p>
-      title: サポートされているブラウザーとデバイス
-    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-      html: <p>Azure portal でコントラストまたは配色を変更します。</p>
-      title: ハイ コントラストを有効にする
-    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-      html: <p>Azure portal 全体で機能するキーボード ショートカットについて説明します。</p>
-      title: キーボード ショートカット
-    - href: /azure/azure-portal/azure-portal-dashboards
-      html: <p>複数のダッシュボードを作成し、お使いの Azure サブスクリプションにアクセスできる他のユーザーと共有します。</p>
-      title: Azure ダッシュボードの作成と共有
-    - href: /azure/azure-portal/azure-portal-dashboard-share-access
-      html: <p>組織内の他のユーザーに対してダッシュボードを公開、共有します。</p>
-      title: RBAC を使用したダッシュボードの共有
-    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-      html: <p>組織用のダッシュボードをプログラムで作成、公開します。</p>
-      title: プログラムによる Azure ダッシュボードの作成
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/azure-preview-portal-supported-browsers-devices
+            html: <p>Azure portal は、最新のあらゆるデスクトップ、タブレット デバイス、ブラウザーで実行されます。</p>
+            title: サポートされているブラウザーとデバイス
+          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+            html: <p>Azure portal でコントラストまたは配色を変更します。</p>
+            title: ハイ コントラストを有効にする
+          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+            html: <p>Azure portal 全体で機能するキーボード ショートカットについて説明します。</p>
+            title: キーボード ショートカット
+          - href: /azure/azure-portal/azure-portal-dashboards
+            html: <p>複数のダッシュボードを作成し、お使いの Azure サブスクリプションにアクセスできる他のユーザーと共有します。</p>
+            title: Azure ダッシュボードの作成と共有
+          - href: /azure/azure-portal/azure-portal-dashboard-share-access
+            html: <p>組織内の他のユーザーに対してダッシュボードを公開、共有します。</p>
+            title: RBAC を使用したダッシュボードの共有
+          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+            html: <p>組織用のダッシュボードをプログラムで作成、公開します。</p>
+            title: プログラムによる Azure ダッシュボードの作成

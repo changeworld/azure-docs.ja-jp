@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8eb7d6e920f09d6ad230813503a7cf942427ea80
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227856"
 documentType: LandingData
 title: QnA Maker のドキュメント
 metadata:
@@ -24,76 +18,76 @@ abstract:
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジ ベースにある Q&A から回答となる可能性が最も高いものが提示されます。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ../media/index/qnamaker-landing-page-video.png
       width: 250
-    title: QnA Maker を使用して数分でボットを作成する (8:54)
-    href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
+    title: 'QnA Maker を使用して数分でボットを作成する (8:54)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/qnamaker/overview/overview
+            html: <p>QnA Maker について説明します。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: QnA Maker とは
+          - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
+            html: <p>ナレッジ ベースを作成、トレーニング、および公開する方法を説明します。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: ナレッジ ベースの作成、トレーニングおよび公開
+          - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
+            html: <p>ナレッジ ベースを公開する方法を説明します。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: データ ソースについて
+  - title: 5 分間のクイック スタート
     items:
-    - href: /azure/cognitive-services/qnamaker/overview/overview
-      html: <p>QnA Maker について説明します。</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: QnA Maker とは
-    - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
-      html: <p>ナレッジ ベースを作成、トレーニング、および公開する方法を説明します。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: ナレッジ ベースの作成、トレーニングおよび公開
-    - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
-      html: <p>ナレッジ ベースを公開する方法を説明します。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: データ ソースについて
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 質問と回答のコンテンツのためのナレッジ ベースを作成しましょう。
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 質問と回答のコンテンツのためのナレッジ ベースを作成しましょう。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            href: Quickstarts/create-new-kb-csharp
+          - image:
+              src: media/index/Go-Logo_Blue.svg
+            text: Go
+            href: Quickstarts/create-new-kb-go
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: Quickstarts/create-new-kb-java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: Quickstarts/create-new-kb-nodejs
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: Quickstarts/create-new-kb-python
+  - title: ステップバイステップのチュートリアル
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: Quickstarts/create-new-kb-csharp
-    - image:
-        src: media/index/Go-Logo_Blue.svg
-      text: Go
-      href: Quickstarts/create-new-kb-go
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: Quickstarts/create-new-kb-java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: Quickstarts/create-new-kb-nodejs
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: Quickstarts/create-new-kb-python
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: QnA Maker を使用してアプリケーションを開発する方法について説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: QnA Maker を使用してアプリケーションを開発する方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">ナレッジ ベースを作成して質問に回答する</a></li>
+          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">QnA Maker ボットを作成する</a></li>
+  - title: リファレンス
     items:
-    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">ナレッジ ベースを作成して質問に回答する</a></li>
-    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">QnA Maker ボットを作成する</a></li>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: API
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">QnA Maker API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">QnA Maker API</a></p>'
