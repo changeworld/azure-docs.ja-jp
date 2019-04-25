@@ -128,6 +128,7 @@
       items:
         - name: 概要
           href: sql-database-service-tiers-general-purpose-business-critical.md
+          displayName: provisioned compute tier
         - name: General Purpose / Standard サービス レベル
           href: sql-database-service-tier-general-purpose.md
         - name: Business Critical / Premium サービス レベル
@@ -178,7 +179,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: マネージド インスタンス
       items:
-        - name: 複数のマネージド インスタンスの概要
+        - name: マネージド インスタンスの概要
           href: sql-database-managed-instance-index.yml
         - name: マネージド インスタンスの機能
           href: sql-database-managed-instance.md
