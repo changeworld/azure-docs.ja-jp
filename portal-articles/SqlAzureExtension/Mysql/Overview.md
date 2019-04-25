@@ -8,16 +8,16 @@ ms.service: mysql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: a1d5458a2b815591fc7126d429bd16a718910b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ff389f52da0db4e394e8f6a6c37955a5f0c3861
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475754"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>Azure Database for MySQL のドキュメント
 
-Azure Database for MySQL は、オープンソースの MySQL Server エンジンに基づいたリレーショナル データベース サービスです。  完全管理型のサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。 Azure Database for MySQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MySQL の使用方法を確認してください。
+Azure Database for MySQL は、オープンソースの MySQL Server エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。 Azure Database for MySQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MySQL の使用方法を確認してください。
 
 ## <a name="5-minute-quickstarts"></a>5 分間のクイック スタート
 
@@ -30,8 +30,8 @@ Azure Database for MySQL は、オープンソースの MySQL Server エンジ�
 
 データベースの設計とアプリの開発を行う方法について説明します。
 
-- データベースの設計: [Azure Portal](/azure/mysql/tutorial-design-database-using-portal) |  [Azure CLI](/azure/mysql/tutorial-design-database-using-cli)
-- Web アプリの作成: [WordPress - Portal](https://portal.azure.com/#create/WordPress.WordPress) |  [PHP - Azure CLI](/azure/app-service/app-service-web-tutorial-php-mysql?toc=%2fazure%2fmysql%2ftoc.json)
+- データベースの設計:[Azure portal](/azure/mysql/tutorial-design-database-using-portal) |  [Azure CLI](/azure/mysql/tutorial-design-database-using-cli)
+- Web アプリの作成:[Wordpress - Portal](https://portal.azure.com/#create/WordPress.WordPress) |  [PHP - Azure CLI](/azure/app-service/app-service-web-tutorial-php-mysql?toc=%2fazure%2fmysql%2ftoc.json)
 
 ## <a name="samples"></a>サンプル 
 
