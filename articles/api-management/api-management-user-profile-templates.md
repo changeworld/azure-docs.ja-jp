@@ -104,7 +104,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|Type|Description|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
@@ -325,7 +325,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|Type|Description|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
@@ -488,7 +488,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|Type|Description|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
