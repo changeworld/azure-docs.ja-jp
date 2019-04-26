@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/07/2019
+ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c7e5231650ec1afb97a72ec0cf26cb8f80088b63
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a8070d25e2606d8ad72ac231a0a208072c612c5c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440423"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737169"
 ---
 最後に、発送するデバイスを準備します。 このステップでは、デバイスのすべての共有がオフラインにされます。 いったんこのプロセスを始めると、共有にアクセスできなくなります。
 

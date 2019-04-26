@@ -13,10 +13,10 @@ ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
 ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490535"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code を使用した初めての関数の作成
@@ -42,8 +42,8 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
     | 言語 | 拡張機能 |
     | -------- | --------- |
     | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 以降](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0 以降](https://nodejs.org/)  |
+    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
+    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
 
     \* Core Tools でも必要です。
 

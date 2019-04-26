@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 7287a9ddbd84960dcde790d813a6204e9e790094
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887422"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011301"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>例:Text Analytics でセンチメントを検出する方法
 
-[Sentiment Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) はテキスト入力を評価し、ドキュメントごとに 0 (負) から 1 (正) のセンチメント スコアを返します。
+[Sentiment Analysis API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) はテキスト入力を評価し、ドキュメントごとに 0 (負) から 1 (正) のセンチメント スコアを返します。
 
 この機能は、ソーシャル メディア、顧客レビューおよびディスカッション フォーラムで肯定的および否定的センチメントを検出するために役立ちます。 コンテンツはユーザーが提供します。モデルとトレーニング データは、サービスによって提供されます。
 
@@ -37,7 +37,7 @@ Text Analytics では、機械学習分類アルゴリズムを使用して、0 
 
 感情分析では、作業するテキストが小さなチャンクである場合に、高い品質の結果を生成します。 これは、テキスト ブロックが大きい方がパフォーマンスが向上するキー フレーズ抽出とは反対です。 両方の操作から最善の結果を得るには、両方の操作に応じて入力を再構成することを検討してください。
 
-JSON ドキュメントは、id、text、language の形式である必要があります。
+JSON ドキュメントは、次の形式である必要があります: ID、テキスト、言語
 
 ドキュメントのサイズは、ドキュメントあたり 5,120 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 感情分析のために送信するコンテンツの例を次に示します。
 
@@ -77,16 +77,16 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[感情分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[感情分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
-+ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTP エンドポイントを設定します。 そこには、`/sentiment` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTP エンドポイントを設定します。 そこには、`/sentiment` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
 
 + Text Analytics 操作用のアクセス キーが含まれるように要求ヘッダーを設定します。 詳細については、[エンドポイントを見つけてアクセス キーにアクセスする方法](text-analytics-how-to-access-key.md)に関するページを参照してください。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -135,8 +135,8 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 この記事では、Cognitive Services の Text Analytics を使用する感情分析の概念とワークフローについて説明しました。 要旨:
 
-+ 選択した言語に対して、[Sentiment analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) を使用できます。
-+ 要求本文内の JSON ドキュメントには、id、text、および language のコードが含まれます。
++ 選択した言語に対して、[Sentiment analysis API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) を使用できます。
++ 要求本文内の JSON ドキュメントには、ID、テキスト、および言語のコードが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](text-analytics-how-to-access-key.md)を使用して `/sentiment` エンドポイントに対して行われます。
 + ドキュメント ID ごとのセンチメント スコアで構成される応答出力は、Excel や Power BI を含む JSON を受け取るすべてのアプリにストリーミングすることができます。
 

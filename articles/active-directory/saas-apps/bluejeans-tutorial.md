@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901952"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>チュートリアル:Azure Active Directory と BlueJeans の統合
 
@@ -38,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 BlueJeans と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 * BlueJeans でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -105,14 +106,16 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[BlueJeans のドメインと URL] のシングル サインオン情報](common/sp-signonurl.png)
+    ![[BlueJeans のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    **[サインオン URL]** ボックスに、`https://<companyname>.BlueJeans.com` という形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.BlueJeans.com` という形式で URL を入力します。
+
+    b. **[識別子]** テキスト ボックスに、`http://samlsp.bluejeans.com` という URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[BlueJeans クライアント サポート チーム](https://support.bluejeans.com/contact)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[BlueJeans クライアント サポート チーム](https://support.bluejeans.com/contact)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -128,15 +131,15 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-bluejeans-single-sign-on"></a>BlueJeans シングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、 **BlueJeans** 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、**BlueJeans** 企業サイトに管理者としてサインインします。
 
 2. **[管理] \> [グループ設定] \> [セキュリティ]** の順にクリックします。
 
-    ![管理](./media/bluejeans-tutorial/IC785868.png "Admin")
+    ![管理](./media/bluejeans-tutorial/ic785868.png "Admin")
 
 3. **[セキュリティ]** セクションで、次の手順を実行します。
 
-    ![SAML シングル サインオン](./media/bluejeans-tutorial/IC785869.png "SAML Single Sign On")
+    ![SAML シングル サインオン](./media/bluejeans-tutorial/ic785869.png "SAML Single Sign On")
 
     a. **[SAML シングル サインオン]** を選択します。
 
@@ -144,7 +147,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
 4. 次の手順を実行します。
 
-    ![証明書パス](./media/bluejeans-tutorial/IC785870.png "Certificate Path")
+    ![証明書パス](./media/bluejeans-tutorial/ic785870.png "Certificate Path")
 
     a. **[ファイルの選択]** を選択して、Azure portal からダウンロードした base 64 でエンコードされた証明書をアップロードします。
 
@@ -156,9 +159,9 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
 5. 次の手順を実行します。
 
-    ![変更を保存](./media/bluejeans-tutorial/IC785874.png "Save Changes")
+    ![変更を保存](./media/bluejeans-tutorial/ic785874.png "Save Changes")
 
-    a. **[User id]** (ユーザー ID) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    a. **[User id]\(ユーザー ID\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
     b. **[Email]** (電子メール) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
@@ -182,8 +185,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -221,22 +223,22 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
 **ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
 
-1. **BlueJeans** 企業サイトに管理者としてログインします。
+1. **BlueJeans** 企業サイトに管理者としてサインインします。
 
 2. **[管理] \> [ユーザーの管理] \> [ユーザーの追加]** の順にクリックします。
 
-    ![管理](./media/bluejeans-tutorial/IC785877.png "Admin")
+    ![管理](./media/bluejeans-tutorial/ic785877.png "Admin")
 
-    >[!IMPORTANT]
-    >**[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。 
+    > [!IMPORTANT]
+    > **[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
 
 3. **[ユーザーの追加]** セクションで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/IC785886.png "Add User")
+    ![ユーザーの追加](./media/bluejeans-tutorial/ic785886.png "Add User")
 
     a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
     c. **[Pick a BlueJeans Username]\(BlueJeans ユーザー名の選択\)** テキスト ボックスに、ユーザーのユーザー名 (**Brittasimon** など) を入力します
 
@@ -244,7 +246,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     e. **[会社]** テキスト ボックスに会社名を入力します。
 
-    f. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
+    f. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレスを入力します (例: `brittasimon\@contoso.com`)。
 
     g. **[Create a BlueJeans Meeting I.D]\(BlueJeans 会議 I.D の作成\)** テキスト ボックスに、会議の ID を入力します。
 
@@ -252,7 +254,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     i. **[続行]** をクリックします。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/IC785887.png "Add User")
+    ![ユーザーの追加](./media/bluejeans-tutorial/ic785887.png "Add User")
 
     J. **[ユーザーの追加]** をクリックします。
 
@@ -272,4 +274,3 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

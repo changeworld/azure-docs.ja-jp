@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8167f10391f426c50120a224eea44e6db846fbb1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579582"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003243"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
 
@@ -38,6 +38,14 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. **[キー/値のエクスプローラー]** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+
+    | キー | 値 |
+    |---|---|
+    | TestApp:Settings:Message | Azure App Configuration からのデータ |
+
+    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -114,4 +122,4 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 このクイック スタートでは、新しいアプリ構成ストアを作成して、Azure 関数で使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure リソースのマネージド ID の統合](./integrate-azure-managed-service-identity.md)
+> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)

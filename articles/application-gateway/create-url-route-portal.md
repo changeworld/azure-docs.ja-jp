@@ -1,28 +1,24 @@
 ---
-title: URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
-description: Azure Portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。
+title: チュートリアル - URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure portal
+description: このチュートリアルでは、Azure portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パスベースのルーティング規則を作成する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 4d8c389055b81c355de6e1c9120230e1f04443cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5307f7674635fd33241e1faba9bb0b7c0432d10b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087059"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001033"
 ---
-# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
+# <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure Portal を使用して [URL パス ベースのルーティング規則](url-route-overview.md)を構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
-この記事では、次のことについて説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリケーション ゲートウェイの作成
@@ -37,15 +33,15 @@ ms.locfileid: "58087059"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
 作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
 
-1. Azure Portal の左上にある **[新規]** をクリックします。
+1. Azure portal の左上にある **[新規]** を選択します。
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. 次のアプリケーション ゲートウェイの値を入力します。
 
@@ -54,8 +50,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
      ![新しいアプリケーション ゲートウェイの作成](./media/create-url-route-portal/application-gateway-create.png)
 
-4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
+4. 他の設定は既定値をそのまま使用し、**[OK]** を選択します。
+5. **[仮想ネットワークの選択]**、**[新規作成]** の順に選択し、次の仮想ネットワークの値を入力します。
 
    - *myVNet* - 仮想ネットワークの名前です。
    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
@@ -64,26 +60,26 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
      ![Create virtual network](./media/create-url-route-portal/application-gateway-vnet.png)
 
-6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
-7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-8. リスナーの構成は既定値をそのまま使用し、Web アプリケーション ファイアウォールは無効のままにして、**[OK]** をクリックします。
-9. 概要ページで設定を確認し、**[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
+6. **[OK]** を選択して、仮想ネットワークとサブネットを作成します。
+7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順に選択し、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** を選択します。
+8. リスナーの構成には既定値をそのまま使用し、Web アプリケーション ファイアウォールは無効のままにして、**[OK]** を選択します。
+9. 概要ページで設定を確認し、**[OK]** を選択して、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
 ### <a name="add-a-subnet"></a>サブネットの追加
 
-1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myVNet]** をクリックします。
-2. **[サブネット]**、**[サブネット]** の順にクリックします。
+1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で **[myVNet]** を選びます。
+2. **[サブネット]** を選択し、**[サブネット]** を選択します。
 
     ![サブネットの作成](./media/create-url-route-portal/application-gateway-subnet.png)
 
-3. サブネットの名前として「*myBackendSubnet*」を入力し、**[OK]** をクリックします。
+3. サブネットの名前として「*myBackendSubnet*」と入力し、**[OK]** を選択します。
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
 この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 3 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
 
-1. **[新規]** をクリックします。
-2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
+1. **[新規]** を選択します。
+2. **[Compute]** をクリックし、おすすめのリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
     - *myVM1* - 仮想マシンの名前です。
@@ -91,11 +87,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
     - *Azure123456!* パスワードです。
     - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
 
-4. Click **OK**.
-5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
+4. **[OK]** を選択します。
+5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** を選択します。
 6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
-7. **[無効]** をクリックして、ブート診断を無効にします。
-8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
+7. **[無効]** を選択して、ブート診断を無効にします。
+8. **[OK]** を選択し、概要ページの設定を確認して、**[作成]** を選択します。
 
 ### <a name="install-iis"></a>IIS のインストール
 
@@ -124,38 +120,38 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
 
-1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
-2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
-3. **[ターゲットの追加]** をクリックして、*myVM1* を appGatewayBackendPool に追加します。
+1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
+2. **[バックエンド プール]** を選択します。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** を選択します。
+3. **[ターゲットの追加]** を選択して、*myVM1* を appGatewayBackendPool に追加します。
 
     ![バックエンド サーバーの追加](./media/create-url-route-portal/application-gateway-backend.png)
 
-4. **[Save]** をクリックします。
-5. **[バックエンド プール]**、**[追加]** の順にクリックします。
+4. **[保存]** を選択します。
+5. **[バックエンド プール]** を選択し、**[追加]** を選択します。
 6. *imagesBackendPool* という名前を入力し、**[ターゲットの追加]** を使用して *myVM2* を追加します。
-7. Click **OK**.
-8. **[追加]** を再度クリックして、*videoBackendPool* という名前の別のバックエンド プールを追加し、*myVM3* を追加します。
+7. **[OK]** を選択します。
+8. **[追加]** を再度選択して、*videoBackendPool* という名前の別のバックエンド プールを追加し、それに *myVM3* を追加します。
 
 ## <a name="create-a-backend-listener"></a>バックエンド リスナーの作成
 
-1. **[リスナー]**、**[基本]** の順にクリックします。
+1. **[リスナー]** を選択し、**[Basic]\(基本\)** を選択します。
 2. 名前として「*myBackendListener*」を、フロントエンド ポートの名前として「*myFrontendPort*」を、リスナーのポートとして「*8080*」を入力します。
-3. Click **OK**.
+3. **[OK]** を選択します。
 
 ## <a name="create-a-path-based-routing-rule"></a>パス ベースのルーティング規則の作成
 
-1. **[ルール]**、**[パス ベース]** の順にクリックします。
+1. **[規則]** を選択し、**[パス ベース]** を選択します。
 2. 名前として「*rule2*」を入力します。
 3. 最初のパスの名前として「*イメージ*」と入力します。 パスには「*/images/*\*」と入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
 4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスには「*/video/*\*」と入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
 
     ![パス ベース ルールの作成](./media/create-url-route-portal/application-gateway-route-rule.png)
 
-5. Click **OK**.
+5. **[OK]** を選択します。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. **[すべてのリソース]**、**[myAGPublicIPAddress]** の順にクリックします。
+1. **[すべてのリソース]** を選択し、**[myAGPublicIPAddress]** を選択します。
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
@@ -171,15 +167,18 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
     ![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/create-url-route-portal/application-gateway-iistest-video.png)
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。 
+
+リソース グループを削除するには:
+
+1. Azure portal の左側のメニューにある **[リソース グループ]** を選択します。
+2. **[リソース グループ]** ページで、リストの **myResourceGroupAG** を探して選択します。
+3. **[リソース グループ] ページ**で、**[リソース グループの削除]** を選択します。
+4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、**[削除]** を選択します。
+
 ## <a name="next-steps"></a>次の手順
 
-この記事で学習した内容は次のとおりです
-
-> [!div class="checklist"]
-> * アプリケーション ゲートウェイの作成
-> * バックエンド サーバー用の仮想マシンの作成
-> * バックエンド サーバーでのバックエンド プールの作成
-> * バックエンド リスナーの作成
-> * パス ベースのルーティング規則の作成
-
-アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。
+> [!div class="nextstepaction"]
+> [Azure Application Gateway で実行できる操作の詳細を確認する](application-gateway-introduction.md)

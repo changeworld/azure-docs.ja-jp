@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Storage の画像のメタデータを生成する
+title: チュートリアル:Azure の画像のメタデータを生成する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure Computer Vision サービスを Web アプリに統合して、画像のメタデータを生成する方法について学習します。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448001"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005992"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -52,11 +52,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. お客様のリソース グループのメニューに戻り、お客様が先ほど作成した Computer Vision API サブスクリプションをクリックします。 **[エンドポイント]** の下の URL を、一瞬で簡単に取得できる場所にコピーします。 次に、**[アクセス キーを表示]** をクリックします。
 
-    ![アクセス キーの表示](../Images/copy-vision-endpoint.png)
+    ![エンドポイントの URL とアクセス キーのリンクを強調した Azure portal ページ](../Images/copy-vision-endpoint.png)
 
 1. 次のウィンドウで、**[キー 1]** の値をクリップボードにコピーします。
 
-    ![アクセス キーのコピー](../Images/copy-vision-key.png)
+    ![コピー ボタンが強調表示された [キーの管理] ダイアログ](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Computer Vision の資格情報を追加する
 
@@ -136,7 +136,7 @@ Visual Studio でお客様の ASP.NET Web アプリケーションを開き、�
 
 アタッチされているメタデータをすべて表示するには、Azure Storage Explorer を使用して、お客様が画像に使用しているストレージ コンテナーを表示します。 コンテナー内の任意の BLOB を右クリックして、**[プロパティ]** を選択します。 ダイアログに、キーと値のペアの一覧が表示されます。 コンピューターによって生成された画像の説明は "Caption" という項目に格納され、検索キーワードは "Tag0"、”Tag1" などに格納されます。 完了したら、**[キャンセル]** をクリックしてダイアログを閉じます。
 
-![BLOB のメタデータ](../Images/blob-metadata.png)
+![メタデータ タグが一覧表示された画像のプロパティ ダイアログ ウィンドウ](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

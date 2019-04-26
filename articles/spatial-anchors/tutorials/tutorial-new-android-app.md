@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64f78b04d433c81302499addf15c3d19621bbf9f
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919875"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995729"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -57,12 +57,12 @@ Android Studio を起動します。 **[Android Studio へようこそ]** ウィ
 </application>
 ```
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に ARCore バージョン 1.5 を対象とするようになります (Azure Spatial Anchors 上での ARCore 1.6 以上のサポートは近日対応予定です)。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に ARCore バージョン 1.7 を対象とするようになります。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.5.0'
+    implementation 'com.google.ar:core:1.7.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> により、OpenGL を習得しなくても、Augmented Reality アプリ内でリアルな 3D シーンを簡単にレンダリングできます。
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは `Sceneform` に必要な Java 8 の言語コンストラクトの使用を許可されます。 また、アプリは確実に `Sceneform` バージョン 1.5 を対象とするようになります。これはアプリで使用している ARCore のバージョンと一致する必要があるためです。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは `Sceneform` に必要な Java 8 の言語コンストラクトの使用を許可されます。 また、アプリは確実に `Sceneform` バージョン 1.7 を対象とするようになります。これはアプリで使用している ARCore のバージョンと一致する必要があるためです。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.5.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
     ...
 }
 ```

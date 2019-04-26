@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862388"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010562"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>クイック スタート:IoT Hub でサービスを有効にする
 
@@ -45,7 +45,7 @@ ms.locfileid: "58862388"
 IoT Hub でセキュリティを有効にするには、以下の手順を実行します。 
 
 1. Azure portal で **[IoT Hub]** を開きます。 
-2. 左側のメニューの **[セキュリティ]** を選択して開きます。 
+2. **[セキュリティ]** メニューの **[概要]** をクリックし、**[プレビューの開始]** をクリックします。 
 3. **[Enable IoT Security]\(IoT セキュリティを有効にする\)** を選択します。 
 4. Log Analytics ワークスペースの詳細を指定します。 
    - **未加工イベント**のトグルを**オン**のままにして、ストレージの既定の情報の種類に加えて**未加工イベント**を保存することを選択します。 

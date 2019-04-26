@@ -15,27 +15,30 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096624"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007357"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
 [Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](https://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
 
-> [!NOTE]
->
-> このクイック スタートの手順では、Eclipse IDE を使って Java Web アプリを App Service に発行する方法について説明していますが、IntelliJ IDEA Ultimate Edition または Community Edition を使用することもできます。 詳細については、「[IntelliJ を使用して Azure 用の Hello World Web アプリを作成する](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)」を参照してください。
->
+> [!IMPORTANT]
+> マネージド Tomcat、Java SE、WildFly の各プランを使用して Java Web アプリを Linux でネイティブにホストするために、Azure App Service on Linux を選ぶこともできます。 App Service on Linux にご興味がある方は、「[Quickstart: Create a Java app in App Service on Linux (クイック スタート: App Service on Linux で Java アプリを作成する)](containers/quickstart-java.md)」を参照してください。
 
 このクイックスタートを完了し、作成したアプリケーションを Web ブラウザーで開くと、次の図のようになります。
 
 !["Hello Azure!" Web アプリの例](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+>
+> このクイック スタートの手順では、Eclipse IDE を使って Java Web アプリを App Service に発行する方法について説明していますが、IntelliJ IDEA Ultimate Edition または Community Edition を使用することもできます。 詳細については、「[IntelliJ を使用して Azure 用の Hello World Web アプリを作成する](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)」を参照してください。
+>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -104,7 +107,7 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
 
-**作成**を選択します。
+**作成** を選択します。
 
 ![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
@@ -137,7 +140,7 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-**作成**を選択します。
+**作成** を選択します。
 
 <!--
 ### The JDK tab
@@ -181,7 +184,7 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 変更を保存します。
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]**、**[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > 、**[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
 
 **[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。ボックスには、以前に作成したアプリ サービスが表示されています。 
 
