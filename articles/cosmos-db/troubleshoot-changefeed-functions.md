@@ -1,0 +1,92 @@
+---
+title: Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
+description: Azure Functions で Azure Cosmos DB トリガーを使用するときの一般的な問題、回避策、診断手順です
+author: ealsur
+ms.service: cosmos-db
+ms.date: 04/16/2019
+ms.author: maquaran
+ms.topic: troubleshooting
+ms.reviewer: sngun
+ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010892"
+---
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
+
+この記事では、Azure Functions で [Azure Cosmos DB トリガー](change-feed-functions.md)を使用するときの一般的な問題、回避策、診断手順について説明します。
+
+## <a name="dependencies"></a>依存関係
+
+Azure Cosmos DB トリガーとバインドは、基になる Azure Functions Runtime に対する拡張機能パッケージに依存します。 これらのパッケージを常に最新の状態にしておいてください。発生する可能性のある問題に対処する新機能や修正プログラムが含まれている場合があります。
+
+* Azure Functions V2 の場合は、[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) をご覧ください。
+* Azure Functions V1 の場合は、[Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) をご覧ください。
+
+この記事では、明示的に指定されていない限り、ランタイムに言及するときは常に Azure Functions V2 のことです。
+
+## <a name="consuming-the-cosmos-db-sdk-separately-from-the-trigger-and-bindings"></a>トリガーおよびバインドとは別に Cosmos DB SDK を使用する
+
+拡張機能パッケージの重要な機能は、Azure Cosmos DB のトリガーとバインドのサポートを提供することです。 また、[Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md) も含まれており、トリガーやバインドを使わずにプログラムで Azure Cosmos DB とやり取りする場合に便利です。
+
+Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照をプロジェクトに追加しないでください。 代わりに、**Azure Functions の拡張機能パッケージによって SDK の参照が解決されるようにします**。
+
+さらに、[Azure Cosmos DB SDK クライアント](./sql-api-sdk-dotnet-core.md)の独自のインスタンスを手動で作成する場合は、[シングルトン パターン アプローチを使用](../azure-functions/manage-connections.md#documentclient-code-example-c)して、クライアントのインスタンスを 1 つだけ使用するパターンに従う必要があります。 このプロセスにより、操作でのソケットの問題の可能性を回避できます。
+
+## <a name="common-known-scenarios-and-workarounds"></a>既知の一般的なシナリオと回避策
+
+### <a name="azure-function-fails-with-error-message-either-the-source-collection-collection-name-in-database-database-name-or-the-lease-collection-collection2-name-in-database-database2-name-does-not-exist-both-collections-must-exist-before-the-listener-starts-to-automatically-create-the-lease-collection-set-createleasecollectionifnotexists-to-true"></a>Azure Function が次のエラー メッセージで失敗する: "Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'" (ソース コレクション 'コレクション名' (データベース 'データベース名' 内) またはリース コレクション 'コレクション名 2' (データベース 'データベース名 2' 内) が存在しません。リスナーが開始する前に、両方のコレクションが存在している必要があります。リース コレクションを自動的に作成するには、'CreateLeaseCollectionIfNotExists' を 'true' に設定します)
+
+これは、トリガーが機能するために必要な Azure Cosmos コンテナーのいずれか一方または両方が存在しないか、または Azure 関数でアクセスできないことを意味します。 構成に基づき、**トリガーが探している Azure Cosmos データベースとコンテナーがエラー自体で示されます**。
+
+1. `ConnectionStringSetting` 属性を確認し、それが **Azure 関数アプリ内に存在する設定を参照している**ことを確認します。 この属性の値は、接続文字列自体ではなく、構成設定の名前になっている必要があります。
+2. Azure Cosmos アカウントに `databaseName` と `collectionName` が存在していることを確認します。 値の自動置換を使用している場合は (`%settingName%` パターンを使用)、設定の名前が自分の Azure 関数アプリに存在することを確認します。
+3. `LeaseCollectionName/leaseCollectionName` を指定しないと、既定値の "leases" になります。 そのようなコンテナーが存在することを確認します。 必要に応じて、トリガーの `CreateLeaseCollectionIfNotExists` 属性を `true` 設定し、自動的にそれを作成することができます。
+4. [Azure Cosmos アカウントのファイアウォール構成](how-to-configure-firewall.md)を調べて、Azure 関数をブロックしていないことを確認します。
+
+### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Azure 関数の開始が、"Shared throughput collection should have a partition key" (共有スループット コレクションにはパーティション キーが必要です) で失敗する
+
+以前のバージョンの Azure Cosmos DB 拡張機能では、[共有スループット データベース](./set-throughput.md#set-throughput-on-a-database)内で作成されたリース コンテナーの使用はサポートされていませんでした。 この問題を解決するには、[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) 拡張機能を最新バージョンに更新します。
+
+### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 関数の開始が、"The lease collection, if partitioned, must have partition key equal to id" (リース コレクションがパーティション分割されている場合は、パーティション キーと ID が同じである必要があります) で失敗する
+
+このエラーは、現在のリース コンテナーがパーティション分割されているのに、パーティション キーのパスが `/id` ではないことを意味します。 この問題を解決するには、パーティション キーを `/id` としてリース コンテナーを作り直す必要があります。
+
+### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Value cannot be null.  Parameter name: o" (値を null にすることはできません。パラメーター名: o) と、トリガーを実行しようとすると Azure Functions ログに記録される
+
+Azure portal を使用していて、トリガーを使用する Azure 関数を調べているときに画面の **[実行]** ボタンを選択しようとすると、この問題が発生します。 トリガーを開始するために [実行] を選択する必要はなく、Azure 関数をデプロイすると自動的に開始されます。 Azure portal で Azure 関数のログ ストリームを確認したい場合は、単に監視対象のコンテナーに移動して新しい項目をいくつか挿入すると、トリガーの実行が自動的に表示されます。
+
+### <a name="my-changes-take-too-long-be-received"></a>変更の受信に時間がかかりすぎる
+
+このシナリオには可能性のある原因が複数あり、それらのすべてを確認する必要があります。
+
+1. Azure 関数は、Azure Cosmos アカウントと同じリージョンにデプロイされていますか。 ネットワーク待機時間を最適にするには、Azure 関数と Azure Cosmos アカウントの両方を、同じ Azure リージョンに併置する必要があります。
+2. Azure Cosmos コンテナーでの変更の発生は、連続的ですか、それとも散発的ですか。
+後者の場合、変更が格納されてから Azure 関数がそれを取得するまでの間に、若干の遅延がある可能性があります。 これは、トリガーは、Azure Cosmos コンテナー内の変更を調べて、読み取る必要のある保留中の変更がないことを確認すると、RU の消費が増えるのを避けるため、新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になるという、内部的な動作のためです。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
+3. お使いの Azure Cosmos コンテナーが、[レート制限されている](./request-units.md)可能性があります。
+4. トリガーの `PreferredLocations` 属性を使用して Azure リージョンのコンマ区切りリストを指定し、ユーザー設定の優先接続順序を定義することができます。
+
+### <a name="some-changes-are-missing-in-my-trigger"></a>一部の変更がトリガーで失われる
+
+Azure Cosmos コンテナーで発生した変更の一部が、Azure 関数によって取得されない場合は、最初に行う必要のある調査手順があります。
+
+Azure 関数では、多くの場合、受け取った変更の処理が行われ、必要に応じて結果が別の宛先に送信されることがあります。 失われた変更を調査するときは、その宛先ではなく、(Azure 関数の開始時に) **インジェスト ポイントで受信されている変更を測定する**必要があります。
+
+一部の変更が宛先で失われる場合、変更を受け取った後の Azure 関数での実行の間に何らかのエラーが発生していることを意味している可能性があります。
+
+このシナリオでの最善の対応策は、コードに `try/catch blocks` を追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。 
+
+> **既定の Azure Cosmos DB トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません**。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
+
+一部の変更がトリガーによってまったく受信されない場合、最もよくあるシナリオは、**別の Azure 関数が実行されている**ことです。 **まったく同じ構成** (監視対象コンテナーとリース コンテナーが同じ) を持つ別の Azure 関数が、Azure にデプロイされているか、または開発者のコンピューター上でローカルに実行されていて、この Azure 関数により、自分の Azure 関数で処理されるはずの変更のサブセットが盗まれている可能性があります。
+
+さらに、実行している Azure 関数アプリ インスタンスの数がわかっている場合は、そのシナリオを検証できます。 リース コンテナーを調べて、その中のリース項目の数を数えた場合、`Owner` プロパティの異なる値の数は、関数アプリのインスタンスの数と等しくなっている必要があります。 既知の Azure 関数アプリ インスタンスの数より Owner の数の方が多い場合、余分な所有者が変更を "盗んでいる" ことを意味します。
+
+このような状況を回避する簡単な方法は、`LeaseCollectionPrefix/leaseCollectionPrefix` を新しい/別の値で関数に適用するか、または新しいリース コンテナーでテストします。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure Functions の監視を有効にする](../azure-functions/functions-monitoring.md)
+* [Azure Cosmos DB .NET SDK のトラブルシューティング](./troubleshoot-dot-net-sdk.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: kasparks
 ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59053288"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>重要な Azure Advisor の推奨事項を表示する
@@ -92,7 +92,7 @@ Azure Advisor では、1 つのリソースに関する推奨事項を却下ま�
 この記事では、Azure Advisor で重要な推奨事項を表示する方法について説明します。 Advisor の詳細については、次を参照してください。 
 
 - [Azure Advisor とは](advisor-overview.md)
-- [Advisor を使い始めるには](advisor-get-started.md)
+- [Advisor での作業を開始する](advisor-get-started.md)
 - [Azure Advisor でのアクセス許可](permissions.md)
 
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045596"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011260"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -52,7 +52,7 @@ Azure データ エクスプローラーでは複数のインジェスト方法�
 
 ### <a name="ingestion-using-integration-services"></a>統合サービスを使用した取り込み
 
-* Azure Data Factory (ADF) は、Azure の分析ワークロード用のフル マネージド データ統合サービスで、[サポートされているデータ ストアと形式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)を使用して Azure Data Explorer との間でデータのコピーを行います。 詳細については、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](/azure/data-factory/connector-azure-data-explorer)」を参照してください。
+* Azure Data Factory (ADF) は、Azure の分析ワークロード用のフル マネージド データ統合サービスで、[サポートされているデータ ストアと形式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)を使用して Azure Data Explorer との間でデータのコピーを行います。 詳しくは、「[Azure Data Factory から Azure Data Explorer にデータをコピーする](/azure/data-explorer/data-factory-load-data)」をご覧ください。
 
 ### <a name="programmatic-ingestion"></a>プログラムによるインジェスト
 
@@ -88,7 +88,7 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
 
 **さまざまな方法の待機時間**:
 
-| 方法 | Latency |
+| Method | Latency |
 | --- | --- |
 | **インライン インジェスト** | 即時 |
 | **クエリからの取り込み** | クエリ時間 + 処理時間 |

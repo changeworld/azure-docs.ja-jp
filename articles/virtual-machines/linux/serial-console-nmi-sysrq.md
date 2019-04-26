@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5a97a40ba48db9f73471d5fd778ceb5cb9070964
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699618"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011341"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
 ## <a name="system-request-sysrq"></a>システム要求 (SysRq)
-SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM がハングした場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
+SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM が応答しない場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
 
 SysRq シーケンスが配信されると、以降は、カーネル構成によってシステムの応答方法が制御されます。 SysRq の有効化および無効化に関する情報については、「*SysRq Admin Guide*」(SysRq 管理ガイド) の "[テキスト](https://aka.ms/kernelorgsysreqdoc) | [マークダウン](https://aka.ms/linuxsysrq)" を参照してください。  
 
@@ -52,7 +52,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 ### <a name="command-keys"></a>コマンド キー 
 前記の「SysRq Admin Guide」(SysRq 管理ガイド) に示されたコマンド キーは次のとおりです。
 
-|コマンド| 関数
+|command| Function
 | ------| ----------- |
 |``b``  |   ディスクの同期またはマウント解除を行わずに、システムをすぐに再起動します。
 |``c``  |   NULL ポインターの逆参照によってシステム クラッシュを実行します。 構成した場合は、クラッシュ ダンプが取得されます。
@@ -99,7 +99,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>マスク不可能割り込み (NMI) 
-マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、NMI をハングされたシステムのデバッグやトラブルシューティングのためのメカニズムとして、頻繁に使用しています。
+マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、応答していないシステムのデバッグやトラブルシューティングのためのメカニズムとして、NMI をよく使用しています。
 
 シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。  Linux オペレーティング システムは、オペレーティング システムが NMI を受信した場合に、クラッシュしてメモリ ダンプを作成するように構成できます。
 

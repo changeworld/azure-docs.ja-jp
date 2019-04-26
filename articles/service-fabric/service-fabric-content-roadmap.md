@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667992"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011182"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -165,7 +165,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 * Service Fabric のノードで実行されているが、Service Fabric のサービスとして実装されていない内部ウォッチドッグ。
 * Service Fabric クラスター以外のリソースを調査する外部ウォッチドッグ (Gomez のような監視サービスなど)。
 
-追加の設定なしで、Service Fabric コンポーネントは、クラスター内のすべてのエンティティの正常性をレポートします。 [システム正常性レポート](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)は、クラスターとアプリケーションの動作状況を視覚化し、正常性の問題を警告します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric ランタイムの観点から確認します。 レポートは、サービスのビジネス ロジックの正常性モニタリングやハングしたプロセスの検出を提供するものではありません。 サービスのロジックに固有の正常性情報を追加するには、サービスに[カスタム正常性レポートを実装](service-fabric-report-health.md)します。
+追加の設定なしで、Service Fabric コンポーネントは、クラスター内のすべてのエンティティの正常性をレポートします。 [システム正常性レポート](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)は、クラスターとアプリケーションの動作状況を視覚化し、正常性の問題を警告します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric ランタイムの観点から確認します。 レポートでは、サービスのビジネス ロジックの正常性監視や、応答しなくなったプロセスの検出は、提供されません。 サービスのロジックに固有の正常性情報を追加するには、サービスに[カスタム正常性レポートを実装](service-fabric-report-health.md)します。
 
 Service Fabric には、正常性ストアに集計された[正常性レポートを表示する](service-fabric-view-entities-aggregated-health.md)ために複数の方法が用意されています。
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) またはその他の視覚化ツール。

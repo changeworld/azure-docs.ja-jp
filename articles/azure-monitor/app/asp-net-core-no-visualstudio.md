@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: cithomas
 ms.openlocfilehash: 8243523887ec9861459b2d196126237cf89bad97
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59287544"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
@@ -82,7 +82,7 @@ Application Insights SDK (ソフトウェア開発キット) for ASP.NET Core �
     Example:
     `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
-`APPINSIGHTS_INSTRUMENTATIONKEY` は通常、Azure Web アプリに展開されるアプリケーションのインストルメンテーション キーを指定するために使用されます。
+`APPINSIGHTS_INSTRUMENTATIONKEY` は通常、Azure Web Apps に展開されるアプリケーションのインストルメンテーション キーを指定するために使用されます。
 
 > [!NOTE]
 > コードに指定されたインストルメンテーション キーは、他のオプションより優先される環境変数 `APPINSIGHTS_INSTRUMENTATIONKEY` より優先されます。
@@ -91,8 +91,8 @@ Application Insights SDK (ソフトウェア開発キット) for ASP.NET Core �
 
     1. 要求 - アプリケーションに Web 要求が入ってきます。
     1. 依存関係
-        1. Http/Https 呼び出し、これを実行するのは  `HttpClient`
-        1. SQL 呼び出し、これを実行するのは  `SqlClient`
+        1. Http/Https 呼び出し、これを実行するのは `HttpClient`
+        1. SQL 呼び出し、これを実行するのは `SqlClient`
         1. [Azure Storage Client](https://www.nuget.org/packages/WindowsAzure.Storage/)* で実行される Azure Storage の呼び出し
         1. [EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) バージョン 1.1.0 以上
         1. [ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) バージョン 3.0.0 以上
@@ -107,8 +107,8 @@ Application Insights SDK (ソフトウェア開発キット) for ASP.NET Core �
             1. .NET Framework 全体を対象とするアプリケーションの場合、すべてのバージョンの SDK でパフォーマンス カウンターがサポートされます。
 
             Linux のパフォーマンス カウンター サポートが追加されるとき、このドキュメントは更新されます。
-    1. [ライブ メトリック](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)
-    1. `ILogger` ログは、重大度が `Warning` 以上のとき、SDK バージョン 2.7.0-beta3 以降から自動的に記録されます。 詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)をご覧ください。
+    1. [Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)
+    1. SDK バージョン 2.7.0-beta3 以降から、重大度が `Warning` 以上の `ILogger` ログは、自動的に記録されます。 詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)をご覧ください。
 
 テレメトリがポータルに表示され始めるまで、数分かかることがあります。 すべてが動作しているかどうかを簡単に確認するには、実行中のアプリケーションに要求を行っているとき、[ライブ メトリック](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)を使用することをお勧めします。
 
@@ -168,7 +168,7 @@ Application Insights SDK for ASP.NET Core では FixedRate および Adaptive �
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers の追加
 
-新しい `TelemetryInitializer` を追加するには、下の画像のように DependencyInjection コンテナーにそれを追加します。 `TelemetryInitializer`は DependencyInjection コンテナーに追加されますが、SDK によって自動的に選択されます。
+新しい `TelemetryInitializer` を追加するには、下の画像のように DependencyInjection コンテナーにそれを追加します。 `TelemetryInitializer` は DependencyInjection コンテナーに追加されますが、SDK によって自動的に選択されます。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -268,7 +268,7 @@ Application Insights SDK for ASP.NET Core では FixedRate および Adaptive �
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-*1.自動収集されたテレメトリ以外にいくつかのテレメトリを追加で追跡するには、 どうすればよいですか?*
+*1.自動収集されたテレメトリ以外にいくつかのテレメトリを追加で追跡するには、どうすればよいですか?*
 
 * Constructor インジェクションを使用して `TelemetryClient` のインスタンスを取得し、そのインスタンスで必須の `TrackXXX()` メソッドを呼び出します。 ASP.NET Core アプリケーションで新しい `TelemetryClient` インスタンスを作成することは推奨されません。`TelemetryClient` のシングルトン インスタンスは、残りのテレメトリと `TelemetryConfiguration` を共有する DI コンテナーに既に登録されているためです。 新しい `TelemetryClient` インスタンスの作成は、残りのテレメトリとは別の構成を与える必要がある場合にのみ推奨されます。 次の例では、コントローラーから追加のテレメトリを追跡する方法を確認できます。
 
@@ -293,11 +293,11 @@ public class HomeController : Controller
 
  Application Insights のカスタム データ レポートについては、[Application Insights カスタム メトリック API リファレンス](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/)に関するページを参照してください。
 
-*2.一部の Visual Studio テンプレートでは、Application Insights を有効にする目的で UseApplicationInsights() 拡張メソッドが IWebHostBuilder で使用されていました。 この使用方法は今でも有効ですか?*
+*2.一部の Visual Studio テンプレートでは、Application Insights を有効にする目的で UseApplicationInsights() 拡張メソッドが IWebHostBuilder で使用されていました。この使用方法は今でも有効ですか?*
 
 * このメソッドで Application Insights を有効にすることは可能であり、Visual Studio オンボーディングや Azure Web アプリ拡張で使用されています。 ただし、`services.AddApplicationInsightsTelemery()` を使用することをお勧めします。一部の構成を制御するオーバーロードが与えられます。 いずれのメソッドでも内部的には同じことが行われます。そのため、カスタム構成を適用しない場合、どちらを呼び出しても構いません。
 
-*手順 3.ASP.NET Core アプリケーションを Azure Web アプリにデプロイしています。 Application Insights 拡張を Web アプリから有効にできますか?*
+*3.ASP.NET Core アプリケーションを Azure Web アプリにデプロイしています。Application Insights 拡張を Web Apps から有効にできますか?*
 
 * この記事で紹介しているように SDK がビルド時にインストールされる場合、Web Apps ポータルから Application Insights 拡張を有効にする必要はありません。 拡張がインストールされている場合でも、SDK がアプリケーションに既に追加されていることが検出されると、拡張はバックオフされます。 拡張から Application Insights を有効にすれば、SDK をアプリケーションにインストールしたり、更新したりする必要がありません。 ただし、下記の理由から、この記事のように Application Insights を有効にする方法のほうが自由度が高くなります。
     1. Application Insights は以下で引き続き作動します。
@@ -313,11 +313,11 @@ public class HomeController : Controller
 
 * いいえ。 [Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) とそれに取って代わる予定の [IISConfigurator](https://github.com/Microsoft/ApplicationInsights-Announcements/issues/21) は現在のところ、ASP.NET のみをサポートしています。 ASP.NET Core アプリケーションのサポートが利用できるようになると、ドキュメントが更新されます。
 
-*5.ASP.NET Core 2.0 アプリケーションを持っています。 これに対して自分では何もしなくても Application Insights は自動的に有効になりますか?*
+*5.ASP.NET Core 2.0 アプリケーションを持っています。これに対して自分では何もしなくても Application Insights は自動的に有効になりますか?*
 
 * `Microsoft.AspNetCore.All` 2.0 メタパッケージには、Application Insights SDK (バージョン 2.1.0) が含まれていました。アプリケーションを Visual Studio デバッガーの下で実行すると、Visual Studio は Application Insights を有効にし、IDE 自体でテレメトリをローカル表示します。 テレメトリは、インストルメンテーション キーが明示的に指定されない限り、Application Insights サービスに送信されませんでした。 2.0 アプリの場合でも、この記事の指示に従い、Application Insights を有効にすることをお勧めします。
 
-*6.Linux でアプリケーションを実行しています。 Linux でもすべての機能がサポートされていますか?*
+*6.Linux でアプリケーションを実行しています。Linux でもすべての機能がサポートされていますか?*
 
 * はい。 SDK の機能サポートは、次の例外を除き、すべてのプラットフォームで同じです。
     1. Windows 以外ではパフォーマンス カウンターがまだサポートされていません。 Linux Support が追加されたとき、このドキュメントは更新されます。

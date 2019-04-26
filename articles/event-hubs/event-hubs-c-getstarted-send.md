@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6cb1f788f41fe07516d759b177e1d76405dd2bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529727"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678770"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>C を使用して Azure Event Hubs にイベントを送信する
 
@@ -34,13 +34,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 * C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での Azure Linux VM 上の GCC スタックを想定しています。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
-
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
-最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。
-
-次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します:[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
-
-このチュートリアルでは、以下の手順に進みます。
+* **Event Hubs 名前空間とイベント ハブを作成する**。 [Azure portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します:[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Event Hubs にメッセージを送信するコードの記述
 このセクションでは、イベントをイベント ハブに送信する C アプリの作成方法を示します。 コードでは、[Apache Qpid プロジェクト](https://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、[この例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューとトピックと共に使用するのに似ています。 詳しくは、[Qpid Proton のドキュメント](https://qpid.apache.org/proton/index.html)をご覧ください。
@@ -161,7 +155,10 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
 ## <a name="next-steps"></a>次の手順
-イベント ハブからのイベントの受信について確認するには、目次の **[Receive events from an event hub]\(イベント ハブからのイベントの受信\)** ノードで、適切な受信言語をクリックします。
+次の記事を参照してください。
+
+- [EventProcessorHost](event-hubs-event-processor-host.md)
+- [Azure Event Hubs の機能と用語](event-hubs-features.md)。
 
 
 <!-- Images. -->

@@ -13,10 +13,10 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.custom: ''
 ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59287546"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>コンテンツに対応したエンコードの試験的プリセット
@@ -33,21 +33,21 @@ ms.locfileid: "59287546"
 
 ![PSNR を使用したレート歪み (RD) 曲線](media/cae-experimental/msrv1.png)
 
-**図 1:複雑性が高いソースの PSNR メトリックを使用したレート歪み (RD) 曲線**
+"**図 1:複雑性が高いソースの PSNR メトリックを使用したレート歪み (RD) 曲線**
 
 ![VMAF を使用したレート歪み (RD) 曲線](media/cae-experimental/msrv2.png)
 
-**図 2:複雑性が高いソースの VMAF メトリックを使用したレート歪み (RD) 曲線**
+"**図 2:複雑性が高いソースの VMAF メトリックを使用したレート歪み (RD) 曲線**
 
 現時点でプリセットは、複雑性が高く高品質のソース ビデオ (映画、テレビ番組) に合わせてチューニングされています。 低品質のコンテンツ (PowerPoint プレゼンテーションなど) や低品質のビデオへの対応が進行中です。 このプリセットは、アダプティブ ストリーミング プリセットと同じ解像度のセットも使用します。 Microsoft は、コンテンツに基づいて最小セットの解像度を選択する方法に取り組んでいます。 以下は、入力が低品質であること (低ビットレートのために圧縮アーティファクトが多い) をエンコーダーが判断できた、別のカテゴリのソース コンテンツの結果です。 試験的プリセットでは、ほとんどのクライアントが失速することなくストリームを再生できるように、エンコーダーが 1 つの出力レイヤーだけを生成することを判断しています。
 
 ![PSNR を使用した RD 曲線](media/cae-experimental/msrv3.png)
 
-**図 3:低品質の入力 (1080 p) に対して PSNR を使用した RD 曲線**
+"**図 3:低品質の入力 (1080 p) に対して PSNR を使用した RD 曲線**
 
 ![VMAF を使用した RD 曲線](media/cae-experimental/msrv4.png)
 
-**図 4:低品質の入力 (1080 p) に対して VMAF を使用した RD 曲線**
+"**図 4:低品質の入力 (1080 p) に対して VMAF を使用した RD 曲線**
 
 ## <a name="use-the-experimental-preset"></a>試験的プリセットを使用する
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630667"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678090"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -83,7 +83,7 @@ ASE 内にアプリを作成するには:
     > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
     >
 
-2. **作成**を選択します。
+2. **作成** を選択します。
 
 ## <a name="how-scale-works"></a>スケールのしくみ ##
 
@@ -137,7 +137,7 @@ ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の
 
 発行方法に大きな違いがあるのは ILB ASE です。 ILB ASE では、発行エンドポイントは ILB を介してしか利用できません。 ILB は、仮想ネットワークの ASE サブネット内のプライベート IP 上に存在します。 ILB へのネットワーク アクセスができなければ、その ASE にアプリを発行することができません。 [ILB ASE の作成と使用][MakeILBASE]に関するページで述べられているように、システム内にアプリ用の DNS を構成する必要があります。 SCM のエンドポイントも対象となります。 これらが適切に定義されてないと発行できません。 ご利用の IDE から直接発行するためには、ILB へのネットワーク アクセスが IDE にも必要です。
 
-インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 プル モデルを使用した CI システム (Dropbox など) で代用する必要があります。
+既定では、インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 Azure devops でこの問題を回避するには、セルフホステッド リリース エージェントを内部ネットワーク内にインストールして、ILB にアクセスできるようにします。 プル モデルを使用した CI システム (Dropbox など) を使用することもできます。
 
 ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 これはアプリの発行プロファイルのほか、アプリのポータル ブレード (**[概要]** > **[要点]**、**[プロパティ]** など) で確認することができます。 
 

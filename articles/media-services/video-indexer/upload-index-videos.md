@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
 ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893454"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
@@ -59,7 +59,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |名前|説明|
+        |Name|説明|
         |---|---|
         |id|ビデオ ID|
         |state|ビデオの状態|  
@@ -67,7 +67,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - ビデオで特定された人物:
   - Properties
     
-      |名前|説明|
+      |Name|説明|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|
@@ -290,4 +290,4 @@ public class AccountContractSlim
 
 ## <a name="next-steps"></a>次の手順
 
-[v2 API によって生成される Azure Video Indexer の出力を調べる](video-indexer-output-json-v2.md)
+[API によって生成される Azure Video Indexer の出力を調べる](video-indexer-output-json-v2.md)

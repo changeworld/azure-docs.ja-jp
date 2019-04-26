@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor での Azure Active Directory アクティビティ ログ (プレビュー) | Microsoft Docs
-description: Azure Monitor での Azure Active Directory アクティビティ ログ (プレビュー) の概要
+title: Azure Monitor での Azure Active Directory アクティビティ ログ | Microsoft Docs
+description: Azure Monitor での Azure Active Directory アクティビティ ログの概要です
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0469f69f026c578de9598401e69262279669d19f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436304"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011403"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor の Azure AD アクティビティ ログ (プレビュー)
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
-Azure Active Directory (Azure AD) のアクティビティ ログを複数のエンドポイントにルーティングして、長期の保持期間とデータの分析情報を得ることができます。 Azure Monitor の Azure AD ログのパブリック プレビューでは、次の操作を行うことができます。
+Azure Active Directory (Azure AD) のアクティビティ ログを複数のエンドポイントにルーティングして、長期の保持期間とデータの分析情報を得ることができます。 この機能では次のことができます。
 
 * データを長期間保持するには、Azure AD アクティビティ ログを Azure ストレージ アカウントにアーカイブします。
 * Azure AD アクティビティ ログを Azure イベント ハブにストリーム配信して、Splunk や QRadar などの一般的なセキュリティ情報およびイベント管理 (SIEM) ツールを使用して分析することができます。

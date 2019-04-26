@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489983"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678481"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -63,8 +63,7 @@ ms.locfileid: "59489983"
 
 ![仮想ネットワーク ピアリングのトランジット](./media/virtual-networks-peering-overview/figure04.png)
 
-ゲートウェイのトランジットは、VNet ピアリングとグローバル VNet ピアリング (プレビュー) の両方でサポートされています。 プレビューでグローバルにピアリングされた仮想ネットワークでは、リモート ゲートウェイを使用でき、ゲートウェイ転送を許可できます。 プレビューは、すべての Azure リージョン、中国のクラウド リージョン、および政府のクラウド リージョンで利用できます。 ホワイト リストに登録する必要はありません。 CLI、PowerShell、テンプレート、または API を介してプレビューをテストできます。 プレビューではポータルはサポートされていません。
-異なるデプロイ モデル (Resource Manager とクラシック) を使って作成された仮想ネットワーク間のゲートウェイ転送は、ゲートウェイが仮想ネットワーク (Resource Manager) 内にある場合にのみサポートされます。 転送へのゲートウェイの使用について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+ゲートウェイのトランジットは、VNet ピアリングとグローバル VNet ピアリングの両方でサポートされています。 異なるデプロイ モデル (Resource Manager とクラシック) を使って作成された仮想ネットワーク間のゲートウェイ転送は、ゲートウェイが仮想ネットワーク (Resource Manager) 内にある場合にのみサポートされます。 転送へのゲートウェイの使用について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 1 本の Azure ExpressRoute 接続を共有する仮想ネットワークどうしをピアリングした場合、両者間のトラフィックは、そのピアリング関係を通過することになります (つまり Azure バックボーン ネットワークが使用されます)。 それでも、各仮想ネットワークのローカル ゲートウェイを使用してオンプレミス回線に接続できます。 また、共有ゲートウェイを使用して、オンプレミス接続用のトランジットを構成することもできます。
 

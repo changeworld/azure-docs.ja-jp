@@ -8,13 +8,13 @@ ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.date: 01/25/2019
-ms.openlocfilehash: bd3a82f326cdf7f51e8842e45333ff2bd647c260
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/25/2019
+ms.openlocfilehash: e3c2587fceed265c9768b6ea6f2ecf3b9a8b7b1a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092754"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011350"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用 PowerShell モジュール
 
@@ -23,57 +23,47 @@ PowerShell モジュールを使用すると、ワークスペース、データ
 次の 3 つの Powershell モジュールを使用して Studio リソースとやり取りすることができます。
 
 * 2018 年にリリースされた [Azure PowerShell Az](#az-rm)。AzureRM のすべての機能が含まれていますが、コマンドレット名は異なります
-* 2016 年にリリースされた [AzureRM](#az-rm)
+* 2016 年にリリースされた [AzureRM](#az-rm)。PowerShell Az に置き換えられます
 * 2016 年にリリースされた [Azure Machine Learning PowerShell クラシック](#classic)
 
-これらのモジュールにはいくつかの類似点もありますが、それぞれが特定のシナリオ向けに設計されています。 この記事では、PowerShell のモジュールの相違点について説明し、どれを選択すればよいかを把握しやすくします。
+これらの PowerShell モジュールにはいくつかの類似点もありますが、それぞれが特定のシナリオ向けに設計されています。 この記事では、PowerShell のモジュールの相違点について説明し、どれを選択すればよいかを把握しやすくします。  
 
-## <a name="choosing-modules"></a> モジュールの選択
-
-利用可能な PowerShell モジュールの選択は、管理しているリソースの種類によって異なります。
-
-以下の[サポート表](#support-table)で、各モジュールでサポートされるリソースを確認してください。 PowerShell クラシックは Az または AzureRM のいずれかと並行してインストールできるため、2 つのモジュールをインストールして、すべてのリソースの種類 (クラシックと Az またはクラシックと AzureRM) をカバーすることができます
-
-ただし、Az と AzureRM が同時にインストールされていることは推奨されません。 Az と AzureRM の間で決定する場合、Microsoft では今後のすべてのデプロイ用に Az をお勧めします。 AzureRm は、環境でそれが必要となる特殊な状況がある場合にのみ使用してください。
-
-Az と AzureRM の相違点の詳細については、[Azure PowerShell Az の概要](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)に関するページを参照してください。
+以下の[サポート表](#support-table)で、各モジュールでサポートされるリソースを確認してください。 
 
 ## <a name="az-rm"></a> Azure PowerShell Az および AzureRM
 
-Az と AzureRM は、両方とも、**Azure Resource Manager** デプロイ モデルを使ってソリューションを管理します。 これらのリソースには、Studio ワークスペースと Studio の新しい Web サービスが含まれます。 クラシック デプロイ モデルを使用してデプロイされたリソースを管理するには、PowerShell クラシック モジュールを使用する必要があります。 デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
+Az は、現在、Azure とやり取りすることを目的とした PowerShell モジュールであり、AzureRM の以前のすべての機能が含まれています。 AzureRM は引き続きバグ修正プログラムを受信しますが、新しいコマンドレットや機能は受信しなくなります。  Az と AzureRM は、両方とも、**Azure Resource Manager** デプロイ モデルを使ってソリューションを管理します。 これらのリソースには、Studio ワークスペースと Studio の "新しい" Web サービスが含まれます。 
 
-Az は、現在、Azure とやり取りすることを目的とした PowerShell モジュールであり、AzureRM の以前のすべての機能が含まれています。 AzureRM は引き続きバグ修正プログラムを受信しますが、新しいコマンドレットや機能は受信しなくなります。 AzureRM からのアップグレード パスはありますが、Studio を操作しているときに Az に関する問題が発生した場合は、問題を報告してから、AzureRM の使用に戻ってください。
+PowerShell クラシックを Az または AzureRM と共にインストールし、"新規" と "クラシック" 両方のリソースの種類をカバーすることができます。 ただし、Az と AzureRM が同時にインストールされていることは推奨されません。 Az と AzureRM の間で決定する場合、Microsoft では今後のすべてのデプロイ用に Az をお勧めします。  Az と AzureRM の比較および移行パスについて詳しくは、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)」をご覧ください。
 
 Az の使用を開始するには、[Azure Az のインストール手順](https://docs.microsoft.com/powershell/azure/install-az-ps)に従ってください。
 
 ## <a name="classic"></a> PowerShell クラシック
 
-Studio の [PowerShell クラシック モジュール](https://aka.ms/amlps)を使用すると、**クラシック デプロイ モデル**を使用してデプロイされたリソースを管理することができます。 これらのリソースには、Studio ユーザーの資産、従来の Web サービス、および従来の Web サービス エンドポイントが含まれます。
+Studio の [PowerShell クラシック モジュール](https://aka.ms/amlps)を使用すると、**クラシック デプロイ モデル**を使用してデプロイされたリソースを管理することができます。 これらのリソースには、Studio ユーザーの資産、"従来の" Web サービス、および "従来の" Web サービス エンドポイントが含まれます。
 
-ただし、Microsoft では、リソースのデプロイと管理を簡素化するために、すべての新しいリソースに対して Resource Manager デプロイ モデルを使用することをお勧めします。 デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
+ただし、Microsoft では、リソースのデプロイと管理を簡素化するために、将来のすべてのリソースに対して Resource Manager デプロイ モデルを使用することをお勧めします。 デプロイ モデルの詳細については、「[Azure Resource Manager とクラシック デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
 
 PowerShell クラシックを初めて使用する方は、GitHub から[リリース パッケージ](https://github.com/hning86/azuremlps/releases)をダウンロードし、[インストール手順](https://github.com/hning86/azuremlps/blob/master/README.md)に従ってください。 その手順に、ダウンロード/解凍した DLL のブロックを解除してからご使用の PowerShell 環境にインポートする方法が説明されています。
 
+PowerShell クラシックを Az または AzureRM と共にインストールし、"新規" と "クラシック" 両方のリソースの種類をカバーすることができます。
+
 ## <a name="support-table"></a> PowerShell サポート表
 
- **Studio ワークスペース** | **Az** |  **AzureRM** | **PowerShell クラシック** |
-| --- | --- | --- | --- |
-| ワークスペースを作成/削除する | [Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) | [Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
-| ワークスペース ユーザーを管理する |  |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| コミットメント プランを管理する | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | [New-AzureRmMlCommitmentPlan](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/new-azurermmlcommitmentplan) |
-|||
-| **Web サービス** | **Az** | **AzureRM** | **PowerShell クラシック** |
-| Web サービスを管理する | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br> (新しい Web サービス) | [New-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/new-azurermmlwebservice) <br> (新しい Web サービス) |[New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br> (クラシック Web サービス) |
-| エンドポイント/キーを管理する |  [Get-AzMlWebServiceKeys](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekeys) <br> (新しい Web サービス) | [Get-AzureRmMlWebServiceKeys](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservicekeys) <br> (新しい Web サービス) | [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint) <br> (クラシック Web サービス) |
-|||
-| **ユーザー資産** | **Az** | **AzureRM** | **PowerShell クラシック** |
-| データセット/トレーニング済みモデルを管理する |  |  | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
-| 実験を管理する |  |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
-| カスタム モジュールを管理する |  |  | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
+
+| | **Az** |  **PowerShell クラシック** |
+| --- | --- | --- |
+| ワークスペースを作成/削除する | [Resource Manager テンプレート](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
+| ワークスペース コミットメント プランを管理する | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
+| ワークスペース ユーザーを管理する |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
+| Web サービスを管理する | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>("新しい" Web サービス)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>("クラシック" Web サービス) |
+| Web サービスのエンドポイント/キーを管理する |  [Get-AzMlWebServiceKeys](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekeys)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| ユーザーのデータセット/トレーニング済みモデルを管理する| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
+| ユーザーの実験を管理する |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
+| カスタム モジュールを管理する | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
 ## <a name="next-steps"></a>次の手順
-PowerShell モジュールの完全なドキュメントは、以下のリンクにあります。
-* [AzureRM](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/#machine_learning)
+これらの PowerShell モジュールの完全なドキュメントを参照してください。
 * [PowerShell クラシック](https://aka.ms/amlps)
 * [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

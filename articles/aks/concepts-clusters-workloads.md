@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181352"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678796"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -196,6 +196,9 @@ DaemonSet コントローラーでは、既定の Kubernetes スケジューラ�
 StatefulSet と同様に、DaemonSet は `kind: DaemonSet` を使用して、YAML 定義の一部として定義されています。
 
 詳細については、[Kubernetes の DaemonSet][kubernetes-daemonset] に関するページをご覧ください。
+
+> [!NOTE]
+> [仮想ノードのアドオン](virtual-nodes-cli.md#enable-virtual-nodes-addon)を使用している場合は、DaemonSet によって仮想ノード上にポッドが作成されることはありません。
 
 ## <a name="namespaces"></a>名前空間
 

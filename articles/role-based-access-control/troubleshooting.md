@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 04/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407591"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678430"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "58407591"
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>サブスクリプションがテナントをまたいで移動される際に RBAC を復旧します
 
 - サブスクリプションを別の Azure AD テナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。
-- 別の Azure AD テナントにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD テナントから完全に削除され、ターゲット Azure AD テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。
+- 別の Azure AD テナントにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD テナントから完全に削除され、ターゲット Azure AD テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
 - Azure AD グローバル管理者であり、テナント間で移動された後のサブスクリプションにアクセスできない場合は、**[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題

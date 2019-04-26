@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486320"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011369"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -399,7 +399,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
    - **[名前]**:正常性プローブの名前。
    - **プロトコル**:TCP
-   - **ポート**:使用可能な TCP ポートに設定します。 このポートには、開かれたファイアウォール ポートが必要です。 ファイアウォールで正常性プローブに設定したのと[同じポート](#ports)を使用します。
+   - **ポート**:[こちらの手順](#ports)で正常性プローブ用にファイアウォールで作成したポートに設定します。 この記事の例では、TCP ポート `59999` を使用します。
    - **間隔**: 5 秒
    - **[異常のしきい値]**: 連続エラー数 2。
 

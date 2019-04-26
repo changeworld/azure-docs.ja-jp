@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731091"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678906"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace ‎商用トランザクションの機能と考慮事項
 
@@ -44,7 +44,7 @@ Azure Marketplace では、公開元はリストと試用版の公開オプシ�
 
 ## <a name="transact-general-overview"></a>販売の概要
 
-取引の公開オプションを使用する場合、Microsoft は、顧客の Azure サブスクリプションに対するサード パーティ製ソフトウェアの販売とデプロイを有効にします。 公開元は、Azure Marketplace 上で課金モデルとオファーの種類を選択するときに、Azure インフラストラクチャ料金の課金と、公開元自身のソフトウェア ライセンス料金を考慮する必要があります。 
+取引の公開オプションを使用する場合、Microsoft は、顧客の Azure サブスクリプションに対して、サード パーティ製ソフトウェアの販売と、特定の種類のオファーのデプロイを有効にします。 公開元は、Azure Marketplace 上で課金モデルとオファーの種類を選択するときに、Azure インフラストラクチャ料金の課金と、公開元自身のソフトウェア ライセンス料金を考慮する必要があります。
 
 Azure Marketplace での取引の公開オプションは、仮想マシン、Azure アプリケーション、SaaS アプリの各オファーの種類で現在サポートされています。
 
@@ -58,7 +58,7 @@ Azure Marketplace での取引の公開オプションは、仮想マシン、Az
 
 **SaaS アプリの場合**
 
-SaaS アプリの場合、公開元は Azure インフラストラクチャの使用料金とソフトウェアのライセンス料金を 1 つのコスト項目として処理する必要があります。  これは定額の月額料金として顧客に提示されます。 Azure インフラストラクチャの使用量は、パートナーが直接管理し、パートナーに直接課金されます。  実際のインフラストラクチャの使用料金は、顧客には提示されません。  公開元は、Azure インフラストラクチャの使用料金をソフトウェア ライセンス料金にバンドルするように選択することが一般的です。  ソフトウェア ライセンス料金は従量制ではなく、消費量ベースでもありません。
+SaaS アプリの場合、公開元は Azure インフラストラクチャの使用料金とソフトウェアのライセンス料金を 1 つのコスト項目として処理する必要があります。  これは定額料金として顧客に提示されます。 Azure インフラストラクチャの使用量は、パートナーが直接管理し、パートナーに直接課金されます。  実際のインフラストラクチャの使用料金は、顧客には提示されません。  公開元は、Azure インフラストラクチャの使用料金をソフトウェア ライセンス料金にバンドルするように選択することが一般的です。  ソフトウェア ライセンス料金は従量制ではなく、消費量ベースでもありません。
 
 ## <a name="transact-billing-models"></a>販売の課金モデル
 

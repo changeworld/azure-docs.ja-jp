@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425969"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
@@ -81,13 +81,13 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 1. IoT Central アプリケーション内で、CSV ファイルを使用して "_デバイスをインポートおよび登録_" します。
 
-1. _デバイスを設定します。_ アップロードしたルート証明書を使用してリーフ証明書を生成します。 **デバイス ID** をリーフ証明書の CNAME 値として使用します。 デバイス ID はすべて小文字である必要があります。 次に、プロビジョニング サービスの情報を使用してデバイスをプログラムします。 初めてデバイスの電源を入れたときに、デバイスは IoT Central アプリケーションに関する接続情報を DPS から取得します。
+1. "_デバイスを設定します。_" アップロードしたルート証明書を使用してリーフ証明書を生成します。 **デバイス ID** をリーフ証明書の CNAME 値として使用します。 デバイス ID はすべて小文字である必要があります。 次に、プロビジョニング サービスの情報を使用してデバイスをプログラムします。 初めてデバイスの電源を入れたときに、デバイスは IoT Central アプリケーションに関する接続情報を DPS から取得します。
 
 ### <a name="further-reference"></a>他の参考資料
 
 - [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。
 
-- [C のサンプル デバイス クライアント。](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
+- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)。
 
 ### <a name="for-testing-purposes-only"></a>テスト目的のみ
 
@@ -182,7 +182,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 デバイス SDK の使用の詳細については、次に関連する記事のコード例を参照してください。
 
 - [汎用の Node.js クライアント を Azure IoT Central アプリケーションに接続する](howto-connect-nodejs.md)
-- [Raspberry Pi デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-raspberry-pi-python.md)
+- [Raspberry Pi デバイスを Azure IoT Central アプリケーションに接続する ](howto-connect-raspberry-pi-python.md)
 - [DevDiv キット デバイスを Azure IoT Central アプリケーションに接続する ](howto-connect-devkit.md)
 
 ### <a name="protocols"></a>プロトコル
