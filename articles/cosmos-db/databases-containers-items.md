@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のデータベース、コン
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762907"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678804"
 ---
 # <a name="work-with-databases-containers-and-items"></a>データベース、コンテナー、アイテムの操作
 
@@ -61,7 +61,7 @@ Azure Cosmos コンテナー内の選択された項目、またはコンテナ�
 
 [変更フィード](change-feed.md)を使用すると、コンテナーの論理パーティションごとに管理されている操作ログにサブスクライブできます。 変更フィードでは、コンテナーに対して実行されたすべての更新のログと共に、項目の前後のイメージが提供されます。 [変更フィードを使用して反応型のアプリケーションを構築する方法](serverless-computing-database.md)に関するページを参照してください。 また、コンテナーの変更フィード ポリシーを使用して、変更フィードの保存期間を構成することもできます。 
 
-Azure Cosmos コンテナーには、[ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF)](stored-procedures-triggers-udfs.md)、および[マージ プロシージャ](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure)を登録できます。 
+Azure Cosmos コンテナーには、[ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF)](stored-procedures-triggers-udfs.md)、および[マージ プロシージャ](how-to-manage-conflicts.md)を登録できます。 
 
 Azure Cosmos コンテナーで[一意キー制約](unique-keys.md)を指定できます。 一意キー ポリシーを作成することで、論理パーティション キーごとに、1 つまたは複数の値の一意性を確保します。 一意キー ポリシーを使用して作成したコンテナーでは、一意キー制約で指定されている値と重複する値を持つ項目の新規作成や更新ができなくなります。 詳細については、[一意キーの制約](unique-keys.md)に関するページを参照してください。
 
@@ -117,7 +117,7 @@ Azure Cosmos のどの項目にも、以下のシステム定義プロパティ�
 |_etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | はい | いいえ  | いいえ  | いいえ  | いいえ  |
 |_ts | システム生成 | 項目の最終更新のタイムスタンプ | はい | いいえ  | いいえ  | いいえ  | いいえ  |
 |_self | システム生成 | 項目のアドレス指定可能な URI | はい | いいえ  | いいえ  | いいえ  | いいえ  |
-|id | 使用できるのは | 論理パーティション内の、ユーザーが定義した一意の名前。 ユーザーが id を指定しない場合、システムによって id が自動生成されます。 | はい | はい | はい | はい | はい |
+|id | 使用できるのは | 論理パーティション内の、ユーザーが定義した一意の名前。 ユーザーが ID を指定しない場合、システムによって ID が自動生成されます。 | はい | はい | はい | はい | はい |
 |任意のユーザー定義のプロパティ | ユーザー定義 | API のネイティブ表現 (JSON、BSON、CQL など) で表されるユーザー定義のプロパティ | はい | はい | はい | はい | はい |
 
 ### <a name="operations-on-items"></a>項目に対する操作

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Database Migration Service を使用して、Azure SQL Database または Azure SQL Database マネージド インスタンスへの RDS SQL Server のオンライン移行を実行する | Microsoft Docs
+title: チュートリアル:Azure Database Migration Service を使用して、Azure SQL Database または Azure SQL Database マネージド インスタンスへの RDS SQL Server のオンライン移行を行う | Microsoft Docs
 description: Azure Database Migration Service を使用して、RDS SQL Server から Azure SQL Database または Azure SQL Database マネージド インスタンスへのオンライン移行を実行する方法について学習します。
 services: dms
 author: HJToland3
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/20/2019
+ms.openlocfilehash: 7294236a7b79ad093480e9063d886dd30ccf7fc1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886405"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998976"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL Database マネージド インスタンスにオンラインで移行する
 Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) または [Azure SQL Database マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)に、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database または Azure SQL Database マネージド インスタンスに移行します。
@@ -187,7 +187,14 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
 4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[AWS RDS for SQL Server]** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database]** を選択します。
+
+    > [!NOTE]
+    > Azure SQL Database シングルトン データベースと Azure SQL Database マネージド インスタンスのどちらに移行する場合でも、[ターゲット サーバーの種類] で **[Azure SQL Database]** を選択します。
+
 5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
+
+    > [!IMPORTANT]
+    > 必ず **[オンライン データの移行]** を選択してください。オフライン移行は、このシナリオではサポートされていません。
 
     ![Database Migration Service プロジェクトを作成する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 

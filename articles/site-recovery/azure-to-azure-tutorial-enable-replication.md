@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/12/2019
+ms.date: 04/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ff18a14b314b5757629205f4bf0eb134411688ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13c86a38e0d894feed0d9c24dd802a09ff1d1d2d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853119"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678847"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -86,7 +86,7 @@ URL の代わりに IP アドレスを使用してアウトバウンド接続を
   - [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery サービス エンドポイントの IP アドレス](https://aka.ms/site-recovery-public-ips)
 
-こちらの[スクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702)を使用して、必要な NSG ルールを作成することができます。
+NSG を使用している場合は、ソース リージョン用のストレージ サービス タグ NSG ルールを作成できます。 [詳細情報](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM の証明書の確認
 

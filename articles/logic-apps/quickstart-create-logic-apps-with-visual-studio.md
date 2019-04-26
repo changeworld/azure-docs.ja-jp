@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/02/2019
 ms.openlocfilehash: 10ed3ec8b29048a7ede51a6d98e9f1ebb7f44cf6
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862983"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
@@ -47,7 +47,7 @@ Azure Logic Apps を使用するのが初めてであり、単に基本的な概
 
   * <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
 
-  * 必要な Visual Studio バージョン用の Azure Logic Apps Tools。
+  * 必要な Visual Studio バージョン用の Azure Logic Apps Tools:
 
     * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
     
@@ -119,7 +119,7 @@ Azure リソース グループ プロジェクトを作成した後、**[空の
    | ユーザー プロファイルの一覧 | Contoso <br> jamalhartnett@contoso.com | 既定ではサインインに使用したアカウント |
    | **サブスクリプション** | 従量課金制 <br> (jamalhartnett@contoso.com) | Azure サブスクリプションの名前および関連付けられたアカウント |
    | **リソース グループ** | MyLogicApp-RG <br> (米国西部) | ロジック アプリのリソースを格納してデプロイする Azure リソース グループとその場所 |
-   | **Location** | MyLogicApp-RG2 <br> (米国西部) | リソース グループの場所を使用しない場合の別の場所 |
+   | **場所** | MyLogicApp-RG2 <br> (米国西部) | リソース グループの場所を使用しない場合の別の場所 |
    ||||
 
 1. ロジック アプリ デザイナーが開き、紹介ビデオとよく使用されるトリガーが含まれたページが表示されます。 

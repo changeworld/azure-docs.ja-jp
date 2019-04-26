@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267771"
 ---
 # <a name="starter-resource-graph-queries"></a>Resource Graph の初歩的なクエリ
@@ -28,7 +28,7 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 > - [名前とその OS の種類による最初の 5 つの仮想マシンの表示](#show-sorted)
 > - [仮想マシンの数 (OS の種類別)](#count-os)
 > - [ストレージを含むリソースの表示](#show-storage)
-> - [すべてのパブリック IP アドレスの一覧表示](#list-publicip)
+> - [パブリック IP アドレスの一覧表示](#list-publicip)
 > - [サブスクリプションで構成されている IP アドレスを持つリソースの数](#count-resources-by-ip)
 > - [特定のタグ値が付いたリソースの一覧表示](#list-tag)
 > - [特定のタグ値を持つすべてのストレージ アカウントの一覧表示](#list-specific-tag)
@@ -94,7 +94,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>名前とその OS の種類による最初の 5 つの仮想マシンの表示
 
-このクエリは、名前別に整理された 5 つの一致するレコードを取得するためのみに `limit` を使用します。 Azure リソースの種類は `Microsoft.Compute/virtualMachines` です。 `project` により、含めるプロパティを Azure Resource Graph に指示しています。
+このクエリは、名前別に整理された 5 つの一致するレコードを取得するためのみに `limit` を使用します。 Azure リソースの種類は `Microsoft.Compute/virtualMachines` です。 `project` により、Azure Resource Graph に含めるプロパティを説明します。
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -167,7 +167,7 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 
 前のクエリと同様に、type に **publicIPAddresses** という語を含むものをすべて検索します。
 このクエリは、そのパターンを拡張して、**properties.ipAddress**
-`isnotempty` の場合にのみ結果を取得し、**properties.ipAddress** のみを、その結果を上位 100 件に制限 (`limit`) して返します
+`isnotempty` の場合にのみ結果を取得し、**properties.ipAddress** のみを返し、結果を上位 100 件に制限 (`limit`) します。
 100. 選択したシェルによって引用符のエスケープが必要となる場合があります。
 
 ```Query
@@ -251,7 +251,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> この例では`=~`の条件付きの代わりに、`==`をマッチングに使用しています。 `==` では、大文字と小文字が区別されます。
+> この例では`=~`の条件付きの代わりに、`==`をマッチングに使用しています。 `==` は大文字小文字が区別します。
 
 ## <a name="next-steps"></a>次の手順
 

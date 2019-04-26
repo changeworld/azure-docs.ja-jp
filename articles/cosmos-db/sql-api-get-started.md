@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: a8d144b2cb8ee18c69dc4c4768b09422d44bade2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617322"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680401"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -91,7 +91,10 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 1. **Microsoft.Azure.DocumentDB** を検索して選択し、**[インストール]** を選択します (まだインストールしていない場合)。
    
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) です。
-   
+
+   > [!NOTE]
+   > .NET Core を使用している場合は、[.NET Core のドキュメント](./sql-api-dotnetcore-get-started.md)を参照してください。
+
    ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーンショット](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
    
    ソリューションの変更のプレビューに関するメッセージが表示されたら、**[OK]** を選択します。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** を選択します。

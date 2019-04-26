@@ -9,10 +9,10 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492315"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
@@ -125,7 +125,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |Setting  |値  |
 |---------|---------|
-|サブネット|**Workload-SN**|
+|Subnet|**Workload-SN**|
 |パブリック IP|**なし**|
 |パブリック受信ポート|**なし**|
 
@@ -257,4 +257,4 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall ログの監視](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

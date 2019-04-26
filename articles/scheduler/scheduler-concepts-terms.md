@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651271"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683054"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -41,19 +41,25 @@ Azure Scheduler REST API では、以下の主要なエンティティつまり�
 
 ジョブを作成および編集するための操作をサポートしています。 すべてのジョブは既存のジョブ コレクションに属する必要があるため、暗黙的な作成はありません。 詳しくは、[ジョブの Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/jobs) に関するページをご覧ください。 これらの操作の URI アドレスを次に示します。
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
+```
 
 ### <a name="job-collection-management"></a>ジョブ コレクションの管理
 
 ジョブとジョブ コレクションの作成と編集の操作をサポートし、クォータと共有設定にマップしています。 たとえば、クォータではジョブの最大数や最小の繰り返し間隔が指定されています。 詳しくは、[ジョブ コレクションの Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/jobcollections) に関するページをご覧ください。 これらの操作の URI アドレスを次に示します。
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
+```
 
 ### <a name="job-history-management"></a>ジョブ履歴の管理
 
 ジョブの経過時間やジョブの実行結果など、60 日分のジョブの実行履歴をフェッチするための GET 操作がサポートされています。 状態およびステータスに基づいてフィルター処理を行うためのクエリ文字列パラメーターのサポートを含みます。 詳しくは、[ジョブのジョブ履歴一覧表示の Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) に関するページをご覧ください。 この操作の URI アドレスを次に示します。
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
+```
 
 ## <a name="job-types"></a>ジョブの種類
 
@@ -245,7 +251,7 @@ Shared Access Signature (SAS) トークンについて詳しくは、[Shared Acc
 | **interval** | いいえ  | 1 ～ 1000 | **frequency** に基づいて実行間の時間単位の数を決定する正の整数 | 
 | **schedule** | いいえ  | 多様 | 複雑で高度なスケジュールの詳細。 **hours**、**minutes**、**weekDays**、**months**、**monthDays** を参照してください | 
 | **hours** | いいえ  | 1 ～ 24 | ジョブ実行日時に対する時マークを含む配列 | 
-| **分** | いいえ  | 1 ～ 24 | ジョブ実行日時に対する分マークを含む配列 | 
+| **分** | いいえ  | 0 ～ 59 | ジョブ実行日時に対する分マークを含む配列 | 
 | **months** | いいえ  | 1 ～ 12 | ジョブ実行日時に対する月の配列 | 
 | **monthDays** | いいえ  | 多様 | ジョブ実行日時に対する日の配列 | 
 | **weekDays** | いいえ  | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | ジョブ実行日時に対する曜日の配列 | 

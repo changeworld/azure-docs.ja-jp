@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
-ms.date: 03/01/2019
-ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/18/2019
+ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093890"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998279"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database サーバーの SQL Database リソース制限
 
@@ -28,7 +28,7 @@ ms.locfileid: "58093890"
 
 ## <a name="maximum-resource-limits"></a>最大リソース制限
 
-| リソース | 制限 |
+| Resource | 制限 |
 | :--- | :--- |
 | サーバーあたりのデータベース数 | 5000 |
 | 任意のリージョンにおけるサブスクリプションあたりの既定のサーバー数 | 20 |
@@ -75,7 +75,7 @@ ms.locfileid: "58093890"
 - ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
 ## <a name="transaction-log-rate-governance"></a>トランザクション ログ速度ガバナンス 
-トランザクション ログ速度ガバナンスは、一括挿入、SELECT INTO、インデックス作成などのワークロードの高いインジェクション速度を制限するために使用される、Azure SQL Database 内のプロセスです。 こうした制限は追跡され、1 秒未満のレベルでログ レコード生成速度に適用されて、データ ファイルに対して発行できる IO の数に関係なく、スループットが制限されます。  現在、トランザクション ログ生成速度は、ハードウェアに依存するポイントまで直線的にスケールアップされます。許容される最大ログ速度は、仮想コア購入モデルで 48 MB/秒です。 
+トランザクション ログ速度ガバナンスは、一括挿入、SELECT INTO、インデックス作成などのワークロードの高いインジェクション速度を制限するために使用される、Azure SQL Database 内のプロセスです。 こうした制限は追跡され、1 秒未満のレベルでログ レコード生成速度に適用されて、データ ファイルに対して発行できる IO の数に関係なく、スループットが制限されます。  現在、トランザクション ログ生成速度は、ハードウェアに依存するポイントまで直線的にスケールアップされます。許容される最大ログ速度は、仮想コア購入モデルで 96 MB/秒です。 
 
 > [!NOTE]
 > トランザクション ログ ファイルへの実際の物理的な IO は、管理または制限されません。 
@@ -98,7 +98,7 @@ ms.locfileid: "58093890"
 |||
 
 望ましいスケーラビリティを損なうログ速度制限が発生した場合は、次のオプションを検討してください。
-- 最大 48 MB/秒のログ速度を実現するために、より大きなレベルにスケールアップします。 
+- 最大 96 MB/秒のログ速度を実現するために、より大きなレベルにスケールアップします。 
 - 読み込まれるデータが一時的なデータである場合、つまり、ETL プロセスでのステージング データである場合は、tempdb に読み込むことができます (この場合、ログ記録が最小限に抑えられます)。 
 - 分析シナリオでは、クラスター化列ストアの対象テーブルに読み込みます。 この場合は圧縮されるため、必要なログ速度が小さくなります。 この手法では CPU 使用率が増加し、クラスター化列ストア インデックスからメリットを得られるデータ セットにのみ適用できます。 
 

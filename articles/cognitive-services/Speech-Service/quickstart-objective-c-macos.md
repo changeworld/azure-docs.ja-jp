@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
 ms.openlocfilehash: 55fc671d926880375b0420e0eafb6dc63f170ba6
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012326"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
@@ -52,7 +52,7 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
     1. プロジェクトの言語として Objective-C が選択されていることを確認します。
     1. ストーリーボードを使用するためのチェック ボックスとドキュメントベースのアプリケーションを作成するためのチェック ボックスを無効にします。 サンプル アプリ向けのシンプルな UI がプログラムにより作成されます。
     1. テストとコア データに関するすべてのチェック ボックスを無効にします。
-    ![プロジェクト設定](media/sdk/qs-objectivec-macos-project-settings.png)
+    ![プロジェクトの設定](media/sdk/qs-objectivec-macos-project-settings.png)
 1. プロジェクト ディレクトリの選択
     1. プロジェクトの配置先のディレクトリを選択します。 これにより、ホーム ディレクトリ内に `helloworld` ディレクトリが作成され、Xcode プロジェクトのすべてのファイルが入れられます。
     1. このサンプル プロジェクトの Git リポジトリの作成を無効にします。

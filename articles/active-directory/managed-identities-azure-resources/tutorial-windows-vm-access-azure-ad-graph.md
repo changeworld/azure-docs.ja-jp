@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523360"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997786"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当てマネージド ID を使用して Microsoft Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  このチュートリアルでは、Azure AD グループ内での VM ID のメンバーシップをクエリします。 たとえば、グループの情報は承認の判断によく使用されます。 実際には、VM のマネージド ID は Azure AD 内の**サービス プリンシパル**によって表されます。 グループ クエリを実行する前に、VM の ID を表すサービス プリンシパルを Azure AD 内のグループに追加します。 これは Azure PowerShell、Azure AD PowerShell、または Azure CLI を使用して実行できます。
+このチュートリアルでは、Windows 仮想マシン (VM) 向けのシステム割り当てマネージド ID を使用して、Azure AD Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  このチュートリアルでは、Azure AD グループ内での VM ID のメンバーシップをクエリします。 たとえば、グループの情報は承認の判断によく使用されます。 実際には、VM のマネージド ID は Azure AD 内の**サービス プリンシパル**によって表されます。 グループ クエリを実行する前に、VM の ID を表すサービス プリンシパルを Azure AD 内のグループに追加します。 これは Azure PowerShell、Azure AD PowerShell、または Azure CLI を使用して実行できます。
 
 > [!div class="checklist"]
 > * Azure への接続

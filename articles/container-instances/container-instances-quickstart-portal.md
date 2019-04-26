@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 008d6d2a9a4a20e9fd083e9e2f009396a7f14df2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369447"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995916"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してコンテナー インスタンスを Azure 内にデプロイする
 
@@ -35,31 +35,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure ポータルで新しいコンテナー インスタンスの作成を開始][aci-portal-01]
 
-**[Container name] (コンテナー 名)**、**[Container image] (コンテナー イメージ)**、および **[Resource group] (リソース グループ)** テキスト ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
+**[基本]** ページで、**[リソース グループ]**、**[コンテナー名]**、および **[コンテナー イメージ]** の各ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
 
+* リソース グループ: **新規作成** > `myresourcegroup`
 * [コンテナー 名]: `mycontainer`
-* [コンテナー イメージ]: `mcr.microsoft.com/azuredocs/aci-helloworld`
-* リソース グループ:**新規作成** > `myResourceGroup`
+* [Container image] (コンテナー イメージ): `mcr.microsoft.com/azuredocs/aci-helloworld`
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 
-このクイック スタートでは、既定の設定である **[パブリック]** のままにして、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
+このクイック スタートでは、**[イメージの種類]** の設定に既定値の **[パブリック]** を使用して、パブリックの Microsoft `aci-helloworld` イメージをデプロイします。 この Linux イメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージ化されています。
 
-**[構成]** で、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
-
-**[構成]** のその他の設定は既定値のままにし、**[OK]** をクリックして構成を検証します。
+**[Networking]\(ネットワーク\)** ページで、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
 ![Azure ポータルでの新しいコンテナー インスタンスの構成][aci-portal-04]
 
-検証が完了すると、コンテナーの設定の概要が表示されます。 **[OK]** を選択して、コンテナーのデプロイ要求を送信します。
+他の設定は既定値のままにして、**[確認と作成]** を選択します。
+
+検証が完了すると、コンテナーの設定の概要が表示されます。 **[作成]** を選択して、コンテナーのデプロイ要求を送信します。
 
 ![Azure ポータルでの新しいコンテナー インスタンスの設定概要][aci-portal-05]
 
 デプロイが開始されると、デプロイが進行中であることを示す通知が表示されます。 コンテナー グループがデプロイされると、別の通知が表示されます。
 
-![Azure ポータルでの新しいコンテナー インスタンスの作成進捗状況][aci-portal-08]
-
-**[リソース グループ]** > **[myResourceGroup]** > **[mycontainer]** の順に移動して、コンテナー グループの概要を開きます。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
+**[リソース グループ]** > **[myresourcegroup]** > **[mycontainer]** の順に移動して、コンテナー グループの概要を開きます。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
 
 ![Azure ポータルでのコンテナー グループ概要][aci-portal-06]
 

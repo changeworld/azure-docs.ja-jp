@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 29cea7e72d6bd7f64f6cf2a68b7620090ea4eef3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051441"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995935"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -38,6 +38,17 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. **[キー/値のエクスプローラー]** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+
+    | キー | 値 |
+    |---|---|
+    | TestApp:Settings:BackgroundColor | 白 |
+    | TestApp:Settings:FontSize | 24 |
+    | TestApp:Settings:FontColor | 黒 |
+    | TestApp:Settings:Message | Azure App Configuration からのデータ |
+
+    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
@@ -191,4 +202,4 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から ASP.NET Core Web アプリと共に使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure リソースのマネージド ID の統合](./integrate-azure-managed-service-identity.md)
+> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)

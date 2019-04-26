@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e83c1629848083ae4d899ae01ae32c2c946b2b3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995066"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Visual Studio で接続済みサービスを使用して Computer Vision API に接続する
 
@@ -38,15 +38,15 @@ Cognitive Services Computer Vision API を使用することで、豊富な情�
 1. **ソリューション エクスプローラー**で、**[追加]** > **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 
-   ![Visual Studio プロジェクトの右クリック メニューのスクリーンショット: [追加] > [接続済みサービス]](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Visual Studio プロジェクトの右クリック メニュー: [追加] > [接続済みサービス]](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. 利用可能なサービスのメニューで、**[Cognitive Services Computer Vision API]** を選択します。
 
-   ![[接続済みサービス] メニューの [Analyze Images with Computer Vision]\(Computer Vision で画像を分析\) を強調表示したところ](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![[接続済みサービス] メニュー: 画像の分析用の項目が囲まれている](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Visual Studio にサインインしたときに、アカウントに関連付けられている Azure サブスクリプションがある場合は、サブスクリプションのドロップダウン リストがページに表示されます。
 
-   ![Visual Studio の [Computer Vision API] ウィンドウの [サブスクリプション] ドロップダウンを強調表示したところ](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![[Computer Vision API] ウィンドウの [サブスクリプション] ドロップダウンを強調表示したところ](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. 使用するサブスクリプションを選択し、Computer Vision API の名前を選択するか、または [編集] リンクを選択して自動生成の名前を修正し、リソース グループ、および価格レベルを選択します。
 
@@ -98,7 +98,7 @@ Cognitive Services Computer Vision API を使用することで、豊富な情�
 
 1. 画像ファイルを右クリックして [プロパティ] を選択し、**[新しい場合はコピーする]** を選択します。 
 
-   ![画像の [プロパティ] ウィンドウ ([出力ディレクトリにコピー] が [新しい場合はコピーする] に設定されている)](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![画像のプロパティ ウィンドウ ([出力ディレクトリにコピー] が [新しい場合はコピーする] に設定されている)](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Computer Vision API にアクセスして画像をテストするには、Configure メソッドを次のコードに置き換えます。
 

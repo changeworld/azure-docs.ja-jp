@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563372"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011245"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>例:Computer Vision API を呼び出す方法
 
@@ -47,8 +47,7 @@ ms.locfileid: "59563372"
 
 Computer Vision API への呼び出しでは、毎回サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターによって渡すか、要求ヘッダー内で指定する必要があります。
 
-サブスクリプション キーを取得するには、「[How to Obtain Subscription Keys](../Vision-API-How-to-Topics/HowToSubscribe.md
-)」(サブスクリプション キーの取得方法) を参照してください。
+無料試用版のキーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」を参照してください。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。
 
 1. クエリ文字列を使用してサブスクリプション キーを渡す場合は、次の Computer Vision API の例を参照してください。
 

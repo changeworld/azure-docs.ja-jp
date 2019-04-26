@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
 ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257639"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>チュートリアル:Azure Active Directory と SAP Fiori の統合
@@ -52,7 +52,7 @@ SAP Fiori と Azure AD の統合を構成するには、次のものが必要で
 
 Azure AD への SAP Fiori の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SAP Fiori を追加する必要があります。
 
-**ギャラリーから SAP Fiori を追加するには、次の手順を実行します。**
+**ギャラリーから SAP Fiori を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -175,8 +175,7 @@ SAP Fiori で Azure AD シングル サインオンを構成するには、次�
 
     ![[SAP Fiori のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    d. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-    `https://<your company instance of SAP Fiori>`
+    d. **[サインオン URL]** ボックスに、`https://<your company instance of SAP Fiori>` という形式で URL を入力します。
 
     > [!NOTE]
     > ユーザーのインスタンスに対して構成された応答 URL に誤りがあるというエラーはほとんどレポートされていません。 もしそのようなエラーが発生した場合は、回避策として、次の PowerShell スクリプトを使用してください。ご使用のインスタンスに対して正しい応答 URL を設定することができます。

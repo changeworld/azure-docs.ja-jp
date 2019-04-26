@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275557"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
@@ -158,9 +158,9 @@ GraphSON で使用される頂点のプロパティを次に説明します。
 | `addV` | グラフに頂点を追加します。 | [addV ステップ](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
 | `and` | すべてのトラバーサルが値を返すようにします。 | [and ステップ](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
 | `as` | ステップの出力に変数を割り当てるステップ モジュレーター。 | [as ステップ](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | `group` および次と共に使用するステップ モジュレーター:  `order` | [by ステップ](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `by` | `group` および `order` と共に使用するステップ モジュレーター。 | [by ステップ](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
 | `coalesce` | 結果を返す最初のトラバーサルを返します。 | [coalesce ステップ](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | 定数値を返します。 次と共に使用します:  `coalesce`| [constant ステップ](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `constant` | 定数値を返します。 `coalesce` と共に使用します。| [constant ステップ](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
 | `count` | トラバーサルからカウントを返します。 | [count ステップ](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
 | `dedup` | 重複を削除して値を返します。 | [dedup ステップ](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
 | `drop` | 値 (頂点/辺) を破棄します。 | [drop ステップ](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |

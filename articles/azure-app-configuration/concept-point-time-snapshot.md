@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6238f96c9e8df0431e42caa5e5846af3fc60e681
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 83770e8c5f415670855b5cf2502d02c4d6919440
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484017"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998075"
 ---
 # <a name="point-in-time-snapshot"></a>ポイントインタイム スナップショット
 
@@ -34,4 +34,5 @@ Azure App Configuration は、新しいキーと値のペアが作成された�
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート:ASP.NET Web アプリを作成する](quickstart-aspnet-core-app.md)  
+> [!div class="nextstepaction"]
+> [ASP.NET Core Web アプリの作成](./quickstart-aspnet-core-app.md)  

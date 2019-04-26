@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB で一貫性を管理する方法について
 description: Azure Cosmos DB で一貫性を管理する方法について
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 7dfc299c32b25ddf939aa3efcb927697307887a2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.date: 04/17/2019
+ms.author: rimman
+ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904323"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678447"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "58904323"
 
 ## <a name="configure-the-default-consistency-level"></a>既定の一貫性レベルを構成する
 
-既定の一貫性レベルは、クライアントによって既定で使用される一貫性レベルです。 クライアントはこれをオーバーライドできます。
+[既定の整合性レベル](consistency-levels.md)は、クライアントによって既定で使用される整合性レベルです。 クライアントはいつでもこれをオーバーライドできます。
 
 ### <a name="cli"></a>CLI
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-この例では、米国東部リージョンと米国西部リージョンでマルチマスターを有効にした、新しい Azure Cosmos DB アカウントを作成します。 既定の一貫性ポリシーは Session に設定されます。
+この例では、複数の書き込みリージョン (米国東部リージョンと米国西部リージョン) を有効にした、新しい Azure Cosmos アカウントを作成します。 既定の整合性レベルは、*セッション*整合性に設定されています。
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -59,15 +59,15 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="portal"></a>ポータル
+### <a name="azure-portal"></a>Azure ポータル
 
-既定の一貫性レベルを表示または変更するには、Azure portal にサインインします。 Azure Cosmos DB アカウントを見つけて、**[既定の整合性]** ウィンドウを開きます。 目的の一貫性レベルを新しい既定として選択し、**[保存]** を選択します。
+既定の一貫性レベルを表示または変更するには、Azure portal にサインインします。 Azure Cosmos アカウントを見つけて、**[既定の整合性]** ウィンドウを開きます。 目的の一貫性レベルを新しい既定として選択し、**[保存]** を選択します。
 
 ![Azure portal の一貫性メニュー](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>既定の一貫性レベルを上書きする
 
-クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 このオプションはクライアント全体で設定できるほか、要求ごとに実行できます。
+クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 整合性レベルは要求ごとに設定できます。この設定によって、アカウント レベルで設定される既定の整合性レベルがオーバーライドされます。
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,6 +131,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 ```
 
 ## <a name="utilize-session-tokens"></a>セッション トークンを利用する
+
+Azure Cosmos DB の整合性レベルの 1 つとして、"*セッション*" の整合性があります。 これは、Cosmos アカウントに既定で適用されるレベルです。 "*セッション*" の整合性で作業している場合、クライアントでは設定した整合性レベルが維持されるように、各読み取り/クエリ要求で内部的にセッション トークンが使用されます。
 
 セッション トークンを手動で管理するには、応答からセッション トークンを取得し、それらを要求ごとに設定します。 セッション トークンを手動で管理する必要がない場合は、これらのサンプルを使用する必要はありません。 SDK では、セッション トークンが自動的に追跡されます。 セッション トークンを手動で設定しなかった場合、既定では、SDK によって直近のセッション トークンが使用されます。
 
@@ -209,15 +211,18 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>確率的有界整合性制約 (PBS) メトリックを監視する
 
-PBS メトリックを表示するには、Azure portal で Azure Cosmos DB アカウントに移動します。 **[メトリック]** ウィンドウを開き、**[整合性]** タブを選択します。**Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
+最終的な整合性は、どのくらい最終的でしょうか。 平均的なケースでは、バージョン履歴と時刻に関して、古さの限度を提示できます。 [**確率的有界整合性制約 (PBS)**](http://pbs.cs.berkeley.edu/) メトリックは、古さの可能性を定量化し、それをメトリックとして表示します。 PBS メトリックを表示するには、Azure portal で Azure Cosmos アカウントに移動します。 **[メトリック]** ウィンドウを開き、**[整合性]** タブを選択します。**Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
 
 ![Azure portal の PBS グラフ](./media/how-to-manage-consistency/pbs-metric.png)
 
-このメトリックを確認するには、Azure Cosmos DB メトリックのメニューを使用します。 これは Azure 監視メトリック エクスペリエンスに表示されません。
 
 ## <a name="next-steps"></a>次の手順
 
 データの競合を管理する方法について学習するか、Azure Cosmos DB に関する次の主要概念に進んでください。 次の記事を参照してください。
 
+* [Azure Cosmos DB の整合性レベル](consistency-levels.md)
 * [リージョン間の競合の管理](how-to-manage-conflicts.md)
 * [パーティション分割とデータ分散](partition-data.md)
+* [最新の分散データベース システム設計における整合性のトレードオフ](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [高可用性](high-availability.md)
+* [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

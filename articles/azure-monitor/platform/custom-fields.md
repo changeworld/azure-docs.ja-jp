@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
-ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793347"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002869"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースにカスタム フィールドを作成する
 
@@ -81,7 +81,7 @@ Azure Portal で Log Analytics ワークスペースの **[詳細設定]** メ�
 カスタム フィールドを削除するには、2 つの方法があります。  1 つは、上記のように完全な一覧を表示するときの各フィールドの **[削除]** オプションです。  もう 1 つは、レコードを取得し、フィールドの左側にあるボタンをクリックする方法です。  メニューには、カスタム フィールドを削除するオプションが表示されます。
 
 ## <a name="sample-walkthrough"></a>サンプルのチュートリアル
-次のセクションでは、カスタム フィールドの作成例を段階的に説明します。  この例では、サービスの変化する状態を示す Windows イベントのサービス名を抽出します。  これは、サービス コントロール マネージャーによって Windows コンピューターのシステム ログに作成されるイベントに依存します。  この例に従うには、 [システム ログの情報イベントを収集する必要があります](data-sources-windows-events.md)。
+次のセクションでは、カスタム フィールドの作成例を段階的に説明します。  この例では、サービスの変化する状態を示す Windows イベントのサービス名を抽出します。  これは、サービス コントロール マネージャーによって Windows コンピューターでシステム起動時に作成されるイベントに依存します。  この例に従うには、 [システム ログの情報イベントを収集する必要があります](data-sources-windows-events.md)。
 
 Service Control Manager からイベント ID が 7036 のすべてのイベント (サービスの開始または停止を示すイベント) を返すために、ここでは次のクエリを入力します。
 

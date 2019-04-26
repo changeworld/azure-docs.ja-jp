@@ -1,7 +1,6 @@
 ---
-title: SUSE の予約プラン割引と使用状況を理解する - Azure | Microsoft Docs
-description: SUSE プランの割引が仮想マシン上の SUSE ソフトウェアにどのように適用されるかを学習します。
-services: billing
+title: ソフトウェア プラン割引 - Azure | Microsoft Docs
+description: ソフトウェア プラン割引が仮想マシン上のソフトウェアにどのように適用されるかについて説明します。
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 04/12/2019
 ms.author: banders
-ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917789"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002733"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>SUSE Linux Enterprise ソフトウェアの予約プラン割引が Azure に適用されるしくみについて説明します
+# <a name="azure-software-plan-discount"></a>Azure ソフトウェア プラン割引
 
-SUSE Linux プランを購入すると、割引は、予約に一致するデプロイされた SUSE 仮想マシン (VM) に自動的に適用されます。 SUSE Linux プランでは、Azure VM 上で SUSE ソフトウェアを実行するコストが対象になります。
+SUSE と RedHat の Azure ソフトウェア プランは、デプロイされている VM に適用される予約です。 ソフトウェア プラン割引は、予約に一致するデプロイ済み VM のソフトウェア使用に適用されます。
 
-適切な SUSE Linux プランを購入するためには、実行する SUSE VM と、その VM 上で実行する vCPU の数を理解する必要があります。 以降のセクションは、使用状況 CSV ファイルに基づいて購入するプランを識別するうえで役に立ちます。
+VM をシャット ダウンするときに、割引は別の一致する VM (ある場合) に自動的に適用されます。 ソフトウェア プランでは、VM 上でソフトウェアを実行するコストが対象になります。 コンピューティング、ストレージ、およびネットワーキングなどの他の料金は別途課金されます。
 
-## <a name="discount-applies-to-different-vm-sizes"></a>異なる VM サイズに対する割引の適用
+適切なプランを購入するには、VM の使用状況と、それらの VM 上の vCPU の数を把握している必要があります。 以降のセクションを使用して、使用状況データに基づいて購入するプランを特定するのに役立ててください。
+
+## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
+
+予約割引は、"*使わなければ駄目になる*" です。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
+
+リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定されたスコープ内に一致するリソースが見つからない場合、予約済み時間は*失われます*。
+
+## <a name="review-redhat-vm-usage-before-you-buy"></a>購入する前に RedHat VM の使用状況を確認する
+
+使用状況データから製品名を取得して、同じ種類とサイズの RedHat プランを購入します。
+
+たとえば、お客様の使用状況に製品 **Red Hat Enterprise Linux - 1-4 vCPU VM License** がある場合は、**1-4 vCPU VM** 用の **Red Hat Enterprise Linux** を購入してください。
+
+<!--ADD RHEL SCREENSHOT -->
+
+## <a name="review-suse-vm-usage-before-you-buy"></a>購入する前に SUSE VM の使用状況を確認する
+
+使用状況データから製品名を取得して、同じ種類とサイズの SUSE プランを購入します。
+
+たとえば、お客様の使用状況が製品 **SUSE Linux Enterprise Server Priority - 2-4 vCPU VM Support** を対象としている場合は、**2-4 vCPU** 用の **SUSE Linux Enterprise Server Priority** を購入してください。
+
+![購入する製品の選択例](./media/billing-understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
+
+## <a name="discount-applies-to-different-vm-sizes-for-suse-plans"></a>割引は SUSE プランのさまざまな VM サイズに適用される
 
 予約 VM インスタンスと同様に、SUSE プランの購入は、インスタンス サイズの柔軟性を提供します。 つまり、異なる vCPU 数の VM をデプロイする場合でも、割引が適用されます。 割引は、ソフトウェア プラン内の異なる VM サイズに適用されます。
 
@@ -39,8 +62,6 @@ SUSE Linux プランを購入すると、割引は、予約に一致するデプ
 - または、5 つ以上の vCPU を使用する VM の 0.77 または約 77%。
 
 5 つ以上の vCPU の場合、比率は 2.6 です。 したがって、5 つ以上の vCPU を使用する VM に対して SUSE を予約した場合、ソフトウェア コストの一部のみ (約 77%) が対象になります。
-
-## <a name="understand-suse-vm-usage-before-you-buy"></a>購入前における SUSE VM の使用状況の把握
 
 次の表は、予約を購入できるソフトウェア プラン、関連する使用量メーター、およびそれぞれの比率を示しています。
 
@@ -122,6 +143,10 @@ Azure portal マーケットプレース名:
 |SLES 3-4 コア vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5+ vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
+
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+
 ## <a name="next-steps"></a>次の手順
 
 予約について詳しくは、次の記事を参照してください。
@@ -129,10 +154,6 @@ Azure portal マーケットプレース名:
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure の予約による SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure の予約を管理する](billing-manage-reserved-vm-instance.md)
+- [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
-
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB でマルチマスターを構成する方法
 description: Azure Cosmos DB 内のアプリケーションでマルチマスターを構成する方法について説明します
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 2/12/2019
-ms.author: mjbrown
-ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: b862c59002369662d37b6d6a9de28370b0000497
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312142"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682272"
 ---
 # <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する方法
 
-アプリケーションでマルチマスター機能を使用するには、マルチリージョンの書き込みを有効にし、マルチホーム機能を構成する必要があります。 マルチホーム機能は、アプリケーションがデプロイされている現在のリージョンを設定することによって構成します。
+アプリケーションでマルチマスター機能を使用するには、Azure Cosmos DB でマルチリージョンの書き込みを有効にし、マルチホーム機能を構成する必要があります。 マルチホーム機能は、アプリケーションがデプロイされているリージョンを設定することによって構成します。
 
 ## <a id="netv2"></a>.NET SDK v2
 
-アプリケーションでマルチマスターを有効にするには、`UseMultipleWriteLocations` を true に設定し、`SetCurrentLocation` をアプリケーションがデプロイされ、Azure Cosmos DB がレプリケートされているリージョンに構成します。
+アプリケーションでマルチマスターを有効にするには、`UseMultipleWriteLocations` を true に設定し、`SetCurrentLocation` をアプリケーションのデプロイ先で Azure Cosmos DB のレプリケート先であるリージョンに構成します。
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -43,7 +43,7 @@ CosmosClient client = new CosmosClient(config);
 
 ## <a id="java"></a>Java Async SDK
 
-アプリケーションでマルチマスターを有効にするには、`policy.setUsingMultipleWriteLocations(true)` を true に設定し、`policy.setPreferredLocations` をアプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに構成します。
+アプリケーションでマルチマスターを有効にするには、`policy.setUsingMultipleWriteLocations(true)` を設定し、`policy.setPreferredLocations` をアプリケーションのデプロイ先で Cosmos DB のレプリケート先であるリージョンに構成します。
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -89,14 +89,14 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Cosmos DB でのマルチマスター、グローバル配布、および一貫性について学びます。 次の記事を参照してください。
+次に、次の記事を読むことができます。
 
 * [Azure Cosmos DB で一貫性を管理するためにセッション トークンを利用する](how-to-manage-consistency.md#utilize-session-tokens)
-
 * [Azure Cosmos DB の競合の種類と解決ポリシー](conflict-resolution-policies.md)
-
 * [Azure Cosmos DB での高可用性](high-availability.md)
-
+* [Azure Cosmos DB の整合性レベル](consistency-levels.md)
 * [Azure Cosmos DB での適切な一貫性レベルの選択](consistency-levels-choosing.md)
-
 * [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
+* [プロビジョニング スループットのグローバルなスケーリング](scaling-throughput.md)
+* [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)

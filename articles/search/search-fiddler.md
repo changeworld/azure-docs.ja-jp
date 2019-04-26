@@ -11,15 +11,15 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269114"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>クイック スタート:Postman を使用して Azure Search REST API シリーズを調べる
 > [!div class="op_single_selector"]
-> * [postman](search-fiddler.md)
+> * [Postman](search-fiddler.md)
 > * [C#](search-create-index-dotnet.md)
 > * [ポータル](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
@@ -49,7 +49,7 @@ Azure Search に要求を送信するために、[Postman デスクトップ ア
 
 REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-1. [Azure portal にサインインし](https://portal.azure.com/)、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
 1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
@@ -85,7 +85,7 @@ URL を拡張して、`hotel` インデックス名を含めます。
 Postman でこれを行うには:
 
 1. 動詞を **PUT** に変更します。
-2. この URL をコピーします。 `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+2. この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
 3. 要求の本文にインデックス定義 (下記参照) を入力します。
 4. ページの下部にある **[Send]**
 
@@ -129,7 +129,7 @@ URL を拡張して、`docs` コレクションと `index` 操作を含めます
 Postman でこれを行うには:
 
 1. 動詞を **POST** に変更します。
-2. この URL をコピーします。 `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+2. この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
 3. 要求の本文に JSON ドキュメント (下記参照) を入力します。
 4. ページの下部にある **[Send]**
 
@@ -219,7 +219,7 @@ URL を拡張して、検索演算子を使用して指定されたクエリ文�
 Postman でこれを行うには:
 
 + 動詞を **GET** に変更します。
-+ この URL をコピーします。 `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + ページの下部にある **[Send]**
 
 このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
@@ -228,7 +228,7 @@ Postman でこれを行うには:
 
 
 ## <a name="get-index-properties"></a>インデックス プロパティの取得
-システム情報のクエリを実行して、ドキュメント数とストレージ消費量を取得することもできます。 `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
 
@@ -247,7 +247,7 @@ API バージョンの構文が異なる点に注目してください。 この
 
 次のスクリーンショットのように要求を作成します。 動詞として **GET** を選択します。 `User-Agent=Fiddler` が自動的に追加されます。 その下の新しい行に 2 つの追加の要求ヘッダーを貼り付けることができます。 サービスの管理者アクセス キーを使用して、サービスのコンテンツ タイプと API キーを含めます。
 
-ターゲットには、この URL の変更されたバージョンをコピーします。 `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+ターゲットには、この URL の変更されたバージョンをコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
 
 ![Fiddler の要求ヘッダー][1]
 
@@ -287,7 +287,7 @@ Fiddler で、**[Inspectors]\(インスペクター\)** タブをクリックし
 REST クライアントは即時の探索にとても有効です。この記事で REST API のしくみを理解したら、次はコードに進みましょう。 次のステップについては、以下のリンクを参照してください。
 
 + [クイック スタート:.NET SDK を使用してインデックスを作成する](search-create-index-dotnet.md)
-+ [クイック スタート:PowerShell を使用してインデックス (REST) を作成する](search-create-index-rest-api.md)
++ [クイック スタート:PowerShell を使用して、インデックス (REST) を作成する](search-create-index-rest-api.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/fiddler-url.png

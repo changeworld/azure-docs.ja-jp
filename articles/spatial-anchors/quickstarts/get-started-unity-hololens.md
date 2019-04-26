@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ce9bca3f11911677a6009b4cfe0c3f6413b9f837
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629480"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009244"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する HoloLens Unity アプリを作成する
 
@@ -78,6 +78,8 @@ Unity で、Unity フォルダー内のプロジェクトを開きます。
 フォルダー内の **HelloAR U3D.sln** をダブルクリックして、Visual Studio でプロジェクトを開きます。
 
 **[ソリューション構成]** を **[リリース]** に変更し、**[ソリューション プラットフォーム]** を **[x86]** に変更し、デプロイ ターゲット オプションから **[デバイス]** を選択します。
+
+HoloLens 2 を使用している場合は、**[x86]** ではなく **[ARM]** を **[ソリューション プラットフォーム]** として使用します。
 
    ![Visual Studio の構成](./media/get-started-unity-hololens/visual-studio-configuration.png)
 

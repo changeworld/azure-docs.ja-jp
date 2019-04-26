@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 4.0 の概要
+title: HDInsight 4.0 の概要 - Azure
 description: HDInsight 3.6 と HDInsight 4.0 の機能、制限事項、アップグレードの推奨事項を比較します。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,18 +7,18 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: af9f8a9e4d67c74910f60c70a0aee5c2439d6209
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 553f50897afaaf9c677e84f9cfffbff7d2c1e607
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609202"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679681"
 ---
-# <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
+# <a name="hdinsight-40-overview"></a>HDInsight 4.0 の概要
 
-Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight (HDI) 4.0 は、[Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) の Apache Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
+Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight 4.0 は、[Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) の Apache Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
 
-## <a name="whats-new-in-hdi-40"></a>HDI 4.0 の新機能
+## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0 の新機能
 
 ### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 と LLAP
 
@@ -67,7 +67,7 @@ HDInsight 4.0 上の Apache Spark では、次のシナリオがサポートさ�
 * Hive ストリーミング テーブルからの変更フィードで Spark ストリーミング ジョブを実行します。
 * Spark Structured Streaming ジョブから直接、ORC ファイルを作成します。
 
-誤って Spark から直接 Hive トランザクション テーブルにアクセスを試み、矛盾した結果、重複したデータ、データの破損が発生するのを心配する必要はもうありません。 HDI 4.0 では、Spark のテーブルと Hive のテーブルは、個別の metastore に保持されます。 Hive トランザクション テーブルを Spark 外部テーブルとして明示的に登録するには、Hive Data Warehouse Connector を使用します。
+誤って Spark から直接 Hive トランザクション テーブルにアクセスを試み、矛盾した結果、重複したデータ、データの破損が発生するのを心配する必要はもうありません。 HDInsight 4.0 では、Spark のテーブルと Hive のテーブルは、個別の metastore に保持されます。 Hive トランザクション テーブルを Spark 外部テーブルとして明示的に登録するには、Hive Data Warehouse Connector を使用します。
 
 詳しくは、[Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html) に関するページをご覧ください。
 
@@ -82,22 +82,19 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 詳しくは、[Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html) に関するページをご覧ください。
 
-## <a name="how-to-upgrade-to-hdi-40"></a>HDI 4.0 にアップグレードする方法
+## <a name="how-to-upgrade-to-hdinsight-40"></a>HDInsight 4.0 にアップグレードする方法
 
-他のメジャー リリースと同様に、運用環境に最新バージョンを実装する前に、コンポーネントを徹底的にテストすることが重要です。 HDI 4.0 を使用してアップグレード プロセスを開始できますが、不慮の事故を防ぐため HDI 3.6 が既定のオプションです。
+他のメジャー リリースと同様に、運用環境に最新バージョンを実装する前に、コンポーネントを徹底的にテストすることが重要です。 HDInsight 4.0 を指定してアップグレード プロセスを開始できますが、不慮の事故を防ぐため、HDInsight 3.6 が既定のオプションです。
 
-以前のバージョンの HDI から HDI 4.0 へのサポートされるアップグレード パスはありません。 metastore と BLOB のデータ形式が変更されたため、HDI 4.0 は以前のバージョンと互換性がありません。 新しい HDI 4.0 環境を現在の運用環境から分離しておくことが重要です。 HDI 4.0 を現在の環境にデプロイする場合、metastore がアップグレードされて、元に戻すことはできません。  
+以前のバージョンの HDInsight から HDInsight 4.0 へのアップグレード パスはサポートされていません。 metastore と BLOB のデータ形式が変更されたため、HDInsight 4.0 は以前のバージョンと互換性がありません。 新しい HDInsight 4.0 環境を現在の運用環境から分離しておくことが重要です。 HDInsight 4.0 を現在の環境にデプロイする場合、metastore がアップグレードされて、元に戻すことはできません。  
 
 ## <a name="limitations"></a>制限事項
 
-* HDI 4.0 では、MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
-
-* HDI 4.0 では、Hive ビューは使用できなくなります。 
-
+* HDInsight 4.0 では、MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
+* HDInsight 4.0 では、Apache Storm はサポートされていません。 
+* HDInsight 4.0 では、Hive ビューは使用できなくなります。 
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。
-
 * Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。
-
 * Azure Data Lake Storage Gen2 では、Jupyter Notebook を Spark クラスターに保存できません。
 
 ## <a name="next-steps"></a>次の手順
