@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 2a4c4c7431752ade60161af84b4cc15f010af656
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527984"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995746"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -39,9 +39,14 @@ ms.locfileid: "59527984"
 5. お客様のホスト コンピューターに [AzCopy 7.1.0 をダウンロードする](https://aka.ms/azcopyforazurestack20170417)。 お客様のホスト コンピューターから Azure Data Box BLOB ストレージにデータをコピーするために、AzCopy を使用します。
 
 
-## <a name="connect-to-data-box-blob-storage"></a>Data Box BLOB ストレージに接続する
+## <a name="connect-via-http-or-https"></a>http または https 経由で接続する
 
-Data Box BLOB ストレージには *http* または *https* を使用して接続できます。 一般に、Data Box BLOB ストレージへの接続に推奨される安全な方法は *https* です。 *http* は、信頼されたネットワークにおける接続に使用されます。 *http* と *https* のどちらを使用して Data Box BLOB ストレージに接続しているかに応じて、手順が異なる場合があります。
+Data Box BLOB ストレージには *http* または *https* を使用して接続できます。
+
+- Data Box BLOB ストレージへの接続に推奨される安全な方法は *https* です。
+- *http* は、信頼されたネットワークにおける接続に使用されます。
+
+Data Box BLOB ストレージに接続するための手順は、*http* 経由の場合と *https* 経由の場合とで異なります。
 
 ## <a name="connect-via-http"></a>http 経由で接続する
 
@@ -52,11 +57,11 @@ Data Box BLOB ストレージには *http* または *https* を使用して接�
 
 以下のセクションでは、これらの各手順について説明します。
 
-#### <a name="add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>デバイス IP アドレスと BLOB サービス エンドポイントをリモート ホストに追加する
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>デバイス IP アドレスと Blob service エンドポイントを追加する
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-#### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
+### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
@@ -67,8 +72,8 @@ Data Box BLOB ストレージには *http* または *https* を使用して接�
 https 経由の Azure Blob Storage REST API への接続では、以下の手順が必要になります。
 
 - Azure portal から証明書をダウンロードする
-- リモート管理用のホスト コンピューターを準備する
-- デバイス IP と BLOB サービス エンドポイントをリモート ホストに追加する
+- クライアントまたはリモート ホストで証明書をインポートする
+- デバイス IP と Blob service エンドポイントをクライアントまたはリモート ホストに追加する
 - サードパーティ製ソフトウェアを構成し、接続を確認する
 
 以下のセクションでは、これらの各手順について説明します。
@@ -83,20 +88,15 @@ Azure portal を使用して証明書をダウンロードします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="prepare-the-host-for-remote-management"></a>リモート管理用のホストを準備する
+### <a name="import-certificate"></a>証明書のインポート 
 
-*https* セッションが使用されるリモート接続に関して Windows クライアントを準備するには、以下の手順に従います。
+HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デバイスの SSL 証明書が必要です。 この証明書をクライアント アプリケーションで利用できるようにする方法は、アプリケーション、オペレーティング システム、およびディストリビューションによって異なります。 システムの証明書ストアにインポートされた証明書にアクセスできるアプリケーションもあれば、そのメカニズムを利用しないアプリケーションもあります。
 
-- クライアントまたはリモート ホストのルート ストアに .cer ファイルをインポートする。
-- デバイス IP アドレスと BLOB サービス エンドポイントをお客様の Windows クライアント上のホスト ファイルに追加する。
+このセクションでは、いくつかのアプリケーションに固有の情報を説明しています。 他のアプリケーションの詳細については、使用しているアプリケーションとオペレーティング システムのドキュメントを参照してください。
 
-この後、上記の各手順について説明します。
+次の手順に従って、`.cer` ファイルを Windows または Linux クライアントのルート ストアにインポートします。 Windows システムでは、Windows PowerShell または Windows Server UI を使用して、証明書をシステムにインポートしてインストールできます。
 
-#### <a name="import-the-certificate-on-the-remote-host"></a>証明書をリモート ホストにインポートする
-
-証明書をお客様のホスト システムにインポートしてインストールするには、Windows PowerShell または Windows Server UI を使用できます。
-
-**PowerShell の使用**
+#### <a name="use-windows-powershell"></a>Windows PowerShell を使用する
 
 1. Windows PowerShell セッションを管理者として開始します。
 2. コマンド プロンプトに、次のコマンドを入力します。
@@ -105,9 +105,9 @@ Azure portal を使用して証明書をダウンロードします。
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-**Windows Server UI の使用**
+#### <a name="use-windows-server-ui"></a>Windows Server UI を使用する
 
-1.  .cer ファイルを右クリックし、 **[証明書のインストール]** を選択します。 これにより、証明書のインポート ウィザードが開始されます。
+1.  `.cer` ファイルを右クリックし、**[証明書のインストール]** を選択します。 このアクションにより、証明書のインポート ウィザードが開始されます。
 2.  **[ストアの場所]** で **[ローカル マシン]** を選択し、**[次へ]** をクリックします。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -120,13 +120,29 @@ Azure portal を使用して証明書をダウンロードします。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
-### <a name="to-add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>デバイス IP アドレスと BLOB サービス エンドポイントをリモート ホストに追加するには
+#### <a name="use-a-linux-system"></a>Linux システムを使用する
 
-以下の手順は、*http* 経由の接続時に使用したものと同一です。
+証明書をインポートする方法は、ディストリビューションによって異なります。
 
-### <a name="configure-partner-software-to-establish-connection"></a>パートナー ソフトウェアを構成し、接続を確立する
+Ubuntu や Debian などのいくつかのディストリビューションでは、`update-ca-certificates` コマンドを使用します。  
 
-以下の手順は、*http* 経由の接続時に使用したものと同一です。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
+- Base64 エンコードの証明書ファイルの名前を変更して拡張子 `.crt` を付け、それを `/usr/local/share/ca-certificates directory` にコピーします。
+- コマンド `update-ca-certificates`を実行します。
+
+RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-trust` コマンドを使用します。
+
+- 証明書ファイルを `/etc/pki/ca-trust/source/anchors` ディレクトリにコピーします。
+- `update-ca-trust` を実行します。
+
+詳細については、お使いのディストリビューションに固有のドキュメントを参照してください。
+
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>デバイス IP アドレスと Blob service エンドポイントを追加する 
+
+[*http* 経由での接続時のデバイスの IP アドレスと Blob service エンドポイントの追加](#add-device-ip-address-and-blob-service-endpoint)手順と同じ手順に従います。
+
+### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
+
+[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#configure-partner-software-and-verify-connection)手順に従います。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
 
 ## <a name="copy-data-to-data-box"></a>Data Box にデータをコピーする
 
@@ -199,7 +215,6 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
-
 
 次に、発送するデバイスを準備します。
 

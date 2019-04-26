@@ -1,17 +1,17 @@
 ---
 title: Azure Data Catalog の概要
 description: この記事では、Microsoft Azure Data Catalog の概要 (機能や対処する問題など) について説明します。 Data Catalog を使用すると、すべてのユーザーが、データ ソースを登録し、検出し、理解し、利用することができます。
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: cd20fc6ae71a0dd96a0006de8c81050bb0646905
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 87c86ddeaa24693d393d250e1dc699b9a15ea84b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288981"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010162"
 ---
 # <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
 

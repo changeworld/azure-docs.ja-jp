@@ -59,7 +59,7 @@
           href: custom-error.md
     - name: SSL
       items:
-        - name: SSL 終了とエンド ツー エンド SSL
+        - name: SSL ターミネーションとエンド ツー エンド SSL
           href: ssl-overview.md
         - name: SSL ポリシーの概要
           href: application-gateway-ssl-policy-overview.md
@@ -103,11 +103,11 @@
           href: application-gateway-ilb-arm.md
     - name: SSL の構成
       items:
-        - name: SSL 終了
+        - name: SSL ターミネーション
           items:
-            - name: SSL 終了 - PowerShell
+            - name: SSL ターミネーション - PowerShell
               href: tutorial-ssl-powershell.md
-            - name: SSL 終了 - Azure CLI
+            - name: SSL ターミネーション - Azure CLI
               href: tutorial-ssl-cli.md
             - name: Key Vault の構成 - PowerShell
               href: configure-keyvault-ps.md

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007406"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
@@ -667,7 +667,7 @@ flask run
 
 ### <a name="call-the-text-to-speech-api"></a>Text-to-Speech API を呼び出す
 
-テキストを音声に変換する関数を記述しましょう。 この関数は、`input_text` と `voice_font` の 2 つの引数を受け取ります。 ユーザーがアプリでテキストから音声への変換ボタンを押すたびに、この関数が呼び出されます。 `input_text` は、テキスト翻訳の呼び出しから返された翻訳出力で、`voice_font` は、HTML の音声フォント セレクターの値です。
+テキストを音声に変換する関数を記述しましょう。 この関数は、`input_text` と `voice_font` の 2 つの引数を受け取ります。 ユーザーがアプリでテキストから音声への変換ボタンを押すたびに、この関数が呼び出されます。 `input_text` は、テキスト翻訳の呼び出しから返された翻訳出力であり、`voice_font` は、HTML の音声フォント セレクターの値です。
 
 1. 作業ディレクトリのルートに `synthesize.py` というファイルを作成します。
 
@@ -960,5 +960,5 @@ flask run
 ## <a name="next-steps"></a>次の手順
 
 * [Translator Text API のリファレンス](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
-* [Text Analytics API のリファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Text to Speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Text Analytics API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
+* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: dc8d3c2d400204f53b05bb5536af95679541f3f6
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305198"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632873"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Spatial Anchors リソースを作成する
 
@@ -25,7 +25,7 @@ Azure portal の左側のナビゲーション ウィンドウで、**[リソー
 
 **[Spatial Anchors アカウント]** ダイアログ ボックスで以下を行います。
 
-- 一意のリソース名を入力します。
+- 通常の英数字を使用して、一意のリソース名を入力します。
 - リソースをアタッチするサブスクリプションを選択します。
 - **[新規作成]** を選択して、リソース グループを作成します。 「**myResourceGroup**」と名前を付け、**[OK]** を選択します。
       [!INCLUDE [resource group intro text](resource-group.md)]
@@ -34,7 +34,11 @@ Azure portal の左側のナビゲーション ウィンドウで、**[リソー
 
    ![リソースの作成](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-リソースが作成されたら、リソースのプロパティを確認できます。 リソースの **[アカウント ID]** 値は、後で必要になるため、テキスト エディターにコピーしておきます。
+リソースが作成されると、Azure portal に、デプロイが完了したことが表示されます。 **[リソースに移動]** をクリックします。
+
+![デプロイ完了](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+
+これで、リソースのプロパティを確認できます。 リソースの **[アカウント ID]** 値は、後で必要になるため、テキスト エディターにコピーしておきます。
 
    ![リソースのプロパティ](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 

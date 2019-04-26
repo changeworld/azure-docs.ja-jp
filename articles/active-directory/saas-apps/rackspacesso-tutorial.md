@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 61466f3574ba7a88665a8d78818d0a4c12716bbf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: fd420ea3fc4faae7fe4510a72204d71acaa3549a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269794"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009933"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル:Azure Active Directory と Rackspace SSO の統合
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Rackspace SSO と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 * Rackspace SSO でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -72,7 +72,7 @@ Azure AD への Rackspace SSO の統合を構成するに、ギャラリーか�
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Rackspace SSO で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Rackspace SSO 内の関連ユーザー間にリンク関係が確立されている必要があります。
+Rackspace でシングル サインオンを使用する場合、Rackspace ユーザーは、Rackspace ポータルに初めてサインインしたときに自動的に作成されます。 
 
 Rackspace SSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -80,8 +80,8 @@ Rackspace SSO で Azure AD のシングル サインオンを構成してテス�
 2. **[Rackspace SSO のシングル サインオンの構成](#configure-rackspace-sso-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Rackspace SSO のテスト ユーザーの作成](#create-rackspace-sso-test-user)** - Rackspace SSO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Rackspace コントロール パネルでの属性マッピングの設定](#set-up-attribute-mapping-in-the-rackspace-control-panel)** - Rackspace のロールを Azure AD ユーザーに割り当てます。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,31 +101,41 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、適切な [URL](https://login.rackspace.com/federate/sp.xml) からダウンロードできる**サービス プロバイダー メタデータ ファイル**をアップロードし、次の手順を実行します。
 
-    ![[Rackspace SSO Domain and URLs] (Rackspace SSO のドメインと URL) のシングル サインオン情報](common/sp-signonurl.png)
+    a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://login.rackspace.com/federate/`」と入力します。
+    ![image](common/upload-metadata.png)
+
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+
+    ![image](common/browse-upload-metadata.png)
+
+    c. メタデータ ファイルが正常にアップロードされると、必要な URL が自動的に設定されます。
+
+    d. **[サインオン URL]** テキスト ボックスに URL として「`https://login.rackspace.com/federate/`」と入力します。
+
+    ![[Rackspace SSO Domain and URLs] (Rackspace SSO のドメインと URL) のシングル サインオン情報](common/sp-signonurl.png)   
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[Rackspace SSO のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
-
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
+このファイルが Rackspace にアップロードされて、必要な ID フェデレーションの構成設定が読み込まれます。
 
 ### <a name="configure-rackspace-sso-single-sign-on"></a>Rackspace SSO のシングル サインオンを構成する
 
-**Rackspace SSO** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Rackspace SSO サポート チーム](https://support.rackspace.com/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Rackspace SSO** 側でシングル サインオンを構成するには:
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+1. [コントロール パネルへの ID プロバイダーの追加](https://developer.rackspace.com/docs/rackspace-federation/gettingstarted/add-idp-cp/)に関するドキュメントを参照します。
+1. その手順に従って以下を実行します。
+    1. 新しい ID プロバイダーを作成します。
+    1. ユーザーがサインイン時に会社を特定するために使用するメール ドメインを指定します。
+    1. Azure コントロール パネルから先にダウンロードした**フェデレーション メタデータ XML** をアップロードします。
+
+これにより、Azure と Rackspace が連携するために必要となる基本的な SSO 設定が正しく構成されます。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -143,7 +153,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -175,15 +185,58 @@ Rackspace SSO で Azure AD のシングル サインオンを構成するには�
 
 7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="create-rackspace-sso-test-user"></a>Rackspace SSO テスト ユーザーを作成する
+### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Rackspace コントロール パネルでの属性マッピングの設定
 
-このセクションでは、Rackspace SSO で Britta Simon というユーザーを作成します。  [Rackspace SSO サポート チーム](https://support.rackspace.com/)と連携し、Rackspace SSO プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+Rackspace は、**属性マッピング ポリシー**を使用して Rackspace のロールやグループをシングル サインオン ユーザーに割り当てます。 Azure AD の SAML 要求は、**属性マッピング ポリシー**によって、Rackspace に必要なユーザー構成フィールドに変換されます。 詳細については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)を参照してください。 いくつかの考慮事項があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+* Azure AD グループを使用して、さまざまなレベルの Rackspace アクセスを割り当てたい場合は、Azure **Rackspace SSO** のシングル サインオン設定でグループ要求を有効にする必要があります。 それらのグループは、**属性マッピング ポリシー**を使用して、Rackspace の適切なロールとグループに対応付けられます。
+
+    ![グループ要求の設定](common/sso-groups-claim.png)
+
+* 既定では、Azure AD が Azure AD グループの (名前ではなく) UID を SAML 要求で送信します。 ただし、オンプレミスの Active Directory を Azure AD と同期している場合は、実際のグループの名前を送信することもできます。
+
+    ![グループ要求の名前の設定](common/sso-groups-claims-names.png)
+
+次の例の**属性マッピング ポリシー**では、以下を示しています。
+1. Rackspace ユーザーの名前を `user.name` SAML 要求に設定します。 任意の要求を使用できますが、これはユーザーのメール アドレスを含んだフィールドに設定するのが最も一般的です。
+1. グループ名またはグループ UID で Azure AD グループを突き合わせることによって、Rackspace のロールである `admin` と `billing:admin` をユーザーに設定します。 `roles` フィールドには `"{0}"` の "*代入*" が使用され、`remote` ルール式の結果で置き換えられます。
+1. SAML 交換で標準的な既知の SAML 要求を探すことによって Rackspace が追加の SAML フィールドを取得できるよう、"*既定の代入*" である `"{D}"` を使用します。
+
+```yaml
+---
+mapping:
+    rules:
+    - local:
+        user:
+          domain: "{D}"
+          name: "{At(http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name)}"
+          email: "{D}"
+          roles:
+              - "{0}"
+          expire: "{D}"
+      remote:
+          - path: |
+              (
+                if (mapping:get-attributes('http://schemas.microsoft.com/ws/2008/06/identity/claims/groups')='7269f9a2-aabb-9393-8e6d-282e0f945985') then ('admin', 'billing:admin') else (),
+                if (mapping:get-attributes('http://schemas.microsoft.com/ws/2008/06/identity/claims/groups')='MyAzureGroup') then ('admin', 'billing:admin') else ()
+              )
+            multiValue: true
+  version: RAX-1
+```
+> [!TIP]
+> ポリシー ファイルの編集する際は YAML 構文が検証されるテキスト エディターを必ず使用してください。
+
+その他の例については、Rackspace の[属性マッピングの基礎に関するドキュメント](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)を参照してください。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネル上で [Rackspace SSO] タイルをクリックすると、SSO を設定した Rackspace SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+**Rackspace SSO** のシングル サインオン設定にある **[Validate]\(検証\)** ボタンを使用することもできます。
+
+   ![SSO の検証ボタン](common/sso-validate-sign-on.png)
 
 ## <a name="additional-resources"></a>その他のリソース
 
