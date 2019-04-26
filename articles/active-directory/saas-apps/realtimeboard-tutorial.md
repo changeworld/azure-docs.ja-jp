@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fb7302497d4331a9e39c8a3c50393646b663f7d8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 81aa38c1c7783c7e0357f8f69f4d4484d26873e9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283139"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>チュートリアル:Azure Active Directory と RealtimeBoard の統合
 
@@ -53,7 +53,7 @@ RealtimeBoard と Azure AD の統合を構成するには、次のものが必�
 
 Azure AD への RealtimeBoard の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に RealtimeBoard を追加する必要があります。
 
-**ギャラリーから RealtimeBoard を追加するには、次の手順を実行します。**
+**ギャラリーから RealtimeBoard を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -131,7 +131,7 @@ RealtimeBoard で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-realtimeboard-single-sign-on"></a>RealtimeBoard シングル サインオンの構成
 
-**RealtimeBoard** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [RealtimeBoard サポート チーム]()に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**RealtimeBoard** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を RealtimeBoard サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

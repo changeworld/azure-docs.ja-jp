@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607400"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011046"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>クイック スタート:Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
-このクイック スタートでは、Python を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 BLOB は、任意のサイズのテキストまたはバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を格納できるオブジェクトであり、Azure Storage において、ファイル共有、スキーマレス テーブル、メッセージ キューとは明確に区別されます。 詳細については、[Azure Storage の概要](/azure/storage/common/storage-introduction.md)に関するページを参照してください。
+このクイック スタートでは、Python を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 BLOB は、任意のサイズのテキストまたはバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を格納できるオブジェクトであり、Azure Storage において、ファイル共有、スキーマレス テーブル、メッセージ キューとは明確に区別されます。 詳細については、[Azure Storage の概要](/azure/storage/common/storage-introduction)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 アプリケーションで、ストレージ アカウント名とアカウント キーを指定して `BlockBlobService` オブジェクトを作成します。 お使いの IDE のソリューション エクスプローラーから *example.py* ファイルを開きます。 `accountname` と `accountkey` の値をアカウント名とキーに置き換えます。 
 
 ```python 
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
 ```
 
 ## <a name="run-the-sample"></a>サンプルを実行する
@@ -92,11 +92,11 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 このセクションでは、オブジェクトをインスタンス化し、新しいコンテナーを作成した後、BLOB がパブリックになるようにコンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
 
 ```python 
-# Create the BlockBlockService that is used to call the Blob service for the storage account
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+# Create the BlockBlockService that is used to call the Blob service for the storage account.
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
  
 # Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs'
+container_name = 'quickstartblobs'
 block_blob_service.create_container(container_name) 
 
 # Set the permission so the blobs are public.
@@ -106,29 +106,29 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 Blob Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB がサポートされています。 最もよく使われるのはブロック BLOB であり、このクイックスタートでもそれを使います。  
 
-ファイルを BLOB にアップロードするには、ディレクトリ名をローカル ドライブ上のファイル名と結合してファイルの完全なパスを取得します。 その後、`create\_blob\_from\_path` メソッドを使用して、指定したパスにファイルをアップロードできます。 
+ファイルを BLOB にアップロードするには、ディレクトリ名をローカル ドライブ上のファイル名と結合してファイルの完全なパスを取得します。 その後、`create_blob_from_path` メソッドを使用して、指定したパスにファイルをアップロードできます。 
 
-このサンプル コードでは、アップロードとダウンロードに使うローカル ファイルを作成し、アップロードするファイルを `file\_path\_to\_file`、BLOB の名前を `local\_file\_name` として保存します。 次の例では、ファイルを **quickstartblobs** という名前のコンテナーにアップロードします。
+サンプル コードは、アップロードとダウンロードに使うローカル ファイルを作成し、アップロードするファイルを *full_path_to_file* として、BLOB の名前を *local_file_name* として格納します。 次の例では、ファイルを **quickstartblobs** という名前のコンテナーにアップロードします。
 
 ```python
 # Create a file in Documents to test the upload and download.
-local_path=os.path.expanduser("~\Documents")
-local_file_name ="QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file =os.path.join(local_path, local_file_name)
+local_path = os.path.expanduser("~\Documents")
+local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
+full_path_to_file = os.path.join(local_path, local_file_name)
 
 # Write text to the file.
-file = open(full_path_to_file,  'w')
+file = open(full_path_to_file, 'w')
 file.write("Hello, World!")
 file.close()
 
 print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
-# Upload the created file, use local_file_name for the blob name
+# Upload the created file, use local_file_name for the blob name.
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-Blob Storage では複数のアップロード方法を使うことができます。 たとえば、メモリ ストリームがある場合は、`create\_blob\_from\_path` ではなく `create\_blob\_from\_stream` メソッドを使用できます。 
+Blob Storage では複数のアップロード方法を使うことができます。 たとえば、メモリ ストリームがある場合は、`create_blob_from_path` ではなく `create_blob_from_stream` メソッドを使用できます。 
 
 ブロック BLOB の最大サイズは 4.7 TB であり、Excel スプレッドシートから大きなビデオ ファイルまで何にでも使うことができます。 ページ BLOB は、主に、IaaS VM のバックアップ用の VHD ファイルに使われます。 追加 BLOB は、ファイルに書き込んでから詳細情報を追加し続ける場合などの、ログ記録に使用されます。 BLOB ストレージに格納されているほとんどのオブジェクトはブロック BLOB です。
 
@@ -137,7 +137,7 @@ Blob Storage では複数のアップロード方法を使うことができま�
 `list_blobs` メソッドを使用して、コンテナー内のファイルの一覧を取得します。 このメソッドは、ジェネレーターを返します。 次のコードは、BLOB の一覧を取得し、&mdash;ループ処理&mdash;して、コンテナー内に見つかった BLOB の名前を表示します。  
 
 ```python
-# List the blobs in the container
+# List the blobs in the container.
 print("\nList blobs in the container")
 generator = block_blob_service.list_blobs(container_name)
 for blob in generator:
@@ -146,21 +146,21 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>BLOB のダウンロード
 
-`the get\_blob\_to\_path` メソッドを使用して、ローカル ディスクに BLOB をダウンロードします。 次のコードは、前のセクションでアップロードされた BLOB をダウンロードします。 BLOB の名前にサフィックスとして *_DOWNLOADED* が追加されるため、ローカル ディスク上に両方のファイルが存在します。 
+`get_blob_to_path` メソッドを使用して、ローカル ディスクに BLOB をダウンロードします。 次のコードは、前のセクションでアップロードされた BLOB をダウンロードします。 BLOB の名前にサフィックスとして *_DOWNLOADED* が追加されるため、ローカル ディスク上に両方のファイルが存在します。 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name ,'.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>リソースのクリーンアップ
-このクイック スタートでアップロードした BLOB が不要になった場合は、`delete\_container` メソッドを使ってコンテナー全体を削除できます。 代わりに個々のファイルを削除するには、`delete\_blob` メソッドを使用します。
+このクイック スタートでアップロードした BLOB が不要になった場合は、`delete_container` メソッドを使ってコンテナー全体を削除できます。 代わりに個々のファイルを削除するには、`delete_blob` メソッドを使用します。
 
 ```python
-# Clean up resources. This includes the container and the temp files
+# Clean up resources. This includes the container and the temp files.
 block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)

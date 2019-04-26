@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 262daaa46db66545dfe44a5b433a2a2995c6a3b2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>チュートリアル:Azure Active Directory と EduBrite LMS の統合
@@ -54,7 +54,7 @@ EduBrite LMS と Azure AD の統合を構成するには、次のものが必要
 
 Azure AD への EduBrite LMS の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に EduBrite LMS を追加する必要があります。
 
-**ギャラリーから EduBrite LMS を追加するには、次の手順を実行します。**
+**ギャラリーから EduBrite LMS を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -108,9 +108,9 @@ EduBrite LMS で Azure AD シングル サインオンを構成するには、�
 
     ![[EduBrite LMS ドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。 `https://<customer-specific>.edubrite.com`
+    a. **[識別子]** ボックスに、`https://<customer-specific>.edubrite.com` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<customer-specific>.edubrite.com/oltpublish/site/samlLoginResponse.do`
+    b. **[応答 URL]** ボックスに、`https://<customer-specific>.edubrite.com/oltpublish/site/samlLoginResponse.do` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 

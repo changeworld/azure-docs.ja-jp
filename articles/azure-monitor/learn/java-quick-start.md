@@ -6,17 +6,17 @@ keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 07/11/2018
+ms.date: 04/18/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891500"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006898"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -38,17 +38,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Spring フレームワークの方がよければ、[Spring Boot 初期化子アプリを構成して Application Insights ガイドを使用](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)してみてください
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com/) にログインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
 Application Insights は、オンプレミスとクラウドのどちらで実行されているかに関係なく、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータの表示を開始するには、次の手順を実行します。
 
-1. **[リソースの作成]** > **[監視 + 管理]** > **[Application Insights]** の順に選択します。
+1. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。
 
-   ![Application Insights リソースの追加](./media/java-quick-start/001-j.png)
+   ![Application Insights リソースの追加](./media/java-quick-start/1createresourseappinsights.png)
+
+   ![Application Insights リソースの追加](./media/java-quick-start/2createjavaapp.png)
 
    構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
@@ -90,21 +92,21 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Azure Portal で監視を開始する
 
-1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
+1. Azure portal で Application Insights の **[概要]** ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。
 
-   ![Application Insights の概要メニュー](./media/java-quick-start/overview-001.png)
+   ![Application Insights の概要メニュー](./media/java-quick-start/3overview.png)
 
 2. **[アプリケーション マップ]** をクリックして、アプリケーション コンポーネント間の依存関係の視覚的レイアウトを取得します。 各コンポーネントには、負荷、パフォーマンス、障害、アラートなどの KPI が表示されます。
 
-   ![アプリケーション マップ](./media/java-quick-start/application-map-001.png)
+   ![アプリケーション マップ](./media/java-quick-start/4appmap.png)
 
-3. **[アプリ分析]** アイコンをクリックし、![[アプリケーション マップ]](./media/java-quick-start/006.png) アイコンをクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための多機能なクエリ言語を利用可能な **Application Insights Analytics** が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3.  **[アプリ分析]** アイコン ![[アプリケーション マップ] アイコン](./media/java-quick-start/006.png) **[Analytics 内のビュー]** をクリックします。  これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。 この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
-   ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/java-quick-start/0010-j.png)
+   ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/java-quick-start/5analytics.png)
 
-4. **[概要]** ページに戻って KPI グラフを観察します。  このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
+4. **[概要]** ページに戻って KPI グラフを観察します。 このダッシュ ボードでは、着信要求の数、要求の期間、発生したエラーなど、アプリケーションの正常性に関する統計情報が提供されます。
 
-   ![正常性の概要のタイムライン グラフ](./media/java-quick-start/overview-perf.png)
+   ![正常性の概要のタイムライン グラフ](./media/java-quick-start/6kpidashboards.png)
 
    **[ページ ビューの読み込み時間]** グラフに**クライアント側のテレメトリ** データを入力できるようにするには、このスクリプトを追跡する各ページに追加します。
 
@@ -130,13 +132,13 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 5. **[ライブ ストリーム]** をクリックします。 ここで、Java Web アプリのパフォーマンスに関連するライブ メトリックを見つけます。 **Live Metrics Stream** には、着信要求の数、要求の期間、発生したエラーなどのデータが含まれます。 また、プロセッサやメモリなどの重要なパフォーマンス メトリックをリアルタイムで監視することもできます。
 
-   ![サーバー メトリックのグラフ](./media/java-quick-start/livemetricsjava.png)
+   ![サーバー メトリックのグラフ](./media/java-quick-start/7livemetrics.png)
 
 Java の監視に関する詳細については、[App Insights Java の追加ドキュメント](./../../azure-monitor/app/java-get-started.md)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-引き続きクイック スタートまたはチュートリアルの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、以下の手順に従い、このクイック スタートで作成したすべてのリソースを Azure Portal で削除してください。
+テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
 
 1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。

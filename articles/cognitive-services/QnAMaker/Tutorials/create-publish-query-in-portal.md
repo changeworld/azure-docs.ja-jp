@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: diberry
 ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266955"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>チュートリアル:QnA Maker ポータルでナレッジ ベースを作成する
@@ -67,7 +67,7 @@ ms.locfileid: "59266955"
     |設定名|設定値|目的|
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |その URL にある FAQ のコンテンツは、質問の後に回答が続く形式になっています。 QnA Maker は、この形式を解釈して、質問とそれに関連付けられた回答を抽出することができます。|
-    |ファイル |_このチュートリアルでは使用しません_|これにより、質問と回答に関するファイルがアップロードされます。 |
+    |ファイル |"_このチュートリアルでは使用しません_"|これにより、質問と回答に関するファイルがアップロードされます。 |
     |[Chit-chat]\(おしゃべり\) の性格|The friend (フレンド)|これにより、一般的な質問と回答には親しみやすくカジュアルな性格が指定されます。 これらの質問と回答は後で編集することができます。 |
 
     ![ナレッジ ベースの作成プロセスの手順 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)

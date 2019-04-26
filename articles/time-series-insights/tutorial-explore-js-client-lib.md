@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5e3005eb8f548e562e037431ae5fd89f82ec2100
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812074"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150083"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 
@@ -28,6 +28,9 @@ Time Series Insights (TSI) に格納されたデータを照会して視覚化�
 > * TSI サンプル アプリケーション。
 > * TSI JavaScript クライアント ライブラリ。
 > * サンプル アプリケーションでライブラリを使用して TSI データを視覚化する方法。
+
+> [!NOTE]
+> Time Series Insights サンプル アプリケーションのソース ファイルは、用意されている [GitHub サンプル リポジトリ](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)にあります。
 
 ## <a name="video"></a>ビデオ: 
 
@@ -57,7 +60,7 @@ Time Series Insights (TSI) に格納されたデータを照会して視覚化�
 
 ### <a name="page-source-and-structure"></a>ページのソースと構造
 
-まず、ブラウザーでレンダリングされたページの基になる HTML と JavaScript のソース コードを見てみましょう。 すべての要素を見ていくわけではありませんが、主要なセクションについては説明するので、ページがどのように動作するかを把握することができます。
+まず、ブラウザーでレンダリングされたページの基になる [HTML と JavaScript のソース コード](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)を見てみましょう。 すべての要素を見ていくわけではありませんが、主要なセクションについては説明するので、ページがどのように動作するかを把握することができます。
 
 1. ブラウザーで**開発者ツール**を開きます。 現在のページを構成する HTML 要素 (HTML ツリーまたは DOM ツリーとも呼ばれます) を調べます。
 
@@ -109,7 +112,7 @@ Time Series Insights (TSI) に格納されたデータを照会して視覚化�
 
 2. その後、アプリケーションは Azure AD に "アクセス トークン" を要求します。 アクセス トークンは、特定のサービス/API 識別子 https://api.timeseries.azure.com に対するアクセス許可の有限集合として発行されます。 サービス/API 識別子はトークン "オーディエンス" とも呼ばれます。 トークンのアクセス許可は、サインインしたユーザーの代わりに発行されます。 サービス/API の識別子は、アプリケーションの Azure AD 登録に含まれる、もう 1 つのプロパティです。 ADAL からアプリケーションに返されたアクセス トークンは、TSI サービス API にアクセスするときに、"ベアラー トークン" として渡されます。
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=145-204&highlight=4-9,36-39)]
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=4-9,36-39)]
 
 ### <a name="control-identification"></a>コントロールの識別
 
@@ -191,7 +194,7 @@ TSI クライアント ライブラリでは、現在、8 個の独自の分析�
 
 「[ページのソースと構造](#page-source-and-structure)」セクションの手順 3. で説明したように、グラフ コントロールはページ上の行に配置され、それぞれに説明的なタイトル行があります。 この例では、3 つのグラフは "Multiple Chart Types From the Same Data" というタイトルの `<div>` 要素の下にあり、タイトルの下の 3 つの `<div>` 要素にバインドされています。
 
-[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
+[!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
 JavaScript コードの次のセクションでは、前述のパターンを使用して TSI 集計式を作成し、TSI データのクエリに使用して、3 つのグラフをレンダリングします。 `tsiClient.ux` 名前空間で使用される 3 つの種類 `LineChart`、`BarChart`、`PieChart` に注意してください。それぞれのグラフが作成され、レンダリングされます。 また、3 つのすべてのグラフが、同じ集計式データ `transformedResult` を使用できることにも注意してください。
 
@@ -283,9 +286,12 @@ TSI クライアント ライブラリは、利用する価値がありそうな
 > * TSI JavaScript クライアント ライブラリの API を使用する。
 > * JavaScript を使用してグラフ コントロールを作成し、TSI データを設定する。
 
-説明したように、TSI Sample アプリケーションは、デモのデータ セットを使用します。 独自の TSI 環境とデータ セットを作成する方法については、次の記事に進んでください。
+ご覧のように、TSI Sample アプリケーションは、デモのデータ セットを使用します。 独自の TSI 環境とデータ セットを作成する方法については、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Time Series Insights 環境を作成する](tutorial-create-populate-tsi-environment.md)
 
+または、TSI サンプル アプリケーションのソース ファイルをご覧ください。
 
+> [!div class="nextstepaction"]
+> [TSI サンプル アプリ リポジトリ](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)

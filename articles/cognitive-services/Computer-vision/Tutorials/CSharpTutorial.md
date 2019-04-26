@@ -1,22 +1,22 @@
 ---
 title: サンプル:画像処理アプリの探索 (C#)
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Microsoft Cognitive Services で Computer Vision API を使用する基本的な Windows アプリについて説明します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
+titleSuffix: Azure Cognitive Services
+description: Azure Cognitive Services で Computer Vision API を使用する基本的な Windows アプリについて説明します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 02/08/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310945"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004025"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -33,7 +33,7 @@ Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマ
 サンプル アプリを調べる前に、次の前提条件を満たしていることを確認します。
 
 * [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
-* Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+* Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。
 
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 

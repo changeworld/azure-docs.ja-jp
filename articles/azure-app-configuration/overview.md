@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 8c2c31b4d87ac2db123c0cae63679e3773734b4f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: a76eab5d51dd73fb6b38ebebaa8421e789274f84
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226285"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994794"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 
 
@@ -68,4 +68,5 @@ App Configuration は、アプリケーションのシークレットを格納�
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート:ASP.NET Web アプリを作成する](quickstart-aspnet-core-app.md) 
+> [!div class="nextstepaction"]
+> [ASP.NET Core Web アプリの作成](./quickstart-aspnet-core-app.md)  

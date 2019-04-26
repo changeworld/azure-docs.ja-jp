@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 50cd039395b477a93d050458c2a014e768fc5f0a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456008"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995678"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
-Azure Data Lake Storage Gen2 では、Hadoop 分散ファイル システム (HDFS) と連携するように調整された、ネイティブ ディレクトリ ベースのファイル システムを提供する[階層型名前空間サービスがサポート](data-lake-storage-introduction.md)されています。 HDFS から Data Lake Storage Gen2 データにアクセスするには、[ABFS ドライバー](data-lake-storage-abfs-driver.md)を使用します。
+Azure Data Lake Storage Gen2 では、Hadoop 分散ファイル システム (HDFS) と連携するように調整された、ネイティブ ディレクトリベースのファイル システムを提供する[階層型名前空間がサポート](data-lake-storage-introduction.md)されています。 HDFS から Data Lake Storage Gen2 データにアクセスするには、[ABFS ドライバー](data-lake-storage-abfs-driver.md)を使用します。
 
 このクイック スタートでは、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、または [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) を使用して、アカウントを作成する方法を説明します。
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |-----------|--------------|
 |ポータル     | なし         |
 |PowerShell | このクイック スタートには、PowerShell モジュールの Az.Storage バージョン **0.7** 以降が必要です。 現在のバージョンを調べるには、`Get-Module -ListAvailable Az.Storage` コマンドを実行します。 このコマンドを実行した後に結果が表示されない場合、または **0.7** 以外のバージョンが表示された場合は、次の powershell モジュールをアップグレードする必要があります。 このガイドの「[PowerShell モジュールのアップグレード](#upgrade-your-powershell-module)」セクションを参照してください。
-|CLI        | 次の 2 つの方法のいずれかで Azure にログインし、Azure CLI コマンドを実行できます。 <ul><li>Azure Portal 内から、Azure Cloud Shell で CLI コマンドを実行できます </li><li>CLI をインストールして、CLI コマンドをローカルで実行できます</li></ul>|
+|CLI        | 次の 2 つの方法のいずれかで Azure にサインインし、Azure CLI コマンドを実行できます。 <ul><li>Azure Portal 内から、Azure Cloud Shell で CLI コマンドを実行できます </li><li>CLI をインストールして、CLI コマンドをローカルで実行できます</li></ul>|
 
 コマンド ラインを使用する場合は、Azure Cloud Shell を実行するか、CLI をローカルにインストールするオプションがあります。
 
@@ -63,7 +63,7 @@ Azure CLI はローカルにインストールして使用することもでき�
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Azure portal を使用してアカウントを作成する
 
-[Azure Portal](https://portal.azure.com) にログインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -112,7 +112,7 @@ Azure Portal を使用してリソース グループを削除するには:
 
 最初に、[PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) モジュールの最新バージョンをインストールします。
 
-次に、PowerShell モジュールをアップグレードして、お使いの Azure サブスクリプションにログインし、リソース グループを作成してから、ストレージ アカウントを作成します。
+次に、PowerShell モジュールをアップグレードして、お使いの Azure サブスクリプションにサインインし、リソース グループを作成してから、ストレージ アカウントを作成します。
 
 ### <a name="upgrade-your-powershell-module"></a>PowerShell モジュールのアップグレード
 
@@ -128,7 +128,7 @@ Az.Storage モジュールのインストール
 Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
 ```
 
-### <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションへのログイン
+### <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインする
 
 `Login-AzAccount` コマンドを使用して、画面上の指示に従って認証を行います。
 
@@ -176,9 +176,9 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-an-account-using-azure-cli"></a>Azure CLI を使用してアカウントを作成する
 
-Azure Cloud Shell を開始するには、[Azure portal](https://portal.azure.com) にログインします。
+Azure Cloud Shell を開始するには、[Azure portal](https://portal.azure.com) にサインインします。
 
-CLI のローカル インストールにログインする場合は、ログイン コマンドを実行します。
+CLI のローカル インストールにサインインする場合は、login コマンドを実行します。
 
 ```cli
 az login

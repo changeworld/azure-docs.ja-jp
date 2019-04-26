@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283003"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
@@ -285,7 +285,7 @@ az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resour
 
 * [一貫性の管理](how-to-manage-consistency.md)
 * [リージョン間の競合の管理](how-to-manage-conflicts.md)
-* [グローバル配信 - 内部のしくみ](global-dist-under-the-hood.md)
+* [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
 * [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: baa2a09adeba133c5348449b12e037d4a9cb3213
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434463"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683037"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS メトリックとアラート
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 この記事では、Azure DNS サービスのメトリックとアラートについて説明します。
 
 ## <a name="azure-dns-metrics"></a>Azure DNS メトリック
 
-Azure DNS は、お客様の DNS サービス内でホストされている DNS の特定の側面を監視するために使用できるメトリックを提供します。 さらに、Azure DNS メトリックを使用して、関心のある条件に基づいてアラートを受信するよう設定できます。 メトリックは、[Azure Monitor サービス](../azure-monitor/index.yml)を介して提供されます。 Azure DNS は、Azure Monitor を介して、お客様の DNS ゾーンについて次のメトリックを提供します。
+Azure DNS には、DNS サービスでホストされている DNS ゾーンの特定の側面をお客様が監視できるようにするためのメトリックが用意されています。 さらに、Azure DNS メトリックを使用して、関心のある条件に基づいてアラートを受信するよう設定できます。 メトリックは、[Azure Monitor サービス](../azure-monitor/index.yml)を介して提供されます。 Azure DNS は、Azure Monitor を介して、お客様の DNS ゾーンについて次のメトリックを提供します。
 
 -   QueryVolume
 -   RecordSetCount
@@ -40,7 +40,9 @@ Azure DNS は、お客様の DNS サービス内でホストされている DNS 
 
 ### <a name="query-volume"></a>クエリ量
 
-Azure DNS 内の *クエリ量*メトリックは、Azure DNS によって受信される、DNS ゾーンの DNS クエリ量 (クエリ トラフィック) を示します。 測定単位はクエリ数で、一定期間中に受信したすべてのクエリの合計数が集計されます。 このメトリックを表示するには、Azure Portal の [監視] タブからメトリックス エクスプローラー エクスペリエンス (プレビュー) を選択します。 [リソース] ドロップダウン リストから DNS ゾーンを選択し、クエリ量メトリックを選択し、[集計] として [合計] を選択します。 次のスクリーン ショットに、例を示します。  メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。
+Azure DNS 内の *クエリ量*メトリックは、Azure DNS によって受信される、DNS ゾーンの DNS クエリ量 (クエリ トラフィック) を示します。 測定単位はクエリ数で、一定期間中に受信したすべてのクエリの合計数が集計されます。 
+
+このメトリックを表示するには、Azure Portal の [監視] タブからメトリックス エクスプローラー エクスペリエンス (プレビュー) を選択します。 [リソース] ドロップダウン リストから DNS ゾーンを選択し、クエリ量メトリックを選択し、[集計] として [合計] を選択します。 次のスクリーン ショットに、例を示します。  メトリックス エクスプローラー エクスペリエンスおよびグラフ作成機能の詳細については、「[Azure Monitor メトリックス エクスプローラー](../azure-monitor/platform/metrics-charts.md)」を参照してください。
 
 ![クエリ量](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 

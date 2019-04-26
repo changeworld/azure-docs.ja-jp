@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 1e1cb509f296d8bed8efc3a3d520a1c480c1f775
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 173343677d6c44135037978e1c5b60313251ba43
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885300"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003838"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>チュートリアル:DMS (プレビュー) を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
 Azure Database Migration Service を使用して、MongoDB のオンプレミスまたはクラウドのインスタンスから Azure Cosmos DB の MongoDB 用 API に、データベースのオンライン (最小限のダウンタイム) の移行を実行できます。
@@ -43,6 +43,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。
+- スループットの見積もり、パーティション キーの選択、インデックス作成ポリシーなど、[移行前の手順を完了](../cosmos-db/mongodb-pre-migration.md)します。
 - [Azure Cosmos DB の MongoDB 用 API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
 - Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNET) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
 
@@ -215,6 +216,10 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
     このアクションにより、保留中の変更がすべて再生し終わり、移行が完了します。
 
     ![アクティビティの状態 - 再生中](media/tutorial-mongodb-to-cosmosdb-online/dms-finish-migration.png)
+
+## <a name="post-migration-optimization"></a>移行後の最適化
+
+MongoDB データベースに格納されているデータを MongoDB の Azure Cosmos DB 用 API に移行した後は、Azure Cosmos DB に接続してデータを管理できます。 また、インデックス作成ポリシーの最適化、既定の整合性レベルの更新、Azure Cosmos DB アカウントのグローバル分散の構成など、移行後の他の最適化手順を実行することもできます。 詳細については、[移行後の最適化](../cosmos-db/mongodb-post-migration.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

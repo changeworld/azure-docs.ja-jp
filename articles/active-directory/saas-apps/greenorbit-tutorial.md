@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df6720d888aae313a2e6ad2ce4df458adba8742f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: b05c91138f3140abe6a08964fa06caef988e5f49
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565361"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenorbit"></a>チュートリアル:Azure Active Directory と GreenOrbit の統合
 
@@ -56,7 +56,7 @@ Azure AD への GreenOrbit の統合を構成するには、ギャラリーか�
 
 **ギャラリーから GreenOrbit を追加するには、次の手順を実行します。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
@@ -64,11 +64,11 @@ Azure AD への GreenOrbit の統合を構成するには、ギャラリーか�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**GreenOrbit**」と入力し、結果パネルで **GreenOrbit** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 結果ボックスに「**GreenOrbit**」と入力し、結果パネルで **[GreenOrbit]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の GreenOrbit](common/search-new-app.png)
 
@@ -108,9 +108,9 @@ GreenOrbit で Azure AD シングル サインオンを構成するには、次�
 
     ![[GreenOrbit のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.GreenOrbit.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.yourcompanydomain.extension`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://<SUBDOMAIN>.trial.GreenOrbit.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.yourcompanydomain.extension`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[GreenOrbit クライアント サポート チーム](mailto:support@greenorbit.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

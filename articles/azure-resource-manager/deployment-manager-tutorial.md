@@ -14,10 +14,10 @@ ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880051"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
@@ -309,7 +309,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
     ```
 
     > [!NOTE]
-    > `New-AzResourceGroupDeployment`  は非同期呼び出しです。 成功メッセージは、デプロイが正常に開始されたことだけを意味します。 デプロイを確認するには、この手順の手順 2. と手順 4. を参照してください。
+    > `New-AzResourceGroupDeployment` は非同期呼び出しです。 成功メッセージは、デプロイが正常に開始されたことだけを意味します。 デプロイを確認するには、この手順の手順 2. と手順 4. を参照してください。
 
 2. サービス トポロジと下線付きのリソースが、Azure portal を使用することで正常に作成されていることを確認します。
 

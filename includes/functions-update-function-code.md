@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2019
 ms.author: glenga
 ms.custom: include file, fasttrack-edit
-ms.openlocfilehash: 3b0be31afbce78c0de8dc919245e92bee7af04b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b009fafc818a06bdda309b3e025251cc0997e47
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964196"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737164"
 ---
 ## <a name="update-the-function"></a>関数を更新する
 
@@ -33,7 +33,7 @@ public static async Task<IActionResult> Run(
 
 ### <a name="javascript"></a>JavaScript
 
-新しい関数である function.json ファイルをテキスト エディターで開き、**bindings.httpTrigger** 内の **authLevel** プロパティ を `anonymous` に更新し、変更を保存します。
+新しい関数の function.json ファイルをテキスト エディターで開き、**bindings** 内の **authLevel** プロパティを `anonymous` に更新し、変更を保存します。
 
 ```json
   "bindings": [

@@ -4,20 +4,20 @@ description: Azure Cosmos コンテナーに対して実行した操作の要求
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: e3175ee136057c695ceef3cd1976b447a529c803
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053042"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683836"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 
 この記事では、Azure Cosmos コンテナーに対して実行された操作の[要求ユニット](request-units.md)消費量を確認するさまざまな方法を紹介します。 この消費量は現在、Azure portal を使用して測定できるほか、いずれかの SDK を通じて Azure Cosmos DB から返された応答を調べることによって測定できます。
 
-## <a name="core-api"></a>Core API
+## <a name="sql-core-api"></a>SQL (Core) API
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
@@ -25,7 +25,7 @@ Azure portal では現在、SQL クエリについてのみ要求の使用量を
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. [新しい Azure Cosmos DB アカウントを作成](create-sql-api-dotnet.md#create-account)してデータを取り込むか、既にデータが存在する既存のアカウントを選択します。
+1. [新しい Azure Cosmos アカウントを作成](create-sql-api-dotnet.md#create-account)してデータを取り込むか、既にデータが存在する既存の Azure Cosmos アカウントを選択します。
 
 1. **[データ エクスプローラー]** ウィンドウを開いて、操作の対象となるコンテナーを選択します。
 
@@ -147,7 +147,7 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 
 ## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
-要求ユニット使用量は、`getLastRequestStatistics` という名前のカスタム [データベース コマンド](https://docs.mongodb.com/manual/reference/command/)によって公開されます。 直前に実行された操作の名前を含んだドキュメント、その要求の使用量、その実行時間が、このコマンドから返されます。
+要求ユニット使用量は、`getLastRequestStatistics.` という名前のカスタム [データベース コマンド](https://docs.mongodb.com/manual/reference/command/)によって公開されます。直前に実行された操作の名前を含んだドキュメント、その要求の使用量、その実行時間が、このコマンドから返されます。
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
@@ -155,7 +155,7 @@ Azure portal では現在、クエリについてのみ要求の使用量を確�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. [新しい Azure Cosmos DB アカウント](create-mongodb-dotnet.md#create-a-database-account)を作成してデータを取り込むか、既にデータが存在する既存のアカウントを選択します。
+1. [新しい Azure Cosmos アカウントを作成](create-mongodb-dotnet.md#create-a-database-account)してデータを取り込むか、既にデータが存在する既存のアカウントを選択します。
 
 1. **[データ エクスプローラー]** ウィンドウを開いて、操作の対象となるコレクションを選択します。
 
@@ -195,7 +195,7 @@ Double requestCharge = stats.getDouble("RequestCharge");
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>MongoDB Node.js ドライバーの使用
 
-[公式 MongoDB Node.js ドライバー](https://mongodb.github.io/node-mongodb-native/) (使用法については、[こちらのクイック スタート](create-mongodb-nodejs.md)を参照) を使用する場合は、`Db` オブジェクトで `command` メソッドを呼び出すことでコマンドを実行できます。
+[公式 MongoDB Node.js ドライバー](https://mongodb.github.io/node-mongodb-native/) (使用法については、[こちらのクイック スタート](create-mongodb-nodejs.md)を参照) を使用する場合は、`db` オブジェクトで `command` メソッドを呼び出すことでコマンドを実行できます。
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -267,5 +267,9 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 要求ユニットの消費を最適化する方法については、次の記事を参照してください。
 
-* [Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する](optimize-cost-throughput.md)
+* [Azure Cosmos DB における要求ユニットとスループット](request-units.md)
+* [Azure Cosmos DB でのプロビジョニングされたスループット コストを最適化する](optimize-cost-throughput.md)
 * [Azure Cosmos DB でのクエリ コストを最適化する](optimize-cost-queries.md)
+* [プロビジョニングされたスループットのグローバルなスケーリング](scaling-throughput.md)
+* [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
+* [特定のコンテナーに対してスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)

@@ -14,18 +14,20 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 7c84a5c39b1a3b4a52505c053fdcfc92030237c3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575779"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998092"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
 
 Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、.NET Core コンソール アプリにサービスを組み込む方法を示します。
 
 このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+
+![クイック スタートのアプリの実行](./media/quickstarts/dotnet-core-app-run.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,6 +38,14 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. **[キー/値のエクスプローラー]** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+
+    | キー | 値 |
+    |---|---|
+    | TestApp:Settings:Message | Azure App Configuration からのデータ |
+
+    **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
 ## <a name="create-a-net-core-console-app"></a>.NET Core コンソール アプリを作成する
 
@@ -99,8 +109,6 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
         dotnet run
 
-    ![クイック スタートのアプリの実行](./media/quickstarts/dotnet-core-app-run.png)
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
@@ -110,4 +118,4 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から .NET Core コンソール アプリと共に使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure リソースのマネージド ID の統合](./integrate-azure-managed-service-identity.md)
+> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)

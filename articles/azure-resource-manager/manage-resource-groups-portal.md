@@ -57,7 +57,7 @@ ms.locfileid: "58484697"
 
     ![リソース グループに移動](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
-## <a name="list-resource-groups"></a>List resource groups
+## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. リソース グループを表示するには、**[リソース グループ]** を選択します

@@ -49,7 +49,7 @@ ms.locfileid: "55507819"
 
 タイム シリーズ モデルの "*型*" は、計算を行うための変数や数式を定義するのに役立ちます。 型は、特定の Time Series Insights インスタンスに関連付けられます。 1 つの型は、1 つまたは複数の変数を持つことができます。 たとえば、Time Series Insights インスタンスの型が "*温度センサー*" の場合は、その型を、"*平均温度*"、"*最低温度*"、"*最高温度*" という変数から構成することができます。 Time Series Insights はデータが最初に送信される際に、既定の型を作成します。 既定の型は、モデル設定から取得したり更新することができます。 既定の型には、イベントの数をカウントする変数が含まれています。
 
-## <a name="time-series-model-type-json-example"></a>タイム シリーズ モデルの種類の JSON サンプル
+## <a name="time-series-model-type-json-example"></a>タイム シリーズ モデルの型の JSON サンプル
 
 サンプル:
 
@@ -76,7 +76,7 @@ ms.locfileid: "55507819"
 
 タイム シリーズ モデルの種類について詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)をご覧ください。
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>変数
 
 Time Series Insights の型には変数があります。これは、イベントからの値に対する名前付き計算です。 Time Series Insights の変数の定義には、数式と計算の規則が含まれます。 変数の定義には、"*種類*"、"*値*"、"*フィルター*"、"*削減*"、および "*境界*" が含まれます。 変数は、タイム シリーズ モデル内の型の定義に保存されます。クエリ API を通じて変数をインラインで指定すると、保存されている定義をオーバーライドすることができます。
 

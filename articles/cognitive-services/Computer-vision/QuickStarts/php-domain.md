@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:ドメイン固有の画像コンテンツ - REST、PHP
+title: クイック スタート:ドメイン固有のコンテンツ - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ドメイン モデルを利用し、PHP と Computer Vision API を使って画像内のランドマークを識別します。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2c1801296247ace081a34a137fe3f3bea7a55974
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 902894ccce28ee1ba05430c7e697c3ca47887795
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877022"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011114"
 ---
 # <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>クイック スタート:Computer Vision で REST API と PHP を使用してドメイン固有のコンテンツを認識する
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [PHP](https://secure.php.net/downloads.php) がインストールされている必要があります。
 - [Pear](https://pear.php.net) がインストールされている必要があります。
-- Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+- Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。
 
 ## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 

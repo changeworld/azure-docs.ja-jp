@@ -1,24 +1,24 @@
 ---
-title: 複数の Web サイトをホストするアプリケーション ゲートウェイを作成する - Azure portal
-description: Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。
+title: チュートリアル - Azure portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
+description: このチュートリアルでは、Azure portal を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 2/20/2019
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080169"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999027"
 ---
-# <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
-[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure Portal を使用して[複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 この記事では、仮想マシンを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
+[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure Portal を使用して[複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
-この記事では、次のことについて説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリケーション ゲートウェイの作成
@@ -146,7 +146,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
 
-この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 
+この例では、2 つの新しいルールを作成し、アプリケーション ゲートウェイを作成したときに作成された既定のルールを削除します。
 
 1. **[ルール]**、**[基本]** の順にクリックします。
 2. 名前として「*contosoRule*」と入力します。
@@ -179,6 +179,18 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![アプリケーション ゲートウェイの fabrikam サイトをテストする](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。
+
+リソース グループを削除するには:
+
+1. Azure portal の左側のメニューにある **[リソース グループ]** を選択します。
+2. **[リソース グループ]** ページで、リストの **myResourceGroupAG** を探して選択します。
+3. **[リソース グループ] ページ**で、**[リソース グループの削除]** を選択します。
+4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、**[削除]** を選択します。
+
 ## <a name="next-steps"></a>次の手順
 
-[Application Gateway を使用した App Service の構成](create-web-app.md)
+> [!div class="nextstepaction"]
+> [Azure Application Gateway で実行できる操作の詳細を確認する](application-gateway-introduction.md)

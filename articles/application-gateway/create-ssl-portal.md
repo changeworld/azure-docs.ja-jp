@@ -1,44 +1,42 @@
 ---
-title: SSL 終了でアプリケーション ゲートウェイを構成する - Azure Portal | Microsoft Docs
-description: Azure Portal を使用して、アプリケーション ゲートウェイを構成し、SSL 終了の証明書を追加する方法について説明します。
+title: チュートリアル - SSL 終了でアプリケーション ゲートウェイを構成する - Azure portal
+description: このチュートリアルでは、Azure portal を使用して、アプリケーション ゲートウェイを構成し、SSL 終了の証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.date: 5/15/2018
+ms.topic: tutorial
+ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091836"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677852"
 ---
-# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
+# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL 終了でアプリケーション ゲートウェイを構成する
 
 Azure Portal を使用して、バックエンド サーバーに仮想マシンを使用する SSL 終了の証明書で、[アプリケーション ゲートウェイ](overview.md)を構成することができます。
 
-この記事では、次のことについて説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 自己署名証明書の作成
 > * 証明書でのアプリケーション ゲートウェイの作成
 > * バックエンド サーバーとして使用される仮想マシンの作成
+> * アプリケーション ゲートウェイのテスト
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-このセクションでは、アプリケーション ゲートウェイのリスナーを作成するときに、[New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、Azure Portal にアップロードする自己署名証明書を作成します。
+このセクションでは、[New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 アプリケーション ゲートウェイのリスナーを作成するときに、証明書を Azure portal にアップロードします。
 
 ローカル コンピューターでは、管理者として Windows PowerShell ウィンドウを開きます。 次のコマンドを実行して、証明書を作成します。
 
@@ -72,11 +70,11 @@ Export-PfxCertificate \
 
 作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
 
-1. Azure Portal の左上にある **[新規]** をクリックします。
+1. Azure portal の左上隅にある **[新規]** を選択します。
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. アプリケーション ゲートウェイの名前として「*myAppGateway*」を、新しいリソース グループとして「*myResourceGroupAG*」を入力します。
-4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
+4. 他の設定は既定値をそのまま使用し、**[OK]** を選択します。
+5. **[仮想ネットワークの選択]**、**[新規作成]** の順に選択し、次の仮想ネットワークの値を入力します。
 
    - *myVNet* - 仮想ネットワークの名前です。
    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
@@ -85,24 +83,24 @@ Export-PfxCertificate \
 
      ![Create virtual network](./media/create-ssl-portal/application-gateway-vnet.png)
 
-6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
-7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-8. リスナーのプロトコルとして **[HTTPS]** をクリックし、ポートが **443** として定義されていることを確認します。
-9. フォルダー アイコンをクリックし、前に作成したアップロードする *appgwcert.pfx* 証明書に移動します。
-10. 証明書の名前として「*mycert1*」を、パスワードとして「*Azure123456!*」 を入力し、**[OK]** をクリックします。
+6. **[OK]** を選択して、仮想ネットワークとサブネットを作成します。
+7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順に選択し、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** を選択します。
+8. リスナーのプロトコルとして **[HTTPS]** を選択し、ポートが **443** として定義されていることを確認します。
+9. フォルダー アイコンを選択し、前に作成したアップロードする *appgwcert.pfx* 証明書に移動します。
+10. 証明書の名前として「*mycert1*」を、パスワードとして「*Azure123456!*」 を入力し、**[OK]** を選択します。
 
     ![新しいアプリケーション ゲートウェイの作成](./media/create-ssl-portal/application-gateway-create.png)
 
-11. 概要ページで設定を確認し、**[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
+11. 概要ページで設定を確認し、**[OK]** を選択して、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
 ### <a name="add-a-subnet"></a>サブネットの追加
 
-1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myVNet]** をクリックします。
-2. **[サブネット]**、**[サブネット]** の順にクリックします。
+1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で **[myVNet]** を選びます。
+2. **[サブネット]** を選択し、**[サブネット]** を選択します。
 
     ![サブネットの作成](./media/create-ssl-portal/application-gateway-subnet.png)
 
-3. サブネットの名前として「*myBackendSubnet*」を入力し、**[OK]** をクリックします。
+3. サブネットの名前として「*myBackendSubnet*」と入力し、**[OK]** を選択します。
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
@@ -110,8 +108,8 @@ Export-PfxCertificate \
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]** をクリックします。
-2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
+1. **[新規]** を選択します。
+2. **[Compute]** をクリックし、おすすめのリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
     - *myVM* - 仮想マシンの名前です。
@@ -119,11 +117,11 @@ Export-PfxCertificate \
     - *Azure123456!* パスワードです。
     - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
 
-4. Click **OK**.
-5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
+4. **[OK]** を選択します。
+5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** を選択します。
 6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
-7. **[無効]** をクリックして、ブート診断を無効にします。
-8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
+7. **[無効]** を選択して、ブート診断を無効にします。
+8. **[OK]** を選択し、概要ページの設定を確認して、**[作成]** を選択します。
 
 ### <a name="install-iis"></a>IIS のインストール
 
@@ -149,17 +147,17 @@ Export-PfxCertificate \
 
 ### <a name="add-backend-servers"></a>バックエンド サーバーの追加
 
-1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
-1. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
-1. **[ターゲットの追加]** をクリックして、作成した各仮想マシンをバックエンド プールに追加します。
+1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
+1. **[バックエンド プール]** を選択します。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** を選択します。
+1. **[ターゲットの追加]** を選択して、作成した各仮想マシンをバックエンド プールに追加します。
 
     ![バックエンド サーバーの追加](./media/create-ssl-portal/application-gateway-backend.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** を選択します。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. **[すべてのリソース]**、**[myAGPublicIPAddress]** の順にクリックします。
+1. **[すべてのリソース]** を選択し、**[myAGPublicIPAddress]** を選択します。
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/create-ssl-portal/application-gateway-ag-address.png)
 
@@ -173,11 +171,5 @@ Export-PfxCertificate \
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * バックエンド サーバーとして使用される仮想マシンの作成
-
-アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。
+> [!div class="nextstepaction"]
+> [Azure Application Gateway で実行できる操作の詳細を確認する](application-gateway-introduction.md)
