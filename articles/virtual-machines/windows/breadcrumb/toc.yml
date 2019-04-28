@@ -5,5 +5,5 @@
     - name: Virtual Machines
       topicHref: /virtual-machines/index
       items:
-        - name: ' Windows'
+        - name: Windows
           topicHref: /virtual-machines/windows/index

@@ -12,7 +12,7 @@
       items:
         - name: Linux
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal'
-        - name: ' Windows'
+        - name: Windows
           href: 'https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal'
     - name: サーバーレス
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function'
@@ -38,7 +38,7 @@
       items:
         - name: Linux
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm'
-        - name: ' Windows'
+        - name: Windows
           href: 'https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm'
     - name: Azure 接続関数を作成する
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function'

@@ -101,7 +101,7 @@
       items:
         - name: Linux
           href: how-to-auto-provision-simulated-device-linux.md
-        - name: ' Windows'
+        - name: Windows
           href: how-to-auto-provision-simulated-device-windows.md
     - name: カスタム モジュールの開発とデバッグ
       items:

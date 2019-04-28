@@ -61,7 +61,7 @@ ms.locfileid: "61227139"
     - [Windows](troubleshoot-deploy-vm-windows.md)
 - [デバイス名が変更されている](troubleshoot-device-names-problems.md)
 - VM の復旧方法
-    -  Windows
+    - Windows
         - [PowerShell](troubleshoot-recovery-disks-windows.md)
         - [Azure Portal](troubleshoot-recovery-disks-portal-windows.md)
     - Linux
