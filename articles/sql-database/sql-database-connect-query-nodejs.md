@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58444696"
 ---
-# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート:Node.js を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート:Node.js を使用して Azure SQL データベースに照会する
 
 この記事では、[Node.js](https://nodejs.org) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "58444696"
 
 このサンプルを完了するには、次の前提条件を満たしている必要があります。
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|

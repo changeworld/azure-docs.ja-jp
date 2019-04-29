@@ -134,7 +134,7 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。 しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。 その他のエラー メッセージは、対応策が明白な文脈で提供されています。 
 
 ### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
-* **説明**:Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
+* **説明**:Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL データベースの詳細を指定してください。
 * **対応策**:ユーザーは、有効な SQL Azure metastore を指定して、要求を再試行する必要があります。  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported

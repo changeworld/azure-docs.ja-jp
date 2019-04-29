@@ -31,7 +31,7 @@ SQL Server から Azure SQL サーバーに[データベースを移行](sql-dat
 
 たとえば、高可用性は、[Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)に似たテクノロジを使用して、Azure SQL Database に組み込まれています。 可用性グループに関連する T-SQL ステートメントは SQL Database でサポートされず、AlwaysOn 可用性グループに関連する動的管理ビューもサポートされていません。
 
-SQL Database でサポートされる機能とサポートされない機能の一覧については、 [Azure SQL Database の機能の比較](sql-database-features.md)に関する記事をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
+SQL Database でサポートされる機能とサポートされない機能の一覧については、「 [Azure SQL Database の機能の比較](sql-database-features.md)」をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>部分的に異なる Transact-SQL 構文のステートメント
 
@@ -89,4 +89,4 @@ Transact-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 ## <a name="next-steps"></a>次の手順
 
-SQL Database でサポートされる機能とサポートされない機能の一覧については、 [Azure SQL Database の機能の比較](sql-database-features.md)に関する記事をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
+SQL Database でサポートされる機能とサポートされない機能の一覧については、「 [Azure SQL Database の機能の比較](sql-database-features.md)」をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。

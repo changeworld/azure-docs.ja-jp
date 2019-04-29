@@ -47,7 +47,7 @@ Azure SQL Database では、次のジョブ スケジュール テクノロジ�
 - **SQL エージェント ジョブ**: 従来から使われている実績のある SQL Server ジョブ スケジューリング コンポーネントです。Managed Instance で利用できます。 SQL エージェント ジョブは、単一のデータベースでは利用できません。
 - **Elastic Database ジョブ**: 1 つまたは多数の Azure SQL データベース上でカスタム ジョブを実行するジョブ スケジューリング サービスです。
 
-SQL エージェント (オンプレミスでも SQL Database Managed Instance の一部としても利用可能) と Database Elastic ジョブ エージェント (Azure SQL Database 内の単一のデータベースと SQL Data Warehouse 内のデータベースで利用可能) の間には、いくつかの点で違いがあります。
+SQL エージェント (オンプレミスでも SQL Database Managed Instance の一部としても利用可能) と Database Elastic ジョブ エージェント (Azure SQL データベース内の単一のデータベースと SQL Data Warehouse 内のデータベースで利用可能) の間には、いくつかの点で違いがあります。
 
 |  |エラスティック ジョブ  |SQL エージェント |
 |---------|---------|---------|

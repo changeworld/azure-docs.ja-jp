@@ -1,6 +1,6 @@
 ---
 title: PaaS リソースへのネットワーク アクセスを制限する - Azure PowerShell | Microsoft Docs
-description: この記事では、Azure PowerShell を使って仮想ネットワーク サービスのエンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
+description: この記事では、Azure PowerShell を使って仮想ネットワーク サービス エンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial

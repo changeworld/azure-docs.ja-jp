@@ -39,7 +39,7 @@ ms.locfileid: "54025761"
 
 Azure Data Factory の**コピー ウィザード**を使用すると、サポートされているソース データ ストアからサポートされているターゲット データ ストアにデータをコピーするデータ パイプラインを簡単に作成することができます。 そのため、データ移動のシナリオを想定したサンプル パイプラインを作成する場合は、まずこのウィザードを使用することをお勧めします。 コピー アクティビティのソースおよびターゲットとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。  
 
-このチュートリアルでは、Azure Data Factory を作成し、コピー ウィザードを起動して、一連の手順を実行する方法を紹介しながら、データの取り込み/移動のシナリオについて詳しく説明します。 ウィザードの手順が完了すると、Azure Blob Storage から Azure SQL Database にデータを複製するコピー アクティビティを含んだパイプラインが自動的に作成されます。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
+このチュートリアルでは、Azure Data Factory を作成し、コピー ウィザードを起動して、一連の手順を実行する方法を紹介しながら、データの取り込み/移動のシナリオについて詳しく説明します。 ウィザードの手順が完了すると、Azure Blob Storage から Azure SQL データベースにデータを複製するコピー アクティビティを含んだパイプラインが自動的に作成されます。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを実行する前に、 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関する記事に記載されている前提条件を満たしてください。
@@ -121,7 +121,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
    5. **ユーザー名**と**パスワード**を入力します。
    6. **[次へ]** をクリックします。  
       
-      ![Copy Tool - specify Azure SQL database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![Copy Tool - Azure SQL データベースの指定](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. **[テーブル マッピング]** ページで、**[ターゲット]** フィールドのドロップダウン リストから **[emp]** を選択します。**下向き矢印**をクリックすると (省略可能)、スキーマを表示し、データをプレビューできます。
     
      ![Copy Tool - Table mapping](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 

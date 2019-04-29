@@ -45,7 +45,7 @@ Azure Virtual Network では、次に示す重要な機能が提供されます�
 次のいずれかの方法により、Azure のリソースは互いに安全に通信することができます。
 
 - **仮想ネットワーク経由**:仮想ネットワークに、VM や他のいくつかの種類の Azure リソース (Azure App Service Environment、Azure Kubernetes Service (AKS)、Azure Virtual Machine Scale Sets など) をデプロイできます。 仮想ネットワークにデプロイできる Azure リソースの詳細な一覧については、[仮想ネットワーク サービスの統合](virtual-network-for-azure-services.md)に関するページを参照してください。 
-- **仮想ネットワーク サービス エンドポイント経由**:直接接続を使用して、仮想ネットワークのプライベート アドレス空間と仮想ネットワークの ID を Azure Storage アカウントや Azure SQL Database などの Azure サービス リソースに拡張します。 サービス エンドポイントを使用することで、重要な Azure サービス リソースを仮想ネットワークのみに固定することができます。 詳細については、[仮想ネットワーク サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)に関するページを参照してください。
+- **仮想ネットワーク サービス エンドポイント経由**:直接接続を使用して、仮想ネットワークのプライベート アドレス空間と仮想ネットワークの ID を Azure Storage アカウントや Azure SQL データベースなどの Azure サービス リソースに拡張します。 サービス エンドポイントを使用することで、重要な Azure サービス リソースを仮想ネットワークのみに固定することができます。 詳細については、[仮想ネットワーク サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)に関するページを参照してください。
  
 ## <a name="communicate-with-on-premises-resources"></a>オンプレミス リソースとの通信
 

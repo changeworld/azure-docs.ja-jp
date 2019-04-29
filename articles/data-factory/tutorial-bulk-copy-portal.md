@@ -38,7 +38,7 @@ ms.locfileid: "59279790"
 このチュートリアルでは、Azure Portal を使用します。 その他のツールまたは SDK を使ってデータ ファクトリを作成する方法については、[クイックスタート](quickstart-create-data-factory-dot-net.md)を参照してください。 
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
-このシナリオでは、SQL Data Warehouse にコピーする必要のあるテーブルが Azure SQL Database に多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
+このシナリオでは、SQL Data Warehouse にコピーする必要のあるテーブルが Azure SQL データベースに多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
 
 ![ワークフロー](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
 
@@ -113,7 +113,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 このチュートリアルでは、データ ファクトリに Azure SQL Database、Azure SQL Data Warehouse、および Azure Blob Storage の各データ ストアをリンクします。 Azure SQL Database はソース データ ストアです。 Azure SQL Data Warehouse はシンク (コピー先) データ ストアです。 データは、Azure Blob Storage にステージングされてから、PolyBase を使用して SQL Data Warehouse に読み込まれます。 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>ソース Azure SQL Database のリンクされたサービスを作成する
-この手順では、Azure SQL Database をデータ ファクトリに接続するためのリンクされたサービスを作成します。 
+この手順では、Azure SQL データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 
 
 1. ウィンドウの下部にある **[接続]** をクリックし、ツールバーの **[+ 新規]** をクリックします。 
 
@@ -128,7 +128,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     1. **[データベース名]** で、使用する Azure SQL Database を選択します。 
     1. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
     1. **[パスワード]** に、そのユーザーのパスワードを入力します。 
-    1. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
+    1. 指定した情報を使用して Azure SQL データベースへの接続をテストするために、**[テスト接続]** をクリックします。
     1. **[Save]** をクリックします。
 
         ![Azure SQL Database の設定](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
@@ -144,7 +144,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     1. **[データベース名]** で、使用する Azure SQL Database を選択します。 
     1. **[ユーザー名]** に、Azure SQL Database に接続するユーザーの名前を入力します。 
     1. **[パスワード]** に、そのユーザーのパスワードを入力します。 
-    1. 指定した情報を使用して Azure SQL Database への接続をテストするために、**[テスト接続]** をクリックします。
+    1. 指定した情報を使用して Azure SQL データベースへの接続をテストするために、**[テスト接続]** をクリックします。
     1. **[Save]** をクリックします。
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>ステージング Azure Storage のリンクされたサービスを作成する
@@ -181,7 +181,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. **[接続]** タブに切り替えて、次の手順を実行します。 
 
    1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
-   1. **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL Database からデータを抽出するために使用します。 または、**[編集]** チェック ボックスをオンにして、テーブル名として「**dummyName**」と入力してもかまいません。 
+   1. **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL データベースからデータを抽出するために使用します。 または、**[編集]** チェック ボックスをオンにして、テーブル名として「**dummyName**」と入力してもかまいません。 
 
       ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  

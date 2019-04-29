@@ -498,7 +498,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 
 `compression` プロパティを入力データセットの JSON で指定すると、パイプラインでソースから圧縮データを読み取ることができます。このプロパティを出力データセットの JSON で指定すると、コピー アクティビティにより出力先に圧縮データを書き込むことができます。 いくつかのサンプル シナリオを次に示します。
 
-* Azure BLOB から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL Database に書き込みます。 `compression` `type` JSON プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
+* Azure BLOB から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL データベースに書き込みます。 `compression` `type` JSON プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
 * オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure BLOB に書き込みます。 `compression` `type` JSON プロパティを使用して、Azure BLOB 出力データセットを GZip として定義します。
 * FTP サーバーから .zip ファイルを読み取り、圧縮解除して中にあるファイルを取得し、それらのファイルを Azure Data Lake Store に格納します。 `compression` `type` JSON プロパティを使用して、FTP 入力データセットを ZipDeflate として定義します。
 * Azure BLOB から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure BLOB に書き込みます。 この場合、Azure BLOB 入力データセットは `compression` `type` を GZIP に設定して定義し、Azure BLOB 出力データセットは `compression` `type` を BZIP2 に設定して定義します。   

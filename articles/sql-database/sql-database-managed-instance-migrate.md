@@ -1,6 +1,6 @@
 ---
 title: SQL Server インスタンスを Azure SQL Database Managed Instance に移行する | Microsoft Docs
-description: SQL Server インスタンスを Azure SQL Database Managed Instance に移行する方法について説明します。
+description: SQL Server インスタンスを Azure SQL Database Managed Instance に移行する方法を説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration

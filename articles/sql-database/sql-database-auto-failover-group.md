@@ -254,7 +254,7 @@ ms.locfileid: "60009074"
 2. [パブリック ロード バランサーを作成](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer)し、パブリック IP を割り当てます。
 3. フロント エンド コンポーネントに対して[仮想ネットワークと仮想マシンを作成](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers)します。
 4. [ネットワーク セキュリティ グループを作成](../virtual-network/security-overview.md)し、受信接続を構成します。
-5. ‘Sql’ [サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して Azure SQL Database への送信接続が開いていることを確認します。
+5. ‘Sql’ [サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して Azure SQL データベースへの送信接続が開いていることを確認します。
 6. [SQL データベース ファイアウォール規則](sql-database-firewall-configure.md)を作成して、手順 1 で作成したパブリック IP アドレスからの受信トラフィックを許可します。
 
 送信アクセスを構成する方法と、ファイアウォール規則で使用する IP の詳細については、[ロード バランサー送信接続](../load-balancer/load-balancer-outbound-connections.md)に関するページを参照してください。
@@ -380,6 +380,6 @@ ms.locfileid: "60009074"
   - [アクティブ geo レプリケーションを使用して、プールされているデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
   - [単一データベースのフェールオーバー グループを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 - ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
 - 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 - 新しいプライマリ サーバーとデータベースの認証要件については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関する記事を参照してください。

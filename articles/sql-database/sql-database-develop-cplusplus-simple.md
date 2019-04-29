@@ -34,16 +34,16 @@ ms.locfileid: "57316491"
 ## <a id="AzureSQL"></a>Azure SQL Database と仮想マシン上の SQL Server
 Azure SQL は Microsoft SQL Server 上に構築されており、高可用性、パフォーマンス、拡張性の高いサービスを提供できます。 オンプレミスで実行されている専用のデータベースでの SQL Azure の使用は、多くのメリットがあります。 SQL Azure があれば、データベースのインストール、設定、メンテナンス、管理は必要なく、必要なのはコンテンツとデータベースの構造のみになります。 通常、データベースについて懸案されるフォールト トレランスや冗長性といった機能は、すべて組み込み済みです。
 
-現在、Azure には、SQL Server ワークロードをホストするためのオプションが 2 つあります。サービスとしてのデータベースである Azure SQL Database と仮想マシン (VM) 上の SQL Server です。 これら 2 つの違いについて細かくは見ていきませんが、クラウド サービスで提供するコスト削減とパフォーマンスの最適化を利用できる、新しいクラウド ベースのアプリケーションには Azure SQL Database が最適です。 オンプレミス アプリケーションのクラウドへの移行または拡張を検討している場合は、Azure 仮想マシン上の SQL サーバーがお勧めです。 記事の内容をわかりやすくするために、Azure SQL Database を作成しましょう。
+現在、Azure には、SQL Server ワークロードをホストするためのオプションが 2 つあります。サービスとしてのデータベースである Azure SQL データベースと仮想マシン (VM) 上の SQL Server です。 これら 2 つの違いについて細かくは見ていきませんが、クラウド サービスで提供するコスト削減とパフォーマンスの最適化を利用できる、新しいクラウド ベースのアプリケーションには Azure SQL データベースが最適です。 オンプレミス アプリケーションのクラウドへの移行または拡張を検討している場合は、Azure 仮想マシン上の SQL サーバーがお勧めです。 記事の内容をわかりやすくするために、Azure SQL データベースを作成しましょう。
 
 ## <a id="ODBC"></a>データ アクセス テクノロジ:ODBC および OLE DB
 Azure SQL DB への接続も変わりはなく、現在、データベースに接続するには次の 2 つの方法があります。ODBC (Open Database Connectivity) と OLE DB (Object Linking and Embedding Database)。 近年、Microsoft は、[ネイティブのリレーショナル データベースにおいて ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)と連携してきました。 ODBC は比較的シンプルであり、OLE DB よりも動作が速くなります。 ただし、ODBC は以前の C スタイルの API を使用しているという点で注意が必要です。
 
 ## <a id="Create"></a>手順 1:Azure SQL Database を作成する
-「 [作業の開始](sql-database-single-database-get-started.md) 」ページで、サンプル データベースを作成する方法についてご確認ください。  または、こちらの[ 2 分ほどの短い動画](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)に従えば、Azure Portal を使用して Azure SQL Database を作成できます。
+「 [作業の開始](sql-database-single-database-get-started.md) 」ページで、サンプル データベースを作成する方法についてご確認ください。  または、こちらの[ 2 分ほどの短い動画](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/)に従えば、Azure Portal を使用して Azure SQL データベースを作成できます。
 
 ## <a id="ConnectionString"></a>手順 2:接続文字列を取得する
-Azure SQL Database がプロビジョニングされたら、次の手順に従って接続情報を指定し、ファイアウォール アクセスのクライアント IP アドレスを追加する必要があります。
+Azure SQL データベースがプロビジョニングされたら、次の手順に従って接続情報を指定し、ファイアウォール アクセスのクライアント IP アドレスを追加する必要があります。
 
 [Azure Portal](https://portal.azure.com/)で、**[データベース接続文字列の表示]** を使用し、データベースの概要セクションの一部として表示されている Azure SQL Database ODBC 接続文字列を取得します。
 

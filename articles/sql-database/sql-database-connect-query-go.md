@@ -19,15 +19,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58447867"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL データベースに照会する
 
-このクイック スタートでは、[Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) プログラミング言語を使用して、Azure SQL Database に接続します。 その後、Transact-SQL ステートメントを実行して、データの照会と変更を行います。 [Golang](https://golang.org/) は、シンプルで信頼性と効率性の高いソフトウェアを簡単に構築できるオープン ソース プログラミング言語です。  
+このクイック スタートでは、[Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) プログラミング言語を使用して、Azure SQL データベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会と変更を行います。 [Golang](https://golang.org/) は、シンプルで信頼性と効率性の高いソフトウェアを簡単に構築できるオープン ソース プログラミング言語です。  
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次のものが必要です。
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|

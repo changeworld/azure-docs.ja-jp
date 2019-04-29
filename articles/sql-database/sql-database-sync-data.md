@@ -24,7 +24,7 @@ ms.locfileid: "58483559"
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
 
 > [!IMPORTANT]
-> Azure SQL データ同期では現時点で Azure SQL Database Managed Instance はサポート**されていません**。
+> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="when-to-use-data-sync"></a>データ同期を使用する場合
 
@@ -197,7 +197,7 @@ SQL データ同期はすべてのリージョンでご利用いただけます�
 
 SQL データ同期を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期では、ストアド プロシージャなどの他の SQL オブジェクトはバックアップされず、復元操作に相当する処理は迅速に行われません。
 
-お勧めするバックアップ方法の 1 つについては、「[Azure SQL Database のコピー](sql-database-copy.md)」をご覧ください。
+お勧めするバックアップ方法の 1 つについては、「[Azure SQL データベースのコピー](sql-database-copy.md)」をご覧ください。
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>データ同期では、暗号化されたテーブルと列を同期できますか?
 

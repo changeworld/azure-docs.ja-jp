@@ -38,7 +38,7 @@ Azure SQL では、次のマルチモデル機能が提供されています。
 - [グラフ機能](#graph-features)では、データをノードとエッジのセットとして表現し、グラフ `MATCH` 演算子で強化された標準の Transact-SQL クエリを使用して、グラフ データをクエリすることができます。
 - [JSON 機能](#json-features)では、テーブルに JSON ドキュメントを配置し、リレーショナル データから JSON ドキュメントへ、またはその逆方向の変換を行うことができます。 ドキュメントを解析するために JSON 関数で強化された標準の Transact-SQL 言語を使用し、非クラスター化インデックス、列ストア インデックス、または、メモリ最適化テーブルを使用して、クエリを最適化できます。
 - [空間機能](#spatial-features)では、地理的および幾何学的データを格納し、空間インデックスを使用してインデックスを作成し、空間クエリを使用してデータを取得することができます。
-- [XML 機能](#xml-features)では、データベースに XML データを格納してインデックスを作成し、ネイティブの XQuery/XPath 演算を使用して XML データを処理することができます。 Azure SQL Database には、XML データを処理する特殊な XML クエリ エンジンが組み込まれています。
+- [XML 機能](#xml-features)では、データベースに XML データを格納してインデックスを作成し、ネイティブの XQuery/XPath 演算を使用して XML データを処理することができます。 Azure SQL データベースには、XML データを処理する特殊な XML クエリ エンジンが組み込まれています。
 - [キー/値ペア](#key-value-pairs)は、特殊な機能として明示的にはサポートされていません。これは、キー/値ペアを 2 列のテーブルとしてネイティブにモデル化できるためです。
 
   > [!Note]
@@ -96,7 +96,7 @@ Azure SQL Database では、geometry データ型と geography データ型の 2
 - geometry 型では、ユークリッド (平面) 座標系でデータを表します。
 - geography 型では、球状の地球座標系でデータを表します。
 
-などの Azure SQL Database で使用できる空間オブジェクトには、[Point](https://docs.microsoft.com/sql/relational-databases/spatial/point)、[LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring)、[Polygon](https://docs.microsoft.com/sql/relational-databases/spatial/polygon) などさまざまなものがあります。
+Azure SQL データベースで使用できる空間オブジェクトには、[Point](https://docs.microsoft.com/sql/relational-databases/spatial/point)、[LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring)、[Polygon](https://docs.microsoft.com/sql/relational-databases/spatial/polygon) などさまざまなものがあります。
 
 Azure SQL Database では、空間クエリのパフォーマンスを向上させるために使用できる特殊な[空間インデックス](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-indexes-overview)も提供されています。
 

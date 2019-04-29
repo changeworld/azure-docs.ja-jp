@@ -1,5 +1,5 @@
 ---
-title: シャード化された Azure SQL Database をクエリする | Microsoft Docs
+title: シャード化された Azure SQL データベースをクエリする | Microsoft Docs
 description: エラスティック データベース クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。
 services: sql-database
 ms.service: sql-database

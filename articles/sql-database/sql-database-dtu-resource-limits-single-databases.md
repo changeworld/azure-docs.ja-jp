@@ -1,6 +1,6 @@
 ---
 title: 'Azure SQL Database の DTU ベースのリソース制限: 単一データベース | Microsoft Docs'
-description: このページでは、Azure SQL Database の単一データベースに対するいくつかの一般的な DTU ベースのリソース制限について説明します。
+description: このページでは、Azure SQL Database のシングルトンに対するいくつかの一般的な DTU ベースのリソース制限について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database

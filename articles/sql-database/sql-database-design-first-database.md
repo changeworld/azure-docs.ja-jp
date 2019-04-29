@@ -32,7 +32,7 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 *Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 > [!NOTE]
-> このチュートリアルでは、単一データベースを使用しています。 エラスティック プールでプールされたデータベース、またはマネージド インスタンスのインスタンス データベースを使用することもできます。 マネージド インスタンスへの接続については、以下のマネージド インスタンスのクイック スタートを参照してください。[クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)」および「[クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)」を参照してください。
+> このチュートリアルでは、単一データベースを使用しています。 エラスティック プールでプールされたデータベース、またはマネージド インスタンスのインスタンス データベースを使用することもできます。 マネージド インスタンスへの接続については、以下のマネージド インスタンスのクイック スタートを参照してください。[クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)」および「[クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
 
 ## <a name="prerequisites"></a>前提条件
 

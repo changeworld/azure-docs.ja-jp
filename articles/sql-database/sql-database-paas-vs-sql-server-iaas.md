@@ -56,7 +56,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 - Azure 仮想マシン内の SQL Server (Microsoft パブリック クラウド)
 - Azure SQL Database (Microsoft パブリック クラウド)
 
-次のセクションでは、Microsoft パブリック クラウドの SQL Server (Azure SQL Database と Azure VM 上の SQL Server) について説明します。 さらに、アプリケーションにとって最適なオプションを決定する一般的なビジネスの要因について確認します。
+次のセクションでは、Microsoft パブリック クラウドの SQL Server Azure SQL Database と Azure VM の SQL Server さらに、アプリケーションにとって最適なオプションを決定する一般的なビジネスの要因について確認します。
 
 ## <a name="a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms"></a>Azure SQL Database と Azure VM 上の SQL Server の詳細
 

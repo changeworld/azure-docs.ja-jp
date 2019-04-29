@@ -26,7 +26,7 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 クエリ ストアは、2015 年 11 月以降、Azure SQL Database で [グローバルに使用できる](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) ようになっています。 クエリ ストアは、 [SQL Database Advisor やパフォーマンス ダッシュボード](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)などのパフォーマンス分析とチューニング機能の基盤です。 この記事の発行時点で、クエリ ストアは、Azure の 200,000 台を超えるユーザー データベースで実行され、クエリに関連する情報を、数か月にわたって中断することなく収集し続けています。
 
 > [!IMPORTANT]
-> Microsoft では、すべての Azure SQL Database (既存と新規) でクエリ ストアをアクティブ化するプロセスを続けています。 
+> Microsoft では、すべての Azure SQL データベース (既存と新規) でクエリ ストアをアクティブ化するプロセスを続けています。 
 
 ## <a name="optimal-query-store-configuration"></a>クエリ ストアの最適構成
 
@@ -43,7 +43,7 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 |  | | | |
 
 > [!IMPORTANT]
-> 上記の既定値は、すべての Azure SQL Database でのクエリ ストアのアクティブ化の最終段階で自動的に適用されます (上記の重要な注意事項を参照してください)。 アクティブ化された後、ユーザーによって設定された構成値は、主要なワークロードまたはクエリ ストアの信頼できる動作に悪影響を与えない限り、Azure SQL Database によって変更されることはありません。
+> 上記の既定値は、すべての Azure SQL データベースでのクエリ ストアのアクティブ化の最終段階で自動的に適用されます (上記の重要な注意事項を参照してください)。 アクティブ化された後、ユーザーによって設定された構成値は、主要なワークロードまたはクエリ ストアの信頼できる動作に悪影響を与えない限り、Azure SQL Database によって変更されることはありません。
 
 カスタム設定を維持する場合は、 [ALTER DATABASE とクエリ ストア オプション](https://msdn.microsoft.com/library/bb522682.aspx) を使用して、構成を前の状態に戻します。 「 [クエリ ストアを使用する際の推奨事項](https://msdn.microsoft.com/library/mt604821.aspx) 」で、よく選ばれている最適構成のパラメーターを確認してください。
 

@@ -26,7 +26,7 @@ ms.locfileid: "59799101"
 > [!IMPORTANT]
 > 単一データベースは、Azure SQL Database の 3 つのデプロイ オプションの 1 つです。 他の 2 つは、[エラスティック プール](sql-database-elastic-pool.md)と[マネージド インスタンス](sql-database-managed-instance.md)です。
 > [!NOTE]
-> Azure SQL Database の用語集については、[SQL Database 用語集](sql-database-glossary-terms.md)を参照してください
+> Azure SQL Database の用語集については、「[SQL Database 用語集](sql-database-glossary-terms.md)」をご覧ください
 
 ## <a name="dynamic-scalability"></a>動的スケーラビリティ
 

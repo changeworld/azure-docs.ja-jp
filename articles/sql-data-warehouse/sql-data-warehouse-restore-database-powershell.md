@@ -159,7 +159,7 @@ $GeoRestoredDatabase.status
 ソース データベースの TDE が有効な場合、復旧したデータベースも TDE が有効になります。
 
 ## <a name="next-steps"></a>次の手順
-Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][Azure SQL Database business continuity overview]に関する記事をご覧ください。
+Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][Azure SQL Database business continuity overview]に関するページをご覧ください。
 
 <!--Image references-->
 

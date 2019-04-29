@@ -1,5 +1,5 @@
 ---
-title: マルチテナント SaaS アプリで Azure SQL Database を復元する | Microsoft Docs
+title: マルチテナント SaaS アプリで Azure SQL データベースを復元する | Microsoft Docs
 description: データを誤って削除した場合にシングル テナントの SQL データベースを復元する方法について説明します
 services: sql-database
 ms.service: sql-database

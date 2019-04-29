@@ -40,7 +40,7 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 
 | コマンドレット | 説明 |
 | --- | --- |
-|[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Azure SQL Database Managed Instance を作成します |
+|[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Azure SQL Database マネージド インスタンスを作成します |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Azure SQL Managed Instance に関する情報を返します|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Azure SQL Database Managed Instance のプロパティを設定します|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Azure SQL Database Managed Instance を削除します|
@@ -73,7 +73,7 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 マネージド インスタンスの作成後、インスタンス データベースを作成し、管理するには、次の T-SQL コマンドを使用します。 これらのコマンドを発行するには、Azure portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)、 [Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続し、Transact-SQL コマンドを渡すことができるその他の任意のプログラムを使用します。
 
 > [!TIP]
-> Microsoft Windows で SQL Server Management Studio を使用して、マネージド インスタンスを構成して接続する必要があることを示すクイック スタートについては、「[クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)」および「[クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)」を参照してください。
+> Microsoft Windows で SQL Server Management Studio を使用して、マネージド インスタンスを構成して接続する必要があることを示すクイック スタートについては、「[クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)」および「[クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
 > [!IMPORTANT]
 > Transact-SQL を使用して、マネージド インスタンスを作成または削除することはできません。
 
