@@ -4,7 +4,7 @@ description: Azure の OpenShift の概要について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/01/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 53bed2131e81ee5ed0f46bde389262ee8349339a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002517"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006966"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -32,15 +32,7 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 - 容易なデプロイとスケール変更。
 - チームおよびアプリケーション向けの長期的なライフサイクル メンテナンス。
 
-以下の複数のバージョンの OpenShift を使用できます。
-
-- OpenShift Container Platform
-- OpenShift On Azure (2019 年第 1 四半期末頃に公開予定のフル マネージド OpenShift)
-- OKD (旧称 OpenShift Origin)
-- OpenShift Dedicated
-- OpenShift Online
-
-この記事で扱う 5 つのバージョンのうち、現時点でお客様が Azure にデプロイできるのは次の 2 つのみです: OpenShift Container Platform、OKD。
+複数のバージョンの OpenShift を使用できます。  これらのバージョンのうち、現時点でお客様が Azure にデプロイできるのは OpenShift Container Platform と OKD (旧 OpenShift Origin) の 2 つのみです。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
@@ -48,29 +40,19 @@ Container Platform は Red Hat 製のエンタープライズ対応[市販バー
 
 プラットフォーム全体を顧客が "所有" しているため、プラットフォームを自社のオンプレミスのデータセンターや、パブリック クラウド (Azure など) にインストールすることができます。
 
-## <a name="openshift-on-azure"></a>OpenShift On Azure
+## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-OpenShift On Azure は Azure で実行される フル マネージド OpenShift です。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 クラスターは、お客様の Azure サブスクリプションにデプロイされます。 サービスは、現在プライベート プレビュー段階であり、2019 年第 1 四半期末頃に一般提供される予定です。 プライベート プレビューへの参加に関心をお持ちのお客様は、[申請フォーム](https://aka.ms/openshiftazureinterest)にご記入ください。  一般公開が近づくにつれて、サービスの詳細がさらに提供されます。
+Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 クラスターは、お客様の Azure サブスクリプションにデプロイされます。 サービスは、2019 年 5 月に一般提供される予定です。 サービスが一般提供された後、マネージド サービス用の別のドキュメントが提供される予定です。
 
-## <a name="okd-formerly-openshift-origin"></a>OKD (旧称 OpenShift Origin)
+## <a name="okd"></a>OKD
 
 OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロジェクトであり、コミュニティによりサポートされています。 OKD は CentOS または Red Hat Enterprise Linux (RHEL) にインストールできます。
-
-## <a name="openshift-dedicated"></a>OpenShift Dedicated
-
-Dedicated は、Red Hat によって管理される*シングルテナント*の OpenShift であり、OpenShift Container Platform を使用します。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 クラスターはお客様専用であり、パブリック クラウド (Azure など) で実行されます。 開始クラスターには 4 つのアプリケーション ノードが含まれ、すべてのコストは年単位で前払いされます。
-
-## <a name="openshift-online"></a>OpenShift Online
-
-Online は、Red Hat によって管理されている、Container Platform を使用する*マルチテナント* OpenShift です。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 
-
-このバージョンで、顧客はコンテナーをデプロイしますが、コンテナーを実行するホストは制御できません。 Online はマルチテナントなので、他の顧客のコンテナーと同じ VM ホストにコンテナーが配置される場合があります。 コストは、コンテナーごとに課金されます。
 
 ## <a name="next-steps"></a>次の手順
 
 - [Azure で OpenShift の共通の前提条件を構成する](./openshift-prerequisites.md)
 - [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform.md)
-- [OKD を Azure にデプロイする](./openshift-okd.md)
+- [OpenShift Container Platform 自己管理型マーケットプレース プランをデプロイする](./openshift-marketplace-self-managed.md)
 - [OpenShift を Azure Stack にデプロイする](./openshift-azure-stack.md)
 - [デプロイ後タスク](./openshift-post-deployment.md)
 - [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)

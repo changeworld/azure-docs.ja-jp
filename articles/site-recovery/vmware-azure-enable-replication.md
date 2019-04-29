@@ -1,17 +1,17 @@
 ---
 title: Azure Site Recovery による Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、ディザスター リカバリーのための Azure へのレプリケーションに対して VMware VM を有効にする方法について説明します。
-author: mayurigupta13
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 3/6/2019
+ms.date: 4/18/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 472ff7810852bd03ef322cd5eb647c3d61f09b01
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: ramamill
+ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418111"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004739"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -89,7 +89,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
     ![[コンピューティングとネットワークのプロパティ] ウィンドウ](./media/vmware-azure-enable-replication/vmproperties.png)
 
     * Azure VM 名:必要に応じて、Azure の要件を満たすように名前を変更します。
-    * ターゲット VM のサイズまたは VM の種類:既定の VM サイズは、ソース VM のサイズに基づいて選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいていて、フェールオーバー後にしか変更できないことに注意してください。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。
+    * ターゲット VM のサイズまたは VM の種類:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むいくつかのパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいていて、フェールオーバー後にしか変更できないことに注意してください。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。
 
     *  リソース グループ: フェールオーバー後に仮想マシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
     * 可用性セット:仮想マシンがフェールオーバー後に[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。

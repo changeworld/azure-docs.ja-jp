@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory のログを Azure Monitor ログ (プレビュー) にストリーミングする | Microsoft Docs
-description: Azure Active Directory のログを Azure Monitor ログ (プレビュー) と統合する方法について説明します
+title: Azure Active Directory のログを Azure Monitor ログにストリーミングする | Microsoft Docs
+description: Azure Active Directory のログを Azure Monitor ログと統合する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 056a529101ffc39170ea057832bcd50b283505be
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436271"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010937"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Azure AD ログを Azure Monitor ログ (プレビュー) と統合する
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Azure Monitor ログを使用すると、データのクエリを行って、特定のイベントを検索し、傾向を分析して、さまざまなデータ ソース間の相関を実行できます。 Azure Monitor ログに Azure AD アクティビティ ログを統合すると、次のようなタスクを実行できます。
 
@@ -37,8 +39,6 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
 この記事では、Azure Active Directory (Azure AD) のログを Azure Monitor と統合する方法について説明します。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>サポートされるレポート
 
@@ -60,7 +60,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 * Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
 * Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)を確認してください。
 
-## <a name="send-logs-to-azure-monitor-logs"></a>Azure Monitor ログへのログの送信
+## <a name="send-logs-to-azure-monitor"></a>ログを Azure Monitor に送信する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
@@ -83,4 +83,4 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](howto-analyze-activity-logs-log-analytics.md)
-* [Azure Active Directory 用の Log Analytics ビューのインストールと使用](howto-install-use-log-analytics-views.md)
+* [Azure Active Directory ログ分析用のビューのインストールと使用](howto-install-use-log-analytics-views.md)

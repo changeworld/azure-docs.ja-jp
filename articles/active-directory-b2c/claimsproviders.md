@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2d862d07a65c3fb28b49a82692ea575f787b9750
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508812"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008751"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -55,7 +55,7 @@ ms.locfileid: "55508812"
 | DisplayName | 0:1 | ユーザーに表示できるクレーム プロバイダーの名前を含む文字列。 |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | クレーム プロバイダーによってサポートされている技術プロファイルのセット |
 
-**ClaimsProvider** は、そのクレーム プロバイダーに関係がある技術プロファイルをまとめています。 次の例は、Azure Active Directory の技術プロファイルがある Azure Active Directory のクレーム プロバイダーを示しています。
+**ClaimsProvider** は、技術プロファイルがクレーム プロバイダーにどのように関係するかをまとめています。 次の例は、Azure Active Directory の技術プロファイルがある Azure Active Directory のクレーム プロバイダーを示しています。
 
 ```XML
 <ClaimsProvider>

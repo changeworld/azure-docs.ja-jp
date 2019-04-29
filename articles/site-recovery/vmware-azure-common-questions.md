@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/08/2019
+ms.date: 04/18/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360550"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004773"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -111,7 +111,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>マシンに保護を適用した後で、マネージド ディスクの種類を変更できますか?
 
-はい。[マネージド ディスクの種類は簡単に変更](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)できます。 ただし、マネージド ディスクの種類を変更した場合に、変更後にテスト フェールオーバーまたはフェールオーバーを実行する必要があるときは、新しい復旧ポイントが生成されるのを待つ必要があります。
+はい。[マネージド ディスクの種類は簡単に変更](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)できます。 種類を変更する前に、Azure portal で [マネージド ディスク リソース] に移動して、ディスクの SAS URL を確実に取り消します。 [概要] ブレードで、進行中の任意のエクスポートをキャンセルします。 SAS URL が取り消されたら、数分以内にディスクの種類を変更します。 ただし、種類がマネージド ディスクであるディスクを変更する場合は、Azure Site Recovery によって新しい復旧ポイントが生成されるまで待機します。 すべてのテスト フェールオーバーまたは今後のフェールオーバーで、新しい復旧ポイントを使用します。
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>マネージド ディスクからアンマネージド ディスクにレプリケーションを切り替えることはできますか?
 

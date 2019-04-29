@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 93be58ac231ff2b88c6618c549c9d1975977b91f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/16/2019
+ms.openlocfilehash: 886f06e8640891ac09d1e4624335a7bfebcd3def
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360097"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009380"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database でマネージド インスタンスを作成する方法
 
@@ -36,7 +36,7 @@ ms.locfileid: "59360097"
 - [マネージド インスタンス用の既存の VNet とサブネットの構成](sql-database-managed-instance-configure-vnet-subnet.md) – お客様の既存の VNet とサブネットを構成して内部にマネージド インスタンスをデプロイする場合は、[ネットワーク要件](sql-database-managed-instance-connectivity-architecture.md#network-requirements)をチェックし、その要件に従ってお客様のサブネットを構成するためのスクリプトをこちらで確認できます。
 - [カスタム DNS の構成](sql-database-managed-instance-custom-dns.md) – お客様のマネージド インスタンスからデータベース メール プロファイルのリンク サーバー経由でカスタム ドメイン上の外部リソースにアクセスする場合は、カスタム DNS を構成する必要があります。
 - [ネットワーク構成の同期](sql-database-managed-instance-sync-network-configuration.md) - 場合によっては、[自分のアプリを Azure Virtual Network と統合した](../app-service/web-sites-integrate-with-vnet.md)にもかかわらず、マネージド インスタンスへの接続を確立できないことがあります。 その場合の対処の 1 つとして、使用するサービス プラン用にネットワーク構成を更新するという対処方法があります。
-- [管理エンドポイント IP アドレスの検索](sql-database-managed-instance-find-management-endpoint-ip-address.md) – マネージド インスタンスでは、管理目的にのみパブリック エンドポイントが使用されます。 こちらで説明されているスクリプトを使用して、管理エンドポイントの IP アドレスを特定することができます。
+- [管理エンドポイント IP アドレスの検索](sql-database-managed-instance-find-management-endpoint-ip-address.md) – マネージド インスタンスでは、管理目的でパブリック エンドポイントが使用されます。 こちらで説明されているスクリプトを使用して、管理エンドポイントの IP アドレスを特定することができます。
 - [組み込みのファイアウォール保護の確認](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – マネージド インスタンスは、必要なポートに対してのみトラフィックを許可する組み込みのファイアウォールによって保護されます。 このガイドで説明されているスクリプトを使用して、組み込みのファイアウォール規則をチェックして確認できます。
 - [アプリケーションの接続](sql-database-managed-instance-connect-app.md) – マネージド インスタンスは、プライベート IP アドレスを備えた独自のプライベート Azure VNet に配置されます。 アプリケーションをお客様のマネージド インスタンスに接続するさまざまなパターンについて説明します。
 

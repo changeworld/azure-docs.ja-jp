@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 57630d1fa95c2133e592f691add8c515ca718afb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833433"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999469"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure からオンプレミスへのフェールバックのトラブルシューティング
 
@@ -56,7 +56,7 @@ ms.locfileid: "52833433"
 
 この問題を解決するには:
 
-フェールオーバーした VM を再保護するには、Azure VM が動作している必要があります。これは、モビリティ サービスがオンプレミスの構成サーバーに登録され、プロセス サーバーと通信することでレプリケートを開始できるようにするためです。 マシンが不適切なネットワーク上にある場合、または実行されていない場合 (停止状態またはシャットダウン)、構成サーバーは VM のモビリティ サービスに到達できず、再保護を開始することができません。
+フェールオーバーした VM を再保護するには、Azure VM が動作している必要があります。これは、モビリティ サービスがオンプレミスの構成サーバーに登録され、プロセス サーバーと通信することでレプリケートを開始できるようにするためです。 マシンが不適切なネットワーク上にある場合や、実行されていない (応答しないまたはシャットダウンされている) 場合、構成サーバーは VM 上の Mobility Service に到達できず、再保護を開始することができません。
 
 * VM を再起動して、オンプレミスで通信を開始できるようにします。
 * Azure 仮想マシンを起動した後に、再保護ジョブを再起動します。

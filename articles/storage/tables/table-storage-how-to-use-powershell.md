@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b1cae7dc553ce324349e66f1bcb8a281d7c7c7e0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273126"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995608"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -101,7 +101,7 @@ New-AzStorageTable –Name $tableName –Context $ctx
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>ストレージ アカウントのテーブルの一覧を取得する
 
-[Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable) を使用して、ストレージ アカウントのテーブルの一覧を取得します。
+[Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable) を使用して、ストレージ アカウントのテーブルの一覧を取得します。
 
 ```powershell
 Get-AzStorageTable –Context $ctx | select Name
@@ -109,7 +109,7 @@ Get-AzStorageTable –Context $ctx | select Name
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>特定のテーブルへの参照を取得する
 
-テーブルに対して操作を実行するには、その特定のテーブルに対する参照が必要になります。 [Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable) を使用して、参照を取得します。
+テーブルに対して操作を実行するには、その特定のテーブルに対する参照が必要になります。 [Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable) を使用して、参照を取得します。
 
 ```powershell
 $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx

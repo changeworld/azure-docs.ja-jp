@@ -1,7 +1,6 @@
 ---
 title: Azure リソースの予約を表示する | Microsoft Docs
 description: Azure portal で Azure の予約を表示する方法について説明します。
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,31 +10,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650225"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995525"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
 
 Azure に対する予約を表示する方法は、ご利用のサブスクリプションの種類とアクセス許可に応じて 2 つあります。
 
-## <a name="view-reservations-as-owner-or-reader"></a>所有者または閲覧者として予約を表示する
+## <a name="view-purchased-reservations"></a>購入した予約を表示する
 
-既定では、予約を購入すると、お客様とアカウント管理者は予約を表示できます。 お客様とアカウント管理者は、予約の所有者ロールを自動的に取得します。 その他のユーザーが予約を表示できるようにするには、予約でそのユーザーを**所有者**または**閲覧者**として追加する必要があります。 詳細については、「[予約を管理できるユーザーを追加または変更する](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。
- 
+既定では、予約を購入すると、お客様とアカウント管理者は予約を表示できます。 お客様とアカウント管理者は、予約注文および予約に対する所有者ロールを自動的に取得します。 その他のユーザーが予約を表示できるようにするには、予約注文または予約に対してそのユーザーを**所有者**または**閲覧者**として追加する必要があります。
+
+詳細については、「[予約を管理できるユーザーを追加または変更する](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。
+
 所有者または閲覧者として予約を表示するには
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[予約]** で検索します。
-
-    ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-reservation-search.png)
-
-1. ご自分が所有者または閲覧者ロールになっている予約の一覧を確認します。
+2. **[予約]** で検索します。
+    ![Azure portal の検索を表示しているスクリーンショット](./media/billing-view-reservation/portal-reservation-search.png)  
+3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。  
+    ![予約の一覧を表示した例](./media/billing-view-reservation/view-reservations.png)
+4. 1 つの予約を選択して、過去 5 日間の使用率の傾向を確認します。  
+    ![予約の使用率の傾向を表示した例](./media/billing-view-reservation/reservation-utilization.png)
+5. Reserved Instance 使用量 API と [Microsoft Azure Consumption Insights Power BI コンテンツ パック](/power-bi/service-connect-to-azure-consumption-insights)を使用して、[予約の使用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)を取得することもできます。
 
 予約の範囲を変更する必要がある場合は、予約を分割するか、予約を管理できるユーザーを変更します。[Azure の予約の管理](billing-manage-reserved-vm-instance.md)に関するページを参照してください。
 
@@ -84,4 +87,4 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

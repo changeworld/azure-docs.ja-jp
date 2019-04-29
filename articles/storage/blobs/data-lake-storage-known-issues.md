@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194710"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006864"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "57194710"
 
 Data Lake Storage Gen2 アカウントで利用できる SDK はありません。
 
-## <a name="blob-storage-apis"></a>BLOB Storage API
+## <a name="blob-storage-apis"></a>BLOB ストレージ API
 
 Blob Storage API は、Data Lake Storage Gen2 アカウントではまだ使用できません。
 
@@ -47,13 +47,13 @@ BLOB Storage API と Azure Data Lake Gen2 API 間の相互運用性がまだ不�
 
 Blob Storage API と Azure Data Lake Gen2 API 間には相互運用性がありません。
 
-BLOB API を使用するツール、アプリケーション、サービス、またはスクリプトがあり、それらを使用して、アカウントにアップロードするすべてのコンテンツを処理する場合、BLOB API が Azure Data Lake Gen2 API と相互運用可能になるまで、BLOB ストレージ アカウントで階層型名前空間は有効にしないでください。 階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやファイルシステムのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
+BLOB API を使用するツール、アプリケーション、サービス、またはスクリプトがあり、それらを使用して、アカウントにアップロードするすべてのコンテンツを処理する場合、BLOB API が Azure Data Lake Gen2 API と相互運用可能になるまで、BLOB ストレージ アカウントで階層型名前空間は有効にしないでください。 階層型名前空間なしでストレージ アカウントを使用すると、ディレクトリやファイル システムのアクセス制御リストなど、Data Lake Storage Gen2 固有の機能にアクセスできなくなります。
 
 ## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 
 Azure Storage Explorer を使用して Data Lake Storage Gen2 アカウントを表示または管理するには、[無料ダウンロード](https://azure.microsoft.com/features/storage-explorer/)として入手可能なバージョン `1.6.0` 以上のツールが必要です。
 
-Azure Portal に埋め込まれている Storage Explorer のバージョンでは、階層型名前空間機能が有効な Data Lake Storage Gen2 アカウントの表示や管理を現在サポートしていません。
+Azure portal に埋め込まれている Storage Explorer のバージョンでは、階層型名前空間機能が有効な Data Lake Storage Gen2 アカウントの表示や管理を現在サポートしていません。
 
 ## <a name="blob-viewing-tool"></a>BLOB 表示ツール
 

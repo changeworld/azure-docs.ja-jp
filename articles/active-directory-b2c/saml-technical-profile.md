@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b0d1722df2bfe5116de2676dfc930d6050731bbd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154373"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005028"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
@@ -81,21 +81,6 @@ SAML 応答のアサーションを暗号化する場合:
   </KeyInfo>
 </KeyDescriptor>
 ```
-
-## <a name="identity-provider-initiated-flow"></a>ID プロバイダー開始フロー
-
-IDP によって開始されたシングル サインオン セッションで (要請されていない要求) で、要請されていない SAML 応答がサービス プロバイダー (この場合は Azure AD B2C の技術プロファイル) に送信されます。 このフローでは、ユーザーは Web アプリケーションを最初に使用せず ID プロバイダーに送られます。 要求が送信されると、認証ページが ID プロバイダーによってユーザーに提供されます。 ユーザーがサインインを完了すると、アサーションを含む SAML 応答のある Azure AD B2C に要求がリダイレクトされます。 Azure AD B2C はアサーションを読み取って新しい SAML トークンを発行し、証明書利用者アプリケーションにユーザーをリダイレクトします。 リダイレクトは **AssertionConsumerService**要素の **Location** プロパティによって実行されます。
-
-
-![開始された SAML IDP](media/saml-technical-profile/technical-profile-idp-saml-idp-initiated.png) 
-
-ID プロバイダー開始フローを作成する際には、次のポリシーの要件を考慮してください。
-
-- 最初のオーケストレーション手順は、SAML の技術プロファイルを指す 1 つの要求交換とする必要があります。
-- 技術プロファイルでは、**IdpInitiatedProfileEnabled** というメタデータ項目を `true` に設定する必要があります。
-- 証明書利用者ポリシーは、SAML 証明書利用者とする必要があります。
-- 証明書利用者ポリシーでは、**IdpInitiatedProfileEnabled** というメタデータ項目を `true` に設定する必要があります。
-- 要請されていない応答は `/your-tenant/your-policy/samlp/sso/assertionconsumer` エンドポイントに送信される必要があります。 応答に含まれているすべてのリレー状態は、証明書利用者に転送されます。 値 **your-tenant** をテナント名に置き換えます。 **your-policy**を証明書利用者のポリシー名に置き換えます。
     
 ## <a name="protocol"></a>Protocol
 
@@ -111,7 +96,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
  
 次の例は、Facebook ID プロバイダーにより返される要求を示しています。
 
-- **SocialIdpUserId** 要求は、**assertionSubjectName** 要求にマップされます。
+- **issuerUserId** 要求は、**assertionSubjectName** 要求にマップされます。
 - **givenName** 要求にマップされている **first_name** 要求。
 - **surname** 要求にマップされている **last_name** 要求。
 - どの名前にもマップされていない **displayName** 要求。
@@ -124,7 +109,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
  
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="assertionSubjectName" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="assertionSubjectName" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -134,12 +119,12 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
-| WantsSignedRequests | いいえ  | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** が `false` に設定されているか指定されていない場合、Azure AD B2C は、要求に署名しません。 |
+| WantsSignedRequests | いいえ  | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** 値が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** 値が `false` に設定されている、または指定がない場合、Azure AD B2C では要求の署名は行われません。 |
 | XmlSignatureAlgorithm | いいえ  | SAML 要求に署名するために Azure AD B2C が使用するメソッド。 このメタデータは、SAML 要求の **SigAlg** パラメーター (クエリ文字列または post パラメーター) の値を制御します。 可能な値: `Sha256`、`Sha384`、`Sha512`、または`Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 | 
 | WantsSignedAssertions | いいえ  | 技術プロファイルで、着信アサーションすべてに署名が必要かどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるすべてのアサーション セクション `saml:Assertion` に署名する必要があります。 値が `false` に設定されている場合、ID プロバイダーは、アサーションを署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 このメタデータは、メタデータ フラグ **WantsAssertionsSigned** も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 アサーションの検証を無効にした場合、応答の署名の検証も無効にできます (詳細については、**ResponsesSigned** を参照)。 |
 | ResponsesSigned | いいえ  | 指定できる値: `true` または `false`。 既定値は `true` です。 値が `false` に設定されている場合、ID プロバイダーは、SAML 応答を署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信される SAML 応答が署名され、必ず検証されます。 SAML 応答の検証を無効にした場合、アサーション署名の検証も無効にできます (詳細については、**WantsSignedAssertions** を参照)。 |
@@ -155,7 +140,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute |必須 | 説明 |
+| 属性 |必須 | 説明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |はい | SAML メッセージを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、要求に署名し、ID プロバイダーに送信します。 |
 | SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |

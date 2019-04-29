@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.date: 04/13/2019
+ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671860"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118688"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances による仮想マシンの前払い
 
@@ -35,6 +35,12 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 - Azure Advisor によって、個々のサブスクリプションに対して購入のレコメンデーションが提供されます。  
 - API を使用して、共有スコープと単一サブスクリプション スコープの両方に対する購入のレコメンデーションを取得できます。 詳細については、「[Reserved instance purchase recommendation APIs for enterprise customers](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)」 (エンタープライズ顧客向けの予約インスタンスの購入に関するレコメンデーション API) を参照してください。
 - EA の顧客の場合、共有スコープと単一サブスクリプション スコープにおける購入のレコメンデーションは、[Azure Consumption Insights の Power BI コンテンツ パック](/power-bi/service-connect-to-azure-consumption-insights)で利用できます。
+
+### <a name="classic-vms-and-cloud-services"></a>クラシック VM とクラウド サービス
+
+インスタンス サイズの柔軟性が有効になっていると、予約仮想マシンインスタンスは、クラシック VM とクラウド サービスの両方に自動的に適用されます。 クラシック VM またはクラウド サービスに対して特別な SKU はありません。 同じ VM SKU が適用されます。
+
+たとえば、クラシック VM またはクラウド サービスを Azure Resource Manager ベースの VM に変換することがあります。 この例では、予約割引が一致する VM に自動的に適用されます。 既存の予約インスタンスを "*交換する*" 必要はありません。自動的に適用されます。
 
 ### <a name="analyze-your-usage-information"></a>利用状況の情報を分析する
 購入する必要がある予約の決定に役立てるために、利用状況の情報を分析する必要があります。
@@ -66,22 +72,16 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 
     | フィールド      | 説明|
     |------------|--------------|
-    |名前        |この予約の名前。|
+    |Name        |この予約の名前。|
     |サブスクリプション|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
     |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
     |リージョン    |予約の対象となる Azure リージョン。|    
     |VM サイズ     |VM インスタンスのサイズ|
     |最適化の対象     |VM インスタンス サイズの柔軟性によって、予約割引が、同じ [VM サイズ グループ](https://aka.ms/RIVMGroups)内の他の VM に適用されます。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 これにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
     |期間        |1 年間または 3 年間。|
-    |数量    |予約内で購入しているインスタンス数。 数量は、課金の割引を受けられる実行中の VM インスタンス数です。 たとえば、米国東部で Standard_D2 VM を 10 個実行している場合、実行中のすべてのマシンのメリットを最大限に利用するには、数量を 10 と指定します。 |
-5. **[コストの計算]** を選択すると、予約のコストを表示できます。
+    |Quantity    |予約内で購入しているインスタンス数。 数量は、課金の割引を受けられる実行中の VM インスタンス数です。 たとえば、米国東部で Standard_D2 VM を 10 個実行している場合、実行中のすべてのマシンのメリットを最大限に利用するには、数量を 10 と指定します。 |
 
-    ![予約の購入を送信する前のスクリーンショット](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvminstance-purchase.png)
-
-6. **[購入]** を選択します。
-7. **[この予約を表示する]** を選択すると、購入の状態が表示されます。
-
-    ![予約の購入を送信した後のスクリーンショット](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="change-a-reservation-after-purchase"></a>購入後に予約を変更する
 
@@ -97,8 +97,8 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 
 - 既存の予約のリージョン
 - SKU
-- 数量
-- duration
+- Quantity
+- Duration
 
 ただし、変更を加える必要がある場合、予約を*交換*することができます。
 

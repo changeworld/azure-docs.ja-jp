@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8777a7504c48b22d0e670dd9f0d28016ac8918db
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009436"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009465"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -43,7 +43,7 @@ Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに[階層型名
 
 -   **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通したデータ遷移として、課金レートは、[Azure Blob ストレージ ライフサイクル](storage-lifecycle-management-concepts.md)などの組み込みの機能を介して、最小限になるまで継続コストを変更します。
 
--   **最適化されたドライバー:** abfs ドライバーは、ビッグ データ分析のために[特別に最適化](data-lake-storage-abfs-driver.md)されています。 該当する REST API は、dfs エンドポイント、dfs.core.windows.net を介して表示されます。
+-   **最適化されたドライバー**:ABFS ドライバーは、ビッグ データ分析のために[特別に最適化](data-lake-storage-abfs-driver.md)されています。 該当する REST API は、`dfs.core.windows.net` エンドポイントを介して表示されます。
 
 ### <a name="scalability"></a>スケーラビリティ
 
@@ -63,8 +63,8 @@ Data Lake Storage Gen2 は、Azure Blob ストレージに基づいて構築さ�
 
 | 概念                                | 最上位レベルの組織 | 下位レベルの組織                                            | データ コンテナー |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
-| BLOB - 汎用オブジェクト ストレージ | コンテナー              | 仮想ディレクトリ (SDK のみ - アトミック操作を提供しない) | BLOB           |
-| ADLS Gen2 - Analytics ストレージ          | ファイルシステム             | Directory                                                           | ファイル           |
+| BLOB - 汎用オブジェクト ストレージ | コンテナー              | 仮想ディレクトリ (SDK のみ - アトミック操作を提供しない) | Blob           |
+| ADLS Gen2 - Analytics ストレージ          | ファイル システム             | ディレクトリ                                                           | ファイル           |
 
 ## <a name="supported-open-source-platforms"></a>サポートされるオープン ソース プラットフォーム
 

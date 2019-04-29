@@ -1,6 +1,6 @@
 ---
 title: ユニバーサル Windows プラットフォーム (UWP) アプリに認証を追加する | Microsoft Docs
-description: Azure App Service Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使ってユニバーサル Windows プラットフォーム (UWP) アプリのユーザーを認証する方法を説明します。
+description: Azure App Service Mobile Apps を使用して、ユニバーサル Windows プラットフォーム (UWP) アプリのユーザーを認証する方法を説明します。その際に、さまざまな ID プロバイダーを使います。AAD、Google、Facebook、Twitter、Microsoft などです。
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306576"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698684"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Windows アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -35,15 +35,13 @@ ms.locfileid: "38306576"
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。 これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。 このチュートリアル全体を通して、URL スキーム _appname_ を使用します。 ただし、選択したあらゆる URL スキームを使用できます。 URL スキームは、モバイル アプリに対して一意である必要があります。 サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
-1. [Azure Portal] で、App Service を選択します。
+1. [Azure Portal](https://ms.portal.azure.com) で、App Service を選択します。
 
 2. **[認証/承認]** メニュー オプションをクリックします。
 
 3. **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** に `url_scheme_of_your_app://easyauth.callback` を入力します。  この文字列の **url_scheme_of_your_app** は、モバイル アプリケーションの URL スキームです。  プロトコルの通常の URL 仕様 (文字と数字のみを使用し、文字で始まる) に従う必要があります。  数か所で URL スキームに合わせてモバイル アプリケーション コードを調整する必要があるため、選択した文字列をメモしておく必要があります。
 
-4. Click **OK**.
-
-5. **[Save]** をクリックします。
+4. **[Save]** をクリックします。
 
 ## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

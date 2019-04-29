@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 163edd544a2d93e380b8906df3e0055711321c95
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 09736396342505c8ec44cc83bf66f7c0ef893f80
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918860"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000290"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Java で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -39,7 +39,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 - 「[Azure Spatial Anchors の概要](../overview.md)」を読んでいる。
 - [5 分間のクイック スタート](../index.yml)のいずれかを完了している。
 - Java についての基本的な知識。
-- <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5 についての基本的な知識。
+- <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7 についての基本的な知識。
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

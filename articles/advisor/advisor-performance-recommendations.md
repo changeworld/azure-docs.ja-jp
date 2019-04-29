@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0b2d242519e7e8981a905d6adb1f3c0f091afe38
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491581"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698947"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -74,6 +74,25 @@ Advisor では、レプリケートされたテーブルではないが、変換
 
 > [!NOTE]
 > Azure Monitor のクラシック アラートは 2019 年 6 月に廃止される予定です。 新しいプラットフォームでアラート機能を保持するには、Resource Manager を使用するようにクラシック ストレージ アカウントをアップグレードすることをお勧めします。 詳しくは、[クラシック アラートの廃止](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)に関するページをご覧ください。
+
+## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>サブスクリプションの上限に到達しないようにストレージ アカウントを設計する
+
+Azure リージョンでは、サブスクリプションごとに最大 250 個のストレージ アカウントをサポートできます。 制限に達した場合、そのリージョン/サブスクリプションの組み合わせでは、それ以上ストレージ アカウントを作成することはできません。 Advisor は、サブスクリプションを確認して、上限に近づいている場合はストレージ アカウント数を減らして設計するように勧告します。
+
+## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Azure MySQL、Azure PostgreSQL、および Azure MariaDB サーバーのパフォーマンスを最適化する 
+
+### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>CPU ボトルネックによる Azure MySQL、Azure PostgreSQL、および Azure MariaDB サーバーの CPU の圧迫を修正する
+長期間にわたって CPU の使用率が非常に高いと、ワークロードのクエリ パフォーマンスが低速に陥る可能性があります。 CPU サイズを増やすと、データベース クエリのランタイムを最適化し、全体のパフォーマンスを向上させることができます。 Azure Advisor は、CPU 制約があるワークロードを実行している CPU 使用率が高いサーバーを特定して、コンピューティング処理をスケーリングするよう勧告します。
+
+### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Azure MySQL、Azure PostgreSQL、および Azure MariaDB サーバー上のメモリ制約を減らすか、メモリ最適化された SKU に移動する
+キャッシュ ヒット率が低いと、クエリ パフォーマンスが低下し IOPS が高くなる可能性があります。 これは、不適切なクエリ プランやメモリ負荷の高いワークロードの実行が原因になっている場合があります。 クエリ プランを修正するか、Azure Database for PostgreSQL データベース サーバー、Azure MySQL データベース サーバー、または Azure MariaDB サーバーの [メモリを増やす](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)ことで、データベース ワークロードの実行を最適化できます。 Azure Advisor は、この高いバッファー プール チャーンが原因で影響を受けているサーバーを特定し、クエリ プランを修正するか、メモリ容量が大きいより上位の SKU に移行するか、あるいはストレージ サイズを増やしてより多くの IOPS を取得するように勧告します。
+
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Azure MySQL または Azure PostgreSQL の読み取りレプリカを使用して、読み取り集中型のワークロードでの読み取りをスケールアウトする
+Azure Advisor は、サーバー上での過去 7 日間にわたる書き込みに対する読み取りの比率など、ワークロードベースのヒューリステックを活用して、読み取り集中型のワークロードを特定します。 Azure Database for PostgreSQL リソースまたは Azure Database for MySQL リソースでの読み取り/書き込みの比率が非常に高いと、CPU やメモリの競合を引き起こし、クエリ パフォーマンスが低下する可能性があります。  [レプリカ](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)を追加することで、レプリカ サーバーに読み取りをスケールアウトして、プライマリ サーバー上での CPU やメモリの制約を回避します。 Advisor はこのような読み取り集中型のワークロードを含むサーバーを特定し、 [読み取りレプリカ](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) を追加して読み取りワークロードの一部をオフロードするように勧告します。
+
+
+### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Azure MySQL、Azure PostgreSQL、または Azure MariaDB サーバーをより上位の SKU にスケーリングして接続の制約を回避する
+データベース サーバーへの新しい接続ごとに、一定のメモリが占有されます。 メモリの [上限](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor は、多くの接続エラーを伴う実行中のサーバーを特定して、コンピューティング処理をスケールアップするかメモリ最適化された SKU を使用して、コアごとのコンピューティング処理数を増やすことで、サーバーの接続制限を引き上げてお使いのサーバーにより多くのメモリを提供するよう勧告します。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

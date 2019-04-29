@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Data Explorer との間で双方向にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2019
-ms.author: orspod
-ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/16/2019
+ms.author: orspodek
+ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880034"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009363"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -38,6 +38,9 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 * シンクとして、コピー先テーブルにデータを追加する。
 
 ## <a name="getting-started"></a>使用の開始
+
+>[!TIP]
+>Azure Data Explorer コネクタの使用のチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](../data-explorer/data-factory-load-data.md)」を参照してください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -216,4 +219,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 ```
 
 ## <a name="next-steps"></a>次の手順
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+
+* Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+
+* 詳細については、[「Azure Data Factory から Azure Data Explorer にデータをコピーする](/azure/data-explorer/data-factory-load-data)」を参照してください。

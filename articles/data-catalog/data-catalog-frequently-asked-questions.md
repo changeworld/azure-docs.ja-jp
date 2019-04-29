@@ -2,18 +2,18 @@
 title: Azure Data Catalog のよく寄せられる質問
 description: データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231466"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998455"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -27,10 +27,10 @@ Data Catalog は、ユーザーがエンタープライズ データ ソース�
 ## <a name="what-are-its-target-audiences"></a>対象ユーザーはだれですか?
 Data Catalog は、次のような技術者と技術者以外のユーザーを対象にしています。
 
-* データ開発者、BI、および分析のプロフェッショナル: 他のユーザーが使用するデータおよび分析用コンテンツの生成を担当するユーザー。
-* データ スチュワード: データの意味、意図された使用方法などのデータに関する知識を持つユーザー。
-* データ コンシューマー: 選択したツールを使用して、ジョブの実行に必要なデータを簡単に検出し、理解し、接続できる必要があるユーザー。
-* 中央 IT: ビジネス ユーザー向けに、数百のデータ ソースを探索可能にする必要があり、データの使用方法と使用者を監視し続ける必要があるユーザー。
+* データ開発者、BI、および分析のプロフェッショナル:他のユーザーが使用するデータおよび分析用コンテンツの生成を担当するユーザー。
+* データ スチュワード:データ、データの意味、意図された使用方法に関する知識を持つユーザー。
+* データ コンシューマー:選択したツールを使用して、ジョブの実行に必要なデータを簡単に検出し、理解し、接続できる必要があるユーザー。
+* 中央 IT:ビジネス ユーザー向けに、数百のデータ ソースを探索可能にする必要があり、データの使用方法と使用者を監視し続ける必要があるユーザー。
 
 ## <a name="what-is-its-availability-by-region"></a>地域ごとの可能性はどうなっていますか?
 Data Catalog サービスは、現在、次のデータ センターで使用できます。

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862116"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009754"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure Front Door Service でのメトリックとログの監視
 
@@ -65,7 +65,7 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 
 Front Door Service の診断ログを構成するには:
 
-1. Azure API Management サービスを選択します。
+1. Azure Front Door Service を選択します。
 
 2. **[診断設定]** を選択します。
 
@@ -92,5 +92,5 @@ Front Door Service の診断ログを構成するには:
 
 ## <a name="next-steps"></a>次の手順
 
-- [Front Door プロファイルを作成する](quickstart-create-front-door.md)
+- [Front Door プロファイルの作成](quickstart-create-front-door.md)
 - [Front Door のしくみ](front-door-routing-architecture.md)

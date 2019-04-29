@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918928"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009839"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プロバイダーにサポートを提供しています。 これは、認可および委任された認証のための主要なプロトコルです。 詳細については、「[RFC 6749 The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)」を参照してください。 OAuth2 技術プロファイルを使用すると、Facebook や Live.com などの OAuth2 ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
+Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プロバイダーにサポートを提供しています。 OAuth2 は、認可および委任された認証のための主要なプロトコルです。 詳細については、「[RFC 6749 The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)」を参照してください。 OAuth2 技術プロファイルを使用して、Facebook などの OAuth2 ベースの ID プロバイダーとフェデレーションできます。 ID プロバイダーとのフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
 ## <a name="protocol"></a>Protocol
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -74,9 +74,9 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 | ClaimsEndpointFormat | いいえ  | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、値を `json` として設定できます。 | 
 | ProviderName | いいえ  | ID プロバイダーの名前。 |
 | response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
-| scope | いいえ  | OAuth2 ID プロバイダーの仕様に従って定義される、アクセス要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
+| scope | いいえ  | OAuth2 ID プロバイダーの仕様に従って定義される要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
 | HttpBinding | いいえ  | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 可能な値: `GET` または `POST`。  |
 | ResponseErrorCodeParamName | いいえ  | HTTP 200 (Ok) 経由で返されるエラー メッセージを収納するパラメーターの名前。 |
 | ExtraParamsInAccessTokenEndpointResponse | いいえ  | **AccessTokenEndpoint** からの応答に、一部の ID プロバイダーにより返される可能性がある余分なパラメーターが存在します。 たとえば、**AccessTokenEndpoint** からの応答には、`openid` のような余分なパラメーターがあります。これは、access_token を除けば、**ClaimsEndpoint** 要求クエリ文字列での必須パラメーターです。 複数のパラメーター名をエスケープし、コンマ ',' 区切り記号で区切るようにしてください。 |
@@ -100,9 +100,9 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |  
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

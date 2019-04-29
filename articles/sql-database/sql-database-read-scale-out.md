@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 03/28/2019
-ms.openlocfilehash: d9ad859ef24b51dc337dc23281d2fe4e1eada1e6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/19/2019
+ms.openlocfilehash: cbcdcfd151951334246a4e85d9f521a15bb6269d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619893"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006150"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する
 
@@ -25,25 +25,22 @@ ms.locfileid: "58619893"
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
-**読み取りスケールアウト**では、1 つの読み取り専用レプリカの処理能力を使用して、Azure SQL Database の読み取り専用ワークロードを負荷分散できます。
+[高可用性アーキテクチャ](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)の一部として、Premium、Business Critical、または Hyperscale サービス レベルの各データベースは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 追加コストなしで利用できるこの追加能力を使用すると、パフォーマンス上のメリットを得られる可能性があります。
 
-Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)) または Business Critical 階層 ([仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)) の各データベースは、可用性 SLA をサポートするために、複数の Always ON レプリカによって自動的にプロビジョニングされます。 これを示したのが次の図です。
+次の図に、Business Critical データベースの使用例を示します。
 
 ![読み取り専用レプリカ](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上の利点を得ることが可能です。
+新しい Premium、Business Critical、および Hyperscale データベースでは、読み取りスケールアウト機能は既定で有効になっています。 お使いの SQL 接続文字列が `ApplicationIntent=ReadOnly` で構成されている場合、アプリケーションは、ゲートウェイによって、データベースの読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの使用方法の詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」をご覧ください。
 
-特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) または [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から [データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。
-
-データベースの読み取りスケールアウトが有効になると、そのデータベースに接続するアプリケーションが、アプリケーションの接続文字列で構成されている `ApplicationIntent` プロパティに応じて、ゲートウェイによってデータベースの読み取り/書き込みレプリカまたは読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」を参照してください。
-
-読み取りスケールアウトが無効の場合またはサポートされていないサービス レベルで ReadScale プロパティを設定した場合、`ApplicationIntent` プロパティとは関係なく、すべての接続が読み取り/書き込みレプリカにリダイレクトされます。
+SQL 接続文字列の `ApplicationIntent` 設定に関係なく、アプリケーションがプライマリ レプリカに確実に接続されるようにする場合は、データベースを作成するとき、またはその構成を変更するときに、読み取りスケールアウトを明示的に無効にする必要があります。 たとえばデータベースを Standard または General Purpose レベルから Premium、Business Critical、または Hyperscale レベルにアップグレードするときに、すべての接続が引き続きプライマリ レプリカに対して行われるようにするには、読み取りスケールアウトを無効にします。無効にする方法の詳細については、「[読み取りスケールアウトの有効化と無効化](#enable-and-disable-read-scale-out)」を参照してください。
 
 > [!NOTE]
 > 読み取り専用レプリカでは、クエリ データ ストア、拡張イベント、SQL Profiler、および監査の各機能はサポートされていません。 
+
 ## <a name="data-consistency"></a>データの一貫性
 
-レプリカのメリットの 1 つは、レプリカが常にトランザクション上一貫性が保たれた状態となることですが、さまざまな時点で異なるレプリカ間に短い待機時間が発生する可能性があります。 読み取りスケールアウトは、セッション レベルの一貫性をサポートしています。 そのため、レプリカが使用できないことが原因で接続エラーが発生した後に読み取り専用セッションが再接続された場合、読み取り/書き込みレプリカを使用して 100% 最新ではないレプリカにリダイレクトされる可能性があります。 同様に、アプリケーションが読み取り/書き込みセッションを使用してデータを書き込み、読み取り専用セッションを使用してすぐに読み取る場合、レプリカに最新の更新がすぐに表示されない可能性があります。 待機時間は、非同期のトランザクション ログのやり直し操作が原因で生じます。
+レプリカのメリットの 1 つは、レプリカが常にトランザクション上一貫性が保たれた状態となることですが、さまざまな時点で異なるレプリカ間に短い待機時間が発生する可能性があります。 読み取りスケールアウトは、セッション レベルの一貫性をサポートしています。 つまり、レプリカが使用できないことが原因で接続エラーが発生した後に読み取り専用セッションが再接続された場合、読み取り/書き込みレプリカによる更新が 100% ではないレプリカにリダイレクトされる可能性があります。 同様に、アプリケーションが読み取り/書き込みセッションを使用してデータを書き込み、読み取り専用セッションを使用してすぐに読み取る場合、レプリカに最新の更新がすぐに表示されない可能性があります。 待機時間は、非同期のトランザクション ログのやり直し操作が原因で生じます。
 
 > [!NOTE]
 > 領域内のレプリケーションの待機時間は短く、このような状況はまれです。
@@ -87,35 +84,43 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ## <a name="enable-and-disable-read-scale-out"></a>読み取りスケールアウトの有効化と無効化
 
-読み取りスケールアウトは、既定では[マネージド インスタンス](sql-database-managed-instance.md)の Business Critical レベルで有効になります。 [SQL Database サーバーに配置されたデータベース](sql-database-servers.md)の Premium および Business Critical 階層で明示的に有効にする必要があります。 ここでは、読み取りスケールアウトを有効または無効にする方法について説明します。
+Premium、Business Critical、および Hyperscale サービス レベルでは、読み取りスケールアウトは既定で有効になっています。 Basic、Standard、または General Purpose サービス レベルで読み取りスケールアウトを有効にすることはできません。 レプリカ数 0 で構成された Hyperscale データベースでは、読み取りスケールアウトは自動的に無効になります。 
 
-### <a name="powershell-enable-and-disable-read-scale-out"></a>PowerShell:読み取りスケールアウトの有効化と無効化
+Premium または Business Critical サービス レベルの単一データベースとエラスティック プール データベースの読み取りスケールアウトは、次の方法で無効にして再び有効にすることができます。
+
+> [!NOTE]
+> 読み取りスケールアウトを無効にする能力は、下位互換性を維持するために提供されています。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+読み取りスケールアウトの設定は、**[構成]** データベース ブレードで管理できます。 
+
+### <a name="powershell"></a>PowerShell
 
 Azure PowerShell で読み取りスケールアウトを管理するには、2016 年 12 月以降のリリースの Azure PowerShell が必要です。 最新の PowerShell リリースについては、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) に関するページを参照してください。
 
-Azure PowerShell で [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドレットを呼び出し、`-ReadScale` パラメーターに目的の値 (`Enabled` または `Disabled`) を渡して、読み取りスケールアウトを有効または無効にします。 または、[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) コマンドレットを使用して、読み取りスケールアウトが有効になっている新しいデータベースを作成することもできます。
+Azure PowerShell で [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドレットを呼び出し、`-ReadScale` パラメーターに目的の値 (`Enabled` または `Disabled`) を渡すことで、読み取りスケールアウトを無効にし、再び有効にできます。 
 
-たとえば、既存のデータベースの読み取りスケールアウトを有効にするには、次のようにします (山かっこ内の項目は環境内の適切な値に置き換え、山かっこは削除します)。
+既存のデータベースの読み取りスケールアウトを無効にするには (山かっこ内の項目を自分の環境用の適切な値に置き換え、山かっこを削除してください):
+
+```powershell
+Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+```
+新しいデータベースの読み取りスケールアウトを無効にするには (山かっこ内の項目を自分の環境用の適切な値に置き換え、山かっこを削除してください):
+
+```powershell
+New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled -Edition Premium
+```
+
+既存のデータベースの読み取りスケールアウトを再び有効にするには (山かっこ内の項目を自分の環境用の適切な値に置き換え、山かっこを削除してください):
 
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
 ```
 
-既存のデータベースの読み取りスケールアウトを無効にするには、次のようにします (山かっこ内の項目は環境内の適切な値に置き換え、山かっこは削除します)。
+### <a name="rest-api"></a>REST API
 
-```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
-```
-
-読み取りスケールアウトが有効になっている新しいデータベースを作成するには、次のようにします (山かっこ内の項目は環境内の適切な値に置き換え、山かっこは削除します)。
-
-```powershell
-New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
-```
-
-### <a name="rest-api-enable-and-disable-read-scale-out"></a>REST API:読み取りスケールアウトの有効化と無効化
-
-読み取りスケールアウトが有効になっているデータベースを作成したり、既存のデータベースの読み取りスケールアウトを有効または無効にしたりするには、次の要求のサンプルのように `readScale` プロパティを `Enabled` または `Disabled` に設定して、対応するデータベース エンティティを作成または更新します。
+読み取りスケールアウトが無効なデータベースを作成する、または既存のデータベースの設定を変更するには、次の方法を使用して、次の要求の例に示すように `readScale` プロパティを `Enabled` または `Disabled` に設定します。
 
 ```rest
 Method: PUT
@@ -124,7 +129,7 @@ Body:
 {
    "properties":
    {
-      "readScale":"Enabled"
+      "readScale":"Disabled"
    }
 }
 ```
@@ -144,5 +149,4 @@ TempDB データベースは読み取り専用レプリカにはレプリケー�
 
 ## <a name="next-steps"></a>次の手順
 
-- PowerShell を使用した読み取りスケールアウトの設定の詳細については、「[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)」コマンドレットまたは「[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)」コマンドレットを参照してください。
-- REST API を使用した読み取りスケールアウトの設定の詳細については、「[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)」を参照してください。
+- SQL Database Hyperscale オファリングの情報については、[Hyperscale サービス レベル](./sql-database-service-tier-hyperscale.md)に関する記事を参照してください。

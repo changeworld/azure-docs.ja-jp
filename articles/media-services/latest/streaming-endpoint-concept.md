@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881020"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999452"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 
@@ -29,9 +29,9 @@ Microsoft Azure Media Services (AMS) では、[ストリーミング エンド�
 
 ## <a name="naming-convention"></a>命名規則
 
-既定のエンドポイントの場合:  `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+既定のエンドポイントの場合: `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
 
-追加エンドポイントの場合:  `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+追加エンドポイントの場合: `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
 
 ## <a name="types"></a>型  
 
@@ -42,7 +42,7 @@ Microsoft Azure Media Services (AMS) では、[ストリーミング エンド�
 |Type|スケール ユニット|説明|
 |--------|--------|--------|  
 |**Standard ストリーミング エンドポイント** (推奨)|0|既定のストリーミング エンドポイントは **Standard** 型ですが、Premium 型に変更できます。<br/> Standard 型は、実質的にすべてのストリーミング シナリオとオーディエンス サイズで推奨されるオプションです。 **Standard** 型は、送信帯域幅を自動的にスケールします。 この型のストリーミング エンドポイントからのスループットは、最大 600 Mbps です。 CDN にキャッシュされたビデオ フラグメントは、ストリーミング エンドポイントの帯域幅を使用しません。<br/>要件が非常に厳しいユーザー向けに、Media Services では **Premium** ストリーミング エンドポイントを提供しています。これは、多数のインターネット ユーザー向けに容量をスケールアウトするために使用できます。 同時に視聴するユーザーが多数であることが予想される場合は、**Premium** に移行する必要があるかどうかに関するガイダンスについて、amsstreaming\@microsoft.com までお問い合わせください。 |
-|**Premium ストリーミング エンドポイント**|>0|**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** 型には、`scaleUnits` を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用のエグレス容量を提供します。 **Premium** 型を使用するときは、有効になっている各ユニットがアプリケーションに追加の帯域幅容量を提供します。 |
+|**Premium ストリーミング エンドポイント**|>0|**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** 型には、`scaleUnits` を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用するときは、有効になっている各ユニットがアプリケーションに追加の帯域幅容量を提供します。 |
  
 ## <a name="comparing-streaming-types"></a>ストリーミング タイプの比較
 
@@ -52,7 +52,6 @@ Microsoft Azure Media Services (AMS) では、[ストリーミング エンド�
 ---|---|---
 最初の 15 日間無料| はい |いいえ 
 スループット |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
-SLA | 99.9|99.9 (SU あたり 200 Mbps)。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
@@ -68,7 +67,7 @@ IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
 
 このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。 
 
-- `accessControl` - このストリーミング エンドポイントの以下のセキュリティ設定を構成するために使用されます: (このエンドポイントに接続することが許可された Akamai 署名認証キーと IP アドレス) 構成するために使用されます。<br />このプロパティは、`cdnEnabled` が false に設定されているときにのみ設定できます。
+- `accessControl` - このストリーミング エンドポイントのセキュリティ設定(このエンドポイントに接続することが許可された Akamai 署名認証キーと IP アドレス) 構成するために使用されます。<br />このプロパティは、`cdnEnabled` が false に設定されているときにのみ設定できます。
 - `cdnEnabled` - このストリーミング エンドポイントに対して Azure CDN 統合が有効になっているかどうかを示します (既定では無効)。 `cdnEnabled` を true に設定した場合、`customHostNames` と `accessControl` の構成が無効になります。
   
     すべてのデータ センターが Azure CDN 統合をサポートしているわけではありません。 対象のデータ センターで Azure CDN 統合を利用できるかどうかを確認するには、次の操作を行います。
@@ -86,7 +85,7 @@ IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
 
     さまざまな Azure リージョンでのレコードの検証で使用されることが想定される DNS ゾーンを次に示します。
   
-  - 北米、ヨーロッパ、シンガポール、香港、日本:
+  - 北米、ヨーロッパ、シンガポール、香港特別行政区、日本:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`
@@ -117,7 +116,7 @@ IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
     - Stopping (停止中) - 停止状態に遷移しています。
     - Deleting (削除中) - 削除中です。
     
-- `scaleUnits` - 200 Mbps 単位で購入できる専用のエグレス容量を提供します。 **Premium** 型に移行する必要がある場合は、`scaleUnits` を調整します。
+- `scaleUnits` - 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型に移行する必要がある場合は、`scaleUnits` を調整します。
 
 ## <a name="working-with-cdn"></a>CDN の操作
 

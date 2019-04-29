@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ac87ce2198296b82ef5655d7d75443a0bd49df3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875140"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001577"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
@@ -85,9 +85,9 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 > [!IMPORTANT]
 > これらの DMV を使用して CPU 使用率の問題をトラブルシューティングするための一連の T-SQL クエリについては、[CPU パフォーマンスの問題の識別](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)に関するページを参照してください。
 
-### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>パラメーター依存クエリ実行プランの問題があるクエリをトラブルシューティングする
+### <a name="ParamSniffing"></a> パラメーター依存クエリ実行プランの問題があるクエリをトラブルシューティングする
 
-パラメーター依存プラン (PSP) の問題とは、クエリ オプティマイザーが特定のパラメーター値 (または値のセット) に対してのみ最適なクエリ実行プランを生成し、キャッシュされたプランが連続実行で使用されるパラメーター値に対して最適ではないシナリオのことです。 その場合、最適ではないプランによりクエリ パフォーマンスの問題が発生し、ワークロード全体のスループットが低下する可能性があります。
+パラメーター依存プラン (PSP) の問題とは、クエリ オプティマイザーが特定のパラメーター値 (または値のセット) に対してのみ最適なクエリ実行プランを生成し、キャッシュされたプランが連続実行で使用されるパラメーター値に対して最適ではないシナリオのことです。 その場合、最適ではないプランによりクエリ パフォーマンスの問題が発生し、ワークロード全体のスループットが低下する可能性があります。 パラメーター スニッフィングとクエリ処理の詳細については、[クエリ処理 アーキテクチャ ガイド](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing)を参照してください。
 
 問題を軽減するために使用される回避策が複数あり、それぞれに関連するトレードオフと欠点があります。
 
@@ -102,18 +102,17 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 この種の問題の解決方法について詳しくは、以下をご覧ください。
 
-- こちらの[パラメーターのにおい](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/)に関するブログ投稿
-- こちらの[パラメーター スニッフィング問題と回避策](https://blogs.msdn.microsoft.com/turgays/20../../parameter-sniffing-problem-and-possible-workarounds/)に関するブログ投稿
-- こちらの[象とマウスのパラメーター スニッフィング](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)に関するブログ投稿
-- こちらの、[パラメーター化クエリに対する動的 SQL とプランの品質](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)に関するブログ投稿
+- こちらの[パラメーターのにおい](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)に関するブログ投稿
+- こちらの、[パラメーター化クエリに対する動的 SQL とプランの品質](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)に関するブログ投稿
+- こちらの「[SQL Query Optimization Techniques in SQL Server:Parameter Sniffing (SQL Server での SQL クエリの最適化技法: パラメーター スニッフィング)](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)」ブログ記事
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>不適切なパラメーター化が原因のコンパイル アクティビティのトラブルシューティング
 
 クエリにリテラルがある場合は、データベース エンジンで自動的にステートメントのパラメーター化が選択されるか、またはユーザーが明示的にそれをパラメーター化してコンパイルの数を減らすことができます。 使用するパターンが同じでもリテラル値が異なるクエリのコンパイル回数が多いと、CPU の使用率が高くなる可能性があります。 同様に、ユーザーが継続的にリテラルを含むクエリを部分的にだけパラメーター化した場合、データベース エンジンではそれ以上パラメーター化されません。  部分的にパラメーター化されたクエリの例を次に示します。
 
 ```sql
-select * from t1 join t2 on t1.c1=t2.c1
-where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
 前の例では、`t1.c1` は `@p1` を受け取りますが、`t2.c2` は引き続きリテラルとして GUID を受け取ります。 この場合、`c2` の値を変更すると、クエリは異なるクエリとして扱われて、新しいコンパイルが発生します。 前の例でコンパイルを減らすための解決策は、GUID もパラメーター化することです。
@@ -121,24 +120,24 @@ where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
 次のクエリでは、クエリ ハッシュ別にクエリの数を示して、クエリが適切にパラメーター化されているかどうかを判断します。
 
 ```sql
-   SELECT  TOP 10  
-      q.query_hash
-      , count (distinct p.query_id ) AS number_of_distinct_query_ids
-      , min(qt.query_sql_text) AS sampled_query_text
-   FROM sys.query_store_query_text AS qt
-      JOIN sys.query_store_query AS q
-         ON qt.query_text_id = q.query_text_id
-      JOIN sys.query_store_plan AS p 
-         ON q.query_id = p.query_id
-      JOIN sys.query_store_runtime_stats AS rs 
-         ON rs.plan_id = p.plan_id
-      JOIN sys.query_store_runtime_stats_interval AS rsi
-         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-   WHERE
-      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-      AND query_parameterization_type_desc IN ('User', 'None')
-   GROUP BY q.query_hash
-   ORDER BY count (distinct p.query_id) DESC
+SELECT  TOP 10  
+  q.query_hash
+  , count (distinct p.query_id ) AS number_of_distinct_query_ids
+  , min(qt.query_sql_text) AS sampled_query_text
+FROM sys.query_store_query_text AS qt
+  JOIN sys.query_store_query AS q
+     ON qt.query_text_id = q.query_text_id
+  JOIN sys.query_store_plan AS p 
+     ON q.query_id = p.query_id
+  JOIN sys.query_store_runtime_stats AS rs 
+     ON rs.plan_id = p.plan_id
+  JOIN sys.query_store_runtime_stats_interval AS rsi
+     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+WHERE
+  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+  AND query_parameterization_type_desc IN ('User', 'None')
+GROUP BY q.query_hash
+ORDER BY count (distinct p.query_id) DESC
 ```
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>問題のあるクエリを解決するか、または提供するリソースを増やす
@@ -184,7 +183,7 @@ CPU の問題をもたらしているワークロード ボリュームの変更
 - CPU 消費量の高いクエリがまだ実行中の可能性があり、クエリが完了していない
 - フェールオーバーが発生したときに、CPU 消費量の高いクエリが実行されていた
 
-クエリ ストアと待機の統計を追跡している動的管理ビューには、正常に完了したクエリとタイムアウトしたクエリの結果のみが表示され、現在実行中のステートメントのデータは (完了するまで) 表示されません。  動的管理ビュー [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) では、現在実行中のクエリとそれに関連するワーカーの時間を追跡することができます。
+クエリ ストアと待機の統計を追跡している動的管理ビューには、正常に完了したクエリとタイムアウトしたクエリの結果のみが表示され、現在実行中のステートメントのデータは (完了するまで) 表示されません。 動的管理ビュー [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) では、現在実行中のクエリとそれに関連するワーカーの時間を追跡することができます。
 
 前の図に示すように、最も一般的な待機は次のとおりです。
 
@@ -199,6 +198,8 @@ CPU の問題をもたらしているワークロード ボリュームの変更
 > - [I/O パフォーマンスの問題を識別する](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [`tempdb` のパフォーマンスの問題を識別する](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [メモリ許可待機を識別する](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox - 待機およびラッチ](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
 ## <a name="improving-database-performance-with-more-resources"></a>リソースを増やしてデータベースのパフォーマンスを向上させる
 

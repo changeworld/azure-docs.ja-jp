@@ -4,7 +4,7 @@ description: Azure での OpenShift デプロイの問題を解決します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: c65e76fb9453e93e856c76f397d187f9ee740fbd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540348"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001118"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Azure での OpenShift デプロイのトラブルシューティング
 
@@ -42,9 +42,9 @@ Ansible プレイブック ホストに SSH 接続します。 OKD テンプレ�
 
 ## <a name="log-files"></a>ログ ファイル
 
-ホスト準備スクリプト用のログ ファイル (標準エラーと標準出力) は、すべてのホストで /var/lib/waagent/custom-script/download/0 に配置されます。 ホストの準備中にエラーが発生した場合は、これらのログ ファイルを調べてエラーを特定します。
+ホスト準備スクリプト用のログ ファイル (標準エラーと標準出力) は、すべてのホストで `/var/lib/waagent/custom-script/download/0` に配置されます。 ホストの準備中にエラーが発生した場合は、これらのログ ファイルを調べてエラーを特定します。
 
-準備スクリプトが正常に実行された場合は、Ansible プレイブック ホストの /var/lib/waagent/custom-script/download/1 ディレクトリ内のログ ファイルを調べる必要があります。 OpenShift の実際のインストール中にエラーが発生した場合は、標準出力ファイルにエラーが表示されます。 この情報を使用して、サポートに連絡してさらに支援を求めてください。
+準備スクリプトが正常に実行された場合は、Ansible プレイブック ホストの `/var/lib/waagent/custom-script/download/1` ディレクトリ内のログ ファイルを調べる必要があります。 OpenShift の実際のインストール中にエラーが発生した場合は、標準出力ファイルにエラーが表示されます。 この情報を使用して、サポートに連絡してさらに支援を求めてください。
 
 出力例
 
@@ -93,11 +93,11 @@ Failure summary:
 
 ### <a name="private-key-has-a-passphrase"></a>秘密キーにパスフレーズが含まれている
 
-SSH 接続でアクセス許可が拒否されたというエラーが表示されます。 Ansible プレイブック ホストに SSH 接続して、秘密キーに関するパスフレーズをチェックします。
+ssh 接続でアクセス許可が拒否されたというエラーが表示されます。 Ansible プレイブック ホストに ssh 接続して、秘密キーに関するパスフレーズをチェックします。
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>秘密キーを含むキー コンテナー シークレットが正しく作成されなかった
 
-Ansible プレイブック ホストに秘密キーが挿入されています (~/.ssh/id_rsa)。 このファイルが正しいことを確認します。 Ansible プレイブック ホストからいずれかのクラスター ノードに対して SSH セッションを開くことでテストします。
+Ansible プレイブック ホストに秘密キーがコピーされています (~/.ssh/id_rsa)。 このファイルが正しいことを確認します。 Ansible プレイブック ホストからいずれかのクラスター ノードに対して SSH セッションを開くことでテストします。
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>サービス プリンシパルの資格情報が正しく入力されなかった
 

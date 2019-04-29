@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: aa4fd391aef3acf8e72513d91b62c7f16a13062d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889439"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005045"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -33,6 +33,11 @@ Azure にデプロイされた Service Fabric クラスター上の問題を報�
  
 - [Azure に関する Microsoft からのサポート](https://azure.microsoft.com/support/plans/?b=16.44)。
 - [Microsoft プレミア サポート](https://support.microsoft.com/en-us/premier)。
+
+> [!Note]
+> ブロンズの信頼性レベルで実行されているクラスターでは、テスト ワークロードのみを実行できます。 ブロンズの信頼性で実行されているクラスターで問題が発生した場合は、Microsoft サポート チームによって問題を軽減するための支援が提供されますが、根本原因分析は実行されません。 詳細については、「[クラスターの信頼性の特徴](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)」を参照してください。
+>
+> 運用の準備が整ったクラスターで必要なものの詳細については、「[運用環境の準備状況チェックリスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)」を参照してください。
 
 <a id="getlivesitesupportonprem"></a>
 

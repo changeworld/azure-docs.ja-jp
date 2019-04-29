@@ -7,18 +7,17 @@ ms.service: app-service
 ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
-ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 29f2b725972f5ce92e756cb21621a19850ba9386
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: msangapu-msft
+ms.openlocfilehash: 02ebd0629fed9037054a5c22931f3e99c09073c4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732942"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998602"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
 
-このガイドでは、[Azure Storage](/azure/storage/common/storage-introduction) を使用して Linux 上の App Service 内の静的コンテンツを提供する方法を示します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。 このガイドでは、[カスタム ストレージを構成する](https://blogs.msdn.microsoft.com/appserviceteam/2018/09/24/announcing-bring-your-own-storage-to-app-service/)ことにより Azure Storage 上のコンテンツを提供する方法を説明します。
+このガイドでは、[Azure Storage](/azure/storage/common/storage-introduction) を使用して Linux 上の App Service 内の静的コンテンツを提供する方法を示します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、複数のアプリへのアクセス、複数の転送方法などがあります。 このガイドでは、カスタム ストレージを構成することで Azure Storage 上のコンテンツを提供する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

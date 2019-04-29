@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: e8d7d77128acd4bdb81a99ac6756a5e28b4a408f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802960"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001594"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -60,7 +60,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 ファイル システム オブジェクトに対するアクセス許可は、**読み取り**、**書き込み**、**実行**であり、次の表に示すように、ファイルとディレクトリに対して使用できます。
 
-|            |    ファイル     |   Directory |
+|            |    ファイル     |   ディレクトリ |
 |------------|-------------|----------|
 | **読み取り (R)** | ファイルの内容を読み取ることができる | ディレクトリの内容を一覧表示するには、**読み取り**と**実行**が必要です。 |
 | **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | ディレクトリに子項目を作成するには、**書き込み**と**実行**が必要です。 |
@@ -126,7 +126,7 @@ Data Lake Storage Gen2 アカウントに対する特定の操作の実行に必
 
 ### <a name="the-owning-group"></a>所有グループ
 
-POSIX ACL では、すべてのユーザーが*プライマリ グループ*に関連付けられています。 たとえば、ユーザー "alice" が "finance" グループに属しているとします。 Alice は複数のグループに属している可能性がありますが、1 つのグループが常にプライマリ グループとして指定されています。 POSIX では、Alice がファイルを作成すると、そのファイルの所有グループが彼女のプライマリ グループに設定されます。ここでは、"finance" グループです。 その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
+POSIX ACL では、すべてのユーザーが*プライマリ グループ*に関連付けられています。 たとえば、ユーザー "Alice" が "finance" グループに属しているとします。 Alice は複数のグループに属している可能性がありますが、1 つのグループが常にプライマリ グループとして指定されています。 POSIX では、Alice がファイルを作成すると、そのファイルの所有グループが彼女のプライマリ グループに設定されます。ここでは、"finance" グループです。 その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>新しいファイルまたはディレクトリに対する所有グループの割り当て
 

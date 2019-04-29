@@ -12,16 +12,16 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358877"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794254"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
 > [!NOTE]
-> Azure Monitor のデータ プラットフォームは、2 つの基本的なデータの種類であるメトリックとログに基づいています。 この記事では、メトリックについて説明します。 ログの詳細な説明については、「[Logs in Azure Monitor](data-platform-logs.md)」(Azure Monitor のログ) を参照し、これら 2 つの比較については、「[Azure Monitor data platforn](data-platform.md)」(Azure Monitor データ プラットフォーム) を参照してください。
+> Azure Monitor データ プラットフォームは、2 つの基本的なデータの種類に基づいています。メトリックとログです。 この記事では、メトリックについて説明します。 ログの詳細な説明については、「[Logs in Azure Monitor](data-platform-logs.md)」(Azure Monitor のログ) を参照し、これら 2 つの比較については、「[Azure Monitor data platforn](data-platform.md)」(Azure Monitor データ プラットフォーム) を参照してください。
 
 
 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 この記事では、メトリックの構造と、メトリックを使用してできること、およびメトリックにデータを保存できるさまざまなデータ ソースについて説明します。

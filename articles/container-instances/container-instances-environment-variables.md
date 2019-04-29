@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606890"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994777"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 
@@ -143,18 +143,15 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure Portal の例
 
-Azure Portal でコンテナーを開始するときに環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
+Azure portal においてコンテナー開始時の環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
 
-ポータルでデプロイするときには、変数の数が現在は 3 つに制限されていて、次の形式で入力する必要があります: `"variableName":"value"`
-
-例を表示するには、*NumWords* 変数と *MinLength* 変数を指定して [aci-wordcount][aci-wordcount] コンテナーを開始します。
-
-1. **[構成]** で、**[再起動ポリシー]** を *[On failure] (エラー時)* に設定します。
-2. 最初の変数には `"NumWords":"5"` を入力し、**[Add additional environment variables] (他の環境変数を追加する)** で **[はい]** 選択して、2 番目の変数には `"MinLength":"8"` を入力します。 **[OK]** を選択して確認してから、コンテナーをデプロイします。
+1. **[詳細]** ページ上で、**[再起動ポリシー]** を *[エラー時]* に設定します。
+2. **[環境変数]** 下で、最初の変数には値 `5` を指定して `NumWords` を入力し、2 番目の変数には値 `8` を指定して `MinLength` を入力します。 
+1. **[確認と作成]** を選択して確定してから、コンテナーをデプロイします。
 
 ![環境変数の有効化ボタンとテキスト ボックスを表示しているポータル ページ][portal-env-vars-01]
 
-コンテナーのログを表示するには、**[設定]** で **[コンテナー]** を選択し、**[ログ]** を選択します。 前の CLI と PowerShell のセクションで示した出力と同様に、環境変数によってスクリプトの動作がどのように変更されたかを表示できます。 5 つのワードだけが表示され、それぞれの最小文字数は 8 文字です。
+コンテナーのログを表示するには、**[設定]** 下で **[コンテナー]**、**[ログ]** の順に選択します。 前の CLI と PowerShell のセクションで示した出力と同様に、環境変数によってスクリプトの動作がどのように変更されたかを表示できます。 5 つのワードだけが表示され、それぞれの最小文字数は 8 文字です。
 
 ![コンテナーのログ出力を表示しているポータル][portal-env-vars-02]
 

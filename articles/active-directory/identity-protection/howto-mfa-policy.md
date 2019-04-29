@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/17/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: abd1049551d7dbc4823636dfdc00f64afab72cdf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520345"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008598"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>方法:多要素認証登録ポリシーを構成する
 
-Azure AD Identity Protection は、ポリシーを構成することによって多要素認証 (MFA) 登録の展開を管理するのに役立ちます。 この記事では、このポリシーの使用目的およびその構成方法について説明します。
+Azure AD Identity Protection は、MFA 登録を要求するポリシーを構成することによって多要素認証 (MFA) 登録の展開を管理するのに役立ちます。 この記事では、このポリシーの使用目的およびその構成方法について説明します。
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>多要素認証登録ポリシーとは
 
-Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。  
+Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。 ユーザーが MFA プロンプトに応答できるようにするには、まず MFA の登録をする必要があります。 
 
 次のような理由から、ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。
 
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication は、本人性の確認において、ユー�
 - アカウント侵害からの組織の保護と復旧の準備において重要な役割を果たします。
 
 
-詳しくは、「 [Azure Multi-Factor Authentication とは](../authentication/multi-factor-authentication.md)
+MFA の詳細については、[Azure Multi-Factor Authentication とは何か](../authentication/multi-factor-authentication.md)に関する記事を参照してください。
 
 
 ## <a name="how-do-i-access-the-mfa-registration-policy"></a>MFA 登録ポリシーにアクセスする方法
@@ -53,13 +53,13 @@ MFA 登録ポリシーは、[[Azure AD Identity Protection]](https://portal.azur
 
 ## <a name="policy-settings"></a>ポリシー設定
 
-サインイン リスク ポリシーを構成する場合は、次を設定する必要があります。
+MFA 登録ポリシーを構成する場合は、次を設定する必要があります。
 
 - ポリシーの適用先のユーザーとグループ:
 
     ![ユーザーとグループ](./media/howto-mfa-policy/11.png)
 
-- 適用されるアクセスの種類:  
+- MFA の登録要件を適用するコントロール:  
 
     ![Access](./media/howto-mfa-policy/12.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707e0aecdaf2a579d086e012519182078c1a6303
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313228"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006031"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -142,7 +142,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 > [!NOTE]
 > Office 2013 クライアントのための最新の認証
 >
-> アプリ パスワードは、先進認証をサポートしていないアプリにのみ必要になります。 Office 2013 クライアントでは、先進認証プロトコルがサポートされますが、構成が必要です。 さらに新しいバージョンの Office クライアントでは、先進認証プロトコルが自動的にサポートされます。 詳しくは、「 [Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
+> アプリ パスワードは、先進認証をサポートしていないアプリにのみ必要になります。 Office 2013 クライアントでは、先進認証プロトコルがサポートされますが、構成が必要です。 Office 2013 の 2015 年 3 月以降の更新を実行しているすべてのお客様は、最新の認証を利用できるようになりました。 詳しくは、「[Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
 
 **Q:テキスト メッセージが届かない場合や、双方向テキスト メッセージに返信しても認証がタイムアウトになる場合があるとユーザーが訴えています。**
 
@@ -200,7 +200,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 - 組織で作成および有効化されている MFA 登録ポリシーが、そのユーザーに適用されている。
 - そのユーザーは事前に MFA への登録を行っているが、選択した認証方法が、その後管理者によって無効化されている。 このため、ユーザーはもう一度 MFA 登録を行い、新しい既定の認証方法を選択する必要があります。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>エラー
 
 **Q:モバイル アプリ通知を使用して認証を行うときに、"認証しようとしているアカウントはアクティブ化されていません" というエラー メッセージが表示された場合、ユーザーはどうすればよいでしょうか。**
 

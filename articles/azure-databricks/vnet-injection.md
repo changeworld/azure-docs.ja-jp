@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: c29d2e1df0979481c0c8a1e1f2cd4d22b013212a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58229346"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003447"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>仮想ネットワーク内での Azure Databricks のデプロイ (プレビュー)
 
@@ -121,7 +121,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 [Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) や [Azure Resource Manager テンプレート](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)を使用せずにネットワーク セキュリティ グループを作成する場合は、サブネット上の以下のトラフィックを手動でホワイトリスト登録する必要があります。
 
-|方向|Protocol|ソース|発信元ポート|変換先|宛先ポート|
+|方向|プロトコル|ソース|発信元ポート|変換先|宛先ポート|
 |---------|--------|------|-----------|-----------|----------------|
 |受信|\*|VirtualNetwork|\*|\*|\*|
 |受信|\*|コントロール プレーン NAT IP|\*|\*|22|
@@ -133,12 +133,12 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 以下の IP アドレスを使用してサブネット トラフィックをホワイトリスト登録します。 SQL (metastore) およびストレージ (成果物およびログ ストレージ) の場合は、SQL およびストレージの[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用する必要があります。
 
-|Azure Databricks リージョン|Service|パブリック IP|
+|Azure Databricks リージョン|サービス|パブリック IP|
 |-----------------------|-------|---------|
 |米国東部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国東部 2|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国中北部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|米国中央部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|米国中部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国中南部|コントロール プレーン NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |米国西部|コントロール プレーン NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |米国西部 2|コントロール プレーン NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
@@ -188,7 +188,7 @@ Azure Databricks のサインイン画面で、カスタム仮想ネットワー
 
 ### <a name="notebook-command-errors"></a>Notebook コマンドのエラー
 
-**Command is hanging (コマンドがハングしています)**
+**コマンドが応答していません**
 
 考えられる原因: worker 間の通信がブロックされています。 受信セキュリティ規則が要件を満たしていることを確認して、修正を行ってください。
 

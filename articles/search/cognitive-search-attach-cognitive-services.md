@@ -7,36 +7,35 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880417"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683972"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
-AI アルゴリズムは、Azure Search のインデックス作成操作での非構造化データの処理に使用される[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)を制御します。 これらのアルゴリズムは、画像分析および光学式文字認識 (OCR) 用の [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) やエンティティ認識、キー フレーズ抽出、その他のエンリッチメント用の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) などの [Cognitive Services リソース](https://azure.microsoft.com/services/cognitive-services/)に基づきます。
+AI アルゴリズムでは、Azure Search での非構造化データの処理に使用される[コグニティブ インデックス パイプライン](cognitive-search-concept-intro.md)が制御されます。 これらのアルゴリズムは、画像分析および光学式文字認識 (OCR) 用の [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) やエンティティ認識、キー フレーズ抽出、その他のエンリッチメント用の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) などの [Cognitive Services リソース](https://azure.microsoft.com/services/cognitive-services/)に基づきます。
 
 限られた数のドキュメントであれば無料で強化できます。また、有料の Cognitive Services リソースをアタッチすれば、さらに大きくて複雑なワークロードに対応できます。 この記事では、Cognitive Services リソースをコグニティブ スキルセットと関連付けることによって、[Azure Search のインデックス作成](search-what-is-an-index.md)の間にデータを充実させる方法について説明します。
 
 パイプラインが、Cognitive Services APIs と無関係なスキルで構成されている場合は、Cognitive Services リソースをアタッチする必要があります。 そうすることで、1 日あたりのエンリッチメントを少量に制限する **Free** リソースがオーバーライドされます。 Cognitive Services APIs にバインドされていないスキルの料金はかかりません。 これらのスキルには、[カスタム スキル](cognitive-search-create-custom-skill-example.md)、[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) などがあります。
 
 > [!NOTE]
-> 2018 年 12 月 21 日より、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができます。 それにより、スキルセットの実行に対して課金できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+> 処理の頻度を増やしたり、ドキュメントを追加したり、AI アルゴリズムを追加したりすることによってスコープを拡大する場合は、請求対象の Cognitive Services リソースをアタッチする必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像の抽出は Azure Search の課金対象であり、現在はプレビュー価格で提供されています。 詳細については、「[Azure Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)」のページ、または「[請求体系について](search-sku-tier.md#how-billing-works)」を参照してください。
+> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像抽出は Azure Search の料金であり、[Azure Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)に示されています。
 
 
 ## <a name="use-free-resources"></a>無料リソースを使用する
 
 コグニティブ検索のチュートリアルとクイック スタートの演習を完了するため、制限された無料の処理オプションを使用することができます。 
 
-> [!Important]
-> 2019 年 2 月 1 日からは、**無料 (制限付きのエンリッチメント)** は 1 日あたり 20 ドキュメントに制限されます。 
+**無料 (制限付きのエンリッチメント)** は、サブスクリプションごとに、1 日あたり 20 ドキュメントに制限されます。
 
 1. **データのインポート** ウィザードを開きます。
 
@@ -56,15 +55,21 @@ AI アルゴリズムは、Azure Search のインデックス作成操作での�
 
 Cognitive Services APIs を呼び出すスキルに対してのみ課金されます。 [カスタム スキル](cognitive-search-create-custom-skill-example.md)、[テキスト マージャー](cognitive-search-skill-textmerger.md)、[テキスト スプリッター](cognitive-search-skill-textsplit.md)、[Shaper](cognitive-search-skill-shaper.md) スキルなどの API ベースでないスキルは課金されません。
 
-1. **データのインポート** ウィザードの **[Cognitive Services をアタッチする]** で、既存のリソースを選択するか、**[新しい Cognitive Services リソースを作成します]** をクリックします。
+1. **データのインポート** ウィザードを開き、データ ソースを選択し、**[認知検索を追加します (省略可能)]** に進みます。 
 
-1. **[新しい Cognitive Services リソースを作成します]** の場合は、新しいタブが開き、リソースを作成できます。 リソースに一意の名前を付けます。
+1. **[Cognitive Services をアタッチする]** を展開してから、**[新しい Cognitive Services リソースを作成します]** を選択します。 新しいタブが開き、リソースを作成できるようになります。 
 
-1. 新しい Cognitive Services リソースを作成する場合、お使いの Azure Search リソースと**同じリージョンを選択**します。
+   ![Cognitive Services リソースの作成](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Cognitive Services リソースの作成")
 
-1. オールインワン価格レベル **S0** を選択します。 このレベルでは、コグニティブ検索の定義済みスキルの基になる Vision と Language の機能が提供されます。
+1. [場所] では、Azure Search と同じリージョンを選択し、リージョン間の送信帯域幅に課金されないようにします。
 
-    ![新しい Cognitive Services リソースの作成](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "新しい Cognitive Services リソースの作成")
+1. [価格レベル] では、**[S0]** を選択し、Cognitive Services の機能のオールインワン コレクション (Azure Search で使用される事前定義済みスキルをサポートする Vision および Language の機能を含む) を取得します。 
+
+   S0 レベルの場合、特定のワークロードの料金は、[Cognitive Services の価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)で確認できます。
+  
+   + **[プランの選択]** で *[Cognitive Services]* が選択されていることを確認します。
+   + [Language features]\(Language の機能\) の下で、*[Text Analytics Standard]\(Text Analytics Standard\)* の料金が AI インデックスに適用されます。 
+   + [Vision features]\(Vision の機能\) の下で、*[Computer Vision S1]\(Computer Vision S1\)* の料金が適用されます。
 
 1. **[作成]** をクリックして、新しい Cognitive Services リソースをプロビジョニングします。 
 

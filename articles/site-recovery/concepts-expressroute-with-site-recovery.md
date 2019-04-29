@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/8/2019
+ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: f8179f5e647039737a59afdd04d345bf465acfdf
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726347"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004994"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -39,6 +39,15 @@ ExpressRoute のルーティング ドメインの詳細と比較については
 Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](hyper-v-azure-architecture.md)、[VMware 仮想マシン](vmware-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーと Azure への移行が可能になります。 オンプレミスから Azure へのすべてのシナリオで、レプリケーション データは Azure Storage アカウントに送信され、格納されます。 レプリケーション中に仮想マシンの料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。
 
 Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使用するために、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering) (新規作成では非推奨) または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションのための[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も確実に満たされるようにします。 仮想マシンまたはサーバーが Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。 プライベート ピアリングを介したレプリケーションはサポートされていません。
+
+オンプレミスでプロキシを使用しているときに、レプリケーションのトラフィックで ExpressRoute を使用したい場合は、構成サーバーとプロセス サーバーにプロキシ バイパスの一覧を構成する必要があります。 次の手順に従ってください。
+
+- システム ユーザーのコンテンツにアクセスするための PsExec ツールを[こちら](https://aka.ms/PsExec)からダウンロードします。
+- psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" をコマンド ラインで実行して、インターネット エクスプローラーでシステム ユーザーのコンテンツを開きます。
+- IE にプロキシ設定を追加する
+- バイパスの一覧に、Azure ストレージの URL (*.blob.core.windows.net) を追加します。
+
+これにより、レプリケーション トラフィックのみが ExpressRoute を通り、一方で通信はプロキシを通過できます。
 
 組み合わせたシナリオは次の図のように表されます。![ExpressRoute を使用してオンプレミスから Azure へ](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 

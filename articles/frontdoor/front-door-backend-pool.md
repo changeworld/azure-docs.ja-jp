@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879201"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000591"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door Service の バック エンドとバックエンド プール
 この記事では、Azure Front Door Service でアプリのデプロイをマップする方法に関する概念について説明します。 また、アプリのバックエンドに関する、Front Door 構成のさまざまな用語についても説明します。
@@ -43,7 +43,7 @@ Front Door Service のバックエンドは、アプリのホスト名または�
 
 Front Door によりバックエンドに転送された要求には、対象のリソースを取得するためにバックエンドで使用されるホスト ヘッダー フィールドが含まれています。 このフィールドの値は通常はバックエンドの URI から取得し、ホストとポートが含まれます。
 
-たとえば、www\.contoso.com に対する要求にはホスト ヘッダー www\.contoso.com が含まれます。 Azure portal を使用してバックエンドを構成する場合、このフィールドの既定値はバックエンドのホスト名です。 バックエンドが contoso-westus.azurewebsites.net である場合、Azure portal でホスト ヘッダーとしてバックエンドに自動的に設定される値は contoso-westus.azurewebsites.net です。 ただし、このフィールドを明示的に設定せずに Azure Resource Manager テンプレートまたは別の方法を使用すると、Front Door Service はホスト ヘッダーの値として受信ホスト名を送信します。 www\.contoso.com に対して要求が行われ、バックエンドが空のヘッダー フィールドを持つ contoso-westus.azurewebsites.net である場合、Front Door Service はホスト ヘッダーを www\.contoso.com として設定します。
+たとえば、www\.contoso.com に対する要求にはホスト ヘッダー www\.contoso.com が含まれます。 Azure portal を使用してバックエンドを構成する場合、このフィールドの既定値はバックエンドのホスト名です。 バックエンドが contoso-westus.azurewebsites.net である場合、Azure portal 内でバックエンド ホスト ヘッダーに自動的に設定される値は contoso-westus.azurewebsites.net です。 ただし、このフィールドを明示的に設定せずに Azure Resource Manager テンプレートまたは別の方法を使用すると、Front Door Service はホスト ヘッダーの値として受信ホスト名を送信します。 www\.contoso.com に対して要求が行われ、バックエンドが空のヘッダー フィールドを持つ contoso-westus.azurewebsites.net である場合、Front Door Service はホスト ヘッダーを www\.contoso.com として設定します。
 
 ほとんどのアプリ バックエンド (Azure Web Apps、Blob Storage、Cloud Services など) では、ホスト ヘッダーがバックエンドのドメインと一致している必要があります。 ただし、バックエンドにルーティングするフロントエンド ホストでは、www\.contoso.azurefd.net などの別のホスト名が使用されます。
 
@@ -83,7 +83,7 @@ Front Door Service は、構成されたバックエンドそれぞれに定期�
 
 - **サンプル サイズ**。 バックエンド正常性評価のために検討が必要な正常性プローブのサンプル数を特定します。
 
-- **成功サンプル サイズ**。 前述のとおり、サンプル サイズ、つまりバックエンドが正常であると見なすために必要な成功サンプルの数を定義します。 たとえば、Front Door の正常性プローブの間隔が 30 秒、サンプル サイズが 5 秒、成功サンプル サイズが 3 秒だとします。 バックエンドの正常性プローブを評価するたびに、150 秒間 (5 x 30) で最新の 5 つのサンプルを確認します。 バックエンドが正常であると宣言するには、少なくとも 3 つのプローブが成功している必要があります。
+- **成功サンプル サイズ**。 前述のとおり、サンプル サイズ、つまりバックエンドが正常であると見なすために必要な成功サンプルの数を定義します。 たとえば、Front Door の正常性プローブの間隔が 30 秒、サンプル サイズが 5、成功サンプル サイズが 3 だとします。 バックエンドの正常性プローブを評価するたびに、150 秒間 (5 x 30) で最新の 5 つのサンプルを確認します。 バックエンドが正常であると宣言するには、少なくとも 3 つのプローブが成功している必要があります。
 
 - **待機時間感度 (追加の待機時間)**。 Front Door で待ち時間の測定感度の範囲内にあるバックエンドに要求を送信するか、最も近いバックエンドに要求を転送するかを定義します。
 
@@ -91,5 +91,5 @@ Front Door Service は、構成されたバックエンドそれぞれに定期�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Front Door プロファイルを作成する](quickstart-create-front-door.md)
-- [Front Door のしくみ](front-door-routing-architecture.md)
+- [Front Door プロファイルの作成](quickstart-create-front-door.md)
+- [Front Door の仕組み](front-door-routing-architecture.md)

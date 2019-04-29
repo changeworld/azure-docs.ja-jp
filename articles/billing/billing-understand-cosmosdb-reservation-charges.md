@@ -6,19 +6,25 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648539"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010298"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Azure Cosmos DB に予約割引が適用されるしくみについて
 
 Azure Cosmos DB の予約容量を購入すると、予約の属性や数量に合致する Azure Cosmos DB リソースに予約割引が自動的に適用されます。 予約では、Azure Cosmos DB リソース用にプロビジョニングされたスループットがカバーされます。 ソフトウェア、ネットワーク、ストレージ、定義済みコンテナーの料金はカバーされません。
+
+## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
+
+予約割引は、"*使用しないと失われます*"。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
+
+リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は "*失われます*"。
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>Azure Cosmos DB アカウントに適用される予約割引
 
