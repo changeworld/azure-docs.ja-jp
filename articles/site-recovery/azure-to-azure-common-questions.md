@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649885"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149735"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>一般的な質問:Azure から Azure へのレプリケーション
 
@@ -67,7 +67,7 @@ Site Recovery を使用して、同じ地理クラスター内の 2 つのリー
 
 いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、[こちらの記事](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>階層ごとに個別のリソース グループを使用してアプリケーションをレプリケートすることはできますか? 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>階層ごとに個別のリソース グループを使用してアプリケーションをレプリケートすることはできますか?
 はい、アプリケーションをレプリケートし、ディザスター リカバリー構成を個別のリソース グループに保持することは可能です。
 たとえば、各階層のアプリ、データベース、および Web が個別のリソース グループに属するアプリケーションがある場合は、[レプリケーション ウィザード](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)を 3 回クリックして、すべての階層を保護することができます。 ASR は、これら 3 つの階層を、3 つの異なるリソース グループにレプリケートします。
 
@@ -89,11 +89,12 @@ Site Recovery を使用して、同じ地理クラスター内の 2 つのリー
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
 Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。
 
-### <a name="what-is-an-application-consistent-recovery-point"></a>アプリケーション整合性復旧ポイントとは何ですか? 
-アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされ、メモリ内のすべてのデータと処理中のすべてのトランザクションが追加されます。 これらの追加コンテンツのため、アプリケーション整合性スナップショットは、最も複雑で実行時間も最も長くかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
+### <a name="what-is-an-application-consistent-recovery-point"></a>アプリケーション整合性復旧ポイントとは何ですか?
+アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされ、メモリ内のすべてのデータと処理中のすべてのトランザクションが追加されます。
+これらの追加コンテンツのため、アプリケーション整合性スナップショットは、最も複雑で実行時間も最も長くかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
-アプリケーション整合性復旧ポイントでは、メモリ内やプロセス内のすべてのデータが取得されます。またその際、Windows 上の VSS などのフレームワークで、アプリケーションを停止する必要があります。 これをあまり頻繁に行うと、既にワークロードがビジー状態の場合に、パフォーマンスに影響が出る可能性があります。 通常、データベース以外のワークロードについては、アプリ整合性復旧ポイントの間隔を短くしないことを推奨します。また、データベース ワークロードについても、1 時間で十分です。 
+アプリケーション整合性復旧ポイントでは、メモリ内やプロセス内のすべてのデータが取得されます。またその際、Windows 上の VSS などのフレームワークで、アプリケーションを停止する必要があります。 これをあまり頻繁に行うと、既にワークロードがビジー状態の場合に、パフォーマンスに影響が出る可能性があります。 通常、データベース以外のワークロードについては、アプリ整合性復旧ポイントの間隔を短くしないことを推奨します。また、データベース ワークロードについても、1 時間で十分です。
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>アプリケーション整合性復旧ポイントが生成される最小の頻度はどのくらいですか?
 Site Recovery では、アプリケーション整合性復旧ポイントを 1 時間という最小の頻度で作成できます。
@@ -216,7 +217,11 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 再保護の後、フェールバックにかかる時間は、通常、プライマリ リージョンからセカンダリ リージョンへのフェールオーバーの時間と同程度です。
 
 ## <a name="capacity"></a>容量
-### <a name="does-site-recovery-work-with-reserved-instance"></a>Site Recovery は予約インスタンスと共に動作しますか。
+
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように保証されますか?
+ASR フェールオーバー操作が開始されたときは、必ずディザスター リカバリー用に ASR によって保護されている VM が正常にディザスター リカバリー (DR) リージョンにデプロイされることを保証する試みの中で、Azure Site Recovery (ASR) チームは Azure の容量管理チームと協力して、十分なインフラストラクチャの容量を計画しています。
+
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery は予約インスタンスと共に動作しますか?
 はい。DR リージョンで[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を購入することができ、それらは ASR フェールオーバー操作で使用されます。 </br> お客様による追加の構成は不要です。
 
 

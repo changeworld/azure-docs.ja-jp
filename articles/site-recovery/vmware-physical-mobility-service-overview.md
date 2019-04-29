@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 3b354492778426d1e3c31e53e277fd9be1e22c93
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048114"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149633"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -113,9 +113,9 @@ ms.locfileid: "59048114"
     ```
 
 #### <a name="installation-settings"></a>インストールの設定
-**Setting** | **詳細**
+**設定** | **詳細**
 --- | ---
-使用法 | UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
+使用法 | UnifiedAgent.exe /Role <MS/MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 セットアップ ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log の下。
 /Role | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 /InstallLocation| 省略可能なパラメーター。 モビリティ サービスのインストール場所 (任意のフォルダー) を指定します。
@@ -123,7 +123,7 @@ ms.locfileid: "59048114"
 /Silent| 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
-**Setting** | **詳細**
+**設定** | **詳細**
 --- | ---
 使用法 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
 エージェント構成ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log の下。
@@ -152,16 +152,16 @@ ms.locfileid: "59048114"
     ```
 
 #### <a name="installation-settings"></a>インストールの設定
-**Setting** | **詳細**
+**設定** | **詳細**
 --- | ---
-使用法 | ./install -d \<Install Location> -r <MS|MT> -v VmWare -q
+使用法 | ./install -d <Install Location> -r <MS/MT> -v VmWare -q
 -r | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 -d | 省略可能なパラメーター。 モビリティ サービスのインストール場所 (/usr/local/ASR) を指定します。
 -v | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。
 パラメーター | 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定
-**Setting** | **詳細**
+**設定** | **詳細**
 --- | ---
 使用法 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
 -i | 必須パラメーターです。 構成サーバーの IP アドレスを指定します。 任意の有効な IP アドレスを使用します。

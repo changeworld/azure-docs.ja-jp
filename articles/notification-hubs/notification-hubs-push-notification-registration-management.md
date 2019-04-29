@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260458"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149131"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -36,11 +36,11 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 登録によって、デバイスのプラットフォーム通知サービス (PNS) ハンドルが、タグや場合によってはテンプレートに関連付けられます。 PNS ハンドルは、ChannelURI、デバイス トークン、または FCM 登録 ID の場合があります。タグは、通知を正しいデバイス ハンドル セットにルーティングするために使用されます。 詳細については、「 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)」を参照してください。 テンプレートは、登録ごとの変換を実装するために使用されます。 詳細については、「 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
 
 > [!NOTE]
-> Azure Notification Hubs では、登録ごとに最大 60 個のタグがサポートされます。
+> Azure Notification Hubs では、デバイスごとに最大 60 個のタグがサポートされます。
 
 ### <a name="installations"></a>インストール
 
-インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
 
 次に、インストールを使用する方法の主な利点について説明します。
 
@@ -48,7 +48,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 - このインストール モデルは、特定のデバイスに通知を直接送信できるようになる特殊なタグ形式 (`$InstallationId:{INSTALLATION_ID}`) をサポートしています。 たとえば、アプリのコードがこの特定のデバイスのインストール ID `joe93developer` を設定している場合、開発者は `$InstallationId:{joe93developer}` タグに通知を送信するときにこのデバイスを対象にすることができます。 こうすることで、コードを追加することなく、特定のデバイスを対象にすることができます。
 - また、インストールを使用することで、部分的な登録の更新を実行できます。 インストールの部分的な更新は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。 これは、登録時にタグを更新する場合に役立ちます。 登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
-インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://msdn.microsoft.com/library/azure/mt621153.aspx)に関するページ、または[インストール プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)に関するページを参照してください。
+インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation)に関するページ、または[インストール プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)に関するページを参照してください。
 
 ```json
 // Example installation format to show some supported properties

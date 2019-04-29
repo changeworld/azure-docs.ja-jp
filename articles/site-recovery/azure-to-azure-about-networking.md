@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651545"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149316"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -48,7 +48,7 @@ ms.locfileid: "58651545"
 
 **URL** | **詳細**  
 --- | ---
-*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 VM に対するすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) をホワイトリストに登録できます。
+*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) をホワイトリストに登録できます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
 *.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery IP' を使用できます。
 *.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery Monitoring IP' を使用できます。
@@ -80,7 +80,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    米国東部 | 13.82.88.226 | 104.45.147.24
    米国西部 | 40.83.179.48 | 104.40.26.199
    米国中南部 | 13.84.148.14 | 104.210.146.250
-   米国中央部 | 40.69.144.231 | 52.165.34.144
+   米国中部 | 40.69.144.231 | 52.165.34.144
    米国東部 2 | 52.184.158.163 | 40.79.44.59
    東日本 | 52.185.150.140 | 138.91.1.105
    西日本 | 52.175.146.69 | 138.91.17.38
@@ -96,13 +96,19 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    英国南部 2 | 13.87.37.4| 13.87.34.139
    英国北部 | 51.142.209.167 | 13.87.102.68
    韓国中部 | 52.231.28.253 | 52.231.32.85
-   韓国南部 | 52.231.298.185 | 52.231.200.144
+   韓国南部 | 52.231.198.185 | 52.231.200.144
    フランス中部 | 52.143.138.106 | 52.143.136.55
    フランス南部 | 52.136.139.227 |52.136.136.62
    オーストラリア中部| 20.36.34.70 | 20.36.46.142
    オーストラリア中部 2| 20.36.69.62 | 20.36.74.130
    南アフリカ西部 | 102.133.72.51 | 102.133.26.128
    南アフリカ北部 | 102.133.160.44 | 102.133.154.128
+   米国政府バージニア州 | 52.227.178.114 | 23.97.0.197
+   US Gov アイオワ | 13.72.184.23 | 23.97.16.186
+   米国政府アリゾナ | 52.244.205.45 | 52.244.48.85
+   米国政府テキサス | 52.238.119.218 | 52.238.116.60
+   US DoD East | 52.181.164.103 | 52.181.162.129
+   US DoD Central | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>NSG 構成の例
 
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
@@ -124,7 +130,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
    **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
-   米国中央部 | 40.69.144.231 | 52.165.34.144
+   米国中部 | 40.69.144.231 | 52.165.34.144
 
 ### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中央部
 
@@ -138,7 +144,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
    **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
-   米国中央部 | 13.82.88.226 | 104.45.147.24
+   米国中部 | 13.82.88.226 | 104.45.147.24
 
 ## <a name="network-virtual-appliance-configuration"></a>ネットワーク仮想アプライアンスの構成
 

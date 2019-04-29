@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: mialdridm
 ms.custom: seodec18
-ms.openlocfilehash: 095d637eac5478c65ca3f15cc845518a94aa5149
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 35cee297156cf64deeef8c9c6b514ec8176f9ca5
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080335"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149976"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
@@ -57,6 +57,10 @@ Microsoft オンライン サービス (Office 365、Dynamics 365、および Az
 
 ### <a name="publicpeering"></a>Azure パブリック ピアリング (新しい回線では非推奨)
 
+> [!Note]
+> Azure パブリック ピアリングでは、各 BGP セッションに 1 つの NAT IP アドレスが関連付けられます。 NAT IP アドレスが 2 つより多い場合は、[Microsoft ピアリング](https://docs.microsoft.com/en-us/azure/expressroute/how-to-move-peering)に移行してください。そうすれば、独自の NAT の割り当てを構成できるだけでなく、選択的なプレフィックス アドバタイズのためにルート フィルターを使用できます。 
+>
+
 Azure Storage、SQL Database、Websites などのサービスは、パブリック IP アドレスで提供されます。 パブリック ピアリング ルーティング ドメインを経由して、(クラウド サービスの VIP などの) パブリック IP アドレスでホストされているサービスにプライベート接続できます。 パブリック ピアリング ドメインをご使用の DMZ に接続すれば、インターネット経由で接続しなくても WAN からパブリック IP アドレス上のすべての Azure サービスに接続できます。
 
 接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 パブリック ピアリングが有効になると、すべての Azure サービスに接続できます。 ルートをアドバタイズするサービスを選択することはできません。
@@ -75,7 +79,7 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 | **AS 番号の要件** |プライベートおよびパブリックの AS 番号。 いずれかを使用する場合はパブリックの AS 番号を所有している必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |
 | **サポート対象 IP プロトコル**| IPv4 |  IPv4、IPv6 | IPv4 |
 | **ルーティング インターフェイスの IP アドレス** |RFC1918 およびパブリック IP アドレス |ルーティング レジストリに登録されているパブリック IP アドレス。 |ルーティング レジストリに登録されているパブリック IP アドレス。 |
-| **MD5 ハッシュのサポート** |[はい] |[はい] |[はい] |
+| **MD5 ハッシュのサポート** |はい |はい |はい |
 
 ExpressRoute 回線の一部として 1 つ以上のルーティング ドメインを有効にすることができます。 すべてのルーティング ドメインを 1 つのルーティング ドメインに取り込みたい場合は、同じ VPN 上に配置するように選択できます。 また、上図に似た別のルーティング ドメイン上に配置することもできます。 推奨構成は、プライベート ピアリングをコア ネットワークに直接接続し、パブリック ピアリングと Microsoft ピアリングのリンクを DMZ に接続する構成です。
 

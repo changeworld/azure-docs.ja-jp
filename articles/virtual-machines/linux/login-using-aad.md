@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848696"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148953"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -43,7 +43,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 この機能のプレビュー期間中は、次の Linux ディストリビューションがサポートされます。
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 | --- | --- |
 | CentOS | CentOS 6、CentOS 7 |
 | Debian | Debian 9 |

@@ -4,17 +4,17 @@ description: Update Management エージェントの問題をトラブルシュ�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/14/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d4331942526b3dbda376605db2618ceeaec3f60a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166000"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149616"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
 
@@ -25,6 +25,9 @@ Update Management でマシンに**準備完了**が表示されない理由は�
 * **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
 * **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
 * **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
+
+> [!NOTE]
+> Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 

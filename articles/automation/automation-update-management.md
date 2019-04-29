@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/09/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426491"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149701"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -208,9 +208,9 @@ Automation アカウントで **[Update Management]** をクリックすると�
 
 ## <a name="install-updates"></a>更新プログラムをインストールする
 
-ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成して、必要な更新プログラムをインストールできます。 更新プログラムのデプロイとは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。 デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。 コンピューター グループの詳細については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください。
+ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成して、必要な更新プログラムをインストールできます。 更新プログラムのデプロイを作成するには、Automation アカウントに対する書き込みアクセス権と、デプロイで対象とされる Azure VM に対する書き込みアクセス権が必要です。 更新プログラムのデプロイとは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。 デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。 コンピューター グループの詳細については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください。
 
- 更新プログラムのデプロイにコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。 その後で加えられたグループへの変更は反映されません。 このような[動的グループ](#using-dynamic-groups)の使用を回避するため、これらのグループはデプロイ時に解決され、クエリによって定義されます。
+更新プログラムのデプロイにコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。 その後で加えられたグループへの変更は反映されません。 このような[動的グループ](#using-dynamic-groups)の使用を回避するため、これらのグループはデプロイ時に解決され、Azure VM に対するクエリまたは Azure 以外の VM に関する保存された検索によって定義されます。
 
 > [!NOTE]
 > Azure Marketplace からデプロイされた Windows 仮想マシンは、既定で Windows Update Service から自動更新を受信するように設定されています。 このソリューションまたは Windows 仮想マシンをワークスペースに追加しても、この動作は変わりません。 このソリューションで更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。
@@ -219,13 +219,13 @@ Ubuntu でメンテナンス期間外に更新プログラムが適用されな�
 
 Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、サポートされている方法に従って、ディストリビューション オンライン ファイル リポジトリから更新する必要があります。
 
-新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
+新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
-| 更新するグループ (プレビュー)|サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。|
+| 更新するグループ |Azure マシンの場合、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 </br></br>Azure 以外のマシンの場合、既存の保存された検索を選択して、デプロイに含める Azure 以外のマシンのグループを選択します。 </br></br>詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。|
 | 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
 |更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
 |更新プログラムの包含/除外|**[包含/除外]** ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、[包含の動作](automation-update-management.md#inclusion-behavior)に関するページをご覧ください。 |
@@ -333,8 +333,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a>Windows でのサード パーティの修正プログラム
 
-Update Management は、サポート対象の Windows システムへの修正プログラムの適用を WSUS または Windows Update に依存しています。 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) などのツールを使用すれば、カスタム更新プログラムを WSUS に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで WSUS を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。 Updates Publisher を構成する方法については、「[Install Updates Publisher](/sccm/sum/tools/install-updates-publisher)」(Updates Publisher のインストール) を参照してください。
+Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 これは、WSUS または Windows Update のいずれかです。 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) などのツールを使用すれば、カスタム更新プログラムを WSUS に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで System Center Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。 Updates Publisher を構成する方法については、「[Install Updates Publisher](/sccm/sum/tools/install-updates-publisher)」(Updates Publisher のインストール) を参照してください。
 
 ## <a name="ports"></a>ネットワークの計画
 
@@ -364,7 +364,7 @@ https://dev.loganalytics.io/)を参照してください。
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>単一の Azure VM 評価クエリ (Windows)
 
-VMUUID 値を、クエリの対象である仮想マシンの VM GUID に置き換えます。 Azure Monitor ログで次のクエリを実行することで、使用する必要がある VMUUID を確認できます。 `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+VMUUID 値を、クエリの対象である仮想マシンの VM GUID に置き換えます。 Azure Monitor ログで次のクエリを実行することで、使用する必要がある VMUUID を確認できます。`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
 
@@ -393,7 +393,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>単一の Azure VM 評価クエリ (Linux)
 
-Linux のディストリビューションによっては、Azure Resource Manager に由来する VMUUID 値と、Azure Monitor ログに格納されている値との間で[エンディアン](https://en.wikipedia.org/wiki/Endianness)が一致しない場合があります。 次のクエリは、いずれかのエンディアンでの一致をチェックします。 結果を適切に返すために、VMUUID 値を GUID のビッグエンディアン形式とリトルエンディアン形式に置き換えます。 Azure Monitor ログで次のクエリを実行することで、使用する必要がある VMUUID を確認できます。 `Update | where Computer == "<machine name>"
+Linux のディストリビューションによっては、Azure Resource Manager に由来する VMUUID 値と、Azure Monitor ログに格納されている値との間で[エンディアン](https://en.wikipedia.org/wiki/Endianness)が一致しない場合があります。 次のクエリは、いずれかのエンディアンでの一致をチェックします。 結果を適切に返すために、VMUUID 値を GUID のビッグエンディアン形式とリトルエンディアン形式に置き換えます。 Azure Monitor ログで次のクエリを実行することで、使用する必要がある VMUUID を確認できます。`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>不足している更新プログラムの概要
@@ -567,7 +567,14 @@ Update
 
 ## <a name="using-dynamic-groups"></a>動的グループの使用
 
-Update Management では、Azure VM の動的グループを更新プログラムのデプロイの対象にする機能が提供されています。 これらのグループはクエリによって定義され、更新プログラムのデプロイが開始するときに、そのグループのメンバーが評価されます。 動的なグループは、クラシック VM では動作しません。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
+Update Management では、Azure または Azure 以外の VM の動的グループを更新プログラムのデプロイの対象にする機能が提供されています。 これらのグループはデプロイ時に評価されるため、マシンを追加するためにデプロイを編集する必要はありません。
+
+> [!NOTE]
+> 更新プログラムのデプロイを作成するには、適切なアクセス許可が必要です。 詳細については、「[更新プログラムをインストールする](#install-updates)」を参照してください。
+
+### <a name="azure-machines"></a>Azure マシン
+
+これらのグループはクエリによって定義され、更新プログラムのデプロイが開始するときに、そのグループのメンバーが評価されます。 動的なグループは、クラシック VM では動作しません。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
 
 * サブスクリプション
 * リソース グループ
@@ -579,6 +586,12 @@ Update Management では、Azure VM の動的グループを更新プログラ�
 動的グループの結果をプレビューするには、**[プレビュー]** ボタンをクリックします。 このプレビューでは、その時点でのグループのメンバーシップが表示されます。この例では、タグ **Role** が **BackendServer** に等しいマシンを検索しています。 このタグを持つマシンがさらに追加された場合、そのグループに対する将来のデプロイに追加されます。
 
 ![グループをプレビューする](./media/automation-update-management/preview-groups.png)
+
+### <a name="non-azure-machines"></a>Azure 以外のマシン
+
+Azure 以外のマシンの場合、動的グループの作成にコンピューター グループが使用されるため、保存された検索も参照されます。 保存された検索の作成方法については、「[コンピューター グループの作成](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)」を参照してください。 グループを作成した後は、保存された検索の一覧からそのグループを選択できます。 **[プレビュー]** をクリックすると、保存された検索でのその時点でのコンピューターをプレビューできます。
+
+![グループを選択する](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
 

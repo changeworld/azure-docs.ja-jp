@@ -4,17 +4,17 @@ description: Update Management エージェントの問題をトラブルシュ�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/14/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 075cf254dbf7c5d03f1afac64315f6c6f773159c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813111"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150117"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
 
@@ -25,6 +25,9 @@ Update Management でコンピューターに**準備完了**が表示されな�
 * **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
 * **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
 * **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
+
+> [!NOTE]
+> Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 

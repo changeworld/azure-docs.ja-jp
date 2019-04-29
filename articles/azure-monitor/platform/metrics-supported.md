@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b49c6733fd148fc6fb8b9fe535ac839f5b7402f9
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851171"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150168"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -506,10 +506,10 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |JobEndedSuccess|Successful Jobs (成功したジョブ)|Count|合計|成功したジョブの数。|ディメンションなし|
 |JobEndedFailure|Failed Jobs (失敗したジョブ)|Count|合計|失敗したジョブの数。|ディメンションなし|
-|JobEndedCancelled|Cancelled Jobs (取り消されたジョブ)|Count|合計|取り消されたジョブの数。|ディメンションなし|
+|JobEndedCanceled|取り消されたジョブ|Count|合計|取り消されたジョブの数。|ディメンションなし|
 |JobAUEndedSuccess|Successful AU Time (成功した AU 時間)|Seconds|合計|成功したジョブの AU 時間の合計。|ディメンションなし|
 |JobAUEndedFailure|Failed AU Time (失敗した AU 時間)|Seconds|合計|失敗したジョブの AU 時間の合計。|ディメンションなし|
-|JobAUEndedCancelled|Cancelled AU Time (取り消された AU 時間)|Seconds|合計|取り消されたジョブの AU 時間の合計。|ディメンションなし|
+|JobAUEndedCanceled|取り消された AU 時間|Seconds|合計|取り消されたジョブの AU 時間の合計。|ディメンションなし|
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
@@ -876,7 +876,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |RunsCompleted|完了した実行|Count|合計|完了したワークフロー実行の数。|ディメンションなし|
 |RunsSucceeded|成功した実行|Count|合計|成功したワークフロー実行の数。|ディメンションなし|
 |RunsFailed|失敗した実行|Count|合計|失敗したワークフロー実行の数。|ディメンションなし|
-|RunsCancelled|キャンセルされた実行|Count|合計|キャンセルされたワークフロー実行の数。|ディメンションなし|
+|RunsCanceled|取り消された実行|Count|合計|取り消されたワークフロー実行の数。|ディメンションなし|
 |RunLatency|実行の待機時間|Seconds|平均|完了したワークフロー実行の待機時間。|ディメンションなし|
 |RunSuccessLatency|成功した実行の待機時間|Seconds|平均|成功したワークフロー実行の待機時間。|ディメンションなし|
 |RunThrottledEvents|実行スロットル イベント|Count|合計|ワークフロー アクションまたはトリガー スロットル イベントの数。|ディメンションなし|
@@ -1513,7 +1513,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Http5xx|HTTP サーバー エラー|Count|合計|HTTP サーバー エラー|インスタンス|
 |MemoryWorkingSet|メモリ ワーキング セット|Bytes|平均|メモリ ワーキング セット|インスタンス|
 |AverageMemoryWorkingSet|平均メモリ ワーキング セット|Bytes|平均|平均メモリ ワーキング セット|インスタンス|
-|FunctionExecutionUnits|関数の実行単位|Count|合計|関数の実行単位|インスタンス|
+|FunctionExecutionUnits|関数の実行単位|MB/ミリ秒|合計|[関数の実行単位](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|インスタンス|
 |FunctionExecutionCount|関数の実行回数|Count|合計|関数の実行回数|インスタンス|
 |PrivateBytes|Private Bytes|Bytes|平均|Private Bytes|インスタンス|
 |IoReadBytesPerSecond|IO 読み取りバイト/秒|BytesPerSecond|合計|IO 読み取りバイト/秒|インスタンス|

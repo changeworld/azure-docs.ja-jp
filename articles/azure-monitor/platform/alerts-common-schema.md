@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 8f8dcff0b72ea92e835c0702113a9cb6a7678e86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c18227a491478d0d8010761440a54fd088344b39
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851610"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149378"
 ---
 # <a name="common-alert-schema"></a>共通アラート スキーマ
 
@@ -39,14 +39,14 @@ ms.locfileid: "58851610"
 |:---|:---|
 | sms | すべてのアラートの種類における一貫性のある SMS テンプレート。 |
 | Email | 一貫性のある詳細な電子メール テンプレート。これにより、一目で問題を診断できます。 ポータルおよび影響を受けるリソース上のアラート インスタンスへの埋め込みディープ リンクにより、即座に修復プロセスに移動できます。 |
-| Webhook/ロジック アプリ/Azure 関数 | すべてのアラートの種類における一貫性のある JSON 構造により、異なるアラートの種類にわたって簡単に統合を構築できます。 |
+| Webhook、Logic App、Azure Function、Automation Runbook | すべてのアラートの種類における一貫性のある JSON 構造により、異なるアラートの種類にわたって簡単に統合を構築できます。 |
 
 また、新しいスキーマにより、Azure portal と Azure mobile app の両方で、より優れたアラート使用エクスペリエンスを可能にします。 
 
-[Webhook/ロジック アプリ/Azure Functions のスキーマ定義に関する詳細を表示します。](https://aka.ms/commonAlertSchemaDefinitions)
+[Webhooks、Logic Apps、Azure Functions、Automation Runbooks のスキーマ定義について説明します。](https://aka.ms/commonAlertSchemaDefinitions)
 
 > [!NOTE]
-> 次のアクションでは、共通アラート スキーマはサポートされません。ITSM Connector、Automation Runbook。
+> 次のアクションでは、共通アラート スキーマはサポートされません。ITSM Connector。
 
 ## <a name="how-do-i-enable-the-common-alert-schema"></a>共通アラート スキーマを有効にする方法
 
@@ -54,11 +54,10 @@ ms.locfileid: "58851610"
 
 > [!NOTE]
 > 1. 次のアラートの種類では、共通スキーマがデフォルトでサポートされています (オプトインは不要です)。
->     * 障害異常アラート
+>     * スマート検出アラート
 > 1. 現在、次のアラートの種類では共通スキーマはサポートされていません。
->     * サービス正常性アラート
->     * アクティビティ ログ - セキュリティ アラート
 >     * [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) によって生成されたアラート
+>     * [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario) によって生成されたアラート
 
 ### <a name="through-the-azure-portal"></a>Azure portal を使用
 
@@ -69,7 +68,7 @@ ms.locfileid: "58851610"
 
 ### <a name="through-the-action-groups-rest-api"></a>Action Groups REST API を使用
 
-[Action Groups API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用して共通アラート スキーマにオプトインすることもできます。 [作成または更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API 呼び出しの実行中に、電子メール、Webhook、ロジック アプリ、Azure 関数のすべてのアクションに対して、フラグ "useCommonAlertSchema" を 'true' (オプトイン) または 'false' (オプトアウト) に設定できます。
+[Action Groups API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用して共通アラート スキーマにオプトインすることもできます。 [作成または更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)の REST API 呼び出しの実行中に、電子メール、Webhook、Logic Apps、Azure Functions、Automation Runbook のすべてのアクションに対して、フラグ "useCommonAlertSchema" を 'true' (オプトイン) または 'false' (オプトアウト) に設定できます。
 
 たとえば、[作成または更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) REST API に対して次の要求本文を実行すると、次の操作が行われます。
 
@@ -125,7 +124,7 @@ ms.locfileid: "58851610"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Webhooks/Logic Apps/Azure Functions の共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDefinitions)
+- [Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 

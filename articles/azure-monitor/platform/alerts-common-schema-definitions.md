@@ -1,6 +1,6 @@
 ---
-title: Webhooks/Logic Apps/Azure Functions の共通アラート スキーマ定義
-description: Webhooks/Logic Apps/Azure Functions の共通アラート スキーマ定義について説明します
+title: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義
+description: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義について説明します
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010398"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149412"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
-この記事では、Webhooks/Logic Apps/Azure Functions の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
+この記事では、Webhooks、Logic Apps、Azure Functions、Automation Runbooks の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
 
 ## <a name="overview"></a>概要
 
