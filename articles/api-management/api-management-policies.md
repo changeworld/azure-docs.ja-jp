@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f617abc164761b4839b188822585eaa4eb0aacd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936897"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005521"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。  
@@ -53,6 +53,7 @@ ms.locfileid: "33936897"
 -   [認証ポリシー](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [基本認証](api-management-authentication-policies.md#Basic) -基本認証を使用してバックエンド サービスで認証します。  
     -   [クライアント証明書による認証](api-management-authentication-policies.md#ClientCertificate) -クライアント証明書を使用してバックエンド サービスで認証します。  
+    -   [マネージド ID による認証](api-management-authentication-policies.md#ManagedIdentity) - クライアント証明書を使用してバックエンド サービスで認証します。  
 -   [キャッシュ ポリシー](api-management-caching-policies.md#CachingPolicies)  
     -   [キャッシュから取得](api-management-caching-policies.md#GetFromCache) - キャッシュを検索して、キャッシュに格納された有効な応答があればそれを返します。  
     -   [キャッシュに格納](api-management-caching-policies.md#StoreToCache) - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。  

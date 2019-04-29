@@ -3,16 +3,16 @@ title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 03/30/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276101"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995011"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -124,6 +124,8 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
    ![[変更履歴] ページでのポリシーの変更履歴の差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
 
 "_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更が、リソースの現在のコンプライアンス対応状態に関連していない場合があります。
+
+変更履歴データは、[Azure Resource Graph](../../resource-graph/overview.md) によって提供されます。 Azure portal の外部でこの情報を照会するには、「[Get resource changes (リソース変更を取得する)](../../resource-graph/how-to/get-resource-changes.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

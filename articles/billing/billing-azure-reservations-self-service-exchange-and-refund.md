@@ -1,7 +1,6 @@
 ---
 title: Azure の予約のセルフサービスによる交換と払戻 | Microsoft Docs
 description: Azure の予約を交換または払い戻す方法について説明します。
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,20 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/5/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281983"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009312"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
 Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 変化するニーズを満たすために、予約を同じ種類の別の予約と交換できます。 また、予約が不要になった場合は、最大で年間 50,000 米国ドルまでの払い戻しができます。
 
 セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制や CSP などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
+
+既存の予約を交換または払い戻しするには、予約注文の所有者アクセス権を持っている必要があります。
 
 ## <a name="exchange-an-existing-reserved-instance"></a>既存の予約済みインスタンスを交換する
 
@@ -39,7 +40,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 予約を払い戻すには、**[予約の詳細]** に移動し、**[払戻]** をクリックします。
 
-## <a name="how-return-and-exchange-transactions-are-processed"></a>返金および交換トランザクションの処理方法
+## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 
 最初に、Microsoft が既存の予約を取り消し、その予約の日割り金額を払い戻します。 交換がある場合は、新しい購入が処理されます。 アカウントの種類と支払い方法に応じて、Microsoft は次のいずれかの方法を使用して払戻を処理します。
 
@@ -49,7 +50,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 元の購入が超過であった場合、Microsoft はクレジット メモを発行します。
 
-### <a name="pay-as-you-go-invoice-payment-customers-and-cloud-solution-provider-program"></a>従量課金制の請求書支払のお客様とクラウド ソリューション プロバイダー プログラム
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>従量課金制の請求書支払いと CSP プログラム
 
 元の予約購入請求書がキャンセルされ、払戻用の新しい請求書が作成されます。 交換の場合、新しい請求書には払戻と新しい購入が示されます。 払戻額は購入に対して調整されます。 予約の払戻のみの場合は、日割り金額が保持され、今後の予約購入に対して調整されます。
 
@@ -74,7 +75,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 - 払戻を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
 - Microsoft は返金に対して 12% のペナルティを課す権利を留保します。ただし、現在、このペナルティは課金されていません。
 
-## <a name="exchange-a-non-premium-storage-vm-reservation-for-a-premium-storage-reservation"></a>Premium 以外のストレージ VM 予約を Premium Storage 予約と交換する
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 
 Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、**[交換]** をクリックします。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
 

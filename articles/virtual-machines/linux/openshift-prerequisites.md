@@ -4,7 +4,7 @@ description: Azure で OpenShift をデプロイするための前提条件を�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: f4fd33b250bf1f79610f4363e85b97be87892d78
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449973"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001651"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure で OpenShift をデプロイする場合の共通の前提条件
 
@@ -28,19 +28,19 @@ ms.locfileid: "57449973"
 
 OpenShift のインストールには Ansible プレイブックを使用します。 Ansible は、Secure Shell (SSH) を使用してすべてのクラスター ホストに接続し、インストール手順を完了します。
 
-Ansible でリモート ホストへの SSH 接続を開始した場合は、パスワードを入力することはできません。 このため、秘密キーにパスワード (パスフレーズ) を関連付けることができないか、デプロイが失敗します。
+Ansible でリモート ホストへの SSH 接続を行う場合、パスワードを入力することはできません。 このため、秘密キーにパスワード (パスフレーズ) を関連付けることができないか、デプロイが失敗します。
 
-仮想マシン (VM) は Azure Resource Manager テンプレートを通じてデプロイされるため、すべての VM へのアクセスに同じ公開キーが使用されます。 また、対応する秘密キーを、すべてのプレイブックを実行する VM に挿入する必要もあります。 この操作を安全に行うには、Azure キー コンテナーを使用して秘密キーを VM に渡します。
+仮想マシン (VM) は Azure Resource Manager テンプレートを通じてデプロイされるため、すべての VM へのアクセスに同じ公開キーが使用されます。 対応する秘密キーも、すべてのプレイブックを実行する VM 上に存在する必要があります。 この操作を安全に行うには、Azure キー コンテナーを使用して秘密キーを VM に渡します。
 
-コンテナーに永続的ストレージが必要であれば、永続ボリュームが必要になります。 OpenShift では、この機能のための Azure 仮想ハード ディスク (VHD) がサポートされていますが、まず Azure をクラウド プロバイダーとして構成する必要があります。
+コンテナーに永続的ストレージが必要であれば、永続ボリュームが必要になります。 OpenShift では永続ボリューム用の Azure 仮想ハード ディスク (VHD) がサポートされていますが、まず Azure がクラウド プロバイダーとして構成されている必要があります。
 
 このモデルでは、OpenShift で以下の処理が実行されます。
 
-- Azure Storage アカウントまたはマネージド ディスクで VHD オブジェクトを作成します。
+- Azure ストレージ アカウントまたはマネージド ディスクに VHD オブジェクトを作成します。
 - VHD を VM にマウントし、ボリュームをフォーマットします。
 - ボリュームをポッドにマウントします。
 
-この構成が機能するには、Azure でこれらのタスクを実行できるアクセス許可が OpenShift に必要です。 そのためには、サービス プリンシパルが必要です。 サービス プリンシパルは、リソースへのアクセス許可が付与された Azure Active Directory でのセキュリティ アカウントです。
+この構成が機能するには、Azure でこれらのタスクを実行できるアクセス許可が OpenShift に必要です。 この目的のためにサービス プリンシパルが使用されます。 サービス プリンシパルは、リソースへのアクセス許可が付与された Azure Active Directory でのセキュリティ アカウントです。
 
 サービス プリンシパルには、ストレージ アカウントと、クラスターを構成する VM へのアクセスが必要です。 OpenShift クラスターのすべてのリソースを 1 つのリソース グループにデプロイした場合、サービス プリンシパルにそのリソース グループに対するアクセス許可を付与できます。
 
@@ -60,7 +60,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーのホストには、専用のリソース グループを使用することをお勧めします。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 キー コンテナーをホストするには、専用のリソース グループを使用する必要があります。 このグループは、OpenShift クラスター リソースがデプロイするリソース グループとは別です。
 
 次の例では、*keyvaultrg* という名前のリソース グループを場所 *eastus* に作成します。
 
@@ -68,7 +68,7 @@ az login
 az group create --name keyvaultrg --location eastus
 ```
 
-## <a name="create-a-key-vault"></a>Key Vault を作成します
+## <a name="create-a-key-vault"></a>キー コンテナーを作成する
 [az keyvault create](/cli/azure/keyvault) コマンドを使用して、クラスターの SSH キーを格納するキー コンテナーを作成します。 キー コンテナーの名前はグローバルに一意である必要があります。
 
 次の例では、*keyvault* という名前のキー コンテナーを *keyvaultrg* リソース グループに作成します。
@@ -99,7 +99,7 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ```
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成 
-OpenShift は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、OpenShift などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 サービス プリンシパルのアクセス許可のスコープは、サブスクリプション全体ではなく、特定のリソース グループに設定することが最適です。
+OpenShift は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、OpenShift などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 最適なのは、サービス プリンシパルのアクセス許可のスコープを、サブスクリプション全体ではなく、特定のリソース グループに設定することです。
 
 [az ad sp create-for-rbac](/cli/azure/ad/sp) を使用してサービス プリンシパルを作成し、OpenShift が必要とする資格情報を出力します。
 
@@ -136,6 +136,33 @@ Windows を使用している場合は、```az group show --name openshiftrg --q
 
 サービス プリンシパルについて詳しくは、「[Azure CLI で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」をご覧ください。
 
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Resource Manager テンプレートにのみ適用される前提条件
+
+SSH 秘密キー (**sshPrivateKey**)、Azure AD クライアント シークレット (**aadClientSecret**)、OpenShift 管理パスワード (**openshiftPassword**)、および Red Hat Subscription Manager パスワード、またはアクティブ化キー (**rhsmPasswordOrActivationKey**) 用のシークレットを作成する必要があります。  さらに、カスタム SSL 証明書が使用される場合は、6 つのシークレット (**routingcafile**、**routingcertfile**、**routingkeyfile**、**mastercafile**、**mastercertfile**、および **masterkeyfile**) を追加で作成する必要があります。  これらのパラメーターの詳細を説明します。
+
+テンプレートでは特定のシークレット名が参照されるため、前述の太字で示されている名前を使用する**必要があります** (大文字小文字の区別があります)。
+
+### <a name="custom-certificates"></a>カスタム証明書
+
+既定では、テンプレートでは、OpenShift Web コンソールとルーティング ドメイン用の自己署名証明書を使用して OpenShift クラスターがデプロイされます。 カスタム SSL 証明書を使用する場合は、'routingCertType' を 'custom' に、'masterCertType' を 'custom' に設定します。  証明書用の .pem 形式の CA ファイル、証明書ファイル、およびキー ファイルが必要です。  片方でカスタム証明書を使用できますが、他方では使用できません。
+
+Key Vault のシークレットにこれらのファイルを格納する必要があります。  秘密キーに使用するのと同じ Key Vault を使用します。  シークレット名用の 6 つの入力を追加で要求する代わりに、各 SSL 証明書ファイル用のシークレット名を使用するようにテンプレートがハードコーディングされます。  次の表の情報を使用して、証明書データを格納してください。
+
+| シークレット名      | 証明書ファイル   |
+|------------------|--------------------|
+| mastercafile     | マスター CA ファイル     |
+| mastercertfile   | マスター証明書ファイル   |
+| masterkeyfile    | マスター キー ファイル    |
+| routingcafile    | ルーティング CA ファイル    |
+| routingcertfile  | ルーティング証明書ファイル  |
+| routingkeyfile   | ルーティング キー ファイル   |
+
+Azure CLI を使用して、シークレットを作成します。 次に例を示します。
+
+```bash
+az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
+```
+
 ## <a name="next-steps"></a>次の手順
 
 この記事では、次のトピックについて説明しました。
@@ -146,4 +173,4 @@ Windows を使用している場合は、```az group show --name openshiftrg --q
 次に、OpenShift クラスターをデプロイしてみましょう。
 
 - [OpenShift Container Platform のデプロイ](./openshift-container-platform.md)
-- [OKD をデプロイする](./openshift-okd.md)
+- [OpenShift Container Platform 自己管理型マーケットプレース プランをデプロイする](./openshift-marketplace-self-managed.md)

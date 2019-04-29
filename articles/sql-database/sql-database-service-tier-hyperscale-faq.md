@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540671"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680905"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -216,7 +216,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>ハイパースケール サービス レベルに移行した後で使えなくなる機能があるか
 
-はい。 長期保存バックアップを始めとする Azure SQL Database の一部の機能は、パブリック プレビュー段階のハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。
+はい。 パブリック プレビューでは、ハイパースケールで Azure SQL Database の長期保有バックアップはサポートされません。 ハイパースケールにデータベースを移行すると、この機能は動作を停止します。
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>オンプレミスの SQL Server データベースまたは my SQL Server 仮想マシン データベースをハイパースケールに移行できるか
 
@@ -295,7 +295,7 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>ハイパースケール サービス レベルに移行した後で使えなくなる機能があるか
 
-はい。 TDE や長期保存バックアップを始めとする Azure SQL Database の一部の機能は、パブリック プレビュー段階のハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。
+はい。 パブリック プレビューでは、ハイパースケールで Azure SQL Database の長期保有バックアップはサポートされません。 ハイパースケールにデータベースを移行すると、この機能は動作を停止します。
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Polybase は SQL Database ハイパースケールで作動するか
 

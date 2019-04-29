@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906125"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998908"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -229,8 +229,8 @@ v2 SKU の場合、完全一致が URL パス マップ内のパスの順序よ�
 
 HTTP から HTTPS へのリダイレクトの詳細については、以下を参照してください。
 - [Azure portal を使用して HTTP から HTTPS にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [PowerShell を使用して HTTP から HTTP にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Azure CLI を使用して HTTP から HTTP にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [PowerShell を使用して HTTP から HTTPS にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
+- [Azure CLI を使用して HTTP から HTTPS にリダイレクトする](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
 ##### <a name="external-site"></a>外部サイト
 
@@ -265,7 +265,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 リスナーで HTTPS と組み合わせたこの設定は、[エンド ツー エンド SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview) をサポートします。 これによって、機密データを暗号化して安全にバックエンドに送信することができます。 エンド ツー エンド SSL が有効になったバックエンド プール内の各バックエンド サーバーは、セキュリティで保護された通信を許可するように証明書で構成する必要があります。
 
-### <a name="port"></a>ポート
+### <a name="port"></a>Port
 
 この設定では、バックエンド サーバーがアプリケーション ゲートウェイからのトラフィックをリッスンするポートを指定します。 1 から 65535 までの範囲のポートを構成できます。
 
@@ -306,7 +306,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 > [!NOTE]
 > 対応する HTTP 設定が明示的にリスナーに関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。
 
-### <a id="pick"/></a>[バックエンド アドレスからホスト名を選択します]
+### <a id="pick"/></a>バックエンド アドレスからホスト名を選択する
 
 この機能によって、要求の *host* ヘッダーが、バックエンド プールのホスト名に動的に設定されます。 これには IP アドレスまたは FQDN が使用されます。
 
@@ -344,6 +344,6 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 Application Gateway コンポーネントについて学習したので、次は以下を行うことができます。
 
-- [Azure portal を使用してアプリケーション ゲートウェイを作成する](quick-create-portal.md)
+- [Azure portal 上でアプリケーション ゲートウェイを作成する](quick-create-portal.md)
 - [PowerShell を使用してアプリケーション ゲートウェイを作成する](quick-create-powershell.md)
 - [Azure CLI を使用してアプリケーション ゲートウェイを作成する](quick-create-cli.md)

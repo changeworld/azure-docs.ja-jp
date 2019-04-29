@@ -13,23 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/15/2019
+ms.date: 04/17/2019
 ms.author: jonbeck
-ms.openlocfilehash: 517e3b7d6a0ad81e1afb6664a0b9b2f59a0479da
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6bf073356137588075da3d9dcc220eee36ac59cf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54350372"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006666"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>ストレージ最適化済み仮想マシンのサイズ
 
-
-
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
 
-
 ## <a name="other-sizes"></a>その他のサイズ
+
 - [汎用](sizes-general.md)
 - [コンピューティングの最適化](sizes-compute.md)
 - [メモリの最適化](sizes-memory.md)
@@ -38,5 +36,7 @@ ms.locfileid: "54350372"
 - [旧世代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 
+[Lsv2 シリーズの仮想マシンのパフォーマンスを最適化する](storage-performance.md)方法を確認します。

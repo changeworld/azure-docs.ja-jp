@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5d85d1f211a4cc0307cca6d631a4bf286d3e576
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 16f684674e69113a869346d5de9ef1d50734f01b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271817"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009158"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -483,7 +483,7 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 |フィールド名|変更箇所|古い値|新しい値|
 |----------|------------|----------|----------|
 |Category|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
-|targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>グループ</li></ul>|
+|targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>Group</li></ul>|
 |loggedByService|監査ログを生成したサービスの名前を提供します。|Null|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|
 |結果|監査ログの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>失敗</li></ul>|
 
@@ -524,7 +524,7 @@ Azure AD 管理者は、Microsoft Authenticator アプリの通知や、任意�
 
 - その他のモバイル認証アプリ/ハードウェア トークンのコード
 
-- 電子メール
+- Email
 
 - 音声通話
 

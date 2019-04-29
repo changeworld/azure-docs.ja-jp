@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: ec97cf903a37465f98007750fc41edc0952ab3a6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9deaa2f1e381dffbd85b0ee150c5782098a9db6b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889598"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006813"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -95,7 +95,7 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 
 アドホック データの取り込みに使用できるツールの一覧を次に示します。
 
-| [データ ソース] | 取り込みに使用するツール |
+| データ ソース | 取り込みに使用するツール |
 | --- | --- |
 | ローカル コンピューター |[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)<br><br>[AzCopy ツール](../common/storage-use-azcopy-v10.md)|
 | Azure Storage BLOB |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[AzCopy ツール](../common/storage-use-azcopy-v10.md)<br><br>[HDInsight クラスター上で実行されている DistCp](data-lake-storage-use-distcp.md)|
@@ -142,7 +142,7 @@ HDInsight クラスターに関連付けられたデータの取り込みに使�
 |---|--|
 |Apache DistCp | [Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy ツール | [AzCopy を使用してデータを転送する](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure Data Factory | [Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) |
+|Azure Data Factory | [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>オンプレミスまたは IaaS Hadoop クラスターに格納されているデータ
 
