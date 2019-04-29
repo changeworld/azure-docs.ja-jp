@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 36c4757feb367fd39ae94640cb8e8a0f1714a0d3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192127"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737166"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -23,7 +23,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、[Azure CLI 2.0 を使用して Azure VM のカスタム イメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)に関するチュートリアルを参照してください。 
+この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、[チュートリアル: Azure CLI 2.0 を使用して Azure VM のカスタム イメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)に関するチュートリアルを参照してください。 
 
 ## <a name="preview-register-the-feature"></a>更新:機能を登録する
 
@@ -66,7 +66,7 @@ az sig image-definition create \
 
 ## <a name="create-an-image-version"></a>イメージ バージョンを作成する 
  
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、必要に応じてイメージのバージョンを作成します。 イメージ バージョンを作成するためにベースラインとして使用する、マネージド イメージの ID を渡す必要があります。 [az image list](/cli/azure/image?view#az-image-list) を使用して、リソース グループ内にあるイメージに関する情報を取得できます。 次の例では、イメージのバージョンは *1.0.0* であり*米国中西部*, *米国中南部*、および米国東部 2* リージョンに、合計 5 個のレプリカを作成しています。
+[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、必要に応じてイメージのバージョンを作成します。 イメージ バージョンを作成するためにベースラインとして使用する、マネージド イメージの ID を渡す必要があります。 [az image list](/cli/azure/image?view#az-image-list) を使用して、リソース グループ内にあるイメージに関する情報を取得できます。 この例では、イメージのバージョンは *1.0.0* であり、*米国中西部*リージョンに 5 個のレプリカ、*米国中南部*リージョンに 1 個のレプリカ、および*米国東部 2* リージョンに 1 個のレプリカを作成しています。
 
 ```azurecli-interactive 
 az sig image-version create \

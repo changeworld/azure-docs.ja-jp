@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: sachins
-ms.openlocfilehash: ad77204f0c5d916b4006ffa68a9608429f93f87a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e371ac848eff0e66390fe17bc23934725fca35f9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246060"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000608"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス
 
@@ -31,11 +31,11 @@ Data Lake Storage Gen2 でビッグ データを取り扱うときは、サー�
 
 ### <a name="security-for-groups"></a>グループのセキュリティ
 
-お客様またはお客様のユーザーが階層型名前空間を有効にしたストレージ アカウント内のデータにアクセスする必要がある場合は、Azure Active Directory セキュリティ グループを使用することをお勧めします。 まず、ファイルシステムのルートに **ReadOnlyUsers**、**WriteAccessUsers**、**FullAccessUsers** のいずれかのグループを設定し、主なサブディレクトリには別のグループも設定することをお勧めします。 後でその他のユーザーのグループを追加する可能性があるものの、まだ特定されていない場合は、特定のフォルダーへのアクセス権限が付与されたダミーのセキュリティ グループを作成することをおすすめします。 セキュリティ グループを使用すると、何千ものファイルに新しいアクセス許可を割り当てるときに、処理時間がそれほどかからなくて済みます。
+お客様またはお客様のユーザーが階層型名前空間を有効にしたストレージ アカウント内のデータにアクセスする必要がある場合は、Azure Active Directory セキュリティ グループを使用することをお勧めします。 まず、ファイル システムのルートに **ReadOnlyUsers**、**WriteAccessUsers**、**FullAccessUsers** のいずれかのグループを設定し、主要なサブディレクトリには別のグループも設定することをお勧めします。 後でその他のユーザーのグループを追加する可能性があるものの、まだ特定されていない場合は、特定のフォルダーへのアクセス権限が付与されたダミーのセキュリティ グループを作成することをおすすめします。 セキュリティ グループを使用すると、何千ものファイルに新しいアクセス許可を割り当てるときに、処理時間がそれほどかからなくて済みます。
 
 ### <a name="security-for-service-principals"></a>サービス プリンシパルのセキュリティ
 
-Azure Active Directory のサービス プリンシパルは、一般的に Azure Databricks などのサービスで、Data Lake Storage Gen2 のデータにアクセスするために使用されます。 多くのお客様にとって、Data Lake Storage Gen2 ファイルシステムのルートのフル アクセスが付与された Azure Active Directory のサービス プリンシパルが 1 つあれば十分です。 お客様によっては、1 つのクラスターはデータへのフル アクセス、もう 1 つのクラスターには読み取りアクセスのみなど、複数のクラスターに別個のサービス プリンシパルを要求する場合があります。 
+Azure Active Directory のサービス プリンシパルは、一般的に Azure Databricks などのサービスで、Data Lake Storage Gen2 のデータにアクセスするために使用されます。 多くのお客様にとって、Data Lake Storage Gen2 ファイル システムのルートのフル アクセスが付与された Azure Active Directory のサービス プリンシパルが 1 つあれば十分です。 お客様によっては、1 つのクラスターはデータへのフル アクセス、もう 1 つのクラスターには読み取りアクセスのみなど、複数のクラスターに別個のサービス プリンシパルを要求する場合があります。 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Azure のサービス アクセスに対して Data Lake Storage Gen2 のファイアウォールを有効にする
 

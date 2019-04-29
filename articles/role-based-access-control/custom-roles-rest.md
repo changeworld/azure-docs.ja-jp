@@ -12,23 +12,39 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cec75f757789be4f962cf2b0fbf6b9443a4453cc
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588196"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999776"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースのカスタム ロールを作成する
 
 [Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用して、カスタム ロールを作成して管理する方法について説明します。
 
-## <a name="list-roles"></a>ロールの一覧表示
+## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
-すべてのロールを一覧表示する、または表示名を使って単一のロールに関する情報を取得するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list) REST API を使用します。 この API を呼び出すには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス許可が必要です。 この操作のアクセス権は、いくつかの[組み込みロール](built-in-roles.md)に付与されています。
+ディレクトリ内のすべてのカスタム ロールを一覧表示するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list) REST API を使用します。
+
+1. 次の要求から開始します。
+
+    ```http
+    GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. *{filter}* をロールの種類に置き換えます。
+
+    | filter | 説明 |
+    | --- | --- |
+    | `$filter=type%20eq%20'CustomRole'` | CustomRole 型に基づいてフィルター処理する |
+
+## <a name="list-custom-roles-at-a-scope"></a>スコープでのカスタム ロールの一覧表示
+
+スコープでのカスタム ロールを一覧表示するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list) REST API を使用します。
 
 1. 次の要求から開始します。
 
@@ -38,26 +54,47 @@ ms.locfileid: "56588196"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. *{filter}* には、ロールの一覧をフィルター処理するために適用する条件を指定します。
+1. *{filter}* をロールの種類に置き換えます。
 
     | filter | 説明 |
     | --- | --- |
-    | `$filter=atScopeAndBelow()` | 指定したスコープとそのすべての子スコープでの割り当てに使用できるロールを一覧表示します。 |
+    | `$filter=type%20eq%20'CustomRole'` | CustomRole 型に基づいてフィルター処理する |
+
+## <a name="list-a-custom-role-definition-by-name"></a>名前によるカスタム ロール定義の一覧表示
+
+カスタム ロールに関する情報を表示名によって取得するには、[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。
+
+1. 次の要求から開始します。
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter={filter}
+    ```
+
+1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
+
+    | Scope (スコープ) | Type |
+    | --- | --- |
+    | `subscriptions/{subscriptionId}` | サブスクリプション |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+
+1. *{filter}* をロールの表示名に置き換えます。
+
+    | filter | 説明 |
+    | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | ロールの完全な表示名の URL エンコード形式を使用します。 次に例を示します。`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="get-information-about-a-role"></a>ロールに関する情報を取得する
+## <a name="list-a-custom-role-definition-by-id"></a>ID によるカスタム ロール定義の一覧表示
 
-ロール定義識別子を使ってロールに関する情報を取得するには、[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。 この API を呼び出すには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス許可が必要です。 この操作のアクセス権は、いくつかの[組み込みロール](built-in-roles.md)に付与されています。
+カスタム ロールに関する情報を一意の識別子によって取得するには、[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。
 
-単一のロールに関する情報をその表示名を使って取得する方法については、前の「 [ロールの一覧表示](custom-roles-rest.md#list-roles)」セクションを参照してください。
-
-1. [ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list) REST API を使用して、ロールの GUID 識別子を取得します。 組み込みロールの場合は、[組み込みロール](built-in-roles.md)から識別子を取得することもできます。
+1. [ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list) REST API を使用して、ロールの GUID 識別子を取得します。
 
 1. 次の要求から開始します。
 
@@ -67,17 +104,17 @@ ms.locfileid: "56588196"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{roleDefinitionId}* は、ロールの定義の GUID 識別子に置き換えます。
 
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 
-カスタム ロールを作成するには、[ロールの定義 - 作成または更新](/rest/api/authorization/roledefinitions/createorupdate) REST API を使用します。 この API を呼び出すには、すべての `assignableScopes` において `Microsoft.Authorization/roleDefinitions/write` 操作へのアクセス許可が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは [Owner](built-in-roles.md#owner) と [User Access Administrator](built-in-roles.md#user-access-administrator) だけです。 
+カスタム ロールを作成するには、[ロールの定義 - 作成または更新](/rest/api/authorization/roledefinitions/createorupdate) REST API を使用します。 この API を呼び出すには、すべての `assignableScopes` に対して `Microsoft.Authorization/roleDefinitions/write` アクセス許可を保持するロールに割り当てられたユーザーを使って、サインインする必要があります。 組み込みのロールのうち、[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)のみに、このアクセス許可が含まれています。
 
 1. カスタム ロールのアクセス許可の作成に使用可能な[リソース プロバイダー操作](resource-provider-operations.md)の一覧を確認します。
 
@@ -115,11 +152,11 @@ ms.locfileid: "56588196"
 
 1. URI 内の *{scope}* は、カスタム ロールの 1 つ目の `assignableScopes` に置き換えます。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{roleDefinitionId}* は、カスタム ロールの GUID 識別子に置き換えます。
 
@@ -168,9 +205,9 @@ ms.locfileid: "56588196"
 
 ## <a name="update-a-custom-role"></a>カスタム ロールの更新
 
-カスタム ロールを更新するには、[ロールの定義 - 作成または更新](/rest/api/authorization/roledefinitions/createorupdate) REST API を使用します。 この API を呼び出すには、すべての `assignableScopes` において `Microsoft.Authorization/roleDefinitions/write` 操作へのアクセス許可が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは [Owner](built-in-roles.md#owner) と [User Access Administrator](built-in-roles.md#user-access-administrator) だけです。 
+カスタム ロールを更新するには、[ロールの定義 - 作成または更新](/rest/api/authorization/roledefinitions/createorupdate) REST API を使用します。 この API を呼び出すには、すべての `assignableScopes` に対して `Microsoft.Authorization/roleDefinitions/write` アクセス許可を保持するロールに割り当てられたユーザーを使って、サインインする必要があります。 組み込みのロールのうち、[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)のみに、このアクセス許可が含まれています。
 
-1. カスタム ロールに関する情報を取得するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list)または[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。 詳細については、このページの「[ロールの一覧表示](custom-roles-rest.md#list-roles)」セクションを参照してください。
+1. カスタム ロールに関する情報を取得するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list)または[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。 詳しくは、先ほどの「[カスタム ロールの一覧表示](#list-custom-roles)」セクションをご覧ください。
 
 1. 次の要求から開始します。
 
@@ -180,11 +217,11 @@ ms.locfileid: "56588196"
 
 1. URI 内の *{scope}* は、カスタム ロールの 1 つ目の `assignableScopes` に置き換えます。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{roleDefinitionId}* は、カスタム ロールの GUID 識別子に置き換えます。
 
@@ -252,9 +289,9 @@ ms.locfileid: "56588196"
 
 ## <a name="delete-a-custom-role"></a>カスタム ロールの削除
 
-カスタム ロールを削除するには、[ロールの定義 - 削除](/rest/api/authorization/roledefinitions/delete) REST API を使用します。 この API を呼び出すには、すべての `assignableScopes` において `Microsoft.Authorization/roleDefinitions/delete` 操作へのアクセス許可が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは [Owner](built-in-roles.md#owner) と [User Access Administrator](built-in-roles.md#user-access-administrator) だけです。 
+カスタム ロールを削除するには、[ロールの定義 - 削除](/rest/api/authorization/roledefinitions/delete) REST API を使用します。 この API を呼び出すには、すべての `assignableScopes` に対して `Microsoft.Authorization/roleDefinitions/delete` アクセス許可を保持するロールに割り当てられたユーザーを使って、サインインする必要があります。 組み込みのロールのうち、[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)のみに、このアクセス許可が含まれています。
 
-1. カスタム ロールの GUID 識別子を取得するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list)または[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。 詳細については、このページの「[ロールの一覧表示](custom-roles-rest.md#list-roles)」セクションを参照してください。
+1. カスタム ロールの GUID 識別子を取得するには、[ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list)または[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get) REST API を使用します。 詳しくは、先ほどの「[カスタム ロールの一覧表示](#list-custom-roles)」セクションをご覧ください。
 
 1. 次の要求から開始します。
 
@@ -264,11 +301,11 @@ ms.locfileid: "56588196"
 
 1. URI 内の *{scope}* は、カスタム ロールを削除するスコープに置き換えます。
 
-    | Scope (スコープ) | type |
+    | Scope (スコープ) | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. *{roleDefinitionId}* は、カスタム ロールの GUID 識別子に置き換えます。
 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/19/2019
+ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848381"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009074"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -40,7 +40,7 @@ ms.locfileid: "58848381"
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>自動フェールオーバー グループの用語と機能
 
-- **フェールオーバー グループ**
+- **フェールオーバー グループ (FOG)**
 
   フェールオーバー グループは、プライマリ リージョンでの機能停止により、すべてまたは一部のプライマリ データベースが使用できなくなった場合に、1 つの単位として別のリージョンにフェールオーバーできる単一のマネージド インスタンス内の、または単一の SQL Database サーバーによって管理されるデータベースのグループです。
 
@@ -77,11 +77,11 @@ ms.locfileid: "58848381"
 
   - **読み取り/書き込みリスナー用の SQL Database サーバーの DNS CNAME レコード**
 
-     SQL Database サーバー上では、現在のプライマリの URL を指すフェールオーバー グループ用の DNS CNAME レコードは、`failover-group-name.database.windows.net` という形式になります。
+     SQL Database サーバー上では、現在のプライマリの URL を指すフェールオーバー グループ用の DNS CNAME レコードは、`<fog-name>.database.windows.net` という形式になります。
 
   - **読み取り/書き込みリスナー用のマネージド インスタンスの DNS CNAME レコード**
 
-     マネージド インスタンスでは、現在のプライマリの URL を指すフェールオーバー グループ用の DNS CNAME レコードは、`failover-group-name.zone_id.database.windows.net` という形式になります。
+     マネージド インスタンスでは、現在のプライマリの URL を指すフェールオーバー グループ用の DNS CNAME レコードは、`<fog-name>.zone_id.database.windows.net` という形式になります。
 
 - **フェールオーバー グループの読み取り専用リスナー**
 
@@ -89,11 +89,11 @@ ms.locfileid: "58848381"
 
   - **読み取り専用リスナー用の SQL Database サーバーの DNS CNAME レコード**
 
-     SQL Database サーバー上では、セカンダリの URL を指す読み取り専用リスナー用の DNS CNAME レコードは、`failover-group-name.secondary.database.windows.net` という形式になります。
+     SQL Database サーバー上では、セカンダリの URL を指す読み取り専用リスナー用の DNS CNAME レコードは、`'.secondary.database.windows.net` という形式になります。
 
   - **読み取り専用リスナー用のマネージド インスタンスの DNS CNAME レコード**
 
-     マネージド インスタンスでは、セカンダリの URL を指す読み取り専用リスナー用の DNS CNAME レコードは、`failover-group-name.zone_id.database.windows.net` という形式になります。
+     マネージド インスタンスでは、セカンダリの URL を指す読み取り専用リスナー用の DNS CNAME レコードは、`<fog-name>.zone_id.database.windows.net` という形式になります。
 
 - **自動フェールオーバー ポリシー**
 
@@ -156,11 +156,11 @@ ms.locfileid: "58848381"
 
 - **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**
 
-  OLTP 操作を実行するときに、サーバー URL として `failover-group-name.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
+  OLTP 操作を実行するときに、サーバー URL として `<fog-name>.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
 
 - **読み取り専用ワークロードには読み取り専用リスナーを使用する**
 
-  データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `failover-group-name.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に **ApplicationIntent=ReadOnly** を使用して、読み取りの意図を示すこともお勧めします。
+  データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に **ApplicationIntent=ReadOnly** を使用して、読み取りの意図を示すこともお勧めします。
 
 - **パフォーマンスの低下に備える**
 
@@ -206,7 +206,7 @@ ms.locfileid: "58848381"
 
 - **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**
 
-  OLTP 操作を実行するときに、サーバー URL として `failover-group-name.zone_id.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。 セカンダリ インスタンスでは DNS ゾーンをプライマリと共有するため、同じ SAN 証明書を使用してクライアント アプリケーションを再接続できます。
+  OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zone_id.database.windows.net` を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。 フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。 セカンダリ インスタンスでは DNS ゾーンをプライマリと共有するため、同じ SAN 証明書を使用してクライアント アプリケーションを再接続できます。
 
 - **読み取り専用クエリのために geo レプリケートされたセカンダリに直接接続する**
 
@@ -214,8 +214,8 @@ ms.locfileid: "58848381"
 
   > [!NOTE]
   > 特定のサービス レベルでは、Azure SQL Database で、1 つの読み取り専用レプリカの容量を使用し、また、接続文字列の `ApplicationIntent=ReadOnly` パラメーターを使用して、読み取り専用クエリ ワークロードの負荷を分散するための[読み取り専用レプリカ](sql-database-read-scale-out.md)の使用がサポートされます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
-  > - プライマリ ロケーションの読み取り専用レプリカに接続するには、`failover-group-name.zone_id.database.windows.net` を使用します。
-  > - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`failover-group-name.secondary.zone_id.database.windows.net` を使用します。
+  > - プライマリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.zone_id.database.windows.net` を使用します。
+  > - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.secondary.zone_id.database.windows.net` を使用します。
 
 - **パフォーマンスの低下に備える**
 

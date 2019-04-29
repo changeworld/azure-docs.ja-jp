@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861895"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000625"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -85,6 +85,11 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 4. **スレッド/タスクの数を増やす**
 
     Azure Cosmos DB の呼び出しはネットワーク経由で行われるため、クライアント アプリケーションで要求間の待機時間をできるだけ短くするために、要求の並列処理の次数を変えることが必要な場合があります。 たとえば、.NET の [タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用する場合、Azure Cosmos DB に対する読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
+
+5. **高速ネットワークの有効化**
+
+   待機時間と CPU ジッターを減らすために、クライアントの仮想マシンでは高速ネットワークを有効にしておくことをお勧めします。 高速ネットワークを有効にするには、「[高速ネットワークを使った Windows 仮想マシンの作成](../virtual-network/create-vm-accelerated-networking-powershell.md)」または「[高速ネットワークを使った Linux 仮想マシンの作成](../virtual-network/create-vm-accelerated-networking-cli.md)」の記事をご覧ください。
+
 
 ## <a name="sdk-usage"></a>SDK の使用例
 1. **最新の SDK をインストールする**
