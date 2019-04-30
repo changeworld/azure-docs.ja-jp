@@ -119,6 +119,6 @@ geo リストアを使用して障害から復旧する場合は、通常のア�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure SQL Database 自動バックアップの詳細については、[SQL Database の自動バックアップ](sql-database-automated-backups.md)を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md) 」を参照してください。
 - ビジネス継続性の設計および復旧シナリオについては、 [継続性のシナリオ](sql-database-business-continuity.md)
 - 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)を参照してください。

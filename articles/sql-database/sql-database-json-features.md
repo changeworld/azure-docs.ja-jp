@@ -130,7 +130,7 @@ EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","childr
 ## <a name="querying-json-data"></a>JSON データをクエリする
 Azure SQL テーブルに格納された JSON 形式のデータがある場合、JSON 関数では、このデータを任意の SQL クエリで使用できます。
 
-Azure SQL Database で使用可能な JSON 関数を使用すると、JSON 形式のデータを他の SQL データ型として処理できます。 JSON テキストから簡単に値を抽出し、任意のクエリで JSON データを使用できます。
+Azure SQL データベースで使用可能な JSON 関数を使用すると、JSON 形式のデータを他の SQL データ型として処理できます。 JSON テキストから簡単に値を抽出し、任意のクエリで JSON データを使用できます。
 
 ```
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')

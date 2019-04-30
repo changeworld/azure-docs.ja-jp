@@ -115,7 +115,7 @@ Azure Key Vault で高可用性を構成する方法は、使用しているデ�
 
 暗号化されたデータベースの TDE 保護機能の高可用性を維持するには、既存のあるいは必要な SQL Database フェールオーバー グループまたはアクティブ geo レプリケーション インスタンスに基づいて、冗長 Azure Key Vault を構成する必要があります。  geo レプリケートされたサーバーごとに個別のキー コンテナーが必要であり、同じ Azure リージョンにサーバーと併置する必要があります。 1 つのリージョンの停止によってプライマリ データベースにアクセスできなくなり、フェールオーバーがトリガーされた場合は、セカンダリ データベースがセカンダリ キー コンテナーを使用して引き継ぐことができます。
 
-geo レプリケートされた Azure SQL Database の場合、Azure Key Vault の次の構成が必要です。
+geo レプリケートされた Azure SQL データベースの場合、Azure Key Vault の次の構成が必要です。
 
 - リージョン内にキー コンテナーがあるプライマリ データベースが 1 つと、リージョン内にキー コンテナーがあるセカンダリ データベースが 1 つ。
 - 少なくとも 1 つのセカンダリが必要です。最大 4 つのセカンダリがサポートされています。
@@ -188,6 +188,6 @@ Get-AzSqlServerKeyVaultKey `
   -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-SQL Database のバックアップの回復の詳細については、[Azure SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください。 SQL Data Warehouse のバックアップの回復の詳細については、[Azure SQL Data Warehouse の復元](../sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。
+SQL Database のバックアップの回復の詳細については、[Azure SQL データベースの復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください。 SQL Data Warehouse のバックアップの回復の詳細については、[Azure SQL Data Warehouse の復元](../sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。
 
 バックアップ ログ ファイルに関するその他の考慮事項:TDE 保護機能が交換され、データベースが新しい TDE 保護機能を使用している場合でも、バックアップ ログ ファイルは元の TDE 暗号化機能で暗号化されたままになっています。  復元時に、データベースを復元するには両方のキーが必要になります。  サービス管理 TDE を使用するようにデータベースが変更された場合でも、Azure Key Vault に格納されている TDE 保護機能がログ ファイルで使用されている場合は、復元時にこのキーが必要になります。

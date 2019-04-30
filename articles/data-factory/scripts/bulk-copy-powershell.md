@@ -20,7 +20,7 @@ ms.locfileid: "57849365"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使って複数のテーブルを一括コピーする
 
-このサンプルの PowerShell スクリプトは、Azure SQL Database の複数のテーブルから Azure SQL Data Warehouse にデータをコピーします。
+このサンプルの PowerShell スクリプトは、Azure SQL データベースの複数のテーブルから Azure SQL Data Warehouse にデータをコピーします。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

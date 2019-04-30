@@ -24,7 +24,7 @@ ms.locfileid: "58485206"
 Azure SQL データ同期のデータ同期エージェントをインストールして構成することによって、オンプレミスの SQL Server データベースとデータを同期します。SQL データ同期の詳細については、「[複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します](sql-database-sync-data.md)」を参照してください。
 
 > [!IMPORTANT]
-> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
+> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="download-and-install"></a>ダウンロードとインストール
 

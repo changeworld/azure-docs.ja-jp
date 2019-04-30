@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database ハイパースケールに関する FAQ | Microsoft Docs
-description: ハイパースケール サービス レベルの Azure SQL Database (通常はハイパースケール データベースと呼ばれる) に関する顧客からの一般的な質問への回答。
+description: ハイパースケール サービス レベルの Azure SQL データベース (通常はハイパースケール データベースと呼ばれる) に関する顧客からの一般的な質問への回答。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -30,11 +30,11 @@ ms.locfileid: "59680905"
 
 ### <a name="what-is-a-hyperscale-database"></a>ハイパースケール データベースとは
 
-ハイパースケール データベースとは、ハイパースケール スケールアウト ストレージ テクノロジによって支えられている、ハイパースケール サービス レベルの Azure SQL Database です。 ハイパースケール データベースは最大 100 TB のデータをサポートし、高いスループットとパフォーマンスを実現すると同時に、ワークロード要件に適応するために迅速にスケーリングできます。 スケーリングは、アプリケーションにとって透過的に行われます。接続やクエリ処理などは他のすべての SQL データベースと変わりません。
+ハイパースケール データベースとは、ハイパースケール スケールアウト ストレージ テクノロジによって支えられている、ハイパースケール サービス レベルの Azure SQL データベースです。 ハイパースケール データベースは最大 100 TB のデータをサポートし、高いスループットとパフォーマンスを実現すると同時に、ワークロード要件に適応するために迅速にスケーリングできます。 スケーリングは、アプリケーションにとって透過的に行われます。接続やクエリ処理などは他のすべての SQL データベースと変わりません。
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>ハイパースケールをサポートするリソースの種類と購入モデル
 
-ハイパースケール サービス レベルを利用できるのは、Azure SQL Database において仮想コア ベースの購入モデルを使用する単一のデータベースのみです。  
+ハイパースケール サービス レベルを利用できるのは、Azure SQL データベース において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>ハイパースケール サービス レベルと General Purpose サービス レベルおよび Business Critical サービス レベルとの違い
 
@@ -104,7 +104,7 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>ハイパースケールのためにアプリケーション プログラミング モデルを変更する必要があるか
 
-いいえ。アプリケーション プログラミング モデルはそのままでかまいません。 いつもの接続文字列とその他の通常モードを使用して、Azure SQL Database を操作します。
+いいえ。アプリケーション プログラミング モデルはそのままでかまいません。 いつもの接続文字列とその他の通常モードを使用して、Azure SQL データベースを操作します。
 
 ### <a name="what-transaction-isolation-levels-are-going-to-be-default-on-sql-database-hyperscale-database"></a>どのトランザクション分離レベルが SQL Database ハイパースケール データベースで既定になるか
 
@@ -206,9 +206,9 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ## <a name="data-migration-questions"></a>データの移行に関する質問
 
-### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>既存の Azure SQL Database をハイパースケール サービス レベルに移行できるか
+### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>既存の Azure SQL データベースをハイパースケール サービス レベルに移行できるか
 
-はい。 ハイパースケールには既存の Azure SQL Database を移行できます。 パブリック プレビューでは一方向にしか移行できません。 ハイパースケールから他のサービス レベルにデータベースを移行することはできません。 運用データベースのコピーを作成して、概念実証 (POC) のためにハイパースケールに移行することをお勧めします。
+はい。 ハイパースケールには既存の Azure SQL データベースを移行できます。 パブリック プレビューでは一方向にしか移行できません。 ハイパースケールから他のサービス レベルにデータベースを移行することはできません。 運用データベースのコピーを作成して、概念実証 (POC) のためにハイパースケールに移行することをお勧めします。
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>ハイパースケール データベースを他のエディションに移行できるか
 

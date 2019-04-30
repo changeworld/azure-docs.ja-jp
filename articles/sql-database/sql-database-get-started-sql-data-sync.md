@@ -30,7 +30,7 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 PowerShell を使用した SQL データ同期の構成方法の例については、[Azure SQL データベース間](scripts/sql-database-sync-data-between-sql-databases.md)または[Azure SQL データベースと SQL Server のオンプレミス データベース間](scripts/sql-database-sync-data-between-azure-onprem.md)の同期方法に関する記事をご覧ください。
 
 > [!IMPORTANT]
-> Azure SQL データ同期では現時点で Azure SQL Database Managed Instance はサポート**されていません**。
+> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="create-sync-group"></a>同期グループを作成する
 
@@ -120,7 +120,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 
     1. 同期エージェント アプリで **[Submit Agent Key]\(エージェント キーの送信\)** を選択します。 **[Sync Metadata Database Configuration]\(同期メタデータ データベースの構成\)** ダイアログ ボックスが開きます。
 
-    1. **[Sync Metadata Database Configuration]\(同期メタデータ データベースの構成\)** ダイアログ ボックスで、Azure Portal からコピーしたエージェント キーを貼り付けます。 また、メタデータ データベースが配置されている Azure SQL Database サーバーの既存の資格情報も指定します  (メタデータ データベースを作成した場合、このデータベースはハブ データベースと同じサーバー上にあります)。**[OK]** を選択し、構成が完了するまで待ちます。
+    1. **[Sync Metadata Database Configuration]\(同期メタデータ データベースの構成\)** ダイアログ ボックスで、Azure Portal からコピーしたエージェント キーを貼り付けます。 また、メタデータ データベースが配置されている Azure SQL Database サーバーの既存の資格情報も指定します。 (メタデータ データベースを作成した場合、このデータベースはハブ データベースと同じサーバー上にあります)。**[OK]** を選択し、構成が完了するまで待ちます。
 
         ![エージェント キーとサーバー資格情報の入力](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 

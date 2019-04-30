@@ -21,7 +21,7 @@ ms.locfileid: "56108961"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して単一データベースおよびプールされたデータベースに対するサーバーレベルのファイアウォール規則を作成する
 
-このクイック スタートでは、Azure portal を使用して、Azure SQL Database の単一データベースおよびプールされているデータベースに対する[サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成し、データベース サーバー、単一データベース、エラスティック プールとそのデータベースに接続できるようにする方法を説明します。 他の Azure リソースやオンプレミスのリソースから接続するためには、ファイアウォール規則が必要となります。
+このクイック スタートでは、Azure portal を使用して、Azure SQL Database の単一データベースおよびプールされたデータベースに対する[サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成し、データベース サーバー、単一データベース、エラスティック プールとそのデータベースに接続できるようにする方法を説明します。 他の Azure リソースやオンプレミスのリソースから接続するためには、ファイアウォール規則が必要となります。
 
 ## <a name="prerequisites"></a>前提条件
 

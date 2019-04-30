@@ -29,11 +29,11 @@ ms.locfileid: "59799271"
 
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-次の手順では、Azure SQL Database への接続を確立する方法について説明します。
+次の手順では、Azure SQL データベースへの接続を確立する方法について説明します。
 
 - クライアントはゲートウェイに接続します。ゲートウェイにはパブリック IP アドレスが与えられており、ポート 1433 で待ち受けます。
 - 有効な接続ポリシーによっては、ゲートウェイがトラフィックを正しいデータベース クラスターにリダイレクトまたはプロキシします。
-- データベース クラスター内では、トラフィックは適切な Azure SQL Database に転送されます。
+- データベース クラスター内では、トラフィックは適切な Azure SQL データベースに転送されます。
 
 ## <a name="connection-policy"></a>接続ポリシー
 

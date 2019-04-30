@@ -22,7 +22,7 @@ ms.lasthandoff: 02/12/2019
 ms.locfileid: "56117971"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
-データベースを管理するうえでセキュリティは最大の懸念事項であり、 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
+データベースを管理するうえでセキュリティは最大の懸念事項であり、[Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
 
 この記事では、Azure のデータベース セキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のデータベース セキュリティに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
@@ -55,7 +55,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](../sql-database/sql-database-firewall-configure.md)に関するページを参照してください。
 
 > [!Note]
-> IP 規則に加えて、ファイアウォールは仮想ネットワーク規則を管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の Virtual Network サービス エンドポイントと規則](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
+> IP 規則に加えて、ファイアウォールは仮想ネットワーク規則を管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
 
 ## <a name="enable-database-authentication"></a>データベース認証を有効にする
 SQL Database は SQL サーバー認証と Azure AD Authentication の 2 種類の認証をサポートしています。

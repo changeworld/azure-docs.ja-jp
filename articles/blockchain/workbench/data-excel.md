@@ -33,7 +33,7 @@ Blockchain Workbench データベースに接続する手順は次の通りで�
 2. **データ** タブで **Get Data** を選択します｡
 3. **From Azure** を選択して､**From Azure SQL Database** を選択します｡
 
-   ![Azure SQL Database に接続する](./media/data-excel/connect-sql-db.png)
+   ![Azure SQL データベースに接続する](./media/data-excel/connect-sql-db.png)
 
 4. **SQL Server database** ダイアログ ボックスで以下の操作を行います｡
 

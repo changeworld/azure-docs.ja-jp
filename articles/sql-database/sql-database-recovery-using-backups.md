@@ -1,5 +1,5 @@
 ---
-title: バックアップから Azure SQL Database を復元する | Microsoft Docs
+title: バックアップから Azure SQL データベースを復元する | Microsoft Docs
 description: Azure SQL Database を特定の時点 (最長 35 日間) にロール バックすることができる、ポイントインタイム リストアについて説明します。
 services: sql-database
 ms.service: sql-database
@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2019
 ms.locfileid: "58620480"
 ---
-# <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
+# <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL データベースの復旧
 
 既定で、SQL Database のバックアップは Geo レプリケートされている Blob ストレージ (RA-GRS) に格納されます。 [自動データベース バックアップ](sql-database-automated-backups.md)を使用したデータベースの復旧には、次のオプションを使用できます。
 
@@ -184,6 +184,6 @@ REST API を使用して単一のデータベースまたはプールされた�
 ## <a name="next-steps"></a>次の手順
 
 - ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
 - 長期のリテンション期間については、[長期のリテンション期間](sql-database-long-term-retention.md)に関する記事をご覧ください。
 - より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関する記事を参照してください。

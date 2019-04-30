@@ -77,7 +77,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 2. **[アクティビティ]** ツールボックスで **[全般]** を展開し、パイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 
 
     ![ストアド プロシージャ アクティビティのドラッグ アンド ドロップ](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. ストアド プロシージャ アクティビティのプロパティ ウィンドウで **[SQL アカウント]** タブに切り替えて、**[+ 新規]** をクリックします。 SSIS カタログ (SSIDB データベース) をホストする Azure SQL Database への接続を作成します。 
+3. ストアド プロシージャ アクティビティのプロパティ ウィンドウで **[SQL アカウント]** タブに切り替えて、**[+ 新規]** をクリックします。 SSIS カタログ (SSIDB データベース) をホストする Azure SQL データベースへの接続を作成します。 
    
     ![新しいリンクされたサービスのボタン](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 

@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58448952"
 ---
-# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>クイック スタート: PHP を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>クイック スタート: PHP を使用して Azure SQL データベースに照会する
 
 この記事では、[PHP](https://php.net/manual/en/intro-whatis.php) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "58448952"
 
 このサンプルを完了するには、次の前提条件を満たしている必要があります。
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|

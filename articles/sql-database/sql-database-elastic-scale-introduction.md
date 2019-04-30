@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database によるスケール アウト | Microsoft Docs
+title: Azure SQL Database によるスケールアウト | Microsoft Docs
 description: これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。
 services: sql-database
 ms.service: sql-database
@@ -19,12 +19,12 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/31/2019
 ms.locfileid: "55463023"
 ---
-# <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケール アウト
+# <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケールアウト
 **Elastic Database** ツールを使用すると、Azure SQL Database を簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
 
 * [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md):クライアント ライブラリ機能を使用すると、シャード化されたデータベースを作成および管理できます。  「 [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
 * [Elastic Database 分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md): シャード化されたデータベース間でデータを移動します。 このツールは、マルチ テナント データベースからシングル テナント データベースに (またはその逆に) データを移動するのに便利です。 「 [エラスティック データベース Split-Merge ツールに関するチュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」を参照してください。
-* [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md) (プレビュー):ジョブを使用して、多数の Azure SQL databases を管理します。 ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行できます。
+* [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md) (プレビュー):ジョブを使用して、多数の Azure SQL データベースを管理します。 ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行できます。
 * [Elastic Database クエリ](sql-database-elastic-query-overview.md) (プレビュー):複数のデータベースにまたがる Transact-SQL クエリを実行することができます。 これにより、Excel、Power BI、Tableau などのレポート作成ツールに接続できます。
 * [エラスティック トランザクション](sql-database-elastic-transactions-overview.md):この機能を使用すると、Azure SQL Database 内の複数のデータベースにまたがるトランザクションを実行できます。 Elastic Database トランザクションは、ADO .NET を使用して .NET アプリケーションで利用できます。[System.Transaction クラス](https://msdn.microsoft.com/library/system.transactions.aspx)を使用することで、これまでに培ったプログラミングの経験を活かすことができます。
 

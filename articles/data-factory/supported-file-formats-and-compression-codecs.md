@@ -533,7 +533,7 @@ Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュ�
 
 Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポートします。 `compression` プロパティを入力データセットで指定すると、コピー アクティビティでソースから圧縮データを読み取り、圧縮を解除することができます。このプロパティを出力データセットで指定すると、コピー アクティビティによりシンクへの書き込みデータを圧縮することができます。 いくつかのサンプル シナリオを次に示します。
 
-* Azure BLOB から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL Database に書き込みます。 `compression` `type` プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
+* Azure BLOB から GZIP 圧縮データを読み取り、展開して、生成されたデータを Azure SQL データベースに書き込みます。 `compression` `type` プロパティを使用して、Azure BLOB 入力データセットを GZIP として定義します。
 * オンプレミスのファイル システムのプレーンテキスト ファイルからデータを読み取り、GZip 形式で圧縮して、圧縮データを Azure BLOB に書き込みます。 `compression` `type` プロパティを使用して、Azure BLOB 出力データセットを GZip として定義します。
 * FTP サーバーから .zip ファイルを読み取り、圧縮解除して中にあるファイルを取得し、それらのファイルを Azure Data Lake Store に格納します。 `compression` `type` プロパティを使用して、FTP 入力データセットを ZipDeflate として定義します。
 * Azure BLOB から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure BLOB に書き込みます。 Azure BLOB 入力データセットは `compression` `type` を GZIP に設定して定義し、Azure BLOB 出力データセットは `compression` `type` を BZIP2 に設定して定義します。

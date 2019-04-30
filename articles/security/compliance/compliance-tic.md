@@ -150,7 +150,7 @@ Azure PaaS サービスが仮想ネットワークと統合されると、その
 
 |Service                               |可用性      |
 |--------------------------------------|------------------|
-|Azure SQL Database Managed Instance   | パブリック プレビュー   |
+|Azure SQL Database マネージド インスタンス   | パブリック プレビュー   |
 |Azure Kubernetes Service (AKS)        | パブリック プレビュー   |
 |Azure Service Fabric                  | 一般公開               |
 |Azure API Management                  | 一般公開               |
@@ -258,7 +258,7 @@ Network Watcher によって監視されているリージョン内のネット�
 | Web とモバイル | API アプリケーション | | App Service 環境 | |
 | Containers | Azure Container Service | | | はい |
 | Containers | Azure Kubernetes Service (AKS) \* | | | はい |
-| Database | Azure SQL Database | | Azure SQL Database Managed Instance \* | Azure SQL |
+| Database | Azure SQL Database | | Azure SQL Database マネージド インスタンス \* | Azure SQL |
 | Database | Azure Database for MySQL | | | はい |
 | Database | Azure Database for PostgreSQL | | | はい |
 | Database | Azure SQL Data Warehouse | | | はい |

@@ -32,7 +32,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
+> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

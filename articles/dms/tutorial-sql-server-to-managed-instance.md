@@ -55,7 +55,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 - Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスし、SMB ポート 445 経由でファイルにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-- Azure SQL Database マネージド インスタンスを作成します。手順の詳細については、[Azure portal での Azure SQL Database マネージド インスタンスの作成](https://aka.ms/sqldbmi)に関するページを参照してください。
+- Azure SQL Database マネージド インスタンスを作成します。手順の詳細については、「[Create an Azure SQL Database Managed Instance in the Azure portal](https://aka.ms/sqldbmi)」 (Azure Portal で Azure SQL Database マネージド インスタンスを作成する) を参照してください。
 - ソース SQL Server とターゲット マネージド インスタンスへの接続に使用するログインが、sysadmin サーバー ロールのメンバーであることを確認してください。
 - Azure Database Migration Service がソース データベースのバックアップに使用できるネットワーク共有を作成します。
 - 作成したネットワーク共有に対して、ソース SQL Server インスタンスを実行しているサービス アカウントが書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが読み取り/書き込みアクセス権を持っていることを確認します。

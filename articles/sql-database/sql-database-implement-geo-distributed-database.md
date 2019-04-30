@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルに取り組む前に、次のものがインストールされていることを確認してください。
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Azure SQL Database。 次の方法で作成します。
+- Azure SQL データベース。 次の方法で作成します。
   - [ポータル](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)

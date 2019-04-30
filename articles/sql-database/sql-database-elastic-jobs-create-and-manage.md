@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database のグループを管理する | Microsoft Docs
+title: Azure SQL データベースのグループを管理する | Microsoft Docs
 description: エラスティック ジョブの作成と管理について説明します。
 services: sql-database
 ms.service: sql-database
@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2019
 ms.locfileid: "55565056"
 ---
-# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー)
+# <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>エラスティック ジョブを使用したスケールアウト済み Azure SQL データベースの作成と管理 (プレビュー)
 
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]

@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58449026"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート:Ruby を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>クイック スタート:Ruby を使用して Azure SQL データベースに照会する
 
 このクイック スタートでは、[Ruby](https://www.ruby-lang.org) を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータのクエリを実行する方法について説明します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "58449026"
 
 このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|

@@ -25,7 +25,7 @@ Azure SQL Database は、自動管理される柔軟なデータ サービスで
 
 ## <a name="monitoring-database-performance"></a>データベース パフォーマンスの監視
 
-Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 Azure SQL Database では、[パフォーマンス チューニングの推奨事項](sql-database-advisor.md)を確認することで、リソースを変更することなくクエリのパフォーマンスを改善および最適化する機会を見極めることができます。 インデックスの不足や、最適化が不完全なクエリは、データベース パフォーマンスが低下する一般的な原因です。 このようなチューニングの推奨事項を適用すると、ワークロードのパフォーマンスを向上させることができます。 識別されたすべての推奨事項を適用し、それによってデータベースのパフォーマンスが向上することを確認することで、Azure SQL Database で[クエリのパフォーマンスを自動的に最適化](sql-database-automatic-tuning.md)することもできます。
+Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 Azure SQL Database では、[パフォーマンス チューニングの推奨事項](sql-database-advisor.md)を確認することで、リソースを変更することなくクエリのパフォーマンスを改善および最適化する機会を見極めることができます。 インデックスの不足や、最適化が不完全なクエリは、データベース パフォーマンスが低下する一般的な原因です。 このようなチューニングの推奨事項を適用すると、ワークロードのパフォーマンスを向上させることができます。 識別されたすべての推奨事項を適用し、それによってデータベースのパフォーマンスが向上することを確認することで、Azure SQL データベースで[クエリのパフォーマンスを自動的に最適化](sql-database-automatic-tuning.md)することもできます。
 
 データベースのパフォーマンスの監視とトラブルシューティングには、次のオプションを使用できます。
 
@@ -142,7 +142,7 @@ ORDER BY count (distinct p.query_id) DESC
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>問題のあるクエリを解決するか、または提供するリソースを増やす
 
-問題を識別したら、問題が発生しているクエリを調整するか、または CPU の要件を吸収するために Azure SQL Database の容量を増やすようにコンピューティング サイズまたはサービス レベルをアップグレードすることができます。 単一データベースのリソースのスケーリングについては、「[Azure SQL Database で単一データベースのリソースをスケーリングする](sql-database-single-database-scale.md)」を参照してください。また、エラスティック プールのリソースのスケーリングについては、「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](sql-database-elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、「[インスタンス レベルのリソース制限](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)」を参照してください。
+問題を識別したら、問題が発生しているクエリを調整するか、または CPU の要件を吸収するために Azure SQL データベースの容量を増やすようにコンピューティング サイズまたはサービス レベルをアップグレードすることができます。 単一データベースのリソースのスケーリングについては、「[Azure SQL Database で単一データベースのリソースをスケーリングする](sql-database-single-database-scale.md)」を参照してください。また、エラスティック プールのリソースのスケーリングについては、「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](sql-database-elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、「[インスタンス レベルのリソース制限](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)」を参照してください。
 
 ### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>ワークロードのボリュームの増加が原因である実行の問題かどうかを判断する
 

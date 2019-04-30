@@ -29,7 +29,7 @@ Azure SQL Database では、パフォーマンスとコストのニーズに合�
 Azure SQL Database のデプロイ モデルでは、次のようなさまざまな購入モデルを利用できます。
 
 - [Azure SQL Database](sql-database-technical-overview.md) の[単一データベース](sql-database-single-databases-manage.md)と[エラスティック プール](sql-database-elastic-pool.md) デプロイ オプションでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)の両方が提供されます。
-- Azure SQL Database の[マネージド インスタンス](sql-database-managed-instance.md) デプロイ オプションでは、[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)のみが提供されます。
+- Azure SQL Database の[マネージド インスタンス](sql-database-managed-instance.md) デプロイ オプションでは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみが提供されます。
 
 > [!IMPORTANT]
 > [ハイパースケール サービス レベル (プレビュー)](sql-database-service-tier-hyperscale.md) は、仮想コア購入モデルを使用する単一データベースのみを対象とするパブリック プレビューです。
@@ -86,7 +86,7 @@ Azure SQL Database のデプロイ モデルでは、次のようなさまざま
 
 ![境界ボックス](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU は、さまざまなコンピューティング サイズとサービス レベルの Azure SQL Database 間のリソースの相対量を理解するために最も役立ちます。 たとえば、データベースのコンピューティング サイズを上げて DTU を 2 倍にすると、そのデータベースが利用できるリソースを 2 倍にしたのと同じ効果が得られます。 たとえば、DTU が 1750 である Premium P11 データベースは、DTU が 5 である Basic データベースと比べ、DTU 換算で 350 倍の計算能力を持ちます。  
+DTU は、さまざまなコンピューティング サイズとサービス レベルの Azure SQL データベース間のリソースの相対量を理解するために最も役立ちます。 たとえば、データベースのコンピューティング サイズを上げて DTU を 2 倍にすると、そのデータベースが利用できるリソースを 2 倍にしたのと同じ効果が得られます。 たとえば、DTU が 1750 である Premium P11 データベースは、DTU が 5 である Basic データベースと比べ、DTU 換算で 350 倍の計算能力を持ちます。  
 
 ワークロードのリソース (DTU) の使用量の詳細を把握するには、[クエリ パフォーマンスの分析情報](sql-database-query-performance.md)を使用して、次のようにします。
 

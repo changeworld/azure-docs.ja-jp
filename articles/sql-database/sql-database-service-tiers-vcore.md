@@ -50,7 +50,7 @@ Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリ
 |||
 
 > [!NOTE]
-> Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL Database を取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。
+> Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL データベースを取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。
 
 - 詳細については、[単一データベースでの仮想コア リソースの制限](sql-database-vcore-resource-limits-single-databases.md)および [Managed Instance での仮想コア リソースの制限](sql-database-managed-instance.md#vcore-based-purchasing-model)に関するページを参照してください。
 - General Purpose および Business Critical サービス レベルの詳細については、「[General Purpose and Business Critical service tiers](sql-database-service-tiers-general-purpose-business-critical.md)」(General Purpose サービス レベルと Business Critical サービス レベル) をご覧ください。

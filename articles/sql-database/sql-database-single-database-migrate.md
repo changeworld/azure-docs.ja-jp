@@ -22,11 +22,11 @@ ms.locfileid: "57996418"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 
-この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプール データベースに移行するための主な方法について説明します。 マネージド インスタンスへの移行については、[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)に関するページをご覧ください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
+この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプールされたデータベースに移行するための主な方法について説明します。 マネージド インスタンスへの移行については、[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)に関するページをご覧ください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>単一データベースまたはプール データベースに移行する
 
-SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプール データベースに移行するには、主に 2 つの方法があります。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
+SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプールされたデータベースに移行するには、主に 2 つの方法があります。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
 
 どちらの場合も、[Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用してソース データベースに Azure SQL Database との互換性があることを確認する必要があります。 SQL Database V12 は、SQL Server との[機能の同等性](sql-database-features.md)を目指していますが、サーバーレベルの操作とデータベース間の操作に関連した問題は残っています。 データベースやアプリケーションで、[部分的にしかサポートされていない機能またはサポートされていない機能](sql-database-transact-sql-information.md)を使用している場合には、SQL Server データベースの移行前に[リエンジニアリングを実施してこれらの非互換性を修正する](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)必要があります。
 
@@ -48,7 +48,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 5. Data Migration Assistant を使用して、データベースのコピーを新しい Azure SQL Database に[移行](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql)します。
 
 > [!NOTE]
-> DMA を使用せずに、BACPAC ファイルを使用することもできます。 「[BACPAC ファイルを新しい Azure SQL Database にインポートする](sql-database-import.md)」を参照してください。
+> DMA を使用せずに、BACPAC ファイルを使用することもできます。 「[BACPAC ファイルを新しい Azure SQL Database にインポートする](sql-database-import.md)」をご覧ください。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>移行中のデータ転送パフォーマンスの最適化
 

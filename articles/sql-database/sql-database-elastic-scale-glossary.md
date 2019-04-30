@@ -27,7 +27,7 @@ Azure SQL Database の機能である [Elastic Database ツール](sql-database-
 
 ![Elastic Scale の用語][1]
 
-**データベース**:Azure SQL Database。 
+**データベース**:Azure SQL データベース。 
 
 **データ依存ルーティング**:アプリケーションが特定のシャーディング キーを持つシャードに接続することを可能にする機能。 「 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください。 **[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)** と比較してください。
 

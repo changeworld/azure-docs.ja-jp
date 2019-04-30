@@ -40,7 +40,7 @@ ms.locfileid: "57433435"
 
 データセットを作成するには、まず、**リンクされたサービス**を作成して、データ ストアとデータ ファクトリをリンクする必要があります。 リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 データセットは、SQL テーブル、ファイル、フォルダー、ドキュメントなど、リンクされたさまざまなデータ ストア内のデータを示します。 たとえば、Azure Storage のリンクされたサービスは、ストレージ アカウントをデータ ファクトリにリンクします。 Azure Blob データセットは、処理対象の入力 BLOB を含む BLOB コンテナーとフォルダーを表します。
 
-シナリオの例を次に示します。 Blob Storage のデータを Azure SQL Database にコピーするために、2 つのリンクされたサービスを作成します (Azure Storage、Azure SQL Database)。 次に、2 つのデータセットを作成します。Azure Blob データセット (Azure Storage リンクされたサービスを参照するデータセット) と、Azure SQL Table データセット (Azure SQL Database リンクされたサービスを参照するデータセット) です。 Azure Storage と Azure SQL Database の各リンクされたサービスに含まれる接続文字列を、Data Factory が実行時に使用して、Azure Storage と Azure SQL Database それぞれに接続します。 Azure Blob データセットは、Blob Storage 内の入力 BLOB が含まれた BLOB コンテナーと BLOB フォルダーを示しています。 Azure SQL Table データセットは、データのコピー先である SQL Database 内の SQL テーブルを示しています。
+シナリオの例を次に示します。 Blob Storage のデータを Azure SQL Database にコピーするために、2 つのリンクされたサービスを作成します Azure Storage、Azure SQL Database)。 次に、2 つのデータセットを作成します。Azure Blob データセット (Azure Storage リンクされたサービスを参照するデータセット) と、Azure SQL Table データセット (Azure SQL Database リンクされたサービスを参照するデータセット) です。 Azure Storage と Azure SQL Database の各リンクされたサービスに含まれる接続文字列を、Data Factory が実行時に使用して、Azure Storage と Azure SQL Database それぞれに接続します。 Azure Blob データセットは、Blob Storage 内の入力 BLOB が含まれた BLOB コンテナーと BLOB フォルダーを示しています。 Azure SQL Table データセットは、データのコピー先である SQL Database 内の SQL テーブルを示しています。
 
 次の図は、Data Factory でのパイプライン、アクティビティ、データセット、リンクされたサービスの関係を示しています。
 
@@ -81,12 +81,12 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| name |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
-| type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |NA |
+| name |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |[はい] |NA |
+| type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |NA |
 | structure |データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 |いいえ  |NA |
-| typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |NA |
+| typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |[はい] |NA |
 | 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 アクティビティの入力データセットが現在のパイプラインによって生成されない場合は、このフラグを true に設定します。 パイプラインの最初のアクティビティの入力データセットについてはこのフラグを true に設定します。  |いいえ  |false |
-| availability | データセット生成の処理時間枠 (例: 時間単位、日単位) またはスライシング モデルを定義します。 アクティビティ実行で使用および生成されるデータの各ユニットは、データ スライスと呼ばれます。 出力データセットの可用性が日単位 (frequency - Day、interval - 1) に設定された場合、スライスは毎日生成されます。 <br/><br/>詳細については、「データセットの可用性」を参照してください。 <br/><br/>データセットのスライシング モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 |はい |NA |
+| availability | データセット生成の処理時間枠 (例: 時間単位、日単位) またはスライシング モデルを定義します。 アクティビティ実行で使用および生成されるデータの各ユニットは、データ スライスと呼ばれます。 出力データセットの可用性が日単位 (frequency - Day、interval - 1) に設定された場合、スライスは毎日生成されます。 <br/><br/>詳細については、「データセットの可用性」を参照してください。 <br/><br/>データセットのスライシング モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 |[はい] |NA |
 | policy |データセット スライスで満たさなければならない基準または条件を定義します。 <br/><br/>詳細については、「[データセット ポリシー](#Policy)」セクションを参照してください。 |いいえ  |NA |
 
 ## <a name="dataset-example"></a>データセットの例
@@ -193,7 +193,7 @@ structure の各列には次のプロパティが含まれます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |列の名前です。 |はい |
+| name |列の名前です。 |[はい] |
 | type |列のデータ型です。  |いいえ  |
 | culture |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 |いいえ  |
 | format |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 |いいえ  |
@@ -235,8 +235,8 @@ structure の各列には次のプロパティが含まれます。
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
-| interval |頻度の乗数を指定します。<br/><br/>"frequency x interval" で、スライスが生成される頻度が決まります。 たとえば、データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/>注: **frequency** に **Minute** を指定する場合は、interval を 15 以上に設定してください。 |はい |NA |
+| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |[はい] |NA |
+| interval |頻度の乗数を指定します。<br/><br/>"frequency x interval" で、スライスが生成される頻度が決まります。 たとえば、データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/>注: **frequency** に **Minute** を指定する場合は、interval を 15 以上に設定してください。 |[はい] |NA |
 | style |スライスを間隔の始めと終わりのどちらで生成するかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>**frequency** を **Month** に設定し、**style** を **EndOfInterval** に設定すると、スライスは月の最終日に生成されます。 **style** が **StartOfInterval** に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>**frequency** を **Day** に設定し、**style** を **EndOfInterval** に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>**frequency** を **Hour** に設定し、**style** を **EndOfInterval** に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ  |EndOfInterval |
 | anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/>注: 指定された頻度より細かい日付部分がこのプロパティに含まれている場合、その部分は無視されます。 たとえば、**間隔**が**時間単位** (frequency: Hour、interval:1) で、**anchorDateTime** に**分と秒**が含まれる場合、**anchorDateTime** の分と秒部分は無視されます。 |いいえ  |01/01/0001 |
 | offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/>注: **anchorDateTime** と **offset** の両方が指定されている場合、結果的にシフトが結合されます。 |いいえ  |NA |

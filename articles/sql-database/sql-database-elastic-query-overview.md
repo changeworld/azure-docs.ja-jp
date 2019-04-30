@@ -27,7 +27,7 @@ ms.locfileid: "55567453"
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 
-T-SQL で Azure SQL Database 間の完全なクエリを実行します。 これにより、リモート データベースの読み取り専用クエリが可能になり、現在のオンプレミス SQL Server のお客様が 3 部および 4 部構成名または SQL DB へのリンク サーバーを使用してアプリケーションを移行できるようになります。
+T-SQL で Azure SQL データベース間の完全なクエリを実行します。 これにより、リモート データベースの読み取り専用クエリが可能になり、現在のオンプレミス SQL Server のお客様が 3 部および 4 部構成名または SQL DB へのリンク サーバーを使用してアプリケーションを移行できるようになります。
 
 ### <a name="available-on-standard-tier"></a>Standard レベルで利用可能
 

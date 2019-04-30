@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     「[クイック スタート:Azure portal を使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)」を参照してください。
 
-* **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](../../sql-database/sql-database-get-started.md)」を参照してください。
+* **Azure SQL Database**:保存先データ ストアとして Azure SQL データベースを使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](../../sql-database/sql-database-get-started.md)」を参照してください。
 
 * **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 

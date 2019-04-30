@@ -21,13 +21,13 @@ ms.locfileid: "58447388"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>クイック スタート:.NET Core (C#) を使用して Azure SQL データベースに照会する
 
-このクイック スタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使用して、Azure SQL Database に接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
+このクイック スタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使用して、Azure SQL データベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルには、次のものが必要です。
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|

@@ -1,6 +1,6 @@
 ---
 title: 単一の、またはプールされた Azure SQL データベースを BACPAC ファイルにエクスポートする | Microsoft Docs
-description: Azure Portal を使用して BACPAC ファイルに Azure SQL Database をエクスポートする
+description: Azure Portal を使用して BACPAC ファイルに Azure SQL データベースをエクスポートする
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -19,13 +19,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/12/2019
 ms.locfileid: "57758694"
 ---
-# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL Database を BACPAC ファイルにエクスポートする
+# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL データベースを BACPAC ファイルにエクスポートする
 
 アーカイブのため、または別のプラットフォームに移行するためにデータベースをエクスポートする必要がある際は、データベース スキーマとデータを [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルにエクスポートできます。 BACPAC ファイルは、メタデータと SQL Server データベースからのデータを含み、BACPAC の拡張子を持つ ZIP ファイルです。 BACPAC ファイルは、Azure Blob Storage またはオンプレミスの場所にあるローカル ストレージに格納でき、後で Azure SQL Database またはオンプレミス インストールの SQL Server にインポートすることができます。
 
-## <a name="considerations-when-exporting-an-azure-sql-database"></a>Azure SQL Database をエクスポートする際の考慮事項
+## <a name="considerations-when-exporting-an-azure-sql-database"></a>Azure SQL データベースをエクスポートする際の考慮事項
 
-- エクスポートにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に行われないようにするか、Azure SQL Database の[トランザクション一貫性のあるコピー](sql-database-copy.md)からエクスポートする必要があります。
+- エクスポートにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に行われないようにするか、Azure SQL データベースの[トランザクション一貫性のあるコピー](sql-database-copy.md)からエクスポートする必要があります。
 - Blob Storage にエクスポートする場合、BACPAC ファイルの最大サイズは 200 GB です。 大きな BACPAC ファイルをアーカイブするには、ローカル ストレージにエクスポートします。
 - この記事で説明されている方法を用いた Azure Premium Storage への BACPAC ファイルのエクスポートはサポートされていません。
 - ファイアウォールの背後にある Storage は現在サポートされていません。

@@ -1,6 +1,6 @@
 ---
 title: Excel を Azure SQL Database の単一データベースに接続する | Microsoft Docs
-description: Microsoft Excel を Azure SQL Database の単一データベースに接続する方法について説明します。 レポートの作成およびデータの探索を目的として、データを Excel にインポートします。
+description: Microsoft Excel を Azure SQL データベースの単一データベースに接続する方法について説明します。 レポートの作成およびデータの探索を目的として、データを Excel にインポートします。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58103402"
 ---
-# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL Database の単一データベースに接続してレポートを作成する
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースの単一データベースに接続してレポートを作成する
 
 Excel を Azure SQL Database の単一データベースに接続し、データをインポートし、データベース内の値に基づいてテーブルとグラフを作成します。 このチュートリアルでは、Excel とデータベース テーブル間の接続をセットアップし、データと Excel の接続情報を格納するファイルを保存して、データベースの値からピボット グラフを作成します。
 

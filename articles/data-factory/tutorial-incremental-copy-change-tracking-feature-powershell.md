@@ -1,6 +1,6 @@
 ---
 title: Change Tracking と Azure Data Factory を使用してデータを増分コピーする | Microsoft Docs
-description: 'このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL Database に差分データを増分コピーする Azure Data Factory パイプラインを作成します。 '
+description: 'このチュートリアルでは、オンプレミスの SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。 '
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -20,7 +20,7 @@ ms.lasthandoff: 03/06/2019
 ms.locfileid: "57436554"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
-このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
+このチュートリアルでは、ソース Azure SQL データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -45,9 +45,9 @@ ms.locfileid: "57436554"
 > Azure SQL Database と SQL Server は、どちらも Change Tracking テクノロジをサポートしています。 このチュートリアルでは、Azure SQL Database をソース データ ストアとして使用します。 オンプレミスの SQL Server を使用してもかまいません。 
 
 1. **履歴データの初回読み込みを実行する** (1 回実行)。
-    1. ソース Azure SQL Database の Change Tracking テクノロジを有効にします。
-    2. Azure SQL Database から SYS_CHANGE_VERSION の初期値をベースラインとして取得し、変更済みデータをキャプチャします。
-    3. Azure SQL Database から Azure Blob Storage にフル データを読み込みます。 
+    1. ソース Azure SQL データベースの Change Tracking テクノロジを有効にします。
+    2. Azure SQL データベースから SYS_CHANGE_VERSION の初期値をベースラインとして取得し、変更済みデータをキャプチャします。
+    3. Azure SQL データベースから Azure Blob Storage にフル データを読み込みます。 
 2. **スケジュールに従って差分データの増分読み込みを実行する** (データの初回読み込み後に定期的に実行)。
     1. 新旧の SYS_CHANGE_VERSION 値を取得します。
     3. 差分データを読み込みます。これは、**sys.change_tracking_tables** から得られる変更済みの行 (2 つの SYS_CHANGE_VERSION 値の間にある行) の主キーと**ソース テーブル**内のデータとを結合した後、その差分データをターゲットに移動することによって行います。
@@ -468,7 +468,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 
 ![フル コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
 
-このファイルには、Azure SQL Database からのデータが存在します。
+このファイルには、Azure SQL データベースからのデータが存在します。
 
 ```
 1,aaaa,21
@@ -480,7 +480,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 
 ## <a name="add-more-data-to-the-source-table"></a>ソース テーブルにデータを追加する
 
-Azure SQL Database に次のクエリを実行して行の追加と更新を行います。 
+Azure SQL データベースに次のクエリを実行して行の追加と更新を行います。 
 
 ```sql
 INSERT INTO data_source_table
@@ -646,7 +646,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 ![増分コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
 
-このファイルに含まれているのは、Azure SQL Database からの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。 
+このファイルに含まれているのは、Azure SQL データベースからの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。 
 
 ```
 1,update,10,2,U

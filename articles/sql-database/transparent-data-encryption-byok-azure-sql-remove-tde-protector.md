@@ -49,8 +49,8 @@ PowerShell コマンドの Get-AzureRmSqlServerKeyVaultKey では、クエリで
 
 このハウツー ガイドでは、インシデント対応後の望ましい結果に応じた次の 2 つの方法を説明します。
 
-- Azure SQL Databases/Data Warehouses を引き続き**アクセス可能**にしておく
-- Azure SQL Databases/Data Warehouses を**アクセス不可**にする
+- Azure SQL データベース/Data Warehouses を引き続き**アクセス可能**にしておく
+- Azure SQL データベース/Data Warehouses を**アクセス不可**にする
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>暗号化されたリソースを引き続きアクセス可能にしておくには
 

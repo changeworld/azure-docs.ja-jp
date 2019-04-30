@@ -35,9 +35,9 @@ Microsoft では、エンタープライズ データの暗号化方法として
 
 Azure SQL Database Auditing を利用することにより、企業ではイベントを Azure Storage 内の監査ログに記録できます。 また SQL Database の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。
 
-Azure SQL Database は、大部分の規制要件やセキュリティ要件 (特に HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft Azure セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。
+Azure SQL データベースは、大部分の規制要件やセキュリティ要件 (特に HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft Azure セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。
 
-この記事では、Microsoft Azure SQL Database の構造化データ、表形式データ、リレーショナル データをセキュリティで保護する基本的な手順について紹介します。 特にこの記事では、データの保護、アクセスの制御、プロアクティブな監視を行うためのリソースの概要を説明します。
+この記事では、Microsoft Azure SQL データベースの構造化データ、表形式データ、リレーショナル データをセキュリティで保護する基本的な手順について紹介します。 特にこの記事では、データの保護、アクセスの制御、プロアクティブな監視を行うためのリソースの概要を説明します。
 
 ## <a name="protection-of-data"></a>データの保護
 

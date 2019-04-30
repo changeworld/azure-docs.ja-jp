@@ -502,6 +502,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>次の手順
-Azure Blob Storage から Azure SQL Database にデータをコピーする .NET SDK を使用してパイプラインを作成するには、次の例を確認してください。 
+Azure Blob Storage から Azure SQL データベースにデータをコピーする .NET SDK を使用してパイプラインを作成するには、次の例を確認してください。 
 
 - [Blob Storage から SQL Database にデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-dotnet-api.md)

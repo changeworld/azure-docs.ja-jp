@@ -15,9 +15,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58102756"
 ---
-# <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso の移行: Azure Web App と Azure SQL Database にオンプレミス アプリをリファクターする
+# <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso の移行: Azure Web App と Azure SQL データベースにオンプレミス アプリをリファクターする
 
-この記事では、Contoso が SmartHotel360 アプリを Azure でリファクターする方法について説明します。 アプリ フロントエンド VM は Azure Web App に、アプリ データベースは Azure SQL Database に移行します。
+この記事では、Contoso が SmartHotel360 アプリを Azure でリファクターする方法について説明します。 アプリ フロントエンド VM は Azure Web App に、アプリ データベースは Azure SQL データベースに移行します。
 
 このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の 1 つです。 このシリーズには背景情報やシナリオが含まれ、移行インフラストラクチャのセットアップ、移行のためのオンプレミス リソースへのアクセス、およびさまざまな種類の移行の実行が説明されています。 シナリオは複雑になってきています。 今後、徐々に記事を追加する予定です。
 
@@ -31,7 +31,7 @@ ms.locfileid: "58102756"
 [記事 6:Azure VM および SQL Server Always On 可用性グループへのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
 [記事 7:Linux アプリを Azure VM にリホストする](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を実行する方法を説明します。 | 使用可能
 [記事 8:Linux アプリの Azure VM および Azure MySQL Server へのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行する方法を説明します。 | 使用可能
-記事 9:Azure Web App と Azure SQL Database にアプリをリファクターする | Contoso が SmartHotel アプリを Azure Web アプリに移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します | この記事の内容は次のとおりです。
+記事 9:Azure Web App と Azure SQL データベースにアプリをリファクターする | Contoso が SmartHotel アプリを Azure Web アプリに移行して、アプリ データベースを Azure SQL Server インスタンスに移行する方法を示します | この記事の内容は次のとおりです。
 [記事 10:Azure Web Apps および Azure MySQL への Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数のサイトの (継続的デリバリーのために GitHub と統合された) Azure Web Apps に移行する方法を示します。 Contoso は、アプリ データベースを Azure MySQL インスタンスに移行します。 | 使用可能
 [記事 11: Azure DevOps Services で TFS をリファクタリングする](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server (TFS) の展開を Azure の Azure DevOps Services に移行する方法を示します。 | 使用可能
 [記事 12: Azure Containers と Azure SQL Database でアプリを再構築する](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 アプリの Web 層を Windows コンテナーとして再構築し、Azure SQL データベースでアプリ データベースを再構築します。 | 使用可能
@@ -389,7 +389,7 @@ Contoso 管理者は、Web アプリとデータベースがすべて通信で�
 
 - vCenter のインベントリからオンプレミスの VM を削除します。
 - ローカルのバックアップ ジョブからから VM を削除します。
-- SmartHotel360 アプリの新しい場所を示すように社内ドキュメントを更新します。 Azure SQL Database でデータベースは実行中と表示され、2 つの Web アプリでフロント エンドは実行中と表示されます。
+- SmartHotel360 アプリの新しい場所を示すように社内ドキュメントを更新します。 Azure SQL データベースでデータベースは実行中と表示され、2 つの Web アプリでフロント エンドは実行中と表示されます。
 - 使用停止されている VM と対話しているリソースがないか確認します。また、関連する設定やドキュメントがあれば、更新して新しい構成を反映します。
 
 

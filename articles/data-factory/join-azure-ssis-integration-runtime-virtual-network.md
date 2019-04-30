@@ -50,7 +50,7 @@ SSIS カタログが Azure SQL Database と仮想ネットワーク サービス
 - 同じ仮想ネットワーク 
 - Managed Instance のために使用される仮想ネットワークとの間にネットワーク間接続がある、別の仮想ネットワーク 
 
-仮想ネットワークのサービス エンドポイントがある Azure SQL Database で SSIS カタログをホストする場合は、Azure SSIS IR を、必ず同じ仮想ネットワークとサブネットに参加させるようにします。
+仮想ネットワーク サービス エンドポイントがある Azure SQL Database で SSIS カタログをホストする場合は、Azure SSIS IR を、必ず同じ仮想ネットワークとサブネットに参加させるようにします。
 
 Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ず Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリング (同じリージョンに限定される) または仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。
 

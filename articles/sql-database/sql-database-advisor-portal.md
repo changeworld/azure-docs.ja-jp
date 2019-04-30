@@ -162,7 +162,7 @@ Azure SQL Database は、データベースのパフォーマンス向上のた�
 推奨事項を監視し、引き続きパフォーマンスの調整対象とします。 データベースのワークロードは動的であり、継続的に変化します。 Azure SQL Database は、お使いのデータベースのパフォーマンスを向上させる可能性がある推奨事項の監視と提供を継続します。 
 
 * Azure SQL Database での自動チューニングについて詳しくは、「[Automatic tuning](sql-database-automatic-tuning.md)」(自動チューニング) をご覧ください。
-* Azure SQL Database のパフォーマンスに関する推奨事項の概要については、「[パフォーマンスに関する推奨事項](sql-database-advisor.md)」をご覧ください。
+* Azure SQL Database のパフォーマンスに関する推奨事項の概要については、「[パフォーマンスに関する推奨事項](sql-database-advisor.md)」を参照してください。
 * よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース

@@ -35,7 +35,7 @@ Azure では、基盤となるオペレーティング システム、ドライ�
 
 Premium 可用性は、Azure SQL Database の Premium および Business Critical サービス レベルで有効になり、進行中のメンテナンス操作によるパフォーマンスへの影響を許容できない集中的なワークロードのために設計されています。
 
-Premium モデルでは、Azure SQL Database が計算およびストレージを単一のノード上に統合しています。 このアーキテクチャ モデルでの高可用性は、SQL Server [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)と同様のテクノロジを使用して、4 ノード クラスター内にデプロイされた計算 (SQL Server データベース エンジン プロセス) とストレージ (ローカルに接続された SSD) のレプリケーションによって実現されます。
+Premium モデルでは、Azure SQL データベースが計算およびストレージを単一のノード上に統合しています。 このアーキテクチャ モデルでの高可用性は、SQL Server [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)と同様のテクノロジを使用して、4 ノード クラスター内にデプロイされた計算 (SQL Server データベース エンジン プロセス) とストレージ (ローカルに接続された SSD) のレプリケーションによって実現されます。
 
 ![データベース エンジン ノードのクラスター](media/sql-database-managed-instance/business-critical-service-tier.png)
 

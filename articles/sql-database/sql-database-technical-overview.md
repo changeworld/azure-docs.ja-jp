@@ -25,9 +25,9 @@ ms.locfileid: "59358337"
 SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database は、2 つの異なる購入モデル (仮想コアベースの購入モデルと DTU ベースの購入モデル) の中で動的かつスケーラブルなパフォーマンスを実現します。 SQL Database は、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
 
 > [!NOTE]
-> Azure SQL Database の用語集については、[SQL Database 用語集](sql-database-glossary-terms.md)を参照してください
+> Azure SQL Database の用語集については、「[SQL Database 用語集](sql-database-glossary-terms.md)」をご覧ください
 
-Azure SQL Database には、そのデータベースのデプロイに関して次の選択肢があります。
+Azure SQL データベースには、そのデータベースのデプロイに関して次の選択肢があります。
 
 - [単一データベース](sql-database-single-database.md)としてデプロイし、それ専用の各種リソースを SQL Database サーバーを介して管理する。 単一データベースは SQL Server の[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)に似ています。
 - [エラスティック プール](sql-database-elastic-pool.md)。これは、リソースのセットを共有し SQL Database サーバーによって管理されるデータベースのコレクションです。 単一データベースはエラスティック プールの内外に移動できます。

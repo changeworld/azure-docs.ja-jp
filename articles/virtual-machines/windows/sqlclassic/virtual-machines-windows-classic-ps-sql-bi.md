@@ -124,9 +124,9 @@ Microsoft Azure Virtual Machines を使用するデプロイの例を以下に�
 
 ![2 つの仮想マシンを使用する BI IaaS シナリオ](./media/virtual-machines-windows-classic-ps-sql-bi/IC650109.gif)
 
-### <a name="mixed-azure--data-on-azure-sql-database"></a>Azure が混在 - Azure SQL Database 上のデータ
+### <a name="mixed-azure--data-on-azure-sql-database"></a>Azure が混在 - Azure SQL データベース上のデータ
 * 1 つの仮想マシン上の Analysis Services、Reporting Services、SQL Server データベース エンジン。 このデプロイには、レポート サーバー データベースが含まれます。
-* データ ソースは Azure SQL Database です。
+* データ ソースは Azure SQL データベースです。
 
 ![VM とデータ ソースとして Azure SQL を使用する BI IaaS シナリオ](./media/virtual-machines-windows-classic-ps-sql-bi/IC650110.gif)
 

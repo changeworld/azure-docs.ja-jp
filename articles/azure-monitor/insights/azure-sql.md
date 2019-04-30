@@ -59,7 +59,7 @@ Azure SQL Analytics は、Azure SQL データベース (単一、プール、お
 
 ![Azure SQL Analytics の概要タイル](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-読み込みが完了すると、タイルに、ソリューションが診断テレメトリを受信する Azure SQL Database、エラスティック プール、Managed Instance、および Managed Instance 内のデータベースの数が表示されます。
+読み込みが完了すると、タイルに、ソリューションが診断テレメトリを受信する Azure SQL データベース、エラスティック プール、Managed Instance、および Managed Instance 内のデータベースの数が表示されます。
 
 ![Azure SQL Analytics のタイル](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -99,7 +99,7 @@ Managed Instance のビューを選択すると、Managed Instance の使用率�
 
 ### <a name="perspectives"></a>パースペクティブ
 
-次の表に、2 つのバージョンのダッシュボードでサポートされるパースペクティブの概要を示します。1 つは Azure SQL Database とエラスティック プール用で、もう 1 つが Managed Instance 用です。
+次の表に、2 つのバージョンのダッシュボードでサポートされるパースペクティブの概要を示します。1 つは Azure SQL データベースとエラスティック プール用で、もう 1 つが Managed Instance 用です。
 
 | パースペクティブ | 説明 | SQL Database とエラスティック プールのサポート | Managed Instance のサポート |
 | --- | ------- | ----- | ----- |

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database をスケールアウトする | Microsoft Docs
+title: Azure SQL データベースをスケールアウトする | Microsoft Docs
 description: Elastic Database クライアント ライブラリの ShardMapManager の使用方法
 services: sql-database
 ms.service: sql-database

@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/01/2019
 ms.locfileid: "57217038"
 ---
-# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログの使用
 
 このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
 

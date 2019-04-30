@@ -1,5 +1,5 @@
 ---
-title: Sqoop を使用して Azure Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする | Microsoft Docs
+title: Sqoop を使用して Azure Data Lake Storage Gen1 と Azure SQL データベースの間でデータをコピーする | Microsoft Docs
 description: Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1 の間でデータをコピーする
 services: data-lake-store
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878531"
 ---
-# <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Azure Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
+# <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Azure Data Lake Storage Gen1 と Azure SQL データベースの間でデータをコピーする
 Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1 の間でデータのインポートおよびエクスポートを行う方法について説明します。
 
 ## <a name="what-is-sqoop"></a>Sqoop とは
@@ -33,7 +33,7 @@ Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 * Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 この記事では、Data Lake Storage Gen1 にアクセスできる HDInsight Linux クラスターがあることを前提とします。
-* **Azure SQL データベース**。 Azure SQL Database の作成方法については、 [Azure SQL Database の作成](../sql-database/sql-database-get-started.md)
+* **Azure SQL データベース**。 Azure SQL データベースの作成方法については、 [Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)
 
 ## <a name="do-you-learn-fast-with-videos"></a>ビデオで速習する
 DistCp を使用して Azure Storage Blob と Data Lake Storage Gen1 の間でデータをコピーする方法については、[こちらのビデオ](https://mix.office.com/watch/1butcdjxmu114)をご覧ください。

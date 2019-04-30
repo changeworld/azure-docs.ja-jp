@@ -45,7 +45,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 |||||
 
 > [!NOTE]
-> Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL Database を取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。
+> Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL データベースを取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 

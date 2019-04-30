@@ -1,6 +1,6 @@
 ---
 title: Advanced Data Security - Azure SQL Database | Microsoft Docs
-description: 機密データの探索と分類、データベースの脆弱性の管理、Azure SQL Database への脅威を示す可能性がある異常なアクティビティの検出などの機能について説明します。
+description: 機密データの探索と分類、データベースの脆弱性の管理、Azure SQL データベースへの脅威を示す可能性がある異常なアクティビティの検出などの機能について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security

@@ -28,7 +28,7 @@ SQL クエリ エディターは、お使いの Azure SQL Database または Azu
 
 このチュートリアルを完了するには、次のものが必要です。
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース |
   |:--- |:--- |
@@ -175,4 +175,4 @@ Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azu
 
 ## <a name="next-steps"></a>次の手順
 
-Azure SQL Database でサポートされる Transact-SQL の詳細については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。
+Azure SQL データベースでサポートされる Transact-SQL の詳細については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。

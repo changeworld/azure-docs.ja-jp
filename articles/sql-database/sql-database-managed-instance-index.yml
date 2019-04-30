@@ -61,7 +61,7 @@ sections:
             html: <p>各自のビジネス ニーズに応じて、General Purpose または Business Critical サービス レベルを選択します。</p>
           - title: 高度なセキュリティ
             href: /azure/sql-database/sql-database-security-index
-            html: <p>Azure SQL Database に組み込まれているセキュリティ機能を使用して、インスタンスとデータベースを保護します。<p>
+            html: <p>Azure SQL データベースに組み込まれているセキュリティ機能を使用して、インスタンスとデータベースを保護します。<p>
   - title: 新機能とプレビュー機能
     items:
       - type: paragraph

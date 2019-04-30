@@ -1,5 +1,5 @@
 ---
-title: BACPAC ファイルをインポートして Azure SQL Database を作成する | Microsoft Docs
+title: BACPAC ファイルをインポートして Azure SQL データベースを作成する | Microsoft Docs
 description: BACPAC ファイルをインポートして新しい Azure SQL Database を作成します。
 services: sql-database
 ms.service: sql-database

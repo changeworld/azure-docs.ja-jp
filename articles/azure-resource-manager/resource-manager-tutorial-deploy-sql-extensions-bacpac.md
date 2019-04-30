@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
-BACPAC ファイルは、[パブリック アクセスが有効な Azure ストレージ アカウント](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac)で共有されます。 独自のものを作成するには、「[Azure SQL Database を BACPAC ファイルにエクスポートする](../sql-database/sql-database-export.md)」を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
+BACPAC ファイルは、[パブリック アクセスが有効な Azure ストレージ アカウント](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac)で共有されます。 独自のものを作成するには、「[Azure SQL データベースを BACPAC ファイルにエクスポートする](../sql-database/sql-database-export.md)」を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 

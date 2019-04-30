@@ -28,7 +28,7 @@ Always Encrypted は Azure SQL Database と SQL Server の新しいデータ暗�
 
 Always Encrypted を使用するようデータベースを構成したら、Visual Studio を使って、暗号化されたデータを扱う C# クライアント アプリケーションを作成します。
 
-この記事の手順に従って、Azure SQL Database に Always Encrypted を設定する方法を学習します。 この記事では、次のタスクを実行する方法を説明します。
+この記事の手順に従って、Azure SQL データベースに Always Encrypted を設定する方法を学習します。 この記事では、次のタスクを実行する方法を説明します。
 
 * SSMS の Always Encrypted ウィザードを使用して [Always Encrypted キー](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3)を作成する。
   * [列マスター キー (CMK)](https://msdn.microsoft.com/library/mt146393.aspx)を作成する。
@@ -49,7 +49,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]** > **[データ + ストレージ]** > **[SQL データベース]** をクリックします。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-single-database-get-started.md)」を参照してください。
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL データベース](sql-database-single-database-get-started.md)」を参照してください。
 
     ![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
 

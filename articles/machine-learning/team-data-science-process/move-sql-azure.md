@@ -1,6 +1,6 @@
 ---
 title: データを Azure SQL Database に移動する - Team Data Science Process
-description: フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動します。
+description: フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL データベースに移動します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -20,7 +20,7 @@ ms.locfileid: "57834088"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning 用にデータを Azure SQL Database に移動する
 
-この記事では、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動するためのオプションについて説明します。 このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
+この記事では、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL データベースに移動するためのオプションについて説明します。 このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
 Machine Learning 用にオンプレミスの SQL Server にデータを移動するためのオプションについては、「[Azure Virtual Machine 上の SQL Server にデータを移動する](move-sql-server-virtual-machine.md)」をご覧ください。
 
@@ -44,13 +44,13 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
 ## <a name="file-to-azure-sql-database"></a> フラット ファイル ソースから Azure SQL Database へのデータの移動
-フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
+フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL データベースに移動できます。
 
 ### <a name="bulk-insert-sql-query"></a> 一括挿入 SQL クエリ
 一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する手順と似ています。 詳細については、「 [一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
 ## <a name="sql-on-prem-to-sazure-sql-database"></a> オンプレミスの SQL Server から Azure SQL Database へのデータの移動
-ソース データがオンプレミスの SQL Server に保存されている場合は、さまざまな方法で Azure SQL Database にデータを移動できます。
+ソース データがオンプレミスの SQL Server に保存されている場合は、さまざまな方法で Azure SQL データベースにデータを移動できます。
 
 1. [フラット ファイルへのエクスポート](#export-flat-file)
 2. [SQL Database 移行ウィザード](#insert-tables-bcp)
@@ -69,6 +69,6 @@ SQL Database 移行ウィザードを使用する手順は、「 [SQL Database �
 データベースのバックアップと復元を使用する手順は、「 [データベースのバックアップと復元](move-sql-server-virtual-machine.md#sql-backup)」の手順と似ています。
 
 ### <a name="adf"></a>Azure Data Factory
-Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する手順は、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)」に記載されています。 このトピックでは、ADF を使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージ経由で Azure SQL Database にデータを移動する方法が示されています。
+Azure Data Factory (ADF) を使用して Azure SQL データベースにデータを移動する手順は、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)」に記載されています。 このトピックでは、ADF を使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージ経由で Azure SQL データベースにデータを移動する方法が示されています。
 
 オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、データを継続的に移行する必要がある場合、移行時にデータを処理する場合、移行時にデータを変更したり、ビジネス ロジックを追加したりする必要がある場合には、ADF の使用を検討してください。 ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。 ADF には他にも、複雑な操作のサポートなどの機能があります。

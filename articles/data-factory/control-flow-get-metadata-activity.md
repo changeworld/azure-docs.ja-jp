@@ -63,7 +63,7 @@ GetMetadata アクティビティは必須の入力としてデータセット�
 | コネクタ/メタデータ | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
-| Azure SQL Database Managed Instance | √ | √ | √ |
+| Azure SQL Database マネージド インスタンス | √ | √ | √ |
 | Azure SQL Data Warehouse | √ | √ | √ |
 | SQL Server | √ | √ | √ |
 
@@ -133,8 +133,8 @@ GetMetadata アクティビティのフィールド リストで、次のメタ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | はい 
-dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | はい
+fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | [はい] 
+dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | [はい]
 
 ## <a name="sample-output"></a>サンプル出力
 

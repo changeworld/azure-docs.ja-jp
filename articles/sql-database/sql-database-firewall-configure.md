@@ -30,7 +30,7 @@ Microsoft Azure [SQL Database](sql-database-technical-overview.md) と [SQL Data
 
 ## <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>IP 規則に代わる手段としての仮想ネットワーク規則
 
-IP 規則に加えて、ファイアウォールは*仮想ネットワーク規則*も管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の Virtual Network サービス エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
+IP 規則に加えて、ファイアウォールは*仮想ネットワーク規則*も管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
 
 ## <a name="overview"></a>概要
 
@@ -94,7 +94,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 
 ## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>Azure portal を使用してサーバー レベルの IP ファイアウォール規則を管理する
 
-Azure portal でサーバー レベルの IP ファイアウォール規則を設定するには、ご利用の Azure SQL Database の [概要] ページまたはご利用の SQL Database サーバーの [概要] ページに移動します。
+Azure portal でサーバー レベルの IP ファイアウォール規則を設定するには、ご利用の Azure SQL データベースの [概要] ページまたはご利用の SQL Database サーバーの [概要] ページに移動します。
 
 > [!TIP]
 > チュートリアルについては、「[Create a DB using the Azure portal (Azure Portal を使用した DB の作成)](sql-database-single-database-get-started.md)」を参照してください。
@@ -238,7 +238,7 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 - **ログインが許可されない、または正しくないパスワードが使用された:**
 
-  Azure SQL Database サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure SQL Database サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、クライアントに対し、サーバーへの接続を試行する機会のみを提供します。それぞれのクライアントは、必要なセキュリティ資格情報を提供する必要があります。 ログインを準備する方法の詳細については、[Azure SQL Database でのデータベース ログインとユーザーの管理](sql-database-manage-logins.md)に関する記事を参照してください。
+  Azure SQL Database サーバーでは、ログインのアクセス許可がないか、使用したパスワードが正しくない場合、Azure SQL Database サーバーへの接続は拒否されます。 ファイアウォール設定の作成は、クライアントに対し、サーバーへの接続を試行する機会のみを提供します。それぞれのクライアントは、必要なセキュリティ資格情報を提供する必要があります。 ログインを準備する方法の詳細については、「[データベースの管理」、「ログイン」、および「Azure SQL Database 内のユーザー](sql-database-manage-logins.md)」を参照してください。
 
 - **動的 IP アドレス:**
 
@@ -251,7 +251,7 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 - 企業ネットワーク環境で、Microsoft Azure データセンターで使用されるコンピューティング IP アドレス範囲 (SQL 範囲を含む) からの受信通信が許可されていることを確認します。 これらの IP アドレスをホワイトリストに登録することが必要な場合があります。[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。  
 - サーバー レベルの IP ファイアウォール規則の作成に関するクイック スタートについては、「[Azure SQL データベースの作成](sql-database-single-database-get-started.md)」を参照してください。
-- オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
+- オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL データベースに接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。
 - 他に開くことが必要な可能性のあるポートの詳細については、**SQL Database の外部と内部**に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事で確認してください。
 - Azure SQL Database のセキュリティの概要については、「[データベースの保護](sql-database-security-overview.md)」を参照してください。
 

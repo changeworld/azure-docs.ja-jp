@@ -61,7 +61,7 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 
 ## <a name="automatic-tuning"></a>自動チューニング
 
-Azure SQL Database では、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
+Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 

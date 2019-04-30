@@ -26,7 +26,7 @@ ms.locfileid: "59357110"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+- Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|

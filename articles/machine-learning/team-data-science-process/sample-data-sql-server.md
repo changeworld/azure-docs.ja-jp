@@ -71,7 +71,7 @@ Azure Machine Learning の[データのインポート][import-data] モジュ�
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python の [Pandas ライブラリ](https://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、Azure SQL Database から 0.1% のデータのサンプルを Pandas のデータに読み込みます。
+Python の [Pandas ライブラリ](https://pandas.pydata.org/) には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。 次のコードは、Azure SQL データベースから 0.1% のデータのサンプルを Pandas のデータに読み込みます。
 
     import pandas as pd
 

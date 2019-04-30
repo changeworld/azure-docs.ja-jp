@@ -244,10 +244,10 @@ download.microsoft.com | 443 | 更新プログラムのダウンロードに使�
 たとえば、オンプレミス データ ストアから Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにコピーするには、次の手順を行います。
 
 1. 送信 TCP 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート 1433 上で許可します。
-2. Azure SQL Database のファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
+2. Azure SQL データベースのファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
 
 > [!NOTE]
-> ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで Azure SQL Database に直接アクセスすることはできません。 この場合、Azure SQL Database と Azure SQL Data Warehouse に[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。
+> ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで Azure SQL データベースに直接アクセスすることはできません。 この場合、Azure SQL Database と Azure SQL Data Warehouse に[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。
 
 
 ## <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項

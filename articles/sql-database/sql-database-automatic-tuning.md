@@ -29,7 +29,7 @@ Azure SQL Database の自動チューニングは、安定した最大限のデ�
 
 ## <a name="what-can-automatic-tuning-do-for-you"></a>自動チューニングでできること
 
-- Azure SQL Database のパフォーマンスの自動チューニング
+- Azure SQL データベースのパフォーマンスの自動チューニング
 - パフォーマンス向上の自動検証
 - 自動ロールバックと自己修正
 - チューニングの履歴
@@ -40,7 +40,7 @@ Azure SQL Database の自動チューニングは、安定した最大限のデ�
 
 ## <a name="safe-reliable-and-proven"></a>安全性、信頼性、実証済み
 
-Azure SQL Database に適用されるチューニング操作は、最も負荷の高いワークロードのパフォーマンスに対して、安全性の高い操作になっています。 このシステムは、ユーザーのワークロードに干渉しないように注意して設計されています。 自動チューニングの推奨事項は、使用率が低い時間帯にのみ適用されます。 ワークロードのパフォーマンスを損なわないように、自動チューニング操作を、システムによって一時的に無効にすることもできます。 その場合、システムによって無効化されていることを示すメッセージが Azure Portal に表示されます。 自動チューニングはリソースの優先順位が最も高いワークロードに注意を払います。
+Azure SQL データベースに適用されるチューニング操作は、最も負荷の高いワークロードのパフォーマンスに対して、安全性の高い操作になっています。 このシステムは、ユーザーのワークロードに干渉しないように注意して設計されています。 自動チューニングの推奨事項は、使用率が低い時間帯にのみ適用されます。 ワークロードのパフォーマンスを損なわないように、自動チューニング操作を、システムによって一時的に無効にすることもできます。 その場合、システムによって無効化されていることを示すメッセージが Azure Portal に表示されます。 自動チューニングはリソースの優先順位が最も高いワークロードに注意を払います。
 
 自動チューニングは非常に成熟したしくみですが、Azure で実行されている数百万のデータベース上でさらに洗練されたものになりました。 適用される自動チューニング操作は自動的に検証され、ワークロードのパフォーマンスに積極的な改善がみられるようにします。 パフォーマンスの後退に関する推奨事項が動的に検出され、すばやく以前の設定に戻されます。 記録されたチューニングの履歴を見ると、各 Azure SQL Database に対して実行されたチューニングによる改善の痕跡をはっきりと確認できます。 
 
@@ -88,5 +88,5 @@ Azure SQL Database で使用可能な自動チューニング オプションは
 - 自動チューニングの推奨設定を手動で確認して適用するには、「[パフォーマンスに関する推奨事項の検索と適用](sql-database-advisor-portal.md)」をご覧ください。
 - T-SQL を使用して自動チューニングの推奨情報を適用および表示する方法については、「[Manage automatic tuning via T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)」(T-SQL を使用して自動チューニングを管理する) をご覧ください。
 - 自動チューニングの推奨情報に関するメール通知の作成については、「[自動チューニングの電子メール通知](sql-database-automatic-tuning-email-notifications.md)」を参照してください。
-- 自動チューニングに使用されている組み込みインテリジェンスの詳細については、「[Artificial Intelligence tunes Azure SQL databases](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)」(人工知能による Azure SQL Database のチューニング) をご覧ください。
+- 自動チューニングに使用されている組み込みインテリジェンスの詳細については、「[Artificial Intelligence tunes Azure SQL databases](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)」(人工知能による Azure SQL データベースのチューニング) をご覧ください。
 - Azure SQL Database と SQL server 2017 における自動チューニングの動作の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。

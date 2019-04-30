@@ -402,7 +402,7 @@ Data Factory で同じデータ ストアに同時に接続させる必要があ
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報を示します。
 
 * Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関する記事
-* Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
+* Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
 * Azure Cosmos DB は:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)
 * オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)

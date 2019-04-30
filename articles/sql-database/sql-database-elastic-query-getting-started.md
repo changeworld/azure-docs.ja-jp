@@ -48,7 +48,7 @@ ms.locfileid: "55561996"
 
 ## <a name="create-an-elastic-query-database"></a>エラスティック クエリ データベースを作成する
 1. [Azure Portal](https://portal.azure.com) を開き、ログインします。
-2. シャード セットアップと同じサーバーに新しい Azure SQL Database を作成します。 このデータベースに "ElasticDBQuery" という名前を付けます。
+2. シャード セットアップと同じサーバーに新しい Azure SQL データベースを作成します。 このデータベースに "ElasticDBQuery" という名前を付けます。
 
     ![Azure ポータルと価格レベル][3]
 

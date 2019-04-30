@@ -56,7 +56,7 @@ ms.locfileid: "60013097"
 
 1. **SQL Server Management Studio** を開き、SQL データベースに接続します。
 
-   接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
+   接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL データベースに接続しクエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
 
 1. トレーニング データを保存するための **CarSpeed** テーブルを作成します。
 

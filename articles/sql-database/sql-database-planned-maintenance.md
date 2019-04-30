@@ -21,7 +21,7 @@ ms.locfileid: "55825168"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure SQL Database での Azure メンテナンス イベントの計画
 
-Azure SQL Database に計画メンテナンス イベントを準備する方法について説明します。
+Azure SQL データベースに計画メンテナンス イベントを準備する方法について説明します。
 
 ## <a name="what-is-a-planned-maintenance-event"></a>計画メンテナンス イベントとは
 

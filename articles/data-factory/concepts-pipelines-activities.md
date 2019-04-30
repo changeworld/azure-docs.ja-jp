@@ -254,7 +254,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)が、Azure BLOB Storage から Azure SQL Database にデータをコピーします。
+次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)が、Azure BLOB Storage から Azure SQL データベースにデータをコピーします。
 
 ```json
 {

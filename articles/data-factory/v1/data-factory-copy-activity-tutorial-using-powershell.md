@@ -308,7 +308,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
 
 ### <a name="create-an-output-dataset"></a>出力データセットの作成
-手順のこの部分では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、 **AzureSqlLinkedService**で表される Azure SQL Database 内の SQL テーブルをポイントします。 
+手順のこの部分では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、 **AzureSqlLinkedService**で表される Azure SQL データベース内の SQL テーブルをポイントします。 
 
 1. 以下の内容を記述した **OutputDataset.json** という名前の JSON ファイルを **C:\ADFGetStartedPSH** フォルダー内に作成します。
 
@@ -556,7 +556,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 Data Factory コマンドレットに関する包括的なドキュメントについては、[Data Factory コマンドレットのリファレンス](/powershell/module/az.datafactory)を参照してください。
 
 ## <a name="summary"></a>まとめ
-このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
+このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL データベースにデータをコピーしました。 また、PowerShell を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
 
 1. Azure **データ ファクトリ**を作成しました。
 1. 次の **リンクされたサービス**を作成しました。
