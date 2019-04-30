@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: aff96931f95442c67d08521e72952dd79dad44e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505602"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999877"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
@@ -187,7 +187,7 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
 
 1. 最初に、OneDrive のインストーラーをステージングする場所を作成します。 ローカル ディスク フォルダーまたは [\\\\unc](file://unc) で問題ありません。
 
-2. 次のリンクを使用して、ステージング場所に OneDriveSetup.exe をダウンロードします。 <https://aka.ms/OneDriveWVD-Installer>
+2. <https://aka.ms/OneDriveWVD-Installer> リンクを使用して、ステージング場所に OneDriveSetup.exe をダウンロードします。
 
 3. **\<ExcludeApp ID="OneDrive" /\>** を省略することで office を OneDrive と共にインストールした場合は、次のコマンドを実行して、管理者特権でのコマンド プロンプトから既存のユーザーごとの OneDrive インストールをアンインストールします。
     
@@ -204,7 +204,7 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
 5. 次のコマンドを実行して OneDrive をマシンごとのモードでインストールします。
 
     ```batch
-    Run "[staged location]\OneDriveSetup.exe /allusers"
+    Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. 次のコマンドを実行して、すべてのユーザーのサインイン時に開始する OneDrive を構成します。
@@ -274,7 +274,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxId
 1. Active Directory サーバー上で、**[グループ ポリシー管理コンソール]** を開きます。
 2. ドメインとグループ ポリシー オブジェクトを展開します。
 3. グループ ポリシー設定に対して作成した**グループ ポリシー オブジェクト**を右クリックし、**[編集]** を選択します。
-4. **グループ ポリシー管理エディター**で、**[コンピューターの構成]** > **[ポリシー]** > **[管理テンプレート]** > **[Windows コンポーネント]** > **[Horizon View RDSH Services]\(水平ビューの RDSH サービス\)** > **[リモート デスクトップ セッション ホスト]** > **[デバイスとリソースのリダイレクト]** に移動します。
+4. **グループ ポリシー管理エディター**で、**[コンピューターの構成]** > **[ポリシー]** > **[管理テンプレート]** > **[Windows コンポーネント]** > **[リモート デスクトップ サービス]** > **[リモート デスクトップ セッション ホスト]** > **[デバイスとリソースのリダイレクト]** に移動します。
 5. **[タイム ゾーン リダイレクトを許可する]** 設定を有効にします。
 
 このコマンドをマスター イメージに対して実行してタイム ゾーンをリダイレクトすることもできます。
@@ -313,7 +313,7 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\S
 Windows 10 Enterprise マルチセッションでのテレメトリ データのフィードバック ハブ コレクションの場合は、次のコマンドを実行します。
 
 ```batch
-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
 reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
 ```
 
@@ -368,7 +368,7 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 これでイメージが作成されたので、ホスト プールを作成または更新することができます。 ホスト プールの作成と更新の方法について詳しくは、以下の記事をご覧ください。
 
 - [Azure Resource Manager テンプレートを使用してホスト プールを作成する](create-host-pools-arm-template.md)
-- [チュートリアル:Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)
+- [チュートリアル:](create-host-pools-azure-marketplace.md)Azure Marketplace を使用してホスト プールを作成する
 - [PowerShell を使用してホスト プールを作成する](create-host-pools-powershell.md)
 - [ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md)
 - [Windows Virtual Desktop の負荷分散方法を構成する](configure-host-pool-load-balancing.md)

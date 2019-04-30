@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: c3c5484d865c73a6f478ffc9ad4c3fc86c2c8170
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618867"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005368"
 ---
-# <a name="copy-data-from-azure-data-factory-to-azure-data-explorer"></a>Azure Data Factory から Azure Data Explorer にデータをコピーする
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer にデータをコピーする 
 
 Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどの多くのソースからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 データを繰り返し探査し、パターンと異常を識別することにより、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。 新たな質問を試して、数分で回答を得ることができます。 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムからのデータで Azure Data Explorer データベースを設定し、分析ソリューションを構築する際の時間を節約できます。
 
@@ -32,7 +32,7 @@ Azure Data Factory には、Azure Data Explorer にデータを読み込む際�
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)
-* Amazon S3。
+* データのソースです。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -147,10 +147,6 @@ Azure Data Factory を使用して Azure Data Explorer にデータを読み込�
 
     ![ADX コピー先データ ストア](media/data-factory-load-data/destination-data-store.png)
 
-1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** で、出力フォルダー名を入力し、設定を決定して **[次へ]** を選択します。
-
-    ![出力フォルダーの指定](media/data-factory-load-data/specify-path.png)
-
 1. **[テーブル マッピング]** で、コピー先テーブル名を設定し、**[次へ]** を選択します。
 
     ![コピー先データセット テーブルのマッピング](media/data-factory-load-data/destination-dataset-table-mapping.png)
@@ -186,6 +182,8 @@ Azure Data Factory を使用して Azure Data Explorer にデータを読み込�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal) でのリンクされたサービス、データセット、およびパイプラインの編集の詳細を確認する
+* Azure Data Factory 内の [Azure Data Explorer コネクタ](/azure/data-factory/connector-azure-data-explorer)について学習する。
+
+* [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal) でのリンクされたサービス、データセット、およびパイプラインの編集の詳細について学習する。
 
 * データのクエリのための [Azure Data Explorer のクエリ](/azure/data-explorer/web-query-data)について確認する。

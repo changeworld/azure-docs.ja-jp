@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085152"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007476"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -236,6 +236,9 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 1. **ASA マネージャー サービス**に移動して、`PCS_TELEMETRY_STORAGE_TYPE` を追加することで、docker compose ファイルを編集します。
 
 1. VM から `sudo ./start.sh` を使用して docker コンテナーを再起動します。
+
+> [!NOTE]
+> 環境変数の上記の構成は、1.0.2 より前のバージョンのリモート監視で有効です。
 
 ### <a name="standard-deployments"></a>Standard デプロイ
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099986"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996129"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,9 +137,9 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 | ソース      | 宛先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムはオンプレミスまたは仮想ネットワークの Azure 仮想マシンにインストールできます。 |
-| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムはオンプレミスまたは仮想ネットワークの Azure 仮想マシンにインストールできます。 |
-| オンプレミス | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング)            | セルフホステッド統合ランタイムはオンプレミスにインストールする必要があります。 |
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |
+| オンプレミス | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (Microsoft ピアリング)            | セルフホステッド統合ランタイムは、オンプレミスまたは Azure 仮想マシンにインストールできます。 |
 
 次の図は、オンプレミス データベースと Azure サービス間でのデータの移動に ExpressRoute および IPSec VPN (Azure Virtual Network を使用) を使用した場合のセルフホステッド統合ランタイムの使用方法を示しています。
 
@@ -174,7 +174,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 | 受信ポート | 説明                              |
 | ------------- | ---------------------------------------- |
-| 8050 (TCP)    | 「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」に説明されているように PowerShell 暗号化コマンドレットと、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために資格情報マネージャー アプリケーションで必要です。 |
+| 8060 (TCP)    | 「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」に説明されているように PowerShell 暗号化コマンドレットと、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために資格情報マネージャー アプリケーションで必要です。 |
 
 ![ゲートウェイのポートの要件](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -193,7 +193,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 **セルフホステッド統合ランタイムは別のデータ ファクトリと共有できますか?**
 
-この機能はまだサポートされていません。 現在、この機能のサポートに積極的に取り組んでいます。
+はい。 詳細については、[こちら](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)をご覧ください。
 
 **セルフホステッド統合ランタイムの動作にはどのようなポートの要件がありますか?**
 

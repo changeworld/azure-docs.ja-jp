@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
 ms.openlocfilehash: f173fc7c794729eae8c60cceefa88d153800a816
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501840"
 ---
 # <a name="azure-kubernetes-service-aks-support-policies"></a>Azure Kubernetes Service (AKS) サポート ポリシー
@@ -41,7 +41,7 @@ AKS は、100% マネージドの**クラスター** ソリューションでは
  **マネージド**とは、Microsoft と AKS チームがこれらのサービスをデプロイして運用し、その可用性と機能に対して責任を負うことを意味します。 **お客様は、これらのコンポーネントを変更できません**。 カスタマイズは、一貫したスケーラブルなユーザー エクスペリエンスを保証することを目的としたものに限られます。 完全にカスタマイズ可能なソリューションについては、「[AKS-Engine (AKS エンジン)](https://github.com/Azure/aks-engine)」をご覧ください。
 
 > [!NOTE]
-> Azure Kubernetes Service のワーカー ノードは Azure Portal では通常の Azure IaaS リソースとして表示されますが、これらの仮想マシンはカスタム Azure リソース グループにデプロイされているということを、理解しておくことが重要です (前に MC\\* が付いています)。 ユーザーは、それらを変更したり、通常の仮想マシンと同じように SSH で接続したりできる場合があり (ただし、基本 OS イメージを変更することはできず、更新または再起動すると変更が失われる可能性があります)、他の Azure リソースをそれらにアタッチしたり、それ以外の変更を行ったりできます。 **ただし、このような帯域外の管理やカスタマイズを行うと、AKS クラスター自体がサポート不可能になる場合あることを意味します。 Microsoft サポートから指示されない限り、ワーカー ノードを変更しないでください。**
+> Azure Kubernetes Service のワーカー ノードは Azure Portal では通常の Azure IaaS リソースとして表示されますが、これらの仮想マシンはカスタム Azure リソース グループにデプロイされているということを、理解しておくことが重要です (前に MC\\* が付いています)。 ユーザーは、それらを変更したり、通常の仮想マシンと同じように SSH で接続したりできる場合があり (ただし、基本 OS イメージを変更することはできず、更新または再起動すると変更が失われる可能性があります)、他の Azure リソースをそれらにアタッチしたり、それ以外の変更を行ったりできます。 **ただし、このような帯域外の管理やカスタマイズを行うと、AKS クラスター自体がサポート不可能になる場合あることを意味します。Microsoft サポートから指示されない限り、ワーカー ノードを変更しないでください。**
 
 ## <a name="what-is-shared-responsibility"></a>共同責任とは
 

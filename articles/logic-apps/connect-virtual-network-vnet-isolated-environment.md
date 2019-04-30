@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 6be897cc1ae11b8d3032e3ffc669eac05dafe5b2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522317"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996001"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -67,30 +67,31 @@ ms.locfileid: "58522317"
 
 正常に動作し、アクセスできる状態を維持するには、統合サービス環境 (ISE) に仮想ネットワーク上で使用できる特定のポートが必要です。 そうしないと、このようなポートのいずれかが使用できない場合、ISE へのアクセスが失われ、動作しなくなる可能性があります。 仮想ネットワーク内で ISE を使用する場合、一般的な設定の問題はブロックされたポートが 1 つ以上あることです。 ISE と宛先システム間の接続の場合、使用するコネクタにも独自のポート要件があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、その FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。
 
-ISE をデプロイする仮想ネットワークのサブネット間でトラフィックを制御するには、[サブネット間のネットワーク トラフィックをフィルター処理する](../virtual-network/tutorial-filter-network-traffic.md)ことで、そのようなサブネットに対して[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を設定できます。 以下の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [サービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
+ISE をデプロイする仮想ネットワークのサブネット間でトラフィックを制御するには、[サブネット間のネットワーク トラフィックをフィルター処理する](../virtual-network/tutorial-filter-network-traffic.md)ことで、そのようなサブネットに対して[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を設定できます。 以下の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
 
 > [!IMPORTANT]
 > サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことが ISE では必要になります。
 
-| 目的 | 方向 | ポート | 発信元サービス タグ | 宛先サービス タグ | メモ |
+| 目的 | Direction | Port | 発信元サービス タグ | 宛先サービス タグ | メモ |
 |---------|-----------|-------|--------------------|-------------------------|-------|
-| Azure Logic Apps からの通信 | 送信 | 80、443 | VIRTUAL_NETWORK | INTERNET | このポートは、Logic Apps サービスが通信する外部サービスに依存しています。 |
-| Azure Active Directory | 送信 | 80、443 | VIRTUAL_NETWORK | AzureActiveDirectory | |
-| Azure Storage の依存関係 | 送信 | 80、443 | VIRTUAL_NETWORK | Storage | |
-| Intersubnet 通信 | 受信および送信 | 80、443 | VIRTUAL_NETWORK | VIRTUAL_NETWORK | サブネット間の通信用 |
-| Azure Logic Apps への通信 | 受信 | 443 | INTERNET  | VIRTUAL_NETWORK | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。  |
-| ロジック アプリの実行履歴 | 受信 | 443 | INTERNET  | VIRTUAL_NETWORK | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
-| 接続管理 | 送信 | 443 | VIRTUAL_NETWORK  | INTERNET | |
-| 診断ログとメトリックの発行 | 送信 | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
-| Logic Apps デザイナー - 動的プロパティ | 受信 | 454 | INTERNET  | VIRTUAL_NETWORK | 要求は、Logic Apps の[リージョン内のアクセス エンドポイント受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から送信されます。 |
-| App Service の管理の依存関係 | 受信 | 454、455 | AppServiceManagement | VIRTUAL_NETWORK | |
-| コネクタのデプロイ | 受信 | 454 および 3443 | INTERNET  | VIRTUAL_NETWORK | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
-| Azure SQL 依存関係 | 送信 | 1433 | VIRTUAL_NETWORK | SQL |
-| Azure Resource Health | 送信 | 1886 | VIRTUAL_NETWORK | INTERNET | 正常性の状態を Resource Health に公開するために必要 |
-| API Management - 管理エンドポイント | 受信 | 3443 | APIManagement  | VIRTUAL_NETWORK | |
-| ログから Event Hub ポリシーおよび監視エージェントへの依存関係 | 送信 | 5672 | VIRTUAL_NETWORK  | EventHub | |
-| ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | 受信 <br>送信 | 6379 - 6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | また、Azure Cache for Redis で動作する ISE の場合は、[「Azure Cache for Redis の FAQ」で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
-| Azure Load Balancer | 受信 | * | AZURE_LOAD_BALANCER | VIRTUAL_NETWORK |  |
+| Azure Logic Apps からの通信 | 送信 | 80、443 | VirtualNetwork | インターネット | このポートは、Logic Apps サービスが通信する外部サービスに依存しています。 |
+| Azure Active Directory | 送信 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
+| Azure Storage の依存関係 | 送信 | 80、443 | VirtualNetwork | Storage | |
+| Intersubnet 通信 | 受信および送信 | 80、443 | VirtualNetwork | VirtualNetwork | サブネット間の通信用 |
+| Azure Logic Apps への通信 | 受信 | 443 | インターネット  | VirtualNetwork | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。  |
+| ロジック アプリの実行履歴 | 受信 | 443 | インターネット  | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
+| 接続管理 | 送信 | 443 | VirtualNetwork  | インターネット | |
+| 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
+| Azure Traffic Manager からの通信 | 受信 | 443 | AzureTrafficManager | VirtualNetwork | |
+| Logic Apps デザイナー - 動的プロパティ | 受信 | 454 | インターネット  | VirtualNetwork | 要求は、Logic Apps の[リージョン内のアクセス エンドポイント受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から送信されます。 |
+| App Service の管理の依存関係 | 受信 | 454、455 | AppServiceManagement | VirtualNetwork | |
+| コネクタのデプロイ | 受信 | 454 および 3443 | インターネット  | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
+| Azure SQL 依存関係 | 送信 | 1433 | VirtualNetwork | SQL |
+| Azure Resource Health | 送信 | 1886 | VirtualNetwork | インターネット | 正常性の状態を Resource Health に公開するために必要 |
+| API Management - 管理エンドポイント | 受信 | 3443 | APIManagement  | VirtualNetwork | |
+| ログから Event Hub ポリシーおよび監視エージェントへの依存関係 | 送信 | 5672 | VirtualNetwork  | EventHub | |
+| ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | 受信 <br>送信 | 6379 - 6383 | VirtualNetwork  | VirtualNetwork | また、Azure Cache for Redis で動作する ISE の場合は、[「Azure Cache for Redis の FAQ」で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
+| Azure Load Balancer | 受信 | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
 
 <a name="create-environment"></a>

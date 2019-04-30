@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527950"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006048"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -74,7 +74,8 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
      ![VPN の選択][api-management-setup-vpn-select]
 
-5. 画面の上部にある **[保存]** をクリックします。
+5. 上部のナビゲーション バーの **[保存]** をクリックします。
+6. 上部のナビゲーション バーの **[ネットワーク構成の適用]** をクリックします。
 
 > [!NOTE]
 > API Management インスタンスの VIP アドレスは VNET を有効または無効にするたびに変更されます。

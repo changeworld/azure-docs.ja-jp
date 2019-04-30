@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 7fc0d3a2e29a2aaa06d88f25828ff676d615939d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579157"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149566"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -23,12 +23,39 @@ ms.locfileid: "59579157"
 + Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
 + Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-17"></a>2019-04-17
+
+### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure Machine Learning Data Prep SDK v1.1.2
+
+注:Data Prep Python SDK では、`numpy` および `pandas` パッケージがインストールされなくなります。 [更新されたインストール手順](https://aka.ms/aml-data-prep-installation)に関するページを参照してください。
+
++ **新機能**
+  + ピボット変換を使用できるようになりました。
+    + 攻略ガイド: [ピボット ノートブック](https://aka.ms/aml-data-prep-pivot-nb)
+  + ネイティブ関数内に正規表現を使用できるようになりました。
+    + 次に例を示します。
+      + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
+      + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
+  + 式言語内で `to_upper`  関数と `to_lower`  関数を使用できるようになりました。
+  + データ プロファイル内に各列の一意の値が表示されるようになりました。
+  + 一般的に使用されるリーダー手順の一部で、`infer_column_types` 引数を渡せるようになりました。 それが `True` に設定されている場合、Data Prep では列の型の検出およびその自動変換が試みられます。
+    + `inference_arguments` は非推奨となりました。
+  + `Dataflow.shape` を呼び出せるようになりました。
+
++ **バグの修正と機能強化**
+  + 省略可能な追加の引数 `validate_column_exists` が `keep_columns`  によって受け入れられるようになりました。それが渡されると、`keep_columns` の結果に任意の列が含まれているかどうかが確認されます。
+  + すべてのリーダー手順 (ファイルから読み取られる) で、省略可能な追加の引数 `verify_exists` が受け入れられるようになりました。
+  + Pandas データ フレームからの読み取り、およびデータ プロファイルの取得のパフォーマンスが改善されました。
+  + 単一インデックスの場合にデータ フローからの単一手順のスライシングが失敗するというバグが修正されました。
+
 ## <a name="2019-04-15"></a>2019-04-15
 
 ### <a name="azure-portal"></a>Azure Portal
++ **新機能**
   + 既存のリモート コンピューティング クラスターで実行されている既存のスクリプトを再送信できるようになりました。 
   + [パイプライン] タブで、新しいパラメーターで発行されたパイプラインを実行できるようになりました。 
   + 詳細の実行で、新しいスナップショット ファイル ビューアーがサポートされるようになりました。 特定の実行を送信したときのディレクトリのスナップショットを表示することができます。 また、実行を開始するために送信されたノートブックをダウンロードすることもできます。
+   + Azure portal からの親の実行をキャンセルできるようになりました。
 
 ## <a name="2019-04-08"></a>2019-04-08
 

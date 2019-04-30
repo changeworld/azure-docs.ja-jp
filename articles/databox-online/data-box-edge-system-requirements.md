@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006345"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996749"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge のシステム要件
 
@@ -82,7 +82,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | URL パターン                      | コンポーネントまたは機能                     |   
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) | 
 | https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             | 
 
@@ -94,7 +94,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | URL パターン                      | コンポーネントまたは機能                     |  
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft コンテナー レジストリ (必須)               |
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azure-devices.us              | IoT Hub アクセス (必須)           |
 | https://\*.azurecr.us                    | 個人やサード パーティのコンテナー レジストリ (任意) | 
 
@@ -123,10 +123,10 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 - Azure portal で入手できるコンピューティング メトリック。 Data Box Edge リソースに移動し、**[監視] > [メトリック]** に移動します。 **[Edge コンピューティング - メモリ使用量]** と **[Edge コンピューティング - CPU の割合]** を調べて、使用できるリソースとリソースがどのように消費されているかを理解します。
 - デバイスの PowerShell インターフェイスから次のような監視コマンドを使用できます。
 
-    - `dkr` : コンテナー リソースの使用状況統計のライブ ストリームを取得します。 このコマンドは、CPU、メモリ使用量、メモリの制限、およびネットワーク IO のメトリックをサポートします。
-    - `dkr system df` : 使用されたディスク領域の量に関する情報を取得します。 
-    - `dkr image [prune]` : 未使用のイメージをクリーンアップして領域を解放します。
-    - `dkr ps --size` : 実行中のコンテナーのおおよそのサイズを表示します。 
+    - `dkr`: コンテナー リソースの使用状況統計のライブ ストリームを取得します。 このコマンドは、CPU、メモリ使用量、メモリの制限、およびネットワーク IO のメトリックをサポートします。
+    - `dkr system df`: 使用されたディスク領域の量に関する情報を取得します。 
+    - `dkr image [prune]`: 未使用のイメージをクリーンアップして領域を解放します。
+    - `dkr ps --size`: 実行中のコンテナーのおおよそのサイズを表示します。 
 
     使用可能なコマンドの詳細については、「[Monitor and troubleshoot compute modules (コンピューティング モジュールの監視とトラブルシューティング)](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)」を参照してください。
 

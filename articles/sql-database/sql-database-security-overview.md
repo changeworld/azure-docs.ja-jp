@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523700"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001084"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -88,9 +88,9 @@ SQL Database では、監査と脅威検出機能を提供することで、顧�
 
 SQL Database Auditing はデータベース アクティビティを追跡し、顧客が所有する Azure ストレージ アカウントの監査ログにデータベース イベントを記録することによって、セキュリティ標準のコンプライアンスを維持できるようにします。 Auditing を使用することで、ユーザーは進行中のデータベース アクティビティを監視し、過去のアクティビティを分析および調査して、潜在的な脅威や疑わしい不正使用、およびセキュリティ違反を特定することができます。 詳細については、「[SQL Database 監査の使用](sql-database-auditing.md)」を参照してください。  
 
-### <a name="threat-detection"></a>脅威の検出
+### <a name="advanced-threat-protection"></a>高度な脅威保護
 
-脅威検出では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる動作および害を及ぼす可能性のある試みがないか監査ログを分析することで、監査を強化します。 SQL インジェクション攻撃、潜在的なデータ侵入、ブルート フォース パスワード攻撃など、疑わしいアクティビティまたは異常なアクセス パターンに対して、アラートが作成されます。 脅威検出アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 脅威検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料です。 詳細については、「[SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。
+Advanced Threat Protection では、SQL Server ログを分析し、通常とは異なる動作と、データベースへのアクセスまたは悪用を試みる有害な可能性がある試行を検出します。 SQL インジェクション、潜在的なデータ侵入、ブルートフォース攻撃などの疑わしいアクティビティや、特権の昇格と不正な資格情報の使用を検出するアクセス パターンの異常に対してアラートが作成されます。 アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 Advanced Threat Protection は追加料金でサーバーごとに有効にすることができます。 詳細については、[SQL Database の Advanced Threat Protection の概要](sql-database-threat-detection.md)に関する記事を参照してください。
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 

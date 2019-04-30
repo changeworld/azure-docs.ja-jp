@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000872"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007561"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -69,13 +69,19 @@ Get-Command -Module AdSyncConfig
 
 各コマンドレットには、AD DS コネクタ アカウントや AdminSDHolder スイッチを入力するものと同じパラメーターがあります。 AD DS コネクタ アカウントを指定するには、アカウント名とドメインと入力することも、アカウントの識別名 (DN) だけを入力することもできます。
 
-例: 
+例:
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName ADaccount -ADConnectorAccountDomain Contoso`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
+```
 
-または、 
+または、
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADaccount,OU=AADconnect,DC=Contoso,DC=com'`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
+```
+
+`<ADAccountName>`、`<ADDomainName>`、`<ADAccountDN>` をお使いの環境の値に変更してください。
 
 AdminSDHolder コンテナーに対するアクセス許可を変更しない場合は、スイッチ `-SkipAdminSdHolders` を使用します。 
 
@@ -130,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 このコマンドレットは、次のアクセス許可を設定します。 
  
 
-|type |Name |Access |適用対象| 
+|Type |Name |Access |適用対象| 
 |-----|-----|-----|-----|
 |ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |デバイスの子孫オブジェクト| 
 |ALLOW |AD DS コネクタ アカウント|すべてのプロパティの読み取り |InetOrgPerson の子孫オブジェクト| 
@@ -156,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW|AD DS コネクタ アカウント|プロパティの読み取り/書き込み|ユーザーの子孫オブジェクト|
 
@@ -176,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW |AD DS コネクタ アカウント |ディレクトリの変更のレプリケート |このオブジェクトのみ (ドメインのルート)| 
 |ALLOW |AD DS コネクタ アカウント |ディレクトリの変更すべてのレプリケート |このオブジェクトのみ (ドメインのルート)| 
@@ -196,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW |AD DS コネクタ アカウント |パスワードのリセット |ユーザーの子孫オブジェクト| 
 |ALLOW |AD DS コネクタ アカウント |プロパティ lockoutTime の書き込み |ユーザーの子孫オブジェクト| 
@@ -216,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW |AD DS コネクタ アカウント |汎用の読み取り/書き込み |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
 |ALLOW |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
@@ -239,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 このコマンドレットは、次のアクセス許可を設定します。  
  
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |ユーザーの子孫オブジェクト| 
 |ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り/書き込み |InetOrgPerson の子孫オブジェクト| 
@@ -261,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW |AD DS コネクタ アカウント |すべてのプロパティの読み取り |パブリック フォルダーの子孫オブジェクト| 
 
@@ -286,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 このコマンドレットは、次のアクセス許可を設定します。 
 
-|type |Name |Access |適用対象|
+|Type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
 |ALLOW |SYSTEM |フル コントロール |このオブジェクト 
 |ALLOW |Enterprise Admins |フル コントロール |このオブジェクト 

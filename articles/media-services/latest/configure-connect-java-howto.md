@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9177a1ae1f2939979d1f824c98b6018a83c2779f
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 68e09ec6ce4aeb91e00c2a15caa8ec81f40064c1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501852"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997191"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API に接続する - Java
 
 この記事では、サービス プリンシパルによるサインイン方式を使用して Azure Media Services v3 Java SDK に接続する方法を説明します。
 
-この記事では、アプリの開発に Visual Studio Code が使用されています。
+この記事では、サンプル アプリの開発に Visual Studio Code が使用されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,28 +54,27 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
-1. Visual Studio Code で、プロジェクトがあるフォルダーを開きます。 
-1. `pom.xml` を見つけて開きます。 
-1. 必要な必要な依存関係を追加します。 その 1 つが [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar) です。
+1. Visual Studio Code で、プロジェクトがあるフォルダーを開きます
+1. `pom.xml` を見つけて開きます
+1. 必要な依存関係を追加します
 
     ```xml
-    <dependency>
-      <groupId>com.microsoft.azure.mediaservices.v2018_07_01</groupId>
-      <artifactId>azure-mgmt-media</artifactId>
-      <version>1.0.0-beta</version>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.rest</groupId>
-      <artifactId>client-runtime</artifactId>
-      <version>1.6.5</version>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-client-authentication</artifactId>
-      <version>1.6.5</version>
-    </dependency>
-    </dependency>
-    ```
+   <dependency>
+     <groupId>com.microsoft.azure.mediaservices.v2018_07_01</groupId>
+     <artifactId>azure-mgmt-media</artifactId>
+     <version>1.0.0-beta-3</version>
+   </dependency>
+   <dependency>
+     <groupId>com.microsoft.rest</groupId>
+     <artifactId>client-runtime</artifactId>
+     <version>1.6.6</version>
+   </dependency>
+   <dependency>
+     <groupId>com.microsoft.azure</groupId>
+     <artifactId>azure-client-authentication</artifactId>
+     <version>1.6.6</version>
+   </dependency>
+```
 
 ## <a name="connect-to-the-java-client"></a>Java クライアントに接続する
 
@@ -84,7 +83,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
     ```java
     package com.azure.ams;
     ```
-2. package ステートメントの下に、次の import ステートメントを追加します。
+1. package ステートメントの下に、次の import ステートメントを追加します。
    
    ```java
    import com.microsoft.azure.AzureEnvironment;
@@ -92,7 +91,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-2. 要求を行うのに必要な Active Directory 資格情報を作成するために、App クラスの main メソッドに次のコードを追加し、[API へのアクセスに関するページ](access-api-cli-how-to.md)で取得した値を設定します。
+1. 要求を行うのに必要な Active Directory 資格情報を作成するために、App クラスの main メソッドに次のコードを追加し、[API へのアクセスに関するページ](access-api-cli-how-to.md)で取得した値を設定します。
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -115,16 +114,15 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
       System.out.println(e.toString());
    }
    ```
+1. アプリケーションを実行します。
 
 ## <a name="see-also"></a>関連項目
 
 - [Media Services の概念](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
 - [Java リファレンス](https://aka.ms/ams-v3-java-ref)
-- [https://search.maven.org/](https://search.maven.org/)
+- [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
 ## <a name="next-steps"></a>次の手順
 
-`import com.microsoft.azure.management.mediaservices.v2018_07_01.Asset;` を挿入して、エンティティの操作を開始できます。<br/>
-たとえば、アカウントのすべての資産を取得します。 `Observable<Asset> asyncAssets = 
-                    manager.assets().listAsync(groupId, accountId).last();`
+`import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` を挿入して、エンティティの操作を開始できます。

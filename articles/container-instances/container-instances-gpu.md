@@ -6,20 +6,20 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: cc47ca07a843daf5cc35d23b838761166d39bdcc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351373"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000659"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
 特定のコンピューティング集中型ワークロードを Azure Container Instances で実行するには、*GPU リソース*を持つ[コンテナー グループ](container-instances-container-groups.md)をデプロイします。 グループのコンテナー インスタンスは、CUDA やディープ ラーニング アプリケーションなどのコンテナー ワークロードを実行しながら、1 つまたは複数の NVIDIA Tesla GPU にアクセスできます。
 
-この記事に示すように、[YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、コンテナー グループをデプロイするときに GPU リソースを追加することができます。
+この記事では、[YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、コンテナー グループをデプロイするときに GPU リソースを追加する方法について説明します。 また、Azure portal を使用してコンテナー インスタンスをデプロイするときに GPU リソースも指定できます。
 
 > [!IMPORTANT]
 > この機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -61,7 +61,7 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 * **価格**- GPU リソースのないコンテナー グループと同様に、Azure では GPU リソースがあるコンテナー グループの*期間*にわたって使用されたリソースに対して請求されます。 期間は、最初のコンテナー イメージのプルが開始された時点から、コンテナー グループが終了する時点までが計算されます。 コンテナー グループをデプロイする時間は含まれません。
 
-  価格は、GPU リソースがないコンテナー グループよりも GPU リソースがあるコンテナー グループの方が高くなります。 [価格の詳細](https://azure.microsoft.com/pricing/details/container-instances/)を参照してください。
+  [価格の詳細](https://azure.microsoft.com/pricing/details/container-instances/)を参照してください。
 
 * **CUDA ドライバー** - GPU リソースがあるコンテナー インスタンスは、NVIDIA CUDA ドライバーとコンテナーのランタイムを使用して事前にプロビジョニングされているため、CUDA ワークロード用に開発されたコンテナー イメージを使用できます。
 

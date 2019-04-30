@@ -7,21 +7,23 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: absha
-ms.openlocfilehash: efb7b46919066beb1382d70b676a2115ea0fb8ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 20c484779e7ffe74ae01e33472b4cf8761d81b66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544154"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682682"
 ---
-# <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Application Gateway で HTTP ヘッダーを書き換える (パブリック プレビュー)
+# <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、HSTS/X-XSS-Protection などのセキュリティ関連ヘッダー フィールドの追加、機密情報が漏れる可能性がある応答ヘッダー フィールドの削除、X-Forwarded-For ヘッダーからのポート情報の削除など、いくつかの重要なシナリオを実現できます。アプリケーション ゲートウェイでは、要求および応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求ヘッダーと応答ヘッダーを追加、削除、更新する機能がサポートされています。 また、条件を追加して、特定の条件が満たされた場合にのみ特定のヘッダーが書き換えられるようにする機能も提供されます。
+クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、HSTS/X-XSS-Protection などのセキュリティ関連ヘッダー フィールドの追加、機密情報が漏れる可能性がある応答ヘッダー フィールドの削除、X-Forwarded-For ヘッダーからのポート情報の削除など、いくつかの重要なシナリオを実現できます。アプリケーション ゲートウェイでは、要求および応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求ヘッダーと応答ヘッダーを追加、削除、更新する機能がサポートされています。 これにより、条件を追加して、特定の条件が満たされた場合にのみ、確実に特定のヘッダーが書き換えられるようにする機能が提供されます。 また、この機能では、要求と応答に関する追加情報を格納するために役立ついくつかの[サーバー変数](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables)もサポートされているので、強力な書き換え規則を作成することができます。
 > [!NOTE]
 >
 > HTTP ヘッダーの書き換えは、[新しい SKU の [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみサポートされます
+
+![ヘッダーを書き換える](media/rewrite-http-headers/rewrite-headers.png)
 
 ## <a name="headers-supported-for-rewrite"></a>書き換えがサポートされているヘッダー
 
@@ -35,7 +37,7 @@ ms.locfileid: "59544154"
 - 応答の HTTP ヘッダー
 - アプリケーション ゲートウェイのサーバー変数
 
-条件を使用して、指定した変数が存在するかどうか、指定した変数が特定の値と完全に一致するかどうか、または指定した変数が特定のパターンと完全に一致するかどうかを、評価することができます。 条件に正規表現のパターン マッチングを実装するには、[Perl Compatible Regular Expressions (PCRE) ライブラリ](https://www.pcre.org/)を使用します。 正規表現の構文については、[Perl 正規表現の man ページ](http://perldoc.perl.org/perlre.html)をご覧ください。
+条件を使用して、指定した変数が存在するかどうか、指定した変数が特定の値と完全に一致するかどうか、または指定した変数が特定のパターンと完全に一致するかどうかを、評価することができます。 条件に正規表現のパターン マッチングを実装するには、[Perl Compatible Regular Expressions (PCRE) ライブラリ](https://www.pcre.org/)を使用します。 正規表現の構文については、[Perl 正規表現の man ページ](https://perldoc.perl.org/perlre.html)をご覧ください。
 
 ## <a name="rewrite-actions"></a>書き換えアクション
 
@@ -124,6 +126,18 @@ http ヘッダーの書き換えセットを複数作成し、それぞれの書
 アプリケーションの応答で必要なヘッダーを実装することにより、いくつかのセキュリティの脆弱性を修正できます。 たとえば、X-XSS-Protection、Strict-Transport-Security、Content-Security-Policy などのセキュリティ ヘッダーです。アプリケーション ゲートウェイを使用して、すべての応答にこれらのヘッダーを設定できます。
 
 ![セキュリティ ヘッダー](media/rewrite-http-headers/security-header.png)
+
+### <a name="delete-unwanted-headers"></a>不要なヘッダーを削除する
+
+バックエンド サーバー名、オペレーティング システム、ライブラリの詳細など、機密情報が明らかになってしまうヘッダーは、HTTP 応答から削除します。これらを削除するには、アプリケーション ゲートウェイを使用できます。
+
+![ヘッダーを削除する](media/rewrite-http-headers/remove-headers.png)
+
+### <a name="check-presence-of-a-header"></a>ヘッダーの有無を確認する
+
+HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサーバー変数の有無を確認できます。 これは、特定のヘッダーが存在する場合にのみヘッダーの書き換えを実行するために役立ちます。
+
+![ヘッダーの有無を確認する](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>制限事項
 

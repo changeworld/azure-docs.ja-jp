@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482948"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699015"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -260,6 +260,18 @@ certificates:
    ```
 
 6. **[Review template]\(テンプレートのレビュー\)** ページで、**[送信]** を選びます。
+
+## <a name="open-ports-on-gateway-device"></a>ゲートウェイ デバイスで開いているポート
+
+IoT Hub とのすべての通信は送信接続を介して行われるため、Standard IoT Edge デバイスが機能するために受信接続は必要ありません。 ただし、ゲートウェイ デバイスは、ダウンストリーム デバイスからメッセージを受信できる必要があるため、異なります。
+
+ゲートウェイ シナリオが機能するには、IoT Edge ハブでサポートされているプロトコルの少なくとも 1 つが、ダウンストリーム デバイスからの受信トラフィック用に開かれている必要があります。 サポートされているプロトコルは、MQTT、AMQP、HTTPS です。
+
+| Port | Protocol |
+| ---- | -------- |
+| 8883 | MQTT |
+| 5671 | AMQP |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>ダウンストリーム デバイスからのメッセージのルーティング
 IoT Edge ランタイムでは、モジュールによって送信されたメッセージと同じように、ダウンストリーム デバイスから送信されたメッセージをルーティングできます。 これにより、クラウドにデータを送信する前に、ゲートウェイで実行されているモジュールの分析を実行することができます。 

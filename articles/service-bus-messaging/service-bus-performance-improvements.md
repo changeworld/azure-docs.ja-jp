@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848580"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996024"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -95,6 +95,15 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 
 バッチ処理は課金対象のメッセージ操作数に影響を与えません。また、[Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリを使用する Service Bus クライアント プロトコルでのみ利用できます。 HTTP プロトコルはバッチ処理をサポートしません。
 
+> [!NOTE]
+> BatchFlushInterval を設定すると、確実に、アプリケーションの観点からバッチ処理が暗黙的に実行されます。 つまり、アプリケーションにより SendAsync () および CompleteAsync () の呼び出しが行われ、特定の Batch の呼び出しは行われません。
+>
+> 明示的なクライアント側のバッチ処理は、以下のメソッド呼び出しを利用して実装できます。 
+> ```csharp
+> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> ```
+> このメッセージの合計サイズは、価格レベルでサポートされている最大サイズより小さい必要があります。
+
 ## <a name="batching-store-access"></a>ストア アクセスのバッチ処理
 
 キュー、トピック、またはサブスクリプションのスループットを高めるために、Service Bus はその内部ストアに書き込む際に複数のメッセージをバッチ処理します。 キューまたはトピックで有効になっている場合、ストアへのメッセージ書き込みがバッチ処理されます。 キューまたはサブスクリプションで有効になっている場合、ストアからのメッセージ削除がバッチ処理されます。 エンティティのバッチ処理ストア アクセスが有効になっている場合、Service Bus はそのエンティティに関するストア書き込み操作を最大 20 ミリ秒遅らせます。 
@@ -127,6 +136,19 @@ Queue q = namespaceManager.CreateQueue(qd);
 サーバーがクライアントにメッセージを送信するとき、メッセージの有効期間 (TTL) プロパティがサーバーによりチェックされます。 クライアントは、メッセージを受信するときに、メッセージの TTL プロパティをチェックしません。 代わりに、メッセージがクライアントによりキャッシュされたときにメッセージの TTL を経過している場合でも、メッセージを受信できます。
 
 プリフェッチは課金対象のメッセージ操作数に影響を与えません。また、Service Bus クライアント プロトコルでのみ利用できます。 HTTP プロトコルはプリフェッチをサポートしません。 プリフェッチは同期受信操作と非同期受信操作の両方で使用できます。
+
+## <a name="prefetching-and-receivebatch"></a>プリフェッチと ReceiveBatch
+
+複数のメッセージをまとめてプリフェッチするという概念はメッセージのバッチ処理 (ReceiveBatch) と似ていますが、いくつかの小さな違いがあり、これらを一緒に使用する場合には覚えておく必要があります。
+
+プリフェッチはクライアント (QueueClient と SubscriptionClient) 上での構成 (つまりモード) であり、ReceiveBatch は (要求 - 応答のセマンティクスが含まれる) 操作です。
+
+これらを一緒に使用する場合には、次のケースを考慮してください。
+
+* プリフェッチは、ReceiveBatch で受信が予想されるメッセージ数と同じか、それよりも多くする必要があります。
+* プリフェッチは、1 秒あたりに処理されるメッセージ数の最大で n/3 倍にすることができます。n は既定のロック期間です。
+
+欲張った方法 (プリフェッチ数を非常に多くするなど) を使用することにはいくつか課題があります。メッセージが特定の受信者にロックされることになるためです。 上で説明したしきい値の間にある値でプリフェッチして、どれくらいが適しているかを経験的に特定することをお勧めします。
 
 ## <a name="multiple-queues"></a>複数のキュー
 

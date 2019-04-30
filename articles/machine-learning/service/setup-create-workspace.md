@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/21/2019
-ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 04/19/2019
+ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547950"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007000"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースを作成する
 
@@ -27,7 +27,9 @@ Azure Machine Learning service を使用するには、[**Azure Machine Learning
 * Azure Resource Manager テンプレート
 * [Azure Machine Learning CLI](#cli)
 
-ここで紹介する手順で作成したワークスペースは、他のチュートリアルやハウツー記事の前提条件として利用できます。 
+ここで紹介する手順で作成したワークスペースは、他のチュートリアルやハウツー記事の前提条件として利用できます。
+
+スクリプトを使用して、ローカル Python 環境内での機械学習の自動化を設定する場合、手順については [Azure/MachineLearningNotebooks GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) を参照してください。  
 
 ワークスペースを作成すると、次の Azure リソースが自動的に追加されます (リージョンで利用できる場合)。
  

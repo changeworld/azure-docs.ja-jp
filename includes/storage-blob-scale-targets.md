@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 3/23/2019
+ms.date: 4/20/2019
 ms.author: tamram
-ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d96f400332b7953b34a157b3b52cf00bb20db76e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395721"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012518"
 ---
 | Resource | ターゲット        |
 |----------|---------------|
@@ -21,3 +21,6 @@ ms.locfileid: "58395721"
 | 追加 BLOB の最大サイズ | 50,000 x 4 MiB (約 195 GiB) |
 | ページ BLOB の最大サイズ | 8 TiB |
 | BLOB コンテナーごとの保存されるアクセス ポリシーの最大数 | 5 |
+|単一 BLOB のターゲット スループット |ストレージ アカウントイングレス/エグレスの上限まで<sup>1</sup> |
+
+<sup>1</sup> 1 回のオブジェクト スループットはいくつかの要因に左右されます。それにはコンカレンシー、要求サイズ、パフォーマンス レベル、アップロード元の速度、ダウンロード先などがありますが、それらに限定されません。 [高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) パフォーマンス拡張を活用するには、サイズが 4 MiB 以上のプット BLOB またはプット ブロック要求を使用します (プレミアムパフォーマンス ブロック BLOB ストレージや Data Lake Storage Gen2 の場合は 256 MiB 以上)。

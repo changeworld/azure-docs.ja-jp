@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439391"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996171"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -174,9 +174,11 @@ ms.locfileid: "58439391"
 |81012|これはエラー状態ではありません。 Azure AD にサインインしようとしているユーザーが、デバイスにサインインしているユーザーと異なります。 ログ内のこのコードは無視してかまいません。|
 |90010|要求は、さまざまな理由でサポートされません。 たとえば、サポートされていない要求メソッドを使用して要求が行われた (POST メソッドだけがサポートされています)、または要求されたトークン署名アルゴリズムがサポートされていません。 アプリケーション開発者に問い合わせください。|
 |90014| プロトコル メッセージに関する必須フィールドが欠落していました。アプリケーション所有者に問い合わせてください。 アプリケーション所有者である場合は、ログイン要求に必要なすべてのパラメーターがあることを確認します。 |
+|90051| デリゲート トークンが無効です。 無効な国内クラウド ID ({cloudId}) が指定されています。|
 |90072| アカウントは、まずテナントに外部ユーザーとして追加する必要があります。 サインアウトして別の Azure AD アカウントで再度サインインしてください。|
 |90094| 付与には、管理者のアクセス許可が必要です。 このアプリケーションに同意するようにテナント管理者に依頼してください。|
 |500133| アサーションが有効な時間範囲内ではありません。 アクセス トークンの有効期限が切れていないことを確認してからアサーションを使用するか、新しいトークンを要求してください。|
+|530021|アプリケーションは、条件付きアクセスで承認されているアプリの要件を満たしていません。|
 
 ## <a name="next-steps"></a>次の手順
 

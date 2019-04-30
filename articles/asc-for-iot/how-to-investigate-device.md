@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862626"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007884"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>疑わしい IoT デバイスを調査する
 
@@ -43,7 +43,7 @@ Azure Security Center (ASC) for IoT サービスのアラートと証拠では�
 データ保存用の Log Analytics ワークスペースを見つけるには、次のように操作します。
 
 1. IoT ハブを開きます。 
-1. **[セキュリティ]** をクリックし、**[設定]** を選択します。
+1. **[セキュリティ]** で **[概要]** をクリックし、**[設定]** を選択します。
 1. Log Analytics ワークスペースの構成の詳細を変更します。 
 1. **[Save]** をクリックします。 
 
@@ -147,7 +147,7 @@ IoT デバイスについての分析情報と生データにアクセスする�
 
     Use the query results to discover:
   1. どのユーザーがデバイスにログインしたか。
-  2. ログインしたユーザーはログインすると思われていたか。
+  2. ログインしたユーザーはログインすると想定されていたか。
   3. ログインしたユーザーは、予期される IP アドレスから接続したか、予期されない IP アドレスから接続したか。
   
 ### <a name="process-list"></a>プロセス一覧
@@ -188,4 +188,5 @@ IoT デバイスについての分析情報と生データにアクセスする�
   3. すべてのコマンド ラインの実行で、予期された正しい引数が指定されていたか。
 
 ## <a name="next-steps"></a>次の手順
+
 デバイスを調査し、リスクをより深く理解した後で、IoT ソリューションのセキュリティ体制を向上させるために、[カスタム アラートの構成](quickstart-create-custom-alerts.md)の検討が必要になることがあります。 まだデバイス エージェントがない場合は、結果を改善するために、[セキュリティ エージェントのデプロイ](how-to-deploy-agent.md)または[既存のデバイス エージェントの構成の変更](how-to-agent-configuration.md)を検討してください。 
