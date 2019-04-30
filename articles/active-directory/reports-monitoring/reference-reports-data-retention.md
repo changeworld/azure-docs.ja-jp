@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438820"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683735"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
 
@@ -68,8 +68,8 @@ ms.locfileid: "58438820"
 
 | レポート                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| 監査ログ        | 7 日        |  7 日        | 30 日             | 30 日             |
-| サインイン  | 該当なし           |  該当なし           | 30 日             | 30 日             |
+| 監査ログ             | 7 日        |  7 日        | 30 日             | 30 日             |
+| サインイン               | 該当なし           |  該当なし           | 30 日             | 30 日             |
 | Azure MFA の使用状況        | 30 日       |  30 日       | 30 日             | 30 日             |
 
 監査およびサインイン アクティビティ データは、Azure Monitor を使用して Azure ストレージ アカウントにルーティングすることで、上記で説明した既定の保有期間よりも長く保持することができます。 詳細については、「[Azure AD のログを Azure ストレージ アカウントにアーカイブする](quickstart-azure-monitor-route-logs-to-storage-account.md)」をご覧ください。

@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b2b75d5505ddda91232bf1055bd70a68d333d0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58792401"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680283"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 
@@ -96,7 +96,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 詳細については、「 [Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)」を参照してください。
 
-この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード ハッシュ同期を使用している場合は、同期エンジンによって userPrincipalName が更新されます。フェデレーションを使用している場合、この機能はサポートされません。
+この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード ハッシュ同期またはパススルー認証を使用している場合は、同期エンジンによって userPrincipalName が更新されます。 フェデレーションを使用している場合、この機能はサポートされません。
 
 新たに作成した Azure AD ディレクトリでは、この機能は既定で有効になっています。 この機能が有効になっているかどうかを確認するには、次のコマンドレットを実行します。  
 

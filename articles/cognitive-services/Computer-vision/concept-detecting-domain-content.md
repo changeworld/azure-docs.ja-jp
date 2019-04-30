@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339013"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994488"
 ---
 # <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
@@ -30,7 +30,7 @@ ms.locfileid: "57339013"
 
 特定のイメージについて、**models/celebrities/analyze** API で返される JSON 応答の例を次に示します。
 
-![Satya Nadella が立っています](./images/satya.jpeg)
+![Satya Nadella が笑顔で立っています](./images/satya.jpeg)
 
 ```json
 {

@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496405"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
@@ -55,8 +55,8 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 | Error | 解決策 |
 | --- | --- |
-| このディレクトリでは、パスワードのリセットが有効になっていません。 **管理者はこの機能を使用できるようにしていません。** | **[セルフ サービスによるパスワードのリセットが有効]** フラグを **[選択]** または **[すべて]** に切り替えて、**[保存]** を選択します。 |
-| ユーザーに Azure AD Premium または Azure AD Basic のライセンスが割り当てられていません。 **管理者はこの機能を使用できるようにしていません。** | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
+| このディレクトリでは、パスワードのリセットが有効になっていません。 **管理者が、この機能を使用できるようにしていません。** | **[セルフ サービスによるパスワードのリセットが有効]** フラグを **[選択]** または **[すべて]** に切り替えて、**[保存]** を選択します。 |
+| ユーザーに Azure AD Premium または Azure AD Basic のライセンスが割り当てられていません。 **管理者が、この機能を使用できるようにしていません。** | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> <br> 該当の管理者アカウントにライセンスを割り当てることで、この問題を解決できます。 [ライセンスの割り当て、確認、問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関する記事に記載された手順に従ってください。|
 | 要求の処理中に発生したエラーがあります。 | このエラーはさまざまな問題が原因で発生することがありますが、一般的にサービスの停止や構成の問題が原因で発生します。 このエラーが表示されてビジネスに影響がある場合は、Microsoft サポートにお問い合わせください。 |
 
 ## <a name="troubleshoot-the-password-reset-portal"></a>パスワード リセット ポータルのトラブルシューティング
@@ -287,12 +287,12 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 
 * [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービスによるパスワードのリセットを登録する](../user-help/active-directory-passwords-reset-register.md)
+* [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
 * [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [質問したい内容に関する説明がどこにもない](active-directory-passwords-faq.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

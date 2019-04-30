@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338294"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000064"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
 
@@ -89,9 +89,9 @@ Azure Data Lake Storage は、HDFS と POSIX スタイルのアクセス制御�
 - [Azure portal を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Azure HDInsight クラスターで Data Lake Storage を使用する](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 (プレビュー)
+### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 は最新のストレージ製品で、このドキュメントの執筆時点ではまだプレビュー段階です。 Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage の第 1 世代からのコア機能を統合します。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
+Azure Data Lake Storage Gen2 は、最新のストレージ製品です。 Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage の第 1 世代からのコア機能を統合します。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
 
 ADLS Gen 2 は  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
 
@@ -115,7 +115,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 詳細については、次の記事を参照してください。
 
-- [Azure Data Lake Storage Gen2 プレビューの概要](../../storage/data-lake-storage/introduction.md)
+- [Azure Data Lake Storage Gen2 の概要](../../storage/data-lake-storage/introduction.md)
 - [Azure BLOB ファイル システム ドライバー (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 

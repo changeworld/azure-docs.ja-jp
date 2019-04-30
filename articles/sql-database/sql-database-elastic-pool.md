@@ -111,7 +111,7 @@ Single Database のコンピューティング サイズを使用した場合と
 - プール内のすべてのデータベースに使用される最大リソース数 (選択したリソース モデルに応じて、最大 DTU または最大仮想コアのいずれか)。
 - プール内のすべてのデータベースに使用される記憶域の最大バイト数。
 
-各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入レベル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(vCore ベースの購入モデル) をご覧ください。
+各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入モデル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(仮想コアベースの購入モデル) をご覧ください。
 
 ツールを使用できない場合、プールのコスト効果が Single Database よりも高いかどうかを確認するには、次の手順が役立ちます。
 
@@ -124,7 +124,7 @@ Single Database のコンピューティング サイズを使用した場合と
    <*同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率*)
 
 2. プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。 次に、このストレージの容量を提供する eDTU プール サイズを決定します。
-3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 vCore ベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
+3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 仮想コアベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
 4. 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」ページを参照し、手順 3 の見積もりを超える最小のプール サイズを探します。
 5. 手順 5. のプールの価格と、Single Database の適切なコンピューティング サイズを使用した場合の価格を比較します。
 

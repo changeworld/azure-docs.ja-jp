@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630785"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006796"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする
 
@@ -124,7 +124,7 @@ Azure Data Factory は非常に詳細なログ セットに起因し、この制
 - *パイプラインのアクティビティに対して定義されているユーザー パラメーター*: アクティビティに対して、一意の名前が付けられたユーザー パラメーターごとに新しい列が作成されます。 
 - *アクティビティの入力と出力*: これはアクティビティによって異なり、冗長性に起因して大量の列を生成します。 
  
-以下に提案する大まかな対処方法と同様に、ADF ログをそれぞれのワークスペースに分離させ、ワークスペースで収集される他のログ タイプにこのログが影響を与える可能性を最小限に抑えることをお勧めします。 Azure Data Factory 用に選別されたログを 2019 年 4 月中旬までに利用できるようにする予定です。
+以下に提案する大まかな対処方法と同様に、ADF ログをそれぞれのワークスペースに分離させ、ワークスペースで収集される他のログ タイプにこのログが影響を与える可能性を最小限に抑えることをお勧めします。 Azure Data Factory 用に選別されたログを間もなく利用できるようにする予定です。
  
 #### <a name="workarounds"></a>対処方法
 短期的対処。500 列の制限が再定義されるまで、冗長なデータ型を個々のワークスペースに分離し、上限に到達する可能性を減らすことをお勧めします。

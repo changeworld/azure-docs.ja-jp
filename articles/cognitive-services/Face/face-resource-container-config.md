@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882125"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677784"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -31,11 +31,11 @@ ms.locfileid: "58882125"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Face_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Cognitive Services_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Face の** [リソース管理] の **[キー]** の下
+* Azure portal:**Cognitive Services** の [リソース管理] の **[キー]** の下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -43,13 +43,15 @@ ms.locfileid: "58882125"
 
 ## <a name="billing-configuration-setting"></a>Billing 構成設定
 
-`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Face_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Face_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
+`Billing` 設定は、コンテナーの課金情報を測定するために使用される Azure の _Cognitive Services_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Cognitive Services_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Face** の [概要]、ラベル:  `Endpoint`
+* Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
 
-|必須| 名前 | データ型 | 説明 |
+エンドポイント URI には、忘れずに _Face_ ルーティングを追加してください。その例を次に示します。 
+
+|必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
 
@@ -59,7 +61,7 @@ ms.locfileid: "58882125"
 
 `CloudAI` セクションの構成設定では、ご利用のコンテナーに固有のオプションが提供されます。 `CloudAI` セクションの Face コンテナーでは、次の設定とオブジェクトがサポートされます
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | 説明 |
 |------|-----------|-------------|
 | `Storage` | Object | Face コンテナーで使用されるストレージ シナリオ。 `Storage` オブジェクトのストレージ シナリオと関連する設定の詳細については、「[ストレージ シナリオの設定](#storage-scenario-settings)」を参照してください |
 
@@ -78,7 +80,7 @@ Face コンテナーには、格納される内容に応じて、BLOB、キャ�
 
 ストレージ シナリオと関連する構成設定は、`CloudAI` 構成セクションの下の、`Storage` オブジェクトで管理されます。 `Storage` オブジェクトでは、次の構成設定を使用できます。
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | 説明 |
 |------|-----------|-------------|
 | `StorageScenario` | String | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
 | `ConnectionStringOfAzureStorage` | String | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
@@ -120,7 +122,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](face-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| 名前 | データ型 | 説明 |
+|省略可能| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Face コンテナーでは、これは使用されません。|
 |省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -136,12 +138,12 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{BILLING_KEY} | Face リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | リージョンを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{BILLING_KEY} | Cognitive Services リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | リージョンと face ルーティングを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
-> ApiKey の値は、[Azure Face Resource keys]\(Azure Face リソース キー\) ページからの**キー**です。 
+> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある**キー**です。 
 
 ## <a name="face-container-docker-examples"></a>Face コンテナーの Docker の例
 

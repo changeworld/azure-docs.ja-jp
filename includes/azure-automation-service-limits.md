@@ -8,20 +8,21 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 61f82771e53ac9bb594484b29bb109a03cee674b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554206"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012503"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
-| リソース | 上限 |メモ|
+| Resource | 上限 |メモ|
 | --- | --- |---|
 | Azure Automation アカウントあたりの 30 秒ごとに送信できる新しいジョブの最大数 (スケジュールされていないジョブ) |100 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | Automation アカウントあたりのインスタンスの同じ時刻に同時実行するジョブの最大数 (スケジュールされていないジョブ) |200 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | 30 日のローリング期間におけるジョブ メタデータの最大ストレージ サイズ | 10 GB (約 400 万ジョブ)|この制限に到達すると、次のジョブ作成要求は失敗します。 |
+| 最大ジョブ ストリームの制限|1 MB|単一のストリームを 1 MB より大きくすることはできません。|
 | Automation アカウントあたりの 30 秒ごとにインポートできるモジュールの最大数 |5 ||
 | モジュールの最大サイズ |100 MB ||
 | ジョブ実行時間、Free レベル |カレンダー月あたりサブスクリプションごとに 500 分 ||

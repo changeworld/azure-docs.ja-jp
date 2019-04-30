@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426394"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004042"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する 
 コンテナーの Azure Monitor を使用している場合、パフォーマンスのグラフと正常性状態を使用して、AKS クラスターから直接、または Azure Monitor からサブスクリプション内のすべての AKS クラスターという 2 つの観点から Azure Kubernetes Service (AKS) クラスターのワークロードを監視することができます。 Azure Container Instances (ACI) の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -40,8 +40,9 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 **[Monitored clusters]\(監視対象クラスター\)** タブでは次のことがわかります。
 
 1. 重大または異常な状態のクラスターの数と、正常なクラスターまたは報告していないクラスター (不明状態と呼ばれます) の数。
-1. すべての [Azure Kubernetes エンジン (AKS エンジン)](https://github.com/Azure/aks-engine) のデプロイが正常かどうか。
-1. クラスターごとに展開されているノード、ユーザー ポッド、システム ポッドの数。  
+2. すべての [Azure Kubernetes エンジン (AKS エンジン)](https://github.com/Azure/aks-engine) のデプロイが正常かどうか。
+3. クラスターごとに展開されているノード、ユーザー ポッド、システム ポッドの数。
+4. 使用できるディスク容量と、容量の問題があるかどうか。
 
 含まれる正常性状態は次のとおりです。 
 
@@ -71,7 +72,7 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 | |警告 |該当なし |
 | |重大 |< 100% |
 | |Unknown |過去 30 分以内に報告していない場合 |
-|**ノード** | | |
+|**Node** | | |
 | |Healthy |> 85% |
 | |警告 |60 ～ 84% |
 | |重大 |< 60% |
@@ -131,9 +132,9 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 
 ![Kubernetes パースペクティブ プロパティ ウィンドウの例](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、定義済みのログ検索を使用して Kubernetes イベントを表示することもできます。その場合は、ウィンドウの上部にある **[Kubernetes イベント ログの表示]** リンクをクリックします。 Kubernetes ログ データの表示の詳細については、「[データを分析するためのログの検索](#search-logs-to-analyze-data)」を参照してください。 **[コンテナー]** ビューでコンテナーを確認している間、コンテナー ログをリアルタイムで表示できます。 この機能と、アクセスを許可および制御するために必要な構成の詳細については、「[How to view container logs real time with Azure Monitor for containers](container-insights-live-logs.md)」(コンテナーの Azure Monitor でリアルタイムにコンテナー ログを表示する方法) を参照してください。 
+階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、定義済みのログ検索を使用して Kubernetes イベントを表示することもできます。その場合は、ウィンドウの上部にある **[Kubernetes イベント ログの表示]** リンクをクリックします。 Kubernetes ログ データの表示の詳細については、「[データを分析するためのログの検索](container-insights-log-search.md)」を参照してください。 **[コンテナー]** ビューでコンテナーを確認している間、コンテナー ログをリアルタイムで表示できます。 この機能と、アクセスを許可および制御するために必要な構成の詳細については、「[How to view container logs real time with Azure Monitor for containers](container-insights-live-logs.md)」(コンテナーの Azure Monitor でリアルタイムにコンテナー ログを表示する方法) を参照してください。 
 
-ページ上部の **[+ フィルターの追加]** オプションを使用して、**[サービス]**、**[ノード]**、または **[名前空間]** でビューの結果をフィルター処理できます。また、フィルター スコープを選択した後は、**[値の選択]** フィールドに表示される値のいずれかを選択できます。  構成したフィルターは、AKS クラスターのいずれかの観点を表示するときにグローバルに適用されます。  数式は、等号のみがサポートされています。  最初のフィルターの上に新しいフィルターを追加して、結果をさらに絞り込むことができます。  たとえば、**ノード**によるフィルターを指定した場合、2 番目のフィルターとしては**サービス**または**名前空間**だけを選択できます。  
+ページ上部の **[+ フィルターの追加]** オプションを使用して、**[サービス]**、**[ノード]**、**[名前空間]**、または **[ノード プール]** でビューの結果をフィルター処理できます。また、フィルター スコープを選択した後は、**[値の選択]** フィールドに表示される値のいずれかを選択できます。  構成したフィルターは、AKS クラスターのいずれかの観点を表示するときにグローバルに適用されます。  数式は、等号のみがサポートされています。  最初のフィルターの上に新しいフィルターを追加して、結果をさらに絞り込むことができます。  たとえば、**ノード**によるフィルターを指定した場合、2 番目のフィルターとしては**サービス**または**名前空間**だけを選択できます。  
 
 ![フィルターを使用した結果の絞り込みの例](./media/container-insights-analyze/add-filter-option-01.png)
 
@@ -258,49 +259,6 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 | ![終了状態アイコン](./media/container-insights-analyze/containers-terminated-icon.png) | 正常に停止したか、停止に失敗した|  
 | ![失敗状態アイコン](./media/container-insights-analyze/containers-failed-icon.png) | 失敗の状態 |  
 
-
-## <a name="container-data-collection-details"></a>コンテナーのデータ収集の詳細
-コンテナーの洞察により、コンテナー ホストとコンテナーからさまざまなパフォーマンス メトリックとログ データが収集されます。 データは、3 分ごとに収集されます。
-
-### <a name="container-records"></a>コンテナー レコード
-
-次の表には、コンテナーの Azure Monitor によって収集されるレコードと、ログ検索結果に表示されるデータ型の例を示します。
-
-| データ型 | ログ検索のデータ型 | フィールド |
-| --- | --- | --- |
-| ホストとコンテナーのパフォーマンス | `Perf` | Computer、ObjectName、CounterName &#40;%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem |
-| コンテナー インベントリ | `ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
-| コンテナー イメージ インベントリ | `ContainerImageInventory` | TimeGenerated、Computer、Image、ImageTag、ImageSize、VirtualSize、Running、Paused、Stopped、Failed、SourceSystem、ImageID、TotalContainer |
-| コンテナー ログ | `ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
-| コンテナー サービス ログ | `ContainerServiceLog`  | TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
-| コンテナー ノード インベントリ | `ContainerNodeInventory_CL`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
-| コンテナー プロセス | `ContainerProcess_CL` | TimeGenerated、Computer、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
-| Kubernetes クラスター内のポッドのインベントリ | `KubePodInventory` | TimeGenerated、Computer、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerID、ContainerName、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、SourceSystem |
-| Kubernetes クラスター内のノード部分のインベントリ | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, ClusterId, LastTransitionTimeReady, Labels, Status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
-| Kubernetes イベント | `KubeEvents_CL` | TimeGenerated, Computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message,  SourceSystem | 
-| Kubernetes クラスター内のサービス | `KubeServices_CL` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Kubernetes クラスターのノード部分のパフォーマンス メトリック | Perf &#124; where ObjectName == “K8SNode” | Computer、ObjectName、CounterName &#40;cpuUsageNanoCores、memoryWorkingSetBytes、memoryRssBytes、networkRxBytes、networkTxBytes、restartTimeEpoch、networkRxBytesPerSec、networkTxBytesPerSec、cpuAllocatableNanoCores、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
-| Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | Perf &#124; where ObjectName == “K8SContainer” | CounterName &#40;cpuUsageNanoCores、memoryWorkingSetBytes、memoryRssBytes、restartTimeEpoch、cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryLimitBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
-
-## <a name="search-logs-to-analyze-data"></a>データを分析するためのログの検索
-Log Analytics を使用することにより、傾向を特定し、ボトルネックを診断、予想したり、データを関連付けて現在のクラスター構成のパフォーマンスが最適化されているかを判断したりできます。 すぐに使用できる事前定義のログ検索が提供されています。また、検索結果として返される情報の表示方法をカスタマイズすることもできます。 
-
-プレビュー ウィンドウで **[View Kubernetes event logs]\(Kubernetes イベント ログの表示\)** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話式に分析できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
-
-![Log Analytics でデータを解析する](./media/container-insights-analyze/container-health-log-search-example.png)   
-
-Log Analytics に転送されるコンテナーのログ出力は STDOUT および STDERR です。 Azure Monitor では、Azure マネージド Kubernetes (AKS) が監視され、大量のデータが生成されるため、現時点では Kube システムのデータは収集されません。 
-
-### <a name="example-log-search-queries"></a>検索クエリの例
-多くの場合、1、2 個の例を使ってクエリを作成し、その後、要件に合わせて変更するとうまくいきます。 より高度なクエリを作成できるように、次のサンプル クエリを試すことができます。
-
-| Query | 説明 | 
-|-------|-------------|
-| ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | コンテナーのライフ サイクル情報をすべて一覧表示します| 
-| KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes イベント|
-| ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | イメージ インベントリ | 
-| **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー CPU | 
-| **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー メモリ |
-
 ## <a name="next-steps"></a>次の手順
-コンテナーの Azure Monitor には、サポートしているプロセスや手順に従ってコピーおよび変更する、定義済みのアラートのセットは含まれていません。 「[コンテナーの Azure Monitor を使用してパフォーマンス アラートを作成する](container-insights-alerts.md)」を見直して、CPU やメモリの使用率が高い場合に推奨されるアラートを作成する方法について学習します。  
+- [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。 
+- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

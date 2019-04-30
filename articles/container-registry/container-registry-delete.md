@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.author: danlep
-ms.openlocfilehash: f3206da25a3c0727e3f9fe12190580a6c28c81a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983253"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683462"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Azure Container Registry のコンテナー イメージを削除する
 
 Azure コンテナー レジストリのサイズを管理するには、古いイメージ データを定期的に削除する必要があります。 運用環境にデプロイされるコンテナー イメージには、長期間保存する必要があるものと、通常は短期間で削除できるものがあります。 たとえば、ビルドとテストの自動化シナリオでは、デプロイされない可能性のあるイメージでレジストリが短時間のうちにいっぱいになることがあります。このようなイメージは、ビルドとテスト パスが完了したらすぐに消去できるものです。
 
-イメージ データを削除する方法は複数あるので、各削除操作によるストレージの使用への影響を理解しておく必要があります。 この記事では、最初に Docker レジストリのコンポーネントとコンテナー イメージについて説明した後、イメージ データを削除するいくつかの方法について説明します。
+イメージ データを削除する方法は複数あるので、各削除操作によるストレージの使用への影響を理解しておく必要があります。 この記事では、最初に Docker レジストリのコンポーネントとコンテナー イメージについて説明した後、イメージ データを削除するいくつかの方法について説明します。 削除操作の自動化を支援するために、サンプル スクリプトを用意しています。
 
 ## <a name="registry"></a>レジストリ
 
@@ -54,7 +54,7 @@ product-returns/legacy-integrator:20180715
 
 リポジトリ (またはリポジトリと名前空間) とタグの組み合わせで、イメージの名前が定義されます。 プッシュ操作またはプル操作で名前を指定することにより、イメージをプッシュおよびプルできます。
 
-Azure Container Registry のようなプライベート レジストリでは、イメージ名にはレジストリ ホストの完全修飾名も含まれます。 ACR 内のイメージのレジストリ ホストは、*acrname.azurecr.io* という形式です。 たとえば、前のセクションの "marketing" 名前空間内の最初のイメージの完全な名前は、次のようになります。
+Azure Container Registry のようなプライベート レジストリでは、イメージ名にはレジストリ ホストの完全修飾名も含まれます。 ACR 内のイメージのレジストリ ホストは、*acrname.azurecr.io* (全小文字) という形式です。 たとえば、前のセクションの "marketing" 名前空間内の最初のイメージの完全な名前は、次のようになります。
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
@@ -201,7 +201,56 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-"acr-helloworld:v2" イメージがレジストリから削除され、そのイメージに固有のレイヤー データも削除されます。 マニフェストが複数のタグに関連付けられている場合は、関連付けられているすべてのタグも削除されます。
+`acr-helloworld:v2` イメージがレジストリから削除され、そのイメージに固有のレイヤー データも削除されます。 マニフェストが複数のタグに関連付けられている場合は、関連付けられているすべてのタグも削除されます。
+
+### <a name="list-digests-by-timestamp"></a>ダイジェストをタイムスタンプ順に一覧表示する
+
+リポジトリまたはレジストリのサイズを維持するためには、特定の日付よりも古いマニフェスト ダイジェストを定期的に削除する必要があります。
+
+以下の Azure CLI コマンドは、リポジトリから、特定のタイムスタンプより古いすべてのマニフェスト ダイジェストを昇順に一覧表示するものです。 `<acrName>` と `<repositoryName>` は、環境に適した値に置き換えます。 タイムスタンプは、完全な日付/時刻表現の場合と日付の場合とがあります。その例を次に示します。
+
+```azurecli
+az acr repository show-manifests --name <acrName> --repository <repositoryName> \
+--orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
+```
+
+### <a name="delete-digests-by-timestamp"></a>ダイジェストをタイムスタンプに基づいて削除する
+
+古いマニフェスト ダイジェストを特定した後、次の Bash スクリプトを実行することで、指定のタイムスタンプより古いマニフェスト ダイジェストを削除することができます。 Azure CLI と **xargs** が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`ENABLE_DELETE` の値を `true` に変更します。
+
+> [!WARNING]
+> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 そのようなシステムでは、マニフェスト ダイジェストを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。 
+
+```bash
+#!/bin/bash
+
+# WARNING! This script deletes data!
+# Run only if you do not have systems
+# that pull images via manifest digest.
+
+# Change to 'true' to enable image delete
+ENABLE_DELETE=false
+
+# Modify for your environment
+# TIMESTAMP can be a date-time string such as 2019-03-15T17:55:00.
+REGISTRY=myregistry
+REPOSITORY=myrepository
+TIMESTAMP=2019-04-05  
+
+# Delete all images older than specified timestamp.
+
+if [ "$ENABLE_DELETE" = true ]
+then
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+    --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].digest" -o tsv \
+    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
+else
+    echo "No data deleted."
+    echo "Set ENABLE_DELETE=true to enable deletion of these images in $REPOSITORY:"
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+   --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].[digest, timestamp]" -o tsv
+fi
+```
 
 ## <a name="delete-untagged-images"></a>タグの付いていないイメージを削除する
 
@@ -257,14 +306,12 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 
 ### <a name="delete-all-untagged-images"></a>タグの付いていないイメージをすべて削除する
 
-次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。
+> [!WARNING]
+> 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。
 
 **Bash での Azure CLI**
 
 次の Bash スクリプトは、リポジトリからタグの付いていないイメージをすべて削除します。 Azure CLI と **xargs** が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`ENABLE_DELETE` の値を `true` に変更します。
-
-> [!WARNING]
-> (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、このスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。
 
 ```bash
 #!/bin/bash
@@ -293,9 +340,6 @@ fi
 **PowerShell での Azure CLI**
 
 次の PowerShell スクリプトは、リポジトリからタグの付いていないイメージをすべて削除します。 PowerShell と Azure CLI が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`$enableDelete` の値を `$TRUE` に変更します。
-
-> [!WARNING]
-> (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、このスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。
 
 ```powershell
 # WARNING! This script deletes data!

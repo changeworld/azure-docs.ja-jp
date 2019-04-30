@@ -7,14 +7,14 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02c7f53c090559ca0ada46ec90de3a44b0518a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003472"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683589"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
 
@@ -29,8 +29,7 @@ ms.locfileid: "58003472"
     2. ExpressRoute - ExpressRoute は、Microsoft のデータセンターとオンプレミスや共用施設にあるインフラストラクチャの間にプライベート接続を作成できる Azure サービスです。 ExpressRoute 接続はパブリックなインターネットを経由しないため、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 詳しくは、「[ExpressRoute 回線の作成と変更](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)」をご覧ください。
     1. Data Box オンライン データ転送 - Data Box Edge と Data Box Gateway は、ネットワーク ストレージのゲートウェイとして機能して自社サイトと Azure の間でデータを管理するオンライン データ転送製品です。 Data Box Edge は、Azure との間でデータを転送する機能と、人工知能 (AI) に対応したエッジ計算によってデータを処理する機能とを備えたオンプレミスのネットワーク デバイスです。 Data Box Gateway は、ストレージ ゲートウェイ機能を備えた仮想アプライアンスです。 詳しくは、「[Azure Data Box のドキュメント - オンライン転送](https://docs.microsoft.com/azure/databox-online/)」をご覧ください。
 1.  オフラインでのデータの発送
-    1. インポート/エクスポート サービス - 物理ディスクを Azure に送ることができ、それらがアップロードされます。 詳細については、「[Azure Import/Export サービスとは](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)」を参照してください。
-    1. Data Box オフライン データ転送 - ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。 詳しくは、「[Azure Data Box のドキュメント - オフライン転送](https://docs.microsoft.com/azure/databox/)」をご覧ください。
+    1. Data Box オフライン データ転送 - ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。 Data Box オフライン転送デバイスの詳細については、「[Azure Data Box のドキュメント - オフライン転送](https://docs.microsoft.com/azure/databox/)」を参照してください。 Hadoop クラスターの移行の詳細については、[Azure Data Box を使用したオンプレミス HDFS ストアから Azure Storage への移行](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)に関するページを参照してください。
 
 次の表に、データ ボリュームとネットワーク帯域幅に基づくおおまかなデータ転送時間を示します。 データ移行に 3 週間以上かかることが予想される場合は Data Box を使用してください。
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883115"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678566"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
@@ -34,7 +34,7 @@ ms.locfileid: "58883115"
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ |[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
 |いいえ |[HTTP プロキシ](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
-|いいえ |[ログの記録](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
+|いいえ |[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
 |はい|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
 > [!IMPORTANT]
@@ -42,11 +42,11 @@ ms.locfileid: "58883115"
 
 ## <a name="apikey-setting"></a>ApiKey 設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-setting) 構成設定に指定された _Language Understanding_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-setting) 構成設定に指定された _Cognitive Services_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Language Understanding** の [リソース管理] の **[キー]**
+* Azure portal:**Cognitive Services** の [リソース管理] の **[キー]** の下
 * LUIS ポータル: **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページ。 
 
 スターター キーまたはオーサリング キーは使用しないでください。 
@@ -57,14 +57,17 @@ ms.locfileid: "58883115"
 
 ## <a name="billing-setting"></a>Billing 設定
 
-`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Language Understanding_ リソースのエンドポイント URI を指定します。 この構成設定の値は指定する必要があり、値は Azure の _Language Understanding_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
+`Billing` 設定は、コンテナーの課金情報を測定するために使用される Azure の _Cognitive Services_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Cognitive Services_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Language Understanding** の [概要]。ラベル:  `Endpoint`
+* Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
 * LUIS ポータル: **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページ。エンドポイント URI の一部として表示されます。
 
-|必須| 名前 | データ型 | 説明 |
+次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
+
+
+|必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -96,7 +99,7 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 次の表で、サポートされる設定について説明します。
 
-|必須| 名前 | データ型 | 説明 |
+|必須| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |はい| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |いいえ | `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -109,16 +112,18 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 * **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 * **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
+次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
+
 {_<引数名>_} はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
 |{ENDPOINT_KEY} | トレーニング済み LUIS アプリケーションのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | 課金エンドポイントの値は、Azure portal の [Language Understanding Overview]\(Language Understanding の概要\) ページで確認できます。|https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{BILLING_ENDPOINT} | 課金エンドポイントの値は、Azure `Cognitive Services` の [概要] ページで確認できます。 |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](luis-container-howto.md#billing)」を参照してください。
-> ApiKey の値は、LUIS ポータルの [Keys and Endpoints]\(キーとエンドポイント\) ページにある **[キー]** です。また、[Azure Language Understanding Resource keys]\(Azure Language Understanding リソース キー\) ページで確認することもできます。 
+> ApiKey の値は、LUIS ポータルの [Keys and Endpoints]\(キーとエンドポイント\) ページにある **[キー]** です。また、Azure `Cognitive Services` リソース キー ページで確認することもできます。 
 
 ### <a name="basic-example"></a>基本的な例
 

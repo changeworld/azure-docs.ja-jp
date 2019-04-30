@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc2a1bd8b751ab1b88e54876227892ea3c257a3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517540"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699035"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>方法:Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成
 
@@ -41,7 +41,8 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 サインイン リスク ポリシーは、特定のサインイン リスク レベルに対して構成できる自動対応です。 この対応では、リソースへのアクセスをブロックするか、またはアクセスを取得するには多要素認証 (MFA) チャレンジの指定を要求するようにできます。
 
-   
+サインイン リスク ポリシーによってトリガーされた MFA プロンプトをユーザーが正しく遂行すると、正当なユーザーによってサインインが行われたというフィードバックが Identity Protection に送られます。 その後、MFA プロンプトをトリガーしたサインイン リスク イベントは自動的に終了し、このイベントがユーザー リスクの昇格につながらないよう、Identity Protection によって設定されます。 サインイン リスク ポリシーを有効にすると、MFA のダイアログが表示されたときにユーザーが自身で修正し、その後、関連する危険なサインインは自動的にクローズされるため、"危険なサインイン" ビューの表示件数を減らすことができます。
+
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>サインイン リスク ポリシーにアクセスする方法
    
 サインイン リスク ポリシーは、[[Azure AD Identity Protection]](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) ページの **[構成]** セクションにあります。

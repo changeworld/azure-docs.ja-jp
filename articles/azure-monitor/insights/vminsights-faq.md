@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243775"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698282"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor for VMs (プレビュー) についてよく寄せられる質問
 この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -100,7 +100,7 @@ Azure Monitor for VMs のマップ機能は Service Map に基づいています
 * 監視対象の VM がクライアント グループ ノードに含まれるようになりました。グループ内の監視対象の仮想マシンと監視対象外の仮想マシンの割合がドーナツ グラフに示されます。  また、グループを展開したときに、これを使用してマシンの一覧をフィルター処理することもできます。
 * 監視対象の仮想マシンがサーバー ポート グループ ノードに含まれるようになりました。グループ内の監視対象のマシンと監視対象外のマシンの割合がドーナツ グラフに示されます。  また、グループを展開したときに、これを使用してマシンの一覧をフィルター処理することもできます。
 * Application Insights のアプリ マップとの一貫性を向上させるために、マップのスタイルが更新されました。
-* サイド パネルが更新されましたが、Service Map でサポートされていた Update Management、Change Tracking、Security、およびService Desk との統合はまだ含まれていません。 
+* サイド パネルが更新されましたが、Service Map でサポートされていた Update Management、Change Tracking、Security、およびService Desk との統合は含まれていません。 
 * マップするグループとマシンを選択するオプションが更新され、サブスクリプション、リソース グループ、Azure 仮想マシン スケール セット、クラウド サービスがサポートされるようになりました。
 * Azure Monitor for VMs のマップ機能では、新しい Service Map コンピューター グループを作成することはできません。  
 
@@ -125,6 +125,12 @@ Azure Monitor for VMs のマップ機能は Service Map に基づいています
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>[パフォーマンス] タブのネットワーク グラフと Azure VM の概要ページのネットワーク グラフが異なるのはなぜですか?
 
 Azure VM の概要ページには、ゲスト VM でのアクティビティのホストの測定に基づいてグラフが表示されます。  Azure VM の概要のネットワーク グラフでは、課金対象となるネットワーク トラフィックのみが表示されます。  これには、VNET 間トラフィックは含まれません。  Azure Monitor for VMs に表示されるデータとグラフは、ゲスト VM のデータに基づいており、ネットワーク グラフには、VNET 間も含め、その VM に対する受信および送信のすべての TCP/IP トラフィックが表示されます。
+
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>VMConnection に格納されているデータの応答時間はどのように測定されて、接続パネルとブックに表示されるのですか?
+
+応答時間は概算です。 アプリケーションのコードがインストルメント化されていないため、要求がいつ開始され、応答をいつ受信したのかは、実際にはわかりません。 その代わり、接続上で送信されるデータと、その接続で返されるデータが監視されます。 それらの送信と受信は、エージェントによって追跡され、ペアリングが試みられます。つまり、一連の送信とそれに続く一連の受信が要求/応答のペアとして解釈されます。 その操作の間隔が応答時間となります。 そこにはネットワーク待ち時間とサーバーの処理時間が含まれます。
+
+要求/応答ベースのプロトコル、つまり接続上で単一の要求を送信して単一の応答を受信するプロトコルでは、この概算がうまく機能します。 HTTP(S) (パイプライン処理を伴わないもの) はそれに該当しますが、他のプロトコルでは十分に機能しません。
 
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics の無料プランを利用している場合、機能の制限はありますか?
 *無料*の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  

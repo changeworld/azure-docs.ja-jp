@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579412"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683604"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使ってナレッジの回答を取得する
 
@@ -46,7 +46,7 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
 
 エンドポイントの詳細を取得するには、次のようにします。
-1. [https://www.qnamaker.ai](https://www.qnamaker.ai) にログインします。
+1. [https://www.qnamaker.ai](https://www.qnamaker.ai) にサインインします。
 1. **[My knowledge bases]\(マイ ナレッジ ベース\)** で、ご利用のナレッジ ベースの **[コードの表示]** をクリックします。
     ![マイ ナレッジ ベース](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. GenerateAnswer エンドポイントの詳細を取得します。
@@ -64,7 +64,7 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
 **要求 URL** は、次のような形式になります。 
 
 ```
-https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
 |HTTP 要求プロパティ|Name|Type|目的|
@@ -84,7 +84,7 @@ JSON の本文には、次のようないくつかの設定があります。
 |`top`|省略可能|integer|出力を含めるランク付けされた結果の数。 既定値は 1 です。|
 |`userId`|省略可能|string|ユーザーを識別する一意の ID。 この ID はチャット ログに記録されます。|
 |`isTest`|省略可能|ブール値|true に設定した場合、公開されたインデックスではなく、`testkb` 検索インデックスから結果が返されます。|
-|`strictFilters`|省略可能|string|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。|
+|`strictFilters`|省略可能|string|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。 応答にメタデータ フィルターを適用しないよう指定するには、`none` を使用します。 |
 
 JSON 本文の例は、次のようになります。
 

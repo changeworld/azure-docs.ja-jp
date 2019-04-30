@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 8aea4a74ba84855f011dada70ea75ec0d5fb64fe
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896704"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>メインフレーム コンピューティングを Azure に移行する
@@ -121,7 +121,7 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 ### <a name="ibm-resources"></a>IBM リソース
 
 - [IBM Z 上の Parallel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS とカップリング ファシリティ: 基本を超えて](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [IBM CICS と結合ファシリティ: 基本を超えて](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
 - [Db2 pureScale 機能のインストールに必要なユーザーを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 - [Db2icrt - インスタンス コマンドを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 - [Db2 pureScale クラスター化データベース ソリューション](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
@@ -130,10 +130,10 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 ### <a name="azure-government"></a>Azure Government
 
 - [メインフレーム アプリケーション用の Microsoft Azure Government クラウド](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
-- [マイクロソフトと FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
+- [Microsoft と FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
 ### <a name="more-migration-resources"></a>その他の移行リソース
 
-- [プラットフォーム近代化のための提携: Azure 上の IBM Db2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+- [プラットフォーム近代化のための提携:Azure 上の IBM Db2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Azure 仮想データ センターのリフト アンド シフト ガイド](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

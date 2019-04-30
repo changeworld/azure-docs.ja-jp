@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877127"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678685"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>テキスト認識 Docker コンテナーを構成する
 
@@ -31,11 +31,11 @@ ms.locfileid: "58877127"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Computer Vision_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure `Cognitive Services` リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Cognitive Services_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Computer Vision の** [リソース管理] の **[キー]** の下
+* Azure portal:**Cognitive Services** の [リソース管理] の **[キー]** の下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -43,13 +43,15 @@ ms.locfileid: "58877127"
 
 ## <a name="billing-configuration-setting"></a>Billing 構成設定
 
-`Billing` 設定は、コンテナーの課金情報を測定するために使用される Azure の _Computer Vision_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Computer Vision_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
+`Billing` 設定は、コンテナーの課金情報を測定するために使用される Azure の _Cognitive Services_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Cognitive Services_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
 
 この設定は次の場所で確認できます。
 
-* Azure portal:**Computer Vision**  の [概要]、ラベル:  `Endpoint`
+* Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
 
-|必須| 名前 | データ型 | 説明 |
+次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
+
+|必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -77,7 +79,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](computer-vision-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| 名前 | データ型 | 説明 |
+|省略可能| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
 |省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -89,16 +91,18 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 * **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 * **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
+次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
+
 {_<引数名>_} はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{BILLING_KEY} | Computer Vision リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_KEY} | Cognitive Services リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | リージョンを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
-> ApiKey の値は、Computer Vision リソース キー ページからの**キー**です。 
+> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある**キー**です。 
 
 ## <a name="recognize-text-container-docker-examples"></a>テキスト認識コンテナーの Docker の例
 

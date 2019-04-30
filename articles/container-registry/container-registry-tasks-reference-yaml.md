@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894134"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
@@ -156,13 +156,13 @@ steps:
 | `ignoreErrors` | bool | 省略可能 |
 | `isolation` | string | 省略可能 |
 | `keep` | bool | 省略可能 |
-| `network` | オブジェクト | 省略可能 |
+| `network` | object | 省略可能 |
 | `ports` | [string, string, ...] | 省略可能 |
 | `pull` | bool | 省略可能 |
 | `repeat` | int | 省略可能 |
 | `retries` | int | 省略可能 |
 | `retryDelay` | int (秒) | 省略可能 |
-| `secret` | オブジェクト | 省略可能 |
+| `secret` | object | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
@@ -273,13 +273,13 @@ steps:
 | `ignoreErrors` | bool | 省略可能 |
 | `isolation` | string | 省略可能 |
 | `keep` | bool | 省略可能 |
-| `network` | オブジェクト | 省略可能 |
+| `network` | object | 省略可能 |
 | `ports` | [string, string, ...] | 省略可能 |
 | `pull` | bool | 省略可能 |
 | `repeat` | int | 省略可能 |
 | `retries` | int | 省略可能 |
 | `retryDelay` | int (秒) | 省略可能 |
-| `secret` | オブジェクト | 省略可能 |
+| `secret` | object | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
@@ -369,18 +369,18 @@ steps:
 | `entryPoint` | string | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 | なし |
 | `env` | [string, string, ...] | はい | ステップの環境変数を定義する `key=value` 形式での文字列の配列。 | なし |
 | `expose` | [string, string, ...] | はい | コンテナーから公開されているポートの配列。 |  なし |
-| [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
+| [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`。ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
 | `ignoreErrors` | bool | はい | コンテナーの実行中にエラーが発生したかどうかに関係なく、ステップを成功としてマークするかどうか。 | `false` |
 | `isolation` | string | はい | コンテナーの分離レベル。 | `default` |
 | `keep` | bool | はい | 実行後にステップのコンテナーを保持する必要があるかどうか。 | `false` |
-| `network` | オブジェクト | はい | コンテナーが実行されるネットワークを識別します。 | なし |
+| `network` | object | はい | コンテナーが実行されるネットワークを識別します。 | なし |
 | `ports` | [string, string, ...] | はい | コンテナーからホストに公開されているポートの配列。 |  なし |
 | `pull` | bool | はい | キャッシュ動作を防ぐために、実行前にコンテナーを強制的にプルするかどうか。 | `false` |
 | `privileged` | bool | はい | コンテナーを特権モードで実行するかどうか。 | `false` |
 | `repeat` | int | はい | コンテナーの実行を繰り返すための再試行回数。 | 0 |
 | `retries` | int | はい | コンテナーの実行に失敗した場合の再試行回数。 再試行は、コンテナーの終了コードがゼロ以外の場合にのみ行われます。 | 0 |
 | `retryDelay` | int (秒) | はい | コンテナーの実行の再試行間の遅延 (秒)。 | 0 |
-| `secret` | オブジェクト | はい | Azure Key Vault シークレットまたは Azure リソースのマネージド ID を識別します。 | なし |
+| `secret` | object | はい | Azure Key Vault シークレットまたは Azure リソースのマネージド ID を識別します。 | なし |
 | `startDelay` | int (秒) | はい | コンテナーの実行を遅らせる秒数。 | 0 |
 | `timeout` | int (秒) | はい | ステップが終了されるまでに実行できる最大秒数。 | 600 |
 | [`when`](#example-when) | [string, string, ...] | はい | タスク内で 1 つ以上のその他のステップに対するステップの依存関係を構成します。 | なし |
@@ -404,8 +404,8 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 `when` プロパティは、タスク内のその他のステップに対するステップの依存関係を指定します。 次の 2 つのパラメーター値がサポートされます。
 
-* `when: ["-"]` - 他のステップへの依存関係がないことを示します。 `when: ["-"]` を指定するステップは、すぐに実行が開始され、同時ステップの実行を有効にします。
-* `when: ["id1", "id2"]` - ステップが `id` "id1" と `id` "id2" のステップに依存していることを示します。 このステップは、"id1" と "id2" の両方のステップが完了するまで実行されません。
+* `when: ["-"]`: 他のステップへの依存関係がないことを示します。 `when: ["-"]` を指定するステップは、すぐに実行が開始され、同時ステップの実行を有効にします。
+* `when: ["id1", "id2"]`: ステップが `id` "id1" と `id` "id2" のステップに依存していることを示します。 このステップは、"id1" と "id2" の両方のステップが完了するまで実行されません。
 
 `when` がステップで指定されていない場合、そのステップは `acr-task.yaml` ファイル内の前のステップの完了に依存します。
 

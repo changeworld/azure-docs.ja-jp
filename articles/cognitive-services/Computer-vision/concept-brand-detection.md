@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/26/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496589"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003107"
 ---
-# <a name="brand-detection"></a>ブランド検出
+# <a name="detect-popular-brands-in-images"></a>画像内の人気のブランドの検出
 
 ブランド検出は[オブジェクト検出](concept-object-detection.md)の特殊なモードであり、世界中のロゴを数千単位で収録しているデータベースを利用し、画像や動画の中の商用ブランドを識別します。 この機能は、たとえば、ソーシャル メディアで最も人気のあるブランドや、メディアのプロダクト プレイスメントの中で最も普及しているブランドを検出する目的で使用できます。
 

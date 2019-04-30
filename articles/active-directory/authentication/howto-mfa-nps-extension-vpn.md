@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ea409b1726e82557b564f93fbd35898e9cf2cb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372456"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699117"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -374,7 +374,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 2. PowerShell コマンド プロンプトで、「**cd "c:\Program Files\Microsoft\AzureMfa\Config"**」と入力し、Enter キーを押します。
 
-3. 次のコマンド プロンプトで「**.\AzureMfsNpsExtnConfigSetup.ps1**」と入力し、Enter キーを押します。 このスクリプトで、Azure AD PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
+3. 次のコマンド プロンプトで「**.\AzureMfaNpsExtnConfigSetup.ps1**」と入力し、Enter キーを押します。 このスクリプトで、Azure AD PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
 
     ![AzureMfsNpsExtnConfigSetup.ps1 構成スクリプトの実行](./media/howto-mfa-nps-extension-vpn/image38.png)
 

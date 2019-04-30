@@ -3,13 +3,13 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/11/2019
-ms.openlocfilehash: 200e2dfd2dd4f9aedd9256b307491a0b207ea124
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/16/2019
+ms.openlocfilehash: e92d1c65d9601c23e7e785f07e2de3e43ea6612b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964197"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684652"
 ---
 コンテナーへのクエリは、`<ApiKey>` に使用される Azure リソースの価格レベルで課金されます。
 
@@ -26,7 +26,7 @@ Cognitive Services コンテナーは、計測のために課金エンドポイ�
 | オプション | 説明 |
 |--------|-------------|
 | `ApiKey` | 課金情報を追跡するために使用される Cognitive Service リソースの API キー。<br/>このオプションの値には、`Billing` に指定されたプロビジョニング済みのリソースの API キーが設定されている必要があります。 |
-| `Billing` | 課金情報を追跡するために使用される Cognitive Service リソースのエンドポイント。<br/>このオプションの値には、プロビジョニング済みの LUIS Azure リソースのエンドポイント URI が設定されている必要があります。|
+| `Billing` | 課金情報を追跡するために使用される Cognitive Service リソースのエンドポイント。<br/>このオプションの値には、プロビジョニング済みの Azure リソースのエンドポイント URI が設定されている必要があります。|
 | `Eula` | コンテナーのライセンスに同意していることを示します。<br/>このオプションの値は `accept` に設定する必要があります。 |
 
 

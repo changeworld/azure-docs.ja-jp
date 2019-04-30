@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: ec0c3b7943db87e5c6fb31dc173a5c3b36377e6c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/17/2019
+ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855471"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680521"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
@@ -43,6 +43,9 @@ Azure SQL Database では、[長期的なバックアップ保有期間](sql-dat
    ![ポリシーを構成する](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
 3. 完了したら、**[適用]** をクリックします。
+
+> [!IMPORTANT]
+> 長期的なバックアップ保有期間ポリシーを有効にすると、初回バックアップが表示されて復元に利用できる状態になるまでに、最大 7 日かかる場合があります。 LTR バックアップ周期の詳細については、[長期的なバックアップ保有期間](sql-database-long-term-retention.md)に関するページを参照してください。
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Azure Portal を使用してバックアップを表示し、バックアップから復元する
 

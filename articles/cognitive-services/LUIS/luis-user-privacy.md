@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895158"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
@@ -37,18 +37,18 @@ Language Understanding Intelligent Service (LUIS) はサービスを運用する
 ## <a name="deleting-customer-data"></a>顧客データの削除
 LUIS ユーザーは、LUIS Web ポータルまたは LUIS Authoring (Programmatic とも呼ばれる) API を使用して、ユーザー コンテンツの削除を完全に制御できます。 次の表では、両方を支援するリンクを示します。
 
-| | **ユーザー アカウント** | **アプリケーション** | **発話の例** | **エンド ユーザー クエリ** |
+| | **ユーザー アカウント** | **Application** | **発話の例** | **エンドユーザー クエリ** |
 | --- | --- | --- | --- | --- |
-| **ポータル** | [Link](luis-concept-data-storage.md#delete-an-account) | [Link](luis-how-to-start-new-app.md#delete-app) | [Link](luis-concept-data-storage.md#utterances-in-an-intent) | [アクティブ ラーニング発話](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[記録された発話](luis-concept-data-storage.md#disable-logging-utterances) |
-| **API** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
+| **ポータル** | [リンク](luis-concept-data-storage.md#delete-an-account) | [リンク](luis-how-to-start-new-app.md#delete-app) | [リンク](luis-concept-data-storage.md#utterances-in-an-intent) | [アクティブ ラーニング発話](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[記録された発話](luis-concept-data-storage.md#disable-logging-utterances) |
+| **API** | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 LUIS ユーザーは、ポータルでデータの表示を完全に制御できますが、LUIS Authoring (Programmatic とも呼ばれる) API を使ってエクスポートする必要があります。 次の表では、LUIS Authoring (Programmatic とも呼ばれる) API でのデータのエクスポートに役立つリンクを示します。
 
-| | **ユーザー アカウント** | **アプリケーション** | **発話** | **エンド ユーザー クエリ** |
+| | **ユーザー アカウント** | **Application** | **発話** | **エンドユーザー クエリ** |
 | --- | --- | --- | --- | --- |
-| **API** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
+| **API** | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [リンク](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
 ## <a name="location-of-active-learning"></a>アクティブ ラーニングの場所
 

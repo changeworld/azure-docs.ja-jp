@@ -1,5 +1,5 @@
 ---
-title: 印刷されたテキストと手書きのテキストの認識 - Computer Vision
+title: 印刷されたテキストと手書きのテキストの認識、Computer Vision
 titleSuffix: Azure Cognitive Services
 description: 画像に含まれる印刷されたテキストと手書きのテキストの Computer Vision API を使用した認識に関する概念。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588977"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998242"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
 
@@ -45,13 +45,11 @@ Free レベルのサブスクリプションを使用している場合、Read A
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR (光学式文字認識) API
 
-Computer Vision の光学式文字認識 (OCR) API は Read API に似ていますが、同期的に実行され、大きいドキュメントには最適化されていません。 以前の認識モデルを使用しますが、対応する言語の数が増えています。
-
-OCR では 25 言語がサポートされています。アラビア語、簡体字中国語、繁体字中国語、チェコ語、デンマーク語、オランダ語、英語、フィンランド語、フランス語、ドイツ語、ギリシャ語、ハンガリー語、イタリア語、日本語、韓国語、ノルウェー語、ポーランド語、ポルトガル語、ルーマニア語、ロシア語、セルビア語 (キリルおよびラテン)、スロバキア語、スペイン語、スウェーデン語、トルコ語。 OCR は、検出されたテキストの言語を自動的に検出します。
+Computer Vision の光学式文字認識 (OCR) API は Read API に似ていますが、同期的に実行され、大きいドキュメントには最適化されていません。 以前の認識モデルを使用しますが、より多くの言語で動作します。サポートされている言語の完全な一覧については、[言語サポート](language-support.md#text-recognition)に関するページを参照してください。
 
 必要に応じて、OCR は、イメージの水平軸を中心とした回転のオフセットを度数で返すことによって、認識されたテキストの回転を修正します。 また、OCR では、以下の図に示すように、各単語のフレーム座標も提供されます。
 
-![回転している画像と読み取られて描かれたテキストを表す図](./Images/vision-overview-ocr.png)
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/vision-overview-ocr.png)
 
 詳しくは、[OCR のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)をご覧ください。
 

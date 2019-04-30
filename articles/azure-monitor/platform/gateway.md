@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437341"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699272"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -124,9 +124,9 @@ or
 1. ワークスペース ブレードの **[設定]** で、**[詳細設定]** を選びます。
 1. **[接続されたソース]** > **[Windows サーバー]** に移動し、**[Log Analytics ゲートウェイのダウンロード]** を選択します。
 
-## <a name="install-the-log-analytics-gateway"></a>Log Analytics ゲートウェイのインストール
+## <a name="install-log-analytics-gateway-using-setup-wizard"></a>セットアップ ウィザードを使用して Log Analytics ゲートウェイをインストールする
 
-ゲートウェイをインストールするには、以下の手順を実行します  (以前のバージョン (Log Analytics フォワーダー) をインストールしている場合には、今回のリリースにアップグレードされます)。
+セットアップ ウィザードを使用してゲートウェイをインストールするには、以下の手順に従います。 
 
 1. インストール先のフォルダーから、**Log Analytics gateway.msi** をダブルクリックします。
 1. **[ようこそ]** ページで **[次へ]** をクリックします。
@@ -152,6 +152,40 @@ or
 
    ![OMS ゲートウェイが実行されていることを示す、ローカル サービスのスクリーンショット](./media/gateway/gateway-service.png)
 
+## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>コマンド ラインを使用して Log Analytics ゲートウェイをインストールする
+ゲートウェイ用にダウンロードしたファイルは、コマンド ラインまたはその他の自動化された方法によるサイレント インストールをサポートする Windows インストーラー パッケージです。 Windows インストーラーの標準コマンド ライン オプションに慣れていない場合は、「[Command-line options (コマンド ライン オプション)](https://docs.microsoft.com/windows/desktop/Msi/command-line-options)」を参照してください。   
+
+次の表に、セットアップでサポートされているパラメーターを示します。
+
+|parameters| メモ|
+|----------|------| 
+|PORTNUMBER | リッスンするゲートウェイの TCP ポート番号 |
+|PROXY | プロキシ サーバーの IP アドレス |
+|INSTALLDIR | ゲートウェイ ソフトウェア ファイルのインストール ディレクトリを指定する完全修飾パス |
+|USERNAME | プロキシ サーバーで認証するユーザー ID |
+|PASSWORD | プロキシで認証するユーザー ID のパスワード |
+|LicenseAccepted | 使用許諾契約書への同意を確認するには、値 **1** を指定します |
+|HASAUTH | USERNAME/PASSWORD パラメーターが指定される場合は、値 **1** を指定します |
+|HASPROXY | **PROXY** パラメーターに IP アドレスを指定する場合は、値 **1** を指定します |
+
+サイレント モードでゲートウェイをインストールし、特定のプロキシ アドレスとポート番号で構成するには、次のように入力します。
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+```
+
+/qn コマンド ライン オプションを使用するとセットアップが非表示になり、/qb ではサイレント インストール中にセットアップが表示されます。  
+
+プロキシで認証する資格情報を指定する必要がある場合は、次のように入力します。
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+```
+
+インストール後、次の PowerShell コマンドレットを使用して、設定が受け入れられたことを確認できます (ユーザー名とパスワードを除く)。
+
+- **Get-OMSGatewayConfig** – ゲートウェイでリッスンするように構成されている TCP ポートを返します。
+- **Get-OMSGatewayRelayProxy** – 通信するように構成したプロキシ サーバーの IP アドレスを返します。
 
 ## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する 
 ネットワーク負荷分散 (NLB) を使えば、ゲートウェイに高可用性を構成できます。これには、Microsoft [ネットワーク負荷分散 (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)、[Azure Load Balancer](../../load-balancer/load-balancer-overview.md)、またはハードウェアベースのロード バランサーを使用します。 ロード バランサーは、Log Analytics エージェントまたは Operations Manager 管理サーバーからの接続要求を自らのノードにリダイレクトする形で、トラフィックを管理します。 1 台のゲートウェイ サーバーで障害が発生した場合、トラフィックは他のノードにリダイレクトされます。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876890"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
@@ -23,8 +23,8 @@ Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリ
 
 既定では、Azure Cosmos DB の MongoDB 用 API はMongoDB サーバー バージョン 3.2 と互換性があります。詳細については、「[サポートされる機能と構文](mongodb-feature-support.md)」を参照してください。 現在、MongoDB バージョン 3.4 で追加された機能やクエリ演算子は、Azure Cosmos DB の MongoDB 用 API のプレビューとして使用できます。 次の拡張コマンドは、Azure Cosmos DB の MongoDB 用 API に格納されているデータに対して CRUD 操作を実行するときに、Azure Cosmos DB の固有の機能をサポートします。
 
-* [データベースを作成する](#create-database)
-* [データベースを更新する](#update-database)
+* [データベースの作成](#create-database)
+* [データベースの更新](#update-database)
 * [データベースの取得](#get-database)
 * [コレクションの作成](#create-collection)
 * [コレクションの更新](#update-collection)
@@ -45,16 +45,16 @@ Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリ
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-| customAction   |  文字列  |   カスタム コマンドの名前。"CreateDatabase" にする必要があります。      |
+| customAction   |  string  |   カスタム コマンドの名前。"CreateDatabase" にする必要があります。      |
 | offerThroughput | int  | データベースに設定したプロビジョニング済みスループット。 このパラメーターは省略可能です。 |
 
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
 
 ### <a name="examples"></a>例
 
-**データベースを作成する**
+**データベースの作成**
 
 "test" という名前のデータベースを作成するには、次のコマンドを使用します。
 
@@ -87,10 +87,10 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-| customAction    |    文字列     |   カスタム コマンドの名前。 "UpdateDatabase" にする必要があります。      |
+| customAction    |    string     |   カスタム コマンドの名前。 "UpdateDatabase" にする必要があります。      |
 |  offerThroughput   |  int       |     データベースに設定する新しいプロビジョニング済みスループット。    |
 
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
 
@@ -120,9 +120,9 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-|  customAction   |   文字列      |   カスタム コマンドの名前。 "GetDatabase" にする必要があります|
+|  customAction   |   string      |   カスタム コマンドの名前。 "GetDatabase" にする必要があります|
         
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 
 コマンドが成功すると、応答には次のフィールドを持つドキュメントが含まれます。
 
@@ -132,7 +132,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 | `database`    |    `string`        |   データベースの名前。      |
 |   `provisionedThroughput`  |    `int`      |    データベースに設定されているプロビジョニング済みスループット。 これは省略可能な応答パラメーターです。     |
 
-コマンドが失敗すると、既定のカスタム コマンド応答が返されます。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
+コマンドが失敗すると、既定のカスタム コマンド応答が返されます。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
 ### <a name="examples"></a>例
 
@@ -162,12 +162,12 @@ db.runCommand({customAction: "GetDatabase"});
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-| customAction    | 文字列 | カスタム コマンドの名前。 "CreateDatabase" にする必要があります     |
-| collection      | 文字列 | コレクションの名前                                   |
+| customAction    | string | カスタム コマンドの名前。 "CreateDatabase" にする必要があります     |
+| collection      | string | コレクションの名前                                   |
 | offerThroughput | int    | データベースに設定するプロビジョニング済みスループット。 これは、省略可能なパラメーターです |
-| shardKey        | 文字列 | シャード コレクションを作成するシャード キー パス。 これは、省略可能なパラメーターです |
+| shardKey        | string | シャード コレクションを作成するシャード キー パス。 これは、省略可能なパラメーターです |
 
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
 
@@ -207,11 +207,11 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-|  customAction   |   文字列      |   カスタム コマンドの名前。 "UpdateCollection" にする必要があります。      |
-|  collection   |   文字列      |   コレクションの名前。       |
+|  customAction   |   string      |   カスタム コマンドの名前。 "UpdateCollection" にする必要があります。      |
+|  collection   |   string      |   コレクションの名前。       |
 | offerThroughput   |int|   コレクションに設定するプロビジョニング済みスループット。|
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、[既定の出力](#default-output)を参照してください。
 
@@ -242,10 +242,10 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-| customAction    |   文字列      |   カスタム コマンドの名前。 "GetCollection" にする必要があります。      |
-| collection    |    文字列     |    コレクションの名前。     |
+| customAction    |   string      |   カスタム コマンドの名前。 "GetCollection" にする必要があります。      |
+| collection    |    string     |    コレクションの名前。     |
 
-### <a name="output"></a>出力
+### <a name="output"></a>Output
 
 コマンドが成功すると、応答には次のフィールドを持つドキュメントが含まれます
 
@@ -262,7 +262,7 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 ### <a name="examples"></a>例
 
-**コレクションを取得する**
+**コレクションの取得**
 
 "TestCollection" という名前のコレクションのコレクション オブジェクトを取得するには、次のコマンドを使用します。
 

@@ -1,22 +1,22 @@
 ---
-title: Azure の更新管理デプロイで事前および事後スクリプトを構成する (プレビュー)
+title: Azure の更新管理デプロイで事前および事後スクリプトを構成する
 description: この記事では、更新プログラムの展開のための事前および事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263810"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698744"
 ---
-# <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
+# <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
 
 事前および事後スクリプトを使用すると、更新プログラムの展開の前 (事前タスク) と後 (事後タスク) に Automation アカウントで PowerShell Runbook を実行できます。 事前および事後スクリプトはローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後、構成されているすべての再起動の後で実行されます。
 
@@ -26,7 +26,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 ## <a name="using-a-prepost-script"></a>事前および事後スクリプトの使用
 
-更新プログラムの展開で事前または事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[Pre-scripts + Post Scripts (Preview)] (事前スクリプト + 事後スクリプト (プレビュー))** を選択します。 この操作で、**[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。  
+更新プログラムの展開で事前または事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[Pre-scripts + Post Scripts]\(事前スクリプト + 事後スクリプト\)** を選択します。 この操作で、**[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。  
 
 ![スクリプトを選択する](./media/pre-post-scripts/select-scripts.png)
 
@@ -206,7 +206,20 @@ $variable = Get-AutomationVariable -Name $runId
 #>      
 ```
 
-## <a name="interacting-with-non-azure-machines"></a>Azure 以外のコンピューターとの対話
+## <a name="interacting-with-machines"></a>マシンの操作
+
+事前タスクと事後タスクは、デプロイ内のマシンで直接実行されるのではなく、ご利用の Automation アカウント内で Runbook として実行されます。 また、事前および事後タスクは Azure コンテキストで実行されるため、Azure 以外のマシンにはアクセスできません。 以降のセクションでは、Azure VM であるか Azure 以外のマシンであるかにかかわらず、それらのマシンと直接対話する方法について説明します。
+
+### <a name="interacting-with-azure-machines"></a>Azure マシンとの対話
+
+事前タスクと事後タスクは、Runbook として実行されます。デプロイ内の Azure VM でネイティブに実行されるわけではありません。 Azure VM と対話するには、次のものが必要です。
+
+* 実行アカウント
+* 実行する Runbook
+
+Azure マシンと対話するには、[Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) コマンドレットを使用して、目的の Azure VM と対話する必要があります。 その方法を紹介した Runbook の例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)」を参照してください。
+
+### <a name="interacting-with-non-azure-machines"></a>Azure 以外のコンピューターとの対話
 
 事前および事後タスクは Azure コンテキストで実行されるため、Azure 以外のコンピューターにはアクセスできません。 Azure 以外のコンピューターと対話するには、次のものが必要です。
 
@@ -215,38 +228,7 @@ $variable = Get-AutomationVariable -Name $runId
 * ローカルで実行する Runbook
 * 親 Runbook
 
-Azure 以外のコンピューターと対話するために、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットを使用して子 Runbook を呼び出します。 `-RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。
-
-```powershell
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
-
-Add-AzureRmAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
-
-$resourceGroup = "AzureAutomationResourceGroup"
-$aaName = "AzureAutomationAccountName"
-
-$output = Start-AzureRmAutomationRunbook -Name "StartService" -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName -RunOn "hybridWorker"
-
-$status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-while ($status.status -ne "Completed")
-{ 
-    Start-Sleep -Seconds 5
-    $status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-}
-
-$summary = Get-AzureRmAutomationJobOutput -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-
-if ($summary.Type -eq "Error")
-{
-    Write-Error -Message $summary.Summary
-}
-```
+Azure 以外のコンピューターと対話するために、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットを使用して子 Runbook を呼び出します。 `-RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 その方法を紹介した Runbook の例については、「[Update Management - Run Script Locally (更新管理 - スクリプトをローカルで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)」を参照してください。
 
 ## <a name="abort-patch-deployment"></a>修正プログラムのデプロイを中止する
 

@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f524e8cef3878816cec53575217bdb6d0fd9be7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 761f3e6e72319a2e63d6b66f2893130ec5a82ebf
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500933"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698165"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect の既定の規則に加えた変更の修正
 
@@ -76,7 +76,7 @@ Azure AD Connect には、同期のための既定の規則が付属していま
 
  ![既定の規則](media/how-to-connect-fix-default-rules/default3a.png)
 
-規則には、独自の名前付け規則に従って名前を付けます。ここでは、**Custom In from AD - User** を使用しました。これは、規則がカスタムの規則であり、AD コネクタ スペースからメタバースへの受信規則であることを意味しています。 
+規則には、独自の名前付け規則に従って名前を付けます。ここでは、**Custom In from AD - User** を使用しました。これは、規則がカスタムの規則であり、AD コネクタ スペースからメタバースへの受信規則であることを意味しています。   
 
  ![既定の規則](media/how-to-connect-fix-default-rules/default3b.png)
 

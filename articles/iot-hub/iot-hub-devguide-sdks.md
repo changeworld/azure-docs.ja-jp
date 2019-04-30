@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: e51313bbed21459de9f717edd123887caed18f4b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279354"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
@@ -176,6 +176,6 @@ Azure IoT SDK を使用した開発に関連するドキュメント
 
 * [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)
 * [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語](iot-hub-devguide-query-language.md)
-* [クォータと調整](iot-hub-devguide-quotas-throttling.md)
+* [クォータとスロットル](iot-hub-devguide-quotas-throttling.md)
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md)
 * [IoT Hub REST API リファレンス](/rest/api/iothub/)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: ce2d39f3941030059cef329aa60e804a44d73a98
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ad4b40d649d4e4cbc17d6aec5d8bc7308012b927
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263096"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677427"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>クイック スタート:cURL を使用してナレッジ ベースから回答を取得する
 
@@ -34,7 +34,7 @@ ms.locfileid: "59263096"
 
 ナレッジ ベースが発行されると、**[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 **[CURL]** タブに、[CURL](https://www.getpostman.com) コマンドライン ツールからの回答の生成に必要な設定が表示されます。
 
-[![P結果を発行する](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[![結果を発行する](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
 CURL を使って回答を生成するには、次の手順を実行します。
 
@@ -69,9 +69,11 @@ CURL を使って回答を生成するには、次の手順を実行します。
 
 ## <a name="use-staging-endpoint-with-curl"></a>cURL を使ってステージング エンドポイントを使用する
 
-ステージングのエンドポイントから回答を取得するには、値 `true` を持つクエリ文字列ブール型パラメーター `isTest` を使用します。
+ステージングのエンドポイントから回答を取得するには、本文のプロパティ `isTest` を使用します。
 
-`isTest=true`
+```json
+isTest:true
+```
 
 ## <a name="next-steps"></a>次の手順
 

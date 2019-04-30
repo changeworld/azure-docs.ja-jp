@@ -4,7 +4,7 @@ description: OpenShift クラスターがデプロイされた後の追加タス
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903677"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997401"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
@@ -147,34 +147,13 @@ oauthConfig:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-identityProviders の下にテキストを正確に揃えて配置します。 テナント ID を確認するには、次の CLI コマンドを使用します。 ```az account show```
+identityProviders の下にテキストを正確に揃えて配置します。 テナント ID を確認するには、次の CLI コマンドを使用します。```az account show```
 
 すべてのマネージャーで OpenShift マスター サービスを再起動します。
 
-**複数のマスターがある OpenShift Container Platform (OCP)**
-
 ```bash
-sudo systemctl restart atomic-openshift-master-api
-sudo systemctl restart atomic-openshift-master-controllers
-```
-
-**マスターが 1 つの OpenShift Container Platform**
-
-```bash
-sudo systemctl restart atomic-openshift-master
-```
-
-**複数のマスターがある OKD**
-
-```bash
-sudo systemctl restart origin-master-api
-sudo systemctl restart origin-master-controllers
-```
-
-**マスターが 1 つの OKD**
-
-```bash
-sudo systemctl restart origin-master
+sudo /usr/local/bin/master-restart api
+sudo /usr/local/bin/master-restart controllers
 ```
 
 OpenShift Console に、認証のオプションが 2 つ表示されるようになります (htpasswd_auth と [アプリの登録])。
@@ -186,7 +165,7 @@ OpenShift に Log Analytics エージェントを追加するには 3 つの方�
 - OpenShift の各ノードで Azure Monitor VM 拡張機能を有効にする
 - Log Analytics エージェントを OpenShift デーモン セットとしてインストールする
 
-完全な手順はこちらにあります: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift。
+詳細については、[手順](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)全体を参照してください。
 
 ## <a name="configure-metrics-and-logging"></a>メトリックとログを構成する
 
@@ -196,74 +175,9 @@ OpenShift Container Platform Marketplace オファーでは、クラスターの
 
 クラスターのインストール時にメトリック/ログ記録を有効にしなかった場合でも、後から簡単に有効にできます。
 
-### <a name="ansible-inventory-pre-work"></a>Ansible インベントリの事前作業
-
-Ansible のインベントリ ファイル (/etc/ansible/hosts) にメトリック/ログ記録の適切な変数があることを確認します。 インベントリ ファイルは、使用するテンプレートによって異なるホストにあります。
-
-OpenShift Container テンプレートと Marketplace オファーでは、インベントリ ファイルは要塞ホストにあります。 OKD テンプレートでは、使用しているブランチに応じて、インベントリ ファイルはマスター 0 ホストまたは要塞ホストにあります。
-
-1. /etc/ansible/hosts ファイルを編集し、ID プロバイダーのセクション (# Enable HTPasswdPasswordIdentityProvider) の後に次の行を追加します。 これらの行が既にある場合は、追加しないでください。
-
-   OpenShift/OKD 3.9 以前のバージョン
-
-   ```yaml
-   # Setup metrics
-   openshift_hosted_metrics_deploy=false
-   openshift_metrics_cassandra_storage_type=dynamic
-   openshift_metrics_start_cluster=true
-   openshift_metrics_hawkular_nodeselector={"type":"infra"}
-   openshift_metrics_cassandra_nodeselector={"type":"infra"}
-   openshift_metrics_heapster_nodeselector={"type":"infra"}
-   openshift_hosted_metrics_public_url=https://metrics.$ROUTING/hawkular/metrics
-
-   # Setup logging
-   openshift_hosted_logging_deploy=false
-   openshift_hosted_logging_storage_kind=dynamic
-   openshift_logging_fluentd_nodeselector={"logging":"true"}
-   openshift_logging_es_nodeselector={"type":"infra"}
-   openshift_logging_kibana_nodeselector={"type":"infra"}
-   openshift_logging_curator_nodeselector={"type":"infra"}
-   openshift_master_logging_public_url=https://kibana.$ROUTING
-   ```
-
-   OpenShift/OKD 3.10 以降のバージョン
-
-   ```yaml
-   # Setup metrics
-   openshift_metrics_install_metrics=false
-   openshift_metrics_start_cluster=true
-   openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
-
-   # Setup logging
-   openshift_logging_install_logging=false
-   openshift_logging_fluentd_nodeselector={"logging":"true"}
-   openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_master_public_url=https://kibana.$ROUTING
-   ```
-
-3. $ROUTING を、同じ /etc/ansible/hosts ファイルの openshift_master_default_subdomain オプションに使用されている文字列で置き換えます。
-
 ### <a name="azure-cloud-provider-in-use"></a>使用中の Azure クラウド プロバイダー
 
 デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 要塞ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
-
-**OpenShift Container Platform 3.7 以前**
-
-```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True \
--e openshift_hosted_logging_storage_kind=dynamic
-```
-
-**OpenShift Container Platform 3.9 以降**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -271,75 +185,17 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metric
 -e openshift_metrics_cassandra_storage_type=dynamic
 
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
--e openshift_logging_install_logging=True \
--e openshift_logging_es_pvc_dynamic=true
-```
-
-**OKD 3.7 以前**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True \
--e openshift_hosted_logging_storage_kind=dynamic
-```
-
-**OKD 3.9 以降**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 -e openshift_logging_install_logging=True \
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
 ### <a name="azure-cloud-provider-not-in-use"></a>使用中ではない Azure クラウド プロバイダー
 
-デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 要塞ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
-
-
-**OpenShift Container Platform 3.7 以前**
-
-```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True
-```
-
-**OpenShift Container Platform 3.9 以降**
-
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
 -e openshift_metrics_install_metrics=True
 
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
--e openshift_logging_install_logging=True
-```
-
-**OKD 3.7 以前**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True
-```
-
-**OKD 3.9 以降**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 -e openshift_logging_install_logging=True
 ```
 
@@ -348,8 +204,9 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 Open Service Broker for Azure (OSBA) を使用して、OpenShift から Azure Cloud Services を直接プロビジョニングすることができます。 OSBA は、Azure 用の Open Service Broker API の実装です。 Open Service Broker API は、クラウド ネイティブ アプリケーションがロックインなしでクラウド サービスの管理に使用できるクラウド プロバイダー用の共通言語を定義した仕様です。
 
 OpenShift に OSBA をインストールするには、こちらの手順に従います: https://github.com/Azure/open-service-broker-azure#openshift-project-template。 
+> [!NOTE]
+> OpenShift プロジェクト テンプレートのセクションの手順のみを実行し、インストールのセクション全体は実行しないでください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [OpenShift Container Platform の概要](https://docs.openshift.com/container-platform)
-- [OKD の概要](https://docs.okd.io/latest)

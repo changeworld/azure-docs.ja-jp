@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337141"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995576"
 ---
-# <a name="categorize-images"></a>イメージの分類
+# <a name="categorize-images-by-subject-matter"></a>主題によるイメージの分類
 
 タグや説明に加え、Computer Vision では、画像で検出された分類ベースのカテゴリが返されます。 タグとは異なり、カテゴリは親/子の遺伝階層で整理され、その数も少なくなります (数千ものタグと違って 86)。 すべてのカテゴリ名は英語です。 分類は単独で実行されるか、より新しいタグ モデルと共に実行できます。
 
