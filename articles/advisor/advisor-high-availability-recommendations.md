@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881190"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699306"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Azure Advisor によるアプリケーションの高可用性の向上
 
@@ -65,6 +65,10 @@ Traffic Manager プロファイルが地理的なルーティング用に構成�
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>接続の回復性を高めるために VPN ゲートウェイをアクティブ/アクティブに構成する
 
 アクティブ/アクティブ構成では、VPN ゲートウェイの両方のインスタンスが、オンプレミスの VPN デバイスへの S2S VPN トンネルを確立します。 計画的なメンテナンス イベントまたは計画外のイベントが 1 つのゲートウェイ インスタンスで発生すると、トラフィックはもう 1 つのアクティブな IPsec トンネルに自動的に切り替えられます。 Azure Advisor では、アクティブ/アクティブとして構成されていない VPN ゲートウェイが識別され、それらを高可用性のために構成することが推奨されます。
+
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>運用環境の VPN ゲートウェイを使用して運用ワークロードを実行するには
+
+Azure Advisor では、Basic SKU であるすべての VPN ゲートウェイが確認され、代わりに運用 SKU を使用することが推奨されます。 Basic SKU は、開発とテストを目的にして設計されています。 運用 SKU では、より多くのトンネル、BGP サポート、アクティブ/アクティブ構成オプション、カスタム Ipsec/IKE ポリシー、およびより高い安定性と可用性が提供されます。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 

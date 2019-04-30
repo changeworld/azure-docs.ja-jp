@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: d6c0d04966d3a713493485d52ca4e81ba25ab743
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521484"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005878"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -36,7 +36,7 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Text Analytics リソース |コンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための [_Text Analytics_](text-analytics-how-to-access-key.md) Azure リソース。 どちらの値も、Azure portal の [Text Analytics Overview]\(Text Analytics の概要\) ページと [キー] ページで使用でき、コンテナーを開始するために必要です。<br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|`Cognitive Services` リソース |コンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための [_Cognitive Services_](text-analytics-how-to-access-key.md) Azure リソース。 どちらの値も、Azure portal の [Cognitive Services Overview]\(Cognitive Services の概要\) ページと [キー] ページで使用でき、コンテナーを開始するために必要です。 `text/analytics/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。<br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
@@ -112,8 +112,10 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の [Text Analytics Keys]\(Text Analytics キー\) ページ上で使用できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の [Text Analytics Overview]\(Text Analytics の概要\) ページ上で使用できます。|
+|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の `Cognitive Services` の [キー] ページで確認できます。  |
+|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure `Cognitive Services` の [概要] ページで確認できます。 <br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+
+`text/analytics/v2.0` ルーティングをエンドポイント URI に追加する必要があります。前の BILLING_ENDPOINT_URI の例を参照してください。
 
 次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
 
@@ -159,7 +161,7 @@ ApiKey={BILLING_KEY}
 
 ## <a name="billing"></a>課金
 
-Text Analytics コンテナーは、Azure アカウントの _Text Analytics_ リソースを使用して、Azure に課金情報を送信します。 
+Text Analytics コンテナーは、Azure アカウントの _Cognitive Services_ リソースを使用して、Azure に課金情報を送信します。 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

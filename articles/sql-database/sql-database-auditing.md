@@ -11,13 +11,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/16/2019
+ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361281"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680380"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -88,6 +88,9 @@ SQL Database 監査を使用して、以下を行うことができます。
     ![ナビゲーション ウィンドウ][3]
 
 5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
+
+   > [!WARNING]
+   > Log Analytics に対する監査を有効にすると、インジェストのレートに基づくコストが発生します。 この[オプション](https://azure.microsoft.com/en-us/pricing/details/monitor/)を使用した場合のコストを承知のうえで利用するか、または、監査ログを Azure ストレージ アカウントに格納することを検討してください。
 
     ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -240,17 +243,17 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **REST API**:
 
-- [データベース監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [サーバー監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [サーバー監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [データベース監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [サーバー監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [サーバー監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
-- [データベース "*拡張*" 監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [サーバー "*拡張*" 監査ポリシーを作成または更新する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [データベース "*拡張*" 監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [サーバー "*拡張*" 監査ポリシーを取得する](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [データベース "*拡張*" 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [サーバー "*拡張*" 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース "*拡張*" 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [サーバー "*拡張*" 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>ARM テンプレートを使用して SQL Database の監査を管理する
 

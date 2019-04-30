@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889787"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995005"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -63,25 +63,24 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 > NPM のインストールについては、公式 [NPM ブログ](https://blog.npmjs.org/post/85484771375/how-to-install-npm)を参照してください。
 
 ### <a name="import-the-module"></a>モジュールのインポート
-
 テキスト エディターを使用して、アプリケーションの `server.js` ファイルの先頭に次の内容を追加します。
 
-    ```javascript
-    var azure = require('azure');
-    ```
+```javascript
+var azure = require('azure-sb');
+```
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>Azure Notification Hub の接続を設定する
 
 `NotificationHubService` オブジェクトを使用すると、通知ハブを操作できます。 次のコードは、`hubname` という名前の通知ハブ用の `NotificationHubService` オブジェクトを作成します。 `server.js` ファイルの先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
 
-    ```javascript
-    var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
-    ```
+```javascript
+var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
+```
 
 次の手順を行い、[Azure portal] から接続 `connectionstring` の値を取得します。
 
 1. 左のナビゲーション ウィンドウで、 **[参照]** をクリックします。
-2. **[Notification Hubs]** を選択し、サンプルとして使用するハブを見つけます。 新しい通知ハブの作成については、 [Windows ストアの使用に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) を参照することができます。
+2. **[Notification Hubs]** を選択し、サンプルとして使用するハブを見つけます。 新しい通知ハブの作成については、[Windows ストアの使用に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)を参照することができます。
 3. **[設定]** を選択します。
 4. **[アクセス ポリシー]** をクリックします。 共有接続文字列とフル アクセス接続文字列の両方が表示されます。
 
@@ -111,18 +110,18 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
 次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 
-    ```javascript
-    var payload = {
-      data: {
-        message: 'Hello!'
-      }
-    };
-    notificationHubService.gcm.send(null, payload, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = {
+  data: {
+    message: 'Hello!'
+  }
+};
+notificationHubService.gcm.send(null, payload, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>方法:iOS アプリケーションにプッシュ通知を送信する
 
@@ -136,16 +135,16 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
 次のコードは、`NotificationHubService` によって公開されている `ApnsService` インスタンスを使用して、すべてのクライアントにアラート メッセージを送信します。
 
-    ```javascript
-    var payload={
-        alert: 'Hello!'
-      };
-    notificationHubService.apns.send(null, payload, function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload={
+    alert: 'Hello!'
+  };
+notificationHubService.apns.send(null, payload, function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>方法:Windows Phone アプリケーションにプッシュ通知を送信する
 
@@ -162,14 +161,14 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
 次のサンプル コードは、`NotificationHubService` によって公開されている `MpnsService` インスタンスを使用して、トースト プッシュ通知を送信します。
 
-    ```javascript
-    var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
-    notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
+notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>方法:ユニバーサル Windows プラットフォーム (UWP) アプリケーションにプッシュ通知を送信する
 
@@ -185,14 +184,14 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 
 次のコードは、`NotificationHubService` によって公開されている `WnsService` インスタンスを使用して、トースト プッシュ通知を UWP アプリに送信します。
 
-    ```javascript
-    var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
-    notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
+notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ## <a name="next-steps"></a>次の手順
 

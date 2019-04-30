@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006727"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
@@ -56,10 +56,10 @@ ms.locfileid: "59006727"
 
 ## <a name="system-defined-principal"></a>システム定義のプリンシパル
 
-拒否割り当てをサポートするために、**システム定義のプリンシパル**が導入されました。 このプリンシパルは、Azure AD ディレクトリ内のすべてのユーザー、グループ、サービス プリンシパル、マネージド ID を表します。 プリンシパル ID がゼロ GUID `00000000-0000-0000-0000-000000000000` で、プリンシパルの種類が `SystemDefined` の場合、プリンシパルはすべてのプリンシパルを表します。 `SystemDefined` は `ExcludePrincipals` と組み合わせて、一部のユーザー以外のすべてのプリンシパルを拒否することができます。 `SystemDefined` には次の制約があります。
+拒否割り当てをサポートするために、**システム定義のプリンシパル**が導入されました。 このプリンシパルは、Azure AD ディレクトリ内のすべてのユーザー、グループ、サービス プリンシパル、マネージド ID を表します。 プリンシパル ID がゼロ GUID `00000000-0000-0000-0000-000000000000` で、プリンシパルの種類が `SystemDefined` の場合、プリンシパルはすべてのプリンシパルを表します。 `SystemDefined` を `ExcludePrincipals` と組み合わせて、一部のユーザー以外のすべてのプリンシパルを拒否することができます。 `SystemDefined` には次の制約があります。
 
 - `Principals` でのみ使用することができ、`ExcludePrincipals` では使用できません。
-- `Principals[i].Type` `SystemDefined` に設定する必要があります。
+- `Principals[i].Type` は `SystemDefined` に設定する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 33d0baf10df1882baf212c3e2c2683c8ca072fcc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896730"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Server 4.0 および Enterprise Developer 4.0 をインストールする
@@ -84,7 +84,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017�
 
      ![Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックス](media/03-enterprise-server.png)
 
-3. Enterprise Server が読み込まれることを確認します。 URL <http://localhost:86/> を使用して、ブラウザーから [Enterprise Server Administration]\(Enterprise Server の管理\) サイトを起動してみてください。 [Enterprise Server Administration]\(Enterprise Server の管理\) ページが次のように表示されます。
+3. Enterprise Server が読み込まれることを確認します。 URL  <http://localhost:86/>  を使用して、ブラウザーから [Enterprise Server Administration] (Enterprise Server の管理) サイトを起動してみてください。 [Enterprise Server Administration] (Enterprise Server の管理) ページが次のように表示されます。
 
      ![[Enterprise Server Administration]\(Enterprise Server の管理\) ページ](media/04-enterprise-admin.png)
 

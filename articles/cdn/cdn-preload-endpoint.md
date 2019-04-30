@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
 ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918367"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
@@ -50,8 +50,8 @@ ms.locfileid: "58918367"
    > テキストの入力を開始すると、**[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、**[削除]** を選択します。
    > 
    > 各コンテンツ パスは、次の[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference)に準拠する相対 URL にする必要があります。  
-   > - 1 つのファイル パスの読み込み:  `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - クエリ文字列を使用した 1 つのファイルの読み込み:  `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - 1 つのファイル パスの読み込み: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - クエリ文字列を使用した 1 つのファイルの読み込み: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > 各アセットは独自のパスを持つ必要があるため、アセットの事前読み込みにワイルドカードの機能はありません。
    > 

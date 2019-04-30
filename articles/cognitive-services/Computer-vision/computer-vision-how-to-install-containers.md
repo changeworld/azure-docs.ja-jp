@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 3/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520651"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679603"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|テキスト認識リソース |コンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための[_テキスト認識_](vision-api-how-to-topics/howtosubscribe.md) Azure リソース。 どちらの値も、Azure portal の [Recognize Text Overview]\(テキスト認識の概要\) ページと [キー] ページで使用でき、コンテナーを開始するために必要です。<br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Azure `Cognitive Services` リソース |コンテナーを使用するためには、以下が必要です。<br><br>_Cognitive Services_ Azure リソースおよび関連する課金キー (課金エンドポイント URI)。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。 `vision/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。 <br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
@@ -91,8 +91,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の [Recognize Text Keys]\(テキスト認識キー\) ページ上で使用できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値。|
+|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure `Cognitive Services` のキー ページ上で使用できます。  |
+|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値。 例: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+
+`vision/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。
 
 次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
 

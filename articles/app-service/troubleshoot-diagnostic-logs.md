@@ -16,10 +16,10 @@ ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894920"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
@@ -59,9 +59,9 @@ App Service では、アプリにコンテンツを発行したときのデプ�
 |-|-|
 |**Disabled** | なし |
 |**Error** | エラー、クリティカル |
-|**警告** | 警告、エラー、クリティカル|
+|**Warning** | 警告、エラー、クリティカル|
 |**情報** | 情報、警告、エラー、クリティカル|
-|**詳細** | トレース、デバッグ、情報、警告、エラー、クリティカル (すべてのカテゴリ) |
+|**Verbose** | トレース、デバッグ、情報、警告、エラー、クリティカル (すべてのカテゴリ) |
 |-|-|
 
 **アプリケーション ログ**の場合、デバッグ目的で、一時的にファイル システム オプションを有効にできます。 このオプションは、12 時間で自動的にオフにされます。 BLOB ストレージ オプションを有効にして、ログを書き込む BLOB コンテナーを選ぶこともできます。
@@ -183,7 +183,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 ファイル システムにログ記録する場合は、使用できる 3 つのログ記録方法のうちで最も基本的な情報が提供され、時間、プロセス ID、イベント レベル、メッセージのみを確認できます。
 
-**BLOB ストレージ**
+**Blob Storage**
 
 BLOB ストレージにログを記録するときには、値をコンマで区切った (CSV) 形式で格納されます。 追加のフィールドがログに記録されて、イベントについてより詳細な情報が提供されます。 CSV 内の各行に次のプロパティが使用されます。
 

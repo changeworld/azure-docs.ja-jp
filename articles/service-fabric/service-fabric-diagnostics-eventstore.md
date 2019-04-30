@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b8e1958947ced5ea2d0bd8b34667210bf935072d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 36d01a9e6e55ae54377ba3f983f779dbc692c49a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662909"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681524"
 ---
 # <a name="eventstore-service-overview"></a>EventStore サービスの概要
 
@@ -72,7 +72,7 @@ EventStore サービスは、クラスター内のイベントを関連付ける
 
 ### <a name="azure-cluster"></a>Azure クラスター
 
-自分のクラスターの Azure Resource Manager テンプレートで、[クラスター構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)を実行して次のコードを追加することにより、EventStore サービスを有効にできます。 `upgradeDescription` セクションで、ノードでの再起動をトリガーする構成のアップグレードを構成します。 別の更新ではそのセクションを削除できます。
+自分のクラスターの Azure Resource Manager テンプレートで、[クラスター構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)を実行して次のコードを追加することにより、EventStore サービスを有効にできます。また、PlacementConstraints を使用して EventStore サービスのレプリカを特定の NodeType (システム サービス専用の NodeType など) に置くことができます。 `upgradeDescription` セクションで、ノードでの再起動をトリガーする構成のアップグレードを構成します。 別の更新ではそのセクションを削除できます。
 
 ```json
     "fabricSettings": [
@@ -89,6 +89,10 @@ EventStore サービスは、クラスター内のイベントを関連付ける
               {
                 "name": "MinReplicaSetSize",
                 "value": "1"
+              }
+              {
+                "name": "PlacementConstraints",
+                "value": "(NodeType==<node_type_name_here>)"
               }
             ]
           }

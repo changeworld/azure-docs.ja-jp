@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
 ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270905"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
@@ -27,8 +27,8 @@ Azure Resource Manager テンプレートを使用して、関数アプリをデ
 テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
 サンプル テンプレートについては、以下を参照してください。
-- [従量課金プランでの関数アプリ]
-- [Azure App Service プランでの関数アプリ]
+- [従量課金プランの関数アプリ]
+- [Azure App Service プランの関数アプリ]
 
 > [!NOTE]
 > Azure Functions のホスティング用の Premium プランは現在、プレビュー段階です。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。
@@ -123,7 +123,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 ホスティング プランの定義はさまざまあり、次のいずれかを指定できます。
 * [従量課金プラン](#consumption) (既定)
 * [Premium プラン](#premium) (プレビュー段階)
-* [App Service プラン](#app-service-plan)
+* [[App Service プラン]](#app-service-plan)
 
 ### <a name="function-app"></a>関数アプリ
 
@@ -143,7 +143,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 ```
 
 > [!IMPORTANT]
-> ホスティング プランを明示的に定義している場合は、dependsOn 配列に次の追加の項目が必要になります。 `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> ホスティング プランを明示的に定義している場合は、dependsOn 配列に次の追加の項目が必要になります: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 関数アプリには、次のアプリケーション設定を含める必要があります。
 
@@ -645,7 +645,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
@@ -668,11 +668,11 @@ HTML を使用する例を次に示します。
 
 Azure Functions を開発および構成する方法について学習します。
 
-* [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
+* [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure 関数アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
-* [初めての Azure 関数を作成する](functions-create-first-azure-function.md)
+* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
 
 <!-- LINKS -->
 
-[従量課金プランでの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
-[Azure App Service プランでの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json
+[従量課金プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic/azuredeploy.json
+[Azure App Service プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dedicated/azuredeploy.json

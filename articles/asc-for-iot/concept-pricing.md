@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862711"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
@@ -75,10 +75,10 @@ ASC for IoT には、直接的な価格には含まれない 2 種類の関連�
   
 | オプトアウト | 影響 |
 | --- | --- |
-| _ツイン メタデータ コレクション_ | [カスタム アラート](quickstart-create-custom-alerts.md)が無効になります |
+| "_ツイン メタデータ コレクション_" | [カスタム アラート](quickstart-create-custom-alerts.md)が無効になります |
 | | IoT Edge マニフェストの推奨事項が無効になります |
 | | デバイス ID に基づく推奨事項とアラートが無効になります |
-| _生デバイス セキュリティ イベントの保存_ | デバイス OS ベースラインの推奨事項の詳細を利用できなくなります |
+| "_生デバイス セキュリティ イベントの保存_" | デバイス OS ベースラインの推奨事項の詳細を利用できなくなります |
 | | [アラート](concept-security-alerts.md)と[推奨事項](concept-recommendations.md)の調査についての詳細を利用できなくなります |
 
 

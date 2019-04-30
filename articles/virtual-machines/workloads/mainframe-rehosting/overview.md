@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 8b7c2a088dc917c319acf6cad251ad53367a14b6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895039"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004416"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -53,7 +53,7 @@ TmaxSoft OpenFrame は、リフトアンドシフトのシナリオで使用さ�
 作業を開始するには:
 
 - [TmaxSoft OpenFrame で作業を開始する](./tmaxsoft/get-started.md)
-- [電子ブックをダウンロードする](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-azure/)
+- [電子ブックをダウンロードする](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
 ## <a name="ibm-zdt-120"></a>IBM zD&T 12.0
 

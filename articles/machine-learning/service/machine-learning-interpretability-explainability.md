@@ -1,7 +1,7 @@
 ---
 title: モデルの解釈可能性
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning Interpretability SDK を使用して、モデルで予測が行われる理由を説明する方法について説明します。 トレーニング中と推論中に、モデルで予測が行われる方法を理解するために使用できます。
+description: Azure Machine Learning Interpretability SDK を使用して、モデルから得られる予測の理由を解釈する方法について説明します。 トレーニング中と推論中に、モデルで予測が行われる方法を理解するために使用できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/09/2019
-ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 668551603dfa2a9c42f4538fd9a66ee646e1feb7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494442"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682459"
 ---
-# <a name="azure-machine-learning-interpretability-sdk"></a>Azure Machine Learning Interpretability SDK
+# <a name="model-interpretability-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用したモデルの解釈可能性
 
 この記事では、モデルで Azure Machine Learning Interpretability SDK を使用することによって予測が作成される理由を説明する方法について学習します。 モデルを説明できることは、以下の理由により重要です。
 
@@ -25,9 +25,10 @@ ms.locfileid: "59494442"
 * データ サイエンティストは、**モデルのクエリを実行して分析情報を見つける方法**を理解したい。 また、**モデルを改善する方法**について情報に基づいて決定するためのツールも必要である。
 * 会社は、**さまざまな入力分布でのモデルの動作**および**特定の入力の分析中のモデルの動作方法**を理解する必要がある。
 
-機械学習の解釈可能性は、機械学習開発サイクルの 2 つのフェーズである**トレーニング**時と**推論**時において重要です。
+機械学習の解釈可能性は、機械学習開発サイクルの 2 つのフェーズにおいて重要です。 
 
 * **トレーニング**中: モデル設計者と評価者は、利害関係者の信頼を築くためにモデルの出力を説明するための解釈可能性ツールが必要です。 モデルをデバッグして、動作が目標に一致しているかどうかを決定できるように、モデルへの分析情報も必要です。 最後に、確実にモデルがバイアスされていないようにする必要があります。
+
 * **推論**中: モデルを使用する人に対して、予測を説明できる必要があります。 たとえば、モデルが住宅ローンを拒否した理由や、投資ポートフォリオに高いリスクを予測した理由などです。
 
 Azure Machine Learning Interpretability SDK には、Microsoft と実績のあるサードパーティ ライブラリ (SHAP や LIME など) によって開発されたテクノロジが組み込まれています。 SDK では、統合されたライブラリ全体にわたって一般的な API が提供されており、Azure Machine Learning services と統合します。 この SDK を使用すると、使いやすくてスケーラブルな最先端のテクノロジを利用して、**すべてのデータについてグローバルに**、または**特定のデータ ポイントについてローカルに**、使用機械学習モデルを説明できます。
@@ -80,7 +81,7 @@ Direct Explainer のメタ選択に加えて、Meta Explainer では、基にな
 
 1. ツリー ベースのモデルの場合、`TreeExplainer` を適用します
 2. DNN モデルの場合、`DeepExplainer` を適用します
-3. ブラック ボックス モデルとして扱い、次のものを適用します `KernelExplainer`
+3. ブラック ボックス モデルとして扱い、`KernelExplainer` を適用します
 
 `TabularExplainer` に組み込まれたインテリジェンスは、より多くのライブラリが SDK に統合され、各 Explainer の長所と短所について学習することで、ますます高度なものになります。
 
@@ -91,7 +92,7 @@ Direct Explainer のメタ選択に加えて、Meta Explainer では、基にな
 
 次の図では、Direct Explainer と Meta Explainer の 2 つのセットの間の関係を示します。
 
-[![M機械学習解釈可能性のアーキテクチャ](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
+[![機械学習解釈可能性のアーキテクチャ](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
 
 ### <a name="models-supported"></a>サポートされているモデル
 

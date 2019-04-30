@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897515"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006830"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
@@ -47,16 +47,16 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 
 * 既定の最大文字数: 50 文字。 
 
-## <a name="intent-and-entity-naming"></a>意図とエンティティの名前付け
-意図およびエンティティの名前では、次の文字を使用しないでください。
+<a name="intent-and-entity-naming"></a>
 
-|Character|Name|
+## <a name="object-naming"></a>オブジェクト名の規則
+
+以下の名前では、以下の文字を使用しないでください。
+
+|Object|除外する文字|
 |--|--|
-|`{`|左の中かっこ|
-|`}`|右の中かっこ|
-|`[`|左の角かっこ|
-|`]`|右の角かっこ|
-|`\`|円記号|
+|インテント、エンティティ、およびロールの名前|`:`<br>`$`|
+|バージョン名|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>キー使用法
 

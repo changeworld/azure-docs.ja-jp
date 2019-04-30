@@ -6,10 +6,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892485"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
@@ -269,7 +269,7 @@ BankDemo アプリケーションにアクセスする TN3270 セッション用
 ## <a name="next-steps"></a>次の手順
 
 - [Azure の Docker コンテナーで Enterprise Server を実行する](run-enterprise-server-container.md)
-- [メインフレーム移行 - ポータル](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
+- [メインフレーム移行 - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [トラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

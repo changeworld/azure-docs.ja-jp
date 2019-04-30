@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882414"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを利用し、グループの状態に基づいてアクションを実行する
@@ -67,8 +67,8 @@ ms.locfileid: "58882414"
 
       | Setting | 値 | 説明 |
       | ------- | ----- | ----------- |
-      | **接続名** | BingMapsConnection | 接続の名前を指定します。 | 
-      | **[API キー]** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
+      | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
+      | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
       ||||  
 
    1. この画像の下の表に示すように、**[Get route]\(ルートを取得する\)** アクションを設定します。
@@ -84,9 +84,9 @@ ms.locfileid: "58882414"
       | **回避** | なし | ルート上で回避する要素 (高速道路、通行料金など) を入力します。 使用できる値については、「[Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)」 (ルートを計算する) をご覧ください。 | 
       | **最適化** | timeWithTraffic | ルートを最適化するためのパラメーター (距離、最新の交通情報を加味した移動時間など) を選択します。 この例では、値 "timeWithTraffic" を使用します。 | 
       | **距離単位** | <*your-preference*> | ルートを計算する距離の単位を入力します。 この例では、次の値を使用します:"マイル" | 
-      | **移動手段** | Driving (車) | ルートの移動手段を入力します。 この例では、値 "Driving (車)" を使用します。 | 
-      | **交通機関の日時** | なし | 乗り換えモードの場合のみ適用されます。 | 
-      | **交通機関の日時の種類** | なし | 乗り換えモードの場合のみ適用されます。 | 
+      | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段を入力します。 この例では、値 "Driving (車)" を使用します。 | 
+      | **Transit Date-Time (交通機関の日時)** | なし | 乗り換えモードの場合のみ適用されます。 | 
+      | **Transit Date-Type Type (交通機関の日時の種類)** | なし | 乗り換えモードの場合のみ適用されます。 | 
       ||||  
 
 1. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする[条件を追加](../logic-apps/logic-apps-control-flow-conditional-statement.md)します。 
@@ -176,7 +176,7 @@ ms.locfileid: "58882414"
 
 1. ここで、スコープ内で実行するステップを追加するか、既存のステップをドラッグします。 この例では、次のアクションをスコープにドラッグします。
       
-   * **ルートを取得する**
+   * **[Get route]\(ルートを取得する\)**
    * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**。**true** と **false** の両方のブランチが含まれます。
 
    これでロジック アプリは次の例のようになります。

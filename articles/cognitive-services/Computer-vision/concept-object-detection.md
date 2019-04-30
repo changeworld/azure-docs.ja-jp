@@ -1,24 +1,24 @@
 ---
 title: オブジェクトの検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したオブジェクトの検出に関連する概念。
+description: Computer Vision API のオブジェクト検出機能に関連する概念と、使用方法および制限について説明します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496940"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001849"
 ---
-# <a name="object-detection"></a>オブジェクトの検出
+# <a name="detect-common-objects-in-images"></a>画像内の一般的なオブジェクトを検出する
 
 オブジェクトの検出は[タグ付け](concept-tagging-images.md)に似ていますが、API で返されるのは、検出された各オブジェクトの境界ボックスの座標 (ピクセル単位) です。 たとえば犬や猫、人物が画像に含まれている場合、検出操作によって、それらのオブジェクトが、画像における対応する座標と共に一覧表示されます。 この機能を使用すれば、画像に含まれるオブジェクト間の関係を処理することができます。 画像内に同じタグのインスタンスが複数存在するかどうかも判別できます。
 

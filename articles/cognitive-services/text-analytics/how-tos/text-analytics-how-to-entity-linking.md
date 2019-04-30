@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505577"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997310"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
-[Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) は、構造化されていないテキストを受け取り、JSON ドキュメントごとに、あいまいさを解消したエンティティの一覧を返します。一覧には、Web 上にある、より多くの情報 (Wikipedia と Bing) へのリンクが含まれます。 
+[名前付きエンティティ認識 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) は、構造化されていないテキストを受け取り、JSON ドキュメントごとに、あいまいさを解消したエンティティの一覧を返します。一覧には、Web 上にある、より多くの情報 (Wikipedia と Bing) へのリンクが含まれます。 
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entity Linking と名前付きエンティティ認識
 
@@ -28,12 +28,10 @@ Text Analytics の `entities` エンドポイントは、名前付きエンテ�
 ### <a name="entity-linking"></a>Entity Linking
 エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: "Mars" が惑星として使用されているか、古代ローマの戦争の神様として使用されているかを判定する)。 このプロセスのためには、認識されたエンティティがリンクされているナレッジ ベースが存在している必要があります。`entities` エンドポイントの Text Analytics には、Wikipedia がナレッジ ベースとして使用されます。
 
-Text Analytics [バージョン 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) では、エンティティ リンク設定のみ利用できます。
-
 ### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 名前付きエンティティの認識 (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスに分類する機能です。 サポートされているエンティティのクラスを以下に示します。
 
-Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)では､エンティティ リンク設定と名前付きエンティティ認識 (NER) の両方を利用できます。
+Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) では、エンティティ リンク設定と名前付きエンティティ認識 (NER) の両方を利用できます。
 
 ### <a name="language-support"></a>言語のサポート
 
@@ -71,7 +69,7 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 
 ## <a name="preparation"></a>準備
 
-JSON ドキュメントは、id、text、language の形式である必要があります。
+JSON ドキュメントは、次の形式である必要があります: ID、テキスト、言語
 
 現在サポートされている言語については、[この一覧](../text-analytics-supported-languages.md)を参照してください。
 
@@ -94,16 +92,16 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Entity Linking API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ エンティティ抽出用の HTTP エンドポイントを設定します。 そこには、`/entities` リソースが含まれている必要があります: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ エンティティ抽出用の HTTP エンドポイントを設定します。 そこには、`/entities` リソースが含まれている必要があります: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 + Text Analytics 操作用のアクセス キーが含まれるように要求ヘッダーを設定します。 詳細については、[エンドポイントを見つけてアクセス キーにアクセスする方法](text-analytics-how-to-access-key.md)についてのページを参照してください。
 
 + 要求本文で、この分析のために準備した JSON ドキュメントのコレクションを提供します。
 
 > [!Tip]
-> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
+> [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
@@ -280,18 +278,16 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 この記事では、Cognitive Services の Text Analytics を使用するエンティティ リンク設定の概念とワークフローについて説明しました。 要約すると:
 
-+ [Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) は選択した言語で利用できます。
-+ 要求本文内の JSON ドキュメントには、id、text、および language のコードが含まれます。
++ [Entity Linking API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) は選択した言語で利用できます。
++ 要求本文内の JSON ドキュメントには、ID、テキスト、および言語のコードが含まれます。
 + POST 要求は、ユーザーのサブスクリプションで有効な、個人用に設定された[アクセス キーとエンドポイント](text-analytics-how-to-access-key.md)を使用して `/entities` エンドポイントに対して行われます。
 + リンクされているエンティティ (ドキュメント ID ごとに信頼度スコア、オフセット、Web リンクが含まれている) で構成される応答の出力は、どのアプリケーションでも使用できます
-
-## <a name="see-also"></a>関連項目 
-
- [Text Analytics の概要](../overview.md)  
- [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
- [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [Text Analytics API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+* [Text Analytics の概要](../overview.md)  
+* [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)</br>
+* [Text Analytics 製品ページ](//go.microsoft.com/fwlink/?LinkID=759712) 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122877"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011254"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "58122877"
 Text Analytics はステートレスであるため、管理するデータ資産がないことを忘れないでください。 テキストがアップロードされ、受信されると分析され、結果は呼び出し元のアプリケーションにすぐに返されます。
 
 > [!Tip]
-> API の動作を確認するための 1 回限りの呼び出しの場合は、任意の [API ドキュメント ページ](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)で利用可能な組み込み **API テスト コンソール**から POST 要求を送信できます。 セットアップは必要なく、唯一の要件は要求にアクセス キーと JSON ドキュメントを貼り付けることのみです。 
+> API の動作を確認するための 1 回限りの呼び出しの場合は、任意の [API ドキュメント ページ](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)で利用可能な組み込み **API テスト コンソール**から POST 要求を送信できます。 セットアップは必要なく、唯一の要件は要求にアクセス キーと JSON ドキュメントを貼り付けることのみです。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,10 +60,10 @@ Text Analytics API を使用する [Cognitive Services API アカウント](http
 
    リソースのエンドポイントは、次のようになります (地域により異なる場合があります)。
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 2. 次の 3 つの要求ヘッダーを設定します。
 
@@ -81,10 +81,10 @@ Text Analytics API を使用する [Cognitive Services API アカウント](http
 
 5. 目的とする分析に有効な形式で、いくつかの JSON ドキュメントに貼り付けます。 特定の分析の詳細については、以下のトピックを参照してください。
 
-   + [言語検出](text-analytics-how-to-language-detection.md)  
-   + [キー フレーズ抽出](text-analytics-how-to-keyword-extraction.md)  
-   + [感情分析](text-analytics-how-to-sentiment-analysis.md)  
-   + [エンティティの認識 (プレビュー)](text-analytics-how-to-entity-linking.md)  
+  + [言語検出](text-analytics-how-to-language-detection.md)  
+  + [キー フレーズ抽出](text-analytics-how-to-keyword-extraction.md)  
+  + [感情分析](text-analytics-how-to-sentiment-analysis.md)  
+  + [エンティティの認識](text-analytics-how-to-entity-linking.md)  
 
 
 6. **[保存]** をクリックして、要求を送信します。 1 分あたり最大 100 個の要求を送信できます。 

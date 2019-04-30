@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
 ms.openlocfilehash: 624539557b0bf57e9d919a3a46337f1cf93a4f07
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894236"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
@@ -26,7 +26,7 @@ Azure Logic Apps には、ロジック アプリの作成だけでなく、デ�
 
 Azure Resource Manager テンプレートの詳細については、次の記事を参照してください。
 
-* [Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 * [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates-cloud-consistency.md)
 
 ## <a name="logic-app-structure"></a>ロジック アプリの構造

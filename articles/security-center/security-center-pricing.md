@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
 ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905292"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
@@ -65,7 +65,7 @@ Security Center は、次のようなハイブリッド クラウド ワーク�
 この記事では、Security Center の価格について紹介しました。 Standard レベルの強化されたセキュリティと高度な脅威保護に関する詳細については、次の記事を参照してください。
 
 - [高度な脅威検出](security-center-threat-report.md)
-- [Just In Time VM アクセスの制御](security-center-just-in-time.md)
+- [[Just In Time VM アクセスの制御]](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png

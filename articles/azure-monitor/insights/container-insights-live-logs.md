@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c8baa4d2355adf99ce188d632ac50901db29a758
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904748"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997701"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>コンテナー用 Azure Monitor でコンテナー ログをリアルタイムで表示する方法 (プレビュー)
 この機能は現在プレビュー段階ですが、これにより kubectl コマンドを実行せずに、お使いの Azure Kubernetes Service (AKS) のコンテナー ログ (stdout と stderr) をリアルタイム ビューで確認できます。 このオプションを選択すると、**[コンテナー]** ビューのコンテナー パフォーマンス データ テーブルの下に新しいウィンドウが表示されます。  ここには、リアルタイムでの問題のトラブルシューティングをさらに支援するために、コンテナー エンジンによって生成されたライブ ログが表示されます。 この機能を動作させるには、クラスター リソースへの**共同作成者**アクセスが必要です。
@@ -65,7 +65,7 @@ Kubernetes RBAC 認証を有効にした場合は、クラスター ロール �
 2. `kubectl create -f LogReaderRBAC.yaml` コマンドを実行して、クラスター ロール バインディングを作成します。 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Azure Active Directory で AKS を構成する
-ユーザー認証に Azure Active Directory (AD) を使うように AKS を構成できます。 これを初めて構成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/aad-integration.md)」を参照してください。 [クライアント アプリケーション](../../aks/aad-integration.md#create-client-application)を作成し、**リダイレクト URI** を指定する手順を実行しているときに、別の URI をリスト `https://ininprodeusuxbase.microsoft.com/*` に追加する必要があります。  
+ユーザー認証に Azure Active Directory (AD) を使うように AKS を構成できます。 これを初めて構成する場合は、「[Azure Active Directory と Azure Kubernetes Service を統合する](../../aks/azure-ad-integration.md)」を参照してください。 [クライアント アプリケーション](../../aks/azure-ad-integration.md#create-client-application)を作成し、**リダイレクト URI** を指定する手順を実行しているときに、別の URI をリスト `https://ininprodeusuxbase.microsoft.com/*` に追加する必要があります。  
 
 >[!NOTE]
 >シングル サインオン用の Azure Active Directory での認証構成は、新しい AKS クラスターを最初にデプロイするときにのみ実行できます。 既にデプロイされている AKS クラスターに対して、シングル サインオンを構成することはできません。  
@@ -92,4 +92,5 @@ Kubernetes RBAC 認証を有効にした場合は、クラスター ロール �
 ![ライブ ログ ウィンドウのライブ ビューの一時停止](./media/container-insights-live-logs/live-logs-pane-pause-01.png)
 
 ## <a name="next-steps"></a>次の手順
-Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
+- Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
+- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

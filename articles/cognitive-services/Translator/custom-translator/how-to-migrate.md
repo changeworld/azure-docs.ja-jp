@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901527"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698401"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -119,6 +119,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 プロジェクト、トレーニング、ドキュメントに関するより詳細な移行レポートが必要な場合は、詳細を CSV 形式でエクスポートするオプションがあります。
 
 ## <a name="implementation-notes"></a>実装に関するメモ
+* システムの言語ペアにまだカスタム翻訳ツールが対応していない場合、そのシステムの利用は、カスタム翻訳ツールを通じてデータにアクセスするかデプロイを解除する目的に限定されます。 それらのプロジェクトは、[プロジェクト] ページに "利用不可" としてマークされます。 新しい言語ペアにカスタム翻訳ツールが対応した時点で、プロジェクトがアクティブになり、トレーニングとデプロイを行えるようになります。 
 * Hub からカスタム トランスレーターにプロジェクトを移行しても、お客様の Hub のトレーニングまたはプロジェクトには一切影響がありません。 移行中、プロジェクトまたはドキュメントが Hub から削除されたり、モデルのデプロイが解除されたりすることはありません。
 * 移行は、プロジェクトごとに 1 回だけ許可されます。 プロジェクトに対して移行を繰り返す必要がある場合は、Microsoft にお問い合わせください。
 * Custom Translator では、英語との組み合わせに対応した複数の NMT 言語ペアがサポートされています。 [サポートされている言語の完全な一覧は、こちらで確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub にはベースライン モデルが不要であるため、数千の言語がサポートされます。 サポートされていない言語ペアを移行できますが、Microsoft が実施するのはドキュメントとプロジェクトの定義の移行のみです。 Microsoft で新しいモデルをトレーニングすることはできなくなります。 さらに、それらのドキュメントとプロジェクトは、現時点では使用できないことを示すために、非アクティブとして表示されます。 それらのプロジェクトまたはドキュメントは、今後サポートが追加されるとアクティブになってトレーニングできる状態になります。

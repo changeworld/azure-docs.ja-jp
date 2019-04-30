@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893777"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Azure における Micro Focus 開発/テスト環境
@@ -21,7 +21,7 @@ Micro Focus は、実践的なメインフレーム移行とリホスト ツー�
 
 Micro Focus では、既存の COBOL と PL/I の業務アプリケーションを Azure に拡張する開発リホストとテスト リホストのソリューションを提供しています。
 
-**次の手順**
+**次のステップ**
 
 - [Azure で Micro Focus Enterprise Server 4.0 および Enterprise Developer 4.0 をインストールする](./set-up-micro-focus-azure.md)
 - [Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する](./demo.md)

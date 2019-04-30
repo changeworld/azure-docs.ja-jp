@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 79fe3bce558a8315f5fbf7dbc82a4979e8e24238
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599810"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677444"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Traffic Manager による Azure App Service トラフィックの制御
 > [!NOTE]
@@ -43,7 +43,7 @@ Azure Traffic Manager は 4 つのルーティング方法を使用します。 
 詳細については、「[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)」を参照してください。
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>App Service と Azure Traffic Manager のプロファイル
-App Service アプリのトラフィック制御を構成するには、Azure Traffic Manager でプロファイルを作成し、前に説明している 3 つの負荷分散方法のいずれかをプロファイルで指定します。その後、トラフィックを制御するエンドポイント (この場合は App Service) をプロファイルに追加します。 アプリの状態 (実行中、停止、または削除済み) は定期的にプロファイルに反映されて、その状態に応じて Azure Traffic Manager はトラフィックを振り分けることができます。
+App Service アプリのトラフィック制御を構成するには、Azure Traffic Manager でプロファイルを作成し、前に説明している 4 つの負荷分散方法のいずれかをプロファイルで指定します。その後、トラフィックを制御するエンドポイント (この場合は App Service) をプロファイルに追加します。 アプリの状態 (実行中、停止、または削除済み) は定期的にプロファイルに反映されて、その状態に応じて Azure Traffic Manager はトラフィックを振り分けることができます。
 
 Azure トラフィック マネージャーを Azure で使用する場合は、次の点に留意してください。
 

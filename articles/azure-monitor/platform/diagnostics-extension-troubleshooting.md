@@ -4,17 +4,16 @@ description: Azure Virtual Machines、Service Fabric、または Cloud Services 
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.topic: conceptual
+ms.date: 04/17/2019
+ms.author: robb
+ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822138"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699100"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -32,23 +31,23 @@ ms.locfileid: "55822138"
 ### <a name="azure-cloud-services"></a>Azure クラウド サービス
 | アーティファクト | Path |
 | --- | --- |
-| **Azure 診断構成ファイル** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン>\Config.txt |
+| **Azure Diagnostics 構成ファイル** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン>\Config.txt |
 | **ログ ファイル** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン>\ |
 | **診断データのローカル ストア** | C:\Resources\Directory\<クラウド サービスのデプロイ ID>.\<ロール名>.DiagnosticStore\WAD0107\Tables |
 | **監視エージェント構成ファイル** | C:\Resources\Directory\<クラウド サービスのデプロイ ID>.\<ロール名>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure 診断拡張機能パッケージ** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン> |
+| **Azure Diagnostics 拡張機能パッケージ** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン> |
 | **ログ収集ユーティリティのパス** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost ログ ファイル** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ### <a name="virtual-machines"></a>仮想マシン
 | アーティファクト | Path |
 | --- | --- |
-| **Azure 診断構成ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\RuntimeSettings |
+| **Azure Diagnostics 構成ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\RuntimeSettings |
 | **ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
 | **診断データのローカル ストア** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>\WAD0107\Tables |
 | **監視エージェント構成ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>\WAD0107\Configuration\MaConfig.xml |
 | **状態ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\Status |
-| **Azure 診断拡張機能パッケージ** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>|
+| **Azure Diagnostics 拡張機能パッケージ** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>|
 | **ログ収集ユーティリティのパス** | C:\WindowsAzure\Packages |
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
@@ -82,7 +81,7 @@ Azure Diagnostics には、Azure ポータルに表示できるメトリック �
 構成は正しく設定されているがそれでもメトリック データが表示されない場合、次の方針に沿って問題解決をお試しください。
 
 
-## <a name="azure-diagnostics-isnt-starting"></a>Azure Diagnostics が起動しない
+## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics が起動しない
 Azure Diagnostics が起動しない理由については、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。
 
 これらのログで "`Monitoring Agent not reporting success after launch`" が示されている場合、MonAgentHost.exe の起動でエラーが発生したことを意味します。 前のセクションで `MonAgentHost log file` に対して指定されている場所でそのログを調べます。
@@ -105,9 +104,16 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 
 解決方法:診断構成を修正し、診断を再インストールします。
 
-ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「Azure Diagnostics が起動しない」の手順に従ってください。
+ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、*DiagnosticsPlugin.exe* と *MonAgentCore.exe* が実行されていることを確認します。 実行されていない場合、「[Azure Diagnostics が起動しない](#azure-diagnostics-is-not-starting)」の手順に従ってください。
 
 プロセスが実行されている場合、「[データがローカルでキャプチャされているか](#is-data-getting-captured-locally)」に進み、そこの手順に従ってください。
+
+これで問題が解決しない場合は、次のことを試してみてください。
+
+1. エージェントのアンインストール
+2. ディレクトリ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics の削除
+3. エージェントの再インストール
+
 
 ### <a name="part-of-the-data-is-missing"></a>一部のデータが見つからない
 全部ではないが一部のデータが表示される場合、データ収集/転送のパイプラインは正しく設定されています。 以下、現象をさらに分類しています。これに基づいて問題を絞り込んでください。
@@ -213,7 +219,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>診断拡張機能の構成を確認する方法
 拡張機能の構成を確認する最も簡単な方法としては、[Azure Resource Explorer](http://resources.azure.com) に移動し、Azure Diagnostics 拡張機能 (IaaSDiagnostics / PaaDiagnostics) がインストールされている仮想マシンまたはクラウド サービスに移動します。
 
-または、マシンにリモート デスクトップ接続し、Azure Diagnostics 構成ファイルを確認します。詳細は、ログ アーティファクト パス セクションにあります。
+または、マシンにリモート デスクトップ接続し、Azure 診断構成ファイルを確認します。詳細は、ログ アーティファクト パス セクションにあります。
 
 どちらの場合でも、**Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** または **WadCfg** フィールドを見つけます。
 

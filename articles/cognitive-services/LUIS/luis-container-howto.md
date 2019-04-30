@@ -9,22 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894680"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000268"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
-Language Understanding (LUIS) コンテナーでは、お客様のトレーニング済みまたは発行済みの Language Understanding モデル ([LUIS アプリ](https://www.luis.ai) とも呼ばれます) を Docker コンテナーに読み込みこんで、コンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリ ログを収集し、それらを Azure Language Understanding モデルに再度アップロードすることで、アプリの予測精度を高めることができます。
+Language Understanding (LUIS) コンテナーでは、お客様のトレーニング済みまたは発行済みの Language Understanding モデル ([LUIS アプリ](https://www.luis.ai) とも呼ばれます) を Docker コンテナーに読み込みこんで、コンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリ ログを収集し、それらを Language Understanding アプリに再度アップロードすることで、アプリの予測精度を高めることができます。
 
 次のビデオでは、このコンテナーの使用に関するデモが行われています。
 
-[![CCognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![Cognitive Services のコンテナーのデモ](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -36,7 +36,14 @@ LUIS コンテナーを実行するには、以下が必要です。
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Language Understanding (LUIS) のリソースと関連アプリ |コンテナーを使用するためには、以下が必要です。<br><br>* [_Language Understanding_ Azure リソース](luis-how-to-azure-subscription.md)、および関連するエンドポイント キーとエンドポイント URI (課金エンドポイントとして使用されます)。<br>* コンテナーへのマウント済み入力としてパッケージ化されたトレーニング済みまたは発行済みのアプリと、その関連アプリ ID。<br>* そのアプリ パッケージをダウンロードするためのオーサリング キー (それを API から行う場合)。<br><br>これらの要件は、以下の変数にコマンドライン引数を渡すために使用されます。<br><br>**{AUTHORING_KEY}**: このキーは、パッケージ化されたアプリをクラウドの LUIS サービスから取得したり、クエリ ログをクラウドにアップロードしたりするために使用されます。 形式は `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` です。<br><br>**{APPLICATION_ID}**: この ID は、アプリを選択するために使用されます。 形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。<br><br>**{ENDPOINT_KEY}**: このキーは、コンテナーを起動するために使用されます。 エンドポイント キーは 2 か所で確認できます。 1 つ目は Azure portal です (_Language Understanding_ リソースのキーの一覧内)。 また、LUIS ポータルの [Keys and endpoints]\(キーとエンドポイント\) の設定ページでもエンドポイント キーを確認できます。 スターター キーは使用しないでください。<br><br>**{BILLING_ENDPOINT}**: 課金エンドポイントの値は、Azure portal の [Language Understanding Overview]\(Language Understanding の概要\) ページで確認できます  (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。<br><br>[オーサリング キーとエンドポイント キー](luis-boundaries.md#key-limits)には、異なる目的があります。 これらは区別して使用してください。 |
+|Azure `Cognitive Services` リソースおよび LUIS [パッケージ アプリ](luis-how-to-start-new-app.md#export-app-for-containers) ファイル |コンテナーを使用するためには、以下が必要です。<br><br>* _Cognitive Services_ Azure リソースおよび関連する課金キー (課金エンドポイント URI)。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。 `luis/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。 <br>* コンテナーへのマウント済み入力としてパッケージ化されたトレーニング済みまたは発行済みのアプリと、その関連アプリ ID。 パッケージ ファイルは、LUIS ポータルまたはオーサリング API から取得できます。 [オーサリング API](#authoring-apis-for-package-file) から LUIS パッケージ アプリを入手している場合は、"_オーサリング キー_" も必要になります。<br><br>これらの要件は、以下の変数にコマンドライン引数を渡すために使用されます。<br><br>**{AUTHORING_KEY}**: このキーは、パッケージ化されたアプリをクラウドの LUIS サービスから取得したり、クエリ ログをクラウドにアップロードしたりするために使用されます。 形式は `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` です。<br><br>**{APPLICATION_ID}**: この ID は、アプリを選択するために使用されます。 形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。<br><br>**{ENDPOINT_KEY}**: このキーは、コンテナーを起動するために使用されます。 エンドポイント キーは 2 か所で確認できます。 1 つ目は Azure portal です (_Cognitive Services_ リソースのキーの一覧内)。 また、LUIS ポータルの [Keys and endpoints]\(キーとエンドポイント\) の設定ページでもエンドポイント キーを確認できます。 スターター キーは使用しないでください。<br><br>**{BILLING_ENDPOINT}**: (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。<br><br>[オーサリング キーとエンドポイント キー](luis-boundaries.md#key-limits)には、異なる目的があります。 これらは区別して使用してください。 |
+
+### <a name="authoring-apis-for-package-file"></a>パッケージ ファイルのオーサリング API
+
+パッケージ ファイルのオーサリング API は、次のとおりです。
+
+* [発行済みのパッケージ API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [未発行の、トレーニング用のパッケージ API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
@@ -77,7 +84,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ![Language Understanding (LUIS) コンテナーを使用する手順](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. LUIS ポータルまたは LUIS API からコンテナーの[パッケージをエクスポート](#export-packaged-app-from-luis)します。
-1. [ホスト コンピューター](#the-host-computer)上の必要な **input** ディレクトリにパッケージ ファイルを移動します。 LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
+1. [ホスト コンピューター](#the-host-computer)上の必要な **input** ディレクトリにパッケージ ファイルを移動します。 LUIS パッケージ ファイルの名前変更、改変、上書き、または展開は行わないでください。
 1. 必要な "_入力マウント_" と課金設定で[コンテナーを実行](##run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](luis-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
 1. [コンテナーの予測エンドポイントに対してクエリを実行します](#query-the-containers-prediction-endpoint)。 
 1. コンテナーの操作が完了したら、LUIS ポータルで出力マウントから[エンドポイント ログをインポート](#import-the-endpoint-logs-for-active-learning)し、コンテナーを[停止](#stop-the-container)します。
@@ -106,7 +113,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 |Production|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
-> LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
+> LUIS パッケージ ファイルの名前変更、改変、上書き、または展開は行わないでください。
 
 ### <a name="packaging-prerequisites"></a>パッケージの前提条件
 
@@ -114,7 +121,7 @@ LUIS アプリケーションをパッケージ化する前に、以下を用意
 
 |パッケージ化の要件|詳細|
 |--|--|
-|Azure _Language Understanding_ リソース インスタンス|サポートされているリージョンは次のとおりです<br><br>米国西部 (```westus```)<br>西ヨーロッパ (```westeurope```)<br>オーストラリア東部 (```australiaeast```)|
+|Azure _Cognitive Services_ リソース インスタンス|サポートされているリージョンは次のとおりです<br><br>米国西部 (```westus```)<br>西ヨーロッパ (```westeurope```)<br>オーストラリア東部 (```australiaeast```)|
 |トレーニング済みまたは発行済みの LUIS アプリ|[サポートされていない依存関係](#unsupported-dependencies)を含んでいないこと。 |
 |[ホスト コンピューター](#the-host-computer)のファイル システムへのアクセス |ホスト コンピューターで[入力マウント](luis-container-configuration.md#mount-settings)が許可されている必要があります。|
   
@@ -214,7 +221,7 @@ https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLIC
 | プレースホルダー | 値 |
 |-------------|-------|
 |{ENDPOINT_KEY} | このキーは、コンテナーを起動するために使用されます。 スターター キーは使用しないでください。 |
-|{BILLING_ENDPOINT} | 課金エンドポイントの値は、Azure portal の [Language Understanding Overview]\(Language Understanding の概要\) ページで確認できます。|
+|{BILLING_ENDPOINT} | 課金エンドポイントの値は、Azure portal の `Cognitive Services` の [概要] ページで確認できます。 エンドポイント URI には、`luis/v2.0` ルーティングを追加する必要があります (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。|
 
 次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
 
@@ -245,7 +252,7 @@ ApiKey={ENDPOINT_KEY}
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
-> ApiKey の値は、LUIS ポータルの [Keys and Endpoints]\(キーとエンドポイント\) ページにある **[キー]** です。また、[Azure Language Understanding Resource keys]\(Azure Language Understanding リソース キー\) ページで確認することもできます。  
+> ApiKey の値は、LUIS ポータルの [Keys and Endpoints]\(キーとエンドポイント\) ページにある **[キー]** です。また、Azure `Cognitive Services` リソース キー ページで確認することもできます。  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -255,7 +262,7 @@ ApiKey={ENDPOINT_KEY}
 
 コンテナーの API のホストとしては `https://localhost:5000` を使用します。 
 
-|パッケージの種類|方法|ルート|クエリ パラメーター|
+|パッケージの種類|Method|ルート|クエリ パラメーター|
 |--|--|--|--|
 |公開先|[Get](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、[Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
 |トレーニング済み|Get、Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
@@ -264,7 +271,7 @@ ApiKey={ENDPOINT_KEY}
 
 |Query parameter (クエリ パラメーター)|Type|目的|
 |--|--|--|
-|`q`|文字列|ユーザーの発話。|
+|`q`|string|ユーザーの発話。|
 |`timezoneOffset`|number|timezoneOffset を使用すると、事前構築済みのエンティティ datetimeV2 で使用される[タイムゾーンを変更](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)できます。|
 |`verbose`|ブール値|true に設定すると、すべての意図とそのスコアが返されます。 既定値は false で、この場合、最上位の意図だけが返されます。|
 |`staging`|ブール値|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
@@ -324,7 +331,7 @@ LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint
 
 ## <a name="billing"></a>課金
 
-LUIS コンテナーでは、お客様の Azure アカウントの _Language Understanding_ リソースを使用して課金情報が Azure に送信されます。 
+LUIS コンテナーでは、お客様の Azure アカウントの _Cognitive Services_ リソースを使用して課金情報が Azure に送信されます。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

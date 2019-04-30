@@ -10,21 +10,21 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: bbb10bf0174b6e06e28d171510345ed92b6642d9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 21603ff213bc8babb4145209a76aee0b4150cc12
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357088"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997616"
 ---
 # <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリをデプロイする
 
 ロジック アプリをデプロイするための Azure Resource Manager テンプレートを作成したら、次の方法でテンプレートをデプロイできます。
 
-* [Azure ポータル](#portal)
+* [Azure Portal](#portal)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
-* [Azure Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure リソース マネージャー REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 * [Azure DevOps Azure Pipelines](#azure-pipelines)
 
 <a name="portal"></a>
@@ -33,7 +33,7 @@ ms.locfileid: "59357088"
 
 ロジック アプリ テンプレートを Azure に自動的にデプロイするには、次の **[Azure に配置する]** ボタンを選択します。これにより、Azure portal にサインインし、ロジック アプリに関する情報の入力を求められます。 その後、ロジック アプリ テンプレートまたはパラメーターに必要な変更を加えることができます。
 
-[![DAzure に配置する(./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 たとえば、Azure portal にサインインした後にこの情報の入力を求められます。
 
@@ -67,7 +67,7 @@ New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent
 ```
 
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
-* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [`New-AzResourceGroupDeployment`](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [`New-AzDeployment`](/powershell/module/az.resources/new-azdeployment)
 
 <a name="cli"></a>

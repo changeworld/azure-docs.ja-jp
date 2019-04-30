@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: f7a0300619d82f760c0e307601efbd3987eb6067
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a60413ee6614b638db58748ee2c0aea5d7ea32ea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004588"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697891"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
 
@@ -39,7 +39,7 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 * マップ
 
 >[!NOTE]
->現在、正常性機能は、Azure 仮想マシンと仮想マシン スケール セットに対してのみ提供されています。 パフォーマンス機能とマップ機能では、ご利用の環境または他のクラウド プロバイダーにおいてホストされている Azure VM および仮想マシンの両方がサポートされています。
+>現在、正常性機能は、Azure 仮想マシンにのみ提供されています。 パフォーマンス機能とマップ機能では、ご利用の環境または他のクラウド プロバイダーにおいてホストされている Azure VM、Azure VM スケール セット、仮想マシンがサポートされています。
 
 Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現されています。さらに、時間の経過に伴うデータの傾向を分析することができます。 そうした包括的なワークロード監視は、Azure Monitor または Service Map 単独では実現できません。  
 

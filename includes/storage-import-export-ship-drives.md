@@ -9,13 +9,13 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59286849"
 ---
-Azure データセンターにパッケージを発送するには、FedEx、UPS、または DHL を利用できます。 FedEx または DHL 以外の運送業者を使用する場合、以下から Azure Data Box Operations チームまでお問い合わせください。 `adbops@microsoft.com`
+Azure データセンターにパッケージを発送するには、FedEx、UPS、または DHL を利用できます。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。
 
 - Microsoft がドライブを返送するときに利用する FedEx、UPS、または DHL の有効な運送業者アカウント番号を入力してください。 
     

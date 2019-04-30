@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3a0c675ac9c8a782b94d127e877646bf37af1371
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621483"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678668"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse ビジネス インテリジェンス パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートする公式のビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -26,7 +26,7 @@ ms.locfileid: "58621483"
 | ![Birst][1] |**Birst**<br>Birst は、共有の一般的な分析ファブリック上に織り込まれた仮想化 BI インスタンスのネットワークを介して、組織全体を接続します|[製品ページ][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory Data][2] |**ClearStory Data (継続的なビジネス インサイト)**<br>ClearStory Data は、SQL Data Warehouse に格納されている各種データ全体にわたる高速サイクル分析を実現します。 ClearStory の Spark ベース プラットフォームと分析アプリケーションにより、多種多様なデータ セットへのアクセスと協調が高速化されます。 また、高速で調和的な探索が実現されるため、ビジネス ユーザーは他のユーザーに頼らずに知見を得ることができます。 |[製品ページ][clearstory_website]<br> |
 | ![Dundas][4] |**Dundas BI**<br>Dundas Data Visualization は、ビジネス インテリジェンスおよびデータ可視化ソフトウェアの世界的な一流プロバイダーです。  Dundas のダッシュボード、レポート作成、およびビジュアル データ分析により、ビジネス アプリケーションがシームレスに統合されることで、適切な決断とすばやい分析が可能になります。|[製品ページ][dundas_bi_website]<br>[Azure Marketplace][dundas_bi_marketplace]<br> |
-| ![IBM Cognos][3] |**IBM Cognos Analytics** Cognos Analytics には、幅広いサプライ チェーンの欠陥を調査する経験豊富なビジネス アナリストでも、1 つのキャンペーンを最適化するマーケティング担当者でも関係なく、シンプルでわかりやすく、簡単に使用できるようにするスマートなセルフ サービス機能を備えています。 Cognos Analytics は、AI およびその他のインテリジェント機能を使用して、手間のかかる作業を実行し、データ探索をガイドし、ユーザーが必要な答えを簡単に得られるようにします|[製品ページ][cognosanalytics_website]<br>|
+| ![IBM Cognos][3] |**IBM Cognos Analytics**<br>Cognos Analytics には、幅広いサプライ チェーンの欠陥を調査する経験豊富なビジネス アナリストでも、1 つのキャンペーンを最適化するマーケティング担当者でも関係なく、シンプルでわかりやすく、簡単に使用できるようにするスマートなセルフ サービス機能を備えています。 Cognos Analytics は、AI およびその他のインテリジェント機能を使用して、手間のかかる作業を実行し、データ探索をガイドし、ユーザーが必要な答えを簡単に得られるようにします|[製品ページ][cognosanalytics_website]<br>|
 | ![Information Builders][13] |**Information Builders (WebFOCUS)**<br>WebFOCUS ビジネス インテリジェンスにより、企業は企業の内外で、データを戦略的に使用できるようになります。 これにより、ユーザーと管理者は、複数のデータ ソースや形式のコンテンツを結合するダッシュ ボードを迅速に作成し、BI および分析コンテンツのシームレスで安全な配信と共有を可能にする堅牢なセキュリティと包括的なガバナンスを実現できます|[製品ページ][informationbuilders_website]<br> |
 ![Jinfonet][5] |**Jinfonet JReport**<br>JReport は、企業向けの組み込み可能な BI ソリューションです。 このソリューションでは、クラウド、ビッグ データ、およびトランザクション データ ソースに関するレポート、ダッシュボード、データ分析でユーザーを支援します。 データを視覚化することにより、独自のレポート作成とデータ探索を実行して、機敏で継続的な意思決定を実現できます。 |[製品ページ][jinfonet_website]<br> |
 | ![LogiAnalytics][6] |**Logi Analytics**<br>Logi Analytics と Azure SQL Data Warehouse が連携することで、世界で最も大規模かつ多様なデータ セットの収集、分析、および即時操作が可能になります。 |[製品ページ][logianalytics_website]<br>|

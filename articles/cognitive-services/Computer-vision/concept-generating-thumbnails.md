@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876801"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002444"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision でのスマート トリミングされたサムネイルの生成
 
@@ -38,15 +38,15 @@ Computer Vision のサムネイル生成アルゴリズムは次のように動�
 
 生成されるサムネイルは、以下の図に示すように、高さ、幅、スマート トリミングについて指定する内容によって大きく異なる場合があります。
 
-![サムネイル](./Images/thumbnail-demo.png)
+![山の画像とさまざまなトリミングの構成](./Images/thumbnail-demo.png)
 
 次の表は、Computer Vision で生成される、イメージ例に対する一般的なサムネイルを示しています。 スマート トリミングが有効になっており、ターゲットの高さと幅が 50 ピクセルに指定されたサムネイルが生成されています。
 
 | Image | サムネイル |
 |-------|-----------|
-|![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | ![屋外の山のサムネイル](./Images/mountain_vista_thumbnail.png) |
+|![山の夕日と人のシルエット](./Images/mountain_vista.png) | ![山の夕日と人のシルエットのサムネイル](./Images/mountain_vista_thumbnail.png) |
 |![白い花と緑の背景](./Images/flower.png) | ![Vision Analyze 花のサムネイル](./Images/flower_thumbnail.png) |
-|![共同住宅の屋上にいる女性](./Images/woman_roof.png) | ![屋上にいる女性のサムネイル](./Images/woman_roof_thumbnail.png) |
+|![共同住宅の屋上にいる女性](./Images/woman_roof.png) | ![共同住宅の屋上にいる女性のサムネイル](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>次の手順
 

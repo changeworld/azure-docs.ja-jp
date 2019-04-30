@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: daffbe3f3158bb232f7db7ac90d766661e937643
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891431"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679654"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
@@ -67,10 +67,19 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
 
 * その名前のアプリは既に存在します。 アプリを再インポートし、**オプション名**を新しい名前に設定します。 
 
-## <a name="export-app"></a>アプリのエクスポート
+## <a name="export-app-for-backup"></a>バックアップ用にアプリをエクスポートする
 
-1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
-1. **[Import new app]\(新しいアプリのインポート\)** ダイアログ ボックスで、LUIS アプリを定義している JSON ファイルを選択します。
+1. **[マイ アプリ]** ページで **[エクスポート]** を選択します。
+1. **[JSON としてエクスポート]** を選択します。 アクティブなバージョンのアプリがブラウザーによってダウンロードされます。
+1. このファイルをバックアップ システムに追加して、モデルをアーカイブしてください。
+
+## <a name="export-app-for-containers"></a>コンテナーのアプリをエクスポートする
+
+1. **[マイ アプリ]** ページで **[エクスポート]** を選択します。
+1. **[Export as container]\(コンテナーとしてエクスポートする\)** を選択して、エクスポートする公開スロット (実稼働またはステージ) を選択します。
+1. [LUIS コンテナー](luis-container-howto.md)でこのファイルを使用します。 
+
+    LUIS コンテナーで使用するモデルとして、トレーニング済みではあるものの、まだ発行されていないモデルをエクスポートしたい場合は、**[バージョン]** ページに移動してそこからエクスポートしてください。 
 
 ## <a name="delete-app"></a>アプリの削除
 
