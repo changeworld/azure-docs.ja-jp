@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616358"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005249"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -63,7 +63,7 @@ SAP HANA のパフォーマンスに関連した FAQ は、以下の SAP Note �
 
 ![[Load (負荷)] のグラフに高い CPU 使用率や過去の高い使用率が示される場合がある](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-高い CPU 使用率が原因でトリガーされるアラートには、いくつかの理由が考えられます。たとえば、特定のトランザクションの実行、データの読み込み、ジョブの停止、SQL ステートメントの長時間実行、クエリの低パフォーマンス (例: HANA キューブでの BW の場合) などです。
+高い CPU 使用率が原因でトリガーされるアラートには、いくつかの理由が考えられます。たとえば、特定のトランザクションの実行、データの読み込み、応答していないジョブ、SQL ステートメントの長時間実行、クエリの低パフォーマンス (例: HANA キューブでの BW の場合) などです。
 
 トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの CPU 関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) に関するサイトを参照してください。
 
@@ -130,7 +130,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、**
 
 ローカルに保存されている SQL Statements.zip ファイルを選択すると、対応する SQL ステートメントが含まれているフォルダーがインポートされます。 この時点で、これらの SQL ステートメントを使用して、さまざまな診断チェックを実行できます。
 
-たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで [Replication: Bandwidth (レプリケーション: 帯域幅)] の下の **Bandwidth** ステートメントを右クリックし、**** SQL コンソールの **[開く]** を選択します。
+たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)]** の下の **Bandwidth** ステートメントを右クリックし、** SQL コンソールの **[開く]** を選択します。
 
 完全な SQL ステートメントが開かれるので、入力パラメーター (変更セクション) を変更し、実行することができます。
 

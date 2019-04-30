@@ -1,64 +1,99 @@
 ---
 title: Azure Cosmos DB のインデックス作成
 description: Azure Cosmos DB のインデックス作成のしくみを説明します。
-author: rimman
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.author: thweiss
+ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265697"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996732"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
-Azure Cosmos DB はスキーマ非依存のデータベースであり、スキーマやインデックスの管理に対応することなく、アプリケーションですばやく反復できます。 既定では、Azure Cosmos DB によって、コンテナー内のすべての項目に自動的にインデックスが作成されます。スキーマや二次インデックスが開発者に要求されることはありません。
+Azure Cosmos DB はスキーマ非依存のデータベースであり、スキーマやインデックスの管理に対応することなく、アプリケーション上で反復処理を実行することができます。 Azure Cosmos DB の既定では、[コンテナー](databases-containers-items.md#azure-cosmos-containers)内のすべての項目のすべてのプロパティに自動的にインデックスが作成されます。スキーマの定義やセカンダリ インデックスの構成は必要ありません。
 
-## <a name="items-as-trees"></a>ツリーとしての項目
+この記事の目的は、Azure Cosmos DB がデータのインデックスを作成する方法と、インデックスを使用してクエリのパフォーマンスを向上する方法について説明することです。 [インデックス作成ポリシー](index-policy.md)のカスタマイズ方法を検討する前に、このセクションに目を通すことをお勧めします。
 
-Azure Cosmos DB では、コンテナーの項目を JSON ドキュメントとして投影し、ツリーとして表示することで項目全体の構造とインスタンス値の両方を正規化し、**動的にエンコードされるパス構造**という概念に統一します。 この表現では、プロパティ名とその値の両方を含む、JSON ドキュメント内の各ラベルがツリーのノードになります。 ツリーのリーフには実際の値が含まれ、中間ノードにはスキーマ情報が含まれます。 次の画像は、ある Azure Cosmos コンテナーの 2 つの項目 (1 と 2) に対して作成されたツリーです。
+## <a name="from-items-to-trees"></a>項目からツリーへ
 
-![Azure Cosmos コンテナー内の 2 つの異なる項目のツリー表示](./media/index-overview/indexing-as-tree.png)
+項目がコンテナーに格納されるたびに、そのコンテンツは JSON ドキュメントとして投影され、ツリー表現に変換されます。 つまり、その項目のすべてのプロパティがツリー内のノードとして表示されます。 擬似ルート ノードは、項目のすべての第 1 レベル プロパティに対する親として作成されます。 リーフ ノードには、項目に格納されている実際のスカラー値が含まれます。
 
-下の JSON ドキュメントのラベルに対応する実際のノードの親として擬似ルート ノードが作成されます。 入れ子になったデータ構造によってツリーに階層が作られます。 数値ラベル (0、1 など) の付いた中間の人工ノードは、列挙や配列インデックスを表すために採用されています。
+たとえば、次の項目を検討してみましょう。
 
-## <a name="index-paths"></a>インデックスのパス
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
 
-Azure Cosmos DB では、Azure Cosmos コンテナー内の項目が JSON ドキュメントとして、インデックスがツリーとして投影されます。 その後、ツリー内のパスに対するインデックス ポリシーを調整できます。 パスはインデックス作成に含めるか、インデックス作成から除外することを選択できます。 これにより、クエリのパターンが事前にわかっている場合に、書き込みパフォーマンスの向上とインデックス ストレージの削減が可能になります。 詳細については、「[インデックスのパス](index-paths.md)」を参照してください。
+これは次のツリーで表現されます。
 
-## <a name="indexing-under-the-hood"></a>インデックス作成:コネクタの性能
+![ツリーとして表現された前の項目](./media/index-overview/item-as-tree.png)
 
-Azure Cosmos データベースでは、*自動インデックス作成*がデータに適用されます。特定のパスを除外するように構成しない限り、ツリー内のすべてのパスにインデックスが作成されます。
+ツリー内で配列がどのようにエンコードされるかに注目します。配列内の各エントリは、配列内のそのエントリのインデックス (0、1 など) でラベル付けされた中間ノードを取得します。
 
-Azure Cosmos データベースでは、インデックス データ構造を逆にして各項目の情報を保管し、クエリを効率的に表現しています。 インデックス ツリーは、コンテナー内の個別項目を表すすべてのツリーを結合することで構築されるドキュメントです。 インデックス ツリーは時間の経過と共に大きくなります。コンテナーで新しい項目が追加され、既存の項目が更新されるためです。 リレーショナル データベースのインデックス作成とは異なり、Azure Cosmos DB では、新しいフィールドが導入されたときにインデックス作成が一からやり直されることはありません。 新しい項目は既存のインデックス構造に追加されます。 
+## <a name="from-trees-to-property-paths"></a>ツリーからプロパティ パスへ
 
-インデックス ツリーの各ノードは、ラベルと位置値 ("*ターム*" と呼ばれる)、項目の ID ("*ポスティング*" と呼ばれる) が含まれるインデックス エントリとなります。 逆インデックスの図にある中括弧内のポスティング ({1,2} など) は、所与のラベル値が含まれる項目に対応しています (*Document1* や *Document2* など)。 スキーマ ラベルとインスタンス値を一様に扱うことには重要な意味があります。それは、大きなインデックスの中にすべてが詰められるということです。 リーフに残っているインスタンス値は繰り返されません。項目が違うと役割も違う、スキーマ ラベルが違うということはありますが、値は同じです。 次の画像は、2 種類の項目の逆インデックス作成を示しています。
+Azure Cosmos DB が項目をツリーに変換する理由は、そのようなツリー内のパスから、プロパティを参照できるようにするためです。 プロパティのパスを取得するには、ルート ノードからそのプロパティまでツリーを走査し、たどった各ノードのラベルを連結します。
 
-![インデックスのしくみ、逆インデックス](./media/index-overview/inverted-index.png)
+上記の例の項目から各プロパティへのパスは次のとおりです。
 
-> [!NOTE]
-> 逆インデックスは、情報取得ドメインの検索エンジンで使用されているインデックス作成構造と同じに見えることがあります。 この手法を採用すると、Azure Cosmos DB では、そのスキーマ構造に関係なく、あらゆる項目をデータベースから検索できます。
+    /locations/0/country: "Germany"
+    /locations/0/city: "Berlin"
+    /locations/1/country: "France"
+    /locations/1/city: "Paris"
+    /headquarters/country: "Belgium"
+    /headquarters/employees: 250
+    /exports/0/city: "Moscow"
+    /exports/1/city: "Athens"
 
-正規化されたパスの場合、値の型情報と共に、前方のパスがルートから値までがすべてコード化されます。 パスと値は、範囲や空間など、インデックス作成のさまざまな種類を指定する目的でコード化されます。値のコード化は、一意の値か一連のパスの構成を指定するように設計されています。
+項目が書き込まれると、Azure Cosmos DB は各プロパティのパスとそれに対応する値のインデックスを効果的に作成します。
+
+## <a name="index-kinds"></a>インデックスの種類
+
+現在、Azure Cosmos DB では 2 種類のインデックスがサポートされています。
+
+**範囲**インデックスの種類は、以下のために使用されます。
+
+- 等値クエリ: `SELECT * FROM container c WHERE c.property = 'value'`
+- 範囲クエリ: `SELECT * FROM container c WHERE c.property > 'value'` (`>`、`<`、`>=`、`<=`、`!=` に適しています)
+- `ORDER BY` クエリ: `SELECT * FROM container c ORDER BY c.property`
+- `JOIN` クエリ: `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+
+範囲インデックスは、スカラー値 (文字列または数値) に使用できます。
+
+**空間**インデックスの種類は、以下のために使用されます。
+
+- 地理空間距離クエリ: `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
+- クエリ内の地理空間: `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+
+空間インデックスは、正しい形式の [GeoJSON](geospatial.md) オブジェクトに対して使用できます。 現在、Point、LineString、Polygon がサポートされています
 
 ## <a name="querying-with-indexes"></a>インデックスを使用してクエリを実行する
 
-逆インデックスでは、クエリの述語に一致するドキュメントを簡単に特定するクエリが可能になります。 パスに関してスキーマとインスタンス値の両方を一様に扱うことで、逆インデックスもツリーになります。 そのため、インデックスと結果をシリアル化して有効な JSON ドキュメントを生成し、ツリー表示で返すとき、ドキュメント自体として返すことができます。 この手法により、追加のクエリに対する結果の再帰が可能になります。 次の図は、ポイント クエリのインデックス作成の例です。  
+データのインデックス作成時に抽出されるパスを使用すると、クエリの処理時にインデックスを簡単に検索できます。 クエリの `WHERE` 句をインデックス付きパスの一覧と照合して、クエリの述語と一致する項目を非常にすばやく識別することができます。
 
-![ポイント クエリの例](./media/index-overview/index-point-query.png)
+たとえば、次のクエリを考えてみましょう。`SELECT location FROM location IN company.locations WHERE location.country = 'France'` クエリの述語 (どの場所にも国として "France" 含まれている項目のフィルター処理) は、以下のように赤で強調表示されているパスと一致します。
 
-範囲クエリについて、*GermanTax* はクエリ処理の一部として実行される[ユーザー定義関数](stored-procedures-triggers-udfs.md#udfs)です。 ユーザー定義関数は任意で登録できる JavaScript 関数であり、機能が豊富なプログラミング ロジックをクエリに統合できます。 次の図は、範囲クエリのインデックス作成の例です。
+![ツリー内の特定のパスとの照合](./media/index-overview/matching-path.png)
 
-![範囲クエリの例](./media/index-overview/index-range-query.png)
+> [!NOTE]
+> `ORDER BY` 句には*常に*範囲インデックスが必要であり、参照するパスにそれがない場合は失敗します。
 
 ## <a name="next-steps"></a>次の手順
 
 以下の記事で、インデックス作成についての詳細を参照してください。
 
 - [インデックス作成ポリシー](index-policy.md)
-- [インデックスの種類](index-types.md)
-- [インデックスのパス](index-paths.md)
 - [インデックス作成ポリシーを管理する方法](how-to-manage-indexing-policy.md)
