@@ -22,7 +22,7 @@ ms.locfileid: "59784024"
 # <a name="general-purpose-service-tier---azure-sql-database"></a>General Purpose サービス レベル - Azure SQL Database
 
 > [!NOTE]
-> 仮想コア ベースの購入モデルでの General Purpose サービス レベルは、DTU ベースの購入モデルでは Standard サービス レベルと呼ばれます。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-purchase-models.md)に関する記事をご覧ください。
+> 仮想コアベースの購入モデルでの General Purpose サービス レベルは、DTU ベースの購入モデルでは Standard サービス レベルと呼ばれます。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-purchase-models.md)に関する記事をご覧ください。
 
 は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するために、クラウド環境に適合された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database では 3 つのサービス レベルが使用されており、それぞれアーキテクチャ モデルが異なります。 これらのサービス レベルは次のとおりです。
 

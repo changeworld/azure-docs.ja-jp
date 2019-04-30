@@ -1,6 +1,6 @@
 ---
-title: Azure SQL の単一およびプール データベース用の VNet エンドポイントおよび規則 | Microsoft Docs
-description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
+title: Azure SQL の単一およびプールされたデータベース用の VNet エンドポイントおよび規則 | Microsoft Docs
+description: サブネットを仮想ネットワーク サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -42,7 +42,7 @@ ms.locfileid: "58805195"
 
 **Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。
 
-**仮想ネットワーク ルール:** お使いの SQL Database サーバーの仮想ネットワーク ルールは、SQL Database サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 SQL Database の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
+**仮想ネットワーク ルール:** お使いの SQL Database サーバーの仮想ネットワーク規則は、SQL Database サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 SQL Database の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、お使いの SQL Database サーバーに指示します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "58805195"
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
-操作を実行するまで、サブネット上の VM は SQL Database と通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク ルールの作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
+操作を実行するまで、サブネット上の VM は SQL Database と通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク規則の作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
@@ -65,7 +65,7 @@ SQL Database のファイアウォールでは、SQL Database への通信が許
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
 > [!NOTE]
-> サブネット上に SQL Database を保持することは、まだできません。 Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は SQL Database と通信できます。
+> サブネット上に SQL Database を保持することは、まだできません。 Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク規則や IP ルールがなくても、VM は SQL Database と通信できます。
 
 しかし、2017 年 9 月時点ではまだ、Azure SQL Database サービスは、サブネットに割り当て可能なサービスの範囲には含まれていません。
 
@@ -77,7 +77,7 @@ SQL Database のファイアウォールでは、SQL Database への通信が許
 
 ### <a name="only-one-geographic-region"></a>geography 型の 1 つのリージョンのみ
 
-各 Virtual Network サービス エンドポイントは、1 つの Azure リージョンだけに適用されます。 エンドポイントが他のリージョンを有効にして、サブネットからの通信を許可することはありません。
+各仮想ネットワーク サービス エンドポイントは、1 つの Azure リージョンだけに適用されます。 エンドポイントが他のリージョンを有効にして、サブネットからの通信を許可することはありません。
 
 どの仮想ネットワーク規則も、その基本となるエンドポイントが適用先のリージョンに制限されます。
 
@@ -89,7 +89,7 @@ SQL Database のファイアウォールでは、SQL Database への通信が許
 
 ### <a name="security-administration-roles"></a>セキュリティ管理ロール
 
-Virtual Network サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
+仮想ネットワーク サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
 - **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
 - **データベース管理者:**&nbsp;アクセス制御リスト (ACL) を更新して、指定されたサブネットを SQL Database サーバーに追加します。
@@ -119,7 +119,7 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 - 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
 - Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL インスタンスへの接続の試行は失敗します。
-  - 根本的な理由は、MySQL および PostgreSQL には仮想ネットワーク ルールが構成されていない可能性があるためです。 接続を成功させるには、Azure Database for MySQL と Azure Database for PostgreSQL の仮想ネットワーク ルールを構成する必要があります。
+  - 根本的な理由は、MySQL および PostgreSQL には仮想ネットワーク規則が構成されていない可能性があるためです。 接続を成功させるには、Azure Database for MySQL と Azure Database for PostgreSQL の仮想ネットワーク規則を構成する必要があります。
 
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
   - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
@@ -252,7 +252,7 @@ PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを�
 
 *エラーの説明:* クライアントは、仮想ネットワーク サーバーのエンドポイントを持つサブネット内にあります。 しかし、Azure SQL Database サーバーには、SQL Database と通信する権限をサブネットに付与する仮想ネットワーク規則がありません。
 
-*エラーの解決策:* Azure portal の [ファイアウォール] ウィンドウで、仮想ネットワーク ルール コントロールを使って、サブネットの[仮想ネットワーク ルールを追加](#anchor-how-to-by-using-firewall-portal-59j)します。
+*エラーの解決策:* Azure portal の [ファイアウォール] ウィンドウで、仮想ネットワーク規則 コントロールを使って、サブネットの[仮想ネットワーク規則を追加](#anchor-how-to-by-using-firewall-portal-59j)します。
 
 ### <a name="error-40615"></a>エラー 40615
 
@@ -268,7 +268,7 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal で仮想ネットワーク規則を作成する
 
-このセクションでは、[Azure Portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database に*仮想ネットワーク規則*を作成する方法を説明します。 規則では、*Virtual Network サービス エンドポイント*としてタグ付けされた特定のサブネットからの通信を許可するように、お使いの SQL Database に指示します。
+このセクションでは、[Azure Portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database に*仮想ネットワーク規則*を作成する方法を説明します。 規則では、*仮想ネットワーク サービス エンドポイント*としてタグ付けされた特定のサブネットからの通信を許可するように、お使いの SQL Database に指示します。
 
 > [!NOTE]
 > Azure SQL Database サーバーの VNet ファイアウォール規則にサービス エンドポイントを追加する場合は、まず、そのサブネットに対するサービス エンドポイントを有効にする必要があります。
@@ -303,7 +303,7 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
 3. **[Azure サービスへのアクセスを許可]** の制御を [オフ] に設定します。
 
     > [!IMPORTANT]
-    > 制御を [オン] に設定したままにすると、Azure SQL Database サーバーはすべてのサブネットからの通信を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure Virtual Network サービス エンドポイント機能は、SQL Database の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
+    > 制御を [オン] に設定したままにすると、Azure SQL Database サーバーはすべてのサブネットからの通信を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure 仮想ネットワーク サービス エンドポイント機能は、SQL Database の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
 
 4. **[仮想ネットワーク]** セクションにある **[既存の追加]** コントロールをクリックします。
 

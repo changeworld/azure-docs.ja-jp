@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database サービス - 仮想コア | Microsoft Docs
-description: 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。
+description: 仮想コアベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -21,7 +21,7 @@ ms.locfileid: "59357935"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
 
-仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
+仮想コアベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
 
 - Gen4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
 - Gen5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
@@ -92,7 +92,7 @@ Azure ハイブリッド特典では、SQL データベース エンジン自体
 
 ### <a name="migration-of-a-database"></a>データベースの移行
 
-DTU ベースの購入モデルから仮想コア ベースの購入モデルへデータベースを移行することは、DTU ベースの購入モデルの Standard および Premium データベース間のアップグレードまたはダウングレードとほぼ同じです。
+DTU ベースの購入モデルから仮想コアベースの購入モデルへデータベースを移行することは、DTU ベースの購入モデルの Standard および Premium データベース間のアップグレードまたはダウングレードとほぼ同じです。
 
 ### <a name="migration-of-databases-with-geo-replication-links"></a>geo レプリケーション リンクを含むデータベースの移行
 

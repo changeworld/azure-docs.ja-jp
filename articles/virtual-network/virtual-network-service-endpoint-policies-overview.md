@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network のサービス エンドポイント ポリシー | Microsoft Docs
+title: Azure 仮想ネットワーク サービス エンドポイント ポリシー | Microsoft Docs
 description: サービス エンドポイント ポリシーを使用して、Azure サービス リソースへの仮想ネットワーク トラフィックをフィルター処理する方法について説明します
 services: virtual-network
 documentationcenter: na
@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/11/2019
 ms.locfileid: "59494175"
 ---
-# <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワークのサービス エンドポイント ポリシー (プレビュー)
+# <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワーク サービス エンドポイント ポリシー (プレビュー)
 
 Virtual Network (VNet) のサービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックに対する詳細なアクセス制御が提供されます。
 
@@ -29,11 +29,11 @@ __Azure Storage__:WestCentralUS、WestUS2、NorthCentralUS、SouthCentralUS、Ce
 プレビューに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
 > [!NOTE]  
-> プレビュー期間中は、仮想ネットワークのサービス エンドポイント ポリシーに、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> プレビュー期間中は、仮想ネットワーク サービス エンドポイント ポリシーに、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="key-benefits"></a>主な利点
 
-仮想ネットワークのサービス エンドポイント ポリシーには、次の利点があります。
+仮想ネットワーク サービス エンドポイント ポリシーには、次の利点があります。
 
 - __Azure サービスへの仮想ネットワーク トラフィックのセキュリティ強化__
 

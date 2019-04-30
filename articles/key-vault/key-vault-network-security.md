@@ -31,7 +31,7 @@ Azure portal を使用して Key Vault ファイアウォールと仮想ネッ�
 1. セキュリティで保護するキー コンテナーに移動します。
 2. **[ファイアウォールと仮想ネットワーク]** を選択します。
 3. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します。
-4. 既存の仮想ネットワークをファイアウォールと仮想ネットワークのルールに追加するには、**[+ 既存の仮想ネットワークを追加]** を選択します。
+4. 既存の仮想ネットワークをファイアウォールと仮想ネットワークの規則に追加するには、**[+ 既存の仮想ネットワークを追加]** を選択します。
 5. 表示される新しいブレードで、このキー コンテナーへのアクセスを許可するサブスクリプション、仮想ネットワーク、サブネットを選択します。 選択する仮想ネットワークとサブネットでサービス エンドポイントが有効になっていない場合は、サービス エンドポイントを有効にする必要があることを確認して、**[有効]** を選択します。 有効になるまでに最大 15 分かかることがあります。
 6. **[IP ネットワーク]** では、[CIDR (Classless Inter-Domain Routing) 表記](https://tools.ietf.org/html/rfc4632)で IPv4 アドレスの範囲を入力して IPv4 アドレス範囲を追加するか、個々の IP アドレスを追加します。
 7. **[保存]** を選択します。
@@ -44,7 +44,7 @@ Azure CLI を使用して Key Vault ファイアウォールと仮想ネット�
 
 1. [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)して[サインイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)します。
 
-2. 使用可能な仮想ネットワーク ルールの一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
+2. 使用可能な仮想ネットワーク規則の一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
    ```azurecli
    az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
    ```
@@ -83,7 +83,7 @@ PowerShell を使用して Key Vault ファイアウォールと仮想ネット�
 
 1. 最新の [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) をインストールして[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。
 
-2. 使用可能な仮想ネットワーク ルールの一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
+2. 使用可能な仮想ネットワーク規則の一覧を表示します。 このキー コンテナーに対してルールを何も設定していない場合、一覧は空になります。
    ```powershell
    (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```

@@ -69,7 +69,7 @@ Key Vault アクセス ポリシーでは、キー、シークレット、また
 
 キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](../cli-install-nodejs.md)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用します。
 
-データ プレーンのアクセスは、[Azure Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)を使用して制限することができます。 追加のセキュリティ層に対して[ファイアウォールと仮想ネットワークの規則](key-vault-network-security.md)を構成するできます。
+データ プレーンのアクセスは、[Azure Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)を使用して制限することができます。 追加のセキュリティ層に対して[ファイアウォールと仮想ネットワーク規則](key-vault-network-security.md)を構成するできます。
 
 ## <a name="network-access"></a>ネットワーク アクセス
 

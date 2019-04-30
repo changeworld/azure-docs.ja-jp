@@ -304,7 +304,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 
 高速ネットワークが有効になっている仮想マシンにアタッチされたネットワーク インターフェイスで、TAP 構成を追加することができます。 ただし、現在 Azure の高速ネットワークではミラーリング トラフィックのオフロードがサポートされていないため、TAP 構成を追加することにより、仮想マシンでのパフォーマンスと待機時間が影響を受けます。
 
-## <a name="virtual-network-service-endpoints"></a>Virtual Network サービスのエンドポイント
+## <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
 ### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Azure サービスに対するサービス エンドポイントを設定するにはどのような操作手順が正しいですか。
 サービス エンドポイントを介して Azure サービス リソースをセキュリティ保護するには 2 つのステップがあります。

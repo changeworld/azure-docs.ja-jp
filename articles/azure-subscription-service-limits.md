@@ -344,7 +344,7 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL Database の制限
-SQL Database の制限については、[単一データベースの SQL Database のリソース制限](sql-database/sql-database-vcore-resource-limits-single-databases.md)、[エラスティック プールとプールされているデータベースの SQL Database のリソース制限](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)、および[マネージド インスタンスに対する SQL Database のリソース制限](sql-database/sql-database-managed-instance-resource-limits.md)に関する記事をご覧ください。
+SQL Database の制限については、[単一データベースの SQL Database のリソース制限](sql-database/sql-database-vcore-resource-limits-single-databases.md)、[エラスティック プールとプールされたデータベースの SQL Database のリソース制限](sql-database/sql-database-vcore-resource-limits-elastic-pools.md)、および[マネージド インスタンスに対する SQL Database のリソース制限](sql-database/sql-database-managed-instance-resource-limits.md)に関する記事をご覧ください。
 
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse の制限
 SQL Data Warehouse の制限については、[SQL Data Warehouse のリソース制限](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事をご覧ください。

@@ -175,7 +175,7 @@ Azure Virtual Machines へのアクセスには、[リモート デスクトッ�
 
 - **管理の手間がかからないシンプルな設定**:ご利用の仮想ネットワークで予約済みのパブリック IP アドレスを使用することなく、IP ファイアウォールを経由して Azure リソースにアクセスできるようになりました。 サービス エンドポイントの設定に NAT やゲートウェイ用のデバイスは必要ありません。 サービス エンドポイントは、サブネット上での単純なクリック操作で構成されます。 エンドポイントを維持するための追加のオーバーヘッドはありません。
 
-サービス エンドポイントと、それらのサービス エンドポイントを利用できる Azure サービスとリージョンの詳細については、「[Virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md)」 (仮想ネットワークのサービス エンドポイント) を参照してください。
+サービス エンドポイントと、それらのサービス エンドポイントを利用できる Azure サービスとリージョンの詳細については、「[Virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md)」 (仮想ネットワーク サービス エンドポイント) を参照してください。
 
 ## <a name="next-step"></a>次のステップ
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。

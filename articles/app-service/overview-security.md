@@ -87,7 +87,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 アプリが [SQL Database](https://azure.microsoft.com/services/sql-database/) や [Azure Storage](/azure/storage/) などの Azure リソースに接続しても、接続は Azure 内にとどまり、ネットワーク境界を越えません。 ただし、接続は Azure の共有ネットワークを経由するので、接続は常に暗号化してください。 
 
-アプリが [App Service 環境](environment/intro.md)でホストされている場合、[Virtual Network サービス エンドポイントを使用して、サポートされている Azure サービスに接続する](../virtual-network/virtual-network-service-endpoints-overview.md)必要があります。
+アプリが [App Service 環境](environment/intro.md)でホストされている場合、[仮想ネットワーク サービス エンドポイントを使用して、サポートされている Azure サービスに接続する](../virtual-network/virtual-network-service-endpoints-overview.md)必要があります。
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Azure Virtual Network 内のリソース
 

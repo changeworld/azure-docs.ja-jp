@@ -89,7 +89,7 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
 
 - **スケールアップ/スケールダウン**
 
-  ハイパースケールでは、CPU やメモリなどリソースの観点で主要なコンピューティングの規模をスケールアップしてから、一定時間でスケールダウンできます。 ストレージは共有されるため、スケールアップとスケールダウンはデータ操作の規模ではありません。  
+  ハイパースケールでは、CPU やメモリなどリソースの観点で主要なコンピューティング サイズをスケールアップしてから、一定時間でスケールダウンできます。 ストレージは共有されるため、スケールアップとスケールダウンはデータ操作の規模ではありません。  
 - **スケールイン/スケールアウト**
 
   ハイパースケールでは、読み取り要求を処理するために使用できる 1 つ以上の追加計算ノードをプロビジョニングする機能も提供されます。 つまり、これらの追加計算ノードを読み取り専用ノードとして使用し、主なコンピューティングから読み取りワークロードをオフロードできます。 読み取り専用だけではなく、これらのノードは、プライマリからフェールオーバーする際のホット スタンバイとしても利用できます。
@@ -243,7 +243,7 @@ Azure Storage からデータを読み取り、ハイパースケール デー�
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>SQL Database ハイパースケールへの移行がサポートされる最も古い SQL Server バージョンとは
 
-SQL Server 2005。 詳しくは、「[単一データベースまたはプール データベースに移行する](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)」をご覧ください。 互換性の問題について詳しくは、「[データベース移行に関する互換性の問題の解決](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)」をご覧ください。
+SQL Server 2005。 詳しくは、「[単一データベースまたはプールされたデータベースに移行する](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)」をご覧ください。 互換性の問題について詳しくは、「[データベース移行に関する互換性の問題の解決](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)」をご覧ください。
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>SQL Database ハイパースケールで他のデータ ソース (Aurora、MySQL、Oracle、DB2、その他のデータベース プラットフォーム) からの移行がサポートされるか
 

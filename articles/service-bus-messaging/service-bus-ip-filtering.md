@@ -62,7 +62,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > [!IMPORTANT]
 > ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
 
-次の Resource Manager テンプレートでは、既存の Service Bus 名前空間に仮想ネットワーク ルールを追加できます。
+次の Resource Manager テンプレートでは、既存の Service Bus 名前空間に仮想ネットワーク規則を追加できます。
 
 テンプレート パラメーター:
 

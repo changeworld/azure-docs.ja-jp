@@ -149,7 +149,7 @@ Microsoft [Azure Storage](https://azure.microsoft.com/services/storage/) は、�
 
 Azure Storage に書き込まれるすべてのデータは、[Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) により、現在利用できるブロック暗号化の中でも最強レベルの 256 ビット AES 暗号化によって暗号化されています。 SSE には Microsoft が管理する暗号化キーのほか、[ユーザー独自の暗号化キー](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)を使うことができます。
 
-ストレージ アカウントは、[仮想ネットワーク ルール](https://docs.microsoft.com/azure/storage/common/storage-network-security)を使用し、[Virtual Network サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を介してセキュリティで保護することができます。
+ストレージ アカウントは、[仮想ネットワーク規則](https://docs.microsoft.com/azure/storage/common/storage-network-security)を使用し、[仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を介してセキュリティで保護することができます。
 
 Azure Storage のセキュリティ保護の詳細については、[セキュリティ ガイド](https://docs.microsoft.com/azure/storage/common/storage-security-guide)に関するページを参照してください。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL の単一およびプール データベース用の VNet エンドポイントおよび規則のための PowerShell | Microsoft Docs
+title: Azure SQL の単一およびプールされたデータベース用の VNet エンドポイントおよび規則のための PowerShell | Microsoft Docs
 description: PowerShell スクリプトを提供して、Azure SQL Database と SQL Data Warehouse.用 の Vertual Service エンドポイントを作成して管理します。
 services: sql-database
 ms.service: sql-database
@@ -44,7 +44,7 @@ ms.locfileid: "57855573"
 
 この記事では、**New-AzSqlServerVirtualNetworkRule** コマンドレットについて詳しく説明します。これは Azure SQL Database サーバーのアクセス制御リスト (ACL) にサブネット エンドポイントを追加し、それによって規則を作成します。
 
-次の一覧には、**New-AzSqlServerVirtualNetworkRule** の呼び出しを準備する際に実行する必要のあるその他の "*主な*" コマンドレットのシーケンスが示されています。 この記事の [スクリプト 3 "仮想ネットワーク 規則"](#a-script-30) で、これらの呼び出しが発生します。
+次の一覧には、**New-AzSqlServerVirtualNetworkRule** の呼び出しを準備する際に実行する必要のあるその他の "*主な*" コマンドレットのシーケンスが示されています。 この記事の [スクリプト 3 "仮想ネットワーク規則"](#a-script-30) で、これらの呼び出しが発生します。
 
 1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):サブネット オブジェクトを作成します。
 2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):仮想ネットワークを作成して、サブネットを付与します。

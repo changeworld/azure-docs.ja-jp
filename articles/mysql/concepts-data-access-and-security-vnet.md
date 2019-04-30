@@ -14,11 +14,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/22/2019
 ms.locfileid: "60005853"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の Virtual Network のサービス エンドポイントと規則を使用する
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の仮想ネットワーク サービス エンドポイントと規則を使用する
 
 *仮想ネットワーク規則*は、Azure Database for MySQL サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure Database for MySQL サーバーへの通信を安全に許可するための最善の選択になる理由を説明します。
 
-仮想ネットワーク規則を作成するには、まず、[仮想ネットワーク][vm-virtual-network-overview] (VNet) と参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。 次の図は、Virtual Network のサービス エンドポイントが Azure Database for MySQL でどのように動作するかを示しています。
+仮想ネットワーク規則を作成するには、まず、[仮想ネットワーク][vm-virtual-network-overview] (VNet) と参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。 次の図は、仮想ネットワーク サービス エンドポイントが Azure Database for MySQL でどのように動作するかを示しています。
 
 ![VNet サービス エンドポイントの動作例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "60005853"
 
 **Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for MySQL サービスと PostgreSQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL のすべてのサーバーに対してサービス エンドポイント トラフィックがサブネット上に構成されることに注意することが重要です。 
 
-**仮想ネットワーク ルール:** お使いの Azure Database for MySQL サーバーの仮想ネットワーク ルールは、Azure Database for MySQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MySQL サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
+**仮想ネットワーク ルール:** お使いの Azure Database for MySQL サーバーの仮想ネットワーク規則は、Azure Database for MySQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for MySQL サーバーの ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、お使いの Azure Database for MySQL サーバーに指示します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "60005853"
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
-操作を実行するまで、サブネット上の VM は Azure Database for MySQL と通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク ルールの作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
+操作を実行するまで、サブネット上の VM は Azure Database for MySQL と通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク規則の作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
@@ -66,7 +66,7 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 
 ### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. サービス エンドポイントを定義せずにサブネット上に Azure Database for MySQL を保持することは、まだできません
 
-**Microsoft.Sql** サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワーク内のすべてのノードはお使いの Azure Database for MySQL と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は Azure Database for MySQL と通信できます。
+**Microsoft.Sql** サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワーク内のすべてのノードはお使いの Azure Database for MySQL と通信できます。 この場合、仮想ネットワーク規則や IP ルールがなくても、VM は Azure Database for MySQL と通信できます。
 
 しかし、2018 年 8 月時点ではまだ、Azure Database for MySQL サービスは、サブネットに直接割り当て可能なサービスの範囲には含まれていません。
 
@@ -78,7 +78,7 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 
 ### <a name="only-one-geographic-region"></a>geography 型の 1 つのリージョンのみ
 
-各 Virtual Network サービス エンドポイントは、1 つの Azure リージョンだけに適用されます。 エンドポイントが他のリージョンを有効にして、サブネットからの通信を許可することはありません。
+各仮想ネットワーク サービス エンドポイントは、1 つの Azure リージョンだけに適用されます。 エンドポイントが他のリージョンを有効にして、サブネットからの通信を許可することはありません。
 
 どの仮想ネットワーク規則も、その基本となるエンドポイントが適用先のリージョンに制限されます。
 
@@ -88,7 +88,7 @@ Azure Database for MySQL のファイアウォールでは、Azure Database for 
 
 ### <a name="security-administration-roles"></a>セキュリティ管理ロール
 
-Virtual Network サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
+仮想ネットワーク サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
 - **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
 - **データベース管理者:**&nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for MySQL サーバーに追加します。

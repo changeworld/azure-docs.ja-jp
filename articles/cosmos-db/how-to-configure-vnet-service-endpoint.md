@@ -50,7 +50,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
    ![正常に構成された仮想ネットワークとサブネット](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
 > [!NOTE]
-> 仮想ネットワークのサービス エンドポイントを有効にするには、次のサブスクリプションのアクセス許可が必要です。
+> 仮想ネットワーク サービス エンドポイントを有効にするには、次のサブスクリプションのアクセス許可が必要です。
 >   * 仮想ネットワークのサブスクリプション:ネットワーク共同作成者
 >   * Azure Cosmos DB アカウントのサブスクリプション:DocumentDB アカウント共同作成者
 >   * 仮想ネットワークと Azure Cosmos DB アカウントが異なるサブスクリプションにある場合は、仮想ネットワークを持つサブスクリプションにも `Microsoft.DocumentDB` リソース プロバイダーが登録されていることを確認します。 リソース プロバイダーを登録するには、「[Azure リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。 

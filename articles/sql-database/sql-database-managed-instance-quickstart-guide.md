@@ -31,7 +31,7 @@ ms.locfileid: "59360169"
 
 最初の手順として、初めてのマネージド インスタンスをそれが配置されるネットワーク環境で作成し、マネージド インスタンスに対するクエリを実行するコンピューターまたは仮想マシンから接続できるようにする必要があります。 次のガイドを使用できます。
 
-- [Azure portal を使用してマネージド インスタンスを作成します](sql-database-managed-instance-get-started.md)。 Azure portal で、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ量) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 現在マネージド インスタンスを作成できる[タイプのサブスクリプション](sql-database-managed-instance-resource-limits.md#supported-subscription-types)を持っていることの確認のみが必要です。 独自のネットワークがあってそれを使用したい場合、またはネットワークをカスタマイズしたい場合は、「[Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する](sql-database-managed-instance-configure-vnet-subnet.md)」または「[Azure SQL Database Managed Instance の仮想ネットワークを作成する](sql-database-managed-instance-create-vnet-subnet.md)」をご覧ください。
+- [Azure portal を使用してマネージド インスタンスを作成します](sql-database-managed-instance-get-started.md)。 Azure portal で、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ容量) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 現在マネージド インスタンスを作成できる[タイプのサブスクリプション](sql-database-managed-instance-resource-limits.md#supported-subscription-types)を持っていることの確認のみが必要です。 独自のネットワークがあってそれを使用したい場合、またはネットワークをカスタマイズしたい場合は、「[Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する](sql-database-managed-instance-configure-vnet-subnet.md)」または「[Azure SQL Database Managed Instance の仮想ネットワークを作成する](sql-database-managed-instance-create-vnet-subnet.md)」をご覧ください。
 - マネージド インスタンスは、パブリック エンドポイントを持たない独自の VNet に作成されます。 クライアント アプリケーションのアクセスのために、以下のクイック スタートのいずれかを使用して、**同じ VNet (異なるサブネット) 内に VM を作成する**か、**クライアント コンピューターから VNet へのポイント対サイト VPN 接続を作成する**ことができます。
 
   - SQL Server Management Studio などのクライアント アプリケーションの接続用に、[マネージド インスタンス VNet に Azure 仮想マシン](sql-database-managed-instance-configure-vm.md)を作成します。

@@ -46,7 +46,7 @@ ms.locfileid: "55990072"
 ||コンピューティング サイズ|サービス レベル内での単一データベース、エラスティック プール、またはマネージド インスタンスに対するコンピューティング リソースの量|
 ||ストレージ容量|単一データベース、エラスティック プール、またはマネージド インスタンスに使用可能なストレージの量|
 ||コンピューティング世代|サービス レベル内でのプロセッサの世代|
-|データベース サーバー IP ファイアウォール規則|IP ファイアウォールの規則|[IP ファイアウォールの規則](sql-database-firewall-configure.md)|
+|データベース サーバー IP ファイアウォール規則|IP ファイアウォール規則|[IP ファイアウォールの規則](sql-database-firewall-configure.md)|
 ||サーバーレベルの IP ファイアウォール規則|[サーバーレベルの IP ファイアウォール規則](sql-database-firewall-configure.md#overview)|
 || データベース レベルの IP ファイアウォール規則|[データベース レベルの IP ファイアウォール規則](sql-database-firewall-configure.md#overview)|
 ||仮想ネットワーク エンドポイントと規則|[仮想ネットワーク エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)|

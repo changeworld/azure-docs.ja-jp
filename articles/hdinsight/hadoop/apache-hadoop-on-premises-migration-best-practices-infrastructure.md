@@ -171,13 +171,13 @@ HDInsight は、新規または既存の Azure Virtual Network に追加でき�
 - [Azure 仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
 - [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight-extend-hadoop-virtual-network.md)
 
-## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure Virtual Network サービス エンドポイントを使用して Azure サービスに安全に接続する
+## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure 仮想ネットワーク サービス エンドポイントを使用して Azure サービスに安全に接続する
 
 HDInsight では、Azure Blob Storage、Azure Data Lake Storage Gen2、Cosmos DB、および SQL データベースに安全に接続できる[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)をサポートします。 Azure HDInsight のサービス エンドポイントを有効にすると、トラフィックは Azure データ センター内からセキュリティで保護されたルートを経由します。 ネットワーク レイヤーでセキュリティをこのレベルに高めることにより、ビッグ データのストレージ アカウントを指定された仮想ネットワーク (Vnet) にロックし、HDInsight クラスターをシームレスに使用してデータにアクセスして処理することができます。
 
 詳細については、次の記事を参照してください。
 
-- [Virtual Network サービスのエンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)
+- [仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [サービス エンドポイントによる HDInsight のセキュリティの強化](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続

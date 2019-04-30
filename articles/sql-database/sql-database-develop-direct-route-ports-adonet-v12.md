@@ -37,7 +37,7 @@ Azure SQL Database への接続では、まずクライアント プログラム
 
 ### <a name="inside-client-runs-on-azure"></a>*内部:* クライアントを Azure 上で実行
 
-Azure クラウド境界内でクライアントを実行している場合、クライアントは、いわゆる *ダイレクト ルート* を使用して SQL Database とやり取りします。 接続が確立した後に、クライアントとデータベース間のやり取りに Azure SQL Database Gateway が関与することはありません。
+Azure クラウド境界内でクライアントを実行している場合、クライアントは、いわゆる *ダイレクト ルート* を使用して SQL Database のサーバーとやり取りします。 接続が確立した後に、クライアントとデータベース間のやり取りに Azure SQL Database Gateway が関与することはありません。
 
 順序は次のとおりです。
 

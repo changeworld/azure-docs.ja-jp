@@ -24,7 +24,7 @@ ms.locfileid: "57996418"
 
 この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプールされたデータベースに移行するための主な方法について説明します。 マネージド インスタンスへの移行については、[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](sql-database-managed-instance-migrate.md)に関するページをご覧ください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
-## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>単一データベースまたはプール データベースに移行する
+## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>単一データベースまたはプールされたデータベースに移行する
 
 SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプールされたデータベースに移行するには、主に 2 つの方法があります。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
 
@@ -35,9 +35,9 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1:移行中にダウンタイムを伴う移行
 
- ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](../dms/tutorial-sql-server-to-azure-sql.md)を参照してください。
+ ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプールされたデータベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](../dms/tutorial-sql-server-to-azure-sql.md)を参照してください。
 
-次の一覧は、単一データベースまたはプール データベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 Managed Instance への移行については、[マネージド インスタンスへの移行に関するページ](sql-database-managed-instance-migrate.md)を参照してください。
+次の一覧は、単一データベースまたはプールされたデータベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 Managed Instance への移行については、[マネージド インスタンスへの移行に関するページ](sql-database-managed-instance-migrate.md)を参照してください。
 
   ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 

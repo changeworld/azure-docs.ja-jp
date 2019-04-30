@@ -55,7 +55,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](../sql-database/sql-database-firewall-configure.md)に関するページを参照してください。
 
 > [!Note]
-> IP 規則に加えて、ファイアウォールは仮想ネットワーク規則を管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
+> IP 規則に加えて、ファイアウォールは仮想ネットワーク規則を管理します。 仮想ネットワーク規則は、仮想ネットワーク サービス エンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
 
 ## <a name="enable-database-authentication"></a>データベース認証を有効にする
 SQL Database は SQL サーバー認証と Azure AD Authentication の 2 種類の認証をサポートしています。

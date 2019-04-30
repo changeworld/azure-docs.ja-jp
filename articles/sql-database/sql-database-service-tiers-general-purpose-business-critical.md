@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database - 汎用と Business Critical | Microsoft Docs
-description: この記事では、仮想コアの購入レベルにおける汎用サービス レベルと Business Critical サービス レベルについて説明します。
+description: この記事では、仮想コア購入モデルにおける汎用サービス レベルと Business Critical サービス レベルについて説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service

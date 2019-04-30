@@ -115,7 +115,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 
 VNet 内の Azure Storage に対する[サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)を有効にします。 このエンドポイントでは、Azure Storage サービスへの最適なルートがトラフィックに提供されます。 仮想ネットワークとサブネットの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
 
-各ストレージ アカウントでは最大 100 個の仮想ネットワーク ルールがサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
+各ストレージ アカウントでは最大 100 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
 
@@ -128,13 +128,13 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-ストレージ アカウントに仮想ネットワーク ルールを適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は "*サブネットにサービスを参加させる*" であり、"*ストレージ アカウント共同作成者*" 組み込みロールに含まれます。 カスタム ロール定義に追加することもできます。
+ストレージ アカウントに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は "*サブネットにサービスを参加させる*" であり、"*ストレージ アカウント共同作成者*" 組み込みロールに含まれます。 カスタム ロール定義に追加することもできます。
 
 ストレージ アカウントとアクセスが許可されている仮想ネットワークで、サブスクリプションが異なる可能性がありますが、これらのサブスクリプションは、同じ Azure AD テナントの一部である必要があります。
 
-### <a name="managing-virtual-network-rules"></a>仮想ネットワーク ルールを管理する
+### <a name="managing-virtual-network-rules"></a>仮想ネットワーク規則の管理
 
-ストレージ アカウントの仮想ネットワーク ルールは、Azure portal、PowerShell、または CLIv2 で管理できます。
+ストレージ アカウントの仮想ネットワーク規則は、Azure portal、PowerShell、または CLIv2 で管理できます。
 
 #### <a name="azure-portal"></a>Azure ポータル
 
@@ -157,7 +157,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
 1. [Azure PowerShell](/powershell/azure/install-Az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)します。
 
-1. 仮想ネットワーク ルールを一覧表示します。
+1. 仮想ネットワーク規則を一覧表示します。
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
@@ -190,7 +190,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
 1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)します。
 
-1. 仮想ネットワーク ルールを一覧表示します。
+1. 仮想ネットワーク規則を一覧表示します。
 
     ```azurecli
     az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -231,11 +231,11 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 IP ネットワーク ルールは、**パブリック インターネット**の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、_10.*_、_172.16.*_ - _172.31.*_、_192.168.*_ で始まるアドレスが含まれます。
 
    > [!NOTE]
-   > IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク ルール](#grant-access-from-a-virtual-network)を使用します。
+   > IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。
 
 現時点でサポートされているのは、IPv4 アドレスのみです。
 
-各ストレージ アカウントでは最大 100 個の IP ネットワーク ルールがサポートされ、それを[仮想ネットワーク ルール](#grant-access-from-a-virtual-network)と組み合わせることができます。
+各ストレージ アカウントでは最大 100 個の IP ネットワーク ルールがサポートされ、それを[仮想ネットワーク規則](#grant-access-from-a-virtual-network)と組み合わせることができます。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>オンプレミスのネットワークからのアクセスの構成
 

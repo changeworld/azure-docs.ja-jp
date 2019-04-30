@@ -155,7 +155,7 @@ Azure の Traffic Manager | はい
 予約済み IP アドレス | はい
 IPv4 | はい
 送信元 IP アドレスを保持する | はい
-Azure Virtual Network サービス エンドポイント<br/> | はい
+Azure 仮想ネットワーク サービス エンドポイント<br/> | はい
 高速ネットワーク | いいえ 
 
 ## <a name="storage"></a>Storage

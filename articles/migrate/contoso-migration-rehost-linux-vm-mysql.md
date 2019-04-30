@@ -228,7 +228,7 @@ Contoso 管理者は、MySQL データベース インスタンスを、プラ�
 
     ![MySQL](./media/contoso-migration-rehost-linux-vm-mysql/mysql-3.png)
 
-5. サブネットの追加後に、運用ネットワーク内のデータベース サブネットからのアクセスを許可する仮想ネットワーク ルールを作成します。
+5. サブネットの追加後に、運用ネットワーク内のデータベース サブネットからのアクセスを許可する仮想ネットワーク規則を作成します。
 
     ![MySQL](./media/contoso-migration-rehost-linux-vm-mysql/mysql-4.png)
 

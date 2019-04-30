@@ -89,7 +89,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 > Key Vault アクセス ポリシーはコンテナー レベルで適用されます。 キーを作成および削除するためのアクセス許可を付与されたユーザーは、そのキー コンテナー内のすべてのキーに対してそれらの操作を実行できます。
 >
 
-データ プレーンのアクセスは、[Azure Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)を使用して制限することができます。 追加のセキュリティ層に対して[ファイアウォールと仮想ネットワークの規則](key-vault-network-security.md)を構成するできます。
+データ プレーンのアクセスは、[Azure Key Vault の仮想ネットワーク サービス エンドポイント](key-vault-overview-vnet-service-endpoints.md)を使用して制限することができます。 追加のセキュリティ層に対して[ファイアウォールと仮想ネットワーク規則](key-vault-network-security.md)を構成するできます。
 
 ## <a name="example"></a>例
 

@@ -61,4 +61,4 @@ Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-netwo
 
 ## <a name="service-endpoints-for-azure-services"></a>Azure サービスのサービス エンドポイント
 
-一部の Azure サービスは仮想ネットワークでデプロイできません。 必要であれば、仮想ネットワークのサービス エンドポイントを有効にすることで、一部のサービス リソースへのアクセスを特定の仮想ネットワーク サブネットのみに制限できます。  [仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)と、エンドポイントを有効にできるサービスの詳細について確認してください。
+一部の Azure サービスは仮想ネットワークでデプロイできません。 必要であれば、仮想ネットワーク サービス エンドポイントを有効にすることで、一部のサービス リソースへのアクセスを特定の仮想ネットワーク サブネットのみに制限できます。  [仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)と、エンドポイントを有効にできるサービスの詳細について確認してください。
