@@ -1,7 +1,6 @@
 ---
 title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのインフラストラクチャのベスト プラクティスについて説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274691"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687778"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -43,7 +42,7 @@ HDInsight の各バージョンは、あるバージョンの Hortonworks Data P
 
 オンプレミス クラスター上で使用していたが、HDInsight クラスターの一部ではないアプリケーションまたはコンポーネントは、エッジ ノード上または HDInsight クラスターと同じ VNet 内の VM 上に追加できます。 Azure HDInsight では利用できないサード パーティ製 Hadoop アプリケーションは、HDInsight クラスターの「アプリケーション」オプションを使用してインストールできます。 カスタム Hadoop アプリケーションは、「スクリプト アクション」を使用して HDInsight クラスターにインストールできます。 次の表に、いくつかの一般的なアプリケーションと、それらの HDInsight との統合オプションを示します。
 
-|**アプリケーション**|**統合**
+|**Application**|**統合**
 |---|---|
 |エアフロー|IaaS または HDInsight のエッジ ノード
 |Alluxio|IaaS  

@@ -9,19 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein
+ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: ec9bd3ee106571484c513c2d005a374a90c1d17e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/26/2019
+ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359723"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574195"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
 
 計算リソースを前払いすることで、従量課金制より Azure SQL Database に関するコストを節約できます。 Azure SQL Database の予約容量を使用すると、SQL Database を 1 年間または 3 年間分を前払いすることで計算コストを大幅に引き下げることができます。 SQL Database の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。
+
 
 特定の SQL Database インスタンス (単一データベース、エラスティック プール、またはマネージド インスタンス) に予約を割り当てる必要はありません。 既に実行している SQL Database インスタンスまたは新しくデプロイされた SQL Database インスタンスには、この特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する SQL Database のコンピューティング料金は従量課金制で課金されなくなります。 予約には、SQL データベース インスタンスに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が SQL データベースに適用されます。 予約は自動更新されません。 価格の詳細については、[SQL Database の予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
 
@@ -56,8 +57,8 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
     |リージョン      |SQL Database 予約容量の予約で充当されない Azure リージョン。|
     |デプロイの種類|予約を購入する SQL リソースの種類。|
     |パフォーマンス レベル|SQL Database インスタンスのサービス レベル。
-    |用語        |1 年間または 3 年間。|
-    |数量    |SQL Database の予約容量の予約内で購入されるインスタンス数。 数量は、課金の割引を受けられる実行中の SQL Database インスタンス数です。 たとえば、米国東部で SQL Database インスタンスを 10 個実行している場合、実行中のすべてのマシンのメリットを最大限に利用するには、数量を 10 と指定します。 |
+    |期間        |1 年間または 3 年間。|
+    |Quantity    |SQL Database の予約容量の予約内で購入されるインスタンス数。 数量は、課金の割引を受けられる実行中の SQL Database インスタンス数です。 たとえば、米国東部で SQL Database インスタンスを 10 個実行している場合、実行中のすべてのマシンのメリットを最大限に利用するには、数量を 10 と指定します。 |
     |||
 
 5. **[コスト]** セクションで、SQL Database の予約容量の予約コストを確認します。
@@ -85,7 +86,7 @@ SQL Database の予約容量の予約を管理する方法については、[SQL
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](../billing/billing-save-compute-costs-reservations.md)
-- [Azure の予約を管理する](../billing/billing-manage-reserved-vm-instance.md)
+- [Azure の予約の管理](../billing/billing-manage-reserved-vm-instance.md)
 - [Azure の予約割引を理解する](../billing/billing-understand-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)

@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: ec0e8c11a1d60d4454d962b8ec4c363e35d1182a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1f798917548f4a744518b12ba1e2be2095bdf1c2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60811646"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics とは
 

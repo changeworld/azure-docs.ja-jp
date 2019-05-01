@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/29/2018
 ms.author: sharadag
-ms.openlocfilehash: 346fa5721df6c9ce0cf355adea21f59c93a394a9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2d4c93b7ef707f5b09bc2f5f93d56c50c1bb3458
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736328"
 ---
 # <a name="what-is-azure-front-door-service"></a>Azure Front Door Service とは
 Azure Front Door Service では、高可用性のために最大限のパフォーマンスと即時グローバル フェイルオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、および監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
@@ -49,8 +49,8 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 ## <a name="session-affinity"></a>セッション アフィニティ
 Cookie ベースのセッション アフィニティ機能は、同じアプリケーション バックエンド上にユーザー セッションを保持する場合に便利です。 Front Door で管理される Cookie を使用することで、ユーザー セッションからの後続のトラフィックは、処理のために同じアプリケーション バックエンドに送信されます。 この機能は、ユーザー セッションのためにセッションの状態をバックエンド上でローカルに保存する場合に重要です。
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer (SSL) の終了
-Front Door は、エッジでの SSL 終了をサポートています。つまり、個々のユーザーは、アプリケーション バックエンドとの長距離接続を介して確立するのではなく、Front Door 環境との SSL 接続を設定することができます。 さらに、Front Door は、Front Door 環境とバックエンドの間の HTTP 接続と HTTPS 接続の両方をサポートしています。 そのため、エンド ツー エンドの SSL 暗号化を設定することもできます。 たとえば、アプリケーションのワークロードのための Front Door が、ウォーム接続の再利用が原因で、アクティブなサービスに対する要求を 1 分間で 5000 以上受信する場合は、アプリケーション バックエンドとの接続は約 500 しか確立されないため、バックエンドからの大きな負荷が削減されます。
+## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer (SSL) ターミネーション
+Front Door は、エッジでの SSL 終了をサポートています。つまり、個々のユーザーは、アプリケーション バックエンドとの長距離接続を介して確立するのではなく、Front Door 環境との SSL 接続を設定することができます。 さらに、Front Door は、Front Door 環境とバックエンドの間の HTTP 接続と HTTPS 接続の両方をサポートしています。 そのため、エンド ツー エンドの SSL 暗号化を設定することもできますも。 たとえば、アプリケーションのワークロードのための Front Door が、ウォーム接続の再利用が原因で、アクティブなサービスに対する要求を 1 分間で 5000 以上受信する場合は、アプリケーション バックエンドとの接続は約 500 しか確立されないため、バックエンドからの大きな負荷が削減されます。
 
 ## <a name="custom-domains-and-certificate-management"></a>カスタム ドメインと証明書の管理
 Front Door を使用してコンテンツを配信するときに独自のドメイン名を Front Door URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
@@ -75,5 +75,5 @@ HTTP/2 プロトコルによって、長時間実行されている TCP 接続�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Front Door の作成](quickstart-create-front-door.md)方法について説明します。
-- [Front Door の機能](front-door-routing-architecture.md)について説明します。
+- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

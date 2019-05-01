@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技�
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009839"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683884"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -74,9 +74,9 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
-| 属性 | 必須 | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| 属性 | 必須 | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。 |  
 

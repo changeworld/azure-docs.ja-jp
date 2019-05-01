@@ -3,19 +3,19 @@ title: トークンの構成 - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でトークンの有効期間と互換性の設定を構成する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2455b8c12ed042af3a06a158a4e5c60a0aee748b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 69a6284ea7b8905bb5efdb1f4c9f26027bd6f9d9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686150"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689610"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 

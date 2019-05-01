@@ -1,7 +1,6 @@
 ---
 title: HDInsight クラスターのログを管理する - Azure HDInsight
 description: HDInsight アクティビティ ログ ファイルの種類、サイズ、およびリテンション期間ポリシーを決定します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7ff89e12a1011c0a16644324584eb1610302b1b3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: b42eb51b510423ffc0d15ee3a646bca3d4392f7f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544284"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686856"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 

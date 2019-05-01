@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 85d58538e15881308ee1f645f7ddd12ec27c94de
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bbf03a0d53769c93a8aab304d3128ae0cc875a8f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423414"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61365896"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Azure CLI でマネージド リソース グループ内のリソースを取得し、VM のサイズを変更します
 
@@ -37,7 +37,7 @@ ms.locfileid: "39423414"
 
 このスクリプトは次のコマンドを使用してマネージド アプリケーションをデプロイします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-list) | マネージド アプリケーションの一覧を表示します。 クエリの値を指定して結果にフォーカスします。 |
 | [az resource list](https://docs.microsoft.com/cli/azure/resource#az-resource-list) | リソースの一覧を表示します。 リソース グループとクエリの値を指定して結果にフォーカスします。 |

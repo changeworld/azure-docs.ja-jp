@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009712"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570475"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -183,6 +183,8 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 6. スクリプトが終了すると、PowerShell によって成功メッセージが表示されます。  
 
 負荷分散用に設定するすべての追加 NPS サーバーで、この手順を繰り返します。
+
+以前のコンピューター証明書が期限切れになり、新しい証明書が生成された場合は、期限切れの証明書をすべて削除する必要があります。 期限切れの証明書があると、NPS 拡張機能の起動で問題が生じる可能性があります。
 
 > [!NOTE]
 > PowerShell スクリプトを使用して証明書を生成するのではなく独自の証明書を使用する場合は、NPS 名前付け規則に合わせてください。 サブジェクト名は **CN=\<TenantID\>,OU=Microsoft NPS Extension** にする必要があります。 

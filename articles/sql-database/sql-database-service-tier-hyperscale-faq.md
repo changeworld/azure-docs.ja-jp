@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 679de1d5accbd0f4f955bf5af95bc8dcc97e3b78
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680905"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574278"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -132,7 +132,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>メモリ集中型ワークロードのために RAM を増やしてコンピューティングをプロビジョニングできるか
 
-いいえ。 RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 Gen4 ハードウェアでは、Gen5 ハードウェアと比較して多くの RAM が提供されます。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview)をご覧ください。
+いいえ。 RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 Gen4 ハードウェアでは、Gen5 ハードウェアと比較して多くの RAM が提供されます。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md)をご覧ください。
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>サイズが違う複数の計算ノードをプロビジョニングできるか
 

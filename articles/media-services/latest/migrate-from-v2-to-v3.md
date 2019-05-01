@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 70e28377b19b682f2191e0a8fb95792101fa8ec7
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 6ae094ddf1bfc55ce793995f60f1694be6eb19c1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045681"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686794"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -114,6 +114,10 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 
 > [!NOTE]
 > このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。
+
+## <a name="provide-feedback"></a>フィードバックの提供
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

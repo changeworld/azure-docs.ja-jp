@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの一般要求変換の例
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 831ecf2924ab6c321f69bb50c4a95a4156482585
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084897"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683954"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
 
@@ -58,10 +58,10 @@ salt と secret を使用して、提供されたプレーン テキストをハ
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | plaintext | 文字列 | 暗号化される入力要求。 |
-| InputClaim | salt | 文字列 | salt パラメーター。 `CreateRandomString` 要求変換を使用して、ランダムな値を作成できます。 |
-| InputParameter | randomizerSecret | 文字列 | 既存の Azure AD B2C **ポリシー キー**をポイントします。 新しく作成するには、次の手順に従います。Azure AD B2C テナントで、**[B2C Settings]\(B2C 設定\) > [Identity Experience Framework]** の順に選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを表示します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス B2C_1A_ が自動的に追加される場合があります）。 シークレットのボックスに、使用するシークレットを入力します (1234567890 など)。 [キー使用法] では、**[シークレット]** を選択します。 **作成**を選択します。 |
-| OutputClaim | hash | 文字列 | この要求変換が呼び出された後に生成される ClaimType。 `plaintext` inputClaim で構成されている要求。 |
+| InputClaim | plaintext | string | 暗号化される入力要求。 |
+| InputClaim | salt | string | salt パラメーター。 `CreateRandomString` 要求変換を使用して、ランダムな値を作成できます。 |
+| InputParameter | randomizerSecret | string | 既存の Azure AD B2C **ポリシー キー**をポイントします。 新しく作成するには、次の手順に従います。Azure AD B2C テナントで、**[B2C Settings]\(B2C 設定\) > [Identity Experience Framework]** の順に選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを表示します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス B2C_1A_ が自動的に追加される場合があります）。 シークレットのボックスに、使用するシークレットを入力します (1234567890 など)。 [キー使用法] では、**[シークレット]** を選択します。 **作成** を選択します。 |
+| OutputClaim | hash | string | この要求変換が呼び出された後に生成される ClaimType。 `plaintext` inputClaim で構成されている要求。 |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: e36e0813b7a50c659a2c3ae61350381e83a1823f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621619"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686194"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -23,13 +23,13 @@ ms.locfileid: "58621619"
 
 | エラーの詳細 | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |
-| **Error** </br> *無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。(ID: 34513)* | <ul><li> コンテナーの資格情報が有効ではありません (つまり、登録の時刻より 48 時間以上前にダウンロードされました)。<li>MARS エージェントが Windows の Temp ディレクトリにファイルをダウンロードできません。 <li>コンテナーの資格情報がネットワークの場所にあります。 <li>TLS 1.0 が無効です<li> 構成されたプロキシ サーバーが接続をブロックしています。 <br> |  <ul><li>新しいコンテナー資格情報をダウンロードします (**注**: 既に複数のコンテナー資格情報ファイルをダウンロードされている場合は、48 時間以内にダウンロードされた最新のファイルのみが有効になります)。 <li>**IE** > **[設定]** > **[インターネット オプション]** > **[セキュリティ]** > **[インターネット]** を起動します。 次に、**[レベルのカスタマイズ]** を選択し、ファイル ダウンロード セクションが表示されるまでスクロールします。 その後、**[有効化]** を選択します。<li>IE の[信頼済みサイト](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins)へのサイトの追加が必要な場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。 <li> 日付と時刻をコンピューターと一致させます。<li>ファイルのダウンロードが許可されていないことを示すエラーが発生する場合は、C:/Windows/Temp ディレクトリ内に多数のファイルが存在している可能性があります。<li>C:/Windows/Temp に移動し、拡張子が .tmp のファイルが 60,000 または 65,000 個より多くあるかどうかを確認します。 ある場合は、それらのファイルを削除します。<li>.NET Framework 4.6.2 がインストールされていることを確認します。 <li>PCI のコンプライアンスのために TLS 1.0 を無効にしてある場合は、こちらの[トラブルシューティング ページ](https://support.microsoft.com/help/4022913)をご覧ください。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、次のファイルをウイルス対策スキャンから除外します。 <ul><li>CBengine.exe<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET のバージョンに対して存在します。 影響を受けるサーバー上の .NET Framework の各バージョンに関連付けられている CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。<br><li>bin フォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** </br> *無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。(ID: 34513)* | <ul><li> コンテナーの資格情報が有効ではありません (つまり、登録の時刻より 48 時間以上前にダウンロードされました)。<li>MARS エージェントが Windows の Temp ディレクトリにファイルをダウンロードできません。 <li>コンテナーの資格情報がネットワークの場所にあります。 <li>TLS 1.0 が無効です<li> 構成されたプロキシ サーバーが接続をブロックしています。 <br> |  <ul><li>新しいコンテナー資格情報をダウンロードします (**注**: 既に複数のコンテナー資格情報ファイルをダウンロードされている場合は、48 時間以内にダウンロードされた最新のファイルのみが有効になります)。 <li>**IE** > **[設定]** > **[インターネット オプション]** > **[セキュリティ]** > **[インターネット]** を起動します。 次に、**[レベルのカスタマイズ]** を選択し、ファイル ダウンロード セクションが表示されるまでスクロールします。 その後、**[有効化]** を選択します。<li>IE の[信頼済みサイト](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access)へのサイトの追加が必要な場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。 <li> 日付と時刻をコンピューターと一致させます。<li>ファイルのダウンロードが許可されていないことを示すエラーが発生する場合は、C:/Windows/Temp ディレクトリ内に多数のファイルが存在している可能性があります。<li>C:/Windows/Temp に移動し、拡張子が .tmp のファイルが 60,000 または 65,000 個より多くあるかどうかを確認します。 ある場合は、それらのファイルを削除します。<li>.NET Framework 4.6.2 がインストールされていることを確認します。 <li>PCI のコンプライアンスのために TLS 1.0 を無効にしてある場合は、こちらの[トラブルシューティング ページ](https://support.microsoft.com/help/4022913)をご覧ください。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、次のファイルをウイルス対策スキャンから除外します。 <ul><li>CBengine.exe<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET のバージョンに対して存在します。 影響を受けるサーバー上の .NET Framework の各バージョンに関連付けられている CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。<br><li>bin フォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 ## <a name="unable-to-download-vault-credential-file"></a>コンテナーの資格情報ファイルをダウンロードできない
 
 | エラーの詳細 | 推奨アクション |
 | ---     | ---    |
-|コンテナー資格情報ファイルをダウンロードできませんでした。 (ID: 403) | <ul><li> 別のブラウザーを使用してコンテナー資格情報のダウンロードを試みるか、次の手順を実行します。 <ul><li> IE を起動して、F12 キーを押します。 </li><li> **[ネットワーク]** タブに移動して、IE のキャッシュと Cookie をクリアします </li> <li> ページを更新します<br>(または)</li></ul> <li> サブスクリプションが無効/期限切れかどうかを確認します<br>(または)</li> <li> 何らかのファイアウォール規則によってコンテナー資格情報ファイルのダウンロードがブロックされているかどうかを確認します <br>(または)</li> <li> コンテナーでの制限に達していないことを確認します (コンテナーあたり 50 マシン)<br>(または)</li>  <li> コンテナー資格情報をダウンロードしてサーバーをコンテナーに登録するために必要な Azure Backup のアクセス許可をユーザーが持っていることを確認します ([記事](backup-rbac-rs-vault.md)を参照)</li></ul> | 
+|コンテナー資格情報ファイルをダウンロードできませんでした。 (ID: 403) | <ul><li> 別のブラウザーを使用してコンテナー資格情報のダウンロードを試みるか、次の手順を実行します。 <ul><li> IE を起動して、F12 キーを押します。 </li><li> **[ネットワーク]** タブに移動して、IE のキャッシュと Cookie をクリアします </li> <li> ページを更新します<br>(または)</li></ul> <li> サブスクリプションが無効/期限切れかどうかを確認します<br>(または)</li> <li> 何らかのファイアウォール規則によってコンテナー資格情報ファイルのダウンロードがブロックされているかどうかを確認します <br>(または)</li> <li> コンテナーでの制限に達していないことを確認します (コンテナーあたり 50 マシン)<br>(または)</li>  <li> コンテナー資格情報をダウンロードしてサーバーをコンテナーに登録するために必要な Azure Backup のアクセス許可をユーザーが持っていることを確認します ([記事](backup-rbac-rs-vault.md)を参照)</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした
 

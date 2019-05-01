@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 62c736e79b1a3c2b68eaddd5beab7085cd78b3f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: acf7d15f0c96ec07b4ba1200827b61adaebc3167
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390088"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>PowerShell を使用して、Azure SQL Database のプールされたデータベースに対してアクティブ geo レプリケーションを構成する
 

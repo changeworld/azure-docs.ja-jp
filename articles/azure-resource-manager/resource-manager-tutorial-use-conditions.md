@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 023be5d0a5320163b3eabfe80f35894763ab89fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ad7c87161c550c4728978e9c975252cab34f76ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60389801"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 

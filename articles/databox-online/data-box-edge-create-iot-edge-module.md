@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401725"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64680891"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
 
@@ -36,7 +36,7 @@ Data Box Edge デバイスでは、IoT Edge モジュールを展開して実行
 2. ファイル イベント ジェネレーターは、ローカル共有に書き込まれる各ファイルに対して、ファイル イベントを作成します。 ファイル イベントは、ファイルが変更されたときも生成されます。 その後ファイル イベントは (IoT Edge ランタイムの) IoT Edge Hub に送信されます。
 3. IoT Edge のカスタム モジュールは、ファイル イベントを処理して、ファイルへの相対パスも含むファイル イベント オブジェクトを作成します。 モジュールは、相対ファイル パスを使用して絶対パスを生成し、ファイルをローカル共有からクラウド共有にコピーします。 その後、モジュールはファイルをローカル共有から削除します。
 
-![Data Box Edge での Azure IoT Edge モジュールの動作のしくみ](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Data Box Edge での Azure IoT Edge モジュールの動作のしくみ](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 ファイルがクラウド共有に移動すると、ユーザーの Azure Storage アカウントに自動的にアップロードされます。
 
@@ -75,7 +75,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
       ![コンテナー レジストリを作成する](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. **作成**を選択します。
+4. **作成** を選択します。
 5. コンテナー レジストリが作成されたら、その場所を参照し、**[アクセス キー]** を選択します。
 
     ![アクセス キーを取得する](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)

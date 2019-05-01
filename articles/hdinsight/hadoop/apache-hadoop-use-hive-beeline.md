@@ -1,19 +1,18 @@
 ---
 title: Apache Hive で Apache Beeline を使用する - Azure HDInsight
 description: Beeline クライアントを使用して、HDInsight での Hadoop で Hive クエリを実行する方法について説明します。 Beeline は、JDBC を介して HiveServer2 を使用するためのユーティリティです。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 89303e5c827fc24540d345a9a2b9a0743e453a4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: dcfcd4b55f848e1725e286e6ef2a87a2c36e5a71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257129"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684928"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
@@ -96,7 +95,7 @@ beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
 
 ## <a id="prereq"></a>前提条件
 
-* HDInsight 上の Hadoop クラスター。 詳細については、[Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)に注目してください。 たとえば、Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は`abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効な場合、URI はそれぞれ `wasbs://` または `abfss://` です。 詳細については、[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。
 
@@ -180,17 +179,17 @@ beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
 
     これらのステートメントは次のアクションを実行します。
 
-    * `DROP TABLE` : テーブルが既に存在する場合は削除されます。
+    * `DROP TABLE`: テーブルが既に存在する場合は削除されます。
 
-    * `CREATE EXTERNAL TABLE` : Hive に**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
+    * `CREATE EXTERNAL TABLE`: Hive に**外部**テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
-    * `ROW FORMAT` : データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。
+    * `ROW FORMAT` - データがどのように書式設定されるか。 ここでは、各ログのフィールドは、スペースで区切られています。
 
-    * `STORED AS TEXTFILE LOCATION` : データの格納場所とファイル形式。
+    * `STORED AS TEXTFILE LOCATION`: データの格納場所とファイル形式。
 
-    * `SELECT` : **t4** 列の値が **[ERROR]** であるすべての行の数を選択します。 この値を含む行が 3 行あるため、このクエリでは値 **3** が返されます。
+    * `SELECT` - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このクエリでは値 **3** が返されます。
 
-    * `INPUT__FILE__NAME LIKE '%.log'` : Hive は、ディレクトリ内のすべてのファイルにスキーマの適用を試みます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。
+    * `INPUT__FILE__NAME LIKE '%.log'` - Hive は、ディレクトリ内のすべてのファイルにスキーマの適用を試みます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。
 
    > [!NOTE]  
    > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や MapReduce 操作の場合です。
@@ -284,11 +283,11 @@ beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
 
 HDInsight での Hive に関する全般的な情報について詳しくは、次のドキュメントを参照してください。
 
-* [HDInsight で Apache Hive と Apache Hadoop を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 
 HDInsight での Hadoop で実行できるその他の操作について詳しくは、次のドキュメントを参照してください。
 
-* [HDInsight 上の Apache Pig で Apache Pig を使用する](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/

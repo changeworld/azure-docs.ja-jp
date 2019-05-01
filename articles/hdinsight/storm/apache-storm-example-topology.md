@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight での Apache Storm トポロジの例
 description: 基本的な C# や Java トポロジなど、HDInsight で Apache Storm を使用して作成、テストされる Storm トポロジの例の一覧と、Event Hubs の使用。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 42780eae0a85ec8a2ca7e9d6ca1149f6530c25e1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b2407200b995ad956f233248f6cdd58488b583d6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448973"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688790"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Apache Storm トポロジとコンポーネントの例
 

@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: このチュートリアルでは、Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 153c692a8fb0fa538ec49c6eafa11815dd794b5d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095959"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681536"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -57,10 +57,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Name | 「*myRouteTablePublic*」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。 |
     | リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、*[OK]* を選択します。 |
-    | 場所 | 既定値 **[米国東部]** のままにします。
+    | Location | 既定値 **[米国東部]** のままにします。
     | BGP ルート伝達 | 既定値 **[有効]** のままにします。 |
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
 ## <a name="create-a-route"></a>ルートの作成
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | アドレス空間 | 「*10.0.0.0/16*」と入力します。 |
     | サブスクリプション | サブスクリプションを選択します。 |
     | リソース グループ | ***[既存項目の選択]*** > **[myResourceGroup]** を選択します。 |
-    | 場所 | 既定値 **[米国東部]** のままにします。 |
+    | Location | 既定値 **[米国東部]** のままにします。 |
     | サブネット - 名前 | 「*Public*」と入力します。 |
     | サブネット アドレス範囲 | 「*10.0.0.0/24*」と入力します。 |
 
@@ -160,8 +160,8 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
     | 仮想マシン名 | 「*myVmNva*」と入力します。 |
     | リージョン | **[米国東部]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
-    | イメージ | 既定値 **[Microsoft Windows Server 2016 Datacenter]** をそのまま使用します。 |
-    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | Image | 既定値 **[Microsoft Windows Server 2016 Datacenter]** をそのまま使用します。 |
+    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | パスワード | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -182,7 +182,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
     | Setting | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[myVirtualNetwork]** のままにします。 |
-    | サブネット | **[DMZ (10.0.2.0/24)]** を選択します。 |
+    | Subnet | **[DMZ (10.0.2.0/24)]** を選択します。 |
     | パブリック IP | **[なし]** を選択します。 パブリック IP アドレスは必要ありません。 この VM がインターネット経由で接続することはありません。|
 
 1. 残りの部分は既定値のままにし、**[次へ:管理]** を選択します。
@@ -236,7 +236,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 | 基本 |  |
 | 仮想マシン名 | 「*myVmPublic*」と入力します。 |
 | ネットワーク | |
-| サブネット | **[Public (10.0.0.0/24)]** を選択します。 |
+| Subnet | **[Public (10.0.0.0/24)]** を選択します。 |
 | パブリック IP アドレス | 既定値のままにします。 |
 | パブリック受信ポート | **[選択したポートを許可する]** を選択します。 |
 | 受信ポートの選択 | **[HTTP]** と **[RDP]** を選択します。 |
@@ -246,7 +246,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 | 基本 |  |
 | 仮想マシン名 | 「*myVmPrivate*」と入力します。 |
 | ネットワーク | |
-| サブネット | **[Private (10.0.1.0/24)]** を選択します。 |
+| Subnet | **[Private (10.0.1.0/24)]** を選択します。 |
 | パブリック IP アドレス | 既定値のままにします。 |
 | パブリック受信ポート | **[選択したポートを許可する]** を選択します。 |
 | 受信ポートの選択 | **[HTTP]** と **[RDP]** を選択します。 |

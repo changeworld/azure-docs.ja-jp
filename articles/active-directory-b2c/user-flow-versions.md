@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のユーザー フロー バージョン | Mi
 description: Azure Active Directory B2C で使用できるユーザー フローのバージョンについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b3750768eb7346938faec7e3c1ead232923a68bd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: af44658b42e9132ea89aadcbff29bdba1c13f46d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159490"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689653"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー バージョン
 

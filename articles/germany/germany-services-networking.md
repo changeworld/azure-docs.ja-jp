@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 82d9be403b5dc8711d86a65ad84477419549f8df
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42b68d14776c2c2bd52c69034443052c7d942801
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "58408413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685618"
 ---
 # <a name="azure-germany-networking-services"></a>Azure Germany のネットワーク サービス
 ## <a name="expressroute-private-connectivity"></a>ExpressRoute (プライベート接続)
@@ -69,4 +69,4 @@ Azure Traffic Manager は、Azure Germany で一般提供されています。 �
 Azure VPN Gateway は、Azure Germany で一般提供されています。 詳細については、[VPN Gateway グローバル ドキュメント](../vpn-gateway/vpn-gateway-about-vpngateways.md)をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
-補足情報と最新情報については、[Azure Germany ブログ](https://blogs.msdn.microsoft.com/azuregermany/)をご覧ください。
+補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。

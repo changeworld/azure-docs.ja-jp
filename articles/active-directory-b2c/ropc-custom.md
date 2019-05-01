@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でリソース所有者のパスワード資�
 description: Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400765"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688858"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -269,7 +269,7 @@ ROPC フローでは次のオプションがサポートされています。
 
 | キー | 値 |
 | --- | ----- |
-| username | `user-account` |
+| ユーザー名 | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |

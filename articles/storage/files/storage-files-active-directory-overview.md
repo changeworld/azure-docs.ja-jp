@@ -2,17 +2,17 @@
 title: SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー) - Azure Storage
 description: Azure Files は、Azure Active Directory (Azure AD) Domain Services を使用した、SMB (Server Message Block) 上の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
-ms.author: tamram
-ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.author: rogarana
+ms.openlocfilehash: 7010425ba8acff4ed223e2a402d7a927a91c06b6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427639"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687139"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]

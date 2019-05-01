@@ -3,19 +3,19 @@ title: ローカライズ文字列 ID - Azure Active Directory B2C |Microsoft Do
 description: Azure Active Directory B2C のカスタム ポリシーに api.signuporsignin の ID を持つコンテンツ定義の ID を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cbc96f7f7c5f8020472708caaead3faff7a26673
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: c6cabcc89e66e9fbf153f2931bfe8b9b70c5f426
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609219"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682705"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 

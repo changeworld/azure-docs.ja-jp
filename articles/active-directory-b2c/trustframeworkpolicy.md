@@ -3,19 +3,19 @@ title: TrustFrameworkPolicy - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの TrustFrameworkPolicy 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 558e9c3a3bfd43f6ceb958bc3be55d58e1eb7f91
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 30cb6e49782b97d28b0d999f585d630477e8572f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150242"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684144"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 

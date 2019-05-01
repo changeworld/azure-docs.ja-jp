@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522505"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681941"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -47,7 +47,7 @@ Hive クエリは、以下のものを使用して送信できます。
 2. [Hive エディターで Hive クエリを送信する](#hive-editor)
 3. [Azure PowerShell コマンドで Hive クエリを送信する](#ps)
 
-Hive クエリは SQL に似ています。 SQL を使い慣れている場合は、 [Hive for SQL Users チート シート](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) が役立つことがあります。
+Hive クエリは SQL に似ています。 SQL を使い慣れている場合は、 [Hive for SQL Users チート シート](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) が役立つことがあります。
 
 Hive クエリの送信時、Hive クエリの出力先を、画面上、ヘッド ノード上のローカル ファイル、または Azure BLOB のどれにするか制御できます。
 

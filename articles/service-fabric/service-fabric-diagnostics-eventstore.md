@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 36d01a9e6e55ae54377ba3f983f779dbc692c49a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 520961fb4bd126ef878a779c10fb5689b8692c73
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681524"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683742"
 ---
 # <a name="eventstore-service-overview"></a>EventStore サービスの概要
 
@@ -89,7 +89,7 @@ EventStore サービスは、クラスター内のイベントを関連付ける
               {
                 "name": "MinReplicaSetSize",
                 "value": "1"
-              }
+              },
               {
                 "name": "PlacementConstraints",
                 "value": "(NodeType==<node_type_name_here>)"

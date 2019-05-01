@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685387"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -40,7 +40,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 
 ### <a name="installations"></a>インストール
 
-インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
+インストールは、プッシュ関連の一連のプロパティを含む強化された登録です。 また、デバイス登録の最新の優れた方法です。 ただし、クライアント側の .NET SDK ([バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) ではまだサポートされていません。  つまり、クライアント デバイス自体から登録する場合は、インストールをサポートする [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) を使用する必要があります。 バックエンド サービスを使用する場合は、 [バックエンド操作用の Notification Hub SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用できます。
 
 次に、インストールを使用する方法の主な利点について説明します。
 
@@ -48,7 +48,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 - このインストール モデルは、特定のデバイスに通知を直接送信できるようになる特殊なタグ形式 (`$InstallationId:{INSTALLATION_ID}`) をサポートしています。 たとえば、アプリのコードがこの特定のデバイスのインストール ID `joe93developer` を設定している場合、開発者は `$InstallationId:{joe93developer}` タグに通知を送信するときにこのデバイスを対象にすることができます。 こうすることで、コードを追加することなく、特定のデバイスを対象にすることができます。
 - また、インストールを使用することで、部分的な登録の更新を実行できます。 インストールの部分的な更新は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)を使用して、PATCH メソッドで要求されます。 これは、登録時にタグを更新する場合に役立ちます。 登録全体を取得し、前のタグすべてを再送信する必要はありません。
 
-インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation)に関するページ、または[インストール プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)に関するページを参照してください。
+インストールには、次のプロパティを含めることができます。 インストール プロパティの完全なリストについては、[REST API でのインストールの作成または上書き](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)に関するページ、または[インストール プロパティ](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation)に関するページを参照してください。
 
 ```json
 // Example installation format to show some supported properties
@@ -95,7 +95,7 @@ Notification Hub にデバイスを登録するには、**登録**または**イ
 
 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)を使用する場合、デバイスのインストールでは、そのデバイスに関連付けられたすべてのテンプレートも JSON 形式で保持されます (上のサンプルを参照)。 テンプレート名は、1 つのデバイスに複数のテンプレートを対象にすることができます。
 
-各テンプレート名が、テンプレートの本文とオプションの一連のタグにマップされます。 さらに、各プラットフォームには、テンプレート プロパティが他にもある場合があります。 (WNS を使用する) Windows ストアと (MPNS を使用する) Windows Phone 8 の場合、その他のヘッダー セットをテンプレートに含めることができます。 APNs の場合、expiry プロパティを定数またはテンプレート式に設定することができます。 インストール プロパティの一覧については、インストール プロパティの一覧については、 [REST でインストールを作成または上書きする方法](https://msdn.microsoft.com/library/azure/mt621153.aspx) に関するトピックを参照してください。
+各テンプレート名が、テンプレートの本文とオプションの一連のタグにマップされます。 さらに、各プラットフォームには、テンプレート プロパティが他にもある場合があります。 (WNS を使用する) Windows ストアと (MPNS を使用する) Windows Phone 8 の場合、その他のヘッダー セットをテンプレートに含めることができます。 APNs の場合、expiry プロパティを定数またはテンプレート式に設定することができます。 インストール プロパティの一覧については、インストール プロパティの一覧については、 [REST でインストールを作成または上書きする方法](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) に関するトピックを参照してください。
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Windows ストア アプリのセカンダリ タイル
 
@@ -120,7 +120,7 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>インストールを使用してデバイスから通知ハブに登録するコード例
 
-現時点では、 [Notification Hubs REST API](https://msdn.microsoft.com/library/mt621153.aspx)を使用する必要があります。
+現時点では、 [Notification Hubs REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)を使用する必要があります。
 
 また、インストールを更新する場合は、 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902) の PATCH メソッドを使用することもできます。
 

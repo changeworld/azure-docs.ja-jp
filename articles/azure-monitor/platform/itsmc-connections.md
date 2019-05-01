@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395566"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。

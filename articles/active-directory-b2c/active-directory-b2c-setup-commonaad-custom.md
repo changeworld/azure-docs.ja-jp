@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーを使用してマ
 description: カスタム ポリシーを使用してマルチテナントの Azure AD ID プロバイダーを追加する - Azure Active Directory B2C。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 41b170ea66b1cb4c830ad0327ac2e1e3d2922b04
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d0c849619f2f39ebab533d7e1d7feee7c8822306
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160731"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688253"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 

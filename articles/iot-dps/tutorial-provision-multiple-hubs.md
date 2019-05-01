@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 784fb99fc2cd721a43c9ca7c767b449a9d0d6cb3
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918815"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61248166"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>負荷分散された IoT ハブへのデバイスのプロビジョニング
 
-このチュートリアルでは、Device Provisioning Service を使用して、負荷分散された複数の IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Device Provisioning Service を使用して、負荷分散された複数の IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して 2 つ目のデバイスを 2 つ目の IoT ハブにプロビジョニングする 
@@ -46,11 +46,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-the-device-provisioning-service-allocation-policy"></a>Device Provisioning Service の割り当てポリシーを設定する
 
-割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
+割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
 
-1. **Lowest latency\(最も短い待機時間\)**: デバイスに対する待機時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
-2. **Evenly weighted distribution\(均等に重み付けされた分散\)** (既定値): リンクされた各 IoT ハブにデバイスが同程度にプロビジョニングされます。 これは、既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
-3. **Static configuration via the enrollment list\(登録リストによる静的構成\)**: 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
+1. **[最短待機時間]**: デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
+2. **[加重が均等に分布]** (既定): リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 これは、既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
+3. **[登録リストを経由する静的構成]**: 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
 
 次の手順に従って割り当てポリシーを設定します。
 
@@ -70,7 +70,7 @@ Device Provisioning Service と IoT ハブをリンクして、Provisioning Serv
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して 2 つ目のデバイスを 2 つ目の IoT ハブにプロビジョニングする 

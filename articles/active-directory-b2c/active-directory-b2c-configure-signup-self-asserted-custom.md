@@ -3,19 +3,19 @@ title: カスタム ポリシーを使用した要求の追加とユーザー入
 description: ユーザー入力をカスタマイズし、Azure Active Directory B2C のサインアップまたはサインイン体験に要求を追加する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e3eb7ce49c5d22b11b0b6f018e025bdfa2a67703
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6eaace7589488a9466e78597e0091c84dabb5155
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432007"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685286"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 

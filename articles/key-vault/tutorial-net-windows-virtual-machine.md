@@ -2,22 +2,19 @@
 title: チュートリアル - .NET で Windows 仮想マシンを使用して Azure Key Vault を使用する | Microsoft Docs
 description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように ASP.NET Core アプリケーションを構成します。
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: key-vault
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: fb17afa4bfe8c00c91cc8fb33ab3326452065a9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7fdd2f1832995d279f58af52f96270f7aa3bb5a6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885419"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686157"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>チュートリアル:.NET で Windows 仮想マシンを使用して Azure Key Vault を使用する
 

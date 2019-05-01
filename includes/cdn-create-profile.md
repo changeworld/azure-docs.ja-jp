@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: e431e7c45dc2cb41db5b9fa762abc908cc76b375
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c58b226c0f3bd63cb2a54bd3d8c91eb750a26f0a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34665292"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684659"
 ---
 ## <a name="create-a-new-cdn-profile"></a>新しい CDN プロファイルを作成する
 
@@ -33,9 +33,9 @@ CDN プロファイルは、CDN エンドポイントのコンテナーであり
    
     | Setting  | 値 |
     | -------- | ----- |
-    | **名前** | プロファイル名として「*my-cdn-profile-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
+    | **Name** | プロファイル名として「*my-cdn-profile-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
     | **サブスクリプション** | ドロップダウン リストから Azure サブスクリプションを選択します。 |
-    | **[リソース グループ]** | **[新規作成]** を選択し、リソース グループ名として「*my-resource-group-123*」と入力します。 この名前はグローバルに一意である必要があります。 既に使用している場合は、別の名前を入力するか、**[既存のものを使用]** を選択し、ドロップダウン リストから **[my-resource-group-123]** を選択できます。 | 
+    | **リソース グループ** | **[新規作成]** を選択し、リソース グループ名として「*my-resource-group-123*」と入力します。 この名前はグローバルに一意である必要があります。 既に使用している場合は、別の名前を入力するか、**[既存のものを使用]** を選択し、ドロップダウン リストから **[my-resource-group-123]** を選択できます。 | 
     | **リソース グループの場所** | ドロップダウンから **[米国中部]** を選択します。 |
     | **[価格レベル]** | ドロップダウンから **[Standard Verizon]** を選択します。 |
     | **今すぐ新しい CDN エンドポイントを作成する** | オフのままにします。 |  

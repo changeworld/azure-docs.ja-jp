@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: e36fb125d2fedc01747d9af47bec98def65c65b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d2e94a7bd154195e7956df1a28407b0933e0e526
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "58408422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60780853"
 ---
 # <a name="connect-to-azure-germany-by-using-azure-cli"></a>Azure CLI を使用して Azure Germany に接続する
 Azure コマンド ライン インターフェイス (Azure CLI) を使用するには、グローバル Azure ではなく Azure Germany に接続する必要があります。 Azure CLI を使用すると、スクリプトで大規模なサブスクリプションを管理したり、現在 Azure portal にはない機能を利用したりできます。 グローバル Azure で Azure CLI を使用した経験をお持ちであれば、操作の大部分は同じです。  

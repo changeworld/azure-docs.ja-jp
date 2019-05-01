@@ -3,8 +3,8 @@ title: Azure Network Watcher のパケット キャプチャの概要 | Microsof
 description: このページでは、Network Watcher のパケット キャプチャ機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
@@ -13,22 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 152cc8fb61aa6115c7b5863e4d798db9e7aa5b7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 4cfbfc4bed5438ed901fca86d8c2939d3860c68e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036837"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684154"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure Network Watcher の可変パケット キャプチャの概要
 
-Network Watcher の可変パケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバーの間で行われる通信のデバッグなどに役立ちます。
+Network Watcher の可変パケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。
 
 パケット キャプチャは、Network Watcher によりリモートで開始される、仮想マシン拡張機能です。 この機能により、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間の節約になります。 パケット キャプチャは、ポータル、PowerShell、CLI、REST API を介してトリガーできます。 パケット キャプチャをトリガーできる方法の一例は、仮想マシンのアラートの使用です。 監視したいトラフィックを確実にキャプチャするために、キャプチャ セッション用のフィルターが用意されています。 フィルターは 5 組 (プロトコル、ローカル IP アドレス、リモート IP アドレス、ローカル ポート、リモート ポート) の情報に基づいています。 キャプチャしたデータは、ローカル ディスクまたはストレージ BLOB に格納されます。 各サブスクリプションのリージョンごとに、10 パケット キャプチャ セッションという制限があります。 この制限はセッションにのみ適用され、VM のローカルまたはストレージ アカウントで保存されたパケット キャプチャ ファイルには適用されません。
 
 > [!IMPORTANT]
-> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事を参照してください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事を参照してください。
+> パケット キャプチャには仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事を参照してください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事を参照してください。
 
 キャプチャする情報を減らし、必要な情報だけを取得するために、パケット キャプチャ セッション用の次のオプションを利用できます。
 
@@ -42,7 +42,7 @@ Network Watcher の可変パケット キャプチャを使用すると、仮想
 
 **フィルター処理 (省略可能)**
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |**プロトコル** | パケット キャプチャをフィルター処理するためのプロトコルです。 使用可能な値は、[TCP]、[UDP]、[すべて] のいずれかです。|
 |**[ローカル IP アドレス]** | この値でパケット キャプチャをフィルター処理すると、ローカル IP アドレスがこのフィルターの値と一致するパケットだけが出力されます。|
@@ -50,7 +50,7 @@ Network Watcher の可変パケット キャプチャを使用すると、仮想
 |**[リモート IP アドレス]** | この値でパケット キャプチャをフィルター処理すると、リモート IP アドレスがこのフィルターの値と一致するパケットだけが出力されます。|
 |**[リモート ポート]** | この値でパケット キャプチャをフィルター処理すると、リモート ポートがこのフィルターの値と一致するパケットだけが出力されます。|
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 ポータルを使用する場合は [Azure Portal でのパケット キャプチャの管理](network-watcher-packet-capture-manage-portal.md)に関するページ、PowerShell を使用する場合は [PowerShell でのパケット キャプチャの管理](network-watcher-packet-capture-manage-powershell.md)に関するページを参照して、パケット キャプチャを管理する方法を確認する
 

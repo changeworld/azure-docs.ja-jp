@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 6b1b92f25d24294fc5b685b4ce737c03800face3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 84beac4eca44a274eecc032e4816e3ff57aeafe2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093094"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60688412"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル: CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 

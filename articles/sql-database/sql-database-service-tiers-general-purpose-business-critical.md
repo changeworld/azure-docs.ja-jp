@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/23/2019
-ms.openlocfilehash: 067ea8eee297eb8572bd37e240b8d13afe458ca7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e2230bc8adf13825692f93b1e2bc33a4b79076e2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785121"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574373"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル
 
@@ -63,5 +63,5 @@ MDF および LDF の現在の合計サイズを監視するには、[sp_spaceus
 
 ## <a name="next-steps"></a>次の手順
 
-- 汎用サービス レベルと Business Critical サービスレベルの単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)に関するページを参照してください
-- 汎用サービス レベルと Business Critical サービスレベルのエラスティック プールに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[エラスティック プールに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)に関するページを参照してください。
+- 汎用サービス レベルと Business Critical サービスレベルの単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください
+- 汎用サービス レベルと Business Critical サービスレベルのエラスティック プールに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[エラスティック プールに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。

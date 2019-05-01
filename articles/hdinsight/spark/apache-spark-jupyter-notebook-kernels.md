@@ -2,7 +2,6 @@
 title: Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル
 description: Azure HDInsight 上の Spark クラスターで使用可能な Jupyter Notebook 用の PySpark、PySpark3、および Spark カーネルについて説明します。
 keywords: spark 上の jupyter notebook,jupyter spark
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: fed8791fbc7cc7f049a1161fb3903c7f6d42d4e8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527474"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689309"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル 
 

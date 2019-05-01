@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の監査ログのサンプルと定義 | Micr
 description: Azure AD B2C 監査ログへのアクセスに関するガイドとサンプル。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdc3578fe78e60086a148e4204019a8293030b83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003603"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688766"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -31,9 +31,9 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 |---------|---------|
 |Authorization |B2C リソースにアクセスするユーザー (例: B2C ポリシーの一覧にアクセスする管理者) の承認に関するアクティビティ         |
 |Directory |管理者が Azure Portal を使用してサインインするときに取得されるディレクトリ属性に関連するアクティビティ |
-|アプリケーション | B2C アプリケーションに対する CRUD 操作 |
+|Application | B2C アプリケーションに対する CRUD 操作 |
 |キー |B2C キー コンテナーに格納されたキーに対する CRUD 操作 |
-|リソース |B2C リソース (例: ポリシーや ID プロバイダー) に対する CRUD 操作
+|Resource |B2C リソース (例: ポリシーや ID プロバイダー) に対する CRUD 操作
 |Authentication |ユーザー資格情報とトークン発行の検証|
 
 > [!NOTE]

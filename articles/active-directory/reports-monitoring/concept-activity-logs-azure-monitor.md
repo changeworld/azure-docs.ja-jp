@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011403"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682122"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
@@ -72,14 +72,24 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 すべての監査ログ イベントは、約 2 KB のデータ ストレージを使用します。 テナントに 100,000 人のユーザーがいる場合、1 日あたり約 150 万のイベントが発生するため、1 日あたり約 3 GB のデータ ストレージが必要になります。 書き込みは約 5 分間のバッチで発生するため、1 か月につき約 9,000 の書き込み操作が予測されます。 
 
-次の表は、1 年以上保持される米国西部の汎用 v2 ストレージ アカウントの料金の見積もりをテナントのサイズ別に示します。 アプリケーションで予測されるデータ量に基づくより正確な見積りを作成するには、[Azure Storage の料金計算ツール](https://azure.microsoft.com/pricing/details/storage/blobs/)を使用します。 
+
+次の表は、1 年以上保持される米国西部の汎用 v2 ストレージ アカウントの料金の見積もりをテナントのサイズ別に示します。 アプリケーションで予測されるデータ量に基づくより正確な見積りを作成するには、[Azure Storage の料金計算ツール](https://azure.microsoft.com/pricing/details/storage/blobs/)を使用します。
+
 
 | ログのカテゴリ | ユーザーの数 | 1 日あたりのイベント | 1 か月あたりのデータ量 (概算) | 1 か月あたりのコスト (概算) | 1 年あたりのコスト (概算) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
 | Audit | 100,000 | 150 万&nbsp; | 90 GB | 1.93 ドル | 23.12 ドル |
 | Audit | 1,000 | 15,000 | 900 MB | 0.02 ドル | 0.24 ドル |
 | サインイン | 1,000 | 34,800 | 4 GB | 0.13 ドル | 1.56 ドル |
-| サインイン | 100,000 | 1,500 万&nbsp; | 1.7 TB | 35.41 ドル | 424.92 ドル | 
+| サインイン | 100,000 | 1,500 万&nbsp; | 1.7 TB | 35.41 ドル | 424.92 ドル |
+ 
+
+
+
+
+
+
+
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>アクティビティ ログのイベント ハブのメッセージ

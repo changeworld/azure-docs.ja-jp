@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: d5ada9b992afe98241162749b1c45723b89a6b77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 03/19/2019
+ms.openlocfilehash: aa9217251965b35dd90e09c619607c9421a9f6f4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699357"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572652"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限
 
@@ -28,7 +28,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
-[Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
+[Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](sql-database-single-database-scale.md)に関するページを参照してください。
@@ -96,7 +96,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
 |ターゲットの IOPS (64 KB)|500|1,000|1500|2000|2500|3000|3500|
-|ログのレート制限 (MBps)|2.5|5.6|7.5|10|12.5|15|17.5|
+|ログのレート制限 (MBps)|2.5|56|7.5|10|12.5|15|17.5|
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1,000|1200|1400|
 |許可される最大セッション数|30000|30000|30000|30000|30000|30000|30000|
 |レプリカの数|1|1|1|1|1|1|1|

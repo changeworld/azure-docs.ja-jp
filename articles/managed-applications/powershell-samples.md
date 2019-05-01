@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell のサンプル - Azure マネージ アプリケーション | Microsoft Docs
-description: Azure PowerShell のサンプル - Azure マネージ アプリケーション
+title: Azure PowerShell のサンプル - Azure マネージド アプリケーション | Microsoft Docs
+description: Azure PowerShell のサンプル - Azure マネージド アプリケーション
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 54663282f0a7c9491c0f6501af74eca1a907c44a
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: c1a960077ed96bb395ade9a09f47b035e6ff4318
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
-ms.locfileid: "23636982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252148"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 
-次の表には、Azure PowerShell を使用する Azure マネージ アプリケーション用のスクリプトへのリンクが含まれています。
+次の表には、Azure PowerShell を使用する Azure マネージド アプリケーション用のスクリプトへのリンクが含まれています。
 
 | | |
 |-|-|
-|**マネージ アプリケーションを作成する**||
-| [マネージ アプリケーション定義を作成する](scripts/managed-application-powershell-sample-create-definition.md) | サービス カタログにマネージ アプリケーション定義を作成します。  |
-| [マネージ アプリケーションをデプロイする](scripts/managed-application-poweshell-sample-create-application.md) | サービス カタログからマネージ アプリケーションをデプロイします。  |
+|**マネージド アプリケーションを作成する**||
+| [マネージド アプリケーション定義を作成する](scripts/managed-application-powershell-sample-create-definition.md) | サービス カタログにマネージド アプリケーション定義を作成します。  |
+| [マネージド アプリケーションをデプロイする](scripts/managed-application-poweshell-sample-create-application.md) | サービス カタログからマネージド アプリケーションをデプロイします。  |
 | | |
-|**マネージ リソース グループを更新する**||
-| [マネージ リソース グループ内のリソースを取得し、VM のサイズを変更する](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | マネージ リソース グループからリソースを取得し、VM のサイズを変更します。 |
+|**マネージド リソース グループを更新する**||
+| [マネージド リソース グループ内のリソースを取得し、VM のサイズを変更する](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | マネージド リソース グループからリソースを取得し、VM のサイズを変更します。 |

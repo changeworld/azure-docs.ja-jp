@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight での ML Services の概要
 description: HDInsight 上の ML Services を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584532"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683749"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での ML Services とオープン ソース R の機能の概要
 

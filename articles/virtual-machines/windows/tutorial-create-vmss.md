@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 90c4db4ac481f3853ca4e8256ce8fdb4c4ae9bd4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6766dc2b4d99d51e2832a054969697e4e330dd86
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983258"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60785175"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>チュートリアル:Azure PowerShell で仮想マシン スケール セットを作成して Windows に高可用性アプリをデプロイする
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM 数は、手動でスケーリングすることができます。 また、CPU の使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義することもできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。次の方法について説明します。

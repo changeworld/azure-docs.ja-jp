@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: d818f8a8fc813d3da5eea4d8ef9cd2f4fd18bb53
-ms.sourcegitcommit: 1aab8b764d767d86fbf262bda34996189d00c7bb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "64402642"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688517"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート:Windows 上で C++ と Speech SDK を使用して音声を合成する
 

@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293616"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687053"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
-[!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 **Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
 
@@ -55,7 +57,7 @@ REST を使用するときには、次の考慮事項が適用されます。
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
 Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
 
-| ヘッダー | type | 値 |
+| ヘッダー | Type | 値 |
 | --- | --- | --- |
 | Authorization |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
@@ -69,10 +71,10 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 省略可能なヘッダーのセットを次に示します。
 
-| ヘッダー | type | 値 |
+| ヘッダー | Type | 値 |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
-| Accept |コンテンツの種類 |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
+| Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
 | Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注:大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
 | Accept-Charset |"UTF-8"　などの文字の種類 |既定値は UTF-8 です。 |
@@ -83,7 +85,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
 要求したリソースと実行を意図した操作によって返されるヘッダーのセットを次に示します。
 
-| ヘッダー | type | 値 |
+| ヘッダー | Type | 値 |
 | --- | --- | --- |
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
@@ -99,7 +101,7 @@ HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次
 | GET |オブジェクトの現在の値を返します。 |
 | POST |提供されるデータに基づくオブジェクトを作成、またはコマンドを送信します。 |
 | PUT |オブジェクトの置き換え、または名前付きのオブジェクトの作成を行います (使用している場合)。 |
-| 削除 |オブジェクトを削除します。 |
+| DELETE |オブジェクトを削除します。 |
 | MERGE |名前付きプロパティを変更して、既存のオブジェクトを更新します。 |
 | HEAD |GET 応答に対するオブジェクトのメタデータを返します。 |
 

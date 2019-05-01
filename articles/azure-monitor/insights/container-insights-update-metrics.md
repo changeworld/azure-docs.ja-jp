@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995984"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685635"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
 コンテナーの Azure Monitor では、Azure Kubernetes Services (AKS) クラスター ノードおよびポッドからのメトリックの収集と、Azure Monitor メトリック ストアへのそれらの書き込みのサポートを導入します。 この変更は、パフォーマンス グラフでの集計計算 (Avg、Count、Max、Min、Sum) を表示するときの適時性の改善、Azure portal ダッシュボードでのパフォーマンス グラフのピン留めのサポート、およびメトリック アラートのサポートを実現するためのものです。
@@ -35,7 +35,7 @@ ms.locfileid: "59995984"
 どちらのプロセスでも、エージェントが収集したデータをクラスター リソースにパブリッシュできるように、クラスターのサービス プリンシパルに対して**メトリックの発行元の監視**ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件 
-開始する前に、AKS クラスター リソースの**[所有者](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
+開始する前に、AKS クラスター リソースの**[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
 

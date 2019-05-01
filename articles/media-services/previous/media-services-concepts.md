@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b7b821227478d8c6b5859f24c50407f9eb213fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312344"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681557"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念 
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 

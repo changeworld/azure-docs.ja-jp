@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 5299675656ea23b85f78b3dbfdc02814ab332a8b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8874039d148cc89d3f47979370e64dd78777f268
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979051"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325750"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
 
@@ -40,9 +40,9 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは次のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは以下のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Function App に必要なストレージ アカウントを作成します。 |

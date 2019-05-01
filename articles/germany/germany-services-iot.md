@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: ralfwi
-ms.openlocfilehash: 89fbcdaad6e5e7379209854781423161ca2740b0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 932f9457cc5d33063714ae9c9678174a8b64d156
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "58408419"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60684767"
 ---
 # <a name="azure-germany-iot-services"></a>Azure Germany IoT サービス
 

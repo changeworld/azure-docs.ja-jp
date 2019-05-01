@@ -3,8 +3,8 @@ title: マネージド データ ディスクを Windows VM に接続する - Az
 description: Azure portal を使用して Windows VM にマネージド データ ディスクを接続する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 81fbf650597813baaf6618f82ef55a937f1870d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3641960131d23bf5a8e5b2310a09e7a4dbd70b9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476028"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64680394"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal を使用して Windows VM にマネージド データ ディスクを接続する
 

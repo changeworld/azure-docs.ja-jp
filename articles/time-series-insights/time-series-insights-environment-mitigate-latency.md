@@ -12,14 +12,15 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556749"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685149"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
+
 着信データの量が環境の構成を超えると、Azure Time Series Insights で待機時間や調整が発生する可能性があります。
 
 分析するデータ量に合わせて環境を正しく構成することによって待機時間と調整を回避できます。
@@ -31,7 +32,7 @@ ms.locfileid: "53556749"
 - 大量の履歴イベントをイベント ソースにプッシュした結果、ラグが発生した (Time Series Insights はキャッチアップする必要があります)。
 - 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。  調整の観点から、パケット サイズが 32 KB の受信データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
 
-## <a name="video"></a>ビデオ: 
+## <a name="video"></a>ビデオ
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>この動画では、Time Series Insights データのイングレス動作と、それを計画する方法を紹介します。</br>
 
@@ -61,7 +62,6 @@ ms.locfileid: "53556749"
 |**Ingress Received Message Time Lag (受信メッセージの受信のタイム ラグ)**   |  メッセージがイベント ソースでエンキューされた時刻とそれがイングレスで処理された時刻の間の差 (秒単位)。      |
 |**Ingress Received Message Count Lag (受信メッセージの受信のカウント ラグ)**    |  イベント ソース パーティションで待ち行列の最後に入っているメッセージのシーケンス番号とイングレスで処理されているメッセージのシーケンス番号の間の差。      |
 
-
 ![Latency](media/environment-mitigate-latency/latency.png)
 
 調整中、*[Ingress Recieved Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何秒遅れているのかが通知されます (約  30 ～ 60 秒のインデックス作成時間を除きます)。  *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
@@ -74,11 +74,14 @@ ms.locfileid: "53556749"
 
 また、調整されている疑いがある場合、**受信メッセージの受信**をイベント ソースの送信メッセージと比較できます。  Event Hub への受信が**受信メッセージの受信**より大きい場合、Time Series Insights は調整されている可能性が高いです。
 
-## <a name="improving-performance"></a>パフォーマンスの向上 
+## <a name="improving-performance"></a>パフォーマンスの向上
+
 調整や待機時間を軽減するための最善の修正方法は、環境の容量を増やすことです。 
 
 分析するデータ量に合わせて環境を正しく構成することによって待機時間と調整を回避できます。 環境内に容量を追加する方法の詳細については、「[環境のスケーリング](time-series-insights-how-to-scale-your-environment.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
 - 追加のトラブルシューティング手順は、「[Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)」を参照してください。
+
 - 追加の支援については、[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) でメッセージの交換を始めてください。 サポート オプションについては、[Azure サポート](https://azure.microsoft.com/support/options/)までお問い合わせいただくこともできます。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: f7120e80d079723ed8265320ba4b38d76a825a00
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 9187863234dd62757efecf6f0817ff00da48064a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59499820"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685542"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>クイック スタート:Speech SDK for C++ を使用して音声を翻訳する
 
@@ -28,11 +28,11 @@ ms.locfileid: "59499820"
 このクイック スタートでは以下が必要です。
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-[!INCLUDE[](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 

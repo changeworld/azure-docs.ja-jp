@@ -3,8 +3,8 @@ title: Azure Network Watcher のリソース トラブルシューティング�
 description: このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
-ms.openlocfilehash: aa7fce21228d4413dc4964d6e828bf60478aee27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901833"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684239"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -51,7 +51,7 @@ ms.locfileid: "57901833"
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
-| NoFault | エラーが検出されなかった場合 |[はい]|
+| NoFault | エラーが検出されなかった場合 |はい|
 | GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
 | PlannedMaintenance |  ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
 | UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。 | いいえ  |
@@ -59,26 +59,26 @@ ms.locfileid: "57901833"
 | PlatformInActive | プラットフォームに問題があります。 | いいえ |
 | ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ |
 | NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 このエラーは、単なる警告です。| いいえ |
-| ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| [はい]|
-| GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | [はい] |
+| ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| はい|
+| GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
 
 ### <a name="connection"></a>接続
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
-| NoFault | エラーが検出されなかった場合 |[はい]|
+| NoFault | エラーが検出されなかった場合 |はい|
 | GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
 | PlannedMaintenance | ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
 | UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。  | いいえ  |
 | VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ  |
 | ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
 | ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
-| ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | [はい] |
-| ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| [はい]|
-| Authentication | 事前共有キーが一致しません。 | [はい]|
-| PeerReachability | ピア ゲートウェイに到達できません。 | [はい]|
-| IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | [はい]|
-| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |[はい]|
+| ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | はい |
+| ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
+| Authentication | 事前共有キーが一致しません。 | はい|
+| PeerReachability | ピア ゲートウェイに到達できません。 | はい|
+| IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
+| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|
 
 ## <a name="supported-gateway-types"></a>サポートされるゲートウェイの種類
 

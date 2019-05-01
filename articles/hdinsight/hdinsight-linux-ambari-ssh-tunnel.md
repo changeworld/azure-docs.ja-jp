@@ -1,7 +1,6 @@
 ---
 title: SSH トンネリングを使用して Azure HDInsight にアクセスする
 description: SSH トンネルを使用して、Linux ベースの HDInsight ノードでホストされている Web リソースを安全に閲覧する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/15/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03c86aa069300f88b61752ebd3223e424f6e9c96
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382608"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682535"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の Web UI にアクセスする
 

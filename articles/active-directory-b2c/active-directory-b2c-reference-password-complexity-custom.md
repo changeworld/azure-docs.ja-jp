@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用してパ
 description: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e8e3157bc9dfc97d364effee2ea90cfad85d18ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7fb90720b8ee3834a0451cc70b026099dadaf369
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167838"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682471"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する
 

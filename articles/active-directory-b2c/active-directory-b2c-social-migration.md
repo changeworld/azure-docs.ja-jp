@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でソーシャル ID を持つユーザーを
 description: Graph API を使った、ソーシャル ID を持つユーザーの Azure AD B2C への移行に関する主要な概念について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cb52cc85ea4e09890cf7c489d817c0b01192c65e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894903"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684605"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: aca7aa30744c79cefd3c7704a8fde1df203b2c9d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198985"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683805"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -58,14 +58,41 @@ public static async Task<HttpResponseMessage> RunSingle(
 
 ### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
+function.json ファイルを次に示します。
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}/{instanceId}",
+      "methods": ["post"]
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    }
+  ]
+}
+```
+
+JavaScript コードを次に示します。
 ```javascript
 const df = require("durable-functions");
 
-modules.exports = async function(context, req) {
+module.exports = async function(context, req) {
     const client = df.getClient(context);
 
     const instanceId = req.params.instanceId;
-    const functionName = req.params.functionsName;
+    const functionName = req.params.functionName;
 
     // Check if an instance with the specified ID already exists.
     const existingInstance = await client.getStatus(instanceId);

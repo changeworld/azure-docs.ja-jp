@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a247530eae2a83a65fbc1931e53dcb2366919fd7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 942d8335599c89ea13d496c4bcf4b3cb44f0e53d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326204"
 ---
 # <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>PowerShell を使用して新しいサーバーに SQL データベースをコピーする
 

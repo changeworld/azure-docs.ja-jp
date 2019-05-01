@@ -3,8 +3,8 @@ title: ネットワーク トラフィックをルーティングする - Azure 
 description: この記事では、Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: e3106a792f486a62986734e562c96b41dd8a75dc
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ff5897766bb56b76a34940ecd786773fd844a336
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524125"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683112"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 

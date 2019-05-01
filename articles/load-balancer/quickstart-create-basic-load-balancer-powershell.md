@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 0bdad2d59528775d23d882831cfdbdc09471e12e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31795b0dfb5a9815113ab232a266d9f7f8955068
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109799"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688380"
 ---
 # <a name="get-started"></a>クイック スタート:Azure PowerShell を使用してパブリック ロード バランサーを作成する
 
@@ -335,7 +335,7 @@ Get-AzPublicIPAddress `
 
 ![ロード バランサーをテストする](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-アプリを実行している 2 つの VM すべての間で、ロード バランサーがトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
+アプリを実行している両方の VM にわたってロード バランサーがトラフィックを分散させていることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

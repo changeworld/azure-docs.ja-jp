@@ -3,8 +3,8 @@ title: VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft
 description: Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
@@ -14,14 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06016cf7a8ba10a9a8f49f90da99a26aaa072441
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.author: kumud
+ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695520"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681405"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 

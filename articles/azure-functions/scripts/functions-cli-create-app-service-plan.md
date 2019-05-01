@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0f0c8bbca6c93f68627308762f99fb57c8f397cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85fe8e567cd00decbefe79c77c11f777820080ee
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946110"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325682"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>App Service プランで Function App を作成する
 
@@ -41,7 +41,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 表内の各コマンドは、それぞれのドキュメントにリンクされています。 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Azure Storage アカウントを作成します。 |

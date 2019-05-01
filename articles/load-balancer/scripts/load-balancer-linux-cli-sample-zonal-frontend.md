@@ -16,14 +16,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: kumud
-ms.openlocfilehash: 888808c94115e2ea136e90eb635faf28e7d92fd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 121d3f941f3d00373bd2821534c3e601107e97e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431020"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506962"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI スクリプトの例: 高可用性のために VM へのトラフィックを負荷分散する
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI スクリプトの例: 高可用性の VM への負荷分散トラフィック
 
 この Azure CLI スクリプトの例では、特定の可用性ゾーンで高可用性と負荷分散が設定された構成で、構成済みの複数の Ubuntu 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、リージョン内の 1 つの可用性ゾーンに、Azure Standard Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。 
 
@@ -168,7 +168,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | Azure 仮想ネットワークとサブネットを作成します。 |

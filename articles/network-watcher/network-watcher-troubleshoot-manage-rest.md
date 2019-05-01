@@ -3,8 +3,8 @@ title: Azure Network Watcher を使用した仮想ネットワーク ゲート�
 description: このページでは、Azure Network Watcher で REST を使用して仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う方法について説明します
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
-ms.openlocfilehash: 1276d1e581caf477449ce9a4c928d4493a6354d3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: kumud
+ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487602"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686127"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Azure Network Watcher を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 

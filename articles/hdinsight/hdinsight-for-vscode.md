@@ -2,7 +2,6 @@
 title: Azure HDInsight Tools - Hive、LLAP、PySpark に Visual Studio Code を使用する | Microsoft Docs
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
 Keywords: Visual Studio Code, Azure HDInsight Tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, インタラクティブ Hive, インタラクティブ クエリ
-services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100328"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681761"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -310,20 +309,20 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | name | description | type | 
     | :- | :- | :- | 
     | file | 実行するアプリケーションを含むファイル | パス (必須) | 
-    | proxyUser | ジョブを実行するときに偽装するユーザー | 文字列 | 
-    | className | アプリケーションの Java/Spark のメイン クラス | 文字列 |
+    | proxyUser | ジョブを実行するときに偽装するユーザー | string | 
+    | className | アプリケーションの Java/Spark のメイン クラス | string |
     | args | アプリケーションのコマンド ライン引数 | string のリスト | 
     | jars | このセッションで使用される Jar | 文字列のリスト | 
     | pyFiles | このセッションで使用される Python ファイル | 文字列のリスト |
     | ファイルのアップロード | このセッションで使用されるファイル | 文字列のリスト |
-    | driverMemory | ドライバーのプロセスに使用するメモリの量 | 文字列 |
+    | driverMemory | ドライバーのプロセスに使用するメモリの量 | string |
     | driverCores | ドライバーのプロセスに使用するコアの数 | int |
-    | executorMemory | Executor プロセスごとに使用するメモリの量 | 文字列 |
+    | executorMemory | Executor プロセスごとに使用するメモリの量 | string |
     | executorCores | Executor ごとに使用するコアの数 | int |
     | numExecutors | このセッションに対して起動する Executor の数 | int |
     | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
-    | キュー | 送信対象の YARN キューの名前 | 文字列 |
-    | name | このセッションの名前 | 文字列 |
+    | キュー | 送信対象の YARN キューの名前 | string |
+    | name | このセッションの名前 | string |
     | conf | Spark の構成のプロパティ | キーと値のマップ |
 
     応答本文   
@@ -335,7 +334,7 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | appId | このセッションのアプリケーション ID |  String |
     | appInfo | アプリケーションの詳細情報 | キーと値のマップ |
     | log | ログの行 | string のリスト |
-    | state |   バッチの状態 | 文字列 |
+    | state |   バッチの状態 | string |
 
 >[!NOTE]
 >スクリプトを送信すると、割り当てられている Livy の構成が出力ウィンドウに表示されます。

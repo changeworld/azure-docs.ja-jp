@@ -3,19 +3,19 @@ title: チュートリアル - ASP.NET Web API へのアクセスを許可する
 description: Active Directory B2C を使用して ASP.NET Web API を保護し、ASP.NET Web アプリケーションからそれを呼び出す方法に関するチュートリアルです。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cc4db0f2fe8f5db41f6e8332a398029bd105f3af
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 77e3eaeffba862c727e021427e5f27967fcf35bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756344"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687998"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する
 
@@ -37,7 +37,7 @@ ms.locfileid: "55756344"
 
 ## <a name="add-a-web-api-application"></a>Web API アプリケーションを追加する
 
-アクセス トークンを表すクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
+アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
@@ -45,10 +45,10 @@ ms.locfileid: "55756344"
 4. **[アプリケーション]** を選択し、**[追加]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、*webapi1* とします。
 6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** と **[暗黙的フローを許可する]** には、**[はい]** を選択します。
-7. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、ポート `https://localhost:44332` でリッスンします。
+7. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`https://localhost:44332` でリッスンします。
 8. **[アプリケーション ID URI]** には、ご使用の Web API で使用される ID を入力します。 ドメインを含んだ完全な識別子 URI が自動的に生成されます。 たとえば、「 `https://contosotenant.onmicrosoft.com/api` 」のように入力します。
 9. **Create** をクリックしてください。
-10. プロパティ ページで、Web アプリケーションを構成するときに使用するアプリケーション ID を記録しておきます。
+10. プロパティ ページで、アプリケーション ID を記録しておきます。これは、Web アプリケーションを構成するときに使用します。
 
 ## <a name="configure-scopes"></a>スコープを構成する
 
@@ -64,7 +64,7 @@ ms.locfileid: "55756344"
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
-保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 前提条件のチュートリアルでは、*webapp1* という名前の Azure AD B2C に Web アプリケーションを作成しました。 このアプリケーションを使用して、Web API を呼び出します。
+保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 前提条件のチュートリアルでは、Azure AD B2C に *webapp1* という名前の Web アプリケーションを作成しました。 このアプリケーションを使用して、Web API を呼び出します。
 
 1. **[アプリケーション]** を選択し、*webapp1* を選択します。
 2. **[API アクセス]** を選択し、**[追加]** を選択します。
@@ -82,8 +82,8 @@ Web API を登録し、スコープを定義したので、Azure AD B2C テナ�
 
 サンプル ソリューションには次の 2 つのプロジェクトが含まれます。
 
-- **TaskWebApp** - タスク一覧を作成および編集します。 サンプルでは、**サインアップまたはサインイン**のユーザー フローを使用して、ユーザーがサインアップまたはサインインされます。
-- **TaskService** - タスク一覧の作成、読み取り、更新、削除の機能をサポートします。 API は Azure AD B2C によって保護されており、TaskWebApp によって呼び出されます。
+- **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーのサインアップまたはサインインを実行します。
+- **TaskService** - タスク リストの作成、読み取り、更新、削除の機能をサポートします。 API は Azure AD B2C によって保護されており、TaskWebApp によって呼び出されます。
 
 ### <a name="configure-the-web-application"></a>Web アプリケーションを構成する
 

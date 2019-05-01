@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a3087718a3eece1e19f05757ace64ba00aa0dc58
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680725"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682681"
 ---
 # <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 
@@ -34,10 +34,9 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Azure `Cognitive Services` リソース |コンテナーを使用するためには、以下が必要です。<br><br>_Cognitive Services_ Azure リソースおよび関連する課金キー (課金エンドポイント URI)。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。 `face/v1.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。 <br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
-
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
@@ -162,5 +161,4 @@ Face API コンテナーにより、Azure アカウントの _Face API_ リソ�
 * 構成設定について、[コンテナーの構成](face-resource-container-config.md)を確認する
 * [Face の概要](Overview.md)を確認して、顔の検出と識別の詳細を参照する  
 * コンテナーでサポートされるメソッドの詳細について、[Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) を参照する。
-* [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Face 機能に関連する問題を解決する。
-* さらに [Azure Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

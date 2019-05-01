@@ -1,20 +1,18 @@
 ---
 title: スクリプト アクション - Azure HDInsight の Jupyter で Python パッケージをインストールする
 description: スクリプト アクションを使用して HDInsight の Spark clusters で Jupyter notebooks を構成し、外部の Python パッケージを使用する方法に関する詳細な手順。
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 04/22/2019
+ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518679"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574650"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>スクリプト アクションを使用して HDInsight の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージをインストールする
 > [!div class="op_single_selector"]
@@ -76,10 +74,10 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. **作成**を選択します。  [カスタム スクリプト アクションの使用方法](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)に関するドキュメントを参照してください。
+5. **作成** を選択します。  [カスタム スクリプト アクションの使用方法](../hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントを参照してください。
 
 6. スクリプトが完了するのを待ちます。  **[スクリプト アクション]** ウィンドウには、スクリプトの実行中、"**新しいスクリプト アクションは、現在のクラスター操作の完了後に送信できます**" というメッセージが表示されます。  進捗状況バーが、Ambari UI の **[バック グラウンド操作]** ウィンドウに表示されます。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000931"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575406"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
@@ -44,7 +44,6 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | カナダ                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ケイマン諸島                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | チリ                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
-| クリッパートン島                                   |                 |                |              |      ✓     |                    |
 | コロンビア                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | コスタリカ                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | キューバ                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -98,12 +97,12 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | イギリス領インド洋地域                      |                 |                |              |      ✓     |          ✓         |
 | ブルネイ                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | カンボジア                                            |                 |                |              |      ✓     |          ✓         |
-| 中国                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
+| 中国                                               |                 |                |              |      ✓     |          ✓         |
 | クリスマス島                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | ココス諸島                             |                 |                |              |      ✓     |          ✓         |
 | コモロ                                             |                 |                |              |      ✓     |          ✓         |
 | クック諸島                                        |                 |                |              |      ✓     |          ✓         |
-| フィジー                                                |                  |                |              |      ✓     |          ✓         |
+| フィジー                                                |                  |                |              |      ✓     |          ✓        |
 | 仏領ポリネシア                                    |                 |                |              |      ✓     |          ✓         |
 | ハード島とマクドナルド諸島                   |                 |                |              |      ✓     |          ✓         |
 | 香港特別行政区                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

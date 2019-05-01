@@ -3,17 +3,17 @@ title: Power BI ワークスペース コレクションにおけるデータセ
 description: Power BI ワークスペース コレクション レポートをお使いのアプリケーションのデータセットから作成できるようになりました。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 92f75a15374738d02972adc012b3a28918d7825d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e7499345f03e3deedb8972b0d51e8e676cb6c982
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518815"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683451"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成
 

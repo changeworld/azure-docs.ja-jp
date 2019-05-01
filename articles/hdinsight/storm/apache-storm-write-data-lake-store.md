@@ -1,7 +1,6 @@
 ---
 title: Storage/Data Lake Storage への Apache Storm 書き込み - Azure HDInsight
 description: Apache Storm を使用して、HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 34056b3a562d3110569e05c5c50ae4d9dae2375a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4ba0c861674eb2308cf1f96c33d0792f3e1a0f94
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868138"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683679"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 

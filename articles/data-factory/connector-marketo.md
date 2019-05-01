@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400459"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 

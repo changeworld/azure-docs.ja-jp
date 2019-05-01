@@ -1,7 +1,6 @@
 ---
 title: HDInsight で ML Services クラスターを管理する - Azure
 description: Azure HDInsight で ML Services クラスターを管理する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6c57dff2e0f0c1edb887ddd8f0e5ca206ba8b912
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 607f85c10183366e88d597d84090f49fc30aff48
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110394"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687981"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 

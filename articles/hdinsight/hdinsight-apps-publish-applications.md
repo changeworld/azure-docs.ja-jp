@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight アプリケーションの発行
 description: HDInsight アプリケーションを作成して、Azure Marketplace に発行する方法を説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814195"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685320"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/marketplace-publishers-guide.md)に関する記事を参照してください。

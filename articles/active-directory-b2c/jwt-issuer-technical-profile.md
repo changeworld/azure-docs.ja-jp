@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで JWT トー�
 description: Azure Active Directory B2C 内のカスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 33dce27b69d080c57b925562ba83db0046b77ca9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436056"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683782"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 

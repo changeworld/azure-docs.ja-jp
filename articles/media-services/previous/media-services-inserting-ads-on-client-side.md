@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 8f5cdc33e48d647dba8caeb09b57e233d64712f6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484833"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687744"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -170,7 +170,7 @@ Application/x-shockwave-flash – リソースが Flash プレーヤーで表示
 
 **IFrameResource** は、IFrame で表示可能な HTML リソースを記述します。 **HTMLResource** は、Web ページに挿入可能な HTML コードを記述します。 **TrackingEvents** は、追跡イベントと、イベント発生時に要求する URI を指定します。 このサンプルでは、acceptInvitation イベントと collapse イベントが追跡されます。 **NonLinearAds** 要素とその子の詳細については、「IAB.NET/VAST」を参照してください。 **TrackingEvents** 要素は、**NonLinear** 要素ではなく **NonLinearAds** 要素にある点に注意してください。
 
-コンパニオン広告は、`<CompanionAds>` 要素内で定義されます。 `<CompanionAds>` 要素には、1 つ以上の `<Companion>` 要素を含めることができます。 各 `<Companion>` 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される `<StaticResource>`、`<IFrameResource>`、`<HTMLResource>` を含めることができます。 VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。 VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
+コンパニオン広告は、`<CompanionAds>` 要素内で定義されます。 `<CompanionAds>` 要素には、1 つ以上の `<Companion>` 要素を含めることができます。 各 `<Companion>` 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される `<StaticResource>`、`<IFrameResource>`、`<HTMLResource>` を含めることができます。 VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。 VAST の詳細については、「[VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Digital Video Multiple Ad Playlist (VMAP) ファイルの使用
 VMAP ファイルを使用すると、広告の中断がいつ発生するか、各中断の長さ、中断中に表示できる広告の数、中断中に表示できる広告の種類を指定できます。 1 つの広告の中断を定義する VMAP ファイルの例を次に示します。
@@ -243,7 +243,7 @@ VMAP ファイルの先頭は、1 つ以上の `<AdBreak>` 要素 (それぞれ�
 * `<AdTagURI>` - 別のシステムからの広告応答を参照する URI。
 * `<CustomAdData>` - VAST 以外の応答を表す任意の文字列。
 
-この例では、VAST 広告応答が含まれる `<VASTAdData>` 要素を使用してインライン広告応答が指定されます。 他の要素の詳細については、「 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)」をご覧ください。
+この例では、VAST 広告応答が含まれる `<VASTAdData>` 要素を使用してインライン広告応答が指定されます。 他の要素の詳細については、「 [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)」をご覧ください。
 
 <**AdBreak**> 要素には、1 つの <**TrackingEvents**> 要素を含めることもできます。 <**TrackingEvents**> 要素を使用すると、広告の中断の開始と終了を追跡したり、広告の中断中にエラーが発生したかどうかを追跡することができます。 <**TrackingEvents**> 要素には、1 つ以上の <**Tracking**> 要素が含まれており、それぞれ追跡イベントと追跡 URI を指定します。 指定できる追跡イベントは、次のとおりです。
 
@@ -363,7 +363,7 @@ VPAID は、実行可能広告ユニットがビデオ プレーヤーとやり�
     </MediaFiles>
 ```
 
-実行可能広告は、VAST 応答で `<Linear>` 要素または `<NonLinear>` 要素内の `<AdParameters>` 要素を使用して初期化できます。 `<AdParameters>` 要素の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。 Graph API の詳細については、「 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)」をご覧ください。
+実行可能広告は、VAST 応答で `<Linear>` 要素または `<NonLinear>` 要素内の `<AdParameters>` 要素を使用して初期化できます。 `<AdParameters>` 要素の詳細については、「[VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。 Graph API の詳細については、「 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)」をご覧ください。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>広告をサポートする Windows または Windows Phone 8 プレーヤーの実装
 Microsoft Media Platform:Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com)サイトからダウンロードできます。

@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight の安全な転送のストレージ アカウントで Hadoop クラスターを作成する
 description: 安全な転送が有効になっている Azure ストレージ アカウントで HDInsight クラスターを作成する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 15c0a3d90b4a6493c49b67058f1d989a4ab72346
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 10ec4b55bab741f19adaf193295659b7876fe02c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726852"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685218"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Apache Hadoop クラスターを作成する
 

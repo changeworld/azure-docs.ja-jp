@@ -8,16 +8,16 @@ ms.date: 02/22/2018
 ms.topic: include
 ms.service: iot-dps
 ms.custom: include file
-ms.openlocfilehash: e5f89e81ea0acbd658113090d554f1b1767f6c75
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c765547a3d67b2baa8fb2a73ee0bdeee9aa11019
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29764505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369689"
 ---
 > [!div class="op_single_selector"]
 > * [C](../articles/iot-dps/quick-create-simulated-device.md)
 > * [Java](../articles/iot-dps/quick-create-simulated-device-tpm-java.md)
 > * [C#](../articles/iot-dps/quick-create-simulated-device-tpm-csharp.md)
-> * [Node.JS](../articles/iot-dps/quick-create-simulated-device-tpm-node.md)
+> * [Node.js](../articles/iot-dps/quick-create-simulated-device-tpm-node.md)
 > * [Python](../articles/iot-dps/quick-create-simulated-device-tpm-python.md)

@@ -1,7 +1,6 @@
 ---
 title: Livy Spark を使用した Azure HDInsight での Spark クラスターへのジョブの送信
 description: Apache Spark REST API を使用して Spark ジョブを Azure HDInsight クラスターにリモート送信する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650509"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570484"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
@@ -31,13 +30,13 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark バッチ ジョブの送信
 バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[**AzCopy**](../../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
-    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
+    curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
 **例**:
 
 * Jar ファイルがクラスター ストレージ (WASB) にある場合
   
-        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+        curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
 * 入力ファイル (この例では input.txt) の一部として、jar ファイル名とクラス名を渡す場合
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -165,16 +164,6 @@ HDInsight 3.5 以上のクラスターでは、サンプル データ ファイ�
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure 仮想ネットワーク内でクラスターの Livy ジョブを送信する
 
 Azure 仮想ネットワーク内から HDInsight Spark クラスターに接続すると、クラスター上の Livy に直接接続することができます。 このような場合、Livy エンドポイントの URL は `http://<IP address of the headnode>:8998/batches` になります。 ここで、**8998** は、クラスター ヘッドノードで Livy が実行されているポートです。 非パブリック ポート上のサービスへのアクセスの詳細については、「[HDInsight 上の Hadoop サービスで使用されるポート](../hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
-
-## <a name="troubleshooting"></a>トラブルシューティング
-
-Spark クラスターへのリモート ジョブ送信に Livy を使用する際に、問題が発生する可能性があります。
-
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>追加のストレージからの外部 jar の使用がサポートされない
-
-**問題**:Livy Spark ジョブがクラスターに関連付けられている追加のストレージ アカウントから外部 jar を参照すると、ジョブが失敗します。
-
-**解決策:** 使用する jar が、HDInsight クラスターに関連付けられている既定のストレージで使用可能か確認してください。
 
 
 
