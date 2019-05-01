@@ -25,7 +25,7 @@ Azure App Configuration はデータのインポート操作とエクスポー�
 
 この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。
 
-## <a name="import-data"></a>Import data
+## <a name="import-data"></a>データのインポート
 
 インポートでは、手動で入力するのではなく、既存のソースから App Configuration ストアに構成データが取り込まれます。 インポート機能は、データをアプリ構成ストアに移行したり、複数ソースのデータを集計するために使用します。 App Configuration は、JSON、YAML、またはプロパティ ファイルからのインポートをサポートしています。
 
