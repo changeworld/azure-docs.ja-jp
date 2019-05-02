@@ -36,7 +36,7 @@ ms.locfileid: "59698203"
 |[受信 IP の制限](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
 |[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|❌いいえ|✅はい|✅はい|
 |[仮想ネットワーク統合のプレビュー (Azure ExpressRoute とサービス エンドポイント)](#preview-version-of-virtual-network-integration)|❌いいえ|⚠はい|⚠はい|✅はい|
-|[VNet](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
+|[ハイブリッド接続](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
 |[プライベート サイトへのアクセス](#private-site-access)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
 
 ⚠ プレビュー機能は実稼働用ではありません。
@@ -78,7 +78,7 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 
 プレビュー バージョンの仮想ネットワーク統合の使用の詳細については、「[関数アプリを Azure 仮想ネットワークに統合する](functions-create-vnet.md)」を参照してください。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続と
+## <a name="hybrid-connections"></a>ハイブリッド接続
 
 [ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、[App Service プラン](functions-scale.md#app-service-plan)および [App Service Environment](../app-service/environment/intro.md) で実行されている関数に使用できます。
 
