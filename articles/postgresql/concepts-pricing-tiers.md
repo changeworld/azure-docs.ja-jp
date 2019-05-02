@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532050"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712358"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -41,31 +41,25 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 
 コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 現在、Gen 4 と Gen 5 の 2 つの計算世代から選択できます。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz のプロセッサを基盤とします。 Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz のプロセッサを基盤とします。 Gen 4 と Gen 5 は、次のリージョンで使用できます ("○" は使用可能であることを表します)。 
 
-> [!IMPORTANT]
-> 2018 年 12 月 12 日以降、ブラジル南部、カナダ中部、カナダ東部、アジア太平洋、米国東部 2、インド中部、インド西部、西日本、米国中北部、米国西部の新規のお客様は、第 4 世代コンピューティング サーバーをプロビジョニングできなくなります。 これらのリージョンでは、2019 年 2 月 1 日以降、前に作成された第 4 世代コンピューティング サーバーが第 5 世代コンピューティングに移行されます。
->
-> [!IMPORTANT]
-> 2019 年 2 月 19 日以降、米国中部、米国東部、東日本、北ヨーロッパ、米国中南部、東南アジア、西ヨーロッパの新規のお客様は、第 4 世代コンピューティング サーバーをプロビジョニングできなくなります。 これらのリージョンでは、2019 年 4 月 1 日以降、以前に作成された第 4 世代コンピューティング サーバーが第 5 世代コンピューティングに移行されます。
-
 | **Azure のリージョン** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| 米国中央部 |  | X |
+| 米国中部 |  | X |
 | 米国東部 |  | X |
 | 米国東部 2 |  | X |
 | 米国中北部 |  | X |
-| 米国中南部 | X | X |
+| 米国中南部 |  | X |
 | 米国西部 |  | X |
 | 米国西部 2 |  | X |
 | ブラジル南部 |  | X |
 | カナダ中部 |  | X |
 | カナダ東部 |  | X |
-| 北ヨーロッパ | X | X |
+| 北ヨーロッパ |  | X |
 | 西ヨーロッパ |  | X |
 | フランス中部 |  | X |
 | 英国南部 |  | X |
 | 英国西部 |  | X |
 | 東アジア |  | X |
-| 東南アジア | X | X |
+| 東南アジア |  | X |
 | オーストラリア東部 |  | X |
 | オーストラリア中部 |  | X |
 | オーストラリア中部 2 |  | X |
@@ -73,7 +67,7 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 | インド中部 |  | X |
 | インド南部 |  | X |
 | インド西部 |  | X |
-| 東日本 | X | X |
+| 東日本 |  | X |
 | 西日本 |  | X |
 | 韓国中部 |  | X |
 | 韓国南部 |  | X |
@@ -97,7 +91,7 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 可変 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
+| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
 
 サーバーの作成中および作成後に、ストレージ容量を追加できます。 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 

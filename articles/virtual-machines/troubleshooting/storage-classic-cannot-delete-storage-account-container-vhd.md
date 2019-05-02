@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078161"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926150"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>クラシック ストレージ リソース削除エラーのトラブルシューティング
 この記事では、Azure のクラシック ストレージ アカウント、コンテナー、*.vhd ページ BLOB ファイルを削除しようとして次のいずれかのエラーが発生した場合のトラブルシューティング ガイダンスを提供します。 
@@ -37,7 +37,7 @@ Azure ディスクについて詳しくは、[こちら](../../virtual-machines/
 3. ディスクのリースが解除されると、ページ BLOB 自体を削除できます。 ストレージ アカウントまたはコンテナーは、それらに存在する "ディスク" リソースがすべて削除されると、削除できます。
 
 >[!NOTE] 
->ユーザーが VM を削除しても VHD を削除しなければ、ページ BLOB の *.vhd ファイルに対して引き続きストレージ料金が発生します。 この料金は、ストレージ アカウントの種類に基づきます。詳細については、[価格のページ](https://azure.microsoft.com/en-us/pricing/details/storage/)を参照してください。 ユーザーは VHD を使用する予定がなくなったら、それらを削除してそれ以上課金されないようにしてください。 
+>ユーザーが VM を削除しても VHD を削除しなければ、ページ BLOB の *.vhd ファイルに対して引き続きストレージ料金が発生します。 この料金は、ストレージ アカウントの種類に基づきます。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/storage/)を参照してください。 ユーザーは VHD を使用する予定がなくなったら、それらを削除してそれ以上課金されないようにしてください。 
 
 ## <a name="unable-to-delete-storage-account"></a>ストレージ アカウントを削除できない 
 

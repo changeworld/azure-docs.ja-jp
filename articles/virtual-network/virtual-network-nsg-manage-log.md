@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Azure ネットワーク セキュリティ グループのイベントとルール カウンター診断ログを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
-ms.author: jdial
-ms.openlocfilehash: f718e57e257a79a18ad4d0b6b47c10f855b6db60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007001"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714681"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
 

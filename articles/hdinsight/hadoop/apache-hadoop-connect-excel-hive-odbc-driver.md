@@ -2,7 +2,6 @@
 title: Hive ODBC ドライバーを使用して Excel を Apache Hadoop に接続する - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 keywords: hadoop excel,hive excel,hive odbc
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3a47b18051036e925e54b9507bf2cb4e40aad844
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 37fed781629351475b384ac843a588bdaf7b5b66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202526"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718163"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -53,7 +52,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンに
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
    |  ホスト |「&lt;HDInsightClusterName&gt;.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
-   |  ポート |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
+   |  Port |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
    |  Database |<strong>既定値</strong>を使用します。 |
    |  メカニズム |<strong>Azure HDInsight サービス</strong>を選択します。 |
    |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は <strong>admin</strong>です。 |

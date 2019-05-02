@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618211"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693262"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow でのワークフロー定義言語の関数リファレンス
 
@@ -1344,7 +1344,7 @@ dataUri('hello')
 
 データ URI (Uniform Resource Identifier) のバイナリ バージョンを返します。
 [decodeDataUri()](#decodeDataUri) ではなく、この関数を使用してください。
-どちらの関数も機能は同じですが、`decodeDataUri()` をお勧めします。
+どちらの関数も機能は同じですが、`dataUriBinary()` をお勧めします。
 
 ```
 dataUriToBinary('<value>')

@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure Portal を使用した仮想ネットワークの作成について説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 11/30/2018
-ms.author: jdial
-ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.author: kumud
+ms.openlocfilehash: 995bc8e7b2eb4e9160b2b625067f20324df2cbfd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020831"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717029"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure ポータルを使用した仮想ネットワークの作成
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | リソース グループ | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、**[OK]** を選択します。 |
-    | 場所 | **[米国東部]** を選択します。|
+    | Location | **[米国東部]** を選択します。|
     | サブネット - 名前 | 「*myVirtualSubnet*」と入力します。 |
     | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
 
@@ -68,8 +68,8 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | 仮想マシン名 | 「*myVm1*」と入力します。 |
     | リージョン | **[米国東部]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
-    | イメージ | 既定値 **[Microsoft Windows Server 2016 Datacenter]** をそのまま使用します。 |
-    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | Image | 既定値 **[Microsoft Windows Server 2016 Datacenter]** をそのまま使用します。 |
+    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | パスワード | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
     | Setting | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[myVirtualNetwork]** のままにします。 |
-    | サブネット | 既定値 **[myVirtualSubnet (10.1.0.0/24)]** のままにします。 |
+    | Subnet | 既定値 **[myVirtualSubnet (10.1.0.0/24)]** のままにします。 |
     | パブリック IP | 既定値 **(new) myVm-ip\((新規) myVm-ip** のままにします。 |
     | ネットワーク セキュリティ ポート | **[選択したポートを許可する]** を選択します。 |
     | 受信ポートの選択 | **[HTTP]** と **[RDP]** を選択します。

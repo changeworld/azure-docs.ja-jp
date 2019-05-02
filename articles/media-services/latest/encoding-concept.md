@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: ed798995807f4037f0127b08e25e04bdd0340d42
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617633"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724304"
 ---
 # <a name="encoding-with-media-services"></a>Media Services でのエンコード
 
@@ -90,6 +90,10 @@ Media Services では、特定のエンコーディング ニーズと要件を�
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
+
+## <a name="provide-feedback"></a>フィードバックの提供
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

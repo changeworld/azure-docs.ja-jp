@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5ad846a3d8a304e01425407cb2bf5297c36615e7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 5df666dc2bd574c168d6b5f65dd6a909564a921f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257955"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868422"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal を使用したオン デマンド コンテンツ配信の概要
 
-[!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このチュートリアルでは、Azure Portal での Azure Media Services アプリケーションによる基本的なビデオ オン デマンド コンテンツ配信サービスの実装手順を紹介します。
 
@@ -56,13 +57,13 @@ ms.locfileid: "58257955"
 4. **[開始]** アイコンを選択します。
 5. **[保存]** を選択します。
 
-## <a name="upload-files"></a>ファイルのアップロード
+## <a name="upload-files"></a>ファイルをアップロードする
 Media Services を使用してビデオをストリーミングするには、ソース ビデオをアップロードし、複数のビットレートにエンコードして発行します。 このセクションで最初の手順を説明します。 
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** > **[資産]** を参照してください。 次に、**[アップロード]** ボタンを選択します。
    
-    ![ファイルのアップロード](./media/media-services-portal-vod-get-started/media-services-upload.png)
+    ![ファイルをアップロードする](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
     **[Upload a video asset (ビデオ アセットのアップロード)]** ウィンドウが表示されます。
    
@@ -90,7 +91,7 @@ Azure Portal で Media Encoder Standard を使用してコンテンツをエン�
    リソースを管理しやすくするために、出力アセットの名前とジョブの名前を編集することができます。
    
    ![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. **作成**を選択します。
+5. **作成** を選択します。
 
 ### <a name="monitor-encoding-job-progress"></a>エンコード ジョブの進行状況の監視
 エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** を選択し、**[ジョブ]** を選択します。

@@ -1,7 +1,6 @@
 ---
 title: クラスター サイズのスケーリング - Azure HDInsight
 description: ワークロードに合わせて HDInsight クラスターをスケーリングします。
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: d2eaab80abed6615f46ef190bae56b8a70db2888
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050681"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698242"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
@@ -35,7 +34,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
 |[Azure クラシック CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count>|
-|[Azure ポータル](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
+|[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
 ![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
 
@@ -328,5 +327,5 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 ## <a name="next-steps"></a>次の手順
 
 * [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)
-* [クラスターのスケール](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [クラスターのスケーリング](hdinsight-administer-use-portal-linux.md#scale-clusters)
 * [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)

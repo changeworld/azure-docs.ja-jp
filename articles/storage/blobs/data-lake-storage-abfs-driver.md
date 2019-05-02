@@ -2,18 +2,19 @@
 title: Azure Data Lake Storage Gen2 用の Azure BLOB ファイルシステム ドライバー
 description: ABFS Hadoop ファイルシステム ドライバー
 services: storage
-author: jamesbak
+author: normesta
 ms.topic: conceptual
-ms.author: jamesbak
+ms.author: normesta
+ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 57cda4d07315c6c37c2ce51f530fb081949b628c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011078"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939496"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でのユーザー移行の方法 | Microsoft 
 description: Graph API を使用した、および任意で Azure AD B2C のカスタム ポリシーを使用した、ユーザー移行の主要かつ高度なコンセプトについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 09b219fe173be9ba2fd515facce9964b5edc67af
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: a4195d7c292100712e6d68831443369ab793bb95
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621317"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726123"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C:ユーザー移行
 ご利用の ID プロバイダーを Azure Active Directory B2C (Azure AD B2C) に移行する場合は、ユーザー アカウントも移行する必要がある場合があります。 この記事では、既存のユーザー アカウントを ID プロバイダーから Azure AD B2C に移行する方法を説明します。 この記事の内容はこうしなければならないというものではなく、いくつかのシナリオを紹介しています。 どちらの方法が適しているかは、開発者が判断してください。
@@ -64,7 +64,7 @@ Graph API と通信するには、まず管理特権を持つサービス アカ
    - **[名前]** には、「**B2CUserMigratioin**」または他の任意の名前を入力します。
    - **[アプリケーションの種類]** には **[Web アプリ/API]** を使用します。
    - **[サインオン URL]** には、(このアプリケーションには関係がないので)「`https://localhost`」と入力します。
-   - **作成**を選択します。
+   - **作成** を選択します。
    
 1. アプリケーションを作成したら、**[アプリケーション]** 一覧から、新しく作成された **B2CUserMigratioin** アプリケーションを選択します。
    

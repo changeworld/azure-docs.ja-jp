@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861906"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917657"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
@@ -42,7 +42,7 @@ ms.locfileid: "58861906"
 
 パスワードの設定 (パスワードのリセットとも呼ばれます) は、たとえば Active Directory ユーザーとコンピューターの管理ツールを使用して、管理者がアカウントのパスワードを新しいパスワードに置き換える場合のアクションです。 この操作には高いレベルの特権 (通常はドメイン管理者) が必要であり、通常、操作を実行する担当者は古いパスワードを知りません。 ヘルプ デスクのシナリオでこのアクションがよく行われます。たとえば、パスワードを忘れたユーザーを支援する場合などです。 また、パスワードを指定して新しいユーザー アカウントを初めて作成するときにもパスワードの設定イベントが発生します。
 
-パスワード検証ポリシーは、実行されているのがパスワードの変更か設定かに関係なく同じように動作します。 Azure AD パスワード保護 DC エージェント サービスは、パスワードの変更または設定操作が行われたかどうかをユーザーに通知するために、さまざまなイベントをログに記録します。  「[Azure AD パスワード保護の監視とログ記録](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)」をご覧ください。
+パスワード検証ポリシーは、実行されているのがパスワードの変更か設定かに関係なく同じように動作します。 Azure AD パスワード保護 DC エージェント サービスは、パスワードの変更または設定操作が行われたかどうかをユーザーに通知するために、さまざまなイベントをログに記録します。  「[Azure AD パスワード保護の監視とログ記録](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)」をご覧ください。
 
 **Q:その他のパスワード フィルター ベースの製品とサイド バイ サイドで Azure AD パスワード保護をインストールすることはサポートされていますか?**
 

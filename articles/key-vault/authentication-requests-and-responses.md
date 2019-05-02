@@ -2,23 +2,19 @@
 title: 認証、要求、応答
 description: Key Vault を使用するために AD に対する認証を行います
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ca486768cf56059328801b1b4b1036bb8aeece8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4160d6ce324cf419cd4b9a61b68bb39b0443321c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081782"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694732"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
@@ -43,7 +39,7 @@ Azure Key Vault は、JSON 形式の要求と応答をサポートします。 A
 
   キーは常に /keys パスの下に格納され、シークレットは常に /secrets パスの下に格納されます。  
 
-## <a name="api-version"></a>API バージョン  
+## <a name="api-version"></a>API Version  
  Azure Key Vault サービスはダウンレベルのクライアントとの互換性を提供するためにプロトコルのバージョン管理をサポートしますが、それらのクライアントですべての機能を使用することはできません。 既定値が存在しないため、クライアントは `api-version` クエリ文字列パラメーターを使って、サポートするプロトコルのバージョンを指定する必要があります。  
 
  Azure Key Vault のプロトコルのバージョンは、{YYYY}.{MM}.{DD} という形式を使用する日付番号付け方式に従います。  

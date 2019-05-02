@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 50bb13ecaa9e6076f00749d54b492a1e6663a93e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 2708efc22d373db6ee55dfee6b8adfa35bd450ef
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287113"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924351"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>クイック スタート:.NET を使用してオブジェクト ストレージ内に BLOB を作成する
 
@@ -48,13 +48,13 @@ ms.locfileid: "58287113"
 
 このクイックスタートで使うサンプル アプリケーションは、基本的なコンソール アプリケーションです。 [GitHub](https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart) でサンプル アプリケーションを調べることができます。
 
-アプリケーションのコピーを開発環境にダウンロードするには、[git](https://git-scm.com/) を使います。 
+アプリケーションのコピーを開発環境にダウンロードするには、[git](https://git-scm.com/) を使います。
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、*storage-blobs-dotnet-quickstart* フォルダーを開き、*storage-blobs-dotnet-quickstart.sln* をダブルクリックします。 
+このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、*storage-blobs-dotnet-quickstart* フォルダーを開き、*storage-blobs-dotnet-quickstart.sln* をダブルクリックします。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -70,7 +70,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-実行中のプログラムのうち、環境変数の読み取りを必要とするプログラム (コンソール ウィンドウを含む) については、環境変数を追加した後で再起動が必要となる場合があります。 たとえば、Visual Studio をエディターとして使用している場合、サンプルを実行する前に Visual Studio を再起動する必要があります。 
+実行中のプログラムのうち、環境変数の読み取りを必要とするプログラム (コンソール ウィンドウを含む) については、環境変数を追加した後で再起動が必要となる場合があります。 たとえば、Visual Studio をエディターとして使用している場合、サンプルを実行する前に Visual Studio を再起動する必要があります。
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -85,7 +85,7 @@ export storageconnectionstring=<yourconnectionstring>
 次のように .bash_profile を編集し、環境変数を追加します。
 
 ```bash
-export STORAGE_CONNECTION_STRING=<yourconnectionstring>
+export storageconnectionstring=<yourconnectionstring>
 ```
 
 環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
@@ -94,15 +94,15 @@ export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
-このサンプルは、ローカルの **[マイ ドキュメント]** フォルダーにテスト ファイルを作成し、BLOB ストレージにアップロードします。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。 
+このサンプルは、ローカルの **[マイ ドキュメント]** フォルダーにテスト ファイルを作成し、BLOB ストレージにアップロードします。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-Visual Studio をエディターとして使用している場合は、**F5** キーを押して実行することができます。 
+Visual Studio をエディターとして使用している場合は、**F5** キーを押して実行することができます。
 
 それ以外の場合は、お使いのアプリケーションのディレクトリに移動し、`dotnet run` コマンドを使ってアプリケーションを実行します。
 
-```
+```console
 dotnet run
 ```
 
@@ -110,7 +110,7 @@ dotnet run
 
 お使いのアプリケーションのディレクトリに移動し、`dotnet run` コマンドを使ってアプリケーションを実行します。
 
-```
+```console
 dotnet run
 ```
 
@@ -118,7 +118,7 @@ dotnet run
 
 お使いのアプリケーションのディレクトリに移動し、`dotnet run` コマンドを使ってアプリケーションを実行します。
 
-```
+```console
 dotnet run
 ```
 
@@ -126,7 +126,7 @@ dotnet run
 
 サンプル アプリケーションの出力は次の例のようになります。
 
-```
+```output
 Azure Blob storage - .NET Quickstart sample
 
 Created container 'quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f'
@@ -144,7 +144,7 @@ Press any key to delete the sample files and example container.
 
 **Enter** キーを押すと、ストレージ コンテナーとファイルが削除されます。 削除する前に、**[マイ ドキュメント]** フォルダーで 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。 コンソール ウィンドウから BLOB の URL をコピーしてブラウザーに貼り付け、BLOB の内容を表示します。
 
-ファイルを確認した後、任意のキーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、Program.cs ファイルを開いてコードを確認します。 
+ファイルを確認した後、任意のキーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、Program.cs ファイルを開いてコードを確認します。
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
@@ -184,23 +184,22 @@ else
 
 次に、このサンプルは、コンテナーを作成し、コンテナー内のすべての BLOB がパブリックになるようにアクセス許可を設定します。 BLOB がパブリックの場合は、すべてのクライアントが匿名でアクセスすることができます。
 
-コンテナーを作成するには、まず、ストレージ アカウント内の BLOB ストレージを指す [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) オブジェクトのインスタンスを作成します。 次に、[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) オブジェクトのインスタンスを作成し、コンテナーを作成します。 
+コンテナーを作成するには、まず、ストレージ アカウント内の BLOB ストレージを指す [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) オブジェクトのインスタンスを作成します。 次に、[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) オブジェクトのインスタンスを作成し、コンテナーを作成します。
 
 この場合、サンプルはコンテナーを作成するために [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync) メソッドを呼び出します。 コンテナー名には、一意になるように、GUID 値が追加されます。 運用環境では、[CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync) メソッドの使用が望ましいことがよくあります。コンテナーがまだ存在していない場合にだけ作成することで、名前の競合を避けられるようにするためです。
 
 > [!IMPORTANT]
 > コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-
 ```csharp
 // Create the CloudBlobClient that represents the Blob storage endpoint for the storage account.
 CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
 
-// Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique. 
+// Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique.
 CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("quickstartblobs" + Guid.NewGuid().ToString());
 await cloudBlobContainer.CreateAsync();
 
-// Set the permissions so the blobs are public. 
+// Set the permissions so the blobs are public.
 BlobContainerPermissions permissions = new BlobContainerPermissions
 {
     PublicAccess = BlobContainerPublicAccessType.Blob
@@ -210,7 +209,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
-次に、このサンプルは、ローカル ファイルをブロック BLOB にアップロードします。 このコード例では、前のセクションで作成したコンテナーで [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) メソッドを呼び出して、**CloudBlockBlob** オブジェクトへの参照を取得します。 次に、[UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync) メソッドを呼び出して、選択されたファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。 
+次に、このサンプルは、ローカル ファイルをブロック BLOB にアップロードします。 このコード例では、前のセクションで作成したコンテナーで [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) メソッドを呼び出して、**CloudBlockBlob** オブジェクトへの参照を取得します。 次に、[UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync) メソッドを呼び出して、選択されたファイルを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -248,7 +247,7 @@ do
     {
         Console.WriteLine(item.Uri);
     }
-} while (blobContinuationToken != null); // Loop while the continuation token is not null. 
+} while (blobContinuationToken != null); // Loop while the continuation token is not null.
 
 ```
 
@@ -257,7 +256,7 @@ do
 このサンプルは、次に [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用して、以前に作成した BLOB をローカル ファイル システムにダウンロードします。 サンプル コードは、ローカル ファイル システムで両方のファイルを見ることができるように、BLOB の名前に "_DOWNLOADED" というサフィックスを追加します。
 
 ```csharp
-// Download the blob to a local file, using the reference created earlier. 
+// Download the blob to a local file, using the reference created earlier.
 // Append the string "_DOWNLOADED" before the .txt extension so that you can see both files in MyDocuments.
 destinationFile = sourceFile.Replace(".txt", "_DOWNLOADED.txt");
 Console.WriteLine("Downloading blob to {0}", destinationFile);
@@ -288,7 +287,7 @@ BLOB ストレージを使用する .NET 開発については、以下の追加
 
 ### <a name="binaries-and-source-code"></a>バイナリとソース コード
 
-- Azure Storage 用の [.NET クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンの NuGet パッケージをダウンロードします。 
+- Azure Storage 用の [.NET クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンの NuGet パッケージをダウンロードします。
 - GitHub で [.NET クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net)を確認します。
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
@@ -298,7 +297,7 @@ BLOB ストレージを使用する .NET 開発については、以下の追加
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、.NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明しました。 
+このクイック スタートでは、.NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明しました。
 
 BLOB ストレージに画像をアップロードする Web アプリの作成方法を学習するには、「[Azure Storage を使用してクラウドに画像データをアップロードする](storage-upload-process-images.md)」に進んでください。
 
@@ -307,4 +306,3 @@ BLOB ストレージに画像をアップロードする Web アプリの作成�
 
 - .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
 - Windows 用 Visual Studio からデプロイできるサンプル アプリケーションを調べるには、「[.NET Photo Gallery Web Application Sample with Azure Blob Storage (Azure Blob Storage を使用した .NET フォト ギャラリー Web アプリケーション サンプル)](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)」を参照してください。
- 

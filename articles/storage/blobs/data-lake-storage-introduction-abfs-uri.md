@@ -2,18 +2,19 @@
 title: Azure Data Lake Storage Gen2 の URI を使用する
 description: Azure Data Lake Storage Gen2 の URI を使用する
 services: storage
-author: jamesbak
+author: normesta
 ms.topic: conceptual
-ms.author: jamesbak
+ms.author: normesta
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e4f148ac6f66cfbd7d89eff3623418197c2e0a33
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.reviewer: jamesbak
+ms.openlocfilehash: 3f486da121927be23a6bd86e8567574cd95c541e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681184"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939277"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 の URI を使用する
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a1dadc29006a365f7e614db5722fa0e92e0129d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900490"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922504"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Speech Devices SDK (プレビュー) について
 
@@ -39,7 +39,7 @@ Speech Devices SDK を使用すると、ドライブスルー注文システム�
 
 |||
 |-|-|
-|[![ROOBO のロゴ](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO は、家電製品、自動車、ロボット、玩具などの業界向けの完全な人工知能 (AI) システム ソリューションを提供しています。 ROOBO のリファレンス デザインは、Azure Speech Services との統合によって、開発から市場投入までの時間を大幅に短縮します。 [ROOBO のページを参照](http://ddk.roobo.com/)してください。|
+|[![ROOBO のロゴ](media/speech-devices-sdk/roobo-logo.png)](https://ddk.roobo.com/)|ROOBO は、家電製品、自動車、ロボット、玩具などの業界向けの完全な人工知能 (AI) システム ソリューションを提供しています。 ROOBO のリファレンス デザインは、Azure Speech Services との統合によって、開発から市場投入までの時間を大幅に短縮します。 [ROOBO のページを参照](https://ddk.roobo.com/)してください。|
 
 ## <a name="next-steps"></a>次の手順
 

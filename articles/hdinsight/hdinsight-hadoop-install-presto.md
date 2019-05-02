@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight Linux クラスターに Presto をインストールする
 description: スクリプト アクションを使用して Linux ベースの HDInsight Hadoop クラスターに Presto と Airpal をインストールする方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 435c041bb5fb0a398f92914f943166108cc20080
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2bd5e1ae02ffbb62b9a5a95846aabeeab2b448b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258345"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704813"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Hadoop ベースの HDInsight クラスターに Presto をインストールして使用する
 
@@ -26,7 +25,7 @@ HDInsight では、Apache Hadoop クラスター向けの Starburst Presto ア�
 > この記事の手順では、Linux を使用する HDInsight 3.5 Hadoop クラスターが必要です。 Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。
 
 ## <a name="what-is-presto"></a>Presto とは
-[Presto](https://prestodb.io/overview.html) は、ビッグ データ用の高速な分散 SQL クエリ エンジンです。 Presto は、ペタバイト級のデータに対して対話型クエリを実行するのに適しています。 Presto のコンポーネントと、それらのコンポーネントがどのように連携するかについては、「[Presto concepts (Presto の概念)](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst)」を参照してください。
+[Presto](https://prestosql.io) は、ビッグ データ用の高速な分散 SQL クエリ エンジンです。 Presto は、ペタバイト級のデータに対して対話型クエリを実行するのに適しています。 Presto のコンポーネントと、それらのコンポーネントがどのように連携するかについては、「[Presto concepts (Presto の概念)](https://prestosql.io/docs/current/overview/concepts.html)」を参照してください。
 
 > [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
@@ -86,9 +85,9 @@ HDInsight クラスターで Presto を使用するには、次の手順のよ�
    
     `select count (*) from hivesampletable;`
    
-    既定では、Presto 用に [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) コネクタと [TPCH](https://prestodb.io/docs/current/connector/tpch.html) コネクタが既に構成されています。 Hive コネクタは、Hive の既定のインストールを使用するように構成されます。 そのため、Hive のすべてのテーブルが、Presto に自動的に表示されます。
+    既定では、Presto 用に [Apache Hive](https://prestosql.io/docs/current/connector/hive.html) コネクタと [TPCH](https://prestosql.io/docs/current/connector/tpch.html) コネクタが既に構成されています。 Hive コネクタは、Hive の既定のインストールを使用するように構成されます。 そのため、Hive のすべてのテーブルが、Presto に自動的に表示されます。
 
-    詳細については、[Presto のドキュメンテーション](https://prestodb.io/docs/current/index.html)を参照してください。
+    詳細については、[Presto のドキュメンテーション](https://prestosql.io/docs/current/index.html)を参照してください。
 
 ## <a name="use-airpal-with-presto"></a>Presto での Airpal の使用
 
@@ -151,7 +150,7 @@ HDInsight クラスターで Presto を使用するには、次の手順のよ�
    
     詳しくは、「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-2. `/var/lib/presto/presto-hdinsight-master/appConfig-default.json` ファイルの構成を変更します。 Presto の構成について詳しくは、「[Presto configuration options for YARN-based clusters (YARN ベースのクラスターの Presto 構成オプション)](https://prestodb.io/presto-yarn/installation-yarn-configuration-options.html)」をご覧ください。
+2. `/var/lib/presto/presto-hdinsight-master/appConfig-default.json` ファイルの構成を変更します。 Presto の構成について詳しくは、「[Presto configuration options for YARN-based clusters (YARN ベースのクラスターの Presto 構成オプション)](https://prestosql.github.io/presto-yarn/installation-yarn-configuration-options.html)」をご覧ください。
 
 3. Presto の現在実行中のインスタンスを停止し、中止します。
 

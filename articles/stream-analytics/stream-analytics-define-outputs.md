@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609491"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926056"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できる出力の種類について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、お手元のデータのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。
@@ -182,7 +182,7 @@ Power BI では、先入れ先出し (FIFO) のアイテム保持ポリシーが
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Stream Analytics から Power BI にデータ型を変換する
 Azure Stream Analytics では、出力スキーマが変更されると、データ モデルが実行時に動的に更新されます。 列名の変更、列の型の変更、列の追加または削除は、すべて追跡されます。
 
-次の表は、Power BI データセットとテーブルが存在しない場合の、[Stream Analytics データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)から Power BI の [Entity Data Model (EDM) 型](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-data-model)へのデータ型の変換を示します。
+次の表は、Power BI データセットとテーブルが存在しない場合の、[Stream Analytics データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)から Power BI の [Entity Data Model (EDM) 型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)へのデータ型の変換を示します。
 
 Stream Analytics から | Power BI へ
 -----|-----

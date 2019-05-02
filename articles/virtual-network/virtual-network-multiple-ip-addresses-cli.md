@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Azure コマンド ライン インターフェイス (CLI) を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: jimdial
-ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: kumud
+ms.openlocfilehash: 3b00bbb5903156da625b7caaca9b1a2cff212421
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648335"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699358"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 

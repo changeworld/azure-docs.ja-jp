@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896264"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712438"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -96,7 +96,7 @@ DSVM インスタンスを作成するには:
    1. **設定**:  
       * **[Managed Disks を使用]**。 Azure で VM のディスクを管理する場合、**[管理済み]** を選択します。 管理しない場合は、新規または既存のストレージ アカウントを指定する必要があります。  
       * **その他のパラメーター**。 既定値を使用できます。 既定値以外の値の使用する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
-   1. **概要**:入力したすべての情報が正しいことを確認します。 **作成**を選択します。
+   1. **概要**:入力したすべての情報が正しいことを確認します。 **作成** を選択します。
 
 > [!NOTE]
 > * **[サイズ]** ステップで選択したサーバー サイズのコンピューティング コストを超える追加の課金が VM で発生することはありません。
@@ -116,7 +116,7 @@ Machine Learning Server Developer エディションが VM にインストール
 
 Machine Learning Server では、さまざまなビッグ データ統計、予測モデリング、機械学習のタスクがサポートされます。 幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。 Machine Learning Server は、オープン ソースの R と Python を使用して拡張することで、R と Python のスクリプトおよび関数と互換性があります。 また、エンタープライズ規模でのデータ分析のために、CRAN、pip、および Conda パッケージとの互換性もあります。
 
-Machine Learning Server は、データの並列処理とチャンク処理を追加することで、オープン ソース R のメモリ内制限に対処します。 これにより、メイン メモリに収まりきるよりもはるかに大きなデータに対して、分析を実行することができます。 VM には Visual Studio Community が含まれています。 R Tools for Visual Studio と、R または Python を操作するための完全な IDE を提供する Python Tools for Visual Studio (PTVS) 拡張機能が含まれています。 また、[RStudio](http://www.rstudio.com) や [PyCharm Community エディション](https://www.jetbrains.com/pycharm/)などの他の IDE も VM 上に提供しています。
+Machine Learning Server は、データの並列処理とチャンク処理を追加することで、オープン ソース R のメモリ内制限に対処します。 これにより、メイン メモリに収まりきるよりもはるかに大きなデータに対して、分析を実行することができます。 VM には Visual Studio Community が含まれています。 R Tools for Visual Studio と、R または Python を操作するための完全な IDE を提供する Python Tools for Visual Studio (PTVS) 拡張機能が含まれています。 また、[RStudio](https://www.rstudio.com) や [PyCharm Community エディション](https://www.jetbrains.com/pycharm/)などの他の IDE も VM 上に提供しています。
 
 ### <a name="python"></a>Python
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48ce99bd830d2c35e5cb9703d2ef754a602d534b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110284"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926142"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス
 
@@ -331,7 +331,7 @@ VM ワークロードは、多くの場合、ダウンタイムを回避する�
 
 **詳細情報**:
 - Azure Functions [について学びます](https://azure.microsoft.com/services/functions/)
-- Azure Batch の[詳細を確認します](https://azure.microsoft.com/en-us/services/batch/)
+- Azure Batch の[詳細を確認します](https://azure.microsoft.com/services/batch/)
   
 ## <a name="next-steps"></a>次の手順 
 

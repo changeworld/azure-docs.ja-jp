@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00666e27c9251248aa6ecff75d88908baabf71f3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862711"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919725"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 
@@ -40,7 +40,7 @@ ASC for IoT の価格モデルは 2 つの部分で構成され、ASC for IoT �
   >[!Note]
   > セキュリティ メッセージには、IoT Hub でのクォータ消費額もかかります。
 
-詳しくは、「[Security Center の価格](https://azure.microsoft.com/en-us/pricing/details/security-center/)」をご覧ください。
+詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
 ## <a name="associated-costs"></a>関連コスト
 
@@ -65,7 +65,7 @@ ASC for IoT には、直接的な価格には含まれない 2 種類の関連�
 |     | 使用法 | Comment (コメント) |
 | --- | --- | --- |
 | **IoT Hub のクォータ消費額** |  |
-| [デバイスのエクスポート](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) ジョブ (ツイン エクスポート) | 1 回 (1 日あたり) | "_ツイン メタデータ コレクション_" を無効にします |
+| [デバイスのエクスポート](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) ジョブ (ツイン エクスポート) | 1 回 (1 日あたり) | "_ツイン メタデータ コレクション_" を無効にします |
 | **Log Analytics ストレージ** |  |
 | デバイスの推奨事項とアラート| サービスによって生成されるセキュリティ推奨事項とアラート | 非オプション |
 | 生セキュリティ データ| セキュリティ エージェントによって収集される、IoT デバイスからの生セキュリティ データ | "_生デバイス セキュリティ イベントの保存_" を無効にします |

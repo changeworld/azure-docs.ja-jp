@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793388"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701563"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 
@@ -52,7 +52,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry008 --s
 ここでは、Azure Container Registry を使用してイメージをビルドします。 まず、作業ディレクトリを作成してから、次のコンテンツを含む *Dockerfile* という名前の Dockerfile を作成します。 これは、Linux コンテナー イメージをビルドする単純な例ですが、独自の標準的な Dockerfile を作成して他のプラットフォーム用のイメージをビルドできます。
 
 ```bash
-echo "FROM hello-world" > Dockerfile
+echo FROM hello-world > Dockerfile
 ```
 
 [az acr build][az-acr-build] コマンドを実行してイメージをビルドします。 正常にビルドされると、イメージがレジストリにプッシュされます。 次の例では、`sample/hello-world:v1` イメージをプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。

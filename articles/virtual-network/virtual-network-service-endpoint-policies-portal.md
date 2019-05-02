@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: この記事では、Azure portal を使用してサービス エンドポイント ポリシーを設定し、関連付ける方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: anithaa
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
-ms.author: anithaa
-ms.openlocfilehash: aaa07759ed8b10578d024d5838ac1d2658778695
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999876"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710919"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal を使用してサービス エンドポイント ポリシーを作成、変更、または削除する
 

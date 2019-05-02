@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176392"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729535"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -52,7 +52,7 @@ ms.locfileid: "56176392"
 | userPrincipalName |X |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | assistant |X |X | | |
@@ -158,7 +158,6 @@ ms.locfileid: "56176392"
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード同期とフェデレーションの両方で使用されます。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |groupType から派生 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | st |X |X | | |
@@ -176,7 +175,7 @@ ms.locfileid: "56176392"
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | authOrig |X |X |X | |
@@ -241,7 +240,6 @@ ms.locfileid: "56176392"
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |groupType から派生 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | st |X |X | | |
@@ -258,7 +256,7 @@ ms.locfileid: "56176392"
 | wWWHomePage |X |X | | |
 
 ## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (後続製品: Skype for Business)
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
@@ -294,7 +292,6 @@ ms.locfileid: "56176392"
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
-| securityEnabled | | |X |groupType から派生 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | st |X |X | | |
@@ -307,7 +304,7 @@ ms.locfileid: "56176392"
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | cn |X | |X |共通名または別名です。 多くの場合、[mail] 値のプレフィックスです。 |
@@ -317,13 +314,12 @@ ms.locfileid: "56176392"
 | objectSID |X | |X |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
 | proxyAddresses |X |X |X |機械的なプロパティ。 Azure AD によって使用されます。 ユーザー向けのすべてのセカンダリの電子メール アドレスが含まれています。 |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 |
-| securityEnabled | | |X |groupType から派生。 |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |この UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="intune"></a>Intune
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
@@ -336,13 +332,12 @@ ms.locfileid: "56176392"
 | objectSID |X | |X |機械的なプロパティ。 Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。 |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
-| securityEnabled | | |X |groupType から派生 |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | c |X |X | | |
@@ -364,7 +359,6 @@ ms.locfileid: "56176392"
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
-| securityEnabled | | |X |groupType から派生 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
 | st |X |X | | |
@@ -382,7 +376,7 @@ ms.locfileid: "56176392"
 
 このグループは、Office 365、Dynamics、または Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる属性セットです。 この中には、少数のコア属性が含まれます。
 
-| 属性名 | User | Contact | グループ | Comment (コメント) |
+| 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | cn |X | |X | |
@@ -426,7 +420,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
 次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
-| 属性名 (Connect の UI) |属性名 (オンプレミスの AD) | User | Contact | グループ | Comment (コメント) |
+| 属性名 (Connect の UI) |属性名 (オンプレミスの AD) | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |

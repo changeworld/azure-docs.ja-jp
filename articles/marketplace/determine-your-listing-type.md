@@ -2,24 +2,18 @@
 title: Azure Marketplace における公開オプションの選定 | Azure
 description: この記事では､パートナーが Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: cb306a32a9388113a9c81fa363a6e1ee2c3b30ad
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734042"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938108"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 オファーに対して選択する公開オプションは、適格性の要件とマーケットプレースの GTM 特典の両方に直接関係しています。 さらに重要なこととして、Cloud パートナー ポータルにおける公開オプションとオファーの種類の選択によって、ユーザーがマーケットプレースのオファーをどのように取り扱うかが定義されます。

@@ -3,8 +3,8 @@ title: Azure 仮想ネットワーク ゲートウェイと接続のトラブル
 description: このページでは Azure Network Watcher を使用して Azure CLI のトラブルシューティングを行う方法を説明する
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
-ms.openlocfilehash: 8910b4963c7f40b5b6ecdde06c7c7a0c9b86e97a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899113"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699590"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Azure Network Watcher Azure CLI を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 

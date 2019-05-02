@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight のリリース ノート
 description: Azure HDInsight の最新のリリース ノート。 Hadoop、Spark、Microsoft R Server、Hive などの開発に関するヒントや詳細を紹介します。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9ca3635e93c8d66d23c74c3774ccee2c563d85b4
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618228"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713045"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
 
@@ -39,7 +38,7 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 *  ***Azure Data Lake Storage Gen2 のサポート***: HDInsight は、Azure Data Lake Storage Gen2 のプレビュー リリースをサポートします。 利用可能なリージョンのお客様は、HDInsight クラスターの主ストアまたは 2 次ストアとして、ADLS Gen2 アカウントを選択できるようになります。
 
-*  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [Virtual Network サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
+*  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
 
 ## <a name="component-versions"></a>コンポーネントのバージョン
 

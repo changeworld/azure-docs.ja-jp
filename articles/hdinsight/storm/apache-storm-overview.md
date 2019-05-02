@@ -1,7 +1,6 @@
 ---
 title: Apache Storm とは - Azure HDInsight
 description: Apache Storm を利用すると、データ ストリームをリアルタイムで処理できます。 Azure HDInsight を利用すると、Azure クラウド上に Storm クラスターを簡単に作成できます。 Visual Studio では、C# を使用して Storm ソリューションを作成し、それを HDInsight Storm クラスターにデプロイできます。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: Apache Storm のユース ケース,Storm クラスター,Apache Storm とは
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: b9c66216411f42e46cc7c7be486f6103db9c7208
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5688056bc0d371c780bce02254769792e9a95696
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894599"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696109"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 

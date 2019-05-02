@@ -3,8 +3,8 @@ title: Linux VM からデータ ディスクを切断する - Azure | Microsoft 
 description: Azure CLI または Azure portal を使用して、Azure の仮想マシンからデータ ディスクをデタッチする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b6fda5d16b3f694cb1d0a1a9407cda5c2a73fcbc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 02cb970b5c70064abbbc71e585fe3dd1540fda90
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330632"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696717"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 

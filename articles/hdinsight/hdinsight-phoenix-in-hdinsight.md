@@ -1,7 +1,6 @@
 ---
 title: HDInsight での Apache Phoenix - Azure HDInsight
 description: ''
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744340"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697990"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>HDInsight の Apache Phoenix
 

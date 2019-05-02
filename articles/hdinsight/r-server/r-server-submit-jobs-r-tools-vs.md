@@ -1,7 +1,6 @@
 ---
 title: R Tools for Visual Studio からのジョブの送信 - Azure HDInsight
 description: ローカルの Visual Studio マシンから HDInsight クラスターに R ジョブを送信します。
-services: hdinsight
 ms.service: hdinsight
 author: maxluk
 ms.author: maxluk
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3165adf09281f4ad35b77c2e0fbb89e40c04c631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f1ed582b7abf43afd38ca5c358aa7e179bfecb3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120960"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702275"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 

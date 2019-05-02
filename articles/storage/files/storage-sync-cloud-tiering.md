@@ -2,18 +2,18 @@
 title: Azure File Sync のクラウドの階層化について | Microsoft Docs
 description: Azure File Sync のクラウドの階層化について説明します
 services: storage
-author: sikoo
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
-ms.author: sikoo
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 1851e9b2bb5ff86583228136dee977001cf0a3fd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486106"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714952"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルをサード パーティ アプリケーションで安全に識別できるように、階層化されたファイルには "オフライン" 属性と FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性の両方が NTFS 内で設定されます。

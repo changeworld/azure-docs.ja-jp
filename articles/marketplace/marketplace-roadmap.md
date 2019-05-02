@@ -2,24 +2,18 @@
 title: Azure Marketplace および AppSource のロードマップ | Azure
 description: Marketplace で起こっていることのロードマップ
 services: Azure, Marketplace, Compute
-documentationcenter: ''
 author: qianw211
 manager: MaggiePucciEvans
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
-ms.openlocfilehash: 4a1586d965a51a3c655346994274159b99ab0a9a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 881d62cd7b7b9d4434a807a2aab62b75e9a8e97b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010636"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937791"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Azure Marketplace および AppSource のロードマップ
 

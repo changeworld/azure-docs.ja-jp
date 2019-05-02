@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009856"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918405"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 > [!Important]
 > サブスクリプションを別のディレクトリに関連付けると、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 従来のサブスクリプション管理者 (サービス管理者と共同管理者) もアクセスできなくなります。
 > 
-> また、Azure Kubernetes Service (AKS) クラスターを別のサブスクリプションに移したり、クラスターを所有するサブスクリプションを新しいテナントに移したりすると、ロールの割り当てやサービス プリンシパルの権限が失われるため、クラスターの機能が失われることになります。 AKS の詳細については、「[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/)」を参照してください。
+> また、Azure Kubernetes Service (AKS) クラスターを別のサブスクリプションに移したり、クラスターを所有するサブスクリプションを新しいテナントに移したりすると、ロールの割り当てやサービス プリンシパルの権限が失われるため、クラスターの機能が失われることになります。 AKS の詳細については、「[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 

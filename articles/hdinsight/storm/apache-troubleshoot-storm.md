@@ -2,7 +2,6 @@
 title: Azure HDInsight を使用した Storm のトラブルシューティング
 description: Azure HDInsight での Apache Storm の使用についてよく寄せられる質問とその回答を示します。
 keywords: Azure HDInsight, Storm, FAQ, トラブルシューティング ガイド, よくある質問
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3866e25cc3c87f569e84b2d5639d25aa9386cc78
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632740"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713762"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 

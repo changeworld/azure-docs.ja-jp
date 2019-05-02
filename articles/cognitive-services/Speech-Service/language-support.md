@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3d14200faa06bc30df45a2100635ed7dc697a339
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803106"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868607"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -29,7 +29,7 @@ Microsoft の音声認識 API では、次の言語がサポートされてい�
   コード | 言語 | [音響適応](how-to-customize-acoustic-models.md) | [言語適応](how-to-customize-language-model.md) | [発音適応](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
  ar-EG | アラビア語 (エジプト)、現代標準 | いいえ  | はい | いいえ 
- ca-ES | カタルニア語 (スペイン) | いいえ  | いいえ  | いいえ 
+ ca-ES | カタルニア語 | いいえ  | いいえ  | いいえ 
  da-DK | デンマーク語 (デンマーク) | いいえ  | いいえ  | いいえ 
  de-DE | ドイツ語 (ドイツ) | はい | はい | いいえ 
  en-AU | 英語 (オーストラリア) | いいえ  | 可能  | はい
@@ -98,7 +98,7 @@ Text to Speech REST API ではこれらの音声がサポートされ、その�
 ar-EG\* | アラビア語 (エジプト) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)"
 ar-SA | アラビア語 (サウジアラビア) | 男性 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)"
 bg-BG | ブルガリア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)"
-ca-ES | カタルニア語 (スペイン) | 女性 | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)"
+ca-ES | カタルニア語 | 女性 | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)"
 cs-CZ | チェコ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)"
 da-DK | デンマーク語 | 女性 | "Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)"
 de-AT | ドイツ語 (オーストリア) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-AT, Michael)"

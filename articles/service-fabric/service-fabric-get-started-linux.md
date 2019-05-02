@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f738ab5022d1378925d920818e3f89fc2a1ee6d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 49d06c05af085624a0d495a65e139d3857a13fc4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670528"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712621"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
-    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
+    sudo apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
     ```
 
 8. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
@@ -216,19 +216,20 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 1. マシンに Node.js と npm をインストールします。
 
     ```bash
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-    nvm install node
+    sudo apt-add-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
+    sudo apt-get update
+    sudo apt-get install nodejs
     ```
 2. npm からマシンに [Yeoman](https://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
     ```bash
-    npm install -g yo
+    sudo npm install -g yo
     ```
 3. npm から Service Fabric Yeo のコンテナー ジェネレーターとゲスト実行可能ジェネレーターをインストールします。
 
     ```bash
-    npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 ジェネレーターのインストール後、`yo azuresfguest` または `yo azuresfcontainer` を実行して、ゲスト実行可能ファイルまたはコンテナー サービスを作成します。

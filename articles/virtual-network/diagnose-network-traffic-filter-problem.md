@@ -3,8 +3,8 @@ title: 仮想マシン ネットワーク トラフィック フィルターの�
 description: 仮想マシンの有効なセキュリティ規則を表示することによって、仮想マシンのネットワーク トラフィック フィルターに関する問題を診断する方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
-ms.author: jdial
-ms.openlocfilehash: fecab4dc3a0674b0b64638676f4538af145b52ac
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652647"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712672"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 

@@ -2,23 +2,19 @@
 title: キー コンテナーへのアクセスをセキュリティで保護する - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault、キー、シークレットのアクセス許可を管理します。 キー コンテナーの認証と承認モデルおよびキー コンテナーをセキュリティで保護する方法について説明します。
 services: key-vault
-documentationcenter: ''
 author: amitbapat
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 20c58647b8a6283de4ca2b90c830fe54db927095
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a88451403f242c39212c80e3c7425a901c6819cc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484188"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725277"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -55,7 +51,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 次の表に、管理プレーンとデータ プレーンのエンドポイントを示します。
 
-| アクセス&nbsp; プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム&nbsp; |
+| アクセス&nbsp; プレーン | アクセス エンドポイント | Operations | アクセス制御メカニズム&nbsp; |
 | --- | --- | --- | --- |
 | 管理プレーン | **グローバル:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | キー コンテナーの作成、読み取り、更新、削除<br><br>Key Vault アクセス ポリシーの設定<br><br>Key Vault タグの設定 | Azure Resource Manager RBAC |
 | データ プレーン | **グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | キー: 暗号化の解除、暗号化、<br> ラップ解除、ラップ、確認、サイン、<br> 取得、一覧表示、更新、作成、<br> インポート、削除、バックアップ、復元<br><br> シークレット: 取得、一覧表示、設定、削除 | Key Vault アクセス ポリシー |
@@ -132,7 +128,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 | セキュリティ チーム | Key Vault Contributor | キー: バックアップ、作成、削除、取得、インポート、一覧表示、復元<br>シークレット: すべての操作 |
 | 開発者と&nbsp;運用者 | Key Vault デプロイ アクセス許可<br><br> **メモ**:このアクセス許可により、デプロイされた VM によりキー コンテナーからシークレットが取り込まれることが許可されます。 | なし |
 | 監査者 | なし | キー: 一覧表示<br>シークレット: 一覧表示<br><br> **メモ**:このアクセス許可により、監査者はログに出力されないキーとシークレットの属性 (タグ、ライセンス認証を行った日付、有効期限) を調べることができます。 |
-| アプリケーション | なし | キー: 署名<br>シークレット: 取得 |
+| Application | なし | キー: 署名<br>シークレット: 取得 |
 
 この 3 つのチーム ロールでは、Key Vault アクセス許可に加えて、他のリソースへのアクセス権も必要です。 VM (または Azure App Service の Web Apps 機能) をデプロイする場合、開発者と運用者はそのような種類のリソースに対する`Contributor`アクセス権が必要になります。 監査者には、Key Vault のログが格納されているストレージ アカウントに対する読み取りアクセス権が必要です。
 

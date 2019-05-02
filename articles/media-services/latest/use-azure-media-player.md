@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896995"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926525"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要
 
@@ -24,7 +24,7 @@ Azure Media Player は、さまざまなブラウザーやデバイス上で Mic
 
 Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリーミングのストリーミング形式でコンテンツを提供して再生できます。 Azure Media Player はこれらの多用な形式を考慮し、プラットフォームやブラウザーの性能に基づいて最適なリンクを自動的に再生します。 また、Media Services では PlayReady 暗号化や AES-128 ビットエンベロープ暗号化を使用した資産の動的暗号化も可能です。 Azure Media Player では、コンテンツが適切に構成されていれば、PlayReady 暗号化や AES-128 ビットエンベロープ暗号化されたコンテンツの暗号化を解除できます。 
 
-[無料試用版の利用を開始](https://azure.microsoft.com/en-us/pricing/free-trial/)
+[無料試用版の利用を開始](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Azure Media Player のデモページを使用する
 

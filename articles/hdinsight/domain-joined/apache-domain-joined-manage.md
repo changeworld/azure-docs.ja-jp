@@ -1,7 +1,6 @@
 ---
 title: Enterprise セキュリティ パッケージで HDInsight クラスターを管理する - Azure
 description: Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -9,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 951bd74c67c77c944a17e41646c4fe49ef46b33f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200023"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725678"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。

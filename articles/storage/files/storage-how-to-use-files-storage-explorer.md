@@ -2,18 +2,18 @@
 title: Azure Storage Explorer を使用して Azure ファイル共有を管理するためのクイック スタート
 description: このクイック スタートを使用して、Azure Storage Explorer を使用して Azure Files を管理する方法を学習します。
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 931098d688e39490aa0aadaa8ade8405e5ba8a12
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bf87704a8055b5725178c846df71ed4d873417e3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452245"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713876"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>クイック スタート:Azure Storage Explorer を使用して Azure ファイル共有の作成と管理を行う
 このガイドでは、[Azure Storage Explorer](storage-files-introduction.md) を使用して Azure ファイル共有を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 

@@ -2,19 +2,18 @@
 title: Azure HDInsight Tools - Visual Studio Code 用の PySpark 対話型環境を設定する
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
 keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ
-services: hdinsight
 ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 8c0b40f0e6204d6cff59d3de3f20604d6913b9cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 882a071731837b0f7d03ac374a7c831a20a3927e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111635"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714495"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -52,7 +51,7 @@ ms.locfileid: "58111635"
    sudo apt-get install python-dev
    ```
 
-4. VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
+4. VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。**
 
 ## <a name="next-steps"></a>次の手順
 

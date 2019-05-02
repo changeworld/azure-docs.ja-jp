@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで要求変換
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求変換技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a204e8cdc20a6897c40d4d5f68217a2922371737
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0a2904bec34978a33d25534c9e9b32552191ad88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55148610"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705323"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで要求変換技術プロファイルを定義する
 

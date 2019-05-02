@@ -2,20 +2,20 @@
 title: Power BI ワークスペース コレクションとは
 description: Power BI Embedded を利用すると、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合できるため、カスタム ソリューションを作成する必要はありません。
 services: power-bi-embedded
-author: markingmyname
+author: rkarlin
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rkarlin
+ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896706"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705135"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションとは
 

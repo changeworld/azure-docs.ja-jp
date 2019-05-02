@@ -2,24 +2,17 @@
 title: Go-To-Market Services - マーケティングのベスト プラクティス | Azure
 description: Go-To-Market Services - このセクションでは、Azure Marketplace のパブリッシャー向けのマーケティングのベスト プラクティスについて説明します
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: bdae273506a238c4d47c1cdce004cdd92b2d58a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6d704398d706d3f6f2caea057862b7eef9d5baf9
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355282"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938531"
 ---
 # <a name="marketing-best-practices"></a>マーケティングのベスト プラクティス
 

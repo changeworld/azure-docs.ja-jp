@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: e5cf89b7fe01946de9944a7026ec448cd55dd6dc
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630668"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922878"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの System Center Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
@@ -67,7 +67,7 @@ Log Analytics 接続を追加するには、Configuration Manager 環境に[サ�
    
 2. **[全般]** 画面で、以下の操作が完了していることと、各項目の詳細を把握していることを確認し、**[次へ]** を選択します。
 
-   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md) を取得した。
+   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../../active-directory/develop/quickstart-register-app.md) を取得した。
    2. Azure Portal で、Azure Active Directory に登録したアプリのアプリ秘密鍵を作成した。  
    3. Azure portal で、登録した Web アプリに Azure Monitor の Log Analytics ワークスペースへのアクセス許可を付与した。  
       ![Log Analytics への接続ウィザードの [全般] ページ](./media/collect-sccm/sccm-console-general01.png)

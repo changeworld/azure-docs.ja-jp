@@ -18,21 +18,21 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f4a7f2a4fe0e1ca455b1140e83f31f6b30a7511
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: bfac577d7582caa5b538f05273a02e4c3baf71ff
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523462"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918457"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
 
 OpenID Connect は OAuth 2.0 を基盤として開発された認証プロトコルであり、ユーザーを Web アプリケーションに安全にサインインさせるために利用できます。 Microsoft ID プラットフォーム エンドポイントによる OpenID Connect の実装を使用すると、サインインおよび API アクセスを Web ベースのアプリに追加できます。 この記事では、この作業を言語非依存で行う方法を示し、Microsoft オープンソース ライブラリを利用せずに HTTP メッセージを送受信する方法について説明します。
 
 > [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure Active Directory (Azure AD) シナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[MicrosoftID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
+> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure Active Directory (Azure AD) シナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 Microsoft ID プラットフォーム エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、[Microsoft ID プラットフォーム エンドポイントを使用してアプリケーションを登録する方法](quickstart-v2-register-an-app.md)に関する記事を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](v2-app-types.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 *承認*プロトコルを*認証*プロトコルとして使用できるように拡張したものです。これにより、OAuth を使用したシングル サインオンを行うことができます。 OpenID Connect には、*ID トークン*の概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 ID トークンは、ユーザーに関する基本的なプロファイル情報も取得します。 OpenID Connect は OAuth 2.0 を拡張したものであるため、アプリは[承認サーバー](active-directory-v2-protocols.md#the-basics)で保護されるリソースにアクセスするための*アクセス トークン*を安全に取得できます。 Microsoft ID プラットフォーム エンドポイントでは、Azure AD に登録されているサード パーティ アプリが、Web API などのセキュリティで保護されたリソースのアクセス トークンを発行することもできます。 アクセス トークンを発行するようにアプリケーションを設定する方法の詳細については、[Microsoft ID プラットフォーム エンドポイントを使用してアプリケーションを登録する方法](quickstart-register-app.md)に関する記事を参照してください。 サーバーでホストされ、ブラウザーでアクセスされる [Web アプリケーション](v2-app-types.md#web-apps)を構築している場合に、OpenID Connect を使用することをお勧めします。
 
 ## <a name="protocol-diagram-sign-in"></a>プロトコルのダイアグラム: サインイン
 

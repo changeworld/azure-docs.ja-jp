@@ -1,25 +1,18 @@
 ---
-title: 技術情報フォームの入力方法 | Microsoft Docs
+title: 技術情報フォームに記入する方法
 description: 新しい Dynamics 365 Business Central アプリの技術情報フォームに値を入力する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: dbc38fab5bd8e55f6dd280ecc46af1b1a5ae7ede
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120297"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935063"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>技術情報フォームの入力方法
 ===========================================

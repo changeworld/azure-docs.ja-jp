@@ -2,7 +2,6 @@
 title: クイック スタート:Azure portal を使用して Apache Hadoop と Apache Hive を使用する - Azure HDInsight
 description: Azure Portal を使用して HDInsight クラスターを作成する方法および Hive を使用してデータを照会する方法について説明します。
 keywords: Hadoop の概要, Hadoop Linux, Hadoop クイックスタート, Hive の概要, Hive クイックスタート
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 81eb750f271062bcb4891edf8008d76a18ac85c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c466840c3de9337d7bb8d22f00da0ba52227770
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881199"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697814"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する
 
@@ -86,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![HDInsight Linux の使用。クラスターの概要](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-portal-summary.png "HDInsight Linux の使用。クラスターの概要")
       
-4. **作成**を選択します。 ポータルのダッシュボードに、**[Submitting deployment for HDInsight]\(HDInsight にデプロイを送信しています\)** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
+4. **作成** を選択します。 ポータルのダッシュボードに、**[Submitting deployment for HDInsight]\(HDInsight にデプロイを送信しています\)** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
     ![HDInsight Linux の使用。リソース グループ](./media/apache-hadoop-linux-create-cluster-get-started-portal/deployment-progress-tile.png "Azure HDInsight クラスター リソース グループ")
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313296"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694834"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -85,9 +85,6 @@ ms.locfileid: "58313296"
    * Active Directory コネクタ オブジェクトから MC へのリンク上に、同期ルール `Microsoft.InfromADUserAccountEnabled.xxx` が存在する必要があります。
    
    クラウドからの呼び出しがあると、同期エンジンは **cloudAnchor** 属性を使って Azure Active Directory コネクタ スペース オブジェクトを検索します。 その後、リンクをたどって MV オブジェクトに戻り、さらにリンクをたどって Active Directory オブジェクトに戻ります。 同じユーザーに対して複数の Active Directory オブジェクト (マルチ フォレスト) がある可能性があるため、同期エンジンは `Microsoft.InfromADUserAccountEnabled.xxx` のリンクに基づいて正しいユーザー アカウントを選びます。
-
-   > [!Note]
-   > このロジックの結果、パスワード ライトバックが動作するには、Azure AD Connect がプライマリ ドメイン コントローラー (PDC) エミュレーターと通信できる必要があります。 これを手動で有効にする必要がある場合は、PDC エミュレーターに Azure AD Connect を接続できます。 Active Directory 同期コネクタの **[プロパティ]** を右クリックし、**[configure directory partitions]\(ディレクトリ パーティションの構成\)** を選びます。 そこで、**[domain controller connection settings]\(ドメイン コントローラーの接続の設定\)** セクションを探して、**[only use preferred domain controllers]\(優先ドメイン コントローラーのみを使用する\)** チェック ボックスをオンにします。 優先ドメイン コントローラーが PDC エミュレーターではない場合、Azure AD Connect はパスワード ライトバックのために PDC へのアクセスを試行します。
 
 1. ユーザー アカウントが見つかると、適切な Active Directory フォレスト内で直接パスワードのリセットが試行されます。
 1. パスワードの設定操作に成功すると、ユーザーにパスワードが変更されたことが通知されます。

@@ -1,7 +1,6 @@
 ---
 title: 仮想ネットワークを使用して Kafka へ接続する - Azure HDInsight
 description: Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6807a14bb7b46389abbc4c5a44e7699c79e29dff
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 93b5aeafafdc6ab7ee233f6360bb5e09f45b387f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361623"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708822"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 

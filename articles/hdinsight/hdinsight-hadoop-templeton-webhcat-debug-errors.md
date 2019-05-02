@@ -1,7 +1,6 @@
 ---
 title: HDInsight の WebHCat エラーの説明と解決策 - Azure
 description: HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 683580ba65ad775ccec105c78cc1af66fbb63c37
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448311"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691874"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -40,7 +39,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 次の既定値を超えた場合、WebHCat のパフォーマンスが低下したり、エラーが発生したりします。
 
-| Setting | 実行内容 | 既定値 |
+| Setting | 実行内容 | Default value |
 | --- | --- | --- |
 | [yarn.scheduler.capacity.maximum-applications][maximum-applications] |同時にアクティブにできるジョブの最大数 (保留中または実行中) |10,000 |
 | [templeton.exec.max-procs][max-procs] |同時に処理できる要求の最大数 |20 |

@@ -1,7 +1,6 @@
 ---
 title: HDInsight の ML サービスの運用化 - Azure
 description: Azure HDInsight で ML サービスを運用化する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579959"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719760"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -137,7 +136,7 @@ SSH セッションがアクティブになると、ローカル コンピュー
 
 コンピューティング ノードスケーリングするには、最初に worker ノードの使用を停止し、その worker ノードでコンピューティング ノードを構成します。
 
-### <a name="step-1-decommission-the-worker-nodes"></a>ステップ 1:ワーカー ノードを使用停止する
+### <a name="step-1-decommission-the-worker-nodes"></a>手順 1:ワーカー ノードを使用停止する
 
 ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
 

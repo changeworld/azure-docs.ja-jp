@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight のクラスターの容量計画
 description: 容量とパフォーマンスのニーズを満たす HDInsight クラスターを指定する方法。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: b35c5073f2b19523010528800c2a989d5de5b448
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81be4d5809fe8a3f36f7364b15e19d0046a8b5cd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848015"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713983"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 

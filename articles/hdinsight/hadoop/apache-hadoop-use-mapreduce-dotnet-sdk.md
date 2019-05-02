@@ -2,19 +2,18 @@
 title: HDInsight .NET SDK を使用して MapReduce ジョブを送信する - Azure
 description: HDInsight .NET SDK を使用して、MapReduce ジョブを Azure HDInsight 上の Apache Hadoop に送信する方法について説明します。
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 67738a810968024e9006c142f5d8b1a975870c54
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1ac2dda20ba1219c9f62e834b5cd2cfba8a50086
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436825"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718965"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して MapReduce ジョブを実行する
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]

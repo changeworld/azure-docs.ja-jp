@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834797"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル:Azure Active Directory と Coupa の統合
 
@@ -114,16 +114,16 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
     | 環境  | URL |
     |:-------------|----|
-    | サンドボックス | `devsso35.coupahost.com`|
-    | Production | `prdsso40.coupahost.com`|
+    | サンドボックス | `sso-stg1.coupahost.com`|
+    | Production | `sso-prd1.coupahost.com`|
     | | |
 
     c. **[応答 URL]** テキスト ボックスに、次の URL を入力します。
 
     | 環境 | URL |
     |------------- |----|
-    | サンドボックス | `https://devsso35.coupahost.com/sp/ACS.saml2`|
-    | Production | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | サンドボックス | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Production | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
@@ -176,7 +176,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

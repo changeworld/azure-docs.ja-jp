@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight にサードパーティ製アプリケーションをインストールする
 description: Azure HDInsight にサード パーティ製 Hadoop アプリケーションをインストールする方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 810f9bb81d367cfe70e59d62d81a9e129cf80e6b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 7cbcc8ac05e4541406abd08c14006a8abc0c91ca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225983"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699304"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
@@ -24,7 +23,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 
 以下に、公開されているアプリケーションの一覧を示します。
 
-|アプリケーション |クラスターのタイプ | 説明 |
+|Application |クラスターのタイプ | 説明 |
 |---|---|---|
 |AtScale Intelligence Platform |Hadoop |AtScale では、HDInsight クラスターがスケールアウト OLAP サーバーに変換され、Microsoft Excel、Power BI、Tableau Software、QlikView など、ユーザーが既に所有し慣れ親しんでいる BI ツールを使用して、何十億ものデータ行を対話形式でクエリすることができます。 |
 |CDAP 4.2、4.3 for HDInsight |hbase |CDAP は、Hadoop の評価時間を加速し、IT によるセルフサービス データの提供を可能にする、史上初の一元管理されたビッグ データ用統合プラットフォームです。 オープン ソースかつ拡張可能な CDAP により、イノベーションへの障壁が取り除かれます。 要件:4 つのリージョン ノード、最小 D3 v2。 |

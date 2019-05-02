@@ -1,7 +1,6 @@
 ---
 title: 'チュートリアル:Azure HDInsight で Apache Spark を使用して Azure Event Hubs からのデータを処理する '
 description: Azure HDInsight で Apache Spark を Azure Event Hubs に接続し、ストリーミング データを処理します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 02f7bbca127ba33fcfdd15d6f00d1660bf72970c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976632"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704949"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>チュートリアル:HDInsight で Azure Event Hubs と Apache Spark を使用してツイートを処理する
 
@@ -80,9 +79,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     - **サブスクリプション**:適切なサブスクリプションを選択します。
 
-    - **[リソース グループ]**: ドロップダウン リストから既存のリソース グループを選択するか、または **[新規作成]** を選択して新しいリソース グループを作成します。
+    - **[リソース グループ]**:ドロップダウン リストから既存のリソース グループを選択するか、または **[新規作成]** を選択して新しいリソース グループを作成します。
 
-    - **場所**: 待機時間とコストを削減するには、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択します。
+    - **[場所]**:待機時間とコストを削減するには、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択します。
 
     - **[Enable Auto-Inflate] (自動インフレを有効にする)**: (省略可能) 自動インフレは、トラフィックがそれに割り当てられているスループット ユニットの容量を超えると、Event Hubs 名前空間に割り当てられたスループット ユニットの数を自動的にスケール調整します。  
 
@@ -111,7 +110,7 @@ Event Hubs 名前空間がデプロイされたら、イベント ハブを作�
    
       ![Spark ストリーミング サンプルの Event Hub 詳細を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub 詳細を指定")
 
-1. **作成**を選択します。  デプロイは数秒で完了し、[Event Hubs 名前空間] ページに戻されます。
+1. **作成** を選択します。  デプロイは数秒で完了し、[Event Hubs 名前空間] ページに戻されます。
 
 1. **[設定]** で、**[共有アクセス ポリシー]** を選択します。
 

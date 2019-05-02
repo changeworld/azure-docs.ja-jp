@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 79faab0dcf2dd4c5592fe0543fa63f2538facf36
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e21ed77a80892da22c380787dc64ea07db756fdf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664014"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917651"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -77,7 +77,7 @@ Windows または Linux IaaS VM は、次の条件で適格とします。
 
 - Microsoft Monitoring Agent 拡張機能が現在、VM 上にインストールされていない。
 - VM が実行状態である。
-- Windows または Linux [Azure 仮想マシン エージェント](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows)がインストールされている。
+- Windows または Linux [Azure 仮想マシン エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)がインストールされている。
 - VM は、Web アプリケーション ファイアウォールや次世代ファイアウォールなどのアプライアンスとしては使用されません。
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Security Center で作成された既定のワークスペースは削除できますか?

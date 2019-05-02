@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2cce7203d23d5de77200fdf75ab31042d9608352
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672391"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866374"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 
@@ -29,7 +29,7 @@ Microsoft Speech Recognition API では、`interactive` モードおよび `dict
 |コード | 言語 | コード | 言語 |
 |-----|-----|-----|-----|
 | ar-EG | アラビア語 (エジプト)、現代標準 | hi-IN | ヒンディー語 (インド) |
-| ca-ES | カタルニア語 (スペイン) | it-IT | イタリア語 (イタリア)  |
+| ca-ES | カタルニア語 | it-IT | イタリア語 (イタリア)  |
 | da-DK | デンマーク語 (デンマーク) | ja-JP | 日本語 (日本) |
 | de-DE | ドイツ語 (ドイツ) |ko-KR | 韓国語 (韓国) |
 | en-AU | 英語 (オーストラリア) |nb-NO | ノルウェー語 (ブークモール) (ノルウェー)  |

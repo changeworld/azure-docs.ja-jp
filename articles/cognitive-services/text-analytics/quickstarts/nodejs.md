@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: a2fdeeab2e8027dc3b548f7004912906d4574ccc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007434"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694972"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す  
 <a name="HOLTop"></a>
@@ -156,7 +156,7 @@ get_language (documents);
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-Sentiment Analysis API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 センチメント分析を使用すると、肯定的または否定的な感情の手掛かりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
+Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 センチメント分析を使用すると、肯定的または否定的な感情の手掛かりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 2. 新しい `.js` ファイルに以下のコードを追加します。
@@ -252,7 +252,7 @@ get_sentiments (documents);
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
 
-Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 キー フレーズ抽出は、ドキュメントまたはテキストの要点をすばやく突き止める目的で使用されます。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
+Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 キー フレーズ抽出は、ドキュメントまたはテキストの要点をすばやく突き止める目的で使用されます。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
 
 1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
 2. 新しい `.js` ファイルに以下のコードを追加します。

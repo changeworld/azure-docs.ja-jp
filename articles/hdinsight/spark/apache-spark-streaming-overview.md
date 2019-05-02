@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight の Spark ストリーミング
 description: HDInsight Spark クラスターで Spark ストリーミング アプリケーションを使用する方法を説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 3ecabd683ed4303a7ff54780299ed0e83aa14c26
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19d77d4aa49008232a01cd3ac2761a796505a35c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892081"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711998"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
 

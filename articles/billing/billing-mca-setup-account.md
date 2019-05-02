@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894548"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919149"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -108,7 +108,7 @@ Azure Active Directory テナントは、Microsoft 顧客契約の署名時に�
 
 新しいアカウントでは、Microsoft 顧客契約に署名する際に選択したテナントのユーザーのみがサポートされます。 Enterprise Agreement に対する管理アクセス許可を持つユーザーは、テナントに属していれば、セットアップ中も新しい請求先アカウントにアクセスできます。 テナントに属していない場合は、招待されない限り、新しい請求先アカウントにアクセスできません。
 
-ユーザーを招待すると、そのユーザーはテナントにゲスト ユーザーとして追加され、請求先アカウントにアクセスできます。 ユーザーを招待するには、テナントに対してゲスト アクセスをオンする必要があります。 詳しくは、「[Azure Active Directory 内のゲスト アクセスの制御](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)」をご覧ください。 ゲスト アクセスがオフの場合は、テナントの全体管理者に連絡してオンにしてください。 <!-- Todo - How can they find their global administrator -->
+ユーザーを招待すると、そのユーザーはテナントにゲスト ユーザーとして追加され、請求先アカウントにアクセスできます。 ユーザーを招待するには、テナントに対してゲスト アクセスをオンする必要があります。 詳しくは、「[Azure Active Directory 内のゲスト アクセスの制御](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)」をご覧ください。 ゲスト アクセスがオフの場合は、テナントの全体管理者に連絡してオンにしてください。 <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-features-replaced-by-the-new-billing-account"></a>新しい請求先アカウントで置き換えられる機能を確認する
 

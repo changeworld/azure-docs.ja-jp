@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875517"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726545"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で R プログラミング言語の使用を開始する
 
@@ -1320,7 +1320,7 @@ R の使用を開始するのに役立つ書籍は、多数存在します。 �
 * Norman Matloff による『**The Art of R Programming: A Tour of Statistical Software Design**』は、R のプログラミングに関する優れた入門書です。  
 * Paul Teetor による『**R Cookbook**』は、R の使用に関する問題と解決のアプローチが記載されています。  
 * Robert Kabacoff による『**R in Action**』はもう 1 つの有用な入門書です。 手引書 [Quick R Web サイト](https://www.statmethods.net/)は有効なリソースです。
-* Patrick Burns による『**R Inferno**』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、「[The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/)」で無料で入手できます。
+* Patrick Burns による『**R Inferno**』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、「[The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)」で無料で入手できます。
 * R の高度なトピックを深く理解する場合は、Hadley Wickham による『**Advanced R**』をお読みください。 この本のオンライン版は、[http://adv-r.had.co.nz/](http://adv-r.had.co.nz/) で無料で入手できます。
 
 R 時系列パッケージのカタログが、「[CRAN Task View: Time Series Analysis (CRAN タスク ビュー: 時系列分析)](https://cran.r-project.org/web/views/TimeSeries.html)」にあります。 特定の時系列オブジェクト パッケージの情報については、そのパッケージのドキュメントを参照する必要があります。

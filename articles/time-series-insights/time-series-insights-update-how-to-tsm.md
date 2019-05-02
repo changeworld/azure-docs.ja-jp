@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1686b52c9dacf5c78335f76bd19b41c4c7d15cee
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: df94290c5e62b898b6490c78ef0ae1ee79437240
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555406"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716953"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのデータ モデリング
 
@@ -132,7 +132,9 @@ ms.locfileid: "53555406"
 ## <a name="next-steps"></a>次の手順
 
 - タイム シリーズ モデルの詳細については、「[Data modeling](./time-series-insights-update-tsm.md)」(データ モデリング) をご覧ください。
+
 - プレビューの詳細については、「[Visualize data in the Azure Time Series Insights Preview explorer](./time-series-insights-update-explorer.md)」(Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する) をご覧ください。
+
 - サポートされている JSON の構造の詳細については、「[サポートされている JSON 構造](./time-series-insights-send-events.md#json)」をご覧ください。
 
 <!-- Images -->

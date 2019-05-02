@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: jegeib
-ms.openlocfilehash: 502c1e8a422eb9e74586e5a6820d5b12ec4ae2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6ad6eca20827e1683237b2c668eba71acedfaade
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798249"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917632"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 4/9/2019
 
@@ -53,7 +53,7 @@ Azure のステンシル セットに Azure Key Vault と Azure Traffic Manager 
 - サポートされているオペレーティング システム
   - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) 以降
 - 必要な .NET のバージョン
-  - [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) 以降
+  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 以降
 - その他の要件
   - ツールとテンプレートの更新プログラムを受け取るには、インターネット接続が必要です。
 

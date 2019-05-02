@@ -1,7 +1,6 @@
 ---
 title: 'チュートリアル:Apache Kafka Streams API の使用 - Azure HDInsight '
 description: HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法を説明します。 この API を使用して、Kafka でトピック間のストリーム処理を実行できます。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
-ms.openlocfilehash: 1e02eaeae4757a9a41ec59be81c3d9510d035232
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9425af0f39d14287b49fe06a81172281feb24e83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273823"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715963"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>チュートリアル:Apache Kafka Streams API
 

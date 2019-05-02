@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 6337477b55addefb7579d6f328473428ba72ba24
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: aacb4521f4c6e8699be357cf396a01b7eb54b552
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446124"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924384"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -49,7 +49,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 - プラットフォームによって開始されたメンテナンス (たとえば、ホスト OS の更新など)
 - ハードウェアの機能低下
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
-- スケール セット内の[優先順位の低い VM の削除](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets)
+- スケール セット内の[優先順位の低い VM の削除](https://azure.microsoft.com/blog/low-priority-scale-sets)
 
 ## <a name="the-basics"></a>基本操作  
 
@@ -74,7 +74,7 @@ VM が仮想ネットワーク内で作成されていない場合 (クラウド
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
 スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-11-01` です。
 
-| Version | リリースの種類 | リージョン | リリース ノート | 
+| バージョン | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
 | 2017-11-01 | 一般公開 | All | <li> 優先順位の低い VM の削除の EventType 'Preempt' のサポートを追加<br> | 
 | 2017-08-01 | 一般公開 | All | <li> IaaS VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 

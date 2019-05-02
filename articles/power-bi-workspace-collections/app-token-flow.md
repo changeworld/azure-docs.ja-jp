@@ -2,18 +2,18 @@
 title: Power BI ワークスペース コレクションでの認証と承認 | Microsoft Docs
 description: Power BI ワークスペース コレクションでの認証と承認について説明します。
 services: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.service: power-bi-workspace-collections
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5d7b5f2655fc94b9a060c30e11be66bd2eacdee8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520617"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707109"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 

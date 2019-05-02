@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight に独自のカスタム Apache Hadoop アプリケーションをインストールする
 description: HDInsight アプリケーションに HDInsight アプリケーションをインストールする方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: c51cb797ff4465f4efcbc526444cddeb5b923262
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: ec2e53624ad48650f922439c5f16d1cf1f25c280
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225265"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706370"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にカスタム Apache Hadoop アプリケーションをインストールする
 

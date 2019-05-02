@@ -3,19 +3,19 @@ title: セッションの動作を構成する - Azure Active Directory B2C | Mi
 description: Azure Active Directory B2C でセッションの動作を構成します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1140a3cbb43e86bf222c73c95a03b11871f7a2d0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7bfa34f44ca8ba53b89e4218303a7cd77cd0add9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686162"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700986"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 

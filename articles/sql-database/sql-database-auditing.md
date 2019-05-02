@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database 監査の使用 | Microsoft Docs
-description: Azure SQL Database 監査を使用して、データベースイベントを追跡し、監査ログに書き込みます。
+title: Azure SQL データベース監査の使用 | Microsoft Docs
+description: Azure SQL データベース監査を使用して、データベースイベントを追跡し、監査ログに書き込みます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680380"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924759"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -34,7 +34,7 @@ Azure [SQL Database](sql-database-technical-overview.md) および [SQL Data War
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a id="subheading-1"></a>Azure SQL Database 監査の概要
+## <a id="subheading-1"></a>Azure SQL データベース監査の概要
 
 SQL Database 監査を使用して、以下を行うことができます。
 
@@ -90,7 +90,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
 
    > [!WARNING]
-   > Log Analytics に対する監査を有効にすると、インジェストのレートに基づくコストが発生します。 この[オプション](https://azure.microsoft.com/en-us/pricing/details/monitor/)を使用した場合のコストを承知のうえで利用するか、または、監査ログを Azure ストレージ アカウントに格納することを検討してください。
+   > Log Analytics に対する監査を有効にすると、インジェストのレートに基づくコストが発生します。 この[オプション](https://azure.microsoft.com/pricing/details/monitor/)を使用した場合のコストを承知のうえで利用するか、または、監査ログを Azure ストレージ アカウントに格納することを検討してください。
 
     ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 

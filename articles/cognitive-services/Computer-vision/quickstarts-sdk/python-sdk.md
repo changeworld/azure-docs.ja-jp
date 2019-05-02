@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 95705e7b7a372867e33c86826f44e380407dfee1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ce7e8788ec807c8ceccb49a7d435041b34e75348
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999316"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917090"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Python 用の Azure Cognitive Services Computer Vision SDK
 
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>画像からテキストを取得する
 
-画像から手書きのテキストや印刷されたテキストを取得できます。 これには、SDK に対する 2 つの呼び出し ([`batch_read_file`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) と [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-)) が必要です。 `batch_read_file` の呼び出しは非同期です。 `get_read_operation_result` 呼び出しの結果では、テキスト データを抽出する前に、[`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] を使用して、最初の呼び出しが完了しているかどうかを確認する必要があります。 結果には、テキストと、テキストの境界ボックスの座標が含まれます。
+画像から手書きのテキストや印刷されたテキストを取得できます。 これには、SDK に対する 2 つの呼び出し ([`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) と [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-)) が必要です。 `batch_read_file` の呼び出しは非同期です。 `get_read_operation_result` 呼び出しの結果では、テキスト データを抽出する前に、[`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] を使用して、最初の呼び出しが完了しているかどうかを確認する必要があります。 結果には、テキストと、テキストの境界ボックスの座標が含まれます。
 
 ```Python
 # import models

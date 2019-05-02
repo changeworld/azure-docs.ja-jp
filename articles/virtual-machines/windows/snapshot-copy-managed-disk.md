@@ -2,8 +2,8 @@
 title: Azure で VHD のスナップショットを作成する | Microsoft Docs
 description: バックアップまたは問題のトラブルシューティングに使うために、Azure VM のコピーを作成する方法について説明します。
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 15eb778e-fc07-45ef-bdc8-9090193a6d20
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dea8547905cb558cb0be7dc23f89099773e84ff0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b3b9095cd7ee3fa12523b14f59cc06820b9e4382
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074780"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692218"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -38,13 +38,13 @@ ms.locfileid: "58074780"
 6. Azure データセンターの**場所**を選択します。  
 7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
 8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 スナップショットを高パフォーマンスのディスクに保存する必要がある場合を除き、**[Standard_HDD]** を選択します。
-9. **作成**を選択します。
+9. **作成** を選択します。
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
 次の手順では、VHD ディスクのコピー方法、スナップショット構成の作成方法、[New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) コマンドレットを使用したディスクのスナップショットの取得方法を示します。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 1. パラメーターを設定します。 
 

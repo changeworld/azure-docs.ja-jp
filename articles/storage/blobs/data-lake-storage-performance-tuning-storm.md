@@ -2,18 +2,19 @@
 title: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン | Microsoft Docs
 description: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: 2401c74b55df78014a2f642b5166b4cf0017d87d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: aa3c942448be6444044981eacc2bbc3214b9c1b4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076209"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939405"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight と Azure Data Lake Storage Gen2 の Storm に対するパフォーマンス チューニング ガイダンス
 

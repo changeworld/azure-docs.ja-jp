@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight における Apache Spark クラスターの問題のトラブルシューティング
 description: Azure HDInsight における Apache Spark のクラスターに関連する問題と、それらを解決する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: fd2e253d88d6cddddd35dc75c8b746e906407cb5
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 51a0ee6f2d928d79e60ca9976d7651c70867a41f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337266"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717595"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 

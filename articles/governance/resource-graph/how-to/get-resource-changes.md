@@ -8,12 +8,12 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013040"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720331"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -39,7 +39,7 @@ ms.locfileid: "60013040"
 
 ## <a name="find-when-changes-were-detected"></a>いつ変更が検出されたかを見つける
 
-リソースで何が変更されたかを知るための最初の手順は、時間枠内でのそのリソースに関連した変更イベントを見つけることです。 この手順は、[resourceChanges](/rest/api/azureresourcegraph/resourceChanges) REST エンドポイントを通じて行われます。
+リソースで何が変更されたかを知るための最初の手順は、時間枠内でのそのリソースに関連した変更イベントを見つけることです。 この手順は、**resourceChanges** REST エンドポイントを通じて行われます。
 
 **resourceChanges** エンドポイントには、要求本文に次の 2 つのパラメーターが必要です。
 
@@ -95,7 +95,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 ## <a name="see-what-properties-changed"></a>どのプロパティが変更されたかを確認する
 
-**resourceChanges** エンドポイントから **changeId** を入手したので、次に [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) REST エンドポイントを使用して変更イベントの詳細を取得します。
+**resourceChanges** エンドポイントから **changeId** を入手したので、次に **resourceChangeDetails** REST エンドポイントを使用して変更イベントの詳細を取得します。
 
 **resourceChangesDetails** エンドポイントには、要求本文に次の 2 つのパラメーターが必要です。
 
@@ -108,7 +108,6 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
 }
 ```
 

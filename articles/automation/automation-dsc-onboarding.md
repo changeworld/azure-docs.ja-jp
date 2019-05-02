@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b81dccf3c71fbaff7b0cbb9ba00f13b458156e73
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f9f15c558e507742a641239ed25ba136dca0671a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588264"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919990"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -62,8 +62,8 @@ Azure VM Desired State Configuration 拡張機能は非同期に実行される�
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
-Azure Virtual Machines は、Azure Resource Manager テンプレートを使用して Azure Automation State Configuration にデプロイおよびオンボードできます。 Azure Automation State Configuration に既存の VM をオンボードする例のテンプレートについては、「[Server managed by Desired State Configuration service (Desired State Configuration サービスによって管理されるサーバー)](https://azure.microsoft.com/en-us/resources/templates/101-automation-configuration/)」を参照してください。
-仮想マシン スケール セットを管理する場合は、テンプレートの例について、「[VM Scale Set Configuration managed by Azure Automation (Azure Automation によって管理される VM スケール セットの構成)](https://azure.microsoft.com/en-us/resources/templates/201-vmss-automation-dsc/)」を参照してください。
+Azure Virtual Machines は、Azure Resource Manager テンプレートを使用して Azure Automation State Configuration にデプロイおよびオンボードできます。 Azure Automation State Configuration に既存の VM をオンボードする例のテンプレートについては、「[Server managed by Desired State Configuration service (Desired State Configuration サービスによって管理されるサーバー)](https://azure.microsoft.com/resources/templates/101-automation-configuration/)」を参照してください。
+仮想マシン スケール セットを管理する場合は、テンプレートの例について、「[VM Scale Set Configuration managed by Azure Automation (Azure Automation によって管理される VM スケール セットの構成)](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)」を参照してください。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -72,7 +72,7 @@ Azure Virtual Machines は、Azure Resource Manager テンプレートを使用�
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Azure サブスクリプションにまたがる仮想マシンの登録
 
 他の Azure サブスクリプションから仮想マシンを登録する最良の方法は、Azure Resource Manager デプロイ テンプレートで DSC 拡張機能を使用することです。
-例については、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-template)」を参照してください。
+例については、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)」を参照してください。
 このテンプレートのパラメーターとして使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
 ## <a name="azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック)

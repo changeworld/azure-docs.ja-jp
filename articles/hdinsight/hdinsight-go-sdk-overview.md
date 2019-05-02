@@ -1,19 +1,18 @@
 ---
 title: Azure HDInsight Go SDK
 description: Azure HDInsight Go SDK のリファレンス
-services: hdinsight
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: b430c69f4ed9206b34f8ca66534aa82e85c0b240
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224789"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700619"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK プレビュー
 

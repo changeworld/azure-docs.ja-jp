@@ -3,8 +3,8 @@ title: Azure Network Watcher でパケット キャプチャを管理する - Az
 description: Azure portal を使って Network Watcher のパケット キャプチャ機能を管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: jdial
-ms.openlocfilehash: 22bdd50f129a48ade97db323f904f7e652a00d39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 50092db9e2e3670168cbb3440b8cb99eb0c2ac20
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889983"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714719"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 

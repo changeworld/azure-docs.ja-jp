@@ -2,24 +2,18 @@
 title: Azure Marketplace でリードの共有を有効にする | Azure
 description: Azure Marketplace と AppSource のアプリとサービスの公開元向けに、リードの共有を有効にする方法について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3fea858f23c6b271a117f2edcc749e0c6b737e27
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159995"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938691"
 ---
 # <a name="enable-lead-sharing"></a>リードの共有を有効にする
 [Azure Marketplace](https://azuremarketplace.microsoft.com) または [Microsoft AppSource](https://appsource.microsoft.com) の登録情報でリード管理を有効にしておくと、次の対象ユーザーの連絡先情報が入手しやすくなります。

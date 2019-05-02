@@ -1,7 +1,6 @@
 ---
 title: 'Azure Toolkit for IntelliJ:HDInsight Spark でアプリケーションをリモートでデバッグする '
 description: Azure Toolkit for IntelliJ の HDInsight ツールを使用して、HDInsight クラスター上で VPN を介して実行される Spark アプリケーションをリモートでデバッグする方法について解説します。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: e57257c6965f0da8c2d6ce990d2425847b73884f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 30d52f1ac6a68a3202de59a0b4cab8edfb7ed042
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605793"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701096"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -37,7 +36,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 * **IntelliJ IDEA から Azure サブスクリプションにサインインします**。 「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)」の手順に従います。
 * **例外の回避策**。 リモート デバッグを行うために Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、例外が発生する場合があります。 この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明があり、Windows に WinUtils.exe ファイルがないことが原因で発生します。 このエラーを回避するには、[実行可能ファイルをダウンロード](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\WinUtils\bin** のような場所に保存する必要があります。 **HADOOP_HOME** 環境変数を追加し、この変数の値を **C\WinUtils** に設定します。
 
-## <a name="step-1-create-an-azure-virtual-network"></a>ステップ 1:Azure の仮想ネットワークを作成する
+## <a name="step-1-create-an-azure-virtual-network"></a>手順 1:Azure の仮想ネットワークを作成する
 次のリンクの手順に従って Azure 仮想ネットワークを作成し、デスクトップ コンピューターと仮想ネットワークの間の接続を確認します。
 
 * [Azure Portal を使用してサイト間 VPN 接続を持つ VNet を作成する](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)

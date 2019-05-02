@@ -1,7 +1,6 @@
 ---
 title: Python UDF と Apache Hive と Apache Pig - Azure HDInsight
 description: HDInsight (Azure の Apache Hadoop テクノロジ スタック) 上の Apache Hive と Apache Pig から Python ユーザー定義関数 (UDF) を使用する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497994"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702222"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する
 

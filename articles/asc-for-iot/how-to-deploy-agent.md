@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 8f5a6187b0a651da9dd8de1cb5670a8faffded1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c0a5e04b91d79b99935b52fd7f24752fb5d1b115
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862422"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919634"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -49,7 +49,7 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 | オープン ソース | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
 | 開発言語    | C | C# |
 | Windows プラットフォームのサポート | いいえ  | はい |
-| Windows の前提条件 | --- | [WMI](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/) |
+| Windows の前提条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Linux プラットフォームのサポート | はい、x64 と x86 | はい、x64 のみ |
 | Linux の前提条件 | libunwind8、libcurl3、uuid ランタイム、auditd audispd プラグイン | libunwind8、libcurl3、uuid ランタイム、auditd、audispd プラグイン、sudo、netstat、iptables |
 | ディスクの占有領域 | 10.5 MB | 90 MB |

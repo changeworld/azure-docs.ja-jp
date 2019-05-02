@@ -4,24 +4,24 @@ titlesuffix: Azure Virtual Network
 description: 仮想マシンにパブリック IP アドレスを関連付ける方法について説明します。
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: ce573ff8fe61f2e1d4c88963e0f21fc9402776e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 69460a111e6fd879807b4025d6832b3ac515a9b4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083217"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691978"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
 
-この記事では、既存の仮想マシン (VM) にパブリック IP アドレスを関連付ける方法について説明します。 インターネットから VM に接続する場合、VM は、関連付けられたパブリック IP アドレスを備えている必要があります。 パブリック IP アドレスを備えた新しい VM を作成する場合は、[Azure portal](virtual-network-deploy-static-pip-arm-portal.md)、[Azure コマンド ライン インターフェイス (CLI)](virtual-network-deploy-static-pip-arm-cli.md)、または [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) を使用して行うことができます。 パブリック IP アドレスには、わずかな費用がかかります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/ip-addresses/)のページを参照してください。 サブスクリプションごとに使用できるパブリック IP アドレスの数には制限があります。 詳しくは、[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits-1)に関する記事をご覧ください。
+この記事では、既存の仮想マシン (VM) にパブリック IP アドレスを関連付ける方法について説明します。 インターネットから VM に接続する場合、VM は、関連付けられたパブリック IP アドレスを備えている必要があります。 パブリック IP アドレスを備えた新しい VM を作成する場合は、[Azure portal](virtual-network-deploy-static-pip-arm-portal.md)、[Azure コマンド ライン インターフェイス (CLI)](virtual-network-deploy-static-pip-arm-cli.md)、または [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) を使用して行うことができます。 パブリック IP アドレスには、わずかな費用がかかります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/ip-addresses/)のページを参照してください。 サブスクリプションごとに使用できるパブリック IP アドレスの数には制限があります。 詳しくは、[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)に関する記事をご覧ください。
 
 パブリック IP アドレスを VM に関連付けるには、[Azure portal](#azure-portal)、Azure [コマンド ライン インターフェイス](#azure-cli) (CLI)、または [PowerShell](#powershell) を使用できます。
 

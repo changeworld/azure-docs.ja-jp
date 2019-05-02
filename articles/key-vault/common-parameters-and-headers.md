@@ -2,23 +2,19 @@
 title: 一般的なパラメーターとヘッダー
 description: Key Vault リソースに関連するすべての操作に共通のヘッダーおよびパラメーター。
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc6c937e37ebb7919ca271e765ad6460c104e43b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d635c7bdc6602c662ea6b91aad7e3f7a5e726547
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405047"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696687"
 ---
 # <a name="common-parameters-and-headers"></a>一般的なパラメーターとヘッダー
 
@@ -43,10 +39,10 @@ ms.locfileid: "57405047"
    }  
 ```
 
-|要素名 | type | 説明 |
+|要素名 | Type | 説明 |
 |---|---|---|
-| code | 文字列 | 発生したエラーの種類。|
-| message | 文字列 | エラーの原因の説明。 |
+| code | string | 発生したエラーの種類。|
+| message | string | エラーの原因の説明。 |
 
 
 

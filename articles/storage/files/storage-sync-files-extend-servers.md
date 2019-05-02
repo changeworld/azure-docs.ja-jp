@@ -2,18 +2,18 @@
 title: チュートリアル - Azure File Sync を使用して Windows ファイル サーバーを拡張する | Microsoft Docs
 description: Azure File Sync を使用して Windows ファイル サーバーを拡張する方法について、開始から完了まで説明します。
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: df3850a839ac789957a9adffb7122a0b58987781
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049151"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705070"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
 

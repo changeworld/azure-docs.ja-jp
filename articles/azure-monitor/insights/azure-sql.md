@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 03f330f429be583d3a400eb1ee00875f7c305e74
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629978"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923015"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -36,7 +36,7 @@ Azure SQL Analytics は、Azure SQL データベース (単一、プール、お
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Azure 診断](../platform/collect-azure-metrics-logs.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
+| [Azure Diagnostics](../platform/collect-azure-metrics-logs.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
 | [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ  | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
 | [Windows エージェント](../platform/agent-windows.md) | いいえ  | このソリューションでは、直接の Windows エージェントは使用されません。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ  | このソリューションでは、直接の Linux エージェントは使用されません。 |
@@ -287,7 +287,7 @@ AzureDiagnostics
 
 ### <a name="pricing"></a>価格
 
-ソリューションは無料で使用できますが､毎月割り当てられる無料のデータ取り込み単位数を超えた診断テレメトリの使用量が適用されます｡[Log Analytics の価格](https://azure.microsoft.com/en-us/pricing/details/monitor)を参照してください｡ 提供される無料のデータ インジェスト単位数により、毎月いくつかのデータベースの無料の監視が可能になります。 アイドル状態のデータベースに比べて、ワークロードが重いほど、またアクティブなデータベースが多いほど、取り込まれるデータは多くなることに注意してください。 データ取り込み使用量は､Azure SQL Analytics のナビゲーション メニューで OMS Workspace を選択し､Usage and Estimated Costs を選択することで簡単に監視することができます｡
+ソリューションは無料で使用できますが､毎月割り当てられる無料のデータ取り込み単位数を超えた診断テレメトリの使用量が適用されます｡[Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor)を参照してください｡ 提供される無料のデータ インジェスト単位数により、毎月いくつかのデータベースの無料の監視が可能になります。 アイドル状態のデータベースに比べて、ワークロードが重いほど、またアクティブなデータベースが多いほど、取り込まれるデータは多くなることに注意してください。 データ取り込み使用量は､Azure SQL Analytics のナビゲーション メニューで OMS Workspace を選択し､Usage and Estimated Costs を選択することで簡単に監視することができます｡
 
 ## <a name="next-steps"></a>次の手順
 

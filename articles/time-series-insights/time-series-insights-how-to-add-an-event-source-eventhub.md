@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557786"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702631"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -46,7 +46,7 @@ ms.locfileid: "53557786"
 
 1. **[コンシューマー グループ]** ページで、**[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 
@@ -99,7 +99,7 @@ ms.locfileid: "53557786"
 
 1. イベント ハブに追加した専用 Time Series Insights コンシューマー グループ名を追加します。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    ![[作成] を選択します](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
@@ -108,5 +108,7 @@ ms.locfileid: "53557786"
 ## <a name="next-steps"></a>次の手順
 
 * [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。
+
 * イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
+
 * [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境にアクセスします。

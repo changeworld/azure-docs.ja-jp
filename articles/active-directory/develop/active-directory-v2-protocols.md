@@ -18,19 +18,19 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490721"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917344"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft ID プラットフォームのプロトコル
 
 業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用した Identity-as-a-Service (サービスとしての ID) としての Microsoft ID プラットフォームのエンドポイント。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 ここでは、Microsoft のオープンソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティの[オープンソース ライブラリ](reference-v2-libraries.md)を使用する場合に役立つ情報を紹介します。
 
 > [!NOTE]
-> Microsoft ID プラットフォーム エンドポイントでは、Azure AD のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[MicrosoftID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
+> Microsoft ID プラットフォーム エンドポイントでは、Azure AD のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](active-directory-v2-limitations.md)に関するページを参照してください。
 
 ## <a name="the-basics"></a>基本
 
@@ -51,7 +51,7 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 * **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
 * その他シナリオに応じた値。
 
-詳細については、 [アプリの登録](quickstart-v2-register-an-app.md)方法を参照してください。
+詳細については、 [アプリの登録](quickstart-register-app.md)方法を参照してください。
 
 ## <a name="endpoints"></a>エンドポイント
 
@@ -69,7 +69,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 | `common` | 個人の Microsoft アカウントと Azure AD の職場/学校アカウントのどちらでもアプリケーションにサインインできます。 |
 | `organizations` | Azure AD の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
 | `consumers` | 個人の Microsoft アカウント (MSA) を持つユーザーのみがアプリケーションにサインインできます。 |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` or `contoso.onmicrosoft.com` | 特定の Azure AD テナントの職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` または `contoso.onmicrosoft.com` | 特定の Azure AD テナントの職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 Azure AD テナントのフレンドリ ドメイン名か、テナントの GUID 識別子のいずれかを使用できます。 |
 
 これらのエンドポイントと対話する方法について学習するには、「[プロトコル](#protocols)」セクションで特定のアプリの種類を選択し、リンクから詳細情報にアクセスしてください。
 

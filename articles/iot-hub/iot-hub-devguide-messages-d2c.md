@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: fddea12d4c6b7d09d87174d29c645ef6da54af6f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576344"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917421"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -119,7 +119,7 @@ Azure portal の [メッセージ ルーティング] ブレードで、フォ�
 
 IoT Hub には、ハブの正常性と送信されたメッセージの概要を示す、ルーティングおよびエンドポイント関連のメトリックがいくつか用意されています。 複数のメトリックから得た情報を組み合わせることで、問題の根本原因を特定することができます。 たとえば、メトリック **Routing: telemetry messages dropped (ルーティング: 破棄されたテレメトリ メッセージ)** または **d2c.telemetry.egress.dropped** を使用すると、どのルートのクエリにも一致せず、フォールバック ルートが無効になっていたときに破棄されたメッセージの数を特定できます。 [IoT Hub メトリック](iot-hub-metrics.md)に関するページには、IoT ハブで既定で有効になっているすべてのメトリックが一覧で示されています。
 
-REST API の [GetEndpointHealth](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得できます。 ルーティングによるメッセージの待機時間に関する [IoT Hub メトリック](iot-hub-metrics.md)を使用して、エンドポイントの正常性が停止または異常の場合にエラーを特定し、デバッグすることをお勧めします。 たとえば、エンドポイントの種類が Event Hubs の場合は、**d2c.endpoints.latency.eventHubs** を監視できます。 IoT Hub が最終的に一貫して正常状態を確立すると、異常なエンドポイントの状態が "正常" に更新されます。
+REST API の [GetEndpointHealth](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得できます。 ルーティングによるメッセージの待機時間に関する [IoT Hub メトリック](iot-hub-metrics.md)を使用して、エンドポイントの正常性が停止または異常の場合にエラーを特定し、デバッグすることをお勧めします。 たとえば、エンドポイントの種類が Event Hubs の場合は、**d2c.endpoints.latency.eventHubs** を監視できます。 IoT Hub が最終的に一貫して正常状態を確立すると、異常なエンドポイントの状態が "正常" に更新されます。
 
 Azure Monitor の[診断設定](../iot-hub/iot-hub-monitor-resource-health.md)の**ルート**診断ログを使用すると、IoT Hub に認識されたエンドポイントの正常性とルーティング クエリの評価中に発生したエラーを追跡することができます (エンドポイントが停止した場合など)。 これらの診断ログは、カスタム処理を実行するために、Azure Monitor ログ、Event Hubs、または Azure Storage に送信できます。
 

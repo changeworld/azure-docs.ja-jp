@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight 上の Spark にある Jupyter でのカスタム Maven パッケージの使用
 description: HDInsight Spark クラスター内の Jupyter Notebook でカスタム Maven パッケージを使用するための構成手順を説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0394025fef15b987f0777d157c465e83d860601
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652134"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715153"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
 > [!div class="op_single_selector"]
@@ -55,7 +54,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
     >[!IMPORTANT]  
     >最初のセルでカーネルを構成しなかった場合、`-f` パラメーターを指定して `%%configure` を使用できますが、その場合セッションが最初からやり直しとなり、すべての進捗が失われます。
 
-    | HDInsight のバージョン | コマンド |
+    | HDInsight のバージョン | command |
     |-------------------|---------|
     |HDInsight 3.3 および HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
     | HDInsight 3.5 および HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
@@ -93,7 +92,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
         df.select("Time").count()
 
 ## <a name="seealso"></a>関連項目
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)

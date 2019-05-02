@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568993"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723574"
 ---
 # <a name="geofencing-geojson-data"></a>GeoJSON データのジオフェンシング
 
-Azure Maps の [GET Geofence](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview) および [POST Geofence](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) API を使用すると、指定したジオフェンスまたはフェンスのセットを基準とする座標の近接度を取得できます。 この記事では、Azure Maps の GET および POST API で使用できるジオフェンス データを準備する方法を説明します。
+Azure Maps の [GET Geofence](/rest/api/maps/spatial/getgeofence) および [POST Geofence](/rest/api/maps/spatial/postgeofence) API を使用すると、指定したジオフェンスまたはフェンスのセットを基準とする座標の近接度を取得できます。 この記事では、Azure Maps の GET および POST API で使用できるジオフェンス データを準備する方法を説明します。
 
 ジオフェンスまたはジオフェンスのセットに対するデータは、`GeoJSON` 形式の `Feature` オブジェクトと `FeatureCollection` オブジェクトによって表されます。これは、[rfc7946](https://tools.ietf.org/html/rfc7946) で定義されています。 さらに、次のことが指定されています。
 
@@ -30,11 +30,11 @@ Azure Maps の [GET Geofence](https://docs.microsoft.com/rest/api/maps/spatial/g
 * `expiredTime` は、ジオフェンシング データの期限切れ日時です。 要求に含まれる `userTime` の値がこの値より後の場合、対応するジオフェンス データは期限切れデータと見なされ、クエリは実行されません。 その場合、このジオフェンス データの geometryId が、ジオフェンス応答内の `expiredGeofenceGeometryId` 配列に格納されます。
 * `validityPeriod` は、ジオフェンスの有効期間のリストです。 要求に含まれる `userTime` の値が有効期間の範囲外の場合、対応するジオフェンス データは無効と見なされ、クエリは実行されません。 このジオフェンス データの geometryId は、ジオフェンス応答内の `invalidPeriodGeofenceGeometryId` 配列に格納されます。 validityPeriod 要素のプロパティを次の表に示します。
 
-| Name | type | 必須  | 説明 |
+| Name | Type | 必須  | 説明 |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | DateTime  | true | 有効期間の開始日時。 |
 | endTime   | DateTime  | true |  有効期間の終了日時。 |
-| recurrenceType | 文字列 | false |   期間の繰り返しの種類。 値は、`Daily`、`Weekly`、`Monthly`、`Yearly` のいずれかです。 既定値は `Daily` です。|
+| recurrenceType | string | false |   期間の繰り返しの種類。 値は、`Daily`、`Weekly`、`Monthly`、`Yearly` のいずれかです。 既定値は `Daily` です。|
 | businessDayOnly | Boolean | false |  データが営業日のみ有効かどうかを示します。 既定値は `false` です。|
 
 

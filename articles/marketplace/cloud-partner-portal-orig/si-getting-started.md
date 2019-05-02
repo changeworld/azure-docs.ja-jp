@@ -1,25 +1,18 @@
 ---
-title: Seller Insights の概要 | Microsoft Docs
+title: Seller Insights の概要
 description: Cloud パートナー ポータルの Seller Insights 機能の概要です。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f9bcc05fb02d2324d0546f2ed8286b27e5f8e296
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807896"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943052"
 ---
 <a name="getting-started-with-seller-insights"></a>Seller Insights の概要
 ====================================

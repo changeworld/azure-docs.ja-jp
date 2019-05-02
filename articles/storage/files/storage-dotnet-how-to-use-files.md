@@ -2,19 +2,19 @@
 title: .NET での Azure Files 用の開発 | Microsoft Docs
 description: Azure Files を使ってファイル データを格納する.NET アプリケーションとサービスを開発する方法を説明します。
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9238b1dfc697f9efae723aba787982ae1493a608
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2b615bbe7ffdf2f709cd7d7b0add4f956bec6a84
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762264"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728331"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 

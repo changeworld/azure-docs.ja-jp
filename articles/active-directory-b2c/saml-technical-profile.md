@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術
 description: Azure Active Directory B2C 内のカスタム ポリシーで SAML 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b0d1722df2bfe5116de2676dfc930d6050731bbd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4a2e8938aeaf75b3b0237962d16f2702968358f9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005028"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695577"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
@@ -119,9 +119,9 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
-| 属性 | 必須 | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
 | WantsSignedRequests | いいえ  | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** 値が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** 値が `false` に設定されている、または指定がない場合、Azure AD B2C では要求の署名は行われません。 |
@@ -140,7 +140,7 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| 属性 |必須 | 説明 |
+| Attribute |必須 | 説明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |はい | SAML メッセージを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、要求に署名し、ID プロバイダーに送信します。 |
 | SamlAssertionDecryption |はい | SAML メッセージを復号化するために使用する X509 証明書 (RSA キー セット)。 この証明書は、ID プロバイダーによって提供される必要があります。 Azure AD B2C では、この証明書を使用して、ID プロバイダーによって送信されるデータを復号化します。 |

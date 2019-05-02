@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でリソース所有者のパスワード資�
 description: Azure AD B2C でリソース所有者のパスワード資格情報フローを構成する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: da7fe9310f50d2d2a3c247a410db204903d3412b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401770"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715887"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 
 | キー | 値 |
 | --- | ----- |
-| username | leadiocl@outlook.com |
+| ユーザー名 | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |

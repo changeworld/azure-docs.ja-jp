@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 10d703ad613a340a0f99c4d5dd8f4c748ff3e6bd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4c5279d1ddf3153493ebc01dc010114ff7e6b5e7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684108"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917243"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -26,12 +26,12 @@ ms.locfileid: "59684108"
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**ワークロード重要度を Gen2 プレビューとして利用できるようになりました**|ワークロード重要度を利用すれば、データ エンジニアは重要度で要求を分類できます。 重要度の高い要求にはリソースへの迅速なアクセスが与えられ、SLA に順守します。  ワークロード重要度を利用することで、リソースの比較的少ない共有環境で、ビジネス的な価値の高い仕事が SLA を順守できます。<br/><br/>ワークロード管理の分類および重要度のプレビューは、公開日が 2019 年 4 月 9 日以降のビルド用です。 この日付より前のビルドは、ワークロード管理テストへの使用をお控えください。 お使いのビルドがワークロード管理に対応しているかどうかを調べるには、SQL Data Warehouse インスタンスに接続された状態で「`select @@version`」を実行します。</br></br>ワークロード重要度の詳細については、ドキュメントの[分類](sql-data-warehouse-workload-classification.md)と[重要度](sql-data-warehouse-workload-importance.md)に関する概要記事を参照してください。 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) のドキュメントも参照してください。<br/><br/>下の動画でワークロード重要度が実際に使われている様子をご覧ください。<br/>[Workload Management concepts](  https://www.youtube.com/embed/QcCRBAhoXpM) (ワークロード管理の概念)<br/>[Workload Management scenarios](https://www.youtube.com/embed/_2rLMljOjw8) (ワークロード管理のシナリオ)|
-|**データの検出と分類**|Azure SQL Data Warehouse のパブリック プレビューで、データの検出と分類を利用できるようになりました。 機密データや顧客のプライバシーを保護することは非常に重要です。 ビジネスおよび顧客のデータ資産が増大するにつれて、データの検出、分類、保護が管理不能になります。 Azure SQL Data Warehouse でネイティブに導入される "データの検出と分類" 機能を使用すると、データ保護がより管理しやすくなります。 この機能の全体的な利点は次のとおりです。<br/>&bull; &nbsp; データのプライバシー基準および規制のコンプライアンス要件を満たします。<br/>&bull; &nbsp; 機密性の高いデータを含むデータ ウェアハウスへのアクセスを制限し、セキュリティを強化します。<br/>&bull; &nbsp; 機密データへの異常なアクセスを監視し、アラートを出します。<br/>&bull; &nbsp; Azure portal の中央ダッシュボードで機密データを視覚化します。 </br></br>データの検出と分類は、脆弱性評価と脅威検出が含まれた Advanced Data Security の一部として、すべての Azure リージョンの Azure SQL Data Warehouse で利用できます。 データの検出と分類の詳細については、[ブログ記事](https://azure.microsoft.com/en-us/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)およびオンラインの[ドキュメント](/azure/sql-database/sql-database-data-discovery-and-classification)をご覧ください。|
+|**データの検出と分類**|Azure SQL Data Warehouse のパブリック プレビューで、データの検出と分類を利用できるようになりました。 機密データや顧客のプライバシーを保護することは非常に重要です。 ビジネスおよび顧客のデータ資産が増大するにつれて、データの検出、分類、保護が管理不能になります。 Azure SQL Data Warehouse でネイティブに導入される "データの検出と分類" 機能を使用すると、データ保護がより管理しやすくなります。 この機能の全体的な利点は次のとおりです。<br/>&bull; &nbsp; データのプライバシー基準および規制のコンプライアンス要件を満たします。<br/>&bull; &nbsp; 機密性の高いデータを含むデータ ウェアハウスへのアクセスを制限し、セキュリティを強化します。<br/>&bull; &nbsp; 機密データへの異常なアクセスを監視し、アラートを出します。<br/>&bull; &nbsp; Azure portal の中央ダッシュボードで機密データを視覚化します。 </br></br>データの検出と分類は、脆弱性評価と脅威検出が含まれた Advanced Data Security の一部として、すべての Azure リージョンの Azure SQL Data Warehouse で利用できます。 データの検出と分類の詳細については、[ブログ記事](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)およびオンラインの[ドキュメント](/azure/sql-database/sql-database-data-discovery-and-classification)をご覧ください。|
 |**GROUP BY ROLLUP**|ROLLUP が Azure データ ウェアハウスの GROUP BY オプションでサポートされるようになりました。   GROUP BY ROLLUP によって列式の組み合わせごとにグループが作成されます。 GROUP BY ではまた、結果が小計と総計に "ロール アップ" されます。 GROUP BY 関数は、右から左に処理し、グループと集計が作成される列式の数を減らします。  列の順序は ROLLUP 出力に影響を与えます。結果セット内の行数に影響を与えることもあります。<br/><br/>GROUP BY ROLLUP の詳細については、「[GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)」をご覧ください。
 |**DWU の使用量と CPU ポータルのメトリックの精度向上**|SQL Data Warehouse によって、Azure portal のメトリックの精度が大幅に改善されます。  このリリースでは、CPU と DWU の使用量のメトリックの定義が修正され、コンピューティング ノード全体でワークロードが正しく反映されます。 この修正の前は、メトリック値は実際より少なく報告されていました。 Azure portal では、使用された DWU と CPU メトリックに増加が予想されます。 |
 |**行レベルのセキュリティ**|2017 年 11 月に、行レベルのセキュリティ機能を導入しました。 このサポートを外部テーブルにも拡張しました。 さらに、セキュリティ フィルター述語を定義するために必要なインライン テーブル値関数 (インラインTVF) で非決定論的関数を呼び出すためのサポートを追加しました。 この追加により、セキュリティ フィルター述語で IS_ROLEMEMBER()、USER_NAME() などを指定できるようになりました。 詳細については、[行レベルのセキュリティ ドキュメント](/sql/relational-databases/security/row-level-security)の例を参照してください。|
 |**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、[STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql) のサポートが含まれるようになりました。
-|**クエリ オプティマイザーの機能強化** |クエリの最適化は、あらゆるデータベースの重要な構成要素です。 クエリの最も優れた実行方法を最適に選択することによって、大幅な改善が見込まれます。  分散環境で複雑な分析クエリを実行する場合、実行される操作の数が重要になります。 より質の高いプランを生成することで、クエリのパフォーマンスが向上しています。 これらのプランによって、高価なデータ転送操作や冗長な計算 (重複したサブクエリなど) が最小限に抑えられます。 詳細については、この Azure SQL Data Warehouse の[ブログの投稿](https://azure.microsoft.com/en-us/blog/smarter-faster-safer-azure-sql-data-warehouse-is-simply-unmatched/)を参照してください。|
+|**クエリ オプティマイザーの機能強化** |クエリの最適化は、あらゆるデータベースの重要な構成要素です。 クエリの最も優れた実行方法を最適に選択することによって、大幅な改善が見込まれます。  分散環境で複雑な分析クエリを実行する場合、実行される操作の数が重要になります。 より質の高いプランを生成することで、クエリのパフォーマンスが向上しています。 これらのプランによって、高価なデータ転送操作や冗長な計算 (重複したサブクエリなど) が最小限に抑えられます。 詳細については、この Azure SQL Data Warehouse の[ブログの投稿](https://azure.microsoft.com/blog/smarter-faster-safer-azure-sql-data-warehouse-is-simply-unmatched/)を参照してください。|
 | | |
 
 ### <a name="documentation-improvements"></a>ドキュメントの改善

@@ -1,7 +1,6 @@
 ---
 title: HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# を使用する - Azure
 description: Azure HDInsight 上の Apache Hive と Apache Pig のストリーミングで C# のユーザー定義関数 (UDF) を使用する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: ac2edb4c12e95a915790c1fadfb2dcdcce554aad
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 31738c43756da14ba6c2c92afbcb2882561c8001
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545575"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722880"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数 (UDF) を使用する
 

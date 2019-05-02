@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight における Storm の SCP.NET プログラミング ガイド
 description: SCP.NET を使用して、Azure HDInsight で実行されている Storm で使用するための .NET ベースの Storm トポロジを作成する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853292"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692481"
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
 SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](https://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](https://zookeeper.apache.org/)を利用しています。 

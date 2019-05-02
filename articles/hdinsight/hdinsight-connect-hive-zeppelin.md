@@ -2,7 +2,6 @@
 title: Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
 description: Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
 keywords: hdinsight,hadoop,hive,対話型クエリ,LLAP
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,23 +9,23 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 417e9f8ae78889374983bf77900ee00fa7fc6338
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277955"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718944"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する 
 
-HDInsight 対話型クエリ クラスターには、対話型 Hive クエリを実行するために使用できる Apache Zeppelin ノートブックが含まれています。 この記事では、Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。 
+HDInsight 対話型クエリ クラスターには、対話型 Hive クエリを実行するために使用できる [Apache Zeppelin](https://zeppelin.apache.org/) ノートブックが含まれています。 この記事では、Azure HDInsight で Apache Zeppelin を使用して [Apache Hive](https://hive.apache.org/) クエリを実行する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
 * **HDInsight 対話型クエリ クラスター**。 HDInsight クラスターの作成については、「[クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。  クエリの種類では対話型クエリを必ず選択してください。 
 
-## <a name="create-a-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
+## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
 
 1. 次の URL を参照します。
 
@@ -69,12 +68,12 @@ HDInsight 対話型クエリ クラスターには、対話型 Hive クエリを
 
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Power BI を使用して HDInsight からデータを視覚化する方法について学習しました。  詳細については、次の記事を参照してください。
+この記事では、[Microsoft Power BI](https://powerbi.microsoft.com/) を使用して HDInsight からデータを視覚化する方法について学習しました。  詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)。
-* [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
+* [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)。
+* [Azure HDInsight の Power BI で対話型クエリの Apache Hive データを視覚化する](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
-* [Power Query を使用して Excel を Hadoop に接続する](hadoop/apache-hadoop-connect-excel-power-query.md)。
-* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
+* [Power Query を使用して Excel を Apache Hadoop に接続する](hadoop/apache-hadoop-connect-excel-power-query.md)。
+* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 * [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
 * [HDInsight にデータをアップロードする](./hdinsight-upload-data.md)。

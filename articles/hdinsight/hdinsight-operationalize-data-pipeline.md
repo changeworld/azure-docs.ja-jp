@@ -1,7 +1,6 @@
 ---
 title: データ分析パイプラインを運用化する - Azure
 description: 新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 524386c046534b0ef0050e15d326118b84822822
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311681"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718049"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -98,7 +97,7 @@ Azure SQL Database の準備ができました。
 #### <a name="provision-an-hdinsight-hadoop-cluster"></a>HDInsight Hadoop クラスターをプロビジョニングする
 
 1. Azure Portal で **[+ 新規]** を選んで、HDInsight を検索します。
-2. **作成**を選択します。
+2. **作成** を選択します。
 3. [基本] ウィンドウで、クラスターの一意名を指定し、Azure サブスクリプションを選びます。
 
     ![HDInsight クラスターの名前とサブスクリプション](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)

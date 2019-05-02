@@ -2,22 +2,19 @@
 title: チュートリアル - .NET で Azure Web アプリを使用して Azure Key Vault を使用する | Microsoft Docs
 description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように ASP.NET Core アプリケーションを構成します。
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 2c2bb3e4064294bb8d4a63b009069fd6834ca31e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 42c8d863a58c5f5d8f47f6686aa9a5b8f80277d2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370892"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710504"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル:.NET で Azure Web アプリを使用して Azure Key Vault を使用する
 
@@ -46,12 +43,12 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 * Mac の場合:[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 * Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
-  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 また、Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://review.docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://review.docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
 ## <a name="about-managed-service-identity"></a>マネージド サービス ID について
 
-Azure Key Vault は資格情報を安全に格納します。そのためコードには表示されません。 ただし、キーを取得するためには Azure Key Vault に対して認証を行う必要があります。 Key Vault に対して認証を行うには、資格情報が必要となります。 これは従来からあるブートストラップ問題のジレンマです。 マネージド サービス ID (MSI) は、このプロセスを簡素化する "_ブートストラップ ID_" を提供することによって、この問題を解決します。
+Azure Key Vault では資格情報が安全に格納されます。そのため資格情報はコードに表示されません。 ただし、キーを取得するためには Azure Key Vault に対して認証を行う必要があります。 Key Vault に対して認証を行うには、資格情報が必要となります。 これは従来からあるブートストラップ問題のジレンマです。 マネージド サービス ID (MSI) は、このプロセスを簡素化する "_ブートストラップ ID_" を提供することによって、この問題を解決します。
 
 Azure サービス (Azure Virtual Machines、Azure App Service、Azure Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が作成されます。 MSI は、サービスのインスタンスのプリンシパルを Azure Active Directory (Azure AD) に作成し、サービス プリンシパルの資格情報をそのインスタンスに挿入します。
 
@@ -73,7 +70,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 [az group create](/cli/azure/group#az-group-create) コマンドを使ってリソース グループを作成します。
 
-リソース グループ名を選択し、プレース ホルダーを入力します。 次の例では、米国西部の場所にリソース グループを作成します。
+次にリソース グループ名を選択し、プレースホルダーを入力します。 次の例では、米国西部の場所にリソース グループを作成します。
 
    ```azurecli
    # To list locations: az account list-locations --output table
@@ -240,7 +237,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 1. Visual Studio で、**key-vault-dotnet-core-quickstart** プロジェクトを選択します。
 2. **[発行]** > **[開始]** の順に選択します。
-3. **作成**を選択します。
+3. **作成** を選択します。
 
 アプリケーションを実行すると、シークレット値を取得できることが確認できます。
 

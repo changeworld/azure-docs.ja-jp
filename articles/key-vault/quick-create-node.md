@@ -2,21 +2,19 @@
 title: クイック スタート - Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs
 description: このクイック スタートでは、Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行います。
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: sumedhb
 ms.service: key-vault
-ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a9b92b691974eb9a14feaf97d760aa056ad21783
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522306"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696034"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>クイック スタート:Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 

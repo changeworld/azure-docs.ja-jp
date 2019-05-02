@@ -3,8 +3,8 @@ title: Azure Network Watcher との接続のトラブルシューティングの
 description: このページでは、Network Watcher の接続のトラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: jdial
-ms.openlocfilehash: 0268c7e54aa82df12243f98fd72de836fbc82070
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: kumud
+ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30834001"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705821"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Network Watcher の接続のトラブルシューティングの概要
 
@@ -74,7 +74,7 @@ Network Watcher の接続のトラブルシューティング機能を使用す�
 
 接続のトラブルシューティングでは、接続に関する障害の種類が返されます。 次の表は、返された現在の障害の種類の一覧を示します。
 
-|type  |説明  |
+|Type  |説明  |
 |---------|---------|
 |CPU     | CPU の使用率が高くなっています。       |
 |メモリ     | メモリの使用率が高くなっています。       |

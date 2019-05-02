@@ -3,8 +3,8 @@ title: 仮想マシン ネットワーク トラフィック フィルターの�
 description: このクイック スタートでは、Azure Network Watcher の IP フローの確認機能を使って、仮想マシンのネットワーク トラフィック フィルターの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004635"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702888"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -82,7 +82,7 @@ VM を作成すると、Azure は既定に従って、VM との間でやり取�
     | 仮想マシン   | myVm を選択する                                                                                       |
     | Linux | myvm - VM を作成したときにポータルが作成したネットワーク インターフェイスの名前は異なります。 |
     | Protocol          | TCP                                                                                               |
-    | 方向         | 送信                                                                                          |
+    | Direction         | 送信                                                                                          |
     | ローカル IP アドレス  | 10.0.0.4                                                                                          |
     | ローカル ポート      | 60000                                                                                                |
     | リモート IP アドレス | 13.107.21.200 - <www.bing.com> に対するアドレスの 1 つ。                                             |

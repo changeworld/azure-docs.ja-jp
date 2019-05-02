@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088045"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924808"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -38,7 +38,7 @@ ms.locfileid: "58088045"
 ### <a name="new"></a>新規
 
 * ADLS Gen2 コンテナー、ファイル、またはフォルダーへのアクセスを管理する際に、所有者と所有グループを変更できるようになりました。
-* Windows では、製品内からの Storage Explorer の更新は増分インストールになりました。 これにより、更新エクスペリエンスが高速化されます。 クリーン インストールを使用する場合は、[インストーラー](https://azure.microsoft.com/en-us/features/storage-explorer/)を自分でダウンロードし、手動でインストールします。 #1089
+* Windows では、製品内からの Storage Explorer の更新は増分インストールになりました。 これにより、更新エクスペリエンスが高速化されます。 クリーン インストールを使用する場合は、[インストーラー](https://azure.microsoft.com/features/storage-explorer/)を自分でダウンロードし、手動でインストールします。 #1089
 
 ### <a name="preview-features"></a>プレビュー機能
 
@@ -59,7 +59,7 @@ ms.locfileid: "58088045"
 
 ### <a name="known-issues"></a>既知の問題
 
-* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
 * プロキシの背後にある場合に ADLS Gen2 BLOB にアクセスしようとすると、失敗する可能性があります。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。

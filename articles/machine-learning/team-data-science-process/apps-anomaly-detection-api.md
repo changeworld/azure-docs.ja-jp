@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793137"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926182"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 
 > [!NOTE]
-> この項目はメンテナンス中です。 Azure Cognitive Services の Machine Learning アルゴリズムのギャラリーを利用する [Anomaly Detector API サービス](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/)を使用して、ビジネス、運用、および IoT のメトリックから異常を検出することをお勧めします。
+> この項目はメンテナンス中です。 Azure Cognitive Services の Machine Learning アルゴリズムのギャラリーを利用する [Anomaly Detector API サービス](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/)を使用して、ビジネス、運用、および IoT のメトリックから異常を検出することをお勧めします。
 
 ## <a name="overview"></a>概要
 [異常検出 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884161"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922986"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
@@ -41,7 +41,7 @@ Azure App Service Environment の構成によっては、エージェントの�
 ## <a id="profileondemand"></a> Profiler を手動でトリガーする
 
 ### <a name="minimum-requirements"></a>最小要件 
-プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control)。
+プロファイラー セッションをユーザーが手動でトリガーするためには、そのロールに最低でも、Application Insights コンポーネントの "書き込み" アクセス権が必要です。 ほとんどの場合、このアクセス権は自動的に与えられており、追加の作業は必要ありません。 問題が発生している場合、追加するサブスクリプション スコープ ロールは "Application Insights コンポーネント共同作成者" ロールになります。 [Azure Monitoring でのロール アクセス制御に関する詳細情報を参照してください](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)。
 
 シングル クリックで Profiler を手動でトリガーできます。 Web パフォーマンス テストを実行しているものとします。 Web アプリに負荷がかかった状態のパフォーマンスを把握するには、トレースが必要です。 ロード テストがいつ実行されるかがわかるので、トレースがキャプチャされるタイミングを制御できることは重要です。 しかし、ランダムなサンプリング間隔では失敗する可能性があります。
 

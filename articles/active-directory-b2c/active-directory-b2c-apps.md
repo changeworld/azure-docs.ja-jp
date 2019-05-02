@@ -3,19 +3,19 @@ title: Azure Active Directory B2C で使用できるアプリケーションの�
 description: Azure Active Directory B2C で使用できるアプリケーションの種類について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 4c3d63a4510d16268e1be3b853fd5c3225b647cd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497961"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703060"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
 

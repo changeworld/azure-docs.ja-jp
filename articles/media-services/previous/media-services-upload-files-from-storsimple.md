@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8a2972b8fbc31a3f945f40949128b3f37f2f4b77
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312480"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868309"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Azure StorSimple から Azure Media Services アカウントへのファイルのアップロード  
 
-この記事では、Azure StorSimple Data Manager の概要を説明します。 また、StorSimple からデータを抽出し、このデータを資産として Azure Media Services (AMS) アカウントにアップロードする方法を紹介するチュートリアルへのリンクも掲載しています。
-
-> 
 > [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>
+> 
 > Azure StorSimple Data Manager は、現在、プライベート プレビュー段階にあります。 
 > 
 

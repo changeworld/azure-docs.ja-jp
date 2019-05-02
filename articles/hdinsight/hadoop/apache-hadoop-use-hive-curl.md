@@ -1,7 +1,6 @@
 ---
 title: HDInsight 上で Curl を使用して Apache Hadoop Hive を使用する - Azure
 description: Curl を使用して Apache Pig ジョブを HDInsight にリモートで送信する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3e7ee293c2c33f169b3a5e4a7bded3190a9dc209
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e020cbc9c18db2142ee7f52cdac22a3518683fce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443226"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695816"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 

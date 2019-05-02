@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/18/2019
+ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 82d8a8085ca285c95a550678cdc534e586a4faa7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 53f69b6b8eb6cbbb8082ea0777af9dbceb7bdba1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415966"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699686"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する
 
@@ -169,7 +169,7 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 
 この例では、別のプロトコルでビデオを再生するために使用できる URL が表示されます。
 
-![出力](./media/stream-files-tutorial-with-api/output.png)
+![Output](./media/stream-files-tutorial-with-api/output.png)
 
 ## <a name="test-the-streaming-url"></a>ストリーミング URL をテストする
 
@@ -197,6 +197,10 @@ az group delete --name amsResourceGroup
 ## <a name="multithreading"></a>マルチスレッド
 
 Azure Media Services v3 SDK は、スレッドセーフではありません。 マルチスレッド アプリケーションを開発するときは、スレッドごとに新しい AzureMediaServicesClient オブジェクトを生成して使用する必要があります。
+
+## <a name="provide-feedback"></a>フィードバックの提供
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

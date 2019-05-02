@@ -1,7 +1,6 @@
 ---
 title: Web ブラウザーを使用して Apache Hadoop クラスターを作成する、Azure HDInsight
 description: Web ブラウザーと Azure プレビュー ポータルを使用して、HDInsight 用の Linux ベースの Apache Hadoop、Apache HBase、Apache Storm、または Apache Spark クラスターを作成する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: hrasheed
-ms.openlocfilehash: 13d053c14b083390bfdd28fdad616caf13e7e4e0
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911559"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715191"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -81,7 +80,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
      ![ストレージの設定を設定する](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Azure portal で新しいクラスターを作成する")
 
-     | ストレージ                                      | 説明 |
+     | Storage                                      | 説明 |
      |----------------------------------------------|-------------|
      | **既定のストレージとしての Azure Storage Blob**   | <ul><li>**[プライマリ ストレージの種類]** で、**[Azure Storage]** を選択します。 **[選択方法]** では、自分の Azure サブスクリプションの一部であるストレージ アカウントを指定する場合は、**[個人用サブスクリプション]** を選択します。 次に、ストレージ アカウントを選択します。 それ以外の場合は、**[アクセス キー]** を選択します。 次に、自分の Azure サブスクリプションの外部から選択するストレージ アカウントの情報を指定します。</li><li>**[既定のコンテナー]** では、ポータルによって示された既定のコンテナー名を使用するか、独自の名前を指定します。</li><li>Azure Blob ストレージが既定のストレージである場合は、**[追加のストレージ アカウント]** を選択して、クラスターに関連付ける追加のストレージ アカウントを指定することもできます。 **[Azure Storage キー]** では、**[ストレージ キーの追加]** を選択します。 その後、自分の Azure サブスクリプションまたは他のサブスクリプションから、ストレージ アカウントを指定できます。 ストレージ アカウントのアクセス キーを指定します。</li><li>BLOB ストレージが既定のストレージである場合は、**[Data Lake Storage access]\(Data Lake Storage アクセス\)** を選択し、追加のストレージとして Azure Data Lake Storage を指定することもできます。 詳細については、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。</li></ul> |
      | **既定のストレージとしての Azure Data Lake Storage** | **[プライマリ ストレージの種類]** で、**[Azure Data Lake Storage Gen1]** または **[Azure Data Lake Storage Gen2]** を選択します。 その後、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」の手順を参照してください。 |

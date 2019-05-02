@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: ff5d6aef48542ee18f6de91ddc418c0fcab70ece
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013050"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710170"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
 
@@ -54,11 +54,9 @@ Azure Media Services の主要なサポート メール アドレスは **amshel
 
 | 機能 | Email |
 | --- | --- |
-| Azure Media Analytics |amsanalytics@microsoft.com |
 | Azure Media Player |ampinfo@microsoft.com |
 | Azure Media Explorer |amse@microsoft.com |
 | ワークフロー デザイナー |mepd@microsoft.com |
-| ファイル ストリーミングとパッケージング |amsstreaming@microsoft.com |
 | ファイル ストリーミングとパッケージング |amslived@microsoft.com |
 
 ## <a name="next-steps"></a>次の手順

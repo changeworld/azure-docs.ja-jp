@@ -1,19 +1,18 @@
 ---
 title: Azure HDInsight のマネージド ID
 description: Azure HDInsight でのマネージド ID の実装の概要を説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9386bcb8e455bff5ceed1fccdf55874caf7b6507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5012b669b7460a44cb2732d7db7bf76fd1f567cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176148"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715770"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 

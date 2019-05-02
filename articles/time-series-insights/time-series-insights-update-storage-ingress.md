@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fe6848caad7cdac98d6717b7cea4860e7ce2db8f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438365"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725725"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -193,9 +193,9 @@ Time Series Insights プレビューは、環境あたり最大 6 MB/秒 (Mbps) 
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)について確認する。
+- [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)について確認する。
 
-新しい[データ モデリング](./time-series-insights-update-tsm.md)について確認する。
+- 新しい[データ モデリング](./time-series-insights-update-tsm.md)について確認する。
 
 <!-- Images -->
 [1]: media/v2-update-storage-ingress/storage-architecture.png

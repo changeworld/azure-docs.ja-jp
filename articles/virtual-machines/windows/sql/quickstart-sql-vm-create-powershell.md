@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c533f4671411412f223fb1c67f1b310ee19bcf23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 69789f11cc0ab3702ebbc905ce86f9992868e259
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547551"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715469"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell で SQL Server Windows 仮想マシンを作成する
 
@@ -135,9 +135,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ```powershell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
-      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
-      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
+   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 |
+      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate |
+      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" |
       Add-AzVMNetworkInterface -Id $Interface.Id
    
    # Create the VM

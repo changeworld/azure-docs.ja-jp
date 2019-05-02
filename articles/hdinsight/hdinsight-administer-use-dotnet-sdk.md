@@ -1,7 +1,6 @@
 ---
 title: .NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する - Azure
 description: HDInsight .NET SDK を使用して、HDInsight で Apache Hadoop クラスターの管理タスクを実行する方法について説明します。
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2e57726c3519fbb2660d7dfb4794a885871acc0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793940"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724135"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4dfd00f7f6bf591b3b40a3ca391d2f722b01b7f0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568894"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919135"
 ---
 #    <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
 
@@ -78,7 +78,7 @@ Microsoft.Skills.Text.MergeSkill
 
 テキスト マージ使用の一般的なシナリオは、イメージのテキスト表現 (OCR スキルからのテキストかイメージのキャプション) をドキュメントの content フィールドにマージすることです。 
 
-次のサンプル スキルセットでは、OCR スキルを使用して、ドキュメントに埋め込まれた画像からテキストを抽出します。 次に、*merged_text* フィールドを作成して、元のテキストと各イメージから OCR されたテキストの両方を格納します。 OCR スキルについて詳しくは、[こちら](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-ocr)をご覧ください。
+次のサンプル スキルセットでは、OCR スキルを使用して、ドキュメントに埋め込まれた画像からテキストを抽出します。 次に、*merged_text* フィールドを作成して、元のテキストと各イメージから OCR されたテキストの両方を格納します。 OCR スキルについて詳しくは、[こちら](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)をご覧ください。
 
 ```json
 {

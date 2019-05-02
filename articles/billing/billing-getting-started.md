@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 146c74fe751e75fb85563378be6f812802928fe2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842502"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918930"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -203,7 +203,7 @@ SLA のしきい値は、サービスによって異なります。 たとえば
 
 一部のサービスには、SLA を適用するための前提条件があります。 たとえば、仮想マシンでは、2 つ以上のインスタンスが同じ可用性セットにデプロイされている必要があります。
 
-詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/en-us/support/legal/sla/)」ドキュメントと「[Azure サービスの SLA 概要](https://azure.microsoft.com/en-us/support/legal/sla/summary/)」ドキュメントを参照してください。
+詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」ドキュメントと「[Azure サービスの SLA 概要](https://azure.microsoft.com/support/legal/sla/summary/)」ドキュメントを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

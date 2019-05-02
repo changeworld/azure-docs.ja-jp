@@ -1,7 +1,6 @@
 ---
 title: psql を使用した Apache Phoenix への一括読み込み - Azure HDInsight
 description: psql ツールを使用して Phoenix テーブルに一括読み込みデータを読み込みます。
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: fe6705dc3dedd521357f924dd433c7eacf88ba84
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342458"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718629"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>psql を使用した Apache Phoenix へのデータの一括読み込み
 
@@ -125,7 +124,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 * 入力フォルダーと出力フォルダーの両方に同じストレージ メディア (Azure Storage (WASB) または Azure Data Lake Storage (ADL) のいずれか) を使用します。 Azure Storage から Data Lake Storage にデータを転送するには、`distcp` コマンドを使用できます。
 

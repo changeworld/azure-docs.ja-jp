@@ -1,19 +1,18 @@
 ---
 title: Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する - Azure
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight に Kafka 用の Apache Ranger ポリシーを構成する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.openlocfilehash: 381958b462b668447a6548029a1be616df7a3a4b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6434f7cae3c3fa402efad00b2f6bfb0bc405f9e3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750224"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730256"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル: Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 

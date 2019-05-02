@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 0278332105f2102fc82122c5a74db6326f011e81
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541191"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925576"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -231,13 +231,13 @@ VSS のインストールは、モビリティ エージェントのインスト
 
 ### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS エラー -2147023824 [0x80070430] - 終了コード 517
 
-このエラーは、Azure Site Recovery VSS プロバイダー サービスが[削除対象としてマークされている](https://msdn.microsoft.com/en-us/library/ms838153.aspx)と発生します。 次のコマンド ラインを実行し、ソース マシンに VSS を手動でインストールしてみてください
+このエラーは、Azure Site Recovery VSS プロバイダー サービスが[削除対象としてマークされている](https://msdn.microsoft.com/library/ms838153.aspx)と発生します。 次のコマンド ラインを実行し、ソース マシンに VSS を手動でインストールしてみてください
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS エラー -2147023841 [0x8007041F] - 終了コード 512
 
-このエラーは、Azure Site Recovery VSS プロバイダー サービスのデータベースが[ロックされている](https://msdn.microsoft.com/en-us/library/ms833798.aspx)場合に発生します。次のコマンド ラインを実行し、ソース マシンに VSS を手動でインストールしてみてください
+このエラーは、Azure Site Recovery VSS プロバイダー サービスのデータベースが[ロックされている](https://msdn.microsoft.com/library/ms833798.aspx)場合に発生します。次のコマンド ラインを実行し、ソース マシンに VSS を手動でインストールしてみてください
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 

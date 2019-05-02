@@ -2,18 +2,18 @@
 title: Linux で Azure Files を使用する | Microsoft Docs
 description: Linux で SMB 経由で Azure File 共有をマウントする方法について説明します。
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c79c405c81d6e89314a765ea45d83cc46eb804cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834956"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691273"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 

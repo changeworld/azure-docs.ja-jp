@@ -2,22 +2,19 @@
 title: チュートリアル - Linux 仮想マシンと Python アプリケーションを使用してシークレットを Azure Key Vault に格納する | Microsoft Docs
 description: このチュートリアルでは、Azure Key Vault からシークレットを読み取るように Python アプリケーションを構成する方法について学習します。
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: mbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: b7077653ec959f99491cecd71573c091772448f4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: a5923c3d5ea7888a3737d7976caded8eef9c1661
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749632"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702104"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と Python アプリを使用してシークレットを Azure Key Vault に格納する
 
@@ -26,9 +23,9 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るように Azure Web アプリケーションを設定します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Key Vault を作成する
+> * Key Vault を作成します
 > * シークレットをキー コンテナーに格納する
-> * Linux 仮想マシンを作成する
+> * Linux 仮想マシンの作成
 > * 仮想マシンに対して[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする
 > * キー コンテナーからデータを読み取るために必要な権限をコンソール アプリケーションに付与する
 > * キー コンテナーからシークレットを取得する

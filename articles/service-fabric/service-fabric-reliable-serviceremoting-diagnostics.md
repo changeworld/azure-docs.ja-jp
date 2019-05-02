@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666156"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925938"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting の診断とパフォーマンス監視
 Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。
@@ -35,7 +35,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 上記の各カテゴリには、1 つまたは複数のカウンターがあります。
 
-パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
+パフォーマンス カウンター データの収集と表示には、Windows オペレーティング システムで既定で使用できる [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) アプリケーションを使用できます。 [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) があります。
 
 ### <a name="performance-counter-instance-names"></a>パフォーマンス カウンター インスタンス名
 多数の Service Remoting サービスまたはパーティションを持つクラスターには、多数のパフォーマンス カウンター インスタンスがあります。 パフォーマンス カウンター インスタンス名は、パフォーマンス カウンター インスタンスが関連付けられている特定のパーティションとサービス メソッド (該当する場合) を識別するのに役立ちます。
@@ -100,5 +100,5 @@ Reliable Service ランタイムは、サービス メソッドの実行に関�
 | Service Fabric サービス |応答のシリアル化の平均時間 (ミリ秒) |クライアントに応答を送信する前に、サービスでサービス応答メッセージをシリアル化するのにかかった時間 (ミリ秒単位) |
 
 ## <a name="next-steps"></a>次の手順
-* [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric&sort=0)
+* [コード サンプル](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [PerfView での EventSource プロバイダー](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

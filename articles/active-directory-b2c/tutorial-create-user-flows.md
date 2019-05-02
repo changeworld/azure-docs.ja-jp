@@ -3,19 +3,19 @@ title: チュートリアル - ユーザー フローを作成する - Azure Act
 description: Azure portal を使用して Azure Active Directory B2C 内のアプリケーションのためのユーザー フローを作成する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b76d56b17973c04992a8855917c814ced649bd0f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e12b3cbcb8f7a433b37c450c84bd34745f68a22d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338260"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711515"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 

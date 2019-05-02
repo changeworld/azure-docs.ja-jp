@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e23b5ff9917eda7272e378aa70d6e2dd79f4b9f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678872"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918968"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
@@ -38,7 +38,6 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 | ヨーロッパ |北ヨーロッパ |西ヨーロッパ |
 | フランス |フランス中部|フランス南部|
 | ドイツ |ドイツ中部 |ドイツ北東部 |
-| ドイツ |ドイツ北部 | ドイツ中西部
 | インド |インド中部 |インド南部 |
 | インド |インド西部 |インド南部 |
 | 日本 |東日本 |西日本 |
@@ -47,13 +46,8 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 | 北米 |米国東部 2 |米国中部 |
 | 北米 |米国中北部 |米国中南部 |
 | 北米 |米国西部 2 |米国中西部 
-| 北米 |米国西部 3 |米国東部
-| ノルウェー |ノルウェー東部 |ノルウェー西部
 | 南アフリカ | 南アフリカ北部 | 南アフリカ西部
-| スウェーデン |スウェーデン中部 |スウェーデン南部
-| スイス | スイス北部 | スイス西部
 | 英国 |英国西部 |英国南部 |
-| 英国 |英国北部 |英国南部 2
 | アラブ首長国連邦 | アラブ首長国連邦北部 | アラブ首長国連邦中部
 | 米国国防総省 |US DoD East |US DoD Central |
 | 米国政府 |米国政府アリゾナ |米国政府テキサス |
@@ -85,7 +79,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 
 ![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、[Azure SQL Database の geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)に関するページを参照してください。
+![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、「[Azure SQL Database の geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」を参照してください。
 
 ![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** - ARM では本質的に、リージョン全体のコンポーネントが論理的に切り離されています。 つまり、1 つのリージョンで論理的な障害が発生しても、他のリージョンが影響を受ける可能性はそれほど高くありません。
 

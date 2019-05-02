@@ -2,23 +2,19 @@
 title: Azure Automation を使用した Azure Key Vault の管理 - Azure Key Vault | Microsoft Docs
 description: Azure Automation サービスを使用して Azure Key Vault を管理する方法について説明します。
 services: Key-Vault, automation
-documentationcenter: ''
 author: mgoedtel
 manager: jwhit
 editor: ''
-ms.assetid: 4e780762-19b6-4ca6-b894-ebb44c538f35
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 87fdb565f47e7d88342c82bd5940c1ddb9c137e6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224875"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712125"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Azure Automation を使用した Azure Key Vault の管理
 

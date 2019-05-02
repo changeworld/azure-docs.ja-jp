@@ -3,17 +3,17 @@ title: Power BI ワークスペース コレクションでの行レベルのセ
 description: Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: ae9819cd5b27d794f26227f342cb0fdf1b0ab644
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518390"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715207"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 

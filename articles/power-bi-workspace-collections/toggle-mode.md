@@ -3,17 +3,17 @@ title: Power BI ワークスペース コレクションでレポートの表示
 description: Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える方法について説明します。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 38824c40db1f4fb3de9a0a124f74b71eb1ee2f17
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cab5d067387fcffe4f62b94e06960afe47d5f00c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517132"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702680"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える
 

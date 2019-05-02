@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/19/2019
+ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 9ab1a42578081d4e6537f221e3f3a8f4c7babde0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 37707d56caabf0ae8b0020eb8714245a27501ea6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013056"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696492"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>Key Vault 証明書での SSL 終了
 

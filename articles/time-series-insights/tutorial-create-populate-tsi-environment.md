@@ -9,12 +9,12 @@ ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 58b19a039bb6aebcd2687ab80cdd29c5f378645e
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c974e011e6f101eab617a370b24306f80c249b90
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200209"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718408"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル: Azure Time Series Insights 環境を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "54200209"
 
 ## <a name="video"></a>ビデオ
 
-このビデオでは、Azure IoT Solution Accelerator を使用して、Time Series Insights を使用するために使うデータを生成する方法を紹介します。
+### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insights-br"></a>このビデオでは、Azure IoT Solution Accelerator を使用して、Time Series Insights を使用するために使うデータを生成する方法を紹介します。 </br>
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
@@ -63,7 +63,7 @@ TSI 環境とは、デバイス データが収集、格納される場所のこ
    ---|---
    **環境名** | TSI 環境の一意の名前を選択します。 名前は TSI エクスプローラーと Query API で使用されます。
    **サブスクリプション** | サブスクリプションとは、Azure リソース用のコンテナーです。 TSI 環境を作成するサブスクリプションを選択します。
-   **[リソース グループ]** | リソース グループとは、Azure リソース用のコンテナーです。 TSI 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。
+   **リソース グループ** | リソース グループとは、Azure リソース用のコンテナーです。 TSI 環境リソースに既存のリソース グループを選択するか、新しいリソース グループを作成します。
    **場所** | TSI 環境のデータ センターのリージョンを選択します。 帯域幅のコストや待機時間の増加を防ぐために、TSI 環境を IoT リソースと同じリージョンにすることをお勧めします。
    **[Pricing SKU]\(価格 SKU\)** | 必要なスループットを選択します。 コストと初期容量を最小限に抑えるために、S1 を選択します。
    **[容量]** | 容量は、イングレス レート、ストレージ容量、選択した SKU に関連するコストに適用される乗数です。  環境の容量は、作成後に変更できます。 コストを最小限に抑えるために、容量には 1 を選択します。 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: f19d193bef718bd4ad3d98f2112a7e705051b729
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680878"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920079"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -112,7 +112,7 @@ App Service プランで 1 つのデプロイ スロットを使用して 1 つ�
 
 アプリケーション ヒープ設定をチューニングする際には、App Service プランの詳細を確認し、複数のアプリケーションおよびデプロイ スロットのニーズを考慮して、メモリの最適な割り当てを特定する必要があります。
 
-JAR アプリケーションをデプロイする場合、組み込みのイメージによりアプリが正しく識別されるよう、名前を `app.jar` にしてください。 (Maven プラグインでは、名前がこのように自動的に変更されます。)JAR の名前を `app.jar` に変更しない場合、JAR を実行するコマンドが含まれるシェル スクリプトをアップロードできます。 その後、ポータルの構成セクションで [[スタートアップ ファイル]](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) テキストボックスにこのスクリプトの完全なパスを貼り付けます。
+JAR アプリケーションをデプロイする場合、組み込みのイメージによりアプリが正しく識別されるよう、名前を `app.jar` にしてください。 (Maven プラグインでは、名前がこのように自動的に変更されます。)JAR の名前を `app.jar` に変更しない場合、JAR を実行するコマンドが含まれるシェル スクリプトをアップロードできます。 その後、ポータルの構成セクションで [[スタートアップ ファイル]](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) テキストボックスにこのスクリプトの完全なパスを貼り付けます。
 
 ### <a name="turn-on-web-sockets"></a>Web ソケットを有効にする
 

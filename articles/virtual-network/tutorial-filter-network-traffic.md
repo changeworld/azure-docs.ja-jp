@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: このチュートリアルでは、ネットワーク セキュリティ グループと Azure portal を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.author: kumud
+ms.openlocfilehash: ad34c6a876ca21bc7ef32cce638240e0d23b3177
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019029"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723915"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
@@ -51,7 +51,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | アドレス空間           | 10.0.0.0/16                                        |
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | リソース グループ          | **[新規作成]** を選択し、「*myResourceGroup*と入力します。 |
-    | 場所                | **[米国東部]** を選択します。                                |
+    | Location                | **[米国東部]** を選択します。                                |
     | サブネット名            | mySubnet                                           |
     | サブネット アドレス範囲  | 10.0.0.0/24                                        |
 
@@ -68,7 +68,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Name           | myAsgWebServers                                               |
     | サブスクリプション   | サブスクリプションを選択します。                                     |
     | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します。 |
-    | 場所       | 米国東部                                                       |
+    | Location       | 米国東部                                                       |
 
 4. 手順 3 を繰り返し、次の値を指定します。
 
@@ -77,7 +77,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Name           | myAsgMgmtServers                                              |
     | サブスクリプション   | サブスクリプションを選択します。                                     |
     | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します。 |
-    | 場所       | 米国東部                                                       |
+    | Location       | 米国東部                                                       |
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -90,7 +90,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |Name|myNsg|
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ | **[既存のものを使用]**、*[myResourceGroup]* の順に選択します。|
-    |場所|米国東部|
+    |Location|米国東部|
 
 ## <a name="associate-network-security-group-to-subnet"></a>ネットワーク セキュリティ グループをサブネットに関連付ける
 
@@ -149,7 +149,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ| **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。|
-    |場所| **[米国東部]** を選択します。|
+    |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で、次の値を選択し、それ以外の値は既定値をそのまま使用して、**[OK]** を選択します。

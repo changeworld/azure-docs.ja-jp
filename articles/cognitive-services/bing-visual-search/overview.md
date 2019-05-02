@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8bcb0372ebb60ac3a46cf06bf85322b288e153ba
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: bd93166cb878fbd961795492ed9a035c919429a8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630204"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916622"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Visual Search API とは
 
@@ -47,7 +47,7 @@ Bing Visual Search の結果には、画像内で興味を引く部分を囲む�
 
 Bing Visual Search API は RESTfulWeb サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 このサービスに対しては、REST API または SDK を使用できます。
 
-1. Bing Search API シリーズにアクセスするための [Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/)できます。 アカウントを作成した後に [Azure portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) から、または無料試用版を有効にした後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis)からサブスクリプション キーを取得できます。
+1. Bing Search API シリーズにアクセスするための [Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/)できます。 アカウントを作成した後に [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) から、または無料試用版を有効にした後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis)からサブスクリプション キーを取得できます。
 2. 有効な検索クエリを使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 

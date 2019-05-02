@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 3daea17a491af8950b38f1e3183583fef63751e2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652061"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926487"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -76,7 +76,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
  }  
  ```  
 
-プログラムで BLOB を一覧表示する方法については、「[Enumerating Blob Resources (Blob リソースの列挙)](http://msdn.microsoft.com/library/azure/hh452233.aspx)」と「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定および取得)](http://msdn.microsoft.com/library/azure/dd179404.aspx)」を参照してください。  
+プログラムで BLOB を一覧表示する方法については、「[Enumerating Blob Resources (Blob リソースの列挙)](https://msdn.microsoft.com/library/azure/hh452233.aspx)」と「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定および取得)](https://msdn.microsoft.com/library/azure/dd179404.aspx)」を参照してください。  
 
 ### <a name="log-naming-conventions"></a>ログの名前付け規則
 

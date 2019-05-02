@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497688"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922405"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker の言語サポート
 
@@ -41,7 +41,7 @@ QnA Maker は任意の言語ページでの質問と回答の抽出をサポー�
 
 第一言語を確認する手順は次のとおりです。
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。  
+1. [Azure Portal](https://portal.azure.com) にサインインします。  
 1. QnA Maker リソースの一部として作成された Azure Search リソースを検索して選択します。 Azure Search リソース名は QnA Maker リソースと同じ名前で始まり、種類は**検索サービス**です。 
 1. 検索リソースの **[概要]** ページで **[インデックス]** を選択します。 
 1. **[testkb]** インデックスを選択します。

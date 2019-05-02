@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ef62ec78bc7fc01bd2e6dd7c5561b15be85540d2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007901"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64870003"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 

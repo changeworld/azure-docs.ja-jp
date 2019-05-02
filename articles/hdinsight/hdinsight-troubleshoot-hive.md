@@ -2,18 +2,17 @@
 title: Azure HDInsight を使用した Hive のトラブルシューティング
 description: Apache Hive と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
 keywords: Azure HDInsight、Hive、よくある質問、トラブルシューティング ガイド、一般的な質問
-services: hdinsight
 ms.service: hdinsight
 author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 6d75bf86dab8775e77efb21ecc3b0d60063a9823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43886a132f2f3cf75f0ec7a0b2dc0680a0f69589
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088963"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712485"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
 

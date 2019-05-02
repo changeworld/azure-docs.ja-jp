@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: f8af19056a343abdbafcd4ead8b072330cb41fd9
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192074"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925688"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -33,9 +33,9 @@ zD&T 同様、ADCD は IBM のお客様とパートナー様だけが利用で�
 
 - [ライセンス サーバー](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 これは IBM zD&T を実行するために必要です。 その作成方法は、IBM からのソフトウェア ライセンスの取得方法によって異なります。
 
-  - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational トークンが含まれている USB ハードウェア デバイスが必要です。 これは IBM から取得する必要があります。
+  - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
 
-  - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キー管理用の一元的なサーバーをセットアップする必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
+  - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>パスポート アドバンテージからインストール パッケージをダウンロードする
 
@@ -187,7 +187,7 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 - [メインフレームの移行: 通説と事実](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上の IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
 - [トラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [メインフレームから Azure への移行に関する通説を覆す](https://azure.microsoft.com/en-us/resources/demystifying-mainframe-to-azure-migration/)
+- [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

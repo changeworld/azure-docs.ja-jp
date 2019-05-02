@@ -2,24 +2,17 @@
 title: Azure Marketplace と AppSource の推奨ソリューション
 description: Marketplace 内の推奨ソリューションの概要と選出基準
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: ''
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: dba917da81b2060f3e3c136fe87d7225e858d879
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 886bd96b78edc704e53d5b7a3460bfa0f522e05e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734984"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937810"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace と AppSource の推奨ソリューション
 

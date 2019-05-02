@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa4b68d48ec3f4fbb61c7144a133d9c42938c723
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191471"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917281"
 ---
 # <a name="application-types-in-v10"></a>v1.0 でのアプリケーションの種類
 
@@ -63,7 +63,7 @@ Azure AD に認証を委託するすべてのアプリケーションを、デ�
   * **キー** - Web API を呼び出すために Azure AD に対して認証するときに、アプリケーション ID と共に送信されるキーです。
 * Azure AD は、アプリケーションに、ディレクトリ データや組織の他のアプリケーションなどにアクセスするために必要な権限があることを保証する必要があります。
 
-詳しくは、[Azure AD v1.0 エンドポイントを使用してアプリを登録する](quickstart-v1-add-azure-ad-app.md)方法をご覧ください。
+詳細については、[アプリの登録](quickstart-register-app.md)方法を参照してください。
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>単一テナント アプリとマルチテナント アプリ
 

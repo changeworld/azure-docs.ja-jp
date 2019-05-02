@@ -3,19 +3,19 @@ title: カスタム ポリシーを使用して Azure Active Directory B2C ユ�
 description: 実行時に動的に変化する HTML5/CSS コンテンツで複数のブランド エクスペリエンスをサポートします。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: bf7391ea83adf852be0f989a82e89d7f316f2f85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c655a1ed7cefcc7af8a22ed1d869b1a2e8b81715
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090544"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708881"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C:カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 

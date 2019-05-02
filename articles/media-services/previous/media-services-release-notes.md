@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621432"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728039"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -321,10 +321,6 @@ Media Services .NET SDK が 3.1.0.1 にバージョン アップしました。
 * RTMP ライブ ストリームについては、現在、SSL 接続経由で取り込むことはできません。
 * SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合は、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含むストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL トリーミングに対応するには、[新しいストリーミング エンドポイントを作成](media-services-portal-manage-streaming-endpoints.md)してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用します。
 
-## <a id="october_changes_14"></a>2014 年 10 月のリリース
-### <a id="new_encoder_release"></a>Media Services Encoder のリリース
- Media Services Azure Media Encoder の新しいリリースが発表されました。 最新の Media Encoder では、出力 GB についてのみ課金されます。 それ以外は、新しいエンコーダーの機能は前のエンコーダーと互換性があります。 詳細については、[Media Services の価格詳細]に関するページをご覧ください。
-
 ### <a id="oct_sdk"></a>Media Services .NET SDK
 Media Services SDK for .NET 拡張機能は、現在、バージョン 2.0.0.3 です。
 
@@ -396,14 +392,6 @@ Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 
   * Web の例外が返されるとき (たとえば、Access Control Service トークンの要求時)、致命的なエラーが以前より早く失敗するようになりました。
 
 詳細については、「[Media Services SDK for .NET の再試行ロジック]」を参照してください。
-
-## <a id="april_changes_14"></a>2014 年 4 月の Encoder のリリース
-### <a name="april_14_enocer_changes"></a>Media Services Encoder の更新
-* Grass Valley EDIUS 非線形エディターを使用して作成された AVI ファイルを取り込むことができるようになりました。 このプロセスでは、ビデオは、Grass Valley HQ/HQX コーデックを使用してすばやく圧縮されます。 詳細については、「[Grass Valley announces EDIUS 7 streaming through the cloud (Grass Valley 社、クラウドを介した EDIUS 7 ストリーミングを発表)]」を参照してください。
-*  Media Services Encoder によって生成されたファイルの名前付け規則を指定できるようになりました。 詳細については、[Media Services Encoder 出力ファイル名の制御](https://msdn.microsoft.com/library/azure/dn303341.aspx)に関するページをご覧ください。
-*  ビデオ オーバーレイおよびオーディオ オーバーレイのサポートが追加されました。 詳細については、[オーバーレイの作成](https://msdn.microsoft.com/library/azure/dn640496.aspx)に関するページをご覧ください。
-*  複数のビデオ セグメントを結合できるようになりました。 詳細については、[ビデオ セグメントの結合](https://msdn.microsoft.com/library/azure/dn640504.aspx)に関するページをご覧ください。
-* オーディオが MPEG-1 Audio Layer 3 (MP3) でエンコードされるという、MP4 のコード変換に関するバグが修正されました。
 
 ## <a id="jan_feb_changes_14"></a>2014 年 1 月と 2 月のリリース
 ### <a name="jan_fab_14_donnet_changes"></a>Media Services .NET SDK 3.0.0.1、3.0.0.2、および 3.0.0.3
@@ -556,7 +544,7 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 <!--- URLs. --->
 [Azure Media Services MSDN フォーラム]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure Media Services REST API リファレンス]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[Media Services の価格詳細]: https://azure.microsoft.com/pricing/details/media-services/
+[Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [入力メタデータ]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [出力メタデータ]: https://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
@@ -573,7 +561,7 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
 [Media Services SDK for .NET の再試行ロジック]: https://msdn.microsoft.com/library/azure/dn745650.aspx
-[Grass Valley announces EDIUS 7 streaming through the cloud (Grass Valley 社、クラウドを介した EDIUS 7 ストリーミングを発表)]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx

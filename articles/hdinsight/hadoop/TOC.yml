@@ -136,8 +136,6 @@
         - name: 空のエッジ ノードを使用する
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
-        - name: Python ストリーミング プログラムを開発する
-          href: apache-hadoop-streaming-python.md
         - name: JSON ドキュメントを処理および分析する
           href: using-json-in-hive.md
         - name: 'C# ユーザー定義関数を使用する'

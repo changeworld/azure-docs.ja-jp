@@ -1,7 +1,6 @@
 ---
 title: カスタムの MapReduce プログラムの実行 - Azure HDInsight
 description: HDInsight でカスタムの MapReduce プログラムを実行するタイミングと方法。
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: c9cbea913a86a681620eea4adc0a5c99cc84f920
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433867"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713087"
 ---
 # <a name="run-custom-mapreduce-programs"></a>カスタムの MapReduce プログラムを呼び出す
 
@@ -38,7 +37,6 @@ HDInsight で処理する場合のほとんどのシナリオでは、Pig や Hi
 カスタムの map および reduce コンポーネントは通常 Java で記述されます。 Hadoop は、C#、F#、Visual Basic、Python、JavaScript などの言語で開発されたコンポーネントを使用することもできるストリーミング インターフェイスを提供します。
 
 * カスタムの Java MapReduce プログラム開発のチュートリアルについては、「[HDInsight での Hadoop 用 Java MapReduce プログラムの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)」をご覧ください。
-* Python の使用例については、「[HDInsight 用 Python ストリーミング MapReduce プログラムの開発](apache-hadoop-streaming-python.md)」をご覧ください。
 
 独自の map および reduce コンポーネントを作成する場合は、次の条件を考慮に入れてください。
 
@@ -76,6 +74,5 @@ HDInsight で処理する場合のほとんどのシナリオでは、Pig や Hi
 
 * [HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](apache-hadoop-streaming-python.md)
 * [Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](../spark/apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する](python-udf-hdinsight.md)

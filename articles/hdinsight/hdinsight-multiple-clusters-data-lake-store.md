@@ -2,7 +2,6 @@
 title: Azure Data Lake Storage アカウントで複数の HDInsight クラスターを使用する - Azure
 description: 1 つの Data Lake Storage アカウントで複数の HDInsight クラスターを使用する方法を学習する
 keywords: hdinsight ストレージ,hdfs,構造化データ,非構造化データ, Data Lake Store
-services: hdinsight,storage
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d57c65c93ffcd6c4c5249a1e5effeb457ed1736
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b580890b1663aa6ce742443e927e4d760585d4ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440898"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700284"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage アカウントで複数の HDInsight クラスターを使用する
 
@@ -35,7 +34,7 @@ Data Lake Storage アカウントで複数の HDInsight クラスターを使用
 このフォルダー構造を HDInsight クラスターが効率的に使用できるようにするには、次の表に示すように、Data Lake Storage 管理者が適切なアクセス許可を割り当てる必要があります。 表に示されているアクセス許可は既定の ACL ではなく、アクセス ACL に対応します。 
 
 
-|フォルダー  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
+|Folder  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |/ | rwxr-x--x  |admin |admin  |サービス プリンシパル |--x  |FINGRP   |r-x         |
 |/clusters | rwxr-x--x |admin |admin |サービス プリンシパル |--x  |FINGRP |r-x         |
@@ -56,7 +55,7 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 - 別の AAD サービス プリンシパルが **/clusters/finance** の下にクラスターを作成できる場合は、スティッキー ビット (**finance** フォルダーに設定されている場合) により、あるサービス プリンシパルによって作成されたフォルダーを他のサービス プリンシパルは削除できないことが保証されます。
 - フォルダー構造とアクセス許可が適切に設定されていると、HDInsight クラスターの作成プロセスによってクラスター固有の保存場所が **/clusters/finance/** の下に作成されます。 たとえば、fincluster01 という名前を持つクラスターのストレージは **/clusters/finance/fincluster01** になります。 次の表に、HDInsight クラスターによって作成されたフォルダーの所有権とアクセス許可を示します。
 
-    |フォルダー  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
+    |Folder  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
     |---------|---------|---------|---------|---------|---------|---------|---------|
     |/clusters/finanace/ fincluster01 | rwxr-x---  |サービス プリンシパル |FINGRP  |- |-  |-   |-  | 
    

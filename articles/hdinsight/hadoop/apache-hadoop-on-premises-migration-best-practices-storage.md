@@ -1,7 +1,6 @@
 ---
 title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのストレージのベスト プラクティスについて説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000064"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691519"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
 
@@ -172,11 +171,11 @@ HDInsight には、既定の状態で、クラスターに関連付けられた 
 
 5. Shared Access Signature によるコンテナーへのアクセスを制限するために、Ambari HDFS Configs Advanced Custom core-site Add プロパティの下のクラスターのコアサイト構成にカスタム エントリを追加します。
 
-6.   **[キー]**  と  **[値]**  フィールドに、次の値を使用します。
+6. **[キー]** と **[値]** フィールドに、次の値を使用します。
 
     **[キー]**:`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **[値]**:上記の手順 4 で Python アプリケーションから返された SAS キー。
 
-7.   **[追加]**  ボタンをクリックしてこのキーと値を保存し、  **[保存]**  ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
+7. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]** をクリックします。
 
 8. Ambari Web UI で、左側の一覧から [HDFS] を選択して、右側の [サービス アクション] ドロップダウン リストから  **[すべて再起動]**  を選択します。 メッセージが表示されたら、 **[Confirm Restart All]\(すべての再起動の確認\)** を選択します。
 

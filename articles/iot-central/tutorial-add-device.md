@@ -3,18 +3,18 @@ title: Azure IoT Central アプリケーションに実デバイスを追加す�
 description: オペレーターとして、Azure IoT Central アプリケーションに実デバイスを追加します。
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 02/01/2019
+ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e9378f8d2b31bfed4c464951c427b1e9d00b7893
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425935"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699369"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
 

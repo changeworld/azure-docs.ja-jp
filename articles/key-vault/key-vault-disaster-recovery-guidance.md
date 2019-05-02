@@ -2,23 +2,19 @@
 title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 editor: ''
-ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
 ms.service: key-vault
-ms.workload: key-vault
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: dd1d2af174f93cceabccd62a78d45a0e4fbed502
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9346f3f9bd9395ac863af87d05724a76ae83fb2f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104518"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702327"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 

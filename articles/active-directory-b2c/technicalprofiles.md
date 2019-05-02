@@ -3,19 +3,19 @@ title: TechnicalProfiles | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの TechnicalProfiles 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568177"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711053"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 

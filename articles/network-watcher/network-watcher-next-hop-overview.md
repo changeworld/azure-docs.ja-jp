@@ -3,8 +3,8 @@ title: Azure Network Watcher の次ホップの概要 | Microsoft Docs
 description: この記事では、Network Watcher の次ホップ機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: febf7bca-e0b7-41d5-838f-a5a40ebc5aac
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 40f1790806aac6756979f28ad29442b7abf96019
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: kumud
+ms.openlocfilehash: eb613455ccd6b6630d0d75b5a8458f812bb36846
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096893"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730215"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>次ホップを使用して仮想マシンのルーティングの問題を診断する
 

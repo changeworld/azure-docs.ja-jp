@@ -10,12 +10,12 @@ ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 89e1330dae65e0cea891407764a0ef20a2f41d81
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789943"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916427"
 ---
 # <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>シナリオ: Azure Functions と Azure Service Bus を使用してロジック アプリをトリガーする
 
@@ -115,7 +115,7 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
-   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
    
    public static void Run(string myQueueItem, TraceWriter log)

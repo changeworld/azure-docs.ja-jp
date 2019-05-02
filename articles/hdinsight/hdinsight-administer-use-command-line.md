@@ -1,7 +1,6 @@
 ---
 title: Azure クラシック CLI を使用して Apache Hadoop クラスターを管理する - Azure HDInsight
 description: Azure クラシック CLI を使用して Azure HDInsight の Apache Hadoop クラスターを管理する方法について説明します。
-services: hdinsight
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tyfox
-ms.openlocfilehash: 61be4088034d8cc557c67c5b6de4972766654a39
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 94ef5a60ecc5d943d78b16a386660049cc52d82e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202386"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694458"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

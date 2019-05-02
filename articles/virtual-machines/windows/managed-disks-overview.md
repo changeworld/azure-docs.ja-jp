@@ -6,16 +6,16 @@ author: roygara
 ms.service: virtual-machines-windows
 ms.workload: storage
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 02/11/2019
+ms.topic: overview
+ms.date: 04/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 85b2dcb73024ce786b78436b7070ad2e9a96e1d4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: fb1ee8556935b141dfee6a18c96ecafb476aa584
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328472"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725819"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 

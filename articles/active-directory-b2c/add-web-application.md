@@ -3,19 +3,19 @@ title: Web アプリケーションを追加する - Azure Active Directory B2C 
 description: Active Directory B2C テナントに Web アプリケーションを追加する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 04/16/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: c1c640fa2c03f584aa9be62ae6ad123377ef53cd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: ede3fd0dd1d0351e691a9f160260c029d01c8f8a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680759"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704024"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントに Web API アプリケーションを追加する
 

@@ -2,7 +2,6 @@
 title: Azure HDInsight における Hive メモリ不足エラーの解決
 description: HDInsight における Hive メモリ不足エラーを解決する方法について説明します。 ユーザーのシナリオは、多数の大きなテーブルに対するクエリです。
 keywords: メモリ不足エラー、OOM、Hive 設定
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0017d0b0255f5b585f9d8e6f6ec2f3a12752625
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2e7328b95aecc8e644d7b9e2ec407a62551fff79
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691489"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712791"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 

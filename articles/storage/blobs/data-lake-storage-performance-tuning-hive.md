@@ -2,18 +2,19 @@
 title: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン | Microsoft Docs
 description: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: 9e5570b937fe97cc9b6ccd9ac804a35ff8e07d6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: b44c615396fbd526efb687977d303facd5d5d607
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883068"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939427"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の Hive と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
 

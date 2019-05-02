@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーを通じてアク
 description: Azure Active Directory B2C のご自身のアプリケーションへのカスタム ポリシーを通じて、OAuth2.0 ID プロバイダーのアクセス トークンを要求として渡す方法について学習します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 784387b119bff6445015419adfd3bc0e52eee43f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d752af1860d76e59df045907c11d16b4e1d20b0c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402645"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702948"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す
 

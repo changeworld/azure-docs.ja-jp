@@ -1,7 +1,6 @@
 ---
 title: Enterprise セキュリティ パッケージを使用した Azure HDInsight アーキテクチャ
 description: Enterprise セキュリティ パッケージを使用して HDInsight のセキュリティを計画する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7e71f27ab8d577602dd4b02f83d57ff84a92858a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f81aa1e493014f192dc11ca698e9793075ac26ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088096"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725618"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 

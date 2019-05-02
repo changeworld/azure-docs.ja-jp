@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: f4e14435c2ccab98619bec57fef0e121e2df4403
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 677d0458acb9fa29f91a7fb849da56cb3cd67678
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431616"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707085"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -93,7 +93,9 @@ Time Series Insights では、2 つの簡単なコスト効率の高い方法で
 ## <a name="next-steps"></a>次の手順
 
 - [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)の詳細を確認してください。
+
 - 環境を計画するには、[Time Series Insights プレビューの計画](./time-series-insights-update-plan.md)に関するページを参照してください。
+
 - [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
 
 <!-- Images -->

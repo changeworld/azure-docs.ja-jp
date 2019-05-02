@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6cc965f8e775e02e9dec9f610516739a9a2c1936
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448009"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922894"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
 Azure リソースへのアクセスを管理するには、適切な管理者ロールが必要です。 Azure には、組み込みロールを選択できるロールベースのアクセス制御 (RBAC) と呼ばれる認可システムがあります。 管理グループ、サブスクリプション、リソース グループなどのさまざまなスコープでこれらのロールを割り当てることができます。
 
-RBAC を使用してリソースへのアクセスを管理することをお勧めします。 ただし、まだクラシック デプロイ モデルを使用し、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure)を使用してクラシック リソースを管理している場合は、従来の管理者を使用する必要があります。 
+RBAC を使用してリソースへのアクセスを管理することをお勧めします。 ただし、まだクラシック デプロイ モデルを使用し、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/powershell/module/servicemanagement/azure)を使用してクラシック リソースを管理している場合は、従来の管理者を使用する必要があります。 
 
 > [!TIP]
 > クラシック リソースの管理に Azure portal だけを使用している場合は、従来の管理者を使用する必要はありません。

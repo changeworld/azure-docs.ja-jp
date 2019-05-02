@@ -1,25 +1,19 @@
 ---
-title: Cloud パートナー ポータルから Dynamics 365 for Operations オファーを作成する方法 | Microsoft Docs
+title: Cloud パートナー ポータルから Dynamics 365 for Operations オファーを作成する方法
 description: Cloud パートナー ポータルから Dynamics 365 for Operations オファーを作成する方法
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: a9ada25641e2a56beb9083b145a507c8fd41a46f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877328"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935102"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Cloud パートナー ポータルから Dynamics 365 for Operations オファーを作成する方法
 

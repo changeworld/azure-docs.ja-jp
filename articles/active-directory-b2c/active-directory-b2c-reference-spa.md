@@ -3,19 +3,19 @@ title: 暗黙的フローを使用するシングルページ サインイン - 
 description: Azure Active Directory B2C で OAuth 2.0 暗黙的フローを使用して、シングルページ サインインを追加する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 65a29d16f2a2d66425f568e7307e6202b8d55d24
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 06156b1050bbf77fbbd5be8559b3c1683c2ced24
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683361"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698946"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 

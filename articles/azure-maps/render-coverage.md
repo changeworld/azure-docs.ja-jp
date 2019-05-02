@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 36879ad070848f1779804d4eb3958058b9b86689
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996579"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869990"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
@@ -45,7 +45,6 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | 中央アフリカ共和国         | ✓ | Ø |
 | チャド                             | ✓ | Ø |
 | コモロ                          | ✓ | Ø |
-| コンゴ                            | ✓ | ✓ |
 | コンゴ民主共和国 | ✓ | ✓ |
 | コートジボワール                    | ✓ | Ø |
 | ジブチ                         | ✓ | Ø |
@@ -76,7 +75,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | レユニオン                          | ✓ | ✓ |
 | ルワンダ                           | ✓ | ✓ |
 | セントヘレナ、アセンションおよびトリスタンダクーニャ諸島 | ✓ | Ø |
-| サントメ・プリンシペ            | ✓ | Ø |
+| サントメ プリンシペ            | ✓ | Ø |
 | セネガル                          | ✓ | ✓ |
 | シエラレオネ                     | ✓ | ✓ |
 | ソマリア                          | ✓ | ✓ |
@@ -109,7 +108,6 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 | カナダ                    | ✓ | ✓ |
 | ケイマン諸島            | ✓ | ✓ |
 | チリ                     | ✓ | ✓ |
-| クリッパートン島         | ✓ | ✓ |
 | コロンビア                  | ✓ | ✓ |
 | コスタリカ                | ✓ | ✓ |
 | キューバ                      | ✓ | ✓ |

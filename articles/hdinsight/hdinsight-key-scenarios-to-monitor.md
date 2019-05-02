@@ -1,7 +1,6 @@
 ---
 title: クラスター パフォーマンスの監視 - Azure HDInsight
 description: HDInsight クラスターの容量とパフォーマンスを監視する方法。
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742475"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693215"
 ---
 # <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
 

@@ -3,19 +3,19 @@ title: ネイティブ クライアント アプリケーションを追加す�
 description: Active Directory B2C テナントにネイティブ クライアント アプリケーションを追加する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3f988e61c152be820e7e490e13908fb4ab54e6c5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 772b6b8a4d71b7d1c6418651ee0a4ee7b03af0cc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673394"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703907"
 ---
 # <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントへのネイティブ クライアント アプリケーションの追加
 

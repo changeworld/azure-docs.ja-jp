@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727610"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922386"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure CDN のプロファイルとエンドポイントを作成する
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 この手順では、リソースをデプロイするテンプレート ファイルを作成します。
 
-この例では、一般的な Web サイト高速化シナリオについて説明しますが、構成可能な設定は他にも多数あります。 これらの設定は、Azure Resource Manager テンプレート参照で確認できます。 [CDN プロファイル](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)と [CDN プロファイル エンドポイント](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)のリファレンスを参照してください。
+この例では、一般的な Web サイト高速化シナリオについて説明しますが、構成可能な設定は他にも多数あります。 これらの設定は、Azure Resource Manager テンプレート参照で確認できます。 [CDN プロファイル](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)と [CDN プロファイル エンドポイント](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)のリファレンスを参照してください。
 
 Microsoft CDN では、コンテンツの種類のリストの変更がサポートされないことに注意してください。
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>参照
 
-* CDN プロファイル - [Azure Resource Manager テンプレート参照](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)に関するページ
-* CDN エンドポイント - [Azure Resource Manager テンプレート参照のドキュメント](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN プロファイル - [Azure Resource Manager テンプレート参照](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)に関するページ
+* CDN エンドポイント - [Azure Resource Manager テンプレート参照のドキュメント](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894395"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923001"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -24,14 +24,14 @@ ms.locfileid: "57894395"
 Azure Backup は、MARS エージェントを使用して、オンプレミスのコンピューターや Azure VM から Azure の Backup Recovery Services コンテナーにデータをバックアップします。 MARS エージェントは次の動作が可能です。
 - Azure の Backup Recovery Services コンテナーに直接バックアップできるように、オンプレミスの Windows コンピューター上で動作できます。
 - コンテナーに直接バックアップできるように、Windows VM 上で動作できます。
-- Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) サーバー上で動作できます。 このシナリオでは、コンピューターとワークロードは MABS または DPM サーバーにバックアップされます。 その後、MARS エージェントがこのサーバーを Azure のコンテナーにバックアップします。 
+- Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) サーバー上で動作できます。 このシナリオでは、コンピューターとワークロードは MABS または DPM サーバーにバックアップされます。 その後、MARS エージェントがこのサーバーを Azure のコンテナーにバックアップします。
 
 バックアップ オプションは、エージェントがインストールされている場所によって異なります。 詳細については、[MARS エージェントを使用した Azure Backup アーキテクチャ](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)に関するページを参照してください。 MABS と DPM のバックアップ アーキテクチャについては、[DPM または MABS へのバックアップ](backup-architecture.md#architecture-back-up-to-dpmmabs)に関するページを参照してください。 バックアップ アーキテクチャに関する[要件](backup-support-matrix-mabs-dpm.md)も参照してください。
 
 **インストール** | **詳細**
 --- | ---
 最新の MARS エージェントをダウンロードする | 最新バージョンのエージェントはコンテナーからダウンロードするか、または[直接ダウンロード](https://aka.ms/azurebackup_agent)できます。
-コンピューターに直接インストールする | MARS エージェントは、オンプレミスの Windows サーバー、またはいずれかの[サポートされるオペレーティング システム](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)を実行している Windows VM に直接インストールできます。
+コンピューターに直接インストールする | MARS エージェントは、オンプレミスの Windows サーバー、またはいずれかの[サポートされるオペレーティング システム](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)を実行している Windows VM に直接インストールできます。
 バックアップ サーバーにインストールする | Azure にバックアップするように DPM または MABS を設定する場合は、そのサーバーに MARS エージェントをダウンロードしてインストールします。 バックアップ サーバーのサポート マトリックス内の[サポートされるオペレーティング システム](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)にエージェントをインストールできます。
 
 > [!NOTE]
@@ -45,9 +45,9 @@ MARS エージェントを使用してデータをバックアップする場合
 
 **キャッシュ** | **詳細**
 --- | ---
-Size |  キャッシュ フォルダー内の空き領域は、バックアップ データのサイズ全体の少なくとも 5 ～ 10% である必要があります。 
-Location | キャッシュ フォルダーは、バックアップされるコンピューターにローカルに格納されており、かつオンラインである必要があります。 キャッシュ フォルダーがネットワーク共有、リムーバブル メディア、またはオフライン ボリュームに存在していてはいけません。 
-フォルダー | キャッシュ フォルダーは、重複除去されたボリューム上か、圧縮されたフォルダー、スパース フォルダー、または再解析ポイントを含むフォルダー内で暗号化されている必要があります。
+Size |  キャッシュ フォルダー内の空き領域は、バックアップ データのサイズ全体の少なくとも 5 ～ 10% である必要があります。
+Location | キャッシュ フォルダーは、バックアップされるコンピューターにローカルに格納されており、かつオンラインである必要があります。 キャッシュ フォルダーがネットワーク共有、リムーバブル メディア、またはオフライン ボリュームに存在していてはいけません。
+Folder | キャッシュ フォルダーは、重複除去されたボリューム上か、圧縮されたフォルダー、スパース フォルダー、または再解析ポイントを含むフォルダー内で暗号化されている必要があります。
 場所の変更 | キャッシュの場所は、バックアップ エンジンを停止し (`net stop bengine`)、キャッシュ フォルダーを新しいドライブにコピーすることによって変更できます。 (新しいドライブに十分な領域があることを確認してください。)その後、**HKLM\SOFTWARE\Microsoft\Windows Azure Backup** にある 2 つのレジストリ エントリ (**Config/ScratchLocation** と **Config/CloudBackupProvider/ScratchLocation**) を新しい場所に更新し、エンジンを再起動します。
 
 ## <a name="networking-and-access-support"></a>ネットワークとアクセスのサポート
@@ -103,9 +103,9 @@ Windows 7   | 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>バックアップ用にサポートされるファイルの種類
 
-**Type** | **サポート** 
---- | --- 
-暗号化   | サポートされています。 
+**Type** | **サポート**
+--- | ---
+暗号化   | サポートされています。
 圧縮 | サポートされています。
 スパース | サポートされています。
 圧縮 + スパース | サポートされています。
@@ -114,7 +114,7 @@ Windows 7   | 1,700 GB
 暗号化 + スパース |  サポートされていません。 スキップされます。
 圧縮ストリーム   | サポートされていません。 スキップされます。
 スパース ストリーム   | サポートされていません。 スキップされます。
-OneDrive (同期されるファイルはスパース ストリーム)  | サポートされていません。 
+OneDrive (同期されるファイルはスパース ストリーム)  | サポートされていません。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>バックアップ用にサポートされるドライブまたはボリューム
 

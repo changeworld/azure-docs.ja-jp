@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 933d411f67655b49b4aef7bf413dfe5f87e4ff08
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ee52cde6feeb69f9140df497a9abee300c93fd71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556732"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692117"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
@@ -98,7 +98,7 @@ ms.locfileid: "53556732"
 
 1. IoT Hub に追加した、専用の Time Series Insights コンシューマー グループ名を追加します。
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    ![[作成] ボタン][5]
 
@@ -107,7 +107,9 @@ ms.locfileid: "53556732"
 ## <a name="next-steps"></a>次の手順
 
 * [データ アクセス ポリシーを定義](time-series-insights-data-access.md)して、データをセキュリティ保護します。
+
 * イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
+
 * [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境にアクセスします。
 
 <!-- Images -->

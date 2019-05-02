@@ -2,18 +2,19 @@
 title: Azure Data Lake Storage Gen2 の Spark パフォーマンス チューニング ガイドライン | Microsoft Docs
 description: Azure Data Lake Storage Gen2 の Spark パフォーマンス チューニング ガイドライン
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: bfd6e715e907925a1ba3db3b60c0d3eccb637930
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: feefcf4f9f4448ab2b36c415cb745fd98277eb28
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866102"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939331"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の Spark と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
 

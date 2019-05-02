@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: c26418d36271b4d2d39a43eda7e8b23585d69f4a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149429"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713004"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -350,7 +350,7 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
 お使いの VM が既存のインフラストラクチャと通信する必要がある場合は、お使いの DevTest Labs 環境内の既存の仮想ネットワークを使用することを検討してください。 ExpressRoute を使用している場合は、サブスクリプションで使用が割り当てられているお使いの IP アドレス空間がフラグメント化されないように、VNet およびサブネットの量を最小限に抑えることが必要な場合があります。 
 
-また、ここでは ([ハブ - スポーク モデル](/architecture/reference-architectures/hybrid-networking/hub-spoke))、VNET ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 
+また、ここでは ([ハブ - スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke))、VNET ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 
 
 サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-subscription-service-limits.md)があります。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
 

@@ -1,19 +1,18 @@
 ---
 title: Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する - Azure
 description: Linux ベースの HDInsight クラスターの OS 修正プログラム適用スケジュールを構成する方法について説明します。
-services: hdinsight
 author: omidm1
 ms.author: omidm
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: ef57608d092c05b30be63a54bb41ba87558eabc3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a887d6c69b9fa80f3144434e72a097e80d123a1b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694620"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722305"
 ---
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
 

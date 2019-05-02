@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: storage
-author: luywang
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 06/05/2018
-ms.author: luywang
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: efa43d7faf9d048ff963a74d8c69618ee535654c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443400"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64732668"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS ディスクのバックアップとディザスター リカバリー
 
@@ -123,7 +123,7 @@ IaaS アプリケーション データの問題も別の可能性として存�
 
 | Level |   高可用性   | バックアップまたは DR |
 | --- | --- | --- |
-| アプリケーション | SQL Server AlwaysOn | Azure Backup |
+| Application | SQL Server AlwaysOn | Azure Backup |
 | インフラストラクチャ    | 可用性セット  | 整合性スナップショットと geo 冗長ストレージ |
 
 ### <a name="using-azure-backup"></a>Azure Backup の使用 

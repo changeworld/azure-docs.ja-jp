@@ -1,7 +1,6 @@
 ---
 title: Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要
 description: Enterprise セキュリティ パッケージがエンタープライズ セキュリティの 4 本柱をサポートする方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 8a568302b2fd8ed0140c2ad084495d41cc09ed8f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: deff2aa3cd475a3ed37adc4408a133ed1fd0757e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994590"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716662"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要
 

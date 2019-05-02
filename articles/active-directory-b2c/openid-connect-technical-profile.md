@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Conn
 description: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Connect 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001407"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710315"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenId Connect 技術プロファイルを定義する
 
@@ -23,7 +23,7 @@ ms.locfileid: "60001407"
 
 Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。 OpenId Connect 技術プロファイルを使用して、OpenId Connect baseの ID プロバイダー (Azure AD など) とフェデレーションできます。 ID プロバイダーとのフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は `OpenIdConnect` に設定する必要があります。 たとえば、**MSA-OIDC** 技術プロファイル用のプロトコルは `OpenIdConnect` です。
 
@@ -71,9 +71,9 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>メタデータ
+## <a name="metadata"></a>Metadata
 
-| 属性 | 必須 | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| 属性 | 必須 | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |  
 

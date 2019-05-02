@@ -3,8 +3,8 @@ title: Azure CLI スクリプト サンプル - 2 つの仮想ネットワーク
 description: Azure CLI スクリプト サンプル - 2 つの仮想ネットワークのピアリング。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
-ms.author: jdial
-ms.openlocfilehash: 142b36e5c1f0908ccfc1bf2e475442028e02edf7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: kumud
+ms.openlocfilehash: 82f4f06cd4e615df38f2251be9aef9e8578b9df4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728454"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726787"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>2 つの仮想ネットワークのピアリングのスクリプト サンプル
 
@@ -47,7 +47,7 @@ az group delete --name myResourceGroup --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、およびすべての関連リソースを作成します。 以下の表の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](/cli/azure/network/vnet) | Azure 仮想ネットワークとサブネットを作成します。 |

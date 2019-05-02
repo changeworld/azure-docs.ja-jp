@@ -3,19 +3,19 @@ title: OpenID Connect での Web サインイン - Azure Active Directory B2C | 
 description: Azure Active Directory B2C の OpenID Connect 認証プロトコルを使用して Web アプリケーションを構築します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6285a90a9dca305f3a9cd909af6c084c747daf99
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4137360fadab0206c6569b58d6a9a0519ce74450
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679059"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703945"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 

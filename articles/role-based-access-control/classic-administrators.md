@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889326"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924648"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -30,7 +30,7 @@ ms.locfileid: "56889326"
 ## <a name="add-a-co-administrator"></a>共同管理者を追加する
 
 > [!TIP]
-> 共同管理者を追加する必要があるのは、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure)を使用して Azure クラシック デプロイを管理する必要がある場合だけです。 クラシック リソースの管理に Azure portal だけを使用する場合は、ユーザーに従来の管理者を追加する必要はありません。
+> 共同管理者を追加する必要があるのは、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/powershell/module/servicemanagement/azure)を使用して Azure クラシック デプロイを管理する必要がある場合だけです。 クラシック リソースの管理に Azure portal だけを使用する場合は、ユーザーに従来の管理者を追加する必要はありません。
 
 1. [Azure portal](https://portal.azure.com) にサービス管理者としてサインインします。
 

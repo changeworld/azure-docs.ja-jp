@@ -1,7 +1,6 @@
 ---
 title: Apache Hadoop で MapReduce と PowerShell を使用する - Azure HDInsight
 description: PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブをリモートで実行する方法を説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 015728a43e091e36dcf02b5cc17f0135a64428ca
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 29e23d5919a953566c803f2b7825a75a2993723c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361950"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721792"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する
 

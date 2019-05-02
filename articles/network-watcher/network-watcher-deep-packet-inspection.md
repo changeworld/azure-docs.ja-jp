@@ -3,8 +3,8 @@ title: Azure Network Watcher を使用したパケット インスペクショ�
 description: この記事では、Network Watcher を使用して、VM から収集されたディープ パケット インスペクションを実行する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: kumud
+ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818364"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716907"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 
@@ -41,7 +41,7 @@ Network Watcher のパケット キャプチャ機能を使用すると、Azure 
 
 このシナリオでは、2 つのエンドポイントの間で行われた伝送制御プロトコル (TCP) 会話の初期ラウンドトリップ時間 (RTT) を確認する方法について説明します。
 
-TCP 接続が確立されるとき、接続で送信された最初の 3 つのパケットは、一般に 3 ウェイ ハンドシェイクと呼ばれるパターンに従います。 このハンドシェイクで送信された最初の 2 つのパケット (クライアントからの初期要求とサーバーの応答) を確認することで、この接続が確立されたときの待ち時間を計算できます。 この待ち時間は、ラウンドトリップ時間 (RTT) と呼ばれます。 TCP プロトコルと 3 ウェイ ハンドシェイクの詳細については、次のリソースを参照してください。 https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+TCP 接続が確立されるとき、接続で送信された最初の 3 つのパケットは、一般に 3 ウェイ ハンドシェイクと呼ばれるパターンに従います。 このハンドシェイクで送信された最初の 2 つのパケット (クライアントからの初期要求とサーバーの応答) を確認することで、この接続が確立されたときの待ち時間を計算できます。 この待ち時間は、ラウンドトリップ時間 (RTT) と呼ばれます。 TCP プロトコルと 3 ウェイ ハンドシェイクの詳細については、次のリソースを参照してください。 [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>手順 1
 

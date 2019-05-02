@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 73fa9c4433a2af780798f0439c0a119bc32a678f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309809"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916697"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(非推奨) Marathon REST API を使用した DC/OS コンテナー管理
 
@@ -32,7 +32,7 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 ## <a name="access-the-dcos-apis"></a>DC/OS API にアクセスする
 Azure Container Service クラスターに接続したら、http:\//localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。 このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。 たとえば、Marathon エンドポイントには、http:\//localhost/marathon/v2/ で始まる URI でアクセスできます。 
 
-さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
+さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](https://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>DC/OS と Marathon から情報を収集する
 DC/OS クラスターにコンテナーをデプロイする前に、DC/OS エージェントの名前や状態など、DC/OS クラスターに関する情報を収集します。 DC/OS REST API の `master/slaves` エンドポイントに情報を照会してください。 問題がなければ、DC/OS エージェントの一覧と各エージェントのプロパティが返されます。

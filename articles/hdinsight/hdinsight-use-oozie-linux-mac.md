@@ -1,7 +1,6 @@
 ---
 title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する
 description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 ms.custom: hdinsightactive
 author: omidm1
@@ -9,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: daee7ddd0a09d43132bbcf0f4553601846d31433
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448235"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724165"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -37,7 +36,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 * **SSH クライアント**。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-* **Azure SQL Database**。  [Azure portal での Azure SQL Database の作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、`oozietest` という名前のデータベースを使用します。
+* **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、`oozietest` という名前のデータベースを使用します。
 
 * **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
 

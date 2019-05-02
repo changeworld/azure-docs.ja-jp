@@ -3,19 +3,19 @@ title: Azure Active Directory B2C で Application Insights を使用したカス
 description: カスタム ポリシーの実行を追跡するための Application Insights の設定方法。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a6ec4c7d239754fe3211b528dd0ac64ee150ad3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b25e5dc5d090ad7aab3d61e2c303a465b5d7443
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089371"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703933"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C:ログの収集
 

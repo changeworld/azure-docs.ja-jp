@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001883"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919728"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 
@@ -109,7 +109,6 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 - [Docker Compose で永続的ストレージを使用する](#use-persistent-storage-in-docker-compose)
 - [プレビューの制限事項](#preview-limitations)
 - [Docker Compose のオプション](#docker-compose-options)
-- [Kubernetes 構成オプション](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Docker Compose で永続的なストレージを使用する
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>Docker Compose でカスタム ストレージを使用する
-
-Azure Storage (Azure Files または Azure BLOB) は、custom-id を使用してマルチコンテナー アプリを使用してマウントできます。custom-id 名を表示するには、[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) を実行します。
-
-*docker-compose.yml* ファイルで、`volumes` オプションを `custom-id` にマップします。 例: 
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>プレビューの制限事項
@@ -179,22 +165,6 @@ wordpress:
 
 > [!NOTE]
 > パブリック プレビューでは、ここで明示的に示されていないその他のオプションが無視されます。
-
-### <a name="kubernetes-configuration-options"></a>Kubernetes 構成オプション
-
-次の Kubernetes 用の構成オプションがサポートされます。
-
-- args
-- command
-- containers
-- image
-- name
-- ports
-- spec
-
-> [!NOTE]
-> ここで明示的に示されていないその他のオプションは、パブリック プレビューではサポートされません。
->
 
 ## <a name="next-steps"></a>次の手順
 

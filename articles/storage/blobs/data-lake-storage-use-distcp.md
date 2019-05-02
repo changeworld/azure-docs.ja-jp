@@ -2,18 +2,19 @@
 title: DistCp を使用して Azure Data Lake Storage Gen2 にデータをコピーする | Microsoft Docs
 description: DistCp ツールを使用して Data Lake Storage Gen2 との間でデータをコピーする
 services: storage
-author: seguler
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: seguler
-ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.author: normesta
+ms.reviewer: seguler
+ms.openlocfilehash: 0e85d2b2c7e9a3022e7fea2063ffa0aa915abb53
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678388"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939051"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする
 
