@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 2130dcc27f81eb1e33fa56a7a4f963d81ac0de5b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500517"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926111"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -82,7 +82,7 @@ DSC 拡張機能を使用してノードを State Configuration サービスに�
 ```
 
 ノード構成名については、構成ではなく、必ず*ノード構成*の名前を使用していることを確認してください。
-構成は、[ノード構成 (MOF ファイル) をコンパイルする](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile) ために使用されるスクリプトに定義されています。
+構成は、[ノード構成 (MOF ファイル) をコンパイルする](https://docs.microsoft.com/azure/automation/automation-dsc-compile) ために使用されるスクリプトに定義されています。
 名前は常に、Configuration の後にピリオド `.` と `localhost` または特定のコンピューター名が続いたものになります。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager テンプレートの DSC 拡張機能
@@ -202,7 +202,7 @@ az vm extension set \
 
 ## <a name="logs"></a>ログ
 
-拡張機能のログは、次の場所に格納されます。 `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+拡張機能のログは、次の場所に格納されます。`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>次の手順
 

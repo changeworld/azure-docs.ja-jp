@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc4118e54b2049f7e5d6cf4ed3b92bfc5e41ae7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 011991a3951adde9a0d062b40584caa74d172023
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904952"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>チュートリアル:Azure Active Directory と Domo の統合
 
@@ -174,7 +174,7 @@ Domo で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="configure-domo-single-sign-on"></a>Domo のシングル サインオンを構成する
 
-**デモ**側でシングル サインオンを構成するには、[こちら](http://knowledge.domo.com?cid=azuread)からデモのサポート技術情報の記事に移動し、指示に従います。
+**デモ**側でシングル サインオンを構成するには、[こちら](https://knowledge.domo.com?cid=azuread)からデモのサポート技術情報の記事に移動し、指示に従います。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -194,7 +194,7 @@ Domo で Azure AD シングル サインオンを構成するには、次の手�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

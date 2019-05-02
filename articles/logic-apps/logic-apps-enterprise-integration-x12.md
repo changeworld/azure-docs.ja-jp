@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842143"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728746"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -53,11 +53,11 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 4. **[概要]**、**[契約]** タイルの順に選択します。 
    [契約] タイルが表示されない場合は、まずタイルを追加します。 
 
-   ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
 5. **[契約]** で **[追加]** を選びます。
 
-   ![[追加] の選択](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![[追加] の選択](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
 6. **[追加]** で、契約の**名前**を入力します。 
    [契約タイプ] で、**[X12]** を選択します。 
@@ -122,7 +122,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 | プロパティ | 説明 |
 | --- | --- |
-| Version |X12 のバージョンを選択します |
+| バージョン |X12 のバージョンを選択します |
 | トランザクションの種類 (ST01) |トランザクションの種類を選択します |
 | Sender Application (GS02) (送信側アプリケーション (GS02)) |送信側のアプリケーションを選択します |
 | スキーマ |使用するスキーマ ファイルを選択します。 スキーマは統合アカウントに追加されます。 |
@@ -216,7 +216,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 | プロパティ | 説明 |
 | --- | --- |
-| Version |X12 のバージョンを選択します |
+| バージョン |X12 のバージョンを選択します |
 | トランザクションの種類 (ST01) |トランザクションの種類を選択します |
 | スキーマ |使用するスキーマを選択します。 スキーマは統合アカウント内にあります。 先にスキーマを選択すると、バージョンとトランザクションの種類が自動的に構成されます。  |
 

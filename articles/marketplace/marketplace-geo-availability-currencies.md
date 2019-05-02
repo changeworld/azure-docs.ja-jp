@@ -2,19 +2,17 @@
 title: 利用可能な地域と通貨サポート | Azure
 description: Azure Marketplace と AppSource の利用可能な地域
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 5a07ea4d1d27dcc054d64cb4ce8893a13adc4aad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007663"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938252"
 ---
 # <a name="geographic-availability-and-currency-support"></a>利用可能な地域と通貨サポート
 
@@ -117,7 +115,7 @@ Azure Marketplace オファリングは、顧客の請求先住所で定義さ�
 | ノルウェー                              | NO        | NOK          |
 | オマーン                                | OM        | USD          |
 | パキスタン                            | PK        | USD          |
-| パレスチナ                           | PS        | USD          |
+| パレスチナ自治政府               | PS        | USD          |
 | パナマ                              | PA        | USD          |
 | パラグアイ                            | PY        | USD          |
 | ペルー                                | PE        | USD          |

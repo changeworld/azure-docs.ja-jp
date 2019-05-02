@@ -2,18 +2,18 @@
 title: Azure File Sync のオンプレミスのファイアウォール設定とプロキシ設定 | Microsoft Docs
 description: Azure File Sync のオンプレミスのネットワーク構成
 services: storage
-author: fauhse
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
-ms.author: fauhse
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 35904c3854ddbcf3648c8a226d56f73be890b6ad
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481504"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696761"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -34,7 +34,7 @@ Azure File Sync は、Windows Server と Azure ファイル共有など各種 Az
 > [!Note]  
 > クラウド サービスに対する要求はすべて、Windows Server 上の Azure File Sync エージェントによって開始されます。したがってファイアウォールの観点から考慮する必要があるのは送信トラフィックだけです。 <br /> Azure File Sync エージェントへの接続が Azure サービス側から開始されることはありません。
 
-## <a name="ports"></a>ポート
+## <a name="ports"></a>Port
 Azure File Sync は HTTPS のみを使ってファイル データとメタデータを移動するため、送信方向のポート 443 を開放する必要があります。
 結果的にすべてのトラフィックが暗号化されます。
 
@@ -115,10 +115,10 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | パブリック |オーストラリア南東部 | https://kailani-aus.one.microsoft.com | オーストラリア東部 | https://tm-kailani-aus.one.microsoft.com |
 | パブリック | カナダ中部 | https://kailani-cac.one.microsoft.com | カナダ東部 | https://tm-kailani-cac.one.microsoft.com |
 | パブリック | カナダ東部 | https://kailani-cae.one.microsoft.com | カナダ中部 | https://tm-kailani.cae.one.microsoft.com |
-| パブリック | 米国中央部 | https://kailani-cus.one.microsoft.com | 米国東部 2 | https://tm-kailani-cus.one.microsoft.com |
+| パブリック | 米国中部 | https://kailani-cus.one.microsoft.com | 米国東部 2 | https://tm-kailani-cus.one.microsoft.com |
 | パブリック | 東アジア | https://kailani11.one.microsoft.com | 東南アジア | https://tm-kailani11.one.microsoft.com |
 | パブリック | 米国東部 | https://kailani1.one.microsoft.com | 米国西部 | https://tm-kailani1.one.microsoft.com |
-| パブリック | 米国東部 2 | https://kailani-ess.one.microsoft.com | 米国中央部 | https://tm-kailani-ess.one.microsoft.com |
+| パブリック | 米国東部 2 | https://kailani-ess.one.microsoft.com | 米国中部 | https://tm-kailani-ess.one.microsoft.com |
 | パブリック | 北ヨーロッパ | https://kailani7.one.microsoft.com | 西ヨーロッパ | https://tm-kailani7.one.microsoft.com |
 | パブリック | 東南アジア | https://kailani10.one.microsoft.com | 東アジア | https://tm-kailani10.one.microsoft.com |
 | パブリック | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |

@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047519"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700159"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -164,7 +164,7 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
 ],
 ```
 
-例:  `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+次に例を示します。`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Azure portal に移動し、Azure リソースを表示しているときに URL を確認して、この文字列を取得できます。
 
@@ -216,9 +216,13 @@ Resource Health アラートは、次の 3 つの異なるスコープでイベ�
                     "field": "status",
                     "equals": "InProgress"
                 },
-                        {
+                {
                     "field": "status",
                     "equals": "Resolved"
+                },
+                {
+                    "field": "status",
+                    "equals": "Updated"
                 }
             ]
         }
@@ -404,6 +408,11 @@ Resource Health イベントは、プラットフォームまたはユーザー�
                                 {
                                     "field": "status",
                                     "equals": "InProgress",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "status",
+                                    "equals": "Updated",
                                     "containsAny": null
                                 }
                             ]

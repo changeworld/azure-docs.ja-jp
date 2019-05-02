@@ -1,7 +1,6 @@
 ---
 title: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング - Azure HDInsight
 description: HDInsight クラスターの処理速度が遅いとき、または処理が失敗したときに、診断とトラブルシューティングを行います。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 685731aee9396efbfa9f7bb554ec7ce20270935f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314741"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708918"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
 

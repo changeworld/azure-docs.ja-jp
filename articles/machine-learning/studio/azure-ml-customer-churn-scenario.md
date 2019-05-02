@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856119"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699438"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して顧客離れを分析する
 ## <a name="overview"></a>概要
@@ -217,7 +217,7 @@ Azure Machine Learning Studio にはほかにも便利な機能があり、元�
 
 [3] [CRISP-DM 1.0:ステップ バイ ステップのデータ マイニングのガイド](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [ビッグ データ マーケティング:お客様に効率の向上と価値の促進を保証する](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [ビッグ データ マーケティング:お客様に効率の向上と価値の促進を保証する](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [Azure AI ギャラリー](https://gallery.azure.ai/)の「[Telco の顧客離れ](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5)」 
  

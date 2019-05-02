@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ac2510b97e083cbbcd6529feb6f02fa17455fcb8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525424"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925499"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -153,7 +153,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 * [Python 2.7 をインストールします](https://www.python.org/downloads/release/python-2716/)
 
-* [Cassandra CLI/CQLSH をインストールします](http://cassandra.apache.org/download/)
+* [Cassandra CLI/CQLSH をインストールします](https://cassandra.apache.org/download/)
 
 * 通常のコマンド プロンプト ウィンドウで次のコマンドを実行します。
 
@@ -181,7 +181,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 管理者のコマンド プロンプトからエミュレーターを起動します。その際、一緒に "/EnableGremlinEndpoint" を指定します。 代わりに、環境変数 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` を設定することもできます
 
-* [apache-tinkerpop-gremlin-console-3.3.4 をインストールします](http://tinkerpop.apache.org/downloads.html)
+* [apache-tinkerpop-gremlin-console-3.3.4 をインストールします](https://tinkerpop.apache.org/downloads.html)
 
 * エミュレーター内で、データ エクスプローラーによりデータベース "db1" とコレクション "coll1" が作成されます。パーティション キーには "/name" を選択します
 

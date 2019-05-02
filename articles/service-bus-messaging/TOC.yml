@@ -81,6 +81,8 @@
       href: service-bus-async-messaging.md
     - name: 故障と障害の扱い
       href: service-bus-outages-disasters.md
+    - name: Azure の一般的なセキュリティ属性
+      href: service-bus-messaging-security-attributes.md
 - name: ハウツー ガイド
   items:
     - name: 名前空間の作成

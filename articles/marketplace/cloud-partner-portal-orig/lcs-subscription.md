@@ -1,25 +1,19 @@
 ---
-title: LCS サブスクリプション | Microsoft Docs
+title: LCS サブスクリプション
 description: サブスクリプションの作成に関するチュートリアルの概要です。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9ea04a4df55bfe26f292305a75696d423db52328
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 43d27f832d5eb456de60e86257e2be8575f94bf9
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792799"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935191"
 ---
 # <a name="lcs-subscription"></a>LCS サブスクリプション
 

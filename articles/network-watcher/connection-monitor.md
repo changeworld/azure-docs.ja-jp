@@ -3,8 +3,8 @@ title: ネットワーク通信の監視 - チュートリアル - Azure Portal 
 description: Azure Network Watcher の接続モニター機能によって 2 つの仮想マシン間のネットワーク通信を監視する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: aa62c06d0c12a42d34ef9b13b8b4533d197d8d19
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429249"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715820"
 ---
-# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
+# <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
 仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルでは、以下の内容を学習します。
 
@@ -99,7 +99,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
     | 宛先              |                     |
     | 仮想マシンを選択する |                     |
     | 仮想マシン          | myVm2               |
-    | ポート                     | 22                  |
+    | Port                     | 22                  |
 
     ![接続モニターを追加する](./media/connection-monitor/add-connection-monitor.png)
 

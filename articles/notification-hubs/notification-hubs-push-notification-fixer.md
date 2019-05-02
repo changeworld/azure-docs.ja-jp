@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149548"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925820"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs での欠落した通知の診断
 
@@ -123,7 +123,7 @@ Notification Hubs では、汎用 SendNotification API を使用することで�
 
 #### <a name="push-notification-service-developer-portal"></a>プッシュ通知サービス開発者ポータル ####
 
-各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
+各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
 
 #### <a name="azure-portal"></a>Azure ポータル ####
 
@@ -180,7 +180,7 @@ Visual Studio からテスト通知を送信することもできます。
 
 Visual Studio サーバー エクスプローラーでの Notification Hubs の使用に関する詳細については、次の記事をご覧ください。
 
-* [通知ハブのデバイス登録の表示方法](https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn792122(v=win.10))
+* [通知ハブのデバイス登録の表示方法](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
 * [詳細:Visual Studio 2013 Update 2 RC および Azure SDK 2.3]
 * [Visual Studio 2013 Update 3 および Azure SDK 2.4 のリリースの発表]
 
@@ -261,7 +261,7 @@ The Token obtained from the Token Provider is wrong
 
 #### <a name="programmatic-access"></a>プログラムによるアクセス ####
 
-プログラムによるアクセスの詳細については、「[プログラムによるアクセス](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100))」をご覧ください。
+プログラムによるアクセスの詳細については、「[プログラムによるアクセス](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))」をご覧ください。
 
 > [!NOTE]
 > 登録のエクスポートおよびインポートや、API を使用したテレメトリへのアクセスなど、テレメトリに関連する一部の機能は、Standard サービス レベルでのみ使用できます。 Free または Basic サービス レベルでこれらの機能を使用しようとすると、SDK を使用している場合は例外メッセージが表示されます。 REST API から直接これらの機能を使用している場合は、HTTP 403 (アクセス不可) エラーが表示されます。

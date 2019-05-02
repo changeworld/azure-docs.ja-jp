@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor ログを使用して Azure HDInsight クラスターを監視する
 description: Azure Monitor ログを使って HDInsight クラスターで実行中のジョブを監視する方法を説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: 399a6bcb6e0bfd0edaddca471ba2c8e0802d3394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0c37ff3c62817d238a94d5bbeae90c67663a6029
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904782"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689840"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 

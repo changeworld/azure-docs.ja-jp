@@ -1,25 +1,19 @@
 ---
-title: Dynamics 365 ソリューションの準備 | Microsoft Docs
+title: Dynamics 365 ソリューションの準備
 description: コンポーネントのパッケージ化、インストール、アンインストールのためのフレームワーク
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricarod.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2ea62a826b9f99e264cb1b2242f8d8108453d8e7
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.author: pabutler
+ms.openlocfilehash: 919feb39c9cd84f8da0ef89827ad3e83e0eb9bc5
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448773"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935248"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 ソリューションの準備
 

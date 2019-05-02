@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003500"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922821"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 監視エージェントの概要 
 Microsoft Azure では、Azure、データセンター、または他のクラウド プロバイダーにホストされている、Microsoft Windows や Linux を実行する仮想マシンからの各種のデータをさまざまな方法で収集できます。 VM の監視に使用可能な 3 種類のエージェントがあります。
@@ -66,7 +66,7 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 
 * [Azure Automation Update](../../automation/automation-update-management.md) による、オペレーティング システム更新プログラムの管理。
 * [Azure Automation Desired State Configuration](../../automation/automation-dsc-overview.md) による、構成状態の一貫性の維持。
-* [Azure Automation Change Tracking および Inventory](../../automation/automation-change-tracking.md) による、構成変更の追跡。
+* [Azure Automation Change Tracking および Inventory](../../automation/change-tracking.md) による、構成変更の追跡。
 * データが直接 Log Analytics にネイティブに保管される、[Application Insights](https://docs.microsoft.com/azure/application-insights/) や [Azure Security Center](https://docs.microsoft.com/azure/security-center/) などの Azure サービス。  
 
 ## <a name="dependency-agent"></a>依存関係エージェント

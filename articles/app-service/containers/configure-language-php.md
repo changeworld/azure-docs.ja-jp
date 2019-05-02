@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: dc6d3fd2239624e6fccecfbd565eb815b372ed3d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551063"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920426"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -141,7 +141,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 ## <a name="customize-phpini-settings"></a>php.ini 設定をカスタマイズする
 
-PHP のインストールを変更する必要がある場合は、以下の手順に従って、いずれかの [php.ini ディレクティブ](http://www.php.net/manual/ini.list.php)を変更できます。
+PHP のインストールを変更する必要がある場合は、以下の手順に従って、いずれかの [php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を変更できます。
 
 > [!NOTE]
 > PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
@@ -149,7 +149,7 @@ PHP のインストールを変更する必要がある場合は、以下の手�
 
 ### <a name="customize-non-phpinisystem-directives"></a>非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
-PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](http://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、*.htaccess* ファイルをアプリのルート ディレクトリに追加します。
+PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、*.htaccess* ファイルをアプリのルート ディレクトリに追加します。
 
 *.htaccess* ファイルで、`php_value <directive-name> <value>` 構文を使用してディレクティブを追加します。 例: 
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 変更内容でアプリを再デプロイし、再起動します。 Kudu でデプロイする場合 (たとえば [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) を使用)、デプロイ後に自動的に再起動します。
 
-*.htaccess* を使用する代わりに、アプリで [ini_set()](http://www.php.net/manual/function.ini-set.php) を使用して、これらの非 PHP_INI_SYSTEM ディレクティブをカスタマイズできます。
+*.htaccess* を使用する代わりに、アプリで [ini_set()](https://www.php.net/manual/function.ini-set.php) を使用して、これらの非 PHP_INI_SYSTEM ディレクティブをカスタマイズできます。
 
 ### <a name="customize-phpinisystem-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
-PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](http://www.php.net/manual/ini.list.php)を参照)、*.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
+PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、*.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
 
 最初に、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行して、`PHP_INI_SCAN_DIR` というアプリ設定を追加します。
 
@@ -237,7 +237,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
     - *composer.json* に応じて、実稼働モードに別々のパッケージ (`require` と `require-dev`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
-- デバッグ モードで Azure App Service でアプリを実行します。 たとえば、[Laravel](http://meanjs.org/) で、[`APP_DEBUG` アプリ設定を `true` に指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)することにより、実稼働環境でのデバッグ メッセージを出力するようにアプリを構成できます。
+- デバッグ モードで Azure App Service でアプリを実行します。 たとえば、[Laravel](https://meanjs.org/) で、[`APP_DEBUG` アプリ設定を `true` に指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)することにより、実稼働環境でのデバッグ メッセージを出力するようにアプリを構成できます。
 
 ### <a name="robots933456"></a>robots933456
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668128"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926129"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -30,7 +30,7 @@ ms.locfileid: "58668128"
 コンテナー サービスが再起動するか、クラスター内の別のノードに移動すると、IP アドレスが変わります。 このため、動的に割り当てられる IP アドレスを使ってコンテナー サービスを検出することはお勧めしません。 サービスの検出には、Service Fabric ネーム サービスまたは DNS サービスのみを使う必要があります。 
 
 >[!WARNING]
->Azure では、仮想ネットワークごとに全部で 65,356 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 65,356 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。 さらに、ロード バランサーなどの他の依存関係には、考慮すべきその他の[制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)があります。 現在、ノードあたり最大 50 個の IP アドレスをテストして、安定性が証明されています。 
+>Azure では、仮想ネットワークごとに全部で 65,356 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 65,356 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。 さらに、ロード バランサーなどの他の依存関係には、考慮すべきその他の[制限](https://docs.microsoft.com/azure/azure-subscription-service-limits)があります。 現在、ノードあたり最大 50 個の IP アドレスをテストして、安定性が証明されています。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Open ネットワーク モードを設定する
@@ -203,7 +203,7 @@ ms.locfileid: "58668128"
    |Setting |値 | |
    | --- | --- | --- |
    |優先順位 |2000 | |
-   |名前 |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |ソース |VirtualNetwork | |
    |宛先 | VirtualNetwork | |
    |Service | DNS (UDP/53) | |

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287232"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920483"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -261,7 +261,7 @@ Azure Active Directory の場合は、[Azure AD Privileged Identity Management](
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>パスワードベースのサインイン プロトコルへの露出を確認する (Exchange Online を使用している場合)
 
-以前は、プロトコルでは、ユーザー名/パスワードの組み合わせはデバイス、電子メール アカウント、携帯電話などに埋め込まれていると見なされていました。 しかし現在は、クラウドにサイバー攻撃のリスクがあるため、資格情報が侵害された場合に組織に致命的な影響を与える可能性のあるユーザーをすべて特定し、強力な認証要件と条件付きアクセスを実装することで、それらのユーザーがユーザー名/パスワードを介して自分の電子メールにサインインできないようにすることをお勧めします。 [条件付きアクセス ポリシーを使用してレガシ認証をブロック](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication)できます。 Exchnage Online での[基本認証の無効化](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)の詳細をご確認ください。 
+以前は、プロトコルでは、ユーザー名/パスワードの組み合わせはデバイス、電子メール アカウント、携帯電話などに埋め込まれていると見なされていました。 しかし現在は、クラウドにサイバー攻撃のリスクがあるため、資格情報が侵害された場合に組織に致命的な影響を与える可能性のあるユーザーをすべて特定し、強力な認証要件と条件付きアクセスを実装することで、それらのユーザーがユーザー名/パスワードを介して自分の電子メールにサインインできないようにすることをお勧めします。 [条件付きアクセス ポリシーを使用してレガシ認証をブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)できます。 Exchnage Online での[基本認証の無効化](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)の詳細をご確認ください。 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 ロールのロール レビュー アセスメントを実行する (Office 365 を使用している場合)
 

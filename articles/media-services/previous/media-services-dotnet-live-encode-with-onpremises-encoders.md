@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 6bec12893591fb36298e9c2f1664646a4d598073
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839782"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869441"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>.NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
@@ -28,13 +28,17 @@ ms.locfileid: "57839782"
 > 
 > 
 
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
 このチュートリアルでは、Azure Media Services .NET SDK を使用して、パススルー配信用に構成された **チャネル** を作成する手順を紹介します。 
 
 ## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
 
 * Azure アカウント。
-* Media Services アカウント。    Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
 * 開発環境の設定。 詳細については、「 [環境を設定する](media-services-set-up-computer.md)」を参照してください。
 * Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](https://www.telestream.net/wirecast/overview.htm)。
 
@@ -48,6 +52,7 @@ ms.locfileid: "57839782"
 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
 
 ## <a name="example"></a>例
+
 次のコード サンプルでは、次のタスクを実現する方法を示しています。
 
 * Media Services への接続
@@ -60,9 +65,6 @@ ms.locfileid: "57839782"
 * StreamingEndpoint の作成と起動
 * ストリーミング エンドポイントの更新
 * リソースのシャット ダウン
-
->[!IMPORTANT]
->コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
     
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。

@@ -3,19 +3,19 @@ title: Azure サブスクリプションをリンクする方法 - Azure Active 
 description: Azure AD B2C テナントの Azure サブスクリプションへの課金を有効にするためのステップ バイ ステップ ガイドです。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8f9e3e63942c8fac5fc24ca26969b71e6ef4257f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196176"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706822"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure サブスクリプションを Azure Active Directory B2C テナントにリンクする
 

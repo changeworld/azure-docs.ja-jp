@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c42867ff7aea2210f20a2cd2adb5c067b8f36c80
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904119"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926500"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -23,7 +23,7 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 
 > [!NOTE]
 > * Azure Storage の Advanced Threat Protection は、現時点では BLOB ストレージでのみ使用できます。
-> * 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ]( https://azure.microsoft.com/en-us/pricing/details/security-center/)を参照してください。
+> * 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ]( https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 > * ATP for Azure Storage 機能は、現在のところ Azure Government およびソブリン クラウド リージョンでは使用できません。
 
 Azure Storage の Advanced Threat Protection は、脅威の検出のため、BLOB ストレージ に対する読み取り要求、書き込み要求、削除要求の診断ログを取り込みます。 Advanced Threat Protection からのアラートを調査するために、Storage Analytics Logging を使用して関連するストレージのアクティビティを確認することができます。 詳細については、[Storage Analytics logging の構成](storage-monitor-storage-account.md#configure-logging)方法に関するページを参照してください。

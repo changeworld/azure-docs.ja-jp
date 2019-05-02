@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6da2b63b7a9c8dc490bd30bb02ae6e7d932b2f7b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3bdadd2ac5c7790f9e1da57de925bfba659a5890
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683921"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916556"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Azure Monitor へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -58,8 +58,8 @@ ms.locfileid: "59683921"
 | [Azure SQL Analytics (プレビュー)](../../azure-monitor/insights/azure-sql.md) | Windows | | | | | | 1 分 |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知時 |
 | [Capacity and Performance (プレビュー)](../../azure-monitor/insights/capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
-| [変更の追跡](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[状況に応じて異なる](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
-| [変更の追跡](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |[状況に応じて異なる](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
+| [変更の追跡](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [変更の追跡](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Containers](../../azure-monitor/insights/containers.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 3 分 |
 | [Key Vault Analytics](../../azure-monitor/insights/azure-key-vault.md) |Windows | | | | | |通知時 |
 | [マルウェアの評価](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |

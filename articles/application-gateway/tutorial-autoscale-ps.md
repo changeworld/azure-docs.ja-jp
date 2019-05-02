@@ -8,19 +8,16 @@ ms.topic: tutorial
 ms.date: 2/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 616a710237c31ef2b4a19c3e1e61838164a78530
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308569"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947140"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>チュートリアル:Web アプリケーションのアクセスを改善するアプリケーション ゲートウェイを作成する
 
 Web アプリケーションのアクセスを改善しようと考えている IT 管理者なら、顧客の需要に応じてスケーリングし、複数の可用性ゾーンを利用するように、アプリケーション ゲートウェイを最適化できます。 このチュートリアルは、自動スケーリング、ゾーン冗長性、予約済み VIP (静的 IP) といった Azure Application Gateway の機能を構成するときに役立ちます。 Azure PowerShell コマンドレットと Azure Resource Manager デプロイ モデルを使用して、問題を解決します。
-
-> [!IMPORTANT] 
-> 自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU は、現在、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 
 
 このチュートリアルでは、以下の内容を学習します。
 

@@ -3,17 +3,17 @@ title: Power BI ワークスペース コレクションの新機能
 description: Power BI ワークスペース コレクションの新機能を紹介します。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: b29996b8e2cd9a95b9c1566036b1009b65c18bfa
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9ef9416abb4aaf0927d1e072286ef83a4d8c39cb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518067"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724008"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションの新機能
 

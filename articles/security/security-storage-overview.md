@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326758"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872040"
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
 
-Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。 Azure Storage には、包括的な一連のセキュリティ機能が用意されています。 次のようにすることができます。
+この記事では、Azure Storage で使用できる Azure のセキュリティ機能の概要について説明します。 Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。 Azure Storage には、包括的な一連のセキュリティ機能が用意されています。 次のようにすることができます。
 
 * ストレージ アカウントを、ロールベースのアクセス制御 (RBAC) と Azure Active Directory を使って、セキュリティで保護できます。
 * アプリケーションと Azure の間で送信されるデータを、クライアント側暗号化、HTTPS、または SMB 3.0 を使って、セキュリティで保護できます。
@@ -33,9 +33,6 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 * 分析を使って、ストレージにアクセスするときにユーザーが使っている認証方法を追跡できます。
 
 Azure Storage でのセキュリティの詳細については、「 [Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)」を参照してください。 このガイドでは、Azure Storage のセキュリティ機能について詳しく説明します。 このような機能としては、ストレージ アカウント キー、転送中と保存中のデータの暗号化、Storage Analytics などがあります。
-
-
-この記事では、Azure Storage で使用できる Azure のセキュリティ機能の概要について説明します。 各機能の詳細記事へのリンクが用意されているため、さらに詳しく学習できます。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 

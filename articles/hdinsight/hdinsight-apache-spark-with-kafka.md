@@ -2,7 +2,6 @@
 title: Apache Kafka に対する Apache Spark ストリーミング - Azure HDInsight
 description: Apache Spark を使用して、Apache Kafka に対して DStreams によるデータの送信または受信ストリーミングを行う方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
 keywords: kafka example,kafka zookeeper,spark streaming kafka,spark streaming kafka example
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5f4b7994ad5061c64021f3625f42ac028cbee859
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e0c39ae5f5c23ae0715ef1eee38b6dd34704538a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653409"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690955"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
@@ -57,17 +56,17 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
    
     * **リソース グループ**:グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
 
-    * **場所**:地理的に近い場所を選択します。
+    * **場所**: 地理的に近い場所を選択します。
 
     * **Base Cluster Name (ベース クラスター名)**:この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
 
     * **Cluster Login User Name (クラスター ログイン ユーザー名)**:Spark クラスターと Kafka クラスターの管理者のユーザー名。
 
-    * **クラスター ログイン パスワード**:Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
+    * **クラスター ログイン パスワード**: Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
 
-    * **SSH ユーザー名**:Spark クラスターおよび Kafka クラスターの作成に使用する SSH ユーザー。
+    * **SSH ユーザー名**: Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。
 
-    * **SSH パスワード**:Spark クラスターおよび Kafka クラスター用の SSH ユーザーのパスワード。
+    * **SSH パスワード**: Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 

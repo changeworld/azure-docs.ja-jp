@@ -3,19 +3,19 @@ title: チュートリアル - シングルページ アプリケーションで
 description: シングルページ アプリケーション (JavaScript) で Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 813c7131ff0a56e843e728cd78fff969b1d90fcc
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9541d635ff69444459470cf1e486568a58af0a1e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756327"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730163"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -32,7 +32,7 @@ ms.locfileid: "55756327"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [ユーザー フローを作成](tutorial-create-user-flows.md)して、アプリケーションのユーザー エクスペリエンスを有効にします。 
+* [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。 
 * **ASP.NET および Web 開発**のワークロードと共に、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールする。
 * [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 以降をインストールします
 *  [Node.js](https://nodejs.org/en/download/)
@@ -47,8 +47,8 @@ ms.locfileid: "55756327"
 4. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
 5. **[応答 URL]** に「`http://localhost:6420`」を追加します。
 6. **[保存]** を選択します。
-7. プロパティ ページで、Web アプリケーションを構成するときに使用するアプリケーション ID を記録しておきます。
-8. **[キー]**、**[キーの生成]**、**[保存]** の順に選択します。 Web アプリケーションを構成するときに使用するキーを記録しておきます。
+7. プロパティ ページで、アプリケーション ID を記録しておきます。これは、Web アプリケーションを構成するときに使用します。
+8. **[キー]**、**[キーの生成]**、**[保存]** の順に選択します。 Web アプリケーションの構成時に使用するキーを書き留めておきます。
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 

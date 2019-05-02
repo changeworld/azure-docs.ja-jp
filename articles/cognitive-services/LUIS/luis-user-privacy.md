@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a82452f4b41aee9c4ea6f269d92fbc91a5697d16
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895158"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916954"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 
@@ -58,7 +58,7 @@ LUIS ユーザーは、ポータルでデータの表示を完全に制御でき
 * [オーストラリア](#australia)
 * [米国](#united-states)
 
-アクティブ ラーニング データ (以下に詳述) を除いて、LUIS は[地域サービス向けのデータ ストレージ プラクティス](http://azuredatacentermap.azurewebsites.net/)に従います。 
+アクティブ ラーニング データ (以下に詳述) を除いて、LUIS は[地域サービス向けのデータ ストレージ プラクティス](https://azuredatacentermap.azurewebsites.net/)に従います。 
 
 ### <a name="europe"></a>ヨーロッパ
 

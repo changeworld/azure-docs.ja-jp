@@ -227,7 +227,7 @@
     - name: クックブック
       items:
         - name: 参照アーキテクチャ
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: デプロイ スクリプト
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング

@@ -10,18 +10,18 @@ ms.subservice: acoustics
 ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: aa7c5c513d65310bf9bffab29c1d18e7e7a85b49
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8605fe2ea86f875b5c5fd8ea451a287442dcd51b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316288"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922486"
 ---
 # <a name="project-acoustics-unity-integration"></a>Project Acoustics Unity の統合
 このハウツー記事では、Project Acoustics Unity プラグインの Unity プロジェクトへの統合について説明します。
 
 ソフトウェア要件:
-* Windows 用の [Unity 2018.2 以降](http://unity3d.com)
+* Windows 用の [Unity 2018.2 以降](https://unity3d.com)
 * [Project Acoustics Unity パッケージ](https://www.microsoft.com/download/details.aspx?id=57346)
 
 ## <a name="import-the-plugin"></a>プラグインのインポート

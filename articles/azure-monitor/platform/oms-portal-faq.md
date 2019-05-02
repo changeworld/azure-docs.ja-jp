@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b353e3c0ed14c7ae42e6b1f2c8a92904bf0befd7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990430"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916292"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -97,9 +97,9 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 | カスタム ログ                  | ワークスペースの **[詳細設定]** メニュー。 |
 | syslog                       | ワークスペースの **[詳細設定]** メニュー。 |
 | Application Insights         | Log Analytics と Application Insights が同じデータ エンジンを共有するようになったことから、このソリューションは廃止となっています。  |
-| Windows ファイルの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
-| Windows レジストリの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
-| Linux ファイルの追跡          | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
+| Windows ファイルの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/change-tracking.md)」を参照してください。 |
+| Windows レジストリの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/change-tracking.md)」を参照してください。 |
+| Linux ファイルの追跡          | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/change-tracking.md)」を参照してください。 |
 
 ### <a name="solutions"></a>解決方法
 ワークスペースの **[ソリューション]** メニューでソリューションを管理します。 

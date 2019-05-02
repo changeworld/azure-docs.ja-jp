@@ -1,7 +1,6 @@
 ---
 title: Apache Spark Machine Learning パイプラインを作成する - Azure HDInsight
 description: データ パイプラインを作成するには、Apache Spark Machine Learning ライブラリを使用します。
-services: hdinsight
 ms.service: hdinsight
 author: maxluk
 ms.author: maxluk
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: c539460177a0a85938b886d161803e1fdf0e9e68
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597479"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730205"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark 機械学習パイプラインを作成する
 

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: f53e122eb1b2a5b6dabb9a44aef42394d0c7edb6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6568e5ebf356bb0e6b4ac8ff6059cd093f8da821
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999486"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917572"
 ---
 # <a name="mapping-data-flow-derived-column-transformation"></a>Mapping Data Flow の派生列変換
 
@@ -35,4 +35,4 @@ ms.locfileid: "59999486"
 
 ## <a name="next-steps"></a>次の手順
 
-詳しくは、[変換用の Data Factory 式言語](http://aka.ms/dataflowexpressions)と[式ビルダー](concepts-data-flow-expression-builder.md)に関する記事をご覧ください。
+詳しくは、[変換用の Data Factory 式言語](https://aka.ms/dataflowexpressions)と[式ビルダー](concepts-data-flow-expression-builder.md)に関する記事をご覧ください。

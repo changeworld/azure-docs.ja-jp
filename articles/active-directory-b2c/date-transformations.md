@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの日付要求変換の例。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 22484adcc709c1d2726d8086ac75300f189bcc41
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564793"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710444"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -29,8 +29,8 @@ ms.locfileid: "55564793"
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | 文字列 | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
-| inputClaim | rightOperand | 文字列 | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
+| inputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
+| inputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
 | InputParameter | AssertIfEqualTo | ブール値 | 左オペランドが右オペランドと等しい場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | ブール値 | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
@@ -143,7 +143,7 @@ ms.locfileid: "55564793"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | 2 番目の dateTime よりも前か後かを比較する最初の dateTime。 Null 値の場合は例外がスローされます。 |
 | InputClaim | secondDateTime | dateTime | 最初の dateTime よりも前か後かを比較する 2 番目の dateTime。 Null 値は、現在の datetTime として扱われます。 |
-| InputParameter | operator | 文字列 | 次のいずれかの値: 同じ、より後、より前。 |
+| InputParameter | operator | string | 次のいずれかの値: 同じ、より後、より前。 |
 | InputParameter | timeSpanInSeconds | int | 最初の datetime に timespan を追加します。 |
 | OutputClaim | result | ブール値 | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 

@@ -2,24 +2,18 @@
 title: Azure Marketplace 用の Containers のオファー発行ガイド
 description: この記事では、Marketplace で Containers を発行するための要件を説明します
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: e81f2b42e725e50473c09622a486586fb6721ad5
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 41a09be36262ff09c383b8ccb64a94230a11d3f1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214845"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937926"
 ---
 # <a name="containers-offer-publishing-guide"></a>Containers のオファー発行ガイド
 

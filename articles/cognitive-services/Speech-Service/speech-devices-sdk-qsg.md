@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: dec40f7ec21a4a059c6e4a7c75f6378f9757a479
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352070"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916838"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Speech Devices SDK を使ってみる
 
@@ -28,7 +28,7 @@ ms.locfileid: "58352070"
 
 Speech Devices SDK を使用した開発を開始する前に、必要な情報とソフトウェアを集めてください。
 
-* [ROOBO から開発キット](http://ddk.roobo.com/)を取得します。 直線または円形のマイク配列構成のキットを使用できます。 ニーズに適したキットを選択してください。
+* [ROOBO から開発キット](https://ddk.roobo.com/)を取得します。 直線または円形のマイク配列構成のキットを使用できます。 ニーズに適したキットを選択してください。
 
     |開発キットの構成|スピーカーの位置|
     |-----------------------------|------------|
@@ -157,7 +157,7 @@ ROOBO テストを実行して開発キットのセットアップを検証す�
    ```
    次の表に、使用可能な値を示します。
 
-   |可変|意味|使用できる値|
+   |変数|意味|使用できる値|
    |--------|-------|----------------|
    |`DeviceGeometry`|物理的なマイクの構成|円形開発キットでは `Circular6+1` |
    |||直線開発キットでは `Linear4`|
@@ -199,4 +199,4 @@ Speech Services を使用している場合に証明書エラーが発生した�
 
 ### <a name="audio"></a>オーディオ
 
-ROOBO には、すべてのオーディオをキャプチャし、メモリをフラッシュするツールが用意されています。 オーディオに関する問題のトラブルシューティングに役立ちます。 ツールのバージョンは、開発キットの構成ごとに提供されています。 [ROOBO サイト](http://ddk.roobo.com/)でデバイスを選択し、ページの下部にある **[ROOBO Tools]** リンクを選択します。
+ROOBO には、すべてのオーディオをキャプチャし、メモリをフラッシュするツールが用意されています。 オーディオに関する問題のトラブルシューティングに役立ちます。 ツールのバージョンは、開発キットの構成ごとに提供されています。 [ROOBO サイト](https://ddk.roobo.com/)でデバイスを選択し、ページの下部にある **[ROOBO Tools]** リンクを選択します。

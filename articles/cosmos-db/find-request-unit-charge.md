@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7afa815f81e2a61db8ac83623baafb97cb986b2c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683836"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925352"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 
@@ -186,7 +186,7 @@ double requestCharge = (double)stats["RequestCharge"];
 
 ### <a name="use-the-mongodb-java-driver"></a>MongoDB Java ドライバーの使用
 
-[公式 MongoDB Java ドライバー](http://mongodb.github.io/mongo-java-driver/) (使用法については、[こちらのクイック スタート](create-mongodb-java.md)を参照) を使用する場合は、`MongoDatabase` オブジェクトで `runCommand` メソッドを呼び出すことでコマンドを実行できます。
+[公式 MongoDB Java ドライバー](https://mongodb.github.io/mongo-java-driver/) (使用法については、[こちらのクイック スタート](create-mongodb-java.md)を参照) を使用する場合は、`MongoDatabase` オブジェクトで `runCommand` メソッドを呼び出すことでコマンドを実行できます。
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));

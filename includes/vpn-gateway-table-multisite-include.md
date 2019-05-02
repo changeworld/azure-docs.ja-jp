@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4535fd0e4ad09fe80f3474f716a14fc35040718f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ff633b33a800e1dfe28c63b6ba880233e2b4a1c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124716"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929406"
 ---
 | **デプロイメント モデル/方法** | **Azure Portal** | **PowerShell** |
 | --- | --- | --- |
-| リソース マネージャー |[記事](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |サポートされています |
-| クラシック | サポートされていません | [記事](../articles/vpn-gateway/vpn-gateway-multi-site.md) |
+| リソース マネージャー |[チュートリアル](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |サポートされています |
+| クラシック | サポートされていません | [チュートリアル](../articles/vpn-gateway/vpn-gateway-multi-site.md) |

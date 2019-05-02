@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight の HBase で Apache Phoenix と SQLLine を使用する
 description: HDInsight での Apache Phoenix の使用方法について説明します。 また、コンピューターに SQLLine をインストールして設定し、HDInsight の HBase クラスターに接続する方法を説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 38f86bd19c85440fbad0e7fd56a3dd9ba836c7b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0bef586540635ee1bada3475f6316c84dea4308c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903304"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722691"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>HDInsight 内の Linux ベースの Apache HBase クラスターで Apache Phoenix を使用する
 Azure HDInsight での [Apache Phoenix](https://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。 Phoenix について詳しくは、「[Apache Phoenix in 15 minutes or less (Apache Phoenix についての簡単な説明)](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)」をご覧ください。 Phoenix の文法については、「[Apache Phoenix grammar (Apache Phoenix の文法)](https://phoenix.apache.org/language/index.html)」をご覧ください。

@@ -13,25 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182032"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868151"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>既存の BLOB を Media Services 資産にコピーする
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+
 この記事では、[Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) を使用して、ストレージ アカウントから新しい Azure Media Services (AMS) 資産に BLOB をコピーする方法について説明します。
+
+Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 
 この拡張メソッドは、次のものに使用できます。
 
 - 通常の資産。
 - ライブ アーカイブ資産 (FragBlob 形式)。
 - 異なる Media Services アカウント (異なるデータ センター間でも可) に属する送信元と送信先の資産。 ただし、これによって料金が発生する可能性があります。 価格の詳細については、「 [データ転送](https://azure.microsoft.com/pricing/#header-11)」をご覧ください。
-
-> [!NOTE]
-> Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
-> 
 
 この記事では、2 つのコード サンプルを示します。
 

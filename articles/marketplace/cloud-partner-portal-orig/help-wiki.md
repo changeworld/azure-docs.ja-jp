@@ -1,25 +1,19 @@
 ---
-title: Dynamics 365 for Operations ヘルプ Wiki | Microsoft Docs
+title: Dynamics 365 for Operations ヘルプ Wiki
 description: Dynamics 365 for Operations ヘルプ Wiki の情報ページ
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9bbb6a8f8edf42ceb2ffb6d8e632f66a3ad9c6a6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: d957055a3545d790b9419ed1523352155ecc3add
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807249"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935176"
 ---
 # <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations ヘルプ Wiki
 

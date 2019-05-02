@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551061"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919785"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Linux Node.js アプリを構成する
 
@@ -55,7 +55,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="configure-nodejs-server"></a>Node.js サーバーを構成する
 
-Node.js コンテナーには、製造工程マネージャーである [PM2](http://pm2.keymetrics.io/) が付属しています。 PM2、NPM、またはカスタム コマンドで開始するようにアプリを構成できます。
+Node.js コンテナーには、製造工程マネージャーである [PM2](https://pm2.keymetrics.io/) が付属しています。 PM2、NPM、またはカスタム コマンドで開始するようにアプリを構成できます。
 
 - [カスタム コマンドを実行する](#run-custom-command)
 - [npm start を実行する](#run-npm-start)
@@ -99,12 +99,12 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 - *app.js*
 - *index.js*
 - *hostingstart.js*
-- 次のいずれかの [PM2 ファイル](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* および *ecosystem.config.js*
+- 次のいずれかの [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* および *ecosystem.config.js*
 
 次の拡張子を持つカスタム スタート ファイルを構成することもできます。
 
 - *.js* ファイル
-- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
 カスタム スタート ファイルを追加するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
@@ -226,7 +226,7 @@ fi
 
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
-一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](http://expressjs.com/guide/behind-proxies.html) を使用できます。 例: 
+一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](https://expressjs.com/guide/behind-proxies.html) を使用できます。 例: 
 
 ```javascript
 app.set('trust proxy', 1)
@@ -249,11 +249,11 @@ if (req.secure) {
 動作中の Node.js アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
-- 実稼働モードでローカルにアプリをテストします。 App Service は、実稼働モードで Node.js アプリを実行するので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例: 
+- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例: 
     - *package.json* に応じて、実稼働モードに別々のパッケージ (`dependencies` と `devDependencies`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
-- 開発モードの App Service でアプリを実行します。 たとえば、[MEAN.js](http://meanjs.org/) で、[`NODE_ENV` アプリ設定を指定する](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)ことによって、実行時に開発モードにアプリを設定できます。
+- 開発モードの App Service でアプリを実行します。 たとえば、[MEAN.js](https://meanjs.org/) で、[`NODE_ENV` アプリ設定を指定する](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)ことによって、実行時に開発モードにアプリを設定できます。
 
 ## <a name="next-steps"></a>次の手順
 

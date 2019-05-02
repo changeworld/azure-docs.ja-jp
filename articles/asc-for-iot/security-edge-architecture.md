@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a71a0cd5888cec5c3af0e2853edf5a7f014939b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790044"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919921"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge セキュリティ モジュール
 
@@ -27,7 +27,7 @@ ms.locfileid: "59790044"
 > Azure Security Center for IoT は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) では、エッジでのビジネス ワークフローを管理および実行するための強力な機能が提供されます。
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) では、エッジでのビジネス ワークフローを管理および実行するための強力な機能が提供されます。
 IoT Edge は IoT 環境内で重要な役割を果たしているため、悪意のあるアクターの注意を特に引きます。
 
 Azure Security Center (ASC) for IoT セキュリティ モジュールでは、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。
@@ -44,7 +44,7 @@ IoT Edge 用の ASC for IoT セキュリティ モジュールでは、次の機
 
 - IoT Edge のデプロイ マニフェストを分析します。
 
-- [IoT Edge ハブ](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime#iot-edge-hub)経由で送信されるメッセージに、未加工のセキュリティ イベントを集約します。
+- [IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)経由で送信されるメッセージに、未加工のセキュリティ イベントを集約します。
 
 - セキュリティ モジュール ツインを使用して構成を削除します。
 

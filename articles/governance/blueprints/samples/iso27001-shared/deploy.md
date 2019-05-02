@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d27f2495c70dbe6e10fb3adf5370a31903be3abf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 88d5cfbbcb29cacc2e8c1c6a226367c5f23e8231
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792403"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926301"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルをデプロイする
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側の **[はじめに]** ページで、_[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
-1. [その他のサンプル] の下で **[ISO 27001:Shared Services]\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**[このサンプルを使用する]** を選択します。
+1. 検索、 **ISO 27001。Shared Services\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**このサンプルを使用する** を選択します。
 
 1. ブループリント サンプルの _[基本]_ を入力します。
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. すべてのパラメーターの入力が完了したら、ページの下部にある **[割り当て]** を選択します。 ブループリントの割り当てが作成され、アーティファクトのデプロイが開始されます。 デプロイに要する時間は、約 1 時間です。 デプロイの状態を確認するには、ブループリントの割り当てを開きます。
 
 > [!WARNING]
-> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、**無料**でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/en-us/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
+> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、**無料**でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
 
 ## <a name="artifact-parameters-table"></a>アーティファクトのパラメーター表
 
@@ -107,10 +107,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|[プレビュー]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
-|[プレビュー]:Linux VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
-|[プレビュー]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
-|[プレビュー]:Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
+|\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
+|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
+|\[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
+|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|(省略可能) 既定値は "_["なし"]_" です。|
 |許可されるリソースの種類|ポリシー割り当て|許可されるリソースの種類|デプロイできるリソースの種類の一覧。 この一覧は、共有サービスでデプロイされるすべてのリソースの種類から構成されています。|
 |許可されるストレージ アカウントの SKU|ポリシー割り当て|Allowed storage SKU (許可されるストレージの SKU)|許可される診断ログのストレージ アカウントの SKU の一覧。 既定値は _["Standard_LRS"]_ です。|
 |許可される仮想マシンの SKU|ポリシー割り当て|デプロイが許可される仮想マシンの SKU の一覧。 既定値は "_["Standard_DS1_v2", "Standard_DS2_v2"]\(["Standard_DS1_v2"、"Standard_DS2_v2"]\)_" です。|
