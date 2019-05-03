@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287096"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024353"
 ---
 # <a name="data-import-overview---azure-search"></a>データ インポートの概要 - Azure Search
 
@@ -63,9 +63,9 @@ REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Sea
 ### <a name="formulate-your-query"></a>クエリの作成
 [REST API を使用してインデックスを検索する](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
-POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2017-11-11`) を要求 URL に指定する必要があります。 GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
+POST でも GET でも、*サービス名*、*インデックス名*、適切な *API バージョン* (このドキュメントが書かれた時点で最新の API バージョンは `2019-05-06`) を要求 URL に指定する必要があります。 GET の場合は、URL の末尾の*クエリ文字列*でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
 
 POST の形式も同じですが、クエリ文字列のパラメーターで api-version だけを指定します。
 
@@ -76,7 +76,7 @@ POST の形式も同じですが、クエリ文字列のパラメーターで ap
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
-+ [Azure SQL Database と Azure VM の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure SQL データベースと Azure VM の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 インデクサーは、インデックスをデータ ソース (通常はテーブル、ビュー、または同等の構造体) に接続し、ソース フィールドをインデックスの同等のフィールドにマップします。 実行中、行セットが自動的に JSON に変換され、指定したインデックスに読み込まれます。 すべてのインデクサーはスケジューリングをサポートしているため、データの更新頻度を指定できます。 ほとんどのインデクサーは、変更の追跡を提供します (データ ソースでサポートされている場合)。 インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。 
 

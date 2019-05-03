@@ -1,7 +1,7 @@
 ---
 title: フルテキスト検索用に Azure Table Storage のコンテンツのインデックスを作成する - Azure Search
 description: Azure Table Storage に格納されているデータのインデックスを Azure Search インデクサーで作成する方法について説明します。
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306886"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024796"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
@@ -49,7 +49,7 @@ ms.locfileid: "57306886"
 
 データ ソースを作成するには:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ ms.locfileid: "57306886"
 
 インデックスを作成するには:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ ms.locfileid: "57306886"
 
 インデックスとデータ ソースを作成した後、インデクサーを作成できます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -133,7 +133,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 一部のドキュメントをインデックスを削除する必要があることを示すには、論理的な削除を使用できます。 行を削除する代わりに、プロパティを追加してそれが削除されていることを示し、データソースに論理的な削除のポリシーを設定します。 たとえば、次のポリシーは値 `"true"` が指定されたプロパティ `IsDeleted` がある行を削除されているものと見なします。
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

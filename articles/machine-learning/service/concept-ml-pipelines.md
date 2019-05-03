@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 12/4/2018
+ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: f9049e22d15dacb91e86fd0ba623d69c9d17c789
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213672"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024817"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Azure Machine Learning サービスを使用して機械学習パイプラインを構築する
 

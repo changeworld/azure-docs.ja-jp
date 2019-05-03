@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 81987115ba0406e704f2198061c6ee3cae8a72df
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652418"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024691"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Azure Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -57,7 +57,7 @@ Azure Search は、Cosmos DB のインデックス付けに暗黙に依存して
 BLOB インデクサーでは、[明示的にサポートされているドキュメント形式が説明](search-howto-indexing-azure-blob-storage.md#supported-document-formats)されています。 場合によっては、サポートされないドキュメントが BLOB ストレージ コンテナーに含まれています。 問題があるドキュメントがあることもあります。 [構成オプションを変更](search-howto-indexing-azure-blob-storage.md#dealing-with-errors)すると、このようなドキュメントに対してインデクサーを停止することを回避できます。
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 
@@ -75,7 +75,7 @@ BLOB インデクサーによって、[コンテナー内の BLOB からテキ�
 * BLOB インデクサーは、メタデータのインデックス付けのみを行うように構成されています。 コンテンツを抽出するには、[コンテンツとメタデータの両方を抽出](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)するように BLOB インデクサーを構成する必要があります。
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 

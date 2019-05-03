@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ed675e4c6988cf4c1340613323440de55a36843
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500170"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024461"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 

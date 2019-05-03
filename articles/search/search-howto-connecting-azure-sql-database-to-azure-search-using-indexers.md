@@ -1,7 +1,7 @@
 ---
 title: Azure SQL Database に接続し、インデクサーを使用してコンテンツのインデックスを作成する - Azure Search
 description: Azure Search でのフルテキスト検索用のインデクサーを使用して Azure SQL Database 内でデータをクロールする方法について説明します。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315216"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025358"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Azure SQL Database に接続し、Azure Search インデクサーを使用してコンテンツのインデックスを作成する
 
@@ -63,7 +63,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 1. データ ソースを作成します。
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
+    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -82,7 +82,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 3. 名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -95,7 +95,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 
 この方法で作成されたインデクサーには、スケジュールがありません。 作成すると自動的に 1 回実行されます。 **インデクサー実行** 要求を使用して、いつでも再び実行できます。
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
     api-key: admin-key
 
 インデクサーの動作の一部 (バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など) をカスタマイズできます。 詳細については、[インデクサーの作成 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) に関するページをご覧ください。
@@ -104,7 +104,7 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 インデクサーの状態および実行履歴 (インデックスを作成された項目の数、エラーなど) を監視するには、 **インデクサーの状態** 要求を使用します。
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
     api-key: admin-key
 
 応答は、次のようになります。
@@ -146,7 +146,7 @@ Azure サービスにデータベースへの接続を許可することが必�
 ## <a name="run-indexers-on-a-schedule"></a>スケジュールに従ったインデクサーの実行
 スケジュールに従って定期的に実行するようにインデクサーを調整することもできます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを追加します。 次の例では、インデクサーを更新する PUT 要求を示します。
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -303,9 +303,9 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 ## <a name="configuration-settings"></a>構成設定
 SQL インデクサーが公開している構成設定をいくつか次に示します。
 
-| Setting | データ型 | 目的 | 既定値 |
+| Setting | データ型 | 目的 | Default value |
 | --- | --- | --- | --- |
-| queryTimeout |文字列 |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
+| queryTimeout |string |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
 
 こうした設定は、インデクサー定義の `parameters.configuration` オブジェクトで使用されます。 たとえば、クエリのタイムアウトを 10 分に設定するには、次の構成でインデクサーを作成または更新します。

@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:PowerShell および REST API を使用してインデックスを作成、読み込み、クエリを実行する - Azure Search
 description: PowerShell の Invoke-RestMethod、および Azure Search REST API を使用してインデックスを作成、読み込み、クエリを実行します。
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9459ab44f366c87660297a8564534156a56777bd
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268026"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024151"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>クイック スタート:PowerShell および REST API を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ $headers = @{
 サービスのインデックスのコレクションを指定する **$url** オブジェクトを作成します。 `mydemo` サービス名はプレースホルダーとして用意されています。 これは、この例の全体にわたり、現在のサブスクリプションの有効な検索サービスに置き換えてください。
 
 ```powershell
-$url = "https://mydemo.search.windows.net/indexes?api-version=2017-11-11"
+$url = "https://mydemo.search.windows.net/indexes?api-version=2019-05-06"
 ```
 
 **Invoke-restmethod** を実行して、サービスに GET 要求を送信し、接続を確認します。 **Convertto-json** を追加して、サービスから返信された応答を表示できるようにします。
@@ -116,7 +116,7 @@ $body = @"
 サービスのインデックスのコレクションと *hotels* インデックスへの URI を設定します。
 
 ```powershell
-$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11"
+$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2019-05-06"
 ```
 
 **$url**、**$headers**、および **$body** を使用してコマンドを実行して、サービスにインデックスを作成します。 
@@ -223,7 +223,7 @@ $body = @"
 *hotels* ドキュメント コレクションへのエンドポイントを設定し、インデックス操作 (indexes/hotels/docs/index) を含めます。
 
 ```powershell
-$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11"
+$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06"
 ```
 
 **$url**、**$headers**、および **$body** を使用してコマンドを実行して、hotels インデックス内にドキュメントを読み込みます。
@@ -266,7 +266,7 @@ Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | Convert
 *hotels* ドキュメント コレクションへのエンドポイントを設定し、**search** パラメーターを追加してクエリ文字列を含めます。 この文字列は空の検索であり、すべてのドキュメントのランク付けされていないリストを返します。
 
 ```powershell
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*'
 ```
 
 コマンドを実行して、**$url** をサービスに送信します。
@@ -336,17 +336,17 @@ Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
 # Query example 1
 # Search the entire index for the term 'budget'
 # Return only the `hotelName` field, "Roach hotel"
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=budget&$select=hotelName'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=budget&$select=hotelName'
 
 # Query example 2 
 # Apply a filter to the index to find hotels cheaper than $150 per night
 # Returns the `hotelId` and `description`. Two documents match.
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$filter=baseRate lt 150&$select=hotelId,description'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=baseRate lt 150&$select=hotelId,description'
 
 # Query example 3
 # Search the entire index, order by a specific field (`lastRenovationDate`) in descending order
 # Take the top two results, and show only `hotelName` and `lastRenovationDate`
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
 ```
 ## <a name="clean-up"></a>クリーンアップ 
 
@@ -354,7 +354,7 @@ $url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-1
 
 ```powershell
 # Set the URI to the hotel index
-$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11'
+$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2019-05-06'
 
 # Delete the index
 Invoke-RestMethod -Uri $url -Headers $headers -Method Delete

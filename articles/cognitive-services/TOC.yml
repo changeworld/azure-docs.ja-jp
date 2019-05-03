@@ -27,6 +27,8 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 製品フィードバックの提供
+      href: 'https://cognitive.uservoice.com/'
     - name: 倫理規定
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
     - name: ナレッジ ベース

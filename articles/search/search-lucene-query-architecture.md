@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cb8e42400847ba9fb13568d05dffac86d9cec85f
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537246"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024620"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -54,7 +54,7 @@ ms.locfileid: "57537246"
 次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して Azure Search に送信できる検索要求です。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2017-11-11 
+POST /indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -253,7 +253,7 @@ Spacious,||air-condition*+"Ocean view"
 
 もう一度先ほどの例を見てみましょう。**title** フィールドの転置インデックスは、次のようになります。
 
-| 用語 | 文書リスト |
+| 期間 | 文書リスト |
 |------|---------------|
 | atman | 1 |
 | beach | 2 |
@@ -267,7 +267,7 @@ title フィールドの場合、*hotel* だけが 2 つの文書 (1 と 3) に�
 
 **description** フィールドのインデックスは次のようになっています。
 
-| 用語 | 文書リスト |
+| 期間 | 文書リスト |
 |------|---------------|
 | air | 3
 | and | 4

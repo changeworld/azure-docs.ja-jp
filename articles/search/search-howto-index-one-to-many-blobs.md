@@ -1,7 +1,7 @@
 ---
 title: フルテキスト検索のために Azure Blob インデクサーから複数の検索インデックス ドキュメントを含む BLOB にインデックスを付ける - Azure Search
 description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure BLOB をクロールします。 各 BLOB には、1 つまたは複数の Azure Search インデックス ドキュメントが含まれる場合があります。
-ms.date: 02/12/2019
+ms.date: 05/02/2019
 author: arv100kri
 manager: briansmi
 ms.author: arjagann
@@ -10,21 +10,18 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
-ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220840"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024662"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>複数の検索ドキュメントを生成する BLOB のインデックス作成
 既定では、BLOB インデクサーで BLOB のコンテンツが単一の検索ドキュメントとして扱われます。 特定の **parsingMode** 値では、個々の BLOB で複数の検索ドキュメントが生成される可能性のあるシナリオがサポートされます。 インデクサーで BLOB から複数の検索ドキュメントを抽出できるようにする、さまざまな種類の **parsingMode** を以下に示します。
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
-
-> [!IMPORTANT]
-> `jsonLines` 解析モードはパブリック プレビュー段階であるため、運用環境では使わないでください。 詳しくは、[REST api-version 2017-11-11-Preview](search-api-2017-11-11-preview.md) に関するページをご覧ください。 
 
 ## <a name="one-to-many-document-key"></a>一対多のドキュメント キー
 Azure Search インデックスに表示される各ドキュメントは、ドキュメント キーによって一意に識別されます。 
@@ -106,7 +103,7 @@ _Blob2.json_
 + [Azure Search のインデクサー](search-indexer-overview.md)
 + [Azure Blob Storage のインデックスを Azure Search で作成する](search-howto-index-json-blobs.md)
 + [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-+ [Azure Search の BLOB インデクサーを使用して JSON BLOB のインデックスを作成する](search-howto-index-csv-blobs.md)
++ [Azure Search の BLOB インデクサーを使用して JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
 
 ## <a name="NextSteps"></a>次のステップ
 * Azure Search について詳しくは、[Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。

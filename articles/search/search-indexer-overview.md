@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/02/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 87e35573eea836fc8a88c7515409c070ec63aa3b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407988"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024892"
 ---
 # <a name="indexers-in-azure-search"></a>Azure Search のインデクサー
 
@@ -79,7 +79,7 @@ Azure Search の "*インデクサー*" は、検索可能なデータとメタ�
 
 インデックス作成はスケジュール設定するのが普通ですが、[Run コマンド](https://docs.microsoft.com/rest/api/searchservice/run-indexer)を使用して、インデクサーをオンデマンドで呼び出すことも可能です。
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Search の "*インデクサー*" は、検索可能なデータとメタ�
 インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
 応答には、全体的なインデクサーの状態、最後の (または実行中の) インデクサー呼び出し、およびインデクサー呼び出しの最近の履歴が含まれています。

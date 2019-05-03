@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6f7fce7eab697f6517b351d00595cb02110d3641
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499575"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024449"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"完全な" Lucene 検索構文を使用するクエリの例 (Azure Search での高度なクエリ)
 
@@ -54,7 +54,7 @@ URL は、次の要素から構成されます。
 + **`https://azs-playground.search.windows.net/`** は、Azure Search 開発チームによって管理されているサンドボックス検索サービスです。 
 + **`indexes/nycjobs/`** は、そのサービスのインデックス コレクション内の NYC ジョブ インデックスです。 要求にはサービス名とインデックスの両方が必要です。
 + **`docs`** は、検索可能なすべてのコンテンツを含むドキュメント コレクションです。 要求ヘッダーに指定されたクエリ api-key は、ドキュメント コレクションを対象とする読み取り操作に対してのみ機能します。
-+ **`api-version=2017-11-11`** は、すべての要求に必須のパラメーターである api-version を設定します。
++ **`api-version=2019-05-06`** は、すべての要求に必須のパラメーターである api-version を設定します。
 + **`search=*`** はクエリ文字列です。最初のクエリでは null で、最初の 50 件の結果が返されます (既定値)。
 
 ## <a name="send-your-first-query"></a>初めてクエリを送信する
@@ -64,7 +64,7 @@ URL は、次の要素から構成されます。
 次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 クエリ文字列 **`search=*`** は、null または空の検索に相当する未指定の検索です。 これは実行できる最も簡単な検索です。
@@ -76,7 +76,7 @@ URL は、次の要素から構成されます。
 完全なクエリ構文を呼び出して既定の単純なクエリ構文をオーバーライドするには、**queryType=full** を追加します。 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
 ```
 
 この記事のすべての例で、**queryType=full** 検索パラメーターを指定します。そうすることで、Lucene Query Parser によって完全な構文が処理されるように指示します。 
@@ -102,7 +102,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 ### <a name="full-url"></a>完全な URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
 このクエリの応答は、次のスクリーンショットのようになります。
@@ -130,7 +130,7 @@ searchFields=business_title, posting_type&$select=business_title, posting_type&s
 ### <a name="full-url"></a>完全な URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
 ```
 
   ![Postman の応答のサンプル](media/search-query-lucene-examples/intrafieldfilter.png)
@@ -167,7 +167,7 @@ searchFields=business_title&$select=business_title&search=business_title:asosiat
 このクエリは、"associate" という用語を含む仕事を検索します (意図的にスペルを間違えています)。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
   ![あいまい検索の応答](media/search-query-lucene-examples/fuzzysearch.png)
 
@@ -190,14 +190,14 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 このクエリでは、"senior analyst" という用語を含む仕事を検索します。間に 1 語だけ含まれます。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
   ![近接クエリ](media/search-query-lucene-examples/proximity-before.png)
 
 "senior analyst" の間の言葉を削除してもう一度試します。 前のクエリの 10 個に対し、このクエリでは 8 個のドキュメントが返される点に注意してください。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
 ## <a name="example-5-term-boosting"></a>例 5: 用語ブースト
@@ -208,14 +208,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 この "ブースト前" のクエリでは、*computer analyst* という用語を含む仕事を検索します。*computer* と *analyst* の両方を含む結果はありませんが、*computer* の仕事が結果の上位に表示されることに注目してください。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
   ![用語ブースト前](media/search-query-lucene-examples/termboostingbefore.png)
 
 この "ブースト後" のクエリでは、検索を繰り返します。今度は、両方の用語が存在しない場合、*analyst* という用語に *computer* という用語より高い優先順位を与えます。 
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
 上記のクエリをより読みやすい形式にすると、`search=business_title:computer analyst^2` になります。 実行可能なクエリの場合、`^2` は `%5E2` としてエンコードされ、見づらくなります。
 
@@ -243,7 +243,7 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 このクエリでは、Senior または Junior という言葉を含む仕事を検索します (`search=business_title:/(Sen|Jun)ior/`)。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
   ![正規表現クエリ](media/search-query-lucene-examples/regex.png)
@@ -266,7 +266,7 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 このクエリでは、"prog" という接頭辞を含む仕事を検索します。プログラミングやプログラマーなどの用語が肩書きに含まれる仕事が検索されます。 検索の最初の文字として * または ? を使用することはできません。
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
   ![ワイルドカード クエリ](media/search-query-lucene-examples/wildcard.png)
 

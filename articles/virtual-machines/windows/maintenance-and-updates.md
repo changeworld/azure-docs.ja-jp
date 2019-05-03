@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: e5ab73037e6b55d6656d8a04b40f66da9cf2e576
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b4a68d7cb7ee82adb2f458b3013cc64e347e16c8
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409620"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993127"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 

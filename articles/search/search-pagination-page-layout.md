@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7a4423449931b74afa15ca238c611f54b071402f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dc208f3231882a0726733c897e70557c657cddf3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339297"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024527"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Azure Search での検索結果の操作方法
 この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを実装する方法のガイダンスを提供します。 データまたは情報を検索結果に表示するためのページ関連オプションは、Azure Search サービスに送信される [検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)の要求によって指定します。 

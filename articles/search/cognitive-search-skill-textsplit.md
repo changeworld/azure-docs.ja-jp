@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c860066608f1b78d9a4c45b03fb3948b3c888e25
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78ed2fab81bfb1562125135c5901a2de395c3843
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894208"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023949"
 ---
 #   <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 

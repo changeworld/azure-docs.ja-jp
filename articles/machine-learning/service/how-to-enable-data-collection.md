@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/3/2018
+ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: a127a211157edb0b26d0495bc2ed05dd79323111
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842636"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024246"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
