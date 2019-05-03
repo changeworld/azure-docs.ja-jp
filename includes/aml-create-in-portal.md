@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 57fd69542a5d92b9afd1e003d8b94c1ebb64953e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489579"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65031784"
 ---
 1. 使用する Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "54489579"
 
 1. 検索バーに「**Machine Learning**」と入力します。 **[Machine Learning service workspace]** という検索結果を選択します。
 
-   ![ワークスペースを検索する](./media/aml-create-in-portal/allservices-search.PNG)
+   ![ワークスペースを検索する](./media/aml-create-in-portal/allservices-search.png)
 
 1. **[ML サービス ワークスペース]** ウィンドウを一番下までスクロールし、**[作成]** を選択して開始します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "54489579"
    ワークスペース名 |ワークスペースを識別する一意名を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。  
    サブスクリプション |使用する Azure サブスクリプションを選択します。
    リソース グループ | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 この例では、**docs-aml** を使用します。 
-   場所 | ユーザーとデータ リソースに最も近い場所を選択します。 この場所に、ワークスペースが作成されます。
+   Location | ユーザーとデータ リソースに最も近い場所を選択します。 この場所に、ワークスペースが作成されます。
 
    ![ワークスペースの作成](./media/aml-create-in-portal/workspace-create.png)
 
