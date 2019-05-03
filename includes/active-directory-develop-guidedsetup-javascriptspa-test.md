@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: c13c9ece54d512adf271532a4ac17876a88d733e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0c43fb72829614af339f7dcc1bb36edfc80e6c80
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804467"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993311"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 

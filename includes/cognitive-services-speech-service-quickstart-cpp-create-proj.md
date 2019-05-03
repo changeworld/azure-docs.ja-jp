@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a24d83faef5a895317f162178f8bd588a1466d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af61d975b540787b9b54d9fdea66773c10aeb6ac
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620155"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020773"
 ---
 1. Visual Studio 2017 を起動します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "60620155"
     ![ソリューションのパッケージの管理ダイアログ ボックスのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
     > [!NOTE]
-    > Cognitive Services Speech SDK の現在のバージョンは `1.4.0` です。
+    > Cognitive Services Speech SDK の現在のバージョンは `1.5.0` です。
 
 1. 表示されるライセンスに同意し、NuGet パッケージのインストールを開始します。
 
