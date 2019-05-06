@@ -6,16 +6,16 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b90e495e0901c0caa14d9451f365e17f6c075e2b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294418"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070803"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
 
-現在のアプリケーションは、応答性に優れていて、常にオンラインである必要があります。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 これらのアプリケーションは、通常は複数のデータ センターにデプロイされ、グローバル分散型と呼ばれています。 グローバル分散型アプリケーションには、アプリケーションでそのユーザーの近くにあるデータのコピーを操作できるようにするために、世界中のデータを透過的にレプリケートできる、グローバルに分散されたデータベースが必要です。 
+現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 これらのアプリケーションは、通常は複数のデータ センターにデプロイされ、グローバル分散型と呼ばれています。 グローバル分散型アプリケーションには、アプリケーションでそのユーザーの近くにあるデータのコピーを操作できるようにするために、世界中のデータを透過的にレプリケートできる、グローバルに分散されたデータベースが必要です。 
 
 Azure Cosmos DB は、待機時間の短縮、スループットのエラスティックなスケーラビリティ、データの一貫性を保つための明確に定義されたセマンティクス、および高可用性を確保するように設計された、グローバル分散データベース サービスです。 つまり、世界のどの場所でも高速な応答時間を保証すること、常にオンラインであること、スループットとストレージのスケーラビリティが無制限でエラスティックなことがアプリケーションに求められる場合は、Azure Cosmos DB を使用してアプリケーションを構築してください。
 
@@ -51,6 +51,6 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 
 * [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
 * [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
-* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [SQL API アカウント用のカスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

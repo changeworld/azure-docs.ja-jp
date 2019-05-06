@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091581"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073698"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 
-複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 これは階層構造エンティティに似ていますが、異なる種類のエンティティを含むことができます。 
+複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 
 
 複合エンティティは、データが次のようなものであるため、この種のデータに適しています。
 

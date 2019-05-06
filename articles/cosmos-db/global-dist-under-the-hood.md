@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 84ce13ae3bb0a4b66b8167e61b720fe6cecbe95c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762414"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071942"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
 
@@ -84,5 +84,5 @@ Cosmos DB の 5 つの一貫性モデルのセマンティクスについては[
 次に、次の記事を使用してグローバル分散を構成する方法について説明します。
 
 * [データベース アカウントのリージョンの追加/削除](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [マルチホームに関するクライアントの構成方法](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [マルチホームに関するクライアントの構成方法](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [カスタム競合解決ポリシーの作成方法](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
