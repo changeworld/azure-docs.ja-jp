@@ -2,19 +2,20 @@
 title: 診断と Message Analyzer を使用した Azure Storage のトラブルシューティング | Microsoft Docs
 description: Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 2707081adafa74237e3fb7730837f581e0c8b790
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351883"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154221"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -299,11 +300,11 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 | --- | --- | --- |
-| キューのメッセージ配信での予期しない遅延 |AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 |クライアント |
+| キューのメッセージ配信での予期しない遅延 |AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 |Client |
 | HTTP の PercentThrottlingError の増加 |HTTP.Response.StatusCode  == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |ネットワーク |
 | PercentTimeoutError の増加 |HTTP.Response.StatusCode   == 500 |ネットワーク |
 | PercentTimeoutError の増加 (すべて) |*StatusCode   == 500 |All |
-| PercentNetworkError の増加 |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |クライアント |
+| PercentNetworkError の増加 |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Client |
 | HTTP 403 (Forbidden) メッセージ |HTTP.Response.StatusCode   == 403 |ネットワーク |
 | HTTP 404 (Not found) メッセージ |HTTP.Response.StatusCode   == 404 |ネットワーク |
 | 404 (すべて) |*StatusCode   == 404 |All |

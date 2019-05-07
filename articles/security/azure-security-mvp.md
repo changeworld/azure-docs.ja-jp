@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: d6da4dbe9322ab38591a84ff5b075992d9495f1b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b75a6ef341483201dc9cb2a30f68b4854332cbce
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111256"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190415"
 ---
 # <a name="azure-security-mvp-program"></a>Azure セキュリティの MVP プログラム
 
@@ -36,5 +36,3 @@ MVP になるための明確な基準はありません。 その理由の 1 つ
 - 会議およびユーザー グループ
 - ポッドキャスト、Web サイト、ブログ、およびソーシャル メディア
 - 記事および書籍。
-
-Azure セキュリティの専門家ですか? 専門家をご存知ですか? [自分自身または他のユーザーを指名して](https://mvp.microsoft.com/Nomination/nominate-an-mvp) 、今すぐ Azure セキュリティ MVP になりましょう。

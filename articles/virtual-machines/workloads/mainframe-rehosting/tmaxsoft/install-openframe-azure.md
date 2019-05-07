@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578477"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187789"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 
@@ -102,7 +102,7 @@ Eclipse for Windows:TmaxSoft でサポートされている開発プラットフ
 
 始める前に、次のことを行います。
 
-- TmaxSoft から OpenFrame のインストール メディアを入手します。 TmaxSoft の既存の顧客は、TmaxSoft の担当者に連絡してライセンスされたコピーを用意します。 それ以外の場合は、[TmaxSoft](http://www.tmaxsoft.com/contact/) から試用版を要求します。
+- TmaxSoft から OpenFrame のインストール メディアを入手します。 TmaxSoft の既存の顧客は、TmaxSoft の担当者に連絡してライセンスされたコピーを用意します。 それ以外の場合は、[TmaxSoft](https://www.tmaxsoft.com/contact/) から試用版を要求します。
 
 - <support@tmaxsoft.com> にメールを送り、OpenFrame のドキュメントを要求します。
 

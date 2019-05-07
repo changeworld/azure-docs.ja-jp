@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: d107a9dae29f18b90ba7c23198c0cc1f97d83c70
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003090"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150737"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 シリーズのデータを Azure File Sync に移行する
 
@@ -87,7 +87,7 @@ StorSimple ボリュームで構成された Windows ファイル共有を Azure
     別の Windows Server ホストを使用している場合は、この手順をスキップして、次の手順に進みます。 AFS に同じ Windows ファイル サーバーを使用している場合は、ここで数分間のダウンタイムが発生します。 
     - **ダウンタイム開始** - "*手順 1F.*" で作成したサーバー エンドポイントを削除します。 
     - 今後データを配置するパスで新しいサーバー エンドポイントを作成します。
-    - サーバー エンドポイントが正常として表示されたら (数分かかる場合があります)、データはこの新しい場所に表示されます。 これで、この新しい場所からファイルを提供するように Windows Server ホストを構成できます。 -**ダウンタイム終了**。
+    - サーバー エンドポイントが正常として表示されたら (数分かかる場合があります)、データはこの新しい場所に表示されます。 これで、この新しい場所からファイルを提供するように Windows Server ホストを構成できます。 - **ダウンタイム終了**。
 5.  Azure File Sync に別の Windows ファイル サーバーを使用している場合、ダウンタイムは発生しません。 
     - StorSimple デバイスの代わりにキャッシュとして使用する準備ができているローカル ストレージのパスで別のサーバー エンドポイントを追加します。 
     - 数分後、新しいサーバーでファイルを確認できます。 お使いの StorSimple デバイスからホスト上のこの新しい場所に、いつでも自由に切り替えることができます。

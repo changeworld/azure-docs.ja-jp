@@ -2,18 +2,19 @@
 title: Azure Storage Analytics のログ
 description: Azure Storage に対する要求の詳細をログに記録する方法について説明します。
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: fryu
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 3daea17a491af8950b38f1e3183583fef63751e2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1e0e9cb899fb28257b864d0e31daa724fbd59e4c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926487"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153961"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 

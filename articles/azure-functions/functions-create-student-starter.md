@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5fd9f51185b8461269d498b254d9e9d9f4118270
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 860fedb13e84054e8ba264116be4e452445b7e9b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344040"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143095"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 
@@ -76,8 +76,6 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 8. **[リソースに移動]** を選択して、新しい関数アプリを確認します。
 
-> [!TIP]
-> 目的の関数アプリがポータルに見つからない場合は、[Azure Portal のお気に入りに Function Apps を追加](./functions-how-to-use-azure-function-app-settings.md#favorite)してみてください。
 次に、新しい Function App で関数を作成します。
 
 ## <a name="create-function"></a>HTTP によってトリガーされる関数の作成

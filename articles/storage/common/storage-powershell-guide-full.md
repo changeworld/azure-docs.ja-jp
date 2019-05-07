@@ -2,18 +2,18 @@
 title: Azure Storage での Azure PowerShell の使用 | Microsoft Docs
 description: Azure Storage で Azure PowerShell コマンドレットを使用する方法について説明します。
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 08/16/2018
-ms.author: rogarana
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78eeb986be5380d9e34a42872cbbdeee37654cc0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 082033cebc68fc97f7cff9ce80eb02acbbf5f4b0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317013"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145893"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 

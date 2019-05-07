@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 175cc03dac21280a5e3ef3ec130cb94bc800f540
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446726"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153899"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 

@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ba4d83d620a597c9a59f1a3c7f2f9d6722ba42d8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 9e8c9755c444ca7b81891f5f83164bc51aa694eb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368366"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147062"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Azure Storage へのアクセスを承認する
 

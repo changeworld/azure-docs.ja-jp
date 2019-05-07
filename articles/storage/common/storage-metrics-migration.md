@@ -2,18 +2,19 @@
 title: Azure Storage メトリックの移行 | Microsoft Docs
 description: 従来のメトリックを Azure Monitor によって管理される新しいメトリックに移行する方法について説明します。
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: fryu
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f8a73bb6e86a187a504c2d36098001cfd90015f9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 58ac15c1aba715c9a5b67e723401b531e76608b2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454928"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153590"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure Storage メトリックの移行
 

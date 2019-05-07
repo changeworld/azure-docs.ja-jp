@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713628"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143188"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -25,24 +25,6 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 まず、[Azure Portal](https://portal.azure.com) に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 関数アプリを選択すると、次のページが表示されます。
 
 ![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
-
-## <a name="favorite"></a>ポータルでのお気に入りの関数 
-
-[Azure Portal] でリソースを見つけにくいことがあります。 作成した関数アプリを見つけやすくするには、ポータルでお気に入りに関数アプリを追加します。 
-
-1. [Azure Portal] にログインします。
-
-2. 左下にある矢印をクリックしてすべてのサービスを展開して、**[Filter] \(フィルター)** フィールドに「`Functions`」と入力し、**[Function Apps] \(Function App)** の横にある星をクリックします。  
- 
-    ![Azure Portal での Function App の作成](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
-
-    これにより、ポータルの左側のメニューに [Functions] \(関数) アイコンが追加されます。
-
-3. メニューを閉じ、最下部までスクロールして [Functions] \(関数) アイコンを表示します。 すべての Function App の一覧を表示するには、このアイコンをクリックします。 このアプリで関数を操作するには、Function App をクリックします。 
- 
-    ![お気に入りの関数アプリ](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
- 
-[Azure Portal]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>関数アプリの [設定] タブ
 

@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 515081ca14d1c477f20d86e84ce302b5358bfaae
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791241"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150053"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 

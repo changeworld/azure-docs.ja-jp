@@ -2,18 +2,19 @@
 title: ゾーン冗長ストレージ (ZRS) に高可用 Azure Storage アプリケーションを構築する | Microsoft Docs
 description: ゾーン冗長ストレージ (ZRS) を利用すると、高可用アプリケーションを簡単に構築できます。 ZRS は、データセンターのハードウェア障害だけでなく、一部の地域の災害からも保護できます。
 services: storage
-author: tolandmike
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
-ms.author: jeking
+ms.author: tamram
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447253"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146195"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -87,7 +88,7 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
     - **[詳細]**:**[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
 5. **[次へ]** を選択します。
 6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
-7. **作成**を選択します。
+7. **作成** を選択します。
 
 サポート担当者はお客様に連絡し、必要なサポートを提供します。
 

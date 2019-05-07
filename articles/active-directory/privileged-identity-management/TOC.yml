@@ -27,12 +27,6 @@
       href: pim-deployment-plan.md
     - name: PIM の使用を開始する
       href: pim-getting-started.md
-    - name: ロールをアクティブ化する
-      items:
-        - name: Azure AD ロールをアクティブ化する
-          href: pim-how-to-activate-role.md
-        - name: 自分の Azure リソース ロールをアクティブにする
-          href: pim-resource-roles-activate-your-roles.md
     - name: PIM を構成する
       items:
         - name: セキュリティ ウィザード
@@ -43,6 +37,12 @@
           href: pim-how-to-give-access-to-pim.md
         - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: ロールをアクティブ化する
+      items:
+        - name: Azure AD ロールをアクティブ化する
+          href: pim-how-to-activate-role.md
+        - name: 自分の Azure リソース ロールをアクティブにする
+          href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD ロールの管理
       items:
         - name: ロールを割り当てる
@@ -73,21 +73,21 @@
           href: azure-pim-resource-rbac.md
         - name: カスタム ロールを使用する
           href: pim-resource-roles-custom-role-policy.md
-    - name: アクセスのレビュー
+    - name: アクセス レビュー
       items:
         - name: Azure AD ロール
           items:
-            - name: Azure AD ロールのレビュー
-              href: pim-how-to-perform-security-review.md
-            - name: アクセス レビューを開始する
+            - name: アクセス レビューの作成
               href: pim-how-to-start-security-review.md
+            - name: アクセスのレビュー
+              href: pim-how-to-perform-security-review.md
             - name: アクセス レビューを完了する
               href: pim-how-to-complete-review.md
         - name: Azure リソース ロール
           items:
-            - name: 自分の Azure リソース ロールを確認する
-              href: pim-resource-roles-perform-access-review.md
-            - name: アクセス レビューを開始する
+            - name: アクセス レビューの作成
               href: pim-resource-roles-start-access-review.md
+            - name: アクセスのレビュー
+              href: pim-resource-roles-perform-access-review.md
             - name: アクセス レビューを完了する
               href: pim-resource-roles-complete-access-review.md

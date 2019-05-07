@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 5eba650ac2a052f264d82260e9fc07bf195235da
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 00f34fa9a1932aebd467163e0ed7441c993387df
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148936"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154008"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure portal を使用した BLOB またはキュー データへのアクセス
 

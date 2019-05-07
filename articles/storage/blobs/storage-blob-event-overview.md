@@ -2,18 +2,19 @@
 title: Azure Blob Storage イベントへの対応 | Microsoft Docs
 description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
 services: storage,event-grid
-author: cbrooksmsft
-ms.author: cbrooks
+author: normesta
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b03d7d98fe43eacab63f45ccacd7d8dea9598c8e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751397"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142165"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -41,26 +42,26 @@ Event Grid は、[イベント サブスクリプション](../../event-grid/con
 ## <a name="event-schema"></a>イベント スキーマ
 Blob Storage イベントには、データの変更に対応するために必要なすべての情報が含まれます。  Blob Storage イベントは eventType プロパティが "Microsoft.Storage" で始まっていることで識別できます。 Event Grid イベントのプロパティの使用法について詳しくは、「[Event Grid イベント スキーマ](../../event-grid/event-schema.md)」をご覧ください。  
 
-> |プロパティ|type|説明|
+> |プロパティ|Type|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|文字列|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
-> |subject|文字列|イベントの対象であるオブジェクトへの相対リソース パスです。Azure RBAC のストレージ アカウント、サービス、およびコンテナーの記述に使うのと同じ拡張 Azure Resource Manager 形式を使います。  この形式には、大文字と小文字が区別される BLOB 名が含まれます。|
-> |eventTime|文字列|イベントが生成された日時です (ISO 8601 形式)。|
-> |eventType|文字列|"Microsoft.Storage.BlobCreated" または "Microsoft.Storage.BlobDeleted"|
-> |Id|文字列|このイベントの一意識別子です。|
-> |dataVersion|文字列|データ オブジェクトのスキーマ バージョン。|
-> |metadataVersion|文字列|最上位プロパティのスキーマ バージョン。|
-> |data|オブジェクト|Blob Storage 固有のイベント データのコレクションです。|
-> |data.contentType|文字列|BLOB のコンテンツの種類です。BLOB から Content-Type ヘッダーで返されます。|
+> |topic|string|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
+> |subject|string|イベントの対象であるオブジェクトへの相対リソース パスです。Azure RBAC のストレージ アカウント、サービス、およびコンテナーの記述に使うのと同じ拡張 Azure Resource Manager 形式を使います。  この形式には、大文字と小文字が区別される BLOB 名が含まれます。|
+> |eventTime|string|イベントが生成された日時です (ISO 8601 形式)。|
+> |eventType|string|"Microsoft.Storage.BlobCreated" または "Microsoft.Storage.BlobDeleted"|
+> |Id|string|このイベントの一意識別子です。|
+> |dataVersion|string|データ オブジェクトのスキーマ バージョン。|
+> |metadataVersion|string|最上位プロパティのスキーマ バージョン。|
+> |data|object|Blob Storage 固有のイベント データのコレクションです。|
+> |data.contentType|string|BLOB のコンテンツの種類です。BLOB から Content-Type ヘッダーで返されます。|
 > |data.contentLength|number|BLOB のサイズです (バイト数を表す整数)。BLOB から Content-Length ヘッダーで返されます。  BlobCreated イベントでは送信されますが、BlobDeleted では送信されません。|
-> |data.url|文字列|イベントの対象であるオブジェクトの URL です。|
-> |data.eTag|文字列|このイベントが発生したときのオブジェクトの etag です。  BlobDeleted イベントでは使用できません。|
-> |data.api|文字列|このイベントをトリガーした API 操作の名前です。 BlobCreated イベントの場合、この値は "PutBlob"、"PutBlockList"、または "CopyBlob" です。 BlobDeleted イベントの場合、この値は "DeleteBlob" です。 これらの値は、Azure Storage 診断ログに記録されるものと同じ API 名です。 「[Storage Analytics によって記録される操作やステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」をご覧ください。|
-> |data.sequencer|文字列|特定の BLOB 名に対するイベントの論理シーケンスを表す非透過的な文字列値です。  ユーザーは、標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。|
-> |data.requestId|文字列|ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。|
-> |data.clientRequestId|文字列|ストレージ API 操作に対するクライアントで提供された要求 ID です。 ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
-> |data.storageDiagnostics|オブジェクト|Azure Storage サービスによって追加されることがある診断データです。 含まれる場合、イベントのコンシューマーは無視する必要があります。|
-|data.blobType|文字列|BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。| 
+> |data.url|string|イベントの対象であるオブジェクトの URL です。|
+> |data.eTag|string|このイベントが発生したときのオブジェクトの etag です。  BlobDeleted イベントでは使用できません。|
+> |data.api|string|このイベントをトリガーした API 操作の名前です。 BlobCreated イベントの場合、この値は "PutBlob"、"PutBlockList"、または "CopyBlob" です。 BlobDeleted イベントの場合、この値は "DeleteBlob" です。 これらの値は、Azure Storage 診断ログに記録されるものと同じ API 名です。 「[Storage Analytics によって記録される操作やステータス メッセージ](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」をご覧ください。|
+> |data.sequencer|string|特定の BLOB 名に対するイベントの論理シーケンスを表す非透過的な文字列値です。  ユーザーは、標準的な文字列比較を使って、同じ BLOB 名での 2 つのイベントの相対的な順序を理解できます。|
+> |data.requestId|string|ストレージ API 操作に対するサービスで生成された要求 ID です。 ログの "request-id-header" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、開始 API 呼び出しから "x-ms-request-id" ヘッダーで返されます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。|
+> |data.clientRequestId|string|ストレージ API 操作に対するクライアントで提供された要求 ID です。 ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |
+> |data.storageDiagnostics|object|Azure Storage サービスによって追加されることがある診断データです。 含まれる場合、イベントのコンシューマーは無視する必要があります。|
+|data.blobType|string|BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。| 
 
 BlobCreated イベントの例を次に示します。
 ```json

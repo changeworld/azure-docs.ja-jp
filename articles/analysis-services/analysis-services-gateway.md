@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896025"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141157"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 オンプレミスのデータ ゲートウェイでは、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じサブスクリプションと同じリージョン内の複数のサービスを 1 つのゲートウェイに関連付けることができます。 
@@ -176,30 +176,9 @@ ms.locfileid: "58896025"
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
 
-
 #### <a name="event-logs"></a>イベント ログ
 
 Data Management Gateway と PowerBIGateway のログは、**[アプリケーションとサービス ログ]** で確認できます。
-
-
-## <a name="telemetry"></a>テレメトリ
-監視とトラブルシューティングには、テレメトリを使用できます。 既定
-
-**テレメトリを有効にするには**
-
-1.  コンピューター上のオンプレミス データ ゲートウェイ クライアント ディレクトリを確認します。 通常は、**%systemdrive%\Program Files\On-premises data gateway** です。 または、サービス コンソールを開き、実行可能ファイルへのパス:オンプレミス データ ゲートウェイ サービスのプロパティを確認します。
-2.  クライアント ディレクトリにある Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config ファイルで、 SendTelemetry の設定を true に変更します。
-        
-    ```
-        <setting name="SendTelemetry" serializeAs="String">
-                    <value>true</value>
-        </setting>
-    ```
-
-3.  変更を保存し、Windows サービス:オンプレミス データ ゲートウェイ サービスを再起動します。
-
-
-
 
 ## <a name="next-steps"></a>次の手順
 * [オンプレミスのデータ ゲートウェイをインストールして構成する](analysis-services-gateway-install.md)   

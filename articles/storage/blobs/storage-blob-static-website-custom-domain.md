@@ -2,18 +2,19 @@
 title: 'チュートリアル: Azure CDN を使用し、静的な Web サイト上で SSL を使ってカスタム ドメインを有効にする - Azure Storage'
 description: 静的な Web サイト ホスティングのためにカスタム ドメインを構成する方法について説明します。
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 6ccd33805fe4b62d3456121321edc4eec3bff2e5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53110378"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145052"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>チュートリアル: Azure CDN を使用し、静的な Web サイトに対して SSL を使ってカスタム ドメインを有効にする
 
@@ -31,7 +32,7 @@ ms.locfileid: "53110378"
 
 このチュートリアルを開始する前に、第 1 部の「[Tutorial: Host a static website on Blob Storage](storage-blob-static-website-host.md)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure ポータル](https://portal.azure.com/)にサインインして、作業を開始します。
 

@@ -2,18 +2,19 @@
 title: Azure Storage での Azure クラシック CLI の使用 | Microsoft Docs
 description: Azure Storage で Azure クラシック コマンド ライン インターフェイス (CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について学習します。
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/30/2017
-ms.author: seguler
+ms.author: tamram
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464842"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147037"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Azure Storage での Azure クラシック CLI の使用
 
