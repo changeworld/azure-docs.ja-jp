@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Azure Data Box のドキュメント - オンライン転送
 metadata:
-  title: Azure Data Box のドキュメント - オンライン転送
-  description: 信頼性が高く、迅速かつ安価な方法で Azure に対してネットワーク経由でパフォーマンスの高いデータ転送を行う場合に Data Box デバイスを使用します。
+  title: Azure へのネットワーク経由のデータ転送に関する Data Box Gateway と Data Box Edge のドキュメント
+  description: 信頼性が高く、迅速かつ安価な方法で Azure に対してネットワーク経由でハイ パフォーマンスなデータ転送を行うために Data Box Edge と Data Box Gateway を使用します。
   services: databox
   author: alkohli
   manager: twooley
@@ -13,7 +13,7 @@ metadata:
   ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 ネットワーク経由で高パフォーマンスのデータ転送を行うには、Data Box デバイスを使用します。<p>クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。  データを Azure に移動するときに、データのフィルター処理、分析、変換を行う場合は、Data Box Edge を使用します。</p><p>Microsoft が提供するチュートリアルを利用して、Data Box Gateway と Data Box Edge をネットワーク ベースの転送に活用する方法を学習してください。</p>
+  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 ネットワーク経由でハイ パフォーマンスなデータ転送を行うには、Data Box Edge および Data Box Gateway デバイスを使用します。<p>クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。  データを Azure に移動するときに、データのフィルター処理、分析、変換を行う場合は、Data Box Edge を使用します。</p><p>Microsoft が提供するチュートリアルを利用して、Data Box Gateway と Data Box Edge をネットワーク ベースの転送に活用する方法を学習してください。</p>
 sections:
   - title: チュートリアル
     items:

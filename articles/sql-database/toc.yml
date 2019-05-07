@@ -85,7 +85,7 @@
           href: sql-database-design-first-database-csharp.md
     - name: SQL Database への移行
       items:
-        - name: DMS を使用して単一データベースまたはプール データベースに移行する
+        - name: DMS を使用して単一データベースまたはプールされたデータベースに移行する
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
         - name: DMS を使用してマネージド インスタンスに移行する
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
@@ -232,8 +232,6 @@
     - name: セキュリティ
       items:
         - name: セキュリティの概要
-          href: sql-database-security-index.yml
-        - name: セキュリティ機能
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
         - name: Advanced Data Security
@@ -356,9 +354,9 @@
           href: sql-database-temporal-tables.md
         - name: ジョブの自動化
           href: sql-database-job-automation-overview.md
-        - name: 機械学習
+        - name: Machine Learning サービス
           items:
-            - name: Machine Learning の概要
+            - name: 概要
               href: sql-database-machine-learning-services-overview.md
             - name: 主な相違点
               href: sql-database-machine-learning-services-differences.md
@@ -474,6 +472,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続
           href: sql-database-managed-instance-connect-app.md
+        - name: パブリック エンドポイントの構成
+          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: データの読み込みと移動
       items:
         - name: Azure 内でのデータベースのコピー
@@ -658,6 +658,8 @@
           href: sql-database-machine-learning-services-functions.md
         - name: R および SQL データの処理
           href: sql-database-machine-learning-services-data-issues.md
+        - name: R パッケージの追加
+          href: sql-database-machine-learning-services-add-r-packages.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

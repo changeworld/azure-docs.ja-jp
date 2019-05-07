@@ -68,6 +68,8 @@
       href: resource-group-delete.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
+    - name: Azure の一般的なセキュリティ属性
+      href: azure-resource-manager-security-attributes.md
 - name: 方法
   items:
     - name: テンプレートの作成
@@ -225,6 +227,8 @@
           href: move-support-resources.md
         - name: タグのサポート
           href: tag-support.md
+    - name: サービスごとのリソース プロバイダー
+      href: azure-services-resource-providers.md
     - name: REST - Resource Manager
       href: /rest/api/resources/
     - name: REST - Deployment Manager

@@ -127,8 +127,10 @@
           href: platform/alerts-unified-log.md
         - name: アクティビティ ログ アラート
           href: platform/activity-log-alerts.md
-        - name: 一般的なアラート スキーマ
+        - name: 共通アラート スキーマ
           href: platform/alerts-common-schema.md
+        - name: アクション ルール
+          href: platform/alerts-action-rules.md
     - name: データの視覚化
       href: visualizations.md
     - name: パートナー統合
@@ -309,6 +311,29 @@
                   href: app/asp-net.md
                 - name: Status Monitor
                   href: app/monitor-performance-live-website-now.md
+                - name: Status Monitor v2
+                  href: app/status-monitor-v2-overview.md
+                  items:
+                    - name: 使用の開始
+                      href: app/status-monitor-v2-get-started.md
+                    - name: 詳しい手順
+                      href: app/status-monitor-v2-detailed-instructions.md
+                    - name: トラブルシューティングと既知の問題
+                      href: app/status-monitor-v2-troubleshoot.md
+                    - name: API Disable-InstrumentationEngine
+                      href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                    - name: API Disable-ApplicationInsightsMonitoring
+                      href: app/status-monitor-v2-api-disable-monitoring.md
+                    - name: API Enable-InstrumentationEngine
+                      href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                    - name: API Enable-ApplicationInsightsMonitoring
+                      href: app/status-monitor-v2-api-enable-monitoring.md
+                    - name: API Get-ApplicationInsightsMonitoringConfig
+                      href: app/status-monitor-v2-api-get-config.md
+                    - name: API Get-ApplicationInsightsMonitoringStatus
+                      href: app/status-monitor-v2-api-get-status.md
+                    - name: API Set-ApplicationInsightsMonitoringConfig
+                      href: app/status-monitor-v2-api-set-config.md
                 - name: Windows サービス
                   href: app/windows-services.md
                 - name: Windows デスクトップ
@@ -560,6 +585,8 @@
               href: insights/containers.md
             - name: Docker アプリケーションの監視
               href: app/docker.md
+            - name: Kubernetes 向けの Application Insights
+              href: app/kubernetes.md
         - name: リソース グループの監視
           href: insights/resource-group-insights.md
         - name: データベースの監視
@@ -684,6 +711,8 @@
               href: platform/metrics-charts.md
             - name: メトリック グラフの例
               href: platform/metric-chart-samples.md
+            - name: メトリック グラフのトラブルシューティング
+              href: platform/metrics-troubleshoot.md
         - name: ログ
           items:
             - name: ログ クエリ

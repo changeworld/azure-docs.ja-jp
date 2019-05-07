@@ -107,7 +107,7 @@
               href: image-factory-save-distribute-custom-images.md
             - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
               href: image-factory-set-retention-policy-cleanup.md
-        - name: エンタープライズで DevTest Labs インフラストラクチャを設定する
+        - name: エンタープライズ内の DevTest Labs
           href: devtest-lab-guidance-prescriptive-adoption.md
           items:
             - name: 参照アーキテクチャ

@@ -95,7 +95,9 @@
           href: vmware-azure-common-questions.md
         - name: VMware/物理から Azure へのサポート マトリックス
           href: vmware-physical-azure-support-matrix.md
-        - name: 構成サーバーのデプロイのサポート要件
+        - name: Site Recovery コンポーネントについて (構成、プロセス、およびマスター ターゲットのサーバー)
+          href: vmware-physical-azure-config-process-server-overview.md
+        - name: 構成およびプロセス サーバーのサポート要件
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware から Azure へのアーキテクチャ
           href: vmware-azure-architecture.md
@@ -197,6 +199,8 @@
               items:
                 - name: 概要と前提条件
                   href: site-recovery-deployment-planner.md
+                - name: Deployment Planner のバージョン履歴
+                  href: site-recovery-deployment-planner-history.md
                 - name: Deployment Planner ツールの実行
                   href: site-recovery-vmware-deployment-planner-run.md
                 - name: 生成されたレポートの分析
@@ -319,6 +323,8 @@
               items:
                 - name: 概要と前提条件
                   href: hyper-v-deployment-planner-overview.md
+                - name: Deployment Planner のバージョン履歴
+                  href: site-recovery-deployment-planner-history.md
                 - name: Deployment Planner ツールの実行
                   href: hyper-v-deployment-planner-run.md
                 - name: 生成されたレポートの分析
@@ -425,10 +431,14 @@
           href: site-recovery-extension-troubleshoot.md
     - name: VMware および物理サーバー
       items:
+        - name: プロセス サーバーの監視
+          href: vmware-physical-azure-monitor-process-server.md
         - name: VMware から Azure へのレプリケーションに関するトラブルシューティング
           href: vmware-azure-troubleshoot-replication.md
         - name: 構成サーバーのトラブルシューティング
           href: vmware-azure-troubleshoot-configuration-server.md
+        - name: プロセス サーバーのトラブルシューティング
+          href: vmware-physical-azure-troubleshoot-process-server.md
         - name: VMware VM および物理サーバーのモビリティ サービスのプッシュ インストールに関するトラブルシューティング
           href: vmware-azure-troubleshoot-push-install.md
         - name: Azure へのフェールオーバーに関するトラブルシューティング

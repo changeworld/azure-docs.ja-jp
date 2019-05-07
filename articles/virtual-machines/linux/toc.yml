@@ -25,7 +25,7 @@
       href: tutorial-custom-images.md
     - name: 5 - 高可用性 VM
       href: tutorial-availability-sets.md
-    - name: 6 - VM スケール セットの作成
+    - name: 6 - スケール セットの作成
       href: tutorial-create-vmss.md
     - name: 7 - VM の負荷分散
       href: tutorial-load-balancer.md
@@ -219,7 +219,7 @@
               href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
             - name: Ubuntu
               href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
-        - name: Azure Active Directory の資格情報でログインする
+        - name: Azure Active Directory の資格情報でサインインする
           href: login-using-aad.md
         - name: 更新プログラムとパッチ
           items:
@@ -259,6 +259,8 @@
               href: shared-image-galleries.md
             - name: CLI を使用して共有イメージを作成する
               href: shared-images.md
+            - name: ポータル
+              href: shared-images-portal.md
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md
         - name: イメージを検索および使用する

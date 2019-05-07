@@ -70,41 +70,10 @@
           href: analysis-services-deploy.md
         - name: REST API を使用した更新
           href: analysis-services-async-refresh.md
-        - name: Visual Studio でのデータ モデリング - Adventure Works (1400) チュートリアル
-          href: tutorials/aas-adventure-works-tutorial.md
-          items:
-            - name: 1 - 表形式モデル プロジェクトを作成する
-              href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
-            - name: 2 - データを取得する
-              href: tutorials/aas-lesson-2-get-data.md
-            - name: 3 - 日付テーブルとしてマークする
-              href: tutorials/aas-lesson-3-mark-as-date-table.md
-            - name: 4 - リレーションシップを作成する
-              href: tutorials/aas-lesson-4-create-relationships.md
-            - name: 5 - 計算列を作成する
-              href: tutorials/aas-lesson-5-create-calculated-columns.md
-            - name: 6 - メジャーを作成する
-              href: tutorials/aas-lesson-6-create-measures.md
-            - name: 7 - 主要業績評価指標を作成する
-              href: tutorials/aas-lesson-7-create-key-performance-indicators.md
-            - name: 8 - パースペクティブを作成する
-              href: tutorials/aas-lesson-8-create-perspectives.md
-            - name: 9 - 階層を作成する
-              href: tutorials/aas-lesson-9-create-hierarchies.md
-            - name: 10 - パーティションを作成する
-              href: tutorials/aas-lesson-10-create-partitions.md
-            - name: 11 - ロールを作成する
-              href: tutorials/aas-lesson-11-create-roles.md
-            - name: 12 - Excel で分析する
-              href: tutorials/aas-lesson-12-analyze-in-excel.md
-            - name: 13 - デプロイする
-              href: tutorials/aas-lesson-13-deploy.md
-            - name: 補足のレッスン - 詳細行
-              href: tutorials/aas-supplemental-lesson-detail-rows.md
-            - name: 補足のレッスン - 動的なセキュリティ
-              href: tutorials/aas-supplemental-lesson-dynamic-security.md
-            - name: 補足のレッスン - 不規則階層
-              href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+        - name: Logic Apps を使用した更新
+          href: analysis-services-refresh-logic-app.md
+        - name: Azure Automation を使用した更新
+          href: analysis-services-refresh-azure-automation.md
     - name: セキュリティ
       items:
         - name: データベース ユーザーの管理

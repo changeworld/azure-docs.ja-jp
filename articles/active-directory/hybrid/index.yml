@@ -4,7 +4,7 @@ title: ハイブリッド ID のドキュメント
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
   title: ハイブリッド ID のドキュメント
-  meta.description: 'Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.'
+  description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。
   services: active-directory
   author: billmath
   manager: daveba
@@ -18,7 +18,7 @@ abstract:
   description: Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。</br></br></br>Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
   aside:
     image:
-      alt: null
+      alt: Channel 9 のビデオ
       height: 110
       src: media/index/video2.png
       width: 250
@@ -36,16 +36,19 @@ sections:
           - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
             html: <p>パスワード ハッシュ同期を使用してクラウドへの ID の拡張を開始する方法について説明します</p>
             image:
+              alt: パスワード ハッシュの同期
               src: media/index/azuread2.png
             title: パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
           - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
             html: <p>パススルー認証を使用してクラウドへの ID の拡張を開始する方法について説明します。</p>
             image:
+              alt: パススルー認証
               src: media/index/manage2.png
             title: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
           - href: /azure/active-directory/hybrid/tutorial-federation
             html: <p>オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD を使用して Azure Active Directory (Azure AD) Connect を統合する方法を説明します。</p>
             image:
+              alt: フェデレーション
               src: media/index/federate2.png
             title: フェデレーションを使用して単一 AD フォレストを統合する
   - title: ハウツー ガイド

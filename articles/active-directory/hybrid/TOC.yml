@@ -186,7 +186,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: Azure ADSync のサービス アカウント パスワードの変更
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: Azure AD コネクタ アカウントの変更
+        - name: Azure AD コネクタ アカウント パスワードの変更
           href: how-to-connect-azureadaccount.md
         - name: AD DS コネクタ アカウントのパスワードの変更
           href: how-to-connect-sync-change-addsacct-pass.md

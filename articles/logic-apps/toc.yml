@@ -61,6 +61,8 @@
           href: logic-apps-scenario-function-sb-trigger.md
         - name: ロジック アプリを呼び出し、トリガーし、入れ子にする
           href: logic-apps-http-endpoint.md
+        - name: 改ページによる一括データの取得
+          href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: メッセージをバッチ処理する
           href: logic-apps-batch-process-send-receive-messages.md
         - name: JSON 定義の作成
@@ -103,11 +105,8 @@
           href: logic-apps-enterprise-integration-b2b.md
         - name: AS2 メッセージの交換
           href: logic-apps-enterprise-integration-as2.md
-          items:
-            - name: AS2 のエンコード
-              href: logic-apps-enterprise-integration-as2-encode.md
-            - name: AS2 のデコード
-              href: logic-apps-enterprise-integration-as2-decode.md
+        - name: AS2 メッセージの設定
+          href: logic-apps-enterprise-integration-as2-message-settings.md
         - name: EDIFACT メッセージの交換
           href: logic-apps-enterprise-integration-edifact.md
           items:

@@ -7,10 +7,15 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: AKS クラスターの作成 - CLI
-      href: kubernetes-walkthrough.md
-    - name: AKS クラスターの作成 - ポータル
-      href: kubernetes-walkthrough-portal.md
+    - name: AKS クラスターの作成
+      expanded: true
+      items:
+        - name: Azure CLI の使用
+          href: kubernetes-walkthrough.md
+        - name: Azure ポータルの使用
+          href: kubernetes-walkthrough-portal.md
+        - name: Resource Manager テンプレートを使用する
+          href: kubernetes-walkthrough-rm-template.md
     - name: アプリケーションを開発する
       expanded: true
       items:
@@ -87,7 +92,7 @@
             - name: ポッドのセキュリティ
               href: developer-best-practices-pod-security.md
     - name: クォータと地域の制限
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: ACS から AKS への移行
       href: acs-aks-migration.md
     - name: サポートされている Kubernetes バージョン

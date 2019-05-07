@@ -228,6 +228,8 @@
           href: custom-translator/how-to-manage-settings.md
         - name: Hub からの移行
           href: custom-translator/how-to-migrate.md
+        - name: サポートされていない言語のデプロイ
+          href: custom-translator/unsupported-language-deployments.md
     - name: リソース
       items:
         - name: 言語のサポート

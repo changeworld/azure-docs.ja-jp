@@ -152,6 +152,8 @@
         - name: vCPU のクォータ
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: スケール セットの FAQ
+      href: virtual-machine-scale-sets-faq.md
 - name: 方法
   items:
     - name: 計画と設計
@@ -183,6 +185,9 @@
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: 高度な自動スケール
               href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: 自動スケールのトラブルシューティング
+              href: virtual-machine-scale-sets-troubleshoot.md
         - name: スケール セット上のアプリケーション
           href: virtual-machine-scale-sets-deploy-app.md
         - name: スケール セット上の拡張機能
@@ -199,6 +204,9 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Azure CLI の使用
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: 拡張機能のシーケンス処理によるディスク暗号化
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
         - name: 大規模なスケール セットを処理する
           href: virtual-machine-scale-sets-placement-groups.md
         - name: スケール セット テンプレートを変換してマネージド ディスクを使用する
@@ -247,14 +255,6 @@
         - name: スケール セットの自動スケーリングを行う
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-    - name: トラブルシューティング
-      items:
-        - name: 自動スケール
-          href: virtual-machine-scale-sets-troubleshoot.md
-    - name: FAQ
-      items:
-        - name: スケール セットの FAQ
-          href: virtual-machine-scale-sets-faq.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

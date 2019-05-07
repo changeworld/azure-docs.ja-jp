@@ -113,6 +113,8 @@
           href: howto-personalize-dashboard.md
         - name: ユーザー設定の管理
           href: howto-manage-preferences.md
+        - name: ライブ チャットの切り替え
+          href: howto-show-hide-chat.md
 - name: 関連項目
   items:
     - name: 解決方法

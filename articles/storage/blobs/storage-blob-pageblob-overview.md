@@ -2,18 +2,19 @@
 title: Azure ページ BLOB の概要 |Microsoft Docs
 description: サンプル スクリプトでのユース ケースを含む、Azure ページ BLOB とその利点の概要。
 services: storage
-author: anasouma
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: wielriac
+ms.author: tamram
+ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c0d5108ee235be74f6188bfc8b590069a4e790b5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456212"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192635"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -42,7 +43,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>指定したサイズの空のページ BLOB を作成する
-ページ BLOB を作成するには、まず、次の例で示すように、**StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount*) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、**CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー (*testvhds*) の作成を示しています。 次に、**CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、**CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
+ページ BLOB を作成するには、まず、次の例で示すように、**StorageCredentialsAccountAndKey** オブジェクトと共に **CloudBlobClient** オブジェクトを作成します (ストレージ アカウント (図 1 の *pbaccount*) の BLOB ストレージにアクセスするためのベース URI を使用します)。 この例では、**CloudBlobContainer** オブジェクトへの参照の作成と、まだ存在していない場合のコンテナー (*testvhds*) の作成を示しています。 次に、**CloudBlobContainer** オブジェクトを使用して、アクセスするページ BLOB の名前 (os4.vhd) を指定することで、**CloudPageBlob** オブジェクトへの参照を作成します。 ページ BLOB を作成するには、[CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) を呼び出し、作成する BLOB の最大サイズを渡します。 *blobSize* は 512 バイトの倍数にする必要があります。
 
 ```csharp
 using Microsoft.WindowsAzure.StorageClient;
@@ -65,13 +66,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
 #### <a name="resizing-a-page-blob"></a>ページ BLOB のサイズを変更する
-ページ BLOB のサイズを作成後に変更するには、[Resize](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) API を使用します。 要求するサイズは 512 バイトの倍数でなければなりません。
+ページ BLOB のサイズを作成後に変更するには、[Resize](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) API を使用します。 要求するサイズは 512 バイトの倍数でなければなりません。
 ```csharp
 pageBlob.Resize(32 * OneGigabyteAsBytes); 
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>ページ BLOB にページを書き込む
-ページを書き込むには、[CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) メソッドを使用します。  これにより、最大 4MB の連続した一連のページを書き込むことができます。 書き込み先のオフセットは、512 バイト境界で開始し (startingOffset %512 = = 0)、512 境界 - 1 で終了する必要があります。  次のコード例は、BLOB の **WritePages** を呼び出す方法を示しています。
+ページを書き込むには、[CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) メソッドを使用します。  これにより、最大 4MB の連続した一連のページを書き込むことができます。 書き込み先のオフセットは、512 バイト境界で開始し (startingOffset %512 = = 0)、512 境界 - 1 で終了する必要があります。  次のコード例は、BLOB の **WritePages** を呼び出す方法を示しています。
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -87,7 +88,7 @@ pageBlob.WritePages(dataStream, startingOffset);
 2.  長さ 1024 のオフセット 4096 で開始する書き込み操作 
 
 #### <a name="reading-pages-from-a-page-blob"></a>ページ BLOB からページを読み取る
-ページを読み取るには、[CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) メソッドを使用して、ページ BLOB から特定の範囲のバイトを読み取ります。 これにより、BLOB 全体、または BLOB 内の任意のオフセットから始まるバイトの範囲をダウンロードすることができます。 読み取りの際は、オフセットが 512 の倍数で開始する必要はありません。 NUL ページからバイトを読み取ると、サービスが 0 バイトを返します。
+ページを読み取るには、[CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) メソッドを使用して、ページ BLOB から特定の範囲のバイトを読み取ります。 これにより、BLOB 全体、または BLOB 内の任意のオフセットから始まるバイトの範囲をダウンロードすることができます。 読み取りの際は、オフセットが 512 の倍数で開始する必要はありません。 NUL ページからバイトを読み取ると、サービスが 0 バイトを返します。
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
@@ -96,7 +97,7 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-データがほとんど設定されていない BLOB がある場合は、0 バイトの送信に対する支払いを回避したり、ダウンロードの待機時間を短縮したりするために、有効なページ領域だけをダウンロードすることもできます。  データによって提供されるページを確認するには、[CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet) を使用します。 その後、返される範囲を列挙し、各範囲内のデータをダウンロードできます。 
+データがほとんど設定されていない BLOB がある場合は、0 バイトの送信に対する支払いを回避したり、ダウンロードの待機時間を短縮したりするために、有効なページ領域だけをダウンロードすることもできます。  データによって提供されるページを確認するには、[CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet) を使用します。 その後、返される範囲を列挙し、各範囲内のデータをダウンロードできます。 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
 

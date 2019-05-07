@@ -4,6 +4,8 @@
       href: index.yml
     - name: クイック スタート
       items:
+        - name: チーム開発
+          href: quickstart-team-development.md
         - name: Java (VS Code と CLI)
           href: quickstart-java.md
         - name: .NET Core (VS Code と CLI)

@@ -133,26 +133,22 @@
       items:
         - name: 産業用 IoT とは
           href: overview-iot-industrial.md
-        - name: OPC Twin
-          items:
-            - name: OPC Twin とは
-              href: overview-opc-twin.md
-            - name: OPC Twin アーキテクチャ
-              href: overview-opc-twin-architecture.md
-        - name: OPC Vault
-          items:
-            - name: OPC Vault とは
-              href: overview-opc-vault.md
-        - name: 接続済みファクトリ
-          items:
-            - name: コネクテッド ファクトリの概要
-              href: iot-accelerators-connected-factory-features.md
-            - name: コネクテッド ファクトリのアーキテクチャ
-              href: iot-accelerators-connected-factory-sample-walkthrough.md
+        - name: OPC Twin とは
+          href: overview-opc-twin.md
+        - name: OPC Vault とは
+          href: overview-opc-vault.md
+        - name: コネクテッド ファクトリとは
+          href: iot-accelerators-connected-factory-features.md
     - name: クイック スタート
       items:
         - name: コネクテッド ファクトリ ソリューションを試す
           href: quickstart-connected-factory-deploy.md
+    - name: 概念
+      items:
+        - name: OPC Twin アーキテクチャ
+          href: overview-opc-twin-architecture.md
+        - name: コネクテッド ファクトリのアーキテクチャ
+          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: ハウツー ガイド
       items:
         - name: 接続済みファクトリ

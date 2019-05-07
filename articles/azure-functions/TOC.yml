@@ -19,6 +19,8 @@
       href: functions-create-first-java-maven.md
     - name: 関数の作成 - Python
       href: functions-create-first-function-python.md
+    - name: 関数の作成 - PowerShell
+      href: functions-create-first-function-powershell.md
     - name: 関数の作成 - Azure CLI
       href: functions-create-first-azure-function-azure-cli.md
     - name: 関数の作成 - ポータル
@@ -39,7 +41,9 @@
       items:
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-        - name: Storage
+        - name: ストレージ - Python
+          href: functions-add-output-binding-storage-queue-python.md
+        - name: ストレージ - ポータル
           href: functions-integrate-storage-queue-output-binding.md
 - name: チュートリアル
   items:
@@ -100,6 +104,8 @@
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
+        - name: PowerShell
+          href: functions-reference-powershell.md
         - name: Python
           href: functions-reference-python.md
     - name: 診断
@@ -134,6 +140,8 @@
           href: functions-create-maven-eclipse.md
         - name: Linux の関数アプリを作成する
           href: create-function-app-linux-app-service-plan.md
+        - name: ローカルの PowerShell 関数をデバッグする
+          href: functions-debug-powershell-local.md
         - name: 接続の管理
           href: manage-connections.md
         - name: エラー処理
@@ -148,6 +156,8 @@
       items:
         - name: 継続的なデプロイ
           href: functions-continuous-deployment.md
+        - name: Azure Pipelines を使用してビルドおよびデプロイする
+          href: functions-how-to-azure-devops.md
         - name: ZIP 展開
           href: deployment-zip-push.md
         - name: パッケージから実行

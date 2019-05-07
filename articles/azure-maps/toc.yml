@@ -42,7 +42,7 @@
           href: render-coverage.md
         - name: ルーティングの対象範囲
           href: routing-coverage.md
-    - name: サポートされている言語
+    - name: ローカライズ サポート
       href: supported-languages.md
     - name: サポートされているマップ スタイル
       href: supported-map-styles.md
@@ -74,11 +74,11 @@
       items:
         - name: マップ コントロール
           items:
-            - name: マップ コントロールを使用する
+            - name: Web マップ コントロールの概要
               href: how-to-use-map-control.md
             - name: マップを作成する
               href: map-create.md
-            - name: マップ スタイルを選択する
+            - name: マップのスタイルを変更する
               href: choose-map-style.md
             - name: マップにコントロールを追加する
               href: map-add-controls.md
@@ -120,8 +120,14 @@
               href: map-route.md
     - name: Android SDK を使った開発
       items:
-        - name: Android マップ コントロールの使用方法
+        - name: Android マップ コントロールの概要
           href: how-to-use-android-map-control-library.md
+        - name: シンボル レイヤーを追加する
+          href: how-to-add-symbol-to-android-map.md
+        - name: 図形を追加する
+          href: how-to-add-shapes-to-android-map.md
+        - name: マップのスタイルを変更する
+          href: set-android-map-styles.md
 - name: リファレンス
   items:
     - name: API とパラメーターの拡張子

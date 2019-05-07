@@ -60,16 +60,22 @@
     - name: データ取り込みの概要
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
-    - name: 時系列分析
-      href: time-series-analysis.md
 - name: ハウツー ガイド
   items:
     - name: 作業の開始
       items:
-        - name: クエリを作成する
-          href: write-queries.md
         - name: サンプル データを取り込む
           href: ingest-sample-data.md
+    - name: データのクエリを実行する
+      items:
+        - name: クエリを作成する
+          href: write-queries.md
+        - name: 時系列分析
+          href: time-series-analysis.md
+        - name: 異常検出と予測
+          href: anomaly-detection.md
+        - name: 機械学習
+          href: machine-learning-clustering.md
     - name: 管理
       items:
         - name: データベースのアクセス許可を管理する
@@ -90,6 +96,8 @@
           href: using-metrics.md
     - name: その他のツールを操作する
       items:
+        - name: Apache Spark コネクタ
+          href: spark-connector.md
         - name: Python を使用して Databricks から接続する
           href: connect-from-databricks.md
         - name: Jupyter Notebook と Kqlmagic でデータを分析する

@@ -143,17 +143,6 @@
             - name: インデックス作成ポリシー
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: Change Feed
-          items:
-            - name: 概要
-              href: change-feed.md
-            - name: 変更フィードの読み取り
-              href: read-change-feed.md
-            - name: 変更フィード プロセッサ
-              href: change-feed-processor.md
-            - name: Azure Functions をトリガーする
-              displayName: change feed
-              href: change-feed-functions.md
         - name: Time to Live
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -498,6 +487,9 @@
           href: data-explorer.md
         - name: インデックス作成ポリシーの管理
           href: how-to-manage-indexing-policy.md
+        - name: SQL サブクエリの例
+          displayName: 'subquery, exists'
+          href: how-to-sql-subquery.md
     - name: 変更フィード
       items:
         - name: 複数の Azure Cosmos DB トリガー

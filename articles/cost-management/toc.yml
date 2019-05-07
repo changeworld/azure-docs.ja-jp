@@ -34,6 +34,10 @@
           href: assign-access-acm-data.md
         - name: コストのアラートの使用
           href: cost-mgt-alerts-monitor-usage-spending.md
+        - name: AWS 統合の設定と構成
+          href: aws-integration-set-up-configure.md
+        - name: AWS のコストと使用量の管理
+          href: aws-integration-manage.md
     - name: リファレンス
       items:
         - name: Azure Cost Management REST API

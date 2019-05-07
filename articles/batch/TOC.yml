@@ -49,6 +49,8 @@
       href: batch-pool-vm-sizes.md
     - name: 高可用性と障害復旧
       href: high-availability-disaster-recovery.md
+    - name: タスク ランタイム環境変数
+      href: batch-compute-node-environment-variables.md
 - name: ハウツー ガイド
   items:
     - name: Batch アカウントの管理
@@ -199,8 +201,6 @@
           href: batch-task-complete-event.md
         - name: タスク失敗イベント
           href: batch-task-fail-event.md
-    - name: Batch コンピューティング ノードの環境変数
-      href: batch-compute-node-environment-variables.md
 - name: リソース
   items:
     - name: Azure のロードマップ

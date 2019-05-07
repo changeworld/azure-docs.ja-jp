@@ -40,10 +40,10 @@
       href: best-practices.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
-    - name: Exchange Online と SharePoint Online へのアクセスを制御する
-      href: conditional-access-for-exo-and-spo.md
     - name: クラシック ポリシーを移行する
       href: policy-migration.md
+    - name: サインインの頻度とブラウザーの永続性の制御
+      href: howto-conditional-access-session-lifetime.md
     - name: 承認済みクライアント アプリを必須にする
       href: app-based-conditional-access.md
     - name: アプリの保護ポリシーを必須にする

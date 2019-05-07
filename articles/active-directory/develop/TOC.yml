@@ -14,20 +14,14 @@
         - name: アプリケーションの構成
           items:
             - name: アプリを登録します
-              href: quickstart-v1-add-azure-ad-app.md
-            - name: アプリの更新
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: アプリの削除
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: アプリの登録 (プレビュー)
               href: quickstart-register-app.md
-            - name: アプリに Web API に対するアクセスを構成する (プレビュー)
+            - name: Web API にアクセスするためにアプリを構成する
               href: quickstart-configure-app-access-web-apis.md
-            - name: Web API に対してアプリを公開する (プレビュー)
+            - name: Web API を公開するためにアプリを構成する
               href: quickstart-configure-app-expose-web-apis.md
-            - name: アプリでサポートされるアカウントを変更する (プレビュー)
+            - name: アプリでサポートされるアカウントを変更する
               href: quickstart-modify-supported-accounts.md
-            - name: アプリの削除 (プレビュー)
+            - name: アプリの削除
               href: quickstart-remove-app.md
         - name: シングルページ アプリ
           items:
@@ -243,20 +237,14 @@
         - name: アプリケーションの構成
           items:
             - name: アプリを登録します
-              href: quickstart-v2-register-an-app.md
-            - name: アプリの更新
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: アプリの削除
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: アプリの登録 (プレビュー)
               href: quickstart-register-app.md
-            - name: アプリに Web API に対するアクセスを構成する (プレビュー)
+            - name: Web API にアクセスするためにアプリを構成する
               href: quickstart-configure-app-access-web-apis.md
-            - name: Web API に対してアプリを公開する (プレビュー)
+            - name: Web API を公開するためにアプリを構成する
               href: quickstart-configure-app-expose-web-apis.md
-            - name: アプリでサポートされるアカウントを変更する (プレビュー)
+            - name: アプリでサポートされるアカウントを変更する
               href: quickstart-modify-supported-accounts.md
-            - name: アプリの削除 (プレビュー)
+            - name: アプリの削除
               href: quickstart-remove-app.md
         - name: シングルページ アプリ
           items:
@@ -350,6 +338,8 @@
               href: active-directory-certificate-credentials.md
         - name: アプリケーションの構成
           items:
+            - name: アプリの登録トレーニング ガイド
+              href: app-registrations-training-guide.md
             - name: アプリケーションとサービス プリンシパル
               href: app-objects-and-service-principals.md
             - name: 単一テナント アプリとマルチテナント アプリ

@@ -2,18 +2,19 @@
 title: Azure Storage の監視、診断、およびトラブルシューティング | Microsoft Docs
 description: ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使って、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: fhryo-msft
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351917"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192166"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -425,7 +426,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 **PercentThrottlingError** の増加は、多くの場合、ストレージ要求数が増加するのと同時に、またはアプリケーションの最初のロード テストのときに生じます。 また、ストレージ操作により、「503 サーバーはビジー状態」または「500 操作タイムアウト」HTTP ステータス メッセージがクライアントで示されることもあります。
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError の一時的増加
-アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合は、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装します。 バックオフの再試行により、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化しやすくなります。 ストレージ クライアント ライブラリを使って再試行ポリシーを実装する方法について詳しくは、「[Microsoft.WindowsAzure.Storage.RetryPolicies 名前空間](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx)」をご覧ください。
+アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合は、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装します。 バックオフの再試行により、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化しやすくなります。 ストレージ クライアント ライブラリを使って再試行ポリシーを実装する方法について詳しくは、「[Microsoft.WindowsAzure.Storage.RetryPolicies 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy)」をご覧ください。
 
 > [!NOTE]
 > アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
@@ -560,7 +561,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 以下の表に、ストレージ ログのログ ファイルのサーバー側ログ メッセージの例を示します。
 
-| 名前 | 値 |
+| Name | 値 |
 | --- | --- |
 | 要求の開始時刻 | 2014-05-30T06:17:48.4473697Z |
 | 操作の種類     | GetBlobProperties            |

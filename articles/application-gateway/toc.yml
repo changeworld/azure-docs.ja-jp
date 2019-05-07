@@ -45,6 +45,8 @@
           href: application-gateway-components.md
         - name: 構成の概要
           href: configuration-overview.md
+    - name: 自動スケーリング v2 SKU
+      href: application-gateway-autoscaling-zone-redundant.md
     - name: ルーティング
       items:
         - name: 複数サイトのホスティング
@@ -77,8 +79,6 @@
           href: application-gateway-probe-overview.md
         - name: 診断
           href: application-gateway-diagnostics.md
-    - name: 自動スケールとゾーン冗長性
-      href: application-gateway-autoscaling-zone-redundant.md
     - name: App Service Web アプリとマルチテナントのサポート
       href: application-gateway-web-app-overview.md
     - name: WebSocket のサポート
@@ -183,6 +183,8 @@
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
+        - name: HTTP ヘッダーを作成して書き換える
+          href: tutorial-http-header-rewrite-powershell.md
     - name: App Service Web アプリとマルチテナント サービスを構成する
       items:
         - name: ポータル
