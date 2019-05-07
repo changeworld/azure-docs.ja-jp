@@ -63,6 +63,7 @@ sections:
           - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Web App for Containers でマルチコンテナー アプリを作成する</a>
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Azure Container Registry タスクを使用してコンテナー イメージをビルドしてデプロイする</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナーをビルドして Azure Container Instances にデプロイする</a>
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Azure Red Hat OpenShift クラスターを作成する</a>
   - title: Microsoft Learn でスキルを身に付ける
     items:
       - type: list

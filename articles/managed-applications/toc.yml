@@ -17,6 +17,8 @@
       href: publish-service-catalog-app.md
     - name: マーケットプレース アプリケーションの発行
       href: publish-marketplace-app.md
+    - name: カスタム リソース プロバイダーの作成
+      href: create-custom-provider.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -25,6 +27,10 @@
       href: powershell-samples.md
     - name: マネージド アプリケーション ソリューション
       href: sample-projects.md
+- name: 概念
+  items:
+    - name: カスタム プロバイダー
+      href: custom-providers-overview.md
 - name: ハウツー ガイド
   items:
     - name: 発行元

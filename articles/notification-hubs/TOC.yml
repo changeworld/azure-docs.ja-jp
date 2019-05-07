@@ -4,6 +4,8 @@
   items:
     - name: Notification Hubs について
       href: notification-hubs-push-notification-overview.md
+    - name: App Service Mobile Apps との統合
+      href: notification-hubs-app-service.md
 - name: クイック スタート
   items:
     - name: 通知ハブの作成 - Azure portal

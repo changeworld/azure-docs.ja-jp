@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 1109e44ed9c6aa8a0f7305b8a50410316711589c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108510"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204259"
 ---
-# <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple デバイスの Web プロキシを構成する
+# <a name="configure-web-proxy-for-your-storsimple-device"></a> StorSimple デバイスの Web プロキシを構成する
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 このチュートリアルでは、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの Web プロキシ設定を構成および表示する方法について説明します。 Web プロキシ設定は、クラウドと通信するときに StorSimple デバイスで使用されます。 Web プロキシ サーバーは、別のセキュリティ レイヤーの追加、コンテンツのフィルター処理、キャッシュによる帯域幅要件の緩和、分析の補助に使用されます。
 
@@ -68,7 +68,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     既定では、TCP ポート番号 8080 が指定されています。
-4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。 [Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。 [NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。 既定の認証は NTLM です。 詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。 
+4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。 [Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。 [NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。 既定の認証は NTLM です。 詳細については、[基本認証](https://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](https://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。 
    
    > [!IMPORTANT]
    > **StorSimple デバイス マネージャー サービスのデバイス監視チャートは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっていると正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
@@ -153,7 +153,7 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 > * 上記のエラー メッセージの一覧ですべてを網羅しているわけではありません。
 > * Web プロキシの設定に関連するエラーは、StorSimple デバイス マネージャー サービスの Azure ポータルには表示されません。 構成が完了した後で Web プロキシに問題がある場合、クラシック ポータルではデバイスの状態が **"オフライン"** になります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、 [StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
 * StorSimple デバイス マネージャー サービスを使用する方法については、「[StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)」を参照してください。
 

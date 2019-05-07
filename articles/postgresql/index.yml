@@ -9,9 +9,9 @@ metadata:
   ms.author: raagyema
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 02/25/2019
+  ms.date: 04/26/2019
 abstract:
-  description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンス、セキュリティ、高可用性、動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。  Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。  Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for PostgreSQL の使用方法を確認してください。
+  description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンス、セキュリティ、高可用性、動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Single Server と Hyperscale (Citus) (プレビュー) の 2 つのデプロイ オプションを使用できます。 Hyperscale (Citus) オプションでは、シャーディングを使用して複数のマシンにわたってクエリを水平方向にスケーリングし、スケールとパフォーマンスの向上を必要とするアプリケーションをサポートします。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for PostgreSQL の使用方法を確認してください。
 sections:
   - title: 5 分間のクイック スタート
     items:
@@ -22,22 +22,33 @@ sections:
         items:
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
+            text: Single Server (Azure portal)
             href: /azure/postgresql/quickstart-create-server-database-portal
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Azure CLI
+            text: Single Server (Azure CLI)
             href: /azure/postgresql/quickstart-create-server-database-azure-cli
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
+            text: Hyperscale (Citus) (Azure portal)
+            href: /azure/postgresql/quickstart-create-hyperscale-portal
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
-        text: 以下の項目について説明します。
+        text: 'Single Server の場合:'
       - type: list
         style: ordered
         items:
           - html: 'データベースを設計する&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
           - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Python と CLI を使用して Web アプリを構築する</a>
           - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">サービスを監視して調整する</a>
+      - type: paragraph
+        text: 'Hyperscale (Citus) (プレビュー) の場合:'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">マルチテナント データベースを設計する</a>
+          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">リアルタイム データベースを設計する</a>
   - title: Microsoft Learn でスキルを身に付ける
     items:
       - type: list

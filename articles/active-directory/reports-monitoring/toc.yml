@@ -15,7 +15,7 @@
           href: quickstart-download-sign-in-report.md
         - name: 監査レポートのダウンロード
           href: quickstart-download-audit-report.md
-        - name: 名前付きの場所の構成
+        - name: ネームド ロケーションの構成
           href: quickstart-configure-named-locations.md
         - name: Power BI コンテンツ パックのインストール
           href: quickstart-install-power-bi-content-pack.md

@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Red Hat OpenShift サービス
+metadata:
+  document_id: null
+  title: Azure Red Hat OpenShift サービスのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
+  services: container-service
+  author: tylermsft
+  manager: jeconnoc
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05-06-2019
+  ms.author: twhitney
+abstract:
+  description: Azure Red Hat OpenShift では、Red Hat と Microsoft によってサポートされる、Azure 上のシングルテナントの高可用性 Kubernetes クラスターを提供します。
+sections:
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Red Hat OpenShift クラスターを作成および管理する方法について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Azure Red Hat OpenShift クラスターを作成する</a>
+          - html: <a href="/azure/openshift/tutorial-scale-cluster">Azure Red Hat OpenShift クラスターをスケーリングする</a>
+          - html: <a href="/azure/openshift/tutorial-delete-cluster">Azure Red Hat OpenShift クラスターを削除する</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/openshift">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/openshift">REST API</a></p>
+          - title: Red Hat のドキュメント
+            html: '<p><a href="https://access.redhat.com/documentation/openshift_dedicated/3/">Red Hat OpenShift のドキュメント</a></p>'

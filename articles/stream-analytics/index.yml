@@ -12,7 +12,7 @@ metadata:
   ms.date: 12/06/2018
   ms.custom: seodec18
 abstract:
-  description: フル マネージドのイベント処理エンジンである Stream Analytics を使用してクラウド内で IoT (モノのインターネット) 分析を実行する方法について説明します。 チュートリアルなどのドキュメントでは、アプリケーション、センサー、デバイス、ソーシャル メディアなどからリアルタイムでデータを分析する方法を紹介します。
+  description: Stream Analytics は、アプリケーションおよび IoT デバイスからのデータ ストリームをリアルタイムで分析できるフル マネージドのサーバーレス イベント処理エンジンです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
   aside:
     image:
       alt: null

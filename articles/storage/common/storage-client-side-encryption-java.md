@@ -2,19 +2,20 @@
 title: Java による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Docs
 description: Java 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 058dc97054aad310135ccc1f51d765f0af3f571b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992452"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147023"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -118,7 +119,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 1. シークレットをオフラインで作成し、Key Vault にアップロードします。  
 2. シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。 キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。  
 3. 暗号化ポリシーの作成時に、入力としてキャッシュ リゾルバーを使用します。
-   Key Vault の使用方法について詳しくは、暗号化コードのサンプルを参照してください。 <fix URL>  
+   Key Vault の使用方法について詳しくは、暗号化コードのサンプルを参照してください。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 暗号化のサポートは、Java 用のストレージ クライアント ライブラリでのみ使用できます。
@@ -142,7 +143,7 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
   * キーを取得するよう指定した場合にキー リゾルバーが起動します。 リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。  
   * リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。 識別子が一致しなければ、エラーがスローされます。  
     
-    BLOB、キュー、テーブルや、Key Vault 統合の詳しいエンド ツー エンド シナリオについては、「[暗号化のサンプル](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) <fix URL>」をご覧ください。
+    BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエンド ツー エンド シナリオについては、「 [暗号化のサンプル](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) 」を参照してください。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption モード
 すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。 このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。 要求オプション オブジェクトの **requireEncryption** フラグによって、この動作が制御されます。 Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **requireEncryption** プロパティを設定できます。   

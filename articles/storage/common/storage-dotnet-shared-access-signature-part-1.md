@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001583"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154425"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 
@@ -114,7 +115,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | ストレージ サービスのバージョン |`sv=2015-04-05` |ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。 |
 | 開始時刻 |`st=2015-04-29T22%3A18%3A26Z` |UTC 時間で指定。 SAS をすぐに有効にする場合は、開始時刻を省略します。 |
 | 有効期限 |`se=2015-04-30T02%3A23%3A26Z` |UTC 時間で指定。 |
-| リソース |`sr=b` |リソースは BLOB です。 |
+| Resource |`sr=b` |リソースは BLOB です。 |
 | アクセス許可 |`sp=rw` |SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。 |
 | IP 範囲 |`sip=168.1.5.60-168.1.5.70` |要求が受け入れられる IP アドレスの範囲です。 |
 | Protocol |`spr=https` |HTTPS を使用する要求のみが許可されます。 |

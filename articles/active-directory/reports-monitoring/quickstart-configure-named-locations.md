@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory で名前付きの場所を構成する | Microsoft Docs
-description: 名前付きの場所を構成する方法を説明します。
+title: Azure Active Directory でネームド ロケーションを構成する | Microsoft Docs
+description: ネームド ロケーションを構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -23,13 +23,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58434791"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で名前付きの場所を構成する
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory でネームド ロケーションを構成する
 
-名前付きの場所を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のために名前付きの場所を使用します。
+ネームド ロケーションを使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
 - [リスク イベント](concept-risk-events.md)で誤判定を検出する。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。   
 - [場所ベースの条件付きアクセス](../conditional-access/location-condition.md)を構成する。
 
-このクイック スタートでは、環境内で名前付きの場所を構成する方法について説明します。
+このクイック スタートでは、環境内でネームド ロケーションを構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "58434791"
 * テナントの全体管理者であるユーザー。
 * 組織内で確立され、信頼できる IP の範囲。 IP の範囲は **Classless Inter-Domain Routing (CIDR)** 形式である必要があります。
 
-## <a name="configure-named-locations"></a>名前付きの場所の構成
+## <a name="configure-named-locations"></a>ネームド ロケーションの構成
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -49,11 +49,11 @@ ms.locfileid: "58434791"
 
 3. **[条件付きアクセス]** ページで **[名前付きの場所]** を選択し、**[新しい場所]** を選択します。
 
-    ![名前付きの場所](./media/quickstart-configure-named-locations/namedlocation.png)
+    ![ネームド ロケーション](./media/quickstart-configure-named-locations/namedlocation.png)
 
 6. 新しいページのフォームに入力します。 
 
-   * **[名前]** ボックスに、名前付きの場所の名前を入力します。
+   * **[名前]** ボックスに、ネームド ロケーションの名前を入力します。
    * **[IP 範囲]** ボックスに、IP 範囲を CIDR 形式で入力します。  
    * **Create** をクリックしてください。
     

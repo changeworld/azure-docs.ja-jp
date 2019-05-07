@@ -7,12 +7,13 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 0cbb4d2bc6449dc1cf12a374085b429743224995
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.reviewer: artek
+ms.openlocfilehash: e71e4557b464f6407e510478f737b7aef8823ead
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650242"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150801"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>チュートリアル:読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 

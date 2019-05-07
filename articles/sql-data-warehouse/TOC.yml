@@ -62,7 +62,7 @@
           href: quickstart-scale-compute-tsql.md
     - name: ワークロード管理
       items:
-        - name: ワークロード分類子の作成 (プレビュー)
+        - name: ワークロード分類子の作成
           items:
             - name: T-SQL
               href: quickstart-create-a-workload-classifier-tsql.md
@@ -72,28 +72,48 @@
       items:
         - name: 概要
           href: sql-data-warehouse-overview-manage-security.md
-        - name: アクセス制御
-          href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: ファイアウォール規則
-          href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: 仮想ネットワーク サービス エンドポイント
-          href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Authentication
-          href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Azure AD
-          href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: ログインとユーザー
-          href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: 多要素認証
-          href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Advanced Data Security
+          items:
+            - name: 概要
+              href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: データの検出と分類
+              href: ../sql-database/sql-database-data-discovery-and-classification.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: 脆弱性評価
+              href: ../sql-database/sql-vulnerability-assessment.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: 高度な脅威保護
+              href: ../sql-database/sql-database-threat-detection-overview.md?toc=/azure/sql-data-warehouse/toc.json
         - name: 監査
           href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: データの検出と分類
-          href: 'https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json'
-        - name: 列レベルのセキュリティ
-          href: column-level-security.md
-        - name: 行レベルのセキュリティ
-          href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json'
+        - name: ネットワークのセキュリティ
+          items:
+            - name: ファイアウォール規則
+              href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: 仮想ネットワーク サービス エンドポイント
+              href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Authentication
+          items:
+            - name: 概要
+              href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Azure Active Directory
+              href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: ログインとユーザー
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: 多要素認証
+              href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: アクセス制御
+          items:
+            - name: 概要
+              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: 列レベルのセキュリティ
+              href: column-level-security.md
+            - name: 行レベルのセキュリティ
+              href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json'
+        - name: データ保護
+          items:
+            - name: Transparent Data Encryption (TDE) の概要
+              href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Bring Your Own Key を使用した TDE
+              href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json
     - name: データの読み込み
       items:
         - name: 概要
@@ -158,9 +178,9 @@
       items:
         - name: リソース クラスとワークロード管理
           href: resource-classes-for-workload-management.md
-        - name: ワークロード分類 (プレビュー)
+        - name: ワークロード分類
           href: sql-data-warehouse-workload-classification.md
-        - name: ワークロードの重要度 (プレビュー)
+        - name: ワークロードの重要度
           href: sql-data-warehouse-workload-importance.md
         - name: メモリとコンカレンシーの制限
           href: memory-and-concurrency-limits.md
@@ -204,8 +224,6 @@
           href: sql-data-warehouse-encryption-tde.md
         - name: 暗号化の有効化 - T-SQL
           href: sql-data-warehouse-encryption-tde-tsql.md
-        - name: 脅威の検出
-          href: sql-data-warehouse-security-threat-detection.md
     - name: データを読み込む
       items:
         - name: ニューヨークのタクシー データ

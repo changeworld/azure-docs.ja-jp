@@ -2,18 +2,19 @@
 title: Azure Storage 向けのツール | Microsoft Docs
 description: Azure Storage のデータの表示/操作を可能にするツールの一覧。
 services: storage
-author: dineshmurthy
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 09/06/2017
-ms.author: dineshmurthy
+ms.author: tamram
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: ae6ceee33aa6d96c360782c33232e0c7561cf209
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7debbc760e103046ce9bb1a8bdf25a954d9891c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015322"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138552"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage クライアント ツール
 Azure Storage のユーザーのご要望に多いのが、Azure Storage クライアント ツールを使用したデータの表示や処理についてです。 次の表に、これを実現するツールの一覧を示します。 データ抽象化を列挙できる場合、またはデータ抽象化にアクセスできる場合は、各ブロックに "X" を入力しました。 ツールの有料/無料も記載されています。 "試用版" とは、無料試用版があることを示します。ただし、完全な製品は有料です。 "Y/N" は、バージョンの有料/無料を示します。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 80bf4718b63496c0b220aa79dcdd27f2711b70ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521756"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148098"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -186,7 +186,11 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 ### <a name="set-up-logs-and-diagnostics"></a>ログと診断を設定する
 
-Linux では、IoT Edge デーモンで既定のログ ドライバーとしてジャーナルが使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。 Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-WinEvent` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (既定)。  
+Linux では、IoT Edge デーモンで既定のログ ドライバーとしてジャーナルが使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。 Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-IoTEdgeLog` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (既定)。  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
 
 IoT Edge のデプロイをテストする場合、通常はデバイスにアクセスしてログを取得し、トラブルシューティングを行うことができます。 デプロイ シナリオでは、そのオプションがない場合があります。 運用環境でデバイスに関する情報をどのように収集するかを検討してください。 1 つのオプションとして、他のモジュールから情報を収集し、クラウドに送信するログ モジュールを使用する方法があります。 ログ モジュールの一例として [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics) があります。独自のものを設計することもできます。 
 
