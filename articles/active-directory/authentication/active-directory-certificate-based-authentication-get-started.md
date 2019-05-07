@@ -102,7 +102,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>デバイス ハンドルの
+### <a name="retrieve"></a>取得
 
 ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
 

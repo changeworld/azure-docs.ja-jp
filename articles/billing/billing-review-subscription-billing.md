@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a73462b7fdbaf6386a3051a72da755f31ff8dd2
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890765"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192131"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API を使用してサブスクリプションの課金を確認する
 
@@ -39,7 +39,7 @@ Authorization: Bearer
 
 `{subscriptionID}` パラメーターが必須です。これでターゲット サブスクリプションを指定します。
 
-`{billingPeriod}` パラメーターが必須です。これで現在の[請求期間](https://docs.microsoft.com/rest/api/billing/billingperiods/get#billingperiod)を指定します。
+`{billingPeriod}` パラメーターが必須です。これで現在の[請求期間](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)を指定します。
 
 この例では `${startDate}` パラメーターおよび `${endDate}` パラメーターが必須ですが、エンドポイントでは省略可能です。 日付範囲を文字列として YYYY-MM-DD の形式で指定します (例: `'20180501'` および `'20180615'`)。
 

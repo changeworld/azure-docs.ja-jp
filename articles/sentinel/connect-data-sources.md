@@ -4,7 +4,7 @@ description: Azure Sentinel にデータ ソースを接続する方法をにつ
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: a3b63cfa-b5fe-4aff-b105-b22b424c418a
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ba0f584e8026fe3828ec79c4b6c0ff5a0bb89f5a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b54c4ef1b188896a70cf8b2f9352d0b76874fd50
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492364"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204288"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -59,7 +59,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
-        - [パロ アルト](connect-paloalto.md)
+        - [Palo Alto](connect-paloalto.md)
         - [その他の CEF アプライアンス](connect-common-event-format.md)
         - [その他の Syslog アプライアンス](connect-syslog.md)
     - DLP ソリューション

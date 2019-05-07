@@ -4,7 +4,7 @@ description: Azure Sentinel に Cisco データを接続する方法について
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 62029b5c-29d3-4336-8a22-a9db8214eb7e
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5bc57d448b8aa04b8cb6fb16000205fda8964150
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 965fef42a398180475050a7273a0142a45a32305
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495704"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204419"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Cisco ASA アプライアンスを接続する 
 
@@ -63,16 +63,16 @@ Azure Sentinel はあらゆる Cisco ASA アプライアンスに接続できま
             
             2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
             
-            1. 次の syslog デーモンを再起動します:  `sudo service rsyslog restart`
+            1. syslog デーモン `sudo service rsyslog restart` を再起動します。
              
           - syslog-ng を選択した場合:
 
               1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
               2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
 
-              3. 次の syslog デーモンを再起動します:  `sudo service syslog-ng restart`
-      2. 次のコマンドを使用して、Syslog エージェントを再起動します:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します:  `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+              3. syslog デーモン `sudo service syslog-ng restart` を再起動します。
+      2. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。`tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
 ### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>オンプレミス Linux サーバーにエージェントをデプロイする
 
@@ -89,13 +89,13 @@ Azure を使用していない場合は、専用の Linux サーバーで実行�
            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
             
            2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-           3. 次の syslog デーモンを再起動します:  `sudo service rsyslog restart`
+           3. syslog デーモン `sudo service rsyslog restart` を再起動します。
          - syslog-ng を選択した場合:
             1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
             2. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` ただし、{0} はワークスペース GUID に置き換える必要があります。
-            3. 次の syslog デーモンを再起動します:  `sudo service syslog-ng restart`
-      1. 次のコマンドを使用して、Syslog エージェントを再起動します:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します:  `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+            3. syslog デーモン `sudo service syslog-ng restart` を再起動します。
+      1. 次のコマンドを使用して、Syslog エージェントを再起動します: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。`tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
 ## <a name="step-2-forward-cisco-asa-logs-to-the-syslog-agent"></a>手順 2:Cisco ASA のログを Syslog エージェントに転送する
 
@@ -114,8 +114,8 @@ Syslog のエージェントを介して Azure ワークスペースに Syslog �
 1. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 514 -vv` このコマンドによって、デバイスから Syslog コンピューターにストリーミングされるログが表示されます。 正しいポートと正しい機能でソース アプライアンスからログを受信していることを確認してください。
 2. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します:`tcpdump -A -ni any  port 25226 -vv` このコマンドによって、デバイスから Syslog コンピューターにストリーミングされるログが表示されます。ログがエージェント上でも受信されていることを確認します。
 3. これらの両方のコマンドで正常な結果が表示された場合は、Log Analytics を調べて自分のログが到着しているかどうかを確認してください。 これらのアプライアンスからストリーミングされるすべてのイベントは、Log Analytics で `CommonSecurityLog` 型の下に未加工の形式で表示されます。
-1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、次のファイルを調べます:  `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-4. 自分の Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します:  `message_length_limit 4096`
+1. エラーがあるかどうか、またはログが到着しているかどうかを確認するには、`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log` を調べます。
+4. 自分の Syslog メッセージの既定のサイズが 2048 バイト (2 KB) に制限されていることを確認します。 ログが長すぎる場合は、次のコマンドを使用して security_events.conf を更新します: `message_length_limit 4096`
 6. Log Analytics で Cisco イベントに関連するスキーマを使用するために、**CommonSecurityLog** を検索します。
 
 

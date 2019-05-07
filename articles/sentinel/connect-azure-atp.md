@@ -4,7 +4,7 @@ description: Azure Sentinel に Azure ATP データを接続する方法につ�
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 5bf3cc44-ecda-4c78-8a63-31ab42f43605
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f0d86a62c59df5bebd34137d0903fcaa7014573d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789290"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204269"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを接続する
 

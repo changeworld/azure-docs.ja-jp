@@ -26,11 +26,11 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `Microsoft.Azure.Services.AppAuthentication` ライブラリによって認証が自動的に管理される結果、資格情報ではなくソリューションに重点を置くことができます。
 
-`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発がサポートされます。 マネージド ID をサポートする Azure リソースにデプロイすると、ライブラリでは [Azure リソースのマネージド ID](../active-directory/msi-overview.md) が自動的に使用されます。 コードまたは構成を変更する必要はありません。 管理 ID を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](../azure-resource-manager/resource-group-authenticate-service-principal.md)を直接使用することもサポートします。
+`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発がサポートされます。 マネージド ID をサポートする Azure リソースにデプロイすると、ライブラリでは [Azure リソースのマネージド ID](../active-directory/msi-overview.md) が自動的に使用されます。 コードまたは構成を変更する必要はありません。 マネージド ID を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](../azure-resource-manager/resource-group-authenticate-service-principal.md)を直接使用することもサポートします。
 
 ## <a name="using-the-library"></a>ライブラリの使用
 
-.NET アプリケーションの場合、管理 ID を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
+.NET アプリケーションの場合、マネージド ID を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をアプリケーションに追加します。 
 
@@ -51,17 +51,17 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 このため、`GetAccessTokenAsync` メソッドを呼び出す前に有効期限を確認する必要がなくなります。 トークンが必要になった時点で、いつでもメソッドを呼び出すことができます。 
 
-`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースの管理 ID をサポートしますか](../active-directory/msi-overview.md)」を参照してください。
+`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースのマネージド ID をサポートしますか](../active-directory/msi-overview.md)」を参照してください。
 
 ## <a name="samples"></a>サンプル
 
 次のサンプルは、`Microsoft.Azure.Services.AppAuthentication` ライブラリの動作について示しています。
 
-1. [実行時に管理 ID を使用して Azure Key Vault からシークレットを取得する](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
+1. [実行時にマネージド ID を使用して Azure Key Vault からシークレットを取得する](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
 
-2. [管理 ID を使用して Azure VM から Azure Resource Manager テンプレートをプログラムでデプロイする](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)。
+2. [マネージド ID を使用して Azure VM から Azure Resource Manager テンプレートをプログラムでデプロイする](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)。
 
-3. [.NET Core サンプルと管理 ID を使用して、Azure Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)。
+3. [.NET Core サンプルとマネージド ID を使用して、Azure Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)。
 
 ## <a name="local-development-authentication"></a>ローカル開発用における認証
 
@@ -72,7 +72,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 ### <a name="authenticating-to-azure-services"></a>Azure サービスに対する認証
 
-ローカルコンピューターは Azure リソースの管理 ID をサポートしません。  その結果、`Microsoft.Azure.Services.AppAuthentication` ライブラリは、ローカル開発環境で実行するために開発者の資格情報を使用します。 ソリューションを Azure にデプロイすると、このライブラリは、管理 ID を使用して OAuth 2.0 クライアント資格情報の付与フローに切り替えます。  このため、同じコードをローカルでも、リモートでも、心配せずにテストできます。
+ローカルコンピューターは Azure リソースのマネージド ID をサポートしません。  その結果、`Microsoft.Azure.Services.AppAuthentication` ライブラリは、ローカル開発環境で実行するために開発者の資格情報を使用します。 ソリューションを Azure にデプロイすると、このライブラリは、マネージド ID を使用して OAuth 2.0 クライアント資格情報の付与フローに切り替えます。  このため、同じコードをローカルでも、リモートでも、心配せずにテストできます。
 
 ローカル開発では、`AzureServiceTokenProvider` は、**Visual Studio**、**Azure コマンド ライン インターフェイス** (CLI)、**Azure AD 統合認証**を使用してトークンをフェッチします。 このライブラリは、各オプションを順番に試行し、最初に成功したオプションを使用します。 どのオプションも機能しない場合、詳しい情報と共に `AzureServiceTokenProviderException` 例外がスローされます。
 
@@ -150,7 +150,7 @@ Azure にサインインした後、`AzureServiceTokenProvider` はサービス 
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>マネージド ID またはユーザー割り当て ID を使用してアプリケーションを実行する 
 
-Azure App Service 上または管理 ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的に管理 ID を使用します。 コードに変更を加える必要はありません。 
+Azure App Service 上またはマネージド ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的にマネージド ID を使用します。 コードに変更を加える必要はありません。 
 
 また、ユーザー割り当て ID を使用して認証することもできます。 ユーザー割り当て ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」を参照してください。 接続文字列については、後述する「[接続文字列のサポート](#connection-string-support)」セクションを参照してください。
 
@@ -162,7 +162,7 @@ Azure App Service 上または管理 ID が有効な Azure VM 上でコードを
  
 2. コードはローカル開発環境で実行されるが、開発者自身はカスタム サービスに対して認証を行っているため、自分の開発者 ID は使用できない。 
  
-3. コードが、Azure Batch など、Azure リソースの管理 ID をまだサポートしていない Azure コンピューティング リソース上で実行されている。
+3. コードが、Azure Batch など、Azure リソースのマネージド ID をまだサポートしていない Azure コンピューティング リソース上で実行されている。
 
 Azure AD にサインインするために証明書を使用するには、次のようにします。
 
@@ -210,7 +210,7 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 | `RunAs=Developer; DeveloperTool=AzureCli` | ローカル開発 | AzureServiceTokenProvider は AzureCli を使用してトークンを取得します。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | ローカル開発 | AzureServiceTokenProvider は Visual Studio を使用してトークンを取得します。 |
 | `RunAs=CurrentUser` | ローカル開発 | AzureServiceTokenProvider は Azure AD 統合認証を使用してトークンを取得します。 |
-| `RunAs=App` | [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider は管理 ID を使用してトークンを取得します。 |
+| `RunAs=App` | [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider はマネージド ID を使用してトークンを取得します。 |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure リソースのユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider はユーザー割り当て ID を使用してトークンを取得します。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | サービス プリンシパル | `AzureServiceTokenProvider` は証明書を使用して Azure AD からトークンを取得します。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | サービス プリンシパル | `AzureServiceTokenProvider` は証明書を使用して Azure AD からトークンを取得します|

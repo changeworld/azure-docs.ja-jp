@@ -5,7 +5,7 @@ services: asc-for-iot
 ms.service: ascforiot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 3364ff6bcf824e5f7d925fdb6d0826d5c3c32369
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794594"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65200671"
 ---
 # <a name="security-recommendations"></a>セキュリティに関する推奨事項
 

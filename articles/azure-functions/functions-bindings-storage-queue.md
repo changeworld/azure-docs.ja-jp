@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 8b9cc112f51840a6bf2cf659863f61ab5962f6e6
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 72e51deb31ad2894ccfc0fc71884c99863184f5b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652248"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203656"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -273,7 +273,7 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 ## <a name="trigger---message-metadata"></a>トリガー - メッセージのメタデータ
 
-キュー トリガーは、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) クラスのプロパティです。
+キュー トリガーは、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) クラスのプロパティです。
 
 |プロパティ|Type|説明|
 |--------|----|-----------|
@@ -307,7 +307,7 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 [host.json](functions-host-json.md#queues) ファイルには、キュー トリガーの動作を制御する設定が含まれています。 使用可能な設定の詳細については、「[host.json 設定](#hostjson-settings)」を参照してください。
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 Azure Queue Storage の出力バインドを使用して、キューにメッセージを書き込みます。
 
@@ -526,7 +526,7 @@ C# と C# スクリプトで単一のキュー メッセージを書き込むに
 C# と C# スクリプトで複数のキュー メッセージを書き込むには、次のいずれかの型を使用します。 
 
 * `ICollector<T>` または `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
 JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力キュー メッセージにアクセスします。 キュー項目ペイロードには、文字列または JSON のシリアル化可能なオブジェクトを使用できます。
 
@@ -586,4 +586,4 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
 
 <!-- LINKS -->
 
-[CloudQueueMessage]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+[CloudQueueMessage]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage

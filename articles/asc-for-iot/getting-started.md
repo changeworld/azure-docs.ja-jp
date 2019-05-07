@@ -5,7 +5,7 @@ services: asc-for-iot
 ms.service: ascforiot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 55c8d3b6-3126-4246-8d07-ef88fe5ea84f
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: aac15d766439a725f593ca421cbdc6da496f29f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bdc5e858286d7db03281408cf3ed00e0760e0c3a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862694"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65200643"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Azure Security Center for IoT の使用を開始する 
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124152"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204034"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -409,7 +409,7 @@ public IDictionary<string, string> Execute(
 #### <a name="execute-method"></a>Execute メソッド
 ここでは、Execute メソッドのコードの詳細について説明します。
 
-1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。 BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、[.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。 基本的なループを次に示します。
+1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) 名前空間にあります。 BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、[.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。 基本的なループを次に示します。
 
     ```csharp
     // Initialize the continuation token.
@@ -432,7 +432,7 @@ public IDictionary<string, string> Execute(
     } while (continuationToken != null);
 
     ```
-   詳細については、[ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) メソッドのドキュメントを参照してください。
+   詳細については、[ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) メソッドのドキュメントを参照してください。
 
 1. 論理的には、BLOB セットを操作するコードを do-while ループ内に配置します。 **Execute** メソッドの場合、do-while ループは BLOB の一覧を **Calculate** というメソッドに渡します。 Calculate メソッドは、セグメント内のすべての BLOB を反復処理した結果である **output** という文字列変数を返します。
 

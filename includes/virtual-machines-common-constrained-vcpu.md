@@ -1,4 +1,4 @@
-﻿---
+---
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eaf490979167ea5cbfe5846e62444526310452f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 360674514aff79908dcab8c8b93095ca2feb5d51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269546"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199231"
 ---
-SQL Server や Oracle などの一部のデータベース ワークロードでは、メモリ、記憶域、I/O 帯域幅は大量に必要ですが、コアの数は多くなくてもかまいません。 多くのデータベース ワークロードは、CPU 集中型ではありません。 Azure で提供される一部の VM サイズでは、VM の vCPU の数を制限してソフトウェア ライセンスのコストを抑えながら、同じメモリ、記憶域、I/O 帯域幅を維持できます。
+SQL Server や Oracle などの一部のデータベース ワークロードでは、メモリ、記憶域、I/O 帯域幅は大量に必要ですが、コアの数は多くなくてもかまいません。 多くのデータベース ワークロードは、CPU 集中型ではありません。 Azure で提供される一部の VM サイズでは、VM の vCPU の数を制限してフトウェア ライセンスのコストを抑えながら、同じメモリ、記憶域、I/O 帯域幅を維持できます。
 
 vCPU の数を、元の VM サイズの半分または 4 分の 1 に制限することができます。 これらの新しい VM サイズでは、識別しやすいように、アクティブな vCPU の数を指定するサフィックスが付加されています。
 
@@ -41,7 +41,7 @@ SQL Server または Oracle のライセンス料金は新しい vCPU の数に�
 | Standard_E8-2s_v3   | 2    | E8s_v3 と同じ  |
 | Standard_E16-8s_v3  | 8    | E16s_v3 と同じ |
 | Standard_E16-4s_v3  | 4    | E16s_v3 と同じ |
-| Standard_E32-16_v3  | 16   | E32s_v3 と同じ |
+| Standard_E32-16s_v3 | 16   | E32s_v3 と同じ |
 | Standard_E32-8s_v3  | 8    | E32s_v3 と同じ |
 | Standard_E64-32s_v3 | 32   | E64s_v3 と同じ |
 | Standard_E64-16s_v3 | 16   | E64s_v3 と同じ |

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216579"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202924"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
 このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) し、それを App Service アプリにバインドすることによって、[App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)をセキュリティで保護する方法を示します。
 
 > [!TIP]
-> App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳しくは、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)に関する記事をご覧ください。
+> App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳しくは、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/)に関する記事をご覧ください。
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -47,9 +47,9 @@ ms.locfileid: "57216579"
 
 次の表を使用して、証明書を構成できます。 完了したら、**[作成]** をクリックします。
 
-| 設定 | 説明 |
+| Setting | 説明 |
 |-|-|
-| 名前 | App Service 証明書のフレンドリ名。 |
+| Name | App Service 証明書のフレンドリ名。 |
 | ネイキッド ドメインのホスト名 | ここでルート ドメインを指定する場合は、ルート ドメインと `www` サブドメインの*両方*をセキュリティで保護する証明書を取得します。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。 |
 | サブスクリプション | Web アプリがホストされているデータ センターです。 |
 | リソース グループ | 証明書が含まれるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
@@ -68,11 +68,11 @@ ms.locfileid: "57216579"
 
 **[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 同じサブスクリプションおよびリソース グループ内に新しい Key Vault を作成します。
 
-| 設定 | 説明 |
+| Setting | 説明 |
 |-|-|
-| 名前 | 英数字とダッシュで構成される一意の名前。 |
+| Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| 場所 | App Service アプリと同じ場所を選択します。 |
+| Location | App Service アプリと同じ場所を選択します。 |
 | 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
@@ -111,7 +111,7 @@ ms.locfileid: "57216579"
 
 次の表を使用して、**[SSL バインディング]** ダイアログでバインディングを構成してから、**[バインディングの追加]** をクリックします。
 
-| 設定 | 説明 |
+| Setting | 説明 |
 |-|-|
 | ホスト名 | SSL バインディングを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |

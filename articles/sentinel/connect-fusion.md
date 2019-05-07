@@ -4,7 +4,7 @@ description: Azure Sentinel で Fusion を有効にする方法について説�
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 82becf50-6628-47e4-b3d7-18d7d72d505f
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 55d569d4a993a725137d7bfab37c113147fe81ef
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bf9a78006d13614a73a3fccfc57f28ce850456d9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242464"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204469"
 ---
 # <a name="enable-fusion"></a>Fusion の有効化
 
@@ -59,6 +59,6 @@ Fusion は、グラフ駆動型の機械学習アルゴリズムを使用して�
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Azure Sentinel で Fusion を有効にする方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法を確認する。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)を開始する。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
 

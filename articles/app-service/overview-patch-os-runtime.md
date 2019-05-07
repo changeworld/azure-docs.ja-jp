@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730554"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203329"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -37,7 +37,7 @@ App Service はサービスとしてのプラットフォームです。これ�
 
 Azure では、2 つのレベルで OS のパッチ適用が管理されます。1 つが物理サーバーで、もう 1 つが App Service リソースを実行するゲスト仮想マシン (VM) です。 どちらも、月例[パッチ火曜日](https://technet.microsoft.com/security/bulletins.aspx)スケジュールに従って毎月更新されます。 これらの更新プログラムは、Azure サービスの高可用性 SLA を保証する方法で、自動的に適用されます。 
 
-更新プログラムが適用される方法の詳細については、「[Demystifying the magic behind App Service OS updates (App Service OS 更新プログラムの背後にあるマジックをわかりやすく説明する)](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/)」を参照してください。
+更新プログラムが適用される方法の詳細については、「[Demystifying the magic behind App Service OS updates (App Service OS 更新プログラムの背後にあるマジックをわかりやすく説明する)](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)」を参照してください。
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure が重大な脆弱性に対処する方法
 
