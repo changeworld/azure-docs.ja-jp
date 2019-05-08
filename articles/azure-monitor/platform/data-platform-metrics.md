@@ -39,7 +39,7 @@ Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリ
 | アラート: | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](action-groups.md)を実行する[メトリック アラート ルール](alerts-metric.md)を構成します。 |
 | 自動化 |  [自動スケーリング](autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
 | エクスポート | [メトリックをログにルーティング](diagnostic-logs-stream-log-store.md)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
-| デバイス ハンドルの | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
+| 取得 | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
 | アーカイブ | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](..//learn/tutorial-archive-data.md)します。 |
 
 
