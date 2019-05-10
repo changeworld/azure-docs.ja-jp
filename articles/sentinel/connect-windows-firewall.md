@@ -4,7 +4,7 @@ description: Azure Sentinel に Windows ファイアウォール データを接
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9388e267c52ef53b59aacad844e964d3cfeb13d7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790962"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233827"
 ---
 # <a name="connect-windows-firewall"></a>Windows ファイアウォールの接続
 

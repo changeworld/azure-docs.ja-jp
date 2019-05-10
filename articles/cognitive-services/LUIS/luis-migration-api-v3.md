@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d0b5537f31edf330b54b91ddf7268338df0c0a6b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148274"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233547"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>更新:LUIS アプリの API バージョン 3.x への移行
 
@@ -43,10 +43,6 @@ LUIS の次の機能は V3 API では**サポートされていません**。
 * Bing Spell Check V7
 
 V3 の[リファレンス ドキュメント](https://aka.ms/luis-api-v3)をご利用いただけます。
-
-## <a name="prebuilt-domains-with-new-models-and-language-coverage"></a>新しいモデルと言語に対応した事前構築済みドメイン
-
-[V3 API の事前構築済みドメイン一覧](luis-reference-prebuilt-domains.md)をご確認ください。 これらのドメインでは、モデルと言語の両方において、より幅広い種類に対応しています。 
 
 ## <a name="prebuilt-entities-with-new-json"></a>事前構築済みエンティティの新しい JSON
 

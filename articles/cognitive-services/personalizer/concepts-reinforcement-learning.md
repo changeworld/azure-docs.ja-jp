@@ -10,15 +10,14 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 30f009f76c25d80281d748e1e484175380ca9743
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025543"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506886"
 ---
 # <a name="what-is-reinforcement-learning"></a>強化学習とは
-
 
 強化学習は、その使用からフィードバックを得ることによって動作を学習する機械学習へのアプローチです。
  
@@ -64,7 +63,7 @@ Personalizer では、現在、機械学習の基盤として [Vowpal Wabbit](ht
 
 * [Making Contextual Decisions with Low Technical Debt (少ない技術的負債でコンテキストに応じた判断を下す)](https://arxiv.org/abs/1606.03966)
 * [A Reductions Approach to Fair Classification (公正な分類への削減アプローチ)](https://arxiv.org/abs/1803.02453)
-* [Efficient Contextual Bandits in Non-stationary Worlds (非定常世界における効率的な Contextual Bandits)](https://arxiv.org/abs/1708.01799ds)
+* [Efficient Contextual Bandits in Non-stationary Worlds (非定常世界における効率的な Contextual Bandits)](https://arxiv.org/abs/1708.01799)
 * [Residual Loss Prediction: Reinforcement: learning With No Incremental Feedback (Residual Loss Prediction: 強化: インクリメンタル フィードバックなしでの学習)](https://openreview.net/pdf?id=HJNMYceCW)
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning (強化学習による手順と視覚的観察のアクションへのマッピング)](https://arxiv.org/abs/1704.08795)
 * [Learning to Search Better Than Your Teacher (教師よりも優れた検索を行うための学習)](https://arxiv.org/abs/1502.02206)

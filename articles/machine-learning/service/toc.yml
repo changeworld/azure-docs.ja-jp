@@ -6,9 +6,6 @@
     - name: Azure Machine Learning サービスの概要
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
-    - name: Workbench の変更点
-      displayName: desktop ui Workbench upgrade update transfer
-      href: overview-what-happened-to-workbench.md
 - name: セットアップ
   items:
     - name: ワークスペースの作成
@@ -92,6 +89,8 @@
     - name: モデルの解釈可能性
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
+    - name: GPU による高速化
+      href: concept-accelerate-inferencing-with-gpus.md
     - name: FPGA による高速化
       href: concept-accelerate-with-fpgas.md
     - name: ONNX および ONNX Runtime による最適化
@@ -117,6 +116,7 @@
         - name: ワークスペースにポータルを使用する
           href: how-to-manage-workspace.md
         - name: Resource Manager テンプレートを使用する
+          displayName: arm
           href: how-to-create-workspace-template.md
     - name: "開発環境をセットアップする\_"
       items:
@@ -224,6 +224,10 @@
       items:
         - name: ML パイプラインを作成する
           href: how-to-create-your-first-pipeline.md
+        - name: Azure Pipelines を使用した ML ワークフローの CI/CD
+          displayName: 'continuous, integration, delivery'
+          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          mainContext: true
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
@@ -235,9 +239,6 @@
     - name: Machine Learning SDK
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: Data Prep SDK
-      displayName: api core package python data prep
-      href: 'https://aka.ms/data-prep-sdk'
     - name: Monitoring SDK
       displayName: api package python monitor
       href: 'https://aka.ms/aml-monitoring-sdk'
@@ -352,3 +353,6 @@
     - name: Microsoft の ML 製品の比較
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
       maintainContext: true
+    - name: Workbench の変更点
+      displayName: desktop ui Workbench upgrade update transfer
+      href: overview-what-happened-to-workbench.md

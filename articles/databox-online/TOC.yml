@@ -81,24 +81,28 @@
           href: data-box-edge-technical-specifications-compliance.md
     - name: 方法
       items:
-        - name: コンピューティングの管理
-          href: data-box-edge-manage-compute.md
         - name: 'C# モジュールの開発'
           href: data-box-edge-create-iot-edge-module.md
-        - name: 共有の管理
-          href: data-box-edge-manage-shares.md
-        - name: ユーザーの管理
-          href: data-box-edge-manage-users.md
-        - name: 帯域幅スケジュールの管理
-          href: data-box-edge-manage-bandwidth-schedules.md
-        - name: 電源、アクセス、接続の管理
-          href: data-box-edge-manage-access-power-connectivity-mode.md
-        - name: PowerShell を通じた管理
-          href: data-box-edge-connect-powershell-interface.md
+        - name: 管理
+          items:
+            - name: Edge コンピューティング
+              href: data-box-edge-manage-compute.md
+            - name: 共有
+              href: data-box-edge-manage-shares.md
+            - name: ユーザー
+              href: data-box-edge-manage-users.md
+            - name: 帯域幅のスケジュール
+              href: data-box-edge-manage-bandwidth-schedules.md
+            - name: 電源、アクセス、接続
+              href: data-box-edge-manage-access-power-connectivity-mode.md
+            - name: PowerShell から
+              href: data-box-edge-connect-powershell-interface.md
         - name: トラブルシューティング
           href: data-box-edge-troubleshoot.md
         - name: 監視
           href: data-box-edge-monitor.md
+        - name: デバイスの返却
+          href: data-box-edge-return-device.md
     - name: リリース ノート
       items:
         - name: 一般公開

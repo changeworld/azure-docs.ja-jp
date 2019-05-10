@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 30de4da43569abf4d7bd668fd0fa481ecac23f4d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4271d94f07125a870cc4aa859b01db819d583f40
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080030"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406443"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を作成する
 
@@ -34,7 +34,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 4. 新しいサーバーの詳細フォームには次の情報を入力してください。
    - リソース グループ: このフィールドのテキスト ボックスの下の **[新規作成]** リンクをクリックします。 **myresourcegroup** などの名前を入力します。
    - サーバー グループ名: 新しいサーバー グループの一意の名前を入力します。これはサーバー サブドメインにも使用されます。
-   - 管理ユーザー名: 一意のユーザー名を入力します。これは後でデータベースへの接続に使用されます。
+   - 管理者ユーザー名: 一意のユーザー名を入力します。これは後でデータベースへの接続に使用されます。
    - パスワード: 少なくとも 8 文字で、次のカテゴリのうち 3 つのカテゴリの文字が含まれている必要があります。英字大文字、英字小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など)。
    - 場所: データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。
 
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 5. **[サーバー グループの構成]** をクリックします。 そのセクションの設定を変更しないで、**[保存]** をクリックします。
 6. **[確認と作成]**、**[作成]** の順にクリックして、サーバーをプロビジョニングします。 プロビジョニングには数分かかります。
 7. ページは、デプロイを監視するためにリダイレクトされます。 ライブ状態が **[デプロイが進行中です]** から **[デプロイが完了しました]** に変わったら、ページの左側にある **[出力]** メニュー項目をクリックします。
-8. 出力ページには、値をクリップボードにコピーするためのボタンが横に付いているコーディネーターのホスト名が含まれます。 後で使用するために、この情報を記録しておきます。
+8. 出力ページには、コーディネーターのホスト名が含まれており、値をクリップボードにコピーするためのボタンが横に付いています。 後で使用するために、この情報を記録しておきます。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
@@ -64,7 +64,7 @@ Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) サービ�
    > Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
    >
 
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Cloud Shell で psql を使用し、データベースに接続する
+## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Cloud Shell で psql を使用してデータベースに接続する
 
 ここでは [psql](https://www.postgresql.org/docs/current/app-psql.html) コマンド ライン ユーティリティを使用して、Azure Database for PostgreSQL サーバーに接続しましょう。
 1. 上部のナビゲーション ウィンドウで、ターミナルのアイコンをクリックして Azure Cloud Shell を起動します。
@@ -169,7 +169,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-これまでのところ、クエリには github\_events だけが関係していましたが、この情報を github\_users と組み合わせることができます。 ユーザーとイベントを両方、同じ ID (`user_id`) でシャード化したため、ユーザー ID が一致する両テーブルの行は同じデータベース ノードと[同じ場所に配置](http://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation)され、簡単に結合できます。
+これまでのところ、クエリには github\_events だけが関係していましたが、この情報を github\_users と組み合わせることができます。 ユーザーとイベントを両方、同じ ID (`user_id`) でシャード化したため、ユーザー ID が一致する両テーブルの行は同じデータベース ノードと[同じ場所に配置](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation)され、簡単に結合できます。
 
 `user_id` で結合した場合、Hyperscale は、worker ノードで並列実行するため、結合実行をシャードにプッシュできます。 たとえば、リポジトリを最も多く作成したユーザーを見つけましょう。
 

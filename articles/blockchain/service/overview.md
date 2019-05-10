@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 4416c30f57b469ee125400c696e8b34311a94926
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027655"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406419"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -65,7 +65,7 @@ Azure Log Analytics により、ユーザーは、Quorum 台帳に関するロ�
 
 ## <a name="develop-using-familiar-development-tools"></a>使い慣れた開発ツールを使用して開発する
 
-オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Development Kit 拡張機能を使用すると、開発者は、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドとデプロイのすべてを 1 つの IDE から実行できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain Development Kit](http://aka.ms/vscodebcextension) および [Azure Blockchain Development Kit ユーザー ガイド](http://aka.ms/vscodebcextensionwiki )をご覧ください。
+オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Development Kit 拡張機能を使用すると、開発者は、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドとデプロイのすべてを 1 つの IDE から実行できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain Development Kit](https://aka.ms/vscodebcextension) および [Azure Blockchain Development Kit ユーザー ガイド](https://aka.ms/vscodebcextensionwiki )をご覧ください。
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 

@@ -10,10 +10,6 @@
       maintainContext: true
 - name: クイック スタート
   items:
-    - name: ストレージ アカウントの作成
-      displayName: 'resource manager, resource manager template, template, ARM'
-      href: /azure/storage/common/storage-quickstart-create-account
-      maintainContext: true
     - name: Azure portal でのテーブルの作成
       href: table-storage-quickstart-portal.md
 - name: サンプル
@@ -70,6 +66,10 @@
       href: table-storage-design-patterns.md
 - name: ハウツー ガイド
   items:
+    - name: ストレージ アカウントの作成
+      displayName: 'resource manager, resource manager template, template, ARM'
+      href: /azure/storage/common/storage-quickstart-create-account
+      maintainContext: true
     - name: ストレージ エミュレーターを使用する方法
       href: /azure/storage/common/storage-use-emulator
       maintainContext: true

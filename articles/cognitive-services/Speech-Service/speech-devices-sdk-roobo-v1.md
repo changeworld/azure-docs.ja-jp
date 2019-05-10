@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0e5dc73c1f24ccbc2032cecbb857587eb20c6806
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7c1a13a44d9db8ed029ce798f0bb34944a1a65a7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025741"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409052"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>デバイス:Roobo Smart Audio Dev Kit
 
@@ -69,7 +69,7 @@ ms.locfileid: "65025741"
 
 ## <a name="audio"></a>オーディオ
 
-Roobo には、すべてのオーディオをキャプチャし、メモリをフラッシュするツールが用意されています。 オーディオに関する問題のトラブルシューティングに役立ちます。 ツールのバージョンは、開発キットの構成ごとに提供されています。 [Roobo サイト](http://ddk.roobo.com/)でデバイスを選択し、ページの下部にある **[Roobo Tools]\(Roobo ツール\)** リンクを選択します。
+Roobo には、すべてのオーディオをキャプチャし、メモリをフラッシュするツールが用意されています。 オーディオに関する問題のトラブルシューティングに役立ちます。 ツールのバージョンは、開発キットの構成ごとに提供されています。 [Roobo サイト](https://ddk.roobo.com/)でデバイスを選択し、ページの下部にある **[Roobo Tools]\(Roobo ツール\)** リンクを選択します。
 
 ## <a name="next-steps"></a>次の手順
 

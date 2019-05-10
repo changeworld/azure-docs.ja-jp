@@ -2,19 +2,20 @@
 title: Python による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Docs
 description: Python 用 Azure Storage クライアント ライブラリはクライアント側の暗号化を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011127"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146909"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Python による Microsoft Azure Storage のクライアント側の暗号化
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -138,7 +139,7 @@ KEK で正常にデータを暗号化するには、次のメソッドを実装�
   * キーを取得するよう指定した場合にキー リゾルバーが起動します。 リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。
   * リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。 識別子が一致しなければ、エラーがスローされます。
 
-    BLOB、キュー、およびテーブルの詳細なエンド ツー エンド シナリオについては、azure.storage.samples の暗号化のサンプル <fix URL> を参照してください。
+    azure.storage.samples 内の暗号化のサンプルは、BLOB、キュー、およびテーブルのより詳細なエンド ツー エンドのシナリオを示しています。
       KEK とキー リゾルバーのサンプル実装は、それぞれ KeyWrapper と KeyResolver としてサンプル ファイルに用意されています。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption モード

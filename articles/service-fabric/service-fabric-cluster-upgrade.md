@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 3ddda89b19a04bdcd45f392f297ee5e930833538
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663538"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472762"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレードと更新
 
@@ -99,7 +99,7 @@ Service Fabric では、クラスターの作成時に指定した [X.509 server
 クラスターとノードのプロパティの信頼性レベルなど、多くの異なる構成設定は、クラスター上でカスタマイズできます。 詳細については、[Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)に関するページを参照してください。
 
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>クラスター ノードで OS に修正プログラムを適用する
-パッチ オーケストレーション アプリケーション (POA) は、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 [Windows 用のパッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)または [Linux 用のパッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application-linux.md)をクラスターにデプロイし、常時サービスを使用できる状態を保ちながら、体系的な方法でパッチをインストールすることができます。 
+パッチ オーケストレーション アプリケーション (POA) は、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 [Windows 用のパッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)をクラスターにデプロイすることにより、常時サービスの稼働状態を維持しながら、調整された方法でパッチをインストールすることができます。
 
 
 ## <a name="next-steps"></a>次の手順

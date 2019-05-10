@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9cbd924f87ff2f5b38f67a1bf7db34c36e9c264b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020421"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237109"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -44,25 +44,25 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 
 | リージョン | エンドポイント |
 |--------|----------|
-| オーストラリア東部 | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| ブラジル南部 | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| カナダ中部 | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国中部 | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 東アジア | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国東部 | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国東部 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| フランス中部 | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| インド中部 | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 東日本 | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 韓国中部 | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国中北部 | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 北ヨーロッパ | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国中南部 | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 東南アジア | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 英国南部 | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 西ヨーロッパ | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国西部 | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| 米国西部 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| オーストラリア東部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| ブラジル南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| カナダ中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 東アジア | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国東部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国東部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| フランス中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| インド中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 東日本 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 韓国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 北ヨーロッパ | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 東南アジア | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>要求ヘッダー
 

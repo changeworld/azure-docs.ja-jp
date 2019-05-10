@@ -99,6 +99,10 @@
           href: howto-administer.md
         - name: イメージの準備とアップロード
           href: howto-prepare-images.md
+        - name: アプリケーション ダッシュボードの構成
+          href: howto-configure-homepage.md
+        - name: アプリケーション UI のカスタマイズ
+          href: howto-customize-ui.md
         - name: Azure portal からの管理
           href: howto-manage-iot-central-from-portal.md
         - name: Azure CLI からの管理
@@ -106,9 +110,7 @@
         - name: Azure PowerShell からの管理
           href: howto-manage-iot-central-from-powershell.md
         - name: CSP としてのアプリケーションの作成と管理
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: アプリケーション ダッシュボードの構成
-          href: howto-configure-homepage.md
+          href: howto-create-and-manage-applications-csp.md
     - name: パーソナル化
       items:
         - name: 個人用ダッシュボードの作成

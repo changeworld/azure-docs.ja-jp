@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521273"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236426"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 
@@ -108,11 +108,7 @@ ms.locfileid: "59521273"
 
 1. 部門エンティティ ページで、新しい値として「`Accounting`」と入力します。
 
-    [![値入力のスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "値入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
-
 1. シノニムに対しては、前の表からシノニムを追加します。
-
-    [![シノニム入力のスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "シノニム入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 1. 続けてすべての正規名とそのシノニムを追加します。 
 

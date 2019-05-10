@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 45ffcaa1d5bccb0746ce86ec0f98342ce5e9bcc9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 33fd6b8b7423f8640910e02383bba8397d2f8336
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270100"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル:Azure Active Directory と QuickHelp の統合
 
@@ -150,11 +150,11 @@ QuickHelp で Azure AD シングル サインオンを構成するには、次�
    
     b. ダウンロードした Azure メタデータ ファイルをアップロードするには、**[参照]** をクリックし、目的のファイルに移動し、**[メタデータのアップロード]** をクリックします。
    
-    c. **[電子メール]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    c. **[電子メール]** ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
    
-    d. **[名]** ボックスに「`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+    d. **[名]** ボックスに「`type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
    
-    e. **[姓]** ボックスに「`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
+    e. **[姓]** ボックスに「`type https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
    
     f. **[操作バー]** で、**[保存]** をクリックします。
 

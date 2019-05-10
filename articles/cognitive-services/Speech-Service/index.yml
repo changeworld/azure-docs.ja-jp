@@ -18,7 +18,19 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: Speech Services と Speech SDK を使用して、音声認識機能をアプリに追加する方法について説明します。 Speech SDK を使用して、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ</i> (TTS) の各機能をアプリに追加できます。 Speech Services には、HTTP 要求を実行できる任意のプログラミング言語で動作する REST API も含まれています。
+  description: |
+    Speech Services と REST API または Speech SDK を使用して、音声認識機能をアプリに追加する方法について説明します。 Speech SDK を使うと、アプリに次をはじめとする機能を追加できます&colon;。 
+    <div class="row" style="font-size:16px"><div class="column"><ul>
+    <li><b><a href="speech-to-text.md">音声テキスト変換</a></b> (音声認識/SR)</li>
+    <li><b><a href="speech-devices-sdk-create-kws.md">カスタム ウェイクワード</a></b> (キーワード認識/KWS)</li>
+    <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">意図</a></b></li>
+    <li><b><a href="speech-translation.md">翻訳</a></b></li>
+    <li><b><a href="speech-container-howto.md">オンプレミスのコンテナー</a></b></li></ul></div><div class="column"><ul>
+    <li><b><a href="text-to-speech.md">テキスト読み上げ</a></b> (TTS)</li>
+    <li><b><a href="conversation-transcription-service.md">会話の文字起こし</a></b> (CTS)</li>
+    <li><b><a href="how-to-phrase-lists.md">フレーズ リストのパーソナル化</a>/<a href="how-to-custom-speech.md">音声のカスタム調整</a></b></li>
+    <li><b><a href="voice-first-virtual-assistants.md">音声優先仮想アシスタント</a></b></li>
+    <li><b><a href="call-center-transcription.md">コール センターの文字起こし</a></b></li></ul></div></div>
 sections:
   - items:
       - type: list
@@ -44,7 +56,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: 矢印リンクを選択すると、SDK をダウンロード、インストール、使用する方法について確認できます。 <img src="media/index/link.jpg" height="15" width="15"></img>。
+        text: 矢印リンクを選択すると、SDK をダウンロード、インストール、使用する方法について確認できます。 <img src="media/index/link.jpg" height="15" width="15"></img>。<br/><br/>すべての矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> は、既定で音声テキスト変換のクイックスタートがリンク先になっています。 そこから、テキスト読み上げや音声優先仮想アシスタントなどの他のクイックスタート (<a href="scenario-availability.md">利用可能な場合のみ</a>) を選択できます。
       - type: table
         style: dataMatrix
         columns:

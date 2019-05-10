@@ -1,6 +1,6 @@
 ---
-title: Microsoft ID プラットフォームについて | Azure
-description: Azure Active Directory の ID サービスおよび開発者プラットフォームの進化版である Microsoft ID プラットフォームについて説明します。
+title: Microsoft ID プラットフォームの進化 - Azure
+description: Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版である Microsoft ID プラットフォームについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -12,27 +12,35 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/07/2019
 ms.author: celested
-ms.reviewer: saeeda
+ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a0b912b6f3fe42c724468347f9b3a7f0b4efa054
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258693"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067969"
 ---
-# <a name="about-microsoft-identity-platform"></a>Microsoft ID プラットフォームについて
+# <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
-Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、開発者はすべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得することができます。 これは多彩な機能を備えたプラットフォームであり、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成 、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、ユーザーをサインインし、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者がビルドできます。 これは、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成、完全な開発者向けドキュメント、クイックスタート サンプル、コード サンプル、チュートリアル、ハウツー ガイド、その他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
-これまで、ほとんどの開発者は Azure AD v1.0 プラットフォームを使用して Azure AD のID (職場や学校のアカウント) を認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure ポータル、およびプログラムによるアプリケーション構成用の Azure AD Graph API を 使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。 Azure AD v1.0 プラットフォームは成熟したプラットフォーム オファリングであり、エンタープライズ アプリケーションでも引き続き動作します。
+これまで、ほとんどの開発者は Azure AD v1.0 プラットフォームを使用して (Azure AD によりプロビジョニングされる) 職場や学校のアカウントを認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure portal、プログラムによるアプリケーション構成用の Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。
 
-マイクロソフト ID プラットフォームの機能を拡張して進化させるために、Azure AD v2.0　エンドポイントと呼ばれているものを使用して、より広範な Microsoft ID (Azure AD の ID、Microsoft アカウント (outlook.com や hotmail.com など)、および Azure AD B2C によるソーシャル アカウントとローカル アカウント) を認証できるようになりました。 ここでは、Microsoft 認証ライブラリ (MSAL) またはオープンソースの OAuth2.0 または OpenID Connect ライブラリ、アプリケーションの登録と構成用の Azure ポータル、およびプログラムによるアプリケーション構成用の Microsoft Graph API を使用します。 更新された Microsoft IDプラットフォーム (特に、MSAL ライブラリと最新の Azure ポータル アプリ登録エクスペリエンス) は、過去 1 年にわたって大きく進化してきました。 このリリースを完成させるために、開発者は最新の Microsoft ID プラットフォームを使用してアプリケーションを開発し、テストすることをお勧めします。
+Microsoft ID プラットフォーム (v2.0) を使用すれば、次のような種類のユーザーにも利用してもらうことができます。
 
-最新の ADAL と最新の MSAL を使用するアプリケーションは、相互にシングル サインオンします。 ADAL から MSAL に更新されたアプリケーションは、ユーザーのサインイン状態を維持します。 ADAL で構築されたアプリケーションは引き続き機能し、サポートされるので、開発者は、環境にあわせて、アプリケーションを MSAL に更新することができます。
+- 職場または学校のアカウント (Azure AD によりプロビジョニングされるアカウント)
+- 個人アカウント (Outlook.com や Hotmail.com など)
+- Azure AD B2C サービスから自分のメールやソーシャル ID (LinkedIn、Facebook、Google など) を持ち込むカスタマー
+
+統合 Microsoft ID プラットフォームを使用すると、コードを一回記述すれば、自分のアプリケーションで Microsoft のあらゆる ID を認証できます。 一部のプラットフォーム向けに、Microsoft Authentication Library (MSAL) という、完全にサポートされているオープンソースのライブラリがあります。 MSAL は簡単に使えて、ユーザーに優れたシングル サインオン (SSO) 機能を提供します。開発者は Microsoft Secure Development Lifecycle (SDL) を使用して開発し、高い信頼性とパフォーマンスを実現できます。 API を呼び出すとき、増分同意を活用するようにアプリケーションを構成できます。これにより、実行時にアプリケーションの使用がこれを保証するまで、同意要求をより侵略的な範囲で遅延させることができます。
+
+Azure portal を使用してアプリケーションを登録し、構成したり、プログラミングによるアプリケーションの構成に Microsoft Graph API を使用したりできます。
+
+自分のペースでアプリケーションを更新します。 ADAL ライブラリでビルドされたアプリケーションは引き続きサポートされます。 ADAL ライブラリでビルドされたアプリケーションと MSAL ライブラリでビルドされたアプリケーションから構成される混在アプリケーション ポートフォリオもサポートされます。 つまり、最新の ADAL と最新の MSAL を利用するアプリケーションは、これらのライブラリ間で共有トークン キャッシュにより、ポートフォリオをまたいで SSO を提供します。 ADAL から MSAL に更新されたアプリケーションは、アップグレード時、ユーザーのサインイン状態を維持します。
 
 ## <a name="microsoft-identity-platform-experience"></a>Microsoft ID プラットフォーム エクスペリエンス
 
@@ -40,27 +48,29 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 ![現在の Microsoft ID プラットフォーム](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
-Microsoft ID プラットフォームには、2 つのエンドポイント (v1.0 および v2.0) と、これらのエンドポイントを処理する 2 組のクライアント ライブラリがあります。 新しいアプリケーションを開発する際は、これらのエンドポイントと認証ライブラリの利点と現在の状態を考慮してください。 また、以下の点についても考慮してください。
+### <a name="app-registration-experience"></a>アプリの登録エクスペリエンス
 
-* サポートされるプラットフォーム
+Azure portal **[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)** エクスペリエンスでは、Microsoft ID プラットフォームと統合したすべてのアプリケーションを 1 つのポータルで管理します。 アプリケーション登録ポータルを使用した場合、代わりに Azure portal アプリの登録エクスペリエンスを最初に使用して開始します。
 
-    * [ADAL](active-directory-authentication-libraries.md) は、.NET、JavaScript、iOS、Android、Java、および Python をサポートしています
-    * [MSAL プレビュー](reference-v2-libraries.md)は、.NET、JavaScript、iOS、および Android をサポートしています
-    * 両方のエンドポイントは、API とサインインを保護するために .NET と Node.js サーバーミドルウェアをサポートしています。 
+(ソーシャルまたはローカル ID を認証するとき) Azure AD B2C との統合の場合、B2C テナントにアプリケーションを登録する必要があります。 このエクスペリエンスも Azure portal の一部です。
 
-* v2.0 エンドポイントと MSAL で、動的同意や増分同意などの各種の技術革新を実現しながら、v1.0 と ADAL も引き続きサポートしていきます。
+**Microsoft Graph のアプリケーション API** は現在、プレビュー段階です。 この API を使用し、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。 ただし、この API の一般利用が始まるまで、Azure AD Graph 1.6 API とアプリケーション マニフェストを使用する必要があります。
 
-    Azure portal では、以前はアプリに必要なすべてのスコープを静的に識別しなければなりませんでした。 v2.0 エンドポイントとこのエンドポイントに関連付けられたポータルを使用すると、以前と同じようにスコープを静的に定義したり、アプリでアクセス許可が必要なときに動的にスコープを要求することができます。 動的同意に加えて、もう 1 つのオプション機能として、増分同意が用意されています。 増分同意を使用すると、ユーザーが初めて認証するときに必要になるスコープのサブセットを要求したり、必要に応じて追加のスコープを要求することができます。 
-    
-    たとえば、モバイル デバイスでカメラ アプリを使用する場合、アプリからカメラへのアクセスの許可をユーザーが求められ、ユーザーが同意した後でのみ、アプリがカメラにアクセスして写真を撮ることができるようになります。  アプリで新しい写真を保存する準備ができたときに、写真の読み取り/書き込みのアクセス許可を求めることができます。 
+### <a name="msal-libraries"></a>MSAL ライブラリ
 
-* 考えられる重大な変更
+MSAL ライブラリを使用し、すべての Microsoft ID を認証するアプリケーションをビルドできます。 .NET の MSAL ライブラリは一般公開されています。 JavaScript、iOS、Android の MSAL ライブラリはプレビュー段階であり、運用環境で使用できます。 プレビュー段階の MSAL ライブラリには一般公開されているバージョンの MSAL と ADAL と同じ運用レベルのサポートを提供しています。
 
-    MSAL は、運用環境での使用に適しています。 MSAL には、現在の運用ライブラリと同様の運用レベル サポートが提供されています。 プレビュー中に、このライブラリの API、内部キャッシュ フォーマット、およびその他のメカニズムが変更されることがあり、それらをバグ フィックスや機能改善とともに取り込むことが必要になります。 これは、アプリケーションに影響を与える場合があります。 たとえば、キャッシュ フォーマットの変更は、再度サインインが必要になるなどユーザーに影響を与える場合があります。 API の変更では、コードの更新が必要な場合があります。 リリースの一般提供 (general availability: GA) が開始されると、プレビュー バージョンのライブラリを使用して作成されたアプリケーションが機能しなくなるため、6 か月以内に GA バージョンに更新していただく必要があります。
+MSAL ライブラリを利用し、アプリケーションを Azure AD B2C と統合することもできます。
+
+Web アプリと Web API を構築するための次のサーバー側ライブラリが一般公開されています。[ASP.NET](https://docs.microsoft.com/aspnet/overview) と [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+
+### <a name="microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイント
+
+Microsoft ID プラットフォーム (v2.0) エンドポイントが OIDC 認定になりました。 Microsoft Authentication Libraries (MSAL) またはその他の標準準拠ライブラリと連動します。 業界標準に準拠し、人間が読めるスコープを実装します。
 
 ## <a name="next-steps"></a>次の手順
 
 v1.0 および v2.0 に関する詳細。
 
-* [v1.0 について](v1-overview.md)
-* [v2.0 について](v2-overview.md)
+* [Microsoft ID プラットフォーム (v2.0) の概要](v2-overview.md)
+* [開発者向け Azure Active Directory (v1.0) の概要](v1-overview.md)

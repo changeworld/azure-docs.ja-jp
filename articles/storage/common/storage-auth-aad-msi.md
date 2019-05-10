@@ -9,12 +9,12 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: daa3bd49fcb9970a4a4a026f764cc195423e83d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4245c44ceaf907512187d7db4a9d6f087a855f70
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154357"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507884"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する
 
@@ -48,7 +48,7 @@ RBAC ロールの割り当てに関する詳細については、次のいずれ
 
 App Authentication クライアント ライブラリは、自動的に認証を管理します。 このライブラリは、ローカルでの開発中に開発者の資格情報を使用して認証を行います。 ローカルでの開発中に開発者の資格情報を使用するという方法は、Azure AD 資格情報を作成したり、開発者間で資格情報を共有したりする必要がないため、セキュリティの面で有利です。 その後、ソリューションを Azure にデプロイすると、このライブラリは、自動的にアプリケーションの資格情報を使用するように切り替わります。
 
-Azure Storage アプリケーションで App Authentication ライブラリを使用するには、[Nuget]((https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)) から最新のプレビュー パッケージと、[.NET 用の Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンをインストールします。 次の **using** ステートメントをコードに追加します。
+Azure Storage アプリケーションで App Authentication ライブラリを使用するには、[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) から最新のプレビュー パッケージと、[.NET 用の Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンをインストールします。 次の **using** ステートメントをコードに追加します。
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266955"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149922"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>チュートリアル:QnA Maker ポータルでナレッジ ベースを作成する
 
@@ -68,7 +68,7 @@ ms.locfileid: "59266955"
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |その URL にある FAQ のコンテンツは、質問の後に回答が続く形式になっています。 QnA Maker は、この形式を解釈して、質問とそれに関連付けられた回答を抽出することができます。|
     |ファイル |"_このチュートリアルでは使用しません_"|これにより、質問と回答に関するファイルがアップロードされます。 |
-    |[Chit-chat]\(おしゃべり\) の性格|The friend (フレンド)|これにより、一般的な質問と回答には親しみやすくカジュアルな性格が指定されます。 これらの質問と回答は後で編集することができます。 |
+    |[Chit-chat]\(おしゃべり\) の性格|[Friendly]\(フレンドリ\)|これにより、一般的な質問と回答には親しみやすくカジュアルな性格が指定されます。 これらの質問と回答は後で編集することができます。 |
 
     ![ナレッジ ベースの作成プロセスの手順 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -84,9 +84,9 @@ ms.locfileid: "59266955"
 
 1. 表の下部で、質問と回答の最後のページを選択します。 このページには、おしゃべりの性格からの質問と回答が表示されます。 
 
-1. 質問と回答の一覧の上にあるツール バーで、メタデータ アイコンを選択します。 これにより、各質問と回答のメタデータ タグが表示されます。 おしゃべりの質問には、**editorial: chit-chat** メタデータが既に設定されています。 このメタデータは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターされたメタデータを使用して、追加の処理やユーザーとの対話を判断することができます。
+1. 質問と回答の一覧の上にあるツール バーで、**[表示オプション]** アイコンを選択し、次に **[メタデータの表示]** を選択します。 これにより、各質問と回答のメタデータ タグが表示されます。 おしゃべりの質問には、**editorial: chit-chat** メタデータが既に設定されています。 このメタデータは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターされたメタデータを使用して、追加の処理やユーザーとの対話を判断することができます。
 
-    ![メタデータ タグの表示](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![![メタデータの表示タグ](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
 
 1. 上部のメニュー バーにある **[Save and train]\(保存してトレーニング\)** を選択します。
 

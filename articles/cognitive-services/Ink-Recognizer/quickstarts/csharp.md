@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: f03593292289cbc093832667505da2738c2b1633
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 800cf66e15c25540eac4809a27317598b72b8124
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025753"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406752"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
 
@@ -36,7 +36,7 @@ ms.locfileid: "65025753"
         1. **Solution Manager** を右クリックします
         2.  **[NuGet パッケージの管理]**
         3. `Newtonsoft.Json` を探して、パッケージをインストールします
-- Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+- Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 - このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) にあります。
 

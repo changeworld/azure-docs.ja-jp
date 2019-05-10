@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: b602a26c83be1ffd4bd55a8eff9ff8d83aac5919
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 86ad938cd3d248ad907b3143342b0acf9ff15631
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020813"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236855"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で C++ と Speech SDK を使用して音声を認識する
 
@@ -82,7 +82,7 @@ SDK を次のようにダウンロードしてインストールします。
 * 次のコマンドを実行して、アプリケーションをビルドします。
 
   ```sh
-  g++ helloworld.cpp -o helloworld --std=c++11 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
+  g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
   ```
 
 ## <a name="run-the-app"></a>アプリの実行

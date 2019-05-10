@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 91e1780462021430913a1354b4add7c5f047ec15
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 76db7381985853a81843df812dffcd8ab2bd8f9a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263181"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル:Azure Active Directory と InsideView の統合
 
@@ -142,13 +142,13 @@ InsideView で Azure AD シングル サインオンを構成するには、次�
 
     c. Azure Portal からダウンロードした base-64 でエンコードされた証明書を開き、その内容をクリップボードにコピーして **[STS 証明書]** ボックスに貼り付けます。
 
-    d. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
+    d. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
 
-    e. **[Crm Email Mapping]\(Crm 電子メール マッピング)\** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
+    e. **[Crm Email Mapping]\(Crm 電子メール マッピング)\** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
 
-    f. **[Crm First Name Mapping]/(Crm 名マッピング/)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」を入力します。
+    f. **[Crm First Name Mapping]/(Crm 名マッピング/)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」を入力します。
 
-    g. **[Crm lastName Mapping]\(Crm 姓マッピング\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」を入力します。  
+    g. **[Crm lastName Mapping]\(Crm 姓マッピング\)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」を入力します。  
 
     h. **[Save]** をクリックします。
 

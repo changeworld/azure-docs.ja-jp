@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ec8b575157dcf2fe8430f554798af62b966c78d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888333"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>チュートリアル:Azure Active Directory と AirWatch の統合
 
@@ -207,15 +207,15 @@ AirWatch で Azure AD シングル サインオンを構成するには、次の
 
     a. **[オブジェクト識別子]** ボックスに「`http://schemas.microsoft.com/identity/claims/objectidentifier`」と入力します。
 
-    b. **[ユーザー名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    b. **[ユーザー名]** ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
-    c. **[表示名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+    c. **[表示名]** ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
 
-    d. **[名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+    d. **[名]** ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
 
-    e. **[姓]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
+    e. **[姓]** ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
 
-    f. **[電子メール]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+    f. **[電子メール]** ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
     g. **[Save]** をクリックします。
 
@@ -237,7 +237,7 @@ AirWatch で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

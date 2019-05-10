@@ -2,22 +2,32 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/08/2018
+ms.date: 05/08/2019
 ms.author: wolfma
-ms.openlocfilehash: 77a49824eeec51e4f41c194ba2d75aff66c9692a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d0ebe57c26f5cc5b42fb449ffb10b444a03f734
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010852"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237101"
 ---
 リージョン| トークン サービス エンドポイント
 -|-
-米国西部|    `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-米国西部 2|   `https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-米国東部|    `https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-米国東部 2|   `https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-東アジア|  `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-東南アジア|    `https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-北ヨーロッパ|   `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-西ヨーロッパ|    `https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+オーストラリア東部 | `https://australiaeast.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+カナダ中部 | `https://canadacentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国中部 | `https://centralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+東アジア | `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国東部 | `https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国東部 2 | `https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+フランス中部 | `https://francecentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+インド中部 | `https://centralindia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+東日本 | `https://japaneast.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+韓国中部 | `https://koreacentral.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国中北部 | `https://northcentralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+北ヨーロッパ | `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国中南部 | `https://southcentralus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+東南アジア | `https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+英国南部 | `https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+西ヨーロッパ | `https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国西部 | `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+米国西部 2 | `https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken`

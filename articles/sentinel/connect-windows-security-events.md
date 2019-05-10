@@ -4,7 +4,7 @@ description: Azure Sentinel に Windows セキュリティ イベント デー�
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: d131d39a9d9770046fa3f9368250204e4d0b0162
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 88b066818d53fd92e8238e270b9bc785d4275186
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794484"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233971"
 ---
 # <a name="connect-windows-security-events"></a>Windows セキュリティ イベントの接続 
 

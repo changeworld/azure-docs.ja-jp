@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 293901aca3fa1a94c9c6340d2e04f47914db0e07
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 00d0e3a749c4af8faacfed5f725ce16e0492c399
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524465"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409076"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 をクラウドの Azure IoT Hub に接続する
 
@@ -169,7 +169,7 @@ Ubuntu を使用する場合は、Feather HUZZAH ESP8266 の USB ポートを操
 9. **[ユーザー設定]** ウィンドウで、以下の内容をコピーして、ファイルの最後に貼り付けます。
 
    ```json
-   "arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
+   "arduino.additionalUrls": "https://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
 
    ![VS Code で Arduino パッケージの URL を構成する](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)

@@ -140,6 +140,8 @@
           href: azure-files-dynamic-pv.md
         - name: Azure Files - 静的
           href: azure-files-volume.md
+        - name: NFS サーバー - 静的
+          href: azure-nfs-volume.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用

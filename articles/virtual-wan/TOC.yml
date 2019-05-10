@@ -16,8 +16,8 @@
   items:
     - name: 場所とパートナー
       href: virtual-wan-locations-partners.md
-    - name: グローバル ネットワーク転送アーキテクチャ
-      href: virtual-wan-global-transit-architecture.md
+    - name: グローバル転送ネットワーク アーキテクチャ
+      href: virtual-wan-global-transit-network-architecture.md
     - name: Virtual WAN の Office 365 コントロール プレーン
       href: virtual-wan-office365-overview.md
 - name: ハウツー ガイド

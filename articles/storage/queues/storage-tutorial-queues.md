@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151065"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233882"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>チュートリアル:Azure ストレージ キューの操作
 
@@ -206,7 +206,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="insert-messages-into-the-queue"></a>キューにメッセージを挿入する
 
-キューにメッセージを送信する新しいメソッドを作成します。 **Program** クラスに次のメソッドを追加します。 このメソッドによりキュー参照が取得されます。キューがない場合、[CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet) を呼び出すことで新しいキューが作成されます。 次に、[AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet) を呼び出すことでキューにメッセージが追加されます。
+キューにメッセージを送信する新しいメソッドを作成します。 **Program** クラスに次のメソッドを追加します。 このメソッドによりキュー参照が取得されます。キューがない場合、[CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet) を呼び出すことで新しいキューが作成されます。 次に、[AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet) を呼び出すことでキューにメッセージが追加されます。
 
 1. 次の **SendMessageAsync** メソッドを **Program** クラスに追加します。
 
@@ -229,7 +229,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="dequeue-messages"></a>メッセージをデキューする
 
-**ReceiveMessageAsync** という名前の新しいメソッドを作成します。 このメソッドは、[GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet) を呼び出し、キューからメッセージを受け取ります。 メッセージが正常に受け取られたら、何度も処理されないよう、キューから削除しておくことが重要です。 メッセージが受け取られたら、[DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet) を呼び出し、キューからそれを削除します。
+**ReceiveMessageAsync** という名前の新しいメソッドを作成します。 このメソッドは、[GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet) を呼び出し、キューからメッセージを受け取ります。 メッセージが正常に受け取られたら、何度も処理されないよう、キューから削除しておくことが重要です。 メッセージが受け取られたら、[DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet) を呼び出し、キューからそれを削除します。
 
 1. 次の **ReceiveMessageAsync** メソッドを **Program** クラスに追加します。
 
