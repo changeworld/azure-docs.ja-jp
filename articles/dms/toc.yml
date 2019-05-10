@@ -54,6 +54,8 @@
       href: resource-network-topologies.md
     - name: 既知の問題
       items:
+        - name: 一般的な問題とエラーのトラブルシューティング
+          href: known-issues-troubleshooting-dms.md
         - name: 既知の問題 - Azure SQL DB へのオンライン移行
           href: known-issues-azure-sql-online.md
         - name: 既知の問題 - Azure DB for MySQL へのオンライン移行

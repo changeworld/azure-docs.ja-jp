@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/23/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005816"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510751"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric コンソーシアム ネットワーク
 
@@ -100,7 +100,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 **ネットワーク構成** |新しいネットワークを作成することも、既存のネットワークに参加することもできます。 *[Join Existing]\(既存に参加\)* を選択した場合、追加の値を指定する必要があります。 |新しいネットワーク <br/> 既存に参加 |
 **HLF CA パスワード** |デプロイの一部として作成される証明機関によって生成された証明書に使用するパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />仮想マシンにはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|1 から 25 文字 |
 **組織のセットアップ** |組織の名前と証明書をカスタマイズしたり、使用する既定値を指定することができます。|既定値 <br/> 詳細 |
-**VPN ネットワークの設定** | VM にアクセスするための VPN トンネル ゲートウェイをプロビジョニングします。 | [はい] <br/> いいえ  |
+**VPN ネットワークの設定** | VM にアクセスするための VPN トンネル ゲートウェイをプロビジョニングします。 | はい <br/> いいえ  |
 
 **[OK]** を選択します。
 

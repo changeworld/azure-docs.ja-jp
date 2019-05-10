@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0a7927868a9a4bebc80ec995baefbae4c45d747f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426530"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410475"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>例 3:境界ネットワークを構築し、ファイアウォール、UDR、および NSG を使用してネットワークを保護する
 
@@ -989,7 +989,7 @@ DNS サーバー オブジェクトの場合:
 場所を更新して、この XML ファイルを保存します。 上記の完全なスクリプトで `$NetworkConfigFile` 変数を変更し、保存されたネットワーク構成ファイルにリンクします。
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

@@ -10,32 +10,34 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149828"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510611"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>クイック スタート:クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する
 
 クラウドベースのノートブック サーバーを作成し、それを使用します。  このクイック スタートでは、[Azure Machine Learning service ワークスペース](concept-azure-machine-learning-architecture.md)に値を記録する Python コードを実行します。 ワークスペースは、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用する、クラウドでの基礎ブロックとなります。 
 
 このクイック スタートでは、Azure Machine Learning の実行に必要な Python 環境で構成されている Azure Machine Learning ワークスペースにクラウド リソースを作成する方法を示します。 独自の環境を使用する場合は、次を参照してください: 「[クイック スタート: 独自のノートブック サーバーを使用して Azure Machine Learning の利用を開始する](quickstart-run-local-notebook.md)」。  
- 
+
 このクイック スタートでは、以下のアクションを実行します。
 
 * ワークスペースに新しいクラウドベースのノートブック サーバーを作成する。
 * Jupyter の Web インターフェイスを起動する。
 * pi を推定するコードが含まれていて、各イテレーションでのエラーがログに記録されるノートブックを開く。
 * ノートブックを実行する。
-* ログに記録したエラー値をワークスペースで表示します。 この例は、スクリプトで生成された情報の追跡にワークスペースがいかに役立つかを示しています。 
+* ログに記録したエラー値をワークスペースで表示します。 この例は、スクリプトで生成された情報の追跡にワークスペースがいかに役立つかを示しています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="create-a-workspace"></a>ワークスペースの作成
 
-- Azure Machine Learning ワークスペース。  ワークスペースを持っていない場合は、今すぐ[ワークスペースを作成](setup-create-workspace.md#portal)します。
+Azure Machine Learning service ワークスペースがある場合は、[次のセクション](#create-a-cloud-based-notebook-server)に進みます。 ワークスペースがない場合は、ここで作成します。
+
+[!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="create-a-cloud-based-notebook-server"></a>クラウドベースのノートブック サーバーを作成する
 
@@ -57,7 +59,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![新しい仮想マシンを作成する](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. 状態が **[実行中]** に変わるまで、4 から 5 分間待ちます。
-
 
 ## <a name="launch-jupyter-web-interface"></a>Jupyter の Web インターフェイスを起動する
 
@@ -102,10 +103,9 @@ pi を推定し、エラーをワークスペースのログに記録するノ�
 
     最大のコード セルで、`run.log` が複数の場所で使用されていることがわかります。 各 `run.log` で、その値がワークスペースに追加されます。
 
-
 ## <a name="view-logged-values"></a>ログに記録された値を表示する
 
-1. `run` セルからの出力には、ワークスペースで実験結果を表示するための Azure portal へのリンクが含まれています。 
+1. `run` セルからの出力には、ワークスペースで実験結果を表示するための Azure portal へのリンクが含まれています。
 
     ![実験を表示する](./media/quickstart-run-cloud-notebook/view-exp.png)
 
@@ -117,7 +117,7 @@ pi を推定し、エラーをワークスペースのログに記録するノ�
 
 Pi を概算するコードではランダムな値が使用されるため、実際のプロットには異なる値が表示されます。  
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 ### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 53f69b6b8eb6cbbb8082ea0777af9dbceb7bdba1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 66ee2c110edfdbd0e33c69d45dee8040654d421a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699686"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149156"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する
 
@@ -198,7 +198,7 @@ az group delete --name amsResourceGroup
 
 Azure Media Services v3 SDK は、スレッドセーフではありません。 マルチスレッド アプリケーションを開発するときは、スレッドごとに新しい AzureMediaServicesClient オブジェクトを生成して使用する必要があります。
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

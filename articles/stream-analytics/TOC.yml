@@ -442,6 +442,9 @@
             - name: タンブリング ウィンドウ
               href: /stream-analytics-query/tumbling-window-azure-stream-analytics
               maintainContext: true
+            - name: 一括ウィンドウ関数
+              href: /stream-analytics-query/windows-azure-stream-analytics
+              maintainContext: true
     - name: データ型
       items:
         - name: データ型の概要

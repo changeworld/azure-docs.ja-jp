@@ -1,21 +1,21 @@
 ---
-title: クイック スタート - Azure CLI を使用した Azure Database for PostgreSQL の作成
-description: Azure CLI (コマンド ライン インターフェイス) を使用して Azure Database for PostgreSQL サーバーを作成して管理するクイックスタート ガイド。
+title: クイックスタート - Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
+description: Azure CLI (コマンド ライン インターフェイス) を使用して Azure Database for PostgreSQL - 単一サーバーを作成および管理するためのクイックスタート ガイド。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/12/2019
+ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 07e3f1f2dd672fcfd0b7a3a4d102c429ac123c08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b16d87a69ecdac578da2a90be22013744c32bd7
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902020"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069070"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for PostgreSQL の作成
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
 > [!TIP]
 > よりシンプルな [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI コマンド (現在はプレビュー段階) の使用を検討してください。 こちらの[クイック スタート](./quickstart-create-server-up-azure-cli.md)をお試しください。
@@ -28,12 +28,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
-CLI をローカルで実行している場合は、[az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) コマンドを使用してアカウントにログインする必要があります。 対応するサブスクリプション名のコマンド出力で **id** プロパティを確認します。
+CLI をローカルで実行している場合は、[az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) コマンドを使用してアカウントにサインインする必要があります。 コマンド出力から、対応するサブスクリプション名の **ID** プロパティを書き留めておきます。
 ```azurecli-interactive
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 そのサブスクリプションの **az login** 出力の **id** プロパティで、subscription id プレースホルダーを置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の **ID** プロパティに置き換えます。
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```
@@ -174,7 +174,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
     pgAdmin パラメーター |値|説明
     ---|---|---
     ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name (**\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
-    ポート | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
+    Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
     ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
     パスワード | 管理者パスワード | このクイック スタートでサーバーを作成したときに選択したパスワードです。

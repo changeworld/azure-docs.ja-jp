@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: b5d035308c50525449edf47131c4a6a8c62b750b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 981b78345a0d9ea589e9c39ddaa2e253f1dd343f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784762"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412837"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services コンテナーを削除する
 
@@ -22,6 +22,10 @@ ms.locfileid: "59784762"
 
 ## <a name="delete-a-site-recovery-vault"></a>Site Recovery コンテナーを削除する 
 コンテナーを削除するには、シナリオに応じた推奨手順に従ってください。
+### <a name="azure-vms-to-azure"></a>Azure VM を Azureに
+
+1. 保護されている VM をすべて削除するには、「[VMware VM の保護の無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-azure-vm-azure-to-azure)」の手順に従います。
+2. コンテナーを削除します。
 
 ### <a name="vmware-vms-to-azure"></a>VMware VM を Azureに
 

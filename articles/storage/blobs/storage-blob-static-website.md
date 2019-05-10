@@ -2,18 +2,19 @@
 title: Azure Storage での静的 Web サイト ホスティング
 description: Azure Storage 静的 Web サイト ホスティングは、最新の Web アプリケーションをホストするための、費用対効果の高いスケーラブルなソリューションを提供します。
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
+ms.date: 04/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: cd1fa71cb2a10c7e61f76bdd224ba6d0f039346f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472771"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148469"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 Azure Storage GPv2 アカウントでは、*$web* という名前のストレージ コンテナーから直接、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でのホスティングを活用すれば、[Azure Functions](/azure/azure-functions/functions-overview) やその他の PaaS サービスなど、サーバーレス アーキテクチャを使用できます。
@@ -52,16 +53,21 @@ https://contoso.z4.web.core.windows.net/image.png
 
 ## <a name="cdn-and-ssl-support"></a>CDN および SSL のサポート
 
-静的 Web サイトのファイルを HTTPS 経由で利用できるようにするには、「[カスタム ドメインを用いた BLOB に Azure CDN から HTTPS 経由でアクセスする](storage-https-custom-domain-cdn.md)」を参照してください。 このプロセスの一環として、CDN が BLOB エンドポイントではなく "*Web エンドポイントを指す*" ようにする必要があります。 CDN 構成がすぐに実行されないため、コンテンツが表示されるまで数分待たなければならない場合があります。
+静的な Web サイトのファイルをカスタム ドメインおよび HTTPS 経由で使用できるようにするには、「[Azure CDN を使用して HTTPS 経由でカスタム ドメイン付きの BLOB にアクセスする](storage-https-custom-domain-cdn.md)」を参照してください。 このプロセスの一環として、CDN が BLOB エンドポイントではなく "*Web エンドポイントを指す*" ようにする必要があります。 CDN 構成がすぐに実行されないため、コンテンツが表示されるまで数分待たなければならない場合があります。
 
 静的 Web サイトを更新するときは、CDN エンドポイントを消去して、CDN エッジ サーバー上のキャッシュされたコンテンツを必ず消去してください。 詳細については、「[Azure CDN エンドポイントの消去](../../cdn/cdn-purge-endpoint.md)」を参照してください。
+
+> [!NOTE]
+> HTTPS は、アカウントの Web エンドポイント経由でネイティブにサポートされます。 現時点では、カスタム ドメインを HTTPS 経由で使用するには Azure CDN の使用が必要です。 
+>
+> HTTPS 経由でのパブリック アカウントの Web エンドポイント: `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
 
 ## <a name="custom-domain-names"></a>カスタム ドメイン名
 
 静的 Web サイトをカスタム ドメイン経由で利用できるよう、[Azure ストレージ アカウントのカスタム ドメイン名を構成](storage-custom-domain-name.md)できます。 Azure でのドメインのホスティングについて詳しくは、[Azure DNS でのドメインのホスト](../../dns/dns-delegate-domain-azure-dns.md)に関するページを参照してください。
 
 ## <a name="pricing"></a>価格
-静的 Web サイト ホスティングは、追加コストなしで提供されます。 Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
+静的な Web サイトのホスティングは無料で有効にできます。 顧客は、利用された BLOB ストレージと運用コストに対して課金されます。 Azure Blob Storage の価格について詳しくは、[Azure Blob Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
 ## <a name="quickstart"></a>クイック スタート
 
@@ -159,7 +165,10 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 はい、新しい Web エンドポイントは、ストレージ アカウント用に構成された VNET とファイアウォールのルールに従って機能します。
 
 **Web エンドポイントでは、大文字と小文字が区別されますか?**  
-はい、Web エンドポイントでは、BLOB エンドポイントと同じように、大文字と小文字が区別されます。 
+はい、Web エンドポイントでは、BLOB エンドポイントと同じように、大文字と小文字が区別されます。
+
+ **Web エンドポイントには HTTP 経由と HTTPS 経由の両方でアクセスできますか?**
+はい。Web エンドポイントには HTTP 経由と HTTPS 経由の両方でアクセスできます。 ただし、ストレージ アカウントが HTTPS 経由での安全な転送を必要とするように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。 詳細については、「[Azure Storage で安全な転送が必要](../common/storage-require-secure-transfer.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [カスタム ドメインを用いた BLOB にAzure CDN から HTTPS 経由でアクセスする](storage-https-custom-domain-cdn.md)

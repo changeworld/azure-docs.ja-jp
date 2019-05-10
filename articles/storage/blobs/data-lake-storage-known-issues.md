@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 61d168a5f501923812db5945fa6df439ae7e70f9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145107"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464718"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -57,6 +57,7 @@ BLOB Storage API と Azure Data Lake Gen2 API 間の相互運用性がまだ不�
 | **AzCopy** | バージョン固有のサポート <br><br>AzCopy の最新バージョン ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)) のみを使用します。 AzCopy の以前のバージョン (AzCopy v8.1 など) はサポートされていません。|
 | **Azure Blob Storage ライフサイクル管理ポリシー** | まだサポートされていません |
 | **Azure Content Delivery Network (CDN)** | まだサポートされていません|
+| **Azure Event Grid** | まだサポートされていません |
 | **Azure Search** |まだサポートされていません|
 | **Azure Storage Explorer** | バージョン固有のサポート <br><br>バージョン `1.6.0` 以降のみを使用します。 <br>バージョン `1.6.0` は[無料のダウンロード](https://azure.microsoft.com/features/storage-explorer/)として提供されています。|
 | **BLOB コンテナーの ACL** |まだサポートされていません|

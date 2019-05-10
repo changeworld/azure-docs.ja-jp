@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a527b928edacc202301f53dbf7852f8446b3aa7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff1d9089f3fb2f3ebf3022b54c442e8338ab983b
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834984"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>チュートリアル:Azure Active Directory と Edcor の統合
 
@@ -124,7 +124,7 @@ Edcor で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="configure-edcor-single-sign-on"></a>Edcor のシングル サインオンの構成
 
-**Edcor** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Edcor サポート チーム](http://www.edcor.com/contact-us-2/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Edcor** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Edcor サポート チーム](https://www.edcor.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -144,7 +144,7 @@ Edcor で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,7 +179,7 @@ Edcor で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="create-edcor-test-user"></a>Edcor テスト ユーザーの作成
 
-このセクションでは、Edcor で Britta Simon というユーザーを作成します。  [Edcor サポート チーム](http://www.edcor.com/contact-us-2/)と連携し、Edcor プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Edcor で Britta Simon というユーザーを作成します。  [Edcor サポート チーム](https://www.edcor.com/contact-us/)と連携し、Edcor プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

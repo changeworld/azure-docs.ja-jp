@@ -1,20 +1,20 @@
 ---
-title: Windows 7 および Windows 10 による Windows Virtual Desktop プレビューへの接続 - Azure
-description: Windows 7 または Windows 10 により Windows Virtual Desktop プレビュー サービスに接続する方法。
+title: Windows 10 または Windows 7 から Windows Virtual Desktop プレビューに接続する - Azure
+description: Windows 10 または Windows 7 から Windows Virtual Desktop プレビューに接続する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/27/2019
+ms.date: 04/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630376"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145982"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>Windows 7 および Windows 10 に接続する
+# <a name="connect-from-windows-10-or-windows-7"></a>Windows 10 または Windows 7 から接続する
 
 > 適用対象:Windows 7 および Windows 10
 
@@ -25,11 +25,11 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 
 ## <a name="install-the-client"></a>クライアントをインストールします。
 
-クライアントを[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2068602) して、ローカル PC にインストールします。 これには、管理者権限が必要です。
+クライアントを[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2068602) して、ローカル PC にインストールします。 インストールには管理者権限が必要です。
 
 ## <a name="subscribe-to-a-feed"></a>フィードのサブスクライブ
 
-管理者によって提供されるフィードをサブスクライブして、ローカル コンピューターから使用可能なリソースの一覧を取得します。
+管理者によって提供されるフィードにサブスクライブして、使用可能な管理対象リソースの一覧を取得します。サブスクライブによって、ローカル PC でリソースを使用できるようにします。
 
 フィードをサブスクライブするには:
 
@@ -44,6 +44,33 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 - クライアントのメイン ページで、リソースをダブルクリックして起動します。
 - [スタート] メニューから他のアプリを通常の方法で起動するようにリソースを起動します。
   - 検索バーでアプリを検索することもできます。
+
+フィードにサブスクライブすると、フィードのコンテンツが自動的に定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
+
+## <a name="view-the-details-of-a-feed"></a>フィードの詳細を表示する
+
+サブスクライブ後、詳細パネルにアクセスしてフィードに関する追加情報を表示できます。
+
+1. クライアントのメイン ページで、フィード名の右側の省略記号 (**...**) を選択します。
+1. ドロップダウン メニューから、**[詳細]** を選択します。
+1. クライアントの右側に [詳細] パネルが表示されます。
+
+[詳細] パネルには、フィードに関する有用な情報が含まれます。
+
+- サブスクライブに使用されている URL とユーザー名
+- アプリとデスクトップの数
+- 前回の更新の日付/時刻
+- 前回の更新の状態
+
+必要に応じて、**[今すぐ更新]** を選択して手動の更新を開始できます。
+
+## <a name="unsubscribe-from-a-feed"></a>フィードからサブスクライブ解除する
+
+このセクションでは、フィードからサブスクライブ解除する方法を説明します。 別のアカウントで再度サブスクライブするか、システムからリソースを削除するために、サブスクライブ解除できます。
+
+1. クライアントのメイン ページで、フィード名の右側の省略記号 (**...**) を選択します。
+1. ドロップダウン メニューから、**[サブスクライブ解除]** を選択します。
+1. 確認し、ダイアログから **[続行]** を選択します。
 
 ## <a name="update-the-client"></a>クライアントの更新
 

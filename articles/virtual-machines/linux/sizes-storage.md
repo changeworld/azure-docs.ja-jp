@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: a72ff65c7b9434ca2f43e4e4f06fc4e95dfbb4e7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6e206763101bdf4d1e4180f8c9f4bc467a39f90d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997344"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510351"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>ストレージ最適化済み仮想マシンのサイズ
 
-[!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
+[!INCLUDE [virtual-machines-common-sizes-storage](../../../includes/virtual-machines-common-sizes-storage.md)]
 
 ## <a name="other-sizes"></a>その他のサイズ
 

@@ -65,6 +65,6 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'http://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'

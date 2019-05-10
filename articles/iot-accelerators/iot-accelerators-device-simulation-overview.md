@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452226"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464896"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>デバイス シミュレーション ソリューション アクセラレータの概要
 
@@ -38,7 +38,7 @@ IoT ソリューションを開発するプロセスで不可欠なものは、�
 
 デバイス シミュレーションをデプロイすると、いくつかのサンプル シミュレーションとサンプル デバイスが取得されます。 これらのサンプルを使用して、デバイス シミュレーションの使用方法を確認できます。 最初に、[10 台のトラックをシミュレートするサンプル シミュレーション](quickstart-device-simulation-deploy.md)を実行します。 [用意されている多数のサンプル デバイスのいずれかを使用して独自のシミュレーションを作成する](iot-accelerators-device-simulation-create-simulation.md)こともできます。
 
-![シミュレーションの構成](media/iot-accelerators-device-simulation-overview/SampleSimulation.png)
+![シミュレーションの構成](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>カスタムのシミュレートされたデバイス
 

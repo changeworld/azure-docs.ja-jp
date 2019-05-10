@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3eca6fc3ab788ee7085c0df5f6c9770858af29ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cbb1bc64d923add0b1fd38749299714a9093633
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847350"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>チュートリアル:Azure Active Directory と OpenAthens の統合
 
@@ -143,11 +143,11 @@ OpenAthens で Azure AD シングル サインオンを構成するには、次�
 
     a. **[Display name mapping]\(表示名マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
-    b. **[Display name attribute]\(表示名属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
+    b. **[Display name attribute]\(表示名属性\)** ボックスに、値「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
     
     c. **[Unique user mapping]\(一意のユーザー マッピング\)** で、**[Use attribute]\(属性の使用\)** を選択します。
 
-    d. **[Display name attribute]\(一意のユーザ属性\)** ボックスに、値「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
+    d. **[Display name attribute]\(一意のユーザ属性\)** ボックスに、値「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を入力します。
 
     e. **[状態]** で、3 つのチェック ボックスすべてをオンにします。
 
@@ -177,7 +177,7 @@ OpenAthens で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

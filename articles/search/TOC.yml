@@ -101,6 +101,8 @@
           href: search-get-started-java.md
         - name: SDK をアップグレードする
           items:
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
             - name: .NET SDK 5.0
               href: search-dotnet-sdk-migration-version-5.md
             - name: .NET SDK 3.0
@@ -129,7 +131,7 @@
           items:
             - name: suggester の作成
               href: index-add-suggesters.md
-            - name: 例 (入力ヒント、オートコンプリート)
+            - name: 入力候補またはオートコンプリートの追加
               href: search-autocomplete-tutorial.md
         - name: シノニム
           items:
