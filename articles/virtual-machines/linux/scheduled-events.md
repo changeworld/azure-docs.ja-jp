@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: aacb4521f4c6e8699be357cf396a01b7eb54b552
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924384"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993164"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -46,7 +46,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 
-- プラットフォームによって開始されたメンテナンス (たとえば、ホスト OS の更新など)
+- [プラットフォームで開始されるメンテナンス](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (例: VM の再起動、ライブ マイグレーション、ホストのメモリが保持される更新)
 - ハードウェアの機能低下
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
 - スケール セット内の[優先順位の低い VM の削除](https://azure.microsoft.com/blog/low-priority-scale-sets)
@@ -58,6 +58,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 ### <a name="scope"></a>Scope (スコープ)
 スケジュールされたイベントの配信先は次のとおりです。
 
+- スタンドアロンの仮想マシン。
 - クラウド サービス内のすべての VM。
 - 可用性セット内のすべての VM。
 - スケール セットの配置グループすべての VM。 
@@ -129,7 +130,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 |プロパティ  |  説明 |
 | - | - |
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:Virtual Machine は数秒間の一時停止がスケジュールされています。 CPU は中断しますが、メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:優先順位の低い仮想マシンを削除中です (一時ディスクは失われます)。|
+| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンでは、数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。<li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:優先順位の低い仮想マシンを削除中です (一時ディスクは失われます)。|
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。

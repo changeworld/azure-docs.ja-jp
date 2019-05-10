@@ -1,7 +1,7 @@
 ---
 title: スコアリング プロファイルを検索インデックスに追加する - Azure Search
 description: スコアリング プロファイルを追加することにより、Azure Search の検索結果での検索順位スコアを上げます。
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: eae7de00294a6a09cb7f942d11ee2391710fc55f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9ccb6944227208cee8601751cf43a53c111c09c6
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007810"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021636"
 ---
 # <a name="add-scoring-profiles-to-an-azure-search-index"></a>スコアリング プロファイルを Azure Search のインデックスに追加する
 
@@ -66,17 +66,17 @@ ms.locfileid: "56007810"
  このスコアリング プロファイルを使用するには、クエリを作成して、クエリ文字列にプロファイルを指定します。 次のクエリで、要求内のクエリ パラメーター `scoringProfile=geo` に注目してください。  
 
 ```  
-GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2017-11-11  
+GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
 ```  
 
- このクエリは、語句 'inn' を検索し、現在の場所を渡します。 このクエリには、 `scoringParameter`などの他のパラメーターも含まれていることがわかります。 クエリ パラメーターについては、「[Search Documents &#40;Azure Search Service REST API&#41; (ドキュメントの検索 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」をご覧ください。  
+ このクエリは、語句 'inn' を検索し、現在の場所を渡します。 このクエリには、`scoringParameter` などの他のパラメーターが含まれていることがわかります。 クエリ パラメーターについては、「[Search Documents &#40;Azure Search Service REST API&#41; (ドキュメントの検索 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」をご覧ください。  
 
  スコアリング プロファイルの詳細な例を確認するには、「 [例](#bkmk_ex) 」をクリックします。  
 
 ## <a name="what-is-default-scoring"></a>既定のスコアリングとは  
  スコアリングでは、順位に従って並べられる結果セット内の各項目の検索スコアを計算します。 検索結果セット内のすべての項目にそれぞれ検索スコアが割り当てられ、最上位から最下位まで順位が付けられます。 アプリケーションには、より高いスコアを持つ項目が返されます。 既定では、上位 50 個が返されますが、 `$top` パラメーターを使用することで、返される項目数を減らしたり増やしたりできます (1 回の応答で 1000 個まで)。  
 
-検索スコアは、データとクエリの統計プロパティに基づいて計算されます。 Azure Search はクエリ文字列内の検索語句 ( `searchMode`に応じて一部またはすべて) を含むドキュメントを検索し、検索語句のインスタンスを多く含むドキュメントを優先します。 データ コーパス全体での語句の出現頻度は低いがドキュメント内でよく使用されている場合、検索スコアはより高くなります。 関連性を計算するこのアプローチの基礎となる手法は、[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (単語の出現頻度 - 逆文書頻度) と呼ばれています。  
+検索スコアは、データとクエリの統計プロパティに基づいて計算されます。 Azure Search はクエリ文字列内の検索語句 ( `searchMode`に応じて一部またはすべて) を含むドキュメントを検索し、検索語句のインスタンスを多く含むドキュメントを優先します。 データ インデックス全体での語句の出現頻度は低いがドキュメント内ではよく使用されている場合、検索スコアはより高くなります。 関連性を計算するこのアプローチの基礎となる手法は、[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (単語の出現頻度 - 逆文書頻度) と呼ばれています。  
 
  カスタムの並べ替えが行われないと仮定した場合、結果は検索スコアによって順位付けされてから、呼び出し元のアプリケーションに返されます。 $top が指定されていない場合、最も高い検索スコアを持つ 50 個の項目が返されます。  
 
@@ -169,7 +169,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |||  
 |-|-|  
 |**Weights**|相対的な重みをフィールドに割り当てる名前と値のペアを指定します。 [例](#bkmk_ex)では、albumTitle、genre、および artistName のフィールドはそれぞれ 1.5、5、および 2 でブーストされます。 なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか? ある程度同じようなデータに対して検索を実行する場合 (`musicstoreindex` での "genre" の場合のように)、相対的な重みをより分散することが必要になる可能性があります。 たとえば、 `musicstoreindex`では、「ロック」はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。 ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。|  
-|**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は、`freshness`、`magnitude`、`distance`、`tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は、`freshness` 関数でのみ使用することに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、「[Create Index &#40;Azure Search Service REST API&#41; (インデックスの作成 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/create-index)」をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  
+|**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は、`freshness`、`magnitude`、`distance`、`tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は `freshness` 関数のみで使用されることに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、「[Create Index &#40;Azure Search Service REST API&#41; (インデックスの作成 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/create-index)」をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  
 
  インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。 これらの操作の手順については、「[Create Index &#40;Azure Search Service REST API&#41; (インデックスの作成 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/create-index)」と「[Add, Update or Delete Documents &#40;Azure Search Service REST API&#41; (ドキュメントの追加、更新、削除 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)」をご覧ください。 インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。  
 
@@ -237,7 +237,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`Name`|必須。 これは、スコアリング プロファイルの名前です。 これは、フィールドの場合と同じ名前付け規則に従います。 先頭は英文字にする必要があります。ドット、コロン、または @ 記号を含めることはできません。さらに、"azureSearch" (大文字小文字の区別あり) という句で開始することはできません。|  
 |`Text`|重み プロパティが含まれます。|  
 |`Weights`|省略可能。 フィールドの名前と相対的な重みを指定する名前と値のペア。 相対的な重みは、正の整数または浮動小数点数にする必要があります。 最大値は int32.MaxValue です。<br /><br /> 対応する重みなしでフィールド名を指定することができます。 フィールド間の相対的な重要度を示すには、重みを使用します。|  
-|`Functions`|省略可能。 スコアリング関数はフィルターの適用が可能なフィールドにのみ適用できることに注意してください。|  
+|`Functions`|省略可能。 スコアリング関数はフィルターの適用が可能なフィールドにのみ適用できます。|  
 |`Type`|スコアリング関数の場合は必須です。 使用する関数の型を示します。 有効な値は、magnitude、freshness、distance、tag です。 各スコアリング プロファイルには複数の関数を含めることができます。 関数名は小文字にする必要があります。|  
 |`Boost`|スコアリング関数の場合は必須です。 生のスコアの乗数として使用される正の数値。 1 にすることはできません。|  
 |`Fieldname`|スコアリング関数の場合は必須です。 スコアリング関数は、インデックスのフィールド コレクションに属し、フィルターの適用が可能なフィールドにのみ適用できます。 さらに、各関数型には追加の制限 (freshness は日時フィールドで使用され、magnitude は整数または倍精度浮動小数点フィールドで使用され、distance は場所フィールドで使用される) が導入されています。 関数の定義ごとに指定できるフィールドは 1 つだけです。 たとえば、同じプロファイルで magnitude を 2 回使用するには、magnitude の定義を 2 つ含める必要があります (フィールドごとに 1 つ)。|  
@@ -246,7 +246,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`magnitude` &#124; `boostingRangeStart`|magnitude をスコアリングする範囲の開始値を設定します。 値は整数または浮動小数点数にする必要があります。 1 ～ 4 の星評価を対象とする場合、これは 1 になります。 50% を超える利益を対象とする場合、これは 50 になります。|  
 |`magnitude` &#124; `boostingRangeEnd`|magnitude をスコアリングする範囲の終了値を設定します。 値は整数または浮動小数点数にする必要があります。 1 ～ 4 の星評価を対象とする場合、これは 4 になります。|  
 |`magnitude` &#124; `constantBoostBeyondRange`|有効な値は、true または false (既定値) です。 true に設定すると、対象フィールドの値が範囲の上限を超えているドキュメントに、フル ブーストが継続的に適用されます。 false に設定すると、対象フィールドの値が範囲外にあるドキュメントに対して、この関数のブーストは適用されません。|  
-|`freshness`|`DateTimeOffset` フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。 たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。<br /><br /> 将来の日付を使用して、カレンダー イベントなどの項目に順位を付けることもできることに注意してください。たとえば、現在に近い日付の項目を遠い日付の項目よりも高い順位にすることができます。<br /><br /> 現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。 もう一端は、 `boostingDuration`に基づく過去の時刻です。 将来の時刻の範囲をブーストするには、負の値の `boostingDuration` を使用します。<br /><br /> 最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。 適用されるブースティング係数を反転するには、ブースト係数として 1 未満を選択します。|  
+|`freshness`|`DateTimeOffset` フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。 たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。<br /><br /> 将来の日付を使用して、カレンダー イベントなどの項目に順位を付けることもできます。たとえば、現在に近い日付の項目を遠い日付の項目よりも高い順位にすることができます。<br /><br /> 現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。 もう一端は、 `boostingDuration`に基づく過去の時刻です。 将来の時刻の範囲をブーストするには、負の値の `boostingDuration` を使用します。<br /><br /> 最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。 適用されるブースティング係数を反転するには、ブースト係数として 1 未満を選択します。|  
 |`freshness` &#124; `boostingDuration`|特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。 構文と例については、以下のセクション「[boostingDuration の設定](#bkmk_boostdur)」を参照してください。|  
 |`distance`|地理的な参照場所との間の距離に基づいてドキュメントのスコアに影響を与えるには、distance スコアリング関数を使用します。 参照場所は、クエリの一部としてパラメーター (`scoringParameterquery` 文字列オプションを使用) 内に lon,lat 引数で指定します。|  
 |`distance` &#124; `referencePointParameter`|参照場所として使用するためにクエリに渡されるパラメーター。 `scoringParameter` はクエリ パラメーターです。 クエリ パラメーターの説明については、「[Search Documents &#40;Azure Search Service REST API&#41; (ドキュメントの検索 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」をご覧ください。|  
@@ -275,7 +275,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  次の表に、いくつかの例を示します。  
 
-|duration|boostingDuration|  
+|Duration|boostingDuration|  
 |--------------|----------------------|  
 |1 日|"P1D"|  
 |2 日と 12 時間|"P2DT12H"|  

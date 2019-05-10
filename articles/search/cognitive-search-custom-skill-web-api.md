@@ -8,19 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
-ms.openlocfilehash: 1fcb12fc2cfae98376210e1924a670cce444f4f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757354"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023851"
 ---
 # <a name="custom-web-api-skill"></a>カスタム Web API スキル
 
-**カスタム Web API** スキルを使用すると、Web API エンドポイントを呼び出してカスタム操作を提供することにより、コグニティブ検索を拡張することができます。 組み込みのスキルと同様、**カスタム Web API** スキルには入力と出力があります。 入力に応じて、Web API はインデクサーの実行時に JSON ペイロードを受信し、応答の JSON ペイロードと成功の状態コードを出力します。 正常な応答には、カスタム スキルによって指定された出力が含まれます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
+**カスタム Web API** スキルを使用すると、Web API エンドポイントを呼び出してカスタム操作を提供することで、Cognitive Search を拡張できます。 組み込みのスキルと同様、**カスタム Web API** スキルには入力と出力があります。 入力に応じて、Web API はインデクサーの実行時に JSON ペイロードを受信し、応答としての JSON ペイロードと成功の状態コードを出力します。 正常な応答には、カスタム スキルによって指定された出力が含まれます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
 
 JSON ペイロードの構造については、このドキュメントの後のほうで説明します。
 
@@ -142,7 +142,7 @@ Microsoft.Skills.Custom.WebApiSkill
 "出力" は、Web API から返された応答に対応します。 Web API は _JSON_ ペイロードのみを返す必要があります (`Content-Type` 応答ヘッダーを参照することで確認されます)。また、次の制約を満たす必要があります。
 
 * `values` という最上位レベルのエンティティが存在する必要があります。これはオブジェクトの配列である必要があります。
-* 配列内のオブジェクトの数は、Web API に送信されるオブジェクトの数と同じである必要があります。
+* 配列内のオブジェクトの数は、Web API に送信されるオブジェクトの数と同じになっている必要があります。
 * 各オブジェクトには次のプロパティが必要です。
    * `recordId` プロパティ
    * `data` プロパティ。このオブジェクトでは、フィールドは `output` 内の "名前" に一致するエンリッチメントであり、その値はエンリッチメントと見なされます。

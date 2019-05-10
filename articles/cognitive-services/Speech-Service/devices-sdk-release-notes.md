@@ -10,16 +10,32 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9147f02f6ef2e2f3f776e67aa1f103e95ef132aa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005511"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153031"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK のリリース ノート
 
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
+
+## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>Cognitive Services Speech Devices SDK 1.5.0: 2019-May リリース
+
+*   Speech Devices SDK の一般提供が開始され、限定的なプレビューではなくなりました。
+*   [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.5.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
+*   新しいウェイク ワード テクノロジにより、品質が大幅に改善されました。「重大な変更」を参照してください。
+*   新しいオーディオ処理パイプラインにより、遠距離の認識が向上されました。
+
+**重大な変更**
+
+*   新しいウェイク ワード テクノロジにより、改良されたウェイク ワード ポータルですべてのウェイク ワードを作成し直す必要があります。 デバイスから古いキーワードを完全に削除するには、古いアプリをアンインストールしてください。
+    - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
+
+## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Cognitive Services Speech Devices SDK 1.4.0: 2019-Apr リリース 
+
+* [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.4.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。 
 
 ## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Cognitive Services Speech Devices SDK 1.3.1:2019 年 3 月リリース 
 

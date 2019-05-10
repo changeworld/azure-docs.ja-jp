@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495738"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025152"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>例:お使いの Azure Search アプリケーションに検索候補またはオートコンプリートを追加する
 
@@ -23,7 +23,7 @@ ms.locfileid: "59495738"
 
 + *検索候補*は、入力時に生成される候補の結果です。各検索候補は、それまでにユーザーが入力した内容と一致するインデックスからの単一の結果です。 
 
-+ *オートコンプリート* ([プレビュー機能)](search-api-preview.md) は、ユーザーが現在入力している単語または語句を「完成」させます。 結果が返される代わりに、クリエが完成されます。ユーザーがそのクエリを実行し、結果を返すことができます。 検索候補と同様に、クエリ内の完成された単語や語句はインデックスでの一致に基づいています。 インデックスでゼロの結果を返すクエリはこのサービスから提供されません。
++ *オートコンプリート*は、ユーザーが現在入力している単語または語句を "完成" させます。 結果が返される代わりに、クリエが完成されます。ユーザーがそのクエリを実行し、結果を返すことができます。 検索候補と同様に、クエリ内の完成された単語や語句はインデックスでの一致に基づいています。 インデックスでゼロの結果を返すクエリはこのサービスから提供されません。
 
 **DotNetHowToAutocomplete** のサンプル コードをダウンロードして実行し、これらの機能を評価できます。 サンプル コードは、[NYCJobs デモ データ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)を使用して設定される事前構築済みのインデックスをターゲットとします。 NYCJobs インデックスには、[Suggester の作成](index-add-suggesters.md)が含まれます。これは、検索候補またはオートコンプリートを使用する場合の要件です。 サンドボックス サービスでホストされる用意されたインデックスを使用するか、NYCJobs サンプル ソリューション内のデータ ローダーを使用して[独自のインデックスにデータを設定](#configure-app)できます。 
 
@@ -123,7 +123,7 @@ F5 キーを押してアプリケーションを起動します。
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 http://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#example2").autocompleteInline({
         appendMethod: "replace",

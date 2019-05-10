@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699168"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024636"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -50,7 +50,10 @@ ms.locfileid: "59699168"
 | Resource | 無料 | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | 最大インデックス |3 |5 または 15 |50 |200 |200 |パーティションあたり 1,000、またはサービスあたり 3,000 |10 |10 |
-| インデックスあたりの最大フィールド |1,000 |100 |1,000 |1,000 |1,000 |1,000 |1,000 |1,000 |
+| インデックスあたりの単純型フィールドの最大数 |1,000 |100 |1,000 |1,000 |1,000 |1,000 |1,000 |1,000 |
+| インデックスあたりの複合コレクション フィールドの最大数 |40 |40 |40 |40 |40 |40 |40 |40 |
+| ドキュメントあたりの複合コレクション全体での最大要素数 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| 複合フィールドの最大深度 |10 |10 |10 |10 |10 |10 |10 |10 |
 | インデックスあたりの最大[サジェスター](https://docs.microsoft.com/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
 | インデックスあたりの最大[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) |100 |100 |100 |100 |100 |100 |100 |100 |
 | プロファイルあたりの最大関数 |8 |8 |8 |8 |8 |8 |8 |8 |

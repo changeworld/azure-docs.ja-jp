@@ -8,29 +8,56 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 4/5/2019
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549407"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020339"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0:2019 年 5 月リリース
+
+**新機能**
+
+* キーワード スポッティング機能 (KWS) は、Windows と Linux で利用できます。 KWS の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
+* フレーズ ヒント機能は、この SDK を介して利用できます。 詳細については、[このページ](how-to-phrase-lists.md)を参照してください。
+* 会話の文字起こし機能は、この SDK を介して利用できます。 [こちら](conversation-transcription-service.md)を参照してください。
+* Direct Line Speech チャネルを使用して、音声優先仮想アシスタントのサポートを追加します。
+
+**サンプル**
+
+* SDK でサポートされている新機能または新サービスのサンプルを追加しました。
+
+**機能強化/変更**
+
+* サービスの動作やサービスの結果を調整するさまざまなレコグナイザー プロパティを追加しました (冒涜的な表現やその他のマスクなど)。
+* レコグナイザー `FromEndpoint` を作成した場合でも、標準の構成プロパティを使用してレコグナイザーを構成できるようになりました。
+* Objective-C: `OutputFormat` プロパティが SPXSpeechConfiguration に追加されました。
+* SDK は、Linux ディストリビューションとして Debian 9 をサポートするようになりました。
+
+**バグの修正**
+
+* テキスト読み上げでスピーカー リソースの破棄が早すぎる問題を修正しました。
+## <a name="speech-sdk-142"></a>Speech SDK 1.4.2
+
+これはバグ修正リリースで、ネイティブ/マネージド SDK にのみ影響します。 JavaScript バージョンの SDK には影響しません。
 
 ## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
 
 これは、JavaScript のみのリリースです。 機能は追加されていません。 以下の修正が行われました。
 
-* Webpack でHTTPS プロキシ エージェントが読み込まれないようにしました。
+* Web パックでHTTPS プロキシ エージェントが読み込まれないようにしました。
 
 ## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: 2019 年 4 月リリース
 
 **新機能** 
 
-* SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳しくは、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事をご覧ください。
+* SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳細については、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事を参照してください。
 * SDK で、ストリーム入力ファイルとして MP3 および Opus/Ogg オーディオ ファイルがサポートされるようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-compressed-audio-input-streams.md))。
 * Java、.NET Core、C++、Objective-C 用の Speech SDK で、macOS がサポートされるようになりました。 Objective-C での MacOS のサポートは、現在ベータ版です。
 * iOS:iOS (Objective-C) 用の Speech SDK が、CocoaPod としても公開されるようになりました。
@@ -45,7 +72,7 @@ ms.locfileid: "59549407"
 **機能強化/変更**
 
 * Python: 認識結果の追加のプロパティが、`properties` プロパティで公開されるようになりました。
-* 開発とデバッグの追加サポートでは、SDK のログ記録と診断情報をログ ファイルにリダイレクトすることができます (詳しくは[こちら](how-to-use-logging.md))。
+* 開発とデバッグの追加サポートでは、SDK のログ記録と診断情報をログ ファイルにリダイレクトすることができます (詳細については[こちら](how-to-use-logging.md))。
 * JavaScript:オーディオ処理のパフォーマンスが向上しました。
 
 **バグの修正**
@@ -66,7 +93,7 @@ ms.locfileid: "59549407"
 
 **新機能**
 
-* Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Services にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 これは、JavaScript からはまだ使用できません。
+* Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Services にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 この機能は、JavaScript からはまだ使用できません。
 * Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](quickstart-csharp-unity.md)に関する記事をご覧ください。
 * (以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
 
@@ -103,7 +130,7 @@ ms.locfileid: "59549407"
 **バグの修正**
 
 * 空のプロキシ ユーザー名とプロキシ パスワードが、正しく処理されませんでした。 このリリースでは、プロキシ ユーザー名とプロキシ パスワードを空の文字列に設定した場合は、プロキシに接続したときに送信されません。
-* SDK によって作成された SessionId が、一部の言語&nbsp;/環境で本当にランダムではないことがありました。 乱数ジェネレーターの初期化を追加して解決しました。
+* SDK によって作成された SessionId が、一部の言語&nbsp;/環境で本当にランダムではないことがありました。 乱数ジェネレーターの初期化を追加してこの問題を解決しました。
 * 認可トークンの処理が向上します。 認可トークンを使用する場合、SpeechConfig で指定し、サブスクリプション キーを空のままにします。 その後、通常どおり認識エンジンを作成します。
 * 場合によっては、Connection オブジェクトが正しく解放されませんでした。 この問題は修正されています。
 * 翻訳合成も Safari 上にある場合にオーディオ出力をサポートするよう、JavaScript のサンプルが修正されました。
@@ -130,7 +157,7 @@ ms.locfileid: "59549407"
   * 音声セッションの長さの制限がなくなり、再接続は背後で自動的に実行されるようになります。
 * Connection オブジェクト
   * 認識機能から、Connection オブジェクトにアクセスできます。 このオブジェクトを使用すると、サービスの接続を明示的に開始し、接続イベントと切断イベントをサブスクライブすることができます
-    (これは JavaScript と Python からはまだ使用できません)。
+    (この機能は、JavaScript と Python からはまだ使用できません)。
 * Ubuntu 18.04 のサポート。
 * Android
   * APK 生成時の ProGuard サポートが有効になりました。
@@ -214,7 +241,7 @@ ms.locfileid: "59549407"
 **重大な変更**
 
 * このリリースでは、重大な変更がいくつか行われています。
-  詳しくは、[こちらのページ](https://aka.ms/csspeech/breakingchanges_1_0_0)をご覧ください。
+  詳細については、[こちらのページ](https://aka.ms/csspeech/breakingchanges_1_0_0)を参照してください。
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018-August リリース
 

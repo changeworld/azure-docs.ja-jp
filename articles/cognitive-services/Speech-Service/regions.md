@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: eb3697eefb5835305b2ec80ca1e77ccade19e44f
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 83cea56cecf9792c829e062965fe39b63201af3e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578190"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020659"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -28,9 +28,9 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 
 [Speech SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
 
-### <a name="speech-recognition-and-translation"></a>音声認識と翻訳
+### <a name="speech-to-text-text-to-speech-and-translation"></a>音声変換、テキスト読み上げ、翻訳
 
-Speech SDK は、**音声認識**と**翻訳**のために以下のリージョンで使用できます。
+Speech SDK は、以下のリージョンで**音声認識**、**テキスト読み上げ**、**翻訳**に利用できます。
 
   リージョン | Speech SDK パラメーター | 音声カスタマイズ ポータル
  ------|-------|--------
@@ -38,7 +38,7 @@ Speech SDK は、**音声認識**と**翻訳**のために以下のリージョ�
  米国西部 2 | `westus2` | https://westus2.cris.ai
  米国東部 | `eastus` | https://eastus.cris.ai
  米国東部 2 | `eastus2` | https://eastus2.cris.ai
- 米国中央部 | `centralus` | https://centralus.cris.ai
+ 米国中部 | `centralus` | https://centralus.cris.ai
  米国中北部 | `northcentralus` | https://northcentralus.cris.ai
  米国中南部 | `southcentralus` | https://southcentralus.cris.ai
  インド中部 | `centralindia` | https://centralindia.cris.ai

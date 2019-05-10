@@ -8,7 +8,7 @@ metadata:
   author: mamccrea
   ms.service: azure-databricks
   ms.topic: landing-page
-  ms.date: 03/19/2018
+  ms.date: 05/07/2019
   ms.author: mamccrea
 abstract:
   description: ワンクリックで設定でき、ワークフローを合理化し、データ サイエンティスト、データ エンジニア、ビジネス アナリストの間のコラボレーションを可能にする、インタラクティブ ワークスペースを提供する Apache Spark ベースの分析プラットフォーム、Azure Databricks の使用方法について説明します。 クイック スタートとチュートリアルでは、Azure Databricks の概要と、他の Azure サービスと統合する方法を示します。
@@ -37,6 +37,10 @@ sections:
               src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
             text: Resource Manager テンプレート
             href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+          - image:
+              src: /azure/azure-databricks/media/index/virtualnetwork.svg
+            text: 仮想ネットワーク
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-vnet-injection
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
@@ -44,6 +48,8 @@ sections:
       - type: list
         style: ordered
         items:
+          - html: <a href="/azure/azure-databricks/vnet-injection-sql-server">Docker コンテナー内で稼働している SQL Server に対するクエリ</a>
+          - html: <a href="/azure/azure-databricks/service-endpoint-cosmosdb">Cosmos DB サービス エンドポイントの使用</a>
           - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">データの抽出、変換、読み込み</a>
           - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Event Hubs からのデータのストリーム配信</a>
           - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Cognitive Services を使用した感情分析</a>
@@ -56,3 +62,5 @@ sections:
         items:
           - title: REST
             html: <p><a href="/rest/api/databricks">REST API</a></p>
+          - title: リソース マネージャー
+            html: <p><a href="/azure/templates/microsoft.databricks/workspaces">テンプレート</a></p>

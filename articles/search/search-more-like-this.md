@@ -7,30 +7,35 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 10/27/2016
+ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d55a6d883e0dcd5ad4b1c1584b76bae06e6c742a
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d18069335bb20f78a5bcda85eb6fcb2a5abe75f7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569044"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024673"
 ---
 # <a name="morelikethis-in-azure-search-preview"></a>Azure Search の moreLikeThis (プレビュー)
 
-`moreLikeThis=[key]` は、[Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents) のクエリ パラメーターです。 検索クエリで `moreLikeThis` パラメーターを指定することで、ドキュメント キーに指定されたドキュメントに類似するドキュメントを検索できます。 `moreLikeThis` を指定して検索を要求すると、指定したドキュメントの内容を最も適切に説明する検索用語がドキュメントから抽出され、その用語を使用してクエリが生成されます。 生成されたクエリを使用して、検索要求が作成されます。 既定では、`searchFields` パラメーターを使用してフィールドを制限していない限り、すべての `searchable` フィールドの内容が考慮されます。 `moreLikeThis` パラメーターは、`search=[string]` 検索パラメーターと一緒に使用することはきません。
+`moreLikeThis=[key]` は、ドキュメント キーで指定されたドキュメントに類似するドキュメントを検索する[ドキュメントの検索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) のクエリ パラメーターです。 `moreLikeThis` を指定して検索を要求すると、指定したドキュメントの内容を最も適切に説明する検索用語がドキュメントから抽出され、その用語を使用してクエリが生成されます。 生成されたクエリを使用して、検索要求が作成されます。 既定では、`searchFields` パラメーターを使用して指定した制限フィールドを除く、検索可能なすべてのフィールドの内容が考慮されます。 `moreLikeThis` パラメーターは、`search=[string]` 検索パラメーターと一緒に使用することはきません。
+
+既定では、最上位のすべての検索可能フィールドの内容が考慮されます。 代わりに特定のフィールドを指定する場合は、`searchFields` パラメーターを使用します。 
+
+> [!NOTE]
+> `moreLikeThis` プレビューは、[複合型](search-howto-complex-data-types.md)の検索可能サブフィールドでは機能しません。
 
 ## <a name="examples"></a>例 
 
 moreLikeThis クエリの例を次に示します。 このクエリは、説明フィールドの内容が `moreLikeThis` パラメーターに指定されたソース ドキュメントのフィールドに最も類似しているドキュメントを検索します。
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2016-09-01-Preview
+Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
 ```
 
 ```
-POST /indexes/hotels/docs/search?api-version=2016-09-01-Preview
+POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
     {
       "moreLikeThis": "1002",
       "searchFields": "description"
@@ -39,4 +44,11 @@ POST /indexes/hotels/docs/search?api-version=2016-09-01-Preview
 
 ## <a name="feature-availability"></a>使用可能な機能
 
-moreLikeThis 機能は現在プレビュー段階にあり、preview api-version `2015-02-28-Preview` と `2016-09-01-Preview` でのみサポートされています。 API バージョンは要求で指定するため、同じアプリで一般公開 (GA) API とプレビュー API を組み合わせることができます。 ただし、プレビュー API は SLA の対象ではなく、機能が変更される場合があるため、実稼働アプリケーションでの使用はお勧めしません。
+`moreLikeThis` パラメーターは、プレビューの REST API でのみ機能します (`api-version=2019-05-06-Preview`)。
+
+## <a name="next-steps"></a>次の手順
+
+Web テスト ツールを使用して、この機能を実験します。  この演習では、Postman を使用することをお勧めします。
+
+> [!div class="nextstepaction"]
+> [Postman を使用して Azure Search REST API を調べる](search-fiddler.md)

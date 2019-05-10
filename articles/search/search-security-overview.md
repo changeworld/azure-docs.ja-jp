@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/06/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269556"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024497"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure Search のセキュリティとデータ プライバシー
 
@@ -43,11 +43,8 @@ Azure Search は次の標準について認定され、[2018 年 6 月に発表�
 | セキュリティ レイヤー | 説明 |
 |----------------|-------------|
 | 転送中の暗号化 <br>(HTTPS/SSL/TLS) | Azure Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 <br/><br/>クライアントからサービスへの Azure Search のすべての通信は、SSL/TLS 1.2 に対応しています。  サービスへの SSL 接続には TLSv1.2 を必ず使用してください。|
-| 保存時の暗号化 | 暗号化はインデックス作成処理に完全に含まれ、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。<br><br>内部的には、暗号化は [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。|
-
-暗号化は Azure Search の内部で行われ、Microsoft が内部的に管理する証明書と暗号化キーが使用され、汎用的に適用されます。 暗号化のオン/オフの切り替え、独自のキーの管理または代替、ポータル内またはプログラムによる暗号化設定の表示を行うことはできません。 
-
-保存時の暗号化は、2018 年 1 月 24 日に発表され、すべてのリージョンで、共有 (無料) サービスを含むすべてのサービス層に適用されています。 完全な暗号化を行うには、この日付より前に作成されたインデックスを削除し、再構築する必要があります。 そうしないと、1 月 24 日の後に追加された新しいデータのみが暗号化されます。
+| 保存時の暗号化 <br>Microsoft のマネージド キー | 暗号化はインデックス作成処理に完全に含まれ、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。<br><br>内部的には、暗号化は [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。<br><br> 暗号化は Azure Search の内部で行われ、Microsoft が内部的に管理する証明書と暗号化キーが使用され、汎用的に適用されます。 暗号化のオン/オフの切り替え、独自のキーの管理または代替、ポータル内またはプログラムによる暗号化設定の表示を行うことはできません。<br><br>保存時の暗号化は、2018 年 1 月 24 日に発表され、すべてのリージョンで、共有 (無料) サービスを含むすべてのサービス層に適用されています。 完全な暗号化を行うには、この日付より前に作成されたインデックスを削除し、再構築する必要があります。 そうしないと、1 月 24 日の後に追加された新しいデータのみが暗号化されます。|
+| 保存時の暗号化 <br>顧客管理キー | 顧客管理のキーを使用した暗号化は、無料サービスでは使用できない**プレビュー**機能です。 有料サービスの場合、最新のプレビュー api-version (api-version=2019-05-06-Preview) を使用すると、2019 年 1 月以降に作成された検索サービスでのみ使用することができます。<br><br>Azure Key Vault 内で顧客管理のキーを使用して、Azure Search のインデックスとシノニム マップを暗号化できるようになりました。 詳細については、[Azure Search での暗号化キーの管理に関するページ](search-security-manage-encryption-keys.md)を参照してください。<br>この機能は、既定の暗号化に置き換わるものではなく、既定の暗号化に追加で適用されるものです。<br>この機能を有効にすると、インデックスのサイズが増加し、クエリのパフォーマンスが低下します。 日付を見ると、クエリ時間が 30 ～ 60% 増加することが予想されますが、実際のパフォーマンスは、インデックスの定義やクエリの種類によって変化します。 こうしたパフォーマンスの影響のため、この機能をインデックスに対して有効にするのは、実際に必要な場合のみにすることをお勧めします。
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 全体のユーザー アクセスの制御
 

@@ -129,6 +129,8 @@
         - name: Premium Storage のパフォーマンス
           href: ../virtual-machines/windows/premium-storage-performance.md
           maintainContext: true
+        - name: エフェメラル OS ディスク
+          href: ephemeral-os-disks.md
         - name: ディスクのスケーラビリティ ターゲット
           href: ../virtual-machines/windows/disk-scalability-targets.md
           maintainContext: true
@@ -204,7 +206,7 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Azure CLI の使用
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
-            - name: 拡張機能のシーケンス処理によるディスク暗号化
+            - name: 拡張機能のシーケンス処理
               href: ../security/azure-security-disk-encryption-extension-sequencing.md
               maintainContext: true
         - name: 大規模なスケール セットを処理する
@@ -221,13 +223,16 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Azure PowerShell の使用
               href: virtual-machine-scale-sets-manage-powershell.md
-        - name: 共有イメージ ギャラリー (プレビュー)
-          href: shared-image-galleries.md
+        - name: 共有イメージ ギャラリー
           items:
+            - name: 概要
+              href: shared-image-galleries.md
             - name: CLI
               href: shared-images-cli.md
             - name: PowerShell
               href: shared-images-powershell.md
+            - name: テナントをまたいでイメージを共有する
+              href: share-images-across-tenants.md
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md
         - name: スケール セットの垂直スケール

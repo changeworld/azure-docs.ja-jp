@@ -1,0 +1,82 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Ink Recognizer のドキュメント
+metadata:
+  title: Ink Recognizer のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: Translator Text を使用してテキストを複数の言語で翻訳する方法について説明します。
+  services: cognitive-services
+  author: erhopf
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/02/2019
+  ms.author: erhopf
+abstract:
+  description: デジタル インキングとは、手書きや図面などの入力のデジタル表現を可能にするテクノロジを指します。 デバイスが多彩なデジタル インキング エクスペリエンスを可能にし続けるのに伴い、人工知能および機械学習によって、任意のコンテキストでの書かれたシェイプおよびテキストの認識が可能になりました。 Ink Recognizer API はクラウドベースのサービスであり、インク ストロークを送信して、それらに関する詳細な情報を取得できます。
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/ink-recognizer/overview
+            html: <p>Ink Recognizer の概要およびそれをご自分の製品に統合する方法について学習します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Ink Recognizer API とは
+          - href: concepts/send-ink-data.md
+            html: <p>API を使用するときの推奨される呼び出しパターンについて学習します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: インク データを Ink Recognizer API に送信する
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Ink Recognizer API を使い始めます。
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo-csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo-java.svg
+            title: Java
+          - image:
+              src: media/index/logo-js.svg
+            title: JavaScript
+        rows:
+          - title: デジタル インク ストロークを認識する
+            values:
+              - href: quickstarts/csharp.md
+              - href: quickstarts/java.md
+              - href: quickstarts/javascript.md
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: 以下のサンプル プログラムを使用すると、Ink Recognizer API をご自分のアプリケーションに統合する方法がわかります。
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# およびユニバーサル Windows プラットフォーム (UWP)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# および Windows Presentation Foundation (WPF)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">JavaScript Web ブラウザー アプリ</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Java および Android モバイル アプリ</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Swift および iOS モバイル アプリ</a>'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907"> REST API リファレンス </a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'

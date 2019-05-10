@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d09fca68af55b577c47316363ed386e98525baf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
+ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925754"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035461"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -54,16 +54,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下のいずれかのセクションから、これらすべての前提条件を入手します。
 
-* [Azure Notebooks](#azure) を使用する
+* [ワークスペース内のクラウド ノートブック](#azure)を使用する 
 * [独自のノートブック サーバー](#server)を使用する
 
-### <a name="azure"></a>Azure Notebooks を使用する: クラウド上の無料の Jupyter Notebook
+### <a name="azure"></a>ワークスペース内のクラウド ノートブックを使用する
 
-Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
-
-以下の手順を完了したら、**Getting Started** プロジェクトの **tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
+独自のクラウド ベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* ノートブックの Web ページを起動したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 

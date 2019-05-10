@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489949"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025233"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
@@ -68,7 +68,7 @@ Azure Machine Learning service のアーキテクチャ、概念、ワークフ�
 
 ワークスペースの分類を次の図に示します。
 
-[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>実験
 
@@ -106,6 +106,16 @@ Azure Machine Learning service はフレームワークに依存しません。 
 
 実行構成の例については、[モデルをトレーニングするためのコンピューティング先の選択と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
 
+## <a name="dataset"></a>Dataset
+
+Azure Machine Learning Datasets (プレビュー) は、データへのアクセスと操作を容易にします。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索と準備、異なるデータセット定義のライフ サイクルの管理、トレーニングと運用環境で使用されるデータセット間の比較が可能になります。
+
+Datasets には、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的なフォーマットでデータを操作する方法が用意されています。
+
+詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。
+
+Datasets の使用例については、[サンプル ノートブック](https://aka.ms/dataset-tutorial)を参照してください。
+
 ## <a name="datastore"></a>データストア
 
 データストアは、Azure ストレージ アカウントに対するストレージの抽象化です。 データストアでは、バックエンド ストレージとして Azure BLOB コンテナーまたは Azure ファイル共有を使用できます。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。
@@ -127,7 +137,7 @@ Azure Machine Learning service はフレームワークに依存しません。 
 | Azure Container Instances | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>(フィールド プログラマブル ゲート アレイ) | &nbsp; | ✓ |
+| フィールド プログラマブル ゲート アレイ (FPGA) | &nbsp; | ✓ |
 
 コンピューティング ターゲットはワークスペースに接続されています。 ローカル コンピューター以外のコンピューティング ターゲットは、ワークスペースのユーザーによって共有されます。
 
@@ -189,8 +199,6 @@ Azure Machine Learning では、次の 2 種類のイメージを作成できま
 * **Docker イメージ**:FPGA 以外のコンピューティング先にデプロイするときに使用されます。 例として、Azure Container Instances や Azure Kubernetes Service があります。
 
 Azure Machine Learning service は基本イメージを提供し、それが既定で使用されます。 独自のカスタム イメージを指定することもできます。
-
-詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#configureimage)に関するページの、イメージの構成と登録のセクションを参照してください。
 
 イメージの作成例については、「[Azure Container Instances に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)」を参照してください。
 

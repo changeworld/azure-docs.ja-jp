@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bda38825cd65f1d44b497de1445ead5689428917
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008988"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020726"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>クイック スタート:ブラウザーで JavaScript と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、音声をテキストに文字起こしする Web サイトを、Cognitive Services Speech SDK の JavaScript バインドを使用して作成する方法について説明します。
-このアプリケーションは、JavaScript 用 Speech SDK が基になっています ([バージョン 1.4.0 のダウンロード](https://aka.ms/csspeech/jsbrowserpackage))。
+このアプリケーションは、JavaScript 用 Speech SDK が基になっています ([バージョン 1.5.0 のダウンロード](https://aka.ms/csspeech/jsbrowserpackage))。
 
 ## <a name="prerequisites"></a>前提条件
 

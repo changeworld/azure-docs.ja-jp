@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3d14200faa06bc30df45a2100635ed7dc697a339
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868607"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020852"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -67,124 +67,124 @@ Text to Speech REST API ではこれらの音声がサポートされ、その�
 > [!IMPORTANT]
 > 価格は、標準音声、カスタム音声、ニューラル音声ごとに異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)のページを参照してください。
 
-### <a name="neural-voices-preview"></a>ニューラル音声 (プレビュー)
+### <a name="neural-voices"></a>ニューラル音声
 
 ニューラル テキスト読み上げは、ディープ ニューラル ネットワークを利用した新しい種類の音声合成です。 ニューラル音声を使用した場合、合成音声は人間の録音とほとんど区別がつきません。
 
 ニューラル音声を使用すると、チャットボットや仮想アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。
 
-ニューラル音声の完全な一覧とリージョン別の提供状況については、[リージョン](regions.md#neural-voices)に関するページを参照してください。
+ニューラル音声の完全な一覧とリージョン別の提供状況については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-| ロケール | 言語 | 性別 | サービス名のマッピング|
-|--------|----------|--------|---------------------|
-| de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" |
-| en-US | 英語 (米国) | 男性 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" |
-| en-US | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" |
-| it-IT | イタリア語 (イタリア) | 女性 | "Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" |
-| zh-CN | 中国語 | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" |
+ロケール | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
+--------|----------|--------|---------|------------
+de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
+en-US | 英語 (米国) | 男性 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
+en-US | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-US-JessaNeural"
+it-IT | イタリア語 (イタリア) | 女性 |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-IT-ElsaNeural"
+zh-CN | 中国語 (大陸) | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
-> [!IMPORTANT]
-> Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural) は、東南アジア エンドポイント https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 経由でのみ使用できます。
-
-> [!IMPORTANT]
-> Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural) および Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural) は、西ヨーロッパ エンドポイント https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 経由でのみ使用できます。
+> [!NOTE]
+> 音声合成要求には、完全なサービス名のマッピングまたは短い音声名のいずれかを使用できます。
 
 ### <a name="standard-voices"></a>標準音声
 
-テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-voices)に関するページを参照してください。
+テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-ロケール | 言語 | 性別 | サービス名のマッピング
--------|----------|---------|--------------------
-ar-EG\* | アラビア語 (エジプト) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)"
-ar-SA | アラビア語 (サウジアラビア) | 男性 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)"
-bg-BG | ブルガリア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)"
-ca-ES | カタルニア語 | 女性 | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)"
-cs-CZ | チェコ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)"
-da-DK | デンマーク語 | 女性 | "Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)"
-de-AT | ドイツ語 (オーストリア) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-AT, Michael)"
-de-CH | ドイツ語 (スイス) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-CH, Karsten)"
-de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)"
-| | | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, HeddaRUS)"
-| | | 男性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)"
-el-GR | ギリシャ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (el-GR, Stefanos)"
-en-AU | 英語 (オーストラリア) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)"
-| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, HayleyRUS)"
-en-CA | 英語 (カナダ) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-CA, Linda)"
-| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-CA, HeatherRUS)"
-en-GB | 英語 (英国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (en-GB, HazelRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)"
-en-IE | 英語 (アイルランド) |男性 | "Microsoft Server Speech Text to Speech Voice (en-IE, Sean)"
-en-IN | 英語 (インド) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)"
-en-US | 英語 (米国) |女性 | "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)"
-es-ES | スペイン語 (スペイン) |女性 | "Microsoft Server Speech Text to Speech Voice (es-ES, Laura, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (es-ES, HelenaRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (es-ES, Pablo, Apollo)"
-es-MX | スペイン語 (メキシコ) | 女性 | "Microsoft Server Speech Text to Speech Voice (es-MX, HildaRUS)"
-| | | 男性 | "Microsoft Server Speech Text to Speech Voice (es-MX, Raul, Apollo)"
-fi-FI | フィンランド語 | 女性 | "Microsoft Server Speech Text to Speech Voice (fi-FI, HeidiRUS)"
-fr-CA | フランス語 (カナダ) |女性 | "Microsoft Server Speech Text to Speech Voice (fr-CA, Caroline)"
-| | | 女性 | "Microsoft Server Speech Text to Speech Voice (fr-CA, HarmonieRUS)"
-fr-CH | フランス語 (スイス)|男性 | "Microsoft Server Speech Text to Speech Voice (fr-CH, Guillaume)"
-fr-FR | フランス語 (フランス)|女性 | "Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)"
-he-IL| ヘブライ語 (イスラエル) | 男性| "Microsoft Server Speech Text to Speech Voice (he-IL, Asaf)"
-hi-IN | ヒンディー語 (インド) | 女性 | "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana)"
-| | | 男性 | "Microsoft Server Speech Text to Speech Voice (hi-IN, Hemant)"
-hr-HR | クロアチア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (hr-HR, Matej)"
-hu-HU | ハンガリー語 | 男性 | "Microsoft Server Speech Text to Speech Voice (hu-HU, Szabolcs)"
-id-ID | インドネシア語| 男性 | "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)"
-it-IT | イタリア語 |男性 | "Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (it-IT, LuciaRUS)"
-ja-JP | 日本語 |女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, HarukaRUS)"
-ko-KR | 韓国語 |女性 | "Microsoft Server Speech Text to Speech Voice (ko-KR, HeamiRUS)"
-ms-MY | マレー語 | 男性 | "Microsoft Server Speech Text to Speech Voice (ms-MY, Rizwan)"
-nb-NO | ノルウェー語 | 女性 | "Microsoft Server Speech Text to Speech Voice (nb-NO, HuldaRUS)"
-nl-NL | オランダ語 | 女性 | "Microsoft Server Speech Text to Speech Voice (nl-NL, HannaRUS)"
-pl-PL | ポーランド語 | 女性 | "Microsoft Server Speech Text to Speech Voice (pl-PL, PaulinaRUS)"
-pt-BR | ポルトガル語 (ブラジル) | 女性 | "Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaRUS)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (pt-BR, Daniel, Apollo)"
-pt-PT | ポルトガル語 (ポルトガル) | 女性 | "Microsoft Server Speech Text to Speech Voice (pt-PT, HeliaRUS)"
-ro-RO | ルーマニア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (ro-RO, Andrei)"
-ru-RU |ロシア語| 女性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina, Apollo)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, EkaterinaRUS)"
-sk-SK | スロバキア語|男性 | "Microsoft Server Speech Text to Speech Voice (sk-SK, Filip)"
-sl-SI | スロベニア語|男性 | "Microsoft Server Speech Text to Speech Voice (sl-SI, Lado)"
-sv-SE | スウェーデン語|女性 | "Microsoft Server Speech Text to Speech Voice (sv-SE, HedvigRUS)"
-ta-IN | タミール語 (インド) |男性 | "Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar)"
-te-IN | テルグ語 (インド) |女性 | "Microsoft Server Speech Text to Speech Voice (te-IN, Chitra)"
-th-TH | タイ語|男性 | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)"
-tr-TR |トルコ語| 女性 | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)"
-vi-VN | ベトナム語|男性 | "Microsoft Server Speech Text to Speech Voice (vi-VN, An)"
-zh-CN | 中国語 (大陸)|女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)"
-| | |男性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)"
-zh-HK | 中国語 (香港)|女性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)"
-| | |女性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)"
-| || 男性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)"
-zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)"
-| || 女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)"
-| || 男性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)"
+ロケール | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
+-------|----------|---------|----------|----------
+ar-EG\* | アラビア語 (エジプト) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-EG-Hoda"
+ar-SA | アラビア語 (サウジアラビア) | 男性 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)" | "ar-SA-Naayf"
+bg-BG | ブルガリア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan"
+ca-ES | カタルニア語 (スペイン) | 女性 | "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | "ca-ES-HerenaRUS"
+cs-CZ | チェコ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)" | "cs-CZ-Jakub"
+da-DK | デンマーク語 | 女性 | "Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)" | "da-DK-HelleRUS"
+de-AT | ドイツ語 (オーストリア) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-AT, Michael)" | "de-AT-Michael"
+de-CH | ドイツ語 (スイス) | 男性 | "Microsoft Server Speech Text to Speech Voice (de-CH, Karsten)" | "de-CH-Karsten"
+de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)" | "de-DE-Hedda"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, HeddaRUS)" | "de-DE-HeddaRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)" | "de-DE-Stefan-Apollo"
+el-GR | ギリシャ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (el-GR, Stefanos)" | "el-GR-Stefanos"
+en-AU | 英語 (オーストラリア) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)" | "en-AU-Catherine"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-AU, HayleyRUS)" | "en-AU-HayleyRUS"
+en-CA | 英語 (カナダ) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-CA, Linda)" | "en-CA-Linda"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-CA, HeatherRUS)" | "en-CA-HeatherRUS"
+en-GB | 英語 (英国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)" | "en-GB-Susan-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-GB, HazelRUS)" | "en-GB-HazelRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)" | "en-GB-George-Apollo"
+en-IE | 英語 (アイルランド) | 男性 | "Microsoft Server Speech Text to Speech Voice (en-IE, Sean)" | "en-IE-Sean"
+en-IN | 英語 (インド) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)" | "en-IN-Heera-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)" | "en-IN-PriyaRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo"
+en-US | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" | "en-US-ZiraRUS"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)" | "en-US-JessaRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)" | "en-US-BenjaminRUS"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)" | "en-US-Jessa24kRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)" | "en-US-Guy24kRUS"
+es-ES | スペイン語 (スペイン) |女性 | "Microsoft Server Speech Text to Speech Voice (es-ES, Laura, Apollo)" | "es-ES-Laura-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (es-ES, HelenaRUS)" | "es-ES-HelenaRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (es-ES, Pablo, Apollo)" | "es-ES-Pablo-Apollo"
+es-MX | スペイン語 (メキシコ) | 女性 | "Microsoft Server Speech Text to Speech Voice (es-MX, HildaRUS)" | "es-MX-HildaRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (es-MX, Raul, Apollo)" | "es-MX-Raul-Apollo"
+fi-FI | フィンランド語 | 女性 | "Microsoft Server Speech Text to Speech Voice (fi-FI, HeidiRUS)" | "fi-FI-HeidiRUS"
+fr-CA | フランス語 (カナダ) |女性 | "Microsoft Server Speech Text to Speech Voice (fr-CA, Caroline)" | "fr-CA-Caroline"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (fr-CA, HarmonieRUS)" | "fr-CA-HarmonieRUS"
+fr-CH | フランス語 (スイス)| 男性 | "Microsoft Server Speech Text to Speech Voice (fr-CH, Guillaume)" | "fr-CH-Guillaume"
+fr-FR | フランス語 (フランス)| 女性 | "Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)" | "fr-FR-Julie-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)" | "fr-FR-HortenseRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo"
+he-IL| ヘブライ語 (イスラエル) | 男性| "Microsoft Server Speech Text to Speech Voice (he-IL, Asaf)" | "he-IL-Asaf"
+hi-IN | ヒンディー語 (インド) | 女性 | "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana, Apollo)" | "hi-IN-Kalpana-Apollo"
+| | |女性 | "Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana)" | "hi-IN-Kalpana"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (hi-IN, Hemant)" | "hi-IN-Hemant"
+hr-HR | クロアチア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (hr-HR, Matej)" | "hr-HR-Matej"
+hu-HU | ハンガリー語 | 男性 | "Microsoft Server Speech Text to Speech Voice (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
+id-ID | インドネシア語| 男性 | "Microsoft Server Speech Text to Speech Voice (id-ID, Andika)" | "id-ID-Andika"
+it-IT | イタリア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)" | "it-IT-Cosimo-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (it-IT, LuciaRUS)" | "it-IT-LuciaRUS"
+ja-JP | 日本語 | 女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS"
+ko-KR | 韓国語 | 女性 | "Microsoft Server Speech Text to Speech Voice (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS"
+ms-MY | マレー語 | 男性 | "Microsoft Server Speech Text to Speech Voice (ms-MY, Rizwan)" | "ms-MY-Rizwan"
+nb-NO | ノルウェー語 | 女性 | "Microsoft Server Speech Text to Speech Voice (nb-NO, HuldaRUS)" | "nb-NO-HuldaRUS"
+nl-NL | オランダ語 | 女性 | "Microsoft Server Speech Text to Speech Voice (nl-NL, HannaRUS)" | "nl-NL-HannaRUS"
+pl-PL | ポーランド語 | 女性 | "Microsoft Server Speech Text to Speech Voice (pl-PL, PaulinaRUS)" | "pl-PL-PaulinaRUS"
+pt-BR | ポルトガル語 (ブラジル) | 女性 | "Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaRUS)" | "pt-BR-HeloisaRUS"
+| | | 男性 |"Microsoft Server Speech Text to Speech Voice (pt-BR, Daniel, Apollo)" | "pt-BR-Daniel-Apollo"
+pt-PT | ポルトガル語 (ポルトガル) | 女性 | "Microsoft Server Speech Text to Speech Voice (pt-PT, HeliaRUS)" | "pt-PT-HeliaRUS"
+ro-RO | ルーマニア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (ro-RO, Andrei)" | "ro-RO-Andrei"
+ru-RU |ロシア語| 女性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)" | "ru-RU-Pavel-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (ru-RU, EkaterinaRUS)" | ru-RU-EkaterinaRUS
+sk-SK | スロバキア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (sk-SK, Filip)" | "sk-SK-Filip"
+sl-SI | スロベニア語 | 男性 | "Microsoft Server Speech Text to Speech Voice (sl-SI, Lado)" | "sl-SI-Lado"
+sv-SE | スウェーデン語 | 女性 | "Microsoft Server Speech Text to Speech Voice (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS"
+ta-IN | タミール語 (インド) | 男性 | "Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar)" | "ta-IN-Valluvar"
+te-IN | テルグ語 (インド) | 女性 | "Microsoft Server Speech Text to Speech Voice (te-IN, Chitra)" | "te-IN-Chitra"
+th-TH | タイ語 | 男性 | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | "th-TH-Pattara"
+tr-TR | トルコ語 | 女性 | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
+vi-VN | ベトナム語 | 男性 | "Microsoft Server Speech Text to Speech Voice (vi-VN, An)" | "vi-VN-An"
+zh-CN | 中国語 (大陸) | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo"
+zh-HK | 中国語 (香港) | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-HK-Tracy-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-HK-TracyRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | "zh-HK-Danny-Apollo"
+zh-TW | 中国語 (台湾) | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-TW-Yating-Apollo"
+| | | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
+| | | 男性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
 \* *ar-EG では現代標準アラビア語 (MSA) をサポートしています。*
 
+> [!NOTE]
+> 音声合成要求には、完全なサービス名のマッピングまたは短い音声名のいずれかを使用できます。
+
 ### <a name="customization"></a>カスタマイズ
 
-音声のカスタマイズは、米国英語 (en-US)、本土中国語 (zh-CN)、フランス語 (fr-FR)、ドイツ語 (de-DE)、およびイタリア語 (it-IT) で使用できます。
+音声カスタマイズは、de-DE、en-GB、en-IN、en-US、es-MX、fr-FR、it-IT、pt-BR、および zh-CN で使用できます。 カスタム音声モデルをトレーニングする必要があるトレーニング データと一致する適切なロケールを選択します。 たとえば、持っている録音データが英国アクセントの英語で話されている場合は、en-GB を選択します。  
 
 > [!NOTE]
-> フランス語、ドイツ語、イタリア語の音声トレーニングは、2,000 件以上の発話のデータ セットから始まります。 また、中国語-英語 2 か国語モデルは 2,000 以上の発話の初期データ セットでサポートされます。
+> カスタム音声では、中国語と英語のバイリンガルを除き、バイリンガル モデル トレーニングはサポートされていません。 英語も話すことができる中国人の音声をトレーニングする場合は、[Chinese-English bilingual]\(中国語 - 英語のバイリンガル\) を選択します。 すべてのロケールの音声トレーニングは、任意のサイズのトレーニング データから始めることができる en-US と zh-CN を除き、2,000 以上の発話のデータ セットから始まります。
 
 ## <a name="speech-translation"></a>音声翻訳
 

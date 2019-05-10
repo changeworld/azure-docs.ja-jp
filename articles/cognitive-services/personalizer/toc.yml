@@ -1,0 +1,70 @@
+- name: Personalizer のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Personalizer とは
+      href: what-is-personalizer.md
+      displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+- name: クイック スタート
+  items:
+    - name: フィードバック ループを作成して使用する
+      href: csharp-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, c#'
+- name: 概念
+  items:
+    - name: Personalizer のしくみ
+      href: how-personalizer-works.md
+      displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
+    - name: Personalizer を使用できる状況
+      href: where-can-you-use-personalizer.md
+      displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: 倫理および責任ある使用
+      href: ethics-responsible-use.md
+      displayName: 'best practice, design'
+    - name: 基本的な概念
+      items:
+        - name: '機能: アクションとコンテキスト'
+          href: concepts-features.md
+          displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: 強化学習
+          href: concepts-reinforcement-learning.md
+          displayName: 'RL, contextual bandits, Vowpal Wabbit'
+    - name: 分析
+      items:
+        - name: オフライン評価
+          href: concepts-offline-evaluation.md
+          displayName: 'learning policy, Counterfactual, features'
+- name: ハウツー ガイド
+  items:
+    - name: Personalizer を構成する
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy'
+    - name: 分析
+      items:
+        - name: オフライン評価
+          href: how-to-offline-evaluation.md
+- name: リファレンス
+  items:
+    - name: サンプル
+      href: 'https://aka.ms/personalizer-samples'
+    - name: REST API リファレンス
+      href: 'https://aka.ms/personalizer-rest-api-docs'
+    - name: SDK
+      items:
+        - name: .NET SDK リファレンス
+          href: 'https://aka.ms/personalizer-dotnet-sdk-docs'
+        - name: NuGet パッケージ
+          href: 'https://aka.ms/personalizer-nuget-sdk'
+- name: リソース
+  items:
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure のロードマップ
+      href: 'https://aka.ms/personalizer-roadmap'
+    - name: 価格
+      href: 'https://aka.ms/personalizer-pricing'
+    - name: スタック オーバーフロー
+      href: 'https://aka.ms/personalizer-stackoverflow'
+    - name: UserVoice
+      href: 'https://aka.ms/personalizer-uservoice'

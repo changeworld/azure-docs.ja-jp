@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9a1dadc29006a365f7e614db5722fa0e92e0129d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ca3f537ed52da547f64aa1fb98eb82c4ea73d81d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922504"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021420"
 ---
-# <a name="about-the-speech-devices-sdk-preview"></a>Speech Devices SDK (プレビュー) について
+# <a name="about-the-speech-devices-sdk"></a>Speech Devices SDK について
 
 [Speech Services](overview.md) は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 
 Speech Devices SDK は、次の場合に役立ちます。
+
 * 新しい音声シナリオをすばやくテストする。
 * クラウドベースの Speech Services をより簡単にお使いのデバイスに統合する。
 * 顧客向けに優れたユーザー エクスペリエンスを作成する。
@@ -31,19 +32,12 @@ Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。
 
 Speech Devices SDK を使用すると、[ウェイク ワードを自由にカスタマイズ](speech-devices-sdk-create-kws.md)してアンビエント デバイスを構築できるため、ユーザー操作を開始するキューがブランド固有のものになります。
 
-Speech Devices SDK を使用すると、ドライブスルー注文システム、店舗内または家庭内アシスタント、スマート スピーカーなど、さまざまな音声対応シナリオが容易になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
-
-## <a name="development-kit-providers"></a>開発キット プロバイダー
-
-現在、このような完全なエンドツーエンド システム リファレンス設計を使用できます。
-
-|||
-|-|-|
-|[![ROOBO のロゴ](media/speech-devices-sdk/roobo-logo.png)](https://ddk.roobo.com/)|ROOBO は、家電製品、自動車、ロボット、玩具などの業界向けの完全な人工知能 (AI) システム ソリューションを提供しています。 ROOBO のリファレンス デザインは、Azure Speech Services との統合によって、開発から市場投入までの時間を大幅に短縮します。 [ROOBO のページを参照](https://ddk.roobo.com/)してください。|
+Speech Devices SDK を使用すると、[カスタムの音声優先仮想アシスタント](https://aka.ms/sdsdk-assistant)、ドライブスルー注文システム、[会話の文字起こし](conversation-transcription-service.md)、スマート スピーカーなど、さまざまな音声対応シナリオが容易になります。 ユーザーへのテキストでの応答、既定の音声または[カスタム音声](how-to-customize-voice-font.md)での応答、検索結果の提供、他の言語への[翻訳](speech-translation.md)などを行うことができます。 皆様の開発の成果を楽しみにしております。
 
 ## <a name="next-steps"></a>次の手順
 
-使い始めるために、[無料の Azure アカウント](https://azure.microsoft.com/free/ai/)を取得し、Speech Devices SDK にサインアップします。
-
 > [!div class="nextstepaction"]
-> [Speech Devices SDK にサインアップする](get-speech-devices-sdk.md)
+> [Speech Device を選択する](get-speech-devices-sdk.md)
+>
+> [!div class="nextstepaction"]
+> [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)

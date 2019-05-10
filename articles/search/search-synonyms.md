@@ -6,16 +6,16 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4383cc327d8058ca44acd892f41a7a256e3b1727
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570438"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024314"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
 
@@ -23,11 +23,13 @@ ms.locfileid: "57570438"
 
 Azure Search では、シノニムの拡張は、クエリ時に行われます。 既存の処理を停止させることなく、シノニム マップをサービスに追加できます。 インデックスを再構築する必要なく、**synonymMaps** プロパティをフィールド定義に追加できます。
 
-## <a name="feature-availability"></a>使用可能な機能
+## <a name="create-synonyms"></a>シノニムを作成する
 
-シノニム機能は最新の api バージョン (api バージョン = 2017-11-11) でサポートされています。 現時点で Azure Portal のサポートはありません。
+シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-fiddler.md)と、[シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Search でのシノニムの追加に関するページ](search-synonyms-tutorial-sdk.md)から始めることができます。
 
-## <a name="how-to-use-synonyms-in-azure-search"></a>Azure search でシノニムを使用する方法
+サービス側の暗号化の保存で[顧客管理のキー](search-security-manage-encryption-keys.md)を使用している場合は、その保護をシノニム マップのコンテンツに適用することもできます。
+
+## <a name="use-synonyms"></a>同義語を使用する
 
 Azure Search のシノニムのサポートは、シノニム マップに基づき、これを定義して、サービスにアップロードします。 これらのマップは独立したリソース (インデックスやデータ ソースなど) を構成し、検索サービスで、任意のインデックスの任意の検索可能フィールドで使用できます。
 
@@ -49,7 +51,7 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 次の例のように、HTTP POST を使用して、新しいシノニム マップを作成できます。
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -62,7 +64,7 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 または、PUT を使用し、URI にシノニム マップ名を指定できます。 シノニム マップが存在しない場合、作成されます。
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -74,7 +76,7 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr シノニム形式
 
-Solr 形式は同等の明示的なシノニム マッピングをサポートします。 マッピング規則は、このドキュメントで説明している Apache Solr のオープン ソース シノニム フィルター仕様 [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter) に準拠しています。 同等のシノニムのサンプル規則を以下に示します。
+Solr 形式は同等の明示的なシノニム マッピングをサポートします。 マッピング規則は、このドキュメントで説明している Apache Solr のオープンソース シノニム フィルター仕様[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter) に準拠しています。 同等のシノニムのサンプル規則を以下に示します。
 ```
 USA, United States, United States of America
 ```
@@ -88,24 +90,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>サービスのシノニム マップを取得します。
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>サービスのシノニム マップを削除します。
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
 
 新しいフィールド プロパティ **synonymMaps** を使用して、検索可能フィールドに使用するシノニム マップを指定できます。 シノニム マップは、サービス レベル リソースであり、そのサービスに属するインデックスの任意のフィールドによって参照できます。
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
 
     {

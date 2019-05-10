@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682561"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190897"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -68,13 +68,14 @@ ms.locfileid: "59682561"
 
 #### <a name="step-2-download-your-project"></a>手順 2: プロジェクトのダウンロード
 
-[Visual Studio 2017 ソリューションのダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Visual Studio 2019 ソリューションのダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3: Visual Studio プロジェクトの構成
+#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 
 1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
 1. Visual Studio でソリューションを開きます (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. Visual Studio のバージョンによっては、プロジェクト `AppModelv2-WebApp-OpenIDConnect-DotNet` を右クリックして **[NuGet パッケージの復元]** を選択することが必要になる場合があります。
+1. パッケージ マネージャー コンソール ([表示]、[その他のウィンドウ]、[パッケージ マネージャー コンソール] の順に選択) を開き、以下を実行します。`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. **[Web.config]** を編集し、`ClientId` パラメーターと `Tenant` パラメーターを次のように置き換えます。
 
     ```xml
@@ -95,7 +96,7 @@ ms.locfileid: "59682561"
 
 ## <a name="more-information"></a>詳細情報
 
-このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 これは、コードの機能や主な引数について理解するために、また、既存の ASP.NET アプリケーションにサインインを追加する場合にも役立ちます。
+このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 この概要、コードの機能や主な引数について理解するために、また、既存の ASP.NET アプリケーションにサインインを追加する場合にも役立ちます。
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN ミドルウェア NuGet パッケージ
 
@@ -109,7 +110,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWIN Startup クラス
 
-OWIN ミドルウェアでは、ホスト側プロセスの初期化時に実行される*スタートアップ クラス* (このクイック スタートの場合、ルート フォルダーにある *startup.cs* ファイル) を使用します。 次のコードは、このクイック スタートで使用されるパラメーターを示しています。
+OWIN ミドルウェアでは、ホスト プロセスの初期化時に実行される "*スタートアップ クラス*" が使用されます。 このクイック スタートでは、ルート フォルダーにある *startup.cs* ファイルを使用します。 次のコードは、このクイック スタートで使用されるパラメーターを示しています。
 
 ```csharp
 public void Configuration(IAppBuilder app)

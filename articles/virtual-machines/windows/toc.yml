@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: エフェメラル OS ディスク
+          href: ephemeral-os-disks.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション
@@ -243,18 +245,38 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: イメージの使用
       items:
-        - name: 共有イメージ (プレビュー)
+        - name: 共有イメージ
           items:
             - name: 概要
               href: shared-image-galleries.md
-            - name: PowerShell を使用して共有イメージを作成する
+            - name: PowerShell
               href: shared-images.md
-            - name: CLI を使用して共有イメージを作成する
+            - name: ポータル
+              href: shared-images-portal.md
+            - name: CLI
               href: ../linux/shared-images.md
             - name: ポータル
               href: shared-images-portal.md
+            - name: テナントをまたいでイメージを共有する
+              href: share-images-across-tenants.md
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md
+        - name: Image Builder (プレビュー)
+          items:
+            - name: 概要
+              href: ../linux/image-builder-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: CLI の使用
+              href: image-builder.md
+            - name: ギャラリーと共に使用する
+              href: image-builder-gallery.md
+            - name: イメージ バージョンを更新する
+              href: image-builder-gallery-update-image-version.md
+            - name: Azure Storage でスクリプトを使用する
+              href: ../linux/image-builder-user-assigned-identity.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: テンプレート リファレンス
+              href: ../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: トラブルシューティング
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
         - name: アップロード用に VM を準備する

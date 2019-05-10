@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525349"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024384"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST チュートリアル:Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 
@@ -27,9 +27,6 @@ Azure Search は、半構造化データの読み取り方法を解している[
 > * 検索可能なコンテンツを格納する Azure Search インデックスを作成する
 > * コンテナーを読み取って検索可能なコンテンツを Azure Blob Storage から抽出するようにインデクサーを構成して実行する
 > * 作成したインデックスを検索する
-
-> [!NOTE]
-> このチュートリアルは、現在 Azure Search のプレビュー機能である JSON 配列サポートに依存します。 ポータルでは使用できません。 そのため、この機能を提供するプレビュー版の REST API、および REST クライアント ツールを使用して、API を呼び出します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +44,7 @@ Azure Search に要求を送信するための [Postman デスクトップ ア�
 
 REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-1. [Azure portal にサインインし](https://portal.azure.com/)、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
+1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
 1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
@@ -81,7 +78,7 @@ Postman を開始し、HTTP 要求を設定します。 このツールに慣れ
 
 Postman を使用して、検索サービスに対して 3 つの API 呼び出しを行い、データ ソース、インデックス、およびインデクサーを作成します。 データ ソースには、ストレージ アカウントと JSON データへのポインターが含まれています。 データを読み込むときに、検索サービスは接続を行います。
 
-クエリ文字列にはプレビュー API (**api-version=2017-11-11-Preview** など) を含める必要があり、各呼び出しは **201 Created** を返します。 一般公開されている api-version には json を jsonArray として処理する機能がまだ実装されておらず、現時点ではプレビュー版の api-version でのみ可能です。
+クエリ文字列では API バージョンを指定する必要があり、各呼び出しで **201 Created** が返される必要があります。 JSON 配列の使用を目的として一般公開が開始されている API バージョンは、`2019-05-06` です。
 
 REST クライアントから次の 3 つの API 呼び出しを実行します。
 
@@ -89,7 +86,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 [データ ソースの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) で、インデックス作成の対象データを指定する Azure Search オブジェクトが作成されます。
 
-この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。 
+この呼び出しのエンドポイントは `https://[service name].search.windows.net/datasources?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。 
 
 この呼び出しでは、要求の本文にストレージ アカウントの名前、ストレージ アカウント キー、および BLOB コンテナー名を含める必要があります。 ストレージ アカウント キーは、Azure Portal のストレージ アカウントの **[アクセス キー]** にあります。 その場所を次の図に示します。
 
@@ -132,7 +129,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
     
 2 つ目の呼び出しは[インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) であり、検索可能なすべてのデータを格納する Azure Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
 
-この呼び出しの URL は `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。
+この呼び出しの URL は `https://[service name].search.windows.net/indexes?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。
 
 最初に、URL を置き換えます。 次のコードをコピーして本文に貼り付け、クエリを実行します。
 
@@ -222,7 +219,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 インデクサーはデータ ソースに接続してターゲットの検索インデックスにデータをインポートし、データ更新を自動化するスケジュールを必要に応じて提供します。 REST API は[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)です。
 
-この呼び出しの URL は `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview` です。 `[service name]` を検索サービスの名前に置き換えます。
+この呼び出しの URL は `https://[service name].search.windows.net/indexers?api-version=2019-05-06` です。 `[service name]` を検索サービスの名前に置き換えます。
 
 最初に、URL を置き換えます。 次のコードをコピーして本文に貼り付け、要求を送信します。 要求はすぐに処理されます。 応答が返された時点で、フルテキスト検索可能なインデックスが得られます。
 
@@ -267,7 +264,7 @@ REST クライアントから次の 3 つの API 呼び出しを実行します�
 
 Azure portal で、検索サービスの **[概要]** ページを開き、**[インデックス]** 一覧で作成したインデックスを見つけます。
 
-作成したインデックスを必ず選択してください。 API のバージョンは、プレビュー バージョンまたは一般提供バージョンの場合があります。 JSON 配列のインデックス作成についてのみ、プレビューの要件がありました。
+作成したインデックスを必ず選択してください。 
 
   ![非構造化検索](media/search-semi-structured-data/indexespane.png)
 

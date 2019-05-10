@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 05/02/2019
+ms.openlocfilehash: 4386420a56b3543ac6c5f5934f963e56bc674873
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680861"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024992"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -24,6 +24,8 @@ ms.locfileid: "59680861"
 * 時系列モデリング用のデータを準備する
 * [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) オブジェクトで特定の時系列パラメーターを構成する
 * 時系列データで予測を実行する
+
+> [!VIDEO https://www.youtube.com/embed/mGr_c2UnOUI]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +69,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > 将来の値を予測するためにモデルをトレーニングするときは、目的のトレーニングで使用されるすべての機能が、意図した期間の予測を実行するときに使用できることを確認してください。 たとえば、需要の予測を作成するときに、現在の株価の機能を含めれば、トレーニングの精度を大幅に高めることができます。 ただし、長期間にわたり予測する予定の場合、将来の時系列ポイントに応じた将来の株価を正確に予測できない可能性があり、モデルの精度が低下することがあります。
 
-## <a name="configure-experiment"></a>実験を構成する
+## <a name="configure-and-run-experiment"></a>実験を構成および実行する
 
 予測タスクの場合は、自動化された機械学習は、時系列データに固有の前処理および推定手順を使用します。 次の前処理手順が実行されます。
 
@@ -126,6 +128,20 @@ best_run, fitted_model = local_run.get_output()
 > [!NOTE]
 > クロス検証 (CV) 手順の場合、時系列データは、正規 K 分割クロス検証方法の基本的な統計的想定に違反する可能性があるため、自動化された機械学習が、元のローリング検証手順を実装して、時系列データに対しクロス検証分割を作成します。 この手順を使用するには、`AutoMLConfig` オブジェクトで `n_cross_validations` パラメーターを指定します。 検証を迂回して、`X_valid` および `y_valid` パラメーターを使った独自の検証セットを使用できます。
 
+### <a name="view-feature-engineering-summary"></a>特徴エンジニアリングの概要を確認する
+
+自動化された機械学習の時系列タスクの種類では、特徴エンジニアリング プロセスの詳細を確認できます。 次のコードは、個々の生の特徴と次の属性を表示します。
+
+* 生の特徴名
+* この生の特徴から形成されたエンジニアリング済み特徴の数
+* 検出された種類
+* 特徴がドロップされたかどうか
+* 生の特徴に対する特徴変換の一覧
+
+```python
+fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+```
+
 ## <a name="forecasting-with-best-model"></a>最適モデルによる予測
 
 最適モデルのイテレーションを使用して、テスト データ セットの値を予測します。
@@ -133,6 +149,16 @@ best_run, fitted_model = local_run.get_output()
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
+```
+
+または、`predict()` ではなく `forecast()` 関数を使用することもできます。これにより、いつ予測を開始するかを指定できます。 次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 `predict()` を使用すると通常そうなるように、このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
+
+`forecast()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
+
+```python
+y_query = y_test.copy().astype(np.float)
+y_query.fill(np.nan)
+y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 `y_test` の実際の値と `y_pred` の予測値との RMSE (二乗平均平方根誤差) を計算します。

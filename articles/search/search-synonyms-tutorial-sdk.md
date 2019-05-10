@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008976"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025168"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>例:C# で Azure Search にシノニムを追加する
 
@@ -23,13 +23,15 @@ ms.locfileid: "59008976"
 Azure Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 この例では、既にインデックスがある状態で同意語を追加して使用する最も重要な手順について取り上げます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * マッピング規則を作成してポストすることによって同意語を有効にする 
-> * クエリ文字列で同意語マップを参照する
+> * [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) クラスを使用して、シノニム マップを作成する。 
+> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) プロパティを設定する。
+
+シノニム対応フィールドに対するクエリは、通常と同じ方法で実行できます。 クエリ構文を追加しなくてもシノニムにアクセスできます。
 
 複数のシノニム マップを作成し、サービス全体の任意のインデックスで使用できるリソースとしてポストして、フィールド レベルでどのマップを使用するかを参照することができます。 クエリの際に、Azure Search はインデックスを検索するだけでなく、クエリで使用されているフィールドにシノニム マップが指定されていれば、そのマップも参照します。
 
 > [!NOTE]
-> 同意語は API と SDK の最新バージョン (API はバージョン 2017-11-11、SDK はバージョン 5.0.0) でサポートされています。 現時点で Azure Portal のサポートはありません。 Azure portal でのシノニムのサポートが役に立つ場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でフィードバックをお送りください
+> シノニムは、プログラムで作成できますが、ポータルでは作成できません。 Azure portal でのシノニムのサポートが役に立つ場合は、[UserVoice](https://feedback.azure.com/forums/263029-azure-search) でフィードバックをお送りください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -172,7 +174,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="next-steps"></a>次の手順
 
-この例では、C# コードから[同意語の REST API](https://aka.ms/rgm6rq) を使ってマッピング規則を作成、ポストし、クエリで同意語マップを呼び出す方法をデモンストレーションします。 さらに詳しい情報については、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
+この例では、マッピング規則を作成、ポストしてからクエリでシノニム マップを呼び出す C# コードのシノニム機能を示します。 さらに詳しい情報については、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
 
 > [!div class="nextstepaction"]
 > [Azure Search で同意語を使用する方法](search-synonyms.md)

@@ -1,7 +1,7 @@
 ---
 title: カスタム R モジュールを定義する
 titleSuffix: Azure Machine Learning Studio
-description: このトピックでは、Azure Machine Learning Studio でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
+description: このトピックでは、カスタム R Studio を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d330340ff09ddb6c2bec04259f964f2298dbffc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120382"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025058"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
 
-このトピックでは、Azure Machine Learning Studio でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
+このトピックでは、カスタム R Studio を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
 
 
 
@@ -133,7 +133,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
 
-### <a name="ports"></a>ポート
+### <a name="ports"></a>Port
 カスタム モジュールの入力ポートと出力ポートは、XML 定義ファイルの **Ports** セクションの子要素で指定します。 これらの要素の順序によって、ユーザーに表示されるレイアウト (UX) が決まります。 XML ファイルの **Ports** 要素内に示される最初の子 **input** または **output** は、Machine Learning の UX で一番左の入力ポートになります。
 各入力ポートと出力ポートは、Machine Learning の UI でポートの上にマウス カーソルが置かれたときに表示されるテキストを指定する、オプションの **Description** 子要素を持つことができます。
 
@@ -225,7 +225,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 ### <a name="arguments"></a>引数
 **Arguments** 要素内で定義されたモジュール パラメーターを使用して、R 関数に追加データを渡すことができます。 これらのパラメーターは、モジュールを選択したときに、Machine Learning の UI の一番右にあるプロパティ ウィンドウに表示されます。 引数はサポートされているどの型でもかまいません。また、必要に応じてカスタム列挙型を作成することもできます。 **Ports** 要素と同様に、**Arguments** 要素では、パラメーター名の上にマウスを置いたときに表示されるテキストを指定するオプションの **Description** 要素を使用できます。
 モジュールの省略可能なプロパティ (defaultValue、minValue、maxValue など) を、**Properties** 要素の属性として引数に追加できます。 **Properties** 要素の有効なプロパティは引数の型によって異なります。これについては、サポートされる引数の型と合わせて次のセクションで説明します。 **isOptional** プロパティが **"true"** に設定されている引数は、ユーザーが値を入力する必要はありません。 引数に値が指定されていない場合、エントリ ポイント関数に引数は渡されません。 エントリ ポイント関数のオプション引数は、関数によって明示的に処理する必要があります (エントリ ポイント関数定義で既定値 NULL を割り当てるなど)。 ユーザーが値を指定した場合、オプション引数は、その他の引数の制約 (最小または最大) のみを適用します。
-入力および出力と同様、各パラメーターで一意の ID 値をそれらに関連付けることが重要になります。 このクイック スタートの例では、関連付けられている ID とパラメーターは *swap* です。
+入力および出力と同様、各パラメーターで一意の ID 値をそれらに関連付けることが重要になります。 このクイックスタートの例では、関連付けられている ID とパラメーターは *swap* です。
 
 ### <a name="arg-element"></a>Arg 要素
 モジュール パラメーターは、XML 定義ファイルの **Arguments** セクションの **Arg** 子要素を使用して定義します。 **Ports** セクションの子要素と同様に、**Arguments** セクションでのパラメーターの順序によって UX で発生するレイアウトが定義されます。 UI では、パラメーターは XML ファイルで定義されている順序で上から下に表示されます。 パラメーターについて Machine Learning によってサポートされるタイプを次に示します。 
@@ -327,7 +327,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     </Arg>    
 
 * *省略可能なプロパティ*:
-  * **default** - 既定のプロパティの値は、**Item** 要素のいずれかの id 値と一致する必要があります。
+  * **default** - 既定のプロパティの値は、**Item** 要素のいずれかの ID 値と一致する必要があります。
 
 ### <a name="auxiliary-files"></a>補助ファイル
 カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングはローカルでの実行と Azure Machine Learning Studio での実行で同じように機能します。 

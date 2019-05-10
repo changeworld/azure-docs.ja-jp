@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 949b5b1aaab60e5b1d160963ac3f024dbbfbe552
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc4d96b900090cd217b4b49b1af2f09762c0da84
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834960"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル:Azure Active Directory と Cezanne HR Software の統合
 
@@ -156,7 +156,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     d. **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    e. [ユーザー ID の属性名] ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    e. [ユーザー ID の属性名] ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
     f. **アップロード** アイコンをクリックして、Azure Portal からダウンロードした証明書をアップロードします。
 
@@ -184,7 +184,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

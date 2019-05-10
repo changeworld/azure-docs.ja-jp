@@ -32,6 +32,8 @@
       href: tutorial-mongodb-cosmos-db.md
     - name: オンラインで MongoDB を Azure Cosmos DB Mongo API に移行する
       href: tutorial-mongodb-cosmos-db-online.md
+    - name: オンラインで Oracle を Azure Database for PostgreSQL に移行する
+      href: tutorial-oracle-azure-postgresql-online.md
 - name: ハウツー ガイド
   items:
     - name: PowerShell を使用して SQL Server から Azure SQL DB に移行する

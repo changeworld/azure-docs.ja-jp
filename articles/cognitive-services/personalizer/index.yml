@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Personalizer のドキュメント
+metadata:
+  document_id: null
+  title: Personalizer - チュートリアル、クイックスタート、API リファレンス
+  description: アプリケーションで Personalizer サービスを使用して、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにする方法を学習します。
+  author: nitinme
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2019
+  ms.author: nitinme
+abstract:
+  description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/personalizer/what-is-personalizer
+            html: <p>Personalizer の機能と使用方法を理解します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Personalizer とは
+          - href: /azure/cognitive-services/personalizer/how-personalizer-works
+            html: <p>Personalizer のフィードバック ループが Rank API と Reward API でどのように動作するのかを学習します。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Personalizer のしくみ
+          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
+            html: <p>会社やサービスが信頼されるようにパーソナル化を実装します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 倫理と責任
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: ''
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ../media/index/logo_Csharp.svg
+            href: csharp-quickstart-commandline-feedback-loop.md
+            text: 'C#'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API
+            html: '<p><a href="https://aka.ms/personalizer-rest-api-docs"> Personalizer API</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'

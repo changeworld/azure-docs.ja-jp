@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 771168a13d7192581aae2ff4128e979b6924484a
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009401"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020672"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows、64 ビット Ubuntu Linux 16.04/18.04、または macOS 10.13 以降の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows、64-bit Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9)、または macOS 10.13 以降の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。
@@ -30,21 +30,29 @@ ms.locfileid: "59009401"
 
 このクイック スタートでは以下が必要です。
 
-* オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04/18.04 (64 ビット)、または macOS 10.13 以降
+* オペレーティング システム:64 ビット Windows、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9)、または macOS 10.13 以降
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
-Ubuntu 16.04/18.04 を実行している場合は、Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
+Linux を実行している場合は、Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+* Ubuntu の場合:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.0 libasound2
+  ```
+
+* Debian 9 の場合:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.2 libasound2
+  ```
 
 Windows (64 ビット版) を実行している場合は、お使いのプラットフォーム用の Microsoft Visual C++ 再頒布可能パッケージがインストールされていることを確認してください。
 * [Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージをダウンロードする](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-
 
 ## <a name="create-and-configure-project"></a>プロジェクトの作成と構成
 

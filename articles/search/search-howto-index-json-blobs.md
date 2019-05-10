@@ -1,7 +1,7 @@
 ---
 title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する - Azure Search
 description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
-ms.date: 04/11/2019
+ms.date: 05/02/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 5b04cabe734b97436421595dbb0ab7584efd4911
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527355"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024939"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 この記事では、Azure Blob Storage 内の JSON ドキュメントから構造化コンテンツを抽出するように Azure Search BLOB [インデクサー](search-indexer-overview.md)を構成し、Azure Search で検索できるようにする方法について説明します。 このワークフローでは、Azure Search インデックスを作成し、JSON BLOB から抽出された既存のテキストとともに読み込みます。 
@@ -24,8 +24,7 @@ ms.locfileid: "59527355"
 
 Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュメントまたは JSON エンティティのコレクションのいずれかです。 JSON コレクションの場合、BLOB には整形式の JSON 要素の**配列**が格納されている可能性があります。 BLOB は、改行で区切られた複数の JSON エンティティで構成されていることもあります。 Azure Search の BLOB インデクサーでは、要求で **parsingMode** パラメーターがどのように設定されているかに応じて、そのような構成を解析できます。
 
-> [!IMPORTANT]
-> `json` 解析モードと `jsonArray` 解析モードは一般公開されていますが、`jsonLines` 解析モードはパブリック プレビュー段階にあり、運用環境では使用すべきではありません。 詳しくは、[REST api-version 2017-11-11-Preview](search-api-2017-11-11-preview.md) に関するページをご覧ください。 
+現在、すべての JSON 解析モード (`json`、`jsonArray`、`jsonLines`) が一般公開されています。 
 
 > [!NOTE]
 > 1 つの Azure BLOB から複数の検索ドキュメントを出力するには、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関するページにあるインデクサー構成の推奨事項に従ってください。
@@ -132,8 +131,8 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 | JSON ドキュメント | parsingMode | 説明 | 可用性 |
 |--------------|-------------|--------------|--------------|
 | BLOB あたり 1 つ | `json` | JSON BLOB を 1 つのテキスト チャンクとして解析します。 各 JSON BLOB は、1 つの Azure Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
-| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で、プレビューで利用できます。 |
-| BLOB あたり複数 | `jsonLines` | 改行によって分離された複数の JSON エンティティ ("配列") を含む BLOB を解析します。各エンティティが独立した Azure Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で、プレビューで利用できます。 |
+| BLOB あたり複数 | `jsonArray` | 配列の各要素が別々の Azure Search ドキュメントになる、BLOB 内の JSON 配列を解析します。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
+| BLOB あたり複数 | `jsonLines` | 改行によって分離された複数の JSON エンティティ ("配列") を含む BLOB を解析します。各エンティティが独立した Azure Search ドキュメントになります。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API と [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK の両方で一般公開されています。 |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
 
@@ -160,7 +159,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 サービス名、管理者キー、ストレージ アカウント、およびアカウント キーのプレースホルダーを有効な値を置き換えてください。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -179,7 +178,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 [インデックス作成](https://docs.microsoft.com/rest/api/searchservice/create-index)要求の例を次に示します。 インデックスには、BLOB から抽出されたテキストを格納するための、検索可能な `content` フィールドが含まれます。   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -196,7 +195,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 インデックスおよびデータ ソースと同様に、インデクサーも Azure Search サービス上に作成して再利用する名前付きオブジェクトです。 インデクサーを作成するための完全に指定された要求は次のようになります。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -223,7 +222,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 すべてのインデクサーには、既存のデータへの接続情報を提供するデータ ソース オブジェクトが必要です。 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -239,7 +238,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 すべてのインデクサーには、データを受信するターゲット インデックスが必要です。 要求の本文には、検索可能なインデックスで目的の動作をサポートする属性が設定されたフィールドで構成されるインデックス スキーマを定義します。 インデクサーが実行される時点で、このインデックスは空である必要があります。 
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -258,7 +257,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 Azure Search 上にインデクサーを作成すると、データのインポートがトリガーされます。 それはすぐに実行されます。スケジュールが指定されている場合は、スケジュールに従って実行されます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -339,7 +338,7 @@ BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Search
 
 JSON 配列の場合、インデクサーの定義は次の例のようになります。 parsingMode パラメーターで `jsonArray` パーサーが指定されていることに注意してください。 JSON BLOB のインデックスを作成するための配列に固有の要件は、適切なパーサーを指定することと、適切なデータを入力することの 2 つだけです。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -386,7 +385,7 @@ BLOB に改行で分離された複数の JSON エンティティが含まれ、
 
 JSON 行では、インデクサーの定義は次の例のようになります。 parsingMode パラメーターで `jsonLines` パーサーが指定されていることに注意してください。 
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

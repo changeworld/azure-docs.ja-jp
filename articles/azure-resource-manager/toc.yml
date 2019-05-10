@@ -40,6 +40,9 @@
     - name: 安全なデプロイ プラクティスの使用
       displayName: adm
       href: deployment-manager-tutorial.md
+    - name: Deployment Manager の正常性チェックの使用
+      displayName: adm
+      href: deployment-manager-tutorial-health-check.md
     - name: テンプレートのデプロイに関するトラブルシューティング
       href: resource-manager-tutorial-troubleshoot.md
 - name: サンプル
@@ -62,6 +65,9 @@
     - name: Deployment Manager
       displayName: adm
       href: deployment-manager-overview.md
+    - name: Deployment Manager の正常性チェック
+      displayName: adm
+      href: deployment-manager-health-check.md
     - name: デプロイ モード
       href: deployment-modes.md
     - name: リソースの削除

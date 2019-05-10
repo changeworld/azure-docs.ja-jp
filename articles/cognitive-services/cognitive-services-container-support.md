@@ -8,26 +8,35 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 172774c90633c96c3a8e2c128df050fedeb8b52b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005963"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147563"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
-Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure で利用できるものと同じリッチな API を使用できます。また、[Docker コンテナー](https://www.docker.com/what-container)に付随するサービスをデプロイおよびホストできる柔軟性があります。 現在、コンテナー サポートは、[Computer Vision](Computer-vision/Home.md)、[Face](Face/Overview.md)、[Text Analytics](text-analytics/overview.md)、[Language Understanding](LUIS/luis-container-howto.md) (LUIS) など、Azure Cognitive Services のサブセットに対するプレビューで使用できます。
+Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure で利用できるものと同じリッチな API を使用できます。また、[Docker コンテナー](https://www.docker.com/what-container)に付随するサービスをデプロイおよびホストできる柔軟性があります。 コンテナー サポートは現在、以下を含む Azure Cognitive Services のサブセットにおいて、プレビューで使用できます。
+
+* [Anomaly Detector](Anomaly-Detector/overview.md)
+* [Computer Vision](Computer-vision/Home.md)
+* [Face](Face/Overview.md)
+* [Form Recognizer](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
+* [Language Understanding](LUIS/luis-container-howto.md) (LUIS)
+* [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+* [Speech Service API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
+* [Text Analytics](text-analytics/overview.md)
 
 コンテナー化とは、アプリケーションまたはサービスとその依存関係や構成をコンテナー イメージとしてパッケージ化するソフトウェア配布のアプローチです。 コンテナー イメージは、ほとんどまたはまったく変更せずに、コンテナー ホストにデプロイできます。 コンテナーは、相互および基になるオペレーティング システムから分離され、仮想マシンよりもフット プリントが小さくなります。 短期間のタスクに対してコンテナーをコンテナー イメージからインスタンス化し、不要になったら削除できます。
 
 次のビデオでは、Cognitive Services コンテナーを使用するデモンストレーションを行っています。
 
-[![Cognitive Services のコンテナーのデモンストレーション](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+[![Cognitive Services のコンテナーのデモ](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
-[Computer Vision](Computer-vision/Home.md)、[Face](Face/Overview.md)、[Text Analytics](text-analytics/overview.md)、および [Language Understanding (LUIS) ](LUIS/what-is-luis.md) サービスは、[Microsoft Azure](https://azure.microsoft.com) で使用できます。 これらのサービス用の Azure リソースを作成して調べるには、[Azure portal](https://portal.azure.com/) にサインインしてください。
+Cognitive Services リソースは [Microsoft Azure](https://azure.microsoft.com) 上で使用できます。 これらのサービス用の Azure リソースを作成して調べるには、[Azure portal](https://portal.azure.com/) にサインインしてください。
 
 ## <a name="features-and-benefits"></a>機能とメリット
 
@@ -43,14 +52,24 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 
 | Service | サポートされている価格レベル | コンテナー | 説明 |
 |---------|----------|----------|-------------|
+|[Anomaly Detector](https://go.microsoft.com/fwlink/?linkid=2083925&clcid=0x409) |F0、S0|**Anomaly-Detector** |Anomaly Detector API では、機械学習を利用することで、時系列データを監視し、その中の異常を検出できます。<br>[アクセスの要求](https://aka.ms/adcontainer)|
 |[Computer Vision](Computer-vision/computer-vision-how-to-install-containers.md) |F0、S1|**Recognize Text** |レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトのイメージから、印刷されたテキストを抽出します。<br/><br/>**重要:** テキスト認識コンテナーは現在のところ、英語でのみ機能します。<br>[アクセスの要求](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Face](Face/face-how-to-install-containers.md) |F0、S0|**Face** |Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別します。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。<br>[アクセスの要求](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[LUIS](LUIS/luis-container-howto.md) |F0、S0|**LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204))|トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。|
-|[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|**キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757)) |主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
-|[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|**言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759)) |最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
-|[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|**感情分析** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654)) |肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](./text-analytics/language-support.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 |
+|[Form recognizer](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0、S0|**Form Recognizer** |Form Understanding では、機械学習の技術を適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。<br>[アクセスの要求](https://aka.ms/FormRecognizerContainerRequestAccess)|
+|[LUIS](LUIS/luis-container-howto.md) |F0、S0|**LUIS** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|トレーニング済みまたは発行済みの Language Understanding モデル ("LUIS アプリ" と呼ばれます) を Docker コンテナーに読み込みます。ユーザーは、そのコンテナーの API エンドポイントからクエリ予測を利用することができます。 コンテナーからクエリのログを収集し、それらを [LUIS ポータル](https://www.luis.ai)に再度アップロードすることで、アプリの予測精度を高めることができます。|
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0、S0|**Personalizer** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。|
+|[Speech Service API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**音声テキスト変換** |連続するリアルタイムの音声をテキストに書き起こします。<br>[アクセスの要求](https://aka.ms/speechcontainerspreview/)|
+|[Speech Service API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0、S0|**テキスト読み上げ** |テキストを自然な音声に変換します。<br>[アクセスの要求](https://aka.ms/speechcontainerspreview/)|
+|[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0、S|**キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
+|[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|**言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
+|[Text Analytics](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0、S|**感情分析** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](./text-analytics/language-support.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 |
 
-また、コンテナーは Cognitive Services [オールインワン オファリング](https://azure.microsoft.com/pricing/details/cognitive-services/)でサポートされています。 単一の Cognitive Services オールインワン リソースを 1 つ作成し、上記のすべてのコンテナーの種類に同じ課金キーを使用できます。
+また、一部のコンテナーは Cognitive Services [**オールインワン オファリング**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)のリソース キー内でサポートされています。 単一の Cognitive Services オールインワン リソースを作成し、次のサービスに対してサポートされているサービス全体で同じ課金キーを使用できます。
+
+* Computer Vision
+* Face
+* LUIS
+* Text Analytics
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーの使用可能性
 
@@ -81,7 +100,11 @@ Docker やコンテナーの基礎に関する入門情報については、「[
 
 Azure Cognitive Services のコンテナーによって提供される機能をインストールして試してください。
 
-* [Computer Vision コンテナーをインストールして使用する](Computer-vision/computer-vision-how-to-install-containers.md)
-* [Face コンテナーをインストールして使用する](Face/face-how-to-install-containers.md)
-* [Text Analytics コンテナーをインストールして使用する](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
-* [Language Understanding (LUIS) コンテナーをインストールして使用する](LUIS/luis-container-howto.md)
+* [Anomaly Detector コンテナー](Anomaly-Detector/anomaly-detector-container-howto.md)
+* [Computer Vision コンテナー](Computer-vision/computer-vision-how-to-install-containers.md)
+* [Face コンテナー](Face/face-how-to-install-containers.md)
+* [Form Recognizer コンテナー](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
+* [Language Understanding (LUIS) コンテナー](LUIS/luis-container-howto.md)
+* [Personalizer コンテナー](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
+* [Speech Service API コンテナー](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
+* [Text Analytics コンテナー](text-analytics/how-tos/text-analytics-how-to-install-containers.md)

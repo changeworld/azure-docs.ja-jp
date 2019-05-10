@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631156"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149776"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
 Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンが必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
@@ -30,18 +29,19 @@ SDK 更新プログラムにも同じルールが適用されます。 Azure Sea
 ## <a name="snapshot-of-current-versions"></a>現在のバージョンのスナップショット
 Azure Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。
 
+
 | インターフェイス | 最新のメジャー バージョン | Status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |5.0 |一般公開、2018 年 4 月にリリース済み |
-| [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |4.0.1-preview |プレビュー (2017 年 5 月リリース) |
-| [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |一般公開 |
-| [サービス REST API 2017-11-11 プレビュー](search-api-2017-11-11-preview.md) |2017-11-11-Preview |プレビュー |
-| [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |2.0 |一般公開 |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |一般公開、2019 年 5 月にリリース済み |
+| [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |8.0.0 プレビュー |プレビュー、2019 年 4 月にリリース済み |
+| [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |一般公開 |
+| [サービス REST API 2019-05-06 プレビュー](search-api-preview.md) |2019-05-06 プレビュー |プレビュー |
+| [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |一般公開 |
 | [管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |一般公開 |
 
 REST API の場合は、各呼び出しに対して `api-version` を含める必要があります。 `api-version` を使用すると、プレビュー API などの特定のバージョンを対象にするのが容易になります。 次の例に、 `api-version` パラメーターを指定する方法を示します。
 
-    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
+    GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
 > 各要求で `api-version` を指定するとしても、すべての API 要求で同じバージョンを使用することをお勧めします。 このことは、特に、新しい API バージョンが、以前のバージョンで認識されない属性または操作を導入している場合に当てはまります。 API バージョンを混在させると、意図しない結果を招くおそれがあるので、お勧めしません。
@@ -57,6 +57,6 @@ Azure Search の場合は常に、まず REST API によって、次に .NET SDK
 
 そのため、プレビュー バージョンに依存した実稼働コードの作成はお勧めしません。 古いプレビュー バージョンを使用している場合は、一般公開 (GA) バージョンに移行することをお勧めします。
 
-.NET SDK の場合:コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration.md)に関する記事を参照してください。
+.NET SDK の場合:コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration-version-9.md)に関する記事を参照してください。
 
 一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。 SLA については、 [Azure Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。

@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Form Recognizer のドキュメント
+metadata:
+  title: API ドキュメント - Form Recognizer - Azure Cognitive Services | Microsoft Docs
+  description: Form Recognizer を使用して、フォーム ドキュメントからキーと値のデータをインテリジェントに抽出する方法について説明します。
+  services: cognitive-services
+  author: PatrickFarley
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.subservice: form-recognizer
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/16/2019
+  ms.author: pafarley
+ms.custom: seodec18
+abstract:
+  description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習では、手作業によるデータのラベリングまたは集中的なコーディングおよびメンテナンスを行わなくても、モデルはフィールドとエントリ間のレイアウトと関係を理解できます。
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/form-recognizer/overview
+            html: <p>Form Recognizer について学習します。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Form Recognizer とは
+          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
+            html: <p>Form Recognizer コンテナーを使用してフォームとテーブルのデータを解析する方法を学習します。</p>
+            image:
+              src: ../media/index/i_get-started.svg
+            title: コンテナーのインストールと実行
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: 以下を使用して、Form Recognizer モデルをトレーニングし、フォームからデータを抽出します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/logos/logo-curl.svg
+            text: cURL
+            href: quickstarts/curl-train-extract.md
+          - image:
+              src: ./media/logos/logo-python.svg
+            text: Python
+            href: quickstarts/python-train-extract.md
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://aka.ms/form-recognizer/api">Form Recognizer API</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'

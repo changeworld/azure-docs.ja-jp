@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2e82e033e56af10bd8e676570e9409941753eb38
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010194"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020983"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
-Azure Speech Services は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](speech-devices-sdk-qsg.md)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
+Azure Speech Services は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
 
 > [!IMPORTANT]
 > Speech Services は、Bing Speech API、Translator Speech、Custom Speech に代わるものです。 移行の手順については、"*「ハウツー ガイド」の「移行」*" をご覧ください。
@@ -30,6 +30,7 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 |---------|---------|-------------|-----|------|
 | [音声テキスト変換](speech-to-text.md) | 音声テキスト変換 | 音声テキスト変換では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われます。結果のテキストを、アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [バッチ文字起こし](batch-transcription.md) | バッチ文字起こしでは、大量のデータの音声からテキストへの文字起こしを、非同期で行うことができます。 これは REST ベースのサービスであり、カスタマイズとモデルの管理と同じエンドポイントを使用します。 | いいえ  | [はい](https://westus.cris.ai/swagger/ui/index) |
+| | [会話の文字起こしサービス](conversation-transcription-service.md) | リアルタイムの音声認識、話者識別、およびダイアライゼーションが有効になります。 話者を区別することができるため、対面会議の文字起こしに最適です。 | はい | いいえ  |
 | | [カスタマイズ](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ  | [はい](https://westus.cris.ai/swagger/ui/index) |
 | [Text-to-Speech](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [カスタマイズ](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ  | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -39,7 +40,8 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 
 Azure Speech Services の新機能について説明します。
 
-* 2019 年 4 月 - Windows および Linux における C++、C#、Java 向けにテキスト読み上げ (Beta) をサポートする Speech SDK 1.4.0 をリリースしました。 また、この SDK では、Linux における C++ および C# 向けとして、新たに MP3 および Opus/Ogg のオーディオ形式がサポートされます。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。 
+* 2019 年 5 月 - Speech SDK 1.5.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
+* 2019 年 4 月 - Windows および Linux における C++、C#、Java 向けにテキスト読み上げ (Beta) をサポートする Speech SDK 1.4.0 をリリースしました。 また、この SDK では、Linux における C++ および C# 向けとして、新たに MP3 および Opus/Ogg のオーディオ形式がサポートされます。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
 * 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げ (TTS) の新しいエンドポイントが利用可能になりました。 加えて、TTS で新しいリージョンがサポートされます。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
 * 2019年 2 月 - [Unity (ベータ)](quickstart-csharp-unity.md) をサポートする Speech SDK 1.3.0 がリリースされました。 `AudioInput` クラスのサポートが追加されました。このクラスでは、オーディオのストリーミング ソースを選択できます。 拡張機能と既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」をご覧ください。
 * 2018年 12 月 - [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md)、および Ubuntu 18.04 LTS をサポートする Speech SDK 1.2.0 がリリースされました。 詳しくは、「[リリース ノート](releasenotes.md)」をご覧ください。

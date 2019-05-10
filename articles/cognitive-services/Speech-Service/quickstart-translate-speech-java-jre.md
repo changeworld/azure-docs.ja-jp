@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 36eaaeabcf888aac10bcf9b8a27e3590d21079ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5dc1852a57970c2994d9f36cbd7242a18b580a61
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897106"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021005"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を翻訳する
 
-このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な Java アプリケーションを作成します。 このアプリケーションは、64 ビット Windows または 64 ビット Ubuntu Linux 16.04/18.04 上で動作するように設計されており、Speech SDK Maven パッケージおよび Eclipse Java IDE を使用してビルドされています。
+このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な Java アプリケーションを作成します。 このアプリケーションは、64 ビット Windows または 64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9)、または macOS 10.13 以降で動作するように設計されています。 Speech SDK Maven パッケージと Eclipse Java IDE で構築されます。
 
 音声翻訳が可能な言語の完全な一覧については、[言語サポート](language-support.md)に関するページを参照してください。
 
@@ -27,17 +27,26 @@ ms.locfileid: "57897106"
 
 このクイック スタートでは以下が必要です。
 
-* オペレーティング システム:64 ビットの Windows または 64 ビットの Ubuntu Linux 16.04/18.04
+* オペレーティング システム:64 ビット Windows、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9)、または macOS 10.13 以降
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
-Ubuntu 16.04/18.04 を実行している場合は、Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
+Linux を実行している場合は、Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+ * Ubuntu の場合:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.0 libasound2
+   ```
+
+ * Debian 9 の場合:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.2 libasound2
+   ```
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。

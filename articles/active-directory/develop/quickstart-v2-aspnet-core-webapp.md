@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579463"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190862"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート: ASP.NET Core Web アプリに Microsoft サインインを追加する
 
@@ -73,13 +73,13 @@ ms.locfileid: "59579463"
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>手順 2: ASP.NET Core プロジェクトのダウンロード
 
-- [Visual Studio 2017 ソリューションのダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Visual Studio 2019 ソリューションのダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3: Visual Studio プロジェクトの構成
+#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 
 1. ルート フォルダー内のローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
-1. Visual Studio 2017 を使用する場合は、Visual Studio でソリューションを開きます (任意)。
-1. **appsettings.json** ファイルを編集します。 `ClientId` を探し、`ClientId` の値を、先ほど登録したアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。 
+1. Visual Studio 2019 を使用する場合は、Visual Studio でソリューションを開きます (任意)。
+1. **appsettings.json** ファイルを編集します。 `ClientId` を探し、`ClientId` の値を、登録済みのアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -99,7 +99,7 @@ ms.locfileid: "59579463"
 
 ## <a name="more-information"></a>詳細情報
 
-このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 これは、コードの機能や主な引数について理解するために、また、既存の ASP.NET Core アプリケーションにサインインを追加する場合にも役立ちます。
+このセクションでは、ユーザーをサインインさせるために必要なコードの概要を示します。 この概要、コードの機能や主な引数について理解するために、また、既存の ASP.NET Core アプリケーションにサインインを追加する場合にも役立ちます。
 
 ### <a name="startup-class"></a>スタートアップ クラス
 
@@ -159,7 +159,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="next-steps"></a>次の手順
 
-詳細情報 (新しい ASP.NET Core Web アプリケーションに認証を追加する方法、Microsoft Graph や他の Microsoft API を呼び出す方法、独自の API を呼び出す方法、認証の追加方法、国内クラウドでのユーザーのサインイン方法、またはソーシャル ID によるサインイン方法に関する手順など) については、ASP.NET Core チュートリアルのGitHub リポジトリを参照してください。
+詳細情報 (新しい ASP.NET Core Web アプリケーションに認証を追加する方法、Microsoft Graph や他の Microsoft API を呼び出す方法、独自の API を呼び出す方法、認証の追加方法、国内クラウドでのユーザーのサインイン方法、またはソーシャル ID によるサインイン方法に関する手順など) については、ASP.NET Core チュートリアルの GitHub リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web アプリのチュートリアル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

@@ -1,0 +1,69 @@
+- name: Azure Blockchain Service (プレビュー)
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Blockchain Service について
+      href: overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: メンバーを作成する - ポータル
+      href: create-member.md
+    - name: メンバーを作成する - CLI
+      href: create-member-cli.md
+    - name: トランザクション ノードに接続する
+      items:
+        - name: MetaMask を使用する
+          href: connect-metamask.md
+        - name: Geth を使用する
+          href: connect-geth.md
+        - name: Truffle を使用する
+          href: connect-truffle.md
+- name: チュートリアル
+  items:
+    - name: トランザクションを送信する
+      href: send-transaction.md
+- name: 概念
+  items:
+    - name: コンソーシアム
+      href: consortium.md
+    - name: データ アクセスとセキュリティ
+      href: data-security.md
+    - name: 開発
+      href: develop.md
+    - name: 制限
+      href: limits.md
+    - name: パッチ、更新、バージョン管理
+      href: ledger-versions.md
+- name: ハウツー ガイド
+  items:
+    - name: Azure AD アクセスを構成する
+      href: configure-aad.md
+    - name: トランザクション ノードを構成する
+      href: configure-transaction-nodes.md
+    - name: Azure CLI を使用して管理する
+      href: manage-cli.md
+    - name: PowerShell を使用してコンソーシアムを管理する
+      href: manage-consortium-powershell.md
+- name: リソース
+  items:
+    - name: Blockchain REST API
+      href: 'https://docs.microsoft.com/rest/api/blockchain/'
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Azure Blockchain Service の Visual Studio Code 拡張機能
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
+    - name: コード サンプル
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: コミュニティ
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

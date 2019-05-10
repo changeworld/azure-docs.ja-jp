@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49f971fb50d0a8a6a0dab09158f780206a4d32f1
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079147"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024840"
 ---
 # <a name="filters-in-azure-search"></a>Azure Search のフィルター 
 
@@ -73,10 +73,10 @@ ms.locfileid: "58079147"
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2017-11-11
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
 
 # Option 2: Use filter for POST and pass it in the header
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
     "filter": "baseRate lt 150",
@@ -146,7 +146,7 @@ REST API では、フィルター可能の設定は既定で*オン*です。 �
 
 ## <a name="text-filter-fundamentals"></a>テキスト フィルターの基礎
 
-テキスト フィルターは、文字列フィールドに対して有効です。検索コーパス内の値に基づいて、任意のドキュメントのコレクションを取得します。
+テキスト フィルターは、文字列フィールドに対して有効です。検索インデックス内の値に基づいて、任意のドキュメントのコレクションを取得します。
 
 文字列で構成されるテキスト フィルターの場合、字句解析または単語区切り処理がないため、比較は完全一致のみです。 たとえば、フィールド *f* に "sunny day" が含まれる場合、`$filter=f eq 'Sunny'` では一致しませんが、`$filter=f eq 'Sunny day'` は一致します。 
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/06/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579531"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154658"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -27,16 +27,16 @@ Blockchain Workbench のコンポーネントについて詳しくは、「[Azur
 
 Blockchain Workbench を使用すると、ブロックチェーン台帳を、ブロックチェーンベース アプリケーションの構築に最もよく使用される関連 Azure サービスのセットと共にデプロイできます。 Blockchain Workbench をデプロイすると、Azure サブスクリプションのリソース グループ内に次の Azure サービスがプロビジョニングされます。
 
-* 1 Event Grid トピック
-* 1 Service Bus 名前空間
-* 1 Application Insights
-* 1 SQL Database (Standard S0)
-* 2 App Services (Standard)
-* 2 Azure Key Vault
-* 2 Azure Storage アカウント (Standard LRS)
-* 2 仮想マシン スケール セット (検証コントロールおよび worker ノードの場合)
-* 2 Virtual Network (各仮想ネットワークにロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレスが含まれます)
-* 省略可能:Azure Monitor
+* App Service プラン (Standard)
+* Application Insights
+* Event Grid
+* Azure Key Vault
+* Service Bus
+* SQL Database (Standard S0) + SQL 論理サーバー
+* Azure Storage アカウント (Standard LRS)
+* 仮想マシン スケール セット (容量 1)
+* Virtual Network リソース グループ (ロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレス、仮想ネットワークを含む)
+* 省略可能:Azure Blockchain Service (Basic B0 の既定値)
 
 次に **myblockchain** リソース グループ内に作成されるデプロイの例を次に示します。
 
@@ -44,17 +44,12 @@ Blockchain Workbench を使用すると、ブロックチェーン台帳を、�
 
 Blockchain Workbench のコストは、基礎となる Azure サービスのコストの総計です。 Azure サービスの料金情報は、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用して計算できます。
 
-> [!IMPORTANT]
-> Azure Free レベル サブスクリプションなど、サービス制限のあるサブスクリプションをご利用の場合、VM コアのクォータ不足が原因でデプロイに失敗することがあります。 デプロイの前に、「[仮想マシンの vCPU クォータ](../../virtual-machines/windows/quotas.md)」の記事のガイダンスに従ってクォータをチェックしてください。 既定の VM を選択した場合は、6 つの VM コアが必要です。 それより小さいサイズの VM (*Standard DS1 v2* など) に変更した場合、必要なコア数は 4 つに減ります。
-
 ## <a name="prerequisites"></a>前提条件
 
 Azure Blockchain Workbench では、Azure AD 構成とアプリケーション登録が必要です。 デプロイの前に Azure AD を[手動で構成](#azure-ad-configuration)するか、デプロイ後にスクリプトを実行するかを選択できます。 Blockchain Workbench を再デプロイしている場合は、「[Azure AD 構成](#azure-ad-configuration)」を参照して Azure AD 構成を確認します。
 
 > [!IMPORTANT]
 > Workbench は、Azure AD アプリケーションを登録するために使用しているテナントと同じテナントに展開する必要はありません。 Workbench は、リソースを展開するための十分なアクセス許可があるテナントに展開する必要があります。 Azure AD テナントについて詳しくは、「[Azure Active Directory テナントを取得する方法](../../active-directory/develop/quickstart-create-new-tenant.md)」および「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。
-
-
 
 ## <a name="deploy-blockchain-workbench"></a>Blockchain Workbench を展開する
 
@@ -82,7 +77,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
     | 認証の種類 | VM への接続にパスワードまたはキーを使うかどうかを選びます。 |
     | パスワード | このパスワードは、VM に接続するために使われます。 |
     | SSH | **ssh-rsa** で始まる単一行形式の RSA 公開キー、または複数行の PEM 形式を使います。 SSH キーは、Linux と OS X では `ssh-keygen` を使って、Windows では PuTTYGen を使って、生成できます。 SSH キーについて詳しくは、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」をご覧ください。 |
-    | Database password (データベース パスワード) / Confirm database password (データベース パスワードの確認) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 |
+    | Database and Blockchain password (データベースとブロックチェーンのパスワード) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、長さを 12 文字から 72 文字までで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
     | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、**[場所]** 設定と一致させる必要があります。 |
     | サブスクリプション | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
@@ -94,15 +89,15 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
     **[新規作成]** の場合:
 
-    *[新規作成]* を選択した場合、単一メンバーのサブスクリプション内に一連の Ethereum Proof-of Authority (PoA) ノードが作成されます。 
+    *[新規作成]* オプションでは、既定の Basic SKU を使用して Azure Blockchain Service の Quorum 台帳がデプロイされます。
 
     ![新しいブロック チェーン ネットワークの詳細設定](media/deploy/advanced-blockchain-settings-new.png)
 
     | Setting | 説明  |
     |---------|--------------|
-    | 監視 | Blockchain ネットワークを監視するために Azure Monitor を有効にするかどうかを選択します。 |
+    | Azure Blockchain Service pricing tier (Azure Blockchain Service の価格レベル) | Blockchain Workbench に使用される Azure Blockchain Service のレベル **[Basic]** または **[Standard]** を選択します。 |
     | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
-    | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
+    | VM の選択 | お使いのブロックチェーン ネットワークに推奨されるストレージ パフォーマンスと VM サイズを選択します。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
 
     **[既存のものを使用]** の場合:
 
@@ -121,7 +116,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
      |---------|--------------|
      | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 |
      | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
-     | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 |
+     | VM の選択 | お使いのブロックチェーン ネットワークに推奨されるストレージ パフォーマンスと VM サイズを選択します。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
 
 9. **[OK]** をクリックして [詳細設定] を完了します。
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251777"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023972"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する 
 
@@ -231,3 +231,29 @@ Azure Machine Learning Services では、個人データは、実行履歴ドキ
 データ ソースは次の呼び出しで取得できます。
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>ビジュアル インターフェイス資産を削除する
+
+実験で作成したビジュアル インターフェイスで、個々の資産を削除します。
+
+1. 左側で、削除する資産の種類を選択します。
+
+    ![資産を削除する](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. 一覧で、削除する個々の資産を選択します。
+
+1. 下部にある **[削除]** を選択します。
+
+## <a name="export-visual-interface-data"></a>ビジュアル インターフェイスをエクスポートする
+
+実験で作成したビジュアル インターフェイスで、追加したデータをエクスポートします。
+
+1. 左側で、**[データ]** を選択します。
+
+1. 上部にある **[My Datasets]\(マイ データセット\)** または **[サンプル]** を選択してエクスポートするデータを特定します。
+
+    ![データをダウンロードする](media/how-to-export-delete-data.md/download-data.png)
+
+1. 一覧で、エクスポートする個々のデータセットを選択します。
+
+1. 下部にある **[ダウンロード]** を選択します。

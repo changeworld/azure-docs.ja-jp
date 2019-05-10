@@ -1,7 +1,7 @@
 ---
 title: 先行入力クエリをインデックスに追加する - Azure Search
 description: suggester を作成し、オートコンプリートまたは自動候補クエリの用語を呼び出す要求を作成して、Azure Search における先行入力クエリのアクションを有効にします。
-ms.date: 03/22/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650463"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021890"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Azure Search で先行入力のために suggester をインデックスに追加する
 
@@ -39,9 +39,6 @@ Azure Search でこれらの動作を実装するために、インデックス�
 + インデックス コンポーネントは suggester です。 ポータル、REST API、または .NET SDK を使用して suggester を作成できます。 
 
 + クエリ コンポーネントは、クエリ要求上で指定されるアクション (検索候補またはオートコンプリートのどちらかのアクション) です。 
-
-> [!Important]
-> オートコンプリートは現在プレビュー段階にあり、プレビューの REST APIs および .NET SDK では利用可能です。 運用環境のアプリケーションは、対象としていません。 
 
 入力との平行検索のサポートは、フィールド単位で有効化されます。 スクリーンショットに示したものと同様のエクスペリエンスを求めているのであれば、同じ検索ソリューション内に両方の先行入力の動作を実装できます。 どちらの要求でも特定のインデックスの*documents* コレクションをターゲットとし、ユーザーが入力文字列を 3 文字以上指定した時点から応答が返されます。
 
@@ -106,7 +103,7 @@ suggester を定義するプロパティは次のとおりです。
 
 |プロパティ      |説明      |
 |--------------|-----------------|
-|`name`        |suggester の名前。 [Suggestions REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) または[Autocomplete REST API (プレビュー)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) を呼び出すときに、suggester の名前を使用します。|
+|`name`        |suggester の名前。 [Suggestions REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) または [Autocomplete REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) を呼び出すときに、suggester の名前を使用します。|
 |`searchMode`  |候補語句の検索に使用する戦略。 現在サポートされている唯一のモードは `analyzingInfixMatching` です。文の先頭または中間にあるフレーズの柔軟なマッチングを実行します。|
 |`sourceFields`|検索候補の内容のソースである 1 つまたは複数のフィールドのリスト。 `Edm.String` 型および `Collection(Edm.String)` 型のフィールドだけを、検索候補のソースにできます。 カスタム言語アナライザーが設定されていないフィールドのみを使用できます。<p/>検索バーまたはドロップダウン リストのどちらに入力される文字列でも、想定される適切な応答に利用するフィールドのみを指定します。<p/>ホテル名には有効桁数があるため、適切な選択肢です。 説明やコメントなどの詳細なフィールドは、文字数が多くなりすぎます。 同様に、カテゴリやタグなどの反復的なフィールドでは、効果が低くなります。 例には、複数のフィールドを含めることができることを例示するために、ひとまず、"カテゴリ" を組み入れています。 |
 
@@ -120,7 +117,7 @@ suggester を既存のインデックスに追加する場合に、既存のフ�
 
 前述のように、検索候補クエリ、オートコンプリート、またはその両方に対して suggester を使用できます。 
 
-suggester は要求において、操作に沿って参照されます。 たとえば、GET REST の呼び出しの場合、documents コレクションには `suggest` または `autocomplete` のどちらかを指定します。 REST の場合、suggester が作成された後に、クエリ ロジック内で [Suggestions API](https://docs.microsoft.com/rest/api/searchservice/suggestions) または [Autocomplete API (プレビュー)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) を使用します。
+suggester は要求において、操作に沿って参照されます。 たとえば、GET REST の呼び出しの場合、documents コレクションには `suggest` または `autocomplete` のどちらかを指定します。 REST の場合、suggester が作成された後に、クエリ ロジック内で [Suggestions API](https://docs.microsoft.com/rest/api/searchservice/suggestions) または [Autocomplete API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) を使用します。
 
 .NET の場合、[SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) または [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet) を使用します。
 

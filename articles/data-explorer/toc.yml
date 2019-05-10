@@ -66,6 +66,10 @@
       items:
         - name: サンプル データを取り込む
           href: ingest-sample-data.md
+    - name: デプロイ
+      items:
+        - name: DevOps タスク
+          href: devops.md
     - name: データのクエリを実行する
       items:
         - name: クエリを作成する

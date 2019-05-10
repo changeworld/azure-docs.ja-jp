@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bf78cd9b70aa4a82ef96fdd529d3ee5b1641038c
+ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010415"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65035361"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -114,7 +114,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 | time |Datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
 | operationName |string |"Query.Search" |操作の名前 |
-| operationVersion |string |"2017-11-11" |使用されている API バージョン |
+| operationVersion |string |"2019-05-06" |使用されている API バージョン |
 | category |string |"OperationLogs" |定数 |
 | resultType |string |"Success" |指定できる値成功または失敗 |
 | resultSignature |int |200 |HTTP の結果コード |
@@ -126,7 +126,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 | Name | Type | 例 | メモ |
 | --- | --- | --- | --- |
 | 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
-| クエリ |string |"?search=AzureSearch&$count=true&api-version=2017-11-11" |クエリ パラメーター |
+| クエリ |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |クエリ パラメーター |
 | Documents |int |42 |処理されたドキュメント数 |
 | IndexName |string |"testindex" |操作に関連付けられているインデックスの名前 |
 

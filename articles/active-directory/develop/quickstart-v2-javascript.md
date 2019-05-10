@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2021c5028637a6f7e732df61b6f7c034ef79324f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 605206682cb70d430773cdbf9ff746eabf594103
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547399"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190844"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>クイック スタート:ユーザーをサインインし、JavaScript のシングルページ アプリケーション (SPA) からアクセス トークンを取得する
 
@@ -37,7 +37,7 @@ ms.locfileid: "59547399"
 * node.js server でプロジェクトを実行するために:
     *  [Node.js](https://nodejs.org/en/download/)
     * プロジェクト ファイルを編集するために [Visual Studio Code](https://code.visualstudio.com/download) をインストールする
-* プロジェクトを Visual Studio ソリューションとして実行するために、[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) をインストールする。
+* プロジェクトを Visual Studio ソリューションとして実行するために、[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) をインストールする。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
@@ -49,7 +49,7 @@ ms.locfileid: "59547399"
 >
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 > 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-> 1. 新しい [Azure portal の [アプリの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) ウィンドウに移動します。
+> 1. 新しい [Azure portal の [アプリの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) ウィンドウに移動します。
 > 1. アプリケーションの名前を入力して **[登録]** をクリックします。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -81,27 +81,32 @@ ms.locfileid: "59547399"
 #### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 
 次のオプションのうち、ご自身の開発環境に適したものを選択します。
-* [コア プロジェクト ファイルのダウンロード - Node.js などの Web サーバー向け](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
-* [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+* [コア プロジェクト ファイルのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip): Node.js を使用する Web サーバーでの実行用。 ファイルを開くには、[Visual Studio Code](https://code.visualstudio.com/) などのエディターを使用します。
 
-ローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを解凍します。
-フォルダー内のファイルを開くには、[Visual Studio Code](https://code.visualstudio.com/) などのエディターを使用します。
+* (省略可能) [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip): IIS サーバーでの実行用。 ローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを解凍します。
+
+
 
 #### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
 
 > [!div renderon="docs"]
-> *JavaScriptSPA* フォルダーの `index.html` を編集します。`applicationConfig` の `clientID` と `authority` の値を設定してください。
+> *JavaScriptSPA* フォルダーの `index.html` を編集します。`msalConfig` の `clientID` と `authority` の値を設定してください。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> *JavaScriptSPA* フォルダーの `index.html` を編集します。`applicationConfig` を次の内容に置き換えてください。
+> *JavaScriptSPA* フォルダーの `index.html` を編集します。`msalConfig` を次の内容に置き換えてください。
 
 ```javascript
-var applicationConfig = {
-    clientID: "Enter_the_Application_Id_here",
-    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
-    graphScopes: ["user.read"],
-    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
+var msalConfig = {
+    auth: {
+        clientId: "Enter_the_Application_Id_here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+    },
+    cache: {
+        cacheLocation: "localStorage",
+        storeAuthStateInCookie: true
+    }
 };
+
 ```
 > [!div renderon="docs"]
 >
@@ -110,10 +115,11 @@ var applicationConfig = {
 > - `Enter_the_Tenant_Info_Here` - 次のいずれかのオプションに設定します。
 >   - アプリケーションで**この組織のディレクトリ内のアカウント**をサポートする場合は、この値を**テナント ID** または**テナント名**に置き換えます (たとえば、contoso.microsoft.com)
 >   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
->   - アプリケーションで**任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント**をサポートする場合は、この値を `common` に置き換えます
+>   - アプリケーションで**任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント**をサポートする場合は、この値を `common` に置き換えます。 *個人用の Microsoft アカウントのみ*にサポートを制限する場合は、この値を `consumers` に置き換えます。
 >
 > > [!TIP]
 > > **[アプリケーション (クライアント) ID]**、**[ディレクトリ (テナント) ID]**、**[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
+>
 
 #### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
 
@@ -141,10 +147,13 @@ var applicationConfig = {
 MSAL はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 クイック スタートの *index.html* にはライブラリへの参照が含まれています。
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
 ```
+> [!TIP]
+> 上記のバージョンを [MSAL.js リリース](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)の最新のリリース バージョンで置き換えることができます。
 
-また、Node がインストールされている場合は、npm を介してダウンロードできます。
+
+別の方法としては、Node がインストール済みの場合に、次のようにして最新バージョンを npm を介してダウンロードできます。
 
 ```batch
 npm install msal
@@ -155,29 +164,48 @@ npm install msal
 クイック スタートのコードには、ライブラリを初期化する方法も示されています。
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var msalConfig = {
+    auth: {
+        clientId: "Enter_the_Application_Id_here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+    },
+    cache: {
+        cacheLocation: "localStorage",
+        storeAuthStateInCookie: true
+    }
+};
+
+var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
 > |Where  |  |
 > |---------|---------|
 > |`ClientId`     |Azure portal に登録されているアプリケーションのアプリケーション ID|
-> |`authority`    |機関の URL です。 *null* を渡すと、既定の機関が `https://login.microsoftonline.com/common` に設定されます。 お使いのアプリがシングル テナント (1 つのディレクトリのアカウントのみが対象) の場合、この値は `https://login.microsoftonline.com/<tenant name or ID>` に設定します|
-> |`tokenReceivedCallback`| 認証後に呼び出されたコールバック メソッドがアプリにリダイレクトされます。 ここで `acquireTokenRedirectCallBack` が渡されます。 loginPopup を使用している場合、これは null です。|
-> |`options`  |省略可能なパラメーターのコレクション。 この場合、`storeAuthStateInCookie` と `cacheLocation` はオプションの構成です。 オプションの詳細については、[wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options) を参照してください。 |
+> |`authority`    | (省略可能) 上記の構成セクションで説明されている、アカウント タイプをサポートするための機関の URL。 既定の機関は `https://login.microsoftonline.com/common`です。 |
+> |`cacheLocation`  | (省略可能) これにより、認証状態のブラウザー ストレージが設定されます。 既定では sessionStorage です。   |
+> |`storeAuthStateInCookie`  | (省略可能) ライブラリは、ブラウザーの cookie の認証フローを検証するために必要な認証要求の状態を保存します。 これは、特定の[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)に対処するために、IE および Edge ブラウザー用に設定されます。 |
+
+ 構成可能なオプションの詳細については、[wiki](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/MSAL-basics#configuration-options) を参照してください。
 
 ### <a name="sign-in-users"></a>ユーザーのサインイン
 
 次のコード スニペットは、ユーザーをサインインする方法を示しています。
 
 ```javascript
-myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
-    //Callback code here
-})
+var requestObj = {
+    scopes: ["user.read"]
+};
+
+myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
+    //Login Success callback code here
+}).catch(function (error) {
+    console.log(error);
+});
 ```
 
 > |Where  |  |
 > |---------|---------|
-> | `scopes`   | (省略可能) ログイン時にユーザーの同意が要求されるスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 ここで `applicationConfig.graphScopes` が渡されます。 |
+> | `scopes`   | (省略可能) ログイン時にユーザーの同意が要求されるスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 |
 
 > [!TIP]
 > あるいは、`loginRedirect` メソッドを使用して、ポップアップ ウィンドウの代わりに現在のページをサインイン ページにリダイレクトすることもできます。
@@ -191,14 +219,21 @@ MSAL では、`acquireTokenRedirect`、`acquireTokenPopup`、`acquireTokenSilent
 `acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 最初に `loginRedirect` または `loginPopup` メソッドが実行され、その後の呼び出しでは、保護されたリソースにアクセスするトークンを取得するために `acquireTokenSilent` メソッドが通常使用されます。 トークンを要求または更新するための呼び出しは自動的に行われます。
 
 ```javascript
-myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (accessToken) {
+var requestObj = {
+    scopes: ["user.read"]
+};
+
+myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
     // Callback code here
-})
+    console.log(tokenResponse.accessToken);
+}).catch(function (error) {
+    console.log(error);
+});
 ```
 
 > |Where  |  |
 > |---------|---------|
-> | `scopes`   | API のアクセス トークンで返されるように要求されているスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 ここで `applicationConfig.graphScopes` が渡されます。|
+> | `scopes`   | API のアクセス トークンで返されるように要求されているスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。|
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
@@ -207,18 +242,24 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 * お使いのアプリケーションが、ユーザーによる同意が必要な追加のリソース スコープへのアクセスを要求している
 * 2 要素認証が必須である
 
-アプリケーションのほとんどについて、通常は、最初に `acquireTokenSilent` を呼び出し、例外をキャッチしてから、`acquireTokenRedirect` (または `acquireTokenPopup`) を呼び出して、対話型要求を開始するパターンをお勧めします。
+アプリケーションのほとんどについて、通常は、最初に `acquireTokenSilent` を呼び出し、例外をキャッチしてから、`acquireTokenPopup` (または `acquireTokenRedirect`) を呼び出して、対話型要求を開始するパターンをお勧めします。
 
-`acquireTokenPopup(scope)` を呼び出すと、サインインするためのポップアップ ウィンドウが表示されます (または、`acquireTokenRedirect(scope)` を呼び出すと、ユーザーが Microsoft ID プラットフォーム エンドポイントにリダイレクトされます)。ここで、ユーザーは自分の資格情報を確認するか、必要なリソースへの同意を示すか、または 2 要素認証を完了するかのいずれかの操作を行う必要があります。
+`acquireTokenPopup` を呼び出すと、サインインするためのポップアップ ウィンドウが表示されます (または、`acquireTokenRedirect` を呼び出すと、ユーザーが Microsoft ID プラットフォーム エンドポイントにリダイレクトされます)。ここで、ユーザーは自分の資格情報を確認するか、必要なリソースへの同意を示すか、または 2 要素認証を完了するかのいずれかの操作を行う必要があります。
 
 ```javascript
-myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {
-    // Callback code here
-})
-```
+var requestObj = {
+    scopes: ["user.read"]
+};
 
+myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
+    // Callback code here
+    console.log(tokenResponse.accessToken);
+}).catch(function (error) {
+    console.log(error);
+});
+```
 > [!NOTE]
-> このクイック スタートでは、使用されるブラウザーが Internet Explorer である場合、Internet Explorer ブラウザーによるポップアップ ウィンドウの処理に関連した[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)のために `loginRedirect` および `acquireTokenRedirect` メソッドを使用します。
+> このクイックスタートでは、使用されるブラウザーが Internet Explorer である場合、Internet Explorer ブラウザーによるポップアップ ウィンドウの処理に関連した[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)のために `loginRedirect` および `acquireTokenRedirect` メソッドを使用します。
 
 ## <a name="next-steps"></a>次の手順
 

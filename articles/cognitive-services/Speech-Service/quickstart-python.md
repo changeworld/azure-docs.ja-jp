@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 05/02/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1464d1ca8fcf1ad5a955d69aa76caec9aa568dad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34af7544a7678dfd8c8f870369bf0b4b1083b96d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886119"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020718"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>クイック スタート:Python 用 Speech SDK を使用して音声を認識する
 
@@ -30,15 +30,24 @@ ms.locfileid: "57886119"
 * 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
     * Windows: x64 および x86。
     * Mac: macOS X バージョン 10.12 以降。
-    * Linux:x64 の Ubuntu 16.04 または 18.04。
-* Ubuntu では、以下のコマンドを実行して、必要なパッケージをインストールします。
+    * Linux:x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9。
+* Linux では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-  ```
+  * Ubuntu の場合:
 
-* Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2017 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) も必要になります。
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.0 libasound2
+    ```
+
+  * Debian 9 の場合:
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.2 libasound2
+    ```
+
+* Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2017 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 

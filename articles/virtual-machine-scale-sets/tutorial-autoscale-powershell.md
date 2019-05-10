@@ -197,7 +197,7 @@ mstsc /v 52.168.121.216:50001
 ログインしたら、タスク バーから Internet Explorer を開きます。
 
 - **[OK]** を選択して、*[お勧めのセキュリティ、プライバシー、互換性の設定を使う]* のプロンプトを受け入れます
-- アドレス バーに「*http://download.sysinternals.com/files/CPUSTRES.zip*」と入力します。
+- アドレス バーに「 *http://download.sysinternals.com/files/CPUSTRES.zip* 」と入力します。
 - Internet Explorer の強化されたセキュリティ構成が有効になっているので、**[追加]** を選択し、*http://download.sysinternals.com* ドメインを信頼できるサイトの一覧に追加します。
 - ファイルのダウンロードのプロンプトが表示されたら、**[開く]** を選択し、*CPUSTRES.EXE* ツールを選択して**実行**します。
 

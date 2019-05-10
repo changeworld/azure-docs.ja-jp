@@ -1,7 +1,7 @@
 ---
 title: Python 開発環境をセットアップする
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用、構成ファイルの作成、Jupyter Notebooks、Azure Notebooks、Azure Databricks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
+description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用方法、構成ファイルの作成方法、独自のクラウドベースのノートブック サーバー、Jupyter Notebook、Azure Databricks、Azure Notebooks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548888"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024977"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "59548888"
 
 この記事では、次の環境とツールに重点を置いています。
 
-* Azure Notebooks:Azure クラウドでホストされている Jupyter Notebook サービスです。 これは、Azure Machine Learning SDK が既にインストールされているため、作業を開始する最も簡単な方法です。
+* 独自の[クラウドベースのノートブック サーバー](#notebookvm):ワークステーションのコンピューティング リソースを使用して、Jupyter Notebook を実行します。 これは、Azure Machine Learning SDK が既にインストールされているため、作業を開始する最も簡単な方法です。
 
 * [Data Science Virtual Machine (DSVM)](#dsvm):Azure クラウド内の事前構成済みの開発または実験環境です。データ サイエンスの作業のために設計されており、CPU のみの VM インスタンスまたは GPU ベースのインスタンスのいずれかにデプロイできます。 Python 3、Conda、Jupyter Notebooks、Azure Machine Learning SDK は既にインストールされています。 VM には、機械学習ソリューションを開発するための人気の機械学習およびディープ ラーニングのフレームワーク、ツール、エディターが備わっています。 これは、おそらく Azure プラットフォームにおいて機械学習用の最も包括的な開発環境です。
 
@@ -44,7 +44,7 @@ ms.locfileid: "59548888"
 
 - Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](setup-create-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。
 
-[Azure Notebooks](#aznotebooks)、[DSVM](#dsvm)、または [Azure Databricks](#aml-databricks) を使い始めるために必要なものは、ワークスペースだけです。
+独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、[Azure Databricks](#aml-databricks)、または [Azure Notebooks](#aznotebooks) を使い始めるために必要なものは、ワークスペースだけです。
 
 [ローカル コンピューター](#local)、[Jupyter Notebook サーバー](#jupyter)、または [Visual Studio Code](#vscode) 用の SDK 環境をインストールするには、以下も必要です。
 
@@ -57,16 +57,15 @@ ms.locfileid: "59548888"
 
 - Windows の場合、コマンド プロンプトまたは Anaconda プロンプト (Anaconda および Miniconda によってインストール済み) が必要です。
 
-## <a id="aznotebooks"></a>Azure Notebooks
+## <a id="notebookvm"></a>独自のクラウドベースのノートブック サーバー
 
-[Azure Notebooks](https://notebooks.azure.com) (プレビュー) は、Azure クラウドにおける対話型開発環境です。 これは、Azure Machine Learning の開発を開始するのに簡単な方法です。
+Azure Machine Learning ワークスペースでノートブック サーバーを作成すると、Azure Machine Learning の開発を最も簡単に開始できます。
 
 * Azure Machine Learning SDK は既にインストールされています。
-* Azure portal で Azure Machine Learning service ワークスペースを作成した後、ボタンをクリックすると、ワークスペースを操作する Azure Notebook 環境が自動的に構成されます。
+* ノートブック VM 環境は、お使いのワークスペースと連動するように自動的に構成されます。
+* リソースがワークスペースで作成され、そこで管理できます。
 
-Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.com) を使用します。  ワークスペースを開き、**[概要]** セクションの **[Azure Notebooks で開始する]** を選択します。
-
-既定では、Azure Notebooks は、4 GB のメモリと 1 GB のデータに制限されている無料のサービス層を使用します。 ただし、これらの制限は、Data Science Virtual Machine インスタンスを Azure Notebooks プロジェクトにアタッチすることで削除できます。 詳細については、[Azure Notebooks プロジェクトの管理と構成 - コンピューティング層](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。    
+クラウドベースのノートブック サーバーを使用した開発を開始するには、「[クイックスタート:クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する](quickstart-run-cloud-notebook.md)」を参照してください。
 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
@@ -320,7 +319,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
       
    次の点も考慮します。
    + Automl 構成では、Azure Databricks を使用するときに次のパラメーターを追加してください。
-        1. ```max_concurrent_iterations``` は、ご利用のクラスター内のワーカー ノードの数に基づきます。 
+       1. ```max_concurrent_iterations``` は、ご利用のクラスター内のワーカー ノードの数に基づきます。 
         2. ```spark_context=sc``` は、既定の Spark コンテキストに基づきます。 
    + または、古いバージョンの SDK がある場合は、クラスターのインストール済みライブラリでその SDK の選択を解除し、ごみ箱に移動します。 新しいバージョンの SDK をインストールし、クラスターを再起動します。 その後問題がある場合は、クラスターをデタッチし、再アタッチします。
 
@@ -337,6 +336,17 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
   サンプル ノートブックがたくさんありますが、**Azure Databricks で動作するのは[これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)のみです。**
   
 + [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](how-to-create-your-first-pipeline.md)する方法を確認します。
+
+## <a id="aznotebooks"></a>Azure Notebooks
+
+[Azure Notebooks](https://notebooks.azure.com) (プレビュー) は、Azure クラウドにおける対話型開発環境です。 これは、Azure Machine Learning の開発を開始するのに簡単な方法です。
+
+* Azure Machine Learning SDK は既にインストールされています。
+* Azure portal で Azure Machine Learning service ワークスペースを作成した後、ボタンをクリックすると、ワークスペースを操作する Azure Notebook 環境が自動的に構成されます。
+
+Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.com) を使用します。  ワークスペースを開き、**[概要]** セクションの **[Azure Notebooks で開始する]** を選択します。
+
+既定では、Azure Notebooks は、4 GB のメモリと 1 GB のデータに制限されている無料のサービス層を使用します。 ただし、これらの制限は、Data Science Virtual Machine インスタンスを Azure Notebooks プロジェクトにアタッチすることで削除できます。 詳細については、[Azure Notebooks プロジェクトの管理と構成 - コンピューティング層](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
 
 ## <a id="workspace"></a>ワークスペース構成ファイルを作成する
 
@@ -358,7 +368,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
 
 * **「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md#sdk)」の手順に従う**: *config.json* ファイルが Azure Notebooks ライブラリ内に作成されます。 このファイルには、ワークスペースの構成情報が含まれています。 *config.json* を他の開発環境にダウンロードまたはコピーできます。
 
-* **ファイルを手動で作成する**:この方法では、テキスト エディターを使用します。 構成ファイルに入力される値を見つけるには、[Azure portal](https://portal.azure.com) のワークスペースにアクセスします。 ワークスペース名、リソース グループ、サブスクリプション ID の値をコピーし、それらを構成ファイルで使用します。
+* **ファイルをダウンロードする**:[Azure portal](https://ms.portal.azure.com) で、お使いのワークスペースの **[概要]** セクションから **[config.json をダウンロード]** を選択します。
 
      ![Azure ポータル](./media/how-to-configure-environment/configure.png)
 
@@ -387,3 +397,4 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
 - MNIST データセットを使用して Azure Machine Learning 上で[モデルをトレーニングする](tutorial-train-models-with-aml.md)
 - [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) リファレンスを表示する
 - [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) について確認する
+- 

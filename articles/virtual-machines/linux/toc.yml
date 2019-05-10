@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: エフェメラル OS ディスク
+          href: ephemeral-os-disks.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション
@@ -253,16 +255,32 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: イメージの使用
       items:
-        - name: 共有イメージ ギャラリー (プレビュー)
+        - name: 共有イメージ ギャラリー
           items:
             - name: 概要
               href: shared-image-galleries.md
-            - name: CLI を使用して共有イメージを作成する
+            - name: CLI
               href: shared-images.md
             - name: ポータル
               href: shared-images-portal.md
+            - name: テナントをまたいでイメージを共有する
+              href: share-images-across-tenants.md
             - name: 共有イメージのトラブルシューティングを行う
               href: troubleshooting-shared-images.md
+        - name: Image Builder (プレビュー)
+          items:
+            - name: 概要
+              href: image-builder-overview.md
+            - name: CLI の使用
+              href: image-builder.md
+            - name: テンプレート リファレンス
+              href: image-builder-json.md
+            - name: ギャラリーと共に使用する
+              href: image-builder-gallery.md
+            - name: イメージ バージョンを更新する
+              href: image-builder-gallery-update-image-version.md
+            - name: トラブルシューティング
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
         - name: カスタム イメージを作成する

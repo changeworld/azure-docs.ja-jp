@@ -41,7 +41,7 @@ sections:
             html: <p>分類機能のビルド方法について説明します。</p>
             image:
               src: ../media/index/i_tasks.svg
-            title: 分類子の構築
+            title: 分類器の構築
           - href: /azure/cognitive-services/Custom-Vision-Service/export-your-model
             html: <p>モデルをモバイル デバイスにエクスポートする方法について説明します。</p>
             image:

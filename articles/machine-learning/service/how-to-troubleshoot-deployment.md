@@ -9,20 +9,20 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: f81aea22014a2c7d5b37c500a546f0b5350b6435
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 90e85e0030a696dd024dd65d27a0f4dbdc7e3cdc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925377"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023671"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure Machine Learning service の AKS および ACI デプロイのトラブルシューティング
 
-この記事では、Azure Machine Learning service を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) に関する一般的な Docker のデプロイ エラーの回避または解決する方法について説明します。
+Azure Machine Learning service を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーの回避方法または解決方法について説明します。
 
-Azure Machine Learning サービスでモデルをデプロイするとき、さまざまなタスクが実行されます。 これはイベントの複雑な一連のイベントであり、問題が発生することがあります。 デプロイ タスクの内容:
+Azure Machine Learning サービスでモデルをデプロイするとき、さまざまなタスクが実行されます。 デプロイ タスクの内容:
 
 1. ワークスペース モデル レジストリにモデルを登録します。
 
@@ -33,6 +33,9 @@ Azure Machine Learning サービスでモデルをデプロイするとき、さ
     4. Dockerfile を使用して新しい Docker イメージをビルドします。
     5. ワークスペースに関連付けられている Azure Container Registry に Docker イメージを登録します。
 
+    > [!IMPORTANT]
+    > コードによっては、入力なしでイメージの作成が自動的に行われます。
+
 3. Docker イメージを Azure Container Instance (ACI) サービスまたは Azure Kubernetes Service (AKS) にデプロイします。
 
 4. ACI または AKS で新しいコンテナーを起動します。 
@@ -41,9 +44,9 @@ Azure Machine Learning サービスでモデルをデプロイするとき、さ
 
 ## <a name="before-you-begin"></a>開始する前に
 
-問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。 
+問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。
 
-この作業は `Webservice.deploy` API または `Webservice.deploy_from_model` API を利用している場合に役立ちます。これらの関数では、前述の手順が 1 つのアクションにグループ化されるためです。 一般的にこれらの API は便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
+デプロイを複数のタスクに分割すると、[Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API または [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API を使用している場合に役立ちます。どちらの関数も、前述の手順を単一のアクションとして実行するためです。 一般的にこれらの API は便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
 
 1. モデルを登録します。 サンプル コードは次のようになります。
 
@@ -86,7 +89,8 @@ Azure Machine Learning サービスでモデルをデプロイするとき、さ
 デプロイ プロセスを個別タスクに分割できたところで、最も一般的なエラーをいくつか確認してみましょう。
 
 ## <a name="image-building-fails"></a>イメージをビルドできない
-Docker イメージをビルドできない場合、`image.wait_for_creation()` 呼び出しが失敗し、エラー メッセージが表示されます。そのメッセージでヒントが見つかることがあります。 エラーに関する詳細は、イメージ ビルド ログにもあります。 下のサンプル コードでイメージ ビルド ログ URI の確認方法がわかります。
+
+Docker イメージをビルドできない場合、[image.wait_for_creation()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) または [service.wait_for_deployment()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) 呼び出しは失敗し、手掛かりを示すいくつかのエラー メッセージが表示されます。 エラーに関する詳細は、イメージ ビルド ログにもあります。 下のサンプル コードでイメージ ビルド ログ URI の確認方法がわかります。
 
 ```python
 # if you already have the image object handy
@@ -99,13 +103,14 @@ print(ws.images['myimg'].image_build_log_uri)
 for name, img in ws.images.items():
     print (img.name, img.version, img.image_build_log_uri)
 ```
+
 イメージ ログ URI は、Azure Blob Storage に保存されているログ ファイルを指す SAS URL です。 URI をコピーし、ブラウザー ウィンドウに貼り付けます。ログ ファイルはダウンロードして参照できます。
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault アクセス ポリシーと Azure Resource Manager テンプレート
 
-Azure Key Vault に対するアクセス ポリシーの問題が原因でイメージ ビルドも失敗する可能性があります。 これは、Azure Resource Manager テンプレートを使用してワークスペースおよび関連付けられたリソース (Azure Key Vault など) を複数回作成するときに、発生する可能性があります。 たとえば、継続的インテグレーションおよびデプロイ パイプラインの一部として同じパラメーターを指定して、テンプレートを複数回使用する場合が挙げられます。
+Azure Key Vault に対するアクセス ポリシーの問題が原因でイメージ ビルドも失敗する可能性があります。 この状況は、Azure Resource Manager テンプレートを使用してワークスペースおよび関連付けられたリソース (Azure Key Vault など) を複数回作成するときに、発生する可能性があります。 たとえば、継続的インテグレーションおよびデプロイ パイプラインの一部として同じパラメーターを指定して、テンプレートを複数回使用する場合が挙げられます。
 
-テンプレートによるリソース作成操作のほとんどはべき等操作ですが、テンプレートを使用するたびに Key Vault によってアクセス ポリシーはクリアされます。 これにより、それを使用している既存のワークスペース用の Key Vault へのアクセスは中断されます。 結果として、新しいイメージを作成しようとすると、エラーが発生します。 表示される可能性のあるエラーの例を次に示します。
+テンプレートによるリソース作成操作のほとんどはべき等操作ですが、テンプレートを使用するたびに Key Vault によってアクセス ポリシーはクリアされます。 アクセス ポリシーをクリアすると、それを使用している既存のワークスペース用の Key Vault へのアクセスは中断されます。 この状況で新しいイメージを作成しようとすると、エラーが発生します。 表示される可能性のあるエラーの例を次に示します。
 
 __ポータル__:
 ```text
@@ -144,16 +149,81 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 この問題を回避するには、次のいずれかのアプローチをお勧めします。
 
 * パラメーターが同じである場合は、テンプレートを複数回デプロイしないでください。 または、テンプレートを使用してリソースを作成する前に、既存の同じものを削除してください。
-* Key Vault のアクセス ポリシーを調べ、この結果に基づいてテンプレートの `accessPolicies` プロパティを設定します。
+* Key Vault のアクセス ポリシーを調べ、これらのポリシーを使用してテンプレートの `accessPolicies` プロパティを設定します。
 * Key Vault リソースが既に存在しているかどうかを確認します。 存在している場合は、テンプレートを使ってそれを再作成しないでください。 たとえば、既に存在する場合は、Key Vault リソースの作成を無効にするためのパラメーターを追加します。
 
-## <a name="service-launch-fails"></a>サービスを起動できない
-イメージが正常にビルドされると、デプロイ構成に基づき、ACI または AKS でコンテナーの起動が試行されます。 ACI デプロイを先に試すことをお勧めします。よりシンプルな単一コンテナー デプロイであることがその理由です。 この方法で AKS 固有の問題を除外できます。
+## <a name="debug-locally"></a>ローカル デバッグ
 
-コンテナーの起動プロセスの一部として、スコアリング スクリプトの `init()` 関数が呼び出されます。 `init()` 関数でキャッチされない例外がある場合、エラー メッセージに **CrashLoopBackOff** エラーが表示されることがあります。 以下は問題解決に役立つヒントです。
+モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてみてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 モデルを含む Docker イメージがダウンロードされ、ローカル システムで起動されます。
 
-### <a name="inspect-the-docker-log"></a>Docker ログを確認する
-サービス オブジェクトから詳細な Docker エンジン ログ メッセージを出力できます。
+> [!IMPORTANT]
+> ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 ローカル Web サービスをデプロイする前に、Docker を実行しておく必要があります。 Docker のインストールと使用については、[https://www.docker.com/](https://www.docker.com/) を参照してください。
+
+> [!WARNING]
+> ローカル Web サービスのデプロイは、運用シナリオではサポートされていません。
+
+ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (`model` 変数に含まれる) をローカル Web サービスとしてデプロイします。
+
+```python
+from azureml.core.model import InferenceConfig
+from azureml.core.webservice import LocalWebservice
+
+# Create inferencing configuration. This creates a docker image that contains the model.
+inference_config = InferenceConfig(runtime= "python", 
+                                   execution_script="score.py",
+                                   conda_file="myenv.yml")
+
+# Create a local deployment, using port 8890 for the web service endpoint
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+# Deploy the service
+service = Model.deploy(ws, "mymodel", [model], inference_config, deployment_config)
+# Wait for the deployment to complete
+service.wait_for_deployment(True)
+# Display the port that the web service is available on
+print(service.port)
+```
+
+この時点で、通常どおりにサービスを操作できます。 たとえば、次のコードは、サービスにデータを送信する方法を示しています。
+
+```python
+import json
+
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10], 
+    [10,9,8,7,6,5,4,3,2,1]
+]})
+
+test_sample = bytes(test_sample,encoding = 'utf8')
+
+prediction = service.run(input_data=test_sample)
+print(prediction)
+```
+
+### <a name="update-the-service"></a>サービスの更新
+
+ローカル テスト中に、ログ記録を追加したり、発見した問題の解決を試みるために、`score.py` ファイルを更新する必要がある場合があります。 変更を `score.py` ファイルに再度読み込むには、`reload()` を使用します。 たとえば、次のコードは、サービスのスクリプトを再度読み込み、サービスにデータを送信します。 データは、更新された `score.py` ファイルを使用してスコア付けされます。
+
+```python
+service.reload()
+print(service.run(input_data=test_sample))
+```
+
+> [!NOTE]
+> スクリプトは、サービスによって使用される `InferenceConfig` オブジェクトによって指定された場所から再度読み込まれます。
+
+モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
+
+```python
+service.update([different_model], inference_config, deployment_config)
+```
+
+### <a name="delete-the-service"></a>サービスの削除
+
+サービスを削除するには、[delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--) を使用します。
+
+### <a id="dockerlog"></a> Docker ログの確認
+
+サービス オブジェクトから詳細な Docker エンジン ログ メッセージを出力できます。 ACI、AKS、およびローカル デプロイのログを表示できます。 次の例は、ログを出力する方法を示しています。
 
 ```python
 # if you already have the service object handy
@@ -163,82 +233,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-### <a name="debug-the-docker-image-locally"></a>Docker イメージをローカルでデバッグする
-Docker ログでは問題に関する情報が十分に提供されないことがあります。 さらに一歩進め、ビルドされた Docker イメージを取得し、ローカル コンテナーを起動し、ライブ コンテナー内で直接、対話的にデバッグできます。 ローカル コンテナーを起動するには、Docker エンジンをローカルで実行しておく必要があります。[azure-cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) もインストールしておくと非常に簡単になります。
+## <a name="service-launch-fails"></a>サービスを起動できない
 
-まず、イメージの場所を見つける必要があります。
+イメージが正常にビルドされると、デプロイ構成を使用して、コンテナーの起動が試行されます。 コンテナーの起動プロセスの一部として、スコアリング スクリプトの `init()` 関数が呼び出されます。 `init()` 関数でキャッチされない例外がある場合、エラー メッセージに **CrashLoopBackOff** エラーが表示されることがあります。
 
-```python
-# print image location
-print(image.image_location)
-```
-
-イメージの場所の形式は `<acr-name>.azurecr.io/<image-name>:<version-number>` です。たとえば、`myworkpaceacr.azurecr.io/myimage:3` のようになります。 
-
-次にコマンドライン ウィンドウに移動します。 azure-cli をインストールしている場合、次のコマンドを入力し、イメージが保存されているワークスペースに関連付けられている ACR (Azure Container Registry) にサインインできます。 
-
-```sh
-# log on to Azure first if you haven't done so before
-$ az login
-
-# make sure you set the right subscription in case you have access to multiple subscriptions
-$ az account set -s <subscription_name_or_id>
-
-# now let's log in to the workspace ACR
-# note the acr-name is the domain name WITHOUT the ".azurecr.io" postfix
-# e.g.: az acr login -n myworkpaceacr
-$ az acr login -n <acr-name>
-```
-azure-cli をインストールしていない場合、`docker login` コマンドを使用して ACR にログインできます。 ただし、先に Azure portal から ACR のユーザー名とパスワードを取得する必要があります。
-
-ACR にログインしたら、Docker イメージを取得し、コンテナーをローカルで起動できます。その後、`docker run` コマンドを使用し、bash セッションを起動してデバッグできます。
-
-```sh
-# note the image_id is <acr-name>.azurecr.io/<image-name>:<version-number>
-# for example: myworkpaceacr.azurecr.io/myimage:3
-$ docker run -it <image_id> /bin/bash
-```
-
-実行中のコンテナーで bash セッションを開始すると、`/var/azureml-app` フォルダーでスコアリング スクリプトを見つけることができます。 その後、Python セッションを開始し、スコアリング スクリプトをデバッグできます。 
-
-```sh
-# enter the directory where scoring scripts live
-cd /var/azureml-app
-
-# find what Python packages are installed in the python environment
-pip freeze
-
-# sanity-check on score.py
-# you might want to edit the score.py to trigger init().
-# as most of the errors happen in init() when you are trying to load the model.
-python score.py
-```
-スクリプトの編集にテキスト エディターが必要な場合、vim、nano、Emacs、普段ご利用のその他のエディターをインストールできます。
-
-```sh
-# update package index
-apt-get update
-
-# install a text editor of your choice
-apt-get install vim
-apt-get install nano
-apt-get install emacs
-
-# launch emacs (for example) to edit score.py
-emacs score.py
-
-# exit the container bash shell
-exit
-```
-
-Web サービスをローカルで起動し、それに HTTP トラフィックを送信することもできます。 Docker コンテナーの Flask サーバーはポート 5001 で実行されます。 ホスト コンピューターで利用できるその他のポートにマッピングできます。
-```sh
-# you can find the scoring API at: http://localhost:8000/score
-$ docker run -p 8000:5001 <image_id>
-```
+「[Docker ログの確認](#dockerlog)」セクションの情報を使用して、ログを確認します。
 
 ## <a name="function-fails-getmodelpath"></a>get_model_path() 関数が失敗する
-多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で `Model.get_model_path()` 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからないとき、多くの場合、これが失敗の原因です。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
+
+多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
 
 ```python
 import logging
@@ -247,11 +250,12 @@ from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-スコアリング スクリプトによるモデル ファイルまたはフォルダーの検索が予想されるコンテナー内のローカル パス (`/var/azureml-app` の相対パス) が出力されます。 その後、ファイルまたはフォルダーが予想される場所にあるかどうかを確認できます。
+この例では、スコアリング スクリプトによってモデル ファイルまたはフォルダーの存在が予期されるコンテナー内のローカル パス (`/var/azureml-app` の相対パス) が出力されます。 その後、ファイルまたはフォルダーが予想される場所にあるかどうかを確認できます。
 
 ログ レベルを DEBUG に設定すると、追加情報が記録される場合があり、エラーの特定に利用できる可能性があります。
 
 ## <a name="function-fails-runinputdata"></a>run(input_data) 関数が失敗する
+
 サービスが正常にデプロイされたが、スコアリング エンドポイントにデータを投稿するとクラッシュする場合、代わりに詳細なエラー メッセージが返されるように `run(input_data)` 関数にエラーをキャッチするステートメントを追加できます。 例: 
 
 ```python
@@ -266,7 +270,8 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**メモ**:`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境でこれを行うことはお勧めできません。
+
+**メモ**:`run(input_data)` 呼び出しからエラー メッセージを返すことは、デバッグ目的のみで行ってください。 セキュリティ上の理由から、運用環境ではこの方法でエラー メッセージを返さないでください。
 
 ## <a name="http-status-code-503"></a>HTTP 状態コード 503
 
@@ -312,7 +317,7 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 ## <a name="next-steps"></a>次の手順
 
-デプロイの詳細については、以下を参照してください。 
-* [デプロイする方法とその場所](how-to-deploy-and-where.md)
+デプロイの詳細については、以下を参照してください。
 
+* [デプロイする方法とその場所](how-to-deploy-and-where.md)
 * [チュートリアル:モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)

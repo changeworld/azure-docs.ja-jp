@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: e4849487c2dd9330dbf9e6b6cf0ed4d1b6b96020
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: f773cd298c8faaac90b30d88a74e8ddcb51c3afa
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958101"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021948"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>非推奨のコグニティブ検索スキル
 
@@ -31,7 +31,7 @@ ms.locfileid: "56958101"
 
 ### <a name="last-available-api-version"></a>利用可能な最終 API バージョン
 
-2017-11-11-preview
+2019-05-06-Preview
 
 ### <a name="end-of-support"></a>サポート終了
 
@@ -43,7 +43,8 @@ ms.locfileid: "56958101"
 
 [エンティティ認識スキル](cognitive-search-skill-entity-recognition.md)に移行するには、スキル定義で以下の 1 つ以上の変更を行う必要があります。 スキル定義は、[スキルセット更新 API](https://docs.microsoft.com/rest/api/searchservice/update-skillset) を使用して更新することができます。
 
-_メモ_:現時点では、概念としての信頼度スコアはサポートされていません。 これは、近日中にサポートされる予定です。 `EntityRecognitionSkill` には、将来的な使用と旧バージョンとの互換性のため、`minimumPrecision` パラメーターが存在しています。
+> [!NOTE]
+> 現時点では、概念としての信頼度スコアはサポートされていません。 `EntityRecognitionSkill` には、将来的な使用と旧バージョンとの互換性のため、`minimumPrecision` パラメーターが存在しています。
 
 1. *(必須)* `@odata.type` を `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` から `"#Microsoft.Skills.Text.EntityRecognitionSkill"` に変更します。
 

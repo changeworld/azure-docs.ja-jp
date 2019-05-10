@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: amishu
-ms.openlocfilehash: 75eaea22c4809eda78e54514961d13113b4a5f3a
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: e8f470647c218188705cfa65cba7077e62d1b2ac
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59011592"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148028"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 
-ファイルへのログ記録は、Speech SDK のオプションの機能です。 開発時、ログを有効にすると、Speeck SDK のコア コンポーネントから追加の情報や診断が得られます。 ログを有効にするには、音声構成オブジェクト上のプロパティ `Speech_LogFilename` にログ ファイルの場所と名前を設定します。 ログは、その構成から認識エンジンが作成されると、グローバルにアクティブ化されます。アクティブ化された後に無効にすることはできません。 ログ セッションの実行中にログ ファイルの名前を変更することはできません。
+ファイルへのログ記録は、Speech SDK のオプションの機能です。 開発時、ログ記録により、Speech SDK のコア コンポーネントから追加の情報や診断が提供されます。 ログを有効にするには、音声構成オブジェクト上のプロパティ `Speech_LogFilename` にログ ファイルの場所と名前を設定します。 ログは、その構成から認識エンジンが作成されると、グローバルにアクティブ化されます。アクティブ化された後に無効にすることはできません。 ログ セッションの実行中にログ ファイルの名前を変更することはできません。
 
 > [!NOTE]
 > ログは、サポートされるすべての Speech SDK プログラミング言語 (JavaScript を除く) で使用できます。

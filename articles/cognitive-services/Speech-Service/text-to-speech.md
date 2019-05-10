@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: cbabdde2dd5df2ca40ee45fe0f7b0437f095673b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578785"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020379"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
@@ -32,7 +32,9 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 ニューラル音声は、話し言葉のアクセントとイントネーションのパターンを照合し、音声の単位をコンピューターの音声に合成する際に、ディープ ニューラル ネットワークを使用して従来のテキスト読み上げシステムの限界を克服しています。 標準のテキスト読み上げでは、独立したモデルによって管理される別々の言語分析と音響予測の手順に韻律が分解されます。 その結果、こもったような耳障りな音声合成になる可能性があります。 ニューラル機能では韻律予測と音声合成が同時に行われ、その結果、より滑らかで自然に聞こえる音声になります。
 
-ニューラル音声を使用すると、チャットボットや仮想アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。 ニューラル音声の詳細については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
+ニューラル音声を使用すると、チャットボットや仮想アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。 
+
+ニューラル音声は、ニュートラルや陽気な雰囲気など、さまざまなスタイルをサポートしています。 たとえば、Jessa (en-US) の声は陽気な雰囲気を表現でき、温かみのある楽しい会話に最適化されています。 トーン、ピッチ、速度などの音声出力は、[音声合成マークアップ言語](speech-synthesis-markup.md)を使用して調整できます。 利用可能なすべての音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
 
 ニューラル音声の利点の詳細については、「[Microsoft's new neural text-to-speech service helps machines speak like people (Microsoft の新しいニューラル テキスト読み上げサービスを利用してマシンが人間のように話せるようにする)](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)」を参照してください。
 

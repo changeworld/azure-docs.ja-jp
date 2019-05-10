@@ -1,0 +1,30 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: オープン データセット (プレビュー) のドキュメント
+metadata:
+  title: Azure オープン データセット (プレビュー) のドキュメント – チュートリアル、API リファレンス | Microsoft Docs
+  description: 最小限の準備で使用できる、キュレーションとクリーニングが行われたデータ、Azure オープン データセットを使用する方法を説明します。 オープン データセットは、機械学習モデルをエンリッチできる、気象、国勢調査、祝日などの公開データです。 チュートリアル、例、および API リファレンス ドキュメントによって、方法が示されます。
+  ms.service: open-datasets
+  ms.topic: landing-page
+  author: cjgronlund
+  ms.author: cgronlun
+  ms.date: 05/02/2019
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+abstract:
+  description: 最小限の準備で使用できる、キュレーションとクリーニングが行われたデータ、Azure オープン データセットを使用する方法を説明します。 オープン データセットには、機械学習モデルをエンリッチできる、気象、国勢調査、休日などの公開データが含まれます。 チュートリアル、例、および API リファレンス ドキュメントによって、方法が示されます。
+sections:
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: <a href="tutorial-opendatasets-automl">自動機械学習で回帰モデルを構築する</a>
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: <a href="samples">データセットをエンリッチするための Notebook</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/open-datasets-api">API リファレンス</a>'

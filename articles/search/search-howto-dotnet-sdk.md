@@ -7,17 +7,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 25a156c4403b7a89f7a7bf7f6acf22fa34216791
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286314"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025124"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
+
+> [!Important]
+> このコンテンツはまだ準備中の段階です。 Azure Search .NET SDK のバージョン 9.0 が NuGet 上で提供されています。 新しいバージョンへのアップグレード方法が含まれるように、この移行ガイドを更新しています。 しばらくお待ちください。
+>
+
 この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Azure Search SDK の内容
@@ -38,7 +42,7 @@ SDK のその他の NuGet パッケージとしては以下があります｡
 
 Azure Search .NET SDK の最新バージョンが一般公開されました。 次のバージョンに組み込むためにフィードバックを提供する場合は、 [フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/)を使用してください。
 
-.NET SDK は、バージョン `2017-11-11` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには､シノニムのサポートや､インデクサーに対する漸進的な改良も反映されています｡ このバージョンには､JSON アレイや CSV ファイルのインデックス作成のサポートなどのプレビュー機能は*含まれていません*｡プレビュー機能は[プレビュー](search-api-2016-09-01-preview.md)段階であり、[4.0-preview バージョンの .NET SDK](https://aka.ms/search-sdk-preview) で提供されます。
+.NET SDK は、バージョン `2017-11-11` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには､シノニムのサポートや､インデクサーに対する漸進的な改良も反映されています｡ 
 
 この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
 

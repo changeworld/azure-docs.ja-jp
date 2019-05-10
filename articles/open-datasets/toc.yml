@@ -1,0 +1,39 @@
+- name: Azure オープン データセットのドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure オープン データセットとは
+      displayName: open datasets overview introduction
+      href: overview-what-are-open-datasets.md
+- name: チュートリアル
+  items:
+    - name: 自動機械学習による回帰
+      href: tutorial-opendatasets-automl.md
+- name: サンプル
+  displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
+  href: samples.md
+- name: リファレンス
+  items:
+    - name: Python SDK
+      displayName: api open datasets reference sdk
+      href: 'https://aka.ms/open-datasets-api'
+    - name: Jupyter Notebook
+      displayName: python notebooks
+      href: 'https://github.com/Azure/OpenDatasetsNotebooks'
+- name: リソース
+  items:
+    - name: Azure オープン データセット カタログ
+      href: 'https://azure.microsoft.com/services/open-datasets/catalog/'
+    - name: Microsoft Research オープン データ
+      href: 'https://msropendata.com/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: ユーザー フォーラム
+      href: 'https://aka.ms/open-datasets-forum'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

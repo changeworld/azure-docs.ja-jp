@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337869"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024441"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Azure Search で基本的なインデックスを作成する
 
@@ -54,7 +54,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 
 スキーマ的には、Azure Search のインデックスは次の要素で構成されます。 
 
-"[*フィールド コレクション*](#fields-collection)" は通常、インデックスの最大の部分であり、各フィールドには、名前、型、および使用方法を決定する許容される動作を示す属性が設定されます。 他の要素としては、[suggester](#suggesters)、[スコアリング プロファイル](#scoring-profiles)、カスタマイズをサポートする構成要素を含む[アナライザー](#analyzers)、および [CORS](#cors) オプションがあります。
+"[*フィールド コレクション*](#fields-collection)" は通常、インデックスの最大の部分であり、各フィールドには、名前、型、および使用方法を決定する許容される動作を示す属性が設定されます。 他の要素としては、[suggester](#suggesters)、[スコアリング プロファイル](#scoring-profiles)、カスタマイズをサポートする構成要素を含む[アナライザー](#analyzers)、[CORS](#cors)、および[暗号化キー](#encryption-key) オプションがあります。
 
 ```json
 {
@@ -126,6 +126,15 @@ Azure Search における*インデックス*とは、Azure Search サービス�
   "corsOptions": (optional) {
     "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
     "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
+  },
+  "encryptionKey":(optional){
+    "keyVaultUri": "azure_key_vault_uri",
+    "keyVaultKeyName": "name_of_azure_key_vault_key",
+    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
+    "accessCredentials":(optional){
+      "applicationId": "azure_active_directory_application_id",
+      "applicationSecret": "azure_active_directory_application_authentication_key"
+    }
   }
 }
 ```
@@ -166,7 +175,7 @@ Azure Search のインデックス属性の詳細については、[このペー
 
 選択した属性はストレージに影響を与えます。 次のスクリーンショットは、属性のさまざまな組み合わせの結果であるインデックス格納パターンを示しています。
 
-インデックスは[組み込みの realestate サンプル](search-get-started-portal.md) データ ソースに基づいており、このデータ ソースはポータルでインデックスを作成したりクエリを実行したりできます。 インデックスのスキーマは表示されませんが、インデックス名に基づいて属性を推測できます。 たとえば、*realestate-searchable* インデックスでは **searchable** 属性が選択されていて他には何もなく、*realestate-retrievable* インデックスでは **retrievable** 属性が選択されていて他には何もなく、以下同様です。
+インデックスは[組み込みの real estateサンプル](search-get-started-portal.md) データ ソースに基づいており、このデータ ソースはポータルでインデックスを作成したりクエリを実行したりできます。 インデックスのスキーマは表示されませんが、インデックス名に基づいて属性を推測できます。 たとえば、*realestate-searchable* インデックスでは **searchable** 属性が選択されていて他には何もなく、*realestate-retrievable* インデックスでは **retrievable** 属性が選択されていて他には何もなく、以下同様です。
 
 ![属性選択に基づいたインデックスのサイズ](./media/search-what-is-an-index/realestate-index-size.png "属性選択に基づいたインデックスのサイズ")
 
@@ -203,6 +212,10 @@ CORS に対しては以下のオプションを設定できます。
   すべてのオリジンにアクセスを許可する場合は、**allowedOrigins** 配列の唯一の要素として `*` を指定します。 "*運用環境の検索サービスに対してはこれは推奨されません*" が、開発およびデバッグでは役に立つことがよくあります。
 
 + **maxAgeInSeconds** (省略可能):ブラウザーでは、この値を使用して、CORS プレフライト応答をキャッシュする期間 (秒) が決定されます。 負ではない整数を指定する必要があります。 この値が大きいほどパフォーマンスはよくなりますが、CORS ポリシーの変更が有効になるまでの時間は長くなります。 これを設定しないと、既定の期間として 5 分が使用されます。
+
+## <a name="encryption-key"></a>暗号化キー
+
+既定では、Azure Search のすべてのインデックスは、Microsoft のマネージド キーを使用して暗号化されますが、Key Vault 内で**顧客管理のキー**を使用してインデックスを暗号化するように構成することもできます。 詳細については、[Azure Search での暗号化キーの管理に関するページ](search-security-manage-encryption-keys.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

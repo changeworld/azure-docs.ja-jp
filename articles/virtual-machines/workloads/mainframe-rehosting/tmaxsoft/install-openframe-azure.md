@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187789"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410122"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 
@@ -116,7 +116,7 @@ Eclipse for Windows:TmaxSoft でサポートされている開発プラットフ
 
 **VM を作成するには**
 
-1. Azure portal (<http://portal.azure.com>) に移動し、ご自分のアカウントでサインインします。
+1. Azure portal (<https://portal.azure.com>) に移動し、ご自分のアカウントでサインインします。
 
 2. **[仮想マシン]** をクリックします。
 

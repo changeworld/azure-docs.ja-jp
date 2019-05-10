@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/19/2019
+  ms.date: 02/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -55,8 +55,8 @@ sections:
         style: unordered
         items:
           - html: '<a href="https://aka.ms/aml-sdk">メインの Python SDK</a>: コア機能や自動化された機械学習、パイプラインなど'
-          - html: '<a href="https://aka.ms/data-prep-sdk">Data Prep</a> Python SDK: データの準備および変換'
           - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: デプロイされた Web サービスでのデータ収集'
+          - html: ビジュアル インターフェイスの<a href="../algorithm-module-reference/module-reference.md">アルゴリズムとモジュールのリファレンス</a>
   - title: その他の Azure Machine Learning テクノロジ
     items:
       - type: list

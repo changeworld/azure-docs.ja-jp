@@ -167,6 +167,8 @@
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: S2D VM の Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+            - name: 追加されたディスクのレプリケーションを有効にする
+              href: azure-to-azure-enable-replication-added-disk.md
             - name: ディスクを除外する
               href: azure-to-azure-exclude-disks.md
             - name: フェールオーバー後に Azure VM を再保護する

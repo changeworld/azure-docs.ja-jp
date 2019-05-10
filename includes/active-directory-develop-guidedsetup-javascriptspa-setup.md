@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: da2477b19327273fe922ac81f909233cb4ef8f06
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 805b773795e7c8a96fe1b94abecd860475a4c7a1
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502936"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993313"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
 > 代わりにこのサンプルのプロジェクトをダウンロードすることもできます。
-> - Node などのローカル Web サーバー向けの[プロジェクト ファイルのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
+> - [プロジェクト ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)し、Node などのローカル Web サーバーで実行する
 >
 > or
-> - [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
+> - (省略可能) [Visual Studio プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)し、IIS サーバーで実行する
 >
 > 次に[構成手順](#register-your-application)に進み、実行前にコード サンプルを構成します。
 
@@ -63,8 +63,7 @@ Node.js を使用してプロジェクトを実行する場合は、[Visual Stud
    <head>
        <title>Quickstart for MSAL JS</title>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.js"></script>
-       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script>
    </head>
    <body>
        <h2>Welcome to MSAL.js Quickstart</h2><br/>
@@ -77,3 +76,6 @@ Node.js を使用してプロジェクトを実行する場合は、[Visual Stud
    </body>
    </html>
    ```
+
+   > [!TIP]
+   > 上記のスクリプトにある MSAL.js のバージョンを、[MSAL.js リリース](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)下の最新のリリース バージョンで置き換えることができます。

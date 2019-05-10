@@ -109,8 +109,14 @@
           href: how-to-install-iot-edge-linux-arm.md
         - name: Windows X64
           href: how-to-install-iot-edge-windows.md
+        - name: Windows X64 上の Linux コンテナー
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Windows Server VM
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Ubuntu VM
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: ランタイム バージョンの更新
           href: how-to-update-iot-edge.md
     - name: DPS による自動プロビジョニング

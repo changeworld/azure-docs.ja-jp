@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683972"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024581"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -28,8 +28,7 @@ AI アルゴリズムでは、Azure Search での非構造化データの処理�
 > [!NOTE]
 > 処理の頻度を増やしたり、ドキュメントを追加したり、AI アルゴリズムを追加したりすることによってスコープを拡大する場合は、請求対象の Cognitive Services リソースをアタッチする必要があります。 Cognitive Services の API を呼び出すとき、および Azure Search のドキュメントクラッキング段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> [組み込みコグニティブ スキル](cognitive-search-predefined-skills.md)の実行は、[Cognitive Services の従量制価格](https://azure.microsoft.com/pricing/details/cognitive-services)で課金されます。これは、タスクを直接実行した場合と同じ料金です。 画像抽出は Azure Search の料金であり、[Azure Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)に示されています。
-
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Search の価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
 
 ## <a name="use-free-resources"></a>無料リソースを使用する
 
@@ -100,7 +99,7 @@ Cognitive Services APIs を呼び出すスキルに対してのみ課金され�
 次の例は、このパターンを示しています。 定義の下部にある cognitiveServices セクションに注目してください
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -110,7 +109,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -142,7 +141,7 @@ Content-Type: application/json
 + 1 ページに 1 画像 (6000 画像)
 + 1 ページあたり 3000 文字
 
-画像とテキストの抽出、画像の光学式文字認識 (OCR)、組織の名前付きエンティティ認識を含む各 PDF のドキュメント解読で構成されるパイプラインを想定します。 
+画像とテキストの抽出、画像の光学式文字認識 (OCR)、組織のエンティティ認識を含む各 PDF のドキュメント解析で構成されるパイプラインを想定します。 
 
 この演習では、トランザクションあたり最も高い価格を使用します。 段階的価格設定のため、実際のコストはもっと安い可能性があります。 「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services)」を参照してください。
 

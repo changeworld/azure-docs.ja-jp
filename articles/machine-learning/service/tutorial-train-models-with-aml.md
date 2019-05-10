@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 01/28/2019
+ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361593"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021712"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル:Azure Machine Learning service でイメージ分類モデルをトレーニングする
 
@@ -45,31 +45,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * 以下のものがインストールされている Python 3.6 ノートブック サーバー。
     * Azure Machine Learning SDK for Python
     * `matplotlib` と `scikit-learn`
-* チュートリアル ノートブックと utils.py ファイル
-* 機械学習ワークスペース 
-* ノートブックと同じディレクトリにある、ワークスペースの構成ファイル 
+* チュートリアル ノートブックと **utils.py** ファイル
+* 機械学習ワークスペース
+* ノートブックと同じディレクトリにある、ワークスペースの構成ファイル
 
 以下のいずれかのセクションから、これらすべての前提条件を入手します。
  
-* [Azure Notebooks](#azure) を使用する 
+* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
 * [独自のノートブック サーバー](#server)を使用する
 
-### <a name="azure"></a>Azure Notebooks を使用する: クラウド上の無料の Jupyter Notebook
+### <a name="azure"></a>ワークスペース内のクラウド ノートブック サーバーを使用する
 
-Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
-
-以下の手順を完了したら、**Getting Started** プロジェクトの **tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
+独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* ノートブックの Web ページを起動したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを開きます。
 
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 
-次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。 
-
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
- 以下の手順を完了したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
+ 以下の手順を完了したら、複製されたディレクトリから **tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
 
 ## <a name="start"></a>開発環境を設定する
 
@@ -315,18 +313,16 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 以下の、スクリプトがデータを取得してモデルを保存する方法に注目してください。
 
-+ トレーニング スクリプトで引数が読み取られ、データが含まれるディレクトリが検出されます。 後でジョブを送信する際に、次のように、引数にデータストアを指定します。`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
++ トレーニング スクリプトで引数が読み取られ、データが含まれるディレクトリが検出されます。 後でジョブを送信する際に、次のように、引数にデータストアを指定します。```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 <br/>
-`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
-このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。
-データセットを正しく読み込むために、`utils.py` ファイルがトレーニング スクリプトから参照されます。 このスクリプトをスクリプト フォルダーにコピーして、リモート リソース上でトレーニング スクリプトと共にアクセスできるようにします。
++ トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
++ このトレーニング スクリプトでは、データセットを正しく読み込むためにファイル `utils.py` が必要です。 次のコードでは、`utils.py` を `script_folder` にコピーして、リモート リソース上でトレーニング スクリプトと共にファイルにアクセスできるようにします。
 
-```python
-import shutil
-shutil.copy('utils.py', script_folder)
-```
+  ```python
+  import shutil
+  shutil.copy('utils.py', script_folder)
+  ```
 
 
 ### <a name="create-an-estimator"></a>推定を作成する

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683003"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024215"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -29,7 +29,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>Machine Learning Studio の対話型ワークスペース
-一般的な予測分析モデルの作成では、1 種類以上のソースからデータを入手し、さまざまなデータ操作と統計的特徴を適用してデータを変換することにより、一連の結果を生成します。 このようなモデルの作成プロセスは対話型プロセスになります。 十分にトレーニングされた有効なモデルが作成されるまで、さまざまな特徴とパラメーターを繰り返し調整します。
+一般的な予測分析モデルの作成では、1 種類以上のソースからデータを入手し、さまざまなデータ操作と統計関数を使用してデータを変換および分析することにより、一連の結果を生成します。 このようなモデルの作成プロセスは対話型プロセスになります。 十分にトレーニングされた有効なモデルが作成されるまで、さまざまな特徴とパラメーターを繰り返し調整します。
 
 **Azure Machine Learning Studio** では、予測分析モデルの作成、テスト、反復作業を支援する、視覚的操作に対応した対話型ワークスペースが提供されます。 "***データセット***" と分析 "***モジュール***" を対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して "***実験***" を完成させ、Machine Learning Studio で実行できます。 モデルのさまざまな設計を試す際は、実験を編集して必要に応じて保存し、再度実行できます。 準備が整ったら、"***トレーニング実験***" を "***予測実験***" に変換します。さらに、"***Web サービス***" として発行し、第三者が利用できるようにそのモデルを公開します。
 
@@ -44,7 +44,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ![Microsoft Azure Machine Learning Studio の機能の概要](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
-[Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、 **ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
+Machine Learning Studio (https://studio.azureml.net)) を初めて起動したときには、**ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
 
 左上のメニュー  ![メニュー](./media/what-is-ml-studio/menu.png) をクリックすると、いくつかのオプションが表示されます。
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -111,14 +111,22 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 <a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Machine Learning Studio と Azure Machine Learning service の違い
 
-[Azure Machine Learning service](../service/overview-what-is-azure-ml.md) には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK とサービスが用意されています。 自動スケーリング コンピューティングとパイプラインを使用して、生産性とコストを改善します。 PyTorch、TensorFlow、scikit-learn など、オープンソースの Python フレームワークと共にこれらの機能を使用します。 
+[Azure Machine Learning service](../service/overview-what-is-azure-ml.md) には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK **と**ビジュアル インターフェイス (プレビュー) の両方が用意されています。 このビジュアル インターフェイス (プレビュー) では、Studio へのドラッグ アンド ドロップに似た操作が可能です。 ただし、Studio の専用コンピューティング プラットフォームとは異なり、ビジュアル インターフェイスは独自のコンピューティング リソースを使用し、Azure Machine Learning service に完全に統合されています。
 
-Machine Learning Studio を使用するのは、機械学習モデルをすばやく簡単に試したいときで、組み込みの機械学習アルゴリズムで十分な場合です。
+以下で簡単に比較します。
 
-Machine Learning サービスを使用するのは、Python 環境で作業していて機械学習アルゴリズムを詳細に制御したい場合、またはオープンソースの機械学習ライブラリを使用したい場合です。
+|| Machine Learning Studio | Azure Machine Learning service:<br/>ビジュアル インターフェイス|
+|---| --- | --- |
+|| 一般公開 (GA) | プレビュー段階|
+|インターフェイスのモジュール| 多数 | 人気のあるモジュールの初期セット|
+|コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング、GPU または CPU をサポート。<br/>(他のコンピューティングは、SDK でサポート)|
+|デプロイのコンピューティング ターゲット| 独自の Web サービス形式 (カスタマイズ不可) | Enterprise セキュリティ オプションおよび Azure Kubernetes Service。 <br/>([他のコンピューティング](../service/how-to-deploy-and-where.md)は SDK でサポート) |
+|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ  | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 | 
+
+「[クイックスタート: コードを書かずにデータを準備および視覚化する](../service/ui-quickstart-run-experiment.md)」でビジュアル インターフェイス (プレビュー) をお試しください
 
 > [!NOTE]
-> Azure Machine Learning Studio で作成されたモデルは、Azure Machine Learning service でデプロイまたは管理することはできません。
+> Studio で作成したモデルを Azure Machine Learning service でデプロイおよび管理することはできません。 ただし、ビジュアル インターフェイスで作成およびデプロイしたモデルは、Azure Machine Learning service ワークスペースから管理できます。
 
 ## <a name="free-trial"></a>無料試用版
 

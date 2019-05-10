@@ -4,8 +4,6 @@
   items:
     - name: Azure Search とは
       href: search-what-is-azure-search.md
-    - name: コグニティブ検索とは
-      href: cognitive-search-concept-intro.md
 - name: クイック スタート
   expanded: true
   items:
@@ -15,7 +13,7 @@
       items:
         - name: インデックスの読み込みとクエリ
           href: search-get-started-portal.md
-        - name: AI によるエンリッチ (コグニティブ検索)
+        - name: AI によるエンリッチ (Cognitive Search)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       items:
@@ -35,8 +33,12 @@
       href: search-indexer-tutorial.md
     - name: Azure JSON BLOB のインデックスを作成する
       href: search-semi-structured-data.md
-    - name: AI を使ったインデックス作成 (Cognitive Services)
-      href: cognitive-search-tutorial-blob.md
+    - name: AI によるエンリッチ (Cognitive Search)
+      items:
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: 'C#'
+          href: cognitive-search-tutorial-blob-dotnet.md
 - name: サンプル
   items:
     - name: Azure のコード サンプル
@@ -53,11 +55,15 @@
   items:
     - name: フルテキスト検索
       href: search-lucene-query-architecture.md
-    - name: マルチテナント方式の設計パターン
-      href: search-modeling-multitenant-saas-applications.md
+    - name: Cognitive Search
+      href: cognitive-search-concept-intro.md
+    - name: ナレッジ ストア
+      href: knowledge-store-concept-intro.md
+    - name: プロジェクション
+      href: knowledge-store-projection-overview.md
 - name: ハウツー ガイド
   items:
-    - name: 容量計画
+    - name: 計画
       items:
         - name: レベルの選択
           href: search-sku-tier.md
@@ -67,6 +73,8 @@
           href: search-capacity-planning.md
         - name: デプロイ戦略とベスト プラクティス
           href: search-performance-optimization.md
+        - name: マルチテナント アーキテクチャ
+          href: search-modeling-multitenant-saas-applications.md
     - name: セキュリティ
       items:
         - name: セキュリティの概要
@@ -79,6 +87,8 @@
           href: search-security-trimming-for-azure-search.md
         - name: AAD の ID のフィルター処理
           href: search-security-trimming-for-azure-search-with-aad.md
+        - name: 暗号化キーの管理 (プレビュー)
+          href: search-security-manage-encryption-keys.md
     - name: 開発
       items:
         - name: API のバージョン
@@ -169,26 +179,36 @@
           href: search-indexer-field-mappings.md
         - name: 一般的な問題のトラブルシューティング
           href: search-indexer-troubleshooting.md
-    - name: AI によるインデックス作成 (コグニティブ検索)
+    - name: AI によるエンリッチ
       items:
         - name: Cognitive Services リソースをアタッチする
           href: cognitive-search-attach-cognitive-services.md
-        - name: スキルセットを定義する
-          href: cognitive-search-defining-skillset.md
-        - name: 注釈を参照する
-          href: cognitive-search-concept-annotations-syntax.md
-        - name: インデックスのフィールドにマップする
-          href: cognitive-search-output-field-mapping.md
-        - name: 画像の情報を処理し、抽出する
-          href: cognitive-search-concept-image-scenarios.md
-        - name: カスタム スキルを統合する
-          href: cognitive-search-custom-skill-interface.md
-        - name: 例 - カスタム スキル
-          href: cognitive-search-create-custom-skill-example.md
+        - name: スキルセット
+          items:
+            - name: スキルセットを定義する
+              href: cognitive-search-defining-skillset.md
+            - name: 注釈を参照する
+              href: cognitive-search-concept-annotations-syntax.md
+            - name: インデックスのフィールドにマップする
+              href: cognitive-search-output-field-mapping.md
+            - name: 画像の情報を処理し、抽出する
+              href: cognitive-search-concept-image-scenarios.md
+        - name: カスタム スキル
+          items:
+            - name: カスタム スキルを統合する
+              href: cognitive-search-custom-skill-interface.md
+            - name: 例 - Azure Functions
+              href: cognitive-search-create-custom-skill-example.md
+            - name: 例 - コンテナー
+              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: トラブルシューティングのヒント
           href: cognitive-search-concept-troubleshooting.md
         - name: ドキュメント リンク
           href: cognitive-search-resources-documentation.md
+    - name: ナレッジ ストア (プレビュー)
+      items:
+        - name: ファースト ステップ
+          href: knowledge-store-howto.md
     - name: データのクエリを実行する
       items:
         - name: 基本的なクエリの作成
@@ -203,6 +223,8 @@
           href: search-query-simple-examples.md
         - name: 例 (完全な Lucene)
           href: search-query-lucene-examples.md
+        - name: moreLikeThis (プレビュー)
+          href: search-more-like-this.md
     - name: データのフィルター処理と並べ替え
       items:
         - name: フィルターの概要
@@ -276,9 +298,11 @@
           href: cognitive-search-skill-ocr.md
         - name: シェーパー
           href: cognitive-search-skill-shaper.md
+        - name: 条件付き
+          href: cognitive-search-skill-conditional.md
         - name: 非推奨のスキル
           href: cognitive-search-skill-deprecated.md
-    - name: カスタム スキル (プレビュー)
+    - name: カスタム スキル
       items:
         - name: カスタム Web API
           href: cognitive-search-custom-skill-web-api.md

@@ -555,6 +555,8 @@
                   href: app/usage-workbooks.md
             - name: Web アプリ分析ソリューション
               href: insights/azure-web-apps-analytics.md
+            - name: Kubernetes でホストされているアプリ
+              href: app/kubernetes.md
         - name: コンテナーの監視
           items:
             - name: コンテナーに対する Azure Monitor
@@ -563,13 +565,19 @@
                   href: insights/container-insights-overview.md
                 - name: FAQ
                   href: insights/container-insights-faq.md
-                - name: 利用開始
-                  href: insights/container-insights-onboard.md
+                - name: 監視の有効化
+                  items:
+                    - name: 監視の有効化の概要
+                      href: insights/container-insights-onboard.md
+                    - name: 新しいクラスターでの有効化
+                      href: insights/container-insights-enable-new-cluster.md
+                    - name: 既存のクラスターでの有効化
+                      href: insights/container-insights-enable-existing-clusters.md
                 - name: 分析
                   href: insights/container-insights-analyze.md
                 - name: 監視を無効にする
                   href: insights/container-insights-optout.md
-                - name: コンテナー ライブ ログの表示
+                - name: ライブ ログを表示する
                   href: insights/container-insights-live-logs.md
                 - name: ログ クエリによるデータの分析
                   href: insights/container-insights-log-search.md
@@ -585,8 +593,6 @@
               href: insights/containers.md
             - name: Docker アプリケーションの監視
               href: app/docker.md
-            - name: Kubernetes 向けの Application Insights
-              href: app/kubernetes.md
         - name: リソース グループの監視
           href: insights/resource-group-insights.md
         - name: データベースの監視

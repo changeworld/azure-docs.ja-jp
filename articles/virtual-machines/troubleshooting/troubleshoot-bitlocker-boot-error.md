@@ -30,12 +30,12 @@ ms.locfileid: "59796866"
 
  Windows VM が起動しません。 [[ブート診断]](../windows/boot-diagnostics.md) ウィンドウでスクリーンショットを調べると、次のエラー メッセージのいずれかが表示されています。
 
-- Plug in the USB driver that has the BitLocker key (BitLocker キーが格納されている USB ドライバーを差し込んでください)
+- BitLocker キーを含んだ USB ドライバーを接続してください
 
-- You’re locked out! (ロックアウトされています) Enter the recovery key to get going again (Keyboard Layout:US) The wrong sign-in info has been entered too many times, so your PC was locked to protect your privacy. (回復キーを入力して先に進んでください (キーボード レイアウト: US)。間違ったサインイン情報が何度も入力されたため、プライバシー保護のために PC はロックされました。) To retrieve the recovery key, go to https://windows.microsoft.com/recoverykeyfaq from another PC or mobile device. (回復キーを取得するには、別の PC またはモバイル デバイスから https://windows.microsoft.com/recoverykeyfaq に移動してください。) In case you need it, the key ID is XXXXXXX. (それが必要な場合、キー ID は XXXXXXX です。) Or, you can reset your PC. (または、PC をリセットできます。)
+- ロックアウトされました。 使用できる状態に戻すには回復キーを入力してください (キーボード レイアウト:US) 正しくないサインイン情報が何度も入力されたので、お使いの PC はプライバシーを保護するためにロックされました。 回復キーを取得するには、他の PC またはモバイル デバイスで https://windows.microsoft.com/recoverykeyfaq にアクセスしてください。 なお、キー ID は XXXXXXX です。 また、お使いの PC を初期状態に戻すこともできます。
 
-- Enter the password to unlock this drive [ ] Press the Insert Key to see the password as you type. (このドライブ [ ] をロック解除するためのパスワードを入力してください。入力したパスワードを表示するには Insert キーを押してください。)
-- Enter your recovery key Load your recovery key from a USB device. (回復キーを入力してください。USB デバイスから回復キーを読み込んでください。)
+- このドライブのロックを解除するためにパスワードを入力してください [ ] 入力時にパスワードを表示するには、挿入キー (Insert) を押してください。
+- 回復キーの入力。USB デバイスから回復キーを読み込む。
 
 ## <a name="cause"></a>原因
 

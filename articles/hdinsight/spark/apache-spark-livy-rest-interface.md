@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c1497589153f1dc5a79cc1d3414966deaf11f21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570484"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228104"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
@@ -153,13 +153,7 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3.5 バージョン以降の Livy 構成の更新
 
-HDInsight 3.5 以上のクラスターでは、サンプル データ ファイルまたは jar にアクセスするためのローカル ファイル パスの使用が既定で無効になっています。 そのため、クラスターから jar ファイルやサンプル データ ファイルにアクセスするのではなく、`wasb://` のパスを使用することをお勧めします。 ローカル パスを使用する場合は、Ambari 構成を適宜更新する必要があります。 そのためには、次の手順を実行します。
-
-1. クラスターの Ambari ポータルに移動します。 Ambari Web UI はお使いの HDInsight クラスター (https://**CLUSTERNAME**.azurehdidnsight.net) にあります。CLUSTERNAME はお使いのクラスターの名前になります。
-
-2. 左側のナビゲーションで、**[Livy]**、**[Configs]** の順にクリックします。
-
-3. ファイル システムへのフル アクセスを許可する場合は、**livy-default** でプロパティ名 `livy.file.local-dir-whitelist` を追加し、その値を **"/"** に設定します。 特定のディレクトリへのアクセスのみを許可する場合は、そのディレクトリへのパスを値として指定します。
+HDInsight 3.5 以上のクラスターでは、サンプル データ ファイルまたは jar にアクセスするためのローカル ファイル パスの使用が既定で無効になっています。 そのため、クラスターから jar ファイルやサンプル データ ファイルにアクセスするのではなく、`wasb://` のパスを使用することをお勧めします。 
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure 仮想ネットワーク内でクラスターの Livy ジョブを送信する
 

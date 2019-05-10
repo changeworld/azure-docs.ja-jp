@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b5ace2e741f900dd4ab7ba6518d0956284af35f6
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2280af4bf37fdb3cd12482da855f979a9180f0ec
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498233"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020541"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
 
@@ -47,29 +47,26 @@ ms.locfileid: "58498233"
 
 ## <a name="create-your-wake-word"></a>ウェイク ワードを作成する
 
-カスタム ウェイク ワードをデバイスで使用する前に、Microsoft Custom Wake Word Generation サービスを使用してカスタム ウェイク ワードを作成する必要があります。 ウェイク ワードを指定すると、このサービスによってファイルが作成されます。このファイルを開発キットに展開することで、デバイスでウェイク ワードを有効にできます。
+カスタム ウェイク ワードをデバイスで使用する前に、Microsoft Custom Wake Word Generation サービスを使用してウェイク ワードを作成する必要があります。 ウェイク ワードを指定すると、このサービスによってファイルが作成されます。このファイルを開発キットに展開することで、デバイスでウェイク ワードを有効にできます。
 
-1. [Custom Speech Service ポータル](https://cris.ai/)に移動します。
+1. [Custom Speech Service ポータル](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションを持っていない場合は、[**[サブスクリプションを作成する]**](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 
     ![Custom Speech Service ポータル](media/speech-devices-sdk/wake-word-4.png)
 
-1. Azure Active Directory の招待を受信したメール アドレスでサインインします。
-
-1. **[Custom Wake Word]\(カスタム ウェイク ワード)** ページは公開されていないので、このページに直接移動するリンクはありません。 Custom Speech 機能を利用するには Azure のサブスクリプションが必要ですが、カスタム ウェイク ワード機能では不要です。 "**サブスクリプションが見つかりません。**" というエラー メッセージが表示される場合は、 URL 内の **"Subscriptions?errorMessage=No%20Subscriptions%20found"** を "**customkws**" にただ置き換えて、Enter キーを押します。 URL は、ご利用のリージョンに応じて、 https://westus.cris.ai/customkws、 https://eastasia.cris.ai/customkws、または https://northeurope.cris.ai/customkws のいずれかである必要があります。
-
-1. 選択したウェイク ワードを入力して、**[Submit the word]\(ワードを送信する)** を選択します。
+1. [[Custom Wake Word]\(カスタム ウェイク ワード\)](https://aka.ms/sdsdk-wakewordportal) ページに選択したウェイク ワードを入力し、**[Add wake word]\(ウェイク ワードの追加\)** をクリックします。 効果的なキーワードを選択するために役立つ[ガイドライン](#choose-an-effective-wake-word)がいくつかあります。 現在は、en-US 言語のみがサポートされています。
 
     ![ウェイク ワードを入力する](media/speech-devices-sdk/wake-word-5.png)
 
-1. ファイルが生成されるまで、数分かかる場合があります。 ブラウザー ウィンドウに、回転する円が表示されます。 しばらくすると、.zip ファイルをダウンロードするよう指示する情報バーが表示されます。
+1. ウェイク ワードの 3 つの代替発音が作成されます。 必要な発音をすべて選択することができます。 次に **[送信]** を選択してウェイク ワードを生成します。 ウェイク ワードを変更する場合は、まず既存のウェイク ワードを削除します。発音行にマウス ポインターを移動すると、削除アイコンが表示されます。
 
-1. .zip ファイルをコンピューターに保存します。 開発キットにカスタム ウェイク ワードを展開するには、このファイルが必要です。 カスタム ウェイク ワードを展開するには、「[Speech Devices SDK を使ってみる](speech-devices-sdk-qsg.md)」の手順に従います。
+    ![ウェイク ワードを確認する](media/speech-devices-sdk/wake-word-6.png)
 
-1. **[サインアウト]** を選択します。
+1. モデルが生成されるまでに最大で 1 分かかる場合があります。 ファイルをダウンロードするように求められます。
+
+    ![ウェイク ワードをダウンロードする](media/speech-devices-sdk/wake-word-7.png)
+
+1. .zip ファイルをコンピューターに保存します。 開発キットにカスタム ウェイク ワードをデプロイするには、このファイルが必要です。
 
 ## <a name="next-steps"></a>次の手順
 
-使い始めるために、[無料の Azure アカウント](https://azure.microsoft.com/free/)を取得し、Speech Devices SDK にサインアップします。
-
-> [!div class="nextstepaction"]
-> [Speech Devices SDK にサインアップする](get-speech-devices-sdk.md)
+カスタム ウェイク ワードを [Speech Devices SDK クイックスタート](https://aka.ms/sdsdk-quickstart)でテストします。

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7db3292bc5f377d9728e42994dd3a437cb59958e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269114"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024808"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>クイック スタート:Postman を使用して Azure Search REST API シリーズを調べる
 > [!div class="op_single_selector"]
@@ -63,9 +63,9 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 いずれかのツールでコマンド (GET、POST、PUT など) を選択し、URL エンドポイントを指定し、一部のタスクでは要求の本文に JSON を入力する必要があります。 完全な URL は、次のようになります。
 
-    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11
+    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06
 
-HTTPS プレフィックス、サービスの名前、オブジェクト (この例では、インデックス コレクション) の名前、[API バージョン](search-api-versions.md)に注目してください。 API バージョンは必須の小文字の文字列で、最新バージョンの場合は "?api-version=2017-11-11" として指定します。 API バージョンは定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
+HTTPS プレフィックス、サービスの名前、オブジェクト (この例では、インデックス コレクション) の名前、[API バージョン](search-api-versions.md)に注目してください。 API バージョンは必須の小文字の文字列で、最新バージョンの場合は `?api-version=2019-05-06` として指定します。 API バージョンは定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
 
 要求ヘッダーの構成には、コンテンツ タイプと、Azure Search への認証に使用した API キーという 2 つの要素が含まれます。
 
@@ -85,7 +85,7 @@ URL を拡張して、`hotel` インデックス名を含めます。
 Postman でこれを行うには:
 
 1. 動詞を **PUT** に変更します。
-2. この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+2. この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`
 3. 要求の本文にインデックス定義 (下記参照) を入力します。
 4. ページの下部にある **[Send]**
 
@@ -129,7 +129,7 @@ URL を拡張して、`docs` コレクションと `index` 操作を含めます
 Postman でこれを行うには:
 
 1. 動詞を **POST** に変更します。
-2. この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+2. この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`
 3. 要求の本文に JSON ドキュメント (下記参照) を入力します。
 4. ページの下部にある **[Send]**
 
@@ -219,7 +219,7 @@ URL を拡張して、検索演算子を使用して指定されたクエリ文�
 Postman でこれを行うには:
 
 + 動詞を **GET** に変更します。
-+ この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ この URL をコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`
 + ページの下部にある **[Send]**
 
 このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
@@ -228,7 +228,7 @@ Postman でこれを行うには:
 
 
 ## <a name="get-index-properties"></a>インデックス プロパティの取得
-システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
 
 Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
 
@@ -247,7 +247,7 @@ API バージョンの構文が異なる点に注目してください。 この
 
 次のスクリーンショットのように要求を作成します。 動詞として **GET** を選択します。 `User-Agent=Fiddler` が自動的に追加されます。 その下の新しい行に 2 つの追加の要求ヘッダーを貼り付けることができます。 サービスの管理者アクセス キーを使用して、サービスのコンテンツ タイプと API キーを含めます。
 
-ターゲットには、この URL の変更されたバージョンをコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+ターゲットには、この URL の変更されたバージョンをコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06`
 
 ![Fiddler の要求ヘッダー][1]
 
@@ -256,7 +256,7 @@ API バージョンの構文が異なる点に注目してください。 この
 
 ### <a name="1---create-an-index"></a>1 - インデックスの作成
 
-動詞を **PUT** に変更します。 この URL の変更されたバージョンをコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11` 前述のインデックス定義を要求本文にコピーします。 実際のページは次のスクリーンショットのようになります。 右上にある **[Execute]\(実行\)** をクリックして、完成した要求を送信します。
+動詞を **PUT** に変更します。 この URL の変更されたバージョンをコピーします。`https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06` 前述のインデックス定義を要求本文にコピーします。 実際のページは次のスクリーンショットのようになります。 右上にある **[Execute]\(実行\)** をクリックして、完成した要求を送信します。
 
 ![Fiddler の要求本文][7]
 
@@ -272,11 +272,11 @@ API バージョンの構文が異なる点に注目してください。 この
 
 **(lastRenovationDate desc の) スペースを置き換える前:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06
 
 **(lastRenovationDate+desc の) + でスペースを置き換えた後:**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2019-05-06
 
 ### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Fiddler でインデックスの統計情報を表示するためのヒント
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312818"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023993"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
 
@@ -64,7 +64,7 @@ Azure Search は、複数のデータ ソース、[多数の言語の言語分�
 
 いいえ。この操作はサポートされていません。 検索は常に単一のインデックスが対象です。
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>ユーザー ID で検索コーパス アクセスを制限できますか?
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>ユーザー ID によって検索インデックス アクセスを制限できますか?
 
 `search.in()` フィルターを使用する[セキュリティ フィルター](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)を実装できます。 このフィルターは [Azure Active Directory (AAD) などの ID 管理サービス](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad)に適切に構成でき、定義されたユーザー グループ メンバーシップに基づいて検索結果を絞り込むことができます。
 

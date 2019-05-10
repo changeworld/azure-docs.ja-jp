@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4599498918b7a01a1207f20135c26924c6758eb8
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7e569fa30727f2df7411eee5fa6d48f9b9454460
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499427"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025336"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search でコンカレンシーを管理する方法
 
@@ -170,7 +170,7 @@ ms.locfileid: "58499427"
 
 オプティミスティック コンカレンシーを実装するための設計パターンには、アクセス条件チェック、アクセス条件のテストを再試行し、変更の再適用を試みる前に更新済みリソースを必要に応じて取得するループを含めるようにします。
 
-このコード スニペットでは、既に存在するインデックスに synonymMap を追加する例を示します。 このコードは [Azure Search のシノニム (プレビュー) C# の例](search-synonyms-tutorial-sdk.md)からの引用です。
+このコード スニペットでは、既に存在するインデックスに synonymMap を追加する例を示します。 このコードは [Azure Search のシノニム C# の例](search-synonyms-tutorial-sdk.md)からの引用です。
 
 スニペットでは "hotels" インデックスを取得し、更新操作時にオブジェクトのバージョンをチェックし、条件に適合しない場合は例外をスローした後、操作を (最大 3 回) 再試行します。この際、最新バージョンを取得するために、まずサーバーからインデックスを取得します。
 

@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 05/01/2019
 ms.author: szark
-ms.openlocfilehash: c0124d133fe2db9acb16251bc21ffb19f1b1268f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db10c95c982132c41193ed1cccfdcdca6f60ba5e
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992176"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993081"
 ---
-# <a name="linux-distributions-endorsed-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
+# <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft はさまざまな Linux コミュニティと連携し、動作保証済みディストリビューション リストを拡充しています。 それまでの間、Marketplace からご利用いただけないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)」のガイドラインに従って、独自の Linux をいつでも使用できます。
 
 ## <a name="supported-distributions-and-versions"></a>サポートされているディストリビューションとバージョン
-次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。 Azure での Linux とオープン ソース テクノロジーのサポートの詳細については、[Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)に関するページをご覧ください。
+次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。 Azure での Linux とオープンソース テクノロジーのサポートの詳細については、[Microsoft Azure での Linux イメージのサポートに関するページ](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)を参照してください。
 
-Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。  既定でディストリビューションのカーネルに組み込まれている LIS ドライバーもあります。 Red Hat Enterprise (RHEL)/CentOS に基づく古いディストリビューションは、[Linux Integration Services Version 4.2 for Hyper-V and Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106) で個別にダウンロードして入手できます。 LIS ドライバーの詳細については、「[Linux カーネルの要件](create-upload-generic.md#linux-kernel-requirements)」を参照してください。
+Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。  既定でディストリビューションのカーネルに組み込まれている LIS ドライバーもあります。 Red Hat Enterprise (RHEL)/CentOS に基づく古いディストリビューションは、[Linux Integration Services Version 4.2 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) で個別にダウンロードして入手できます。 LIS ドライバーの詳細については、「[Linux カーネルの要件](create-upload-generic.md#linux-kernel-requirements)」を参照してください。
 
 Azure Linux エージェントは、Azure Marketplace のイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。 ソース コードは [GitHub](https://github.com/azure/walinuxagent)にあります。
 
   
-| ディストリビューション | Version | ドライバー | エージェント |
+| ディストリビューション | バージョン | ドライバー | エージェント |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+、7.0+ |CentOS 6.3:[LIS のダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 以降:カーネル内 |パッケージ:[リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+、7.0+ |CentOS 6.3:[LIS のダウンロード](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 以降:カーネル内 |パッケージ:[リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |カーネル内 |ソース コード:[GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+、8.2+ |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -44,7 +44,25 @@ Azure Linux エージェントは、Azure Marketplace のイメージにあら�
 | openSUSE |openSUSE Leap 42.2 + |カーネル内 |パッケージ:[Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>** Azure での Ubuntu 12.04 のサポートの詳細については、[提供終了に関するお知らせ](https://azure.microsoft.com/blog/ubuntu-12-04-precise-pangolin-nearing-end-of-life/)の記事をご覧ください。
+  - **<sup>1</sup>** Ubuntu 12.04 および 14.04 の拡張サポートについては、「[Ubuntu Extended Security Maintenance (Ubuntu 拡張セキュリティのメンテナンス)](https://www.ubuntu.com/esm)」を参照してください。
+
+
+## <a name="image-update-cadence"></a>イメージの更新頻度
+Azure の場合、動作保証済み Linux ディストリビューションのパブリッシャーは、四半期ごとまたはそれより短い頻度で最新のパッチとセキュリティ修正プログラムを適用して、Azure Marketplace 内のイメージを定期的に更新する必要があります。 Azure Marketplace 内の更新されたイメージは、新しいバージョンのイメージ SKU として、自動的に顧客に提供されます。 Linux イメージの検索方法の詳細については、[Azure Marketplace 内の Linux VM イメージの検索に関するページ](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)を参照してください。
+
+### <a name="additional-links"></a>その他のリンク
+ - [SUSE Public Cloud Image Lifecycle (SUSE パブリック クラウドのイメージのライフ サイクル)](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+
+## <a name="azure-tuned-kernels"></a>Azure で調整されたカーネル
+
+Azure は、各種の動作保証済み Linux ディストリビューションと緊密に連携して、Azure Marketplace に公開されたイメージを最適化しています。 この共同作業の 1 つとして、Azure プラットフォーム用に最適化された "調整済み" Linux カーネルの開発があります。このカーネルは、完全にサポートされる Linux ディストリビューションのコンポーネントとして提供されます。 Azure で調整されたカーネルは、新機能を備えており、パォーマンスが向上しています。また、ディストリビューションで提供される既定のカーネルや汎用のカーネルと比べて、更新頻度が高くなっています (通常は四半期ごと)。
+
+ほとんどの場合、このカーネルは、Azure Marketplace 内の既定のイメージにプレインストールされています。そのため、Azure の顧客は、この最適化されたカーネルの利点をすぐに享受できます。 Azure で調整されたカーネルの詳細については、次のリンクを参照してください。
+
+ - CentOS の Azure で調整されたカーネル - CentOS 仮想化 SIG 経由で使用可能[詳細](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian クラウド カーネル - Azure 上の Debian 10 および Debian 9 "backports" イメージで使用可能 - [詳細](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES の Azure で調整されたカーネル - [詳細](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu の Azure で調整されたカーネル - [詳細](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>パートナー

@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 92f04d80ea956f3036d7778a5d6de62e53b969ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014633"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023709"
 ---
-# <a name="write-and-configure-data-using-azure-machine-learning"></a>Azure Machine Learning を使用してデータの書き込みと構成を行う
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK でデータの書き込みと構成を行う
 
 この記事では、[Azure Machine Learning Data Prep Python SDK](https://aka.ms/data-prep-sdk) を使用してデータを書き込むさまざまな方法と、そのデータを、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用した実験用に構成する方法について説明します。  出力データは、データ フローのどの時点でも書き込むことができます。 書き込みは、結果のデータ フローへのステップとして追加され、これらのステップはデータ フローが実行されるたびに実行されます。 データは複数のパーティション ファイルに書き込まれ、並列書き込みが可能です。
+
+> [!Important]
+> 新しいソリューションを構築する場合は、データの変換、データのスナップショットの作成、およびバージョン管理されたデータセット定義の格納に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
 
 パイプライン内に存在する書き込みのステップ数に制限はないため、書き込みステップを簡単に追加して、トラブルシューティングやその他のパイプライン用に中間結果を取得することができます。
 

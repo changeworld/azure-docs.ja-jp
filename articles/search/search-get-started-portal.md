@@ -7,15 +7,15 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b30fa61cd46acd4fa9da9d97c100e3b3a0aaf067
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282663"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024764"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> Azure Search の新しいコグニティブ検索 (プレビュー) 機能は、[コグニティブ検索のクイック スタート](cognitive-search-quickstart-blob.md)または[チュートリアル](cognitive-search-tutorial-blob.md)で体験することができます。
+> AI インデックス作成の例は、[クイックスタート](cognitive-search-quickstart-blob.md)または[チュートリアル](cognitive-search-tutorial-blob.md)内でステップ実行できます。
 
 ### <a name="step-3---configure-index"></a>手順 3 - インデックスを構成する
 
@@ -154,7 +154,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd2.png)
 
-2. コマンド バーで **[インデックスの変更]** をクリックし、*realestate-us-sample* に切り替えます。 コマンド バーで **[API バージョンを設定]** をクリックし、使用できる REST API を確認します。 以下のクエリでは、一般公開バージョン (2017-11-11) を使います。
+2. コマンド バーで **[インデックスの変更]** をクリックし、*realestate-us-sample* に切り替えます。 コマンド バーで **[API バージョンを設定]** をクリックし、使用できる REST API を確認します。 以下のクエリでは、一般公開バージョン (2019-05-06) を使います。
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex-se2.png)
 

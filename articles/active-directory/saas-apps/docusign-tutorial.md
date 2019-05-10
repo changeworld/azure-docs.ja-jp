@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 72505cfc0a86c00882de37c35dff61a12a9c3fbe
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 35fc4e855ef53bd7e667fc8de7146916b4d05acb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565752"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>チュートリアル:Azure Active Directory と DocuSign の統合
 
@@ -178,7 +178,7 @@ DocuSign で Azure AD シングル サインオンを構成するには、次の
 
     ![シングル サインオンの構成][62]
 
-    i. Azure AD の要求とマッピングするフィールドを選択します。 この例では、**emailaddress** 要求は **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。**[SAVE]\(保存\)** をクリックします。
+    i. Azure AD の要求とマッピングするフィールドを選択します。 この例では、**emailaddress** 要求は **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。**[SAVE]\(保存\)** をクリックします。
 
     ![シングル サインオンの構成][57]
 

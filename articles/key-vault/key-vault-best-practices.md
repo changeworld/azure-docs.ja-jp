@@ -2,19 +2,19 @@
 title: Key Vault を使用するためのベスト プラクティス - Azure Key Vault | Microsoft Docs
 description: このドキュメントでは、Key Vault を使用するためのいくつかのベスト プラクティスについて説明します。
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: barbkess
 tags: azure-key-vault
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 27881758175ab698e4b713c0215383878272382f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eb7150d0b1c3a4a312b0c05ba7612960aaf640f6
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700759"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227941"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 

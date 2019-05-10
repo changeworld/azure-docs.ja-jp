@@ -11,16 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892740"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021103"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
 この記事は、Azure Machine Learning サービスの使用時に発生したエラーや障害を見つけて修正するのに役立ちます。
+
+## <a name="visual-interface-issues"></a>ビジュアル インターフェイスの問題
+
+機械学習サービスのビジュアル インターフェースの問題。
+
+### <a name="long-compute-preparation-time"></a>計算の準備時間が長い
+
+新しい計算の作成や計算の終了に、数分またはそれ以上の時間がかかる場合があります。 現在、担当チームが最適化に取り組んでいます。
+
+
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>データセットのみを含む実験を実行できない 
+
+データセットのみを含む実験を実行して、データセットを視覚化したい場合があります。 しかし、現在、データセットのみを含む実験は実行できません。 現在、この問題の解決に積極的に取り組んでいます。
+ 
+修正が行われる前に、データセットを任意のデータ変換モジュール (データセット内の列の選択、メタデータの編集、データの分割など) に接続し、実験を実行できます。 その後、データセットを視覚化できます。 
+
+次の図は、その方法を示しています: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK のインストールに関する問題
 

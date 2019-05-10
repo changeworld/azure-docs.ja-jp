@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Blockchain Service のドキュメント
+metadata:
+  title: Azure Blockchain Service のドキュメント - チュートリアル、API リファレンス
+  description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、管理する方法を紹介します。
+  services: azure-blockchain
+  author: patricka
+  manager: femila
+  ms.service: azure-blockchain
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/13/2019
+  ms.author: patricka
+abstract:
+  description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、使用する方法を紹介します。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure でコンソーシアム メンバーを作成して接続する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/deploy.svg
+            text: コンソーシアム メンバーを作成する
+            href: /azure/blockchain/service/create-member
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: MetaMask を使用して接続する
+            href: /azure/blockchain/service/connect-metamask
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: geth を使用して接続する
+            href: /azure/blockchain/service/connect-geth
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Truffle を使用して接続する
+            href: /azure/blockchain/service/connect-truffle
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure でブロックチェーン アプリケーションを作成、構成、開発する方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/blockchain/service/send-transaction">Azure Blockchain Service のメンバーを作成して、トランザクションを送信する</a>

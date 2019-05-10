@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cedd45d4142633e48d0d9dd41870f57c16d860c8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548356"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023835"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Azure Machine Learning サービスによる TensorFlow モデルと Keras モデルのトレーニング
 
@@ -185,6 +185,10 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="export-to-onnx"></a>ONNX にエクスポートする
+
+[ONNX Runtime](concept-onnx.md) での推論を最適化するために、トレーニングされた TensorFlow モデルを ONNX 形式に変換することができます。 [例](https://github.com/onnx/tensorflow-onnx/blob/master/examples/call_coverter_via_python.py)を参照してください。
 
 ## <a name="examples"></a>例
 

@@ -2,74 +2,61 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/11/2018
+ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: ef68d02f6aa23368962e08af7b35d2b81c0e80bb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 4f48fc0ad65984df42e2a85853f39e49d7481302
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579804"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020435"
 ---
-### <a name="neural-voices"></a>ニューラル音声
+### <a name="standard-and-neural-voices"></a>標準およびニューラル音声
 
-ニューラル音声は、次のリージョンで使用できます。
+このテーブルを使用して、リージョン/エンドポイントによる標準およびニューラル音声の可用性を決定します。
 
-| リージョン | エンドポイント |
-|--------|----------|
-| 米国東部 | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 東南アジア | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 西ヨーロッパ | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-
-> [!IMPORTANT]
-> Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural) は、東南アジア エンドポイント https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 経由でのみ使用できます。 ニューラル音声の全一覧については、[言語のサポート](../articles/cognitive-services/speech-service/language-support.md)に関する記事を参照してください。
-
-### <a name="standard-voices"></a>標準音声
-
-標準音声は、次のリージョンで使用できます。
-
-| リージョン | エンドポイント |
-|--------|----------|
-| オーストラリア東部 | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| カナダ中部 | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国中央部 | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 東アジア | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国東部 | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国東部 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 |
-| フランス中部 | https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| インド中部 | https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 東日本 | https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 韓国中部 | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国中北部 | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 北ヨーロッパ | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国中南部 | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 東南アジア | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 英国南部 | https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 西ヨーロッパ | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国西部 | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 米国西部 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 |
+| リージョン | エンドポイント | 標準音声 | ニューラル音声 |
+|--------|----------|-----------------|---------------|
+| オーストラリア東部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| カナダ中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 米国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 東アジア | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国東部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 米国東部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| フランス中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| インド中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 東日本 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 韓国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 北ヨーロッパ | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 東南アジア | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
+| 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 
 ### <a name="custom-voices"></a>カスタム音声
 
-カスタム音声フォントを作成した場合は、これらの一覧に記載されているエンドポイントではなく、自分で作成したエンドポイントを使います。
+カスタム音声フォントを作成した場合は、作成したエンドポイントを使用します。 また、以下の一覧に示したエンドポイントを使用して、`{deploymentId}` を音声モデル用のデプロイ ID に置き換えます。
 
 | リージョン | エンドポイント |
 |--------|----------|
-| オーストラリア東部 | https://australiaeast.voice.speech.microsoft.com |
-| カナダ中部 | https://canadacentral.voice.speech.microsoft.com |
-| 米国中央部 | https://centralus.voice.speech.microsoft.com |
-| 東アジア | https://eastasia.voice.speech.microsoft.com |
-| 米国東部 | https://eastus.voice.speech.microsoft.com |
-| 米国東部 2 | https://eastus2.voice.speech.microsoft.com |
-| フランス中部 | https://francecentral.voice.speech.microsoft.com |
-| インド中部 | https://centralindia.voice.speech.microsoft.com |
-| 東日本 | https://japaneast.voice.speech.microsoft.com |
-| 韓国中部 | https://koreacentral.voice.speech.microsoft.com |
-| 米国中北部 | https://northcentralus.voice.speech.microsoft.com |
-| 北ヨーロッパ | https://northeurope.voice.speech.microsoft.com |
-| 米国中南部 | https://southcentralus.voice.speech.microsoft.com |
-| 東南アジア | https://southeastasia.voice.speech.microsoft.com |
-| 英国南部 | https://uksouth.voice.speech.microsoft.com |
-| 西ヨーロッパ | https://westeurope.voice.speech.microsoft.com |
-| 米国西部 | https://westus.voice.speech.microsoft.com |
-| 米国西部 2 | https://westus2.voice.speech.microsoft.com |
+| オーストラリア東部 | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| カナダ中部 | `https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国中部 | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 東アジア | `https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国東部 | `https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国東部 2 | `https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| フランス中部 | `https://francecentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| インド中部 | `https://centralindia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 東日本 | `https://japaneast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 韓国中部 | `https://koreacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国中北部 | `https://northcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 北ヨーロッパ | `https://northeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国中南部 | `https://southcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 東南アジア | `https://southeastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 英国南部 | `https://uksouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 西ヨーロッパ | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国西部 | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| 米国西部 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |

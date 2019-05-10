@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1c00fec5f56fc81b2cb73404728b214b5aaf3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698359"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025121"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
@@ -41,18 +41,16 @@ ms.locfileid: "59698359"
     * Azure Machine Learning Data Prep SDK for Python
 * チュートリアル ノートブック
 
-以下のいずれかのセクションから、これらすべての前提条件を入手します。
-
-* [Azure Notebooks](#azure) を使用する
+* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
 * [独自のノートブック サーバー](#server)を使用する
 
-### <a name="azure"></a>Azure Notebooks を使用する: クラウド上の無料の Jupyter Notebook
+### <a name="azure"></a>ワークスペース内のクラウド ノートブック サーバーを使用する
 
-Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には Azure Machine Learning Data Prep SDK が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
-
-以下の手順を完了したら、**Getting Started** プロジェクトの **tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
+独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* ノートブックの Web ページを起動したら、**tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 

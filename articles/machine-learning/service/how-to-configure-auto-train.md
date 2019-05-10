@@ -9,18 +9,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: e821c6bc9f2f7f84f5f020d1c5e3248e7163044c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 72e43ac295fcb007dd58b2b7792a16c639ee9c08
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914971"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023744"
 ---
-# <a name="configure-automated-machine-learning-experiments"></a>自動機械学習の実験を構成する
+# <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
-自動機械学習は、アルゴリズムとハイパーパラメーターを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションはいくつかあります。 このガイドでは、さまざまな構成設定を定義する方法について説明します。
+このガイドでは、[Azure Machine Learning SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、自動機械学習の実験のさまざまな構成設定を定義する方法について説明します。 自動機械学習は、アルゴリズムとハイパーパラメーターを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションはいくつかあります。
 
 自動機械学習の実験の例を確認するには、[自動機械学習を使用した分類モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関するページか、「[クラウドで自動機械学習を使用してモデルをトレーニングする](how-to-auto-train-remote.md)」をご覧ください。
 
@@ -34,7 +34,10 @@ ms.locfileid: "64914971"
 * モデル メトリックを探索する
 * モデルを登録して展開する
 
+コードを書かずに実験を作成する場合は、「[Create your automated machine learning experiments in the Azure portal](how-to-create-portal-experiments.md)」(Azure portal で自動機械学習の実験を作成する) を参照してください。
+
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
+
 実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。
 
 自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 DNN アルゴリズムはトレーニング中に使用できますが、自動 ML は DNN モデルをビルドしません。
@@ -125,7 +128,7 @@ label | string  | X、y、X_valid、y_valid |  data_train 内のどの列がラ�
 columns | 文字列の配列  ||  "_省略可能_" 機能に使用する列のホワイトリスト
 cv_splits_indices   | 整数の配列 ||  "_省略可能_" クロス検証用にデータを分割するためのインデックスのリスト
 
-### <a name="load-and-prepare-data-using-dataprep-sdk"></a>データ準備 SDK を使用してデータを読み込み、準備する
+### <a name="load-and-prepare-data-using-data-prep-sdk"></a>データ準備 SDK を使用してデータを読み込み、準備する
 自動機械学習の実験では、データ準備 SDK を使用したデータの読み込みと変換がサポートされます。 SDK を使用すると次の機能を実現できます。
 
 >* パラメーターの推論 (エンコード、区切り、ヘッダー) を解析してさまざまな種類のファイルから読み込む
@@ -159,7 +162,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 
 `n_cross_validations` の設定を使用して、クロス検証の数を指定します。 トレーニング データ セットは、等しいサイズの `n_cross_validations` 個のフォールドにランダムに分割されます。 各クロス検証ラウンドの間に、フォールドの 1 つが、残りのフォールドでトレーニングされたモデルの検証に使用されます。 各フォールドが検証セットとして 1 回使用されるまで、このプロセスが `n_cross_validations` ラウンドに対して繰り返されます。 すべての `n_cross_validations` ラウンドの平均スコアがレポートされ、対応するモデルがトレーニング データ セット全体で再トレーニングされます。 
 
-### <a name="monte-carlo-cross-validation-aka-repeated-random-sub-sampling"></a>モンテカルロ クロス検証 (別名: 反復ランダム サブサンプリング)
+### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>モンテカルロ クロス検証 (反復ランダム サブサンプリング)
 
 `validation_size` を使用して検証に使用する必要があるトレーニング データセットの割合を指定し、`n_cross_validations` を使用してクロス検証の数を指定します。 各クロス検証ラウンドの間に、サイズ `validation_size` のサブセットが、残りのデータでトレーニングされたモデルの検証にランダムに選択されます。 最後に、すべての `n_cross_validations` ラウンドの平均スコアが報告されて、対応するモデルがトレーニング データ セットが全体で再トレーニングされます。 モンテカルロは時系列予測ではサポートされていません。
 
@@ -174,6 +177,10 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 *   クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
 
 ローカルとリモートのコンピューティング先を使用したノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
+
+*   Azure サブスクリプション内の Azure Databricks クラスター。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-environment.md#azure-databricks)に関する記事を参照してください
+
+Azure Databricks でのノートブックの例については、[GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) を参照してください。
 
 <a name='configure-experiment'></a>
 
@@ -223,23 +230,48 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-## <a name="data-pre-processing-and-featurization"></a>データの前処理と特徴付け
+## <a name="data-preprocessing--featurization"></a>データの前処理と特徴付け
 
-`preprocess=True` を使用すると、次のデータ前処理手順が自動的に実行されます。
-1.  高カーディナリティまたは差異なしの特徴の削除
-    * トレーニングおよび検証セットから、有用な情報のない特徴を削除します。 これには、まったく値が存在しない特徴、すべての行の値が同じである特徴、非常に高いカーディナリティ (ハッシュ、ID、GUID など) の特徴が含まれます。
-1.  欠落値の補完
-    *   数値特徴の場合、その列の平均値で欠落値を補完します。
-    *   カテゴリ特徴の場合、出現回数が最も多い値で欠落値を補完します。
-1.  その他の特徴の生成
-    * DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。
-    * テキストの特徴:単語のユニグラム、バイグラム、トリグラムに基づく用語の出現頻度、回数のベクター化。
-1.  変換とエンコード
-    * 一意の値がほとんどない数値特徴は、カテゴリ特徴に変換されます。
-    * カテゴリ特徴のカーディナリティに応じて、ラベル エンコードまたは (ハッシュ) ワンホット エンコードを実行します。
+自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、データは[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、および変換などの前処理と特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)にあります。 
 
-## <a name="ensemble-models"></a>アンサンブル モデル
-アンサンブル学習では、1 つのモデルを使用するのではなく、多くのモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 自動化された機械学習を使用する場合は、[並び変えられたアンサンブルの初期化を含む Caruana アンサンブル選択アルゴリズム](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)を使用してアンサンブル モデルをトレーニングすることができます。 アンサンブル イテレーションは、実行の最後のイテレーションとして表示されます。
+この特徴付けを有効にするには、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)に `"preprocess": True` を指定します。
+
+## <a name="time-series-forecasting"></a>時系列予測
+時系列予測タスクの種類には、定義する追加のパラメータがあります。
+1. time_column_name - 日付/時系列を含むトレーニング データの列の名前を定義する必須パラメーターです。 
+1. max_horizon - トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
+1. grain_column_names - トレーニング データに個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。
+
+以下で使用されているこれらの設定の例を参照してください。ノートブックの例は[ここ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)で入手可能です。
+
+```python
+# Setting Store and Brand as grains for training.
+grain_column_names = ['Store', 'Brand']
+nseries = data.groupby(grain_column_names).ngroups
+
+# View the number of time series data with defined grains
+print('Data contains {0} individual time-series.'.format(nseries))
+```
+
+```python
+time_series_settings = {
+    'time_column_name': time_column_name,
+    'grain_column_names': grain_column_names,
+    'drop_column_names': ['logQuantity'],
+    'max_horizon': n_test_periods
+}
+
+automl_config = AutoMLConfig(task='forecasting',
+                             debug_log='automl_oj_sales_errors.log',
+                             primary_metric='normalized_root_mean_squared_error',
+                             iterations=10,
+                             X=X_train,
+                             y=y_train,
+                             n_cross_validations=5,
+                             path=project_folder,
+                             verbosity=logging.INFO,
+                             **time_series_settings)
+```
 
 ## <a name="run-experiment"></a>実験を実行する
 
@@ -307,9 +339,221 @@ normalized_root_mean_squared_error|正規化された平均平方二乗誤差は
 root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|なし|
 normalized_root_mean_squared_log_error|正規化された対数平均平方二乗誤差は、データの範囲で除算した対数平均平方二乗誤差です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|データの範囲で除算します|
 
-## <a name="explain-the-model"></a>モデルを説明する
 
-自動機械学習の機能は一般提供されていますが、**モデルの説明機能はまだパブリック プレビュー段階にあります**。
+## <a name="understand-automated-ml-models"></a>自動化された ML モデルを理解する
+
+自動化された ML を使用して生成されたモデルには、次の手順が含まれます。
++ 自動化された特徴エンジニアリング: (preprocess=True の場合)
++ ハイパーパラメーター値を使用したスケーリングまたは正規化、およびアルゴリズム
+
+透過的に処理して、自動化された ML の fitted_model 出力からこの情報を取得します。
+
+```python
+automl_config = AutoMLConfig(…)
+automl_run = experiment.submit(automl_config …)
+best_run, fitted_model = automl_run.get_output()
+```
+
+### <a name="automated-feature-engineering"></a>自動化された特徴エンジニア リング
+
+preprocess=True の場合に実行される前処理および[自動化された特徴エンジニアリング](concept-automated-ml.md#preprocess)の一覧を参照してください。  
+
+次の例を考えてみましょう。
++ 次の 4 つの入力特徴があります:A (数値)、B (数値)、C (数値)、D (日時)
++ 数値の特徴 C は、すべて一意の値を持つ ID 列であるためドロップされます
++ 数値の特徴 A と B には欠損値があるため、平均値で補完されます
++ 日時の特徴 D は、11 の異なるエンジニアリングされた特徴に特徴付けされます
+
+適合モデルの最初のステップで次の 2 つの API を使用して、詳細を確認します。  [こちらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)を参照してください。
+
++ API 1: `get_engineered_feature_names()` はエンジニアリングされた特徴の名前の一覧を返します。
+
+  用途: 
+  ```python
+  fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
+  ```
+
+  ```
+  Output: ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
+  ```
+
+  このリストには、すべてのエンジニアリングされた特徴の名前が含まれます。
+
+  >[!Note]
+  >task='forecasting' に 'timeseriestransformer' を使用するか、'regression' または 'classification' タスクに 'datatransformer' を使用します。 
+
++ API 2: `get_featurization_summary()` は、すべての入力特徴について、特徴付けの概要を返します。
+
+  用途: 
+  ```python
+  fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+  ```
+
+  >[!Note]
+  >task='forecasting' に 'timeseriestransformer' を使用するか、'regression' または 'classification' タスクに 'datatransformer' を使用します。
+
+  出力:
+  ```
+  [{'RawFeatureName': 'A',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'B',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'C',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'Yes',
+    'EngineeredFeatureCount': 0,
+    'Tranformations': []},
+   {'RawFeatureName': 'D',
+    'TypeDetected': 'DateTime',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 11,
+    'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
+  ```
+  
+   各値の説明:
+   
+   |Output|定義|
+   |----|--------|
+   |RawFeatureName|指定されたデータセットの入力特徴/列の名前。| 
+   |TypeDetected|検出された入力特徴のデータ型。|
+   |Dropped|入力特徴がドロップされたか、または使用されたかを示す。|
+   |EngineeringFeatureCount|自動化された特徴エンジニアリングの変換によって生成された特徴の数。|
+   |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|  
+
+### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化:
+
+パイプラインのスケーリング/正規化およびアルゴリズム/ハイパーパラメーター値を理解するには、fitted_model.steps を使用します。 [スケーリング/正規化の詳細については、こちらを参照してください](concept-automated-ml.md#preprocess)。 出力例を次に示します。
+
+```
+[('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
+```
+
+詳細については、[こちらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification/auto-ml-classification.ipynb)に示されたヘルパー関数を使用してください。
+
+```python
+from pprint import pprint
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()
+                
+print_model(fitted_model)
+```
+
+出力例を次に示します。
+
++ 特定のアルゴリズム (この例では、LogisticRegression with RobustScalar) を使用したパイプライン:
+
+  ```
+  RobustScaler
+  {'copy': True,
+   'quantile_range': [10, 90],
+   'with_centering': True,
+   'with_scaling': True}
+  
+  LogisticRegression
+  {'C': 0.18420699693267145,
+   'class_weight': 'balanced',
+   'dual': False,
+   'fit_intercept': True,
+   'intercept_scaling': 1,
+   'max_iter': 100,
+   'multi_class': 'multinomial',
+   'n_jobs': 1,
+   'penalty': 'l2',
+   'random_state': None,
+   'solver': 'newton-cg',
+   'tol': 0.0001,
+   'verbose': 0,
+   'warm_start': False}
+  ```
+  
++ アンサンブルの手法を使用したパイプライン:この例では、2 つの異なるパイプラインのアンサンブル
+
+  ```
+  prefittedsoftvotingclassifier
+  {'estimators': ['1', '18'],
+  'weights': [0.6666666666666667,
+              0.3333333333333333]}
+
+  1 - RobustScaler
+  {'copy': True,
+   'quantile_range': [25, 75],
+   'with_centering': True,
+   'with_scaling': False}
+  
+  1 - LightGBMClassifier
+  {'boosting_type': 'gbdt',
+   'class_weight': None,
+   'colsample_bytree': 0.2977777777777778,
+   'importance_type': 'split',
+   'learning_rate': 0.1,
+   'max_bin': 30,
+   'max_depth': 5,
+   'min_child_samples': 6,
+   'min_child_weight': 5,
+   'min_split_gain': 0.05263157894736842,
+   'n_estimators': 200,
+   'n_jobs': 1,
+   'num_leaves': 176,
+   'objective': None,
+   'random_state': None,
+   'reg_alpha': 0.2631578947368421,
+   'reg_lambda': 0,
+   'silent': True,
+   'subsample': 0.8415789473684211,
+   'subsample_for_bin': 200000,
+   'subsample_freq': 0,
+   'verbose': -10}
+  
+  18 - StandardScalerWrapper
+  {'class_name': 'StandardScaler',
+   'copy': True,
+   'module_name': 'sklearn.preprocessing.data',
+   'with_mean': True,
+   'with_std': True}
+  
+  18 - LightGBMClassifier
+  {'boosting_type': 'goss',
+   'class_weight': None,
+   'colsample_bytree': 0.2977777777777778,
+   'importance_type': 'split',
+   'learning_rate': 0.07894947368421053,
+   'max_bin': 30,
+   'max_depth': 6,
+   'min_child_samples': 47,
+   'min_child_weight': 0,
+   'min_split_gain': 0.2631578947368421,
+   'n_estimators': 400,
+   'n_jobs': 1,
+   'num_leaves': 14,
+   'objective': None,
+   'random_state': None,
+   'reg_alpha': 0.5789473684210527,
+   'reg_lambda': 0.7894736842105263,
+   'silent': True,
+   'subsample': 1,
+   'subsample_for_bin': 200000,
+   'subsample_freq': 0,
+   'verbose': -10}
+  ```
+  
+<a name="explain"></a>
+
+## <a name="explain-the-model-interpretability"></a>モデルを説明する (解釈可能性)
 
 自動機械学習を使用すると、特徴の重要度を把握できます。  トレーニング プロセス中に、モデルのグローバルな特徴の重要度を取得できます。  分類のシナリオでは、クラスレベルの特徴の重要度も取得できます。  特徴の重要度を取得するには、検証データセット (X_valid) を提供する必要があります。
 
@@ -368,7 +612,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
 Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの Jupyter ウィジェットを使用して表示することもできます。 グラフの詳細については、[Azure Machine Learning service ノートブックのサンプルに関する記事](samples-notebooks.md)をご覧ください。
 
-```python
+```Python
 from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
