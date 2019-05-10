@@ -5,18 +5,18 @@ author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: b432d8557c4244d58c23e7b068874dd747f6249f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c8ee73da16f4f3de2378e38d273051355c5c624c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256466"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142840"
 ---
-# <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>サンプル - 指定したアプリケーションが Linux VM 内にインストールされていないかどうかを監査する
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>サンプル - 指定したアプリケーションが Linux VM 内にインストールされていないかどうかを監査する
 
-この Policy ゲスト構成のイニシアチブは、指定したアプリケーションが Linux 仮想マシン内にインストールされていないことを監査するものです。 このビルトイン イニシアチブの ID は `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e` です。
+この Policy ゲスト構成のイニシアチブでは、指定したアプリケーションが Linux 仮想マシン内にインストールされていない場合に監査イベントを作成します。 このビルトイン イニシアチブの ID は `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e` です。
 
 > [!IMPORTANT]
 > すべてのゲスト構成イニシアチブは、**audit** と **deployIfNotExists** というポリシー定義から成ります。 どちらか一方のポリシー定義しか割り当てなかった場合、ゲスト構成が正しく機能しなくなります。
@@ -32,9 +32,9 @@ ms.locfileid: "59256466"
 
 この[ゲスト構成](../concepts/guest-configuration.md)イニシアチブは、次のポリシーから成ります。
 
-- [audit](#audit-definition) - Linux VM 内にアプリケーションがインストールされていることを監査する
+- [audit](#audit-definition) - 指定したアプリケーションが Linux VM 内にインストールされていない場合に監査を行う
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition): Linux VM 内にアプリケーションがインストールされていることを監査するための VM 拡張機能をデプロイする
+- [deployIfNotExists](#deployIfNotExists-definition) - Linux VM 内にアプリケーションがインストールされていない場合に監査を行うための VM 拡張機能をデプロイする
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>イニシアチブ定義
@@ -45,7 +45,9 @@ ms.locfileid: "59256466"
 
 ### <a name="initiative-parameters"></a>イニシアチブ パラメーター
 
-|名前 |型 ||説明 | |---|---||---| |applicationName |String |アプリケーション名。 たとえば、"python"、"powershell"、コンマ区切りリスト ("python,powershell" など) を指定します。 ワイルドカード検索には、"power\*" のように \* を使用できます。|
+|Name |Type |説明 |
+|---|---|---|
+|applicationName |String |アプリケーション名。 たとえば、"python"、"powershell"、コンマ区切りリスト ("python,powershell" など) を指定します。 ワイルドカード検索には、"power\*" のように \* を使用できます。 |
 
 PowerShell または Azure CLI を使って割り当てを作成するときは、パラメーターの値を JSON として渡すことができます。JSON として渡すパラメーターは、文字列で渡すか、または `-PolicyParameter` (PowerShell) あるいは `--params` (Azure CLI) を使用してファイルで渡します。
 PowerShell では、`-PolicyParameterObject` もサポートされます。この場合は、コマンドレットに Name/Value ハッシュ テーブルを渡す必要があります。**Name** にはパラメーターの名前を、**Value** には、割り当て時に渡す値の配列または単一値を指定します。

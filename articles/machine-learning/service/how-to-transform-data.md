@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2bd271557ae0deefeb12a2dc7343c46fbd35363
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847603"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023784"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning データ準備 SDK を使ってデータを変換する
 
-この記事では、Azure Machine Learning Data Prep SDK を使用してデータを変換するさまざまな方法について説明します。 SDK では、列の追加や不要な行または列の除去、欠損値対処を簡単に行うことができる関数が用意されています。 SDK の参照ドキュメントについては、[概要](https://aka.ms/data-prep-sdk)をご覧ください。
+この記事では、Azure Machine Learning Data Prep SDK を使用してデータを変換するさまざまな方法について説明します。 SDK では、列の追加や不要な行または列の除去、欠損値対処を簡単に行うことができる関数が用意されています。 SDK の参照ドキュメントについては、[参照](https://aka.ms/data-prep-sdk) をご覧ください。
+
+> [!Important]
+> 新しいソリューションを構築している場合は、データの変換、データのスナップショットの作成、およびバージョン管理されたデータセット定義の保管に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
 
 ここでは、次のタスクの例を示します。
 
@@ -35,7 +38,7 @@ ms.locfileid: "58847603"
 
 Azure Machine Learning データ準備 SDK には `substring`式があり､これらの式を使用して、既存の列から値を算出して､その値を新しい列に挿入することができます。 この例では、データを読み込み、その入力データに列を加えます。
 
-```python
+```Python
 import azureml.dataprep as dprep
 
 # loading data
@@ -52,7 +55,7 @@ dflow.head(3)
 
 `substring(start, length)` 式を使用して事件番号の列からプレフィックスを抽出し、新しい列 `Case Category` にその文字列を挿入します。 `substring_expression` 変数を `expression` パラメーターに渡すと、各レコードに対して式を実行する新しい計算列が作成されます。
 
-```python
+```Python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,10 +70,9 @@ case_category.head(3)
 |2|10140270|HY329253|HY|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
-
 `substring(start)` 式を使用して、Case Number 列から数値のみを抽出し、新しい列を作成します。 `to_number()` 関数を使用してそれを数値データ型に変換し、文字列の列名をパラメーターとして渡します。
 
-```python
+```Python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',
@@ -268,7 +270,7 @@ dflow = builder.to_dataflow()
 df = dflow.to_pandas_dataframe()
 ```
 
-## <a name="filtering"></a>フィルター処理
+## <a name="filtering"></a>Filtering
 
 SDK には、列または行をフィルター処理して除外する [`drop_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) および [`filter()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) のメソッドが含まれています｡
 

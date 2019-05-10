@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccddb1ffd86ce95b1ca5563de2f4b04c41d5737d
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838071"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442427"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>webhook を使用して既存の問題管理システム用に正常性通知を構成する
 
@@ -26,6 +26,10 @@ ms.locfileid: "57838071"
 * [ServiceNow を使用してアラートを構成する](service-health-alert-webhook-servicenow.md)
 * [PagerDuty を使用してアラートを構成する](service-health-alert-webhook-pagerduty.md)
 * [OpsGenie を使用してアラートを構成する](service-health-alert-webhook-opsgenie.md)
+
+### <a name="watch-an-introductory-video"></a>紹介ビデオを見る
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUV]
 
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>サービス正常性の webhook ペイロードを使用してカスタム通知を構成する
 独自のカスタム webhook 統合をセットアップする場合は、サービス正常性の通知時に送信される JSON ペイロードを解析する必要があります。

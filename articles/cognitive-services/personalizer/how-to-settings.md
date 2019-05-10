@@ -10,28 +10,34 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 0cd08e1191c68c57975d3e68648134925155e7f2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025599"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143259"
 ---
 # <a name="personalizer-settings"></a>Personalizer 設定
 
 サービス構成には、サービスによる報酬の処理方法、サービスによる探索の頻度、モデルの再トレーニング頻度、格納するデータ量などがあります。
 
+## <a name="create-personalizer-resource"></a>Personalizer リソースを作成する
+
 フィードバック ループごとに Personalizer リソースを作成します。 
+
+1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの**作成**ページに移動できます。 
+1. サービス名を入力し、サブスクリプション、場所、価格レベル、リソース グループを選択します。
+1. 確認を選択し、**[作成]** を選択します。
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Azure portal でサービス設定を構成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) にサインインします。
 1. Personalizer リソースを検索します。 
 1. **リソース管理**セクションで、**[設定]** を選択します。
 
-    ![Azure ポータルにサインインします。 Personalizer リソースを検索します。 リソース管理セクションで、[設定] を選択します。](media/settings/how-to-configure.png)
+    Azure portal を終了する前に、**[キー]** のページからいずれかのリソース キーをコピーします。 これは、[Personalizer SDK](https://aka.ms/personalizer-dotnet-sdk-docs) を使用するために必要になります。
 
-### <a name="reward-settings-for-the-feedback-loop"></a>フィードバック ループの報酬設定
+### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>ユース ケースに基づいてフィードバック ループの報酬設定を構成する
 
 フィードバック ループでの報酬の使用に対してサービスの設定を構成します。 以下の設定を変更すると、現在の Personalizer モデルはリセットされ、過去 2 日分のデータで再トレーニングされます。
 
@@ -81,4 +87,4 @@ ms.locfileid: "65025599"
 
 ## <a name="next-steps"></a>次の手順
 
-[強化学習](concepts-reinforcement-learning.md) 
+[Personalizer コンテナーの使用方法](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)

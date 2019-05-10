@@ -3,35 +3,35 @@ title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/30/2019
+ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: d76a5b32403bd14f18181580f891925130808922
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002886"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137775"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
-Azure Resource Graph とは Azure 内のサービスで、環境を効果的に管理できるよう、全てのサブスクリプションおよび管理グループに渡る大規模なクエリに対する能力をもつ、高効率および高性能のリソース探索を提供することにより、 Azure Resource Management を拡張するよう設計されています。 これらのクエリでは、次の機能を提供します。
+Azure Resource Graph は Azure 内のサービスであり、Azure Resource Management を拡張するよう設計されています。環境を効果的に管理できるように、特定のセットのサブスクリプションにわたって大規模にクエリを実行する機能を備えた、高効率および高性能のリソース探索を提供します。 これらのクエリでは、次の機能を提供します。
 
 - 複雑なフィルター処理、グループ化、およびリソースのプロパティでの並べ替えによりリソースのクエリを行う機能。
-- ガバナンスの要件に基づいてリソースを繰り返し探索し、ポリシー定義に、結果の式を変換する機能。
+- ガバナンスの要件に基づいてリソースを繰り返し探索する機能。
 - 広大なクラウド環境にポリシーを適用することの影響を評価する機能。
 - [リソースのプロパティに加えられた変更について詳しく説明する](./how-to/get-resource-changes.md)機能 (プレビュー)。
 
 このドキュメントでは、それぞれの機能について詳しく見ていきます。
 
 > [!NOTE]
-> Azure Resource Graph は、Azure portal の新しい "すべてのリソース" の参照エクスペリエンスと Azure Policy の[変更履歴](../policy/how-to/determine-non-compliance.md#change-history-preview)によって使用されます。
-> "_差分表示_"。大規模な環境を管理するお客様をサポートするために設計されています。
+> Azure Resource Graph は、Azure portal の検索バー、新しい "すべてのリソース" 参照エクスペリエンス、Azure Policy の[変更履歴](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> の "_差分表示_" を強化します。大規模な環境を管理するお客様をサポートするために設計されています。
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph が Azure Resource Manager をどのように補完するか
 
-Azure Resource Manager は、現在、複数のリソース フィールド (具体的にはリソース名、ID、種類、リソース グループ、サブスクリプション、場所) を公開する制限付きリソース キャッシュにデータを送信します。 以前は、各種のリソース プロパティを操作する場合、個々のリソース プロバイダーを呼び出し、リソースごとにプロパティの詳細を要求する必要がありました。
+Azure Resource Manager では現在、基本的なリソース フィールドに対するクエリがサポートされています。具体的には、リソース名、ID、種類、リソース グループ、サブスクリプション、および場所です。 Resource Manager には、一度に 1 つのリソースについて詳細なプロパティを得るために個別のリソース プロバイダーを呼び出す機能も用意されています。
 
 Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/complete-mode-deletion.md)に関する表で "**はい**" を探してください。
 
@@ -39,6 +39,11 @@ Azure Resource Graph では、次のことができます。
 
 - 各リソース プロバイダーへの個別の呼び出しを行う必要なく、リソース プロバイダーから返されるプロパティにアクセスする。
 - リソースに加えられた変更の過去 14 日間分の履歴を表示して、どのプロパティがいつ変更されたかを確認する。 (プレビュー)
+
+## <a name="how-resource-graph-is-kept-current"></a>Resource Graph が最新の状態に保たれるしくみ
+
+Azure リソースが更新されると、Resource Manager から Resource Graph に変更の通知が届きます。
+その後、Resource Graph によってそのデータベースが更新されます。 Resource Graph では、定期的な "_フル スキャン_" も行われます。 このスキャンにより、通知が届かなかった場合、またはリソースが Resource Manager の外部で更新されたときにも、Resource Graph が最新の状態に維持されます。
 
 ## <a name="the-query-language"></a>クエリ言語
 
@@ -58,7 +63,9 @@ Resource Graph を使用するためには、最低限、照会したいリソ�
 
 ## <a name="throttling"></a>Throttling
 
-すべてのお客様に最適なエクスペリエンスと応答時間が提供されるよう、Resource Graph へのクエリはスロットルされされます。 大規模かつ頻繁なクエリに Resource Graph API を使用する場合は、Resource Graph のページからポータルの "フィードバック" を使用してください。 必ずビジネス ケースを明記し、チームが連絡できるように [Microsoft からフィードバックについてメールをお送りする場合があります] チェック ボックスをオンにしてください。
+無料サービスとして、すべてのお客様に最適なエクスペリエンスと応答時間が提供されるよう、Resource Graph へのクエリはスロットルされます。 お客様の組織が大規模かつ頻繁なクエリに Resource Graph API を使用したい場合、Resource Graph のページからポータルの "フィードバック" を使用してください。 必ずビジネス ケースを明記し、チームが連絡できるように [Microsoft からフィードバックについてメールをお送りする場合があります] チェック ボックスをオンにしてください。
+
+Resource Graph では、テナント レベルでスロットルが行われます。 テナント内のユーザーが使用できる残りのクエリ数を示すよう、サービスによって、`x-ms-ratelimit-remaining-tenant-reads` 応答ヘッダーがオーバーライドおよび設定されます。 Resource Graph では、1 時間ごとではなく、5 秒ごとにクォータがリセットされます。 詳細については、「[Resource Manager の要求のスロットル](../../azure-resource-manager/resource-manager-request-limits.md)」を参照してください。
 
 ## <a name="running-your-first-query"></a>最初のクエリを送信する
 

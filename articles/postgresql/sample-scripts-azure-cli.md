@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL 用 Azure CLI サンプル
-description: この記事では、Azure Database for PostgreSQL サーバーを操作する Azure CLI サンプル コードを紹介します。
+title: Azure Database for PostgreSQL - 単一サーバーの Azure CLI サンプル
+description: この記事では、Azure Database for PostgreSQL - 単一サーバーの操作に使用できるいくつかの Azure CLI コード サンプルの一覧を示します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: sample, mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: b2364448f7994146bf79cdb23d5573003b87076a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: 9b8ff3334c8e31397f68e890c15bec3e2515a1a2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539870"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073128"
 ---
-# <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 用 Azure CLI サンプル 
+# <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 単一サーバーの Azure CLI サンプル
 次の表には、Azure Database for PostgreSQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。
 
 | |  |

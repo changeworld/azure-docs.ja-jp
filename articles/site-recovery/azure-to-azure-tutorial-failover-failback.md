@@ -6,21 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 96e3c0b761a9ed4c5f84d8ece1ba504bd5aacf6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 95e4e3f3acc52c230405f0c0cc4a05b03b21a386
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797569"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153807"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>リージョン間での Azure VM のフェールオーバーと再保護
 
-[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
-
-このチュートリアルでは、Azure VM をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバーした後で、VM を再保護します。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、Azure 仮想マシン (VM) をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバーした後で、VM を再保護します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure VM をフェールオーバーする
@@ -29,8 +27,10 @@ ms.locfileid: "59797569"
 > [!NOTE]
 > このチュートリアルでは、既定の設定と最小限のカスタマイズによる最も簡単な手順を紹介しています。 さらに複雑なシナリオについては、Azure VM の攻略ガイドの記事を参照してください。
 
+
 ## <a name="prerequisites"></a>前提条件
 
+- 始める前に、フェールオーバーに関して[よく寄せられる質問](site-recovery-faq.md#failover)を確認します。
 - [ディザスター リカバリー訓練](azure-to-azure-tutorial-dr-drill.md)を実施して、すべてが正しく動作していることを確認します。
 - テスト フェールオーバーを実行する前に、VM のプロパティを確認します。 VM は [Azure の要件](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)に準拠している必要があります。
 
@@ -54,6 +54,11 @@ ms.locfileid: "59797569"
 
 6. 正常な状態に仮想マシンがフェールオーバーされたら、フェールオーバーを**コミット**することができます。
    コミットすると、サービスで使用可能なすべての復旧ポイントが削除されます。 以降、復旧ポイントを変更することはできません。
+
+> [!NOTE]
+> VM のレプリケーションを有効にした後にディスクを追加した VM をフェールオーバーするとき、レプリケーション ポイントで復旧に使用できるディスクが表示されます。 たとえば、VM に単一のディスクがあり、新しいディスクを追加した場合、ディスクを追加する前に作成されたレプリケーション ポイントでは、そのレプリケーション ポイントが "2 台中の 1 台のディスク" で構成されていることが示されます。
+
+![ディスクが追加された状態でのフェールオーバー](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
 
 ## <a name="reprotect-the-secondary-vm"></a>セカンダリ VM を再保護する
 

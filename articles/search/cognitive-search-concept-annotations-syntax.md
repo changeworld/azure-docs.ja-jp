@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749615"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023869"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "56749615"
 
 構文を調べる前に、この記事の後の方で説明する例をよく理解できるように、いくつかの重要な概念を再確認しておきましょう。
 
-| 用語 | 説明 |
+| 期間 | 説明 |
 |------|-------------|
 | エンリッチされたドキュメント | エンリッチされたドキュメントは、ドキュメントに関連するすべての注釈を保持するためにパイプラインによって作成されて使用される内部構造です。 エンリッチされたドキュメントのことは、注釈のツリーとして考えてください。 一般に、前の注釈から作成された注釈は、その子になります。<p/>エンリッチされたドキュメントは、スキルセットの実行中にのみ存在します。 コンテンツが検索インデックスにマップされると、エンリッチされたドキュメントは必要なくなります。 エンリッチされたドキュメントを直接操作することはありませんが、スキルセットの作成時にドキュメントのメンタル モデルがあると便利です。 |
 | エンリッチメント コンテキスト | どの要素がエンリッチされるかという観点での、エンリッチメントが行われるコンテキストです。 既定では、エンリッチメント コンテキストは `"/document"` レベルであり、個々のドキュメントがスコープになります。 スキルを実行すると、そのスキルの出力は、[定義されたコンテキストのプロパティ](#example-2)になります。|
@@ -36,13 +36,13 @@ ms.locfileid: "56749615"
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>例 1:単純な注釈参照
 
-Azure Blob ストレージに、名前付きエンティティ認識を使用して抽出する人名への参照を含む、さまざまなファイルがあるとします。 以下のスキル定義では、`"/document/content"` はドキュメント全体のテキスト表現であり、"people" は人物として識別されるエンティティのフル ネームの抽出です。
+Azure BLOB ストレージに、エンティティ認識を使用して抽出する人名への参照を含む、さまざまなファイルがあるとします。 以下のスキル定義では、`"/document/content"` はドキュメント全体のテキスト表現であり、"people" は人物として識別されるエンティティのフル ネームの抽出です。
 
 既定のコンテキストは `"/document"` であるため、人の一覧は `"/document/people"` として参照できるようになりました。 この特定のケースでは、`"/document/people"` は注釈であり、インデックス内のフィールドにマップすることも、同じスキルセット内の別のスキルで使用することもできます。
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [

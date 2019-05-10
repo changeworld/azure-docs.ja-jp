@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 1ebac5476c90b3cb49fccbb95ef8dedf413a6127
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: dc43e2ad2668a7d3a808e398857cbf1d28c9aa1c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200295"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150871"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -90,10 +90,10 @@ CDN で管理された証明書を使用する場合、HTTPS 機能は、数回�
 # <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[オプション 2:独自の証明書を使用して HTTPS を有効にする](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
-> このオプションは、**Azure CDN Standard from Microsoft** プロファイルでのみ利用できます。 
+> このオプションは、**Azure CDN from Microsoft** および **Azure CDN from Verizon** プロファイルでのみ利用できます。 
 >
  
-独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure CDN では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 SSL 証明書を作成するときには、許可された証明書機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA の一覧については、「[Allowed certificate authorities for enabling custom HTTPS on Azure CDN](cdn-troubleshoot-allowed-ca.md)」(Azure CDN でカスタム HTTPS を有効にするために許可された認証機関) を参照してください。
+独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure CDN では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 SSL 証明書を作成するときには、許可された証明書機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA の一覧については、「[Azure CDN でカスタム HTTPS を有効にするために許可された認証機関](cdn-troubleshoot-allowed-ca.md)」を参照してください。**Azure CDN from Verizon** では、任意の有効な CA が受け入れられます。 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
@@ -170,7 +170,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
-| Name            | type  | 値                 |
+| Name            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

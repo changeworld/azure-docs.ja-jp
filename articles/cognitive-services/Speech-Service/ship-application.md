@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1232cdd156dd473850fde6e7c4f3ce0554155764
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962028"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020400"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -39,7 +39,7 @@ Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual 
 
 必要な Speech SDK ファイルは、お使いのアプリケーションと同じディレクトリに展開できます。 この方法で、お使いのアプリケーションはライブラリに直接アクセスできます。 必ず、お使いのアプリケーションと一致する正しいバージョン (Win32/x64) を選択してください。
 
-| Name | 関数
+| Name | Function
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK。ネイティブおよびマネージド展開に必要
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要
@@ -49,19 +49,26 @@ Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual 
 
 ## <a name="linux"></a>Linux
 
-現在、Speech SDK では、Ubuntu 16.04 および 18.04 のディストリビューションがサポートされています。
+現在、Speech SDK では、Ubuntu 16.04、Ubuntu 18.04、および Debian 9 のディストリビューションがサポートされています。
 ネイティブ アプリケーションについては、Speech SDK ライブラリ `libMicrosoft.CognitiveServices.Speech.core.so` を配布する必要があります。
 必ず、お使いのアプリケーションと一致するバージョン (x86、x64) を選択してください。 Linux バージョンによっては、次の依存関係を追加しなければならない場合もあります。
 
 * GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
-* OpenSSL ライブラリ (`libssl.so.1.0.0`)
+* OpenSSL ライブラリ (`libssl.so.1.0.0` または `libssl.so.1.0.2`)
 * ALSA アプリケーションの共有ライブラリ (`libasound.so.2`)
 
 Ubuntu では、GNU C ライブラリが既定でインストールされています。 残りの 3 つをインストールするには、次のコマンドを使用します。
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2
+```
+
+Debian9 では、次のパッケージをインストールします。
+
+```sh
+sudo apt-get update
+sudo apt-get install libssl1.0.2 libasound2
 ```
 
 ## <a name="next-steps"></a>次の手順

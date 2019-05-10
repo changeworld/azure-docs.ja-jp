@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 3/18/2019
+ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7beb3d986b016688c4ee0a512b9406dbf3dfbb40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051701"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144916"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -61,9 +61,9 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
 
 >[!NOTE]
->Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet は既定で、**NextHopType** の値が **Internet** に設定された UDR 0.0.0.0/0 だけを許可するようになっています。
+>Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。 既定では、Azure Firewall はオンプレミス ネットワークへの強制トンネリングをサポートしません。
 >
->ExpressRoute または Application Gateway 経由でのオンプレミスへの強制トンネリングを有効にしている場合は、明示的に UDR 0.0.0.0/0 を構成して NextHopType の値を **Internet** に設定し、それを AzureFirewallSubnet に関連付ける必要があります。 Azure Firewall トラフィックの強制トンネリングが必要である場合は、サポートにお問い合わせください。Microsoft にて貴社のサブスクリプションをホワイトリストに登録し、必要なファイアウォールのインターネット接続を確保いたします。
+>ただし、オンプレミス ネットワークへの強制トンネリングが必要な構成の場合、Microsoft は状況に応じてサポートします。 サポートにお問い合わせいただければ、お客様の状況を確認させていただきます。 認められた場合は、Microsoft にて貴社のサブスクリプションをホワイトリストに登録し、必要なファイアウォールのインターネット接続を確保いたします。
 
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
@@ -138,7 +138,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-この仮想ネットワーク用に作成する VPN ゲートウェイに割り当てるパブリック IP アドレスを要求します。 *AllocationMethod* が **Dynamic** であることに注意してください。 使用する IP アドレスを指定することはできません。 VPN アドレスはゲートウェイに動的に割り当てられます。 
+この仮想ネットワーク用に作成する VPN ゲートウェイに割り当てるパブリック IP アドレスを要求します。 *AllocationMethod* が **Dynamic** であることに注意してください。 使用する IP アドレスを指定することはできません。 VPN アドレスはゲートウェイに動的に割り当てられます。
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +177,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-この仮想ネットワーク用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 *AllocationMethod* が **Dynamic** であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。 
+この仮想ネットワーク用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 *AllocationMethod* が **Dynamic** であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `

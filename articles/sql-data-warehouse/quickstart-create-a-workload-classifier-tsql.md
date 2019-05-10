@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 198faf6791a4a2caa2cefee2181a13ed8185310e
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617339"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150379"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する (プレビュー)
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する
 
 このクイック スタートでは、組織の CEO に対して重要度の高いワークロード分類子をすばやく作成します。 このワークロード分類子を使用すると、CEO のクエリを、キュー内の重要度の低いその他のクエリよりも優先することができます。
-
-> [!Note]
-> ワークロード分類は、SQL Data Warehouse Gen2 でプレビュー目的で使用できます。 ワークロード管理の分類および重要度のプレビューは、公開日が 2019 年 4 月 9 日以降のビルド用です。  この日付より前のビルドは、ワークロード管理のテストに使用しないでください。  お使いのビルドがワークロード管理に対応しているかどうかを調べるには、SQL Data Warehouse インスタンスに接続された状態で「select @@version」を実行します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 

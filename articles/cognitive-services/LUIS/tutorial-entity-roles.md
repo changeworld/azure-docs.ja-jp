@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 98c2ad15d836162608affbfbc89908a15e274cee
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528776"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149308"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
 
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、ある都市から別の都市へ移動する場合の出発地と目的地です。 両方のデータが必要である可能性があり、これらは互いに関連しています。  
 
-このチュートリアルは、以前は階層エンティティを使用して書かれていました。 エンティティのロールは、階層エンティティ型が必要な場面でその代わりとなるものです。 ロールは、任意の事前構築済みまたはカスタムのエンティティ型で使用でき、発話とパターンの両方の例で使用できます。 
+ロールは、任意の事前構築済みまたはカスタムのエンティティ型で使用でき、発話とパターンの両方の例で使用できます。 
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -93,12 +93,8 @@ ms.locfileid: "59528776"
     ![事前構築済みエンティティにロールを追加する](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. 左側のナビゲーションから **[Intents]\(意図\)** を選択し、次に **MoveEmployeeToCity** 意図を選択します。 都市名は事前構築済みエンティティ **geogrpahyV2** のラベルが付いていることに注意してください。
 1. 一覧の最初の発話で、出発地を選択します。 ドロップダウン メニューが表示されます。 一覧の **[geographyV2]** を選択し、メニューに従って **[Origin]\(出発地\)** を選択します。
-
-    [![都市を出発地としてマークする操作のスクリーンショット](media/tutorial-entity-roles/tag-origin-city-with-role.png "都市を出発地としてマークする操作のスクリーンショット")](media/tutorial-entity-roles/tag-origin-city-with-role.png#lightbox)
-
 1. 前の手順の方法を使用して、すべての発話内の場所のすべてのロールをマークします。 
 
-    [![発話内でラベル付けされた [場所] エンティティのスクリーンショット](media/tutorial-entity-roles/all-locations-marked-with-roles.png "発話内でラベル付けされた [場所] エンティティのスクリーンショット")](media/tutorial-entity-roles/all-locations-marked-with-roles.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する 
 
@@ -117,7 +113,7 @@ ms.locfileid: "59528776"
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. アドレス バーの URL の末尾に移動し、「`Please move Carl Chamerlin from Tampa to Portland`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも異なるので、よいテストであり、`MoveEmployee` 意図と階層エンティティが抽出されて返される必要があります。
+1. アドレス バーの URL の末尾に移動し、「`Please move Carl Chamerlin from Tampa to Portland`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされた発話のどれとも同じではありません。したがって、テストは適切で、抽出されたエンティティと共に `MoveEmployee` 意図が返されます。
 
     ```json
     {

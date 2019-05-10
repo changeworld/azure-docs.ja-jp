@@ -1,25 +1,25 @@
 ---
-title: クイック スタート - シンプルな Azure CLI コマンド az postgres up (プレビュー) を使用して Azure Database for PostgreSQL を作成する
-description: Azure CLI (コマンド ライン インターフェイス) up コマンドを使用して Azure Database for PostgreSQL サーバーを作成するためのクイック スタート ガイド。
+title: クイック スタート:CLI コマンドの az postgres up を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
+description: Azure CLI (コマンド ライン インターフェイス) の up コマンドを使用して Azure Database for PostgreSQL - 単一サーバーを作成するためのクイックスタート ガイド。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
-ms.openlocfilehash: 0db49e2c370aee37cca4181cecbe4cf0b5585c51
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.date: 05/06/2019
+ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136446"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069084"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-a-simple-azure-cli-command---az-postgres-up-preview"></a>クイック スタート:シンプルな Azure CLI コマンド az postgres up (プレビュー) を使用して Azure Database for PostgreSQL を作成する
+# <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Azure CLI コマンドの az postgres up (プレビュー) を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
 > [!IMPORTANT]
 > [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) という Azure CLI コマンドはプレビュー段階です。
 
-Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用し、Azure CLI を使って Azure Database for PostgreSQL サーバーを作成する方法を示します。 サーバーの作成に加え、`az postgres up` ではサンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これは、開発プロセスを迅速に行うのに役立ちます。
+Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、[az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用し、Azure CLI を使って Azure Database for PostgreSQL サーバーを作成する方法を示します。 `az postgres up` コマンドでは、サーバーの作成に加え、サンプル データベース、データベースのルート ユーザーを作成し、Azure サービスのファイアウォールを開き、クライアント コンピューターの既定のファイアウォール規則を作成します。 これらの既定値は、開発プロセスを促進するために役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,13 +27,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-[az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) コマンドを使用して、アカウントにログインする必要があります。 対応するサブスクリプション名のコマンド出力で **id** プロパティを確認します。
+[az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) コマンドを使用してアカウントにサインインする必要があります。 コマンド出力から、対応するサブスクリプション名の **ID** プロパティを書き留めておきます。
 
 ```azurecli
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプションの **az login** 出力の **subscription id** プロパティで、subscription id プレースホルダーを置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の**サブスクリプション ID** プロパティに置き換えます。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -60,13 +60,13 @@ az postgres up
 server-name | システム生成 | Azure Database for PostgreSQL サーバーを識別する一意の名前。
 resource-group | システム生成 | 新しい Azure リソース グループ。
 sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コンピューティング世代}\_{仮想コア} という規則に従います。 既定値は、2 個の仮想コアを備えた General Purpose Gen5 サーバーです。 レベルの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。
-backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。
+backup-retention | 7 | バックアップが保持される期間。 単位は日数です。
 geo-redundant-backup | Disabled | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
 location | westus2 | サーバーの Azure の場所。
 ssl-enforcement | Disabled | このサーバーに対して ssl を有効にする必要があるかどうかどうか。
 storage-size | 5120 | サーバーのストレージ容量 (単位はメガバイト)。
 version | 10 | PostgreSQL のメジャー バージョン。
-admin-user | システム生成 | 管理者ログインのユーザー名。
+admin-user | システム生成 | 管理者のユーザー名。
 admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 > [!NOTE]

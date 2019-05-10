@@ -4,14 +4,14 @@ description: Azure Cosmos DB でインデックス作成ポリシーを管理す
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 76275420e1e6ed7fdec8309da9e11a272f08fee0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005590"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068672"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -162,7 +162,7 @@ response = client.ReplaceContainer(containerPath, container)
 JSON 形式で示されたインデックス作成ポリシーの例をいくつか紹介します。Azure portal では、これらがこの形式で公開されます。 同じパラメーターは、Azure CLI のほか、任意の SDK で設定することができます。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>一部のプロパティ パスを選択的に除外するオプトアウト ポリシー
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -193,9 +193,10 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
             }
         ]
     }
+```
 
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>一部のプロパティ パスを選択的に包含するオプトイン ポリシー
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -224,11 +225,12 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
             }
         ]
     }
+```
 
 注:一般的に、モデルに追加される新しいプロパティのインデックスを Azure Cosmos DB がプロアクティブに作成できるよう、**オプトアウト** インデックス作成ポリシーの使用をお勧めします。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -257,11 +259,12 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
         ],
         "excludedPaths": []
     }
+```
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>インデックス作成をアクティブ状態に保ちながらすべてのプロパティ パスを除外する
 
 このポリシーは、[Time-to-Live (TTL) 機能](time-to-live.md)がアクティブであるものの、(Azure Cosmos DB を純粋なキー/値ストアとして使用するための) セカンダリ インデックスは不要である状況で使用できます。
-
+```
     {
         "indexingMode": "consistent",
         "includedPaths": [],
@@ -269,12 +272,130 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
             "path": "/*"
         }]
     }
+```
 
 ### <a name="no-indexing"></a>インデックス作成なし
-
+```
     {
         "indexingPolicy": "none"
     }
+```
+
+## <a name="composite-indexing-policy-examples"></a>複合インデックス作成ポリシーの例
+
+個々のプロパティのパスを含めたり除外したりするほかに、複合インデックスを指定することもできます。 複数のプロパティを対象とする 1 つの `ORDER BY` 句を使用したクエリを実行したい場合は、これらのプロパティに対する[複合インデックス](index-policy.md#composite-indexes)が必要になります。
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>(name asc, age desc) に対して定義された複合インデックス:
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+この複合インデックスは次の 2 つのクエリをサポートできます。
+
+クエリ #1:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name asc, age desc    
+```
+
+クエリ #2:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name desc, age asc
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>(name asc, age asc) と (name asc, age desc) に対して定義されている複合インデックス:
+
+同じインデックス作成ポリシー内で、異なる複数の複合インデックスを定義できます。 
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ]
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>(name asc, age asc) に対して定義された複合インデックス:
+
+順序の指定は任意です。 指定されていない場合、順序は昇順です。
+```
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

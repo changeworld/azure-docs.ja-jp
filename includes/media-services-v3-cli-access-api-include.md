@@ -5,21 +5,21 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 11/11/2018
+ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 4dde0a47f0452da2dd951df86ccb6e02a44521ed
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616641"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149191"
 ---
 ## <a name="access-the-media-services-api"></a>Media Services API にアクセスする
 
 Azure Media Services API に接続するには、Azure AD サービス プリンシパル認証を使用します。 以下のコマンドでは、Azure AD アプリケーションを作成し、そのアカウントにサービス プリンシパルをアタッチしています。 返された値を使って、アプリケーションを構成する必要があります。
 
-スクリプトを実行する前に、`amsaccount` と `amsResourceGroup` は、実際にリソースを作成するときに選んだ名前に置き換えてください。 `amsaccount` は、サービス プリンシパルのアタッチ先となる Azure Media Services アカウントの名前です。
+スクリプトを実行する前に、`amsaccount` と `amsResourceGroup` を、これらのリソースを作成するときに選んだ名前に置き換える必要があります。 `amsaccount` は、サービス プリンシパルのアタッチ先となる Azure Media Services アカウントの名前です。
 
 次のコマンドは、`json` の出力を返します。
 

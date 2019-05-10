@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 0ec0280ab2a39674a1b41120f0a8791dfb8b1922
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499558"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073286"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -56,7 +56,10 @@ Azure Container Instances では、同じ API で、Windows と Linux の両方�
 * [仮想ネットワークのデプロイ](container-instances-vnet.md) (プレビュー)
 * [GPU リソース](container-instances-gpu.md) (プレビュー)
 
-Azure Container Instances では、現在、長期的なサービス チャネル (LTSC) のバージョンに基づいて Windows Server 2016 イメージがサポートされています。 1709 や 1803 のような Windows 半期チャネル (SAC) のリリースは、サポートされていません。
+Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づくイメージを使用します。
+
+> [!NOTE]
+> Azure Container Instances での Windows Server 2019 ベースのイメージの使用は、プレビュー段階です。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

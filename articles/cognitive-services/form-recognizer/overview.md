@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: df3db534550e709e40cc94d5f951056d93a1003e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2a120a59a58eb8d7a017cce0dd85c21038bdcf51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025431"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143213"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -73,13 +73,7 @@ Form Recognizer は、次の要件を満たす入力ドキュメントを処理�
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
-このサービスは、[オンライン サービス条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に基づいて、Azure サービスの[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)として提供されます。 データの所有権はユーザーにあり、Microsoft は、次の契約に説明されているようにオンライン サービスを提供するためにのみデータを使用します: 
-
-### <a name="processing-of-customer-data-ownership"></a>顧客データの処理 (権利の帰属)
-
-顧客データは、オンライン サービスの提供に適合する目的を含め、このサービスをお客様に提供する目的にのみ使用または処理されます。 Microsoft は、広告目的または同様の商用目的のために顧客データを使用または処理し、または顧客データから情報を取り出すことはありません。 両当事者の間において、お客様が顧客データのすべての権利、権原、および権益を留保します。 Microsoft は、オンライン サービスをお客様に提供するためにお客様が Microsoft に付与する権利を除き、顧客データに関するいかなる権利も取得しません。
-
-Cognitive Services 全般に言えることですが、Form Recognizer サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
+このサービスは、[オンライン サービス条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に基づいて、Azure サービスの[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)として提供されます。 Cognitive Services 全般に言えることですが、Form Recognizer サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

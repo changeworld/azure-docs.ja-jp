@@ -2,18 +2,19 @@
 title: VM の Azure Premium Storage への移行 | Microsoft Docs
 description: 既存の VM を Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 services: storage
-author: yuemlu
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
-ms.author: yuemlu
+ms.author: rogarana
+ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372320"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153762"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -255,7 +256,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-例として、<Uri>***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"*** が挙げられます。 <FileInfo> の例: ***"C:\path\to\upload.vhd"***。
+\<Uri> の例としては ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"*** があります。 \<FileInfo> の例としては ***"C:\path\to\upload.vhd"*** があります。
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>オプション 2:AzCopy を使って .vhd ファイルをアップロードする
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。

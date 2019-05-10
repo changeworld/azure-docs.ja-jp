@@ -32,11 +32,11 @@ sections:
             text: MetaMask を使用して接続する
             href: /azure/blockchain/service/connect-metamask
           - image:
-              src: ./media/index/multi-connect.svg
+              src: ./media/index/cligeneric.svg
             text: geth を使用して接続する
             href: /azure/blockchain/service/connect-geth
           - image:
-              src: ./media/index/multi-connect.svg
+              src: ./media/index/code-blocks.svg
             text: Truffle を使用して接続する
             href: /azure/blockchain/service/connect-truffle
   - title: ステップバイステップのチュートリアル
@@ -47,3 +47,11 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/blockchain/service/send-transaction">Azure Blockchain Service のメンバーを作成して、トランザクションを送信する</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">REST API</a></p>'

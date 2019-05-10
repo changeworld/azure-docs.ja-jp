@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 8a07657d04cee57cb69c9f5f7862fed3e7965716
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404469"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024547"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Azure Search でのパフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス
 
@@ -81,7 +81,7 @@ ms.locfileid: "57404469"
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>複数のサービス上のコンテンツ更新のためのインデクサーの使用
 
-あるサービスで既にインデクサーを使用している場合は、2 つ目のサービスに 2 つ目のインデクサーを構成し、同じデータ ソース オブジェクトを使用して同じ場所からデータをプルすることができます。 各リージョン内の各サービスにはその独自のインデクサーとターゲット インデックスがありますが (検索コーパスが共有されていないため、データが重複しています)、各インデクサーは同じデータ ソースを参照します。
+あるサービスで既にインデクサーを使用している場合は、2 つ目のサービスに 2 つ目のインデクサーを構成し、同じデータ ソース オブジェクトを使用して同じ場所からデータをプルすることができます。 各リージョン内の各サービスにはその独自のインデクサーとターゲット インデックスがありますが (検索インデックスが共有されていないため、データが重複しています)、各インデクサーは同じデータ ソースを参照します。
 
 このアーキテクチャの概観を次に示します。
 

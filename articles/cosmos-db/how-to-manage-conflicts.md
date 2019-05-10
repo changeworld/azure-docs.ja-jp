@@ -4,14 +4,14 @@ description: Azure Cosmos DB で競合を管理する方法について
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/16/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a6e57dc5b4bcfa3f02e323253e24d68381c3535d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997021"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068733"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
@@ -19,7 +19,7 @@ ms.locfileid: "59997021"
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>最終書き込み者優先競合解決ポリシーを作成する
 
-以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 最終書き込み者優先の既定のパスは、タイムスタンプ フィールドまたは `_ts` プロパティです。 また、これは数値型のユーザー定義パスに設定することもできます。 競合している中で最大値が優先されます。 このパスが設定されていない場合または無効な場合は、`_ts` が既定値になります。 このポリシーを使用して解決された競合は、競合フィードに表示されません。 このポリシーはすべての API で使用できます。
+以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 最終書き込み者優先の既定のパスは、タイムスタンプ フィールドまたは `_ts` プロパティです。 また、これは数値型のユーザー定義パスに設定することもできます。 競合した場合には、最大値が優先されます。 このパスが設定されていない場合または無効な場合は、`_ts` が既定値になります。 このポリシーを使用して解決された競合は、競合フィードに表示されません。 このポリシーはすべての API で使用できます。
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -86,7 +86,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>ストアド プロシージャを使用したカスタム競合解決ポリシーを作成する
 
-以下のサンプルでは、競合を解決するストアド プロシージャが含まれたカスタム競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 ストアド プロシージャ内でエラーが発生しない限り、これらの競合は競合フィードに表示されません。 このポリシーがコンテナーを使用して作成された後、ストアド プロシージャを作成する必要があります。 以下の .NET SDK サンプルではその例を示します。 このポリシーは、Core (SQL) API のみでサポートされています。
+以下のサンプルでは、競合を解決するストアド プロシージャが含まれたカスタム競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 ストアド プロシージャ内でエラーが発生しない限り、これらの競合は競合フィードに表示されません。 このポリシーがコンテナーを使用して作成された後、ストアド プロシージャを作成する必要があります。 以下の .NET SDK サンプルに例を示します。 このポリシーは、Core (SQL) API のみでサポートされています。
 
 ### <a name="sample-custom-conflict-resolution-stored-procedure"></a>カスタム競合解決ストアド プロシージャの例
 
@@ -95,7 +95,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 - **incomingItem**: 競合が発生している、コミット時に挿入または更新される項目。 削除操作の場合は null 値になります。
 - **existingItem**: 現在コミットされている項目。 この値は、更新では null 以外の値、挿入または削除では null 値になります。
 - **isTombstone**: incomingItem が以前に削除した項目と競合しているかどうかを示すブール値。 true の場合は existingItem も null 値になります。
-- **conflictingItems**: ID またはその他の一意なインデックスプロパティが incomingItem と競合している、コンテナー内のすべての項目のコミットされたバージョンによる配列。
+- **conflictingItems**: ID またはその他の一意なインデックス プロパティが incomingItem と競合している、コンテナー内のすべての項目のコミットされたバージョンによる配列。
 
 > [!IMPORTANT]
 > ストアド プロシージャと同様、カスタム競合解決プロシージャは、同じパーティション キーを使用してすべてのデータにアクセスすることも、挿入、更新、または削除操作を実行して競合を解決することもできます。
@@ -361,7 +361,7 @@ Azure Cosmos DB の次の概念について学習しましょう。
 
 * [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
 * [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
-* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [パーティション分割とデータ分散](partition-data.md)

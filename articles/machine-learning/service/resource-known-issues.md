@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021103"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149770"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
@@ -69,6 +69,9 @@ FPGA クォータを要求して承認されるまでは、FPGA にモデルを�
 
 Tensor Flow の自動化された機械学習は現在、Tensor Flow バージョン 1.13 でサポートされていません。 このバージョンをインストールすると、パッケージの依存関係が動作を停止することになります。 Microsoft は、将来のリリースでこの問題を解決するよう取り組んでいます。 
 
+### <a name="experiment-charts"></a>実験グラフ
+
+自動化された ML の実験の反復に示された二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は 4/12 以降のユーザー インターフェイスで正しくレンダリングされていません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
 
 ## <a name="databricks"></a>Databricks
 

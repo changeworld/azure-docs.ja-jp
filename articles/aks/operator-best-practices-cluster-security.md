@@ -2,11 +2,12 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Service (AKS) でのクラスターのセキュリティ
 description: Azure Kubernetes Service (AKS) でクラスターのセキュリティとアップグレードを管理する方法に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: iainfou
+origin.date: 12/06/2018
+ms.date: 05/13/2019
+ms.author: v-yeche
 ms.openlocfilehash: 0f24f7378ceb9266acf8988835b77cef80bd6f13
 ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
@@ -67,7 +68,7 @@ AppArmor の動作を確認するために、次の例ではファイルへの�
 #include <tunables/global>
 profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
   #include <abstractions/base>
-  
+
   file,
   # Deny all file writes.
   deny /** w,
@@ -181,13 +182,13 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 
 実際のクラスターに使用できるバージョンを確認するには、次の例に示すように [az aks get-upgrades][az-aks-get-upgrades] コマンドを使用します。
 
-```azurecli-interactive
+```azurecli
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 次に、[az aks upgrade][az-aks-upgrade] コマンドを使用して AKS クラスターをアップグレードすることができます。 このアップグレード プロセスでは、ノードの遮断と解放を一度に 1 つずつ安全に実行し、残りのノード上のポッドをスケジュールに設定してから、最新の OS および Kubernetes バージョンを実行している新しいノードを展開します。
 
-```azurecli-interactive
+```azurecli
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
@@ -224,8 +225,8 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- INTERNAL LINKS -->
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
+[az-aks-get-upgrades]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
+[az-aks-upgrade]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-upgrade
 [aks-supported-versions]: supported-kubernetes-versions.md
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md
