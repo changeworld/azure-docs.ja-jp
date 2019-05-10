@@ -3,11 +3,11 @@ title: Azure Cosmos DB Java Async SDK の診断およびトラブルシューテ
 description: クライアント側ログ、他のサード パーティのツールなどの機能を使って、Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
 author: moderakh
 ms.service: cosmos-db
-ms.topic: troubleshooting
 ms.date: 04/30/2019
 ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
+ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: f0dc45f104e05fde083489604865aaae8282d6a2
 ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
