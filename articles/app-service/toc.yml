@@ -9,7 +9,7 @@
     - name: App Service 環境について
       href: environment/intro.md
     - name: ホスティング オプションの比較
-      href: overview-compare.md
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: クイック スタート
   expanded: true
   items:

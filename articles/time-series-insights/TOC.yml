@@ -40,6 +40,16 @@
           href: time-series-insights-explorer.md
         - name: データ リテンション期間について
           href: time-series-insights-concepts-retention.md
+        - name: 開発
+          items:
+            - name: 認証と承認
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'C# によるデータのクエリ'
+              href: time-series-insights-query-data-csharp.md
+            - name: 'C# での参照データの管理'
+              href: time-series-insights-manage-reference-data-csharp.md
+            - name: カスタム ビューの共有
+              href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights プレビュー
       items:
         - name: 環境を計画する
@@ -54,16 +64,12 @@
           href: time-series-insights-update-tsq.md
         - name: エクスプローラー プレビューでデータを視覚化する
           href: time-series-insights-update-explorer.md
-    - name: 開発
-      items:
-        - name: 認証と承認
-          href: time-series-insights-authentication-and-authorization.md
-        - name: 'C# によるデータのクエリ'
-          href: time-series-insights-query-data-csharp.md
-        - name: 'C# での参照データの管理'
-          href: time-series-insights-manage-reference-data-csharp.md
-        - name: カスタム ビューの共有
-          href: time-series-insights-parameterized-urls.md
+        - name: 開発
+          items:
+            - name: 認証と承認
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'C# によるデータのクエリ'
+              href: time-series-insights-update-query-data-csharp.md
 - name: ハウツー ガイド
   items:
     - name: データ アクセスの許可

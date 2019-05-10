@@ -168,7 +168,7 @@
         - name: BLOB、キュー、テーブル、ファイル
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: データの移動
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
         - name: リソース マネージャー
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java
