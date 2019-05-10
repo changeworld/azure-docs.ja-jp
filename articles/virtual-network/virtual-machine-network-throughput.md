@@ -3,8 +3,7 @@ title: Azure 仮想マシンのネットワーク スループット | Microsoft
 description: Azure 仮想マシンのネットワーク スループットについて説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: steveesp
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: kumud
-ms.openlocfilehash: 182b3b7dad828e67d006391e00986406729c959d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 4/26/2019
+ms.author: kumud,steveesp, mareat
+ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689248"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153720"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -43,6 +42,30 @@ VM の各サイズで想定される送信スループットとサポートさ�
 - **高速ネットワーク**:この機能は公開された制限まで達成するためには役立ちますが、制限自体は変更されません。
 - **トラフィックの送信先**:すべての送信先が、送信制限に達するまでカウントされます。
 - **プロトコル**:すべてのプロトコルに対するすべての送信トラフィックが、制限に達するまでカウントされます。
+
+## <a name="network-flow-limits"></a>ネットワーク フローの制限
+
+帯域幅に加えて、特定の時点で VM 上に存在するネットワーク接続の数がそのネットワーク パフォーマンスに影響を与える場合があります。 Azure のネットワーク スタックは、TCP/UDP 接続の各方向の状態を 'フロー' と呼ばれるデータ構造の中に保持します。 標準的な TCP/UDP 接続では、受信方向に 1 つ、送信方向にもう 1 つの 2 つのフローが作成されます。 
+
+エンドポイント間のデータ転送では、データ転送を実行するフローに加えていくつかのフローを作成する必要があります。 その例として、DNS 解決のために作成されるフローや、ロード バランサーの正常性プローブのために作成されるフローがあります。 また、ゲートウェイ、プロキシ、ファイアウォールなどのネットワーク仮想アプライアンス (NVA) では、アプライアンスで終了した接続やアプライアンスで開始された接続のためにもフローが作成されることに注意してください。 
+
+![転送アプライアンスを経由した TCP 通信のためのフローの数](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+
+## <a name="flow-limits-and-recommendations"></a>フローの制限と推奨事項
+
+現在、Azure のネットワーク スタックは、CPU コアが 8 個を超える VM での良好なパフォーマンスには 250K 個の合計ネットワーク フロー、および CPU コアが 8 個未満の VM での良好なパフォーマンスには 100K 個の合計フローをサポートしています。 この制限を超えると、ネットワーク パフォーマンスは、ハード制限である 1M 個の合計フロー (500K 個の受信と 500K 個の送信) まで追加フローに対して適切に低下し、それ以降は追加フローが破棄されます。
+
+||CPU コアが 8 個未満の VM|CPU コアが 8 個を超える VM|
+|---|---|---|
+|<b>良好なパフォーマンス</b>|100K 個のフロー |250K 個のフロー|
+|<b>パフォーマンスの低下</b>|100K 個を超えるフロー|250K 個を超えるフロー|
+|<b>フローの制限</b>|1M 個のフロー|1M 個のフロー|
+
+[Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) では、ネットワーク フローの数や、VM または VMSS インスタンスでのフロー作成の頻度を追跡するためのメトリックを使用できます。
+
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+
+接続の確立と終了はパケット処理ルーチンと CPU を共有するため、接続の確立と終了の頻度もネットワーク パフォーマンスに影響を与える場合があります。 予測されるトラフィック パターンに対してワークロードをベンチマークし、パフォーマンスのニーズを満たすようにワークロードを適切にスケールアウトすることをお勧めします。 
 
 ## <a name="next-steps"></a>次の手順
 

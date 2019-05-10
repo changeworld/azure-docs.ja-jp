@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 77e322e32d19433d9ce4629c2e04c8bbd7e17f3f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79ba86fd32248da240706fda2d8b5fcf8323263d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858237"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143186"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -45,7 +45,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*myResourceGroupSLB*」と入力します。|
     | Name                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | type          | **[パブリック]** を選択します。                                        |
+    | Type          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
@@ -56,7 +56,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-load-balancer-resources"></a>Load Balancer のリソースを作成する
 
-このセクションでは、バックエンド アドレス プールの Load Balancer 設定と正常性プローブを構成し、バランサーの規則を指定します。
+このセクションでは、バックエンド アドレス プールの Load Balancer の設定と正常性プローブを構成し、バランサーの規則を指定します。
 
 ### <a name="create-a-backend-address-pool"></a>バックエンド アドレス プールの作成
 
@@ -77,10 +77,10 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     | ------- | ----- |
     | Name | 「*myHealthProbe*」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
-    | ポート | 「*80*」と入力します。|
-    | interval | プローブの試行の**間隔**を示す秒数として、「*15*」を入力します。 |
-    | 異常のしきい値 | **異常しきい値**またはプローブの連続する失敗の回数として *[2]* を選択します。この回数を超えると、VM は異常と見なされます。|
-    | 正常性プローブ | *[myHealthProbe]* を選択します。 |
+    | Port | 「*80*」と入力します。|
+    | Interval | プローブの試行の**間隔**を示す秒数として、「*15*」を入力します。 |
+    | 異常のしきい値 | **異常しきい値**またはプローブの連続する失敗の回数として **[2]** を選択します。この回数を超えると、VM は異常と見なされます。|
+    | | |
 4. **[OK]** を選択します。
 
 ### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則を作成する
@@ -94,16 +94,16 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     | ------- | ----- |
     | Name | 「*myHTTPRule*」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
-    | ポート | 「*80*」と入力します。|
+    | Port | 「*80*」と入力します。|
     | バックエンド ポート | 「*80*」と入力します。 |
     | バックエンド プール | *[myBackendPool]* を選択します。|
     | 正常性プローブ | *[myHealthProbe]* を選択します。 |
-4. 残りの部分は既定値のままにし、**[OK]** を選択します。
-4. **[OK]** を選択します。
+4. 残りの部分は既定値のままにし、次に **[OK]** を選択します。
+
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-このセクションでは、仮想ネットワークを作成し、Load Balancer のバックエンド プール用に 2 台の仮想マシンを作成して、Load Balancer をテストするために仮想マシンに IIS をインストールします。
+このセクションでは、仮想ネットワークを作成し、Load Balancer のバックエンド プール用に 3 台の仮想マシンを作成して、Load Balancer をテストするために仮想マシンに IIS をインストールします。
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[仮想ネットワーク]** の順に選択します。
@@ -122,9 +122,9 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 1. 残りの部分は既定値のままにし、**[作成]** を選択します。
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
-Standard Load Balancer は、バックエンド プールで Standard IP アドレスを使用する VM のみをサポートします。 このセクションでは、先ほど作成した Standard Load Balancer のバックエンド プールに追加される 2 つの異なるゾーン (*ゾーン 1* と *ゾーン 2*) に、Standard パブリック IP アドレスを持つ 2 台の VM (*myVM1* と *myVM2*) を作成します。
+Standard Load Balancer は、バックエンド プール内の Standard IP アドレスを使用する VM のみをサポートします。 このセクションでは、先ほど作成した Standard Load Balancer のバックエンド プールに後で追加される 3 つの異なるゾーン ("*ゾーン 1*"、"*ゾーン 2*"、および "*ゾーン 3*") 内に、Standard パブリック IP アドレスを持つ 3 台の VM (*myVM1*、*myVM2*、および *myVM3*) を作成します。
 
-1. ポータルの左上で、**[リソースの作成]** > **[Compute]** > **[Windows Server 2016 Datacenter]** の順に選択します。 
+1. ポータルの左上で、**[リソースの作成]** > **[Compute]** > **[Windows Server 2019 Datacenter]** の順に選択します。 
    
 1. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
    - **[サブスクリプション]** > **[リソース グループ]**: **[myResourceGroupSLB]** を選択します。
@@ -132,26 +132,35 @@ Standard Load Balancer は、バックエンド プールで Standard IP アド�
    - **[インスタンスの詳細]** > **[リージョン]** > **[西ヨーロッパ]** を選択します。
    - **[インスタンスの詳細]** > **[可用性オプション]** > **[可用性ゾーン]** を選択します。 
    - **[インスタンスの詳細]** > **[可用性ゾーン]** > **[1]** を選択します。
+   - **[管理者アカウント]**: **[ユーザー名]**、**[パスワード]**、および **[パスワードの確認]** に情報を入力します。
+   - **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。
   
-1. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。 
-   
-   - 以下が選択されていることを確認します。
-       - **[仮想ネットワーク]**: *myVNet*
-       - **[サブネット]**: *myBackendSubnet*
-       - **[パブリック IP]** > **[新規作成]** を選択し、**[パブリック IP アドレスの作成]** ウィンドウで **[SKU]** に **[Standard]** を選択し、**[可用性ゾーン]** に **[ゾーン冗長]** を選択して、**[OK]** をクリックします。
+1. **[ネットワーク]** タブで、以下が選択されていることを確認します。
+   - **[仮想ネットワーク]**: *myVNet*
+   - **[サブネット]**: *myBackendSubnet*
+   - **[パブリック IP]** > **[新規作成]** を選択し、**[パブリック IP アドレスの作成]** ウィンドウで **[SKU]** に **[Standard]** を選択し、**[可用性ゾーン]** に **[ゾーン冗長]** を選択して、**[OK]** をクリックします。
    - 新しいネットワーク セキュリティ グループ (NSG) を作成し、ファイアウォールの種類を選択するには、**[ネットワーク セキュリティ グループ]** で **[Advanced]\(高度\)** を選択します。 
        1. **ネットワーク セキュリティ グループの構成**フィールドで、**[新規作成]** を選択します。 
        1. 「*myNetworkSecurityGroup*」と入力し、**[OK]** を選択します。
-   - VM を Load Balancer のバックエンド プールの一部にするには、次の手順を完了します。
-        - **[負荷分散]** の **[この仮想マシンを既存の負荷分散ソリューションの後ろに配置しますか]** で **[はい]** を選択します。
-        - **[負荷分散の設定]** の **[負荷分散のオプション]** で **[Azure Load Balancer]** を選択します。
-        - **[ロード バランサーを選択します]** で *[myLoadBalancer]* を選択します。 
-1. **[管理]** タブまたは **[次へ]** > **[管理]** を選択します。 **[監視]** で **[ブート診断]** を **[オフ]** に設定します。 
+   - VM を Load Balancer のバックエンド プールの一部にするには、次の手順を実行します。
+        - **[負荷分散]** 内の **[この仮想マシンを既存の負荷分散ソリューションの後ろに配置しますか?]** で **[はい]** を選択します。
+        - **[Load balancing settings]\(負荷分散の設定\)** 内の **[負荷分散のオプション]** で **[Azure Load Balancer]** を選択します。
+        - **[ロード バランサーを選択します]** で *[myLoadBalancer]* を選択します。
+        - **[管理]** タブまたは **[次へ]** > **[管理]** を選択します。
+2. **[管理]** タブの **[監視]** で、**[起動の診断]** を **[オフ]** に設定します。 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。   
 1. 設定を確認し、**[作成]** を選択します。
-1. 手順に従って、*myVM2* という名前の 2 つ目の VM を *myVM2-ip* という Standard SKU パブリック IP アドレスおよび **[可用性ゾーン]** 設定の **2** で作成します。他のすべての設定は *myVM1* と同じです。 
+1. 手順 2 から 6 に従って、次の値を持つ 2 つの追加の VM を作成します。他の設定はすべて *myVM1* と同じにします。
 
-### <a name="create-nsg-rule"></a>NSG 規則の作成
+    | Setting | VM 2| VM 3|
+    | ------- | ----- |---|
+    | Name |  *myVM2* |*myVM3*|
+    | 可用性ゾーン | 2 |3|
+    |パブリック IP| **Standard** SKU|**Standard** SKU|
+    | パブリック IP - 可用性ゾーン| **ゾーン冗長** |**ゾーン冗長**|
+    | ネットワーク セキュリティ グループ | 既存の "*myNetworkSecurity グループ*" を選択します| 既存の "*myNetworkSecurity グループ*" を選択します|
+
+ ### <a name="create-nsg-rule"></a>NSG 規則の作成
 
 このセクションでは、HTTP を使用する受信接続を許可するためのネットワーク セキュリティ グループの規則を作成します。
 
@@ -166,30 +175,38 @@ Standard Load Balancer は、バックエンド プールで Standard IP アド�
     - *100* - **優先度**
     - *myHTTPRule* - 名前
     - "*HTTP を許可する*" - 説明
-4. **[OK]** を選択します。
+4. **[追加]** を選択します。
  
 ### <a name="install-iis"></a>IIS のインストール
 
 1. 左側のメニューで **[すべてのサービス]**、**[すべてのリソース]** の順に選択し、リソースの一覧で *[myResourceGroupSLB]* リソース グループにある **[myVM1]** を選択します。
 2. **[概要]** ページで **[接続]** を選択して、RDP で VM に接続します。
-3. ユーザー名 *azureuser* で VM にログインします。
-4. サーバーのデスクトップで、**[Windows 管理ツール]**>**[サーバー マネージャー]** の順に移動します。
-5. サーバー マネージャーで **[役割と機能の追加]** を選択します。
-6. **役割と機能の追加ウィザード**で、次の値を指定します。
-    - **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** を選択します。
-    - **[対象サーバーの選択]** ページで **[myVM1]** を選択します。
-    - **[サーバーの役割を選択してください]** ページで、**[Web Server (IIS)]** を選択します。
-    - 指示に従って、ウィザードの残りの部分を完了します 
-7. 仮想マシン *myVM2* に対して、手順 1. から 6. を繰り返します。
+5. VM の作成中に指定した資格情報を使用して、この VM にログインします。 これで、仮想マシン *myVM1* とのリモート デスクトップ セッションが起動されます。
+6. サーバーのデスクトップで、**[Windows 管理ツール]**>**[Windows PowerShell]** の順に移動します。
+7. PowerShell ウィンドウで、以下のコマンドを実行して IIS サーバーをインストールし、既定の iisstart.htm ファイルを削除して、VM の名前を表示する新しい iisstart.htm ファイルを追加します。
+
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+   ```
+6. *myVM1* で RDP セッションを閉じます。
+7. 手順 1. から 6. を繰り返して、IIS と更新済み iisstart.htm ファイルを *myVM2* と *myVM3* にインストールします。
 
 ## <a name="test-the-load-balancer"></a>Load Balancer をテストする
 1. **[概要]** 画面で、ロード バランサーのパブリック IP アドレスを見つけます。 左側のメニューで **[すべてのサービス]**、**[すべてのリソース]**、**[myPublicIP]** の順に選択します。
 
 2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 IIS Web サーバーの既定のページがブラウザーに表示されます。
 
-      ![IIS Web サーバー](./media/load-balancer-standard-public-portal/9-load-balancer-test.png)
+   ![IIS Web サーバー](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-アプリを実行している 3 つの VM すべての間で、ロード バランサーがトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
+Load Balancer が 3 つの VM すべてにトラフィックを負荷分散していることを確認するには、各 VM の IIS Web サーバーの既定のページをカスタマイズした後、クライアント マシンから Web ブラウザーを強制的に最新の情報に更新します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

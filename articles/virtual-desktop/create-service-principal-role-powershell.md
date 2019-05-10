@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400025"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146140"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
@@ -111,5 +111,5 @@ PowerShell セッションを終了する前に、自分の資格情報を確認
 
 このチュートリアルでは、サービス プリンシパルを作成し、それを使って Windows Virtual Desktop にサインインする方法を説明しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
 
-- [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](connect-windows-7-and-10.md)
-- [Windows Virtual Desktop プレビュー Web クライアントに接続する](connect-web.md)
+- [Windows 10 または Windows 7 から接続する](connect-windows-7-and-10.md)
+- [Web ブラウザーから接続する](connect-web.md)

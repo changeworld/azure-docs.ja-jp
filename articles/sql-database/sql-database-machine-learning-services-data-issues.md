@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012949"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232618"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) での R および SQL データの処理
 
@@ -300,4 +300,4 @@ STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 1
 - 予想外の問題を回避するために、入力データを準備するときに、必要に応じて明示的なキャストを実行します。
 - エラー発生の原因となりモデリングの役に立たない (GUID や rowguid などの) データの列を渡すことを回避します。
 
-サポートされている R データ型とサポートされていない R データ型の詳細については、[R ライブラリとデータ型](/sql/advanced-analytics/r/r-libraries-and-data-types.md)に関する記事を参照してください。
+サポートされている R データ型とサポートされていない R データ型の詳細については、[R ライブラリとデータ型](/sql/advanced-analytics/r/r-libraries-and-data-types)に関する記事を参照してください。

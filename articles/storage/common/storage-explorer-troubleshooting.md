@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6ada4a25f24a6dcbb1ebd54daad15b37127f7a21
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225044"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154187"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -96,7 +96,7 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 
 サインイン ダイアログが空白になる原因で最もよくあるのは、Electron によってサポートされていないリダイレクトを実行するよう、ADFS が Storage Explorer に要求する場合です。 この問題を回避するには、サインインにデバイス コード フローを使用してみることができます。 そのためには、次の手順を実行します。
 
-1. [Go to Preview]\(プレビューに移動) -> [Use Device Code Sign-In]\(デバイス コード サインインを使用)。
+1. メニュー: [プレビュー] -> [Use Device Code Sign-In] (デバイス コード サインインを使用)。
 2. [Connect]\(接続\) ダイアログを開きます (左側の垂直バーのプラグ アイコン、またはアカウント パネルの [Add Account]\(アカウントの追加\) を使用して)。
 3. サインインする環境を選択します。
 4. [サインイン] ボタンをクリックします。
@@ -235,7 +235,7 @@ SAS URL を使用してサービスに接続し、上記のエラーが発生す
 
 一般に、Linux で Storage Explorer を実行するには、次のパッケージが必要です。
 
-* [.NET Core 2.0 ランタイム](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.0 ランタイム](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) 注: Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、Storage Explorer に修正プログラムを適用する必要があります (下を参照)。 Storage Explorer 1.8.0 以降を実行している場合は、.NET Core 2.2 までであれば使用できます。 現時点で、2.2 を超えるバージョンは動作が検証されていません。
 * `libgnome-keyring-common` と `libgnome-keyring-dev`
 * `libgconf-2-4`
 

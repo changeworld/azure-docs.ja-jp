@@ -7,12 +7,12 @@ ms.service: service-health
 ms.topic: landing-page
 ms.date: 03/4/2019
 ms.author: stbaron
-ms.openlocfilehash: cf7084b569e2c90337e475beb9f49563214941d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa00d4b08725eaf4b667fc7b53b225198db95a02
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506938"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441663"
 ---
 # <a name="azure-service-health-documentation"></a>Azure Service Health のドキュメント
 
@@ -25,6 +25,11 @@ Azure では、現在および将来の問題 (サービスに影響を及ぼす
 **[Azure Resource Health](resource-health-overview.md)** では、特定の仮想マシン インスタンスなど、個々のクラウド リソースの正常性に関する情報を入手できます。 さらに、Azure Monitor を使えば、クラウド リソースの可用性が変動したときに通知するアラートを構成することもできます。 Azure Resource Health と Azure Monitor による通知を組み合わせれば、リソースの可用性を分単位で把握すると共に、問題がお客様側の原因によるものか、Azure プラットフォームのイベントに関連するものかをすばやく評価できるようになります。
 
 ここに挙げたエクスペリエンスが一体となって、お客様にとって最も意味のある精度で Azure の正常性を包括的に確認できます。
+
+### <a name="watch-an-overview-of-the-azure-status-page-azure-service-health-and-azure-resource-health"></a>Azure の状態ページ、Azure Service Health、および Azure Resource Health の概要を見る
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
+
 
 <ul class="panelContent cardsFTitle">
     <li>

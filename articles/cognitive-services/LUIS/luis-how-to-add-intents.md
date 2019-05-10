@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521744"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148160"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
@@ -42,16 +42,25 @@ ms.locfileid: "59521744"
 
     LUIS では、すべての発話が小文字に変換され、ハイフンなどのトークンの前後にはスペースが追加されます。
 
-## <a name="intent-prediction-discrepancy-errors"></a>意図予測の不一致エラー 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-意図の発話では、選択した意図と予測スコアの間に意図予測の不一致が存在する場合があります。 このような不一致がある場合、LUIS では、サンプル発話の行の**ラベル付き意図**の周囲に、赤いボックスが表示されます。 
+## <a name="intent-prediction-errors"></a>意図予測のエラー 
 
-![意図の詳細ページのスクリーンショット、発話予測の不一致エラー](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+意図に含まれている発話の例では、発話の例が現在含まれている意図とトレーニング中に決定された予測意図の間に意図予測のエラーが存在することがあります。 
 
-上部のナビゲーションで、**[トレーニング]** を選択します。 これで、予測の不一致がなくなります。
+発話予測のエラーを見つけて修正するには、**[フィルター]** オプションの [Incorrect] (正しくない) および [Unclear] (不明) の **[評価]** オプションを **[詳細ビュー]** の **[表示]** オプションと組み合わせて使用します。 
 
-> [!Note]
-> サンプル発話内の単語またはフレーズの下に赤い線が表示されている場合は、[エンティティ予測エラー](luis-how-to-add-example-utterances.md#entity-status-predictions)が発生しています。 このエラーは修正する必要があります。 
+![発話予測のエラーを見つけて修正するには、[フィルター] オプションを使用します。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+フィルターとビューが適用され、エラーを含む発話の例が存在する場合は、発話の例のリストにそれらの発話と問題が表示されます。
+
+![![フィルターとビューが適用され、エラーを含む発話の例が存在する場合は、発話の例のリストにそれらの発話と問題が表示されます。](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+各行には、発話の例の現在のトレーニングの予測スコア、最も近いライバルのスコア、これらの 2 つのスコアの差が表示されます。 
+
+### <a name="fixing-intents"></a>意図の修正
+
+意図予測のエラーを修正する方法を学習するには、[概要ダッシュボード](luis-how-to-use-dashboard.md)を使用します。 概要ダッシュボードには、アクティブなバージョンの最後のトレーニングに関する分析が表示され、モデルを修正するための最上位の提案が示されます。  
 
 ## <a name="add-a-custom-entity"></a>カスタム エンティティの追加
 

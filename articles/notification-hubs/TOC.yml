@@ -16,16 +16,24 @@
   items:
     - name: Android
       items:
-        - name: Firebase Cloud Messaging を使用して通知をプッシュする
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Google Cloud Messaging を使用して通知をプッシュする
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: 特定のデバイスにプッシュ通知を送信する
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: 特定のユーザーに通知をプッシュする
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: Xamarin Android アプリにプッシュ通知を送信する
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Firebase Cloud Messaging
+          items:
+            - name: すべての登録にプッシュ通知を送信する
+              href: notification-hubs-android-push-notification-google-fcm-get-started.md
+            - name: 特定のデバイスにプッシュ通知を送信する
+              href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
+            - name: 特定のユーザーにプッシュ通知を送信する
+              href: push-notifications-android-specific-users-firebase-cloud-messaging.md
+            - name: Xamarin Android アプリにプッシュ通知を送信する
+              href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Google Cloud Message (非推奨)
+          items:
+            - name: すべての登録にプッシュ通知を送信する
+              href: notification-hubs-android-push-notification-google-gcm-get-started.md
+            - name: 特定のデバイスにプッシュ通知を送信する
+              href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+            - name: 特定のユーザーにプッシュ通知を送信する
+              href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: Baidu
       items:
         - name: Baidu クラウド プッシュを使用して通知をプッシュする
@@ -56,7 +64,7 @@
           href: notification-hubs-windows-mobile-push-notifications-mpns.md
         - name: 特定のデバイスにプッシュ通知を送信する
           href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-    - name: ' Windows'
+    - name: Windows
       items:
         - name: ユニバーサル Windows プラットフォーム アプリにプッシュ通知を送信する
           href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

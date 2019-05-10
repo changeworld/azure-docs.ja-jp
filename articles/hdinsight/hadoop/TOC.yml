@@ -106,19 +106,6 @@
               href: apache-hadoop-use-mapreduce-dotnet-sdk.md
             - name: MapReduce サンプルの実行
               href: apache-hadoop-run-samples-linux.md
-        - name: Apache Hadoop と Apache Pig を使用する
-          href: hdinsight-use-pig.md
-          items:
-            - name: SSH と Apache Pig を使用する
-              href: apache-hadoop-use-pig-ssh.md
-            - name: Azure PowerShell の使用
-              href: apache-hadoop-use-pig-powershell.md
-            - name: .NET 用 SDK の使用
-              href: apache-hadoop-use-pig-dotnet-sdk.md
-            - name: cURL の使用
-              href: apache-hadoop-use-pig-curl.md
-        - name: Apache DataFu と Apache Pig を使用する
-          href: apache-hadoop-use-pig-datafu-udf.md
         - name: Apache Hadoop ジョブを送信する
           href: submit-apache-hadoop-jobs-programmatically.md
     - name: 開発

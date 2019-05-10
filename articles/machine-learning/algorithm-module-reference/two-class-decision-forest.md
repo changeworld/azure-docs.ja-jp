@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3e7cab6e33fa9373095441685f6ecb04f1d91a5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 73b7822c56e2b07eeefdedce1bce6d410d110ebc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027789"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411473"
 ---
 # <a name="two-class-decision-forest-module"></a>2 クラス デシジョン フォレスト モジュール
 
@@ -46,7 +46,7 @@ ms.locfileid: "65027789"
 
 ただし単純なデシジョン ツリーではデータのオーバーフィットが生じることがあり、ツリー アンサンブルに比べ汎化性能が低くなります。
 
-詳細については、「[Decision Forests (デシジョン フォレスト)](http://go.microsoft.com/fwlink/?LinkId=403677)」を参照してください。  
+詳細については、「[Decision Forests (デシジョン フォレスト)](https://go.microsoft.com/fwlink/?LinkId=403677)」を参照してください。  
 
 ## <a name="how-to-configure"></a>構成方法
   

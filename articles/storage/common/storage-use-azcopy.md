@@ -2,35 +2,42 @@
 title: AzCopy on Windows を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs
 description: AzCopy on Windows ユーティリティを使用して、BLOB、テーブル、およびファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: seguler
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ead5729496253b553ea453a9d6ce33b6b673e027
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881734"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149056"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
+
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
-ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Windows には、Windows スタイルのコマンドライン オプションが用意されています。 [AzCopy on Linux](storage-use-azcopy-linux.md) の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 この記事では、AzCopy on Windows を取り上げます。
+> [!IMPORTANT]
+> この記事では、以前のバージョンの AzCopy について説明します。
+>最新バージョンの AzCopy をインストールするには、[AzCopy v10](storage-use-azcopy-v10.md) に関するページを参照してください。
 
-## <a name="download-and-install-azcopy-on-windows"></a>Windows での AzCopy のダウンロードとインストール
+以前のバージョンの AzCopy (AzCopy v8.1) をインストールすることを選択した場合は、ダウンロードできる複数のバージョンが存在します。 AzCopy on Windows には、Windows スタイルのコマンドライン オプションが用意されています。 [AzCopy on Linux](storage-use-azcopy-linux.md) の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 この記事では、AzCopy on Windows を取り上げます。
 
-### <a name="latest-version-v81"></a>最新バージョン (v8.1)
-[最新バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) をダウンロードします。
+## <a name="download-and-install-azcopy-v81-on-windows"></a>Windows で AzCopy (v8.1) をダウンロードしてインストールする
+
+[Windows で AzCopy (v8.1)](https://aka.ms/downloadazcopy) をダウンロードします。
 
 #### <a name="azcopy-on-windows-81-release-notes"></a>AzCopy on Windows 8.1 リリース ノート
+
 - Table service は、最新バージョンではサポートされなくなっています。 テーブル エクスポート機能を使用する場合は、AzCopy 7.3 バージョンをダウンロードしてください。
 - .NET Core 2.1 でビルドされ、すべての .NET Core 依存関係がインストールにパッケージ化されています。
 - OAuth 認証のサポートが追加されました。 Azure Active Directory を使用して ```azcopy login``` でログインします。
 
 ### <a name="azcopy-with-table-support-v73"></a>テーブルをサポートする AzCopy (v7.3)
+
 [テーブルをサポートする AzCopy 7.3](https://aka.ms/downloadazcopynet) をダウンロードします。
 
 ### <a name="post-installation-step"></a>インストール後の手順

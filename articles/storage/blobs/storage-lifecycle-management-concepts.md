@@ -2,18 +2,19 @@
 title: Azure Storage のライフサイクルの管理
 description: 古いデータをホット層からクール層およびアーカイブ層へ移行するためのライフサイクル ポリシー ルールの作成方法について説明します。
 services: storage
-author: yzheng-msft
+author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/20/2019
-ms.author: yzheng
+ms.date: 4/29/2019
+ms.author: mhopkins
+ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 130eb9cc8bec4681f5c0d165735c6c3b2357576c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681728"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148314"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -42,7 +43,7 @@ ms.locfileid: "59681728"
 
 ## <a name="add-or-remove-a-policy"></a>ポリシーを追加または削除する 
 
-Azure Portal、[Azure PowerShell](https://github.com/Azure/azure-powershell/releases)、Azure CLI、[REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies)、またはクライアント ツールを使用して、ポリシーを追加、編集、または削除できます。 この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。  
+Azure Portal、[Azure PowerShell](https://github.com/Azure/azure-powershell/releases)、Azure CLI、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)、またはクライアント ツールを使用して、ポリシーを追加、編集、または削除できます。 この記事では、ポータルと PowerShell の方法を使用してポリシーを管理する方法について説明します。  
 
 > [!NOTE]
 > ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 例外を指定することで、これらの要求のブロックを解除することができます。 必要なバイパスは `Logging,  Metrics,  AzureServices` です。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
@@ -80,7 +81,47 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 
 ```
+## <a name="arm-template-with-lifecycle-management-policy"></a>ライフサイクル管理ポリシーを含む ARM テンプレート
 
+ARM テンプレートを使用して、Azure ソリューションのデプロイの一部として、ライフサイクル管理を定義し、デプロイできます。 次は、ライフサイクル管理ポリシーを含む RA-GRS GPv2 ストレージ アカウントをデプロイするサンプル テンプレートです。 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "storageAccountName": "[uniqueString(resourceGroup().id)]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-04-01",
+      "sku": {
+        "name": "Standard_RAGRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "networkAcls": {}
+      }
+    },
+    {
+      "name": "[concat(variables('storageAccountName'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/managementPolicies",
+      "apiVersion": "2019-04-01",
+      "dependsOn": [
+        "[variables('storageAccountName')]"
+      ],
+      "properties": {
+        "policy": {...}
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="policy"></a>ポリシー
 
@@ -305,8 +346,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
   ]
 }
 ```
-## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>FAQ - 新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか? 
-
+## <a name="faq"></a>FAQ 
+**新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか?**  
 ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、一部のアクション (階層化や削除など) を初めて実行するために最大 24 時間かかる場合があります。  
 
 ## <a name="next-steps"></a>次の手順

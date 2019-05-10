@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad69c4108d747c44eccf37b81adf2c7c615cb58
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156828"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410712"
 ---
 # <a name="create-a-custom-voice"></a>カスタム音声を作成する
 
-[カスタム音声用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページでは、カスタム音声のトレーニングに使用できるさまざまなデータの種類と、さまざまな形式の要件について説明しました。 実際のデータが準備できたら、[Custom Voice ポータル](http://aka.ms/custom-voice-portal)に、または Custom Vision Training API を使用して、そのデータのアップロードを開始できます。 ここでは、ポータルを使用したカスタム音声のトレーニング手順を説明します。
+[カスタム音声用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページでは、カスタム音声のトレーニングに使用できるさまざまなデータの種類と、さまざまな形式の要件について説明しました。 実際のデータが準備できたら、[Custom Voice ポータル](https://aka.ms/custom-voice-portal)に、または Custom Vision Training API を使用して、そのデータのアップロードを開始できます。 ここでは、ポータルを使用したカスタム音声のトレーニング手順を説明します。
 
 > [!NOTE]
 > このページでは、「[Custom Voice の概要](how-to-custom-voice.md)」と[カスタム音声用のデータの準備](how-to-custom-voice-prepare-data.md)に関するページを読み、Custom Voice プロジェクトを作成していることを前提としています。
@@ -28,7 +28,7 @@ ms.locfileid: "65156828"
 
 ## <a name="upload-your-datasets"></a>データセットをアップロードする
 
-実際のデータをアップロードする準備ができたら、[Custom Voice ポータル](http://aka.ms/custom-voice-portal)に移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語/ロケールと性別プロパティを共有する必要があります。 たとえば、英国アクセントの英語で音声を録音した場合は `en-GB` を選択します。
+実際のデータをアップロードする準備ができたら、[Custom Voice ポータル](https://aka.ms/custom-voice-portal)に移動します。 Custom Voice プロジェクトを作成するか、選択します。 このプロジェクトでは、実際の音声トレーニングに使用するデータとして適切な言語/ロケールと性別プロパティを共有する必要があります。 たとえば、英国アクセントの英語で音声を録音した場合は `en-GB` を選択します。
 
 **[データ]** タブに移動し、**[データのアップロード]** をクリックします。 ウィザードで、準備したものと一致する正しいデータの種類を選択します。
 

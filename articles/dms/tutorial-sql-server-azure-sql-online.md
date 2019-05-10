@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: c01eccb63639a3838c9f726bc48400a76aba8cf0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/01/2019
+ms.openlocfilehash: 131b86fec5fb51c6ff6f29a8e0beed86145a24b7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799047"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136640"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオンラインで移行する
 
@@ -234,9 +234,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
     コストと価格レベルの詳細については、[価格に関するページ](https://aka.ms/dms-pricing)を参照してください。
 
-    適切な Azure Database Migration Service レベルの選択について不明な点がある場合は、[この投稿](https://go.microsoft.com/fwlink/?linkid=861067)の推奨事項を参照してください。  
-
-     ![Azure Database Migration Service インスタンス設定を構成する](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
+    ![Azure Database Migration Service インスタンス設定を構成する](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
 7. **[作成]** を選択して、サービスを作成します。
 
@@ -287,7 +285,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[Migration target details]\(移行ターゲットの詳細\)** 画面でターゲット Azure SQL Database Server の接続の詳細を指定します。これは、DMA を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
+1. **[保存]** を選択し、**[Migration target details]\(移行ターゲットの詳細\)** 画面でターゲット Azure SQL Database サーバーの接続の詳細を指定します。これは、DMA を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
 
     ![ターゲットを選択する](media/tutorial-sql-server-to-azure-sql-online/dms-select-target3.png)
 

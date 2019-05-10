@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 2aa1f71d0e8e73ae793fc5396b8b654b9ca875bc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 294a4afc138e25ddc70cd4fdec59310664671ae3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733537"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149716"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想マシン スケール セットの共有イメージの作成および使用
 
@@ -47,7 +47,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>カスタム VM イメージからのスケール セットの作成
-[az vmss create](/cli/azure/vmss#az-vmss-create) を使用して、スケール セットを作成します。 *UbuntuLTS* や *CentOS* などのプラットフォーム イメージの代わりに、カスタム VM イメージの名前を指定します。 次の例では、前の手順の *myImage* という名前のカスタム イメージを使用する、*myScaleSet* という名前のスケール セットを作成します。
+[`az vmss create`](/cli/azure/vmss#az-vmss-create) でスケール セットを作成します。 *UbuntuLTS* や *CentOS* などのプラットフォーム イメージの代わりに、カスタム VM イメージの名前を指定します。 次の例では、前の手順の *myImage* という名前のカスタム イメージを使用する、*myScaleSet* という名前のスケール セットを作成します。
 
 ```azurecli-interactive
 az vmss create \

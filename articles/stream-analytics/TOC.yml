@@ -4,6 +4,8 @@
   items:
     - name: Stream Analytics とは
       href: stream-analytics-introduction.md
+    - name: エンドツーエンド ソリューション パターン
+      href: stream-analytics-solution-patterns.md
 - name: クイック スタート
   items:
     - name: ジョブの作成 - Azure Portal
@@ -12,6 +14,8 @@
       href: stream-analytics-quick-create-powershell.md
     - name: ジョブの作成 - Visual Studio
       href: stream-analytics-quick-create-vs.md
+    - name: ジョブの作成 - Visual Studio Code
+      href: quick-create-vs-code.md
 - name: チュートリアル
   items:
     - name: 1 - ジョブの作成/管理
@@ -143,7 +147,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: IoT Edge ジョブへの API の使用
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio Tools
+    - name: Visual Studio と VS Code
       items:
         - name: ツールをインストールする
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -159,6 +163,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: Edge 用の .NET UDF の記述
           href: stream-analytics-edge-csharp-udf-methods.md
+        - name: VS Code における Stream Analytics の詳細
+          href: vs-code-how-to.md
     - name: トラブルシューティング
       items:
         - name: 入力

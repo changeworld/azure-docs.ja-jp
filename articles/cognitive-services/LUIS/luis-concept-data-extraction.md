@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526291"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150695"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -172,34 +172,6 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 |--|--|--|
 |シンプル エンティティ|`Customer`|`bob jones`|
 
-## <a name="hierarchical-entity-data"></a>階層構造エンティティ データ
-
-**階層エンティティは最終的に非推奨になります。エンティティのサブタイプを決定するには、階層エンティティではなく、[エンティティ ロール](luis-concept-roles.md)を使用します。**
-
-[階層構造](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 子は、コンテキストによって識別されます。 テキストの完全一致を使用して親子関係を見つけようとしている場合は、[リスト](#list-entity-data) エンティティを使用してください。
-
-`book 2 tickets to paris`
-
-前の発話で、`paris` には、`Location` 階層構造エンティティの子 `Location::ToLocation` というラベルが付けられます。
-
-エンドポイントから返されるデータには、エンティティ名と子の名前、発話から検出されたテキスト、検出されたテキストの場所、およびスコアが含まれます。
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Location::ToLocation",
-    "startIndex": 18,
-    "endIndex": 22,
-    "score": 0.6866132
-  }
-]
-```
-
-|データ オブジェクト|親|子|値|
-|--|--|--|--|
-|階層構造エンティティ|Location|ToLocation|"paris"|
-
 ## <a name="composite-entity-data"></a>複合エンティティ データ
 [複合](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 たとえば、次の発話で、事前構築済みの `number` と `Location::ToLocation` の複合エンティティを考えてみましょう。
 
@@ -212,53 +184,54 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 複合エンティティは、`compositeEntities` 配列で返され、その複合内のすべてのエンティティも、`entities` 配列で返されます。
 
 ```JSON
-  "entities": [
+
+"entities": [
     {
-      "entity": "paris",
-      "type": "Location::ToLocation",
-      "startIndex": 18,
-      "endIndex": 22,
-      "score": 0.956998169
+    "entity": "2 tickets to cairo",
+    "type": "ticketInfo",
+    "startIndex": 0,
+    "endIndex": 17,
+    "score": 0.67200166
     },
     {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 5,
-      "endIndex": 5,
-      "resolution": {
+    "entity": "2",
+    "type": "builtin.number",
+    "startIndex": 0,
+    "endIndex": 0,
+    "resolution": {
+        "subtype": "integer",
         "value": "2"
-      }
+    }
     },
     {
-      "entity": "2 tickets to paris",
-      "type": "Order",
-      "startIndex": 5,
-      "endIndex": 22,
-      "score": 0.7714499
+    "entity": "cairo",
+    "type": "builtin.geographyV2",
+    "startIndex": 13,
+    "endIndex": 17
     }
-  ],
-  "compositeEntities": [
+],
+"compositeEntities": [
     {
-      "parentType": "Order",
-      "value": "2 tickets to paris",
-      "children": [
+    "parentType": "ticketInfo",
+    "value": "2 tickets to cairo",
+    "children": [
         {
-          "type": "builtin.number",
-          "value": "2"
+        "type": "builtin.geographyV2",
+        "value": "cairo"
         },
         {
-          "type": "Location::ToLocation",
-          "value": "paris"
+        "type": "builtin.number",
+        "value": "2"
         }
-      ]
+    ]
     }
-  ]
+]
 ```    
 
 |データ オブジェクト|エンティティ名|値|
 |--|--|--|
 |事前構築済みのエンティティ - number|"builtin.number"|"2"|
-|階層構造エンティティ - Location|"Location::ToLocation"|"paris"|
+|事前構築済みエンティティ - GeographyV2|"Location::ToLocation"|"paris"|
 
 ## <a name="list-entity-data"></a>リスト エンティティ データ
 
@@ -268,8 +241,8 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 
 |リスト項目|項目のシノニム|
 |---|---|
-|シアトル|sea-tac、sea、98101、206、+1 |
-|パリ|cdg、roissy、ory、75001, 1, +33|
+|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
+|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
 
 `book 2 tickets to paris`
 
@@ -441,7 +414,7 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 
 ### <a name="names-of-places"></a>場所の名前
 
-場所の名前は、設定されており、市区町村、郡、州、都道府県、国などがあります。 位置情報を抽出するには、事前構築済みエンティティ **[geographyV2](luis-reference-prebuilt-geographyv2.md)** を使用します。
+場所の名前には、市区町村、郡、州、都道府県、国/地域などの既知の名前が設定されています。 位置情報を抽出するには、事前構築済みエンティティ **[geographyV2](luis-reference-prebuilt-geographyv2.md)** を使用します。
 
 ### <a name="new-and-emerging-names"></a>新しい名前
 

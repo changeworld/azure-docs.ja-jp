@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792822"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232479"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>請求およびコスト管理の自動化シナリオ
 
@@ -85,9 +85,9 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 -   [Unrated Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)):Azure による測定/課金の前に、生の使用状況情報が取得されます。
 
 ### <a name="billing"></a>課金
--   [Billing Periods API](https://docs.microsoft.com/rest/api/billing/billingperiods):分析する請求期間を、その期間の請求書 ID と共に決定します。 Invoices API で請求書 ID を使用できます。
+-   [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods):分析する請求期間を、その期間の請求書 ID と共に決定します。 Invoices API で請求書 ID を使用できます。
 
--   [Invoices API](https://docs.microsoft.com/rest/api/billing/invoices):ある請求期間に対する PDF 形式の請求書のダウンロード URL が取得されます。
+-   [Invoices API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices):ある請求期間に対する PDF 形式の請求書のダウンロード URL が取得されます。
 
 ### <a name="enterprise-consumption"></a>Enterprise consumption
 以下の API は Enterprise 専用です。
@@ -126,7 +126,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Invoice API と Usage Details API の違いは何ですか?
 これらの API は、同じデータの異なるビューを提供します。
 
-- [Invoice API](https://docs.microsoft.com/rest/api/billing/invoices) は、Web Direct のお客様専用です。 各測定の種類の集計料金に基づいた請求の毎月のまとめが提供されます。 
+- [Invoice API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) は、Web Direct のお客様専用です。 各測定の種類の集計料金に基づいた請求の毎月のまとめが提供されます。 
 
 - [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails) では、毎日の使用状況/コスト レコードの詳細が提供されます。 Enterprise と Web Direct 両方のお客様が使用できます。
 

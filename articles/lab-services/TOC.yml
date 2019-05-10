@@ -64,26 +64,34 @@
   items:
     - name: クラスルーム ラボ
       items:
-        - name: ラボ アカウントの管理
-          href: classroom-labs/how-to-manage-lab-accounts.md
-        - name: クラスルーム ラボの管理
-          href: classroom-labs/how-to-manage-classroom-labs.md
-        - name: テンプレートの設定と公開
-          href: classroom-labs/how-to-create-manage-template.md
-        - name: 使用の構成と制御
-          href: classroom-labs/how-to-configure-student-usage.md
-        - name: クラスルーム ラボへのアクセス
-          href: classroom-labs/how-to-use-classroom-lab.md
-        - name: スケジュールの作成と管理
-          href: classroom-labs/how-to-create-schedules.md
-        - name: テンプレート VM 内に複数の VM を備えた環境を作成する
-          href: classroom-labs/how-to-enable-multi-vm-environment.md
-        - name: ピア仮想ネットワークにラボを接続する
-          href: classroom-labs/how-to-connect-peer-virtual-network.md
-        - name: 共有イメージ ギャラリーを接続して使用する
-          href: classroom-labs/how-to-use-shared-image-gallery.md
-        - name: Linux のリモート デスクトップ接続を有効にする
-          href: classroom-labs/how-to-enable-remote-desktop-linux.md
+        - name: ラボ アカウントを作成および構成する
+          items:
+            - name: ラボ アカウントを作成および管理する
+              href: classroom-labs/how-to-manage-lab-accounts.md
+            - name: ラボ アカウントを構成する
+              href: classroom-labs/how-to-configure-lab-accounts.md
+            - name: ピア仮想ネットワークにラボを接続する
+              href: classroom-labs/how-to-connect-peer-virtual-network.md
+            - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
+              href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+        - name: クラスルーム ラボを作成、構成、使用する
+          items:
+            - name: クラスルーム ラボを作成して管理する
+              href: classroom-labs/how-to-manage-classroom-labs.md
+            - name: テンプレートの設定と公開
+              href: classroom-labs/how-to-create-manage-template.md
+            - name: 使用の構成と制御
+              href: classroom-labs/how-to-configure-student-usage.md
+            - name: クラスルーム ラボへのアクセス
+              href: classroom-labs/how-to-use-classroom-lab.md
+            - name: スケジュールの作成と管理
+              href: classroom-labs/how-to-create-schedules.md
+            - name: テンプレート VM 内に複数の VM を備えた環境を作成する
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
+            - name: 共有イメージ ギャラリーを使用する
+              href: classroom-labs/how-to-use-shared-image-gallery.md
+            - name: Linux のリモート デスクトップ接続を有効にする
+              href: classroom-labs/how-to-enable-remote-desktop-linux.md
     - name: DevTest Labs
       items:
         - name: ラボ仮想マシンのリソース グループを指定する
@@ -166,12 +174,16 @@
               href: connect-environment-lab-virtual-network.md
             - name: 環境を Azure DevOps CI/CD パイプラインに統合する
               href: integrate-environments-devops-pipeline.md
+            - name: サービスとしてのプラットフォーム (PaaS) サービスの使用
+              href: use-paas-services.md
         - name: ラボへのアクセスのセキュリティ保護
           items:
             - name: ラボの所有者とユーザーを追加する
               href: devtest-lab-add-devtest-user.md
             - name: カスタム ロールでのアクセス許可のカスタマイズ
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+            - name: ラボ ユーザーの追加の自動化
+              href: automate-add-lab-user.md
         - name: ラボの構成
           items:
             - name: ポリシーとスケジュールの設定

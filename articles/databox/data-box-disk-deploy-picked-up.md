@@ -1,20 +1,20 @@
 ---
-title: Microsoft Azure Data Box Disk の返送| Microsoft Docs
+title: Azure Data Box Disk の返送に関するチュートリアル | Microsoft Docs
 description: このチュートリアルでは、Azure Data Box Disk を Microsoft に返送する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425952"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150764"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Disk の返送と Azure へのデータ アップロードの確認
 
@@ -54,7 +54,12 @@ ms.locfileid: "59425952"
     - デバイスにラベルを貼り付けます。
 
 2. 梱包箱を封印し、返送ラベルが見えることを確認します。
-3. UPS で集荷のスケジュールを設定します。
+3. UPS で集荷のスケジュールを設定します。 集荷のスケジュールを設定するには:
+
+    - 最寄りの UPS (国固有のフリー ダイヤル) に連絡します。
+    - 電話で、印刷ラベルに表示されている返送追跡番号を伝えます。
+    - 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
+    - 集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box Disk を持ち込むこともできます。
 
 
 ### <a name="pick-up-in-europe"></a>ヨーロッパで集荷する

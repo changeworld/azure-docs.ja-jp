@@ -58,6 +58,8 @@
       items:
         - name: データ収集
           href: security-center-enable-data-collection.md
+        - name: IaaS 向けの Advanced Data Security
+          href: security-center-iaas-advanced-data.md
         - name: 組み込みのセキュリティ ポリシー
           href: security-center-policy-definitions.md
         - name: 電子メール通知
@@ -168,6 +170,8 @@
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=security-center'
+    - name: 機能と API の廃止 (2019 年 7 月)
+      href: security-center-features-retirement-july2019.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

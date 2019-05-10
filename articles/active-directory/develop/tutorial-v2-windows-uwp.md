@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bd57b3d41ad7c670b5423f10a9c93b55e87d757
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 448858efeaae4c3e2a41d41181e9ec74b03223f6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522794"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138251"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -334,7 +334,9 @@ ms.locfileid: "59522794"
    - **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの **[概要]** ページで、**[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 Visual Studio に戻って **MainPage.xaml.cs** を開き、ClientId の値を、先ほど記録しておいたアプリケーション ID に置き換えます。
 1. アプリのページの一覧から **[認証]** を選択します。
-   - **[リダイレクト URI]** | **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションで、**[urn:ietf:wg:oauth:2.0:oob]** をオンにします
+   1. **[リダイレクト URI]** セクションの、リダイレクト URI の一覧で:
+   1. **[種類]** 列で、**[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
+   1. **[リダイレクト URI]** 列に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。
 1. **[保存]** を選択します。
 1. アプリのページの一覧から **[API のアクセス許可]** を選択します
    - **[アクセス許可の追加]** をクリックします。さらに、

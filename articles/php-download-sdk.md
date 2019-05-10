@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
-ms.openlocfilehash: cfcf908145e8a384782953e045f9e10fd3c0e8f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639471"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411587"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
 
@@ -81,17 +81,17 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 
 詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)を参照してください。
 
-[install-php]: http://www.php.net/manual/en/install.php
+[install-php]: https://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
-[composer-phar]: http://getcomposer.org/composer.phar
-[nodejs-org]: http://nodejs.org/
+[composer-phar]: https://getcomposer.org/composer.phar
+[nodejs-org]: https://nodejs.org/
 [install-node-linux]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-[download-wpi]: http://go.microsoft.com/fwlink/?LinkId=253447
-[mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
-[blob-service]: http://go.microsoft.com/fwlink/?LinkId=252714
-[table-service]: http://go.microsoft.com/fwlink/?LinkId=252715
-[queue-service]: http://go.microsoft.com/fwlink/?LinkId=252716
-[azure cli]: http://go.microsoft.com/fwlink/?LinkId=252717
-[powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
-[php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
-[install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[download-wpi]: https://go.microsoft.com/fwlink/?LinkId=253447
+[mac-installer]: https://go.microsoft.com/fwlink/?LinkId=252249
+[blob-service]: https://go.microsoft.com/fwlink/?LinkId=252714
+[table-service]: https://go.microsoft.com/fwlink/?LinkId=252715
+[queue-service]: https://go.microsoft.com/fwlink/?LinkId=252716
+[azure cli]: https://go.microsoft.com/fwlink/?LinkId=252717
+[powershell-tools]: https://go.microsoft.com/fwlink/?LinkId=252718
+[php-sdk-github]: https://go.microsoft.com/fwlink/?LinkId=252719
+[install-git]: https://git-scm.com/book/en/Getting-Started-Installing-Git

@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f85b0088fac97f4b9f2dd2835e3052cb598a987
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078314"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142758"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
+
+Azure Notebooks を使用して、機械学習モジュールを開発し、Azure IoT Edge を実行している Linux デバイスにデプロイします。 
 
 IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure Machine Learning service の詳細については、[Azure Machine Learning に関するドキュメント](../machine-learning/service/how-to-deploy-to-iot.md)を参照してください。
 
@@ -51,58 +53,12 @@ Azure IoT Edge デバイス:
    * ワークスペース名、リソース グループ、およびサブスクリプション ID をメモしておきます。 これらの値はすべて、Azure portal のワークスペースの概要で確認できます。 チュートリアルの後半でこれらの値を使用して、ワークスペース リソースに Azure ノートブックを接続します。 
 
 
-### <a name="disable-process-identification"></a>プロセス ID を無効にする
-
->[!NOTE]
->
-> プレビュー段階の Azure Machine Learning では、IoT Edge で既定で有効になっているプロセス ID セキュリティ機能はサポートされていません。
-> これを無効にする手順は次のとおりです。 ただし、これは、運用環境での使用には適していません。 これらの手順は Linux デバイスでのみ必要になります。 
-
-IoT Edge デバイス上でプロセス ID を無効にするには、IoT Edge デーモン構成の **connect** セクションで、**workload_uri** と **management_uri** の IP アドレスとポートを指定する必要があります。
-
-最初に、IP アドレスを取得します。 コマンド ラインで「`ifconfig`」と入力し、**docker0** インターフェイスの IP アドレスをコピーします。
-
-IoT Edge デーモン構成ファイルを編集します。
-
-```cmd/sh
-sudo nano /etc/iotedge/config.yaml
-```
-
-構成の **connect** セクションをお使いの IP アドレスで更新します。 例: 
-```yaml
-connect:
-  management_uri: "http://172.17.0.1:15580"
-  workload_uri: "http://172.17.0.1:15581"
-```
-
-構成の **listen** セクションに同じアドレスを入力します。 例: 
-
-```yaml
-listen:
-  management_uri: "http://172.17.0.1:15580"
-  workload_uri: "http://172.17.0.1:15581"
-```
-
-構成ファイルを保存して閉じます｡
-
-management_uri アドレスで環境変数 IOTEDGE_HOST を作成します (永続的に設定するには、それを `/etc/environment` に追加します)。 例: 
-
-```cmd/sh
-export IOTEDGE_HOST="http://172.17.0.1:15580"
-```
-
-IoT Edge サービスを再起動して、変更を反映させます。
-
-```cmd/sh
-sudo systemctl restart iotedge
-```
-
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Azure Machine Learning モジュールを作成してデプロイする
 
 このセクションでは、トレーニング済みの機械学習モデル ファイルを Azure Machine Learning service コンテナーに変換します。 Docker イメージに必要なすべてのコンポーネントは、[Azure IoT Edge 用 AI ツールキットの Git リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)にあります。 以下の手順に従って、そのリポジトリを Microsoft Azure Notebooks にアップロードしてコンテナーを作成し、それを Azure Container Registry にプッシュします。
 
 
-1. Azure Notebooks プロジェクトに移動します。 [Azure portal](https://portal.azure.com) の Azure Machine Learning service ワークスペースから、または Azure アカウントで [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) にサインインすることでそれらを取得できます。
+1. Azure Notebooks プロジェクトに移動します。 [Azure portal](https://portal.azure.com) の Azure Machine Learning service ワークスペースから、またはご自分の Azure アカウントを使用して [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) にサインインすることで、そこに移動できます。
 
 2. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** を選択します。
 
@@ -131,7 +87,7 @@ sudo systemctl restart iotedge
     >[!TIP]
     >異常検出チュートリアル ノートブックのセルの一部は省略可能です。IoT ハブなど、一部のユーザーが持っている、あるいはまだ持っていない可能性のあるリソースが作成されるためです。 最初のセルに既存のリソース情報を配置する場合、新しいリソースを作成するセルを実行すると、エラーが発生します。これは、Azure では重複するリソースが作成されないためです。 これは問題ありません。エラーを無視することも、これらの省略可能なセクションをすべてスキップすることもできます。 
 
-ノートブックのすべての手順が完了すると、異常検出モデルをトレーニングし、それを Docker コンテナー イメージとして構築し、そのイメージを Azure Container Registry にプッシュしたことになります。 これで、モデルをテストし、最後に IoT Edge デバイスにデプロイしました。 
+ノートブック内のすべての手順を完了することで、異常検出モデルをトレーニングし、それを Docker コンテナー イメージとして構築し、そのイメージを Azure Container Registry にプッシュしました。 これで、モデルをテストし、最後に IoT Edge デバイスにデプロイしました。 
 
 ## <a name="view-container-repository"></a>コンテナー リポジトリを表示する
 
@@ -151,7 +107,7 @@ sudo systemctl restart iotedge
 
    これらの資格情報は、レジストリからコンテナー イメージをプルするアクセス許可を IoT Edge デバイスに付与するために、配置マニフェストに含めることができます。 
 
-これで、Machine Learning コンテナー イメージの格納場所がわかりました。 次のセクションでは、IoT Edge デバイスにデプロイされたモジュールとして、どのように実行されるかを確認する手順について説明します。 
+これで、Machine Learning コンテナー イメージの格納場所がわかりました。 次のセクションでは、お使いの IoT Edge デバイス上でモジュールとして実行されているコンテナーを確認する手順について説明します。 
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 

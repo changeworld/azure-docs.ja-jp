@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB アカウントに IP ファイアウォールを構成する
 description: Azure Cosmos DB データベース アカウント上でファイアウォールをサポートするために IP アクセス制御ポリシーを構成する方法について説明します。
-author: kanshiG
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: govindk
-ms.openlocfilehash: 26f2131fd62ddc83c2a6d93c4cff557402a88463
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: sample
+ms.date: 05/06/2019
+ms.author: mjbrown
+ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281116"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068717"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -32,7 +32,7 @@ IP アクセス制御を有効にすると、Azure portal で IP アドレス、
 > [!NOTE]
 > ご利用の Azure Cosmos DB アカウントの IP アクセス制御ポリシーを有効にすると、IP アドレス範囲の許可リストに入っていないマシンからご利用の Azure Cosmos DB アカウントへの要求はすべてブロックされます。 アクセス制御の整合性を確保するために、ポータルから Azure Cosmos DB リソースを参照することもブロックされます。
 
-### <a name="allow-requests-from-the-azure-portal"></a>Azure portal からの要求を許可する 
+### <a name="allow-requests-from-the-azure-portal"></a>Azure portal からの要求を許可する
 
 IP アクセス制御ポリシーをプログラムで有効にする場合は、アクセスを維持するために、Azure Portal の IP アドレスを **ipRangeFilter** プロパティに追加する必要があります。 ポータルの IP アドレスは次のとおりです。
 
@@ -80,7 +80,7 @@ Azure では、Azure Cosmos DB を使用して中間層のサービス ロジッ
 
 ### <a name="requests-from-virtual-machines"></a>仮想マシンからの要求
 
-Azure Cosmos DB を使用する中間層サービスのホスティングには、[仮想マシン](https://azure.microsoft.com/services/virtual-machines/)または[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用することもできます。 仮想マシンからのアクセスを許可するようにご利用の Cosmos DB アカウントを構成するには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことで、仮想マシンや仮想マシン スケール セットのパブリック IP アドレスを、ご利用の Azure Cosmos DB アカウントで許可された IP アドレスの 1 つとして構成する必要があります。 
+Azure Cosmos DB を使用する中間層サービスのホスティングには、[仮想マシン](https://azure.microsoft.com/services/virtual-machines/)または[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用することもできます。 仮想マシンからのアクセスを許可するようにご利用の Cosmos DB アカウントを構成するには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことで、仮想マシンや仮想マシン スケール セットのパブリック IP アドレスを、ご利用の Azure Cosmos DB アカウントに許可されている IP アドレスの 1 つとして構成する必要があります。 
 
 仮想マシンの IP アドレスは Azure portal で取得できます。次のスクリーンショットを参照してください。
 
@@ -138,6 +138,37 @@ az cosmosdb update \
       --ip-range-filter "183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
 ```
 
+## <a id="configure-ip-firewall-ps"></a>PowerShell を使用して IP アクセス制御ポリシーを構成する
+
+次のスクリプトでは、IP アクセス制御を使用して Azure Cosmos DB アカウントを作成する方法が示されています。
+
+```azurepowershell-interactive
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "myaccountname"
+
+$locations = @(
+    @{ "locationName"="West US"; "failoverPriority"=0 },
+    @{ "locationName"="East US"; "failoverPriority"=1 }
+)
+
+# Add local machine's IP address to firewall, InterfaceAlias is your Network Adapter's name
+$ipRangeFilter = Get-NetIPConfiguration | Where-Object InterfaceAlias -eq "Ethernet 2" | Select-Object IPv4Address
+
+$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+
+$CosmosDBProperties = @{
+    "databaseAccountOfferType"="Standard";
+    "locations"=$locations;
+    "consistencyPolicy"=$consistencyPolicy;
+    "ipRangeFilter"=$ipRangeFilter
+}
+
+Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $accountName -PropertyObject $CosmosDBProperties
+```
+
 ## <a id="troubleshoot-ip-firewall"></a>IP アクセス制御ポリシーに関する問題のトラブルシューティング
 
 次のオプションを使用して IP アクセス制御ポリシーに関する問題のトラブルシューティングを行うことができます。 
@@ -161,5 +192,4 @@ Azure Cosmos DB 用のサービス エンドポイントが有効にされてい
 
 * [ご利用の Azure Cosmos DB アカウントへの仮想ネットワークおよびサブネットのアクセス制御](vnet-service-endpoint.md)
 * [Azure Cosmos DB アカウント用の仮想ネットワークとサブネット ベースのアクセスを構成する](how-to-configure-vnet-service-endpoint.md)
-
 

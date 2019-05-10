@@ -1,144 +1,126 @@
 ---
-title: Azure で初めての Python 関数を作成する
+title: Azure で HTTP によってトリガーされる関数を作成する
 description: Azure Functions Core Tools と Azure CLI を使用して、Azure で初めての Python 関数を作成する方法について説明します。
 services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 08/29/2018
+ms.date: 04/24/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: af684a4fcc3a70326c1a57cb10a39204b4fd12dc
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438752"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143069"
 ---
-# <a name="create-your-first-python-function-in-azure-preview"></a>Azure で初めての Python 関数を作成する (プレビュー)
+# <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
-このクイック スタート記事では、Linux 上で動作する初めての[サーバーレス](https://azure.com/serverless) Python 関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。 関数アプリを Linux 上で実行するためのプレビューに関する考慮事項の詳細については、[Linux 上の関数に関するこちらの記事](https://aka.ms/funclinux)を参照してください。
+この記事では、コマンドライン ツールを使用し、Azure Functions で実行される Python プロジェクトを作成する方法を紹介します。 作成する関数は、HTTP 要求によってトリガーされます。 最後に、プロジェクトを公開し、Azure で[サーバーレス関数](functions-scale.md#consumption-plan)として実行します。
 
-次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。
+この記事は、Azure Functions の 2 つのクイックスタートの 1 つ目です。 この記事を終えたら、自分の関数に [Azure Storage キュー出力バインディングを追加します](functions-add-output-binding-storage-queue-python.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
-ローカルでビルドしてテストするには、以下を行う必要があります。
+始める前に、以下のものを用意する必要があります。
 
 + [Python 3.6](https://www.python.org/downloads/) のインストール。
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 2.2.70 以降のインストール (.NET Core 2.x SDK が必要)。
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降をインストールします。
 
-Azure に発行して実行するには:
++ [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.x 以降をインストールします。
 
-+ [Azure CLI]( /cli/azure/install-azure-cli) バージョン 2.x 以降をインストールします。
++ 有効な Azure サブスクリプション
 
-+ アクティブな Azure サブスクリプションが必要です。
-  [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-and-activate-a-virtual-environment"></a>仮想環境を作成してアクティブにする
 
-関数プロジェクトを作成するには、Python 3.6 仮想環境で作業する必要があります。 次のコマンドを実行して、`.env` という名前の仮想環境を作成してアクティブにします。
+Python 関数をローカルで開発し、テストするには、Python 3.6 環境で作業する必要があります。 次のコマンドを実行して、`.env` という名前の仮想環境を作成してアクティブにします。
+
+### <a name="bash-or-a-terminal-window"></a>Bash またはターミナル ウィンドウ:
 
 ```bash
-# In Bash
 python3.6 -m venv .env
 source .env/bin/activate
+```
 
-# In PowerShell
+### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell または Windows コマンド プロンプト:
+
+```powershell
 py -3.6 -m venv .env
 .env\scripts\activate
 ```
 
+残りのコマンドは仮想環境内で実行されます。
+
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
-次に、ローカル関数プロジェクトを作成できます。 このディレクトリは、Azure 上の関数アプリに相当します。 同じローカル構成とホスティング構成を共有する複数の関数を含めることができます。
+Functions プロジェクトは、Azure の関数アプリに相当します。 同じローカル構成とホスティング構成を共有する複数の関数を使用できます。
 
-コマンド プロンプトまたはターミナル ウィンドウで、次のコマンドを実行します。
+仮想環境で次のコマンドを実行します。worker ランタイムとして **python** を選択します。
 
-```bash
+```command
 func init MyFunctionProj
 ```
 
-目的のランタイムとして **python** を選択します。
+_MyFunctionProj_ という名前のフォルダーが作成されます。これには次の 3 つのファイルが含まれています。
 
-```output
-Select a worker runtime:
-1. dotnet
-2. node
-3. python
-```
+* `local.settings.json` は、ローカルで実行するとき、アプリ設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。
+* `requirements.txt` には、Azure に公開するときにインストールされるパッケージの一覧が含まれます。
+* `host.json` には、関数アプリのすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。
 
-次のような出力が表示されます。
+新しい MyFunctionProj フォルダーに移動します。
 
-```output
-Installing wheel package
-Installing azure-functions package
-Installing azure-functions-worker package
-Running pip freeze
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Writing /MyFunctionProj/.vscode/extensions.json
-```
-
-_MyFunctionProj_ という名前の新しいフォルダーが作成されます。 続行するには、このフォルダーにディレクトリを変更します。
-
-```bash
+```command
 cd MyFunctionProj
 ```
 
+次に、host.json ファイルを更新し、拡張バンドルを有効にします。  
+
+## <a name="reference-bindings"></a>参照バインディング
+
+拡張バンドルにより、これから先、バインディング拡張を簡単に追加できます。 また、.NET Core 2.x SDK をインストールする必要がなくなります。 拡張バンドルには、バージョン 2.6.1071 以降の Core Tools が必要です。 
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+これでプロジェクトに関数を追加できます。
+
 ## <a name="create-a-function"></a>関数を作成する
 
-関数を作成するには、次のコマンドを実行します。
+プロジェクトに関数を追加するには、次のコマンドを実行します。
 
-```bash
+```command
 func new
 ```
 
-テンプレートとして `HTTP Trigger` を選択し、**関数名**として `HttpTrigger` を指定します。
+**[HTTP トリガー]** テンプレートを選択し、関数の名前として「`HttpTrigger`」と入力し、Enter キーを押します。
 
-```output
-Select a template:
-1. Blob trigger
-2. Cosmos DB trigger
-3. Event Grid trigger
-4. Event Hub trigger
-5. HTTP trigger
-6. Queue trigger
-7. Service Bus Queue trigger
-8. Service Bus Topic trigger
-9. Timer trigger
+_HttpTrigger_ という名前のサブフォルダーが作成されます。これには次のファイルが含まれます。
 
-Choose option: 5
-Function name: HttpTrigger
-```
+* **function.json**: 関数、トリガー、その他のバインディングを定義する構成ファイル。 このファイルを見て、`scriptFile` の値が、関数が含まれるファイルを指していることを確認します。呼び出しのトリガーとバインディングは `bindings` 配列に定義されています。
 
-次のような出力が表示されます。
+  各バインディングは、方向、型、一意の名前を必要とします。 HTTP トリガーには、[`httpTrigger`](functions-bindings-http-webhook.md#trigger) 型の入力バインディングと、[`http`](functions-bindings-http-webhook.md#output) 型の出力バインディングが与えられます。
 
-```output
-Writing /MyFunctionProj/HttpTrigger/sample.dat
-Writing /MyFunctionProj/HttpTrigger/__init__.py
-Writing /MyFunctionProj/HttpTrigger/function.json
-The function "HttpTrigger" was created successfully from the "HTTP trigger" template.
-```
+* **__init__.py**: HTTP でトリガーされる関数であるスクリプト ファイル。 このスクリプトを見て、それに既定の `main()` が含まれていることを確認します。 トリガーからの HTTP データは、バインディング パラメーターという名前の `req` を利用し、この関数に渡されます。 function.json に定義されている `req` は、[azure.functions.HttpRequest クラス](/python/api/azure-functions/azure.functions.httprequest)のインスタンスです。 
 
-_HttpTrigger_ という名前のサブフォルダーが作成されます。 これには、プライマリ スクリプト ファイルである `__init__.py` と、トリガーの説明とこの関数によって使用されるバインドを記述する `function.json` ファイルが含まれています。 このプログラミング モデルの詳細については、「[Azure Functions Python developer guide](functions-reference-python.md)」(Azure Functions の Python 開発者向けガイド) を参照してください。
+    function.json に `$return` として定義されているリターン オブジェクトは、[azure.functions.HttpResponse クラス](/python/api/azure-functions/azure.functions.httpresponse)のインスタンスです。 詳細については、「[Azure Functions の HTTP トリガーとバインド](functions-bindings-http-webhook.md)」を参照してください。
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
-次のコマンドを使用して、Functions ホストをローカルで実行します。
+次のコマンドでは、Azure にある同じ Azure Functions ランタイムを使用してローカル実行される関数アプリが起動されます。
 
 ```bash
 func host start
 ```
 
-Functions ホストが起動すると、HTTP によってトリガーされる関数の URL が出力されます  (読みやすくするために出力の一部が省略されていることに注意してください)。
+Functions ホストが起動すると、次のような出力が表示されます。この出力は、読みやすいように切り詰められています。
 
 ```output
 
@@ -153,84 +135,57 @@ Functions ホストが起動すると、HTTP によってトリガーされる�
            @@    %%      @@
                 %%
                 %
+
 ...
+
+Content root path: C:\functions\MyFunctionProj
 Now listening on: http://0.0.0.0:7071
 Application started. Press Ctrl+C to shut down.
+
 ...
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/HttpTrigger
+        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+
+[8/27/2018 10:38:27 PM] Host started (29486ms)
+[8/27/2018 10:38:27 PM] Job host started
 ```
 
-出力からご自分の関数の URL をコピーしてブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。
+ランタイム出力から `HttpTrigger` 関数の URL をコピーして、それをブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 ローカルの関数によって返された GET 要求に対するブラウザーでの応答を次に示します。
 
-    http://localhost:7071/api/HttpTrigger?name=<yourname>
+![ブラウザーでローカルにテストする](./media/functions-create-first-function-python/function-test-local-browser.png)
 
-次のスクリーン ショットに、ブラウザーからトリガーされたときの関数の応答を示します。
-
-![テスト](./media/functions-create-first-function-python/function-test-local-browser.png)
-
-これで、関数アプリを作成して Azure に発行するために必要なその他のリソースの準備が整いました。
+ローカルで関数を実行したので、これで、Azure で関数アプリとその他の必要なリソースを作成できます。
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
 [!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
 
-## <a name="create-a-linux-function-app-in-azure"></a>Azure に Linux の関数アプリを作成する
+## <a name="create-a-function-app-in-azure"></a>Azure で関数アプリを作成する
 
-関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。 [az functionapp create](/cli/azure/functionapp) コマンドを使用して、**Linux 上で動作する Python 関数アプリ**を作成します。
+関数アプリには、関数コードを実行するための環境を指定します。 これにより、リソースの管理、デプロイ、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-`<app_name>` プレースホルダーに一意の関数アプリ名を、ストレージ アカウント名として `<storage_name>` を使用して、次のコマンドを実行します。 `<app_name>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。
+`<APP_NAME>` プレースホルダーに一意の関数アプリ名を、ストレージ アカウント名として `<STORAGE_NAME>` を使用して、次のコマンドを実行します。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 この名前は、Azure のすべてのアプリで一意である必要があります。
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
 --consumption-plan-location westeurope  --runtime python \
---name <app_name> --storage-account  <storage_name>
+--name <APP_NAME> --storage-account  <STORAGE_NAME>
 ```
 
 > [!NOTE]
-> Linux 以外の App Service アプリを含んだ `myResourceGroup` という名前のリソース グループが既にある場合は、別のリソース グループを使用する必要があります。 Windows アプリと Linux アプリの両方を同じリソース グループでホストすることはできません。  
+> Linux アプリと Windows アプリは同じリソース グループ内でホストすることができません。 Windows の関数アプリまたは Web アプリで `myResourceGroup` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
 
-関数アプリが作成されると、次のメッセージが表示されます。
+これで、Azure でローカル関数プロジェクトを関数アプリに公開できます。
 
-```output
-Your serverless Linux function app 'myfunctionapp' has been successfully created.
-To active this function app, publish your app content using Azure Functions Core Tools or the Azure portal.
-```
-
-これで、ローカル関数プロジェクトを Azure 上の関数アプリに対して発行する準備が整いました。
-
-## <a name="deploy-the-function-app-project-to-azure"></a>Azure に関数アプリのプロジェクトをデプロイする
-
-Azure Functions Core Tools を使用して、次のコマンドを実行します。 `<app_name>` には、前の手順で作成したアプリの名前を指定します。
-
-```bash
-func azure functionapp publish <app_name>
-```
-
-次のような出力が表示されます (読みやすくするために一部が省略されています)。
-
-```output
-Getting site publishing info...
-
-...
-
-Preparing archive...
-Uploading content...
-Upload completed successfully.
-Deployment completed successfully.
-Syncing triggers...
-```
+[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
-[!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
-
 ## <a name="next-steps"></a>次の手順
 
-Python を使用した Azure Functions の開発の詳細を確認します。
+HTTP でトリガーされる関数で Python 関数プロジェクトを作成し、ローカル コンピューターでそれを実行し、Azure にデプロイしました。 次は以下の方法で関数を拡張します。
 
 > [!div class="nextstepaction"]
-> [Azure Functions の Python 開発者ガイド](functions-reference-python.md)
-> [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)
+> [Azure Storage キュー出力バインドを追加する](functions-add-output-binding-storage-queue-python.md)

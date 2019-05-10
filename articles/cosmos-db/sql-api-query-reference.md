@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283649"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145197"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
 
@@ -31,7 +31,8 @@ Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデ
 SELECT <select_specification>   
     [ FROM <from_specification>]   
     [ WHERE <filter_condition> ]  
-    [ ORDER BY <sort_specification> ]  
+    [ ORDER BY <sort_specification> ] 
+    [ OFFSET <offset_amount> LIMIT <limit_amount>]
 ```  
   
  **解説**  
@@ -42,6 +43,8 @@ SELECT <select_specification>
 -   [FROM 句](#bk_from_clause)    
 -   [WHERE 句](#bk_where_clause)    
 -   [ORDER BY 句](#bk_orderby_clause)  
+-   [OFFSET LIMIT 句](#bk_offsetlimit_clause)
+
   
 SELECT ステートメント内の句は、上の順序で並べられている必要があります。 オプションの句はどれも省略できます。 オプションの句を使用している場合、正しい順序で現れる必要があります。  
   
@@ -52,7 +55,8 @@ SELECT ステートメント内の句は、上の順序で並べられている�
 1.  [FROM 句](#bk_from_clause)  
 2.  [WHERE 句](#bk_where_clause)  
 3.  [ORDER BY 句](#bk_orderby_clause)  
-4.  [SELECT 句](#bk_select_query)  
+4.  [SELECT 句](#bk_select_query)
+5.  [OFFSET LIMIT 句](#bk_offsetlimit_clause)
 
 これは、構文で表示される順序と異なることに注意してください。 処理済みの句によって導入されるすべての新しいシンボルが表示され、後で処理される句で使用できるような順序になっています。 たとえば、FROM 句で宣言されている別名は、WHERE 句と SELECT 句でアクセス可能です。  
 
@@ -76,8 +80,8 @@ SELECT <select_specification>
 
 <select_specification> ::=   
       '*'   
-      | <object_property_list>   
-      | VALUE <scalar_expression> [[ AS ] value_alias]  
+      | [DISTINCT] <object_property_list>   
+      | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
 <object_property_list> ::=   
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
@@ -101,7 +105,11 @@ SELECT <select_specification>
 - `VALUE`  
 
   完全な JSON オブジェクトではなく JSON 値を取得することを指定します。 これは、`<property_list>` とは異なり、オブジェクト内の投影された値をラップしません。  
+ 
+- `DISTINCT`
   
+  投影されたプロパティの重複を削除するよう指定します。  
+
 - `<scalar_expression>`  
 
   計算する値を表す式。 詳細については、「[スカラー式](#bk_scalar_expressions)」セクションを参照してください。  
@@ -341,23 +349,23 @@ WHERE <filter_condition>
 ```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
-<sort_expression> ::= <scalar_expression> [ASC | DESC]  
+<sort_expression> ::= {<scalar_expression> [ASC | DESC]} [ ,...n ]  
   
 ```  
-  
+
  **引数**  
   
 - `<sort_specification>`  
   
-   クエリの結果セットの並べ替えの条件にするプロパティまたは式を指定します。 並べ替え列は、名前または列の別名として指定できます。  
+   クエリの結果セットの並べ替えの条件にするプロパティまたは式を指定します。 並べ替え列は、名前またはプロパティの別名として指定できます。  
   
-   複数の並べ替え列を指定することができます。 列名は一意である必要があります。 ORDER BY 句の並べ替え列の順序は、並べ替えられた結果セットの構成を定義します。 つまり、結果セットは最初のプロパティで並べ替えられ、その並べ替えられたリストが 2 番目のプロパティで並べ替えられ、以下同様に続きます。  
+   複数のプロパティを指定することができます。 プロパティ名は一意である必要があります。 ORDER BY 句の並べ替えプロパティの順序は、並べ替えられた結果セットの構成を定義します。 つまり、結果セットは最初のプロパティで並べ替えられ、その並べ替えられたリストが 2 番目のプロパティで並べ替えられ、以下同様に続きます。  
   
-   ORDER BY 句で参照される列名は、選択リスト内の列にまたはあいまいさのない FROM 句で指定されたテーブルで定義されている列に対応する必要があります。  
+   ORDER BY 句で参照されるプロパティ名は、選択リスト内のプロパティに、またはあいまいさのない FROM 句で指定されたコレクションで定義されているプロパティに対応する必要があります。  
   
 - `<sort_expression>`  
   
-   クエリの結果セットの並べ替えの条件にする 1 つのプロパティまたは式を指定します。  
+   クエリの結果セットの並べ替えの条件にする 1 つ以上のプロパティまたは式を指定します。  
   
 - `<scalar_expression>`  
   
@@ -369,8 +377,34 @@ ORDER BY <sort_specification>
   
   **解説**  
   
-  クエリ文法では、複数のプロパティによる並べ替えがサポートされますが、Cosmos DB クエリ ランタイムでは、1 つのプロパティに対する並べ替えのみがサポートされ、プロパティ名のみが対象となります (計算されるプロパティは対象になりません)。 並べ替えではまた、インデックス作成ポリシーが、プロパティの範囲インデックス、指定された型、および最大有効桁数を含んでいる必要があります。 詳細については、インデックス作成ポリシーに関するドキュメントを参照してください。  
+   ORDER BY 句では、並べ替えるフィールドのインデックスがインデックス作成ポリシーに含まれている必要があります。 Azure Cosmos DB のクエリ ランタイムでは、計算されたプロパティに対してではなく、プロパティ名に対する並べ替えがサポートされています。 Azure Cosmos DB では、複数の ORDER BY プロパティがサポートされています。 複数の ORDER BY プロパティを使ったクエリを実行するには、並べ替えるフィールドに対する[複合インデックス](index-policy.md#composite-indexes)を定義する必要があります。
+
+
+##  <a name=bk_offsetlimit_clause></a> OFFSET LIMIT 句
+
+スキップする項目の数と返す項目の数を指定します。 例については、[OFFSET LIMIT 句の例](how-to-sql-query.md#OffsetLimitClause)を参照してください。
   
+ **構文**  
+  
+```sql  
+OFFSET <offset_amount> LIMIT <limit_amount>
+```  
+  
+ **引数**  
+ 
+- `<offset_amount>`
+
+   クエリの結果でスキップする項目の数を整数で指定します。
+
+
+- `<limit_amount>`
+  
+   クエリ結果に含める項目の数を整数で指定します。
+
+  **解説**  
+  
+  OFFSET LIMIT 句では、OFFSET の数と LIMIT の数の両方が必要です。 省略可能な `ORDER BY` 句を使用すると、順序付けられた値に対してスキップを実行することで結果セットが生成されます。 そうでない場合、クエリでは、決められた順序の値が返されます。
+
 ##  <a name="bk_scalar_expressions"></a>スカラー式  
  スカラー式は、1 つの値を取得するために評価できるシンボルと演算子の組み合わせです。 単純式には、定数、プロパティの参照、配列要素の参照、別名の参照、または関数の呼び出しを指定できます。 単純式は、演算子を使用して複雑な式に結合できます。 例については、[スカラー式の例](how-to-sql-query.md#scalar-expressions)を参照してください。
   
@@ -681,7 +715,8 @@ ORDER BY <sort_specification>
 |[数学関数](#bk_mathematical_functions)|一般に、各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。|  
 |[型チェック関数](#bk_type_checking_functions)|型チェック関数を使用すると、SQL クエリ内の式の型をチェックできます。|  
 |[文字列関数](#bk_string_functions)|文字列関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。|  
-|[配列関数](#bk_array_functions)|配列関数は、配列入力値に対して演算を実行し、数値、ブール値、または配列値を返します。|  
+|[配列関数](#bk_array_functions)|配列関数は、配列入力値に対して演算を実行し、数値、ブール値、または配列値を返します。|
+|[日付と時刻関数](#bk_date_and_time_functions)|日付と時刻関数では、UTC での現在の日付と時刻を、数値のタイムスタンプ (値はミリ秒単位の Unix エポック) または ISO 8601 形式に準拠した文字列という 2 つの形式で取得できます。|
 |[空間関数](#bk_spatial_functions)|空間関数は、空間オブジェクト入力値に対して演算を実行し、数値またはブール値を返します。|  
   
 ###  <a name="bk_mathematical_functions"></a>数学関数  
@@ -2363,13 +2398,13 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
- 結果セットは次のようになります。
+結果セットは次のようになります。
 
 ```
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
- 無効な入力を使用した例を次に示します。 
+無効な入力を使用した例を次に示します。 
    
  配列内に一重引用符を使用した場合は、有効な JSON ではありません。
 クエリ内で有効であっても、有効な配列として解析されません。 配列文字列内の文字列は、"[\\"\\"]" のようにエスケープするか、'[""]' のように一重引用符で囲む必要があります。
@@ -2379,13 +2414,13 @@ SELECT
     StringToArray("['5','6','7']")
 ```
 
- 結果セットは次のようになります。
+結果セットは次のようになります。
 
 ```
 [{}]
 ```
 
- 無効な入力の例を次に示します。
+無効な入力の例を次に示します。
    
  渡された式は JSON 配列として解析されます。次の場合は、配列型として評価されないため、undefined が返されます。
    
@@ -2398,7 +2433,7 @@ SELECT
     StringToArray(undefined)
 ```
 
- 結果セットは次のようになります。
+結果セットは次のようになります。
 
 ```
 [{}]
@@ -2429,7 +2464,7 @@ StringToBoolean(<expr>)
  
  有効な入力を使用した例を次に示します。
 
- 空白は "true" または "false" の前後のみで使用できます。
+空白は "true" または "false" の前後のみで使用できます。
 
 ```  
 SELECT 
@@ -2444,8 +2479,8 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
- 無効な入力を使用した例を次に示します。
- 
+無効な入力を使用した例を次に示します。
+
  ブール値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"true" と "false")。
 
 ```  
@@ -2454,15 +2489,15 @@ SELECT
     StringToBoolean("False")
 ```  
 
- 結果セットは次のようになります。  
+結果セットは次のようになります。  
   
 ```  
 [{}]
 ``` 
 
- 渡された式はブール式として解析されます。これらの入力はブール型として評価されないため、undefined が返されます。
+渡された式はブール式として解析されます。これらの入力はブール型として評価されないため、undefined が返されます。
 
- ```  
+```  
 SELECT 
     StringToBoolean("null"),
     StringToBoolean(undefined),
@@ -2471,7 +2506,7 @@ SELECT
     StringToBoolean(true)
 ```  
 
- 結果セットは次のようになります。  
+結果セットは次のようになります。  
   
 ```  
 [{}]
@@ -2500,8 +2535,8 @@ StringToNull(<expr>)
   
   次の例では、異なる型間で StringToNull がどのように動作するかを示します。 
 
- 有効な入力を使用した例を次に示します。
- 
+有効な入力を使用した例を次に示します。
+
  空白は "null" の前後のみで使用できます。
 
 ```  
@@ -2517,9 +2552,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
- 無効な入力を使用した例を次に示します。
+無効な入力を使用した例を次に示します。
 
- null 値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"null")。
+null 値では大文字と小文字が区別されるので、すべて小文字で記述する必要があります (つまり、"null")。
 
 ```  
 SELECT    
@@ -2533,7 +2568,7 @@ SELECT
 [{}]
 ```  
 
- 渡された式は null 式として解析されます。これらの入力は null 型として評価されないため、undefined が返されます。
+渡された式は null 式として解析されます。これらの入力は null 型として評価されないため、undefined が返されます。
 
 ```  
 SELECT    
@@ -2572,8 +2607,8 @@ StringToNumber(<expr>)
   
   次の例では、異なる型間で StringToNumber がどのように動作するかを示します。 
 
- 空白は数値の前後のみで使用できます。
- 
+空白は数値の前後のみで使用できます。
+
 ```  
 SELECT 
     StringToNumber("1.000000") AS num1, 
@@ -2588,8 +2623,8 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
- JSON で有効な数値は、整数または浮動小数点数である必要があります。
- 
+JSON で有効な数値は、整数または浮動小数点数である必要があります。
+
 ```  
 SELECT   
     StringToNumber("0xF")
@@ -2601,7 +2636,7 @@ SELECT
 {{}}
 ```  
 
- 渡された式は数値式として解析されます。これらの入力は数値型として評価されないため、undefined が返されます。 
+渡された式は数値式として解析されます。これらの入力は数値型として評価されないため、undefined が返されます。 
 
 ```  
 SELECT 
@@ -2643,7 +2678,7 @@ StringToObject(<expr>)
   次の例では、異なる型間で StringToObject がどのように動作するかを示します。 
   
  有効な入力を使用した例を次に示します。
- 
+
 ``` 
 SELECT 
     StringToObject("{}") AS obj1, 
@@ -2652,7 +2687,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
- 結果セットは次のようになります。
+結果セットは次のようになります。
 
 ```
 [{"obj1": {}, 
@@ -2660,40 +2695,40 @@ SELECT
   "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
- 
+
  無効な入力を使用した例を次に示します。
 クエリ内では有効であっても、有効なオブジェクトとして解析されません。 オブジェクト文字列内の文字列は、"{\\"a\\":\\"str\\"}" のようにエスケープするか、'{"a": "str"}' のように一重引用符で囲む必要があります。
 
- 一重引用符で囲んだプロパティ名は有効な JSON ではありません。
+一重引用符で囲んだプロパティ名は有効な JSON ではありません。
 
 ``` 
 SELECT 
     StringToObject("{'a':[1,2,3]}")
 ```
 
- 結果セットは次のようになります。
+結果セットは次のようになります。
 
 ```  
 [{}]
 ```  
 
- 引用符で囲まれていないプロパティ名は有効な JSON ではありません。
+引用符で囲まれていないプロパティ名は有効な JSON ではありません。
 
 ``` 
 SELECT 
     StringToObject("{a:[1,2,3]}")
 ```
 
- 結果セットは次のようになります。
+結果セットは次のようになります。
 
 ```  
 [{}]
 ``` 
 
- 無効な入力を使用した例を次に示します。
- 
+無効な入力を使用した例を次に示します。
+
  渡された式は JSON オブジェクトとして解析されます。これらの入力はオブジェクト型として評価されないため、undefined が返されます。
- 
+
 ``` 
 SELECT 
     StringToObject("}"),
@@ -2798,20 +2833,20 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
- 結果セットは次のようになります。  
+結果セットは次のようになります。  
   
 ```  
 [{"$1":"4lb" },
- {"$1":"32kg"},
- {"$1":"400g" },
- {"$1":"8999mg" }]
+{"$1":"32kg"},
+{"$1":"400g" },
+{"$1":"8999mg" }]
 
 ```  
 次のような入力があるものとします。
 ```
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
- 次の例は、REPLACE などの他の文字列関数を ToString とどのように一緒に使用できるかを示しています。   
+次の例は、REPLACE などの他の文字列関数を ToString とどのように一緒に使用できるかを示しています。   
 ```
 SELECT 
     n.id AS nutrientID,
@@ -2819,14 +2854,14 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
- 結果セットは次のようになります。  
+結果セットは次のようになります。  
  ```
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ``` 
+``` 
  
 ####  <a name="bk_trim"></a> TRIM  
  文字列式の先頭と末尾の空白を削除して返します。  
@@ -2937,7 +2972,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
 配列に指定された値が含まれているかどうかを示すブール値を返します。 コマンド内でブール式を使用して、オブジェクトの部分一致または完全一致を確認できます。 
 
- **構文**  
+**構文**  
   
 ```  
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
@@ -2977,7 +3012,7 @@ SELECT
 [{"b1": true, "b2": false}]  
 ```  
 
- 次の例では、ARRAY_CONTAINS を使用して、配列内 JSON の部分一致を確認する方法を示します。  
+次の例では、ARRAY_CONTAINS を使用して、配列内 JSON の部分一致を確認する方法を示します。  
   
 ```  
 SELECT  
@@ -3085,7 +3120,100 @@ SELECT
            "s7": [] 
 }]  
 ```  
- 
+
+###  <a name="bk_date_and_time_functions"></a> 日付と時刻関数
+ 次のスカラー関数では、UTC での現在の日付と時刻を、数値のタイムスタンプ (値はミリ秒単位の Unix エポック) または ISO 8601 形式に準拠した文字列という 2 つの形式で取得できます。 
+
+|||
+|-|-|
+|[GetCurrentDateTime](#bk_get_current_date_time)|[GetCurrentTimestamp](#bk_get_current_timestamp)||
+
+####  <a name="bk_get_current_date_time"></a> GetCurrentDateTime
+ UTC での現在の日付と時刻を ISO 8601 文字列として返します。
+  
+ **構文**
+  
+```
+GetCurrentDateTime ()
+```
+  
+  **戻り値の型**
+  
+  UTC での現在の日付と時刻を ISO 8601 文字列値として返します。 
+
+  これは YYYY-MM-DDThh:mm:ss.sssZ 形式で表されます。それぞれの意味は次のとおりです。
+  
+  |||
+  |-|-|
+  |YYYY|4 桁の年|
+  |MM|2 桁の月 (例: 01 = 1 月)|
+  |DD|2 桁の日付 (01 から 31)|
+  |T|時間要素の開始を表します|
+  |hh|2 桁の時間 (00 から 23)|
+  |MM|2 桁の分 (00 から 59)|
+  |ss|2 桁の秒 (00 から 59)|
+  |.sss|3 桁の秒の小数部|
+  |Z|UTC (協定世界時) 指定子||
+  
+  ISO 8601 形式の詳細については、「[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)」を参照してください。
+
+  **解説**
+
+  GetCurrentDateTime は非決定論的関数です。 
+  
+  返される結果は UTC (協定世界時) です。
+
+  **例**  
+  
+  次の例は、GetCurrentDateTime 組み込み関数を使用して、UTC での現在の日付と時刻を取得する方法を示しています。
+  
+```  
+SELECT GetCurrentDateTime() AS currentUtcDateTime
+```  
+  
+ 結果セットは次のようになります。
+  
+```  
+[{
+  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+}]  
+```  
+
+####  <a name="bk_get_current_timestamp"></a> GetCurrentTimestamp
+ 1970 年 1 月 1 日木曜日 00 時 00 分 00 秒から経過したミリ秒数を返します。 
+  
+ **構文**  
+  
+```  
+GetCurrentTimestamp ()  
+```  
+  
+  **戻り値の型**  
+  
+  Unix エポックから現在までに経過したミリ秒数を表す数値、つまり 1970 年 1 月 1 日木曜日 00 時 00 分 00 秒から経過したミリ秒数を返します。
+
+  **解説**
+
+  GetCurrentTimestamp は非決定論的関数です。 
+  
+  返される結果は UTC (協定世界時) です。
+
+  **例**  
+  
+  次の例は、GetCurrentTimestamp 組み込み関数を使用して、現在のタイムスタンプを取得する方法を示しています。
+  
+```  
+SELECT GetCurrentTimestamp() AS currentUtcTimestamp
+```  
+  
+ 結果セットは次のようになります。
+  
+```  
+[{
+  "currentUtcTimestamp": 1556916469065
+}]  
+```  
+
 ###  <a name="bk_spatial_functions"></a>空間関数  
  次のスカラー関数は、空間オブジェクト入力値に対して演算を実行し、数値またはブール値を返します。  
   
@@ -3292,7 +3420,7 @@ SELECT ST_ISVALIDDETAILED({
   }  
 }]  
 ```  
-  
+ 
 ## <a name="next-steps"></a>次の手順  
 
 - [Cosmos DB の SQL 構文と SQL クエリ](how-to-sql-query.md)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: c7edc64e6bacfc1ea9c2184e57a384152e02190a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b80ff38e2afb5e9da6227537ea9c483566d03e4d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142483"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232601"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>クイック スタート:.NET を使用して Azure Storage にキューを作成する
 
@@ -145,7 +145,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>接続文字列を解析してみる
 
-サンプルでは最初に、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するため、サンプルでは [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) メソッドが使用されます。 **TryParse** が成功すると、*storageAccount* 変数が初期化され、**true** が返されます。
+サンプルでは最初に、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するため、サンプルでは [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) メソッドが使用されます。 **TryParse** が成功すると、*storageAccount* 変数が初期化され、**true** が返されます。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored

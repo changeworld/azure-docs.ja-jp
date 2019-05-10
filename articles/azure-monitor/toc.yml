@@ -131,6 +131,8 @@
           href: platform/alerts-common-schema.md
         - name: アクション ルール
           href: platform/alerts-action-rules.md
+        - name: 変更の分析
+          href: app/change-analysis.md
     - name: データの視覚化
       href: visualizations.md
     - name: パートナー統合
