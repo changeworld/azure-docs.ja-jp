@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Sentinel の使用時に便�
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d2dcb1eb9132e68bebbe84d81a4e4f17df79f2d3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 52b9d64ebd4ab90d97a417f9296c424b9412aae9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399769"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209671"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Azure Sentinel プレビューの使用に便利なリソース| Preview
 

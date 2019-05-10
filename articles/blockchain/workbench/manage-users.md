@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 2df0fea4d1dbdfb532cff663ceabfef80d61fe45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15babefda36ba37cf6df7820ac888668e4a502be
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994410"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509916"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのユーザーの管理
 
@@ -38,7 +38,7 @@ Blockchain Workbench ユーザーをアプリケーションやロールに割�
 
     ![新しいユーザー](./media/manage-users/add-ad-user.png)
 
-5.  新しいユーザーの必須フィールドに情報を入力します。 **作成**を選択します。
+5.  新しいユーザーの必須フィールドに情報を入力します。 **作成** を選択します。
 
 Azure AD 内のユーザーの管理方法について詳しくは、[Azure AD](../../active-directory/fundamentals/add-users-azure-active-directory.md) ドキュメントをご覧ください。
 

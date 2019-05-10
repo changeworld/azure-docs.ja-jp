@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d22764cfb038bc2021b99d0743f3cbac17d91d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024922"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154300"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -25,22 +25,90 @@ ms.locfileid: "65024922"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
-## <a name="2019-05-02"></a>2019-05-02
+## <a name="2019-05-06"></a>2019-05-06
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-+ ポータルで自動化された ML の実験を作成する
+Azure portal で、次のことが可能になりました。
++ 自動化された ML の実験を作成して実行する 
++ Notebook VM を作成して、サンプルの Jupyter ノートブック、または独自のノートブックを試す。
++ Machine Learning service ワークスペースのまったく新しい作成セクション (プレビュー)。自動化された機械学習、ビジュアル インターフェイス、ホストされている Notebook VM が含まれます
+    + 自動化された機械学習を使用して自動的にモデルを作成する 
+    + ドラッグ アンド ドロップのビジュアル インターフェイスを使用して実験を実行する
+    + Notebook VM を作成してデータの探索、モデルの作成、サービスのデプロイを行う。
++ 実行レポートと実行詳細ページでのライブ グラフとメトリックの更新
++ 実行詳細ページでのログ、出力、スナップショットのファイル ビューアーの更新。
++ 新しくなった、または改善された [実験] タブのレポート作成エクスペリエンス。 
++ Azure Machine Learning service ワークスペースの [概要] ページから config.json ファイルをダウンロードする機能の追加。
++ Azure Databricks ワークスペースからの Machine Learning service ワークスペース作成のサポート 
+
+
+### <a name="notebook-virtual-machine"></a>Notebook Virtual Machine 
+
+Notebook VM は Jupyter ノートブック向けのセキュリティで保護された、エンタープライズ対応のホスティング環境で使用します。ここで、機械学習の実験をプログラミングしたり、モデルを Web エンドポイントとしてデプロイしたり、Python を使用して Azure Machine Learning SDK でサポートされる他のすべての操作を実行したりすることができます。 次のような機能が提供されます。
++ 最新バージョンの Azure Machine Learning SDK と関連パッケージが含まれる、[構成済みのノートブック VM の迅速な起動](quickstart-run-cloud-notebook.md) 。
++ アクセスは、HTTPS、Azure Active Directory の認証と認可など、実績のあるテクノロジによってセキュリティ保護されます。
++ Azure Machine Learning ワークスペースの BLOB ストレージ アカウント内にある、ノートブックとコードの信頼性の高いクラウド ストレージ。 作業内容を失わずに、ノートブックの VM を安全に削除できます。
++ Azure Machine Learning service の機能を使用して探索と実験を行うためにプレインストールされたサンプル ノートブック。
++ Azure VM、すべての種類の VM、すべてのパッケージ、すべてのドライバーの完全なカスタマイズ機能。 
+
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033-released"></a>Azure Machine Learning SDK for Python v1.0.33 がリリースされました。
+
++ [FPGA](concept-accelerate-with-fpgas.md) で Azure ML Hardware Accelerated Models の一般提供が開始されました。
+  + [azureml-accel-models パッケージ](how-to-deploy-fpga-web-service.md)を使用して次のことができるようになりました。
+    + サポートされているディープ ニューラル ネットワーク (ResNet 50、ResNet 152、DenseNet-121、VGG-16、および SSD-VGG) の重み付けトレーニング
+    + サポートされている DNN を使用した転移学習の使用
+    + モデル管理サービスへのモデルの登録と、モデルのコンテナー化
+    + Azure Kubernetes Service (AKS) クラスターの FPGA を使用した Azure VM へのモデルのデプロイ
+  + [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) サーバー デバイスへのコンテナーのデプロイ
+  + この[サンプル](https://github.com/Azure-Samples/aml-hardware-accelerated-models)を使用した gRPC エンドポイントでのデータのスコア付け
+
+### <a name="automated-machine-learning"></a>自動化された機械学習
+
++ パフォーマンスの最適化のため、機能を一掃し、動的に追加されるフィーチャライザーを有効化。 新しいフィーチャライザー: 作業の埋め込み、証拠の重み付け、ターゲット エンコード、テキスト ターゲット エンコード、クラスターの距離
++ 自動化された ML 内でトレーニング/有効な分割を処理するスマート CV
++ わずかなメモリ最適化の変更とランタイムのパフォーマンス向上
++ モデルの説明でのパフォーマンス向上
++ ローカル実行用 ONNX モデルの変換
++ サブサンプリング サポートの追加
++ 終了条件が定義されていない場合のインテリジェントな停止
++ スタッキング アンサンブル
+
++ 時系列予測
+  + 新しい予測関数   
+  + 時系列データに対してローリング オリジンのクロス検証を使用できるようになりました
+  + 時系列の遅れを構成する新機能の追加 
+  + ローリング ウィンドウの集計機能をサポートする新機能の追加
+  + 実験の設定で国番号が定義されている場合の、新しい祝日の検出とフィーチャライザー
+
++ Azure Databricks
+  + 時系列予測と、モデルの説明可能性/解釈可能性機能を有効化しました
+  + 自動化された ML の実験の取り消しと再開 (続行) ができるようになりました
+  + マルチコア処理のサポートを追加しました
+
+### <a name="mlops"></a>MLOps
++ **スコア付けコンテナーのローカル デプロイとデバッグ**<br/> ML モデルをローカルにデプロイして、スコアリング ファイルと依存関係上ですばやく反復できるようになったため、これらが確実に予期したとおりに動作するようになりました。
+
++ **InferenceConfig と Model.deploy() の導入**<br/> モデル デプロイで、エントリ スクリプトが含まれるソース フォルダーの指定がサポートされるようになりました (RunConfig と同様)。  また、モデル デプロイが 1 つのコマンドに簡素化されました。
+
++ **Git 参照の追跡**<br/> お客様から、エンドツーエンドの監査証跡の維持に役立つ、基本的な Git 統合機能についてのご希望をいただいてきました。 Microsoft は Azure ML の主要エンティティに対する Git 関連メタデータ (リポジトリ、コミット、クリーンな状態) の追跡を実装しました。 この情報は、SDK と CLI によって自動的に収集されます。
+
++ **モデルのプロファイルと検証のサービス**<br/> お客様からよくいただくご不満のなかに、推論サービスに対応付けるコンピューティングの適切なサイズ設定が難しいというものがありました。 Microsoft のモデル プロファイル サービスではユーザーがサンプル入力を指定できるため、16 種類の CPU/メモリ設定をプロファイルして、デプロイに最適なサイズを決定できます。
+
++ **推論に独自の基本イメージを使用可能**<br/> もう 1 つ多くいただいたご不満は、実験から推論の依存関係の再共有に移行することが難しいというものでした。 基本イメージの新しい共有機能により、実験の基本イメージ、依存関係などすべてを推論に再利用できるようになりました。 これにより、デプロイが高速化し、内側から外側のループへのギャップが少なくなります。
+
++ **Swagger スキーマの生成エクスペリエンスの向上**<br/> 以前の Swagger 生成メソッドではエラーが発生しやすく、自動化ができませんでした。 デコレーターを使用してどの Python 関数からでも Swagger スキーマをインラインで生成できるようになりました。 Microsoft はこのコードをオープンソース化しました。このスキーマ生成プロトコルは Azure ML プラットフォームと結合されていません。
+
++ **Azure ML CLI が一般公開 (GA)**<br/> 1 つの CLI コマンドでモデルをデプロイできるようになりました。 ユーザーから、Jupyter ノートブックから誰も ML モデルをデプロイしていないという共通したフィードバックを受け取っています。 [**CLI リファレンス ドキュメント**](https://aka.ms/azmlcli)が更新されました。
 
 
 ## <a name="2019-04-22"></a>2019-04-22
 
-### <a name="azure-machine-learning-sdk-for-python-v1030"></a>Azure Machine Learning SDK for Python v1.0.30
-+ **新機能**
-  + データセット
+Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
-+ **バグの修正と機能強化**
-  + なし
-
+同じエンドポイントを維持しながら公開されたパイプラインの新しいバージョンを追加するための [`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?view=azure-ml-py) が導入されました。
 
 ## <a name="2019-04-17"></a>2019-04-17
 
@@ -69,12 +137,11 @@ ms.locfileid: "65024922"
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure Portal
-+ **新機能**
+### <a name="azure-portal"></a>Azure ポータル
   + 既存のリモート コンピューティング クラスターで実行されている既存のスクリプトを再送信できるようになりました。 
   + [パイプライン] タブで、新しいパラメーターで発行されたパイプラインを実行できるようになりました。 
   + 詳細の実行で、新しいスナップショット ファイル ビューアーがサポートされるようになりました。 特定の実行を送信したときのディレクトリのスナップショットを表示することができます。 また、実行を開始するために送信されたノートブックをダウンロードすることもできます。
-   + Azure portal からの親の実行をキャンセルできるようになりました。
+  + Azure portal からの親の実行をキャンセルできるようになりました。
 
 ## <a name="2019-04-08"></a>2019-04-08
 
@@ -82,7 +149,7 @@ ms.locfileid: "65024922"
 
 + **新機能**
   + Azure Machine Learning SDK で Python 3.7 がサポートされるようになりました。
-  + Azure Machine Learning DNN Estimator で、組み込みマルチバージョン サポートが提供されるようになりました。 たとえば、`TensorFlow`  Estimator は `framework_version` パラメーターを受け入れるようになり、ユーザーはバージョン '1.10' や '1.12' を指定することができます。 現在の SDK リリースでサポートされているバージョンの一覧については、目的のフレームワーク クラスで `get_supported_versions()` を呼び出します (例、`TensorFlow.get_supported_versions()`)。
+  + Azure Machine Learning DNN Estimator で、組み込みマルチバージョン サポートが提供されるようになりました。 たとえば、`TensorFlow`  Estimator は `framework_version` パラメーターを受け入れるようになり、ユーザーはバージョン '1.10' や '1.12' を指定することができます。 現在の SDK リリースでサポートされているバージョンの一覧については、目的のフレームワーク クラスで `get_supported_versions()` を呼び出します (例: `TensorFlow.get_supported_versions()`)。
   最新の SDK リリースでサポートされているバージョンの一覧については、[DNN Estimator のドキュメント](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)を参照してください。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure Machine Learning Data Prep SDK v1.1.1
@@ -134,7 +201,7 @@ ms.locfileid: "65024922"
 
  + **変更点**
    + azureml-contrib-tensorboard が azureml-tensorboard パッケージに置き換えられました。
-   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すだけで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)をご覧ください。
+   + このリリースでは、マネージド コンピューティング クラスター (amlcompute) の作成時にユーザー アカウントを設定できます。 これは、これらのプロパティをプロビジョニング構成に渡すことで実行できます。 詳細については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none-)をご覧ください。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure Machine Learning Data Prep SDK v1.0.17
 
@@ -189,7 +256,7 @@ ms.locfileid: "65024922"
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Azure Machine Learning SDK for Python v1.0.15
 
 + **新機能**
-  + Azure Machine Learning パイプラインに、AzureBatchStep ([ノートブック](https://aka.ms/pl-azbatch))、HyperDriveStep ([ノートブック](https://aka.ms/pl-hyperdrive))、時間ベースのスケジューリング機能 ([ノートブック](https://aka.ms/pl-schedule)) が追加されました。
+  + Azure Machine Learning パイプラインに、AzureBatchStep ([ノートブック](https://aka.ms/pl-azbatch))、HyperDriveStep (ノートブック)、時間ベースのスケジューリング機能 ([ノートブック](https://aka.ms/pl-schedule)) が追加されました。
   +  Azure SQL Server および PostgreSQL 用の Azure データベース ([ノートブック](https://aka.ms/pl-data-trans)) で機能するように DataTranferStep が更新されました。
 
 + **変更点**
@@ -202,7 +269,7 @@ ms.locfileid: "65024922"
   + Data Prep で、データ ストアを使用した Azure SQL データベースからの読み取りがサポートされるようになりました。
  
 + **変更点**
-  + 大きなデータに対する特定の操作のメモリ パフォーマンスが大幅に向上しました。
+  + 大きなデータに対する特定の操作のメモリ パフォーマンスが向上しました。
   + `read_pandas_dataframe()` では `temp_folder` を指定することが必要になりました。
   + `ColumnProfile` での `name` プロパティは非推奨です。代わりに `column_name` を使用してください。
 
@@ -221,7 +288,7 @@ ms.locfileid: "65024922"
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure Machine Learning Data Prep SDK v1.0.8
 
 + **バグの修正**
-  + データ プロファイルの取得におけるパフォーマンスが大幅に向上しました。
+  + データ プロファイルの取得におけるパフォーマンスが向上しました。
   + エラー報告に関連する軽微なバグが修正されました。
   
 ### <a name="azure-portal-new-features"></a>Azure portal: 新機能

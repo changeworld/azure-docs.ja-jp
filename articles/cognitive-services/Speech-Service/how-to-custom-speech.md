@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: f2441d5660ed84a8680c1861e2e20a1a17ee4762
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025683"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511088"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -43,7 +43,7 @@ Custom Speech で何かをするためには、あらかじめ Azure アカウ�
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントを設定する
 
-Custom Speech ポータルを使用してカスタム モデルを作成するには、あらかじめ Speech Services サブスクリプションが必要です。 次の手順に従って、標準的な Speech Services サブスクリプションを作成してください:[Speech サブスクリプションの作成](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#new-azure-account)。
+Custom Speech ポータルを使用してカスタム モデルを作成するには、あらかじめ Speech Services サブスクリプションが必要です。 次の手順に従って、標準的な Speech Services サブスクリプションを作成してください:[Speech サブスクリプションの作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)。
 
 > [!NOTE]
 > 必ず Standard (S0) サブスクリプションを作成してください。無料試用版 (F0) サブスクリプションはサポートされません。
@@ -64,7 +64,7 @@ Azure アカウントと Speech Services サブスクリプションを作成し
 ## <a name="next-steps"></a>次の手順
 
 * [データを準備してテストする](how-to-custom-speech-test-data.md)
-* [データを調査する](how-to-custom-speech-inspect-data.md)
+* [データを検査する](how-to-custom-speech-inspect-data.md)
 * [データを評価する](how-to-custom-speech-evaluate-data.md)
 * [モデルをトレーニングする](how-to-custom-speech-train-model.md)
 * [モデルをデプロイする](how-to-custom-speech-deploy-model.md)

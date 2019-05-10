@@ -4,14 +4,14 @@ description: Azure Cosmos DB の SQL 構文、データベースの概念、お�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579220"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148944"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
@@ -139,14 +139,14 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
     }]
 ```
 
-次のクエリでは、`id` が `WakefieldFamily` と一致する家族の子どもの名がすべて学年順に返されます。
+次のクエリでは、`id` が `WakefieldFamily` と一致する家族の子供の名が、住んでいる都市の順にすべて返されます。
 
 ```sql
     SELECT c.givenName
     FROM Families f
     JOIN c IN f.children
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.grade ASC
+    ORDER BY f.address.city ASC
 ```
 
 結果は次のようになります。
@@ -314,6 +314,70 @@ VALUE キーワードは、JSON 値だけを返す方法を提供します。 �
     ]
 ```
 
+## <a id="DistinctKeyword"></a>DISTINCT キーワード
+
+DISTINCT キーワードは、クエリのプロジェクションでの重複を除去します。
+
+```sql
+SELECT DISTINCT VALUE f.lastName
+FROM Families f
+```
+
+この例では、クエリは各姓の値をプロジェクションしています。
+
+結果は次のようになります。
+
+```json
+[
+    "Andersen"
+]
+```
+
+一意のオブジェクトをプロジェクションすることもできます。 この場合、lastName フィールドが 2 つのドキュメントのいずれかに存在しないため、クエリが空のオブジェクトを返します。
+
+```sql
+SELECT DISTINCT f.lastName
+FROM Families f
+```
+
+結果は次のようになります。
+
+```json
+[
+    {
+        "lastName": "Andersen"
+    },
+    {}
+]
+```
+
+DISTINCT は、サブクエリ内のプロジェクションでも使用できます。
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
+```
+
+このクエリは、重複が削除された各子の givenName を格納する配列をプロジェクションします。 この配列は、ChildNames という別名が付けられ、外側のクエリでプロジェクションされます。
+
+結果は次のようになります。
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="aliasing"></a>エイリアス化
 
 クエリ内の値を明示的にエイリアス化できます。 クエリに同じ名前を持つ 2 つのプロパティがある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更することで、プロジェクションの結果でこれらを区別できます。
@@ -380,7 +444,7 @@ FROM 句により、ソースを小さなサブセットに限定することが
         }
       ],
       [
-        {
+       {
             "familyName": "Merriam",
             "givenName": "Jesse",
             "gender": "female",
@@ -599,7 +663,7 @@ IN キーワードは、指定した値がリスト内のいずれかの値と�
 
 ## <a id="TopKeyword"></a>TOP 演算子
 
-TOP キーワードは、任意の順序で最初の `N` 個のクエリ結果を返します。 ベスト プラクティスとして、ORDER BY 句で TOP を使用して、最初の `N` 個の順序付けされた値に結果を制限します。 これらの 2 つの句を組み合わせることが、TOP の影響を受ける行を予想どおりに指定する唯一の方法です。 
+TOP キーワードは、任意の順序で最初の `N` 個のクエリ結果を返します。 ベスト プラクティスとして、ORDER BY 句で TOP を使用して、最初の `N` 個の順序付けされた値に結果を制限します。 これらの 2 つの句を組み合わせることが、TOP の影響を受ける行を予想どおりに指定する唯一の方法です。
 
 TOP は、次の例のように定数で、またはパラメーター化されたクエリを使用した変数値で使用できます。 詳細については、「[パラメーター化されたクエリ](#parameterized-queries)」を参照してください。
 
@@ -679,6 +743,65 @@ ANSI SQL の場合と同様に、クエリにオプションの ORDER BY 句を�
       }
     ]
 ```
+
+さらに、複数のプロパティで並べ替えることができます。 複数のプロパティで並べ替えるクエリには、[複合インデックス](index-policy.md#composite-indexes)が必要です。 次のクエリについて考えてみましょう。
+
+```sql
+    SELECT f.id, f.creationDate
+    FROM Families f
+    ORDER BY f.address.city ASC, f.creationDate DESC
+```
+
+このクエリは、都市名の昇順で家族 `id` を取得します。 複数の項目に同じ都市名がある場合、クエリが `creationDate` の降順で並べ替えます。
+
+## <a id="OffsetLimitClause"></a>OFFSET LIMIT 句
+
+OFFSET LIMIT は、スキップした後、クエリからいくつかの値を取得するオプションの句です。 OFFSET LIMIT 句には、OFFSET の数と LIMIT の数が必要です。
+
+OFFSET LIMIT を ORDER BY 句と組み合わせて使用した場合、スキップが実行され、順序付けられた値を受け取る結果セットが生成されます。 ORDER BY 句を使用しない場合、決定論的順序の値になります。
+
+たとえば、このクエリは、最初の値をスキップし、2 番目の値を返します (居住都市名の順序で)。
+
+```sql
+    SELECT f.id, f.address.city
+    FROM Families f
+    ORDER BY f.address.city
+    OFFSET 1 LIMIT 1
+```
+
+結果は次のようになります。
+
+```json
+    [
+      {
+        "id": "AndersenFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+このクエリは、最初の値をスキップし、2 番目の値を返します (順序付けなし)。
+
+```sql
+   SELECT f.id, f.address.city
+    FROM Families f
+    OFFSET 1 LIMIT 1
+```
+
+結果は次のようになります。
+
+```json
+    [
+      {
+        "id": "WakefieldFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+
+
+
 ## <a name="scalar-expressions"></a>スカラー式
 
 SELECT 句は、定数、算術式、論理式などのスカラー式をサポートします。 次のクエリでは、スカラー式を使用しています。
@@ -1018,7 +1141,7 @@ API によって、UDF を使用して、SQL 構文が拡張され、カスタ�
        {
            Id = "REGEX_MATCH",
            Body = @"function (input, pattern) {
-                       return input.match(pattern) !== null;
+                      return input.match(pattern) !== null;
                    };",
        };
 

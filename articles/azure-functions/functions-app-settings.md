@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 573e6ea857ef17a6160f7e03f52f9c64f903530a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: d78fb546e954c4ae12e5836d9a7bef7ed5003090
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546628"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511072"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -217,7 +217,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="next-steps"></a>次の手順
 
-[アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#settings)
 
 [host.json ファイルのグローバル設定を参照する](functions-host-json.md)
 

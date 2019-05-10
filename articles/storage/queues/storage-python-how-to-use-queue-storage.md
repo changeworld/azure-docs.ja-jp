@@ -1,20 +1,21 @@
 ---
-title: Python から Queue Storage を使用する方法 | Microsoft Docs
+title: Python から Queue Storage を使用する方法 - Azure Storage
 description: Python から Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.service: storage
 ms.devlang: python
 ms.topic: article
 ms.date: 12/14/2018
-ms.author: tamram
+ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: afa0b6d4f87c4325f116463242c15df9d9b6e7c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75f04893067d92813207bd656fc3368239ae9303
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006429"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142789"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Python から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

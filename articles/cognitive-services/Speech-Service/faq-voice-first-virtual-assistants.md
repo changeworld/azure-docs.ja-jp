@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025693"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072620"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>音声優先仮想アシスタントのプレビュー:よく寄せられる質問
 
@@ -29,7 +29,7 @@ ms.locfileid: "65025693"
 
 **Q:始めにどうすればよいですか。**
 
-**A:** 音声優先仮想アシスタントの作成から始めるには、[基本的な Bot Framework ボットの作成](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)から始めることをお勧めします。 次に、ボットを [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)に接続します。
+**A:** 音声優先仮想アシスタントの作成から始めるには、[基本的な Bot Framework ボットの作成](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)から始めることをお勧めします。 次に、ボットを [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)に接続します。
 
 ## <a name="debugging"></a>デバッグ
 
@@ -41,7 +41,7 @@ ms.locfileid: "65025693"
 
 **Q:Direct Line Speech から戻された認識テキストを受け取りますが、'1011' エラーが表示され、ボットからは何も表示されません。なぜですか?**
 
-**A:** このエラーは、ボットと Direct Line Speech 間の通信に問題があることを示しています。 [Direct Line Speech チャネルを接続し](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](https://aka.ms/botframework/addstreamingprotocolsupport)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
+**A:** このエラーは、ボットと Direct Line Speech 間の通信に問題があることを示しています。 [Direct Line Speech チャネルを接続し](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](https://aka.ms/botframework/addstreamingprotocolsupport)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
 
 **Q:この方法でも解決しないか、SpeechBotConnector の使用時に別のエラーを受け取り、どうすればよいかわかりません。"*どうすれば*" よいですか。**
 

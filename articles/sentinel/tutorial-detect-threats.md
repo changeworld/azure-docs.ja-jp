@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure Sentinel でアラート�
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: b5fbc5ac-68b2-4024-9c1b-bd3cc41a66d0
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 319ec5d09a6daddb5c1fc36f680ee6d0d856e337
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400670"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205424"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューを使用して脅威を検出する
 
@@ -27,7 +27,7 @@ ms.locfileid: "58400670"
 > 現在、Azure Sentinel はパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では高度なアラート ルールを作成して、環境での異常や脅威を詳しく調査するために割り当て使用できるケースを生成できます。 
+Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では高度なアラート ルールを作成して、環境での異常や脅威を詳しく調査するために割り当てて使用できるケースを生成できます。 
 
 このチュートリアルは、Azure Sentinel で脅威を検出するためのものです。
 > [!div class="checklist"]
@@ -94,5 +94,5 @@ Azure Sentinel には、プレイブックを使用して脅威に対応する�
 
 脅威への応答を自動化する方法については、[自動プレイブックを使用した脅威への対応](tutorial-respond-threats-playbook.md)に関するチュートリアルを参照してください。
 > [!div class="nextstepaction"]
-> [[Respond to threats]](tutorial-respond-threats-playbook.md)(脅威への対応) を行って、脅威への対応を自動化します。
+> [[Respond to threats]](tutorial-respond-threats-playbook.md) (脅威への対応) を行って、脅威への対応を自動化します。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679037"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464233"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -66,7 +66,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. **[インポート]** を選択します。
 
-    ![インポート アクション](./media/howto-manage-devices/BulkImport1.png)
+    ![インポート アクション](./media/howto-manage-devices/bulkimport1a.png)
 
 1. インポートするデバイス ID の一覧を含む CSV ファイルを選択します。
 
@@ -74,7 +74,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. インポートが完了すると、デバイス グリッドに完了メッセージが表示されます。
 
-    ![インポート成功](./media/howto-manage-devices/BulkImport3.png)
+    ![インポート成功](./media/howto-manage-devices/bulkimport3a.png)
 
 デバイスのインポート操作が失敗した場合は、デバイス グリッドにエラー メッセージが表示されます。 すべてのエラーをキャプチャしたログ ファイルが生成されており、ダウンロードできます。
 
@@ -86,13 +86,13 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. 左側のパネルで、**[関連付けが解除されているデバイス]** を選択します。
 
-    ![関連付けが解除されているデバイス](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![関連付けが解除されているデバイス](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. テンプレートに関連付けるデバイスを選択します。
 
 1. **[関連付け]** を選択します。
 
-    ![デバイスの関連付け](./media/howto-manage-devices/UnassociatedDevices2.png)
+    ![デバイスの関連付け](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. 使用可能なテンプレートの一覧からテンプレートを選択し、**[関連付け]** を選択します。
 
@@ -113,7 +113,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. エクスポートするデバイスを選択して、**[エクスポート]** アクションを選択します。
 
-    ![エクスポート](./media/howto-manage-devices/Export1.png)
+    ![エクスポート](./media/howto-manage-devices/export1a.png)
 
 1. エクスポート プロセスが開始します。 グリッドの上部で状態を追跡できます。
 
@@ -121,7 +121,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. **成功メッセージ**を選択し、ディスク上のローカル フォルダーにファイルをダウンロードします。
 
-    ![エクスポート - 成功](./media/howto-manage-devices/Export2.png)
+    ![エクスポート - 成功](./media/howto-manage-devices/export2a.png)
 
 1. エクスポートされた CSV ファイルには、デバイス ID、デバイス名、デバイス キー、および X509 証明書拇印の列が含まれています。
 

@@ -120,6 +120,8 @@
           href: sql-database-service-tiers-vcore.md
         - name: DTU サービス レベル
           href: sql-database-service-tiers-dtu.md
+        - name: サーバーレス コンピューティング レベル
+          href: sql-database-serverless.md
         - name: 予約容量の前払い
           href: sql-database-reserved-capacity.md
         - name: Premium RS サービス レベルから移行する
@@ -282,6 +284,8 @@
               href: transparent-data-encryption-azure-sql.md
             - name: Bring Your Own Key を使用した TDE
               href: transparent-data-encryption-byok-azure-sql.md
+        - name: セキュリティ属性
+          href: sql-database-security-attributes.md
     - name: スケーラビリティ
       items:
         - name: スケーラビリティの概要

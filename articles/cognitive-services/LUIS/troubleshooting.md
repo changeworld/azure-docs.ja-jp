@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894459"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072772"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -282,27 +282,19 @@ LUIS のサンプルを使用して、プログラムで[リージョンを検�
 
 はい。使用量を測定するために必要な接続があれば、それらのシナリオで LUIS [コンテナー](luis-container-howto.md)を使用できます。 
 
-### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Build 2018 Conference で Language Understanding の機能またはデモについて聞きましたが、名前を忘れました。
+## <a name="migrating-to-the-next-version"></a>次のバージョンへの移行
 
-Build 2018 Conference では、次の機能がリリースされました。
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>V3 API に移行して、プレビューするにはどうすればいいですか? 
 
-|Name|コンテンツ|
-|--|--|
-|強化された機能|[正規表現](luis-concept-data-extraction.md##regular-expression-entity-data)エンティティと[キー フレーズ](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) エンティティ
-|パターン|パターンの[概念](luis-concept-patterns.md)、[チュートリアル](luis-tutorial-pattern.md)、[ハウツー](luis-how-to-model-intent-pattern.md)<br>例外に対する[明示的なリスト](luis-concept-patterns.md#explicit-lists)を含む [Patterns.Any](luis-concept-entity-types.md) エンティティの概念<br>[ロール](luis-concept-roles.md)の概念|
-|統合|[感情分析](luis-how-to-publish-app.md#enable-sentiment-analysis)の[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)の統合<br>[Speech SDK](https://aka.ms/SpeechSDK) との組み合わせでの音声認識の準備の[音声](https://docs.microsoft.com/azure/cognitive-services/speech)の統合|
-|ディスパッチ ツール|[BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)の一部、ボットでの意図認識向上のために単一 LUIS アプリに複数の LUIS アプリと QnA Maker アプリを結合するためのディスパッチ コマンド ライン [ツール](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)
+[LUIS アプリの API v2 から v3 への移行ガイド](luis-migration-api-v3.md)を参照してください
 
-追加のオーサリング [API ルート](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md)が組み込まれました。
+## <a name="build-2019-conference-announcements"></a>Build 2019 Conference のお知らせ
 
-ビデオ:
-* [Build 2018 での Azure Friday: Cognitive Services - Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Build 2018 の AI ショー - Language Understanding Intelligent Service の新機能](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Build 2018 のセッション - ボット インテリジェンス、音声機能、NLU のベスト プラクティス](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - LUIS 更新](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+Build 2019 Conference では、次の機能が公開されました。
 
-プロジェクト:
-* [Contoso Cafe ボット](https://github.com/botbuilderbuild2018/build2018demo) デモ - GitHub 上のソース コード
+* [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
+* [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
+* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md)は V2 および V3 API で機能します
 
 ## <a name="next-steps"></a>次の手順
 

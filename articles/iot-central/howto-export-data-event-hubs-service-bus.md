@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: b0a34cd8eebdd816cb780b34de936a6cc56d0994
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730234"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463972"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
 
@@ -64,14 +64,14 @@ ms.locfileid: "64730234"
     > [!Note]
     > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu.PNG)
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu1.png)
 
 3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、**[Azure Event Hubs]** または **[Azure Service Bus]** を選択します。 
 
     > [!NOTE] 
     > アプリごとのエクスポートの最大数は 5 です。 
 
-    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new.PNG)
+    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new1.png)
 
 4. ドロップダウン リスト ボックスで、お使いの **Event Hubs 名前空間/Service Bus 名前空間**を選択します。 リスト内の最後のオプション (**[Enter a connection string]\(接続文字列を入力する\)**) を選択することもできます。 
 
@@ -81,7 +81,7 @@ ms.locfileid: "64730234"
     > [!NOTE] 
     > 7 日間の試用版アプリの場合、継続的データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリに関連付けられた Azure サブスクリプションがないのはこのためです。
 
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export_create.PNG)
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export_create1.png)
 
 5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
     - Event Hubs や Service Bus。Azure portal で名前空間に移動します。
@@ -95,7 +95,7 @@ ms.locfileid: "64730234"
 
 6. 継続的データ エクスポートを有効にするには、**[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
 
-  ![連続データ エクスポートを構成する](media/howto-export-data/export_list.PNG)
+    ![連続データ エクスポートを構成する](media/howto-export-data/export_list1.png)
 
 7. 数分後に、選択したエクスポート先にデータが表示されます。
 

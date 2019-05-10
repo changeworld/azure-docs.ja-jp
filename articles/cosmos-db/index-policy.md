@@ -4,14 +4,14 @@ description: Azure Cosmos DB でのインデックス作成の自動化とパフ
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c7f2ccd2c074f2488c86b45a09859b308655df8d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005096"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068605"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -69,7 +69,39 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 - インデックスを作成する必要がないパスを選択的に除外するためにルート パスを指定する。 モデルに追加される可能性がある新しいプロパティのインデックスを Azure Cosmos DB で先を見越して作成できるため、これが推奨される方法です。
 - インデックスを作成する必要があるパスを選択的に含めるためにルート パスを除外する。
 
+- 英数字や _ (アンダースコア) を含む通常文字から成るパスの場合は、パス文字列を二重引用符で囲んでエスケープする必要はありません ("/path/?" など)。 他の特殊文字を含むパスの場合は、パス文字列を二重引用符で囲んでエスケープする必要があります ("/\"path-abc\"/?" など)。 パスの中に特殊文字が予測される場合は、安全のために、すべてのパスをエスケープすることができます。 機能的には、すべてのパスをエスケープしても、特殊文字を含むパスだけをエスケープしても何も違いはありません。
+
 インデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。
+
+## <a name="composite-indexes"></a>複合インデックス
+
+2 つ以上のプロパティについて `ORDER BY` を実行するクエリには複合インデックスが必要です。 現在、複合インデックスは複数 `ORDER BY` クエリでのみ利用されます。 既定では、複合インデックスは定義されないため、必要に応じて[複合インデックスを追加する](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)必要があります。
+
+複合インデックスを定義する場合は、次のものを指定します。
+
+- 2 つ以上のプロパティ パス。 プロパティ パスが定義されるシーケンスが重要です。
+- 順序 (昇順または降順)。
+
+複合インデックスを使用する場合は、次の考慮事項を使用します。
+
+- 複合インデックスのパスが ORDER BY 句の中のプロパティのシーケンスに一致しない場合、その複合インデックスはクエリをサポートできません
+
+- 複合インデックスのパスの順序 (昇順または降順) も ORDER BY 句の中の順序に一致する必要があります。
+
+- 複合インデックスはまた、すべてのパスで反対の順序を持つ ORDER BY 句もサポートします。
+
+複合インデックスがプロパティ a、b、および c に対して定義されている次の例を考えてみます。
+
+| **複合インデックス**     | **サンプルの `ORDER BY` クエリ**      | **インデックスでサポートされるか?** |
+| ----------------------- | -------------------------------- | -------------- |
+| ```(a asc, b asc)```         | ```ORDER BY  a asc, bcasc```        | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  b asc, a asc```        | ```No```             |
+| ```(a asc, b asc)```          | ```ORDER BY  a desc, b desc```      | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  a asc, b desc```       | ```No```             |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc, c asc``` | ```Yes```            |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc```        | ```No```            |
+
+すべての必要な `ORDER BY` クエリに対応できるように、インデックス作成ポリシーをカスタマイズする必要があります。
 
 ## <a name="modifying-the-indexing-policy"></a>インデックス作成ポリシーの変更
 

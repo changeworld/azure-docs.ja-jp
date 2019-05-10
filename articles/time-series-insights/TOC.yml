@@ -52,7 +52,7 @@
           href: time-series-insights-update-tsm.md
         - name: データ照会
           href: time-series-insights-update-tsq.md
-        - name: エクスプローラーの更新でのデータの視覚化
+        - name: エクスプローラー プレビューでデータを視覚化する
           href: time-series-insights-update-explorer.md
     - name: 開発
       items:

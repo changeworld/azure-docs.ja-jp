@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.date: 05/02/2019
-ms.openlocfilehash: ed10cb259802321769605bc0399a610131ddb174
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 51d0dcfc543834e9a8725d11fa82b566a5132a6b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027759"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204987"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>スナップショット (プレビュー) を使用したデータの比較と再現性の確保
 

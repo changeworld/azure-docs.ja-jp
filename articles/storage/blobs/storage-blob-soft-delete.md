@@ -2,18 +2,18 @@
 title: Azure Storage Blob の論理的な削除 | Microsoft Docs
 description: Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2018
-ms.author: mihauss
+ms.date: 04/23/2019
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506127"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148616"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
@@ -278,6 +278,9 @@ blockBlob.StartCopy(copySource);
 アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 論理的な削除はデータ保護戦略の一部であり、不注意によるデータの損失を防ぐことができます。
 
 ## <a name="faq"></a>FAQ
+**論理的な削除を使用するための特殊な考慮事項は何かありますか?**  
+頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 これは、頻繁に上書きされるデータを論理的な削除が無効な別のストレージ アカウントに格納することによって緩和できます。 
+
 **論理的な削除を使用できるストレージの種類はどれですか?**  
 現時点では、論理的な削除を使うことができるのは BLOB (オブジェクト) ストレージだけです。
 

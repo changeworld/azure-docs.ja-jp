@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b4c3f7445d18ab1548fd63b1f4d12c5901cf949
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339523"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148633"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
@@ -31,16 +31,16 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 ```json
 "entities": [
   {
-    "entity": "8am on may 2nd 2017",
+    "entity": "8am on may 2nd 2019",
     "type": "builtin.datetimeV2.datetime",
     "startIndex": 0,
     "endIndex": 18,
     "resolution": {
       "values": [
         {
-          "timex": "2017-05-02T08",
+          "timex": "2019-05-02T08",
           "type": "datetime",
-          "value": "2017-05-02 08:00:00"
+          "value": "2019-05-02 08:00:00"
         }
       ]
     }
@@ -82,7 +82,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 |プロパティ名|プロパティの説明|
 |--|--|
 |timex|[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)に従う TIMEX 形式および TimeML 言語を使用した注釈のための TIMEX3 属性で表された時刻、日付、日付範囲。 この注釈については、[TIMEX のガイドライン](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)のページをご覧ください。|
-|type|サブタイプ。次のいずれかです: datetime、date、time、daterange、timerange、datetimerange、duration、set。|
+|type|サブタイプ。`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set` のいずれかの項目を指定できます。|
 |value|**省略可能。** yyyy:MM:dd (date)、HH:mm:ss (time)、yyyy:MM:dd HH:mm:ss (datetime) の形式の datetime オブジェクト。 `type` が `duration` の場合、値は秒数 (期間) です <br/> `type` が `datetime`、`date`、`time`、または duration の場合にのみ使用されます。|
 
 ## <a name="valid-date-values"></a>有効な日付の値
@@ -116,12 +116,12 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
           {
             "timex": "XXXX-05-02",
             "type": "date",
-            "value": "2017-05-02"
+            "value": "2019-05-02"
           },
           {
             "timex": "XXXX-05-02",
             "type": "date",
-            "value": "2018-05-02"
+            "value": "2020-05-02"
           }
         ]
       }
@@ -145,14 +145,8 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
           {
             "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
             "type": "daterange",
-            "start": "2017-05-02",
-            "end": "2017-05-05"
-          },
-          {
-            "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
-            "type": "daterange",
-            "start": "2018-05-02",
-            "end": "2018-05-05"
+            "start": "2019-05-02",
+            "end": "2019-05-05"
           }
         ]
       }
@@ -176,14 +170,8 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
           {
             "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
             "type": "daterange",
-            "start": "2017-06-13",
-            "end": "2017-06-15"
-          },
-          {
-            "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
-            "type": "daterange",
-            "start": "2017-06-20",
-            "end": "2017-06-22"
+            "start": "2019-04-30",
+            "end": "2019-05-02"
           }
         ]
       }
@@ -216,6 +204,89 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
       }
     }
   ]
+```
+
+## <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+
+DatetimeV2 JSON 応答は API V3 で変更されました。 
+
+API V2 からの変更点:
+* `datetimeV2.timex.type` プロパティは、親レベル `datetimev2.type` で返されるため、返されなくなりました。 
+* `datetimeV2.timex` プロパティは `datetimeV2.value` に名前が変更されました。
+
+発話 `8am on may 2nd 2017` の場合、V3 バージョンの DatetimeV2 は次のとおりです。
+
+```JSON
+{
+    "query": "8am on may 2nd 2017",
+    "prediction": {
+        "normalizedQuery": "8am on may 2nd 2017",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.6826963
+            }
+        },
+        "entities": {
+            "datetimeV2": [
+                {
+                    "type": "datetime",
+                    "values": [
+                        {
+                            "timex": "2017-05-02T08",
+                            "value": "2017-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+{
+    "query": "8am on may 2nd 2017",
+    "prediction": {
+        "normalizedQuery": "8am on may 2nd 2017",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.6826963
+            }
+        },
+        "entities": {
+            "datetimeV2": [
+                {
+                    "type": "datetime",
+                    "values": [
+                        {
+                            "timex": "2017-05-02T08",
+                            "value": "2017-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ],
+            "$instance": {
+                "datetimeV2": [
+                    {
+                        "type": "builtin.datetimeV2.datetime",
+                        "text": "8am on may 2nd 2017",
+                        "startIndex": 0,
+                        "length": 19,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
 ```
 
 ## <a name="deprecated-prebuilt-datetime"></a>非推奨の作成済み datetime

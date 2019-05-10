@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000268"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073003"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -337,19 +337,28 @@ LUIS コンテナーでは、お客様の Azure アカウントの _Cognitive Se
 
 これらのオプションの詳細については、「[コンテナーの構成](luis-container-configuration.md)」を参照してください。
 
-## <a name="unsupported-dependencies"></a>サポートされていない依存関係
+## <a name="supported-dependencies-for-latest-container"></a>`latest` コンテナーでサポートされる依存関係
+
+2019 //Build でリリースされる最新のコンテナーでは、次がサポートされます。
+
+* Bing Spell Check: `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` クエリ文字列パラメーターでクエリ予測エンドポイントに対して要求します。 詳細については、[Bing Spell Check v7 チュートリアル](luis-tutorial-bing-spellcheck.md)を参照してください。 この機能を使用すると、コンテナーが Bing Spell Check V7 リソースに発話を送信します。
+* [新しい事前構築済みドメイン](luis-reference-prebuilt-domains.md): 企業向けのこれらのドメインには、エンティティ、発話の例、およびパターンが含まれます。 これらのドメインを独自の用途で拡張します。 
+
+<a name="unsupported-dependencies"></a>
+
+## <a name="unsupported-dependencies-for-latest-container"></a>`latest` コンテナーでサポートされない依存関係
+
+LUIS アプリにサポートされていない依存関係がある場合、サポートされていない機能を削除するまで、[コンテナー用にエクスポート](#export-packaged-app-from-luis)できません。 コンテナー用にエクスポートしようとすると、LUIS ポータルで、削除する必要があるサポートされていない機能が報告されます。
 
 LUIS アプリケーションは、次の依存関係を一切**含んでいない**場合に使用できます。
 
 サポートされていないアプリ構成|詳細|
 |--|--|
-|サポートされていないコンテナー カルチャ| ドイツ語 (de-DE)<br>オランダ語 (nl-NL)<br>日本語 (ja-JP)<br>|
-|サポートされていないドメイン|事前構築済みドメイン (事前構築済みドメインの意図とエンティティを含む)|
+|サポートされていないコンテナー カルチャ| オランダ語 (nl-NL)<br>日本語 (ja-JP)<br>ドイツ語は、[1.0.1 トークナイザー以降](luis-language-support.md#custom-tokenizer-versions)でのみサポートされています。|
 |サポートされていないエンティティ (全カルチャ)|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) 事前構築済みエンティティ (全カルチャ)|
 |サポートされていないエンティティ (英語 (en-US) カルチャ)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 事前構築済みエンティティ|
 |音声認識の準備|コンテナーでは、外部依存関係がサポートされません。|
 |センチメント分析|コンテナーでは、外部依存関係がサポートされません。|
-|Bing Spell Check|コンテナーでは、外部依存関係がサポートされません。|
 
 ## <a name="summary"></a>まとめ
 

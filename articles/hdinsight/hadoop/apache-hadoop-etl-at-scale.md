@@ -127,7 +127,7 @@ Sqoop では、MapReduce を使用してデータのインポートとエクス�
 
 Apache Flume は、大量のログ データを効率的に収集、集計、および移動するために使用できる信頼性の高い分散サービスです。 Flume には、データ フローのストリーミングに基づくシンプルで柔軟性のあるアーキテクチャがあります。 Flume は、堅牢でフォールト トレラントであり、チューニング可能な信頼性メカニズムと多数のフェールオーバーと回復メカニズムを備えています。 Flume は、オンライン分析アプリケーションで使用できるシンプルな拡張可能データ モデルを使用しています。
 
-Apache Flume は、Azure HDInsight では使用できません。  オンプレミスの Hadoop インストールでは、Flume を使用して、Azure Storage Blob または Azure Data Lake Storage にデータを送信できます。  詳細については、[HDInsight での Apache Flume の使用](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)に関する記事を参照してください。
+Apache Flume は、Azure HDInsight では使用できません。  オンプレミスの Hadoop インストールでは、Flume を使用して、Azure Storage Blob または Azure Data Lake Storage にデータを送信できます。  詳細については、[HDInsight での Apache Flume の使用](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)に関する記事を参照してください。
 
 ## <a name="transform"></a>変換
 

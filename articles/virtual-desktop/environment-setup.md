@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: ceed6a8bb74206b7c6689ce542482148800e4ba9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403512"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142383"
 ---
 # <a name="windows-virtual-desktop-preview-environment"></a>Windows Virtual Desktop プレビュー環境
 
@@ -63,5 +63,5 @@ Windows Virtual Desktop テナントを設定する方法については、「[C
 
 Windows Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
 
-- [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](connect-windows-7-and-10.md)
-- [Windows Virtual Desktop プレビュー Web クライアントに接続する](connect-web.md)
+- [Windows 10 または Windows 7 から接続する](connect-windows-7-and-10.md)
+- [Web ブラウザーから接続する](connect-web.md)

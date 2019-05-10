@@ -35,7 +35,7 @@ ms.locfileid: "65148868"
 どちらのプロセスでも、エージェントが収集したデータをクラスター リソースにパブリッシュできるように、クラスターのサービス プリンシパルに対して**メトリックの発行元の監視**ロールが割り当てられます。 メトリックの発行元の監視は、メトリックをリソースにプッシュする権限のみを持ち、状態の変更、リソースの更新、およびデータの読み取りはできません。 このロールの詳細については、[メトリックの発行元の監視ロール](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件 
-開始する前に、AKS クラスター リソースの**[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
+開始する前に、AKS クラスター リソースの **[所有者](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーであることを確認してください。このロールでは、ノードとポッドのカスタム パフォーマンス メトリックを収集できます。 
 
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.59 以降を実行している必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
 
@@ -67,7 +67,7 @@ Azure コマンド シェルで Bash を使用してサブスクリプション�
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>Azure CLI を使用してクラスターごとにアップグレードする
 Azure CLI を使用してサブスクリプション内の特定のクラスターを更新するには、次の手順を実行します。
 
-1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId****resourceGroupName**、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
+1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
 
     ```azurecli
     az login
@@ -569,7 +569,7 @@ Azure PowerShell を使用して特定のクラスターを更新するには、
     ```
 
 2. このファイルを **onboard_metrics.ps1** という名前でローカル フォルダーに保存します。
-3. Azure PowerShell を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId****resourceGroupName**、および **clusterName** の値を編集します。
+3. Azure PowerShell を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。
 
     ```powershell
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>

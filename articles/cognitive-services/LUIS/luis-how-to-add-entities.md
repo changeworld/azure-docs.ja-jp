@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522352"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148726"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
@@ -66,29 +66,6 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     この正規表現は、リテラル文字 `hrf-` と一致します。それに続く 6 桁の数字は、人事フォームのフォーム番号を表します。
 
-## <a name="add-hierarchical-entities"></a>階層構造エンティティを追加する
-
-階層構造エンティティは、文脈から学習され、概念的に関連付けられる部類のエンティティです。 次の例では、エンティティに出発地と到着地が含まれます。 
-
-発話 `Move John Smith from Seattle to Cairo` では、シアトルが出発地で、カイロが到着地です。 いずれの場所も文脈的に異なり、発話の中の単語の順序と選択から学習されます。
-
-階層構造エンティティを追加するには、次の手順を完了します。 
-
-1. アプリで、左側のナビゲーションから **[エンティティ]** を選択し、**[Create new entity]\(新しいエンティティの追加\)** を選択します。
-
-1. ポップアップ ダイアログ ボックスで、**[Entity name]\(エンティティ名\)** ボックスに「`Location`」と入力し、**[エンティティの種類]** リストから **[Hierarchical]\(階層構造\)** を選択します。
-
-    ![階層構造エンティティを追加する](./media/add-entities/hier-location-entity-creation.png)
-
-1. **[子の追加]** を選択し、**[Child #1]\(子 #1\)** ボックスに「`Origin`」と入力します。 
-
-1. **[子の追加]** を選択し、**[Child #2]\(子 #2\)** ボックスに「`Destination`」と入力します。 **[完了]** を選択します。
-
-    >[!CAUTION]
-    >子エンティティ名は、1 つのアプリのエンティティ全体で一意となる必要があります。 2 つの異なる階層構造エンティティには、同じ名前の子エンティティを含めることができません。 
-
-    このエンティティを作成したら、サンプル発話にそのエンティティが含まれている、すべての意図に移動します。 サンプル発話内のテキストを選択し、そのテキストをエンティティとしてマークします。 
-
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>複合エンティティを追加して親子関係にグループ化する
@@ -137,9 +114,7 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 ロールは、文脈に基づいた名前付きサブタイプです。 事前構築済みエンティティや非マシン学習エンティティを含む、すべてのエンティティで使用できます。 
 
-出発地と到着地の階層構造エンティティと同じ例を使用した場合、違うのは、ロールが階層構造の子ではなく、名前付きの出発地であるという点です。 
-
-ロールの構文は **{Entityname:Rolename}** で、エンティティ名、コロン、ロール名の順です。 たとえば、「 `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}` 」のように入力します。
+ロールの構文は **`{Entityname:Rolename}`** であり、エンティティ名の後にコロンとロール名を指定します。 たとえば、「 `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}` 」のように入力します。
 
 1. **[ビルド]** セクションから、左パネル内の **[エンティティ]** を選択します。
 

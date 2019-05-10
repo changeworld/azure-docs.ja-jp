@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: f81ca34931e2ee4bce35fa06195fb64c47ef9a7b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682032"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464640"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Azure Blob Storage にデータをエクスポートする
 
@@ -57,14 +57,14 @@ ms.locfileid: "64682032"
     > [!Note]
     > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu.PNG)
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu1.png)
 
 3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、**[Azure Blob Storage]** を選択します。 
 
     > [!NOTE] 
     > アプリごとのエクスポートの最大数は 5 です。 
 
-    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new.PNG)
+    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new1.png)
 
 4. ドロップダウン リスト ボックスで、お使いの **Storage Account 名前空間**を選択します。 リスト内の最後のオプション (**[Enter a connection string]\(接続文字列を入力する\)**) を選択することもできます。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "64682032"
 
 6. 継続的データ エクスポートを有効にするには、**[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
 
-  ![連続データ エクスポートを構成する](media/howto-export-data/export-list-blob.png)
+   ![連続データ エクスポートを構成する](media/howto-export-data/export-list-blob.png)
 
 7. 数分後に、選択したエクスポート先にデータが表示されます。
 

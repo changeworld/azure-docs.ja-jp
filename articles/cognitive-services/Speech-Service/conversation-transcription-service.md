@@ -1,41 +1,41 @@
 ---
-title: 会話の文字起こしサービス - Speech Services
+title: 会話の文字起こし - Speech Services
 titleSuffix: Azure Cognitive Services
-description: 会話の文字起こしサービスは、リアルタイムの音声認識、話者識別、およびダイアライゼーションを組み合わせた、Speech Services の高度な機能です。 会話の文字起こしサービスは、対面会議の文字起こしに最適です。話者を区別することができるため、だれがいつ何を言ったのかを知ることができ、参加者は会議に集中して次のステップにすばやく進むことができます。 この機能により、アクセシビリティも向上します。 文字起こしがあると、聴覚に障碍がある人が積極的に参加できます。
+description: 会話の文字起こしとは、Speech Services の高度な機能の 1 つであり、リアルタイムの音声認識、話者識別、およびダイアライゼーションを 1 つに結合したものです。 会話の文字起こしは、対面会議の文字起こしに最適です。話者を区別することができるため、だれがいつ何を発言したかを知ることができ、参加者は会議に集中して次のステップにすばやく進むことができます。 この機能により、アクセシビリティも向上します。 文字起こしがあると、聴覚に障碍がある人が積極的に参加できます。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c3269a9e57c0392e152fedfb640b9fae91a4989
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025699"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190266"
 ---
-# <a name="what-is-the-conversation-transcription-service"></a>会話の文字起こしサービスとは
+# <a name="what-is-conversation-transcription"></a>会話の文字起こしとは
 
-会話の文字起こしサービスは、リアルタイムの音声認識、話者識別、およびダイアライゼーションを組み合わせた、Speech Services の高度な機能です。 会話の文字起こしサービスは、対面会議の文字起こしに最適です。話者を区別することができるため、だれがいつ何を言ったのかを知ることができ、参加者は会議に集中して次のステップにすばやく進むことができます。 この機能により、アクセシビリティも向上します。 文字起こしがあると、聴覚に障碍がある人が積極的に参加できます。   
+会話の文字起こしとは、Speech Services の高度な機能の 1 つであり、リアルタイムの音声認識、話者識別、およびダイアライゼーションを 1 つに結合したものです。 会話の文字起こしは、対面会議の文字起こしに最適です。話者を区別することができるため、だれがいつ何を発言したかを知ることができ、参加者は会議に集中して次のステップにすばやく進むことができます。 この機能により、アクセシビリティも向上します。 文字起こしがあると、聴覚に障碍がある人が積極的に参加できます。   
 
-会話の文字起こしサービスでは、カスタマイズ可能な音声モデルによって正確な認識を実現し、業界および企業固有の語彙を理解するように調整できます。 さらに、会話の文字起こしサービスと Speech Devices SDK を組み合わせることで、マルチマイク デバイスのエクスペリエンスを最適化できます。
+会話の文字起こしは正確な認識が可能であり、音声モデルはカスタマイズ可能であるため、業種や会社に固有の語彙を理解するように調整できます。 さらに、会話の文字起こしと Speech Devices SDK を組み合わせると、マルチマイク デバイスのエクスペリエンスを最適化できます。
 
 >[!NOTE]
-> 現時点では、会話の文字起こしサービスは小規模な会議での使用をお勧めします。 大規模な会議向けに会話の文字起こしサービスを拡張したい場合は、お問い合わせください。
+> 現時点では、会話の文字起こしをお勧めできるのは小規模な会議です。 会話の文字起こしを大規模な会議に利用したいとお考えの場合は、ご連絡ください。
 
-次の図は、会話の文字起こしサービスと連携するハードウェア、ソフトウェア、およびサービスを示しています。
+次の図は、会話の文字起こしと連携するハードウェア、ソフトウェア、およびサービスを示しています。
 
-![会話の文字起こしサービスの入力の図](media/scenarios/conversation-transcription-service.png)
+![会話の文字起こしの入力の図](media/scenarios/conversation-transcription-service.png)
 
 >[!IMPORTANT]
 > 特定のジオメトリ構成で、7 つのマイクの循環配列が必要です。 仕様とデザインの詳細については、[Microsoft Speech Device SDK マイク](https://aka.ms/cts/microphone)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](https://aka.ms/cts/getsdk)に関するページを参照してください。
 
 ## <a name="get-started-with-conversation-transcription"></a>会話の文字起こしを使ってみる
 
-会話の文字起こしサービスを使用するには、3 つの手順を実行する必要があります。
+会話の文字起こしを使用するには、3 つのステップを実行する必要があります。
 
 1. ユーザーから音声サンプルを収集します。
 2. ユーザーの音声サンプルを使用して、ユーザー プロファイルを生成します。
@@ -54,19 +54,19 @@ ms.locfileid: "65025699"
 ユーザー プロファイルを作成するには、`GenerateVoiceSignature` API を使用する必要があります。 仕様の詳細とサンプル コードについては、以下を参照してください。
 
 > [!NOTE]
-> 現在、会話の文字起こしサービスは、`centralus` および `eastasia` リージョンで使用できます。
+> 会話の文字起こしは、現時点では "en-US" と "zh-CN" に対応しており、利用できるリージョンは `centralus` と `eastasia` です。
 
 * [REST の仕様](https://aka.ms/cts/signaturegenservice)
-* [会話の文字起こしサービスの使用方法](https://aka.ms/cts/howto)
+* [会話の文字起こしの使用方法](https://aka.ms/cts/howto)
 
 ## <a name="transcribe-and-identify-speakers"></a>文字起こしと話者の識別を行う
 
-会話の文字起こしサービスでは、文字起こしの生成と話者の識別のための入力として、マルチチャンネル オーディオ ストリームとユーザー プロファイルを想定しています。 オーディオおよびユーザー プロファイル データは、Speech Devices SDK を使用して、会話の文字起こしサービスに送信されます。 前に説明したように、会話の文字起こしサービスを使用するには、7 つのマイクの循環配列と Speech Devices SDK が必要です。
+会話の文字起こしは、マルチチャンネル オーディオ ストリームとユーザー プロファイルを入力として文字起こしの生成と話者の識別を行います。 オーディオとユーザー プロファイルのデータは、Speech Devices SDK を使用して会話の文字起こしサービスに送信されます。 既に説明したように、会話の文字起こしを使用するには円形 7 マイク アレイと Speech Devices SDK が必要です。
 
 >[!NOTE]
 > 仕様とデザインの詳細については、[Microsoft Speech Device SDK マイク](https://aka.ms/cts/microphone)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](https://aka.ms/cts/getsdk)に関するページを参照してください。
 
-会話の文字起こしサービスと Speech Devices SDK を使用する方法については、[会話の文字起こしサービスの使用方法](https://aka.ms/cts/howto)に関するページを参照してください。
+会話の文字起こしを Speech Devices SDK とともに使用する方法については、[会話の文字起こしの使用方法](https://aka.ms/cts/howto)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

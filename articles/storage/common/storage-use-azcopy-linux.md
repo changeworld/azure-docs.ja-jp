@@ -2,24 +2,29 @@
 title: AzCopy on Linux で Azure Storage にデータをコピーまたは移動する | Microsoft Docs
 description: AzCopy on Linux ユーティリティを使用して、BLOB およびファイル コンテンツとの間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-author: seguler
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
-ms.author: seguler
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9e97171d493e452f18bf805defad7ef6f480af0b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882227"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149009"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage および File Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
-ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Linux の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 [AzCopy on Windows](../storage-use-azcopy.md) には、Windows スタイルのコマンドライン オプションが用意されています。 この記事では AzCopy on Linux について説明します。 
+> [!IMPORTANT]
+> この記事では、以前のバージョンの AzCopy について説明します。
+>最新バージョンの AzCopy をインストールするには、[AzCopy v10](storage-use-azcopy-v10.md) に関するページを参照してください。
+
+以前のバージョンの AzCopy (AzCopy v8.1) をインストールすることを選択した場合は、ダウンロードできる AzCopy v8.1 の複数のバージョンが存在します。 AzCopy on Linux の対象プラットフォームは Linux で、POSIX スタイルのコマンドライン オプションが用意されています。 [AzCopy on Windows](../storage-use-azcopy.md) には、Windows スタイルのコマンドライン オプションが用意されています。 この記事では AzCopy on Linux について説明します。 
 
 > [!NOTE]  
 > AzCopy 7.2 バージョン以降、.NET Core の依存関係は AzCopy パッケージにパッケージ化されています。 7.2 バージョン以降を使用する場合、前提条件として .NET Core をインストールする必要はなくなりました。

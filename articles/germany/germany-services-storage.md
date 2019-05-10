@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.openlocfilehash: 2a2a9242642c8bc661859e3c847467fd724e461a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2756b45eb37e7bd523d71d91999e538487f65f4a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489786"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204874"
 ---
 # <a name="azure-germany-storage-services"></a>Azure Germany のストレージ サービス
 ## <a name="storage"></a>Storage
@@ -64,7 +64,7 @@ Azure Germany でのストレージ アカウントの URL はグローバル Az
 >
 >
 
-API の詳細については、[クラウド ストレージ アカウント コンストラクター](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.-ctor#Microsoft_WindowsAzure_Storage_CloudStorageAccount__ctor_Microsoft_WindowsAzure_Storage_Auth_StorageCredentials_System_String_System_String_System_Boolean_)に関するページを参照してください。
+API の詳細については、[クラウド ストレージ アカウント コンストラクター](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.-ctor#Microsoft_WindowsAzure_Storage_CloudStorageAccount__ctor_Microsoft_WindowsAzure_Storage_Auth_StorageCredentials_System_String_System_String_System_Boolean_)に関するページを参照してください。
 
 これらのオーバーロードに使用するエンドポイント サフィックスは、*core.cloudapi.de* です。
 

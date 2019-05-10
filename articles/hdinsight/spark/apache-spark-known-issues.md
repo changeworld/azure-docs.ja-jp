@@ -67,7 +67,7 @@ HDInsight Spark クラスターは、Spark-Phoenix コネクターをサポー�
 
 **対応策:**
 
-代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページをご覧ください。
+代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページをご覧ください。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter Notebook に関連する問題
 Jupyter Notebook に関連する既知の問題を以下に示します。

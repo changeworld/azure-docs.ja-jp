@@ -205,6 +205,8 @@
           href: restore-sql-database-azure-vm.md
         - name: バックアップした SQL Server データベースの管理
           href: manage-monitor-sql-database-backup.md
+    - name: Azure VM 上の SAP HANA データベースのバックアップ
+      href: backup-azure-sap-hana-database.md
     - name: Windows Server
       items:
         - name: Windows Server のファイルとフォルダーのバックアップ

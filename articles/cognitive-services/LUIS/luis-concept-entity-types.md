@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528035"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141035"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
@@ -97,7 +97,6 @@ LUIS では、さまざまな種類のエンティティが提供されます。
 |機械学習|マーク可能|チュートリアル|例<br>Response|エンティティの種類|目的|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**複合**](#composite-entity)|エンティティ型に関係なく、エンティティのグループ。|
-|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**階層構造**](#hierarchical-entity)|シンプルなエンティティのグループ。|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**リスト**](#list-entity)|項目の一覧と、完全なテキスト一致を使用して抽出されたそれらのシノニム。|
 |混合||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|エンティティの末尾の特定が困難なエンティティ。|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**事前構築済み**](#prebuilt-entity)|さまざまな種類のデータを抽出するために既にトレーニングされています。|
@@ -112,7 +111,7 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 ## <a name="composite-entity"></a>複合エンティティ
 
-複合エンティティは、事前構築済みエンティティ、シンプル エンティティ、正規表現エンティティ、リスト エンティティ、階層構造エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
+複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
 
 このエンティティは、次のようなデータに最適です。
 
@@ -126,18 +125,6 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 [チュートリアル](luis-tutorial-composite-entity.md)<br>
 [エンティティの JSON 応答例](luis-concept-data-extraction.md#composite-entity-data)<br>
-
-## <a name="hierarchical-entity"></a>階層構造エンティティ
-
-**階層エンティティは最終的に非推奨になります。エンティティのサブタイプを決定するには、階層エンティティではなく、[エンティティ ロール](luis-concept-roles.md)を使用します。**
-
-階層構造エンティティは、コンテキストから学習された子と呼ばれるシンプル エンティティのカテゴリです。
-
-![階層構造エンティティ](./media/luis-concept-entities/hierarchical-entity.png)
-
-### <a name="roles-versus-hierarchical-entities"></a>ロールと階層エンティティ
-
-[ロール](luis-concept-roles.md)では階層エンティティと同じ問題を解決しますが、すべてのエンティティの種類に適用されます。  
 
 ## <a name="list-entity"></a>リスト エンティティ
 
@@ -172,9 +159,9 @@ Pattern.any は、エンティティの開始位置と終了位置を示すた�
 |発話|
 |--|
 |The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例) は、アメリカ人によって今年執筆されましたか?<br>「**The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例)**」は、アメリカ人によって今年執筆されましたか?|
-|Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ) は、アメリカ人によって今年執筆されましたか?<br>「**Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ)**」は、アメリカ人によって今年執筆されましたか?|
-|The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説) は、アメリカ人によって今年執筆されましたか?<br>「**The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説)**」は、アメリカ人によって今年執筆されましたか?|
-|There's A Wocket In My Pocket! (ポケットにウォケットが!) は、アメリカ人によって今年執筆されましたか?<br>「**There's A Wocket In My Pocket! (ポケットにウォケットが!)**」 は、アメリカ人によって今年執筆されましたか?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
 
 ## <a name="prebuilt-entity"></a>事前構築済みのエンティティ
 

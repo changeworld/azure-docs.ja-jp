@@ -1,21 +1,21 @@
 ---
 title: Speech SDK で複数参加者の会話を文字起こしする - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Speech SDK で会話の文字起こしサービスを使用する方法について説明します。 C++、C#、および Java で使用できます。
+description: 会話の文字起こしを Speech SDK とともに使用する方法を説明します。 C++、C#、および Java で使用できます。
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: jhakulin
-ms.openlocfilehash: 73ab4cfa92a1efc49dea16ba2941cf16b7a1cf3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9de4faf18c54f7c7582ef5a8ab0648629d4f48e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025677"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190149"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Speech SDK で複数参加者の会話を文字起こしする
 
@@ -24,7 +24,7 @@ Speech SDK の **ConversationTranscriber** API を使用すると、会議や会
 ## <a name="limitations"></a>制限事項
 
 * 会話の文字起こしは、Windows、Linux、Android 上で C++、C#、および Java 向けにサポートされています。
-* ROOBO DevKit は、会話の文字起こしサービスで話者識別のために効率的に利用可能な複数マイクの循環配列を提供するため、会話の作成用にサポートされるハードウェア環境です。 [詳細については、Speech Devices SDK に関する記事を参照してください](speech-devices-sdk.md)。 
+* ROOBO DevKit は、会話の文字起こしサービスで話者識別のために効率的に利用可能な複数マイクの循環配列を提供するため、会話の作成用にサポートされるハードウェア環境です。 [詳細については、Speech Devices SDK に関する記事を参照してください](speech-devices-sdk.md)。
 * Speech SDK のサポートは、PCM 音声の 8 チャネルを使用した、音声のプル モードおよびプッシュ モードでのストリーミングの使用に制限されます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -78,7 +78,7 @@ class Program
 
 複数の参加者による会話を文字起こしするには、会話セッション用に作成された `AudioConfig` オブジェクトに関連付けられる `ConversationTranscriber` オブジェクトを作成し、`PullAudioInputStream` または `PushAudioInputStream` を使用して音声をストリーミングします。
 
-`MyConversationTranscriber` という ConversationTranscriber クラスがあるとします。 その場合のコードは次のようになります。 
+`MyConversationTranscriber` という ConversationTranscriber クラスがあるとします。 その場合のコードは次のようになります。
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -97,7 +97,7 @@ public class MyConversationTranscriber
         var stopTranscription = new TaskCompletionSource<int>();
 
         // Create an audio stream from a wav file.
-        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback 
+        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
         using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
         {
             // Creates a conversation transcriber using audio stream input.

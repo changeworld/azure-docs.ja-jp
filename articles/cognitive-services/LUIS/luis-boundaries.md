@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006830"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154568"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
@@ -31,9 +31,11 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | [アプリ名][luis-get-started-create-app] | * 既定の最大文字数 |
 | [バッチ テスト][batch-testing]| 10 データセット、データセットあたり 1000 発話|
 | 明示的なリスト | アプリケーションあたり 50|
+| 外部エンティティ | 無制限 |
 | [意図][intents]|アプリケーションあたり 500:499 のカスタムの意図、および必須の意図 _なし_。<br>[ディスパッチ ベース](https://aka.ms/dispatch-tool) アプリケーションには対応するディスパッチ ソースが 500。|
 | [リスト エンティティ](./luis-concept-entity-types.md) | 親: 50、子: 20,000 項目。 Canonical 名は *既定の最大文字数。シノニム値は長さ制限なし。 |
-| [機械学習エンティティ](./luis-concept-entity-types.md):<br> 複合、<br>  階層構造<br> シンプル|100 の親エンティティ (階層の子は含まない) または 330 のエンティティ (階層の子を含む) のいずれの制限。どちらも最初にユーザーのヒット数を制限します。<br><br>階層の例は、それぞれに 10 個の子がある 30 の階層になります。  これらの子が合計の 300 を使用し、階層の要素が残りの 30 を使用します。 |
+| [機械学習エンティティ + ロール](./luis-concept-entity-types.md): <br> 複合、<br>シンプル、<br>エンティティのロール|100 個の親エンティティの制限または 330 個のエンティティの制限のどちらかの、ユーザーが最初に達した制限。 ロールは、この境界の目的のためのエンティティとしてカウントされます。 例として、次のような 2 つのロールを持つシンプル エンティティで構成された複合があります。1 つの複合 + 1 つのシンプル + 2 つのロール = 330 エンティティのうちの 4 つ。|
+| [プレビュー - 動的なリスト エンティティ](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|クエリ予測エンドポイント要求あたり最大 1K のうちの 2 つのリスト|
 | [パターン](luis-concept-patterns.md)|アプリケーションあたり 500 パターン。<br>パターンの最大文字数: 400 文字。<br>パターンあたり 3 Pattern.any エンティティ<br>パターン内の入れ子になった省略可能なテキストの最大数: 2|
 | [Pattern.any](./luis-concept-entity-types.md)|アプリケーションあたり 100、パターンあたり 3 Pattern.any エンティティ |
 | [フレーズ リスト][phrase-list]|10 フレーズ リスト、リストあたり 5,000 項目|

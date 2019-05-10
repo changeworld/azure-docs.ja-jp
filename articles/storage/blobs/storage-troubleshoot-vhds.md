@@ -2,17 +2,18 @@
 title: Azure VM に接続されたディスクのトラブルシューティング | Microsoft Docs
 description: Azure 仮想マシンの仮想ハード ディスク (VHD) 用のトラブルシューティング リソースへのリンクを提供します。
 services: storage
-author: genlin
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: bf1aa75399f28b8dd1732bc9ec09c15e46132939
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: rogarana
+ms.reviewer: wmgries
+ms.openlocfilehash: c00fdf3ad02edc1faf0d3257d3836a1c2f44d682
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414170"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150782"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>Azure VM に接続されたディスクのトラブルシューティング 
 
@@ -22,12 +23,12 @@ Azure Virtual Machines (VM) は、OS ディスクおよび接続されたデー�
 
 リソース マネージャーのデプロイ内の VM に VHD が接続されている場合、ストレージのリソースを削除するときにエラーが発生する可能性があります。 この問題を解決するには、次の記事のいずれかを参照してください。 
 
-  * Linux 上の VM の場合: [Resource Manager デプロイでのストレージ削除エラー](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
-  * Windows 上の VM の場合: [Resource Manager デプロイでのストレージ削除エラー](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
+  * Linux VM 上: [Resource Manager デプロイメントでのストレージ削除エラー](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
+  * Windows VM 上: [Resource Manager デプロイメントでのストレージ削除エラー](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
 
 ## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>接続された VHD による VM の予期しない再起動のトラブルシューティング
 
 多数の VHD が接続されている VM で予期せず再起動が発生する場合、次のいずれかの記事を参照してください。
 
-  * Linux 上の VM の場合: [接続された VHD による VM の予期しない再起動](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * Windows 上の VM の場合: [接続された VHD による VM の予期しない再起動](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Linux VM 上: [接続された VHD による VM の予期しない再起動](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Windows VM 上: [接続された VHD による VM の予期しない再起動](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

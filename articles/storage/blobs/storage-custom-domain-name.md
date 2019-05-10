@@ -2,22 +2,23 @@
 title: Azure Storage アカウントのカスタム ドメイン名の構成 | Microsoft Docs
 description: Azure portal を使用して、独自の正規名 (CNAME) を Azure Storage アカウントの Blob ストレージまたは Web エンドポイントにマッピングします。
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: e40b6fe115d6b6dea38ead9f0b2550d96bd04c7a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112638"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148926"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
-Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。 Azure Blob Storage の既定のエンドポイントは *\<storage-account-name>.blob.core.windows.net* です。 また、[静的な Web サイト機能 (プレビュー)](storage-blob-static-website.md) の一部として生成された Web エンドポイントも使用できます。 *www\.contoso.com* などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントまたは Web エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにアクセスできます。
+Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。 Azure Blob Storage の既定のエンドポイントは *\<storage-account-name>.blob.core.windows.net* です。 また、[静的な Web サイト機能](storage-blob-static-website.md)の一部として生成された Web エンドポイントを使用することもできます。 *www\.contoso.com* などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントまたは Web エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにアクセスできます。
 
 > [!IMPORTANT]
 > Azure Storage では、カスタム ドメインでの HTTPS はまだネイティブでサポートされていません。 現在、[HTTPS 経由でカスタム ドメインを使用して Azure CDN から BLOB にアクセスする](storage-https-custom-domain-cdn.md)ことができます。
@@ -34,7 +35,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 | リソースの種類 | 既定の URL | カスタム ドメイン URL |
 | --- | --- | --- |
 | ストレージ アカウント | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| BLOB |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
+| Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
 | ルート コンテナー | http://mystorageaccount.blob.core.windows.net/myblob または http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob または http://www.contoso.com/$root/myblob |
 | Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] または http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] または http://mystorageaccount.[zone].web.core.windows.net/$web または http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web または http://www.contoso.com/ または http://www.contoso.com/$web/[indexdoc] または http://www.contoso.com/[indexdoc] |
 

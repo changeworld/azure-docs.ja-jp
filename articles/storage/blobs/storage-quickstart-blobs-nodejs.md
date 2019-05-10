@@ -2,25 +2,26 @@
 title: Node.js v2 用のクライアント ライブラリを使用して Azure Storage 内に BLOB を作成する方法
 description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Node.js v2 用の Azure Storage クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.author: tamram
-ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 7ca1eacd1add7453833b4b9ad1d4bd0fbef13ca7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750076"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149417"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Node.js v2 用のクライアント ライブラリを使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
 
 このハウツー ガイドでは、Node.js v2 用のクライアント ライブラリを使用して、Azure Blob Storage に対して BLOB をアップロード、ダウンロード、および一覧表示する方法について説明します。
 
 > [!TIP]
-> Node.js 用の Azure Storage クライアント ライブラリの最新バージョンは v10 です。 可能であれば、クライアント ライブラリの最新バージョンを使用することをお勧めします。 v10 の使用を開始する場合は、[クイック スタート: JavaScrip 用の Azure Storage クライアント ライブラリ v10 を使用して BLOB のアップロード、ダウンロード、一覧表示、および削除を行う方法 (プレビュー)](storage-quickstart-blobs-nodejs-v10.md) に関するページを参照してください。
+> Node.js 用の Azure Storage クライアント ライブラリの最新バージョンは v10 です。 可能であれば、クライアント ライブラリの最新バージョンを使用することをお勧めします。 V10 の使用を開始するには、「[クイック スタート: JavaScript 用の Azure Storage クライアント ライブラリ v10 を使用して BLOB のアップロード、ダウンロード、一覧表示、および削除を行う方法 (プレビュー)](storage-quickstart-blobs-nodejs-v10.md) に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

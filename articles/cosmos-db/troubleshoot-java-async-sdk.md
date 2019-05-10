@@ -4,17 +4,17 @@ description: クライアント側ログ、他のサード パーティのツー
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/28/2018
+ms.date: 04/30/2019
 ms.author: moderakh
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f0dc45f104e05fde083489604865aaae8282d6a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880077"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146204"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
 この記事では、Azure Cosmos DB SQL API アカウントで [Java Async SDK](sql-api-sdk-async-java.md) を使用するときの一般的な問題、回避策、診断手順、およびツールについて説明します。
@@ -57,6 +57,16 @@ ulimit -a
 
     サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
 * Azure VM にパブリック IP を割り当てます。
+
+##### <a name="cant-connect"></a>サービスに到達できない - ファイアウォール
+``ConnectTimeoutException`` は、SDK がサービスに到達できないことを示します。
+直接モードを使用しているときに、次のようなエラーが発生することがあります。
+```
+GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
+```
+
+アプリ マシン上でファイアウォールが実行されている場合は、直接モードで使用されるポート範囲 10,000 ～ 20,000 を開きます。
+また、「[ホスト マシンの接続制限](#connection-limit-on-host)」にも従ってください。
 
 #### <a name="http-proxy"></a>HTTP プロキシ
 

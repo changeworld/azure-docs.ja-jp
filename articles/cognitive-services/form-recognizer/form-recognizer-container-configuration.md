@@ -1,7 +1,7 @@
 ---
 title: コンテナーの構成 - Form Recognizer
 titleSuffix: Azure Cognitive Services
-description: Form Recognizer コンテナーを使用してフォームとテーブルのデータを解析する方法を説明します。
+description: Form Recognizer コンテナーを構成してフォームとテーブルのデータを解析する方法を学習します。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 6066e7856ddf8ef757afc2072218c87420a37c10
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3f6cc32f6fb2a9fb11220ac1a3134fb3ae4d2f84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025551"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147463"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 

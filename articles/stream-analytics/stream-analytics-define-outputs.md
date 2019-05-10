@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926056"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205526"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できる出力の種類について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、お手元のデータのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。
@@ -228,7 +228,7 @@ DateTime | String | String |  DateTime | String
 | テーブル名 |テーブルの名前。 テーブルが存在しない場合は、テーブルが作成されます。 |
 | パーティション キー |パーティション キーが含まれる出力列の名前です。 パーティション キーは、エンティティのプライマリ キーの最初の部分を形成する、テーブル内のパーティションの一意識別子です。 最大サイズが 1 KB の文字列値です。 |
 | 行キー |行キーが含まれる出力列の名前です。 行キーは、パーティション内のエンティティの一意識別子です。 エンティティのプライマリ キーの 2 番目の部分を形成します。 行キーは、最大サイズが 1 KB の文字列値です。 |
-| バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)に関するページを参照してください。 |
+| バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation)に関するページを参照してください。 |
 
 ## <a name="service-bus-queues"></a>Service Bus キュー
 [Service Bus キュー](https://msdn.microsoft.com/library/azure/hh367516.aspx)では、競合している 1 つ以上のコンシューマーへのメッセージ配信に FIFO が使用されます。 通常、メッセージはキューに追加された時間的順序で受信者によって受信され、処理されます。 各メッセージを受信し、処理するメッセージ コンシューマーは 1 つのみです。
