@@ -67,27 +67,29 @@
                 - name: VMSS 拡張機能のシーケンス処理によるディスク暗号化
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: ディスク暗号化に関する付録
-              href: azure-security-disk-encryption-appendix.md
-            - name: ディスク暗号化の FAQ
-              href: azure-security-disk-encryption-faq.md
-            - name: トラブルシューティング
-              href: azure-security-disk-encryption-tsg.md
-            - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
-              displayName: active directory
-              items:
-                - name: Azure AD アプリによるディスク暗号化の前提条件
+                  href: azure-security-disk-encryption-appendix.md
+                - name: ディスク暗号化の FAQ
+                  href: azure-security-disk-encryption-faq.md
+                - name: トラブルシューティング
+                  href: azure-security-disk-encryption-tsg.md
+                - name: Azure AD アプリを使用した Azure Disk Encryption (以前のリリース)
                   displayName: active directory
-                  href: azure-security-disk-encryption-prerequisites-aad.md
-                - name: Azure AD アプリによるディスク暗号化 (Windows VM)
-                  displayName: active directory
-                  href: azure-security-disk-encryption-windows-aad.md
-                - name: Azure AD アプリによるディスク暗号化 (Linux VM)
-                  displayName: active directory
-                  href: azure-security-disk-encryption-linux-aad.md
+                  items:
+                    - name: Azure AD アプリによるディスク暗号化の前提条件
+                      displayName: active directory
+                      href: azure-security-disk-encryption-prerequisites-aad.md
+                    - name: Azure AD アプリによるディスク暗号化 (Windows VM)
+                      displayName: active directory
+                      href: azure-security-disk-encryption-windows-aad.md
+                    - name: Azure AD アプリによるディスク暗号化 (Linux VM)
+                      displayName: active directory
+                      href: azure-security-disk-encryption-linux-aad.md
     - name: Azure Storage セキュリティ
       href: security-storage-overview.md
     - name: Storage のセキュリティ ガイド
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: カスタマー ロックボックス
+      href: azure-customer-lockbox-overview.md
 - name: プラットフォームとインフラストラクチャ
   items:
     - name: インフラストラクチャのセキュリティ

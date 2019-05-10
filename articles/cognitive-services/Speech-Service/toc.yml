@@ -139,8 +139,8 @@
       displayName: 'recognize speech, speech recognition, speech-to-text, stt'
     - name: オーディオ入力ストリームの使用 (SDK)
       href: how-to-use-audio-input-streams.md
-    - name: 圧縮されたオーディオ入力ストリームの使用 (SDK)
-      href: how-to-use-compressed-audio-input-streams.md
+    - name: コーデックにより圧縮されたオーディオ入力ストリームの使用 (SDK)
+      href: how-to-use-codec-compressed-audio-input-streams.md
       displayName: 'mp3, opus, ogg, flac'
     - name: オーディオ入力デバイスの選択 (SDK)
       href: how-to-select-audio-input-devices.md
@@ -184,7 +184,7 @@
               href: record-custom-voice-samples.md
             - name: テキスト読み上げの出力を微調整する
               href: how-to-voice-tuning.md
-        - name: カスタム ウェイク ワードの作成 (Devices SDK)
+        - name: カスタム ウェイク ワードを作成する (キーワード認識)
           href: speech-devices-sdk-create-kws.md
           displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
     - name: 移行
@@ -195,9 +195,9 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: Translator Speech API から
           href: how-to-migrate-from-translator-speech-api.md
-    - name: コンテナーの使用
+    - name: オンプレミスのコンテナーを使用する
       items:
-        - name: コンテナーのインストールと実行
+        - name: オンプレミスのコンテナーをインストールして実行する
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
           href: speech-container-howto.md
         - name: コンテナーを構成する
@@ -220,6 +220,8 @@
         - name: 概要
           href: speech-sdk.md
           displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
+        - name: シナリオの利用可否
+          href: scenario-availability.md
         - name: リリース ノート
           href: releasenotes.md
         - name: C++
@@ -255,6 +257,9 @@
         - name: 一括文字起こしとカスタマイズ
           href: 'https://westus.cris.ai/swagger/ui/index'
           displayName: 'Batch transcription, transcription, custom models, customization, model management'
+        - name: 会話の文字起こし
+          href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+          displayName: 'Conversation transcription, signature generation'
         - name: Webhook
           href: webhooks.md
           displayName: Webhooks

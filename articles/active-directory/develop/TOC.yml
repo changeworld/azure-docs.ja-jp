@@ -342,6 +342,8 @@
               items:
                 - name: キャッシュからトークンを取得する
                   href: msal-net-acquire-token-silently.md
+                - name: トークン キャッシュをクリアする
+                  href: msal-net-clear-token-cache.md
                 - name: オプションを使用してパブリック クライアントをインスタンス化する
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: オプションを使用して機密クライアントをインスタンス化する

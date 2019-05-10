@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985456"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65404969"
 ---
 診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/azure-monitor/app/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
@@ -23,7 +23,7 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
     VM が起動すると、ブート診断エージェントによってブート出力がキャプチャされて Azure Storage に格納されます。 VM の起動に関する問題は、このデータを使ってトラブルシューティングすることができます。 コマンド ライン ツールで VM を作成した場合、自動的にはブート診断が有効になりません。 ブート診断を有効にするにはまず、ブート ログを格納するためのストレージ アカウントを作成しておく必要があります。 Azure Portal でブート診断を有効にした場合、ストレージ アカウントが自動的に作成されます。
 
-    VM の作成時に有効にしなかった場合、ブート診断は後から [Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics)、または [Azure Resource Manager テンプレート](../articles/virtual-machines/windows/extensions-diagnostics-template.md)を使っていつでも有効にできます。
+    VM の作成時に有効にしなかった場合、ブート診断は後から [Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic)、または [Azure Resource Manager テンプレート](../articles/virtual-machines/windows/extensions-diagnostics-template.md)を使っていつでも有効にできます。
 
 - **ゲスト OS の診断データの収集を有効にする。** VM を作成するときに、設定画面でゲスト OS の診断を有効にすることができます。 診断データの収集を有効にすると、[Linux 用 IaaSDiagnostics 拡張機能](../articles/virtual-machines/linux/diagnostic-extension.md)または [Windows 用 IaaSDiagnostics 拡張機能](../articles/virtual-machines/windows/ps-extensions-diagnostics.md)が VM に追加され、ディスク、CPU、メモリに関して追加のデータを収集できるようになります。
 

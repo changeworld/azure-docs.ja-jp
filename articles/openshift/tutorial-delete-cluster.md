@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/06/2019
-ms.openlocfilehash: ce4142bdcdfb7a9ab687bb60dca91d6aab00c7bd
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 679be645f3c97d30df65c9f410d286d243bca73b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079417"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466574"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを削除する
 
@@ -78,4 +78,4 @@ az openshift delete --resource-group $CLUSTER_NAME --name $CLUSTER_NAME
 > [!div class="checklist"]
 > * Azure Red Hat OpenShift クラスターを削除する
 
-OpenShift の使用の詳細については、公式の [Red Hat OpenShift ドキュメント](https://access.redhat.com/documentation/openshift_dedicated/3/)を参照してください
+OpenShift の使用の詳細については、公式の [Red Hat OpenShift ドキュメント](https://docs.openshift.com/aro/welcome/index.html)を参照してください

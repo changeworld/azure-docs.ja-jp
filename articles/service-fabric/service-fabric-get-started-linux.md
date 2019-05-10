@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49d06c05af085624a0d495a65e139d3857a13fc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712621"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470244"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -334,7 +334,6 @@ Service Fabric SDK を削除するには、次のコマンドを実行します�
 * [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
-* [Linux クラスターでオペレーティング システムのファイルの部分置換を自動化する](service-fabric-patch-orchestration-application-linux.md)
 * [Service Fabric CLI の概要](service-fabric-cli.md)
 
 <!-- Links -->

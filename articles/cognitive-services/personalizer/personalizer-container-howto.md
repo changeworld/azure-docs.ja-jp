@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/09/2019
 ms.author: edjez
-ms.openlocfilehash: 2a62fd288f9118882e5cd9899ab572d4b247fc5a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a197531a7c78823271c0a5fa5413b76746f63a9a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156800"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507031"
 ---
 # <a name="install-and-run-personalizer-containers"></a>Personalizer コンテナーのインストールと実行
 
@@ -182,7 +182,7 @@ ApiKey={BILLING_KEY}
 
 Personalizer サービス コンテナーは、Azure アカウントの "_Personalizer サービス_" リソースを使用して、Azure に課金情報を送信します。 
 
-Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services のコンテナーから Microsoft に顧客データが送信されることはありません。 
+Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。  
 
 `docker run` コマンドでは、次の引数が課金の目的に使用されます。
 

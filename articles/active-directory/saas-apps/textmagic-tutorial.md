@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 66d0d791e4f32fc0828d400db7b59d836d221aee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c919d02a72565f42c125e6d123b48e2cedaea508
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261804"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>チュートリアル:Azure Active Directory と TextMagic の統合
 
@@ -116,10 +116,10 @@ TextMagic で Azure AD シングル サインオンを構成するには、次�
 
     | Name |   ソース属性| 名前空間  |
     | --------------- | --------------- | --------------- |
-    | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | User.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | User.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | phone               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | company | user.companyname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName               | User.givenname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName            | User.surname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | phone               | user.telephonenumber |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。

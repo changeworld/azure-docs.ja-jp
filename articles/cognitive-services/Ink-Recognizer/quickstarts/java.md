@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 43dc388c9f24e3975d6efddbeec6e096bf062548
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c3f5c3ae8501f3114920f3b06f7f8cafa05e83bb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025751"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406560"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>クイック スタート:Ink Recognizer REST API および Java を使用したデジタル インクの認識
 
@@ -30,7 +30,7 @@ ms.locfileid: "65025751"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Java&trade; Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 以降。
+- [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 以降。
 
 - Maven リポジトリから以下のライブラリをインポートします
     - [JSON in Java](https://mvnrepository.com/artifact/org.json/json) パッケージ

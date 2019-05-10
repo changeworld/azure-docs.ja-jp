@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122962"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472503"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -27,7 +27,7 @@ ms.locfileid: "58122962"
 
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>システム状態ファイルを同じサーバーに回復する
-次の手順では、Windows Server の構成を以前の状態にロールバックする方法を説明します。 サーバー構成を既知の安定した状態にロールバックすると非常に役立ちます。 次の手順では、Recovery Services コンテナーからサーバーのシステム状態を復元します。 
+次の手順では、Windows Server の構成を以前の状態にロールバックする方法を説明します。 サーバー構成を既知の安定した状態にロールバックすると非常に役立ちます。 次の手順では、Recovery Services コンテナーからサーバーのシステム状態を復元します。
 
 1. **Microsoft Azure Backup** スナップインを開きます。 スナップインがインストールされている場所がわからない場合は、コンピューターまたはサーバーで **Microsoft Azure Backup** を検索します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "58122962"
 
     ![Browse files](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-5. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 
+5. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。
 
     任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、**[時間]** ドロップダウン メニューから、特定の回復ポイントを選択します。
 
@@ -91,11 +91,11 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。 コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure Portal の *サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。 コンテナー資格情報ファイルを指定すると、そのコンテナー資格情報ファイルに関連付けられている Recovery Services コンテナーが表示されます。
 
 6. [バックアップ サーバーの選択] ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
-7. [回復モードの選択] ウィンドウで、**[システム状態]** を選択し、**[次へ]** をクリックします。 
+7. [回復モードの選択] ウィンドウで、**[システム状態]** を選択し、**[次へ]** をクリックします。
 
     ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、**[時間]** ドロップダウン メニューから特定の回復ポイントを選択します。 
+8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、**[時間]** ドロップダウン メニューから特定の回復ポイントを選択します。
 
     ![Search items](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -107,13 +107,13 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
     **[コピーを作成して両方のバージョンを保持する]** を選択すると、システム状態アーカイブ全体のコピーが作成されるのではなく、既存のシステム状態ファイル アーカイブの個々のファイルのコピーが作成されます。
 
-11. [確認] ウィンドウで回復の詳細を確認し、**[回復]** をクリックします。 
+11. [確認] ウィンドウで回復の詳細を確認し、**[回復]** をクリックします。
 
     ![[回復] をクリックして回復プロセスを確定する](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. *WindowsImageBackup* ディレクトリを、サーバーの重要ではないボリューム (D: など\) にコピーします。 通常は、Windows OS ボリュームが重要なボリュームです。
 
-13. 回復プロセスを完了するには、次のセクションを参照して、[復元されたシステム状態ファイルを Windows Server に適用](backup-azure-restore-system-state.md#apply-restored-system-state-on-a-windows-server)します。
+13. 回復プロセスを完了するには、次のセクションを参照して、[復元されたシステム状態ファイルを Windows Server に適用](#apply-restored-system-state-on-a-windows-server)します。
 
 
 
@@ -143,7 +143,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
    ![別のサーバーへの回復を選択する](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
-6. 場所の種類を指定します。システム状態バックアップを別のサーバーに回復した場合は、**[リモート共有フォルダー]** を選択します。 システム状態をローカルに回復した場合は、**[ローカル ドライブ]** を選択します。 
+6. 場所の種類を指定します。システム状態バックアップを別のサーバーに回復した場合は、**[リモート共有フォルダー]** を選択します。 システム状態をローカルに回復した場合は、**[ローカル ドライブ]** を選択します。
 
     ![ローカル サーバーと別のサーバーのどちらから回復するかを選択する](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
@@ -171,7 +171,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>システム状態の復元に失敗した場合のトラブルシューティング
 
-前述のシステム状態の適用プロセスが正常に完了しなかった場合は、Windows 回復環境 (Win RE) を使用して Windows Server を回復します。 次の手順では、Win RE を使用して回復する方法を説明します。 このオプションを使用するのは、システム状態の復元後に Windows Server が正常に起動しない場合だけです。 次のプロセスでは、システム データ以外のデータが消去されるので注意してください。 
+前述のシステム状態の適用プロセスが正常に完了しなかった場合は、Windows 回復環境 (Win RE) を使用して Windows Server を回復します。 次の手順では、Win RE を使用して回復する方法を説明します。 このオプションを使用するのは、システム状態の復元後に Windows Server が正常に起動しない場合だけです。 次のプロセスでは、システム データ以外のデータが消去されるので注意してください。
 
 1. Windows Server を Windows 回復環境 (Win RE) で起動します。
 

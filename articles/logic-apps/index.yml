@@ -19,7 +19,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: Azure でロジック アプリを作成する方法について説明します。
+        text: Azure 内で稼働するロジック アプリを作成する方法について説明します。
       - type: list
         style: icon48
         items:
@@ -27,6 +27,14 @@ sections:
               src: 'https://docs.microsoft.com/media/common/i_portal.svg'
             text: Azure ポータル
             href: /azure/logic-apps/quickstart-create-first-logic-app-workflow
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Visual Studio
+            href: /azure/logic-apps/quickstart-create-logic-apps-with-visual-studio
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code
+            href: /azure/logic-apps/quickstart-create-logic-apps-visual-studio-code
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph

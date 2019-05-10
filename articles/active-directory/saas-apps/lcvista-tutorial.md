@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7d2920e84e0e1e61627afe1fe029e047e13ed02
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 819f7d12f0554145295a0ec4f1eff7cb404d552d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276424"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル:Azure Active Directory と LCVista の統合
 
@@ -140,13 +140,13 @@ LCVista で Azure AD シングル サインオンを構成するには、次の�
 
     c. Azure portal からメモ帳にダウンロードしたメタデータ XML ファイルを開き、値 **X509Certificate** をコピーして **[x509 Certificate]\(x509 証明書\)** セクションに貼り付けます。
 
-    d. **[First Name Attribute (名属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を貼り付けます。
+    d. **[First Name Attribute (名属性)]** ボックスに、値 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を貼り付けます。
 
-    e. **[Last Name Attribute (姓属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` を貼り付けます。
+    e. **[Last Name Attribute (姓属性)]** ボックスに、値 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` を貼り付けます。
 
-    f. **[Email Attribute (メール属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます。
+    f. **[Email Attribute (メール属性)]** ボックスに、値 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます。
 
-    g. **[Username Attribute (ユーザー名属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` を貼り付けます。
+    g. **[Username Attribute (ユーザー名属性)]** ボックスに、値 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` を貼り付けます。
 
     e. **[保存]** をクリックして設定を保存します。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492315"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405680"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -236,12 +236,12 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 1. Azure portal で、**Srv-Work** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Srv-Jump** 仮想マシンに接続し、サインインします。 そこから **Srv-Work** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
 
-3. Internet Explorer を開き、 http://www.google.com を参照します。
+3. Internet Explorer を開き、 https://www.google.com を参照します。
 4. Internet Explorer のセキュリティ アラートで、**[OK]** > **[閉じる]** の順に選択します。
 
    Google のホーム ページが表示されます。
 
-5. http://www.microsoft.com を参照します。
+5. https://www.microsoft.com を参照します。
 
    ファイアウォールによってブロックされます。
 

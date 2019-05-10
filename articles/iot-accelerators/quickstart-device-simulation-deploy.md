@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 0fcd688c9e5164522a482a4375c524a97a48d400
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175626"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467888"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>クイック スタート:Azure で IoT デバイス シミュレーションをデプロイして実行する
 
@@ -36,7 +36,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 デバイス シミュレーションの説明ページで、**[今すぐ試してみる]** をクリックします。
 
-![[今すぐ試してみる] をクリックする](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+![[今すぐ試してみる] をクリックする](./media/quickstart-device-simulation-deploy/devicesimulationpdp1.png)
 
 **[Create Device Simulation solution]\(デバイス シミュレーション ソリューションの作成\)** ページで、一意の **[Solution name]\(ソリューション名\)** を入力します。
 
@@ -58,7 +58,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 初めて開くと、デバイス シミュレーション ダッシュボードに**ファースト ステップ** ガイドが表示されます。 サンプル シミュレーションを開くには、最初のタイルをクリックします。 **ファースト ステップ** ガイドを閉じた場合、**サンプルの簡単なシミュレーション**を開くには、ダッシュボードでそのタイルをクリックします。
 
-![ソリューションのダッシュボード](./media/quickstart-device-simulation-deploy/GettingStarted.png)
+![ソリューションのダッシュボード](./media/quickstart-device-simulation-deploy/gettingstarted1.png)
 
 ## <a name="sample-simulation"></a>サンプル シミュレーション
 
@@ -72,7 +72,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 | Telemetry frequency (テレメトリ頻度) | 10 秒                  |
 | シミュレーション期間 | Run indefinitely (無期限に実行する)            |
 
-![シミュレーションの構成](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
+![シミュレーションの構成](./media/quickstart-device-simulation-deploy/samplesimulation1.png)
 
 ## <a name="run-the-simulation"></a>シミュレーションを実行する
 

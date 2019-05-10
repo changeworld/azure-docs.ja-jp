@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 4f48fc0ad65984df42e2a85853f39e49d7481302
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d5a4b3a07854c2664de7ec60f3677b666798a9bd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020435"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237092"
 ---
 ### <a name="standard-and-neural-voices"></a>標準およびニューラル音声
 

@@ -643,8 +643,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: クラスター ノードへのパッチの適用 (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: クラスター ノードへのパッチの適用 (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: ディスク暗号化の有効化 (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: ディスク暗号化の有効化 (Linux)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425969"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467803"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -107,7 +107,7 @@ IoT Central によって有効になる主要なシナリオは、最初に登�
 
 次の図で、このフローについて概説します。
 
-![接続の設定](media/concepts-connectivity/device-connection-flow.png)
+![接続の設定](media/concepts-connectivity/device-connection-flow1.png)
 
 次の手順では、このプロセスについて詳しく説明します。 手順は、デバイス認証に SAS と X.509 のどちらの証明書を使用しているかによって若干異なります。
 

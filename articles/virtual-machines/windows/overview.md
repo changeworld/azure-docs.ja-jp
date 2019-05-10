@@ -16,16 +16,16 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24914cc3ff673d04e8c181082e13c087aeabe709
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 604a47ef73d50a2d127d1569b0b6a240a7a27d73
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765750"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506837"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
-Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](../../app-service/overview-compare.md)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
+Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](/azure/architecture/guide/technology-choices/compute-decision-tree)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 
 Azure VM は、VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。 ただし、VM のメンテナンス、つまり VM 上で動作するソフトウェアの構成、その修正プログラムの適用、インストールは必要です。
 
@@ -53,12 +53,12 @@ Azure でアプリケーション インフラストラクチャを構築する�
 
 Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
-### <a name="locations"></a>場所
+### <a name="locations"></a>Locations
 Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | --- | --- |
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
@@ -80,7 +80,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
@@ -96,18 +96,18 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 
 * **カスタム スクリプトの実行** – [カスタム スクリプト拡張機能](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を利用すれば、VM のプロビジョニングの際にスクリプトを実行して、VM でワークロードを構成できます。
 * **構成のデプロイと管理** – [PowerShell Desired State Configuration (DSC) 拡張機能](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を利用すれば、VM で DSC をセットアップして構成と環境を管理できます。
-* **診断データの収集** – [Azure 診断拡張機能](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を利用すれば、アプリケーションの正常性を監視するために使用できる診断データを収集するように VM を構成できます。
+* **診断データの収集** – [Azure Diagnostics 拡張機能](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を利用すれば、アプリケーションの正常性を監視するために使用できる診断データを収集するように VM を構成できます。
 
 ### <a name="related-resources"></a>関連リソース
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
 
-| リソース | 必須 | 説明 |
+| Resource | 必須 | 説明 |
 | --- | --- | --- |
-| [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |[はい] |VM は、リソース グループに含まれる必要があります。 |
-| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |[はい] |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
-| [Virtual Network](../../virtual-network/virtual-networks-overview.md) |[はい] |VM は、仮想ネットワークのメンバーである必要があります。 |
+| [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
+| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
+| [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
 | [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |いいえ  |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
-| [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |[はい] |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
+| [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
 | [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ  |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 
 ## <a name="how-do-i-create-my-first-vm"></a>最初の VM の作成方法
@@ -115,7 +115,7 @@ VM を作成する際、いくつかの選択肢があります。 どの選択�
 
 次の表は、VM の作成を開始するうえでの情報を提供します。
 
-| 方法 | 記事 |
+| Method | 記事 |
 | --- | --- |
 | Azure ポータル |[ポータルを使用して Windows を実行する仮想マシンを作成する](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | テンプレート |[リソース マネージャー テンプレートで Windows 仮想マシンを作成する](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
@@ -132,7 +132,7 @@ VM は、ブラウザーベースのポータル、スクリプトがサポー�
 ### <a name="get-information-about-a-vm"></a>VM に関する情報の取得
 次の表に、VM に関する情報の取得方法の一部を示します。
 
-| 方法 | 説明 |
+| Method | 説明 |
 | --- | --- |
 | Azure ポータル |ハブ メニューの **[仮想マシン]** をクリックし、一覧から VM を選択します。 その VM のブレードで、概要情報を確認したり、値の設定やメトリックの監視を実行したりできます。 |
 | Azure PowerShell |PowerShell を使用して VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |

@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: d10ee8c1af85de5eb79cd4a4af6882c7a8f084f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b0a6c016b2be12ac6686b3748b4b16281899323e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157879"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511056"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
 Azure Image Builder では、スクリプトの使用、または GitHub や Azure Storage などの複数の場所からのファイルのコピーがサポートされています。これらを使うには、それらが Azure Image Builder に外部からアクセスできる必要がありますが、SAS トークンを使って Azure Storage BLOB を保護できます。
 
-この記事で説明する、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法では、サービスは[ユーザー割り当てマネージド ID](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) を使ってイメージのカスタマイズのために Azure Storage 内のファイルにアクセスするので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要はありません。
+この記事で説明する、Azure VM Image Builder を使ってカスタマイズされたイメージを作成する方法では、サービスは[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使ってイメージのカスタマイズのために Azure Storage 内のファイルにアクセスするので、ファイルをパブリック アクセス可能にしたり、SAS トークンを設定したりする必要はありません。
 
 次の例では、2 つのリソース グループを作成します。1 つはカスタム イメージ用に使われ、もう 1 つはスクリプト ファイルを含む Azure ストレージ アカウントをホストします。 これは、ビルド成果物またはイメージ ファイルが Image Builder の外部の別のストレージ アカウントに存在することがある、現実のシナリオをシミュレートするものです。 ユーザー割り当て ID を作成した後、それにスクリプト ファイルに対する読み取りアクセス許可を付与しますが、そのファイルへのパブリック アクセスは設定しません。 その後、シェル カスタマイザーを使ってそのスクリプトをストレージ アカウントからダウンロードし、実行します。
 
@@ -27,7 +27,7 @@ Azure Image Builder では、スクリプトの使用、または GitHub や Azu
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-## <a name="register-the-features"></a>機能を登録する
+## <a name="register-the-features"></a>機能の登録
 プレビュー中に Azure Image Builder を使用するには、新しい機能を登録する必要があります。
 
 ```azurecli-interactive
@@ -130,7 +130,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 
-ID を作成し、スクリプト ストレージ アカウントに対するアクセス許可を割り当てます。 詳しくは、「[ユーザー割り当てマネージド ID](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)」をご覧ください。
+ID を作成し、スクリプト ストレージ アカウントに対するアクセス許可を割り当てます。 詳しくは、「[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)」をご覧ください。
 
 ```azurecli-interactive
 # Create the user assigned identity 

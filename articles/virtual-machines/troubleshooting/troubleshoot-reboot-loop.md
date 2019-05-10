@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1c97b1da094b759ccf85f310ceec4c7abfd91b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085594"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472290"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM での Windows 再起動ループ
 この記事では、Microsoft Azure の Windows 仮想マシン (VM) で発生する可能性がある再起動ループについて説明します。
@@ -102,6 +102,8 @@ ms.locfileid: "58085594"
 VM を前回正常起動時の構成に復元してから、「[Azure Windows VM を前回正常起動時の構成で起動する方法](https://support.microsoft.com/help/4016731/)」の手順に従います。
 
 ### <a name="solution-for-cause-3"></a>原因 3 の解決策
+>[!NOTE]
+>次の手順は最後の手段としてのみ使用してください。 regback から復元すると、マシンへのアクセスが復元されますが、OS は安定していないと見なされます。ハイブのタイムスタンプと現在の日付の間でレジストリに失われたデータがあるためです。 新しい VM を構築して、データを移行する計画を立てる必要があります。
 
 1. ディスクをトラブルシューティング用 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。
 
@@ -113,5 +115,4 @@ VM を前回正常起動時の構成に復元してから、「[Azure Windows VM
 
 5. [OS ディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
 
->[!NOTE]
->次の手順は最後の手段としてのみ使用してください。 regback から復元すると、マシンへのアクセスが復元されますが、OS は安定していないと見なされます。ハイブのタイムスタンプと現在の日付の間でレジストリに失われたデータがあるためです。 新しい VM を構築して、データを移行する計画を立てる必要があります。
+

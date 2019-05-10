@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 05/02/2019
 ms.topic: hub-page
-ms.openlocfilehash: b76f670c6d2e28ea2cb5ee1cece13cf1023af09f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 027d6c862deb9efeaa8d30dd6acbc814ac230c80
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021500"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464484"
 ---
 <div id="main" class="v2">
 <h1>Azure Cognitive Services のドキュメント</h1>

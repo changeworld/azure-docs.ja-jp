@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108105"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466920"
 ---
 # <a name="add-an-email-action"></a>電子メール アクションを作成する
 
@@ -102,11 +102,11 @@ ms.locfileid: "58108105"
 
 1. **[office365-connector]\(Office365 コネクタ\)** をクリックします。
 
-    ![API 接続](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector.png)
+    ![API 接続](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. 承認プロセスを開始するバナーをクリックします。
 
-    ![承認](./media/iot-accelerators-remote-monitoring-email-actions/connector.png)
+    ![承認](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
 1. **[承認]** をクリックします。 サインインするように求められます。 サインインに使用するアカウントは、アプリケーションで電子メール通知を送信する際に使用する電子メール アドレスでなければなりません。
 
@@ -116,7 +116,7 @@ ms.locfileid: "58108105"
 
 1. 通知の送信元の電子メール アドレスを変更するには、 **[API 接続の編集]** をクリックします。
 
-    ![電子メールの変更](./media/iot-accelerators-remote-monitoring-email-actions/editemail.png)
+    ![電子メールの変更](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
 ### <a name="owner-role-outlook-setup"></a>所有者ロールの Outlook のセットアップ
 
@@ -142,7 +142,7 @@ ms.locfileid: "58108105"
 
 リモート監視ソリューション アクセラレータには、アクション電子メール用のすぐに使用できる基本的な HTML テンプレートが用意されています。 電子メール テンプレートでは、電子メール アクション設定からの値が使用されます。 電子メールの例を次に示します。
 
-![電子メールの例](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
+![電子メールの例](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
 次の手順は、HTML 電子メール テンプレートの編集方法を示しています。 たとえば、より多くの情報を含めたり、カスタム イメージを追加したりすることが可能です。
 
