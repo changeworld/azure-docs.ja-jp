@@ -6,7 +6,7 @@ metadata:
   description: Microsoft ID プラットフォームを使用することで、すべての Microsoft ID 内のユーザーに安全にサインインして、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得するアプリを構築する方法について説明します。
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na
