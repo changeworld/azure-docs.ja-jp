@@ -37,7 +37,7 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
    ロジック アプリを初めて使用する場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧で、トリガー **HTTP 要求の受信時**
+1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧で次のトリガーを選択します: **HTTP 要求の受信時**
 
    ![トリガーの選択](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
