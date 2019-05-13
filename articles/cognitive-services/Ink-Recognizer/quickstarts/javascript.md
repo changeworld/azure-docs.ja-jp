@@ -154,6 +154,7 @@ ms.locfileid: "65025767"
         xhttp.setRequestHeader("content-type", "application/json");
         xhttp.send(JSON.stringify(sampleJson));
         };
+        ```
 
 ## <a name="run-the-application-and-view-the-response"></a>アプリケーションを実行し、応答を表示する
 
@@ -163,7 +164,6 @@ ms.locfileid: "65025767"
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2089907)
-
 
 デジタル インキング アプリで Ink Recognition API がどのように動作するかを確認するには、GitHub 上の次のサンプル アプリケーションを参照してください。
 * [C# およびユニバーサル Windows プラットフォーム (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
