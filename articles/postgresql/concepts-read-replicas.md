@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL の読み取りレプリカ
-description: この記事では、Azure Database for PostgreSQL の読み取りレプリカ機能について説明します。
+title: Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
+description: この記事では、Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789976"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067428"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の読み取りレプリカ
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
 読み取りレプリカ機能を使用すると、Azure Database for PostgreSQL サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから同じ Azure リージョン内の最大 5 つのレプリカにレプリケートできます。 レプリカは、PostgreSQL エンジンのネイティブ レプリケーション テクノロジを使用して非同期的に更新されます。
 

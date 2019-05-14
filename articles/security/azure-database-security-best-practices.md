@@ -1,9 +1,9 @@
 ---
-title: Azure のデータベース セキュリティに関するベスト プラクティス | Microsoft Docs
+title: データベース セキュリティに関するベスト プラクティス | Microsoft Azure
 description: この記事では、Azure のデータベース セキュリティに関するベスト プラクティス一式を提供します。
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''
@@ -12,28 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
-ms.author: tomsh
-ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 05/06/2019
+ms.author: terrylan
+ms.openlocfilehash: f59d349da023f9a1b21477a05750d4f8e9aef500
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117971"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187756"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
+この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。
+
+これらのベスト プラクティスは、集約された意見に基づくものであり、Azure プラットフォームの最新の機能に対応しています。 人の考えやテクノロジは時間の経過と共に変化するため、この記事は、それらの変化が反映されるように定期的に更新されます。
+
+## <a name="secure-databases"></a>データベースをセキュリティで保護する
 データベースを管理するうえでセキュリティは最大の懸念事項であり、[Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
-
-この記事では、Azure のデータベース セキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のデータベース セキュリティに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
-
-それぞれのベスト プラクティスについて、次の点を説明します。
-
--   ベスト プラクティスの内容
--   そのベスト プラクティスをお勧めする理由
--   そのベスト プラクティスを実践しなかった場合に発生する可能性がある事態
--   そのベスト プラクティスを実践する方法
-
-この「Azure のデータベース セキュリティに関するベスト プラクティス」の記事は、この記事の執筆時点における共通認識と、Azure プラットフォームの機能および機能セットに基づいています。 共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>ファイアウォール規則を使用してデータベースへのアクセスを制限する
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 アクセス セキュリティを提供するために、SQL Database は以下を使用してアクセスを制御します。
@@ -137,7 +131,7 @@ SQL Server データベース エンジンまたは個々のデータベース�
 
 インストールに対する政府や標準の要件に応じて、SQL Server には複数のレベルの監査があります。 SQL Server 監査では、さまざまなサーバーおよびデータベース オブジェクトで監査を有効化、格納、表示するためのツールとプロセスが提供されます。
 
-[Azure SQL Database Auditing](../sql-database/sql-database-auditing.md) では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
+[Azure SQL Database 監査](../sql-database/sql-database-auditing.md) では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
 
 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違反を示す矛盾や異常に対する洞察が容易になります。 監査は、標準準拠を促進しますが、準拠を保証するものではありません。
 

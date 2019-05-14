@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: マスター VHD イメージを準備してカスタマイズする
       href: set-up-customize-master-image.md
+    - name: マスター VHD イメージに Office をインストールする
+      href: install-office-on-wvd-master-image.md
     - name: Windows Virtual Desktop の GPU を構成する
       href: configure-vm-gpu.md
     - name: セッション ホストを自動的にスケーリングする

@@ -314,8 +314,9 @@
                 - name: Status Monitor
                   href: app/monitor-performance-live-website-now.md
                 - name: Status Monitor v2
-                  href: app/status-monitor-v2-overview.md
                   items:
+                    - name: 概要
+                      href: app/status-monitor-v2-overview.md
                     - name: 使用の開始
                       href: app/status-monitor-v2-get-started.md
                     - name: 詳しい手順
@@ -557,7 +558,7 @@
                   href: app/usage-workbooks.md
             - name: Web アプリ分析ソリューション
               href: insights/azure-web-apps-analytics.md
-            - name: Kubernetes でホストされているアプリ
+            - name: Kubernetes アプリケーションの監視
               href: app/kubernetes.md
         - name: コンテナーの監視
           items:
@@ -631,8 +632,18 @@
                   href: insights/vminsights-known-issues.md
                 - name: FAQ
                   href: insights/vminsights-faq.md
-                - name: 利用開始
-                  href: insights/vminsights-onboard.md
+                - name: 監視の有効化
+                  items:
+                    - name: 監視の有効化の概要
+                      href: insights/vminsights-enable-overview.md
+                    - name: 単一の Azure VM での有効化
+                      href: insights/vminsights-enable-single-vm.md
+                    - name: Azure Policy を使用して有効にする
+                      href: insights/vminsights-enable-at-scale-policy.md
+                    - name: Azure PowerShell を使用して有効にする
+                      href: insights/vminsights-enable-at-scale-powershell.md
+                    - name: ハイブリッド環境対応にする
+                      href: insights/vminsights-enable-hybrid-cloud.md
                 - name: 正常性の監視
                   href: insights/vminsights-health.md
                 - name: 依存関係のマップ

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495534"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140936"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -41,6 +41,9 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 ### <a name="v2"></a>バージョン 2.x
 
 バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。 .NET Core 2.x SDK を先にインストールしておく必要があります。
+
+> [!IMPORTANT]
+> プロジェクトの host.json ファイルで拡張機能のバンドルを有効にした場合は、.NET Core 2.x SDK をインストールする必要はありません。 詳細については、 [Azure Functions Core Tools と拡張機能のバンドルを使用したローカルの開発](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)を参照してください。 拡張機能のバンドルには、バージョン 2.6.1071 以降の Core Tools が必要です。
 
 #### <a name="windows-npm"></a>Windows
 
@@ -183,7 +186,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
 | Setting      | 説明                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | `true` に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は `false` です。 |
+| **`IsEncrypted`** | `true` に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は `true` です。 `true` の場合、`func settings add` を使用して追加されたすべての設定は、ローカル コンピューターのキーを使用して暗号化されます。 これは、Azure のアプリケーション設定で関数アプリの設定が格納される方法と同じです。 ローカルの設定値を暗号化することで、local.settings.json が公開された場合でも、重要なデータに対して追加の保護を提供できます。  |
 | **`Values`** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、[`AzureWebJobsStorage`] など、Azure 内のご自分の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[Blob Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の `Connection` など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、`Values` 配列にアプリケーション設定を定義する必要があります。 <br/>[`AzureWebJobsStorage`] は、HTTP 以外のトリガーに必要なアプリ設定です。 <br/>Functions ランタイムのバージョン 2.x には、[`FUNCTIONS_WORKER_RUNTIME`] 設定が必要です。これは、Core Tools によってご自分のプロジェクトのために生成されます。 <br/> [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、[`AzureWebJobsStorage`] を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
 | **`Host`** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
 | **`LocalHttpPort`** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
@@ -310,6 +313,7 @@ func host start
 | **`--script-root --prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
 | **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値は20 秒。|
 | **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
+| **`--enableAuth`** | 完全な認証処理パイプラインを有効にします。|
 
 C# クラス ライブラリ プロジェクト (.csproj) の場合は、ライブラリの .dll を生成するための `--build` オプションを含める必要があります。
 

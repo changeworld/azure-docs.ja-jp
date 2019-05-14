@@ -11,14 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074101"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465641"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>クイック スタート:Speech SDK、UWP を使用して音声優先仮想アシスタントを作成する
+
+クイック スタートは[音声変換](quickstart-csharp-uwp.md)と[音声翻訳](quickstart-translate-speech-uwp.md)にも使用できます。
 
 この記事では、[Speech SDK](speech-sdk.md) を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを開発します。 このプログラムは、以前に作成および構成されたボットに接続して、クライアント アプリケーションからの音声優先仮想アシスタント エクスペリエンスを可能にします。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
 
@@ -80,16 +82,16 @@ ms.locfileid: "65074101"
             <MediaElement x:Name="mediaElement"/>
         </Grid>
     </Page>
-        ```
+    ```
 
-1. Open the code-behind source file `MainPage.xaml.cs`. You'll find it grouped under `MainPage.xaml`. Replace the contents with the code below. Here's what this sample covers: 
+1. コードビハインド ソース ファイル `MainPage.xaml.cs` を開きます。 これは `MainPage.xaml` 以下にグループ化されます。 内容を次のコードに置き換えます。 このサンプルの内容を次に示します。 
 
-    * Using statements for the Speech and Speech.Dialog namespaces
-    * A simple implementation to ensure microphone access, wired to a button handler
-    * Basic UI helpers to present messages and errors in the application
-    * A landing point for the initialization code path that will be populated later
-    * A helper to play back text-to-speech (without streaming support)
-    * An empty button handler to start listening that will be populated later
+    * Speech および Speech.Dialog 名前空間に対するステートメントの使用
+    * ボタン ハンドラーに接続された、マイクへのアクセスを確実にするための簡単な実装
+    * アプリケーション内のメッセージとエラーを表示する基本的な UI ヘルパー
+    * 後で設定される初期化コード パスのランディング ポイント
+    * テキスト読み上げを再生するヘルパー (ストリーミングのサポートなし)
+    * 後で設定されるリスニングを開始するための空のボタン ハンドラー
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,7 +241,7 @@ ms.locfileid: "65074101"
             }
         }
     }
-     ```
+    ```
 
 1. 次に、サブスクリプション情報を使用して `SpeechBotConnector` を作成します。 `InitializeBotConnector` のメソッド本体に以下を追加し、文字列 `YourChannelSecret`、`YourSpeechSubscriptionKey`、および `YourServiceRegion` を、お使いのボット、音声サブスクリプション、および[リージョン](regions.md)の独自の値に置き換えます。
 

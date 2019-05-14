@@ -12,15 +12,15 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7c330846cd907f35bb23ae5e453383d7c35222e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024015"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471893"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK でのデータの読み込みと読み取り
-この記事では、Azure Machine Learning Data Prep SDK を使用してデータを読み込むさまざまな方法について説明します。 SDK の参照ドキュメントについては、[参照](https://aka.ms/data-prep-sdk) をご覧ください。 SDK では、次のような複数のデータ インジェスト機能がサポートされます。
+この記事では、Azure Machine Learning Data Prep SDK を使用してデータを読み込むさまざまな方法について説明します。  SDK では、次のような複数のデータ インジェスト機能がサポートされます。
 
 * パラメーターの推論 (エンコード、区切り、ヘッダー) を解析してさまざまな種類のファイルから読み込む
 * ファイルの読み込み中に推論を使用した型変換
@@ -28,6 +28,7 @@ ms.locfileid: "65024015"
 
 > [!Important]
 > 新しいソリューションを構築している場合は、データの探索と準備に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
+> `azureml-datasets` パッケージを使用してデータセットを作成するのではなく、`azureml-dataprep` パッケージを使用し、変換を使用してデータフローを作成した場合、後でスナップショットまたはバージョン管理されたデータセットを使用することはできません。
 
 次の表は、一般的なファイル タイプからのデータの読み込みに使用される関数の選択を示します。
 
@@ -315,5 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>次の手順
 
-* 設計パターンと使用例については、SDK の [概要](https://aka.ms/data-prep-sdk) を参照してください
 * 特定のシナリオを解決するサンプルについては Azure Machine Learning Data Prep SDK の [チュートリアル](tutorial-data-prep.md) をご覧ください。

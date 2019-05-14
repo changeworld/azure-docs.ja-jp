@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL サーバー上で TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する
-description: この記事では、Azure Database for PostgreSQL サーバー上で TOAST テーブル ストレージ戦略を使用して、クエリ時間を最適化する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server で TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する
+description: この記事では、Azure Database for PostgreSQL - Single Server で TOAST テーブル ストレージ戦略を使用して、クエリ時間を最適化する方法について説明します。
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 5/6/2019
+ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820873"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066970"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>TOAST テーブル ストレージ戦略を使用してクエリ時間を最適化する 
 この記事では、TOAST (The Oversized-Attribute Storage Technique) テーブル ストレージ戦略を使用して、クエリ時間を最適化する方法について説明します。

@@ -1,20 +1,20 @@
 ---
-title: Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング
-description: Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング方法について説明します。
+title: Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング
+description: Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 9026b561f52b2d43fff2d3e36ba569d7b62a4684
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886424"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069021"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Azure Database for PostgreSQL への接続に関する問題のトラブルシューティング
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング
 
 接続の問題は、次をはじめとするさまざまなにことよって発生する可能性があります。
 

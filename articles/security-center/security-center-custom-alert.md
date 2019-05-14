@@ -14,32 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9bf4f604386b47e4ca36df69fb140124b097f548
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576898"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192622"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure Security Center のカスタム アラート ルール (プレビュー)
 このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。
 
 > [!NOTE]
-> カスタム アラートは間もなく廃止されます。次に紹介する代替のサービスについて、詳細を参照してください。
+> カスタム アラートは、2019 年 6 月 30 日に廃止されます。
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Azure Security Center のカスタム アラート ルールの提供終了
 
-カスタム アラート エクスペリエンスは、Azure Monitor クラシック アラート サービスの提供終了のため、2019 年 6 月 30 日に提供が終了されます。 非推奨となるまでの期間、ユーザーは、既存のカスタム アラート ルールを編集することはできますが、新しいものを追加することはできません。
-ユーザーは、ワンクリック オンボードで、[Azure Sentinel](https://azure.microsoft.com/en-us/services/azure-sentinel/) を有効にし、既存のアラートを自動的に移行し、新しいアラートを作成するか、または Azure Monitor ログ アラートでアラートを再作成することをお勧めします。
+カスタム アラート エクスペリエンスは、基になっていたインフラストラクチャが廃止されることから、2019 年 6 月 30 日に廃止される予定です。 非推奨となるまでの期間、ユーザーは、既存のカスタム アラート ルールを編集することはできますが、新しいものを追加することはできません。
+ユーザーには次のどちらかをお勧めします。
+- ワンクリック オンボードで [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) を有効にして、既存のアラートを自動的に移行し、新しいアラートを作成します
+- Azure Monitor ログ アラートでアラートを再作成します
                                      
 既存のアラートを保持し、それらを Azure Sentinel に移行するには、[Azure Sentinel を起動](https://portal.azure.com/#create/Microsoft.ASI/preview)してください。 最初の手順で、カスタム アラートが格納されているワークスペースを選択し、[分析] メニュー項目を選択して、アラートを自動的に移行します。
 
 > [!NOTE]
 > Azure Sentinel へのカスタム アラートの移行は、選択したワークスペース内のすべてのカスタム アラートの 1 回限りの移行です。 移行の完了後、その選択したワークスペースのカスタム アラートは Azure Security Center を使用してアクセスできなくなります。
 >
-> [Search](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/search-queries) または [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) ステートメント クエリを使用したカスタム アラートは、Azure Sentinel でサポートされておらず、移行されません。 移行を実行する前に、これらのアラートを編集してください。
+> [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) または [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) ステートメント クエリを使用したカスタム アラートは、Azure Sentinel でサポートされておらず、移行されません。 移行を実行する前に、これらのアラートを編集してください。
 
-Azure Monitor ログ アラートを使用してアラートを再作成するには、次を参照してください。ログ アラートを作成する方法の手順については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)」を参照してください。 Azure Monitor のログ アラートの一般的な概要については、[ここ](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-unified-log)をクリックしてください。
+Azure Monitor ログ アラートを使用してアラートを再作成するには、次を参照してください。ログ アラートを作成する方法の手順については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」を参照してください。 Azure Monitor のログ アラートの一般的な概要については、[ここ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)をクリックしてください。
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Security Center のカスタム アラート ルールとは
 

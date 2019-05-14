@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023645"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470627"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -68,7 +68,7 @@ Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning �
 
 もう Machine Learning Workbench がないため、既存のデータ準備ファイルは最新のリリースに移植されません。 ただし、引き続き任意のサイズのデータ セットをモデリング用に準備できます。   
 
-あらゆるサイズのデータセットについて、[Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) を使用し、Python コードを記述することにより、モデリングの前にデータをすばやく準備することができます。 
+任意のサイズのデータセットを用意し、[Azure Machine Learning 用のデータ準備パッケージ](https://aka.ms/data-prep-sdk)を使用し、Python コードを記述してモデリングの前にデータを簡単に準備できます。 
 
 Azure Machine Learning Data Prep SDK の使い方について詳しくは、[こちらのチュートリアル](tutorial-data-prep.md)をご覧ください。
 

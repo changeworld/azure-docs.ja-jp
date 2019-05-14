@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 683f916596b4c77ec1dbc2acf1f91876c0752c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027729"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409834"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Dataset クラス (プレビュー) でデータを探索して準備する
 
@@ -35,7 +35,7 @@ ms.locfileid: "65027729"
 
 * Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関する記事を参照してください。
 
-* Azure Machine Learning Data Prep SDK。 最新バージョンのインストールまたは最新バージョンへの更新を行う場合は、[Data Prep SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install)に関する記事を参照してください。
+* Azure Machine Learning Data Prep SDK。 最新バージョンのインストールまたは更新については、[Data Prep SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install)に関する記事を参照してください。
 
 * サンプル ファイル ([crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) と [city.json](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json)) をダウンロードして、例に従います。
 
@@ -44,7 +44,7 @@ ms.locfileid: "65027729"
 データのサンプルを取得し、データのアーキテクチャとコンテンツを早いうちに把握しておきます。 この時点では、Dataset クラスの [`sample()`](https://docs.microsoft.com//python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#sample-sample-strategy--arguments-) メソッドで上位 N 個、簡単なランダム、および階層サンプリング戦略がサポートされます。
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import random
 
 # create an in-memory Dataset from a local file
@@ -109,7 +109,6 @@ sample_dataset.to_pandas_dataframe()
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE AVE|890|THEFT|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX S KILBOURN AVE|810|THEFT|...
 
-
 ## <a name="explore-with-summary-statistics"></a>概要統計情報を使用して探索する
 
  [`get_profile()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-profile-arguments-none--generate-if-not-exist-true--workspace-none--compute-target-none-) メソッドを使用して、異常、欠損値、エラーの数を検出します。 この関数ではデータのプロファイルと概要統計情報を取得します。これは、適用する必要なデータ準備操作を決定するのに役立ちます。
@@ -127,11 +126,11 @@ Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 プライマリ タイプ|FieldType.STRING|DECEPTIVE PRACTICE|THEFT|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 説明|FieldType.STRING|BOGUS CHECK|OVER $500|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-場所の説明|FieldType.STRING||SCHOOL、PUBLIC、BUILDING|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
+場所の説明|FieldType.STRING||SCHOOL, PUBLIC, BUILDING|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
 逮捕|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 国内|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-ビート|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
-地域|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
+Beat|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
+District|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
 区|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 コミュニティ エリア|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 FBI コード|FieldType.INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2.36643|5.6|-0.702685|-1.59582
@@ -152,7 +151,7 @@ Datasets では、null 値、NaN、コンテンツがない値が欠損値と見
 最初に、[`get_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) を使用して Dataset の最新の定義を取得し、[`keep_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) を使用してデータを減らし、対処する列のみを表示するようにします。
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import azureml.dataprep as dprep
 
 # get the latest definition of Dataset
@@ -222,7 +221,6 @@ ds_def.head(3)
 1|10516598|False|41.744107|-87.664494
 2|10519196|False|41.780049|-87.000000
 
-
 [`update_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) を使用して、Dataset 定義を更新し、実行された変換手順を保持します。
 
 ```Python
@@ -240,12 +238,13 @@ dataset.head(3)
 
 多くの場合、データの消去と準備中に操作するデータは、運用環境で必要な合計データのサブセットに過ぎません。 その結果、消去の一部として行われる想定のいくつかが false になる可能性があります。 たとえば、継続的に更新するデータ セットでは、最初に特定の範囲内の数値のみが含まれていた列に、以降の実行で広い範囲の値が含まれる可能性があります。 これらのエラーにより、多くの場合、パイプラインが切断されるか、データが不適切なものになります。
 
-Datasets では、パイプラインの実行時に評価される、データでのアサーションの作成がサポートされます。 これらのアサーションを使用して、データに関する想定が引き続き正確であることを確認し、そうでない場合は、適宜、エラーを処理できます。
+データセットは、パイプラインの実行時に評価されるデータに対するアサーションの作成をサポートしています。 これらのアサーションを使用して、データに関する想定が引き続き正確であることを確認し、そうでない場合は、適宜、エラーを処理できます。
 
 たとえば、Dataset 内の `Latitude` と `Longitude` の値を特定の数値範囲に制限したい場合は、[`assert_value()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#assert-value-columns--multicolumnselection--expression--azureml-dataprep-api-expressions-expression--policy--azureml-dataprep-api-engineapi-typedefinitions-assertpolicy----assertpolicy-errorvalue--1---error-code--str----assertionfailed------azureml-dataprep-api-dataflow-dataflow) メソッドを使用して確実に、常にそうなるように指定できます。
 
 ```Python
 from azureml.dataprep import value
+from azureml.core.dataset import Dataset
 
 # get the latest definition of the Dataset
 ds_def = dataset.get_definition()
@@ -282,7 +281,7 @@ print(error.originalValue)
 Datasets のより高度なツールの 1 つは、目的の結果の例を使用して列を派生させる機能です。 これにより、SDK に列を提供して、目的の変換を実現するコードを生成できます。
 
 ```Python
-from azureml.dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local file
 dataset = Dataset.auto_read_files('./data/crime.csv')
@@ -302,8 +301,8 @@ dataset.head(3)
 ```Python
 ds_def = dataset.get_definition()
 ds_def = ds_def.derive_column_by_example(
-        source_columns = "Date", 
-        new_column_name = "Date_Time_Range", 
+        source_columns = "Date",
+        new_column_name = "Date_Time_Range",
         example_data = [("2016-04-04 23:56:00", "2016-04-04 10PM-12AM"), ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM")]
     )
 ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
@@ -329,7 +328,7 @@ dataset = dataset.update_definition(ds_def, 'Derive Date_Time_Range')
 たとえば、`inspections.business.city` 列に、いくつかの形式の "San Francisco" という市区町村名が含まれているとします。
 
 ```Python
-from azureml.Dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local json file
 dataset = Dataset.auto_read_files('./data/city.json')

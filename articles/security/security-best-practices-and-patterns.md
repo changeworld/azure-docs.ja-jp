@@ -1,6 +1,6 @@
 ---
-title: Azure のセキュリティのベスト プラクティスとパターン | Microsoft Docs
-description: この記事では、さまざまな Azure リソースに対する Azure セキュリティのベストプラクティスとパターンの一覧を示します。
+title: セキュリティのベスト プラクティスとパターン - Microsoft Azure | Microsoft Docs
+description: この記事では、さまざまな Azure リソースに対するセキュリティのベストプラクティスとパターンのリンクを提供します。
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/10/2018
+ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: e607c1ce032972c62f4e70e9cb620e83e57a881b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ff6a09f75a46eee0d95b9a995c4986a981f25b9c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115540"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150099"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン
 

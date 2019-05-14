@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/10/2018
+ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82187b05a398c066f9da94c57cbe8a59a6ba3275
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125057"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191703"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -21,17 +21,6 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
-
-## <a name="preview-register-the-feature"></a>更新:機能を登録する
-
-共有イメージ ギャラリーはプレビュー段階ですが、使用するには、事前に機能を登録しておく必要があります。 共有イメージ ギャラリー機能を登録するには、次のコマンドを実行します。
-
-```azurepowershell-interactive
-Register-AzProviderFeature `
-   -FeatureName GalleryPreview `
-   -ProviderNamespace Microsoft.Compute
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 ## <a name="get-the-managed-image"></a>マネージド イメージを取得する
 
@@ -45,7 +34,9 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 
-イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 イメージ ギャラリーは、[New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
+イメージ ギャラリーは、イメージの共有を有効にするために使用されるプライマリ リソースです。 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。 ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
+
+イメージ ギャラリーは、[New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) を使用して作成します。 次の例では、*myGalleryRG* リソース グループに *myGallery* という名前のギャラリーを作成します。
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -60,7 +51,9 @@ $gallery = New-AzGallery `
    
 ## <a name="create-an-image-definition"></a>イメージ定義を作成する 
 
-ギャラリー イメージの定義は、[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、ギャラリー イメージが *myGalleryImage* という名前になっています。
+イメージ定義では、イメージの論理グループを作成します。 これは、その中に作成されるイメージ バージョンに関する情報を管理するために使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 イメージ定義に指定できる値の詳細については、[イメージ定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)に関するページを参照してください。
+
+イメージの定義は、[New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用して作成します。 この例では、ギャラリー イメージが *myGalleryImage* という名前になっています。
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -74,30 +67,15 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-### <a name="using-publisher-offer-and-sku"></a>パブリッシャー、オファー、SKU の使用 
-共有イメージの実装を計画しているお客様の場合、**今後のリリースでは**、**-Publisher**、**-Offer**、**-Sku** の各値を使用してイメージ定義を検索、指定し、一致するイメージ定義から最新のイメージ バージョンを使用して VM を作成できるようになります。 たとえば、以下に示したのは 3 つのイメージ定義とその値です。
 
-|イメージの定義|Publisher|プラン|Sku|
-|---|---|---|---|
-|myImage1|myPublisher|myOffer|mySku|
-|myImage2|myPublisher|standardOffer|mySku|
-|myImage3|テスト|standardOffer|testSku|
-
-この 3 つは、それぞれ固有の値を有しています。 3 つの値のうち 1 つまたは 2 つを共有するイメージ バージョンを保有することはできますが、3 つ全部を共有するイメージ バージョンを保有することはできません。 **今後のリリースでは**、特定のイメージの最新バージョンを要求する目的で、これらの値を組み合わせることが可能となります。 **これは現在のリリースで動作しませんが**、将来的には提供される予定です。 リリースされた場合、上記の表から *myImage1* としてソース イメージを設定するために、次の構文を使用する必要があります。
-
-```powershell
-$vmConfig = Set-AzVMSourceImage `
-   -VM $vmConfig `
-   -PublisherName myPublisher `
-   -Offer myOffer `
-   -Skus mySku 
-```
-
-これは、パブリッシャー、オファー、SKU を [Azure Marketplace イメージ](../articles/virtual-machines/windows/cli-ps-findimage.md)に使用して最新バージョンの Marketplace イメージを取得するために現在指定できる方法に似ています。 このことを踏まえて、イメージ定義ごとに、これらの値の組み合わせが一意となるようにしてください。  
 
 ## <a name="create-an-image-version"></a>イメージ バージョンを作成する
 
-イメージ バージョンは、[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用してマネージド イメージから作成します。 この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。
+イメージ バージョンは、[New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) を使用してマネージド イメージから作成します。 
+
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
+
+この例のイメージ バージョンは *1.0.0* で、"*米国中西部*" と "*米国中南部*" の両方のデータセンターにレプリケートされます。 レプリケーションのターゲット リージョンを選択するときに、レプリケーションのターゲットとして、"*ソース*" リージョンも含める必要があることに注意してください。
 
 
 ```azurepowershell-interactive
@@ -122,3 +100,8 @@ $job = $imageVersion = New-AzGalleryImageVersion `
 $job.State
 ```
 
+> [!NOTE]
+> 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。 
+>
+> イメージ バージョンを作成するときに、`-StorageAccountType Standard_ZRS` を追加することによって、イメージ バージョンを[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+>

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 50f3ecf69561313a5bda67827cfb02d2f61d461f
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610173"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070810"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーの手動での停止または開始
 
@@ -24,7 +24,7 @@ ms.locfileid: "59610173"
 
 *停止状態になったコンテナー グループは終了し、グループ内のすべてのコンテナーをリサイクルします。コンテナーの状態は保持されません。*
 
-停止されたコンテナー グループ内のコンテナーはリサイクルされますが、[リソース](container-instances-container-groups.md#resource-allocation)は、使用するために割り当てられたままです。 そのため、停止済みのコンテナー グループに対して課金は継続されます。
+コンテナーがリサイクルされると、[リソース](container-instances-container-groups.md#resource-allocation)の割り当てが解除され、コンテナー グループの課金が停止します。
 
 コンテナー グループがすでに終了している (成功または失敗のいずれかの状態にある) 場合、停止アクションでは何も起こりません。 たとえば、一度だけ実行されるコンテナー タスクを含むコンテナー グループが正常に実行され、成功状態で終了するとします。 この状態のグループを停止しようとしても、状態は変わりません。 
 

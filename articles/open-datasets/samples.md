@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: c1b86199f13454f4785a6737b25e489d45dd53f8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027548"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442338"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>サンプル Jupyter Notebooks は、オープン データセットを使用してデータをエンリッチする方法を示します。 
 Azure オープン データセット用のサンプル Jupyter Notebooks は、オープン データセットを読み込んでデモ データのエンリッチメントのために使用する方法を示します。 データを処理するために手法として Apache Spark と Pandas の使用が含まれます。
@@ -29,7 +29,7 @@ Azure オープン データセット用のサンプル Jupyter Notebooks は、
 ## <a name="join-demo-data-with-noaa-isd-data"></a>デモ データを NOAA ISD データと結合する 
 |ノートブック        | 説明                                    |
 |----------------|------------------------------------------------|
-|[デモ データを気象データと結合する - Pandas ](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | センサー地点の 1 か月のデモ データセットを Pandas データフレームの気象測定値と結合します。  |
+|[デモ データと気象データを結合する - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | センサー地点の 1 か月のデモ データセットを Pandas データフレームの気象測定値と結合します。  |
 |[デモ データを気象データと結合する - Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | センサー地点のデモ データセットを Spark データフレームの気象測定値と結合します。 |
 
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>ニューヨーク市のタクシー データを NOAA ISD データと結合する 

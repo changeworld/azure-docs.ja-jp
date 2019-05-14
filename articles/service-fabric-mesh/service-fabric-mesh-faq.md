@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979753"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143293"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
 
@@ -28,7 +28,7 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>プレビューに参加すると、どのくらいの費用がかかりますか?
 
-現時点では、Mesh プレビューにアプリケーションやコンテナーをデプロイしても料金は発生しません。 しかし、頻繁にテストするのでなければ、デプロイしたリソースを削除し、実行状態のまま残さないことをお勧めします。
+現時点では、Mesh プレビューにアプリケーションやコンテナーをデプロイしても料金は発生しません。 請求の有効化については 5 月の更新プログラムをご確認ください。 しかし、頻繁にテストするのでなければ、デプロイしたリソースを削除し、実行状態のまま残さないことをお勧めします。
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>コア数と RAM にはクォータ制限がありますか?
 
@@ -77,7 +77,9 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 リソース グループを削除するには、`az group delete <nameOfResourceGroup>` コマンドを使用します。
 
-## <a name="supported-container-os-images"></a>サポートされているコンテナー OS イメージ
+## <a name="deployments"></a>デプロイメント
+
+### <a name="what-container-images-are-supported"></a>どのコンテナー イメージがサポートされますか?
 
 Windows Fall Creators Update (バージョン 1709) のコンピューターで開発を行っている場合は、Windows バージョン 1709 の Docker イメージのみを使用できます。
 
@@ -86,10 +88,19 @@ Windows 10 April 2018 Update (バージョン 1803) のコンピューターで�
 サービスをデプロイするために、次のコンテナー OS イメージを使用できます:
 
 - Windows - windowsservercore と nanoserver
-    - Windows Server バージョン 1709
-    - Windows Server バージョン 1803
+    - Windows Server 1709
+    - Windows Server 1803
+    - Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - 既知の制限事項はありません
+
+> [!NOTE]
+> Mesh の Visual Studio ツールでは、Windows Server 2019 および 1809 のコンテナーへのデプロイがまだサポートされていません。
+
+### <a name="what-types-of-applications-can-i-deploy"></a>どのような種類のアプリケーションをデプロイできますか? 
+
+アプリケーション リソースに対する制限に適合するコンテナーで稼働するものであればなんでもデプロイできます (クォータの詳細については上記を参照してください)。 ユーザーが不正なワークロードの実行またはシステムの不正利用 (マイニングなど) に Mesh を使用していることが検出された場合、マイクロソフトは当該ユーザーのデプロイを停止し、当該ユーザーがサービスを実行できないようにサブスクリプションをブロックする権限を有します。 特定のワークロードの実行についてご質問がある場合は、お問い合わせください。 
 
 ## <a name="developer-experience-issues"></a>開発者エクスペリエンスの問題
 
@@ -132,6 +143,10 @@ CPU の可用性と制限がすべてのアプリケーションにわたって�
 1 ノードのクラスターには複数のアプリケーションをデプロイできません。 対処方法:
 - 複数のアプリをローカル クラスターにデプロイするときは、5 ノードのクラスターを使用します。
 - 現在テストしていないアプリを削除します。
+
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Windows コンテナーに対する VS ツールのサポートの制限
+
+Visual Studio のツールでは、現在、ベースの OS バージョン Windows Server 1709 および 1803 での Windows コンテナーのデプロイのみがサポートされます。 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>機能のギャップとその他の既知の問題
 

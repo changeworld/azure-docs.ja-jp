@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/04/2018
+ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003855"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154259"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -26,7 +26,7 @@ ms.locfileid: "60003855"
 | ユーザー ' NT AUTHORITY\ANONYMOUS LOGON' はログインできませんでした。 (Microsoft SQL Server、エラー:18456) | このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、マスター データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
 | サーバー プリンシパル"MyUserName" が、現在のセキュリティ コンテキストでデータベース "master" にアクセスできません。 ユーザー既定のデータベースを開けません。 ログインできませんでした。 ユーザー 'MyUserName' はログインできませんでした。 (Microsoft SQL Server、エラー:916) | このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、マスター データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
 | CTAIP エラー                                                  | このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。  このエラーが発生した場合は、[セキュリティの概要][Security overview]に関する記事をご覧ください。  この記事では、マスター上にログインとユーザーを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。 |
-| ファイアウォールによってブロックされる                                          | Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。 ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。  アクセスできるようにファイアウォールを構成するには、[プロビジョニングの手順][Provisioning instructions]に関する記事の、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][Configure server firewall access for your client IP]に関するセクションの手順に従ってください。 |
+| ファイアウォールによってブロックされる                                          | Azure SQL データベースは、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。 ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。  アクセスできるようにファイアウォールを構成するには、[プロビジョニングの手順][Provisioning instructions]に関する記事の、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][Configure server firewall access for your client IP]に関するセクションの手順に従ってください。 |
 | ツールまたはドライバーで接続できない                           | SQL Data Warehouse では、[SSMS][SSMS]、[SSDT for Visual Studio][SSDT for Visual Studio]、または [sqlcmd][sqlcmd] を使用してデータをクエリすることをお勧めします。 ドライバーおよび SQL Data Warehouse への接続の詳細については、「[Azure SQL Data Warehouse のドライバー][Drivers for Azure SQL Data Warehouse]」および「[Azure SQL Data Warehouse への接続][Connect to Azure SQL Data Warehouse]」をご覧ください。 |
 
 ## <a name="tools"></a>ツール
@@ -57,8 +57,9 @@ ms.locfileid: "60003855"
 ## <a name="polybase"></a>PolyBase
 | 問題                                           | 解決策                                                   |
 | :---------------------------------------------- | :----------------------------------------------------------- |
-| サイズの大きい行を原因とする読み込みの失敗                | サイズの大きい行は、現在 PolyBase でサポートされていません。  つまり、テーブルに VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) が含まれる場合は、データの読み込みに外部テーブルを使用できません。  サイズの大きい行の読み込みは現在、Azure Data Factory (BCP を使用)、Azure Stream Analytics、SSIS、BCP、.NET の SQLBulkCopy クラスのみでサポートされています。 PolyBase でのサイズの大きい行のサポートは、将来のリリースで追加されます。 |
-| MAX データ型を持つテーブルの bcp 読み込みの失敗 | VARCHAR(MAX)、NVARCHAR(MAX)、または VARBINARY(MAX) は、既知の問題により、一部のシナリオでテーブルの最後に配置する必要があります。  データ型が MAX の列をテーブルの末尾に移動してみてください。 |
+| TINYINT 型と DATE 型でのエクスポートが失敗する             | Parquet および ORC ファイル形式の場合、DATE 型の値は、1970-01-01 00:00:01 UTC から 2038-01-19 03:14:07 の間にする必要があります。 TINYINT 型の値は、0 から 127 の間にする必要があります。    |
+| Parquet DECIMAL 型での問題: Spark 型 DecimalType(18,4) からの書き込みおよび double または real 型の列へのインポートで "エラー: java.base/java.lang.Long は java.base/java.lang.Float にキャストできません" が発生する。 | bigint にインポートして 10000 で除算するか、[Databricks] SQL DW コネクタを使用します。 |
+| Parquet DATE 型での問題: Spark 型 Date からの書き込みおよび date または datetime 型の列へのインポートで "エラー: java.base/java.lang.Integer は parquet.io.api.Binary にキャストできません" が発生する。 | 異なる Spark 型 (int) を使用して日付を計算するか、[Databricks] SQL DW コネクタを使用します。 |
 
 ## <a name="differences-from-sql-database"></a>SQL Database との違い
 | 問題                                 | 解決策                                                   |
@@ -132,3 +133,4 @@ ms.locfileid: "60003855"
 [Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse

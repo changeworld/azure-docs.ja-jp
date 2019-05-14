@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d9583f232a7afd6ab64421d57bbf14a45299e374
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995661"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138235"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -63,6 +63,7 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 * [**Power BI コンテンツ パック**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用して Power BI で分析する。
 * [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する。](../../azure-monitor/platform/archive-activity-log.md) **ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
 * PowerShell コマンドレット、CLI、または REST API を使用してアクティビティ ログを照会する。
+* 特定のイベントの[変更履歴](#view-change-history)を表示する
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Azure Portal でアクティビティ ログに対してクエリを実行する
 
@@ -183,6 +184,20 @@ CLI でのモニター プロファイルの作成について詳しくは、[CL
 ```azurecli
 az monitor log-profiles delete --name <profile name>
 ```
+
+## <a name="view-change-history"></a>変更履歴を表示する
+
+アクティビティ ログを表示すると、イベントの時刻に発生した変更を確認できます。 変更履歴で、この情報を表示できます。
+
+ポータルの左側のメニューを使用して、アクティビティ ログに移動します。 アクティビティ ログから、詳細を確認したいイベントを選択します。 **[変更履歴 (プレビュー)]** タブを選択し、そのイベントに関連する変更を表示します。
+
+![イベントの変更履歴の一覧](./media/activity-logs-overview/change-history-event.png)
+
+イベントに関連する変更がある場合は、変更の一覧が表示され、選択できます。 これにより、**[変更履歴 (プレビュー)]** ページが開きます。 このページには、リソースに対する変更が表示されます。 次の例に示されているように、VM のサイズが変更されたことだけを示すのではなく、変更前の VM のサイズと変更後のサイズが表示されます。
+
+![相違を示す変更履歴ページ](./media/activity-logs-overview/change-history-event-details.png)
+
+変更履歴の詳細については、「[リソースの変更の取得](../../governance/resource-graph/how-to/get-resource-changes.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -17,12 +17,12 @@ ms.date: 04/10/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8827a51a23b2ea274d8096a154e630c9cecbba7c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0d8f1024ba660bc0e879940f20db70d547eea40e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489520"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190483"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -41,7 +41,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 この記事では、[Azure Active Directory でのデバイス管理の概要](../device-management-introduction.md)を理解していることを前提とします
 
 > [!NOTE]
-> Windows 10 のハイブリッド Azure AD 参加に必要なドメイン機能とフォレスト機能の最小レベルは Windows Server 2008 R2 です。 これ以前のバージョンでは、ユーザーが Windows にログオンするときに、LSA の問題によりプライマリ更新トークンを取得できない可能性があります。
+> Windows 10 のハイブリッド Azure AD 参加に必要なドメイン機能とフォレスト機能の最小レベルは Windows Server 2008 R2 です。
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
@@ -122,10 +122,13 @@ FIPS に準拠している TPM は、Hybrid Azure AD 参加ではサポートさ
 - パススルー認証 (PTA)
 - パスワード ハッシュの同期 (PHS)
 
+> [!NOTE]
+> Azure AD は、マネージド ドメインでのスマートカードや証明書をサポートしていません。
+
 バージョン 1.1.819.0 以降の Azure AD Connect には、ハイブリッド Azure AD 参加を構成するためのウィザードが用意されています。 このウィザードを使用すると、構成プロセスを大幅に簡略化できます。 詳細については、次を参照してください。
 
-- [フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成](hybrid-azuread-join-federated-domains.md)
-- [マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成](hybrid-azuread-join-managed-domains.md)
+- [フェデレーション ドメイン用のハイブリッド Azure Active Directory Join の構成](hybrid-azuread-join-federated-domains.md)
+- [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](hybrid-azuread-join-managed-domains.md)
 
  Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual)に関するページを参照してください。 
 

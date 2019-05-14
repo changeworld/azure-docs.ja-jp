@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193060"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139285"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
-このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ ( 同期エンジンとも言います) について説明します。
+このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ (同期エンジン) について説明します。
 
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
 
@@ -92,29 +92,62 @@ Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-
 ## <a name="start-the-scheduler"></a>スケジューラの開始
 スケジューラは、既定では 30 分ごとに実行されます。 場合によっては、スケジュールされたサイクル間に同期サイクルを実行したり、別の種類を実行する必要があったりします。
 
-**差分同期サイクル**  
+### <a name="delta-sync-cycle"></a>差分同期サイクル
  差分同期サイクルには、以下の手順が含まれています。
 
-* すべてのコネクタでの差分インポート
-* すべてのコネクタでの差分同期
-* すべてのコネクタでのエクスポート
 
-緊急な変更が発生し、直ちに同期しなければならないことがあります。そのような場合は、サイクルを手動で実行する必要があります。 サイクルを手動で実行する必要がある場合は、PowerShell で `Start-ADSyncSyncCycle -PolicyType Delta` を実行します。
+- すべてのコネクタでの差分インポート
+- すべてのコネクタでの差分同期
+- すべてのコネクタでのエクスポート
 
-**完全同期サイクル**  
-以下のいずれかの構成変更を行った場合は、完全同期サイクル ( 初期同期とも呼ばれます) を実行する必要があります。
+### <a name="full-sync-cycle"></a>完全同期サイクル
+完全同期サイクルの手順は、次のとおりです。
 
-* ソース ディレクトリからインポートされるオブジェクトまたは属性を追加した
-* 同期規則を変更した
-* 異なる数のオブジェクトが含まれるように [フィルター処理](how-to-connect-sync-configure-filtering.md) を変更した
+- すべてのコネクタでのフル インポート
+- すべてのコネクタでの完全同期
+- すべてのコネクタでのエクスポート
 
-これらのいずれかの変更を行った場合は、同期エンジンがコネクタ スペースを再統合する機会を持てるように、完全同期サイクルを実行する必要があります。 完全同期サイクルの手順は、次のとおりです。
+緊急な変更が発生し、直ちに同期しなければならないことがあります。そのような場合は、サイクルを手動で実行する必要があります。 
 
-* すべてのコネクタでのフル インポート
-* すべてのコネクタでの完全同期
-* すべてのコネクタでのエクスポート
+同期サイクルを手動で実行する必要がある場合は、PowerShell で `Start-ADSyncSyncCycle -PolicyType Delta` を実行します。
 
-完全同期サイクルを開始するには、PowerShell プロンプトで `Start-ADSyncSyncCycle -PolicyType Initial` を実行します。 このコマンドにより、完全同期サイクルが開始されます。
+完全同期サイクルを開始するには、PowerShell プロンプトで `Start-ADSyncSyncCycle -PolicyType Initial` を実行します。   
+
+完全同期サイクルを実行すると非常に時間がかかる場合があります。このプロセスを最適化する方法について、次のセクションをご覧ください。
+
+### <a name="sync-steps-required-for-different-configuration-changes"></a>さまざまな構成の変更に必要な同期手順
+すべてのオブジェクトに変更を確実に正しく適用するために、異なる構成の変更には異なる同期手順が必要です。
+
+- (同期規則の追加/変更により) ソース ディレクトリからインポートされるオブジェクトまたは属性を追加した
+    - そのソース ディレクトリのコネクタでフル インポートが必要です
+- 同期規則を変更した
+    - 変更した同期規則のコネクタで完全同期が必要です
+- 異なる数のオブジェクトが含まれるように [フィルター処理](how-to-connect-sync-configure-filtering.md) を変更した
+    - 同期エンジンにインポート済みの属性に基づいた属性ベースのフィルター処理を使用している場合を除いて、各 AD コネクタのコネクタでフル インポートが必要です
+
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>差分同期と完全同期の手順の適切な組み合わせを実行する同期サイクルのカスタマイズ
+完全同期の実行を回避するために、次のコマンドレットを使用して、完全同期の手順を実行する特定のコネクタにマークを付けることができます。
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullSyncRequired $true`
+
+`Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
+
+例:コネクタ "AD Forest A" の同期規則に対して、新しい属性のインポートを必要としない変更を加えた場合、次のコマンドレットを実行して、このコネクタに対する完全同期手順も実行する差分同期サイクルを実行します。
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
+例:コネクタ "AD Forest A" の同期規則に対して、今度は新しい属性のインポートが必要な変更を加えた場合、次のコマンドレットを実行して、このコネクタに対するフル インポートと完全同期手順も実行する差分同期サイクルを実行します。
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
 
 ## <a name="stop-the-scheduler"></a>スケジューラの停止
 スケジューラが同期サイクルを実行中に、停止しなければならない場合があります。 たとえば、インストール ウィザードを開始して、次のエラーが発生したとします。

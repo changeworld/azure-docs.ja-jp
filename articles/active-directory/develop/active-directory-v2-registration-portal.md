@@ -3,8 +3,8 @@ title: アプリ登録ポータルのヘルプ トピック | Microsoft Docs
 description: Microsoft アプリ登録ポータルの各種機能の説明。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77b5185056329113ee1fd17fa3ed3f364380ca2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b77f2a403bd4f410665d00bc69b3b1bcf0c3aaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095876"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139169"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
 このドキュメントでは、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)の各種機能のコンテキストと説明を提供します。
 
 > [!NOTE]
-> 2019 年 5 月より、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)での集中型アプリケーションと Azure AD アプリケーションの登録と管理はサポートされなくなります。 既存のアプリケーションを管理し、新しいアプリケーションを登録するには、Azure portal の[アプリの登録 (プレビュー)](https://aka.ms/appregistrations) エクスペリエンスを使用することをお勧めします。
+> 2019 年 5 月より、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/)での集中型アプリケーションと Azure AD アプリケーションの登録と管理はサポートされなくなります。 既存のアプリケーションを管理し、新しいアプリケーションを登録するには、Azure portal の[アプリの登録](https://aka.ms/appregistrations)エクスペリエンスを使用することをお勧めします。
 
 ## <a name="my-applications-or-converged-applications"></a>マイ アプリケーションまたは集中型アプリケーション
 この一覧には、Azure AD v2.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、個人の Microsoft アカウントと、Azure Active Directory の職場/学校アカウントの両方を持つユーザーをサインインする機能があります。 Azure AD v2.0 エンドポイントの詳細については、 [v2.0 の概要](active-directory-appmodel-v2-overview.md)に関するページを参照してください。 これらのアプリケーションはまた、Microsoft アカウント認証エンドポイント ( `https://login.live.com`) と統合するために使用することができます。

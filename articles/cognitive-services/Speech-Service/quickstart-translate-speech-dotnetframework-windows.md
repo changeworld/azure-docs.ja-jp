@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 34161989bf98f2605cbc2e238cb832523b2f23cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0bb5fa25301fa86564c7f7aadb3285bdd5898a08
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843325"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511158"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>クイック スタート:Speech SDK for .NET Framework を使用して音声を翻訳する
+
+クイック スタートは[音声変換](quickstart-csharp-dotnet-windows.md)と[テキスト読み上げ](quickstart-text-to-speech-dotnet-windows.md)にも使用できます。
 
 このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な .NET Framework アプリケーションを作成します。 このアプリケーションは、64 ビット Windows 上で実行するように設計されており、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 を使用してビルドされています。
 

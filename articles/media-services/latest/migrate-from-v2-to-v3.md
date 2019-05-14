@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 6ae094ddf1bfc55ce793995f60f1694be6eb19c1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e64b18cef44a5fa6d63137f57fcada27adcd0299
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686794"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205477"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -71,7 +71,7 @@ ms.locfileid: "64686794"
     * ストリーミング ロケーターによって Locator が置き換えられました。
     * ライブ イベントによって Channel が置き換えられました。<br/>ライブ イベントの課金はライブ チャンネルの測定に基づいています。 詳細については、[価格](live-event-states-billing.md)と[課金](https://azure.microsoft.com/pricing/details/media-services/)に関するセクションを参照してください。
     * ライブ出力によって Program が置き換えられました。
-* ライブ出力を明示的に開始する必要はなく、これらは作成時に起動され、削除されたときに停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
+* ライブ出力は作成すると開始され、削除されると停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
 *  ジョブに関する情報を取得するには、ジョブが作成された Transform の名前を知っている必要があります。 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>v2 API に関する機能のギャップ
@@ -115,7 +115,7 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 > [!NOTE]
 > このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

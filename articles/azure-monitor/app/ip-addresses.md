@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: b383a4f85a039eb8eed87e2e78940aaf48b30a33
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 54b9888e22cc5fb537bf3383d62e6424280f4d32
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59425918"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203774"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -35,15 +35,15 @@ ms.locfileid: "59425918"
 ## <a name="outgoing-ports"></a>送信ポート
 Application Insights SDK や Status Monitor がポータルにデータを送信できるように、サーバーのファイアウォールでいくつかの送信ポートを開く必要があります。
 
-| 目的 | URL | IP | ポート |
+| 目的 | URL | IP | Port |
 | --- | --- | --- | --- |
-| テレメトリ |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7 | 443 |
+| テレメトリ |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117 | 443 |
 | ライブ メトリック ストリーム |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Status Monitor
 Status Monitor の構成 - 変更を加える場合にのみ必要です。
 
-| 目的 | URL | IP | ポート |
+| 目的 | URL | IP | Port |
 | --- | --- | --- | --- |
 | 構成 |`management.core.windows.net` | |`443` |
 | 構成 |`management.azure.com` | |`443` |
@@ -52,7 +52,7 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 | 構成 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | 構成 |`auth.gfx.ms` | |`443` |
 | 構成 |`login.live.com` | |`443` |
-| インストール |`packages.nuget.org` 、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net` (NuGet ダウンロード) | |`443` |
+| インストール |`packages.nuget.org`、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net` (NuGet ダウンロード) | |`443` |
 
 ## <a name="availability-tests"></a>可用性テスト
 これは [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
@@ -380,7 +380,7 @@ East US
 ```  
 
 ## <a name="application-insights-api"></a>Application Insights API
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | API ドキュメント |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
@@ -388,14 +388,14 @@ East US
 
 ## <a name="log-analytics-api"></a>Log Analytics API
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | API |api.loganalytics.io<br/>*.api.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | API ドキュメント |dev.loganalytics.io<br/>docs.loganalytics.io<br/>www.loganalytics.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | Analytics ポータル | analytics.applicationinsights.io | 動的 | 80,443 |
 | CDN | applicationanalytics.azureedge.net | 動的 | 80,443 |
@@ -405,7 +405,7 @@ East US
 
 ## <a name="log-analytics-portal"></a>Log Analytics Portal
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | ポータル | portal.loganalytics.io | 動的 | 80,443 |
 | CDN | applicationanalytics.azureedge.net | 動的 | 80,443 |
@@ -414,27 +414,27 @@ East US
 
 ## <a name="application-insights-azure-portal-extension"></a>Application Insights Azure portal 拡張機能
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | Application Insights 拡張機能 | stamp2.app.insightsportal.visualstudio.com | 動的 | 80,443 |
 | Application Insights 拡張機能 CDN | insightsportal prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | 動的 | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Application Insights SDK
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | 動的 | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | 動的 | 80,443 |
 
 ## <a name="alert-webhooks"></a>アラートの Webhook
 
-| 目的 | IP | ポート
+| 目的 | IP | Port
 | --- | --- | --- |
 | アラート | 23.96.11.4 | 443 |
 
 ## <a name="profiler"></a>プロファイラー
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | エージェント | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 40.68.32.221<br/>40.85.246.0<br/>40.85.246.57<br/>40.117.252.0<br/>40.117.253.100<br/>51.140.140.162<br/>51.140.140.184<br/>51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.147.66<br/>52.178.149.106<br/>52.230.122.9<br/>52.230.124.46<br/>104.40.217.71<br/>104.211.89.26<br/>104.211.90.232 | 443
 | ポータル | gateway.azureserviceprofiler.net | 動的 | 443
@@ -445,7 +445,7 @@ East US
 > [!NOTE]
 > プロファイラーとスナップショット デバッガーは、同じ IP アドレスのセットを共有します。
 
-| 目的 | URI | IP | ポート |
+| 目的 | URI | IP | Port |
 | --- | --- | --- | --- |
 | エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 40.68.32.221<br/>40.85.246.0<br/>40.85.246.57<br/>40.117.252.0<br/>40.117.253.100<br/>51.140.140.162<br/>51.140.140.184<br/>51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.147.66<br/>52.178.149.106<br/>52.230.122.9<br/>52.230.124.46<br/>104.40.217.71<br/>104.211.89.26<br/>104.211.90.232 | 443
 | ポータル | ppe.gateway.azureserviceprofiler.net | 動的 | 443

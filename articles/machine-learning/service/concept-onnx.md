@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bda1af8095e7026c79b7d8ffe45b39f6cbb3508
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027711"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442422"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -30,7 +30,7 @@ ONNX は、機械学習モデルを表現するためのオープン スタン�
 
 ONNX Runtime は、Bing、Office、Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__しています。 また、ONNX Runtime は、Windows ML の構成要素として何億ものデバイスで使用されています。 このランタイムは、Azure Machine Learning service と組み合わせて使用できます。 ONNX Runtime を使用することにより、広範囲にわたる運用グレードの最適化、テスト、継続的改善の恩恵が得られます。
 
-[![トレーニング、コンバーター、デプロイを示す ONNX フロー図](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![トレーニング、コンバーター、デプロイを示す ONNX フロー図](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX モデルを取得する
 

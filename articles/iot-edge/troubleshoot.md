@@ -4,27 +4,53 @@ description: この記事を使用して、コンポーネントの状態およ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847540"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142862"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
-お使いの環境で Azure IoT Edge の実行中に問題が発生した場合は、この記事を参考にしてトラブルシューティングと解決を行ってください。 
+お使いの環境で Azure IoT Edge の実行中に問題が発生した場合は、この記事を参考にしてトラブルシューティングと解決を行ってください。
 
-## <a name="standard-diagnostic-steps"></a>標準的な診断手順 
+## <a name="run-the-iotedge-check-command"></a>iotedge "check" コマンドを実行する
 
-問題が発生したときは、コンテナーのログと、デバイスとの間でやり取りされたメッセージを調べて、お使いの IoT Edge デバイスの状態を詳しく把握します。 情報を収集するには、このセクションのコマンドとツールを使います。 
+IoT Edge のトラブルシューティング時の最初のステップは、`check` コマンドを使用することです。このコマンドは、一般的な問題の構成の収集と接続テストを実行します。 `check` コマンドは、[リリース 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) 以降で使用できます。
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Security Manager の状態とそのログを確認します。
+`check` コマンドは次のように実行できます。または、`--help` フラグを追加してオプションの完全なリストを表示できます。
+
+* Linux の場合:
+
+  ```bash
+  sudo iotedge check
+  ```
+
+* Windows の場合:
+
+  ```powershell
+  iotedge check
+  ```
+
+ツールによって実行されるチェックは、次のように分類できます。
+
+* 構成チェック:*config.yaml* およびコンテナー エンジンの問題を含め、Edge デバイスからクラウドへの接続を妨げる可能性のある問題の詳細を調べます。
+* 接続チェック:IoT Edge ランタイムがホスト デバイス上のポートにアクセス可能であることと、すべての IoT Edge コンポーネントが IoT Hub にアクセス可能であることを確認します。
+* 運用環境の準備状況チェック:デバイス証明機関 (CA) の証明書およびモジュール ログ ファイルの構成など、推奨される運用上のベスト プラクティスを探します。
+
+診断チェックの完全なリストについては、[組み込みのトラブルシューティング機能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)に関する記事を参照してください。
+
+## <a name="standard-diagnostic-steps"></a>標準的な診断手順
+
+問題が発生したときは、コンテナーのログと、デバイスとの間でやり取りされたメッセージを調べて、お使いの IoT Edge デバイスの状態を詳しく把握できます。 情報を収集するには、このセクションのコマンドとツールを使います。
+
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>IoT Edge Security Manager の状態とそのログを確認する
 
 Linux の場合:
 - IoT Edge Security Manager の状態を確認します。
@@ -72,14 +98,7 @@ Windows の場合:
 - IoT Edge Security Manager のログを確認します。
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
- 
-   Get-WinEvent -ea SilentlyContinue `
-   -FilterHashtable @{ProviderName= "iotedged";
-     LogName = "application"; StartTime = [datetime]::Today} |
-   select TimeCreated, Message |
-   sort-object @{Expression="TimeCreated";Descending=$false} |
-   format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IoT Edge Security Manager が実行されていない場合は、yaml 構成ファイルを確認してください。

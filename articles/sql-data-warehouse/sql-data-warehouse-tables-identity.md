@@ -2,29 +2,32 @@
 title: IDENTITY を使用して代理キーを作成する - Azure SQL Data Warehouse | Microsoft Docs
 description: IDENTITY プロパティを使用して Azure SQL Data Warehouse のテーブルに代理キーを作成する場合の推奨事項と例。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: rortloff
+ms.date: 04/30/2019
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5cb406a52cb8fa9b5e40d9b0775f4a616950f507
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: be7d1f7d04b759a5d60ba26d391d19d1bc57f325
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250859"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154310"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で IDENTITY を使用して代理キーを作成する
+
 IDENTITY プロパティを使用して Azure SQL Data Warehouse のテーブルに代理キーを作成する場合の推奨事項と例。
 
 ## <a name="what-is-a-surrogate-key"></a>代理キーとは
+
 テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
-IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、データ ウェアハウス内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。 
+
+IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、データ ウェアハウス内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
 
 次のステートメントのような構文を使って、テーブルを最初に作成するときに、IDENTITY プロパティを持つようにテーブルを定義できます。
 
@@ -45,7 +48,8 @@ WITH
 以降、このセクションでは、理解を深めるのに役立つ実装の詳細に注目します。  
 
 ### <a name="allocation-of-values"></a>値の割り当て
-IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、Azure SQL Data Warehouse では保証のなさがいっそう顕著です。 
+
+IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、Azure SQL Data Warehouse では保証のなさがいっそう顕著です。
 
 次にその例を示します。
 
@@ -74,25 +78,30 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 
 この例では、2 つの行はディストリビューション 1 に格納されます。 1 番目の行の代理値は `C1` 列の 1 であり、2 番目の行の代理値は 61 です。 これらの値はどちらも IDENTITY プロパティによって生成されたものです。 ただし、値の割り当ては連続していません。 この動作は仕様です。
 
-### <a name="skewed-data"></a>非対称のデータ 
+### <a name="skewed-data"></a>非対称のデータ
+
 データ型の値の範囲は、ディストリビューション全体に均等に分散されます。 分散テーブルが非対称データによって悪影響を受ける場合、データ型に対して使用可能な値の範囲が早く不足する可能性があります。 たとえば、すべてのデータが最終的に 1 つのディストリビューションに格納される場合、実質的にテーブルはそのデータ型の値の 60 分の 1 にのみアクセスすることになります。 このため、IDENTITY プロパティは `INT` および `BIGINT` データ型だけに制限されます。
 
 ### <a name="selectinto"></a>SELECT..INTO
+
 既存の IDENTITY 列を選択して新しいテーブルにすると、次のいずれかの条件が満たされている場合を除き、新しい列は IDENTITY プロパティを継承します。
+
 - SELECT ステートメントに結合が含まれる。
 - 複数の SELECT ステートメントが UNION を使って結合されている。
 - IDENTITY 列が SELECT リストに複数回出現する。
 - IDENTITY 列が式の一部である。
-    
+
 これらの条件のいずれかが当てはまる場合、列は IDENTITY プロパティを継承する代わりに NOT NULL で作成されます。
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
+
 CREATE TABLE AS SELECT (CTAS) は、SELECT..INTO と同じ SQL Server 動作に従います。 ただし、ステートメントの `CREATE TABLE` 部分の列定義で IDENTITY プロパティを指定することはできません。 また、CTAS の `SELECT` 部分で IDENTITY 関数を使うこともできません。 テーブルに値を設定するには、`CREATE TABLE` を使ってテーブルを定義した後、`INSERT..SELECT` で値を設定する必要があります。
 
-## <a name="explicitly-inserting-values-into-an-identity-column"></a>IDENTITY 列に値を明示的に挿入する 
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>IDENTITY 列に値を明示的に挿入する
+
 SQL Data Warehouse は、`SET IDENTITY_INSERT <your table> ON|OFF` 構文をサポートしています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
 
-多くのデータ モデラーは、ディメンションの特定の行に定義済みの負の値を使うことを好みます。 たとえば、-1 や "unknown member" 行です。 
+多くのデータ モデラーは、ディメンションの特定の行に定義済みの負の値を使うことを好みます。 たとえば、-1 や "unknown member" 行です。
 
 次のスクリプトでは、SET IDENTITY_INSERT を使ってこの行を明示的に追加する方法を示します。
 
@@ -111,16 +120,16 @@ SET IDENTITY_INSERT dbo.T1 OFF;
 SELECT  *
 FROM    dbo.T1
 ;
-```    
+```
 
 ## <a name="loading-data"></a>データの読み込み
 
-IDENTITY プロパティが存在すると、データ読み込みコードに影響があります。 ここでは、IDENTITY を使ってテーブルにデータを読み込む場合のいくつかの基本的なパターンを示します。 
+IDENTITY プロパティが存在すると、データ読み込みコードに影響があります。 ここでは、IDENTITY を使ってテーブルにデータを読み込む場合のいくつかの基本的なパターンを示します。
 
 IDENTITY を使ってテーブルにデータを読み込んで代理キーを生成するには、テーブルを作成した後、INSERT..SELECT または INSERT..VALUES を使って読み込みを実行します。
 
 次の例では基本的なパターンを示します。
- 
+
 ```sql
 --CREATE TABLE with IDENTITY
 CREATE TABLE dbo.T1
@@ -140,21 +149,21 @@ SELECT  C2
 FROM    ext.T1
 ;
 
-SELECT  *
-FROM    dbo.T1
+SELECT *
+FROM   dbo.T1
 ;
 
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-> [!NOTE] 
-> 現在は、IDENTITY 列のあるテーブルへのデータの読み込みに、IDENTITY を使うことはできません。
-> 
+> [!NOTE]
+> 現在は、IDENTITY 列のあるテーブルへのデータの読み込みに、`CREATE TABLE AS SELECT` を使うことはできません。
+>
 
 データの読み込みの詳細については、「[Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)」と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
 
-
 ## <a name="system-views"></a>システム ビュー
+
 [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) カタログ ビューを使用して、IDENTITY プロパティを持つ列を識別できます。
 
 データベース スキーマを理解しやすいように、次の例では sys.identity_column を他のシステム カタログ ビューと統合する方法を示します。
@@ -166,7 +175,7 @@ SELECT  sm.name
 ,       CASE WHEN ic.column_id IS NOT NULL
              THEN 1
         ELSE 0
-        END AS is_identity 
+        END AS is_identity
 FROM        sys.schemas AS sm
 JOIN        sys.tables  AS tb           ON  sm.schema_id = tb.schema_id
 JOIN        sys.columns AS co           ON  tb.object_id = co.object_id
@@ -178,10 +187,12 @@ AND     tb.name = 'T1'
 ```
 
 ## <a name="limitations"></a>制限事項
+
 次の場合、IDENTITY プロパティは使用できません。
+
 - 列のデータ型が INT または BIGINT ではない場合
 - 列が分散キーでもある場合
-- テーブルが外部テーブルである場合 
+- テーブルが外部テーブルである場合
 
 次の関連する関数は、SQL Data Warehouse ではサポートされません。
 
@@ -191,32 +202,32 @@ AND     tb.name = 'T1'
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
 - [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
 - [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
-- [DBCC CHECK_IDENT()](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
 
 ## <a name="common-tasks"></a>一般的なタスク
 
-このセクションでは、IDENTITY 列を操作するときの一般的なタスクを実行するために使うことができるいくつかのサンプル コードを提供します。 
+このセクションでは、IDENTITY 列を操作するときの一般的なタスクを実行するために使うことができるいくつかのサンプル コードを提供します。
 
 以下のすべてのタスクで、列 C1 が IDENTITY です。
- 
- 
+
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>テーブルに割り当てられた最も高い値を見つける
+
 分散テーブルに割り当てられた最も高い値を特定するには、`MAX()` 関数を使います。
 
 ```sql
-SELECT  MAX(C1)
-FROM    dbo.T1
-``` 
+SELECT MAX(C1)
+FROM dbo.T1
+```
 
 ### <a name="find-the-seed-and-increment-for-the-identity-property"></a>IDENTITY プロパティのシードと増分を調べる
-カタログ ビューで次のクエリを使って、テーブルの ID 増分とシード構成値を調べることができます。 
+
+カタログ ビューで次のクエリを使って、テーブルの ID 増分とシード構成値を調べることができます。
 
 ```sql
 SELECT  sm.name
 ,       tb.name
 ,       co.name
 ,       ic.seed_value
-,       ic.increment_value 
+,       ic.increment_value
 FROM        sys.schemas AS sm
 JOIN        sys.tables  AS tb           ON  sm.schema_id = tb.schema_id
 JOIN        sys.columns AS co           ON  tb.object_id = co.object_id
@@ -229,5 +240,6 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>次の手順
 
-* テーブルの開発の詳細については、[テーブルの概要][概要]に関するページを参照してください。  
-
+- [テーブルの概要](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
+- [CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
+- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023709"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472001"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK でデータの書き込みと構成を行う
 
@@ -25,6 +25,7 @@ ms.locfileid: "65023709"
 
 > [!Important]
 > 新しいソリューションを構築する場合は、データの変換、データのスナップショットの作成、およびバージョン管理されたデータセット定義の格納に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
+> `azureml-datasets` パッケージを使用してデータセットを作成するのではなく、`azureml-dataprep` パッケージを使用し、変換を使用してデータフローを作成した場合、後でスナップショットまたはバージョン管理されたデータセットを使用することはできません。
 
 パイプライン内に存在する書き込みのステップ数に制限はないため、書き込みステップを簡単に追加して、トラブルシューティングやその他のパイプライン用に中間結果を取得することができます。
 

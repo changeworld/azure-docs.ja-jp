@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 985ad59a1ffa5bd68f97824f7f50af604174b543
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030060"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440938"
 ---
-# <a name="quickstart-prepare-and-visualize-data-without-writing-code"></a>クイック スタート:コードを書かずにデータを準備および視覚化する
+# <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>クイック スタート:Azure Machine Learning でコードを書かずにデータを準備して視覚化する
 
-ドラッグ アンド ドロップ ユーザー インターフェイスを使用してデータを準備および視覚化します。 使用するデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。  
+Azure Machine Learning のドラッグ アンド ドロップ ビジュアル インターフェイス (プレビュー) でデータを準備して視覚化します。 使用するデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。  
 
 このクイック スタートでは、データを調査して準備します。
 

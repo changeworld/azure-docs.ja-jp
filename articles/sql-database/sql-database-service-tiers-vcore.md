@@ -11,20 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/06/2019
+ms.openlocfilehash: 981198063b8e0951d4a4a4c4627d4b7966f34154
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357935"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148977"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>仮想コア サービス レベルの中から選択し、DTU サービス レベルから移行する
 
 仮想コアベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
 
 - Gen4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
 - Gen5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
+
 
 Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。
 
@@ -37,14 +38,16 @@ Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリ
 
 次の表は、この 3 つのレベルの違いを把握するうえで役立ちます。
 
-||**汎用**|**Business Critical**|**ハイパースケール (プレビュー)**|
+||**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード|
-|Compute|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|
-|メモリ|Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB | Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB |Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB|
+|Compute|**プロビジョニングされるコンピューティング**:<br/>Gen4:1 ～ 24 仮想コア<br/>Gen5:2 から 80 の仮想コア<br/>**サーバーレス コンピューティング**<br/>Gen5:0.5 から 4 の仮想コア|**プロビジョニングされるコンピューティング**:<br/>Gen4:1 ～ 24 仮想コア<br/>Gen5:2 から 80 の仮想コア|**プロビジョニングされるコンピューティング**:<br/>Gen4:1 ～ 24 仮想コア<br/>Gen5:2 から 80 の仮想コア|
+|メモリ|**プロビジョニングされるコンピューティング**:<br/>Gen4:仮想コアあたり 7 GB<br/>Gen5:仮想コアあたり 5.1 GB<br/>**サーバーレス コンピューティング**<br/>Gen5:仮想コアあたり 3 GB|**プロビジョニングされるコンピューティング**:<br/>Gen4:仮想コアあたり 7 GB<br/>Gen5:仮想コアあたり 5.1 GB |**プロビジョニングされるコンピューティング**:<br/>Gen4:仮想コアあたり 7 GB<br/>Gen5:仮想コアあたり 5.1 GB|
+|Storage|リモート ストレージの使用:<br/>**1 つのデータベースがプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**1 つのデータベースのサーバーレス コンピューティング**:<br/>5 GB から 1 TB<br/>**Managed Instance**:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>**1 つのデータベースがプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**Managed Instance**:<br/>32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
+|メモリ|Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB | Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB |Gen5:コアあたり 5.1 GB|
 |Storage|リモート ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
 |IO スループット (概算)|単一データベース:仮想コアあたり 500 IOPS (最大 7000 IOPS)</br>Managed Instance:[ファイル サイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200,000 IOPS)|TBD|
-|可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|?|
+|可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|1 読み取り/書き込みレプリカと 0 から 4 の[読み取りスケール レプリカ](sql-database-read-scale-out.md)|
 |バックアップ|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージおよび復元のスナップショットベースのバックアップは、高速復旧のためにこのようなスナップショットを使用します。 バックアップは瞬時に行われ、Compute の IO パフォーマンスには影響しません。 復元は非常に高速で、データ操作のサイズにはなりません (数時間 ～ 数日ではなく、分単位で行われます)。|
 |インメモリ|サポートされていません|サポートされています|サポートされていません|
 |||
@@ -56,16 +59,16 @@ Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリ
 - General Purpose および Business Critical サービス レベルの詳細については、「[General Purpose and Business Critical service tiers](sql-database-service-tiers-general-purpose-business-critical.md)」(General Purpose サービス レベルと Business Critical サービス レベル) をご覧ください。
 - 仮想コアベースの購入モデルにおけるハイパースケール サービス レベルの詳細については、[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)に関するページを参照してください。  
 
-> [!IMPORTANT]
-> 必要なコンピューティング能力が仮想コア 1 つ分を下回る場合は、DTU ベースの購入モデルを使用します。
-
 ## <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
 
-仮想コアベースの購入モデルでは、[SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、お使いの既存のライセンスを SQL Database の割引料金のライセンスに交換できます。 この Azure 特典では、オンプレミスのソフトウェア アシュアランス付き SQL Server ライセンスを利用することで、オンプレミスの SQL Server ライセンスで Azure SQL Database の料金が最大 30% オフになります。
+仮想コアベースの購入モデルでプロビジョニングされるコンピューティング サービス レベルでは、[SQL Server 向け Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して、お使いの既存のライセンスを SQL Database の割引料金のライセンスに交換できます。 この Azure 特典では、オンプレミスのソフトウェア アシュアランス付き SQL Server ライセンスを利用することで、オンプレミスの SQL Server ライセンスで Azure SQL Database の料金が最大 30% オフになります。
 
 ![価格](./media/sql-database-service-tiers/pricing.png)
 
-Azure ハイブリッド特典では、SQL データベース エンジン自体については既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャについてのみ支払うか (**BasePrice**)、それとも基になるインフラストラクチャと SQL Server ライセンスの両方を支払うか (**LicenseIncluded**) を選択できます。 Azure portal または次の API のいずれかを使用して、ライセンス モデルを選択または変更できます。
+Azure ハイブリッド特典では、SQL データベース エンジン自体については既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャについてのみ支払うか (**BasePrice**)、それとも基になるインフラストラクチャと SQL Server ライセンスの両方を支払うか (**LicenseIncluded**) を選択できます。
+
+
+Azure portal または次の API のいずれかを使用して、ライセンス モデルを選択または変更できます。
 
 - PowerShell を使用してライセンスの種類を設定または更新するには:
 
@@ -130,5 +133,5 @@ DTU ベース コンピューティング サイズのデータベースを、�
 
 ## <a name="next-steps"></a>次の手順
 
-- 単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)に関するページを参照してください。
+- 単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の仮想コアベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください。
 - エラスティック プールに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[エラスティック プールに対する SQL Database 仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)に関するページを参照してください。

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 797d0cdb8d164955991de321d8df22e43f5c6a40
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c3b2134fae86b988fb21e993cd01b77a90bd2896
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024339"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467060"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
 Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。
@@ -44,7 +44,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 | AI&nbsp;エンリッチメント&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | 機能 |
 |-------------------|----------|
 |AI エンリッチメントされたドキュメント | イメージおよびテキストの解析を目的とする[**コグニティブ検索**](cognitive-search-concept-intro.md)をインデックス作成パイプラインに適用して、生のコンテンツからテキスト情報を抽出できます。 [組み込みのスキル](cognitive-search-predefined-skills.md)の例には、光学式文字認識 (スキャン済みの JPEG を検索可能にする)、エンティティ認識 (組織、名前、または場所を識別する)、キー フレーズ認識などがあります。 [カスタム スキルをコーディング](cognitive-search-create-custom-skill-example.md)してパイプラインにアタッチすることもできます。 |
-| 分析と消費用のストアド エンリッチメント| [**ナレッジ ストア**](knowledge-store-concept-intro.md)は、AI ベースのインデックス作成の拡張機能です。 Azure ストレージをバックエンドとして使用して、インデックス作成時に作成されたエンリッチメントを保存できます。 これらの成果物を使用して、より優れたスキルを設計したり、不定形またはあいまいなデータからシェイプと構造体を作成したりできます。 特定のワークロードまたはユーザーをターゲットとするこれらの構造体のプロジェクションを作成できます。 抽出されたデータを直接分析したり、他のアプリに読み込むこともできます。<br/><br/> |
+| 分析と消費用のストアド エンリッチメント| [**ナレッジ ストア (プレビュー)**](knowledge-store-concept-intro.md) は、AI ベースのインデックス作成の拡張機能です。 Azure ストレージをバックエンドとして使用して、インデックス作成時に作成されたエンリッチメントを保存できます。 これらの成果物を使用して、より優れたスキルを設計したり、不定形またはあいまいなデータからシェイプと構造体を作成したりできます。 特定のワークロードまたはユーザーをターゲットとするこれらの構造体のプロジェクションを作成できます。 抽出されたデータを直接分析したり、他のアプリに読み込むこともできます。<br/><br/> |
 
 | データ&nbsp;インポート/インデックス作成 | 機能 |
 |----------------------------------|----------|
@@ -57,7 +57,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 |-------------------|----------|
 | プロトタイピングと検査のためのツール | ポータルでは、[**データのインポート ウィザード**](search-import-data-portal.md)を使用してインデクサーを構成したり、インデックス デザイナーを使用してインデックスを設定したりできます。また、[**Search エクスプローラー**](search-explorer.md)を使用してクエリをテストしたり、スコアリング プロファイルを調整したりできます。 また、任意のインデックスを開いてスキーマを表示することもできます。 |
 | 監視と診断 | [**監視機能を有効にして**](search-monitor-usage.md)、ポータルに常に表示される、ひとめで確認できるメトリックの先に進みます。 1 秒あたりのクエリ数、待ち時間、スロットルに関するメトリックが取得され、ポータル ページで報告されます。追加の構成は必要ありません。 <br/><br/>[**検索トラフィック分析**](search-traffic-analytics.md)は別の監視方法で、サーバー側とクライアント側のデータを収集および分析して、ユーザーが検索ボックスに入力している内容に関するインサイトを明らかにします。 |
-| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、既定の暗号化を[**顧客が管理する暗号化キー**](search-security-manage-encryption-keys.md)で補足できます。 Azure Key Vault 内で作成して管理するキーは、Azure Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
+| サーバー側暗号化 | [**Microsoft によって管理される保存中の暗号化**](search-security-overview.md#encrypted-transmission-and-storage)は内部ストレージ レイヤーに組み込まれており、取り消しはできません。 必要に応じて、[**顧客管理の暗号化キー (プレビュー)**](search-security-manage-encryption-keys.md) を使用して既定の暗号化を補完することができます。 Azure Key Vault 内で作成して管理するキーは、Azure Search 内でインデックスとシノニム マップの暗号化に使用されます。 |
 | インフラストラクチャ | **可用性の高いプラットフォーム**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。 適切に拡張された場合に、 [Azure Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。<br/><br/> エンド ツー エンドのソリューションとして**完全に管理され、スケーラブルな** Azure Search では、インフラストラクチャ管理をまったく必要としません。 サービスは 2 次元での拡張によって、ニーズに合わせてカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。<br/><br/>|
 
 ## <a name="how-to-use-azure-search"></a>Azure Search を使用する方法

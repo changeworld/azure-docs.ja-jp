@@ -1,37 +1,35 @@
 ---
-title: Azure Functions を使用して Azure Logic Apps にカスタム コードを追加して実行する | Microsoft Docs
-description: Azure Functions を使用して Azure Logic Apps にカスタム コード スニペットを追加して実行する方法について説明します
+title: Azure Functions を使用して Azure Logic Apps にコードを追加して実行する
+description: Azure Functions を使用して Azure Logic Apps にコードを追加して実行する
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861589"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142323"
 ---
-# <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Azure Functions を使用して Azure Logic Apps にカスタム コード スニペットを追加して実行する
+# <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>Azure Logic Apps で Azure Functions を使用してコードを追加して実行する
 
-ロジック アプリで特定のジョブを実行するための最小限のコードを実行する場合は、[Azure Functions](../azure-functions/functions-overview.md) を使用して独自の関数を作成することができます。 このサービスを利用して Node.js、C#、および F# コード スニペットを作成できるので、完全なアプリやコードを実行するためのインフラストラクチャを構築する必要はありません。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。次のようなタスクを実行するために便利です。
+ロジック アプリで特定のジョブを実行するためのコードを実行する場合は、[Azure Functions](../azure-functions/functions-overview.md) を使用して独自の関数を作成することができます。 このサービスを利用して Node.js、C#、および F# コードを作成できるので、完全なアプリやコードを実行するためのインフラストラクチャを構築する必要はありません。 また、[Azure 関数内からロジック アプリを呼び出す](#call-logic-app)こともできます。
+Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。次のようなタスクを実行するために便利です。
 
 * Node.js または C# で、関数を使用してロジック アプリの動作を拡張します。
 * ロジック アプリのワークフローで計算を実行します。
 * ロジック アプリのフィールドで高度な書式設定や計算を行います。
 
-また、[Azure 関数内からロジック アプリを呼び出す](#call-logic-app)こともできます。
+Azure の関数を作成せずにコード スニペットを実行するには、[インライン コードを追加して実行](../logic-apps/logic-apps-add-run-inline-code.md)する方法を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事に沿って作業を行うには、次の項目が必要です。
-
-* Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * Azure 関数のコンテナーである Azure 関数アプリと Azure 関数。 関数アプリを持っていない場合は、[まず関数アプリを作成します](../azure-functions/functions-create-first-azure-function.md)。 次に、ロジック アプリ デザイナーで、[ロジック アプリの外部に個別に](#create-function-external)、または[ロジック アプリの内部に](#create-function-designer)、関数を作成することができます。
 
@@ -58,7 +56,7 @@ ms.locfileid: "57861589"
 
 ## <a name="create-functions-outside-logic-apps"></a>ロジック アプリの外部に関数を作成する
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a> で、Azure 関数アプリを作成します。このアプリは、ロジック アプリと同じ Azure サブスクリプションを持つ必要があります。その後、Azure 関数を作成します。
+[Azure portal](https://portal.azure.com) で、Azure 関数アプリを作成します。このアプリは、ロジック アプリと同じ Azure サブスクリプションを持つ必要があります。その後、Azure 関数を作成します。
 Azure 関数の初心者の方は、[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)方法を確認してください。ただし、ロジック アプリから呼び出しできる関数を作成するための次の要件に注意してください。
 
 * **JavaScript** または **C#** のいずれかの **HTTP トリガー**関数テンプレートを選択していることを確認します。
@@ -116,7 +114,7 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 ロジック アプリ デザイナーで、ロジック アプリ内から開始される Azure 関数を作成するには、まず Azure 関数アプリを用意する必要があります。このアプリは、関数のコンテナーです。 関数アプリを持っていない場合は、まず関数アプリを作成します。 「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。 
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。 
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。 
 
 2. 関数を作成して追加するには、自身のシナリオに適用されるステップに従います。
 
@@ -176,7 +174,7 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 ロジック アプリから既存の Azure 関数を呼び出すには、ロジック アプリ デザイナーで他のアクションと同様に Azure 関数を追加します。 
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。 
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。 
 
 2. 関数を追加するステップの下で、**[新しいステップ]** > **[アクションの追加]** の順にクリックします。 
 

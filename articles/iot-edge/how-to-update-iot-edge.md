@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311919"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152629"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
 
@@ -50,25 +50,15 @@ apt-get install libiothsm iotedge
 
 ### <a name="windows-devices"></a>Windows デバイス
 
-Windows デバイスでは、PowerShell スクリプトを使用して、セキュリティ デーモンをアンインストールしてから、再インストールします。 インストール スクリプトにより、セキュリティ デーモンの最新バージョンが自動的に取得されます。 
-
-管理者 PowerShell セッションで、セキュリティ デーモンをアンインストールします。 
+Windows デバイスで、PowerShell スクリプトを使用してセキュリティ デーモンを更新します。 スクリプトにより、セキュリティ デーモンの最新バージョンが自動的にプルされます。 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Uninstall-SecurityDaemon
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-パラメーターなしで `Uninstall-SecurityDaemon` コマンドを実行すると、デバイスから 2 つのランタイム コンテナー イメージと共にセキュリティ デーモンが削除されるだけです。 config.yaml ファイルは、Moby コンテナー エンジンのデータと同様に、デバイス上にも保存されています。 構成情報を保存すると、インストール プロセス中に、接続文字列または Device Provisioning Service 情報をデバイスに再び提供する必要がなくなります。 
+Update-IoTEdge コマンドを実行すると、デバイスから 2 つのランタイム コンテナー イメージと共にセキュリティ デーモンが削除されます。 Moby コンテナー エンジン (Windows コンテナーを使用している場合) からのデータおよび config.yaml ファイルはデバイス上に保持されます。 構成情報の保持は、更新プロセス中に、接続文字列または Device Provisioning Service 情報をデバイスに再び提供する必要がないことを意味します。 
 
-IoT Edge デバイスで Windows コンテナーまたは Linux コンテナーのいずれを使用しているかに応じて、セキュリティ デーモンを再インストールします。 **\<Windows または Linux\>** のフレーズを適切なコンテナー オペレーティング システムに置き換えます。 デバイス上の既存の config.yaml ファイルをポイントするには、**-ExistingConfig** フラグを使用します。 
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -ExistingConfig -ContainerOS <Windows or Linux>
-```
-
-セキュリティ デーモンの特定のバージョンをインストールする場合は、[IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)から適切な iotedged-windows.zip ファイルをダウンロードします。 次に、`-OfflineInstallationPath` パラメーターを使用してファイルの場所を指定します。 詳細については、「[オフライン インストール](how-to-install-iot-edge-windows.md#offline-installation)」を参照してください。
+セキュリティ デーモンの特定のバージョンをインストールする場合は、[IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)から適切な Microsoft-Azure-IoTEdge.cab ファイルをダウンロードします。 次に、`-OfflineInstallationPath` パラメーターを使用してファイルの場所を指定します。 詳細については、「[オフライン インストール](how-to-install-iot-edge-windows.md#offline-installation)」を参照してください。
 
 ## <a name="update-the-runtime-containers"></a>ランタイム コンテナーの更新
 

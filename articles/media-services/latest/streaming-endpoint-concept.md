@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services のストリーミング エンドポイント | Microsoft Docs
-description: この記事では、ストリーミング エンドポイントとは何か、および Azure Media Services でそれらを使用する方法について説明します。
+title: Azure Media Services のストリーミング エンドポイント (配信元) | Microsoft Docs
+description: Azure Media Services では、ストリーミング エンドポイント (配信元) は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信できるダイナミック パッケージおよびストリーミング サービスを表します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,18 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999452"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149230"
 ---
-# <a name="streaming-endpoints"></a>ストリーミング エンドポイント
+# <a name="streaming-endpoints-origin"></a>ストリーミング エンドポイント (配信元)
 
-Microsoft Azure Media Services (AMS) では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) エンティティは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 **ストリーミング エンドポイント** サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 アカウントで追加のストリーミング エンドポイントを作成できます。 
+Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 また、**ストリーミング エンドポイント**は、業界最先端の DRM に動的 (Just-In-Time) 暗号化を提供します。
+
+Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 このアカウントで追加のストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関する記事を参照)。 
 
 > [!NOTE]
 > ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。 
@@ -35,33 +37,37 @@ Microsoft Azure Media Services (AMS) では、[ストリーミング エンド�
 
 ## <a name="types"></a>型  
 
-**ストリーミング エンドポイント**には、**Standard** と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。 
+**ストリーミング エンドポイント**には、**Standard** (プレビュー) と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。 
 
 次の表で、型について説明します。  
 
 |Type|スケール ユニット|説明|
 |--------|--------|--------|  
-|**Standard ストリーミング エンドポイント** (推奨)|0|既定のストリーミング エンドポイントは **Standard** 型ですが、Premium 型に変更できます。<br/> Standard 型は、実質的にすべてのストリーミング シナリオとオーディエンス サイズで推奨されるオプションです。 **Standard** 型は、送信帯域幅を自動的にスケールします。 この型のストリーミング エンドポイントからのスループットは、最大 600 Mbps です。 CDN にキャッシュされたビデオ フラグメントは、ストリーミング エンドポイントの帯域幅を使用しません。<br/>要件が非常に厳しいユーザー向けに、Media Services では **Premium** ストリーミング エンドポイントを提供しています。これは、多数のインターネット ユーザー向けに容量をスケールアウトするために使用できます。 同時に視聴するユーザーが多数であることが予想される場合は、**Premium** に移行する必要があるかどうかに関するガイダンスについて、amsstreaming\@microsoft.com までお問い合わせください。 |
-|**Premium ストリーミング エンドポイント**|>0|**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** 型には、`scaleUnits` を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用するときは、有効になっている各ユニットがアプリケーションに追加の帯域幅容量を提供します。 |
- 
-## <a name="comparing-streaming-types"></a>ストリーミング タイプの比較
+|**Standard**|0|既定のストリーミング エンドポイントは **Standard** 型ですが、`scaleUnits` を調整することで Premium 型に変更できます。|
+|**Premium**|>0|**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** 型には、`scaleUnits` (ストリーミング ユニット) を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用するときは、有効になっている各ユニットがアプリケーションに追加の帯域幅容量を提供します。 |
 
-### <a name="features"></a>機能
+> [!NOTE]
+> 多数のインターネットの対象ユーザーにコンテンツを配信することを検討しているお客様には、ストリーミング エンドポイントで CDN を有効にすることをお勧めします。
+
+SLA については、[価格と SLA](https://azure.microsoft.com/pricing/details/media-services/) に関する記事をご覧ください。
+
+## <a name="comparing-streaming-types"></a>ストリーミング タイプの比較
 
 機能|Standard|Premium
 ---|---|---
-最初の 15 日間無料| はい |いいえ 
-スループット |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
+最初の 15 日間無料 <sup>1</sup>| はい |いいえ 
+スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
 動的パッケージ|はい|はい
-スケール|対象スループットまで自動スケールアップ。|追加のストリーミング ユニット
-IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
+スケール|対象スループットまで自動スケールアップ。|追加の SU
+IP フィルタリング/G20/カスタム ホスト  <sup>2</sup>|はい|はい
 プログレッシブ ダウンロード|はい|はい
-推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。<br/>Standard 以上必要と考えられる場合。 同時実行の対象ユーザー数が 50,000 ビューアーを超えると予想される場合は、お問い合せ (amsstreaming@microsoft.com) ください。
+推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。
 
-<sup>1</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。
+<sup>1</sup> 無料試用版は、新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されます。<br/>
+<sup>2</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
 
 ## <a name="properties"></a>Properties 
 
@@ -149,6 +155,10 @@ CDN 統合は、中国および連邦政府地域を除くすべての Azure デ
 ### <a name="determine-if-dns-change-has-been-made"></a>DNS の変更が行われたかどうかを確認する
 
 ストリーミング エンドポイントで DNS の変更が行われた (トラフィックが Azure CDN に配信されている) かどうかは、 https://www.digwebinterface.com を使用して確認できます。 その結果に azureedge.net domain の名前が含まれていれば、トラフィックは現在 CDN に配信されています。
+
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

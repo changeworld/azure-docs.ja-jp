@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799544"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199230"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
@@ -43,7 +43,9 @@ ms.locfileid: "59799544"
    - **[サポートされているアカウントの種類]** セクションで、**[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
    - **[登録]** を選択して、アプリケーションを作成します。
 1. アプリのページの一覧から **[認証]** を選択します。
-1. **[リダイレクト URL]** セクションで、**[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションを探し、**["urn:ietf:wg:oauth:2.0:oob]** を選択します。
+   1. **[リダイレクト URI]** セクションの、リダイレクト URI の一覧で:
+   1. **[種類]** 列で、**[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
+   1. **[リダイレクト URI]** 列に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。
 1. **[保存]** を選択します。
 1. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、`Enter_the_Application_Id_here` を登録してコピーしたアプリケーション ID に置き換えます。
 

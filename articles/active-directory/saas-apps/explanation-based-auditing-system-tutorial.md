@@ -81,7 +81,7 @@ Explanation-Based Auditing System で Azure AD のシングル サインオン�
 2. **[Explanation-Based Auditing System のシングル サインオンの構成](#configure-explanation-based-auditing-system-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Explanation-Based Auditing System のテスト ユーザーの作成](#create-explanation-based-auditing-system-test-user)** - Explanation-Based Auditing System で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Explanation-Based Auditing System のテスト ユーザーの作成](#create-explanation-based-auditing-system-test-user)** - Explanation-Based Auditing System で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成

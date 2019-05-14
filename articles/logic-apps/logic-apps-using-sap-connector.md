@@ -8,29 +8,34 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 04/19/2019
 tags: connectors
-ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ee8b164aa46c4fe2f66f27d9a41d0282c676907
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887087"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136796"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
-この記事では、SAP ERP Central Component (ECC) コネクタを使用し、Logic Apps 内からオンプレミス SAP リソースにアクセスする方法を紹介します。 コネクタは、オンプレミスの ECC と S/4 HANA の両方のシステムで動作します。 SAP ECC コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
+この記事では、SAP コネクタを使用して、ロジック アプリ内からご利用のオンプレミス SAP リソースにアクセスする方法を紹介します。 このコネクタによって、R/3 やオンプレミスの ECC システムなどの、SAP の従来のリリースが操作されます。 またこのコネクタにより、S/4 HANA などのより新しい HANA ベースの SAP システムとの統合が可能になります (それらがオンプレミスまたはクラウド内のどこでホストされていても)。
+SAP コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
 
-SAP ECC コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
+SAP コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
 
 - **SAP に送信する**: SAP システムに tRFC で IDoc を送信したり、BAPI 関数を呼び出したりします。
 - **SAP から受信する**: SAP システムから tRFC で IDoc や BAPI 関数呼び出しを受信します。
 - **スキーマを生成する**: IDoc、BAPI、RFC 用に SAP アーティファクトのスキーマを生成します。
 
+上記のすべての操作に対して、SAP コネクタでは、ユーザー名とパスワードを使用した基本認証がサポートされています。 コネクタではまた、<a href="https://help.sap.com/doc/saphelp_nw70/7.0.31/en-US/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true">Secure Network Communications (SNC)</a> もサポートされています。これは、SAP Netweaver シングル サインオンまたは外部のセキュリティ製品によって提供される追加のセキュリティ機能に対して使用できます。 
+
 SAP コネクタは、[オンプレミスのデータ ゲートウェイ](https://www.microsoft.com/download/details.aspx?id=53127)を介してオンプレミスの SAP システムと統合されます。 送信シナリオの場合、たとえば、Logic Apps から SAP システムにメッセージを送信するとき、データ ゲートウェイが RFC クライアントとして機能し、Logic Apps から受信した要求を SAP に転送します。
 同様に、受信シナリオの場合、SAP から要求を受信し、Logic Apps に転送する RFC サーバーとしてデータ ゲートウェイが機能します。 
 
 この記事では、SAP と統合されるサンプル ロジック アプリを作成する方法と前に説明した統合シナリオを紹介します。
+
+<a name="pre-reqs"></a>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,6 +48,12 @@ SAP コネクタは、[オンプレミスのデータ ゲートウェイ](https:
 * <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP アプリケーション サーバー</a>または <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP メッセージ サーバー</a>。
 
 * オンプレミスの任意のコンピューターに最新の[オンプレミス データ ゲートウェイ](https://www.microsoft.com/download/details.aspx?id=53127)をダウンロードしてインストールします。 事前に Azure portal でゲートウェイをセットアップしておいてください。 ゲートウェイを使用することで、オンプレミスのデータやリソースに安全にアクセスすることができます。 詳細については、「[Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする](../logic-apps/logic-apps-gateway-install.md)」を参照してください。
+
+* SNC をシングル サインオン (SSO) で使用する場合は、ゲートウェイが、SAP ユーザーに対してマップされたユーザーとして実行されていることを確認してください。 既定のアカウントを変更するには、**[アカウントを変更]** を選択し、ユーザーの資格情報を入力します。
+
+   ![ゲートウェイのアカウントを変更する](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* 外部のセキュリティ製品を使用して SNC を有効にする場合は、ゲートウェイがインストールされているのと同じコンピューター上に SNC ライブラリまたはファイルをコピーします。 SNC 製品の例をいくつか挙げると、<a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>、Kerberos、NTLM などとなります。
 
 * オンプレミス データ ゲートウェイと同じコンピューターに最新の SAP クライアント ライブラリをダウンロードしてインストールします。現時点では、<a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">SAP Connector (NCo) 3.0.21.0 for Microsoft .NET Framework 4.0 and Windows 64bit (x64)</a> が最新となります。 このバージョン以降をインストールしてください。これには次の理由があります。
 
@@ -114,7 +125,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
       **[ログオンの種類]** プロパティが **[グループ]** に設定されている場合、通常は任意として表示される次のプロパティが必須になります。 
 
       ![SAP メッセージ サーバー接続を作成](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
-
+      
    2. 操作が完了したら、**[作成]** を選択します。 
    
       Logic Apps により、接続のセットアップとテストが行われ、適切に機能していることが確認されます。
@@ -343,7 +354,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 任意で、BLOB、ストレージ、統合アカウントなど、リポジトリにある生成済みのスキーマをダウンロードしたり、保存したりできます。 統合アカウントの場合、他の XML アクションでこの上ない操作性が与えられます。そこで、この例では、Azure Resource Manager コネクタを使用し、同じロジック アプリ用の統合アカウントにスキーマをアップロードする方法を示します。
 
-1. ロジック アプリ デザイナーのトリガーの下で **[新しいステップ]**、**[アクションの追加]** の順に選択します。 検索ボックスに、フィルターとして「resource manager」と入力します。 このアクションを選択: **[Create or update a resource]\(リソースの作成または更新\)**
+1. ロジック アプリ デザイナーのトリガーの下で **[新しいステップ]** > 、**[アクションの追加]** の順に選択します。 検索ボックスに、フィルターとして「resource manager」と入力します。 このアクションを選択: **[Create or update a resource]\(リソースの作成または更新\)**
 
    ![Azure Resource Manager アクションの選択](media/logic-apps-using-sap-connector/select-arm-action.png) 
 
@@ -375,23 +386,45 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 2. 実行が成功したら、統合アカウントに進み、スキーマが生成されていることを確認します。
 
+## <a name="enable-secure-network-communications-snc"></a>Secure Network Communications (SNC) を有効にする
+
+開始する前に、上記に一覧した次の[前提条件](#pre-reqs)が満たされていることを確認してください。
+
+* オンプレミス データ ゲートウェイが、ご利用の SAP システムと同じネットワーク内にあるコンピューターにインストールされている。
+
+* シングル サインオンのために、ゲートウェイが、SAP ユーザーにマップされたユーザーとして実行されている。
+
+* 追加のセキュリティ機能を提供する SNC ライブラリが、データ ゲートウェイと同じコンピューターにインストールされている。 これらの例をいくつか挙げると、<a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>、Kerberos、NTLM などとなります。
+
+SAP システムとの間でやりとりされる要求に対して SNC を有効にするには、SAP 接続の **[SNC を使用する]** チェックボックスを選択し、次のプロパティを指定します。
+
+   ![接続で SAP SNC を構成する](media/logic-apps-using-sap-connector/configure-sapsnc.png) 
+
+   | プロパティ   | 説明 |
+   |------------| ------------|
+   | **SNC ライブラリ** | SNC ライブラリ名、または NCo インストール場所または絶対パスの相対パス。 例: sapsnc.dll、.\security\sapsnc.dll、または c:\security\sapsnc.dll  | 
+   | **SNC SSO** | SNC 経由で接続する場合、SNC ID は、通常、呼び出し元を認証するために使用されます。 もう 1 つのオプションは、ユーザー/パスワード情報を使用して呼び出し元を認証できるようにオーバーライドすることです。ただし、行は引き続き暗号化されます。|
+   | **SNC の自分の名前** | ほとんどの場合、これは省略することができます。 インストールされている SNC ソリューションは、通常、独自の SNC 名を認識しています。 "複数の ID" をサポートするソリューションの場合のみ、この特定の宛先またはサーバーに使用される ID を指定することが必要な場合があります。 |
+   | **SNC パートナー名** | バックエンドの SNC 名です。 |
+   | **保護の SNC 品質** | この特定の宛先またはサーバーの SNC 通信に使用されるサービスの品質。 既定値は、バックエンド システムによって定義されます。 最大値は、SNC のために使用されるセキュリティ製品によって定義されます。 |
+   |||
+
+   > [!NOTE]
+   > データ ゲートウェイと SNC ライブラリが置かれているコンピューター上で、環境変数 SNC_LIB および SNC_LIB_64 は設定しないでください。 設定した場合、それらが、コネクタを介して渡される SNC ライブラリ値よりも優先されます。
+   >
+
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限
 
 SAP コネクタに関して現在知られている問題と制限は次のようになります。
+
+* SAP への送信呼び出しまたはメッセージが 1 つしか tRFC と連動しない。 同じセッションで複数の tRFC を呼び出すなど、Business Application Programming Interface (BAPI) コミット パターンはサポートされていません。
 
 * SAP トリガーが SAP からバッチ IDoc を受信できない。 このアクションの結果として、SAP システムとデータ ゲートウェイの間で RFC 接続に失敗することがあります。
 
 * SAP トリガーでデータ ゲートウェイ クラスターがサポートされない。 フェールオーバーでは、SAP システムと通信するデータ ゲートウェイ ノードがアクティブなノードと異なる場合があり、結果として、予想外の動作が発生します。 送信シナリオの場合、データ ゲートウェイ クラスターがサポートされます。
 
-* 受信シナリオで、非 null の応答が返されない。 トリガーと応答アクションが与えられたロジック アプリは予想外の動作を起こします。 
-
-* SAP への送信呼び出しまたはメッセージが 1 つしか tRFC と連動しない。 同じセッションで複数の tRFC を呼び出すなど、Business Application Programming Interface (BAPI) コミット パターンはサポートされていません。
-
-* SAP への送信アクションとスキーマの生成アクションの両方で、添付ファイルのある RFC がサポートされない。
-
 * 現在、SAP コネクタは SAP ルーター文字列をサポートしていない。 オンプレミス データ ゲートウェイは、接続する SAP システムと同じ LAN 上に存在する必要があります。
 
-* オンプレミス データ ゲートウェイの場合、DATS フィールドと TIMS SAP フィールドの absent (null)、empty、minimum、maximum 値の変換が後の更新で変更されることがある。
 
 ## <a name="get-support"></a>サポートを受ける
 

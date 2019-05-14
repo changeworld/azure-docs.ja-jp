@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05e7dd11274bb120e40df4a63d428ac6b6d7489f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094975"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143332"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM と Azure Backup Server のオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 Azure Backup では、初回バックアップが圧縮されます。 オフライン シード処理プロセスによって、Azure Backup でディスクを使用し、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。
@@ -98,7 +98,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export を
 ### <a name="prepare-sata-drives-and-ship-to-azure"></a>SATA ドライブの準備と Azure への発送
 *AzureOfflineBackupDiskPrep* ユーティリティを使用して、最寄りの Azure データセンターに送る SATA ドライブを準備します。 このユーティリティは、次のパスの Recovery Services エージェントのインストール ディレクトリにあります。
 
-   *\Microsoft* *Azure* *Recovery* *Services* \*Agent\Utils\*
+*\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. このディレクトリに移動し、**AzureOfflineBackupDiskPrep** ディレクトリを、準備する SATA ドライブが接続されているコピー用コンピューターにコピーします。 コピー用コンピューターについて、以下を確認します。
 

@@ -2,18 +2,17 @@
 title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する
 description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 ms.service: hdinsight
-ms.custom: hdinsightactive
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724165"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142828"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -38,13 +37,8 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 * **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、`oozietest` という名前のデータベースを使用します。
 
-* **ストレージ構成に対する変更の可能性。**  ストレージ アカウントの種類 `BlobStorage` を使用している場合は、「[ストレージの構成](#storage-configuration)」を参照してください。
+* クラスターのプライマリ ストレージの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。[「安全な転送」](../storage/common/storage-require-secure-transfer.md)も参照してください。
 
-## <a name="storage-configuration"></a>ストレージの構成
-使用しているストレージ アカウントの種類が `Storage (general purpose v1)` または `StorageV2 (general purpose v2)` の場合、アクションは必要ありません。  この記事のプロセスにより、少なくとも `/mapreducestaging` に対する出力が生成されます。  既定の Hadoop 構成には、サービス `HDFS`の `core-site.xml` 内の `fs.azure.page.blob.dir` 構成値内に `/mapreducestaging` が含まれます。  この構成により、ディレクトリに対する出力がページ BLOB となります。これは、ストレージ アカウントの種類 `BlobStorage` ではサポートされていません。  この記事で `BlobStorage` を使用するには、`/mapreducestaging` を `fs.azure.page.blob.dir` 構成値から削除します。  構成は [Ambari UI](hdinsight-hadoop-manage-ambari.md) からアクセスすることができます。  そうしないと、`Page blob is not supported for this account type.` というエラー メッセージが表示されます。
-
-> [!NOTE]  
-> この記事で使用されるストレージ アカウントでは[安全な転送](../storage/common/storage-require-secure-transfer.md)が有効になっているため、`wasb` ではなく `wasbs` がこの記事全体で使用されます。
 
 ## <a name="example-workflow"></a>ワークフローの例
 
@@ -451,7 +445,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 5. 次のコードを編集して、`<JOBID>` を前に返された ID に置き換えます。  ジョブを開始するには、次のコマンドを使います。
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
     このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。  このジョブは完了までに数分かかります。

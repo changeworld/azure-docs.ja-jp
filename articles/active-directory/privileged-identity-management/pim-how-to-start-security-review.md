@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure AD ロールのアクセス レビューを開始する - Azure Active Directory | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure ロールに対するアクセス レビューを開始する方法について説明します。
+title: PIM で Azure AD ロールのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールに対するアクセス レビューを作成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,76 +10,65 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/21/2018
+ms.date: 04/27/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5cbf96c165d79c26985663ef5a9d64bbf8f9892
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0a0680ddf2c9e654455933bf09699ab81e8ab65d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574996"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141695"
 ---
-# <a name="start-an-access-review-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを開始する
-ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するには、特権ロール管理者またはグローバル管理者が定期的にアクセス レビューを作成して、ユーザーに付与されたロールの確認を管理者に依頼する必要があります。 このドキュメントでは、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
+# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを作成する
 
-## <a name="start-an-access-review"></a>アクセス レビューを開始する
-> [!NOTE]
-> Azure Portal のダッシュボードに PIM アプリケーションをまだ追加していない場合は、「[Azure Privileged Identity Management の使用](pim-getting-started.md)」の手順を参照してください。
-> 
-> 
+従業員の特権 Azure AD ロールへのアクセスは、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、特権 Azure AD ロールのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。
 
-PIM アプリケーションのメイン ページには、アクセス レビューを開始する方法が 3 つあります。
+この記事では、特権 Azure AD ロールに対して 1 つ以上のアクセス レビューを作成する方法について説明します。
 
-* **[アクセス レビュー]** > **[追加]**
-* **[ロール]** > **[レビュー]**
-* 確認する特定のロールをロールの一覧から選択し、**[レビュー]** をクリックする
+## <a name="prerequisites"></a>前提条件
 
-**[レビュー]** をクリックすると、**[アクセス レビューを開始する]** ブレードが表示されます。 このブレードでは、名前と時間制限を使用してレビューを構成し、確認するロールを選択し、レビューを実行するユーザーを決定します。
+- [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-![アクセス レビューを開始する - スクリーン ショット](./media/pim-how-to-start-security-review/PIM_start_review.png)
+## <a name="open-access-reviews"></a>アクセス レビューを開く
 
-### <a name="configure-the-review"></a>レビューを構成する
-アクセス レビューを作成するには、名前を付け、開始日と終了日を設定する必要があります。
+1. 特権ロール管理者ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
-![レビューを構成する - スクリーン ショット](./media/pim-how-to-start-security-review/PIM_review_configure.png)
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-ユーザーが完了するための十分なレビューの期間の長さを作成します。 終了日の前に完了したら、常にレビューを早く停止できます。
+1. 左側のメニューで **[Azure AD ロール]** をクリックしてから、**[アクセス レビュー]** をクリックします。
 
-### <a name="choose-a-role-to-review"></a>確認するロールを選択する
-各レビューでは、1 つのロールに重点を置いています。 特定のロールのブレードからアクセス レビューを開始した場合を除き、ここでロールを選択する必要があります。
+1. [管理] の下の **[アクセス レビュー]** をクリックします。
 
-1.  **[役割メンバーシップをレビューする]**
-   
-    ![ロール メンバーシップを確認する - スクリーン ショット](./media/pim-how-to-start-security-review/PIM_review_role.png)
-2. 一覧から 1 つのロールを選択します。
+    ![Azure AD ロール - アクセス レビュー](./media/pim-how-to-start-security-review/access-reviews.png)
 
-### <a name="decide-who-will-perform-the-review"></a>レビューを実行するユーザを決定する
-レビューを実行するための 3 つのオプションがあります。 他のユーザーにレビューを割り当てて完了してもらうか、自分でレビューするか、または各ユーザーが自身のアクセスを確認できます。
 
-1.  **[レビュー担当者の選択]**
-   
-    ![レビュー担当者を選択する - スクリーン ショット](./media/pim-how-to-start-security-review/PIM_review_reviewers.png)
-2. いずれかのオプションを選択してください。
-   
-   * **レビュー担当者の選択**:アクセスする必要があるユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
-   * **Me (自分)**:アクセス レビューが機能する方法をプレビューするか、できないユーザーの代わりに確認する場合に役に立ちます。
-   * **メンバーによる自己レビュー**:ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
+[!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
 
-### <a name="start-the-review"></a>レビューを開始する
-最後に、アクセスを承認する場合にユーザーが理由を提供することを要求するオプションがあります。 必要に応じて、レビューの説明を追加し、 **[開始]** を選択します。
 
-待機しているアクセス レビューがあることをユーザーに通知し、 [アクセス レビューを実行する方法](pim-how-to-perform-security-review.md)を示します。
+## <a name="start-the-access-review"></a>アクセス レビューを開始する
+
+アクセス レビューの設定を指定したら、**[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
+
+![アクセス レビューのリスト](./media/pim-how-to-start-security-review/access-reviews-list.png)
+
+既定では、レビューの開始直後に Azure AD からレビュー担当者宛てにメールが送信されます。 Azure AD からメールを送信することを選択しなかった場合は、アクセス レビューが実行待ちになっていることを必ずレビュー担当者に伝えてください。 レビュー担当者には、[Azure AD ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)手順を案内できます。
 
 ## <a name="manage-the-access-review"></a>アクセスレビューを管理する
-レビュー担当者が Azure AD PIM ダッシュボードでレビューを完了すると、[アクセス レビュー] セクションで進行状況を追跡できます。 ディレクトリのアクセス権は、 [レビューが完了する](pim-how-to-complete-review.md)まで変更されません。
 
-レビュー期間が終了するまで、レビューの完了をユーザーに通知するか、または [アクセス レビュー] セクションからレビューを早めに停止することができます。
+アクセス レビューの **[概要]** ページでは、レビュー担当者が完了したレビューの進捗状況を追跡できます。 ディレクトリのアクセス権は、[レビューが完了する](pim-how-to-complete-review.md)まで変更されません。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+![アクセス レビューの進捗状況](./media/pim-how-to-start-security-review/access-review-overview.png)
+
+これが 1 回限りのレビューである場合は、アクセス レビュー期間が終了するか、管理者がアクセス レビューを停止した後に、[Azure AD ロールのアクセス レビューを完了する](pim-how-to-complete-review.md)手順に従って結果を確認および適用します。  
+
+アクセス レビューの系列を管理するには、アクセス レビューに移動し、[Scheduled]\(スケジュール済み\) レビューで今後予定されている実行を見つけ、それに応じて終了日を編集したり、レビュー担当者を追加/削除したりします。
+
+**[Upon completion]\(完了時\)** 設定での選択に基づいて、レビューの終了日の後、またはレビューを手動で停止したときに自動適用が実行されます。 レビューの状態は、**[完了]** から **[適用中]** などの中間状態を経由して、最後に状態 **[適用済み]** まで変化します。 拒否されたユーザーが存在する場合は、それらのユーザーが数分以内にロールから削除されることを確認できます。
+
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ロールのアクセス レビューを完了する](pim-how-to-complete-review.md)
-- [PIM で自分の Azure AD ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)
-- [PIM で Azure リソース ロールのアクセス レビューを開始する](pim-resource-roles-start-access-review.md)
+- [Azure AD ロールのアクセス レビューを実行する](pim-how-to-perform-security-review.md)
+- [Azure AD ロールのアクセス レビューを完了する](pim-how-to-complete-review.md)
+- [Azure リソース ロールのアクセス レビューを作成する](pim-resource-roles-start-access-review.md)

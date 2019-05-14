@@ -133,7 +133,7 @@
             - name: cURL とAzure REST API を使用する
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Azure クラシック CLI を使用する
+            - name: Azure CLI の使用
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: オンデマンド クラスターの作成

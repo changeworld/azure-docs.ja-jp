@@ -1,8 +1,8 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight での Apache HBase
+- name: 概要
   items:
-    - name: 概要
+    - name: HDInsight での Apache HBase
       href: apache-hbase-overview.md
     - name: HDInsight の Apache Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
@@ -10,6 +10,10 @@
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
       maintainContext: true
+- name: クイック スタート
+  items:
+    - name: Apache HBase のクエリ - HBase シェル
+      href: ./query-hbase-with-hbase-shell.md
 - name: 作業開始
   items:
     - name: Apache HBase & NoSQL の開始

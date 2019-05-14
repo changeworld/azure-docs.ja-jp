@@ -175,6 +175,8 @@
           href: stream-analytics-troubleshoot-query.md
         - name: アクティビティ ログと診断ログ
           href: stream-analytics-job-diagnostic-logs.md
+        - name: データ エラー
+          href: data-errors.md
     - name: Machine Learning との統合
       items:
         - name: ML モデルを利用したセンチメント分析

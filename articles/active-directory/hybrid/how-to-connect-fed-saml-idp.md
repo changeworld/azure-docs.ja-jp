@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:シングル サインオンに SAML 2.0 ID プロバイダーを使用する | Microsoft Docs
+title: Azure AD Connect:シングル サインオンに SAML 2.0 ID プロバイダーを使用する - Azure
 description: このドキュメントでは、シングル サインオンに SAML 2.0 準拠の IDP を使用する方法について説明します。
 services: active-directory
 author: billmath
@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878096"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138340"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -41,7 +41,7 @@ Microsoft では、適切に構成された SAML 2.0 プロファイル ベー�
 >     - Windows 8 メール クライアントと Windows 8.1 メール クライアント
 >     - Windows 10 メール クライアント
 
-他のすべてのクライアントは、SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオでは利用できません。 たとえば、Lync 2010 デスクトップ クライアントは、シングル サインオン用に SAML 2.0 ID プロバイダーが構成されているサービスにログインすることはできません。
+他のすべてのクライアントは、SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオでは利用できません。 たとえば、Lync 2010 デスクトップ クライアントは、シングル サインオン用に SAML 2.0 ID プロバイダーが構成されているサービスにサインインすることはできません。
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Azure AD SAML 2.0 プロトコル要件
 このドキュメントには、1 つ以上の Microsoft クラウド サービス (Office 365 など) にサインオンできるように、SAML 2.0 ID プロバイダーが Azure AD とフェデレーションするために実装する必要があるプロトコルとメッセージ形式に関する詳細な要件が含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者 (SP-STS) は Azure AD です。
@@ -71,8 +71,8 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
 バインディングは、トランスポートに関連する必須の通信パラメーターです。 バインディングには次の要件が適用されます。
 
 1. 要求されるトランスポートは HTTPS です。
-2.  Azure AD は、ログオン中のトークンの送信で HTTP POST を必要とします。
-3.  Azure AD は、ID プロバイダーへの認証要求で HTTP POST を使用し、ID プロバイダーへのログオフ メッセージで REDIRECT を必要とします。
+2.  Azure AD は、サインイン中のトークンの送信で HTTP POST を必要とします。
+3.  Azure AD は、ID プロバイダーへの認証要求で HTTP POST を使用し、ID プロバイダーへのサインアウト メッセージで REDIRECT を必要とします。
 
 ## <a name="required-attributes"></a>必須属性
 次の表は、SAML 2.0 メッセージの特定の属性の要件を示します。
@@ -258,7 +258,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 2.  [今すぐインストール] をクリックして、ツールのダウンロードとインストールを開始します。
 3.  [I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory]\(Office 365、Azure、または Azure Active Directory を使用するその他のサービスとのフェデレーションを設定できません\) を選択します。
 4.  ツールがダウンロードされて実行されると、[接続診断] ウィンドウが表示されます。 ツールが示す手順に従って、フェデレーションの接続をテストします。
-5.  接続アナライザーによって、ログオンする SAML 2.0 IDP が開かれます。テストするユーザー プリンシパルの資格情報を入力します。![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  接続アナライザーによって、サインインする SAML 2.0 IDP が開かれます。テストするユーザー プリンシパルの資格情報を入力します。![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  フェデレーション テストのサインイン ウィンドウでは、SAML 2.0 ID プロバイダーとフェデレーションするように構成されている Azure AD テナントのアカウント名とパスワードを入力する必要があります。 ツールは、これらの資格情報を使用してサインインを試行し、サインインの試行中に実行したテストの詳細な結果を出力として提示します。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. このウィンドウには、テストの失敗した結果を示しています。 [詳細結果をレビュー] クリックすると、実行された各テストの結果に関する情報が表示されます。 結果を共有するためにディスクに保存することもできます。
@@ -271,7 +271,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 シングル サインオンが正しく設定されていることを検証するには、次の手順を完了します。
 
 
-1. ドメインに参加しているコンピューターで、会社の資格情報で使用するのと同じログオン名を使用して、クラウド サービスにサインインします。
+1. ドメインに参加しているコンピューターで、会社の資格情報で使用するのと同じサインイン名を使用して、クラウド サービスにサインインします。
 2.  [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されていれば、パスワード ボックスは網掛けになり、次のメッセージが表示されます。"&lt;お客様の会社&gt;にサインインする必要があります。"
 3.  &lt;会社名&gt; リンクの [サインイン] をクリックします。 サインインすることができたら、シングル サインオンが設定されています。
 

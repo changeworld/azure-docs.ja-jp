@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL サーバー上で自動バキュームを最適化する
-description: この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを最適化する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
+description: この記事では、Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する方法について説明します
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: fb1ab9525974601a8b8c22ccc44e2cf37baf21a1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993420"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069113"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバー上で自動バキュームを最適化する 
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
 
 ## <a name="overview-of-autovacuum"></a>自動バキュームの概要
@@ -44,7 +44,7 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 
 ここでは、この問いに基づいて更新することができる自動バキューム構成パラメーターの一部と、いくつかのガイダンスを示します。
 
-パラメーター|説明|既定値
+パラメーター|説明|Default value
 ---|---|---
 autovacuum_vacuum_threshold|任意の 1 つのテーブルでバキューム操作をトリガーするために必要な、更新または削除されたタプルの最小数を指定します。 既定値は 50 タプルです。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|50
 autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|5%

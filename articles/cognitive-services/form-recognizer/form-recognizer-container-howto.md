@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143038"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507805"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
 Form Recognizer では、機械学習テクノロジを適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。 値とテーブル エントリをそれらに関連付けてから、元のファイル内の関係を含む構造化データを出力します。 複雑さを軽減し、ワークフロー自動化プロセスまたは他のアプリケーションに簡単に統合するために、単純な REST API を使用してカスタム Form Recognizer モデルを呼び出すことができます。 必要なのは 5 つのドキュメント (または 1 つの空のフォーム) だけなので、手作業による操作やデータ サイエンスに関する深い専門知識を必要とすることなく、特定のコンテンツに合わせた結果をすばやく正確に得ることができます。 データのラベル付けやデータの注釈付けは必要ありません。
@@ -261,7 +261,7 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 ### <a name="form-recognizer"></a>Form Recognizer
 
-コンテナーは、[こちら](https://docs.microsoft.com/azure/cognitive-services/formrecognizer-service/rest-apis#formrecognier-api)にある REST エンドポイント API シリーズを提供します。サンプルについては、[こちら](https://azure.microsoft.com/resources/samples/cognitive-formrecognizer)を参照してください。
+コンテナーは、[こちら](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel)にある REST エンドポイント API シリーズを提供します。
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]

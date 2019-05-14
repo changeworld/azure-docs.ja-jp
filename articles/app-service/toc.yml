@@ -76,6 +76,8 @@
           href: overview-authentication-authorization.md
         - name: OS とランタイムの修正プログラムの適用
           href: overview-patch-os-runtime.md
+        - name: セキュリティ属性
+          href: app-service-security-attributes.md
     - name: 受信 IP と送信 IP
       href: overview-inbound-outbound-ips.md
     - name: Hybrid Connections (ハイブリッド接続)

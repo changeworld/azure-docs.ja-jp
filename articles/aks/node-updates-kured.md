@@ -1,27 +1,29 @@
 ---
-title: kured を使用して Azure Kubernetes Service (AKS) のノードを更新および再起動する
-description: kured を使用して Azure Kubernetes Service (AKS) のノードを更新し、自動的に再起動する方法について説明します。
+title: kured を使用して Azure Kubernetes Service (AKS) の Linux ノードを更新および再起動する
+description: kured を使用して Azure Kubernetes Service (AKS) の Linux ノードを更新し、自動的に再起動する方法について説明します
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b426399f73375618a2084eff82abba5d4934b914
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243331"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074203"
 ---
-# <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のノードにセキュリティとカーネルの更新プログラムを適用する
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します
 
-お客様のクラスターを保護するために、AKS のノードにはセキュリティ更新プログラムが自動的に適用されます。 これらの更新プログラムには、OS のセキュリティ修正プログラムやカーネルの更新プログラムが含まれています。 これらの更新プログラムの中には、プロセスを完了するためにノードの再起動が必要なものがあります。 AKS では、更新プロセスを完了するためのノードの再起動は自動的に行われません。
+クラスターを保護するために、AKS のノードにセキュリティ更新プログラムが自動的に適用されます。 これらの更新プログラムには、OS のセキュリティ修正プログラムやカーネルの更新プログラムが含まれています。 これらの更新プログラムの中には、プロセスを完了するためにノードの再起動が必要なものがあります。 AKS は、更新プロセスを完了するためにこれらの Linux ノードを自動的に再起動しません。
 
-この記事では、オープンソースの [kured (KUbernetes REboot Daemon)][kured] を使用して、再起動が必要なノードを監視し、ポッドの実行やノード再起動プロセスのスケジュール変更を自動的に管理する方法について説明します。
+(現在 AKS でプレビュー段階) の Windows サーバー ノードを最新に保つためのプロセスは少し異なります。 Windows Server ノードは、毎日の更新を受信しません。 代わりに、最新の Windows Server の基本イメージと修正プログラムを含む新しいノードをデプロイする AKS アップグレードを実行します。 Windows Server ノードを使用する AKS クラスターについては、「[AKS でのノード プールのアップグレード][nodepool-upgrade]」をご覧ください。
+
+この記事では、オープンソースの [kured (KUbernetes REboot Daemon)][kured] を使用して、再起動が必要な Linux ノードを監視し、ポッドの実行やノード再起動プロセスのスケジュール変更を自動的に処理する方法について説明します。
 
 > [!NOTE]
-> `Kured` は、Weaveworks によるオープンソースのプロジェクトです。 AKS におけるこのプロジェクトのサポートは、ベスト エフォート ベースで提供されます。 それ以上のサポートについては、#weave-community Slack チャンネルをご利用ください。
+> `Kured` は、Weaveworks によるオープンソースのプロジェクトです。 AKS におけるこのプロジェクトのサポートは、ベスト エフォート ベースで提供されます。 追加のサポートについては、#weave-community Slack チャンネルをご利用ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -35,9 +37,9 @@ AKS クラスターでは、お客様の Kubernetes ノードが Azure 仮想マ
 
 ![kured を使用した AKS ノードの更新と再起動のプロセス](media/node-updates-kured/node-reboot-process.png)
 
-カーネルの更新プログラムなど、一部のセキュリティ更新プログラムでは、プロセスの最後にノードを再起動する必要があります。 再起動が必要なノードでは、*/var/run/reboot-required* という名前のファイルが作成されます。 この再起動プロセスは自動的には実行されません。
+カーネルの更新プログラムなど、一部のセキュリティ更新プログラムでは、プロセスの最後にノードを再起動する必要があります。 再起動が必要な Linux ノードでは、*/var/run/reboot-required* という名前のファイルが作成されます。 この再起動プロセスは自動的には実行されません。
 
-お客様独自のワークフローとプロセスを使用してノードの再起動を管理するか、`kured` を使用してプロセスを調整することができます。 `kured` を使用すると、クラスター内の各ノードでポッドを実行する [DaemonSet][DaemonSet] がデプロイされます。 DaemonSet 内のこれらのポッドによって */var/run/reboot-required* ファイルの存在が監視され、ノードの再起動プロセスが開始されます。
+お客様独自のワークフローとプロセスを使用してノードの再起動を管理するか、`kured` を使用してプロセスを調整することができます。 `kured` を使用すると、クラスター内の各 Linux ノードでポッドを実行する [DaemonSet][DaemonSet] がデプロイされます。 DaemonSet 内のこれらのポッドによって */var/run/reboot-required* ファイルの存在が監視され、ノードの再起動プロセスが開始されます。
 
 ### <a name="node-upgrades"></a>ノードのアップグレード
 
@@ -62,7 +64,7 @@ kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.1.0/kur
 
 ## <a name="update-cluster-nodes"></a>クラスター ノードを更新する
 
-既定では、AKS ノードによって更新プログラムの有無が毎晩チェックされます。 待ちたくない場合は、手動で更新を行うことで、`kured` が正常に実行されていることを確認できます。 まず、[お客様の AKS ノードのいずれかに SSH で接続][aks-ssh]する手順に従ってください。 ノードに SSH で接続したら、次のように更新プログラムの有無をチェックして適用します。
+既定では、AKS の Linux ノードによって更新プログラムの有無が毎晩チェックされます。 待ちたくない場合は、手動で更新を行うことで、`kured` が正常に実行されていることを確認できます。 まず、[お客様の AKS ノードのいずれかに SSH で接続][aks-ssh]する手順に従ってください。 Linux ノードに SSH で接続したら、次のように更新プログラムの有無をチェックして適用します。
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -91,7 +93,9 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、`kured` を使用し、セキュリティ更新プロセスの一環としてノードを自動的に再起動する方法について説明しました。 最新バージョンの Kubernetes にアップグレードするために、[AKS クラスターをアップグレード][aks-upgrade]できます。
+この記事では、`kured` を使用し、セキュリティ更新プロセスの一環として Linux ノードを自動的に再起動する方法について説明しました。 最新バージョンの Kubernetes にアップグレードするために、[AKS クラスターをアップグレード][aks-upgrade]できます。
+
+Windows Server ノードを使用する AKS クラスターについては、「[AKS でのノード プールのアップグレード][nodepool-upgrade]」をご覧ください。
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
@@ -105,3 +109,4 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 [DaemonSet]: concepts-clusters-workloads.md#statefulsets-and-daemonsets
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

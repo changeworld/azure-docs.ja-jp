@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154300"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464804"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -42,6 +42,15 @@ Azure portal で、次のことが可能になりました。
 + Azure Machine Learning service ワークスペースの [概要] ページから config.json ファイルをダウンロードする機能の追加。
 + Azure Databricks ワークスペースからの Machine Learning service ワークスペース作成のサポート 
 
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Azure Machine Learning SDK for Python v1.0.33
++ **新機能**
+  + _Workspace.create_ メソッドは、CPU および GPU クラスターの既定のクラスター構成を受け入れるようになりました。
+  + ワークスペースの作成に失敗する場合、依存リソースはクリーンアップされます。
+  + 既定の Azure Container Registry SKU が Basic に切り替えられました。
+  + Azure Container Registry は、実行またはイメージの作成に必要なときに遅延作成されます。
+  + トレーニングの実行に対する環境をサポートします。
 
 ### <a name="notebook-virtual-machine"></a>Notebook Virtual Machine 
 

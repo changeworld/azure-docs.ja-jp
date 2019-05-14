@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266207"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137877"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -265,6 +265,8 @@ App Service では、トラフィックの自動ルーティングだけでな�
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
+
+既定では、新しいスロットには、`0%` のルーティング規則がグレーで表示されます。 この値を明示的に `0%` に設定 (黒いテキストで表示) すると、ユーザーは `x-ms-routing-name` クエリ パラメーターを使用して手動でステージング スロットにアクセスできますが、ルーティング率が 0 に設定されているため、スロットに自動的にルーティングされません。 これは、内部チームにスロットでの変更のテストを許可する一方で、ステージング スロットをパブリックから "非表示" にできる高度なシナリオです。
 
 <a name="Delete"></a>
 

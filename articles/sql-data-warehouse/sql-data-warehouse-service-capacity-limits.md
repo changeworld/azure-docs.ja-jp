@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999639"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154274"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -54,7 +54,7 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="loads"></a>読み込み
 | Category | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase は、1 MB 未満の行に対してのみ読み込みを行い、VARCHAR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。<br/><br/> |
+| Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase では、1 MB 未満の行を読み込みます。<br/><br/> |
 
 ## <a name="queries"></a>クエリ
 | Category | 説明 | 最大値 |

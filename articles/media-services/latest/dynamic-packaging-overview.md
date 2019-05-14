@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 02c3fb309755964f1a4b196189b7742fa3f91a9a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886456"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148210"
 ---
 # <a name="dynamic-packaging"></a>ダイナミック パッケージ
 
-Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX など) に配信できます。 これらのクライアントは異なるプロトコルを認識します。たとえば、iOS では HTTP ライブ ストリーミング (HLS) 形式が必要で、Xbox ではスムーズ ストリーミングが必要です。 HLS、MPEG DASH、または Smooth Streaming を認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート Smooth Streaming ファイルがある場合、ダイナミック パッケージを活用できます。 このパッケージには、ビデオの解像度の指定がなく、SD、HD、UHD-4K をサポートしています。
+Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX など) に配信できます。 これらのクライアントは異なるプロトコルを認識します。たとえば、iOS では HTTP ライブ ストリーミング (HLS) 形式が必要で、Xbox ではスムーズ ストリーミングが必要です。 HLS、MPEG DASH、または Smooth Streaming を認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート Smooth Streaming ファイルがある場合、**ダイナミック パッケージ**を活用できます。 このパッケージには、ビデオの解像度の指定がなく、SD、HD、UHD-4K をサポートしています。
 
-[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、クライアント プレーヤーへのメディア コンテンツの配信に使用する Media Services のダイナミック パッケージ サービスです。 ダイナミック パッケージは、すべての**ストリーミング エンドポイント** (Standard または Premium) に標準で付属する機能です。 
+Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 ダイナミック パッケージは、すべての**ストリーミング エンドポイント** (Standard または Premium) に標準で付属する機能です。 
 
 **ダイナミック パッケージ**を利用するには、Media Services ダイナミック パッケージで必要とされるアダプティブ ビットレート MP4 ファイルのセットを持つ**アセット**と、ストリーミング構成ファイルが必要です。 これらのファイルを取得する方法の 1 つは、Media Services を使用してお使いの中間 (ソース) ファイルをエンコードすることです。 エンコードされたアセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、DASH、または Smooth) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
 
@@ -197,6 +197,10 @@ Smooth Streaming のマニフェストの例は、次のとおりです。
 
 > [!NOTE]
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](developers-guide.md) のいずれかを使用してください。
+
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

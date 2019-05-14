@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9de8fa297c2b3f89f74b17e0dac3eab007367b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264031"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471595"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
@@ -67,11 +67,13 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 > [!TIP]
 > リソース グループを削除すると、その中のサービスも削除されます。 複数のサービスを利用するプロトタイプ プロジェクトの場合は、すべてのサービスを同じリソース グループに配置することで、プロジェクト終了後のクリーンアップが容易になります。
 
-## <a name="select-a-hosting-location"></a>ホストする場所の選択
+## <a name="select-a-location"></a>場所を選択します。
 
 Azure サービスの 1 つである Azure Search は、世界中のデータ センターでホストできます。 地域によって[価格が異なる場合](https://azure.microsoft.com/pricing/details/search/)があります。
 
-Azure サービス (Azure Storage、Azure Cosmos DB、Azure SQL Database) 内にあるコンテンツのインデックスを作成している場合は、帯域幅の料金を回避するために、データと同じリージョンに Azure Search サービスを作成します。 サービスが同じリージョン内にある場合、アウトバウンド データに料金はかかりません。
+別の Azure サービス (Azure Storage、Azure Cosmos DB、Azure SQL Database) によって提供されたデータにインデックスを付ける場合は、帯域幅の料金を避けるために同じリージョンに Azure Search サービスを作成します。 サービスが同じリージョン内にある場合、アウトバウンド データに料金はかかりません。
+
+コグニティブ検索 AI エンリッチメントを使用している場合は、Cognitive Services リソースと同じリージョンにサービスを作成します。 サービスのコロケーションは、AI エンリッチメントの要件です。
 
 ## <a name="select-a-pricing-tier-sku"></a>価格レベルの選択 (SKU)
 

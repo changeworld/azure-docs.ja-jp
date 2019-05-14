@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/22/2019
-ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: e451b7837a1cff4bbeaecd1573dc860524caf4d3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58495988"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142651"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
 
@@ -127,7 +127,7 @@ Information Protection ポリシー管理の一環として、カスタム ラ�
 
 ![監査ログ](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>自動/プログラムによる分類
+## <a id="subheading-4"></a>T-SQL を使用してデータ分類を管理する
 
 T-SQL を使って、列の分類を追加/削除し、データベース全体のすべての分類を取得することができます。
 
@@ -146,7 +146,26 @@ REST API を使用して、分類をプログラムで管理することもで�
 - [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
 - [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの推奨される機密ラベルを取得します
 
+## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Azure PowerShell を使用してデータの検出と分類を管理する
+
+PowerShell を使用して、Azure SQL データベースおよびマネージド インスタンスで推奨されるすべての列を取得できます。
+
+### <a name="powershell-cmdlets-for-azure-sql-database"></a>Azure SQL データベース用の PowerShell コマンドレット
+
+- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+
+### <a name="powershell-cmdlets-for-managed-instance"></a>マネージド インスタンス用の PowerShell コマンドレット
+
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+
 ## <a name="permissions"></a>アクセス許可
+
 `Owner`、`Reader`、`Contributor`、`SQL Security Manager`、`User Access Administrator` の組み込みロールでは Azure SQL データベースのデータ分類を読み取ることができます。
 
 `Owner`、`Contributor`、`SQL Security Manager` の組み込みロールでは Azure SQL データベースのデータ分類を変更することができます。

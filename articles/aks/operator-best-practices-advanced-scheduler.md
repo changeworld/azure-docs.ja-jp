@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175983"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074199"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -31,12 +31,14 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際は、多く�
 
 AKS クラスターを作成するときは、GPU のサポートや多数の強力な CPU を備えたノードをデプロイできます。 このようなノードは、機械学習 (ML) や人工知能 (AI) などの大規模なデータ処理ワークロードによく使用されます。 通常、この種のハードウェアはデプロイするのが高価なノード リソースなので、これらのノードでスケジュールできるワークロードを制限します。 代わりに、クラスターの一部のノードをイングレス サービスの実行専用にして、他のワークロードを防ぐこともできます。
 
+さまざまなノードに対するこのサポートは、複数のノード プールを使用して提供されます。 AKS クラスターでは、1 つ以上のノード プールが提供されます。 AKS での複数のノード プールのサポートは現在プレビュー段階です。
+
 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
 
 * **テイント**は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
 * **容認**は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
 
-ポッドを AKS クラスターにデプロイするときは、容認とテイントが一致している場合にのみ、ノードでポッドがスケジュールされます。 たとえば、GPU をサポートするノード用のノードプールが AKS クラスターにあるものとします。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定した場合、ポッドで適切な容認が定義されていない場合、そのノードをポッドにスケジュールすることはできません。
+ポッドを AKS クラスターにデプロイするときは、容認とテイントが一致している場合にのみ、ノードでポッドがスケジュールされます。 たとえば、GPU のサポートを備えたノード用のノード プールが AKS クラスターにあると仮定します。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定した場合、ポッドで適切な容認が定義されていない場合、そのノードをポッドにスケジュールすることはできません。
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -53,13 +55,13 @@ spec:
   containers:
   - name: tf-mnist
     image: microsoft/samples-tf-mnist-demo:gpu
-  resources:
-    requests:
-      cpu: 0.5
-      memory: 2Gi
-    limits:
-      cpu: 4.0
-      memory: 16Gi
+    resources:
+      requests:
+        cpu: 0.5
+        memory: 2Gi
+      limits:
+        cpu: 4.0
+        memory: 16Gi
   tolerations:
   - key: "sku"
     operator: "Equal"
@@ -72,6 +74,25 @@ spec:
 テイントを適用するときは、アプリケーションの開発者や所有者と協力して、デプロイで必要な容認を定義できるようにします。
 
 テイントと容認について詳しくは、[テイントと容認の適用][k8s-taints-tolerations]に関する記事をご覧ください。
+
+AKS での複数のノード プールの使用方法について詳しくは、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
+
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS でのテイントと容認の動作
+
+AKS でノード プールをアップグレードすると、テイントと容認は新しいノードに適用されるときに、次のように設定されたパターンに従います。
+
+- **仮想マシン スケールのサポートがない既定のクラスター**
+  - 2 つのノード クラスター *node1* と *node2* があると仮定します。 アップグレードすると、追加ノード (*node3*) が作成されます。
+  - *node1* のテイントが *node3* に適用されて、次に *node1* が削除されます。
+  - 別の新規ノードが作成されます (前の *node1* が削除されたため、名前は *node1* になります)、そして *node2* のテイントが新しい *node1* に適用されます。 次に、*node2* が削除されます。
+  - 要するに、*node1* が *node3* になり、*node2* が *node1* になります。
+
+- **仮想マシン スケール セットを使用するクラスター** (現在、AKS でプレビュー段階)
+  - ここでも、2 つのノード クラスター *node1* と *node2* があると仮定します。 ノード プールをアップグレードします。
+  - 2 つの追加ノード *node3* と *node4* が作成されて、それぞれにテイントが渡されます。
+  - 元の *node1* と *node2* は削除されます。
+
+AKS でノード プールをスケーリングするとき、テイントと容認は設計により持ち越されません。
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>ノード セレクターとアフィニティを使用してポッドのスケジュールを制御する
 
@@ -178,3 +199,4 @@ Kubernetes スケジューラでワークロードを論理的に分離する最
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

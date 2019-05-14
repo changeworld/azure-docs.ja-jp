@@ -1,21 +1,21 @@
 ---
-title: Azure Portal での PostgreSQL のサーバー ログの構成とアクセス
-description: この記事では、Azure Portal から Azure Database for PostgreSQL のサーバー ログの構成方法とアクセス方法について説明します。
+title: Azure portal での Azure Database for PostgreSQL - Single Server のサーバー ログの構成とアクセス
+description: この記事では、Azure portal から Azure Database for PostgreSQL - Single Server のサーバー ログの構成方法とアクセス方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 509c3af66e8228f142126dae6938ad74daf1d7ad
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544891"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067447"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Azure portal での Azure Database for PostgreSQL - Single Server ログの構成とアクセス
 
-Azure Portal から [Azure Database for PostgreSQL のサーバー ログ](concepts-server-logs.md)の構成、一覧表示、およびダウンロードができます。
+Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-logs.md)の構成、一覧表示、およびダウンロードができます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。

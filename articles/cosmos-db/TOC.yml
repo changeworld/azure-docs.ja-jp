@@ -163,7 +163,7 @@
         - name: Azure Functions をトリガーする
           displayName: change feed
           href: change-feed-functions.md
-    - name: Apache Spark による分析
+    - name: Apache Spark による組み込みの分析
       href: spark-api-introduction.md
     - name: サーバー側プログラミング
       items:
@@ -517,6 +517,8 @@
           href: how-to-sql-subquery.md
     - name: 変更フィード
       items:
+        - name: Azure Cosmos DB トリガーのログ
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: 複数の Azure Cosmos DB トリガー
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング

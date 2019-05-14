@@ -14,14 +14,14 @@ ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: decba8f46432891a44a2b231890da4214bd5b1bb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619184"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140987"
 ---
-# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを完了する
+# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを完了する
 [アクセス レビューが開始](pim-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によって、ユーザーに自分のアクセスをレビューするよう求めるメールが自動的に送信されます。 電子メールが届かなかったユーザーがいる場合は、[アクセス レビューを実行する方法](pim-how-to-perform-security-review.md)に関する手順を送信できます。
 
 アクセス レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
@@ -33,7 +33,7 @@ ms.locfileid: "58619184"
 
 アクセス レビューの [詳細] ブレードには、このレビューを管理するためのオプションが多数あります。
 
-![PIM アクセス レビューのボタン - スクリーンショット](./media/pim-how-to-complete-review/PIM_review_buttons.png)
+![PIM アクセス レビューのボタン - スクリーンショット](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>リマインダーを送信
 ユーザーが各自をレビューできるようにアクセス レビューが設定された場合、 **[リマインダーを送信]** をクリックすると通知が送信されます。 

@@ -8,18 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/06/2019
+ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996001"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150485"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
-
-> [!NOTE]
-> この機能は、[*パブリック プレビュー*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
 
 ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、パブリックまたは "グローバル" の Logic Apps サービスとは別に保存されている他のリソースを使用するプライベートな分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE が Azure 仮想ネットワークに "*挿入*" され、Logic Apps サービスが仮想ネットワークにデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、この ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。
 
@@ -101,13 +98,11 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
 統合サービス環境 (ISE) を作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) の Azure メイン メニューで、**[リソースの作成]** を選択します。
+検索ボックスに、フィルターとして「統合サービス環境」と入力します。
 
    ![新しいリソースの作成](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. 検索ボックスに、フィルターとして「統合サービス環境」と入力します。
-結果リストで **[統合サービス環境 (プレビュー)]** を選択し、**[作成]** を選択します。
-
-   ![[統合サービス環境] を選択する](./media/connect-virtual-network-vnet-isolated-environment/select-integration-service-environment.png)
+1. 統合サービス環境の作成ウィンドウで、**[作成]** を選択します。
 
    ![[作成] を選択する](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
@@ -121,8 +116,8 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 環境を作成する Azure リソース グループ |
    | **統合サービス環境の名前** | はい | <*environment-name*> | 環境を示す名前 |
    | **場所** | はい | <*Azure-datacenter-region*> | 環境をデプロイする Azure データセンター リージョン |
-   | **追加容量** | はい | 0、1、2、3 | この ISE リソースに使用する処理ユニット数。 作成後に容量を追加する場合は、「[容量を追加する](#add-capacity)」を参照してください。 |
-   | **Virtual Network** | はい | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、ここで作成することができます。 <p>**重要**:ISE を作成するときに "*のみ*"、この挿入を実行することができます。 ただし、この関係を作成する前に、必ず Azure Logic Apps 用に仮想ネットワークにロールベースのアクセス制御を設定しておきます。 |
+   | **追加容量** | はい | 0 から 10 | この ISE リソースに使用する追加の処理ユニット数。 作成後に容量を追加する場合は、「[ISE の容量を追加する](#add-capacity)」を参照してください。 |
+   | **Virtual Network** | はい | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、[まず Azure 仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 <p>**重要**:ISE を作成するときに "*のみ*"、この挿入を実行することができます。 |
    | **サブネット** | はい | <*subnet-resource-list*> | ISE では、環境内にリソースを作成するために "*空の*" サブネットが 4 つ必要です。 各サブネットを作成するには、[この表の下の手順に従います](#create-subnet)。  |
    |||||
 
@@ -172,6 +167,9 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
 
    1. さらに 3 つのサブネットについてこれらの手順を繰り返します。
 
+      > [!NOTE]
+      > 作成しようとしているサブネットが有効でない場合、Azure portal にメッセージが表示されますが、作業の進行は中断されません。
+
 1. Azure で ISE 情報の検証が正常に完了したら、次の例のように **[作成]** を選択します。
 
    ![検証が完了したら [作成] を選択します](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
@@ -185,34 +183,17 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
 
    ![デプロイメント成功](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
+   表示されない場合は、デプロイのトラブルシューティングに関する Azure portal の手順に従います。
+
    > [!NOTE]
-   > デプロイが失敗するか、ISE を削除した場合、サブネットがリリースされるまでに最長 1 時間かかる "*可能性があります*"。 そのため、状況に応じて、このようなサブネットを他の ISE で再利用できるようになるまで待つ必要があります。
+   > デプロイが失敗するか、ISE を削除する場合、サブネットがリリースされるまでに最長 1 時間かかる可能性があります。 この遅延のため、このようなサブネットを他の ISE で再利用できるようになるまで待たなければならない場合があります。 
+   >
+   > 仮想ネットワークを削除すると、通常、サブネットがリリースされるまでに最長 2 時間かかる可能性があり、この操作にさらに時間がかかる場合があります。 
+   > 仮想ネットワークを削除する場合は、まだ接続されているリソースがないことを確認してください。 「[仮想ネットワークの削除](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)」を参照してください。
 
 1. 展開の完了後に Azure で環境が自動的に表示されない場合は、環境を表示するために **[リソースに移動]** を選択します。  
 
-<a name="add-capacity"></a>
-
-### <a name="add-capacity"></a>容量を追加する
-
-ISE 基本単位の容量は固定されているため、さらにスループットが必要な場合はスケール ユニットを追加できます。 パフォーマンス メトリックや処理ユニット数に基づいて自動スケーリングできます。 メトリックに基づいた自動スケーリングを選択する場合は、さまざまな条件から選択し、その条件を満たすしきい値条件を指定できます。
-
-1. Azure portal で ISE を見つけます。
-
-1. ISE のパフォーマンス メトリックを表示するには、ISE のメイン メニューで、**[概要]** を選択します。
-
-1. 自動スケーリングを設定するには、**[設定]** で **[スケールアウト]** を選択します。**[構成]** タブで、**[自動スケーリングの有効化]** を選択します。
-
-1. **[既定値]** セクションで、**[メトリックに基づいてスケーリングする]** または **[特定のインスタンス数にスケーリングする]** のいずれかを選択します。
-
-1. インスタンス ベースを選択した場は、0 から 3 の範囲で処理ユニット数を入力します。 メトリック ベースの場合は、次の手順に従います。
-
-   1. **[既定値]** セクションで、**[ルールの追加]** を選択します。
-
-   1. **[スケール ルール]** ウィンドウで、ルールがトリガーされる条件とその際に実行するアクションを設定します。
-
-   1. 完了したら、**[追加]** を選択します。
-
-1. 完了したら、忘れずに変更を保存してください。
+サブネットの作成の詳細については、[仮想ネットワーク サブネットの追加](../virtual-network/virtual-network-manage-subnet.md)に関する記事を参照してください。
 
 <a name="create-logic-apps-environment"></a>
 
@@ -248,10 +229,37 @@ ISE を使用する統合アカウントを作成するには、[統合アカウ
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
-## <a name="get-support"></a>サポートを受ける
+<a name="add-capacity"></a>
 
-* 質問がある場合は、<a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps フォーラム</a>にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、<a href="https://aka.ms/logicapps-wish" target="_blank">Logic Apps のユーザー フィードバック サイト</a>にアクセスしてください。
+## <a name="add-ise-capacity"></a>ISE の容量を追加する
+
+ISE 基本単位の容量は固定されているため、さらにスループットが必要な場合はスケール ユニットを追加できます。 パフォーマンス メトリックや追加の処理ユニット数に基づいて自動スケーリングできます。 メトリックに基づいた自動スケーリングを選択する場合は、さまざまな条件から選択し、その条件を満たすしきい値条件を指定できます。
+
+1. Azure portal で ISE を見つけます。
+
+1. ISE の使用状況とパフォーマンスのメトリックを確認するには、ISE のメイン メニューで、**[概要]** を選択します。
+
+   ![ISE の使用状況を表示する](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
+
+1. 自動スケーリングを設定するには、**[設定]** で **[スケールアウト]** を選択します。**[構成]** タブで、**[自動スケーリングの有効化]** を選択します。
+
+   ![自動スケーリングを有効にする](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+
+1. **[自動スケーリング設定の名前]** に設定の名前を入力します。
+
+1. **[既定値]** セクションで、**[メトリックに基づいてスケーリングする]** または **[特定のインスタンス数にスケーリングする]** のいずれかを選択します。
+
+   * インスタンス ベースを選択した場は、0 から 10 の範囲で処理ユニット数を入力します。
+
+   * メトリック ベースを選択した場合は、次の手順に従います。
+
+     1. **[ルール]** セクションで、**[ルールの追加]** をクリックします。
+
+     1. **[スケール ルール]** ウィンドウで、ルールがトリガーされる条件とその際に実行するアクションを設定します。
+
+     1. 完了したら、**[追加]** を選択します。
+
+1. 自動スケーリングの設定が終了したら、変更を保存します。
 
 ## <a name="next-steps"></a>次の手順
 

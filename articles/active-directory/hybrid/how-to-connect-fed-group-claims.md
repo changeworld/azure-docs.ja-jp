@@ -12,38 +12,43 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 622a3ce0f80bd09bd09fa7ff097f68155318142d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080358"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138693"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (パブリック プレビュー) を使ってアプリケーションに対するグループ要求を構成する
 
 Azure Active Directory では、アプリケーション内で使用するユーザー グループのメンバーシップ情報をトークンで提供できます。  主なパターンとして、次の 2 つがサポートされています。
 
-- Azure Active Directory オブジェクト識別子 (OID) によって識別されるグループ (一般公開)
-- Active Directory (AD) の同期グループおよびユーザーに対応する SAMAccountName または GroupSID によって識別されるグループ (パブリック プレビュー)
+- Azure Active Directory オブジェクト識別子 (OID) 属性によって識別されるグループ (一般公開)
+- Active Directory (AD) の同期グループおよびユーザーに対応する sAMAccountName または GroupSID 属性によって識別されるグループ (パブリック プレビュー)
 
-> [!Note]
-> AD FS から既存のアプリケーションを移行できるように、名前とオンプレミス セキュリティ識別子 (SID) の使用のサポートが設計されています。    Azure AD 内で管理されるグループには、これらの要求を発行するために必要な属性は含まれていません。
+> [!IMPORTANT]
+> このプレビュー機能については、留意すべき注意事項が複数あります。
+>
+>- オンプレミスから同期される sAMAccountName およびセキュリティ識別子 (SID) の属性の使用に関するサポートは、AD FS およびその他の ID プロバイダーからの既存のアプリケーションの移動を有効にするように設計されています。 Azure AD 内で管理されるグループには、これらの要求を発行するために必要な属性は含まれていません。
+>- 大規模な組織では、ユーザーがメンバーになっているグループ数が、Azure Active Directory によってトークンに追加される制限を超える可能性があります。 SAML トークンの場合は 150 グループ、JWT の場合は 200 グループです。 これは、予期しない結果につながります。 これが潜在的な問題である場合は、テストを実施し、必要ならば、Microsoft から追加される拡張機能によってアプリケーションの関連グループへの要求を制限できるようになるまでお待ちになることをお勧めします。  
+>- 新規のアプリケーション開発の場合、またはアプリケーションをそれに合わせて構成できる場合および入れ子になったグループのサポートが必要ない場合は、アプリ内承認がグループではなく、アプリケーション ロールに基づくようにすることをお勧めします。  これにより、トークンにアクセスするのに必要な情報量が制限され、より安全になり、アプリの構成からユーザーの割り当てが分離されます。
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-idps"></a>AD FS およびその他の IDP から移行するアプリケーションに対するグループ要求
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>AD FS およびその他の ID プロバイダーから移行するアプリケーションに対するグループ要求
 
-AD FS によって認証するように構成された多くのアプリケーションでは、Windows AD グループ属性の形式のグループ メンバーシップ情報に依存しています。   これらの属性はグループ SAMAccountName であり、ドメイン名または Windows グループ SID によって修飾されます。  アプリケーションが AD FS によってフェデレーションされている場合、AD FS では TokenGroups 関数を使用して、ユーザーのグループ メンバーシップを取得します。
+AD FS によって認証するように構成された多くのアプリケーションでは、Windows AD グループ属性の形式のグループ メンバーシップ情報に依存しています。   これらの属性はグループ sAMAccountName であり、ドメイン名または Windows グループ セキュリティ ID (GroupSID) によって修飾される場合があります。  アプリケーションが AD FS によってフェデレーションされている場合、AD FS では TokenGroups 関数を使用して、ユーザーのグループ メンバーシップを取得します。
 
-アプリが AD FS から受信するトークンと一致するように、グループの Azure Active Directory objectID ではなくドメイン修飾された SAMAccountName を含めて、グループ要求およびロール要求を発行することができます。
+アプリが AD FS から受信するトークンと一致するように、グループの Azure Active Directory objectID ではなくドメイン修飾された sAMAccountName を含めて、グループ要求およびロール要求を発行することができます。
 
 グループ要求においてサポートされている形式は、次のとおりです。
 
-- **Azure Active Directory GroupObjectId** (すべてのグループに利用できる)
-- **SAMAccountName** (Active Directory から同期したグループに利用できる)
-- **NetbiosDomain\samAccountName** (Active Directory から同期したグループに利用できる)
-- **DNSDomainName\samAccountName** (Active Directory から同期したグループに利用できる)
+- **Azure Active Directory Group ObjectId** (すべてのグループに利用できる)
+- **sAMAccountName** (Active Directory から同期したグループに利用できる)
+- **NetbiosDomain\sAMAccountName** (Active Directory から同期したグループに利用できる)
+- **DNSDomainName\sAMAccountName** (Active Directory から同期したグループに利用できる)
+- **On Premises Group Security Identifier** (Active Directory から同期したグループで利用できる)
 
 > [!NOTE]
-> SAMAccountName および OnPremisesGroupSID 属性は、Active Directory から同期したグループ オブジェクトだけに利用できます。   Azure Active Directory または Office365 内で作成されたグループには利用できません。   オンプレミスのグループ属性に依存するアプリケーションでは、同期されたグループのものだけを取得します。
+> sAMAccountName 属性および On Premises Group SID 属性は、Active Directory から同期したグループ オブジェクトだけに利用できます。   Azure Active Directory または Office365 内で作成されたグループには利用できません。   同期されたオンプレミス グループの属性を取得するように Azure Active Directory 内で構成されているアプリケーションは、同期されたグループのみでそれらを取得します。
 
 ## <a name="options-for-applications-to-consume-group-information"></a>アプリケーションにおいてグループ情報を利用するためのオプション
 
@@ -51,11 +56,11 @@ AD FS によって認証するように構成された多くのアプリケー�
 
 しかし、既存のアプリケーションにおいて、受信したトークン内の要求を介してグループ情報を利用することが既に期待されている場合は、多数のさまざまな要求オプションを使って、アプリケーションのニーズに合うように Azure Active Directory を構成できます。  以下のオプションを検討します。
 
-- アプリケーションの承認を目的としてグループ メンバーシップを使用している場合は (グループ メンバーシップがトークンまたはグラフのどちらから取得される場合でも)、Azure Active Directory 内で不変かつ一意であり、すべてのグループに利用できる Group ObjectID を使用することをお勧めします。
-- グループ SAMAccountName を承認に使用する場合は、ドメイン修飾された名前を使用してください。名前の競合が発生しにくくなります。 Active Directory ドメイン内では SAMAccountName は必然的に一意になりますが、複数の Active Directory ドメインが Azure Active Directory テナントによって同期された場合は、複数のグループが同一の名前になってしまう可能性があります。
+- アプリケーション内の承認を目的としてグループ メンバーシップを使用している場合は、Azure Active Directory 内で不変かつ一意であり、すべてのグループに利用できる Group ObjectID を使用することをお勧めします。
+- オンプレミスのグループ sAMAccountName を承認に使用する場合は、ドメイン修飾された名前を使用してください。名前の競合が発生しにくくなります。 Active Directory ドメイン内では sAMAccountName は必然的に一意になりますが、複数の Active Directory ドメインが Azure Active Directory テナントによって同期された場合は、複数のグループが同一の名前になってしまう可能性があります。
 - [アプリケーション ロール](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)を使用して、グループ メンバーシップとアプリケーション間に間接参照レイヤーを提供することを検討してください。   そうすると、アプリケーションでは、トークン内のロール要求に基づいて内部承認を決定します。
 - Active Directory から同期したグループ属性を取得するようにアプリケーションが構成されている場合、グループは、それらの属性を保持していないと、要求の中には含まれません。
-- トークン内のグループ要求には、入れ子になったグループが含まれます。   ユーザーが GroupB のメンバーであり、GroupB が GroupA のメンバーである場合、そのユーザーに対するグループ要求には GroupA と GroupB の両方が含まれます。 たくさんのグループ メンバーシップが入れ子になっているグループおよびユーザーが頻繁に使用される組織では、トークン内にリストされるグループ数によって、トークン サイズが大きくなる場合があります。   Azure Active Directory では、SAML アサーションの場合は 150、JWT の場合は 200 に、1 つのトークン内で出力するグループ数を制限しています。
+- トークン内のグループ要求には、入れ子になったグループが含まれます。   ユーザーが GroupB のメンバーであり、GroupB が GroupA のメンバーである場合、そのユーザーに対するグループ要求には GroupA と GroupB の両方が含まれます。 たくさんのグループ メンバーシップが入れ子になっているグループおよびユーザーが頻繁に使用される組織では、トークン内にリストされるグループ数によって、トークン サイズが大きくなる場合があります。   Azure Active Directory では、SAML アサーションの場合は 150、JWT の場合は 200 に、1 つのトークン内で出力するグループ数を制限することで、トークンが大きくなりすぎるのを防いでいます。  制限を超える多数のグループにユーザーが属している場合は、該当するグループが出力され、リンクをたどることでグループ情報を取得できます。
 
 > Active Directory から同期されたグループ属性を使用する場合の前提条件:  Azure AD Connect を使用して、グループが Active Directory から同期されている必要があります。
 
@@ -88,15 +93,15 @@ Active Directory Groups に対するグループ名を出力するように Azur
 
 ![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
+Azure AD objectID ではなく、Active Directory から同期されている Active Directory 属性を使用してグループを出力するには、ドロップダウンから必要な形式を選択します。  これにより、要求内のオブジェクト ID がグループ名を含む文字列値に置き換えられます。   要求には、Active Directory から同期されたグループのみが含まれます。
+
+![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+
 ### <a name="advanced-options"></a>[詳細オプション]
 
 グループ要求が出力される方法は、[詳細オプション] 下にある設定によって変更できます。
 
 [グループ要求の名前をカスタマイズする]: 選択した場合、別の要求の種類をグループ要求に指定できます。   [名前] フィールドに要求の種類を、[名前空間] フィールドに要求のオプションの名前空間を入力します。
-
-![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
-
-Azure AD objectID の代わりに Active Directory 属性を使用してグループを出力するには、[Return groups as names instead of IDs]\(グループを ID ではなく名前として返す\) チェック ボックスをオンにして、ドロップダウンから形式を選択します。  これにより、要求内のオブジェクト ID がグループ名を含む文字列値に置き換えられます。   要求には、Active Directory から同期されたグループのみが含まれます。
 
 ![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 

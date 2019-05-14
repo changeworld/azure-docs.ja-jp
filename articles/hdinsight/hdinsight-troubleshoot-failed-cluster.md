@@ -1,5 +1,5 @@
 ---
-title: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング - Azure HDInsight
+title: HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング - Azure HDInsight
 description: HDInsight クラスターの処理速度が遅いとき、または処理が失敗したときに、診断とトラブルシューティングを行います。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708918"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203628"
 ---
-# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
-HDInsight クラスターの実行が遅い場合、または HDInsight クラスターがエラー コードで失敗した場合は、複数のトラブルシューティング オプションがあります。 ジョブの実行時間が予想より長い場合、または一般に応答時間が遅い場合は、クラスターが実行しているサービスなど、クラスターからのアップストリームに障害が存在する可能性があります。 ただし、これらの速度低下の最も一般的な原因は、不十分なスケーリングです。 新しい HDInsight クラスターを作成する際は、適切な[仮想マシン サイズ](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)を選択してください。
+HDInsight クラスターでデータを処理するアプリケーションの実行が遅い場合、またはエラー コードで失敗する場合は、複数のトラブルシューティング オプションがあります。 ジョブの実行時間が予想より長い場合、または一般に応答時間が遅い場合は、クラスターが実行しているサービスなど、クラスターからのアップストリームに障害が存在する可能性があります。 ただし、これらの速度低下の最も一般的な原因は、不十分なスケーリングです。 新しい HDInsight クラスターを作成する際は、適切な[仮想マシン サイズ](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)を選択してください。
 
 クラスターの速度低下または失敗を診断するには、関連付けられている Azure サービス、クラスターの構成、ジョブの実行情報など、環境のあらゆる側面に関する情報を収集します。 別のクラスターでエラー状態を再現してみると診断に役立ちます。
 

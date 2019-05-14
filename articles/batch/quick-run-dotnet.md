@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679921"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204175"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート: .NET API で最初の Azure Batch ジョブを実行する
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
 このクイック スタートでは、Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -113,7 +113,7 @@ stderr:
 
 ### <a name="preliminaries"></a>準備
 
-ストレージ アカウントを操作するために、アプリでは .NET 用 Azure Storage クライアント ライブラリを使用します。 [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) を使用してアカウントへの参照を作成し、それを基にして [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) を作成します。
+ストレージ アカウントを操作するために、アプリでは .NET 用 Azure Storage クライアント ライブラリを使用します。 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) を使用してアカウントへの参照を作成し、それを基にして [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) を作成します。
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

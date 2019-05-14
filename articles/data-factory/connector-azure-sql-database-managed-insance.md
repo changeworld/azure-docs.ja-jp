@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3f29db5786c682188b4eadec12275df46ae3b547
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272208"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153338"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
 
@@ -112,7 +112,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 }
 ```
 
-**例 3:Windows 認証を使用する**
+**例 3: Windows 認証を使用する**
 
 ```json
 {
@@ -142,7 +142,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、Azure SQL Database Managed Instance データセットでサポートされるプロパティの一覧を示します。
 
-Azure SQL Database Managed Instance をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **SqlServerTable** に設定します。 次のプロパティがサポートされています。
+Azure SQL Database Managed Instance をコピー元またはコピー先にしたデータ コピーについては、次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -161,6 +161,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
             "referenceName": "<Managed Instance linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -282,7 +283,7 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは、**SqlSink** に設定する必要があります。 | はい。 |
-| writeBatchSize |SQL テーブルに挿入する**バッチあたりの**行数。<br/>使用可能な値は、行数の場合整数です。 |いいえ (既定値: 10,000)。 |
+| writeBatchSize |SQL テーブルに挿入する**バッチあたりの**行数。<br/>使用可能な値は、行数の場合整数です。 既定では、Data Factory は、行のサイズに基づいて適切なバッチ サイズを動的に決定します。  |いいえ  |
 | writeBatchTimeout |このプロパティは、タイムアウトする前に一括挿入操作の完了を待つ時間を指定します。<br/>使用可能な値は、期間です。 たとえば "00:30:00" (30 分) を指定できます。 |いいえ。 |
 | preCopyScript |このプロパティは、コピー アクティビティでデータをマネージド インスタンスに書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ。 |
 | sqlWriterStoredProcedureName |この名前は、ターゲット テーブルにソース データを適用する方法を定義しているストアド プロシージャの名前です。 プロシージャの例は、独自のビジネス ロジックを使用してアップサートまたは変換することです。 <br/><br/>このストアド プロシージャは*バッチごとに呼び出されます*。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行するには、`preCopyScript` プロパティを使用します。 |いいえ。 |
@@ -408,7 +409,7 @@ create table dbo.TargetTbl
 }
 ```
 
-**ターゲット データセット JSON の定義**
+**対象データセット JSON の定義**
 
 ```json
 {

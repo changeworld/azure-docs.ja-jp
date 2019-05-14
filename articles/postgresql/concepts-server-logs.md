@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL のサーバー ログ
-description: この記事では、Azure Database for PostgreSQL がクエリ ログとエラー ログを生成する方法、およびログのリテンション期間を構成する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server でのサーバー ログ
+description: この記事では、Azure Database for PostgreSQL - Single Server がクエリ ログとエラー ログを生成する方法、およびログのリテンション期間を構成する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.date: 5/6/2019
+ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195100"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067373"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のサーバー ログ 
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのサーバー ログ
 Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成されます。 クエリとエラー ログを使用して、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復を行えます。 トランザクション ログへのアクセスは含まれていません。 
 
 ## <a name="configure-logging"></a>ログの構成 
@@ -40,13 +40,13 @@ Azure Database for PostgreSQL は、Azure Monitor の診断ログと統合され
 | TenantId | テナント ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
-| type | ログの種類。 常に `AzureDiagnostics` |
+| Type | ログの種類。 常に `AzureDiagnostics` |
 | SubscriptionId | サーバーが属するサブスクリプションの GUID |
 | ResourceGroup | サーバーが属するリソース グループの名前 |
 | ResourceProvider | リソース プロバイダーの名前。 常に `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
-| resourceId | リソース URI |
-| リソース | サーバーの名前 |
+| ResourceId | リソース URI |
+| Resource | サーバーの名前 |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | ログ レベル、例:LOG、ERROR、NOTICE |

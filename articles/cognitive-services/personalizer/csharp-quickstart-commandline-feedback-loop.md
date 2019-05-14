@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: f0aca3e387d675064cf798b4efdeb66cfe906520
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 85252680fcc4d2592d242762d01040c3859b14a2
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153544"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442071"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>クイック スタート:C# を使用してコンテンツをパーソナライズする 
 
 Personalizer サービスを使用するこの C# クイック スタートでパーソナライズしたコンテンツを表示します。
 
-このサンプルでは、C# のパーソナル化クライアント ライブラリを使用して次のアクションを実行する方法を示します。 
+このサンプルは、C# 用の Personalizer クライアント ライブラリを使用して次のアクションを実行する方法を示します。 
 
  * パーソナル化のアクション一覧をランク付けする。
  * 指定されたイベントのユーザー選択に基づいて上位にランク付けされたアクションに割り当てる報酬を報告します。
 
-パーソナル化を開始するには、次の手順を実行します。
+Personalizer を使い始めるには、次の手順が必要です。
 
 1. SDK を参照する 
 1. ユーザーに表示するアクションをランク付けするコードを書く
@@ -34,9 +34,15 @@ Personalizer サービスを使用するこの C# クイック スタートで�
 
 ## <a name="prerequisites"></a>前提条件
 
-* サービス URL を発行するサブスクリプション キーとトークンを取得するには、[Personalizer サービス](how-to-settings.md)が必要です。 
+* サブスクリプション キーとエンドポイント サービスの URL を取得するには、[Personalizer サービス](how-to-settings.md)が必要です。 
 * [Visual Studio 2015 または 2017](https://visualstudio.microsoft.com/downloads/)。
-* Microsoft.Azure.CognitiveServices.Personalization SDK NuGet パッケージ。 インストールの手順は、以降で説明しています。
+* The Microsoft.Azure.CognitiveServices.Personalizer SDK NuGet パッケージ。 インストールの手順は、以降で説明しています。
+
+## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
+
+Azure portal の Personalizer リソースで、**[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+
+![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
 ## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>新しいコンソール アプリケーションの作成と Personalizer SDK の参照 
 
@@ -45,9 +51,9 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
-1. パーソナル化クライアント ライブラリの NuGet パッケージをインストールします。 メニューで、**[ツール]** を選択し、**[Nuget パッケージ マネージャー]** を選択し、次に **[ソリューションの NuGet パッケージの管理]** を選択します。
-1. **[参照]** タブを選択し、**[検索]** ボックスに「`Microsoft.Azure.CognitiveServices.Personalization`」と入力します。
-1. 表示されたら、**[Microsoft.Azure.CognitiveServices.Personalization]** を選択します。
+1. Personalizer クライアント ライブラリの NuGet パッケージをインストールします。 メニューで、**[ツール]** を選択し、**[Nuget パッケージ マネージャー]** を選択し、次に **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. **[参照]** タブを選択し、**[検索]** ボックスに「`Microsoft.Azure.CognitiveServices.Personalizer`」と入力します。
+1. **Microsoft.Azure.CognitiveServices.Personalizer** が表示されたら選択します。
 1. 自分のプロジェクト名の横のチェックボックスを選択し、**[インストール]** を選択します。
 
 ## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>コードを追加して Personalizer キーと Azure キーを指定する

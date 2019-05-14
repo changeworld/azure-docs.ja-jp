@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d1e2e35dafd90c16e9d0dbf38afb1e981653d1fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 65cac484a9395aca47a38e2ba430b80c868267f5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311103"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152660"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 
@@ -69,15 +69,7 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>オフライン機能
 
-Azure IoT Edge は、IoT Edge デバイス上でのオフライン操作をサポートしています。 これらの機能は現在は制限されています。 その他のオフライン機能はパブリック プレビューで利用できます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
-
-IoT Edge モジュールは、次の要件を満たしている場合、既定の時間よりも長くオフライン状態を継続できます。 
-
-* **メッセージ Time to Live (TTL) が有効期限切れになっていない**。 メッセージ TTL の既定値は 2 時間ですが、IoT Edge ハブのストア アンド フォワード構成で増減することができます。 
-* **オフライン時にモジュールを IoT Edge ハブに対して再認証する必要がない**。 モジュールは、IoT ハブとのアクティブな接続がある IoT Edge ハブに対してのみ認証を実行できます。 何らかの理由で再起動された場合には、モジュールを再認証する必要があります。 SAS トークンの有効期限が切れた後でも、モジュールから IoT Edge ハブにメッセージを送信することはできます。 接続が再開されると、IoT Edge ハブはモジュールからの新しいトークンを要求し、それを IoT ハブに対して検証します。 検証が成功した場合、IoT Edge ハブは、保存されているモジュール メッセージを転送します (モジュールのトークンが期限切れになっている間に送信されたメッセージも転送します)。 
-* **オフライン時にメッセージを送信したモジュールが、接続の再開時にまだ機能している**。 IoT ハブに再接続する場合、IoT Edge ハブは、モジュール メッセージを転送する前に、新しいモジュール トークンを検証する必要があります (以前のトークンが期限切れの場合)。 モジュールが新しいトークンを提供できない場合、IoT Edge ハブは、モジュールの保存済みメッセージに対してアクションを実行できません。 
-* **IoT Edge ハブに、メッセージを保存できるだけのディスク領域がある**。 既定では、メッセージは IoT Edge ハブ コンテナーのファイルシステムに保存されます。 なお、メッセージを保存するためのマウント済みボリュームを指定する構成オプションもあります。 いずれの場合も、IoT ハブへの遅延配信を行うには、メッセージを保存できるだけの容量が必要になります。  
-
+Azure IoT Edge モジュールは、少なくとも 1 回 IoT Hub と同期すると、無期限にオフラインで動作できます。 IoT Edge デバイスは、このオフライン機能を他の IoT デバイスに拡張することもできます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
  - [IoT Edge モジュールを開発するための要件とツールについて理解する](module-development.md)

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8865c851f394d73b5446ac159b5a7799c0c9ed2
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192347"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442350"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Azure Machine Learning サービスによる TensorFlow モデルと Keras モデルのトレーニング
 
@@ -24,11 +24,11 @@ TensorFlow トレーニング ジョブを Azure コンピューティング上�
 
 `TensorFlow` 推定器には実行を抽象化するレイヤーとしての役割もあります。つまり、さまざまなコンピューティング先で実行する場合にパラメーター化実行を簡単に構成できるので、トレーニング スクリプトに変更を加える必要がありません。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="get-started"></a>作業開始
 
-`TensorFlow` 推定器を使用してジョブを実行することは、基本の [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) を使用することに似ています。 そのため、最初に[基本の Estimator の使用方法の記事](how-to-train-ml-models.md)を読んで全体的な概念を理解することをお勧めします。
+`TensorFlow` 推定器クラスはベースの [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) と似ているため、まず[ベース推定器の使用方法に関する記事](how-to-train-ml-models.md)を読んで包括的な概念を理解することをお勧めします。
 
-Azure Machine Learning service を使うのが初めての場合は、[このクイックスタートを完了してください](quickstart-run-cloud-notebook.md)。 作業用の環境に[サンプルのノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml)がすべて読み込まれた状態になります。
+初めて Azure Machine Learning service を使用する場合は、[クイックスタートを完了します](quickstart-run-cloud-notebook.md)。 完了すると、[Azure Machine Learning ワークスペース](concept-azure-machine-learning-architecture.md#workspace)と、TensorFlow と Keras を使用した DNN のトレーニング用を含むすべての[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml)が作成されます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 

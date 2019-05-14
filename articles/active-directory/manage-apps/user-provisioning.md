@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e8aaa60359fcfb85c79c4210f7c5cc14633c7b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 67956b3369394f68d067fc4753a859c066428aea
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894408"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191492"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -143,7 +143,7 @@ Azure AD がソース システムである場合、プロビジョニング サ
 6. 属性マッピングに "参照" 属性が含まれている場合、サービスは、ターゲット システムで追加の更新を実行して参照先オブジェクトを作成し、リンクします。 たとえば、あるユーザーがターゲット システムで "Manager" 属性を持ち、それがターゲット システムで作成された別のユーザーにリンクされている場合があります。
 7. 初期同期の終了時に基準値を保持します。これは、以降の増分同期の始点になります。
 
-ServiceNow、Google Apps、Box など、アプリケーションの中には、ユーザーのプロビジョニングだけでなく、グループとそのメンバーのプロビジョニングをサポートしているものがあります。 このような場合、グループのプロビジョニングが[マッピング](customize-application-attributes.md)で有効になっていると、プロビジョニング サービスは、ユーザーとグループを同期したうえで、グループ メンバーシップを同期します。 
+ServiceNow、G Suite、Box など、アプリケーションの中には、ユーザーのプロビジョニングだけでなく、グループとそのメンバーのプロビジョニングをサポートしているものがあります。 このような場合、グループのプロビジョニングが[マッピング](customize-application-attributes.md)で有効になっていると、プロビジョニング サービスは、ユーザーとグループを同期したうえで、グループ メンバーシップを同期します。 
 
 ### <a name="incremental-syncs"></a>増分同期
 
@@ -196,7 +196,7 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 
 **増分同期**では、ジョブ時間は、その同期サイクルで検出される変更の数によって異なります。 ユーザーまたはグループのメンバーシップの変更が 5,000 未満の場合、ジョブは 1 増分同期サイクル内で終了できます。 
 
-次の表は、一般的なプロビジョニング シナリオの同期時間のまとめです。 これらのシナリオでは、ソース システムが Azure AD、ターゲット システムが SaaS アプリです。 同期時間は、SaaS アプリである ServiceNow、Workplace、Salesforce、および Google Apps の同期ジョブの統計分析から導かれています。
+次の表は、一般的なプロビジョニング シナリオの同期時間のまとめです。 これらのシナリオでは、ソース システムが Azure AD、ターゲット システムが SaaS アプリです。 同期時間は、SaaS アプリである ServiceNow、Workplace、Salesforce、および G Suite の同期ジョブの統計分析から導かれています。
 
 
 | スコープ構成 | スコープ内のユーザー、グループ、およびメンバー | 初期同期時間 | 増分同期時間 |
@@ -274,6 +274,10 @@ Azure portal で監査ログを確認する方法については、[プロビジ
 これは、「アプリケーションへのグループベースの割り当て」の制限であり、シングル サインオンにも影響し、「[SaaS アプリケーションへのアクセスをグループで管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps )」で説明しています。
 
 対処法として、プロビジョニングする必要のあるユーザーを含んだグループを明示的に割り当てる (またはそれ以外の場合では[スコープ](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)する) 必要があります。
+
+### <a name="is-provisioning-between-azure-ad-and-a-target-application-using-an-encrypted-channel"></a>Azure AD とターゲット アプリケーションの間のプロビジョニングでは、暗号化されたチャネルを使用していますか。
+
+はい。 サーバー ターゲットに HTTPS SSL 暗号化を使用しています。 
 
 ## <a name="related-articles"></a>関連記事
 

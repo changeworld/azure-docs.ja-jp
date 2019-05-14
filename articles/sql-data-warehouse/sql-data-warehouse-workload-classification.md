@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 208308533753370575b844633c45f7e4aeda0864
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617752"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154205"
 ---
-# <a name="sql-data-warehouse-workload-classification-preview"></a>SQL Data Warehouse のワークロード分類 (プレビュー)
+# <a name="sql-data-warehouse-workload-classification"></a>SQL Data Warehouse のワークロード分類
 
 この記事では、受信要求にリソース クラスと重要度を割り当てる SQL Data Warehouse のワークロード分類プロセスについて説明します。
-
-> [!Note]
-> ワークロード分類は、SQL Data Warehouse Gen2 でプレビューできます。 ワークロード管理の分類および重要度のプレビューは、公開日が 2019 年 4 月 9 日以降のビルド用です。  この日付より前のビルドは、ワークロード管理のテストに使用しないでください。  お使いのビルドがワークロード管理に対応しているかどうかを調べるには、SQL Data Warehouse インスタンスに接続された状態で「select @@version」を実行します。
 
 ## <a name="classification"></a>分類
 
@@ -63,10 +60,10 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 次のシナリオで考えてみましょう。
 
-• 既存のデータ ウェアハウスで、データベース ユーザー DBAUser に largerc リソース クラス ロールが割り当てられています。 このリソース クラス割り当ては、sp_addrolemember を使用して行われました。
-• ここで、データ ウェアハウスのワークロード管理が更新されました。
-• 新しい分類構文をテストするため、(DBAUser がそのメンバーである) データベース ロール DBARole を mediumrc と高い重要度にマッピングする分類子を作成しました。
-• DBAUser がログインしてクエリを実行すると、クエリは largerc に割り当てられます。 これは、ロールのメンバーシップよりもユーザーが優先されるためです。
+- 既存のデータ ウェアハウスで、データベース ユーザー DBAUser に largerc リソース クラス ロールが割り当てられています。 このリソース クラス割り当ては、sp_addrolemember を使用して行われました。
+- データ ウェアハウスのワークロード管理が更新されました。
+- 新しい分類構文をテストするため、(DBAUser がそのメンバーである) データベース ロール DBARole を mediumrc と高い重要度にマッピングする分類子が作成されました。
+- DBAUser がログインしてクエリを実行すると、クエリは largerc に割り当てられます。 これは、ロールのメンバーシップよりもユーザーが優先されるためです。
 
 誤分類のトラブルシューティングを簡単にするため、ワークロード分類子を作成するときは、リソース クラス ロールのマッピングを削除することをお勧めします。  次のコードは、既存のリソース クラス ロールのメンバーシップを返します。  対応するリソース クラスから返されたメンバー名ごとに、[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) を実行します。
 
@@ -84,4 +81,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>次の手順
 
-SQL Data Warehouse のワークロード分類と重要度の詳細については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)と [SQL Data Warehouse の重要度](sql-data-warehouse-workload-importance.md)に関する記事をご覧ください。 クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
+分類子の作成を開始するには、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  SQL Data Warehouse のワークロード分類と重要度の詳細については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)と [SQL Data Warehouse の重要度](sql-data-warehouse-workload-importance.md)に関する記事をご覧ください。 クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/03/2019
+ms.date: 5/06/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59007156"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191538"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -31,7 +31,7 @@ SCIM は、システム間での ID の管理方法の一貫性を高めるこ�
 
 Azure AD が[事前統合された自動ユーザー プロビジョニング](../saas-apps/tutorial-list.md)をサポートしているアプリケーションの多くで、SCIM がユーザー変更通知の受信手段として実装されています。  さらに、お客様は Azure portal で一般的な "ギャラリー以外の" 統合オプションを使用することにより、[SCIM 2.0 プロトコル仕様](https://tools.ietf.org/html/rfc7644)の特定のプロファイルをサポートするアプリケーションを接続することができます。 
 
-この記事では主に、ギャラリー以外のアプリの一般的な SCIM コネクタの一部として Azure AD によって実装される、SCIM 2.0 のプロファイルについて説明します。 ただし、一般的な Azure AD コネクタを使用した SCIM をサポートするアプリケーションのテストに成功することは、ユーザー プロビジョニングをサポートしているアプリとして Azure AD ギャラリーにリストされたアプリを取得するための手順です。 Azure AD アプリケーション ギャラリーにリストされたアプリケーションの取得に関する詳細については、「[Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)」(Microsoft アプリケーション ネットワーク) を参照してください。
+この記事では主に、ギャラリー以外のアプリの一般的な SCIM コネクタの一部として Azure AD によって実装される、SCIM 2.0 のプロファイルについて説明します。 ただし、一般的な Azure AD コネクタを使用した SCIM をサポートするアプリケーションのテストに成功することは、ユーザー プロビジョニングをサポートしているアプリとして Azure AD ギャラリーにリストされたアプリを取得するための手順です。 Azure AD アプリケーション ギャラリーでアプリケーションを一覧表示する方法の詳細については、[Azure AD アプリケーション ギャラリーでアプリケーションを一覧表示する方法](../develop/howto-app-gallery-listing.md)に関するページを参照してください。
  
 
 >[!IMPORTANT]
@@ -119,7 +119,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 Azure AD との互換性を確保するために、SCIM エンドポイントの実装時は次の一般的なガイドラインに従ってください。
 
-* `id` は、すべてのリソースに対する必須プロパティです。 リソースを返すすべての応答において、メンバーが 0 の `ListResponse` を除き、各リソースにこのプロパティが含まれるようにする必要があります。
+* `id` は、すべてのリソースの必須のプロパティです。 リソースを返すすべての応答において、メンバーが 0 の `ListResponse` を除き、各リソースにこのプロパティが含まれるようにする必要があります。
 * クエリ/フィルター要求への応答は常に `ListResponse` である必要があります。
 * グループはオプションですが、SCIM 実装で PATCH 要求がサポートされている場合にのみ、サポートされます。
 * PATCH 応答には、リソース全体を含める必要はありません。
@@ -128,7 +128,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
      - `and`
 * https://tools.ietf.org/html/rfc7644#section-3.5.2 に定義されているように、特に PATCH `op` 操作値の場合、SCIM 内の構造要素に対して大文字と小文字を区別した一致を要求しないでください。 Azure AD では、'op' の値が `Add`、`Replace`、`Remove` として出力されます。
 * Microsoft Azure AD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続**フローの一部としても行われます。 
-* リソースのクエリが可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)に関するページを参照してください。
+* リソースのクエリが可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。 詳細については、[ユーザー プロビジョニング属性マッピングのカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)に関するページを参照してください。
 
 ### <a name="user-provisioning-and-de-provisioning"></a>ユーザーのプロビジョニングとプロビジョニング解除
 次の図は、アプリケーションの ID ストア内にあるユーザーのライフサイクルを管理するために Azure Active Directory から SCIM サービスに送信されるメッセージを示しています。  
@@ -152,49 +152,49 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 >Azure AD ユーザー プロビジョニング サービスが以下に示す操作を出力する方法とタイミングについては、「[プロビジョニング中の動作](user-provisioning.md#what-happens-during-provisioning)」を参照してください。
 
 - [ユーザー操作](#user-operations)
-  - [[Create User]](#create-user)
-    - [Request](#request)
-    - [Response](#response)
+  - [ユーザーの作成](#create-user)
+    - [要求](#request)
+    - [応答](#response)
   - [ユーザーの取得](#get-user)
-    - [Request](#request-1)
-    - [Response](#response-1)
+    - [要求](#request-1)
+    - [応答](#response-1)
   - [クエリによるユーザーの取得](#get-user-by-query)
-    - [Request](#request-2)
-    - [Response](#response-2)
+    - [要求](#request-2)
+    - [応答](#response-2)
   - [クエリによるユーザーの取得 - 0 件の結果](#get-user-by-query---zero-results)
-    - [Request](#request-3)
-    - [Response](#response-3)
+    - [要求](#request-3)
+    - [応答](#response-3)
   - [ユーザーの更新 [複数値のプロパティ]](#update-user-multi-valued-properties)
-    - [Request](#request-4)
-    - [Response](#response-4)
+    - [要求](#request-4)
+    - [応答](#response-4)
   - [ユーザーの更新 [単一値のプロパティ]](#update-user-single-valued-properties)
-    - [Request](#request-5)
-    - [Response](#response-5)
+    - [要求](#request-5)
+    - [応答](#response-5)
   - [ユーザーの削除](#delete-user)
-    - [Request](#request-6)
-    - [Response](#response-6)
+    - [要求](#request-6)
+    - [応答](#response-6)
 - [グループ操作](#group-operations)
   - [グループの作成](#create-group)
-    - [Request](#request-7)
-    - [Response](#response-7)
+    - [要求](#request-7)
+    - [応答](#response-7)
   - [グループの取得](#get-group)
-    - [Request](#request-8)
-    - [Response](#response-8)
+    - [要求](#request-8)
+    - [応答](#response-8)
   - [displayName でのグループの取得](#get-group-by-displayname)
-    - [Request](#request-9)
-    - [Response](#response-9)
+    - [要求](#request-9)
+    - [応答](#response-9)
   - [グループの更新 [非メンバー属性]](#update-group-non-member-attributes)
-    - [Request](#request-10)
-    - [Response](#response-10)
+    - [要求](#request-10)
+    - [応答](#response-10)
   - [グループの更新 [メンバーの追加]](#update-group-add-members)
-    - [Request](#request-11)
-    - [Response](#response-11)
+    - [要求](#request-11)
+    - [応答](#response-11)
   - [グループの更新 [メンバーの削除]](#update-group-remove-members)
-    - [Request](#request-12)
-    - [Response](#response-12)
+    - [要求](#request-12)
+    - [応答](#response-12)
   - [グループの削除](#delete-group)
-    - [Request](#request-13)
-    - [Response](#response-13)
+    - [要求](#request-13)
+    - [応答](#response-13)
 
 ### <a name="user-operations"></a>ユーザー操作
 
@@ -460,7 +460,6 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
-    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
     "displayName": "displayName",
     "members": [],
     "meta": {
@@ -622,7 +621,7 @@ Azure Active Directory を接続して動作させる SCIM Web サービスを�
 * Visual Studio 2013 以降
 * [Azure SDK for .NET](https://azure.microsoft.com/downloads/)
 * SCIM エンドポイントとして使用される ASP.NET framework 4.5 をサポートしている Windows コンピューター。 このマシンにクラウドからアクセスできる必要があります。
-* [無料試用版またはライセンス版の Azure AD Premium が付属している Azure サブスクリプション](https://azure.microsoft.com/services/active-directory/)
+* [無料試用版またはライセンス版の Azure AD Premium が付随した Azure サブスクリプション](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>Getting Started (概要)
 Azure AD からのプロビジョニング要求を受信できる SCIM エンドポイントを実装する最も簡単な方法は、プロビジョニングするユーザーをコンマ区切り値 (CSV) ファイルに出力するコード サンプルをビルドしてデプロイすることです。
@@ -1260,12 +1259,12 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 
 
 ## <a name="related-articles"></a>関連記事
-* [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
-* [ユーザー プロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
+* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)
+* [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)
-* [ユーザー プロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
+* [ユーザーのプロビジョニング用のフィルターのスコープ](define-conditional-rules-for-provisioning-user-accounts.md)
 * [アカウント プロビジョニング通知](user-provisioning.md)
-* [SaaS アプリを統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 39e0547421c446c1ee48b93b30487ccb9358de02
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002191"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192086"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -62,16 +62,16 @@ AKS クラスターのノードごとの最大ポッド数は 110 です。 ノ�
 
 | デプロイ方法 | kubenet の既定値 | Azure CNI の既定値 | デプロイ時に構成可能 |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | はい (最大 110) |
-| Resource Manager テンプレート | 110 | 30 | はい (最大 110) |
+| Azure CLI | 110 | 30 | はい (最大 250) |
+| Resource Manager テンプレート | 110 | 30 | はい (最大 250) |
 | ポータル | 110 | 30 | いいえ  |
 
 ### <a name="configure-maximum---new-clusters"></a>最大値の構成 - 新しいクラスター
 
-ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 110 に設定できます。
+ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 250 に設定できます。
 
-* **Azure CLI**:[az aks create][az-aks-create] コマンドを使用して、クラスターをデプロイするときに `--max-pods` 引数を指定します。 最大値は 110 です。
-* **Resource Manager テンプレート**:Resource Manager テンプレートを使用してクラスターをデプロイするときに、[ManagedClusterAgentPoolProfile] オブジェクトに `maxPods` プロパティを指定します。 最大値は 110 です。
+* **Azure CLI**:[az aks create][az-aks-create] コマンドを使用して、クラスターをデプロイするときに `--max-pods` 引数を指定します。 最大値は 250 です。
+* **Resource Manager テンプレート**:Resource Manager テンプレートを使用してクラスターをデプロイするときに、[ManagedClusterAgentPoolProfile] オブジェクトに `maxPods` プロパティを指定します。 最大値は 250 です。
 * **Azure ポータル**:Azure portal を使用してクラスターをデプロイするときに、ノードごとのポッドの最大数を変更することはできません。 Azure portal を使用してデプロイした Azure CNI ネットワーク クラスターのポッド数は、ノードあたり 30 に制限されています。
 
 ### <a name="configure-maximum---existing-clusters"></a>最大値の構成 - 既存のクラスター
@@ -143,7 +143,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
 * *ポッドごとのネットワーク ポリシーを構成できますか。*
 
-  Kubernetes ネットワーク ポリシーは、現在 AKS 内のプレビュー機能として使用できます。 開始するには、[AKS でネットワーク ポリシーを使用してポッド間のトラフィックをセキュリティで保護する][network-policy]方法に関する記事を参照してください。
+  はい、Kubernetes ネットワーク ポリシーは AKS で使用できます。 開始するには、[AKS でネットワーク ポリシーを使用してポッド間のトラフィックをセキュリティで保護する][network-policy]方法に関する記事を参照してください。
 
 * *ノードに展開できるポッドの最大数は構成できますか。*
 

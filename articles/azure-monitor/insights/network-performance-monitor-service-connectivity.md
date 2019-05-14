@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571173"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145014"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -59,11 +59,12 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 サービス エンドポイントへのネットワーク接続を監視するためのテストを作成します。
 
 1. **[サービス接続モニター]** タブを選択します。
-2. **[テストの追加]** を選び、テストの名前と説明を入力します。 
+2. **[テストの追加]** を選び、テストの名前と説明を入力します。 ワークスペースごとに最大で 450 のテストを作成できます。 
 3. テストの種類を選択します。<br>
 
     * HTTP/S 要求に応答するサービス (outlook.office365.com、bing.com など) への接続を監視するには、**[Web]** を選びます。<br>
     * TCP 要求に応答し、HTTP/S 要求には応答しないサービス (SQL サーバー、FTP サーバー、SSH ポートなど) への接続を監視するには、**[ネットワーク]** を選びます。 
+    * 例: BLOB ストレージ アカウントに対するテストを作成するには、**[Web]** を選択し、対象として "<your storageaccount>.blob.core.windows.net" と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
 4. ネットワーク待機時間、パケット損失、トポロジ検出などのネットワーク測定を実行したくない場合は、**[ネットワークの測定を実行します]** チェック ボックスをオフにします。 この機能のメリットを最大限に得るには、オンにままにしておきます。 
 5. **[ターゲット]** に、ネットワーク接続を監視する URL/FQDN/IP アドレスを入力します。
 6. **[ポート番号]** に、ターゲット サービスのポート番号を入力します。 

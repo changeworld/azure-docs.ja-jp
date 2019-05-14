@@ -1,6 +1,6 @@
 ---
-title: 個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory を使用して個別のユーザー ライセンスをグループベースのライセンスに切り替える方法
+title: 個別にライセンスを付与されたユーザーをグループベースのライセンスに追加する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory を使用して個別のユーザー ライセンスをグループベースのライセンスに移行する方法です
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199974"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192452"
 ---
-# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>個別にライセンスを付与されたユーザーをライセンスのためにグループに追加する方法
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>個別にライセンスを付与されたユーザーをライセンスのためにグループに移行する方法
 
 既存のライセンスを組織のユーザーに "直接割り当て" ている、つまり、PowerShell スクリプトやその他のツールを使用して個別のユーザー ライセンスを割り当てている場合があります。 組織のライセンスを管理するためにグループベースのライセンスを使い始める前に、この移行プランを使用して、既存のソリューションをグループベースのライセンスにシームレスに置き換えることができます。
 

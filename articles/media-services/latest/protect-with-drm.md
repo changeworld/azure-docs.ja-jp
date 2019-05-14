@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services での DRM 動的暗号化ライセンス配信サービスの使用 | Microsoft Docs
+title: Azure Media Services での DRM 動的暗号化とライセンス配信サービスの使用 | Microsoft Docs
 description: Microsoft PlayReady、Google Widevine、または Apple FairPlay ライセンスを使用して暗号化したストリームを、Azure Media Services を使用して配信できます。
 services: media-services
 documentationcenter: ''
@@ -11,62 +11,43 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 24ea6b2b44518b4cf75389585caf42ff6bc6722f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767551"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191070"
 ---
-# <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>DRM 動的暗号化とライセンス配信サービスの使用
+# <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
-Azure Media Services を使用すると、MPEG-DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) で保護して配信できます。 Media Services を使用すれば、**Google Widevine** DRM ライセンスで暗号化した DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも Common Encryption (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。 Media Services では、**Apple FairPlay** (AES-128 CBC) を使用して HLS コンテンツを暗号化することもできます。 
+Microsoft PlayReady、Google Widevine、または Apple FairPlay ライセンスを使用して暗号化したストリームを、Azure Media Services を使用して配信できます。 詳細については、「[動的暗号化によるコンテンツ保護](content-protection-overview.md)」を参照してください。
 
 さらに、Media Services は、PlayReady、Widevine、FairPlay の DRM ライセンスを配信するためのサービスを提供しています。 ユーザーが DRM で保護されたコンテンツを要求すると、プレーヤー アプリケーションが Media Services ライセンス サービスにライセンスを要求します。 プレーヤー アプリケーションが承認されると、Media Services ライセンス サービスはプレーヤーにライセンスを発行します。 ライセンスには、クライアント プレーヤーがコンテンツの解読とストリーム配信に使用できる解読キーが含まれています。
 
-この記事は、[DRM での暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM)のサンプルに基づいています。 このサンプルでは、特に次の操作を行います。
-
-* アダプティブ ビットレート エンコードのための組み込みプリセットを使用するエンコード Transform を作成し、[HTTPS ソース URL](job-input-from-http-how-to.md) からファイルを直接取り込みます。
-* トークンの検証に使用する署名キーを設定します。
-* 指定された構成でキーを配信するにあたって満たす必要がある、コンテンツ キー ポリシーの要件 (制限) を設定します。 
-
-    * 構成 
-    
-        このサンプルでは、[PlayReady](playready-license-template-overview.md) と [Widevine](widevine-license-template-overview.md) のライセンスを構成して、Media Services のライセンス配信サービスで配信できるようにします。 このサンプル アプリでは [FairPlay](fairplay-license-overview.md) ライセンスは構成しませんが、サンプルには FairPlay の構成に利用できるメソッドが含まれています。 必要があれば、FairPlay の構成を別のオプションとして追加できます。
-
-    * 制限
-
-        このアプリにより、ポリシーに JWT トークンの種類の制限を設定します。
-
-* 指定されたストリーミング ポリシー名を使用して、指定されたアセットの StreamingLocator を作成します。 この場合は、定義済みポリシーを使用します。 これは、StreamingLocator に 2 つのコンテンツ キーを設定します。AES-128 (エンベロープ) と CENC (PlayReady と Widevine) です。  
-    
-    StreamingLocator が作成されると、出力アセットが発行され、クライアントが再生に利用できるようになります。
-
-    > [!NOTE]
-    > コンテンツのストリーム配信の配信元とする StreamingEndpoint が実行中の状態であることを確認してください。
-
-* DASH マニフェストと、PlayReady で暗号化されたコンテンツを再生するために必要な PlayReady トークンの両方を含む、Azure Media Player への URL を作成します。 このサンプルでは、トークンの有効期限を 1 時間に設定しています。 
-
-    ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します。  
-
-    ![DRM での保護](./media/protect-with-drm/playready_encrypted_url.png)
-
-> [!NOTE]
-> 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。
+この記事は、[DRM での暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM)のサンプルに基づいています。 
 
 この記事で紹介しているサンプルの結果は次のようになります。
 
 ![DRM で保護されたビデオを再生する AMS](./media/protect-with-drm/ams_player.png)
+
+このチュートリアルでは、次の操作方法について説明します。    
+
+> [!div class="checklist"]
+> * エンコード Transform を作成する
+> * トークンの検証に使用する署名キーを設定する
+> * コンテンツ キー ポリシーで要件を設定する
+> * 指定されたストリーミング ポリシーで StreamingLocator を作成する
+> * ファイルの再生に使用される URL を作成する
 
 ## <a name="prerequisites"></a>前提条件
 
 チュートリアルを完了するには次のものが必要です。
 
 * 「[コンテンツ保護の概要](content-protection-overview.md)」の記事を確認します。
-* [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)に関するページを参照します。
+* [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)に関するページを参照します
 * Visual Studio Code または Visual Studio をインストールする
 * [このクイックスタート](create-account-cli-quickstart.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
 * [API へのアクセス](access-api-cli-how-to.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
@@ -163,18 +144,42 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetToken)]
 
-## <a name="build-a-dash-streaming-url"></a>DASH ストリーミング URL を作成する
+## <a name="build-a-streaming-url"></a>ストリーミング URL を作成する
 
 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と **StreamingLocator** のパスを連結する必要があります。 このサンプルでは、"*既定の*" **StreamingEndpoint** を使っています。 最初に Media Service アカウントを作成したとき、この "*既定の*" **StreamingEndpoint** は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
+アプリを実行すると、次のように表示されます。
+
+![DRM での保護](./media/protect-with-drm/playready_encrypted_url.png)
+
+ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します。 
+ 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services アカウント内のリソースをクリーンアップする
 
 一般に、再利用を計画しているオブジェクトを除くすべてのものをクリーンアップする必要があります (通常、Transform は再利用し、StreamingLocator などは保持します)。 実験後にアカウントをクリーンアップする場合は、再利用する予定がないリソースを削除する必要があります。  たとえば、次のコードはジョブを削除します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。 
+
+次の CLI コマンドを実行します。
+
+```azurecli
+az group delete --name amsResourceGroup
+```
+
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
+
 ## <a name="next-steps"></a>次の手順
 
-[AES-128 での保護](protect-with-aes128.md)の方法に関する記事を参照してください。
+次のページを確認してください
+
+> [!div class="nextstepaction"]
+> [AES-128 での保護](protect-with-aes128.md)
+

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 4b3fa69156146037ff59a41eab8c8373f6e01dc4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027755"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510506"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Azure Machine Learning Datasets (プレビュー) を作成して登録する
 
@@ -44,7 +44,7 @@ Azure Machine Learning Datasets (プレビュー) は、データへのアクセ
 * 列のデータ型の推測と変換。
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
@@ -60,7 +60,9 @@ Azure データストアからデータセットを作成するには、以下�
 * SDK から [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition)、`Dataset` の各パッケージをインポートします。
 
 ```Python
-from azureml.core import Workspace, Datastore, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.datastore import Datastore
+from azureml.core.dataset import Dataset
 
 datastore_name = 'your datastore name'
 
@@ -74,7 +76,7 @@ workspace = Workspace.from_config()
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-`from_delimited_files()` メソッドを使用して、区切りファイルを読み込み、メモリ内データセットを作成します。
+`from_delimited_files()` メソッドを使用して、区切りファイルを読み取り、未登録のデータセットを作成します。
 
 ```Python
 # create an in-memory Dataset on your local machine
@@ -98,23 +100,24 @@ dataset.head(5)
 組織内およびさまざまな実験で共有および再利用するために、[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) メソッドを使用してデータセットをワークスペースに登録します。
 
 ```Python
-dataset = dataset.register(workspace = 'workspace_name',
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
                            description = 'Training data',
                            exist_ok = False
                            )
 ```
 
 >[!NOTE]
-> `register()` の既定のパラメーター設定は `exist_ok = False' です。 この設定を変更せずに同じ名前でデータセットを登録しようとすると、エラーが発生します。
+> `register()` の既定のパラメーター設定は `exist_ok = False` です。 この設定を変更せずに同じ名前でデータセットを登録しようとすると、エラーが発生します。
 
-`register()` メソッドは、既に登録されているデータセットの定義をパラメーター設定 `exist_ok = True` で更新します。
+`register()` メソッドは、パラメーター設定が `exist_ok = True` の既に登録されているデータセットの定義を返します。
 
 ```Python
-dataset = dataset.register(workspace = workspace_name,
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
                            description = 'Training data',
-                           exist_ok = True)
+                           exist_ok = True
+                           )
 ```
 
 `list()` を使用して、ワークスペースに登録されているすべてのデータセットを表示します。
@@ -137,7 +140,7 @@ Dataset.list(workspace_name)
 ```Python
 workspace = Workspace.from_config()
 
-dataset = workspace.Datasets['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 ```
 
 ## <a name="next-steps"></a>次の手順

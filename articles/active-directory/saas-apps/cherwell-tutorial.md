@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ad891f99-179e-4487-834d-35f3bc01c1ec
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fffaa266a29a500f27759adb7526d1aa6d61ccd0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 211e11b5bfd6a8bb7b1d61fec120566d60b9c5c0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915239"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>チュートリアル:Azure Active Directory と Cherwell の統合
 
@@ -38,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure AD と Cherwell の統合を構成するには、次の項目が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 * Cherwell でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -67,7 +68,7 @@ Cherwell の Azure AD への統合を構成するには、Cherwell をギャラ�
 
 4. 検索ボックスに「**Cherwell**」と入力して、結果パネルで **[Cherwell]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Cherwell](common/search-new-app.png)
+    ![結果一覧の Cherwell](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -126,7 +127,7 @@ Cherwell で Azure AD のシングル サインオンを構成するには、次
 
 ### <a name="configure-cherwell-single-sign-on"></a>Cherwell のシングル サインオンの構成
 
-**Cherwell** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cherwell サポート チーム](https://csm.cherwell.com/contact)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Cherwell** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cherwell サポート チーム](https://cherwellsupport.com/CherwellPortal)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!NOTE]
 > Cherwell サポート チームが、実際に SSO を構成する必要があります。 ご使用のサブスクリプションで SSO が有効になると通知が届きます。
@@ -149,8 +150,7 @@ Cherwell で Azure AD のシングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -176,15 +176,15 @@ Cherwell で Azure AD のシングル サインオンを構成するには、次
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
 
 ### <a name="create-cherwell-test-user"></a>Cherwell のテスト ユーザーの作成
 
-Azure AD ユーザーが Cherwell にログインできるようにするには、そのユーザーを Cherwell にプロビジョニングする必要があります。 Cherwell の場合、ユーザー アカウントは [Cherwell サポート チーム](https://csm.cherwell.com/contact)が作成する必要があります。
+Azure AD ユーザーが Cherwell にサインインできるようにするには、そのユーザーを Cherwell にプロビジョニングする必要があります。 Cherwell の場合、ユーザー アカウントは [Cherwell サポート チーム](https://cherwellsupport.com/CherwellPortal)が作成する必要があります。
 
 > [!NOTE]
 > Cherwell から提供されている他の Cherwell ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。

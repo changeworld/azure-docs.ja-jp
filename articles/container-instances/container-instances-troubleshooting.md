@@ -6,19 +6,19 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371878"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070865"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
-この記事では、Azure Container Instances を管理し、またはこれ にコンテナーをデプロイする際の、一般的問題をトラブルシューティングする方法を示します。
+この記事では、Azure Container Instances を管理し、またはこれ にコンテナーをデプロイする際の、一般的問題をトラブルシューティングする方法を示します。 [よく寄せられる質問](container-instances-faq.md)も参照してください。
 
 ## <a name="naming-conventions"></a>名前付け規則
 
@@ -46,11 +46,7 @@ Azure Container Instances でサポートされていないイメージを指定
 }
 ```
 
-このエラーは、半期チャネル (SAC) リリースに基づく Windows イメージを展開するときに最も多く発生します。 たとえば、Windows バージョン 1709 および 1803 は SAC リリースであり、展開時にこのエラーを生成します。
-
-Azure Container Instances は現在、**Windows Server 2016 の長期的なサービス チャネル (LTSC)** リリースにのみ基づいた Windows イメージをサポートしています。 Windows コンテナーのデプロイ時にこの問題を軽減するには、常に Windows Server 2016 (LTSC) ベースのイメージをデプロイしてください。 Windows Server 2019 (LTSC) に基づいたイメージはサポートされていません。
-
-Windows の LTSC および SAC バージョンについて詳しくは、「[Windows Server の半期チャネルの概要][windows-sac-overview]」をご覧ください。
+このエラーは、半期チャネル (SAC) リリース 1709 または 1803 に基づく Windows イメージ (サポートされていない) をデプロイするときに最も多く発生します。 Azure Container Instances でサポートされている Windows イメージについては、[よく寄せられる質問](container-instances-faq.md#what-windows-base-os-images-are-supported)を参照してください。
 
 ## <a name="unable-to-pull-image"></a>イメージをプルできない
 
@@ -102,7 +98,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
  --command-line "ping -t localhost"
 ```
 
@@ -156,7 +152,7 @@ Azure Container Instances のコンテナーの起動時間に関係する 2 つ
 * [イメージ サイズ](#image-size)
 * [イメージの場所](#image-location)
 
-Windows イメージには、[追加の考慮事項](#cached-windows-images)があります。
+Windows イメージには、[追加の考慮事項](#cached-images)があります。
 
 ### <a name="image-size"></a>イメージ サイズ
 
@@ -176,14 +172,12 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 コンテナーの起動時に発生するイメージ プルの影響を軽減する別の方法は、コンテナー インスタンスをデプロイする予定のリージョンと同じリージョン内の [Azure Container Registry](/azure/container-registry/) で、コンテナー イメージをホストすることです。 これにより、コンテナー イメージを伝送する必要があるネットワーク パスが短縮され、ダウンロード時間が大幅に短くなります。
 
-### <a name="cached-windows-images"></a>キャッシュされた Windows イメージ
+### <a name="cached-images"></a>キャッシュ イメージ
 
-Azure Container Instances では、キャッシュ メカニズムを使用して、一般的な Windows および Linux イメージに基づくイメージに対するコンテナーの起動時間を高速化します。 キャッシュされたイメージとタグの詳細な一覧については、[List Cached Images][list-cached-images] API を使用してください。
+Azure Container Instances では、キャッシュ メカニズムを使用して、`nanoserver:1809`、`servercore:ltsc2019`、`servercore:1809` など、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づいて構築されたイメージに対するコンテナーの起動時間を高速化します。 `ubuntu:1604` や `alpine:3.6` など、よく使用される Linux イメージもキャッシュされます。 キャッシュされたイメージとタグの最新の一覧については、[List Cached Images][list-cached-images] API を使用してください。
 
-Windows コンテナーの起動時間を最速にするには、次の **2 つのイメージ**の**最新の 3 つ**のバージョンのいずれかを、基本イメージとして使用します。
-
-* [Windows Server Core 2016][docker-hub-windows-core] (LTSC のみ)
-* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+> [!NOTE]
+> Azure Container Instances での Windows Server 2019 ベースのイメージの使用は、プレビュー段階です。
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
 

@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 08/13/2018
+ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: 7f152de89f5d374a5b97368eafe7287fc9377291
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 832f927f81b57fd16c202b855d8f1dbe0617ad56
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011332"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149890"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
@@ -58,6 +58,7 @@ ms.locfileid: "57011332"
 | [Apache Http クライアント](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 以降<sup>†</sup> |
 | <b>ストレージ クライアント</b> | |
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1 以降<sup>†</sup> |
+| [PostgreSQL (ベータ サポート)](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 以降<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 以降<sup>†</sup> |
 | <b>ログ ライブラリ</b> | |

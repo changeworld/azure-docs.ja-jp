@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL のサーバーを復元する方法
-description: この記事では、Azure Portal を使用して Azure Database for PostgreSQL のサーバーを復元する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server のサーバーを復元する方法
+description: この記事では、Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーを復元する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 60489e3fc7fc6482a14a241e777066b3805a4d5e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 1950b43e0922eebe34463c06db9a5d67dce76f56
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095111"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068876"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
 ## <a name="backup-happens-automatically"></a>自動バックアップ
 Azure Database for PostgreSQL サーバーは、復元機能が有効になるように、バックアップが定期的に行われます。 この機能を使用して、新しいサーバー上で、サーバーとそのすべてのデータベースを過去の特定の時点に復元できます。

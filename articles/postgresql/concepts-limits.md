@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL の制限事項
-description: この記事では、Azure Database for PostgreSQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
+title: Azure Database for PostgreSQL - Single Server での制限
+description: この記事では、接続数やストレージ エンジンのオプションなど、Azure Database for PostgreSQL - Single Server での制限について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 1/22/2019
-ms.openlocfilehash: 843107b8d251c2073ba9e02beacb16ab7615eca6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 5/6/2019
+ms.openlocfilehash: 01133662ca3a7364efd362f6db99d33243b2ad4b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470734"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073543"
 ---
-# <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
+# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server での制限
 次のセクションでは、データベース サービス容量と機能の制限について説明します。
 
 ## <a name="maximum-connections"></a>最大接続数

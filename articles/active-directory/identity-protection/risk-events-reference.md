@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516554"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191520"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection のリスク イベント リファレンス
 
@@ -83,7 +83,15 @@ ms.locfileid: "58516554"
 **検出の種類:** リアルタイム  
 **以前の名前:** 未知の場所からのサインイン
 
+
 このリスク イベントの種類は、過去のサインイン履歴 (IP、緯度/経度、および ASN) を考慮して、異常なサインインを判別します。システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。 既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。 新しく作成されたユーザーは、しばらくの間 “学習モード” に置かれ、そのユーザーの行動がアルゴリズムによって学習されるまで、通常とは異なるサインイン プロパティ リスク イベントは停止されます。 学習モードの期間は動的であり、ユーザーのサインイン パターンに関する十分な情報をアルゴリズムが収集するためにかかる時間によって決まります。 最小期間は 5 日です。 無活動状態が長期間続いた場合、ユーザーは学習モードに戻る可能性があります。 また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。 
 
 この検出は、基本認証 (または従来のプロトコル) に対しても実行されます。 これらのプロトコルには、クライアント ID などの最新のプロパティがないため、誤検知を減らすためのテレメトリが限られています。 お客様には、最新の認証に移行することをお勧めしています。
 
+
+## <a name="azure-ad-threat-intelligence"></a>Azure AD 脅威インテリジェンス
+
+**検出の種類:** オフライン <br>
+**以前の名前:** この検出は、従来の Azure AD Identity Protection レポート (リスクのフラグ付きユーザー、リスク イベント) に「資格情報が漏洩したユーザー」と表示されます
+
+このリスク イベントの種類は、Microsoft の内部および外部の脅威インテリジェンスのソースに基づいて、特定のユーザーにとって異常であったり、既知の攻撃パターンに一致したりするユーザー アクティビティを示します。

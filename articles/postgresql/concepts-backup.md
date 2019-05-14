@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL でのバックアップと復元
-description: Azure Database for PostgreSQL サーバーの自動バックアップと復元について説明します。
+title: Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
+description: Azure Database for PostgreSQL サーバー (単一サーバー) の自動バックアップおよび復元について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 5/6/2019
+ms.openlocfilehash: 08a061a76f1532441817e61d423533bcc0850227
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236755"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068846"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのバックアップと復元
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
 
 Azure Database for PostgreSQL は、サーバーのバックアップを自動的に作成し、ユーザーが構成したローカル冗長または geo 冗長ストレージに保存します。 バックアップを使用すると、サーバーを特定の時点に復元できます。 不慮の破損または削除からデータを保護するバックアップと復元は、ビジネス継続性戦略の最も重要な部分です。
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 03dfa250091b906ea1496fea3a4dd9b3753e0aaf
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027705"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440959"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>サンプル 4 - 分類:信用リスクを予測する (費用重視)
 
@@ -52,7 +52,7 @@ UC Irvine リポジトリから German Credit Card のデータセットを使�
 
 実験のグラフを次に示します。
 
-[ ![実験のグラフ](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![実験のグラフ](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>データ処理
 
@@ -160,7 +160,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ビジュアル インターフェイスで利用できるその他のサンプルを確認します。
 
-- [サンプル 1 - 回帰:自動車の価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
-- [サンプル 2 - 回帰:自動車の価格予測のためのアルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-- [サンプル 3 - 分類:信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
+- [サンプル 1 - 回帰: 自動車の価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
+- [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [サンプル 3 - 分類: 信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 5 - 分類:顧客離れを予測する](ui-sample-classification-predict-churn.md)

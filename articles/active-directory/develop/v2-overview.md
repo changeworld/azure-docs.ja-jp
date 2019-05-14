@@ -1,6 +1,6 @@
 ---
-title: v2.0 について | Azure
-description: v2.0 エンドポイントおよびプラットフォームについて説明します。
+title: Microsoft ID プラットフォーム (v2.0) の概要 - Azure
+description: Microsoft ID プラットフォーム (v2.0) エンドポイントとプラットフォームについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -12,55 +12,71 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/07/2019
 ms.author: celested
-ms.reviewer: saeeda
+ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb269df035bcc11583ebb7cff7d1ee2c3f6d8bca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 414200462d3575aa576b5ef2268a3ac0b01063ba
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208301"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190756"
 ---
-# <a name="about-v20"></a>v2.0 について
+# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft ID プラットフォーム (v2.0) の概要
 
-v2.0 エンドポイントおよびプラットフォームはプレビュー段階であり、継続的に強化されています。 JavaScript シングルページ アプリケーション (SPA) のシナリオは現時点で機能が完備していますので、プレビューから一般提供 (GA) にステータスを更新できるよう、MSAL.js を使用してブラウザー ベースのアプリケーションを構築し、フィードバックをお寄せください。
+Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 Microsoft ID プラットフォームの構成は次のとおりです。
 
-> [!NOTE]
-> MSAL Android、iOS、および .NET には、開発中の機能が残っています。 それらを使用してアプリケーションを構築し、フィードバックをお寄せいただくことができます。
+- 次のような、開発者が Microsoft ID を認証できるようにする **OAuth 2.0 および OpenID Connect 標準準拠の認証サービス**。
+  - 職場または学校のアカウント (Azure AD を通じてプロビジョニングされます)
+  - 個人的な Microsoft アカウント (Skype、Xbox、Outlook.com など)
+  - ソーシャル アカウントまたはローカル アカウント (Azure AD B2C 使用)
+- **オープンソース ライブラリ**:Microsoft Authentication Libraries (MSAL) およびその他の標準準拠ライブラリのサポート
+- **アプリケーション管理ポータル**:Microsoft Azure portal で構築された登録および構成エクスペリエンスのほか、その他のすべての Azure の管理機能。
+- **アプリケーション構成 API および PowerShell**: REST API (Microsoft Graph および Azure Active Directory Graph 1.6) および PowerShell を通じて、アプリケーションのプログラム構成を可能にします。したがって、DevOps タスクを自動化できます。
+- **開発者向けコンテンツ**: 概念およびリファレンス ドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、およびハウツー ガイド。
 
-Azure portal の [[アプリの登録 (プレビュー)]](quickstart-register-app.md) エクスペリエンスが大きく改善され、ADAL または MSAL で構築されたすべてのアプリケーションが含まれるようになり、使いやすさが向上しました。
+開発者にとって、Microsoft ID プラットフォームは、パスワードなしの認証、ステップアップ認証、条件付きアクセスなど、ID およびセキュリティ領域における革新的技術をシームレスに統合します。  このような機能を自分で実装する必要はありません。Microsoft ID プラットフォームと統合されたアプリケーションは、このような革新的技術をネイティブに利用します。
 
-アプリケーションの開発者はこれまで、個人用の Microsoft アカウントと Azure Active Directory (Azure AD) の職場アカウントの両方をサポートするには、2 つの異なるシステムを 1 つに統合する必要がありました。 v2.0 エンドポイントおよびプラットフォームは、このプロセスを簡素化する認証 API のバージョンを提供します。 単一の統合を使用してどちらの種類のアカウントからでもサインインできます。 v2.0 エンドポイントを使うアプリケーションは、どちらの種類のアカウントを使用していても、[Microsoft Graph API](https://developer.microsoft.com/graph) の REST API を使用できます。
+Microsoft ID プラットフォームでは、一度コードを記述すればすべてのユーザーに対応できます。 アプリを一度ビルドすれば、多数のプラットフォームで動作させたり、リソース アプリケーション (API) と同様にクライアントとして機能するアプリを構築できます。
 
 ## <a name="getting-started"></a>使用の開始
 
-次の一覧からお好みのプラットフォームを選択し、Microsoft のオープン ソース ライブラリとフレームワークを利用してアプリケーションを構築します。
+ID の処理は難しくありません。 自身に当てはまるシナリオを選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
 
-[!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
+- [単一ページのアプリを構築する](scenario-spa-overview.md)
+- [ユーザーをサインインさせる Web アプリを構築する](scenario-web-app-sign-user-overview.md)
+- [Web API を呼び出す Web アプリを構築する](scenario-web-app-call-api-overview.md)
+- [保護された Web API を構築する](scenario-protected-web-api-overview.md)
+- [Web API を呼び出す Web API を構築する](scenario-web-api-call-api-overview.md)
+- [デスクトップ アプリを構築する](scenario-desktop-overview.md)
+- [デーモン アプリを構築する](scenario-daemon-overview.md)
+- [モバイル アプリを構築する](scenario-mobile-overview.md)
 
-## <a name="learn-more-about-the-v20-endpoint-and-platform"></a>v2.0 エンドポイントおよびプラットフォームの詳細
+次の図は、一般的な認証アプリ シナリオの概要を示しています。Microsoft ID プラットフォームをアプリと統合するときにこれを参照として使用してください。
 
-Azure AD v2.0 エンドポイントで実現できることについては以下をご覧ください。
+[![Microsoft ID プラットフォームでのアプリケーション シナリオ](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.png#lightbox)
 
-* [Azure AD v2.0 エンドポイントで構築できるアプリケーションの種類](v2-app-types.md)を知る。
-* Azure AD v2.0 エンドポイントの [制限事項と制約事項](active-directory-v2-limitations.md)を知る。
+## <a name="next-steps"></a>次の手順
 
-## <a name="additional-resources"></a>その他のリソース
+コア認証の概念の詳細については、以下の各トピックから始めることをお勧めします。
 
-v2.0 についての詳細な情報:
+- [認証の基本](authentication-scenarios.md)
+- [アプリケーションとサービス プリンシパル](app-objects-and-service-principals.md)
+- [対象ユーザー](v2-supported-account-types.md)
+- [アクセス許可と同意](v2-permissions-and-consent.md)
+- [ID トークン](id-tokens.md)と[アクセス トークン](access-tokens.md)
 
-* [Microsoft ID プラットフォームについて](about-microsoft-identity-platform.md)
-* [v2.0 プロトコル リファレンス](active-directory-v2-protocols.md)
-* [アクセス トークン リファレンス](access-tokens.md)
-* [ID トークン リファレンス](id-tokens.md)
-* [v2.0 認証ライブラリ リファレンス](reference-v2-libraries.md)
-* [v2.0 におけるアクセス許可と同意](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://developer.microsoft.com/graph)
+[Microsoft Graph](https://docs.microsoft.com/graph/overview) を呼び出すデータが豊富なアプリケーションを構築します。
 
-> [!NOTE]
-> Azure Active Directory から職場および学校アカウントにサインインするだけでよい場合は、最初に [Azure AD 開発者向けガイド](v1-overview.md)をご覧ください。 v2.0 エンドポイントは、Microsoft の個人用アカウントにサインインすることが明らかに必要な開発者が使用するためのものです。
+**実稼働環境**にアプリを導入する準備ができたら、これらのベスト プラクティスを確認してください。
 
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+- アプリケーションへの[ログインを有効にします](msal-logging.md)。
+- アプリケーションでテレメトリを有効にします。
+- [プロキシを有効にし、HTTP クライアントをカスタマイズ](msal-net-provide-httpclient.md)します。
+- [Microsoft ID プラットフォームの統合チェックリスト](identity-platform-integration-checklist.md)に従って、統合をテストします。
+
+## <a name="learn-more"></a>詳細情報
+
+ソーシャルとローカルの ID でサインインする顧客向けアプリケーションを構築する予定の場合は、[Azure AD B2C の概要](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)に関するページを参照してください。

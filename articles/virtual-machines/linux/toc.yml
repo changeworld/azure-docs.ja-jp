@@ -66,6 +66,8 @@
     - name: VM の種類とサイズ
       href: sizes.md
       items:
+        - name: 第 2 世代 VM
+          href: generation-2.md
         - name: 汎用
           href: sizes-general.md
           items:

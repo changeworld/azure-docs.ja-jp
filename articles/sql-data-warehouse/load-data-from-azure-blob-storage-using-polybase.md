@@ -2,20 +2,20 @@
 title: チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み | Microsoft Docs
 description: このチュートリアルでは、Azure Portal と SQL Server Management Studio を使って、ニューヨークのタクシー データをパブリックな Azure BLOB から Azure SQL Data Warehouse に読み込みます。
 services: sql-data-warehouse
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/27/2019
-ms.author: mlee3gsd
+ms.date: 04/26/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: ca4084fb271320eb4cdfdeb6cb9026367761be0a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620191"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143656"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -150,7 +150,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
     | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20180430.database.windows.net** のような形式で指定する必要があります。 |
-    | Authentication | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+    | Authentication | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
     | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 
@@ -561,6 +561,49 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
     ![読み込まれたテーブルを表示する](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>マネージド ID により認証して読み込む (省略可能)
+PolyBase を使用して読み込み、マネージド ID を使用して認証するのが最も安全なメカニズムであり、Azure ストレージで VNet サービス エンドポイントを活用できる方法です。 
+
+### <a name="prerequisites"></a>前提条件
+1.  この[ガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)を使用して、Azure PowerShell をインストールします。
+2.  汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、最初に汎用 v2 にアップグレードする必要があります。
+3.  Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、**[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
+
+#### <a name="steps"></a>手順
+1. PowerShell で、Azure Active Directory (AAD) に **SQL Database サーバーを登録します**。
+
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
+    
+   1. この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
+
+   > [!NOTE]
+   > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
+    
+1. お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者]** RBAC ロールを SQL Database サーバーに割り当てます。
+
+   > [!NOTE] 
+   > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
+  
+1. **Azure ストレージ アカウントへの Polybase 接続:**
+    
+   1. **IDENTITY = 'Managed Service Identity'** を使用して、データベース スコープ資格情報を作成します。
+
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - このメカニズムは内部的に[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用するため、Azure Storage アクセス キーにシークレットを指定する必要はありません。
+       > - Azure Storage アカウントで PolyBase 接続を使用するためには、IDENTITY の名前を **'Managed Service Identity'** にする必要があります。
+    
+   1. マネージド サービス ID でデータベース スコープ資格情報をして、外部データ ソースを作成します。
+        
+   1. [外部テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)を使用して、通常どおりクエリを実行します。
+
+SQL Data Warehouse 用の仮想ネットワーク サービス エンドポイントを設定する場合は、次の[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を参照してください。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

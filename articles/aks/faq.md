@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f365fcd61944fbae131ab79a1c3660aaf02fa8d7
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004858"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073944"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -25,7 +25,9 @@ ms.locfileid: "60004858"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
 
-はい、自動スケールは、Kubernetes 1.10 以降、[Kubernetes autoscaler][auto-scaler] 経由で使用できます。 クラスターの自動スケーラーを構成して使用する方法の詳細については、[AKS のクラスター自動スケーラー][aks-cluster-autoscale]に関するページを参照してください。
+はい、自動スケールは、Kubernetes 1.10 以降、[Kubernetes autoscaler][auto-scaler] 経由で使用できます。 クラスターの自動スケーラーを手動で構成して使用する方法の詳細については、[AKS のクラスター自動スケーリング][aks-cluster-autoscale]に関するページを参照してください。
+
+ノードのスケーリングを管理するために、組み込みのクラスターの自動スケーラー (現在、AKS ではプレビュー中) を使用することもできます。 詳細については、[AKS でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング][aks-cluster-autoscaler]に関するページを参照してください。
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>AKS では Kubernetes のロールベースのアクセス制御 (RBAC) がサポートされますか?
 
@@ -41,7 +43,7 @@ ms.locfileid: "60004858"
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS エージェント ノードにセキュリティ更新プログラムは適用されますか?
 
-はい、Azure では、セキュリティ更新プログラムが夜間スケジュールでクラスター内のノードに自動的に適用されます。 ただし、必要に応じてノードが再起動されることを確認する必要があります。 ノードの再起動の実行にはいくつかのオプションがあります。
+Azure では、セキュリティ更新プログラムが夜間スケジュールでご利用のクラスター内の Linux ノードに自動的に適用されます。 ただし、必要な場合は、それらの Linux ノードが確実に再起動されるようにする必要があります。 ノードの再起動の実行にはいくつかのオプションがあります。
 
 - Azure Portal または Azure CLI から手動で行います。
 - AKS クラスターをアップグレードします。 クラスターは自動的に [cordon および drain ノード][cordon-drain]をアップグレードして、最新の Ubuntu イメージを備えた各ノードのバックアップと、新しいパッチ バージョンまたは Kubernetes のマイナー バージョンを取得します。 詳細については、「[AKS クラスターのアップグレード][aks-upgrade]」を参照してください。
@@ -49,14 +51,35 @@ ms.locfileid: "60004858"
 
 Kured の使用について詳しくは、[AKS 上のノードへのセキュリティおよびカーネルの更新プログラムの適用][node-updates-kured]に関する記事をご覧ください。
 
+### <a name="windows-server-nodes"></a>Windows Server ノード
+
+Windows Server ノードでは (現在、AKS ではプレビュー中)、Windows Update が自動的に実行されたり、最新の更新プログラムが適用されたりすることはありません。 Windows Update のリリース サイクルと独自の検証プロセス周辺の定期的なスケジュールでは、AKS クラスター内の Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server のイメージとパッチを実行するノードが作成され、古いノードは削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
+
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
 各 AKS デプロイは、2 つのリソース グループにまたがります。
 
-- 1 つは自分が作成したリソース グループで、Kubernetes サービス リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のような 2 つ目のリソース グループをデプロイ時に自動的に作成します。
+- 1 つは自分が作成したリソース グループで、Kubernetes サービス リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のような 2 つ目のリソース グループをデプロイ時に自動的に作成します。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
 - *MC_myResourceGroup_myAKSCluster_eastus* などのこの 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 この別個のリソース グループは、リソースのクリーンアップを簡略化するために作成されます。
 
 ストレージ アカウントや予約済みパブリック IP アドレスなど、AKS クラスターで使用するリソースを作成する場合は、自動的に生成されたリソース グループにそれらを配置します。
+
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>AKS インフラストラクチャ リソース グループに独自の名前を指定できますか?
+
+はい。 既定では、AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のようなセカンダリ リソース グループをデプロイ時に自動的に作成します。 企業ポリシーに準拠するために、この管理対象クラスター (*MC_*) リソース グループに独自の名前を指定できます。
+
+独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、*--node-resource-group* パラメーターを使用して、リソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
+
+* このリソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
+* クラスターが作成されるときにのみ、カスタムのリソース グループ名を指定できます。
+
+次のシナリオはサポートされていません。
+
+* *MC_* グループに既存のリソース グループを指定することはできません。
+* *MC_* リソース グループに異なるサブスクリプションを指定することはできません。
+* クラスターが作成された後で、*MC_* リソース グループ名を変更することはできません。
+* *MC_* リソース グループ内の管理対象リソースに名前を指定することはできません。
+* *MC_* リソース グループ内の管理対象リソースのタグを変更したり、削除したりすることはできません (追加情報については、次のセクションを参照してください)。
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>MC_* リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
@@ -85,7 +108,9 @@ AKS は現在、Azure Key Vault とネイティブに統合されていません
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-Windows Server コンテナーを実行するには、Windows Server ベースのノードを実行する必要があります。 Windows Server ベースのノードは、現時点では、AKS では使用できません。 ただし、Virtual Kubelet を使用して、Azure Container Instances で Windows コンテナーをスケジュールし、それらを AKS クラスターの一部として管理できます。 詳細については、[AKS での Virtual Kubelet の使用][virtual-kubelet]に関する記事を参照してください。
+はい、Windows Server コンテナーはプレビューでご利用になれます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールで AKS クラスターを作成][aks-windows-cli]します。
+
+Window Server ノード プールのサポートには、Kubernetes プロジェクトの上流 Windows Server の一部であるいくつかの制限が含まれます。 これらの制限の詳細については、[AKS での Windows Server コンテナーの制限事項][aks-windows-limitations]に関するページを参照してください。
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか。
 
@@ -93,13 +118,20 @@ Windows Server コンテナーを実行するには、Windows Server ベース�
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./container-service-quotas.md#region-availability
+[aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
+[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-cluster-autoscaler]: cluster-autoscaler.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[aks-windows-cli]: windows-container-cli.md
+[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 
@@ -108,4 +140,3 @@ Windows Server コンテナーを実行するには、Windows Server ベース�
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
-

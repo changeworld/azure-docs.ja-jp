@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 05/02/2019
 ms.author: monhaber
-ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 581db3ebe3ce1cad5c8db3702af179e141f334b4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517982"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143449"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure Security Center におけるアダプティブ アプリケーション制御
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。
@@ -154,6 +154,22 @@ Security Center では、安定した一連のアプリケーションが実行�
 
 Azure Security Center では、推奨されない VM のグループに対してもアプリケーションのホワイトリスト登録ポリシーを定義することができます。 これらのグループに対するアプリケーションのホワイトリスト登録ポリシーを構成する場合も、前述の同じ原則に従ってください。
 
+## <a name="move-a-vm-from-one-group-to-another"></a>VM をあるグループから別のグループに移動する
+
+ VM をあるグループから別のグループに移動すると、適用されていたアプリケーション制御ポリシーが移動先のグループの設定に変更されます。 また、構成済みのグループから未構成のグループに VM を移動することもできますが、その結果、VM に適用されていたアプリケーション制御ポリシーが削除されます。
+
+ 1. **[適応型アプリケーション制御]** ページの **[構成済み]** タブから、移動対象の VM が現在属しているグループをクリックします。
+1. **[構成された VM とコンピューター]** をクリックします。
+1. VM の行で 3 つのドットをクリックし、**[移動]** をクリックします。 **[コンピューターを別のグループに移動する]** ウィンドウが開きます。
+
+    ![保護](./media/security-center-adaptive-application/adaptive-application-move-group.png)
+
+ 1. VM の移動先のグループを選択して **[コンピューターの移動]** をクリックし、**[保存]** をクリックします。
+
+    ![保護](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
+
+ > [!NOTE]
+> **[コンピューターの移動]** をクリックしたら、必ず **[保存]** をクリックしてください。 **[保存]** をクリックしないと、コンピューターは移動されません。
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure と Azure 以外の VM で実行されるアプリケーションをホワイトリストに登録するために、Azure Security Center で適応型アプリケーション制御を使用する方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。

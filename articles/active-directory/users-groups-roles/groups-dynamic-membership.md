@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450670"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192431"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
 * プロパティ
-* operator
+* Operator
 * 値
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
@@ -117,7 +117,7 @@ user.department -eq "Sales"
 
 次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。
 
-| operator | 構文 |
+| Operator | 構文 |
 | --- | --- |
 | 等しくない |-ne |
 | 等しい |-eq |
@@ -346,8 +346,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  デバイス属性  | 値 | 例
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
- displayName | 任意の文字列値 |(device.displayName -eq "Rob Iphone”)
- deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
+ displayName | 任意の文字列値 |(device.displayName -eq "Rob iPhone")
+ deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
  deviceOSVersion | 任意の文字列値 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有効なデバイス カテゴリ名 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")

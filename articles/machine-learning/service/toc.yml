@@ -226,7 +226,7 @@
           href: how-to-create-your-first-pipeline.md
         - name: Azure Pipelines を使用した ML ワークフローの CI/CD
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          href: /azure/devops/pipelines/targets/azure-machine-learning
           mainContext: true
     - name: リソース クォータを管理する
       displayName: limits

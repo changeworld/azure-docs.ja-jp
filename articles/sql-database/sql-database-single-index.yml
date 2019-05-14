@@ -75,6 +75,7 @@ sections:
           - html: '(プレビュー) 新しい Transact-SQL 言語機能 (<a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT 集計</a>、<a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Azure Blob Storage からの一括インポート</a>など)。'
           - html: '(プレビュー) 新しい SQL Server 2019 クラスター化列ストア インデックスのオンラインでの<a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">構築</a>操作と再構築操作。'
           - html: '(プレビュー) 新しい <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Azure SQL Database の Machine Learning Services (と R)</a>。'
+          - html: '(プレビュー) 新しい<a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">サーバーレス (プレビュー) コンピューティング レベル</a>は、コンピューティングの自動スケーリングと、使用されたコンピューティングの 1 秒あたりの請求額を提供します。'
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph

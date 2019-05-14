@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: e40a6b69b1cc4785b3055eaa31905c9ee88170e2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a793de302eb0833c959f2486fc2cda1f2eec4674
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001509"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149121"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリー
 
@@ -120,6 +120,9 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>最新バージョンの Deployment Planner への更新
+
+最新の更新については、Deployment Planner の[バージョン履歴](site-recovery-deployment-planner-history.md)にまとめられています。
+
 以前のバージョンの Deployment Planner をお持ちの場合、次のいずれかを行ってください。
  * 最新バージョンにプロファイリングの修正プログラムが含まれていない場合で、かつ現在ご利用のバージョンの Deployment Planner でプロファイリングが既に進行中である場合は、プロファイリングを続行してください。
  * 最新バージョンにプロファイリングの修正プログラムが含まれている場合は、現在ご利用のバージョンでのプロファイリングを中止し、新しいバージョンでプロファイリングを再開することをお勧めします。

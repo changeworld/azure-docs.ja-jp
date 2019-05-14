@@ -6,75 +6,120 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9d8d5e57d0dd7d7022e65a061360c8450848fb4b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e526908f5ba9feea53b1c1abebbbfc1bd9a51c54
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682917"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147961"
 ---
-# <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する
+# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する
 
-この記事では、Apache Kafka クライアントと Apache Kafka ブローカー間の通信に SSL 暗号化を設定する方法について説明します。 クライアントの認証の設定に必要な手順についても説明します (双方向 SSL とも呼ばれます)。
+この記事では、Apache Kafka クライアントと Apache Kafka ブローカー間の通信に SSL 暗号化を設定する方法を示します。 クライアントの認証を設定する方法についても説明します (双方向 SSL とも呼ばれます)。
 
-## <a name="server-setup"></a>サーバーのセットアップ
+> [!Important]
+> Kafka アプリケーションでは、Java クライアントとコンソール クライアントの 2 種類のクライアントを使用できます。 生成と使用の両方に SSL を使用できるのは、Java クライアント `ProducerConsumer.java` のみです。 コンソール プロデューサー クライアント `console-producer.sh` は、SSL では機能しません。
 
-最初の手順は、Kafka ブローカーごとにキーストアとトラストストアを作成することです。 これらの作成後、証明機関 (CA) とブローカーの証明書をこれらのストアにインポートします。
+## <a name="apache-kafka-broker-setup"></a>Apache Kafka ブローカーのセットアップ
+
+Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラスター VM が次のように使用されます。
+
+* ヘッドノード 0 - 証明機関 (CA)
+* ワーカー ノード 0、1、2 - ブローカー
 
 > [!Note] 
 > このガイドでは自己署名証明書を使用しますが、最も安全なソリューションは、信頼された CA によって発行された証明書を使うことです。
 
-サーバーのセットアップを完了するために、次の操作を行います。
+ブローカーのセットアップ プロセスの概要は次のとおりです。
 
-1. ssl をという名前のフォルダーを作成し、サーバーのパスワードを環境変数としてエクスポートします。 このガイドの残りの部分では、`<server_password>` をサーバーの実際の管理者パスワードに置き換えます。
-1. 次に、java キーストア (kafka.server.keystore.jks) と CA 証明書を作成します。
-1. その後、署名要求を作成して、前の手順で作成した CA によって署名された証明書を取得します。
-1. 署名要求を CA に送信し、この証明書に署名してもらいます。 自己署名証明書を使用するため、`openssl` コマンドを使って CA を使用して証明書に署名します。
-1. トラストストアを作成し、CA の証明書をインポートします。
-1. 公開 CA 証明書をキーストアにインポートします。
-1. 署名証明書をキーストアにインポートします。
+1. 次の手順を 3 つのワーカー ノードのそれぞれで繰り返します。
 
-これらの手順を完了するためのコマンドは、次のコード スニペットで示されています。
+    1. 証明書を作成します。
+    1. 証明書署名要求を作成します。
+    1. 証明書署名要求を証明機関 (CA) に送信します。
+    1. CA にサインインし、要求に署名します。
+    1. 署名済みの証明書をワーカー ノードに SCP で送り返します。
+    1. CA の公開証明書をワーカー ノードに SCP で送信します。
 
-```bash
-export SRVPASS=<server_password>
-mkdir ssl
-cd ssl
+1. すべての証明書が揃ったら、証明書を証明書ストアに格納します。
+1. Ambari に移動し、構成を変更します。
 
-# Create a java keystore (kafka.server.keystore.jks) and a CA certificate.
+次の詳細な手順を使って、ブローカーのセットアップを完了します。
 
-keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS -dname "CN=wn0-umakaf.xvbseke35rbuddm4fyvhm2vz2h.cx.internal.cloudapp.net" -storetype pkcs12
+> [!Important]
+> 次のコード スニペットで、wnX は 3 つのワーカー ノードの 1 つの省略形であり、`wn0`、`wn1`、または `wn2` のいずれか適切なものに置き換える必要があります。 `WorkerNode0_Name` と `HeadNode0_Name` は、`wn0-abcxyz` や `hn0-abcxyz` など、それぞれのコンピューターの名前に置き換える必要があります。
 
-# Create a signing request to get the certificate created in the previous step signed by the CA.
+1. ヘッド ノード 0 で初期セットアップを実行します。HDInsight の場合は、証明機関 (CA) のロールを設定します。
 
-keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass $SRVPASS -keypass $SRVPASS
+    ```bash
+    # Create a new directory 'ssl' and change into it
+    mkdir ssl
+    cd ssl
 
-# Send the signing request to the CA and get this certificate signed.
+    # Export
+    export SRVPASS=MyServerPassword123
+    ```
 
-openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:$SRVPASS
+1. 各ブローカー (ワーカー ノード 0、1、2) で同じ初期セットアップを実行します。
 
-# Create a trust store and import the certificate of the CA.
+    ```bash
+    # Create a new directory 'ssl' and change into it
+    mkdir ssl
+    cd ssl
 
-keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+    # Export
+    export MyServerPassword123=MyServerPassword123
+    ```
 
-# Import the public CA certificate into the keystore.
+1. 各ワーカー ノードで、次のコード スニペットを使って以下の手順を実行します。
+    1. キーストアを作成し、新しいプライベート証明書を設定します。
+    1. 証明書署名要求を作成します。
+    1. 証明書署名要求を CA (headnode0) に SCP で送信します
 
-keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+    ```bash
+    keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
+    keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass "MyServerPassword123" -keypass "MyServerPassword123"
+    scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
+    ```
 
-# Import the signed certificate into the keystore.
+1. CA のコンピューターに移動し、受け取ったすべての証明書署名要求に署名します。
 
-keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+    ```bash
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in wn0-cert-sign-request -out wn0-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in wn1-cert-sign-request -out wn1-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in wn2-cert-sign-request -out wn2-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
+    ```
 
-# The output should say "Certificate reply was added to keystore"
-```
+1. CA (headnode0) からワーカー ノードに、署名済みの証明書を返送します。
 
-最後に、キーストアに署名証明書をインポートします。これは、Kafka ブローカー用のトラストストアとキーストアを構成するために必要です。
+    ```bash
+    scp wn0-cert-signed sshuser@WorkerNode0_Name:~/ssl/cert-signed
+    scp wn1-cert-signed sshuser@WorkerNode1_Name:~/ssl/cert-signed
+    scp wn2-cert-signed sshuser@WorkerNode2_Name:~/ssl/cert-signed
+    ```
+
+1. CA の公開証明書を各ワーカー ノードに送信します。
+
+    ```bash
+    scp ca-cert sshuser@WorkerNode0_Name:~/ssl/ca-cert
+    scp ca-cert sshuser@WorkerNode1_Name:~/ssl/ca-cert
+    scp ca-cert sshuser@WorkerNode2_Name:~/ssl/ca-cert
+    ```
+
+1. 各ワーカー ノードで、CA の公開証明書をトラストストアとキーストアに追加します。 次に、ワーカー ノード自体の署名済み証明書をキーストアに追加します
+
+    ```bash
+    keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
+    keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
+    keytool -keystore kafka.server.keystore.jks -import -file cert-signed -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
+
+    ```
 
 ## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>SSL を使用してブローカーを再起動するように Kafka 構成を更新する
 
-キーストアとトラストストアを使用して各 Kafka ブローカーを設定し、適切な証明書をインポートしました。  次に、Ambari を使用して関連の Kafka 構成プロパティを変更して、Kafka ブローカーを再起動します。 
+キーストアとトラストストアを使用して各 Kafka ブローカーを設定し、適切な証明書をインポートしました。 次に、Ambari を使用して関連の Kafka 構成プロパティを変更して、Kafka ブローカーを再起動します。
 
 構成の変更を完了するために、次の手順を実行します。
 
@@ -121,12 +166,12 @@ keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert 
 > [!Note]
 > 次の手順は、SSL 暗号化と認証の "**両方**" を設定する場合にのみ必要です。 暗号化のみを設定する場合は、「[クライアントのセットアップ (認証なし)](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)」に進んでください。
 
-クライアントのセットアップを完了するために、次の手順を実行します。
+次の手順を実行して、クライアントのセットアップを完了します。
 
-1. クライアント コンピューター (hn1) にログインします。
+1. クライアント コンピューター (hn1) にサインインします。
 1. クライアントのパスワードをエクスポートします。 `<client_password>` を Kafka クライアント コンピューターでの実際の管理者パスワードに置き換えます。
 1. java キーストアを作成し、ブローカーの署名証明書を取得します。 証明書を CA が実行されている VM にコピーします。
-1. CA コンピューター (wn0) に切り替えて、クライアント証明書に署名します。
+1. CA コンピューター (hn0) に切り替えて、クライアント証明書に署名します。
 1. クライアント コンピューター (hn1) に移動して、`~/ssl` フォルダーに移動します。 署名証明書をクライアント コンピューターにコピーします。
 
 ```bash
@@ -139,15 +184,15 @@ keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass $CL
 
 keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS
 
-# Copy the cert to the vm where the CA is
-scp client-cert-sign-request3 sshuser@wn0-umakaf:~/tmp1/client-cert-sign-request
+# Copy the cert to the CA
+scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (wn0) to sign the client certificate.
+# Switch to the CA machine (hn0) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:<server_password>
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert to client machine
-scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/tmp1/client-cert-signed
+# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
 keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt

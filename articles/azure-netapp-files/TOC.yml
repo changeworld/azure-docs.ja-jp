@@ -21,6 +21,10 @@
       href: azure-netapp-files-metrics.md
     - name: Azure NetApp Files のパフォーマンス ベンチマーク
       href: azure-netapp-files-performance-benchmarks.md
+    - name: Azure NetApp Files のコスト モデル
+      href: azure-netapp-files-cost-model.md
+    - name: Azure NetApp Files のネットワーク計画のガイドライン
+      href: azure-netapp-files-network-topologies.md
 - name: ハウツー ガイド
   items:
     - name: Azure NetApp Files に登録する

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: fb6a32887703af6d37f8f73d2f9e18ec97f74289
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875707"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203524"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>QnA Maker のナレッジ ベースを対話形式でテストする
 
@@ -67,12 +67,16 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
 一致した既存の回答に誤りがあった場合や、ナレッジ ベースに回答が存在しない (適切な一致が KB に見つからない) 場合は、新しい回答を追加することができます。 現在の質問のテキスト ボックスに新しい回答を入力し、Enter キーを押して追加します。 
 
-その回答を保持するには、**[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。
+その回答を保持するには、**[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。 
 
 ![新しい質問とその回答のペアを追加する](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
 > ナレッジ ベースに対するすべての編集は、**[Save and Train]\(保存してトレーニング\)** ボタンを押したときにのみ保存されます。
+
+## <a name="test-the-published-knowledge-base"></a>公開ナレッジ ベースをテストする
+
+ナレッジ ベースの公開バージョンをテスト ウィンドウでテストできます。 KB を公開した後、[公開済み] ボックスをオンにして、公開 KB から結果を取得するクエリを送信します。
 
 ## <a name="next-steps"></a>次の手順
 

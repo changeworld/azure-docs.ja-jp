@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/15/2019
 ms.author: juliako
-ms.openlocfilehash: f4ce64599aad2b2eebbef6ca8d81acfca2a7a702
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 62d26ce5a2e1a98b6ed024fb98c9c887fb985ebf
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342509"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150975"
 ---
 # <a name="create-an-azure-media-services-account"></a>Azure Media Services アカウントの作成
 
@@ -46,7 +46,8 @@ az account set --subscription mySubscriptionId
  
 ## <a name="next-steps"></a>次の手順
 
-[ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+* [v3 API へのアクセス](access-api-cli-how-to.md)
+* [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
 
 ## <a name="see-also"></a>関連項目
 

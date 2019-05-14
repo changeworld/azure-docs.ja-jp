@@ -47,7 +47,7 @@ ms.locfileid: "58434791"
 
     ![[条件付きアクセス] タブ](./media/quickstart-configure-named-locations/entrypoint.png)
 
-3. **[条件付きアクセス]** ページで **[名前付きの場所]** を選択し、**[新しい場所]** を選択します。
+3. **[条件付きアクセス]** ページで **[ネームド ロケーション]** を選択し、**[新しい場所]** を選択します。
 
     ![ネームド ロケーション](./media/quickstart-configure-named-locations/namedlocation.png)
 

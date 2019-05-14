@@ -4,17 +4,17 @@ description: Azure IoT Edge デーモンとランタイムを実行できるオ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/18/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1db999f5d3172734311ecc7dbec72214a1e07e91
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190007"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137805"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
@@ -60,14 +60,15 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 | Raspbian-stretch | いいえ  | はい|
 | Ubuntu Server 16.04 | はい | いいえ  |
 | Ubuntu Server 18.04 | はい | いいえ  |
+| Windows 10 IoT Enterprise ビルド 17763 | はい | いいえ  |
 
 パブリック プレビュー
 
 | オペレーティング システム | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
 | Windows 10 IoT Core ビルド 17763 | はい | いいえ  |
-| Windows 10 IoT Enterprise ビルド 17763 | はい | いいえ  |
-| Windows Server 2019 | はい | いいえ  |
+| Windows Server 2019 ビルド 17763 | はい | いいえ  |
+| Windows Server IoT 2019 ビルド 17763 | はい | いいえ  |
 
 上記の Windows オペレーティング システムは、Windows 上で Windows コンテナーを実行するデバイスの要件です。 この構成は、運用環境でサポートされる唯一の構成です。 Windows 用の Azure IoT Edge インストール パッケージを使用すると、Windows 上で Linux コンテナーを使用できます。ただし、この構成は開発およびテスト専用です。 Windows 上で Linux コンテナーを使用することは、運用環境でサポートされる構成ではありません。 この開発シナリオに使用できるのは、Windows 10 ビルド 14393 以降と、Windows Server 2016 以降のバージョンです。
 

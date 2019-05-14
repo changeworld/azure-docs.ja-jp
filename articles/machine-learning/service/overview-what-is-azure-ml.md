@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201ee251b195845e33ed3829be8540664811f2ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025302"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510429"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -106,8 +106,6 @@ Azure サービスを使用するクレジットを取得できます。 この�
 - 詳細なチュートリアルに従ってください。 
   + [Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md) 
   + [データを準備し、自動化された機械学習を使用して、回帰モデルを自動トレーニングする](tutorial-data-prep.md)
-
-- [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) を使用してデータを準備します。
 
 - 機械学習シナリオを構築、最適化、および管理する[機械学習パイプライン](/azure/machine-learning/service/concept-ml-pipelines)について学習します。
 

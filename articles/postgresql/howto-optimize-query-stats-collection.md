@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL サーバーのクエリ統計コレクションを最適化する
-description: この記事では、Azure Database for PostgreSQL サーバーのクエリ統計コレクションを最適化する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する
+description: この記事では、Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する方法について説明します
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.openlocfilehash: 428a22f79008130448bef65f14322d6880b1b367
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 5/6/2019
+ms.openlocfilehash: 7425ee7916fd71625f336a7af35f6481d1ed2474
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814369"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068955"
 ---
-# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーのクエリ統計コレクションを最適化する 
+# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する
 この記事では、Azure Database for PostgreSQL サーバーのクエリ統計コレクションの最適化方法について説明します。
 
 ## <a name="use-pgstatsstatements"></a>pg_stats_statements の使用

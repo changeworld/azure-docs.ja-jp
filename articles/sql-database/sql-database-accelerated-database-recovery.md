@@ -11,14 +11,14 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677818"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073462"
 ---
-# <a name="accelerated-database-recovery-preview"></a>高速データベース復旧 (プレビュー)
+# <a name="accelerated-database-recovery"></a>高速データベース復旧
 
 **高速データベース復旧 (ADR)** は、SQL データベース エンジンの復旧プロセスを再設計することで、実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL データベース エンジン機能です。 現在、ADR は、Azure SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベースに使用できます。 ADR の主な利点は次のとおりです。
 
@@ -128,6 +128,3 @@ ADR には次の 4 つの主要コンポーネントがあります。
 - アクティブ トランザクションによってトランザクション ログが大幅に増えたことがあるお客様。  
 - SQL Server の復元動作 (SQL Server の予期しない再起動や手動のトランザクション ロールバックなど) に時間がかかり、データベースが長時間使えなくなったことがあるお客様。
 
-## <a name="to-enable-adr-during-this-preview-period"></a>プレビュー期間中に ADR を有効化するには
-
-この機能のプレビュー期間中に高速データベース復元 (ADR) の詳細を確認したり、機能をお試しいただくには、[adr@microsoft.com](mailto:adr@microsoft.com) までメールでお問い合わせください。 電子メールに、ご利用の SQL Database サーバーの名前 (SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベース用) を含めてください。 この機能はプレビュー版なので、運用サーバーで機能を試すことは避けてください。

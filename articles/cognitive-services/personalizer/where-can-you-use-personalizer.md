@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: b24e3d7fd71ef60cf8ebe5ba2c33889ff518580c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e51ef9afd0e49b690a4f9cab09fdfbd3e86eee66
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025471"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441046"
 ---
 # <a name="where-can-you-use-personalizer"></a>Personalizer を使用できる状況
 
@@ -58,7 +58,7 @@ Personalizer は、次の状況で最もよく学習します。
 
 多くの企業では、大規模なカタログから商品を顧客に提案するために、レコメンデーション エンジン、マーケティングおよびキャンペーン ツール、対象ユーザーのセグメント化およびクラスタリング、協調フィルタリング、および他の手段を使用します。
 
-[Microsoft Recommenders GitHub リポジトリ](https://github.com/Microsoft/Recommenders)には、Jupyter Notebook として提供されるレコメンデーション システムを構築するための例とベスト プラクティスが用意されています。 xDeepFM、SAR、ALS、RBM、DKN を含む多くの一般的なアプローチ向けに、データの準備、モデルの構築、レコメンデーション エンジンの評価、調整、および運用化のための実用的な例が提供されています。
+[Microsoft Recommenders GitHub リポジトリ](https://github.com/Microsoft/Recommenders) には、Jupyter ノートブックとして提供されている推奨システムを構築するための例とベスト プラクティスが提供されています。 xDeepFM、SAR、ALS、RBM、DKN を含む多くの一般的なアプローチ向けに、データの準備、モデルの構築、レコメンデーション エンジンの評価、調整、および運用化のための実用的な例が提供されています。
 
 Personalizer は、レコメンデーション エンジンが存在する場合にそれと連携できます。
 

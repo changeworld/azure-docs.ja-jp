@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694834"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190726"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -165,6 +165,9 @@ ms.locfileid: "64694834"
 * **サポートされない管理者の操作**
    * [Office 管理ポータル](https://portal.office.com)から管理者が開始したエンドユーザーのパスワードのリセット
    * PowerShell バージョン 1、バージョン 2、または Azure AD Graph API から管理者が開始したエンド ユーザーのパスワードのリセット
+
+> [!WARNING]
+> [Active Directory ユーザーとコンピューター] や [Active Directory 管理センター] などのオンプレミスの Active Directory 管理ツールでの [ユーザーは次回ログオン時にパスワードの変更が必要] チェックボックスの使用はサポートされていません。 オンプレミスでパスワードを変更するときは、このオプションをオンにしないでください。 
 
 ## <a name="next-steps"></a>次の手順
 

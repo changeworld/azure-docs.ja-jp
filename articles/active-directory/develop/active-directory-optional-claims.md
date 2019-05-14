@@ -2,9 +2,9 @@
 title: Azure AD アプリケーションに省略可能な要求を提供する方法 | Microsoft Docs
 description: Azure Active Directory から発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) にカスタムまたは追加の要求を追加する方法について説明します。
 documentationcenter: na
-author: CelesteDG
+author: rwike77
 services: active-directory
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/27/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2fd7b05a5411c03e1324871fbff3c29061ce7b3d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501061"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139241"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
@@ -57,7 +57,7 @@ ms.locfileid: "59501061"
 | `auth_time`                | ユーザーが最後に認証された時刻。 OpenID Connect の仕様を参照してください。| JWT        |           |  |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
 | `home_oid`                 | ゲスト ユーザーの場合、ユーザーのホーム テナント内のユーザーのオブジェクト ID。| JWT        |           | |
-| `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |           |         |
+| `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |  個人用アカウントと Azure AD アカウント。   |         |
 | `platf`                    | デバイスのプラットフォーム    | JWT        |           | デバイスの種類を検証できる、マネージド デバイスに制限されます。|
 | `verified_primary_email`   | ユーザーの PrimaryAuthoritativeEmail が送信元です      | JWT        |           |         |
 | `verified_secondary_email` | ユーザーの SecondaryAuthoritativeEmail が送信元です   | JWT        |           |        |
@@ -70,7 +70,8 @@ ms.locfileid: "59501061"
 | `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。 ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。 LL-CC ("en-us") という形式です。 |
 | `xms_tpl`                  | テナントの優先する言語| JWT | | テナントの優先する言語 (設定されている場合)。 LL ("en") という形式です。 |
 | `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
-| `email`                    | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | MSA、AAD | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。|  
+| `email`                    | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | MSA、AAD | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。| 
+| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#Configuring-group-optional claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
 | `acct`             | テナント内のユーザー アカウントの状態。 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
 | `upn`                      | UserPrincipalName 要求。 | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
 
@@ -91,8 +92,6 @@ ms.locfileid: "59501061"
 | `family_name` | 姓                       | ユーザー オブジェクトで定義されたユーザーの姓を示します。 <br>"family_name":"Miller" | MSA と AAD でサポートされています   |
 | `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と AAD でサポートされています  |
 | `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、重要なデータには使用しないでください。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 |
-| `sid`         | セッション ID                      | GUID セッションの識別子。MSA の認証セッションの追跡に使用します。 | MSA のみ。  Azure AD アカウントには含まれません。 | 
-
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
 
@@ -132,24 +131,24 @@ ms.locfileid: "59501061"
 ```json
 "optionalClaims":  
    {
-       "idToken": [
-             { 
-                   "name": "auth_time", 
-                   "essential": false
-              }
-        ],
- "accessToken": [ 
+      "idToken": [
+            {
+                  "name": "auth_time", 
+                  "essential": false
+             }
+      ],
+      "accessToken": [
              {
                     "name": "ipaddr", 
                     "essential": false
               }
-        ],
-"saml2Token": [ 
-              { 
+      ],
+      "saml2Token": [
+              {
                     "name": "upn", 
                     "essential": false
                },
-               { 
+               {
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
                     "essential": false
@@ -188,7 +187,7 @@ ms.locfileid: "59501061"
 標準の省略可能な要求セットに加え、ディレクトリ スキーマ拡張を含むようにトークンを構成することもできます。 詳しくは、[ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)に関する記事をご覧ください。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 
 
 > [!Note]
-> ディレクトリ スキーマ拡張機能は AAD のみの機能なので、アプリケーション マニフェストでカスタム拡張機能を必須にして、MSA ユーザーがアプリにログインした場合、このような拡張機能は返されません。 
+> ディレクトリ スキーマ拡張機能は AAD のみの機能なので、アプリケーション マニフェストでカスタム拡張機能を必須にして、MSA ユーザーがアプリにログインした場合、このような拡張機能は返されません。
 
 ### <a name="directory-extension-formatting"></a>ディレクトリ拡張の形式
 
@@ -197,6 +196,98 @@ ms.locfileid: "59501061"
 JWT 内では、このような要求は `extn.<attributename>` という形式の名前で発行されます。
 
 SAML トークン内では、このような要求は `http://schemas.microsoft.com/identity/claims/extn.<attributename>` という URI 形式で発行されます。
+
+## <a name="configuring-group-optional-claims"></a>グループの省略可能な要求の構成
+
+   > [!NOTE]
+   > ユーザーとグループについて、オンプレミスからの同期されたグループ名を出力する機能は、パブリック プレビュー段階です
+
+このセクションでは、グループ要求で使用されるグループ属性を、既定のグループ objectID からオンプレミス Windows Active Directory から同期される属性へ変更するための、省略可能な要求の構成オプションについて説明します
+> [!IMPORTANT]
+> オンプレミス属性からのグループ要求のパブリック プレビューに関する重要な注意事項などの詳細については、「[Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する](../hybrid/how-to-connect-fed-group-claims.md)」を参照してください。
+
+1. ポータルから [Azure Active Directory]-> [アプリケーションの登録] の順に移動して、[アプリケーション] -> [マニフェスト] の順に選択します。
+
+2. groupMembershipClaim を変更して、グループ メンバーシップの要求を有効にします。
+
+   有効な値は次のとおりです。
+
+   - "All"
+   - "SecurityGroup"
+   - "DistributionList"
+   - "DirectoryRole"
+
+   例: 
+
+   ```json
+   "groupMembershipClaims": "SecurityGroup"
+   ```
+
+   既定では、グループの ObjectID は、グループ要求の値に出力されます。  オンプレミス グループ属性を含むように要求の値を変更するか、または要求の種類をロールに変更するには、次のように OptionalClaims 構成を使用します。
+
+3. グループ名の構成を [optional claims]\(オプションの要求\) に設定します。
+
+   [optional claims]\(オプションの要求\) セクションにあるオンプレミス AD グループ属性をトークン内のグループに含める場合は、オプション要求の適用先となるトークンの種類、要求されるオプション要求の名前、および必要な追加のプロパティを指定します。  次に示す複数のトークンの種類が、一覧に表示される可能性があります。
+
+   - OIDC ID トークン用の idToken
+   - OAuth/OIDC アクセス トークン用の accessToken
+   - SAML トークン用の Saml2Token
+
+   > [!NOTE]
+   > Saml2Token の種類は、SAML1.1 および SAML2.0 両方の形式のトークンに適用されます。
+
+   関連する各トークンの種類に対して、マニフェストにある OptionalClaims セクションを使用するようにグループ要求を変更します。 OptionalClaims スキーマは次のようになっています。
+
+   ```json
+   {
+   "name": "groups",
+   "source": null,
+   "essential": false,
+   "additionalProperties": []
+   }
+   ```
+
+   | オプション要求のスキーマ | 値 |
+   |----------|-------------|
+   | **name:** | 必ず "groups" になります |
+   | **source:** | 使用されません。 省略するか、null を指定します |
+   | **essential:** | 使用されません。 省略するか、false を指定します |
+   | **additionalProperties:** | その他のプロパティのリスト。  有効なオプションは、"sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name"、"emit_as_roles" です |
+
+   additionalProperties では、"sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name" のいずれか 1 つのみが必要です。  複数ある場合、最初の 1 つが使用され、それ以外は無視されます。
+
+   アプリケーションによっては、ロール要求内にユーザーに関するグループ情報が必要になります。  グループ要求からロール要求へ要求の種類を変更するには、"emit_as_roles" を追加のプロパティに付け加えます。  グループの値が、ロール要求内に出力されます。
+
+   > [!NOTE]
+   > "emit_as_roles" が使用された場合、ユーザーが割り当て済みとして構成されているアプリケーション ロールは、ロール要求には表示されません
+
+**例:** OAuth アクセス トークンで netbiosDomain\sAMAccountName 形式でグループ名をグループとして出力する
+
+```json
+"optionalClaims": {
+    "accessToken": [{
+        "name": "groups",
+        "additionalProperties": ["dns_domain_and_sam_account_name"]
+    }]
+}
+ ```
+
+SAML および OIDC ID トークンでロール要求として netbiosDomain\sAMAccountName 形式で返されるグループ名を出力するには、次のように記述します。
+
+```json
+"optionalClaims": {
+    "saml2Token": [{
+        "name": "groups",
+        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+    }],
+
+    "idToken": [{
+        "name": "groups",
+        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+    }]
+ }
+
+ ```
 
 ## <a name="optional-claims-example"></a>省略可能な要求の例
 
@@ -214,7 +305,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 1. アプリケーションのページで **[マニフェスト]** をクリックして、インライン マニフェスト エディターを開きます。 
 1. このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)のスキーマに従っており、保存されるとマニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
 
-      ```json
+    ```json
       "optionalClaims": 
       {
             "idToken": [ 
@@ -224,13 +315,13 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
                         "additionalProperties": [ "include_externally_authenticated_upn"]  
                   }
             ],
-      "accessToken": [ 
+            "accessToken": [ 
                   {
                         "name": "auth_time", 
                         "essential": false
                   }
             ],
-      "saml2Token": [ 
+            "saml2Token": [ 
                   { 
                         "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                         "source": "user", 
@@ -238,8 +329,10 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
                   }
             ]
       }
-      ```
-      この例では、アプリケーションが受け取ることができる各種類のトークンに異なる省略可能な要求が追加されました。 ID トークンには、完全な形式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) のフェデレーション ユーザーの UPN が含まれるようになります。 他のクライアントがこのアプリケーションに要求するアクセス トークンには、auth_time 要求が含まれるようになります。 SAML トークンに skypeId ディレクトリ スキーマ拡張機能が含まれるようになります (この例では、このアプリのアプリ ID は ab603c56068041afb2f6832e2a17e237 です)。 SAML トークンは Skype ID を `extension_skypeId` として公開します。
+
+    ```
+
+    この例では、アプリケーションが受け取ることができる各種類のトークンに異なる省略可能な要求が追加されました。 ID トークンには、完全な形式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) のフェデレーション ユーザーの UPN が含まれるようになります。 他のクライアントがこのアプリケーションに要求するアクセス トークンには、auth_time 要求が含まれるようになります。 SAML トークンに skypeId ディレクトリ スキーマ拡張機能が含まれるようになります (この例では、このアプリのアプリ ID は ab603c56068041afb2f6832e2a17e237 です)。 SAML トークンは Skype ID を `extension_skypeId` として公開します。
 
 1. マニフェストの更新が完了したら、**[保存]** をクリックしてマニフェストを保存します。
 

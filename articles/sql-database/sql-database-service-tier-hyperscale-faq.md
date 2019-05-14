@@ -3,7 +3,7 @@ title: Azure SQL Database ハイパースケールに関する FAQ | Microsoft D
 description: ハイパースケール サービス レベルの Azure SQL データベース (通常はハイパースケール データベースと呼ばれる) に関する顧客からの一般的な質問への回答。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: 679de1d5accbd0f4f955bf5af95bc8dcc97e3b78
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 10/17/2018
+ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574278"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067806"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
-この記事では、現在パブリック プレビュー中の Azure SQL Database ハイパースケール サービス レベルのデータベース (通常はハイパースケール データベースと呼ばれる) を検討している顧客向けに、よく寄せられる質問の回答を示します。 この記事では、ハイパースケールでサポートするシナリオを示し、一般的に機能間サービスが SQL Database ハイパースケールと互換性があることを説明します。
+この記事では、Azure SQL Database ハイパースケール サービス レベルのデータベース (通常はハイパースケール データベースと呼ばれる) をご検討中のお客様向けに、よく寄せられる質問の回答を紹介します。 この記事では、ハイパースケールでサポートするシナリオを示し、一般的に機能間サービスが SQL Database ハイパースケールと互換性があることを説明します。
 
 - この FAQ は、ハイパースケール サービス レベルの概要を理解し、具体的な質問や懸案事項の回答を求める読者を対象としています。
 - この FAQ はガイドブックではなく、SQL Database ハイパースケールの使用方法に関する質問に回答するものでもありません。 そのような場合は、[Azure SQL Database ハイパースケール](sql-database-service-tier-hyperscale.md)に関する記事をご覧ください。
@@ -45,7 +45,7 @@ ms.locfileid: "64574278"
 - Business Critical サービス レベルは、IO 待ち時間が最優先されるビジネス ワークロードに適しています。
 
 | | リソースの種類 | 汎用 |  ハイパースケール | Business Critical |
-|:---|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|:---:|
 | **最適な用途** |All|  ほとんどのビジネス ワークロード。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | 大きなデータ容量要件のデータ アプリケーション、および柔軟性の高いストレージの自動スケーリングとコンピューティングのスケーリングの機能。 | トランザクション レートが高く、待ち時間 IO が最低のOLTP アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
 |  **リソースの種類** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
 | **コンピューティング サイズ**|単一データベース/エラスティック プール * | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
@@ -56,7 +56,7 @@ ms.locfileid: "64574278"
 | **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | 現在不明 | 5000 IOPS (最大 200,000 IOPS)|
 | | マネージド インスタンス | ファイル サイズに依存 | 該当なし | Managed Instance:ファイル サイズに依存|
 |**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 15 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
-|**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 - 35 日 (既定では 7 日)、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
+|**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 から 35 日 (既定では 7 日)、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 
 \*エラスティック プールはハイパースケール サービス レベルではサポートされていません。
 
@@ -73,15 +73,19 @@ ms.locfileid: "64574278"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>現在ハイパースケールをサポートしているリージョン
 
-現在、ハイパースケールは次のリージョンの単一データベースで使用できます。米国西部 1、米国西部 2、米国東部 1、米国中部、西ヨーロッパ、北ヨーロッパ、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部。
+現在、Azure SQL Database ハイパースケール レベルは次のリージョンで使用できます。
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL Database サーバーごとに複数のハイパースケール データベースを作成できるか
+オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、米国中部、東アジア、米国東部、米国東部 2、フランス中部、東日本、西日本、米国中北部、北ヨーロッパ、南アフリカ北部、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2。
 
-はい。 SQL Database サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、[SQL Database サーバー上の単一データベースおよびプールされたデータベースの SQL Database のリソース制限](sql-database-resource-limits-database-server.md)に関するページご覧ください。
+別のリージョンでのアクセスが必要な場合の手順については、[Azure SQL Database ハイパースケールの概要](sql-database-service-tier-hyperscale-faq.md)に関する記事をご覧ください。
+
+### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>論理サーバーごとに複数のハイパースケール データベースを作成できるか
+
+はい。 論理サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、「[SQL Database resource limits for single and pooled databases on a logical server](sql-database-resource-limits-logical-server.md)」(論理サーバー上の単一データベースおよびプールされたデータベースの SQL Database のリソース制限) をご覧ください。
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>ハイパースケール データベースのパフォーマンス特性とは
 
-SQL Database ハイパースケール アーキテクチャは、大きなデータベース サイズをサポートする一方で高いパフォーマンスとスループットを提供します。 正確なパフォーマンスのプロファイルと特性はパブリック プレビューの時点では明らかにできません。
+SQL Database ハイパースケール アーキテクチャは、大きなデータベース サイズをサポートする一方で高いパフォーマンスとスループットを提供します。 
 
 ### <a name="what-is-the-scalability-of-a-hyperscale-database"></a>ハイパースケール データベースのスケーラビリティとは
 
@@ -98,7 +102,7 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
 
 ## <a name="deep-dive-questions"></a>具体的な質問
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>SQL Database サーバー上でハイパースケールと単一データベースを混在できるか
+### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-logical-server"></a>1 つの論理サーバー上でハイパースケールと単一データベースを混在できるか
 
 はい、できます。
 
@@ -116,7 +120,7 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
 
 ### <a name="what-kind-of-workloads-is-sql-database-hyperscale-designed-for"></a>SQL Database ハイパースケールはどのようなワークロードを対象としているか
 
-SQL Database ハイパースケールはすべての SQL Server ワークロードをサポートしますが、主に OLTP 用に最適化されています。 ハイブリッドおよび分析 (データ マート) のワークロードにも対応できます。
+SQL Database ハイパースケールはすべての SQL Server ワークロードをサポートしますが、主に OLTP 用に最適化されています。 ハイブリッド (HTAP) および分析 (データ マート) のワークロードにも対応できます。
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Azure SQL Data Warehouse と SQL Database ハイパースケールのどちらを選ぶべきか
 
@@ -128,11 +132,11 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="can-i-pause-my-compute-at-any-time"></a>コンピューティングをいつでも一時停止できるか
 
-いいえ。
+現時点ではできませんが、コンピューティングとレプリカの数をスケールダウンして、ピーク時以外のコストを削減することができます。
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>メモリ集中型ワークロードのために RAM を増やしてコンピューティングをプロビジョニングできるか
 
-いいえ。 RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 Gen4 ハードウェアでは、Gen5 ハードウェアと比較して多くの RAM が提供されます。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md)をご覧ください。
+いいえ。 RAM を増やすには、コンピューティング サイズをアップグレードして上げる必要があります。 詳しくは、[ハイパースケールのストレージ サイズおよびコンピューティング サイズ](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier)をご覧ください。
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>サイズが違う複数の計算ノードをプロビジョニングできるか
 
@@ -140,11 +144,11 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>サポートされる読み取りスケール レプリカの数
 
-パブリック プレビューでは、ハイパースケール データベースは既定で 1 つの読み取り スケール レプリカを含むように作成されます (合計 2 つのレプリカ)。 読み取りスケール レプリカを追加または削除する必要がある場合は、Azure portal を使用してサポート要求を提出してください。
+ハイパースケール データベースは、既定で 1 つの読み取りスケール レプリカを含むように作成されます (合計 2 つのレプリカ)。 [Azure portal](https://portal.azure.com)、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) または [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) を使用して、読み取り専用のレプリカの数を 0 から 4 の間でスケールすることができます。
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>高可用性のために追加の計算ノードをプロビジョニングできるか
 
-ハイパースケール データベースでは、高可用性はストレージ レベルで提供されます。 高可用性を実現するために必要なのは 1 つのレプリカだけです。 コンピューティング レプリカが停止すると、新しいレプリカが自動的に作成されるためデータは失われません。
+ハイパースケール データベースでは、回復性はストレージ レベルで提供されます。 回復性を実現するために必要なのは 1 つのレプリカだけです。 コンピューティング レプリカが停止すると、新しいレプリカが自動的に作成されるためデータは失われません。
 
 ただし、レプリカが 1 つしかない場合は、フェールオーバー後に新しいレプリカにローカル キャッシュを構築するために少し時間がかかることがあります。 キャッシュ再構築フェーズで、データベースはページ サーバーからデータを直接フェッチするため、IOPS とクエリのパフォーマンスが低下します。
 
@@ -158,7 +162,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="what-is-the-size-of-the-transaction-log-with-hyperscale"></a>ハイパースケールでのトランザクション ログのサイズとは
 
-ハイパースケールでのトランザクション ログは実質的に無制限です。 ログ スループットが高いシステム上では、ログ領域の不足を心配する必要はありません。 ただし、高いワークロードが継続する場合にはログ生成速度が調整される可能性があります。 ピーク時および平均のログ生成速度はまだ不明です (プレビュー段階)。
+ハイパースケールでのトランザクション ログは実質的に無制限です。 ログ スループットが高いシステム上では、ログ領域の不足を心配する必要はありません。 ただし、高いワークロードが継続する場合にはログ生成速度が調整される可能性があります。 ピークが持続するログ生成速度は、約 100 MB/秒です。
 
 ### <a name="does-my-temp-db-scale-as-my-database-grows"></a>データベースのサイズ増大につれて一時データベースをスケーリングできるか
 
@@ -170,7 +174,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="what-is-the-smallest-database-size-that-sql-database-hyperscale-supports-or-starts-with"></a>SQL Database ハイパースケールでサポートされる最小データベース サイズ (ハイパースケールを使用開始できる最小サイズ) とは
 
-5 GB
+10 GB
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>データベースのサイズが拡張される単位とは
 
@@ -208,15 +212,15 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>既存の Azure SQL データベースをハイパースケール サービス レベルに移行できるか
 
-はい。 ハイパースケールには既存の Azure SQL データベースを移行できます。 パブリック プレビューでは一方向にしか移行できません。 ハイパースケールから他のサービス レベルにデータベースを移行することはできません。 運用データベースのコピーを作成して、概念実証 (POC) のためにハイパースケールに移行することをお勧めします。
+はい。 ハイパースケールには既存の Azure SQL データベースを移行できます。 これは一方向にしか移行できません。 ハイパースケールから他のサービス レベルにデータベースを移行することはできません。 運用データベースのコピーを作成して、概念実証 (POC) のためにハイパースケールに移行することをお勧めします。
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>ハイパースケール データベースを他のエディションに移行できるか
 
-いいえ。 パブリック プレビューでは、ハイパースケール データベースを他のサービス レベルに移行することはできません。
+いいえ。 現時点では、ハイパースケール データベースを別のサービス レベルに移行することはできません。
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>ハイパースケール サービス レベルに移行した後で使えなくなる機能があるか
 
-はい。 パブリック プレビューでは、ハイパースケールで Azure SQL Database の長期保有バックアップはサポートされません。 ハイパースケールにデータベースを移行すると、この機能は動作を停止します。
+はい。 長期的な保有期間のバックアップを始めとする Azure SQL Database の一部の機能は、まだハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。  これらの制限は一時的なものであると想定しています。
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>オンプレミスの SQL Server データベースまたは my SQL Server 仮想マシン データベースをハイパースケールに移行できるか
 
@@ -229,13 +233,13 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>容量 X のデータを SQL Database ハイパースケールに移行するためにかかる時間
 
-現在不明 (プレビュー段階のため)
+ハイパースケールでは、新しいデータまたは変更されたデータを 100 MB/秒使用できます。
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>BLOB ストレージからデータを読み取って高速読み込みできるか (Polybase や SQL Data Warehouse のように)
 
 Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (通常の単一データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 Polybase を実行するには、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) を使用するか、[SQL 用 Spark コネクタ](sql-database-spark-connector.md)を使用して Spark ジョブを [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) で実行します。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
 
-単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現するには完全復旧モデルが必要です。 ただし、ハイパースケールでは、単一データベースと比較して、ログ アーキテクチャが新しくなっているため、データ取り込み率が向上しています。
+単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現するには完全復旧モデルが必要です。 ただし、ハイパースケールでは、単一の Azure SQL データベースと比較して、新しいログ アーキテクチャのためにデータ取り込み率が向上しています。
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>SQL Database ハイパースケールは取り込むデータ容量を増やすために複数のノードをプロビジョニングできるか
 
@@ -253,7 +257,7 @@ SQL Server 2005。 詳しくは、「[単一データベースまたはプール
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>ハイパースケール データベースではどのような SLA が提供されるか
 
-一般に、パブリック プレビューの段階で SLA は提供されません。 ただし、ハイパースケールでは、現在の SQL DB サービスと同じレベルの高可用性を提供します。 [SLA](https://azure.microsoft.com/support/legal/sla/) に関するページをご覧ください。
+既定のプライマリと 1 つの読み取り可能なセカンダリでは、SLA は 99.95% の可用性です。  複数のレプリカでは、SLA は 99.99% まで上がります。  
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Azure SQL Database サービスによってデータベース バックアップが管理されるか
 
@@ -269,7 +273,7 @@ SQL Database ハイパースケール データベースでは、従来の完全
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>SQL Database ハイパースケールにおいてバックアップ/復元の回復ポイントの目標 (RPO)/回復時刻の目標 (RTO) とは
 
-RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 分未満です。 ただし、パブリック プレビューの段階では、復元時間がこれよりも長くかかることがあります。
+RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 分未満です。 
 
 ### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>大規模データベースのバックアップがプライマリ上のコンピューティング パフォーマンスに影響するか
 
@@ -277,15 +281,15 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="can-i-perform-geo-restore-with-a-sql-database-hyperscale-database"></a>SQL Database ハイパースケール データベースを使用して geo リストアを実行できるか
 
-いいえ。パブリック プレビューの段階ではできません。
+はい。  geo リストアは完全にサポートされています。
 
 ### <a name="can-i-setup-geo-replication-with-sql-database-hyperscale-database"></a>SQL Database ハイパースケール データベースを使用して geo レプリケーションを設定できるか
 
-いいえ。パブリック プレビューの段階ではできません。
+現時点ではありません。
 
 ### <a name="do-my-secondary-compute-nodes-get-geo-replicated-with-sql-database-hyperscale"></a>SQL Database ハイパースケールを使用してセカンダリ計算ノードの geo レプリケーションを実行できるか
 
-いいえ。パブリック プレビューの段階ではできません。
+現時点ではありません。
 
 ### <a name="can-i-take-a-sql-database-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-sql-server-in-vm"></a>SQL Database ハイパースケール データベースのバックアップを使ってオンプレミス サーバーまたは VM の SQL Server を復元できるか
 
@@ -295,7 +299,7 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>ハイパースケール サービス レベルに移行した後で使えなくなる機能があるか
 
-はい。 パブリック プレビューでは、ハイパースケールで Azure SQL Database の長期保有バックアップはサポートされません。 ハイパースケールにデータベースを移行すると、この機能は動作を停止します。
+はい。 長期的な保有期間のバックアップを始めとする Azure SQL Database の一部の機能は、ハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Polybase は SQL Database ハイパースケールで作動するか
 
@@ -313,11 +317,11 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="how-much-throughput-can-i-push-on-the-largest-sql-database-hyperscale-compute"></a>最大の SQL Database ハイパースケール コンピューティングでどれくらいスループットを向上できるか
 
-現在不明 (プレビュー段階のため)
+一貫した 100 MB/秒のデータの変更 (トランザクション ログ データの生成) が見られます
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-sql-database-hyperscale-compute"></a>最大の SQL Database ハイパースケール コンピューティングにおいて得られる IOPS 数
 
-現在不明 (プレビュー段階のため)
+IOPS と IO 待ち時間は、ワークロードのパターンによって異なります。  アクセスされる必要があるデータがコンピューティングのキャッシュに対してローカルの場合、ローカル SSD と同じ IO パターンになります。   
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>スループットがバックアップの影響を受けるか
 
@@ -325,13 +329,13 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-nodes"></a>追加の計算ノードをプロビジョニングするとスループットが影響を受けるか
 
-ストレージが共有されており、プライマリ計算ノードとセカンダリ計算ノードの間では物理的なレプリケーションが直接発生しないために、技術的には、プライマリ ノード上のスループットは読み取りスケール ノードを追加することで影響を受けます。 ただし、継続する活発なワークロードを調整して、セカンダリ ノードとページ サーバー上でログを適用できます。これで遅れを取り戻し、セカンダリ ノード上での読み取りパフォーマンスの悪化を回避できます。
+ストレージが共有されており、プライマリ計算ノードとセカンダリ計算ノードの間では物理的なレプリケーションが直接発生しないために、技術的には、プライマリ ノード上のスループットは読み取りスケール ノードを追加することによる影響を受けません。 ただし、継続する活発なワークロードを調整して、セカンダリ ノードとページ サーバー上でログを適用できます。これで遅れを取り戻し、セカンダリ ノード上での読み取りパフォーマンスの悪化を回避できます。
 
 ## <a name="scalability-questions"></a>スケーラビリティに関する質問
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-node"></a>計算ノードのスケールアップとスケールダウンにかかる時間
 
-数分
+コンピューティングのスケールアップまたはスケールダウンには、データ サイズに関係なく、5 分から 10 分かかります。
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>スケールアップ/スケールダウン操作の進行中にデータベースはオフラインになるか
 
@@ -357,7 +361,7 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="how-many-secondary-compute-nodes-can-i-provision"></a>セカンダリ計算ノードをいくつプロビジョニングできるか
 
-パブリック プレビューでは、ハイパースケール データベース用に既定で 2 つのレプリカを作成します。 レプリカの数を調整する必要がある場合は、Azure portal を使用してサポート要求を提出してください。
+既定では、ハイパースケール データベース用にレプリカを 2 つ作成します。 レプリカの数を調整する場合は、[Azure portal](https://portal.azure.com) を使用して行うことができます。
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>これらのセカンダリ コンピューティング ノードにどのように接続するか
 
@@ -365,19 +369,19 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>読み取りスケール レプリカ専用のエンドポイントを作成できるか
 
-いいえ。 パブリック プレビューでは、`ApplicationIntent=ReadOnly` と指定した場合のみ読み取りスケール レプリカに接続できます。
+いいえ。 `ApplicationIntent=ReadOnly` と指定した場合のみ、読み取りスケール レプリカに接続できます。
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>読み取りワークロードのインテリジェントな負荷分散がシステムで行われるか
 
-いいえ。 プレビューでは、読み取り専用ワークロードはランダムな読み取りスケール レプリカにリダイレクトされます。
+いいえ。 読み取り専用ワークロードは、ランダムな読み取りスケール レプリカにリダイレクトされます。
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>セカンダリ計算ノードをプライマリ コンピューティングと別にスケールアップ/スケールダウンできるか
 
-いいえ。パブリック プレビューの段階ではできません。
+いいえ。 セカンダリ計算ノードは高可用性のためにも使用されるため、フェールオーバーの場合は、プライマリと同じ構成にする必要があります。
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>プライマリ計算ノードと追加のセカンダリ計算ノードで異なる一時 db サイズを設定できるか
 
-いいえ。 パブリック プレビューの段階では、`tempdb` はコンピューティング サイズのプロビジョニングに基づいて構成されます。セカンダリ計算ノードはプライマリ コンピューティングと同じサイズです。
+いいえ。 `tempdb` はコンピューティング サイズのプロビジョニングに基づいて構成され、セカンダリ計算ノードはプライマリ コンピューティングと同じサイズです。
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>セカンダリ計算ノードにインデックスとビューを追加できるか
 
@@ -389,4 +393,4 @@ RPO は 0 分です。RTO はデータベース サイズにかかわらず 10 �
 
 ## <a name="next-steps"></a>次の手順
 
-ハイパースケール サービス レベルについて詳しくは、[ハイパースケール サービス レベル (プレビュー)](sql-database-service-tier-hyperscale.md) に関するページをご覧ください。
+ハイパースケール サービス レベルについて詳しくは、[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)に関するページをご覧ください。

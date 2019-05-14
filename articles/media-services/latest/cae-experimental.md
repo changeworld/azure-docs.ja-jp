@@ -3,25 +3,25 @@ title: コンテンツに対応したエンコードの試験的プリセット 
 description: この記事では、Azure Media Services でのコンテンツに対応したエンコードについて説明します
 services: media-services
 documentationcenter: ''
-author: sethmanheim
+author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 04/05/2019
-ms.author: sethm
+ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59287546"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65151018"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>コンテンツに対応したエンコードの試験的プリセット
 
-[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)によるコンテンツ配信の準備をするためには、ビデオを複数のビット レート (高から低まで) でエンコードする必要があります。 ビットレートが低くなるにつれて品質が適切に低下するため、ビデオの解像度も低下します。 [ H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md) などの一部の固定エンコーディング プリセットで見られるように、これによりいわゆるエンコーディング ラダー (解像度とビットレートのテーブル) が生成されます。
+[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)によるコンテンツ配信の準備をするためには、ビデオを複数のビット レート (高から低まで) でエンコードする必要があります。 ビットレートが低くなるにつれて品質が適切に低下するため、ビデオの解像度も低下します。 これにより、いわゆるエンコード ラダー (解像度とビットレートの表) が生成されます。Media Services の[組み込みエンコード プリセット](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)をご覧ください。
 
 ## <a name="overview"></a>概要
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487789"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143302"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -141,7 +141,7 @@ ms.locfileid: "58487789"
 
 企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
 
-| ドメイン名 | ポート | 説明 |
+| ドメイン名 | Port | 説明 |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Data Movement Service のバックエンドとの通信に使用 |
 | *.core.windows.net |443 |Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)|
@@ -205,8 +205,8 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 ### <a name="configure-proxy-server-settings"></a>プロキシ サーバーの設定を構成する
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config と diawp.exe.config のプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を次に示します。
 
-1. ファイル エクスプ ローラーで、C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
-2. 管理者として Notepad.exe を起動し、テキスト ファイル "C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config" を開きます。次のコードに示されている system.net の既定のタグを確認します。
+1. ファイル エクスプローラーで、*C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config* の安全なコピーを作成して、元のファイルをバックアップします。
+2. 管理者として Notepad.exe を起動し、テキスト ファイル *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config* を開きます。次のコードに示されている system.net の既定のタグを確認します。
 
     ```
     <system.net>
@@ -280,7 +280,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 
 [シングル ノード ゲートウェイ]
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
+2. *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
     ```powershell
@@ -293,7 +293,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
     ```
    [高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\Program Files\Microsoft Integration Runtime\3.0\PowerShellScript\ フォルダーに切り替えます。
+2. *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
     高可用性機能を備えたゲートウェイについては、別途 AuthKey パラメーターが必要となります。
@@ -310,7 +310,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 ゲートウェイをインストールした後、次のどれかの方法で Data Management Gateway 構成マネージャーを起動できます。
 
 1. **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。
-2. 次のフォルダー内にある実行可能な **ConfigManager.exe** を実行します: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**。
+2. 次のフォルダー内にある実行可能な *ConfigManager.exe* を実行します: *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared*。
 
 ### <a name="home-page"></a>ホーム ページ
 ホーム ページでは、次の操作を行うことができます。
@@ -365,7 +365,7 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 
 監視のプロパティ | 説明
 :------------------ | :----------
-名前 | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。
+Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。
 [Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  例:オンライン、オフライン、制限あり、など。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。
 バージョン | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。
@@ -511,7 +511,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell で、**C:\\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**フォルダーに切り替えます。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+1. Azure PowerShell で、*C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* フォルダーに切り替えます。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた *RegisterGateway.ps1* スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Office 365 からデータをコピーする (プレビュー) | Microsoft Docs
+title: Azure Data Factory を使用して Office 365 からデータをコピーする | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Office 365 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 05/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 5d2d5948d817cbe80d00b74ef104ebaffcb511fb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8b8ffeb505f7d0978a736190b3d38c0246a38ebc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995814"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144998"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする (プレビュー) 
 

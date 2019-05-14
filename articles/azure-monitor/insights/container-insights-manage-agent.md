@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: c8a5c839d6d662f9d330099f89c97eb83c4fe516
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577086"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071792"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
 コンテナーに対する Azure Monitor では、コンテナー化されたバージョンの Linux 用 Log Analytics エージェント が使用されます。 初期のデプロイ後は、ライフ サイクル中に実行する必要のあるルーチンまたは省略可能なタスクが存在します。 この記事では、エージェントを手動でアップグレードし、特定のコンテナーから環境変数のコレクションを無効にする方法について詳しく説明します。 
@@ -35,7 +35,7 @@ ms.locfileid: "58577086"
 >このメンテナンス アクティビティを実行している間、クラスター内のノードによる収集されたデータの転送は行われず、エージェントを削除して新しいバージョンをインストールするまでの間、パフォーマンス ビューにデータは表示されません。 
 >
 
-新しいバージョンのエージェントをインストールするには、Azure CLI を使用する[監視の利用開始](container-insights-onboard.md?#enable-using-azure-cli)に関する記事の手順に従って、このプロセスを完了します。  
+新しいバージョンのエージェントをインストールするには、[Azure CLI を使用して監視を有効にする](container-insights-enable-new-cluster.md#enable-using-azure-cli)に関する記事の手順に従って、このプロセスを完了します。  
 
 監視を再び有効にした後、クラスターの更新された正常性メトリックが表示されるまで、約 15 分かかる場合があります。 エージェントが正常にアップグレードされたことを確認するには、`kubectl logs omsagent-484hw --namespace=kube-system` コマンドを実行します
 

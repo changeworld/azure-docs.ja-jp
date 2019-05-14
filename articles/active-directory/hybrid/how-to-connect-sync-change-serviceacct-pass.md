@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同期:Azure AD Connect 同期サービス アカウントの変更 | Microsoft Docs
+title: 'Azure AD Connect 同期: ADSync サービス アカウントの変更 | Microsoft Docs'
 description: このトピックでは、暗号化キーの詳細と、パスワードの変更後にこのキーを破棄する方法について説明します。
 services: active-directory
 keywords: Azure AD 同期サービス アカウント, パスワード
@@ -13,25 +13,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d0d537a23e21eeda3b284e7ec706cde2b443e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014085"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139390"
 ---
-# <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
-Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
+# <a name="changing-the-adsync-service-account-password"></a>ADSync サービス アカウントのパスワードの変更
+ADSync サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、ADSync サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
 
-Azure AD Connect は同期サービスの一部として、暗号化キーを使用して AD DS と Azure AD サービスの各アカウントのパスワードを保存します。  これらのアカウントは、データベースへの保存前に暗号化されます。 
+Azure AD Connect は同期サービスの一部として、暗号化キーを使用して AD DS コネクタ アカウントと ADSync サービス アカウントのパスワードを保存します。  これらのアカウントは、データベースへの保存前に暗号化されます。 
 
-暗号化キーは、[Windows データ保護 (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) を使用して保護されています。 DPAPI では、**Azure AD Connect 同期サービス アカウントのパスワード**を使用して暗号化キーを保護します。 
+暗号化キーは、[Windows データ保護 (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) を使用して保護されています。 DPAPI では、**ADSync サービス アカウント**を使用して暗号化キーを保護します。 
 
-サービス アカウントのパスワードを変更する必要がある場合は、「[Azure AD Connect 同期の暗号化キーの破棄](#abandoning-the-azure-ad-connect-sync-encryption-key)」の手順に従って変更します。  この手順は、なんらかの理由で暗号化キーを破棄する必要がある場合にも使用してください。
+サービス アカウントのパスワードを変更する必要がある場合は、「[ADSync サービス アカウントの暗号化キーの破棄](#abandoning-the-adsync-service-account-encryption-key)」の手順に従って変更します。  この手順は、なんらかの理由で暗号化キーを破棄する必要がある場合にも使用してください。
 
 ## <a name="issues-that-arise-from-changing-the-password"></a>パスワードの変更により生じる問題
 サービス アカウントのパスワードを変更する場合、2 つの手順を完了する必要があります。
@@ -48,9 +48,9 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 - Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"<strong>ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。詳細情報はシステム イベント ログを参照してください。これが Microsoft 以外のサービスである場合は、サービス ベンダーに問い合わせてください。その際、サービス固有のエラー コードが -21451857952 であることを伝えてください</strong>" というエラーが表示され失敗します。
 - Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
 
-これらのエラーが表示されないようにするために、パスワードの変更時には「[Azure AD Connect 同期の暗号化キーの破棄](#abandoning-the-azure-ad-connect-sync-encryption-key)」の手順に従ってください。
+これらのエラーが表示されないようにするために、パスワードの変更時には「[ADSync サービス アカウントの暗号化キーの破棄](#abandoning-the-adsync-service-account-encryption-key)」の手順に従ってください。
  
-## <a name="abandoning-the-azure-ad-connect-sync-encryption-key"></a>Azure AD Connect 同期の暗号化キーの破棄
+## <a name="abandoning-the-adsync-service-account-encryption-key"></a>ADSync サービス アカウントの暗号化キーの破棄
 >[!IMPORTANT]
 >次の手順は、ビルド 1.1.443.0 以前の Azure AD Connect にのみ適用されます。
 
@@ -64,9 +64,9 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 
 1. [既存の暗号化キーを破棄する](#abandon-the-existing-encryption-key)
 
-2. [AD DS アカウントのパスワードを入力する](#provide-the-password-of-the-ad-ds-account)
+2. [AD DS コネクタ アカウントのパスワードを入力する](#provide-the-password-of-the-ad-ds-connector-account)
 
-3. [Azure AD 同期アカウントのパスワードを再初期化する](#reinitialize-the-password-of-the-azure-ad-sync-account)
+3. [ADSync サービス アカウントのパスワードを再初期化する](#reinitialize-the-password-of-the-adsync-service-account)
 
 4. [同期サービスを開始する](#start-the-synchronization-service)
 
@@ -80,7 +80,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 #### <a name="abandon-the-existing-encryption-key"></a>既存の暗号化キーを破棄する
 新しい暗号化キーを作成できるように、既存の暗号化キーを破棄します。
 
-1. 管理者として Azure AD Connect サーバーにログインします。
+1. 管理者として Azure AD Connect サーバーにサインインします。
 
 2. 新しい PowerShell セッションを開始します。
 
@@ -90,8 +90,8 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 
 ![Azure AD Connect 同期の暗号化キー破棄ユーティリティ](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
-#### <a name="provide-the-password-of-the-ad-ds-account"></a>AD DS アカウントのパスワードを入力する
-データベース内に保存されている既存のパスワードの暗号化を解除できなくなるため、同期サービスに AD DS アカウントのパスワードを入力する必要があります。 同期サービスでは、新しい暗号化キーを使用してこのパスワードを暗号化します。
+#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>AD DS コネクタ アカウントのパスワードを入力する
+データベース内に保存されている既存のパスワードの暗号化を解除できなくなるため、同期サービスに AD DS コネクタ アカウントのパスワードを入力する必要があります。 同期サービスでは、新しい暗号化キーを使用してこのパスワードを暗号化します。
 
 1. Synchronization Service Manager を起動します ([スタート]、[同期サービス] の順に移動します)。
 </br>![Sync Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
@@ -103,7 +103,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 7. **[OK]** をクリックして新しいパスワードを保存し、ポップアップ ダイアログを閉じます。
 ![Azure AD Connect 同期の暗号化キー破棄ユーティリティ](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
-#### <a name="reinitialize-the-password-of-the-azure-ad-sync-account"></a>Azure AD 同期アカウントのパスワードを再初期化する
+#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>ADSync サービス アカウントのパスワードを再初期化する
 同期サービスに Azure AD サービス アカウントのパスワードを直接指定することはできません。 代わりに、**Add-ADSyncAADServiceAccount** コマンドレットを使用して、Azure AD サービス アカウントを再初期化する必要があります。 このコマンドレットによりアカウントのパスワードがリセットされ、同期サービスで利用できるようになります。
 
 1. Azure AD Connect サーバーで新しい PowerShell セッションを開始します。

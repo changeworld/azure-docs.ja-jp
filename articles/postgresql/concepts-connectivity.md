@@ -1,22 +1,22 @@
 ---
-title: Azure Database for PostgreSQL の一時的な接続エラーに対処する
-description: Azure Database for PostgreSQL の一時的な接続エラーに対処する方法を説明します。
+title: Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する
+description: Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 264656da38608026e3f9e866e2184ff55ba102d8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: ea90de612dcfb2559b29fbffce8306278beb45b9
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536221"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073509"
 ---
-# <a name="handling-of-transient-connectivity-errors-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の一時的な接続エラーに対処する
+# <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の一時的な接続エラーに対処する
 
-この記事では、Azure Database for PostgreSQL への接続時の一時的なエラーへの対処方法を説明します。
+この記事では、Azure Database for PostgreSQL への接続時の一時的なエラーへの対処方法について説明します。
 
 ## <a name="transient-errors"></a>一時的なエラー
 

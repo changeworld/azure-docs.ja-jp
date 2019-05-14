@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/29/2019
 ms.author: magoedte
-ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480058"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138142"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -31,16 +31,18 @@ Azure Monitor を使用して、ローカル データ センターやその他�
 * 手動インストール。 セットアップ ウィザード、コマンドライン、または既存のソフトウェア配布ツールを使用して、コンピューター上でセットアップを手動で実行します。
 * Azure Automation Desired State Configuration (DSC)。 Azure Automation 内の DSC と、環境内に既にデプロイされている Windows コンピューター用のスクリプトを使用します。  
 * PowerShell スクリプト。
-* Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレート。  
+* Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレート。 
 
 >[!NOTE]
 >Azure Security Center (ASC) は、Microsoft Monitoring Agent (Log Analytics Windows エージェントとも呼ばれます) に依存しており、そのデプロイの一環で Log Analytics ワークスペースに報告するようにインストールおよび構成します。 ASC には自動プロビジョニング オプションがあります。このオプションを使用すると、サブスクリプション内のすべての VM に Log Analytics Windows エージェントを自動的にインストールし、特定のワークスペースに報告するように構成することができます。 このオプションの詳細については、[Log Analytics エージェントの自動プロビジョニングの有効化](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-)に関するページを参照してください。
 >
 
+複数のワークスペースに報告するようにエージェントを構成する必要がある場合、この構成は初期設定時には実行できません。「[ワークスペースの追加または削除](agent-manage.md#adding-or-removing-a-workspace)」で説明されているように、後からコントロール パネルまたは PowerShell から更新することでのみ実行できます。  
+
 サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Azure Monitor と正常に通信できるようにするために必要です。  
+Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Azure Monitor と正常に通信できるようにするために必要です。 
 
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
