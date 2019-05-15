@@ -18,7 +18,7 @@ sections:
       - type: markdown
         text: |-
           > [!IMPORTANT]
-          > Azure Dev Spaces は、**米国東部**、**米国東部 2**、**米国中部**、**米国西部 2**、**北ヨーロッパ**、**西ヨーロッパ**、**東南アジア**、**カナダ中部**、**カナダ東部**のリージョンの AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、MacOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 また、Windows 8 以上に Web 開発ワークロードおよび [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) がインストールされた [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされます。
+          > Azure Dev Spaces は、**米国東部**、**米国東部 2**、**米国中部**、**米国西部 2**、**北ヨーロッパ**、**西ヨーロッパ**、**英国南部**、**東南アジア**、**オーストラリア東部**、**カナダ中部**、**カナダ東部**のリージョンの AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、MacOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 また、Windows 8 以上に Web 開発ワークロードおよび [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) がインストールされた [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされます。
   - title: Azure Dev Spaces での作業の開始
     items:
       - type: paragraph

@@ -280,6 +280,9 @@
     - name: 準拠していないリソースを修復する
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Azure Monitor for VMs の有効化 (プレビュー)
+      displayName: 'insights, log analytics, builtin'
+      href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json
 - name: リファレンス
   items:
     - name: Azure CLI

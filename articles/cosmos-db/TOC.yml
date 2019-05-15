@@ -512,6 +512,8 @@
           href: data-explorer.md
         - name: インデックス作成ポリシーの管理
           href: how-to-manage-indexing-policy.md
+        - name: 一意のキーの定義
+          href: how-to-define-unique-keys.md
         - name: SQL サブクエリの例
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md

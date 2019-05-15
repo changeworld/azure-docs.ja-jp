@@ -12,6 +12,8 @@
       maintainContext: true
 - name: クイック スタート
   items:
+    - name: Apache HBase のクエリ - Apache Phoenix
+      href: apache-hbase-phoenix-squirrel-linux.md
     - name: Apache HBase のクエリ - HBase シェル
       href: ./query-hbase-with-hbase-shell.md
 - name: 作業開始
@@ -52,8 +54,6 @@
         - name: HDInsight の Apache Phoenix
           href: ../hdinsight-phoenix-in-hdinsight.md
           maintainContext: true
-        - name: Apache Phoenix と SQLLine の使用
-          href: apache-hbase-phoenix-squirrel-linux.md
         - name: Apache Phoenix Query Server REST SDK の使用
           href: apache-hbase-using-phoenix-query-server-rest-sdk.md
     - name: ビッグ データの分析
@@ -115,7 +115,7 @@
             - name: cURL とAzure REST API を使用する
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Azure クラシック CLI を使用する
+            - name: Azure CLI の使用
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: オンデマンド クラスターの作成
