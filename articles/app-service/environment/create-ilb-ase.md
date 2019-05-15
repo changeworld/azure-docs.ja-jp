@@ -203,7 +203,7 @@ ILB ASE で Azure Functions を使用するときに、"現在、関数を取得
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する ##
 
-作成されるすべてのアプリにはエンドポイントが 2 つあります。 ILB ASE には、*&lt;アプリ名>.&lt;ILB ASE ドメイン>* と*&lt;アプリ名>.scm.&lt;ILB ASE ドメイン>* があります。 
+作成されるすべてのアプリにはエンドポイントが 2 つあります。 ILB ASE には、*&lt;アプリ名>.&lt;ILB ASE ドメイン>* と *&lt;アプリ名>.scm.&lt;ILB ASE ドメイン>* があります。 
 
 SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソールに移動します。これは、**高度なポータル**と呼ばれます。 Kudu コンソールでは、環境変数の表示、ディスクの確認、コンソールの使用などができます。 詳しくは、[Azure App Service の Kudu コンソール][Kudu]に関するビデオをご覧ください。 
 
