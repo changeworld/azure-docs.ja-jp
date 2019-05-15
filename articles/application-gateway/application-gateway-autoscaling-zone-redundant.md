@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202909"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510829"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自動スケーリングとゾーン冗長 Application Gateway 
 
@@ -62,7 +62,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[価格のページ](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)は、2019 年 5 月 14 日にリージョンの価格を反映するように更新されます。 請求は、2019 年 6 月 1 日に開始する予定です。
+[価格のページ](https://azure.microsoft.com/pricing/details/application-gateway/)は、2019 年 5 月 14 日にリージョンの価格を反映するように更新されます。 請求は、2019 年 6 月 1 日に開始する予定です。
 
 **例 1**
 
@@ -93,7 +93,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 
 合計価格 =$267.84 + $85.71 = $353.55
 
-[価格のページ](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)は、2019 年 5 月 14 日にリージョンの価格を反映するように更新されます。 請求は、2019 年 6 月 1 日に開始する予定です。
+[価格のページ](https://azure.microsoft.com/pricing/details/application-gateway/)は、2019 年 5 月 14 日にリージョンの価格を反映するように更新されます。 請求は、2019 年 6 月 1 日に開始する予定です。
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Application Gateway と WAF v2 のスケーリング
 

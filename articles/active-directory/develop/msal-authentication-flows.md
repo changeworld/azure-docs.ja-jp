@@ -4,7 +4,7 @@ description: Microsoft Authentication Library (MSAL) で使用される認証フ
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191000"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406687"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -126,7 +126,7 @@ MSAL では、ユーザーがスマート TV、IoT デバイス、プリンタ�
 
 ![デバイス コード フロー](media/msal-authentication-flows/device-code.png)
 
-1. ユーザー認証が必要になるたびに、アプリがコードを提供し、ユーザーに別のデバイス (インターネットに接続されたスマートフォンなど) を使用して特定の URL (たとえば、 http://microsoft.com/devicelogin)) に移動するよう求めます。ここで、ユーザーはコードの入力を求められます。 完了すると、Web ページから通常の認証エクスペリエンス (必要に応じて、同意のプロンプトや多要素認証を含む) が実行されます。
+1. ユーザー認証が必要になるたびに、アプリがコードを提供し、ユーザーに別のデバイス (インターネットに接続されたスマートフォンなど) を使用して特定の URL (たとえば、 https://microsoft.com/devicelogin)) に移動するよう求めます。ここで、ユーザーはコードの入力を求められます。 完了すると、Web ページから通常の認証エクスペリエンス (必要に応じて、同意のプロンプトや多要素認証を含む) が実行されます。
 
 2. 認証が成功すると、コマンド ライン アプリはバック チャネル経由で必要なトークンを受信し、そのトークンを使用して必要な Web API の呼び出しを実行します。
 

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: 8d7fa7bbb501675ee38ccc9183e981ce7bb714cf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150325"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233708"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -127,9 +127,9 @@ Resource Manager API の読み取りと書き込みの制限については、�
 #### <a name="shared-image-gallery-limits"></a>共有イメージ ギャラリーの制限
 
 共有イメージ ギャラリーを使用したリソースのデプロイに対しては、サブスクリプションあたりの制限があります。
-- 10 の共有イメージ ギャラリー (サブスクリプション別、リージョン別)
-- 200 のイメージ定義 (サブスクリプション別、リージョン別)
-- 2000 のイメージ バージョン (サブスクリプション別、リージョン別)
+- 100 個の共有イメージ ギャラリー (サブスクリプション別、リージョン別)
+- 1,000 個のイメージ定義 (サブスクリプション別、リージョン別)
+- 10,000 個のイメージ バージョン (サブスクリプション別、リージョン別)
 
 ### <a name="virtual-machine-scale-sets-limits"></a>仮想マシン スケール セットの制限
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]

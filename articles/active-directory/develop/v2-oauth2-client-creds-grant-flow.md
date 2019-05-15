@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームを使用して、セキュリティ
 description: Microsoft ID プラットフォームで導入された OAuth 2.0 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: df75d692bc61d155b35f5ce4e2bf08da6e4cbcc3
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190832"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507102"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -251,7 +251,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `correlation_id` | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
 > [!NOTE]
-> アプリケーションが v2 トークンを受信できるようにするために、Microsoft Azure portal 内からアプリケーションのマニフェスト ファイルを更新できます。 属性 `accessTokenAcceptedVersion` を追加し、値を `"accessTokenAcceptedVersion": 2` として 2 に設定できます。 同じことについて詳しく理解するには、[アプリケーション マニフェスト](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference)に関する記事を確認してください。 既定では、アプリケーションは現在、v1 トークンを受信します。 これがアプリケーション/Web API マニフェスト内で定義されていない場合、マニフェスト内のこの属性に対する値は、既定で 1 に設定され、したがってアプリケーションは v1 トークンを受信します。  
+> アプリケーションが v2 トークンを受信できるようにするために、Microsoft Azure portal 内からアプリケーションのマニフェスト ファイルを更新できます。 属性 `accessTokenAcceptedVersion` を追加し、値を `"accessTokenAcceptedVersion": 2` として 2 に設定できます。 同じことについて詳しく理解するには、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference)に関する記事を確認してください。 既定では、アプリケーションは現在、v1 トークンを受信します。 これがアプリケーション/Web API マニフェスト内で定義されていない場合、マニフェスト内のこの属性に対する値は、既定で 1 に設定され、したがってアプリケーションは v1 トークンを受信します。  
 
 
 ## <a name="use-a-token"></a>トークンを使用する

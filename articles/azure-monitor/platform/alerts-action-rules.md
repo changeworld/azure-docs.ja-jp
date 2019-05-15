@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138120"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227974"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -142,11 +142,11 @@ Contoso では、[サブスクリプション レベルでメトリック アラ
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-["結果の数"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) オプションで作成されたログ アラートでは、検索結果全体を使用して **1 つのアラート インスタンス**が生成されます (たとえば、複数のコンピューターが含まれる可能性があります)。 このシナリオでは、アクション ルールで "アラート コンテキスト (ペイロード)" フィルターが使用されている場合、一致する限りアラート インスタンスに対して作用します。 前に説明したシナリオ 2 では、生成されたログ アラートの検索結果に、"Computer-01" と "Computer-02" の両方が含まれる場合は、通知全体が抑制されます (つまり、"Computer-02" に対しても通知はまったく生成されません)。
+["結果の数"](alerts-unified-log.md) オプションで作成されたログ アラートでは、検索結果全体を使用して **1 つのアラート インスタンス**が生成されます (たとえば、複数のコンピューターが含まれる可能性があります)。 このシナリオでは、アクション ルールで "アラート コンテキスト (ペイロード)" フィルターが使用されている場合、一致する限りアラート インスタンスに対して作用します。 前に説明したシナリオ 2 では、生成されたログ アラートの検索結果に、"Computer-01" と "Computer-02" の両方が含まれる場合は、通知全体が抑制されます (つまり、"Computer-02" に対しても通知はまったく生成されません)。
 
 ![アクション ルールとログ アラート (結果の数)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-アクション ルールでログ アラートを最適に利用するには、["メトリック測定"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) オプションでログ アラートを作成することをお勧めします。 このオプションを使用すると、グループ フィールドの定義に基づいて個別のアラート インスタンスが生成されます。 シナリオ 2 では、"Computer-01" と "Computer-02" に対して個別のアラート インスタンスが生成されます。 シナリオで説明したアクション ルールでは、"Computer-01" に対する通知のみが抑制され、"Computer-02" に対する通知は引き続き通常どおり発生します。
+アクション ルールでログ アラートを最適に利用するには、["メトリック測定"](alerts-unified-log.md) オプションでログ アラートを作成することをお勧めします。 このオプションを使用すると、グループ フィールドの定義に基づいて個別のアラート インスタンスが生成されます。 シナリオ 2 では、"Computer-01" と "Computer-02" に対して個別のアラート インスタンスが生成されます。 シナリオで説明したアクション ルールでは、"Computer-01" に対する通知のみが抑制され、"Computer-02" に対する通知は引き続き通常どおり発生します。
 
 ![アクション ルールとログ アラート (結果の数)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
