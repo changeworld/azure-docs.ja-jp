@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/24/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146040"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501971"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -75,7 +75,7 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループ |
 | Microsoft.Resources/deployments/* | リソース グループ |
 
-### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新しい Automation アカウントと新しい Log Analytics ワークスペース
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新しい Automation アカウントと新しい Log Analytics ワークスペース
 
 新しい Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは前のセクションで定義されているアクセス許可と次のアクセス許可を持っている必要があります。
 
@@ -91,6 +91,30 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 | Microsoft.Automation/automationAccounts/write | リソース グループ |
 | Microsoft.OperationalInsights/workspaces/write | リソース グループ |
 
+### <a name="region-mappings"></a>リージョンのマッピング
+
+Start/Stop VMs during off-hours を有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+
+サポートするマッピングを次の表に示します。
+
+|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|西ヨーロッパ|西ヨーロッパ|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、同じリージョンどうしのマッピングではありませんが、正しいマッピングです。
+
+<sup>2</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには、Automation アカウントと Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
+
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 Start/Stop VMs during off-hours ソリューションを、ご利用の Automation アカウントに追加し、変数を設定してソリューションをカスタマイズするには、以下の手順を実行します。
@@ -101,6 +125,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
    > [!NOTE]
    > Azure portal のどこからでも、**[リソースの作成]** をクリックして作成できます。 [Marketplace] ページで、「**Start**」、「**Start/Stop**」などのキーワードを入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 または、ソリューションのフルネームから 1 つ以上のキーワードを入力し、Enter キーを押すこともできます。 検索結果から **Start/Stop VMs during off-hours** を選択します。
+
 2. 選択したソリューションの **[Start/Stop VMs during off-hours]** ページで概要を確認し、**[作成]** をクリックします。
 
    ![Azure ポータル](media/automation-solution-vm-management/azure-portal-01.png)

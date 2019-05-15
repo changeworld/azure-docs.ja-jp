@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: f10883ca89c048d384eff9bddaf7642e22941109
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9443a50d130e6542672eb143bcb56d04d63959a4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158001"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235711"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services ジョブのエラー コード
 
@@ -34,7 +34,7 @@ ms.locfileid: "65158001"
 
 ## <a name="see-also"></a>関連項目
 
-- [配信元エラー コード](origin-error-codes.md)
+- [ストリーミング エンドポイントのエラー コード](streaming-endpoint-error-codes.md)
 - [Azure Media Services の概念](concepts-overview.md)
 - [クォータと制限](limits-quotas-constraints.md)
 

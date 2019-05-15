@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ad285d71c2bb90f4b5a59eba25c6cc6a6d8588d6
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154274"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501841"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -25,7 +25,7 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 |:--- |:--- |:--- |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL Data Warehouse に対する 最大 DWU | Gen1:DW6000<br></br>Gen2:DW30000c |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 例: <br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW6000c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
-| データベース接続 |同時に開かれる最大セッション数 |1024<br/><br/>同時に開かれるセッションの数は、選択した DWU によって異なります。 DWU500c 以降では、最大で 1,024 の開かれているセッションがサポートされます。 DWU400c 以前では、同時に開かれるセッションの上限が 512 です。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
+| データベース接続 |同時に開かれる最大セッション数 |1024<br/><br/>同時に開かれるセッションの数は、選択した DWU によって異なります。 DWU600c 以降では、最大で 1,024 の開かれているセッションがサポートされます。 DWU500c 以前では、同時に開かれるセッションの上限が 512 です。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
 | [ワークロード管理](resource-classes-for-workload-management.md) |同時クエリの最大数 |128<br/><br/> SQL Data Warehouse は、最大 128 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが割り当てられているリソース クラスが高いほど、または SQL Data Warehouse の [Data Warehouse ユニット](memory-and-concurrency-limits.md)の設定が低いほど、同時実行クエリの数が減る可能性があります。 一部のクエリ (DMV クエリなど) は、常に実行を許可され、同時実行クエリの制限に影響しません。 コンカレント クエリの詳細については、[コンカレンシーの最大値](memory-and-concurrency-limits.md#concurrency-maximums)に関する記事を参照してください。 |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |DW100 あたり 399 GB です。 そのため、DWU1000 では、tempdb のサイズは 3.99 TB になります。 |
@@ -54,7 +54,7 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="loads"></a>読み込み
 | Category | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase では、1 MB 未満の行を読み込みます。<br/><br/> |
+| Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase では、1 MB 未満の行を読み込みます。 クラスター化列ストア インデックス (CCI) を使用して LOB データ型をテーブルに読み込むことはサポートされていません。<br/><br/> |
 
 ## <a name="queries"></a>クエリ
 | Category | 説明 | 最大値 |
