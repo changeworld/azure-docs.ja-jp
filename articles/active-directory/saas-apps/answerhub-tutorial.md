@@ -80,7 +80,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 2. [AnswerHub シングル サインオンの構成](#configure-answerhub-single-sign-on) - アプリケーション側でシングル サインオンの設定を行います。
 3. [Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user) - 名前は Britta Simon にします。
 4. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. [AnswerHub テスト ユーザーの作成](#create-answerhub-test-user) - Azure AD テスト ユーザーに対応し、リンクされます。
+5. [AnswerHub テスト ユーザーの作成](#create-answerhub-test-user) - Azure AD テスト ユーザーに対応しリンクします。
 6. [シングル サインオンのテスト](#test-single-sign-on)。構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
