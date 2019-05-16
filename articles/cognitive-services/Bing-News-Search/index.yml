@@ -6,15 +6,15 @@ metadata:
   title: Bing Web Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
   description: Bing News Search API を使用して Web でニュースを検索する方法について説明します。
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: Bing News Search API を使用すると、アプリケーションに Bing のニュース検索機能を統合できます。 この API を使用して検索クエリを送信すると、bing.com/news のように、複数のカテゴリやソースから関連するニュース記事を取得できます。
 sections:

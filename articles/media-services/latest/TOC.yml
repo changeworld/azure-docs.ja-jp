@@ -182,7 +182,6 @@
             - name: Postman を使用して接続する
               href: media-rest-apis-with-postman.md
         - name: SDK を使用した開発
-          href: developers-guide.md
           items:
             - name: Java を使用して接続する
               href: configure-connect-java-howto.md
@@ -222,10 +221,13 @@
         - name: カスタム変換を使用してエンコードする
           items:
             - name: .NET の場合
+              displayName: 'encode, encoding, custom, transform'
               href: customize-encoder-presets-how-to.md
             - name: CLI の場合
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: REST の場合
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
     - name: Event Grid の使用
       items:

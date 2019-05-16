@@ -6,8 +6,8 @@ metadata:
   title: Bing Local Business Search API のドキュメント
   description: Bing Local Business Search API は、アプリケーションで検索クエリに基づいた地元企業の検索を可能にする RESTful サービスです。
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.subservice: bing-local-business
   ms.tgt_pltfrm: na
   ms.devlang: na

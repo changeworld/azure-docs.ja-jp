@@ -27,6 +27,8 @@
       href: search-fiddler.md
     - name: PowerShell
       href: search-create-index-rest-api.md
+    - name: Python
+      href: search-get-started-python.md
 - name: チュートリアル
   items:
     - name: Azure SQL Database のインデックスを作成する
@@ -322,8 +324,6 @@
           href: 'https://aka.ms/jfkfiles'
         - name: NYC ジョブのデモ
           href: 'https://aka.ms/azjobsdemo'
-        - name: Search Analyzer のデモ
-          href: 'https://alice.unearth.ai/'
         - name: Search のユース ケース
           href: 'https://searchsamples.azurewebsites.net/'
     - name: FAQ

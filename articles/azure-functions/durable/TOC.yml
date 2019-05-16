@@ -1,4 +1,5 @@
 - name: Durable Functions のドキュメント
+  href: durable-functions-overview.md
 - name: 概要
   items:
     - name: Azure Functions について
@@ -7,6 +8,8 @@
       href: durable-functions-overview.md
     - name: サーバーレス サービスの比較
       href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: プレビュー機能
+      href: durable-functions-preview.md
 - name: クイック スタート
   expanded: true
   items:
