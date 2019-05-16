@@ -190,7 +190,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>1 つの仮想ネットワークを複数の ExpressRoute 回線に接続できますか。
 
-はい。 1 つの仮想ネットワークを最大 4 つの ExpressRoute 回線に接続できます。 これらは、4 つの異なる [ExpressRoute の場所](expressroute-locations.md)で注文する必要があります。
+はい。 1 つの仮想ネットワークを最大 4 つの ExpressRoute 回線に接続できます。 [ExpressRoute 回線のピアリングの場所](expressroute-locations.md)は、同一ロケーションでも、異なるロケーションでも構いません。
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>ExpressRoute 回線に接続された仮想ネットワークから、インターネットにアクセスできますか。
 
