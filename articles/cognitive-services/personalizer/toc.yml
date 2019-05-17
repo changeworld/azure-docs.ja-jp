@@ -49,14 +49,6 @@
       items:
         - name: オフライン評価
           href: how-to-offline-evaluation.md
-    - name: コンテナーの使用
-      items:
-        - name: コンテナーのインストールと実行
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
-          href: personalizer-container-howto.md
-        - name: コンテナーを構成する
-          href: personalizer-container-configuration.md
-          displayName: 'docker, run, apikey'
 - name: リファレンス
   items:
     - name: サンプル
