@@ -25,6 +25,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files についての FAQ
+      href: azure-netapp-files-faqs.md
 - name: ハウツー ガイド
   items:
     - name: Azure NetApp Files に登録する

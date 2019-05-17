@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146140"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236927"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "65146140"
     Install-Module AzureAD
     ```
 
-2. 次のコマンドレットを実行します。値は、実際のセッションに合わせて置き換え、引用符で囲んでください。
+2. 次のコマンドレットを実行します。値は、実際のセッションに合わせて置き換え、引用符で囲んでください。 [Windows Virtual Desktop でテナントを作成するためのチュートリアル](./tenant-setup-azure-active-directory.md)で Windows Virtual Desktop テナントを作成した場合は、テナント グループ名として "Default Tenant Group" を使用します。
 
     ```powershell
     $myTenantGroupName = "<my-tenant-group-name>"
@@ -109,7 +109,7 @@ PowerShell セッションを終了する前に、自分の資格情報を確認
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、サービス プリンシパルを作成し、それを使って Windows Virtual Desktop にサインインする方法を説明しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
+サービス プリンシパルを作成して Windows Virtual Desktop テナント内のロールに割り当てたら、そのテナントを使用してホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 
-- [Windows 10 または Windows 7 から接続する](connect-windows-7-and-10.md)
-- [Web ブラウザーから接続する](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Windows Virtual Desktop のホスト プールのチュートリアル](./create-host-pools-azure-marketplace.md)

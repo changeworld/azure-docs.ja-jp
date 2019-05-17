@@ -10,95 +10,111 @@ ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 12/03/2018
-ms.openlocfilehash: de5e853db6c6a0e98dea9251cc07b526288574e1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 04/22/2019
+ms.openlocfilehash: dbdbfc797d37ed38936d6cfd354383d412c6b52d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276834"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205816"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>クイック スタート:Azure Time Series Insights プレビューのデモ環境を探索する
 
-このクイック スタートでは、無料のデモンストレーション環境で Azure Time Series Insights プレビュー エクスプローラーを使用する方法を示します。 Web ブラウザーを使用して大量の IoT 産業履歴データを視覚化する方法について説明した後、Time Series Insights プレビュー エクスプローラーの主な機能について説明します。
+このクイック スタートでは、Azure Time Series Insights プレビューの概要について説明します。 無料のデモを通して、Time Series Insights プレビューに追加されている主な機能を紹介します。
 
-Time Series Insights では、エンド ツー エンドのサービスとしてのプラットフォーム (PaaS) オファリングが提供されます。 簡単にデータを探索できるように、豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの、取り込み、格納、クエリを実行できます。 また、運用分析も提供されます。 Time Series Insights は、産業用 IoT デプロイ特有のニーズに合わせて調整された差別化された製品です。
+プレビューのデモ環境には、それぞれ 10 基のタービンを備えた 2 つの風力タービン発電所を運営するシナリオ会社 Contoso が含まれています。 各タービンには 20 個のセンサーが付いていて、1 分ごとに Azure IoT Hub にデータを報告します。 センサーにより、気象条件、ブレードの回転速度、ヨーの位置に関する情報が収集されます。 また、発電機の実績、ギアボックスの動作、安全モニターに関する情報も収集されます。
 
-デモ環境では、電力会社である Contoso が示されています。 その環境で、Time Series Insights を使って Contoso 社のデータからアクションにつながる分析情報を見つけ出し、簡単な根本原因分析を実行します。 Contoso は 2 箇所の風力タービン ファームを運営しており、それぞれに 10 基のタービンがあります。 各タービンには 20 個のセンサーが付いていて、1 分ごとに Azure IoT Hub にデータを報告します。 センサーは、気象条件、ブレードの回転速度とヨーの位置、発電機の実績、ギアボックスの動作、安全モニターに関する情報を収集します。
-
-Time Series Insights プレビューを使用して、増加し続ける Contoso 社の 2 年前からのデータセットを分析します。現在のデータ サイズは 40 GB です。 重大な障害となかなか進まないメンテナンスの問題の両方を理解して予測するのに役立ちます。
-
-Azure サブスクリプションをお持ちでない場合は、始める前に [無料 Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
+ Time Series Insights を使用して Contoso データから実用的な分析情報を見つける方法を説明します。 重大な障害をより的確に予測し、メンテナンスを実行するために、簡単な根本原因分析も行います。
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>デモ環境で Time Series Insights エクスプローラーを調べる
 
-1. ブラウザーで、 [Contoso Wind Farm 環境](https://insights.timeseries.azure.com/preview/samples)に移動します。  
+Time Series Insights プレビュー エクスプ ローラーでは、履歴データと根本原因分析が示されます。 作業を開始するには:
 
-1. 要求されたら、Azure アカウントの資格情報を使用して Time Series Insights エクスプローラーにサインインします。
+1.  [無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) をまだ作成していない場合は、作成します。
 
-### <a name="demo-step-1"></a>デモ手順 1
+1.  [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境に移動します。  
 
-1. **Contoso Plant 1** で風力タービン **W7** を見てみましょう。  
+1. プロンプトが表示されたら、Azure アカウントの資格情報を使用して Time Series Insights エクスプローラーにサインインします。
 
-    * **アクション**:表示範囲を **1/1/17 20:00 から 3/10/17 20:00 (UTC)** に更新し、**Contoso Plant 1** > **W7** > **Generator System** > **GeneratorSpeed** センサーを追加してから、結果を表示します。
+## <a name="work-with-historical-data"></a>履歴データを操作する
 
-       ![クイック スタート 1][1]
+1. **Contoso Plant 1** の風力タービン **W7** を確認します。  
 
-1. 最近、Contoso は風力タービン **W7** で火災を発見しました。 それについてドリルダウンしてみましょう。 火災の間に火災アラート センサーが起動されたことがわかります。
+    * 表示範囲を **1/1/17 20:00 から 3/10/17 20:00 (UTC)** に更新します。
+    * **[Contoso Plant 1]** > **[W7]** > **[Generator System]** > **[GeneratorSpeed]** センサーを選択します。 次に、結果の値を確認します。
 
-    * **アクション**:表示範囲を **3/9/17 20:00 から 3/10/17 20:00 (UTC)** に更新し、**Safety System** > **FireAlert** センサーを追加します。
+      [![Contoso Plant 1 の W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-      ![クイック スタート 2][2]
+1. 最近、Contoso は風力タービン **W7** で火災を発見しました。 火災の直接の原因が何であったかについての見解はさまざまです。 さらに詳しく調べると、火災時に火災アラート センサーが作動したことがわかります。
 
-1. 出火の前後に他に何が起きたかを見てみましょう。 出火の直前に油圧とアクティブな警告の両方が急上昇していますが、その時点では問題を防ぐには遅すぎました。
+    * 表示範囲を **3/9/17 20:00 から 3/10/17 20:00 (UTC)** に更新します。
+    * **[Safety System]** > **[FireAlert]** センサーを選択します。
 
-    * **アクション**:**Pitch System** > **HydraulicOilPressure** センサーと **Pitch System** > **ActiveWarning** センサーを追加します。
+      [![Contoso は風力タービン W7 で火災を発見](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
-      ![クイック スタート 3][3]
+1. 火災発生前後の他のイベントを確認して、何が起こったかを理解します。 火災の直前に油圧とアクティブな警告の両方が急上昇しました。
 
-1. ズーム アウトすると、出火に至る兆候があったことがわかります。 両方のセンサーが変動しています。 ところで、この問題は以前にも発生したのでしょうか。
+    * **[Pitch System]** > **[HydraulicOilPressure]** センサーを選択します。
+    * **[Pitch System]** > **[ActiveWarning]** センサーを選択します。
 
-    * **アクション**:表示範囲を **2/24/17 20:00 から 3/10/17 20:00 (UTC)** に更新します。
+      [![同じ時間帯の他のイベントを確認](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
-      ![クイック スタート 4][4]
+1. 火災の直前に、油圧センサーとアクティブな警告センサーが急上昇しました。 表示されている時系列を展開して、出火に至るその他の兆候があるかどうかを確認します。 両方のセンサーは、経時的に一貫して変動し、持続的で気がかりなパターンを示しています。
 
-1. 2 年間すべてのデータを調べると、同じ兆候を伴っている以前の火災を見つけることができます。 このデータを使用すると、このような問題を早期に把握するシステムを構築できます。
+    * 表示範囲を **2/24/17 20:00 から 3/10/17 20:00 (UTC)** に更新します。
 
-    * **アクション**:表示範囲を **1/1/16 から 12/31/17** (全データ) に更新します。
+      [![油圧センサーもアクティブな警告センサーも急上昇](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
-       ![クイック スタート 5][5]
+1. 2 年間の履歴データを調べると、センサーの変動が同じである別の火災が明らかになります。
 
-### <a name="demo-step-2"></a>デモ手順 2
+    * 表示範囲を **1/1/16 から 12/31/17** (全データ) に更新します。
 
-1. 他の問題は、さらに微妙であり、診断が困難になります。 Time Series Insights では、困難な問題を追跡するために役立つ幅広い手段が提供されています。 ここでは、**6/25**に **W6** の警告センサーが停止していることを確認できます。 実際には何が起きているのでしょうか。
+      [![過去のパターンを確認](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-    * **アクション**:現在のセンサーを削除し、表示範囲を **6/1/17 20:00 から 7/1/17 20:00 (UTC)** に更新してから、**Contoso Plant 1** > **W6** > **Safety System** > **VoltageActuatorSwitchWarning** センサーを追加します。
+Azure Time Series Insights とセンサー テレメトリを使用して、履歴データに隠れていた、問題のある長期的な傾向が見つかりました。 これらの新しい分析情報を使用して、次のことができます。
 
-       ![クイック スタート 6][6]
+> [!div class="checklist"]
+> * 実際に起こったことを明らかにする。
+> * その問題を修正する。
+> * より優れたアラート通知システムを導入する。
 
-1. 警告は、発電機によって出力されている電圧の問題を示しています。 原因は何でしょうか。 発電機の全体的な出力電力は、狭い間隔では問題がないように見えます。 ただし、データを集約することで、明確に低下していることがわかります。
+## <a name="root-cause-analysis"></a>根本原因分析
 
-    * **アクション**:**VoltageActuatorSwitchWarning** センサーを削除し、**Generator System** > **ActivePower** センサーを追加してから、間隔を **3d** に更新します。
+1. シナリオによっては、データの微妙な手がかりを見つけるために高度な分析が必要となります。 **6/25** の日付の風力発電 **W6** を選択します
 
-       ![クイック スタート 7][7]
+    * 表示範囲を **6/1/17 20:00 から 7/1/17 20:00 (UTC)** に更新します。
+    * 次に **[Contoso Plant 1]** > **[W6]** > **[Safety System]** > **[VoltageActuatorSwitchWarning]** センサーを選択します。
 
-1. データセットを前方に進むと、これが一時的な問題ではないことがわかります。 継続しています。
+      [![表示範囲を更新して W6 を選択](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-    * **アクション**:期間を右側に延ばします。
+1. 警告は、発電機によって出力されている電圧の問題を示しています。 発電機の全体的な出力電力は、現在指定している間隔では正常なパラメーター内で動作しています。 間隔を広げると、別のパターンが出現します。つまり、明確な下落があります。
 
-       ![クイック スタート 8][8]
+    * **VoltageActuatorSwitchWarning** センサーを削除します。
+    * **[Generator System]** > **[ActivePower]** センサーを選択します。
+    * 間隔を **[3d]** に更新します。
 
-1. さらに詳しく見てみましょう。 センサーの他のデータ ポイントを追加し、フェーズごとに電圧を確認できます。 しかし、データ ポイントはすべて同じように見えます。 実際の値を示すマーカーを置いてみましょう。 フェーズ 3 の出力に問題があるように見えます。
+      [![間隔を [3d] に更新](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
-    * **アクション**:**Generator System** > **GridVoltagePhase1**、**GridVoltagePhase2**、**GridVoltagePhase3** の各センサーを追加します。 表示領域の最後のデータ ポイントにマーカーを置きます。
+1. 時間範囲を広げることで、問題が停止したか、継続しているかを判断できます。
 
-       ![クイック スタート 8][8]
+    * 期間を 60 日間に拡大します。
 
-1. 同じスケールで 3 つのデータ ポイントすべてを表示すると、フェーズ 3 の低下がさらにはっきりします。 この時点で、警告の原因に関する手がかりが得られ、問題をメンテナンス チームに任せる準備ができます。  
+      [![期間を 60 日間に拡大](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
-    * **アクション**:同じグラフ スケール上にすべてのセンサーをオーバーレイ表示するように更新します。
+1. センサーの他のデータ ポイントを追加して、より優れたコンテキストを提供できます。 表示できるセンサーの数が多ければ多いほど、問題に対する理解は深まります。 実際の値を示すマーカーを置いてみましょう。 
 
-       ![クイック スタート 9][9]
+    * **[Generator System]** > **[GridVoltagePhase1]**、**[GridVoltagePhase2]**、**[GridVoltagePhase3]** の各センサーを選択します。
+    * 表示領域の最後のデータ ポイントにマーカーを置きます。
+
+      [![マーカーを配置](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+
+    3 つの電圧センサーは、正常なパラメーター内で同等に動作しています。 **[GridVoltagePhase3]** センサーが原因であるようです。
+
+1. 高度なコンテキスト データを追加すると、このフェーズ 3 の下落が問題として浮上してきます。 これで、警告の原因に関する手がかりが得られ、問題をメンテナンス チームに任せる準備ができました。  
+
+    * 同じグラフ スケール上に **[Generator System]** すべてのセンサーをオーバーレイ表示するように更新します。
+
+       [![すべてを含めるように表示を更新](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -107,13 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 > [!div class="nextstepaction"]
 > [Time Series Insights プレビューの環境を計画する](time-series-insights-update-plan.md)
 
-<!-- Images -->
-[1]: media/v2-update-quickstart/quickstart-one.png
-[2]: media/v2-update-quickstart/quickstart-two.png
-[3]: media/v2-update-quickstart/quickstart-three.png
-[4]: media/v2-update-quickstart/quickstart-four.png
-[5]: media/v2-update-quickstart/quickstart-five.png
-[6]: media/v2-update-quickstart/quickstart-six.png
-[7]: media/v2-update-quickstart/quickstart-seven.png
-[8]: media/v2-update-quickstart/quickstart-eight.png
-[9]: media/v2-update-quickstart/quickstart-nine.png
+デモとその機能の操作方法を説明します。
+
+> [!div class="nextstepaction"]
+> [Time Series Insights プレビュー エクスプローラー](time-series-insights-update-explorer.md)

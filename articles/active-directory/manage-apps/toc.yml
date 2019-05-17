@@ -167,6 +167,8 @@
           href: application-provisioning-config-problem.md
         - name: ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題
           href: application-provisioning-config-problem-storage-limit.md
+        - name: マッピングするための属性の同期 - ギャラリー アプリ
+          href: user-provisioning-sync-attributes-for-mapping.md
         - name: ユーザーがプロビジョニングされない - ギャラリー アプリ
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: 間違ったユーザーがプロビジョニングされている - ギャラリー アプリ

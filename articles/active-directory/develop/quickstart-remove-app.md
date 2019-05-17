@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームに登録されたアプリケーシ
 description: Microsoft ID プラットフォームに登録されたアプリケーションを削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 271fe45082749afc310e8f217e8119d3931c3cac
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093196"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413739"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する (プレビュー)
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する
 
 アプリケーションを Microsoft ID プラットフォームに登録したエンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、アプリケーションの登録の削除が必要になる場合があります。
 
@@ -35,10 +35,7 @@ ms.locfileid: "58093196"
 
 ## <a name="prerequisites"></a>前提条件
 
-最初に、以下の前提条件を完了していることを確認します。
-
-* アプリケーションが登録されているテナントを持つ。 アプリの追加と登録の方法については、[Microsoft ID プラットフォームへのアプリケーションの登録](quickstart-register-app.md)に関するページを参照してください。
-* Azure portal でアプリを登録するためのプレビュー エクスペリエンスをオプトインする。 このクイック スタートの手順は新しい UI に対応しており、プレビュー エクスペリエンスをオプトインした場合にのみ機能します。
+アプリケーションが登録されているテナントがあることが必要です。 アプリの追加と登録の方法については、[Microsoft ID プラットフォームへのアプリケーションの登録](quickstart-register-app.md)に関するページを参照してください。
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>自分または自分の組織が作成したアプリケーションを削除する
 
@@ -48,7 +45,7 @@ ms.locfileid: "58093196"
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** を選択します。 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** ページが表示されます。
+3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録]** を選択します。 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** ページが表示されます。
 4. **[概要]** ページで **[削除]** を選択します。
 5. アプリの削除を確認する画面で **[はい]** を選択します。
 

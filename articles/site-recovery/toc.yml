@@ -187,6 +187,8 @@
               href: delete-vault.md
     - name: VMware から Azure へのディザスター リカバリー
       items:
+        - name: 大規模なディザスター リカバリーの設定
+          href: vmware-physical-large-deployment.md
         - name: ネットワークの設定
           items:
             - name: オンプレミスから Azure へのレプリケーションのネットワーク インターフェイスを管理する
@@ -269,6 +271,8 @@
               href: delete-vault.md
     - name: 物理から Azure へのディザスター リカバリー
       items:
+        - name: 大規模なディザスター リカバリーの設定
+          href: vmware-physical-large-deployment.md
         - name: ネットワークの設定
           items:
             - name: オンプレミスから Azure へのレプリケーションのネットワーク インターフェイスを管理する

@@ -4,7 +4,7 @@ description: OpenID 接続を使用して、従来の Web ブラウザー ベー
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f88643000b85965b2f275cc6e7494f427d0fe43e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191040"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231154"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -38,7 +38,7 @@ ms.locfileid: "65191040"
 
 最初に、これらの前提条件を満たしていることを確認します。
 
-* Visual Studio 2015 Update 3 または Visual Studio 2019 がインストールされている。 お持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)
+* Visual Studio 2015 Update 3 以降をインストール済みである。 お持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>シナリオ: ASP.NET アプリで職場や学校のアカウントからユーザーにサインインする
 
@@ -70,11 +70,12 @@ ms.locfileid: "65191040"
 ## <a name="step-2-create-your-aspnet-project"></a>手順 2:ASP.NET プロジェクトを作成する
 
 1. Visual Studio で、**[ファイル] > [新規] > [プロジェクト]** の順に移動します。
-2. **[Visual C#\Web]** で **[ASP.NET Web アプリケーション (.NET Framework)]** を選択します。
-3. アプリケーションに名前を付けて、**[OK]** を選択します。
-4. **[Empty]** を選択して、**MVC** 参照を追加するチェック ボックスをオンにします。
+2. **[プロジェクトの種類]** として **[Web]** を選択し、**[ASP.NET Web Application (.NET Framework)]** を選択します。
+3. アプリケーションに名前を付けて、**[作成]** を選択します。
+4. **[空]** を選択し、**[フォルダーおよびコア参照を追加する]** の下で **[MVC]** を選択して MVC の参照を追加します。
+5. **作成** を選択します。
 
-## <a name="step-3-add-authentication-components"></a>手順 3: 認証コンポーネントの追加
+## <a name="step-3-add-authentication-components"></a>手順 3:認証コンポーネントの追加
 
 1. Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に移動します。
 2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、**OWIN ミドルウェア NuGet パッケージ**を追加します。

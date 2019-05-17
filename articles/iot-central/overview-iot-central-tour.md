@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: edc75711d8f727d8b1c9359835c6d5ebd575ff71
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678651"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233443"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>ツアー: Azure IoT Central の UI
 
@@ -33,7 +33,6 @@ ms.locfileid: "59678651"
 - デバイスの問題をトラブルシューティングして修復します。
 - 新しいデバイスをプロビジョニングします。
 
-
 ## <a name="use-the-left-navigation-menu"></a>左側のナビゲーション メニューの使用
 
 アプリケーションのさまざまな領域には、左側のナビゲーション メニューを使用してアクセスします。 **<** または **>** を選択すると、ナビゲーション バーを展開したり、折りたたんだりできます。
@@ -51,11 +50,14 @@ ms.locfileid: "59678651"
 - デバイス テンプレートやデバイスを検索するには、**[検索]** に値を入力します。
 - UI の言語またはテーマを変更するには、**[設定]** アイコンを選択します。
 - アプリケーションからサインアウトするには、**[アカウント]** アイコンを選択します。
-- ヘルプやサポートを利用するには、**[ヘルプ]** ドロップダウンを選択するとリソースが一覧表示されます。
+- ヘルプやサポートを利用するには、**[ヘルプ]** ドロップダウンを選択するとリソースが一覧表示されます。 試用版アプリケーションでは、サポート リソースに[ライブ チャット](howto-show-hide-chat.md)へのアクセスが含まれています。
 
 UI 用に淡色テーマまたは濃色テーマを選ぶことができます。
 
 ![UI に使用するテーマを選択](media/overview-iot-central-tour/themes.png)
+
+> [!NOTE]
+> 管理者がアプリケーションのカスタム テーマを構成している場合、淡色と濃色のテーマから選択するオプションは使用できません。
 
 ## <a name="dashboard"></a>ダッシュボード
 

@@ -463,3 +463,25 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: サポートの利用
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: パートナー センターの Commercial Marketplace ポータル
+  items:
+    - name: 概要
+      items:
+        - name: Commercial Marketplace とは
+          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: アカウント管理
+      items:
+        - name: 新しいパートナー センター アカウントを作成する
+          href: ./partner-center-portal/create-account.md
+        - name: パートナー センター アカウントを管理する
+          href: ./partner-center-portal/manage-account.md
+        - name: 会社の職場アカウントを検索または作成する
+          href: ./partner-center-portal/company-work-accounts.md
+    - name: 新しいオファーを作成する
+      items:
+        - name: SaaS オファーを作成する
+          href: ./partner-center-portal/create-new-saas-offer.md
+    - name: 発行状態
+      href: ./partner-center-portal/publishing-status.md
+    - name: 既存のオファーを更新する
+      href: ./partner-center-portal/update-existing-offer.md

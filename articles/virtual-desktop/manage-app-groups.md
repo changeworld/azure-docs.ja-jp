@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578751"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233904"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューのアプリ グループを管理する
 
@@ -73,7 +73,7 @@ Windows Virtual Desktop プレビューの新しいホスト プール向けに�
 
 ## <a name="next-steps"></a>次の手順
 
-アプリ グループを作成したら、サービス プリンシパルを作成してユーザーにロールを割り当てます。 その方法については、PowerShell でサービス プリンシパルとロールの割り当てを作成する方法についてのチュートリアルを参照してください。
+このチュートリアルでは、アプリ グループを作成して、それに RemoteApp を設定し、アプリ グループにユーザーを割り当てる方法について説明しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
 
-> [!div class="nextstepaction"]
-> [PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する](create-service-principal-role-powershell.md)
+- [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](connect-windows-7-and-10.md)
+- [Windows Virtual Desktop プレビュー Web クライアントに接続する](connect-web.md)

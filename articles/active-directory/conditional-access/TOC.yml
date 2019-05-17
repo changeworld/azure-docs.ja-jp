@@ -50,6 +50,8 @@
       href: app-protection-based-conditional-access.md
     - name: マネージド デバイスを必須にする
       href: require-managed-devices.md
+    - name: 信頼されたネットワークを MFA 登録で必須にする
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
       href: untrusted-networks.md
     - name: 利用規約を必須にする

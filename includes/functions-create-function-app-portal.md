@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1cecafb013b5d22557961e98935fc9a2fee2a79b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199238"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416317"
 ---
 1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、**[コンピューティング]** > **[Function App]** を選択します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "65199238"
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 | 
     | **[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
-    | **OS** |  Windows | Linux 上のサーバーレス ホスティングは現在、プレビュー段階です。 詳細については、[この考慮事項の記事](https://aka.ms/funclinux)を参照してください。|
+    | **OS** | Windows | Linux 上のサーバーレス ホスティングは現在、プレビュー段階です。 詳細については、[この考慮事項の記事](https://aka.ms/funclinux)を参照してください。|
     | **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** | 従量課金プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の **[従量課金プラン]** では、リソースは関数の必要に応じて動的に追加されます。 この[サーバーなしの](https://azure.microsoft.com/overview/serverless-computing/) ホスティングでは、関数が実行された時間にのみ課金されます。 App Service プランで実行する場合は、[関数アプリのスケーリング](../articles/azure-functions/functions-scale.md)を管理する必要があります。  |
     | **場所** | 西ヨーロッパ | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
@@ -41,4 +41,4 @@ ms.locfileid: "65199238"
 
     ![新しい関数アプリの設定を定義する](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-5. **[リソースに移動]** を選択して、新しい関数アプリを確認します。
+5. **[リソースに移動]** を選択して、新しい関数アプリを確認します。 また、**[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。

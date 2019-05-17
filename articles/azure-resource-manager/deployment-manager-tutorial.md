@@ -13,19 +13,22 @@ ms.devlang: na
 ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880051"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466297"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
 
 [Azure Deployment Manager](./deployment-manager-overview.md) を使用して、アプリケーションを複数の地域に配備する方法を学習します。 Deployment Manager を使用するには、次の 2 つのテンプレートを作成する必要があります。
 
 * **トポロジ テンプレート**: アプリケーションを構成する Azure リソースとその配備先を記述します。
 * **ロールアウト テンプレート**: アプリケーションを配備する際に行う手順を記述します。
+
+> [!IMPORTANT]
+> サブスクリプションが Azure の新機能をテストするためのカナリア用としてマークされている場合は、Azure Deployment Manager を使用したカナリア リージョンへのデプロイのみが可能です。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -432,4 +435,4 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Deployment Manager を使用する方法について学習しました。 詳細は、「[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)」を参照してください。
+このチュートリアルでは、Azure Deployment Manager を使用する方法について学習しました。 Azure Deployment Manager に正常性の監視を統合する場合は、「[Tutorial:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。

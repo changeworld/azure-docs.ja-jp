@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244725"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205419"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>クイック スタート:ビデオ ファイルのストリーム配信 - CLI
 
@@ -356,4 +356,4 @@ az group delete --name amsResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-> [CLI のサンプル](cli-samples.md)
+[Media Services の概要](media-services-overview.md)

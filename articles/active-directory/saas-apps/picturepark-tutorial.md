@@ -4,119 +4,111 @@ description: Azure Active Directory と Picturepark の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 31c21cd4-9c00-4cad-9538-a13996dc872f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2017
+ms.topic: tutorial
+ms.date: 04/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b458632ddb6e23ab1ddf642752aa0cbfc11f1ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 617c75024b45dab7ff2466b99bfb71c18cdd778a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839070"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル:Azure Active Directory と Picturepark の統合
 
 このチュートリアルでは、Picturepark と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Picturepark と Azure AD の統合には、次の利点があります。
 
-- Picturepark にアクセスする Azure AD ユーザーを制御できます
-- ユーザーが自分の Azure AD アカウントで自動的に Picturepark にサインオン (シングル サインオン) できるようにします
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+* Picturepark にアクセスするユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Picturepark に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Picturepark と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Picturepark でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Picturepark でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Picturepark の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Picturepark では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-picturepark-from-the-gallery"></a>ギャラリーからの Picturepark の追加
+
 Azure AD への Picturepark の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Picturepark を追加する必要があります。
 
 **ギャラリーから Picturepark を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[アプリケーション]][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[アプリケーション]][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに「**Picturepark**」と入力します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/tutorial_picturepark_search.png)
+4. 検索ボックスに「**Picturepark**」と入力し、結果パネルで **Picturepark** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-1. 結果ウィンドウで **Picturepark** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+     ![結果リストの Picturepark](common/search-new-app.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/tutorial_picturepark_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Picturepark で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Picturepark ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Picturepark の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Picturepark で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Picturepark で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Picturepark 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Picturepark で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Picturepark テスト ユーザーの作成](#creating-a-picturepark-test-user)** - Picturepark で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Picturepark のシングル サインオンの構成](#configure-picturepark-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Picturepark テスト ユーザーの作成](#create-picturepark-test-user)** - Picturepark で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Picturepark アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Picturepark で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Picturepark で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Picturepark** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Picturepark** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![Configure single sign-on][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![Configure single sign-on](./media/picturepark-tutorial/tutorial_picturepark_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[Picturepark のドメインと URL]** セクションで、次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/picturepark-tutorial/tutorial_picturepark_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.picturepark.com` のパターンを使用して URL を入力します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。 
-    
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+
+    ![[Picturepark のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.picturepark.com`
+
+    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+
     |  |
     |--|
     | `https://<companyname>.current-picturepark.com`|
@@ -124,32 +116,41 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
     | `https://<companyname>.next-picturepark.com`|
     | |
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Picturepark クライアント サポート チーム](https://picturepark.com/about/contact/)に問い合わせてください。 
- 
-1. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Picturepark クライアント サポート チーム](https://picturepark.com/about/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![Configure single sign-on](./media/picturepark-tutorial/tutorial_picturepark_certificate.png) 
+5. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、**[SAML 署名証明書]** ダイアログを開きます。
 
-1. **[保存]** ボタンをクリックします。
+    ![SAML 署名証明書の編集](common/edit-certificate.png)
 
-    ![Configure single sign-on](./media/picturepark-tutorial/tutorial_general_400.png)
+6. **[SAML 署名証明書]** セクションで **[Thumbprint]\(拇印\)** をコピーし、お使いのコンピューターに保存します。
 
-1. **[Picturepark 構成]** セクションで、**[Picturepark の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+    ![[Thumbprint]\(拇印\) の値をコピーする](common/copy-thumbprint.png)
 
-    ![Configure single sign-on](./media/picturepark-tutorial/tutorial_picturepark_configure.png) 
+7. **[Picturepark のセットアップ]** セクションで、要件に従って適切な URL をコピーします。 **[ログイン URL]** には、次のパターンの値を使用します: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
-1. 別の Web ブラウザーのウィンドウで、Picturepark 企業サイトに管理者としてログインします。
+    > [!Note]
+    > _my_directory_id_ は Azure AD サブスクリプションのテナント ID です。
 
-1. 上部にあるツールバーで **[Administrative tools]**、**[Management Console]** の順にクリックします。
+    ![構成 URL のコピー](./media/picturepark-tutorial/configurls.png)
+
+    a. Azure AD 識別子
+
+    b. ログアウト URL
+
+### <a name="configure-picturepark-single-sign-on"></a>Picturepark のシングル サインオンの構成
+
+1. 別の Web ブラウザーのウィンドウで、Picturepark 企業サイトに管理者としてサインインします。
+
+2. 上部にあるツールバーで **[Administrative tools]**、**[Management Console]** の順にクリックします。
    
     ![管理コンソール](./media/picturepark-tutorial/ic795062.png "管理コンソール")
 
-1. **[Authentication]**、**[Identity providers]** の順にクリックします。
+3. **[Authentication]**、**[Identity providers]** の順にクリックします。
    
     ![Authentication](./media/picturepark-tutorial/ic795063.png "Authentication")
 
-1. **[Identity provider configuration]** セクションで、次の手順に従います。
+4. **[Identity provider configuration]** セクションで、次の手順に従います。
    
     ![ID プロバイダーの構成](./media/picturepark-tutorial/ic795064.png "ID プロバイダーの構成")
    
@@ -159,58 +160,73 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
    
     c. **[Set as default]** を選びます。
    
-    d. **[Issuer URI]\(発行者 URI\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d. **[発行者 URI]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
     e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。 
 
-1. **[JoinDefaultUsersGroup]** をクリックします。
+5. **[JoinDefaultUsersGroup]** をクリックします。
 
-1. **[Claim]\(要求\)** ボックスで **[Emailaddress]\(電子メール アドレス\)** 属性を設定するには、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力して **[Save]\(保存\)** をクリックします。
+6. **[Claim]\(要求\)** ボックスで **[Emailaddress]\(電子メール アドレス\)** 属性を設定するには、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力して **[Save]\(保存\)** をクリックします。
 
       ![Configuration](./media/picturepark-tutorial/ic795065.png "Configuration")
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/create_aaduser_01.png) 
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/create_aaduser_02.png) 
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/create_aaduser_03.png) 
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/picturepark-tutorial/create_aaduser_04.png) 
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="creating-a-picturepark-test-user"></a>Picturepark テスト ユーザーの作成
 
-Azure AD ユーザーが Picturepark にログインできるようにするには、ユーザーを Picturepark にプロビジョニングする必要があります。 Picturepark の場合、プロビジョニングは手動で行います。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、Britta Simon に Picturepark へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Picturepark]** を選択します。
+
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
+2. アプリケーションの一覧で **[Picturepark]** を選択します。
+
+    ![アプリケーションの一覧の [Picturepark] リンク](common/all-applications.png)
+
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-picturepark-test-user"></a>Picturepark テスト ユーザーの作成
+
+Azure AD ユーザーが Picturepark にサインインできるようにするには、ユーザーを Picturepark にプロビジョニングする必要があります。 Picturepark の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
-1. **Picturepark** テナントにログインします。
+1. **Picturepark** テナントにサインインします。
 
 1. 上部にあるツールバーで **[Administrative tools]**、**[Users]** の順にクリックします。
    
@@ -224,7 +240,7 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
    
     ![Create User](./media/picturepark-tutorial/ic795069.png "Create User")
    
-    a. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーの**メール アドレス** (**BrittaSimon\@contoso.com**) を入力します。  
+    a. **[Email Address]\(電子メール アドレス\)** テキストボックスに、ユーザーの**電子メール アドレス**を「`BrittaSimon@contoso.com`」と入力します。  
    
     b. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、BrittaSimon の**パスワード**を入力します。 
    
@@ -234,7 +250,7 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
    
     e. **[Company]\(会社\)** ボックスに、ユーザーの**会社名**を入力します。 
    
-    f. **[Country]\(国\)** ボックスに、ユーザーの**国**を入力します。
+    f. **[Country]\(国\)** テキストボックスに、ユーザーの**国/リージョン**を入力します。
   
     g. **[ZIP]\(郵便番号\)** ボックスに、ユーザーの**郵便番号**を入力します。
    
@@ -246,62 +262,19 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
 
 >[!NOTE]
 >Picturepark から提供されている他の Picturepark ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
-> 
+>
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Picturepark へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-![ユーザーの割り当て][200] 
-
-**Picturepark に Britta Simon を割り当てるには、次の手順を実行します。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
-
-1. アプリケーションの一覧で **[Picturepark]** を選択します。
-
-    ![Configure single sign-on](./media/picturepark-tutorial/tutorial_picturepark_app.png) 
-
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
-
-    ![ユーザーの割り当て][202] 
-
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![ユーザーの割り当て][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Picturepark] タイルをクリックすると、自動的に Picturepark アプリケーションにサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [Picturepark] タイルをクリックすると、SSO を設定した Picturepark に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/picturepark-tutorial/tutorial_general_01.png
-[2]: ./media/picturepark-tutorial/tutorial_general_02.png
-[3]: ./media/picturepark-tutorial/tutorial_general_03.png
-[4]: ./media/picturepark-tutorial/tutorial_general_04.png
-
-[100]: ./media/picturepark-tutorial/tutorial_general_100.png
-
-[200]: ./media/picturepark-tutorial/tutorial_general_200.png
-[201]: ./media/picturepark-tutorial/tutorial_general_201.png
-[202]: ./media/picturepark-tutorial/tutorial_general_202.png
-[203]: ./media/picturepark-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

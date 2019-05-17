@@ -4,22 +4,22 @@ description: Azure App Configuration に構成データが格納されるしく�
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011284"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408742"
 ---
-# <a name="key-value-store"></a>キー値ストア
+# <a name="keys-and-values"></a>キーと値
 
 Azure App Configuration では、構成データがキーと値のペアとして格納されます。 キーと値のペアは、さまざまな種類のアプリケーション設定を表現する手段として、シンプルでありながら柔軟性が高く、開発者にも馴染みのある方法です。
 
@@ -45,29 +45,27 @@ App Configuration では、さまざまな方法でキーを階層に分けて�
 
 次に、キー名を階層構造に分ける方法の例をいくつか示します。
 
-* 環境に基づく
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * コンポーネント サービスに基づく
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * デプロイ リージョンに基づく
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>ラベルのキー
+
+App Configuration のキー値には、必要に応じてラベル属性を割り当てることができます。 ラベルは、同じキーを持つ複数のキー値を区別する目的で使用されます。 ラベル *A* とラベル *B* を持つキー *app1* は、アプリ構成ストア内で 2 つの独立したキーになります。 既定では、キー値のラベルは空 (`null`) です。
+
+ラベルは、キーのバリアントを作成するための便利な手段です。 ラベルは一般に、同じキーに対して複数の環境を指定する場合に使用します。
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>キー値のバージョン管理
-
-App Configuration のキー値には、必要に応じてラベル属性を割り当てることができます。 ラベルは、同じキーを持つ複数のキー値を区別する目的で使用されます。 アプリ構成ストアの中で、ラベル *v1* とラベル *v2* を持つキー *app1* は、2 つの独立したキー値を形成します。 既定では、キー値のラベルは空 (`null`) です。
 
 キー値が変更されても App Configuration で自動的にバージョン管理されることはありません。 ラベルは、同じキー値の複数のバージョンを手動で作成する手段として使用します。 たとえば、アプリケーションのバージョン番号や Git のコミット ID をラベルとして入力すれば、特定のソフトウェア ビルドに関連付けられているキー値を識別することが可能です。
 
@@ -106,5 +104,5 @@ App Configuration のキー値には、必要に応じてラベル属性を割�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [ポイントインタイム スナップショット](./concept-point-time-snapshot.md)  
+* [ポイントインタイム スナップショット](./concept-point-time-snapshot.md)  
+* [機能の管理](./concept-feature-management.md)  

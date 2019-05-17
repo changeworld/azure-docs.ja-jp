@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/08/2019
+ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079477"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466174"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "65079477"
 このチュートリアルを開始する前に
 
 次を含む[開発環境を設定](howto-setup-environment.md)していることを確認してください。
-- 最新の CLI のインストール
+- 最新の CLI (バージョン 2.0.64 以降) のインストール
 - テナントの作成
 - Azure アプリケーション オブジェクトの作成
 - クラスターで実行されているアプリにサインインするために使用する Active Directory ユーザーの作成
@@ -101,7 +101,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>省略可能:クラスターの仮想ネットワークを既存の仮想ネットワークに接続する
 
-作成したクラスターの仮想ネットワーク (VNET) を既存の VNET に接続する必要がない場合は、この手順をスキップします。
+作成したクラスターの仮想ネットワーク (VNET) をピアリングによって既存の VNET に接続する必要がない場合は、この手順をスキップします。
 
 最初に、既存の VNET の識別子を取得します。 この識別子は、`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}` の形式になります。
 
@@ -132,7 +132,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 
 ## <a name="step-3-sign-in-to-the-openshift-console"></a>手順 3:OpenShift コンソールにサインインする
 
-これで、新しいクラスターの OpenShift コンソールにサインインする準備ができました。 [OpenShift Web コンソール](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html)により、OpenShift プロジェクトのコンテンツの視覚化、参照、管理ができます。
+これで、新しいクラスターの OpenShift コンソールにサインインする準備ができました。 [OpenShift Web コンソール](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)により、OpenShift プロジェクトのコンテンツの視覚化、参照、管理ができます。
 
 テスト用に作成した[新しい Azure AD ユーザー](howto-aad-app-configuration.md#create-a-new-active-directory-user)としてサインインします。 そのためには、Azure portal にサインインするために、通常使用する ID がキャッシュされていない、新しいブラウザー インスタンスが必要です。
 
@@ -147,13 +147,13 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 
 これで、クラスター コンソールにログインしました。
 
-[OpenShift クラスター コンソールのスクリーンショット](./media/aro-console.png)
+![OpenShift クラスター コンソールのスクリーンショット](./media/aro-console.png)
 
- [OpenShift コンソールを使用](https://docs.openshift.com/dedicated/getting_started/developers_console.html)してイメージを作成およびビルドする方法の詳細については、[Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) ドキュメントを参照してください。
+ [OpenShift コンソールを使用](https://docs.openshift.com/aro/getting_started/developers_console.html)してイメージを作成およびビルドする方法の詳細については、[Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) ドキュメントを参照してください。
 
 ## <a name="step-4-install-the-openshift-cli"></a>手順 4:OpenShift CLI をインストールする
 
-[OpenShift CLI](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html) (*OC ツール*) では、OpenShift クラスターのさまざまなコンポーネントと対話するためのアプリケーションおよび低レベルのユーティリティを管理するコマンドを提供します。
+[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (*OC ツール*) では、OpenShift クラスターのさまざまなコンポーネントと対話するためのアプリケーションおよび低レベルのユーティリティを管理するコマンドを提供します。
 
 OpenShift コンソールで、右上隅のサインイン名の横にある疑問符をクリックし、**[コマンド ライン ツール]** を選択します。  **[最新リリース]** のリンク先に移動し、Linux、MacOS、または Windows 用にサポートされている oc CLI をダウンロードしてインストールします。
 

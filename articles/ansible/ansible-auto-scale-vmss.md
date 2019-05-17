@@ -1,47 +1,63 @@
 ---
-title: Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする
-description: Ansible を使用して、Azure 内の自動スケールで仮想マシン スケール セットを拡大縮小する方法について説明します
-ms.service: azure
+title: チュートリアル - Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする | Microsoft Docs
+description: Ansible を使用して Azure の自動スケール機能で仮想マシン スケール セットをスケーリングする方法について説明します。
 keywords: ansible, azure, devops, bash, プレイブック, スケール, 自動スケール, 仮想マシン, 仮想マシン スケール セット, vmss
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/10/2018
-ms.openlocfilehash: 578ad3207f62e74805be056ca11d3bd9b46513da
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 4f2cd66b7460fc6fe48cb55f45bf4bc309ae054c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792431"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231267"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする
-Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Ansible を使用すると、他の Azure リソースを管理するのと同様に、Azure 内の仮想マシン スケール セット (VMSS) を管理できます。 
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングする
 
-スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 この記事では、自動スケール設定を作成して既存の仮想マシン スケール セットに関連付けます。 自動スケール設定では、必要に応じてスケール アウトまたはスケールインするルールを構成できます。
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
+
+VM インスタンスの数を自動的に調整する機能を[自動スケール](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)と呼びます。 自動スケールのメリットは、アプリケーションのパフォーマンスを監視して最適化するための管理上のオーバーヘッドが削減されることです。 自動スケールは、要求に応じて構成することも、定義されたスケジュールで構成することもできます。 Ansible を使用して、肯定的なカスタマー エクスペリエンスを得られる、許容可能なパフォーマンスを定義する自動スケール ルールを指定することができます。
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * 自動スケール プロファイルの定義
+> * 定期的なスケジュールに基づいた自動スケール
+> * アプリのパフォーマンスに基づいた自動スケール
+> * 自動スケール設定情報の取得 
+> * 自動スケール設定の無効化
 
 ## <a name="prerequisites"></a>前提条件
-- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- 既存の Azure 仮想マシン スケール セット。 - 存在しない場合は、[Ansible を使用して Azure の仮想マシン スケール セットを作成します](https://docs.microsoft.com/azure/ansible/ansible-create-configure-vmss)。
 
-> [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
+[!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 
-## <a name="auto-scale-based-on-a-schedule"></a>スケジュールに基づく自動スケール   
+## <a name="autoscale-based-on-a-schedule"></a>スケジュールに基づいた自動スケール
+
 スケール セットで自動スケールを有効にするには、最初に自動スケール プロファイルを定義します。 このプロファイルでは、スケール セット容量の既定値、最小値、および最大値が定義されます。 これらの制限により、VM インスタンスが継続的に作成されないようにしてコストを制御し、許容されるパフォーマンスと、スケールイン イベントに残るインスタンスの最小数のバランスをとることができます。 
 
-Virtual Machine Scale Sets では、定期的なスケジュール、または特定の日付によってスケールインおよびスケールアウトを行うことができます。 このセクションでは、太平洋標準時で毎週月曜日の 10 時 00 分にスケール セット内の VM インスタンスの数を 3 に増やす自動スケール設定を作成する Ansible プレイブックのサンプルを使用します。 
+Ansible を使用すると、特定の日付または定期的なスケジュールでスケール セットをスケーリングできます。
+
+このセクションのプレイブック コードでは、毎週月曜日の 10 時 00 分に VM インスタンスの数を 3 つに増やします。
+
+次のプレイブックを `vmss-auto-scale.yml` という名前で保存します。
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks: 
-    - name: Create auto scaling
+    - name: Create autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
@@ -65,23 +81,31 @@ Virtual Machine Scale Sets では、定期的なスケジュール、または�
               - '10'
 ```
 
-このプレイブックを *vmss-auto-scale.yml* として保存します。 Ansible プレイブックを実行するには、次のような **ansible-playbook** コマンドを使用します。
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="auto-scale-based-on-performance-data"></a>パフォーマンス データに基づく自動スケール
-アプリケーションの需要が増加すると、スケール セット内の VM インスタンスに対する負荷が増加します。 この増加した負荷が短期的な需要ではなく持続したものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされると、スケール セットはロード バランサーを通じてそれらへのトラフィックの分散を開始します。 監視するメトリック (CPU やディスクなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
+## <a name="autoscale-based-on-performance-data"></a>パフォーマンス データに基づく自動スケーリング
 
-Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 このセクションでは、太平洋標準時で毎週月曜日の 18 時 00 分に過去 10 分間のワークロードを検査し、CPU 使用率のメトリックに応じてスケール セットの VM インスタンスを 4 にスケールアウトするか、1 にスケールインする Ansible プレイブックのサンプルを使用します。 
+アプリケーションの需要が増加すると、スケール セット内の VM インスタンスに対する負荷が増加します。 この増加した負荷が短期的な需要ではなく持続したものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされると、スケール セットはロード バランサーを通じてそれらへのトラフィックの分散を開始します。 Ansible を使用すると、監視するメトリック (CPU 使用率、ディスク使用量、アプリの読み込み時間など) を制御できます。 パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいて、スケール セットでスケールインやスケールアウトを行うことができます。 
+
+このセクションのプレイブック コードでは、毎週月曜日の 18 時 00 分に過去 10 分間の CPU ワークロードをチェックします。 
+
+このプレイブックでは、CPU 使用率のメトリックに基づいて次のいずれかのアクションを実行します。
+
+- VM インスタンスの数を 4 にスケールアウトする
+- VM インスタンスの数を 1 にスケールインする
+
+次のプレイブックを `vmss-auto-scale-metrics.yml` という名前で保存します。
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks:
   - name: Get facts of the resource group
@@ -89,11 +113,11 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
       name: "{{ resource_group }}"
     register: rg
 
-  - name: Get VMSS resource uri
+  - name: Get scale set resource uri
     set_fact:
       vmss_id: "{{ rg.ansible_facts.azure_resourcegroups[0].id }}/providers/Microsoft.Compute/virtualMachineScaleSets/{{ vmss_name }}"
     
-  - name: Create auto scaling
+  - name: Create autoscaling
     azure_rm_autoscale:
       resource_group: "{{ resource_group }}"
       name: "{{ name }}"
@@ -151,14 +175,17 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
             value: '1'
 ```
 
-このプレイブックを *vmss-auto-scale-metrics.yml* として保存します。 Ansible プレイブックを実行するには、次のような **ansible-playbook** コマンドを使用します。
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-information-for-existing-autoscale-settings"></a>既存の自動スケール設定の情報を取得する
-次のようにプレイブックを使用して、*azure_rm_autoscale_facts* モジュール経由で自動スケール設定の詳細を取得することができます。
+## <a name="get-autoscale-settings-information"></a>自動スケール設定情報の取得 
+
+このセクションのプレイブック コードでは、`azure_rm_autoscale_facts` モジュールを使用して自動スケール設定の詳細を取得します。
+
+次のプレイブックを `vmss-auto-scale-get-settings.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -166,7 +193,7 @@ ansible-playbook vmss-auto-scale-metrics.yml
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Retrieve auto scale settings information
+    - name: Retrieve autoscale settings information
       azure_rm_autoscale_facts:
         resource_group: "{{ resource_group }}"
         name: "{{ name }}"
@@ -176,8 +203,19 @@ ansible-playbook vmss-auto-scale-metrics.yml
         var: autoscale_query.autoscales[0]
 ```
 
-## <a name="disable-the-autoscale-settings"></a>自動スケール設定を無効にする
-`enabled: true` を `enabled: false` に変更するか、次のようにプレイブックを使用して自動スケール設定を削除することによって、自動スケール設定を無効にできます。
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
+
+```bash
+ansible-playbook vmss-auto-scale-get-settings.yml
+```
+
+## <a name="disable-autoscale-settings"></a>自動スケール設定の無効化
+
+自動スケール設定を無効にするには 2 つの方法があります。 1 つは `enabled` キーを `true` から `false` に変更する方法です。 もう 1 つは設定を削除する方法です。
+
+このセクションのプレイブック コードでは、自動スケール設定を削除します。 
+
+次のプレイブックを `vmss-auto-scale-delete-setting.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -185,13 +223,20 @@ ansible-playbook vmss-auto-scale-metrics.yml
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Delete auto scaling
+    - name: Delete autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
          state: absent
 ```
 
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
+
+```bash
+vmss-auto-scale-delete-setting.yml
+```
+
 ## <a name="next-steps"></a>次の手順
+
 > [!div class="nextstepaction"] 
-> [仮想マシン スケール セットのための Ansible サンプル プレイブック](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [チュートリアル:Ansible を使用して Azure Virtual Machine Scale Sets のカスタム イメージを更新する](./ansible-vmss-update-image.md)

@@ -7,7 +7,7 @@ metadata:
   description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
   ms.author: jmartens
   ms.subservice: core
-  ms.date: 12/04/2018
+  ms.date: 5/14/2019
   ms.devlang: na
   ms.service: machine-learning
   ms.tgt_pltfrm: na
@@ -34,20 +34,28 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)
           - html: <a href="service/quickstart-run-local-notebook">ローカルのノートブック サーバーを使用して実験を実行する</a> (SDK のローカル インストール)
+          - html: <a href="service/ui-quickstart-run-experiment">ビジュアル インターフェイスで実験を実行する</a> (コード不要)
         style: unordered
         type: list
-      - text: '<b>画像分類のチュートリアルと MNIST データ:</b>'
+      - text: '<b>チュートリアル:SDK を使用した MNIST データの画像分類:</b>'
         type: paragraph
       - items:
           - html: 'パート 1:<a href="service/tutorial-train-models-with-aml">自分で用意したモデルを使用する</a>'
           - html: 'パート 2:<a href="service/tutorial-deploy-models-with-aml">そのモデルをデプロイする</a>'
         style: unordered
         type: list
-      - text: '<b>回帰モデリング チュートリアルとニューヨーク市のタクシー データ:</b>'
+      - text: '<b>チュートリアル:SDK を使用してタクシーの乗車料金を予測する:</b>'
         type: paragraph
       - items:
           - html: 'パート 1:<a href="service/tutorial-data-prep">モデリング用にデータを準備する</a>'
           - html: 'パート 2:<a href="service/tutorial-auto-train-models">ML によりモデルを自動的にトレーニングさせる</a>'
+        style: unordered
+        type: list
+      - text: '<b>チュートリアル:ビジュアル インターフェイスを使用して自動車価格を予測する:</b>'
+        type: paragraph
+      - items:
+          - html: 'パート 1:<a href="service/ui-tutorial-automobile-price-train-score">自動車価格を予測する</a>'
+          - html: 'パート 2:<a href="service/ui-tutorial-automobile-price-deploy">回帰モデルをデプロイする</a>'
         style: unordered
         type: list
       - text: '<b>モデルを使用する:</b>'

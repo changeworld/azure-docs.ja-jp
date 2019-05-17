@@ -1,10 +1,10 @@
 ---
-title: Web API を公開するようにアプリケーションを構成する (プレビュー) | Azure
+title: Web API を公開するようにアプリケーションを構成する - Microsoft ID プラットフォーム
 description: アプリケーションをクライアント アプリケーションが使用できるようにするために、新しいアクセス許可/スコープとロールを公開するようにアプリケーションを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1148fb221e82963ea39ece3e18598e38d633238d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080847"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413950"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する (プレビュー)
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
 自ら Web API を開発し、クライアント アプリケーションで利用できるようにすることもできます。そのためには、[アクセス許可/スコープ](developer-glossary.md#scopes)と[ロール](developer-glossary.md#roles)を公開する必要があります。 Web API を適切に構成すれば、Graph API や Office 365 API など、他の Microsoft Web API と同じように利用できるようになります。
 
@@ -37,7 +37,6 @@ ms.locfileid: "58080847"
 * サポートされている[アクセス許可と同意](v2-permissions-and-consent.md)について学習する。他のユーザーまたはアプリケーションによって使用されるアプリケーションを構築する場合は、これを理解しておくことが重要です。
 * アプリケーションが登録されているテナントを持つ。
   * アプリを登録していない場合は、[Microsoft ID プラットフォームを使用してアプリケーションを登録する方法について学習](quickstart-register-app.md)します。
-* Azure portal でアプリを登録するためのプレビュー エクスペリエンスをオプトインする。 このクイック スタートの手順は新しい UI に対応しており、プレビュー エクスペリエンスをオプトインした場合にのみ機能します。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portal にサインインしてアプリを選択する
 
@@ -45,7 +44,7 @@ ms.locfileid: "58080847"
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** を選択します。
+1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録]** を選択します。
 1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
 1. 新しいスコープを公開するために、UI とアプリケーション マニフェストのどちらの方法を使用するかを選択します。
     * [UI を通じて新しいスコープを公開する](#expose-a-new-scope-through-the-ui)

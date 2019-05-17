@@ -17,6 +17,9 @@
       href: quickstart-assign-role-user-portal.md
     - name: ユーザーへのアクセス権の付与 - PowerShell
       href: tutorial-role-assignments-user-powershell.md
+    - name: ユーザーへのアクセス権の付与 - Resource Manager テンプレート
+      displayName: 'ARM, resource manager template'
+      href: tutorial-role-assignments-user-template.md
     - name: グループへのアクセス権の付与 - PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: カスタム ロールの作成 - PowerShell
@@ -88,6 +91,7 @@
     - name: REST API
       href: /rest/api/authorization/
     - name: Resource Manager テンプレート
+      displayName: ARM
       items:
         - name: ロールの割り当て
           href: /azure/templates/microsoft.authorization/roleassignments

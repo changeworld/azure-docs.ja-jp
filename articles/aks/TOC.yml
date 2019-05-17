@@ -187,7 +187,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: クラスターのサービス プリンシパルの資格情報の更新
           href: update-credentials.md
-        - name: クラスターのエグレス トラフィックの制限および制御
+        - name: クラスターのエグレス トラフィックの制限および制御 (プレビュー)
           href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:

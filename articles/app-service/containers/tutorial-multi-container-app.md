@@ -1,7 +1,7 @@
 ---
 title: Web App for Containers でマルチコンテナー アプリを作成する - Azure App Service
-description: Azure 上で Docker Compose と Kubernetes の構成ファイル、WordPress および MySQL アプリと共に複数のコンテナーを使用する方法について説明します。
-keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, kubernetes, wordpress, azure db for mysql, コンテナーを使用した運用データベース
+description: Docker Compose、WordPress および MySQL を使用して、Azure で複数のコンテナーを使用する方法について説明します。
+keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, wordpress, azure db for mysql, コンテナーを使用した運用データベース
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -12,15 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: cd7edb576264ac8bb8a076bbb4b2970579056f13
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: d4a93bbd823db59d688f77a626b1225519fb7b44
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547633"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407614"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -30,7 +29,6 @@ ms.locfileid: "59547633"
 
 > [!div class="checklist"]
 > * Web App for Containers で使用できるように Docker Compose の構成を変換する
-> * Web App for Containers で使用できるように Kubernetes の構成を変換する
 > * Azure にマルチコンテナー アプリを展開する
 > * アプリケーションの設定を追加する
 > * コンテナーに永続的ストレージを使用する
@@ -41,7 +39,7 @@ ms.locfileid: "59547633"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルには、[Docker Compose](https://docs.docker.com/compose/) または [Kubernetes](https://kubernetes.io/) の使用経験が必要となります。
+このチュートリアルを完了するには、[Docker Compose](https://docs.docker.com/compose/) の使用経験が必要となります。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -255,7 +253,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 ### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>MySQL SSL およびその他の構成にカスタム イメージを使用する
 
-既定では、SSL は Azure Database for MySQL に使用されます。 SSL と MySQL を使用するには、WordPress に追加の構成が必要です。 WordPress の "公式イメージ" に追加の構成は用意されていませんが、便宜的に[カスタム イメージ](https://hub.docker.com/r/microsoft/multicontainerwordpress/builds/)が用意されています。 実際には、イメージに必要な変更を加えます。
+既定では、SSL は Azure Database for MySQL に使用されます。 SSL と MySQL を使用するには、WordPress に追加の構成が必要です。 WordPress の "公式イメージ" に追加の構成は用意されていませんが、便宜的に[カスタム イメージ](https://github.com/Azure-Samples/multicontainerwordpress)が用意されています。 実際には、イメージに必要な変更を加えます。
 
 カスタム イメージは、[Docker Hub の WordPress](https://hub.docker.com/_/wordpress/) の "公式イメージ" に基づいています。 Azure Database for MySQL のこのカスタム イメージでは、以下の変更が行われました。
 
@@ -404,7 +402,20 @@ WordPress コンテナーは、Azure Database for MySQL と永続的なストレ
 
 構成ファイルの一番下に redis コンテナーを追加すると、次の例のようになります。
 
-[!code-yml[Main](../../../azure-app-service-multi-container/compose-wordpress.yml)]
+```yaml
+version: '3.3'
+
+services:
+   wordpress:
+     image: microsoft/multicontainerwordpress
+     ports:
+       - "8000:80"
+     restart: always
+
+   redis:
+     image: redis:3-alpine
+     restart: always
+```
 
 ### <a name="configure-environment-variables"></a>環境変数を構成する
 
@@ -459,7 +470,7 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 ### <a name="connect-wordpress-to-redis"></a>WordPress を Redis に接続する
 
-WordPress 管理者にログインします。左側のナビゲーションで **[プラグイン]** を選択し、**[Installed Plugins]\(インストールされているプラグイン\)** を選択します。
+WordPress 管理にサインインします。左側のナビゲーションで **[プラグイン]** を選択し、**[Installed Plugins]\(インストールされているプラグイン\)** を選択します。
 
 ![WordPress プラグインを選択する][2]
 
@@ -482,172 +493,6 @@ WordPress が Redis サーバーに接続されます。 同じページに接�
 ![WordPress が Redis サーバーに接続されます。 同じページに接続の**状態**が表示されます。][6]
 
 **おめでとうございます**。WordPress を Redis に接続しました。 運用環境対応のアプリが、**Azure Database for MySQL、永続的なストレージ、Redis** を使用するようになりました。 App Service プランを複数のインスタンスにスケールアウトできるようになりました。
-
-## <a name="use-a-kubernetes-configuration-optional"></a>Kubernetes 構成を使用する (省略可能)
-
-このセクションでは、Kubernetes 構成を使用して複数のコンテナーを展開する方法について説明します。 前の手順に従って、[リソース グループ](#create-a-resource-group)と [App Service プラン](#create-an-azure-app-service-plan)を作成します。 手順の大部分は作成セクションの手順と似ているので、構成ファイルは結合されています。
-
-### <a name="kubernetes-configuration-file"></a>Kubernetes 構成ファイル
-
-このチュートリアルのこの部分には *kubernetes-wordpress.yml* を使用します。 以下、参考までに記載します。
-
-[!code-yml[Main](../../../azure-app-service-multi-container/kubernetes-wordpress.yml)]
-
-サポートされる構成オプションについては、｢[Kubernetes configuration options](configure-custom-container.md#kubernetes-configuration-options)」(Kubernetes 構成オプション) を参照してください。
-
-### <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
-
-[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL でサーバーを作成します。
-
-次のコマンドで、_&lt;mysql-server-name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql-server-name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
-
-```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
-```
-
-MySQL サーバーが作成されると、Cloud Shell に、次の例のような情報が表示されます。
-
-```json
-{
-  "administratorLogin": "adminuser",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql-server-name>.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>",
-  "location": "southcentralus",
-  "name": "<mysql-server-name>",
-  "resourceGroup": "myResourceGroup",
-  ...
-}
-```
-
-### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
-
-[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。
-
-```azurecli-interactive
-az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
-
-> [!TIP]
-> [アプリで使用する送信 IP アドレスのみを使用する](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
->
-
-### <a name="create-the-wordpress-database"></a>WordPress データベースを作成する
-
-[Azure Database for MySQL サーバー](#create-an-azure-database-for-mysql-server)がまだない場合は作成します。
-
-```azurecli-interactive
-az mysql db create --resource-group myResourceGroup --server-name <mysql-server-name> --name wordpress
-```
-
-データベースが作成されると、Cloud Shell に、次の例のような情報が表示されます。
-
-```json
-{
-  "additionalProperties": {},
-  "charset": "latin1",
-  "collation": "latin1_swedish_ci",
-  "id": "/subscriptions/12db1644-4b12-4cab-ba54-8ba2f2822c1f/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>/databases/wordpress",
-  "name": "wordpress",
-  "resourceGroup": "myResourceGroup",
-  "type": "Microsoft.DBforMySQL/servers/databases"
-}
-```
-
-### <a name="create-a-multi-container-app-kubernetes"></a>マルチコンテナー アプリを作成する (Kubernetes)
-
-Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) コマンドを使って、`myResourceGroup` リソース グループおよび `myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](app-service-linux-intro.md)を作成します。 _\<app-name>_ は忘れずに固有のアプリ名に置き換えてください。
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml
-```
-
-Web アプリが作成されると、Cloud Shell に、次の例のような出力が表示されます。
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="configure-database-variables-in-wordpress"></a>WordPress でデータベース変数を構成する
-
-WordPress アプリをこの新しい MySQL サーバーに接続するには、いくつかの WordPress 固有の環境変数を構成します。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
-```
-
-アプリ設定が作成されると、Cloud Shell に、次の例のような情報が表示されます。
-
-```json
-[
-  {
-    "name": "WORDPRESS_DB_HOST",
-    "slotSetting": false,
-    "value": "<mysql-server-name>.mysql.database.azure.com"
-  },
-  {
-    "name": "WORDPRESS_DB_USER",
-    "slotSetting": false,
-    "value": "adminuser@<mysql-server-name>"
-  },
-  {
-    "name": "WORDPRESS_DB_NAME",
-    "slotSetting": false,
-    "value": "wordpress"
-  },
-  {
-    "name": "WORDPRESS_DB_PASSWORD",
-    "slotSetting": false,
-    "value": "My5up3rStr0ngPaSw0rd!"
-  }
-]
-```
-
-### <a name="add-persistent-storage"></a>永続的ストレージを追加する
-
-マルチコンテナーは Web App for Containers で実行されています。 ファイルは保持されないので、再起動時にデータは消去されます。 このセクションでは、WordPress コンテナーに[永続的なストレージを追加](configure-custom-container.md#use-persistent-shared-storage)します。
-
-### <a name="configure-environment-variables"></a>環境変数を構成する
-
-永続的なストレージを使用するには、App Service 内でこの設定を有効にします。 この変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
-```
-
-アプリ設定が作成されると、Cloud Shell に、次の例のような情報が表示されます。
-
-```json
-[
-  {
-    "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
-    "slotSetting": false,
-    "value": "TRUE"
-  }
-]
-```
-
-### <a name="browse-to-the-app"></a>アプリの参照
-
-展開されたアプリ (`http://<app-name>.azurewebsites.net`) を参照します。
-
-このアプリは、Web App for Containers で複数のコンテナーを実行しています。
-
-![Web App for Containers のサンプル マルチコンテナー アプリ][1]
-
-**おめでとうございます**。Web App for Containers にマルチコンテナー アプリを作成しました。
-
-Redis を使用するには、[WordPress を Redis に接続する](#connect-wordpress-to-redis)手順に従ってください。
 
 ## <a name="find-docker-container-logs"></a>Docker コンテナー ログを検索する
 
@@ -676,7 +521,6 @@ Redis を使用するには、[WordPress を Redis に接続する](#connect-wor
 このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 > * Web App for Containers で使用できるように Docker Compose の構成を変換する
-> * Web App for Containers で使用できるように Kubernetes の構成を変換する
 > * Azure にマルチコンテナー アプリを展開する
 > * アプリケーションの設定を追加する
 > * コンテナーに永続的ストレージを使用する

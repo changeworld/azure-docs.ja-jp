@@ -14,16 +14,18 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793953"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230630"
 ---
-# <a name="what-is-api-management"></a>API Management とは
+# <a name="about-api-management"></a>API Management について
 
-API Management (APIM) が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。 どの企業も、その業務をデジタル プラットフォームで拡大し、新しい販路と顧客を開拓すると共に、既存の顧客との絆を深めようと模索しています。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 Azure API Management を任意のバックエンドで実行し、それに基づいて本格的な API プログラムを起動できます。
+API Management (APIM) は、既存のバックエンドのサービスに対して一貫性のある最新の API ゲートウェイを迅速に作成する手段です。
+
+API Management が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。 どの企業も、その業務をデジタル プラットフォームで拡大し、新しい販路と顧客を開拓すると共に、既存の顧客との絆を深めようと模索しています。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 Azure API Management を任意のバックエンドで実行し、それに基づいて本格的な API プログラムを起動できます。
 
 この記事では、APIM に関連する一般的なシナリオの概要について説明します。  また、APIM システムの主要コンポーネントの概要についても説明します。 さらに、各コンポーネントの詳細な概要を示します。
 

@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 04/18/2019
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 91297a02966000899ab79dfb86446890e9c4439a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148711"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414021"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
 
@@ -48,7 +48,8 @@ Media Services を使うと、クラウドでさまざまなメディア ワー�
 
 Media Services v3 を使用して、コンテンツのエンコードとパッケージ化、オンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 
-開発を始める前に、[基本的な概念](concepts-overview.md)を確認してください。<br/>
+> [!TIP]
+> 開発を開始する前に、以下を確認してください。<br/>* [基本的な概念](concepts-overview.md) (パッケージ化、エンコード、保護などの重要な概念を含む)<br/>* [Media Services v3 API を使用した開発](media-services-apis-overview.md) (API へのアクセスや名前付け規則などに関する情報を含む)
 
 ### <a name="quickstarts"></a>クイック スタート  
 
@@ -86,9 +87,5 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 ## <a name="next-steps"></a>次の手順
 
-v3 の利用を始める方法 
-
-> [!div class="nextstepaction"]
-> [基本的な概念を理解する](concepts-overview.md)<br/>
-> [Media Services v3 API と SDK を使用して開発する](developers-guide.md) 
+[基本的な概念を理解する](concepts-overview.md)
 

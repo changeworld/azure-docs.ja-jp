@@ -9,27 +9,27 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
-ms.devlang: na
+ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cf872766a18c5691f6c094d71a0c29f6bcf736da
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579038"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408826"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
-ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、その場で変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。 
+ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、その場で変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。
 
 アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。 また、アプリ構成ストアにおける変更を常時監視して取得するように、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 ポーリングの定期的な間隔を定義します。
 
 このチュートリアルでは、自分が作成するコードに、構成の動的更新を実装する方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+このチュートリアルの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -39,13 +39,13 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
+このチュートリアルを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
-1. Program.cs を開き、`config.AddAzureAppConfiguration()` メソッドを追加して `CreateWebHostBuilder` メソッドを更新します。
+1. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを追加して `CreateWebHostBuilder` メソッドを更新します。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -64,7 +64,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
     `.Watch` メソッドの第 2 パラメーターは、ポーリング間隔です。ASP.NET クライアント ライブラリは、この間隔でアプリ構成ストアを照会します。 クライアント ライブラリは、特定の構成設定をチェックして、変更が発生したかどうかを確認します。
 
-2. 新しい `Settings` クラスを定義して実装する Settings.cs ファイルを追加します。
+2. 新しい `Settings` クラスを定義して実装する *Settings.cs* ファイルを追加します。
 
     ```csharp
     namespace TestAppConfig
@@ -79,7 +79,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     }
     ```
 
-3. Startup.cs を開き、構成データを `Settings` クラスにバインドするように `ConfigureServices` メソッドを更新します。
+3. *Startup.cs* を開き、構成データを `Settings` クラスにバインドするように `ConfigureServices` メソッドを更新します。
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,13 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 ## <a name="use-the-latest-configuration-data"></a>最新の構成データを使用する
 
-1. Controllers ディレクトリの HomeController.cs を開きます。 `HomeController` クラスを更新して、依存関係の挿入を通じて `Settings` を受け取り、その値を利用するようにします。
+1. Controllers ディレクトリにある *HomeController.cs* を開いて、`Microsoft.Extensions.Options` パッケージへの参照を追加します。
+
+    ```csharp
+    using Microsoft.Extensions.Options;
+    ```
+
+2. `HomeController` クラスを更新して、依存関係の挿入を通じて `Settings` を受け取り、その値を利用するようにします。
 
     ```csharp
     public class HomeController : Controller
@@ -121,7 +127,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     }
     ```
 
-2. Views の Home ディレクトリにある Index.cshtml を開いて、内容を次のスクリプトに置き換えます。
+3. Views の Home ディレクトリにある *Index.cshtml* を開いて、内容を次のスクリプトに置き換えます。
 
     ```html
     <!DOCTYPE html>
@@ -160,11 +166,11 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 4. [Azure Portal](https://aka.ms/azconfig/portal) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストア インスタンスを選択します。
 
-5. **[キー/値のエクスプローラー]** を選択して以下のキーの値を更新します。
+5. **[Configuration Explorer]\(構成エクスプローラー)\** を選択して次のキーの値を更新します。
 
     | キー | 値 |
     |---|---|
-    | TestAppSettings:BackgroundColor | blue |
+    | TestAppSettings:BackgroundColor | green |
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Data from Azure App Configuration - now with live updates! |
 

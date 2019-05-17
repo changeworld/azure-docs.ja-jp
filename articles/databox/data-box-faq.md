@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/25/2019
+ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4308eea3384b20f21ffcf378f711a705f9f9e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077345"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473259"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -36,12 +36,12 @@ Microsoft Azure Data Box ハイブリッド ソリューションにより、転
 A.  Azure Data Box サービスは、オフラインでのデータ インジェストを意図して設計されています。 このサービスでは、データ転送用にすべて調整された、さまざまなストレージ容量の製品各種を管理します。 
 
 ### <a name="q-what-is-azure-data-box"></a>Q. Azure Data Box とは何ですか?
-A. Azure Data Box により、Azure との間で、数テラバイトのデータを迅速、安価かつ安全に転送できます。 Data Box デバイスは、Azure portal から注文します。 Microsoft は、80 TB の容量が使用できるストレージ デバイスを地域の運送業者経由で配送しています。 
+A. Azure Data Box を使用すると、テラバイト単位のデータを迅速、安価かつ安全に Azure に転送できます。 Data Box デバイスは、Azure portal から注文します。 Microsoft は、80 TB の容量が使用できるストレージ デバイスを地域の運送業者経由で配送しています。 
 
 デバイスを受け取ったら、ローカル Web UI を使用してすぐに設定できます。 データをサーバーからデバイスにコピーし、デバイスを Azure に返送します。 そのデータは、Azure のデータセンターにてデバイスから Azure へと自動的にアップロードされます。 プロセス全体は、Azure portal の Data Box サービスでエンド ツー エンドで追跡できます。
 
 ### <a name="q-when-should-i-use-data-box"></a>Q. Data Box はどのようなときに使用すべきでしょうか?
-A. Azure に転送するデータが 40 TB から 500 TB であるならば、Data Box を有効活用できるでしょう。 データ サイズが 40 TB 以下の場合は Data Box Disk を使用し、500 TB 以上の場合は Data Box Heavy にサインアップしてください。
+A. Azure に転送するデータが 40 TB から 500 TB であるならば、Data Box を有効活用できるでしょう。 データ サイズが 40 TB 未満の場合は Data Box Disk を使用し、500 TB を超える場合は [Data Box Heavy](data-box-heavy-overview.md) にサインアップしてください。
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Q. Data Box の価格を教えてください。
 A. Data Box は 10 日間の標準料金でご利用いただけます。 Azure portal で注文を作成中に製品モデルを選択すると、デバイスの料金が表示されます。 配送も無料ですが、Azure のストレージについては料金が適用されます。 詳細については、[Azure Data Box の価格](https://azure.microsoft.com/pricing/details/storage/databox/)に関するページを参照してください。 
@@ -50,7 +50,7 @@ A. Data Box は 10 日間の標準料金でご利用いただけます。 Azure 
 A. Data Box の原容量は 100 TB であり、使用可能な容量は 80 TB です。 Data Box により、最大 80 TB のデータを転送できます。 より多くのデータを転送するには、さらに多くのディスクを注文する必要があります。
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>Q. どのようにしたら自分のリージョンで Data Box が利用できるかを確認できますか? 
-A.  Data Box が利用できる国については、「[利用可能なリージョン](data-box-overview.md#region-availability)」を参照してください。  
+A.  Data Box を利用できる国や地域については、「[利用可能なリージョン](data-box-overview.md#region-availability)」をご覧ください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. Data Box では、どのリージョンでデータを保存できますか?
 A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国でサポートされています。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。

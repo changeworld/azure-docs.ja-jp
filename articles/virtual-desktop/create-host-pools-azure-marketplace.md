@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: c4ab209d63a01d9e1089eec351eff64fc116f403
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924974"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236798"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
@@ -70,7 +70,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 1. テナントが含まれるテナント グループの **Windows Virtual Desktop テナント グループ名**を入力します。 具体的に予定していたテナント グループ名がなければ、既定値をそのまま採用してください。
 2. このホスト プールの作成先となるテナントの **Windows Virtual Desktop テナント名**を入力します。
-3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 **[サービス プリンシパル]** を選択した場合には、そのサービス プリンシパルに関連付けられている **Azure AD テナント ID** も入力する必要があります。
+3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 「[PowerShell を使用してサービス プリンシパルとロールの割り当てを作成するチュートリアル](./create-service-principal-role-powershell.md)」を完了したら、**[サービス プリンシパル]** を選択します。 次に、サービス プリンシパルを含む Azure Active Directory の **Azure AD テナント ID** を入力する必要があります。
 4. テナント管理者アカウントの資格情報を入力します。 パスワード資格情報が設定されているサービス プリンシパルのみサポートされます。
 5. **[OK]** を選択します。
 

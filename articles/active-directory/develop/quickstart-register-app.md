@@ -1,10 +1,10 @@
 ---
-title: Microsoft ID プラットフォームにアプリを登録する (プレビュー) | Azure
+title: Microsoft ID プラットフォームにアプリを登録する - Microsoft ID プラットフォーム
 description: Microsoft ID プラットフォームにアプリケーションを追加および登録する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,33 +12,29 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/02/2018
-ms.author: celested
+ms.date: 05/09/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 366d6fe8921a5330f48da2879444e0b80cbc9bd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6943ad460bb5d852220e704492f892961992a59f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090714"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413603"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する (プレビュー)
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
 エンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、商用クラウド サービスまたは基幹業務アプリケーションを開発し、それらを Microsoft ID プラットフォームと統合することによって、自社のサービスにセキュリティで保護されたサインインと認可を実現することができます。
 
-このクイック スタートでは、Azure portal で**アプリの登録 (プレビュー)** エクスペリエンスを使用してアプリケーションを追加および登録し、Microsoft ID プラットフォームと統合できるようにする方法を説明します。 新しいアプリ登録エクスペリエンスに追加された機能と強化された機能について詳しくは、[こちらのブログ記事](https://developer.microsoft.com/graph/blogs/new-app-registration/)を参照してください。 
-
-## <a name="prerequisite"></a>前提条件
-
-まず、Azure portal でアプリを登録するためのプレビュー エクスペリエンスをオプトインする必要があります。 このクイック スタートの手順は新しい UI に対応しており、プレビュー エクスペリエンスをオプトインした場合にのみ機能します。
+このクイック スタートでは、Azure portal で**アプリの登録**エクスペリエンスを使用してアプリケーションを追加および登録し、Microsoft ID プラットフォームと統合できるようにする方法を説明します。 新しいアプリ登録エクスペリエンスに追加された機能と強化された機能について詳しくは、[こちらのブログ記事](https://developer.microsoft.com/graph/blogs/new-app-registration/)を参照してください。
 
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Azure portal を使用して新しいアプリケーションを登録します
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)] > [新規登録]** を選択します。
+1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録] > [新規登録]** を選択します。
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 
    - **[名前]** - アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。

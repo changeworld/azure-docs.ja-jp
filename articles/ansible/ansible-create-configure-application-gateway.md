@@ -1,46 +1,44 @@
 ---
-title: Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
+title: チュートリアル - Ansible を使用して Azure Application Gateway で Web トラフィックを管理する | Microsoft Docs
 description: Ansible を使用して Azure Application Gateway を作成および構成し、Web トラフィックを管理する方法について説明する
-ms.service: azure
 keywords: Ansible、Azure、DevOps、Bash、プレイブック、アプリケーションゲートウェイ、ロード バランサー、Web トラフィック
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 09/20/2018
-ms.openlocfilehash: 83f21573af7ec523acc376c4b3364cdcfb47f96f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 9f8ed3e1da72db3e1b13d5d2aef1cce8fc3922a2
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792142"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231260"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
+# <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>チュートリアル:Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 
-[Azure アプリケーション ゲートウェイ](https://docs.microsoft.com/azure/application-gateway/)は、アプリケーションに対するトラフィックを管理できる Web トラフィック ロードバランサーです。
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-Ansible は、環境内のリソースのデプロイと構成を自動化するために役立ちます。 この記事では、Ansible を使用してアプリケーション ゲートウェイを作成する方法を示します。 ゲートウェイを使用して、Azure コンテナー インスタンスで実行されている 2 つの Web サーバーへのトラフィックを管理する方法も説明します。
+[Azure アプリケーション ゲートウェイ](/azure/application-gateway/overview)は、アプリケーションに対するトラフィックを管理できる Web トラフィック ロードバランサーです。 従来のロード バランサーは、ソース IP アドレスとポートに基づいて、トラフィックを宛先 IP アドレスとポートにルーティングします。 Application Gateway では、URL を基にトラフィックのルーティング先を細かく制御できます。 たとえば、URL のパスが `images` である場合に、イメージ用に構成された特定のサーバー セット (プール) にトラフィックがルーティングされるように定義することができます。
 
-このチュートリアルでは、次の操作方法について説明します。
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
-> * ネットワークのセットアップ
+>
+> * ネットワークの設定
 > * HTTPD イメージを使用して 2 つの Azure コンテナー インスタンスを作成する
 > * サーバー プールで Azure コンテナー インスタンスと共に動作するアプリケーション ゲートウェイを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-
-> [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。  
+このセクションのプレイブック コードでは、Azure リソース グループを作成します。 リソース グループは、Azure リソースが構成される論理コンテナーです。  
 
-次の例では、**myResourceGroup** という名前のリソース グループを **eastus** に作成します。
+次のプレイブックを `rg.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -54,7 +52,12 @@ Ansible は、環境内のリソースのデプロイと構成を自動化する
         location: "{{ location }}"
 ```
 
-このプレイブックを *rg.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+プレイブックを実行する前に、次の注意事項を参照してください。
+
+- リソース グループ名は `myResourceGroup` です。 この値はチュートリアル全体で使用されます。
+- リソース グループが作成される場所は `eastus` です。
+
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
 ansible-playbook rg.yml
@@ -62,9 +65,9 @@ ansible-playbook rg.yml
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-まず、アプリケーション ゲートウェイが他のリソースと通信できるように、仮想ネットワークを作成します。
+このセクションのプレイブック コードでは、仮想ネットワークを作成してアプリケーション ゲートウェイが他のリソースと通信できるようにします。
 
-次の例では、**myVNet** という名前の仮想ネットワーク、**myAGSubnet** という名前のサブネット、**myAGPublicIPAddress** という名前のパブリック IP アドレス、および **mydomain** という名前のドメインを作成します。
+次のプレイブックを `vnet_create.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -102,7 +105,12 @@ ansible-playbook rg.yml
         domain_name_label: "{{ publicip_domain }}"
 ```
 
-このプレイブックを *vnet_create.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+プレイブックを実行する前に、次の注意事項を参照してください。
+
+* `vars` セクションには、ネットワーク リソースの作成に使用される値が含まれています。 
+* これらの値は、ご使用の環境に合わせて変更する必要があります。
+
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
 ansible-playbook vnet_create.yml
@@ -110,7 +118,9 @@ ansible-playbook vnet_create.yml
 
 ## <a name="create-servers"></a>サーバーを作成する
 
-次の例では、HTTPD イメージを使用して 2 つの Azure コンテナー インスタンスを作成し、アプリケーション ゲートウェイの Web サーバーとして使用する方法を示しています。  
+このセクションのプレイブック コードでは、HTTPD イメージを使用して 2 つの Azure コンテナー インスタンスを作成し、アプリケーション ゲートウェイの Web サーバーとして使用できるようにします。  
+
+次のプレイブックを `aci_create.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -153,7 +163,7 @@ ansible-playbook vnet_create.yml
               - 80
 ```
 
-このプレイブックを *aci_create.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
 ansible-playbook aci_create.yml
@@ -161,14 +171,9 @@ ansible-playbook aci_create.yml
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-次の例では、バックエンド、フロントエンド、および HTTP を構成した、**myAppGateway** という名前アプリケーション ゲートウェイを作成します。  
+このセクションのプレイブック コードでは、`myAppGateway` という名前のアプリケーション ゲートウェイを作成します。  
 
-* **appGatewayIP** は、**gateway_ip_configurations** ブロックで定義されています。 ゲートウェイの IP 構成には、サブネット参照が必要です。
-* **appGatewayBackendPool** は、**backend_address_pools** ブロックで定義されています。 アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
-* **appGatewayBackendHttpSettings** は、**backend_http_settings_collection** ブロックで定義されています。 これは、通信にポート 80 と HTTP プロトコルを使用することを指定しています。
-* **appGatewayHttpListener** は、**backend_http_settings_collection** ブロックで定義されています。 これは、appGatewayBackendPool に関連付けられている既定のリスナーです。
-* **appGatewayFrontendIP** は、**frontend_ip_configurations** ブロックで定義されています。 これは、myAGPublicIPAddress を appGatewayHttpListener に割り当てます。
-* **rule1** は、**request_routing_rules** ブロックで定義されています。 これは、appGatewayHttpListener に関連付けられている既定のルーティング規則です。
+次のプレイブックを `appgw_create.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -252,7 +257,16 @@ ansible-playbook aci_create.yml
             name: rule1
 ```
 
-このプレイブックを *appgw_create.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+プレイブックを実行する前に、次の注意事項を参照してください。
+
+* `gateway_ip_configurations` ブロックでは `appGatewayIP` が定義されます。 ゲートウェイの IP 構成には、サブネット参照が必要です。
+* `backend_address_pools` ブロックでは `appGatewayBackendPool` が定義されます。 アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
+* `backend_http_settings_collection` ブロックでは `appGatewayBackendHttpSettings` が定義されます。 ここでは、通信にポート 80 と HTTP プロトコルを使用するように指定します。
+* `backend_http_settings_collection` ブロックでは `appGatewayHttpListener` が定義されます。 これは、appGatewayBackendPool に関連付けられている既定のリスナーです。
+* `frontend_ip_configurations` ブロックでは `appGatewayFrontendIP` が定義されます。 これは、myAGPublicIPAddress を appGatewayHttpListener に割り当てます。
+* `request_routing_rules` ブロックでは `rule1` が定義されます。 これは、appGatewayHttpListener に関連付けられている既定のルーティング規則です。
+
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
 ansible-playbook appgw_create.yml
@@ -262,13 +276,23 @@ ansible-playbook appgw_create.yml
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ネットワーク リソースのサンプル プレイブックで、**eastus** にドメイン **mydomain** を作成しました。 ブラウザーで `http://mydomain.eastus.cloudapp.azure.com` にアクセスします。 次のページが表示されたら、アプリケーション ゲートウェイは期待どおりに動作しています。
+1. 「[リソース グループの作成](#create-a-resource-group)」セクションで場所を指定します。 その値を書き留めておいてください。
 
-![動作中のアプリケーション ゲートウェイの成功したテスト](media/ansible-create-configure-application-gateway/applicationgateway.PNG)
+1. 「[ネットワーク リソースを作成する](#create-network-resources)」セクションでドメインを指定します。 その値を書き留めておいてください。
+
+1. テスト URL 用に、次のパターンをこの場所とドメインで置き換えます。`http://<domain>.<location>.cloudapp.azure.com`
+
+1. テスト URL にアクセスします。
+
+1. 次のページが表示されたら、アプリケーション ゲートウェイは期待どおりに動作しています。
+
+    ![動作中のアプリケーション ゲートウェイの成功したテスト](media/ansible-application-gateway-configure/application-gateway.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-これらのリソースが不要な場合は、次のコードを実行することでこれらを削除できます。 これは **myResourceGroup** という名前のリソース グループを削除します。
+この記事で作成したリソースが不要になったら、削除してください。 
+
+次のコードを `cleanup.yml` として保存します。
 
 ```yml
 - hosts: localhost
@@ -281,13 +305,13 @@ ansible-playbook appgw_create.yml
         state: absent
 ```
 
-このプレイブックを *rg_delete*.yml として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
 ```bash
-ansible-playbook rg_delete.yml
+ansible-playbook cleanup.yml
 ```
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure 上の Ansible](https://docs.microsoft.com/azure/ansible/)
+> [Azure 上の Ansible](/azure/ansible/)

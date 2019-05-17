@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: assafi
-ms.openlocfilehash: e7b07472623cc459c31906aeaa6ccfb4388b4b50
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c521be03f884227116a21c8c5396d47cdd1ae253
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146085"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466534"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:C# を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -136,17 +136,11 @@ API の技術ドキュメントについては、[API の定義](https://westus.
 ## <a name="sentiment-analysis"></a>センチメント分析
 
 1. 上記で作成したクライアントを受け取る `SentimentAnalysisExample()` という新しい関数を作成します。
-2. `ApiKeyServiceClientCredentials` をパラメーターとして新しい `TextAnalyticsClient` オブジェクトを作成した後、分析するドキュメントを含む `MultiLanguageInput` オブジェクトのリストを生成します。
+2. 分析するドキュメントを含む `MultiLanguageInput` オブジェクトの一覧を生成します。
 
     ```csharp
-    public static async Task SentimentAnalysisExample(string endpoint, string key)
+    public static async Task SentimentAnalysisExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
-
         // The documents to be analyzed. Add the language of the document. The ID can be any value.
         var inputDocuments = new MultiLanguageBatchInput(
             new List<MultiLanguageInput>
@@ -184,16 +178,11 @@ Document ID: 4 , Sentiment Score: 1.00
 ## <a name="language-detection"></a>言語検出
 
 1. 上記で作成したクライアントを受け取る `DetectLanguageExample()` という新しい関数を作成します。
-2. `ApiKeyServiceClientCredentials` をパラメーターとして新しい `TextAnalyticsClient` オブジェクトを作成した後、ドキュメントを含む `LanguageInput` オブジェクトのリストを生成します。
+2. ドキュメントを含む `LanguageInput` オブジェクトの一覧を生成します。
 
     ```csharp
-    public static async Task DetectLanguageExample(string endpoint, string key)
+    public static async Task DetectLanguageExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
 
         // The documents to be submitted for language detection. The ID can be any value.
         var inputDocuments = new LanguageBatchInput(
@@ -231,16 +220,11 @@ Document ID: 3 , Language: Chinese_Simplified
 ## <a name="entity-recognition"></a>エンティティの認識
 
 1. 上記で作成したクライアントを受け取る `RecognizeEntitiesExample()` という新しい関数を作成します。
-2. `ApiKeyServiceClientCredentials` をパラメーターとして新しい `TextAnalyticsClient` オブジェクトを作成した後、ドキュメントを含む `MultiLanguageBatchInput` オブジェクトのリストを生成します。
+2. ドキュメントを含む `MultiLanguageBatchInput` オブジェクトの一覧を生成します。
 
     ```csharp
-    public static async Task RecognizeEntitiesExample(string endpoint, string key)
+    public static async Task RecognizeEntitiesExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
 
         // The documents to be submitted for entity recognition. The ID can be any value.
         var inputDocuments = new MultiLanguageBatchInput(
@@ -309,17 +293,11 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 
 1. 上記で作成したクライアントを受け取る `KeyPhraseExtractionExample()` という新しい関数を作成します。
-2. `ApiKeyServiceClientCredentials` をパラメーターとして新しい `TextAnalyticsClient` オブジェクトを作成した後、ドキュメントを含む `MultiLanguageBatchInput` オブジェクトのリストを生成します。
+2. ドキュメントを含む `MultiLanguageBatchInput` オブジェクトの一覧を生成します。
 
     ```csharp
-    public static async Task KeyPhraseExtractionExample(string endpoint, string key)
+    public static async Task KeyPhraseExtractionExample(TextAnalyticsClient client)
     {
-        var credentials = new ApiKeyServiceClientCredentials(key);
-        var client = new TextAnalyticsClient(credentials)
-        {
-            Endpoint = endpoint
-        };
-
         var inputDocuments = new MultiLanguageBatchInput(
                     new List<MultiLanguageInput>
                     {

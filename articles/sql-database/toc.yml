@@ -368,7 +368,7 @@
   items:
     - name: 概要
       href: sql-database-howto.md
-    - name: 単一データベース
+    - name: 単一データベースとエラスティック プール
       items:
         - name: 概要
           href: sql-database-howto-single-database.md
@@ -720,6 +720,10 @@
       href: sql-database-glossary-terms.md
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-sql-database
+    - name: SQL Server のブログ
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Microsoft Azure のブログ
+      href: 'https://azure.microsoft.com/blog/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: パブリック データ セット

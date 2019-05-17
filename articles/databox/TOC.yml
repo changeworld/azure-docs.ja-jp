@@ -36,6 +36,8 @@
           items:
             - name: 安全性のガイドラインを読む
               href: data-box-safety.md
+            - name: 追跡とログ記録
+              href: data-box-logs.md
             - name: 要件を確認する
               items:
                 - name: Data Box の場合

@@ -1,34 +1,52 @@
 ---
-title: Ansible を使用して Azure App Service Web アプリをスケーリングする
-description: Linux 上の App Service で、Ansible を使用して、Java 8 と Tomcat コンテナー ランタイムを使った Web アプリを作成する方法について学習します。
-ms.service: azure
+title: チュートリアル - Ansible を使用して Azure App Service のアプリをスケーリングする | Microsoft Docs
+description: Azure App Service のアプリをスケールアップする方法について説明します
 keywords: ansible, azure, devops, bash, プレイブック, Azure App Service, Web アプリ, スケール, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792278"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230952"
 ---
-# <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Ansible を使用して Azure App Service Web アプリをスケーリングする
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドをホストします。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>チュートリアル:Ansible を使用して Azure App Service のアプリをスケーリングする
 
-Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 この記事では、Ansible を使用して Azure App Service でアプリのスケールを変更する方法について説明します。
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * 既存の App Service プランのファクトを取得する
+> * App Service プランを 3 つのワーカーを持つ S2 にスケールアップする
 
 ## <a name="prerequisites"></a>前提条件
-- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **Azure App Service Web Apps** - Azure アプリ サービス Web アプリがまだない場合は、[Ansible を使用して Azure Web アプリを作成](ansible-create-configure-azure-web-apps.md)できます。
 
-## <a name="scale-up-an-app-in-app-service"></a>App Service でのアプリのスケールアップ
-スケールアップするには、アプリが属している App Service プランの価格レベルを変更します。 このセクションでは、次の操作を定義するサンプルの Ansible プレイブックを示します。
-- 既存の App Service プランのファクトを取得する
-- App Service プランを 3 つのワーカーを持つ S2 に更新します。
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+- **Azure App Service アプリ** - Azure App Service アプリがない場合は、[Ansible を使用して Azure App Service でアプリを構成](ansible-create-configure-azure-web-apps.md)します。
+
+## <a name="scale-up-an-app"></a>アプリのスケールアップ
+
+スケーリングには、"*スケールアップ*" と "*スケールアウト*" の 2 つのワークフローがあります。
+
+**スケールアップ:** スケールアップとは、リソースを追加で取得することです。 対象となるリソースには、CPU、メモリ、ディスク領域、VM などがあります。 アプリをスケールアップするには、アプリが属している App Service プランの価格レベルを変更します。 
+**スケールアウト:** スケールアウトとは、アプリを実行する VM インスタンスの数を増やすことです。 App Service プランの価格レベルに応じて、最大 20 個のインスタンスまでスケールアウトできます。 [自動スケーリング](/azure/azure-monitor/platform/autoscale-get-started)を使用すると、事前に定義したルールとスケジュールに基づいてインスタンス数を自動的にスケーリングできます。
+
+このセクションのプレイブック コードでは、次の操作を定義します。
+
+* 既存の App Service プランのファクトを取得する
+* App Service プランを 3 つのワーカーを持つ S2 に更新します。
+
+次のプレイブックを `webapp_scaleup.yml` という名前で保存します。
 
 ```yml
 - hosts: localhost
@@ -66,26 +84,26 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
       var: facts.appserviceplans[0].sku
 ```
 
-このプレイブックを *webapp_scaleup.yml* として保存します。
+`ansible-playbook` コマンドを使用してプレイブックを実行します。
 
-プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-プレイブックを実行すると、次の例のような出力が表示され、App Service プランが、ワーカーが 3 つある S2 に正常に更新されたことが示されます。
-```Output
-PLAY [localhost] **************************************************************
+プレイブックを実行すると、次の結果のような出力が表示されます。
 
-TASK [Gathering Facts] ********************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Get facts of existing App service plan] **********************************************************
+TASK [Get facts of existing App service plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]
 
-TASK [debug] ******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 1,
@@ -96,13 +114,13 @@ ok: [localhost] => {
     }
 }
 
-TASK [Scale up the App service plan] *******************************************
+TASK [Scale up the App service plan] 
 changed: [localhost]
 
-TASK [Get facts] ***************************************************************
+TASK [Get facts] 
 ok: [localhost]
 
-TASK [debug] *******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 3,
@@ -113,10 +131,11 @@ ok: [localhost] => {
     }
 }
 
-PLAY RECAP **********************************************************************
+PLAY RECAP 
 localhost                  : ok=6    changed=1    unreachable=0    failed=0 
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 > [!div class="nextstepaction"] 
-> [Azure 上の Ansible](https://docs.microsoft.com/azure/ansible/)
+> [Azure 上の Ansible](/azure/ansible/)
