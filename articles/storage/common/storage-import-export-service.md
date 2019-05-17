@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164928"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413905"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -125,7 +125,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 |米国西部     |西ヨーロッパ         | インド南部        | US DoD East        |
 |米国東部 2    | 東アジア        |  インド西部        | US DoD Central        |
 |米国西部 2     | 東南アジア        | カナダ中部        | 中国 (東部)         |
-|米国中央部     | オーストラリア東部        | カナダ東部        | 中国 (北部)        |
+|米国中部     | オーストラリア東部        | カナダ東部        | 中国 (北部)        |
 |米国中北部     |  オーストラリア南東部       | ブラジル南部        | 英国南部        |
 |米国中南部     | 西日本        |韓国中部         | ドイツ中部        |
 |米国中西部     |  東日本       | 米国政府バージニア州        | ドイツ北東部        |
@@ -160,7 +160,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 
 **トランザクション料金**
 
-データを Azure Storage にインポートするときに、標準のストレージ トランザクション料金の他に、追加のトランザクション料金は必要ありません。 Blob Storage からデータをエクスポートするときは、標準の送信料金が適用されます。 トランザクション料金の詳細については、[データ転送の価格](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
+[標準のストレージ トランザクション料金](https://azure.microsoft.com/pricing/details/storage/)は、データのインポートとエクスポートの間に適用されます。 Azure Storage からデータをエクスポートするときは、ストレージ トランザクション料金に加えて、標準のエグレス料金も適用されます。 エグレス料金の詳細については、[データ転送の料金](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
 
 
 

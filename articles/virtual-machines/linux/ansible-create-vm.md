@@ -1,30 +1,31 @@
 ---
-title: Ansible を使用して Azure に Linux 仮想マシンを作成する
-description: Ansible を使用して Azure に Linux 仮想マシンを作成する方法について説明します。
-ms.service: virtual-machines-linux
+title: クイックスタート - Ansible を使用して Azure で Linux 仮想マシンを構成する | Microsoft Docs
+description: このクイック スタートでは、Ansible を使用して Azure で Linux 仮想マシンを作成する方法について説明します
 keywords: Ansible, Azure, DevOps, 仮想マシン
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: quickstart
-ms.date: 08/22/2018
-ms.openlocfilehash: 38cc6cd8f375fe7c60a706541bc74313e8ea2c4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/30/2019
+ms.openlocfilehash: ce99b537dd5958c2bec43759c58a9c182dd05142
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090255"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237046"
 ---
-# <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Ansible を使用して Azure に Linux 仮想マシンを作成する
-Ansible には宣言型の言語が使用され、Azure リソースの作成、構成、デプロイを Ansible の "*プレイブック*" で自動化することができます。 この記事の各セクションでは、Linux 仮想マシンのさまざまな要素を作成、構成する Ansible プレイブックの各セクションに注目します。 この記事の最後には、[Ansible プレイブック全体](#complete-sample-ansible-playbook)を掲載しています。
+# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを構成する
+
+Ansible には宣言型の言語が使用され、Azure リソースの作成、構成、デプロイを Ansible の "*プレイブック*" で自動化することができます。 この記事では、Linux 仮想マシンを構成するための Ansible プレイブックのサンプルを示します。 この記事の最後には、[Ansible プレイブック全体](#complete-sample-ansible-playbook)を掲載しています。
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
+
 Ansible では、リソースのデプロイ先となるリソース グループが必要です。 次のサンプル Ansible プレイブック セクションでは、`myResourceGroup` という名前のリソース グループを `eastus` という場所に作成します。
 
 ```yaml
@@ -35,6 +36,7 @@ Ansible では、リソースのデプロイ先となるリソース グルー�
 ```
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+
 Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/azure/virtual-network/virtual-networks-overview)を作成するか、既存の仮想ネットワークを使用する必要があります。 仮想ネットワークにおける仮想マシンへの望ましいアクセス方法を決定する必要もあります。 次のサンプル Ansible プレイブック セクションでは、`myVnet` という名前の仮想ネットワークを `10.0.0.0/16` アドレス空間に作成します。
 
 ```yaml
@@ -59,7 +61,12 @@ Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/a
 ```
 
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-インターネット リソースから Azure リソースに入ってくる通信には、[パブリック IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)が使用されます。 また、Azure リソースからインターネットに出て行く通信や、Azure リソースから公開 Azure サービス (リソースに IP アドレスが割り当てられている Azure サービス) に出て行く通信にも、パブリック IP アドレスが使用されます。 このアドレスは、特定のリソース専用に確保され、明示的に割り当てが解除されない限り維持されます。 パブリック IP アドレスが割り当てられていなくても、リソースはインターネットに向けて通信することはできます。ただしその場合、そのリソース専用ではない空いている IP アドレスが Azure によって動的に割り当てられます。 
+
+
+
+
+
+インターネット リソースから Azure リソースに入ってくる通信には、[パブリック IP アドレス](/azure/virtual-network/virtual-network-ip-addresses-overview-arm)が使用されます。 また、パブリック IP アドレスにより、Azure リソースから公開されている Azure サービスへのアウトバウンド通信が可能になります。 どちらのシナリオでも、リソースに割り当てられた IP アドレスがアクセスされます。 そのアドレスは、割り当てが解除されるまで、そのリソース専用になります。 パブリック IP アドレスがリソースに割り当てられていない場合でも、リソースはインターネットにアウトバウンド通信できます。 接続は、Azure が使用可能な IP アドレスを動的に割り当てることによって行われます。 動的に割り当てられたアドレスは、リソース専用ではありません。
 
 次のサンプル Ansible プレイブック セクションでは、`myPublicIP` という名前のパブリック IP アドレスを作成します。
 
@@ -72,9 +79,10 @@ Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/a
 ```
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックは、[ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)を使ってフィルター処理できます。 ネットワーク セキュリティ グループには、いくつかの種類の Azure リソースとの受信ネットワーク トラフィックまたは送信ネットワーク トラフィックを許可または拒否するセキュリティ規則が含まれています。 
 
-次のサンプル Ansible プレイブック セクションでは、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成して、TCP ポート 22 で SSH トラフィックを許可するルールを定義しています。
+[ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)では、仮想ネットワーク内の Azure リソース間のネットワーク トラフィックがフィルター処理されます。 Azure リソースのインバウンド トラフィックとアウトバウンド トラフィックを制御するセキュリティ規則が定義されています。 Azure リソースとネットワーク セキュリティ グループについて詳しくは、「[Azure サービスの仮想ネットワーク統合](/azure/virtual-network/virtual-network-for-azure-services)」をご覧ください
+
+次のプレイブックでは、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成します。 そのネットワーク セキュリティ グループには、TCP ポート 22 での SSH トラフィックを許可する規則が含まれます。
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -90,11 +98,11 @@ Azure 仮想ネットワーク内の Azure リソースが送受信するネッ�
         direction: Inbound
 ```
 
-
 ## <a name="create-a-virtual-network-interface-card"></a>仮想ネットワーク インターフェイス カードの作成
+
 仮想ネットワーク インターフェイス カードは、仮想マシンを特定の仮想ネットワーク、パブリック IP アドレス、およびネットワーク セキュリティ グループに接続します。 
 
-サンプル Ansible プレイブックの次のセクションでは、作成した仮想ネットワーク リソースに接続された `myNIC` という名前の仮想ネットワーク インターフェイス カードを作成しています。
+サンプル Ansible プレイブックの次のセクションでは、作成した仮想ネットワーク リソースに接続された `myNIC` という名前の仮想ネットワーク インターフェイス カードが作成されます。
 
 ```yaml
 - name: Create virtual network inteface card
@@ -108,6 +116,7 @@ Azure 仮想ネットワーク内の Azure リソースが送受信するネッ�
 ```
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
+
 最後の手順は、この記事の先行セクションで作成したリソースをすべて使用する仮想マシンの作成です。 
 
 このセクションで紹介するサンプル Ansible プレイブック セクションは、`myVM` という名前の仮想マシンを作成し、`myNIC` という名前の仮想ネットワーク インターフェイス カードをアタッチするものです。 &lt;your-key-data> プレースホルダーは、実際に所有している完全な公開キー データに置き換えてください。
@@ -278,5 +287,6 @@ Azure 仮想ネットワーク内の Azure リソースが送受信するネッ�
     ```
 
 ## <a name="next-steps"></a>次の手順
+
 > [!div class="nextstepaction"] 
-> [Ansible を使用して Azure 内の Linux 仮想マシンを管理する](./ansible-manage-linux-vm.md)
+> [クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを管理する](./ansible-manage-linux-vm.md)

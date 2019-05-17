@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6dc497ac2afd54965485ff553bb25f47d7cf0491
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139335"
+ms.locfileid: "65205496"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -148,7 +148,7 @@ RA-GRS ストレージを使用するには、失敗した読み取り要求と�
 
 プライマリ リージョンの再試行の頻度を監視する方法は主に 3 つあります。これで、セカンダリ リージョンに切り替えてアプリケーションを読み取り専用モードにするタイミングを判断します。
 
-*   ストレージ要求に渡す [**OperationContext**](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) オブジェクトの [**Retrying**](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) イベントにハンドラーを追加します。この方法はこの記事で紹介しているほか、付属のサンプルでも使用されています。 これらのイベントはクライアントが要求を再試行するたびに呼び出されるので、プライマリ エンドポイントで再試行可能なエラーが発生した頻度を追跡できます。
+*   ストレージ要求に渡す [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) オブジェクトの [**Retrying**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) イベントにハンドラーを追加します。この方法はこの記事で紹介しているほか、付属のサンプルでも使用されています。 これらのイベントはクライアントが要求を再試行するたびに呼び出されるので、プライマリ エンドポイントで再試行可能なエラーが発生した頻度を追跡できます。
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -159,7 +159,7 @@ RA-GRS ストレージを使用するには、失敗した読み取り要求と�
     };
     ```
 
-*   カスタム再試行ポリシーの [**Evaluate**](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) メソッドで、再試行が行われるたびにカスタム コードを実行することができます。 これは、再試行の発生を記録するだけでなく、再試行の動作を見直す機会にもなります。
+*   カスタム再試行ポリシーの [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) メソッドで、再試行が行われるたびにカスタム コードを実行することができます。 これは、再試行の発生を記録するだけでなく、再試行の動作を見直す機会にもなります。
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

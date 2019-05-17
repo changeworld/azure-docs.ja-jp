@@ -5,19 +5,18 @@ services: functions
 keywords: OpenAPI, Swagger, クラウド アプリ, クラウド サービス,
 author: ggailey777
 manager: jeconnoc
-ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3ad304bc8f038d4009352dae72d70079828c26ba
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141539"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510483"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Azure API Management を使用した関数の OpenAPI 定義の作成
 
@@ -31,6 +30,7 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
 > * Azure で関数を作成する
 > * Azure API Management を使用して OpenAPI 定義を生成する
 > * 関数を呼び出して定義をテストする
+> * OpenAPI 定義をダウンロードする
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -133,13 +133,9 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
 
 OpenAPI 定義を生成する準備ができています。
 
-1. 関数アプリを選択してから、**[プラットフォーム機能]**、**[すべての設定]** の順に選択します。
+1. 関数アプリを選択した後、**[プラットフォーム機能]** で **[API Management]** を選択し、**[API Management]** で **[新規作成]** を選択します。
 
-    ![Azure Portal で関数をテストする](media/functions-openapi-definition/select-all-settings-openapi.png)
-
-1. 下へスクロールし、**[API Management]** > **[新規作成]** の順に選択して、新しい API Management インスタンスを作成します。
-
-    ![関数をリンクする](media/functions-openapi-definition/link-apim-openapi.png)
+    ![プラットフォーム機能で API Management を選択する](media/functions-openapi-definition/select-all-settings-openapi.png)
 
 1. 画像の下の表で指定されている API Management の設定を使用してください。
 
@@ -153,8 +149,7 @@ OpenAPI 定義を生成する準備ができています。
     | **場所** | 米国西部 | 場所には [米国西部] を選びます。 |
     | **組織名** | Contoso | 開発者ポータルとメール通知で使用する組織の名前。 |
     | **管理者のメール アドレス** | ご自分のメール アドレス | API Management からのシステム通知を受信したメール アドレス。 |
-    | **[価格レベル]** | Consumption (プレビュー) | 価格の詳細については、[API Management の価格に関するページ](https://azure.microsoft.com/pricing/details/api-management/)を参照してください。 |
-    | **Application Insights** | お使いのインスタンス | お使いの関数アプリが使用しているのと同じ Application Insights を使用します。 |
+    | **[価格レベル]** | Consumption (プレビュー) | 従量課金レベルはプレビュー段階であり、すべてのリージョンで使うことはできません。 価格の詳細については、[API Management の価格に関するページ](https://azure.microsoft.com/pricing/details/api-management/)を参照してください。 |
 
 1. **[作成]** を選択して、API Management インスタンスを作成します。これには数分かかる場合があります。
 
@@ -170,35 +165,40 @@ OpenAPI 定義を生成する準備ができています。
 
 これで、関数の API が作成されました。
 
-## <a name="test-the-openapi-definition"></a>OpenAPI 定義をテストする
+## <a name="test-the-api"></a>API をテストする
 
-API 定義を使用する前に、それが動作することを確認する必要があります。
+OpenAPI 定義を使用する前に、API が動作することを確認する必要があります。
 
-1. お使いの関数の **[テスト]** タブで、**POST** 操作を選択します。
+1. 関数の **[テスト]** タブで、**POST** 操作を選択します。
 
 1. **hours** と **capacity** の値を入力します。
 
-```json
-{
-"hours": "6",
-"capacity": "2500"
-}
-```
+    ```json
+    {
+    "hours": "6",
+    "capacity": "2500"
+    }
+    ```
 
 1. **[送信]** をクリックして HTTP 応答を確認します。
 
     ![関数 API をテストする](media/functions-openapi-definition/test-function-api-openapi.png)
 
+## <a name="download-the-openapi-definition"></a>OpenAPI 定義をダウンロードする
+
+API が意図したとおりに動作する場合は、OpenAPI 定義をダウンロードできます。
+
+1. ページの上部にある **[OpenAPI 定義をダウンロードする]** を選択します。
+   
+   ![OpenAPI 定義のダウンロード](media/functions-openapi-definition/download-definition.png)
+
+2. ダウンロードした JSON ファイルを開き、定義を確認します。
+
+[!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * Azure で関数を作成する
-> * Azure API Management を使用して OpenAPI 定義を生成する
-> * 関数を呼び出して定義をテストする
-
-次のトピックに進み、API Management について確認してください。
+API Management の統合を使って、関数の OpenAPI 定義を生成しました。 ポータルの API Management で定義を編集できるようになります。 また、[API Management についてさらに学習する](../api-management/api-management-key-concepts.md)こともできます。
 
 > [!div class="nextstepaction"]
-> [API Management](../api-management/api-management-key-concepts.md)
+> [API Management で OpenAPI 定義を編集する](../api-management/edit-api.md)

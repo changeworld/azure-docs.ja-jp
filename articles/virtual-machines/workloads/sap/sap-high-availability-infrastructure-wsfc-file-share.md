@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480012"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409609"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -36,6 +36,7 @@ ms.locfileid: "58480012"
 [arm-sofs-s2d-managed-disks]:https://github.com/robotechredmond/301-storage-spaces-direct-md
 [arm-sofs-s2d-non-managed-disks]:https://github.com/Azure/azure-quickstart-templates/tree/master/301-storage-spaces-direct
 [deploy-cloud-witness]:https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -341,6 +342,16 @@ Managed Disks を使用することをお勧めします。
 "_**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
 
 **[ストレージ アカウントの種類]** ボックスで、**[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
+
+## <a name="adjust-cluster-timeout-settings"></a>クラスターのタイムアウトの設定を調整する
+
+Windows スケールアウト ファイル サーバー クラスターのインストールが正常に終わったら、フェールオーバー検出のタイムアウトしきい値を Azure での条件に合わせて調整します。 変更するパラメーターについては、「[Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]」(フェールオーバー クラスター ネットワークのしきい値の調整) をご覧ください。 クラスター化された VM が同じサブネット内にあるとすると、以下のパラメーターを次の値に変更します。
+
+- SameSubNetDelay = 2000
+- SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
+
+これらの設定はお客様とテストしたものであり、適切な妥協が提供されます。 十分な回復性がある一方で、実際のエラー状態や VM の障害において十分に高速なフェールオーバーも提供されます。
 
 ## <a name="next-steps"></a>次の手順
 

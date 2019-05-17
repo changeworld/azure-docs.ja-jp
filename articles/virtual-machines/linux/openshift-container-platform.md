@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 39eea84cc9301263381533e03e8f783e0a73ea19
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999962"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411560"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>OpenShift Container Platform の Azure へのデプロイ
 
@@ -66,7 +66,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -251,7 +251,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 | プロパティ | 説明 | 有効なオプション | Default value |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | 成果物 (json、スクリプトなど) への URL |  |  https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `_artifactsLocation`  | 成果物 (json、スクリプトなど) への URL |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | リソースのデプロイ先となる Azure リージョン |  |  |
 | `masterVmSize` | マスター VM のサイズ。 azuredeploy.json ファイルに一覧表示された許可されている VM サイズのいずれかから選択します |  | Standard_E2s_v3 |
 | `infraVmSize` | インフラ VM のサイズ。 azuredeploy.json ファイルに一覧表示された許可されている VM サイズのいずれかから選択します |  | Standard_D4s_v3 |

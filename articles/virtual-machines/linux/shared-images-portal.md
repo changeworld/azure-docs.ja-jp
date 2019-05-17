@@ -1,27 +1,27 @@
 ---
-title: ポータルを使用した Windows 用共有 Azure Virtual Machine イメージの作成 | Microsoft Docs
+title: ポータルを使用して Linux 用の共有 Azure 仮想マシン イメージを作成する | Microsoft Docs
 description: Azure portal を使用して、仮想マシン イメージを作成して共有する方法について説明します。
-services: virtual-machines-windows
+services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/06/2019
+ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
+ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
 ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236598"
+ms.locfileid: "65235854"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal を使用して共有イメージ ギャラリーを作成する
 
@@ -47,9 +47,9 @@ ms.locfileid: "65236598"
 
 この記事の作業に出現するリソース グループと VM の名前は適宜置き換えてください。
 
-
-[!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
  
+[!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
+
 ## <a name="create-vms-from-an-image"></a>イメージから VM を作成する
 
 イメージ バージョンが完成したら、新しい VM を作成することができます。 
@@ -63,8 +63,8 @@ ms.locfileid: "65236598"
 1. **[可用性オプション]** で、既定の *[インフラストラクチャ冗長は必要ありません]* のままにします。
 1. **[イメージ]** の値は、イメージ バージョンのページから起動した場合に自動的に入力されるはずです。
 1. **[サイズ]** では、利用可能なサイズの一覧から VM サイズを選択し、[選択] をクリックします。
-1. **[Administrator account] (管理者アカウント)** で、ユーザー名 (*azureuser* など) とパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
-1. VM へのリモート アクセスを許可する場合、**[パブリック受信ポート]** で、**[選択したポートを許可する]** を選択し、ドロップダウンから **[RDP (3389)]** を選択します。 VM へのリモート アクセスを許可しない場合、**[パブリック受信ポート]** で、**[なし]** を選択したままにします。
+1. **[管理者アカウント]** で、**[パスワード]** または **[SSH 公開キー]** を選択した後、自分の情報を入力します。
+1. VM へのリモート アクセスを許可する場合、**[パブリック受信ポート]** で、**[選択したポートを許可する]** を選択し、ドロップダウンから **[SSH (22)]** を選択します。 VM へのリモート アクセスを許可しない場合、**[パブリック受信ポート]** で、**[なし]** を選択したままにします。
 1. 完了したら、ページの下部にある **[Review + create]\(確認と作成\)** ボタンを選択します。
 1. VM が検証に合格したら、ページの下部にある **[作成]** を選択し、デプロイを開始します。
 
