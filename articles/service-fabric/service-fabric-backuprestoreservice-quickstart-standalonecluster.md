@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a1c1bafd0a575b01e9774e79a98515d34646f7c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 28378b4b769e0d0e70a82a45baac0872d1476036
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670672"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413634"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -56,7 +56,21 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 ## <a name="prerequisites"></a>前提条件
 * Service Fabric のバージョンが 6.2 以降の Fabric クラスター。 クラスターは、Windows Server 上に設定されている必要があります。 必要なパッケージのダウンロード手順については、この[記事](service-fabric-cluster-creation-for-windows-server.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得するか自己署名証明書を作成する方法については、[こちらの記事](service-fabric-windows-cluster-x509-security.md)を参照してください。
-* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
+
+* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 Net Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
+* 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>バックアップと復元サービスの有効化
 最初に、"_バックアップと復元サービス_" をクラスターで有効にする必要があります。 デプロイするクラスター用テンプレートを用意します。 [サンプル テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)を使用できます。 次の手順で、"_バックアップと復元サービス_" を有効にします。
@@ -114,6 +128,16 @@ Reliable Stateful サービスと Reliable Actors の定期バックアップを
 
 バックアップ ストレージ用に、ファイル共有を作成し、そのファイル共有にすべての Service Fabric のノード マシンに対する読み取り/書き込みアクセス権を付与します。 この例では、`BackupStore` という名前の共有が `StorageServer` 上に存在すると想定します。
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -FileShare -Path '\\StorageServer\BackupStore' -Basic -RetentionDuration '10.00:00:00'
+
+```
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
+
 必要な REST API を呼び出す次の PowerShell スクリプトを実行して、新しいポリシーを作成します。
 
 ```powershell
@@ -152,6 +176,14 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすポリシーを定義した後、バックアップ ポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 必要な REST API を呼び出す次の PowerShell スクリプトを実行して、上の手順で作成した `BackupPolicy1` という名前のバックアップ ポリシーを `SampleApp` という名前のアプリケーションに関連付けます。
 
 ```powershell
@@ -167,13 +199,21 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="verify-that-periodic-backups-are-working"></a>定期バックアップが動作していることを確認する
 
-アプリケーションのバックアップを有効にすると、アプリケーションの下で Reliable Stateful サービスと Reliable Actors に属しているすべてのパーティションで、バックアップ ポリシーに従って定期バックアップが開始されます。 
+アプリケーションのバックアップを有効にすると、アプリケーションの下で Reliable Stateful サービスと Reliable Actors に属しているすべてのパーティションで、バックアップ ポリシーに従って定期バックアップが開始されます。
 
 ![パーティションがバックアップされる正常性イベント][0]
 
 ### <a name="list-backups"></a>バックアップを一覧表示する
 
 _GetBackups_ API を使用して、アプリケーションの Reliable Stateful サービスと Reliable Actors に属するすべてのパーティションに関連付けられているバックアップを列挙できます。 要件に応じて、アプリケーション、サービス、またはパーティションのバックアップを列挙できます。
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+    Get-SFApplicationBackupList -ApplicationId WordCount     
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 HTTP API を呼び出す次の PowerShell スクリプトを実行して、`SampleApp` アプリケーション内のすべてのパーティションに対して作成されたバックアップを列挙します。
 
@@ -185,6 +225,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 上記を実行したときのサンプル出力:
 
 ```
@@ -231,7 +272,7 @@ FailureError            :
 - gMSA を使用したセキュリティで保護されたクラスターでは、バックアップ復元サービスの起動は失敗します。
 
 ## <a name="limitation-caveats"></a>制限事項/注意事項
-- PowerShell コマンドレットが組み込まれた Service Fabric はありません。
+- Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
 ## <a name="next-steps"></a>次の手順

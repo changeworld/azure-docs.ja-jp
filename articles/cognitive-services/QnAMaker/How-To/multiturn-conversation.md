@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d94b527f1ad84d2b34a1708fd31eed273f8c363a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 24158d5949c0a31e5444c609cbfced970bdeca07
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074382"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471975"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -116,7 +116,7 @@ Microsoft Surface [PDF ファイル](https://github.com/Azure-Samples/cognitive-
 
 ## <a name="test-the-qna-set-to-get-all-the-follow-up-prompts"></a>QnA セットをテストしてすべてのフォローアップ プロンプトを取得する
 
-**[テスト]** ウィンドウでフォローアップ プロンプトを含む質問をテストすると、応答にフォローアップ プロンプトが含まれます。
+**[テスト]** ウィンドウ内でフォローアップ プロンプトを使った質問をテストするときは、**[Enable multi-turn]\(複数ターンの有効化\)** を選択して、質問を入力します。 応答には、フォローアップ プロンプトが含まれます。
 
 ![[テスト] ウィンドウで質問をテストすると、応答にフォローアップ プロンプトが含まれます。](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 

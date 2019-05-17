@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: d5385777134b911aa08b751978c44597f79acbc7
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328267"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442403"
 ---
 # <a name="service-health"></a>サービス正常性
 Service Health は、ユーザーが使用しているリージョン内の Azure サービスの正常性を追跡するカスタマイズ可能なダッシュボードを提供します。 このダッシュボードでは、進行中のサービスの問題、次に予定されている定期的なメンテナンス、関連する正常性の勧告などのアクティブなイベントを追跡できます。 イベントが非アクティブになると、それらは正常性の履歴に最大 90 日間保存されます。 最後に、Service Health のダッシュボードを使用して、サービスの問題が影響を与えているときにユーザーに事前に通知するサービス正常性アラートを作成および管理できます。
@@ -60,5 +60,7 @@ Service Health をフィルター処理して、ビジネス クリティカル�
 ## <a name="configure-service-health-alerts"></a>サービス正常性アラートを構成する
 Service Health は Azure Monitor と統合されており、ビジネスに不可欠なリソースが影響を受けていると電子メール、テキスト メッセージ、および webhook 通知を使用してユーザーに警告します。 適切なサービス正常性イベントのアクティビティ ログ アラートを設定します。 組織内の適切なユーザーにそのアラートをルーティングするには、アクション グループを使用します。 詳しくは、[Service Health のアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関する記事をご覧ください。
 
-# <a name="next-steps"></a>次の手順
-アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性のアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関する記事を参照してください。 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
+
+## <a name="next-steps"></a>次の手順
+アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、「[Best practices for setting up Azure Service Health Alerts](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)」(Azure Service Health アラートの設定に関するベスト プラクティス) を参照してください。 

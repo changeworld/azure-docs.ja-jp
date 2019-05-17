@@ -1,6 +1,6 @@
 ---
-title: PaaS デプロイをセキュリティで保護する | Microsoft Docs
-description: " 他のクラウド サービス モデルに対する PaaS のセキュリティ上の利点を理解し、Azure PaaS デプロイをセキュリティで保護するための推奨されるプラクティスについて学びます。 "
+title: セキュリティで保護された PaaS デプロイのベスト プラクティス - Microsoft Azure
+description: Azure 上でセキュリティで保護されたクラウド アプリケーションを設計、構築、管理するためのベスト プラクティスについて学習し、さらに PaaS と他のクラウド サービス モデルを比較し、セキュリティ上のメリットについて理解します。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404809"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231123"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -29,6 +29,8 @@ ms.locfileid: "57404809"
 - 他のクラウド サービス モデルに対するサービスとしてのプラットフォーム (PaaS) のセキュリティ上の利点を評価する
 - セキュリティの取り組みを、ネットワークを中心としたアプローチから ID を中心とした境界セキュリティのアプローチに切り替える
 - 一般的な PaaS セキュリティのベスト プラクティスの推奨事項を実装する
+
+「[セキュリティで保護されたアプリケーションを Azure 上で開発する](abstract-develop-secure-apps.md)」は、クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御に関する一般的なガイドです。
 
 ## <a name="cloud-security-advantages"></a>クラウド セキュリティの利点
 クラウド内に存在することには、セキュリティ上の利点があります。 オンプレミス環境では、組織は責任を果たしきれず、セキュリティに投資できるリソースが限られていることが多いため、攻撃者がすべての階層で脆弱性を悪用できる環境が生まれています。
@@ -155,6 +157,10 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 
 Application Insights には、収集されたデータを操作するための豊富なツールが用意されています。 Application Insights では、そのデータは共通リポジトリに格納されます。 アラート、ダッシュボード、Kusto クエリ言語を使用した詳細分析などの共有機能を活用できます。
 
+## <a name="perform-security-penetration-testing"></a>セキュリティ侵入テストを実施する
+セキュリティ上の防御を検証することは、他の機能をテストすることと同じくらい重要です。 [侵入テスト](azure-security-pen-testing.md)を、標準的なビルドおよびデプロイ プロセスの一環として実施してください。 デプロイしたアプリケーションに対して定期的なセキュリティ テストと脆弱性スキャンをスケジュールし、開放ポート、エンドポイント、攻撃を監視します。
+
+ファジー テストは、形式が正しくないの入力データを、このデータを解析して使用するプログラム インターフェイス (エントリ ポイント) に提供することで、プログラム エラー (コード エラー) を見つける方法です。 「[Microsoft Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/)」 (Microsoft のセキュリティ リスク検出) はクラウド ベースのツールであり、これを使用することで、ご自分のソフトウェアを Azure にデプロイする前に、バグやその他のセキュリティの脆弱性を探すことができます。 このツールは、ソフトウェアをデプロイする前に脆弱性を捕捉できるように設計されているため、ソフトウェアのリリース後にバグの修正、クラッシュの処理、攻撃への対応を行わなくても済みます。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -166,6 +172,8 @@ Application Insights には、収集されたデータを操作するための�
 - Azure Cache for Redis
 - Azure Service Bus
 - Web アプリケーション ファイアウォール
+
+クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御については、「[セキュリティで保護されたアプリケーションを Azure 上で開発する](abstract-develop-secure-apps.md)」を参照してください。
 
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。
 

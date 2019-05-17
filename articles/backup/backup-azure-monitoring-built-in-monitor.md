@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112502"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236441"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -49,7 +49,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 次のシナリオは、サービスによって警告可能シナリオとして定義されています。
 
   - バックアップ/復元エラー
-  - バックアップの成功 (警告あり)
+  - Azure Backup エージェント (MAB) のバックアップの成功 (警告あり)
   - 保護の停止 (データの保持を含む)/保護の停止 (データの削除を含む)
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>アラートが生成されない例外
@@ -92,7 +92,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 頻度が 1 時間ごとのダイジェストに設定されており、アラートが生成されて 1 時間以内にこれが解決された場合は、次の 1 時間ごとのダイジェストにこのアラートは含まれません。
 
 > [!NOTE]
-> 
+>
 > * **保護の停止 (データの削除を含む)** などの破壊的な操作が実行されると、アラートが生成され、Recovery Service コンテナーに対して通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
 > * 成功したジョブの通知を構成するには、[Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace) を使用します。
 

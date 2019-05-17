@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2da4ee5d60290485d87af86885dda0d72a625fef
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 21fb2b84fd58fb7cca7551ee1cef0c79179cfa40
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314809"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467142"
 ---
 # <a name="dynamic-manifests"></a>動的マニフェスト
 
@@ -124,14 +124,14 @@ REST の例については、[REST を使用したファイルのアップロー
 
 ## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
-資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせは[動的マニフェスト](filters-dynamic-manifest-overview.md)を生成します。これは、URL のフィルター + ストリーミング ロケーターに指定するフィルターに基づいています。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
 
 ## <a name="considerations-and-limitations"></a>考慮事項と制限事項
 
 - VOD フィルターの場合、**forceEndTimestamp**、**presentationWindowDuration**、**liveBackoffDuration** の値は設定しないでください。 これらは、ライブ フィルターのシナリオでのみ使用します。 
 - 動的マニフェストは GOP 境界 (キー フレーム) で動作するため、トリミングの正確度は GOP に応じます。 
 - アカウント フィルターとアセット フィルターには同じフィルター名を使用できます。 アセット フィルターの方が優先順位が高く、アカウント フィルターをオーバーライドします。
-- フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 いくつかのフィルターを使用してコンテンツが処理された場合 (プロキシと CDN にキャッシュされている)、プレイヤーでこれらのフィルターを更新すると失敗します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。
+- フィルターを更新した場合、ストリーミング エンドポイントでルールが更新されるまで最大 2 分かかります。 いくつかのフィルターを使用してコンテンツが処理された場合 (プロキシと CDN にキャッシュされている)、プレイヤーでこれらのフィルターを更新すると失敗します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。
 - マニフェストは、顧客が手動でダウンロードして厳密な startTimestamp とタイム スケールを解析する必要があります。
     
     - アセットのトラックのプロパティを調べるには、[マニフェスト ファイルを取得して調査](#get-and-examine-manifest-files)します。

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685930"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471647"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -41,7 +41,7 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 **アクション** | **サポート**
 --- | ---
 Windows Azure VM の作成時にバックアップを有効にする | サポート対象:Windows Server 2019 (Datacenter/Datacenter Core)、Windows Server 2016 (Datacenter/Datacenter Core); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM および SP1)
-Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 1710、1704、1604 (LTS)、1404 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
+Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 18.04、17.10、17.04、16.04 (LTS)、14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
 シャットダウン状態/オフライン状態の VM をバックアップする | サポートされています。<br/><br/> スナップショットは、アプリ整合性ではなく、クラッシュ整合性のみです。
 マネージド ディスクへの移行後にディスクをバックアップする | サポートされています。<br/><br/> バックアップは引き続き機能します。 操作は必要ありません。
 リソース グループのロックを有効にした後、マネージド ディスクをバックアップする | サポートされていません。<br/><br/> Azure Backup は古いリソース ポイントを削除できないので、復元ポイントの上限に達するとバックアップが失敗するようになります。
@@ -150,6 +150,7 @@ VM サイズ |   少なくとも 2 つの CPU コアと 1 GB の RAM を備え�
 カスタム イメージ (サード パーティ) からデプロイ済みの VM をバックアップする |   サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 Azure に移行済みの VM をバックアップする  | サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でデータとアプリケーションに整合性はありません。
+[[診断設定]](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
 
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート

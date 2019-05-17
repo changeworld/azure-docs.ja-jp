@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8851248c395a1f03c46490c8eb5e71221dd133
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549903"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409281"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 が存在するクラウドとリージョン
 
@@ -35,10 +35,7 @@ Azure Media Services v3 は、Azure Resource Manager マニフェストを通し
 
 ## <a name="regionsgeographieslocations"></a>リージョン/地域/場所
 
-* [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)
-* [リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/)
-* [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)
-* [Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)
+[Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>リージョン コード名 
 
@@ -98,6 +95,12 @@ az account list-locations
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Authentication | `https://login.chinacloudapi.cn/` |
 | トークン対象ユーザー |  `https://management.core.chinacloudapi.cn/` |
+
+## <a name="see-also"></a>関連項目
+
+* [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="next-steps"></a>次の手順
 

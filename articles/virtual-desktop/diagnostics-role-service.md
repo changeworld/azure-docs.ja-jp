@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418637"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234022"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>診断機能を使用して問題を特定する
 
@@ -118,7 +118,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 
 エラー シナリオは、サービスの内部と Windows Virtual Desktop の外部に分類されます。
 
-* 内部の問題: テナント管理者が緩和できず、サポートの問題として解決する必要があるシナリオを指定します。 チケットを生成するときに、アクティビティ ID、テナント名、および問題が発生したおおよその時間枠を指定します。
+* 内部の問題: テナント管理者が緩和できず、サポートの問題として解決する必要があるシナリオを指定します。 [Windows Virtual Desktop Tech コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)を通してフィードバックを提供する場合は、アクティビティ ID と問題が発生したときのおおよその時間枠を含めてください。
 * 外部の問題: システム管理者が緩和できるシナリオに関連します。 これらは、Windows Virtual Desktop の外部で発生します。
 
 次の表では、管理者が経験する可能性のある一般的なエラーの一覧を示します。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871640"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415894"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの使用を開始する
 
@@ -184,7 +184,7 @@ SecurityEvent
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated-8h
+| extend localtime = TimeGenerated -8h
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>summarize: 行のグループを集計する
@@ -224,7 +224,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>時間列で要約する
 時間列または別の連続する値に基づいて結果をグループ化することもできます。 ただし、これらは一意の値なので、`by TimeGenerated` を要約するだけでは、時間の範囲全体に 1 ミリ秒ごとのグループが作成されます。 
 
-連続する値に基づいてグループを作成するには、**bin** を使用して範囲を管理しやすい単位に分割することをお勧めします。 次のクエリでは、特定のコンピューター上の空きメモリ (*[利用可能な MB]*) を測定する *Perf* レコードを分析します。 過去 7 日間の各 1 時間の平均値が計算されます。
+連続する値に基づいてグループを作成するには、**bin** を使用して範囲を管理しやすい単位に分割することをお勧めします。 次のクエリでは、特定のコンピューター上の空きメモリ (*[利用可能な MB]*) を測定する *Perf* レコードを分析します。 過去 7 日間の 1 時間ごとの平均値が計算されます。
 
 ```Kusto
 Perf 

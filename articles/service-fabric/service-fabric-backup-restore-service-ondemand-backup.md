@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: c80a9ac30e79607d2a255debf73f6542df7c6498
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666581"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413933"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric でのオンデマンド バックアップ
 
@@ -28,6 +28,22 @@ ms.locfileid: "58666581"
 Azure Service Fabric には、[データの定期的なバックアップ](service-fabric-backuprestoreservice-quickstart-azurecluster.md)機能と、必要に応じたデータのバックアップ機能があります。 オンデマンド バックアップは、基になるサービスまたはその環境での計画的な変更による "_データ損失_/_データ破損_" から保護できるため、便利です。
 
 オンデマンド バックアップ機能は、サービスまたはサービス環境の操作が手動でトリガーされる前に、サービスの状態をキャプチャする場合に役立ちます。 たとえば、サービスをアップグレードまたはダウングレードするときにサービス バイナリに変更を加える場合があります。 このような場合、オンデマンド バックアップは、アプリケーション コードのバグによる破損からデータを保護するために役立ちます。
+## <a name="prerequisites"></a>前提条件
+
+- 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+- Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
+
 
 ## <a name="triggering-on-demand-backup"></a>オンデマンド バックアップをトリガーする
 
@@ -38,6 +54,16 @@ Azure Service Fabric には、[データの定期的なバックアップ](servi
 ストレージへの追加のオンデマンド バックアップに Reliable Stateful サービスまたは Reliable Actor のパーティションを使用するように定期的バックアップ ポリシーを構成することができます。
 
 次のケースは、「[Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)」のシナリオの続きです。 このケースでは、バックアップ ポリシーでパーティションの使用を有効にして、Azure Storage で設定した頻度でバックアップを実行します。
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+
+Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' 
+
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API を使用して、パーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` のオンデマンド バックアップのトリガーを設定します。
 
@@ -52,6 +78,17 @@ Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -Certif
 ### <a name="on-demand-backup-to-specified-storage"></a>指定したストレージへのオンデマンド バックアップ
 
 Reliable Stateful サービスまたは Reliable Actor のパーティションのオンデマンド バックアップを要求することができます。 オンデマンド バックアップ要求の一部として、ストレージ情報を指定します。
+
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+
+Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlobStore -ConnectionString  'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API を使用して、パーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` のオンデマンド バックアップのトリガーを設定します。 次の Azure Storage 情報を含めます。
 
@@ -79,6 +116,16 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 Reliable Stateful サービスまたは Reliable Actors のパーティションで受け付けられるオンデマンド バックアップ要求は、一度に 1 つだけです。 別の要求は、現在のオンデマンド バックアップ要求が完了した後にのみ受け付けられます。
 
 異なる複数のパーティションから同時にオンデマンド バックアップ要求をトリガーすることができます。
+
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+
+Get-SFPartitionBackupProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+
+```
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetBackupProgress?api-version=6.4"

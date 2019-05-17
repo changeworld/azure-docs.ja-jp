@@ -3,7 +3,7 @@ title: セキュリティ ポリシーの操作 | Microsoft Docs
 description: この記事では、Azure Security Center でセキュリティ ポリシーを操作する方法について説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 5/05/2019
 ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578443"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236313"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -110,6 +110,9 @@ REST API 経由または Windows PowerShell を使用して、Azure Policy ポ�
    ![ポリシー管理](./media/tutorial-security-policy/policy-management.png)
 
 2. 推奨設定を無効にするサブスクリプションまたは管理グループをクリックします。
+
+   > [!Note]
+   > 管理グループでは、そのポリシーがそのサブスクリプションに適用されることに注意してください。 そのため、サブスクリプションのポリシーを無効にしても、そのサブスクリプションが、同じポリシーをまだ使用している管理グループに属していると、引き続きポリシー推奨事項を受け入れることになります。 ポリシーは管理レベルから引き続き適用され、推奨事項は引き続き生成されます。
 
 1. 割り当てられたポリシーをクリックします。
 

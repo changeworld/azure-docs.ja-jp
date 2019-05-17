@@ -14,25 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ef2b1bd9cfe9aed1e82335d62bb09b5ffcbe1016
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847739"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471762"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
-
-> [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
-> * [Linux](service-fabric-patch-orchestration-application-linux.md)
->
->
-
 
 > 
 > [!IMPORTANT]
 > アプリケーションのバージョン 1.2.* は 2019 年 4 月 30 日にサポートが終了する予定です。 最新のバージョンにアップグレードしてください。
+
+> 
+> [!IMPORTANT]
+> Linux でのパッチ オーケストレーション アプリケーションは推奨されていません。 Linux での更新プログラムのオーケストレーションについては、「[Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)」にアクセスしてください。
 
 
 [Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)は、Azure でオペレーティング システムに修正プログラムを適用させたままにするために最適で、Azure 以外でホストされるクラスターの OS パッチ スケジュールに基づいた構成を可能にする Service Fabrics RepairManager Systems サービスのラッパーです。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、アップグレード ドメインによる更新プログラムのインストールのスケジュール設定は、ダウンタイムなく Service Fabric クラスターのホストに修正プログラムを適用するために必要です。

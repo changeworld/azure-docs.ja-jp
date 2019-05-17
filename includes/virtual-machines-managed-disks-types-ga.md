@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a4110d68dc8aa921d647f90de654d2ebb4e17d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 885bc1c627626ee7ba4f391be31131b18fa1ab39
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395742"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65211994"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
@@ -22,12 +22,16 @@ Azure Premium SSD では、IO (入出力) を集中的に行うワークロー�
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
+Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、99.9% の時間においてターゲット パフォーマンスを提供するように設計されています。
+
 ## <a name="standard-ssd"></a>Standard SSD
 
 Azure Standard SSD は、比較的低い IOPS レベルで一貫したパフォーマンスを必要とするワークロード向けに最適化された、コスト効果に優れたストレージ オプションです。 Standard SSD は、クラウドへの移行を希望している方、特にオンプレミスの HDD ソリューションで実行されているワークロードのばらつきによって問題が発生している場合に、エントリ レベルの優れたエクスペリエンスを提供します。 Standard SSD は、HDD ディスクに比べて、可用性、一貫性、信頼性、待機時間が優れています。 Standard SSD は、Web サーバー、低い IOPS のアプリケーション サーバー、使用の少ないエンタープライズ アプリケーション、開発/テストのワークロードに適しています。
 
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
+
+Standard SSD では、ほとんどの IO 操作で 1 桁ミリ秒の待機時間が実現され、99% の時間で前記の表に記載されている最大 IOPS と最大スループットが提供されるように設計されています。 実際の IOPS とスループットは、トラフィック パターンによって異なる場合があります。 Standard SSD は、HDD ディスクよりも一貫したパフォーマンスを提供し、待機時間が短くなります。
 
 ## <a name="standard-hdd"></a>Standard HDD
 

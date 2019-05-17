@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003584"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204882"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -87,7 +87,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
-[デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
+[デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679348"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466505"
 ---
 # <a name="set-up-a-device-template"></a>デバイス テンプレートを設定する
 
@@ -68,8 +68,7 @@ ms.locfileid: "59679348"
 
 > [!NOTE]
 > 実デバイスが接続されたときにテレメトリ測定がアプリケーションに表示されるようにするには、デバイス テンプレート内のフィールド名が、対応するデバイス コード内のプロパティ名と一致する必要があります。 下記のセクションでデバイス テンプレートの定義を続行する際には、設定、デバイス プロパティ、およびコマンドの構成時に同じことを行ってください。
-
-たとえば、新しい温度テレメトリ測定を追加できます。
+.png たとえば、新しい温度テレメトリ測定を追加できます。
 
 | 表示名        | フィールド名    |  Units    | Min   |max|
 | --------------------| ------------- |-----------|-------|---|
@@ -239,7 +238,7 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 | --------------| -----------|---------------- | --------- |
 | Echo Command  | echo       |  30             | text      |
 
-![Echo の詳細が表示された [Configure Command]\(コマンドの構成\) フォーム](./media/howto-set-up-template/commandsecho.png)
+![Echo の詳細が表示された [Configure Command]\(コマンドの構成\) フォーム](./media/howto-set-up-template/commandsecho1.png)
 
 **[保存]** を選択すると、**Echo** コマンドがタイルとして表示されて、実デバイスを接続すると **Device Explorer** から使用できる状態になります。 コマンドが正常に実行されるようにするには、コマンドのフィールド名が、対応するデバイス コード内のプロパティ名と一致する必要があります。
 
@@ -255,7 +254,7 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 たとえば、**[ダッシュボード]** タブを選択してライブラリからタイルを選択することで、**[設定とプロパティ]** タイルを追加して、設定とプロパティの現在の値の選択を表示できます。
 
-![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
 **Device Explorer** でダッシュボードを表示すると、タイルを表示できるようになります。
 

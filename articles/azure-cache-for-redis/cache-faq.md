@@ -1,6 +1,6 @@
 ---
 title: Azure Cache for Redis に関する FAQ | Microsoft Docs
-description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します
+description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895598"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230115"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -105,10 +105,10 @@ Azure Cache for Redis には、さまざまなレベルの**サイズ**、**帯�
 Cache のオプションを選択するときの考慮事項を次に示します。
 
 * **メモリ**:Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium レベルでは 530 GB まで提供されます。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
-* **ネットワーク パフォーマンス**:高いスループットを必要とするワークロードがある場合、Premium レベルでは、Standard や Basic と比較してより広い帯域幅が提供されます。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、[後の表](#cache-performance)を参照してください。
+* **ネットワーク パフォーマンス**:高いスループットを必要とするワークロードがある場合、Premium レベルでは、Standard や Basic と比較してより広い帯域幅が提供されます。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、[次の表](#cache-performance)を参照してください。
 * **スループット**:Premium レベルでは、提供されているうちで最大のスループットが提供されます。 キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生する場合があります。 詳細については、後の表を参照してください。
 * **高可用性/SLA**:Azure Cache for Redis では、Standard/Premium キャッシュについて、少なくとも 99.9% の可用性を保証しています。 SLA の詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)についてのページを参照してください。 SLA は、Cache エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
-* **Redis データの永続化**:Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、Redis 永続化の RDB オプションと AOF オプション (近日提供予定) が用意されています。 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
+* **Redis データの永続化**:Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基になるインフラストラクチャで問題が発生すると、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、Redis 永続化の RDB オプションと AOF オプション (近日提供予定) が用意されています。 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
 * **Redis クラスター**:Premium レベルで利用可能な Redis クラスタリングを使用すると、53 GB を超えるキャッシュまたは複数の Redis ノード間で共有されるデータを作成できます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、[Premium Azure Cache for Redis のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
 * **セキュリティとネットワークの分離の強化**:Azure Virtual Network (VNET) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。 詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 * **Redis の構成**:Standard レベルと Premium レベルのどちらでも、キースペース通知のために Redis を構成できます。
@@ -129,25 +129,26 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 この表からは次のような結論が得られます。
 
-* キャッシュのサイズが同じ場合のスループットは、Standard レベルより Premium レベルの方が高くなります。 たとえば、6 GB のキャッシュの場合、P1 のスループットが 180,000 RPS であるのに対し、C3 では 100,000 になります。
-* Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 400 万 (400,000 * 10) RPS となります。
+* キャッシュのサイズが同じ場合のスループットは、Standard レベルより Premium レベルの方が高くなります。 たとえば、P1 のスループットは、6 GB キャッシュでは 180,000 要求/秒 (RPS) であるのに対し、C3 では 100,000 RPS となります。
+* Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 個のシャードから成る P4 クラスターを作成すると、利用可能なスループットは 400,000 * 10 = 4 百万 RPS になります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
 | 価格レベル  | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
-| C0 |250 MB |共有 |100 / 12.5 |15,000 |7,500 |
-| C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
-| C2 |2.5 GB |2 |500 / 62.5 |41,000 |37,000 |
-| C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
-| C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
-| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
-| C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
+| C0 | 250 MB | 共有 | 100 / 12.5  |  15,000 |   7,500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38,000 |  20,720 |
+| C2 | 2.5 GB | 2      | 500 / 62.5  |  41,000 |  37,000 |
+| C3 |   6 GB | 4      | 1000 / 125  | 100,000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55,000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102,000 |  93,000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126,000 | 120,000 |
 | **Premium のキャッシュ サイズ** | |**シャードあたりの CPU コア数** | **メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL、シャードあたり** |**1 秒あたりの要求数 (RPS) SSL、シャードあたり** |
-| P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
-| P2 |13 GB |4 |3,000 / 375 |350,000 |341,000 |
-| P3 |26 GB |4 |3,000 / 375 |350,000 |341,000 |
-| P4 |53 GB |8 |6,000 / 750 |400,000 |373,000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172,000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373,000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373,000 |
 
 stunnel の設定や `redis-benchmark.exe` などの Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands) 」セクションを参照してください。
 
@@ -162,7 +163,7 @@ stunnel の設定や `redis-benchmark.exe` などの Redis ツールのダウン
 Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/details/cache/)に記載されています。 価格ページには、1 時間単位の価格が表示されます。 キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。 キャッシュの課金を停止または一時停止するオプションはありません。
 
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Azure Cache for Redis を Azure Government Cloud、Azure China Cloud、または Microsoft Azure Germany で使用できるか
-はい。Azure Cache for Redis は、Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany で使用できます。 ただし、Azure Cache for Redis のアクセスと管理を行うための URL については、これらのクラウドと、Azure パブリック クラウドとで異なります。 
+はい。Azure Cache for Redis は、Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany で使用できます。 ただし、Azure Cache for Redis のアクセスと管理を行うための URL については、これらのクラウドと、Azure パブリック クラウドとで異なります。
 
 | クラウド   | Redis の DNS サフィックス            |
 |---------|---------------------------------|
@@ -174,10 +175,10 @@ Azure Cache for Redis の価格は[ここ](https://azure.microsoft.com/pricing/d
 その他のクラウドで Azure Cache for Redis を使用するときの考慮事項の詳細については、次のリンクを参照してください。
 
 - [Azure Government データベース - Azure Cache for Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Azure China Cloud - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
+- [Azure China 21Vianet Cloud - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-Azure Government Cloud、Azure China Cloud、および Microsoft Azure Germany で PowerShell と共に Azure Cache for Redis を使用する方法の詳細については、[その他のクラウドへの接続方法の、Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関する説明を参照してください。
+Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany での PowerShell を使用した Azure Cache for Redis の利用の詳細については、[他のクラウドに接続する方法 - Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds) に関するページを参照してください。
 
 <a name="cache-configuration"></a>
 
@@ -257,7 +258,7 @@ Azure Cache for Redis のローカル エミュレーターがなくても、ロ
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>他のいくつかの Azure サービスと異なり Azure Cache for Redis の MSDN クラス ライブラリ リファレンスが提供されない理由
-Microsoft Azure Cache for Redis は、広く普及しているオープン ソースの Azure Cache for Redis をベースにしており、多くのプログラミング言語のさまざまな [Redis クライアント](https://redis.io/clients)からアクセスできます。 各クライアントは、[Redis コマンド](https://redis.io/commands)を使用して Azure Cache for Redis インスタンスを呼び出す独自の API を持ちます。
+Microsoft Azure Cache for Redis は、広く支持されているオープン ソースの Azure Cache for Redis がベースとなっています。 これには、多くのプログラミング言語に対するさまざまな [Redis クライアント](https://redis.io/clients) によってアクセスできます。 各クライアントは、[Redis コマンド](https://redis.io/commands)を使用して Azure Cache for Redis インスタンスを呼び出す独自の API を持ちます。
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されています。 リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Cache for Redis を使用する方法について説明します。 これらのチュートリアルについては、[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)に関するページとその関連記事を目次から見つけて参照してください。
 
@@ -277,7 +278,7 @@ Azure Cache for Redis を PhpRedis クライアントで PHP セッションの�
 
 ### <a name="what-are-redis-databases"></a>Redis データベースとは
 
-Redis データベースとは、単に同じ Redis インスタンス内でデータを論理的に切り離したものです。 キャッシュ メモリは、すべてのデータベースで共有され、特定のデータベースの実際のメモリ使用量は、そのデータベースに格納されているキー/値によって異なります。 たとえば、C6 キャッシュに 53 GB のメモリがあるとします。 この 53 GB すべてを 1 つのデータベースに配置することも、複数のデータベースに分割することもできます。 
+Redis データベースとは、単に同じ Redis インスタンス内でデータを論理的に切り離したものです。 キャッシュ メモリは、すべてのデータベースで共有され、特定のデータベースの実際のメモリ使用量は、そのデータベースに格納されているキー/値によって異なります。 たとえば、C6 キャッシュは 53 GB のメモリを備えています。 この 53 GB すべてを 1 つのデータベースに配置することも、複数のデータベースに分割することもできます。 
 
 > [!NOTE]
 > クラスタリングを有効にして Premium Azure Cache for Redis を使用すると、使用できるのはデータベース 0 だけになります。 これは Redis に固有の制限事項です。Azure Cache for Redis の制限事項ではありません。 詳細については、「 [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -307,9 +308,9 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange.Redis のベスト プラクティス
 * `AbortConnect` を "false" に設定してから、ConnectionMultiplexer による自動再接続を待ってください。 [詳細についてはこちらをご覧ください](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
 * ConnectionMultiplexer は再利用し、要求ごとに新しく作成しないようにしてください。 [こちら](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)に記載されている `Lazy<ConnectionMultiplexer>` パターンをお勧めします。
-* 値が小さいほど Redis のパフォーマンスは向上するため、大きなデータは複数のキーに分割することを検討してください。 [こちらの Redis に関する議論](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)では、100kb が大きいとみなされています。 値が大きい場合に生じる可能性のある問題の例については、 [こちらの記事](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) を参照してください。
+* 値が小さいほど Redis のパフォーマンスは向上するため、大きなデータは複数のキーに分割することを検討してください。 [この Redis に関する議論](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)では、100 KB は大きいと見なされています。 値が大きい場合に生じる可能性のある問題の例については、 [こちらの記事](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) を参照してください。
 * タイムアウトが起こらないように [ThreadPool の設定](#important-details-about-threadpool-growth) を構成してください。
-* connectTimeout については既定の 5 秒以上を使用してください。 この間隔を設定することで、ネットワーク ブリップが発生した場合に、StackExchange.Redis で接続を再び確立するのに十分な時間を確保できます。
+* connectTimeout については既定の 5 秒以上を使用してください。 この間隔により、ネットワーク ブリップが発生した場合に接続を再確立するための十分な時間が StackExchange.Redis に与えられます。
 * 実行中のさまざまな操作に関連するパフォーマンス コストを把握してください。 たとえば、 `KEYS` コマンドは O(n) 操作であるため、使用しないでください。 [redis.io のサイト](https://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
 
 #### <a name="configuration-and-concepts"></a>構成と概念
@@ -328,9 +329,9 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 <a name="cache-redis-commands"></a>
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>一般的な Redis コマンドの使用に関するいくつかの考慮事項
-* 処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
-  * たとえば、[KEYS](https://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。 Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。 KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。 [redis.io のサイト](https://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
-* キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、これはシナリオによって異なります。 サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値と再試行回数を調整して、再試行ロジックを調整できます。 Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
+
+* 完了するのに時間がかかる特定の Redis コマンドについては、その影響を完全に理解しないまま使用するのは避けてください。 たとえば、運用環境で [KEYS](https://redis.io/commands/keys) コマンドを実行しないでください。 キーの数によっては、復帰に時間がかかる可能性があります。 Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。 KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。 [redis.io のサイト](https://redis.io/commands/) に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。 各コマンドをクリックして、操作ごとの時間計算量を確認してください。
+* キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 これはシナリオによって異なります。 ご利用のシナリオで、より大きなキーが必要な場合は、ConnectionTimeout を調整してから、値を再度試して再試行ロジックを調整することができます。 Redis サーバーの観点からは、値が小さいほど、パフォーマンスは向上します。
 * これらの考慮事項は、サイズの大きな値を Redis に格納できないという意味ではありません。次の点を考慮する必要があります。 待機時間は長くなります。 サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
 
 <a name="cache-benchmarking"></a>
@@ -356,19 +357,19 @@ Redis ツールのダウンロードの詳細については、「 [Redis コマ
 <a name="threadpool"></a>
 
 ### <a name="important-details-about-threadpool-growth"></a>ThreadPool 拡大の重要な詳細情報
-CLR ThreadPool には、2 種類のスレッド - 「Worker」と「I/O 完了ポート」 (別名 IOCP) スレッドがあります。
+CLR ThreadPool には、"Worker" スレッドと "I/O Completion Port" (IOCP) スレッドの 2 種類があります。
 
 * `Task.Run(…)` メソッドや `ThreadPool.QueueUserWorkItem(…)` メソッドの処理などには、Worker スレッドが使用されます。 これらのスレッドは、バック グラウンド スレッドで作業が発生する必要がある場合に、CLR でさまざまなコンポーネントによっても使用されます。
-* IOCP スレッドは、非同期 IO が発生したときに使用されます(ネットワークからの読み取りなど)。
+* IOCP スレッドは、ネットワークからの読み取りの場合など、非同期 IO が発生する場合に使用されます。
 
 スレッド プールは、各種のスレッドについて「最小」設定に達するまで、新しい worker スレッドまたは I/O 完了スレッドをオンデマンドで (スロットルなしで) 提供します。 既定では、スレッドの最小数はシステム上のプロセッサの数に設定されます。
 
-既存の (ビジー) スレッドの数がスレッドの "最小" 数に達すると、ThreadPool は新しいスレッドを挿入する速度を、500 ミリ秒ごとに 1 スレッドへとスロットルします。 通常、IOCP スレッドを必要とする作業のバーストをシステムが取得した場合、その作業を非常に高速に処理します。 ただし、作業のバーストが構成済みの「最小」設定を超えた場合は、次の 2 つの状態のうちどちらかが発生するまで ThreadPool が待機するので、多少の遅延が生じます。
+既存の (ビジー) スレッドの数がスレッドの "最小" 数に達すると、ThreadPool は新しいスレッドを挿入する速度を、500 ミリ秒ごとに 1 スレッドへとスロットルします。 通常、ご利用のシステムで、IOCP スレッドを必要とする作業のバーストが取得された場合、その作業は高速に処理されます。 ただし、作業のバーストが構成済みの「最小」設定を超えた場合は、次の 2 つの状態のうちどちらかが発生するまで ThreadPool が待機するので、多少の遅延が生じます。
 
 1. 既存のスレッドの 1 つが空き状態になり、作業を処理する。
-2. 既存のスレッドが 500 ミリ秒間空き状態にならずに、新しいスレッドが作成される。
+2. 既存のスレッドが 500 ミリ秒間空いた状態にならないと、新しいスレッドが作成されます。
 
-つまり、基本的には、ビジー状態のスレッド数が最小スレッド数よりも多い場合、ネットワーク トラフィックがアプリケーションによって処理されるまで 500 ミリ秒の遅延が発生すると考えられます。 また、既存のスレッドが (私の記憶によると) 15 秒を超えてアイドル状態になると、そのスレッドはクリーンアップされ、拡大と縮小のこのサイクルが繰り返されることがあります。
+基本的に、これは、ビジー スレッド数が最小スレッド数より大きい場合、ネットワーク トラフィックがアプリケーションによって処理される前に 500 ミリ秒の遅延が生じる可能性があることを意味しています。 また、既存のスレッドが (私の記憶によると) 15 秒を超えてアイドル状態になると、そのスレッドはクリーンアップされ、拡大と縮小のこのサイクルが繰り返されることがあります。
 
 StackExchange.Redis (ビルド 1.0.450 以降) からのエラー メッセージの例を見れば、ThreadPool の統計情報が出力されていることがわかります (IOCP と WORKER に関する下記の詳細を参照)。
 
@@ -377,25 +378,38 @@ StackExchange.Redis (ビルド 1.0.450 以降) からのエラー メッセー�
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
-前の例では、IOCP スレッドには 6 つのビジー状態のスレッドがあり、システムで最小 4 つのスレッドを許可するように構成されていることがわかります。 この場合、6 > 4 なので、クライアントでは 2 ×  500 ミリ秒の遅延が発生したと考えられます。
+前の例では、IOCP スレッドについて、6 つのビジー スレッドが存在し、システムは 4 つの最小スレッドを許容するように構成されていることがわかります。 この場合、6 > 4 であることから、クライアントは 500 ミリ秒の遅延を 2 回検出している可能性があります。
 
 IOCP スレッドまたは WORKER スレッドの拡大がスロットルされた場合、StackExchange.Redis がタイムアウトになる可能性があることに注意してください。
 
 ### <a name="recommendation"></a>推奨
-この情報に基づき、顧客が IOCP スレッドと WORKER スレッドの最小構成値を既定値よりも大きく設定することを強くお勧めします。 この設定値については、1 つのアプリケーションで適切な値が別のアプリケーションでは高すぎる/低すぎるので、すべてのケースに対応できる案はありません。 この設定は複雑なアプリケーションの他の部分のパフォーマンスにも影響を与える可能性があるので、各顧客は特定のニーズに合わせてこの設定を調整する必要があります。 適切な値として、まず 200 または 300 に設定し、テストして必要に応じて調整します。
+
+この情報に基づき、顧客が IOCP スレッドと WORKER スレッドの最小構成値を既定値よりも大きく設定することを強くお勧めします。 あるアプリケーションでは適切な値であっても別のアプリケーションで高すぎたり低すぎたりする可能性があるため、これをどのような値にする必要があるかについて画一的なガイダンスを提供することはできません。 この設定は複雑なアプリケーションの他の部分のパフォーマンスにも影響を与える可能性があるので、各顧客は特定のニーズに合わせてこの設定を調整する必要があります。 適切な値として、まず 200 または 300 に設定し、テストして必要に応じて調整します。
 
 この設定を構成する方法
 
-* ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" または "minWorkerThreads" 構成設定]["minIoThreads" configuration setting]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。 ただし、この設定は global.asax.cs の Application_Start メソッドからプログラムで構成できるはずです (下記を参照)。
+* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 例: 
 
-  > [!NOTE] 
-  > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、 `<processModel minIoThreads="50"/>`を使用します。
-  >
-
-* ASP.NET の外部、および Azure WebSites global.asax では、[ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)API を使用します。
+```cs
+private readonly int minThreads = 200;
+void Application_Start(object sender, EventArgs e)
+{
+    // Code that runs on application startup
+    AreaRegistration.RegisterAllAreas();
+    RouteConfig.RegisterRoutes(RouteTable.Routes);
+    BundleConfig.RegisterBundles(BundleTable.Bundles);
+    ThreadPool.SetMinThreads(minThreads, minThreads);
+}
+```
 
   > [!NOTE]
-  > この API によって指定される値はグローバル設定であり、AppDomain 全体に影響を与えます。 4 コア マシンがあり、実行中の minWorkerThreads および minIOThreads を CPU あたり 50 に設定する場合は、ThreadPool.SetMinThreads (200, 200) を使用します。
+  > このメソッドによって指定された値はグローバル設定であり、AppDomain 全体に影響を与えます。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minWorkerThreads* および *minIoThreads* を CPU あたり 50 に設定したい場合は、**ThreadPool.SetMinThreads(200, 200)** を使用します。
+
+* 最小スレッド数の設定は、通常、`%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` にある `Machine.config` 内の `<processModel>` 構成要素の下にある [*minIoThreads* または *minWorkerThreads* 構成設定](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx)を使用して指定することもできます。 **この方法で最小スレッド数を設定する方法は、一般的はにお勧めできません。これはシステム全体の設定だからです。**
+
+  > [!NOTE]
+  > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minIoThreads* 設定を 200 にしたい場合は、`<processModel minIoThreads="50"/>` を使用します。
+  >
 
 <a name="server-gc"></a>
 
@@ -439,7 +453,7 @@ Azure Cache for Redis の **[リソース] メニュー**にも、キャッシ�
 * クライアント側の原因
   * クライアント アプリケーションが再デプロイされた。
   * クライアント アプリケーションがスケーリング操作を実行した。
-    * Cloud Services または Web Apps の場合、自動スケールが原因になっている場合があります。
+    * Cloud Services または Web Apps では、これは自動スケーリングが原因である場合があります。
   * クライアント側のネットワーク レイヤーが変更された。
   * クライアントで、またはクライアントとサーバー間のネットワーク ノードで一時的なエラーが発生した。
   * 帯域幅のしきい値制限に達した。
@@ -460,9 +474,9 @@ Azure Cache for Redis は、一般公開されていて、最大サイズは 53 
 
 Azure Cache for Redis により、お客様は Microsoft によって管理されている、セキュリティで保護された専用の Azure Cache for Redis を使用できるようになります。 このサービスでは、Redis が提供する豊富な機能セットとエコシステムを利用し、Microsoft による信頼性の高いホスティングと監視を受けられます。
 
-キーと値ペアのみを扱う従来のキャッシュとは異なり、Redis は高パフォーマンスな種類のデータに人気があります。 また、Redis は、このようなデータに対するアトミックな操作 (文字列の付加、ハッシュ内の値のインクリメント、リストへのプッシュ、積集合、和集合、および差集合の計算、並べ替えられた集合内で最高ランクのメンバーの取得など) の実行もサポートしています。 その他の機能として、トランザクションのサポート、パブリッシュ/サブスクライブ、Lua スクリプト、有効期限が制限されたキー、Redis を従来のキャッシュのように動作させるための構成設定があります。
+キーと値のペアのみを処理する従来のキャッシュとは異なり、Redis は、データ型の性能が高いため人気があります。 また、Redis は、このようなデータに対するアトミックな操作 (文字列の付加、ハッシュ内の値のインクリメント、リストへのプッシュ、積集合、和集合、および差集合の計算、並べ替えられた集合内で最高ランクのメンバーの取得など) の実行もサポートしています。 その他の機能として、トランザクションのサポート、パブリッシュ/サブスクライブ、Lua スクリプト、有効期限が制限されたキー、Redis を従来のキャッシュのように動作させるための構成設定があります。
 
-Redis が正常に動作するために重要な点は、Redis を中心として正常に動作する強力なオープン ソース エコシステムが構築されていることです。 また、その環境を複数の言語で使用できる多様な Redis クライアントに反映します。 このエコシステムと幅広いクライアントにより、Azure 内部に構築するほぼすべてのワークロードで Azure Cache for Redis を使用できます。
+Redis を成功させているもう 1 つの重要な側面は、その周りに構築される健全で活発なオープン ソース エコシステムです。 また、その環境を複数の言語で使用できる多様な Redis クライアントに反映します。 このエコシステムと幅広いクライアントにより、Azure 内部に構築するほぼすべてのワークロードで Azure Cache for Redis を使用できます。
 
 Azure Cache for Redis の使用を開始することの詳細については、「[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と、[Azure Cache for Redis のドキュメント](index.md)に関するページを参照してください。
 

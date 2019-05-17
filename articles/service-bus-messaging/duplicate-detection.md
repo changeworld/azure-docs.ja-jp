@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856215"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413652"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -35,6 +35,9 @@ ID のアプリケーションによる制御は、アプリケーションが *
 アプリケーション コンテキストの処理過程で複数のメッセージが送信されるビジネス プロセスの場合、*MessageId* は、注文書番号などのアプリケーション レベルのコンテキスト識別子と、メッセージの内容を組み合わせたもの、たとえば、**12345.2017/支払い**のようになります。
 
 *MessageId* には常になんらかの GUID を使用でき、重複検出機能を効果的に活用するには、ビジネス プロセスと ID を紐付けることで予想可能な再現性を確立する必要があります。
+
+> [!NOTE]
+> 重複の検出が有効になっていて、セッション ID またはパーティション キーが設定されていない場合、メッセージ ID がパーティション キーとして使用されます。 メッセージ ID も設定されていない場合は、.NET と AMQP のライブラリによってメッセージのメッセージ ID が自動的に生成されます。 詳細については、「[パーティション キーの使用](service-bus-partitioning.md#use-of-partition-keys)」を参照してください。
 
 ## <a name="enable-duplicate-detection"></a>重複検出の有効化
 

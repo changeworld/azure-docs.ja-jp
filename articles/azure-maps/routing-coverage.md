@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f9f5b24a52ebfb8b87f1abaa3b60091d7f4690ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870003"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230660"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
@@ -27,9 +27,9 @@ ms.locfileid: "64870003"
 
 | シンボル             | 意味                                |
 |--------------------|----------------------------------------|
-| ✓                  | 詳細なデータが提供される国。   |
-| Ø                  | 簡単なデータが提供される国。 |
-| 国名がない | 国データが提供されていない。          |
+| ✓                  | 詳細なデータが提供される国/リージョン。   |
+| Ø                  | 簡略化されたデータが提供される国/リージョン。 |
+| 国名がない | 国/リージョン データが提供されていない。          |
 
 <br>  
 
@@ -220,9 +220,9 @@ ms.locfileid: "64870003"
 | + バミューダ諸島                       |        ✓       |                      |             |
 | + 英領バージン諸島        |        ✓       |                      |             |
 | + ケイマン諸島                |        ✓       |                      |             |
-| + ジブラルタル                      |        ✓       |         ✓            |             | 
+| + ジブラルタル                     |        ✓       |         ✓            |             | 
 | + モンセラット                    |        ✓       |                      |             |
-| + タークス・カイコス諸島        |        ✓       |                      |             |
+| + タークス・カイコス諸島      |        ✓       |                      |             |
 | バチカン                   |        ✓       |         ✓            |             |
 | マン島                    |        ✓       |                      |             |
 

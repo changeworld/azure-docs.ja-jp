@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/23/2019
+ms.date: 04/24/2019
 ms.author: pepogors
-ms.openlocfilehash: a0174a5442de7a10e45e9dc2a2f43f5f401d1a69
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805072"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231368"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス
 
@@ -45,6 +45,10 @@ Azure Service Fabric のアプリケーションとクラスターを問題な�
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
 * [クラスターの監視と診断に関するベスト プラクティス](service-fabric-best-practices-monitoring.md)
+
+## <a name="application-design"></a>アプリケーションの設計
+
+* [アプリケーション設計のベスト プラクティス](service-fabric-best-practices-applications.md)
 
 ## <a name="checklist"></a>チェック リスト
 

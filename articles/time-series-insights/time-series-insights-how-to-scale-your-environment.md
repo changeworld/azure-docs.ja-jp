@@ -10,23 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692427"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472786"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
-この記事では、Azure Portal を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。 
+この記事では、Azure Portal を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。
 
-Azure ポータルを使用して、容量を特定の価格 SKU 内で増減できます。 
+Azure ポータルを使用して、容量を特定の価格 SKU 内で増減できます。
 
-ただし、価格レベル SKU の変更は許可されません。 たとえば、S1 価格の SKU の環境を S2 に変換したり、その逆方向に変換したりすることはできません。 
-
+ただし、価格レベル SKU の変更は許可されません。 たとえば、S1 価格の SKU の環境を S2 に変換したり、その逆方向に変換したりすることはできません。
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU の受信レートと容量
 
@@ -45,20 +44,21 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 容量は直線的にスケーリングされるので、容量が 2 の S1 SKU であれば、サポートされるイベント受信レートは 1 日あたり 2 GB (200 万)、1 か月あたり 60 GB (6,000 万イベント) となります。
 
 ## <a name="change-the-capacity-of-your-environment"></a>環境の容量を変更する
-1. Azure Portal で Time Series Insights 環境を見つけて選択します。 
 
-2. Time Series Insighs 環境のメニューから、**[構成]** を選択します。
+1. Azure Portal で Time Series Insights 環境を見つけて選択します。
 
-   ![configure.png](media/scale-your-environment/configure.png)
+1. Time Series Insighs 環境のメニューから、**[構成]** を選択します。
 
-3. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 **受信レート**、**ストレージの容量**、および**コストの見積もり**が動的に更新されて変化の影響が示されることに注目してください。 
+   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-   ![スライダー](media/scale-your-environment/slider.png)
+1. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 **受信レート**、**ストレージの容量**、および**コストの見積もり**が動的に更新されて変化の影響が示されることに注目してください。
 
-   または、スライダーの右側にあるテキスト ボックスに、容量の乗数の数を入力することもできます。 
+   [![スライダー](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
-4. **[保存]** を選択して環境をスケーリングします。 変更がコミットされるまで、一時的に進行状況のインジケーターが表示されます。 
+   または、スライダーの右側にあるテキスト ボックスに、容量の乗数の数を入力することもできます。
+
+1. **[保存]** を選択して環境をスケーリングします。 変更がコミットされるまで、一時的に進行状況のインジケーターが表示されます。
 
 ## <a name="next-steps"></a>次の手順
-> [!div class="nextstepaction"]
-> [新しい容量が、スロットルを防止するのに十分であることを確認します](time-series-insights-diagnose-and-solve-problems.md)。
+
+- 新しい容量が、[スロットルを防止するのに十分](time-series-insights-diagnose-and-solve-problems.md)であることを確認します。

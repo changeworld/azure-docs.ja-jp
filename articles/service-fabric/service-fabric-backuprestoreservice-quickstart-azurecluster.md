@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 4d4bc69f00f86bc81c353ef0cc40f37f000ba6c4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9bce408215cef540604a72109bc5b29ebc3359e7
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670440"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413790"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
 > [!div class="op_single_selector"]
@@ -59,8 +59,30 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得または作成する方法については、[こちらの記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
 * Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
 * アプリケーションのバックアップを保存するための Azure ストレージ アカウントを作成します。
+* 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>バックアップと復元サービスの有効化
+
+### <a name="using-azure-portal"></a>Azure Portal の使用
+
+`Cluster Configuration` タブの `+ Show optional settings` の下で `Include backup restore service` チェック ボックスをオンにします。
+
+![ポータルでバックアップ復元サービスを有効にする][1]
+
+
+### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 最初に、"_バックアップと復元サービス_" をクラスターで有効にする必要があります。 デプロイするクラスター用テンプレートを用意します。 [サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用することも、Resource Manager テンプレートを作成することもできます。 次の手順で、"_バックアップと復元サービス_" を有効にします。
 
 1. まず、`Microsoft.ServiceFabric/clusters` リソースの `apiversion` が **`2018-02-01`** に設定されていることを確認し、設定されていない場合は次のスニペットのように更新します。
@@ -117,6 +139,18 @@ Reliable Stateful サービスと Reliable Actors の定期バックアップを
 
 バックアップ ストレージには、先ほど作成した Azure ストレージ アカウントを使用します。 コンテナー `backup-container` は、バックアップを格納するために構成されます。 まだ存在しない場合は、バックアップのアップロード中に、この名前のコンテナーが作成されます。 Azure Storage アカウントの有効な接続文字列を `ConnectionString`に指定して、`account-name` を実際のストレージ アカウント名に、`account-key` を実際のストレージ アカウント キーにそれぞれ置き換えます。
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+新しいバックアップ ポリシーを作成するため、PowerShell コマンドレットを実行します。 `account-name` を実際のストレージ アカウント名に置き換え、`account-key` を実際のストレージ アカウント キーに置き換えます。
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container' -Basic -RetentionDuration '10.00:00:00'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
+
 必要な REST API を呼び出す次の PowerShell スクリプトを実行して、新しいポリシーを作成します。 `account-name` を実際のストレージ アカウント名に置き換え、`account-key` を実際のストレージ アカウント キーに置き換えます。
 
 ```powershell
@@ -148,6 +182,7 @@ $body = (ConvertTo-Json $BackupPolicy)
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
+
 ```
 
 > [!IMPORTANT]
@@ -155,6 +190,15 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすバックアップ ポリシーを定義した後、そのポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+
+```
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 必要な REST API を呼び出す次の PowerShell スクリプトを実行して、上の手順で作成した `BackupPolicy1` という名前のバックアップ ポリシーを `SampleApp` という名前のアプリケーションに関連付けます。
 
@@ -179,6 +223,15 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 _GetBackups_ API を使用して、アプリケーションの Reliable Stateful サービスと Reliable Actors に属するすべてのパーティションに関連付けられているバックアップを列挙できます。 アプリケーション、サービス、またはパーティションのバックアップを列挙できます。
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+    
+Get-SFApplicationBackupList -ApplicationId WordCount
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
+
 HTTP API を呼び出す次の PowerShell スクリプトを実行して、`SampleApp` アプリケーション内のすべてのパーティションに対して作成されたバックアップを列挙します。
 
 ```powershell
@@ -189,6 +242,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get -CertificateThumbprint '1b7e
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 上記を実行したときのサンプル出力:
 
 ```
@@ -230,15 +284,17 @@ FailureError            :
 ```
 
 ## <a name="limitation-caveats"></a>制限事項/注意事項
-- PowerShell コマンドレットが組み込まれた Service Fabric はありません。
+- Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
 
 ## <a name="known-issues"></a>既知の問題
 - リテンション期間を確実に 24 日未満に構成します。 
+
 
 ## <a name="next-steps"></a>次の手順
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [バックアップと復元用の REST API リファレンス](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
 

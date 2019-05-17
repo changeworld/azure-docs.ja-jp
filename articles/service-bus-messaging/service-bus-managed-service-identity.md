@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856887"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228402"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Azure Service Bus での Azure リソースのマネージド ID 
 
@@ -29,7 +29,7 @@ ms.locfileid: "54856887"
 
 ## <a name="service-bus-roles-and-permissions"></a>Service Bus のロールとアクセス許可
 
-マネージド ID は、Service Bus 名前空間の "所有者" または "共同作成者" ロールにのみ追加できます。 これにより、名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 ただし、名前空間トポロジを変更する管理操作は、最初は Azure Resource Manager を使う場合にのみサポートされます。 ネイティブの Service Bus REST 管理インターフェイスを使う場合はサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトをマネージド ID 内で使用できないことも意味します。
+マネージド ID は、Service Bus 名前空間の "所有者" または "共同作成者" ロールにのみ追加できます。 これにより、名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 ただし、名前空間トポロジを変更する管理操作は、最初は Azure Resource Manager を使う場合にのみサポートされます。 ネイティブの Service Bus REST 管理インターフェイスを使う場合はサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトまたは .NET Standard クライアントの [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) オブジェクトをマネージド ID 内で使用できないことも意味します。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID による Service Bus の使用
 

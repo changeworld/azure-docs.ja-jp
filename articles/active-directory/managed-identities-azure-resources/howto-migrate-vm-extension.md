@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6ee8891eae108256875660cc3f2256b65703a1aa
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498334"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406784"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "58498334"
 
 ### <a name="provision-the-extension"></a>拡張機能のプロビジョニング 
 
-マネージド ID を持つように仮想マシンまたは仮想マシン スケール セットを構成する場合、オプションで [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) コマンドレットで `-Type` パラメーターを使用して、Azure リソースのマネージド ID VM 拡張機能をプロビジョニングすることもできます。 仮想マシンのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
+マネージド ID を持つように仮想マシンまたは仮想マシン スケール セットを構成する場合、必要に応じて、[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) コマンドレットで `-Type` パラメーターを使用して、Azure リソースのマネージド ID VM 拡張機能をプロビジョニングするように選択することもできます。 仮想マシンのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
 
 ```powershell
    $settings = @{ "port" = 50342 }

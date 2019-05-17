@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 209a91453875531e81ddbcead8c1ed2fb309a0a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 996111fbe23000182dab774ba3bbad0cc6435824
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147444"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412717"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
@@ -102,7 +102,7 @@ ms.locfileid: "65147444"
 
 次の図は、サービスの構成を追加する例を示しています。
 
-[![Add-Configuration](./media/deploy-locally-intelliJ/run-configurations.png)](./media/deploy-locally-intelliJ/run-configurations.png#lightbox)
+[![Add-Configuration](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 
 #### <a name="create-compound-configuration"></a>複合構成を作成する
@@ -113,12 +113,9 @@ ms.locfileid: "65147444"
 
 次の図は、すべての sbt タスクを 1 つの構成に追加する例を示しています。
 
+[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intelliJ/all-services.png)](./media/deploy-locally-intelliJ/all-services.png#lightbox)
-
-
-
-1. **[Run]\(実行\)** をクリックして、ローカル コンピューター上で Web サービスをビルドして実行します。
+**[Run]\(実行\)** をクリックして、ローカル コンピューター上で Web サービスをビルドして実行します。
 
 Web サービスごとにコマンド プロンプトと Web ブラウザー ウィンドウが開きます。 コマンド プロンプトには実行中のサービスの出力が表示され、ブラウザー ウィンドウでは状態を監視することができます。 コマンド プロンプトや Web ページを閉じると Web サービスが停止するため、閉じないでください。
 
