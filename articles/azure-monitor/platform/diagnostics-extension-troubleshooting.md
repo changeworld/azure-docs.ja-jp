@@ -6,14 +6,14 @@ author: rboucher
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/08/2019
 ms.author: robb
-ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699100"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471779"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング
 この記事では、Azure Diagnostics の使用に関連するトラブルシューティング情報について説明します。 Azure Diagnostics の詳細については、[Azure Diagnostics の概要](diagnostics-extension-overview.md)に関するページを参照してください。
@@ -48,7 +48,7 @@ ms.locfileid: "59699100"
 | **監視エージェント構成ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>\WAD0107\Configuration\MaConfig.xml |
 | **状態ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\Status |
 | **Azure Diagnostics 拡張機能パッケージ** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>|
-| **ログ収集ユーティリティのパス** | C:\WindowsAzure\Packages |
+| **ログ収集ユーティリティのパス** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>メトリック データが Azure ポータルに表示されない

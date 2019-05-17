@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201536"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466277"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -107,9 +107,15 @@ Exchange Online を使用する場合は、テナント内の一部のユーザ�
 > ```
 > Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。 Azure AD に proxyAddresses 属性を反映する方法の詳細については、[この記事](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)を参照してください。
+> この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。
 
 関連するユーザーのプロキシ アドレスの問題を解決したら、グループのライセンス処理を強制的に実行して、ライセンスが適用できるようになったことを確認してください。
+
+## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Azure AD Mail と ProxyAddresses の属性の変更
+
+**問題**:ユーザーまたはグループのライセンス割り当てを更新している間に、一部のユーザーの Azure AD Mail および ProxyAddresses の属性が変更されたことがわかる場合があります。
+
+ユーザーのライセンス割り当てを更新すると、プロキシ アドレスの計算が開始され、それによってユーザーの属性が変更されることがあります。 変更の正確な理由を理解し、問題を解決するには、[Azure AD で proxyAddresses 属性がどのように設定されるか](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)についての、この記事を参照してください。
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>1 つのグループに複数の製品ライセンスがある場合
 

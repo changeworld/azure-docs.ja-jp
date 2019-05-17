@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426445"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410041"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 
@@ -140,7 +140,7 @@ Azure の場合、TCP MSS クランプを 1,350 バイトに設定し、トン�
 
 | | | | |
 |-|-|-|-|
-|**ルート**|**Distance**|**一方向の時間**|**RTT**|
+|**Route**|**距離**|**一方向の時間**|**RTT**|
 |ニューヨークからサンフランシスコへ|4,148 km|21 ミリ秒|42 ミリ秒|
 |ニューヨークからロンドンへ|5,585 km|28 ミリ秒|56 ミリ秒|
 |ニューヨークからシドニーへ|15,993 km|80 ミリ秒|160 ミリ秒|
@@ -236,7 +236,7 @@ Set-NetTCPSetting
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**スケール ファクター**|**スケール乗数**|**数式<br/>(最大ウィンドウ サイズを計算)**|
+|**AutoTuningLevel**|**スケール ファクター**|**スケール乗数**|**最大ウィンドウ サイズを<br/>計算するための数式**|
 |Disabled|なし|なし|ウィンドウ サイズ|
 |制限付き|4|2^4|ウィンドウ サイズ * (2^4)|
 |厳しく制限|2|2^2|ウィンドウ サイズ * (2^2)|
@@ -276,7 +276,7 @@ MTU が大きいほど MSS が大きくなるので、MTU を増やすと TCP �
 
 Receive Side Scaling (RSS) は、受信処理をマルチプロセッサ システム上の複数の CPU に分散することで、ネットワーク トラフィックの受信をより効率的に分散するネットワーク ドライバー テクノロジです。 簡単に言うと、RSS では、1 つだけではなくすべての使用可能な CPU が使用されるので、システムで処理できる受信トラフィックが増えます。 RSS の技術的な詳細については、[サイド スケーリングの受け取りの概要](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling)を参照してください。
 
-VM 上で高速ネットワークが有効になっているときに最大のパフォーマンスを実現するには、RSS を有効にする必要があります。 RSS は、高速ネットワークを使用しない VM 上でも利点があります。 RSS が有効になっているかどうかを判断する方法と、これを有効にすることについては、「[Azure 仮想マシンのネットワーク スループットの最適化](http://aka.ms/FastVM)」を参照してください。
+VM 上で高速ネットワークが有効になっているときに最大のパフォーマンスを実現するには、RSS を有効にする必要があります。 RSS は、高速ネットワークを使用しない VM 上でも利点があります。 RSS が有効になっているかどうかを判断する方法と、これを有効にすることについては、「[Azure 仮想マシンのネットワーク スループットの最適化](https://aka.ms/FastVM)」を参照してください。
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT と TIME_WAIT アセシネーション
 
@@ -304,7 +304,7 @@ Azure の VM には多様なサイズと種類があり、パフォーマンス�
 
 Azure 仮想マシンには常に少なくとも 1 つのネットワーク インターフェイスが接続されている必要があります。 複数を接続することができます。 仮想マシンに割り当てられる帯域幅は、マシンに接続されているすべてのネットワーク インターフェイス全体の送信トラフィックの合計です。 つまり、帯域幅は仮想マシンごとに割り当てられており、マシンに接続されているネットワーク インターフェイスの数は関係ありません。
 
-VM の各サイズでサポートされる予想される送信スループットとサポートされるネットワーク インターフェイスの数については、「[Azure での Windows の VM サイズ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」で詳しく説明しています。 最大スループットを表示するには、**汎用**などの種類を選択し、表示されたページにサイズ シリーズに関するセクション (たとえば、「Dv2-series」) を見つけます。 各シリーズに、"最大 NIC 数/想定ネットワーク帯域幅 (Mbps)" というタイトルの最終列でネットワーク仕様を提供する表があります。
+VM の各サイズでサポートされる予想される送信スループットとサポートされるネットワーク インターフェイスの数については、「[Azure での Windows の VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」で詳しく説明しています。 最大スループットを表示するには、**汎用**などの種類を選択し、表示されたページにサイズ シリーズに関するセクション (たとえば、「Dv2-series」) を見つけます。 各シリーズに、"最大 NIC 数/想定ネットワーク帯域幅 (Mbps)" というタイトルの最終列でネットワーク仕様を提供する表があります。
 
 このスループット制限が仮想マシンに適用されます。 スループットは、次の要因の影響を受けません。
 
@@ -316,7 +316,7 @@ VM の各サイズでサポートされる予想される送信スループッ�
 
 - **プロトコル**:すべてのプロトコルに対するすべての送信トラフィックが、制限に達するまでカウントされます。
 
-詳しくは、「[仮想マシンのネットワーク帯域幅](http://aka.ms/AzureBandwidth)」を参照してください。
+詳しくは、「[仮想マシンのネットワーク帯域幅](https://aka.ms/AzureBandwidth)」を参照してください。
 
 ### <a name="internet-performance-considerations"></a>インターネットのパフォーマンスに関する考慮事項
 
@@ -388,4 +388,4 @@ NTttcp は、Linux または Windows VM の TCP パフォーマンスをテス�
 
 ## <a name="next-steps"></a>次の手順
 
-これで Azure VM の TCP/IP パフォーマンス チューニングについて学習したので、[仮想ネットワークの計画](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm)の他の考慮事項について読んだり、[仮想ネットワークの接続と構成の詳細](https://docs.microsoft.com/en-us/azure/virtual-network/)について調べたりできます。
+これで Azure VM の TCP/IP パフォーマンス チューニングについて学習したので、[仮想ネットワークの計画](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)の他の考慮事項について読んだり、[仮想ネットワークの接続と構成の詳細](https://docs.microsoft.com/azure/virtual-network/)について調べたりできます。

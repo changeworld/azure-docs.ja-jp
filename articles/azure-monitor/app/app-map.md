@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678544"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509986"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -68,7 +68,7 @@ ms.locfileid: "59678544"
 
 ### <a name="go-to-details"></a>詳細の表示
 
-呼び出し履歴レベルに対して行われたビューを提供できるエンド ツー エンドのトランザクション エクスペリエンスの詳細を表示するには、**[go to details] (詳細の表示)** を選択します。
+呼び出し履歴レベルまでのビューを提供できるエンドツーエンドのトランザクション エクスペリエンスの詳細を表示するには、**[詳細に移動]** を選択します。
 
 ![[go-to-details] (詳細の表示) ボタンのスクリーンショット](media/app-map/go-to-details.png)
 

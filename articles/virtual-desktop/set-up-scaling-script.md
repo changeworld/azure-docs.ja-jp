@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 379e73c33aa4570c3e56f902b011d75944c94a8d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497899"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410584"
 ---
 # <a name="automatically-scale-session-hosts"></a>セッション ホストを自動的にスケーリングする
 
@@ -26,9 +26,9 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 
 - Windows Virtual Desktop のテナントとアカウント、またはそのテナントのクエリを実行するためのアクセス許可を持つサービス プリンシパル (RDS 共同作成者など)。
 - 構成されて Windows Virtual Desktop サービスに登録されたセッション ホスト プール VM。
-- タスク スケジュールを介してスケジュールされたタスクを実行し、セッション ホストへのネットワークのアクセス権を持つ追加のスケーラー VM。
-- スケジュールされたタスクを実行している VM にインストールされている Microsoft Azure Resource Manager PowerShell モジュール。
-- スケジュールされたタスクを実行している VM にインストールされている Windows Virtual Desktop PowerShell モジュール。
+- タスク スケジューラでスケジュールされたタスクを実行すると共に、セッション ホストにネットワークでアクセスできる追加の仮想マシン。 以後、このドキュメントでは、これをスケーラー VM と呼びます。
+- [Microsoft Azure Resource Manager PowerShell モジュール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (スケジュールされたタスクを実行する VM にインストールされていること)。
+- [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) (スケジュールされたタスクを実行する VM にインストールされていること)。
 
 ## <a name="recommendations-and-limitations"></a>推奨事項と制限事項
 
@@ -37,7 +37,7 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 - このスケーリング スクリプトでは、スケーリング スクリプトを実行しているスケジュールされたタスクのインスタンスごとに 1 つのホスト プールだけを処理できます。
 - スケーリング スクリプトを実行するスケジュールされたタスクは、常に電源オンになっている VM 上にある必要があります。
 - スケーリング スクリプトとその構成のインスタンスごとに別々のフォルダーを作成します。
-- このスクリプトでは、多要素認証を使用するアカウントはサポートされません。 Windows Virtual Desktop サービスと Azure へのアクセスにはサービス プリンシパルを使用することをお勧めします。
+- 多要素認証を必要とする Azure AD ユーザー アカウントを使用し、管理者として Windows Virtual Desktop にサインインすることは、このスクリプトではサポートされません。 Windows Virtual Desktop サービスと Azure へのアクセスにはサービス プリンシパルを使用することをお勧めします。 [こちらのチュートリアル](create-service-principal-role-powershell.md)に従って、サービス プリンシパルとロールの割り当てを PowerShell で作成してください。
 - Azure の SLA 保証は、可用性セット内の VM にのみ適用されます。 ドキュメントの現在のバージョンでは、スケーリングを行う 1 台の VM がある環境について説明しています。これは可用性の要件を満たしていない可能性があります。
 
 ## <a name="deploy-the-scaling-script"></a>スケーリング スクリプトのデプロイ
@@ -48,26 +48,34 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 
 まず、スケーリング スクリプト用の環境を準備します。
 
-1. ドメイン管理者のアカウントを使用して、スケジュールされたタスクを実行する VM (**スケーリング VM**) にサインインします。
-2. スケーリング VM 上に、スケーリング スクリプトとその構成を保持するフォルダーを作成します (たとえば、**C:\\scaling-HostPool1**)。
-3. **basicScaler.ps1**、**Config.xml**、**Functions-PSStoredCredentials.ps1** ファイル、**PowershellModules** フォルダーを[スケーリング スクリプト リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)からダウンロードし、手順 2. で作成したフォルダーにコピーします。
+1. スケジュールされたタスクをドメイン管理者アカウントで実行する VM (スケーラー VM) にサインインします。
+2. スケーリング スクリプトとその構成 (**C:\\scaling-HostPool1** など) を格納するフォルダーをスケーラー VM に作成します。
+3. **basicScale.ps1**、**Config.xml**、**Functions-PSStoredCredentials.ps1** の各ファイルおよび **PowershellModules** フォルダーを[スケーリング スクリプト リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)からダウンロードし、それらを手順 2. で作成したフォルダーにコピーします。 これらのファイルをスケーラー VM にコピーする前に入手します。主な方法は、次の 2 つです。
+    - Git リポジトリをローカル コンピューターに複製します。
+    - 各ファイルの **Raw** バージョンを表示し、各ファイルの内容をコピーしてテキスト エディターに貼り付けた後、対応するファイル名とファイルの種類でそのファイルを保存します。 
 
 ### <a name="create-securely-stored-credentials"></a>安全に保存された資格情報の作成
 
 次に、安全に保存された資格情報を作成する必要があります。
 
 1. PowerShell ISE を管理者として開きます。
-2. 編集ウィンドウを開き、**Function-PSStoredCredentials.ps1** ファイルを読み込みます。
-3. 次のコマンドレットを実行します。
+2. 次のコマンドレットを実行して、RDS PowerShell モジュールをインポートします。
+
+    ```powershell
+    Install-Module Microsoft.RdInfra.RdPowershell
+    ```
+    
+3. 編集ウィンドウを開き、**Function-PSStoredCredentials.ps1** ファイルを読み込みます。
+4. 次のコマンドレットを実行します。
     
     ```powershell
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
     たとえば、**Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"** などです
-4. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.xml** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
+5. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.xml** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
     - 別のサービス プリンシパルまたは標準アカウントを使用する場合は、アカウントごとに 1 回ずつ **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行して、ローカルに格納された資格情報を作成します。
-5. **Get-StoredCredentials -List** を実行して、資格情報が正常に作成されたことを確認します。
+6. **Get-StoredCredentials -List** を実行して、資格情報が正常に作成されたことを確認します。
 
 ### <a name="configure-the-configxml-file"></a>config.xml ファイルの構成
 
@@ -87,7 +95,7 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 | BeginPeakTime                 | ピーク使用時間の開始時刻                                                            |
 | EndPeakTime                   | ピーク使用時間の終了時刻                                                              |
 | TimeDifferenceInHours         | 現地時刻と UTC の時間差 (時間単位)                                   |
-| SessionThresholdPerCPU        | 新しい RDSH サーバーをピーク時間中に開始する必要がある場合に、それを判断するために使用される CPU あたりの最大セッション数のしきい値。  |
+| SessionThresholdPerCPU        | CPU ごとの最大セッション数のしきい値。ピーク時に新しいセッション ホスト VM をいつ起動すべきかの判断に使用されます。  |
 | MinimumNumberOfRDSH           | ピーク使用時間外中も実行を続けるホスト プール VM の最小数             |
 | LimitSecondsToForceLogOffUser | ユーザーにサインアウトを強制する前に待機する秒数。0 に設定されている場合、ユーザーは強制的にサインアウトされません。  |
 | LogOffMessageTitle            | サインアウトを強制する前にユーザーに送信されるメッセージのタイトル                  |
@@ -111,11 +119,11 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 
 このスケーリング スクリプトでは、config.xml ファイルから、その日のピーク使用期間の開始と終了などの設定を読み取ります。
 
-ピーク使用時間中、スクリプトでは、各コレクションの現在のセッション数と現在実行中の RDSH 容量が確認されます。 実行中の RDSH サーバーに、config.xml ファイルで定義されている SessionThresholdPerCPU パラメーターに基づいて既存のセッションをサポートするために十分な容量があるかどうかが計算されます。 ない場合は、スクリプトによってコレクション内の追加の RDSH サーバーが起動されます。
+ピーク使用時間帯、現在のセッション数と現在実行中の RDSH のキャパシティが、このスクリプトによってホスト プールごとにチェックされます。 実行中のセッション ホスト VM に、既存のセッションをサポートできるだけのキャパシティがあるかどうかが、config.xml ファイルに定義された SessionThresholdPerCPU パラメーターに基づいて計算されます。 存在しない場合は、ホスト プールで追加のセッション ホスト VM を起動します。
 
-ピーク使用時間外中、スクリプトでは、config.xml ファイル内の MinimumNumberOfRDSH パラメーターに基づいてシャットダウンする必要のある RDSH サーバーが決定されます。 スクリプトでは、RDSH サーバーがドレイン モードに設定され、新しいセッションがホストに接続することを防ぎます。 config.xml ファイル内で **LimitSecondsToForceLogOffUser** パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーに作業内容を保存するよう通知され、構成された時間待機してからユーザーが強制的にサインアウトされます。RDSH サーバー上のすべてのユーザー セッションがサインオフした後、スクリプトによってサーバーがシャットダウンされます。
+オフピーク使用時間帯には、config.xml ファイル内の MinimumNumberOfRDSH パラメーターに基づいて、シャットダウンすべきセッション ホスト VM が特定されます。 新しいセッションがホストに接続できないよう、セッション ホスト VM はドレイン モードに設定されます。 config.xml ファイル内で **LimitSecondsToForceLogOffUser** パラメーターを 0 以外の正の値に設定した場合は、スクリプトによって、現在サインインしているユーザーに作業内容を保存するよう通知され、構成された時間待機してからユーザーが強制的にサインアウトされます。セッション ホスト VM のすべてのユーザー セッションがサインオフされると、スクリプトによってサーバーがシャットダウンされます。
 
-config.xml ファイル内の **LimitSecondsToForceLogOffUser** パラメーターをゼロに設定した場合、スクリプトでは、コレクション プロパティ内のセッション構成設定でユーザー セッションのサインオフを処理できます。 RDSH サーバー上にセッションがある場合は、RDSH サーバーが実行されたままになります。 セッションがない場合は、スクリプトによって RDSH サーバーがシャットダウンされます。
+config.xml ファイルで **LimitSecondsToForceLogOffUser** パラメーターを 0 に設定した場合、ホスト プールのプロパティのセッション構成設定で、ユーザー セッションのサインオフを処理することができます。 セッション ホスト VM にセッションが存在する場合、セッション ホスト VM は実行状態のままとなります。 セッションがまったく存在しない場合、スクリプトによってセッション ホスト VM がシャットダウンされます。
 
 スクリプトは、タスク スケジューラを使用してスケーラー VM サーバー上で定期的に実行されるように設計されています。 リモート デスクトップ サービス環境のサイズに基づいて適切な時間間隔を選択し、仮想マシンの起動とシャットダウンにしばらく時間がかかることを忘れないでください。 スケーリング スクリプトを 15 分ごとに実行することをお勧めします。
 
@@ -125,6 +133,6 @@ config.xml ファイル内の **LimitSecondsToForceLogOffUser** パラメータ�
 
 **WVDTenantUsage.log** ファイルには、スケーリング スクリプトを実行するたびアクティブなコア数とアクティブな仮想マシン数が記録されます。 この情報を使用して、Microsoft Azure VM の実際の使用料とコストを見積もることができます。 ファイルはコンマ区切り値として書式設定され、各項目に次の情報が含まれます。
 
->時間、コレクション、コア、VM
+>時間、ホスト プール、コア、VM
 
 ファイル名を変更して .csv 拡張子を付け、Microsoft Excel に読み込んで分析することもできます。

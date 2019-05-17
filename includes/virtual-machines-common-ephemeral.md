@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7737f73ee4eb9ae9dc8c4845020b7543a5b3495
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157827"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65468389"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保持されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションでは個々の VM 障害が許容されますが、大規模なデプロイにかかる時間、または個々の VM インスタンスの再イメージ化にかかる時間が、より重要となります。 また、クラシック デプロイ モデルを使用してデプロイされたアプリケーションを、Resource Manager デプロイ モデルに移動することも適切です。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 さらに、エフェメラル OS ディスクは無料で、OS ディスクのストレージ コストはかかりません。 
  
@@ -30,7 +30,7 @@ ms.locfileid: "65157827"
 |                             | 永続 OS ディスク                          | エフェメラル OS ディスク                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | OS ディスクのサイズ制限      | 2 TiB                                                                                        | VM サイズのキャッシュ サイズまたは 2TiB のうち、小さい方 - [DS](../articles/virtual-machines/linux/sizes-general.md)、[ES](../articles/virtual-machines/linux/sizes-memory.md)、[M](../articles/virtual-machines/linux/sizes-memory.md)、[FS](../articles/virtual-machines/linux/sizes-compute.md)、および [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| サポート対象の VM サイズ          | All                                                                                          | DSv1、DSv2、DSv3、Esv2、Fs、FsV2、GS、M                                               |
+| サポート対象の VM サイズ          | All                                                                                          | DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | サポート対象のディスクの種類           | マネージド OS ディスクとアンマネージド OS ディスク                                                                | マネージド OS ディスクのみ                                                               |
 | リージョンのサポート              | すべてのリージョン                                                                                  | すべてのリージョン                              |
 | データの永続化            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage に保持されない |

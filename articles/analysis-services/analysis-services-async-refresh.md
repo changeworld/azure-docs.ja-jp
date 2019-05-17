@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168019"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506970"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 
@@ -201,42 +201,9 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 1.  リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
 2.  「**client.BaseAddress = …**」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
-このコード サンプルでは、対話型ログイン、ユーザー名/パスワード、または[サービス プリンシパル](#service-principal)を使用できます。
+このコード例では、[サービス プリンシパル](#service-principal)の認証を使用しています。
 
-#### <a name="interactive-login-or-usernamepassword"></a>対話型ログインまたはユーザー名/パスワード
-
-この形式の認証には、必要な API アクセス許可を割り当てられて作成された Azure アプリケーションが必要です。 
-
-1.  Azure Portal で、**[リソースの作成]** > **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。
-
-    ![[新しいアプリケーションの登録]](./media/analysis-services-async-refresh/aas-async-app-reg.png)
-
-
-2.  **[作成]** で名前を入力し、アプリケーションの種類として **[ネイティブ]** を選択します。 **[リダイレクト URI]** に「**urn:ietf:wg:oauth:2.0:oob**」と入力してから **[作成]** をクリックします。
-
-    ![[設定]](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
-
-3.  アプリを選択してから **[アプリケーション ID]** をコピーして保存します。
-
-    ![アプリケーション ID のコピー](./media/analysis-services-async-refresh/aas-async-app-id.png)
-
-4.  **[設定]** で、**[必要なアクセス許可]** > **[追加]** の順にクリックします。
-
-    ![API アクセス許可の追加](./media/analysis-services-async-refresh/aas-async-add.png)
-
-5.  **[API を選択します]** で検索ボックスに「**Azure Analysis Services**」と入力して選択します。
-
-    ![API の選択](./media/analysis-services-async-refresh/aas-async-select-api.png)
-
-6.  **[Read and Write all models]\(すべてのモデルの読み取りと書き込み\)** を選択してから **[選択]** をクリックします。 両方が選択されている状態で **[完了]** をクリックしてアクセス許可を追加します。 反映には数分かかることがあります。
-
-    ![[Read and Write all models]\(すべてのモデルの読み取りと書き込み\) の選択](./media/analysis-services-async-refresh/aas-async-select-read.png)
-
-7.  コード サンプル内で、「**UpdateToken()**」メソッドを探します。 このメソッドの内容を確認します。
-8.  「**string clientID = …**」を見つけたら、手順 3 でコピーした**アプリケーション ID** を入力します。
-9.  サンプルを実行します。
-
-#### <a name="service-principal"></a>サービス プリンシパル
+### <a name="service-principal"></a>サービス プリンシパル
 
 Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
 

@@ -10,35 +10,40 @@ ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295731"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510058"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の参照データを管理する
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
 
 この記事では、コンパイルして Azure Time Series Insights 環境の参照データを管理できるサンプル C# プロジェクトについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
+
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
+
 1. [参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。
 
-2. アプリケーションの承認アクセス トークンを構成します。 必ず、Azure Active Directory API を使用してトークンを取得します。 すべてのクエリ API 要求の `Authorization` ヘッダーでこのトークンを渡す必要があります。 
- 
+1. アプリケーションの承認アクセス トークンを構成します。 必ず、Azure Active Directory API を使用してトークンを取得します。 すべてのクエリ API 要求の `Authorization` ヘッダーでこのトークンを渡す必要があります。
+
    非対話型アプリケーションのセットアップ方法については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関するページをご覧ください。
 
-3. サンプル コードを編集して、**#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。 
+1. サンプル コードを編集して、**#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。
 
-このコード例は [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights) にもあります。
+> [!NOTE]
+> GA サンプル コードについては、[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample) を参照してください。
 
-## <a name="project-references"></a>プロジェクトの参照
-この例のために NuGet パッケージの `Microsoft.IdentityModel.Clients.ActiveDirectory` と `Newtonsoft.Json` を追加します。 
+## <a name="project-dependencies"></a>プロジェクト依存関係
 
-## <a name="c-sample-code"></a>C# サンプル コード 
+この例のために NuGet パッケージの `Microsoft.IdentityModel.Clients.ActiveDirectory` と `Newtonsoft.Json` を追加します。
+
+## <a name="c-sample-code"></a>C# サンプル コード
+
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -134,7 +139,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
     ""deleteproperties"": [{
         ""key"": {
             ""DeviceId"": ""Fan1""
-        },
+    },
         ""properties"": [""BladeCount""]
     }]
 }";
@@ -241,4 +246,5 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>次の手順
-[参照データ API](/rest/api/time-series-insights/ga-reference-data-api)
+
+- [参照データ API](/rest/api/time-series-insights/ga-reference-data-api) をご覧ください。

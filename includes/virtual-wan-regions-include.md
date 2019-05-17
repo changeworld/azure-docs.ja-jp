@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe7a7a548050d8d5d81ccecf17b4240ebcea10b3
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295948"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416324"
 ---
 次の表は、一般提供 (GA) の機能を使用できるサポート対象リージョンの一覧です。
 
@@ -28,6 +28,7 @@ ms.locfileid: "58295948"
 | オーストラリア政府 | オーストラリア中部、オーストラリア中部 2 |
 | インド | インド西部、インド中部、インド南部 |
 | 韓国 | 韓国中部、韓国南部 |
+| 南アフリカ | 南アフリカ北部、南アフリカ西部 |
 
 * ExpressRoute については、[Virtual WAN と ExpressRoute (プレビュー)](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register) に関する記事を参照してください。
 * ポイント対サイトについては、[Virtual WAN とポイント対サイト (プレビュー)](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register) に関する記事を参照してください。

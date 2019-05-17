@@ -14,25 +14,25 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbef13d2e64a5d1b177d8232c5b6ef1e64a1da9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9bea0a870a6ef0685f4f4bce5ad3b0d1ff1f616a
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179146"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414007"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
 Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリケーションまたは Web API サービスの Active Directory Authentication のためのシングル サインオン (SSO) をサポートできます。 Azure AD Authentication を使用すると、ユーザーは Azure Active Directory のアカウントを使用して Web アプリケーションに接続できます。 Web API で Azure AD 認証を利用する利点には、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることが含まれます。 Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
 
-この記事と関連記事では、Active Directory に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Visual Studio 2017 と Visual Studio 2015 の両方で利用できます。
+この記事と関連記事では、Active Directory に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Visual Studio 2015 以降で利用できます。
 
 現在、Active Directory の接続済みサービスは ASP.NET Core アプリケーションをサポートしていません。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント : Azure アカウントがない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)するか、[Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にします。
-- **Visual Studio 2015** またはそれ以降。 [Visual Studio 2017 を今すぐダウンロードする](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- **Visual Studio 2015** またはそれ以降。 [Visual Studio を今すぐダウンロードします](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>[接続済みサービス] ダイアログを使用して Azure Active Directory に接続する
 

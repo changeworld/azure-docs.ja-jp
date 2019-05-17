@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: f365fcd61944fbae131ab79a1c3660aaf02fa8d7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073944"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508176"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -25,9 +25,7 @@ ms.locfileid: "65073944"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
 
-はい、自動スケールは、Kubernetes 1.10 以降、[Kubernetes autoscaler][auto-scaler] 経由で使用できます。 クラスターの自動スケーラーを手動で構成して使用する方法の詳細については、[AKS のクラスター自動スケーリング][aks-cluster-autoscale]に関するページを参照してください。
-
-ノードのスケーリングを管理するために、組み込みのクラスターの自動スケーラー (現在、AKS ではプレビュー中) を使用することもできます。 詳細については、[AKS でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング][aks-cluster-autoscaler]に関するページを参照してください。
+はい、自動スケールは、Kubernetes 1.10 以降、[Kubernetes autoscaler][auto-scaler] 経由で使用できます。 クラスターの自動スケーラーを構成して使用する方法の詳細については、[AKS のクラスター自動スケーラー][aks-cluster-autoscale]に関するページを参照してください。
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>AKS では Kubernetes のロールベースのアクセス制御 (RBAC) がサポートされますか?
 
@@ -43,17 +41,13 @@ ms.locfileid: "65073944"
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS エージェント ノードにセキュリティ更新プログラムは適用されますか?
 
-Azure では、セキュリティ更新プログラムが夜間スケジュールでご利用のクラスター内の Linux ノードに自動的に適用されます。 ただし、必要な場合は、それらの Linux ノードが確実に再起動されるようにする必要があります。 ノードの再起動の実行にはいくつかのオプションがあります。
+はい、Azure では、セキュリティ更新プログラムが夜間スケジュールでクラスター内のノードに自動的に適用されます。 ただし、必要に応じてノードが再起動されることを確認する必要があります。 ノードの再起動の実行にはいくつかのオプションがあります。
 
 - Azure Portal または Azure CLI から手動で行います。
 - AKS クラスターをアップグレードします。 クラスターは自動的に [cordon および drain ノード][cordon-drain]をアップグレードして、最新の Ubuntu イメージを備えた各ノードのバックアップと、新しいパッチ バージョンまたは Kubernetes のマイナー バージョンを取得します。 詳細については、「[AKS クラスターのアップグレード][aks-upgrade]」を参照してください。
 - Kubernetes 用のオープン ソースの再起動デーモンである [Kured](https://github.com/weaveworks/kured) を使用します。 Kured は [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 OS の再起動は、クラスター アップグレードと同じ [cordon および drain プロセス][cordon-drain]を使用するクラスターで管理されます。
 
 Kured の使用について詳しくは、[AKS 上のノードへのセキュリティおよびカーネルの更新プログラムの適用][node-updates-kured]に関する記事をご覧ください。
-
-### <a name="windows-server-nodes"></a>Windows Server ノード
-
-Windows Server ノードでは (現在、AKS ではプレビュー中)、Windows Update が自動的に実行されたり、最新の更新プログラムが適用されたりすることはありません。 Windows Update のリリース サイクルと独自の検証プロセス周辺の定期的なスケジュールでは、AKS クラスター内の Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server のイメージとパッチを実行するノードが作成され、古いノードは削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?
 
@@ -108,13 +102,24 @@ AKS は現在、Azure Key Vault とネイティブに統合されていません
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-はい、Windows Server コンテナーはプレビューでご利用になれます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールで AKS クラスターを作成][aks-windows-cli]します。
-
-Window Server ノード プールのサポートには、Kubernetes プロジェクトの上流 Windows Server の一部であるいくつかの制限が含まれます。 これらの制限の詳細については、[AKS での Windows Server コンテナーの制限事項][aks-windows-limitations]に関するページを参照してください。
+Windows Server コンテナーを実行するには、Windows Server ベースのノードを実行する必要があります。 Windows Server ベースのノードは、現時点では、AKS では使用できません。 ただし、Virtual Kubelet を使用して、Azure Container Instances で Windows コンテナーをスケジュールし、それらを AKS クラスターの一部として管理できます。 詳細については、[AKS での Virtual Kubelet の使用][virtual-kubelet]に関する記事を参照してください。
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS でサービス レベル アグリーメントは提供されますか。
 
 サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、AKS では、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
+
+## <a name="why-can-i-not-set-maxpods-below-30"></a>`maxPods` を 30 未満に設定できないのはなぜですか?
+
+AKS では、Azure CLI および Azure Resource Manager テンプレートによるクラスター作成時の `maxPods` 値の設定をサポートしています。 ただし、次に示すように Kubenet と Azure CNI の両方に対し、*最小値* (作成時に検証される) があります。
+
+| ネットワーク | 最小値 | 最大値 |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+AKS はマネージド サービスであるため、クラスターの一部としてデプロイして管理するアドオンとポッドを提供しています。 以前はユーザーが、マネージド ポッドの実行に必要な値よりも小さい値 `maxPods` (30 など) を設定できましたが、現在 AKS では ((maxPods または (maxPods * vm_count)) > マネージド アドオン ポッドの最小値によって、ポッドの最小数が計算されるようになりました。
+
+ユーザーは、最小の `maxPods` 検証をオーバーライドできません。
 
 <!-- LINKS - internal -->
 
@@ -128,10 +133,6 @@ Window Server ノード プールのサポートには、Kubernetes プロジェ
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
-[aks-cluster-autoscaler]: cluster-autoscaler.md
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
-[aks-windows-cli]: windows-container-cli.md
-[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

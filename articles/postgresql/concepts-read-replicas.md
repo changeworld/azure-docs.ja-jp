@@ -6,16 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067428"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510971"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
-読み取りレプリカ機能を使用すると、Azure Database for PostgreSQL サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから同じ Azure リージョン内の最大 5 つのレプリカにレプリケートできます。 レプリカは、PostgreSQL エンジンのネイティブ レプリケーション テクノロジを使用して非同期的に更新されます。
+読み取りレプリカ機能を使用すると、Azure Database for PostgreSQL サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから最大 5 つのレプリカにレプリケートできます。 レプリカは、PostgreSQL エンジンのネイティブ レプリケーション テクノロジを使用して非同期的に更新されます。
+
+> [!IMPORTANT]
+> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 レプリカは、通常の Azure Database for PostgreSQL サーバーと同様に管理する新しいサーバーです。 読み取りレプリカごとに、仮想コアおよびストレージのプロビジョニング済みコンピューティング (GB/月) に対して課金されます。
 
@@ -29,6 +32,8 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 レプリカは読み取り専用であるため、マスターへの書き込み容量の負担を直接減らすことにはなりません。 この機能は、書き込み集中型ワークロードを対象としていません。
 
 読み取りレプリカ機能は、PostgreSQL の非同期レプリケーションを使用します。 機能は、同期レプリケーション シナリオを目的としていません。 マスターとレプリカの間には測定可能な遅延が発生します。 レプリカ上のデータは、最終的にマスター上のデータと整合します。 この機能は、この遅延に対応できるワークロードに使用してください。
+
+読み取りレプリカを使用すると、ディザスター リカバリー計画を強化できます。 まずマスターとは異なる Azure リージョンにレプリカを作成する必要があります。 リージョンの災害が発生した場合は、そのレプリカへのレプリケーションを停止して、ワークロードをそこにリダイレクトできます。 レプリケーションを停止すると、レプリカで読み取りだけでなく書き込みの受け入れも開始できます。 詳細については、[レプリケーションの停止](#stop-replication)に関するセクションを参照してください。 
 
 ## <a name="create-a-replica"></a>レプリカの作成
 マスター サーバーでは、`azure.replication_support` パラメーターが **[REPLICA]** に設定されている必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。 (`azure.replication_support` パラメーターは、汎用レベルおよびメモリ最適化レベルのみに適用されます)。
@@ -47,7 +52,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
-通常の Azure Database for PostgreSQL サーバーの場合と同じように、レプリカのホスト名と有効なユーザー アカウントを使用して、レプリカに接続できます。 管理者ユーザー名が **myadmin** の **myreplica** というサーバーの場合、psql を使用して、レプリカに接続できます。
+通常の Azure Database for PostgreSQL サーバーの場合と同じように、レプリカのホスト名と有効なユーザー アカウントを使用して、レプリカに接続できます。 管理ユーザー名が **myadmin** で **my replica** という名前のサーバーの場合は、次の psql を使用してレプリカに接続できます。
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -63,7 +68,7 @@ Azure Database for PostgreSQL は、Azure Monitor に**Replica Lag (レプリカ
 メトリックは、`pg_stat_wal_receiver` ビューから計算されます。
 
 ```SQL
-EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp())
+EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
 
 Replica Lag (レプリカ ラグ) メトリックでは最後に再生されたトランザクションからの時間が表示されます。 マスター サーバーでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。
@@ -96,6 +101,8 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 > スタンドアロン サーバーをもう一度レプリカにすることはできません。
 > 読み取りレプリカでレプリケーションを停止する前に、レプリカに必要なすべてのデータがあることを確認してください。
 
+レプリケーションを停止すると、レプリカでは以前のマスターと他のレプリカへのリンクがすべて失われます。 マスターとレプリカの間に自動フェールオーバーはありません。 
+
 [レプリカへのレプリケーションを停止する](howto-read-replicas-portal.md)方法を確認します。
 
 
@@ -107,7 +114,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 読み取りレプリカを作成する前に、マスター サーバーで、`azure.replication_support` パラメーターを **REPLICA** に設定する必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。 `azure.replication_support` パラメーターは、汎用レベルおよびメモリ最適化レベルのみに適用されます。
 
 ### <a name="new-replicas"></a>新しいレプリカ
-読み取りレプリカは、新しい Azure Database for PostgreSQL サーバーとして作成されます。 既存のサーバーをレプリカにすることはできません。 読み取りレプリカは、マスターと同じ Azure リージョンにのみ作成できます。 別の読み取りレプリカのレプリカを作成することはできません。
+読み取りレプリカは、新しい Azure Database for PostgreSQL サーバーとして作成されます。 既存のサーバーをレプリカにすることはできません。 別の読み取りレプリカのレプリカを作成することはできません。
 
 ### <a name="replica-configuration"></a>レプリカ構成
 レプリカは、マスターと同じサーバー構成を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立していくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。

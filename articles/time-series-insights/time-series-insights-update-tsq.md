@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555423"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205015"
 ---
 # <a name="data-querying"></a>データ照会
 
@@ -35,9 +35,9 @@ Time Series Insights では、3 つの主要な API カテゴリを使用でき�
 
 次のコア API がサポートされています。
 
-![tsq][1]
+[![Time Series Query の概要](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
-### <a name="environment-apis"></a>Environment API
+## <a name="environment-apis"></a>Environment API
 
 次の Environment API を使用できます。
 
@@ -45,7 +45,7 @@ Time Series Insights では、3 つの主要な API カテゴリを使用でき�
 * [Get Environment Availability API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api):イベントのタイムスタンプ `$ts` に対するイベント数の分布が返されます。 この API は、イベントの数を返すことによって (ある場合) タイムスタンプにイベントが存在するかどうかを判断するのに役立ちます。
 * [Get Event Schema API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api):特定の検索範囲に対するイベント スキーマのメタデータが返されます。 この API は、特定の検索範囲に対してスキーマで使用できるすべてのメタデータとプロパティを取得するのに役立ちます。
 
-### <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model-Query (TSM-Q) API
+## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model-Query (TSM-Q) API
 
 次の Time Series Model-Query API を使用できます。
 
@@ -54,7 +54,7 @@ Time Series Insights では、3 つの主要な API カテゴリを使用でき�
 * [Hierarchies API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api):タイム シリーズの階層とそれに関連するフィールド パスに対して CRUD を実行できます。
 * [Instances API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api):タイム シリーズのインスタンスとそれに関連するインスタンス フィールドに対して CRUD を実行できます。
 
-### <a name="time-series-query-tsq-apis"></a>Time Series Query (TSQ) API
+## <a name="time-series-query-tsq-apis"></a>Time Series Query (TSQ) API
 
 次の Time Series Query API を使用できます。
 
@@ -75,11 +75,8 @@ Time Series Insights では、3 つの主要な API カテゴリを使用でき�
 
 ## <a name="next-steps"></a>次の手順
 
-以下について読む。
+- Azure Time Series Insights プレビューの[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)の詳細を確認する。
 
-- [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)
-- [データ モデリング](./time-series-insights-update-tsm.md)
-- [タイム シリーズ ID を選択するときのベスト プラクティス](./time-series-insights-update-how-to-id.md)
+- Time Series Insights プレビューでの[データ モデリング](./time-series-insights-update-tsm.md)に関する記事を読む。
 
-<!-- Images -->
-[1]: media/v2-update-tsq/tsq.png
+- [タイム シリーズ ID を選択するときのベスト プラクティス](./time-series-insights-update-how-to-id.md)を確認する。

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: 0f1b5f424a71aeccd4b1e57129c0f5b22ff158af
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e8414b9737e0ee7f847827a432dd9887931a2532
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157857"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470372"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-comeet-recruiting-software-in-azure-ad"></a>Azure AD で Comeet Recruiting Software 用に自動ユーザー プロビジョニングを構成するには
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Comeet Recruiting Software]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -104,8 +104,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. [Comeet Recruiting Software 管理コンソール](https://app.comeet.co/)で **[Comeet] > [Settings]\(設定\) > [Authentication]\(認証\) > [Microsoft Azure]** に移動し、**[Secret Token for your company]\(会社のシークレット トークン\)** の値を Azure AD の **[シークレット トークン]** フィールドにコピーします。
 
-    ![Comeet Recruiting Software のプロビジョニング](./media/comeetrecruitingsoftware-provisioning-tutorial/secret-token-1.png)
-    
+    ![Comeet Recruiting Software のプロビジョニング](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
 7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Comeet Recruiting Software に接続できることを確認します。 接続できない場合は、使用中の Comeet Recruiting Software アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -119,11 +118,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Comeet]\(Azure Active Directory ユーザーを Comeet に同期する\)** を選択します。
 
-    ![Comeet Recruiting Software のプロビジョニング](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mappings.png)
+    ![Comeet Recruiting Software のユーザー マッピング](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Comeet Recruiting Software に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Comeet Recruiting Software のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Comeet Recruiting Software のプロビジョニング](./media/comeetrecruitingsoftware-provisioning-tutorial/user-mapping-attributes.png)
+    ![Comeet Recruiting Software のグループ属性](media/comeet-recruiting-software-provisioning-tutorial/user-mapping-attributes.png)
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -156,7 +155,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

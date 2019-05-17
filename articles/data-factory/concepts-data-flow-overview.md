@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5064f47444b4ca6d9194ed66144938e6e3d51a4e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 051886f98d6d35594336291bbb2defb2a4acdfc5
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732367"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233058"
 ---
-# <a name="what-are-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory の Mapping Data Flow について
+# <a name="what-are-mapping-data-flows"></a>マッピング データ フローについて
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Mapping Data Flow を使用すると、コードを記述しなくても、グラフィカルなデータ変換ロジックを作成できます。 生成されたデータ フローは、スケールアウトされた Azure Databricks クラスターを使用して、Azure Data Factory パイプライン内でアクティビティとして実行されます。
+マッピング データ フローは、Azure Data Factory の視覚的に設計されたデータ変換です。 データ フローを使用すると、データ エンジニアは、コードを記述することなくグラフィカルなデータ変換ロジックを開発できます。 生成されたデータ フローは、スケールアウトされた Azure Databricks クラスターを使用して、Azure Data Factory パイプライン内でアクティビティとして実行されます。
 
 Azure Data Factory のデータ フローの目的は、コーディングなしで完全にビジュアルなエクスペリエンスを得られるようにすることです。 データ フローを実行クラスター上で実行することにより、データ処理がスケールアウトされます。 Azure Data Factory では、コード翻訳、パス最適化、およびデータ フローのジョブ実行のすべてが処理されます。
 

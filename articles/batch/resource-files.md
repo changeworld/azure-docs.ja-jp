@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 113faffb0ebac50a67c96ce21e0ee2c1564bb4fc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995627"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405652"
 ---
 # <a name="creating-and-using-resource-files"></a>リソース ファイルを作成して使用する
 
@@ -38,7 +38,7 @@ Azure Batch タスクには多くの場合、何らかの形の処理するデ�
 
 ### <a name="storage-container-url"></a>ストレージ コンテナーの URL
 
-ストレージ コンテナーの URL を使用するということは、Azure でどのストレージ コンテナー内のファイルにもアクセスできることを意味します。 適切なアクセス許可の使用
+ストレージ コンテナーの URL を使用するということは、適切なアクセス許可があれば、Azure にあるどのストレージ コンテナー内のファイルにもアクセスできることを意味します。
 
 この C# の例では、ファイルは、Blob ストレージとして Azure ストレージ コンテナーに既にアップロードされています。 リソース ファイルを作成するために必要なデータにアクセスするには、まずストレージ コンテナーにアクセスする必要があります。
 

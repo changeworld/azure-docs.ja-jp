@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ce24fb8c62432e50fe04de23d2abbee1ec120c6c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758178"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471623"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのプロビジョニングと管理
 
@@ -33,7 +33,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
 [環境を計画する方法](./time-series-insights-update-plan.md)に関するページをご覧ください。
 
 >[!IMPORTANT]
-> プレビューでは、Azure Storage の汎用 v1 (GPv1) アカウントを使用していることを確認してください。  GPv2 以降のサポートは近い将来に追加される予定です。  
+> プレビューでは、Azure Storage の汎用 v1 (GPv1) アカウントを使用していることを確認してください。
 
 オプションで、Azure Time Series Insights プレビューの各環境を 1 つのイベント ソースに関連付けることができます。 詳細については、[イベント ハブ ソースの追加方法](./time-series-insights-how-to-add-an-event-source-eventhub.md)に関するページと [IoT ハブ ソースの追加方法](./time-series-insights-how-to-add-an-event-source-iothub.md)に関するページを参照してください。 この手順では、タイムスタンプ ID プロパティと一意のコンシューマー グループを指定します。 この指定により、環境から適切なイベントへのアクセスが確実になります。
 
@@ -45,7 +45,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
 
 1. **[SKU]** メニューで **[PAYG]** ボタンを選択します。 環境名を入力し、使用するサブスクリプション グループとリソース グループを指定します。 次に、環境をホストする場所を選択します (サポートされている場所を選択します)。
 
-   ![Azure Time Series Insights インスタンスを作成します。][1]
+   [![Azure Time Series Insights インスタンスを作成する。](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
 
 1. タイム シリーズ ID を入力します。
 
@@ -56,7 +56,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
 
 1. ストレージ アカウント名を選択し、レプリケーションを指定することで Azure ストレージ アカウントを作成します。 この作業で Azure Storage 汎用 v1 アカウントが作成されます。 先に選択した Azure Time Series Insights プレビュー環境と同じリージョンで作成されます。
 
-    ![インスタンス用の Azure ストレージ アカウントを作成する][5]
+    [![インスタンス用の Azure ストレージ アカウントを作成する](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
 
 1. 任意で、イベント ソースを追加できます。
 
@@ -67,11 +67,11 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
      > [!TIP]
      > メッセージが待ち行列に入った時刻は、バッチ イベントや履歴データをアップロードする場合、最適な構成設定ではないことがあります。 そのような場合、タイムスタンプ プロパティを使用するかどうかの判断を確認してください。
 
-     ![[イベント ソース] タブ][2]
+     [![[イベント ソース] タブ](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
 
 1. 希望の設定で環境がプロビジョニングされていることを確認します。
 
-    ![[確認と作成] タブ][3]
+    [![[確認と作成]](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox) タブ
 
 ## <a name="manage-the-environment"></a>環境の管理
 
@@ -88,19 +88,12 @@ Azure portal を使用して Azure Time Series Insights プレビュー環境を
 
 * Azure portal の **[参照データ]** ブレードは Azure Time Series Insights プレビューで削除されています。参照データは PAYG 環境の構成要素ではないためです。
 
-![Azure portal の Time Series Insights プレビュー環境][4]
+[![Azure portal での Time Series Insights プレビュー環境](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 
-[環境の計画](./time-series-insights-update-plan.md)に関するページを参照してください。
+- [環境の計画](./time-series-insights-update-plan.md)に関するページを参照してください。
 
-[イベント ハブ ソースを追加する方法](./time-series-insights-how-to-add-an-event-source-eventhub.md)に関するページを参照してください。
+- [イベント ハブ ソースを追加する](./time-series-insights-how-to-add-an-event-source-eventhub.md)方法を学習します。
 
-[IoT ハブ ソースを追加する方法](./time-series-insights-how-to-add-an-event-source-iothub.md)に関するページを参照してください。
-
-<!-- Images -->
-[1]: media/v2-update-manage/manage_one.PNG
-[2]: media/v2-update-manage/manage_two.PNG
-[3]: media/v2-update-manage/manage_three.PNG
-[4]: media/v2-update-manage/manage_four.PNG
-[5]: media/v2-update-manage/manage_five.PNG
+- [IoT ハブ ソース](./time-series-insights-how-to-add-an-event-source-iothub.md)を構成します。

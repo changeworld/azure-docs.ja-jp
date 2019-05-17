@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148517"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508417"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -67,7 +67,9 @@ VNet を使用して次のことが行えます。
 はい。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事をご覧ください。 サブネットのアドレス空間は、互いに重複することはできません。
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>これらのサブネット内の IP アドレスの使用に関する制限はありますか。
-はい。 Azure は、各サブネット内で一部の IP アドレスを予約します。 各サブネットの最初と最後の IP アドレスは、Azure サービスに使用される各サブネットの x.x.x.1 ～ x.x.x.3 アドレスと共に、プロトコル準拠のために予約されます。
+はい。 Azure では、各サブネット内で 5 つの IP アドレスが予約されています。 これらは x.x.x.0 から x.x.x.3 とサブネットの最後のアドレスです。    
+- x.x.x.0 とサブネットの最後のアドレスは、プロトコル準拠用に予約されています。
+- 各サブネットの x.x.x.1 から x.x.x.3 は Azure サービス用に予約されています。
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
 サポートされる最小のサブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。
@@ -231,7 +233,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 VNet ピアリング (仮想ネットワーク ピアリング) を使用して、仮想ネットワークに接続できます。 仮想ネットワーク間の VNet ピアリング接続では、IPv4 アドレスによってそれらの間でトラフィックをプライベートにルーティングできます。 ピアリングされた VNet 内の仮想マシンは、同じネットワーク内にあるかのように相互に通信できます。 これらの仮想ネットワークは、同じリージョン内にあっても異なるリージョン内にあってもかまいません (グローバル VNet ピアリングとも呼ばれます)。 VNet ピアリング接続は、Azure サブスクリプション間で作成することもできます。
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>別のリージョンの VNet へのピアリング接続を作成できますか。
-はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンと中国のクラウド リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウド リージョンにグローバルにピアリングすることはできません。 現在、グローバル ピアリングは Government クラウドでは使用できません。
+はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、すべての Azure パブリック リージョン、China Cloud リージョン、Government Cloud リージョンで使用できます。 Azure パブリック リージョンから国内クラウド リージョンに、グローバルにピアリングすることはできません。
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>グローバル VNet ピアリングとロード バランサーに関連する制約は何ですか?
 2 つの仮想ネットワークが異なるリージョンにある場合 (グローバル VNet ピアリング)、Basic Load Balancer を使用するリソースには接続できません。 Standard Load Balancer を使用するリソースには接続できます。
@@ -241,9 +243,8 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
-- SQL Always-on
 - SQL MI
-- API Managemenet
+- API Management
 - Active Directory Domain Service (ADDS)
 - Logic Apps
 - HD Insight
@@ -282,6 +283,9 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>ピアリング接続に帯域幅制限はありますか。
 いいえ。 ローカルであってもグローバルであっても、VNet ピアリングで帯域幅制限は課されません。 帯域幅は VM やコンピューティング リソースによってのみ制限されます。
+
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>VNet ピアリングの問題をトラブルシューティングするにはどうすればよいですか?
+こちらの [トラブルシューティング ツール ガイド] をご覧ください (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues))。
 
 ## <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 

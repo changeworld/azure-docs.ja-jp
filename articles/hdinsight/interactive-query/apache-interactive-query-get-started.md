@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/22/2018
-ms.openlocfilehash: c7cee3dfd3b091d75f4dadcaa62513fddf0c0e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/07/2019
+ms.openlocfilehash: 9636157182e8b40914bde2515c5b295d0480255a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692151"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510991"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
 対話型クエリ (別名 Apache Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Apache Hive クエリの速度と対話性が向上します。
@@ -34,10 +34,6 @@ Hive クエリを実行するには、次のオプションがあります。
 * Microsoft Power BI を使用する
 
     [Azure HDInsight 上の Power BI を使用した対話型クエリの Apache Hive データの視覚化](./apache-hadoop-connect-hive-power-bi-directquery.md)に関する記事をご覧ください。[Azure HDInsight 上の Power BI を使用したビッグ データの視覚化](../hadoop/apache-hadoop-connect-hive-power-bi.md)に関する記事をご覧ください。
- 
-* Apache Zeppelin を使用する
-
-    「[Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](../hdinsight-connect-hive-zeppelin.md)」をご覧ください。
 
 * Visual Studio を使用する
 
@@ -45,7 +41,7 @@ Hive クエリを実行するには、次のオプションがあります。
 
 * Visual Studio Code を使用する
 
-    [Apache Hive、LLAP、pySpark に Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法に関する記事をご覧ください。
+    [Apache Hive、LLAP、pySpark に Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法に関する記事を参照してください。
 * Apache Ambari Hive ビューを使用して Apache Hive を実行する。
   
     [Azure HDInsight 上の Apache Hadoop で Apache Hive ビューを使用する](../hadoop/apache-hadoop-use-hive-ambari-view.md)方法に関する記事をご覧ください。
@@ -61,7 +57,7 @@ Hive クエリを実行するには、次のオプションがあります。
 
 Java Database Connectivity (JDBC) 接続文字列は次の方法で調べることができます。
 
-1. https://\<クラスター名\>.AzureHDInsight.net という URL を使用して Apache Ambari にサインインします。
+1. `https://<cluster name>.AzureHDInsight.net` という URL を使用して Apache Ambari にサインインします。
 2. 左側のメニューで **[Hive]** を選択します。
 3. URL をコピーするには、クリップボード アイコンを選択します。
    

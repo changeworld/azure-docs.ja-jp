@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: df94290c5e62b898b6490c78ef0ae1ee79437240
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1c8886cada80c02e99782159099aa626da35fc50
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716953"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466585"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのデータ モデリング
 
@@ -29,12 +29,12 @@ ms.locfileid: "64716953"
 
 1. タイム シリーズ モデル セレクター パネルに移動し、メニューから **[種類]** を選択します。 パネルを折りたたんで、タイム シリーズ モデルの種類に注目します。
 
-    ![Portal_one][1]
+    [![1 つの種類を作成する](media/v2-update-how-to-tsm/portal_one.png)](media/v2-update-how-to-tsm/portal_one.png#lightbox)
 
 1. **[追加]** を選択します。
 1. 種類に関係するすべての詳細情報を入力して、**[作成]** を選択します。 この操作により、環境に種類が作成されます。
 
-    ![Portal_two][2]
+    [![種類を追加する](media/v2-update-how-to-tsm/portal_two.png)](media/v2-update-how-to-tsm/portal_two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>1 つまたは複数の種類を一括アップロードする
 
@@ -42,19 +42,21 @@ ms.locfileid: "64716953"
 1. 種類のペイロードを含むファイルを選択します。
 1. **[アップロード]** を選択します。
 
-    ![Portal_three][3]
+    [![JSON をアップロードする](media/v2-update-how-to-tsm/portal_three.png)](media/v2-update-how-to-tsm/portal_three.png#lightbox)
 
 ### <a name="edit-a-single-type"></a>1 つの種類を編集する
 
-種類を選択して、**[編集]** を選択します。 必要な変更を行い、**[保存]** を選択します。
+1. 種類を選択して、**[編集]** を選択します。 
+1. 必要な変更を行い、**[保存]** を選択します。
 
-![Portal_four][4]
+    [![種類を編集する](media/v2-update-how-to-tsm/portal_four.png)](media/v2-update-how-to-tsm/portal_four.png#lightbox)
 
 ### <a name="delete-a-type"></a>種類を削除する
 
-種類を選択して、**[削除]** を選択します。 種類にインスタンスが関連付けられていない場合は、削除されます。
+1. 種類を選択して、**[削除]** を選択します。
+1. 種類にインスタンスが関連付けられていない場合は、削除されます。
 
-![Portal_five][5]
+    [![種類を削除する](media/v2-update-how-to-tsm/portal_five.png)](media/v2-update-how-to-tsm/portal_five.png#lightbox)
 
 ## <a name="hierarchies"></a>階層
 
@@ -62,19 +64,19 @@ ms.locfileid: "64716953"
 
 1. タイム シリーズ モデル セレクター パネルに移動し、メニューから **[階層]** を選択します。 パネルを折りたたんで、タイム シリーズ モデルの階層に注目します。
 
-    ![Portal_six][6]
+    [![階層を選択する](media/v2-update-how-to-tsm/portal_six.png)](media/v2-update-how-to-tsm/portal_six.png#lightbox)
 
 1. **[追加]** を選択します。
 
-    ![Portal_seven][7]
+    [![階層を追加する](media/v2-update-how-to-tsm/portal_seven.png)](media/v2-update-how-to-tsm/portal_seven.png#lightbox)
 
 1. 右側のウィンドウで **[レベルの追加]** を選択します。
 
-    ![Portal_eight][8]
+    [![レベルを追加する](media/v2-update-how-to-tsm/portal_eight.png)](media/v2-update-how-to-tsm/portal_eight.png#lightbox)
 
 1. 階層の詳細を入力して、**[作成]** を選択します。
 
-    ![Portal_nine][9]
+    [![レベルを作成する](media/v2-update-how-to-tsm/portal_nine.png)](media/v2-update-how-to-tsm/portal_nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>1 つまたは複数の階層を一括アップロードする
 
@@ -82,19 +84,21 @@ ms.locfileid: "64716953"
 1. 階層のペイロードを含むファイルを選択します。
 1. **[アップロード]** を選択します。
 
-    ![Portal_ten][10]
+    [![階層を一括アップロードする](media/v2-update-how-to-tsm/portal_ten.png)](media/v2-update-how-to-tsm/portal_ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>1 つの階層を編集する
 
-階層を選択し、**[編集]** を選択します。 必要な変更を行い、**[保存]** を選択します。
+1. 階層を選択し、**[編集]** を選択します。
+1. 必要な変更を行い、**[保存]** を選択します。
 
-![Portal_eleven][11]
+    [![1 つの階層を編集する](media/v2-update-how-to-tsm/portal_eleven.png)](media/v2-update-how-to-tsm/portal_eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>階層を削除する
 
-階層を選択し、**[削除]** を選択します。 階層にインスタンスが関連付けられていない場合は、削除されます。
+1. 階層を選択し、**[削除]** を選択します。 
+1. 階層にインスタンスが関連付けられていない場合は、削除されます。
 
-![Portal_twelve][12]
+    [![階層を削除する](media/v2-update-how-to-tsm/portal_twelve.png)](media/v2-update-how-to-tsm/portal_twelve.png#lightbox)
 
 ## <a name="instances"></a>Instances
 
@@ -102,11 +106,11 @@ ms.locfileid: "64716953"
 
 1. タイム シリーズ モデル セレクター パネルに移動し、メニューから **[インスタンス]** を選択します。 パネルを折りたたんで、タイム シリーズ モデルのインスタンスに注目します。
 
-    ![Portal_thirteen][13]
+    [![1 つのインスタンスを作成する](media/v2-update-how-to-tsm/portal_thirteen.png)](media/v2-update-how-to-tsm/portal_thirteen.png#lightbox)
 
 1. **[追加]** を選択します。
 
-    ![Portal_fourteen][14]
+    [![インスタンスを追加する](media/v2-update-how-to-tsm/portal_fourteen.png)](media/v2-update-how-to-tsm/portal_fourteen.png#lightbox)
 
 1. インスタンスの詳細を入力し、種類と階層の関連付けを選択して、**[作成]** を選択します。
 
@@ -115,19 +119,16 @@ ms.locfileid: "64716953"
 1. **[JSON をアップロードします]** を選択します。
 1. インスタンスのペイロードを含むファイルを選択します。
 
-    ![Portal_fifteen][15]
+    [![1 つまたは複数のインスタンスを一括アップロードする](media/v2-update-how-to-tsm/portal_fifteen.png)](media/v2-update-how-to-tsm/portal_fifteen.png#lightbox)
 
 1. **[アップロード]** を選択します。
 
 ### <a name="edit-a-single-instance"></a>1 つのインスタンスを編集する
 
-インスタンスを選択して、**[編集]** を選択します。 必要な変更を行い、**[保存]** を選択します。
+1. インスタンスを選択して、**[編集]** を選択します。 
+1. 必要な変更を行い、**[保存]** を選択します。
 
-![Portal_sixteen][16]
-
-### <a name="delete-an-instance"></a>インスタンスを削除する
-
-インスタンスを選択して、**[削除]** を選択します。 イベントがインスタンスに関連付けられていない場合は、削除されます。
+    [![1 つのインスタンスを編集する](media/v2-update-how-to-tsm/portal_sixteen.png)](media/v2-update-how-to-tsm/portal_sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -136,21 +137,3 @@ ms.locfileid: "64716953"
 - プレビューの詳細については、「[Visualize data in the Azure Time Series Insights Preview explorer](./time-series-insights-update-explorer.md)」(Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する) をご覧ください。
 
 - サポートされている JSON の構造の詳細については、「[サポートされている JSON 構造](./time-series-insights-send-events.md#json)」をご覧ください。
-
-<!-- Images -->
-[1]: media/v2-update-how-to-tsm/portal_one.png
-[2]: media/v2-update-how-to-tsm/portal_two.png
-[3]: media/v2-update-how-to-tsm/portal_three.png
-[4]: media/v2-update-how-to-tsm/portal_four.png
-[5]: media/v2-update-how-to-tsm/portal_five.png
-[6]: media/v2-update-how-to-tsm/portal_six.png
-[7]: media/v2-update-how-to-tsm/portal_seven.png
-[8]: media/v2-update-how-to-tsm/portal_eight.png
-[9]: media/v2-update-how-to-tsm/portal_nine.png
-[10]: media/v2-update-how-to-tsm/portal_ten.png
-[11]: media/v2-update-how-to-tsm/portal_eleven.png
-[12]: media/v2-update-how-to-tsm/portal_twelve.png
-[13]: media/v2-update-how-to-tsm/portal_thirteen.png
-[14]: media/v2-update-how-to-tsm/portal_fourteen.png
-[15]: media/v2-update-how-to-tsm/portal_fifteen.png
-[16]: media/v2-update-how-to-tsm/portal_sixteen.png

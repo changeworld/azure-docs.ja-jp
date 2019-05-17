@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2018
 ms.author: v-wimarc
-ms.openlocfilehash: deb53da47a0429bc57364d2593128230207cbbfa
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2a134967da7a0263b360b0334ed1dd6538252b98
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "58408417"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510337"
 ---
 # <a name="azure-operations-in-china-vs-global-azure"></a>中国での Azure の運用とグローバル Azure
 
-Microsoft Azure は、政府規制に準拠して、中国で提供されている最初の外国のパブリック クラウド サービス プロバイダーです。 Microsoft は、[21Vianet](http://www.ch.21vianet.com/) が中国本土でパブリック クラウド ビジネスを運用することを許可することによって、それらの要件を満たしています。 
+Microsoft Azure は、政府規制に準拠して、中国で提供されている最初の外国のパブリック クラウド サービス プロバイダーです。 Microsoft は、[21Vianet](http://www.ch.21vianet.com/) が中国でパブリック クラウド ビジネスを運用することを許可することによって、それらの要件を満たしています。 
 
 中国の他の外国のパブリック クラウド サービス プロバイダーと比べて、Azure にはいくつかの利点があります。
 - Azure は、中国で運用されている最初の国際的パブリック クラウド サービスとして、経験豊富な運用モデルで十分に確立されています。
@@ -34,10 +34,10 @@ Microsoft Azure は、政府規制に準拠して、中国で提供されてい�
 
 [21Vianet Group, Inc.](http://www.ch.21vianet.com/) は、中国通信事業者に中立的な大手インターネット データセンター サービス プロバイダーであり、中国最大のプロバイダーの 1 つです。 ホスティングと関連サービス、マネージド ネットワーク サービス、およびクラウド コンピューティング インフラストラクチャ サービスを提供し、そのインフラストラクチャを通じて、インターネット接続の信頼性、セキュリティ、および速度の向上を支援できます。
 
-## <a name="operations"></a>操作
-中国[電気通信規制](http://www.miit.gov.cn/n1146295/n1146557/n1146619/c4860613/content.html)に従って、クラウド サービスのプロバイダー (サービスとしてのインフラストラクチャ (IaaS) およびサービスとしてのプラットフォーム (PaaS)) は、付加価値電気通信の許認可を必要とします。 外国投資が 50% 未満の国内登録企業のみがこれらの許認可の資格があります。 この規制に遵守するため、中国の Azure サービスは Microsoft からライセンスされたテクノロジに基づいて、21Vianet によって運用されています。  
+## <a name="operations"></a>Operations
+中国[電気通信規制](http://www.china.org.cn/business/laws_regulations/2010-01/20/content_19273945.htm)に従って、クラウド サービスのプロバイダー (サービスとしてのインフラストラクチャ (IaaS) およびサービスとしてのプラットフォーム (PaaS)) は、付加価値電気通信の許認可を必要とします。 外国投資が 50% 未満の国内登録企業のみがこれらの許認可の資格があります。 この規制に準拠するため、中国の Azure サービスは Microsoft からライセンスされたテクノロジに基づいて、21Vianet が運用しています。  
 
-21Vianet (Azure China 21Vianet) が運用する Microsoft Azure は、中国本土内にあるクラウド サービスの物理的に分離されたインスタンスであり、Beijing 21Vianet Broadband Data Center Co., Ltd の完全子会社である Shanghai Blue Cloud Technology Co., Ltd. ("21Vianet") によって独立して運用され、処理されています。そのサービスは、同等のサービス レベルで Microsoft グローバル クラウド サービスを構成する同じ Azure、Office 365、および Power BI テクノロジに基づいています。 21Vianet は Microsoft Azure の公式の法人となるため、契約やコントラクトは、該当する場合にお客様と 21Vianet 間で締結されます。
+21Vianet (Azure China 21Vianet) が運営する Microsoft Azure は、中国内にあるクラウド サービスの物理的に分離されたインスタンスであり、Beijing 21Vianet Broadband Data Center Co., Ltd の完全子会社である Shanghai Blue Cloud Technology Co., Ltd. ("21Vianet") によって独立して運用され、処理されています。そのサービスは、同等のサービス レベルで Microsoft グローバル クラウド サービスを構成する同じ Azure、Office 365、および Power BI テクノロジに基づいています。 21Vianet は Microsoft Azure の公式の法人となるため、契約やコントラクトは、該当する場合にお客様と 21Vianet 間で締結されます。
 
 ## <a name="service-availability"></a>サービスの提供状況
 中国の Azure サービスは、政府規制に従って、グローバル Azure から分離したスタンドアロン インスタンスです。 そのため、[サービスの提供状況](https://www.azure.cn/home/features/products-by-region)は、グローバル Azure と異なりますが、利用可能なサービスの品質は異なりません。 [利用可能なサービス](https://www.azure.cn/home/features/what-is-azure/) (中国内) の最新の一覧を参照してください。

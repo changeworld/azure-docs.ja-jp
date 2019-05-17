@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: b7b096bd1ecf0a4df37ed4de0cf618216dccc2bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157867"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508522"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Azure AD で Keeper Password Manager & Digital Vault 用に自動ユーザー プロビジョニングを構成するには
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Keeper Password Manager & Digital Vault]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -104,19 +104,19 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. [Keeper 管理コンソール](https://keepersecurity.com/console/#login)にサインインします。 **[Admin]\(管理者\)** をクリックし、既存のノードを選択するか、または新しく作成します。 **[Provisioning]\(プロビジョニング\)** タブに移動し、**[Add Method]\(メソッドの追加\)** を選択します。
 
-    ![Keeper 管理コンソール](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Keeper 管理コンソール](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
     **[SCIM (System for Cross-domain Identity Management)]** を選択します。
 
-    ![Keeper での SCIM の追加](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Keeper での SCIM の追加](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
     **[Create Provisioning Token]\(プロビジョニング トークンの作成/)** をクリックします。
 
-    ![Keeper でのエンドポイントの作成](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Keeper でのエンドポイントの作成](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
     **[URL]** と **[Token]\(トークン\)** の値をコピーし、Azure AD の **[テナント URL]** と **[シークレット トークン]** に貼り付けます。 **[保存]** をクリックして、Keeper でのプロビジョニング設定を完了します。
 
-    ![Keeper でのトークンの作成](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Keeper でのトークンの作成](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
 7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Keeper Password Manager & Digital Vault に接続できることを確認します。 接続できない場合は、使用中の Keeper Password Manager & Digital Vault アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -130,19 +130,19 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Keeper Password Manager & Digital Vault]\(Azure Active Directory ユーザーを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
 
-    ![Keeper ユーザー マッピング](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Keeper ユーザー マッピング](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Keeper Password Manager & Digital Vault に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Keeper Password Manager & Digital Vault のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Keeper ユーザーの属性](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Keeper ユーザーの属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
 12. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Groups to Keeper Password Manager & Digital Vault]\(Azure Active Directory グループを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
 
-    ![Keeper グループ マッピング](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Keeper グループ マッピング](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
 13. **[属性マッピング]** セクションで、Azure AD から Keeper Password Manager & Digital Vault に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Keeper Password Manager & Digital Vault のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Keeper グループ属性](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Keeper グループ属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -176,7 +176,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

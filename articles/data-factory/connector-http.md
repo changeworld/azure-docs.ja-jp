@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a668bb2e0e3381abefaac93a0fb63f0d33bac5a1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670845"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234048"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -160,11 +160,55 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-このセクションでは、HTTP データセットでサポートされているプロパティの一覧を示します。 
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、「[データセットとリンクされたサービス](concepts-datasets-linked-services.md)」を参照してください。 
+- **Parquet 形式と区切りテキスト形式**については、「[Parquet 形式と区切りテキスト形式のデータセット](#parquet-and-delimited-text-format-dataset)」セクションを参照してください。
+- **ORC/Avro/JSON/バイナリ形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-HTTP からデータをコピーするには、データセットの **type** プロパティを **HttpFile** に設定します。 次のプロパティがサポートされています。
+### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 形式と区切りテキスト形式のデータセット
+
+**Parquet 形式または区切りテキスト形式**のデータを HTTP からコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 HTTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+
+| プロパティ    | 説明                                                  | 必須 |
+| ----------- | ------------------------------------------------------------ | -------- |
+| type        | データセットの `location` の type プロパティは、**HttpServerLocation** に設定する必要があります。 | はい      |
+| relativeUrl | データを含むリソースへの相対 URL。       | いいえ        |
+
+> [!NOTE]
+> サポートされる HTTP 要求のペイロード サイズは約 500 KB です。 Web エンドポイントに渡すペイロード サイズが 500 KB を超える場合は、より小さなチャンクにペイロードをまとめることを検討してください。
+
+> [!NOTE]
+> 次のセクションで説明する Parquet/テキスト形式の **HttpFile** 型のデータセットは、下位互換性のために引き続きコピー/Lookup アクティビティでそのままサポートされます。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
+
+**例:**
+
+```json
+{
+    "name": "DelimitedTextDataset",
+    "properties": {
+        "type": "DelimitedText",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "schema": [ < physical schema, optional, auto retrieved during authoring > ],
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "<relative url>"
+            },
+            "columnDelimiter": ",",
+            "quoteChar": "\"",
+            "firstRowAsHeader": true,
+            "compressionCodec": "gzip"
+        }
+    }
+}
+```
+
+### <a name="other-format-dataset"></a>他の形式のデータセット
+
+**ORC/Avro/JSON/バイナリ形式**のデータを HTTP からコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -226,7 +270,69 @@ HTTP からデータをコピーするには、データセットの **type** �
 
 ### <a name="http-as-source"></a>ソースとしての HTTP
 
-HTTP からデータをコピーするは、コピー アクティビティの **source type** を **HttpSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+- コピー元から **Parquet 形式および区切りテキスト形式**でコピーする場合は、「[Parquet 形式と区切りテキスト形式のソース](#parquet-and-delimited-text-format-source)」セクションを参照してください。
+- コピー元から **ORC/Avro/JSON/バイナリ形式**などの他の形式でコピーする場合は、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+
+#### <a name="parquet-and-delimited-text-format-source"></a>Parquet 形式と区切りテキスト形式のソース
+
+**Parquet 形式または区切りテキスト形式**のデータを HTTP からコピーする場合は、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 HTTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+
+| プロパティ                 | 説明                                                  | 必須 |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | `storeSettings` の type プロパティは **HttpReadSetting** に設定する必要があります。 | はい      |
+| requestMethod            | HTTP メソッド。 <br>使用できる値は、**Get** (既定値) と **Post** です。 | いいえ        |
+| addtionalHeaders         | 追加の HTTP 要求ヘッダー。                             | いいえ        |
+| requestBody              | HTTP 要求の本文。                               | いいえ        |
+| requestTimeout           | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。 | いいえ        |
+| maxConcurrentConnections | 同時にストレージ ストアに接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ        |
+
+> [!NOTE]
+> Parquet や区切りテキスト形式の場合、次のセクションで説明する **HttpSource** 型のコピー アクティビティ ソースは、下位互換性のために引き続きそのままサポートされます。 今後は、この新しいモデルを使用することをお勧めします。ADF オーサリング UI はこれらの新しい型を生成するように切り替えられています。
+
+**例:**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromHTTP",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSetting",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "HttpReadSetting",
+                    "requestMethod": "Post",
+                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
+                    "requestBody": "<body for POST HTTP request>"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+#### <a name="other-format-source"></a>他の形式のソース
+
+**ORC/Avro/JSON/バイナリ形式**のデータを HTTP からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

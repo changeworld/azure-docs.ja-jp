@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C のユーザー アクセスの管理 | Microsoft Docs
-description: Azure AD B2C を使用して、未成年者の識別、生年月日および国のデータの収集、アプリケーションの利用規約への承諾の取得を行う方法を説明します。
+description: Azure AD B2C を使用して、未成年者の識別、生年月日および国/地域のデータの収集、アプリケーションの利用規約への承諾の取得を行う方法を説明します。
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cddaf59a1202c9c19018427c06639686e905bb64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691104"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228024"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -23,7 +23,7 @@ ms.locfileid: "64691104"
 
 - 未成年者を識別し、アプリケーションへのユーザー アクセスを制御する。
 - 未成年者によるアプリケーションの使用について保護者の同意を求める。
-- ユーザーから生年月日および国データを収集する。
+- ユーザーから生年月日および国/地域データを収集する。
 - 利用規約への同意を取得し、アクセスを制御する。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -58,11 +58,11 @@ ms.locfileid: "64691104"
 
 **legalAgeGroupClassification**、**consentProvidedForMinor**、および **ageGroup** の詳細については、「[User resource type (ユーザー リソースの種類)](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)」を参照してください。 カスタム属性の詳細については、[カスタム属性を使用したコンシューマー情報の収集](active-directory-b2c-reference-custom-attr.md)に関するページをご覧ください。 Azure AD Graph API を使用して拡張属性を処理する場合、*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*:*2011-01-01T00:00:00Z* などの長いバージョンの属性を使用する必要があります。
 
-## <a name="gather-date-of-birth-and-country-data"></a>生年月日と国のデータを収集する
+## <a name="gather-date-of-birth-and-countryregion-data"></a>生年月日と国/地域のデータを収集する
 
-アプリケーションでは、Azure AD B2C を利用して、登録時にすべてのユーザーの生年月日 (DOB) と国の情報を収集できます。 この情報がまだ存在しない場合、アプリケーションは次回の認証 (サインイン) プロセスでユーザーに要求することができます。 ユーザーは、DOB と国の情報を入力しなければ操作を続行できません。 Azure AD B2C は、この情報を使用し、その国の規制基準に従って、ユーザーを未成年者と見なすかどうかを判断します。 
+アプリケーションでは、Azure AD B2C を利用して、登録時にすべてのユーザーの生年月日 (DOB) と国/地域の情報を収集できます。 この情報がまだ存在しない場合、アプリケーションは次回の認証 (サインイン) プロセスでユーザーに要求することができます。 ユーザーは、DOB と国/地域の情報を入力しなければ操作を続行できません。 Azure AD B2C は、この情報を使用し、その国/地域の規制基準に従って、ユーザーを未成年者と見なすかどうかを判断します。 
 
-ユーザー フローをカスタマイズすると、DOB と国の情報を収集し、Azure AD B2C の要求変換を使用して **ageGroup** を決定し、ディレクトリに結果を保存 (または DOB と国の情報を直接保存) することができます。
+ユーザー フローをカスタマイズすると、DOB と国/地域の情報を収集し、Azure AD B2C の要求変換を使用して **ageGroup** を決定し、ディレクトリに結果を保存 (または DOB と国/地域の情報を直接保存) することができます。
 
 次の手順は、ユーザーの生年月日から **ageGroup** を計算するために使用されるロジックを示しています。
 
@@ -78,7 +78,7 @@ ms.locfileid: "64691104"
 
 4. どちらの計算でも true が返されない場合、計算結果として **Adult** が返されます。
 
-アプリケーションが他の方法で確実に DOB または国のデータを収集している場合、このアプリケーションでは Graph API を使用してこの情報によってユーザー レコードを更新できます。 例: 
+アプリケーションが他の方法で確実に DOB または国/地域のデータを収集している場合、このアプリケーションでは Graph API を使用してこの情報によってユーザー レコードを更新できます。 例: 
 
 - ユーザーが成人であることがわかっている場合は、ディレクトリ属性 **ageGroup** を **Adult** の値で更新します。
 - ユーザーが未成年者であることがわかっている場合は、ディレクトリ属性 **ageGroup** を **Minor** の値で更新し、必要に応じて **consentProvidedForMinor** を設定します。

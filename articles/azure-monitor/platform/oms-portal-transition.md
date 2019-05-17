@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4d67b64d8fc7c5063e96ed2a2502e9cbecd6065
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790096"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229868"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
 > [!NOTE]
 > この記事は、別段の定めがある場合を除き、Azure のパブリック クラウドとガバメント クラウドの両方に適用されます。
 
-Azure portal は、すべての Azure サービスのハブであり、リソースをピン留めできるダッシュボード、リソースを見つけるためのインテリジェント検索、リソース管理のためのタグ付けなど、豊富な機能を備えた管理エクスペリエンスを提供しています。 監視と管理のワークフローを統合、合理化するために、Microsoft では OMS ポータルの機能を Azure portal に追加する作業を進めていました。 今回、すべての OMS ポータルの機能が Azure portal に組み込まれました。 実際に、Traffic Manager などの一部の新機能は、Azure Portal でのみ使用可能となっています。 OMS ポータルで実行していた作業をすべて Azure portal で実行できるだけでなく、新機能も使用できます。 まだ Azure portal を使用していない場合は、すぐに使い始めることをお勧めします。
+**Azure パブリック クラウド向けの OMS ポータルは正式に廃止されました。Azure US Government クラウド向けの OMS ポータルは、2019 年 5 月 15 日をもって正式に廃止されます。** Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 ご質問やフィードバック、懸念事項については **LAUpgradeFeedback\@microsoft.com** までお問い合わせください。 この記事の残りの部分では、この切り替えの主なシナリオとロードマップについて説明します。
 
-**OMS ポータルは、2019 年 1 月 15 日に正式に廃止される予定です。** Azure 商用クラウドと Azure US Government クラウドについては、OMS ポータルは **2019 年 3 月 30 日に正式に廃止される予定です。** Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 ご質問やフィードバック、懸念事項については **LAUpgradeFeedback\@microsoft.com** までお問い合わせください。 この記事の残りの部分では、この切り替えの主なシナリオとロードマップについて説明します。
+Azure portal は、すべての Azure サービスのハブであり、リソースをピン留めできるダッシュボード、リソースを見つけるためのインテリジェント検索、リソース管理のためのタグ付けなど、豊富な機能を備えた管理エクスペリエンスを提供しています。 監視と管理のワークフローを統合、合理化するために、Microsoft では OMS ポータルの機能を Azure portal に追加する作業を進めていました。 今回、すべての OMS ポータルの機能が Azure portal に組み込まれました。 実際に、Traffic Manager などの一部の新機能は、Azure Portal でのみ使用可能となっています。 OMS ポータルで実行していた作業をすべて Azure portal で実行できるだけでなく、新機能も使用できます。 まだ Azure portal を使用していない場合は、すぐに使い始めることをお勧めします。
 
 ## <a name="what-is-changing"></a>何が変わるのですか? 
 OMS ポータルが非推奨となるのに伴い、次の変更が発表されています。 これらの各変更については、以降のセクションで詳しく説明します。
@@ -76,10 +76,7 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 
 ### <a name="alert-extension"></a>アラートの拡張機能  
 
-> [!NOTE]
-> パブリック クラウドについては、アラートは Azure Portal に完全に拡張されました。 既存のアラート ルールを OMS ポータルに表示できますが、管理は Azure Portal でのみ実行できます。 ガバメント クラウドについては、Azure portal へのアラートの拡張は 2019 年 2 月に開始されます。
-
-アラートは [Azure portal に拡張されました](alerts-extend.md)。 これが完了したら、アラートに対する管理アクションは Azure portal でのみ使用可能になります。 既存のアラートは引き続き OMS ポータルに表示されます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
+アラートは [Azure portal に拡張されました](alerts-extend.md)。既存のアラートは引き続き OMS ポータルに表示されますが、Azure portal でのみこれらを管理できます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
 
 ### <a name="alert-management-solution"></a>アラート管理ソリューション
 以前のお知らせからの変更点として、[アラート管理ソリューション](alert-management-solution.md)は Azure portal で引き続き使用でき、完全にサポートされます。 Azure Marketplace からソリューションを引き続きインストールできます。

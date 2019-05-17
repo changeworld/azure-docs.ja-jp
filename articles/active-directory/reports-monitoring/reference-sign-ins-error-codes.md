@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/18/2018
+ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996171"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463492"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -177,6 +177,8 @@ ms.locfileid: "59996171"
 |90051| デリゲート トークンが無効です。 無効な国内クラウド ID ({cloudId}) が指定されています。|
 |90072| アカウントは、まずテナントに外部ユーザーとして追加する必要があります。 サインアウトして別の Azure AD アカウントで再度サインインしてください。|
 |90094| 付与には、管理者のアクセス許可が必要です。 このアプリケーションに同意するようにテナント管理者に依頼してください。|
+|500021|テナントが会社のプロキシによって制限されています。 リソース アクセスが拒否されています。|
+|500121| 強力な認証の要求時に、認証に失敗しました。|
 |500133| アサーションが有効な時間範囲内ではありません。 アクセス トークンの有効期限が切れていないことを確認してからアサーションを使用するか、新しいトークンを要求してください。|
 |530021|アプリケーションは、条件付きアクセスで承認されているアプリの要件を満たしていません。|
 

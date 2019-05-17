@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services のパッケージ化と配信元エラー | Microsoft Docs
-description: このトピックでは、Azure Media Services パッケージ サービスから受信する可能性があるエラーについて説明します。
+description: このトピックでは、Azure Media Services ストリーミング エンドポイント (配信元) サービスから通知されることがあるエラーについて説明します。
 author: Juliako
 manager: femila
 editor: ''
@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: e30c51ff3526bb5ed193b65b3f36a64c552024ff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204140"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411370"
 ---
-# <a name="media-services-packaging-errors"></a>Media Services のパッケージ化エラー 
+# <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー 
 
-このトピックでは、Azure Media Services [パッケージ サービス](streaming-endpoint-concept.md)から受信する可能性があるエラーについて説明します。
+このトピックでは、Azure Media Services [ストリーミング エンドポイント サービス](streaming-endpoint-concept.md)から通知されることがあるエラーについて説明します。
 
 ## <a name="400-bad-request"></a>400 Bad Request
 

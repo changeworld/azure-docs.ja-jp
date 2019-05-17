@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: fec6a7e3433eb5d657deac8c1b2ceb327f8d32e4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157859"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470524"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Dynamic Signal を構成する
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Azure AD で Dynamic Signal 用に自動ユーザー プロビジョニングを構成するには
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Dynamic Signal]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -104,11 +104,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. Dynamic Signal 管理コンソールで、**[Admin]\(管理者\) > [Advanced]\(詳細設定\) > [API]** に移動します。
 
-    ![Dynamic Signal のプロビジョニング](./media/dynamicsignal-provisioning-tutorial/secret-token-1.png)
+    ![Dynamic Signal のプロビジョニング](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
     **[SCIM API URL]** を **[Tenant URL]\(テナント URL\)** にコピーします。 **[Generate New Token]\(新しいトークンの生成\)** をクリックして、**[Bearer Token]\(ベアラー トークン\)** を生成し、その値を **[Secret Token]\(シークレット トークン\)** にコピーします。
 
-    ![Dynamic Signal のプロビジョニング](./media/dynamicsignal-provisioning-tutorial/secret-token-2.png)
+    ![Dynamic Signal のプロビジョニング](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
 7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Dynamic Signal に接続できることを確認します。 接続できない場合は、使用中の Dynamic Signal アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -122,11 +122,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Dynamic Signal]\(Azure Active Directory ユーザーを Dynamic Signal に同期する\)** を選択します。
 
-    ![Dynamic Signal ユーザー マッピング](media/dynamicsignal-provisioning-tutorial/user-mappings.png)
+    ![Dynamic Signal ユーザー マッピング](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Dynamic Signal に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Dynamic Signal のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Keeper ユーザーの属性](media/dynamicsignal-provisioning-tutorial/user-mapping-attributes.png)
+    ![Dynamic Signal のユーザー属性](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -160,7 +160,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

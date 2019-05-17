@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: e291cb46b5f8cb8722348bd8fcd6031ed29beb9a
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 04/29/2019
+ms.openlocfilehash: a9ca34953827c1f94e2696eb4f09163be335d2f4
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888314"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510680"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
 この記事では、Azure CLI を使用して Azure Database for MySQL のマスターと同じ Azure リージョン内に読み取りレプリカを作成し、管理する方法を学びます。
+
+> [!NOTE]
+> Azure CLI では、マスター サーバーと異なるリージョンでのレプリカの作成がまだサポートされていません。 リージョン間のレプリカを作成するには、代わりに [Azure portal]( howto-read-replicas-portal.md) を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d80f58215b1a8f1b93db158cd2f47186ba6354a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5b87e452b0c79ae9cdc1d7f9f391a611dceda2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180294"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231505"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -39,7 +39,7 @@ ms.locfileid: "56180294"
 
 ## <a name="tenant-location-and-application-proxy-service"></a>テナントの場所とアプリケーション プロキシ サービス
 
-Azure AD テナントにサインアップするとき、指定した国によってテナントのリージョンが決まります。 アプリケーション プロキシを有効にすると、テナント用のアプリケーション プロキシ サービス インスタンスは、Azure AD テナントと同じリージョン、またはその最寄りのリージョン内で選択されるか作成されます。
+Azure AD テナントにサインアップするとき、指定した国/地域によってテナントのリージョンが決まります。 アプリケーション プロキシを有効にすると、テナント用のアプリケーション プロキシ サービス インスタンスは、Azure AD テナントと同じリージョン、またはその最寄りのリージョン内で選択されるか作成されます。
 
 たとえば、Azure AD テナントの国またはリージョンが英国の場合、すべてのアプリケーション プロキシ コネクタは、EU のデータ センターにあるサービス インスタンスを使用します。 ユーザーが公開アプリケーションにアクセスする場合、トラフィックはこの場所のアプリケーション プロキシ サービス インスタンスを経由して送信されます。
 
@@ -78,7 +78,7 @@ Azure と企業ネットワークの間に専用の VPN または ExpressRoute �
 
 ## <a name="focus-your-optimization-strategy"></a>最適化戦略に焦点を合わせる
 
-ユーザーとアプリケーション プロキシ サービス間の接続を制御するために実行できることはほとんどありません。 ユーザーは、ホーム ネットワーク、コーヒー ショップ、または別の国からアプリをアクセスする可能性があります。 代わりに、アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへの接続とアプリケーション プロキシ コネクタからアプリへの接続を最適化できます。 環境内に次のパターンを組み込むことを検討してください。
+ユーザーとアプリケーション プロキシ サービス間の接続を制御するために実行できることはほとんどありません。 ユーザーは、ホーム ネットワーク、コーヒー ショップ、または別の国/地域からアプリにアクセスする可能性があります。 代わりに、アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへの接続とアプリケーション プロキシ コネクタからアプリへの接続を最適化できます。 環境内に次のパターンを組み込むことを検討してください。
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>パターン 1:アプリケーションの近くへのコネクタの配置
 

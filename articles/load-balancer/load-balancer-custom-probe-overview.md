@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 05/07/2019
 ms.author: kumud
-ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450449"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415709"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -178,7 +178,7 @@ Load Balancer は、その内部正常性モデルに対して分散プローブ
 
 AzureLoadBalancer サービス タグによって、お客様の[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に含まれているこのソース IP アドレスが特定され、正常性プローブのトラフィックが既定で許可されます。
 
-Load Balancer の正常性プローブだけでなく、次の操作でもこの IP アドレスが使用されます。
+Load Balancer の正常性プローブだけでなく、[次の操作でもこの IP アドレスが使用されます](../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 - VM エージェントを、プラットフォームと通信して "準備完了" 状態を通知できるようにします
 - カスタム DNS サーバーを定義していないお客様にフィルター処理された名前解決を提供するため、DNS 仮想サーバーとの通信を有効にします。  このフィルター処理により、お客様はデプロイのホスト名だけを確実に解決できます。

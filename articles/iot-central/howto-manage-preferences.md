@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315964"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236318"
 ---
 # <a name="manage-your-application-preferences"></a>アプリケーションのユーザー設定を管理する
 
@@ -23,17 +23,20 @@ IoT Central には、ニーズに合わせてアプリケーションをカス�
 
 ## <a name="changing-language"></a>言語の変更
 
-IoT Central は、複数の言語でサポートされています。 上部のナビゲーション バーの設定アイコンの**言語選択機能**を使用して、目的の言語に切り替えることができます。 言語を変更すると、IoT Central にその選択が記憶され、すべてのアプリケーションに適用されます。 ダッシュボードの画像など、アプリケーション内のカスタマイズはローカライズされないことに注意してください。
+IoT Central は、複数の言語でサポートされています。 上部のナビゲーション バーの設定アイコンの**言語選択機能**を使用して、目的の言語に切り替えることができます。 言語を変更すると、IoT Central にその選択が記憶され、すべてのアプリケーションに適用されます。 ダッシュボードの画像など、アプリケーション内のカスタマイズはローカライズされません。
 
 ## <a name="changing-theme"></a>テーマの変更
 
-ダーク テーマとライト テーマの両方がサポートされています。 既定値はライト テーマですが、これは、上部のナビゲーション バーの設定アイコンを選択することで変更できます。
+ダーク テーマとライト テーマの両方がサポートされています。 既定値はライト テーマですが、テーマは上部のナビゲーション バーの設定アイコンを選択することで変更できます。
 
 ![IoT Central のテーマの選択](media/howto-manage-preferences/settings.png)
+
+> [!NOTE]
+> 管理者によってアプリケーションのカスタム テーマが構成されている場合、淡色と濃色のテーマから選択するオプションは使用できません。
 
 ## <a name="next-steps"></a>次の手順
 
 ここでは、Azure IoT Central でプロファイルを管理する方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [アプリケーションのダッシュボードを構成する](howto-configure-homepage.md)
+> [ライブ チャットの切り替え](howto-show-hide-chat.md)

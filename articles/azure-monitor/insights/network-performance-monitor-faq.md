@@ -1,6 +1,6 @@
 ---
 title: FAQ - Azure の Network Performance Monitor ソリューション | Microsoft Docs
-description: この記事では、Azure の NPM についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスを監視し、ネットワーク パフォーマンスのボトルネックをほぼリアルタイムで検出して特定するのに役立ちます。
+description: この記事では、Azure の Network Performance Monitor についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスをほぼリアルタイムで監視し、ネットワーク パフォーマンスのボトルネックを検出して特定するのに役立ちます。
 services: log-analytics
 documentationcenter: ''
 author: vinynigam
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546249"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232662"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -36,17 +36,17 @@ ms.locfileid: "59546249"
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視に使用するノードにはどのようなプラットフォーム要件がありますか。
 NPM の様々な機能に対するプラットフォーム要件を、以下に示します。
 
-- NPM のパフォーマンス モニターとサービス接続モニターの機能は、Windows Server (2008 SP1 またはそれ以降) および Windows デスクトップ/クライアント オペレーティング システム (Windows 10、Windows 8.1、Windows 8 および Windows 7) の両方をサポートします。 
+- NPM のパフォーマンス モニターとサービス接続モニターの機能は、Windows Server および Windows デスクトップ/クライアント オペレーティング システムの両方をサポートします。 サポートされている Windows Server OS のバージョンは 2008 SP1 以降です。 サポートされている Windows デスクトップ/クライアントのバージョンは、Windows 10、Windows 8.1、Windows 8、および Windows 7 です。 
 - NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>NPM 内の監視ノードとして Linux マシンを使用できますか。
-Linux ベースのノードを使用してネットワークを監視する機能は、現在はプレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 ご使用のワークスペース ID を提供すれば、機能が有効にされます。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
+Linux ベースのノードを使用してネットワークを監視する機能は、現在はプレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視で使用するノードのサイズ要件はありますか。
-ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 ソリューションには、使用する CPU が 5% を超えた場合に監視プロセスを停止する機能があります。
+ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 このソリューションには、その CPU 使用率が 5% を超えた場合に監視プロセスを停止する機能があります。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>NPM を使用するには、ノードを直接エージェントとして、または System Center Operations Manager を介して接続する必要がありますか。
-パフォーマンス モニター機能およびサービス接続モニター機能は両方とも、[直接エージェントとして接続されている](../../azure-monitor/platform/agent-windows.md)ノードだけでなく [Operations Manager 経由で接続されている](../../azure-monitor/platform/om-agents.md)ノードもサポートします。
+パフォーマンス モニター機能とサービス接続モニター機能のどちらも、[直接エージェントとして接続されている](../../azure-monitor/platform/agent-windows.md)ノードと [Operations Manager 経由で接続されている](../../azure-monitor/platform/om-agents.md)ノードをサポートします。
 
 ExpressRoute モニター機能では、Azure ノードは直接エージェントとしてのみ接続する必要があります。 Operations Manager 経由で接続されている Azure ノードはサポートされません。 オンプレミス ノードの場合、直接エージェントとして接続されるノードおよび Operations Manager を介して接続されているノードは、ExpressRoute 回線の監視用としてサポートされます。
 
@@ -71,8 +71,8 @@ TCP プロトコルを使用してノードが監視をサポートするには�
 ### <a name="how-many-agents-should-i-use"></a>いくつのエージェントを使用する必要がありますか。
 監視する各サブネットに対して少なくとも 1 つのエージェントを使用してください。
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>使用できるエージェントの最大数はいくつですか。または、構成の上限に達したことを示すエラーが表示されます。
-NPM では、ワークスペースあたりの IP アドレス数が 5,000 個に制限されます。 ノードに IPv4 と IPv6 の両方のアドレスがある場合、そのノードに 2 つの IP アドレスがあるものとしてカウントされます。 したがって、5,000 個の IP アドレスというこの制限によって、エージェント数の上限が決まります。 [NPM] > [構成] の [ノード] タブを使用して、非アクティブなエージェントを削除できます。 NPM には、エージェントをホストしている VM にこれまで割り当てられていたすべての IP ドレスの履歴も保持されます。これらも、5,000 個の IP アドレスの上限に関係する個別の IP アドレスとしてカウントされます。 ワークスペース用に IP アドレスを解放するために、使用されていない IP アドレスを [ノード] ページで削除できます。
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>使用できるエージェントの最大数はいくつですか。または、構成の上限に達したことを示すエラーが表示されます。
+NPM では、ワークスペースあたりの IP アドレス数が 5,000 個に制限されます。 ノードに IPv4 と IPv6 の両方のアドレスがある場合、そのノードに 2 つの IP アドレスがあるものとしてカウントされます。 したがって、5,000 個の IP アドレスというこの制限によって、エージェント数の上限が決まります。 [NPM] > [構成] の [ノード] タブを使用して、非アクティブなエージェントを削除できます。 NPM には、エージェントをホストしている VM にこれまで割り当てられたすべての IP アドレスの履歴も保持されます。それぞれは、5,000 個の IP アドレスの上限に関係する個別の IP アドレスとしてカウントされます。 ワークスペース用に IP アドレスを解放するために、使用されていない IP アドレスを [ノード] ページで削除できます。
 
 ## <a name="monitoring"></a>監視
 
@@ -146,6 +146,16 @@ NPM は、traceroute の修正バージョンを使用して、ソース エー�
 * ルーターが ID を公開しないように構成されている。
 * ネットワーク デバイスが ICMP_TTL_EXCEEDED トラフィックを許可していない。
 * ネットワーク デバイスからの ICMP_TTL_EXCEEDED 応答がファイアウォールによってブロックされている。
+
+### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>リンクに異常が表示されますが、トポロジには表示されません 
+NPM は、エンドツーエンドの損失、待ち時間、およびトポロジをさまざまな間隔で監視します。 損失と待ち時間は 5 秒に 1 回測定され、3 分ごとに集計されます (Performance Monitor と Express Route Monitor の場合)。一方、トポロジは、10 分に 1 回 traceroute を使用して計算されます。 たとえば、3 時 44 分から 4 時 04 分の間では、トポロジは 3 回更新されます (3 時 44 分、3 時 54 分、4 時 04 分) が、損失と待ち時間は約 7 回更新されます (3 時 44 分、3 時 47 分、3 時 50 分、3 時 53 分、3 時 56 分、3 時 59 分、4 時 02 分)。 3 時 54 分に生成されるトポロジは、3 時 56 分、3 時 59 分、および 4 時 02 分に計算される損失と待ち時間に対してレンダリングされます。 たとえば、3 時 59 分に ER 回線の異常を示すアラートを受け取ったとします。 あなたは、NPM にログオンし、トポロジの時刻を 3 時 59 分に設定します。 NPM には、3 時 54 分に生成されたトポロジがレンダリングされます。 ネットワークの最後の既知のトポロジを理解するには、TimeProcessed (損失と待ち時間が計算された時刻) フィールドと TracerouteCompletedTime (トポロジが計算された時刻) を比較します。 
+
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>NetworkMonitoring テーブルの E2EMedianLatency フィールドと AvgHopLatencyList フィールドの違いは何ですか
+E2EMedianLatency は、tcp ping テストの結果を集計した後 3 分ごとに更新される待ち時間です。AvgHopLatencyList は、traceroute に基づいて 10 分ごとに更新されます。 E2EMedianLatency が計算された正確な時刻を知るには、TimeProcessed フィールドを使用します。 traceroute が完了して AvgHopLatencyList を更新した正確な時刻を知るには、TracerouteCompletedTime フィールドを使用します
+
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>ホップバイホップの待ち時間の値が HopLatencyValues と異なるのはなぜですか 
+HopLatencyValues は、ソースからエンドポイントまでを示します。
+次に例を示します。ホップ - A、B、C。 AvgHopLatency - 10、15、20。 つまり、ソースから A への待ち時間 = 10、ソースから B への待ち時間 = 15、ソースから C への待ち時間は 20 です。 UI では、トポロジ内の A-B ホップ間の待ち時間が 5 として計算されます
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>ソリューションは 100% の損失と示していますがソースと宛先の間の接続が存在します
 これが発生することがあるのは、ホスト ファイアウォールまたは中間ファイアウォール (ネットワーク ファイアウォールまたは Azure NSG) のいずれかが、NPM による監視に使用されているポート経由で (顧客が変更しない場合の既定はポート 8084) ソース エージェントと宛先の間の通信をブロックしている場合です。

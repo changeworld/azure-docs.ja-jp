@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006031"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228166"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -59,7 +59,7 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
    * 759731 
    * 673801
 
-Microsoft は、一貫した SMS や音声ベース Multi-Factor Authentication のプロンプトが同じ番号で配信されることを保証しません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国ではショート コードをサポートしていません
+Microsoft は、一貫した SMS や音声ベース Multi-Factor Authentication のプロンプトが同じ番号で配信されることを保証しません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国/地域ではショート コードをサポートしていません。
 
 ## <a name="billing"></a>課金
 
@@ -142,15 +142,15 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 > [!NOTE]
 > Office 2013 クライアントのための最新の認証
 >
-> アプリ パスワードは、先進認証をサポートしていないアプリにのみ必要になります。 Office 2013 クライアントでは、先進認証プロトコルがサポートされますが、構成が必要です。 Office 2013 の 2015 年 3 月以降の更新を実行しているすべてのお客様は、最新の認証を利用できるようになりました。 詳しくは、「[Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
+> アプリ パスワードは、先進認証をサポートしていないアプリにのみ必要になります。 Office 2013 クライアントでは、先進認証プロトコルがサポートされますが、構成が必要です。 Office 2013 の 2015 年 3 月以降の更新を実行しているすべてのお客様は、最新の認証を利用できるようになりました。 詳細については、「[Updated Office 365 modern authentication (Office 365 の先進認証の更新)](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)」を参照してください。
 
 **Q:テキスト メッセージが届かない場合や、双方向テキスト メッセージに返信しても認証がタイムアウトになる場合があるとユーザーが訴えています。**
 
-双方向 SMS でのテキスト メッセージの配信と応答の受信は保証されませんが、これはサービスの信頼性に影響しかねない制御不能な要因があるためです。 これらの要因には、相手国、携帯電話会社、信号の強さなどがあります。
+双方向 SMS でのテキスト メッセージの配信と応答の受信は保証されませんが、これはサービスの信頼性に影響しかねない制御不能な要因があるためです。 これらの要因には、相手国/地域、携帯電話会社、信号の強さなどがあります。
 
 テキスト メッセージがユーザーに確実に届かない問題が頻発する場合は、代わりにモバイル アプリか電話呼び出しによる認証方法を使用するようユーザーに指示してください。 モバイル アプリは、携帯電話と Wi-fi 接続の両方で通知を受け取ることができます。 さらに、デバイスに信号がまったくない場合でも、モバイル アプリは検証コードを生成できます。 Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073)、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
 
-テキスト メッセージを使用する必要がある場合は、できるだけ双方向の SMS ではなく一方向の SMS を使用することをお勧めします。 一方向の SMS は、信頼性が高く、別の国から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができます。
+テキスト メッセージを使用する必要がある場合は、できるだけ双方向の SMS ではなく一方向の SMS を使用することをお勧めします。 一方向の SMS は、信頼性が高く、別の国/地域から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができます。
 
 **Q:ユーザーが認証コードを入力しなければならない、テキスト メッセージを受信してからシステムがタイムアウトになるまでの制限時間は変更できますか。**
 
@@ -200,7 +200,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 - 組織で作成および有効化されている MFA 登録ポリシーが、そのユーザーに適用されている。
 - そのユーザーは事前に MFA への登録を行っているが、選択した認証方法が、その後管理者によって無効化されている。 このため、ユーザーはもう一度 MFA 登録を行い、新しい既定の認証方法を選択する必要があります。
 
-## <a name="errors"></a>エラー
+## <a name="errors"></a>Errors
 
 **Q:モバイル アプリ通知を使用して認証を行うときに、"認証しようとしているアカウントはアクティブ化されていません" というエラー メッセージが表示された場合、ユーザーはどうすればよいでしょうか。**
 

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 614dabe842c7fe99da3ddb486c27003c79382ea1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147921"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231396"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
 
@@ -81,6 +81,7 @@ Security Center での "クラシック" ID とアクセスのエクスペリエ
 ![ID ページ - ダッシュボード][8]
 
 上の 3 つの画面はすべて、今後は廃止されます。 データは、ログ分析のセキュリティ ソリューション内で引き続き使用でき、変更または削除されることはありません。
+[ID およびアクセス] ダッシュボードの設定に使用していた元の Log Analytics クエリは、Security Center の [GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)で確認できます。
 
 ### <a name="classic-identity--access-preview---new-experience"></a>クラシック ID とアクセス (プレビュー) - 新しいエクスペリエンス
 ログ分析のダッシュボードでは、指定されたワークスペース上のみで分析情報を提供してきましたが、ネイティブな Security Center 機能では、[ID とアクセス] の推奨事項の安全スコアに従って重要な箇所への注目を促す使いやすいビューの中で、すべてのサブスクリプションとそれらに関連付けられたすべてのワークスペースへの視覚化を提供します。
@@ -103,6 +104,7 @@ Security Center では、その環境に対するセキュリティ上の脅威�
 ![Log Analytics にある [セキュリティ アラート マップ]][12]
 
 既存のデータは、ログ分析のセキュリティ ソリューションで引き続き使用でき、変更または削除されることはありません。
+[脅威インテリジェンス] ダッシュボードの設定に使用していた元の Log Analytics クエリは、Security Center の [GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)で確認できます。
 
 ### <a name="security-events-map---new-experience"></a>セキュリティ イベント マップ - 新しいエクスペリエンス
 お客様は、Security Center に組み込まれたアラート マップ機能である [セキュリティ アラート マップ (プレビュー)] を使用することをお勧めします。 これは最適化されたエクスペリエンスを提供し、すべてのサブスクリプションと関連するワークスペース全体に有効です。単一のワークスペースに重点を置かない、お使いの環境全体でのマクロ ビューを実現します。
@@ -165,6 +167,8 @@ Log Analytics にあるセキュリティ ダッシュボードでは、注目�
 
 ### <a name="security--audit-dashboard---new-experience"></a>セキュリティおよび監査のダッシュボード - 新しいエクスペリエンス
 お客様は、Azure Security Center を使用することをお勧めします。豊富な機能セットと共に、複数のサブスクリプションとそれに関連付けられたワークスペース全体に同じセキュリティ概要が提供されます。
+
+[セキュリティおよび監査] ダッシュボードの設定に使用していた元の Log Analytics クエリは、Security Center の [GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)で確認できます。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Security Center](https://docs.microsoft.com/azure/security-center/) の詳細について参照してください

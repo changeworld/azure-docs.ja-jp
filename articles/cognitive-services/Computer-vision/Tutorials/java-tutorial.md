@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:イメージの操作を実行する - Java
+title: イメージの操作を実行する - Java
 titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な Java Swing アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
@@ -7,18 +7,18 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
+ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
-ms.date: 09/21/2017
-ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 04/30/2019
+ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868091"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232632"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>チュートリアル:Computer Vision API Java
+# <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>REST API と Java を使用して Computer Vision 機能を使用する
 
 このチュートリアルでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
 
@@ -42,13 +42,13 @@ Java Swing フォーム アプリケーションは既に記述されていま�
 
 このチュートリアルは、NetBeans IDE を使用して開発されています。 具体的には、NetBeans の **Java SE** バージョンです。それは、[こちらからダウンロード](https://netbeans.org/downloads/index.html)できます。
 
-### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Computer Vision API にサブスクライブしてサブスクリプション キーを取得する 
+### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Computer Vision API にサブスクライブしてサブスクリプション キーを取得する
 
-例を作成する前に、Azure Cognitive Services の一部である Computer Vision API をサブスクライブする必要があります。 サブスクリプションとキーの管理の詳細については、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 このチュートリアルでは、主キーと 2 次キーの両方を使用できます。 
+例を作成する前に、Azure Cognitive Services の一部である Computer Vision API をサブスクライブする必要があります。 サブスクリプションとキーの管理の詳細については、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 このチュートリアルでは、主キーと 2 次キーの両方を使用できます。
 
-## <a name="acquire-the-incomplete-tutorial-project"></a>不完全なチュートリアル プロジェクトを取得する
+## <a name="acquire-incomplete-tutorial-project"></a>不完全なチュートリアル プロジェクトを取得する
 
-### <a name="download-the-tutorial-project"></a>チュートリアル プロジェクトをダウンロードする
+### <a name="download-the-project"></a>プロジェクトのダウンロード
 
 1. [Cognitive Services Java Computer Vision チュートリアル](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial) リポジトリに移動します。
 1. **[複製またはダウンロード]** ボタンをクリックします。
@@ -78,7 +78,7 @@ NetBeans は .zip ファイルからプロジェクトをインポートする�
 
 1. チュートリアル アプリケーションを終了します。
 
-## <a name="add-the-tutorial-code-to-the-project"></a>チュートリアル コードをプロジェクトに追加する
+## <a name="add-tutorial-code-to-the-project"></a>チュートリアル コードをプロジェクトに追加する
 
 Java Swing アプリケーションは 6 つのタブ付きで設定されます。 各タブは Computer Vision の別個の機能を示します (分析、OCR など)。 6 つのチュートリアル セクションに依存関係はないため、1 つのセクション、6 つのすべてのセクション、または任意のサブセットを追加できます。 セクションは任意の順序で追加できます。
 
@@ -88,7 +88,7 @@ Computer Vision の分析機能では、2,000 を超える認識可能なオブ�
 
 チュートリアル アプリケーションの分析機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>分析ボタンのイベント ハンドラー コードを追加する
 
 **analyzeImageButtonActionPerformed** イベント ハンドラー メソッドは、フォームをクリアし、URL で指定された画像を表示した後、**AnalyzeImage** メソッドを呼び出して画像を分析します。 **AnalyzeImage** が戻るとき、このメソッドは、書式設定された JSON 応答を **[応答]** テキスト領域に表示し、**JSONObject** から最初のキャプションを抽出し、キャプションとキャプションが正しいことを示す信頼度レベルを表示します。
 
@@ -202,7 +202,7 @@ Computer Vision の分析機能では、2,000 を超える認識可能なオブ�
     }
  ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-analyze-function"></a>分析関数を実行する
 
 **F6** キーを押してアプリケーションを実行します。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
@@ -326,7 +326,7 @@ Computer Vision のランドマーク機能は、山や有名な建物などの�
     }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-landmark-function"></a>ランドマーク関数を実行する
 
 **F6** キーを押してアプリケーションを実行します。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 **[ランドマーク]** タブをクリックし、ランドマークの画像の URL を入力した後、**[画像の分析]** lボタンをクリックして画像を分析し、その結果を確認します。
 
@@ -336,7 +336,7 @@ Computer Vision の著名人機能は、有名な人物のイメージを分析�
 
 チュートリアル アプリケーションの著名人機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>著名人ボタンのイベント ハンドラー コードを追加する
 
 **celebritiesImageButtonActionPerformed** イベント ハンドラー メソッドは、フォームをクリアし、URL で指定された画像を表示した後 **CelebritiesImage** メソッドを呼び出して画像を分析します。 **CelebritiesImage** が戻るとき、このメソッドは、書式設定された JSON 応答を **[応答]** テキスト領域に表示し、**JSONObject** から最初の有名人の名前を抽出し、その名前と有名人が正しく認識されたことを示す信頼度レベルを表示します。
 
@@ -450,7 +450,7 @@ Computer Vision の著名人機能は、有名な人物のイメージを分析�
     }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-celebrities-function"></a>著名人関数を実行する
 
 **F6** キーを押してアプリケーションを実行します。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 **[有名人]** タブをクリックし、有名人の画像の URL を入力した後、**[画像の分析]** lボタンをクリックして画像を分析し、その結果を確認します。
 
@@ -460,7 +460,7 @@ Computer Vision のサムネイル機能はイメージのサムネイルを生�
 
 チュートリアル アプリケーションのサムネイル機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>サムネイル ボタンのイベント ハンドラー コードを追加する
 
 **thumbnailImageButtonActionPerformed** イベント ハンドラー メソッドは、フォームをクリアし、URL で指定された画像を表示した後、**getThumbnailImage** メソッドを呼び出してサムネイルを作成します。 **getThumbnailImage** が戻るとき、このメソッドは、生成したサムネイルを表示します。
 
@@ -573,7 +573,7 @@ Computer Vision のサムネイル機能はイメージのサムネイルを生�
     }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-thumbnail-function"></a>サムネイル関数を実行する
 
 **F6** キーを押してアプリケーションを実行します。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 **[サムネイル]** タブをクリックし、画像の URL を入力した後、**[サムネイルの生成]** をクリックして画像を分析し、その結果を確認します。
 
@@ -583,7 +583,7 @@ Computer Vision の光学式文字認識 (OCR) 機能は、印字されたテキ
 
 チュートリアル アプリケーションの OCR 機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-ocr-button"></a>OCR ボタンのイベント ハンドラー コードを追加する
 
 **ocrImageButtonActionPerformed** イベント ハンドラー メソッドは、フォームをクリアし、URL で指定された画像を表示した後、**OcrImage** メソッドを呼び出して画像を分析します。 **OcrImage** が戻るとき、このメソッドは、検出されたテキストを書式設定された JSON として **[応答]** テキスト領域に表示します。
 
@@ -684,7 +684,7 @@ Computer Vision の光学式文字認識 (OCR) 機能は、印字されたテキ
     }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-ocr-function"></a>OCR 関数を実行する
 
 **F6** キーを押してアプリケーションを実行します。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 **[OCR]** タブをクリックし、テキストが印字されている画像の URL を入力し、**[Read Image]\(画像の読み取り\)** ボタンをクリックして画像を分析し、その結果を確認します。
 
@@ -694,7 +694,7 @@ Computer Vision の手書き認識機能は、手書きのテキストのイメ�
 
 チュートリアル アプリケーションの手書き認識機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>手書きボタンのイベント ハンドラー コードを追加する
 
 **handwritingImageButtonActionPerformed** イベント ハンドラー メソッドは、フォームをクリアし、URL で指定された画像を表示した後、**HandwritingImage** メソッドを呼び出して画像を分析します。 **HandwritingImage** が戻るとき、このメソッドは、検出されたテキストを書式設定された JSON として **[応答]** テキスト領域に表示します。
 
@@ -842,11 +842,12 @@ Computer Vision の手書き認識機能は、手書きのテキストのイメ�
     }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-handwriting-function"></a>手書き関数を実行する
 
 アプリケーションを実行するには、**F6** キーを押します。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 **[Read Handwritten Text]\(手書きのテキストの読み取り\)** タブをクリックし、テキストが手書きされている画像の URL を入力し、**[Read Image]\(画像の読み取り\)** ボタンをクリックして画像を分析し、その結果を確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Computer Vision API C&#35; チュートリアル](CSharpTutorial.md)
-- [Computer Vision API Python チュートリアル](PythonTutorial.md)
+このガイドでは、Computer Vision REST API と Java を使用して、利用可能な画像分析機能の多くをテストしました。 次は、リファレンス ドキュメントを参照して、関連する API の詳細について学習してください。
+
+- [Computer Vision REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

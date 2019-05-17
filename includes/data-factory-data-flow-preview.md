@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 02/11/2019
 ms.author: kromerm
-ms.openlocfilehash: ac07373bcdf4bbf0f7bfc5b131ffe4eb26bc3ac4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f987b236cbec9bd4dd332213c2ec7eadcb0752e7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804473"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65211999"
 ---
 > [!NOTE] 
-> マッピング データ フローは Azure Data Factory の新機能です。 現在は限定パブリック プレビュー期間中であり、Azure のお客様の SLA プロビジョニングの対象になりません。 [登録してプレビューを利用するには、ここでアクセスを依頼してください](https://aka.ms/dataflowpreview)。
+> Azure Data Factory の Mapping Data Flow は現在パブリック プレビュー機能であり、Azure のお客様の SLA プロビジョニングの対象になりません。

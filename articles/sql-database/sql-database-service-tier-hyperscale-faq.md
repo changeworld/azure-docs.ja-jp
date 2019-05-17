@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/06/2019
+ms.openlocfilehash: 4f0691dcc8a0c4b0ebbfe26a49b75b86fa50f597
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067806"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236021"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -73,11 +73,7 @@ ms.locfileid: "65067806"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>現在ハイパースケールをサポートしているリージョン
 
-現在、Azure SQL Database ハイパースケール レベルは次のリージョンで使用できます。
-
-オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、米国中部、東アジア、米国東部、米国東部 2、フランス中部、東日本、西日本、米国中北部、北ヨーロッパ、南アフリカ北部、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2。
-
-別のリージョンでのアクセスが必要な場合の手順については、[Azure SQL Database ハイパースケールの概要](sql-database-service-tier-hyperscale-faq.md)に関する記事をご覧ください。
+Azure SQL Database の Hyperscale レベルは現在、[Azure SQL Database の Hyperscale の概要](sql-database-service-tier-hyperscale.md#regions)に関するページに列挙されているリージョンで利用可能です。
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>論理サーバーごとに複数のハイパースケール データベースを作成できるか
 

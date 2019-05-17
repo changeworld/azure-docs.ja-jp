@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 6b60e03c8888ad2c9726116f1f3b2e49d9a4e1e8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9763a14e84d88be1d6f09fb9f16b6b7c9eeffd2d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722741"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506422"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -49,14 +49,16 @@ ms.locfileid: "64722741"
 
     ![Key Vault シークレットを追加する](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-4. [Visual Studio 用のAzure サービス認証拡張機能](https://go.microsoft.com/fwlink/?linkid=862354)をインストールします。 アプリはこの拡張機能により、Visual Studio サインイン ID を使用して Key Vault にアクセスできます。
-
-5. 次の Nuget パッケージをプロジェクトに追加します。
+    > [!NOTE] 
+    > Visual Studio 2017 V15.6 より前は、Visual Studio 用の Azure Services Authentication 拡張機能をインストールすることをお勧めしていました。 しかし、現在では Visual Studio 内に機能が統合されているため、非推奨になりました。 そのため、古いバージョンの Visual Studio 2017 を使用している場合は、VS 2017 15.6 以降に更新することをお勧めします。これにより、この機能をネイティブに使用し、Visual Studio サインイン ID 自体を使用して Key Vault にアクセスできるようになります。
+    >
+ 
+4. 次の Nuget パッケージをプロジェクトに追加します。
 
     ```
     Microsoft.Azure.Services.AppAuthentication
     ```
-6. Program.cs ファイルに次のコードを追加します。
+5. Program.cs ファイルに次のコードを追加します。
 
     ```csharp
     public static IWebHost BuildWebHost(string[] args) =>
@@ -79,11 +81,11 @@ ms.locfileid: "64722741"
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-7. Key Vault URL を launchsettings.json ファイルに追加します。 手順 6 で追加したコードで、環境変数名 *KEYVAULT_ENDPOINT* が定義されます。
+6. Key Vault URL を launchsettings.json ファイルに追加します。 手順 6 で追加したコードで、環境変数名 *KEYVAULT_ENDPOINT* が定義されます。
 
     ![プロジェクトの環境変数として Key Vault URL を追加する](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-8. プロジェクトのデバッグを開始します。 これは正常に実行される必要があります。
+7. プロジェクトのデバッグを開始します。 これは正常に実行される必要があります。
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET と .NET のアプリケーション
 

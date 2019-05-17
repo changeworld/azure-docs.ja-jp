@@ -9,12 +9,12 @@ ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 7c5fbf135c02abf04e90865e20e902a95174598c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3c265d6695af7ba1bc5833db59966a626cb29cb9
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080531"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416060"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
@@ -80,7 +80,13 @@ az --version
     az provider register -n Microsoft.Network --wait
     ```
 
-5. Microsoft.ContainerService リソース プロバイダーの登録を更新します。
+5. Microsoft.KeyVault プロバイダーを登録します。
+
+    ```bash
+    az provider register -n Microsoft.KeyVault --wait
+    ```
+
+6. Microsoft.ContainerService リソース プロバイダーの登録を更新します。
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait

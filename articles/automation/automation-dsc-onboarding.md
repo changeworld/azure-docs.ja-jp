@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: f9f15c558e507742a641239ed25ba136dca0671a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8a505e88ff92c5227d3b42da2adaf1dce58e6fbb
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919990"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441509"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -75,95 +75,13 @@ Azure Virtual Machines は、Azure Resource Manager テンプレートを使用�
 例については、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template)」を参照してください。
 このテンプレートのパラメーターとして使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
-## <a name="azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック)
-
-Azure Automation State Configuration では、Azure Portal または PowerShell を使用して、構成管理用に Azure Virtual Machines (クラシック) を簡単にオンボードすることができます。 Azure VM Desired State Configuration 拡張機能を使用することで、管理者が VM にリモート接続しなくても、内部で VM を Azure Automation State Configuration に登録できます。
-進行状況の追跡またはトラブルシューティングの手順については、後述の「[**Azure 仮想マシンのオンボードに関するトラブルシューティング**](#troubleshooting-azure-virtual-machine-onboarding)」を参照してください。
-
-### <a name="azure-portal-classic-virtual-machines"></a>Azure portal (従来の仮想マシン)
-
-[Azure Portal](https://portal.azure.com/) で、**[参照]**  ->  **[仮想マシン (クラシック)]** の順にクリックします。 オンボードする Windows VM を選択します。 仮想マシンのダッシュボード ブレードで、**[すべての設定]**  ->  **[拡張機能]**  ->  **[追加]**  ->  **[Azure Automation DSC]**  ->  **[作成]** の順にクリックします。
-Automation アカウントの登録キーと登録 URL の [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、また必要に応じて、VM に割り当てるノード構成を入力します。
-
-![DSC への Azure VM 拡張機能](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
-
-マシンをオンボードするための Automation アカウントの登録 URL とキーを見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
-
-### <a name="powershell-classic-virtual-machines"></a>PowerShell (従来の仮想マシン)
-
-```powershell
-# log in to both Azure Service Management and Azure Resource Manager
-Add-AzureAccount
-Connect-AzureRmAccount
-
-# fill in correct values for your VM/Automation account here
-$VMName = ''
-$ServiceName = ''
-$AutomationAccountName = ''
-$AutomationAccountResourceGroup = ''
-
-# fill in the name of a Node Configuration in Azure Automation State Configuration, for this VM to conform to
-# NOTE: DSC Node Configuration names are case sensitive in the portal.
-$NodeConfigName = ''
-
-# get Azure Automation State Configuration registration info
-$Account = Get-AzureRmAutomationAccount -ResourceGroupName $AutomationAccountResourceGroup -Name $AutomationAccountName
-$RegistrationInfo = $Account | Get-AzureRmAutomationRegistrationInfo
-
-# use the DSC extension to onboard the VM for management with Azure Automation State Configuration
-$VM = Get-AzureVM -Name $VMName -ServiceName $ServiceName
-
-$PublicConfiguration = ConvertTo-Json -Depth 8 @{
-    SasToken = ''
-    ModulesUrl = 'https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/RegistrationMetaConfigV2.zip'
-    ConfigurationFunction = 'RegistrationMetaConfigV2.ps1\RegistrationMetaConfigV2'
-
-# update these PowerShell DSC Local Configuration Manager defaults if they do not match your use case.
-# See https://docs.microsoft.com/powershell/dsc/metaConfig for more details
-    Properties = @{
-        RegistrationKey = @{
-            UserName = 'notused'
-            Password = 'PrivateSettingsRef:RegistrationKey'
-        }
-        RegistrationUrl = $RegistrationInfo.Endpoint
-        NodeConfigurationName = $NodeConfigName
-        ConfigurationMode = 'ApplyAndMonitor'
-        ConfigurationModeFrequencyMins = 15
-        RefreshFrequencyMins = 30
-        RebootNodeIfNeeded = $False
-        ActionAfterReboot = 'ContinueConfiguration'
-        AllowModuleOverwrite = $False
-    }
-}
-
-$PrivateConfiguration = ConvertTo-Json -Depth 8 @{
-    Items = @{
-        RegistrationKey = $RegistrationInfo.PrimaryKey
-    }
-}
-
-$VM = Set-AzureVMExtension `
-    -VM $vm `
-    -Publisher Microsoft.Powershell `
-    -ExtensionName DSC `
-    -Version 2.76 `
-    -PublicConfiguration $PublicConfiguration `
-    -PrivateConfiguration $PrivateConfiguration `
-    -ForceUpdate
-
-$VM | Update-AzureVM
-```
-
-> [!NOTE]
-> ポータルでは、State Configuration ノード構成名の大文字と小文字が区別されます。 大文字と小文字が一致しない場合、ノードは **[ノード]** タブ下に表示されません。
-
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) 仮想マシン
 
 AWS DSC Toolkit を使用して Azure Automation State Configuration による構成管理のためのアマゾン ウェブ サービス仮想マシンを簡単にオンボードできます。 ツールキットの詳細については、 [こちら](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)を参照してください。
 
 ## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
 
-オンプレミスまたは他のクラウド環境で実行している Windows サーバーも、Azure に発信アクセスできる限り、Azure Automation State Configuration にオンボードできます。
+オンプレミスまたは他のクラウド環境で実行している Windows サーバーも、[Azure にアウトバウンド アクセス](automation-dsc-overview.md#network-planning)できる限り、Azure Automation State Configuration にオンボードできます。
 
 1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [WMF 5](https://aka.ms/wmf5latest) がインストールされていることを確認します。
 1. 以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」のセクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
@@ -178,7 +96,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 
 ## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>オンプレミス、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
-オンプレミスまたは他のクラウド環境で実行している Linux サーバーも、Azure に発信アクセスできる限り、Azure Automation State Configuration にオンボードできます。
+オンプレミスまたは他のクラウド環境で実行している Linux サーバーも、[Azure にアウトバウンド アクセス](automation-dsc-overview.md#network-planning)できる限り、Azure Automation State Configuration にオンボードできます。
 
 1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [PowerShell Desired State Configuration for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされていることを確認します。
 1. [PowerShell DSC Local Configuration Manager の既定値](/powershell/dsc/metaconfig4) がユース ケースに適しており、 **両方とも** Azure Automation State Configuration とデータをやり取りするマシンをオンボードするには、次のようにします。

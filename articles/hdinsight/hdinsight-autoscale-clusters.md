@@ -8,18 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92f4616a415c4ddebd0d9b2e466536b2f30c486f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146365"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413693"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
 
 Azure HDInsight のクラスター自動スケーリング機能では、クラスター内のワーカー ノードの数が自動的にスケールアップおよびスケールダウンされます。 現在、クラスター内の他の種類のノードはスケーリングできません。  新しい HDInsight クラスターの作成中に、ワーカー ノードの最小数と最大数を設定できます。 その後、自動スケーリングによって分析負荷のリソース要件が監視され、ワーカー ノードの数がスケールアップまたはスケールダウンされます。 この機能に対して追加料金は発生しません。
 
 ## <a name="cluster-compatibility"></a>クラスターの互換性
+
+> [!Important]
+> 自動スケーリング機能は、2019 年 5 月にこの機能の一般提供が始まってから作成されたクラスターに対してのみ機能します。 それ以前から存在するクラスターには機能しません。
 
 次の表では、自動スケーリング機能と互換性のあるクラスターの種類とバージョンについて説明します。
 

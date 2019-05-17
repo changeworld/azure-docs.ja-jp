@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a5184b9980dd9f83764950445c10e8bdfea6d71a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4f721dc4fda5bef002c794d79dfd2f054f9eaf38
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203945"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511188"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -54,10 +54,10 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 | --- |:---:|:---:|
 | 帯域幅 | 20 TU (最大 40 TU) | 20 CU |
 | 名前空間 |  1 | CU あたり 50 |
-| Event Hubs |  10 | 制限なし |
+| Event Hubs |  10 | イベント ハブ/トピックに制限なし |
 | イングレス イベント | 100 万イベントごとの課金 | あり |
 | メッセージ サイズ | 100 万バイト | 100 万バイト |
-| パーティション | 名前空間あたり 40 | CU あたり 2,000、イベント ハブあたり 1,024 |
+| パーティション | 名前空間あたり 40 | CU あたり 2,000 |
 | コンシューマー グループ | イベント ハブあたり 20 | CU あたりの制限なし、イベント ハブあたり 1,000 |
 | 仲介型接続 | 1,000 (付属) | 100,000 (付属) |
 | メッセージのリテンション期間 | 7 日、TU あたり 84 GB を含む | 90 日、CU あたり 10 TB を含む |
@@ -65,16 +65,7 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 
 ## <a name="how-to-onboard"></a>利用を開始する方法
 
-Dedicated へのオンボード用のセルフサービス エクスペリエンスはプレビューであり、次のリージョンに 1 CU のクラスターを作成できます。
-  - カナダ中部
-  - 西ヨーロッパ
-  - 米国中部
-  - 米国東部
-  - 米国東部 2
-  - 米国中北部
-  - 米国西部
-
-現在新しいリージョンを追加していますが、一覧に希望するリージョンがない場合は、*[技術] > [Event Hubs] > [クォータ] > [Request for Dedicated SKU]\(Dedicated SKU の要求\)* で [Event Hubs チーム](https://ms.portal.azure.com/#create/Microsoft.Support)にサポート要求をお送りください。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
+Event Hubs Dedicated へのオンボードについては、[Event Hubs チーム](mailto:askeventhubs@microsoft.com)にお問い合わせください。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
 
 ## <a name="faqs"></a>FAQ
 
@@ -86,19 +77,15 @@ Event Hubs クラスターの場合、どれだけの容量を取り込んでス
 
 | ペイロードの形態 | 受信者 | イングレス帯域幅| イングレス メッセージ | エグレス帯域幅 | エグレス メッセージ | 合計 TU 数 | CU あたりの TU 数 |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB のバッチ | 2 | 400 MB/秒 | 400k メッセージ/秒 | 800 MB/秒 | 800k メッセージ/秒 | 400 TU | 100 TU | 
-| 10x10KB のバッチ | 2 | 666 MB/秒 | 66.6k メッセージ/秒 | 1.33 GB/秒 | 133k メッセージ/秒 | 666 TU | 166 TU |
-| 6x32KB のバッチ | 1 | 1.05 GB/秒 | 34k メッセージ/秒 | 1.05 GB/秒 | 34k メッセージ/秒 | 1000 TU | 250 TU |
+| 100x1KB のバッチ | 2 | 400 MB/秒 | 400,000 メッセージ/秒 | 800 MB/秒 | 800,000 メッセージ/秒 | 400 TU | 100 TU | 
+| 10x10KB のバッチ | 2 | 666 MB/秒 | 66,600 メッセージ/秒 | 1.33 GB/秒 | 133,000 メッセージ/秒 | 666 TU | 166 TU |
+| 6x32KB のバッチ | 1 | 1.05 GB/秒 | 34,000 メッセージ/秒 | 1.05 GB/秒 | 34,000 メッセージ/秒 | 1000 TU | 250 TU |
 
 このテストでは、次の条件が使用されました。
 
 - 4 容量ユニット (CU) を持つ専用レベルの Event Hubs クラスターが使用されました。 
 - 取り込みに使用されたイベント ハブには 200 パーティションが存在しました。 
 - 取り込まれたデータは、すべてのパーティションから受信している 2 つの受信側アプリケーションによって受信されました。
-
-#### <a name="how-do-i-create-a-cluster-larger-than-1-cu"></a>1 CU より大きいクラスターを作成するにはどうすればよいですか?
-
-セルフサービス エクスペリエンスのプレビュー リリースでは、クラスター作成後にクラスターのスケールアップを要求できます。 1 CU のクラスターを作成した後、*[技術] > [クォータ] > [Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)* で[サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を Event Hubs サポートにお送りください。 GA リリースでは、ポータルで直接クラスターをスケールアップできます。 
 
 #### <a name="can-i-scale-down-my-cluster"></a>クラスターをスケールダウンできますか?
 
@@ -107,7 +94,6 @@ Event Hubs クラスターの場合、どれだけの容量を取り込んでス
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>クラスターでは geo DR はどのようにどうしますか?
 
 Dedicated レベルのクラスターの名前空間を、Dedicated レベルのクラスターの別の名前空間と、geo ペアリングすることができます。 Dedicated レベルの名前空間と Standard オファリングの名前空間のペアリングは、スループットの制限に互換性がないためエラーが発生するので、お勧めしません。 
-
 
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standard の名前空間を Dedicated レベルのクラスターに属するように移行できますか?
 Standard 名前空間から Dedicated 名前空間にイベント ハブ データを移行する自動移行プロセスを、現在はサポートされていません。 Dedicated レベル クラスターに移行するには、Standard レベルのイベント ハブに残っているメッセージをドレインし、接続エンドポイントを Dedicated 名前空間のものに置き換えることをお勧めします。

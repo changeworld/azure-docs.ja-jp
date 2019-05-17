@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143188"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511212"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -26,15 +26,23 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 ![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-## <a name="manage-app-service-settings"></a>関数アプリの [設定] タブ
+関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)**)。
 
-![Azure Portal の関数アプリの概要。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+## <a name="settings"></a>アプリケーションの設定
 
-**[設定]** タブでは、関数アプリで使用される関数のランタイム バージョンを更新できます。 また、関数アプリでホストされるすべての関数への HTTP アクセスを制限するホスト キーを管理します。
+**[アプリケーションの設定]** タブでは、関数アプリに使用される設定を管理します。
 
-Functions では、従量課金ホスティング プランと App Service ホスティング プランの両方がサポートされます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 従量課金プランで予測しやすいように、Functions では、毎日の使用量クォータをギガバイト秒で設定してプラットフォームの使用量を制限できます。 毎日の使用量クォータに達すると、関数アプリは停止されます。 使用量クォータに達した結果として停止した関数アプリは、毎日の使用量クォータの設定と同じ手順で再び有効にすることができます。 課金の詳細については、[Azure Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。   
+![Azure portal の関数アプリの設定。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-## <a name="platform-features-tab"></a>[プラットフォーム機能] タブ
+これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。
+
+設定を追加するには、**[新しいアプリケーション設定]** を選択して新しいキーと値のペアを追加します。
+
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+
+ローカルで関数アプリを開発すると、これらの値は local.settings.json プロジェクト ファイルに保持されます。
+
+## <a name="platform-features"></a>プラットフォーム機能
 
 ![関数アプリの [プラットフォーム機能] タブ。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
@@ -46,7 +54,6 @@ Functions では、従量課金ホスティング プランと App Service ホ�
 このトピックの残りの部分では、Azure Portal で使用できる次の App Service 機能について説明します。
 
 + [App Service Editor](#editor)
-+ [アプリケーションの設定](#settings) 
 + [Console](#console)
 + [高度なツール (Kudu)](#kudu)
 + [デプロイ オプション](#deployment)
@@ -63,14 +70,6 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 | ![関数アプリの App Service Editor。](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | App Service Editor は、JSON 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Git リポジトリとの統合、コードの実行とデバッグ、および関数アプリの設定変更を行うことができます。 このエディターでは、既定の関数アプリ ブレードと比較して、関数の開発環境が強化されています。    |
 
 ![App Service Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
-
-### <a name="settings"></a>アプリケーションの設定
-
-| | |
-|-|-|
-| ![関数アプリのアプリケーションの設定。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | App Service の **[アプリケーションの設定]** ブレードでは、フレームワーク バージョン、リモート デバッグ、アプリ設定、および接続文字列を構成して管理します。 関数アプリとその他の Azure およびサードパーティのサービスを統合する場合、その設定をここで変更できます。 設定を削除するには、右にスクロールして、行の右端にある **X** アイコン (下図には示されていません) を選択します。
-
-![アプリケーション設定の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
 ### <a name="console"></a>コンソール
 

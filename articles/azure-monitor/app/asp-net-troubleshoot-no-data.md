@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860331"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471852"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
@@ -42,7 +42,7 @@ ms.locfileid: "57860331"
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](../../azure-monitor/app/windows-desktop.md)できます。
 * [Visual Studio 2013 Update 3 以降](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
 * **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
-* [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、アンインストールしてから Application Insights Tools を再インストールしてください。
+* [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。 そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。 それ以外の場合は、Developer Analytics Tools をアンインストールしてから再インストールしてみてください。
 
 ## <a name="q02"></a>Application Insights の追加に失敗する
 *Application Insights を既存のプロジェクトに追加しようとしたときに、エラー メッセージが表示されます。*
@@ -85,7 +85,7 @@ Application Insights をインストールしているとき、またはログ �
 * **[ツール]**、**[拡張機能と更新プログラム]** の順に選択し、**Developer Analytics Tools** がインストールされ、有効になっていることを確認します。 有効な場合は、 **[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * ソリューション エクスプローラーでプロジェクトを右クリックします。 **[Application Insights] > [Application Insights の構成]** コマンドが表示される場合は、そのコマンドを使用して Application Insights サービスのリソースにプロジェクトを接続します。
 
-それ以外の場合、ご使用のプロジェクトは Application Insights Tools で直接サポートされたプロジェクト タイプではありません。 テレメトリを表示するには、 [Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで [Application Insights] を選択して目的のアプリケーションを選択してください。
+それ以外の場合、ご使用のプロジェクトは Developer Analytics Tools で直接サポートされているプロジェクト タイプではありません。 テレメトリを表示するには、 [Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで [Application Insights] を選択して目的のアプリケーションを選択してください。
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>Visual Studio から Application Insights を開くとアクセスが拒否される
 *[Application Insights を開く] メニュー コマンドで Azure ポータルに誘導されるものの、アクセスが拒否されたことを示すエラーが表示されます。*

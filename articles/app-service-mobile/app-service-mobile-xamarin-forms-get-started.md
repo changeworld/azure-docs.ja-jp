@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b99513cad34bba1b050a24795ecb21d0357d19c1
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761397"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416091"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 
@@ -34,9 +34,9 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* Visual Studio 2017 または Visual Studio for Mac に含まれる Visual Studio Tools for Xamarin。 手順については、[Xamarin のインストール ページ][Install Xamarin]をご覧ください。
+* Visual Studio 2017 以降または Visual Studio for Mac に含まれる Visual Studio Tools for Xamarin。 手順については、[Xamarin のインストール ページ][Install Xamarin]をご覧ください。
 
-* (省略可能) iOS アプリをビルドするには、Xcode 9.0 以降がインストールされた Mac が必要です。 Visual Studio for Mac を使用して iOS アプリを開発するか、Visual Studio 2017 を使用することができます (Mac がネットワーク上で使用可能な場合)。
+* (省略可能) iOS アプリをビルドするには、Xcode 9.0 以降がインストールされた Mac が必要です。 Visual Studio for Mac を使用して iOS アプリを開発するか、Visual Studio 2017 以降を使用することができます (Mac がネットワーク上で使用可能な場合)。
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>新しい Mobile Apps バックエンドの作成
 
@@ -64,7 +64,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
    この操作により、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-3. ダウンロードしたプロジェクトを抽出し、Visual Studio 2017 で開きます。
+3. ダウンロードしたプロジェクトを抽出し、Visual Studio で開きます。
 
    ![Visual Studio で抽出されたプロジェクト][8]
 

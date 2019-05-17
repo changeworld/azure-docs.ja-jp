@@ -70,13 +70,13 @@ sections:
         style: unordered
         items:
           - html: '(プレビュー) インスタンスの作成時に<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">タイム ゾーンを構成します</a>。'
+          - html: '<a href="https://aka.ms/managed-instance-collation">任意のサーバーレベルの照合順序</a>を使用してインスタンスを作成します。'
           - html: 'Geo リストア機能を使用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用して、ご自身のデータベースを別のデータ センターに復元</a>できます。'
           - html: '(プレビュー) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">PowerShell を使用して、削除されたデータベースを再作成します</a>'
           - html: マネージド インスタンスが<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">組み込みのファイアウォール</a>で保護されます。
           - html: '(プレビュー) <a href="https://aka.ms/managed-instance-tde-byok">暗号化キーの持ち込み</a>を行いながら、Transparent Data Encryption (TDE) が既に有効になっているオンプレミス データベースを移行します。'
           - html: '(プレビュー) <a href="https://aka.ms/managed-instance-failover-groups">地理的に分散されたフェールオーバー グループ</a>を使用して別のリージョン内のインスタンスのコピーを保持し、地域災害が発生した場合でも確実にデータが使用可能になるようにします。'
           - html: 'ポイントインタイム リストアのために<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日のバックアップ保有期間を構成します</a>。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないため、代わりに<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できることに注意してください。'
-          - html: '(プレビュー) <a href="https://aka.ms/managed-instance-collation">任意のサーバー レベルの照合順序</a>を使用してインスタンスを作成します。'
           - html: '(プレビュー) <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> を使用して、<a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> を作成します。'
   - title: 5 分間のクイック スタート
     items:
@@ -122,11 +122,29 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/restore-azsqlinstancedatabase#examples'
               - href: null
+          - title: 別のインスタンスへのデータベースの復元
+            values:
+              - href: null
+              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/'
+              - href: 'https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?view=azps-2.0.0#examples'
+              - href: null
           - title: 削除されたデータベースの復元
             values:
               - href: null
               - href: null
               - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
+              - href: null
+          - title: データベースの geo リストア
+            values:
+              - href: null
+              - href: null
+              - href: 'https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa'
+              - href: null
+          - title: パブリック IP エンドポイントの設定
+            values:
+              - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal'
+              - href: null
+              - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell'
               - href: null
   - title: ステップバイステップのチュートリアルと学習教材
     items:
@@ -139,7 +157,7 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">ハードウェアの特性と制限事項</a>、<a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 言語の違い</a>、および<a href="/azure/sql-database/sql-database-managed-instance-create-manage">マネージド インスタンスを構成するための Transact-SQL、PowerShell、Azure CLI の API<a/> を学習します。
           - html: 'マネージド インスタンスがデプロイされる Azure VNet を<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">構成</a>します。'
           - html: 'マネージド インスタンスをデプロイするために既存の Azure VNet を使用できるかどうかを<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">検証</a>します。'
-          - html: '<a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure 仮想マシン</a><a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。'
+          - html: '<a href="sql-database-managed-instance-public-endpoint-securely">パブリック IP エンドポイント</a>、<a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure 仮想マシン</a>、<a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">ポイント対サイト接続</a>、または<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">アプリケーション</a>を使用して、インスタンスに接続します。'
           - html: '<a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Asisstant</a> または <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Database Experimentation Assistant</a> を使用してご使用のデータベースを移行できることを確認します。'
           - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブ復元</a>または<a href="/azure/dms/tutorial-sql-server-managed-instance-online">データ移行サービス</a>を使用して、データベースをマネージド インスタンスに移行します。
           - html: 'お使いの SSIS パッケージを <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a> に、SSAS 表形式モデルを <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a> に、SSRS レポートを <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">PowerBI Premium</a> に移動します。'

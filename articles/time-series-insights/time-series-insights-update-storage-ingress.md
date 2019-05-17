@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe6848caad7cdac98d6717b7cea4860e7ce2db8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725725"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405712"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -51,7 +51,7 @@ Time Series Insights では、複雑なデータを一括処理できる拡張�
 
 Parquet ファイル形式の理解を深めるには、[Parquet のドキュメント](https://parquet.apache.org/documentation/latest/)を参照してください。
 
-## <a name="event-structure-in-parquet"></a>Parquet のイベント構造
+### <a name="event-structure-in-parquet"></a>Parquet のイベント構造
 
 Time Series Insights では、次の 2 つの形式で BLOB のコピーが作成され、格納されます。
 
@@ -79,18 +79,18 @@ Time Series Insights イベントは、次のように、Parquet ファイル �
 
 ## <a name="partitions"></a>パーティション
 
-各 Time Series Insights プレビュー環境には、それを一意に識別する Time Series ID プロパティと Timestamp プロパティが必要です。 タイム シリーズ ID は、データの論理パーティションとして機能し、Time Series Insights プレビュー環境に、物理パーティション間でデータを分散するための自然な境界を提供します。 物理パーティション管理は、Azure Storage アカウントで Time Series Insights プレビューによって管理されます。
+各 Time Series Insights プレビュー環境には、それを一意に識別する **Time Series ID** プロパティと **Timestamp** プロパティが必要です。 タイム シリーズ ID は、データの論理パーティションとして機能し、Time Series Insights プレビュー環境に、物理パーティション間でデータを分散するための自然な境界を提供します。 物理パーティション管理は、Azure Storage アカウントで Time Series Insights プレビューによって管理されます。
 
 Time Series Insights は、動的なパーティション分割を使用して、パーティションの削除や再作成によって、ストレージとクエリのパフォーマンスを最適化します。 Time Series Insights プレビューの動的パーティション分割アルゴリズムでは、1 つの物理パーティションが、複数の個別の論理パーティションのデータを保持することがないようにします。 つまり、パーティション分割アルゴリズムでは、他のタイム シリーズ ID とインターリーブされることなく、すべてのデータが、Parquet ファイルに排他的に存在する 1 つのタイム シリーズ ID に固有のものとされます。 さらに、動的パーティション分割アルゴリズムでは、1 つのタイム シリーズ ID 内のイベントの元の順序を維持しようとします。
 
 最初の受信時に、特定の時間範囲内の 1 つの論理パーティションを複数の物理パーティションに分散できるように、データがタイムスタンプによってパーティション分割されます。 1 つの物理パーティションに、多くのまたはすべての論理パーティションが含まれることもあります。 BLOB のサイズ制限のため、最適なパーティション分割でも、1 つの論理パーティションで、複数の物理パーティションを占有することがあります。
 
 > [!NOTE]
-> 既定で、タイムスタンプ値は、構成されているイベント ソースのメッセージ、*エンキューされた時刻*です。 
+> 既定で、タイムスタンプ値は、構成されているイベント ソースのメッセージ、*エンキューされた時刻*です。
 
 履歴データまたはバッチ メッセージをアップロードしている場合は、データと共に格納する値を、適切なタイムスタンプにマップされる Timestamp プロパティに割り当てます。 Timestamp プロパティ名は大文字と小文字が区別されます。 詳細については、「[Time Series Model](./time-series-insights-update-tsm.md)」(Time Series モデル) を参照してください。
 
-## <a name="physical-partitions"></a>物理パーティション
+### <a name="physical-partitions"></a>物理パーティション
 
 物理パーティションは、ストレージ アカウントに格納されているブロック BLOB です。 BLOB の実際のサイズはプッシュ率に依存するため、さまざまに異なることがあります。 ただし、BLOB のサイズは約 20 MB から 50 MB になるものと予想されます。 この予想により、Time Series Insights チームでは、クエリ パフォーマンスを最適化するサイズとして 20 MB を選択しました。 このサイズは、ファイル サイズとデータ イングレスの速度に応じて、時間の経過と共に変わる可能性があります。
 
@@ -99,7 +99,7 @@ Time Series Insights は、動的なパーティション分割を使用して�
 > * Azure BLOB は時々、パフォーマンス向上のために、削除および再作成によって、パーティションが再分割されます。
 > * さらに、同じ Time Series Insights データが複数の BLOB に存在する可能性があります。
 
-## <a name="logical-partitions"></a>論理パーティション
+### <a name="logical-partitions"></a>論理パーティション
 
 論理パーティションは、1 つのパーティション キー値に関連付けられているすべてのデータを格納する物理パーティション内のパーティションです。 Time Series Insights プレビューは、次の 2 つのプロパティに基づいて各 BLOB を論理的にパーティション分割します。
 
@@ -110,9 +110,9 @@ Time Series Insights プレビューは、これら 2 つのプロパティに�
 
 Time Series ID は不変のプロパティであるため、適切なタイム シリーズ ID を選択することが重要です。 詳細については、[タイム シリーズ ID の選択](./time-series-insights-update-how-to-id.md)に関するページを参照してください。
 
-## <a name="your-azure-storage-account"></a>お使いの Azure ストレージ アカウント
+## <a name="azure-storage"></a>Azure Storage
 
-### <a name="storage"></a>Storage
+### <a name="your-storage-account"></a>ストレージ アカウント
 
 Time Series Insights の従量課金制環境を作成する際に、Time Series Insights 環境と、データが格納される Azure Storage 汎用 V1 アカウントの 2 つのリソースを作成します。 相互運用性、価格、およびパフォーマンスのため、Azure Storage 汎用 V1 を既定のリソースとして選択しました。 
 
@@ -132,37 +132,25 @@ Time Series Insights は、Azure Storage アカウントで、各イベントの
 
 次の 3 つの一般的な方法でデータにアクセスできます。
 
-* Time Series Insights プレビュー エクスプローラーから。
-* Time Series Insights プレビュー API から。
-* Azure Storage アカウントから直接。
-
-#### <a name="from-the-time-series-insights-preview-explorer"></a>Time Series Insights プレビュー エクスプローラーから
-
-Time Series Insights プレビュー エクスプローラーから CSV ファイルとして、データをエクスポートできます。 詳細については、[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)に関するページを参照してください。
-
-#### <a name="from-the-time-series-insights-preview-apis"></a>Time Series Insights プレビュー API から
-
-API エンドポイントには、`/getRecorded` で到達できます。 この API の詳細については、[Time Series クエリ](./time-series-insights-update-tsq.md)に関するページを参照してください。
+* Time Series Insights プレビュー エクスプローラーから: Time Series Insights プレビュー エクスプローラーから CSV ファイルとして、データをエクスポートできます。 詳細については、[Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)に関するページを参照してください。
+* Time Series Insights プレビュー API から: API エンドポイントには、`/getRecorded` で到達できます。 この API の詳細については、[Time Series クエリ](./time-series-insights-update-tsq.md)に関するページを参照してください。
+* Azure Storage アカウントから直接 (下記参照)。
 
 #### <a name="from-an-azure-storage-account"></a>Azure Storage アカウントから
 
 * Time Series Insights データへのアクセスに使用するどのアカウントにも読み取りアクセスが必要です。 詳細については、[ストレージ アカウント リソースへのアクセスの管理](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources)に関するページを参照してください。
-
 * Azure Blob Storage からデータを読み取る直接の方法の詳細については、[ストレージ アカウントとの間でのデータの移動](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
-
 * Azure ストレージ アカウントからデータをエクスポートするには:
-
     * まず、アカウントがデータをエクスポートするための要件を満たしていることを確認します。 詳細については、[ストレージのインポートとエクスポートの要件](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)に関するページを参照してください。
-
     * Azure ストレージ アカウントからデータをエクスポートするその他の方法については、[BLOB からのデータのインポートおよびエクスポート](https://docs.microsoft.com/azure/storage/common/storage-import-export-data-from-blobs)に関するページを参照してください。
 
 ### <a name="data-deletion"></a>データの削除
 
 Time Series Insights プレビューでは、BLOB 内に、BLOB に関するメタデータを保持しているため、BLOB を削除しないでください。
 
-## <a name="ingress"></a>イングレス
+## <a name="time-series-insights-data-ingress"></a>Time Series Insights データ イングレス
 
-### <a name="time-series-insights-ingress-policies"></a>Time Series Insights イングレス ポリシー
+### <a name="ingress-policies"></a>イングレス ポリシー
 
 Time Series Insights プレビューは、Time Series Insights が現在サポートしている同じイベント ソースとファイルの種類をサポートします。
 
@@ -184,7 +172,7 @@ Time Series Insights プレビューは、BLOB サイズの最適化戦略を使
 
 > [!IMPORTANT]
 > * Time Series Insights の一般提供 (GA) リリースでは、イベント ソースのヒットから 60 秒以内でデータを利用できるようになります。 
-> * プレビュー中は、データを利用できるようになるまでにかかる時間が長くなると予想されます。 
+> * プレビュー中は、データを利用できるようになるまでにかかる時間が長くなると予想されます。
 > * 大幅な待機時間が発生した場合は、お問い合わせください。
 
 ### <a name="scale"></a>スケール

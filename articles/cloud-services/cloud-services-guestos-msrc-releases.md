@@ -11,17 +11,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: f63b707f72b6966615d09ef0b86ce3d056a39249
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500612"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465549"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="april-2019-guest-os"></a>2019 年 4 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 19-04 | [4493509] | Windows 10 セキュリティ | 6.6 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493470] | Windows 10 セキュリティ | 5.30 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493467] | Windows セキュリティ | 4.65 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493450] | Windows セキュリティ | 3.72 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493448] | Windows セキュリティ | 2.85 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493478] | 点滅 | 3.72、4.65、5.30、6.6 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493435] | Internet Explorer | 2.85、3.72、4.65 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [KB4490628] | サービス スタック更新プログラム | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [KB4474419] | SHA2 のサポート | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [KB4489878] | 3 月のセキュリティ以外のロールアップ | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [KB4489891] | 3 月のセキュリティ以外のロールアップ | 3.72 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [KB4489881] | 3 月のセキュリティ以外のロールアップ | 4.65 | 2019 年 3 月 12 日 |
+
+[4493509]: https://support.microsoft.com/kb/4493509
+[4493470]: https://support.microsoft.com/kb/4493470
+[4493467]: https://support.microsoft.com/kb/4493467
+[4493450]: https://support.microsoft.com/kb/4493450
+[4493448]: https://support.microsoft.com/kb/4493448
+[4493478]: https://support.microsoft.com/kb/4493478
+[4493435]: https://support.microsoft.com/kb/4493435
+[KB4490628]: https://support.microsoft.com/kb/KB4490628
+[KB4474419]: https://support.microsoft.com/kb/KB4474419
+[KB4489878]: https://support.microsoft.com/kb/KB4489878
+[KB4489891]: https://support.microsoft.com/kb/KB4489891
+[KB4489881]: https://support.microsoft.com/kb/KB4489881
 
 ## <a name="march-2019-guest-os"></a>2019 年 3 月のゲスト OS
 

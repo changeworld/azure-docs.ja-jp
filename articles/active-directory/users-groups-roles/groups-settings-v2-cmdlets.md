@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082621"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407861"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -233,13 +233,13 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
--ObjectId パラメーターは所有者を追加するグループの ObjectID であり、-RefObjectId はグループに所有者として追加するユーザーの ObjectID です。
+-ObjectId パラメーターは所有者を追加するグループの ObjectID であり、-RefObjectId はグループに所有者として追加するユーザーまたはサービス プリンシパルの ObjectID です。
 
 グループの所有者を取得するには、Get-AzureADGroupOwner コマンドレットを使用します。
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
-コマンドレットは、指定したグループの所有者の一覧を返します。
+コマンドレットは、指定したグループの所有者 (ユーザーおよびサービス プリンシパル) の一覧を返します。
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------

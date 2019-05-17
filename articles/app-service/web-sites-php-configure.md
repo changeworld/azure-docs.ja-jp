@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ad5a4981869f992ab6823a13afc2cad0e5252d08
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38e0983830c540082a915332aa4158d2af84567b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105435"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408915"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Azure App Service での PHP の構成方法
 
@@ -35,15 +35,11 @@ PHP 7.0 および PHP 7.2 バージョンも使用できますが、既定では
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-1. [Microsoft Azure portal](https://portal.azure.com) でアプリに移動し、**[設定]** ボタンをクリックします。
+1. [Azure portal](https://portal.azure.com) で目的のアプリに移動し、**[構成]** ページにスクロールします。
 
-    ![[アプリ設定]][settings-button]
-2. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、新しい PHP バージョンを選択します。
+2. **[構成]** から **[全般設定]** を選択し、新しい PHP バージョンを選択します。
 
-    ![アプリケーションの設定][application-settings]
-3. **[アプリケーションの設定]** ブレードの上部にある **[保存]** ボタンをクリックします。
-
-    ![構成設定を保存する][save-button]
+3. **[全般設定]** ブレードの上部にある **[保存]** ボタンをクリックします。
 
 ### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)。
 
@@ -130,18 +126,12 @@ Azure コマンド ライン インターフェイスを使用するには、コ
 ### <a name="configure-via-app-setting"></a>アプリ設定の構成
 
 1. ディレクトリを `bin` ディレクトリに追加します。
-1. `bin` ディレクトリに、`.dll` 拡張ファイル (`php_xdebug.dll` など) を配置します。 拡張機能は、PHP の既定バージョンとの互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
-2. アプリをデプロイします。
-3. Microsoft Azure portal でアプリに移動し、**[設定]** ボタンをクリックします。
-
-    ![[アプリ設定]][settings-button]
-4. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[アプリの設定]** セクションまでスクロールします。
-5. **[アプリの設定]** セクションで、**PHP_EXTENSIONS** キーを作成します。 このキーの値は、Web サイト ルート (**bin\your-ext-file**) への相対パスになります。
-
-    ![[アプリケーション設定] で拡張機能を有効にする][php-extensions]
-6. **[アプリケーションの設定]** ブレードの上部にある **[保存]** ボタンをクリックします。
-
-    ![構成設定を保存する][save-button]
+2. `bin` ディレクトリに、`.dll` 拡張ファイル (`php_xdebug.dll` など) を配置します。 拡張機能は、PHP の既定バージョンとの互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+3. アプリをデプロイします。
+4. Azure portal で目的のアプリに移動し、**[設定]** セクションの下にある **[構成]** をクリックします。
+5. **[構成]** ブレードから **[アプリケーション設定]** を選択します。
+6. **[アプリケーション設定]** セクションの **[+ 新しいアプリケーション設定]** をクリックし、**PHP_EXTENSIONS** キーを作成します。 このキーの値は、Web サイト ルート (**bin\your-ext-file**) への相対パスになります。
+7. 一番下にある **[更新]** ボタンをクリックし、**[アプリケーション設定]** タブの上の **[保存]** をクリックします。
 
 Zend 拡張機能も、**PHP_ZENDEXTENSIONS** キーを使用することによってサポートされます。 複数の拡張機能を有効にするには、複数の `.dll` ファイルをコンマで区切って指定します。
 
@@ -154,15 +144,11 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 3. また、PHP ランタイムに拡張機能を追加して、これらを `php.ini` ファイル内で有効にすることもできます。
 4. `bin` ディレクトリをルート ディレクトリに追加し、その中に、PHP ランタイムが含まれているディレクトリ (`bin\php` など) を配置します。
 5. アプリをデプロイします。
-6. Microsoft Azure portal でアプリに移動し、**[設定]** ボタンをクリックします。
-
-    ![[アプリ設定]][settings-button]
-7. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[ハンドラー マッピング]** セクションまでスクロールします。 [拡張] フィールドに `*.php`  を追加し、`php-cgi.exe` 実行可能ファイルのパスを追加します。 アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
-
-    ![[ハンドラー マッピング] でハンドラーを指定する][handler-mappings]
-8. **[アプリケーションの設定]** ブレードの上部にある **[保存]** ボタンをクリックします。
-
-    ![構成設定を保存する][save-button]
+6. Azure portal で目的のアプリに移動し、**[構成]** ブレードをクリックします。
+8. **[構成]** ブレードから **[Path mappings]\(パスのマッピング\)** を選択します。 
+9. **[+ New Handler]\(+ 新しいハンドラー\)** をクリックし、拡張子フィールドに `*.php` を追加し、**[スクリプト プロセッサ]** に `php-cgi.exe` 実行可能ファイルのパスを追加します。 アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
+10. 一番下の **[更新]** をクリックして、ハンドラー マッピングの追加を完了します。
+11. **[保存]** をクリックして変更を保存します。
 
 <a name="composer" />
 
@@ -195,9 +181,9 @@ App Service では、既定の PHP ランタイムを使用する代わりに、
 [無料試用版]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[php.ini ディレクティブの一覧]: http://www.php.net/manual/en/ini.list.php
-[.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
-[ini_set()]: http://www.php.net/manual/en/function.ini-set.php
+[php.ini ディレクティブの一覧]: https://www.php.net/manual/en/ini.list.php
+[.user.ini]: https://www.php.net/manual/en/configuration.file.per-user.php
+[ini_set()]: https://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png

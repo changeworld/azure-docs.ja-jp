@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 05/07/2019
 ms.author: abnarain
-ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275410"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232430"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
 
+- **Data Flow**: マネージド Azure コンピューティング環境で[データ フロー](concepts-data-flow-overview.md)を実行します。  
 - **データ移動**:パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアをまたいでデータをコピーします。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
-- **アクティビティのディスパッチ**:Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティをディスパッチして監視します。
+- **アクティビティのディスパッチ**:Azure Databricks、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティをディスパッチして監視します。
 - **SSIS パッケージの実行**:マネージド Azure コンピューティング環境で SQL Server Integration Services (SSIS) パッケージをネイティブに実行します。
 
-Data Factory で、アクティビティは、実行されるアクションを定義します。 リンクされたサービスは、ターゲットのデータ ストアやコンピューティング サービスを定義します。 統合ランタイムは、アクティビティとリンクされたサービスとを橋渡しします。  統合ランタイムは、リンクされたサービスによって参照され、アクティビティが実行されたりディスパッチされたりするコンピューティング環境を提供します。  これにより、できるだけターゲットのデータ ストアやコンピューティング サービスに近いリージョンでアクティビティを実行して効率を最大化できる一方、セキュリティとコンプライアンスの必要も満たせます。
+Data Factory で、アクティビティは、実行されるアクションを定義します。 リンクされたサービスは、ターゲットのデータ ストアやコンピューティング サービスを定義します。 統合ランタイムは、アクティビティとリンクされたサービスとを橋渡しします。  統合ランタイムは、リンクされたサービスまたはアクティビティによって参照され、アクティビティが実行されたりディスパッチされたりするコンピューティング環境を提供します。 これにより、できるだけターゲットのデータ ストアやコンピューティング サービスに近いリージョンでアクティビティを実行して効率を最大化できる一方、セキュリティとコンプライアンスの必要も満たせます。
 
 ## <a name="integration-runtime-types"></a>統合ランタイムの種類
 Data Factory には 3 種類の統合ランタイムが用意されているので、ご希望のデータ統合機能やネットワーク環境のニーズに最もかなっている種類を選択する必要があります。  次の 3 種類があります。
@@ -39,7 +40,7 @@ Data Factory には 3 種類の統合ランタイムが用意されているの�
 
 IR の種類 | パブリック ネットワーク | プライベート ネットワーク
 ------- | -------------- | ---------------
-Azure | データの移動<br/>アクティビティのディスパッチ | &nbsp;
+Azure | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ | &nbsp;
 セルフホステッド | データの移動<br/>アクティビティのディスパッチ | データの移動<br/>アクティビティのディスパッチ
 Azure-SSIS | SSIS パッケージの実行 | SSIS パッケージの実行
 
@@ -50,20 +51,24 @@ Azure-SSIS | SSIS パッケージの実行 | SSIS パッケージの実行
 ## <a name="azure-integration-runtime"></a>Azure 統合ランタイム
 Azure 統合ランタイムにより、次のことが可能になります。
 
+- Azure でデータ フローを実行する 
 - クラウドのデータ ストア間でコピー アクティビティを実行する
-- パブリック ネットワーク内で次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ、HDInsight Pig アクティビティ、HDInsight MapReduce アクティビティ、HDInsight Spark アクティビティ、HDInsight Streaming アクティビティ、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、Web アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
+- パブリック ネットワーク内で次の変換アクティビティをディスパッチする:Databricks Notebook/Jar/Python アクティビティ、HDInsight Hive アクティビティ、HDInsight Pig アクティビティ、HDInsight MapReduce アクティビティ、HDInsight Spark アクティビティ、HDInsight Streaming アクティビティ、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、Web アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR のネットワーク環境
-Azure 統合ランタイムは、誰でもアクセス可能なエンドポイントを使用して、パブリック ネットワーク内のデータ ストアやコンピューティング サービスへの接続をサポートします。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
+Azure Integration Runtime は、だれでもアクセス可能なエンドポイントを使用して、データ ストアやコンピューティング サービスへの接続をサポートします。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR のコンピューティング リソースとスケーリング
 Azure 統合ランタイムは、Azure 内のフル マネージドのサーバーレス コンピューティングを提供します。  インフラストラクチャのプロビジョニング、ソフトウェアのインストール、修正プログラムの適用、容量のスケーリングについて心配する必要はありません。  さらに、実際の使用時間分だけのお支払いになります。
 
-Azure 統合ランタイムは、ネイティブのコンピューティングを備えており、セキュリティで保護された、信頼性とパフォーマンスの高い方法で、クラウドのデータ ストア間でデータを移動します。  コピー アクティビティで使用するデータの統合単位の数を設定できます。Azure IR のコンピューティング サイズはそれに応じて柔軟にスケール アップし、Azure 統合ランタイムのサイズを明示的に調整する必要はありません。
+Azure 統合ランタイムは、ネイティブのコンピューティングを備えており、セキュリティで保護された、信頼性とパフォーマンスの高い方法で、クラウドのデータ ストア間でデータを移動します。  コピー アクティビティで使用するデータの統合単位の数を設定できます。Azure IR のコンピューティング サイズはそれに応じて柔軟にスケール アップし、Azure 統合ランタイムのサイズを明示的に調整する必要はありません。 
 
 アクティビティのディスパッチは、アクティビティをターゲット コンピューティング サービスにルーティングする簡易な操作です。したがって、このシナリオでコンピューティング サイズをスケール アップする必要はありません。
 
 Azure IR の作成と構成については、ハウツー ガイドで Azure IR の作成と構成の方法の説明をご覧ください。 
+
+> [!NOTE] 
+> Azure Integration Runtime には、データ フローを実行するための基盤となるコンピューティング インフラストラクチャを定義する、Data Flow ランタイムに関連するプロパティがあります。 
 
 ## <a name="self-hosted-integration-runtime"></a>セルフホステッド統合ランタイム
 セルフホステッド IR により、次のことが可能になります。
@@ -112,7 +117,13 @@ Azure IR の特定の場所を設定することができます。その場合�
 既定のとおり、自動解決の Azure IR を使用することにした場合、次のように処理されます。 
 
 - コピー アクティビティでは、ADF は、シンクとソースのデータ ストアをベスト エフォートで自動的に検出して、同じリージョン内 (使用可能な場合) または同じ地理的な場所内の最も近いリージョン内で、最適な場所を選択します。検出できなかった場合は、代わりにデータ ファクトリのリージョンを使用します。
+
 - Lookup または GetMetadata アクティビティの実行と、変換アクティビティのディスパッチでは、ADF はデータ ファクトリのリージョンで IR を使用します。
+
+- Data Flow の場合、ADF はデータ ファクトリのリージョンの IR を使用します。 
+
+  > [!TIP] 
+  > 可能な場合は、Data Flow を対応するデータ ストアと同じリージョンで実行することをお勧めします。 これを実現するには、Azure IR を自動解決するか (データ ストアの場所が Data Factory の場所と同じ場合)、データ ストアと同じリージョンに新しい Azure IR インスタンスを作成し、そこでデータ フローを実行します。 
 
 アクティビティの実行時に有効になっている IR の場所は、UI 上のパイプラインのアクティビティの監視ビューまたはアクティビティの監視のペイロードで監視できます。
 
@@ -153,8 +164,13 @@ Lookup および GetMetadata アクティビティは、データ ストアの�
 
 各変換アクティビティには、ターゲット コンピューティングのリンクされたサービスがあり、これは統合ランタイムに向けられています。 この統合ランタイム インスタンスから、変換アクティビティがディスパッチされます。
 
+### <a name="data-flow-activity"></a>Data Flow アクティビティ
+
+Data Flow アクティビティは、それに関連付けられている統合ランタイムで実行されます。 
+
 ## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
+- [Azure Integration Runtime の作成](create-azure-integration-runtime.md)
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
 - [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL Database Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
