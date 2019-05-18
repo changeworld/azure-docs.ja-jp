@@ -29,7 +29,7 @@ ms.locfileid: "65020773"
 
     ![[新しいプロジェクト] ダイアログ ボックスのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. all64 ビットの Windows を実行している場合は、Visual Studio ツールバーのドロップダウン メニューを使用して、ビルド プラットフォームを `x64` に切り替えてもかまいません (64 ビット バージョンの Windows では 32 ビット アプリケーションを実行できるため、これは要件ではありません)。
+1. 64 ビットの Windows を実行している場合は、Visual Studio ツールバーのドロップダウン メニューを使用して、ビルド プラットフォームを `x64` に切り替えてもかまいません (64 ビット バージョンの Windows では 32 ビット アプリケーションを実行できるため、これは要件ではありません)。
 
     ![x64 オプションが強調表示されている Visual Studio ツールバーのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-02-switch-to-x64.png)
 
