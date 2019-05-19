@@ -704,8 +704,7 @@ VM に関するセキュリティの実務の[詳細については、こちら]
 ## <a name="bcdr"></a>BCDR
 
  事業継続とディザスター リカバリー (BCDR) のために、Contoso は次のアクションを実施します。
-- データの保護: Contoso は、Azure Backup サービスを使用して、WEBVM、SQLAOG1、SQLAOG2 の各 VM 上のデータをバックアップします。 [詳細情報]
-  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+- データの保護: Contoso は、Azure Backup サービスを使用して、WEBVM、SQLAOG1、SQLAOG2 の各 VM 上のデータをバックアップします。 [詳細情報](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
   - また、Contoso は、Azure Storage を使用して SQL Server を直接 Blob Storage にバックアップする方法を把握する必要があります。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore)。
   - アプリの稼働状態を維持する: Contoso は、Site Recovery を使用して、Azure 内のアプリの VM をセカンダリ リージョンにレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)。
 
