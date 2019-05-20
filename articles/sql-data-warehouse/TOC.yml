@@ -253,7 +253,7 @@
           href: sql-data-warehouse-query-visual-studio.md
         - name: Visual Studio のインストール
           href: sql-data-warehouse-install-visual-studio.md
-    - name: ワークロードの管理
+    - name: ワークロード管理
       items:
         - name: ワークロードの分析
           href: analyze-your-workload.md

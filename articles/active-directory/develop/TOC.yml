@@ -239,20 +239,30 @@
               href: msal-net-provide-httpclient.md
             - name: Azure AD B2C との統合
               href: msal-b2c-overview.md
-            - name: プラットフォーム固有の考慮事項 (.NET)
+            - name: 考慮事項と既知の問題
               items:
-                - name: Web ブラウザー
-                  href: msal-net-web-browsers.md
-                - name: Xamarin Android
-                  href: msal-net-xamarin-android-considerations.md
-                - name: Android のシステム ブラウザー
-                  href: msal-net-system-browser-android-considerations.md
-                - name: Xamarin iOS
-                  href: msal-net-xamarin-ios-considerations.md
-                - name: ユニバーサル Windows プラットフォーム
-                  href: msal-net-uwp-considerations.md
-                - name: AAD B2C ポリシーの適用
-                  href: msal-net-aad-b2c-considerations.md
+                - name: MSAL.NET
+                  items:
+                    - name: Web ブラウザー
+                      href: msal-net-web-browsers.md
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Android のシステム ブラウザー
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: ユニバーサル Windows プラットフォーム
+                      href: msal-net-uwp-considerations.md
+                    - name: AAD B2C ポリシーの適用
+                      href: msal-net-aad-b2c-considerations.md
+                - name: MSAL.js
+                  items:
+                    - name: IE の使用に関する考慮事項
+                      href: msal-js-use-ie-browser.md
+                    - name: 既知の問題 - IE と Microsoft Edge
+                      href: msal-js-known-issues-ie-edge-browsers.md
+                    - name: 既知の問題 - Safari
+                      href: msal-js-known-issues-safari-browser.md
         - name: Authentication
           items:
             - name: 認証の基本

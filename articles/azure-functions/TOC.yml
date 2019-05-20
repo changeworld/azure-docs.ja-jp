@@ -53,6 +53,8 @@
       href: functions-create-serverless-api.md
     - name: OpenAPI 定義の作成
       href: functions-openapi-definition.md
+    - name: 仮想ネットワークへの接続
+      href: functions-create-vnet.md
     - name: Event Grid でのイメージのサイズ変更
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: サーバーレス Web アプリの作成
@@ -213,7 +215,7 @@
         - name: SQL Database への接続
           href: functions-scenario-database-table-cleanup.md
         - name: 仮想ネットワークへの接続
-          href: functions-create-vnet.md
+          href: functions-create-vnet-old.md
         - name: Open API 2.0 定義の作成
           href: functions-api-definition-getting-started.md
         - name: PowerApps および Microsoft Flow にエクスポートする
@@ -297,6 +299,8 @@
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: クォータの情報
+      href: 'functions-scale.md#service-limits'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ビデオ

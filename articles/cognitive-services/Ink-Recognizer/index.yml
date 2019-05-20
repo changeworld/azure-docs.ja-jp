@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 以下のサンプル プログラムを使用すると、Ink Recognizer API をご自分のアプリケーションに統合する方法がわかります。
       - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089503">C# およびユニバーサル Windows プラットフォーム (UWP)</a>'
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089803">C# およびユニバーサル Windows プラットフォーム (UWP)</a>'
       - type: paragraph
         text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# および Windows Presentation Foundation (WPF)</a>'
       - type: paragraph
