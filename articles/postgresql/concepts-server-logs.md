@@ -52,7 +52,7 @@ Azure Database for PostgreSQL は、Azure Monitor の診断ログと統合され
 | errorLevel | ログ レベル、例:LOG、ERROR、NOTICE |
 | Message | プライマリ ログ メッセージ | 
 | Domain | サーバーのバージョン (postgres 10 など) |
-| 詳細 | セカンダリ ログ メッセージ (該当する場合) |
+| Detail | セカンダリ ログ メッセージ (該当する場合) |
 | ColumnName | 列の名前 (該当する場合) |
 | SchemaName | スキーマの名前 (該当する場合) |
 | DatatypeName | データ型の名前 (該当する場合) |
