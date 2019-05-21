@@ -89,6 +89,8 @@
           items:
             - name: Edge コンピューティング
               href: data-box-edge-manage-compute.md
+            - name: Edge コンピューティングのネットワーク
+              href: data-box-edge-extend-compute-access-modules.md
             - name: 共有
               href: data-box-edge-manage-shares.md
             - name: ユーザー

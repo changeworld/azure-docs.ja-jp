@@ -174,7 +174,7 @@
       items:
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
           href: service-bus-manage-with-ps.md
-        - name: Azure 監視による Service Bus の監視
+        - name: Azure Monitor による Service Bus の監視
           href: service-bus-metrics-azure-monitor.md
         - name: Service Bus 管理ライブラリ
           href: service-bus-management-libraries.md

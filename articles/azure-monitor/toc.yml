@@ -819,53 +819,47 @@
       items:
         - name: アラート
           items:
-            - name: メトリック アラートの使用
-              items:
-                - name: Azure Monitor でメトリック アラートを作成、表示、管理する
-                  href: platform/alerts-metric.md
-                - name: Azure Monitor でクラシック メトリック アラートを作成、表示、管理する
-                  href: platform/alerts-classic-portal.md
-                - name: 動的しきい値によるメトリック アラート
-                  href: platform/alerts-dynamic-thresholds.md
-                - name: ログのメトリック アラートを構成する
-                  href: platform/alerts-metric-logs.md
-                - name: Resource Manager テンプレートを使用して新しいメトリック アラートを作成する
-                  href: platform/alerts-metric-create-templates.md
-                - name: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
-                  href: platform/alerts-enable-template.md
-                - name: クラシック メトリック アラートで webhook を呼び出す
-                  href: platform/alerts-webhooks.md
-            - name: ログ アラートの使用
-              items:
-                - name: 分析クエリのアラートを構成する
-                  href: platform/alerts-log.md
-                - name: ログ アラートのクエリ
-                  href: platform/alerts-log-query.md
-                - name: ログ アラートの webhook アクション
-                  href: platform/alerts-log-webhook.md
-                - name: ログ アラートのトラブルシューティング
-                  href: platform/alert-log-troubleshoot.md
-            - name: アクティビティ ログ アラートの使用
-              items:
-                - name: アクティビティ ログ イベントでアラートを構成する
-                  href: platform/alerts-activity-log.md
-                - name: アクティビティ ログ アラートに移行する
-                  href: platform/migrate-management-alerts.md
-                - name: サービスの通知でアラートを構成する
-                  href: platform/alerts-activity-log-service-notifications.md
-            - name: アプリケーション アラートの使用
+            - name: アプリケーション アラート ルール
               items:
                 - name: 可用性
                   href: app/monitor-web-app-availability.md
                 - name: メトリック アラート
                   href: app/alerts.md
-            - name: アラートでのアクション グループの使用
+            - name: プラットフォームのメトリック アラート ルール
               items:
-                - name: アクション グループを作成する
+                - name: メトリック アラートの管理
+                  href: platform/alerts-metric.md
+                - name: 動的しきい値の使用
+                  href: platform/alerts-dynamic-thresholds.md
+                - name: ログのメトリック アラート
+                  href: platform/alerts-metric-logs.md
+                - name: Resource Manager テンプレートの使用
+                  href: platform/alerts-metric-create-templates.md
+            - name: ログ アラート ルール
+              items:
+                - name: 分析クエリのアラートを構成する
+                  href: platform/alerts-log.md
+                - name: クエリ
+                  href: platform/alerts-log-query.md
+                - name: Webhook アクション
+                  href: platform/alerts-log-webhook.md
+                - name: トラブルシューティング
+                  href: platform/alert-log-troubleshoot.md
+            - name: アクティビティ ログ アラート ルール
+              items:
+                - name: アクティビティ ログ イベントのアラート
+                  href: platform/alerts-activity-log.md
+                - name: 管理イベントをアクティビティ ログ アラートに移行する
+                  href: platform/migrate-management-alerts.md
+                - name: サービス正常性通知のアラート
+                  href: platform/alerts-activity-log-service-notifications.md
+            - name: アクション グループの使用
+              items:
+                - name: アクション グループの作成
                   href: platform/action-groups.md
-                - name: webhook スキーマの詳細情報
+                - name: webhook スキーマ
                   href: platform/activity-log-alerts-webhook.md
-                - name: 一般的なアラート スキーマの定義
+                - name: 共通アラート スキーマ定義
                   href: platform/alerts-common-schema-definitions.md
                 - name: SMS アラート動作
                   href: platform/alerts-sms-behavior.md
@@ -875,9 +869,9 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: ロジック アプリの操作を実装する
                   href: platform/action-groups-logic-app.md
-            - name: Operations Manager からのアラート
+            - name: Alert Management ソリューション
               href: platform/alert-management-solution.md
-            - name: Manage alerts
+            - name: アラートのユーザー インターフェイス
               items:
                 - name: アラート インスタンスを管理する
                   href: platform/alerts-managing-alert-instances.md
@@ -887,19 +881,31 @@
                   href: platform/alerts-managing-alert-states.md
                 - name: 他の監視サービスからのアラートを管理する
                   href: platform/alerts-managing-nagios-zabbix-scom.md
-            - name: クラシック アラートの移行
+            - name: クラシック アラート ルールを移行する
               items:
-                - name: 移行ツールの使用
-                  href: platform/alerts-using-migration-tool.md
                 - name: 移行を準備する
                   href: platform/alerts-prepare-migration.md
                 - name: 移行ツールについて
                   href: platform/alerts-understand-migration.md
+                - name: 移行ツールの使用
+                  href: platform/alerts-using-migration-tool.md
+                - name: クラシック メトリック アラートの管理
+                  href: platform/alerts-classic-portal.md
+                - name: Resource Manager テンプレートを使用したクラシック メトリック アラート
+                  href: platform/alerts-enable-template.md
+                - name: Webhook を呼び出すクラシック メトリック アラート
+                  href: platform/alerts-webhooks.md
+        - name: アクティビティ ログのサービス正常性通知
+          items:
+            - name: 通知の表示
+              href: platform/service-notifications.md
+            - name: 通知イベントでのアラートの構成
+              href: platform/alerts-activity-log-service-notifications.md
         - name: 自動スケール
           items:
-            - name: 自動スケールのチュートリアル
+            - name: チュートリアル
               href: platform/autoscale-get-started.md
-            - name: 自動スケール設定について
+            - name: 設定
               href: platform/autoscale-understanding-settings.md
             - name: ベスト プラクティス
               href: platform/autoscale-best-practices.md
@@ -907,20 +913,14 @@
               href: platform/autoscale-common-metrics.md
             - name: 一般的なパターン
               href: platform/autoscale-common-scale-patterns.md
-            - name: カスタム メトリックを使用した自動スケール
+            - name: カスタム メトリックによるスケーリング
               href: platform/autoscale-custom-metric.md
-            - name: Resource Manager テンプレートを使用した仮想マシン スケール セットの自動スケーリング
-              href: platform/autoscale-virtual-machine-scale-sets.md
-            - name: 仮想マシン スケール セットでのマシンの自動スケール
+            - name: VM スケール セットのスケーリング
               href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
-            - name: 自動スケールで webhook と電子メール通知を構成する
+            - name: Resource Manager テンプレートを使用した VM スケール セットのスケーリング
+              href: platform/autoscale-virtual-machine-scale-sets.md
+            - name: Webhook と電子メール通知の使用
               href: platform/autoscale-webhook-email.md
-        - name: サービスの通知
-          items:
-            - name: サービスの通知を表示する
-              href: platform/service-notifications.md
-            - name: サービスの通知でアラートを構成する
-              href: platform/alerts-activity-log-service-notifications.md
         - name: IT Service Management
           items:
             - name: IT Service Management Connector
