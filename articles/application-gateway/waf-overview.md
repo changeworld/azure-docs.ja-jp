@@ -26,7 +26,7 @@ Application Gateway の WAF は、OWASP (Open Web Application Security Project) 
 
 ![Application Gateway の WAF の図](./media/waf-overview/WAF1.png)
 
-Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 Secure Sockets Layer (SSL) ターミネーション、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。
+Application Gateway は、アプリケーション配信コントローラー (ADC) として機能します。 これにより、Secure Sockets Layer (SSL) 終端、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能が提供されます。
 
 Application Gateway によるセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、WAF を Application Gateway に統合することによって強化されています。 この組み合わせにより、Web アプリケーションが一般的な脆弱性から保護されます。 また、管理するための構成を、1 か所で簡単に設定できます。
 
@@ -135,7 +135,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 
 ### <a name="waf-monitoring"></a>WAF の監視
 
-Application Gateway の正常性を監視することは重要です。 WAF および WAF の保護対象のアプリケーションの正常性の監視は、Azure Security Center、Azure Monitor、および Azure Monitor ログとの統合によってサポートされます。
+Application Gateway の正常性を監視することは重要です。 WAF と、それが保護するアプリケーションの正常性の監視は、Azure Security Center、Azure Monitor、および Azure Monitor ログとの統合によってサポートされます。
 
 ![Application Gateway の WAF 診断の図](./media/waf-overview/diagnostics.png)
 

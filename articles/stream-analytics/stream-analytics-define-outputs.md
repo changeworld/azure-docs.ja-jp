@@ -19,7 +19,7 @@ ms.locfileid: "65205526"
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できる出力の種類について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、お手元のデータのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。
 
-Stream Analytics のクエリを自分で作成するときは、[INTO 句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)を使用して出力の名前を参照します。 ジョブごとに 1 つの出力を使用できます。または、必要に応じて、クエリ内で複数の INTO 句を指定することによって、ストリーミング ジョブごとに複数の出力を使用できます。
+Stream Analytics のクエリを自分で作成するときは、[INTO 句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)を使用して出力の名前を指定します。 ジョブごとに 1 つの出力を使用できます。または、必要に応じて、クエリ内で複数の INTO 句を指定することによって、ストリーミング ジョブごとに複数の出力を使用できます。
 
 Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
 
@@ -339,7 +339,7 @@ Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエン
 | Azure Data Lake Store | はい | パス プレフィックス パターンに {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure SQL Database | はい | クエリの PARTITION BY 句に基づきます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 SQL Azure Database にデータを読み込むときの書き込みスループット パフォーマンスの向上の詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。 |
 | Azure BLOB ストレージ | はい | パス パターンにご自分のイベント フィールドからの {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 BLOB 出力を 1 つのカスタム イベント属性 {fieldname} または {datetime:\<specifier>} でパーティション分割できます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
-| Azure Event Hubs | はい | はい | パーティションの配置によって異なります。<br /> イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数はイベント ハブ出力のパーティションの数と同じになります。 各ライターは、[EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 <br /> イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップに合わせて配置されていない場合、ライターの数はその前のステップのパーティションの数と同じになります。 各ライターは、**EventHubClient** の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
+| Azure Event Hubs | はい | はい | パーティションの配置によって異なります。<br /> イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数はイベント ハブ出力のパーティションの数と同じになります。 各ライターは、[EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 <br /> イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと一致していない場合、ライターの数はその前のステップのパーティションの数と同じになります。 各ライターは、**EventHubClient** の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
 | Power BI | いいえ  | なし | 適用不可。 |
 | Azure Table Storage | はい | 任意の出力列。  | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure Service Bus トピック | はい | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力トピック内のパーティションの数と同じです。  |
