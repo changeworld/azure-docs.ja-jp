@@ -75,9 +75,10 @@
       items:
         - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
           href: container-registry-vnet.md
-        - name: 認証の概要
-          href: container-registry-authentication.md
+        - name: Authentication
           items:
+            - name: 認証の概要
+              href: container-registry-authentication.md
             - name: サービス プリンシパルの認証
               href: container-registry-auth-service-principal.md
             - name: マネージド ID の認証
@@ -143,3 +144,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
+    - name: FAQ
+      href: container-registry-faq.md

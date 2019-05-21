@@ -49,6 +49,7 @@
       items:
         - name: Storage
           href: storage-account-concept.md
+          displayName: Storage side encryption
         - name: アセット API
           href: assets-concept.md
     - name: エンコード
@@ -169,6 +170,7 @@
       items:
         - name: アカウントの作成 - CLI
           href: create-account-cli-how-to.md
+          displayName: storage
         - name: アカウント資格情報のリセット - CLI
           href: cli-reset-account-credentials.md
         - name: API へのアクセス - CLI
