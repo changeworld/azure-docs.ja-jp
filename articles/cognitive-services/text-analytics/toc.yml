@@ -29,6 +29,8 @@
           href: quickstarts/csharp.md
         - name: Python
           href: quickstarts/python-sdk.md
+        - name: Ruby
+          href: quickstarts/ruby-sdk.md
 - name: チュートリアル
   items:
     - name: Power BI を統合して顧客からのフィードバックを分析する

@@ -54,7 +54,7 @@
 - name: 概念
   items:
     - name: テンプレート ファイルの構造
-      displayName: 'parameters,variables,resources,outputs'
+      displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
     - name: テンプレートのベスト プラクティス
       href: template-best-practices.md
