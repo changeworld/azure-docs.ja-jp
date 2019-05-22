@@ -99,6 +99,16 @@
       href: sql-database-implement-geo-distributed-database.md
     - name: Azure SQL Data Sync の設定
       href: sql-database-get-started-sql-data-sync.md
+    - name: Machine Learning サービス
+      items:
+        - name: R で予測モデルを作成してデプロイする
+          items:
+            - name: 1 - データの準備
+              href: sql-database-tutorial-predictive-model-prepare-data.md
+            - name: 2 - モデルの作成
+              href: sql-database-tutorial-predictive-model-build-compare.md
+            - name: 3 - モデルのデプロイ
+              href: sql-database-tutorial-predictive-model-deploy.md
 - name: サンプル
   items:
     - name: コード サンプル

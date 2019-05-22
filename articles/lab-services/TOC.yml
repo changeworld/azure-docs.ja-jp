@@ -116,8 +116,9 @@
             - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
               href: image-factory-set-retention-policy-cleanup.md
         - name: エンタープライズ内の DevTest Labs
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: エンタープライズ規模の DevTest Labs
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: 参照アーキテクチャ
               href: devtest-lab-reference-architecture.md
             - name: DevTest Labs デプロイのスケールアップ
