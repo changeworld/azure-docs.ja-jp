@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: b62ac8229d121738c23a4520bc1c1952603e2a12
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65869287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>チュートリアル:Azure Active Directory と Powerschool Performance Matters の統合
 

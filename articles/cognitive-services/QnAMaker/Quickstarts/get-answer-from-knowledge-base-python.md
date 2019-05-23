@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: f74d43d90a288a145887878305a95e1052ab8c05
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 154b02cba41d685803d06bc3c9c24db2779434e5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880017"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792117"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Python を使用してナレッジ ベースから質問の回答を取得する
 
@@ -79,4 +79,4 @@ python get-answer-3x.py
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

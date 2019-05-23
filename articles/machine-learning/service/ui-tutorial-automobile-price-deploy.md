@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 5f29e3820416686b42167fa278c4b7d0f9a58f1f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190917"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787831"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 
@@ -158,4 +158,4 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 このチュートリアルでは、ビジュアル インターフェイスで機械学習モデルを作成、デプロイ、および使用する際の主な手順を学習しました。 ビジュアル インターフェイスを使用してその他の種類の問題を解決する方法の詳細については、実験のサンプルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [クレジット リスク分類のサンプル](ui-sample-classification-predict-credit-risk-basic.md)
+> [クレジット リスク分類のサンプル](ui-sample-classification-predict-credit-risk-cost-sensitive.md)

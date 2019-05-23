@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d50c4366128edb5b4bc76408eb1085817af1ce3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271902"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル:Azure Active Directory と New Relic の統合
 
