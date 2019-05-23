@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0f73e68fd0c01d4323e8675d3fa12f7ca1051cdb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 10966a7e658e02f04137b594fc12ec09cb676cf8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192924"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793736"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -53,7 +53,7 @@ ms.locfileid: "57192924"
     - Windows VM については、最新の Windows 更新プログラムをインストールして、すべての信頼されたルート証明書をマシンに用意します。 接続されていない環境の場合は、組織の標準の Windows Update プロセスおよび証明書更新プロセスに従ってください。
     - Linux VM の場合は、Linux ディストリビューターのガイダンスに従って、最新の信頼されたルート証明書と証明書失効リストを取得します。
 2. 移動対象の VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。
-3. 移動対象の VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、[要件](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)を確認してください。
+3. 移動対象の VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、[要件](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)を確認してください。
 4. ロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレスなど、ソース ネットワーク レイアウトと現在使用しているすべてのリソースを確認のために文書化します。
 
 ## <a name="prepare-the-target-region"></a>ターゲット リージョンを準備する
