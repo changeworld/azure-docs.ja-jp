@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46fa85581829f82da9a137315e1f890aa481408d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850787"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>チュートリアル:Azure Active Directory と etouches の統合
 
@@ -121,7 +121,7 @@ etouches で Azure AD シングル サインオンを構成するには、次の
 
     | Name | ソース属性|
     | ------------------- | -------------------- |
-    | 電子メール | User.mail | 
+    | Email | User.mail | 
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -197,7 +197,7 @@ etouches で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

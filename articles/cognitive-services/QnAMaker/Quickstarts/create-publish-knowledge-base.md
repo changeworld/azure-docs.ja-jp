@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/10/2019
 ms.author: diberry
-ms.openlocfilehash: cf6b0cd99254d5b034687598c588ce5ef13dbd53
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1411576d078115921cb04b41347264bccdc390f4
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272854"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593986"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -66,7 +66,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 1. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、発行前にナレッジ ベースへの変更をテストする際に使用します。
 
-    ![テスト パネル](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![テスト パネル](../media/qnamaker-quickstart-kb/inspect.png)
 
 1. もう一度 **[テスト]** を選択して、**[テスト]** ポップアップを閉じます。
 

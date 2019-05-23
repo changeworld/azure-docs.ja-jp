@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/06/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4f3f43ba063ed25389860183576c4dbd94e2bfcd
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466317"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790122"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>チュートリアル:Azure Deployment Manager で正常性チェックを使用する (パブリック プレビュー)
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次の 2 つのファイルは、Azure 関数をデプロイするために使用します。 チュートリアルを進めるためにこれらのファイルをダウンロードする必要はありません。
 
 * Resource Manager テンプレートは、[https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json) にあります。 Azure 関数を作成するには、このテンプレートをデプロイします。  
-* Azure 関数のソース コードの ZIP ファイルは、[https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
+* Azure 関数のソース コードの ZIP ファイルは、[http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
 
 Azure 関数をデプロイするには、**[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次のスクリプトを貼り付けます。  コードを貼り付けるには、シェル ウィンドウを右クリックして、**[貼り付け]** を選択します。 
 

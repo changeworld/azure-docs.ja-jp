@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050979"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520487"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -82,7 +82,6 @@ Azure Front Door Service で管理された証明書を使用する場合、HTTP
 
 > [!WARNING]
 > </br> - Azure Front Door Service では、現在、Front Door 構成と同じサブスクリプションの Key Vault アカウントのみがサポートされています。 Front Door とは異なるサブスクリプションの Key Vault を選択すると、エラーが発生します。
-> </br> - Azure Front Door Service では、現在、[シークレット] セクションで格納されている Key Vault 証明書のみがサポートされています。 [シークレット] セクションではなく、[証明書] セクションで証明書を格納した場合、証明書のインポートは失敗します。
 > </br> - Azure Front Door Service では、現在、パスワード**なし**の PFX でアップロードされた証明書のみがサポートされています。
 
 #### <a name="register-azure-front-door-service"></a>Azure Front Door Service を登録する

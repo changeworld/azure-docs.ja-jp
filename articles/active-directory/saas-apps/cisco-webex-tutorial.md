@@ -16,11 +16,11 @@ ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850011"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory と Cisco Webex Meetings の統合
 
@@ -212,7 +212,7 @@ Cisco Webex Meetings で Azure AD シングル サインオンを構成するに
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

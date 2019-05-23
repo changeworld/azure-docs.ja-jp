@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6e1681e4eca923e8e4ce541570b4ed4b3ba9d567
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241329"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834408"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -30,7 +30,7 @@ ms.locfileid: "50241329"
 
 以降の手順に進む前に、チュートリアル「[Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定](./tutorial-set-up-device.md)」の説明に従って、デバイスと "*ハードウェア セキュリティ モジュール*" を構成してください。
 
-* Visual Studio 2015 または Visual Studio 2017
+* Visual Studio
 
 > [!NOTE]
 > Visual Studio は必須ではありません。 [.NET](https://www.microsoft.com/net) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  

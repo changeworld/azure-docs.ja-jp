@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236927"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523311"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
@@ -38,10 +38,9 @@ ms.locfileid: "65236927"
     Install-Module AzureAD
     ```
 
-2. 次のコマンドレットを実行します。値は、実際のセッションに合わせて置き換え、引用符で囲んでください。 [Windows Virtual Desktop でテナントを作成するためのチュートリアル](./tenant-setup-azure-active-directory.md)で Windows Virtual Desktop テナントを作成した場合は、テナント グループ名として "Default Tenant Group" を使用します。
+2. 次のコマンドレットを実行します。値は、実際のセッションに合わせて置き換え、引用符で囲んでください。
 
     ```powershell
-    $myTenantGroupName = "<my-tenant-group-name>"
     $myTenantName = "<my-tenant-name>"
     ```
 
@@ -68,8 +67,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsContext -TenantGroupName $myTenantGroupName
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantGroupName $myTenantGroupName -TenantName $myTenantName
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>サービス プリンシパルでサインインする

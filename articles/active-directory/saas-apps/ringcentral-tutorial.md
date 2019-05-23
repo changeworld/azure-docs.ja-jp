@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 7cd20397c122834a23586bf51af6467f58531094
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997242"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 

@@ -16,11 +16,11 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65858749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>チュートリアル:Azure Active Directory と AuditBoard の統合
 
