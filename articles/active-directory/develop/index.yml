@@ -20,10 +20,10 @@ abstract:
     image:
       alt: null
       height: 110
-      src: ./media/index/video-featured.png
+      src: ./media/index/identity-platform-thumbnail.png
       width: 250
-    title: 認証を使用した Web アプリ ソリューションの構築 (9 分 31 秒)
-    href: 'https://www.youtube.com/watch?v=QWh5HZK9vRA'
+    title: 'Microsoft ID プラットフォームの概要 (2:20)'
+    href: 'https://youtu.be/y_fgJAatVhk'
     width: 250
 sections:
   - items:
