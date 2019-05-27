@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3f19c442d0f5806147ee05b3f0d2d32740a8ecdd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15cf3b1316cc35e22538ca353302c4a82d2d418b
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121742"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979021"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
 

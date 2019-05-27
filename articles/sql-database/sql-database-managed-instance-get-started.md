@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 09ab4cd44515d90df0e36e2775f50ac33955fe75
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: f54cea75e6f7866f1be41d3b0f82393af2235a0a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466272"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949880"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database マネージド インスタンスの作成
 
@@ -28,7 +28,9 @@ ms.locfileid: "65466272"
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com/) にサインインします。 
+Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-managed-instance"></a>マネージド インスタンスを作成する
 

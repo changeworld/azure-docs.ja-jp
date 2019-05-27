@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463521"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>チュートリアル:Azure Active Directory と BlueJeans の統合
 
@@ -108,7 +108,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     ![[BlueJeans のドメインと URL] のシングル サインオン情報](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-   - **[識別子]** テキスト ボックスに「`https://samlsp.bluejeans.com`」と入力します。
+   - **[識別子]** テキスト ボックスに「`http://samlsp.bluejeans.com`」と入力します。
     
    - **[サインオン URL]** テキスト ボックスに、BlueJeans から提供されるランディング ページ URL 「`https://<companyname>.bluejeans.com`」を入力します (この値を取得するには、[BlueJeans クライアント サポート チーム](https://support.bluejeans.com/contact)にお問い合わせください)。
     
@@ -160,9 +160,9 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     ![変更を保存](./media/bluejeans-tutorial/ic785874.png "Save Changes")
 
-    a. **[User id]\(ユーザー ID\)** ボックスに、「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    a. **[User id]\(ユーザー ID\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
-    b. **[Email]** (電子メール) ボックスに「`https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    b. **[Email]** (電子メール) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
     c. **[SAVE CHANGES]\(変更の保存\)** をクリックします。
 

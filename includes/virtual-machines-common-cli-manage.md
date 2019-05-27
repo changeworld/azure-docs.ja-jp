@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: beece95164f0d82b1aa7f22d56f4dce02f4bb38c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804469"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66117256"
 ---
 Azure CLI を使用すると、macOS、Linux、Windows 上の Azure リソースを作成および管理できます。 この記事では、仮想マシン (VM) の作成および管理に使用する最も一般的なコマンドの一部について詳しく説明します。
 
