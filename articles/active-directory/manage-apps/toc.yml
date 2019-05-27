@@ -111,8 +111,6 @@
           href: application-proxy-remove-personal-data.md
         - name: カスタム ドメインの構成
           href: application-proxy-configure-custom-domain.md
-        - name: 構成エラー
-          href: application-proxy-troubleshoot.md
         - name: 発行に関するチュートリアル
           items:
             - name: Cloud App Security との統合
@@ -129,6 +127,12 @@
               href: application-proxy-qlik.md
         - name: アプリケーション プロキシのトラブルシューティング
           items:
+            - name: コネクタのトラブルシューティングのフローチャート
+              href: application-proxy-debug-connectors.md
+            - name: アプリケーションのトラブルシューティングのフローチャート
+              href: application-proxy-debug-apps.md
+            - name: 構成エラー
+              href: application-proxy-troubleshoot.md
             - name: アプリ ページを表示できない
               href: application-proxy-page-appearance-broken-problem.md
             - name: アプリケーション読み込みに時間がかかりすぎる

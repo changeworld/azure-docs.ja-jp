@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: maheshu
 ms.openlocfilehash: 1fba8cc9ae40cf5539016bbd73de65f557a64136
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551473"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111380"
 ---
 > [!IMPORTANT]
 > **この記事のタスクを完了する前に、Azure AD Domain Services に対するパスワード ハッシュ同期を有効にしてください。**

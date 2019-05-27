@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58079607"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66115385"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 

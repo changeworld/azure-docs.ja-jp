@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームと統合する | Azure
 description: Microsoft ID プラットフォーム (v2.0) と統合する際のベスト プラクティスと一般的な見落としについて説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 1f5a6d7501fd387548b111fcb0888515c8f8db25
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0d44e5d9f0d1ed893a16c318e3cfa0ee1bfc123b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080305"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823346"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft ID プラットフォーム統合チェックリスト
 
@@ -31,13 +31,13 @@ Microsoft ID プラットフォーム統合チェックリストは、高品質�
 
 ## <a name="testing-your-integration"></a>統合のテスト
 
-次のチェックリストは、アプリケーションが [Microsoft ID プラットフォーム](https://docs.microsoft.com/legal/mdsa)と効果的に統合されていることを確認するために使用します。
+次のチェックリストは、アプリケーションが [Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)と効果的に統合されていることを確認するために使用します。
 
 ### <a name="basics"></a>基本
 
 |   |   |
 |---|---|
-| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | [Microsoft プラットフォーム ポリシー](https://docs.microsoft.com/legal/mdsa)を読んで理解します。 ユーザーとプラットフォームを保護するために設計時に要点をまとめた条項にアプリケーションが従っていることを確認します。 |
+| ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) | [Microsoft プラットフォーム ポリシー](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)を読んで理解します。 ユーザーとプラットフォームを保護するために設計時に要点をまとめた条項にアプリケーションが従っていることを確認します。 |
 
 ### <a name="ownership"></a>所有権
 
