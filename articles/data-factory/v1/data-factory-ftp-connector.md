@@ -68,7 +68,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | type |FtpServer に設定します。 |はい |&nbsp; |
 | host |FTP サーバーの名前または IP アドレスを指定します。 |はい |&nbsp; |
 | authenticationType |認証の種類を指定します。 |はい |Basic、Anonymous |
-| ユーザー名 |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
+| username |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
 | password |ユーザー (username) のパスワードを指定します。 |いいえ  |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報を指定します。 |いいえ  |&nbsp; |
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway のゲートウェイの名前を指定します。 |いいえ  |&nbsp; |
