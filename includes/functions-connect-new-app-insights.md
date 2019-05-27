@@ -9,11 +9,11 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59497354"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131423"
 ---
 Functions を使用すると、[Azure portal] から関数アプリに Application Insights 統合を簡単に追加できます。
 
@@ -25,10 +25,10 @@ Functions を使用すると、[Azure portal] から関数アプリに Applicati
 
    ![Application Insights リソースの作成](media/functions-connect-new-app-insights/ai-general.png)
 
-    | Setting      | 推奨値  | 説明                                        |
+    | Setting      | 推奨値  | Description                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | 一意のアプリ名 | 関数アプリと同じ名前を使用するのが最も簡単です。この名前は、サブスクリプション内で一意である必要があります。 | 
-    | **Location** | 西ヨーロッパ | 可能であれば、関数アプリと同じ[リージョン](https://azure.microsoft.com/regions/)、または近隣のリージョンを使用してください。 |
+    | **場所** | 西ヨーロッパ | 可能であれば、関数アプリと同じ[リージョン](https://azure.microsoft.com/regions/)、または近隣のリージョンを使用してください。 |
 
 1. **[OK]** を選択します。 Application Insights リソースは、関数アプリと同じリソース グループおよびサブスクリプションに作成されます。 作成が完了したら、Application Insights ウィンドウを閉じます。
 

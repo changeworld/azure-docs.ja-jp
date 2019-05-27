@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: 634f3948f9a5e28454e9b2b29f950c3fb00f6c19
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 53f9f67397e1484559ee8243a52ad8339df930bc
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147744"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990212"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -166,7 +166,7 @@ ms.locfileid: "65147744"
 
 | Name | 制限 |
 | ---- | ----- |
-| マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 10 |
+| マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 100 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -241,7 +241,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 [Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
 
-[Azure Government](../azure-government/documentation-government-overview.md) と [Azure China 21Vianet](/azure/china/china-welcome) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
+[Azure Government](../azure-government/documentation-government-overview.md) と [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
 
 > [!IMPORTANT]
 >

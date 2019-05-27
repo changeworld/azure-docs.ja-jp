@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: adgera
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263069"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967056"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
@@ -51,7 +51,7 @@ JSON BLOB のメタデータは、次のモデルに準拠しています。
   }
 ```
 
-| Attribute | type | 説明 |
+| Attribute | Type | 説明 |
 | --- | --- | --- |
 | **parentId** | String | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
 | **name** |String | BLOB のわかりやすい名前 |
@@ -108,7 +108,7 @@ Swagger のドキュメントでは、これらのモデル スキーマが詳�
 }
 ```
 
-| Attribute | type | 説明 |
+| Attribute | Type | 説明 |
 | --- | --- | --- |
 | **id** | String | BLOB の一意識別子 |
 | **name** |String | BLOB のわかりやすい名前 |

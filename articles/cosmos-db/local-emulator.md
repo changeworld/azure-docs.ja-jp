@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: deborahc
 ms.author: dech
-ms.date: 03/14/2019
-ms.openlocfilehash: c83cc8dce5978798d86d2fc2e314161765a2fb2d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/20/2019
+ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205780"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953963"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -25,7 +25,7 @@ Azure Cosmos Emulator には、Azure Cosmos DB サービスの高忠実度エミ
 
 Azure Cosmos DB サービスのエミュレーションは忠実ですが、エミュレーターの実装はサービスとは異なります。 たとえば、エミュレーターでは、永続化用のローカル ファイル システムや接続用の HTTPS プロトコル スタックなど、標準的な OS コンポーネントが使用されます。 グローバル レプリケーション、読み取り/書き取りの 10 ミリ秒を下回る待ち時間、調整可能な一貫性レベルなど、Azure インフラストラクチャに依存する機能は適用されません。
 
-[Azure Cosmos DB Data Migration Tool](https://github.com/azure/azure-documentdb-datamigrationtool) を使用すると、Azure Cosmos Emulator と Azure Cosmos DB サービスの間でデータを移行できます。
+[Azure Cosmos DB データ移行ツール](https://github.com/azure/azure-documentdb-datamigrationtool)を使用すると、Azure Cosmos Emulator と Azure Cosmos DB サービスの間でデータを移行できます。
 
 Azure Cosmos Emulator は Windows Docker コンテナー上で実行できます。docker pull コマンドについては [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)、エミュレーターのソース コードについては [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) を、それぞれ参照してください。
 
@@ -33,8 +33,8 @@ Azure Cosmos Emulator は Windows Docker コンテナー上で実行できます
 
 Azure Cosmos Emulator は、ローカルの開発者ワークステーションに環境をエミュレートして提供するものであるため、このエミュレーターとクラウドにある Azure Cosmos アカウントとの間には機能にいくつかの違いがあります。
 
-* エミュレーターのデータ エクスプローラーでは現在、SQL API 用のクライアントがサポートされています。 MongoDB、Table、Graph、Cassandra などの API のような、Azure Cosmos DB 用の API については、データ エクスプローラーのビューと操作が完全にはサポートされていません。
-* Azure Cosmos Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。 Azure Cosmos Emulator ではキーを再生成できませんが、コマンドライン オプションを使って既定のキーを変更することは可能です。
+* エミュレーターのデータ エクスプローラーでは現在、SQL API 用のクライアントがサポートされています。 MongoDB API、Table API、Graph API、Cassandra API など、Azure Cosmos DB 用の API については、データ エクスプローラーのビューと操作が完全にはサポートされていません。
+* Azure Cosmos Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。 Azure Cosmos Emulator ではキーを登録できませんが、コマンドライン オプションを使って既定のキーを変更することは可能です。
 * Azure Cosmos Emulator はスケーラブルなサービスではなく、大量のコンテナーはサポートされません。
 * Azure Cosmos Emulator では、異なる [Azure Cosmos DB 整合性レベル](consistency-levels.md)を利用できません。
 * Azure Cosmos Emulator では、[複数リージョンのレプリケーション](distribute-data-globally.md)を利用できません。
@@ -57,13 +57,13 @@ Azure Cosmos Emulator のハードウェア要件とソフトウェア要件は�
 [Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)から Azure Cosmos Emulator をダウンロードしてインストールできます。または、Docker for Windows でこのエミュレーターを実行できます。 Docker for Windows でエミュレーターを使用する方法については、「[Docker で実行する](#running-on-docker)」を参照してください。
 
 > [!NOTE]
-> Azure Cosmos Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。 このエミュレーターでは、サービスを実行するために証明書の作成または追加と、ファイアウォール規則の設定が行われます。このため、エミュレーターがそのような操作を実行できるようになっている必要があります。
+> Azure Cosmos Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。 エミュレーターでは、サービスを実行するために証明書の作成/追加と、ファイアウォール規則の設定が行われます。このため、エミュレーターがそのような操作を実行できるようになっている必要があります。
 
 ## <a name="running-on-windows"></a>Windows で実行する
 
 Azure Cosmos Emulator を起動するには、[スタート] ボタンをクリックするか、Windows キーを押します。 「**Azure Cosmos Emulator**」と入力して、アプリケーションの一覧からエミュレーターを選択します。
 
-![[スタート] ボタンを選択するか Windows キーを押して「**Azure Cosmos Emulator**」と入力し、アプリケーションの一覧からエミュレーターを選択する](./media/local-emulator/database-local-emulator-start.png)
+![[スタート] ボタンをクリックするか Windows キーを押して「**Azure Cosmos Emulator**」と入力し、アプリケーションの一覧からエミュレーターを選択する](./media/local-emulator/database-local-emulator-start.png)
 
 エミュレーターの実行中は、Windows タスク バーの通知領域にアイコンが表示されます。 ![Azure Cosmos DB ローカル エミュレーターのタスク バーの通知](./media/local-emulator/database-local-emulator-taskbar.png)
 
@@ -97,7 +97,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Azure Cosmos Emulator でサポートされているマスター キーは、エミュレーターで使用することのみを想定したものです。 Azure Cosmos Emulator で運用環境の Azure Cosmos DB アカウントとキーを使用することはできません。
 
 > [!NOTE]
-> /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、[コマンドライン ツールのリファレンス](#command-line-syntax)を参照してください。
+> /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、「[コマンドライン ツールのリファレンス](#command-line-syntax)」を参照してください。
 
 Azure Cosmos DB と同様に、Azure Cosmos Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
 
