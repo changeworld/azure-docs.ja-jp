@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523445"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955749"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -105,7 +105,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 ## <a name="application-secrets"></a>アプリケーション シークレット
 
-データベースの資格情報、API トークン、秘密キーなどのアプリケーション シークレット情報をコードや構成ファイルに保存しないでください。 一般に受け入れられているのは、選択した言語の標準パターンを使用して[環境変数](https://wikipedia.org/wiki/Environment_variable)としてアクセスする方法です。 App Service では、[アプリ設定](web-sites-configure.md#app-settings) (と .NET アプリケーションの場合は特別に[接続文字列](web-sites-configure.md#connection-strings)) を使用して環境変数を定義します。 アプリ設定と接続文字列は、Azure で暗号化されて保存され、アプリの起動時にアプリのプロセス メモリに挿入される前に暗号化が解除されます。 暗号化キーは定期的に回転されます。
+データベースの資格情報、API トークン、秘密キーなどのアプリケーション シークレット情報をコードや構成ファイルに保存しないでください。 一般に受け入れられているのは、選択した言語の標準パターンを使用して[環境変数](https://wikipedia.org/wiki/Environment_variable)としてアクセスする方法です。 App Service では、[アプリ設定](configure-common.md#configure-app-settings) (と .NET アプリケーションの場合は特別に[接続文字列](configure-common.md#configure-connection-strings)) を使用して環境変数を定義します。 アプリ設定と接続文字列は、Azure で暗号化されて保存され、アプリの起動時にアプリのプロセス メモリに挿入される前に暗号化が解除されます。 暗号化キーは定期的に回転されます。
 
 また、高度なシークレット管理のために、App Service アプリを [Azure Key Vault](/azure/key-vault/) と統合することもできます。 [マネージド ID を使用してキー コンテナーにアクセスする](../key-vault/tutorial-web-application-keyvault.md)ことで、App Service アプリは必要なシークレットに安全にアクセスできます。
 

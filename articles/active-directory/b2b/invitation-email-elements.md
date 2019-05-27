@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295625"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768366"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -28,7 +28,7 @@ ms.locfileid: "58295625"
 ## <a name="explaining-the-email"></a>電子メールの説明
 これらの機能の最適な使用方法がわかるように、電子メールの要素をいくつか見てみましょう。
 
-### <a name="subject"></a>Subject
+### <a name="subject"></a>サブジェクト
 電子メールの件名は次のパターンに従います:You're invited to the &lt;テナント名&gt; organization (テナント名の組織に招待されています)
 
 ### <a name="from-address"></a>差出人アドレス

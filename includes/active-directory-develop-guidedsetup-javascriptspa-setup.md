@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/17/2018
-ms.date: 05/10/2019
-ms.author: v-junlch
+ms.date: 09/17/2018
+ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: a00bc7a05af9e329494a11f9bee444827cbebf38
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199228"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121751"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
@@ -64,7 +63,7 @@ Node.js を使用してプロジェクトを実行する場合は、[Visual Stud
    <head>
        <title>Quickstart for MSAL JS</title>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-       <script src="https://secure.aadcdn.parter.microsoftonline-p.cn/lib/1.0.0-preview.4/js/msal.js"></script>
+       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script>
    </head>
    <body>
        <h2>Welcome to MSAL.js Quickstart</h2><br/>
@@ -80,4 +79,3 @@ Node.js を使用してプロジェクトを実行する場合は、[Visual Stud
 
    > [!TIP]
    > 上記のスクリプトにある MSAL.js のバージョンを、[MSAL.js リリース](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)下の最新のリリース バージョンで置き換えることができます。
-

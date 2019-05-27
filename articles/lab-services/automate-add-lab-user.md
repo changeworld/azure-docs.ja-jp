@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0eed874d405fcf99241a702292f8ceadae6c5a07
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502032"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522958"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -85,7 +85,7 @@ Azure DevTest Labs によって、Azure portal を使用することにより、
 
 ```
 
-ラボを作成するのと同じテンプレートでロールを割り当てている場合、ロールの割り当てリソースとラボの間に依存関係を追加することを忘れないでください。 詳細については、[Azure Resource Manager のテンプレートでの依存関係の定義](/azure-resource-manager/resource-group-define-dependencies.md)に関するページを参照してください。
+ラボを作成するのと同じテンプレートでロールを割り当てている場合、ロールの割り当てリソースとラボの間に依存関係を追加することを忘れないでください。 詳細については、[Azure Resource Manager のテンプレートでの依存関係の定義](../azure-resource-manager/resource-group-define-dependencies.md)に関するページを参照してください。
 
 ### <a name="role-assignment-resource-information"></a>ロールの割り当てリソースに関する情報
 ロールの割り当てリソースでは、種類と名前を指定する必要があります。

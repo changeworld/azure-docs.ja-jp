@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36329554"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121010"
 ---
 ### <a name="gwipnoconnection"></a>ローカル ネットワーク ゲートウェイの IP アドレスを変更するには (ゲートウェイ接続がない場合)
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 02c079e9cda88c969e5382b2c70c551cf9a88e14
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789539"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522491"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
@@ -46,7 +46,7 @@ LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactiv
 エンドポイントに対してテストを実行し、発話をログに記録したくない場合は、必ず `logging=false` クエリ文字列構成を使用してください。
 
 ## <a name="where-to-find-utterances"></a>発話の検索場所
-LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、[LUIS](luis-reference-regions.md) Web サイトの **[アプリ]** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://aka.ms/luis-authoring-apis) で使用したりできます。 
+LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、[LUIS](luis-reference-regions.md) Web サイトの **[アプリ]** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) で使用したりできます。 
 
 LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) Web サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endpoint-utterances.md)** ページに一覧表示されます。 
 

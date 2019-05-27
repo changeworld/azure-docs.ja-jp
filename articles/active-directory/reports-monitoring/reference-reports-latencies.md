@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438651"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594023"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -41,10 +41,10 @@ ms.locfileid: "58438651"
 > **待機時間 (95 パーセンタイル)** は、ログの 95% が報告されるまでにかかる時間を示し、**待機時間 (99 パーセンタイル)** は、ログの 99% が報告されるまでにかかる時間を示します。 
 >
 
-| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|ログがレポートされる時間の範囲|
-| :-- | --- | --- | --- |
-| 監査ログ | 2 分  | 5 分  | 2 分から 60 分 |
-| サインイン | 2 分  | 5 分 | 2 分から 120 分 |
+| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|
+| :-- | --- | --- |
+| 監査ログ | 2 分  | 5 分  |
+| サインイン | 2 分  | 5 分 |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Premium ライセンスの取得後、アクティビティ データが表示されるまでにかかる時間
 

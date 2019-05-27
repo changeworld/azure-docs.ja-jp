@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: febc6e72ed40541a230c606a3ec96a8bffef5036
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 651474fd538123e760022ac59efbbaf0b9b83d70
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025767"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519673"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>クイック スタート:Ink Recognizer REST API および JavaScript を使用したデジタル インクの認識
 
@@ -26,12 +26,12 @@ ms.locfileid: "65025767"
 
 ![手書きテキストのイメージ](../media/handwriting-sample.jpg)
 
-このクイック スタートのソース コードは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) にあります。
+このクイック スタートのソース コードは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2089905) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Web ブラウザー
-- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) にあります。
+- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json) にあります。
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
@@ -157,7 +157,7 @@ ms.locfileid: "65025767"
 
 ## Run the application and view the response
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502):
+This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
 ## Next steps
 

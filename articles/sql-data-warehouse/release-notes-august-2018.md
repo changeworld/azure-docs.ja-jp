@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse リリース ノート 2018 年 8 月 | Microsoft Docs
 description: Azure SQL Data Warehouse のリリース ノート。
 services: sql-data-warehouse
-author: twounder
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: ''
 ms.date: 08/13/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 9547380d4636c1a72add9dab7a9eed850abd0307
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: anjangsh
+ms.reviewer: jrasnick
+ms.openlocfilehash: f0840e9b91c81b8a99e8c736c3c5db082c92fe76
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889711"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912214"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 8 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 8 月に導入された新しい機能と変更点について説明します。

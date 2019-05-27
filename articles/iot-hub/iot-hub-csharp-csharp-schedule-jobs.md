@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
-ms.openlocfilehash: db34734e9fbb8635f1a62def8a877d83d02e2206
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f21f1eed6babee52f30c6eccc79f88dc7bee5d58
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788090"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864475"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>ジョブのスケジュールとブロードキャスト (.NET/.NET)
 
@@ -49,7 +49,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Visual Studio 2017。
+* 見ることができます。
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
