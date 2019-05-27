@@ -9,11 +9,11 @@ ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416317"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131582"
 ---
 1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、**[コンピューティング]** > **[Function App]** を選択します。
 

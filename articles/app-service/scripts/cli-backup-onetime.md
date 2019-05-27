@@ -15,11 +15,11 @@ ms.date: 12/07/2017
 ms.author: msangapu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b394eb4674175f96d7fc0ceb8eafee0003312327
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629154"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66137012"
 ---
 # <a name="back-up-an-app-using-cli"></a>CLI を使用してアプリをバックアップする
 
@@ -41,7 +41,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | ストレージ アカウントを作成します。 |

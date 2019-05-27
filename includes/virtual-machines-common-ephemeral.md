@@ -9,11 +9,11 @@ ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65468389"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145917"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保持されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションでは個々の VM 障害が許容されますが、大規模なデプロイにかかる時間、または個々の VM インスタンスの再イメージ化にかかる時間が、より重要となります。 また、クラシック デプロイ モデルを使用してデプロイされたアプリケーションを、Resource Manager デプロイ モデルに移動することも適切です。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 さらに、エフェメラル OS ディスクは無料で、OS ディスクのストレージ コストはかかりません。 
  

@@ -184,6 +184,8 @@
   items:
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金と制限

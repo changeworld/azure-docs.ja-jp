@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 262706868fe286f2134e71f53330ebd2eeb66488
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: acb17386a2c2e0b2a89f46c607befb56eadaee48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587839"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136596"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>PowerShell を使用した Web アプリのスケジュールされたバックアップの作成
 

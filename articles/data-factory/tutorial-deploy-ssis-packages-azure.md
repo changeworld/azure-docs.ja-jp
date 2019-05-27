@@ -14,11 +14,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 26aa8b17917e92a0bcb2393ac3f5d69a70dceefe
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66145222"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS 統合ランタイムをプロビジョニングする
 このチュートリアルでは、Azure Portal を使用して Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイして実行できます。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
@@ -70,7 +70,7 @@ ms.locfileid: "57453713"
 1. **[バージョン]** では、**[V2 (プレビュー)]** を選択します。 
 1. **[場所]** で、データ ファクトリの場所を選択します。 一覧には、データ ファクトリの作成がサポートされている場所のみが表示されます。 
 1. **[ダッシュボードにピン留めする]** をオンにします。 
-1. **作成**を選択します。 
+1. **作成** を選択します。 
 1. ダッシュボードに、**[Deploying Data Factory]\(データ ファクトリをデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)

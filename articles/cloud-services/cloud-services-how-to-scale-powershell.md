@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
-ms.author: mmccrory
-ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: memccror
+ms.openlocfilehash: 6c013687faaca33938d0b27303e9b1252482fcb9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998007"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963317"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>PowerShell でのクラウド サービスのスケールの設定方法
 
 Windows PowerShell を使用して、Web ロールまたは worker ロールのスケールインやスケールアウトを行うには、インスタンスを追加または削除します。  
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 PowerShell を使ってサブスクリプションで操作を行う前に、ログインする必要があります。
 
@@ -77,6 +77,6 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ロールをスケールインするには、同じ方法でインスタンスを削除します。 **Set-AzureRole** で **Count** パラメーターを、スケール イン操作が完了した後の目的のインスタンス数に設定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 PowerShell からクラウド サービスの自動スケールを構成することはできません。 自動スケールの構成については、「[クラウド サービスの自動スケールの方法](cloud-services-how-to-scale-portal.md)」を参照してください。

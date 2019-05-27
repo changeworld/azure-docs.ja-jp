@@ -4,14 +4,14 @@ description: クエリの要求ユニット使用量を評価し、パフォー�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d1ac054abf4bb8228bdb5cc20d79cb751af7a33
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840190"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967449"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 

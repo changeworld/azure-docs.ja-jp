@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 0f1decae5fb3ec4a07f01c5bff7475f3d73a3cbb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111904"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132850"
 ---
 1. キャッシュを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 **[リソースの作成]** > **[データベース]** > **[Azure Cache for Redis]** を選択します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "53111904"
     | ------------ |  ------- | -------------------------------------------------- |
     | **DNS 名** | グローバルに一意の名前 | キャッシュ名。 1 から 63 文字の文字列で、数字、英字、`-` 文字のみを使用する必要があります。 キャッシュ名の先頭と末尾には `-` 文字を使用できません。また、連続する `-` 文字は無効です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
-    | **[リソース グループ]** |  *TestResources* | その中にキャッシュを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのアプリに関連付けられているすべてのリソースが削除されます。 | 
+    | **リソース グループ** |  *TestResources* | その中にキャッシュを作成する新しいリソース グループの名前。 アプリのすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのアプリに関連付けられているすべてのリソースが削除されます。 | 
     | **場所** | 米国東部 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
     | **[価格レベル](https://azure.microsoft.com/pricing/details/cache/)** |  Basic C0 (250 MB のキャッシュ) |  価格レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 詳細については、[Azure Cache for Redis の概要](../articles/azure-cache-for-redis/cache-overview.md)に関するページを参照してください。 |
     | **ダッシュボードにピン留めする** |  オン | 新しいキャッシュをダッシュボードにピン留めし、簡単に見つけられるようにします。 |

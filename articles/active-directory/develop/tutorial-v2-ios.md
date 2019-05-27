@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
@@ -13,15 +12,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/26/2019
-ms.author: dadobali
+ms.author: jmprieur
+ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b4ecc151f8402bfb8f05968475b0305737ecd9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 780da9359aaf645abc9b685fa9d90bbea9199759
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406474"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962164"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>iOS アプリからユーザーにサインインして Microsoft Graph を呼び出す
 
@@ -67,8 +67,8 @@ ms.locfileid: "65406474"
 
 ### <a name="register-your-app"></a>アプリの登録
 
-1. [Azure portal](https://aka.ms/MobileAppReg) にアクセスし、[`New registration`] を選択します。 
-2. アプリの**名前**を入力し、[`Register`] を選択します。 **この段階ではリダイレクト URI を設定しないでください**。 
+1. [Azure portal](https://aka.ms/MobileAppReg) にアクセスし、`New registration` を選択します。 
+2. お使いのアプリ > `Register` で **名前**を入力します。 **この段階ではリダイレクト URI を設定しないでください**。 
 3. [`Manage`] セクションで [`Authentication`]  >  [`Add a platform`]  >  [`iOS`] の順に移動します。
     - プロジェクトのバンドル ID を入力します。 コードをダウンロードした場合は `com.microsoft.identitysample.MSALiOS` です。
 4. [`Configure`] を選択し、`MSAL Configuration` を後で使用できるように保存します。 
@@ -418,7 +418,7 @@ Microsoft Graph API の詳細については[こちら](https://graph.microsoft.
 
 ### <a name="use-msal-for-sign-out"></a>MSAL を使用したサインアウト
 
-次に、このアプリにサインアウトのサポートを追加します。 
+次に、サインアウトのサポートをアプリに追加します。 
 
 重要な点として、MSAL でサインアウトするとユーザーに関する既知の情報がすべてこのアプリケーションから削除されますが、ユーザーのデバイスではアクティブなセッションが維持されます。 ユーザーが再びサインインを試みた場合に対話画面が表示される可能性がありますが、デバイス セッションがアクティブであるため、資格情報を再入力する必要はありません。 
 
@@ -492,13 +492,13 @@ MSAL では既定でアプリのトークンが iOS キーチェーンにキャ�
 
 ### <a name="run-locally"></a>ローカルで実行する
 
-上記のコードを作成したら、アプリをビルドしてテスト デバイスまたはエミュレーターにデプロイします。 サインインして Azure AD または個人用 Microsoft アカウントのトークンを取得できるようになります。 ユーザーのサインイン後に、Microsoft Graph の`/me` エンドポイントから返されたデータがこのアプリに表示されます。 
+上記のコードに従っている場合は、アプリをビルドしてテスト デバイスまたはエミュレーターにデプロイします。 サインインして Azure AD または個人用 Microsoft アカウントのトークンを取得できるようになります。 ユーザーのサインイン後に、Microsoft Graph の `/me` エンドポイントから返されたデータがこのアプリに表示されます。 
 
 問題が発生した場合は、このドキュメントまたは MSAL ライブラリで問題を開いてご連絡ください。 
 
 ### <a name="consent-to-your-app"></a>アプリに同意する
 
-ユーザーは、アプリに初めてサインインするときに、Microsoft Identity から要求されたアクセス許可に同意するよう求められます。  ほとんどのユーザーはこれに同意できますが、一部の Azure AD テナントではユーザーによる同意が無効になっており、全ユーザーに代わって管理者が同意を行う必要があります。  このシナリオに対応できるように、必ず Azure portal でアプリのスコープを登録しておいてください。
+ユーザーは、アプリに初めてサインインするときに、Microsoft Identity から、要求されたアクセス許可に同意するよう求められます。  ほとんどのユーザーはこれに同意できますが、一部の Azure AD テナントではユーザーによる同意が無効になっており、全ユーザーに代わって管理者が同意を行う必要があります。  このシナリオに対応できるように、必ず Azure portal でアプリのスコープを登録しておいてください。
 
 ## <a name="help-and-support"></a>ヘルプとサポート
 

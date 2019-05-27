@@ -9,11 +9,11 @@ ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192167"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146777"
 ---
 Azure IoT Edge の主要な機能の 1 つは、クラウドからお客様の IoT Edge デバイスにコードをデプロイできることです。 **IoT Edge モジュール**は、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、[Azure Marketplace の IoT Edge モジュールのセクション](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)から事前に構成したモジュールをデプロイします。 
 
@@ -33,7 +33,7 @@ Azure Marketplace からお客様の最初のモジュールをデプロイす�
 
    3. **IoT Edge デバイス名**: このクイック スタートで提案されているデバイス名を使用した場合は、「**myEdgeDevice**」と入力します。 または、**[デバイスの検索]** を選択して、お客様の IoT ハブにある IoT Edge デバイスの一覧から選択します。 
    
-   4. **作成**を選択します。
+   4. **作成** を選択します。
 
 3. Azure Marketplace から IoT Edge モジュールを選択し、モジュールを受け取る IoT Edge デバイスを選択したところで、モジュールのデプロイ方法を正確に定義するために役立つ 3 つの手順のウィザードに進みます。 ウィザードの **[モジュールの追加]** 手順で、**SimulatedTemperatureSensor** モジュールが自動的に設定されていることに注目してください。 チュートリアルでは、このページを使用して他のモジュールをお客様のデプロイに追加します。 このクイック スタートでは、この 1 つのモジュールのみをデプロイします。 **[次へ]** を選択して、ウィザードの次の手順に進みます。
 

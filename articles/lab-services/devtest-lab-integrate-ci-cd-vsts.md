@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66157125"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevOps 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合
 Azure DevOps にインストールされる *Azure DevTest Labs タスク*拡張機能を使用して、CI/CD のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 この拡張機能は、次の 3 つのタスクをインストールします。 

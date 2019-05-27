@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: a5d29e77f6ba10ed3069cb3f5a3c8089f49c237d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313774"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140585"
 ---
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[すべてのサービス]** を選択し、**[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星印 [`*`] を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **Notification Hubs** が **[お気に入り]** に追加された後、左側のメニューでそれを選択します。 
@@ -27,7 +27,7 @@ ms.locfileid: "56313774"
     2. **名前空間**の **名前** を指定します。 名前空間には、少なくとも 1 つのハブが存在します。 
     3. 通知ハブを作成する**場所**を選択します。 
     4. 既存のリソース グループを選択するか、新しい**リソース グループ**の名前を入力します。
-    5. **作成**を選択します。 
+    5. **作成** を選択します。 
 
         ![Azure Portal - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 4. **[通知]** (ベルのアイコン)、**[リソースに移動]** の順に選択します。 **[Notification Hubs]** ページの一覧を最新の情報に更新して、お使いの通知ハブを選択してもかまいません。 

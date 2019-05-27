@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: b6cde8402c699a7477cd0efc79a44b3f5e150ad0
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146345"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub を操作の監視から診断設定に移行する
 
-[操作の監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure 診断設定](../azure-monitor/platform/diagnostic-logs-overview.md)に移行することができます。 診断設定は、多数の Azure サービスについてリソース レベルの診断情報を提供します。
+[操作の監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure Diagnostics 設定](../azure-monitor/platform/diagnostic-logs-overview.md)に移行することができます。 診断設定は、多数の Azure サービスについてリソース レベルの診断情報を提供します。
 
 **IoT Hub の操作の監視機能は非推奨となっており**、今後 Portal から削除される予定です。 この記事では、ワークロードを操作の監視から診断設定に移動する手順について説明します。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 

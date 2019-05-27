@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: f4ba467b6d80c9ccafba0a91c1f04152b92cf869
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125237"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140661"
 ---
 1. Mac で [Azure portal] にアクセスします。 **[すべてのサービス]** > **[App Services]** の順にクリックして、先ほど作成したバックエンドをクリックします。 モバイル アプリの設定で、優先する言語を選択します。
 

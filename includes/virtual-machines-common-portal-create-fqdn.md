@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 4dd0182e5698c992e45afae183ef94c488b27e14
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226440"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66154761"
 ---
 1. ポータルで VM を選択します。 **[DNS 名]** の下の **[構成]** をクリックします。
    

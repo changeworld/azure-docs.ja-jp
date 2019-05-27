@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 942c165a53ad07c0d359854fc737c195c6f2d50a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736842"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66138282"
 ---
 * [App Service の認証/承認の概要](../articles/app-service/overview-authentication-authorization.md)
 * モバイル アプリへの認証の追加: [iOS][ios-get-started-users]、[Android][android-get-started-users]、[Windows Universal][windows-get-started-users]、[Xamarin.Android][xamarin-android-get-started-users]、[Xamarin.iOS][xamarin-ios-get-started-users]、[Xamarin.Forms][xamarin-forms-get-started-users]、[Cordova][cordova-get-started-users]  

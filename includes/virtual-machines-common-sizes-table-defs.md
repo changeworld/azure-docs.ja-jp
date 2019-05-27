@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 30f6feb920d78c9c325c5556f5530ac4c8d9459b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ad21dbb356a6630cec0a6f5658b20cb8568890f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "29955669"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145704"
 ---
 <!-- Not used for Ls-series -->
 

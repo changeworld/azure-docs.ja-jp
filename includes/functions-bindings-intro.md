@@ -10,11 +10,11 @@ ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b9f0816ad67afa05a5325f03991ac22393c1b416
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211873"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131548"
 ---
 これは、Azure Functions の開発者向けリファレンス情報です。 Azure Functions を初めて使用する場合は、先に次のリソースを参照してください。
 

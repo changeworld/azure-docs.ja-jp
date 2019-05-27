@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse の Fivetran クイック スタート | Microsoft Docs
 description: Fivetran と Azure SQL Data Warehouse の使用をすぐに開始します。
 services: sql-data-warehouse
-author: hirokib
-manager: jrj
+author: mlee3gsd
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: integration
 ms.date: 10/12/2018
-ms.author: elbutter
-ms.reviewer: craigg
-ms.openlocfilehash: 1d8b6d2df21fe0aabe85754e061db4deb129b32e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: martinle
+ms.reviewer: igorstan
+ms.openlocfilehash: d829ee67d516892283fa31d9180336d768170ac1
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895704"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65857014"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Fivetran と Azure SQL Data Warehouse の使用をすぐに開始する
 

@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 3bc7b409d590ac096b70431ae009fed36c968307
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148245"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>クイック スタート: Azure CLI を使用したイベント ハブの作成
 

@@ -90,3 +90,5 @@
       href: 'https://stackoverflow.com/questions/tagged/bing-search'
     - name: ユーザーの声
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

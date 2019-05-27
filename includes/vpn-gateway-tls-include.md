@@ -9,11 +9,11 @@ ms.date: 07/27/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0d5c3b55d20be19d4aeb92b82d6e44d417259a7b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995724"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147057"
 ---
 1. 右クリックし、昇格した特権でコマンド プロンプトを開き**コマンド プロンプト**選択**管理者として実行**します。
 

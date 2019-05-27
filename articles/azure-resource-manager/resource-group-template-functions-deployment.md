@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268102"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128669"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
 
@@ -165,9 +165,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |あり |文字列 |返されるパラメーターの名前。 |
+| parameterName |あり |string |返されるパラメーターの名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | 方法 1 |
 | intOutput | int | 1 |
@@ -281,7 +281,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | variableName |はい |String |返す変数の名前。 |
 
@@ -355,7 +355,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

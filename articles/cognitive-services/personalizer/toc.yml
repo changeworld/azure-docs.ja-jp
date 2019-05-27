@@ -24,7 +24,7 @@
       displayName: 'best practice, design'
     - name: 基本的な概念
       items:
-        - name: '機能: アクションとコンテキスト'
+        - name: '特徴: アクションとコンテキスト'
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
         - name: 報酬
@@ -65,6 +65,8 @@
   items:
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure のロードマップ
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 価格

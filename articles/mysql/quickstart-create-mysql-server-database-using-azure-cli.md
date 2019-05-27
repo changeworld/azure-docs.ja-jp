@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: 10acb353e282508c838bee89b131d94dcd3fa7ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66160400"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for MySQL サーバーの作成
 
@@ -209,7 +209,7 @@ mysql>
 |   接続名 | My Connection | この接続のラベルを指定します (任意に指定できます) |
 | 接続方法 | Standard (TCP/IP) を選択します | TCP/IP プロトコルを使用して Azure Database for MySQL に接続します |
 | ホスト名 | mydemoserver.mysql.database.azure.com | 前にメモしておいたサーバー名です。 |
-| ポート | 3306 | MySQL の既定のポートが使用されます。 |
+| Port | 3306 | MySQL の既定のポートが使用されます。 |
 | ユーザー名 | myadmin@mydemoserver | 前にメモしておいたサーバーの管理者ログインです。 |
 | パスワード | **** | 前に構成した管理者アカウントのパスワードを使用します。 |
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137877"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955945"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -217,7 +217,7 @@ ms.locfileid: "65137877"
 
 `applicationInitialization` 要素のカスタマイズの詳細については、「[Most common deployment slot swap failures and how to fix them (最も一般的なデプロイ スロットのスワップ エラーとその修正方法)](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)」を参照してください。
 
-次の 1 つまたは複数の[アプリ設定](web-sites-configure.md)でウォームアップ動作をカスタマイズすることもできます。
+次の 1 つまたは複数の[アプリ設定](configure-common.md)でウォームアップ動作をカスタマイズすることもできます。
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 たとえば、「 `/statuscheck` 」のように入力します。 既定値は `/` です。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば、「`200,202`」のように指定します。 返された状態コードが一覧にない場合、ウォーム アップおよびスワップ操作が停止します。 既定で、すべての応答コードは有効です。

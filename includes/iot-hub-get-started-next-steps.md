@@ -9,11 +9,11 @@ ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 9f7f71f47fadd7cfe2364acf1a8505e1967a78e5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333918"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146472"
 ---
 引き続き Azure IoT Hub の使用方法を確認すると共に、すべての拡張された IoT のシナリオについて調べるには、次のページを参照してください。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d3dfe51ce65aa24cf3d0a4d1fa4b6a9cd203b7e4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57250640"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127104"
 ---
 契約の種類を確認して、Microsoft 顧客契約の請求先アカウントへのアクセスがあるかどうかを判断します。
 

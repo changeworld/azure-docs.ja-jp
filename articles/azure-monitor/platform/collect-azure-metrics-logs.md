@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006273"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129725"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースへの Azure サービスのログとメトリックの収集
 
@@ -42,7 +42,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | 診断 |             | |
 | Event Hub 名前空間     | Microsoft.EventHub/namespaces           | 診断 | 診断 | |
 | IoT Hub                | Microsoft.Devices/IotHubs               |             | 診断 | |
-| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault Analytics](../insights/azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | 診断 |             | [KeyVault 分析](../insights/azure-key-vault.md) |
 | ロード バランサー          | Microsoft.Network/loadBalancers         | 診断 |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 診断 | 診断 | |
 | ネットワーク セキュリティ グループ | Microsoft.Network/networksecuritygroups | 診断 |             | [Azure ネットワーク セキュリティ グループ分析](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) |
@@ -63,7 +63,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 >
 >
 
-## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure 診断から Log Analytics に直接
+## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure Diagnostics から Log Analytics に直接
 多くの Azure リソースで診断ログとメトリックを Azure Monitor の Log Analytics ワークスペースに直接書き込むことができます。分析用のデータを収集するにはこの方法がお勧めです。 Azure 診断を使用すると、データがワークスペースに即座に書き込まれるため、データを最初にストレージに出力する必要はありません。
 
 [Azure Monitor](../../azure-monitor/overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics ワークスペースに直接送信できます。
@@ -123,7 +123,7 @@ Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enab
 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure 診断からストレージ経由で Log Analytics に
+## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure Diagnostics からストレージ経由で Log Analytics に
 
 一部のリソース内からログを収集するには、Azure Storage にログを送信して、そこからログを読み取るように Log Analytics ワークスペースを構成することができます。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302361"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145858"
 ---
 実行するアプリケーションの仮想マシン (VM) は常に安全な状態に保つ必要があります。 VM の安全を確保する手段としては、Azure のサービスや機能を通じて、VM へのアクセスやデータのストレージにセキュリティを確保する方法が挙げられます。 この記事では、VM とアプリケーションのセキュリティを維持するうえで役に立つ情報を提供します。
 
