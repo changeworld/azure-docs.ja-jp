@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6efec75884857d93f2e128104136bf59a1114594
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9734859c0bf22201c146e5d8a220f3146f6051c4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197180"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159227"
 ---
 次の表は、ゲートウェイの種類と、ゲートウェイ SKU によって予測される合計スループットを示したものです。 この表は、Resource Manager とクラシック デプロイ モデルに適用されます。 
 
@@ -38,4 +38,4 @@ UltraPerformance ゲートウェイ SKU はこの表には示されていませ�
 
 (5) アクティブ/アクティブ S2S VPN ゲートウェイ接続は、この SKU ではサポートされていません。 アクティブ/アクティブは、HighPerformance SKU のみでサポートされています。
 
-(6) Expressroute での Basic SKU の使用は廃止されています。
+(6) Expressroute での Basic SKU の使用は非推奨となっています。

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d35f0ef783a2c48f8211657bc8829635c19495aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888676"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171879"
 ---
 #### <a name="to-enter-maintenance-mode"></a>メンテナンス モードを開始するには
 1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。

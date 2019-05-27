@@ -9,11 +9,11 @@ ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 6d22f83ff9bcec685962934e415676bf8d948db0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52973070"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158587"
 ---
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 

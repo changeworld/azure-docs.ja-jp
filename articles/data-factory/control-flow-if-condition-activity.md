@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431497"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66153475"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
@@ -66,11 +66,11 @@ If Condition アクティビティは、プログラミング言語における 
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | if-condition アクティビティの名前。 | String | [はい]
-type | **IfCondition** に設定する必要があります。 | String | [はい]
-expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | [はい]
-ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]
-ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | [はい]
+name | if-condition アクティビティの名前。 | String | はい
+type | **IfCondition** に設定する必要があります。 | String | はい
+expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | はい
+ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | はい
+ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | はい
 
 ## <a name="example"></a>例
 この例のパイプラインでは、入力フォルダーから出力フォルダーにデータをコピーします。 出力フォルダーは、パイプライン パラメーター routeSelection の値によって決まります。 routeSelection の値が true である場合、データは outputPath1 にコピーされます。 一方、routeSelection の値が falseである場合、データは outputPath2 にコピーされます。 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889686"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155813"
 ---
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールするには
 1. Web フロントエンド (WFE) サーバーにインストーラーをコピーします。このサーバーは、SharePoint サーバーの全体管理 Web アプリケーションを実行するように構成されています。 

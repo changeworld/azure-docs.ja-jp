@@ -9,11 +9,11 @@ ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407787"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156784"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -389,7 +389,7 @@ ms.locfileid: "58407787"
 
 3. **[App Service の作成]** ウィンドウで、Azure アカウントを選択します。 **[変更の種類]** > **[Web アプリ]** の順に選択します。 既定の **Web アプリ名**をそのまま保持し、**[サブスクリプション]**、**[リソース グループ]**、**[App Service プラン]** の順に選択します。
 
-4. **作成**を選択します。
+4. **作成** を選択します。
 
 5. **[概要]** セクションの **[サイト URL]** プロパティをメモします。 この URL は、このチュートリアルの後半で使用する "*バックエンドエンドポイント*" です。
 
