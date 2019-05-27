@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: 91141e314bf276d9138157c8a9d85d5262ac5907
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728984"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131024"
 ---
 カスタム測定値のコレクション。 テレメトリ項目に関連付けられている指定された測定値を報告するには、このコレクションを使用します。 一般的なユース ケースは次のとおりです。
 - 依存関係テレメトリのペイロードのサイズ

@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9132cf438cab518e20e6c2ddfdb7d0928753bd19
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444225"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170158"
 ---
 1. ポータルで、仮想ネットワーク ゲートウェイを作成する仮想ネットワークに移動します。
 2. VNet のページの **[設定]** セクションで、**[サブネット]** をクリックして [サブネット] ページを展開します。

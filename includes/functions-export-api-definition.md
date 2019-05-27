@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134437"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131720"
 ---
 ## <a name="export-an-api-definition"></a>API 定義をエクスポートする
 「[関数の OpenAPI 定義の作成](../articles/azure-functions/functions-openapi-definition.md)」で作成した関数の OpenAPI 定義があります。 このプロセスの次の手順では、API 定義をエクスポートして、PowerApps と Microsoft Flow がカスタム API でこの定義を使用できるようにします。

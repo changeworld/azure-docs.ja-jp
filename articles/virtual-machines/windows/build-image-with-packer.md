@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 012f4e479a5b8ea2e3ddea1bfde70ab10ee4e834
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 81dbd8082d5a7ab473cc0cbe5fcb6e564fbd750c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467048"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951139"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -102,7 +102,7 @@ Get-AzSubscription
     "communicator": "winrm",
     "winrm_use_ssl": true,
     "winrm_insecure": true,
-    "winrm_timeout": "3m",
+    "winrm_timeout": "5m",
     "winrm_username": "packer",
 
     "azure_tags": {

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: cd06326b22b227490798b2b89c0439940cb4575f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f1f02f8b5488609a0c69a6d335c96d3cc9266c71
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551509"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170357"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -29,7 +29,7 @@ ACU: 195 - 210
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 | Size             | vCPU の数 | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|

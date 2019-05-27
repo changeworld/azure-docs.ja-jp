@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302344"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66129025"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
 

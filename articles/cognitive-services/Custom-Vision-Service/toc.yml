@@ -42,7 +42,7 @@
       href: logo-detector-mobile.md
 - name: ハウツー ガイド
   items:
-    - name: 分類子の構築
+    - name: 分類器の構築
       href: getting-started-build-a-classifier.md
     - name: モデルのテスト
       href: test-your-model.md
@@ -98,5 +98,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: リリース ノート
       href: release-notes.md

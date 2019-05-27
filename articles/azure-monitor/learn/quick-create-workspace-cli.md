@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
 ms.openlocfilehash: 4be33b809ee2e620a565c9907a5b77833a279567
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848815"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130405"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 

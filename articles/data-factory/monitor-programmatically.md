@@ -12,11 +12,11 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167047"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 この記事では、さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法について説明します。 

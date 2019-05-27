@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0cae2befad1b0cd2d6a093387c41aac8ccdfff7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719219"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991440"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -208,7 +208,6 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 |メディア プロセッサ名|Status|データ センター
 |---|---|---|
 |Azure Media Face Detector|プレビュー|All|
-|Azure Media Hyperlapse|プレビュー|All|
 |Azure Media Indexer|一般公開|All|
 |Azure Media Motion Detector|プレビュー|All|
 |Azure Media OCR|プレビュー|All|

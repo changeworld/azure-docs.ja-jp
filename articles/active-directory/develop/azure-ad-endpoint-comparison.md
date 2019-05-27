@@ -5,7 +5,6 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -14,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: ryanwi
-ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
+ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dba74735b4c703123f9ff89b63a57d53faa84fde
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138781"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962876"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 

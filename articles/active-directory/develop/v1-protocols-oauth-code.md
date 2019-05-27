@@ -3,8 +3,8 @@ title: Azure AD での OAuth 2.0 承認コード フローについて
 description: この記事では、Azure Active Directory と OAuth 2.0 を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/5/2019
-ms.author: celested
+ms.date: 03/05/2019
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e05d79773cfd2ebae8047e75d41684de9101787a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531115"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962184"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 

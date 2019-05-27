@@ -9,11 +9,11 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125267"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164656"
 ---
 Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは "*プロビジョニング状態*" と "*電源の状態*" に分類することができます。 この記事の目的は、各状態について説明し、ユーザーがインスタンスの使用料金を課金されるタイミングを具体的に明示することです。 
 

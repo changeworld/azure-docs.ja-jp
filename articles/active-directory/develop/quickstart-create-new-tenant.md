@@ -3,9 +3,8 @@ title: Azure Active Directory テナントの作成 | Microsoft Docs
 description: アプリケーションを登録および構築するために使用する Azure AD テナントを作成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.subservice: develop
@@ -14,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/05/2019
-ms.author: celested
-ms.reviewer: dadobali
+ms.author: ryanwi
+ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108663"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962505"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート:開発環境の設定
 

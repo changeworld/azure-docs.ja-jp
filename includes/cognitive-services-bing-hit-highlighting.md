@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572357"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124769"
 ---
 Bing は検索語の強調表示をサポートしています。検索語の強調表示により、結果の表示文字列内で検索語 (または Bing が関連すると見なしたその他の語) がマークされます。 たとえば、Web ページの `name`、`displayUrl`、`snippet` フィールドでは検索語をマークするとします。
 

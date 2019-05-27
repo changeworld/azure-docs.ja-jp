@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 0699bc284233f259fc345b9b2b97b9dda8820454
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 44bc78ee0e9d3fddf91aaeb677c53716c2ce2597
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66136361"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>PowerShell を使用して Web アプリを手動でスケーリングする
 

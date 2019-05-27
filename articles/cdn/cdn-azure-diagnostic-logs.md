@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66126271"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 

@@ -3,24 +3,24 @@ title: Azure Active Directory の条件付きアクセスについての開発�
 description: 開発者ガイドと Azure AD の条件付きアクセスのシナリオ
 services: active-directory
 keywords: ''
-author: CelesteDG
-manager: mtillman
-ms.author: celested
-ms.reviewer: dadobali
+author: rwike77
+manager: CelesteDG
+ms.author: ryanwi
+ms.reviewer: jmprieur, saeeda
 ms.date: 02/28/2019
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0674934f7105df3874048308e98fd582d32e72bc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001050"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962843"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 

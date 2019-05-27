@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9daebf46093e38858feff87ca5c4ba89638aa74
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021656"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951910"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスにカスタム アナライザーを追加する
 
@@ -223,7 +223,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
 |Type|"#Microsoft.Azure.Search.CustomAnalyzer" を指定する必要があります。|  
-|CharFilters|[文字フィルター](#CharFilter)の表に列記されている定義済みの文字フィルターのいずれか、またはインデックスの定義で指定されているカスタム文字フィルターに設定します。|  
+|CharFilters|[文字フィルター](#char-filters-reference)の表に列記されている定義済みの文字フィルターのいずれか、またはインデックスの定義で指定されているカスタム文字フィルターに設定します。|  
 |トークナイザー|必須。 下記の[トークナイザー](#Tokenizers)の表に列記されている定義済みのトークナイザーのいずれか、またはインデックスの定義で指定されているカスタム トークナイザーに設定します。|  
 |TokenFilters|[トークン フィルター](#TokenFilters)の表に列記されている定義済みのトークン フィルターのいずれか、またはインデックスの定義で指定されているカスタム トークン フィルターに設定します。|  
 
@@ -236,8 +236,8 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |||  
 |-|-|  
 |Name|アルファベット、数字、空白、ダッシュ、アンダースコアのみを含める必要があります。また、最初と最後の文字は英数字にする必要があり、長さは 128 文字までに制限されています。|  
-|Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#CharFilter)の表の **char_filter_type** 列をご覧ください。|  
-|オプション|指定した[文字フィルター](#CharFilter)の種類で有効なオプションを使用する必要があります。|  
+|Type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#char-filters-reference)の表の **char_filter_type** 列をご覧ください。|  
+|オプション|指定した[文字フィルター](#char-filters-reference)の種類で有効なオプションを使用する必要があります。|  
 
 ### <a name="tokenizers"></a>トークナイザー
 

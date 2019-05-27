@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
 ms.openlocfilehash: a2abcfeee6fe1a08e2b02ff87e75217daddcfad4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127468"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例:Azure Batch アカウントへのアプリケーションの追加
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 このスクリプトでは、次のコマンドを使用します。
 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |

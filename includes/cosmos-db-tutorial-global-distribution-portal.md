@@ -9,11 +9,11 @@ ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: include file
 ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796115"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120563"
 ---
 ## <a id="addregion"></a>Azure Portal を使用したグローバル データベース リージョンの追加
 Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions]で利用できます。 データベース アカウントの既定の一貫性レベルを選択すると、選択した既定の一貫性レベルとグローバル配信の必要性に応じて、1 つまたは複数のリージョンを関連付けることができます。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: f1dc43b6fea4ebfb47439ec64b573cc471614d98
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 0c3bc3f2995131c7777bfc48269a17fceda33192
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31531737"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170749"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)

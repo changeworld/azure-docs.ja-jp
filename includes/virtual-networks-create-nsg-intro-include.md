@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 7a31b8bc764c5548870042d9c17458706d746200
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 20ecc0e30c774c2f237238937ab1c6c1dcd4003f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38760373"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170304"
 ---
 NSG を使用して、仮想ネットワーク内の 1 つまたは複数の仮想マシン (VM)、ロール インスタンス、ネットワーク アダプター (NIC)、またはサブネットに対するトラフィックを制御できます。 NSG には、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づいて、トラフィックを許可または拒否するアクセス制御ルールが含まれています。 NSG のルールは、いつでも変更でき、変更は関連付けられているすべてのインスタンスに適用されます。
 

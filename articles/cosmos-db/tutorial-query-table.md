@@ -6,14 +6,14 @@ ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001641"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978760"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル:Table API を使って Azure Cosmos DB に対するクエリを実行する
 
@@ -26,7 +26,7 @@ Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テー�
 
 この記事のクエリは、次の `People` サンプル テーブルを使用します。
 
-| パーティション キー | 行キー | 電子メール | PhoneNumber |
+| パーティション キー | 行キー | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **結果**
 
-| パーティション キー | 行キー | 電子メール | PhoneNumber |
+| パーティション キー | 行キー | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **結果**
 
-| パーティション キー | 行キー | 電子メール | PhoneNumber |
+| パーティション キー | 行キー | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

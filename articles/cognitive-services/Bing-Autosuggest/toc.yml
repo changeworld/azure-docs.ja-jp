@@ -75,3 +75,5 @@
       href: language-support.md
     - name: Bing Autosuggest API 用の分析
       href: bing-autosuggest-stats.md
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2019
-ms.author: monhaber
-ms.openlocfilehash: e601bbaa0d15078fc2b19b5b7c536e3a1f6d20ad
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.author: v-mohabe
+ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442848"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968587"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>IaaS の SQL サーバー向け Advanced Data Security
 IaaS の SQL サーバー向け Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 現在のところ、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。

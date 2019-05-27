@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 7bbbe9629404733a76064d270480a0e162e2612b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ad2ea32749c6556d17460b2a16ed41bbaa2ec62e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919888"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956156"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -144,7 +144,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
-App Service では、アプリ コードの外部で[アプリ設定を指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)できます。 その後、標準の [os.environ](https://docs.python.org/3/library/os.html#os.environ) パターンを使用して、それらにアクセスできます。 たとえば、`WEBSITE_SITE_NAME` というアプリ設定にアクセスするには、次のコードを使用します。
+App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の [os.environ](https://docs.python.org/3/library/os.html#os.environ) パターンを使用して、それらにアクセスできます。 たとえば、`WEBSITE_SITE_NAME` というアプリ設定にアクセスするには、次のコードを使用します。
 
 ```python
 os.environ['WEBSITE_SITE_NAME']

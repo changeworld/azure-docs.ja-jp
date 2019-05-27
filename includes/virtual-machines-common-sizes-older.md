@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: d89a9c4c4498e249dbfbd453ef9772d18ffd213f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7196a2ea794c1d17a2c55c05accb447d83929972
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59550143"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145723"
 ---
 このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択する場合は、「[Sizes for Windows virtual machines in Azure](../articles/virtual-machines/windows/sizes.md)」 (Azure の Windows 仮想マシンのサイズ) または「[Sizes for Linux virtual machines in Azure](../articles/virtual-machines/linux/sizes.md)」 (Azure の Linux 仮想マシンのサイズ) を参照してください。  
 
@@ -27,7 +27,7 @@ Linux VM のサイズ変更の詳細については、「[Resize a Linux virtual
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 Basic レベルのサイズは主に、負荷分散や自動スケール、メモリ消費量の多い仮想マシンのいずれも必要としない用途 (開発ワークロードなど) 向けです。
 
@@ -49,7 +49,7 @@ ACU: 50-100
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (HDD):GiB | 最大データ ディスク数 | データ ディスクの最大スループット:IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ ACU: 225
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  
 
@@ -97,7 +97,7 @@ ACU: 160 から 250 <sup>1</sup>
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 | Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -118,7 +118,7 @@ ACU: 160 から 250 <sup>1</sup>
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 | Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -139,7 +139,7 @@ ACU: 160 から 250 <sup>1</sup>
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -160,7 +160,7 @@ ACU: 160 から 250 <sup>1、2</sup>
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

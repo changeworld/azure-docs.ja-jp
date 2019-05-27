@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: yegu
 ms.openlocfilehash: 318d02f5da816ae8fe2fe199b9c87b3748d5d1fc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66132997"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis で Redis コマンドライン ツールを使用する方法
 

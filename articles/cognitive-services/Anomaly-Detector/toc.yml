@@ -60,6 +60,8 @@
       href: 'https://aka.ms/adregion'
     - name: ソリューション アーキテクチャの参照
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
 - name: サポート
   items:
     - name: サポートを受ける

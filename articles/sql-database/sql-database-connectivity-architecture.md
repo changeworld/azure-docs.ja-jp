@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66164456"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -45,7 +45,7 @@ Azure SQL Database は、SQL Database サーバーの接続ポリシー設定に
 
 ## <a name="connectivity-from-within-azure"></a>Azure 内からの接続
 
-Azure 内から接続する場合、接続には既定で `Redirect` の接続ポリシーが与えられます。 `Redirect` のポリシーとは、TCP セッションが Azure SQL Database に対して確立された後に、宛先の仮想 IP を Azure SQL Database ゲートウェイの IP からクラスターの IP に変更して、正しいデータベース クラスターにリダイレクトすることを意味します。 その後、すべての後続パケットは Azure SQL Database ゲートウェイを迂回し、クラスターに直接送信されます。 次の図にこのトラフィックの流れを示します。
+Azure 内から接続する場合、接続には既定で `Redirect` の接続ポリシーが与えられます。 `Redirect` のポリシーとは、TCP セッションが Azure SQL データベースに対して確立された後に、宛先の仮想 IP を Azure SQL Database ゲートウェイの IP からクラスターの IP に変更して、正しいデータベース クラスターにリダイレクトすることを意味します。 その後、すべての後続パケットは Azure SQL Database ゲートウェイを迂回し、クラスターに直接送信されます。 次の図にこのトラフィックの流れを示します。
 
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
