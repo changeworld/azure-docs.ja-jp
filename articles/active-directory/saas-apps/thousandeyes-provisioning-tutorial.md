@@ -3,9 +3,8 @@ title: チュートリアル:ThousandEyes を構成し、Azure Active Directory 
 description: Azure Active Directory を構成して、ユーザー アカウントを ThousandEyes に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
-writer: asmalser-msft
-manager: daveba
+author: ArvindHarinder1
+manager: CelesteDG
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -14,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: asmalser-msft
+ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9ac9974be94195f6ed0315aece7dfea749ce33
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7f8325737a62bba71364c02a234636999b0b1b9c
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271783"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964138"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -15,11 +15,11 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 86113246fab399e8364653198e9a6971317e3f2c
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505814"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121689"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -27,7 +27,7 @@ ms.locfileid: "59505814"
 
 このガイドの最後では、アプリケーションは、個人アカウント (outlook.com、live.com などを含む) だけでなく、Azure Active Directory と統合されたすべての会社や組織の職場/学校アカウントのサインインを受け入れられるようになります。
 
-> このガイドには Visual Studio 2017 が必要です。  お持ちでない場合は、  [Visual Studio 2017 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)
+> このガイドには Visual Studio 2017 が必要です。  お持ちでない場合は、  [Visual Studio 2017 を無料でダウンロードできます。](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 

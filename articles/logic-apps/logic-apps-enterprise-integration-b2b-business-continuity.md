@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: 8d024e0bc90724892bc53f8895b270716ad0cefc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099435"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967752"
 ---
 # <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での B2B 統合アカウントの複数のリージョンにわたるディザスター リカバリー
 
@@ -62,7 +62,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 障害イベント時に、プライマリ リージョンでビジネス継続性を確保できない場合は、セカンダリ リージョンにトラフィックをダイレクトします。 セカンダリ リージョンは、パートナーと合意した RPO/RTO を満たすため、迅速にビジネスに必要な機能を復旧するのに役立ちます。 また、リージョン間でフェールオーバーするための労力を最小限に抑えます。 
 
-プライマリ リージョンからセカンダリ リージョンに制御番号をコピーする際に、待ち時間が予想されます。 障害イベント時に、重複して生成された制御番号をパートナーに送信することを回避するには、[PowerShell コマンドレット](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery)を使用してセカンダリ リージョン契約で制御番号を増やすことをお勧めします。
+プライマリ リージョンからセカンダリ リージョンに制御番号をコピーする際に、待ち時間が予想されます。 障害イベント時に、重複して生成された制御番号をパートナーに送信することを回避するには、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用してセカンダリ リージョン契約で制御番号を増やすことをお勧めします。
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>障害イベント後のプライマリ リージョンへの復帰
 
@@ -70,7 +70,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 1. セカンダリ リージョンでパートナーからのメッセージの受け入れを停止します。  
 
-2. [PowerShell コマンドレット](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery)を使用して、すべてのプライマリ リージョン契約について、生成される制御番号を増やします。  
+2. [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用して、すべてのプライマリ リージョン契約について、生成される制御番号を増やします。  
 
 3. セカンダリ リージョンからプライマリ リージョンにトラフィックをダイレクトします。
 

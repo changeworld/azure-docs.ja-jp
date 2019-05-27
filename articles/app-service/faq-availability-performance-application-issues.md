@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: f455985d2a7d05f45100d4a88b43c688fe1a7767
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565965"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955753"
 ---
+# <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
+
 > [!NOTE]
 > 以下のガイドラインのいくつかは、Windows または Linux App Services でのみ有効な場合があります。 たとえば、Linux App Services は既定で 64 ビット モードで動作します。
 >
-
-# <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
 この記事では、[Azure App Service の Web アプリ機能](https://azure.microsoft.com/services/app-service/web/)でのアプリケーション パフォーマンスの問題に関するよくあるご質問 (FAQ) への回答を示します。
 
@@ -161,7 +161,7 @@ Web worker ロールで使用可能な追加のメモリを利用できるよう
 
 また、64 ビット環境には [基本] または [標準] サービス プランが必要なことにも注意してください。 [無料] および [共有] プランは常に 32 ビット環境で実行されます。
 
-詳細については、「[Configure web apps in App Service (App Service での Web アプリの構成)](web-sites-configure.md)」を参照してください。
+詳細については、「[Configure web apps in App Service (App Service での Web アプリの構成)](configure-common.md)」を参照してください。
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>230 秒後に要求がタイムアウトになるのはなぜですか?
 

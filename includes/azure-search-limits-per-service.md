@@ -5,15 +5,15 @@ services: search
 author: HeidiSteen
 ms.service: search
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 30c6fc189ebcd497a214828f65213a55cefdf03f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b298c87d802314bd865bd6f38c35e4361eb69f3f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58633032"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160496"
 ---
 ストレージは、ディスク容量、またはインデックス、ドキュメント、その他の高水準リソースの "*最大数*" のハード制限のうち、先に達したものによって制約されます。 次の表では、ストレージの制限についてまとめています。 インデックス、ドキュメント、その他のオブジェクトの上限については、[リソースごとの制限](../articles/search/search-limits-quotas-capacity.md#index-limits)に関するページを参照してください。
 

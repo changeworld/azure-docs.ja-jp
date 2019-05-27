@@ -3,8 +3,8 @@ title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU | Mic
 description: 古い仮想ネットワーク ゲートウェイ SKU (Basic、Standard、HighPerformance) を使用する方法。
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: jpconnock
+author: WenJason
+manager: digimobile
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
-ms.author: cherylmc
+origin.date: 03/20/2018
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66159275"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -67,3 +68,5 @@ Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerfor
 新しいゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
 構成設定の詳細については、「[VPN ゲートウェイの構成設定について](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
+
+<!--Update_Description: wording update-->

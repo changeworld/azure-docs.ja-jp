@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: 5dc05b08e84decf958481d19b9cfb820947fae78
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0ad3d1693e2dbf1c4f5329ec23265ea1b3469e2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66125455"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>PowerShell を使用した Azure CDN の管理
 PowerShell により、Azure CDN プロファイルとエンドポイントを柔軟に管理することができます。  この PowerShell は対話的に使用することも、スクリプトを記述して、管理タスクを自動化することもできます。  このチュートリアルでは、Azure CDN のプロファイルとエンドポイントを管理するために、PowerShell で実行できる一般的なタスクをいくつか紹介します。

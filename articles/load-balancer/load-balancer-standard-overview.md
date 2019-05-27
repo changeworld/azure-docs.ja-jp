@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578528"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957472"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 
@@ -226,7 +226,6 @@ Standard Load Balancer の価格の情報については、[Load Balancer の価
 - SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
 - スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。
 - Load Balancer の規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとその関連するバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
-- Load Balancer のフロントエンドには、グローバルな仮想ネットワークのピアリングを通じてアクセスすることはできません。
 - [サブスクリプションの移動操作](../azure-resource-manager/resource-group-move-resources.md)は、Standard SKU LB および PIP リソースではサポートされていません。
 - VNet およびその他の Microsoft プラットフォーム サービスなしの Web Worker ロールにアクセスできるのは、事前 VNet サービスおよびその他のプラットフォーム サービスの動作の副作用により、内部の Standard Load Balancer が使用される場合のみです。 各サービス自体または基になるプラットフォームは予告なく変更される場合があるため、これに依存しないでください。 内部の Standard Load Balancer のみを使用する場合は、必要に応じて、[送信接続](load-balancer-outbound-connections.md)を明示的に作成する必要があることを常に想定する必要があります。
 - Load Balancer は TCP または UDP 製品であり、これらの特定の IP プロトコルに対する負荷分散とポート フォワーディングを行います。  負荷分散規則と受信 NAT 規則は TCP および UDP についてサポートされており、ICMP を含む他の IP プロトコルについてはサポートされていません。 Load Balancer は、UDP または TCP のフローのペイロードを終了したり、それに応答したり、それ以外の対話を行うことはありません。 プロキシではありません。 フロントエンドへの接続の検証が、負荷分散または受信 NAT 規則 (TCP または UDP) で使用されるのと同じプロトコルの帯域内で成功する必要があり、"_かつ_"、仮想マシンの少なくとも 1 つがクライアントに対するフロントエンドからの応答を生成する必要があります。  Load Balancer フロントエンドからの帯域内応答を受け取らない場合は、仮想マシンが応答できないことを示します。  応答できる仮想マシンがない状態で、Load Balancer フロントエンドと対話することはできません。  これは、[ポート マスカレード SNAT](load-balancer-outbound-connections.md#snat) が TCP および UDP に対してのみサポートされている送信接続にも当てはまります。ICMP などの他の IP プロトコルも失敗します。  軽減のためにインスタンスレベルのパブリック IP アドレスを割り当てます。

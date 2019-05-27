@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: bd137b71cab4a345afce835effd2ecb0c03df312
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882983"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167024"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>クイック スタート:PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングします。
 

@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: scottwhi
 ms.custom: include file
 ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193421"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124729"
 ---
 Bing Statistics は、Bing Search API に分析情報を提供します。 分析情報には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれています。 Bing Search の有料サブスクリプションで Bing Statistics を有効にするには、[Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)に移動し、有料サブスクリプションを選択して、[Enable Bing Statistics]\(Bing Statistics を有効にする\) をクリックします。 Bing Statistics を有効にすると、サブスクリプションの料金が少し上がります ([価格](https://aka.ms/bingstatisticspricing)に関するページをご覧ください)。
 

@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.custom: include file
 ms.openlocfilehash: 5d57d7e18befba175a5a8a825494ce512644b5a2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804456"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131768"
 ---
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. **[リソースの作成]** > **[データベース]** > **[Azure Cosmos DB]** を選択します。

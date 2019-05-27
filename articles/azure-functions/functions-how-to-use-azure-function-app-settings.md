@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511212"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957396"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -61,7 +61,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 + [認証](#auth)
 + [API の定義](#swagger)
 
-App Service の設定を使用する方法の詳細については、[Azure App Service の設定の構成](../app-service/web-sites-configure.md)に関するページをご覧ください。
+App Service の設定を使用する方法の詳細については、[Azure App Service の設定の構成](../app-service/configure-common.md)に関するページをご覧ください。
 
 ### <a name="editor"></a>App Service Editor
 
@@ -124,7 +124,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 ## <a name="next-steps"></a>次の手順
 
-+ [Azure App Service の設定の構成](../app-service/web-sites-configure.md)
++ [Azure App Service の設定の構成](../app-service/configure-common.md)
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
 
 

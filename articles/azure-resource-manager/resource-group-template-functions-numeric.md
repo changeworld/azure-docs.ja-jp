@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
 ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128652"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
 
@@ -47,7 +47,7 @@ ms.locfileid: "56266978"
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- | 
 |operand1 |はい |int |加算する最初の整数。 |
 |operand2 |はい |int |加算する 2 つ目の整数。 |
@@ -93,7 +93,7 @@ ms.locfileid: "56266978"
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
 
@@ -118,9 +118,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| loopName | いいえ  | 文字列 | 反復処理の取得対象となるループの名前。 |
+| loopName | いいえ  | string | 反復処理の取得対象となるループの名前。 |
 | offset |いいえ  |int |0 から始まる反復値に追加する整数。 |
 
 ### <a name="remarks"></a>解説
@@ -164,7 +164,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |除算される整数。 |
 | operand2 |はい |int |除算に使用される整数。 0 にすることはできません。 |
@@ -210,7 +210,7 @@ copyIndex がリソースの反復処理を指すのかプロパティの反復�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | divResult | int | 2 |
 
@@ -235,7 +235,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |浮動小数点数に変換する値。 |
 
@@ -269,7 +269,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
@@ -304,7 +304,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
@@ -329,7 +329,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -367,7 +367,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -393,7 +393,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -431,7 +431,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -457,7 +457,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |除算される整数。 |
 | operand2 |はい |int |除算に使用される整数。0 にすることはできません。 |
@@ -502,7 +502,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | modResult | int | 1 |
 
@@ -527,7 +527,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |乗算する最初の整数。 |
 | operand2 |はい |int |乗算する 2 つ目の整数。 |
@@ -573,7 +573,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
 
@@ -598,7 +598,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |はい |int |減算される整数。 |
 | operand2 |はい |int |減算する整数。 |
@@ -643,7 +643,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 

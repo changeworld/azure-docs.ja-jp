@@ -3,27 +3,26 @@ title: Azure AD アプリ開発者向けのサポート オプションとヘル
 description: Microsoft ID (Azure Active Directory および Microsoft アカウント) と連携するアプリケーションを作成するときの開発関連の質問や問題について、ヘルプとサポートを入手する方法について確認します
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/14/2019
-ms.author: celested
-ms.reviewer: jmprieur, dadobali
+ms.author: ryanwi
+ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501597"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962663"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -75,7 +74,7 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 
 Stack Overflow の次の投稿には、質問方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、質問に対するコミュニティ メンバーからの評価や回答がより早く返ってくる可能性が高まります。
 
-* [良い質問をする方法](https://stackoverflow.com/help/how-to-ask)
+* [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
 * [最小限の例、完全な例、実証可能な例を作成する方法](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>GitHub の issue を作成する

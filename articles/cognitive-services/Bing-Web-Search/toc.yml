@@ -105,6 +105,8 @@
       href: language-support.md
     - name: Bing Web Search API 用の分析
       href: bing-web-stats.md
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: サポート
       items:
         - name: User Voice フォーラム

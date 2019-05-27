@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572364"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116172"
 ---
 既に [Relay 名前空間を作成][namespace-how-to]していることを確認してください。
 
@@ -26,6 +26,6 @@ ms.locfileid: "51572364"
 6. **[ハイブリッド接続の作成]** の下で、ハイブリッド接続名の値を入力します。 その他は既定値のままにします。
    
     ![Select New](./media/relay-create-hybrid-connection-portal/create-hc-3.png)
-7. **作成**を選択します。
+7. **作成** を選択します。
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 

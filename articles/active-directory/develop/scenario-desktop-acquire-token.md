@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9d18c92cccac6bfb0bd359767ecdb51951268735
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406999"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962539"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ - トークンの取得
 
@@ -163,7 +163,7 @@ MSAL.NET チームでは、この拡張メカニズムを活用するために U
 
 #### <a name="other-optional-parameters"></a>その他の省略可能なパラメーター
 
-`AcquireTokenInteractive` のその他すべての省略可能なパラメーターについては、[AcquireTokenInteractiveParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) の参照ドキュメントに記載されています。
+`AcquireTokenInteractive` のその他すべての省略可能なパラメーターについては、[AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) の参照ドキュメントに記載されています。
 
 ## <a name="integrated-windows-authentication"></a>統合 Windows 認証
 
@@ -283,7 +283,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-AcquireTokenByIntegratedWindowsAuthentication で使用可能な修飾子の一覧については、[AcquireTokenByIntegratedWindowsAuthParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods) を参照してください。
+AcquireTokenByIntegratedWindowsAuthentication で使用可能な修飾子の一覧については、[AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods) を参照してください。
 
 ## <a name="username--password"></a>ユーザー名/パスワード
 
@@ -519,7 +519,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-`AcquireTokenByUsernamePassword` に適用できるすべての修飾子の詳細については、[AcquireTokenByUsernamePasswordParameterBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods) を参照してください。
+`AcquireTokenByUsernamePassword` に適用できるすべての修飾子の詳細については、[AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods) を参照してください。
 
 ## <a name="command-line-tool-without-web-browser"></a>コマンドライン ツール (Web ブラウザーを使用しない)
 

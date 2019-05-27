@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/25/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a5a679c7a81fe7ac5fbe53fc56fe7cf63fb16976
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cb30f738d8a93f53c80697e7475b4f12f5bff63c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885283"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "66133335"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -119,7 +119,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>バックエンド プールと設定の作成
 
-[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) を使用して、アプリケーション ゲートウェイに対して *appGatewayBackendPool* という名前のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsettings) を使用して、バックエンド アドレス プールの設定を構成します。
+[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) を使用して、アプリケーション ゲートウェイに対して *appGatewayBackendPool* という名前のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド アドレス プールの設定を構成します。
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `

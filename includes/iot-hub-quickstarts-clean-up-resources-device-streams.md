@@ -9,11 +9,11 @@ ms.date: 01/15/2019
 ms.author: rezas
 ms.custom: include file
 ms.openlocfilehash: 979ca857a4410a8efd1b211afc09a0563d76a1ba
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830501"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158654"
 ---
 次の推奨記事に進む場合は、既に作成したリソースを維持して、再利用することができます。
 

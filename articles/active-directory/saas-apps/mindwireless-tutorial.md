@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2fce8b628798ef38889f64d9409bf586a85463b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269675"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65871862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>チュートリアル:Azure Active Directory と mindWireless の統合
 

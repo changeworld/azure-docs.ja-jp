@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1289ba615fea6e6c43b256da6978534d9edc7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 32ad8c12834ee538e231b38f9098c741fdc17954
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799387"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65997238"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスとは
 
@@ -64,7 +64,7 @@ ms.locfileid: "59799387"
 
 - **[ユーザー](conditions.md#users-and-groups)**:アクセスを試行するユーザー (**Who (だれが)**)。
 
-- **[クラウド アプリ](conditions.md#cloud-apps)**:アクセス試行のターゲット (**What (何を)**)。
+- **[クラウド アプリ](conditions.md#cloud-apps-and-actions)**:アクセス試行のターゲット (**What (何を)**)。
 
 この 2 つの条件は、条件付きアクセス ポリシーでは必須です。 2 つの必須条件に加えて、アクセス試行の実行方法を説明する追加の条件を含めることもできます。 一般的な例として、モバイル デバイスの使用や、企業ネットワーク外の場所があります。 詳しくは、「[Conditions in Azure Active Directory conditional access](conditions.md)」(Azure Active Directory の条件付きアクセスの条件) をご覧ください。
 
@@ -86,9 +86,9 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 
 ユーザーがフェデレーション認証サービスにサインインした後、他のポリシー要件 (デバイス コンプライアンスや承認されたアプリケーションなど) が Azure AD によって処理されます。
 
-## <a name="license-requirements-for-using-conditional-access"></a>条件付きアクセスを使用するためのライセンス要件
+## <a name="license-requirements"></a>ライセンスの要件
 
-条件付きアクセスを使用するには、Azure AD Premium ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>次の手順
 

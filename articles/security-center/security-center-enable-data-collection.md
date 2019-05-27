@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.author: v-mohabe
+ms.openlocfilehash: 8fed3ce98b23c5ac1cc97b88a278c5946f06af8e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006743"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968794"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Microsoft Monitoring Agent エージェントでは、クラッシュ ダンプ ファイルもワークスペースにコピーします。
@@ -77,11 +77,11 @@ Security Center によって収集されたデータは、Log Analytics ワー�
 Security Center によって作成されたワークスペースを選択するには、次の手順に従います。
 
 1. **[既定のワークスペース構成]** で、[Security Center によって作成されたワークスペースを使用] を選択します。
-   ![価格レベルを選択する][10] 
+   ![価格レベルの選択][10] 
 
 1. **[Save]** をクリックします。<br>
     Security Center で新しいリソース グループとその位置情報の既定のワークスペースが作成され、エージェントがそのワークスペースに接続されます。 ワークスペースとリソース グループの名前付け規則は次のとおりです。<br>
-   **ワークスペース:DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ:DefaultResourceGroup-[geo]**
+   **ワークスペース: DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ: DefaultResourceGroup-[geo]**
 
    複数の地理的位置情報からの VM がサブスクリプションに含まれている場合、Security Center では複数のワークスペースを作成します。 複数のワークスペースは、データのプライバシー ルールを維持するために作成されます。
 1. サブスクリプションに設定された価格レベルに従い、ワークスペースで Security Center ソリューションが自動的に有効になります。 
@@ -137,8 +137,8 @@ Security Center によって作成されたワークスペースを選択する�
     a.  Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
      
     b.  リスト内の目的のサブスクリプションの [設定] 列にある **[設定の編集]** をクリックし、エージェントを接続するワークスペースを選択します。
-        ![ワークスペースを選択する][8] c.  価格レベルを設定します。
-        ![価格レベルを選択する][9] 
+        ![ワークスペースを選択][8] c. 価格レベルを設定します。
+        ![価格レベルの選択][9] 
    
    >[!NOTE]
    >対象のワークスペースで **Security** ソリューションまたは **SecurityCenterFree** ソリューションが既に有効になっている場合、価格は自動的に設定されます。 
@@ -256,7 +256,7 @@ Security Center がお使いの VM からセキュリティ データを収集�
    b.  エージェントを接続するワークスペースを選択します。 ワークスペースが存在するサブスクリプションが Security Center で使用しているサブスクリプションと同じであること、またそのワークスペースに対する読み取り/書き込みのアクセス許可があることを確認します。
        ![ワークスペースを選択][8]
 3. 価格レベルを設定します。
-   ![価格レベルを選択する][9] 
+   ![価格レベルの選択][9] 
    >[!NOTE]
    >対象のワークスペースで **Security** ソリューションまたは **SecurityCenterFree** ソリューションが既に有効になっている場合、価格は自動的に設定されます。 
    > 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663568"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956227"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
 
@@ -67,7 +67,7 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault からのソース アプリケーション設定
 
-Key Vault 参照は [[アプリケーション設定]](web-sites-configure.md#app-settings) の値として使用できます。サイト構成ではなく、Key Vault でシークレットを保存できます。格納中のアプリケーション設定は暗号化されて保護されますが、シークレットの管理機能が必要な場合、Key Vault に進む必要があります。
+Key Vault 参照は [[アプリケーション設定]](configure-common.md#configure-app-settings) の値として使用できます。サイト構成ではなく、Key Vault でシークレットを保存できます。格納中のアプリケーション設定は暗号化されて保護されますが、シークレットの管理機能が必要な場合、Key Vault に進む必要があります。
 
 アプリケーション設定に Key Vault 参照を使用するには、設定の値として参照を設定します。 アプリは通常どおり、そのキーを利用してシークレットを参照できます。 コードに変更を加える必要はありません。
 

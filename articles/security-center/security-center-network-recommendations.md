@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
-ms.author: monhaber
-ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: v-mohabe
+ms.openlocfilehash: e038c500d93e4d631c585eed743a373b5e6cec85
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046208"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968348"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
