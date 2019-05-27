@@ -4,7 +4,7 @@ description: この記事では、Azure AD アプリケーション プロキシ
 services: active-directory
 documentationcenter: ''
 author: msmimart
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578591"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783287"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。

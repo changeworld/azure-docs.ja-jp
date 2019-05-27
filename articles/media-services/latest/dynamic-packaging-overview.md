@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 02c3fb309755964f1a4b196189b7742fa3f91a9a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 78e3897ec653326bcd88a538a6ea7d33938659b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148210"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761945"
 ---
 # <a name="dynamic-packaging"></a>ダイナミック パッケージ
 
@@ -43,7 +43,7 @@ Media Services でダイナミック パッケージは、ライブまたはオ�
 
 次の図は、ダイナミック パッケージのワークフローを使用したオンデマンド ストリーミングを示しています。
 
-![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
 
@@ -196,7 +196,7 @@ Smooth Streaming のマニフェストの例は、次のとおりです。
 動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御できます。 詳細については、[フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)に関するページを参照してください。
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](developers-guide.md) のいずれかを使用してください。
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

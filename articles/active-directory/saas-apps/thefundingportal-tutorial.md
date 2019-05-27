@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 4f7edd13c07d24d5d5a12fb9973083db44f0211f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257741"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901811"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>チュートリアル:Azure Active Directory と The Funding Portal の統合
 

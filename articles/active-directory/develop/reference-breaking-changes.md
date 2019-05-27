@@ -3,8 +3,8 @@ title: Azure Active Directory 重大な変更リファレンス | Microsoft Docs
 description: アプリケーションに影響を与える可能のある Azure AD プロトコルの変更について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 4ea3ec9024e4ea6a254fb6fe80f93886dc31a0ff
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401307"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545797"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 

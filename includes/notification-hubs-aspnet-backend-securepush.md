@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52271014"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111518"
 ---
 ## <a name="webapi-project"></a>Web API プロジェクト
 1. Visual Studio で、**ユーザーへの通知**に関するチュートリアルで作成した **AppBackend** プロジェクトを開きます。

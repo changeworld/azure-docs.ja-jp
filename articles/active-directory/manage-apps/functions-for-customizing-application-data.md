@@ -3,8 +3,8 @@ title: Azure Active Directory における属性マッピングの式の書き�
 description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
-ms.author: chmutali
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991482"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824641"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -48,7 +48,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
@@ -61,7 +61,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
@@ -77,7 +77,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
 | **source1  … sourceN** |必須、回数は可変 |String |結合する文字列値。 |
@@ -90,7 +90,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
@@ -104,7 +104,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String | 通常は、名または姓の属性です。 |
 
@@ -116,7 +116,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
@@ -143,7 +143,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
@@ -166,7 +166,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
 
@@ -179,7 +179,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
 
@@ -191,7 +191,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**source** 値。 |
 | **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
@@ -204,7 +204,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**source セクション セクション** 値。 |
 
@@ -216,7 +216,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
@@ -231,7 +231,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
@@ -244,7 +244,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | type | メモ |
+| Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
