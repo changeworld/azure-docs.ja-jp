@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 05/15/2019
 ms.author: apimpm
-ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: e2362d06fa0ef795122a2d47a7a621b66fdd9470
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407625"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780352"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Azure API Management で外部の Azure Cache for Redis を使用する
 
@@ -40,11 +40,6 @@ Azure API Management では、組み込みのキャッシュを利用できる�
 
 > [!div class="checklist"]
 > * API Management に外部キャッシュを追加する
-
-## <a name="availability"></a>可用性
-
-> [!NOTE]
-> この機能は現在、Azure API Management の**従量課金**レベルでのみ使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,6 +89,7 @@ Azure API Management に外部の Azure Cache for Redis を追加するには、
 Azure API Management で外部キャッシュが構成されたら、キャッシュ ポリシーを通じてそのキャッシュを使用できます。 詳しい手順については、「[キャッシュを追加して Azure API Management のパフォーマンスを向上させる](api-management-howto-cache.md)」をご覧ください。
 
 ## <a name="next-steps"> </a>次のステップ
+
 * キャッシュ ポリシーの詳細については、[API Management ポリシー リファレンス][API Management policy reference]の[キャッシュ ポリシー][Caching policies]に関するページを参照してください。
 * ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 

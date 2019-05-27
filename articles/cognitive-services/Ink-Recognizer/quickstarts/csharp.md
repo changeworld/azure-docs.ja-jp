@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 800cf66e15c25540eac4809a27317598b72b8124
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9bb9c23cc1f807cae1d0d22f1652e8f4408f1f91
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406752"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518664"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
 
@@ -34,11 +34,11 @@ ms.locfileid: "65406752"
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
     - Visual Studio に Newtonsoft.Json を NuGet パッケージとしてインストールするには、次の手順に従います。
         1. **Solution Manager** を右クリックします
-        2.  **[NuGet パッケージの管理]**
+        2. **[NuGet パッケージの管理]**
         3. `Newtonsoft.Json` を探して、パッケージをインストールします
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
-- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) にあります。
+- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json) にあります。
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -158,7 +158,7 @@ public static JObject LoadJson(string fileLocation){
 
 ## <a name="run-the-application-and-view-the-response"></a>アプリケーションを実行し、応答を表示する
 
-アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) でも確認できます。
+アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json) でも確認できます。
 
 
 ## <a name="next-steps"></a>次の手順

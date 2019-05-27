@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999126"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798239"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Search API の言語と地域のサポート
 
@@ -110,3 +110,7 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |イギリス|英語|en-GB|
 |米国|英語|en-US|
 |米国|スペイン語|es-US|
+
+## <a name="next-steps"></a>次の手順
+
+* [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

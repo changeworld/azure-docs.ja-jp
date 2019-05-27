@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d05cbd30565ced73352736508fc4bcc376985554
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b5a13dfd760f0c94343b151c9b4c1148c949e854
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149031"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790010"
 ---
 # <a name="transfer-data-with-azcopy-v10"></a>AzCopy v10 を使用してデータを転送する
 
@@ -53,7 +53,7 @@ AzCopy はインストールが必要ありません。 任意のコマンド �
 
 AzCopy は、Azure Storage での認証時、次のオプションをサポートします。
 - **Azure Active Directory** (**BLOB サービスと Data Lake Storage Gen2 サービス**でサポートされます)。 Azure Active Directory でサインインするには、```.\azcopy login``` を使用します。  Azure Active Directory 認証で Blob Storage に書き込むには、ユーザーに ["ストレージ BLOB データ共同作成者" ロールが割り当てられている](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)必要があります。 Azure リソースに対してマネージド ID で認証を行うには、`azcopy login --identity` を使用します。
-- **Shared Access Signature トークン (BLOB サービスとファイル サービスでサポートされます)**。 Shared Access Signature (SAS) トークンをコマンド ラインで BLOB パスに追加して使用します。 Azure portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)をご覧ください。
+- **Shared Access Signature トークン (BLOB サービスとファイル サービスでサポートされます)**。 Shared Access Signature (SAS) トークンをコマンド ラインで BLOB パスに追加して使用します。 Azure portal、[Storage Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)、[PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken)、またはその他の好みのツールを使用して、SAS トークンを生成できます。 詳しくは、[例](https://docs.microsoft.com/azure/storage/blobs/common/storage-dotnet-shared-access-signature-part-1)をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
 

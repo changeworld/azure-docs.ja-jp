@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d8e7bba6d43ba1daa3173ce5d7e043e2310a482
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8a1ae906a72d781f638fb171a409b860ffa6d501
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65229983"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517700"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -22,7 +22,7 @@ ms.locfileid: "65229983"
 
 ## <a name="alert-types"></a>アラートの種類
 
-Automation Runbook は、次の 4 種類のアラートで使用できます。
+Automation Runbook は、次の 3 つの種類のアラートで使用できます。
 
 * 共通アラート
 * アクティビティ ログ アラート

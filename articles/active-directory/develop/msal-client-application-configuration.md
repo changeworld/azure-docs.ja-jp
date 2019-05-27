@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a48eea9fedd2d82f44693d58b31ee0d5c8c288d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4d731a8153dc6a70382c0d87cc20d8c961d9fe24
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138547"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546008"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -35,13 +35,13 @@ ms.locfileid: "65138547"
     - [クライアント シークレット](#client-secret) (機密クライアント アプリケーション用)
 - [ログ オプション](#logging) (ログ レベル、個人データの制御、およびライブラリを使用するコンポーネントの名前など)。
 
-## <a name="authority"></a>機関
+## <a name="authority"></a>Authority
 機関は、MSAL がトークンを要求できるディレクトリを示す URL です。 通常の機関を次に示します。
 
 - https://login.microsoftonline.com/&lt;tenant&gt;/。&lt;tenant&gt; は Azure AD テナントのテナント ID または Azure AD テナントに関連付けられたドメインです。  特定の組織のユーザーをサインインする場合にのみ使用されます。
-- https://login.microsoftonline.com/common/。 職場および学校アカウント、または Microsoft 個人アカウントを持つユーザーをサインインする場合に使用されます。
-- https://login.microsoftonline.com/organizations/。 職場および学校アカウントを持つユーザーをサインインする場合に使用されます。
-- https://login.microsoftonline.com/consumers/。 Microsoft の個人アカウント (ライブ) のみを持つユーザーをサインインする場合に使用されます。
+- https://login.microsoftonline.com/common/ 職場および学校アカウント、または Microsoft 個人アカウントを持つユーザーをサインインする場合に使用されます。
+- https://login.microsoftonline.com/organizations/ 職場および学校アカウントを持つユーザーをサインインする場合に使用されます。
+- https://login.microsoftonline.com/consumers/ Microsoft の個人アカウント (ライブ) のみを持つユーザーをサインインする場合に使用されます。
 
 機関の設定は、アプリケーション登録ポータルで宣言されているものと一致している必要があります。
 
@@ -58,7 +58,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 
 インスタンスと対象ユーザーを連結して、機関 URL として指定できます。 MSAL 3.x より前のバージョンの MSAL.NET では、ターゲットにしたいクラウドに応じて機関を自分で構成して、対象ユーザーのサインインを実行する必要がありました。  次の図に、機関 URL がどのように構成されるかを示します。
 
-![機関](media/msal-client-application-configuration/authority.png)
+![Authority](media/msal-client-application-configuration/authority.png)
 
 ## <a name="cloud-instance"></a>クラウド インスタンス
 **インスタンス**を使用して、アプリケーションでサインインするユーザーが Microsoft Azure パブリック クラウドのユーザーであるか各国のクラウドのユーザーであるかを指定します。 コードで MSAL を使用して、列挙を使用するか、URL がわかっている場合は URL を [各国のクラウド インスタンス](authentication-national-cloud.md#azure-ad-authentication-endpoints) に `Instance` メンバーとして渡すことで、Azure クラウド インスタンスを設定できます。

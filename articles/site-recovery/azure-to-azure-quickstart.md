@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23aeeb8cd14ec2d0654525af42b48f59a6f7564f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855284"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520321"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定        
 
@@ -45,7 +45,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 レプリケーション ジョブの完了後、レプリケーションの状態を確認し、レプリケーションの設定を変更して、デプロイをテストできます。
 
-1. VM のメニューで、**[ディザスター リカバリー]** をクリックします。
+1. **[操作]** で、**[ディザスター リカバリー]** をクリックします。
 2. レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
 
    ![レプリケーションの状態](media/azure-to-azure-quickstart/replication-status.png)

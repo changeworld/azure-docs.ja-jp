@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse のチート シート | Microsoft Docs
 description: Azure SQL Data Warehouse ソリューションをすばやく構築するためのリンクとベスト プラクティスが見つかります。
 services: sql-data-warehouse
-author: acomet
+author: happynicolle
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: acomet
+ms.author: nicw
 ms.reviewer: igorstan
-ms.openlocfilehash: 795facc6148d33592ff8eac5083a273dc3d5cb26
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ad205fbbd17b291bf45e0c0b057ee81b80c0730b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314910"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762807"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
 このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
@@ -50,7 +50,7 @@ ms.locfileid: "57314910"
 
 テーブルのプロパティに応じて、次の方法を使用します。
 
-| type | 適しているプロパティ| 条件|
+| Type | 適しているプロパティ| 条件|
 |:--- |:--- |:--- |
 | レプリケート | • 圧縮 (最大 5 倍の圧縮) 後のストレージが 2 GB 未満である、スター スキーマの小さいディメンション テーブル |• テーブルに対して多くの書き込みトランザクション (挿入、アップサート、削除、更新など) が行われる<br></br>• Data Warehouse ユニット (DWU) のプロビジョニングを頻繁に変更する<br></br>• 使うのは 2 - 3 列だけであるがテーブルには多くの列がある<br></br>• レプリケート テーブルにインデックスを作成する |
 | ラウンド ロビン (既定) | • 一時/ステージング テーブル<br></br> • 明白な結合キーまたは適切な候補列がない |• データ移動のためにパフォーマンスが低い |
@@ -70,7 +70,7 @@ ms.locfileid: "57314910"
 
 インデックスは、テーブルを迅速に読み取るために役立ちます。 ニーズに応じて、独自のテクノロジのセットを使うことができます。
 
-| type | 適しているプロパティ | 条件|
+| Type | 適しているプロパティ | 条件|
 |:--- |:--- |:--- |
 | ヒープ | • ステージング/一時テーブル<br></br>• 小さいテーブルと小さい参照 |• すべての参照がテーブル全体をスキャンします |
 | クラスター化インデックス | • 最大 1 億行を含むテーブル<br></br>• 1 - 2 列のみが頻繁に使われる大規模なテーブル (1 億行以上) |• レプリケート テーブルで使われます<br></br>• 複数の結合および Group By 操作を含む複雑なクエリがあります<br></br>• インデックス付き列の更新を行います。これはメモリを消費します |

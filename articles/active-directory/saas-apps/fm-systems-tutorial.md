@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 77e58ea830de1e8ab7e3643ee5694a5e3f609c53
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: dda1447a049071a0871079f2cabd046ed7c479d6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564919"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65770145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>チュートリアル:Azure Active Directory と FM:Systems の統合
 
@@ -107,7 +107,7 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
     **[応答 URL]** ボックスに、`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx` のパターンを使用して URL を入力します
     
     > [!NOTE]
-    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[FM:Systems クライアント サポート チーム](https://fmsystems.com/ask-us/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[FM:Systems クライアント サポート チーム](https://fmsystems.com/support-services/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -125,7 +125,7 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-fmsystems-single-sign-on"></a>FM:Systems のシングル サインオンの構成
 
-**FM:Systems** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [FM:Systems サポート チーム](https://fmsystems.com/ask-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**FM:Systems** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [FM:Systems サポート チーム](https://fmsystems.com/support-services/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

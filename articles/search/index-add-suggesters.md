@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021890"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521884"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Azure Search で先行入力のために suggester をインデックスに追加する
 
@@ -119,7 +119,7 @@ suggester を既存のインデックスに追加する場合に、既存のフ�
 
 suggester は要求において、操作に沿って参照されます。 たとえば、GET REST の呼び出しの場合、documents コレクションには `suggest` または `autocomplete` のどちらかを指定します。 REST の場合、suggester が作成された後に、クエリ ロジック内で [Suggestions API](https://docs.microsoft.com/rest/api/searchservice/suggestions) または [Autocomplete API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) を使用します。
 
-.NET の場合、[SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) または [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet) を使用します。
+.NET の場合、[SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) または [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet) を使用します。
 
 両方の要求を示した例については、[Azure Search でオートコンプリートと検索候補を追加する例](search-autocomplete-tutorial.md)に関するページをご覧ください。
 

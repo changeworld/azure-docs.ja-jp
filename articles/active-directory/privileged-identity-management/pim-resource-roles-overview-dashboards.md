@@ -16,12 +16,12 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37057e531ea8387fbed84c9b03bbfb9c14d160ea
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e5404d1b85821458aedef64b72ae635ea49aa1ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574962"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602477"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>PIM でアクセス レビューを実行するためのリソース ダッシュボードの使用
 
@@ -31,9 +31,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でアク
 - 割り当ての種類ごとにロールの割り当ての分布が表示された 2 つのグラフ。
 - 新しいロールの割り当てに関連するデータ領域。
 
-![グラフが表示された [管理者ビュー] のスクリーンショット](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![グラフが表示された [管理者ビュー] のスクリーンショット](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
-![データの一覧が表示された [管理者ビュー] ダッシュボードのスクリーンショット](media/azure-pim-resource-rbac/role-settings.png)
+![データの一覧が表示された [管理者ビュー] ダッシュボードのスクリーンショット](media/pim-resource-roles-overview-dashboards/role-settings.png)
 
 過去 7 日間のリソース ロールのアクティブ化がグラフィカルに表示されています。 このデータは、選択したリソースが対象となっていて、特に一般的なロール (所有者、共同作成者、ユーザー アクセス管理者) と、組み合わせられたすべてのロールのアクティブ化を表示しています。
 

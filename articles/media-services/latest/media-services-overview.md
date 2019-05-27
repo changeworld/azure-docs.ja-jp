@@ -13,22 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/07/2019
+ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b07675e25c0380921e24059ff0107fcfe1bb3873
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414021"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602104"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
 
 クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。 アプリケーション開発者、コール センター、政府機関、エンターテイメント会社のいずれであっても、Media Services を利用すると、今日の最も一般的なモバイル デバイスとブラウザーの多くのユーザーに、優れた品質のメディア エクスペリエンスを提供するアプリケーションを作成できます。 
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](developers-guide.md) のいずれかを使用します。
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用します。
 
 ## <a name="what-can-i-do-with-media-services"></a>Media Services の機能
 
@@ -75,7 +75,6 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 * [アカウントの作成 - CLI](create-account-cli-how-to.md)
 * [API へのアクセス - CLI](access-api-cli-how-to.md)
-* [SDK を使用した開発を始める](developers-guide.md)
 * [HTTPS をジョブの入力とするエンコード - .NET](job-input-from-http-how-to.md)  
 * [イベントの監視 - ポータル](monitor-events-portal-how-to.md)
 * [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 

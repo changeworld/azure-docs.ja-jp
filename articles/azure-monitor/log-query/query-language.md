@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749820"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560850"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor ログ クエリ
 Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azure Monitor ログ クエリでは、同じ Kusto クエリ言語のバージョンが使用されます。 [Kusto クエリ言語のドキュメント](/azure/kusto/query)には言語に関するすべての詳細が記載されているため、Azure Monitor ログ クエリを記述するためのプライマリ リソースとなります。 このページでは、クエリの記述方法を学習するためのその他のリソースへのリンクと、言語による Azure Monitor の実装の違いに関する情報へのリンクを示します。
@@ -61,7 +61,7 @@ Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azur
 ## <a name="cheatsheets"></a>チートシート
 
 -  [SQL と Azure Monitor ログ クエリ](sql-cheatsheet.md)に関する記事は、SQL を使い慣れているユーザーにとって役立ちます。
--  [Splunk と Azure Monitor ログ クエリ](sql-cheatsheet.md)に関する記事は、Splunk を使い慣れているユーザーに役立ちます。
+-  [Splunk と Azure Monitor ログ クエリ](splunk-cheatsheet.md)に関する記事は、Splunk を使い慣れているユーザーに役立ちます。
  
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670878"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793670"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -166,5 +166,5 @@ Azure ディザスター リカバリー データ センターへのすべて�
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* Site Recovery を使用して SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法の詳細については、「[SAP NetWeaver: Azure Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr-sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションのテスト計画のオプションについて説明しています。
+* Site Recovery を使用して SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法の詳細については、「[SAP NetWeaver: Azure Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr_sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションのテスト計画のオプションについて説明しています。
 * Site Recovery を使用した[他のワークロードのレプリケート](site-recovery-workload.md)に関する記事をご覧ください。

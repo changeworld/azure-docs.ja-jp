@@ -4,7 +4,7 @@ description: Microsoft Authentication Library (MSAL) を使用したトークン
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,26 +17,26 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d32b56b28d9ce7425e782fc10fa9ffb67047ce0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139519"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546063"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>MSAL を使用したトークンの取得とキャッシュ
-[アクセス トークン](access-tokens.md)により、クライアントは Azure によって保護された Web API を安全に呼び出すことができます。 Microsoft Authentication Library (MSAL) を使用してトークンを取得する方法はたくさんあります。 一部の方法では、Web ブラウザーを通じたユーザー操作が必要です。 ユーザー操作の必要がない方法もあります。 一般に、トークンを取得する方法は、アプリケーションがパブリック クライアント アプリケーション (デスクトップまたはモバイルのアプリ) か、機密クライアント アプリケーション (Web アプリ、Web API、または Windows サービスのようなデーモン アプリケーション) かに依存します。
+[アクセス トークン](access-tokens.md)により、クライアントは Azure によって保護された Web API を安全に呼び出すことができます。 Microsoft Authentication Library (MSAL) を使用してトークンを取得する方法はたくさんあります。 一部の方法では、Web ブラウザーを通じたユーザー操作が必要です。 ユーザー操作の必要がない方法もあります。 一般に、トークンを取得する方法は、アプリケーションがパブリック クライアント アプリケーション (デスクトップ アプリまたはモバイル アプリ) か、機密クライアント アプリケーション (Web アプリ、Web API、または Windows サービスのようなデーモン アプリケーション) かによって異なります。
 
 MSAL では、トークンは取得された後でキャッシュされます。  アプリケーション コードでは、他の手段でトークンを取得する前に、まず、(キャッシュからの) トークンの自動的な取得を試みる必要があります。
 
-また、トークン キャッシュをクリアすることもできます。これは、キャッシュからアカウントを削除することで実現されます。 ただし、これによってブラウザーにあるセッション Cookie が削除されることはありません。
+また、トークン キャッシュをクリアすることもできます。これは、キャッシュからアカウントを削除することによって行います。 ただし、これによってブラウザーにあるセッション Cookie が削除されることはありません。
 
 ## <a name="scopes-when-acquiring-tokens"></a>トークンを取得するときのスコープ
-[スコープ](v2-permissions-and-consent.md)は、アクセスを要求するクライアント アプリケーションのために Web API によって公開されているアクセス許可です。 クライアント アプリケーションでは、Web API にアクセスするためのトークンを取得するために認証要求を行うとき、これらのスコープに対するユーザーの同意を要求します。 MSAL では、開発者向け Azure AD (v1.0) と Microsoft ID プラットフォーム (v2.0) の API にアクセスするためのトークンを取得できます。 v2.0 プロトコルでは、リソースではなくスコープが要求で使用されます。 詳しくは、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関する記事を参照してください。 受け付けるトークンのバージョンに関する Web API の構成に基づいて、v2.0 エンドポイントから MSAL にアクセス トークンが返されます。
+[スコープ](v2-permissions-and-consent.md)は、アクセスを要求するクライアント アプリケーションのために Web API によって公開されているアクセス許可です。 クライアント アプリケーションでは、Web API にアクセスするためのトークンを取得するために認証要求を行うとき、これらのスコープに対するユーザーの同意を要求します。 MSAL では、開発者向け Azure AD (v1.0) と Microsoft ID プラットフォーム (v2.0) の API にアクセスするためのトークンを取得できます。 v2.0 プロトコルでは、リソースではなくスコープが要求で使用されます。 詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関する記事を参照してください。 受け付けるトークンのバージョンに関する Web API の構成に基づいて、v2.0 エンドポイントから MSAL にアクセス トークンが返されます。
 
 MSAL のトークン取得メソッドの多くでは、*scopes* パラメーターが必要です。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られたスコープとしては、[Microsoft Graph アクセス許可](/graph/permissions-reference)があります。
 
-MSAL で v1.0 のリソースにアクセスすることもできます。 詳しくは、[v1.0 アプリケーションのスコープ](msal-v1-app-scopes.md)に関する記事を参照してください。
+MSAL で v1.0 のリソースにアクセスすることもできます。 詳細については、[Scopes for a v1.0 application (v1.0 アプリケーションのスコープ)](msal-v1-app-scopes.md) に関する記事を参照してください。
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Web API に対して特定のスコープを要求する
 アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、*&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります

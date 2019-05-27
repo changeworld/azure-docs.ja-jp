@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 9b779021eca11638e8ee52ec11d082e5b0e89cd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506678"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786455"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -146,7 +146,7 @@ AKS では、アップストリームの Kubernetes プロジェクト内の安�
 
 パブリック プレビュー機能は、プレビュー段階にあり、運用環境向けではなく、AKS のテクニカル サポート チームによるサポートが営業時間内に限られるため、"ベスト エフォート" サポートに該当します。 追加情報については、次を参照してください。
 
-* [Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)
+* [Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
 > プレビュー機能は、Azure *サブスクリプション* レベルで有効になります。 運用サブスクリプションにはプレビュー機能をインストールしないでください。 運用サブスクリプションでは、プレビュー機能によって API の既定の動作が変更され、通常の操作が影響を受ける可能性があります。

@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793551"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522359"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
-バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
+バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。 
 
 ## <a name="new-azure-regions"></a>新しい Azure リージョン
 LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regions)が用意されています。 LUIS ではリージョン グループごとに異なるポータルが用意されています。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
@@ -169,6 +169,6 @@ V1 のラベル付きの発話では、単語またはフレーズの先頭と�
 
 ## <a name="next-steps"></a>次の手順
 
-v2 API のドキュメントを使用して、LUIS [エンドポイント](https://aka.ms/luis-endpoint-apis)および[オーサリング](https://aka.ms/luis-authoring-apis) API に対する既存の REST 呼び出しを更新します。 
+v2 API のドキュメントを使用して、LUIS [エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)および[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に対する既存の REST 呼び出しを更新します。 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

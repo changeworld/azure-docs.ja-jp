@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 63a86fb9498c7c1b1cd527accca84c83a28e01c3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997939"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788667"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -96,9 +96,9 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 
 タグ | 説明 | データ型 | 必須
 --- | ----------- | ---- | --------
-name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:140</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> | String | [はい]
+name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:140</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> | String | はい
 description  | パイプラインの用途を説明するテキストを指定します。 | String | いいえ 
-activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | Array | [はい]
+activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | Array | はい
 parameters | **parameters** セクションでは、パイプライン内に 1 つ以上のパラメーターを定義できるので、パイプラインの再利用に柔軟性を持たせることができます。 | List | いいえ 
 
 ## <a name="activity-json"></a>アクティビティ JSON
@@ -129,9 +129,9 @@ parameters | **parameters** セクションでは、パイプライン内に 1 �
 
 タグ | 説明 | 必須
 --- | ----------- | ---------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | [はい]</li></ul>
-description  | アクティビティの用途を説明するテキスト。 | [はい]
-type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | [はい]
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li></ul>
+description  | アクティビティの用途を説明するテキスト。 | はい
+type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
 linkedServiceName | アクティビティで使用される、リンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 | HDInsight アクティビティ、Azure Machine Learning バッチ スコアリング アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ"
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ 
 policy | アクティビティの実行時の動作に影響するポリシーです。 このプロパティには、タイムアウトと再試行の動作が含まれます。 指定されていない場合は、既定値が使用されます。 詳細については、「[アクティビティ ポリシー](#activity-policy)」のセクションを参照してください。 | いいえ 
@@ -172,7 +172,7 @@ JSON での名前 | 説明 | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
 timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。
 retry | 最大再試行回数 | 整数 | いいえ。 既定値は 0 です
-retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いいえ。 既定値は 20 秒です
+retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いいえ。 既定値は 30 秒です
 secureOutput | true に設定すると、アクティビティからの出力が安全と見なされ、ログが監視に記録されません。 | Boolean | いいえ。 既定値は false です。
 
 ### <a name="control-activity"></a>制御アクティビティ
@@ -194,9 +194,9 @@ secureOutput | true に設定すると、アクティビティからの出力が
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | [はい]</li><ul>
-description  | アクティビティの用途を説明するテキスト。 | [はい]
-type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | [はい]
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li><ul>
+description  | アクティビティの用途を説明するテキスト。 | はい
+type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ 
 dependsOn | このプロパティを使用して、アクティビティの依存関係と、後続のアクティビティが前のアクティビティにどのように依存するかを定義します。 詳細については、「[アクティビティの依存関係](#activity-dependency)」を参照してください。 | いいえ 
 

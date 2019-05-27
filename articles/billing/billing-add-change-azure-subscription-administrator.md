@@ -57,19 +57,19 @@ RBAC を使用してリソースへのアクセスを管理することをお勧
 
 1. **[ロール]** ドロップダウン リストで、**[所有者]** ロールを選択します。
 
-1. **[選択]** 一覧で、ユーザーを選択します。 一覧にユーザーが表示されない場合には、**[選択]** ボックスに表示名と電子メール アドレスを入力して、ディレクトリを検索します。
+1. **[選択]** 一覧で、ユーザーを選択します。 一覧にユーザーが表示されない場合には、**[選択]** ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。
 
     ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
 1. **[保存]** をクリックしてロールを割り当てます。
 
-    数分後に、サブスクリプション スコープで、ユーザーに所有者のロールが割り当てられます。
+    しばらくすると、サブスクリプション スコープで、ユーザーに所有者のロールが割り当てられます。
 
 ## <a name="next-steps"></a>次の手順
 
 * [ロールベースのアクセス制御 (RBAC) とは何か](../role-based-access-control/overview.md)
 * [Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [方法:Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [方法: Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください

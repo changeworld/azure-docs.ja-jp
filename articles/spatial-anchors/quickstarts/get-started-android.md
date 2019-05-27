@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 003e9beb3a319802754397efae3b636f51de9e52
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995899"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800045"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android アプリを作成する
 
@@ -73,7 +73,7 @@ Android Studio を起動します。
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-`Android/NDK/app/src/main/cpp/spatial_services_application.cc`を開きます。
+`Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`を開きます。
 
 `SpatialAnchorsAccountKey` フィールドを見つけ、`Set me` をアカウント キーに置き換えます。
 

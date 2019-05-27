@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002485"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786109"
 ---
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。
@@ -39,8 +39,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 > * 関数を呼び出すコントロールを追加し、データを表示する。
 > * アプリを実行して、修復がコスト効率に優れているかどうかを確認する。
 
-> [!IMPORTANT]
-> OpenAPI 機能は現在プレビュー段階であり、Azure Functions Runtime のバージョン 1.x でのみ使用できます。
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679127"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544481"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -51,7 +51,7 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure サブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)がある[職場または学校アカウント](../active-directory/fundamentals/sign-up-organization.md)。 
+* [Azure サブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)がある[職場または学校アカウント](../active-directory/fundamentals/sign-up-organization.md)。 
 
   ゲートウェイ インストールを Azure サブスクリプションに関連付けられるよう、ゲートウェイのインストール中にこのアカウントにサインインします。 
   後で、Azure portal でゲートウェイ インストールの Azure リソースを作成する際にも、同じアカウントを使用します。 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 8d3e25f8217f3cc8772de9fbbb06a407008ca6f6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508404"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593879"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>テキスト読み上げの出力を微調整する
 
@@ -35,7 +35,7 @@ Voice Tuning ツールを使用してテキスト読み上げの出力の微調�
    >Azure portal で Speech リソースを作成するときに、Azure の場所情報は TTS 音声リージョンと一致する必要があります。 ニューラル TTS 音声では、Azure の場所のサブ セットがサポートされています。 サポートの完全な一覧については、[リージョン](regions.md#text-to-speech)に関するページを参照してください。
 
    >[!NOTE]
-   >サービスを使用する前に、Azure portal で F0 キーまたは S0 キーを作成しておく必要があります。 Voice Tuning では、[30 日間の無料試用キー](https://review.docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial)はサポートされて**いません**。
+   >サービスを使用する前に、Azure portal で F0 キーまたは S0 キーを作成しておく必要があります。 Voice Tuning では、[30 日間の無料試用キー](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial)はサポートされて**いません**。
 
 4. [Voice Tuning](https://aka.ms/voicetuning) ポータルにサインインし、自分の Speech Services サブスクリプションに接続します。 1 つの Speech Services サブスクリプションを選択し、プロジェクトを作成します。
 5. **[New Tuning]\(新しいチューニング\)** を選択します。 その後、次の手順に従います。
@@ -43,7 +43,7 @@ Voice Tuning ツールを使用してテキスト読み上げの出力の微調�
    * **[すべてのサブスクリプション]** を探して選択します。  
    * **[Connect Existing Subscription]\(既存のサブスクリプションに接続\)** を選択します。  
      ![既存のサブスクリプションに接続する](./media/custom-voice/custom-voice-connect-subscription.png)
-   * Azure Speech Services サブスクリプション キーを入力し、**[追加]** を選択します。 サブスクリプション キーは、[サブスクリプション ページ](https://go.microsoft.com/fwlink/?linkid=2090458)の Speech のカスタマイズ ポータルにあります。 [Azure portal](https://portal.azure.com/) の [リソースの管理] ウィンドウからキーを取得することもできます。 
+   * Azure Speech Services サブスクリプション キーを入力し、**[追加]** を選択します。 サブスクリプション キーは、[サブスクリプション ページ](https://go.microsoft.com/fwlink/?linkid=2090458)の Speech のカスタマイズ ポータルにあります。 [Azure portal](https://portal.azure.com/) の [リソースの管理] ウィンドウからキーを取得することもできます。
    * 使用する予定の Speech Services サブスクリプションが複数ある場合は、サブスクリプションごとにこれらの手順を繰り返します。
 
 ## <a name="customize-the-text-to-speech-output"></a>テキスト読み上げの出力のカスタマイズ

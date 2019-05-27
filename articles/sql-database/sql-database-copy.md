@@ -1,27 +1,27 @@
 ---
-title: Azure SQL Database のコピーの作成 | Microsoft Docs
-description: トランザクション上一貫性のある既存の Azure SQL Database のコピーを、同じサーバーまたは別のサーバーのいずれかに作成します。
+title: Azure SQL データベースのコピーの作成 | Microsoft Docs
+description: トランザクション上一貫性のある既存の Azure SQL データベースのコピーを、同じサーバーまたは別のサーバーのいずれかに作成します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
+author: stevestein
 ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: 363803e9276a8356b52438f251391378c54f1655
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4516d61c1bf8a32e807bcbc01ea1e5b283e31060
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678940"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762687"
 ---
-# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のコピーを作成する
+# <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
-Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の Azure SQL Database のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、SQL Database をコピーできます。 
+Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の Azure SQL データベースのコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、SQL Database をコピーできます。 
 
 ## <a name="overview"></a>概要
 

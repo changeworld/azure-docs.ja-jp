@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: efeab014c7d92a6c19d516a121fbc4436925be75
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 82e8936a888cbc99088ab18423e55dd57a3c2e77
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013033"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604174"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -27,7 +27,7 @@ Azure App Service を使用すると、Java 開発者は、完全に管理され
 このガイドでは、App Service を使用する Java 開発者向けに主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず [Java クイック スタート](app-service-web-get-started-java.md)をお読みください。 Java 開発に限られない、App Service の使用に関する一般的な質問については、[App Service Windows の FAQ](faq-configuration-and-management.md) で回答されています。
 
 > [!NOTE]
-> お探しの情報がない場合、 [Windows OSS の FAQ](faq-configuration-and-management.md) または [Java Linux の構成ガイド](containers/app-service-linux-java.md) で Java アプリのデプロイとセキュリティについて参照してください。
+> お探しの情報がない場合、 [Windows OSS の FAQ](faq-configuration-and-management.md) または [Java Linux の構成ガイド](containers/configure-language-java.md) で Java アプリのデプロイとセキュリティについて参照してください。
 
 ## <a name="configuring-tomcat"></a>Tomcat の構成
 

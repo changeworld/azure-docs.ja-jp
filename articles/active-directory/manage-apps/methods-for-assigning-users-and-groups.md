@@ -3,8 +3,8 @@ title: アプリケーションにユーザーとグループを割り当てる�
 description: アプリケーションにユーザーを割り当ててアクセス権を付与する
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2019
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf19d2001f84fab6978bfc34ef14a361b89edea
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 7402778ec8170e60a623255d0d331f12d8389227
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441410"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824301"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションにユーザーとグループを割り当てる
 この記事では、Azure Active Directory (Azure AD) においてユーザーまたはグループをアプリケーションに割り当てる方法を説明します。 管理者が次の操作を実行するためのアクセス権をユーザーに付与する前に、最初にアプリケーションにユーザーを割り当てる必要があります。

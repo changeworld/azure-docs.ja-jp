@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 04760ab570ffc213950c28c22c499d8e9252d574
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690179"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606195"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
 
@@ -33,11 +33,11 @@ ms.locfileid: "64690179"
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **Azure ストレージ アカウント**。 「[ストレージ アカウントを作成する](../storage/common/storage-quickstart-create-account.md)」を参照してください。
-* **Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017**。
+* **Visual Studio**。
 
 ## <a name="create-clusters"></a>クラスターの作成
 
-1. Visual Studio 2017 を開きます。
+1. Visual Studio を開きます。
 2. Visual C# の新しいコンソール アプリケーションを作成します。
 3. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 4. コンソールで次のコマンドを実行して、パッケージをインストールします。

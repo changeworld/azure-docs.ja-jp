@@ -6,13 +6,13 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 3c7f0b263cc775b7f9fec62e4d5388250e5124fb
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/13/2019
+ms.openlocfilehash: 04d710f4d60b776f8059d87ea4d009bed6f7f8ba
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080665"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551708"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 用の Azure AD テナントの作成
 
@@ -34,7 +34,7 @@ Azure AD テナントをまだお持ちでない場合は、次の手順に従�
 
     ![右上にテナント名が表示された portal のスクリーンショット][tenantcallout]  
 
-8. 後で Azure Red Hat OpenShift クラスターを作成する場所を指定できるように、*[テナント ID]* をメモしておいてください。 portal に新しいテナントの Azure Active Directory 概要ブレードが表示されているはずです。 **[プロパティ]** を選択し、**[ディレクトリ ID]** の値をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `tenant id` と呼びます。
+8. 後で Azure Red Hat OpenShift クラスターを作成する場所を指定できるように、*[テナント ID]* をメモしておいてください。 portal に新しいテナントの Azure Active Directory 概要ブレードが表示されているはずです。 **[プロパティ]** を選択し、**[ディレクトリ ID]** の値をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `TENANT` と呼びます。
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

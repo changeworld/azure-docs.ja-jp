@@ -1,19 +1,19 @@
 ---
 title: Azure 診断ログでサポートされているサービスとスキーマ
 description: Azure 診断ログでサポートされているサービスとイベント スキーマについて説明します。
-author: johnkemnetz
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
 ms.date: 10/11/2018
-ms.author: johnkem
+ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 6e67b049ca179b1e93bcf645afd89b4a2eb0048d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 21eec5ee2fef185a927f6a416732303765e02b1c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436503"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789318"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -191,7 +191,7 @@ ms.locfileid: "57436503"
 |Microsoft.Sql/servers/databases|ExecRequests|実行要求|
 |Microsoft.Sql/servers/databases|RequestSteps|要求ステップ|
 |Microsoft.Sql/servers/databases|SqlRequests|SQL 要求|
-|Microsoft.Sql/servers/databases|待機|待機|
+|Microsoft.Sql/servers/databases|Waits|待機|
 |Microsoft.Sql/managedInstances|ResourceUsageStats|リソース使用統計|
 |Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
 |Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4f4f22628d2c2a6beb7974aa9b776a2148a3fee0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65238159"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761991"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -58,7 +58,7 @@ Azure Stream Analytics と Azure SignalR Service を使用すると、カスタ�
 
 今日見られるほとんどの Web サービスと Web アプリケーションでは、プレゼンテーション層の処理に要求/応答パターンが使用されています。 要求/応答パターンは構築が容易であり、ステートレスなフロントエンドとスケーラブルなストア (Cosmos DB など) を使えば、短い応答時間で、簡単にスケーリングすることができます。
 
-CRUD ベースのシステムでは、大量のデータがパフォーマンス ボトルネックを引き起こすことが少なくありません。 パフォーマンスのボトルネックを解決するために、[イベント ソーシング ソリューション パターン](/azure/architecture/patterns/event-sourcing.md)が使用されます。 テンポラルなパターンと分析情報も、従来のデータ ストアからは抽出することが難しく効率も良くありません。 大量のデータを扱う近年のデータ ドリブン型アプリケーションでは、データフローベースのアーキテクチャがよく使用されます。 そのアーキテクチャの要となるのが、移動中のデータを対象にしたコンピューティング エンジンとしての Azure Stream Analytics です。
+CRUD ベースのシステムでは、大量のデータがパフォーマンス ボトルネックを引き起こすことが少なくありません。 パフォーマンスのボトルネックを解決するために、[イベント ソーシング ソリューション パターン](/azure/architecture/patterns/event-sourcing)が使用されます。 テンポラルなパターンと分析情報も、従来のデータ ストアからは抽出することが難しく効率も良くありません。 大量のデータを扱う近年のデータ ドリブン型アプリケーションでは、データフローベースのアーキテクチャがよく使用されます。 そのアーキテクチャの要となるのが、移動中のデータを対象にしたコンピューティング エンジンとしての Azure Stream Analytics です。
 
 ![ASA イベント ソーシング アプリ](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 

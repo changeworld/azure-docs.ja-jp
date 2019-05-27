@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4a4677b5db730001df75d201d8e6d3149cb928e6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0418d325f3b3719549181a48fc0432a677f695d5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409843"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795897"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -153,7 +153,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) は、複数の段階に分かれたデプロイを自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Azure Pipelines を使用すると、リリース プロセスを自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
 
 **ベスト プラクティス**: アプリを起動する前または更新プログラムを運用環境にデプロイする前に、パフォーマンスを確認する。  
-**詳細**: 次の目的で、クラウドベースの[ロード テスト](https://docs.microsoft.com/azure/devops/test/load-test/overview.md?view=azure-devops#alternatives)を実行します。
+**詳細**: 次の目的で、クラウドベースの[ロード テスト](/azure/devops/test/load-test/overview#alternatives)を実行します。
 
 - アプリのパフォーマンスの問題を見つけます。
 - デプロイの品質を向上します。

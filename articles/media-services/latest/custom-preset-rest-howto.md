@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 03/12/2019
+ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755481"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761790"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>カスタム変換を使用してエンコードする方法 - REST
 
@@ -115,7 +115,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
                     "formats": [
                         {
                             "@odata.type": "#Microsoft.Media.Mp4Format",
-                            "filenamePattern": "Video-{Basename}-{Label}{Extension}",
+                            "filenamePattern": "Video-{Basename}-{Label}-{Bitrate}{Extension}",
                             "outputFiles": []
                         },
                         {

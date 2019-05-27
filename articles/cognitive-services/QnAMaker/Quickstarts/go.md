@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 76be371547bcb9daf0e10b62df62df5065cd6465
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244260"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791460"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Go で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>
@@ -48,7 +48,7 @@ ms.locfileid: "56244260"
 
 ## <a name="create-knowledge-base"></a>サポート技術情報を作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
+次のコードでは、[Create](https://go.microsoft.com/fwlink/?linkid=2092179) メソッドを利用し、新しいサポート技術情報が作成されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -128,7 +128,7 @@ var req string = `{
   "qnaList": [
     {
       "id": 0,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://go.microsoft.com/fwlink/?linkid=2092179",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -226,7 +226,7 @@ func main() {
 
 ## <a name="update-knowledge-base"></a>ナレッジ ベースを更新する
 
-次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のサポート技術情報が更新されます。
+次のコードでは、[Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) メソッドを利用し、既存のサポート技術情報が更新されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -309,7 +309,7 @@ var req string = `{
     'qnaList': [
       {
         'id': 1,
-        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle',
+        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/azure-bot-service/templates/qnamaker/#navtitle',
         'source': 'Custom Editorial',
         'questions': [
           'How can I change the default message from QnA Maker?'
@@ -402,7 +402,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
 
 [先頭に戻る](#HOLTop)
 
@@ -410,7 +410,7 @@ Press any key to continue.
 
 ## <a name="publish-knowledge-base"></a>ナレッジ ベースを公開する
 
-次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のサポート技術情報が公開されます。
+次のコードでは、[Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) メソッドを利用し、既存のサポート技術情報が公開されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -500,7 +500,7 @@ func main() {
 
 ## <a name="replace-knowledge-base"></a>ナレッジ ベースを置換する
 
-次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のサポート技術情報のコンテンツが置換されます。
+次のコードでは、[Replace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace) メソッドを利用し、指定のサポート技術情報のコンテンツが置換されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -565,7 +565,7 @@ var req string = `{
   'qnaList': [
     {
       'id': 0,
-      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600',
+      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update',
       'source': 'Custom Editorial',
       'questions': [
         'How do I programmatically update my Knowledge Base?'
@@ -608,7 +608,7 @@ func main() {
 
 ## <a name="download-the-contents-of-a-knowledge-base"></a>ナレッジ ベースのコンテンツをダウンロードする
 
-次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のサポート技術情報のコンテンツがダウンロードされます。
+次のコードでは、[Download knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download) メソッドを利用し、指定のサポート技術情報のコンテンツがダウンロードされます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -685,7 +685,7 @@ func main() {
   "qnaDocuments": [
     {
       "id": 1,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -818,7 +818,7 @@ func main() {
 
 ## <a name="get-information-about-a-knowledge-base"></a>ナレッジ ベースに関する情報を取得する
 
-次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のサポート技術情報に関する情報が取得されます。
+次のコードでは、[Get knowledge base details](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails) メソッドを利用し、指定のサポート技術情報に関する情報が取得されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -910,7 +910,7 @@ func main() {
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>ユーザーのすべてのナレッジ ベースを取得する
 
-次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのサポート技術情報に関する情報が取得されます。
+次のコードでは、[Get knowledge bases for user](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/listall) メソッドを利用し、指定のユーザーのすべてのサポート技術情報に関する情報が取得されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1015,7 +1015,7 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>ナレッジ ベースを削除する
 
-次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のサポート技術情報が削除されます。
+次のコードでは、[Delete knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete) メソッドを利用し、指定のサポート技術情報が削除されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1101,7 +1101,7 @@ func main() {
 
 ## <a name="get-endpoint-keys"></a>エンドポイント キーを取得する
 
-次のコードでは、[Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) メソッドを利用し、現在のエンドポイント キーが取得されます。
+次のコードでは、[Get endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys) メソッドを利用し、現在のエンドポイント キーが取得されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1179,7 +1179,7 @@ func main() {
 
 ## <a name="refresh-endpoint-keys"></a>エンドポイント キーを更新する
 
-次のコードでは、[Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) メソッドを利用し、現在のエンドポイント キーが再生成されます。
+次のコードでは、[Refresh endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/refreshkeys) メソッドを利用し、現在のエンドポイント キーが再生成されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1265,7 +1265,7 @@ func main() {
 
 ## <a name="get-word-alterations"></a>単語変更を取得する
 
-次のコードでは、[Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) メソッドを利用し、現在の単語変更が取得されます。
+次のコードでは、[Download alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/get) メソッドを利用し、現在の単語変更が取得されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1349,7 +1349,7 @@ func main() {
 
 ## <a name="replace-word-alterations"></a>単語変更を置換する
 
-次のコードでは、[Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) メソッドを利用し、現在の単語変更が置換されます。
+次のコードでは、[Replace alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) メソッドを利用し、現在の単語変更が置換されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -1445,7 +1445,7 @@ func main() {
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
 
 ## <a name="see-also"></a>関連項目 
 

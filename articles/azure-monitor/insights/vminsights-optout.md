@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263358"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522116"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用した仮想マシンの監視を無効にする方法
 
@@ -56,7 +56,7 @@ Azure Monitor for VMs を使用した仮想マシンの監視の無効化を準�
 5. ソリューションの一覧で、**InfrastructureInsights (ワークスペースの名前)** を選択してから、ソリューションの **[概要]** ページで **[削除]** をクリックします。  確認メッセージが表示されたら、 **[はい]** をクリックします。  
 6. ソリューションの一覧で、**ServiceMap (ワークスペースの名前)** を選択してから、ソリューションの **[概要]** ページで **[削除]** をクリックします。  確認メッセージが表示されたら、 **[はい]** をクリックします。  
 
-Azure Monitor for VMs を搭載する前にワークスペースで Windows または Linux ベースの VM で[有効にしていたパフォーマンス カウンターを収集](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled)していなかった場合は、Windows および Linux に対してこれらのルールを[ここ](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters)で説明する手順に従って無効にする必要があります。
+Azure Monitor for VMs を搭載する前にワークスペースで Windows または Linux ベースの VM で[有効にしていたパフォーマンス カウンターを収集](vminsights-enable-overview.md#performance-counters-enabled)していなかった場合は、Windows および Linux に対してこれらのルールを[ここ](../platform/data-sources-performance-counters.md#configuring-performance-counters)で説明する手順に従って無効にする必要があります。
 
 ## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>Azure VM の監視を無効にしてワークスペースを維持する  
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142862"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797623"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -383,7 +383,7 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 | プラットフォーム | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| Windows コンテナーを使用した Windows ホスト | `C:\ProgramData\iotedge-moby-data\config` |
+| Windows コンテナーを使用した Windows ホスト | `C:\ProgramData\iotedge-moby\config` |
 
 その場所に `daemon.json` ファイルが既にある場合は、それに対する **dns** キーを追加してファイルを保存します。
 
