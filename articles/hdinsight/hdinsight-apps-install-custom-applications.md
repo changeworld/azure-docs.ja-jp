@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec2e53624ad48650f922439c5f16d1cf1f25c280
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706370"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859810"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にカスタム Apache Hadoop アプリケーションをインストールする
 
@@ -116,8 +116,8 @@ HDInsight アプリケーションを削除する方法は複数あります。
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 Azure PowerShell を使用して、クラスターを削除したり、リソース グループを削除したりできます。 [Azure PowerShell を使用したクラスターの削除](hdinsight-administer-use-powershell.md#delete-clusters)に関するセクションを参照してください。
 
-### <a name="use-azure-classic-cli"></a>Azure クラシック CLI を使用する
-Azure クラシック CLI を使用してクラスターを削除したり、リソース グループを削除したりできます。 [Azure クラシック CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
+### <a name="use-azure-cli"></a>Azure CLI の使用
+Azure CLI を使用して、クラスターを削除したり、リソース グループを削除したりできます。 [Azure CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [MSDN:Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための Resource Manager テンプレートの作成方法について確認します。

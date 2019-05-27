@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 3cfdca99c91dc54a711801d92aa0da91fb9703e4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246997"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115518"
 ---
 > [!IMPORTANT]
 > ストレージ アカウント キーは、ストレージ アカウントの root パスワードに似ています。 アカウント キーは常に慎重に保護してください。 このキーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーン テキストで保存したりしないでください。 アカウント キーが侵害されたと思われる場合は、Azure Portal を使用してキーを再生成してください。

@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457789"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111109"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
 Azure の Service Bus メッセージング エンティティを使用するには、Azure 全体で一意となる名前を備えた名前空間を最初に作成しておく必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
@@ -33,7 +33,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
     4. **[サブスクリプション]** で、名前空間を作成する Azure サブスクリプションを選択します。
     5. **[リソース グループ]** で、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。      
     6. **[場所]** で、名前空間をホストするリージョンを選択します。
-    7. **作成**を選択します。 これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
+    7. **作成** を選択します。 これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
    
         ![[名前空間の作成]](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Service Bus 名前空間が正常にデプロイされていることを確認します。 通知を確認するには、ツール バーの**ベルのアイコン (アラート)** を選択します。 次の図に示すように、通知内の**リソース グループの名前**を選択します。 Service Bus 名前空間を含むリソース グループが表示されます。

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/06/2019
+ms.date: 05/18/2019
 ms.author: magoedte
-ms.openlocfilehash: ed387f7038c5dee1a1685c918abcae49942cd55d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148844"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906775"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する 
 コンテナーの Azure Monitor を使用している場合、パフォーマンスのグラフと正常性状態を使用して、AKS クラスターから直接、または Azure Monitor からサブスクリプション内のすべての AKS クラスターという 2 つの観点から Azure Kubernetes Service (AKS) クラスターのワークロードを監視することができます。 Azure Container Instances (ACI) の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -26,10 +26,6 @@ ms.locfileid: "65148844"
 この記事を読むと、2 つの観点のエクスペリエンスと、検出された問題をすばやく評価、調査、解決する方法を理解できます。
 
 コンテナーの Azure Monitor を有効にする方法については、「[コンテナー用 Azure Monitor の利用を開始する方法](container-insights-onboard.md)」をご覧ください。
-
-> [!IMPORTANT]
-> Windows Server 2019 を実行する AKS クラスターを監視するコンテナーの Azure Monitor のサポートは、現在パブリック プレビューです。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure Monitor には、サブスクリプション内のリソース グループに展開されている、Linux および Windows Server 2019 を実行するすべての監視対象 AKS クラスターの正常性状態が表示される複数クラスター ビューが用意されています。  ソリューションによって監視されていない、検出された AKS クラスターが表示されます。 すぐにクラスターの正常性を理解することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。  監視対象外として検出および識別された AKS クラスターについては、いつでも監視対象にできます。  
 

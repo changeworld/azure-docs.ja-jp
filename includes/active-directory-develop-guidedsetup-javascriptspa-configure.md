@@ -15,11 +15,11 @@ ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
 ms.openlocfilehash: 387adcdf8bdabf90bc1e691a7a8ec9ae0a8e90dc
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993314"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121688"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
@@ -67,6 +67,6 @@ ms.locfileid: "64993314"
     各値の説明:
     - `Enter_the_Application_Id_here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
     - `Enter_the_Tenant_Info_Here` - 次のいずれかのオプションに設定します。
-       - アプリケーションにおいて**この組織のディレクトリ内のアカウント**をサポートする場合は、この値を**テナント ID** または**テナント名**に置き換えます (たとえば、contoso.microsoft.com)
+       - アプリケーションで**この組織のディレクトリ内のアカウント**がサポートされている場合は、この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
        - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
        - アプリケーションにおいて**任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント**をサポートする場合は、この値を `common` に置き換えます。 *個人用の Microsoft アカウントのみ*にサポートを制限するには、この値を `consumers` に置き換えます。

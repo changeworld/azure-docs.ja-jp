@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d5751ab96dc6b44229e2b18b832a570930058ca
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 82c9aa961221b582bb16438f30a0584232164393
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442350"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65915099"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Azure Machine Learning サービスによる TensorFlow モデルと Keras モデルのトレーニング
 
@@ -28,7 +28,7 @@ TensorFlow トレーニング ジョブを Azure コンピューティング上�
 
 `TensorFlow` 推定器クラスはベースの [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) と似ているため、まず[ベース推定器の使用方法に関する記事](how-to-train-ml-models.md)を読んで包括的な概念を理解することをお勧めします。
 
-初めて Azure Machine Learning service を使用する場合は、[クイックスタートを完了します](quickstart-run-cloud-notebook.md)。 完了すると、[Azure Machine Learning ワークスペース](concept-azure-machine-learning-architecture.md#workspace)と、TensorFlow と Keras を使用した DNN のトレーニング用を含むすべての[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml)が作成されます。
+初めて Azure Machine Learning service を使用する場合は、[クイックスタートを完了します](quickstart-run-cloud-notebook.md)。 完了すると、[Azure Machine Learning ワークスペース](concept-workspace.md)と、TensorFlow と Keras を使用した DNN のトレーニング用を含むすべての[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml)が作成されます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 

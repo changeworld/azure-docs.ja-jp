@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cd0ab47a46e452701307986d3fbfc7cdfe040c58
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684584"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114722"
 ---
 セキュリティ属性は、セキュリティの脆弱性の防止、検出、および対処を行う Azure サービスの能力に寄与する、サービスの品質または機能です。
 

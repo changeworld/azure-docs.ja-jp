@@ -103,6 +103,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: Subscription key
