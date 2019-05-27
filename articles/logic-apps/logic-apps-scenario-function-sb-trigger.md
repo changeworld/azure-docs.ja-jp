@@ -37,13 +37,13 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
    ロジック アプリを初めて使用する場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧で次のトリガーを選択します: **HTTP 要求の受信時**
+1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧で次のトリガーを選択します:**HTTP 要求の受信時**
 
    ![トリガーの選択](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
 1. **要求**トリガーでは、キュー メッセージで使用する JSON スキーマを必要に応じて入力できます。 ロジック アプリ デザイナーは、JSON スキーマを通じて、入力データの構造を解釈することができます。また、ユーザーは、JSON スキーマがあることで、ワークフロー全体にわたって出力を選択しやすくなります。 
 
-   スキーマを指定するには、**[要求本文の JSON スキーマ]** ボックスにスキーマを入力します。その例を次に示します。 
+   スキーマを指定するには、 **[要求本文の JSON スキーマ]** ボックスにスキーマを入力します。その例を次に示します。 
 
    ![JSON スキーマの指定](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger-schema.png)
 
@@ -51,7 +51,7 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
    1. 要求トリガーで **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
-   1. **[サンプルの JSON ペイロードを入力するか、貼り付けます]** でサンプル ペイロードを入力し、**[完了]** を選択します。
+   1. **[サンプルの JSON ペイロードを入力するか、貼り付けます]** でサンプル ペイロードを入力し、 **[完了]** を選択します。
       
       ![サンプル ペイロードの入力](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -89,7 +89,7 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
    たとえば、Office 365 Outlook コネクタを使ってメールを送信できます。
 
-1. ロジック アプリを保存します。これで、このロジック アプリのトリガーに使用するコールバック URL が生成されます。 この URL は、**[HTTP POST の URL]** プロパティに表示されます。
+1. ロジック アプリを保存します。これで、このロジック アプリのトリガーに使用するコールバック URL が生成されます。 この URL は、 **[HTTP POST の URL]** プロパティに表示されます。
 
    ![トリガー用に生成されたコールバック URL](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
