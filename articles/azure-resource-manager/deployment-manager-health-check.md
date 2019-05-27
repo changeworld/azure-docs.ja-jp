@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
-ms.openlocfilehash: 1006cc902cf4b6f763d86165a039a1fec5dc97a1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467085"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796249"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Azure Deployment Manager に正常性統合ロールアウトを導入する (パブリック プレビュー)
 
@@ -32,7 +32,7 @@ ms.locfileid: "65467085"
 
 ## <a name="how-service-health-is-determined"></a>サービスの正常性が判断されるしくみ
 
-[正常性監視プロバイダー](#health-monitoring-providers)は、サービスを監視し、サービスの正常性に問題があればそれを警告するメカニズムをいくつか提供しています。 [Azure Monitor](/services/monitor/) もそのようなサービスの 1 つです。 Azure Monitor は、特定のしきい値が超過したときにアラートを作成するために使用できます。 たとえば、新しい更新プログラムをサービスにデプロイすると、メモリと CPU の使用率が予想レベルを超えて急上昇します。 通知を受けたら、是正措置を行うことができます。
+[正常性監視プロバイダー](#health-monitoring-providers)は、サービスを監視し、サービスの正常性に問題があればそれを警告するメカニズムをいくつか提供しています。 [Azure Monitor](../azure-monitor/overview.md) もそのようなサービスの 1 つです。 Azure Monitor は、特定のしきい値が超過したときにアラートを作成するために使用できます。 たとえば、新しい更新プログラムをサービスにデプロイすると、メモリと CPU の使用率が予想レベルを超えて急上昇します。 通知を受けたら、是正措置を行うことができます。
 
 サービスのモニターの状態をプログラミングで調べられるように、こうした正常性プロバイダーは通常、REST API を提供します。 REST API は (HTTP 応答コードで決定される) 単純な正常/異常信号と共に戻ってきますが、それが受信する信号に関する詳細情報も含まれることがあります。
 

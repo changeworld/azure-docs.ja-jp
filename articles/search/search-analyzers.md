@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651823"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795792"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
@@ -92,10 +92,6 @@ Azure Search では、追加の **indexAnalyzer** および **searchAnalyzer** �
 ### <a name="inspect-tokenized-terms"></a>トークン化された用語の検査
 
 検索結果が期待した内容ではない場合、よくあるシナリオとして、クエリの用語入力とインデックス内のトークン化された用語間にトークンの違いがあることが考えられます。 トークンが同じではない場合、一致処理は具体化に失敗します。 トークナイザーの出力を検査する場合、調査ツールとして [Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 応答は、特定のアナライザーによって生成されるトークンで構成されます。
-
-### <a name="compare-english-analyzers"></a>英語のアナライザーの比較
-
-[Search Analyzer Demo](https://alice.unearth.ai/) はサードパーティ製のデモ アプリです。標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサの比較が横並びに表示されます。 インデックスは固定です。よくあるストーリーのテキストが含まれています。 検索用語を入力するごとに、隣接するウィンドウに各アナライザーの結果が表示され、同じ文字列を各アナライザーがどのように処理するかを把握できます。 
 
 <a name="examples"></a>
 
@@ -348,8 +344,6 @@ Azure Search でサポートされているテキスト アナライザーを提
 + [言語に固有の字句解析器](index-add-language-analyzers.md)を適用する方法について書かれた記事を参照します。
 
 + 個々のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](index-add-custom-analyzers.md)します。
-
-+ このデモ Web サイトで隣接する列の[標準と英語のアナライザーを比較](https://alice.unearth.ai/)します。 
 
 ## <a name="see-also"></a>関連項目
 

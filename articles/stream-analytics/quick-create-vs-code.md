@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071926"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825362"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>クイック スタート:Visual Studio Code で Azure Stream Analytics クラウド ジョブを作成する (プレビュー)
 
@@ -229,7 +229,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 2. ジョブ名を右クリックします。 次に、コンテキスト メニューから **[開始]** を選択します。
 
-![VS Code で Stream Analytics ジョブを開始する](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![VS Code で Stream Analytics ジョブを開始する](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. ポップアップ ウィンドウの **[今すぐ]** を選択してジョブを開始します。
 
