@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4285ee94d2f2a9b5fff9d1896cdf7013f88801ab
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979508"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157787"
 ---
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 

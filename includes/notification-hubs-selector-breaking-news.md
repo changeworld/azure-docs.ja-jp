@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: ec974a23ae7f521c93fad13a38408ba98c09aacd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270993"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156736"
 ---
 > [!div class="op_single_selector"]
 > * [Android](../articles/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)

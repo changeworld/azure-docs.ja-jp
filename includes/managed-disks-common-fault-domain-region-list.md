@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: cynthn
+ms.openlocfilehash: 0ee40c3ad692deccbc185fa7f8e51dd25eeaf95d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164519"
+---
 ### <a name="number-of-fault-domains-per-region"></a>リージョンごとの障害ドメイン数
 
 | リージョン              | 障害ドメインの最大数  |
@@ -6,7 +19,7 @@
 | 米国東部 2           | 3                       |
 | 米国西部             | 3                       |
 | 米国西部 2           | 2                       |
-| 米国中央部          | 3                       |
+| 米国中部          | 3                       |
 | 米国中北部    | 3                       |
 | 米国中南部    | 3                       |
 | 米国中西部     | 2                       |

@@ -6,14 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
-ms.author: victorh
+origin.date: 08/06/2018
+ms.date: 04/16/2019
+ms.author: v-junlch
 ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120552"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66135219"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -57,7 +58,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 | プローブのプロパティ | 値 | 説明 |
 | --- | --- | --- |
 | プローブの URL |http://127.0.0.1:\<port\>/ |URL パス |
-| interval |30 |次の正常性プローブが送信されるまでの秒数です。|
+| Interval |30 |次の正常性プローブが送信されるまでの秒数です。|
 | タイムアウト |30 |アプリケーション ゲートウェイがプローブの応答を待機する秒数です。これを超えると、プローブは異常としてマークされます。 プローブが正常として返された場合は、対応するバックエンドがすぐに正常としてマークされます。|
 | 異常のしきい値 |3 |通常の正常性プローブで障害が発生した場合に送信するプローブの数を制御します。 これらの追加的な正常性プローブは、バックエンドの正常性をすばやく確認するために、プローブの期間を待つことなく立て続けに送信され。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
@@ -86,7 +87,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 | Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。 |
 | Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |
-| interval |プローブの間隔 (秒)。 この値は、2 つの連続するプローブの時間間隔です。 |
+| Interval |プローブの間隔 (秒)。 この値は、2 つの連続するプローブの時間間隔です。 |
 | タイムアウト |プローブのタイムアウト (秒)。 このタイムアウト期間内に正常な応答が受信されなかった場合は、プローブが「失敗」とマークされます。  |
 | 異常のしきい値 |プローブの再試行回数。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
@@ -104,3 +105,5 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイ モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
+
+<!-- Update_Description: wording update -->

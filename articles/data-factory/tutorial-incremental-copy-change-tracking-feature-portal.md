@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
 ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66168511"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -98,7 +98,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. 次の SQL クエリを実行して、データベースとソース テーブル (data_source_table) の **Change Tracking** 機構を有効にします。 
 
     > [!NOTE]
-    > - &lt;your database name&gt; は、data_source_table がある実際の Azure SQL Database の名前に置き換えてください。 
+    > - &lt;your database name&gt; は、data_source_table がある実際の Azure SQL データベースの名前に置き換えてください。 
     > - 現行の例では、変更済みのデータが 2 日間維持されます。 変更済みデータを読み込む間隔を 3 日おき、またはそれ以上にした場合、変更済みデータの一部が読み込まれません。  CHANGE_RETENTION の数値を増やす必要があります。 または、変更済みデータの読み込み間隔を必ず 2 日以内としてください。 詳細については、「[データベースの変更の追跡を有効にする](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database)」を参照してください。
  
     ```sql
@@ -414,7 +414,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。 
 
-        | 名前 | Type | 値 | 
+        | Name | Type | 値 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 

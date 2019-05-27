@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: f84655ecb31eed4cca1e3960e7e426a4eb653032
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305191"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160963"
 ---
 デバイスにアクセスするクライアントでサポートされるプロトコルは次のとおりです。
 

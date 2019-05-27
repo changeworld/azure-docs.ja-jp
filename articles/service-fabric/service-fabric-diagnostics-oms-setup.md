@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66170956"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>クラスターに Azure Monitor ログを設定する
 
@@ -132,5 +132,5 @@ PowerShell を使って、他のソリューションを追加したり、Log An
 
 ## <a name="next-steps"></a>次の手順
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: d1cfe3d998c08aef2b845315a16d881dea1cd1f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ede897054a6cbef254c06bd1d810b933ec09016a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124356"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158667"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "58124356"
 
 3. 右側のリストにある **[Iot Hub]** をクリックします。 IoT ハブを作成するための最初の画面が表示されます。
 
-   ![Azure Portal での Hub の作成を示したスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-1.png)
+   ![Azure Portal での Hub の作成を示したスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-01.png)
 
    フィールドに入力します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "58124356"
 
 4. **[次へ: Size and scale]\(次へ: サイズとスケール\)** をクリックして、IoT ハブの作成を続けます。
 
-   ![Azure portal を使用して新しい IoT ハブ用のサイズとスケールを設定する様子を示すスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-2-free.png)
+   ![Azure portal を使用して新しい IoT ハブ用のサイズとスケールを設定する様子を示すスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-02.png)
 
    この画面では、既定値を使用して、下部にある **[確認および作成]** をクリックするだけです。
 
@@ -51,6 +51,6 @@ ms.locfileid: "58124356"
 
 5. **[確認および作成]** をクリックして、選択内容を確認します。 次の画面のようになります。
 
-   ![新しい IoT ハブを作成するための情報を確認するスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-3-free.png)
+   ![新しい IoT ハブを作成するための情報を確認するスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-03.png)
 
 6. **[作成]** をクリックして、新しい IoT ハブを作成します。 ハブの作成には数分かかります。

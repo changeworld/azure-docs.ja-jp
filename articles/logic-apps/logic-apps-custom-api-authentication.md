@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167249"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
@@ -234,9 +234,9 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| 要素 | 必須 | Description | 
+| 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| type | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
+| Type | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
 | password | はい | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
 | pfx | はい | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
 |||| 
@@ -251,10 +251,10 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 `{"type": "basic", "username": "username", "password": "password"}`
 
-| 要素 | 必須 | Description | 
+| 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
-| username | はい | 認証に使用するユーザー名 | 
+| Type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
+| ユーザー名 | はい | 認証に使用するユーザー名 | 
 | password | はい | 認証に使用するパスワード | 
 |||| 
 

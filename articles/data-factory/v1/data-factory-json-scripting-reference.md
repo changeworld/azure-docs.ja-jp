@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 25cf9c3b7968be16dcc22f4140725efc22d785f2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528409"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66156532"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -339,7 +339,7 @@ structure:
 | ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |NA |
-| minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |NA |
+| minimumRows |**Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |NA |
 
 **例:**
 

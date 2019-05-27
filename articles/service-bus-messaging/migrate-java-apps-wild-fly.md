@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: asirveda
-ms.openlocfilehash: a103526ef63c02913862510c01e9fde6570d89c0
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 60f4e410c7c4e3854235029acade550c9279c981
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515075"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158710"
 ---
 # <a name="migrate-java-enterprise-edition-ee-apps-to-azure"></a>Java Enterprise Edition (EE) アプリを Azure に移行する
 この記事では、既存の Java EE ワークロードを Azure に移行するプロセスについて手順を説明します。
@@ -67,7 +67,7 @@ WildFly/JBoss サンプル アプリを Azure に移行します。 これらの
 移行後は、Azure Service Bus を使用してアプリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
-Java Web アプリを Azure にデプロイするには、Azure サブスクリプションが必要です。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[Azure の無料アカウント]((https://azure.microsoft.com/pricing/free-trial/))にサインアップしてください。
+Java Web アプリを Azure にデプロイするには、Azure サブスクリプションが必要です。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[Azure の無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 
 さらに、以下の前提条件を満たす必要があります。
 
@@ -936,7 +936,7 @@ Picked up _JAVA_OPTIONS: -Djava.net.preferIPv4Stack=true
 
 追加情報については、以下を参照してください。 
  
- - [JBoss/WildFly での Generic JMS RA Adapter のデプロイ](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+ - [JBoss/WildFly での Generic JMS RA Adapter のデプロイ](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
  - [JBoss/WildFly CLI ガイド](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
  - [開発用マシンから App Service Linux への SSH セッションを開く](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)
 
@@ -1070,7 +1070,7 @@ open https://websocket-hello-app.azurewebsites.net
 
 - [App Service on Linux の Java Enterprise ガイド](../app-service/containers/app-service-java-enterprise.md)
 - [Azure App Service 用 Maven プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)
-- [JBoss/WildFly での Generic JMS RA Adapter のデプロイ](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
+- [JBoss/WildFly での Generic JMS RA Adapter のデプロイ](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.1/html/configuring_messaging/resource_adapters#deploy_configure_generic_jms_resource_adapter)
 - [WildFly/JBoss のメッセージング構成](https://docs.jboss.org/author/display/WFLY/Messaging+configuration)
 - [JBoss/WildFly CLI ガイド](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface)
 - [開発用マシンから SSH 接続を開く](../app-service/containers/app-service-linux-ssh-support.md#open-ssh-session-from-remote-shell)

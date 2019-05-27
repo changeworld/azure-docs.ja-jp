@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
-ms.openlocfilehash: 07bbba28b7e1b048ef3a4e1afa4db255967dc093
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117275"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164295"
 ---
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 

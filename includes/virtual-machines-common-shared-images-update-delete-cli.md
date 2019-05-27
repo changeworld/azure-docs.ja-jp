@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b34d37fa79ccb8344fdacd99877403d61ba5f5c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138893"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157944"
 ---
 ## <a name="update-resources"></a>リソースの更新
 
-更新可能な対象については、いくつか制限があります。 次の項目を更新できます: 
+更新可能な対象については、いくつか制限があります。 次の項目を更新できます。 
 
 共有イメージ ギャラリー:
 - 説明
@@ -33,6 +33,8 @@ ms.locfileid: "65138893"
 - ターゲット リージョン
 - 最新バージョンからの除外
 - 有効期限の終了日
+
+レプリカ リージョンを追加する予定の場合は、ソース マネージド イメージを削除しないでください。 追加リージョンにイメージ バージョンをレプリケートするには、ソース マネージド イメージが必要です。 
 
 [az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update) を使用してギャラリーの説明を更新します。 
 

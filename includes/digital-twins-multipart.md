@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267736"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157907"
 ---
 > [!NOTE]
 > マルチパート要求には、一般的に次の 3 つの情報が必要です。

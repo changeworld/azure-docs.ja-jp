@@ -9,11 +9,11 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 400f12237ae8b8cbaf6d66bda1663ecb680136f3
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631085"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162697"
 ---
 [メッセージ ルーティング](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)を使うと、IoT デバイスから組み込みイベント ハブ互換エンドポイントまたはカスタム エンドポイント (BLOB ストレージ、Service Bus キュー、Service Bus トピック、Event Hubs など) に、利用統計情報を送信できます。 カスタム メッセージ ルーティングを構成するには、特定の条件と一致するルートをカスタマイズするための[ルーティング クエリ](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)を作成できます。 設定が済むと、受信データは IoT Hub によってエンドポイントに自動的にルーティングされるようになります。 メッセージが定義されているルーティング クエリのいずれとも一致しない場合、メッセージは既定のエンドポイントにルーティングされます。
 

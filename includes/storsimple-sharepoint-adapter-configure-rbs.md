@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889087"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155839"
 ---
 > [!NOTE]
 > SharePoint 用 StorSimple アダプターの RBS 構成を変更する際は、Domain Admins グループに属しているユーザー アカウントでログオンする必要があります。 さらに、サーバーの全体管理と同じホストで実行されているブラウザーから構成ページにアクセスする必要があります。

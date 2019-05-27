@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 19ad4e39ca4e402c37b2cfa69c7c306b6e5a2766
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444223"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170082"
 ---
 1. 仮想ネットワーク ゲートウェイのページに移動してそれを開きます。 移動方法は複数あります。 **[TestVNet1]、[概要]、[接続されているデバイス]、[VNet1GW]** の順に選択することで、ゲートウェイ 'VNet1GW' に移動することができます。
 2. VNet1GW 用のページで、**[接続]** をクリックします。 [接続] ページの上部にある **[+追加]** をクリックして **[接続の追加]** ページを開きます。

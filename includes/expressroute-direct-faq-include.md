@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 41f62d095c1a0cbdd0a888326b263a3294066637
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118687"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170712"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
 
@@ -33,12 +33,18 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 * ワシントン DC
 * ダラス 
 * 香港特別行政区
+* ロンドン
 * ロサンゼルス
 * New York City
 * パリ
+* パース
+* トロント
 * サンアントニオ
+* シアトル
+* ソウル
 * シリコン バレー
 * シンガポール 
+* シドニー
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>ExpressRoute Direct の SLA は何ですか?
 

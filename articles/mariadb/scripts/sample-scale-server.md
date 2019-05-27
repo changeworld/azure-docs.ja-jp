@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: ef01c38dddee0a74477ef331f935bda2787866df
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546371"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171318"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの監視とスケーリングを行う
 このサンプル CLI スクリプトでは、単一の Azure Database for MariaDB サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングします。
