@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ac102f388c404bab98354b7bd131989abedd7e6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 075fc48d4db4c4cfcc6f45f5fe93e8cfb38d5559
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548189"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991838"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -40,7 +40,7 @@ Azure ホストは内部の Microsoft タイム サーバーに同期されて�
 
 スタンドアロン ハードウェアでは、Linux OS によって、起動時にホスト ハードウェア クロックのみが読み取られます。 その後、クロックは、Linux カーネルの割り込みタイマーを使用して維持されます。 この構成では、クロックは時間の経過と共に誤差が生じます。 Azure の新しい Linux ディストリビューションでは、VM で VMICTimeSync プロバイダーを使用できます。このプロバイダーは LIS (Linux Integration Services) に含まれており、ホストからより頻繁にクロック更新についてクエリを実行するためのものです。
 
-仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](maintenance-and-updates.md#maintenance-not-requiring-a-reboot)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、VM で生じた変更の補正を求めます。
+仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、VM で生じた変更の補正を求めます。
 
 時刻同期が動作しないと、VM のクロックでエラーが蓄積されます。 VM が 1 つのみであれば、ワークロードで高精度のタイムキーピングが必要でない限り、影響は大きくならない場合があります。 しかし、ほとんどの場合、相互接続された VM が複数あり、それらの VM ではトランザクションを追跡するために時間を使用し、その時間はデプロイ全体で一貫している必要があります。 VM 間の時間が異なると、次のような影響が見られる場合があります。
 

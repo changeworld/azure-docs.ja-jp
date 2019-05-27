@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: e203877b2bc939c1d7fb9390df39f3e2451d12d3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551033"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956205"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの Linux ASP.NET Core アプリを構成する
 
@@ -50,7 +50,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
-App Service では、アプリ コードの外部で[アプリ設定を指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)できます。 その後、標準の ASP.NET パターンを使用して、それらにアクセスできます。
+App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の ASP.NET パターンを使用して、それらにアクセスできます。
 
 ```csharp
 include Microsoft.Extensions.Configuration;

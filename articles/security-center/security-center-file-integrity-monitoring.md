@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
-ms.author: monhaber
-ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: v-mohabe
+ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901587"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968802"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。

@@ -9,11 +9,11 @@ ms.date: 12/17/2018
 ms.author: alinast
 ms.custom: include file
 ms.openlocfilehash: e8027e16cc1f58fbadbb35ae241ab29010005586
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584792"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153716"
 ---
 1. [Azure portal](https://portal.azure.com) で、左側のウィンドウの **[Azure Active Directory]** を開き、**[プロパティ]** ウィンドウを開きます。 **ディレクトリ ID** を一時ファイルにコピーします。 この値は、次のセクションでサンプル アプリケーションを構成する際に使用します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "53584792"
 
     ![[アプリの登録] ウィンドウ](./media/digital-twins-permissions/aad-app-reg-start.png)
 
-1. **[名前]** ボックスに、このアプリ登録の表示名を入力します。 **[アプリケーションの種類]** で **[ネイティブ]** を選択し、**[リダイレクト URI]** で `https://microsoft.com` を選択します。 **作成**を選択します。
+1. **[名前]** ボックスに、このアプリ登録の表示名を入力します。 **[アプリケーションの種類]** で **[ネイティブ]** を選択し、**[リダイレクト URI]** で `https://microsoft.com` を選択します。 **作成** を選択します。
 
     ![[作成] ウィンドウ](./media/digital-twins-permissions/aad-app-reg-create.png)
 

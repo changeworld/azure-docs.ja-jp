@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: ceaf4d3db71d99c3e87157f9847312fdf4000026
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620004"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991784"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
 
@@ -58,7 +58,6 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 
 * **コール センター**。 ソーシャル メディアが登場しても、顧客サービス トランザクションの大部分は引き続きカスタマー コール センターによって支えられています。 このオーディオ データにコード化された大量の顧客情報を分析して、顧客満足度を高めることができます。 Media Indexer を使用することで、組織はテキストを抽出して検索インデックスとダッシュボードを構築できます。 これにより、一般的な苦情、苦情の原因、その他の関連データに関する知見を引き出すことができます。
 * **ユーザー生成のコンテンツ モデレート**。 新しい報道発信源から警察まで、多くの組織に一般向けのポータルがあり、そこでビデオや画像などのユーザー生成のメディアを受け入れています。 コンテンツの量は、予期しないイベントが原因で急上昇することがあります。 これらのシナリオで、コンテンツが適切かどうかを手動で効果的に確認することは困難です。 顧客は、コンテンツ モデレート サービスを利用して、適切なコンテンツに的を絞ることができます。
-* **監視**。 IP カメラの使用の増加に伴い、監視ビデオのインベントリが増加しています。 監視ビデオを手動で確認するとなると、時間がかかり、ヒューマン エラーが発生しやすくなります。 Media Analytics では、派生物を確認、管理、および作成するプロセスをより簡単にするために、モーション検出、顔検出、Hyperlapse などのサービスを用意しています。
 
 ## <a name="media-analytics-media-processors"></a>Media Analytics のメディア プロセッサ
 ここでは、Media Analytics のメディア プロセッサを紹介し、.NET または REST を使用してメディア プロセッサ (MP) オブジェクトを取得する方法について説明します。
@@ -66,7 +65,6 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 ### <a name="mp-names"></a>MP 名
 * Azure Media Indexer 2 プレビュー
 * Azure Media Indexer
-* Azure Media Hyperlapse
 * Azure Media Face Detector
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails

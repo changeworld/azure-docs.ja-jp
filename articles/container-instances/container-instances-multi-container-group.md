@@ -9,17 +9,17 @@ ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: f769beda1654dc9f58ecff733741fb1ab9118031
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152297"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
-> * [リソース マネージャー](container-instances-multi-container-group.md)
+> * [Resource Manager](container-instances-multi-container-group.md)
 
 Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 

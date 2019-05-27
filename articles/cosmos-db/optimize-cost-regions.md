@@ -4,14 +4,14 @@ description: この記事では、Azure Cosmos DB の複数リージョン デ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 478714f48782adb138f1ed803d53c81ec48f2efd
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876742"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967278"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 

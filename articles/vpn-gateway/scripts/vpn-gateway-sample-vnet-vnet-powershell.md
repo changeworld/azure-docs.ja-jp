@@ -10,11 +10,11 @@ ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
 ms.openlocfilehash: 0d49e65ccfd13637a2e7313a5ec3a48b2ce900ca
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66113645"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 

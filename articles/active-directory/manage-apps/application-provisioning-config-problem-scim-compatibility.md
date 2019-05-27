@@ -3,8 +3,8 @@ title: Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 �
 description: SCIM 2.0 をサポートするギャラリー以外のアプリケーションを Azure AD に追加する際に発生する、一般的なプロトコル互換性の問題を解決する方法
 services: active-directory
 documentationcenter: ''
-author: asmalser
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: asmalser
+ms.author: mimart
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880153"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963176"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 

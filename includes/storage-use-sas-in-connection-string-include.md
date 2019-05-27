@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164560"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115500"
 ---
 ストレージ アカウント内のリソースへのアクセスを許可する Shared Access Signature (SAS) の URL を所有している場合は、その SAS を接続文字列の中で使用できます。 要求を認証するために必要な情報は SAS に保持されているため、リソースにアクセスするために必要な資格情報、サービス エンドポイント、プロトコルが、SAS を含んだ接続文字列によって得られます。
 

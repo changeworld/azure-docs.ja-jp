@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
-ms.author: monhaber
-ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: v-mohabe
+ms.openlocfilehash: 8f6f94fa8602dcc2b8eed19262f595cb18c40b57
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905292"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65968310"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。

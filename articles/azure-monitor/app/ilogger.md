@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: ca842ce46a58dafa87581b77bcbd802191f7fcd1
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511029"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955330"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 
@@ -437,7 +437,7 @@ public class MyController : ApiController
 ```
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.AspNetCore パッケージを使用して Application Insights を有効にする場合は、このコードを変更して、コンストラクター内で直接 `TelemetryClient` を取得します。 例については、[こちらの FAQ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio#frequently-asked-questions) をご覧ください。
+> Microsoft.ApplicationInsights.AspNetCore パッケージを使用して Application Insights を有効にする場合は、このコードを変更して、コンストラクター内で直接 `TelemetryClient` を取得します。 例については、[こちらの FAQ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions) をご覧ください。
 
 
 ### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger ログからはどのような種類の Application Insights テレメトリが生成されますか?  または、Application Insights ではどこで ILogger ログを見ることができますか?

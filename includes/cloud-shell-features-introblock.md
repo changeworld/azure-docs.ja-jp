@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: eef2c762c87a13c62eeb9b017ed43f54835ab16e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572382"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66125159"
 ---
 Azure Cloud Shell は、Azure リソースを開発および管理するための、ブラウザー ベースのシェル環境です。
 
