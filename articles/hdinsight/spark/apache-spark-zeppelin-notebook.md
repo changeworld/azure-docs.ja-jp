@@ -27,18 +27,18 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin Notebook を起動する
 
-1. Spark クラスターの **[概要]** で、**[クラスター ダッシュボード]** から **[Zeppelin Notebook]** を選択します。 クラスターの管理者資格情報を入力します。  
+1. Spark クラスターの **[概要]** で、 **[クラスター ダッシュボード]** から **[Zeppelin Notebook]** を選択します。 クラスターの管理者資格情報を入力します。  
 
    > [!NOTE]  
    > ブラウザーで次の URL を開き、クラスターの Zeppelin Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. 新しい Notebook を作成します。 ヘッダー ウィンドウから、**[Notebook]** > **[新しいメモを作成します]** の順に移動します。
+2. 新しい Notebook を作成します。 ヘッダー ウィンドウから、 **[Notebook]**  >  **[新しいメモを作成します]** の順に移動します。
 
     ![新しい Zeppelin Notebook を作成する](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "新しい Zeppelin Notebook を作成する")
 
-    Notebook の名前を入力し、**[Note の作成]** を選択します。
+    Notebook の名前を入力し、 **[Note の作成]** を選択します。
 
 3. Notebook のヘッダーに [接続] というステータスが表示されることを確認します。 これは、右上隅の緑色の点で示されます。
 
@@ -76,7 +76,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
     ![生データから一時テーブルを作成する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "生データから一時テーブルを作成する")
 
-    各段落にタイトルを指定することもできます。 段落の右上隅から **[設定]** アイコン (鎖歯車) を選択し、**[タイトルの表示]** を選択します。  
+    各段落にタイトルを指定することもできます。 段落の右上隅から **[設定]** アイコン (鎖歯車) を選択し、 **[タイトルの表示]** を選択します。  
 
     > [!NOTE]  
     > %spark2 インタープリターは、いずれの HDInsight バージョンの Zeppelin Notebook でもサポートされていません。また、%sh インタープリターは HDInsight 4.0 以降ではサポートされなくなります。
@@ -90,7 +90,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
     先頭にある **%sql** ステートメントは、Livy Scala インタープリターを使用するように Notebook に指示します。
 
-6. **棒グラフ** アイコンを選択し、表示を変更します。  **棒グラフ**を選択した後に表示される **[設定]** で、**[キー]** と **[値]** を選択できます。  次のスクリーンショットでは出力を示します。
+6. **棒グラフ** アイコンを選択し、表示を変更します。  **棒グラフ**を選択した後に表示される **[設定]** で、 **[キー]** と **[値]** を選択できます。  次のスクリーンショットでは出力を示します。
 
     ![Notebook を使用して Spark SQL ステートメントを実行する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Notebook を使用して Spark SQL ステートメントを実行する")
 
@@ -103,20 +103,20 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
     このスニペットを新しい段落に貼り付けて、 **Shift + Enter**キーを押します。 **[Temp]** ドロップダウン リスト ボックスから **[65]** を選択します。 
 
-8. **棒グラフ** アイコンを選択し、表示を変更します。  次に、**[設定]** を選択し、次の変更を行います。
+8. **棒グラフ** アイコンを選択し、表示を変更します。  次に、 **[設定]** を選択し、次の変更を行います。
 
-   * **[グループ]:****targettemp** を追加します。  
+   * **[グループ]:** **targettemp** を追加します。  
    * **[値]:** 1. **date** を削除します。  2. **temp_diff** を追加します。  手順 3.  アグリゲーターを **SUM** から **AVG** に変更します。  
 
      次のスクリーンショットでは出力を示します。
 
      ![Notebook を使用して Spark SQL ステートメントを実行する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Notebook を使用して Spark SQL ステートメントを実行する")
 
-9. Livy インタープリターを再起動して、アプリケーションを終了します。 再起動するには、右上隅のログインしている [ユーザー名] を選択してインタープリターの [設定] を開き、**[インタープリター]** を選択します。  
+9. Livy インタープリターを再起動して、アプリケーションを終了します。 再起動するには、右上隅のログインしている [ユーザー名] を選択してインタープリターの [設定] を開き、 **[インタープリター]** を選択します。  
 
     ![インタープリターを起動する](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive の出力")
 
-10. **livy** までスクロールし、**[再起動]** を選択します。  プロンプトで **[OK]** を選択します。
+10. **livy** までスクロールし、 **[再起動]** を選択します。  プロンプトで **[OK]** を選択します。
 
     ![Livy インタープリターを再起動する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin インタープリターを再起動します")
 
@@ -125,11 +125,11 @@ HDInsight 上の Apache Spark クラスターに標準では搭載されてい�
 
 この記事では、Jupyter Notebook で [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) パッケージを使用する方法について説明します。
 
-1. インタープリターの [設定] を開きます。 右上隅のログインしている [ユーザー名] を選択し、**[インタープリター]** を選択します。
+1. インタープリターの [設定] を開きます。 右上隅のログインしている [ユーザー名] を選択し、 **[インタープリター]** を選択します。
 
     ![インタープリターを起動する](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive の出力")
 
-2. **livy** までスクロールし、**[編集]** を選択します。
+2. **livy** までスクロールし、 **[編集]** を選択します。
 
     ![インタープリターの設定を変更する](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "インタープリターの設定を変更する")
 
@@ -147,7 +147,7 @@ HDInsight 上の Apache Spark クラスターに標準では搭載されてい�
    
     ![Jupyter Notebook で外部パッケージを使用する](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Jupyter Notebook で外部パッケージを使用する")
    
-    c. 3 つの値をコロン (**:**) で区切って連結します。
+    c. 3 つの値をコロン ( **:** ) で区切って連結します。
    
         com.databricks:spark-csv_2.10:1.4.0
 
@@ -163,11 +163,11 @@ Zeppelin Notebook は、クラスターのヘッドノードに保存されま�
 
 このような場合は、Zeppelin Notebook からジョブの実行を開始する前に、次の手順を実行する必要があります。  
 
-1. Zeppelin Notebook から Livy インタープリターを再起動します。 再起動するには、右上隅のログインしている [ユーザー名] を選択してインタープリターの [設定] を開き、**[インタープリター]** を選択します。
+1. Zeppelin Notebook から Livy インタープリターを再起動します。 再起動するには、右上隅のログインしている [ユーザー名] を選択してインタープリターの [設定] を開き、 **[インタープリター]** を選択します。
 
     ![インタープリターを起動する](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive の出力")
 
-2. **livy** までスクロールし、**[再起動]** を選択します。
+2. **livy** までスクロールし、 **[再起動]** を選択します。
 
     ![Livy インタープリターを再起動する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin インタープリターを再起動します")
 
