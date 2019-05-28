@@ -6,6 +6,8 @@
       href: security-center-intro.md
     - name: Security Center でサポートされているプラットフォームと機能
       href: security-center-os-coverage.md
+    - name: エンドポイント保護の評価および推奨事項
+      href: security-center-endpoint-protection.md
 - name: クイック スタート
   expanded: true
   items:

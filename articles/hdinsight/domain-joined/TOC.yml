@@ -8,6 +8,8 @@
   items:
     - name: ESP クラスターの計画
       href: apache-domain-joined-architecture.md
+    - name: ESP クラスターの作成およびオンプレミスとの同期
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: Azure AD DS による ESP クラスターの構成
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: HDInsight クラスターへの Azure AD ユーザーの同期
