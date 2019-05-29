@@ -1,251 +1,251 @@
 ---
 title: チュートリアル:Azure Active Directory と Workspot Control の統合 | Microsoft Docs
-description: Azure Active Directory と Workspot Control の間でシングル サインオンを構成する方法について説明します。
+description: Azure Active Directory と Workspot Control に対してシングル サインオンを構成する方法について学習します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 3ea8e4e9-f61f-4f45-b635-b0e306eda3d1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/12/2018
+ms.topic: tutorial
+ms.date: 3/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97f375c6f48d3dc497eb59e76f19fc64cf906b56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41d8d05cf5f900c7fcd5640f8896c715640ebcab
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886509"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65772794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
 
-このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Workspot Control を統合すると、次のことができます。
 
-Workspot Control と Azure AD の統合には、次の利点があります。
+* Azure AD を使用して、Workspot Control にアクセスできるユーザーを制御します。
+* ユーザーが Azure AD アカウントを使って Workspot Control に自動的にサインイン (シングル サインオン (SSO)) できるようにします。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-- Workspot Control にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Workspot Control にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と Workspot Control の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Workspot Control のシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Workspot Control のシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Workspot Control の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+> [!Note]
+> Workspot Control では、SP-initiated SSO と IDP-initiated SSO がサポートされます。
+
 
 ## <a name="adding-workspot-control-from-the-gallery"></a>ギャラリーからの Workspot Control の追加
+
 Azure AD への Workspot Control の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Workspot Control を追加する必要があります。
 
-**ギャラリーから Workspot Control を追加するには、次の手順に従います。**
+**ギャラリーから Workspot Control を追加するには、次の手順のようにします。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/selectazuread.png)
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/a_select_app.png)
-    
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
-    ![image](./media/workspotcontrol-tutorial/a_new_app.png)
+3. ウィンドウの上部の **[新しいアプリケーション]** を選択します。
 
-4. 検索ボックスに「**Workspot Control**」と入力し、結果ウィンドウで **[Workspot Control]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addfromgallery.png)
+4. 検索ボックスに「**Workspot Control**」と入力し、結果パネルから **Workspot Control** を選択して、 **[追加]** を選択します。
+
+     ![[ギャラリーから追加する] ウィンドウ](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Workspot Control で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、Britta Simon というテスト ユーザーについて Workspot Control で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Workspot Control 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Workspot Control ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Workspot Control の関連ユーザーの間で、リンク関係が確立されている必要があります。
+Workspot Control で Azure AD のシングル サインオンを構成してテストするには、次のタスクを完了する必要があります。
 
-Workspot Control で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Workspot Control テスト ユーザーの作成](#create-a-workspot-control-test-user)** - Workspot Control で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
+2. [Workspot Control シングル サインオンの構成](#configure-workspot-control-single-sign-on) - アプリケーション側でシングル サインオン設定を構成します。
+3. [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon について Azure AD のシングル サインオンをテストします。
+4. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. [Workspot Control テスト ユーザーの作成](#create-a-workspot-control-test-user) - Workspot Control で Britta Simon に対応するユーザーを設定し、Azure AD の Britta Simon にリンクさせます。
+6. [シングル サインオンのテスト](#test-single-sign-on)。構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、Workspot Control アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Workspot Control で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Workspot Control で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Workspot Control** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Workspot Control** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/B1_B2_Select_SSO.png)
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ウィンドウで、 **[SAML]** モードを選択して、シングル サインオンを有効にします。
 
-    ![image](./media/workspotcontrol-tutorial/b1_b2_saml_sso.png)
+    ![シングル サインオン方式の選択ウィンドウ](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** (鉛筆) アイコンを選択して、 **[基本的な SAML 構成]** にアクセスします。
 
-    ![image](./media/workspotcontrol-tutorial/b1-domains_and_urlsedit.png)
+    ![[基本的な SAML 構成] で強調表示された編集アイコン](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、アプリケーションを IDP-initiated モードで構成する場合は、次の手順のようにします。
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url.png)
+    ![[Workspot Control のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<INSTANCENAME>-saml.workspot.com/saml/metadata` の形式で URL を入力します。
+    1. **[識別子]** テキスト ボックスに、次のパターンで URL を入力します。<br/>
+    ***https://<<i></i>インスタンス名>-saml.workspot.com/saml/metadata***
 
-    b. **[応答 URL]** ボックスに、`https://<INSTANCENAME>-saml.workspot.com/saml/assertion` のパターンを使用して URL を入力します
+    1. **[応答 URL]** テキスト ボックスに、次のパターンで URL を入力します。<br/>
+    ***https://<<i></i>インスタンス名>-saml.workspot.com/saml/assertion***
 
-    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを SP-initiated モードで構成する場合は、 **[追加の URL を設定します]** を選択します。
 
-     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url1.png)
+    ![[Workspot Control のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://<INSTANCENAME>-saml.workspot.com/` という形式で URL を入力します。
+    **[サインオン URL]** テキスト ボックスに、次のパターンで URL を入力します。<br/>
+    ***https://<<i></i>インスタンス名>-saml.workspot.com/***
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Workspot Control クライアント サポート チーム](mailto:support@workspot.com)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を置き換えます。 これらの値を取得するには、[Workspot Control クライアント サポート チーム](mailto:support@workspot.com)に問い合わせてください。 または、Azure portal の **[基本的な SAML 構成]** セクションのパターンを参照することもできます。
 
-5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書 (Base64)** をダウンロードし、コンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで **[ダウンロード]** を選択し、要件に従って使用可能なオプションから**証明書 (Base64)** をダウンロードします。 それを自分のコンピューターに保存します。
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_certficate.png) 
+    ![証明書 (Base64) ダウンロード リンク](common/certificatebase64.png)
 
-6. **[Set up Workspot Control]\(Workspot Control の設定\)** セクションで、要件に従って適切な URL をコピーします。
+7. **[Workspot Control の設定]** セクションで、要件に従って適切な URL をコピーします。
 
-    URL は次のように表示されている場合があることに注意してください。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
+    - **ログイン URL**
 
-    b. Azure AD 識別子
+    - **Azure AD 識別子**
 
-    c. ログアウト URL
+    - **ログアウト URL**
 
-    ![image](./media/workspotcontrol-tutorial/d1_samlsonfigure.png) 
+### <a name="configure-workspot-control-single-sign-on"></a>Workspot Control のシングル サインオンの構成
 
-7. 異なる Web ブラウザー ウィンドウで、セキュリティ管理者として Workspot Control にログインします。
+1. 異なる Web ブラウザー ウィンドウで、セキュリティ管理者として Workspot Control にサインインします。
 
-8. ページの上部にあるツール バーで、 **[Setup]\(セットアップ\)** をクリックし、 **[SAML]** に移動します。
+2. ページの上部にあるツール バーで **[Setup]\(セットアップ\)** を選択し、次に **[SAML]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
+    ![セットアップ オプション](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-9. **[Security Assertion Markup Language Configuration]\(Security Assertion Markup Language の構成\)** ページで、次の手順のようにします。
+3. **[Security Assertion Markup Language Configuration]\(Security Assertion Markup Language の構成\)** ウィンドウで、次の手順のようにします。
  
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
+    ![[Security Assertion Markup Language Configuration]\(Security Assertion Markup Language の構成\) ウィンドウ](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. **[Entity ID]\(エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。   
+    1. **[Entity ID]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**を貼り付けます。
 
-    b. **[Signon Service URL]\(サインオン サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    1. **[Signon Service URL]\(サインオン サービス URL\)** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
 
-    c. **[Logout Service URL]\(ログアウト サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。 
+    1. **[Logout Service URL]\(ログアウト サービス URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** を貼り付けます。
 
-    d. **[Update File]\(ファイルの更新\)** ボタンをクリックして、Azure portal からダウンロードした base 64 でエンコードされた証明書を X.509 証明書にアップロードします。
+    1. **[Update File]\(ファイルの更新\)** を選択して、Azure portal からダウンロードした base 64 でエンコードされた証明書を X.509 証明書にアップロードします。
 
-    e. **[Save]** をクリックします。
+    1. **[保存]** を選択します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal でテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![image](./media/workspotcontrol-tutorial/d_users_and_groups.png)
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-2. 画面の上部にある **[新しいユーザー]** を選択します。
+2. ウィンドウの上部にある **[新しいユーザー]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/d_adduser.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-3. [ユーザーのプロパティ] で、次の手順のようにします。
+3. ユーザーのプロパティで、次の手順のようにします。
 
-    ![image](./media/workspotcontrol-tutorial/d_userproperties.png)
+    ![ユーザーのプロパティ ウィンドウ](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    1. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    1. **[ユーザー名]** フィールドに、**brittasimon@* yourcompanydomain.extension*** と入力します。 たとえば、「 **BrittaSimon@contoso.<i></i>com**」と入力します。
 
-    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
+    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
- 
-### <a name="create-a-workspot-control-test-user"></a>Workspot Control のテスト ユーザーを作成する
-
-Azure AD ユーザーが Workspot Control にログインできるようにするには、ユーザーを Workspot Control にプロビジョニングする必要があります。 Workspot Control では、プロビジョニングは手動で行います。
-
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
-
-1. セキュリティ管理者として Workspot Control にログインします。
-
-2. ページの上部にあるツール バーで、 **[Users]\(ユーザー\)** をクリックし、 **[Add User]\(ユーザーの追加\)** に移動します。
-
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
-
-3. **[Add a New User]\(新しいユーザーの追加\)** ページで、次の手順を実行します。
-
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
-
-    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
-
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
-
-    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
-
-    d. **[Role]\(ロール\)** ドロップダウンから適切なユーザー ロールを選択します。
-
-    e. **[Group]\(グループ\)** ドロップダウンから適切なユーザー グループを選択します。
-
-    f. **[ユーザーの追加]** をクリックします。
+    1. **作成** を選択します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Workspot Control へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Workspot Control へのアクセスを許可することで、Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Workspot Control]** の順に選択します。
 
-    ![image](./media/workspotcontrol-tutorial/d_all_applications.png)
+    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Workspot Control]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_app.png)
+    ![アプリケーションの一覧の Workspot Control リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+3. 左側のメニューで **[ユーザーとグループ]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/d_leftpaneusers.png)
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンを選択し、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** ボタンを選択します。 **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
-    ![image](./media/workspotcontrol-tutorial/d_assign_user.png)
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ウィンドウで、 **[ユーザー]** の一覧から **Britta Simon** を選択します。 **[選択]** をクリックします。
 
-5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
-    
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ウィンドウで、一覧からユーザーに適したロールを選択します。 次に、下部にある **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
+
+### <a name="create-a-workspot-control-test-user"></a>Workspot Control のテスト ユーザーを作成する
+
+Azure AD ユーザーが Workspot Control にサインインできるようにするには、ユーザーを Workspot Control にプロビジョニングする必要があります。 プロビジョニングは手動で行います。
+
+**ユーザー アカウントをプロビジョニングするには、次の手順のようにします。**
+
+1. セキュリティ管理者として Workspot Control にサインインします。
+
+2. ページの上部にあるツール バーで **[Users]\(ユーザー\)** を選択し、次に **[Add User]\(ユーザーの追加\)** を選択します。
+
+    ![[Users]\(ユーザー\) オプション](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
+
+3. **[Add a New User]\(新しいユーザーの追加\)** ウィンドウで、次の手順のようにします。
+
+    ![[Add a New User]\(新しいユーザーの追加\) ウィンドウ](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
+
+    1. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
+
+    1. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
+
+    1. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso.<i></i>com**)。
+
+    1. **[Role]\(ロール\)** ドロップダウン リストから適切なユーザー ロールを選択します。
+
+    1. **[Group]\(グループ\)** ドロップダウン リストから適切なユーザー グループを選択します。
+
+    1. **[Add User]\(ユーザーの追加\)** を選択します。
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、"*アクセス パネル*" を使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Workspot Control] タイルをクリックすると、自動的に Workspot Control アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルで **[Workspot Control]** タイルをクリックすると、SSO を設定した Workspot Control に自動的にサインインします。 詳細については、「[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+- [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

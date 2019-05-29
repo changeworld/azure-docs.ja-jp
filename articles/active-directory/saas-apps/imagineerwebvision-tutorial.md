@@ -4,218 +4,188 @@ description: Azure Active Directory と Imagineer WebVision の間でシング�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b936a3f4-74c1-4437-b0f7-6d1b1de38bb1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/10/2018
+ms.topic: tutorial
+ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 377da86003543fb53240de4d5fc672f71e1ed5f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8c8bdfb7c9ae921eda2828af2c20136feaa9de6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202402"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>チュートリアル:Azure Active Directory と Imagineer WebVision の統合
 
 このチュートリアルでは、Imagineer WebVision と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Imagineer WebVision と Azure AD の統合には、次の利点があります。
 
-- Imagineer WebVision にアクセスできる Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Imagineer WebVision にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Imagineer WebVision にアクセスできる Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントで Imagineer WebVision に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と Imagineer WebVision の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Imagineer WebVision でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* Imagineer WebVision でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Imagineer WebVision の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Imagineer WebVision では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-imagineer-webvision-from-the-gallery"></a>ギャラリーからの Imagineer WebVision の追加
+
 Azure AD への Imagineer WebVision の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Imagineer WebVision を追加する必要があります。
 
 **ギャラリーから Imagineer WebVision を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Imagineer WebVision**」と入力し、結果パネルから **[Imagineer WebVision]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Imagineer WebVision**」と入力し、結果パネルから **[Imagineer WebVision]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-    ![結果一覧の Imagineer WebVision](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_addfromgallery.png)
+    ![結果一覧の Imagineer WebVision](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" という名前のテスト ユーザーに基づいて、Imagineer WebVision で Azure AD シングル サインオンを構成してテストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Imagineer WebVision ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Imagineer WebVision の関連ユーザーの間で、リンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Imagineer WebVision で Azure AD シングル サインオンを構成してテストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Imagineer WebVision 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Imagineer WebVision で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Imagineer WebVision テスト ユーザーの作成](#create-an-imagineer-webvision-test-user)** - Imagineer WebVision で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+2. **[Imagineer WebVision シングル サインオンの構成](#configure-imagineer-webvision-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Imagineer WebVision テスト ユーザーの作成](#create-imagineer-webvision-test-user)** - Imagineer WebVision で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD シングル サインオンを有効にし、Imagineer WebVision アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Imagineer WebVision で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+Imagineer WebVision で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. Azure Portal の **Imagineer WebVision** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Imagineer WebVision** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-3. **[Imagineer WebVision Domain and URLs] (Imagineer WebVision のドメインと URL)** セクションで、次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[Imagineer WebVision Domain and URLs] (Imagineer WebVision のドメインと URL) のシングル サインオン情報](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[サインオン URL]** ボックスに、`https://<YOUR SERVER URL>/<yourapplicationloginpage>` のパターンを使用して URL を入力します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[識別子]** ボックスに、`https://<YOUR SERVER URL>/<yourapplicationloginpage>` の形式で URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Imagineer WebVision クライアント サポート チーム](mailto:support@itgny.com)に問い合わせてください。
+    ![[Imagineer WebVision Domain and URLs] (Imagineer WebVision のドメインと URL) のシングル サインオン情報](common/sp-identifier.png)
 
-4. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
-    ![証明書のダウンロードのリンク](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_certificate.png) 
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<YOUR SERVER URL>/<yourapplicationloginpage>`
 
-5. **[保存]** ボタンをクリックします。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Imagineer WebVision クライアント サポート チーム](mailto:support@itgny.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/imagineerwebvision-tutorial/tutorial_general_400.png)
+5. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
-6. **Imagineer WebVision** 側でシングル サインオンを構成するには、コピーされた **[アプリのフェデレーション メタデータ URL]** を [Imagineer WebVision サポート チーム](mailto:support@itgny.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+
+### <a name="configure-imagineer-webvision-single-sign-on"></a>Imagineer WebVision シングル サインオンの構成
+
+**Imagineer WebVision** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Imagineer WebVision サポート チーム](mailto:support@itgny.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/imagineerwebvision-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/imagineerwebvision-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/imagineerwebvision-tutorial/create_aaduser_03.png)
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/imagineerwebvision-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
- 
-### <a name="create-an-imagineer-webvision-test-user"></a>Imagineer WebVision テスト ユーザーを作成する
-
-このセクションでは、Imagineer WebVision で Britta Simon という名前のユーザーを作成します。  [Imagineer WebVision サポート チーム](mailto:support@itgny.com)と協力して、Imagineer WebVision プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+    d. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Imagineer WebVision へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Imagineer WebVision]** を選択します。
 
-**Imagineer WebVision に Britta Simon を割り当てるには、次の手順を実行します。**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で、 **[Imagineer WebVision]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の [Imagineer WebVision] リンク](common/all-applications.png)
 
-2. アプリケーションの一覧で、**[Imagineer WebVision]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の [Imagineer WebVision] リンク](./media/imagineerwebvision-tutorial/tutorial_imagineerwebvision_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+### <a name="create-imagineer-webvision-test-user"></a>Imagineer WebVision テスト ユーザーの作成
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+このセクションでは、Imagineer WebVision で Britta Simon という名前のユーザーを作成します。  [Imagineer WebVision サポート チーム](mailto:support@itgny.com)と協力して、Imagineer WebVision プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Imagineer WebVision] タイルをクリックすると、自動的に Imagineer WebVision アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルで [Imagineer WebVision] タイルをクリックすると、SSO を設定した Imagineer WebVision に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/imagineerwebvision-tutorial/tutorial_general_01.png
-[2]: ./media/imagineerwebvision-tutorial/tutorial_general_02.png
-[3]: ./media/imagineerwebvision-tutorial/tutorial_general_03.png
-[4]: ./media/imagineerwebvision-tutorial/tutorial_general_04.png
-
-[100]: ./media/imagineerwebvision-tutorial/tutorial_general_100.png
-
-[200]: ./media/imagineerwebvision-tutorial/tutorial_general_200.png
-[201]: ./media/imagineerwebvision-tutorial/tutorial_general_201.png
-[202]: ./media/imagineerwebvision-tutorial/tutorial_general_202.png
-[203]: ./media/imagineerwebvision-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

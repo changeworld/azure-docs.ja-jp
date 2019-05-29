@@ -1,34 +1,35 @@
 ---
-title: チュートリアル:Azure Active Directory と Vodeclic の統合 | Microsoft Docs
-description: Azure Active Directory と Vodeclic の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と OutSystems の統合 | Microsoft Docs
+description: Azure Active Directory と OutSystems の間でシングル サインオンを構成する方法について学習します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
+ms.assetid: cf6f99b7-0604-4db2-a72e-0d1a1d643a08
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 05/102019
 ms.author: jeedes
-ms.openlocfilehash: a3e457ca29ebe086c6097528af5a9253446b757c
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0e5768b8f7c368e57d55656f0e82b199995be150
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990551"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65802731"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>チュートリアル:Azure Active Directory と Vodeclic の統合
+# <a name="tutorial-azure-active-directory-integration-with-outsystems"></a>チュートリアル:Azure Active Directory と OutSystems の統合
 
-このチュートリアルでは、Vodeclic と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Vodeclic と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、OutSystems と Azure Active Directory (Azure AD) を統合する方法について学習します。
+OutSystems と Azure AD の統合には、次の利点があります。
 
-* Vodeclic にアクセスできる Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Vodeclic に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* OutSystems にアクセスできる Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して OutSystems に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -36,22 +37,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Vodeclic と Azure AD の統合を構成するには、次のものが必要です。
+OutSystems と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* Vodeclic でのシングル サインオンが有効なサブスクリプション
+* OutSystems でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Vodeclic では、**SP** と **IDP** によって開始される SSO がサポートされます
+* OutSystems では、**SP と IDP** によって開始される SSO がサポートされます
 
-## <a name="adding-vodeclic-from-the-gallery"></a>ギャラリーからの Vodeclic の追加
+* OutSystems では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
-Azure AD への Vodeclic の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Vodeclic を追加する必要があります。
+## <a name="adding-outsystems-from-the-gallery"></a>ギャラリーからの OutSystems の追加
 
-**ギャラリーから Vodeclic を追加するには、次の手順に従います。**
+Azure AD への OutSystems の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に OutSystems を追加する必要があります。
+
+**ギャラリーから OutSystems を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -65,31 +68,31 @@ Azure AD への Vodeclic の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Vodeclic**」と入力し、結果ウィンドウで **Vodeclic** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**OutSystems**」と入力し、結果パネルで **OutSystems** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Vodeclic](common/search-new-app.png)
+    ![結果一覧の OutSystems](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Vodeclic で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Vodeclic 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、OutSystems で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと OutSystems 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
-Vodeclic で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+OutSystems で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Vodeclic シングル サインオンの構成](#configure-vodeclic-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[OutSystems シングル サインオンの構成](#configure-outsystems-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Vodeclic テスト ユーザーの作成](#create-vodeclic-test-user)** - Vodeclic で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[OutSystems テスト ユーザーの作成](#create-outsystems-test-user)** - OutSystems で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-Vodeclic で Azure AD シングル サインオンを構成するには、次の手順に従います。
+OutSystems で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Vodeclic** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **OutSystems** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -103,26 +106,26 @@ Vodeclic で Azure AD シングル サインオンを構成するには、次の
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Vodeclic のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[OutSystems のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`http://<YOURBASEURL>/IdP` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml/callback` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<YOURBASEURL>/IdP/SSO.aspx` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Vodeclic のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![[OutSystems のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://<companyname>.lms.vodeclic.net/auth/saml` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<YOURBASEURL>` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Vodeclic クライアント サポート チーム](mailto:hotline@vodeclic.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[OutSystems クライアント サポート チーム](mailto:support@outsystems.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-7. **[Vodeclic のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+7. **[OutSystems のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -132,9 +135,9 @@ Vodeclic で Azure AD シングル サインオンを構成するには、次の
 
     c. ログアウト URL
 
-### <a name="configure-vodeclic-single-sign-on"></a>Vodeclic シングル サインオンの構成
+### <a name="configure-outsystems-single-sign-on"></a>OutSystems のシングル サインオンの構成
 
-**Vodeclic** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**OutSystems** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [OutSystems サポート チーム](mailto:support@outsystems.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -154,7 +157,7 @@ Vodeclic で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -162,15 +165,15 @@ Vodeclic で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Vodeclic へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に OutSystems へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Vodeclic]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[OutSystems]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Vodeclic]** を選択します。
+2. アプリケーションの一覧で **[OutSystems]** を選択します。
 
-    ![アプリケーションの一覧の Vodeclic のリンク](common/all-applications.png)
+    ![アプリケーションの一覧の OutSystems のリンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -186,24 +189,21 @@ Vodeclic で Azure AD シングル サインオンを構成するには、次の
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-vodeclic-test-user"></a>Vodeclic テスト ユーザーの作成
+### <a name="create-outsystems-test-user"></a>OutSystems のテスト ユーザーの作成
 
-このセクションでは、Vodeclic で Britta Simon というユーザーを作成します。  [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)と連携して、Vodeclic プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
-
-> [!NOTE]
-> アプリケーションの要件によっては、お使いのマシンを許可リストに登録しなければならない場合があります。 そのためには、パブリック IP アドレスを [Vodeclic サポート チーム](mailto:hotline@vodeclic.com)と共有する必要があります。
+このセクションでは、Britta Simon というユーザーを OutSystems に作成します。 OutSystems では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 OutSystems にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Vodeclic] タイルをクリックすると、SSO を設定した Vodeclic に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [OutSystems] タイルをクリックすると、SSO を設定した OutSystems に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

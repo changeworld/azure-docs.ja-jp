@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150764"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603091"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Disk の返送と Azure へのデータ アップロードの確認
 
@@ -56,7 +56,7 @@ ms.locfileid: "65150764"
 2. 梱包箱を封印し、返送ラベルが見えることを確認します。
 3. UPS で集荷のスケジュールを設定します。 集荷のスケジュールを設定するには:
 
-    - 最寄りの UPS (国固有のフリー ダイヤル) に連絡します。
+    - 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
     - 電話で、印刷ラベルに表示されている返送追跡番号を伝えます。
     - 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
     - 集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box Disk を持ち込むこともできます。
@@ -78,11 +78,11 @@ ms.locfileid: "65150764"
 
 2. 梱包箱を封印し、返送ラベルが見えることを確認します。
 3. ヨーロッパで DHL を使ってデバイスを返送する場合は、DHL の Web サイトにアクセスし、航空貨物運送状番号を指定して、DHL に集荷を依頼します。
-4. 該当する国の DHL Express の Web サイトにアクセスし、**[Book a Courier Collection]\(宅配便の予約\) > [eReturn Shipment]\(電子返送\)** を選択します。
+4. 該当する国/地域の DHL Express の Web サイトにアクセスし、 **[Book a Courier Collection]\(宅配便の予約\) > [eReturn Shipment]\(電子返送\)** の順に選択します。
 
     ![DHL 電子返送](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
-3. 貨物運送状番号を指定し、**[Schedule Pickup]\(集荷のスケジュール\)** をクリックして集荷の手配を行います。
+3. 貨物運送状番号を指定し、 **[Schedule Pickup]\(集荷のスケジュール\)** をクリックして集荷の手配を行います。
 
       ![集荷のスケジュール](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "65150764"
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで集荷する場合は、次の手順を実行します。
 
 1. `adbops@microsoft.com` にメールを送信し、一意の国内配送用 ID、つまり TAU コードが記載された配送先住所ラベルを依頼します。 ラベルを目的の日付に入手するには、配送予定日の少なくとも 3 日前に依頼します。
-2. メールの件名は、「*Request for reverse shipping label with TAU code (TAU コードが記載された返送用の配送先住所ラベルの依頼)*」にすることをお勧めします。 メールには、必ず次の詳細情報を含めてください。 
+2. メールの件名は、「*Request for reverse shipping label with TAU code (TAU コードが記載された返送用の配送先住所ラベルの依頼)* 」にすることをお勧めします。 メールには、必ず次の詳細情報を含めてください。 
 
     - 注文の名前
     - Address
@@ -138,7 +138,7 @@ Body:
 1. 必ず返品用の伝票を同封してください。
 2. 集荷を依頼するには:
     1. 営業時間中 (月曜日から金曜日の午前 10 時から午後 5 時) に *Quantium Solutions International* ホットライン (070-8231-1418) に電話をかけます。 *Microsoft の集荷*であることと伝票番号を伝え、集荷を手配します。  
-    2. ホットラインにつながらない場合は、`microsoft@rocketparcel.com` にメールを送信します。メールの件名に「*Microsoft Pickup (Microsoft の集荷)*」、参照として伝票番号を入力します。
+    2. ホットラインにつながらない場合は、`microsoft@rocketparcel.com` にメールを送信します。メールの件名に「*Microsoft Pickup (Microsoft の集荷)* 」、参照として伝票番号を入力します。
     3. 配送業者が集荷に来ない場合は、*Quantium Solutions International* ホットラインに別の手配を依頼します。 
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
@@ -184,7 +184,7 @@ Azure にデータがアップロードされたことを確認するには、�
 2. **[Blob service] > [BLOB の参照]** に移動します。 コンテナーの一覧が表示されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーに作成したサブフォルダーに対応して、同じ名前のコンテナーがご利用のストレージ アカウントに作成されます。
     Azure の名前付け規則にフォルダー名が準拠していない場合、Azure へのデータのアップロードに失敗します。
 
-4. データセット全体が読み込み済みであることを確認するには、Microsoft Azure Storage Explorer を使用します。 ディスク レンタル注文に対応するストレージ アカウントをアタッチし、BLOB コンテナーの一覧に注目します。 いずれかのコンテナーを選択し、**[その他]** をクリックして **[Folder statistics]\(フォルダーの統計情報\)** をクリックします。 **[アクティビティ]** ウィンドウに、そのフォルダーの統計情報 (BLOB 数、合計 BLOB サイズなど) が表示されます。 合計 BLOB サイズ (バイト単位) がデータセットのサイズと一致している必要があります。
+4. データセット全体が読み込み済みであることを確認するには、Microsoft Azure Storage Explorer を使用します。 ディスク レンタル注文に対応するストレージ アカウントをアタッチし、BLOB コンテナーの一覧に注目します。 いずれかのコンテナーを選択し、 **[その他]** をクリックして **[Folder statistics]\(フォルダーの統計情報\)** をクリックします。 **[アクティビティ]** ウィンドウに、そのフォルダーの統計情報 (BLOB 数、合計 BLOB サイズなど) が表示されます。 合計 BLOB サイズ (バイト単位) がデータセットのサイズと一致している必要があります。
 
     ![フォルダーの統計情報を Storage Explorer で表示](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 

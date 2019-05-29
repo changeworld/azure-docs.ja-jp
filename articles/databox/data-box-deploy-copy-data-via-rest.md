@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508239"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800535"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -83,8 +83,8 @@ https 経由の Azure Blob Storage REST API への接続では、以下の手順
 Azure portal を使用して証明書をダウンロードします。
 
 1. Azure portal にサインインします。
-2. お客様の Data Box の注文に移動し、**[全般]、[デバイスの詳細]** の順に移動します。
-3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、**\<注文名>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
+2. お客様の Data Box の注文に移動し、 **[全般]、[デバイスの詳細]** の順に移動します。
+3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<注文名>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -107,12 +107,12 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 
 #### <a name="use-windows-server-ui"></a>Windows Server UI を使用する
 
-1.  `.cer` ファイルを右クリックし、**[証明書のインストール]** を選択します。 このアクションにより、証明書のインポート ウィザードが開始されます。
-2.  **[ストアの場所]** で **[ローカル マシン]** を選択し、**[次へ]** をクリックします。
+1.  `.cer` ファイルを右クリックし、 **[証明書のインストール]** を選択します。 このアクションにより、証明書のインポート ウィザードが開始されます。
+2.  **[ストアの場所]** で **[ローカル マシン]** を選択し、 **[次へ]** をクリックします。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  **[証明書をすべて次のストアに配置する]** を選択し、**[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
+3.  **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
 
     ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
@@ -152,6 +152,7 @@ Data Box BLOB ストレージに接続したら、次の手順はデータをコ
 - Data Box によってアップロード中のデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 
 このチュートリアルでは、Data Box BLOB ストレージにデータをコピーするために AzCopy が使用されます。 Azure Storage Explorer (GUI ベースのツールが望ましい場合)、またはパートナー ソフトウェアを使用してデータをコピーすることもできます。
+
 コピーの手順は次のとおりです。
 
 - コンテナーを作成する
@@ -212,9 +213,11 @@ AzCopy を使用して、最終更新時刻に基づいてファイルをアッ�
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a> Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+
+接続またはコピー操作中にエラーが発生する場合は、[Data Box BLOB ストレージの問題のトラブルシューティング](data-box-troubleshoot-rest.md)に関するページを参照してください。
 
 次に、発送するデバイスを準備します。
 

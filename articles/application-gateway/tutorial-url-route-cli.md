@@ -1,27 +1,27 @@
 ---
-title: チュートリアル - URL に基づいて Web トラフィックをルーティングする - Azure CLI
-description: このチュートリアルでは、Azure CLI を使用して、Web トラフィックを URL に基づいてサーバーの特定のスケーラブル プールにルーティングする方法を説明します。
+title: URL に基づいて Web トラフィックをルーティングする - Azure CLI
+description: この記事では、Azure CLI を使用して、Web トラフィックを URL に基づいてサーバーの特定のスケーラブル プールにルーティングする方法を説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 10/25/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c0954d1010a6cf5ef6f8edab1470588df9fba559
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006475"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955529"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
 
-皆さんは、Web トラフィックを管理する IT 管理者として、顧客またはユーザーができるだけ早く必要な情報を取得できるよう支援したいと考えています。 そのエクスペリエンスを最適化する方法の 1 つとして、Web トラフィックをその種類ごとに異なるサーバー リソースにルーティングすることが考えられます。 このチュートリアルでは、アプリケーションの各種トラフィックに対し、Azure CLI を使用して Application Gateway のルーティングをセットアップ、構成する方法について説明します。 このルーティングによって、トラフィックは、URL に基づいて異なるサーバー プールにリダイレクトされます。
+皆さんは、Web トラフィックを管理する IT 管理者として、顧客またはユーザーができるだけ早く必要な情報を取得できるよう支援したいと考えています。 そのエクスペリエンスを最適化する方法の 1 つとして、Web トラフィックをその種類ごとに異なるサーバー リソースにルーティングすることが考えられます。 この記事では、アプリケーションの各種トラフィックに対し、Azure CLI を使用して Application Gateway のルーティングをセットアップ、構成する方法について説明します。 このルーティングによって、トラフィックは、URL に基づいて異なるサーバー プールにリダイレクトされます。
 
 ![URL ルーティングの例](./media/tutorial-url-route-cli/scenario.png)
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 必要なネットワーク リソースのリソース グループを作成する
@@ -31,13 +31,13 @@ ms.locfileid: "58006475"
 > * プールを自動的にスケーリングできるよう各プールのスケール セットを作成する
 > * 各種のトラフィックが適切なプールに誘導されることを確認するためのテストを実行する
 
-好みに応じて、[Azure PowerShell](tutorial-url-route-powershell.md) または [Azure portal](create-url-route-portal.md) を使ってこのチュートリアルの手順を実行することもできます。
+好みに応じて、[Azure PowerShell](tutorial-url-route-powershell.md) または [Azure portal](create-url-route-portal.md) を使用してこの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -182,7 +182,7 @@ az network application-gateway rule create \
 
 ## <a name="create-vm-scale-sets"></a>VM スケール セットを作成する
 
-このチュートリアルでは、作成した 3 つのバックエンド プールをサポートする 3 つの仮想マシン スケール セットを作成します。 *myvmss1*、*myvmss2*、および *myvmss3* という名前のスケール セットを作成します。 各スケール セットには、NGINX をインストールする 2 つの仮想マシン インスタンスが含まれています。
+この記事では、作成した 3 つのバックエンド プールをサポートする 3 つの仮想マシン スケール セットを作成します。 *myvmss1*、*myvmss2*、および *myvmss3* という名前のスケール セットを作成します。 各スケール セットには、NGINX をインストールする 2 つの仮想マシン インスタンスが含まれています。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -264,5 +264,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する](./tutorial-url-redirect-cli.md)
+* [URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する](./tutorial-url-redirect-cli.md)

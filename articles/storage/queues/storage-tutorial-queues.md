@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d108e1683be03a79e87990b983f2eda3eadba90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233882"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797532"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>チュートリアル:Azure ストレージ キューの操作
 
@@ -98,7 +98,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 このアプリではクラウド リソースが使用されているため、コードは非同期で実行されます。 ただし、C# の **async** と **await** は、C# 7.1 までは **Main** メソッドで有効なキーワードではありませんでした。 **csproj** ファイルのフラグを介し、そのコンピューターに簡単に切り替えることができます。
 
-1. プロジェクト ディレクトリのコマンド ラインで「`code .`」と入力し、現在のディレクトリで Visual Studio Code を開きます。 コマンドライン ウィンドウは開いたままにします。 後で他にもコマンドを実行します。 ビルドとデバッグに必要な C# アセットを追加するように求められた場合、**[はい]** をクリックします。
+1. プロジェクト ディレクトリのコマンド ラインで「`code .`」と入力し、現在のディレクトリで Visual Studio Code を開きます。 コマンドライン ウィンドウは開いたままにします。 後で他にもコマンドを実行します。 ビルドとデバッグに必要な C# アセットを追加するように求められた場合、 **[はい]** をクリックします。
 
 2. エディターで **QueueApp.csproj** ファイルを開きます。
 
@@ -129,18 +129,19 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="create-a-queue"></a>キューを作成する
 
-1. **WindowsAzure.Storage** パッケージをプロジェクトに `dotnet add package` コマンドでインストールします。 コンソール ウィンドウのプロジェクト フォルダーから次の dotnet コマンドを実行します。
+1. `dotnet add package` コマンドを使用して、**Microsoft.Azure.Storage.Common** および **Microsoft.Azure.Storage.Queue** パッケージをプロジェクトにインストールします。 コンソール ウィンドウのプロジェクト フォルダーから以下の dotnet コマンドを実行します。
 
    ```console
-   dotnet add package WindowsAzure.Storage
+   dotnet add package Microsoft.Azure.Storage.Common
+   dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
 2. **Program.cs** ファイルの一番上で、`using System;` ステートメントの直後に次の名前空間を追加します。 このアプリでは、Azure Storage に接続し、キューを使用するとき、これらの名前空間からの型が使用されます。
 
    ```csharp
    using System.Threading.Tasks;
-   using Microsoft.WindowsAzure.Storage;
-   using Microsoft.WindowsAzure.Storage.Queue;
+   using Microsoft.Azure.Storage;
+   using Microsoft.Azure.Storage.Queue;
    ```
 
 3. **Program.cs** ファイルを保存します。
@@ -206,7 +207,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="insert-messages-into-the-queue"></a>キューにメッセージを挿入する
 
-キューにメッセージを送信する新しいメソッドを作成します。 **Program** クラスに次のメソッドを追加します。 このメソッドによりキュー参照が取得されます。キューがない場合、[CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet) を呼び出すことで新しいキューが作成されます。 次に、[AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet) を呼び出すことでキューにメッセージが追加されます。
+キューにメッセージを送信する新しいメソッドを作成します。 **Program** クラスに次のメソッドを追加します。 このメソッドによりキュー参照が取得されます。キューがない場合、[CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync) を呼び出すことで新しいキューが作成されます。 次に、[AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) を呼び出すことでキューにメッセージが追加されます。
 
 1. 次の **SendMessageAsync** メソッドを **Program** クラスに追加します。
 
@@ -229,7 +230,7 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
 
 ## <a name="dequeue-messages"></a>メッセージをデキューする
 
-**ReceiveMessageAsync** という名前の新しいメソッドを作成します。 このメソッドは、[GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet) を呼び出し、キューからメッセージを受け取ります。 メッセージが正常に受け取られたら、何度も処理されないよう、キューから削除しておくことが重要です。 メッセージが受け取られたら、[DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet) を呼び出し、キューからそれを削除します。
+**ReceiveMessageAsync** という名前の新しいメソッドを作成します。 このメソッドは、[GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) を呼び出し、キューからメッセージを受け取ります。 メッセージが正常に受け取られたら、何度も処理されないよう、キューから削除しておくことが重要です。 メッセージが受け取られたら、[DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) を呼び出し、キューからそれを削除します。
 
 1. 次の **ReceiveMessageAsync** メソッドを **Program** クラスに追加します。
 
@@ -343,8 +344,8 @@ Azure Queue ストレージではクラウドベースのキューが実装さ�
    ```csharp
    using System;
    using System.Threading.Tasks;
-   using Microsoft.WindowsAzure.Storage;
-   using Microsoft.WindowsAzure.Storage.Queue;
+   using Microsoft.Azure.Storage;
+   using Microsoft.Azure.Storage.Queue;
 
    namespace QueueApp
    {

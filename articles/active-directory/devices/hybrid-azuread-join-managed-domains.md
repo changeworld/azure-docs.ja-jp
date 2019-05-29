@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f080e315430cba986642e4a24af776cc82062c0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190789"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962193"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -91,15 +91,15 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 **Azure AD Connect を使用してハイブリッド Azure AD 参加を構成するには:**
 
-1. Azure AD Connect を起動し、**[構成]** をクリックします。
+1. Azure AD Connect を起動し、 **[構成]** をクリックします。
 
     ![ようこそ](./media/hybrid-azuread-join-managed-domains/11.png)
 
-2. **[追加のタスク]** ページで、**[デバイス オプションの構成]** を選択し、**[次へ]** をクリックします。 
+2. **[追加のタスク]** ページで、 **[デバイス オプションの構成]** を選択し、 **[次へ]** をクリックします。 
 
     ![追加のタスク](./media/hybrid-azuread-join-managed-domains/12.png)
 
-3. **[概要]** ページで、**[次へ]** をクリックします。 
+3. **[概要]** ページで、 **[次へ]** をクリックします。 
 
     ![概要](./media/hybrid-azuread-join-managed-domains/13.png)
 
@@ -107,11 +107,11 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
     ![Azure への接続](./media/hybrid-azuread-join-managed-domains/14.png)
 
-5. **[デバイス オプション]** ページで、**[ハイブリッド Azure AD 参加の構成]** を選択し、**[次へ]** をクリックします。 
+5. **[デバイス オプション]** ページで、 **[ハイブリッド Azure AD 参加の構成]** を選択し、 **[次へ]** をクリックします。 
 
     ![デバイス オプション](./media/hybrid-azuread-join-managed-domains/15.png)
 
-6. **[SCP]** ページで、Azure AD Connect で SCP を構成するフォレストごとに次の手順を実行し、**[次へ]** をクリックします。 
+6. **[SCP]** ページで、Azure AD Connect で SCP を構成するフォレストごとに次の手順を実行し、 **[次へ]** をクリックします。 
 
     ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
@@ -122,16 +122,16 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
     c. **[追加]** をクリックして、エンタープライズ管理者の資格情報を入力します。
 
 
-7. **[デバイスのオペレーティング システム]** ページで、Active Directory 環境内のデバイスで使用されているオペレーティング システムを選択し、**[次へ]** をクリックします。 
+7. **[デバイスのオペレーティング システム]** ページで、Active Directory 環境内のデバイスで使用されているオペレーティング システムを選択し、 **[次へ]** をクリックします。 
 
     ![デバイスのオペレーティング システム](./media/hybrid-azuread-join-managed-domains/17.png)
 
 
-8. **[構成の準備完了]** ページで、**[構成]** をクリックします。 
+8. **[構成の準備完了]** ページで、 **[構成]** をクリックします。 
 
     ![構成の準備完了](./media/hybrid-azuread-join-managed-domains/19.png)
 
-9. **[構成が完了しました]** ページで、**[終了]** をクリックします。 
+9. **[構成が完了しました]** ページで、 **[終了]** をクリックします。 
 
     ![構成の完了](./media/hybrid-azuread-join-managed-domains/20.png)
 
@@ -159,7 +159,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 
     
-次のポリシーを **[すべて]** に設定する必要があります。**[ユーザーはデバイスを Azure AD に登録できます]**
+次のポリシーを **[すべて]** に設定する必要があります。 **[ユーザーはデバイスを Azure AD に登録できます]**
 
 ![デバイスを登録する](media/hybrid-azuread-join-managed-domains/23.png)
 
@@ -178,17 +178,17 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 ### <a name="configure-seamless-sso"></a>シームレス SSO の構成
 
-Azure AD クラウド認証方法として Pass-through Authentication (PTA) または Password Hash Sync (PHS) を使用しているマネージド ドメインで、ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するには、[シームレス SSO を構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)する必要もあります。 
+Azure AD クラウド認証方法として Pass-through Authentication (PTA) または Password Hash Sync (PHS) を使用しているマネージド ドメインで、ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するには、[シームレス SSO を構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)する必要もあります。 シームレス SSO の構成時に問題が発生する場合は、記事「[Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso)」を参照してください。
 
 
 ### <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御 
 
-ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターからダウンロードし、インストールする必要があります。 詳細については、[こちら](hybrid-azuread-join-control.md#control-windows-down-level-devices)をクリックしてください。 
+ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターからダウンロードし、インストールする必要があります。 詳細については、記事「[デバイスのハイブリッド Azure AD 参加を制御する](hybrid-azuread-join-control.md#control-windows-down-level-devices)」を参照してください。 
 
 
 ## <a name="verify-the-registration"></a>登録の確認
 
-Azure テナントのデバイス登録状態を確認するには、**[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)** の **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** コマンドレットを使用できます。
+Azure テナントのデバイス登録状態を確認するには、 **[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)** の **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** コマンドレットを使用できます。
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 

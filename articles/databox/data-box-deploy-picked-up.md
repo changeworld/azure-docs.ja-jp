@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box の返送 | Microsoft Docs
+title: Azure Data Box の返送に関するチュートリアル | Microsoft Docs
 description: Azure Data Box を Microsoft に送付する方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 72d6ce58a986ddd0d0976d99de5ca3426d78f0b9
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287164"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606232"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box の返送と Azure へのデータ アップロードの確認
 
@@ -45,7 +45,7 @@ ms.locfileid: "58287164"
 2. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。 
 3. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷のスケジュールを設定するには:
 
-    - 最寄りの UPS (国固有のフリー ダイヤル) に連絡します。
+    - 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
     - 電話で、電子インク ディスプレイまたは印刷ラベルに表示されている返送追跡番号を伝えます。
     - 追跡番号を伝えないと、集荷時に UPS から追加料金が請求されます。
 

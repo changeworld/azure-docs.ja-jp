@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bf4eb817bb1705c6af6d4e7e9e28e5789f49a906
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893743"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873031"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル:ASP.NET でキャッシュ アサイド スコアボードを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "58893743"
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
 * このチュートリアルは、[Azure Cache for Redis 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事の続きです。 クイックスタートを完了していない場合は、先に完了してください。
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+* 以下のワークロードを指定して、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
     * ASP.NET および Web の開発
     * Azure 開発
     * SQL Server Express LocalDB または [SQL Server 2017 Express エディション](https://www.microsoft.com/sql-server/sql-server-editions-express)を使用する .NET デスクトップ開発
@@ -64,7 +64,7 @@ ms.locfileid: "58893743"
 
 ### <a name="add-the-team-model"></a>チーム モデルを追加する
 
-1. **ソリューション エクスプローラー**で **Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。
+1. **ソリューション エクスプローラー**で **Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
 
 1. クラス名に「 `Team` 」と入力し、 **[追加]** をクリックします。
 
@@ -156,7 +156,7 @@ ms.locfileid: "58893743"
 
 1. 次の `connectionStrings` セクションを `configuration` セクション内に追加します。 接続文字列の名前は、Entity Framework のデータベース コンテキスト クラスの名前と一致する `TeamContext` にする必要があります。
 
-    この接続文字列は、[前提条件](#prerequisites)が満たされ、Visual Studio 2017 と共にインストールされる *.NET デスクトップ開発*ワークロードの一部である SQL Server Express LocalDB がインストールされていることを前提としています。
+    この接続文字列は、[前提条件](#prerequisites)が満たされ、Visual Studio 2019 と共にインストールされる *.NET デスクトップ開発*ワークロードの一部である SQL Server Express LocalDB がインストールされていることを前提としています。
 
     ```xml
     <connectionStrings>
@@ -181,9 +181,9 @@ ms.locfileid: "58893743"
 
 1. Visual Studio でプロジェクトをビルドします。 
 
-1. **ソリューション エクスプローラー**で **Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
-1. **[Entity Framework を使用した、ビューがある MVC 5 コントローラー]** を選択し、**[追加]** をクリックします。 **[追加]** をクリックした後にエラーが発生する場合は、先にプロジェクトをビルド済みであることを確認してください。
+1. **[Entity Framework を使用した、ビューがある MVC 5 コントローラー]** を選択し、 **[追加]** をクリックします。 **[追加]** をクリックした後にエラーが発生する場合は、先にプロジェクトをビルド済みであることを確認してください。
 
     ![Add controller class](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
@@ -224,7 +224,7 @@ ms.locfileid: "58893743"
 
 ### <a name="configure-the-layout-view"></a>レイアウト ビューを構成する
 
-1. **ソリューション エクスプローラー**で **Views** フォルダー、**Shared** フォルダーを順に展開し、**_Layout.cshtml** をダブルクリックします。 
+1. **ソリューション エクスプローラー**で **Views** フォルダー、**Shared** フォルダーを順に展開し、 **_Layout.cshtml** をダブルクリックします。 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -242,7 +242,7 @@ ms.locfileid: "58893743"
 
     ![コードの変更](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. **Ctrl + F5** キーを押してアプリケーションをビルドし、実行します。 このバージョンのアプリケーションは、データベースから直接結果を読み取ります。 **[Entity Framework を使用した、ビューがある MVC 5 コントローラー]** スキャフォールディングによってアプリケーションに自動的に追加された **[新規作成]**、**[編集]**、**[詳細]**、**[削除]** の各アクションに注目してください。 次のセクションでは、Azure Cache for Redis を追加してデータへのアクセスを効率化し、アプリケーションに機能を追加します。
+1. **Ctrl + F5** キーを押してアプリケーションをビルドし、実行します。 このバージョンのアプリケーションは、データベースから直接結果を読み取ります。 **[Entity Framework を使用した、ビューがある MVC 5 コントローラー]** スキャフォールディングによってアプリケーションに自動的に追加された **[新規作成]** 、 **[編集]** 、 **[詳細]** 、 **[削除]** の各アクションに注目してください。 次のセクションでは、Azure Cache for Redis を追加してデータへのアクセスを効率化し、アプリケーションに機能を追加します。
 
     ![Starter application](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -656,7 +656,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
 1. [Azure Portal](https://portal.azure.com/) で、左上隅にある **[リソースの作成]** をクリックします。
 
-1. **[新規]** ページで、**[データベース]** > **[SQL Database]** をクリックします。
+1. **[新規]** ページで、 **[データベース]**  >  **[SQL Database]** をクリックします。
 
 1. 新しい SQL Database で、次の設定を使用します。
 
@@ -667,7 +667,7 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
    | **リソース グループ**  | *TestResourceGroup* | **[既存のものを使用]** をクリックし、キャッシュと App Service に配置したものと同じリソース グループを使用します。 |
    | **ソースの選択** | **空のデータベース** | 空のデータベースから始めてください。 |
 
-1. **[サーバー]** で、**[必要な設定の構成]** > **[サーバーの新規作成]** をクリックし、次の情報を指定した後、**[選択]** ボタンをクリックします。
+1. **[サーバー]** で、 **[必要な設定の構成]**  >  **[サーバーの新規作成]** をクリックし、次の情報を指定した後、 **[選択]** ボタンをクリックします。
 
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -676,15 +676,15 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
    | **場所** | *米国東部* | キャッシュと App Service を作成したのと同じリージョンを選択します。 |
 
-1. **[ダッシュボードにピン留めする]** をクリックした後、**[作成]** をクリックして、新しいデータベースとサーバーを作成します。
+1. **[ダッシュボードにピン留めする]** をクリックした後、 **[作成]** をクリックして、新しいデータベースとサーバーを作成します。
 
-1. 新しいデータベースが作成されたら、**[データベース接続文字列の表示]** を選択し、**ADO.NET** の接続文字列をコピーします。
+1. 新しいデータベースが作成されたら、 **[データベース接続文字列の表示]** を選択し、**ADO.NET** の接続文字列をコピーします。
 
     ![接続文字列の表示](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Azure Portal で App Service に移動し、**[アプリケーションの設定]** をクリックし、[接続文字列] セクションの **[新しい接続文字列の追加]** をクリックします。
+1. Azure Portal で App Service に移動し、 **[アプリケーションの設定]** をクリックし、[接続文字列] セクションの **[新しい接続文字列の追加]** をクリックします。
 
-1. Entity Framework データベースのコンテキスト クラスと一致する *TeamContext* という名前の新しい接続文字列を追加します。 新しいデータベースの接続文字列を値として貼り付けます。 接続文字列内の次のプレース ホルダーを置き換えたことを確認し、**[保存]** をクリックします。
+1. Entity Framework データベースのコンテキスト クラスと一致する *TeamContext* という名前の新しい接続文字列を追加します。 新しいデータベースの接続文字列を値として貼り付けます。 接続文字列内の次のプレース ホルダーを置き換えたことを確認し、 **[保存]** をクリックします。
 
     | プレースホルダー | 推奨値 |
     | --- | --- |
@@ -697,11 +697,11 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
 チュートリアルのこの手順では、アプリケーションの更新を Azure に発行してクラウドで実行します。
 
-1. Visual Studio で **ContosoTeamStats** プロジェクトを右クリックし、**[発行]** を選択します。
+1. Visual Studio で **ContosoTeamStats** プロジェクトを右クリックし、 **[発行]** を選択します。
 
     ![[発行]](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. クイックスタートで作成した発行プロファイルと同じものを使用するには、**[発行]** をクリックします。
+2. クイックスタートで作成した発行プロファイルと同じものを使用するには、 **[発行]** をクリックします。
 
 3. 発行が完了したら、Visual Studio によって、既定の Web ブラウザーでアプリが起動します。
 
@@ -733,11 +733,11 @@ Azure Cache for Redis を使用するためにチームの統計情報を複数�
 
 1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 2. リソース グループの名前を **[フィルター項目]** ボックスに入力します。
-3. リソース グループの右側にある **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+3. リソース グループの右側にある **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
     ![削除](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)
 
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
+4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** をクリックします。
 
     しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 

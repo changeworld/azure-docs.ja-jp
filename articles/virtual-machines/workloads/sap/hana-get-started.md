@@ -94,7 +94,7 @@ SAP NetWeaver または S/4HANA アプリケーション レイヤーに関し�
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA の手動インストール
 
 > [!IMPORTANT]
-> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、それらの VM の種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SUSE Linux Enterprise Server (SLES) OS リリースが使用されています。
+> 選択した OS が、使用する特定の VM の種類で SAP HANA に対して SAP から認定されていることを確認してください。 SAP HANA 認定 VM の種類と、それらの VM の種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SUSE Linux Enterprise Server (SLES) OS リリースが使用されています。
 >
 
 このガイドでは、Azure VM に SAP HANA を手動でインストールする方法を 2 とおり説明します。
@@ -220,7 +220,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 ゲスト OS として Linux を実行する Azure VM にディスクをアタッチする方法については、「[Linux VM へのディスクの追加](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Premium SSD をし王すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
+Azure Premium SSD を使用すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
 
 VM の作成に使用する JSON のサンプル テンプレートを検索するには、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates)に関するページをご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートをベースとして使用します。 テンプレートは特定の構成に適用できます。
@@ -246,13 +246,13 @@ SLES for SAP Applications 12 一般提供と SLES for SAP Applications 12 SP1 �
 
 ![tuned-adm ツールは、必要な SAP HANA 設定に従って値を変更します](./media/hana-get-started/image005.jpg)
 
-SAP HANA カーネル設定を永続的な設定にするには、SLES 12 で **grub2** を使う必要があります。 [grub2](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) について詳しくは、SUSE ドキュメントの「**Configuration File Structure (ファイル構造の構成)**」セクションをご覧ください。
+SAP HANA カーネル設定を永続的な設定にするには、SLES 12 で **grub2** を使う必要があります。 [grub2](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) について詳しくは、SUSE ドキュメントの「**Configuration File Structure (ファイル構造の構成)** 」セクションをご覧ください。
 
 次のスクリーンショットでは、構成ファイルでカーネル設定が変更されており、**grub2-mkconfig** を使ってコンパイルされていることがわかります。
 
 ![構成ファイルで変更され、grub2-mkconfig を使ってコンパイルされたカーネル設定](./media/hana-get-started/image006.jpg)
 
-このほか、YaST で設定を変更し、**[ブート ローダー]** > **[カーネル パラメーター]** 設定を変更するという方法もあります。
+このほか、YaST で設定を変更し、 **[ブート ローダー]**  >  **[カーネル パラメーター]** 設定を変更するという方法もあります。
 
 ![YaST ブート ローダーの [カーネル パラメーター] 設定タブ](./media/hana-get-started/image007.jpg)
 
@@ -351,7 +351,7 @@ openSUSE での openjdk の同様の問題については、ディスカッシ�
 ## <a name="manual-installation-of-sap-hana-swpm"></a>SAP HANA の手動インストール:SWPM
 このセクションの一連のスクリーンショットは、SWPM (SAPinst) を使う場合に SAP NetWeaver 7.5 と SAP HANA SP12 をインストールする方法の主要な手順を示しています。 NW 7.5 インストールの一環として、SWPM では HANA データベースを単一インスタンスとしてインストールすることもできます。
 
-サンプルのテスト環境で、ABAP (Advanced Business Application Programming) アプリ サーバーを 1 つインストールしました。 次のスクリーンショットに示すように、**[分散システム]** オプションを使って、1 つの Azure VM に ASCS インスタンスとプライマリ アプリケーション サーバー インスタンスをインストールしました。 SAP HANA はデータベース システムとして別の Azure VM で使用しました。
+サンプルのテスト環境で、ABAP (Advanced Business Application Programming) アプリ サーバーを 1 つインストールしました。 次のスクリーンショットに示すように、 **[分散システム]** オプションを使って、1 つの Azure VM に ASCS インスタンスとプライマリ アプリケーション サーバー インスタンスをインストールしました。 SAP HANA はデータベース システムとして別の Azure VM で使用しました。
 
 ![[分散システム] オプションを使ってインストールされた ASCS インスタンスとプライマリ アプリケーション サーバー インスタンス](./media/hana-get-started/image012.jpg)
 

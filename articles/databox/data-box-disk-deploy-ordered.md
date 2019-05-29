@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Disk の注文方法のチュートリアル | Microsoft Docs
+title: Azure Data Box Disk の注文方法のチュートリアル | Microsoft Docs
 description: このチュートリアルでは、データを Azure にインポートするために、Azure Data Box Disk にサインアップして注文する方法を説明します。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1d25ea2ce6e365e0d04fab325f9c13bb37382758
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404897"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603167"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -57,7 +57,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 
 2. **Create** をクリックしてください。
 
-3. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、**[適用]** をクリックします。
+3. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** をクリックします。
 
     ![Data Box Disk オプションを選択する](media/data-box-disk-deploy-ordered/select-data-box-sku-1.png)
 
@@ -65,7 +65,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |---|---|
     |サブスクリプション|Data Box サービスが有効になっているサブスクリプションを選択します。<br> サブスクリプションは、課金アカウントにリンクされます。 |
     |転送の種類| Azure へのインポート|
-    |ソースの国 | データが現在存在する国を選択します。|
+    |ソースの国 | データが現在存在する国/地域を選択します。|
     |宛先 Azure リージョン|データを転送する Azure リージョンを選択します。|
 
   
@@ -116,7 +116,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
  
 ## <a name="track-the-order"></a>注文を追跡する
 
-注文後、Azure portal から注文の状態を追跡できます。 目的の注文に移動し、**[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。
+注文後、Azure portal から注文の状態を追跡できます。 目的の注文に移動し、 **[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。
 
 ![注文済み状態の Data Box Disk](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -138,7 +138,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 
 ![注文をキャンセルする](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-キャンセルされた注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
+キャンセルされた注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 
 ## <a name="next-steps"></a>次の手順

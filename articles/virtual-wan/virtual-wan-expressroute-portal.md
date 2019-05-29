@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3e6ab347a86aa8d04c8ebd0382178b873c987300
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876328"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605432"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する (プレビュー)
 
@@ -47,7 +47,7 @@ Virtual WAN を構成する前に、まずプレビューにサブスクリプ�
 
 **プレビュー考慮事項:**
 
-[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) をサポートする国では、ExpressRoute 回線を有効にする必要があります。
+[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) がサポートされている国/地域では、ExpressRoute 回線を有効にする必要があります。
 
 ## <a name="vnet"></a>1.仮想ネットワークの作成
 
@@ -69,23 +69,23 @@ Virtual WAN を構成する前に、まずプレビューにサブスクリプ�
 
 ## <a name="hub"></a>4.回線を検索してハブに関連付ける
 
-1. vWAN を選択し、**[仮想 WAN のアーキテクチャ]** で **[ExpressRoute 回線]** を選択します。
+1. vWAN を選択し、 **[仮想 WAN のアーキテクチャ]** で **[ExpressRoute 回線]** を選択します。
 1. ExpressRoute 回線が vWAN と同じサブスクリプション内にある場合は、お使いのサブスクリプションで **[ExpressRoute 回線の選択]** をクリックします。 
 1. プルダウンを使用して、ハブに関連付ける ExpressRoute を選択します。
-1. ExpressRoute 回線が同じサブスクリプション内に存在しない場合、または[認証キーとピア ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) が提供されている場合は、**[Find a circuit redeeming an authorization key]\(認可キーを利用する回線の検出\)** を選択します
+1. ExpressRoute 回線が同じサブスクリプション内に存在しない場合、または[認証キーとピア ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) が提供されている場合は、 **[Find a circuit redeeming an authorization key]\(認可キーを利用する回線の検出\)** を選択します
 1. 次の詳細を入力します。
 1. **承認キー** - 前述のように、回線の所有者によって生成されます。
 1. **ピア回線 URI** - 回線の所有者によって指定された回線 URI であり、回線の一意の識別子。
 1. **ルーティングの重み** - [ルーティングの重み](../expressroute/expressroute-optimize-routing.md)によって、異なるピアリング場所から複数の回線が同じハブに接続される場合に、特定のパスを優先させることができます
 1. **[Find circuit]\(回線の検索\)** をクリックし、回線を選択します (見つかった場合)。
-1. ドロップダウンから 1 つ以上のハブを選択し、**[保存]** をクリックします。
+1. ドロップダウンから 1 つ以上のハブを選択し、 **[保存]** をクリックします。
 
 ## <a name="vnet"></a>5.VNet をハブに接続する
 
 この手順では、ハブと VNet の間にピアリング接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
 
-1. 仮想 WAN のページで、**[仮想ネットワーク接続]** をクリックします。
-2. 仮想ネットワーク接続のページで、**[+ 接続の追加]** をクリックします。
+1. 仮想 WAN のページで、 **[仮想ネットワーク接続]** をクリックします。
+2. 仮想ネットワーク接続のページで、 **[+ 接続の追加]** をクリックします。
 3. **[接続の追加]** ページで、次のフィールドに入力します。
 
     * **[接続名]** - 接続に名前を付けます。
@@ -103,7 +103,7 @@ Virtual WAN を構成する前に、まずプレビューにサブスクリプ�
 ## <a name="viewhealth"></a>7.リソースの正常性を表示する
 
 1. WAN に移動します。
-2. WAN のページの **[サポート + トラブルシューティング]** セクションで、**[正常性]** をクリックしてリソースを表示します。
+2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
 
 ## <a name="connectmon"></a>8.接続を監視する
 
