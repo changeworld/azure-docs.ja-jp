@@ -4,19 +4,19 @@ description: Event Hubs と Cognitive Services API と共に Azure Databricks �
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 12/07/2018
-ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/29/2019
+ms.openlocfilehash: b1b3572b9c485fb8d05c57649a304ff0f76fb1f6
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080541"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990883"
 ---
-# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用した、ストリーミング データに対する感情分析
+# <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データに対する感情分析
 
 このチュートリアルでは、Azure Databricks を使用して、データ ストリームに対して、ほぼリアルタイムで感情分析を実行する方法について説明します。 Azure Event Hubs を使用して、データ インジェスト システムを設定します。 Spark Event Hubs コネクタを使用して Event Hubs から Azure Databricks にメッセージを読み取ります。 そして、Microsoft Cognitive Services API を使用して、ストリーム配信されたデータに対して感情分析を実行します。
 
@@ -55,15 +55,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これらの要件は、[Azure Event Hubs 名前空間とイベント ハブの作成](../event-hubs/event-hubs-create.md)に関する記事の手順を完了することで満たせます。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-[Azure Portal](https://portal.azure.com/) にログインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
 このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。
 
-1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks]** の順に選択します。
+1. Azure Portal で、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Azure Databricks]** の順に選択します。
 
     ![Azure Portal の Databricks](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Azure Portal の Databricks")
 
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |**場所**     | **[米国東部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
-    **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、**[作成]** を選択します。
+    **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、 **[作成]** を選択します。
 
 4. アカウントの作成には数分かかります。 アカウント作成時に、ポータルの右側に **[Submitting deployment for Azure Databricks]\(Azure Databricks のデプロイを送信しています\)** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
 
@@ -89,7 +89,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks に Spark クラスターを作成する
 
-1. Azure Portal で、作成した Databricks ワークスペースに移動して、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+1. Azure Portal で、作成した Databricks ワークスペースに移動して、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** を選択します。
 
@@ -111,15 +111,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ツイートのストリームを受け取るには、Twitter でアプリケーションを作成する必要があります。 手順に従って Twitter アプリケーションを作成し、このチュートリアルの完了に必要な値を記録してください。
 
-1. Web ブラウザーで [Twitter アプリケーション管理](https://apps.twitter.com/)に移動して、**[Create New App]\(新しいアプリの作成\)** を選択します。
+1. Web ブラウザーで [Twitter アプリケーション管理](https://apps.twitter.com/)に移動して、 **[Create New App]\(新しいアプリの作成\)** を選択します。
 
     ![Twitter アプリケーションを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "Twitter アプリケーションを作成する")
 
-2. **[Create an application]\(アプリケーションの作成\)** ページで新しいアプリの詳細を入力し、**[Create your Twitter application]\(Twitter アプリケーションの作成\)** を選択します。
+2. **[Create an application]\(アプリケーションの作成\)** ページで新しいアプリの詳細を入力し、 **[Create your Twitter application]\(Twitter アプリケーションの作成\)** を選択します。
 
     ![Twitter アプリケーションの詳細](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details.png "Twitter アプリケーションの詳細")
 
-3. アプリケーションのページで **[Keys and Access Tokens]\(キーとアクセス トークン\)** タブを選択し、**[Consumer Key]\(コンシューマー キー\)** と **[Consumer Secret]\(コンシューマー シークレット\)** の値をコピーします。 さらに、**[Create my access token]\(アクセス トークンの作成\)** を選択してアクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
+3. アプリケーションのページで **[Keys and Access Tokens]\(キーとアクセス トークン\)** タブを選択し、 **[Consumer Key]\(コンシューマー キー\)** と **[Consumer Secret]\(コンシューマー シークレット\)** の値をコピーします。 さらに、 **[Create my access token]\(アクセス トークンの作成\)** を選択してアクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
 
     ![Twitter アプリケーションの詳細](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
 
@@ -129,11 +129,11 @@ Twitter アプリケーションについて取得した値を保存します。
 
 このチュートリアルでは、Twitter API を使用してツイートを Event Hubs に送信します。 さらに、[Apache Spark Event Hubs コネクタ](https://github.com/Azure/azure-event-hubs-spark)を使用して、Azure Event Hubs に対するデータの読み取りと書き込みを行います。 これらの API をクラスターの一部として使用するには、それらをライブラリとして Azure Databricks に追加し、Spark クラスターに関連付けます。 次の手順では、ワークスペースの **[共有]** フォルダーにライブラリを追加する方法について説明します。
 
-1. Azure Databricks ワークスペースで **[ワークスペース]** を選択し、**[共有]** を右クリックします。 コンテキスト メニューで **[作成]** > **[ライブラリ]** の順に選択します。
+1. Azure Databricks ワークスペースで **[ワークスペース]** を選択し、 **[共有]** を右クリックします。 コンテキスト メニューで **[作成]**  >  **[ライブラリ]** の順に選択します。
 
    ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "[ライブラリの追加] ダイアログ ボックス")
 
-2. [新しいライブラリ] ページの **[ソース]** で、**[Maven Coordinate]\(Maven 座標\)** を選択します。 **[座標]** には、追加したいパッケージの座標を入力します。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
+2. [新しいライブラリ] ページの **[ソース]** で、 **[Maven Coordinate]\(Maven 座標\)** を選択します。 **[座標]** には、追加したいパッケージの座標を入力します。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
 
    * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
@@ -154,13 +154,13 @@ Twitter アプリケーションについて取得した値を保存します。
 
 ## <a name="get-a-cognitive-services-access-key"></a>Cognitive Services のアクセス キーを取得する
 
-このチュートリアルでは、[Microsoft Cognitive Services Text Analytics API](../cognitive-services/text-analytics/overview.md) を使用して、ツイートのストリームに対して、ほぼリアルタイムで感情分析を実行します。 API を使用する前に、Azure 上で Microsoft Cognitive Services アカウントを作成し、Text Analytics API を使用するためのアクセス キーを取得する必要があります。
+このチュートリアルでは、[Azure Cognitive Services Text Analytics API](../cognitive-services/text-analytics/overview.md) を使用して、ツイートのストリームに対して、ほぼリアルタイムで感情分析を実行します。 API を使用する前に、Azure 上で Azure Cognitive Services アカウントを作成し、Text Analytics API を使用するためのアクセス キーを取得する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 2. **[+ リソースの作成]** を選択します。
 
-3. Azure Marketplace で、**[AI + Cognitive Services]** > **[Text Analytics API]** の順に選択します。
+3. Azure Marketplace で、 **[AI + Cognitive Services]**  >  **[Text Analytics API]** の順に選択します。
 
     ![Cognitive Services アカウントを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Cognitive Services アカウントを作成する")
 
@@ -174,9 +174,9 @@ Twitter アプリケーションについて取得した値を保存します。
    - サービスの価格レベルを選択します。 Cognitive Services の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)を参照してください。
    - 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。
 
-     **作成**を選択します。
+     **作成** を選択します。
 
-5. アカウントの作成後、**[概要]** タブで **[アクセス キーを表示]** を選択します。
+5. アカウントの作成後、 **[概要]** タブで **[アクセス キーを表示]** を選択します。
 
     ![アクセス キーを表示する](./media/databricks-sentiment-analysis-cognitive-services/cognitive-services-get-access-keys.png "アクセス キーを表示する")
 
@@ -195,7 +195,7 @@ Twitter アプリケーションについて取得した値を保存します。
 - **SendTweetsToEventHub** - Twitter からツイートを取得し、Event Hubs にそれらをストリーム配信するために使用されるプロデューサー ノートブック。
 - **AnalyzeTweetsFromEventHub** - Event Hubs からのツイートの読み取りと感情分析の実行に使用されるコンシューマー ノートブック。
 
-1. 左側のウィンドウで、**[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンの **[作成]** を選択して、**[ノートブック]** を選択します。
+1. 左側のウィンドウで、 **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンの **[作成]** を選択して、 **[ノートブック]** を選択します。
 
     ![Databricks でノートブックを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
@@ -203,7 +203,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Databricks でノートブックを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **作成**を選択します。
+    **作成** を選択します。
 
 3. 手順を繰り返して **AnalyzeTweetsFromEventHub** ノートブックを作成します。
 
@@ -227,7 +227,7 @@ val connStr = new ConnectionStringBuilder()
             .setSasKeyName(sasKeyName)
             .setSasKey(sasKey)
 
-val pool = Executors.newFixedThreadPool(1)
+val pool = Executors.newScheduledThreadPool(1)
 val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
 def sendEvent(message: String) = {
@@ -308,12 +308,18 @@ while (!finished) {
 import org.apache.spark.eventhubs._
 
 // Build connection string with the above information
-val connectionString = ConnectionStringBuilder("<EVENT HUBS CONNECTION STRING>")
-  .setEventHubName("<EVENT HUB NAME>")
-  .build
+val namespaceName = "<EVENT HUBS NAMESPACE>"
+val eventHubName = "<EVENT HUB NAME>"
+val sasKeyName = "<POLICY NAME>"
+val sasKey = "<POLICY KEY>"
+val connectionString = ConnectionStringBuilder()
+            .setNamespaceName(namespaceName)
+            .setEventHubName(eventHubName)
+            .setSasKeyName(sasKeyName)
+            .setSasKey(sasKey)
 
 val customEventhubParameters =
-  EventHubsConf(connectionString)
+  EventHubsConf(connectionString.toString())
   .setMaxEventsPerTrigger(5)
 
 val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
@@ -578,7 +584,7 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルの実行が完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、**[クラスター]** を選択します。 終了するクラスターで、**[アクション]** 列の下にある省略記号をポイントし、**[終了]** アイコンを選択します。
+チュートリアルの実行が完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、 **[クラスター]** を選択します。 終了するクラスターで、 **[アクション]** 列の下にある省略記号をポイントし、 **[終了]** アイコンを選択します。
 
 ![Databricks クラスターを停止する](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 

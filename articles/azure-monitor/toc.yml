@@ -685,8 +685,6 @@
               href: platform/powerbi.md
             - name: アプリケーション データをエクスポートする
               href: app/export-power-bi.md
-        - name: ダッシュボード
-          href: app/app-insights-dashboards.md
         - name: データを Grafana に送信する
           href: platform/grafana-plugin.md
     - name: データを分析する
@@ -1072,8 +1070,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK リリース ノート
           href: app/release-notes.md
-        - name: Developer Analytics Tools のリリース ノート
-          href: app/release-notes-vsix.md
     - name: Windows Analytics
       href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: リージョン別の提供状況
