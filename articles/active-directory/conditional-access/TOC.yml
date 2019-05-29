@@ -64,7 +64,7 @@
       href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 信頼されていないネットワークからのアクセスの試行に対して MFA を必須にする
       href: untrusted-networks.md
-    - name: 利用規約を必須にする
+    - name: 利用規約が必須
       href: terms-of-use.md
 - name: リファレンス
   items:

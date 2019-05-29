@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 88b3ffa38eb42eef42c98920b2c3193661b1c0f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2c9682746201306f1b99a04462819618225caa11
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236066"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164258"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューでテナントを作成する
 
@@ -43,13 +43,13 @@ Windows Virtual Desktop サービスにアクセス許可を付与すると、Az
 サービスにアクセス許可を付与するには:
 
 1. ブラウザーを開いて、[Windows Virtual Desktop の同意ページ](https://rdweb.wvd.microsoft.com)にアクセスします。
-2. **[Consent Option]\(同意オプション\)** > **[サーバー アプリ]** で、Azure Active Directory テナント名またはディレクトリ ID を入力して、**[送信]** を選択します。
-        クラウド ソリューション プロバイダーのお客様の場合、ID は、パートナー ポータルから取得したお客様の Microsoft ID です。 エンタープライズのお客様の場合、ID は、**[Azure Active Directory]** > **[プロパティ]** > **[ディレクトリ ID]** の下にあります。
+2. **[Consent Option]\(同意オプション\)**  >  **[サーバー アプリ]** で、Azure Active Directory テナント名またはディレクトリ ID を入力して、 **[送信]** を選択します。
+        クラウド ソリューション プロバイダーのお客様の場合、ID は、パートナー ポータルから取得したお客様の Microsoft ID です。 エンタープライズのお客様の場合、ID は、 **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** の下にあります。
 3. グローバル管理者アカウントを使用して Windows Virtual Desktop の同意ページにサインインします。 たとえば、Contoso 組織に属しているとしたら、アカウントは admin@contoso.com や admin@contoso.onmicrosoft.com になるでしょう。  
 4. **[Accept]\(承認\)** を選択します。
 5. 1 分間待機します。
 6. [Windows Virtual Desktop の同意ページ](https://rdweb.wvd.microsoft.com)に戻ります。
-7. **[Consent Option]\(同意オプション\)** > **[クライアント アプリ]** に移動して、同じ Azure Active Directory テナント名またはディレクトリ ID を入力し、**[送信]** を選択します。
+7. **[Consent Option]\(同意オプション\)**  >  **[クライアント アプリ]** に移動して、同じ Azure Active Directory テナント名またはディレクトリ ID を入力し、 **[送信]** を選択します。
 8. 前の手順 3. で行ったように、グローバル管理者として Windows Virtual Desktop の同意ページにサインインします。
 9. **[Accept]\(承認\)** を選択します。
 
@@ -61,12 +61,12 @@ Azure Active Directory ユーザーに TenantCreator アプリケーション �
 
 1. ブラウザーを開き、グローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) に接続します。
    - 複数の Azure Active Directory テナントを操作している場合は、プライベート ブラウザー セッションを開き、URL をコピーしてアドレス バーに貼り付けるのがベスト プラクティスです。
-2. Azure portal の検索バーで「**エンタープライズ アプリケーション**」を検索し、**[サービス]** カテゴリの下に表示されるエントリを選択します。
-3. **[エンタープライズ アプリケーション]** 内で「**Windows Virtual Desktop**」を検索します。 前のセクションで同意した 2 つのアプリケーションが表示されます。 これらの 2 つのアプリについて、**[Windows Virtual Desktop]** を選択します。
+2. Azure portal の検索バーで「**エンタープライズ アプリケーション**」を検索し、 **[サービス]** カテゴリの下に表示されるエントリを選択します。
+3. **[エンタープライズ アプリケーション]** 内で「**Windows Virtual Desktop**」を検索します。 前のセクションで同意した 2 つのアプリケーションが表示されます。 これらの 2 つのアプリについて、 **[Windows Virtual Desktop]** を選択します。
         ![[エンタープライズ アプリケーション] で "Windows Virtual Desktop" を検索したときの検索結果を示すスクリーンショット。 "Windows Virtual Desktop" という名前のアプリが強調表示されています。](media/tenant-enterprise-app.png)
 4. **[ユーザーとグループ]** を選択します。 アプリケーションへの同意を付与した管理者が、**既定のアクセス** ロールを割り当てられた状態で既に表示されている場合があります。 これだけでは Windows Virtual Desktop テナントを作成するのに不十分です。 以降の手順に従って、**TenantCreator** ロールをユーザーに付加します。
         !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループのスクリーンショット。 このスクリーンショットには、"既定のアクセス" の割り当てのみが示されています。](media/tenant-default-access.png)
-5. **[ユーザーの追加]** を選択し、**[割り当ての追加]** ブレードで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ブレードで **[ユーザーとグループ]** を選択します。
 6. 自分の Windows Virtual Desktop テナントを作成するユーザー アカウントを検索します。 わかりやすいように、これはグローバル管理者アカウントにできます。
 
     !["TenantCreator" として追加するユーザーを選択しているスクリーンショット。](media/tenant-assign-user.png)
@@ -74,7 +74,7 @@ Azure Active Directory ユーザーに TenantCreator アプリケーション �
    > [!NOTE]
    > この Azure Active Directory に属しているユーザー (またはユーザーを含むグループ) を選択する必要があります。 ゲスト (B2B) ユーザーまたはサービス プリンシパルを選択することはできません。
 
-7. ユーザー アカウントを選択し、**[選択]** ボタンをクリックしてから、**[割り当て]** を選択します。
+7. ユーザー アカウントを選択し、 **[選択]** ボタンをクリックしてから、 **[割り当て]** を選択します。
 8. **[Windows Virtual Desktop - ユーザーとグループ]** ページで、Windows Virtual Desktop テナントを作成するユーザーに **TenantCreator** ロールが割り当てられた新しいエントリが表示されていることを確認します。
         !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループのスクリーンショット。 このスクリーンショットには、"TenantCreator" ロールに割り当てられたユーザーを表す 2 つ目のエントリが追加されています。](media/tenant-tenant-creator-added.png)
 
@@ -83,14 +83,14 @@ Windows Virtual Desktop テナントの作成を進める前に、2 つの情報
 - Azure サブスクリプション ID
 
 Azure Active Directory のテナント ID (**ディレクトリ ID**) を検索するには:
-1. 同じ Azure portal セッションで、検索バーから「**Azure Active Directory**」を検索し、**[サービス]** カテゴリの下に表示されるエントリを選択します。
+1. 同じ Azure portal セッションで、検索バーから「**Azure Active Directory**」を検索し、 **[サービス]** カテゴリの下に表示されるエントリを選択します。
         ![Azure portal で "Azure Active Directory" を検索した結果のスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](media/tenant-search-azure-active-directory.png)
-2. 下にスクロールし、**[プロパティ]** を選択します。
+2. 下にスクロールし、 **[プロパティ]** を選択します。
 3. **[ディレクトリ ID]** を探し、クリップボード アイコンを選択します。 この値を後で **AadTenantId** として使用できるように便利な場所に貼り付けます。
         ![Azure Active Directory のプロパティのスクリーンショット。 "ディレクトリ ID" をコピーして貼り付けるために、クリップボード アイコンにマウス ポインターを合わせています。](media/tenant-directory-id.png)
 
 Azure サブスクリプション ID を検索するには:
-1. 同じ Azure portal セッションで、検索バーから「**サブスクリプション**」を検索し、**[サービス]** カテゴリの下に表示されるエントリを選択します。
+1. 同じ Azure portal セッションで、検索バーから「**サブスクリプション**」を検索し、 **[サービス]** カテゴリの下に表示されるエントリを選択します。
         ![Azure portal で "Azure Active Directory" を検索した結果のスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](media/tenant-search-subscription.png)
 2. Windows Virtual Desktop サービスの通知を受け取るために使用する Azure サブスクリプションを選択します。
 3. **サブスクリプション ID** を探し、その値にマウス ポインターを合わせてクリップボード アイコンを表示させます。 クリップボード アイコンを選択し、この値を後で **AzureSubscriptionId** として使用できるように便利な場所に貼り付けます。
@@ -114,7 +114,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId <SubscriptionID>
 ```
 
-かっこで囲まれた値は、実際の組織およびテナントに関連する値に置き換える必要があります。 たとえば、お客様が Contoso 組織の Windows Virtual Desktop TenantCreator であるとします。 実行するコマンドレットは次のようになります。
+かっこで囲まれた値は、実際の組織およびテナントに関連する値に置き換える必要があります。 新しい Windows Virtual Desktop テナントに対して選択する名前は、グローバルに一意である必要があります。 たとえば、お客様が Contoso 組織の Windows Virtual Desktop TenantCreator であるとします。 実行するコマンドレットは次のようになります。
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999

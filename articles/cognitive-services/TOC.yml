@@ -27,6 +27,8 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 製品フィードバックの提供
