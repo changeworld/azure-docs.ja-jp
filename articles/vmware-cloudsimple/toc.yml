@@ -6,7 +6,7 @@
         - name: VMware Solution by CloudSimple とは
           href: cloudsimple-vmware-solutions-overview.md
         - name: 管理の主要な概念
-          href: 'https://docs.azure.cloudsimple.com/key-concepts/'
+          href: key-concepts.md
     - name: クイック スタート
       expanded: true
       items:
@@ -21,7 +21,7 @@
     - name: 概念
       items:
         - name: Service
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-service/'
+          href: cloudsimple-service.md
         - name: Nodes
           href: cloudsimple-node.md
         - name: プライベート クラウド
@@ -45,13 +45,13 @@
         - name: プライベート クラウド上の VMware
           href: vmware-components.md
         - name: セキュリティの概要
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
+          href: cloudsimple-security.md
         - name: ノード クォータ
           href: node-quota.md
         - name: メンテナンスと更新
           href: cloudsimple-maintenance-updates.md
         - name: FAQ
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
+          href: cloudsimple-faq.md
     - name: チュートリアル
       items:
         - name: リソース プロバイダーを有効にする
