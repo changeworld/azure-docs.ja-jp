@@ -4,26 +4,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: b5c61ecb74c0fcdacc6024a74565f05b036e2ac6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65081399"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145430"
 ---
 1. Visual Studio 2017 を起動します。
 
-1. **ユニバーサル Windows プラットフォーム開発**ワークロードが使用できることを確認してください。 Visual Studio のメニュー バーから **[ツール]** > **[Get Tools and Features]\(ツールと機能の入手\)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、ダイアログ ボックスを閉じます。
+1. **ユニバーサル Windows プラットフォーム開発**ワークロードが使用できることを確認してください。 Visual Studio のメニュー バーから **[ツール]**  >  **[Get Tools and Features]\(ツールと機能の入手\)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、ダイアログ ボックスを閉じます。
 
     ![[ワークロード] タブを強調表示した Visual Studio インストーラーのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
-    それ以外の場合、**[.NET cross-platform development] (.NET クロス プラットフォーム開発)** の横にあるボックスを選択し、ダイアログ ボックスの右下隅にある **[変更]** を選択します。 新しい機能のインストールにはしばらく時間がかかります。
+    それ以外の場合、 **[.NET cross-platform development] (.NET クロス プラットフォーム開発)** の横にあるボックスを選択し、ダイアログ ボックスの右下隅にある **[変更]** を選択します。 新しい機能のインストールにはしばらく時間がかかります。
 
-1. 空の Visual C# ユニバーサル Windows アプリを作成します。 最初に、メニューから **[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。 **[新しいプロジェクト]** ダイアログ ボックスで、左側のウィンドウから **[インストール済み]** > **[Visual C#]** > **[Windows ユニバーサル]** を展開します。 次に、**[空白のアプリ (ユニバーサル Windows)]** を選択します。 プロジェクト名として「*helloworld*」と入力します。
+1. 空の Visual C# ユニバーサル Windows アプリを作成します。 最初に、メニューから **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。 **[新しいプロジェクト]** ダイアログ ボックスで、左側のウィンドウから **[インストール済み]**  >  **[Visual C#]**  >  **[Windows ユニバーサル]** を展開します。 次に、 **[空白のアプリ (ユニバーサル Windows)]** を選択します。 プロジェクト名として「*helloworld*」と入力します。
 
     ![[新しいプロジェクト] ダイアログ ボックスのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. Speech SDK では、Windows 10 Fall Creators Update 以降向けにアプリケーションをビルドすることが必要です。 ポップアップ表示される **[新しいユニバーサル Windows プラットフォーム プロジェクト]** ウィンドウで、**[最小バージョン]** に **[Windows 10 Fall Creators Update (10.0; Build 16299)]** を選択します。 **[ターゲット バージョン]** ボックスで、このバージョンまたはこれ以降のバージョンを選択して、**[OK]** をクリックします。
+1. Speech SDK では、Windows 10 Fall Creators Update 以降向けにアプリケーションをビルドすることが必要です。 ポップアップ表示される **[新しいユニバーサル Windows プラットフォーム プロジェクト]** ウィンドウで、 **[最小バージョン]** に **[Windows 10 Fall Creators Update (10.0; Build 16299)]** を選択します。 **[ターゲット バージョン]** ボックスで、このバージョンまたはこれ以降のバージョンを選択して、 **[OK]** をクリックします。
 
     ![[新しいユニバーサル Windows プラットフォーム プロジェクト] ウィンドウのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
@@ -34,11 +34,11 @@ ms.locfileid: "65081399"
    > [!NOTE]
    > Speech SDK では、Intel 互換プロセッサのみがサポートされています。 ARM は現在サポートされていません。
 
-1. [Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールして参照します。 ソリューション エクスプローラーで、ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** を選択します。
+1. [Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールして参照します。 ソリューション エクスプローラーで、ソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
 
     ![[ソリューションの NuGet パッケージの管理] オプションが強調表示されたソリューション エクスプローラーのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-04-manage-nuget-packages.png)
 
-1. 右上隅の **[パッケージ ソース]** フィールドで、**[nuget.org]** を選択します。`Microsoft.CognitiveServices.Speech` パッケージを検索して、**helloworld** プロジェクトにインストールします。
+1. 右上隅の **[パッケージ ソース]** フィールドで、 **[nuget.org]** を選択します。`Microsoft.CognitiveServices.Speech` パッケージを検索して、**helloworld** プロジェクトにインストールします。
 
     ![[ソリューションの NuGet パッケージの管理] ダイアログ ボックスのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png "NuGet パッケージのインストール")
 
@@ -52,6 +52,6 @@ ms.locfileid: "65081399"
    Successfully installed 'Microsoft.CognitiveServices.Speech 1.5.0' to helloworld
    ```
 
-1. アプリケーションでは音声入力にマイクを使用するため、**[マイク]** 機能をプロジェクトに追加します。 ソリューション エクスプローラーで **Package.appxmanifest** をダブルクリックして、アプリケーション マニフェストを編集します。 次に、**[機能]** タブに切り替え、**[マイク]** 機能の ボックスをオンにして、変更を保存します。
+1. アプリケーションでは音声入力にマイクを使用するため、 **[マイク]** 機能をプロジェクトに追加します。 ソリューション エクスプローラーで **Package.appxmanifest** をダブルクリックして、アプリケーション マニフェストを編集します。 次に、 **[機能]** タブに切り替え、 **[マイク]** 機能の ボックスをオンにして、変更を保存します。
 
    ![機能とマイクを強調表示した Visual Studio のアプリケーション マニフェストのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-07-capabilities.png)

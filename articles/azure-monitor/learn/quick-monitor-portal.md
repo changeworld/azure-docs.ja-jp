@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805348"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595743"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web アプリケーションの監視を開始する
 
@@ -26,7 +26,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+- 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
 
@@ -35,17 +35,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
-1. Visual Studio 2017 でプロジェクトを開きます。
+1. Visual Studio 2019 でプロジェクトを開きます。
 2. [プロジェクト] メニューの **[Application Insights の構成]** を選択します。 Visual Studio によって、Application Insights SDK がアプリケーションに追加されます。
 
     > [!IMPORTANT]
-    > Application Insights を追加するプロセスは、ASP.NET テンプレートの種類によって異なります。 **空**のテンプレートや **Azure Mobile App** テンプレートを使用する場合は、**[プロジェクト]** > **[Application Insights Telemetry の追加]** を選択します。 それ以外のすべての ASP.NET テンプレートについては、前述の手順をご覧ください。 
+    > Application Insights を追加するプロセスは、ASP.NET テンプレートの種類によって異なります。 **空**のテンプレートや **Azure Mobile App** テンプレートを使用する場合は、 **[プロジェクト]**  >  **[Application Insights Telemetry の追加]** を選択します。 それ以外のすべての ASP.NET テンプレートについては、前述の手順をご覧ください。 
 
 3. **[Get Started]\(開始\)** (以前のバージョンの Visual Studio では **[開始 (無料)]** ボタン) をクリックします。
 
     ![Visual Studio への Application Insights の追加](./media/quick-monitor-portal/add-application-insights-b.png)
 
-4. サブスクリプションを選択し、**[登録]** をクリックします。
+4. サブスクリプションを選択し、 **[登録]** をクリックします。
 
 5. **[デバッグ]** メニューの **[デバッグ開始]** をクリックするか、F5 キーを押して、アプリケーションを実行します。
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Application Insights は、アプリケーションが実行されている場所に関係なく、アプリケーションのテレメトリ データを収集します。 このデータの表示を開始するには、次の手順を実行します。
 
-1. **[表示]** -> **[その他のウィンドウ]** -> **[Application Insights の検索]** をクリックして Application Insights を開きます。  現在のセッションのテレメトリが表示されます。<BR><br>![Visual Studio でのテレメトリ](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. **[表示]**  ->  **[その他のウィンドウ]**  ->  **[Application Insights の検索]** をクリックして Application Insights を開きます。  現在のセッションのテレメトリが表示されます。<BR><br>![Visual Studio でのテレメトリ](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. リスト内の最初の要求 (この例では GET Home/Index) をクリックすると、この要求の詳細が表示されます。 要求に関する他の有益な情報と共に状態コードと応答時間の両方が含まれていることに注意してください。<br><br>![Visual Studio での応答の詳細](media/quick-monitor-portal/request-details.png)
 
@@ -61,7 +61,7 @@ Application Insights は、アプリケーションが実行されている場�
 
 Azure Portal で Application Insights を開いて、実行中のアプリケーションに関するさまざまな詳細情報を表示することができます。
 
-1. ソリューション エクスプローラーの **[接続済みサービス]** フォルダー (クラウドとプラグのアイコン) を展開し、**[Application Insights]** フォルダーを右クリックし、**[Application Insights ポータルを開く]** をクリックします。  アプリケーションに関する情報とさまざまなオプションが表示されます。
+1. ソリューション エクスプローラーの **[接続済みサービス]** フォルダー (クラウドとプラグのアイコン) を展開し、 **[Application Insights]** フォルダーを右クリックし、 **[Application Insights ポータルを開く]** をクリックします。  アプリケーションに関する情報とさまざまなオプションが表示されます。
 
     ![アプリケーション マップ](media/quick-monitor-portal/4overview.png)
 
@@ -69,7 +69,7 @@ Azure Portal で Application Insights を開いて、実行中のアプリケー
 
     ![アプリケーション マップ](media/quick-monitor-portal/5appmap.png)
 
-3. いずれかのアプリケーション コンポーネントで、**[アプリ分析]** のアイコン ![アプリケーション マップ](media/quick-monitor-portal/app-analytics-icon.png) **[分析で表示]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。  この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
+3. いずれかのアプリケーション コンポーネントで、 **[アプリ分析]** のアイコン ![アプリケーション マップ](media/quick-monitor-portal/app-analytics-icon.png) **[分析で表示]** をクリックします。 これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Application Insights 分析**が開きます。  この場合は、要求の数をグラフとして描画するクエリが生成されます。 自分でクエリを作成して他のデータを分析することができます。
 
     ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -108,7 +108,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
-1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
+1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077566"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595760"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az extension add --name azure-cli-iot-ext
 ```
 
-このチュートリアルで実行するデバイス シミュレーター アプリケーションは、Node.js を使用して作成しています。 開発用コンピューター上に Node.js v4.x.x 以降が必要です。
+このチュートリアルで実行するデバイス シミュレーター アプリケーションは、Node.js を使用して作成しています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
 複数のプラットフォームに対応する Node.js を [nodejs.org](https://nodejs.org) からダウンロードできます。
 
@@ -65,11 +65,11 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
 
 ![IoT デバイス ツール](media/tutorial-connectivity/iot-devices-tool.png)
 
-新しいデバイスを登録するには、**[+ 追加]** をクリックし、**[デバイス ID]** を **MyTestDevice** に設定して **[保存]** をクリックします。
+新しいデバイスを登録するには、 **[+ 追加]** をクリックし、 **[デバイス ID]** を **MyTestDevice** に設定して **[保存]** をクリックします。
 
 ![新しいデバイスを追加する](media/tutorial-connectivity/add-device.png)
 
-**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でその接続文字列をクリックし、**[接続文字列 - 主キー]** の値をコピーします。 接続文字列には、デバイスの*共有アクセス キー*が含まれています。
+**MyTestDevice** の接続文字列を取得するには、デバイスの一覧でその接続文字列をクリックし、 **[接続文字列 - 主キー]** の値をコピーします。 接続文字列には、デバイスの*共有アクセス キー*が含まれています。
 
 ![デバイス接続文字列を取得する](media/tutorial-connectivity/copy-connection-string.png)
 
@@ -255,7 +255,7 @@ az iot hub device-twin update --set properties.desired='{"mydesiredproperty":"pr
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorials-iot-hub-rg** リソース グループを選択し、**[削除]** をクリックします。
+IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorials-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68457367987305b6926f8f885a226cfcedd23873
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900830"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860315"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル:C# での Translator Speech アプリケーション
 
@@ -34,7 +34,7 @@ ms.locfileid: "57900830"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを行うには、Community Edition を含む Visual Studio 2017 のいずれかのエディションが必要です。
+このチュートリアルを行うには、Community Edition を含む Visual Studio 2019 のいずれかのエディションが必要です。
 
 Visual Studio ソリューションでは、アプリケーションのインストーラーもビルドされます。 この機能をサポートするには、[WiX Toolset](http://wixtoolset.org/) と [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) が必要です。
 
@@ -48,15 +48,15 @@ Visual Studio で Speech Translator ソリューション (`SpeechTranslator.sln
 
 ![[Speech Translator のメイン ウィンドウ]](media/speech-translator-main-window.png)
 
-初回実行時には、**[設定]** メニューから **[アカウント設定]** を選択して、次のようなウィンドウを開きます。
+初回実行時には、 **[設定]** メニューから **[アカウント設定]** を選択して、次のようなウィンドウを開きます。
 
 ![[Speech Translator のメイン ウィンドウ]](media/speech-translator-settings-window.png)
 
-このウィンドウで、Translator Speech のサブスクリプション キーを貼り付け、**[保存]** をクリックします。 キーはアプリの実行ごとに保存されます。
+このウィンドウで、Translator Speech のサブスクリプション キーを貼り付け、 **[保存]** をクリックします。 キーはアプリの実行ごとに保存されます。
 
-メイン ウィンドウに戻り、使用する音声入出力デバイスを選択して、どの言語からどの言語に翻訳するかを選択します。 翻訳の音声を再生する場合は、**[TTS]**(テキスト読み上げ) オプションをオンにします。 発話中に部分的な予測翻訳を表示するには、**[Partial Results]\(部分結果\)** オプションをオンにします。
+メイン ウィンドウに戻り、使用する音声入出力デバイスを選択して、どの言語からどの言語に翻訳するかを選択します。 翻訳の音声を再生する場合は、 **[TTS]** (テキスト読み上げ) オプションをオンにします。 発話中に部分的な予測翻訳を表示するには、 **[Partial Results]\(部分結果\)** オプションをオンにします。
 
-最後に、**[開始]** をクリックして翻訳を開始します。 翻訳する言葉を発話し、認識されたテキストとその翻訳がウィンドウに表示されるのを確認します。 TTS オプションをオンにした場合は、翻訳の音声も再生されます。
+最後に、 **[開始]** をクリックして翻訳を開始します。 翻訳する言葉を発話し、認識されたテキストとその翻訳がウィンドウに表示されるのを確認します。 TTS オプションをオンにした場合は、翻訳の音声も再生されます。
 
 ## <a name="obtaining-supported-languages"></a>サポートされている言語の取得
 

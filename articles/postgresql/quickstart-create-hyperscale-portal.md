@@ -7,84 +7,19 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.openlocfilehash: 4271d94f07125a870cc4aa859b01db819d583f40
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 05/14/2019
+ms.openlocfilehash: efc3801ab03f739761a41bec754f975fe43dcd8e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406443"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792018"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を作成する
 
 Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイック スタートでは、Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) サーバー グループを作成する方法について説明します。 ノード間でテーブルをシャード化したり、サンプル データを取り込んだり、複数のノードでクエリを実行したり、分散データをいろいろ試してみます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
-
-[Azure Portal](https://portal.azure.com) にサインインします。
-
-## <a name="create-an-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の作成
-
-Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
-1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[新規]** ページで **[データベース]** を選択し、**[データベース]** ページで **[Azure Database for PostgreSQL]** を選択します。
-3. デプロイ オプションについては、**[Hyperscale (Citus) サーバー グループ - プレビュー]** の下にある **[作成]** ボタンをクリックします。
-4. 新しいサーバーの詳細フォームには次の情報を入力してください。
-   - リソース グループ: このフィールドのテキスト ボックスの下の **[新規作成]** リンクをクリックします。 **myresourcegroup** などの名前を入力します。
-   - サーバー グループ名: 新しいサーバー グループの一意の名前を入力します。これはサーバー サブドメインにも使用されます。
-   - 管理者ユーザー名: 一意のユーザー名を入力します。これは後でデータベースへの接続に使用されます。
-   - パスワード: 少なくとも 8 文字で、次のカテゴリのうち 3 つのカテゴリの文字が含まれている必要があります。英字大文字、英字小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など)。
-   - 場所: データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。
-
-   > [!IMPORTANT]
-   > ここで指定するサーバー管理者ログインとパスワードは、このクイック スタートの後の方でサーバーとそのデータベースにログインするために必要です。 後で使用するために、この情報を覚えておくか、記録しておきます。
-
-5. **[サーバー グループの構成]** をクリックします。 そのセクションの設定を変更しないで、**[保存]** をクリックします。
-6. **[確認と作成]**、**[作成]** の順にクリックして、サーバーをプロビジョニングします。 プロビジョニングには数分かかります。
-7. ページは、デプロイを監視するためにリダイレクトされます。 ライブ状態が **[デプロイが進行中です]** から **[デプロイが完了しました]** に変わったら、ページの左側にある **[出力]** メニュー項目をクリックします。
-8. 出力ページには、コーディネーターのホスト名が含まれており、値をクリップボードにコピーするためのボタンが横に付いています。 後で使用するために、この情報を記録しておきます。
-
-## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
-
-Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) サービスは、サーバーレベルでファイアウォールを使用します。 既定では、ファイアウォールは、すべての外部のアプリケーションとツールがコーディネーター ノードやデータベースに接続することを防止します。 特定の IP アドレス範囲のファイアウォールを開放する規則を追加する必要があります。
-
-1. コーディネーター ノードのホスト名を以前にコピーした **[出力]** セクションから、[戻る] をクリックして **[概要]** メニュー項目に戻ります。
-
-2. デプロイのスケーリング グループの名前には "sg-" という接頭辞が付きます。 リソースの一覧でそれを見つけ、クリックします。
-
-3. 左側のメニューの **[セキュリティ]** の下にある **[ファイアウォール]** をクリックします。
-
-4. **[+ 現在のクライアント IP アドレスに対するファイアウォール規則の追加]** リンクをクリックします。 最後に、**[保存]** ボタンをクリックします。
-
-5. **[Save]** をクリックします。
-
-   > [!NOTE]
-   > Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Cloud Shell で psql を使用してデータベースに接続する
-
-ここでは [psql](https://www.postgresql.org/docs/current/app-psql.html) コマンド ライン ユーティリティを使用して、Azure Database for PostgreSQL サーバーに接続しましょう。
-1. 上部のナビゲーション ウィンドウで、ターミナルのアイコンをクリックして Azure Cloud Shell を起動します。
-
-   ![Azure Database for PostgreSQL - Azure Cloud Shell ターミナル アイコン](./media/quickstart-create-hyperscale-portal/psql-cloud-shell.png)
-
-2. Azure Cloud Shell がブラウザで開き、bash コマンドを入力できます。
-
-   ![Azure Database for PostgreSQL - Azure Shell Bash プロンプト](./media/quickstart-create-hyperscale-portal/psql-bash.png)
-
-3. Cloud Shell プロンプトで、psql コマンドを使用して Azure Database for PostgreSQL サーバーに接続します。 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティで Azure Database for PostgreSQL サーバーに接続するには、次の形式を使用します。
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mydemoserver.postgres.database.azure.com** にある既定のデータベース **citus** に接続します。 サーバー管理者のパスワードを求められたら、入力します。
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="create-and-distribute-tables"></a>テーブルを作成して配布する
 
@@ -127,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-`github_events` の `payload` フィールドには JSONB データ型があります。 JSONB は Postgres におけるバイナリ形式の JSON データ型です。 これにより、より柔軟なスキーマを 1 つの列に簡単に格納できます。
+`github_events` の `payload` フィールドには JSONB データ型があります。 JSONB は Postgres におけるバイナリ形式の JSON データ型です。 データ型により、柔軟なスキーマを 1 つの列に簡単に格納できます。
 
 Postgres では、その中にあるすべてのキーと値にインデックスを作成するこの型で `GIN` インデックスを作成できます。 インデックスがあると、さまざまな条件でペイロードに簡単にクエリを実行できます。 それでは、データを読み込む前にインデックスをいくつか作成してみましょう。 psql で:
 
@@ -143,7 +78,14 @@ SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
-データを読み込む準備ができました。 [users.csv](https://examples.citusdata.com/users.csv) と [events.csv](https://examples.citusdata.com/events.csv) という 2 つのサンプル ファイルをダウンロードします。 ファイルをダウンロードしたら、psql を使用してデータベースに接続します。ダウンロードしたファイルが含まれるディレクトリから psql を慎重に実行します。 `\copy` コマンドでデータを読み込みます。
+データを読み込む準備ができました。 psql でも、シェルアウトして、ファイルをダウンロードします。
+
+```sql
+\! curl -O https://examples.citusdata.com/users.csv
+\! curl -O https://examples.citusdata.com/events.csv
+```
+
+次に、ファイルから分散テーブルに、データを読み込みます。
 
 ```sql
 \copy github_events from 'events.csv' WITH CSV
@@ -186,7 +128,7 @@ ORDER BY count(*) DESC;
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの **[概要]** ページで、**[削除]** ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の **[削除]** ボタンをクリックします。
+前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの **[概要]** ページで、 **[削除]** ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の **[削除]** ボタンをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

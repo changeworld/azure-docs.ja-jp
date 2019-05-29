@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8de2f7cb90e004673c59282a8023d55df364220a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d4b154b8ce55c381f1398c696bc439067dccfab
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140795"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65899754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>チュートリアル:Azure Active Directory と Alibaba Cloud Service (ロールベースの SSO) の統合
 
@@ -54,11 +54,11 @@ Azure AD への Alibaba Cloud Service (ロールベースの SSO) の統合を�
 
 **ギャラリーから Alibaba Cloud Service (ロールベースの SSO) を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Alibaba Cloud Service (ロールベースの SSO) の統合を�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Alibaba Cloud Service (ロールベースの SSO)**」と入力して、結果パネルから **[Alibaba Cloud Service (ロールベースの SSO)]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Alibaba Cloud Service (ロールベースの SSO)** 」と入力して、結果パネルから **[Alibaba Cloud Service (ロールベースの SSO)]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの Alibaba Cloud Service (ロールベースの SSO)](common/search-new-app.png)
 
@@ -95,15 +95,15 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD のシングル �
 
 Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Alibaba Cloud Service (ロールベースの SSO)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Alibaba Cloud Service (ロールベースの SSO)** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -116,7 +116,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
     ![image](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![image](common/browse-upload-metadata.png)
 
@@ -127,7 +127,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
     > [!Note]
     > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
-5. Alibaba Cloud Service (ロールベースの SSO) アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、**[ユーザー属性]** ダイアログを開きます。
+5. Alibaba Cloud Service (ロールベースの SSO) アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -135,8 +135,8 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
     | Name | 名前空間 | ソース属性|
     | ---------------| ------------| --------------- |
-    | Role | https://www.aliyun.com/SAML-Role/Attribute | user.assignedroles |
-    | RoleSessionName | https://www.aliyun.com/SAML-Role/Attribute | user.userprincipalname |
+    | Role | https:\//www.aliyun.com/SAML-Role/Attribute | user.assignedroles |
+    | RoleSessionName | https:\//www.aliyun.com/SAML-Role/Attribute | user.userprincipalname |
 
     > [!NOTE]
     > Azure AD で**役割**を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)をクリックしてください
@@ -157,7 +157,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
     f. **[Save]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -179,11 +179,11 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
 3. **[Role-based SSO]\(ロールベースの SSO\)** タブで **[Create IdP]\(IdP の作成\)** をクリックします。
 
-4. 表示されたページで [IdP Name]\(IdP 名\) フィールドに「`AAD`」と入力し、**[注]** フィールドに説明を入力し、**[アップロード]** をクリックし、前にダウンロードしたフェデレーション メタデータ ファイルをアップロードし、**[OK]** をクリックします。
+4. 表示されたページで [IdP Name]\(IdP 名\) フィールドに「`AAD`」と入力し、 **[注]** フィールドに説明を入力し、 **[アップロード]** をクリックし、前にダウンロードしたフェデレーション メタデータ ファイルをアップロードし、 **[OK]** をクリックします。
 
-5. IdP が正常に作成されたら、**[Create RAM Role]\(RAM ロールの作成\)** をクリックします。
+5. IdP が正常に作成されたら、 **[Create RAM Role]\(RAM ロールの作成\)** をクリックします。
 
-6. **[RAM Role Name]\(RAM ロール名\)** フィールドに「`AADrole`」と入力し、**[Select IdP]\(IdP の選択\)** ドロップダウン リストから `AAD` を選択し、[OK] をクリックします。
+6. **[RAM Role Name]\(RAM ロール名\)** フィールドに「`AADrole`」と入力し、 **[Select IdP]\(IdP の選択\)** ドロップダウン リストから `AAD` を選択し、[OK] をクリックします。
 
     >[!NOTE]
     >必要に応じて、ロールにアクセス許可を付与できます。 IdP と該当するロールを作成したら、後で使用するために IdP とロールの ARN を保存することをお勧めします。 ARN は IdP 情報ページとロール情報ページで入手できます。
@@ -196,14 +196,14 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
     ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
-    c. 次の画像のように、一覧から次のアクセス許可を選択し、**[アクセス許可の変更]** をクリックします。
+    c. 次の画像のように、一覧から次のアクセス許可を選択し、 **[アクセス許可の変更]** をクリックします。
 
     ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >アクセス許可が付与されたら、Graph Explorer に再度ログオンします。
 
-    d. Graph Explorer ページで、最初のドロップダウン リストから **[GET]** を選択し、2 つ目のドロップダウン リストから **[ベータ]** を選択します。 ドロップダウン リストの横にあるフィールドに「`https://graph.microsoft.com/beta/servicePrincipals`」と入力し、**[クエリの実行]** を実行します。
+    d. Graph Explorer ページで、最初のドロップダウン リストから **[GET]** を選択し、2 つ目のドロップダウン リストから **[ベータ]** を選択します。 ドロップダウン リストの横にあるフィールドに「`https://graph.microsoft.com/beta/servicePrincipals`」と入力し、 **[クエリの実行]** を実行します。
 
     ![Graph の構成](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
@@ -217,7 +217,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
     >[!NOTE]
     >クエリのフィールドに「`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`」と入力することで appRoles プロパティを見つけることができます。 `objectID` は Azure AD **プロパティ** ページからコピーしたオブジェクト ID であることにご注目ください。
 
-    f. Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更し、**[要求本文]** セクションに次のコンテンツを貼り付け、**[クエリの実行]** をクリックします。
+    f. Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更し、 **[要求本文]** セクションに次のコンテンツを貼り付け、 **[クエリの実行]** をクリックします。
     ```
     { 
     "appRoles": [
@@ -258,7 +258,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -282,7 +282,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
 このセクションでは、Britta Simon に Alibaba Cloud Service (ロールベースの SSO) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Alibaba Cloud Service (ロールベースの SSO)]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Alibaba Cloud Service (ロールベースの SSO)]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -294,11 +294,11 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** タブでユーザーの一覧から u2 を選択し、**[選択]** をクリックします。 次に、**[割り当て]** をクリックします。
+5. **[ユーザーとグループ]** タブでユーザーの一覧から u2 を選択し、 **[選択]** をクリックします。 次に、 **[割り当て]** をクリックします。
 
     ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
@@ -317,7 +317,7 @@ Alibaba Cloud Service (ロールベースの SSO) で Azure AD シングル サ�
 
 上記の構成が完了したら、次の手順を実行し、Alibaba Cloud Service (ロールベースの SSO) をテストします。
 
-1. Azure portal で、**[Alibaba Cloud Service (ロールベースの SSO)]** ページに移動し、**[シングル サインオン]** を選択し、**[テスト]** をクリックします。
+1. Azure portal で、 **[Alibaba Cloud Service (ロールベースの SSO)]** ページに移動し、 **[シングル サインオン]** を選択し、 **[テスト]** をクリックします。
 
     ![テストの構成](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 

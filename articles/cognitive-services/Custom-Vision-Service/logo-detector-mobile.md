@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838818"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827650"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- [Visual Studio 2017 以降](https://www.visualstudio.com/downloads/)
 - Visual Studio 向けの Xamarin ワークロード ([Xamarin のインストール](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows)に関するページを参照してください)
 - Visual Studio 向けの iOS または Android のエミュレーター
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (オプション)
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-次に、Azure サービスのロゴの画像をアップロードして、手動でタグ付けすることで、ロゴ検出アルゴリズムをトレーニングします。 AIVisualProvision リポジトリには、開発者が使用できるトレーニング画像のセットが含まれています。 Web サイトで、**[Training Images]\(トレーニング画像\)** タブの **[Add images]\(画像の追加\)** を選択します。次に、リポジトリの **Documents/Images/Training_DataSet** フォルダーに移動します。 各画像内のロゴに手動でタグを付ける必要があるため、このプロジェクトをテストするだけの場合は画像のサブセットのみをアップロードしてもかまいません。 使用する予定のタグごとに、少なくとも 15 個のインスタンスをアップロードします。
+次に、Azure サービスのロゴの画像をアップロードして、手動でタグ付けすることで、ロゴ検出アルゴリズムをトレーニングします。 AIVisualProvision リポジトリには、開発者が使用できるトレーニング画像のセットが含まれています。 Web サイトで、 **[Training Images]\(トレーニング画像\)** タブの **[Add images]\(画像の追加\)** を選択します。次に、リポジトリの **Documents/Images/Training_DataSet** フォルダーに移動します。 各画像内のロゴに手動でタグを付ける必要があるため、このプロジェクトをテストするだけの場合は画像のサブセットのみをアップロードしてもかまいません。 使用する予定のタグごとに、少なくとも 15 個のインスタンスをアップロードします。
 
 トレーニング画像をアップロードしたら、ディスプレイ上の最初の 1 つを選択します。 これにより、タグ付けウィンドウが表示されます。 各画像内の各ロゴに対して四角形を描画し、タグを割り当てます。 
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="train-the-object-detector"></a>オブジェクト検出器をトレーニングする
 
-左側のウィンドウで、**[Tags]\(タグ\)** スイッチを **[Tagged]\(タグ付き\)** に設定し、画像を表示します。 次に、モデルをトレーニングするために、ページ上部にある緑色のボタンを選択します。 これで、新しい画像内の同じタグを認識するようにアルゴリズムに指示します。 さらに、既存の画像のいくつかでモデルがテストされ、精度スコアが生成されます。
+左側のウィンドウで、 **[Tags]\(タグ\)** スイッチを **[Tagged]\(タグ付き\)** に設定し、画像を表示します。 次に、モデルをトレーニングするために、ページ上部にある緑色のボタンを選択します。 これで、新しい画像内の同じタグを認識するようにアルゴリズムに指示します。 さらに、既存の画像のいくつかでモデルがテストされ、精度スコアが生成されます。
 
 ![Custom Vision Web サイトの [Training Images]\(トレーニング画像\) タブ。このスクリーンショットでは、トレーニング ボタンが枠で囲まれている](media/azure-logo-tutorial/train-model.png)
 
@@ -160,7 +160,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
     
     ![サービス プリンシパルの資格情報のフィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-credentials.png)
 
-1. 次の画面で、ドロップダウン メニューから自分の Azure サブスクリプションを選択します  (このメニューには、サービス プリンシパルでアクセスできるすべてのサブスクリプションが含まれているはずです)。**[Continue]\(続行\)** を選択します。 この時点で、デバイスのカメラと写真ストレージへのアクセスを許可するように求めるメッセージがアプリに表示される場合があります。 アクセス許可を付与します。
+1. 次の画面で、ドロップダウン メニューから自分の Azure サブスクリプションを選択します  (このメニューには、サービス プリンシパルでアクセスできるすべてのサブスクリプションが含まれているはずです)。 **[Continue]\(続行\)** を選択します。 この時点で、デバイスのカメラと写真ストレージへのアクセスを許可するように求めるメッセージがアプリに表示される場合があります。 アクセス許可を付与します。
 
     ![ターゲット Azure サブスクリプションのドロップダウン フィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-az-subscription.png)
 
@@ -175,7 +175,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 このシナリオのすべての手順を実行し、アプリを使用して Azure サービスを自分のアカウントにデプロイした場合は、[Azure portal](https://ms.portal.azure.com/) に移動します。 そこで、使用しないサービスを取り消します。
 
-今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料試用版では、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、**[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
+今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料試用版では、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
 
 ## <a name="next-steps"></a>次の手順
 

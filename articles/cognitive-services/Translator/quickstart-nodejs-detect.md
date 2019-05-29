@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: afd6192969243572134b7a7bb965ad80ff9eb39e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ca05a76520dab673f90f1f5cbf1e60fde2d7d554
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922192"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604246"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>クイック スタート:Translator Text API と Node.js を使用してテキストの言語を検出する
 
@@ -119,7 +119,7 @@ node detect.js
 
 ## <a name="sample-response"></a>応答のサンプル
 
-国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
+国/地域の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 148f94410f6acb421d352b68b6f1ecb305a6b16a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 24d9a5fa1e9c2f44ef32ac1fc05ad09f8a550f12
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235951"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827747"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Visual Studio で接続済みサービスを使用して Computer Vision API に接続する
 
@@ -24,8 +24,8 @@ ms.locfileid: "65235951"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- **Visual Studio 2017 バージョン 15.7**(**Web 開発**ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
+- Azure サブスクリプション。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- Visual Studio 2017 バージョン 15.7 以降と、**Web 開発**のワークロードがインストールされていること。 [こちら](https://visualstudio.microsoft.com/downloads/)でダウンロードできます。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -33,12 +33,12 @@ ms.locfileid: "65235951"
 
 1. 新しい ASP.NET Core Web プロジェクトを作成します。 [空のプロジェクト] テンプレートを使用します。 
 
-1. **ソリューション エクスプローラー**で、**[追加]** > **[接続済みサービス]** を選択します。
+1. **ソリューション エクスプローラー**で、 **[追加]**  >  **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 
    ![Visual Studio プロジェクトの右クリック メニュー: [追加] > [接続済みサービス]](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. 利用可能なサービスのメニューで、**[Cognitive Services Computer Vision API]** を選択します。
+1. 利用可能なサービスのメニューで、 **[Cognitive Services Computer Vision API]** を選択します。
 
    ![[接続済みサービス] メニュー: 画像の分析用の項目が囲まれている](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
@@ -90,11 +90,11 @@ ms.locfileid: "65235951"
       }
    ```
 
-1. プロジェクトの wwwroot フォルダー内に images フォルダーを追加して、画像ファイルを wwwroot フォルダーに追加します。 たとえば、この [Computer Vision API ページ](https://azure.microsoft.com/services/cognitive-services/computer-vision/)にある画像の 1 つを使用できます。 画像の 1 つを右クリックしてローカルのハード ドライブに保存し、ソリューション エクスプローラーで images フォルダーを右クリックし、**[追加]** > **[既存の項目]** を選択してその画像をプロジェクトに追加します。 ソリューション エクスプローラーで、プロジェクトは次のようになります。 
+1. プロジェクトの wwwroot フォルダー内に images フォルダーを追加して、画像ファイルを wwwroot フォルダーに追加します。 たとえば、この [Computer Vision API ページ](https://azure.microsoft.com/services/cognitive-services/computer-vision/)にある画像の 1 つを使用できます。 画像の 1 つを右クリックしてローカルのハード ドライブに保存し、ソリューション エクスプローラーで images フォルダーを右クリックし、 **[追加]**  >  **[既存の項目]** を選択してその画像をプロジェクトに追加します。 ソリューション エクスプローラーで、プロジェクトは次のようになります。 
   
    ![画像ファイルが選択された状態のソリューション エクスプローラー ビューのスクリーンショット](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
-1. 画像ファイルを右クリックして [プロパティ] を選択し、**[新しい場合はコピーする]** を選択します。 
+1. 画像ファイルを右クリックして [プロパティ] を選択し、 **[新しい場合はコピーする]** を選択します。 
 
    ![画像のプロパティ ウィンドウ ([出力ディレクトリにコピー] が [新しい場合はコピーする] に設定されている)](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
@@ -256,7 +256,7 @@ ms.locfileid: "65235951"
 
 1. ポータル上部にある検索ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、**[削除]** を選択します。
+3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

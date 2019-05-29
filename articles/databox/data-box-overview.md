@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ddbb535d386fb90ccb2042e0908e66146e854f00
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117746"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603465"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -109,7 +109,7 @@ Data Box に含まれるコンポーネントを次に示します。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-Data Box は、サービスが展開されているリージョン、デバイスが出荷される国、データの転送対象となる Azure ストレージ アカウントに基づいてデータを転送できます。 
+Data Box は、サービスが展開されているリージョン、デバイスが出荷される国/リージョン、データの転送対象となる Azure ストレージ アカウントに基づいてデータを転送できます。 
 
 - **サービスの可用性** - このリリースでは、Data Box サービスは次のリージョンで利用できます。
     - 米国のすべてのリージョン - 米国中西部、米国西部 2、米国西部、米国中南部、米国中部、米国中北部、米国東部、米国東部 2。

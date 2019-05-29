@@ -10,23 +10,23 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4e1c03085d6b1d0099ac66dd3d1dadd981a561aa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004246"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860473"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>チュートリアル:Visual Studio の接続済みサービスを使用して Text Analytics Service に接続する
 
 Text Analytics Service を使用することで、豊富な情報を抽出して視覚データを分類および処理したり、機械による画像のモデレートを実施してサービスのキュレーションを支援したりできます。
 
-この記事と関連記事では、Text Analytics Service に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Cognitive Services 拡張機能がインストールされた Visual Studio 2017 15.7 またはそれ以降の両方で使用できます。
+この記事と関連記事では、Text Analytics Service に Visual Studio 接続済みサービス機能を使用する方法について詳しく説明します。 この機能は、Cognitive Services 拡張機能がインストールされた Visual Studio 2019 またはそれ以降の両方で使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- Visual Studio 2017 バージョン 15.7 (Web 開発ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
+- Web 開発ワークロードがインストールされている Visual Studio 2019。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -34,12 +34,12 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
 
 1. TextAnalyticsDemo という名前の新しい ASP.NET Core Web プロジェクトを作成します。 Web アプリケーション (モデル ビュー コントローラー) プロジェクト テンプレートを、すべて既定の設定で使用します。 コードをプロジェクトにコピーしたときに名前空間が一致するよう、プロジェクトの名前を MyWebApplication にすることが重要です。  この記事の例では MVC を使用しますが、Text Analytics 接続済みサービスは任意の ASP.NET プロジェクト タイプと共に使用できます。
 
-1. **ソリューション エクスプローラー**で、**[接続済みサービス]** 項目をダブルクリックします。
+1. **ソリューション エクスプローラー**で、 **[接続済みサービス]** 項目をダブルクリックします。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 
    ![ソリューション エクスプローラーでの接続済みサービスのスクリーンショット](../media/vs-common/Connected-Services-Solution-Explorer.PNG)
 
-1. 利用可能なサービスのメニューで、**[Evaluate Sentiment with Text Analytics]\(Text Analytics でセンチメントを評価する\)** を選択します。
+1. 利用可能なサービスのメニューで、 **[Evaluate Sentiment with Text Analytics]\(Text Analytics でセンチメントを評価する\)** を選択します。
 
    ![[接続済みサービス] 画面のスクリーンショット](./media/vs-text-connected-service/Cog-Text-Connected-Service-0.PNG)
 
@@ -193,7 +193,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
     }
     ```
 
-1. 分析されたテキスト、決定された言語、および、分析での信頼レベルを表すスコアを表示するためのビューを追加します。 これを行うには、**Views** フォルダーを右クリックし、**[追加]**、**[ビュー]** の順に選択します。 表示されたダイアログ ボックスで、名前 _TextAnalyzeResult_ を指定し、既定の設定は変更せず、_TextAnalyzeResult.cshtml_ という名前の新しいファイルを **Views** フォルダーに作成し、次の内容をそのファイルにコピーします。
+1. 分析されたテキスト、決定された言語、および、分析での信頼レベルを表すスコアを表示するためのビューを追加します。 これを行うには、**Views** フォルダーを右クリックし、 **[追加]** 、 **[ビュー]** の順に選択します。 表示されたダイアログ ボックスで、名前 _TextAnalyzeResult_ を指定し、既定の設定は変更せず、_TextAnalyzeResult.cshtml_ という名前の新しいファイルを **Views** フォルダーに作成し、次の内容をそのファイルにコピーします。
     
     ```cshtml
     @using System
@@ -263,7 +263,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
 
 1. ポータル上部にある検索ボックスにリソース グループの名前を入力します。 このチュートリアルで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、**[削除]** を選択します。
+3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

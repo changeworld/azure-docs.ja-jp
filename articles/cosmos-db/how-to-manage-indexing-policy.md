@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0b47ffd77ee23f997bb7de2ea41f83c2854cba72
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068672"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550901"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -22,6 +22,9 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 - SDK のいずれかを使用する
 
 [インデックス作成ポリシーの更新](index-policy.md#modifying-the-indexing-policy)により、インデックスの変換がトリガーされます。 この変換の進行状況は、SDK から追跡することもできます。
+
+> [!NOTE]
+> SDK と Portal のアップグレードの一環として、新しいコンテナーにロール アウトした新しいインデックス レイアウトに合わせてインデックス ポリシーを進化させています。 この新しいレイアウトでは、すべてのプリミティブ データ型はフル精度 (-1) の Range としてインデックス付けされます。 したがって、インデックスの種類と精度はユーザーに公開されなくなります。 将来的には、ユーザーは includedPaths セクションにパスを追加するだけで済むようになり、indexKinds と精度は無視します。 この変更はパフォーマンスへの影響はなく、引き続き同じ構文を使用してインデックス作成ポリシーを更新できます。 既存のドキュメント内のすべてのサンプルを使用して、インデックス ポリシーの更新を続けることができます。
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
@@ -37,7 +40,7 @@ Azure Cosmos のコンテナーには、そのインデックス作成ポリシ�
 
 1. インデックス作成ポリシーの JSON ドキュメントに変更を加えます ([以下](#indexing-policy-examples)の例を参照)。
 
-1. 完了したら、**[保存]** をクリックします。
+1. 完了したら、 **[保存]** をクリックします。
 
 ![Azure portal を使用してインデックス作成を管理する](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 

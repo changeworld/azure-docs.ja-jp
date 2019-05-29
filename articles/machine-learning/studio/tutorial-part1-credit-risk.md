@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904509"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949793"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio
 
@@ -47,7 +47,7 @@ ms.locfileid: "57904509"
 
 
 > [!TIP] 
-> [Azure AI Gallery](https://gallery.azure.ai) には、このチュートリアルで開発する実験の作業コピーがあります。 「**[Tutorial - Predict credit risk (チュートリアル - 信用リスクの予測)](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)**」にアクセスし、**[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI Gallery](https://gallery.azure.ai) には、このチュートリアルで開発する実験の作業コピーがあります。 「 **[Tutorial - Predict credit risk (チュートリアル - 信用リスクの予測)](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** 」にアクセスし、 **[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 > 
 
 
@@ -114,7 +114,7 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 1. Machine Learning Studio のホーム ページ ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 
 
-2. ウィンドウの左上隅にある ![[メニュー]](./media/tutorial-part1-credit-risk/menu.png) をクリックします。**[Azure Machine Learning]** をクリックし、**[Studio]** を選択してサインインします。
+2. ウィンドウの左上隅にある ![[メニュー]](./media/tutorial-part1-credit-risk/menu.png) をクリックします。 **[Azure Machine Learning]** をクリックし、 **[Studio]** を選択してサインインします。
 
 3. ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -159,7 +159,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
     ![実験名の変更](./media/tutorial-part1-credit-risk/rename-experiment.png)
 
    > [!TIP]
-   > 実験のため、**[プロパティ]** ウィンドウの **[概要]** と **[説明]** に入力することをお勧めします。 これらのプロパティを指定しておくと、実験を文書に残すことができるので、誰でも後から見て目標と手法を理解できます。
+   > 実験のため、 **[プロパティ]** ウィンドウの **[概要]** と **[説明]** に入力することをお勧めします。 これらのプロパティを指定しておくと、実験を文書に残すことができるので、誰でも後から見て目標と手法を理解できます。
    > 
    > ![実験のプロパティ](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
@@ -172,7 +172,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 ### <a name="prepare-the-data"></a>データを準備する
 
-データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、**[視覚化]** を選択します。  
+データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、 **[視覚化]** を選択します。  
 
 データ ファイルには列見出しがないため、ため、Studio では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
 
@@ -202,7 +202,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 1. [メタデータの編集][edit-metadata]を選択し、キャンバスの右側にある **[プロパティ]** ウィンドウで **[列セレクターの起動]** をクリックします。
 
-1. **[列の選択]** ダイアログで、**[使用可能な列]** のすべての列を選択して [>] をクリックし、**[選択した列]** に移します。
+1. **[列の選択]** ダイアログで、 **[使用可能な列]** のすべての列を選択して [>] をクリックし、 **[選択した列]** に移します。
    ダイアログは次のようになります。
 
    ![すべての列が選択された列セレクター](./media/tutorial-part1-credit-risk/select-columns.png)
@@ -210,7 +210,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 1. **OK** チェック マークをクリックします。
 
-1. **[プロパティ]** ウィンドウに戻り、**[新しい列名]** パラメーターを探します。 このフィールドには、コンマ区切りで列の順番どおりに、データセットの 21 列分の名前を入力します。 列名は、UCI Web サイトのデータセットに関するドキュメントから入手できます。または、次の一覧をコピーして貼り付けることができます。  
+1. **[プロパティ]** ウィンドウに戻り、 **[新しい列名]** パラメーターを探します。 このフィールドには、コンマ区切りで列の順番どおりに、データセットの 21 列分の名前を入力します。 列名は、UCI Web サイトのデータセットに関するドキュメントから入手できます。または、次の一覧をコピーして貼り付けることができます。  
 
    ```   
    Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
@@ -221,7 +221,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
    ![メタデータの編集のプロパティ](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > 列見出しを検証する場合は、実験を実行します (実験キャンバスの下の **[Run (実行)]** をクリックします)。 実行が終了したら ([メタデータの編集][edit-metadata]上に緑のチェック マークが表示されたら)、[メタデータの編集][edit-metadata]モジュールの出力ポートをクリックし、**[視覚化]** を選択します。 すべてのモジュールで、この方法によって実験データの進捗状況を確認することができます。
+   > 列見出しを検証する場合は、実験を実行します (実験キャンバスの下の **[Run (実行)]** をクリックします)。 実行が終了したら ([メタデータの編集][edit-metadata]上に緑のチェック マークが表示されたら)、[メタデータの編集][edit-metadata]モジュールの出力ポートをクリックし、 **[視覚化]** を選択します。 すべてのモジュールで、この方法によって実験データの進捗状況を確認することができます。
    > 
    > 
 
@@ -237,7 +237,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 1. 既定では、分割比が 0.5 で、 **[ランダム分割]** パラメーターが設定されます。 これは、データの半分がランダムに抽出されて[データの分割][split]モジュールの 1 つのポートから出力され、残りの半分がもう 1 つのポートから出力されることを意味します。 これらのパラメーターと **[ランダム シード]** パラメーターを調整して、トレーニング データとテスト データの分割比を変更できます。 この例では、これらをそのままにしておきます。
    
    > [!TIP]
-   > *左の*出力ポートから出力されるデータの量は、**[Fraction of rows in the first output dataset]** (最初の出力データセットにおける列の割合) プロパティによって決まります。 たとえば、比率を 0.7 に設定すると、データの 70% が左側のポートから、30% が右側のポートから出力されます。  
+   > *左の*出力ポートから出力されるデータの量は、 **[Fraction of rows in the first output dataset]** (最初の出力データセットにおける列の割合) プロパティによって決まります。 たとえば、比率を 0.7 に設定すると、データの 70% が左側のポートから、30% が右側のポートから出力されます。  
    > 
    > 
 
@@ -267,13 +267,13 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 [データの分割][split]モジュールの各出力について同様の重複操作を設定する必要があります。これによって、トレーニング データとテスト データのコスト調整が等しくなります。 これを実行する最も簡単方法は、作成したばかりの [R スクリプトの実行][execute-r-script]モジュールを複製して、[データの分割][split]モジュールのもう 1 つの出力ポートに接続することです。
 
-1. [R スクリプトの実行][execute-r-script]モジュールを右クリックし、**[コピー]** を選択します。
+1. [R スクリプトの実行][execute-r-script]モジュールを右クリックし、 **[コピー]** を選択します。
 
 1. 実験キャンバスを右クリックして **[貼り付け]** を選択します。
 
 1. 新しいモジュールを適切な位置にドラッグし、[データの分割][split]モジュールの右側の出力ポートを、この新しい [ R スクリプトの実行][execute-r-script]モジュールの 1 つ目の入力ポートに接続します。 
 
-1. キャンバスの下部で、**[実行]** をクリックします。 
+1. キャンバスの下部で、 **[実行]** をクリックします。 
 
 > [!TIP]
 > R スクリプトの実行モジュールのコピーには、元のモジュールと同じスクリプトが格納されています。 モジュールをコピーしてキャンバスに貼り付けた場合、モジュールのコピーには元のモジュールのすべてのプロパティが保持されています。  

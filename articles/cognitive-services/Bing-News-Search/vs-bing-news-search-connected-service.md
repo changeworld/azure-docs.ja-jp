@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f697c91851e7ddc95f84239987bb4378bafd094
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088470"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798636"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>チュートリアル:Visual Studio と C# の接続済みサービスを使用して Bing News Search API に接続する
 
@@ -26,7 +26,7 @@ Bing News Search を使用すると、Web にスコープした広告のない�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- Visual Studio 2017 バージョン 15.7 (Web 開発ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
+- Visual Studio 2017 バージョン 15.7 以降と、Web 開発のワークロードがインストールされていること。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -34,12 +34,12 @@ Bing News Search を使用すると、Web にスコープした広告のない�
 
 1. MyWebApplication という名前の、新しい ASP.NET Core Web アプリケーションを作成します。 **Web アプリケーション (モデル ビュー コントローラー)** プロジェクト テンプレートを、すべて既定の設定で使用します。 コードをプロジェクトにコピーしたときに名前空間が一致するよう、プロジェクトの名前を MyWebApplication にすることが重要です。 
 
-1. **ソリューション エクスプローラー**で、**[追加]** > **[接続済みサービス]** を選択します。
+1. **ソリューション エクスプローラー**で、 **[追加]**  >  **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 
    ![接続済みサービスのメニュー項目を追加するスクリーンショット](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. 利用可能なサービスのメニューで、**[Bring Intelligent Search To Your Apps]\(アプリでインテリジェント検索を可能にする\)** を選択します。
+1. 利用可能なサービスのメニューで、 **[Bring Intelligent Search To Your Apps]\(アプリでインテリジェント検索を可能にする\)** を選択します。
 
    ![接続済みサービスの一覧のスクリーンショット](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
 
@@ -51,7 +51,7 @@ Bing News Search を使用すると、Web にスコープした広告のない�
 
    ![リソース グループと価格レベルのフィールドのスクリーンショット](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
 
-   価格レベルの詳細が必要な場合、**[価格のレビュー]** を選択します。
+   価格レベルの詳細が必要な場合、 **[価格のレビュー]** を選択します。
 
 1. **[追加]** を選択して、接続済みサービスのサポートを追加します。
    Bing News Search API への接続をサポートするために、Visual Studio はプロジェクトを修正し、NuGet パッケージ、構成ファイルのエントリ、およびその他の変更を追加します。 出力には、プロジェクトに対して実行されている処理のログが表示されます。 次のように表示されます。

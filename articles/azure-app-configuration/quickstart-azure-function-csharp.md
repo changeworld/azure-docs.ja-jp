@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a0c677e25be86e0f82b821a7931bda0af2b35127
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408651"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864788"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
 
@@ -31,7 +31,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[Visual Studio 2017](https://visualstudio.microsoft.com/vs) をインストールします。 **Azure 開発**ワークロードもインストールされていることを確認します。 また、[最新の Azure Functions ツール](../azure-functions/functions-develop-vs.md#check-your-tools-version)をインストールします。
+このクイック スタートを実行するには、[Visual Studio 2019](https://visualstudio.microsoft.com/vs) をインストールします。 **Azure 開発**ワークロードもインストールされていることを確認します。 また、[最新の Azure Functions ツール](../azure-functions/functions-develop-vs.md#check-your-tools-version)をインストールします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,7 +39,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)\** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)\**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|
@@ -53,7 +53,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
-1. プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、**[プレリリースを含める]** チェック ボックスをオンにします。
+1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
 
     ```
     Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later

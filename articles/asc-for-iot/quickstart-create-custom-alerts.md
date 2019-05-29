@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f585c496328fef3e3d7dbb300fc4f07167fd55d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3b4c5e4700b0ef718a6b079ecc6ab3ad80f4eab6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192464"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786181"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 
@@ -49,14 +49,13 @@ ms.locfileid: "65192464"
 
 ## <a name="customize-an-alert"></a>アラートのカスタマイズ
 
-1. 自分の IoT ハブを開きます。 
-2. **[セキュリティ]** を選択してから、**[カスタム アラート]** を選択します。 
+1. IoT ハブを開きます。 
+2. **[セキュリティ]** セクションで **[カスタム アラート]** をクリックします。 
 3. カスタマイズの適用先にしたいセキュリティ グループを選択します。 
-4. **[Add a custom alert]\(カスタム アラートの追加\)** をクリックします
-5. アラート名を入力します (アラート名は作成後に変更できないことに注意してください)。 
-6. ドロップダウン リストからカスタムのアラート動作を選択します。 
-7. 必須のプロパティを編集して、**[OK]** をクリックします。
-8. 必ず **[保存]** をクリックします。 新しいアラートは、保存しないと IoT ハブを次に閉じたときに削除されます。
+4. **[Add a custom alert]\(カスタム アラートの追加\)** をクリックします 
+5. ドロップダウン リストからカスタムのアラート動作を選択します。 
+6. 必須のプロパティを編集して、 **[OK]** をクリックします。
+7. 必ず **[保存]** をクリックします。 新しいアラートは、保存しないと IoT ハブを次に閉じたときに削除されます。
 
  
 ## <a name="alerts-available-for-customization"></a>カスタマイズに使用できるアラート

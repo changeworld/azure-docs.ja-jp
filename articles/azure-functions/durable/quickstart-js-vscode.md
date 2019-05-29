@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6c7952f5baf2e6956e4052f68ede6fb0c4902854
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281235"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921355"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -56,11 +56,11 @@ ms.locfileid: "59281235"
 
     ![関数を作成する](./media/quickstart-js-vscode/create-function.png)
 
-2. 関数アプリ プロジェクトが含まれたフォルダーを選択し、**[HTTP トリガー]** 関数テンプレートを選択します。
+2. 関数アプリ プロジェクトが含まれたフォルダーを選択し、 **[HTTP トリガー]** 関数テンプレートを選択します。
 
     ![HTTP トリガー テンプレートを選択する](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. 関数名として「`HttpStart`」と入力して Enter キーを押し、**[匿名]** 認証を選択します。
+3. 関数名として「`HttpStart`」と入力して Enter キーを押し、 **[匿名]** 認証を選択します。
 
     ![匿名認証を選択する](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
@@ -117,7 +117,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 2. 関数をテストするには、関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。 Durable Functions を初めて使用する場合は、Durable Functions 拡張機能がインストールされるので、ビルドに数秒かかる場合があります。
 
     > [!NOTE]
-    > JavaScript Durable Functions では、バージョン **1.7.0** 以降の **Microsoft.Azure.WebJobs.Extensions.DurableTask** 拡張機能が必要です。 `extensions.csproj` ファイルで、Durable Functions 拡張機能のバージョンがこの要件を満たすことを確認します。 そうなっていない場合は、関数アプリを停止し、バージョンを変更した後、F5 キーを押して関数アプリを再起動します。
+    > JavaScript Durable Functions では、バージョン **1.7.0** 以降の **Microsoft.Azure.WebJobs.Extensions.DurableTask** 拡張機能が必要です。 Azure Functions アプリのルート フォルダーから次のコマンドを実行して、Durable Functions 拡張機能 `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0` をインストールします
 
 3. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
 

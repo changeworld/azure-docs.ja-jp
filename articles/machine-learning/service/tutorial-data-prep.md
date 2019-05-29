@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470263"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604480"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
@@ -38,7 +38,7 @@ ms.locfileid: "65470263"
 「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。 ノートブックを実行するには、以下のものが必要です。
 
 * 以下のものがインストールされている Python 3.6 ノートブック サーバー。
-    * Azure Machine Learning Data Prep SDK for Python
+    *  Azure Machine Learning SDK for Python の azureml-dataprep パッケージ
 * チュートリアル ノートブック
 
 * [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
@@ -56,8 +56,8 @@ ms.locfileid: "65470263"
 
 次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
 
-1. [[Azure Machine Learning Python のクイック スタート](quickstart-run-local-notebook.md)](setup-create-workspace.md#python)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
-1. `pip install azureml-dataprep` を使用して、Data Prep SDK を環境にインストールします。
+1. [Azure Machine Learning Python のクイック スタート](setup-create-workspace.md#sdk)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
+1. `pip install azureml-dataprep` を使用して、ご自分の環境に azureml-dataprep をインストールします。
 1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
     ```

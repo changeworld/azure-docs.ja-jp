@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: cb75e943416c227730589ab5e7feeb7b8ba5e245
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1d8b31e55a2a230385730c924d3e6bcc6072e7ea
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957931"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520437"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
 
@@ -44,13 +44,13 @@ Change Tracking テクノロジは、SQL Server と Azure SQL Database におい
 [Change Tracking テクノロジを使用して Azure SQL Database から Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>LastModifiedDate を使用して新しいファイルと変更済みのファイルを読み込む
-まずファイルのメタデータ (LastModifiedDate) を取得したうえで、新しいファイルと変更済みのファイルのみを対象のストアにコピーします。
+LastModifiedDate を使用して、新しいファイルと変更されたファイルのみをターゲット ストアにコピーすることができます。 ADF はソース ストアのすべてのファイルをスキャンし、LastModifiedDate に基づいてファイル フィルターを適用して、前回以降の新しいファイルと更新されたファイルのみをターゲット ストアにコピーします。  ADF に大量のファイルをスキャンさせるが、ターゲットにコピーするのは少数のファイルだけの場合でも、ファイルのスキャンに時間がかかることは変わらないため、この場合も長時間の実行が見込まれることに注意してください。   
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 [LastModifiedDate に基づいて新しいファイルと変更済みのファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>時間でパーティション分割されたフォルダーまたはファイルの名前を使用して新しいファイルを読み込む
-ファイルまたはフォルダーが時間 (ファイル名またはフォルダー名に含まれるタイムスライス情報) でパーティション分割されているときに (例: /yyyy/mm/dd/file.csv)、新しいファイルのみをコピーすることができます。 
+ファイルまたはフォルダーが時間 (ファイル名またはフォルダー名に含まれるタイムスライス情報) でパーティション分割されているときに (例: /yyyy/mm/dd/file.csv)、新しいファイルのみをコピーすることができます。 これは、新しいファイルを増分読み込みする場合に最もパフォーマンスの高いアプローチです。 
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 [時間でパーティション分割されたフォルダー名またはファイル名に基づく新しいファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

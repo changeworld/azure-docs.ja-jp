@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:C# を使用して Text Analytics API を呼び出す
+title: クイック スタート:Azure SDK for .NET と C# を使用して Text Analytics サービスを呼び出す
 titleSuffix: Azure Cognitive Services
-description: Text Analytics API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: Text Analytics サービスと C# の使用を開始するのに役立つ情報およびサンプル コード。
 services: cognitive-services
 author: raymondl
 manager: nitinme
@@ -10,42 +10,45 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: assafi
-ms.openlocfilehash: c521be03f884227116a21c8c5396d47cdd1ae253
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 44d4a9427fcf6b582d44707127b87c262781520f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466534"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602348"
 ---
-# <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:C# を使用して Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>クイック スタート:.NET SDK と C# を使用して Text Analytics サービスを呼び出す
 <a name="HOLTop"></a>
 
-このクイックスタートを使用して、C# 用 Text Analytics SDK を使用した言語の分析を開始します。 [Text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) REST API は、ほとんどのプログラミング言語に対応しますが、この SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics) にあります。
+このクイック スタートは、Azure SDK for .NET と C# を使用して言語の分析を開始するのに役立ちます。 [Text Analytics](//go.microsoft.com/fwlink/?LinkID=759711) REST API はほとんどのプログラミング言語と互換性がありますが、この SDK は、サービスをアプリケーションに統合するための簡単な方法を提供します。
 
-API の技術ドキュメントについては、[API の定義](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)に関するページを参照してください。
+> [!NOTE]
+> このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics) で入手できます。
+
+技術的な詳細については、SDK for .NET の [Text Analytics のリファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
+サインアップ中に自動的に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
 
 > [!Tip]
->  [HTTP エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)は C# から直接呼び出すことができますが、Microsoft.Azure.CognitiveServices.Language SDK を使用すると、JSON のシリアル化とシリアル化解除について心配する必要がなく、サービスがかなり呼び出しやすくなります。
+>  [HTTP エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)は C# から直接呼び出すことができますが、Microsoft.Azure.CognitiveServices.Language SDK を使用すると、JSON をシリアル化して逆シリアル化する必要がなく、サービスの呼び出しがはるかに簡単になります。
 >
 > 便利なリンク:
-> - [SDK Nuget ページ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [SDK NuGet ページ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 > - [SDK コード](https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 ## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>Visual Studio ソリューションの作成と SDK のインストール
 
-1. Visual Studio で新しい[コンソール アプリ (.NET Core)](https://visualstudio.microsoft.com/vs/) プロジェクトを作成します。
-1. ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします
-1. **[参照]** タブを選択し、**Microsoft.Azure.CognitiveServices.Language.TextAnalytics** を検索します。
+1. 新しいコンソール アプリ (.NET Core) プロジェクトを作成します。 [Visual Studio にアクセスします](https://visualstudio.microsoft.com/vs/)。
+1. ソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. **[参照]** タブを選択します。**Microsoft.Azure.CognitiveServices.Language.TextAnalytics** を検索します。
 
 ## <a name="authenticate-your-credentials"></a>資格情報の認証
 
-1. 次の `using` ステートメントをメイン クラス ファイル (既定では `Program.cs`) に追加します。
+1. メイン クラス ファイル (既定では Program.cs) に次の `using` ステートメントを追加します。
 
     ```csharp
     using System;
@@ -63,7 +66,7 @@ API の技術ドキュメントについては、[API の定義](https://westus.
 
     ```csharp
     /// <summary>
-    /// Allows authentication to the API using a basic apiKey mechanism
+    /// Allows authentication to the API by using a basic apiKey mechanism
     /// </summary>
     class ApiKeyServiceClientCredentials : ServiceClientCredentials
     {
@@ -96,7 +99,7 @@ API の技術ドキュメントについては、[API の定義](https://westus.
     }
     ```
 
-3. `Program` クラスを更新して、Text Analytics サブスクリプション キー用とサービス エンドポイント用に定数メンバーを追加します。 Text Analytics サブスクリプションには、必ず適切な Azure リージョンを使用してください。
+3. `Program` クラスを更新します。 定数メンバーを Text Analytics サブスクリプション キー用に 1 つと、サービス エンドポイント用にもう 1 つ追加します。 Text Analytics サブスクリプションには、必ず適切な Azure リージョンを使用してください。
 
     ```csharp
     private const string SubscriptionKey = "enter-your-key-here";
@@ -104,12 +107,12 @@ API の技術ドキュメントについては、[API の定義](https://westus.
     private const string Endpoint = "enter-your-service-endpoint-here"; // For example: "https://westus.api.cognitive.microsoft.com";
     ```
 > [!Tip]
-> 運用システムでシークレットを安全にデプロイするために、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net) の使用をお勧めします
+> 運用システムでのシークレットのセキュリティを向上させるために、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net) を使用することをお勧めします。
 >
 
 ## <a name="create-a-text-analytics-client"></a>Text Analytics クライアントの作成
 
-プロジェクトの `Main` 関数で、目的のサンプル メソッドを呼び出して、定義した `Endpoint` および `SubscriptionKey` パラメーターを渡します。
+プロジェクトの `Main` 関数で、起動するサンプル メソッドを呼び出します。 定義した `Endpoint` および `SubscriptionKey` パラメーターを渡します。
 
 ```csharp
     public static void Main(string[] args)
@@ -117,11 +120,11 @@ API の技術ドキュメントについては、[API の定義](https://westus.
         var credentials = new ApiKeyServiceClientCredentials(SubscriptionKey);
         var client = new TextAnalyticsClient(credentials)
         {
-            //Replace 'westus' with the correct region for your Text Analytics subscription
+            //Replace 'westus' with the correct region for your Text Analytics subscription.
             Endpoint = "https://westus.api.cognitive.microsoft.com"
         };
 
-        // Change console encoding to display non-ASCII characters
+        // Change the console encoding to display non-ASCII characters.
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         SentimentAnalysisExample(client).Wait();
         // DetectLanguageExample(client).Wait();
@@ -131,11 +134,11 @@ API の技術ドキュメントについては、[API の定義](https://westus.
     }
 ```
 
-次のセクションでは、それぞれの API 機能を呼び出す方法について説明します。
+以降のセクションでは、各サービス機能を呼び出す方法について説明します。
 
-## <a name="sentiment-analysis"></a>センチメント分析
+## <a name="perform-sentiment-analysis"></a>感情分析を実行する
 
-1. 上記で作成したクライアントを受け取る `SentimentAnalysisExample()` という新しい関数を作成します。
+1. 前に作成したクライアントを取得する新しい関数 `SentimentAnalysisExample()` を作成します。
 2. 分析するドキュメントを含む `MultiLanguageInput` オブジェクトの一覧を生成します。
 
     ```csharp
@@ -154,7 +157,7 @@ API の技術ドキュメントについては、[API の定義](https://westus.
     }
     ```
 
-3. 同じ関数内で、`client.SentimentAsync()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID とセンチメント スコアを印刷します。 0 に近いスコアは否定的センチメント、1 に近いスコアは肯定的センチメントを示します。
+3. 同じ関数内で、`client.SentimentAsync()` を呼び出して結果を取得します。 その後、結果を反復処理します。 各ドキュメントの ID とセンチメント スコアを印刷します。 0 に近いスコアが否定的な感情を示すのに対して、1 に近いスコアは肯定的な感情を示します。
 
     ```csharp
     var result = await client.SentimentAsync(false, inputDocuments);
@@ -175,9 +178,9 @@ Document ID: 3 , Sentiment Score: 0.44
 Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="language-detection"></a>言語検出
+## <a name="perform-language-detection"></a>言語検出を実行する
 
-1. 上記で作成したクライアントを受け取る `DetectLanguageExample()` という新しい関数を作成します。
+1. 前に作成したクライアントを取得する新しい関数 `DetectLanguageExample()` を作成します。
 2. ドキュメントを含む `LanguageInput` オブジェクトの一覧を生成します。
 
     ```csharp
@@ -196,7 +199,7 @@ Document ID: 4 , Sentiment Score: 1.00
     }
     ```
 
-3. 同じ関数内で、`client.DetectLanguageAsync()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と最初に返された言語を印刷します。
+3. 同じ関数内で、`client.DetectLanguageAsync()` を呼び出して結果を取得します。 その後、結果を反復処理します。 各ドキュメントの ID と最初に返された言語を印刷します。
 
     ```csharp
     var langResults = await client.DetectLanguageAsync(false, inputDocuments);
@@ -217,9 +220,9 @@ Document ID: 2 , Language: Spanish
 Document ID: 3 , Language: Chinese_Simplified
 ```
 
-## <a name="entity-recognition"></a>エンティティの認識
+## <a name="perform-entity-recognition"></a>エンティティの認識を実行する
 
-1. 上記で作成したクライアントを受け取る `RecognizeEntitiesExample()` という新しい関数を作成します。
+1. 前に作成したクライアントを取得する新しい関数 `RecognizeEntitiesExample()` を作成します。
 2. ドキュメントを含む `MultiLanguageBatchInput` オブジェクトの一覧を生成します。
 
     ```csharp
@@ -237,7 +240,7 @@ Document ID: 3 , Language: Chinese_Simplified
     }
     ```
 
-3. 同じ関数内で、`client.EntitiesAsync()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID を印刷します。 検出されたエンティティごとに、その wikipedia 名、型とサブタイプ (存在する場合)、および元のテキスト内の位置を印刷します。
+3. 同じ関数内で、`client.EntitiesAsync()` を呼び出して結果を取得します。 その後、結果を反復処理します。 各ドキュメントの ID を印刷します。 検出されたエンティティごとに、その Wikipedia 名、型、サブタイプ (存在する場合)、および元のテキスト内の場所を出力します。
 
     ```csharp
     var entitiesResult = await client.EntitiesAsync(false, inputDocuments);
@@ -290,9 +293,9 @@ Document ID: 2
                         Offset: 88,     Length: 7,      Score: 1.000
 ```
 
-## <a name="key-phrase-extraction"></a>キー フレーズの抽出
+## <a name="perform-key-phrase-extraction"></a>キー フレーズ抽出を実行する
 
-1. 上記で作成したクライアントを受け取る `KeyPhraseExtractionExample()` という新しい関数を作成します。
+1. 前に作成したクライアントを取得する新しい関数 `KeyPhraseExtractionExample()` を作成します。
 2. ドキュメントを含む `MultiLanguageBatchInput` オブジェクトの一覧を生成します。
 
     ```csharp
@@ -310,7 +313,7 @@ Document ID: 2
     }
     ```
 
-3. 同じ関数内で、`client.KeyPhrasesAsync()` を呼び出して結果を取得します。 結果を反復処理し、各ドキュメントの ID と検出されたすべてのキー フレーズを印刷します。
+3. 同じ関数内で、`client.KeyPhrasesAsync()` を呼び出して結果を取得します。 その後、結果を反復処理します。 各ドキュメントの ID と検出されたキー フレーズを印刷します。
 
     ```csharp
     var kpResults = await client.KeyPhrasesAsync(false, inputDocuments);
@@ -358,4 +361,3 @@ Document ID: 4
 
 * [Text Analytics の概要](../overview.md)
 * [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)
-

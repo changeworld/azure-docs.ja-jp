@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758141"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551302"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
-Azure Content Moderator API は、テキスト、画像、ビデオのコンテンツに不適切な内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できるコグニティブ サービスです。 このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[Content Moderator の API](#content-moderator-apis)」のセクションを参照してください。
+Azure Content Moderator API は、テキスト、画像、ビデオのコンテンツに不適切な内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できるコグニティブ サービスです。 このサービスでは、そのような内容が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[モデレート API](#moderation-apis)」のセクションを参照してください。
 
 ## <a name="where-it-is-used"></a>使用場所
 
@@ -35,11 +35,13 @@ Azure Content Moderator API は、テキスト、画像、ビデオのコンテ�
 
 Content Moderator サービスは、REST 呼び出しと .NET SDK のどちらを介しても利用できるいくつかの Web サービス API で構成されています。 ほかには目視レビュー ツールが用意されており、レビュー担当者がサービスを補助したり、モデレーション機能を調整したりできるようになっています。
 
-![モデレーション用 API、レビュー用 API、目視レビュー ツールを示した Content Moderator のブロック図](images/content-moderator-block-diagram.png)
+## <a name="moderation-apis"></a>モデレート API
 
-### <a name="content-moderator-apis"></a>Content Moderator の API
+Content Moderator サービスには、モデレート API が含まれています。これは、不適切または好ましくない可能性がある素材についてコンテンツをチェックします。
 
-Content Moderator サービスには次のシナリオに対応するための API が含まれています。
+![Content Moderator モデレーション API のブロック図](images/content-moderator-mod-api.png)
+
+次の表では、さまざまな種類のモデレーション API について説明します。
 
 | API グループ | 説明 |
 | ------ | ----------- |
@@ -48,9 +50,17 @@ Content Moderator サービスには次のシナリオに対応するための A
 |[**画像のモデレーション**](image-moderation-api.md)| 画像をスキャンして成人向けのコンテンツやわいせつなコンテンツが含まれているかどうかを確認するほか、光学式文字認識 (OCR) 機能により画像内のテキストを検出したり、顔検出を実行したりします。|
 |[**カスタム画像リスト**](try-image-list-api.md)| 画像をスキャンし、画像のカスタム リストと照合します。 カスタム画像リストを使うと、何度も出現し、そのたびに分類をするのが煩わしいコンテンツを除去できます。|
 |[**ビデオのモデレーション**](video-moderation-api.md)| ビデオをスキャンして成人向けのコンテンツやわいせつなコンテンツが含まれているかどうかを確認し、そのようなコンテンツがあればタイム マーカーを返します。|
-|[**API の確認**](try-review-api-job.md)| [ジョブ](try-review-api-job.md)、[レビュー](try-review-api-review.md)、[ワークフロー](try-review-api-workflow.md)の操作を使用して、目視レビュー ツールを使った人間参加型のワークフローを作成したり、自動化したりできます。 Workflow API は、.NET SDK ではまだ利用できません。|
 
-### <a name="review-tool"></a>レビュー ツール
+## <a name="review-apis"></a>API の確認
+
+Review API を使用すると、モデレーション パイプラインを人間のレビューアーと統合することができます。 [ジョブ](review-api.md#jobs)、[レビュー](review-api.md#reviews)、[ワークフロー](review-api.md#workflows)の操作を使用して、[レビュー ツール](#the-review-tool) (下記参照) を使った人間参加型のワークフローを作成したり、自動化したりできます。
+
+> [!NOTE]
+> Workflow API は、.NET SDK ではまだ利用できませんが、REST エンドポイントで使用できます。
+
+![Content Moderator レビュー API のブロック図](images/content-moderator-rev-api.png)
+
+## <a name="the-review-tool"></a>レビュー ツール
 
 Content Moderator サービスには、ほかにも Web ベースの[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)が備わっています。このツールは、ヒューマン モデレーターによって処理されるコンテンツ レビューのホストとなります。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。 また、レビュー ツールは、さまざまな Content Moderator リソース向けに、ユーザー フレンドリなフロントエンドを備えています。
 

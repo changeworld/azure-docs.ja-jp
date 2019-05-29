@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: 85252680fcc4d2592d242762d01040c3859b14a2
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442071"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521367"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>クイック スタート:C# を使用してコンテンツをパーソナライズする 
 
@@ -36,11 +36,11 @@ Personalizer を使い始めるには、次の手順が必要です。
 
 * サブスクリプション キーとエンドポイント サービスの URL を取得するには、[Personalizer サービス](how-to-settings.md)が必要です。 
 * [Visual Studio 2015 または 2017](https://visualstudio.microsoft.com/downloads/)。
-* The Microsoft.Azure.CognitiveServices.Personalizer SDK NuGet パッケージ。 インストールの手順は、以降で説明しています。
+* [Microsoft.Azure.CognitiveServices.Personalizer](https://go.microsoft.com/fwlink/?linkid=2092272) SDK NuGet パッケージ。 インストールの手順は、以降で説明しています。
 
 ## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal の Personalizer リソースで、**[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal の Personalizer リソースで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -51,10 +51,10 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
-1. Personalizer クライアント ライブラリの NuGet パッケージをインストールします。 メニューで、**[ツール]** を選択し、**[Nuget パッケージ マネージャー]** を選択し、次に **[ソリューションの NuGet パッケージの管理]** を選択します。
-1. **[参照]** タブを選択し、**[検索]** ボックスに「`Microsoft.Azure.CognitiveServices.Personalizer`」と入力します。
+1. Personalizer クライアント ライブラリの NuGet パッケージをインストールします。 メニューで、 **[ツール]** を選択し、 **[Nuget パッケージ マネージャー]** を選択し、次に **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. **[参照]** タブを選択し、 **[検索]** ボックスに「`Microsoft.Azure.CognitiveServices.Personalizer`」と入力します。
 1. **Microsoft.Azure.CognitiveServices.Personalizer** が表示されたら選択します。
-1. 自分のプロジェクト名の横のチェックボックスを選択し、**[インストール]** を選択します。
+1. 自分のプロジェクト名の横のチェックボックスを選択し、 **[インストール]** を選択します。
 
 ## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>コードを追加して Personalizer キーと Azure キーを指定する
 

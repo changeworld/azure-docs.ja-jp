@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e19523834c0ddb517fa9d15853411c1b58024b43
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236798"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834007"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
@@ -32,7 +32,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 1. **[+]** または **[+ リソースの作成]** を選択します。
 2. Marketplace の検索ウィンドウに「**Windows Virtual Desktop**」と入力します。
-3. **[Windows Virtual Desktop - Provision a host pool]\(Windows Virtual Desktop - ホスト プールのプロビジョニング\)** を選択し、**[作成]** を選択します。
+3. **[Windows Virtual Desktop - Provision a host pool]\(Windows Virtual Desktop - ホスト プールのプロビジョニング\)** を選択し、 **[作成]** を選択します。
 
 どのブレードにどのような情報を入力するかについては、ガイダンスに従ってください。
 
@@ -59,6 +59,9 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 [Virtual machine setting]\(仮想マシンの設定\) ブレードで必要な操作は次のとおりです。
 
+>[!NOTE]
+> ご使用の VM を Azure AD Domain Services 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)のメンバーでもあることを確認します。
+
 1. **イメージ ソース**を選択し、その探し方と格納方法に関する適切な情報を入力します。 マネージド ディスクを使用しない場合には、.vhd ファイルが含まれるストレージ アカウントを選択します。
 2. Active Directory ドメインに VM を参加させるドメイン アカウントのユーザー プリンシパル名とパスワードを入力します。 このユーザー名とパスワードは、仮想マシン上にローカル アカウントとして作成されます。 このローカル アカウントは、後でリセットできます。
 3. Active Directory サーバーに接続している仮想ネットワークを選択し、仮想マシンをホストするサブネットを選択します。
@@ -68,9 +71,9 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 [Windows Virtual Desktop tenant information]\(Windows Virtual Desktop テナント情報\) ブレードで必要な操作は次のとおりです。
 
-1. テナントが含まれるテナント グループの **Windows Virtual Desktop テナント グループ名**を入力します。 具体的に予定していたテナント グループ名がなければ、既定値をそのまま採用してください。
+1. テナントが含まれるテナント グループの **Windows Virtual Desktop テナント グループ名**を入力します。 具体的なテナント グループ名を指定されていないかぎり、既定値のままにしてください。
 2. このホスト プールの作成先となるテナントの **Windows Virtual Desktop テナント名**を入力します。
-3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 「[PowerShell を使用してサービス プリンシパルとロールの割り当てを作成するチュートリアル](./create-service-principal-role-powershell.md)」を完了したら、**[サービス プリンシパル]** を選択します。 次に、サービス プリンシパルを含む Azure Active Directory の **Azure AD テナント ID** を入力する必要があります。
+3. Windows Virtual Desktop テナントの RDS 所有者としての認証に使用する資格情報の種類を指定します。 「[PowerShell を使用してサービス プリンシパルとロールの割り当てを作成するチュートリアル](./create-service-principal-role-powershell.md)」を完了したら、 **[サービス プリンシパル]** を選択します。 次に、サービス プリンシパルを含む Azure Active Directory の **Azure AD テナント ID** を入力する必要があります。
 4. テナント管理者アカウントの資格情報を入力します。 パスワード資格情報が設定されているサービス プリンシパルのみサポートされます。
 5. **[OK]** を選択します。
 
@@ -78,7 +81,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 最後の 2 つのブレードで必要な操作は次のとおりです。
 
-1. **[概要]** ブレードで、設定情報を確認します。 変更がある場合には、次に進む前に該当するブレードに戻ります。 情報が正しければ、**[OK]** をクリックします。
+1. **[概要]** ブレードで、設定情報を確認します。 変更がある場合には、次に進む前に該当するブレードに戻ります。 情報が正しければ、 **[OK]** をクリックします。
 2. **[購入]** ブレードで、Azure Marketplace からの購入に関する追加情報を確認します。
 3. **[作成]** を選択し、ホスト プールをデプロイします。
 
@@ -94,12 +97,6 @@ Azure Marketplace オファリングが完成した後は、仮想マシン上�
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-次のコマンドレットを使用して、Azure Marketplace オファリングで指定した Windows Virtual Desktop テナント グループにコンテキストを設定します。 Windows Virtual Desktop テナント グループの値を Azure Marketplace オファリング内の既定値のままにした場合には、この手順をスキップします。
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
 ```
 
 この 2 つの作業が済んだら、次のコマンドレットを使用してデスクトップ アプリケーション グループにユーザーを追加します。

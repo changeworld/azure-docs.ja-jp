@@ -10,12 +10,12 @@ ms.date: 11/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: mvc
-ms.openlocfilehash: 26b92db330c882aaf258b6e24560cbf2f7930a5f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e5be86f9f7fbaedeb8fbb10b89926644dcf8aac2
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237139"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835132"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -131,7 +131,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 App Service は、コンテンツを Web アプリにデプロイするさまざまな方法をサポートしています。 このチュートリアルでは、[パブリック GitHub サンプル リポジトリ](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)から Web アプリをデプロイします。 [az webapp deployment source config](/cli/azure/webapp/deployment/source) コマンドを使用して、Web アプリへの GitHub のデプロイを構成します。
 
-サンプル プロジェクトには、[ASP.NET MVC](https://www.asp.net/mvc) アプリが含まれています。 そのアプリは、画像を受け取り、ストレージ アカウントに保存して、サムネイル コンテナーから画像を表示します。 その Web アプリでは、Azure Storage と対話するために、Azure Storage クライアント ライブラリの [Microsoft.WindowsAzure.Storage](/dotnet/api/overview/azure/storage)、[Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob)、Microsoft.WindowsAzure.Storage.Auth の各名前空間が使われます。
+サンプル プロジェクトには、[ASP.NET MVC](https://www.asp.net/mvc) アプリが含まれています。 そのアプリは、画像を受け取り、ストレージ アカウントに保存して、サムネイル コンテナーから画像を表示します。 この Web アプリは、Azure Storage クライアント ライブラリの [Microsoft.Azure.Storage](/dotnet/api/overview/azure/storage)、[Microsoft.Azure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob)、および Microsoft.Azure.Storage.Auth 名前空間を使用して Azure Storage と対話します。
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -163,7 +163,7 @@ az webapp deployment source config --name $webapp \
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-サンプル Web アプリでは、[Azure Storage Client Library](/dotnet/api/overview/azure/storage?view=azure-dotnet) を使用して、画像をアップロードするために使用するアクセス トークンを要求します。 ストレージ SDK によって使用されるストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
+サンプル Web アプリでは、[Azure Storage Client Library](/dotnet/api/overview/azure/storage) を使用して、画像をアップロードするために使用するアクセス トークンを要求します。 ストレージ SDK によって使用されるストレージ アカウントの資格情報は、Web アプリのアプリ設定で設定されています。 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) コマンドを使用して、デプロイされるアプリにアプリ設定を追加します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -213,7 +213,7 @@ Web アプリをテストするには、発行したアプリの URL に移動�
 
 ![ImageResizer アプリ](media/storage-upload-process-images/figure1.png)
 
-サンプル コードでは、*Storagehelper.cs* ファイル内の `UploadFiletoStorage` タスクの [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) メソッドを使用して、ストレージ アカウント内の *images* コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFiletoStorage` タスクが含まれています。
+サンプル コードでは、*Storagehelper.cs* ファイル内の `UploadFiletoStorage` タスクの [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) メソッドを使用して、ストレージ アカウント内の *images* コンテナーに画像をアップロードします。 次のコード サンプルに、`UploadFiletoStorage` タスクが含まれています。
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName, AzureStorageConfig _storageConfig)
@@ -252,7 +252,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-**[Choose File]** を選択してファイルを選び、**[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
+**[Choose File]** を選択してファイルを選び、 **[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
 
 ![画像アップロード アプリ](media/storage-upload-process-images/upload-app-nodejs.png)
 
@@ -316,7 +316,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-**[Choose File]** を選択してファイルを選び、**[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
+**[Choose File]** を選択してファイルを選び、 **[Upload Image]** をクリックします。 **[Generated Thumbnails]** セクションは、後でこのトピックの中でテストするまで空のままになります。 
 
 ![画像アップロード アプリ](media/storage-upload-process-images/upload-app-nodejs.png)
 
@@ -408,7 +408,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 [Azure Portal](https://portal.azure.com) にサインインします。 左側のメニューから **[ストレージ アカウント]** を選択し、ストレージ アカウントの名前を選択します。 **[Blob service]** で **[BLOB]** を選択して、**thumbnails** コンテナーを選択します。 **[アップロード]** を選択して **[BLOB のアップロード]** ウィンドウを開きます。
 
-ファイル ピッカーでファイルを選択し、**[アップロード]** を選択します。
+ファイル ピッカーでファイルを選択し、 **[アップロード]** を選択します。
 
 アプリに戻って、**thumbnails** コンテナーにアップロードした画像が表示されていることを確認します。
 
@@ -423,7 +423,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ---
 
-シリーズの第 2 部では、サムネイル画像の作成を自動化して、この画像が必要ないようにします。 Azure Portal の **thumbnails** コンテナーで、アップロードした画像を選択し、**[削除]** を選択して画像を削除します。 
+シリーズの第 2 部では、サムネイル画像の作成を自動化して、この画像が必要ないようにします。 Azure Portal の **thumbnails** コンテナーで、アップロードした画像を選択し、 **[削除]** を選択して画像を削除します。 
 
 CDN を有効にして、Azure ストレージ アカウントの内容をキャッシュできます。 Azure ストレージ アカウントで CDN を有効にする方法について詳しくは、「[Azure ストレージ アカウントと Azure CDN との統合](../../cdn/cdn-create-a-storage-account-with-cdn.md)」をご覧ください。
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 7eae71411a1a3772dbdbaa289a32cbc69fca0e5a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f906ab5db35ce8b239eceac9cdc8244f230f5a77
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108752"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596030"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -32,7 +32,7 @@ Azure Application Insights は、アプリケーションの運用とパフォ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+- 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../../azure-monitor/app/asp-net.md)を実行します。
@@ -45,7 +45,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 Application Insights は、アプリケーションのさまざまな操作に対するパフォーマンスの詳細を収集します。 最も実行時間が長い操作を識別することで、潜在的な問題を診断したり、アプリケーションの全体的なパフォーマンスを向上させるための継続的な開発にとって最善のターゲットを診断したりできます。
 
 1. **[Application Insights]** を選択し、サブスクリプションを選択します。  
-1. **[パフォーマンス]** パネルを開くには、**[調査]** メニューの **[パフォーマンス]** を選択するか、**[サーバー応答時間]** グラフをクリックします。
+1. **[パフォーマンス]** パネルを開くには、 **[調査]** メニューの **[パフォーマンス]** を選択するか、 **[サーバー応答時間]** グラフをクリックします。
 
     ![パフォーマンス](media/tutorial-performance/performance.png)
 
@@ -66,17 +66,17 @@ Application Insights は、アプリケーションのさまざまな操作に�
     ![操作の詳細](media/tutorial-performance/operation-details.png)
     
 
-6.  **プロファイラー**を使用すると、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間が表示され、詳細情報とコード レベルの診断を確認できます。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、**[プロファイラーのトレース]** をクリックします。
+6.  **プロファイラー**を使用すると、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間が表示され、詳細情報とコード レベルの診断を確認できます。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、 **[プロファイラーのトレース]** をクリックします。
 5.  トレースは、各操作の個別のイベントを示すため、操作全体の実行時間の長さの根本原因を診断できます。  上の例の最も実行時間が長い操作をクリックします。
 6.  **[ホット パスの表示]** をクリックして、操作の実行時間を長くしているイベントの特定のパスを強調表示します。  この例では、最も遅い呼び出しが *FabrikamFiberAzureStorage.GetStorageTableData* メソッドから行われていることがわかります。 ほとんどの時間を費やしている部分は、*CloudTable.CreateIfNotExist* メソッドです。 関数が呼び出されるたびにこのコード行が実行される場合は、不要なネットワークの呼び出しと CPU リソースが消費されます。 コードを修正する最善の方法は、1 回だけ実行する一部のスタートアップ メソッドにこの行を追加することです。 
 
     ![Profiler の詳細](media/tutorial-performance/profiler-details.png)
 
-7.  画面の上部にある **[パフォーマンスのヒント]** は、過剰な実行時間が待機によるものであるという評価を支持しています。  さまざまな種類のイベントを解釈するためのドキュメントを確認するには、**[待機中]** リンクをクリックします。
+7.  画面の上部にある **[パフォーマンスのヒント]** は、過剰な実行時間が待機によるものであるという評価を支持しています。  さまざまな種類のイベントを解釈するためのドキュメントを確認するには、 **[待機中]** リンクをクリックします。
 
     ![パフォーマンスのヒント](media/tutorial-performance/performance-tip.png)
 
-8.  さらに分析するために、**[etl トレースのダウンロード]** をクリックして、トレースを Visual Studio にダウンロードできます。
+8.  さらに分析するために、 **[etl トレースのダウンロード]** をクリックして、トレースを Visual Studio にダウンロードできます。
 
 ## <a name="use-analytics-data-for-server"></a>サーバーの分析データを使用する
 Application Insights Analytics には、Application Insights によって収集されたすべてのデータを分析するために使用できる高度なクエリ言語が用意されています。  これを使用して、要求とパフォーマンスのデータに対して、詳細な分析を実行できます。
@@ -98,7 +98,7 @@ Application Insights は、最適化するためのサーバー プロセスを�
     ![ブラウザーの概要](media/tutorial-performance/browser-summary.png)
 
 2.  **[最も低速なページは何ですか?]** が表示されるまで、下方向にスクロールします。  クライアントが読み込むまでに時間がかかっているアプリケーションのページが一覧表示されます。  この情報を使用して、ユーザーに最も大きな影響を与えているページに優先順位をつけることができます。
-3.  いずれかのページをクリックして、**[ページ ビュー]** パネルを開きます。  この例では、**/FabrikamProd** ページが、過度の平均実行時間を示しています。  このページについての詳細情報が、異なる実行時間の範囲の内訳を含めて **[ページ ビュー]** パネルに表示されます。
+3.  いずれかのページをクリックして、 **[ページ ビュー]** パネルを開きます。  この例では、 **/FabrikamProd** ページが、過度の平均実行時間を示しています。  このページについての詳細情報が、異なる実行時間の範囲の内訳を含めて **[ページ ビュー]** パネルに表示されます。
 
     ![ページ ビュー](media/tutorial-performance/page-view.png)
 

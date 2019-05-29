@@ -1,19 +1,19 @@
 ---
-title: Azure Data Box の設定 | Microsoft Docs
+title: Azure Data Box のセットアップ方法のチュートリアル | Microsoft Docs
 description: ケーブルを配線して Azure Data Box を接続する方法を学習する
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/08/2019
+ms.date: 05/14/2019
 ms.author: alkohli
-ms.openlocfilehash: b601ad5936820e2c237b7b9d37d9af73aa468bbc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6a725784c419b67f7738b70ad867d2d6ef8b0785
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895755"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795975"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
 

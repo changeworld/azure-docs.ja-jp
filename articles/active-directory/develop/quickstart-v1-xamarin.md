@@ -3,8 +3,8 @@ title: Azure AD Xamarin の概要 | Microsoft Docs
 description: Azure AD と連携して、OAuth を使用してサインインし、Azure AD で保護された API を呼び出すことができる、Xamarin アプリケーションを構築します。
 services: active-directory
 documentationcenter: xamarin
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/22/2019
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e3470d9220ed471a05792ed5b3bb259e0dcbe0a6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881887"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121910"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>クイック スタート:Microsoft のサインインを統合する Xamarin アプリを作成する
 
@@ -55,16 +55,16 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。 その方法は次のとおりです。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 上部のバーで、自分のアカウントをクリックします。 次に、**[ディレクトリ]** の一覧から、アプリを登録する Active Directory テナントを選択します。
-3. 左側のウィンドウで **[すべてのサービス]** をクリックし、**[Azure Active Directory]** を選択します。
-4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
-5. 画面の指示に従って、新しい**ネイティブ クライアント アプリケーション**を作成します。
+2. 上部のバーで、自分のアカウントをクリックします。 次に、 **[ディレクトリ]** の一覧から、アプリを登録する Active Directory テナントを選択します。
+3. 左側のウィンドウで **[すべてのサービス]** をクリックし、 **[Azure Active Directory]** を選択します。
+4. **[アプリの登録]** をクリックし、 **[新規登録]** を選択します。
+5. 画面の指示に従って、新しいクライアント アプリケーションを作成します。
    * **[名前]** は、ユーザーに対して表示されるアプリ名です。
+   * **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
    * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。 値を入力します (例: `http://DirectorySearcher`)。
 6. 登録が完了すると、Azure AD によって一意のアプリケーション ID がアプリに割り当てられます。 **[アプリケーション]** タブから値をコピーします。この値は後で必要になります。
-7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。
-8. API として **[Microsoft Graph]** を選択します。 **[委任されたアクセス許可]** で、**[ディレクトリ データの読み取り]** アクセス許可を追加します。 
-   この操作によって、ユーザーがアプリで Graph API に照会できるようになります。
+7. **[API のアクセス許可]** ページで、 **[アクセス許可の追加]** を選択します。 **[API を選択します]** 内の ***[Microsoft Graph]*** を選択します。
+8. **[委任されたアクセス許可]** で、アクセス許可 **User.Read** を選択し、 **[追加]** を選択して保存します。 このアクセス許可により、アプリケーションが Azure AD Graph API を使用してユーザーをクエリするように設定されます。
 
 ## <a name="step-3-install-and-configure-adal"></a>手順 3:ADAL をインストールして構成する
 

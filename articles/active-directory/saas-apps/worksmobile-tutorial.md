@@ -4,58 +4,53 @@ description: Azure Active Directory と LINE WORKS の間のシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/19/2018
+ms.topic: tutorial
+ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c70df45f448502978254a60747eb168ea33dd86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0f0ead46bf93815644cb766c24fc9d894c2b4983
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886305"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>チュートリアル:Azure Active Directory と LINE WORKS の統合
 
 このチュートリアルでは、LINE WORKS と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 LINE WORKS と Azure AD の統合には、次の利点があります。
 
-- LINE WORKS にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に LINE WORKS にサインオンする機能 (シングル サインオン) を有効にできます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* LINE WORKS にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して LINE WORKS に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と LINE WORKS の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- LINE WORKS でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* LINE WORKS でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-1. ギャラリーからの LINE WORKS の追加
-2. Azure AD シングル サインオンの構成とテスト
+* LINE WORKS では、**SP** によって開始される SSO がサポートされます
+
+
+
+
 
 ## <a name="adding-line-works-from-the-gallery"></a>ギャラリーからの LINE WORKS の追加
 
@@ -63,67 +58,69 @@ Azure AD への LINE WORKS の統合を構成するには、ギャラリーか�
 
 **ギャラリーから LINE WORKS を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**LINE WORKS**」と入力し、結果ウィンドウで **[LINE WORKS]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**LINE WORKS**」と入力し、結果ウィンドウで **[LINE WORKS]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の LINE WORKS](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
+    ![結果一覧の LINE WORKS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、LINE WORKS で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する LINE WORKS ユーザーが Azure AD で認識されている必要があります。 つまり、Azure AD ユーザーと LINE WORKS の関連ユーザーの間でリンク関係が確立されている必要があるということです。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、LINE WORKS で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと LINE WORKS 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 LINE WORKS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[LINE WORKS テスト ユーザーの作成](#creating-a-line-works-test-user)** - LINE WORKS で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[LINE WORKS シングル サインオンの構成](#configure-line-works-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[LINE WORKS テスト ユーザーの作成](#create-line-works-test-user)** - LINE WORKS で Britta Simon に対応するユーザーを作成し、Azure AD のユーザーの表現にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、LINE WORKS アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**LINE WORKS で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+LINE WORKS で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **LINE WORKS** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **LINE WORKS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![Configure single sign-on](common/tutorial_general_301.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![Configure single sign-on](common/editconfigure.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[LINE WORKS のドメインと URL] のシングル サインオン情報](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
+    ![[LINE WORKS のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/<domain>/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://auth.worksmobile.com/d/login/<domain>/`
 
-    b. **[識別子]** ボックスに次の URL を入力します。`worksmobile.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、`worksmobile.com` という URL を入力します。
 
-5. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**証明書 (Raw)** をダウンロードし、証明書ファイルをコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/worksmobile-tutorial/tutorial_lineworks_certificate.png) 
+    ![証明書のダウンロードのリンク](common/certificateraw.png)
 
-6. **[Set up LINE WORKS]\(LINE WORKS の設定\)** セクションで、要件に応じて適切な URL をコピーします。
+6. **[LINE WORKS のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
+
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
     a. ログイン URL
 
@@ -131,87 +128,77 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
 
     c. ログアウト URL
 
-    ![LINE WORKS 構成](common/configuresection.png)
+### <a name="configure-line-works-single-sign-on"></a>LINE WORKS のシングル サインオンの構成
 
-7. **LINE WORKS** 側でシングル サインオンを構成する場合は、[LINE WORKS SSO のドキュメント](https://developers.worksmobile.com/jp/document/1001080101)を参照し、LINE WORKS 設定を構成してください。
+**LINE WORKS** 側でシングル サインオンを構成する場合は、[LINE WORKS SSO のドキュメント](https://developers.worksmobile.com/jp/document/1001080101)を参照し、LINE WORKS 設定を構成してください。
 
 > [!NOTE]
 > .cert to .pem からダウンロードした証明書ファイルを変換する必要があります。
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-    ![Azure AD ユーザーの作成][100]
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](common/create_aaduser_01.png) 
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
 3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![Azure AD のテスト ユーザーの作成](common/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
-    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d. **Create** をクリックしてください。
 
-### <a name="creating-a-line-works-test-user"></a>LINE WORKS テスト ユーザーの作成
-
-このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 [LINE WORKS の管理者ページ](https://admin.worksmobile.com)にアクセスし、LINE WORKS プラットフォームでユーザーを追加します。
-
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に LINE WORKS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[LINE WORKS]** の順に選択します。
 
-    ![ユーザーの割り当て][201]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[LINE WORKS]** を選択します。
 
-    ![Configure single sign-on](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
+    ![アプリケーションの一覧の LINE WORKS のリンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![ユーザーの割り当て][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+
+### <a name="create-line-works-test-user"></a>LINE WORKS テスト ユーザーの作成
+
+このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 [LINE WORKS の管理者ページ](https://admin.worksmobile.com)にアクセスし、LINE WORKS プラットフォームでユーザーを追加します。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [LINE WORKS] タイルをクリックすると、自動的に LINE WORKS アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
+アクセス パネルで [LINE WORKS] タイルをクリックすると、SSO を設定した LINE WORKS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial_general_01.png
-[2]: common/tutorial_general_02.png
-[3]: common/tutorial_general_03.png
-[4]: common/tutorial_general_04.png
-
-[100]: common/tutorial_general_100.png
-
-[201]: common/tutorial_general_201.png
-[202]: common/tutorial_general_202.png
-[203]: common/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

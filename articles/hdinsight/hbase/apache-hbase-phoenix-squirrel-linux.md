@@ -1,81 +1,135 @@
 ---
-title: Azure HDInsight の HBase で Apache Phoenix と SQLLine を使用する
+title: クイック スタート:Azure HDInsight で Apache HBase にクエリを実行する - Apache Phoenix
 description: HDInsight での Apache Phoenix の使用方法について説明します。 また、コンピューターに SQLLine をインストールして設定し、HDInsight の HBase クラスターに接続する方法を説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/03/2018
+ms.topic: quickstart
+ms.date: 05/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0bef586540635ee1bada3475f6316c84dea4308c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 46606a991ce878a3335c2c605a4040c9520d5128
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722691"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596189"
 ---
-# <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>HDInsight 内の Linux ベースの Apache HBase クラスターで Apache Phoenix を使用する
-Azure HDInsight での [Apache Phoenix](https://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。 Phoenix について詳しくは、「[Apache Phoenix in 15 minutes or less (Apache Phoenix についての簡単な説明)](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)」をご覧ください。 Phoenix の文法については、「[Apache Phoenix grammar (Apache Phoenix の文法)](https://phoenix.apache.org/language/index.html)」をご覧ください。
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>クイック スタート:Apache Phoenix を使用して Azure HDInsight で Apache HBase にクエリを実行する
 
-> [!NOTE]  
-> HDInsight での Phoenix のバージョンの情報については、[HDInsight で提供される Apache Hadoop クラスター バージョンの新機能](../hdinsight-component-versioning.md)に関する記事をご覧ください。
->
->
+このクイック スタートでは、Apache Phoenix を使用して Azure HDInsight で HBase クエリを実行する方法を学習します。 Apache Phoenix は、Apache HBase 用の SQL クエリ エンジンです。 SQL を使用して HBase テーブルの照会と管理ができます。 [SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
 
-## <a name="use-sqlline"></a>SQLLine の使用
-[SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-### <a name="prerequisites"></a>前提条件
-SQLLine を使用するには、以下のものが必要です。
+## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 内の Apache HBase クラスター**。 作成するには、[HDInsight での Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)に関するページを参照してください。
+* Apache HBase クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)に関するセクションを参照してください。  **HBase** のクラスターの種類を選択するようにしてください。
 
-HBase クラスターに接続するときは、いずれかの [Apache ZooKeeper](https://zookeeper.apache.org/) VM に接続する必要があります。 各 HDInsight クラスターには 3 つの ZooKeeper VM があります。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-**ZooKeeper のホスト名を確認するには**
+## <a name="identify-a-zookeeper-node"></a>ZooKeeper ノードを識別する
 
-1. **https://\<クラスター名\>.azurehdinsight.net** を参照して、[Apache Ambari](https://ambari.apache.org/) を開きます。
-2. HTTP (クラスター) ユーザー名とパスワードを入力してサインインします。
-3. 左側のメニューで **[ZooKeeper]** を選択します。 3 つの **ZooKeeper サーバー** インスタンスが表示されます。
-4. いずれかの **ZooKeeper サーバー** インスタンスを選択します。 **[概要]** ウィンドウで**ホスト名**を確認します。 ホスト名は、*zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net* のように表示されます。
+HBase クラスターに接続する場合は、いずれかの Apache ZooKeeper ノードに接続する必要があります。 各 HDInsight クラスターには 3 つの ZooKeeper ノードがあります。 Curl を使用すると、ZooKeeper ノードをすばやく識別できます。 次の curl コマンドを編集して `PASSWORD` と `CLUSTERNAME` を関連する値に置き換えてから、そのコマンドをコマンド プロンプトに入力します。
 
-**SQLLine を使用するには**
+```cmd
+curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
+```
 
-1. SSH を使用したクラスターへの接続。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+出力の一部は次のようになります。
 
-2. SSH で次のコマンドを実行して、SQLLine を実行します。
+```output
+    {
+      "href" : "http://hn1-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net:8080/api/v1/clusters/myCluster/hosts/zk0-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net/host_components/ZOOKEEPER_SERVER",
+      "HostRoles" : {
+        "cluster_name" : "myCluster",
+        "component_name" : "ZOOKEEPER_SERVER",
+        "host_name" : "zk0-brim.432dc3rlshou3ocf251eycoapa.bx.internal.cloudapp.net"
+      }
+```
 
-        cd /usr/hdp/current/phoenix-client/bin
-        ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
-3. HBase テーブルを作成していくつかのデータを挿入するには、次のコマンドを実行します。
+`host_name` の値を後で使用するためにメモしておきます。
 
-        CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
+## <a name="create-a-table-and-manipulate-data"></a>テーブルを作成してデータを操作する
 
-        !tables
+SSH を使用して HBase クラスターに接続した後、Apache Phoenix を使用して HBase テーブルを作成したり、データを挿入したり、データにクエリを実行したりすることができます。
 
-        UPSERT INTO Company VALUES(1, 'Microsoft');
+1. `ssh` コマンドを使用して HBase クラスターに接続します。 次のコマンドを編集して `CLUSTERNAME` をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
-        SELECT * FROM Company;
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-        !quit
+2. ディレクトリを Phoenix クライアントに変更します。 次のコマンドを入力します。
 
-詳しくは、[SQLLine のマニュアル](http://sqlline.sourceforge.net/#manual)および [Apache Phoenix の文法](https://phoenix.apache.org/language/index.html)に関するページをご覧ください。
+    ```bash
+    cd /usr/hdp/current/phoenix-client/bin
+    ```
+
+3. [SQLLine](http://sqlline.sourceforge.net/) を起動します。 次のコマンドを編集して `ZOOKEEPER` を前に識別された ZooKeeper ノードに置き換えてから、そのコマンドを入力します。
+
+    ```bash
+    ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
+    ```
+
+4. HBase テーブルを作成します。 次のコマンドを入力します。
+
+    ```sql
+    CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
+    ```
+
+5. SQLLine の `!tables` コマンドを使用して HBase 内のすべてのテーブルを一覧表示します。 次のコマンドを入力します。
+
+    ```sqlline
+    !tables
+    ```
+
+6. テーブルに値を挿入します。 次のコマンドを入力します。
+
+    ```sql
+    UPSERT INTO Company VALUES(1, 'Microsoft');
+    UPSERT INTO Company VALUES(2, 'Apache');
+    ```
+
+7. テーブルにクエリを実行します。 次のコマンドを入力します。
+
+    ```sql
+    SELECT * FROM Company;
+    ```
+
+8. レコードを削除します。 次のコマンドを入力します。
+
+    ```sql
+    DELETE FROM Company WHERE COMPANY_ID=1;
+    ```
+
+9. テーブルを削除します。 次のコマンドを入力します。
+
+    ```hbase
+    DROP TABLE Company;
+    ```
+
+10. SQLLine の `!quit` コマンドを使用して SQLLine を終了します。 次のコマンドを入力します。
+
+    ```sqlline
+    !quit
+    ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
+
+クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、HDInsight で Apache Phoenix を使用する方法を説明しました。 詳細については、次の記事を参照してください。
 
-* [HDInsight HBase の概要][hdinsight-hbase-overview]。
-  Apache HBase は、Apache Hadoop 上に構築された Apache 用のオープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-* [Azure 仮想ネットワークで Apache HBase クラスターをプロビジョニングします][hdinsight-hbase-provision-vnet]。
-  アプリケーションが Apache HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-* [HDInsight で Apache HBase レプリケーションを構成します](apache-hbase-replication.md)。 2 つの Azure データ センター間に Apache HBase レプリケーションを設定する方法について学習します。
+このクイック スタートでは、Apache Phoenix を使用して Azure HDInsight で HBase クエリを実行する方法を学習しました。 Apache Phoenix の詳細を学習するには、次の記事にさらに詳しい説明が含まれています。
 
+> [!div class="nextstepaction"]
+> [HDInsight の Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
 
-[azure-portal]: https://portal.azure.com
-[vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
+## <a name="see-also"></a>関連項目
 
-[hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
-[hdinsight-hbase-overview]:apache-hbase-overview.md
-
-
+* [SQLLine のマニュアル](http://sqlline.sourceforge.net/#manual)
+* [Apache Phoenix の文法](https://phoenix.apache.org/language/index.html)
+* [Apache Phoenix in 15 minutes or less (Apache Phoenix についての簡単な説明)](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)
+* [HDInsight HBase の概要](./apache-hbase-overview.md)

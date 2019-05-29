@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8d40b28103e24214ef00864b032266cc95889eff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793443"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780330"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -33,12 +33,12 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 | 言語 | サポートされているバージョン |
 |---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1、10.10 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1,10.10、10.14 |
 | Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |
 | PHP | 5.6、7.0、7.2 |
-| Python (プレビュー) | 2.7、3.6、3.7 |
-| .NET Core | 1.0、1.1、2.0、2.1 |
-| Ruby | 2.3 |
+| Python | 2.7、3.6、3.7 |
+| .NET Core | 1.0、1.1、2.0、2.1、2.2 |
+| Ruby | 2.3、2.4 |
 
 ## <a name="deployments"></a>デプロイメント
 
@@ -71,20 +71,20 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 Azure Portal では、Web App for Containers で現在使用できる機能のみが表示されます。 他の機能は、有効になったときにポータルに表示されるようになります。
 
-App Service on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。  
+App Service on Linux は [Free、Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Linux 以外の Web アプリを既にホストしている App Service プランで Linux Web アプリを作成することはできません。  
 
-現在の制限に基づき、Windows アプリと Linux アプリを同じリソース グループに混在させることはできません。
+現在の制限に基づいて、同じリソース グループの場合、Windows アプリと Linux アプリを同じリージョン内に混在させることはできません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
-コンテナーから `stdout` および `stderr` をログ記録するには、**[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
+コンテナーから `stdout` および `stderr` をログ記録するには、 **[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
 
 ![ログ記録の有効化][2]
 
 設定はすぐに有効になります。 App Service により設定の変更が検出され、自動的にコンテナーが再起動されます。
 
-SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
+SCM サイトには、 **[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
 
 ![Kudu を使用した Docker のログの表示][1]
 

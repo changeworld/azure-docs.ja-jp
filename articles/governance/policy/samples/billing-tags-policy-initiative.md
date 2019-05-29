@@ -7,12 +7,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9d9a3a5af304c1080d1d43b9bbfbafe2554a9844
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b084bd5a1b34dc2ce8ac8abb2a4af03a22262d2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275013"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787346"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>サンプル - 課金タグ ポリシーのイニシアティブ
 
@@ -24,11 +24,7 @@ ms.locfileid: "59275013"
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-このテンプレートは、[Azure Portal](#deploy-with-the-portal) または [PowerShell](#deploy-with-powershell) を使用してデプロイできます。
-
-## <a name="deploy-with-the-portal"></a>ポータルでのデプロイ
-
-[![ポリシーのサンプルを Azure にデプロイする](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[PowerShell](#deploy-with-powershell) を使用してこのテンプレートをデプロイできます。
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 

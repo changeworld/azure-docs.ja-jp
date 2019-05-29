@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 90004c27463a61de1b36eaea6754215f911f7483
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095859"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799239"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -34,6 +34,8 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 
 ![Data Box のセキュリティ](media/data-box-security/data-box-security-2.png)
 
+データがこのソリューションを通過すると、イベントがログに記録され、ログが生成されます。 詳細については、[Azure Data Box の追跡とイベントのログ記録](data-box-logs.md)に関する記事を参照してください。
+
 ## <a name="security-features"></a>セキュリティ機能
 
 Data Box は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 このソリューションのセキュリティ機能は、ディスクおよび関連するサービスを対象としたものであり、そこに格納されるデータのセキュリティを確保するものです。 
@@ -48,24 +50,25 @@ Data Box デバイスは、次の機能によって保護されます。
 - Data Box 固有のソフトウェアのみを実行します。
 - ロック状態で起動します。
 - デバイスのロック解除パスワードによってデバイスへのアクセスを制御します。
-- デバイスとの間でデータをコピーするためのアクセス資格情報。
+- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは[アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
 
 ### <a name="data-box-data-protection"></a>Data Box のデータ保護
 
 Data Box に対する入出力データは、次の機能によって保護されます。
 
-- 保存データの AES 256 ビット暗号化。 
+- 保存データの AES 256 ビット暗号化。
 - 輸送中データのための暗号化プロトコルを使用できます。
-- Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データの消去は、NIST 800-88r1 標準に準拠しています。
+- Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データの消去は、NIST 800-88r1 標準に準拠しています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
 
 ### <a name="data-box-service-protection"></a>Data Box サービスの保護
 
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box サービスにアクセスするには、Data Box を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。 
-- Data Box サービスでは、サービスでデバイスのロックを解除するために使用されるロック解除パスワードを保存します。 
-- Data Box サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。 
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
+- Data Box の注文へのアクセスは、ロールベースのアクセス制御 (RBAC) ロールを使用して制御できます。 詳細については、[Data Box の注文のアクセス制御の設定](data-box-logs.md#set-up-access-control-on-the-order)に関する記事を参照してください
+- Data Box サービスでは、サービスでデバイスのロックを解除するために使用されるロック解除パスワードを保存します。
+- Data Box サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。
 
 ## <a name="managing-personal-data"></a>個人データの管理
 
@@ -77,7 +80,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
   - 連絡先の名前
   - 電話番号
-  - 電子メール
+  - Email
   - 番地
   - City
   - 郵便番号

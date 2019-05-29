@@ -8,12 +8,12 @@ ms.author: sngun
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880264"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861306"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
 さらに、次のものが必要です。 
-* まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+* Visual Studio 2019 がまだインストールされていない場合は、**無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 * [Git](https://www.git-scm.com/) をインストールして例を複製します。
 
 <a id="create-account"></a>
@@ -122,7 +122,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     ![Azure Portal の [接続文字列] ページでアクセス　キー名を表示してコピー](./media/create-cassandra-dotnet/keys.png)
 
-2. Visual Studio 2017 で Program.cs ファイルを開きます。 
+2. Visual Studio で、Program.cs ファイルを開きます。 
 
 3. 13 行目の `<FILLME>` にポータルのユーザー名の値を貼り付けます。
 
@@ -146,7 +146,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     
 ## <a name="run-the-net-app"></a>.NET アプリを実行する
 
-1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。
+1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
 
 2. コマンド プロンプトで、次のコマンドを使って .NET ドライバーの NuGet パッケージをインストールします。 
 

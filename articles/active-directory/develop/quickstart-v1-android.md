@@ -3,9 +3,8 @@ title: Android アプリからユーザーにサインインし、Microsoft Grap
 description: Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す方法について説明します。
 services: active-directory
 documentationcenter: android
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
-ms.reviewer: dadobali
+ms.date: 05/21/2019
+ms.author: ryanwi
+ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9537748f8dd3ee027236c73e9587ff6b78ded7f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207587"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121991"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -86,18 +85,17 @@ mAuthResult.getAccessToken()
     - ***[Azure Active Directory]*** > ***[アプリの登録]*** の順に選択します。
 
 2. アプリケーションの作成
-    - **[新しいアプリケーションの登録]** を選択します。
+    - **[新規登録]** を選択します。
     - **[名前]** フィールドにアプリ名を入力します。
-    - **[アプリケーションの種類]** で **[ネイティブ]** を選択します。
-    - **[リダイレクト URI]** に「`http://localhost`」と入力します。
+    - **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+    - **[リダイレクト URI]** で、 **[パブリック クライアント (モバイルとデスクトップ)]** をドロップダウンから選択して `http://localhost` を入力します。
+    - **[登録]** をクリックします。
 
 3. Microsoft Graph の構成
-    - **[設定]、[必要なアクセス許可]** の順に選択します。
-    - **[追加]** を選択し、**[API を選択します]** 内の ***[Microsoft Graph]*** を選択します。
-    - アクセス許可 **[サインインとユーザー プロファイルの読み取り]** を選択し、**[選択]** を選択して保存します。
-        - このアクセス許可は `User.Read` スコープにマップされます。
-    - 省略可能:**[必要なアクセス許可] > [Windows Azure Active Directory]** 内で、選択したアクセス許可 **[サインインとユーザー プロファイルの読み取り]** を削除します。 これで、ユーザーの同意ページにアクセス許可が 2 回表示されなくなります。
-
+    - **[API のアクセス許可]** を選択します。
+    - **[アクセス許可の追加]** を選択し、 **[API を選択します]** 内の ***[Microsoft Graph]*** を選択します。
+    - **[委任されたアクセス許可]** で、アクセス許可 **User.Read** を選択し、 **[追加]** を選択して保存します。        
+    
 4. おめでとうございます! アプリの構成が完了しました。 次のセクションでは、以下を実行する必要があります。
     - `Application ID`
     - `Redirect URI`

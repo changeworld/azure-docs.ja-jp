@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
 ms.custom: mvc
-ms.openlocfilehash: b0e6e75f962383055d4f28356c3db57aac4a088b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85f1c051f13484ea8e14a6ae8402067b613fe2bc
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088079"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597534"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -43,7 +43,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v4.x.x 以降が必要です。
+このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
 複数のプラットフォームに対応する Node.js を [nodejs.org](https://nodejs.org) からダウンロードできます。
 
@@ -248,7 +248,7 @@ node ServiceClient.js "{your service connection string}"
 
 次のチュートリアルを実行する場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
 
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorial-iot-hub-rg** リソース グループを選択し、**[削除]** をクリックします。
+IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorial-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
 
 または、次の CLI を使用します。
 

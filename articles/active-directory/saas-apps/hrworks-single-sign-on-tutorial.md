@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f69ef2c7c260d8df918fb2495bded6910d6b17b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e994150f68c0f274c97c27fccc89f226bc8236cd
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707629"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>チュートリアル:Azure Active Directory と HRworks Single Sign-On の統合
 
@@ -53,11 +53,11 @@ Azure AD への HRworks Single Sign-On の統合を構成するには、ギャ�
 
 **ギャラリーから HRworks Single Sign-On を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -89,15 +89,15 @@ HRworks Single Sign-On で Azure AD のシングル サインオンを構成し�
 
 HRworks Single Sign-On で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **HRworks Single Sign-On** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **HRworks Single Sign-On** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[HRworks Single Sign-On クライアント サポート チーム](mailto:support@hrworks.de)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -128,9 +128,9 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
 
 1. 別の Web ブラウザー ウィンドウで、管理者として HRworks Single Sign-On にサインインします。
 
-2. メニュー バーの左側で **[Administrator]\(管理者\)** > **[Basics]\(基本\)** > **[Security]\(セキュリティ\)** > **[Single Sign-on]\(シングル サインオン\)** の順にクリックし、以下の手順を実行します。
+2. メニュー バーの左側で **[Administrator]\(管理者\)**  >  **[Basics]\(基本\)**  >  **[Security]\(セキュリティ\)**  >  **[Single Sign-on]\(シングル サインオン\)** の順にクリックし、以下の手順を実行します。
 
-       ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure01.png)
+       ![Configure Single Sign-On](./media/hrworks-single-sign-on-tutorial/configure01.png)
 
     a. **[Use Single Sign-on]\(シングル サインオンを使用する\)** をオンにします。
 
@@ -138,7 +138,7 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
 
     c. **[Value for NameID]\(NameID の値\)** として **[Individual NameID identifier]\(個別の NameID 識別子\)** を選択します。
 
-    d. Azure portal からダウンロードしたメタデータ XML をメモ帳で開き、その内容をコピーして  **[Metadata]\(メタデータ\)**  ボックスに貼り付けます。
+    d. Azure portal からダウンロードしたメタデータ XML をメモ帳で開き、その内容をコピーして **[Metadata]** テキスト ボックスに貼り付けます。
 
     e. **[Save]** をクリックします。
 
@@ -146,7 +146,7 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -170,7 +170,7 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
 
 このセクションでは、Britta Simon に HRworks Single Sign-On へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから **[HRworks Single Sign-On]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから **[HRworks Single Sign-On]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -182,15 +182,15 @@ HRworks Single Sign-On で Azure AD シングル サインオンを構成する�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-hrworks-single-sign-on-test-user"></a>HRworks Single Sign-On のテスト ユーザーの作成
 
@@ -200,15 +200,15 @@ Azure AD ユーザーが HRworks Single Sign-On にサインインできるよ�
 
 1. 管理者として HRworks Single Sign-On にサインインします。
 
-2. メニュー バーの左側で、**[Administrator]\(管理者\)** > **[Persons]\(人\)** > **[Persons]\(人\)** > **[New person]\(新しい人\)** の順にクリックします。
+2. メニュー バーの左側で、 **[Administrator]\(管理者\)**  >  **[Persons]\(人\)**  >  **[Persons]\(人\)**  >  **[New person]\(新しい人\)** の順にクリックします。
 
-     ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
-3. ポップアップで、**[Next]\(次へ\)** をクリックします。
+3. ポップアップで、 **[Next]\(次へ\)** をクリックします。
 
     ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
-4. **[Create new person with country for legal terms]\(法的条項のための国を指定した新しい人の作成\)** ポップアップで、**[First name]\(名\)**、**[Last name]\(姓\)** などのそれぞれの詳細を入力し、**[Create]\(作成\)** をクリックします。
+4. **[Create new person with country for legal terms]\(法的条項のための国を指定した新しい人の作成\)** ポップアップで、 **[First name]\(名\)** 、 **[Last name]\(姓\)** などのそれぞれの詳細を入力し、 **[Create]\(作成\)** をクリックします。
     
     ![Configure single sign-on](./media/hrworks-single-sign-on-tutorial/configure04.png)
 

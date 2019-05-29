@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4169a288ba85a7a7d83f77a8de8f6a4ef9bf0eac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 456f828f09a710009d30e1c0a669cde658318ae0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700413"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789365"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -42,7 +42,7 @@ Azure Key Vault は、次の問題の解決に役立ちます。
 
 認証は Azure Active Directory を介して行われます。 認可は、ロールベースのアクセス制御 (RBAC) または Key Vault のアクセス ポリシーを使用して行うことができます。 RBAC は、コンテナーを管理するときに使用されます。キー コンテナーのアクセス ポリシーは、コンテナーに格納されているデータにアクセスするときに使用されます。
 
-Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で保護されます。 さらに追加の保証が必要な状況では、ハードウェア セキュリティ モジュール (HSM) 内でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 Microsoft では、Thales ハードウェア セキュリティ モジュールを使用しています。 Thales のツールを使用して、HSM からキーを Azure Key Vault に移動することができます。
+Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で保護されます。 さらに追加の保証が必要な状況では、ハードウェア セキュリティ モジュール (HSM) 内でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 Microsoft は nCipher ハードウェア セキュリティ モジュールを使用しています。 nCipher ツールを使用して、キーを HSM から Azure Key Vault に移動できます。
 
 最後に、Azure Key Vault は、Microsoft がデータを確認および抽出しないように設計されています。
 

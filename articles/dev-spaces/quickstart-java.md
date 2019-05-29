@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure でコンテナー、マイクロサービス、Java を使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: c1c039ba8696baff11abed3930998983647f4356
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425748"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979125"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で Java の開発を行う
 
@@ -41,7 +41,7 @@ ms.locfileid: "59425748"
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
@@ -122,7 +122,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 サービスの更新バージョンをデプロイするには、ご自分のプロジェクトにある任意のファイルを更新して、`azds up` コマンドを再実行します。 例: 
 
 1. `azds up` がまだ実行されている場合、*Ctrl + C* キーを押します。
-1. [`src/main/java/com/ms/sample/webfrontend/Application.java` の 16 行目](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L16)を以下に更新します。
+1. [`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)を以下に更新します。
     
     ```java
     return "Hello from webfrontend in Azure!";
@@ -145,11 +145,11 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 
 ## <a name="enable-visual-studio-code-to-debug-in-kubernetes"></a>Visual Studio Code を有効にして Kubernetes でデバッグを行う
 
-Visual Studio Code を開き、*[ファイル]*、*[開く]* の順にクリックし、*dev-spaces/samples/java/getting-started/webfrontend* ディレクトリに移動して、*[開く]* をクリックします。
+Visual Studio Code を開き、 *[ファイル]* 、 *[開く]* の順にクリックし、*dev-spaces/samples/java/getting-started/webfrontend* ディレクトリに移動して、 *[開く]* をクリックします。
 
 これで Visual Studio Code で *webfrontend* プロジェクトが開かれます。これは `azds up` コマンドを使用して稼働したのと同じサービスです。 Visual Studio Code を使用して AKS でこのサービスをデバッグするには、`azds up` を直接使用する場合と違って、Visual Studio Code を使用して自分の開発空間と通信するためにこのプロジェクトを準備する必要があります。
 
-Visual Studio Code でコマンド パレットを開くには、*[表示]*、*[コマンド パレット]* の順にクリックします。 「`Azure Dev Spaces`」の入力を開始して、`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` をクリックします。
+Visual Studio Code でコマンド パレットを開くには、 *[表示]* 、 *[コマンド パレット]* の順にクリックします。 「`Azure Dev Spaces`」の入力を開始して、`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` をクリックします。
 
 ![Azure Dev Spaces の構成ファイルを準備する](./media/common/command-palette.png)
 
@@ -172,28 +172,28 @@ Visual Studio Code でコマンド パレットを開くには、*[表示]*、*[
 > [!Note]
 > "*コマンド パレット*" に Azure Dev Spaces コマンドが表示されない場合は、[Azure Dev Spaces 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)がインストールされていることを確認してください。 また、Visual Studio Code で *dev-spaces/samples/java/getting-started/webfrontend* ディレクトリを開いたことを確認してください。
 
-*[デバッグ]*、*[デバッグの停止]* の順にクリックして、デバッガーを停止します。
+*[デバッグ]* 、 *[デバッグの停止]* の順にクリックして、デバッガーを停止します。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを設定して使用する
 
 *[Launch Java Program (AZDS)]\(Java プログラムの起動 (AZDS)\)* を使用して、デバッグ モードでサービスを開始します。
 
-*[表示]*、*[エクスプローラー]* の順にクリックして、*[エクスプローラー]* ビューに戻ります。 `src/main/java/com/ms/sample/webfrontend/Application.java` を開き、16 行目のどこかをクリックして、カーソルをそこに置きます。 ブレークポイントを設定するには、*F9* キーを押すか、*[デバッグ]*、*[ブレークポイントの設定/解除]* の順にクリックします。
+*[表示]* 、 *[エクスプローラー]* の順にクリックして、 *[エクスプローラー]* ビューに戻ります。 `src/main/java/com/ms/sample/webfrontend/Application.java` を開き、19 行目のどこかをクリックして、カーソルをそこに置きます。 ブレークポイントを設定するには、*F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックします。
 
-ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio Code に戻って、16 行目が強調表示されていることを確認します。 設定したブレークポイントによって、16 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、*[デバッグ]*、*[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
+ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio Code に戻って、19 行目が強調表示されていることを確認します。 設定したブレークポイントによって、19 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
 
 デバッガーがアタッチされた状態で Kubernetes でサービスを稼働している間、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
-`src/main/java/com/ms/sample/webfrontend/Application.java` の 16 行目にカーソルを置いて *F9* キーを押し、ブレークポイントを削除します。
+`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目にカーソルを置いて *F9* キーを押すことで、ブレークポイントを削除します。
 
 ## <a name="update-code-from-visual-studio-code"></a>Visual Studio Code でコードを更新する
 
-デバッグ モードでサービスが稼働している間に、`src/main/java/com/ms/sample/webfrontend/Application.java` の 16 行目を更新します。 例: 
+デバッグ モードでサービスが稼働している間に、`src/main/java/com/ms/sample/webfrontend/Application.java` の 19 行目を更新します。 例: 
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-ファイルを保存します。 *[デバッグ]*、*[デバッグの再起動]* の順にクリックします。または、*[デバッグ] ツール バー*で、*[デバッグの再起動]* ボタンをクリックします。
+ファイルを保存します。 *[デバッグ]* 、 *[デバッグの再起動]* の順にクリックします。または、 *[デバッグ] ツール バー*で、 *[デバッグの再起動]* ボタンをクリックします。
 
 ![デバッグの更新](media/get-started-java/debug-action-refresh.png)
 

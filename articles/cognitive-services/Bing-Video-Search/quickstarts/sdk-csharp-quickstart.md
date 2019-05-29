@@ -3,19 +3,19 @@ title: クイック スタート:Bing Video Search SDK for C# を使用して動
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Bing Video Search SDK for C# を使用して動画の検索要求を送信します。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: aahi
+ms.openlocfilehash: e10d9088f6de3b7a3a638cdbe18f51425d206b7b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867785"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798178"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>クイック スタート:Bing Video Search SDK for C# で動画の検索を実行する
 
@@ -23,10 +23,10 @@ ms.locfileid: "55867785"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) の任意のエディション。
+* [Visual Studio 2017 またはそれ以降](https://visualstudio.microsoft.com/downloads/)の任意のエディション。
 * [NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)として入手できる Json.NET フレームワーク。
 
-Bing Video Search SDK をプロジェクトに追加するには、Visual Studio のソリューション エクスプローラーから `Manage NuGet Packages` オプションにアクセスします。  `Microsoft.Azure.CognitiveServices.Search.VideoSearch` パッケージを追加します。
+Bing Video Search SDK をプロジェクトに追加するには、Visual Studio の**ソリューション エクスプローラー**から **[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.CognitiveServices.Search.VideoSearch` パッケージを追加します。
 
 [NuGet Video Search SDK パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0)をインストールすると、次の依存関係もインストールされます。
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 24d5c11eb32350b2c11584ca5fc75ed4b619b6cf
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170107"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978744"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して .NET Framework アプリケーションまたは Core アプリケーションを構築する
 
@@ -32,9 +32,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
-
-Visual Studio 2017 がインストール済みである場合は、[Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes) までインストールされていることを確認してください。
+Visual Studio 2019 がまだインストールされていない場合は、**無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -166,7 +164,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     ![エンドポイントのコピー](./media/create-graph-dotnet/endpoint.png)
 
-   このサンプルを実行するには、**[Gremlin エンドポイント]** の値をコピーして最後のポート番号を削除します。つまり、URI は `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` になります。
+   このサンプルを実行するには、 **[Gremlin エンドポイント]** の値をコピーして最後のポート番号を削除します。つまり、URI は `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com` になります。
 
 2. Program.cs で、19 行目の `hostname` 変数の `your-endpoint` に値を貼り付けます。 
 
@@ -176,7 +174,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. 次に、**[キー]** タブに移動してポータルから **[主キー]** の値をコピーし、`authkey` 変数に貼り付けて、21 行目の `"your-authentication-key"` プレースホルダーを置き換えます。 
+3. 次に、 **[キー]** タブに移動してポータルから **[主キー]** の値をコピーし、`authkey` 変数に貼り付けて、21 行目の `"your-authentication-key"` プレースホルダーを置き換えます。 
 
     `private static string authKey = "your-authentication-key";`
 
@@ -202,7 +200,7 @@ Ctrl + F5 キーを押してアプリケーションを実行します。 アプ
 
 次に、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データを参照しクエリできます。
 
-1. データ エクスプローラーで新しいデータベースが [グラフ] ウィンドウに表示されます。 データベースとコンテナーのノードを展開し、**[グラフ]** をクリックします。
+1. データ エクスプローラーで新しいデータベースが [グラフ] ウィンドウに表示されます。 データベースとコンテナーのノードを展開し、 **[グラフ]** をクリックします。
 
 2. **[フィルターの適用]** をクリックし、既定のクエリを使用してグラフのすべての頂点を表示します。 サンプル アプリで生成されたデータは、[グラフ] ウィンドウに表示されます。
 

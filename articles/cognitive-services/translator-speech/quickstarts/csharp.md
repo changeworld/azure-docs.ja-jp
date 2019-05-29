@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
-ms.date: 3/5/2018
+ms.date: 04/26/2019
 ms.author: v-jaswel
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b4fe4f651340ef54c2907192f3a96e9a017ab1dd
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673889"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910518"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート:Translator Speech API (C#)
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ ms.locfileid: "56673889"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)Mac OS または Linux を使用する場合は、代わりにテキスト エディター [Visual Studio Code](https://code.visualstudio.com/Download) を使用することもできます。
+このコードを Windows 上で実行するには、[Visual Studio 2019](https://www.visualstudio.com/downloads/) が必要です。 (無料の Community Edition でかまいません。)Mac OS または Linux を使用する場合は、代わりにテキスト エディター [Visual Studio Code](https://code.visualstudio.com/Download) を使用することもできます。
 
 下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。
 

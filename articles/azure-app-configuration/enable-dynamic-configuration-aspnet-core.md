@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408826"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519003"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -63,6 +63,9 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     ```
 
     `.Watch` メソッドの第 2 パラメーターは、ポーリング間隔です。ASP.NET クライアント ライブラリは、この間隔でアプリ構成ストアを照会します。 クライアント ライブラリは、特定の構成設定をチェックして、変更が発生したかどうかを確認します。
+    
+    > [!NOTE]
+    > 指定しない場合、`Watch` 拡張メソッドの既定のポーリング間隔は 30 秒です。
 
 2. 新しい `Settings` クラスを定義して実装する *Settings.cs* ファイルを追加します。
 

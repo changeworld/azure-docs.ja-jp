@@ -13,12 +13,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナ
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361265"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65765301"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で .NET Core の開発を行う (Visual Studio 2017)
 
@@ -40,7 +40,7 @@ ms.locfileid: "59361265"
 
 1. [Azure ポータル](https://portal.azure.com)
 1. *+ [リソースの作成]、[Kubernetes サービス]* の順に選択します。 
-1. _[サブスクリプション]_、_[リソース グループ]_、_[Kubernetes クラスター名]_、_[リージョン]_、_[Kubernetes バージョン]_、_[DNS 名のプレフィックス]_ の入力を行います。
+1. _[サブスクリプション]_ 、 _[リソース グループ]_ 、 _[Kubernetes クラスター名]_ 、 _[リージョン]_ 、 _[Kubernetes バージョン]_ 、 _[DNS 名のプレフィックス]_ の入力を行います。
 
     ![Azure portal での AKS の作成](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "59361265"
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
-Azure portal でご自分の AKS クラスターに移動して、*[Dev Spaces]* をクリックします。 *[Dev Spaces を有効にする]* を *[はい]* に変更して *[保存]* をクリックします。
+Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]* をクリックします。 *[Dev Spaces を有効にする]* を *[はい]* に変更して *[保存]* をクリックします。
 
 ![Azure portal での Dev Spaces の有効化](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
@@ -59,7 +59,7 @@ Azure portal でご自分の AKS クラスターに移動して、*[Dev Spaces]*
 1. 新しいプロジェクトを作成する。
 1. *[ASP.NET Core Web アプリケーション]* を選択し、プロジェクトに *webfrontend* という名前を付けます。
 1. Click *OK*.
-1. 要求されたら、*[Web アプリケーション (モデル ビュー コントローラー)]* をテンプレートに選択します。
+1. 要求されたら、 *[Web アプリケーション (モデル ビュー コントローラー)]* をテンプレートに選択します。
 1. 上部にある *[.NET Core]* と *[ASP.NET Core 2.0]* を選択します。
 1. Click *OK*.
 
@@ -69,7 +69,7 @@ Azure portal でご自分の AKS クラスターに移動して、*[Dev Spaces]*
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-[Azure Dev Spaces] ダイアログで、ご自分の "*サブスクリプション*" と "*Azure Kubernetes クラスター*" を選択します。 *[空間]* は *[default]* に設定しておいて、*[公的にアクセス可能]* チェック ボックスをオンします。 Click *OK*.
+[Azure Dev Spaces] ダイアログで、ご自分の "*サブスクリプション*" と "*Azure Kubernetes クラスター*" を選択します。 *[空間]* は *[default]* に設定しておいて、 *[公的にアクセス可能]* チェック ボックスをオンします。 Click *OK*.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
@@ -77,7 +77,7 @@ Azure portal でご自分の AKS クラスターに移動して、*[Dev Spaces]*
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-*default* 開発空間で稼働するサービスのパブリック URL が、*[出力]* ウィンドウに表示されます。
+*default* 開発空間で稼働するサービスのパブリック URL が、 *[出力]* ウィンドウに表示されます。
 
 ```cmd
 Starting warmup for project 'webfrontend'.
@@ -97,6 +97,8 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 上記の例では、パブリック URL は http://webfrontend.1234567890abcdef1234.eus.azds.io/ です。 ご自分のサービスのパブリック URL に移動し、開発空間で稼働しているサービスを操作します。
 
+このプロセスにより、サービスへのパブリック アクセスが無効になった可能性があります。 パブリック アクセスを有効にするには、[*values.yaml* 内のイングレス値][ingress-update]を更新することができます。
+
 ## <a name="update-code"></a>コードの更新
 
 Visual Studio 2017 がまだ開発空間に接続されている場合、停止ボタンをクリックします。 `Controllers/HomeController.cs` の 20 行目を以下に変更します。
@@ -105,15 +107,15 @@ Visual Studio 2017 がまだ開発空間に接続されている場合、停止�
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-変更を保存し、起動設定のドロップダウンで **[Azure Dev Spaces]** を使用してサービスを開始します。 ブラウザーでご自分のサービスのパブリック URL を開き、*[詳細]* をクリックします。 更新されたメッセージが表示されることを確認します。
+変更を保存し、起動設定のドロップダウンで **[Azure Dev Spaces]** を使用してサービスを開始します。 ブラウザーでご自分のサービスのパブリック URL を開き、 *[詳細]* をクリックします。 更新されたメッセージが表示されることを確認します。
 
 Azure Dev Spaces では、コードが編集されるたびに新しいコンテナー イメージをリビルドして再デプロイするのではなく、既存のコンテナー内でコードの増分再コンパイルを実行して、編集とデバッグのループを高速化します。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを設定して使用する
 
-Visual Studio 2017 がまだ開発空間に接続されている場合、停止ボタンをクリックします。 `Controllers/HomeController.cs` を開いて、20 行目のどこかをクリックし、そこにカーソルを置きます。 ブレークポイントを設定するには、*F9* キーを押すか、*[デバッグ]*、*[ブレークポイントの設定/解除]* の順にクリックします。 開発空間においてデバッグ モードでサービスを開始するには、*F5* キーを押すか、または *[デバッグ]*、*[デバッグの開始]* の順にクリックします。
+Visual Studio 2017 がまだ開発空間に接続されている場合、停止ボタンをクリックします。 `Controllers/HomeController.cs` を開いて、20 行目のどこかをクリックし、そこにカーソルを置きます。 ブレークポイントを設定するには、*F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックします。 開発空間においてデバッグ モードでサービスを開始するには、*F5* キーを押すか、または *[デバッグ]* 、 *[デバッグの開始]* の順にクリックします。
 
-ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio 2017 に戻って、20 行目が強調表示されていることを確認します。 設定したブレークポイントによって、20 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、*[デバッグ]*、*[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
+ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio 2017 に戻って、20 行目が強調表示されていることを確認します。 設定したブレークポイントによって、20 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
 
 デバッガーがアタッチされた状態で Kubernetes でサービスを稼働している間、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
@@ -121,7 +123,7 @@ Visual Studio 2017 がまだ開発空間に接続されている場合、停止�
 
 ## <a name="clean-up-your-azure-resources"></a>Azure リソースをクリーンアップする
 
-Azure portal でご自分のリソース グループに移動して、*[リソース グループの削除]* をクリックします。 または、[az aks delete](/cli/azure/aks#az-aks-delete) コマンドを使用できます。
+Azure portal でご自分のリソース グループに移動して、 *[リソース グループの削除]* をクリックします。 または、[az aks delete](/cli/azure/aks#az-aks-delete) コマンドを使用できます。
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -131,3 +133,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [複数のコンテナーの操作とチーム開発](multi-service-netcore-visualstudio.md)
+
+[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured

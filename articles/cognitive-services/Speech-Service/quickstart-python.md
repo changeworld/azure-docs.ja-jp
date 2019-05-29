@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: chlandsi
-ms.openlocfilehash: 34af7544a7678dfd8c8f870369bf0b4b1083b96d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 30e25fa8ea9e49b3005badc3db8f6ada3c0aed50
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020718"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65885163"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>クイック スタート:Python 用 Speech SDK を使用して音声を認識する
 
@@ -47,7 +47,7 @@ ms.locfileid: "65020718"
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
 
-* Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2017 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。
+* Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -87,7 +87,7 @@ python quickstart.py
 
 1. [Python](https://www.python.org/downloads/) の 64 ビット バージョン (3.5 以降) をお使いのコンピューターにダウンロードして、インストールします。
 1. [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードして、インストールします。
-1. Visual Studio Code を開いて、Python 拡張機能をインストールします。 メニューで **[ファイル]** > **[基本設定]** > **[拡張機能]** の順に選択します。 **Python** を検索します。
+1. Visual Studio Code を開いて、Python 拡張機能をインストールします。 メニューで **[ファイル]**  >  **[基本設定]**  >  **[拡張機能]** の順に選択します。 **Python** を検索します。
 
    ![Python 拡張機能のインストール](media/sdk/qs-python-vscode-python-extension.png)
 

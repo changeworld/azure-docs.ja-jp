@@ -3,8 +3,8 @@ title: .NET Desktop (WPF) アプリでユーザーのサインインと Microsof
 description: サインインするために Azure AD と統合され、OAuth 2.0 を使用して Azure AD によって保護されている API を呼び出す .NET Windows Desktop アプリケーションを構築する方法を説明します。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: ed33574f-6fa3-402c-b030-fae76fba84e1
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/21/2019
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: a2d9639c21e201db1df5145caf1345d4f0879af6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223395"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121955"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>クイック スタート:.NET Desktop (WPF) アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う
 
@@ -55,15 +55,17 @@ Azure Active Directory (Azure AD) には、保護されたリソースにアク�
 アプリがトークンを取得できるようにするには、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 上部のバーにある自分のアカウントを選択し、**[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
-3. 左側のナビゲーション バーで **[すべてのサービス]** を選択し、**[Azure Active Directory]** を選択します。
-4. **[アプリの登録]** で、**[追加]** を選択します。
-5. 画面の指示に従って、新しい**ネイティブ クライアント アプリケーション**を作成します。
-    * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
-    * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。 `http://DirectorySearcher` など、アプリケーションに固有の値を入力してください。
+2. 上部のバーにある自分のアカウントを選択し、 **[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
+3. 左側のナビゲーション バーで **[すべてのサービス]** を選択し、 **[Azure Active Directory]** を選択します。
+4. **[アプリの登録]** で、 **[新規登録]** を選択します。
+5. 画面の指示に従って、新しいクライアント アプリケーションを作成します。
+    * **[名前]** はアプリケーションの名前で、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
+    * **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+    * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。 上記のリダイレクト URI 情報に基づいて、アプリケーション固有の値 (たとえば、`http://DirectorySearcher`) を入力します。 また、 **[パブリック クライアント (モバイルとデスクトップ)]** をドロップダウンから選択します。 
 
 6. 登録が完了すると、AAD により、アプリに一意のアプリケーション ID が割り当てられます。 この値は次のセクションで必要になるので、アプリケーション ページからコピーします。
-7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 API として **[Microsoft Graph]** を選択し、**[委任されたされたアクセス許可]** の下に **[ディレクトリ データの読み取り]** アクセス許可を追加します。 このアクセス許可の設定によって、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
+7. **[API のアクセス許可]** ページで、 **[アクセス許可の追加]** を選択します。 **[API を選択します]** 内の ***[Microsoft Graph]*** を選択します。
+8. **[委任されたアクセス許可]** で、アクセス許可 **User.Read** を選択し、 **[追加]** を選択して保存します。 このアクセス許可により、アプリケーションが Azure AD Graph API を使用してユーザーをクエリするように設定されます。
 
 ## <a name="step-2-install-and-configure-adal"></a>手順 2:ADAL をインストールして構成する
 

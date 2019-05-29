@@ -5,17 +5,17 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 01/02/2018
+ms.date: 05/21/2019
 ms.author: lbosq
-ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b36c041c24a07f89701e78aea4d08270342b8d22
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275557"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978931"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
-Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
+Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
 
 Azure Cosmos DB は、グラフ データベースにエンタープライズ対応の機能を提供します。 これらの機能には、グローバル配布、ストレージとスループットの個別スケーリング、1 桁ミリ秒の予測可能な待ち時間、自動インデックス作成、SLA、2 つ以上の Azure リージョンにまたがるデータベース アカウントの読み取り可用性などがあります。 Azure Cosmos DB は TinkerPop/Gremlin をサポートしているため、他の互換性のあるグラフ データベースを使用して作成されたアプリケーションを簡単に移行できます。 さらに、Gremlin のサポートにより、Azure Cosmos DB は [Apache Spark GraphX](https://spark.apache.org/graphx/) などの TinkerPop 対応分析フレームワークとシームレスに統合されます。 
 
@@ -40,28 +40,28 @@ Azure Cosmos DB は、グラフ データベースにエンタープライズ対
 - RunsOS: ノート PC で Windows OS が実行されています。
 - 使用: ユーザーが使用しているデバイスを表します。 たとえば、Robin はシリアル番号が 77 の Motorola Phone を使用しています。
 
-[Gremlin コンソール](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)を使用して、このグラフに対していくつかの操作を実行しましょう。 これらの操作は、任意のプラットフォーム (Java、Node.js、Python、または .NET) で Gremlin ドライバーを使用して実行することもできます。  Azure Cosmos DB でサポートされているものを確認する前に、構文に慣れるために例をいくつか見てみましょう。
+[Gremlin コンソール](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console)を使用して、このグラフに対していくつかの操作を実行しましょう。 これらの操作は、任意のプラットフォーム (Java、Node.js、Python、または .NET) で Gremlin ドライバーを使用して実行することもできます。  Azure Cosmos DB でサポートされているものを確認する前に、構文に慣れるために例をいくつか見てみましょう。
 
 まず、CRUD を見てみます。 次の Gremlin ステートメントでは、グラフに "Thomas" 頂点を挿入します。
 
-```
+```java
 :> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
 ```
 
 次の Gremlin ステートメントでは、Thomas と Robin の間に "knows" 辺を挿入します。
 
-```
+```java
 :> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
 ```
 
 次のクエリは、ユーザーの姓の降順で "person" 頂点を返します。
-```
+```java
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
 グラフが強調表示されている場合、"Thomas の友人が使用しているオペレーティング システムは何か" というような質問に答える必要があります。 次の Gremlin トラバーサルを実行することで、グラフからこの情報を取得できます。
 
-```
+```java
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 次に、Azure Cosmos DB が Gremlin 開発者に提供するものを見ていきましょう。
@@ -82,7 +82,7 @@ TinkerPop は、さまざまなグラフ テクノロジに対応する標準で
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin のワイヤ形式: GraphSON
 
-Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphSON 形式](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format)を使用します。 GraphSON は、JSON を使用して頂点、辺、プロパティ (単一値および複数値プロパティ) を表すための Gremlin の標準形式です。 
+Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphSON 形式](https://tinkerpop.apache.org/docs/3.3.2/reference/#graphson-reader-writer)を使用します。 GraphSON は、JSON を使用して頂点、辺、プロパティ (単一値および複数値プロパティ) を表すための Gremlin の標準形式です。 
 
 たとえば、次のスニペットは、Azure Cosmos DB から "*クライアントに返される*" GraphSON による頂点の表現を示しています。 
 
@@ -150,45 +150,51 @@ GraphSON で使用される頂点のプロパティを次に説明します。
 | `value` | プロパティの値。
 
 ## <a name="gremlin-steps"></a>Gremlin のステップ
-次に、Azure Cosmos DB でサポートされている Gremlin のステップを見てみましょう。 Gremlin の完全なリファレンスについては、[TinkerPop リファレンス](https://tinkerpop.apache.org/docs/current/reference)をご覧ください。
+次に、Azure Cosmos DB でサポートされている Gremlin のステップを見てみましょう。 Gremlin の完全なリファレンスについては、[TinkerPop リファレンス](https://tinkerpop.apache.org/docs/3.3.2/reference)をご覧ください。
 
 | ステップ | 説明 | TinkerPop 3.2 ドキュメント |
 | --- | --- | --- |
-| `addE` | 2 つの頂点の間に辺を追加します。 | [addE ステップ](https://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
-| `addV` | グラフに頂点を追加します。 | [addV ステップ](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
-| `and` | すべてのトラバーサルが値を返すようにします。 | [and ステップ](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
-| `as` | ステップの出力に変数を割り当てるステップ モジュレーター。 | [as ステップ](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | `group` および `order` と共に使用するステップ モジュレーター。 | [by ステップ](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
-| `coalesce` | 結果を返す最初のトラバーサルを返します。 | [coalesce ステップ](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | 定数値を返します。 `coalesce` と共に使用します。| [constant ステップ](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
-| `count` | トラバーサルからカウントを返します。 | [count ステップ](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
-| `dedup` | 重複を削除して値を返します。 | [dedup ステップ](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
-| `drop` | 値 (頂点/辺) を破棄します。 | [drop ステップ](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `addE` | 2 つの頂点の間に辺を追加します。 | [addE ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
+| `addV` | グラフに頂点を追加します。 | [addV ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
+| `and` | すべてのトラバーサルが値を返すようにします。 | [and ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#and-step) |
+| `as` | ステップの出力に変数を割り当てるステップ モジュレーター。 | [as ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#as-step) |
+| `by` | `group` および `order` と共に使用するステップ モジュレーター。 | [by ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#by-step) |
+| `coalesce` | 結果を返す最初のトラバーサルを返します。 | [coalesce ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#coalesce-step) |
+| `constant` | 定数値を返します。 `coalesce` と共に使用します。| [constant ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#constant-step) |
+| `count` | トラバーサルからカウントを返します。 | [count ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#count-step) |
+| `dedup` | 重複を削除して値を返します。 | [dedup ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#dedup-step) |
+| `drop` | 値 (頂点/辺) を破棄します。 | [drop ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#drop-step) |
 | `executionProfile` | 実行された Gremlin ステップによって生成されたすべての操作の記述を作成します | [executionProfile ステップ](graph-execution-profile.md) |
-| `fold` | 結果の集計を計算するバリアとして機能します。| [fold ステップ](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
-| `group` | 指定されたラベルに基づいて値をグループ化します。| [group ステップ](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
-| `has` | プロパティ、頂点、辺をフィルター処理するときに使用します。 `hasLabel`、`hasId`、`hasNot`、`has` の各バリアントをサポートします。 | [has ステップ](https://tinkerpop.apache.org/docs/current/reference/#has-step) |
-| `inject` | 値をストリームに挿入します。| [inject ステップ](https://tinkerpop.apache.org/docs/current/reference/#inject-step) |
-| `is` | ブール式を使用してフィルターを実行するときに使用します。 | [is ステップ](https://tinkerpop.apache.org/docs/current/reference/#is-step) |
-| `limit` | トラバーサルで項目の数を制限するときに使用します。| [limit ステップ](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
-| `local` | サブクエリと同様に、トラバーサルのセクションをローカルでラップします。 | [local ステップ](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
-| `not` | フィルターの否定を生成するときに使用します。 | [not ステップ](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | 指定されたトラバーサルの結果が生成された場合は、その結果を返します。それ以外の場合は、呼び出し元の要素を返します。 | [optional ステップ](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
-| `or` | 少なくとも 1 つのトラバーサルで値が返されるようにします。 | [or ステップ](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
-| `order` | 指定された並べ替え順序で結果を返します。 | [order ステップ](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
-| `path` | トラバーサルの完全なパスを返します。 | [path ステップ](https://tinkerpop.apache.org/docs/current/reference/#path-step) |
-| `project` | プロパティをマップとして投影します。 | [project ステップ](https://tinkerpop.apache.org/docs/current/reference/#project-step) |
-| `properties` | 指定されたラベルのプロパティを返します。 | [properties ステップ](https://tinkerpop.apache.org/docs/current/reference/#properties-step) |
-| `range` | 値の指定された範囲にフィルターを適用します。| [range ステップ](https://tinkerpop.apache.org/docs/current/reference/#range-step) |
-| `repeat` | ステップを指定された回数繰り返します。 ループに使用します。 | [repeat ステップ](https://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
-| `sample` | トラバーサルの結果をサンプリングするときに使用します。 | [sample ステップ](https://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | トラバーサルの結果を予想するときに使用します。 |  [select ステップ](https://tinkerpop.apache.org/docs/current/reference/#select-step) |
-| `store` | トラバーサルの非ブロッキング集計に使用します。 | [store ステップ](https://tinkerpop.apache.org/docs/current/reference/#store-step) |
-| `tree` | 頂点からのパスを集計してツリーを形成します。 | [tree ステップ](https://tinkerpop.apache.org/docs/current/reference/#tree-step) |
-| `unfold` | 反復子をステップとしてアンロールします。| [unfold ステップ](https://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
-| `union` | 複数のトラバーサルの結果をマージします。| [union ステップ](https://tinkerpop.apache.org/docs/current/reference/#union-step) |
-| `V` | 頂点および辺の間でのトラバーサルに必要なステップ (`V`、`E`、`out`、`in`、`both`、`outE`、`inE`、`bothE`、`outV`、`inV`、`bothV`、`otherV`) が含まれています。 | [vertex ステップ](https://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
-| `where` | トラバーサルの結果をフィルター処理するときに使用します。 `eq`、`neq`、`lt`、`lte`、`gt`、`gte`、`between` の各演算子をサポートします。  | [where ステップ](https://tinkerpop.apache.org/docs/current/reference/#where-step) |
+| `fold` | 結果の集計を計算するバリアとして機能します。| [fold ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#fold-step) |
+| `group` | 指定されたラベルに基づいて値をグループ化します。| [group ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#group-step) |
+| `has` | プロパティ、頂点、辺をフィルター処理するときに使用します。 `hasLabel`、`hasId`、`hasNot`、`has` の各バリアントをサポートします。 | [has ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#has-step) |
+| `inject` | 値をストリームに挿入します。| [inject ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#inject-step) |
+| `is` | ブール式を使用してフィルターを実行するときに使用します。 | [is ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#is-step) |
+| `limit` | トラバーサルで項目の数を制限するときに使用します。| [limit ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#limit-step) |
+| `local` | サブクエリと同様に、トラバーサルのセクションをローカルでラップします。 | [local ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#local-step) |
+| `not` | フィルターの否定を生成するときに使用します。 | [not ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#not-step) |
+| `optional` | 指定されたトラバーサルの結果が生成された場合は、その結果を返します。それ以外の場合は、呼び出し元の要素を返します。 | [optional ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#optional-step) |
+| `or` | 少なくとも 1 つのトラバーサルで値が返されるようにします。 | [or ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#or-step) |
+| `order` | 指定された並べ替え順序で結果を返します。 | [order ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#order-step) |
+| `path` | トラバーサルの完全なパスを返します。 | [path ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#path-step) |
+| `project` | プロパティをマップとして投影します。 | [project ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#project-step) |
+| `properties` | 指定されたラベルのプロパティを返します。 | [properties ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#_properties_step) |
+| `range` | 値の指定された範囲にフィルターを適用します。| [range ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#range-step) |
+| `repeat` | ステップを指定された回数繰り返します。 ループに使用します。 | [repeat ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#repeat-step) |
+| `sample` | トラバーサルの結果をサンプリングするときに使用します。 | [sample ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
+| `select` | トラバーサルの結果を予想するときに使用します。 |  [select ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
+| `store` | トラバーサルの非ブロッキング集計に使用します。 | [store ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
+| `TextP.startingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で始まるプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  文字列フィルター処理関数。 この関数は、指定された文字列で終わるプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列の内容を含むプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で始まらないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列で終わらないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | 文字列フィルター処理関数。 この関数は、指定された文字列を含んでいないプロパティを照合するための `has()` ステップの述語として使用されます。 | [TextP 述語](http://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `tree` | 頂点からのパスを集計してツリーを形成します。 | [tree ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
+| `unfold` | 反復子をステップとしてアンロールします。| [unfold ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
+| `union` | 複数のトラバーサルの結果をマージします。| [union ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |
+| `V` | 頂点および辺の間でのトラバーサルに必要なステップ (`V`、`E`、`out`、`in`、`both`、`outE`、`inE`、`bothE`、`outV`、`inV`、`bothV`、`otherV`) が含まれています。 | [vertex ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#vertex-steps) |
+| `where` | トラバーサルの結果をフィルター処理するときに使用します。 `eq`、`neq`、`lt`、`lte`、`gt`、`gte`、`between` の各演算子をサポートします。  | [where ステップ](https://tinkerpop.apache.org/docs/3.3.2/reference/#where-step) |
 
 Azure Cosmos DB によって提供された書き込みに最適化されたエンジンは、頂点および辺内のすべてのプロパティの自動インデックス作成を既定でサポートしています。 そのため、任意のプロパティでのフィルターを使用するクエリ、範囲クエリ、並べ替え、または集計は、インデックスに基づいて処理され、効率的に提供されます。 Azure Cosmos DB におけるインデックス作成のしくみの詳細については、[スキーマに依存しないインデックス作成](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)に関する論文をご覧ください。
 

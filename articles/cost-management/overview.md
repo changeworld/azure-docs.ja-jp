@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0bdf47991435a9a28a4db12f3aa89478b18bb9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b989e5cf5b66d21c19d58f2f64fbba1927f5d69
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020259"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792796"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Cloudyn サービスとは
 
@@ -24,6 +24,10 @@ Microsoft の子会社である Cloudyn によって、Azure リソースおよ�
 入門ビデオを視聴するには、「[Azure Cloudyn の概要](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo)」を参照してください。
 
 Azure Cost Management は Cloudyn と同様の機能を提供します。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストを分析し、予算を作成して管理し、データをエクスポートし、最適化のための推奨事項を検討して対処することで、費用を節約できます。 詳細については、「[Azure Cost Management](overview-cost-mgt.md)」を参照してください。
+
+ビジネス ニーズに基づいて、Azure Cost Management または Cloudyn のどちらかを使用する必要がある場合の推奨事項を確認するには、[Azure Cost Management と Cloudyn のビデオ](https://www.youtube.com/watch?v=PmwFWwSluh8)をご覧ください。
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Azure Cost Management に移行される Cloudyn の機能
 

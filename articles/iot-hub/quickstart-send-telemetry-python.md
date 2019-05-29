@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: fc303a0ab53c80c91bb29c36a1a7e0f04c4a89e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006882"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873101"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
 
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートで実行するサンプル アプリケーションは、Python を使って書かれています。 現在、Python 用の Microsoft Azure IoT SDK は、プラットフォームごとに特定のバージョンの Python のみをサポートしています。 詳細については、[Python SDK Readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) を参照してください。
 
-このクイック スタートでは、Windows の開発用コンピューターを使用することを前提としています。 Windows システムの場合、[Python 3.6.x](https://www.python.org/downloads/release/python-368/) のみがサポートされています。 選択する Python インストーラーは、ご使用のシステムのアーキテクチャによって異なります。 ご使用のシステムの CPU アーキテクチャが 32 ビットである場合は、x86 インストーラーをダウンロードします。64 ビット アーキテクチャの場合は、x86-64 インストーラーをダウンロードします。 さらに、[Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)がご使用のアーキテクチャ (x86 または x64) にインストールされていることを確認してください。
+このクイック スタートでは、Windows の開発用コンピューターを使用することを前提としています。 Windows システムの場合、[Python 3.6.x](https://www.python.org/downloads/release/python-368/) のみがサポートされています。 選択する Python インストーラーは、ご使用のシステムのアーキテクチャによって異なります。 システムの CPU アーキテクチャが 32 ビットである場合は、x86 インストーラーをダウンロードします。64 ビット アーキテクチャの場合は、x86-64 インストーラーをダウンロードします。 さらに、[Visual Studio 2019 用の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) が、使用しているアーキテクチャ (x86 または x64) 用にインストールされていることを確認してください。
 
 他のプラットフォームに対応する Python を [Python.org](https://www.python.org/downloads/) からダウンロードできます。
 
@@ -73,7 +73,7 @@ https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip か
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します。
 
     **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/26/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: cc910359b5519d2cf1bd8a8bf019924dff660362
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73caa57fe7e721d69091bfb6ee74f7d88baf1ba3
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852289"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979085"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して .NET Web アプリを構築する 
 
@@ -26,7 +26,7 @@ ms.locfileid: "57852289"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
 
 このクイック スタートでは、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用して Cosmos アカウントを作成する方法を示します。 次に、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用してタスク リスト Web アプリを構築し、デプロイします。
 
@@ -34,7 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 サンプルを実行するためには、[Visual Studio](https://www.visualstudio.com/downloads/) および有効な Azure CosmosDB アカウントが必要です。
 
-まだ Visual Studio をお持ちでない場合は、[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[ASP.NET と Web 開発]** のワークロードをインストールしてください。
+まだ Visual Studio を持っていない場合は、 **[ASP.NET および Web の開発]** ワークロードがセットアップと共にインストールされた状態で [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
@@ -130,7 +130,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure portal](https://portal.azure.com/) で Cosmos アカウントを使用して、左側のナビゲーションにある **[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) で Cosmos アカウントを使用して、左側のナビゲーションにある **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
 2. **DAL** ディレクトリ内の **Dal.cs** ファイルを開きます。 
 
@@ -144,7 +144,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
 
 2. NuGet の **[参照]** ボックスに「*MongoDB.Driver*」と入力します。
 
@@ -152,7 +152,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 4. Ctrl + F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
 
-5. ブラウザーで、**[作成]** をクリックし、タスク リスト アプリで、いくつか新しいタスクを作成します。
+5. ブラウザーで、 **[作成]** をクリックし、タスク リスト アプリで、いくつか新しいタスクを作成します。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

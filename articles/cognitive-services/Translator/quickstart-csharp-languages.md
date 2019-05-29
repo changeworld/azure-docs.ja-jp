@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: efa8399d20f6bacb41720d77e14336833f085323
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: aa9c59485882ea52a30471a76f2ee7377b847b8c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916577"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602820"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>クイック スタート:Translator Text API と C# を使用してサポートされている言語の一覧を取得する
 
@@ -142,7 +142,7 @@ dotnet run
 
 ## <a name="sample-response"></a>応答のサンプル
 
-国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
+国/地域の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 {

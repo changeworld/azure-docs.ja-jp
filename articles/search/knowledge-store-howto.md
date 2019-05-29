@@ -8,16 +8,20 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: e7be2dfc811caa087726339846a1de2516f1e2b2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471753"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540722"
 ---
-# <a name="how-to-get-started-with-knowledge-store"></a>ナレッジ ストアの使用を開始する方法
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Azure Search でナレッジ ストアの使用を開始する方法
 
-[ナレッジ ストア](knowledge-store-concept-intro.md)は、Azure Search 内の新しいプレビュー機能であり、他のアプリ内のナレッジ マイニング用にインデックス作成パイプラインに作成された AI エンリッチメントを保存します。 保存されているエンリッチメントを使用して、Azure Search インデックス作成パイプラインを理解し、絞り込むこともできます。
+> [!Note]
+> ナレッジ ストアはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
+>
+
+[ナレッジ ストア](knowledge-store-concept-intro.md)には、他のアプリでのダウンストリーム ナレッジ マイニング用に Azure Storage アカウントにインデックスを付けている間に作成された AI エンリッチメントが保存されます。 保存されているエンリッチメントを使用して、Azure Search インデックス作成パイプラインを理解し、絞り込むこともできます。
 
 ナレッジ ストアは、スキルセットによって定義されます。 Azure Search の通常のフルテキスト検索シナリオでは、スキルセットの目的は、コンテンツをより検索しやすくする AI エンリッチメントを提供することです。 ナレッジ マイニングのシナリオでは、スキルセットの役割は、他のアプリとプロセスでの分析やモデリングのために複数のデータ構造を作成、設定、保存することです。
 
@@ -45,7 +49,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
     ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -53,7 +57,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="prepare-sample-data"></a>サンプル データの準備
 
-1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、**[+ コンテナー]** をクリックします。
+1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
 1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 コンテナー名 "caselaw-test" を使用します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
@@ -61,7 +65,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
    ![コマンド バーの [アップロード]](media/search-semi-structured-data/upload-command-bar.png "コマンド バーの [アップロード]")
 
-1. **caselaw-sample.json** サンプル ファイルを含むフォルダーに移動します。 ファイルを選択し、**[アップロード]** をクリックします。
+1. **caselaw-sample.json** サンプル ファイルを含むフォルダーに移動します。 ファイルを選択し、 **[アップロード]** をクリックします。
 
 
 ## <a name="set-up-postman"></a>Postman の設定

@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 530730dcf303a54803816e6f2af8787298c1c658
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339460"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795586"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -39,7 +39,7 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
 ## <a name="dnssec"></a>DNSSEC
 
-現在、Azure DNS で DNSSEC はサポートされません。 ほとんどの場合、アプリケーションで常に HTTPS/TLS を使用することで DNSSEC の必要性を減らすことができます。 DNSSEC が DNS ゾーンにとって重要な要件である場合は、サード パーティの DNS ホスティング プロバイダーを使用してこれらのゾーンをホストすることができます。
+現在、Azure DNS で DNSSEC はサポートされません。 ほとんどの場合は、アプリケーションで常に HTTPS/TLS を使用することによって DNSSEC の必要性を減らすことができます。 DNSSEC が DNS ゾーンにとって重要な要件である場合は、サード パーティの DNS ホスティング プロバイダーを使用してこれらのゾーンをホストすることができます。
 
 ## <a name="ease-of-use"></a>使いやすさ
 

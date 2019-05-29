@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 943131bc746b5d2a1fd95a26a6a6c9f3bb6b9e57
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 020e0395c7678f6856a293c8386a44d7a959bc06
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509952"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -53,11 +53,11 @@ Azure AD でシングル サインオンを設定するには、新しいエン�
 
 **ギャラリーから SAML SSO for Jira by resolution GmbH を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -65,7 +65,7 @@ Azure AD でシングル サインオンを設定するには、新しいエン�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. [検索] ボックスに「**SAML SSO for Jira by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Jira by resolution GmbH]** を選び、**[追加]** をクリックして、アプリケーションを追加します。 エンタープライズ アプリの名前を変更することもできます。
+4. [検索] ボックスに「**SAML SSO for Jira by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Jira by resolution GmbH]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。 エンタープライズ アプリの名前を変更することもできます。
 
      ![結果一覧の SAML SSO for Jira by resolution GmbH](common/search-new-app.png)
 
@@ -93,11 +93,11 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** で、**[SAML]** モードを選択してシングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** で、 **[SAML]** モードを選択してシングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. その後、**[編集]** アイコンをクリックして、**[基本的な SAML 構成]** ダイアログを開きます。
+3. その後、 **[編集]** アイコンをクリックして、 **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,14 +109,14 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
     b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します
 
-    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして、次の手順のようにします。
+    c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして、次の手順のようにします。
 
     ![[SAML SSO for Jira by resolution GmbH のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` という形式で URL を入力します。
 
     > [!NOTE]
-    > 識別子、応答 URL、サインオン URL では、**\<server-base-url>** を Jira インスタンスのベース URL に置き換えます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 問題がある場合は、[SAML SSO for Jira by resolution GmbH クライアント サポート チーム](https://www.resolution.de/go/support)に問い合わせてください。
+    > 識別子、応答 URL、サインオン URL では、 **\<server-base-url>** を Jira インスタンスのベース URL に置き換えます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 問題がある場合は、[SAML SSO for Jira by resolution GmbH クライアント サポート チーム](https://www.resolution.de/go/support)に問い合わせてください。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
@@ -126,29 +126,29 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
 1. 別の Web ブラウザー ウィンドウで、Jira インスタンスに管理者としてサインインします。
 
-2. 右側にある歯車アイコンをポイントし、**[Manage apps]\(アプリの管理\)** をクリックします。
+2. 右側にある歯車アイコンをポイントし、 **[Manage apps]\(アプリの管理\)** をクリックします。
     
     ![Configure single sign-on](./media/samlssojira-tutorial/addon1.png)
 
-3. [Administrator Access]\(管理者アクセス\) ページにリダイレクトされる場合は、**[Password]\(パスワード\)** を入力し、**[Confirm]\(確認\)** ボタンをクリックします。
+3. [Administrator Access]\(管理者アクセス\) ページにリダイレクトされる場合は、 **[Password]\(パスワード\)** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
     ![Configure single sign-on](./media/samlssojira-tutorial/addon2.png)
 
-4. Jira では通常、Atlassian マーケットプレースにリダイレクトされます。 そうでない場合は、左側のパネルで **[Find new apps]\(新しいアプリの検索\)** をクリックします。 **[SAML Single Sign On (SSO) for JIRA]\(JIRA の SAML シングル サインオン \(SSO\)\)** を検索し、**[Install]\(インストール\)** ボタンをクリックして、SAML プラグインをインストールします。
+4. Jira では通常、Atlassian マーケットプレースにリダイレクトされます。 そうでない場合は、左側のパネルで **[Find new apps]\(新しいアプリの検索\)** をクリックします。 **[SAML Single Sign On (SSO) for JIRA]\(JIRA の SAML シングル サインオン \(SSO\)\)** を検索し、 **[Install]\(インストール\)** ボタンをクリックして、SAML プラグインをインストールします。
 
     ![Configure single sign-on](./media/samlssojira-tutorial/store.png)
 
-5. プラグインのインストールが開始されます。 終わったら、**[Close]\(閉じる\)** ボタンをクリックします。
+5. プラグインのインストールが開始されます。 終わったら、 **[Close]\(閉じる\)** ボタンをクリックします。
 
     ![Configure single sign-on](./media/samlssojira-tutorial/store-2.png)
 
     ![Configure single sign-on](./media/samlssojira-tutorial/store-3.png)
 
-6. 次に、**[Manage]\(管理\)** をクリックします。
+6. 次に、 **[Manage]\(管理\)** をクリックします。
 
     ![Configure single sign-on](./media/samlssojira-tutorial/store-4.png)
     
-8. その後、**[Configure]\(構成\)** をクリックして、インストールしたばかりのプラグインを構成します。
+8. その後、 **[Configure]\(構成\)** をクリックして、インストールしたばかりのプラグインを構成します。
 
     ![Configure single sign-on](./media/samlssojira-tutorial/store-5.png)
 
@@ -168,7 +168,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
     
     d. **[次へ]** をクリックします。
     
-11. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[Next]\(次へ\)** をクリックします。
+11. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、 **[次へ]** をクリックします。
  
     ![Configure single sign-on](./media/samlssojira-tutorial/addon5b.png)
 
@@ -184,15 +184,15 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
      
     d. **[次へ]** をクリックします。
     
-13. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、**[Next]\(次へ\)** ボタンをクリックします。
+13. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、 **[Next]\(次へ\)** ボタンをクリックします。
 
     ![Configure single sign-on](./media/samlssojira-tutorial/addon5d.png)
     
-14. **[User creation and update]\(ユーザーの作成と更新\)** ページで、**[Save & Next]\(保存して次へ\)** をクリックして設定を保存します。
+14. **[User creation and update]\(ユーザーの作成と更新\)** ページで、 **[Save & Next]\(保存して次へ\)** をクリックして設定を保存します。
     
     ![Configure single sign-on](./media/samlssojira-tutorial/addon6a.png)
     
-15. **[Test your settings]\(設定のテスト\)** ページで、**[Skip test & configure manually]\(テストをスキップして手動で構成\)** をクリックして、今はユーザー テストをスキップします。 テストは次のセクションで実行し、Azure portal でいくつか設定する必要があります。
+15. **[Test your settings]\(設定のテスト\)** ページで、 **[Skip test & configure manually]\(テストをスキップして手動で構成\)** をクリックして、今はユーザー テストをスキップします。 テストは次のセクションで実行し、Azure portal でいくつか設定する必要があります。
     
     ![Configure single sign-on](./media/samlssojira-tutorial/addon6b.png)
     
@@ -204,7 +204,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。 そのユーザーで、シングル サインオンをテストします。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -228,7 +228,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
 このセクションでは、Britta Simon をエンタープライズ アプリケーションに追加します。そうすると、シングル サインオンを使用できるようになります。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。 
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -240,15 +240,15 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** を選択し、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合は、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合は、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-the-test-user-also-in-jira"></a>Jira でもテスト ユーザーを作成する
 
@@ -258,15 +258,15 @@ Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインイン
 
 1. 管理者として Jira インスタンスにサインインします。
 
-2. 歯車アイコンをポイントし、**[User management]\(ユーザー管理\)** を選択します。
+2. 歯車アイコンをポイントし、 **[User management]\(ユーザー管理\)** を選択します。
 
    ![従業員の追加](./media/samlssojira-tutorial/user1.png)
 
-3. [Administrator Access]\(管理者アクセス\) ページにリダイレクトされる場合は、**[Password]\(パスワード\)** を入力し、**[Confirm]\(確認\)** ボタンをクリックします。
+3. [Administrator Access]\(管理者アクセス\) ページにリダイレクトされる場合は、 **[Password]\(パスワード\)** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
     ![従業員の追加](./media/samlssojira-tutorial/user2.png) 
 
-4. **[User management]\(ユーザー管理\)** タブ セクションで、**[create user]\(ユーザーの作成\)** をクリックします。
+4. **[User management]\(ユーザー管理\)** タブ セクションで、 **[create user]\(ユーザーの作成\)** をクリックします。
 
     ![従業員の追加](./media/samlssojira-tutorial/user3-new.png) 
 
@@ -310,7 +310,7 @@ SSO リダイレクトを有効にするには、**お使いの Jira インス�
 
 1. 右上隅の **[Save Settings]\(設定の保存\)** ボタンをクリックします。
 
-オプションを有効にした後でも、[https://\<server-base-url>/login.jsp?nosso](https://\<server-base-url>/login.jsp?nosso) に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、ユーザー名/パスワードの入力を求められることがあります。 やはり、**\<server-base-url>** はベース URL に置き換えます。
+オプションを有効にした後でも、[https://\<server-base-url>/login.jsp?nosso](https://\<server-base-url>/login.jsp?nosso) に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、ユーザー名/パスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
 
 
 ## <a name="additional-resources"></a>その他のリソース

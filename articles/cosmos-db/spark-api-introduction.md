@@ -3,19 +3,21 @@ title: Azure Cosmos DB での Apache Spark を使用した組み込み運用分�
 description: Azure Cosmos DB で Apache Spark の組み込みサポートを利用して運用分析と AI を実行する方法について説明します
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 504f463f55edf1a22f99e1ba02449121e8bf5efc
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: c62639feed7ced9d92e29715e350b952465a94a1
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472255"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517721"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Azure Cosmos DB での Apache Spark を使用した組み込み運用分析 (プレビュー) 
 
 Azure Cosmos DB での Apache Spark の組み込みサポートにより、Azure Cosmos アカウントに保存されているデータに対する分析を Apache Spark から実行できます。 また、グローバルに分散された Cosmos データベースで Apache Spark ジョブを直接実行する処理がネイティブにサポートされます。 このような機能があることで、開発者、データ エンジニア、データ サイエンティストは **OLTP と OLAP/HTAP** という両方のワークロードを実行する柔軟性、拡張性、パフォーマンスに優れたデータ プラットフォームとして Azure Cosmos DB を使用できます。 
+
+Spark コンピューティングは、Azure Cosmos アカウントに関連付けられたすべての Azure リージョンで自動的に使用できます。 Spark ジョブは、Azure Cosmos DB のマルチマスター機能を使用し、各リージョンでのローカル レプリカに対して書き込みやクエリを行えます。 
 
 > [!NOTE]
 > 現在、Azure Cosmos DB での Apache Spark の組み込みサポートは、制限付きのプレビュー段階です。 プレビューに申し込むには、[プレビューのためのサインアップ](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB) ページに移動してください。 
@@ -72,6 +74,12 @@ Apache Spark ジョブには、業界をリードする包括的な [SLA](https:
 ### <a name="mixed-workloads"></a>ワークロードの混在
 
 Apache Spark を Azure Cosmos DB に統合することで、分離していたトランザクションと分析がつながります。この分離は、クラウドネイティブのアプリケーションを世界規模で構築するとき、顧客にとって大きな難点の 1 つでした。 
+
+## <a name="built-in-jupyter-notebooks-support"></a>組み込み Jupyter Notebook のサポート
+
+Azure Cosmos DB では、Cassandra、MongoDB、SQL、Gremlin、テーブルなど、すべての API の Jupyter Notebook をサポートします。 Jupyter Notebook は Azure Cosmos DB アカウント内で実行し、開発者エクスペリエンスを高めます。 組み込み Notebook がすべての Azure Cosmos DB API とデータ モデルをサポートしているので、対話形式でクエリを実行できます。 機械学習モデルを実行し、Azure Cosmos データベースに格納されたデータを分析することもできます。 Jupyter Notebook エクスペリエンスを使用することにより、格納されたデータを分析し、機械学習モデルをビルドおよびトレーニングし、次の図に示すように Azure portal のデータに対して推論を実行できます。
+
+![Azure Cosmos DB における Jupyter Notebook のサポート](./media/spark-api-introduction/jupyter-notebooks-portal.png)
 
 ## <a name="next-steps"></a>次の手順
 

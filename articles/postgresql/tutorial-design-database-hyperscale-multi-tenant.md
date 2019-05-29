@@ -8,13 +8,13 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: b135baf73e21cd524b6e8fad35452362f36cf0c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/14/2019
+ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079547"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792271"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用して、マルチテナント データベースを設計する
 
@@ -31,72 +31,7 @@ ms.locfileid: "65079547"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
-
-[Azure Portal](https://portal.azure.com) にサインインします。
-
-## <a name="create-an-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の作成
-
-Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
-1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[新規]** ページで **[データベース]** を選択し、**[データベース]** ページで **[Azure Database for PostgreSQL]** を選択します。
-3. デプロイ オプションについては、**[Hyperscale (Citus) サーバー グループ - プレビュー]** の下にある **[作成]** ボタンをクリックします。
-4. 新しいサーバーの詳細フォームには次の情報を入力してください。
-   - リソース グループ: このフィールドのテキスト ボックスの下の **[新規作成]** リンクをクリックします。 **myresourcegroup** などの名前を入力します。
-   - サーバー グループ名: 新しいサーバー グループの一意の名前を入力します。これはサーバー サブドメインにも使用されます。
-   - 管理者ユーザー名: 一意のユーザー名を入力します。これは後でデータベースへの接続に使用されます。
-   - パスワード: 少なくとも 8 文字で、次のカテゴリのうち 3 つのカテゴリの文字が含まれている必要があります。英字大文字、英字小文字、数字 (0 - 9)、英数字以外の文字 (!、$、#、% など)。
-   - 場所: データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。
-
-   > [!IMPORTANT]
-   > ここで指定するサーバー管理者のログイン名とパスワードは、このチュートリアルの後半でサーバーとそのデータベースにログインするために必要です。 後で使用するために、この情報を覚えておくか、記録しておきます。
-
-5. **[サーバー グループの構成]** をクリックします。 そのセクションの設定を変更しないで、**[保存]** をクリックします。
-6. **[確認と作成]**、**[作成]** の順にクリックして、サーバーをプロビジョニングします。 プロビジョニングには数分かかります。
-7. ページは、デプロイを監視するためにリダイレクトされます。 ライブ状態が **[デプロイが進行中です]** から **[デプロイが完了しました]** に変わったら、ページの左側にある **[出力]** メニュー項目をクリックします。
-8. 出力ページには、コーディネーターのホスト名が含まれており、値をクリップボードにコピーするためのボタンが横に付いています。 後で使用するために、この情報を記録しておきます。
-
-## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
-
-Azure Database for PostgreSQL サービスは、サーバーレベルでファイアウォールを使用します。 既定では、ファイアウォールは、すべての外部のアプリケーションとツールがサーバーやサーバー上のデータベースに接続することを防止します。 特定の IP アドレス範囲のファイアウォールを開放する規則を追加する必要があります。
-
-1. コーディネーター ノードのホスト名を以前にコピーした **[出力]** セクションから、[戻る] をクリックして **[概要]** メニュー項目に戻ります。
-
-2. リソースの一覧でデプロイのスケーリング グループを見つけて、クリックします。 (グループ名の先頭には "sg-" が付きます。)
-
-3. 左側のメニューの **[セキュリティ]** の下にある **[ファイアウォール]** をクリックします。
-
-4. **[+ 現在のクライアント IP アドレスに対するファイアウォール規則の追加]** リンクをクリックします。 最後に、**[保存]** ボタンをクリックします。
-
-5. **[Save]** をクリックします。
-
-   > [!NOTE]
-   > Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Cloud Shell で psql を使用してデータベースに接続する
-
-ここでは [psql](https://www.postgresql.org/docs/current/app-psql.html) コマンド ライン ユーティリティを使用して、Azure Database for PostgreSQL サーバーに接続しましょう。
-1. 上部のナビゲーション ウィンドウで、ターミナルのアイコンをクリックして Azure Cloud Shell を起動します。
-
-   ![Azure Database for PostgreSQL - Azure Cloud Shell ターミナル アイコン](./media/tutorial-design-database-hyperscale-multi-tenant/psql-cloud-shell.png)
-
-2. Azure Cloud Shell がブラウザで開き、bash コマンドを入力できます。
-
-   ![Azure Database for PostgreSQL - Azure Shell Bash プロンプト](./media/tutorial-design-database-hyperscale-multi-tenant/psql-bash.png)
-
-3. Cloud Shell プロンプトで、psql コマンドを使用して Azure Database for PostgreSQL サーバーに接続します。 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティで Azure Database for PostgreSQL サーバーに接続するには、次の形式を使用します。
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mydemoserver.postgres.database.azure.com** にある既定のデータベース **citus** に接続します。 サーバー管理者のパスワードを求められたら、入力します。
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>psql ユーティリティを使用してスキーマを作成する
 
@@ -250,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 これまで、すべてのテーブルは `company_id` によって分散されていましたが、一部のデータは特定のテナントに自然に "属している" のではなく、共有することができます。 たとえば、サンプルの広告プラットフォームのすべての会社は、IP アドレスに基づいて対象ユーザーの地理情報を取得する必要があるかもしれません。
 
-共有されている地理情報を保持するためのテーブルを作成します。 psql で、以下を実行します。
+共有されている地理情報を保持するためのテーブルを作成します。 次のコマンドを psql で実行します。
 
 ```sql
 CREATE TABLE geo_ips (
@@ -268,7 +203,7 @@ CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 SELECT create_reference_table('geo_ips');
 ```
 
-サンプル データで読み込みます。 これは必ず、データセットをダウンロードしたディレクトリ内の psql で実行してください。
+サンプル データで読み込みます。 このコマンドは必ず、データセットをダウンロードしたディレクトリ内の psql で実行してください。
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
@@ -330,7 +265,7 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの *[概要]* ページで、*[削除]* ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の *[削除]* ボタンをクリックします。
+前の手順では、サーバー グループ内に Azure リソースを作成しました。 これらのリソースが将来不要であると思われる場合は、サーバー グループを削除します。 サーバー グループの *[概要]* ページで、 *[削除]* ボタンを押します。 ポップアップ ページでメッセージが表示されたら、サーバー グループの名前を確認し、最後の *[削除]* ボタンをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -338,4 +273,4 @@ SELECT id
 
 次に、ハイパースケールの概念について説明します。
 > [!div class="nextstepaction"]
-> [ハイパースケールのノード タイプ](https://aka.ms/hyperscale-concepts)
+> [ハイパースケールのノードの種類](https://aka.ms/hyperscale-concepts)

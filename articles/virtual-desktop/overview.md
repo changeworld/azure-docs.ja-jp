@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004586"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965721"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューとは 
 
@@ -54,16 +54,13 @@ Windows Virtual Desktop を使うと、スケーラブルで柔軟な環境を�
 
 Windows Virtual Desktop を設定し、ユーザーを Windows のデスクトップやアプリケーションに正常に接続するうえで必要なことがいくつかあります。
 
-現在、Windows Virtual Desktop では、次の 2 つの OS のみがサポートされます。
-- Windows 10 (Enterprise マルチセッション)
-- Windows Server 2016
-
 以下の OS のサポートが追加される予定になっています。デプロイする予定のデスクトップとアプリに基づいて、ユーザーのための[適切なライセンス](https://azure.microsoft.com/pricing/details/virtual-desktop/)があることを確認してください。
 
 |OS|必要とされるライセンス|
 |---|---|
-
-|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft E3、E5、A3、A5、Business<br>Windows E3, E5, A3, A5| |Windows 7 Enterprise |Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5| |Windows Server 2012 R2、2016、2019|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
+|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows Server 2012 R2、2016、2019|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
 
@@ -76,9 +73,7 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
 * [標準ドメイン参加済み](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)または [Hybrid AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)であること。 仮想マシンを Azure AD に参加させることはできません。
-* サポート対象となる次のいずれかの OS イメージを実行していること。
-  * Windows 10 (Enterprise マルチセッション)
-  * Windows Server 2016
+* 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-image)を実行していること。
 
 >[!NOTE]
 >Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
@@ -88,8 +83,23 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 最適なパフォーマンスを実現するために、お使いのネットワークが次の要件を満たしていることを確認してください。
 
 * クライアントのネットワークからホスト プールをデプロイした Azure リージョンまでのラウンドトリップ (RTT) 待ち時間は、150 ミリ秒を下回っている必要があります。
-* デスクトップとアプリをホストしている VM が管理サービスに接続する際には、ネットワーク トラフィックが国外に流れることがあります。
+* デスクトップとアプリをホストしている VM が管理サービスに接続する際には、ネットワーク トラフィックが国/リージョン外に流れることがあります。
 * ネットワークのパフォーマンスを最適化するために、セッション ホストの VM を管理サービスと同じ Azure リージョンに配置することをお勧めします。
+
+## <a name="supported-remote-desktop-clients"></a>サポートされているリモート デスクトップ クライアント
+
+次のリモート デスクトップ クライアントは、Windows Virtual Desktop をサポートします。
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+
+## <a name="supported-virtual-machine-os-image"></a>サポートされている仮想マシン OS イメージ
+
+Windows Virtual Desktop は、次の OS イメージをサポートします。
+
+* Windows 10 (Enterprise マルチセッション)
+* Windows Server 2016
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 

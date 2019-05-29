@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 629adfe558aec71e156e50c75aa0891eac5a8bcf
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890779"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979043"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>クイック スタート:.NET SDK と Azure Cosmos DB で Table API アプリをビルドする 
 
@@ -28,7 +28,7 @@ ms.locfileid: "60890779"
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,7 +68,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Visual Studio でサンプル アプリケーションを開く
 
-1. Visual Studio で、**[ファイル]** メニューから **[開く]** を選択して、**[プロジェクト/ソリューション]** を選択します。 
+1. Visual Studio で、 **[ファイル]** メニューから **[開く]** を選択して、 **[プロジェクト/ソリューション]** を選択します。 
 
    ![ソリューションを開く](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
@@ -98,7 +98,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 ## <a name="build-and-deploy-the-app"></a>アプリを構築してデプロイする
 
-1. Visual Studio の**ソリューション エクスプローラー**で **CosmosTableSamples** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の**ソリューション エクスプローラー**で **CosmosTableSamples** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 
 
    ![NuGet パッケージの管理](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
@@ -108,7 +108,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 3. **[インストール]** をクリックして **Microsoft.Azure.Cosmos.Table** ライブラリをインストールします。 これにより、Azure Cosmos DB Table API パッケージとすべての依存関係がインストールされます。
 
-4. アプリ全体を実行すると、サンプル データがテーブル エンティティに挿入され、終わりのところで削除されます。そのため、サンプル全体を実行した場合、データが挿入されても表示されません。 ただし、ブレークポイントを挿入することでデータを表示できます。 BasicSamples.cs ファイルを開き、52 行目を右クリックし、**[ブレークポイント]** と **[ブレークポイントの挿入]** を順に選択します。 55 行目にもブレークポイントを挿入します。
+4. アプリ全体を実行すると、サンプル データがテーブル エンティティに挿入され、終わりのところで削除されます。そのため、サンプル全体を実行した場合、データが挿入されても表示されません。 ただし、ブレークポイントを挿入することでデータを表示できます。 BasicSamples.cs ファイルを開き、52 行目を右クリックし、 **[ブレークポイント]** と **[ブレークポイントの挿入]** を順に選択します。 55 行目にもブレークポイントを挿入します。
 
    ![Add a breakpoint](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
 
@@ -134,7 +134,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
     
 7. F5 キーを押して、次のブレークポイントまでアプリを実行します。 
 
-    ブレークポイントにヒットしたら、Azure Portal に戻り、**[エンティティ]** を再びクリックして **[エンティティ]** タブを開き、電話番号が 425-555-0105 に更新されていることを確認します。
+    ブレークポイントにヒットしたら、Azure Portal に戻り、 **[エンティティ]** を再びクリックして **[エンティティ]** タブを開き、電話番号が 425-555-0105 に更新されていることを確認します。
 
 8. F5 キーを押して、アプリを実行します。 
  

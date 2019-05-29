@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8201b4089759fb55fae12820f7495664c502837e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023642"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540893"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 
@@ -25,7 +25,7 @@ ms.locfileid: "65023642"
 
 + **画像処理**スキルには、[光学式文字認識 (OCR)](cognitive-search-skill-ocr.md) および[ビジュアル フィーチャー](cognitive-search-skill-image-analysis.md)の特定 (例: 顔検出、画像の解釈、画像の認識 (有名な人やランドマーク)、色や画像の向きなどの属性) が含まれます。 Azure Search のすべてのクエリ機能を使用して、検索可能な画像コンテンツのテキスト表現を作成できます。
 
-![コグニティブ検索パイプライン ダイアグラム](./media/cognitive-search-intro/cogsearch-architecture.png "コグニティブ検索パイプラインの概要")
+![コグニティブ検索パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "コグニティブ検索パイプラインの概要")
 
 Azure Search のコグニティブ スキルは、Cognitive Services API の機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 
 
@@ -61,7 +61,7 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 
 [検索サービス REST api-version=2019-05-06](search-api-preview.md) では、Azure ストレージ接続を提供する knowledgeStore 定義とエンリッチメントの格納方法について説明するプロジェクションによってスキルセットが拡張されます。 
 
-スキルセットにナレッジ ストアを追加すると、フルテキスト検索以外のシナリオにエンリッチメントの表現を投影できるようになります。 詳細については、[ナレッジ ストア](knowledge-store-concept-intro.md)に関するページを参照してください。
+スキルセットにナレッジ ストアを追加すると、フルテキスト検索以外のシナリオにエンリッチメントの表現を投影できるようになります。 詳細については、[ナレッジ ストアの概要](knowledge-store-concept-intro.md)に関するページを参照してください。
 
 ### <a name="step-3-search-index-and-query-based-access"></a>手順 3:検索インデックスとクエリ ベースのアクセス
 

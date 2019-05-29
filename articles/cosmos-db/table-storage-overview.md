@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: overview
-ms.date: 11/03/2017
+ms.date: 05/20/2019
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 69d2eb1627d42c12a0af024bf1c80e787ed5eca7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 37249d904343a4eddb0d1e82f451c3b9e95a479d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044503"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953508"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 
@@ -30,7 +30,7 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
-* [.Net での Azure Table Storage の概要](table-storage-how-to-use-dotnet.md)
+* [.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要](table-storage-how-to-use-dotnet.md)
 
 * 利用可能な API の詳細については、Table service のリファレンス ドキュメントを参照してください。
 

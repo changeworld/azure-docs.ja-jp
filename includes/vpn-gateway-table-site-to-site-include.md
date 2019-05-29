@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/19/2018
+ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 06809f7afb318c358ef958b1ffd21844ddfa4738
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7238138c8a8a66c974e160a5beda45c8a464a4f2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805271"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170525"
 ---
 | **デプロイメント モデル/方法** | **Azure Portal** | **PowerShell** | **Azure CLI** |
 | --- | --- | --- | --- |
-| リソース マネージャー |[記事](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[記事+](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[記事](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [記事](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
-| クラシック |[記事 ** ](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[記事+](../articles/vpn-gateway/vpn-gateway-multi-site.md) | サポートされていません |
+| リソース マネージャー |[チュートリアル](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[チュートリアル+](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[チュートリアル](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [チュートリアル](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
+| クラシック |[チュートリアル**](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[チュートリアル+](../articles/vpn-gateway/vpn-gateway-multi-site.md) | サポートされていません |
 
 " ** " は、PowerShell が必要な手順がこの方法に含まれていることを示します。
 

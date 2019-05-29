@@ -9,12 +9,12 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440938"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545021"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>クイック スタート:Azure Machine Learning でコードを書かずにデータを準備して視覚化する
 
@@ -43,7 +43,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
 
-1. ワークスペースで、**[ビジュアル インターフェイス]** を選択します。  次に、**[ビジュアル インターフェイスを起動する]** を選択します。  
+1. ワークスペースで、 **[ビジュアル インターフェイス]** を選択します。  次に、 **[ビジュアル インターフェイスを起動する]** を選択します。  
  
     ![ビジュアル インターフェイスを起動する](./media/ui-quickstart-run-experiment/launch-ui.png)
 
@@ -99,13 +99,13 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
    
 1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。
 
-1. キャンバスの右側にある **[Properties]\(プロパティ\)** ウィンドウで、**[Launch column selector]\(列セレクターの起動\)** を選択します。
+1. キャンバスの右側にある **[プロパティ]** ウィンドウで、 **[列の編集]** を選択します。
 
-    **[Select columns]\(列の選択\)** ダイアログで、**[ALL COLUMNS]\(すべての列\)** を選択し、**[all features]\(すべてのフィーチャー\)** を含めます。 ダイアログは次のようになります。
+    **[Select columns]\(列の選択\)** ダイアログで、 **[ALL COLUMNS]\(すべての列\)** を選択し、 **[all features]\(すべてのフィーチャー\)** を含めます。 ダイアログは次のようになります。
 
      ![列セレクター](./media/ui-quickstart-run-experiment/select-all.png)
 
-1. 右下のチェック マーク (OK) ボタンをクリックして列セレクターを閉じます。
+1. 右下の **[OK]** を選択して列セレクターを閉じます。
 
 ## <a name="run-the-experiment"></a>実験を実行する
 
@@ -121,7 +121,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 最初の実験を実行したので、次にデータを視覚化して、作業する必要がある情報についてさらに理解することができます。
 
-1. **Select Columns in Dataset (データセットの列を選択する)** の下部にある出力ポートを選択し、**[Visualize]\(可視化\)** を選択します。
+1. **Select Columns in Dataset (データセットの列を選択する)** の下部にある出力ポートを選択し、 **[Visualize]\(可視化\)** を選択します。
 
 1. データ ウィンドウで別の列をクリックして、その列についての情報を表示します。  
 
@@ -146,13 +146,13 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。
 
-1. キャンバスの右側にある **[Properties]\(プロパティ\)** ウィンドウで、**[Launch column selector]\(列セレクターの起動\)** を選択します。
+1. キャンバスの右側にある **[プロパティ]** ウィンドウで、 **[列の編集]** を選択します。
 
     * **[With rules]\(規則を使用\)** と **[ALL COLUMNS]\(すべての列\)** は選択したままにします。
 
     * ドロップダウンから **[Exclude]\(除外\)** と **[column names]\(列名\)** を選択し、テキスト ボックスの内側をクリックします。 「**normalized-losses**」と入力します。
 
-    * 右下のチェック マーク (OK) ボタンをクリックして列セレクターを閉じます。
+    * 右下の **[OK]** を選択して列セレクターを閉じます。
 
     ![列を除外する](./media/ui-quickstart-run-experiment/exclude-column.png)
         
@@ -182,7 +182,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. **Clean Missing Data (不足データのクリーンアップ)** モジュールを実験キャンバスにドラッグして、**Select Columns in Dataset (データセットの列を選択する)** モジュールに接続します。 
 
-1. [Properties]\(プロパティ\) ウィンドウで、**[Cleaning mode]\(整理モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
+1. [Properties]\(プロパティ\) ウィンドウで、 **[Cleaning mode]\(整理モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
 
     これらのオプションにより、**Clean Missing Data (不足データのクリーンアップ)** では値が不足している行が削除され、データが整理されます。
 

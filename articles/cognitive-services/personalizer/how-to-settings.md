@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143259"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834308"
 ---
 # <a name="personalizer-settings"></a>Personalizer 設定
 
@@ -27,15 +27,15 @@ ms.locfileid: "65143259"
 
 1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの**作成**ページに移動できます。 
 1. サービス名を入力し、サブスクリプション、場所、価格レベル、リソース グループを選択します。
-1. 確認を選択し、**[作成]** を選択します。
+1. 確認を選択し、 **[作成]** を選択します。
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Azure portal でサービス設定を構成する
 
 1. [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) にサインインします。
 1. Personalizer リソースを検索します。 
-1. **リソース管理**セクションで、**[設定]** を選択します。
+1. **リソース管理**セクションで、 **[設定]** を選択します。
 
-    Azure portal を終了する前に、**[キー]** のページからいずれかのリソース キーをコピーします。 これは、[Personalizer SDK](https://aka.ms/personalizer-dotnet-sdk-docs) を使用するために必要になります。
+    Azure portal を終了する前に、 **[キー]** のページからいずれかのリソース キーをコピーします。 これは、[Personalizer SDK](https://go.microsoft.com/fwlink/?linkid=2092353) を使用するために必要になります。
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>ユース ケースに基づいてフィードバック ループの報酬設定を構成する
 
@@ -87,4 +87,7 @@ ms.locfileid: "65143259"
 
 ## <a name="next-steps"></a>次の手順
 
-[Personalizer コンテナーの使用方法](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+<!--
+[How to use the Personalizer container](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
+-->
+[リージョンの可用性の詳細](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

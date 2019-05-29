@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 05/22/2019
 ms.author: jgao
-ms.openlocfilehash: b1b50858286e3a174de254ae16c64b04abc00936
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 802c0409fe3ac88f73c383958d2337be09ef7992
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716009"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016478"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用した Azure Key Vault からのシークレットの設定と取得
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Azure AD ユーザーオブジェクト ID は、
 テンプレートによるアクセス許可の設定で必要です。 次の手順を使用してオブジェクト ID (GUID) を取得します。
 
-    1. **[試してみる]** を選択し、シェル ウィンドウにスクリプトを貼り付けて、次の Azure PowerShell または Azure CLI コマンドを実行します。 スクリプトを貼り付けるには、シェルを右クリックし、**[貼り付け]** を選択します。 
+    1. **[試してみる]** を選択し、シェル ウィンドウにスクリプトを貼り付けて、次の Azure PowerShell または Azure CLI コマンドを実行します。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。 
 
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
@@ -60,10 +60,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     指定がない場合、既定値を使用してキー コンテナーとシークレットを作成してください。
 
     * **サブスクリプション**: Azure サブスクリプションを選択します。
-    * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、**[OK]** をクリックします。 
+    * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。 
     * **場所**: 場所を選択します。  たとえば **[米国中部]** です。
-    * **Key Vault 名**: キー コンテナーの一意の名前を入力します。  
-    * **テナントID**: テンプレート関数は、自動的にテナントID を取得します。既定値を変更しないでください
+    * **Key Vault 名**: .vault.azure.net 名前空間内でグローバルに一意でなければならないキー コンテナーの名前を入力します。  
+    * **テナントID**: テンプレート関数は、自動的にテナントID を取得します。既定値を変更しないでください。
     * **Ad ユーザー ID**: [前提条件](#prerequisites)から取得した Azure AD ユーザー オブジェクト ID を入力します。
     * **シークレット名**: キー コンテナーに格納するシークレットの名前を入力します。  たとえば、**adminpassword** にします。
     * **シークレット値**: シークレットの値を入力します。  パスワードを保管する場合、前提条件で作成したパスワードを使用することをお勧めします。

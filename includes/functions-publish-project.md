@@ -5,29 +5,28 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/27/2018
+ms.date: 04/24/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1b553cbd720fcb76899844712ce5053af46f7ccb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 48bb91b3b2e9a31de63e515edb857bc2a170ea79
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452957"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132252"
 ---
 ## <a name="deploy-the-function-app-project-to-azure"></a>Azure に関数アプリのプロジェクトをデプロイする
 
-Azure で関数アプリを作成した後、[`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment) コマンドを使用して Azure にプロジェクト コードをデプロイすることができます。
+Azure で関数アプリを作成した後、[`func azure functionapp publish`](../articles/azure-functions/functions-run-local.md#project-file-deployment) Core Tools コマンドを使用して Azure にプロジェクト コードをデプロイすることができます。 次のコマンドで、`<APP_NAME>` には、前の手順で作成したアプリの名前を指定します。
 
 ```bash
-func azure functionapp publish <FunctionAppName>
+func azure functionapp publish <APP_NAME>
 ```
 
-読みやすさは不完全ですが、次のような出力が表示されます。
+次のような出力が表示されます (読みやすくするために一部が省略されています)。
 
 ```output
 Getting site publishing info...
-
 ...
 
 Preparing archive...
@@ -35,6 +34,9 @@ Uploading content...
 Upload completed successfully.
 Deployment completed successfully.
 Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-これで、Azure で関数をテストできます。
+HttpTrigger の Invoke URL 値をコピーします。これを使用して Azure で関数をテストできるようになります。 URL には、関数キーである `code` クエリ文字列が含まれています。 このキーにより、他のユーザーが Azure で HTTP トリガー エンドポイントを呼び出すことが難しくなります。

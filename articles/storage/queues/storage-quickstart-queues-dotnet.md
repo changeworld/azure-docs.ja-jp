@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: b80ff38e2afb5e9da6227537ea9c483566d03e4d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232601"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159814"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>クイック スタート:.NET を使用して Azure Storage にキューを作成する
 
@@ -257,7 +257,9 @@ Azure キューを使用する .NET 開発については、以下の追加リ�
 
 ### <a name="binaries-and-source-code"></a>バイナリとソース コード
 
-- Azure Storage 用の [.NET クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンの NuGet パッケージをダウンロードします。 
+- [.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)の最新バージョン用の NuGet パッケージをダウンロードします
+    - [共通](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+    - [キュー](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - GitHub で [.NET クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net)を確認します。
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル

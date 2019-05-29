@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: 05475dbfb7dc1ee3f5de1a9b858eaf212b674eac
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3dad2696332f57d9a0dc86927f91caa7352b1d7b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466384"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884946"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 
@@ -55,7 +55,7 @@ Linux を実行している場合は、Eclipse を開始する前に、これら
   ```
 
 Windows (64 ビット版) を実行している場合は、お使いのプラットフォーム用の Microsoft Visual C++ 再頒布可能パッケージがインストールされていることを確認してください。
-* [Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージをダウンロードする](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [Visual Studio 2019 の Microsoft Visual C++ 再頒布可能パッケージをダウンロードする](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="create-and-configure-project"></a>プロジェクトの作成と構成
 
@@ -63,9 +63,9 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. 新しい空のクラスを Java プロジェクトに追加するために、**[File]**  >  **[New]**  >  **[Class]** の順に選択します。
+1. 新しい空のクラスを Java プロジェクトに追加するために、 **[File]**  >  **[New]**  >  **[Class]** の順に選択します。
 
-1. **[New Java Class]** ウィンドウで、**[Package]** フィールドに **speechsdk.quickstart** と入力し、**[Name]** フィールドに **Main** と入力します。
+1. **[New Java Class]** ウィンドウで、 **[Package]** フィールドに **speechsdk.quickstart** と入力し、 **[Name]** フィールドに **Main** と入力します。
 
    ![[New Java Class] ウィンドウのスクリーンショット](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -81,7 +81,7 @@ Windows (64 ビット版) を実行している場合は、お使いのプラッ
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-F11 キーを押すか、**[Run]**  >  **[Debug]** の順に選択します。
+F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 その後 15 秒間、マイクからの音声入力が認識され、コンソール ウィンドウにログが記録されます。
 
 ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-java-jre-07-console-output.png)

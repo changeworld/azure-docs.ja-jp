@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う - Azure Key Vault | Microsoft Docs
+title: クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う - Azure Key Vault | Microsoft Docs
 description: このクイック スタートでは、.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行います。
 services: key-vault
-author: prashanthyv
+author: msmbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 132711249ffde4a9c49bc997d8c4ebe4d9c74948
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316389"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872537"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -39,7 +39,7 @@ ms.locfileid: "57316389"
 ## <a name="prerequisites"></a>前提条件
 
 * Windows の場合:
-  * 次のワークロードでは [Visual Studio 2017 バージョン 15.7.3 以降](https://www.microsoft.com/net/download/windows)。
+  * [Visual Studio 2019](https://www.microsoft.com/net/download/windows) と次のワークロード:
     * ASP.NET および Web の開発
     * .NET Core クロスプラットフォームの開発
   * [.NET Core 2.1 SDK 以降](https://www.microsoft.com/net/download/windows)
@@ -119,24 +119,24 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 program.cs ファイルを編集し、特定のキー コンテナー名でサンプルを実行します。
 
 1. フォルダー key-vault-dotnet-core-quickstart を参照します。
-2. Visual Studio 2017 で、key-vault-dotnet-core-quickstart.sln ファイルを開きます。
+2. Visual Studio 2019 で、key-vault-dotnet-core-quickstart.sln ファイルを開きます。
 3. Program.cs ファイルを開き、プレースホルダー *YourKeyVaultName* を先ほど作成したキー コンテナーの名前に更新します。
 
 このソリューションでは、[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ライブラリと [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet ライブラリが使用されます。
 
 ## <a name="run-the-app"></a>アプリの実行
 
-Visual Studio 2017 のメイン メニューで、**[デバッグ]** > **[デバッグなしで開始]** と選択します。 ブラウザーが表示されたら、**[バージョン情報]** ページに移動します。 **AppSecret** の値が表示されます。
+Visual Studio 2019 のメイン メニューで、 **[デバッグ]**  >  **[デバッグなしで開始]** と選択します。 ブラウザーが表示されたら、 **[バージョン情報]** ページに移動します。 **AppSecret** の値が表示されます。
 
 ## <a name="publish-the-web-application-to-azure"></a>Azure に Web アプリケーションを発行する
 
 このアプリを Azure に発行し、Web アプリとしてライブであることと、シークレット値を取得することを確認します。
 
 1. Visual Studio で、**key-vault-dotnet-core-quickstart** プロジェクトを選択します。
-2. **[発行]** > **[開始]** の順に選択します。
-3. 新しい **App Service** を作成し、**[発行]** を選択します。
+2. **[発行]**  >  **[開始]** の順に選択します。
+3. 新しい **App Service** を作成し、 **[発行]** を選択します。
 4. アプリ名を **keyvaultdotnetcorequickstart** に変更します。
-5. **作成**を選択します。
+5. **作成** を選択します。
 
 >[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
 
@@ -174,7 +174,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 これで、アプリケーションを実行すると、取得されたシークレットの値が表示されます。 上記のコマンドでは、アプリ サービスの ID に、キー コンテナーに対する **get** および **list** 操作を行うアクセス許可を付与しています。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、VM のリソース グループを選択し、**[削除]** を選択します。
+リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、VM のリソース グループを選択し、 **[削除]** を選択します。
 
 キー コンテナーは、[az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) コマンドを使用して削除します。
 

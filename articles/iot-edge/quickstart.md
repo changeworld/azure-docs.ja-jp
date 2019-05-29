@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7b4fcf34831d17d35e9f4d8b38455ea22293076f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ce6703c507e955ffe98e71f26feca08f9f37dfe5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148082"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146758"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device"></a>クイック スタート:初めての IoT Edge モジュールを Azure portal から Windows デバイスにデプロイする
 
@@ -55,7 +55,7 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
 IoT Edge デバイス: 
 
-* IoT Edge デバイスとして機能する Windows 仮想マシン。 この仮想マシンを作成するには、次のコマンドを使用します。*{password}* は、セキュリティで保護されたパスワードに置き換えます。
+* IoT Edge デバイスとして機能する Windows 仮想マシン。 この仮想マシンを作成するには、次のコマンドを使用します。 *{password}* は、セキュリティで保護されたパスワードに置き換えます。
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -65,7 +65,7 @@ IoT Edge デバイス:
 
   1. Azure portal で、新しい Windows 仮想マシンに移動します。
   1. **[接続]** を選択します。
-  1. **[RDP]** タブで、**[RDP ファイルのダウンロード]** を選択します。
+  1. **[RDP]** タブで、 **[RDP ファイルのダウンロード]** を選択します。
 
   リモート デスクトップ接続でこのファイルを開き、`az vm create` コマンドで指定した管理者名とパスワードを使用して Windows 仮想マシンに接続します。
 
@@ -138,6 +138,13 @@ PowerShell を使用して IoT Edge ランタイムをダウンロードし、�
 1. まだの場合は、[新しい Azure IoT Edge デバイスの登録](how-to-register-device-portal.md)に関するページの手順に従って、デバイスを登録し、デバイス接続文字列を取得します。 
 
 2. PowerShell を管理者として実行します。
+
+   >[!NOTE]
+   >IoT Edge をインストールするには、PowerShell (x86) ではなく PowerShell の AMD64 セッションを使用します。 どのセッションの種類を使用しているかがわからない場合は、次のコマンドを実行します。
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows マシンがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定し、moby ランタイムをダウンロードした後、IoT Edge ランタイムをダウンロードします。
 

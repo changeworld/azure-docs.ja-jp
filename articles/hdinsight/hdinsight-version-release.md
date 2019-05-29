@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: 553f50897afaaf9c677e84f9cfffbff7d2c1e607
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: aa0d01bfbebd5279b5268bae9d161492f30b81de
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679681"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546301"
 ---
 # <a name="hdinsight-40-overview"></a>HDInsight 4.0 の概要
 
@@ -90,7 +90,7 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 ## <a name="limitations"></a>制限事項
 
-* HDInsight 4.0 では、MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
+* HDInsight 4.0 では、Apache Hive 用 MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
 * HDInsight 4.0 では、Apache Storm はサポートされていません。 
 * HDInsight 4.0 では、Hive ビューは使用できなくなります。 
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。

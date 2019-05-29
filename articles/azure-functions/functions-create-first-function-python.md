@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143069"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864512"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
@@ -108,7 +108,7 @@ _HttpTrigger_ という名前のサブフォルダーが作成されます。こ
 
   各バインディングは、方向、型、一意の名前を必要とします。 HTTP トリガーには、[`httpTrigger`](functions-bindings-http-webhook.md#trigger) 型の入力バインディングと、[`http`](functions-bindings-http-webhook.md#output) 型の出力バインディングが与えられます。
 
-* **__init__.py**: HTTP でトリガーされる関数であるスクリプト ファイル。 このスクリプトを見て、それに既定の `main()` が含まれていることを確認します。 トリガーからの HTTP データは、バインディング パラメーターという名前の `req` を利用し、この関数に渡されます。 function.json に定義されている `req` は、[azure.functions.HttpRequest クラス](/python/api/azure-functions/azure.functions.httprequest)のインスタンスです。 
+* **\_\_init\_\_.py**: HTTP でトリガーされる関数であるスクリプト ファイル。 このスクリプトを見て、それに既定の `main()` が含まれていることを確認します。 トリガーからの HTTP データは、バインディング パラメーターという名前の `req` を利用し、この関数に渡されます。 function.json に定義されている `req` は、[azure.functions.HttpRequest クラス](/python/api/azure-functions/azure.functions.httprequest)のインスタンスです。 
 
     function.json に `$return` として定義されているリターン オブジェクトは、[azure.functions.HttpResponse クラス](/python/api/azure-functions/azure.functions.httpresponse)のインスタンスです。 詳細については、「[Azure Functions の HTTP トリガーとバインド](functions-bindings-http-webhook.md)」を参照してください。
 

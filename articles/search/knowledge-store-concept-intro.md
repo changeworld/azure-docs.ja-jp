@@ -1,5 +1,5 @@
 ---
-title: ナレッジ ストアの紹介と概要 - Azure Search
+title: ナレッジ ストアの紹介と概要 (プレビュー) - Azure Search
 description: Azure ストレージにエンリッチメントされたドキュメントを送信し、そこで Azure Search および他のアプリケーション内のエンリッチメントされたドキュメントを表示、整形、および使用することができます。
 manager: cgronlun
 author: HeidiSteen
@@ -9,16 +9,20 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 3000016de934aaa3faab96821f9747ea4b571ef7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4a27e4d8f2fbaafe6d27a3e3cabd31aa715b9d80
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030090"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540745"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search 内のナレッジ ストアとは
 
-ナレッジ ストアは、現在パブリック プレビュー段階にある Azure Search のオプション機能であり、エンリッチメントされたドキュメントと、AI ベースのインデックス作成パイプライン [(コグニティブ検索)](cognitive-search-concept-intro.md) によって作成されたメタデータを保存します。 ナレッジ ストアは、パイプラインの一部として構成する Azure ストレージ アカウントによってサポートされます。 有効にすると、検索サービスでは、エンリッチメントされた各ドキュメントの表現をキャッシュするためにこのストレージ アカウントが使用されます。 
+> [!Note]
+> ナレッジ ストアはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
+>
+
+ナレッジ ストアは、Azure Search のオプション機能であり、エンリッチメントされたドキュメントと、AI ベースのインデックス作成パイプライン [(コグニティブ検索)](cognitive-search-concept-intro.md) によって作成されたメタデータを保存します。 ナレッジ ストアは、パイプラインの一部として構成する Azure ストレージ アカウントによってサポートされます。 有効にすると、検索サービスでは、エンリッチメントされた各ドキュメントの表現をキャッシュするためにこのストレージ アカウントが使用されます。 
 
 過去にコグニティブ検索を使用していた場合は、スキルセットを使用して、一連のエンリッチメントを通じてドキュメントを移動できることは既にわかっています。 結果は、Azure Search インデックスまたは (このプレビューの新機能である) ナレッジ ストア内のプロジェクションです。
 

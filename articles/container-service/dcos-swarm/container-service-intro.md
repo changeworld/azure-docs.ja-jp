@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 957725d40c66ffe9d8d7ce1362279c2bb4d4fded
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528867"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788733"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(非推奨) Azure Container Service を使用した Docker コンテナー ホスティング ソリューションの概要 
 
@@ -45,7 +45,7 @@ DC/OS は、Apache Mesos 分散システムのカーネルをベースとする�
 DC/OS と Apache Mesos の特筆すべき機能を以下に示します。
 
 * 実証済みのスケーラビリティ
-* Apache ZooKeeper を使用したフォールト トレランス機能を備えたレプリケートされたマスターおよびスレーブ
+* Apache ZooKeeper を使用したフォールト トレラントのレプリケートされたプライマリとセカンダリ
 * Docker 形式コンテナーのサポート
 * Linux コンテナーを使用したタスク間のネイティブな分離
 * (メモリ、CPU、ディスクおよびポートの) マルチリソース スケジューリング

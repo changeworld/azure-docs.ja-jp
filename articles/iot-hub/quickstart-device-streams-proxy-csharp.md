@@ -10,20 +10,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: d36737e6007f247777689e2afa9f47b3ad5bf107
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 514c2e0ea1ef33406c6633064434239d8bdd0e3f
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006663"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832966"
 ---
-# <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
+# <a name="quickstart-sshrdp-over-an-iot-hub-device-stream-using-a-c-proxy-application-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
 Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタート ガイドには、IoT Hub を通じて確立されたデバイス ストリームを介してクライアント/サーバー アプリケーション トラフィック (SSH、RDP など) を送信できるようにする、2 つの C# プログラムが含まれています。 設定の概要については、[こちら](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
+[IoT Hub デバイス ストリーム](iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタート ガイドには、IoT Hub を通じて確立されたデバイス ストリームを介してクライアント/サーバー アプリケーション トラフィック (SSH、RDP など) を送信できるようにする、2 つの C# プログラムが含まれています。 設定の概要については、[SSH または RDP 用のローカル プロキシのサンプル](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)に関する記事を参照してください。
 
 まず、SSH (ポート 22 を使用) の設定について説明します。 その後、設定の RDP 用のポートを変更する方法を説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、同じサンプルを他の種類のアプリケーション トラフィックに対応するように変更できます。 通常、この操作は、通信ポートを目的のアプリケーションで使用されるものに変更するだけで済みます。
 
@@ -31,18 +31,18 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 
 次の図は、このサンプルのデバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモンの間のエンド ツー エンド接続を可能にする設定を示しています。 ここでは、デーモンがデバイスローカルのプロキシと同じデバイス上で実行されていると仮定します。
 
-![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "ローカル プロキシの設定")
+![ローカル プロキシの設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
 
 1. サービスローカルのプロキシが IoT ハブに接続し、そのデバイス ID を使用してターゲット デバイスへのデバイス ストリームを開始します。
 
 2. デバイスローカルのプロキシによって、ストリームの開始ハンドシェイクが完了され、サーバー側への IoT Hub のストリーミング エンドポイントを通じてエンドツーエンドのストリーミング トンネルが確立されます。
 
-3. デバイスローカルのプロキシが、デバイス上のポート 22 をリッスンする SSH デーモン (SSHD) に接続します ([以下](#run-the-device-local-proxy)で説明するように、このポートは構成可能です)。
+3. デバイスローカルのプロキシによって、デバイス上のポート 22 をリッスンする SSH デーモン (SSHD) への接続が行われます ([デバイスローカルのプロキシの実行に関するセクション](#run-the-device-local-proxy)で説明するように、このポートは構成可能です)。
 
-4. サービスローカルのプロキシは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します ([以下](#run-the-service-local-proxy)で説明するように、これも構成可能です)。 ユーザーが SSH クライアントを介して接続すると、トンネルによってアプリケーション トラフィックが SSH クライアントとサーバー プログラムの間で交換されるようになります。
+4. サービスローカルのプロキシは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します ([サービスローカルのプロキシの実行に関するセクション](#run-the-service-local-proxy)で説明するように、これも構成可能です)。 ユーザーが SSH クライアントを介して接続すると、トンネルによってアプリケーション トラフィックが SSH クライアントとサービス プログラムの間で交換されるようになります。
 
 > [!NOTE]
-> ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT Hub のストリーミング エンドポイントを介してトンネリングされます。 このことには、[これらの利点](./iot-hub-device-streams-overview.md#benefits)があります。
+> ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT Hub のストリーミング エンドポイントを介してトンネリングされます。 詳細については、[デバイス ストリームのベネフィット](./iot-hub-device-streams-overview.md#benefits)に関するセクションを参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -52,12 +52,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
 
-  - **米国中部**
-  - **米国中部 EUAP**
+*  **米国中部**
+
+*  **米国中部 EUAP**
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用コンピューター上に .NET Core SDK 2.1.0 以降が必要です。
 
-複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
+[複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードできます。
 
 開発コンピューターに現在インストールされている C# のバージョンは、次のコマンドを使って確認できます。
 
@@ -75,7 +76,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
@@ -105,7 +106,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
     この値は、このクイック スタートの後の方で使います。
 
-3. また、サービス側アプリケーションが IoT ハブに接続してデバイス ストリームを確立できるようにするには、IoT ハブの "_サービス接続文字列_" も必要です。 次のコマンドを実行すると、自分の IoT ハブのこの値が取得されます。
+3. また、サービス側アプリケーションが IoT ハブに接続してデバイス ストリームを確立できるようにするには、IoT ハブの "*サービス接続文字列*" も必要です。 次のコマンドを実行すると、自分の IoT ハブのこの値が取得されます。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
@@ -116,9 +117,10 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
     次のような戻り値をメモしておきます。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
-    
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
+
+このセクションでは、SSH トラフィックをトンネリングするためのエンドツーエンド ストリームを確立します。
 
 ### <a name="run-the-device-local-proxy"></a>デバイスローカルのプロキシの実行
 
@@ -174,7 +176,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 ### <a name="run-ssh-client"></a>SSH クライアントを実行する
 
-次に SSH クライアント プログラムを使用してポート 2222 でサービスローカルのプロキシに接続します (SSH デーモンに直接ではなく)。 
+次に SSH クライアント プログラムを使用してポート 2222 でサービスローカルのプロキシに接続します (SSH デーモンに直接ではなく)。
 
 ```
 ssh <username>@localhost -p 2222
@@ -184,16 +186,15 @@ ssh <username>@localhost -p 2222
 
 サービス側のコンソール出力 (サービスローカルのプロキシはポート 2222 をリッスンします):
 
-![代替テキスト](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "サービスローカルのプロキシの出力")
+![サービスローカルのプロキシの出力](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
 `IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:
 
-![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "デバイスローカルのプロキシの出力")
+![デバイスローカルのプロキシの出力](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 
 SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):
 
-![代替テキスト](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "SSH クライアント プログラムの出力")
-
+![SSH クライアント プログラムの出力](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの RDP 接続
 
@@ -252,7 +253,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 次に、RDP クライアント プログラムを使用し、ポート 2222 (これは、前に選択した任意の使用可能なポートです) でサービスローカルのプロキシに接続します。
 
-![代替テキスト](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.PNG "RDP がサービスローカルのプロキシに接続する")
+![RDP がサービスローカルのプロキシに接続します](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

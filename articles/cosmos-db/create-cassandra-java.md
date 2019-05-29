@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7f6108a5d1e8ee386641c6d1f7c09ea96e12458c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587602"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519034"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>クイック スタート:Java SDK と Azure Cosmos DB を使用して Cassandra アプリをビルドする
 
@@ -34,8 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 さらに、次のものが必要です。
 
-* [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
-    * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
+* [Java Development Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 * [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473259"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150455"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -89,7 +89,7 @@ A. 前回の注文を複製することができます。 複製することで�
 ## <a name="configure-and-connect"></a>構成と接続
 
 ### <a name="q-how-do-i-unlock-the-data-box"></a>Q. Data Box をロック解除する方法を教えてください。 
-A.  Azure portal で、対象の Data Box の注文に移動し、**[デバイスの詳細]** に移動します。 ロック解除パスワードをコピーします。 Data Box で、このパスワードを使用してローカル Web UI にログインします。 詳細については、[チュートリアルの Azure Data Box の開梱、配線、接続](data-box-deploy-set-up.md)に関するページを参照してください。
+A.  Azure portal で、対象の Data Box の注文に移動し、 **[デバイスの詳細]** に移動します。 ロック解除パスワードをコピーします。 Data Box で、このパスワードを使用してローカル Web UI にログインします。 詳細については、[チュートリアルの Azure Data Box の開梱、配線、接続](data-box-deploy-set-up.md)に関するページを参照してください。
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Q. Linux ホスト コンピューターを使用して、Data Box に接続してデータをコピーすることはできますか?
 A.  はい。 Data Box を使用して、SMB クライアントと NFS クライアントに接続できます。 詳細については、ホスト コンピューターに関して[サポートされるオペレーティング システム](data-box-system-requirements.md)の一覧を参照してください。
@@ -130,7 +130,7 @@ A. Data Box では、ポート チャネル構成、マルチパス IO (MPIO) �
 A.  Data Box の注文状況は Azure portal で追跡できます。 注文を作成する際に、通知メールを指定するように求められます。 指定した場合は、注文の状態が変化するたびにメールで通知されます。 [通知メールの構成](data-box-portal-ui-admin.md#edit-notification-details)方法に関するページを参照してください。
 
 ### <a name="q-how-do-i-return-the-device"></a>Q. デバイスの返送方法を教えてください。 
-A.  Microsoft では、E インク表示に配送先住所ラベルを表示します。 配送先住所ラベルが E インク表示に表示されない場合は、**[概要] > [配送先住所ラベルのダウンロード]** に移動します。 ラベルをダウンロードして印刷し、デバイスの透明なプラスチック タグに挿入して、そのデバイスを集荷場所に持ち込みます。 
+A.  Microsoft では、E インク表示に配送先住所ラベルを表示します。 配送先住所ラベルが E インク表示に表示されない場合は、 **[概要] > [配送先住所ラベルのダウンロード]** に移動します。 ラベルをダウンロードして印刷し、デバイスの透明なプラスチック タグに挿入して、そのデバイスを集荷場所に持ち込みます。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Q. デバイスが Azure データセンターに到着したという電子メール通知を受け取りました。 データのアップロードが進行中であるかどうかを確認する方法を教えてください。
 A. Azure portal では、Data Box の注文に移動し、**概要**に移動できます。 Azure へのデータ アップロードが開始されている場合は、右側のペインでコピーの進行状況が表示されます。 
@@ -183,6 +183,9 @@ A. デバイスが到着時に破損していたり、改ざんの兆候があ�
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>Q. 自身の運送業者を使って Data Box を配送できますか?
 A. Data Box サービスでは、Microsoft が Azure データセンターとの間の配送を扱います。 自身の運送業者を使用する場合は、Azure インポート/エクスポート サービスを使用できます。 詳細については、「[Azure インポート/エクスポート サービスの概要](../storage/common/storage-import-export-service.md)」を参照してください。
 
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. Data Box デバイスは配送中に国境を越えますか?
+A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。
+
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. E インク表示が返品ラベルを示していません。 どうすればよいですか。
 A. E インク表示が返品ラベルを示していない場合は、次の手順を実行します。
 - 以前の配送から古い配送先住所ラベルとステッカーを取り外します。
@@ -197,7 +200,7 @@ A.  移動中では、Data Box の次の機能によりデータを保護でき�
 詳細については、「[Data Box のセキュリティ機能](data-box-security.md)」を参照してください。  
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. [配送の準備] が完了しており、デバイスをシャット ダウンします。 それでも Data Box にデータをさらに追加できますか?
-A. はい。 デバイスを起動して、データをさらに追加できます。 データのコピーが完了したら、**[配送の準備]** をもう一度実行する必要があります。
+A. はい。 デバイスを起動して、データをさらに追加できます。 データのコピーが完了したら、 **[配送の準備]** をもう一度実行する必要があります。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. デバイスは届いたのですが、起動しません。 返送する方法を教えてください。
 A. デバイスが起動しない場合は、Azure portal で、該当する注文に移動してください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。 詳細については、「[配送先住所ラベルのダウンロード](data-box-portal-admin.md#download-shipping-label)」を参照してください。
@@ -220,7 +223,7 @@ A.  コンテナー名に大文字が使われている場合、それらの名�
 - [ブロック BLOB とページ BLOB の規則](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Q. Data Box にコピーしたデータを検証する方法を教えてください。
-A.  データのコピーが完了したら、**[配送の準備]** を実行すると、データが検証されます。 Data Box は、検証の処理中にファイルのリストとデータのチェックサムを生成します。 ファイルのリストをダウンロードすれば、ソース データ内のファイルに対してリストを検証できます。 詳細については、「[配送の準備](data-box-deploy-picked-up.md#prepare-to-ship)」を参照してください。
+A.  データのコピーが完了したら、 **[配送の準備]** を実行すると、データが検証されます。 Data Box は、検証の処理中にファイルのリストとデータのチェックサムを生成します。 ファイルのリストをダウンロードすれば、ソース データ内のファイルに対してリストを検証できます。 詳細については、「[配送の準備](data-box-deploy-picked-up.md#prepare-to-ship)」を参照してください。
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>Q. Data Box を返却した後に、私のデータはどうなりますか?
 A.  Azure へのデータ コピーが完了すると、NIST SP 800-88 リビジョン 1 のガイドラインに従って、Data Box 上のディスクから、データは安全に消去されます。 詳細については、「[Data Box からのデータの消去](data-box-deploy-picked-up.md#erasure-of-data-from-data-box)」を参照してください。

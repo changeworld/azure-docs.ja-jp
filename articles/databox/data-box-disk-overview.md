@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 05/15/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 20b8d7a6a7d6da639481045d9462c484b820a4df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 194f2b80e9cbf3a69fef6ce382e6755934f1d5bd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575840"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787446"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -89,22 +89,7 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-現在、Data Box Disk では次の Azure リージョンにデータを転送できます。
-
-
-|Azure リージョン  |Azure リージョン  |
-|---------|---------|
-|米国中西部     |カナダ中部       |        
-|米国西部 2     |カナダ東部         |     
-|米国西部     | 西ヨーロッパ        |      
-|米国中南部   |北ヨーロッパ     |         
-|米国中部     |オーストラリア東部|
-|米国中北部  |オーストラリア南東部   |
-|米国東部      |オーストラリア中部 |
-|米国東部 2     |オーストラリア中部 2|
-|東日本     |韓国中部 |
-|西日本     |韓国南部 |
-|東南アジア |
+リージョン別の提供状況については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。
 
 
 ## <a name="pricing"></a>価格

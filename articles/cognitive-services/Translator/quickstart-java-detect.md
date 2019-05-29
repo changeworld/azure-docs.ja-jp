@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: ed10c673e0cc76c6ed195027c9b28f7ab6084176
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 33e60161deb54f1df3f9e2bf0182ba494005bdb9
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916717"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604328"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>クイック スタート:Translator Text API と Java を使用してテキストの言語を検出する
 
@@ -181,7 +181,7 @@ gradle run
 
 ## <a name="sample-response"></a>応答のサンプル
 
-国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
+国/地域の省略形は、こちらの[言語一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

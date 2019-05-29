@@ -3,8 +3,8 @@ title: サインインのための AngularJS シングルページ アプリを�
 description: サインインに関して Azure AD と連携し、Azure AD で保護されている API を OAuth を使用して呼び出す AngularJS シングルページ アプリケーションを構築する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544942"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001206"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 3. ADAL を使用して、シングルページ アプリ内のページの保護をサポートする。
 
 > [!NOTE]
-> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、*[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* を使用できます。 詳細については、[こちらの JavaScript SPA のチュートリアル](tutorial-v2-javascript-spa.md)と、*Microsoft ID プラットフォーム エンドポイント*を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。 
+> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、 *[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* を使用できます。 詳細については、[こちらの JavaScript SPA のチュートリアル](tutorial-v2-javascript-spa.md)と、*Microsoft ID プラットフォーム エンドポイント*を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,21 +62,16 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 複数のディレクトリにサインインしている場合は、適切なディレクトリを表示していることを確認する必要があります。 これを行うには、上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
-1. 左側のウィンドウで **[すべてのサービス]** をクリックし、**[Azure Active Directory]** を選択します。
-1. **[アプリの登録]** をクリックし、**[追加]** を選択します。
-1. 画面の指示に従い、新しい Web アプリケーションや Web API を作成します。
-
-    * **[名前]** には、ユーザーがアプリケーションの機能を把握できる名前を入力します。
-    * **[サインオン URL]** は Azure AD がトークンを返す場所です。 このサンプルの既定の場所は `https://localhost:44326/` です。
-
-1. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
-1. adal.js は Azure AD との通信に、OAuth の暗黙的なフローを使用します。 次の手順を実行して、アプリケーションに対して暗黙的なフローを有効にする必要があります。
-
-    1. アプリケーションをクリックし、**[マニフェスト]** を選択して、インライン マニフェスト エディターを開きます。
-    1. `oauth2AllowImplicitFlow` プロパティを見つけます。 値を `true`に設定します。
-    1. **[保存]** をクリックして、マニフェストを保存します。
-
-1. アプリケーションに対してテナントのアクセス許可を付与します。 **[設定]、[必要なアクセス許可]** の順に移動し、上部のバーで **[アクセス許可の付与]** ボタンを選択します。
+1. 左側のウィンドウで **[すべてのサービス]** をクリックし、 **[Azure Active Directory]** を選択します。
+1. **[アプリの登録]** をクリックし、 **[新規登録]** を選択します。
+1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+1. **[リダイレクト URI]** セクションで **[Web]** プラットフォームを選択し、値を `https://localhost:44326/` (Azure AD がトークンを返す先の場所) に設定します。
+1. 終了したら、 **[登録]** を選択します。 アプリの **[概要]** ページで、 **[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値を書き留めます。
+1. adal.js は Azure AD との通信に、OAuth の暗黙的なフローを使用します。 次の手順を実行して、アプリケーションに対して暗黙的なフローを有効にする必要があります。 登録済みのアプリケーションの左側のナビゲーション ウィンドウで、 **[認証]** を選択します。
+1. **[詳細設定]** の **[暗黙的な許可]** で、 **[ID トークン]** と **[アクセス トークン]** の両方のチェック ボックスをオンにします。 このアプリではユーザーをサインインし、API を呼び出す必要があるため、ID トークンとアクセス トークンが必要になります。
+1. **[保存]** を選択します。
+1. アプリケーションに対してテナントのアクセス許可を付与します。 **[API のアクセス許可]** に移動し、 **[同意する]** の下にある **[管理者の同意の付与]** ボタンを選択します。
 1. **[はい]** を選択して確定します。
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>手順 2:ADAL をインストールし、シングルページ アプリを構成する
@@ -169,7 +164,7 @@ adal.js には AngularJS ルートと HTTP プロバイダーが組み込まれ�
     ...
     ```
 
-* ユーザーがサインインしているかどうかを確認することが必要なシナリオが多数あります。 `userInfo` オブジェクトを使用して、この情報を収集することもできます。 たとえば、`index.html` で、認証ステータスに応じて、**[ログイン]** ボタンまたは **[ログアウト]** ボタンのいずれかを表示できます。
+* ユーザーがサインインしているかどうかを確認することが必要なシナリオが多数あります。 `userInfo` オブジェクトを使用して、この情報を収集することもできます。 たとえば、`index.html` で、認証ステータスに応じて、 **[ログイン]** ボタンまたは **[ログアウト]** ボタンのいずれかを表示できます。
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>

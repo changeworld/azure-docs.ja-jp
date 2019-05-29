@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 8ded7a86c1b4fb53ca81fc4e7b0c0d794c515ddf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 614d7c0b58ee318461cf3c97e934a77c84221ef7
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886346"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827604"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>C# を使用してナレッジ ベースから質問の回答を取得する
 
@@ -25,8 +25,8 @@ ms.locfileid: "58886346"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [**Visual Studio Community エディション**](https://www.visualstudio.com/downloads/)。
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、**[リソース管理]** の **[キー]** を選択します。 
-* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、**[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、 **[リソース管理]** の **[キー]** を選択します。 
+* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、 **[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
 
     発行ページの設定には、POST ルート値、Host 値、EndpointKey 値が含まれています。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "58886346"
 
 ## <a name="create-a-knowledge-base-project"></a>ナレッジ ベース プロジェクトを作成する
 
-1. Visual Studio 2017 Community エディションを開きます。
+1. Visual Studio 2019 Community エディションを開きます。
 1. 新しいコンソール アプリ (.NET Core) プロジェクトを作成し、そのプロジェクトに QnaMakerQuickstart という名前を付けます。 残りの設定には既定値を受け入れます。
 
 ## <a name="add-the-required-dependencies"></a>必要な依存関係を追加する
@@ -47,7 +47,7 @@ Program.cs ファイルの先頭にある 1 つの using ステートメント�
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
 
-`Main` 内の `Program` クラスの上部に、QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、**[発行]** ページにあります。 
+`Main` 内の `Program` クラスの上部に、QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、 **[発行]** ページにあります。 
 
 [!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/get-answer/QnAMakerAnswerQuestion/Program.cs?range=14-30 "Add the required constants")]
 
@@ -72,4 +72,4 @@ Visual Studio からプログラムをビルドし、実行します。 QnA Make
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services で動画ファイルをストリーム配信する - .NET | Microsoft Docs
-description: このクイック スタートの手順では、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
+description: このチュートリアルの手順に従って、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,23 @@ editor: ''
 keywords: Azure Media Services, ストリーム配信
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3a50d78645630e499b11f012da122b12b026ae6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3834b4f07f6450f498831accfa6640f55bc5855a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857863"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550192"
 ---
-# <a name="quickstart-stream-video-files---net"></a>クイック スタート:ビデオ ファイルのストリーミング - .NET
+# <a name="tutorial-stream-video-files---net"></a>チュートリアル:ビデオ ファイルのストリーミング - .NET
 
-このクイック スタートでは、Azure Media Services を利用すると、さまざまなブラウザーおよびデバイスを対象とした動画のエンコードとストリーム配信の開始がいかに容易であるかを示します。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って入力コンテンツを指定できます。
+このチュートリアルでは、Azure Media Services を利用すると、さまざまなブラウザーおよびデバイスを対象とした動画のエンコードとストリーム配信の開始がいかに容易であるかを示します。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って入力コンテンツを指定できます。
 このトピックのサンプルでは、HTTPS URL を使用してアクセスできるようにするコンテンツをエンコードします。 現在、AMS v3では、HTTPS URLを介したチャンク転送のエンコーディングはサポートされていません。
 
-このクイック スタートを最後まで行うと、動画をストリーム配信できるようになります。  
+このチュートリアルを最後まで行うと、動画をストリーム配信できるようになります。  
 
 ![ビデオを再生する](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -66,9 +66,9 @@ ms.locfileid: "57857863"
 アプリを実行すると、別のプロトコルでビデオを再生するために使用できる URL が表示されます。 
 
 1. Ctrl + F5 キーを押して、*EncodeAndStreamFiles* アプリケーションを実行します。
-2. Apple の **HLS** プロトコル (末尾が *manifest(format=m3u8-aapl)*) を選び、コンソールからストリーム配信 URL をコピーします。
+2. Apple の **HLS** プロトコル (末尾が *manifest(format=m3u8-aapl)* ) を選び、コンソールからストリーム配信 URL をコピーします。
 
-![出力](./media/stream-files-tutorial-with-api/output.png)
+![Output](./media/stream-files-tutorial-with-api/output.png)
 
 サンプルの[ソース コード](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)では、URL の作成方法を確認できます。 URL を作成するには、ストリーミング エンドポイントのホスト名とストリーミング ロケーター パスを連結する必要があります。  
 
@@ -89,7 +89,7 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、リソース グループを削除します。
+このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、リソース グループを削除します。
 
 次の CLI コマンドを実行します。
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c55839f7ec4e4c28086912c476a193e31561c3f4
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e450ca0ff2578c4ec2ce95c14a17735860044b59
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65234133"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595247"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -37,7 +37,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) (または Linux、macOS、Windows 用 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1))。
+* [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
@@ -51,9 +51,9 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 Azure Portal を使用して、ffmpeg を[アプリケーション パッケージ](batch-application-packages.md)として Batch アカウントに追加します。 アプリケーション パッケージは、タスク アプリケーションと、プール内のコンピューティング ノードへのそのアプリケーションのデプロイを管理する際に役立ちます。 
 
-1. Azure Portal で、**[その他のサービス]** > **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
-3. **[アプリケーション]** > **[追加]** の順にクリックします。
-4. **[アプリケーション ID]** に「*ffmpeg*」と入力し、パッケージのバージョン「*3.4*」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、**[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
+1. Azure Portal で、 **[その他のサービス]**  >  **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
+3. **[アプリケーション]**  >  **[追加]** の順にクリックします。
+4. **[アプリケーション ID]** に「*ffmpeg*」と入力し、パッケージのバージョン「*3.4*」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
 
 ![アプリケーション パッケージの追加](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -97,7 +97,7 @@ const string appPackageVersion = "3.4";
 
 Visual Studio またはコマンド ライン (`dotnet build` コマンドと `dotnet run` コマンド) でアプリケーションをビルドして実行します。 アプリケーションの実行後に、コードを確認して、アプリケーションの各部分での処理内容を学習します。 たとえば Visual Studio で次の操作を実行します。
 
-* ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションのビルド]** をクリックします。 
+* ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションのビルド]** をクリックします。 
 
 * メッセージに従って NuGet パッケージの復元を確認します。 不足しているパッケージをダウンロードする必要がある場合は、[NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) がインストールされていることを確認します。
 
@@ -124,7 +124,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-プール、コンピューティング ノード、ジョブ、タスクを監視するには、Azure Portal で Batch アカウントに移動します。 たとえば、プール内のコンピューティング ノードのヒート マップを確認するには、**[プール]** > *WinFFmpegPool* の順にクリックします。
+プール、コンピューティング ノード、ジョブ、タスクを監視するには、Azure Portal で Batch アカウントに移動します。 たとえば、プール内のコンピューティング ノードのヒート マップを確認するには、 **[プール]**  > *WinFFmpegPool* の順にクリックします。
 
 タスクが実行されていると、ヒート マップは次のようになります。
 
@@ -316,7 +316,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 タスクの実行後、自動的に、作成された入力用ストレージ コンテナーが削除され、Batch プールとジョブを削除するためのオプションが表示されます。 BatchClient の [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) クラスと [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) クラスの両方に対応する削除メソッドがあります。このメソッドは、削除を確定すると呼び出されます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、出力ファイルはストレージ アカウントに残ります。
 
-リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、**[リソース グループの削除]** をクリックしてください。
+リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** をクリックしてください。
 
 ## <a name="next-steps"></a>次の手順
 
