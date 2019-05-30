@@ -215,7 +215,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 * リカバリプランについては、[こちら](site-recovery-create-recovery-plans.md) を参照してください。
 * フェールオーバーについては、[こちら](site-recovery-failover.md) を参照してください。
-* VMware VMs と物理サーバーのフェイルバックについては、[こちら](site-recovery-failback-azure-to-vmware.md) を参照してください。
+* VMware VMs と物理サーバーのフェールバックについては、[こちら](site-recovery-failback-azure-to-vmware.md) を参照してください。
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>オンプレミスのホストが応答しない場合やクラッシュした場合は、別のホストにフェールバックできますか?
 はい。alternate location recovery (別の場所への復旧) を使用すると、Azure から別のホストにフェールバックできます。
