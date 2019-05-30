@@ -219,18 +219,18 @@
           href: backup-azure-restore-windows-server.md
         - name: Windows Server のシステム状態の復元
           href: backup-azure-restore-system-state.md
-        - name: Recovery Services コンテナーの監視と管理
-          href: backup-azure-manage-windows-server.md
     - name: Recovery Services コンテナー
       items:
         - name: Recovery Services コンテナーの概要
           href: backup-azure-recovery-services-vault-overview.md
-        - name: Backup コンテナーを Recovery Services コンテナーにアップグレードする
-          href: backup-azure-upgrade-backup-to-recovery-services.md
+        - name: Recovery Services コンテナーの作成
+          href: backup-create-rs-vault.md
         - name: Recovery Services コンテナーを削除する
           href: backup-azure-delete-vault.md
         - name: Recovery Services コンテナーを移動する
           href: backup-azure-move-recovery-services-vault.md
+        - name: Recovery Services コンテナーの監視と管理
+          href: backup-azure-manage-windows-server.md
     - name: トラブルシューティング
       items:
         - name: Azure VM
