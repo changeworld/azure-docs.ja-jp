@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c1db16475224cc3c91a5353ead0aabd091098e14
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010239"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240373"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 
@@ -132,7 +132,7 @@ Single Database のコンピューティング サイズを使用した場合と
 
 ### <a name="elastic-jobs-and-elastic-pools"></a>エラスティック ジョブとエラスティック プール
 
-プールでは、**[エラスティック ジョブ](sql-database-elastic-jobs-overview.md)** でスクリプトを実行することで、管理タスクが簡素化されます。 エラスティック ジョブを使用すると、大量のデータベースに関連する面倒な作業のほとんどが不要になります。 まず、[エラスティック ジョブの概要](sql-database-elastic-jobs-getting-started.md)に関するページを参照してください。
+プールでは、 **[エラスティック ジョブ](elastic-jobs-overview.md)** でスクリプトを実行することで、管理タスクが簡素化されます。 エラスティック ジョブを使用すると、大量のデータベースに関連する面倒な作業のほとんどが不要になります。
 
 複数のデータベースを操作するための他のデータベース ツールの詳細については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
@@ -164,7 +164,7 @@ Azure Portal でエラスティック プールを作成できる方法には次
 
 プールのエラスティックに使用できる機能のほか、各データベースに使用可能な最大リソース量が、プールのサービス レベルによって決定されます。 詳細については、[DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)でのエラスティック プールのリソース上限をご覧ください。 エラスティック プールに対する仮想コア ベースのリソース制限については、[エラスティック プールでの仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページをご覧ください。
 
-プールのリソースと価格を構成するには、**[プールの構成]** をクリックします。 そのため、サービス レベルを選択し、プールにデータベースを追加して、プールとそのデータベースに対するリソース上限を構成します。
+プールのリソースと価格を構成するには、 **[プールの構成]** をクリックします。 そのため、サービス レベルを選択し、プールにデータベースを追加して、プールとそのデータベースに対するリソース上限を構成します。
 
 プールの構成を完了したら、[適用] をクリックしてプールに名前を付け、[OK] をクリックするとプールを作成できます。
 
@@ -195,7 +195,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ### <a name="to-select-databases-to-monitor"></a>監視するデータベースを選択するには
 
-既定では、**[データベース リソースの使用率]** ブレードにあるグラフには、DTU または CPU 別に (使用しているサービス レベルに応じる) 上位 5 個のデータベースが表示されます。 左側にあるチェックボックスを使って、グラフの下にある一覧のデータベースをオンおよびオフにすることで、このグラフのデータベースを切り替えることができます。
+既定では、 **[データベース リソースの使用率]** ブレードにあるグラフには、DTU または CPU 別に (使用しているサービス レベルに応じる) 上位 5 個のデータベースが表示されます。 左側にあるチェックボックスを使って、グラフの下にある一覧のデータベースをオンおよびオフにすることで、このグラフのデータベースを切り替えることができます。
 
 また、より多くのメトリックを選択してこのデータベース テーブルで並列に表示し、データベース パフォーマンスのより詳細なビューを取得することもできます。
 
