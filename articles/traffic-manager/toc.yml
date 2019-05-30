@@ -81,7 +81,7 @@
       href: traffic-manager-load-balancing-azure.md
     - name: Traffic Manager のパフォーマンスの測定
       href: traffic-manager-performance-considerations.md
-    - name: Azure App Service の Web アプリの診断ログの有効化
+    - name: Traffic Manager で診断ログを有効にする
       href: traffic-manager-diagnostic-logs.md
     - name: Azure PowerShell を使用して Traffic Manager を管理する
       href: traffic-manager-powershell-arm.md
