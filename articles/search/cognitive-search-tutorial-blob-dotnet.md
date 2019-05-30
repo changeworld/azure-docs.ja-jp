@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 7794cf256ed8063007b4eee7c5c928be85723982
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7aab7f75e6489fcaea1ecafee34823ad546a6b48
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170193"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244373"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C# のチュートリアル: Azure Search のインデックス パイプラインで Cognitive Services APIs を呼び出す
 
@@ -611,7 +611,7 @@ catch (Exception e)
 
 警告は、一部のソース ファイルとスキルの組み合わせではよく見られ、必ずしも問題を示すわけではありません。 このチュートリアルでは、警告は無害です (たとえば、JPEG ファイルからのテキスト入力がない)。
  
-## <a name="verify-content"></a>コンテンツを検証する
+## <a name="query-your-index"></a>インデックスの照会
 
 インデックス作成が完了したら、個々のフィールドの内容を返すクエリを実行できします。 既定では、Azure Search によって上位 50 件の結果が返されます。 サンプル データは小さいため、既定値で問題なく動作します。 ただし、より大きなデータ セットを使用する場合は、より多くの結果が返されるよう、クエリ文字列にパラメーターを含める必要がある場合があります。 手順については、「[Azure Search でのページ検索結果の表示方法](search-pagination-page-layout.md)」をご覧ください。
 

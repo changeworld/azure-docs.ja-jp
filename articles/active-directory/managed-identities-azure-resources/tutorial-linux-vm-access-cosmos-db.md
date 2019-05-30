@@ -16,11 +16,11 @@ ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b79c4e1ddb84213ce9000236727d9bca298a0cd
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66231889"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする 
 
@@ -51,7 +51,7 @@ ms.locfileid: "59523802"
 Cosmos DB アカウントがまだない場合は作成します。 この手順をスキップし、既存の Cosmos DB アカウントを使用することもできます。 
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2. **[データベース]**、**[Azure Cosmos DB]** の順にクリックします。[新しいアカウント] パネルが表示されます。
+2. **[データベース]** 、 **[Azure Cosmos DB]** の順にクリックします。[新しいアカウント] パネルが表示されます。
 3. Cosmos DB アカウントの **[ID]** を入力します。この ID は後で使用されます。  
 4. **[API]** は「SQL」に設定します。 このチュートリアルで説明されている方法は、他の利用可能な API の種類と併用できますが、このチュートリアルの手順は SQL API 向けです。
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。  Cosmos DB を使用できる **[場所]** を選択します。
@@ -63,7 +63,7 @@ Cosmos DB アカウントがまだない場合は作成します。 この手順
 
 1. 新しく作成した Cosmos DB アカウントに移動します。
 2. **[概要]** タブで **[+ コレクションの追加]** ボタンをクリックします。[コレクションの追加] パネルが表示されます。
-3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、**[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
+3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、 **[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
 
 ## <a name="retrieve-the-principalid-of-the-linux-vms-system-assigned-managed-identity"></a>Linux VM のシステム割り当てマネージド ID の `principalID` を取得する
 
@@ -116,7 +116,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 これらの手順を完了するには、SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/install_guide) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 
-1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
+1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
 2. SSH クライアントを使用して VM に接続します。  
 3. 次に、**Linux VM** の作成時に追加した**パスワード**の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
 4. CURL を使用して Azure Resource Manager のアクセス トークンを取得します。 

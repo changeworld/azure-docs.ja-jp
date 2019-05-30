@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0c1efa0e5cfa4bf31e58be64b3fe78075b79b515
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e0c02829a2fef6e281794fdba6c9fb5d9b8a736b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141735"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241717"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -65,7 +65,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
 ### <a name="add-an-application"></a>アプリケーションを追加する
 
-1. アプリケーションが作成されたら、**[設定]** をクリックします。
+1. アプリケーションが作成されたら、 **[設定]** をクリックします。
 2. **[必要なアクセス許可]** をクリックします。
 3. **[+ 追加]** をクリックします。
 4. **[API を選択します]** を選択します。
@@ -74,7 +74,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
     ![Add permissions](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにします。
+7. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、 **[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにします。
 8. **[選択]** を選択します。
 9. **[アクセス許可の付与]** をクリックします。
 
@@ -109,7 +109,7 @@ namespace GetTokenResourceManagerRequests
 
 `{tenant id}`、`{application id}`、および `{redirect uri}` を、次の指示に従って置き換えます。
 
-1. `{tenant id}` を、作成した Azure Active Directory アプリケーションのテナント ID に置き換えます。 ID にアクセスするには、**[アプリの登録]** -> **[エンドポイント]** をクリックします。
+1. `{tenant id}` を、作成した Azure Active Directory アプリケーションのテナント ID に置き換えます。 ID にアクセスするには、 **[アプリの登録]**  ->  **[エンドポイント]** をクリックします。
 
     ![エンドポイント][api-management-endpoint]
 2. **[設定]** ページに移動して、`{application id}` を取得した値に置き換えます。
@@ -124,7 +124,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>バックアップおよび復元操作の呼び出し
 
-REST API は [API Management Service - Backup](/rest/api/apimanagement/apimanagementservice/backup) と [API Management Service - Restore](/rest/api/apimanagement/apimanagementservice/restore) です。
+REST API は [API Management Service - Backup](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) と [API Management Service - Restore](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore) です。
 
 以降のセクションで説明されている "バックアップおよび復元" の操作を呼び出す前に、REST 呼び出しに承認要求ヘッダーを設定します。
 

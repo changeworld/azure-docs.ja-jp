@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f588115e38ded07b79568c91b8d166949b34a886
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179180"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253855"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Azure AD とのパスワード ハッシュ同期とは
 パスワード ハッシュ同期は、ハイブリッド ID を実現するために使用されるサインイン方法の 1 つです。 Azure AD Connect では、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスに、ユーザー パスワードのハッシュを同期します。
@@ -47,7 +47,7 @@ ms.locfileid: "56179180"
 
 ## <a name="next-steps"></a>次の手順
 
-- [ハイブリッド ID とは](whatis-phs.md)
+- [ハイブリッド ID とは](whatis-hybrid-identity.md)
 - [Azure AD Connect と Connect Health とは](whatis-azure-ad-connect.md)
 - [パススルー認証 (PTA) とは](how-to-connect-pta.md)
 - [フェデレーションとは](whatis-fed.md)

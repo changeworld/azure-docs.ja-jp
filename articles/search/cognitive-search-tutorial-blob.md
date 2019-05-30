@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 0ce1c8b811c11d0268cde79a609c05e740a529b6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: fb45d2e36939a53d6242cf7cd5a0b9f1990780c3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171567"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299047"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 
@@ -419,7 +419,7 @@ Content-Type: application/json
 
 警告は、一部のソース ファイルとスキルの組み合わせではよく見られ、必ずしも問題を示すわけではありません。 このチュートリアルでは、警告は無害です (たとえば、JPEG ファイルからのテキスト入力がない)。 インデックスの作成中に生成される警告についての詳細情報については、状態応答を確認することができます。
  
-## <a name="verify-content"></a>コンテンツを検証する
+## <a name="query-your-index"></a>インデックスの照会
 
 インデックス作成が完了したら、個々 のフィールドの内容を返すクエリを実行します。 既定では、Azure Search によって上位 50 件の結果が返されます。 サンプル データは小さいため、既定値で問題なく動作します。 ただし、より大きなデータ セットを使用する場合は、より多くの結果が返されるよう、クエリ文字列にパラメーターを含める必要がある場合があります。 手順については、「[Azure Search でのページ検索結果の表示方法](search-pagination-page-layout.md)」をご覧ください。
 
@@ -445,74 +445,8 @@ Content-Type: application/json
 
 クエリ文字列の複雑さと長さによっては、GET や POST を使用できます。 詳細については、[REST API を使用したクエリ](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページをご覧ください。
 
-<a name="access-enriched-document"></a>
 
-## <a name="accessing-the-enriched-document"></a>エンリッチされたドキュメントへのアクセス
 
-コグニティブ検索では、エンリッチされたドキュメントの構造を確認できます。 エンリッチされたドキュメントは、エンリッチメント中に作成されてプロセスが完了すると削除される、一時的な構造体です。
-
-インデックス作成時に作成されるエンリッチされたドキュメントのスナップショットをキャプチャするには、インデックスに ```enriched``` という名前のフィールドを追加します。 インデクサーは、そのドキュメントのすべてのエンリッチメントの文字列表現を、このフィールド内に自動的にダンプします。
-
-```enriched``` フィールドには、メモリ内のエンリッチされたドキュメントの JSON での論理表現である文字列が含まれます。  ただし、フィールド値は有効な JSON ドキュメントです。 引用符はエスケープされるため、書式設定された JSON としてドキュメントを表示するためには、`\"` を `"` に置き換える必要があります。  
-
-```enriched``` フィールドはデバッグのために使用するフィールドであり、式を評価するコンテンツの論理構造を理解するうえでは役に立ちます。 スキルセットを理解してデバッグするには便利なツールです。
-
-エンリッチされたドキュメントの内容をキャプチャする `enriched` フィールドを含み、前述の演習を繰り返します。
-
-### <a name="request-body-syntax"></a>要求本文の構文
-```json
-{
-  "fields": [
-    {
-      "name": "id",
-      "type": "Edm.String",
-      "key": true,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false,
-      "sortable": true
-    },
-    {
-      "name": "content",
-      "type": "Edm.String",
-      "sortable": false,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "languageCode",
-      "type": "Edm.String",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "keyPhrases",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "organizations",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "enriched",
-      "type": "Edm.String",
-      "searchable": false,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
-    }
-  ]
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>リセットして再実行する

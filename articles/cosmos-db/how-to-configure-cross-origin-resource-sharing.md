@@ -4,14 +4,14 @@ description: この記事では、Azure portal と Azure Resource Manager テン
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2018
+ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 689b0bb08e300efc7c5e93dbf346040b82a7c52d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468480"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241902"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成 
 
@@ -25,7 +25,7 @@ Azure portal を使用してクロス オリジン リソース共有を有効�
 
 1. Azure Cosmos DB アカウントに移動します。 **[CORS]** ブレードを開きます。
 
-2. Azure Cosmos DB アカウントへのクロス オリジン呼び出しをできるようにするオリジンの、コンマ区切りリストを指定します。 たとえば、`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com` などです。 ワイルドカード (\*) を使用してすべてのオリジンを許可し、**[送信]** を選択することもできます。 
+2. Azure Cosmos DB アカウントへのクロス オリジン呼び出しをできるようにするオリジンの、コンマ区切りリストを指定します。 たとえば、`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com` などです。 ワイルドカード (\*) を使用してすべてのオリジンを許可し、 **[送信]** を選択することもできます。 
 
    > [!NOTE]
    > 現在、ドメイン名の一部にワイルドカードを使用することはできません。 たとえば、`https://*.mydomain.net` のような形式はまだサポートされていません。 

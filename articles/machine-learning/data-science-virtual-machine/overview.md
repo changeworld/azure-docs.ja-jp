@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596566"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235076"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
@@ -48,7 +48,7 @@ Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべて�
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks のカスタム コンピューティング能力
 
-[Azure Notebooks](/azure/notebooks/azure-notebooks-overview.md) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)」を参照してください。
+[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)」を参照してください。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
 データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は迅速に設定できるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。

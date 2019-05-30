@@ -4,15 +4,15 @@ description: Azure Cosmos DB に格納されているデータをログ記録お
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a6eec938a4a18455e4063925e21e26fe362f76
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148753"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243482"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
@@ -74,20 +74,20 @@ Azure 診断ログはリソースによって出力され、そのリソース�
 
 Azure Portal で診断ログを有効にするには、以下の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[診断ログ]** を選び、**[診断をオンにする]** を選びます。
+1. [Azure Portal](https://portal.azure.com) で、Azure Cosmos DB アカウントの左のナビゲーションから、 **[診断ログ]** を選び、 **[診断をオンにする]** を選びます。
 
     ![Azure Portal で Azure Cosmos DB の診断ログを有効にする](./media/logging/turn-on-portal-logging.png)
 
 2. **[診断設定]** ページで次の手順のようにします。 
 
-    * **[名前]**:作成するログの名前を入力します。
+    * **[名前]** :作成するログの名前を入力します。
 
-    * **[ストレージ アカウントへのアーカイブ]**:このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 Portal で新しいストレージ アカウントを作成するには、[ストレージ アカウントの作成に関するページ](../storage/common/storage-create-storage-account.md)を参照し、Azure Resource Manager の汎用アカウントの作成手順を実行します。 その後、Portal でこのページに戻り、ストレージ アカウントを選びます。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
-    * **[イベント ハブへのストリーム]**:このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 その後、Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選びます。
-    * **[Log Analytics への送信]**:このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Azure Monitor ログでログを表示する方法については、「Azure Monitor ログでログを表示する」を参照してください。
-    * **[Log DataPlaneRequests]\(DataPlaneRequests のログを記録する\)**:SQL、Graph、MongoDB、Cassandra、および Table API アカウントについて、基盤の Azure Cosmos DB 分散プラットフォームからのバックエンド要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Log MongoRequests]\(MongoRequests をログに記録する\)**:Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントにサービスを提供するために、ユーザーが Azure Cosmos DB のフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Metric Requests]\(メトリック要求\)**:[Azure メトリックス](../azure-monitor/platform/metrics-supported.md)に詳細データを保存するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[ストレージ アカウントへのアーカイブ]** :このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 Portal で新しいストレージ アカウントを作成するには、[ストレージ アカウントの作成に関するページ](../storage/common/storage-create-storage-account.md)を参照し、Azure Resource Manager の汎用アカウントの作成手順を実行します。 その後、Portal でこのページに戻り、ストレージ アカウントを選びます。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
+    * **[イベント ハブへのストリーム]** :このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 その後、Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選びます。
+    * **[Log Analytics への送信]** :このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Azure Monitor ログでログを表示する方法については、「Azure Monitor ログでログを表示する」を参照してください。
+    * **[Log DataPlaneRequests]\(DataPlaneRequests のログを記録する\)** :SQL、Graph、MongoDB、Cassandra、および Table API アカウントについて、基盤の Azure Cosmos DB 分散プラットフォームからのバックエンド要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Log MongoRequests]\(MongoRequests をログに記録する\)** :Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントにサービスを提供するために、ユーザーが Azure Cosmos DB のフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Metric Requests]\(メトリック要求\)** :[Azure メトリックス](../azure-monitor/platform/metrics-supported.md)に詳細データを保存するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
 3. **[保存]** を選択します。
 
@@ -183,7 +183,7 @@ $account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 ```
 
 ### <a id="enable"></a>ログの有効化
-Azure Cosmos DB のログ記録を有効にするには、新しいストレージ アカウント、Azure Cosmos DB アカウント、およびログ用に有効にするカテゴリの変数を指定して、`Set-AzDiagnosticSetting` コマンドレットを使います。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
+Azure Cosmos DB のログ記録を有効にするには、新しいストレージ アカウント、Azure Cosmos DB アカウント、およびログ用に有効にするカテゴリの変数を指定して、`Set-AzDiagnosticSetting` コマンドレットを使います。 次のコマンドを実行し、 **-Enabled** フラグを **$true** に設定します。
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
@@ -221,7 +221,7 @@ Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.I
 
 コマンドからの出力では、データベースのログ記録が有効になり、情報がストレージ アカウントに保存されていることが確認されています。
 
-必要に応じて、ログのアイテム保持ポリシーを使って、古いログが自動的に削除されるように設定することもできます。 たとえば、アイテム保持ポリシーを設定するには、**-RetentionEnabled** フラグを **$true** に設定します。 90 日より古いログを自動的に削除するには、**-RetentionInDays** パラメーターを **90** に設定します。
+必要に応じて、ログのアイテム保持ポリシーを使って、古いログが自動的に削除されるように設定することもできます。 たとえば、アイテム保持ポリシーを設定するには、 **-RetentionEnabled** フラグを **$true** に設定します。 90 日より古いログを自動的に削除するには、 **-RetentionInDays** パラメーターを **90** に設定します。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $account.ResourceId`

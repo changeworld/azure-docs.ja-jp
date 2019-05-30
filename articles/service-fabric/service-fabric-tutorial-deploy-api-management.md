@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 92b1e95598da27f0b7d7df30dfa4a82824b4a48c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158218"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306811"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -43,7 +43,7 @@ Service Fabric での Azure API Management のデプロイは高度なシナリ�
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
 * ネットワーク セキュリティ グループにセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成します。
-* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、 **.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
 ## <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -75,7 +75,7 @@ Service Fabric バックエンド サービスにトラフィックがルーテ�
 Visual Studio を管理者として起動し、ASP.NET Core サービスを作成します。
 
  1. Visual Studio で、[ファイル] の [新しいプロジェクト] を選択します。
- 2. [クラウド] の下にある Service Fabric アプリケーション テンプレートを選択し、**"ApiApplication"** という名前を付けます。
+ 2. [クラウド] の下にある Service Fabric アプリケーション テンプレートを選択し、 **"ApiApplication"** という名前を付けます。
  3. ステートレス ASP.NET Core サービス テンプレートを選択し、プロジェクトに **"WebApiService"** という名前を付けます。
  4. Web API ASP.NET Core 2.0 プロジェクト テンプレートを選択します。
  5. プロジェクトが作成されたら、`PackageRoot\ServiceManifest.xml` を開いて、エンドポイント リソースの構成から `Port` 属性を削除します。
@@ -263,8 +263,8 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 これで、[Azure Portal](https://portal.azure.com) から直接、API Management を通じて Service Fabric のバックエンド サービスに要求を送信できるようになりました。
 
- 1. API Management サービスで、**[API]** を選択します。
- 2. 前の手順で作成した **Service Fabric App** API で、**[テスト]** タブ、**[Values]** 操作の順に選択します。
+ 1. API Management サービスで、 **[API]** を選択します。
+ 2. 前の手順で作成した **Service Fabric App** API で、 **[テスト]** タブ、 **[Values]** 操作の順に選択します。
  3. **[送信]** ボタンをクリックして、バックエンド サービスにテスト要求を送信します。  次のような HTTP 応答が表示されます。
 
     ```http
@@ -288,7 +288,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にログインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用します。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

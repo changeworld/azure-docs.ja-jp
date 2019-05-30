@@ -4,14 +4,14 @@ description: このドキュメントでは、Azure Cosmos DB の仮想ネット
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: govindk
-ms.openlocfilehash: c0b1b415db9d8a530a495e09805ad9788c1edfbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 375e79d2fe70e0988d8c58997a746f77b21d7f50
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153651"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241998"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からのアクセスの構成
 
@@ -36,11 +36,11 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. **[すべてのリソース]** ブレードで、セキュリティで保護する Azure Cosmos DB アカウントを見つけます。
 
-1. 設定メニューの **[ファイアウォールと仮想ネットワーク]** を選択し、**[選択されたネットワーク]** からアクセスを許可するように選択します。
+1. 設定メニューの **[ファイアウォールと仮想ネットワーク]** を選択し、 **[選択されたネットワーク]** からアクセスを許可するように選択します。
 
-1. 既存の仮想ネットワークにあるサブネットへのアクセスを許可するには、**[仮想ネットワーク]** で **[Add existing Azure virtual network]\(既存の Azure 仮想ネットワークを追加\)** を選択します。
+1. 既存の仮想ネットワークにあるサブネットへのアクセスを許可するには、 **[仮想ネットワーク]** で **[Add existing Azure virtual network]\(既存の Azure 仮想ネットワークを追加\)** を選択します。
 
-1. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、**[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、**[追加]** を選択します。 
+1. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。 
 
    ![仮想ネットワークとサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
@@ -61,17 +61,17 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. **[すべてのリソース]** ブレードで、セキュリティで保護する Azure Cosmos DB アカウントを見つけます。  
 
-1. 設定メニューの **[Firewalls and Azure virtual networks]** \(ファイアウォールと Azure 仮想ネットワーク\) を選択し、**[選択されたネットワーク]** からのアクセスを許可するように選択します。  
+1. 設定メニューの **[Firewalls and Azure virtual networks]** \(ファイアウォールと Azure 仮想ネットワーク\) を選択し、 **[選択されたネットワーク]** からのアクセスを許可するように選択します。  
 
-1. 新しい Azure 仮想ネットワークへのアクセスを許可するには、**[仮想ネットワーク]** で **[新しい仮想ネットワークを追加]** を選択します。  
+1. 新しい Azure 仮想ネットワークへのアクセスを許可するには、 **[仮想ネットワーク]** で **[新しい仮想ネットワークを追加]** を選択します。  
 
-1. 新しい仮想ネットワークを作成するために必要な詳細を指定し、**[作成]** を選択します。 "Microsoft.AzureCosmosDB" 用のサービス エンドポイントが有効になっているサブネットが作成されます。
+1. 新しい仮想ネットワークを作成するために必要な詳細を指定し、 **[作成]** を選択します。 "Microsoft.AzureCosmosDB" 用のサービス エンドポイントが有効になっているサブネットが作成されます。
 
    ![仮想ネットワークと新しい仮想ネットワークのサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-ご使用の Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されていたり、Stream Analytics または Power BI からアクセスされたりする場合は、**[パブリック Azure データセンター内からの接続を受け入れる]** をオンにしてアクセスを許可します。
+ご使用の Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されていたり、Stream Analytics または Power BI からアクセスされたりする場合は、 **[パブリック Azure データセンター内からの接続を受け入れる]** をオンにしてアクセスを許可します。
 
-ポータルから Azure Cosmos DB のメトリックにアクセスできるようにするには、**[Azure Portal からのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、[IP ファイアウォールの構成](how-to-configure-firewall.md)に関する記事を参照してください。 アクセスを有効にしたら、**[保存]** を選択して、設定を保存します。
+ポータルから Azure Cosmos DB のメトリックにアクセスできるようにするには、 **[Azure Portal からのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、[IP ファイアウォールの構成](how-to-configure-firewall.md)に関する記事を参照してください。 アクセスを有効にしたら、 **[保存]** を選択して、設定を保存します。
 
 ## <a id="remove-vnet-or-subnet"></a>仮想ネットワークまたはサブネットを削除する 
 
@@ -79,7 +79,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 2. 設定メニューの **[ファイアウォールと仮想ネットワーク]** を選択します。  
 
-3. 仮想ネットワークまたはサブネットの横にある **[...]** を選択し、**[削除]** を選択し、仮想ネットワークまたはサブネットのルールを削除します。
+3. 仮想ネットワークまたはサブネットの横にある **[...]** を選択し、 **[削除]** を選択し、仮想ネットワークまたはサブネットのルールを削除します。
 
    ![仮想ネットワークを削除する](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 

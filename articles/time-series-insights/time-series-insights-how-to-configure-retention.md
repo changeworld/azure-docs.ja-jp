@@ -4,19 +4,19 @@ description: この記事では、Azure Time Series Insights 環境のリテン�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f95ed2103bcd7787c36836641bbe3f7e8d8b263
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f5f34983d1818679450249aa40bbb325e743cc57
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406327"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239000"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights のリテンション期間の構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "65406327"
 
 各 Time Series Insights (TSI) 環境には、**データ リテンション期間**を構成するための設定があります。 この値は 1 から 400 日間となっています。 環境の記憶域容量に達したとき、またはリテンション期間 (1 から 400 日) が終了したときのいずれか早い方でデータが削除されます。
 
-TSI 環境ごとに、**[ストレージ制限を超過したときの動作]** という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 次の 2 つの動作の選択肢があります。
+TSI 環境ごとに、 **[ストレージ制限を超過したときの動作]** という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 次の 2 つの動作の選択肢があります。
 
 - **[Purge old data]\(古いデータを消去\)** (既定値)
 - **[Pause ingress]\(イングレスを一時停止\)**

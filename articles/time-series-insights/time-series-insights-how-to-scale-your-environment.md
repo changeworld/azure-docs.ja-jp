@@ -4,7 +4,7 @@ description: この記事では、Azure Time Series Insights 環境をスケー�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: be06fd5a6f05d750e6ca9801a6004f7180a12d5c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472786"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238987"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
@@ -47,7 +47,7 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 1. Azure Portal で Time Series Insights 環境を見つけて選択します。
 
-1. Time Series Insighs 環境のメニューから、**[構成]** を選択します。
+1. Time Series Insighs 環境のメニューから、 **[構成]** を選択します。
 
    [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 

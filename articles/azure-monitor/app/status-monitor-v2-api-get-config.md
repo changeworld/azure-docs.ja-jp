@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 28893e0782a7fa928757bbbba42662e6d3fa272c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ddc1f673ffec793bbca643ec1057215067f761a9
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153578"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255144"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig-v021-alpha"></a>Status Monitor v2 API:Get-ApplicationInsightsMonitoringConfig (v0.2.1-alpha)
 
@@ -64,7 +64,7 @@ Filters:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します
 - 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します
 - より高度なクエリのために [Analytics](../../azure-monitor/app/analytics.md) を使用します
-- [ダッシュボードを作成](../../azure-monitor/app/app-insights-dashboards.md)します
+- [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します
  
  テレメトリの追加:
  - サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。

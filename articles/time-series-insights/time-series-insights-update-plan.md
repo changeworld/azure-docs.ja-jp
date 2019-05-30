@@ -2,7 +2,7 @@
 title: Azure Time Series Insights プレビューの環境を計画する | Microsoft Docs
 description: Azure Time Series Insights プレビューの環境を計画します。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3fab86b2b2f0ad892e02cd089dbd7c45ce601d6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7c07a9bd771fa8dc1f7ff50f2efae4cd48672de5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205770"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244120"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 

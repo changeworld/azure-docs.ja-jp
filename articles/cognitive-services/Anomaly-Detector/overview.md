@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473104"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64415819"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -46,7 +46,7 @@ Anomaly Detector API の使用を手軽に始めるには、ブラウザーで�
 3. **[無料のコンピューティングで実行]** をクリックします。
 4. このサンプルのためにノートブックを 1 つ選択します。
 5. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。 `endpoint` 変数を自分のエンドポイントに変更します。 次に例を示します。`https://westus2.api.cognitive.microsoft.com`
-1. 上部のメニュー バーで **[セル]** をクリックし、**[すべて実行]** をクリックします。
+1. 上部のメニュー バーで **[セル]** をクリックし、 **[すべて実行]** をクリックします。
 
 ## <a name="workflow"></a>ワークフロー
 

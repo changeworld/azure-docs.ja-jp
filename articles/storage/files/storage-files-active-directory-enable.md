@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: rogarana
-ms.openlocfilehash: d5e2f9dba3afee953d296316e990b58c536cbdae
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602011"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237787"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用して Azure Files への Azure Active Directory 認証を有効にする (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -47,13 +47,13 @@ Azure Files への SMB 経由の Azure AD を有効にする前に、次の前�
 
 2.  **Azure AD テナントで Azure AD Domain Services を有効にします。**
 
-    Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD Domain Services を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/active-directory-ds-getting-started.md)に関する記事に書かれている手順を実行します。
+    Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD Domain Services を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/create-instance.md)に関する記事に書かれている手順を実行します。
 
     通常、Azure AD Domain Services のデプロイが完了するまでには 15 分ほどかかります。 次の手順に進む前に、Azure AD Domain Services の正常性状態が**実行中**と表示されており、パスワード ハッシュ同期が有効になっていることを確認します。
 
 3.  **Azure AD Domain Services を使用している Azure VM ドメインに参加します。**
 
-    VM から Azure AD の資格情報を使用してファイル共有にアクセスするには、VM が Azure AD Domain Services のドメインに参加している必要があります。 VM のドメイン参加方法の詳細については、「[Windows Server 仮想マシンのマネージド ドメインへの参加](../../active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md)」を参照してください。
+    VM から Azure AD の資格情報を使用してファイル共有にアクセスするには、VM が Azure AD Domain Services のドメインに参加している必要があります。 VM のドメイン参加方法の詳細については、「[Windows Server 仮想マシンのマネージド ドメインへの参加](../../active-directory-domain-services/join-windows-vm.md)」を参照してください。
 
     > [!NOTE]
     > SMB を使用した Azure Files の Azure AD 認証は、Windows 7 または Windows Server 2008 R2 以降の OS バージョンで実行されている Azure VM でのみサポートされます。
@@ -78,7 +78,7 @@ SMB を使用した Azure AD 認証を有効にするには、Azure AD テナン
 [Azure Portal](https://portal.azure.com) を使用して SMB 経由の Azure AD 認証を有効にするには、次の手順に従います。
 
 1. Azure Portal で、既存のストレージ アカウントに移動するか、または[ストレージ アカウントを作成](../common/storage-quickstart-create-account.md)します。
-2. **[設定]** セクションで、**[構成]** を選択します。
+2. **[設定]** セクションで、 **[構成]** を選択します。
 3. **[Azure Active Directory Authentication for Azure Files (preview)] (Azure Files への Azure Active Directory 認証 (プレビュー))** を有効にします。
 
 次の図は、ストレージ アカウントへの SMB 経由の Azure AD 認証を有効にする方法を示しています。

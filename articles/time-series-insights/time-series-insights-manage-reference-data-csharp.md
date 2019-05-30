@@ -4,7 +4,7 @@ description: この記事では、C# .NET 言語で記述されたカスタム �
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 683aa2c7112533d9e3c06ddcb238048a26c75db3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510058"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237610"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "65510058"
 
    非対話型アプリケーションのセットアップ方法については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関するページをご覧ください。
 
-1. サンプル コードを編集して、**#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。
+1. サンプル コードを編集して、 **#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。
 
 > [!NOTE]
 > GA サンプル コードについては、[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample) を参照してください。

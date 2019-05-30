@@ -3,18 +3,18 @@ title: Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシ
 description: クライアント側のログや他のサード パーティ製ツールなどの機能を使って、.NET SDK 使用時の Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
 author: j82w
 ms.service: cosmos-db
-ms.date: 01/19/2019
+ms.date: 05/28/2019
 ms.author: jawilley
 ms.devlang: c#
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7f969ab6059140ec32c9c5bf5045c546602a3c15
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7e48809537acc21edbcf12d299a333df486c258f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411354"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257151"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 この記事では、Azure Cosmos DB SQL API アカウントで [.NET SDK](sql-api-sdk-dotnet.md) を使用するときの一般的な問題、回避策、診断手順、およびツールについて説明します。

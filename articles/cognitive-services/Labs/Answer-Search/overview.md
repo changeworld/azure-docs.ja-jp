@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548083"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60721855"
 ---
 # <a name="what-is-project-answer-search"></a>Project Answer Search とは
 Project Answer Search API は、疑問文を使ったクエリに対する回答の取得に Bing v7 エンドポイントを使用します。 "地球の円周はどのくらいですか?" などの質問には、 事実情報を記載した回答を返します。  人物、場所、または物に関するクエリの場合には、そのクエリで特定されているエンティティに関する情報を返します。 会話ボット、メッセージング アプリ、リーダーなどのアプリケーションでは、このようなシナリオが有用になります。  
@@ -313,7 +313,7 @@ Project Answer Search の応答には、第三者が所有する情報が含ま�
   
 ![ライセンスの帰属表示](./media/licenseattribution.png)  
   
-表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知の文言が "**Text under CC-BY-SA license (CC-BY-SA ライセンスが適用されるテキスト)**" であって、ライセンスの名前が CC-BY-SA の場合、CC-BY-SA の部分をハイパーリンクにします。  
+表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知の文言が "**Text under CC-BY-SA license (CC-BY-SA ライセンスが適用されるテキスト)** " であって、ライセンスの名前が CC-BY-SA の場合、CC-BY-SA の部分をハイパーリンクにします。  
   
 ### <a name="link-and-text-attribution"></a>リンクとテキストの帰属表示  
 

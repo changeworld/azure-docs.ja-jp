@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: mlottner
 ms.openlocfilehash: 7efe32039f926ea9b5be3c24fa967dede72cd081
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "65192512"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要

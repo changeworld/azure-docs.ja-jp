@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB がスループットを弾力
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: b645fe210e7eeb073380dcadefead3e1b4d7ccc0
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: f930b5c478cc880952b4559be4c6647b260efcf2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407438"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243486"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>プロビジョニングされたスループットのグローバルなスケーリング 
 

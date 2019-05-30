@@ -4,7 +4,7 @@ description: この記事では、Azure Time Series Insights の待機時間と�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 6151af941b89198812f2a33a522b30ff0a8796a0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471736"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242070"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -59,12 +59,12 @@ ms.locfileid: "65471736"
 |**受信メッセージの受信**   | すべての Event Hubs または IoT Hub イベント ソースから読み取られたメッセージの数。        |
 |**保存済みバイトの受信**     | クエリ用に保存済みで利用できるイベントの合計サイズ。 サイズはプロパティ値のみに基づいて計算されます。        |
 |**Ingress Stored Events (保存済みイベントの受信)**     |   クエリ用に保存済みで利用できるフラット化されたイベントの数。      |
-|**Ingress Received Message Time Lag (受信メッセージの受信のタイム ラグ)**   |  メッセージがイベント ソースでエンキューされた時刻とそれがイングレスで処理された時刻の間の差 (秒単位)。      |
+|**Ingress Received Message Time Lag (受信メッセージの受信のタイム ラグ)**    |  メッセージがイベント ソースでエンキューされた時刻とそれがイングレスで処理された時刻の間の差 (秒単位)。      |
 |**Ingress Received Message Count Lag (受信メッセージの受信のカウント ラグ)**    |  イベント ソース パーティションで待ち行列の最後に入っているメッセージのシーケンス番号とイングレスで処理されているメッセージのシーケンス番号の間の差。      |
 
 ![Latency](media/environment-mitigate-latency/latency.png)
 
-* 調整中、*[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何秒遅れているのかが通知されます (約  30 ～ 60 秒のインデックス作成時間を除きます)。  *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
+* 調整中、 *[Ingress Received Message Time Lag]\(受信メッセージの受信のタイム ラグ\)* の値が表示され、メッセージがイベント ソースに届く実際の時間から TSI が何秒遅れているのかが通知されます (約  30 ～ 60 秒のインデックス作成時間を除きます)。  *[Ingress Received Message Count Lag]\(受信メッセージの受信のカウント ラグ\)* にも値が含まれるはずです。その値で何通のメッセージが送れているのか判断できます。  遅れを取り戻す最も簡単な方法は、差を埋めるだけのサイズまで環境の容量を増やすことです。  
 
   たとえば、シングル ユニット S1 の環境で 5,000,000 メッセージの遅れがある場合、環境のサイズを 6 ユニットまで増やせば 1 日がかりで追いつける可能性があります。  さらに増やせば、それだけ短時間で追いつくことができます。 このキャッチアップ期間は、環境に初めてプロビジョニングするときに一般的に発生します。特に、イベントが既に入っているイベント ソースに接続するときや、大量の履歴データを一括アップロードするときに発生します。
 

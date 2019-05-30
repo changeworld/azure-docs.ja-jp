@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: c46ffe2076d4b1491a3b27958dfbf5ed09115eaa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221286"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60708313"
 ---
 # <a name="what-is-conversation-learner"></a>Conversation Learner とは
 

@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410041"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234995"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 
@@ -79,7 +79,7 @@ MTU を増やしても、必ずしもより効率的なネットワークが作�
 
 #### <a name="azure-and-vm-mtu"></a>Azure と VM の MTU
 
-Azure VM の既定の MTU は 1,500 バイトです。 Azure Virtual Network スタックでは、1,400 バイトでのパケットの断片化が試行されます。 しかし、Azure Virtual Network スタックでは、IP ヘッダーに断片化禁止ビットが設定されている場合に、2,006 バイトまでのパケットが許可されます。
+Azure VM の既定の MTU は 1,500 バイトです。 Azure Virtual Network スタックでは、1,400 バイトでのパケットの断片化が試行されます。
 
 VM の MTU が 1,500 であっても、1,400 バイトでパケットを断片化するため、仮想ネットワーク スタックは本質的に非効率ではないことに注意してください。 ネットワーク パケットの大部分は 1,400 または 1,500 バイトよりかなり小さくなります。
 

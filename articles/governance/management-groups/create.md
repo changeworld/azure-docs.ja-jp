@@ -3,19 +3,19 @@ title: 管理グループを作成して Azure リソースを整理する - Azu
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
 author: rthorn17
 manager: rithorn
-ms.service: azure-resource-manager
+ms.service: governance
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e0a864019c2940ba7b5188ea43e9bbae484178d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165930"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241976"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -33,9 +33,9 @@ ms.locfileid: "66165930"
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
-1. メイン ページで、**[新しい管理グループ]** を選択します。
+1. メイン ページで、 **[新しい管理グループ]** を選択します。
 
    ![管理グループを操作するためのページ](./media/main.png)
 

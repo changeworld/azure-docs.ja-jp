@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153045"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306554"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -38,7 +38,7 @@ Speech コンテナーを使用する前に、次の前提条件を満たす必�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Speech_ Azure リソース。 これらの値は、どちらも Azure portal の **Speech** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Speech_ Azure リソース。 これらの値は、どちらも Azure portal の **Speech** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -281,6 +281,10 @@ Speech コンテナーは、Azure アカウントの _Speech_ リソースを使
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](speech-container-configuration.md)」を参照してください。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>まとめ
 

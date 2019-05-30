@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ca3cbb1ef46c7fe53b6b16bda40ebef245613f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415654"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245035"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする
 
@@ -41,8 +41,8 @@ Office 365 から Azure にデータをコピーするには、前提条件と�
 - Office 365 テナントの管理者は、[こちら](https://docs.microsoft.com/graph/data-connect-get-started)の説明に従って、オンボーディング アクションを完了する必要があります。
 - Azure Active Directory で Azure AD Web アプリケーションを作成し、構成します。  手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)に関するページを参照してください。
 - 次の値を記録しておきます。Office 365 用のリンク済みサービスを定義するときに使います。
-    - テナント ID。 手順については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
-    - アプリケーション ID とアプリケーション キー。  手順については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
+    - テナント ID。 手順については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
+    - アプリケーション ID とアプリケーション キー。  手順については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
 - Azure AD Web アプリケーションの所有者としてデータ アクセス要求を行うユーザーの ID を追加します (Azure AD Web アプリケーションから、[設定] > [所有者] > [所有者の追加])。 
     - ユーザー ID は、データの取得先の Office 365 組織に属している必要があり、Guest ユーザーであってはなりません。
 

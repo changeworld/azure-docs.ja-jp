@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cfbd68e66730fc338130bc16849fe0b2f4abd6be
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203635"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244404"
 ---
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
 
@@ -45,6 +45,7 @@ HDInsight クラスターの仮想マシンは、重要なセキュリティ更�
 
 > [!NOTE]  
 > 既存のクラスターに適用する場合、このスクリプトは永続化としてマークする必要があります。 そうしない場合、スケーリング操作で作成された新しいノードでは、既定の修正プログラム適用スケジュールが使用されます。  クラスター作成プロセスの一部としてスクリプトを適用した場合、スクリプトは自動的に永続化されます。
+
 
 ## <a name="next-steps"></a>次の手順
 

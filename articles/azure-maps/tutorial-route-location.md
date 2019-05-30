@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f9987a4aee561340c5ebe2639626e5f66a55358e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7091e542c1e7c5cd6715d9c0a064ea47d69239e1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544604"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356317"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Azure Maps を使って目的地へのルートを検索する
 
@@ -189,7 +189,7 @@ ms.locfileid: "59544604"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
 
 2. 資格情報と URL を設定した後、基点から終点までのルートを構築するための次の JavaScript コードを追加します。 `routeURL` は、Azure Maps のルート サービスに対して、道順を計算するように要求します。 `geojson.getFeatures()` メソッドを使用して応答から GeoJSON フィーチャー コレクションが抽出され、データ ソースに追加されます。
 

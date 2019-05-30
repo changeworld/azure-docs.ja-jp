@@ -4,15 +4,15 @@ description: Bulk Executor ライブラリによって提供される一括イ�
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f37e7f508805dcdc20626dddf6d27768e4ab0b01
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: e4357007ec1cfac2cf6a10d339c6b3aa3ae41488
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978679"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257098"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  

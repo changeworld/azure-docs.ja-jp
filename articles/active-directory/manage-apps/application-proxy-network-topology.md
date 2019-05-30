@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9ee8800d84d1090f97fb72980123f59d5aa0375
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cf8e7fed30a9b25b2960e3321eca5c4398911f35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783476"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236244"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -102,7 +102,7 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 この記事ではコネクタの配置を中心に取り上げていますが、アプリケーションの配置を変更して待ち時間特性を改善することもできます。
 
-ホスト環境にネットワークを移動する組織が増えています。 これにより組織は、企業ネットワークの一部でもあり、ドメイン内のままであるホスト環境にアプリを配置できます。 この場合は、前のセクションで説明したパターンをアプリケーションの新しい場所に適用できます。 このオプションを検討する場合は、[Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) に関するページをご覧ください。
+ホスト環境にネットワークを移動する組織が増えています。 これにより組織は、企業ネットワークの一部でもあり、ドメイン内のままであるホスト環境にアプリを配置できます。 この場合は、前のセクションで説明したパターンをアプリケーションの新しい場所に適用できます。 このオプションを検討する場合は、[Azure AD Domain Services](../../active-directory-domain-services/overview.md) に関するページをご覧ください。
 
 さらに、別々の場所やネットワーク内にある対象アプリケーションに接続するコネクタを、[コネクタ グループ](application-proxy-connector-groups.md)を使用して整理することを検討してください。 
 

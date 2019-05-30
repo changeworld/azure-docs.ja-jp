@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 929e9c1e53354832db9e3b73f5596cd4b0fdd774
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9d057628f79eb5edbbd3424d29aa7683b5d99eb7
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997038"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357220"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Java を使用して手書きテキストを抽出する
 
@@ -98,9 +98,6 @@ public class Main {
             // for processing, the other to retrieve the text found in the image.
 
             URIBuilder builder = new URIBuilder(uriBase);
-
-            // Request parameter.
-            builder.setParameter("mode", "Handwritten");
 
             // Prepare the URI for the REST API method.
             URI uri = builder.build();

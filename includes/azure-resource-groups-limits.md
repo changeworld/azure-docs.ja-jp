@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/19/2019
 ms.author: tomfitz
 ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012525"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238352"
 ---
 | Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -28,7 +28,7 @@ ms.locfileid: "60012525"
 | 値 | 既定の制限 | 上限 |
 | --- | --- | --- |
 | parameters |256 |256 |
-| variables |256 |256 |
+| 変数 |256 |256 |
 | リソース (コピー数を含む) |800 |800 |
 | 出力 |64 |64 |
 | テンプレート式 |24,576 文字 |24,576 文字 |

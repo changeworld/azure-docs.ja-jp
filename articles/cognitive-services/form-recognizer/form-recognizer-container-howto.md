@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: pafarley
-ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507805"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306544"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
 Form Recognizer では、機械学習テクノロジを適用して、フォームからキーと値のペアおよびテーブルを識別して抽出します。 値とテーブル エントリをそれらに関連付けてから、元のファイル内の関係を含む構造化データを出力します。 複雑さを軽減し、ワークフロー自動化プロセスまたは他のアプリケーションに簡単に統合するために、単純な REST API を使用してカスタム Form Recognizer モデルを呼び出すことができます。 必要なのは 5 つのドキュメント (または 1 つの空のフォーム) だけなので、手作業による操作やデータ サイエンスに関する深い専門知識を必要とすることなく、特定のコンテンツに合わせた結果をすばやく正確に得ることができます。 データのラベル付けやデータの注釈付けは必要ありません。
@@ -35,7 +35,7 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|
 |Azure CLI| [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をホストにインストールする必要があります。|
 |Computer Vision API リソース| スキャンしたドキュメントおよび画像を処理するには、**Computer Vision リソース**が必要です。 Azure リソース (REST API または SDK) または `cognitive-services-recognize-text` [コンテナー](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)として**テキスト認識**機能にアクセスできます。 通常の課金の料金が適用されます。 <br><br>特定の Computer Vision リソース (Azure クラウドまたは Cognitive Services コンテナー) のキーと課金エンドポイントの両方を渡す必要があります。 このキーと課金エンドポイントを {COMPUTER_VISION_API_KEY} と {COMPUTER_VISION_BILLING_ENDPOINT_URI} として使用します。<br><br> **`cognitive-services-recognize-text` コンテナー**を使用する場合は、次の点を確認します。<br><br>* Form Recognizer コンテナーの Computer Vision キーは、`cognitive-services-recognize-text` コンテナーの Computer Vision `docker run` コマンドで指定されたキーです。<br>* 課金エンドポイントは、コンテナーのエンドポイントです (`https://localhost:5000` など)。 同じホスト上で Computer Vision と Form Recognizer の両方のコンテナーを一緒に使用する場合、既定のポート `5000` を使用してその両方を起動することはできません。  |  
-|Form Recognizer リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Form Recognizer_ Azure リソース。 どちらの値も、Azure portal の **Form Recognizer** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
+|Form Recognizer リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Form Recognizer_ Azure リソース。 どちらの値も、Azure portal の **Form Recognizer** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -282,6 +282,10 @@ Form Recognizer コンテナーでは、Azure アカウントの _Form Recognize
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](form-recognizer-container-configuration.md)」を参照してください。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>まとめ
 

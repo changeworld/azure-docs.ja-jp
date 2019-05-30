@@ -16,11 +16,11 @@ ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e5858fe392629d61b3f0b8833db3af959a16a8b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66227691"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -45,7 +45,7 @@ ms.locfileid: "59525186"
 Cosmos DB アカウントがまだない場合は作成します。 この手順をスキップし、既存の Cosmos DB アカウントを使用することもできます。 
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2. **[データベース]**、**[Azure Cosmos DB]** の順にクリックします。[新しいアカウント] パネルが表示されます。
+2. **[データベース]** 、 **[Azure Cosmos DB]** の順にクリックします。[新しいアカウント] パネルが表示されます。
 3. Cosmos DB アカウントの **[ID]** を入力します。この ID は後で使用されます。  
 4. **[API]** は「SQL」に設定します。 このチュートリアルで説明されている方法は、他の利用可能な API の種類と併用できますが、このチュートリアルの手順は SQL API 向けです。
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。  Cosmos DB を使用できる **[場所]** を選択します。
@@ -57,7 +57,7 @@ Cosmos DB アカウントがまだない場合は作成します。 この手順
 
 1. 新しく作成した Cosmos DB アカウントに移動します。
 2. **[概要]** タブで **[+ コレクションの追加]** ボタンをクリックします。[コレクションの追加] パネルが表示されます。
-3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、**[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
+3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、 **[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
 
 ## <a name="grant-windows-vm-system-assigned-managed-identity-access-to-the-cosmos-db-account-access-keys"></a>Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのアクセス キーへのアクセス権を付与する
 
@@ -75,7 +75,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 最新バージョンの [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を Windows VM にインストールする必要があります。
 
-1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 
+1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで PowerShell を開きます。
 4. PowerShell の Invoke-WebRequest を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。

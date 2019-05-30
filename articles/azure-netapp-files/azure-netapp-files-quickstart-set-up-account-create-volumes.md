@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 4ea511bec75557bc6f7d37b1724b4b0db65ba9cc
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523021"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299416"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 
-1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files (プレビュー)]** を選択します。
+1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
 
       ![Azure NetApp Files を選択する](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 

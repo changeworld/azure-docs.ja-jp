@@ -4,7 +4,7 @@ description: この記事では、Azure Time Series Insights API を呼び出す
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fb2802bfe9cc0a4d3297e6fa749e5b94008c616
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 9b6cd993e9f6c6dbf173c161de638c6c4a8b18d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472578"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237050"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -55,11 +55,11 @@ Time Series Insights にアクセスする必要があるアプリケーショ�
 
 ## <a name="detailed-setup"></a>詳細なセットアップ
 
-1. Azure Portal で、**[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順に選びます。
+1. Azure Portal で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新しいアプリケーションの登録]** の順に選びます。
 
    [![Azure Active Directory での新しいアプリケーションの登録](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
 
-1. アプリケーションに名前を付けて、種類として **[Web アプリ/API]** を選択し、**[サインオン URL]** に任意の有効な URI を選択して、**[作成]** をクリックします。
+1. アプリケーションに名前を付けて、種類として **[Web アプリ/API]** を選択し、 **[サインオン URL]** に任意の有効な URI を選択して、 **[作成]** をクリックします。
 
    [![Azure Active Directory にアプリケーションを作成する](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
 
@@ -67,7 +67,7 @@ Time Series Insights にアクセスする必要があるアプリケーショ�
 
    [![アプリケーション ID をコピーする](media/authentication-and-authorization/active-directory-copy-application-id.png)](media/authentication-and-authorization/active-directory-copy-application-id.png#lightbox)
 
-1. **[キー]** を選択してキー名を入力し、有効期限を選択して、**[保存]** をクリックします。
+1. **[キー]** を選択してキー名を入力し、有効期限を選択して、 **[保存]** をクリックします。
 
    [![アプリケーション キーを選択する](media/authentication-and-authorization/active-directory-application-keys.png)](media/authentication-and-authorization/active-directory-application-keys.png#lightbox)
 
@@ -77,7 +77,7 @@ Time Series Insights にアクセスする必要があるアプリケーショ�
 
    [![アプリケーション キーをコピーする](media/authentication-and-authorization/active-directory-copy-application-key.png)](media/authentication-and-authorization/active-directory-copy-application-key.png#lightbox)
 
-1. Time Series Insights 環境のための **[データ アクセス ポリシー]** を選択して、**[追加]** をクリックします。
+1. Time Series Insights 環境のための **[データ アクセス ポリシー]** を選択して、 **[追加]** をクリックします。
 
    [![Time Series Insights 環境に新しいデータ アクセス ポリシーを追加する](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
@@ -85,7 +85,7 @@ Time Series Insights にアクセスする必要があるアプリケーショ�
 
    [![[ユーザーの選択] ダイアログ ボックスでアプリケーションを検索する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. ロール (データを照会する場合は **[閲覧者]**、データを照会して参照データを変更する場合は **[共同作成者]**) を選択して、**[OK]** をクリックします。
+1. ロール (データを照会する場合は **[閲覧者]** 、データを照会して参照データを変更する場合は **[共同作成者]** ) を選択して、 **[OK]** をクリックします。
 
    [![[ロールの選択] ダイアログ ボックスで、[閲覧者] または [共同作成者] を選択する](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 

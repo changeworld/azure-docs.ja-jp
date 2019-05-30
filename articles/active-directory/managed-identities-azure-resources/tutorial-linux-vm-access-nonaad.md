@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7a4ce0419e3a5615cc5a6d57fe2f1cfecad2f09
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444850"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66228583"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -44,13 +44,13 @@ Azure リソースのマネージド サービス ID を使用すると、Azure 
 
 まず、Key Vault を作成し、VM のシステム割り当てマネージド ID に Key Vault へのアクセスを許可する必要があります。   
 
-1. 左側のナビゲーション バーの上部で、**[リソースの作成]** > **[セキュリティ + ID]** > **[Key Vault]** を選択します。  
+1. 左側のナビゲーション バーの上部で、 **[リソースの作成]**  >  **[セキュリティ + ID]**  >  **[Key Vault]** を選択します。  
 2. 新しい Key Vault の**名前**を入力します。 
 3. 以前に作成した VM と同じサブスクリプションおよびリソース グループで、Key Vault を見つけます。 
 4. **[アクセス ポリシー]** を選択して **[新規追加]** ボタンをクリックします。 
-5. テンプレートの [構成] で、**[シークレットの管理]** を選択します。 
+5. テンプレートの [構成] で、 **[シークレットの管理]** を選択します。 
 6. **[プリンシパルの選択]** を選択し、検索フィールドに以前に作成した VM の名前を入力します。  結果一覧で VM を選択し、 **[選択]** をクリックします。 
-7. **[OK]** をクリックして新しいアクセス ポリシーの追加を終了し、**[OK]** をクリックしてアクセス ポリシーの選択を完了します。 
+7. **[OK]** をクリックして新しいアクセス ポリシーの追加を終了し、 **[OK]** をクリックしてアクセス ポリシーの選択を完了します。 
 8. **[作成]** をクリックして Key Vault の作成を完了します。 
 
     ![イメージ テキスト](./media/msi-tutorial-windows-vm-access-nonaad/msi-blade.png)
@@ -58,17 +58,17 @@ Azure リソースのマネージド サービス ID を使用すると、Azure 
 次に、Key Vault にシークレットを追加して、後で VM で実行されているコードを使用して、シークレットを取得できるようにします。 
 
 1. **[すべてのリソース]** を選択し、作成した Key Vault を検索して選択します。 
-2. **[シークレット]** を選択し、**[追加]** をクリックします。 
+2. **[シークレット]** を選択し、 **[追加]** をクリックします。 
 3. **[アップロード オプション]** から **[手動]** を選択します。 
 4. シークレットの名前と値を指定します。  値は任意のものを指定できます。 
-5. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
+5. アクティブ化した日付と有効期限の日付をクリアのままにし、 **[有効]** を **[はい]** のままにします。 
 6. **[作成]** をクリックしてシークレットを作成します。 
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM の ID を使用してアクセス トークンを取得して、Key Vault からシークレットを取得する  
 
 これらの手順を完了するには、SSH クライアントが必要です。  Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
  
-1. ポータルで Linux VM に移動し、**[概要]** の **[接続]** をクリックします。 
+1. ポータルで Linux VM に移動し、 **[概要]** の **[接続]** をクリックします。 
 2. 任意の SSH クライアントを使用して、VM に**接続**します。 
 3. ターミナル ウィンドウで、CURL を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Key Vault のアクセス トークンを取得するよう要求します。  
  

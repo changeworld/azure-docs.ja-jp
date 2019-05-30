@@ -4,14 +4,14 @@ description: Azure Cosmos コンテナーに対して実行した操作の要求
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 730f0604d0c292764aaee6e0ffb8ef95d90be5f2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 8ccb7ae9869ec01b4f26009535af613ccb1d35d0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410286"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241118"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -33,7 +33,7 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 1. **[新しい SQL クエリ]** を選択します。
 
-1. 有効なクエリを入力し、**[クエリの実行]** を選択します。
+1. 有効なクエリを入力し、 **[クエリの実行]** を選択します。
 
 1. **[Query Stats]\(クエリの統計\)** を選択すると、実行した要求の実際の使用量が表示されます。
 
@@ -171,7 +171,7 @@ RU 使用量は、`getLastRequestStatistics` という名前のカスタム [デ
 
 1. **[新しいクエリ]** を選択します。
 
-1. 有効なクエリを入力し、**[クエリの実行]** を選択します。
+1. 有効なクエリを入力し、 **[クエリの実行]** を選択します。
 
 1. **[Query Stats]\(クエリの統計\)** を選択すると、実行した要求の実際の使用量が表示されます。
 

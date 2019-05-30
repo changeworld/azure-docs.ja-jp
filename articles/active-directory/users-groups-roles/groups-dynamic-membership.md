@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cdc315bd82a5d69e2f3e52d1614e0e5ba7407936
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192431"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254819"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -353,7 +353,6 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
- domainName | 任意の文字列値 | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Apple デバイス登録プロファイルまたは Windows Autopilot プロファイルの名前 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")

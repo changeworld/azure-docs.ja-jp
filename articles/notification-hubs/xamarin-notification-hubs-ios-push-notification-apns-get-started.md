@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: 94f3d2345ad9ab8187a8c3eff8dc3684b9f4cc39
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cd6d22e7c689bce5c325863b914c5ee8abcbf40a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141349"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240772"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する
 
@@ -65,7 +65,7 @@ ms.locfileid: "65141349"
 
 ### <a name="configure-ios-settings-for-the-notification-hub"></a>iOS の設定を通知ハブ用に構成する
 
-1. **[通知設定]** グループで、**[Apple (APNS)]** を選択します。
+1. **[通知設定]** グループで、 **[Apple (APNS)]** を選択します。
 2. **[証明書]** を選択し、**ファイル** アイコンをクリックして、前にエクスポートした **.p12** ファイルを選択します。
 3. 証明書の**パスワード**を指定します。
 4. **[サンドボックス]** モードを選択します。 **[Production] (運用)** モードは、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
@@ -80,21 +80,21 @@ ms.locfileid: "65141349"
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-1. Visual Studio で、新しい iOS プロジェクトを作成し、**[単一ビュー アプリ]** テンプレートを選択し、**[次へ]** をクリックします。
+1. Visual Studio で、新しい iOS プロジェクトを作成し、 **[単一ビュー アプリ]** テンプレートを選択し、 **[次へ]** をクリックします。
 
      ![Visual Studio - アプリケーションの種類を選択する][31]
 
-2. アプリケーション名と組織の識別子を入力し、**[次へ]**、**[作成]** の順にクリックします。
+2. アプリケーション名と組織の識別子を入力し、 **[次へ]** 、 **[作成]** の順にクリックします。
 
-3. ソリューション ビューから *[Info.plist]* をダブルクリックし、**[ID]** で、バンドル識別子がプロビジョニング プロファイルを作成するときに使用したものに一致することを確認します。 **[署名]** で、**[チーム]** に Developer アカウントを選択し、[Automatically manage signing]\(署名を自動的に管理する\) をオンにし、署名証明書とプロビジョニング プロファイルが自動的に選択されることを確認します。
+3. ソリューション ビューから *[Info.plist]* をダブルクリックし、 **[ID]** で、バンドル識別子がプロビジョニング プロファイルを作成するときに使用したものに一致することを確認します。 **[署名]** で、 **[チーム]** に Developer アカウントを選択し、[Automatically manage signing]\(署名を自動的に管理する\) をオンにし、署名証明書とプロビジョニング プロファイルが自動的に選択されることを確認します。
 
     ![Visual Studio - iOS アプリの構成][32]
 
-4. ソリューション ビューで、`Entitlements.plist` をダブルクリックし、**[プッシュ通知を有効にする]** チェック ボックスがオンになっていることを確認します。
+4. ソリューション ビューで、`Entitlements.plist` をダブルクリックし、 **[プッシュ通知を有効にする]** チェック ボックスがオンになっていることを確認します。
 
     ![Visual Studio - iOS エンタイトルメントの構成][33]
 
-5. Azure Messaging パッケージを追加します。 ソリューション ビューでプロジェクトを右クリックし、**[追加]** > **[NuGet パッケージの追加]** を選択します。 **Xamarin.Azure.NotificationHubs.iOS** を検索し、パッケージをプロジェクトに追加します。
+5. Azure Messaging パッケージを追加します。 ソリューション ビューでプロジェクトを右クリックし、 **[追加]**  >  **[NuGet パッケージの追加]** を選択します。 **Xamarin.Azure.NotificationHubs.iOS** を検索し、パッケージをプロジェクトに追加します。
 
 6. 新しいファイルをクラスに追加し、`Constants.cs` と名前を付け、次の変数を追加し、文字列リテラルのプレースホルダーを `hubname` とメモしておいた `DefaultListenSharedAccessSignature` に置き換えます。
 
@@ -108,6 +108,7 @@ ms.locfileid: "65141349"
 
     ```csharp
     using WindowsAzure.Messaging;
+    using UserNotifications
     ```
 
 8. `SBNotificationHub` のインスタンスを宣言します。

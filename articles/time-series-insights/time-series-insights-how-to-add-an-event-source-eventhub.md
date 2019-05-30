@@ -4,19 +4,19 @@ description: この記事では、Azure Event Hubs に接続されたイベン�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41d3e72d978a210c2d68365ade5d8cb42c24aad5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8040368f4cbd6d264070aa3db0a8e6b07a866480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147601"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239020"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -40,11 +40,11 @@ ms.locfileid: "65147601"
 
 1. Azure portal で、イベント ハブを見つけて開きます。
 
-1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、**[コンシューマー グループ]** を選択します。
+1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
 
    [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
 
-1. **[コンシューマー グループ]** ページで、**[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
+1. **[コンシューマー グループ]** ページで、 **[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
 
 1. **作成** を選択します。
 
@@ -54,7 +54,7 @@ ms.locfileid: "65147601"
 
 1. 既存の Time Series Insights 環境を見つけます。 左のメニューで **[すべてのリソース]** を選択し、自分の Time Series Insights 環境を選択します。
 
-1. **[環境トポロジ]** で **[イベント ソース]** を選択し、**[追加]** を選択します。
+1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
 
    [![[イベント ソース] で [追加] ボタンを選択](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
 
@@ -63,8 +63,8 @@ ms.locfileid: "65147601"
 1. **[ソース]** で **[イベント ハブ]** を選択します。
 
 1. **[インポート オプション]** に適切な値を選択します。
-   - サブスクリプションのいずれかに既にイベント ハブが存在する場合、**[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
-   - イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、**[イベント ハブ設定を手動で行う]** を選択します。
+   - サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
+   - イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、 **[イベント ハブ設定を手動で行う]** を選択します。
 
    [![[新しいイベント ソース] ウィンドウで、最初の 3 つのパラメーターの値を入力](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 

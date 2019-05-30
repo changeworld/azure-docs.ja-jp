@@ -4,19 +4,19 @@ description: この記事では、Azure Portal を使用して新しい Time Ser
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6e38465b46f387092ab457ebe6716a3dcff4768
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1018b449047e40a67ea843e8506fb43f6e1093a6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205858"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239051"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
 
@@ -32,11 +32,11 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 
 1. **[+ 新規]** をクリックします。
 
-1. **[モノのインターネット]** カテゴリを選択し、**[Time Series Insights]** を選択します。
+1. **[モノのインターネット]** カテゴリを選択し、 **[Time Series Insights]** を選択します。
 
    ![Time Series Insights 環境の作成](media/time-series-insights-get-started/1-new-tsi.png)
 
-1. **[Time Series Insights]** ページで、**[作成]** を選択します。
+1. **[Time Series Insights]** ページで、 **[作成]** を選択します。
 
 1. 必要なパラメーターを入力します。 次の表に各パラメーターを示します。
    
@@ -51,17 +51,17 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
    価格レベル  | S1 | 必要なスループットを選択します。 コストと初期容量を最小限に抑えるために、S1 を選択します。
    容量 | 1 | 容量は、イングレス レート、ストレージ容量、選択した SKU に関連するコストに適用される乗数です。  環境の容量は、作成後に変更できます。 コストを最小限に抑えるために、容量として 1 を選択します。 
   
-1. 今後、Time Series 環境にアクセスしやすいように、**[ダッシュボードにピン留めする]** をオンにします。
+1. 今後、Time Series 環境にアクセスしやすいように、 **[ダッシュボードにピン留めする]** をオンにします。
 
    ![Time Series Insights の作成の [ダッシュボードにピン留めする]](media/time-series-insights-get-started/3-pin-create.png)
 
 1. **[作成]** をクリックして、プロビジョニング プロセスを開始します。 このプロセスには数分かかることがあります。
 
-1. デプロイ プロセスを監視するために、**[通知]** シンボル (ベルのアイコン) をクリックします。
+1. デプロイ プロセスを監視するために、 **[通知]** シンボル (ベルのアイコン) をクリックします。
 
    ![通知の確認](media/time-series-insights-get-started/4-notifications.png)
 
-デプロイが成功したら、**[リソースに移動]** を選択して、他のプロパティの構成、データ アクセス ポリシーによるセキュリティの設定、イベント ソースの追加などの操作を行うことができます。
+デプロイが成功したら、 **[リソースに移動]** を選択して、他のプロパティの構成、データ アクセス ポリシーによるセキュリティの設定、イベント ソースの追加などの操作を行うことができます。
 
 ## <a name="next-steps"></a>次の手順
 

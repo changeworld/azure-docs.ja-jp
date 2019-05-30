@@ -2,7 +2,7 @@
 title: Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する | Microsoft Docs
 description: この記事では、Azure Time Series Insights プレビュー エクスプローラー Web アプリで使用できる機能とオプションについて説明します。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 862465a7611f1a2bc65dbb0c49c4de512bd239de
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 359ef6ee8cfe4910e847376b7bd431a4c09aebc7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442079"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237673"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>エクスプローラー プレビューでデータを視覚化する
 
@@ -149,7 +149,7 @@ Time Series Insights プレビューを使用するときは、最初に時間�
 
 1. **間隔サイズ スライダー ツール**:同じ時間範囲で間隔を拡大縮小できます。 この操作により、大きい時間スライスの間での動きをより細かく制御できます。 最小ミリ秒のスライスまで滑らかにトレンドを表示して、いっそう細かく高い解像度でデータの断片を見ることができます。 スライダーの既定の開始点は、解像度、クエリ速度、および粒度のバランスをとって、選択したデータが最適に表示されるよう設定されます。
 
-1. **日付範囲の開始と終了 Web コントロール**:この Web コントロールを使用すると、クリックして簡単に目的の日付と時刻の範囲を選択できます。 コントロールを使用して、異なるタイム ゾーンに切り替えることもできます。 変更を行った後、現在のワークスペースに適用するには、**[保存]** を選択します。
+1. **日付範囲の開始と終了 Web コントロール**:この Web コントロールを使用すると、クリックして簡単に目的の日付と時刻の範囲を選択できます。 コントロールを使用して、異なるタイム ゾーンに切り替えることもできます。 変更を行った後、現在のワークスペースに適用するには、 **[保存]** を選択します。
 
    [![日付範囲の開始と終了のパネル](media/v2-update-explorer/explorer-thirteen.png)](media/v2-update-explorer/explorer-thirteen.png#lightbox)
 
@@ -175,7 +175,7 @@ URL リンクをチームと共有するには、新しい **[Share]\(共有\)**
 
 ### <a name="theme-selection"></a>テーマの選択
 
-新しいテーマを選択するには、右上隅にあるプロフィール アイコンをクリックします。 次に、**[Change Theme]\(テーマの変更\)** を選択します。
+新しいテーマを選択するには、右上隅にあるプロフィール アイコンをクリックします。 次に、 **[Change Theme]\(テーマの変更\)** を選択します。
 
   [![テーマの選択](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
 
@@ -216,9 +216,9 @@ Time Series Insights プレビュー条件編集パネルには、次のパラ�
 
   [![Where 句の例](media/v2-update-explorer/explorer-nineteen.png)](media/v2-update-explorer/explorer-nineteen.png#lightbox)
 
-**[メジャー]**:現在のグラフの要素として使用できるすべての数値列 (**Double**) が表示されるドロップダウン リスト。
+**[メジャー]** :現在のグラフの要素として使用できるすべての数値列 (**Double**) が表示されるドロップダウン リスト。
 
-**分割基準**:このドロップダウン リストには、データのグループ化に使用できるモデル内のすべてカテゴリ列 (String) が表示されます。 同じ X 軸上に表示する期間を最大 5 つまで追加できます。 目的のパラメーターを入力し、**[追加]** を選択して新しい条件を追加します。
+**分割基準**:このドロップダウン リストには、データのグループ化に使用できるモデル内のすべてカテゴリ列 (String) が表示されます。 同じ X 軸上に表示する期間を最大 5 つまで追加できます。 目的のパラメーターを入力し、 **[追加]** を選択して新しい条件を追加します。
 
   [![クエリ/フィルター ビュー 1](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
 

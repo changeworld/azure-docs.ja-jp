@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c95eb45d75a54af75fdc8004316bc8bfeeddbd7e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0cfaea53156b78fad024046bb6f55229f8ad6536
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783929"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236265"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -182,4 +182,4 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 - ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。 マルチホップ シナリオを構成するには、サポートの記事を参照してください。 [Kerberos 制約付き委任は、プロトコルの切り替えと複数ホップのシナリオを要求することがある](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)の記事です。
 
 ## <a name="next-steps"></a>次の手順
-[管理されたドメインで OU を作成する](../../active-directory-domain-services/active-directory-ds-enable-kcd.md)。
+[管理されたドメインで OU を作成する](../../active-directory-domain-services/deploy-kcd.md)。

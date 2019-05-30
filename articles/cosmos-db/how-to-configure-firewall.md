@@ -4,14 +4,14 @@ description: Azure Cosmos DB データベース アカウント上でファイ�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 24ebc7eb4c9abc72a89419611e4b4b3fa2db88b4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068717"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241959"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "65068717"
 
 ## <a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
 
-Azure portal で IP アクセス制御ポリシーを構成するには、Azure Cosmos DB アカウント ページに移動し、ナビゲーション メニューで **[ファイアウォールと仮想ネットワーク]** を選択します。 **[許可するアクセス元]** の値を **[選択されたネットワーク]** に変更し、**[保存]** を選択します。 
+Azure portal で IP アクセス制御ポリシーを構成するには、Azure Cosmos DB アカウント ページに移動し、ナビゲーション メニューで **[ファイアウォールと仮想ネットワーク]** を選択します。 **[許可するアクセス元]** の値を **[選択されたネットワーク]** に変更し、 **[保存]** を選択します。 
 
 ![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/how-to-configure-firewall/azure-portal-firewall.png)
 
@@ -43,7 +43,7 @@ IP アクセス制御ポリシーをプログラムで有効にする場合は�
 |米国政府|52.244.48.71|
 |その他のすべてのリージョン|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
 
-Azure portal へのアクセスを有効にするには、次のスクリーン ショットに示すように、**[Azure portal からのアクセスを許可する]** を選択します。 
+Azure portal へのアクセスを有効にするには、次のスクリーン ショットに示すように、 **[Azure portal からのアクセスを許可する]** を選択します。 
 
 ![Azure Portal へのアクセスを有効にする方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-portal.png)
 
@@ -54,7 +54,7 @@ Azure Stream Analytics や Azure Functions などの静的 IP を提供しない
 > [!NOTE]
 > このオプションでは、Azure にデプロイされた他のお客様のサブスクリプションからの要求を含む、Azure からのすべての要求を許可するようにファイアウォールが構成されます。 このオプションで許可される IP のリストは非常に範囲が広くなるので、ファイアウォール ポリシーの有効性が制限されます。 このオプションは、ご利用の要求が静的 IP または仮想ネットワーク内のサブネットから発生しない場合にのみ使用してください。 このオプションを選択すると Azure portal からのアクセスは自動的に許可されるようになります。これは、Azure portal が Azure にデプロイされているからです。
 
-Azure portal へのアクセスを有効にするには、次のスクリーン ショットに示すように、**[パブリック Azure データセンター内からの接続を受け入れる]** を選択します。 
+Azure portal へのアクセスを有効にするには、次のスクリーン ショットに示すように、 **[パブリック Azure データセンター内からの接続を受け入れる]** を選択します。 
 
 ![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-azure-services.png)
 
@@ -64,7 +64,7 @@ Azure portal へのアクセスを有効にするには、次のスクリーン 
 
 ポータルでは自動的にクライアントの IP アドレスが検出されます。 ご利用のマシンのクライアント IP アドレスである場合や、ご利用のネットワーク ゲートウェイの IP アドレスである場合があります。 運用環境にご利用のワークロードを移行する前に、この IP アドレスを必ず削除してください。 
 
-現在の IP を IP の一覧に追加するには、**[現在の IP を追加する]** を選択します。 次に、**[保存]** を選択します。
+現在の IP を IP の一覧に追加するには、 **[現在の IP を追加する]** を選択します。 次に、 **[保存]** を選択します。
 
 ![現在の IP のファイアウォール設定を構成する方法を示すスクリーンショット](./media/how-to-configure-firewall/enable-current-ip.png)
 

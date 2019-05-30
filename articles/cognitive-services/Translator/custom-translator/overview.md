@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
 ms.openlocfilehash: d9b253afa7414ada4db58f98cd346e223f8282b6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776012"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60511458"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 

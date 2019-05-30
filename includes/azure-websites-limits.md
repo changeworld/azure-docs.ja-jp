@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: c2db5740d6373c8f6be5dabe0260fe7f99575641
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce64047fd7490106790ea8bb1ad7963d82a87c24
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554271"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238758"
 ---
-| リソース | 無料 | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
+| Resource | 無料 | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Azure App Service プラン](../articles/app-service/overview-hosting-plans.md)あたりの [Web、モバイル、または API アプリ数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup>|
 | [[App Service プラン]](../articles/app-service/overview-hosting-plans.md) |リージョンあたり 10 件 |リソース グループあたり 10 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100|
@@ -29,7 +29,7 @@ ms.locfileid: "57554271"
 | アプリケーションごとのカスタム ドメイン数</a> |0 (azurewebsites.net サブドメインのみ)|500 |500 |500 |500 |500 |
 | カスタム ドメインの [SSL サポート](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |サポートされない、デフォルトで使用可能な *.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な *.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
 | 統合 Load Balancer | |X |X |X |X |X<sup>9</sup> |
-| [常時接続](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
+| [常時接続](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [スケジュールされたバックアップ](../articles/app-service/manage-backup.md) | | | | 2 時間ごとにスケジュールされたバックアップ。1 日あたり最大 12 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) |
 | [Autoscale](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
 | [Web ジョブ](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |

@@ -7,14 +7,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: aahi
-ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233618"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306974"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行
 
@@ -37,7 +37,7 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Anomaly Detector_ Azure リソース。 どちらの値も、Azure portal の Anomaly Detector の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{BILLING_KEY}**: リソース キー<br><br>**{BILLING_ENDPOINT_URI}**: エンドポイントURI の例: `https://westus2.api.cognitive.microsoft.com`|
+|Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Anomaly Detector_ Azure リソース。 どちらの値も、Azure portal の Anomaly Detector の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus2.api.cognitive.microsoft.com`|
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -176,6 +176,10 @@ Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](anomaly-detector-container-configuration.md)」を参照してください。
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>まとめ
 

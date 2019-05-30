@@ -2,7 +2,7 @@
 title: Azure Time Series Insights プレビューでのデータ モデリング | Microsoft Docs
 description: Azure Time Series Insights プレビューでのデータ モデリングについて説明します。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c8886cada80c02e99782159099aa626da35fc50
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 73384868deb8f0e33b233e363c42a12adbcbe402
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466585"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237562"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのデータ モデリング
 
@@ -32,7 +32,7 @@ ms.locfileid: "65466585"
     [![1 つの種類を作成する](media/v2-update-how-to-tsm/portal_one.png)](media/v2-update-how-to-tsm/portal_one.png#lightbox)
 
 1. **[追加]** を選択します。
-1. 種類に関係するすべての詳細情報を入力して、**[作成]** を選択します。 この操作により、環境に種類が作成されます。
+1. 種類に関係するすべての詳細情報を入力して、 **[作成]** を選択します。 この操作により、環境に種類が作成されます。
 
     [![種類を追加する](media/v2-update-how-to-tsm/portal_two.png)](media/v2-update-how-to-tsm/portal_two.png#lightbox)
 
@@ -46,14 +46,14 @@ ms.locfileid: "65466585"
 
 ### <a name="edit-a-single-type"></a>1 つの種類を編集する
 
-1. 種類を選択して、**[編集]** を選択します。 
-1. 必要な変更を行い、**[保存]** を選択します。
+1. 種類を選択して、 **[編集]** を選択します。 
+1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![種類を編集する](media/v2-update-how-to-tsm/portal_four.png)](media/v2-update-how-to-tsm/portal_four.png#lightbox)
 
 ### <a name="delete-a-type"></a>種類を削除する
 
-1. 種類を選択して、**[削除]** を選択します。
+1. 種類を選択して、 **[削除]** を選択します。
 1. 種類にインスタンスが関連付けられていない場合は、削除されます。
 
     [![種類を削除する](media/v2-update-how-to-tsm/portal_five.png)](media/v2-update-how-to-tsm/portal_five.png#lightbox)
@@ -74,7 +74,7 @@ ms.locfileid: "65466585"
 
     [![レベルを追加する](media/v2-update-how-to-tsm/portal_eight.png)](media/v2-update-how-to-tsm/portal_eight.png#lightbox)
 
-1. 階層の詳細を入力して、**[作成]** を選択します。
+1. 階層の詳細を入力して、 **[作成]** を選択します。
 
     [![レベルを作成する](media/v2-update-how-to-tsm/portal_nine.png)](media/v2-update-how-to-tsm/portal_nine.png#lightbox)
 
@@ -88,14 +88,14 @@ ms.locfileid: "65466585"
 
 ### <a name="edit-a-single-hierarchy"></a>1 つの階層を編集する
 
-1. 階層を選択し、**[編集]** を選択します。
-1. 必要な変更を行い、**[保存]** を選択します。
+1. 階層を選択し、 **[編集]** を選択します。
+1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![1 つの階層を編集する](media/v2-update-how-to-tsm/portal_eleven.png)](media/v2-update-how-to-tsm/portal_eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>階層を削除する
 
-1. 階層を選択し、**[削除]** を選択します。 
+1. 階層を選択し、 **[削除]** を選択します。 
 1. 階層にインスタンスが関連付けられていない場合は、削除されます。
 
     [![階層を削除する](media/v2-update-how-to-tsm/portal_twelve.png)](media/v2-update-how-to-tsm/portal_twelve.png#lightbox)
@@ -112,7 +112,7 @@ ms.locfileid: "65466585"
 
     [![インスタンスを追加する](media/v2-update-how-to-tsm/portal_fourteen.png)](media/v2-update-how-to-tsm/portal_fourteen.png#lightbox)
 
-1. インスタンスの詳細を入力し、種類と階層の関連付けを選択して、**[作成]** を選択します。
+1. インスタンスの詳細を入力し、種類と階層の関連付けを選択して、 **[作成]** を選択します。
 
 ### <a name="bulk-upload-one-or-more-instances"></a>1 つまたは複数のインスタンスを一括アップロードする
 
@@ -125,8 +125,8 @@ ms.locfileid: "65466585"
 
 ### <a name="edit-a-single-instance"></a>1 つのインスタンスを編集する
 
-1. インスタンスを選択して、**[編集]** を選択します。 
-1. 必要な変更を行い、**[保存]** を選択します。
+1. インスタンスを選択して、 **[編集]** を選択します。 
+1. 必要な変更を行い、 **[保存]** を選択します。
 
     [![1 つのインスタンスを編集する](media/v2-update-how-to-tsm/portal_sixteen.png)](media/v2-update-how-to-tsm/portal_sixteen.png#lightbox)
 

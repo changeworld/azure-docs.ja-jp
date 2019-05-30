@@ -9,15 +9,15 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554143"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238580"
 ---
 各サブスクリプションの Azure Log Analytics リソースには、次の制限が適用されます。
 
-| リソース | 既定の制限 | 説明
+| Resource | 既定の制限 | 説明
 | --- | --- | --- |
 | サブスクリプションあたりの無料のワークスペースの数 | 10 | この制限を増やすことはできません。 |
 | サブスクリプションあたりの有料のワークスペースの数 | 該当なし | リソース グループ内のリソースの数とサブスクリプションあたりのリソース グループの数によって制限されます。 | 

@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 054369a7fd75663c75c99c6ee586843582a6b6f9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bfa69c6904644f707626e57a6696695cf4868c50
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965962"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236613"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage を使用する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -58,7 +58,7 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 2. 自分のストレージ アカウントを探します。
-3. ストレージ アカウントの概要の **[設定]** セクションで、**[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
+3. ストレージ アカウントの概要の **[設定]** セクションで、 **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
 4. **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。 すぐ後の手順で、接続文字列の値を環境変数に追加します。
 
     ![Azure portal から接続文字列をコピーする方法を示すスクリーンショット](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -231,7 +231,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 ```
 
 ## <a name="get-the-queue-length"></a>キューの長さを取得する
-キュー内のメッセージの概数を取得できます。 [FetchAttributes](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。 [ApproximateMessageCount](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) プロパティは、Queue サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+キュー内のメッセージの概数を取得できます。 [FetchAttributes](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet) メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。 [ApproximateMessageCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet) プロパティは、Queue サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -255,7 +255,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="delete-a-queue"></a>キューを削除する
-キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの [Delete](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの [Delete](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet) メソッドを呼び出します。
 
 ```csharp
 // Retrieve storage account from connection string.

@@ -10,11 +10,11 @@ ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554254"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238832"
 ---
 | Category | 制限 |
 | --- | --- |

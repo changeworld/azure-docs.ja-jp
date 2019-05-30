@@ -4,19 +4,19 @@ description: この記事では、Azure Resource Manager を使用して Azure T
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5e350e8a9093936f1e747afda7c3192b4d8368d
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471723"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237652"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
@@ -243,7 +243,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 1. Azure Portal からクイックスタート テンプレートをデプロイする
 
-   * GitHub のクイックスタート テンプレートのホーム ページには、**[Deploy to Azure]\(Azure へのデプロイ\)** ボタンもあります。 このボタンをクリックすると、Azure Portal の [カスタム デプロイ] ページが開きます。 このページで、各パラメーターの値を入力したり、[[必要なパラメーター]](#required-parameters) テーブルまたは [[省略可能なパラメーター]](#optional-parameters) テーブルから選択したりできます。 設定に値を入力し、**[購入]** ボタンをクリックすると、テンプレートのデプロイが開始されます。
+   * GitHub のクイックスタート テンプレートのホーム ページには、 **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンもあります。 このボタンをクリックすると、Azure Portal の [カスタム デプロイ] ページが開きます。 このページで、各パラメーターの値を入力したり、[[必要なパラメーター]](#required-parameters) テーブルまたは [[省略可能なパラメーター]](#optional-parameters) テーブルから選択したりできます。 設定に値を入力し、 **[購入]** ボタンをクリックすると、テンプレートのデプロイが開始されます。
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">

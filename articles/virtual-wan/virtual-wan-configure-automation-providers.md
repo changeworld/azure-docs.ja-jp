@@ -7,13 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: cherylmc
-Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: c007684f351e0980ff9840ac8950121f212eeb36
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: f286c02e0eb6e801f62d4f2e16f1197a1e9d44ce
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016091"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304568"
 ---
 # <a name="virtual-wan-partners"></a>Virtual WAN パートナー
 
@@ -199,65 +198,7 @@ ms.locfileid: "66016091"
 
 ## <a name="default"></a> IPsec 接続の既定のポリシー
 
-### <a name="initiator"></a>イニシエーター
-
-次のセクションでは、Azure がトンネルのイニシエーターになっているときに、サポートされているポリシーの組み合わせを一覧表示します。
-
-**フェーズ 1**
-
-* AES_256、SHA1、DH_GROUP_2
-* AES_256、SHA_256、DH_GROUP_2
-* AES_128、SHA1、DH_GROUP_2
-* AES_128、SHA_256、DH_GROUP_2
-
-**フェーズ 2**
-
-* GCM_AES_256、GCM_AES_256、PFS_NONE
-* AES_256、SHA_1、PFS_NONE
-* AES_256、SHA_256、PFS_NONE
-* AES_128、SHA_1、PFS_NONE
-
-### <a name="responder"></a>応答側
-
-次のセクションでは、Azure がトンネルの応答側になっているときに、サポートされているポリシーの組み合わせを一覧表示します。
-
-**フェーズ 1**
-
-* AES_256、SHA1、DH_GROUP_2
-* AES_256、SHA_256、DH_GROUP_2
-* AES_128、SHA1、DH_GROUP_2
-* AES_128、SHA_256、DH_GROUP_2
-* 3DES、SHA1、DH_GROUP_2
-* 3DES、SHA_256、DH_GROUP_2
-
-**フェーズ 2**
-
-* GCM_AES_256、GCM_AES_256、PFS_NONE
-* AES_256、SHA_1、PFS_NONE
-* CBC_3DES、SHA_1、PFS_NONE
-* AES_256、SHA_256、PFS_NONE
-* AES_128、SHA_1、PFS_NONE
-* CBC_3DES、SHA_256、PFS_NONE
-* CBC_DES、SHA_1、PFS_NONE 
-* AES_256、SHA_1、PFS_1
-* AES_256、SHA_1、PFS_2
-* AES_256、SHA_1、PFS_14
-* AES_128、SHA_1、PFS_1
-* AES_128、SHA_1、PFS_2
-* AES_128、SHA_1、PFS_14
-* CBC_3DES、SHA_1、PFS_1
-* CBC_3DES、SHA_1、PFS_2
-* CBC_3DES、SHA_256、PFS_2
-* AES_256、SHA_256、PFS_1
-* AES_256、SHA_256、PFS_2
-* AES_256、SHA_256、PFS_14
-* AES_256、SHA_1、PFS_24
-* AES_256、SHA_256、PFS_24
-* AES_128、SHA_256、PFS_NONE
-* AES_128、SHA_256、PFS_1
-* AES_128、SHA_256、PFS_2
-* AES_128、SHA_256、PFS_14
-* CBC_3DES、SHA_1、PFS_14
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
 ### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>仮想ハブ vpngateway ポリシーとオンプレミス SDWAN/VPN デバイスまたは SD-WAN 構成とが、すべて一致している必要はありますか。
 

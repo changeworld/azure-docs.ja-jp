@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 03/29/2019
 ms.author: diberry
 ms.openlocfilehash: edfbd8a803404b32be0624fd14165d25061d14b7
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528511"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66123535"
 ---
 ## <a name="roles-in-batch-testing"></a>バッチ テストでのロール
 

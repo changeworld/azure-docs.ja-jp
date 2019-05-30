@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267174"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "62124640"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
 

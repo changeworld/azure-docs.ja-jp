@@ -10,11 +10,11 @@ ms.date: 3/29/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
 ms.openlocfilehash: 7f313af75e78db8a60fe6864c41cd8e6c5a3ad9b
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629960"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60193042"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 

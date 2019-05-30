@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/10/2019
-ms.openlocfilehash: 53f9f67397e1484559ee8243a52ad8339df930bc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 05/23/2019
+ms.openlocfilehash: e824ac81f1336644fa70cc24539284feacee3199
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990212"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244526"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -65,7 +65,7 @@ ms.locfileid: "65990212"
 
 1. Azure Portal で、ロジック アプリのメニューから **[ワークフロー設定]** を選択します。
 
-2. **[ランタイム オプション]** で、**[実行履歴の保持期間 (日数)]** リストから **[カスタム]** を選択します。
+2. **[ランタイム オプション]** で、 **[実行履歴の保持期間 (日数)]** リストから **[カスタム]** を選択します。
 
 3. 日数を入力するか、スライダーをドラッグします。
 
@@ -184,11 +184,11 @@ ms.locfileid: "65990212"
 
 | アーティファクト | 無料 | Basic | Standard |
 |----------|------|-------|----------|
-| EDI 取引契約 | 10 | 1 | 500 |
-| EDI 取引先 | 25 | 2 | 500 |
+| EDI 取引契約 | 10 | 1 | 1,000 |
+| EDI 取引先 | 25 | 2 | 1,000 |
 | マップ | 25 | 500 | 1,000 |
 | スキーマ | 25 | 500 | 1,000 |
-| アセンブリ | 10 | 25 | 50 |
+| アセンブリ | 10 | 25 | 1,000 |
 | 証明書 | 25 | 2 | 500 |
 | バッチの構成 | 5 | 1 | 50 |
 ||||

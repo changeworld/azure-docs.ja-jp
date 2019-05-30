@@ -13,19 +13,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
-ms.openlocfilehash: 236bb39125ec03a9652a57f9cd4aaa5da2695452
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554223"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238625"
 ---
-| リソース | 既定の制限 | 上限 | 
+| Resource | 既定の制限 | 上限 | 
 | --- | --- | --- |
 | Free レベルのインスタンスあたりの Azure SignalR Service ユニット数 |1 |1 |
 | Standard レベルのインスタンスあたりの Azure SignalR Service ユニット数 |100 |100 |
 | リージョン別での、Free レベルのサブスクリプションあたりの Azure SignalR Service ユニット数|5 |5 |
-| リージョン別での、サブスクリプションあたりの合計 Azure SignalR Service ユニット数 |50 |無制限 |
+| リージョン別での、サブスクリプションあたりの合計 Azure SignalR Service ユニット数 |150 |無制限 |
 | Free レベルの 1 日あたりの接続 |20 |20 |
 | Standard レベルの 1 日あたりの接続 |1,000 |1,000|
 | Free レベルの 1 日あたりの組み込みメッセージ|20,000 |20,000 |

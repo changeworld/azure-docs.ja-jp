@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 31c5feac577dc5e9e0eed9ced9ccfe25c12d3086
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b1b36ed5197aeb056c70200a49e09cc777d66d0b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670491"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237355"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -137,9 +137,6 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
             "MinimumNumberOfBackups": 20
         }
         ```
-
-> [!IMPORTANT]
-> 実行時間の問題のため、アイテム保持ポリシーのリテンション期間を確実に 24 日未満に構成します。そうしないと、バックアップ復元サービスがレプリカのフェールオーバー後にクォーラム損失になる場合があります。
 
 ## <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 データのバックアップ要件を満たすバックアップ ポリシーを定義した後、バックアップ ポリシーを "_アプリケーション_"、"_サービス_"、または "_パーティション_" に適切に関連付ける必要があります。

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: a8ee7cc28985d905a0d158745145ce7ffaa5ba6e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553790"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238673"
 ---
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | サブスクリプションあたりの信頼できる IP アドレスまたは範囲の最大数</a> |0 |50 |
 | ご自分のデバイスを記憶する日数 |14 |60 |

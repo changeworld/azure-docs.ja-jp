@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187657"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305066"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -140,8 +140,6 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 * Event Grid サブスクリプションあたり高度なフィルターは 5 つ
 * 文字列値あたり 512 文字
 * **in** 演算子および **not in** 演算子の値は 5 つ
-* キーの入れ子レベルは 1 つまでとします (data.key1 など)
-* カスタム イベント スキーマは、トップレベルのフィールドでのみフィルター処理できます。
 
 複数のフィルターで同じキーを使用できます。
 

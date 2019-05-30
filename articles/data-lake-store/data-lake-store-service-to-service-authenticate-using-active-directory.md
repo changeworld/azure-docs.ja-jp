@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884994"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241368"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
 > [!div class="op_single_selector"]
@@ -48,24 +48,24 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>手順 2:アプリケーション ID、認証キー、テナント ID を取得する
 プログラムによってログインするときは、アプリケーションの ID が必要です。 アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
 
-* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
+* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
 
-* テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」を参照してください。
+* テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>手順 3:Azure AD アプリケーションを Azure Data Lake Storage Gen1 アカウントのファイルまたはフォルダーに割り当てる
 
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。 上記で作成した Azure Active Directory アプリケーションに関連付ける Data Lake Storage Gen1 アカウントを開きます。
-2. Data Lake Storage Gen1 アカウントのブレードで、**[データ エクスプローラー]** をクリックします。
+2. Data Lake Storage Gen1 アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
    
     ![Data Lake Storage Gen1 アカウントにディレクトリを作成する](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Data Lake Store アカウントにディレクトリを作成する")
-3. **[データ エクスプローラー]** ブレードで、Azure AD アプリケーションへのアクセスを付与するファイルまたはフォルダーをクリックし、**[アクセス]** をクリックします。 ファイルへのアクセスを構成する場合は、**[ファイルのプレビュー]** ブレードから **[アクセス]** をクリックします。
+3. **[データ エクスプローラー]** ブレードで、Azure AD アプリケーションへのアクセスを付与するファイルまたはフォルダーをクリックし、 **[アクセス]** をクリックします。 ファイルへのアクセスを構成する場合は、 **[ファイルのプレビュー]** ブレードから **[アクセス]** をクリックします。
    
     ![Data Lake ファイル システムに ACL を設定する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "Data Lake ファイル システムに ACL を設定する")
 4. **[アクセス]** ブレードには、既にルートに割り当てられている標準アクセスとカスタム アクセスが一覧表示されます。 **[追加]** アイコンをクリックして、カスタムレベルの ACL を追加します。
    
     ![標準アクセスとカスタム アクセスを一覧表示する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "標準アクセスとカスタム アクセスを一覧表示する")
-5. **[追加]** アイコンをクリックして、**[カスタム アクセスの追加]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、**[ユーザーまたはグループの選択]** ブレードで、作成しておいた Azure Active Directory アプリケーションを探します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]** をクリックします。
+5. **[追加]** アイコンをクリックして、 **[カスタム アクセスの追加]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、 **[ユーザーまたはグループの選択]** ブレードで、作成しておいた Azure Active Directory アプリケーションを探します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]** をクリックします。
    
     ![グループを追加する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "グループを追加する")
 6. **[アクセス許可の選択]** をクリックして、アクセス許可を選択するともに、このアクセス許可に既定の ACL、アクセス ACL、またはその両方のいずれを割り当てるか選択します。 Click **OK**.
@@ -89,7 +89,7 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 
 1. [Azure Portal](https://portal.azure.com) にサインオンし、左ウィンドウの [Active Directory] をクリックします。
 
-2. 左ウィンドウで、**[アプリの登録]** をクリックします。
+2. 左ウィンドウで、 **[アプリの登録]** をクリックします。
 
 3. [アプリの登録] ブレードの上部にある **[エンドポイント]** をクリックします。
 

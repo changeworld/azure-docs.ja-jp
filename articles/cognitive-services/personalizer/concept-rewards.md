@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/13/2019
 ms.author: edjez
-ms.openlocfilehash: 536aad0fac4e833cd9a30bad2cfd10e25b0f1300
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607002"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244248"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 
-報酬スコアは、パーソナル化の選択肢である [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/rank#rankresponse) がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。
+報酬スコアは、パーソナル化の選択肢である [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response) がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。
 
 Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。 
 

@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795442"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "61458469"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MySQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -64,7 +64,7 @@ Azure CLI の **az mysql server firewall-rule** コマンドで、ファイア�
     ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのファイアウォール規則を一覧表示する 
-サーバー名とリソース グループ名を使用して、そのサーバー上で既存のサーバー ファイアウォール規則を一覧表示します。 [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) コマンドを使用します。  サーバー名属性は、**--name** スイッチではなく **--server** スイッチで指定されることに注意してください。 
+サーバー名とリソース グループ名を使用して、そのサーバー上で既存のサーバー ファイアウォール規則を一覧表示します。 [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) コマンドを使用します。  サーバー名属性は、 **--name** スイッチではなく **--server** スイッチで指定されることに注意してください。 
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```

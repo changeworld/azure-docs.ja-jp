@@ -15,12 +15,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 827c42763eee39c717cedc90469ae765cc331272
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602444"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253833"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールに対するセキュリティの警告を構成する
 環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によりアラートが生成されます。 アラートがトリガーされると、[アラート] ページに表示されます。 
@@ -54,4 +54,4 @@ ms.locfileid: "65602444"
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールに対するセキュリティの警告を構成する](pim-resource-roles-configure-alerts.md)
+- [PIM で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

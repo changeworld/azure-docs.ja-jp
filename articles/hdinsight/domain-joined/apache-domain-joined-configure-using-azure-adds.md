@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415481"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240178"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -31,13 +31,13 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 >
 > クラスター ストレージが Azure Blob Storage (WASB) の場合は、MFA を無効にしないでください。
 
-前提条件として、ESP の HDInsight クラスターを作成する前に Azure AD-DS を有効にします。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」を参照してください。 
+前提条件として、ESP の HDInsight クラスターを作成する前に Azure AD-DS を有効にします。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/create-instance.md)」を参照してください。 
 
 Azure AD-DS が有効の場合、すべてのユーザーとオブジェクトについて、Azure Active Directory (AAD) から Azure AD-DS への同期が既定で開始されます。 同期操作の長さは、Azure AD 内のオブジェクトの数によって異なります。 数十万のオブジェクトがある場合、同期には数日かかる場合があります。 
 
-必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、"*範囲指定された同期*" と呼ばれます。 手順については、「[Configure scoped synchronization from Azure AD to your managed domain (Azure AD からマネージド ドメインまで範囲指定された同期を構成する)](../../active-directory-domain-services/active-directory-ds-scoped-synchronization.md)」を参照してください。
+必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、"*範囲指定された同期*" と呼ばれます。 手順については、「[Configure scoped synchronization from Azure AD to your managed domain (Azure AD からマネージド ドメインまで範囲指定された同期を構成する)](../../active-directory-domain-services/scoped-synchronization.md)」を参照してください。
 
-セキュリティで保護された LDAP を有効にする場合は、証明書のサブジェクト名およびサブジェクトの別名にドメイン名を指定します。 たとえば、お使いのドメイン名が *contoso100.onmicrosoft.com* の場合は、ご自身の証明書サブジェクト名およびサブジェクトの別名にその正確な名前が存在することを確認します。 詳細については、「[Azure AD-DS のマネージド ドメインに対するセキュリティで保護された LDAP の構成](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)」を参照してください。 以下に、自己署名証明書を作成してサブジェクト名と DnsName (サブジェクト代替名) の両方にドメイン名 (*contoso100.onmicrosoft.com*) を指定する例を示します。
+セキュリティで保護された LDAP を有効にする場合は、証明書のサブジェクト名およびサブジェクトの別名にドメイン名を指定します。 たとえば、お使いのドメイン名が *contoso100.onmicrosoft.com* の場合は、ご自身の証明書サブジェクト名およびサブジェクトの別名にその正確な名前が存在することを確認します。 詳細については、「[Azure AD-DS のマネージド ドメインに対するセキュリティで保護された LDAP の構成](../../active-directory-domain-services/configure-ldaps.md)」を参照してください。 以下に、自己署名証明書を作成してサブジェクト名と DnsName (サブジェクト代替名) の両方にドメイン名 (*contoso100.onmicrosoft.com*) を指定する例を示します。
 
 ```powershell
 $lifetime=Get-Date
@@ -61,7 +61,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 **HDInsight ドメイン サービス共同作成者**ロールを割り当てると、AAD-DS ドメインで OU の作成や OU の削除などのドメイン サービス操作を行うための適切な (代理の) アクセスがこの ID に付与されます。
 
-マネージド ID が作成され、適切なロールに割り当てられると、AAD-DS 管理者はこのマネージド ID を使用できるユーザーを設定できます。 マネージド ID のユーザーを設定するには、管理者はポータルでマネージド ID を選択し、**[概要]** で **[アクセス制御 (IAM)]** をクリックする必要があります。 次に、右側で **Managed Identity Operator** ロールを、HDInsight ESP クラスターを作成するユーザーまたはグループに割り当てます。 たとえば、AAD-DS 管理者は、次の図に示すように **sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 これにより、組織の適切なユーザーは、ESP クラスターを作成する目的でこのマネージド ID を使用するためのアクセス権を持つようになります。
+マネージド ID が作成され、適切なロールに割り当てられると、AAD-DS 管理者はこのマネージド ID を使用できるユーザーを設定できます。 マネージド ID のユーザーを設定するには、管理者はポータルでマネージド ID を選択し、 **[概要]** で **[アクセス制御 (IAM)]** をクリックする必要があります。 次に、右側で **Managed Identity Operator** ロールを、HDInsight ESP クラスターを作成するユーザーまたはグループに割り当てます。 たとえば、AAD-DS 管理者は、次の図に示すように **sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 これにより、組織の適切なユーザーは、ESP クラスターを作成する目的でこのマネージド ID を使用するためのアクセス権を持つようになります。
 
 ![HDInsight のマネージド ID オペレーター ロールの割り当て](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
@@ -70,11 +70,11 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 > [!NOTE]  
 > Azure AD DS は、Azure Resource Manager (ARM) ベースの vNET にデプロイする必要があります。 Azure AD-DS では、クラシック仮想ネットワークはサポートされません。 詳しくは、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started-network.md)」をご覧ください。
 
-Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、**[マネージド]** カテゴリで **[プロパティ]** を選択し、**[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
+Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、 **[マネージド]** カテゴリで **[プロパティ]** を選択し、 **[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
 
 ![ローカル DNS サーバーの IP アドレスを見つける](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
 
-Azure AD-DS VNET の DNS サーバーの構成を変更し、**[設定]** カテゴリの下の **[DNS サーバー]** を選択して、これらのカスタム IP を使用します。 次に、**[カスタム]** の横のラジオ ボタンをクリックし、下のテキスト ボックスに最初の IP アドレスを入力して、**[保存]** をクリックします。 同じ手順に従って、その他の IP アドレスを追加します。
+Azure AD-DS VNET の DNS サーバーの構成を変更し、 **[設定]** カテゴリの下の **[DNS サーバー]** を選択して、これらのカスタム IP を使用します。 次に、 **[カスタム]** の横のラジオ ボタンをクリックし、下のテキスト ボックスに最初の IP アドレスを入力して、 **[保存]** をクリックします。 同じ手順に従って、その他の IP アドレスを追加します。
 
 ![VNet DNS 構成の更新](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
 

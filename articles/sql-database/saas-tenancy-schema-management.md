@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: b2aa3eb6a117bbbdcf9c4aa44161dc25ddea2f1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081221"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241909"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>テナントごとのデータベース パターンを使用した Azure SQL Database での SaaS アプリケーション内のスキーマの管理
  
 データベース アプリケーションの進化に伴って、データベース スキーマまたは参照データに対する変更が必然的に必要になります。  データベースのメンテナンス タスクも、定期的に必要です。 テナントごとのデータベース パターンを使用するアプリケーションの管理では、複数のテナント データベースにこれらの変更やメンテナンス タスクを適用する必要があります。
 
-このチュートリアルでは、2 つのシナリオを扱います。すべてのテナントに対する参照データの更新のデプロイと、参照データを含むテーブルのインデックスの再構築です。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)機能を使用して、すべてのテナント データベースと、新しいテナント データベースを作成するために使用されるテンプレート データベースに対してこれらのアクションを実行します。
+このチュートリアルでは、2 つのシナリオを扱います。すべてのテナントに対する参照データの更新のデプロイと、参照データを含むテーブルのインデックスの再構築です。 [エラスティック ジョブ](elastic-jobs-overview.md)機能を使用して、すべてのテナント データベースと、新しいテナント データベースを作成するために使用されるテンプレート データベースに対してこれらのアクションを実行します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -46,7 +46,7 @@ ms.locfileid: "58081221"
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
-テナントごとのデータベース パターンは、テナントのデータを効率的に分離しますが、管理して維持するデータベースの数を増やします。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)は、SQL データベースの管理を容易にします。 このジョブを使用して、データベースのグループに対して、タスク (T-SQL スクリプト) を安全かつ確実に実行できます。 ジョブにより、スキーマと一般的な参照データの変更を、アプリケーションのすべてのテナント データベースにわたってデプロイできます。 エラスティック ジョブを使用して、新しいテナントの作成に使用される "*テンプレート*" データベースを管理して、スキーマと参照データを常に最新の状態に保つこともできます。
+テナントごとのデータベース パターンは、テナントのデータを効率的に分離しますが、管理して維持するデータベースの数を増やします。 [エラスティック ジョブ](elastic-jobs-overview.md)は、SQL データベースの管理を容易にします。 このジョブを使用して、データベースのグループに対して、タスク (T-SQL スクリプト) を安全かつ確実に実行できます。 ジョブにより、スキーマと一般的な参照データの変更を、アプリケーションのすべてのテナント データベースにわたってデプロイできます。 エラスティック ジョブを使用して、新しいテナントの作成に使用される "*テンプレート*" データベースを管理して、スキーマと参照データを常に最新の状態に保つこともできます。
 
 ![スクリーン](media/saas-tenancy-schema-management/schema-management-dpt.png)
 
@@ -133,5 +133,4 @@ _OnlineReindex.sql_ スクリプトで次の要素を確認します。
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)
-* [スケールアウトしたクラウド データベースの作成と管理](sql-database-elastic-jobs-create-and-manage.md)
+* [スケールアウトされたクラウド データベースの管理](elastic-jobs-overview.md)

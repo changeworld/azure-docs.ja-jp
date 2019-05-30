@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3b635ab96f1438377cb0d282c17304c2531185be
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256058"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357797"
 ---
 # <a name="get-information-from-a-coordinate"></a>座標から情報を取得する
 
@@ -29,7 +29,7 @@ ms.locfileid: "59256058"
 
 上記のコードでは、最初のコード ブロックでマップ オブジェクトが構築されて、サブスクリプション キーを使用するための認証メカニズムが設定されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、2 ブロック目のコードで `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
+サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、2 ブロック目のコードで `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスを作成します。 `searchURL` は、Azure Maps の [Search](https://docs.microsoft.com/rest/api/maps/search) 操作の URL を表します。
 
 3 番目のコード ブロックでは、マウス カーソルのスタイルがポインターに更新されて、[popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) オブジェクトが作成されます。 手順については、[マップへのポップアップの追加](./map-add-popup.md)に関する記事を参照してください。
 

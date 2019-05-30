@@ -4,15 +4,15 @@ description: パフォーマンス メトリック (要求やサーバー エラ
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 02bbde9a2d744c79cc8a7e95b0732b775c4dc695
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448240"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241617"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 
@@ -21,9 +21,9 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 メトリックは、[アカウント] ページ、新しい [メトリック] ページ、または Azure Monitor で確認できます。
 
 ## <a name="view-performance-metrics-on-the-metrics-page"></a>[メトリック] ページでパフォーマンス メトリックを表示する
-1. [Azure Portal](https://portal.azure.com/) で、**[すべてのサービス]** をクリックして **[データベース]** までスクロールし、**[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを表示する Azure Cosmos DB アカウントの名前をクリックします。
-2. 新しいページが読み込まれたら、リソース メニューで、**[監視]** の下にある **[メトリック]** をクリックします。
-3. [メトリック] ページが開いたら、**[コレクション]** ドロップダウンから確認するコレクションを選択します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[すべてのサービス]** をクリックして **[データベース]** までスクロールし、 **[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを表示する Azure Cosmos DB アカウントの名前をクリックします。
+2. 新しいページが読み込まれたら、リソース メニューで、 **[監視]** の下にある **[メトリック]** をクリックします。
+3. [メトリック] ページが開いたら、 **[コレクション]** ドロップダウンから確認するコレクションを選択します。
 
    Azure Portal には、使用可能なコレクション メトリックのスイートが表示されます。 スループット、ストレージ、可用性、待機時間、一貫性の各メトリックは別々のタブに配置されています。 提供されているメトリックの詳細を表示するには、各メトリック ウィンドウの右上にある双方向矢印をクリックします。
 
@@ -37,7 +37,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 5. **[利用可能なメトリック]** の一覧で、表示するメトリックを選択します。 複数選択するには、Cｔｒｌ キーを使用します。 
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>アカウントのページでパフォーマンス メトリックを表示する
-1. [Azure Portal](https://portal.azure.com/) で、**[すべてのサービス]** をクリックして **[データベース]** までスクロールし、**[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを表示する Azure Cosmos DB アカウントの名前をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、 **[すべてのサービス]** をクリックして **[データベース]** までスクロールし、 **[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを表示する Azure Cosmos DB アカウントの名前をクリックします。
 2. **[監視]** レンズには、既定では以下のタイルが表示されます。
    
    * 当日の要求数合計
@@ -48,10 +48,10 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 4. **[メトリック]** ページには、合計要求数に関する詳細が表示されます。 
 
 ## <a name="set-up-alerts-in-the-portal"></a>ポータルでアラートを設定する
-1. [Azure Portal](https://portal.azure.com/) で、**[すべてのサービス]**、**[Azure Cosmos DB]** の順にクリックし、パフォーマンス メトリック アラートを設定する Azure Cosmos DB アカウントの名前をクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、 **[すべてのサービス]** 、 **[Azure Cosmos DB]** の順にクリックし、パフォーマンス メトリック アラートを設定する Azure Cosmos DB アカウントの名前をクリックします。
 2. リソース メニューで、 **[アラート ルール]** をクリックして [アラート ルール] ページを開きます。  
    ![[アラート ルール] パーツが選択された状態のスクリーンショット](./media/monitor-accounts/madocdb10.5.png)
-3. **[アラート ルール]** ページで、**[アラートの追加]** をクリックします。  
+3. **[アラート ルール]** ページで、 **[アラートの追加]** をクリックします。  
    ![[アラート ルール] ページで [アラートの追加] ボタンをハイライトした状態のスクリーンショット](./media/monitor-accounts/madocdb11.png)
 4. **[アラート ルールの追加]** ページで、以下を指定します。
    

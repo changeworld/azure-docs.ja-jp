@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 3f33fb09a4b6c19bae3c02ecc47dae193a3a6cb0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925230"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304100"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
@@ -35,7 +35,7 @@ VM に新しい空のデータ ディスクを追加する場合は、`--new` �
 az vm disk attach \
    -g myResourceGroup \
    --vm-name myVM \
-   --disk myDataDisk \
+   --name myDataDisk \
    --new \
    --size-gb 50
 ```
@@ -47,7 +47,7 @@ az vm disk attach \
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 
-az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
+az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Linux VM を接続して新しいディスクをマウントする
@@ -159,19 +159,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-次に、`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、*/datadrive* にディレクトリを作成します。
+次に、`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、 */datadrive* にディレクトリを作成します。
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-`mount` を使用して、ファイル システムをマウントします。 次の例では、*/dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
+`mount` を使用して、ファイル システムをマウントします。 次の例では、 */dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 (*/dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
+再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 ( */dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
 
 ```bash
 sudo blkid
@@ -212,7 +212,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
-* 次のように、*/etc/fstab* で `discard` マウント オプションを使用します。
+* 次のように、 */etc/fstab* で `discard` マウント オプションを使用します。
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522488"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073027"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>コンテキスト サブタイプのエンティティのロール
 
@@ -79,12 +79,6 @@ Schedule the meeting from 8 to 9
 |--|--|
 |**シアトル**についてさらに知りたいと思っています|{Location} についてさらに知りたいと思っています|
 |シアトルからニューヨークへのチケットを購入する|{Location:Origin} から {Location:Destination} へのチケットを購入する|
-
-## <a name="how-are-roles-related-to-hierarchical-entities"></a>ロールは階層エンティティとどのように関連していますか?
-
-これまでのパターンの使用と同様に、発話の例のすべてのエンティティに対してロールが使用可能になりました。 あらゆる場所で使用できるため、階層エンティティの代わりとなるものです。 新しいエンティティは、階層エンティティを使用するのではなく、ロールを使用して作成する必要があります。 
-
-階層エンティティは最終的に非推奨になります。
 
 ## <a name="how-are-roles-used-in-patterns"></a>パターンでのロールの使用方法
 パターンのテンプレートの発話では、ロールが発話内で使用されます。 

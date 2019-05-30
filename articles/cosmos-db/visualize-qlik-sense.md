@@ -5,14 +5,14 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: eea4366ca19c01af1f79566a5ca6bcae8805b6c3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258779"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242489"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 
@@ -52,15 +52,15 @@ Qlik Sense は、さまざまなソースからのデータを 1 つのビュー
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>Qlik Sense を Cosmos DB に接続する
 
-1. Qlik Sense を開き、**[新しいアプリの作成]** を選択します。 アプリに名前を付けて、**[追加]** を選択します。
+1. Qlik Sense を開き、 **[新しいアプリの作成]** を選択します。 アプリに名前を付けて、 **[追加]** を選択します。
 
    ![新規 Qlik Sense アプリの作成](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
 
-2. 新しいアプリが正常に作成された後、**[アプリを開く]** を選択し、**[ファイルやその他のソースからデータを追加する]** を選択します。 
+2. 新しいアプリが正常に作成された後、 **[アプリを開く]** を選択し、 **[ファイルやその他のソースからデータを追加する]** を選択します。 
 
 3. データ ソースから **[ODBC]** を選択すると、新しい接続のセットアップ ウィンドウが開きます。 
 
-4. **[ユーザー DSN]** に切り替え、既に作成した ODBC 接続を選択します。 接続の名前を付けて、**[作成]** を選択します。 
+4. **[ユーザー DSN]** に切り替え、既に作成した ODBC 接続を選択します。 接続の名前を付けて、 **[作成]** を選択します。 
 
    ![新しい接続を作成する](./media/visualize-qlik-sense/create-new-connection.png)
 

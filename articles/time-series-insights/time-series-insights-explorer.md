@@ -4,7 +4,7 @@ description: この記事では、Web ブラウザーで Azure Time Series Insig
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f22a0245d002b94d9fc0004214c37944350e262
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: db24c2c7a64c7a5cdca3eb27088dd82d9bb2bf3d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412904"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237719"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 
@@ -61,15 +61,15 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
 1. 次に、選択した期間内のすべてのイベントの数を示すグラフが表示されます。  ここでは多くのことを制御できます。
 
-    **[期間編集パネル]**:期間のスペースで環境に対するクエリを実行します。  これは画面左側にあります。
-      - **[メジャー]**:このドロップダウンではすべての数値列 (**Double**) が表示されます
-      - **[次で分割]**:このドロップダウンではカテゴリ列 (**文字列**) が表示されます
+    **[期間編集パネル]** :期間のスペースで環境に対するクエリを実行します。  これは画面左側にあります。
+      - **[メジャー]** :このドロップダウンではすべての数値列 (**Double**) が表示されます
+      - **[次で分割]** :このドロップダウンではカテゴリ列 (**文字列**) が表示されます
       - [メジャー] の隣にあるコントロール パネルから、ステップ補間の有効化、最小値と最大値の表示、Y 軸の調整を行うことができます。  さらに、表示されるデータが総数であるか、平均値であるか、またはデータの合計であるかを調整できます。
-      - 同じ X 軸上に表示する期間を最大 5 つまで追加できます。  **コピー ダウン** ボタンを使用して追加期間を追加するか、**[追加]** ボタンをクリックして新しい期間を追加します。
+      - 同じ X 軸上に表示する期間を最大 5 つまで追加できます。  **コピー ダウン** ボタンを使用して追加期間を追加するか、 **[追加]** ボタンをクリックして新しい期間を追加します。
 
         [![期間編集パネル](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
-      - **[述語]**:述語を使用すると、次に示す一連のオペランドを使用して、イベントをすばやくフィルター処理できます。 選択/クリックによって検索を実施した場合、述語はその検索に基づいて自動的に更新されます。 サポートされるオペランドの型には以下が含まれます。
+      - **[述語]** :述語を使用すると、次に示す一連のオペランドを使用して、イベントをすばやくフィルター処理できます。 選択/クリックによって検索を実施した場合、述語はその検索に基づいて自動的に更新されます。 サポートされるオペランドの型には以下が含まれます。
 
          |Operation  |サポートされている型  |メモ  |
          |---------|---------|---------|
@@ -114,11 +114,11 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
     [![イベント](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
 
-1. イベントを調査した後、**[統計]** タブをクリックしてパターンと列の統計を公開します。  
+1. イベントを調査した後、 **[統計]** タブをクリックしてパターンと列の統計を公開します。  
 
-    - **[パターン]**: この機能では、選択されたデータ領域の中の統計的に最も有意なパターンが積極的に表示されます。 これによって、時間とエネルギーを保証する最適なパターンを理解するために何千ものイベントを確認する必要がなくなります。 さらに、Time Series Insights ではこれらの統計的に有意なパターンに直接取りかかって、分析の実施を続けられます。 この機能は、履歴データの事後分析にも役立ちます。
+    - **[パターン]** : この機能では、選択されたデータ領域の中の統計的に最も有意なパターンが積極的に表示されます。 これによって、時間とエネルギーを保証する最適なパターンを理解するために何千ものイベントを確認する必要がなくなります。 さらに、Time Series Insights ではこれらの統計的に有意なパターンに直接取りかかって、分析の実施を続けられます。 この機能は、履歴データの事後分析にも役立ちます。
 
-    - **[列の統計]**:列の統計では、選択された期間の選択されたデータ系列の各列のデータを分解する、グラフ作成とテーブルが提供されます。  
+    - **[列の統計]** :列の統計では、選択された期間の選択されたデータ系列の各列のデータを分解する、グラフ作成とテーブルが提供されます。  
 
       [![統計](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
 

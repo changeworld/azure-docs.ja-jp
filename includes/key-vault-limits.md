@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 0e55c372c6f5dc3484bd64cf4f328479d2d0b245
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0b9d87fd7929607da8407ae5bbfb2f6dd6d69dab
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553966"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238663"
 ---
-## <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
+#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>キーのトランザクション (リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup>):
 
 |キーの種類|HSM キー<br>CREATE キー|HSM キー<br>その他すべてのトランザクション|ソフトウェア キー<br>CREATE キー|ソフトウェア キー<br>その他すべてのトランザクション|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,7 @@ ms.locfileid: "57553966"
 > - 125 件の RSA 4,096 ビット HSM キー GET トランザクション
 > - 124 件の RSA 4,096 ビット HSM キー GET トランザクションおよび 8 件の RSA 2,048 ビット HSM キー GET トランザクション
 
-## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>シークレット、管理ストレージ アカウント キー、およびコンテナーのトランザクション:
+#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>シークレット、管理ストレージ アカウント キー、およびコンテナーのトランザクション:
 | トランザクションの種類 | リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数<sup>1</sup> |
 | --- | --- |
 | すべてのトランザクション |2,000 |

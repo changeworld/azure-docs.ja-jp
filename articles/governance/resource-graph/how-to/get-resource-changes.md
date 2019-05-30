@@ -8,12 +8,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4e28ca15197f89caeaeaca0aabb648755b8235f1
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551541"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236503"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -29,7 +29,7 @@ ms.locfileid: "65551541"
 - CMDB (Configuration Management Database) を最新状態に保つ。 スケジュールされた頻度ですべてのリソースとそれらの全プロパティ セットを更新する代わりに、変更されたものだけを取得します。
 - リソースがコンプライアンス状態を変更したときに他のどのプロパティが変更された可能性があるかを把握する。 これらの追加プロパティの評価により、Azure Policy 定義による管理が必要な可能性がある他のプロパティの分析情報を得ることができます。
 
-この記事では、Resource Graph の SDK を介してこの情報を収集する方法について説明します。 Azure portal でこの情報を表示するには、Azure Policy の[変更履歴](../../policy/how-to/determine-non-compliance.md#change-history-preview)またはAzure アクティビティ ログの[変更履歴](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history)を参照してください。
+この記事では、Resource Graph の SDK を介してこの情報を収集する方法について説明します。 Azure portal でこの情報を表示するには、Azure Policy の[変更履歴](../../policy/how-to/determine-non-compliance.md#change-history-preview)またはAzure アクティビティ ログの[変更履歴](../../../azure-monitor/platform/activity-log-view.md#azure-portal)を参照してください。
 
 > [!NOTE]
 > Resource Graph の変更の詳細は、Resource Manager プロパティが対象です。 仮想マシン内で変更を追跡するには、Azure Automation の[変更の追跡](../../../automation/automation-change-tracking.md)または Azure Policy の [VM のゲスト構成](../../policy/concepts/guest-configuration.md)を参照してください。

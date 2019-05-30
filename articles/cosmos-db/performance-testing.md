@@ -4,15 +4,15 @@ description: Azure Cosmos DB のスケーリングとパフォーマンスをテ
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6d2863e39b5f28c56e2b9045513aa83326d8b8c7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a5842d590a4597253bac39c0b7a6f62e6acad908
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043194"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243528"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 
@@ -37,7 +37,7 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
 ## <a name="run-the-performance-testing-application"></a>パフォーマンス テスト アプリケーションの実行
 まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。 ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
-**手順 1:**[Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
+**手順 1:** [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、GitHub リポジトリをフォークします。
 
 **手順 2:** App.config の EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 

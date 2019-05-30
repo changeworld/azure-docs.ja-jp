@@ -10,22 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: 2e9e26243511972c7d05dc55c8e041d83efcbc7d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546603"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297794"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>クイック スタート:Python SDK を使用して Text Analytics サービスを呼び出す 
 <a name="HOLTop"></a>
 
-このクイックスタートを使用して、Python 用 Text Analytics SDK を使用した言語の分析を開始します。 Text Analytics REST API は、ほとんどのプログラミング言語に対応しますが、この SDK を使用すれば、JSON をシリアル化および逆シリアル化することなく、アプリケーションに対して簡単にサービスを統合することができます。
-
-
-> [!Note]
-> * API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
-> * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) にあります。  
+このクイックスタートを使用して、Python 用 Text Analytics SDK を使用した言語の分析を開始します。 Text Analytics REST API は、ほとんどのプログラミング言語に対応しますが、この SDK を使用すれば、JSON をシリアル化および逆シリアル化することなく、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 

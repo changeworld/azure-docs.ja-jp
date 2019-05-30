@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912750"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "61458942"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL の Advanced Threat Protection
 
@@ -28,7 +28,7 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
 
 ## <a name="set-up-threat-detection"></a>脅威検出の設定
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
-2. 保護する Azure Database for MySQL サーバーの構成ページに移動します。 セキュリティの設定で、**[Advanced Threat Protection] (プレビュー)** を選びます。
+2. 保護する Azure Database for MySQL サーバーの構成ページに移動します。 セキュリティの設定で、 **[Advanced Threat Protection] (プレビュー)** を選びます。
 3. **[Advanced Threat Protection] (プレビュー)** の構成ページで次のようにします。
 
    - サーバーでの Advanced Threat Protection を有効にします

@@ -9,11 +9,11 @@ ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733768"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238532"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 

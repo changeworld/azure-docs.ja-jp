@@ -4,7 +4,7 @@ description: この記事では、ストレージ容量、データ保有期間�
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf1f570319370fab99e2f52086bc81df259e3d35
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1c6e8ef9effdb5cf31aee1603de28bed0d894cbb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236518"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239083"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 
@@ -57,7 +57,7 @@ Time Series Insights 環境では、最大 400 日のデータ リテンショ�
 
 1. [Azure Portal](https://portal.azure.com) で、Time Series Insights 環境を選択します。
 
-1. **[Time Series Insights 環境]** ページで、**[設定]** の **[構成]** を選択します。
+1. **[Time Series Insights 環境]** ページで、 **[設定]** の **[構成]** を選択します。
 
 1. **[データ リテンション期間 (日)]** ボックスに、1 ～ 400 の値を入力します。
 

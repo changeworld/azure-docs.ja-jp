@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713004"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244402"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -83,7 +83,7 @@ DevTest Labs は無料サービスです。 DevTest Labs でのラボの作成�
 
 - **アクセス許可**: アクセス許可とは、特定のアクションへのアクセスを定義したものです。 たとえば、すべての VM への読み取りアクセス許可などがあります。
 - **ロール**: ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、サブスクリプション所有者ロールが割り当てられたユーザーは、サブスクリプション内のすべてのリソースにアクセスできます。
-- **[スコープ]**: スコープとは、Azure リソースの階層内のレベルです。 たとえば、リソース グループ、単一のラボ、またはサブスクリプション全体をスコープとして指定できます。
+- **[スコープ]** : スコープとは、Azure リソースの階層内のレベルです。 たとえば、リソース グループ、単一のラボ、またはサブスクリプション全体をスコープとして指定できます。
 
 DevTest Labs のスコープ内には、ユーザーのアクセス許可を定義する次の 2 種類のロールがあります。
 
@@ -280,7 +280,7 @@ foreach($labVM in $labVMs)
 
 カスタム イメージを作成するために VHD ファイルのアップロードを自動化する場合、次の 2 つのオプションがあります。
 
-- [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) を使用して、ラボに関連付けられているストレージ アカウントに VHD ファイルをコピーまたはアップロードします。
+- [AzCopy](../storage/common/storage-use-azcopy-v10.md) を使用して、ラボに関連付けられているストレージ アカウントに VHD ファイルをコピーまたはアップロードします。
 - [Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。 ストレージ エクスプローラーは、Windows、OS X、Linux で動作するスタンドアロン アプリです。
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
@@ -388,7 +388,7 @@ VM は、リソース グループ内のラボの下の子リソースです。 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
 VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ページにあるリソース メニューの **[監査ログ]** または **[仮想マシンの診断]** で確認できます (VM ページは、[自分の仮想マシン] の一覧から VM を選択すると表示されます)。
 
-VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、**[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
+VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、 **[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
 
 
 

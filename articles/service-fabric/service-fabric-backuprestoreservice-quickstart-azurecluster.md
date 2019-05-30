@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9bce408215cef540604a72109bc5b29ebc3359e7
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413790"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237380"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
 > [!div class="op_single_selector"]
@@ -185,9 +185,6 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ```
 
-> [!IMPORTANT]
-> 実行時間の問題のため、アイテム保持ポリシーのリテンション期間を確実に 24 日未満に構成します。そうしないと、バックアップ復元サービスがレプリカのフェールオーバー後にクォーラム損失になる場合があります。
-
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすバックアップ ポリシーを定義した後、そのポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
@@ -286,10 +283,6 @@ FailureError            :
 ## <a name="limitation-caveats"></a>制限事項/注意事項
 - Service Fabric PowerShell コマンドレットは、プレビュー モードです。
 - Linux 上の Service Fabric クラスターはサポートされません。
-
-## <a name="known-issues"></a>既知の問題
-- リテンション期間を確実に 24 日未満に構成します。 
-
 
 ## <a name="next-steps"></a>次の手順
 - [定期的なバックアップの構成について](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

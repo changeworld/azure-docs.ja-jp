@@ -13,11 +13,11 @@ ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237316"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60917141"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Bing Image Search API とは
 

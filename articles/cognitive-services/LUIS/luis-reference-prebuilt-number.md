@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 83f7cc7c0da2682244fa9c4e0e2b153aff2e2380
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d4f707d4bf9bac5e2208eadb94983af368b9f521
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339302"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072260"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの number 作成済みエンティティ
 情報の定量化、表現、説明に数値を使用する方法はたくさんあります。 この記事では、可能な例の一部についてのみ説明します。 LUIS はユーザーの発話のバリエーションを解釈し、一貫性のある数値を返します。 このエンティティは既にトレーニングされているので、数値を含む発話の例をアプリケーション意図に追加する必要はありません。 
@@ -38,9 +38,13 @@ number は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS が返す JSON 応答の `resolution` フィールドには、**`builtin.number`** エンティティの認識された値が含まれます。
+LUIS が返す JSON 応答の `resolution` フィールドには、 **`builtin.number`** エンティティの認識された値が含まれます。
 
 ## <a name="resolution-for-prebuilt-number"></a>作成済みの number の解決
+
+
+### <a name="api-version-2x"></a>API バージョン 2.x
+
 次の例では、"two dozen" (2 ダース) という発話に対する解決である 24 という値を含む LUIS からの JSON 応答を示します。
 
 ```json
@@ -76,6 +80,64 @@ LUIS が返す JSON 応答の `resolution` フィールドには、**`builtin.nu
       }
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+{
+    "query": "order two dozen eggs",
+    "prediction": {
+        "normalizedQuery": "order two dozen eggs",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "number": [
+                24
+            ]
+        }
+    }
+}
+```
+
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+{
+    "query": "order two dozen eggs",
+    "prediction": {
+        "normalizedQuery": "order two dozen eggs",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "number": [
+                24
+            ],
+            "$instance": {
+                "number": [
+                    {
+                        "type": "builtin.number",
+                        "text": "two dozen",
+                        "startIndex": 6,
+                        "length": 9,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f20cc1107476f8d65323d277a53086b8bd035a1b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 30544a49f49714eeefbf54d70e54275d2cf9a7ef
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518905"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243545"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -32,7 +32,6 @@ Azure ファイル共有をバックアップする前に、[サポートされ�
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
 Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
-- [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。*
 - 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
 - Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
 - スケジュール バックアップの数は、1 日につき 1 個が上限となります。
@@ -40,8 +39,6 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
 - Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
 - Azure Backup で保護されているファイル共有は削除しないでください。 現在のソリューションでは、ファイル共有が削除されると Azure Backup によって取得されたスナップショットがすべて削除されます。そのため、すべての復元ポイントが失われます。
-
-\*[読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーション機能を GRS として使用し、GRS の価格で課金される、ストレージ アカウントの Azure ファイル共有。
 
 [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS)、米国東部 (EUS)、米国東部 2 (EUS2)、北ヨーロッパ (NE)、東南アジア (SEA)、西ヨーロッパ (WE)、米国西部 2 (WUS2) でのみ使用できます。
 

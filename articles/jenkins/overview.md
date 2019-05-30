@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
 ms.openlocfilehash: 86d32726280cce12888f125c65254a7b02166704
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194752"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60641247"
 ---
 # <a name="azure-and-jenkins"></a>Azure と Jenkins
 

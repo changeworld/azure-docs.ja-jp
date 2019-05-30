@@ -2,7 +2,7 @@
 title: Azure Time Series Insights プレビューでの診断とトラブルシューティング | Microsoft Docs
 description: Azure Time Series Insights プレビューでの診断とトラブルシューティングの方法を説明します。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a63bfd4e82147fe3324e146f2aaff8889da87e
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d18f8f4808d5ca9dd7eca1561b1ee08c2073f5fa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472330"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237538"
 ---
 # <a name="diagnose-and-troubleshoot"></a>診断とトラブルシューティング
 
@@ -80,7 +80,7 @@ ms.locfileid: "65472330"
 * タイムスタンプ プロパティ名では大文字と小文字が区別されます。
 * イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティの値は、`yyyy-MM-ddTHH:mm:ss.FFFFFFFK` という形式です。 たとえば、`“2008-04-12T12:53Z”` のような文字列です。
 
-タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights プレビュー エクスプローラーを使用することです。 Time Series Insights プレビュー エクスプローラーでグラフを使用して、タイムスタンプ プロパティの名前を入力した後の期間を選択します。 選択内容を右クリックして、**[イベントの探索]** オプションを選択します。 最初の列の見出しが、タイムスタンプ プロパティの名前です。 `Timestamp` という単語の隣に、以下のような値ではなく、`($ts)` と表示されている必要があります。
+タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights プレビュー エクスプローラーを使用することです。 Time Series Insights プレビュー エクスプローラーでグラフを使用して、タイムスタンプ プロパティの名前を入力した後の期間を選択します。 選択内容を右クリックして、 **[イベントの探索]** オプションを選択します。 最初の列の見出しが、タイムスタンプ プロパティの名前です。 `Timestamp` という単語の隣に、以下のような値ではなく、`($ts)` と表示されている必要があります。
 
 * `(abc)`: Time Series Insights が文字列としてデータ値を読み取っていることを示します。
 * カレンダー アイコン: Time Series Insights が日時としてデータ値を読み取っていることを示します。

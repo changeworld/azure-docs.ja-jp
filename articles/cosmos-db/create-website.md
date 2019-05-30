@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートを使用して、Azure Co
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041018"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257234"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
@@ -51,10 +51,10 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 1. [Azure Portal](https://portal.azure.com) にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment1.png)
-2. [テンプレートのデプロイ] を選択し、**[作成]**![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
-3. **[テンプレートの編集]** をクリックし、DocDBWebsiteTodo.json テンプレート ファイルの内容を貼り付けて、**[保存]** をクリックします。
+2. [テンプレートのデプロイ] を選択し、 **[作成]** ![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
+3. **[テンプレートの編集]** をクリックし、DocDBWebsiteTodo.json テンプレート ファイルの内容を貼り付けて、 **[保存]** をクリックします。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment3.png)
-4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、**[OK]** をクリックします。  パラメーターは、次のとおりです。
+4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、 **[OK]** をクリックします。  パラメーターは、次のとおりです。
    
    1. SITENAME: App Service Web アプリの名前を指定します。これは、Web アプリへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebapp" を指定した場合、Web アプリへのアクセスに使用する URL は mydemodocdbwebapp.azurewebsites.net になります)。
    2. HOSTINGPLANNAME: 作成する App Service ホスティング プランの名前を指定します。
@@ -65,7 +65,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
 
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment5.png)
-6. **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
+6. **[法律条項を確認してください]** 、 **[購入]** 、 **[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment6.png)
 7. デプロイメントが完了したら、リソース グループ ウィンドウが開きます。
    ![リソース グループ ウィンドウのスクリーンショット](./media/create-website/TemplateDeployment7.png)  
@@ -88,10 +88,10 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 1. [Azure Portal](https://portal.azure.com) で、[新規] をクリックし、「テンプレートのデプロイ」を検索します。
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment1.png)
-2. [テンプレートのデプロイ] を選択し、**[作成]**![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
-3. **[テンプレートの編集]** をクリックし、DocDBWebSite.json テンプレート ファイルの内容を貼り付けて、**[保存]** をクリックします。
+2. [テンプレートのデプロイ] を選択し、 **[作成]** ![テンプレートのデプロイ UI のスクリーンショット](./media/create-website/TemplateDeployment2.png) をクリックします
+3. **[テンプレートの編集]** をクリックし、DocDBWebSite.json テンプレート ファイルの内容を貼り付けて、 **[保存]** をクリックします。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment3.png)
-4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、**[OK]** をクリックします。  パラメーターは、次のとおりです。
+4. **[パラメーターの編集]** をクリックし、必須パラメーターの値を指定して、 **[OK]** をクリックします。  パラメーターは、次のとおりです。
    
    1. SITENAME: App Service Web アプリの名前を指定します。これは、Web アプリへのアクセスに使用する URL を作成するときに使用されます (たとえば、"mydemodocdbwebapp" を指定した場合、Web アプリへのアクセスに使用する URL は mydemodocdbwebapp.azurewebsites.net になります)。
    2. HOSTINGPLANNAME: 作成する App Service ホスティング プランの名前を指定します。
@@ -102,11 +102,11 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。
 
     ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment5.png)
-6. **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
+6. **[法律条項を確認してください]** 、 **[購入]** 、 **[作成]** の順にクリックして、デプロイを開始します。  **[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。
    ![テンプレートのデプロイメント UI のスクリーンショット](./media/create-website/TemplateDeployment6.png)
 7. デプロイメントが完了したら、リソース グループ ウィンドウが開きます。
    ![リソース グループ ウィンドウのスクリーンショット](./media/create-website/TemplateDeployment7.png)  
-8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]**![リソース グループのスクリーンショット](./media/create-website/TemplateDeployment9.png) をクリックします  
+8. リソースの一覧で Web アプリのリソースをクリックし、 **[アプリケーション設定]** ![リソース グループのスクリーンショット](./media/create-website/TemplateDeployment9.png) をクリックします  
 9. Azure Cosmos DB エンドポイントとそれぞれの Azure Cosmos DB マスター キーに関するアプリケーション設定がどのように表示されているのかを確認します。
 
     ![アプリケーションの設定のスクリーンショット](./media/create-website/TemplateDeployment10.png)  

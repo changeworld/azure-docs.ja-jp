@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 07e8fce5fd8db5d2070b8e382a0eba2ae7187b0d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878076"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242787"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>共有マルチテナント SQL データベースを使用している SaaS アプリケーションでのスキーマの管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "57878076"
 - 参照データの更新をすべてのテナントにわたってデプロイする。
 - 参照データを含むテーブルのインデックスを再構築する。
 
-これらの操作を複数のテナント データベースにわたって実行するために、Azure SQL Database の[エラスティック ジョブ](sql-database-elastic-jobs-overview.md)機能を使用します。 このジョブは、'テンプレート' テナント データベースに対しても機能します。 Wingtip Tickets サンプル アプリでは、新しいテナント データベースをプロビジョニングするために、このテンプレート データベースがコピーされます。
+これらの操作を複数のテナント データベースにわたって実行するために、Azure SQL Database の[エラスティック ジョブ](elastic-jobs-overview.md)機能を使用します。 このジョブは、'テンプレート' テナント データベースに対しても機能します。 Wingtip Tickets サンプル アプリでは、新しいテナント データベースをプロビジョニングするために、このテンプレート データベースがコピーされます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -57,7 +57,7 @@ ms.locfileid: "57878076"
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
-このサンプルで使用されているシャード化されたマルチテナント データベース モデルでは、テナント データベースに 1 つまたは複数のテナントを含めることができます。 このサンプルでは、複数テナントのデータベースと 1 テナント のデータベースを組み合わせて*ハイブリッド* テナント管理モデルを実現する可能性を探ります。 これらのデータベースへの変更の管理は、複雑になる場合があります。 [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)は、大規模数のデータベースの管理をに使用されます。 ジョブにより、テナント データベースのグループに対して、Transact-SQL スクリプトをタスクとして安全かつ確実に実行できます。 このタスクはユーザーの操作や入力に依存しません。 この方法を使用して、スキーマや共通の参照データに対する変更を、アプリケーションのすべてのテナントにわたってデプロイできます。 エラスティック ジョブは、データベースのゴールデン テンプレートのコピーを保持するためにも使用できます。 このテンプレートは新しいテナントの作成に使用され、常に最新のスキーマと参照データが使用されるようにします。
+このサンプルで使用されているシャード化されたマルチテナント データベース モデルでは、テナント データベースに 1 つまたは複数のテナントを含めることができます。 このサンプルでは、複数テナントのデータベースと 1 テナント のデータベースを組み合わせて*ハイブリッド* テナント管理モデルを実現する可能性を探ります。 これらのデータベースへの変更の管理は、複雑になる場合があります。 [エラスティック ジョブ](elastic-jobs-overview.md)は、大規模数のデータベースの管理をに使用されます。 ジョブにより、テナント データベースのグループに対して、Transact-SQL スクリプトをタスクとして安全かつ確実に実行できます。 このタスクはユーザーの操作や入力に依存しません。 この方法を使用して、スキーマや共通の参照データに対する変更を、アプリケーションのすべてのテナントにわたってデプロイできます。 エラスティック ジョブは、データベースのゴールデン テンプレートのコピーを保持するためにも使用できます。 このテンプレートは新しいテナントの作成に使用され、常に最新のスキーマと参照データが使用されるようにします。
 
 ![スクリーン](media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -75,7 +75,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 このチュートリアルでは、PowerShell を使用してジョブ エージェント データベースとジョブ エージェントを作成する必要があります。 SQL エージェントで使用される MSDB データベースと同様に、ジョブ エージェントは Azure SQL データベースを使用してジョブ定義、ジョブの状態、履歴を格納します。 ジョブ エージェントの作成後は、すぐにジョブを作成および監視することができます。
 
-1. **PowerShell ISE** で、*…\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1* を開きます。
+1. **PowerShell ISE** で、 *…\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1* を開きます。
 2. **F5** キーを押して、スクリプトを実行します。
 
 *Demo-SchemaManagement.ps1* スクリプトは *Deploy-SchemaManagement.ps1* スクリプトを呼び出して、カタログ サーバーに _jobagent_ という名前のデータベースを作成します。 次に、スクリプトはジョブ エージェントを作成し、_jobagent_ データベースをパラメーターとして渡します。
@@ -142,7 +142,7 @@ SSMS で、*tenants1-mt-&lt;user&gt;* サーバーのテナント データベ�
 
 1. SSMS で、*catalog-mt-&lt;User&gt;.database.windows.net* サーバーの _jobagent_ データベースに接続します。
 
-2. SSMS で、*...\\Learning Modules\\Schema Management\\OnlineReindex.sql* を開きます。
+2. SSMS で、 *...\\Learning Modules\\Schema Management\\OnlineReindex.sql* を開きます。
 
 3. **F5** キーを押して、スクリプトを実行します。
 
@@ -161,8 +161,7 @@ SSMS で、*tenants1-mt-&lt;user&gt;* サーバーのテナント データベ�
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)
-* [スケールアウトしたクラウド データベースの作成と管理](sql-database-elastic-jobs-create-and-manage.md)
+* [スケールアウトされたクラウド データベースの管理](elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>次の手順
 

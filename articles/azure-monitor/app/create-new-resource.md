@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5daf0944212dc4b8040a39e6efbf5bb25f7f39f0
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 712004a1ae8a2a72854b7b2332449a019c0820c3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117233"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256258"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、リソースの作成は IDE によって自動的に行われます。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
@@ -69,7 +69,6 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 [PowerShell スクリプト](../../azure-monitor/app/powershell.md) を作成して、リソースを自動で作成できます。
 
 ## <a name="next-steps"></a>次の手順
-* [ダッシュボードを作成する](../../azure-monitor/app/app-insights-dashboards.md)
 * [診断検索](../../azure-monitor/app/diagnostic-search.md)
 * [メトリックを探索する](../../azure-monitor/app/metrics-explorer.md)
 * [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)

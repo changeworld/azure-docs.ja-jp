@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9c100bd6815e003d49efcdca65b16d7efa35ac34
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246136"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234253"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -69,7 +69,7 @@ ms.locfileid: "57246136"
 | [Azure&nbsp;Role&nbsp;Based&nbsp;Access Control](../active-directory/role-based-access-control-configure.md)|組織内でのロールに基づき、必要なリソースのみにアクセスすることをユーザーに許可するアクセス制御機能です。  |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|マルチテナントのクラウドベースのディレクトリと Azure 内で複数の ID 管理サービスをサポートするクラウド ベースの認証リポジトリです。  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Azure ベースのアプリケーションの使用時に、顧客のサインアップ、サインイン、プロファイル管理を制御する ID 管理サービスです。   |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)| Active Directory Domain Services のクラウドベースのマネージド バージョンです。 |
+| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md)| Active Directory Domain Services のクラウドベースのマネージド バージョンです。 |
 | [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| セキュリティで保護された情報へのアクセスを許可する前に、いくつかの異なる認証および検証形式が使用されるセキュリティ対応の機能です。 |
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧

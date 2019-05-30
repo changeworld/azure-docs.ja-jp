@@ -4,19 +4,19 @@ description: この記事では、Azure Time Series Insights 環境内で発生�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be2652355e3b9830d4a5198ba71c0f4a78858dd
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 68d46b54bf066724d8f3474f421d2d1f751b75e3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471705"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235044"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -102,15 +102,15 @@ IoT Hub またはイベント ハブを登録するときに、データの読�
 * タイムスタンプ プロパティ名では大文字と小文字が区別されます。
 * イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティ値は、_yyyy-MM-ddTHH:mm:ss.FFFFFFFK_ の形式である必要があります。 たとえば、**2008-04-12T12:53Z** となります。
 
-タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights エクスプローラーを使用することです。 Time Series Insights エクスプローラー内でグラフを使用して、タイムスタンプのプロパティ名を入力した後で期間を選択します。 選択内容を右クリックして、**[イベントの探索]** オプションを選択します。
+タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights エクスプローラーを使用することです。 Time Series Insights エクスプローラー内でグラフを使用して、タイムスタンプのプロパティ名を入力した後で期間を選択します。 選択内容を右クリックして、 **[イベントの探索]** オプションを選択します。
 
 最初の列見出しは、タイムスタンプ プロパティ名になるはずです。 **タイムスタンプ**の語の横に **($ts)** と表示されるはずです。
 
 次の値は表示されません。
 
-- *(abc)*:Time Series Insights が文字列としてデータ値を読み取っていることを示します。
+- *(abc)* :Time Series Insights が文字列としてデータ値を読み取っていることを示します。
 - *カレンダー アイコン*:Time Series Insights が*日時*としてデータ値を読み取っていることを示します。
-- *#*:Time Series Insights が整数としてデータ値を読み取っていることを示します。
+- *#* :Time Series Insights が整数としてデータ値を読み取っていることを示します。
 
 ## <a name="next-steps"></a>次の手順
 

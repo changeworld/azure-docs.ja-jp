@@ -3,15 +3,15 @@ title: Azure Cosmos DB Emulator 証明書をエクスポートする
 description: Windows 証明書ストアを使用しない言語とランタイムで開発を行う場合、SSL 証明書をエクスポートして管理する必要があります。 この記事では詳しい手順について説明します。
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 06/06/2017
+ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: cf280dfb806399a8c09838d965d71e7b18cb905f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521392"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244446"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート
 
@@ -40,7 +40,7 @@ Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレ
 
     ![Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1.](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
 
-2. **[詳細]**、**[OK]** の順にクリックします。
+2. **[詳細]** 、 **[OK]** の順にクリックします。
 
     ![Azure Cosmos DB ローカル エミュレーターのエクスポート手順 2.](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
 
@@ -52,15 +52,15 @@ Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレ
 
     ![Azure Cosmos DB ローカル エミュレーターのエクスポート手順 4.](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
-5. **[No, do not export private key (いいえ、秘密キーをエクスポートしません)]** をクリックしてから、**[次へ]** をクリックします。
+5. **[No, do not export private key (いいえ、秘密キーをエクスポートしません)]** をクリックしてから、 **[次へ]** をクリックします。
 
     ![Azure Cosmos DB ローカル エミュレーターのエクスポート手順 5.](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
 
-6. **[Base 64 encoded X.509 (.CER)]** をクリックしてから、**[次へ]** をクリックします。
+6. **[Base 64 encoded X.509 (.CER)]** をクリックしてから、 **[次へ]** をクリックします。
 
     ![Azure Cosmos DB ローカル エミュレーターのエクスポート手順 6.](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
 
-7. 証明書に名前を付けます。 ここでは「**documentdbemulatorcert**」と入力し、**[次へ]** をクリックします。
+7. 証明書に名前を付けます。 ここでは「**documentdbemulatorcert**」と入力し、 **[次へ]** をクリックします。
 
     ![Azure Cosmos DB ローカル エミュレーターのエクスポート手順 7.](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 

@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33079303f7f2239b7de4d8a92e78acaf205bfbd5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236094"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする
 
@@ -43,9 +43,9 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 2.  **Windows VM** 用に作成した特定の**リソース グループ**を選択します。 
 3.  左側のパネルの **[アクセス制御 (IAM)]** に移動します。 
 4.  **Windows VM** 用の新しいロールの割り当てについて **[ロール割り当ての追加]** を実行します。  **[閲覧者]** として **[ロール]** を選択します。 
-5.  次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。 
-6.  次に、**[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。 
-7.  最後に、**[選択]** の一覧で使用する Windows VM を選択し、**[保存]** をクリックします。
+5.  次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。 
+6.  次に、 **[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。 
+7.  最後に、 **[選択]** の一覧で使用する Windows VM を選択し、 **[保存]** をクリックします。
 
     ![イメージ テキスト](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
@@ -53,7 +53,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 
 ここでは、**PowerShell** を使用する必要があります。  **PowerShell** をインストールしていない場合は、[ここ](https://docs.microsoft.com/powershell/azure/overview)からダウンロードします。 
 
-1.  ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** の **[接続]** をクリックします。 
+1.  ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。 
 2.  Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3.  これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。 
 4.  Invoke-WebRequest コマンドレットを使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。

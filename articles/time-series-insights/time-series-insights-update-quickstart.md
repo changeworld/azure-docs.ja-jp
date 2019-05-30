@@ -4,19 +4,19 @@ description: Azure Time Series Insights プレビューのデモ環境を理解�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: dbdbfc797d37ed38936d6cfd354383d412c6b52d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e35d46607e0a186c8a3a38669c68a6ea52711b51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205816"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242082"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>クイック スタート:Azure Time Series Insights プレビューのデモ環境を探索する
 
@@ -41,21 +41,21 @@ Time Series Insights プレビュー エクスプ ローラーでは、履歴デ
 1. **Contoso Plant 1** の風力タービン **W7** を確認します。  
 
     * 表示範囲を **1/1/17 20:00 から 3/10/17 20:00 (UTC)** に更新します。
-    * **[Contoso Plant 1]** > **[W7]** > **[Generator System]** > **[GeneratorSpeed]** センサーを選択します。 次に、結果の値を確認します。
+    * **[Contoso Plant 1]**  >  **[W7]**  >  **[Generator System]**  >  **[GeneratorSpeed]** センサーを選択します。 次に、結果の値を確認します。
 
       [![Contoso Plant 1 の W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
 1. 最近、Contoso は風力タービン **W7** で火災を発見しました。 火災の直接の原因が何であったかについての見解はさまざまです。 さらに詳しく調べると、火災時に火災アラート センサーが作動したことがわかります。
 
     * 表示範囲を **3/9/17 20:00 から 3/10/17 20:00 (UTC)** に更新します。
-    * **[Safety System]** > **[FireAlert]** センサーを選択します。
+    * **[Safety System]**  >  **[FireAlert]** センサーを選択します。
 
       [![Contoso は風力タービン W7 で火災を発見](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
 1. 火災発生前後の他のイベントを確認して、何が起こったかを理解します。 火災の直前に油圧とアクティブな警告の両方が急上昇しました。
 
-    * **[Pitch System]** > **[HydraulicOilPressure]** センサーを選択します。
-    * **[Pitch System]** > **[ActiveWarning]** センサーを選択します。
+    * **[Pitch System]**  >  **[HydraulicOilPressure]** センサーを選択します。
+    * **[Pitch System]**  >  **[ActiveWarning]** センサーを選択します。
 
       [![同じ時間帯の他のイベントを確認](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
@@ -83,14 +83,14 @@ Azure Time Series Insights とセンサー テレメトリを使用して、履�
 1. シナリオによっては、データの微妙な手がかりを見つけるために高度な分析が必要となります。 **6/25** の日付の風力発電 **W6** を選択します
 
     * 表示範囲を **6/1/17 20:00 から 7/1/17 20:00 (UTC)** に更新します。
-    * 次に **[Contoso Plant 1]** > **[W6]** > **[Safety System]** > **[VoltageActuatorSwitchWarning]** センサーを選択します。
+    * 次に **[Contoso Plant 1]**  >  **[W6]**  >  **[Safety System]**  >  **[VoltageActuatorSwitchWarning]** センサーを選択します。
 
       [![表示範囲を更新して W6 を選択](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
 1. 警告は、発電機によって出力されている電圧の問題を示しています。 発電機の全体的な出力電力は、現在指定している間隔では正常なパラメーター内で動作しています。 間隔を広げると、別のパターンが出現します。つまり、明確な下落があります。
 
     * **VoltageActuatorSwitchWarning** センサーを削除します。
-    * **[Generator System]** > **[ActivePower]** センサーを選択します。
+    * **[Generator System]**  >  **[ActivePower]** センサーを選択します。
     * 間隔を **[3d]** に更新します。
 
       [![間隔を [3d] に更新](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
@@ -103,7 +103,7 @@ Azure Time Series Insights とセンサー テレメトリを使用して、履�
 
 1. センサーの他のデータ ポイントを追加して、より優れたコンテキストを提供できます。 表示できるセンサーの数が多ければ多いほど、問題に対する理解は深まります。 実際の値を示すマーカーを置いてみましょう。 
 
-    * **[Generator System]** > **[GridVoltagePhase1]**、**[GridVoltagePhase2]**、**[GridVoltagePhase3]** の各センサーを選択します。
+    * **[Generator System]**  >  **[GridVoltagePhase1]** 、 **[GridVoltagePhase2]** 、 **[GridVoltagePhase3]** の各センサーを選択します。
     * 表示領域の最後のデータ ポイントにマーカーを置きます。
 
       [![マーカーを配置](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)

@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: e45b3b19821644142176c5c0cc7646c4643fe17c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962193"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235222"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -178,7 +178,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 ### <a name="configure-seamless-sso"></a>シームレス SSO の構成
 
-Azure AD クラウド認証方法として Pass-through Authentication (PTA) または Password Hash Sync (PHS) を使用しているマネージド ドメインで、ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するには、[シームレス SSO を構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)する必要もあります。 シームレス SSO の構成時に問題が発生する場合は、記事「[Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso)」を参照してください。
+Azure AD クラウド認証方法として Pass-through Authentication (PTA) または Password Hash Sync (PHS) を使用しているマネージド ドメインで、ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するには、[シームレス SSO を構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)する必要もあります。 シームレス SSO の構成時に問題が発生する場合は、記事「[Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso)」を参照してください。
 
 
 ### <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御 

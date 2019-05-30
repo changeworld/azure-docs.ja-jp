@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791628"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241686"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 API Management のポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 ポリシー ステートメントは、リテラル テキストの値、ポリシーの式、名前付きの値を使用して構築できます。 
@@ -27,10 +27,10 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 | Attribute | Type | 説明 |
 | --- | --- | --- |
-| Display name |string |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
-| Value |string |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
-|Secret|ブール値|値がシークレットかどうかと暗号化する必要があるかどうかを決定します。|
-| Tags |文字列の配列 |任意のタグ。指定されている場合、プロパティの一覧のフィルター処理に利用できます。 |
+| `Display name` |string |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
+| `Value`        |string |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
+| `Secret`       |ブール値|値がシークレットかどうかと暗号化する必要があるかどうかを決定します。|
+| `Tags`         |文字列の配列 |任意のタグ。指定されている場合、プロパティの一覧のフィルター処理に利用できます。 |
 
 ![名前付きの値](./media/api-management-howto-properties/named-values.png)
 
@@ -55,7 +55,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 プロパティが作成されたら、そのプロパティをクリックすることで編集できます。 プロパティ名を変更すると、そのプロパティを参照するポリシーも、その新しい名前を使用するように自動的に更新されます。
 
-REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](/rest/api/apimanagement/property?Patch)」を参照してください。
+REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](/rest/api/apimanagement/2019-01-01/property?patch)」を参照してください。
 
 ## <a name="to-delete-a-property"></a>プロパティを削除するには
 
@@ -66,13 +66,13 @@ REST API を利用し、プロパティを編集する方法については、�
 > 
 > 
 
-REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](/rest/api/apimanagement/property?Delete)」を参照してください。
+REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](/rest/api/apimanagement/2019-01-01/property/delete)」を参照してください。
 
 ## <a name="to-search-and-filter-named-values"></a>名前付きの値を検索し、フィルター処理するには
 
-**[名前付きの値]** タブには、名前付きの値の管理に役立つ検索とフィルター処理の機能があります。 プロパティ名でプロパティの一覧をフィルター処理するには、 **[検索プロパティ]** テキストボックスに検索語句を入力します。 すべての名前付きの値を表示するには、**[検索プロパティ]** テキストボックスを消去し、Enter を押します。
+**[名前付きの値]** タブには、名前付きの値の管理に役立つ検索とフィルター処理の機能があります。 プロパティ名でプロパティの一覧をフィルター処理するには、 **[検索プロパティ]** テキストボックスに検索語句を入力します。 すべての名前付きの値を表示するには、 **[検索プロパティ]** テキストボックスを消去し、Enter を押します。
 
-タグ値でプロパティの一覧をフィルター処理するには、 **[タグでフィルター]** テキストボックスに 1 つまたは複数のタグを入力します。 すべての名前付きの値を表示するには、**[タグでフィルター]** テキストボックスを消去し、Enter を押します。
+タグ値でプロパティの一覧をフィルター処理するには、 **[タグでフィルター]** テキストボックスに 1 つまたは複数のタグを入力します。 すべての名前付きの値を表示するには、 **[タグでフィルター]** テキストボックスを消去し、Enter を押します。
 
 ## <a name="to-use-a-property"></a>プロパティを使用するには
 

@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314961"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234126"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
@@ -228,7 +228,7 @@ RLS は Transact-SQL で実装されています。 ユーザー定義の関数�
     - BLOCK 述語は、フィルターに該当しない行を INSERT または UPDATE の対象から除外します。
     - SESSION\_CONTEXT を設定していない場合は、関数から NULL が返され、行を表示または挿入することはできません。
 
-すべてのシャードで RLS を有効にするには、Visual Studio (SSDT)、SSMS、またはプロジェクトに含まれる PowerShell スクリプトを使用して、次の T-SQL を実行します。 また、[Elastic Database ジョブ](sql-database-elastic-jobs-overview.md)を使用している場合は、すべてのシャードでこの T-SQL の実行を自動化できます。
+すべてのシャードで RLS を有効にするには、Visual Studio (SSDT)、SSMS、またはプロジェクトに含まれる PowerShell スクリプトを使用して、次の T-SQL を実行します。 また、[Elastic Database ジョブ](elastic-jobs-overview.md)を使用している場合は、すべてのシャードでこの T-SQL の実行を自動化できます。
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.

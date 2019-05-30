@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a03707246f27bcba9cc46168ec04893b7bbc4c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990788"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357821"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 
@@ -39,7 +39,7 @@ ms.locfileid: "65990788"
 このチュートリアルでは、条件を使用する基本的なシナリオについてのみ説明します。 詳細については、次を参照してください。
 
 * [テンプレート ファイルの構造:条件](./resource-group-authoring-templates.md#condition)。
-* [Azure Resource Manager テンプレートのリソースを条件付きでデプロイします](/azure/architecture/building-blocks/extending-templates/conditional-deploy.md)。
+* [Azure Resource Manager テンプレートのリソースを条件付きでデプロイします](/azure/architecture/building-blocks/extending-templates/conditional-deploy)。
 * [テンプレート関数:If](./resource-group-template-functions-logical.md#if)。
 * [Azure Resource Manager テンプレートの比較関数](./resource-group-template-functions-comparison.md)
 
