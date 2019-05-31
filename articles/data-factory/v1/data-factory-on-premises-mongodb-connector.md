@@ -297,7 +297,7 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | --- | --- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |Datetime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
