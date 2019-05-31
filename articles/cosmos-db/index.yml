@@ -29,7 +29,7 @@ sections:
         columns: 3
         items:
           - href: /azure/cosmos-db/distribute-data-globally/
-            html: <p>グローバル配信、パーティション分割、プロビジョニング済みスループット、インデックス作成、およびすべての Azure Cosmos DB API シリーズに当てはまるその他の概念について説明します。</p>
+            html: <p>グローバル分散、パーティション分割、プロビジョニング済みスループット、インデックス作成、およびすべての Azure Cosmos DB API シリーズに当てはまるその他の概念について説明します。</p>
             image:
               src: media/index/azure-cosmos-db-icon.png
             title: 概念
