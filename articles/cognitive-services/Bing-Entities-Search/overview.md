@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 96bb11dad34d6ebcfebe0956d2a08b954a37e843
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0755688d1cc2f00ffef253b7695d9cb504f9e169
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733046"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64866854"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Bing Entity Search API とは
 
-Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 クエリで地元企業の名前を指定、またはビジネスの種類 (近くのレストランなど) を要求すると、Bing は場所を返します。 クエリで有名な人や場所 (観光名所、州、国など)、またはものを指定すると、Bing はエンティティを返します。
+Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 クエリで地元企業の名前を指定、またはビジネスの種類 (近くのレストランなど) を要求すると、Bing は場所を返します。 クエリで有名な人や場所 (観光名所、州、国/地域など)、またはものを指定すると、Bing はエンティティを返します。
 
 |機能  |説明  |
 |---------|---------|

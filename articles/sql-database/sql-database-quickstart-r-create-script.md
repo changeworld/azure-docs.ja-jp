@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: ada09959391c551a9eff4d96b186be29c1e3b7a8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013105"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708592"
 ---
 # <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する
 
@@ -30,7 +30,7 @@ ms.locfileid: "60013105"
 
 - Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-- 以降の演習のサンプル コードを実行するには、まず、Machine Learning Services (と R) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
+- 以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services (R を使用) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
 
 - 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは SSMS を使用します。
 
@@ -102,9 +102,9 @@ GO
 
 | | |
 |-|-|
-|*@language* | 呼び出す言語拡張機能 (この場合は R) を定義します |
-|*@script* | R ランタイムに渡されるコマンドを定義します。 この引数には R スクリプト全体を Unicode テキストとして含める必要があります。 また、そのテキストを **nvarchar** 型の変数に追加したうえで、その変数を呼び出すこともできます |
-|*@input_data_1* | クエリから返されて R ランタイムに渡されるデータです。R ランタイムはそのデータをデータ フレームとして SQL Server に返します |
+| @language | 呼び出す言語拡張機能 (この場合は R) を定義します |
+| @script | R ランタイムに渡されるコマンドを定義します。 この引数には R スクリプト全体を Unicode テキストとして含める必要があります。 また、そのテキストを **nvarchar** 型の変数に追加したうえで、その変数を呼び出すこともできます |
+| @input_data_1 | クエリから返されて R ランタイムに渡されるデータです。R ランタイムはそのデータをデータ フレームとして SQL Server に返します |
 |WITH RESULT SETS | SQL Server に対して返されるデータ テーブルのスキーマを定義する句です。"Hello World" を列名として追加し、データ型には **int** が指定されています |
 
 このコマンドは、次のテキストを出力します。
@@ -146,7 +146,7 @@ GO
 
     **結果**
 
-    ![RTestData テーブルの内容](./media/sql-database-connect-query-r/select-rtestdata.png)
+    ![RTestData テーブルの内容](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
 1. 次の R スクリプトを実行します。 `SELECT` ステートメントを使用してテーブルからデータを取得し、R ランタイムを介して渡した後、データ フレームとしてそのデータを返します。 `WITH RESULT SETS` 句は、列名として *NewColName* を追加して、SQL Database に対して返されるデータ テーブルのスキーマを定義します。
 
@@ -159,7 +159,7 @@ GO
 
     **結果**
 
-    ![テーブルのデータを返す R スクリプトからの出力](./media/sql-database-connect-query-r/r-output-rtestdata.png)
+    ![テーブルのデータを返す R スクリプトからの出力](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
 1. 今度は、入力変数と出力変数の名前を変更してみましょう。 入力変数と出力変数の既定の名前は **InputDataSet** と **OutputDataSet** です。次のスクリプトで、これらの名前を **SQL_in** と **SQL_out** に変更します。
 
@@ -193,7 +193,7 @@ GO
 
     **結果**
 
-    ![@script を入力として使用したクエリの結果](./media/sql-database-connect-query-r/r-data-generated-output.png)
+    ![@script を入力として使用したクエリの結果](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
 ## <a name="check-r-version"></a>R のバージョンを確認する
 
@@ -251,7 +251,7 @@ WITH result sets((
 
 **結果**
 
-![インストールされている R のパッケージ](./media/sql-database-connect-query-r/r-installed-packages.png)
+![インストールされている R のパッケージ](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -260,10 +260,8 @@ R を使用して SQL Database に機械学習モデルを作成するには、�
 > [!div class="nextstepaction"]
 > [R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルを作成およびトレーニングする](sql-database-quickstart-r-train-score-model.md)
 
-Machine Learning Services について詳しくは、以下の記事をご覧ください。 これらの記事の一部は SQL Server 向けですが、大半の情報は、Azure SQL Database における Machine Learning Services と R にも当てはまります。
+Azure SQL Database Machine Learning Services と R (プレビュー) の詳細については、次の記事を参照してください。
 
-- [Azure SQL Database の Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning サービス](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [チュートリアル:SQL Server における R を使用したデータベース内分析について学習する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [R と SQL Server に関するエンド ツー エンドのデータ サイエンス チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [チュートリアル:SQL Server データで RevoScaleR R 関数を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Azure SQL Database Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)
+- [Machine Learning Services (プレビュー) を使用して Azure SQL Database に高度な R 関数を記述する](sql-database-machine-learning-services-functions.md)
+- [Azure SQL Database Machine Learning Services (プレビュー) での R および SQL データの処理](sql-database-machine-learning-services-data-issues.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051172"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570608"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -145,7 +145,7 @@ Azure サービスの詳細については、「[Azure サービスのドキュ�
 
 Azure は、世界中のさまざまな地域で一般的に利用できるグローバル クラウド プラットフォームです。 Azure でサービス、アプリケーション、VM をプロビジョニングするとき、リージョン (地域) を選択するように求められます。 選択したリージョンは、アプリケーションが実行される特定のデータセンターに相当します。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」をご覧ください。
 
-Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待ち時間が少なくなります。 特定の国でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。
+Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待ち時間が少なくなります。 特定の国/地域でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。
 
 ### <a name="azure-portal"></a>Azure ポータル
 

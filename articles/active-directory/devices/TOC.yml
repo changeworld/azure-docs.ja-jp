@@ -22,6 +22,8 @@
   items:
     - name: オンプレミスのリソースへの SSO
       href: azuread-join-sso.md
+    - name: Azure マネージド ワークステーション
+      href: concept-azure-managed-workstation.md
 - name: ハウツー ガイド
   expanded: true
   items:
@@ -39,6 +41,8 @@
       href: assign-local-admin.md
     - name: Enterprise State Roaming を有効にする
       href: enterprise-state-roaming-enable.md
+    - name: Azure マネージド ワークステーションをデプロイする
+      href: howto-azure-managed-workstation.md
     - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
       href: troubleshoot-hybrid-join-windows-current.md
     - name: ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う

@@ -14,12 +14,14 @@
       href: virtual-wan-point-to-site-portal.md
 - name: 概念
   items:
-    - name: 場所とパートナー
+    - name: 場所とパートナーについて
       href: virtual-wan-locations-partners.md
-    - name: グローバル転送ネットワーク アーキテクチャ
+    - name: グローバル転送ネットワーク アーキテクチャについて
       href: virtual-wan-global-transit-network-architecture.md
-    - name: Virtual WAN の Office 365 コントロール プレーン
+    - name: Virtual WAN の Office 365 コントロール プレーンについて
       href: virtual-wan-office365-overview.md
+    - name: IPsec ポリシーについて
+      href: virtual-wan-ipsec.md
 - name: ハウツー ガイド
   items:
     - name: 仮想ハブから NVA にトラフィックをルーティングする

@@ -223,6 +223,14 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Azure PowerShell の使用
               href: virtual-machine-scale-sets-manage-powershell.md
+        - name: スケール セットを変更する
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: スケール セットのネットワーク
+          href: virtual-machine-scale-sets-networking.md
+        - name: OS の自動アップグレード
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: インスタンス保護 (プレビュー)
+          href: virtual-machine-scale-sets-instance-protection.md
         - name: 共有イメージ ギャラリー
           items:
             - name: 概要
@@ -237,14 +245,8 @@
               href: troubleshooting-shared-images.md
         - name: スケール セットの垂直スケール
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-        - name: OS の自動アップグレード
-          href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: スケール セットを変更する
-          href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: DSC とスケール セットの使用
           href: virtual-machine-scale-sets-dsc.md
-        - name: スケール セットのネットワーク
-          href: virtual-machine-scale-sets-networking.md
         - name: テンプレートをマネージド ディスクに変換する
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: Azure の計画メンテナンス

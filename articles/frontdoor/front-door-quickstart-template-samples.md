@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2018
 ms.author: sharadag
-ms.openlocfilehash: 1d1f7eeb6f55fa19b94a1eb4d05520c76352a414
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7e40a847b6ea4daa640a7ae6bc69fd25daa86a5b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756560"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575787"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 
@@ -26,7 +26,7 @@ ms.locfileid: "58756560"
 | [基本的な Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| 1 つのバックエンドを備えた基本的な Front Door 構成を作成します。 |
 | [複数のバック エンドおよびバックエンド プールと URL ベースのルーティングを備えた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| 複数のバックエンドおよびバックエンド プール用に負荷分散が構成され、URL パスに基づくバックエンド プール間の Front Door を作成します。 |
 | [Front Door による HTTPS (Front Door が管理する証明書) を備えたカスタム ドメインの配布準備](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-custom-domain)| Front Door にカスタム ドメインを追加し、DigiCert で生成された Front Door が管理する証明書を使用してこの HTTPS トラフィックを有効にします。 |
-| [地域フィルタリングされた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)| 特定の国からのトラフィックの許可/ブロックする Front Door を作成します。 |
+| [地域フィルタリングされた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)| 特定の国/地域からのトラフィックを許可/ブロックするフロント ドアを作成します。 |
 | [Front Door のバックエンドの正常性プローブのコントロール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-health-probes)| プローブ パスおよびプローブ送信間隔を更新することによって、Front Door を更新し、正常性プローブの設定を変更します。 |
 | [アクティブ/スタンバイ バックエンド構成を備えた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-priority-lb)| アクティブ/スタンバイ アプリケーション トポロジの優先順位ベースのルーティングをデモする Front Door を作成します。つまり、デフォルトではプライマリ (最高の優先順位) バックエンドが使用できなくなるまですべてのトラフィックをこのバックエンドに送信します。 |
 | [特定のルートのキャッシュを有効にした Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-create-caching)| 定義済みのルーティング構成でキャッシュが有効になっている、つまりワークロードの任意の静的資産をキャッシュする Front Door を作成します。 |

@@ -65,7 +65,7 @@
           href: batch-aad-auth.md
         - name: Batch Management での Azure AD
           href: batch-aad-auth-management.md
-    - name: アプリケーション パッケージの作成
+    - name: アプリケーション パッケージの使用
       href: batch-application-packages.md
     - name: プールの作成と管理
       items:

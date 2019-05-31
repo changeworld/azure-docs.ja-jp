@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 97309a24c0ab12720f968409856a16cab4ff7ac7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013097"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714897"
 ---
 # <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルを作成およびトレーニングする
 
@@ -35,7 +35,7 @@ ms.locfileid: "60013097"
 
 - Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-- 以降の演習のサンプル コードを実行するには、まず、Machine Learning Services (と R) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
+- 以降の演習のサンプル コードを実行するには、あらかじめ、Machine Learning Services (R を使用) が有効になった Azure SQL データベースを用意しておく必要があります。 パブリック プレビュー期間中は、Microsoft がお客様のオンボードを行い、既存のデータベースまたは新しいデータベースに対して機械学習を有効にします。 「[Sign up for the preview (プレビューにサインアップする)](sql-database-machine-learning-services-overview.md#signup)」の手順に従ってください。
 
 - 最新の [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) をインストールしていることを確認してください。 他のデータベース管理またはクエリ ツールを使用して R スクリプトを実行することはできますが、このクイック スタートでは SSMS を使用します。
 
@@ -171,7 +171,7 @@ VALUES (
 
 **結果**
 
-![トレーニング済みのモデルと追加の出力](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
+![トレーニング済みのモデルと追加の出力](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
 ## <a name="score-new-data-using-the-trained-model"></a>トレーニング済みのモデルを使用して新しいデータをスコア付けする
 
@@ -239,7 +239,7 @@ VALUES (
 
    **結果**
 
-   ![停止距離を予測するための結果セット](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+   ![停止距離を予測するための結果セット](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
 > このサンプル スクリプトでは、テスト フェーズ中に `str` 関数を追加して、R から返されるデータのスキーマをチェックします。このステートメントは後から削除することができます。
@@ -248,10 +248,9 @@ VALUES (
 
 ## <a name="next-steps"></a>次の手順
 
-Machine Learning Services について詳しくは、以下の記事をご覧ください。 これらの記事の一部は SQL Server 向けですが、大半の情報は、Azure SQL Database における Machine Learning Services と R にも当てはまります。
+Azure SQL Database Machine Learning Services と R (プレビュー) の詳細については、次の記事を参照してください。
 
-- [Azure SQL Database の Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning サービス](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [チュートリアル:SQL Server における R を使用したデータベース内分析について学習する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [R と SQL Server に関するエンド ツー エンドのデータ サイエンス チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [チュートリアル:SQL Server データで RevoScaleR R 関数を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Azure SQL Database Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)
+- [Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](sql-database-quickstart-r-create-script.md)
+- [Machine Learning Services (プレビュー) を使用して Azure SQL Database に高度な R 関数を記述する](sql-database-machine-learning-services-functions.md)
+- [Azure SQL Database Machine Learning Services (プレビュー) での R および SQL データの処理](sql-database-machine-learning-services-data-issues.md)

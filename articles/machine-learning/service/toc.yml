@@ -78,6 +78,9 @@
         - name: 顧客離れを予測する
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Azure Open Datasets
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: 概念
   items:
     - name: ワークスペース
@@ -130,6 +133,9 @@
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: 入力および出力ディレクトリを設定する
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: VS Code 拡張機能を使用する
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md

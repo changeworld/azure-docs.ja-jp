@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9650cdb6935fb45f0c59e8a114a9ce1c8e2d809
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620089"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686532"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
@@ -51,6 +51,8 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 開始する前に次の点を確認します。
 
 - Microsoft Azure サブスクリプションで Data Box Gateway リソースがサポートされていること。 従量課金制のサブスクリプションには対応していません。
+- お使いのサブスクリプションに対して所有者または共同作成者のアクセス権を持っていること。
+- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-gateway-device"></a>Data Box Gateway デバイスの場合
@@ -85,10 +87,10 @@ Data Box Gateway リソースを作成するには、Azure portal で次の手�
 
 1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。
 
-    - Azure portal (URL: [https://portal.azure.com](http://portal.azure.com))。
+    - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
     - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
-2. 左側のウィンドウで、**[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 [Data Box Edge / Data Box Gateway] を選択します。 **作成**を選択します。
+2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 [Data Box Edge / Data Box Gateway] を選択します。 **作成** を選択します。
 3. Data Box Gateway デバイスに使用するサブスクリプションを選択します。 Data Box Gateway リソースをデプロイするリージョンを選択します。 このリリースでは、米国東部、東南アジア、西ヨーロッパを選択できます。 デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 **[Data Box Gateway]** オプションで **[作成]** を選択します。
 
     ![Data Box Gateway サービスの検索](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
@@ -104,14 +106,14 @@ Data Box Gateway リソースを作成するには、Azure portal で次の手�
 
     |Setting  |値  |
     |---------|---------|
-    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |   
+    |Name   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |   
     |リージョン     |このリリースでは、リソースのデプロイ先として、米国東部、東南アジア、西ヨーロッパを選択できます。 Azure Government の場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
     
     ![Data Box Gateway リソースの作成](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
 6. **[Review + create]\(レビュー + 作成\)** を選択します。
  
-7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **作成**を選択します。
+7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **作成** を選択します。
 
     ![Data Box Gateway リソースの詳細を確認する](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
 
@@ -128,7 +130,7 @@ Data Box Gateway リソースを作成したら、ホスト システムに仮�
 
 [Azure portal](https://portal.azure.com/) から次の手順に従って、仮想デバイスのイメージをダウンロードしてください。
 
-1. 作成したリソースで、**[概要]** を選択します。 既存の Azure Data Box Gateway リソースがある場合は、そのリソースを選択してから、**[概要]** に進みます。 **[デバイスの設定]** を選択します。
+1. 作成したリソースで、 **[概要]** を選択します。 既存の Azure Data Box Gateway リソースがある場合は、そのリソースを選択してから、 **[概要]** に進みます。 **[デバイスの設定]** を選択します。
 
     ![新しい Data Box Gateway リソース](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
 
@@ -146,7 +148,7 @@ Data Box Gateway リソースを作成したら、ホスト システムに仮�
 
 Data Box Gateway リソースが起動して稼働中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Data Box Gateway デバイスをアクティブ化し、リソースに接続します。 このキーは Azure portal ですぐに入手できます。
 
-1. 作成したリソースを選択してから、**[概要]** を選択します。 **[デバイスの設定]** の **[Configure and activate]\(構成とアクティブ化\)** タイルに移動します。
+1. 作成したリソースを選択してから、 **[概要]** を選択します。 **[デバイスの設定]** の **[Configure and activate]\(構成とアクティブ化\)** タイルに移動します。
 
     ![[Configure and activate]\(構成とアクティブ化\) タイル](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530794"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724655"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -119,7 +119,7 @@ Azure SignalR サービスを使用すると、サードパーティのサービ
 
 以下の表は、現段階でサポートされている全バージョンの REST API を示したものです。 特定のバージョンごとの定義ファイルも記載しています。
 
-Version | API 状態 | Door | 固有
+バージョン | API 状態 | Door | 固有
 --- | --- | --- | ---
 `1.0-preview` | 使用可能 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
 `1.0` | 使用可能 | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
@@ -139,7 +139,7 @@ API | `1.0-preview` | `1.0`
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>全員にブロードキャストする
 
-Version | API HTTP メソッド | 要求 URL | 要求本文
+バージョン | API HTTP メソッド | 要求 URL | 要求本文
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>` | 同上
@@ -147,7 +147,7 @@ Version | API HTTP メソッド | 要求 URL | 要求本文
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>グループにブロードキャストする
 
-Version | API HTTP メソッド | 要求 URL | 要求本文
+バージョン | API HTTP メソッド | 要求 URL | 要求本文
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | 同上
@@ -155,7 +155,7 @@ Version | API HTTP メソッド | 要求 URL | 要求本文
 <a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>特定のユーザーに送信する
 
-Version | API HTTP メソッド | 要求 URL | 要求本文
+バージョン | API HTTP メソッド | 要求 URL | 要求本文
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>` | 同上
@@ -163,14 +163,14 @@ Version | API HTTP メソッド | 要求 URL | 要求本文
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>ユーザーをグループに追加する
 
-Version | API HTTP メソッド | 要求 URL
+バージョン | API HTTP メソッド | 要求 URL
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>ユーザーをグループから削除する
 
-Version | API HTTP メソッド | 要求 URL
+バージョン | API HTTP メソッド | 要求 URL
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 

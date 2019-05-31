@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256823"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691979"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
 
@@ -22,7 +22,7 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 次の高度なクエリを説明します。
 
 > [!div class="checklist"]
-> - [VMSS の容量とサイズを取得します](#vmss-capacity)
+> - [仮想マシン スケール セットの容量とサイズを取得する](#vmss-capacity)
 > - [すべてのタグ名を一覧表示します](#list-all-tags)
 > - [ regexに一致する仮想マシン](#vm-regex)
 
@@ -38,7 +38,7 @@ Azure CLI (拡張経由) および Azure PowerShell (モジュール経由) は�
 
 このクエリでは、仮想マシン スケール セットのリソースを検索し、仮想マシンのサイズ、スケール セットの容量などのさまざまな詳細情報を取得します。 このクエリは、`toint()` 関数を使用して、容量を分類できるよう数値にキャストしています。 最後に、列の名前をカスタムの名前付きプロパティに変更します。
 
-```Query
+```kusto
 where type=~ 'microsoft.compute/virtualmachinescalesets'
 | where name contains 'contoso'
 | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name
@@ -57,7 +57,7 @@ Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' 
 
 このクエリは、タグを使用して開始し、全ての独自のタグ名とその対応する種類を一覧表示する JSON オブジェクトを構築します。
 
-```Query
+```kusto
 project tags
 | summarize buildschema(tags)
 ```
@@ -86,7 +86,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 名前で一致した後、クエリはプロジェクトの名前を提示し、名前の昇順で順序付けします。
 
-```Query
+```kusto
 where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$'
 | project name
 | order by name asc

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: d99a3d23959cfdd9bd068fbde3a882eb1bc9b4ae
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f69c2ea334109a42d63b85cb71de0deb7174beab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847301"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701670"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -23,7 +23,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 このソリューションでは、SQL ネイティブ API シリーズを活用して、SQL データベースのバックアップを作成します。
 
-* 保護し、その中のデータベースに対してクエリを実行する SQL Server VM を指定すると、Azure Backup サービスにより、`AzureBackupWindowsWorkload` 拡張機能という名前のワークロード バックアップ拡張機能が VM 内にインストールされます。
+* 保護し、その中のデータベースに対してクエリを実行する SQL Server VM を指定すると、Azure Backup サービスにより、`AzureBackupWindowsWorkload`  拡張機能という名前のワークロード バックアップ拡張機能が VM 内にインストールされます。
 * この拡張機能は、コーディネーターと SQL プラグインで構成されています。 コーディネーターは、バックアップの構成、バックアップ、復元など、さまざまな操作のワークフローのトリガーを処理し、プラグインは実際のデータ フローを処理します。
 * この VM 上のデータベースを検出できるようにするために、Azure Backup により、アカウント  `NT SERVICE\AzureWLBackupPluginSvc` が作成されます。 このアカウントはバックアップと復元に使用され、SQL sysadmin アクセス許可を必要とします。 Azure Backup では、データベースの検出と照会に `NT AUTHORITY\SYSTEM` アカウントが利用されます。そのため、このアカウントは SQL 上でパブリック ログインである必要があります。 SQL Server VM を Azure Marketplace から作成しなかった場合、エラー  **UserErrorSQLNoSysadminMembership** が発生する可能性があります。 これが発生した場合、 [こちらの手順に従ってください](backup-azure-sql-database.md)。
 * 選択したデータベースに対して保護の構成をトリガーすると、バックアップ サービスにより、コーディネーターに対してバックアップ スケジュールとその他のポリシーの詳細が設定されます。これにより、拡張機能が VM 内にローカルにキャッシュされます。 
@@ -54,11 +54,12 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 ## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
 
 - SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
+- このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)でもサポートされます。
 - SQL Server を稼働している VM では、Azure パブリック IP アドレスにアクセスするためにインターネット接続を必要とします。
 - SQL Server **フェールオーバー クラスター インスタンス (FCI)** と SQL Server Always on フェールオーバー クラスター インスタンスはサポートされません。
 - ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。
 - スタンドアロンの SQL Server インスタンスまたは SQL Always On 可用性グループをバックアップするために複数のバックアップ ソリューションを使用すると、バックアップに失敗する可能性があるため、そうしないようにしてください。
-- また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。 Azure Backup では、コンテナーと同じリージョン内にあるすべてのノードを検出および保護できます。 お使いの SQL Server Always On 可用性グループが複数の Azure リージョンにまたがっている場合は、プライマリ ノードのあるリージョンからのバックアップを設定します。 Azure Backup では、バックアップ設定に従って、可用性グループ内のすべてのデータベースを検出および保護できます。  
+- また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。
 - **読み取り専用**データベースについては、Azure Backup ではバックアップの種類として完全とコピーのみの完全だけをサポートしています。
 - 多数のファイルがあるデータベースは保護できません。 サポートされるファイルの最大数は**約 1,000 個**です。  
 - コンテナーあたり**約 2,000 個**の SQL Server データベースをバックアップできます。 データベースの数が多い場合、複数のコンテナーを作成できます。
@@ -67,7 +68,13 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 - サーバーあたりいくつのデータベースを保護できるかを把握するには、帯域幅、VM のサイズ、バックアップの頻度、データベースのサイズなどの要因を考慮する必要があります。Microsoft では、これらの数を自分で計算するのに役立つプランナーに取り組んでいます。 間もなく公開する予定です。
 - 可用性グループの場合は、バックアップはいくつかの要因に基づいて異なるノードから作成されます。 可用性グループのバックアップ動作を以下にまとめています。
 
-### <a name="backup-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性グループの場合のバックアップ動作
+### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性グループの場合のバックアップ動作
+
+バックアップの構成は、AG の 1 つのノードでのみ行うことをお勧めします。 バックアップは必ず、プライマリ ノードと同じリージョンに構成してください。 つまり、バックアップの構成場所のリージョンには必ず、プライマリ ノードが存在している必要があります。 AG のすべてのノードがバックアップの構成場所と同じリージョンにあれば問題ありません。
+
+**複数リージョンにまたがる AG**
+- バックアップの設定に関係なく、バックアップの構成場所とは異なるリージョン内のノードからバックアップが実行されることはありません。 複数リージョンにまたがるバックアップはサポートされないためです。 ノードが 2 つしか存在せず、なおかつ、セカンダリ ノードが別のリージョンに存在する場合、プライマリ ノード側からは引き続きがバックアップが実行されます (ただし、バックアップの設定が "セカンダリのみ" になっている場合を除く)。
+- バックアップの構成場所とは異なるリージョンへのフェールオーバーが実行された場合、フェールオーバーされた側のリージョン内のノードでは、バックアップに失敗します。
 
 バックアップ設定とバックアップの種類 (完全/差分/ログ/コピーのみの完全) に応じて、バックアップは特定のノード (プライマリ/セカンダリ) から作成されます。
 
@@ -109,14 +116,14 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
 ## <a name="fix-sql-sysadmin-permissions"></a>SQL sysadmin 権限を修正する
 
-  **UserErrorSQLNoSysadminMembership** エラーが理由でアクセス許可を修正する必要がある場合、以下を実行します。
+  **UserErrorSQLNoSysadminMembership** エラーが理由でアクセス許可を修正する必要がある場合、以下の手順を実行してください。
 
   1. SQL Server sysadmin アクセス許可があるアカウントを使用して、SQL Server Management Studio (SSMS) にサインインします。 特殊な権限が必要でない限り、Windows 認証が機能するはずです。
   2. SQL Server で、**Security/Logins** フォルダーを開きます。
 
       ![セキュリティ/ログイン フォルダーを開いてアカウントを表示する](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. **[ログイン]** フォルダーを右クリックし、**[新しいログイン]** を選択します。 **[ログイン - 新規作成]** で **[検索]** を選択します。
+  3. **[ログイン]** フォルダーを右クリックし、 **[新しいログイン]** を選択します。 **[ログイン - 新規作成]** で **[検索]** を選択します。
 
       ![[ログイン - 新規作成] ダイアログ ボックスで [検索] を選択する](./media/backup-azure-sql-database/new-login-search.png)
 
@@ -128,7 +135,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 
       ![sysadmin サーバー ロールが選択されていることを確認する](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-  6. 次にデータベースを Recovery Services コンテナーと関連付けます。 Azure portal の **[保護されたサーバー]** 一覧で、エラー状態にあるサーバーを右クリックし、**[DB の再検出]** を選択します。
+  6. 次にデータベースを Recovery Services コンテナーと関連付けます。 Azure portal の **[保護されたサーバー]** 一覧で、エラー状態にあるサーバーを右クリックし、 **[DB の再検出]** を選択します。
 
       ![サーバーに適切な権限があることを確認する](./media/backup-azure-sql-database/check-erroneous-server.png)
 

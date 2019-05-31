@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/23/2019
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f1411ee28ca4e371f68c375242a2445c8b48f8d7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007357"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706142"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](https://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
+Azure App Service では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、Eclipse IDE for Java EE Developers を使って、Java Web アプリを App Service にデプロイする方法を示します。
 
 > [!IMPORTANT]
 > マネージド Tomcat、Java SE、WildFly の各プランを使用して Java Web アプリを Linux でネイティブにホストするために、Azure App Service on Linux を選ぶこともできます。 App Service on Linux にご興味がある方は、「[Quickstart: Create a Java app in App Service on Linux (クイック スタート: App Service on Linux で Java アプリを作成する)](containers/quickstart-java.md)」を参照してください。
@@ -54,9 +54,9 @@ ms.locfileid: "60007357"
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Eclipse で動的 Web プロジェクトを作成する
 
-Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的 Web プロジェクト\)]** の順にクリックします。
+Eclipse で、 **[ファイル]**  >  **[新規]**  >  **[Dynamic Web Project\(動的 Web プロジェクト\)]** の順にクリックします。
 
-**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、**[完了]** をクリックします。
+**[New Dynamic Web Project\(新しい動的 Web プロジェクト\)]** ダイアログ ボックスで、プロジェクトに **MyFirstJavaOnAzureWebApp** という名前を付けて、 **[完了]** をクリックします。
    
 ![[New Dynamic Web Project\(新しい動的 Web プロジェクト\)] ダイアログ ボックス](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -66,8 +66,8 @@ Eclipse で、**[ファイル]** > **[新規]** > **[Dynamic Web Project\(動的
 
 ![Eclipse 用の Java EE ワークスペース](./media/app-service-web-get-started-java/pe.png)
 
-プロジェクト エクスプローラーで、**[MyFirstJavaOnAzureWebApp]** プロジェクトを展開します。
-**[WebContent]** を右クリックして、**[新規]** > **[JSP ファイル]** の順にクリックします。
+プロジェクト エクスプローラーで、 **[MyFirstJavaOnAzureWebApp]** プロジェクトを展開します。
+**[WebContent]** を右クリックして、 **[新規]**  >  **[JSP ファイル]** の順にクリックします。
 
 ![プロジェクト エクスプローラーの新しい JSP ファイルのメニュー](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
@@ -97,7 +97,7 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 ## <a name="publish-the-web-app-to-azure"></a>Web アプリを Azure に発行する
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App]\(Azure Web アプリとして発行\)** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、 **[Azure]**  >  **[Publish as Azure Web App]\(Azure Web アプリとして発行\)** の順にクリックします。
 
 ![[Publish as Azure Web App\(Azure Web アプリとして発行\)] コンテキスト メニュー](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
@@ -105,7 +105,7 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 ### <a name="deploy-web-app-dialog-box"></a>[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス
 
-Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
+Azure アカウントにサインインしたら、 **[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
 
 **作成** を選択します。
 
@@ -125,7 +125,7 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 * **[App Service プラン]** タブで、次の操作を行います。
 
   * **新規作成**: 既定値の App Service プラン名をそのまま使用します。
-  * **[場所]**: **[西ヨーロッパ]** または現在地付近を選択します。
+  * **[場所]** : **[西ヨーロッパ]** または現在地付近を選択します。
   * **価格レベル**: 無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)」をご覧ください。
 
     ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
@@ -156,7 +156,7 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 ### <a name="deploy-web-app-dialog-box"></a>[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス
 
-**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスで、**[Deploy to root\(ルートにデプロイする\)]** を選びます。 App Service が *wingtiptoys.azurewebsites.net* に存在している場合に、ルートにデプロイしないことを選択すると、Web アプリ **MyFirstJavaOnAzureWebApp** は *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* にデプロイされます。
+**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスで、 **[Deploy to root\(ルートにデプロイする\)]** を選びます。 App Service が *wingtiptoys.azurewebsites.net* に存在している場合に、ルートにデプロイしないことを選択すると、Web アプリ **MyFirstJavaOnAzureWebApp** は *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp* にデプロイされます。
 
 ![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
@@ -164,7 +164,7 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 **[デプロイ]** を選択して、Web アプリを Azure に発行します。
 
-発行が完了したら、**[Azure の活動ログ]** ダイアログ ボックスで **[発行済み]** リンクをクリックします。
+発行が完了したら、 **[Azure の活動ログ]** ダイアログ ボックスで **[発行済み]** リンクをクリックします。
 
 ![[Azure 活動ログ] ダイアログ ボックス](./media/app-service-web-get-started-java/aal.png)
 
@@ -184,15 +184,15 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 変更を保存します。
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > 、**[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、 **[Azure]**  > 、 **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
 
 **[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。ボックスには、以前に作成したアプリ サービスが表示されています。 
 
 > [!NOTE] 
-> 発行するときは、毎回、**[Deploy to root\(ルートにデプロイする\)]** を選びます。 
+> 発行するときは、毎回、 **[Deploy to root\(ルートにデプロイする\)]** を選びます。 
 > 
 
-Web アプリを選択し、**[デプロイ]** をクリックして変更を発行します。
+Web アプリを選択し、 **[デプロイ]** をクリックして変更を発行します。
 
 **[発行中]** リンクが表示されたら、リンクをクリックして Web アプリを参照し、変更を確認します。
 
@@ -200,7 +200,7 @@ Web アプリを選択し、**[デプロイ]** をクリックして変更を発
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、作成した Web アプリを確認します。
 
-左のメニューから、**[リソース グループ]** を選びます。
+左のメニューから、 **[リソース グループ]** を選びます。
 
 ![リソース グループへのポータル ナビゲーション](media/app-service-web-get-started-java/rg.png)
 

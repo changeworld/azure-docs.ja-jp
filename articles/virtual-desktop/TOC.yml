@@ -48,6 +48,8 @@
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
       href: host-pool-load-balancing.md
+    - name: FSLogix プロファイル コンテナーと Azure のファイル
+      href: fslogix-containers-azure-files.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

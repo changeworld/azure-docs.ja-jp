@@ -837,6 +837,8 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: ロジック アプリの操作を実装する
                   href: platform/action-groups-logic-app.md
+                - name: 共通アラート スキーマを Logic Apps と統合する
+                  href: platform/alerts-common-schema-integrations.md
             - name: Alert Management ソリューション
               href: platform/alert-management-solution.md
             - name: アラートのユーザー インターフェイス

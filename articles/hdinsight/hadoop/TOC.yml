@@ -423,7 +423,7 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
-        - name: HDInsight の送信トラフィック制限
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
           href: ../hdinsight-restrict-outbound-traffic.md
         - name: Azure VNet の HDInsight
           href: ../hdinsight-extend-hadoop-virtual-network.md

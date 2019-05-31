@@ -83,7 +83,7 @@
           displayName: roles
         - name: 自由形式のデータを抽出する
           href: luis-tutorial-pattern-any.md
-    - name: ボットを使用する
+    - name: V4 Bot Framework を使用する
       items:
         - name: 'C# の場合'
           href: luis-csharp-tutorial-bf-v4.md
@@ -198,7 +198,7 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: Speech Service との統合
           href: luis-tutorial-speech-to-intent.md
-        - name: ボットとの統合
+        - name: V3 Bot Framework を使用する
           items:
             - name: Web アプリ ボットとの統合
               items:
@@ -279,6 +279,8 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: 境界
       href: luis-boundaries.md
+    - name: アプリケーションの設定
+      href: luis-reference-application-settings.md
     - name: 事前構築済みのエンティティのリファレンス
       items:
         - name: カルチャごとのエンティティ

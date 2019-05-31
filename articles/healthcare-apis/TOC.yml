@@ -23,6 +23,8 @@
       href: fhir-oss-cli-quickstart.md
     - name: CORS を構成する
       href: configure-cross-origin-resource-sharing.md
+    - name: Cosmos DB を構成する
+      href: configure-cosmos-db.md
 - name: チュートリアル
   expanded: false
   items:

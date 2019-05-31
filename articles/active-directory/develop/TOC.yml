@@ -229,16 +229,20 @@
                   href: msal-js-initializing-client-applications.md
             - name: エラーと例外を処理する
               href: msal-handling-exceptions.md
+            - name: MSAL アプリケーションのテスト
+              href: msal-testing.md
             - name: ログの記録
               href: msal-logging.md
             - name: シングル サインオン (JS)
               href: msal-js-sso.md
             - name: プロンプトの動作 (JS)
               href: msal-js-prompt-behavior.md
-            - name: 独自の HttpClient の指定 (.NET)
-              href: msal-net-provide-httpclient.md
             - name: Azure AD B2C との統合
-              href: msal-b2c-overview.md
+              items:
+                - name: JavaScript
+                  href: msal-b2c-overview.md
+                - name: .NET
+                  href: msal-net-aad-b2c-considerations.md
             - name: 考慮事項と既知の問題
               items:
                 - name: MSAL.NET
@@ -253,8 +257,6 @@
                       href: msal-net-xamarin-ios-considerations.md
                     - name: ユニバーサル Windows プラットフォーム
                       href: msal-net-uwp-considerations.md
-                    - name: AAD B2C ポリシーの適用
-                      href: msal-net-aad-b2c-considerations.md
                 - name: MSAL.js
                   items:
                     - name: IE の使用に関する考慮事項
@@ -360,6 +362,8 @@
                   href: msal-net-instantiate-confidential-client-config-options.md
                 - name: いくつかのリソースの同意を得る
                   href: msal-net-user-gets-consent-for-multiple-resources.md
+                - name: 独自の HttpClient の指定
+                  href: msal-net-provide-httpclient.md
         - name: Visual Studio を使用する
           items:
             - name: Active Directory 接続済みサービスの使用

@@ -296,6 +296,8 @@
               href: transparent-data-encryption-byok-azure-sql.md
         - name: セキュリティ属性
           href: sql-database-security-attributes.md
+        - name: 機能の制限
+          href: sql-database-feature-restrictions.md
     - name: スケーラビリティ
       items:
         - name: スケーラビリティの概要
@@ -368,12 +370,20 @@
           href: sql-database-temporal-tables.md
         - name: ジョブの自動化
           href: sql-database-job-automation-overview.md
+        - name: リンク サーバー
+          href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
+        - name: Service Broker
+          href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
+        - name: データベース メール
+          href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/sql-database/toc.json'
         - name: Machine Learning サービス
           items:
             - name: 概要
               href: sql-database-machine-learning-services-overview.md
             - name: 主な相違点
               href: sql-database-machine-learning-services-differences.md
+        - name: サーバー側の CLR/.NET 統合
+          href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/sql-database/toc.json'
 - name: ハウツー ガイド
   items:
     - name: 概要
