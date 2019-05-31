@@ -1,20 +1,20 @@
 ---
-title: Edge をデプロイするための Azure portal の準備に関するチュートリアル | Microsoft Docs
+title: 'チュートリアル: Azure Data Box Edge をデプロイするために Azure portal、データセンター環境を準備する | Microsoft Docs'
 description: Edge のデプロイに関する最初のチュートリアルでは、Azure portal の準備を行います。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 04/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 19c4fc96653f966ea5642149d944886e4b7f4483
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401675"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924771"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>チュートリアル:Edge のデプロイを準備する  
 
@@ -55,6 +55,8 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 開始する前に次の点を確認します。
 
 - Microsoft Azure サブスクリプションで Edge リソースが有効になっていること。 従量課金制のサブスクリプションには対応していません。
+- お使いのサブスクリプションに対して所有者または共同作成者のアクセス権を持っていること。
+- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、「[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)」をご覧ください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-edge-device"></a>Edge デバイスに対して
@@ -87,11 +89,15 @@ Edge リソースを作成するには、Azure portal で次の手順を実行�
 
 1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。 
     
-    - Azure portal (URL: [https://portal.azure.com](http://portal.azure.com))。
-    - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。
+    - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
+    - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
-2. 左側のウィンドウで、**[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 **[Data Box Edge / Data Box Gateway]** を選択します。 **作成**を選択します。
-3. Data Box Edge に使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 このリリースでは、米国東部、東南アジア、西ヨーロッパを選択できます。 デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 **Edge** オプションで、**[作成]** を選択します。
+2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 **[Data Box Edge / Data Box Gateway]** を選択します。 **作成** を選択します。
+3. Data Box Edge に使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 このリリースでは、米国東部、東南アジア、西ヨーロッパを選択できます。 
+
+    デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 このリージョンには、デバイス管理用のメタデータのみが格納されます。 実際のデータは、任意のストレージ アカウントに格納できます。 
+    
+    **Edge** オプションで、 **[作成]** を選択します。
 
     ![Edge サービスを検索する](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
@@ -113,7 +119,7 @@ Edge リソースを作成するには、Azure portal で次の手順を実行�
 
 5. **[次へ:配送先住所]** を選択します。
 
-    - 既にデバイスがある場合は、**[I have a Data Box Edge device]\(Data Box Edge デバイスを持っています\)** のコンボ ボックスを選択します。
+    - 既にデバイスがある場合は、 **[I have a Data Box Edge device]\(Data Box Edge デバイスを持っています\)** のコンボ ボックスを選択します。
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
     ![新しいデバイスの配送先住所](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
@@ -124,7 +130,7 @@ Edge リソースを作成するには、Azure portal で次の手順を実行�
 
     ![Data Box Edge リソースの詳細とプライバシー条件を確認する](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 
-8. **作成**を選択します。
+8. **作成** を選択します。
 
 リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 
@@ -138,7 +144,7 @@ Microsoft は受け取った注文を確認し、発送の詳細と共にお客�
 
 Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Edge デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
-1. 作成したリソースを選択します。 **[概要]** を選択し、**[デバイスの設定]** を選択します。
+1. 作成したリソースを選択します。 **[概要]** を選択し、 **[デバイスの設定]** を選択します。
 
     ![[デバイスの設定] を選択する](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 

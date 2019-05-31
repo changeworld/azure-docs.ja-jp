@@ -176,7 +176,7 @@
           href: how-to-train-ml-models.md
         - name: PyTorch の使用
           href: how-to-train-pytorch.md
-        - name: TensorFlow と Keras の使用
+        - name: Tensorflow の使用
           href: how-to-train-tensorflow.md
         - name: ハイパーパラメーターを調整する
           displayName: parameter

@@ -45,6 +45,8 @@
       href: security-center-onboarding.md
     - name: Windows Defender ATP でのサーバーの保護
       href: security-center-wdatp.md
+    - name: IaaS 向けの Advanced Data Security
+      href: security-center-iaas-advanced-data.md
     - name: App Service の保護
       href: security-center-app-services.md
     - name: セキュリティ ポリシーの操作
@@ -62,8 +64,6 @@
       items:
         - name: データ収集
           href: security-center-enable-data-collection.md
-        - name: IaaS 向けの Advanced Data Security
-          href: security-center-iaas-advanced-data.md
         - name: 組み込みのセキュリティ ポリシー
           href: security-center-policy-definitions.md
         - name: 電子メール通知

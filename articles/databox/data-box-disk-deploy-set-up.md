@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Disk の設定| Microsoft Docs
+title: Azure Data Box Disk を開梱、接続、ロック解除するチュートリアル | Microsoft Docs
 description: このチュートリアルでは、Azure Data Box Disk を設定する方法について説明します。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 34d62df989da80c84bad92a90fc2253c416a4924
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652152"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939647"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk の開梱、接続、ロック解除
 
@@ -208,12 +208,12 @@ ms.locfileid: "58652152"
 
     次のコマンドを入力します。
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’ /Volumes:’<list of volumes>’`         
+    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’          
 
     サンプル出力を次に示します。 
  
     ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’ /Volumes:’/dev/sdbl’ 
+    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’  
     
     START: Mon Aug 13 14:25:49 2018 
     Volumes: /dev/sdbl 

@@ -1,5 +1,5 @@
 ---
-title: Edge を使用してデータを転送する | Microsoft Docs
+title: 'チュートリアル: Azure Data Box Edge を使用して共有にデータを転送する | Microsoft Docs'
 description: Edge デバイスで共有を追加して接続する方法について説明します。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e902f0c9465f65f31f6e1a5cadc7b6b30cda1a27
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 701ae5e70612b89c28e3092571e26e4f06389af0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403682"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924613"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を使用してデータを転送する
 
@@ -42,7 +42,7 @@ ms.locfileid: "58403682"
 
 共有を作成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) で Data Box Edge リソースを選択し、**[概要]** に移動します。 デバイスがオンラインになっている必要があります。
+1. [Azure portal](https://portal.azure.com/) で Data Box Edge リソースを選択し、 **[概要]** に移動します。 デバイスがオンラインになっている必要があります。
 
    ![デバイスがオンライン](./media/data-box-edge-deploy-add-shares/device-online-1.png)
 
@@ -62,14 +62,14 @@ ms.locfileid: "58403682"
     c. 共有を配置するストレージ アカウントを指定します。 
 
     
-    d. **[ストレージ サービス]** ドロップダウン リストで、**[ブロック BLOB]**、**[ページ BLOB]**、**[ファイル]** のいずれかを選択します。  
-    お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、**[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
+    d. **[ストレージ サービス]** ドロップダウン リストで、 **[ブロック BLOB]** 、 **[ページ BLOB]** 、 **[ファイル]** のいずれかを選択します。  
+    お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
 
     e. 新しい BLOB コンテナーを作成するか、ドロップダウン リストから既存の BLOB コンテナーを選択します。 BLOB コンテナーを作成する場合は、コンテナー名を入力します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。
    
     f. お客様が SMB 共有と NFS 共有のどちらを作成したかに応じて、次の手順のいずれかを実行します。 
      
-    - **SMB 共有**: **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、**[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、ユーザー名とパスワードを入力し、パスワードを確認入力します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、エクスプローラーを使用して変更できます。
+    - **SMB 共有**: **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、ユーザー名とパスワードを入力し、パスワードを確認入力します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、エクスプローラーを使用して変更できます。
 
         この共有データに対して **[読み取り操作のみを許可する]** チェック ボックスをオンにすると、読み取り専用ユーザーを指定することができます。
 
@@ -81,7 +81,7 @@ ms.locfileid: "58403682"
    
 4. **[作成]** を選択して共有を作成します。
     
-    共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、**[共有]** タイルは更新され、新しい共有が反映されます。
+    共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、 **[共有]** タイルは更新され、新しい共有が反映されます。
     
 
 ## <a name="connect-to-the-share"></a>共有に接続する
@@ -114,7 +114,7 @@ ms.locfileid: "58403682"
 
 3. キーボードの Windows キーを押しながら R キーを押します。
 
-4. **実行**ウィンドウで、`\\<device IP address>` を指定し、**[OK]** を選択します。  
+4. **実行**ウィンドウで、`\\<device IP address>` を指定し、 **[OK]** を選択します。  
    エクスプローラーが開きます。 これで、お客様が作成した共有をフォルダーとして確認できます。 エクスプローラーで共有 (フォルダー) をダブルクリックすると、内容が表示されます。
  
     ![SMB 共有に接続する](./media/data-box-edge-deploy-add-shares/connect-to-share2.png)

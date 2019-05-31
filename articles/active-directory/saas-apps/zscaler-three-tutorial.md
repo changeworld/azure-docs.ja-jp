@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/09/2019
+ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a7ddc6b9f4a8638d18262e458d61108c00b618d
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: e2729a47771f2c3073d91cb5b0de4684b51badbd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564555"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>チュートリアル:Azure Active Directory と Zscaler Three の統合
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Zscaler Three と Azure AD の統合を構成するには、次の項目が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
 * Zscaler Three でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -55,11 +55,11 @@ Azure AD への Zscaler Three の統合を構成するには、管理対象の S
 
 **ギャラリーから Zscaler Three を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への Zscaler Three の統合を構成するには、管理対象の S
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zscaler Three**」と入力し、結果ウィンドウで **[Zscaler Three]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Zscaler Three**」と入力し、結果ウィンドウで **[Zscaler Three]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Zscaler Three](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
 Zscaler Three で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Zscaler Three** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Zscaler Three** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://login.zscalerthree.net/sfc_sso`」と入力します。
 
-5. Zscaler Three アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+5. Zscaler Three アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -138,7 +138,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -154,9 +154,17 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Zscaler Three シングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、Zscaler Three 企業サイトに管理者としてサインインします。
+1. Zscaler Three 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **[マイ アプリによるセキュリティで保護されたサインイン拡張機能]** をインストールする必要があります。
 
-2. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler Three]\(Zscaler Three のセットアップ\)** をクリックすると、Zscaler Three アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler Three にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+
+    ![SSO の設定](common/setup-sso.png)
+
+3. Zscaler Three を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、Zscaler Three の企業サイトに管理者としてサインインして、次の手順を実行します。
+
+4. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
    
     ![Administration](./media/zscaler-three-tutorial/ic800206.png "Administration")
 
@@ -164,7 +172,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
     b. **[Configure SAML]** をクリックします。
 
-3. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
+5. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
             
     ![ユーザーと認証の管理](./media/zscaler-three-tutorial/ic800208.png "Manage Users & Authentication")
     
@@ -176,15 +184,15 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
     d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
-    e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
+    e. displayName 属性に SAML 自動プロビジョニングを有効にするには、 **[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
 
-    f. memberOf 属性に SAML 自動プロビジョニングを有効にするには、**[Group Name Attribute]\(グループ名属性\)** テキスト ボックスに **memberOf** の値を入力します。
+    f. memberOf 属性に SAML 自動プロビジョニングを有効にするには、 **[Group Name Attribute]\(グループ名属性\)** テキスト ボックスに **memberOf** の値を入力します。
 
-    g. department 属性に SAML 自動プロビジョニングを有効にするには、**[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
+    g. department 属性に SAML 自動プロビジョニングを有効にするには、 **[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
 
     h. **[Save]** をクリックします。
 
-4. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
+6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
     ![管理](./media/zscaler-three-tutorial/ic800207.png)
 
@@ -197,7 +205,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
 1. **Internet Explorer**を開始します。
 
-2. **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログを開きます。   
+2. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。   
     
      ![インターネット オプション](./media/zscaler-three-tutorial/ic769492.png "Internet Options")
 
@@ -227,7 +235,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -241,7 +249,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -251,11 +259,11 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Zscaler Three へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Zscaler Three]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Zscaler Three]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[Zscaler Three]** を選択します。
+2. アプリケーションの一覧で、 **[Zscaler Three]** を選択します。
 
     ![アプリケーションの一覧の Zscaler Three のリンク](common/all-applications.png)
 
@@ -263,7 +271,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
@@ -275,7 +283,7 @@ Zscaler Three で Azure AD シングル サインオンを構成するには、�
 
     ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンを選択します。
 
     ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
 

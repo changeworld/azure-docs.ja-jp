@@ -297,6 +297,8 @@
           items:
             - name: アプリケーションとサービス プリンシパル
               href: app-objects-and-service-principals.md
+            - name: アプリを Azure AD に追加する方法と理由
+              href: active-directory-how-applications-are-added.md
             - name: 単一テナント アプリとマルチテナント アプリ
               href: single-and-multi-tenant-apps.md
         - name: アクセス許可と同意
