@@ -127,7 +127,9 @@ ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホ
 外部 VIP を使用する場合、DNS は Azure によって管理されます。 ASE に作成されるすべてのアプリは、Azure DNS (パブリック DNS) に自動的に追加されます。 ILB ASE では、独自の DNS を管理する必要があります。 contoso.corp.net など特定のサブドメインについて、次のように ILB アドレスを示す DNS A レコードを作成します。
 
     * 
-    *.scm ftp publish 
+    *.scm 
+    ftp 
+    publish 
 
 
 ## <a name="getting-started"></a>使用の開始
