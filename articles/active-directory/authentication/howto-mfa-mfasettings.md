@@ -256,7 +256,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、管理者常駐型テナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
+Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネージドテナントまたはフェデレーション テナントの管理者が使用します。 この機能では、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスします。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用できます。管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
 
 > [!NOTE]
 > MFA の信頼できる IP と条件付きアクセスの名前付きの場所は、IPV4 アドレスでのみ機能します。
@@ -265,7 +265,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、管理者
 
 | Azure AD テナントの種類 | 信頼できる IP 機能のオプション |
 |:--- |:--- |
-| 管理者常駐型 |**[Specific range of IP addresses]\(特定範囲の IP アドレス\)**: 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。|
+| マネージド |**[Specific range of IP addresses]\(特定範囲の IP アドレス\)**: 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。|
 | フェデレーション |**すべてのフェデレーション ユーザー**: 組織の内部からサインインするすべてのフェデレーション ユーザーは、2 段階認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**[Specific range of IP addresses]\(特定範囲の IP アドレス\)**: 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。 |
 
 信頼できる IP バイパスは会社のイントラネット内からのみ機能します。 **[すべてのフェデレーション ユーザー]** オプションを選択したときに、ユーザーが会社のイントラネットの外部からサインインした場合は、2 段階認証を使用してそのユーザーを認証する必要があります。 ユーザーが AD FS 要求を提示している場合でもプロセスは同じです。 
