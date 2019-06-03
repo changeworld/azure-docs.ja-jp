@@ -306,23 +306,23 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 
 | PostgreSQL Databases 型 | PostgreSQL エイリアス | .NET Framework 型 |
 | --- | --- | --- |
-| abstime | |DateTime |
+| abstime | |Datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte[]、String |
-| bit varying [ (n) ] |varbit |Byte[]、String |
-| boolean |bool |boolean |
-| box | |Byte[]、String |
-| bytea | |Byte[]、String |
+| bit [(n)] | |Byte[], String |
+| bit varying [ (n) ] |varbit |Byte[], String |
+| boolean |bool |Boolean |
+| box | |Byte[], String |
+| bytea | |Byte[], String |
 | character [(n)] |char [(n)] |String |
 | character varying [(n)] |varchar [(n)] |String |
 | cid | |String |
 | cidr | |String |
-| circle | |Byte[]、String |
-| date | |DateTime |
+| circle | |Byte[], String |
+| date | |Datetime |
 | daterange | |String |
 | double precision |float8 |Double |
-| inet | |Byte[]、String |
+| inet | |Byte[], String |
 | intarry | |String |
 | int4range | |String |
 | int8range | |String |
@@ -330,17 +330,17 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | interval [fields] [(p)] | |Timespan |
 | json | |String |
 | jsonb | |Byte[] |
-| line | |Byte[]、String |
-| lseg | |Byte[]、String |
-| macaddr | |Byte[]、String |
+| line | |Byte[], String |
+| lseg | |Byte[], String |
+| macaddr | |Byte[], String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |
 | oid | |Int32 |
-| path | |Byte[]、String |
+| path | |Byte[], String |
 | pg_lsn | |Int64 |
-| point | |Byte[]、String |
-| polygon | |Byte[]、String |
+| point | |Byte[], String |
+| polygon | |Byte[], String |
 | real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
