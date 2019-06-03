@@ -290,7 +290,7 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | Graphic |String |
 | VarChar |String |
 | VarGraphic |String |
-| BLOB |Byte[] |
+| Blob |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
@@ -323,7 +323,7 @@ Teradata にデータを移動する場合、Teradata 型から .NET 型に対�
 | Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
 | Period(Timestamp With Time Zone) |String |
-| xml |String |
+| Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
