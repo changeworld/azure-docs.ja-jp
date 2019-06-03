@@ -92,7 +92,7 @@ Azure Database Migration Service プロジェクト ウィザードでソース�
 
 Azure Database Migration Service を介して MySQL データベースを Azure Database for MySQL インスタンスに移行すると、次のタイムアウト エラーが発生して、移行が失敗します。
 
-    * **エラー**: エラー:Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
+* **エラー**: エラー:Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
