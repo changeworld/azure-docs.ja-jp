@@ -194,18 +194,18 @@ worker ロールの場合、2 つの方法で例外を追跡できます。
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 既定では、次のカウンターが収集されます。
 
-    * \Process(??APP_WIN32_PROC??)\%Processor Time
-    * \Memory\Available Bytes
-    * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
-    * \Process(??APP_WIN32_PROC??)\Private Bytes
-    * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
-    * \Processor(_Total)\% Processor Time
+* \Process(??APP_WIN32_PROC??)\%Processor Time
+* \Memory\Available Bytes
+* \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
+* \Process(??APP_WIN32_PROC??)\Private Bytes
+* \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
+* \Processor(_Total)\% Processor Time
 
 Web ロールの場合、以下のカウンターも収集されます。
 
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
-    * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
+* \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
 追加のカスタム パフォーマンス カウンターやその他の Windows パフォーマンス カウンターは、[こちらの例に示すように](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)、*ApplicationInsights.config* を編集することで指定できます。
 
