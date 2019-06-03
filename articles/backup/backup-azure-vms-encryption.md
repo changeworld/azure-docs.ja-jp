@@ -33,7 +33,7 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 **VM ディスクの種類** | **ADE (BEK/dm-crypt)** | **ADE と KEK**
 --- | --- | ---
 **アンマネージド** | はい | はい
-**管理者常駐型**  | はい | はい
+**マネージド**  | はい | はい
 
 - [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/key-vault-overview.md)、[KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/) に関する詳細を参照してください。
 - Azure VM ディスクの暗号化については、[よくあるご質問](../security/azure-security-disk-encryption-faq.md)に関するページを参照してください。
